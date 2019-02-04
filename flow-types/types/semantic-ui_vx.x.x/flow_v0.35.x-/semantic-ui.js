@@ -1,0 +1,2 @@
+declare module "semantic-ui" {
+}
