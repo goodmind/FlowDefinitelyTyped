@@ -1,5 +1,5 @@
-#!/usr/bin/env node
-// @flow
+#!/usr/bin/env node --max-old-space-size=4096
+//@flow
 
 const fs = require("fs-extra");
 const glob = require("glob-promise");
@@ -86,11 +86,27 @@ declare module '${name}' {
     }
 }
 
+async function copyTests(type) {
+    try {
+        const code = await fs.readFile(`../types/${type}/${type}-tests.ts`, {
+            encoding: "utf8"
+        });
+        const name = originalName(type);
+        const testfilePath = `../flow-types/types/${name}_vx.x.x/test_${fileName(
+            name
+        )}.js`;
+        await fs.writeFile(testfilePath, code);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 async function main() {
     await fs.ensureDir("../flow-types/logs");
     const types = await fs.readdir("../types");
     for (const type of types) {
         const name = originalName(type);
+        await copyTests(type);
         const flowTypedExists = await glob(
             `../flow-typed/definitions/npm/${name}_v*`
         );
