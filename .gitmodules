@@ -1,0 +1,3 @@
+[submodule "flow-typed"]
+	path = flow-typed
+	url = https://github.com/flow-typed/flow-typed.git
