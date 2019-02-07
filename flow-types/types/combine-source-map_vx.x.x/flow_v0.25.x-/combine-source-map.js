@@ -1,0 +1,79 @@
+declare module "combine-source-map" {
+  /**
+   * Add source maps of multiple files, offset them and then combine them into one source map.
+   * (documentation based on project's README file)
+   */
+  declare class Combiner {
+    constructor(file?: string, sourceRoot?: string): this;
+
+    /**
+     * Adds map to underlying source map.
+     * If source contains a source map comment that has the source of the original file inlined it will offset these
+     * mappings and include them.
+     * If no source map comment is found or it has no source inlined, mappings for the file will be generated and included
+     * @param opts the 'sourceFile' path/name and the file's 'source' contents
+     * @param offset the source file 'line' number and 'column' number offsets
+     */
+    addFile(
+      opts: {
+        sourceFile: string,
+        source: string
+      },
+      offset?: Combiner$Combiner$Offset
+    ): Combiner;
+
+    /**
+     * output the combined source map in base64 format
+     * @return base64 encoded combined source map
+     */
+    base64(): string;
+
+    /**
+     * generate a base64 encoded sourceMappingURL comment
+     * @return base64 encoded sourceMappingUrl comment of the combined source map
+     */
+    comment(): string;
+    _addGeneratedMap(
+      sourceFile: string,
+      source: string,
+      offset?: Combiner$Combiner$Offset
+    ): Combiner;
+    _addExistingMap(
+      sourceFile: string,
+      source: string,
+      existingMap: any,
+      offset?: Combiner$Combiner$Offset
+    ): Combiner;
+  }
+
+  declare var npm$namespace$Combiner: {
+    create: typeof Combiner$create,
+    removeComments: typeof Combiner$removeComments
+  };
+
+  /**
+   * An offset line and column number
+   */
+  declare interface Combiner$Offset {
+    line?: number;
+    column?: number;
+  }
+
+  /**
+   * Create a source map combiner that accepts multiple files, offsets them and then combines them into one source map.
+   * @param file optional name of the generated file
+   * @param sourceRoot optional sourceRoot of the map to be generated
+   * @return Combiner instance to which source maps can be added and later combined
+   */
+  declare function Combiner$create(
+    file?: string,
+    sourceRoot?: string
+  ): Combiner;
+
+  /**
+   * @return src with all sourceMappingUrl comments removed
+   */
+  declare function Combiner$removeComments(src: string): string;
+
+  declare module.exports: typeof Combiner;
+}

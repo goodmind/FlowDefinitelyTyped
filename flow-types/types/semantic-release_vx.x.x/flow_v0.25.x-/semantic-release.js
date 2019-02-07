@@ -1,0 +1,73 @@
+declare module "semantic-release" {
+  /**
+   * The semantic release configuration itself.
+   */
+  declare export interface GlobalConfig {
+    /**
+     * The full prepare step configuration.
+     */
+    prepare?: any;
+
+    /**
+     * The branch on which releases should happen.
+     */
+    branch: string;
+
+    /**
+     * The Git repository URL, in any supported format.
+     */
+    repositoryUrl: string;
+
+    /**
+     * The Git tag format used by semantic-release to identify releases.
+     */
+    tagFormat: string;
+  }
+  declare export interface LastRelease {
+    /**
+     * The version name of the release
+     */
+    version: string;
+
+    /**
+     * The Git tag of the release.
+     */
+    gitTag: string;
+
+    /**
+     * The Git checksum of the last commit of the release.
+     */
+    gitHead: string;
+  }
+  declare export type NextRelease = {
+    /**
+     * The release notes of the next release.
+     */
+    notes: string
+  } & LastRelease;
+
+  declare export interface Context {
+    /**
+     * The semantic release configuration itself.
+     */
+    options?: GlobalConfig;
+
+    /**
+     * The previous release details.
+     */
+    lastRelease?: LastRelease;
+
+    /**
+     * The next release details.
+     */
+    nextRelease?: NextRelease;
+
+    /**
+     * The shared logger instance of semantic release.
+     */
+    logger: {
+      log: (message: string, ...vars: any[]) => void,
+      error: (message: string, ...vars: any[]) => void
+    };
+  }
+}
