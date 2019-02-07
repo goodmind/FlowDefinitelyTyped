@@ -1,6 +1,9 @@
 {
     "private": true,
     "name": "definitely-typed",
+    "workspaces": [
+        "flow-toolbox"
+    ],
     "version": "0.0.3",
     "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "repository": {
@@ -24,5 +27,7 @@
         "dtslint": "github:Microsoft/dtslint#production",
         "types-publisher": "github:Microsoft/types-publisher#production"
     },
-    "dependencies": {}
+    "dependencies": {
+        "is-number": "^7.0.0"
+    }
 }
