@@ -1,13 +1,4 @@
-declare module 'sinon-chrome' {
-        import typeof * as Sinon from 'sinon';
 
-	declare module.exports: typeof SinonChrome
-
-	declare type SinonChromeStub = {
-SinonChrome$flush(): void
-} & Sinon.SinonStub
-
-	
       declare var npm$namespace$SinonChrome: {
         flush: typeof SinonChrome$flush,
 reset: typeof SinonChrome$reset,
@@ -15,6 +6,28 @@ registerPlugin: typeof SinonChrome$registerPlugin,
         csi: typeof SinonChrome$csi,
 loadTimes: typeof SinonChrome$loadTimes,
       }
+declare type events$Event = {
+dispatch(...args: any[]): void,
+trigger(...args: any[]): void,
+triggerAsync(...args: any[]): void,
+applyTrigger(args: any[]): void,
+applyTriggerAsync(args: any[]): void,
+addListener: Sinon.SinonSpy,
+removeListener: Sinon.SinonSpy,
+removeListeners: Sinon.SinonSpy,
+hasListener: Sinon.SinonSpy,
+dispatch(...args: any[]): void,
+trigger(...args: any[]): void,
+triggerAsync(...args: any[]): void,
+applyTrigger(args: any[]): void,
+applyTriggerAsync(args: any[]): void,
+addListener: Sinon.SinonSpy,
+removeListener: Sinon.SinonSpy,
+removeListeners: Sinon.SinonSpy,
+hasListener: Sinon.SinonSpy
+} & undefined.events$Event<Function>
+
+
 
 /**
  * Flush cache
@@ -35,9 +48,25 @@ declare export function SinonChrome$registerPlugin(plugin: {}): void
 
 declare export var SinonChrome$csi: Sinon.SinonSpy;
 
-declare export var SinonChrome$loadTimes: Sinon.SinonSpy;
+declare export var SinonChrome$loadTimes: Sinon.SinonSpy;declare module 'sinon-chrome' {
+        import typeof * as Sinon from 'sinon';
 
-declare type events$Event = {
+	declare export default typeof SinonChrome
+
+	declare type SinonChromeStub = {
+SinonChrome$flush(): void
+} & Sinon.SinonStub
+
+	declare type events$Event = {
+dispatch(...args: any[]): void,
+trigger(...args: any[]): void,
+triggerAsync(...args: any[]): void,
+applyTrigger(args: any[]): void,
+applyTriggerAsync(args: any[]): void,
+addListener: Sinon.SinonSpy,
+removeListener: Sinon.SinonSpy,
+removeListeners: Sinon.SinonSpy,
+hasListener: Sinon.SinonSpy,
 dispatch(...args: any[]): void,
 trigger(...args: any[]): void,
 triggerAsync(...args: any[]): void,
@@ -70,7 +99,7 @@ declare export var alarms$get: SinonChromeStub;
 
 declare export var alarms$getAll: SinonChromeStub;
 
-declare export var alarms$onAlarm: SinonChrome$SinonChrome$events.events$Event;
+declare export var alarms$onAlarm: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$app: {
@@ -135,19 +164,19 @@ declare export var bookmarks$search: SinonChromeStub;
 
 declare export var bookmarks$update: SinonChromeStub;
 
-declare export var bookmarks$onChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onChanged: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onChildrenReordered: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onChildrenReordered: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onCreated: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onCreated: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onImportBegan: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onImportBegan: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onImportEnded: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onImportEnded: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onMoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onMoved: SinonChrome$events.events$Event;
 
-declare export var bookmarks$onRemoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var bookmarks$onRemoved: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$browserAction: {
@@ -187,7 +216,7 @@ declare export var browserAction$setPopup: SinonChromeStub;
 
 declare export var browserAction$setTitle: SinonChromeStub;
 
-declare export var browserAction$onClicked: SinonChrome$SinonChrome$events.events$Event;
+declare export var browserAction$onClicked: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$browsingData: {
@@ -281,7 +310,7 @@ declare export var contextMenus$removeAll: SinonChromeStub;
 
 declare export var contextMenus$update: SinonChromeStub;
 
-declare export var contextMenus$onClicked: SinonChrome$SinonChrome$events.events$Event;
+declare export var contextMenus$onClicked: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$omnibox: {
@@ -294,13 +323,13 @@ onInputCancelled: typeof omnibox$onInputCancelled,
       }
 declare export var omnibox$setDefaultSuggestion: SinonChromeStub;
 
-declare export var omnibox$onInputStarted: SinonChrome$SinonChrome$events.events$Event;
+declare export var omnibox$onInputStarted: SinonChrome$events.events$Event;
 
-declare export var omnibox$onInputChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var omnibox$onInputChanged: SinonChrome$events.events$Event;
 
-declare export var omnibox$onInputEntered: SinonChrome$SinonChrome$events.events$Event;
+declare export var omnibox$onInputEntered: SinonChrome$events.events$Event;
 
-declare export var omnibox$onInputCancelled: SinonChrome$SinonChrome$events.events$Event;
+declare export var omnibox$onInputCancelled: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$cookies: {
@@ -318,7 +347,7 @@ declare export var cookies$getAll: SinonChromeStub;
 
 declare export var cookies$getAllCookieStores: SinonChromeStub;
 
-declare export var cookies$onChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var cookies$onChanged: SinonChrome$events.events$Event;
 
 declare export var cookies$remove: SinonChromeStub;
 
@@ -338,7 +367,7 @@ declare export var declarativeContent$RequestContentScript: SinonChromeStub;
 
 declare export var declarativeContent$ShowPageAction: SinonChromeStub;
 
-declare export var declarativeContent$onPageChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var declarativeContent$onPageChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$desktopCapture: {
@@ -400,13 +429,13 @@ declare export var downloads$show: SinonChromeStub;
 
 declare export var downloads$showDefaultFolder: SinonChromeStub;
 
-declare export var downloads$onChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var downloads$onChanged: SinonChrome$events.events$Event;
 
-declare export var downloads$onCreated: SinonChrome$SinonChrome$events.events$Event;
+declare export var downloads$onCreated: SinonChrome$events.events$Event;
 
-declare export var downloads$onDeterminingFilename: SinonChrome$SinonChrome$events.events$Event;
+declare export var downloads$onDeterminingFilename: SinonChrome$events.events$Event;
 
-declare export var downloads$onErased: SinonChrome$SinonChrome$events.events$Event;
+declare export var downloads$onErased: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$extension: {
@@ -451,17 +480,17 @@ declare export var extension$sendRequest: SinonChromeStub;
 
 declare export var extension$setUpdateUrlData: SinonChromeStub;
 
-declare export var extension$onConnect: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onConnect: SinonChrome$events.events$Event;
 
-declare export var extension$onConnectExternal: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onConnectExternal: SinonChrome$events.events$Event;
 
-declare export var extension$onMessage: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onMessage: SinonChrome$events.events$Event;
 
-declare export var extension$onMessageExternal: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onMessageExternal: SinonChrome$events.events$Event;
 
-declare export var extension$onRequest: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onRequest: SinonChrome$events.events$Event;
 
-declare export var extension$onRequestExternal: SinonChrome$SinonChrome$events.events$Event;
+declare export var extension$onRequestExternal: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$fontSettings: {
@@ -510,13 +539,13 @@ declare export var fontSettings$setFont: SinonChromeStub;
 
 declare export var fontSettings$setMinimumFontSize: SinonChromeStub;
 
-declare export var fontSettings$onDefaultFixedFontSizeChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var fontSettings$onDefaultFixedFontSizeChanged: SinonChrome$events.events$Event;
 
-declare export var fontSettings$onDefaultFontSizeChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var fontSettings$onDefaultFontSizeChanged: SinonChrome$events.events$Event;
 
-declare export var fontSettings$onFontChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var fontSettings$onFontChanged: SinonChrome$events.events$Event;
 
-declare export var fontSettings$onMinimumFontSizeChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var fontSettings$onMinimumFontSizeChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$gcm: {
@@ -528,11 +557,11 @@ register: typeof gcm$register,
 send: typeof gcm$send,
 unregister: typeof gcm$unregister,
       }
-declare export var gcm$onMessage: SinonChrome$SinonChrome$events.events$Event;
+declare export var gcm$onMessage: SinonChrome$events.events$Event;
 
-declare export var gcm$onMessagesDeleted: SinonChrome$SinonChrome$events.events$Event;
+declare export var gcm$onMessagesDeleted: SinonChrome$events.events$Event;
 
-declare export var gcm$onSendError: SinonChrome$SinonChrome$events.events$Event;
+declare export var gcm$onSendError: SinonChrome$events.events$Event;
 
 declare export var gcm$register: SinonChromeStub;
 
@@ -564,9 +593,9 @@ declare export var history$getVisits: SinonChromeStub;
 
 declare export var history$search: SinonChromeStub;
 
-declare export var history$onVisitRemoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var history$onVisitRemoved: SinonChrome$events.events$Event;
 
-declare export var history$onVisited: SinonChrome$SinonChrome$events.events$Event;
+declare export var history$onVisited: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$i18n: {
@@ -601,7 +630,7 @@ declare export var identity$launchWebAuthFlow: SinonChromeStub;
 
 declare export var identity$removeCachedAuthToken: SinonChromeStub;
 
-declare export var identity$onSignInChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var identity$onSignInChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$idle: {
@@ -610,7 +639,7 @@ declare export var identity$onSignInChanged: SinonChrome$SinonChrome$events.even
 queryState: typeof idle$queryState,
 setDetectionInterval: typeof idle$setDetectionInterval,
       }
-declare export var idle$onStateChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var idle$onStateChanged: SinonChrome$events.events$Event;
 
 declare export var idle$queryState: SinonChromeStub;
 
@@ -657,13 +686,13 @@ declare export var management$uninstall: SinonChromeStub;
 
 declare export var management$uninstallSelf: SinonChromeStub;
 
-declare export var management$onDisabled: SinonChrome$SinonChrome$events.events$Event;
+declare export var management$onDisabled: SinonChrome$events.events$Event;
 
-declare export var management$onEnabled: SinonChrome$SinonChrome$events.events$Event;
+declare export var management$onEnabled: SinonChrome$events.events$Event;
 
-declare export var management$onInstalled: SinonChrome$SinonChrome$events.events$Event;
+declare export var management$onInstalled: SinonChrome$events.events$Event;
 
-declare export var management$onUninstalled: SinonChrome$SinonChrome$events.events$Event;
+declare export var management$onUninstalled: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$notifications: {
@@ -689,15 +718,15 @@ declare export var notifications$getPermissionLevel: SinonChromeStub;
 
 declare export var notifications$update: SinonChromeStub;
 
-declare export var notifications$onButtonClicked: SinonChrome$SinonChrome$events.events$Event;
+declare export var notifications$onButtonClicked: SinonChrome$events.events$Event;
 
-declare export var notifications$onClicked: SinonChrome$SinonChrome$events.events$Event;
+declare export var notifications$onClicked: SinonChrome$events.events$Event;
 
-declare export var notifications$onClosed: SinonChrome$SinonChrome$events.events$Event;
+declare export var notifications$onClosed: SinonChrome$events.events$Event;
 
-declare export var notifications$onPermissionLevelChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var notifications$onPermissionLevelChanged: SinonChrome$events.events$Event;
 
-declare export var notifications$onShowSettings: SinonChrome$SinonChrome$events.events$Event;
+declare export var notifications$onShowSettings: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$pageCapture: {
@@ -720,15 +749,15 @@ declare export var permissions$contains: SinonChromeStub;
 
 declare export var permissions$getAll: SinonChromeStub;
 
-declare export var permissions$onAdded: SinonChrome$SinonChrome$events.events$Event;
+declare export var permissions$onAdded: SinonChrome$events.events$Event;
 
-declare export var permissions$onRemoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var permissions$onRemoved: SinonChrome$events.events$Event;
 
 declare export var permissions$remove: SinonChromeStub;
 
 declare export var permissions$request: SinonChromeStub;
 
-declare export interface plugins$Translations {
+export interface plugins$Translations {
 [key: string]: {
 message: string,
 description?: string,
@@ -763,7 +792,7 @@ declare interface types$StubbedChromeSetting {
 notifications$clear: SinonChromeStub,
 management$get: SinonChromeStub,
 cookies$set: SinonChromeStub,
-onChange: SinonChrome$SinonChrome$events.events$Event
+onChange: SinonChrome$events.events$Event
 } 
 
 
@@ -799,7 +828,7 @@ thirdPartyCookiesAllowed: SinonChrome$SinonChrome$types.types$StubbedChromeSetti
         onProxyError: typeof proxy$onProxyError,
 settings: typeof proxy$settings,
       }
-declare export var proxy$onProxyError: SinonChrome$SinonChrome$events.events$Event;
+declare export var proxy$onProxyError: SinonChrome$events.events$Event;
 
 declare export var proxy$settings: SinonChrome$SinonChrome$types.types$StubbedChromeSetting;
 
@@ -811,7 +840,7 @@ onMessage: typeof pushMessaging$onMessage,
       }
 declare export var pushMessaging$getChannelId: SinonChromeStub;
 
-declare export var pushMessaging$onMessage: SinonChrome$SinonChrome$events.events$Event;
+declare export var pushMessaging$onMessage: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$runtime: {
@@ -864,27 +893,27 @@ declare export var runtime$sendMessage: SinonChromeStub;
 
 declare export var runtime$sendNativeMessage: SinonChromeStub;
 
-declare export var runtime$onBrowserUpdateAvailable: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onBrowserUpdateAvailable: SinonChrome$events.events$Event;
 
-declare export var runtime$onConnect: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onConnect: SinonChrome$events.events$Event;
 
-declare export var runtime$onConnectExternal: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onConnectExternal: SinonChrome$events.events$Event;
 
-declare export var runtime$onInstalled: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onInstalled: SinonChrome$events.events$Event;
 
-declare export var runtime$onMessage: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onMessage: SinonChrome$events.events$Event;
 
-declare export var runtime$onMessageExternal: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onMessageExternal: SinonChrome$events.events$Event;
 
-declare export var runtime$onRestartRequired: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onRestartRequired: SinonChrome$events.events$Event;
 
-declare export var runtime$onStartup: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onStartup: SinonChrome$events.events$Event;
 
-declare export var runtime$onSuspend: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onSuspend: SinonChrome$events.events$Event;
 
-declare export var runtime$onSuspendCanceled: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onSuspendCanceled: SinonChrome$events.events$Event;
 
-declare export var runtime$onUpdateAvailable: SinonChrome$SinonChrome$events.events$Event;
+declare export var runtime$onUpdateAvailable: SinonChrome$events.events$Event;
 
 declare export var runtime$id: string;
 
@@ -908,7 +937,7 @@ declare export var sessions$getRecentlyClosed: SinonChromeStub;
 
 declare export var sessions$restore: SinonChromeStub;
 
-declare export var sessions$onChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var sessions$onChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$storage: {
@@ -932,7 +961,7 @@ declare export var storage$managed: storage$StubbedStorageArea;
 
 declare export var storage$sync: storage$StubbedStorageArea;
 
-declare export var storage$onChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var storage$onChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$tabCapture: {
@@ -945,7 +974,7 @@ declare export var tabCapture$capture: SinonChromeStub;
 
 declare export var tabCapture$getCapturedTabs: SinonChromeStub;
 
-declare export var tabCapture$onStatusChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabCapture$onStatusChanged: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$tabs: {
@@ -1021,31 +1050,31 @@ declare export var tabs$sendRequest: SinonChromeStub;
 
 declare export var tabs$update: SinonChromeStub;
 
-declare export var tabs$onActivated: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onActivated: SinonChrome$events.events$Event;
 
-declare export var tabs$onActiveChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onActiveChanged: SinonChrome$events.events$Event;
 
-declare export var tabs$onAttached: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onAttached: SinonChrome$events.events$Event;
 
-declare export var tabs$onCreated: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onCreated: SinonChrome$events.events$Event;
 
-declare export var tabs$onDetached: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onDetached: SinonChrome$events.events$Event;
 
-declare export var tabs$onHighlightChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onHighlightChanged: SinonChrome$events.events$Event;
 
-declare export var tabs$onHighlighted: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onHighlighted: SinonChrome$events.events$Event;
 
-declare export var tabs$onMoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onMoved: SinonChrome$events.events$Event;
 
-declare export var tabs$onRemoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onRemoved: SinonChrome$events.events$Event;
 
-declare export var tabs$onReplaced: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onReplaced: SinonChrome$events.events$Event;
 
-declare export var tabs$onSelectionChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onSelectionChanged: SinonChrome$events.events$Event;
 
-declare export var tabs$onUpdated: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onUpdated: SinonChrome$events.events$Event;
 
-declare export var tabs$onZoomChange: SinonChrome$SinonChrome$events.events$Event;
+declare export var tabs$onZoomChange: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$topSites: {
@@ -1077,7 +1106,7 @@ declare export var tts$speak: SinonChromeStub;
 
 declare export var tts$stop: SinonChromeStub;
 
-declare export var tts$onEvent: SinonChrome$SinonChrome$events.events$Event;
+declare export var tts$onEvent: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$ttsEngine: {
@@ -1088,13 +1117,13 @@ onSpeak: typeof ttsEngine$onSpeak,
 onStop: typeof ttsEngine$onStop,
 sendTtsEvent: typeof ttsEngine$sendTtsEvent,
       }
-declare export var ttsEngine$onPause: SinonChrome$SinonChrome$events.events$Event;
+declare export var ttsEngine$onPause: SinonChrome$events.events$Event;
 
-declare export var ttsEngine$onResume: SinonChrome$SinonChrome$events.events$Event;
+declare export var ttsEngine$onResume: SinonChrome$events.events$Event;
 
-declare export var ttsEngine$onSpeak: SinonChrome$SinonChrome$events.events$Event;
+declare export var ttsEngine$onSpeak: SinonChrome$events.events$Event;
 
-declare export var ttsEngine$onStop: SinonChrome$SinonChrome$events.events$Event;
+declare export var ttsEngine$onStop: SinonChrome$events.events$Event;
 
 declare export var ttsEngine$sendTtsEvent: SinonChromeStub;
 
@@ -1117,23 +1146,23 @@ declare export var webNavigation$getAllFrames: SinonChromeStub;
 
 declare export var webNavigation$getFrame: SinonChromeStub;
 
-declare export var webNavigation$onBeforeNavigate: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onBeforeNavigate: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onCommitted: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onCommitted: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onCompleted: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onCompleted: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onCreatedNavigationTarget: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onCreatedNavigationTarget: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onDOMContentLoaded: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onDOMContentLoaded: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onErrorOccurred: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onErrorOccurred: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onHistoryStateUpdated: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onHistoryStateUpdated: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onReferenceFragmentUpdated: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onReferenceFragmentUpdated: SinonChrome$events.events$Event;
 
-declare export var webNavigation$onTabReplaced: SinonChrome$SinonChrome$events.events$Event;
+declare export var webNavigation$onTabReplaced: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$webRequest: {
@@ -1151,23 +1180,23 @@ onSendHeaders: typeof webRequest$onSendHeaders,
       }
 declare export var webRequest$handlerBehaviorChanged: SinonChromeStub;
 
-declare export var webRequest$onAuthRequired: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onAuthRequired: SinonChrome$events.events$Event;
 
-declare export var webRequest$onBeforeRedirect: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onBeforeRedirect: SinonChrome$events.events$Event;
 
-declare export var webRequest$onBeforeRequest: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onBeforeRequest: SinonChrome$events.events$Event;
 
-declare export var webRequest$onBeforeSendHeaders: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onBeforeSendHeaders: SinonChrome$events.events$Event;
 
-declare export var webRequest$onCompleted: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onCompleted: SinonChrome$events.events$Event;
 
-declare export var webRequest$onErrorOccurred: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onErrorOccurred: SinonChrome$events.events$Event;
 
-declare export var webRequest$onHeadersReceived: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onHeadersReceived: SinonChrome$events.events$Event;
 
-declare export var webRequest$onResponseStarted: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onResponseStarted: SinonChrome$events.events$Event;
 
-declare export var webRequest$onSendHeaders: SinonChrome$SinonChrome$events.events$Event;
+declare export var webRequest$onSendHeaders: SinonChrome$events.events$Event;
 
 
       declare var npm$namespace$windows: {
@@ -1197,9 +1226,9 @@ declare export var windows$remove: SinonChromeStub;
 
 declare export var windows$update: SinonChromeStub;
 
-declare export var windows$onCreated: SinonChrome$SinonChrome$events.events$Event;
+declare export var windows$onCreated: SinonChrome$events.events$Event;
 
-declare export var windows$onFocusChanged: SinonChrome$SinonChrome$events.events$Event;
+declare export var windows$onFocusChanged: SinonChrome$events.events$Event;
 
-declare export var windows$onRemoved: SinonChrome$SinonChrome$events.events$Event;
+declare export var windows$onRemoved: SinonChrome$events.events$Event;
     }

@@ -1,6 +1,4 @@
-declare module 'titanium' {
-        declare var Ti: typeof Titanium;
-	
+
       declare var npm$namespace$Titanium: {
         addEventListener: typeof Titanium$addEventListener,
 removeEventListener: typeof Titanium$removeEventListener,
@@ -73546,7 +73544,8 @@ declare function Yahoo$setLifecycleContainer(Yahoo$lifecycleContainer: Titanium$
  * Sets the value of the <Titanium.Yahoo.lifecycleContainer> property.
  */
 declare function Yahoo$setLifecycleContainer(Yahoo$lifecycleContainer: Titanium$UI.UI$TabGroup): void
-
+declare module 'titanium' {
+        declare var Ti: typeof Titanium;
 	
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.

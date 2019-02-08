@@ -1,5 +1,8 @@
-declare module 'knockout.kogrid' {
-        declare interface kg$DomUtilityService {
+declare module 'kg' {
+        declare export default typeof kg
+
+    }
+declare interface kg$DomUtilityService {
 UpdateGridLayout(grid: kg$Grid<any>): void,
 BuildStyles(grid: kg$Grid<any>): void
 } 
@@ -261,8 +264,10 @@ cellClass?: string,
 /**
  * A function which takes the value of the cell and returns the display value. Useful when your data model has an underlying value which you need to convert to a human readable format.
  * @param val
- * @returns the display value
- * @example function(unixTimeTicks) { return new Date(unixTimeTicks); }
+ * @returns
+ * the display value
+ * @example
+ * function(unixTimeTicks) { return new Date(unixTimeTicks); }
  */
 cellFormatter?: (val: any) => string,
 
@@ -356,8 +361,8 @@ totalServerItems?: KnockoutObservable<number>,
  * currentPage: the uhm... current page.
  */
 currentPage?: KnockoutObservable<number>
-} 
-	declare interface IKg {
+} declare module 'knockout.kogrid' {
+        declare interface IKg {
 domUtilityService: kg$kg$DomUtilityService,
 
 /**
@@ -392,7 +397,7 @@ defaultHeaderCellTemplate(): string
 } 
 	declare var kg: IKg;
 	declare module 'kg' {
-        declare module.exports: typeof kg
+        declare export default typeof kg
 
     }
 

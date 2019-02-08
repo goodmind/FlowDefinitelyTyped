@@ -1,9 +1,11 @@
-declare module 'sasl-anonymous' {
+declare interface AnonymousMechanism$Credentials {
+trace?: string
+} declare module 'sasl-anonymous' {
         import type {
           Mechanism
         } from 'saslmechanisms';
 
-	declare module.exports: typeof AnonymousMechanism
+	declare export default typeof AnonymousMechanism
 
 	declare class AnonymousMechanism mixins Mechanism {
 static Mechanism: typeof AnonymousMechanism;
@@ -16,7 +18,4 @@ clientFirst: true;
 response(cred: AnonymousMechanism$AnonymousMechanism$Credentials): string;
 challenge(chal: string): void
 }
-	declare interface AnonymousMechanism$Credentials {
-trace?: string
-} 
     }

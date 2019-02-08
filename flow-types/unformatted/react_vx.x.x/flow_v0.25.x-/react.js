@@ -1,23 +1,379 @@
-declare module 'react' {
-        import typeof * as CSS from 'csstype';
+declare module 'global' {
+        declare type JSX$Element = {} & React$React$ReactElement<any, any>
 
-	import typeof * as PropTypes from 'prop-types';
 
-	declare type NativeAnimationEvent = React$AnimationEvent;
-	declare type NativeClipboardEvent = React$ClipboardEvent;
-	declare type NativeCompositionEvent = React$CompositionEvent;
-	declare type NativeDragEvent = React$DragEvent;
-	declare type NativeFocusEvent = React$FocusEvent;
-	declare type NativeKeyboardEvent = React$KeyboardEvent;
-	declare type NativeMouseEvent = React$MouseEvent;
-	declare type NativeTouchEvent = React$TouchEvent;
-	declare type NativePointerEvent = React$PointerEvent;
-	declare type NativeTransitionEvent = React$TransitionEvent;
-	declare type NativeUIEvent = React$UIEvent;
-	declare type NativeWheelEvent = React$WheelEvent;
-	declare module.exports: typeof React
+declare type JSX$ElementClass = {
+render(): React$React$ReactNode,
+render(): React$React$ReactNode
+} & React$React$Component<any>
 
-	
+
+declare interface JSX$ElementAttributesProperty {
+props: {},
+props: {}
+} 
+
+declare interface JSX$ElementChildrenAttribute {
+children: {},
+children: {}
+} 
+
+declare type JSX$LibraryManagedAttributes<C, P> = "There was Conditional Type, use $Call utility type";
+
+declare type JSX$IntrinsicAttributes = {} & React$React$Attributes
+
+
+declare type JSX$IntrinsicClassAttributes<T> = {} & React$React$ClassAttributes<T>
+
+
+declare interface JSX$IntrinsicElements {
+a: React$React$DetailedHTMLProps<React$React$AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+abbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+address: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+area: React$React$DetailedHTMLProps<React$React$AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>,
+article: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+aside: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+audio: React$React$DetailedHTMLProps<React$React$AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>,
+b: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+base: React$React$DetailedHTMLProps<React$React$BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>,
+bdi: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+bdo: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+big: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+blockquote: React$React$DetailedHTMLProps<React$React$BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>,
+body: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>,
+br: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBRElement>, HTMLBRElement>,
+button: React$React$DetailedHTMLProps<React$React$ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+canvas: React$React$DetailedHTMLProps<React$React$CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>,
+caption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+cite: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+code: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+col: React$React$DetailedHTMLProps<React$React$ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+colgroup: React$React$DetailedHTMLProps<React$React$ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+data: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+datalist: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>,
+dd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+del: React$React$DetailedHTMLProps<React$React$DelHTMLAttributes<HTMLElement>, HTMLElement>,
+details: React$React$DetailedHTMLProps<React$React$DetailsHTMLAttributes<HTMLElement>, HTMLElement>,
+dfn: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+dialog: React$React$DetailedHTMLProps<React$React$DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>,
+div: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+dl: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDListElement>, HTMLDListElement>,
+dt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+em: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+embed: React$React$DetailedHTMLProps<React$React$EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>,
+fieldset: React$React$DetailedHTMLProps<React$React$FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>,
+figcaption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+figure: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+footer: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+form: React$React$DetailedHTMLProps<React$React$FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
+h1: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h2: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h3: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h4: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h5: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h6: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+head: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>,
+header: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hgroup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHRElement>, HTMLHRElement>,
+html: React$React$DetailedHTMLProps<React$React$HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>,
+i: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+iframe: React$React$DetailedHTMLProps<React$React$IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>,
+img: React$React$DetailedHTMLProps<React$React$ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+input: React$React$DetailedHTMLProps<React$React$InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+ins: React$React$DetailedHTMLProps<React$React$InsHTMLAttributes<HTMLModElement>, HTMLModElement>,
+kbd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+keygen: React$React$DetailedHTMLProps<React$React$KeygenHTMLAttributes<HTMLElement>, HTMLElement>,
+label: React$React$DetailedHTMLProps<React$React$LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>,
+legend: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>,
+li: React$React$DetailedHTMLProps<React$React$LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>,
+link: React$React$DetailedHTMLProps<React$React$LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>,
+main: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+map: React$React$DetailedHTMLProps<React$React$MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>,
+mark: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+menu: React$React$DetailedHTMLProps<React$React$MenuHTMLAttributes<HTMLElement>, HTMLElement>,
+menuitem: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+meta: React$React$DetailedHTMLProps<React$React$MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>,
+meter: React$React$DetailedHTMLProps<React$React$MeterHTMLAttributes<HTMLElement>, HTMLElement>,
+nav: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noindex: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noscript: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+object: React$React$DetailedHTMLProps<React$React$ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>,
+ol: React$React$DetailedHTMLProps<React$React$OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>,
+optgroup: React$React$DetailedHTMLProps<React$React$OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>,
+option: React$React$DetailedHTMLProps<React$React$OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>,
+output: React$React$DetailedHTMLProps<React$React$OutputHTMLAttributes<HTMLElement>, HTMLElement>,
+p: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>,
+param: React$React$DetailedHTMLProps<React$React$ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>,
+picture: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+pre: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLPreElement>, HTMLPreElement>,
+progress: React$React$DetailedHTMLProps<React$React$ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>,
+q: React$React$DetailedHTMLProps<React$React$QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>,
+rp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+rt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ruby: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+s: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+samp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+script: React$React$DetailedHTMLProps<React$React$ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>,
+section: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+select: React$React$DetailedHTMLProps<React$React$SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
+small: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+source: React$React$DetailedHTMLProps<React$React$SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>,
+span: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
+strong: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+style: React$React$DetailedHTMLProps<React$React$StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>,
+sub: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+summary: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+sup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+table: React$React$DetailedHTMLProps<React$React$TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>,
+tbody: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+td: React$React$DetailedHTMLProps<React$React$TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>,
+textarea: React$React$DetailedHTMLProps<React$React$TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
+tfoot: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+th: React$React$DetailedHTMLProps<React$React$ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>,
+thead: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+time: React$React$DetailedHTMLProps<React$React$TimeHTMLAttributes<HTMLElement>, HTMLElement>,
+title: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>,
+tr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>,
+track: React$React$DetailedHTMLProps<React$React$TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>,
+u: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ul: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLUListElement>, HTMLUListElement>,
+"var": React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+video: React$React$DetailedHTMLProps<React$React$VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>,
+wbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+webview: React$React$DetailedHTMLProps<React$React$WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>,
+svg: React$React$SVGProps<SVGSVGElement>,
+animate: React$React$SVGProps<SVGElement>,
+animateMotion: React$React$SVGProps<SVGElement>,
+animateTransform: React$React$SVGProps<SVGElement>,
+circle: React$React$SVGProps<SVGCircleElement>,
+clipPath: React$React$SVGProps<SVGClipPathElement>,
+defs: React$React$SVGProps<SVGDefsElement>,
+desc: React$React$SVGProps<SVGDescElement>,
+ellipse: React$React$SVGProps<SVGEllipseElement>,
+feBlend: React$React$SVGProps<SVGFEBlendElement>,
+feColorMatrix: React$React$SVGProps<SVGFEColorMatrixElement>,
+feComponentTransfer: React$React$SVGProps<SVGFEComponentTransferElement>,
+feComposite: React$React$SVGProps<SVGFECompositeElement>,
+feConvolveMatrix: React$React$SVGProps<SVGFEConvolveMatrixElement>,
+feDiffuseLighting: React$React$SVGProps<SVGFEDiffuseLightingElement>,
+feDisplacementMap: React$React$SVGProps<SVGFEDisplacementMapElement>,
+feDistantLight: React$React$SVGProps<SVGFEDistantLightElement>,
+feFlood: React$React$SVGProps<SVGFEFloodElement>,
+feFuncA: React$React$SVGProps<SVGFEFuncAElement>,
+feFuncB: React$React$SVGProps<SVGFEFuncBElement>,
+feFuncG: React$React$SVGProps<SVGFEFuncGElement>,
+feFuncR: React$React$SVGProps<SVGFEFuncRElement>,
+feGaussianBlur: React$React$SVGProps<SVGFEGaussianBlurElement>,
+feImage: React$React$SVGProps<SVGFEImageElement>,
+feMerge: React$React$SVGProps<SVGFEMergeElement>,
+feMergeNode: React$React$SVGProps<SVGFEMergeNodeElement>,
+feMorphology: React$React$SVGProps<SVGFEMorphologyElement>,
+feOffset: React$React$SVGProps<SVGFEOffsetElement>,
+fePointLight: React$React$SVGProps<SVGFEPointLightElement>,
+feSpecularLighting: React$React$SVGProps<SVGFESpecularLightingElement>,
+feSpotLight: React$React$SVGProps<SVGFESpotLightElement>,
+feTile: React$React$SVGProps<SVGFETileElement>,
+feTurbulence: React$React$SVGProps<SVGFETurbulenceElement>,
+filter: React$React$SVGProps<SVGFilterElement>,
+foreignObject: React$React$SVGProps<SVGForeignObjectElement>,
+g: React$React$SVGProps<SVGGElement>,
+image: React$React$SVGProps<SVGImageElement>,
+line: React$React$SVGProps<SVGLineElement>,
+linearGradient: React$React$SVGProps<SVGLinearGradientElement>,
+marker: React$React$SVGProps<SVGMarkerElement>,
+mask: React$React$SVGProps<SVGMaskElement>,
+metadata: React$React$SVGProps<SVGMetadataElement>,
+mpath: React$React$SVGProps<SVGElement>,
+path: React$React$SVGProps<SVGPathElement>,
+pattern: React$React$SVGProps<SVGPatternElement>,
+polygon: React$React$SVGProps<SVGPolygonElement>,
+polyline: React$React$SVGProps<SVGPolylineElement>,
+radialGradient: React$React$SVGProps<SVGRadialGradientElement>,
+rect: React$React$SVGProps<SVGRectElement>,
+stop: React$React$SVGProps<SVGStopElement>,
+switch: React$React$SVGProps<SVGSwitchElement>,
+symbol: React$React$SVGProps<SVGSymbolElement>,
+text: React$React$SVGProps<SVGTextElement>,
+textPath: React$React$SVGProps<SVGTextPathElement>,
+tspan: React$React$SVGProps<SVGTSpanElement>,
+use: React$React$SVGProps<SVGUseElement>,
+view: React$React$SVGProps<SVGViewElement>,
+a: React$React$DetailedHTMLProps<React$React$AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+abbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+address: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+area: React$React$DetailedHTMLProps<React$React$AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>,
+article: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+aside: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+audio: React$React$DetailedHTMLProps<React$React$AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>,
+b: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+base: React$React$DetailedHTMLProps<React$React$BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>,
+bdi: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+bdo: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+big: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+blockquote: React$React$DetailedHTMLProps<React$React$BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>,
+body: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>,
+br: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBRElement>, HTMLBRElement>,
+button: React$React$DetailedHTMLProps<React$React$ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+canvas: React$React$DetailedHTMLProps<React$React$CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>,
+caption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+cite: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+code: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+col: React$React$DetailedHTMLProps<React$React$ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+colgroup: React$React$DetailedHTMLProps<React$React$ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+data: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+datalist: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>,
+dd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+del: React$React$DetailedHTMLProps<React$React$DelHTMLAttributes<HTMLElement>, HTMLElement>,
+details: React$React$DetailedHTMLProps<React$React$DetailsHTMLAttributes<HTMLElement>, HTMLElement>,
+dfn: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+dialog: React$React$DetailedHTMLProps<React$React$DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>,
+div: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+dl: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDListElement>, HTMLDListElement>,
+dt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+em: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+embed: React$React$DetailedHTMLProps<React$React$EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>,
+fieldset: React$React$DetailedHTMLProps<React$React$FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>,
+figcaption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+figure: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+footer: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+form: React$React$DetailedHTMLProps<React$React$FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
+h1: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h2: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h3: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h4: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h5: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h6: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+head: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>,
+header: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hgroup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHRElement>, HTMLHRElement>,
+html: React$React$DetailedHTMLProps<React$React$HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>,
+i: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+iframe: React$React$DetailedHTMLProps<React$React$IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>,
+img: React$React$DetailedHTMLProps<React$React$ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+input: React$React$DetailedHTMLProps<React$React$InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+ins: React$React$DetailedHTMLProps<React$React$InsHTMLAttributes<HTMLModElement>, HTMLModElement>,
+kbd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+keygen: React$React$DetailedHTMLProps<React$React$KeygenHTMLAttributes<HTMLElement>, HTMLElement>,
+label: React$React$DetailedHTMLProps<React$React$LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>,
+legend: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>,
+li: React$React$DetailedHTMLProps<React$React$LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>,
+link: React$React$DetailedHTMLProps<React$React$LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>,
+main: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+map: React$React$DetailedHTMLProps<React$React$MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>,
+mark: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+menu: React$React$DetailedHTMLProps<React$React$MenuHTMLAttributes<HTMLElement>, HTMLElement>,
+menuitem: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+meta: React$React$DetailedHTMLProps<React$React$MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>,
+meter: React$React$DetailedHTMLProps<React$React$MeterHTMLAttributes<HTMLElement>, HTMLElement>,
+nav: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noindex: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noscript: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+object: React$React$DetailedHTMLProps<React$React$ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>,
+ol: React$React$DetailedHTMLProps<React$React$OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>,
+optgroup: React$React$DetailedHTMLProps<React$React$OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>,
+option: React$React$DetailedHTMLProps<React$React$OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>,
+output: React$React$DetailedHTMLProps<React$React$OutputHTMLAttributes<HTMLElement>, HTMLElement>,
+p: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>,
+param: React$React$DetailedHTMLProps<React$React$ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>,
+picture: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+pre: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLPreElement>, HTMLPreElement>,
+progress: React$React$DetailedHTMLProps<React$React$ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>,
+q: React$React$DetailedHTMLProps<React$React$QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>,
+rp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+rt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ruby: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+s: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+samp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+script: React$React$DetailedHTMLProps<React$React$ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>,
+section: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+select: React$React$DetailedHTMLProps<React$React$SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
+small: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+source: React$React$DetailedHTMLProps<React$React$SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>,
+span: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
+strong: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+style: React$React$DetailedHTMLProps<React$React$StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>,
+sub: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+summary: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+sup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+table: React$React$DetailedHTMLProps<React$React$TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>,
+tbody: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+td: React$React$DetailedHTMLProps<React$React$TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>,
+textarea: React$React$DetailedHTMLProps<React$React$TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
+tfoot: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+th: React$React$DetailedHTMLProps<React$React$ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>,
+thead: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+time: React$React$DetailedHTMLProps<React$React$TimeHTMLAttributes<HTMLElement>, HTMLElement>,
+title: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>,
+tr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>,
+track: React$React$DetailedHTMLProps<React$React$TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>,
+u: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ul: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLUListElement>, HTMLUListElement>,
+"var": React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+video: React$React$DetailedHTMLProps<React$React$VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>,
+wbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+webview: React$React$DetailedHTMLProps<React$React$WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>,
+svg: React$React$SVGProps<SVGSVGElement>,
+animate: React$React$SVGProps<SVGElement>,
+animateMotion: React$React$SVGProps<SVGElement>,
+animateTransform: React$React$SVGProps<SVGElement>,
+circle: React$React$SVGProps<SVGCircleElement>,
+clipPath: React$React$SVGProps<SVGClipPathElement>,
+defs: React$React$SVGProps<SVGDefsElement>,
+desc: React$React$SVGProps<SVGDescElement>,
+ellipse: React$React$SVGProps<SVGEllipseElement>,
+feBlend: React$React$SVGProps<SVGFEBlendElement>,
+feColorMatrix: React$React$SVGProps<SVGFEColorMatrixElement>,
+feComponentTransfer: React$React$SVGProps<SVGFEComponentTransferElement>,
+feComposite: React$React$SVGProps<SVGFECompositeElement>,
+feConvolveMatrix: React$React$SVGProps<SVGFEConvolveMatrixElement>,
+feDiffuseLighting: React$React$SVGProps<SVGFEDiffuseLightingElement>,
+feDisplacementMap: React$React$SVGProps<SVGFEDisplacementMapElement>,
+feDistantLight: React$React$SVGProps<SVGFEDistantLightElement>,
+feFlood: React$React$SVGProps<SVGFEFloodElement>,
+feFuncA: React$React$SVGProps<SVGFEFuncAElement>,
+feFuncB: React$React$SVGProps<SVGFEFuncBElement>,
+feFuncG: React$React$SVGProps<SVGFEFuncGElement>,
+feFuncR: React$React$SVGProps<SVGFEFuncRElement>,
+feGaussianBlur: React$React$SVGProps<SVGFEGaussianBlurElement>,
+feImage: React$React$SVGProps<SVGFEImageElement>,
+feMerge: React$React$SVGProps<SVGFEMergeElement>,
+feMergeNode: React$React$SVGProps<SVGFEMergeNodeElement>,
+feMorphology: React$React$SVGProps<SVGFEMorphologyElement>,
+feOffset: React$React$SVGProps<SVGFEOffsetElement>,
+fePointLight: React$React$SVGProps<SVGFEPointLightElement>,
+feSpecularLighting: React$React$SVGProps<SVGFESpecularLightingElement>,
+feSpotLight: React$React$SVGProps<SVGFESpotLightElement>,
+feTile: React$React$SVGProps<SVGFETileElement>,
+feTurbulence: React$React$SVGProps<SVGFETurbulenceElement>,
+filter: React$React$SVGProps<SVGFilterElement>,
+foreignObject: React$React$SVGProps<SVGForeignObjectElement>,
+g: React$React$SVGProps<SVGGElement>,
+image: React$React$SVGProps<SVGImageElement>,
+line: React$React$SVGProps<SVGLineElement>,
+linearGradient: React$React$SVGProps<SVGLinearGradientElement>,
+marker: React$React$SVGProps<SVGMarkerElement>,
+mask: React$React$SVGProps<SVGMaskElement>,
+metadata: React$React$SVGProps<SVGMetadataElement>,
+mpath: React$React$SVGProps<SVGElement>,
+path: React$React$SVGProps<SVGPathElement>,
+pattern: React$React$SVGProps<SVGPatternElement>,
+polygon: React$React$SVGProps<SVGPolygonElement>,
+polyline: React$React$SVGProps<SVGPolylineElement>,
+radialGradient: React$React$SVGProps<SVGRadialGradientElement>,
+rect: React$React$SVGProps<SVGRectElement>,
+stop: React$React$SVGProps<SVGStopElement>,
+switch: React$React$SVGProps<SVGSwitchElement>,
+symbol: React$React$SVGProps<SVGSymbolElement>,
+text: React$React$SVGProps<SVGTextElement>,
+textPath: React$React$SVGProps<SVGTextPathElement>,
+tspan: React$React$SVGProps<SVGTSpanElement>,
+use: React$React$SVGProps<SVGUseElement>,
+view: React$React$SVGProps<SVGViewElement>
+} 
+    }
+
       declare var npm$namespace$React: {
         createFactory: typeof React$createFactory,
 createElement: typeof React$createElement,
@@ -89,7 +445,8 @@ declare type React$ReactComponentElement<T: $Keys<JSX$JSX$IntrinsicElements> | R
 
 
 /**
- * @deprecated Please use `FunctionComponentElement`
+ * @deprecated
+ * Please use `FunctionComponentElement`
  */
 declare type React$SFCElement<P> = React$FunctionComponentElement<P>;
 
@@ -137,7 +494,8 @@ props?: React$Attributes & P,
 
 
 /**
- * @deprecated Please use `FunctionComponentFactory`
+ * @deprecated
+ * Please use `FunctionComponentFactory`
  */
 declare type React$SFCFactory<P> = React$FunctionComponentFactory<P>;
 
@@ -398,7 +756,8 @@ declare class React$Component<P, S>  {
  *          *   }
  *          * }
  *          * ```
- * @see https://reactjs.org/docs/context.html#classcontexttype
+ * @see
+ * https://reactjs.org/docs/context.html#classcontexttype
  */
 static contextType: React$Context<any>;
 
@@ -410,15 +769,18 @@ static contextType: React$Context<any>;
  *          * static contextType = MyContext
  *          * context!: React.ContextType<typeof MyContext>
  *          * ```
- * @deprecated if used without a type annotation, or without static contextType
- * @see https://reactjs.org/docs/legacy-context.html
+ * @deprecated
+ * if used without a type annotation, or without static contextType
+ * @see
+ * https://reactjs.org/docs/legacy-context.html
  */
 context: any;
 constructor(props: $ReadOnly<P>): this;
 
 /**
  * @deprecated
- * @see https://reactjs.org/docs/legacy-context.html
+ * @see
+ * https://reactjs.org/docs/legacy-context.html
  */
 constructor(props: P, context?: any): this;
 setState<K: $Keys<S>>(
@@ -432,7 +794,8 @@ children?: React$ReactNode
 state: $ReadOnly<S>;
 
 /**
- * @deprecated https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs
+ * @deprecated
+ * https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs
  */
 refs: {
 [key: string]: React$ReactInstance
@@ -454,17 +817,21 @@ getChildContext(): CC
 
 
 /**
- * @deprecated as of recent React versions, function components can no
-longer be considered 'stateless'. Please use `FunctionComponent` instead.
- * @see [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+ * @deprecated
+ * as of recent React versions, function components can no
+ * longer be considered 'stateless'. Please use `FunctionComponent` instead.
+ * @see
+ * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
  */
 declare type React$SFC<P= {}> = React$FunctionComponent<P>;
 
 
 /**
- * @deprecated as of recent React versions, function components can no
-longer be considered 'stateless'. Please use `FunctionComponent` instead.
- * @see [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+ * @deprecated
+ * as of recent React versions, function components can no
+ * longer be considered 'stateless'. Please use `FunctionComponent` instead.
+ * @see
+ * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
  */
 declare type React$StatelessComponent<P= {}> = React$FunctionComponent<P>;
 
@@ -585,9 +952,12 @@ declare interface React$DeprecatedLifecycle<P, S> {
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use componentDidMount or the constructor instead; will stop working in React 17
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#initializing-state
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use componentDidMount or the constructor instead; will stop working in React 17
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#initializing-state
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 componentWillMount?: () => void,
 
@@ -599,9 +969,12 @@ componentWillMount?: () => void,
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use componentDidMount or the constructor instead
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#initializing-state
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use componentDidMount or the constructor instead
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#initializing-state
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 UNSAFE_componentWillMount?: () => void,
 
@@ -614,9 +987,12 @@ UNSAFE_componentWillMount?: () => void,
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use static getDerivedStateFromProps instead; will stop working in React 17
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use static getDerivedStateFromProps instead; will stop working in React 17
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 componentWillReceiveProps?: (nextProps: $ReadOnly<P>, nextContext: any) => void,
 
@@ -631,9 +1007,12 @@ componentWillReceiveProps?: (nextProps: $ReadOnly<P>, nextContext: any) => void,
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use static getDerivedStateFromProps instead
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use static getDerivedStateFromProps instead
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 UNSAFE_componentWillReceiveProps?: (nextProps: $ReadOnly<P>, nextContext: any) => void,
 
@@ -644,9 +1023,12 @@ UNSAFE_componentWillReceiveProps?: (nextProps: $ReadOnly<P>, nextContext: any) =
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use getSnapshotBeforeUpdate instead; will stop working in React 17
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#reading-dom-properties-before-an-update
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use getSnapshotBeforeUpdate instead; will stop working in React 17
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#reading-dom-properties-before-an-update
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 componentWillUpdate?: (nextProps: $ReadOnly<P>, nextState: $ReadOnly<S>, nextContext: any) => void,
 
@@ -659,9 +1041,12 @@ componentWillUpdate?: (nextProps: $ReadOnly<P>, nextState: $ReadOnly<S>, nextCon
  * 
  * Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps
  * prevents this from being invoked.
- * @deprecated 16.3, use getSnapshotBeforeUpdate instead
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#reading-dom-properties-before-an-update
- * @see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
+ * @deprecated
+ * 16.3, use getSnapshotBeforeUpdate instead
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#reading-dom-properties-before-an-update
+ * @see
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#gradual-migration-path
  */
 UNSAFE_componentWillUpdate?: (nextProps: $ReadOnly<P>, nextState: $ReadOnly<S>, nextContext: any) => void
 } 
@@ -694,7 +1079,7 @@ defaultProps?: $Shape<P>
 } & React$NamedExoticComponent<P>
 
 
-declare function React$forwardRef<T, P= {}>(
+declare function React$forwardRef<T, P>(
 React$Component: React$RefForwardingComponent<T, P>): React$ForwardRefExoticComponent<React$PropsWithoutRef<P> & React$RefAttributes<T>>
 
 
@@ -777,8 +1162,10 @@ current: T
 /**
  * Accepts a context object (the value returned from `React.createContext`) and returns the current
  * context value, as given by the nearest context provider for the given context.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usecontext
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usecontext
  */
 declare function React$useContext<T>(context: React$Context<T>): T
 
@@ -786,8 +1173,10 @@ declare function React$useContext<T>(context: React$Context<T>): T
 
 /**
  * Returns a stateful value, and a function to update it.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usestate
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usestate
  */
 declare function React$useState<S>(initialState: S | (() => S)): [S, React$Dispatch<React$SetStateAction<S>>]
 
@@ -799,8 +1188,10 @@ declare function React$useState<S>(initialState: S | (() => S)): [S, React$Dispa
  * `useReducer` is usually preferable to `useState` when you have complex state logic that involves
  * multiple sub-values. It also lets you optimize performance for components that trigger deep
  * updates because you can pass `dispatch` down instead of callbacks.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usereducer
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usereducer
  */
 declare function React$useReducer<R: React$Reducer<any, any>, I>(
 reducer: R,
@@ -815,8 +1206,10 @@ initializer: (arg: I & React$ReducerState<R>) => React$ReducerState<R>): [React$
  * `useReducer` is usually preferable to `useState` when you have complex state logic that involves
  * multiple sub-values. It also lets you optimize performance for components that trigger deep
  * updates because you can pass `dispatch` down instead of callbacks.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usereducer
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usereducer
  */
 declare function React$useReducer<R: React$Reducer<any, any>, I>(
 reducer: R,
@@ -831,8 +1224,10 @@ initializer: (arg: I) => React$ReducerState<R>): [React$ReducerState<R>, React$D
  * `useReducer` is usually preferable to `useState` when you have complex state logic that involves
  * multiple sub-values. It also lets you optimize performance for components that trigger deep
  * updates because you can pass `dispatch` down instead of callbacks.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usereducer
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usereducer
  */
 declare function React$useReducer<R: React$Reducer<any, any>>(
 reducer: R,
@@ -847,8 +1242,10 @@ initializer?: void): [React$ReducerState<R>, React$Dispatch<React$ReducerAction<
  * 
  * Note that `useRef()` is useful for more than the `ref` attribute. It’s handy for keeping any mutable
  * value around similar to how you’d use instance fields in classes.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#useref
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#useref
  */
 declare function React$useRef<T>(initialValue: T): React$MutableRefObject<T>
 
@@ -863,8 +1260,10 @@ declare function React$useRef<T>(initialValue: T): React$MutableRefObject<T>
  * 
  * Usage note: if you need the result of useRef to be directly mutable, include `| null` in the type
  * of the generic argument.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#useref
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#useref
  */
 declare function React$useRef<T>(initialValue: T | null): React$RefObject<T>
 
@@ -879,8 +1278,10 @@ declare function React$useRef<T>(initialValue: T | null): React$RefObject<T>
  * 
  * If you’re migrating code from a class component, `useLayoutEffect` fires in the same phase as
  * `componentDidMount` and `componentDidUpdate`.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#uselayouteffect
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#uselayouteffect
  */
 declare function React$useLayoutEffect(effect: React$EffectCallback, deps?: React$DependencyList): void
 
@@ -888,10 +1289,14 @@ declare function React$useLayoutEffect(effect: React$EffectCallback, deps?: Reac
 
 /**
  * Accepts a function that contains imperative, possibly effectful code.
- * @param effect Imperative function that can return a cleanup function
- * @param deps If present, effect will only activate if the values in the list change.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#useeffect
+ * @param effect
+ * Imperative function that can return a cleanup function
+ * @param deps
+ * If present, effect will only activate if the values in the list change.
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#useeffect
  */
 declare function React$useEffect(effect: React$EffectCallback, deps?: React$DependencyList): void
 
@@ -902,8 +1307,10 @@ declare function React$useEffect(effect: React$EffectCallback, deps?: React$Depe
  * `ref`. As always, imperative code using refs should be avoided in most cases.
  * 
  * `useImperativeHandle` should be used with `React.forwardRef`.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#useimperativehandle
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#useimperativehandle
  */
 declare function React$useImperativeHandle<T, R: T>(
 ref: React$Ref<T> | void,
@@ -915,8 +1322,10 @@ deps?: React$DependencyList): void
 /**
  * `useCallback` will return a memoized version of the callback that only changes if one of the `inputs`
  * has changed.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usecallback
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usecallback
  */
 declare function React$useCallback<T: (...args: any[]) => any>(callback: T, deps: React$DependencyList): T
 
@@ -936,8 +1345,10 @@ declare function React$useCallback<T: (...args: any[]) => any>(callback: T, deps
  *      *   return ...
  *      * }
  *      * ```
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usememo
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usememo
  */
 declare function React$useMemo<T>(factory: () => T, deps: React$DependencyList): T
 
@@ -948,8 +1359,10 @@ declare function React$useMemo<T>(factory: () => T, deps: React$DependencyList):
  * 
  * NOTE: We don’t recommend adding debug values to every custom hook.
  * It’s most valuable for custom hooks that are part of shared libraries.
- * @version 16.8.0
- * @see https://reactjs.org/docs/hooks-reference.html#usedebugvalue
+ * @version
+ * 16.8.0
+ * @see
+ * https://reactjs.org/docs/hooks-reference.html#usedebugvalue
  */
 declare function React$useDebugValue<T>(value: T, format?: (value: T) => any): void
 
@@ -1157,18 +1570,19 @@ declare type React$TransitionEventHandler<T= JSX$Element> = React$EventHandler<R
 
 
 /**
- * @deprecated . This was used to allow clients to pass `ref` and `key`
-to `createElement`, which is no longer necessary due to intersection
-types. If you need to declare a props object before passing it to
-`createElement` or a factory, use `ClassAttributes<T>`:
-
-```ts
-     * var b: Button | null;
-     * var props: ButtonProps & ClassAttributes<Button> = {
-     *     ref: b => button = b, // ok!
-     *     label: "I'm a Button"
-     * };
-     * ```
+ * @deprecated
+ * . This was used to allow clients to pass `ref` and `key`
+ * to `createElement`, which is no longer necessary due to intersection
+ * types. If you need to declare a props object before passing it to
+ * `createElement` or a factory, use `ClassAttributes<T>`:
+ * 
+ * ```ts
+ *      * var b: Button | null;
+ *      * var props: ButtonProps & ClassAttributes<Button> = {
+ *      *     ref: b => button = b, // ok!
+ *      *     label: "I'm a Button"
+ *      * };
+ *      * ```
  */
 declare interface React$Props<T> {
 children?: React$ReactNode,
@@ -1349,7 +1763,7 @@ onTransitionEnd?: React$TransitionEventHandler<T>,
 onTransitionEndCapture?: React$TransitionEventHandler<T>
 } 
 
-declare export type React$CSSProperties = {} & CSS.Properties<string | number>
+export type React$CSSProperties = {} & CSS.Properties<string | number>
 
 
 declare type React$HTMLAttributes<T> = {
@@ -1420,34 +1834,42 @@ unselectable?: "on" | "off",
 
 /**
  * Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
- * @see aria-pressed
- * @see aria-selected.
+ * @see
+ * aria-pressed
+ * @see
+ * aria-selected.
  */
 "aria-checked"?: boolean | "false" | "mixed" | "true",
 
 /**
  * Defines the total number of columns in a table, grid, or treegrid.
- * @see aria-colindex.
+ * @see
+ * aria-colindex.
  */
 "aria-colcount"?: number,
 
 /**
  * Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
- * @see aria-colcount
- * @see aria-colspan.
+ * @see
+ * aria-colcount
+ * @see
+ * aria-colspan.
  */
 "aria-colindex"?: number,
 
 /**
  * Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
- * @see aria-colindex
- * @see aria-rowspan.
+ * @see
+ * aria-colindex
+ * @see
+ * aria-rowspan.
  */
 "aria-colspan"?: number,
 
 /**
  * Identifies the element (or elements) whose contents or presence are controlled by the current element.
- * @see aria-owns.
+ * @see
+ * aria-owns.
  */
 "aria-controls"?: string,
 
@@ -1465,26 +1887,31 @@ unselectable?: "on" | "off",
 
 /**
  * Identifies the element (or elements) that describes the object.
- * @see aria-labelledby
+ * @see
+ * aria-labelledby
  */
 "aria-describedby"?: string,
 
 /**
  * Identifies the element that provides a detailed, extended description for the object.
- * @see aria-describedby.
+ * @see
+ * aria-describedby.
  */
 "aria-details"?: string,
 
 /**
  * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
- * @see aria-hidden
- * @see aria-readonly.
+ * @see
+ * aria-hidden
+ * @see
+ * aria-readonly.
  */
 "aria-disabled"?: boolean | "false" | "true",
 
 /**
  * Indicates what functions can be performed when a dragged object is released on the drop target.
- * @deprecated in ARIA 1.1
+ * @deprecated
+ * in ARIA 1.1
  */
 "aria-dropeffect"?: "none"
 | "copy"
@@ -1495,8 +1922,10 @@ unselectable?: "on" | "off",
 
 /**
  * Identifies the element that provides an error message for the object.
- * @see aria-invalid
- * @see aria-describedby.
+ * @see
+ * aria-invalid
+ * @see
+ * aria-describedby.
  */
 "aria-errormessage"?: string,
 
@@ -1513,7 +1942,8 @@ unselectable?: "on" | "off",
 
 /**
  * Indicates an element's "grabbed" state in a drag-and-drop operation.
- * @deprecated in ARIA 1.1
+ * @deprecated
+ * in ARIA 1.1
  */
 "aria-grabbed"?: boolean | "false" | "true",
 
@@ -1531,13 +1961,15 @@ unselectable?: "on" | "off",
 
 /**
  * Indicates whether the element is exposed to an accessibility API.
- * @see aria-disabled.
+ * @see
+ * aria-disabled.
  */
 "aria-hidden"?: boolean | "false" | "true",
 
 /**
  * Indicates the entered value does not conform to the format expected by the application.
- * @see aria-errormessage.
+ * @see
+ * aria-errormessage.
  */
 "aria-invalid"?: boolean
 | "false"
@@ -1552,13 +1984,15 @@ unselectable?: "on" | "off",
 
 /**
  * Defines a string value that labels the current element.
- * @see aria-labelledby.
+ * @see
+ * aria-labelledby.
  */
 "aria-label"?: string,
 
 /**
  * Identifies the element (or elements) that labels the current element.
- * @see aria-describedby.
+ * @see
+ * aria-describedby.
  */
 "aria-labelledby"?: string,
 
@@ -1595,7 +2029,8 @@ unselectable?: "on" | "off",
 /**
  * Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
  * between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
- * @see aria-controls.
+ * @see
+ * aria-controls.
  */
 "aria-owns"?: string,
 
@@ -1607,26 +2042,31 @@ unselectable?: "on" | "off",
 
 /**
  * Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
- * @see aria-setsize.
+ * @see
+ * aria-setsize.
  */
 "aria-posinset"?: number,
 
 /**
  * Indicates the current "pressed" state of toggle buttons.
- * @see aria-checked
- * @see aria-selected.
+ * @see
+ * aria-checked
+ * @see
+ * aria-selected.
  */
 "aria-pressed"?: boolean | "false" | "mixed" | "true",
 
 /**
  * Indicates that the element is not editable, but is otherwise operable.
- * @see aria-disabled.
+ * @see
+ * aria-disabled.
  */
 "aria-readonly"?: boolean | "false" | "true",
 
 /**
  * Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
- * @see aria-atomic.
+ * @see
+ * aria-atomic.
  */
 "aria-relevant"?: "additions"
 | "additions text"
@@ -1646,34 +2086,42 @@ unselectable?: "on" | "off",
 
 /**
  * Defines the total number of rows in a table, grid, or treegrid.
- * @see aria-rowindex.
+ * @see
+ * aria-rowindex.
  */
 "aria-rowcount"?: number,
 
 /**
  * Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
- * @see aria-rowcount
- * @see aria-rowspan.
+ * @see
+ * aria-rowcount
+ * @see
+ * aria-rowspan.
  */
 "aria-rowindex"?: number,
 
 /**
  * Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
- * @see aria-rowindex
- * @see aria-colspan.
+ * @see
+ * aria-rowindex
+ * @see
+ * aria-colspan.
  */
 "aria-rowspan"?: number,
 
 /**
  * Indicates the current "selected" state of various widgets.
- * @see aria-checked
- * @see aria-pressed.
+ * @see
+ * aria-checked
+ * @see
+ * aria-pressed.
  */
 "aria-selected"?: boolean | "false" | "true",
 
 /**
  * Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
- * @see aria-posinset.
+ * @see
+ * aria-posinset.
  */
 "aria-setsize"?: number,
 
@@ -1694,7 +2142,8 @@ unselectable?: "on" | "off",
 
 /**
  * Defines the current value for a range widget.
- * @see aria-valuetext.
+ * @see
+ * aria-valuetext.
  */
 "aria-valuenow"?: number,
 
@@ -2801,7 +3250,25 @@ declare interface React$ErrorInfo {
  * Captures which component contained the exception, and its ancestors.
  */
 componentStack: string
-} 
+} declare module 'react' {
+        import typeof * as CSS from 'csstype';
+
+	import typeof * as PropTypes from 'prop-types';
+
+	declare type NativeAnimationEvent = React$AnimationEvent;
+	declare type NativeClipboardEvent = React$ClipboardEvent;
+	declare type NativeCompositionEvent = React$CompositionEvent;
+	declare type NativeDragEvent = React$DragEvent;
+	declare type NativeFocusEvent = React$FocusEvent;
+	declare type NativeKeyboardEvent = React$KeyboardEvent;
+	declare type NativeMouseEvent = React$MouseEvent;
+	declare type NativeTouchEvent = React$TouchEvent;
+	declare type NativePointerEvent = React$PointerEvent;
+	declare type NativeTransitionEvent = React$TransitionEvent;
+	declare type NativeUIEvent = React$UIEvent;
+	declare type NativeWheelEvent = React$WheelEvent;
+	declare export default typeof React
+
 	declare type IsExactlyAny<T> = "There was Conditional Type, use $Call utility type";
 	declare type MergePropTypes<P, T> = "There was Conditional Type, use $Call utility type";
 	declare type Defaultize<P, D> = "There was Conditional Type, use $Call utility type";
@@ -2811,15 +3278,18 @@ componentStack: string
 
 
 declare type JSX$ElementClass = {
+render(): React$React$ReactNode,
 render(): React$React$ReactNode
 } & React$React$Component<any>
 
 
 declare interface JSX$ElementAttributesProperty {
+props: {},
 props: {}
 } 
 
 declare interface JSX$ElementChildrenAttribute {
+children: {},
 children: {}
 } 
 
@@ -2832,6 +3302,178 @@ declare type JSX$IntrinsicClassAttributes<T> = {} & React$React$ClassAttributes<
 
 
 declare interface JSX$IntrinsicElements {
+a: React$React$DetailedHTMLProps<React$React$AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+abbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+address: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+area: React$React$DetailedHTMLProps<React$React$AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>,
+article: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+aside: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+audio: React$React$DetailedHTMLProps<React$React$AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>,
+b: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+base: React$React$DetailedHTMLProps<React$React$BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>,
+bdi: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+bdo: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+big: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+blockquote: React$React$DetailedHTMLProps<React$React$BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>,
+body: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>,
+br: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLBRElement>, HTMLBRElement>,
+button: React$React$DetailedHTMLProps<React$React$ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+canvas: React$React$DetailedHTMLProps<React$React$CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>,
+caption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+cite: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+code: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+col: React$React$DetailedHTMLProps<React$React$ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+colgroup: React$React$DetailedHTMLProps<React$React$ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>,
+data: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+datalist: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>,
+dd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+del: React$React$DetailedHTMLProps<React$React$DelHTMLAttributes<HTMLElement>, HTMLElement>,
+details: React$React$DetailedHTMLProps<React$React$DetailsHTMLAttributes<HTMLElement>, HTMLElement>,
+dfn: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+dialog: React$React$DetailedHTMLProps<React$React$DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>,
+div: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+dl: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLDListElement>, HTMLDListElement>,
+dt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+em: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+embed: React$React$DetailedHTMLProps<React$React$EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>,
+fieldset: React$React$DetailedHTMLProps<React$React$FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>,
+figcaption: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+figure: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+footer: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+form: React$React$DetailedHTMLProps<React$React$FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
+h1: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h2: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h3: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h4: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h5: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+h6: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+head: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>,
+header: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hgroup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+hr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLHRElement>, HTMLHRElement>,
+html: React$React$DetailedHTMLProps<React$React$HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>,
+i: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+iframe: React$React$DetailedHTMLProps<React$React$IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>,
+img: React$React$DetailedHTMLProps<React$React$ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+input: React$React$DetailedHTMLProps<React$React$InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+ins: React$React$DetailedHTMLProps<React$React$InsHTMLAttributes<HTMLModElement>, HTMLModElement>,
+kbd: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+keygen: React$React$DetailedHTMLProps<React$React$KeygenHTMLAttributes<HTMLElement>, HTMLElement>,
+label: React$React$DetailedHTMLProps<React$React$LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>,
+legend: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>,
+li: React$React$DetailedHTMLProps<React$React$LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>,
+link: React$React$DetailedHTMLProps<React$React$LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>,
+main: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+map: React$React$DetailedHTMLProps<React$React$MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>,
+mark: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+menu: React$React$DetailedHTMLProps<React$React$MenuHTMLAttributes<HTMLElement>, HTMLElement>,
+menuitem: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+meta: React$React$DetailedHTMLProps<React$React$MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>,
+meter: React$React$DetailedHTMLProps<React$React$MeterHTMLAttributes<HTMLElement>, HTMLElement>,
+nav: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noindex: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+noscript: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+object: React$React$DetailedHTMLProps<React$React$ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>,
+ol: React$React$DetailedHTMLProps<React$React$OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>,
+optgroup: React$React$DetailedHTMLProps<React$React$OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>,
+option: React$React$DetailedHTMLProps<React$React$OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>,
+output: React$React$DetailedHTMLProps<React$React$OutputHTMLAttributes<HTMLElement>, HTMLElement>,
+p: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>,
+param: React$React$DetailedHTMLProps<React$React$ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>,
+picture: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+pre: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLPreElement>, HTMLPreElement>,
+progress: React$React$DetailedHTMLProps<React$React$ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>,
+q: React$React$DetailedHTMLProps<React$React$QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>,
+rp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+rt: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ruby: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+s: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+samp: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+script: React$React$DetailedHTMLProps<React$React$ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>,
+section: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+select: React$React$DetailedHTMLProps<React$React$SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
+small: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+source: React$React$DetailedHTMLProps<React$React$SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>,
+span: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
+strong: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+style: React$React$DetailedHTMLProps<React$React$StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>,
+sub: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+summary: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+sup: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+table: React$React$DetailedHTMLProps<React$React$TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>,
+tbody: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+td: React$React$DetailedHTMLProps<React$React$TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>,
+textarea: React$React$DetailedHTMLProps<React$React$TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
+tfoot: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+th: React$React$DetailedHTMLProps<React$React$ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>,
+thead: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>,
+time: React$React$DetailedHTMLProps<React$React$TimeHTMLAttributes<HTMLElement>, HTMLElement>,
+title: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>,
+tr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>,
+track: React$React$DetailedHTMLProps<React$React$TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>,
+u: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+ul: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLUListElement>, HTMLUListElement>,
+"var": React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+video: React$React$DetailedHTMLProps<React$React$VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>,
+wbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
+webview: React$React$DetailedHTMLProps<React$React$WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>,
+svg: React$React$SVGProps<SVGSVGElement>,
+animate: React$React$SVGProps<SVGElement>,
+animateMotion: React$React$SVGProps<SVGElement>,
+animateTransform: React$React$SVGProps<SVGElement>,
+circle: React$React$SVGProps<SVGCircleElement>,
+clipPath: React$React$SVGProps<SVGClipPathElement>,
+defs: React$React$SVGProps<SVGDefsElement>,
+desc: React$React$SVGProps<SVGDescElement>,
+ellipse: React$React$SVGProps<SVGEllipseElement>,
+feBlend: React$React$SVGProps<SVGFEBlendElement>,
+feColorMatrix: React$React$SVGProps<SVGFEColorMatrixElement>,
+feComponentTransfer: React$React$SVGProps<SVGFEComponentTransferElement>,
+feComposite: React$React$SVGProps<SVGFECompositeElement>,
+feConvolveMatrix: React$React$SVGProps<SVGFEConvolveMatrixElement>,
+feDiffuseLighting: React$React$SVGProps<SVGFEDiffuseLightingElement>,
+feDisplacementMap: React$React$SVGProps<SVGFEDisplacementMapElement>,
+feDistantLight: React$React$SVGProps<SVGFEDistantLightElement>,
+feFlood: React$React$SVGProps<SVGFEFloodElement>,
+feFuncA: React$React$SVGProps<SVGFEFuncAElement>,
+feFuncB: React$React$SVGProps<SVGFEFuncBElement>,
+feFuncG: React$React$SVGProps<SVGFEFuncGElement>,
+feFuncR: React$React$SVGProps<SVGFEFuncRElement>,
+feGaussianBlur: React$React$SVGProps<SVGFEGaussianBlurElement>,
+feImage: React$React$SVGProps<SVGFEImageElement>,
+feMerge: React$React$SVGProps<SVGFEMergeElement>,
+feMergeNode: React$React$SVGProps<SVGFEMergeNodeElement>,
+feMorphology: React$React$SVGProps<SVGFEMorphologyElement>,
+feOffset: React$React$SVGProps<SVGFEOffsetElement>,
+fePointLight: React$React$SVGProps<SVGFEPointLightElement>,
+feSpecularLighting: React$React$SVGProps<SVGFESpecularLightingElement>,
+feSpotLight: React$React$SVGProps<SVGFESpotLightElement>,
+feTile: React$React$SVGProps<SVGFETileElement>,
+feTurbulence: React$React$SVGProps<SVGFETurbulenceElement>,
+filter: React$React$SVGProps<SVGFilterElement>,
+foreignObject: React$React$SVGProps<SVGForeignObjectElement>,
+g: React$React$SVGProps<SVGGElement>,
+image: React$React$SVGProps<SVGImageElement>,
+line: React$React$SVGProps<SVGLineElement>,
+linearGradient: React$React$SVGProps<SVGLinearGradientElement>,
+marker: React$React$SVGProps<SVGMarkerElement>,
+mask: React$React$SVGProps<SVGMaskElement>,
+metadata: React$React$SVGProps<SVGMetadataElement>,
+mpath: React$React$SVGProps<SVGElement>,
+path: React$React$SVGProps<SVGPathElement>,
+pattern: React$React$SVGProps<SVGPatternElement>,
+polygon: React$React$SVGProps<SVGPolygonElement>,
+polyline: React$React$SVGProps<SVGPolylineElement>,
+radialGradient: React$React$SVGProps<SVGRadialGradientElement>,
+rect: React$React$SVGProps<SVGRectElement>,
+stop: React$React$SVGProps<SVGStopElement>,
+switch: React$React$SVGProps<SVGSwitchElement>,
+symbol: React$React$SVGProps<SVGSymbolElement>,
+text: React$React$SVGProps<SVGTextElement>,
+textPath: React$React$SVGProps<SVGTextPathElement>,
+tspan: React$React$SVGProps<SVGTSpanElement>,
+use: React$React$SVGProps<SVGUseElement>,
+view: React$React$SVGProps<SVGViewElement>,
 a: React$React$DetailedHTMLProps<React$React$AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
 abbr: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,
 address: React$React$DetailedHTMLProps<React$React$HTMLAttributes<HTMLElement>, HTMLElement>,

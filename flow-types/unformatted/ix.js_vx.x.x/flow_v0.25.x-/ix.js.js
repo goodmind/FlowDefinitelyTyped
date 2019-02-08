@@ -1,11 +1,14 @@
-declare module 'ix.js' {
-        declare export interface Ix$Observer<T> {
+declare module 'ix' {
+        declare export default typeof Ix
+
+    }
+export interface Ix$Observer<T> {
 onNext?: (value: T) => void,
 onError?: (error: Error) => void,
 onCompleted?: () => void
 } 
 
-declare export interface Ix$Enumerable<T> {
+export interface Ix$Enumerable<T> {
 isEmpty(): boolean,
 minBy<TKey>(
 keySelector: (item: T) => TKey,
@@ -61,7 +64,7 @@ onErrorResumeNext(second: Ix$Enumerable<T>): Ix$Enumerable<T>,
 retry(retryCount?: number): Ix$Enumerable<T>
 } 
 
-declare export interface Ix$EnumerableStatic {
+export interface Ix$EnumerableStatic {
 throw<T>(error: Error): Ix$Enumerable<T>,
 throwException<T>(error: Error): Ix$Enumerable<T>,
 defer<T>(enumerableFactory: () => Ix$Enumerable<T>): Ix$Enumerable<T>,
@@ -123,9 +126,9 @@ resultSelector: EnumerableFunc<T, TResult>): Ix$Enumerable<TResult>,
 forIn<T, TResult>(
 source: Ix$Enumerable<T>,
 resultSelector: EnumerableFunc<T, TResult>): Ix$Enumerable<TResult>
-} 
-	declare module 'ix' {
-        declare module.exports: typeof Ix
+} declare module 'ix.js' {
+        declare module 'ix' {
+        declare export default typeof Ix
 
     }
 

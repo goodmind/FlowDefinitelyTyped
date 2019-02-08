@@ -17,9 +17,9 @@ declare export var fibers$current: fibers$fibers$Fiber;
 declare export function fibers$yield(value?: any): any
 
 
-declare export interface fibers$Fiber {
+export interface fibers$Fiber {
 run(value?: any): any
 } 
-	declare module.exports: typeof fibers
+	declare export default typeof fibers
 
     }

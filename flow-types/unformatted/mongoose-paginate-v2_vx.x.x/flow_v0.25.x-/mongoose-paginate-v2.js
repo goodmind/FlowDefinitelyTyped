@@ -1,5 +1,4 @@
-declare module 'mongoose-paginate-v2' {
-        declare module 'mongoose' {
+declare module 'mongoose' {
         declare interface CustomLabels {
 totalDocs?: string,
 limit?: string,
@@ -44,9 +43,9 @@ collection?: string,
 skipInit?: boolean): PaginateModel<any>
 
     }
+declare module 'mongoose-paginate-v2' {
+        declare function _(schema: mongoose.Schema): void
 
-	declare function _(schema: mongoose.Schema): void
-
-	declare module.exports: typeof _
+	declare export default typeof _
 
     }

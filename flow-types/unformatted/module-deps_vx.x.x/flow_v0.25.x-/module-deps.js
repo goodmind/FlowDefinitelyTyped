@@ -1,14 +1,4 @@
-declare module 'module-deps' {
-        import typeof * as browserResolve from 'browser-resolve';
 
-	
-/**
- * Return an object transform stream 'd' that expects entry filenames or '{ id: ..., file: ... }' objects
- * as input and produces objects for every dependency from a recursive module traversal as output.
- */
-declare function moduleDeps(opts?: moduleDeps$moduleDeps$Options): moduleDeps$moduleDeps$ModuleDepsObject
-
-	
 /**
  * module-deps constructor options
  */
@@ -232,7 +222,16 @@ deps: {
  */
 declare interface moduleDeps$PackageObject {
 [prop: string]: any
-} 
-	declare module.exports: typeof moduleDeps
+} declare module 'module-deps' {
+        import typeof * as browserResolve from 'browser-resolve';
+
+	
+/**
+ * Return an object transform stream 'd' that expects entry filenames or '{ id: ..., file: ... }' objects
+ * as input and produces objects for every dependency from a recursive module traversal as output.
+ */
+declare function moduleDeps(opts?: moduleDeps$moduleDeps$Options): moduleDeps$moduleDeps$ModuleDepsObject
+
+	declare export default typeof moduleDeps
 
     }

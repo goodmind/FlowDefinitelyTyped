@@ -9,8 +9,10 @@ timezone: typeof strftime$timezone,
 
 /**
  * Sets locale.
- * @param {strftime$Locale} locale A locale.
- * @return {strftimeFunction} A strftime function.
+ * @param {strftime$Locale} locale
+ * A locale.
+ * @return {strftimeFunction}
+ * A strftime function.
  */
 declare export function strftime$localize(locale: strftime$Locale): strftimeFunction
 
@@ -18,8 +20,10 @@ declare export function strftime$localize(locale: strftime$Locale): strftimeFunc
 
 /**
  * Sets timezone.
- * @param {number | string} offset A offset.
- * @return {strftimeFunction} A strftime function.
+ * @param {number | string} offset
+ * A offset.
+ * @return {strftimeFunction}
+ * A strftime function.
  */
 declare export function strftime$timezone(offset: number | string): strftimeFunction
 
@@ -29,7 +33,7 @@ declare export function strftime$timezone(offset: number | string): strftimeFunc
  * Locale formats.
  * @interface
  */
-declare export interface strftime$LocaleFormats {
+export interface strftime$LocaleFormats {
 D?: string,
 F?: string,
 R?: string,
@@ -46,7 +50,7 @@ x?: string
  * Locale.
  * @interface
  */
-declare export interface strftime$Locale {
+export interface strftime$Locale {
 days?: Array<string>,
 shortDays?: Array<string>,
 months?: Array<string>,
@@ -60,20 +64,25 @@ formats: strftime$LocaleFormats
 	
 /**
  * Format a local time/date according to locale settings
- * @param {string} format A format.
- * @return {string} Returns a string formatted.
+ * @param {string} format
+ * A format.
+ * @return {string}
+ * Returns a string formatted.
  */
 declare function strftime(format: string): string
 
 	
 /**
  * Format a local time/date according to locale settings
- * @param {string} format A format.
- * @param {Date} date A date.
- * @return {string} Returns a string formatted according format using the given date or the current local time.
+ * @param {string} format
+ * A format.
+ * @param {Date} date
+ * A date.
+ * @return {string}
+ * Returns a string formatted according format using the given date or the current local time.
  */
 declare function strftime(format: string, date: Date): string
 
-	declare module.exports: typeof strftime
+	declare export default typeof strftime
 
     }

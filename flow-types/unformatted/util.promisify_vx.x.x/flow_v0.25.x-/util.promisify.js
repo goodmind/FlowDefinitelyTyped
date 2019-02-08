@@ -1,9 +1,10 @@
-declare module 'util.promisify' {
-        declare module.exports: typeof promisify
+declare module 'util' {
+        declare var promisify: {
+(fn: (...args: any[]) => void): (...args: any[]) => Promise<any>,
+custom: Symbol
+};
+    }
 
-	declare function promisify(f: (...args: any[]) => void): (...args: any[]) => Promise<any>
-
-	
       declare var npm$namespace$promisify: {
         getPolyfill: typeof promisify$getPolyfill,
 shim: typeof promisify$shim,
@@ -27,6 +28,10 @@ declare function promisify$getPolyfill(): promisify$implementation
 declare var promisify$implementation: promisify$implementation;
 
 declare function promisify$shim(): promisify$implementation
+declare module 'util.promisify' {
+        declare export default typeof promisify
+
+	declare function promisify(f: (...args: any[]) => void): (...args: any[]) => Promise<any>
 
 	declare module 'util' {
         declare var promisify: {

@@ -1,9 +1,13 @@
-declare module 'sasl-plain' {
+declare interface PlainMechanism$Credentials {
+authzid?: string,
+username: string,
+password: string
+} declare module 'sasl-plain' {
         import type {
           Mechanism
         } from 'saslmechanisms';
 
-	declare module.exports: typeof PlainMechanism
+	declare export default typeof PlainMechanism
 
 	declare class PlainMechanism mixins Mechanism {
 static Mechanism: typeof PlainMechanism;
@@ -16,9 +20,4 @@ clientFirst: true;
 response(cred: PlainMechanism$PlainMechanism$Credentials): string;
 challenge(chal: string): this
 }
-	declare interface PlainMechanism$Credentials {
-authzid?: string,
-username: string,
-password: string
-} 
     }

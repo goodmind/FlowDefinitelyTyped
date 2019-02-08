@@ -14,68 +14,68 @@ validateRequest: typeof twilio$validateRequest,
 validateExpressRequest: typeof twilio$validateExpressRequest,
         
       }
-declare export interface twilio$GrantPayload {} 
+export interface twilio$GrantPayload {} 
 
-declare export interface twilio$Grant {
+export interface twilio$Grant {
 toPayload(): twilio$GrantPayload
 } 
 
-declare export interface twilio$RequestCallback {
+export interface twilio$RequestCallback {
 (err: any, data: any, response: Http.IncomingMessage): void
 } 
 
-declare export interface twilio$RestMethod {
+export interface twilio$RestMethod {
 (callback: twilio$RequestCallback): Q.Promise<any>,
 (args: any, callback?: twilio$RequestCallback): Q.Promise<any>
 } 
 
-declare export interface twilio$BaseMappedResource<T> {
+export interface twilio$BaseMappedResource<T> {
 (resourceSid: string): T
 } 
 
-declare export interface twilio$Resource {
+export interface twilio$Resource {
 get: twilio$RestMethod
 } 
 
-declare export type twilio$DeletableResource = {
+export type twilio$DeletableResource = {
 delete: twilio$RestMethod
 } & twilio$Resource
 
 
-declare export type twilio$ListableResource = {
+export type twilio$ListableResource = {
 list: twilio$RestMethod
 } & twilio$Resource
 
 
-declare export type twilio$MappedResource<T> = {} & twilio$Resource & twilio$BaseMappedResource<T>
+export type twilio$MappedResource<T> = {} & twilio$Resource & twilio$BaseMappedResource<T>
 
 
-declare export type twilio$PostableResource = {
+export type twilio$PostableResource = {
 post: twilio$RestMethod
 } & twilio$Resource
 
 
-declare export type twilio$InstanceResource = {
+export type twilio$InstanceResource = {
 update: twilio$RestMethod
 } & twilio$PostableResource & twilio$DeletableResource
 
 
-declare export type twilio$CreatableMappedResource<T> = {
+export type twilio$CreatableMappedResource<T> = {
 create: twilio$RestMethod
 } & twilio$MappedResource<T> & twilio$PostableResource
 
 
-declare export type twilio$ListMappedResource<T> = {} & twilio$CreatableMappedResource<T> & twilio$ListableResource
+export type twilio$ListMappedResource<T> = {} & twilio$CreatableMappedResource<T> & twilio$ListableResource
 
 
-declare export interface twilio$IpMessagingGrantOptions {
+export interface twilio$IpMessagingGrantOptions {
 serviceSid: string,
 endpointId: string,
 deploymentRoleSid: string,
 pushCredentialSid: string
 } 
 
-declare export type twilio$IpMessagingGrantPayload = {
+export type twilio$IpMessagingGrantPayload = {
 service_sid: string,
 endpoint_id: string,
 deployment_role_sid: string,
@@ -93,11 +93,11 @@ constructor(options?: twilio$IpMessagingGrantOptions): this;
 toPayload(): twilio$IpMessagingGrantPayload
 }
 
-declare export interface twilio$ConversationsGrantOptions {
+export interface twilio$ConversationsGrantOptions {
 configurationProfileSid: string
 } 
 
-declare export type twilio$ConversationsGrantPayload = {
+export type twilio$ConversationsGrantPayload = {
 configuration_profile_sid: string
 } & twilio$GrantPayload
 
@@ -108,7 +108,7 @@ constructor(options?: twilio$ConversationsGrantOptions): this;
 toPayload(): twilio$ConversationsGrantPayload
 }
 
-declare export interface twilio$AccessTokenOptions {
+export interface twilio$AccessTokenOptions {
 ttl: number,
 identity: string,
 nbf: number
@@ -145,13 +145,13 @@ allowEventStream(filters?: any): twilio$Capability;
 generate(timeout?: number): string
 }
 
-declare export interface twilio$ClientOptions {
+export interface twilio$ClientOptions {
 host?: string,
 apiVersion?: string,
 timeout?: number
 } 
 
-declare export interface twilio$ClientRequestOptions {
+export interface twilio$ClientRequestOptions {
 url: string,
 method?: string,
 form?: any
@@ -236,7 +236,7 @@ options: twilio$ClientRequestOptions,
 callback?: twilio$RequestCallback): Q.Promise<any>
 }
 
-declare export interface twilio$Policy {
+export interface twilio$Policy {
 url: string,
 method: string,
 query_filter?: any,
@@ -302,7 +302,7 @@ trunks: twilio$TrunkResource;
 constructor(sid?: string, tkn?: string, options?: twilio$ClientOptions): this
 }
 
-declare export interface twilio$NodeOptions {
+export interface twilio$NodeOptions {
 name: string,
 attributes?: any,
 text?: string,
@@ -310,13 +310,13 @@ topLevel?: boolean,
 legalNodes: Array<string>
 } 
 
-declare export interface twilio$TwimlMethod {
+export interface twilio$TwimlMethod {
 (): twilio$Node,
 (arg1: twilio$TwimlCallback | string, arg2?: any): twilio$Node,
 (arg1: any, arg2?: twilio$TwimlCallback | string): twilio$Node
 } 
 
-declare export interface twilio$TwimlCallback {
+export interface twilio$TwimlCallback {
 (node: twilio$Node): void
 } 
 
@@ -353,20 +353,20 @@ toString(): string
 
 declare export class twilio$TwimlResponse mixins twilio$Node {}
 
-declare export interface twilio$WebhookOptions {
+export interface twilio$WebhookOptions {
 validate?: boolean,
 includeHelpers?: boolean,
 host?: string,
 protocol?: string
 } 
 
-declare export interface twilio$WebhookExpressOptions {
+export interface twilio$WebhookExpressOptions {
 url?: string,
 host?: string,
 protocol?: string
 } 
 
-declare export interface twilio$MiddlewareFunction {
+export interface twilio$MiddlewareFunction {
 (request: Http.IncomingMessage, response: Http.ServerResponse, next: Express.NextFunction): void
 } 
 
@@ -385,97 +385,97 @@ authToken: string,
 options?: twilio$WebhookExpressOptions): boolean
 
 
-declare export type twilio$OutgoingCallerIdInstance = {
+export type twilio$OutgoingCallerIdInstance = {
 put: twilio$RestMethod
 } & twilio$InstanceResource
 
 
-declare export type twilio$OutgoingCallerIdResource = {} & twilio$CreatableMappedResource<twilio$OutgoingCallerIdInstance>
+export type twilio$OutgoingCallerIdResource = {} & twilio$CreatableMappedResource<twilio$OutgoingCallerIdInstance>
 
 
-declare export type twilio$SMSMessageInstance = {} & twilio$Resource
+export type twilio$SMSMessageInstance = {} & twilio$Resource
 
 
-declare export type twilio$SMSMessageResource = {} & twilio$CreatableMappedResource<twilio$SMSMessageInstance>
+export type twilio$SMSMessageResource = {} & twilio$CreatableMappedResource<twilio$SMSMessageInstance>
 
 
-declare export type twilio$SMSShortCodeInstance = {
+export type twilio$SMSShortCodeInstance = {
 update: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$SMSShortCodeResource = {} & twilio$MappedResource<twilio$SMSShortCodeInstance>
+export type twilio$SMSShortCodeResource = {} & twilio$MappedResource<twilio$SMSShortCodeInstance>
 
 
-declare export interface twilio$SMSIntermediary {
+export interface twilio$SMSIntermediary {
 messages: twilio$SMSMessageResource,
 shortCodes: twilio$SMSShortCodeResource
 } 
 
-declare export type twilio$ApplicationInstance = {} & twilio$InstanceResource
+export type twilio$ApplicationInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$ApplicationResource = {} & twilio$CreatableMappedResource<twilio$ApplicationInstance>
+export type twilio$ApplicationResource = {} & twilio$CreatableMappedResource<twilio$ApplicationInstance>
 
 
-declare export type twilio$ConnectAppInstance = {
+export type twilio$ConnectAppInstance = {
 update: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$ConnectAppResource = {} & twilio$MappedResource<twilio$ConnectAppInstance>
+export type twilio$ConnectAppResource = {} & twilio$MappedResource<twilio$ConnectAppInstance>
 
 
-declare export type twilio$AuthorizedConnectAppInstance = {} & twilio$Resource
+export type twilio$AuthorizedConnectAppInstance = {} & twilio$Resource
 
 
-declare export type twilio$AuthorizedConnectAppResource = {} & twilio$MappedResource<twilio$AuthorizedConnectAppInstance>
+export type twilio$AuthorizedConnectAppResource = {} & twilio$MappedResource<twilio$AuthorizedConnectAppInstance>
 
 
-declare export interface twilio$TokenInstance {} 
+export interface twilio$TokenInstance {} 
 
-declare export type twilio$TokenResource = {
+export type twilio$TokenResource = {
 post: twilio$RestMethod,
 create: twilio$RestMethod
 } & twilio$BaseMappedResource<twilio$TokenInstance>
 
 
-declare export type twilio$TranscriptionInstance = {} & twilio$DeletableResource
+export type twilio$TranscriptionInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$TranscriptionResource = {} & twilio$MappedResource<twilio$TranscriptionInstance>
+export type twilio$TranscriptionResource = {} & twilio$MappedResource<twilio$TranscriptionInstance>
 
 
-declare export type twilio$NotificationInstance = {} & twilio$DeletableResource
+export type twilio$NotificationInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$NotificationResource = {} & twilio$MappedResource<twilio$NotificationInstance>
+export type twilio$NotificationResource = {} & twilio$MappedResource<twilio$NotificationInstance>
 
 
-declare export type twilio$UsageTriggerInstance = {} & twilio$InstanceResource
+export type twilio$UsageTriggerInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$UsageTriggerResource = {} & twilio$CreatableMappedResource<twilio$UsageTriggerInstance>
+export type twilio$UsageTriggerResource = {} & twilio$CreatableMappedResource<twilio$UsageTriggerInstance>
 
 
-declare export interface twilio$UsageIntermediary {
+export interface twilio$UsageIntermediary {
 records: twilio$UsageRecordResource,
 triggers: twilio$UsageTriggerResource
 } 
 
-declare export interface twilio$SIPIntermediary {
+export interface twilio$SIPIntermediary {
 domains: twilio$DomainResource,
 ipAccessControlLists: twilio$IPAccessControlListResource,
 credentialLists: twilio$CredentialListResource
 } 
 
-declare export type twilio$KeyInstance = {} & twilio$InstanceResource
+export type twilio$KeyInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$KeyResource = {} & twilio$CreatableMappedResource<twilio$KeyInstance>
+export type twilio$KeyResource = {} & twilio$CreatableMappedResource<twilio$KeyInstance>
 
 
-declare export type twilio$AccountInstance = {
+export type twilio$AccountInstance = {
 update: twilio$RestMethod,
 put: twilio$RestMethod,
 availablePhoneNumbers: twilio$AvailablePhoneNumberResource,
@@ -500,149 +500,149 @@ keys: twilio$KeyResource
 } & twilio$PostableResource
 
 
-declare export type twilio$AccountResource = {} & twilio$AccountInstance & twilio$ListMappedResource<twilio$AccountInstance>
+export type twilio$AccountResource = {} & twilio$AccountInstance & twilio$ListMappedResource<twilio$AccountInstance>
 
 
-declare export type twilio$DependentPhoneNumberResource = {} & twilio$ListableResource
+export type twilio$DependentPhoneNumberResource = {} & twilio$ListableResource
 
 
-declare export type twilio$AddressInstance = {
+export type twilio$AddressInstance = {
 dependentPhoneNumbers: twilio$DependentPhoneNumberResource
 } & twilio$PostableResource & twilio$DeletableResource
 
 
-declare export type twilio$AddressResource = {} & twilio$ListMappedResource<twilio$AddressInstance>
+export type twilio$AddressResource = {} & twilio$ListMappedResource<twilio$AddressInstance>
 
 
-declare export type twilio$AvailablePhoneNumberResourceGroup = {
+export type twilio$AvailablePhoneNumberResourceGroup = {
 search: twilio$RestMethod
 } & twilio$ListableResource
 
 
-declare export interface twilio$AvailablePhoneNumberInstance {
+export interface twilio$AvailablePhoneNumberInstance {
 local: twilio$AvailablePhoneNumberResourceGroup,
 tollFree: twilio$AvailablePhoneNumberResourceGroup,
 mobile: twilio$AvailablePhoneNumberResourceGroup
 } 
 
-declare export type twilio$AvailablePhoneNumberResource = {} & twilio$BaseMappedResource<twilio$AvailablePhoneNumberInstance>
+export type twilio$AvailablePhoneNumberResource = {} & twilio$BaseMappedResource<twilio$AvailablePhoneNumberInstance>
 
 
-declare export type twilio$CallRecordingResource = {} & twilio$ListableResource
+export type twilio$CallRecordingResource = {} & twilio$ListableResource
 
 
-declare export type twilio$CallNotificationResource = {} & twilio$ListableResource
+export type twilio$CallNotificationResource = {} & twilio$ListableResource
 
 
-declare export type twilio$CallFeedbackResource = {
+export type twilio$CallFeedbackResource = {
 create: twilio$RestMethod
 } & twilio$PostableResource & twilio$DeletableResource
 
 
-declare export type twilio$CallInstance = {
+export type twilio$CallInstance = {
 recordings: twilio$CallRecordingResource,
 notifications: twilio$CallNotificationResource,
 feedback: twilio$CallFeedbackResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$CallFeedbackSummaryInstance = {} & twilio$DeletableResource
+export type twilio$CallFeedbackSummaryInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$CallFeedbackSummaryResource = {
+export type twilio$CallFeedbackSummaryResource = {
 post: twilio$RestMethod,
 create: twilio$RestMethod
 } & twilio$BaseMappedResource<twilio$CallFeedbackSummaryInstance>
 
 
-declare export type twilio$CallResource = {
+export type twilio$CallResource = {
 feedbackSummary: twilio$CallFeedbackSummaryResource
 } & twilio$CreatableMappedResource<twilio$CallInstance> & twilio$ListableResource
 
 
-declare export type twilio$ConferenceParticipantInstance = {
+export type twilio$ConferenceParticipantInstance = {
 kick: twilio$RestMethod
 } & twilio$InstanceResource
 
 
-declare export type twilio$ConferenceParticipantResource = {} & twilio$MappedResource<twilio$ConferenceParticipantInstance> & twilio$ListableResource
+export type twilio$ConferenceParticipantResource = {} & twilio$MappedResource<twilio$ConferenceParticipantInstance> & twilio$ListableResource
 
 
-declare export type twilio$ConferenceInstance = {
+export type twilio$ConferenceInstance = {
 participants: twilio$ConferenceParticipantResource
 } & twilio$Resource
 
 
-declare export type twilio$ConferenceResource = {} & twilio$MappedResource<twilio$ConferenceInstance> & twilio$ListableResource
+export type twilio$ConferenceResource = {} & twilio$MappedResource<twilio$ConferenceInstance> & twilio$ListableResource
 
 
-declare export type twilio$IncomingPhoneNumberResourceGroup = {
+export type twilio$IncomingPhoneNumberResourceGroup = {
 create: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$IncomingPhoneNumberInstance = {
+export type twilio$IncomingPhoneNumberInstance = {
 put: twilio$RestMethod
 } & twilio$InstanceResource
 
 
-declare export type twilio$IncomingPhoneNumberResource = {
+export type twilio$IncomingPhoneNumberResource = {
 local: twilio$IncomingPhoneNumberResourceGroup,
 tollFree: twilio$IncomingPhoneNumberResourceGroup,
 mobile: twilio$IncomingPhoneNumberResourceGroup
 } & twilio$CreatableMappedResource<twilio$IncomingPhoneNumberInstance>
 
 
-declare export type twilio$MessageMediaInstance = {} & twilio$DeletableResource
+export type twilio$MessageMediaInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$MessageMediaResource = {} & twilio$MappedResource<twilio$MessageMediaInstance> & twilio$ListableResource
+export type twilio$MessageMediaResource = {} & twilio$MappedResource<twilio$MessageMediaInstance> & twilio$ListableResource
 
 
-declare export type twilio$MessageInstance = {
+export type twilio$MessageInstance = {
 media: twilio$MessageMediaResource
 } & twilio$PostableResource & twilio$DeletableResource
 
 
-declare export type twilio$MessageResource = {} & twilio$ListMappedResource<twilio$MessageInstance>
+export type twilio$MessageResource = {} & twilio$ListMappedResource<twilio$MessageInstance>
 
 
-declare export type twilio$QueueMemberInstance = {
+export type twilio$QueueMemberInstance = {
 update: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$QueueMemberResource = {
+export type twilio$QueueMemberResource = {
 front: twilio$QueueMemberInstance
 } & twilio$MappedResource<twilio$QueueMemberInstance>
 
 
-declare export type twilio$QueueInstance = {
+export type twilio$QueueInstance = {
 members: twilio$QueueMemberResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$QueueResource = {} & twilio$CreatableMappedResource<twilio$QueueInstance>
+export type twilio$QueueResource = {} & twilio$CreatableMappedResource<twilio$QueueInstance>
 
 
-declare export type twilio$RecordingTranscriptionResource = {} & twilio$ListableResource
+export type twilio$RecordingTranscriptionResource = {} & twilio$ListableResource
 
 
-declare export type twilio$RecordingInstance = {
+export type twilio$RecordingInstance = {
 transcriptions: twilio$RecordingTranscriptionResource
 } & twilio$ListableResource & twilio$DeletableResource
 
 
-declare export type twilio$RecordingResource = {} & twilio$MappedResource<twilio$RecordingInstance> & twilio$ListableResource
+export type twilio$RecordingResource = {} & twilio$MappedResource<twilio$RecordingInstance> & twilio$ListableResource
 
 
-declare export type twilio$UsageRecordInstance = {} & twilio$Resource
+export type twilio$UsageRecordInstance = {} & twilio$Resource
 
 
-declare export type twilio$UsageRecordRange = {} & twilio$ListableResource
+export type twilio$UsageRecordRange = {} & twilio$ListableResource
 
 
-declare export type twilio$UsageRecordResource = {
+export type twilio$UsageRecordResource = {
 daily: twilio$UsageRecordRange,
 monthly: twilio$UsageRecordRange,
 yearly: twilio$UsageRecordRange,
@@ -654,142 +654,142 @@ lastMonth: twilio$UsageRecordRange
 } & twilio$MappedResource<twilio$UsageRecordInstance>
 
 
-declare export type twilio$CredentialInstance = {} & twilio$InstanceResource
+export type twilio$CredentialInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$CredentialResource = {} & twilio$ListMappedResource<twilio$CredentialInstance>
+export type twilio$CredentialResource = {} & twilio$ListMappedResource<twilio$CredentialInstance>
 
 
-declare export type twilio$ServiceUserInstance = {} & twilio$InstanceResource
+export type twilio$ServiceUserInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$ServiceUserResource = {} & twilio$ListMappedResource<twilio$ServiceUserInstance>
+export type twilio$ServiceUserResource = {} & twilio$ListMappedResource<twilio$ServiceUserInstance>
 
 
-declare export type twilio$ServiceRoleInstance = {} & twilio$Resource
+export type twilio$ServiceRoleInstance = {} & twilio$Resource
 
 
-declare export type twilio$ServiceRoleResource = {} & twilio$MappedResource<twilio$ServiceRoleInstance> & twilio$ListableResource
+export type twilio$ServiceRoleResource = {} & twilio$MappedResource<twilio$ServiceRoleInstance> & twilio$ListableResource
 
 
-declare export type twilio$ServiceChannelMessageInstance = {} & twilio$InstanceResource
+export type twilio$ServiceChannelMessageInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$ServiceChannelMessageResource = {} & twilio$ListMappedResource<twilio$ServiceChannelMessageInstance>
+export type twilio$ServiceChannelMessageResource = {} & twilio$ListMappedResource<twilio$ServiceChannelMessageInstance>
 
 
-declare export type twilio$ServiceChannelMemberInstance = {} & twilio$InstanceResource
+export type twilio$ServiceChannelMemberInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$ServiceChannelMemberResource = {} & twilio$ListMappedResource<twilio$ServiceChannelMemberInstance>
+export type twilio$ServiceChannelMemberResource = {} & twilio$ListMappedResource<twilio$ServiceChannelMemberInstance>
 
 
-declare export type twilio$ServiceChannelInstance = {
+export type twilio$ServiceChannelInstance = {
 messages: twilio$ServiceChannelMessageResource,
 members: twilio$ServiceChannelMemberResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$ServiceChannelResource = {} & twilio$ListMappedResource<twilio$ServiceChannelInstance>
+export type twilio$ServiceChannelResource = {} & twilio$ListMappedResource<twilio$ServiceChannelInstance>
 
 
-declare export type twilio$ServiceInstance = {
+export type twilio$ServiceInstance = {
 users: twilio$ServiceUserResource,
 roles: twilio$ServiceRoleResource,
 channels: twilio$ServiceChannelResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$ServiceResource = {} & twilio$ListMappedResource<twilio$ServiceInstance>
+export type twilio$ServiceResource = {} & twilio$ListMappedResource<twilio$ServiceInstance>
 
 
-declare export type twilio$PhoneNumberInstance = {} & twilio$Resource
+export type twilio$PhoneNumberInstance = {} & twilio$Resource
 
 
-declare export type twilio$PhoneNumberResource = {} & twilio$BaseMappedResource<twilio$PhoneNumberInstance>
+export type twilio$PhoneNumberResource = {} & twilio$BaseMappedResource<twilio$PhoneNumberInstance>
 
 
-declare export type twilio$AlertInstance = {} & twilio$Resource
+export type twilio$AlertInstance = {} & twilio$Resource
 
 
-declare export type twilio$AlertResource = {} & twilio$MappedResource<twilio$AlertInstance> & twilio$ListableResource
+export type twilio$AlertResource = {} & twilio$MappedResource<twilio$AlertInstance> & twilio$ListableResource
 
 
-declare export type twilio$EventInstance = {} & twilio$Resource
+export type twilio$EventInstance = {} & twilio$Resource
 
 
-declare export type twilio$EventResource = {} & twilio$MappedResource<twilio$EventInstance> & twilio$ListableResource
+export type twilio$EventResource = {} & twilio$MappedResource<twilio$EventInstance> & twilio$ListableResource
 
 
-declare export type twilio$CountryInstance = {} & twilio$Resource
+export type twilio$CountryInstance = {} & twilio$Resource
 
 
-declare export type twilio$CountryResource = {} & twilio$MappedResource<twilio$CountryInstance> & twilio$ListableResource
+export type twilio$CountryResource = {} & twilio$MappedResource<twilio$CountryInstance> & twilio$ListableResource
 
 
-declare export interface twilio$PricingMessagingResource {
+export interface twilio$PricingMessagingResource {
 countries: twilio$CountryResource
 } 
 
-declare export interface twilio$PricingPhoneNumberResource {
+export interface twilio$PricingPhoneNumberResource {
 countries: twilio$CountryResource
 } 
 
-declare export type twilio$NumberInstance = {} & twilio$Resource
+export type twilio$NumberInstance = {} & twilio$Resource
 
 
-declare export type twilio$NumberResource = {} & twilio$MappedResource<twilio$NumberInstance> & twilio$ListableResource
+export type twilio$NumberResource = {} & twilio$MappedResource<twilio$NumberInstance> & twilio$ListableResource
 
 
-declare export interface twilio$PricingVoiceResource {
+export interface twilio$PricingVoiceResource {
 countries: twilio$CountryResource,
 numbers: twilio$NumberResource
 } 
 
-declare export type twilio$CredentialListInstance = {
+export type twilio$CredentialListInstance = {
 credentials: twilio$CredentialResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$CredentialListResource = {} & twilio$ListMappedResource<twilio$CredentialListInstance>
+export type twilio$CredentialListResource = {} & twilio$ListMappedResource<twilio$CredentialListInstance>
 
 
-declare export type twilio$IPAccessControlListMappingInstance = {} & twilio$DeletableResource
+export type twilio$IPAccessControlListMappingInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$IPAccessControlListMappingResource = {} & twilio$ListMappedResource<twilio$IPAccessControlListMappingInstance>
+export type twilio$IPAccessControlListMappingResource = {} & twilio$ListMappedResource<twilio$IPAccessControlListMappingInstance>
 
 
-declare export type twilio$CredentialListMappingInstance = {} & twilio$DeletableResource
+export type twilio$CredentialListMappingInstance = {} & twilio$DeletableResource
 
 
-declare export type twilio$CredentialListMappingResource = {} & twilio$ListMappedResource<twilio$CredentialListMappingInstance>
+export type twilio$CredentialListMappingResource = {} & twilio$ListMappedResource<twilio$CredentialListMappingInstance>
 
 
-declare export type twilio$DomainInstance = {
+export type twilio$DomainInstance = {
 ipAccessControlListMappings: twilio$IPAccessControlListMappingResource,
 credentialListMappings: twilio$CredentialListMappingResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$DomainResource = {} & twilio$ListMappedResource<twilio$DomainInstance>
+export type twilio$DomainResource = {} & twilio$ListMappedResource<twilio$DomainInstance>
 
 
-declare export type twilio$IPAddressInstance = {} & twilio$InstanceResource
+export type twilio$IPAddressInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$IPAddressResource = {} & twilio$ListMappedResource<twilio$IPAddressInstance>
+export type twilio$IPAddressResource = {} & twilio$ListMappedResource<twilio$IPAddressInstance>
 
 
-declare export type twilio$IPAccessControlListInstance = {
+export type twilio$IPAccessControlListInstance = {
 ipAddresses: twilio$IPAddressResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$IPAccessControlListResource = {} & twilio$ListMappedResource<twilio$IPAccessControlListInstance>
+export type twilio$IPAccessControlListResource = {} & twilio$ListMappedResource<twilio$IPAccessControlListInstance>
 
 
-declare export interface twilio$WorkflowRuleTargetOptions {
+export interface twilio$WorkflowRuleTargetOptions {
 queue: string,
 expression?: string,
 priority?: number,
@@ -804,7 +804,7 @@ timeout: number;
 constructor(options?: twilio$WorkflowRuleTargetOptions): this
 }
 
-declare export interface twilio$WorkflowRuleOptions {
+export interface twilio$WorkflowRuleOptions {
 expression: string,
 targets: Array<twilio$WorkflowRuleTargetOptions>,
 friendly_name?: string,
@@ -820,7 +820,7 @@ friendlyName: string;
 constructor(options?: twilio$WorkflowRuleOptions): this
 }
 
-declare export interface twilio$TaskRoutingConfigurationOptions {
+export interface twilio$TaskRoutingConfigurationOptions {
 filters: Array<twilio$WorkflowRuleOptions>,
 default_filter?: twilio$WorkflowRuleOptions,
 defaultFilter?: twilio$WorkflowRuleOptions
@@ -833,7 +833,7 @@ defaultFilter: twilio$WorkflowRuleOptions;
 constructor(options?: twilio$TaskRoutingConfigurationOptions): this
 }
 
-declare export interface twilio$WorkflowConfigurationOptions {
+export interface twilio$WorkflowConfigurationOptions {
 task_routing?: twilio$TaskRoutingConfigurationOptions,
 taskRouting?: twilio$TaskRoutingConfigurationOptions
 } 
@@ -846,80 +846,80 @@ static fromJSON(json: string): twilio$WorkflowConfiguration;
 toJSON(): string
 }
 
-declare export type twilio$WorkspaceActivityInstance = {} & twilio$InstanceResource
+export type twilio$WorkspaceActivityInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceActivityResource = {} & twilio$ListMappedResource<twilio$WorkspaceActivityInstance>
+export type twilio$WorkspaceActivityResource = {} & twilio$ListMappedResource<twilio$WorkspaceActivityInstance>
 
 
-declare export type twilio$WorkspaceEventInstance = {} & twilio$Resource
+export type twilio$WorkspaceEventInstance = {} & twilio$Resource
 
 
-declare export type twilio$WorkspaceEventResource = {} & twilio$MappedResource<twilio$WorkspaceEventInstance> & twilio$ListableResource
+export type twilio$WorkspaceEventResource = {} & twilio$MappedResource<twilio$WorkspaceEventInstance> & twilio$ListableResource
 
 
-declare export type twilio$WorkspaceTaskReservationInstance = {
+export type twilio$WorkspaceTaskReservationInstance = {
 update: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$WorkspaceTaskReservationResource = {} & twilio$MappedResource<twilio$WorkspaceTaskReservationInstance> & twilio$ListableResource
+export type twilio$WorkspaceTaskReservationResource = {} & twilio$MappedResource<twilio$WorkspaceTaskReservationInstance> & twilio$ListableResource
 
 
-declare export type twilio$WorkspaceTaskInstance = {
+export type twilio$WorkspaceTaskInstance = {
 reservations: twilio$WorkspaceTaskReservationResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceTaskResource = {} & twilio$ListMappedResource<twilio$WorkspaceTaskInstance>
+export type twilio$WorkspaceTaskResource = {} & twilio$ListMappedResource<twilio$WorkspaceTaskInstance>
 
 
-declare export type twilio$WorkspaceInstanceStatisticResource = {} & twilio$Resource
+export type twilio$WorkspaceInstanceStatisticResource = {} & twilio$Resource
 
 
-declare export type twilio$WorkspaceStatisticResource = {} & twilio$ListableResource
+export type twilio$WorkspaceStatisticResource = {} & twilio$ListableResource
 
 
-declare export type twilio$WorkspaceTaskQueueInstance = {
+export type twilio$WorkspaceTaskQueueInstance = {
 statistics: twilio$WorkspaceInstanceStatisticResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceTaskQueueResource = {
+export type twilio$WorkspaceTaskQueueResource = {
 statistics: twilio$WorkspaceStatisticResource
 } & twilio$ListMappedResource<twilio$WorkspaceTaskQueueInstance>
 
 
-declare export type twilio$WorkspaceWorkerReservationInstance = {
+export type twilio$WorkspaceWorkerReservationInstance = {
 update: twilio$RestMethod
 } & twilio$PostableResource
 
 
-declare export type twilio$WorkspaceWorkerReservationResource = {} & twilio$MappedResource<twilio$WorkspaceWorkerReservationInstance> & twilio$ListableResource
+export type twilio$WorkspaceWorkerReservationResource = {} & twilio$MappedResource<twilio$WorkspaceWorkerReservationInstance> & twilio$ListableResource
 
 
-declare export type twilio$WorkspaceWorkerInstance = {
+export type twilio$WorkspaceWorkerInstance = {
 statistics: twilio$WorkspaceInstanceStatisticResource,
 reservations: twilio$WorkspaceWorkerReservationResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceWorkerResource = {
+export type twilio$WorkspaceWorkerResource = {
 statistics: twilio$WorkspaceStatisticResource
 } & twilio$ListMappedResource<twilio$WorkspaceWorkerInstance>
 
 
-declare export type twilio$WorkspaceWorkflowInstance = {
+export type twilio$WorkspaceWorkflowInstance = {
 statistics: twilio$WorkspaceInstanceStatisticResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceWorkflowResource = {
+export type twilio$WorkspaceWorkflowResource = {
 statistics: twilio$WorkspaceStatisticResource
 } & twilio$ListMappedResource<twilio$WorkspaceWorkflowInstance>
 
 
-declare export type twilio$WorkspaceInstance = {
+export type twilio$WorkspaceInstance = {
 activities: twilio$WorkspaceActivityResource,
 events: twilio$WorkspaceEventResource,
 tasks: twilio$WorkspaceTaskResource,
@@ -930,16 +930,16 @@ statistics: twilio$WorkspaceInstanceStatisticResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$WorkspaceResource = {} & twilio$CreatableMappedResource<twilio$WorkspaceInstance>
+export type twilio$WorkspaceResource = {} & twilio$CreatableMappedResource<twilio$WorkspaceInstance>
 
 
-declare export type twilio$OriginationURLInstance = {} & twilio$InstanceResource
+export type twilio$OriginationURLInstance = {} & twilio$InstanceResource
 
 
-declare export type twilio$OriginationURLResource = {} & twilio$ListMappedResource<twilio$OriginationURLInstance>
+export type twilio$OriginationURLResource = {} & twilio$ListMappedResource<twilio$OriginationURLInstance>
 
 
-declare export type twilio$TrunkInstance = {
+export type twilio$TrunkInstance = {
 ipAccessControlLists: twilio$IPAccessControlListResource,
 credentialLists: twilio$CredentialListResource,
 phoneNumbers: twilio$PhoneNumberResource,
@@ -947,8 +947,8 @@ originationUrls: twilio$OriginationURLResource
 } & twilio$InstanceResource
 
 
-declare export type twilio$TrunkResource = {} & twilio$ListMappedResource<twilio$TrunkInstance>
+export type twilio$TrunkResource = {} & twilio$ListMappedResource<twilio$TrunkInstance>
 
-	declare module.exports: typeof twilio
+	declare export default typeof twilio
 
     }

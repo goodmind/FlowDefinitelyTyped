@@ -142,9 +142,11 @@ declare function When$reject<T>(reason: any): When$Promise<T>
  * Return a promise that will resolve only once all the supplied promisesOrValues
  * have resolved. The resolution value of the returned promise will be an array
  * containing the resolution values of each of the promisesOrValues.
- * @memberOf when
- * @param promisesOrValues array of anything, may contain a mix
-of {@link Promise}s and values
+ * @memberOf
+ * when
+ * @param promisesOrValues
+ * array of anything, may contain a mix
+ * of {@link Promise}s and values
  */
 declare function When$all<T>(promisesOrValues: any[]): When$Promise<T>
 
@@ -153,10 +155,13 @@ declare function When$all<T>(promisesOrValues: any[]): When$Promise<T>
 /**
  * Promise-aware array map function, similar to `Array.prototype.map()`,
  * but input array may contain promises or values.
- * @param promisesOrValues array of anything, may contain a mix of {@link Promise}s and values
- * @param mapFunc map function which may return a promise or value
- * @returns a promise that will fulfill with an array of mapped values
-or reject if any input promise rejects.
+ * @param promisesOrValues
+ * array of anything, may contain a mix of {@link Promise}s and values
+ * @param mapFunc
+ * map function which may return a promise or value
+ * @returns
+ * a promise that will fulfill with an array of mapped values
+ * or reject if any input promise rejects.
  */
 declare function When$map<T>(
 promisesOrValues: any[],
@@ -169,10 +174,13 @@ mapFunc: (value: any, index: number) => any): When$Promise<T>
  * input may contain promises and/or values, and reduceFunc
  * may return either a value or a promise, *and* initialValue may
  * be a promise for the starting value.
- * @param promisesOrValues array or promise for an array of anything,
-may contain a mix of promises and values.
- * @param reduceFunc function(accumulated:*, x:*, index:number):*} f reduce function
- * @returns a promise that will resolve to the final reduced value
+ * @param promisesOrValues
+ * array or promise for an array of anything,
+ * may contain a mix of promises and values.
+ * @param reduceFunc
+ * function(accumulated:*, x:*, index:number):*} f reduce function
+ * @returns
+ * a promise that will resolve to the final reduced value
  */
 declare function When$reduce<T>(
 promisesOrValues: any[],
@@ -186,10 +194,13 @@ initialValue: T): When$Promise<T>
  * input may contain promises and/or values, and reduceFunc
  * may return either a value or a promise, *and* initialValue may
  * be a promise for the starting value.
- * @param promisesOrValues array or promise for an array of anything,
-may contain a mix of promises and values.
- * @param reduceFunc function(accumulated:*, x:*, index:number):*} f reduce function
- * @returns a promise that will resolve to the final reduced value
+ * @param promisesOrValues
+ * array or promise for an array of anything,
+ * may contain a mix of promises and values.
+ * @param reduceFunc
+ * function(accumulated:*, x:*, index:number):*} f reduce function
+ * @returns
+ * a promise that will resolve to the final reduced value
  */
 declare function When$reduceRight<T>(
 promisesOrValues: any[],
@@ -237,9 +248,11 @@ state: "pending"
  * The returned promise will only reject if array itself is a rejected promise. Otherwise,
  * it will always fulfill with an array of descriptors. This is in contrast to when.all,
  * which will reject if any element of array rejects.
- * @memberOf when
- * @param promisesOrValues array of anything, may contain a mix
-of {@link Promise}s and values
+ * @memberOf
+ * when
+ * @param promisesOrValues
+ * array of anything, may contain a mix
+ * of {@link Promise}s and values
  */
 declare function When$settle<T>(promisesOrValues: any[]): When$Promise<When$Descriptor<T>[]>
 
@@ -247,11 +260,16 @@ declare function When$settle<T>(promisesOrValues: any[]): When$Promise<When$Desc
 
 /**
  * Generates a potentially infinite stream of promises by repeatedly calling f until predicate becomes true.
- * @memberOf when
- * @param f function that, given a seed, returns the next value or a promise for it.
- * @param predicate function that receives the current iteration value, and should return truthy when the iterating should stop
- * @param handler function that receives each value as it is produced by f. It may return a promise to delay the next iteration.
- * @param seed initial value provided to the handler, and first f invocation. May be a promise.
+ * @memberOf
+ * when
+ * @param f
+ * function that, given a seed, returns the next value or a promise for it.
+ * @param predicate
+ * function that receives the current iteration value, and should return truthy when the iterating should stop
+ * @param handler
+ * function that receives each value as it is produced by f. It may return a promise to delay the next iteration.
+ * @param seed
+ * initial value provided to the handler, and first f invocation. May be a promise.
  */
 declare function When$iterate<U>(
 f: (seed: U) => U | When$Promise<U>,
@@ -264,14 +282,19 @@ seed: U | When$Promise<U>): When$Promise<U>
 /**
  * Similar to when/iterate, when.unfold generates a potentially infinite stream of promises by repeatedly calling
  * unspool until predicate becomes true. when.unfold allows you to thread additional state information through the iteration.
- * @memberOf when
- * @param unspool function that, given a seed, returns a [valueToSendToHandler, newSeed] pair.
-May return an array, array of promises, promise for an array, or promise for an array of promises.
- * @param predicate function that receives the current seed, and should return truthy when the unfold should stop
- * @param handler function that receives the valueToSendToHandler of the current iteration.
-This function can process valueToSendToHandler in whatever way you need.
-It may return a promise to delay the next iteration of the unfold.
- * @param seed initial value provided to the first unspool invocation. May be a promise.
+ * @memberOf
+ * when
+ * @param unspool
+ * function that, given a seed, returns a [valueToSendToHandler, newSeed] pair.
+ * May return an array, array of promises, promise for an array, or promise for an array of promises.
+ * @param predicate
+ * function that receives the current seed, and should return truthy when the unfold should stop
+ * @param handler
+ * function that receives the valueToSendToHandler of the current iteration.
+ * This function can process valueToSendToHandler in whatever way you need.
+ * It may return a promise to delay the next iteration of the unfold.
+ * @param seed
+ * initial value provided to the first unspool invocation. May be a promise.
  */
 declare function When$unfold<T, U>(
 unspool: (
@@ -294,8 +317,9 @@ declare function When$defer<T>(): When$Deferred<T>
 
 /**
  * Joins multiple promises into a single returned promise.
- * @return a promise that will fulfill when *all* the input promises
-have fulfilled, or will reject when *any one* of the input promises rejects.
+ * @return
+ * a promise that will fulfill when *all* the input promises
+ * have fulfilled, or will reject when *any one* of the input promises rejects.
  */
 declare function When$join<T>(...promises: When$Promise<T>[]): When$Promise<T[]>
 
@@ -303,8 +327,9 @@ declare function When$join<T>(...promises: When$Promise<T>[]): When$Promise<T[]>
 
 /**
  * Joins multiple promises into a single returned promise.
- * @return a promise that will fulfill when *all* the input promises
-have fulfilled, or will reject when *any one* of the input promises rejects.
+ * @return
+ * a promise that will fulfill when *all* the input promises
+ * have fulfilled, or will reject when *any one* of the input promises rejects.
  */
 declare function When$join<T>(...promises: any[]): When$Promise<T[]>
 
@@ -394,7 +419,7 @@ then<U>(
 onFulfilled?: (value: T) => U,
 onRejected?: (reason: any) => U): When$Thenable<U>
 } declare module 'when' {
-        declare module.exports: typeof When
+        declare export default typeof When
 
     }
 declare module 'when/node' {

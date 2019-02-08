@@ -1,3 +1,9 @@
+declare module '@ember/utils/-private/types' {
+        declare interface TypeLookup {
+class: typeof EmberObject,
+instance: EmberObject
+} 
+    }
 declare module '@ember/object' {
         import typeof CoreObject from '@ember/object/core';
 
@@ -149,7 +155,8 @@ until: string
 }): ComputedProperty<any>,
 
 /**
- * @deprecated Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
+ * @deprecated
+ * Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
  */
 deprecatingAlias(
 dependentKey: string,
@@ -367,12 +374,5 @@ data?: any,
 meta?: any): void
 
 	declare export function notifyPropertyChange(obj: {[key: string]: any}, keyName: string): void
-
-	declare module '@ember/utils/-private/types' {
-        declare interface TypeLookup {
-class: typeof EmberObject,
-instance: EmberObject
-} 
-    }
 
     }

@@ -1,5 +1,813 @@
-declare module 'nw.js' {
-        declare module 'NWJS_Helpers' {
+declare module 'nw.gui' {
+        declare export class Menu mixins nw$nw$Menu {}
+	declare export class MenuItem mixins nw$nw$MenuItem {}
+	declare export class Shortcut mixins nw$nw$Shortcut {}
+	declare export class Tray mixins nw$nw$Tray {}
+	declare export var nw$App: nw$nw$App;
+	declare export var nw$Clipboard: nw$nw$Clipboard;
+	declare export var nw$Screen: nw$nw$Screen;
+	declare export var nw$Shell: nw$nw$Shell;
+	declare export var nw$Window: nw$nw$Window;
+	declare export var nw$App: nw$nw$App;
+	declare export var nw$Clipboard: nw$nw$Clipboard;
+	declare export var nw$Screen: nw$nw$Screen;
+	declare export var nw$Shell: nw$nw$Shell;
+	declare export var nw$Window: nw$nw$Window;
+    }
+
+      declare var npm$namespace$nw: {
+        
+        App: typeof nw$App,
+Clipboard: typeof nw$Clipboard,
+Screen: typeof nw$Screen,
+Shell: typeof nw$Shell,
+Window: typeof nw$Window,
+      }
+
+/**
+ * Application General Functionality And Properties.
+ */
+export interface nw$App {
+
+/**
+ * Get the filtered command line arguments when starting the app.
+ */
+argv: string[],
+
+/**
+ * Get all the command line arguments when starting the app.
+ */
+fullArgv: string[],
+
+/**
+ * Get a list of patterns of filtered command line arguments used by `App.argv`.
+ */
+filteredArgv: Object[],
+
+/**
+ * Get the application's data path in user's directory.
+ */
+dataPath: string,
+
+/**
+ * Get the json object of the manifest file.
+ */
+manifest: any,
+
+/**
+ * Clear the HTTP cache in memory and the one on disk. This method call is synchronized.
+ */
+clearCache(): void,
+
+/**
+ * Send the `close` event to all windows of current app.
+ */
+closeAllWindows(): void,
+
+/**
+ * Crash the browser process to test the Crash dump feature.
+ */
+crashBrowser(): void,
+
+/**
+ * Crash the renderer process to test the Crash dump feature.
+ */
+crashRenderer(): void,
+
+/**
+ * Query the proxy to be used for loading `url` in DOM.
+ * @param {string} url
+ * the URL to query for proxy
+ * @returns {string}
+ * Proxy config that is in the same format used in PAC (e.g. "DIRECT", "PROXY localhost:8080").
+ */
+getProxyForURL(url: string): string,
+
+/**
+ * Set the proxy config which the web engine will be used to request network resources.
+ * @param {string} config
+ * Proxy rules
+ */
+setProxyConfig(config: string): void,
+
+/**
+ * Quit current app.
+ */
+quit(): void,
+
+/**
+ * Add an entry to the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+addOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Remove an entry from the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+removeOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Register a global keyboard shortcut (also known as system-wide hot key) to the system.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+registerGlobalHotKey(shortcut: nw$Shortcut): void,
+
+/**
+ * Unregisters a global keyboard shortcut.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+unregisterGlobalHotKey(shortcut: nw$Shortcut): void,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when users opened a file with your app.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (args?)} The callback that handles the `open` event.
+ * - (optional) args {string} the full command line of the program.
+ */
+on(event: "open", listener: (args?: string) => any): this,
+
+/**
+ * This event is sent when the user clicks the dock icon for an already running application. This is a Mac specific feature.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `reopen` event.
+ */
+on(event: "reopen", listener: () => any): this,
+
+/**
+ * Get the filtered command line arguments when starting the app.
+ */
+argv: string[],
+
+/**
+ * Get all the command line arguments when starting the app.
+ */
+fullArgv: string[],
+
+/**
+ * Get a list of patterns of filtered command line arguments used by `App.argv`.
+ */
+filteredArgv: Object[],
+
+/**
+ * Get the application's data path in user's directory.
+ */
+dataPath: string,
+
+/**
+ * Get the json object of the manifest file.
+ */
+manifest: any,
+
+/**
+ * Clear the HTTP cache in memory and the one on disk. This method call is synchronized.
+ */
+clearCache(): void,
+
+/**
+ * Send the `close` event to all windows of current app.
+ */
+closeAllWindows(): void,
+
+/**
+ * Crash the browser process to test the Crash dump feature.
+ */
+crashBrowser(): void,
+
+/**
+ * Crash the renderer process to test the Crash dump feature.
+ */
+crashRenderer(): void,
+
+/**
+ * Query the proxy to be used for loading `url` in DOM.
+ * @param {string} url
+ * the URL to query for proxy
+ * @returns {string}
+ * Proxy config that is in the same format used in PAC (e.g. "DIRECT", "PROXY localhost:8080").
+ */
+getProxyForURL(url: string): string,
+
+/**
+ * Set the proxy config which the web engine will be used to request network resources.
+ * @param {string} config
+ * Proxy rules
+ */
+setProxyConfig(config: string): void,
+
+/**
+ * Quit current app.
+ */
+quit(): void,
+
+/**
+ * Add an entry to the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+addOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Remove an entry from the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+removeOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Register a global keyboard shortcut (also known as system-wide hot key) to the system.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+registerGlobalHotKey(shortcut: nw$Shortcut): void,
+
+/**
+ * Unregisters a global keyboard shortcut.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+unregisterGlobalHotKey(shortcut: nw$Shortcut): void,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when users opened a file with your app.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (args?)} The callback that handles the `open` event.
+ * - (optional) args {string} the full command line of the program.
+ */
+on(event: "open", listener: (args?: string) => any): this,
+
+/**
+ * This event is sent when the user clicks the dock icon for an already running application. This is a Mac specific feature.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `reopen` event.
+ */
+on(event: "reopen", listener: () => any): this
+} 
+
+
+/**
+ * `Clipboard` is an abstraction of clipboard for Windows, Linux and Mac.
+ */
+export interface nw$Clipboard {
+
+/**
+ * Get the clipboard object.
+ * @returns {nw$Clipboard}
+ * the clipboard object.
+ */
+get(): NWJS_Helpers.clip,
+
+/**
+ * Get the clipboard object.
+ * @returns {nw$Clipboard}
+ * the clipboard object.
+ */
+get(): NWJS_Helpers.clip
+} 
+
+
+/**
+ * `Menu` represents a menubar or a context menu.
+ */
+declare class nw$Menu  {
+
+/**
+ * Create a Menu object.
+ * @param {Object} option
+ * (Optional) Option to customize returned menu object.
+ */
+constructor(option?: NWJS_Helpers.MenuOption): this;
+
+/**
+ * Get an array that contains all items of a menu. Each item is an instance of MenuItem.
+ */
+items: nw$MenuItem[];
+
+/**
+ * Append `item` to the tail of the menu.
+ * @param {nw$MenuItem} item
+ * the item to be appended to the tail of the menu
+ */
+append(item: nw$MenuItem): void;
+
+/**
+ * Insert the `item` at `i`th position of the menu. The index is started from 0.
+ * @param {nw$MenuItem} item
+ * the item to be inserted into the menu
+ * @param {Integer} i
+ * the index in the menu list to insert the the item
+ */
+insert(item: nw$MenuItem, i: number): void;
+
+/**
+ * Remove `item` from the menu.
+ * @param {nw$MenuItem} item
+ * the item to be removed
+ */
+remove(item: nw$MenuItem): void;
+
+/**
+ * Remove the `i`th item form the menu.
+ * @param {Integer} i
+ * the index of the item to be removed from the menu
+ */
+removeAt(i: number): void;
+
+/**
+ * Popup the context menu at the anchor in (`x`, `y`) in current window.
+ * @param {Integer} x
+ * the x position of the anchor
+ * @param {Integer} y
+ * the y position of the anchor
+ */
+popup(x: number, y: number): void;
+
+/**
+ * Creates the builtin menus (App, Edit and Window) within the menubar on Mac.
+ * @param {string} appname
+ * The application name
+ * @param {Object} options
+ * (Optional) Options to modify default `edit` and `window` MenuItems in Mac
+ */
+createMacBuiltin(appname: string, options?: NWJS_Helpers.CreateMacBuiltinOption): void
+}
+
+
+/**
+ * `MenuItem` represents an item in a menu.
+ */
+declare class nw$MenuItem mixins NWJS_Helpers.EventEmitter {
+
+/**
+ * Create a new MenuItem.
+ * @param {Object} option
+ * Customize how MenuItem render and behave.
+ */
+constructor(option: NWJS_Helpers.MenuItemOption): this;
+
+/**
+ * Get the `type` of a `MenuItem`
+ */
+type: string;
+
+/**
+ * Get or set the `label` of a `MenuItem`
+ */
+lable: string;
+
+/**
+ * Get or set the `icon` of a `MenuItem`
+ */
+icon: string;
+
+/**
+ * Get or set whether `icon` image is treated as "template" (`true` by default).
+ */
+iconIsTemplate: boolean;
+
+/**
+ * Get or set the `tooltip` of a `MenuItem`
+ */
+tooltip: boolean;
+
+/**
+ * Get or set whether the `MenuItem` is `checked`
+ */
+checked: boolean;
+
+/**
+ * Get or set whether the `MenuItem` is `enabled`
+ */
+enabled: string;
+
+/**
+ * Get or set the `submenu` of a `MenuItem`, the `submenu` must be a `Menu` object.
+ */
+submenu: nw$Menu;
+
+/**
+ * Get or set the click `callback` of a `MenuItem`
+ */
+click: Function;
+
+/**
+ * A single character string to specify the shortcut key for the menu item.
+ */
+key: string;
+
+/**
+ * A string to specify the modifier keys for the shortcut of the menu item.
+ */
+modifiers: string;
+on(event: string, listener: Function): this;
+
+/**
+ * Emitted when user activates the menu item.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `click` event.
+ */
+on(event: "click", listener: () => any): this
+}
+
+
+/**
+ * Screen is an instance of EventEmitter object, and you"re able to use Screen.on(...) to respond to native screen"s events.
+ * Screen is a singleton object, need to be initiated once by calling nw.Screen.Init().
+ */
+declare type nw$Screen = {
+
+/**
+ * Init the Screen singleton object, you only need to call this once.
+ */
+Init(): void,
+
+/**
+ * Get the array of screen (number of screen connected to the computer)
+ */
+screens: NWJS_Helpers.screen[],
+
+/**
+ * @param {string[]} sources
+ * Array of source types.
+ * @param {Function} callback
+ * callback function with chosed streamId.
+ * - (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
+ */
+chooseDesktopMedia(sources: string[], callback: (streamId?: string | boolean) => void): void,
+
+/**
+ * Use this API to monitor the changes of screens and windows on desktop. This is an instance of EventEmitter.
+ */
+DesktopCaptureMonitor: NWJS_Helpers.DesktopCaptureMonitor,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when the screen resolution, arrangement is changed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayBoundsChanged` event.
+ * - (optional) screen {screen} screen object
+ */
+on(
+event: "displayBoundsChanged",
+listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when a new screen added.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayAdded` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayAdded ", listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when existing screen removed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayRemoved` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayRemoved ", listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Init the Screen singleton object, you only need to call this once.
+ */
+Init(): void,
+
+/**
+ * Get the array of screen (number of screen connected to the computer)
+ */
+screens: NWJS_Helpers.screen[],
+
+/**
+ * @param {string[]} sources
+ * Array of source types.
+ * @param {Function} callback
+ * callback function with chosed streamId.
+ * - (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
+ */
+chooseDesktopMedia(sources: string[], callback: (streamId?: string | boolean) => void): void,
+
+/**
+ * Use this API to monitor the changes of screens and windows on desktop. This is an instance of EventEmitter.
+ */
+DesktopCaptureMonitor: NWJS_Helpers.DesktopCaptureMonitor,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when the screen resolution, arrangement is changed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayBoundsChanged` event.
+ * - (optional) screen {screen} screen object
+ */
+on(
+event: "displayBoundsChanged",
+listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when a new screen added.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayAdded` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayAdded ", listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when existing screen removed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayRemoved` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayRemoved ", listener: (screen: NWJS_Helpers.screen) => any): this
+} & NWJS_Helpers.EventEmitter
+
+
+
+/**
+ * `Shell` is a collection of APIs that do desktop related jobs.
+ */
+declare interface nw$Shell {
+
+/**
+ * Open the given external URI in the desktop"s default manner.
+ * @param {string} uri
+ * A URL to open in system default manner.
+ */
+openExternal(uri: string): void,
+
+/**
+ * Open the given file_path in the desktop"s default manner.
+ * @param {string} file_path
+ * path to a local file
+ */
+openItem(file_path: string): void,
+
+/**
+ * Show the given file_path in the parent folder with file manager. If possible, select the file.
+ * @param {string} file_path
+ * path to a local file
+ */
+showItemInFolder(file_path: string): void,
+
+/**
+ * Open the given external URI in the desktop"s default manner.
+ * @param {string} uri
+ * A URL to open in system default manner.
+ */
+openExternal(uri: string): void,
+
+/**
+ * Open the given file_path in the desktop"s default manner.
+ * @param {string} file_path
+ * path to a local file
+ */
+openItem(file_path: string): void,
+
+/**
+ * Show the given file_path in the parent folder with file manager. If possible, select the file.
+ * @param {string} file_path
+ * path to a local file
+ */
+showItemInFolder(file_path: string): void
+} 
+
+
+/**
+ * `Shortcut` represents a global keyboard shortcut, also known as system-wide hotkey.
+ */
+declare export class nw$Shortcut mixins NWJS_Helpers.EventEmitter {
+
+/**
+ * Create new Shortcut.
+ * @param {Object} option
+ * Shortcut option is an object contains initial settings for the Shortcut.
+ */
+constructor(option: NWJS_Helpers.ShortcutOption): this;
+
+/**
+ * Get or set the active callback of a Shortcut. It will be called when user presses the shortcut.
+ */
+active: Function;
+
+/**
+ * Get or set the failed callback of a Shortcut. It will be called when application passes an invalid key , or failed to register the key.
+ * @param {string} msg
+ * Failure message
+ */
+failed: (msg?: string) => any;
+
+/**
+ * Get the key of a Shortcut.
+ */
+key: string;
+on(event: string, listener: Function): this;
+
+/**
+ * Get or set the active callback of a Shortcut. It will be called when user presses the shortcut.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `active` event.
+ */
+on(event: "active", listener: () => any): this;
+
+/**
+ * Get or set the failed callback of a Shortcut. It will be called when application passes an invalid key, or failed to register the key.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (msg?)} The callback that handles the `failed` event.
+ * - (optional) msg {string} Failure message
+ */
+on(event: "failed", listener: (msg?: string) => any): this
+}
+
+
+/**
+ * `Tray` is an abstraction of different controls on different platforms, usually it"s a small icon shown on the OS"s notification area. On Mac OS X it"s called Status Item, on GTK it"s Status Icon, and on Windows it"s System Tray Icon.
+ */
+declare export class nw$Tray mixins NWJS_Helpers.EventEmitter {
+
+/**
+ * Create a new Tray.
+ * @param {Object} option
+ * Contains initial settings for the Tray.
+ */
+constructor(option: NWJS_Helpers.TrayOption): this;
+
+/**
+ * Get or set the title of the tray.
+ */
+title: string;
+
+/**
+ * Get or set the tooltip of the tray.
+ */
+tooltip: string;
+
+/**
+ * Get or set the icon of the tray.
+ */
+icon: string;
+
+/**
+ * Get or set the alternate (active) tray icon. (Mac)
+ */
+alticon: string;
+
+/**
+ * Get or set whether icon and alticon images are treated as "templates" (true by default). (Mac)
+ */
+iconsAreTemplates: boolean;
+
+/**
+ * Get or set the menu of the tray.
+ */
+menu: nw$Menu;
+
+/**
+ * Remove the tray.
+ */
+remove(): void;
+on(event: string, listener: Function): this;
+
+/**
+ * Emitted when user clicks the menu item with left mouse button.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `click` event.
+ */
+on(event: "click ", listener: () => any): this
+}
+
+
+/**
+ * Window is a wrapper of the DOM's window object. It has extended operations and can receive various window events.
+ */
+declare type nw$Window = {
+
+/**
+ * Get the native Window Object.
+ * @param {DOM} event
+ * Window} (Optional) Is the DOM window
+ */
+get(window_object?: Object): NWJS_Helpers.win,
+
+/**
+ * Open a new window and load url in it.
+ * @param {string} url
+ * URL to be loaded in the opened window
+ * @param {{[key: string]: any}} option
+ * (Optional) New window open options like window subfields in manifest format plus some more options
+ * @param {string} callback
+ * (Optional) Callback when with the opened native Window object
+ * - (Optional) new_win {object} New opened window object.
+ */
+open(
+url: string,
+option?: NWJS_Helpers.WindowOpenOption,
+callback?: (new_win?: NWJS_Helpers.win) => void): void,
+
+/**
+ * Get the native Window Object.
+ * @param {DOM} event
+ * Window} (Optional) Is the DOM window
+ */
+get(window_object?: Object): NWJS_Helpers.win,
+
+/**
+ * Open a new window and load url in it.
+ * @param {string} url
+ * URL to be loaded in the opened window
+ * @param {{[key: string]: any}} option
+ * (Optional) New window open options like window subfields in manifest format plus some more options
+ * @param {string} callback
+ * (Optional) Callback when with the opened native Window object
+ * - (Optional) new_win {object} New opened window object.
+ */
+open(
+url: string,
+option?: NWJS_Helpers.WindowOpenOption,
+callback?: (new_win?: NWJS_Helpers.win) => void): void
+} & NWJS_Helpers.EventEmitter
+
+
+declare export var nw$App: nw$App;
+
+declare export var nw$Clipboard: nw$Clipboard;
+
+declare export var nw$Screen: nw$Screen;
+
+declare export var nw$Shell: nw$Shell;
+
+declare export var nw$Window: nw$Window;declare module 'NWJS_Helpers' {
         
 /**
  * Node.js v6.x EventEmitter Class
@@ -27,24 +835,31 @@ declare interface clip {
 
 /**
  * Write `data` of `type` to the clipboard.
- * @param {string} data the data to write to the clipboard
- * @param {string} type (Optional) the type of the data. Support text, png, jpeg, html and rtf. By default, type is set to "text".
- * @param {boolean} raw (Optional) requiring raw image data. This option is only valid if type is png or jpeg. By default, raw is set to false.
+ * @param {string} data
+ * the data to write to the clipboard
+ * @param {string} type
+ * (Optional) the type of the data. Support text, png, jpeg, html and rtf. By default, type is set to "text".
+ * @param {boolean} raw
+ * (Optional) requiring raw image data. This option is only valid if type is png or jpeg. By default, raw is set to false.
  */
 set(data: string, type?: string, raw?: boolean): void,
 
 /**
  * Get the data of `type` from clipboard.
- * @param {string} type (Optional) the type of the data. Support text, png, jpeg, html and rtf. By default, type is set to "text".
- * @param {boolean} raw (Optional) requiring raw image data. This option is only valid if type is png or jpeg.
- * @returns {string} the data retrieved from the clipboard.
+ * @param {string} type
+ * (Optional) the type of the data. Support text, png, jpeg, html and rtf. By default, type is set to "text".
+ * @param {boolean} raw
+ * (Optional) requiring raw image data. This option is only valid if type is png or jpeg.
+ * @returns {string}
+ * the data retrieved from the clipboard.
  */
 get(type?: string, raw?: boolean): string,
 
 /**
  * Get an array contains list of available types of data in clipboard currenly.
  * You can use the returned list as a suggestion to get the right data from clipboard.
- * @returns {string[]} List of available types of data in clipboard currenly.
+ * @returns {string[]}
+ * List of available types of data in clipboard currenly.
  */
 readAvailableTypes(): string[],
 
@@ -184,8 +999,10 @@ started: boolean,
 
 /**
  * The DesktopCaptureMonitor will start monitoring the system and trigger the the events.
- * @param {boolean} should_include_screens Whether should include screens
- * @param {boolean} should_include_windows Whether should include windows
+ * @param {boolean} should_include_screens
+ * Whether should include screens
+ * @param {boolean} should_include_windows
+ * Whether should include windows
  */
 start(should_include_screens: boolean, should_include_windows: boolean): void,
 
@@ -196,20 +1013,23 @@ stop(): void,
 
 /**
  * Register and return a valid stream id passed into chromeMediaSourceId in getUserMedia constraints.
- * @param {string} id valid stream id.
+ * @param {string} id
+ * valid stream id.
  */
 registerStream(id: string): void,
 on(event: string, listener: Function): this,
 
 /**
  * Emit when a new source was added.
- * @param {string} event Event name
- * @param {Function} listener (id?,name?,order?,type?,primary?)} The callback that handles the `added` event.
-- (optional) id {string} Is the media id.
-- (optional) name {string} Is the title of the window or screen.
-- (optional) order {number} Is the z-order of the windows, if screens are selected they will appear first.
-- (optional) type {string} Type of the stream: "screen", "window", "other" or "unknown".
-- (optional) primary {boolean} This will be true if the source is the primary monitor. (Windows OS only)
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (id?,name?,order?,type?,primary?)} The callback that handles the `added` event.
+ * - (optional) id {string} Is the media id.
+ * - (optional) name {string} Is the title of the window or screen.
+ * - (optional) order {number} Is the z-order of the windows, if screens are selected they will appear first.
+ * - (optional) type {string} Type of the stream: "screen", "window", "other" or "unknown".
+ * - (optional) primary {boolean} This will be true if the source is the primary monitor. (Windows OS only)
  */
 on(
 event: "added",
@@ -222,19 +1042,23 @@ primary?: boolean) => any): this,
 
 /**
  * Emit when a source was removed.
- * @param {string} event Event name
- * @param {Function} listener (order?)} The callback that handles the `remove` event.
-- (optional) order {number} Is the order of the media source that is no longer capturable.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (order?)} The callback that handles the `remove` event.
+ * - (optional) order {number} Is the order of the media source that is no longer capturable.
  */
 on(event: "removed", listener: (order?: number) => any): this,
 
 /**
  * Emit when the Z-order of a source changed (this may change for windows as others are focused).
- * @param {string} event Event name
- * @param {Function} listener (id?,new_order?,old_order?)} The callback that handles the `orderchanged` event.
-- (optional) id {string} Is the media id of the screen or window that has changed z-order.
-- (optional) new_order {number} Is the new z-order.
-- (optional) old_order {number} Is the old z-order.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (id?,new_order?,old_order?)} The callback that handles the `orderchanged` event.
+ * - (optional) id {string} Is the media id of the screen or window that has changed z-order.
+ * - (optional) new_order {number} Is the new z-order.
+ * - (optional) old_order {number} Is the old z-order.
  */
 on(
 event: "orderchanged",
@@ -242,19 +1066,23 @@ listener: (id?: string, new_order?: number, old_order?: number) => any): this,
 
 /**
  * Emit when the name of the source has changed. This can happen when a window changes title.
- * @param {string} event Event name
- * @param {Function} listener (id?,new_order?,old_order?)} The callback that handles the `namechanged ` event.
-- (optional) id {string} Is the media id of the screen or window that has a name changed.
-- (optional) name {string} Is the new name of the screen or window.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (id?,new_order?,old_order?)} The callback that handles the `namechanged ` event.
+ * - (optional) id {string} Is the media id of the screen or window that has a name changed.
+ * - (optional) name {string} Is the new name of the screen or window.
  */
 on(event: "namechanged", listener: (id?: string, name?: string) => any): this,
 
 /**
  * Emit when the thumbnail of a source changed.
- * @param {string} event Event name
- * @param {Function} listener (id?,new_order?,old_order?)} The callback that handles the `thumbnailchanged ` event.
-- (optional) id {string} Is the media id of the screen or window that has an updated thumbnail.
-- (optional) name {string} Is the base64 encoded png of the thumbnail.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (id?,new_order?,old_order?)} The callback that handles the `thumbnailchanged ` event.
+ * - (optional) id {string} Is the media id of the screen or window that has an updated thumbnail.
+ * - (optional) name {string} Is the base64 encoded png of the thumbnail.
  */
 on(
 event: "thumbnailchanged",
@@ -274,7 +1102,8 @@ active: Function,
 
 /**
  * {Function} (Optional) A callback when failed to register the hotkey.
- * @param {string} msg Failure message
+ * @param {string} msg
+ * Failure message
  */
 failed: (msg?: string) => any,
 
@@ -380,33 +1209,41 @@ declare interface Cookies {
 
 /**
  * Retrieves information about a single cookie.
- * @param {Objet} details Details to identify the cookie being retrieved.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback The callback when cookie retrieved.
-- (Optional) cookie {Cookie} Contains details about the cookie. This parameter is null if no such cookie was found.
+ * @param {Objet} details
+ * Details to identify the cookie being retrieved.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * The callback when cookie retrieved.
+ * - (Optional) cookie {Cookie} Contains details about the cookie. This parameter is null if no such cookie was found.
  */
 get(details: CookiesGetDetails, callback: (cookie?: Cookie) => void): void,
 
 /**
  * Retrieves all cookies from a single cookie store that match the given information.
- * @param {Objet} details Information to filter the cookies being retrieved.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback The callback when cookies retrieved.
-- (Optional) cookies {Cookie[]} All the existing, unexpired cookies that match the given cookie info.
+ * @param {Objet} details
+ * Information to filter the cookies being retrieved.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * The callback when cookies retrieved.
+ * - (Optional) cookies {Cookie[]} All the existing, unexpired cookies that match the given cookie info.
  */
 getAll(details: CookiesGetAllDetails, callback: (cookies?: Cookie[]) => void): void,
 
 /**
  * Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
- * @param {Objet} details Details about the cookie being set.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback The callback when cookie has been set.
-- (Optional) cookie {Cookie} Contains details about the cookie that's been set. If setting failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
+ * @param {Objet} details
+ * Details about the cookie being set.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * The callback when cookie has been set.
+ * - (Optional) cookie {Cookie} Contains details about the cookie that's been set. If setting failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
  */
 set(details: CookiesSetDetails, callback: (cookie?: Cookie) => void): void,
 
 /**
  * Deletes a cookie by name.
- * @param {Objet} details Information to identify the cookie to remove.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback The callback when cookie has been set.
-- (Optional) details {Objet} Contains details about the cookie that's been removed. If removal failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
+ * @param {Objet} details
+ * Information to identify the cookie to remove.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * The callback when cookie has been set.
+ * - (Optional) details {Objet} Contains details about the cookie that's been removed. If removal failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
  */
 remove(
 details: CookiesRemoveDetails,
@@ -419,8 +1256,9 @@ onChanged: {
 
 /**
  * Add a new listener for onChanged event.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback The callback when cookie has been changed.
-- (Optional) changeInfo {Objet} Contains details about the cookie that's been changed.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * The callback when cookie has been changed.
+ * - (Optional) changeInfo {Objet} Contains details about the cookie that's been changed.
  */
 addListener(callback: (changeInfo: CookiesOnChangedCallbackChangeInfo) => void): void
 }
@@ -705,7 +1543,8 @@ forceNewPopup(): void,
 
 /**
  * Control the options for the new popup window.
- * @param {Object} m The object is in the same format as the Window subfields in manifest format.
+ * @param {Object} m
+ * The object is in the same format as the Window subfields in manifest format.
  */
 setNewWindowManifest(m: WindowOption): void
 } 
@@ -913,29 +1752,37 @@ cookies: Cookies,
 
 /**
  * Moves a window's left and top edge to the specified coordinates.
- * @param {Integer} x Offset to the left of the screen
- * @param {Integer} y Offset to the top of the screen
+ * @param {Integer} x
+ * Offset to the left of the screen
+ * @param {Integer} y
+ * Offset to the top of the screen
  */
 moveTo(x: number, y: number): void,
 
 /**
  * Moves a window a specified number of pixels relative to its current coordinates.
- * @param {Integer} x Horizontal offset
- * @param {Integer} y Vertical offset
+ * @param {Integer} x
+ * Horizontal offset
+ * @param {Integer} y
+ * Vertical offset
  */
 moveBy(x: number, y: number): void,
 
 /**
  * Resizes a window to the specified width and height.
- * @param {Integer} width The width of the window
- * @param {Integer} height The height of the window
+ * @param {Integer} width
+ * The width of the window
+ * @param {Integer} height
+ * The height of the window
  */
 resizeTo(width: number, height: number): void,
 
 /**
  * Resizes a window by the specified amount.
- * @param {Integer} width The offset width of the window
- * @param {Integer} height The offset height of the window
+ * @param {Integer} width
+ * The offset width of the window
+ * @param {Integer} height
+ * The offset height of the window
  */
 resizeBy(width: number, height: number): void,
 
@@ -951,7 +1798,8 @@ blur(): void,
 
 /**
  * Show the window if it's not shown.
- * @param {boolean} is_show (Optional) Specify whether the window should be shown or hidden. It's set to true by default.
+ * @param {boolean} is_show
+ * (Optional) Specify whether the window should be shown or hidden. It's set to true by default.
  */
 show(is_show?: boolean): void,
 
@@ -962,7 +1810,8 @@ hide(): void,
 
 /**
  * Close current window.
- * @param {boolean} force (Optional) Specify whether to close the window forcely and bypass close event.
+ * @param {boolean} force
+ * (Optional) Specify whether to close the window forcely and bypass close event.
  */
 close(force?: boolean): void,
 
@@ -1028,9 +1877,11 @@ toggleKioskMode(): void,
 
 /**
  * Open the devtools to inspect the window.
- * @param {Integer} iframe (Optional) the id or the element of the <iframe> to be jailed on. By default, the DevTools is shown for entire window.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback callback with the native window of the DevTools window.
-- (optional) dev_win {window} Window object that you can use any properties and methods of Window except the events
+ * @param {Integer} iframe
+ * (Optional) the id or the element of the <iframe> to be jailed on. By default, the DevTools is shown for entire window.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * callback with the native window of the DevTools window.
+ * - (optional) dev_win {window} Window object that you can use any properties and methods of Window except the events
  */
 showDevTools(
 iframe?: string | HTMLIFrameElement,
@@ -1043,8 +1894,9 @@ closeDevTools(): void,
 
 /**
  * Enumerate the printers in the system.
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback callback with the native window of the DevTools window.
-- (optional) printers {any[]} An array of json objects for the printer information.
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} callback
+ * callback with the native window of the DevTools window.
+ * - (optional) printers {any[]} An array of json objects for the printer information.
  */
 getPrinters(callback: (printers?: any[]) => void): void,
 
@@ -1055,39 +1907,47 @@ isDevToolsOpen(): boolean,
 
 /**
  * Print the web contents in the window without the need for user’s interaction.
- * @param {any | PrintOption} options Specify whether to close the window forcely and bypass close event.
+ * @param {any | PrintOption} options
+ * Specify whether to close the window forcely and bypass close event.
  */
 print(options: any | PrintOption): void,
 
 /**
  * Set window's maximum size.
- * @param {Integer} width The maximum width of the window
- * @param {Integer} height The maximum height of the window
+ * @param {Integer} width
+ * The maximum width of the window
+ * @param {Integer} height
+ * The maximum height of the window
  */
 setMaximumSize(width: number, height: number): void,
 
 /**
  * Set window's minimum size.
- * @param {Integer} width The minimum width of the window
- * @param {Integer} height The minimum height of the window
+ * @param {Integer} width
+ * The minimum width of the window
+ * @param {Integer} height
+ * The minimum height of the window
  */
 setMinimumSize(width: number, height: number): void,
 
 /**
  * Set whether window is resizable.
- * @param {boolean} resizable Whether the window can be resized
+ * @param {boolean} resizable
+ * Whether the window can be resized
  */
 setResizable(resizable: boolean): void,
 
 /**
  * Sets the widget to be on top of all other windows in the window system.
- * @param {boolean} top Whether the window should always be on top
+ * @param {boolean} top
+ * Whether the window should always be on top
  */
 setAlwaysOnTop(top: boolean): void,
 
 /**
  * For platforms that support multiple workspaces (currently Mac OS X and Linux), this allows NW.js windows to be visible on all workspaces simultaneously.
- * @param {boolean} visible Whether the window should be visible on all workspaces
+ * @param {boolean} visible
+ * Whether the window should be visible on all workspaces
  */
 setVisibleOnAllWorkspaces(visible: boolean): void,
 
@@ -1098,27 +1958,32 @@ canSetVisibleOnAllWorkspaces(): boolean,
 
 /**
  * Move window to specified position.
- * @param {string} position The position of the window. There are three valid positions: null or center or mouse
+ * @param {string} position
+ * The position of the window. There are three valid positions: null or center or mouse
  */
 setPosition(position: string): void,
 
 /**
  * Control whether to show window in taskbar or dock.
- * @param {boolean} show Whether show in task bar
+ * @param {boolean} show
+ * Whether show in task bar
  */
 setShowInTaskbar(show: boolean): void,
 
 /**
  * Request the user’s attension by making the window flashes in the task bar.
- * @param {boolean | number} attension If a Boolean, it indicates to request or cancel user’s attension. If an Integer, it indicates the number of times the window flashes.
+ * @param {boolean | number} attension
+ * If a Boolean, it indicates to request or cancel user’s attension. If an Integer, it indicates the number of times the window flashes.
  */
 requestAttention(attension: boolean | number): void,
 
 /**
  * Captures the visible area of the window.
- * @param {string} callback The callback when finished capturing the window
-- (optional) arg {base64string|Buffer} Captured page data.
- * @param {string | CapturePageConfig} config (Optional) Conig how captured page returned.
+ * @param {string} callback
+ * The callback when finished capturing the window
+ * - (optional) arg {base64string|Buffer} Captured page data.
+ * @param {string | CapturePageConfig} config
+ * (Optional) Conig how captured page returned.
  */
 capturePage(
 callback: (arg: string | Object) => void,
@@ -1126,65 +1991,81 @@ config?: string | CapturePageConfig): void,
 
 /**
  * Show window progress bar.
- * @param {number} progress valid values within [0, 1]. Setting to negative value (<0) removes the progress bar.
+ * @param {number} progress
+ * valid values within [0, 1]. Setting to negative value (<0) removes the progress bar.
  */
 setProgressBar(progress: number): void,
 
 /**
  * Set the badge label on the window icon in taskbar or dock.
- * @param {string} label Badge label.
+ * @param {string} label
+ * Badge label.
  */
 setBadgeLabel(label: string): void,
 
 /**
  * Execute a piece of JavaScript in the frame.
- * @param {HTMLIFrameElement} frame The frame to execute in. If iframe is null, it assumes in current window / frame.
- * @param {string} script The source code of the script to be executed
+ * @param {HTMLIFrameElement} frame
+ * The frame to execute in. If iframe is null, it assumes in current window / frame.
+ * @param {string} script
+ * The source code of the script to be executed
  */
 eval(frame: HTMLIFrameElement, script: string): void,
 
 /**
  * Load and execute the compiled snapshot in the frame.
- * @param {HTMLIFrameElement} frame The frame to execute in. If iframe is null, it assumes in current window / frame.
- * @param {string} path the path of the snapshot file generated by nwjc
+ * @param {HTMLIFrameElement} frame
+ * The frame to execute in. If iframe is null, it assumes in current window / frame.
+ * @param {string} path
+ * the path of the snapshot file generated by nwjc
  */
 evalNWBin(frame: HTMLIFrameElement, path: string): void,
 on(event: string, listener: Function): this,
 
 /**
  * The close event is a special event that will affect the result of the Window.close() function.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `close` event.
-- (optional) byCommandQ {string} Whether it’s being closed by ⌘+Q.
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `close` event.
+ * - (optional) byCommandQ {string} Whether it’s being closed by ⌘+Q.
  */
 on(event: "close", listener: (byCommandQ?: string | any) => any): this,
 
 /**
  * The closed event is emitted after corresponding window is closed.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `closed` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `closed` event.
  */
 on(event: "closed", listener: () => any): this,
 
 /**
  * Emitted when the window starts to reload, normally you cannot catch this event because usually it’s emitted before you actually setup the callback.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `loading` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `loading` event.
  */
 on(event: "loading", listener: () => any): this,
 
 /**
  * Emitted when the window is fully loaded, this event behaves the same with window.onload, but doesn’t rely on the DOM.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `loaded` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `loaded` event.
  */
 on(event: "loaded", listener: () => any): this,
 
 /**
  * Emitted when the document object in this window or a child iframe is available, after all files are loaded, but before DOM is constructed or any script is run.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `document-start` event.
-- (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `document-start` event.
+ * - (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
  */
 on(
 event: "document-start",
@@ -1192,94 +2073,118 @@ listener: (frame: HTMLIFrameElement | any) => any): this,
 
 /**
  * Emitted when the document object in this window or a child iframe is unloaded, but before the onunload event is emitted.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `document-end` event.
-- (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `document-end` event.
+ * - (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
  */
 on(event: "document-end", listener: (frame: HTMLIFrameElement | any) => any): this,
 
 /**
  * Emitted when window gets focus.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `focus` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `focus` event.
  */
 on(event: "focus", listener: () => any): this,
 
 /**
  * Emitted when window loses focus.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `blur` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `blur` event.
  */
 on(event: "blur", listener: () => any): this,
 
 /**
  * Emitted when window is minimized.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `minimize` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `minimize` event.
  */
 on(event: "minimize", listener: () => any): this,
 
 /**
  * Emitted when window is restored from minimize, maximize and fullscreen state.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `restore` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `restore` event.
  */
 on(event: "restore", listener: () => any): this,
 
 /**
  * Emitted when window is maximized.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `maximize` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `maximize` event.
  */
 on(event: "maximize", listener: () => any): this,
 
 /**
  * Emitted after window is moved.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `move` event.
-- (optional) x {Integer} The new location of the left corner of the window.
-- (optional) y {Integer} The new location of the top corner of the window.
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `move` event.
+ * - (optional) x {Integer} The new location of the left corner of the window.
+ * - (optional) y {Integer} The new location of the top corner of the window.
  */
 on(event: "move", listener: (x?: number, y?: number) => any): this,
 
 /**
  * Emitted after window is resized.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `resize` event.
-- (optional) width {Integer} The new width of the window.
-- (optional) height {Integer} The new height of the window.
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `resize` event.
+ * - (optional) width {Integer} The new width of the window.
+ * - (optional) height {Integer} The new height of the window.
  */
 on(event: "resize", listener: (width?: number, height?: number) => any): this,
 
 /**
  * Emitted when window enters fullscreen state.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `enter-fullscreen` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `enter-fullscreen` event.
  */
 on(event: "enter-fullscreen", listener: () => any): this,
 
 /**
  * Emitted when window zooming changed.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `zoom` event.
-- (optional) zoom {Integer} Indicating the new zoom level
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `zoom` event.
+ * - (optional) zoom {Integer} Indicating the new zoom level
  */
 on(event: "zoom", listener: (zoom?: number) => any): this,
 
 /**
  * Emitted after Devtools is closed.
- * @param {string} event Event name
- * @param {function} listener The callback that handles the `devtools-closed` event.
+ * @param {string} event
+ * Event name
+ * @param {function} listener
+ * The callback that handles the `devtools-closed` event.
  */
 on(event: "devtools-closed", listener: () => any): this,
 
 /**
  * Emitted when a new window is requested from this window or a child iframe.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `new-win-policy` event.
-- (optional) frame {HTMLIFrameElement} Is the object of the child iframe where the request is from, or null if it’s from the top window.
-- (optional) url {string} Is the address of the requested link
-- (optional) policy {Object} Is an object contain window policy.
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `new-win-policy` event.
+ * - (optional) frame {HTMLIFrameElement} Is the object of the child iframe where the request is from, or null if it’s from the top window.
+ * - (optional) url {string} Is the address of the requested link
+ * - (optional) policy {Object} Is an object contain window policy.
  */
 on(
 event: "new-win-policy",
@@ -1287,11 +2192,13 @@ listener: (frame?: HTMLIFrameElement | any, url?: string, policy?: WinPolicy) =>
 
 /**
  * Emitted when navigating to another page.
- * @param {string} event Event name
- * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener The callback that handles the `navigation` event.
-- (optional) frame {HTMLIFrameElement} Is the object of the child iframe where the request is from, or null if it’s from the top window.
-- (optional) url {string} Is the address of the requested link
-- (optional) policy {Object} Is an object contain window policy.
+ * @param {string} event
+ * Event name
+ * @param {"NO PRINT IMPLEMENTED: JSDocFunctionType"} listener
+ * The callback that handles the `navigation` event.
+ * - (optional) frame {HTMLIFrameElement} Is the object of the child iframe where the request is from, or null if it’s from the top window.
+ * - (optional) url {string} Is the address of the requested link
+ * - (optional) policy {Object} Is an object contain window policy.
  */
 on(
 event: "navigation",
@@ -1302,8 +2209,8 @@ policy?: WinNavigationPolicy) => any): this
 } & EventEmitter
 
     }
-
-	
+declare module 'nw.js' {
+        
       declare var npm$namespace$nw: {
         
         App: typeof nw$App,
@@ -1316,7 +2223,7 @@ Window: typeof nw$Window,
 /**
  * Application General Functionality And Properties.
  */
-declare export interface nw$App {
+export interface nw$App {
 
 /**
  * Get the filtered command line arguments when starting the app.
@@ -1365,14 +2272,17 @@ crashRenderer(): void,
 
 /**
  * Query the proxy to be used for loading `url` in DOM.
- * @param {string} url the URL to query for proxy
- * @returns {string} Proxy config that is in the same format used in PAC (e.g. "DIRECT", "PROXY localhost:8080").
+ * @param {string} url
+ * the URL to query for proxy
+ * @returns {string}
+ * Proxy config that is in the same format used in PAC (e.g. "DIRECT", "PROXY localhost:8080").
  */
 getProxyForURL(url: string): string,
 
 /**
  * Set the proxy config which the web engine will be used to request network resources.
- * @param {string} config Proxy rules
+ * @param {string} config
+ * Proxy rules
  */
 setProxyConfig(config: string): void,
 
@@ -1383,10 +2293,14 @@ quit(): void,
 
 /**
  * Add an entry to the whitelist used for controlling cross-origin access.
- * @param {string} sourceOrigin The source origin. e.g. https://github.com/
- * @param {string} destinationProtocol The destination protocol where the sourceOrigin can access to. e.g. app
- * @param {string} destinationHost The destination host where the sourceOrigin can access to. e.g. myapp
- * @param {Boolean} allowDestinationSubdomains If set to true, the sourceOrigin is allowed to access subdomains of
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
  */
 addOriginAccessWhitelistEntry(
 sourceOrigin: string,
@@ -1396,10 +2310,14 @@ allowDestinationSubdomains: boolean): void,
 
 /**
  * Remove an entry from the whitelist used for controlling cross-origin access.
- * @param {string} sourceOrigin The source origin. e.g. https://github.com/
- * @param {string} destinationProtocol The destination protocol where the sourceOrigin can access to. e.g. app
- * @param {string} destinationHost The destination host where the sourceOrigin can access to. e.g. myapp
- * @param {Boolean} allowDestinationSubdomains If set to true, the sourceOrigin is allowed to access subdomains of
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
  */
 removeOriginAccessWhitelistEntry(
 sourceOrigin: string,
@@ -1409,29 +2327,169 @@ allowDestinationSubdomains: boolean): void,
 
 /**
  * Register a global keyboard shortcut (also known as system-wide hot key) to the system.
- * @param {nw$Shortcut} shortcut the Shortcut object to register.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
  */
 registerGlobalHotKey(shortcut: nw$Shortcut): void,
 
 /**
  * Unregisters a global keyboard shortcut.
- * @param {nw$Shortcut} shortcut the Shortcut object to register.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
  */
 unregisterGlobalHotKey(shortcut: nw$Shortcut): void,
 on(event: string, listener: Function): this,
 
 /**
  * Emitted when users opened a file with your app.
- * @param {string} event Event name
- * @param {Function} listener (args?)} The callback that handles the `open` event.
-- (optional) args {string} the full command line of the program.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (args?)} The callback that handles the `open` event.
+ * - (optional) args {string} the full command line of the program.
  */
 on(event: "open", listener: (args?: string) => any): this,
 
 /**
  * This event is sent when the user clicks the dock icon for an already running application. This is a Mac specific feature.
- * @param {string} event Event name
- * @param {Function} listener The callback that handles the `reopen` event.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `reopen` event.
+ */
+on(event: "reopen", listener: () => any): this,
+
+/**
+ * Get the filtered command line arguments when starting the app.
+ */
+argv: string[],
+
+/**
+ * Get all the command line arguments when starting the app.
+ */
+fullArgv: string[],
+
+/**
+ * Get a list of patterns of filtered command line arguments used by `App.argv`.
+ */
+filteredArgv: Object[],
+
+/**
+ * Get the application's data path in user's directory.
+ */
+dataPath: string,
+
+/**
+ * Get the json object of the manifest file.
+ */
+manifest: any,
+
+/**
+ * Clear the HTTP cache in memory and the one on disk. This method call is synchronized.
+ */
+clearCache(): void,
+
+/**
+ * Send the `close` event to all windows of current app.
+ */
+closeAllWindows(): void,
+
+/**
+ * Crash the browser process to test the Crash dump feature.
+ */
+crashBrowser(): void,
+
+/**
+ * Crash the renderer process to test the Crash dump feature.
+ */
+crashRenderer(): void,
+
+/**
+ * Query the proxy to be used for loading `url` in DOM.
+ * @param {string} url
+ * the URL to query for proxy
+ * @returns {string}
+ * Proxy config that is in the same format used in PAC (e.g. "DIRECT", "PROXY localhost:8080").
+ */
+getProxyForURL(url: string): string,
+
+/**
+ * Set the proxy config which the web engine will be used to request network resources.
+ * @param {string} config
+ * Proxy rules
+ */
+setProxyConfig(config: string): void,
+
+/**
+ * Quit current app.
+ */
+quit(): void,
+
+/**
+ * Add an entry to the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+addOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Remove an entry from the whitelist used for controlling cross-origin access.
+ * @param {string} sourceOrigin
+ * The source origin. e.g. https://github.com/
+ * @param {string} destinationProtocol
+ * The destination protocol where the sourceOrigin can access to. e.g. app
+ * @param {string} destinationHost
+ * The destination host where the sourceOrigin can access to. e.g. myapp
+ * @param {Boolean} allowDestinationSubdomains
+ * If set to true, the sourceOrigin is allowed to access subdomains of
+ */
+removeOriginAccessWhitelistEntry(
+sourceOrigin: string,
+destinationProtocol: string,
+destinationHost: string,
+allowDestinationSubdomains: boolean): void,
+
+/**
+ * Register a global keyboard shortcut (also known as system-wide hot key) to the system.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+registerGlobalHotKey(shortcut: nw$Shortcut): void,
+
+/**
+ * Unregisters a global keyboard shortcut.
+ * @param {nw$Shortcut} shortcut
+ * the Shortcut object to register.
+ */
+unregisterGlobalHotKey(shortcut: nw$Shortcut): void,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when users opened a file with your app.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (args?)} The callback that handles the `open` event.
+ * - (optional) args {string} the full command line of the program.
+ */
+on(event: "open", listener: (args?: string) => any): this,
+
+/**
+ * This event is sent when the user clicks the dock icon for an already running application. This is a Mac specific feature.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `reopen` event.
  */
 on(event: "reopen", listener: () => any): this
 } 
@@ -1440,11 +2498,19 @@ on(event: "reopen", listener: () => any): this
 /**
  * `Clipboard` is an abstraction of clipboard for Windows, Linux and Mac.
  */
-declare export interface nw$Clipboard {
+export interface nw$Clipboard {
 
 /**
  * Get the clipboard object.
- * @returns {nw$Clipboard} the clipboard object.
+ * @returns {nw$Clipboard}
+ * the clipboard object.
+ */
+get(): NWJS_Helpers.clip,
+
+/**
+ * Get the clipboard object.
+ * @returns {nw$Clipboard}
+ * the clipboard object.
  */
 get(): NWJS_Helpers.clip
 } 
@@ -1457,7 +2523,8 @@ declare class nw$Menu  {
 
 /**
  * Create a Menu object.
- * @param {Object} option (Optional) Option to customize returned menu object.
+ * @param {Object} option
+ * (Optional) Option to customize returned menu object.
  */
 constructor(option?: NWJS_Helpers.MenuOption): this;
 
@@ -1468,40 +2535,49 @@ items: nw$MenuItem[];
 
 /**
  * Append `item` to the tail of the menu.
- * @param {nw$MenuItem} item the item to be appended to the tail of the menu
+ * @param {nw$MenuItem} item
+ * the item to be appended to the tail of the menu
  */
 append(item: nw$MenuItem): void;
 
 /**
  * Insert the `item` at `i`th position of the menu. The index is started from 0.
- * @param {nw$MenuItem} item the item to be inserted into the menu
- * @param {Integer} i the index in the menu list to insert the the item
+ * @param {nw$MenuItem} item
+ * the item to be inserted into the menu
+ * @param {Integer} i
+ * the index in the menu list to insert the the item
  */
 insert(item: nw$MenuItem, i: number): void;
 
 /**
  * Remove `item` from the menu.
- * @param {nw$MenuItem} item the item to be removed
+ * @param {nw$MenuItem} item
+ * the item to be removed
  */
 remove(item: nw$MenuItem): void;
 
 /**
  * Remove the `i`th item form the menu.
- * @param {Integer} i the index of the item to be removed from the menu
+ * @param {Integer} i
+ * the index of the item to be removed from the menu
  */
 removeAt(i: number): void;
 
 /**
  * Popup the context menu at the anchor in (`x`, `y`) in current window.
- * @param {Integer} x the x position of the anchor
- * @param {Integer} y the y position of the anchor
+ * @param {Integer} x
+ * the x position of the anchor
+ * @param {Integer} y
+ * the y position of the anchor
  */
 popup(x: number, y: number): void;
 
 /**
  * Creates the builtin menus (App, Edit and Window) within the menubar on Mac.
- * @param {string} appname The application name
- * @param {Object} options (Optional) Options to modify default `edit` and `window` MenuItems in Mac
+ * @param {string} appname
+ * The application name
+ * @param {Object} options
+ * (Optional) Options to modify default `edit` and `window` MenuItems in Mac
  */
 createMacBuiltin(appname: string, options?: NWJS_Helpers.CreateMacBuiltinOption): void
 }
@@ -1514,7 +2590,8 @@ declare class nw$MenuItem mixins NWJS_Helpers.EventEmitter {
 
 /**
  * Create a new MenuItem.
- * @param {Object} option Customize how MenuItem render and behave.
+ * @param {Object} option
+ * Customize how MenuItem render and behave.
  */
 constructor(option: NWJS_Helpers.MenuItemOption): this;
 
@@ -1576,8 +2653,10 @@ on(event: string, listener: Function): this;
 
 /**
  * Emitted when user activates the menu item.
- * @param {string} event Event name
- * @param {Function} listener The callback that handles the `click` event.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `click` event.
  */
 on(event: "click", listener: () => any): this
 }
@@ -1600,9 +2679,11 @@ Init(): void,
 screens: NWJS_Helpers.screen[],
 
 /**
- * @param {string[]} sources Array of source types.
- * @param {Function} callback callback function with chosed streamId.
-- (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
+ * @param {string[]} sources
+ * Array of source types.
+ * @param {Function} callback
+ * callback function with chosed streamId.
+ * - (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
  */
 chooseDesktopMedia(sources: string[], callback: (streamId?: string | boolean) => void): void,
 
@@ -1614,9 +2695,11 @@ on(event: string, listener: Function): this,
 
 /**
  * Emitted when the screen resolution, arrangement is changed.
- * @param {string} event Event name
- * @param {Function} listener (screen?)} The callback that handles the `displayBoundsChanged` event.
-- (optional) screen {screen} screen object
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayBoundsChanged` event.
+ * - (optional) screen {screen} screen object
  */
 on(
 event: "displayBoundsChanged",
@@ -1624,17 +2707,78 @@ listener: (screen: NWJS_Helpers.screen) => any): this,
 
 /**
  * Emitted when a new screen added.
- * @param {string} event Event name
- * @param {Function} listener (screen?)} The callback that handles the `displayAdded` event.
-- (optional) screen {screen} screen object
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayAdded` event.
+ * - (optional) screen {screen} screen object
  */
 on(event: "displayAdded ", listener: (screen: NWJS_Helpers.screen) => any): this,
 
 /**
  * Emitted when existing screen removed.
- * @param {string} event Event name
- * @param {Function} listener (screen?)} The callback that handles the `displayRemoved` event.
-- (optional) screen {screen} screen object
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayRemoved` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayRemoved ", listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Init the Screen singleton object, you only need to call this once.
+ */
+Init(): void,
+
+/**
+ * Get the array of screen (number of screen connected to the computer)
+ */
+screens: NWJS_Helpers.screen[],
+
+/**
+ * @param {string[]} sources
+ * Array of source types.
+ * @param {Function} callback
+ * callback function with chosed streamId.
+ * - (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
+ */
+chooseDesktopMedia(sources: string[], callback: (streamId?: string | boolean) => void): void,
+
+/**
+ * Use this API to monitor the changes of screens and windows on desktop. This is an instance of EventEmitter.
+ */
+DesktopCaptureMonitor: NWJS_Helpers.DesktopCaptureMonitor,
+on(event: string, listener: Function): this,
+
+/**
+ * Emitted when the screen resolution, arrangement is changed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayBoundsChanged` event.
+ * - (optional) screen {screen} screen object
+ */
+on(
+event: "displayBoundsChanged",
+listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when a new screen added.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayAdded` event.
+ * - (optional) screen {screen} screen object
+ */
+on(event: "displayAdded ", listener: (screen: NWJS_Helpers.screen) => any): this,
+
+/**
+ * Emitted when existing screen removed.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (screen?)} The callback that handles the `displayRemoved` event.
+ * - (optional) screen {screen} screen object
  */
 on(event: "displayRemoved ", listener: (screen: NWJS_Helpers.screen) => any): this
 } & NWJS_Helpers.EventEmitter
@@ -1648,19 +2792,43 @@ declare interface nw$Shell {
 
 /**
  * Open the given external URI in the desktop"s default manner.
- * @param {string} uri A URL to open in system default manner.
+ * @param {string} uri
+ * A URL to open in system default manner.
  */
 openExternal(uri: string): void,
 
 /**
  * Open the given file_path in the desktop"s default manner.
- * @param {string} file_path path to a local file
+ * @param {string} file_path
+ * path to a local file
  */
 openItem(file_path: string): void,
 
 /**
  * Show the given file_path in the parent folder with file manager. If possible, select the file.
- * @param {string} file_path path to a local file
+ * @param {string} file_path
+ * path to a local file
+ */
+showItemInFolder(file_path: string): void,
+
+/**
+ * Open the given external URI in the desktop"s default manner.
+ * @param {string} uri
+ * A URL to open in system default manner.
+ */
+openExternal(uri: string): void,
+
+/**
+ * Open the given file_path in the desktop"s default manner.
+ * @param {string} file_path
+ * path to a local file
+ */
+openItem(file_path: string): void,
+
+/**
+ * Show the given file_path in the parent folder with file manager. If possible, select the file.
+ * @param {string} file_path
+ * path to a local file
  */
 showItemInFolder(file_path: string): void
 } 
@@ -1673,7 +2841,8 @@ declare export class nw$Shortcut mixins NWJS_Helpers.EventEmitter {
 
 /**
  * Create new Shortcut.
- * @param {Object} option Shortcut option is an object contains initial settings for the Shortcut.
+ * @param {Object} option
+ * Shortcut option is an object contains initial settings for the Shortcut.
  */
 constructor(option: NWJS_Helpers.ShortcutOption): this;
 
@@ -1684,7 +2853,8 @@ active: Function;
 
 /**
  * Get or set the failed callback of a Shortcut. It will be called when application passes an invalid key , or failed to register the key.
- * @param {string} msg Failure message
+ * @param {string} msg
+ * Failure message
  */
 failed: (msg?: string) => any;
 
@@ -1696,16 +2866,20 @@ on(event: string, listener: Function): this;
 
 /**
  * Get or set the active callback of a Shortcut. It will be called when user presses the shortcut.
- * @param {string} event Event name
- * @param {Function} listener The callback that handles the `active` event.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `active` event.
  */
 on(event: "active", listener: () => any): this;
 
 /**
  * Get or set the failed callback of a Shortcut. It will be called when application passes an invalid key, or failed to register the key.
- * @param {string} event Event name
- * @param {Function} listener (msg?)} The callback that handles the `failed` event.
-- (optional) msg {string} Failure message
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * (msg?)} The callback that handles the `failed` event.
+ * - (optional) msg {string} Failure message
  */
 on(event: "failed", listener: (msg?: string) => any): this
 }
@@ -1718,7 +2892,8 @@ declare export class nw$Tray mixins NWJS_Helpers.EventEmitter {
 
 /**
  * Create a new Tray.
- * @param {Object} option Contains initial settings for the Tray.
+ * @param {Object} option
+ * Contains initial settings for the Tray.
  */
 constructor(option: NWJS_Helpers.TrayOption): this;
 
@@ -1760,8 +2935,10 @@ on(event: string, listener: Function): this;
 
 /**
  * Emitted when user clicks the menu item with left mouse button.
- * @param {string} event Event name
- * @param {Function} listener The callback that handles the `click` event.
+ * @param {string} event
+ * Event name
+ * @param {Function} listener
+ * The callback that handles the `click` event.
  */
 on(event: "click ", listener: () => any): this
 }
@@ -1774,16 +2951,42 @@ declare type nw$Window = {
 
 /**
  * Get the native Window Object.
- * @param {DOM} event Window} (Optional) Is the DOM window
+ * @param {DOM} event
+ * Window} (Optional) Is the DOM window
  */
 get(window_object?: Object): NWJS_Helpers.win,
 
 /**
  * Open a new window and load url in it.
- * @param {string} url URL to be loaded in the opened window
- * @param {{[key: string]: any}} option (Optional) New window open options like window subfields in manifest format plus some more options
- * @param {string} callback (Optional) Callback when with the opened native Window object
-- (Optional) new_win {object} New opened window object.
+ * @param {string} url
+ * URL to be loaded in the opened window
+ * @param {{[key: string]: any}} option
+ * (Optional) New window open options like window subfields in manifest format plus some more options
+ * @param {string} callback
+ * (Optional) Callback when with the opened native Window object
+ * - (Optional) new_win {object} New opened window object.
+ */
+open(
+url: string,
+option?: NWJS_Helpers.WindowOpenOption,
+callback?: (new_win?: NWJS_Helpers.win) => void): void,
+
+/**
+ * Get the native Window Object.
+ * @param {DOM} event
+ * Window} (Optional) Is the DOM window
+ */
+get(window_object?: Object): NWJS_Helpers.win,
+
+/**
+ * Open a new window and load url in it.
+ * @param {string} url
+ * URL to be loaded in the opened window
+ * @param {{[key: string]: any}} option
+ * (Optional) New window open options like window subfields in manifest format plus some more options
+ * @param {string} callback
+ * (Optional) Callback when with the opened native Window object
+ * - (Optional) new_win {object} New opened window object.
  */
 open(
 url: string,
@@ -1806,6 +3009,11 @@ declare export var nw$Window: nw$Window;
 	declare export class MenuItem mixins nw$nw$MenuItem {}
 	declare export class Shortcut mixins nw$nw$Shortcut {}
 	declare export class Tray mixins nw$nw$Tray {}
+	declare export var nw$App: nw$nw$App;
+	declare export var nw$Clipboard: nw$nw$Clipboard;
+	declare export var nw$Screen: nw$nw$Screen;
+	declare export var nw$Shell: nw$nw$Shell;
+	declare export var nw$Window: nw$nw$Window;
 	declare export var nw$App: nw$nw$App;
 	declare export var nw$Clipboard: nw$nw$Clipboard;
 	declare export var nw$Screen: nw$nw$Screen;

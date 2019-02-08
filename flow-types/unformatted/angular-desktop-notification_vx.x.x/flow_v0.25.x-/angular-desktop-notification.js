@@ -1,10 +1,4 @@
-declare module 'angular-desktop-notification' {
-        import typeof * as angular from 'angular';
-
-	declare var _: string;
-	declare module.exports: typeof _
-
-	declare module 'angular' {
+declare module 'angular' {
         
 /**
  * All options available during show notification according to https://developer.mozilla.org/en-US/docs/Web/API/notification
@@ -168,5 +162,10 @@ title: string,
 options?: NotificationOptions | desktopNotification$AugmentedNotificationOptions): void
 } 
     }
+declare module 'angular-desktop-notification' {
+        import typeof * as angular from 'angular';
+
+	declare var _: string;
+	declare export default typeof _
 
     }

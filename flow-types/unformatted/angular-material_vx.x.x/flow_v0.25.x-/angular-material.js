@@ -1,10 +1,4 @@
-declare module 'angular-material' {
-        import typeof * as angular from 'angular';
-
-	declare var _: string;
-	declare module.exports: typeof _
-
-	declare module 'angular' {
+declare module 'angular' {
         declare interface material$IAriaProvider {
 disableWarnings(): void
 } 
@@ -540,5 +534,10 @@ configure(options: material$IProgressCircularConfig): void
 
 declare type material$IStickyService = (scope: IScope, element: JQuery, elementClone?: JQuery) => void;
     }
+declare module 'angular-material' {
+        import typeof * as angular from 'angular';
+
+	declare var _: string;
+	declare export default typeof _
 
     }

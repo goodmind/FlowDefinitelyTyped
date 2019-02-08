@@ -1,4 +1,4 @@
-declare export interface Express$Request {
+export interface Express$Request {
 csrfToken(): string
 } declare module 'csurf' {
         declare function csurf(
@@ -9,10 +9,10 @@ ignoreMethods?: string[],
 sessionKey?: string
 }): express.RequestHandler
 
-	declare export type csurf$CookieOptions = {
+	export type csurf$CookieOptions = {
 key: string
 } & express.csurf$CookieOptions
 
-	declare module.exports: typeof csurf
+	declare export default typeof csurf
 
     }

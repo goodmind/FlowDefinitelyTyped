@@ -1,5 +1,38 @@
-declare module 'strophe.js' {
-        
+declare module '$pres' {
+        declare export default typeof $pres
+
+    }
+declare module '$iq' {
+        declare export default typeof $iq
+
+    }
+declare module '$msg' {
+        declare export default typeof $msg
+
+    }
+declare module '$build' {
+        declare export default typeof $build
+
+    }
+declare module 'global' {
+        declare var Strophe: typeof _Strophe;
+	declare type Strophe$Status = _Strophe.Strophe$Status;
+
+declare type Strophe$LogLevel = _Strophe.Strophe$LogLevel;
+
+declare type Strophe$Builder = _Strophe.Strophe$Builder;
+
+declare type Strophe$ConnectionOptions = _Strophe.Strophe$ConnectionOptions;
+
+declare type Strophe$Connection = _Strophe.Strophe$Connection;
+
+declare type Strophe$SASLMechanism = _Strophe.Strophe$SASLMechanism;
+	declare var $build: typeof _$build;
+	declare var $msg: typeof _$msg;
+	declare var $iq: typeof _$iq;
+	declare var $pres: typeof _$pres;
+    }
+
       declare var npm$namespace$Strophe: {
         addNamespace: typeof Strophe$addNamespace,
 forEachChild: typeof Strophe$forEachChild,
@@ -665,12 +698,7 @@ t(text: string): Strophe$Builder;
 h(html: string): Strophe$Builder
 }
 
-declare interface Strophe$ConnectionOptions {
-keepalive?: boolean,
-protocol?: string,
-sync?: boolean,
-"NO PRINT IMPLEMENTED: function Object() { [native code] }"
-} 
+declare type Strophe$ConnectionOptions = _Strophe.Strophe$ConnectionOptions;
 
 
 /**
@@ -1152,64 +1180,7 @@ deleteHandler(handRef: any): void;
 disconnect(reason: string): void
 }
 
-
-/**
- * Interface: Strophe.SASLMechanism
- * 
- * encapsulates SASL authentication mechanisms.
- * 
- * User code may override the priority for each mechanism or disable it completely.
- * See <priority> for information about changing priority and <test> for informatian on
- * how to disable a mechanism.
- * 
- * By default, all mechanisms are enabled and the priorities are
- * 
- * SCRAM-SHA1 - 40
- * DIGEST-MD5 - 30
- * Plain - 20
- */
-declare interface Strophe$SASLMechanism {
-
-/**
- * Function: test
- * Checks if mechanism able to run.
- * To disable a mechanism, make this return false;
- * 
- * To disable plain authentication run
- * > Strophe.SASLPlain.test = function() {
- * >   return false;
- * > }
- * 
- * See <SASL mechanisms> for a list of available mechanisms.
- * 
- * Parameters:
- *    (Strophe.Connection) connection - Target Connection.
- * 
- * Returns:
- *    (Boolean) If mechanism was able to run.
- */
-test(connection: Strophe$Connection): boolean,
-
-/**
- * Variable: priority
- * Determines which <SASLMechanism> is chosen for authentication (Higher is better).
- * Users may override this to prioritize mechanisms differently.
- * 
- * In the default configuration the priorities are
- * 
- * SCRAM-SHA1 - 40
- * DIGEST-MD5 - 30
- * Plain - 20
- * 
- * Example: (This will cause Strophe to choose the mechanism that the server sent first)
- * 
- * > Strophe.SASLMD5.priority = Strophe.SASLSHA1.priority;
- * 
- * See <SASL mechanisms> for a list of available mechanisms.
- */
-priority: number,
-"NO PRINT IMPLEMENTED: function Object() { [native code] }"
-} 
+declare type Strophe$SASLMechanism = _Strophe.Strophe$SASLMechanism;
 
 
 /**
@@ -1227,8 +1198,8 @@ declare var Strophe$SASLPlain: Strophe$SASLMechanism;
 
 declare var Strophe$SASLSHA1: Strophe$SASLMechanism;
 
-declare var Strophe$SASLMD5: Strophe$SASLMechanism;
-	
+declare var Strophe$SASLMD5: Strophe$SASLMechanism;declare module 'strophe.js' {
+        
 /**
  * Function: $build
  * Create a Strophe.Builder.
@@ -1294,73 +1265,11 @@ declare type Strophe$LogLevel = _Strophe.Strophe$LogLevel;
 
 declare type Strophe$Builder = _Strophe.Strophe$Builder;
 
-declare interface Strophe$ConnectionOptions {
-keepalive?: boolean,
-protocol?: string,
-sync?: boolean,
-"NO PRINT IMPLEMENTED: function Object() { [native code] }"
-} 
+declare type Strophe$ConnectionOptions = _Strophe.Strophe$ConnectionOptions;
 
 declare type Strophe$Connection = _Strophe.Strophe$Connection;
 
-
-/**
- * Interface: Strophe.SASLMechanism
- * 
- * encapsulates SASL authentication mechanisms.
- * 
- * User code may override the priority for each mechanism or disable it completely.
- * See <priority> for information about changing priority and <test> for informatian on
- * how to disable a mechanism.
- * 
- * By default, all mechanisms are enabled and the priorities are
- * 
- * SCRAM-SHA1 - 40
- * DIGEST-MD5 - 30
- * Plain - 20
- */
-declare interface Strophe$SASLMechanism {
-
-/**
- * Function: test
- * Checks if mechanism able to run.
- * To disable a mechanism, make this return false;
- * 
- * To disable plain authentication run
- * > Strophe.SASLPlain.test = function() {
- * >   return false;
- * > }
- * 
- * See <SASL mechanisms> for a list of available mechanisms.
- * 
- * Parameters:
- *    (Strophe.Connection) connection - Target Connection.
- * 
- * Returns:
- *    (Boolean) If mechanism was able to run.
- */
-test(connection: Strophe$Connection): boolean,
-
-/**
- * Variable: priority
- * Determines which <SASLMechanism> is chosen for authentication (Higher is better).
- * Users may override this to prioritize mechanisms differently.
- * 
- * In the default configuration the priorities are
- * 
- * SCRAM-SHA1 - 40
- * DIGEST-MD5 - 30
- * Plain - 20
- * 
- * Example: (This will cause Strophe to choose the mechanism that the server sent first)
- * 
- * > Strophe.SASLMD5.priority = Strophe.SASLSHA1.priority;
- * 
- * See <SASL mechanisms> for a list of available mechanisms.
- */
-priority: number,
-"NO PRINT IMPLEMENTED: function Object() { [native code] }"
-} 
+declare type Strophe$SASLMechanism = _Strophe.Strophe$SASLMechanism;
 	declare var $build: typeof _$build;
 	declare var $msg: typeof _$msg;
 	declare var $iq: typeof _$iq;
@@ -1368,22 +1277,22 @@ priority: number,
     }
 
 	declare module '$build' {
-        declare module.exports: typeof $build
+        declare export default typeof $build
 
     }
 
 	declare module '$msg' {
-        declare module.exports: typeof $msg
+        declare export default typeof $msg
 
     }
 
 	declare module '$iq' {
-        declare module.exports: typeof $iq
+        declare export default typeof $iq
 
     }
 
 	declare module '$pres' {
-        declare module.exports: typeof $pres
+        declare export default typeof $pres
 
     }
 

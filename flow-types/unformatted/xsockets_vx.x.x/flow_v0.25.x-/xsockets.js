@@ -1,5 +1,4 @@
-declare module 'xsockets' {
-        declare export class XSockets$WebSocket  {
+declare export class XSockets$WebSocket  {
 id: string;
 constructor(url: string, subprotocol?: string, settings?: any): this;
 on(
@@ -19,7 +18,7 @@ unbind(event: string): void;
 publish(topic: string, data: any): void
 }
 
-declare export interface XSockets$ConfirmationArgument {
+export interface XSockets$ConfirmationArgument {
 event: string
 } 
 
@@ -45,5 +44,6 @@ declare module 'Events' {
     }
 
     }
-
+declare module 'xsockets' {
+        
     }

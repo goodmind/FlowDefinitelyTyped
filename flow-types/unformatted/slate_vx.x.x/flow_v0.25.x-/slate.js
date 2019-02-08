@@ -1,3 +1,17 @@
+
+      declare var npm$namespace$KeyUtils: {
+        create: typeof KeyUtils$create,
+setGenerator: typeof KeyUtils$setGenerator,
+resetGenerator: typeof KeyUtils$resetGenerator,
+        
+      }
+declare function KeyUtils$create(key?: string): string
+
+
+declare function KeyUtils$setGenerator(func: () => any): void
+
+
+declare function KeyUtils$resetGenerator(): void
 declare module 'slate' {
         import typeof * as Immutable from 'immutable';
 
@@ -5,7 +19,7 @@ declare module 'slate' {
           SyntheticEvent
         } from 'react';
 
-	declare export class Data mixins "NO PRINT IMPLEMENTED: CallExpression" {
+	declare export class Data mixins Immutable.RecordFactory<{[key: string]: any}> {
 [key: string]: any;
 static create(properties: {[key: string]: any}): Data;
 static fromJSON(object: {[key: string]: any}): Data;
@@ -718,21 +732,6 @@ invert: (operation: Operation) => Operation
 code: ErrorCode;
 [key: string]: any
 }
-	
-      declare var npm$namespace$KeyUtils: {
-        create: typeof KeyUtils$create,
-setGenerator: typeof KeyUtils$setGenerator,
-resetGenerator: typeof KeyUtils$resetGenerator,
-        
-      }
-declare function KeyUtils$create(key?: string): string
-
-
-declare function KeyUtils$setGenerator(func: () => any): void
-
-
-declare function KeyUtils$resetGenerator(): void
-
 	declare export type useMemoization = () => void;
 	declare export type resetMemoization = () => void;
 	declare export interface PathUtils {

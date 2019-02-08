@@ -1,5 +1,8 @@
-declare module 'morris.js' {
-        declare type morris$AutoAlways = "auto" | "always";
+declare module 'morris' {
+        declare export default typeof Morris
+
+    }
+declare type morris$AutoAlways = "auto" | "always";
 
 declare type morris$Interval = "decade"
 | "year"
@@ -326,9 +329,9 @@ Bar: (options: morris$IBarOptions) => morris$GridChart;
  * Create a Donut chart.
  */
 Donut: (options: morris$IDonutOptions) => morris$DonutChart
-}
-	declare module 'morris' {
-        declare module.exports: typeof Morris
+}declare module 'morris.js' {
+        declare module 'morris' {
+        declare export default typeof Morris
 
     }
 

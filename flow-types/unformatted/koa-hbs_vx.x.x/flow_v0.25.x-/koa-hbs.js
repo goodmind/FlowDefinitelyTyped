@@ -1,9 +1,14 @@
-declare module 'koa-hbs' {
-        import typeof * as Koa from 'koa';
-
-	import typeof * as Handlebars from 'handlebars';
-
-	declare export interface Hbs$Middleware {
+declare module 'koa' {
+        declare export interface Context {
+render(tpl: string, locals?: {
+[key: string]: any
+}): Promise<void>,
+render(tpl: string, locals?: {
+[key: string]: any
+}): Promise<void>
+} 
+    }
+export interface Hbs$Middleware {
 viewPath: Array<string> | string,
 handlebars?: Function,
 templateOptions?: {},
@@ -14,7 +19,11 @@ layoutsPath?: string,
 contentHelperName?: string,
 blockHelperName?: string,
 disableCache?: boolean
-} 
+} declare module 'koa-hbs' {
+        import typeof * as Koa from 'koa';
+
+	import typeof * as Handlebars from 'handlebars';
+
 	declare class Hbs  {
 constructor(): this;
 middleware(opts: Hbs$Hbs$Middleware): any;
@@ -23,10 +32,13 @@ SafeString: typeof undefined;
 Utils: typeof undefined
 }
 	declare var hbs: Hbs;
-	declare module.exports: typeof hbs
+	declare export default typeof hbs
 
 	declare module 'koa' {
         declare export interface Context {
+render(tpl: string, locals?: {
+[key: string]: any
+}): Promise<void>,
 render(tpl: string, locals?: {
 [key: string]: any
 }): Promise<void>

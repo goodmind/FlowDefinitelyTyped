@@ -1,10 +1,3 @@
-declare module 'ibm-mobilefirst' {
-        
-      declare var npm$namespace$WL: {
-        
-        Logger: typeof WL$Logger,
-ClientMessages: typeof WL$ClientMessages,
-      }
 
       declare var npm$namespace$Events: {
         
@@ -13,8 +6,13 @@ WORKLIGHT_IS_DISCONNECTED: typeof Events$WORKLIGHT_IS_DISCONNECTED,
       }
 declare var Events$WORKLIGHT_IS_CONNECTED: string;
 
-declare var Events$WORKLIGHT_IS_DISCONNECTED: string;
-
+declare var Events$WORKLIGHT_IS_DISCONNECTED: string;declare module 'ibm-mobilefirst' {
+        
+      declare var npm$namespace$WL: {
+        
+        Logger: typeof WL$Logger,
+ClientMessages: typeof WL$ClientMessages,
+      }
 
       declare var npm$namespace$AppProperty: {
         
@@ -147,7 +145,8 @@ declare function Analytics$log(message: string, name: string): void
 
 
 /**
- * @deprecated since version 6.2. WL.Analytics.restart is now a NOP.
+ * @deprecated
+ * since version 6.2. WL.Analytics.restart is now a NOP.
  */
 declare function Analytics$restart(): void
 
@@ -178,7 +177,8 @@ declare var BackgroundHandler$defaultIOSBehavior: BackgroundHandler$Handler;
 
 
 /**
- * @deprecated since version 6.0.0
+ * @deprecated
+ * since version 6.0.0
  */
 declare var BackgroundHandler$hideElements: BackgroundHandler$Handler;
 
@@ -290,7 +290,8 @@ declare type Client$InitOptions = {
 timeout?: number,
 
 /**
- * @deprecated since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
+ * @deprecated
+ * since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
  */
 enableLogger?: boolean,
 messages?: string,
@@ -298,7 +299,8 @@ authenticator?: Object,
 heartBeatIntervalInSecs?: number,
 
 /**
- * @deprecated . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
+ * @deprecated
+ * . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
  */
 connectOnStartup?: boolean,
 onConnectionFailure?: (response: WL$WL$FailureResponse) => void,
@@ -310,7 +312,8 @@ onUserInstanceAccessViolation?: (response: WL$WL$FailureResponse) => void,
 onErrorRemoteDisableDenial?: (response: WL$WL$FailureResponse) => void,
 
 /**
- * @deprecated since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
+ * @deprecated
+ * since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
  */
 onErrorAppVersionAccessDenial?: (response: WL$WL$FailureResponse) => void,
 validateArguments?: boolean,
@@ -400,7 +403,8 @@ declare function Client$getLoginName(realmName: string): string
 
 
 /**
- * @deprecated since version 7.0
+ * @deprecated
+ * since version 7.0
  */
 declare function Client$getRequiredAccessTokenScope(status: number, header: string): string
 
@@ -430,7 +434,8 @@ options?: Client$ProcedureInvocationOptions): JQueryDeferred<WL$Response>
 
 
 /**
- * @deprecated since version 4.1.3. Use WL.Device.getNetworkInfo instead.
+ * @deprecated
+ * since version 4.1.3. Use WL.Device.getNetworkInfo instead.
  */
 declare function Client$isConnected(): void
 
@@ -440,7 +445,8 @@ declare function Client$isUserAuthenticated(realm: string): boolean
 
 
 /**
- * @deprecated since version 7.0. Use WL.Logger instead.
+ * @deprecated
+ * since version 7.0. Use WL.Logger instead.
  */
 declare function Client$logActivity(activityType: string): void
 
@@ -456,7 +462,8 @@ declare function Client$minimize(): void
 
 
 /**
- * @deprecated since version 7.0
+ * @deprecated
+ * since version 7.0
  */
 declare function Client$obtainAccessToken(
 scope: string,
@@ -737,7 +744,8 @@ options: WL$WL$Options): JQueryDeferred<any>
 
 
 /**
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
 declare function JSONStore$clearPassword(): boolean
 
@@ -759,7 +767,8 @@ declare function JSONStore$commitTransaction(): JQueryDeferred<number>
 
 /**
  * Completely wipes data for all users, destroys the internal storage, and clears security artifacts.
- * @parameters options is
+ * @parameters
+ * options is
  * @deprecated
  */
 declare function JSONStore$destroy(username: string, options?: WL$WL$Options): JQueryDeferred<number>
@@ -767,7 +776,8 @@ declare function JSONStore$destroy(username: string, options?: WL$WL$Options): J
 
 
 /**
- * @deprecated since version 6.2.0.
+ * @deprecated
+ * since version 6.2.0.
  */
 declare function JSONStore$documentify(id: number, data: any): any
 
@@ -800,7 +810,8 @@ declare type JSONStore$InitOptions = {
 timeout?: number,
 
 /**
- * @deprecated since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
+ * @deprecated
+ * since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
  */
 enableLogger?: boolean,
 messages?: string,
@@ -808,7 +819,8 @@ authenticator?: Object,
 heartBeatIntervalInSecs?: number,
 
 /**
- * @deprecated . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
+ * @deprecated
+ * . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
  */
 connectOnStartup?: boolean,
 onConnectionFailure?: (response: WL$WL$FailureResponse) => void,
@@ -820,7 +832,8 @@ onUserInstanceAccessViolation?: (response: WL$WL$FailureResponse) => void,
 onErrorRemoteDisableDenial?: (response: WL$WL$FailureResponse) => void,
 
 /**
- * @deprecated since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
+ * @deprecated
+ * since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
  */
 onErrorAppVersionAccessDenial?: (response: WL$WL$FailureResponse) => void,
 validateArguments?: boolean,
@@ -839,7 +852,8 @@ declare function JSONStore$init(collections: any, options?: JSONStore$InitOption
 
 
 /**
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
 declare function JSONStore$initCollection(
 name: string,
@@ -871,7 +885,8 @@ declare function JSONStore$startTransaction(): JQueryDeferred<number>
 
 /**
  * Sets the password that is used to generate keys to encrypt data that is stored locally on the device.
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
 declare function JSONStore$usePassword(pwd: string): boolean
 
@@ -960,7 +975,8 @@ countAllDirty(options?: WL$WL$Options): JQueryDeferred<any>;
 enhance(name: string, fn: Function): number;
 
 /**
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.remove with {push: false}.
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.remove with {push: false}.
  */
 erase(doc: any, options?: JSONStore$EraseOptions): void;
 find(query: Object | Object[], options?: JSONStore$FindOptions): JQueryDeferred<any>;
@@ -969,23 +985,27 @@ findById(options?: WL$WL$Options): JQueryDeferred<any>;
 isDirty(doc: any, options?: WL$WL$Options): JQueryDeferred<boolean>;
 
 /**
- * @deprecated since version 6.2.0.
+ * @deprecated
+ * since version 6.2.0.
  */
 load(options?: WL$WL$Options): JQueryDeferred<any>;
 markClean(docs: any[], options?: WL$WL$Options): JQueryDeferred<any>;
 
 /**
- * @deprecated since version 6.2.0.
+ * @deprecated
+ * since version 6.2.0.
  */
 push(options?: any): JQueryDeferred<any>;
 
 /**
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.push.
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.push.
  */
 pushSelected(doc: any, options?: WL$WL$Options): JQueryDeferred<any>;
 
 /**
- * @deprecated since version 5.0.6. It is no longer needed if you use WL.JSONStore.JSONStoreInstance.replace with {push: false}.
+ * @deprecated
+ * since version 5.0.6. It is no longer needed if you use WL.JSONStore.JSONStoreInstance.replace with {push: false}.
  */
 refresh(doc: any, options?: JSONStore$RefreshOptions): JQueryDeferred<any>;
 remove(doc: any, options?: JSONStore$RemoveOptions): JQueryDeferred<any>;
@@ -1000,7 +1020,8 @@ options?: JSONStore$ReplaceOptions): JQueryDeferred<any>;
 
 /**
  * Writes data to a collection.
- * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.add with {push: false}.
+ * @deprecated
+ * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.add with {push: false}.
  */
 store(data: Object | Object[], options?: JSONStore$StoreOptions): void;
 toString(limit?: number, offset?: number): JQueryDeferred<number>
@@ -1133,12 +1154,14 @@ pkg?: string,
 tag?: WL$Tag,
 
 /**
- * @deprecated since version 6.2. use filters instead.
+ * @deprecated
+ * since version 6.2. use filters instead.
  */
 whitelist?: string[],
 
 /**
- * @deprecated since version 6.2. use filters instead.
+ * @deprecated
+ * since version 6.2. use filters instead.
  */
 blacklist?: string[],
 filters?: WL$Filter,
@@ -1209,12 +1232,14 @@ log(message: string): void;
 metadata(options: any): WL$LoggerObject;
 
 /**
- * @deprecated since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
+ * @deprecated
+ * since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
  */
 off(): WL$WL$LoggerObject;
 
 /**
- * @deprecated since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
+ * @deprecated
+ * since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
  */
 on(options: any): WL$WL$LoggerObject;
 
@@ -1224,7 +1249,8 @@ on(options: any): WL$WL$LoggerObject;
 send(): JQueryDeferred<any>;
 
 /**
- * @deprecated since version 6.2. Use WL.Logger.config instead. Sets options in native application layer (iOS and Android only)
+ * @deprecated
+ * since version 6.2. Use WL.Logger.config instead. Sets options in native application layer (iOS and Android only)
  */
 setNativeOptions(options?: WL$NativeOptions): void;
 

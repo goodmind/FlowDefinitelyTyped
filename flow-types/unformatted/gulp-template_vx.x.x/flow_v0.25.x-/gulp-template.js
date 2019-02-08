@@ -1,3 +1,9 @@
+
+      declare var npm$namespace$gulpTemplate: {
+        precompile: typeof gulpTemplate$precompile,
+        
+      }
+declare function gulpTemplate$precompile(options: _.TemplateOptions): stream.Transform
 declare module 'gulp-template' {
         import typeof * as _ from 'lodash';
 
@@ -5,13 +11,6 @@ declare module 'gulp-template' {
 
 	declare function gulpTemplate(data: any, options: _.TemplateOptions): stream.Transform
 
-	
-      declare var npm$namespace$gulpTemplate: {
-        precompile: typeof gulpTemplate$precompile,
-        
-      }
-declare function gulpTemplate$precompile(options: _.TemplateOptions): stream.Transform
-
-	declare module.exports: typeof gulpTemplate
+	declare export default typeof gulpTemplate
 
     }

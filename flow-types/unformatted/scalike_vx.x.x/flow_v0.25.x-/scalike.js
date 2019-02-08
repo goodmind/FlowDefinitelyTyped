@@ -1,5 +1,5 @@
 declare module 'scalike' {
-        declare module.exports: typeof scalike
+        declare export default typeof scalike
 
 	
       declare var npm$namespace$scalike: {
@@ -13,7 +13,7 @@ Failure: typeof scalike$Failure,
 Future: typeof scalike$Future,
         None: typeof scalike$None,
       }
-declare export interface scalike$Either<A, B> {
+export interface scalike$Either<A, B> {
 value: A | B,
 isLeft: boolean,
 isRight: boolean,
@@ -57,7 +57,7 @@ flatMap<X>(f: (a: B) => scalike$Either<A, X>): scalike$Either<A, X | B>;
 toOptional(): scalike$Optional<B>
 }
 
-declare export interface scalike$Optional<A> {
+export interface scalike$Optional<A> {
 isEmpty: boolean,
 nonEmpty: boolean,
 get(): A,
@@ -117,7 +117,7 @@ constructor(oa: scalike$Optional<A>, ob: scalike$Optional<B>, oc: scalike$Option
 run<G>(f: (a: A, b: B, c: C, d: D, e: E, f: F) => G): scalike$Optional<G>
 }
 
-declare export interface scalike$Try<A> {
+export interface scalike$Try<A> {
 isSuccess: boolean,
 isFailure: boolean,
 get(): A,
@@ -181,7 +181,7 @@ constructor(oa: scalike$Try<A>, ob: scalike$Try<B>, oc: scalike$Try<C>, od: scal
 run<G>(f: (a: A, b: B, c: C, d: D, e: E, f: F) => G): scalike$Try<G>
 }
 
-declare export interface scalike$Future<A> {
+export interface scalike$Future<A> {
 getPromise(): Promise<A>,
 onComplete<B>(f: (t: scalike$Try<A>) => B): void,
 isCompleted(): boolean,

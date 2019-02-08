@@ -1,11 +1,4 @@
-declare module 'needle' {
-        import typeof * as http from 'http';
-
-	import typeof * as Buffer from 'buffer';
-
-	import typeof * as https from 'https';
-
-	declare type core$NeedleResponse = {
+declare type core$NeedleResponse = {
 body: any,
 raw: Buffer,
 bytes: number,
@@ -244,13 +237,20 @@ declare type core$BodyData = Buffer
 | core$KeyValue
 | NodeJS.core$ReadableStream
 | string
-| null;
+| null;declare module 'needle' {
+        import typeof * as http from 'http';
+
+	import typeof * as Buffer from 'buffer';
+
+	import typeof * as https from 'https';
+
 	
 /**
  * Calling needle() directly returns a Promise.
  * 
  * Since needle 2.0
- * @param method Designates an HTTP verb for the request.
+ * @param method
+ * Designates an HTTP verb for the request.
  */
 declare function needle(
 method: core$core$NeedleReadonlyHttpVerbs,
@@ -262,8 +262,10 @@ options?: core$core$NeedleOptions): Promise<core$core$NeedleResponse>
  * Calling needle() directly returns a Promise.
  * 
  * Since needle 2.0
- * @param method Designates an HTTP verb for the request.
- * @param data May be null when issuing an HTTP DELETE request, but you need to explicity pass it.
+ * @param method
+ * Designates an HTTP verb for the request.
+ * @param data
+ * May be null when issuing an HTTP DELETE request, but you need to explicity pass it.
  */
 declare function needle(
 method: core$core$NeedleHttpVerbs,
@@ -442,7 +444,8 @@ declare export {
  * This not only allows for flexibility, but also lets you perform a GET request with data,
  * in which case will be appended to the request as a query string,
  * unless you pass a json: true option.
- * @param method Designates an HTTP verb for the request.
+ * @param method
+ * Designates an HTTP verb for the request.
  */
 declare export function needle$request(
 method: needle$NeedleHttpVerbs,
@@ -457,7 +460,8 @@ callback?: needle$NeedleCallback): needle$ReadableStream
  * This not only allows for flexibility, but also lets you perform a GET request with data,
  * in which case will be appended to the request as a query string,
  * unless you pass a json: true option.
- * @param method Designates an HTTP verb for the request.
+ * @param method
+ * Designates an HTTP verb for the request.
  */
 declare export function needle$request(
 method: needle$NeedleHttpVerbs,
@@ -466,6 +470,6 @@ data: needle$BodyData,
 options?: needle$NeedleOptions,
 callback?: needle$NeedleCallback): needle$ReadableStream
 
-	declare module.exports: typeof needle
+	declare export default typeof needle
 
     }

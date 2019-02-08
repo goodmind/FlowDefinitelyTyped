@@ -1,3 +1,22 @@
+declare class yog$Yog  {
+express: typeof express;
+app: express.Express;
+_: typeof _;
+log: log.Logger;
+ral: typeof undefined | typeof undefined;
+RAL: typeof undefined;
+ralP: typeof undefined;
+view: {
+cleanCache(): void
+};
+reloadApp(appName: string): void;
+reloadView(): void;
+reloadIsomorphic(): void;
+ROOT_PATH: string;
+bootstrap(option: YogBootstrapOption, callback?: () => void): void
+}declare module 'global' {
+        declare var yog: yog$yog$Yog;
+    }
 declare module 'yog2-kernel' {
         import typeof * as express from 'express';
 
@@ -8,10 +27,6 @@ declare module 'yog2-kernel' {
 	import typeof * as log from 'yog-log';
 
 	import typeof * as yogBigpipe from 'yog-bigpipe';
-
-	declare module 'global' {
-        declare var yog: yog$yog$Yog;
-    }
 
 	declare export interface YogBootstrapOption {
 rootPath?: string,

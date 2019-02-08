@@ -1,9 +1,4 @@
-declare module 'msportalfx-test' {
-        import typeof * as Q from 'q';
 
-	declare module.exports: typeof MsPortalTestFx
-
-	
       declare var npm$namespace$MsPortalTestFx: {
         
         portal: typeof MsPortalTestFx$portal,
@@ -253,17 +248,17 @@ isDisplayed(): Q.Promise<boolean>;
 getLocator(): MsPortalTestFx$Locators.Locator
 }
 
-declare export interface MsPortalTestFx$TestExtension {
+export interface MsPortalTestFx$TestExtension {
 name: string,
 uri: string
 } 
 
-declare export interface MsPortalTestFx$Feature {
+export interface MsPortalTestFx$Feature {
 name: string,
 value: string
 } 
 
-declare export interface MsPortalTestFx$PortalContext {
+export interface MsPortalTestFx$PortalContext {
 capabilities: {
 browserName: string,
 chromeOptions: {
@@ -346,5 +341,9 @@ constructor(): this;
 getTiles(): Q.Promise<MsPortalTestFx$Parts.Tile[]>
 }
 
-declare export var MsPortalTestFx$portal: MsPortalTestFx$Portal;
+declare export var MsPortalTestFx$portal: MsPortalTestFx$Portal;declare module 'msportalfx-test' {
+        import typeof * as Q from 'q';
+
+	declare export default typeof MsPortalTestFx
+
     }

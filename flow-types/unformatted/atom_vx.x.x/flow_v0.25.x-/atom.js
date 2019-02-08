@@ -1,3 +1,9 @@
+declare module 'global' {
+        declare var atom: AtomEnvironment;
+	declare interface HTMLElementTagNameMap {
+"atom-text-editor": TextEditorElement
+} 
+    }
 declare module 'atom' {
         import type {
           ReadStream,WriteStream
@@ -6,13 +12,6 @@ declare module 'atom' {
 	import type {
           ChildProcess
         } from 'child_process';
-
-	declare module 'global' {
-        declare var atom: AtomEnvironment;
-	declare interface HTMLElementTagNameMap {
-"atom-text-editor": TextEditorElement
-} 
-    }
 
 	
 /**
@@ -302,9 +301,11 @@ beep(): void,
  * button is provided.
  * 
  * Returns the chosen button index number if the buttons option was an array.
- * @param response The index of the button that was clicked.
- * @param checkboxChecked The checked state of the checkbox if `checkboxLabel` was set.
-Otherwise false.
+ * @param response
+ * The index of the button that was clicked.
+ * @param checkboxChecked
+ * The checked state of the checkbox if `checkboxLabel` was set.
+ * Otherwise false.
  */
 confirm(
 options: ConfirmationOptions,
@@ -451,8 +452,9 @@ tags?: string[]
 
 /**
  * Simulate the dispatch of a command on a DOM node.
- * @return Either a Promise that resolves after all handlers complete or null if
-no handlers were matched.
+ * @return
+ * Either a Promise that resolves after all handlers complete or null if
+ * no handlers were matched.
  */
 dispatch(target: Node, commandName: string): Promise<void> | null,
 
@@ -535,7 +537,7 @@ callback: (value: $ElementType<ConfigValues, T>) => void): Disposable,
  * Add a listener for changes to a given key path. If keyPath is not specified, your
  * callback will be called on changes to any key.
  */
-onDidChange<T= any>(callback: (values: {
+onDidChange<T>(callback: (values: {
 newValue: T,
 oldValue: T
 }) => void): Disposable,
@@ -679,9 +681,10 @@ getMarker(): DisplayMarker,
 
 /**
  * Check if this decoration is of the given type.
- * @param type A decoration type, such as `line-number` or `line`. This may also
-be an array of decoration types, with isType returning true if the decoration's
-type matches any in the array.
+ * @param type
+ * A decoration type, such as `line-number` or `line`. This may also
+ * be an array of decoration types, with isType returning true if the decoration's
+ * type matches any in the array.
  */
 isType(type: string | string[]): boolean,
 
@@ -3153,7 +3156,8 @@ unfoldAll(): void;
 
 /**
  * Fold all foldable lines at the given indent level.
- * @param level A zero-indexed number.
+ * @param level
+ * A zero-indexed number.
  */
 foldAllAtIndentLevel(level: number): void;
 
@@ -3647,9 +3651,10 @@ onDidAddPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposable,
 /**
  * Invoke the given callback when a pane item is about to be destroyed,
  * before the user is prompted to save it.
- * @param callback The function to be called before pane items are destroyed.
-If this function returns a Promise, then the item will not be destroyed
-until the promise resolves.
+ * @param callback
+ * The function to be called before pane items are destroyed.
+ * If this function returns a Promise, then the item will not be destroyed
+ * until the promise resolves.
  */
 onWillDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void | Promise<void>): Disposable,
 
@@ -3675,7 +3680,7 @@ open(uri: string, options?: WorkspaceOpenOptions): Promise<{[key: string]: any}>
  * the existing item will be activated. If no item is given, a new empty TextEditor
  * will be created.
  */
-open<T: ViewModel= ViewModel>(item: T, options?: WorkspaceOpenOptions): Promise<T>,
+open<T: ViewModel>(item: T, options?: WorkspaceOpenOptions): Promise<T>,
 
 /**
  * Opens the given URI in Atom asynchronously. If the URI is already open,
@@ -4028,9 +4033,10 @@ onDidAddPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposable,
 /**
  * Invoke the given callback when a pane item is about to be destroyed, before the user
  * is prompted to save it.
- * @param callback The function to be called before pane items are destroyed.
-If this function returns a Promise, then the item will not be destroyed
-until the promise resolves.
+ * @param callback
+ * The function to be called before pane items are destroyed.
+ * If this function returns a Promise, then the item will not be destroyed
+ * until the promise resolves.
  */
 onWillDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void | Promise<void>): Disposable,
 
@@ -4770,9 +4776,10 @@ onDidAddPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposable,
 /**
  * Invoke the given callback when a pane item is about to be destroyed, before the user is
  * prompted to save it.
- * @param callback The function to be called before pane items are destroyed.
-If this function returns a Promise, then the item will not be destroyed
-until the promise resolves.
+ * @param callback
+ * The function to be called before pane items are destroyed.
+ * If this function returns a Promise, then the item will not be destroyed
+ * until the promise resolves.
  */
 onWillDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void | Promise<void>): Disposable,
 
@@ -4783,7 +4790,8 @@ onDidDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposab
 
 /**
  * Invoke the given callback when the hovered state of the dock changes.
- * @param hovered Is the dock now hovered?
+ * @param hovered
+ * Is the dock now hovered?
  */
 onDidChangeHovered(callback: (hovered: boolean) => void): Disposable,
 
@@ -5041,11 +5049,14 @@ isSubmodule(path: string): boolean;
 /**
  * Returns the number of commits behind the current branch is from the its
  * upstream remote branch. The default reference is the HEAD.
- * @param reference The branch reference name.
- * @param path The path in the repository to get this ifnromation for, only
-needed if the repository contains submodules.
- * @return Returns the number of commits behind the current branch is from its
-upstream remote branch.
+ * @param reference
+ * The branch reference name.
+ * @param path
+ * The path in the repository to get this ifnromation for, only
+ * needed if the repository contains submodules.
+ * @return
+ * Returns the number of commits behind the current branch is from its
+ * upstream remote branch.
  */
 getAheadBehindCount(reference: string, path?: string): {
 ahead: number,
@@ -5183,30 +5194,40 @@ onDidUpdate(callback: () => void): Disposable,
 
 /**
  * Tokenize all lines in the given text.
- * @param text A string containing one or more lines.
- * @return An array of token arrays for each line tokenized.
+ * @param text
+ * A string containing one or more lines.
+ * @return
+ * An array of token arrays for each line tokenized.
  */
 tokenizeLines(text: string): GrammarToken[][],
 
 /**
  * Tokenizes the line of text.
- * @param line A string of text to tokenize.
- * @param ruleStack An optional array of rules previously returned from this
-method. This should be null when tokenizing the first line in the file.
- * @param firstLine A optional boolean denoting whether this is the first line
-in the file which defaults to `false`.
- * @return An object representing the result of the tokenize.
+ * @param line
+ * A string of text to tokenize.
+ * @param ruleStack
+ * An optional array of rules previously returned from this
+ * method. This should be null when tokenizing the first line in the file.
+ * @param firstLine
+ * A optional boolean denoting whether this is the first line
+ * in the file which defaults to `false`.
+ * @return
+ * An object representing the result of the tokenize.
  */
 tokenizeLine(line: string, ruleStack?: null, firstLine?: boolean): TokenizeLineResult,
 
 /**
  * Tokenizes the line of text.
- * @param line A string of text to tokenize.
- * @param ruleStack An optional array of rules previously returned from this
-method. This should be null when tokenizing the first line in the file.
- * @param firstLine A optional boolean denoting whether this is the first line
-in the file which defaults to `false`.
- * @return An object representing the result of the tokenize.
+ * @param line
+ * A string of text to tokenize.
+ * @param ruleStack
+ * An optional array of rules previously returned from this
+ * method. This should be null when tokenizing the first line in the file.
+ * @param firstLine
+ * A optional boolean denoting whether this is the first line
+ * in the file which defaults to `false`.
+ * @return
+ * An object representing the result of the tokenize.
  */
 tokenizeLine(line: string, ruleStack: GrammarRule[], firstLine?: false): TokenizeLineResult
 } 
@@ -5218,74 +5239,92 @@ declare export interface GrammarRegistry {
 
 /**
  * Invoke the given callback when a grammar is added to the registry.
- * @param callback The callback to be invoked whenever a grammar is added.
- * @return A Disposable on which `.dispose()` can be called to unsubscribe.
+ * @param callback
+ * The callback to be invoked whenever a grammar is added.
+ * @return
+ * A Disposable on which `.dispose()` can be called to unsubscribe.
  */
 onDidAddGrammar(callback: (grammar: Grammar) => void): Disposable,
 
 /**
  * Invoke the given callback when a grammar is updated due to a grammar it
  * depends on being added or removed from the registry.
- * @param callback The callback to be invoked whenever a grammar is updated.
- * @return A Disposable on which `.dispose()` can be called to unsubscribe.
+ * @param callback
+ * The callback to be invoked whenever a grammar is updated.
+ * @return
+ * A Disposable on which `.dispose()` can be called to unsubscribe.
  */
 onDidUpdateGrammar(callback: (grammar: Grammar) => void): Disposable,
 
 /**
  * Invoke the given callback when a grammar is removed from the registry.
- * @param callback The callback to be invoked whenever a grammar is removed.
- * @return A Disposable on which `.dispose()` can be called to unsubscribe.
+ * @param callback
+ * The callback to be invoked whenever a grammar is removed.
+ * @return
+ * A Disposable on which `.dispose()` can be called to unsubscribe.
  */
 onDidRemoveGrammar(callback: (grammar: Grammar) => void): Disposable,
 
 /**
  * Get all the grammars in this registry.
- * @return A non-empty array of Grammar instances.
+ * @return
+ * A non-empty array of Grammar instances.
  */
 getGrammars(): Grammar[],
 
 /**
  * Get a grammar with the given scope name.
- * @param scopeName A string such as `source.js`.
- * @return A Grammar or undefined.
+ * @param scopeName
+ * A string such as `source.js`.
+ * @return
+ * A Grammar or undefined.
  */
 grammarForScopeName(scopeName: string): Grammar | void,
 
 /**
  * Add a grammar to this registry.
  * A 'grammar-added' event is emitted after the grammar is added.
- * @param grammar The Grammar to add. This should be a value previously returned
-from ::readGrammar or ::readGrammarSync.
- * @return Returns a Disposable on which `.dispose()` can be called to remove
-the grammar.
+ * @param grammar
+ * The Grammar to add. This should be a value previously returned
+ * from ::readGrammar or ::readGrammarSync.
+ * @return
+ * Returns a Disposable on which `.dispose()` can be called to remove
+ * the grammar.
  */
 addGrammar(grammar: Grammar): Disposable,
 
 /**
  * Remove the given grammar from this registry.
- * @param grammar The grammar to remove. This should be a grammar previously
-added to the registry from ::addGrammar.
+ * @param grammar
+ * The grammar to remove. This should be a grammar previously
+ * added to the registry from ::addGrammar.
  */
 removeGrammar(grammar: Grammar): void,
 
 /**
  * Remove the grammar with the given scope name.
- * @param scopeName A string such as `source.js`.
- * @return Returns the removed Grammar or undefined.
+ * @param scopeName
+ * A string such as `source.js`.
+ * @return
+ * Returns the removed Grammar or undefined.
  */
 removeGrammarForScopeName(scopeName: string): Grammar | void,
 
 /**
  * Read a grammar synchronously but don't add it to the registry.
- * @param grammarPath The absolute file path to a grammar.
- * @return The newly loaded Grammar.
+ * @param grammarPath
+ * The absolute file path to a grammar.
+ * @return
+ * The newly loaded Grammar.
  */
 readGrammarSync(grammarPath: string): Grammar,
 
 /**
  * Read a grammar asynchronously but don't add it to the registry.
- * @param grammarPath The absolute file path to the grammar.
- * @param callback The function to be invoked once the Grammar has been read in.
+ * @param grammarPath
+ * The absolute file path to the grammar.
+ * @param callback
+ * The function to be invoked once the Grammar has been read in.
  */
 readGrammar(
 grammarPath: string,
@@ -5293,16 +5332,20 @@ callback: (error: Error | null, grammar?: Grammar) => void): void,
 
 /**
  * Read a grammar synchronously and add it to this registry.
- * @param grammarPath The absolute file path to the grammar.
- * @return The newly loaded Grammar.
+ * @param grammarPath
+ * The absolute file path to the grammar.
+ * @return
+ * The newly loaded Grammar.
  */
 loadGrammarSync(grammarPath: string): Grammar,
 
 /**
  * Read a grammar asynchronously and add it to the registry.
- * @param grammarPath The absolute file path to the grammar.
- * @param callback The function to be invoked once the Grammar has been read in
-and added to the registry.
+ * @param grammarPath
+ * The absolute file path to the grammar.
+ * @param callback
+ * The function to be invoked once the Grammar has been read in
+ * and added to the registry.
  */
 loadGrammar(
 grammarPath: string,
@@ -5310,9 +5353,12 @@ callback: (error: Error | null, grammar?: Grammar) => void): void,
 
 /**
  * Convert compact tags representation into convenient, space-inefficient tokens.
- * @param lineText The text of the tokenized line.
- * @param tags The tags returned from a call to Grammar::tokenizeLine().
- * @return An array of Token instances decoded from the given tags.
+ * @param lineText
+ * The text of the tokenized line.
+ * @param tags
+ * The tags returned from a call to Grammar::tokenizeLine().
+ * @return
+ * An array of Token instances decoded from the given tags.
  */
 decodeTokens(lineText: string, tags: Array<number | string>): GrammarToken[],
 
@@ -5320,19 +5366,24 @@ decodeTokens(lineText: string, tags: Array<number | string>): GrammarToken[],
  * Set a TextBuffer's language mode based on its path and content, and continue
  * to update its language mode as grammars are added or updated, or the buffer's
  * file path changes.
- * @param buffer The buffer whose language mode will be maintained.
- * @return A Disposable that can be used to stop updating the buffer's
-language mode.
+ * @param buffer
+ * The buffer whose language mode will be maintained.
+ * @return
+ * A Disposable that can be used to stop updating the buffer's
+ * language mode.
  */
 maintainLanguageMode(buffer: TextBuffer): Disposable,
 
 /**
  * Force a TextBuffer to use a different grammar than the one that would otherwise
  * be selected for it.
- * @param buffer The buffer whose grammar will be set.
- * @param languageId The identifier of the desired language.
- * @return Returns a boolean that indicates whether the language was successfully
-found.
+ * @param buffer
+ * The buffer whose grammar will be set.
+ * @param languageId
+ * The identifier of the desired language.
+ * @return
+ * Returns a boolean that indicates whether the language was successfully
+ * found.
  */
 assignLanguageMode(buffer: TextBuffer, languageId: string): boolean,
 
@@ -5347,17 +5398,22 @@ autoAssignLanguageMode(buffer: TextBuffer): void,
  * 
  * This picks the best match by checking the file path and contents against
  * each grammar.
- * @param filePath A string file path.
- * @param fileContents A string of text for that file path.
+ * @param filePath
+ * A string file path.
+ * @param fileContents
+ * A string of text for that file path.
  */
 selectGrammar(filePath: string, fileContents: string): Grammar,
 
 /**
  * Returns a number representing how well the grammar matches the
  * `filePath` and `contents`.
- * @param grammar The grammar to score.
- * @param filePath A string file path.
- * @param contents A string of text for that file path.
+ * @param grammar
+ * The grammar to score.
+ * @param filePath
+ * A string file path.
+ * @param contents
+ * A string of text for that file path.
  */
 getGrammarScore(grammar: Grammar, filePath: string, contents: string): number
 } 
@@ -5966,18 +6022,18 @@ destroyInactiveItems(): Promise<boolean[]>,
 /**
  * Save the active item.
  */
-saveActiveItem<T= void>(nextAction?: (error?: Error) => T): Promise<T> | void,
+saveActiveItem<T>(nextAction?: (error?: Error) => T): Promise<T> | void,
 
 /**
  * Prompt the user for a location and save the active item with the path
  * they select.
  */
-saveActiveItemAs<T= void>(nextAction?: (error?: Error) => T): Promise<T> | void,
+saveActiveItemAs<T>(nextAction?: (error?: Error) => T): Promise<T> | void,
 
 /**
  * Save the given item.
  */
-saveItem<T= void>(
+saveItem<T>(
 item: {[key: string]: any},
 nextAction?: (error?: Error) => T): Promise<T> | void,
 
@@ -5985,7 +6041,7 @@ nextAction?: (error?: Error) => T): Promise<T> | void,
  * Prompt the user for a location and save the active item with the path
  * they select.
  */
-saveItemAs<T= void>(
+saveItemAs<T>(
 item: {[key: string]: any},
 nextAction?: (error?: Error) => T): Promise<T> | void,
 
@@ -6965,7 +7021,8 @@ getLastLine(): string;
 
 /**
  * Get the text of the line at the given 0-indexed row, without its line ending.
- * @param row A number representing the row.
+ * @param row
+ * A number representing the row.
  */
 lineForRow(row: number): string | void;
 
@@ -7036,7 +7093,8 @@ delete(range: RangeCompatible): Range;
 
 /**
  * Delete the line associated with a specified 0-indexed row.
- * @param row A number representing the row to delete.
+ * @param row
+ * A number representing the row to delete.
  */
 deleteRow(row: number): Range;
 
@@ -7120,13 +7178,15 @@ getMarkerCount(): number;
 
 /**
  * Undo the last operation. If a transaction is in progress, aborts it.
- * @return A boolean of whether or not a change was made.
+ * @return
+ * A boolean of whether or not a change was made.
  */
 undo(options?: HistoryTraversalOptions): boolean;
 
 /**
  * Redo the last operation.
- * @return A boolean of whether or not a change was made.
+ * @return
+ * A boolean of whether or not a change was made.
  */
 redo(options?: HistoryTraversalOptions): boolean;
 
@@ -7159,20 +7219,23 @@ clearUndoStack(): void;
 /**
  * Create a pointer to the current state of the buffer for use with
  * `::revertToCheckpoint` and `::groupChangesSinceCheckpoint`.
- * @return A checkpoint ID value.
+ * @return
+ * A checkpoint ID value.
  */
 createCheckpoint(options?: HistoryTransactionOptions): number;
 
 /**
  * Revert the buffer to the state it was in when the given checkpoint was created.
- * @return A boolean indicating whether the operation succeeded.
+ * @return
+ * A boolean indicating whether the operation succeeded.
  */
 revertToCheckpoint(checkpoint: number, options?: HistoryTraversalOptions): boolean;
 
 /**
  * Group all changes since the given checkpoint into a single transaction for
  * purposes of undo/redo.
- * @return A boolean indicating whether the operation succeeded.
+ * @return
+ * A boolean indicating whether the operation succeeded.
  */
 groupChangesSinceCheckpoint(checkpoint: number, options?: HistoryTransactionOptions): boolean;
 
@@ -7181,7 +7244,8 @@ groupChangesSinceCheckpoint(checkpoint: number, options?: HistoryTransactionOpti
  * 
  * This operation will only succeed if there are two changes on the undo stack.
  * It will not group past the beginning of an open transaction.
- * @return A boolean indicating whether the operation succeeded.
+ * @return
+ * A boolean indicating whether the operation succeeded.
  */
 groupLastChanges(): boolean;
 
@@ -7324,10 +7388,12 @@ getMaxCharacterIndex(): number;
 
 /**
  * Get the range for the given row.
- * @param row A number representing a 0-indexed row.
- * @param includeNewline A boolean indicating whether or not to include the
-newline, which results in a range that extends to the start of the next line.
-(default: false)
+ * @param row
+ * A number representing a 0-indexed row.
+ * @param includeNewline
+ * A boolean indicating whether or not to include the
+ * newline, which results in a range that extends to the start of the next line.
+ * (default: false)
  */
 rangeForRow(row: number, includeNewline?: boolean): Range;
 
@@ -8800,7 +8866,8 @@ normalizeLineEndings?: boolean,
 
 /**
  * If skip, skips the undo stack for this operation.
- * @deprecated Call groupLastChanges() on the TextBuffer afterward instead.
+ * @deprecated
+ * Call groupLastChanges() on the TextBuffer afterward instead.
  */
 undo?: "skip"
 } 

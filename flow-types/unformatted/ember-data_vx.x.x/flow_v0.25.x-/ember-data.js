@@ -1,44 +1,34 @@
-declare module 'ember-data' {
-        import typeof Ember from 'ember';
-
-	import typeof Evented from '@ember/object/evented';
-
-	import typeof ObjectProxy from '@ember/object/proxy';
-
-	import typeof PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
-
-	import typeof RSVP from 'rsvp';
-
-	import typeof TransformRegistry from 'ember-data/types/registries/transform';
-
-	import typeof ModelRegistry from 'ember-data/types/registries/model';
-
-	import typeof SerializerRegistry from 'ember-data/types/registries/serializer';
-
-	import typeof AdapterRegistry from 'ember-data/types/registries/adapter';
-
-	declare type AttributesFor<Model> = $Keys<DS$Model>;
-	declare type RelationshipsFor<Model> = $Keys<DS$Model>;
-	declare export interface ChangedAttributes {
-[key: string]: [any, any] | void
+declare module 'ember-test-helpers' {
+        declare interface TestContext {
+store: DS$DS$Store,
+store: DS$DS$Store
 } 
-	declare interface AttributeMeta<Model: DS$DS$Model> {
-type: $Keys<TransformRegistry>,
-options: {[key: string]: any},
-name: AttributesFor<DS$Model>,
-parentType: DS$Model,
-isAttribute: true
+    }
+declare module '@ember/service' {
+        declare interface Registry {
+store: DS$DS$Store,
+store: DS$DS$Store
 } 
-	declare interface RelationshipMeta<Model: DS$DS$Model> {
-key: RelationshipsFor<DS$Model>,
-kind: "belongsTo" | "hasMany",
-type: $Keys<ModelRegistry>,
-options: {[key: string]: any},
-name: string,
-parentType: DS$Model,
-isRelationship: true
+    }
+declare module '@ember/debug/data-adapter' {
+        declare export default interface DataAdapter {
+store: DS$DS$Store,
+store: DS$DS$Store
 } 
-	
+    }
+declare module '@ember/controller' {
+        declare export default interface Controller {
+store: DS$DS$Store,
+store: DS$DS$Store
+} 
+    }
+declare module '@ember/routing/route' {
+        declare export default interface Route {
+store: DS$DS$Store,
+store: DS$DS$Store
+} 
+    }
+
       declare var npm$namespace$DS: {
         errorsHashToArray: typeof DS$errorsHashToArray,
 errorsArrayToHash: typeof DS$errorsArrayToHash,
@@ -674,7 +664,7 @@ static fields: Ember.ComputedProperty<Ember.Map>;
  * invoking the callback with the name of each relationship and its relationship
  * descriptor.
  */
-static eachRelationship<M: DS$Model= DS$Model>(
+static eachRelationship<M: DS$Model>(
 callback: (name: string, details: RelationshipMeta<M>) => void,
 binding?: any): any;
 
@@ -2283,35 +2273,79 @@ serialize<K: $Keys<ModelRegistry>>(snapshot: DS$Snapshot<K>, options: {}): {};
  * payload.
  */
 normalize(typeClass: DS$Model, hash: {}): {}
-}
+}declare module 'ember-data' {
+        import typeof Ember from 'ember';
+
+	import typeof Evented from '@ember/object/evented';
+
+	import typeof ObjectProxy from '@ember/object/proxy';
+
+	import typeof PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
+
+	import typeof RSVP from 'rsvp';
+
+	import typeof TransformRegistry from 'ember-data/types/registries/transform';
+
+	import typeof ModelRegistry from 'ember-data/types/registries/model';
+
+	import typeof SerializerRegistry from 'ember-data/types/registries/serializer';
+
+	import typeof AdapterRegistry from 'ember-data/types/registries/adapter';
+
+	declare type AttributesFor<Model> = $Keys<DS$Model>;
+	declare type RelationshipsFor<Model> = $Keys<DS$Model>;
+	declare export interface ChangedAttributes {
+[key: string]: [any, any] | void
+} 
+	declare interface AttributeMeta<Model: DS$DS$Model> {
+type: $Keys<TransformRegistry>,
+options: {[key: string]: any},
+name: AttributesFor<DS$Model>,
+parentType: DS$Model,
+isAttribute: true
+} 
+	declare interface RelationshipMeta<Model: DS$DS$Model> {
+key: RelationshipsFor<DS$Model>,
+kind: "belongsTo" | "hasMany",
+type: $Keys<ModelRegistry>,
+options: {[key: string]: any},
+name: string,
+parentType: DS$Model,
+isRelationship: true
+} 
 	declare export default typeof DS
 
 	declare module '@ember/routing/route' {
         declare export default interface Route {
+store: DS$DS$Store,
 store: DS$DS$Store
 } 
     }
 
 	declare module '@ember/controller' {
         declare export default interface Controller {
+store: DS$DS$Store,
 store: DS$DS$Store
 } 
     }
 
 	declare module '@ember/debug/data-adapter' {
         declare export default interface DataAdapter {
+store: DS$DS$Store,
 store: DS$DS$Store
 } 
     }
 
 	declare module '@ember/service' {
         declare interface Registry {
+store: DS$DS$Store,
 store: DS$DS$Store
 } 
     }
 
 	declare module 'ember-test-helpers' {
         declare interface TestContext {
+store: DS$DS$Store,
 store: DS$DS$Store
 } 
     }

@@ -43,7 +43,8 @@ toJSON(): any
 
 /**
  * Appends new elements to an array, and returns the new length of the array.
- * @param items New elements of the Array.
+ * @param items
+ * New elements of the Array.
  */
 push<T>(array: ArrayLike<T>, ...items: T[]): number,
 
@@ -54,13 +55,15 @@ pop<T>(array: ArrayLike<T>): T,
 
 /**
  * Combines two or more arrays.
- * @param items Additional items to add to the end of array1.
+ * @param items
+ * Additional items to add to the end of array1.
  */
 concat<T>(array: ArrayLike<T>, ...items: Array<T[] | T>): T[],
 
 /**
  * Adds all the elements of an array separated by the specified separator string.
- * @param separator A string used to separate one element of an array from the next in the resulting String. If omitted, the array elements are separated with a comma.
+ * @param separator
+ * A string used to separate one element of an array from the next in the resulting String. If omitted, the array elements are separated with a comma.
  */
 join<T>(array: ArrayLike<T>, separator?: string): string,
 
@@ -76,22 +79,28 @@ shift<T>(array: ArrayLike<T>): T,
 
 /**
  * Returns a section of an array.
- * @param start The beginning of the specified portion of the array.
- * @param end The end of the specified portion of the array.
+ * @param start
+ * The beginning of the specified portion of the array.
+ * @param end
+ * The end of the specified portion of the array.
  */
 slice<T>(array: ArrayLike<T>, start?: number, end?: number): T[],
 
 /**
  * Sorts an array.
- * @param compareFn The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.
+ * @param compareFn
+ * The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.
  */
 sort<T>(array: ArrayLike<T>, compareFn?: (a: T, b: T) => number): T[],
 
 /**
  * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
- * @param start The zero-based location in the array from which to start removing elements.
- * @param deleteCount The number of elements to remove.
- * @param items Elements to insert into the array in place of the deleted elements.
+ * @param start
+ * The zero-based location in the array from which to start removing elements.
+ * @param deleteCount
+ * The number of elements to remove.
+ * @param items
+ * Elements to insert into the array in place of the deleted elements.
  */
 splice<T>(
 array: ArrayLike<T>,
@@ -101,29 +110,36 @@ deleteCount?: number,
 
 /**
  * Inserts new elements at the start of an array.
- * @param items Elements to insert at the start of the Array.
+ * @param items
+ * Elements to insert at the start of the Array.
  */
 unshift<T>(array: ArrayLike<T>, ...items: T[]): number,
 
 /**
  * Returns the index of the first occurrence of a value in an array.
- * @param searchElement The value to locate in the array.
- * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
+ * @param searchElement
+ * The value to locate in the array.
+ * @param fromIndex
+ * The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
  */
 indexOf<T>(array: ArrayLike<T>, searchElement: T, fromIndex?: number): number,
 
 /**
  * Returns the index of the last occurrence of a specified value in an array.
- * @param searchElement The value to locate in the array.
- * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at the last index in the array.
+ * @param searchElement
+ * The value to locate in the array.
+ * @param fromIndex
+ * The array index at which to begin the search. If fromIndex is omitted, the search starts at the last index in the array.
  */
 lastIndexOf<T>(array: ArrayLike<T>, earchElement: T, fromIndex?: number): number,
 
 /**
  * Determines whether all the members of an array satisfy the specified test.
- * @param callbackfn A function that accepts up to three arguments.
-The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ * @param callbackfn
+ * A function that accepts up to three arguments.
+ * The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
+ * @param thisArg
+ * An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
  */
 every<T>(
 array: ArrayLike<T>,
@@ -132,9 +148,11 @@ thisArg?: any): boolean,
 
 /**
  * Determines whether the specified callback function returns true for any element of an array.
- * @param callbackfn A function that accepts up to three arguments.
-The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ * @param callbackfn
+ * A function that accepts up to three arguments.
+ * The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
+ * @param thisArg
+ * An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
  */
 some<T>(
 array: ArrayLike<T>,
@@ -143,8 +161,10 @@ thisArg?: any): boolean,
 
 /**
  * Performs the specified action for each element in an array.
- * @param callbackfn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ * @param callbackfn
+ * A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
+ * @param thisArg
+ * An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
  */
 forEach<T>(
 array: ArrayLike<T>,
@@ -153,8 +173,10 @@ thisArg?: any): void,
 
 /**
  * Calls a defined callback function on each element of an array, and returns an array that contains the results.
- * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ * @param callbackfn
+ * A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+ * @param thisArg
+ * An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
  */
 map<T, U>(
 array: ArrayLike<T>,
@@ -163,8 +185,10 @@ thisArg?: any): U[],
 
 /**
  * Returns the elements of an array that meet the condition specified in a callback function.
- * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ * @param callbackfn
+ * A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
+ * @param thisArg
+ * An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
  */
 filter<T>(
 array: ArrayLike<T>,
@@ -174,9 +198,11 @@ thisArg?: any): T[],
 /**
  * Calls the specified callback function for all the elements in an array.
  * The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
- * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
- * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation.
-The first call to the callbackfn function provides this value as an argument instead of an array value.
+ * @param callbackfn
+ * A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
+ * @param initialValue
+ * If initialValue is specified, it is used as the initial value to start the accumulation.
+ * The first call to the callbackfn function provides this value as an argument instead of an array value.
  */
 reduce<T, U>(
 array: ArrayLike<T>,
@@ -186,9 +212,11 @@ initialValue: U): U,
 /**
  * Calls the specified callback function for all the elements in an array.
  * The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
- * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
- * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation.
-The first call to the callbackfn function provides this value as an argument instead of an array value.
+ * @param callbackfn
+ * A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
+ * @param initialValue
+ * If initialValue is specified, it is used as the initial value to start the accumulation.
+ * The first call to the callbackfn function provides this value as an argument instead of an array value.
  */
 reduce<T>(
 array: ArrayLike<T>,
@@ -198,9 +226,11 @@ initialValue?: T): T,
 /**
  * Calls the specified callback function for all the elements in an array, in descending order.
  * The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
- * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
- * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation.
-The first call to the callbackfn function provides this value as an argument instead of an array value.
+ * @param callbackfn
+ * A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
+ * @param initialValue
+ * If initialValue is specified, it is used as the initial value to start the accumulation.
+ * The first call to the callbackfn function provides this value as an argument instead of an array value.
  */
 reduceRight<T, U>(
 array: ArrayLike<T>,
@@ -210,9 +240,11 @@ initialValue: U): U,
 /**
  * Calls the specified callback function for all the elements in an array, in descending order.
  * The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
- * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
- * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation.
-The first call to the callbackfn function provides this value as an argument instead of an array value.
+ * @param callbackfn
+ * A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
+ * @param initialValue
+ * If initialValue is specified, it is used as the initial value to start the accumulation.
+ * The first call to the callbackfn function provides this value as an argument instead of an array value.
  */
 reduceRight<T>(
 array: ArrayLike<T>,
@@ -237,11 +269,13 @@ values<T>(array: ArrayLike<T>): IterableIterator<T>,
 /**
  * Returns the value of the first element in the array where predicate is true, and undefined
  * otherwise.
- * @param predicate find calls predicate once for each element of the array, in ascending
-order, until it finds one where predicate returns true. If such an element is found, find
-immediately returns that element value. Otherwise, find returns undefined.
- * @param thisArg If provided, it will be used as the this value for each invocation of
-predicate. If it is not provided, undefined is used instead.
+ * @param predicate
+ * find calls predicate once for each element of the array, in ascending
+ * order, until it finds one where predicate returns true. If such an element is found, find
+ * immediately returns that element value. Otherwise, find returns undefined.
+ * @param thisArg
+ * If provided, it will be used as the this value for each invocation of
+ * predicate. If it is not provided, undefined is used instead.
  */
 find<T>(
 array: ArrayLike<T>,
@@ -251,11 +285,13 @@ thisArg?: any): T,
 /**
  * Returns the index of the first element in the array where predicate is true, and undefined
  * otherwise.
- * @param predicate find calls predicate once for each element of the array, in ascending
-order, until it finds one where predicate returns true. If such an element is found, find
-immediately returns that element value. Otherwise, find returns undefined.
- * @param thisArg If provided, it will be used as the this value for each invocation of
-predicate. If it is not provided, undefined is used instead.
+ * @param predicate
+ * find calls predicate once for each element of the array, in ascending
+ * order, until it finds one where predicate returns true. If such an element is found, find
+ * immediately returns that element value. Otherwise, find returns undefined.
+ * @param thisArg
+ * If provided, it will be used as the this value for each invocation of
+ * predicate. If it is not provided, undefined is used instead.
  */
 findIndex<T>(
 array: ArrayLike<T>,
@@ -264,22 +300,28 @@ thisArg?: any): number,
 
 /**
  * Returns the this object after filling the section identified by start and end with value
- * @param value value to fill array section with
- * @param start index to start filling the array at. If start is negative, it is treated as
-length+start where length is the length of the array.
- * @param end index to stop filling the array at. If end is negative, it is treated as
-length+end.
+ * @param value
+ * value to fill array section with
+ * @param start
+ * index to start filling the array at. If start is negative, it is treated as
+ * length+start where length is the length of the array.
+ * @param end
+ * index to stop filling the array at. If end is negative, it is treated as
+ * length+end.
  */
 fill<T>(array: ArrayLike<T>, value: T, start?: number, end?: number): T[],
 
 /**
  * Returns the this object after copying a section of the array identified by start and end
  * to the same array starting at position target
- * @param target If target is negative, it is treated as length+target where length is the
-length of the array.
- * @param start If start is negative, it is treated as length+start. If end is negative, it
-is treated as length+end.
- * @param end If not specified, length of the this object is used as its default value.
+ * @param target
+ * If target is negative, it is treated as length+target where length is the
+ * length of the array.
+ * @param start
+ * If start is negative, it is treated as length+start. If end is negative, it
+ * is treated as length+end.
+ * @param end
+ * If not specified, length of the this object is used as its default value.
  */
 copyWithin<T>(array: ArrayLike<T>, target: number, start: number, end?: number): T[],
 includes<T>(array: ArrayLike<T>, value: T, fromIndex?: number): boolean,
@@ -536,23 +578,27 @@ declare function Reflect$setPrototypeOf(target: any, proto: any): boolean
 
 /**
  * Define a unique metadata entry on the target.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param metadataValue A value that contains attached metadata.
- * @param target The target object on which to define metadata.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  Reflect.defineMetadata("custom:annotation", options, Example);
-         *
-         *  // decorator factory as metadata-producing annotation.
-         *  function MyAnnotation(options): ClassDecorator {
-         *      return target => Reflect.defineMetadata("custom:annotation", options, target);
-         *  }
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param metadataValue
+ * A value that contains attached metadata.
+ * @param target
+ * The target object on which to define metadata.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  Reflect.defineMetadata("custom:annotation", options, Example);
+ *          *
+ *          *  // decorator factory as metadata-producing annotation.
+ *          *  function MyAnnotation(options): ClassDecorator {
+ *          *      return target => Reflect.defineMetadata("custom:annotation", options, target);
+ *          *  }
+ *          * ```
  */
 declare function Reflect$defineMetadata(
 metadataKey: any,
@@ -564,18 +610,22 @@ targetKey?: string | Symbol): void
 
 /**
  * Deletes the metadata entry from the target object with the provided key.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param target The target object on which the metadata is defined.
- * @returns `true` if the metadata entry was found and deleted; otherwise, false.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.deleteMetadata("custom:annotation", Example);
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * `true` if the metadata entry was found and deleted; otherwise, false.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.deleteMetadata("custom:annotation", Example);
+ *          * ```
  */
 declare function Reflect$deleteMetadata(metadataKey: any, target: Object, targetKey?: string | Symbol): boolean
 
@@ -583,18 +633,22 @@ declare function Reflect$deleteMetadata(metadataKey: any, target: Object, target
 
 /**
  * Gets the metadata value for the provided metadata key on the target object or its prototype chain.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param target The target object on which the metadata is defined.
- * @returns The metadata value for the metadata key if found; otherwise, `undefined`.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.getMetadata("custom:annotation", Example);
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * The metadata value for the metadata key if found; otherwise, `undefined`.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.getMetadata("custom:annotation", Example);
+ *          * ```
  */
 declare function Reflect$getMetadata(metadataKey: any, target: Object, targetKey?: string | Symbol): any
 
@@ -602,17 +656,20 @@ declare function Reflect$getMetadata(metadataKey: any, target: Object, targetKey
 
 /**
  * Gets the metadata keys defined on the target object or its prototype chain.
- * @param target The target object on which the metadata is defined.
- * @returns An array of unique metadata keys.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.getMetadataKeys(Example);
-         * ```
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * An array of unique metadata keys.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.getMetadataKeys(Example);
+ *          * ```
  */
 declare function Reflect$getMetadataKeys(target: Object, targetKey?: string | Symbol): any[]
 
@@ -620,18 +677,22 @@ declare function Reflect$getMetadataKeys(target: Object, targetKey?: string | Sy
 
 /**
  * Gets the metadata value for the provided metadata key on the target object.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param target The target object on which the metadata is defined.
- * @returns The metadata value for the metadata key if found; otherwise, `undefined`.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.getOwnMetadata("custom:annotation", Example);
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * The metadata value for the metadata key if found; otherwise, `undefined`.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.getOwnMetadata("custom:annotation", Example);
+ *          * ```
  */
 declare function Reflect$getOwnMetadata(metadataKey: any, target: Object, targetKey?: string | Symbol): any
 
@@ -639,17 +700,20 @@ declare function Reflect$getOwnMetadata(metadataKey: any, target: Object, target
 
 /**
  * Gets the unique metadata keys defined on the target object.
- * @param target The target object on which the metadata is defined.
- * @returns An array of unique metadata keys.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.getOwnMetadataKeys(Example);
-         * ```
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * An array of unique metadata keys.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.getOwnMetadataKeys(Example);
+ *          * ```
  */
 declare function Reflect$getOwnMetadataKeys(target: Object, targetKey?: string | Symbol): any[]
 
@@ -657,18 +721,22 @@ declare function Reflect$getOwnMetadataKeys(target: Object, targetKey?: string |
 
 /**
  * Gets a value indicating whether the target object or its prototype chain has the provided metadata key defined.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param target The target object on which the metadata is defined.
- * @returns `true` if the metadata key was defined on the target object or its prototype chain; otherwise, `false`.
- * @example ### Example
-
-```typescript
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.hasMetadata("custom:annotation", Example);
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * `true` if the metadata key was defined on the target object or its prototype chain; otherwise, `false`.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.hasMetadata("custom:annotation", Example);
+ *          * ```
  */
 declare function Reflect$hasMetadata(metadataKey: any, target: Object, targetKey?: string | Symbol): boolean
 
@@ -676,19 +744,23 @@ declare function Reflect$hasMetadata(metadataKey: any, target: Object, targetKey
 
 /**
  * Gets a value indicating whether the target object has the provided metadata key defined.
- * @param metadataKey A key used to store and retrieve metadata.
- * @param target The target object on which the metadata is defined.
- * @returns `true` if the metadata key was defined on the target object; otherwise, `false`.
- * @example ### Example
-
-```typescript
-         *
-         *  class Example {
-         *  }
-         *
-         *  // constructor
-         *  result = Reflect.hasOwnMetadata("custom:annotation", Example);
-         * ```
+ * @param metadataKey
+ * A key used to store and retrieve metadata.
+ * @param target
+ * The target object on which the metadata is defined.
+ * @returns
+ * `true` if the metadata key was defined on the target object; otherwise, `false`.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // constructor
+ *          *  result = Reflect.hasOwnMetadata("custom:annotation", Example);
+ *          * ```
  */
 declare function Reflect$hasOwnMetadata(metadataKey: any, target: Object, targetKey?: string | Symbol): boolean
 
@@ -696,43 +768,48 @@ declare function Reflect$hasOwnMetadata(metadataKey: any, target: Object, target
 
 /**
  * A default metadata decorator factory that can be used on a class, class member, or parameter.
- * @param metadataKey The key for the metadata entry.
- * @param metadataValue The value for the metadata entry.
- * @returns A decorator function.
- * @remarks If `metadataKey` is already defined for the target and target key, the
-metadataValue for that key will be overwritten.
- * @example ### Example
-
-```typescript
-         *  // constructor
-         *  @Reflect.metadata(key, value)
-         *  class Example {
-         *  }
-         *
-         *  // property (on constructor, TypeScript only)
-         *  class Example {
-         *      @Reflect.metadata(key, value)
-         *      static staticProperty;
-         *  }
-         *
-         *  // property (on prototype, TypeScript only)
-         *  class Example {
-         *      @Reflect.metadata(key, value)
-         *      property;
-         *  }
-         *
-         *  // method (on constructor)
-         *  class Example {
-         *      @Reflect.metadata(key, value)
-         *      static staticMethod() { }
-         *  }
-         *
-         *  // method (on prototype)
-         *  class Example {
-         *      @Reflect.metadata(key, value)
-         *      method() { }
-         *  }
-         * ```
+ * @param metadataKey
+ * The key for the metadata entry.
+ * @param metadataValue
+ * The value for the metadata entry.
+ * @returns
+ * A decorator function.
+ * @remarks
+ * If `metadataKey` is already defined for the target and target key, the
+ * metadataValue for that key will be overwritten.
+ * @example
+ * ### Example
+ * 
+ * ```typescript
+ *          *  // constructor
+ *          *  @Reflect.metadata(key, value)
+ *          *  class Example {
+ *          *  }
+ *          *
+ *          *  // property (on constructor, TypeScript only)
+ *          *  class Example {
+ *          *      @Reflect.metadata(key, value)
+ *          *      static staticProperty;
+ *          *  }
+ *          *
+ *          *  // property (on prototype, TypeScript only)
+ *          *  class Example {
+ *          *      @Reflect.metadata(key, value)
+ *          *      property;
+ *          *  }
+ *          *
+ *          *  // method (on constructor)
+ *          *  class Example {
+ *          *      @Reflect.metadata(key, value)
+ *          *      static staticMethod() { }
+ *          *  }
+ *          *
+ *          *  // method (on prototype)
+ *          *  class Example {
+ *          *      @Reflect.metadata(key, value)
+ *          *      method() { }
+ *          *  }
+ *          * ```
  */
 declare function Reflect$metadata(
 metadataKey: any,
@@ -988,349 +1065,349 @@ declare function core$locale(lang?: string): string
 
 declare function core$delay(msec: number): core$Promise<void>
 declare module 'core-js' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/shim' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/core' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/core/$for' {
-        declare module.exports: typeof core$$for
+        declare export default typeof core$$for
 
     }
 declare module 'core-js/core/_' {
         declare var core$_: typeof undefined;
-	declare module.exports: typeof core$_
+	declare export default typeof core$_
 
     }
 declare module 'core-js/core/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/core/date' {
         declare var core$Date: typeof undefined;
-	declare module.exports: typeof core$Date
+	declare export default typeof core$Date
 
     }
 declare module 'core-js/core/delay' {
         declare var core$delay: typeof undefined;
-	declare module.exports: typeof core$delay
+	declare export default typeof core$delay
 
     }
 declare module 'core-js/core/dict' {
         declare var core$Dict: typeof undefined;
-	declare module.exports: typeof core$Dict
+	declare export default typeof core$Dict
 
     }
 declare module 'core-js/core/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/core/global' {
         declare var core$global: typeof undefined;
-	declare module.exports: typeof core$global
+	declare export default typeof core$global
 
     }
 declare module 'core-js/core/log' {
         declare var core$log: typeof undefined;
-	declare module.exports: typeof core$log
+	declare export default typeof core$log
 
     }
 declare module 'core-js/core/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/core/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/core/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/fn/$for' {
-        declare module.exports: typeof core$$for
+        declare export default typeof core$$for
 
     }
 declare module 'core-js/fn/_' {
         declare var core$_: typeof undefined;
-	declare module.exports: typeof core$_
+	declare export default typeof core$_
 
     }
 declare module 'core-js/fn/clear-immediate' {
         declare var core$clearImmediate: typeof undefined;
-	declare module.exports: typeof core$clearImmediate
+	declare export default typeof core$clearImmediate
 
     }
 declare module 'core-js/fn/delay' {
         declare var core$delay: typeof undefined;
-	declare module.exports: typeof core$delay
+	declare export default typeof core$delay
 
     }
 declare module 'core-js/fn/dict' {
         declare var core$Dict: typeof undefined;
-	declare module.exports: typeof core$Dict
+	declare export default typeof core$Dict
 
     }
 declare module 'core-js/fn/get-iterator' {
         declare var core$getIterator: typeof undefined;
-	declare module.exports: typeof core$getIterator
+	declare export default typeof core$getIterator
 
     }
 declare module 'core-js/fn/global' {
         declare var core$global: typeof undefined;
-	declare module.exports: typeof core$global
+	declare export default typeof core$global
 
     }
 declare module 'core-js/fn/is-iterable' {
         declare var core$isIterable: typeof undefined;
-	declare module.exports: typeof core$isIterable
+	declare export default typeof core$isIterable
 
     }
 declare module 'core-js/fn/log' {
         declare var core$log: typeof undefined;
-	declare module.exports: typeof core$log
+	declare export default typeof core$log
 
     }
 declare module 'core-js/fn/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/fn/promise' {
         declare var core$Promise: typeof undefined;
-	declare module.exports: typeof core$Promise
+	declare export default typeof core$Promise
 
     }
 declare module 'core-js/fn/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/fn/set-immediate' {
         declare var core$setImmediate: typeof undefined;
-	declare module.exports: typeof core$setImmediate
+	declare export default typeof core$setImmediate
 
     }
 declare module 'core-js/fn/set-interval' {
         declare var core$setInterval: typeof undefined;
-	declare module.exports: typeof core$setInterval
+	declare export default typeof core$setInterval
 
     }
 declare module 'core-js/fn/set-timeout' {
         declare var core$setTimeout: typeof undefined;
-	declare module.exports: typeof core$setTimeout
+	declare export default typeof core$setTimeout
 
     }
 declare module 'core-js/fn/weak-map' {
         declare var core$WeakMap: typeof undefined;
-	declare module.exports: typeof core$WeakMap
+	declare export default typeof core$WeakMap
 
     }
 declare module 'core-js/fn/weak-set' {
         declare var core$WeakSet: typeof undefined;
-	declare module.exports: typeof core$WeakSet
+	declare export default typeof core$WeakSet
 
     }
 declare module 'core-js/fn/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/fn/array/concat' {
         declare var concat: typeof undefined;
-	declare module.exports: typeof concat
+	declare export default typeof concat
 
     }
 declare module 'core-js/fn/array/copy-within' {
         declare var copyWithin: typeof undefined;
-	declare module.exports: typeof copyWithin
+	declare export default typeof copyWithin
 
     }
 declare module 'core-js/fn/array/entries' {
         declare var entries: typeof undefined;
-	declare module.exports: typeof entries
+	declare export default typeof entries
 
     }
 declare module 'core-js/fn/array/every' {
         declare var every: typeof undefined;
-	declare module.exports: typeof every
+	declare export default typeof every
 
     }
 declare module 'core-js/fn/array/fill' {
         declare var fill: typeof undefined;
-	declare module.exports: typeof fill
+	declare export default typeof fill
 
     }
 declare module 'core-js/fn/array/filter' {
         declare var filter: typeof undefined;
-	declare module.exports: typeof filter
+	declare export default typeof filter
 
     }
 declare module 'core-js/fn/array/find' {
         declare var find: typeof undefined;
-	declare module.exports: typeof find
+	declare export default typeof find
 
     }
 declare module 'core-js/fn/array/find-index' {
         declare var findIndex: typeof undefined;
-	declare module.exports: typeof findIndex
+	declare export default typeof findIndex
 
     }
 declare module 'core-js/fn/array/for-each' {
         declare var forEach: typeof undefined;
-	declare module.exports: typeof forEach
+	declare export default typeof forEach
 
     }
 declare module 'core-js/fn/array/from' {
         declare var from: typeof undefined;
-	declare module.exports: typeof from
+	declare export default typeof from
 
     }
 declare module 'core-js/fn/array/includes' {
         declare var includes: typeof undefined;
-	declare module.exports: typeof includes
+	declare export default typeof includes
 
     }
 declare module 'core-js/fn/array/index-of' {
         declare var indexOf: typeof undefined;
-	declare module.exports: typeof indexOf
+	declare export default typeof indexOf
 
     }
 declare module 'core-js/fn/array/is-array' {
         declare var isArray: typeof undefined;
-	declare module.exports: typeof isArray
+	declare export default typeof isArray
 
     }
 declare module 'core-js/fn/array/join' {
         declare var join: typeof undefined;
-	declare module.exports: typeof join
+	declare export default typeof join
 
     }
 declare module 'core-js/fn/array/keys' {
         declare var keys: typeof undefined;
-	declare module.exports: typeof keys
+	declare export default typeof keys
 
     }
 declare module 'core-js/fn/array/last-index-of' {
         declare var lastIndexOf: typeof undefined;
-	declare module.exports: typeof lastIndexOf
+	declare export default typeof lastIndexOf
 
     }
 declare module 'core-js/fn/array/map' {
         declare var map: typeof undefined;
-	declare module.exports: typeof map
+	declare export default typeof map
 
     }
 declare module 'core-js/fn/array/of' {
         declare var of: typeof undefined;
-	declare module.exports: typeof of
+	declare export default typeof of
 
     }
 declare module 'core-js/fn/array/pop' {
         declare var pop: typeof undefined;
-	declare module.exports: typeof pop
+	declare export default typeof pop
 
     }
 declare module 'core-js/fn/array/push' {
         declare var push: typeof undefined;
-	declare module.exports: typeof push
+	declare export default typeof push
 
     }
 declare module 'core-js/fn/array/reduce' {
         declare var reduce: typeof undefined;
-	declare module.exports: typeof reduce
+	declare export default typeof reduce
 
     }
 declare module 'core-js/fn/array/reduce-right' {
         declare var reduceRight: typeof undefined;
-	declare module.exports: typeof reduceRight
+	declare export default typeof reduceRight
 
     }
 declare module 'core-js/fn/array/reverse' {
         declare var reverse: typeof undefined;
-	declare module.exports: typeof reverse
+	declare export default typeof reverse
 
     }
 declare module 'core-js/fn/array/shift' {
         declare var shift: typeof undefined;
-	declare module.exports: typeof shift
+	declare export default typeof shift
 
     }
 declare module 'core-js/fn/array/slice' {
         declare var slice: typeof undefined;
-	declare module.exports: typeof slice
+	declare export default typeof slice
 
     }
 declare module 'core-js/fn/array/some' {
         declare var some: typeof undefined;
-	declare module.exports: typeof some
+	declare export default typeof some
 
     }
 declare module 'core-js/fn/array/sort' {
         declare var sort: typeof undefined;
-	declare module.exports: typeof sort
+	declare export default typeof sort
 
     }
 declare module 'core-js/fn/array/splice' {
         declare var splice: typeof undefined;
-	declare module.exports: typeof splice
+	declare export default typeof splice
 
     }
 declare module 'core-js/fn/array/turn' {
         declare var turn: typeof undefined;
-	declare module.exports: typeof turn
+	declare export default typeof turn
 
     }
 declare module 'core-js/fn/array/unshift' {
         declare var unshift: typeof undefined;
-	declare module.exports: typeof unshift
+	declare export default typeof unshift
 
     }
 declare module 'core-js/fn/array/values' {
         declare var values: typeof undefined;
-	declare module.exports: typeof values
+	declare export default typeof values
 
     }
 declare module 'core-js/fn/date' {
         declare var core$Date: typeof undefined;
-	declare module.exports: typeof core$Date
+	declare export default typeof core$Date
 
     }
 declare module 'core-js/fn/date/add-locale' {
         declare var core$addLocale: typeof undefined;
-	declare module.exports: typeof core$addLocale
+	declare export default typeof core$addLocale
 
     }
 declare module 'core-js/fn/date/format' {
         declare var format: typeof undefined;
-	declare module.exports: typeof format
+	declare export default typeof format
 
     }
 declare module 'core-js/fn/date/formatUTC' {
         declare var formatUTC: typeof undefined;
-	declare module.exports: typeof formatUTC
+	declare export default typeof formatUTC
 
     }
 declare module 'core-js/fn/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/fn/function/has-instance' {
         declare function hasInstance(value: any): boolean
 
-	declare module.exports: typeof hasInstance
+	declare export default typeof hasInstance
 
     }
 declare module 'core-js/fn/function/name' {
@@ -1338,980 +1415,980 @@ declare module 'core-js/fn/function/name' {
     }
 declare module 'core-js/fn/function/part' {
         declare var part: typeof undefined;
-	declare module.exports: typeof part
+	declare export default typeof part
 
     }
 declare module 'core-js/fn/math' {
         declare var core$Math: typeof undefined;
-	declare module.exports: typeof core$Math
+	declare export default typeof core$Math
 
     }
 declare module 'core-js/fn/math/acosh' {
         declare var acosh: typeof undefined;
-	declare module.exports: typeof acosh
+	declare export default typeof acosh
 
     }
 declare module 'core-js/fn/math/asinh' {
         declare var asinh: typeof undefined;
-	declare module.exports: typeof asinh
+	declare export default typeof asinh
 
     }
 declare module 'core-js/fn/math/atanh' {
         declare var atanh: typeof undefined;
-	declare module.exports: typeof atanh
+	declare export default typeof atanh
 
     }
 declare module 'core-js/fn/math/cbrt' {
         declare var cbrt: typeof undefined;
-	declare module.exports: typeof cbrt
+	declare export default typeof cbrt
 
     }
 declare module 'core-js/fn/math/clz32' {
         declare var clz32: typeof undefined;
-	declare module.exports: typeof clz32
+	declare export default typeof clz32
 
     }
 declare module 'core-js/fn/math/cosh' {
         declare var cosh: typeof undefined;
-	declare module.exports: typeof cosh
+	declare export default typeof cosh
 
     }
 declare module 'core-js/fn/math/expm1' {
         declare var expm1: typeof undefined;
-	declare module.exports: typeof expm1
+	declare export default typeof expm1
 
     }
 declare module 'core-js/fn/math/fround' {
         declare var fround: typeof undefined;
-	declare module.exports: typeof fround
+	declare export default typeof fround
 
     }
 declare module 'core-js/fn/math/hypot' {
         declare var hypot: typeof undefined;
-	declare module.exports: typeof hypot
+	declare export default typeof hypot
 
     }
 declare module 'core-js/fn/math/imul' {
         declare var imul: typeof undefined;
-	declare module.exports: typeof imul
+	declare export default typeof imul
 
     }
 declare module 'core-js/fn/math/log10' {
         declare var log10: typeof undefined;
-	declare module.exports: typeof log10
+	declare export default typeof log10
 
     }
 declare module 'core-js/fn/math/log1p' {
         declare var log1p: typeof undefined;
-	declare module.exports: typeof log1p
+	declare export default typeof log1p
 
     }
 declare module 'core-js/fn/math/log2' {
         declare var log2: typeof undefined;
-	declare module.exports: typeof log2
+	declare export default typeof log2
 
     }
 declare module 'core-js/fn/math/sign' {
         declare var sign: typeof undefined;
-	declare module.exports: typeof sign
+	declare export default typeof sign
 
     }
 declare module 'core-js/fn/math/sinh' {
         declare var sinh: typeof undefined;
-	declare module.exports: typeof sinh
+	declare export default typeof sinh
 
     }
 declare module 'core-js/fn/math/tanh' {
         declare var tanh: typeof undefined;
-	declare module.exports: typeof tanh
+	declare export default typeof tanh
 
     }
 declare module 'core-js/fn/math/trunc' {
         declare var trunc: typeof undefined;
-	declare module.exports: typeof trunc
+	declare export default typeof trunc
 
     }
 declare module 'core-js/fn/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/fn/number/epsilon' {
         declare var EPSILON: typeof undefined;
-	declare module.exports: typeof EPSILON
+	declare export default typeof EPSILON
 
     }
 declare module 'core-js/fn/number/is-finite' {
         declare var isFinite: typeof undefined;
-	declare module.exports: typeof isFinite
+	declare export default typeof isFinite
 
     }
 declare module 'core-js/fn/number/is-integer' {
         declare var isInteger: typeof undefined;
-	declare module.exports: typeof isInteger
+	declare export default typeof isInteger
 
     }
 declare module 'core-js/fn/number/is-nan' {
         declare var isNaN: typeof undefined;
-	declare module.exports: typeof isNaN
+	declare export default typeof isNaN
 
     }
 declare module 'core-js/fn/number/is-safe-integer' {
         declare var isSafeInteger: typeof undefined;
-	declare module.exports: typeof isSafeInteger
+	declare export default typeof isSafeInteger
 
     }
 declare module 'core-js/fn/number/max-safe-integer' {
         declare var MAX_SAFE_INTEGER: typeof undefined;
-	declare module.exports: typeof MAX_SAFE_INTEGER
+	declare export default typeof MAX_SAFE_INTEGER
 
     }
 declare module 'core-js/fn/number/min-safe-integer' {
         declare var MIN_SAFE_INTEGER: typeof undefined;
-	declare module.exports: typeof MIN_SAFE_INTEGER
+	declare export default typeof MIN_SAFE_INTEGER
 
     }
 declare module 'core-js/fn/number/parse-float' {
         declare var parseFloat: typeof undefined;
-	declare module.exports: typeof parseFloat
+	declare export default typeof parseFloat
 
     }
 declare module 'core-js/fn/number/parse-int' {
         declare var parseInt: typeof undefined;
-	declare module.exports: typeof parseInt
+	declare export default typeof parseInt
 
     }
 declare module 'core-js/fn/number/random' {
         declare var random: typeof undefined;
-	declare module.exports: typeof random
+	declare export default typeof random
 
     }
 declare module 'core-js/fn/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/fn/object/assign' {
         declare var assign: typeof undefined;
-	declare module.exports: typeof assign
+	declare export default typeof assign
 
     }
 declare module 'core-js/fn/object/classof' {
         declare var classof: typeof undefined;
-	declare module.exports: typeof classof
+	declare export default typeof classof
 
     }
 declare module 'core-js/fn/object/create' {
         declare var create: typeof undefined;
-	declare module.exports: typeof create
+	declare export default typeof create
 
     }
 declare module 'core-js/fn/object/define' {
         declare var define: typeof undefined;
-	declare module.exports: typeof define
+	declare export default typeof define
 
     }
 declare module 'core-js/fn/object/define-properties' {
         declare var defineProperties: typeof undefined;
-	declare module.exports: typeof defineProperties
+	declare export default typeof defineProperties
 
     }
 declare module 'core-js/fn/object/define-property' {
         declare var Reflect$defineProperty: typeof undefined;
-	declare module.exports: typeof Reflect$defineProperty
+	declare export default typeof Reflect$defineProperty
 
     }
 declare module 'core-js/fn/object/entries' {
         declare var entries: typeof undefined;
-	declare module.exports: typeof entries
+	declare export default typeof entries
 
     }
 declare module 'core-js/fn/object/freeze' {
         declare var freeze: typeof undefined;
-	declare module.exports: typeof freeze
+	declare export default typeof freeze
 
     }
 declare module 'core-js/fn/object/get-own-property-descriptor' {
         declare var Reflect$getOwnPropertyDescriptor: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnPropertyDescriptor
+	declare export default typeof Reflect$getOwnPropertyDescriptor
 
     }
 declare module 'core-js/fn/object/get-own-property-descriptors' {
         declare var getOwnPropertyDescriptors: typeof undefined;
-	declare module.exports: typeof getOwnPropertyDescriptors
+	declare export default typeof getOwnPropertyDescriptors
 
     }
 declare module 'core-js/fn/object/get-own-property-names' {
         declare var getOwnPropertyNames: typeof undefined;
-	declare module.exports: typeof getOwnPropertyNames
+	declare export default typeof getOwnPropertyNames
 
     }
 declare module 'core-js/fn/object/get-own-property-symbols' {
         declare var getOwnPropertySymbols: typeof undefined;
-	declare module.exports: typeof getOwnPropertySymbols
+	declare export default typeof getOwnPropertySymbols
 
     }
 declare module 'core-js/fn/object/get-prototype-of' {
         declare var Reflect$getPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$getPrototypeOf
+	declare export default typeof Reflect$getPrototypeOf
 
     }
 declare module 'core-js/fn/object/is' {
         declare var is: typeof undefined;
-	declare module.exports: typeof is
+	declare export default typeof is
 
     }
 declare module 'core-js/fn/object/is-extensible' {
         declare var Reflect$isExtensible: typeof undefined;
-	declare module.exports: typeof Reflect$isExtensible
+	declare export default typeof Reflect$isExtensible
 
     }
 declare module 'core-js/fn/object/is-frozen' {
         declare var isFrozen: typeof undefined;
-	declare module.exports: typeof isFrozen
+	declare export default typeof isFrozen
 
     }
 declare module 'core-js/fn/object/is-object' {
         declare var isObject: typeof undefined;
-	declare module.exports: typeof isObject
+	declare export default typeof isObject
 
     }
 declare module 'core-js/fn/object/is-sealed' {
         declare var isSealed: typeof undefined;
-	declare module.exports: typeof isSealed
+	declare export default typeof isSealed
 
     }
 declare module 'core-js/fn/object/keys' {
         declare var keys: typeof undefined;
-	declare module.exports: typeof keys
+	declare export default typeof keys
 
     }
 declare module 'core-js/fn/object/make' {
         declare var make: typeof undefined;
-	declare module.exports: typeof make
+	declare export default typeof make
 
     }
 declare module 'core-js/fn/object/prevent-extensions' {
         declare var Reflect$preventExtensions: typeof undefined;
-	declare module.exports: typeof Reflect$preventExtensions
+	declare export default typeof Reflect$preventExtensions
 
     }
 declare module 'core-js/fn/object/seal' {
         declare var seal: typeof undefined;
-	declare module.exports: typeof seal
+	declare export default typeof seal
 
     }
 declare module 'core-js/fn/object/set-prototype-of' {
         declare var Reflect$setPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$setPrototypeOf
+	declare export default typeof Reflect$setPrototypeOf
 
     }
 declare module 'core-js/fn/object/values' {
         declare var values: typeof undefined;
-	declare module.exports: typeof values
+	declare export default typeof values
 
     }
 declare module 'core-js/fn/reflect' {
         declare var Reflect: typeof undefined;
-	declare module.exports: typeof Reflect
+	declare export default typeof Reflect
 
     }
 declare module 'core-js/fn/reflect/apply' {
         declare var Reflect$apply: typeof undefined;
-	declare module.exports: typeof Reflect$apply
+	declare export default typeof Reflect$apply
 
     }
 declare module 'core-js/fn/reflect/construct' {
         declare var Reflect$construct: typeof undefined;
-	declare module.exports: typeof Reflect$construct
+	declare export default typeof Reflect$construct
 
     }
 declare module 'core-js/fn/reflect/define-property' {
         declare var Reflect$defineProperty: typeof undefined;
-	declare module.exports: typeof Reflect$defineProperty
+	declare export default typeof Reflect$defineProperty
 
     }
 declare module 'core-js/fn/reflect/delete-property' {
         declare var Reflect$deleteProperty: typeof undefined;
-	declare module.exports: typeof Reflect$deleteProperty
+	declare export default typeof Reflect$deleteProperty
 
     }
 declare module 'core-js/fn/reflect/enumerate' {
         declare var Reflect$enumerate: typeof undefined;
-	declare module.exports: typeof Reflect$enumerate
+	declare export default typeof Reflect$enumerate
 
     }
 declare module 'core-js/fn/reflect/get' {
         declare var Reflect$get: typeof undefined;
-	declare module.exports: typeof Reflect$get
+	declare export default typeof Reflect$get
 
     }
 declare module 'core-js/fn/reflect/get-own-property-descriptor' {
         declare var Reflect$getOwnPropertyDescriptor: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnPropertyDescriptor
+	declare export default typeof Reflect$getOwnPropertyDescriptor
 
     }
 declare module 'core-js/fn/reflect/get-prototype-of' {
         declare var Reflect$getPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$getPrototypeOf
+	declare export default typeof Reflect$getPrototypeOf
 
     }
 declare module 'core-js/fn/reflect/has' {
         declare var Reflect$has: typeof undefined;
-	declare module.exports: typeof Reflect$has
+	declare export default typeof Reflect$has
 
     }
 declare module 'core-js/fn/reflect/is-extensible' {
         declare var Reflect$isExtensible: typeof undefined;
-	declare module.exports: typeof Reflect$isExtensible
+	declare export default typeof Reflect$isExtensible
 
     }
 declare module 'core-js/fn/reflect/own-keys' {
         declare var Reflect$ownKeys: typeof undefined;
-	declare module.exports: typeof Reflect$ownKeys
+	declare export default typeof Reflect$ownKeys
 
     }
 declare module 'core-js/fn/reflect/prevent-extensions' {
         declare var Reflect$preventExtensions: typeof undefined;
-	declare module.exports: typeof Reflect$preventExtensions
+	declare export default typeof Reflect$preventExtensions
 
     }
 declare module 'core-js/fn/reflect/set' {
         declare var Reflect$set: typeof undefined;
-	declare module.exports: typeof Reflect$set
+	declare export default typeof Reflect$set
 
     }
 declare module 'core-js/fn/reflect/set-prototype-of' {
         declare var Reflect$setPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$setPrototypeOf
+	declare export default typeof Reflect$setPrototypeOf
 
     }
 declare module 'core-js/fn/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/fn/regexp/escape' {
         declare var escape: typeof undefined;
-	declare module.exports: typeof escape
+	declare export default typeof escape
 
     }
 declare module 'core-js/fn/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/fn/string/at' {
         declare var at: typeof undefined;
-	declare module.exports: typeof at
+	declare export default typeof at
 
     }
 declare module 'core-js/fn/string/code-point-at' {
         declare var codePointAt: typeof undefined;
-	declare module.exports: typeof codePointAt
+	declare export default typeof codePointAt
 
     }
 declare module 'core-js/fn/string/ends-with' {
         declare var endsWith: typeof undefined;
-	declare module.exports: typeof endsWith
+	declare export default typeof endsWith
 
     }
 declare module 'core-js/fn/string/escape-html' {
         declare var escapeHTML: typeof undefined;
-	declare module.exports: typeof escapeHTML
+	declare export default typeof escapeHTML
 
     }
 declare module 'core-js/fn/string/from-code-point' {
         declare var fromCodePoint: typeof undefined;
-	declare module.exports: typeof fromCodePoint
+	declare export default typeof fromCodePoint
 
     }
 declare module 'core-js/fn/string/includes' {
         declare var includes: typeof undefined;
-	declare module.exports: typeof includes
+	declare export default typeof includes
 
     }
 declare module 'core-js/fn/string/pad-end' {
         declare var padEnd: typeof undefined;
-	declare module.exports: typeof padEnd
+	declare export default typeof padEnd
 
     }
 declare module 'core-js/fn/string/pad-start' {
         declare var padStart: typeof undefined;
-	declare module.exports: typeof padStart
+	declare export default typeof padStart
 
     }
 declare module 'core-js/fn/string/raw' {
         declare var raw: typeof undefined;
-	declare module.exports: typeof raw
+	declare export default typeof raw
 
     }
 declare module 'core-js/fn/string/repeat' {
         declare var repeat: typeof undefined;
-	declare module.exports: typeof repeat
+	declare export default typeof repeat
 
     }
 declare module 'core-js/fn/string/starts-with' {
         declare var startsWith: typeof undefined;
-	declare module.exports: typeof startsWith
+	declare export default typeof startsWith
 
     }
 declare module 'core-js/fn/string/unescape-html' {
         declare var unescapeHTML: typeof undefined;
-	declare module.exports: typeof unescapeHTML
+	declare export default typeof unescapeHTML
 
     }
 declare module 'core-js/fn/symbol' {
         declare var core$Symbol: typeof undefined;
-	declare module.exports: typeof core$Symbol
+	declare export default typeof core$Symbol
 
     }
 declare module 'core-js/fn/symbol/for' {
         declare var _for: typeof undefined;
-	declare module.exports: typeof _for
+	declare export default typeof _for
 
     }
 declare module 'core-js/fn/symbol/has-instance' {
         declare var hasInstance: typeof undefined;
-	declare module.exports: typeof hasInstance
+	declare export default typeof hasInstance
 
     }
 declare module 'core-js/fn/symbol/is-concat-spreadable' {
         declare var isConcatSpreadable: typeof undefined;
-	declare module.exports: typeof isConcatSpreadable
+	declare export default typeof isConcatSpreadable
 
     }
 declare module 'core-js/fn/symbol/iterator' {
         declare var iterator: typeof undefined;
-	declare module.exports: typeof iterator
+	declare export default typeof iterator
 
     }
 declare module 'core-js/fn/symbol/key-for' {
         declare var keyFor: typeof undefined;
-	declare module.exports: typeof keyFor
+	declare export default typeof keyFor
 
     }
 declare module 'core-js/fn/symbol/match' {
         declare var match: typeof undefined;
-	declare module.exports: typeof match
+	declare export default typeof match
 
     }
 declare module 'core-js/fn/symbol/replace' {
         declare var replace: typeof undefined;
-	declare module.exports: typeof replace
+	declare export default typeof replace
 
     }
 declare module 'core-js/fn/symbol/search' {
         declare var search: typeof undefined;
-	declare module.exports: typeof search
+	declare export default typeof search
 
     }
 declare module 'core-js/fn/symbol/species' {
         declare var species: typeof undefined;
-	declare module.exports: typeof species
+	declare export default typeof species
 
     }
 declare module 'core-js/fn/symbol/split' {
         declare var split: typeof undefined;
-	declare module.exports: typeof split
+	declare export default typeof split
 
     }
 declare module 'core-js/fn/symbol/to-primitive' {
         declare var toPrimitive: typeof undefined;
-	declare module.exports: typeof toPrimitive
+	declare export default typeof toPrimitive
 
     }
 declare module 'core-js/fn/symbol/to-string-tag' {
         declare var toStringTag: typeof undefined;
-	declare module.exports: typeof toStringTag
+	declare export default typeof toStringTag
 
     }
 declare module 'core-js/fn/symbol/unscopables' {
         declare var unscopables: typeof undefined;
-	declare module.exports: typeof unscopables
+	declare export default typeof unscopables
 
     }
 declare module 'core-js/es5' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/es6' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/es6/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/es6/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/es6/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/es6/math' {
         declare var core$Math: typeof undefined;
-	declare module.exports: typeof core$Math
+	declare export default typeof core$Math
 
     }
 declare module 'core-js/es6/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/es6/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/es6/promise' {
         declare var core$Promise: typeof undefined;
-	declare module.exports: typeof core$Promise
+	declare export default typeof core$Promise
 
     }
 declare module 'core-js/es6/reflect' {
         declare var Reflect: typeof undefined;
-	declare module.exports: typeof Reflect
+	declare export default typeof Reflect
 
     }
 declare module 'core-js/es6/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/es6/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/es6/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/es6/symbol' {
         declare var core$Symbol: typeof undefined;
-	declare module.exports: typeof core$Symbol
+	declare export default typeof core$Symbol
 
     }
 declare module 'core-js/es6/weak-map' {
         declare var core$WeakMap: typeof undefined;
-	declare module.exports: typeof core$WeakMap
+	declare export default typeof core$WeakMap
 
     }
 declare module 'core-js/es6/weak-set' {
         declare var core$WeakSet: typeof undefined;
-	declare module.exports: typeof core$WeakSet
+	declare export default typeof core$WeakSet
 
     }
 declare module 'core-js/es7' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/es7/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/es7/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/es7/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/es7/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/es7/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/es7/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/js' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/js/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/web' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/web/dom' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/web/immediate' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/web/timers' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/shim' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/core' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/core/$for' {
-        declare module.exports: typeof core$$for
+        declare export default typeof core$$for
 
     }
 declare module 'core-js/library/core/_' {
         declare var core$_: typeof undefined;
-	declare module.exports: typeof core$_
+	declare export default typeof core$_
 
     }
 declare module 'core-js/library/core/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/library/core/date' {
         declare var core$Date: typeof undefined;
-	declare module.exports: typeof core$Date
+	declare export default typeof core$Date
 
     }
 declare module 'core-js/library/core/delay' {
         declare var core$delay: typeof undefined;
-	declare module.exports: typeof core$delay
+	declare export default typeof core$delay
 
     }
 declare module 'core-js/library/core/dict' {
         declare var core$Dict: typeof undefined;
-	declare module.exports: typeof core$Dict
+	declare export default typeof core$Dict
 
     }
 declare module 'core-js/library/core/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/library/core/global' {
         declare var core$global: typeof undefined;
-	declare module.exports: typeof core$global
+	declare export default typeof core$global
 
     }
 declare module 'core-js/library/core/log' {
         declare var core$log: typeof undefined;
-	declare module.exports: typeof core$log
+	declare export default typeof core$log
 
     }
 declare module 'core-js/library/core/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/library/core/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/library/core/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/library/fn/$for' {
-        declare module.exports: typeof core$$for
+        declare export default typeof core$$for
 
     }
 declare module 'core-js/library/fn/_' {
         declare var core$_: typeof undefined;
-	declare module.exports: typeof core$_
+	declare export default typeof core$_
 
     }
 declare module 'core-js/library/fn/clear-immediate' {
         declare var core$clearImmediate: typeof undefined;
-	declare module.exports: typeof core$clearImmediate
+	declare export default typeof core$clearImmediate
 
     }
 declare module 'core-js/library/fn/delay' {
         declare var core$delay: typeof undefined;
-	declare module.exports: typeof core$delay
+	declare export default typeof core$delay
 
     }
 declare module 'core-js/library/fn/dict' {
         declare var core$Dict: typeof undefined;
-	declare module.exports: typeof core$Dict
+	declare export default typeof core$Dict
 
     }
 declare module 'core-js/library/fn/get-iterator' {
         declare var core$getIterator: typeof undefined;
-	declare module.exports: typeof core$getIterator
+	declare export default typeof core$getIterator
 
     }
 declare module 'core-js/library/fn/global' {
         declare var core$global: typeof undefined;
-	declare module.exports: typeof core$global
+	declare export default typeof core$global
 
     }
 declare module 'core-js/library/fn/is-iterable' {
         declare var core$isIterable: typeof undefined;
-	declare module.exports: typeof core$isIterable
+	declare export default typeof core$isIterable
 
     }
 declare module 'core-js/library/fn/log' {
         declare var core$log: typeof undefined;
-	declare module.exports: typeof core$log
+	declare export default typeof core$log
 
     }
 declare module 'core-js/library/fn/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/library/fn/promise' {
         declare var core$Promise: typeof undefined;
-	declare module.exports: typeof core$Promise
+	declare export default typeof core$Promise
 
     }
 declare module 'core-js/library/fn/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/library/fn/set-immediate' {
         declare var core$setImmediate: typeof undefined;
-	declare module.exports: typeof core$setImmediate
+	declare export default typeof core$setImmediate
 
     }
 declare module 'core-js/library/fn/set-interval' {
         declare var core$setInterval: typeof undefined;
-	declare module.exports: typeof core$setInterval
+	declare export default typeof core$setInterval
 
     }
 declare module 'core-js/library/fn/set-timeout' {
         declare var core$setTimeout: typeof undefined;
-	declare module.exports: typeof core$setTimeout
+	declare export default typeof core$setTimeout
 
     }
 declare module 'core-js/library/fn/weak-map' {
         declare var core$WeakMap: typeof undefined;
-	declare module.exports: typeof core$WeakMap
+	declare export default typeof core$WeakMap
 
     }
 declare module 'core-js/library/fn/weak-set' {
         declare var core$WeakSet: typeof undefined;
-	declare module.exports: typeof core$WeakSet
+	declare export default typeof core$WeakSet
 
     }
 declare module 'core-js/library/fn/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/library/fn/array/concat' {
         declare var concat: typeof undefined;
-	declare module.exports: typeof concat
+	declare export default typeof concat
 
     }
 declare module 'core-js/library/fn/array/copy-within' {
         declare var copyWithin: typeof undefined;
-	declare module.exports: typeof copyWithin
+	declare export default typeof copyWithin
 
     }
 declare module 'core-js/library/fn/array/entries' {
         declare var entries: typeof undefined;
-	declare module.exports: typeof entries
+	declare export default typeof entries
 
     }
 declare module 'core-js/library/fn/array/every' {
         declare var every: typeof undefined;
-	declare module.exports: typeof every
+	declare export default typeof every
 
     }
 declare module 'core-js/library/fn/array/fill' {
         declare var fill: typeof undefined;
-	declare module.exports: typeof fill
+	declare export default typeof fill
 
     }
 declare module 'core-js/library/fn/array/filter' {
         declare var filter: typeof undefined;
-	declare module.exports: typeof filter
+	declare export default typeof filter
 
     }
 declare module 'core-js/library/fn/array/find' {
         declare var find: typeof undefined;
-	declare module.exports: typeof find
+	declare export default typeof find
 
     }
 declare module 'core-js/library/fn/array/find-index' {
         declare var findIndex: typeof undefined;
-	declare module.exports: typeof findIndex
+	declare export default typeof findIndex
 
     }
 declare module 'core-js/library/fn/array/for-each' {
         declare var forEach: typeof undefined;
-	declare module.exports: typeof forEach
+	declare export default typeof forEach
 
     }
 declare module 'core-js/library/fn/array/from' {
         declare var from: typeof undefined;
-	declare module.exports: typeof from
+	declare export default typeof from
 
     }
 declare module 'core-js/library/fn/array/includes' {
         declare var includes: typeof undefined;
-	declare module.exports: typeof includes
+	declare export default typeof includes
 
     }
 declare module 'core-js/library/fn/array/index-of' {
         declare var indexOf: typeof undefined;
-	declare module.exports: typeof indexOf
+	declare export default typeof indexOf
 
     }
 declare module 'core-js/library/fn/array/is-array' {
         declare var isArray: typeof undefined;
-	declare module.exports: typeof isArray
+	declare export default typeof isArray
 
     }
 declare module 'core-js/library/fn/array/join' {
         declare var join: typeof undefined;
-	declare module.exports: typeof join
+	declare export default typeof join
 
     }
 declare module 'core-js/library/fn/array/keys' {
         declare var keys: typeof undefined;
-	declare module.exports: typeof keys
+	declare export default typeof keys
 
     }
 declare module 'core-js/library/fn/array/last-index-of' {
         declare var lastIndexOf: typeof undefined;
-	declare module.exports: typeof lastIndexOf
+	declare export default typeof lastIndexOf
 
     }
 declare module 'core-js/library/fn/array/map' {
         declare var map: typeof undefined;
-	declare module.exports: typeof map
+	declare export default typeof map
 
     }
 declare module 'core-js/library/fn/array/of' {
         declare var of: typeof undefined;
-	declare module.exports: typeof of
+	declare export default typeof of
 
     }
 declare module 'core-js/library/fn/array/pop' {
         declare var pop: typeof undefined;
-	declare module.exports: typeof pop
+	declare export default typeof pop
 
     }
 declare module 'core-js/library/fn/array/push' {
         declare var push: typeof undefined;
-	declare module.exports: typeof push
+	declare export default typeof push
 
     }
 declare module 'core-js/library/fn/array/reduce' {
         declare var reduce: typeof undefined;
-	declare module.exports: typeof reduce
+	declare export default typeof reduce
 
     }
 declare module 'core-js/library/fn/array/reduce-right' {
         declare var reduceRight: typeof undefined;
-	declare module.exports: typeof reduceRight
+	declare export default typeof reduceRight
 
     }
 declare module 'core-js/library/fn/array/reverse' {
         declare var reverse: typeof undefined;
-	declare module.exports: typeof reverse
+	declare export default typeof reverse
 
     }
 declare module 'core-js/library/fn/array/shift' {
         declare var shift: typeof undefined;
-	declare module.exports: typeof shift
+	declare export default typeof shift
 
     }
 declare module 'core-js/library/fn/array/slice' {
         declare var slice: typeof undefined;
-	declare module.exports: typeof slice
+	declare export default typeof slice
 
     }
 declare module 'core-js/library/fn/array/some' {
         declare var some: typeof undefined;
-	declare module.exports: typeof some
+	declare export default typeof some
 
     }
 declare module 'core-js/library/fn/array/sort' {
         declare var sort: typeof undefined;
-	declare module.exports: typeof sort
+	declare export default typeof sort
 
     }
 declare module 'core-js/library/fn/array/splice' {
         declare var splice: typeof undefined;
-	declare module.exports: typeof splice
+	declare export default typeof splice
 
     }
 declare module 'core-js/library/fn/array/turn' {
         declare var turn: typeof undefined;
-	declare module.exports: typeof turn
+	declare export default typeof turn
 
     }
 declare module 'core-js/library/fn/array/unshift' {
         declare var unshift: typeof undefined;
-	declare module.exports: typeof unshift
+	declare export default typeof unshift
 
     }
 declare module 'core-js/library/fn/array/values' {
         declare var values: typeof undefined;
-	declare module.exports: typeof values
+	declare export default typeof values
 
     }
 declare module 'core-js/library/fn/date' {
         declare var core$Date: typeof undefined;
-	declare module.exports: typeof core$Date
+	declare export default typeof core$Date
 
     }
 declare module 'core-js/library/fn/date/add-locale' {
         declare var core$addLocale: typeof undefined;
-	declare module.exports: typeof core$addLocale
+	declare export default typeof core$addLocale
 
     }
 declare module 'core-js/library/fn/date/format' {
         declare var format: typeof undefined;
-	declare module.exports: typeof format
+	declare export default typeof format
 
     }
 declare module 'core-js/library/fn/date/formatUTC' {
         declare var formatUTC: typeof undefined;
-	declare module.exports: typeof formatUTC
+	declare export default typeof formatUTC
 
     }
 declare module 'core-js/library/fn/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/library/fn/function/has-instance' {
         declare function hasInstance(value: any): boolean
 
-	declare module.exports: typeof hasInstance
+	declare export default typeof hasInstance
 
     }
 declare module 'core-js/library/fn/function/name' {
@@ -2319,678 +2396,678 @@ declare module 'core-js/library/fn/function/name' {
     }
 declare module 'core-js/library/fn/function/part' {
         declare var part: typeof undefined;
-	declare module.exports: typeof part
+	declare export default typeof part
 
     }
 declare module 'core-js/library/fn/math' {
         declare var core$Math: typeof undefined;
-	declare module.exports: typeof core$Math
+	declare export default typeof core$Math
 
     }
 declare module 'core-js/library/fn/math/acosh' {
         declare var acosh: typeof undefined;
-	declare module.exports: typeof acosh
+	declare export default typeof acosh
 
     }
 declare module 'core-js/library/fn/math/asinh' {
         declare var asinh: typeof undefined;
-	declare module.exports: typeof asinh
+	declare export default typeof asinh
 
     }
 declare module 'core-js/library/fn/math/atanh' {
         declare var atanh: typeof undefined;
-	declare module.exports: typeof atanh
+	declare export default typeof atanh
 
     }
 declare module 'core-js/library/fn/math/cbrt' {
         declare var cbrt: typeof undefined;
-	declare module.exports: typeof cbrt
+	declare export default typeof cbrt
 
     }
 declare module 'core-js/library/fn/math/clz32' {
         declare var clz32: typeof undefined;
-	declare module.exports: typeof clz32
+	declare export default typeof clz32
 
     }
 declare module 'core-js/library/fn/math/cosh' {
         declare var cosh: typeof undefined;
-	declare module.exports: typeof cosh
+	declare export default typeof cosh
 
     }
 declare module 'core-js/library/fn/math/expm1' {
         declare var expm1: typeof undefined;
-	declare module.exports: typeof expm1
+	declare export default typeof expm1
 
     }
 declare module 'core-js/library/fn/math/fround' {
         declare var fround: typeof undefined;
-	declare module.exports: typeof fround
+	declare export default typeof fround
 
     }
 declare module 'core-js/library/fn/math/hypot' {
         declare var hypot: typeof undefined;
-	declare module.exports: typeof hypot
+	declare export default typeof hypot
 
     }
 declare module 'core-js/library/fn/math/imul' {
         declare var imul: typeof undefined;
-	declare module.exports: typeof imul
+	declare export default typeof imul
 
     }
 declare module 'core-js/library/fn/math/log10' {
         declare var log10: typeof undefined;
-	declare module.exports: typeof log10
+	declare export default typeof log10
 
     }
 declare module 'core-js/library/fn/math/log1p' {
         declare var log1p: typeof undefined;
-	declare module.exports: typeof log1p
+	declare export default typeof log1p
 
     }
 declare module 'core-js/library/fn/math/log2' {
         declare var log2: typeof undefined;
-	declare module.exports: typeof log2
+	declare export default typeof log2
 
     }
 declare module 'core-js/library/fn/math/sign' {
         declare var sign: typeof undefined;
-	declare module.exports: typeof sign
+	declare export default typeof sign
 
     }
 declare module 'core-js/library/fn/math/sinh' {
         declare var sinh: typeof undefined;
-	declare module.exports: typeof sinh
+	declare export default typeof sinh
 
     }
 declare module 'core-js/library/fn/math/tanh' {
         declare var tanh: typeof undefined;
-	declare module.exports: typeof tanh
+	declare export default typeof tanh
 
     }
 declare module 'core-js/library/fn/math/trunc' {
         declare var trunc: typeof undefined;
-	declare module.exports: typeof trunc
+	declare export default typeof trunc
 
     }
 declare module 'core-js/library/fn/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/library/fn/number/epsilon' {
         declare var EPSILON: typeof undefined;
-	declare module.exports: typeof EPSILON
+	declare export default typeof EPSILON
 
     }
 declare module 'core-js/library/fn/number/is-finite' {
         declare var isFinite: typeof undefined;
-	declare module.exports: typeof isFinite
+	declare export default typeof isFinite
 
     }
 declare module 'core-js/library/fn/number/is-integer' {
         declare var isInteger: typeof undefined;
-	declare module.exports: typeof isInteger
+	declare export default typeof isInteger
 
     }
 declare module 'core-js/library/fn/number/is-nan' {
         declare var isNaN: typeof undefined;
-	declare module.exports: typeof isNaN
+	declare export default typeof isNaN
 
     }
 declare module 'core-js/library/fn/number/is-safe-integer' {
         declare var isSafeInteger: typeof undefined;
-	declare module.exports: typeof isSafeInteger
+	declare export default typeof isSafeInteger
 
     }
 declare module 'core-js/library/fn/number/max-safe-integer' {
         declare var MAX_SAFE_INTEGER: typeof undefined;
-	declare module.exports: typeof MAX_SAFE_INTEGER
+	declare export default typeof MAX_SAFE_INTEGER
 
     }
 declare module 'core-js/library/fn/number/min-safe-integer' {
         declare var MIN_SAFE_INTEGER: typeof undefined;
-	declare module.exports: typeof MIN_SAFE_INTEGER
+	declare export default typeof MIN_SAFE_INTEGER
 
     }
 declare module 'core-js/library/fn/number/parse-float' {
         declare var parseFloat: typeof undefined;
-	declare module.exports: typeof parseFloat
+	declare export default typeof parseFloat
 
     }
 declare module 'core-js/library/fn/number/parse-int' {
         declare var parseInt: typeof undefined;
-	declare module.exports: typeof parseInt
+	declare export default typeof parseInt
 
     }
 declare module 'core-js/library/fn/number/random' {
         declare var random: typeof undefined;
-	declare module.exports: typeof random
+	declare export default typeof random
 
     }
 declare module 'core-js/library/fn/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/library/fn/object/assign' {
         declare var assign: typeof undefined;
-	declare module.exports: typeof assign
+	declare export default typeof assign
 
     }
 declare module 'core-js/library/fn/object/classof' {
         declare var classof: typeof undefined;
-	declare module.exports: typeof classof
+	declare export default typeof classof
 
     }
 declare module 'core-js/library/fn/object/create' {
         declare var create: typeof undefined;
-	declare module.exports: typeof create
+	declare export default typeof create
 
     }
 declare module 'core-js/library/fn/object/define' {
         declare var define: typeof undefined;
-	declare module.exports: typeof define
+	declare export default typeof define
 
     }
 declare module 'core-js/library/fn/object/define-properties' {
         declare var defineProperties: typeof undefined;
-	declare module.exports: typeof defineProperties
+	declare export default typeof defineProperties
 
     }
 declare module 'core-js/library/fn/object/define-property' {
         declare var Reflect$defineProperty: typeof undefined;
-	declare module.exports: typeof Reflect$defineProperty
+	declare export default typeof Reflect$defineProperty
 
     }
 declare module 'core-js/library/fn/object/entries' {
         declare var entries: typeof undefined;
-	declare module.exports: typeof entries
+	declare export default typeof entries
 
     }
 declare module 'core-js/library/fn/object/freeze' {
         declare var freeze: typeof undefined;
-	declare module.exports: typeof freeze
+	declare export default typeof freeze
 
     }
 declare module 'core-js/library/fn/object/get-own-property-descriptor' {
         declare var Reflect$getOwnPropertyDescriptor: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnPropertyDescriptor
+	declare export default typeof Reflect$getOwnPropertyDescriptor
 
     }
 declare module 'core-js/library/fn/object/get-own-property-descriptors' {
         declare var getOwnPropertyDescriptors: typeof undefined;
-	declare module.exports: typeof getOwnPropertyDescriptors
+	declare export default typeof getOwnPropertyDescriptors
 
     }
 declare module 'core-js/library/fn/object/get-own-property-names' {
         declare var getOwnPropertyNames: typeof undefined;
-	declare module.exports: typeof getOwnPropertyNames
+	declare export default typeof getOwnPropertyNames
 
     }
 declare module 'core-js/library/fn/object/get-own-property-symbols' {
         declare var getOwnPropertySymbols: typeof undefined;
-	declare module.exports: typeof getOwnPropertySymbols
+	declare export default typeof getOwnPropertySymbols
 
     }
 declare module 'core-js/library/fn/object/get-prototype-of' {
         declare var Reflect$getPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$getPrototypeOf
+	declare export default typeof Reflect$getPrototypeOf
 
     }
 declare module 'core-js/library/fn/object/is' {
         declare var is: typeof undefined;
-	declare module.exports: typeof is
+	declare export default typeof is
 
     }
 declare module 'core-js/library/fn/object/is-extensible' {
         declare var Reflect$isExtensible: typeof undefined;
-	declare module.exports: typeof Reflect$isExtensible
+	declare export default typeof Reflect$isExtensible
 
     }
 declare module 'core-js/library/fn/object/is-frozen' {
         declare var isFrozen: typeof undefined;
-	declare module.exports: typeof isFrozen
+	declare export default typeof isFrozen
 
     }
 declare module 'core-js/library/fn/object/is-object' {
         declare var isObject: typeof undefined;
-	declare module.exports: typeof isObject
+	declare export default typeof isObject
 
     }
 declare module 'core-js/library/fn/object/is-sealed' {
         declare var isSealed: typeof undefined;
-	declare module.exports: typeof isSealed
+	declare export default typeof isSealed
 
     }
 declare module 'core-js/library/fn/object/keys' {
         declare var keys: typeof undefined;
-	declare module.exports: typeof keys
+	declare export default typeof keys
 
     }
 declare module 'core-js/library/fn/object/make' {
         declare var make: typeof undefined;
-	declare module.exports: typeof make
+	declare export default typeof make
 
     }
 declare module 'core-js/library/fn/object/prevent-extensions' {
         declare var Reflect$preventExtensions: typeof undefined;
-	declare module.exports: typeof Reflect$preventExtensions
+	declare export default typeof Reflect$preventExtensions
 
     }
 declare module 'core-js/library/fn/object/seal' {
         declare var seal: typeof undefined;
-	declare module.exports: typeof seal
+	declare export default typeof seal
 
     }
 declare module 'core-js/library/fn/object/set-prototype-of' {
         declare var Reflect$setPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$setPrototypeOf
+	declare export default typeof Reflect$setPrototypeOf
 
     }
 declare module 'core-js/library/fn/object/values' {
         declare var values: typeof undefined;
-	declare module.exports: typeof values
+	declare export default typeof values
 
     }
 declare module 'core-js/library/fn/reflect' {
         declare var Reflect: typeof undefined;
-	declare module.exports: typeof Reflect
+	declare export default typeof Reflect
 
     }
 declare module 'core-js/library/fn/reflect/apply' {
         declare var Reflect$apply: typeof undefined;
-	declare module.exports: typeof Reflect$apply
+	declare export default typeof Reflect$apply
 
     }
 declare module 'core-js/library/fn/reflect/construct' {
         declare var Reflect$construct: typeof undefined;
-	declare module.exports: typeof Reflect$construct
+	declare export default typeof Reflect$construct
 
     }
 declare module 'core-js/library/fn/reflect/define-property' {
         declare var Reflect$defineProperty: typeof undefined;
-	declare module.exports: typeof Reflect$defineProperty
+	declare export default typeof Reflect$defineProperty
 
     }
 declare module 'core-js/library/fn/reflect/delete-property' {
         declare var Reflect$deleteProperty: typeof undefined;
-	declare module.exports: typeof Reflect$deleteProperty
+	declare export default typeof Reflect$deleteProperty
 
     }
 declare module 'core-js/library/fn/reflect/enumerate' {
         declare var Reflect$enumerate: typeof undefined;
-	declare module.exports: typeof Reflect$enumerate
+	declare export default typeof Reflect$enumerate
 
     }
 declare module 'core-js/library/fn/reflect/get' {
         declare var Reflect$get: typeof undefined;
-	declare module.exports: typeof Reflect$get
+	declare export default typeof Reflect$get
 
     }
 declare module 'core-js/library/fn/reflect/get-own-property-descriptor' {
         declare var Reflect$getOwnPropertyDescriptor: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnPropertyDescriptor
+	declare export default typeof Reflect$getOwnPropertyDescriptor
 
     }
 declare module 'core-js/library/fn/reflect/get-prototype-of' {
         declare var Reflect$getPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$getPrototypeOf
+	declare export default typeof Reflect$getPrototypeOf
 
     }
 declare module 'core-js/library/fn/reflect/has' {
         declare var Reflect$has: typeof undefined;
-	declare module.exports: typeof Reflect$has
+	declare export default typeof Reflect$has
 
     }
 declare module 'core-js/library/fn/reflect/is-extensible' {
         declare var Reflect$isExtensible: typeof undefined;
-	declare module.exports: typeof Reflect$isExtensible
+	declare export default typeof Reflect$isExtensible
 
     }
 declare module 'core-js/library/fn/reflect/own-keys' {
         declare var Reflect$ownKeys: typeof undefined;
-	declare module.exports: typeof Reflect$ownKeys
+	declare export default typeof Reflect$ownKeys
 
     }
 declare module 'core-js/library/fn/reflect/prevent-extensions' {
         declare var Reflect$preventExtensions: typeof undefined;
-	declare module.exports: typeof Reflect$preventExtensions
+	declare export default typeof Reflect$preventExtensions
 
     }
 declare module 'core-js/library/fn/reflect/set' {
         declare var Reflect$set: typeof undefined;
-	declare module.exports: typeof Reflect$set
+	declare export default typeof Reflect$set
 
     }
 declare module 'core-js/library/fn/reflect/set-prototype-of' {
         declare var Reflect$setPrototypeOf: typeof undefined;
-	declare module.exports: typeof Reflect$setPrototypeOf
+	declare export default typeof Reflect$setPrototypeOf
 
     }
 declare module 'core-js/library/fn/reflect/es7/define-metadata' {
         declare var Reflect$defineMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$defineMetadata
+	declare export default typeof Reflect$defineMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/delete-metadata' {
         declare var Reflect$deleteMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$deleteMetadata
+	declare export default typeof Reflect$deleteMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/get-metadata' {
         declare var Reflect$getMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$getMetadata
+	declare export default typeof Reflect$getMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/get-metadata-keys' {
         declare var Reflect$getMetadataKeys: typeof undefined;
-	declare module.exports: typeof Reflect$getMetadataKeys
+	declare export default typeof Reflect$getMetadataKeys
 
     }
 declare module 'core-js/library/fn/reflect/es7/get-own-metadata' {
         declare var Reflect$getOwnMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnMetadata
+	declare export default typeof Reflect$getOwnMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/get-own-metadata-keys'' {
         declare var Reflect$getOwnMetadataKeys: typeof undefined;
-	declare module.exports: typeof Reflect$getOwnMetadataKeys
+	declare export default typeof Reflect$getOwnMetadataKeys
 
     }
 declare module 'core-js/library/fn/reflect/es7/has-metadata'' {
         declare var Reflect$hasMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$hasMetadata
+	declare export default typeof Reflect$hasMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/has-own-metadata'' {
         declare var Reflect$hasOwnMetadata: typeof undefined;
-	declare module.exports: typeof Reflect$hasOwnMetadata
+	declare export default typeof Reflect$hasOwnMetadata
 
     }
 declare module 'core-js/library/fn/reflect/es7/metadata'' {
         declare var Reflect$metadata: typeof undefined;
-	declare module.exports: typeof Reflect$metadata
+	declare export default typeof Reflect$metadata
 
     }
 declare module 'core-js/library/fn/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/library/fn/regexp/escape' {
         declare var escape: typeof undefined;
-	declare module.exports: typeof escape
+	declare export default typeof escape
 
     }
 declare module 'core-js/library/fn/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/library/fn/string/at' {
         declare var at: typeof undefined;
-	declare module.exports: typeof at
+	declare export default typeof at
 
     }
 declare module 'core-js/library/fn/string/code-point-at' {
         declare var codePointAt: typeof undefined;
-	declare module.exports: typeof codePointAt
+	declare export default typeof codePointAt
 
     }
 declare module 'core-js/library/fn/string/ends-with' {
         declare var endsWith: typeof undefined;
-	declare module.exports: typeof endsWith
+	declare export default typeof endsWith
 
     }
 declare module 'core-js/library/fn/string/escape-html' {
         declare var escapeHTML: typeof undefined;
-	declare module.exports: typeof escapeHTML
+	declare export default typeof escapeHTML
 
     }
 declare module 'core-js/library/fn/string/from-code-point' {
         declare var fromCodePoint: typeof undefined;
-	declare module.exports: typeof fromCodePoint
+	declare export default typeof fromCodePoint
 
     }
 declare module 'core-js/library/fn/string/includes' {
         declare var includes: typeof undefined;
-	declare module.exports: typeof includes
+	declare export default typeof includes
 
     }
 declare module 'core-js/library/fn/string/pad-end' {
         declare var padEnd: typeof undefined;
-	declare module.exports: typeof padEnd
+	declare export default typeof padEnd
 
     }
 declare module 'core-js/library/fn/string/pad-start' {
         declare var padStart: typeof undefined;
-	declare module.exports: typeof padStart
+	declare export default typeof padStart
 
     }
 declare module 'core-js/library/fn/string/raw' {
         declare var raw: typeof undefined;
-	declare module.exports: typeof raw
+	declare export default typeof raw
 
     }
 declare module 'core-js/library/fn/string/repeat' {
         declare var repeat: typeof undefined;
-	declare module.exports: typeof repeat
+	declare export default typeof repeat
 
     }
 declare module 'core-js/library/fn/string/starts-with' {
         declare var startsWith: typeof undefined;
-	declare module.exports: typeof startsWith
+	declare export default typeof startsWith
 
     }
 declare module 'core-js/library/fn/string/unescape-html' {
         declare var unescapeHTML: typeof undefined;
-	declare module.exports: typeof unescapeHTML
+	declare export default typeof unescapeHTML
 
     }
 declare module 'core-js/library/fn/symbol' {
         declare var core$Symbol: typeof undefined;
-	declare module.exports: typeof core$Symbol
+	declare export default typeof core$Symbol
 
     }
 declare module 'core-js/library/fn/symbol/for' {
         declare var _for: typeof undefined;
-	declare module.exports: typeof _for
+	declare export default typeof _for
 
     }
 declare module 'core-js/library/fn/symbol/has-instance' {
         declare var hasInstance: typeof undefined;
-	declare module.exports: typeof hasInstance
+	declare export default typeof hasInstance
 
     }
 declare module 'core-js/library/fn/symbol/is-concat-spreadable' {
         declare var isConcatSpreadable: typeof undefined;
-	declare module.exports: typeof isConcatSpreadable
+	declare export default typeof isConcatSpreadable
 
     }
 declare module 'core-js/library/fn/symbol/iterator' {
         declare var iterator: typeof undefined;
-	declare module.exports: typeof iterator
+	declare export default typeof iterator
 
     }
 declare module 'core-js/library/fn/symbol/key-for' {
         declare var keyFor: typeof undefined;
-	declare module.exports: typeof keyFor
+	declare export default typeof keyFor
 
     }
 declare module 'core-js/library/fn/symbol/match' {
         declare var match: typeof undefined;
-	declare module.exports: typeof match
+	declare export default typeof match
 
     }
 declare module 'core-js/library/fn/symbol/replace' {
         declare var replace: typeof undefined;
-	declare module.exports: typeof replace
+	declare export default typeof replace
 
     }
 declare module 'core-js/library/fn/symbol/search' {
         declare var search: typeof undefined;
-	declare module.exports: typeof search
+	declare export default typeof search
 
     }
 declare module 'core-js/library/fn/symbol/species' {
         declare var species: typeof undefined;
-	declare module.exports: typeof species
+	declare export default typeof species
 
     }
 declare module 'core-js/library/fn/symbol/split' {
         declare var split: typeof undefined;
-	declare module.exports: typeof split
+	declare export default typeof split
 
     }
 declare module 'core-js/library/fn/symbol/to-primitive' {
         declare var toPrimitive: typeof undefined;
-	declare module.exports: typeof toPrimitive
+	declare export default typeof toPrimitive
 
     }
 declare module 'core-js/library/fn/symbol/to-string-tag' {
         declare var toStringTag: typeof undefined;
-	declare module.exports: typeof toStringTag
+	declare export default typeof toStringTag
 
     }
 declare module 'core-js/library/fn/symbol/unscopables' {
         declare var unscopables: typeof undefined;
-	declare module.exports: typeof unscopables
+	declare export default typeof unscopables
 
     }
 declare module 'core-js/library/es5' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/es6' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/es6/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/library/es6/function' {
         declare var core$Function: typeof undefined;
-	declare module.exports: typeof core$Function
+	declare export default typeof core$Function
 
     }
 declare module 'core-js/library/es6/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/library/es6/math' {
         declare var core$Math: typeof undefined;
-	declare module.exports: typeof core$Math
+	declare export default typeof core$Math
 
     }
 declare module 'core-js/library/es6/number' {
         declare var core$Number: typeof undefined;
-	declare module.exports: typeof core$Number
+	declare export default typeof core$Number
 
     }
 declare module 'core-js/library/es6/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/library/es6/promise' {
         declare var core$Promise: typeof undefined;
-	declare module.exports: typeof core$Promise
+	declare export default typeof core$Promise
 
     }
 declare module 'core-js/library/es6/reflect' {
         declare var Reflect: typeof undefined;
-	declare module.exports: typeof Reflect
+	declare export default typeof Reflect
 
     }
 declare module 'core-js/library/es6/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/library/es6/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/library/es6/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/library/es6/symbol' {
         declare var core$Symbol: typeof undefined;
-	declare module.exports: typeof core$Symbol
+	declare export default typeof core$Symbol
 
     }
 declare module 'core-js/library/es6/weak-map' {
         declare var core$WeakMap: typeof undefined;
-	declare module.exports: typeof core$WeakMap
+	declare export default typeof core$WeakMap
 
     }
 declare module 'core-js/library/es6/weak-set' {
         declare var core$WeakSet: typeof undefined;
-	declare module.exports: typeof core$WeakSet
+	declare export default typeof core$WeakSet
 
     }
 declare module 'core-js/library/es7' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/es7/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/library/es7/map' {
         declare var core$Map: typeof undefined;
-	declare module.exports: typeof core$Map
+	declare export default typeof core$Map
 
     }
 declare module 'core-js/library/es7/object' {
         declare var core$Object: typeof undefined;
-	declare module.exports: typeof core$Object
+	declare export default typeof core$Object
 
     }
 declare module 'core-js/library/es7/regexp' {
         declare var core$RegExp: typeof undefined;
-	declare module.exports: typeof core$RegExp
+	declare export default typeof core$RegExp
 
     }
 declare module 'core-js/library/es7/set' {
         declare var core$Set: typeof undefined;
-	declare module.exports: typeof core$Set
+	declare export default typeof core$Set
 
     }
 declare module 'core-js/library/es7/string' {
         declare var core$String: typeof undefined;
-	declare module.exports: typeof core$String
+	declare export default typeof core$String
 
     }
 declare module 'core-js/library/js' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/js/array' {
         declare var core$Array: typeof undefined;
-	declare module.exports: typeof core$Array
+	declare export default typeof core$Array
 
     }
 declare module 'core-js/library/web' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/web/dom' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/web/immediate' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }
 declare module 'core-js/library/web/timers' {
-        declare module.exports: typeof core
+        declare export default typeof core
 
     }

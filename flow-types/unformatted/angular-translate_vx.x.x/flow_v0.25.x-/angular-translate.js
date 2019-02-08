@@ -1,10 +1,4 @@
-declare module 'angular-translate' {
-        declare var _: string;
-	declare module.exports: typeof _
-
-	import typeof * as angular from 'angular';
-
-	declare module 'angular' {
+declare module 'angular' {
         declare interface translate$ITranslationTable {
 [key: string]: string | translate$ITranslationTable
 } 
@@ -142,5 +136,10 @@ resolveClientLocale(): string
 }
 } 
     }
+declare module 'angular-translate' {
+        declare var _: string;
+	declare export default typeof _
+
+	import typeof * as angular from 'angular';
 
     }

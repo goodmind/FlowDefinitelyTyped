@@ -1,10 +1,4 @@
-declare module 'angular-loading-bar' {
-        declare var _: string;
-	declare module.exports: typeof _
-
-	import typeof * as angular from 'angular';
-
-	declare module 'angular' {
+declare module 'angular' {
         declare interface loadingBar$ILoadingBarProvider {
 
 /**
@@ -54,7 +48,8 @@ start(): void,
 
 /**
  * Set the percentage completed
- * @param {number} n - number between 0 and 1
+ * @param {number} n
+ * - number between 0 and 1
  */
 set(n: number): void,
 
@@ -82,5 +77,10 @@ complete(): void
 ignoreLoadingBar?: boolean
 } 
     }
+declare module 'angular-loading-bar' {
+        declare var _: string;
+	declare export default typeof _
+
+	import typeof * as angular from 'angular';
 
     }

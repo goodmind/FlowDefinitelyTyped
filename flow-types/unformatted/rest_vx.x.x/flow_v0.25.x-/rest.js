@@ -1,5 +1,5 @@
 declare module 'rest' {
-        declare module.exports: typeof rest
+        declare export default typeof rest
 
 	declare function rest(path: string): rest$rest$ResponsePromise
 
@@ -25,7 +25,7 @@ declare export function rest$resetDefaultClient(): void
 declare export function rest$wrap<T>(interceptor: rest$Interceptor<T>, config?: T): rest$Client
 
 
-declare export interface rest$Request {
+export interface rest$Request {
 method?: string,
 path?: string,
 params?: any,
@@ -36,16 +36,16 @@ cancel?: () => void,
 originator?: (request?: rest$Request) => rest$ResponsePromise
 } 
 
-declare export interface rest$Status {
+export interface rest$Status {
 code: number,
 text?: string
 } 
 
-declare export interface rest$Headers {
+export interface rest$Headers {
 [index: string]: any
 } 
 
-declare export interface rest$Response {
+export interface rest$Response {
 request: rest$Request,
 raw: any,
 status: rest$Status,
@@ -53,7 +53,7 @@ headers: rest$Headers,
 entity: any
 } 
 
-declare export type rest$ResponsePromise = {
+export type rest$ResponsePromise = {
 entity(): when.Promise<any>,
 status(): when.Promise<number>,
 headers(): when.Promise<rest$Headers>,
@@ -61,18 +61,18 @@ header(headerName: string): when.Promise<any>
 } & when.Promise<rest$Response>
 
 
-declare export interface rest$Interceptor<T> {
+export interface rest$Interceptor<T> {
 (parent?: rest$Client, config?: T): rest$Client
 } 
 
-declare export interface rest$Client {
+export interface rest$Client {
 (path: string): rest$ResponsePromise,
 (request: rest$Request): rest$ResponsePromise,
 skip(): rest$Client,
 rest$wrap<T>(interceptor: rest$Interceptor<T>, config?: T): rest$Client
 } 
 
-declare export interface rest$Meta {
+export interface rest$Meta {
 client: rest$Client,
 arguments: any
 } 
@@ -141,7 +141,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof interceptor
+	declare export default typeof interceptor
 
     }
 declare module 'rest/interceptor/defaultRequest' {
@@ -207,7 +207,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof defaultRequest
+	declare export default typeof defaultRequest
 
     }
 declare module 'rest/interceptor/hateoas' {
@@ -273,7 +273,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof hateoas
+	declare export default typeof hateoas
 
     }
 declare module 'rest/interceptor/location' {
@@ -339,7 +339,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof location
+	declare export default typeof location
 
     }
 declare module 'rest/interceptor/mime' {
@@ -405,7 +405,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof mime
+	declare export default typeof mime
 
     }
 declare module 'rest/interceptor/pathPrefix' {
@@ -471,7 +471,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof pathPrefix
+	declare export default typeof pathPrefix
 
     }
 declare module 'rest/interceptor/basicAuth' {
@@ -537,7 +537,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof basicAuth
+	declare export default typeof basicAuth
 
     }
 declare module 'rest/interceptor/oAuth' {
@@ -607,7 +607,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof oAuth
+	declare export default typeof oAuth
 
     }
 declare module 'rest/interceptor/csrf' {
@@ -673,7 +673,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof csrf
+	declare export default typeof csrf
 
     }
 declare module 'rest/interceptor/errorCode' {
@@ -739,7 +739,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof errorCode
+	declare export default typeof errorCode
 
     }
 declare module 'rest/interceptor/retry' {
@@ -805,7 +805,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof retry
+	declare export default typeof retry
 
     }
 declare module 'rest/interceptor/template' {
@@ -871,7 +871,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof template
+	declare export default typeof template
 
     }
 declare module 'rest/interceptor/timeout' {
@@ -937,7 +937,7 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof timeout
+	declare export default typeof timeout
 
     }
 declare module 'rest/interceptor/jsonp' {
@@ -1003,17 +1003,17 @@ prefix?: string,
 name?: string
 }
 } 
-	declare module.exports: typeof jsonp
+	declare export default typeof jsonp
 
     }
 declare module 'rest/interceptor/ie/xdomain' {
         declare var xdomain: rest$rest$Interceptor<{}>;
-	declare module.exports: typeof xdomain
+	declare export default typeof xdomain
 
     }
 declare module 'rest/interceptor/ie/xhr' {
         declare var xhr: rest$rest$Interceptor<{}>;
-	declare module.exports: typeof xhr
+	declare export default typeof xhr
 
     }
 declare module 'rest/mime/registry' {
@@ -1027,26 +1027,26 @@ declare interface registry$Registry {
 lookup(mimeType: string): when.Promise<registry$MIMEConverter>,
 register(mimeType: string, converter: registry$MIMEConverter): void
 } 
-	declare module.exports: typeof registry
+	declare export default typeof registry
 
     }
 declare module 'rest/client/xhr' {
         declare var xhr: rest$rest$Client;
-	declare module.exports: typeof xhr
+	declare export default typeof xhr
 
     }
 declare module 'rest/client/node' {
         declare var node: rest$rest$Client;
-	declare module.exports: typeof node
+	declare export default typeof node
 
     }
 declare module 'rest/client/jsonp' {
         declare var jsonp: rest$rest$Client;
-	declare module.exports: typeof jsonp
+	declare export default typeof jsonp
 
     }
 declare module 'rest/client/xdr' {
         declare var xdr: rest$rest$Client;
-	declare module.exports: typeof xdr
+	declare export default typeof xdr
 
     }

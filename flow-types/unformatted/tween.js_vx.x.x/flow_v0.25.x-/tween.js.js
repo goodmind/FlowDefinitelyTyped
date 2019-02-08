@@ -1,5 +1,8 @@
-declare module 'tween.js' {
-        
+declare module '@tweenjs/tween.js' {
+        declare export default typeof TWEEN
+
+    }
+
       declare var npm$namespace$TWEEN: {
         getAll: typeof TWEEN$getAll,
 removeAll: typeof TWEEN$removeAll,
@@ -63,8 +66,8 @@ update(time?: number, preserve?: boolean): boolean
 
 declare export var TWEEN$Easing: TWEEN$Easing;
 
-declare export var TWEEN$Interpolation: TWEEN$Interpolation;
-	declare interface Easing {
+declare export var TWEEN$Interpolation: TWEEN$Interpolation;declare module 'tween.js' {
+        declare interface Easing {
 Linear: {
 None(k: number): number
 },
@@ -131,7 +134,7 @@ CatmullRom(p0: number, p1: number, p2: number, p3: number, t: number): number
 }
 } 
 	declare module '@tweenjs/tween.js' {
-        declare module.exports: typeof TWEEN
+        declare export default typeof TWEEN
 
     }
 

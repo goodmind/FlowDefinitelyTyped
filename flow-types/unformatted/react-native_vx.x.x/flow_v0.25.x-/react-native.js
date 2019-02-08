@@ -1,3 +1,728 @@
+declare module 'global' {
+        declare function require(name: string): any
+
+	
+/**
+ * Console polyfill
+ * @see
+ * https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
+ */
+declare interface Console {
+error(message?: any, ...optionalParams: any[]): void,
+info(message?: any, ...optionalParams: any[]): void,
+log(message?: any, ...optionalParams: any[]): void,
+warn(message?: any, ...optionalParams: any[]): void,
+trace(message?: any, ...optionalParams: any[]): void,
+debug(message?: any, ...optionalParams: any[]): void,
+table(...data: any[]): void,
+disableYellowBox: boolean,
+ignoredYellowBox: string[],
+error(message?: any, ...optionalParams: any[]): void,
+info(message?: any, ...optionalParams: any[]): void,
+log(message?: any, ...optionalParams: any[]): void,
+warn(message?: any, ...optionalParams: any[]): void,
+trace(message?: any, ...optionalParams: any[]): void,
+debug(message?: any, ...optionalParams: any[]): void,
+table(...data: any[]): void,
+disableYellowBox: boolean,
+ignoredYellowBox: string[]
+} 
+	declare var console: Console;
+	
+/**
+ * Navigator object for accessing location API
+ * @see
+ * https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
+ */
+declare interface Navigator {
++product: string,
++geolocation: Geolocation,
++product: string,
++geolocation: Geolocation
+} 
+	declare var navigator: Navigator;
+	
+/**
+ * This contains the non-native `XMLHttpRequest` object, which you can use if you want to route network requests
+ * through DevTools (to trace them):
+ * 
+ *    global.XMLHttpRequest = global.originalXMLHttpRequest;
+ * @see
+ * https://github.com/facebook/react-native/issues/934
+ */
+declare var originalXMLHttpRequest: any;
+	declare var __BUNDLE_START_TIME__: number;
+	declare var ErrorUtils: ErrorUtils;
+	
+/**
+ * This variable is set to true when react-native is running in Dev mode
+ * Typical usage:
+ * <code> if (__DEV__) console.log('Running in dev mode')</code>
+ */
+declare var __DEV__: boolean;
+	declare function require(name: string): any
+
+    }
+
+      declare var npm$namespace$addons: {
+        
+        TestModule: typeof addons$TestModule,
+      }
+export interface addons$TestModuleStatic {
+verifySnapshot: (done: (indicator?: any) => void) => void,
+markTestPassed: (indicator: any) => void,
+markTestCompleted: () => void,
+verifySnapshot: (done: (indicator?: any) => void) => void,
+markTestPassed: (indicator: any) => void,
+markTestCompleted: () => void
+} 
+
+declare export var addons$TestModule: addons$TestModuleStatic;
+
+export type addons$TestModule = addons$TestModuleStatic;
+      declare var npm$namespace$Animated: {
+        decay: typeof Animated$decay,
+add: typeof Animated$add,
+subtract: typeof Animated$subtract,
+divide: typeof Animated$divide,
+multiply: typeof Animated$multiply,
+modulo: typeof Animated$modulo,
+diffClamp: typeof Animated$diffClamp,
+delay: typeof Animated$delay,
+sequence: typeof Animated$sequence,
+stagger: typeof Animated$stagger,
+loop: typeof Animated$loop,
+spring: typeof Animated$spring,
+parallel: typeof Animated$parallel,
+event: typeof Animated$event,
+createAnimatedComponent: typeof Animated$createAnimatedComponent,
+        timing: typeof Animated$timing,
+View: typeof Animated$View,
+Image: typeof Animated$Image,
+Text: typeof Animated$Text,
+ScrollView: typeof Animated$ScrollView,
+FlatList: typeof Animated$FlatList,
+SectionList: typeof Animated$SectionList,
+      }
+declare type Animated$AnimatedValue = Animated$Value;
+
+declare type Animated$AnimatedValueXY = Animated$ValueXY;
+
+declare type Animated$Base = Animated$Animated;
+
+declare class Animated$Animated  {}
+
+declare class Animated$AnimatedWithChildren mixins Animated$Animated {}
+
+declare class Animated$AnimatedInterpolation mixins Animated$AnimatedWithChildren {
+interpolate(config: Animated$InterpolationConfigType): Animated$AnimatedInterpolation
+}
+
+declare type Animated$ExtrapolateType = "extend" | "identity" | "clamp";
+
+declare type Animated$InterpolationConfigType = {
+inputRange: number[],
+outputRange: number[] | string[],
+easing?: ((input: number) => number),
+extrapolate?: Animated$ExtrapolateType,
+extrapolateLeft?: Animated$ExtrapolateType,
+extrapolateRight?: Animated$ExtrapolateType
+};
+
+declare type Animated$ValueListenerCallback = (state: {
+value: number
+}) => void;
+
+
+/**
+ * Standard value for driving animations.  One `Animated.Value` can drive
+ * multiple properties in a synchronized fashion, but can only be driven by one
+ * mechanism at a time.  Using a new mechanism (e.g. starting a new animation,
+ * or calling `setValue`) will stop any previous ones.
+ */
+declare export class Animated$Value mixins Animated$AnimatedWithChildren {
+constructor(value: number): this;
+
+/**
+ * Directly set the value.  This will stop any animations running on the value
+ * and update all the bound properties.
+ */
+setValue(value: number): void;
+
+/**
+ * Sets an offset that is applied on top of whatever value is set, whether via
+ * `setValue`, an animation, or `Animated.event`.  Useful for compensating
+ * things like the start of a pan gesture.
+ */
+setOffset(offset: number): void;
+
+/**
+ * Merges the offset value into the base value and resets the offset to zero.
+ * The final output of the value is unchanged.
+ */
+flattenOffset(): void;
+
+/**
+ * Sets the offset value to the base value, and resets the base value to zero.
+ * The final output of the value is unchanged.
+ */
+extractOffset(): void;
+
+/**
+ * Adds an asynchronous listener to the value so you can observe updates from
+ * animations.  This is useful because there is no way to
+ * synchronously read the value because it might be driven natively.
+ */
+addListener(callback: Animated$ValueListenerCallback): string;
+removeListener(id: string): void;
+removeAllListeners(): void;
+
+/**
+ * Stops any running animation or tracking.  `callback` is invoked with the
+ * final value after stopping the animation, which is useful for updating
+ * state to match the animation position with layout.
+ */
+stopAnimation(callback?: (value: number) => void): void;
+
+/**
+ * Interpolates the value before updating the property, e.g. mapping 0-1 to
+ * 0-10.
+ */
+interpolate(config: Animated$InterpolationConfigType): Animated$AnimatedInterpolation
+}
+
+declare type Animated$ValueXYListenerCallback = (value: {
+x: number,
+y: number
+}) => void;
+
+
+/**
+ * 2D Value for driving 2D animations, such as pan gestures.  Almost identical
+ * API to normal `Animated.Value`, but multiplexed.  Contains two regular
+ * `Animated.Value`s under the hood.
+ */
+declare export class Animated$ValueXY mixins Animated$AnimatedWithChildren {
+x: Animated$AnimatedValue;
+y: Animated$AnimatedValue;
+constructor(valueIn?: {
+x: number | Animated$AnimatedValue,
+y: number | Animated$AnimatedValue
+}): this;
+setValue(value: {
+x: number,
+y: number
+}): void;
+setOffset(offset: {
+x: number,
+y: number
+}): void;
+flattenOffset(): void;
+extractOffset(): void;
+stopAnimation(callback?: (value: {
+x: number,
+y: number
+}) => void): void;
+addListener(callback: Animated$ValueXYListenerCallback): string;
+removeListener(id: string): void;
+
+/**
+ * Converts `{x, y}` into `{left, top}` for use in style, e.g.
+ * 
+ * ```javascript
+ *          *  style={this.state.anim.getLayout()}
+ *          *```
+ */
+getLayout(): {
+[key: string]: Animated$AnimatedValue
+};
+
+/**
+ * Converts `{x, y}` into a useable translation transform, e.g.
+ * 
+ * ```javascript
+ *          *  style={{
+ *          *    transform: this.state.anim.getTranslateTransform()
+ *          *  }}
+ *          *```
+ */
+getTranslateTransform(): {
+[key: string]: Animated$AnimatedValue
+}[]
+}
+
+declare type Animated$EndResult = {
+finished: boolean
+};
+
+declare type Animated$EndCallback = (result: Animated$EndResult) => void;
+
+export interface Animated$CompositeAnimation {
+start: (callback?: Animated$EndCallback) => void,
+stop: () => void,
+start: (callback?: Animated$EndCallback) => void,
+stop: () => void
+} 
+
+declare interface Animated$AnimationConfig {
+isInteraction?: boolean,
+useNativeDriver?: boolean,
+isInteraction?: boolean,
+useNativeDriver?: boolean
+} 
+
+
+/**
+ * Animates a value from an initial velocity to zero based on a decay
+ * coefficient.
+ */
+declare export function Animated$decay(
+value: Animated$AnimatedValue | Animated$AnimatedValueXY,
+config: Animated$DecayAnimationConfig): Animated$CompositeAnimation
+
+
+declare type Animated$DecayAnimationConfig = {
+velocity: number | {
+x: number,
+y: number
+},
+deceleration?: number,
+velocity: number | {
+x: number,
+y: number
+},
+deceleration?: number
+} & Animated$AnimationConfig
+
+
+
+/**
+ * Animates a value along a timed easing curve.  The `Easing` module has tons
+ * of pre-defined curves, or you can use your own function.
+ */
+declare export var Animated$timing: (
+value: Animated$AnimatedValue | Animated$AnimatedValueXY,
+config: Animated$TimingAnimationConfig) => Animated$CompositeAnimation;
+
+declare type Animated$TimingAnimationConfig = {
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+easing?: (value: number) => number,
+duration?: number,
+Animated$delay?: number,
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+easing?: (value: number) => number,
+duration?: number,
+Animated$delay?: number
+} & Animated$AnimationConfig
+
+
+declare type Animated$SpringAnimationConfig = {
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+overshootClamping?: boolean,
+restDisplacementThreshold?: number,
+restSpeedThreshold?: number,
+velocity?: number | {
+x: number,
+y: number
+},
+bounciness?: number,
+speed?: number,
+tension?: number,
+friction?: number,
+stiffness?: number,
+mass?: number,
+damping?: number,
+Animated$delay?: number,
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+overshootClamping?: boolean,
+restDisplacementThreshold?: number,
+restSpeedThreshold?: number,
+velocity?: number | {
+x: number,
+y: number
+},
+bounciness?: number,
+speed?: number,
+tension?: number,
+friction?: number,
+stiffness?: number,
+mass?: number,
+damping?: number,
+Animated$delay?: number
+} & Animated$AnimationConfig
+
+
+declare interface Animated$LoopAnimationConfig {
+iterations?: number,
+iterations?: number
+} 
+
+
+/**
+ * Creates a new Animated value composed from two Animated values added
+ * together.
+ */
+declare export function Animated$add(a: Animated$Animated, b: Animated$Animated): Animated$AnimatedAddition
+
+
+declare class Animated$AnimatedAddition mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Creates a new Animated value composed by subtracting the second Animated
+ * value from the first Animated value.
+ */
+declare export function Animated$subtract(a: Animated$Animated, b: Animated$Animated): Animated$AnimatedSubtraction
+
+
+declare class Animated$AnimatedSubtraction mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Creates a new Animated value composed by dividing the first Animated
+ * value by the second Animated value.
+ */
+declare export function Animated$divide(a: Animated$Animated, b: Animated$Animated): Animated$AnimatedDivision
+
+
+declare class Animated$AnimatedDivision mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Creates a new Animated value composed from two Animated values multiplied
+ * together.
+ */
+declare export function Animated$multiply(a: Animated$Animated, b: Animated$Animated): Animated$AnimatedMultiplication
+
+
+declare class Animated$AnimatedMultiplication mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Creates a new Animated value that is the (non-negative) modulo of the
+ * provided Animated value
+ */
+declare export function Animated$modulo(a: Animated$Animated, modulus: number): Animated$AnimatedModulo
+
+
+declare class Animated$AnimatedModulo mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Create a new Animated value that is limited between 2 values. It uses the
+ * difference between the last value so even if the value is far from the bounds
+ * it will start changing when the value starts getting closer again.
+ * (`value = clamp(value + diff, min, max)`).
+ * 
+ * This is useful with scroll events, for example, to show the navbar when
+ * scrolling up and to hide it when scrolling down.
+ */
+declare export function Animated$diffClamp(a: Animated$Animated, min: number, max: number): Animated$AnimatedDiffClamp
+
+
+declare class Animated$AnimatedDiffClamp mixins Animated$AnimatedInterpolation {}
+
+
+/**
+ * Starts an animation after the given delay.
+ */
+declare export function Animated$delay(time: number): Animated$CompositeAnimation
+
+
+
+/**
+ * Starts an array of animations in order, waiting for each to complete
+ * before starting the next.  If the current running animation is stopped, no
+ * following animations will be started.
+ */
+declare export function Animated$sequence(animations: Array<Animated$CompositeAnimation>): Animated$CompositeAnimation
+
+
+
+/**
+ * Array of animations may run in parallel (overlap), but are started in
+ * sequence with successive delays.  Nice for doing trailing effects.
+ */
+declare export function Animated$stagger(
+time: number,
+animations: Array<Animated$CompositeAnimation>): Animated$CompositeAnimation
+
+
+
+/**
+ * Loops a given animation continuously, so that each time it reaches the end,
+ * it resets and begins again from the start. Can specify number of times to
+ * loop using the key 'iterations' in the config. Will loop without blocking
+ * the UI thread if the child animation is set to 'useNativeDriver'.
+ */
+declare export function Animated$loop(
+animation: Animated$CompositeAnimation,
+config?: Animated$LoopAnimationConfig): Animated$CompositeAnimation
+
+
+
+/**
+ * Spring animation based on Rebound and Origami.  Tracks velocity state to
+ * create fluid motions as the `toValue` updates, and can be chained together.
+ */
+declare export function Animated$spring(
+value: Animated$AnimatedValue | Animated$AnimatedValueXY,
+config: Animated$SpringAnimationConfig): Animated$CompositeAnimation
+
+
+declare type Animated$ParallelConfig = {
+stopTogether?: boolean
+};
+
+
+/**
+ * Starts an array of animations all at the same time.  By default, if one
+ * of the animations is stopped, they will all be stopped.  You can override
+ * this with the `stopTogether` flag.
+ */
+declare export function Animated$parallel(
+animations: Array<Animated$CompositeAnimation>,
+config?: Animated$ParallelConfig): Animated$CompositeAnimation
+
+
+declare type Animated$Mapping = {
+[key: string]: Animated$Mapping
+} | Animated$AnimatedValue;
+
+declare interface Animated$EventConfig<T> {
+listener?: (Animated$event: NativeSyntheticEvent<T>) => void,
+useNativeDriver?: boolean,
+listener?: (Animated$event: NativeSyntheticEvent<T>) => void,
+useNativeDriver?: boolean
+} 
+
+
+/**
+ * Takes an array of mappings and extracts values from each arg accordingly,
+ * then calls `setValue` on the mapped outputs.  e.g.
+ * 
+ * ```javascript
+ *      *  onScroll={Animated.event(
+ *      *    [{nativeEvent: {contentOffset: {x: this._scrollX}}}]
+ *      *    {listener},          // Optional async listener
+ *      *  )
+ *      *  ...
+ *      *  onPanResponderMove: Animated.event([
+ *      *    null,                // raw event arg ignored
+ *      *    {dx: this._panX},    // gestureState arg
+ *      *  ]),
+ *      *```
+ */
+declare export function Animated$event<T>(
+argMapping: Array<Animated$Mapping | null>,
+config?: Animated$EventConfig<T>): (...args: any[]) => void
+
+
+
+/**
+ * Make any React component Animatable.  Used to create `Animated.View`, etc.
+ */
+declare export function Animated$createAnimatedComponent(component: any): any
+
+
+
+/**
+ * Animated variants of the basic native views. Accepts Animated.Value for
+ * props and style.
+ */
+declare export var Animated$View: any;
+
+declare export var Animated$Image: any;
+
+declare export var Animated$Text: any;
+
+declare export var Animated$ScrollView: any;
+
+declare export var Animated$FlatList: any;
+
+declare export var Animated$SectionList: any;
+      declare var npm$namespace$StyleSheet: {
+        create: typeof StyleSheet$create,
+flatten: typeof StyleSheet$flatten,
+setStyleAttributePreprocessor: typeof StyleSheet$setStyleAttributePreprocessor,
+        hairlineWidth: typeof StyleSheet$hairlineWidth,
+absoluteFillObject: typeof StyleSheet$absoluteFillObject,
+absoluteFill: typeof StyleSheet$absoluteFill,
+      }
+declare type StyleSheet$NamedStyles<T> = $ObjMapi<T, <P>(P) => ViewStyle | TextStyle | ImageStyle>;
+
+
+/**
+ * Creates a StyleSheet style reference from the given object.
+ */
+declare export function StyleSheet$create<T: StyleSheet$NamedStyles<T> | StyleSheet$NamedStyles<any>>(styles: T): T
+
+
+
+/**
+ * Flattens an array of style objects, into one aggregated style object.
+ * Alternatively, this method can be used to lookup IDs, returned by
+ * StyleSheet.register.
+ * 
+ * > **NOTE**: Exercise caution as abusing this can tax you in terms of
+ * > optimizations.
+ * >
+ * > IDs enable optimizations through the bridge and memory in general. Refering
+ * > to style objects directly will deprive you of these optimizations.
+ * 
+ * Example:
+ * ```
+ *      * const styles = StyleSheet.create({
+ *      *   listItem: {
+ *      *     flex: 1,
+ *      *     fontSize: 16,
+ *      *     color: 'white'
+ *      *   },
+ *      *   selectedListItem: {
+ *      *     color: 'green'
+ *      *   }
+ *      * });
+ *      *
+ *      * StyleSheet.flatten([styles.listItem, styles.selectedListItem])
+ *      * // returns { flex: 1, fontSize: 16, color: 'green' }
+ *      * ```
+ * Alternative use:
+ * ```
+ *      * StyleSheet.flatten(styles.listItem);
+ *      * // return { flex: 1, fontSize: 16, color: 'white' }
+ *      * // Simply styles.listItem would return its ID (number)
+ *      * ```
+ * This method internally uses `StyleSheetRegistry.getStyleByID(style)`
+ * to resolve style objects represented by IDs. Thus, an array of style
+ * objects (instances of StyleSheet.create), are individually resolved to,
+ * their respective objects, merged as one and then returned. This also explains
+ * the alternative use.
+ */
+declare export function StyleSheet$flatten<T>(style?: RegisteredStyle<T>): T
+
+
+declare export function StyleSheet$flatten(style?: StyleProp<TextStyle>): TextStyle
+
+
+declare export function StyleSheet$flatten(style?: StyleProp<ImageStyle>): ImageStyle
+
+
+declare export function StyleSheet$flatten(style?: StyleProp<ViewStyle>): ViewStyle
+
+
+
+/**
+ * WARNING: EXPERIMENTAL. Breaking changes will probably happen a lot and will
+ * not be reliably announced. The whole thing might be deleted, who knows? Use
+ * at your own risk.
+ * 
+ * Sets a function to use to pre-process a style property value. This is used
+ * internally to process color and transform values. You should not use this
+ * unless you really know what you are doing and have exhausted other options.
+ */
+declare export function StyleSheet$setStyleAttributePreprocessor(property: string, process: (nextProp: any) => any): void
+
+
+
+/**
+ * This is defined as the width of a thin line on the platform. It can be
+ * used as the thickness of a border or division between two elements.
+ * Example:
+ * ```
+ *      *   {
+ *      *     borderBottomColor: '#bbb',
+ *      *     borderBottomWidth: StyleSheet.hairlineWidth
+ *      *   }
+ *      * ```
+ * 
+ * This constant will always be a round number of pixels (so a line defined
+ * by it look crisp) and will try to match the standard width of a thin line
+ * on the underlying platform. However, you should not rely on it being a
+ * constant size, because on different platforms and screen densities its
+ * value may be calculated differently.
+ */
+declare export var StyleSheet$hairlineWidth: number;
+
+declare interface StyleSheet$AbsoluteFillStyle {
+position: "absolute",
+left: 0,
+right: 0,
+top: 0,
+bottom: 0,
+position: "absolute",
+left: 0,
+right: 0,
+top: 0,
+bottom: 0
+} 
+
+
+/**
+ * Sometimes you may want `absoluteFill` but with a couple tweaks - `absoluteFillObject` can be
+ * used to create a customized entry in a `StyleSheet`, e.g.:
+ * 
+ *    const styles = StyleSheet.create({
+ *      wrapper: {
+ *        ...StyleSheet.absoluteFillObject,
+ *        top: 10,
+ *        backgroundColor: 'transparent',
+ *      },
+ *    });
+ */
+declare export var StyleSheet$absoluteFillObject: StyleSheet$AbsoluteFillStyle;
+
+
+/**
+ * A very common pattern is to create overlays with position absolute and zero positioning,
+ * so `absoluteFill` can be used for convenience and to reduce duplication of these repeated
+ * styles.
+ */
+declare export var StyleSheet$absoluteFill: RegisteredStyle<StyleSheet$AbsoluteFillStyle>;
+      declare var npm$namespace$AppRegistry: {
+        registerConfig: typeof AppRegistry$registerConfig,
+registerComponent: typeof AppRegistry$registerComponent,
+registerRunnable: typeof AppRegistry$registerRunnable,
+getAppKeys: typeof AppRegistry$getAppKeys,
+unmountApplicationComponentAtRootTag: typeof AppRegistry$unmountApplicationComponentAtRootTag,
+runApplication: typeof AppRegistry$runApplication,
+registerHeadlessTask: typeof AppRegistry$registerHeadlessTask,
+getRunnable: typeof AppRegistry$getRunnable,
+        
+      }
+declare function AppRegistry$registerConfig(config: AppConfig[]): void
+
+
+declare function AppRegistry$registerComponent(appKey: string, getComponentFunc: ComponentProvider): string
+
+
+declare function AppRegistry$registerRunnable(appKey: string, func: Runnable): string
+
+
+declare function AppRegistry$getAppKeys(): string[]
+
+
+declare function AppRegistry$unmountApplicationComponentAtRootTag(rootTag: number): void
+
+
+declare function AppRegistry$runApplication(appKey: string, appParameters: any): void
+
+
+declare function AppRegistry$registerHeadlessTask(appKey: string, task: TaskProvider): void
+
+
+declare function AppRegistry$getRunnable(appKey: string): Runnable | void
 declare module 'react-native' {
         import typeof * as PropTypes from 'prop-types';
 
@@ -24,8 +749,9 @@ key: number,
 subscriber: EventSubscriptionVendor,
 
 /**
- * @param subscriber the subscriber that controls
-this subscription.
+ * @param subscriber
+ * the subscriber that controls
+ * this subscription.
  */
 new (subscriber: EventSubscriptionVendor): EventSubscription,
 
@@ -49,8 +775,9 @@ addSubscription(eventType: string, subscription: EventSubscription): EventSubscr
 
 /**
  * Removes a bulk set of the subscriptions.
- * @param eventType - Optional name of the event type whose
-registered supscriptions to remove, if null remove all subscriptions.
+ * @param eventType
+ * - Optional name of the event type whose
+ * registered supscriptions to remove, if null remove all subscriptions.
  */
 removeAllSubscriptions(eventType?: string): void,
 
@@ -79,14 +806,18 @@ listener: () => any,
 context: any,
 
 /**
- * @param emitter - The event emitter that registered this
-subscription
- * @param subscriber - The subscriber that controls
-this subscription
- * @param listener - Function to invoke when the specified event is
-emitted
- * @param context - Optional context object to use when invoking the
-listener
+ * @param emitter
+ * - The event emitter that registered this
+ * subscription
+ * @param subscriber
+ * - The subscriber that controls
+ * this subscription
+ * @param listener
+ * - Function to invoke when the specified event is
+ * emitted
+ * @param context
+ * - Optional context object to use when invoking the
+ * listener
  */
 new (
 emitter: EventEmitter,
@@ -109,11 +840,14 @@ remove(): void
  * Adds a listener to be invoked when events of the specified type are
  * emitted. An optional calling context may be provided. The data arguments
  * emitted will be passed to the listener function.
- * @param eventType - Name of the event to listen to
- * @param listener - Function to invoke when the specified event is
-emitted
- * @param context - Optional context object to use when invoking the
-listener
+ * @param eventType
+ * - Name of the event to listen to
+ * @param listener
+ * - Function to invoke when the specified event is
+ * emitted
+ * @param context
+ * - Optional context object to use when invoking the
+ * listener
  */
 addListener(
 eventType: string,
@@ -123,19 +857,23 @@ context?: any): EmitterSubscription
 	declare type EventEmitter = {
 
 /**
- * @param subscriber - Optional subscriber instance
-to use. If omitted, a new subscriber will be created for the emitter.
+ * @param subscriber
+ * - Optional subscriber instance
+ * to use. If omitted, a new subscriber will be created for the emitter.
  */
 new (subscriber?: EventSubscriptionVendor): EventEmitter,
 
 /**
  * Similar to addListener, except that the listener is removed after it is
  * invoked once.
- * @param eventType - Name of the event to listen to
- * @param listener - Function to invoke only once when the
-specified event is emitted
- * @param context - Optional context object to use when invoking the
-listener
+ * @param eventType
+ * - Name of the event to listen to
+ * @param listener
+ * - Function to invoke only once when the
+ * specified event is emitted
+ * @param context
+ * - Optional context object to use when invoking the
+ * listener
  */
 once(
 eventType: string,
@@ -145,8 +883,9 @@ context: any): EmitterSubscription,
 /**
  * Removes all of the registered listeners, including those registered as
  * listener maps.
- * @param eventType - Optional name of the event whose registered
-listeners to remove
+ * @param eventType
+ * - Optional name of the event whose registered
+ * listeners to remove
  */
 removeAllListeners(eventType?: string): void,
 
@@ -157,16 +896,18 @@ removeAllListeners(eventType?: string): void,
  * invocation.
  * 
  * If it is called when not inside of an emitting cycle it will throw.
- * @throws {Error} When called not during an eventing cycle
- * @example const subscription = emitter.addListenerMap({
-someEvent: function(data, event) {
-console.log(data);
-emitter.removeCurrentListener();
-}
-});
-
-emitter.emit('someEvent', 'abc'); // logs 'abc'
-emitter.emit('someEvent', 'def'); // does not log anything
+ * @throws
+ * {Error} When called not during an eventing cycle
+ * @example
+ * const subscription = emitter.addListenerMap({
+ * someEvent: function(data, event) {
+ * console.log(data);
+ * emitter.removeCurrentListener();
+ * }
+ * });
+ * 
+ * emitter.emit('someEvent', 'abc'); // logs 'abc'
+ * emitter.emit('someEvent', 'def'); // does not log anything
  */
 removeCurrentListener(): void,
 
@@ -179,31 +920,38 @@ removeSubscription(subscription: EmitterSubscription): void,
 /**
  * Returns an array of listeners that are currently registered for the given
  * event.
- * @param eventType - Name of the event to query
+ * @param eventType
+ * - Name of the event to query
  */
 listeners(eventType: string): EmitterSubscription[],
 
 /**
  * Emits an event of the given type with the given data. All handlers of that
  * particular type will be notified.
- * @param eventType - Name of the event to emit
- * @param Arbitrary arguments to be passed to each registered listener
- * @example emitter.addListener('someEvent', function(message) {
-console.log(message);
-});
-
-emitter.emit('someEvent', 'abc'); // logs 'abc'
+ * @param eventType
+ * - Name of the event to emit
+ * @param Arbitrary
+ * arguments to be passed to each registered listener
+ * @example
+ * emitter.addListener('someEvent', function(message) {
+ * console.log(message);
+ * });
+ * 
+ * emitter.emit('someEvent', 'abc'); // logs 'abc'
  */
 emit(eventType: string, ...params: any[]): void,
 
 /**
  * Removes the given listener for event of specific type.
- * @param eventType - Name of the event to emit
- * @param listener - Function to invoke when the specified event is
-emitted
- * @example emitter.removeListener('someEvent', function(message) {
-console.log(message);
-}); // removes the listener if already registered
+ * @param eventType
+ * - Name of the event to emit
+ * @param listener
+ * - Function to invoke when the specified event is
+ * emitted
+ * @example
+ * emitter.removeListener('someEvent', function(message) {
+ * console.log(message);
+ * }); // removes the listener if already registered
  */
 removeListener(eventType: string, listener: (...args: any[]) => any): void
 } & EventEmitterListener
@@ -217,7 +965,8 @@ removeListener(eventType: string, listener: (...args: any[]) => any): void
  * Note, however, that they are not available on composite components that aren't directly backed by a
  * native view. This will generally include most components that you define in your own app.
  * For more information, see [Direct Manipulation](http://facebook.github.io/react-native/docs/direct-manipulation.html).
- * @see https://github.com/facebook/react-native/blob/master/Libraries/ReactIOS/NativeMethodsMixin.js
+ * @see
+ * https://github.com/facebook/react-native/blob/master/Libraries/ReactIOS/NativeMethodsMixin.js
  */
 declare export interface NativeMethodsMixinStatic {
 
@@ -365,7 +1114,8 @@ right?: number
 	
 /**
  * //FIXME: need to find documentation on which component is a TTouchable and can implement that interface
- * @see React.DOMAtributes
+ * @see
+ * React.DOMAtributes
  */
 declare export interface Touchable {
 onTouchStart?: (Animated$event: GestureResponderEvent) => void,
@@ -380,41 +1130,6 @@ appKey: string,
 component?: ComponentProvider,
 run?: Runnable
 };
-	
-      declare var npm$namespace$AppRegistry: {
-        registerConfig: typeof AppRegistry$registerConfig,
-registerComponent: typeof AppRegistry$registerComponent,
-registerRunnable: typeof AppRegistry$registerRunnable,
-getAppKeys: typeof AppRegistry$getAppKeys,
-unmountApplicationComponentAtRootTag: typeof AppRegistry$unmountApplicationComponentAtRootTag,
-runApplication: typeof AppRegistry$runApplication,
-registerHeadlessTask: typeof AppRegistry$registerHeadlessTask,
-getRunnable: typeof AppRegistry$getRunnable,
-        
-      }
-declare function AppRegistry$registerConfig(config: AppConfig[]): void
-
-
-declare function AppRegistry$registerComponent(appKey: string, getComponentFunc: ComponentProvider): string
-
-
-declare function AppRegistry$registerRunnable(appKey: string, func: Runnable): string
-
-
-declare function AppRegistry$getAppKeys(): string[]
-
-
-declare function AppRegistry$unmountApplicationComponentAtRootTag(rootTag: number): void
-
-
-declare function AppRegistry$runApplication(appKey: string, appParameters: any): void
-
-
-declare function AppRegistry$registerHeadlessTask(appKey: string, task: TaskProvider): void
-
-
-declare function AppRegistry$getRunnable(appKey: string): Runnable | void
-
 	declare export interface LayoutAnimationTypes {
 Animated$spring: string,
 linear: string,
@@ -451,11 +1166,13 @@ declare export interface LayoutAnimationStatic {
 
 /**
  * Schedules an animation to happen on the next layout.
- * @param config Specifies animation properties:
-`duration` in milliseconds
-`create`, config for animating in new views (see Anim type)
-`update`, config for animating views that have been updated (see Anim type)
- * @param onAnimationDidEnd Called when the animation finished. Only supported on iOS.
+ * @param config
+ * Specifies animation properties:
+ * `duration` in milliseconds
+ * `create`, config for animating in new views (see Anim type)
+ * `update`, config for animating views that have been updated (see Anim type)
+ * @param onAnimationDidEnd
+ * Called when the animation finished. Only supported on iOS.
  */
 configureNext: (config: LayoutAnimationConfig, onAnimationDidEnd?: () => void) => void,
 
@@ -488,9 +1205,12 @@ Animated$spring: (onAnimationDidEnd?: () => void) => void
 	
 /**
  * Flex Prop Types
- * @see https://facebook.github.io/react-native/docs/flexbox.html#proptypes
- * @see https://facebook.github.io/react-native/docs/layout-props.html
- * @see https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/LayoutPropTypes.js
+ * @see
+ * https://facebook.github.io/react-native/docs/flexbox.html#proptypes
+ * @see
+ * https://facebook.github.io/react-native/docs/layout-props.html
+ * @see
+ * https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/LayoutPropTypes.js
  */
 declare export interface FlexStyle {
 alignContent?: "flex-start"
@@ -557,25 +1277,29 @@ width?: number | string,
 zIndex?: number,
 
 /**
- * @platform ios
+ * @platform
+ * ios
  */
 direction?: "inherit" | "ltr" | "rtl"
 } 
 	
 /**
- * @see ShadowPropTypesIOS.js
+ * @see
+ * ShadowPropTypesIOS.js
  */
 declare export interface ShadowPropTypesIOSStatic {
 
 /**
  * Sets the drop shadow color
- * @platform ios
+ * @platform
+ * ios
  */
 shadowColor: string,
 
 /**
  * Sets the drop shadow offset
- * @platform ios
+ * @platform
+ * ios
  */
 shadowOffset: {
 width: number,
@@ -584,13 +1308,15 @@ height: number
 
 /**
  * Sets the drop shadow opacity (multiplied by the color's alpha component)
- * @platform ios
+ * @platform
+ * ios
  */
 shadowOpacity: number,
 
 /**
  * Sets the drop shadow blur radius
- * @platform ios
+ * @platform
+ * ios
  */
 shadowRadius: number
 } 
@@ -680,7 +1406,7 @@ translateX?: number,
 translateY?: number
 } 
 	declare export interface StyleSheetProperties {
-hairlineWidth: number,
+StyleSheet$hairlineWidth: number,
 StyleSheet$flatten<T: string>(style: T): T
 } 
 	declare export interface LayoutRectangle {
@@ -847,7 +1573,8 @@ onPress?: (Animated$event: GestureResponderEvent) => void,
 onLongPress?: (Animated$event: GestureResponderEvent) => void,
 
 /**
- * @see https://facebook.github.io/react-native/docs/text.html#style
+ * @see
+ * https://facebook.github.io/react-native/docs/text.html#style
  */
 style?: StyleProp<TextStyle>,
 
@@ -914,7 +1641,8 @@ overlaps(start: number, end: number): boolean
 	
 /**
  * IOS Specific properties for TextInput
- * @see https://facebook.github.io/react-native/docs/textinput.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/textinput.html#props
  */
 declare export interface TextInputIOSProps {
 
@@ -1049,7 +1777,8 @@ scrollEnabled?: boolean
 	
 /**
  * Android Specific properties for TextInput
- * @see https://facebook.github.io/react-native/docs/textinput.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/textinput.html#props
  */
 declare export interface TextInputAndroidProps {
 
@@ -1079,7 +1808,8 @@ numberOfLines?: number,
 
 /**
  * Sets the return key to the label. Use it instead of `returnKeyType`.
- * @platform android
+ * @platform
+ * android
  */
 returnKeyLabel?: string,
 
@@ -1120,7 +1850,8 @@ underlineColorAndroid?: string
 	declare export type ReturnKeyTypeOptions = ReturnKeyType | ReturnKeyTypeAndroid | ReturnKeyTypeIOS;
 	
 /**
- * @see TextInputProps.onFocus
+ * @see
+ * TextInputProps.onFocus
  */
 declare export interface TextInputFocusEventData {
 target: number,
@@ -1129,7 +1860,8 @@ eventCount: number
 } 
 	
 /**
- * @see TextInputProps.onScroll
+ * @see
+ * TextInputProps.onScroll
  */
 declare export interface TextInputScrollEventData {
 contentOffset: {
@@ -1139,7 +1871,8 @@ y: number
 } 
 	
 /**
- * @see TextInputProps.onSelectionChange
+ * @see
+ * TextInputProps.onSelectionChange
  */
 declare export interface TextInputSelectionChangeEventData {
 selection: {
@@ -1150,14 +1883,16 @@ target: number
 } 
 	
 /**
- * @see TextInputProps.onKeyPress
+ * @see
+ * TextInputProps.onKeyPress
  */
 declare export interface TextInputKeyPressEventData {
 key: string
 } 
 	
 /**
- * @see TextInputProps.onChange
+ * @see
+ * TextInputProps.onChange
  */
 declare export interface TextInputChangeEventData {
 eventCount: number,
@@ -1166,7 +1901,8 @@ text: string
 } 
 	
 /**
- * @see TextInputProps.onContentSizeChange
+ * @see
+ * TextInputProps.onContentSizeChange
  */
 declare export interface TextInputContentSizeChangeEventData {
 contentSize: {
@@ -1176,21 +1912,24 @@ height: number
 } 
 	
 /**
- * @see TextInputProps.onEndEditing
+ * @see
+ * TextInputProps.onEndEditing
  */
 declare export interface TextInputEndEditingEventData {
 text: string
 } 
 	
 /**
- * @see TextInputProps.onSubmitEditing
+ * @see
+ * TextInputProps.onSubmitEditing
  */
 declare export interface TextInputSubmitEditingEventData {
 text: string
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/textinput.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/textinput.html#props
  */
 declare export type TextInputProps = {
 
@@ -1420,23 +2159,26 @@ currentlyFocusedField(): number,
 
 /**
  * @deprecated
- * @param TextInputID id of the text field to focus
-Focuses the specified text field
-noop if the text field was already focused
+ * @param TextInputID
+ * id of the text field to focus
+ * Focuses the specified text field
+ * noop if the text field was already focused
  */
 focusTextInput(textFieldID?: number): void,
 
 /**
  * @deprecated
- * @param textFieldID id of the text field to focus
-Unfocuses the specified text field
-noop if it wasn't focused
+ * @param textFieldID
+ * id of the text field to focus
+ * Unfocuses the specified text field
+ * noop if it wasn't focused
  */
 blurTextInput(textFieldID?: number): void
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/textinput.html#methods
+ * @see
+ * https://facebook.github.io/react-native/docs/textinput.html#methods
  */
 declare class TextInputComponent mixins React.Component<TextInputProps> {}
 	declare var TextInputBase: Constructor<NativeMethodsMixin> & Constructor<TimerMixin> & typeof TextInputComponent;
@@ -1710,8 +2452,10 @@ onMoveShouldSetResponderCapture?: (Animated$event: GestureResponderEvent) => boo
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/view.html#style
- * @see https://github.com/facebook/react-native/blob/master/Libraries/Components/View/ViewStylePropTypes.js
+ * @see
+ * https://facebook.github.io/react-native/docs/view.html#style
+ * @see
+ * https://github.com/facebook/react-native/blob/master/Libraries/Components/View/ViewStylePropTypes.js
  */
 declare export type ViewStyle = {
 backfaceVisibility?: "visible" | "hidden",
@@ -1746,7 +2490,8 @@ testID?: string,
  * [elevation API](https://developer.android.com/training/material/shadows-clipping.html#Elevation).
  * This adds a drop shadow to the item and affects z-order for overlapping views.
  * Only supported on Android 5.0+, has no effect on earlier versions.
- * @platform android
+ * @platform
+ * android
  */
 elevation?: number
 } & FlexStyle & ShadowStyleIOS & TransformsStyle
@@ -1755,20 +2500,23 @@ elevation?: number
 
 /**
  * A Boolean value indicating whether VoiceOver should ignore the elements within views that are siblings of the receiver.
- * @platform ios
+ * @platform
+ * ios
  */
 accessibilityViewIsModal?: boolean,
 
 /**
  * Provides an array of custom actions available for accessibility.
- * @platform ios
+ * @platform
+ * ios
  */
 accessibilityActions?: Array<string>,
 
 /**
  * When `accessible` is true, the system will try to invoke this function
  * when the user performs an accessibility custom action.
- * @platform ios
+ * @platform
+ * ios
  */
 onAccessibilityAction?: () => void,
 
@@ -1831,7 +2579,8 @@ __registeredStyleBrand: T
 	declare export type StyleProp<T> = T | RegisteredStyle<T> | RecursiveArray<T | RegisteredStyle<T> | Falsy> | Falsy;
 	
 /**
- * @see https://facebook.github.io/react-native/docs/accessibility.html#accessibility-properties
+ * @see
+ * https://facebook.github.io/react-native/docs/accessibility.html#accessibility-properties
  */
 declare export type AccessibilityProps = {
 
@@ -1882,7 +2631,8 @@ accessibilityHint?: string
  * If we were using native buttons, this would work automatically. Since we are using javascript, we need to
  * provide a bit more context for TalkBack. To do so, you must specify the ‘accessibilityComponentType’ property
  * for any UI component. For instances, we support ‘button’, ‘radiobutton_checked’ and ‘radiobutton_unchecked’ and so on.
- * @platform android
+ * @platform
+ * android
  */
 accessibilityComponentType?: "none" | "button" | "radiobutton_checked" | "radiobutton_unchecked",
 
@@ -1890,7 +2640,8 @@ accessibilityComponentType?: "none" | "button" | "radiobutton_checked" | "radiob
  * Indicates to accessibility services whether the user should be notified when this view changes.
  * Works for Android API >= 19 only.
  * See http://developer.android.com/reference/android/view/View.html#attr_android:accessibilityLiveRegion for references.
- * @platform android
+ * @platform
+ * android
  */
 accessibilityLiveRegion?: "none" | "polite" | "assertive",
 
@@ -1912,32 +2663,37 @@ importantForAccessibility?: "auto" | "yes" | "no" | "no-hide-descendants"
 /**
  * A Boolean value indicating whether the accessibility elements contained within this accessibility element
  * are hidden to the screen reader.
- * @platform ios
+ * @platform
+ * ios
  */
 accessibilityElementsHidden?: boolean,
 
 /**
  * Accessibility traits tell a person using VoiceOver what kind of element they have selected.
  * Is this element a label? A button? A header? These questions are answered by accessibilityTraits.
- * @platform ios
+ * @platform
+ * ios
  */
 accessibilityTraits?: AccessibilityTrait | AccessibilityTrait[],
 
 /**
  * When `accessible` is true, the system will try to invoke this function when the user performs accessibility tap gesture.
- * @platform ios
+ * @platform
+ * ios
  */
 onAccessibilityTap?: () => void,
 
 /**
  * When accessible is true, the system will invoke this function when the user performs the magic tap gesture.
- * @platform ios
+ * @platform
+ * ios
  */
 onMagicTap?: () => void,
 
 /**
  * https://facebook.github.io/react-native/docs/accessibility#accessibilityignoresinvertcolorsios
- * @platform ios
+ * @platform
+ * ios
  */
 accessibilityIgnoresInvertColors?: boolean
 } 
@@ -1960,7 +2716,8 @@ accessibilityIgnoresInvertColors?: boolean
 | "pageTurn";
 	
 /**
- * @see https://facebook.github.io/react-native/docs/view.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/view.html#props
  */
 declare export type ViewProps = {
 
@@ -2039,13 +2796,15 @@ declare class ViewComponent mixins React.Component<ViewProps> {}
 
 /**
  * Is 3D Touch / Force Touch available (i.e. will touch events include `force`)
- * @platform ios
+ * @platform
+ * ios
  */
 static forceTouchAvailable: boolean
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/viewpagerandroid.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/viewpagerandroid.html#props
  */
 declare export interface ViewPagerAndroidOnPageScrollEventData {
 position: number,
@@ -2249,7 +3008,8 @@ allowsInlineMediaPlayback?: boolean,
 /**
  * Boolean value that determines whether the web view bounces
  * when it reaches the edge of the content. The default value is `true`.
- * @platform ios
+ * @platform
+ * ios
  */
 bounces?: boolean,
 
@@ -2315,7 +3075,8 @@ viewManager?: {[key: string]: any}
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/webview.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/webview.html#props
  */
 declare export type WebViewProps = {
 
@@ -2457,8 +3218,10 @@ injectJavaScript: (script: string) => void
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/segmentedcontrolios.html
- * @see SegmentedControlIOS.ios.js
+ * @see
+ * https://facebook.github.io/react-native/docs/segmentedcontrolios.html
+ * @see
+ * SegmentedControlIOS.ios.js
  */
 declare export interface NativeSegmentedControlIOSChangeEvent {
 value: string,
@@ -2626,7 +3389,8 @@ style?: StyleProp<ViewStyle>
  * It is passed as a prop to any component rendered by NavigatorIOS.
  * 
  * Navigator functions are also available on the NavigatorIOS component:
- * @see https://facebook.github.io/react-native/docs/navigatorios.html#navigator
+ * @see
+ * https://facebook.github.io/react-native/docs/navigatorios.html#navigator
  */
 declare export class NavigatorIOS mixins React.Component<NavigatorIOSProps> {
 
@@ -2677,7 +3441,8 @@ popToTop(): void
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/activityindicator.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/activityindicator.html#props
  */
 declare export type ActivityIndicatorProps = {
 
@@ -2711,7 +3476,8 @@ style?: StyleProp<ViewStyle>
 	declare export class ActivityIndicator mixins ActivityIndicatorBase {}
 	
 /**
- * @see https://facebook.github.io/react-native/docs/activityindicatorios.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/activityindicatorios.html#props
  */
 declare export type ActivityIndicatorIOSProps = {
 
@@ -2757,7 +3523,8 @@ style?: StyleProp<ViewStyle>
 
 	
 /**
- * @Deprecated since version 0.28.0
+ * @Deprecated
+ * since version 0.28.0
  */
 declare export class ActivityIndicatorIOS mixins React.Component<ActivityIndicatorIOSProps> {}
 	declare export type DatePickerIOSProps = {
@@ -2828,7 +3595,8 @@ timeZoneOffsetInMinutes?: number
 
 	
 /**
- * @see DrawerLayoutAndroid.android.js
+ * @see
+ * DrawerLayoutAndroid.android.js
  */
 declare export type DrawerLayoutAndroidProps = {
 
@@ -2945,7 +3713,8 @@ closeDrawer(): void
 }
 	
 /**
- * @see PickerIOS.ios.js
+ * @see
+ * PickerIOS.ios.js
  */
 declare export interface PickerIOSItemProps {
 value?: string | number,
@@ -2953,12 +3722,14 @@ label?: string
 } 
 	
 /**
- * @see PickerIOS.ios.js
+ * @see
+ * PickerIOS.ios.js
  */
 declare export class PickerIOSItem mixins React.Component<PickerIOSItemProps> {}
 	
 /**
- * @see Picker.js
+ * @see
+ * Picker.js
  */
 declare export interface PickerItemProps {
 testID?: string,
@@ -2971,7 +3742,8 @@ value?: any
 
 /**
  * Style to apply to each of the item labels.
- * @platform ios
+ * @platform
+ * ios
  */
 itemStyle?: StyleProp<ViewStyle>
 } & ViewProps
@@ -2981,7 +3753,8 @@ itemStyle?: StyleProp<ViewStyle>
 /**
  * If set to false, the picker will be disabled, i.e. the user will not be able to make a
  * selection.
- * @platform android
+ * @platform
+ * android
  */
 enabled?: boolean,
 
@@ -2990,21 +3763,25 @@ enabled?: boolean,
  * 
  *    - 'dialog': Show a modal dialog. This is the default.
  *    - 'dropdown': Shows a dropdown anchored to the picker view
- * @platform android
+ * @platform
+ * android
  */
 mode?: "dialog" | "dropdown",
 
 /**
  * Prompt string for this picker, used on Android in dialog mode as the title of the dialog.
- * @platform android
+ * @platform
+ * android
  */
 prompt?: string
 } & ViewProps
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/picker.html
- * @see Picker.js
+ * @see
+ * https://facebook.github.io/react-native/docs/picker.html
+ * @see
+ * Picker.js
  */
 declare export type PickerProps = {
 
@@ -3031,8 +3808,10 @@ testId?: string
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/picker.html
- * @see Picker.js
+ * @see
+ * https://facebook.github.io/react-native/docs/picker.html
+ * @see
+ * Picker.js
  */
 declare export class Picker mixins React.Component<PickerProps> {
 
@@ -3049,8 +3828,10 @@ static Item: typeof PickerItem
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/pickerios.html
- * @see PickerIOS.ios.js
+ * @see
+ * https://facebook.github.io/react-native/docs/pickerios.html
+ * @see
+ * PickerIOS.ios.js
  */
 declare export type PickerIOSProps = {
 itemStyle?: StyleProp<TextStyle>,
@@ -3060,8 +3841,10 @@ selectedValue?: string | number
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/pickerios.html
- * @see PickerIOS.ios.js
+ * @see
+ * https://facebook.github.io/react-native/docs/pickerios.html
+ * @see
+ * PickerIOS.ios.js
  */
 declare class PickerIOSComponent mixins React.Component<PickerIOSProps> {}
 	declare var PickerIOSBase: Constructor<NativeMethodsMixin> & typeof PickerIOSComponent;
@@ -3070,8 +3853,10 @@ static Item: typeof PickerIOSItem
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/progressbarandroid.html
- * @see ProgressBarAndroid.android.js
+ * @see
+ * https://facebook.github.io/react-native/docs/progressbarandroid.html
+ * @see
+ * ProgressBarAndroid.android.js
  */
 declare export type ProgressBarAndroidProps = {
 
@@ -3125,8 +3910,10 @@ declare class ProgressBarAndroidComponent mixins React.Component<ProgressBarAndr
 	declare export class ProgressBarAndroid mixins ProgressBarAndroidBase {}
 	
 /**
- * @see https://facebook.github.io/react-native/docs/progressviewios.html
- * @see ProgressViewIOS.ios.js
+ * @see
+ * https://facebook.github.io/react-native/docs/progressviewios.html
+ * @see
+ * ProgressViewIOS.ios.js
  */
 declare export type ProgressViewIOSProps = {
 
@@ -3206,7 +3993,8 @@ size?: number,
 
 /**
  * Progress view top offset
- * @platform android
+ * @platform
+ * android
  */
 progressViewOffset?: number
 } & ViewProps
@@ -3438,7 +4226,8 @@ value?: boolean
  * 
  * This is a controlled component, so you must hook in to the onValueChange callback and update the value prop in order for the component to update,
  * otherwise the user's change will be reverted immediately to reflect props.value as the source of truth.
- * @see https://facebook.github.io/react-native/docs/switchios.html
+ * @see
+ * https://facebook.github.io/react-native/docs/switchios.html
  */
 declare export class SwitchIOS mixins React.Component<SwitchIOSProps> {}
 	declare export type ImageResizeMode = "cover"
@@ -3448,7 +4237,8 @@ declare export class SwitchIOS mixins React.Component<SwitchIOSProps> {}
 | "center";
 	
 /**
- * @see ImageResizeMode.js
+ * @see
+ * ImageResizeMode.js
  */
 declare export interface ImageResizeModeStatic {
 
@@ -3496,8 +4286,10 @@ shadowRadius?: number
 	
 /**
  * Image style
- * @see https://facebook.github.io/react-native/docs/image.html#style
- * @see https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageStylePropTypes.js
+ * @see
+ * https://facebook.github.io/react-native/docs/image.html#style
+ * @see
+ * https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageStylePropTypes.js
  */
 declare export type ImageStyle = {
 resizeMode?: ImageResizeMode,
@@ -3529,7 +4321,8 @@ uri?: string,
 /**
  * `bundle` is the iOS asset bundle which the image is included in. This
  * will default to [NSBundle mainBundle] if not set.
- * @platform ios
+ * @platform
+ * ios
  */
 bundle?: string,
 
@@ -3563,7 +4356,8 @@ headers?: {
  * its age or expiration date. If there is no existing data in the cache corresponding
  * to a URL load request, no attempt is made to load the data from the originating source,
  * and the load is considered to have failed.
- * @platform ios
+ * @platform
+ * ios
  */
 cache?: "default" | "reload" | "force-cache" | "only-if-cached",
 
@@ -3590,7 +4384,8 @@ scale?: number
 	declare export type ImageRequireSource = number;
 	
 /**
- * @see ImagePropsIOS.onProgress
+ * @see
+ * ImagePropsIOS.onProgress
  */
 declare export interface ImageProgressEventDataIOS {
 loaded: number,
@@ -3600,7 +4395,8 @@ total: number
 
 /**
  * blurRadius: the blur radius of the blur filter added to the image
- * @platform ios
+ * @platform
+ * ios
  */
 blurRadius?: number,
 
@@ -3621,7 +4417,8 @@ onProgress?: (Animated$event: NativeSyntheticEvent<ImageProgressEventDataIOS>) =
  * Invoked when a partial load of the image is complete. The definition of
  * what constitutes a "partial load" is loader specific though this is meant
  * for progressive JPEG loads.
- * @platform ios
+ * @platform
+ * ios
  */
 onPartialLoad?: () => void
 } 
@@ -3661,12 +4458,14 @@ height?: number
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/image.html#source
+ * @see
+ * https://facebook.github.io/react-native/docs/image.html#source
  */
 declare export type ImageSourcePropType = ImageURISource | ImageURISource[] | ImageRequireSource;
 	
 /**
- * @see ImagePropsBase.onLoad
+ * @see
+ * ImagePropsBase.onLoad
  */
 declare export interface ImageLoadEventDataAndroid {
 uri?: string
@@ -3684,7 +4483,8 @@ error: any
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/image.html#resolveassetsource
+ * @see
+ * https://facebook.github.io/react-native/docs/image.html#resolveassetsource
  */
 declare export interface ImageResolvedAssetSource {
 height: number,
@@ -3694,7 +4494,8 @@ uri: string
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/image.html
+ * @see
+ * https://facebook.github.io/react-native/docs/image.html
  */
 declare export type ImagePropsBase = {
 
@@ -3774,7 +4575,8 @@ resizeMode?: ImageResizeMode,
  * image is slightly bigger than the view.
  * 
  * More details about `resize` and `scale` can be found at http://frescolib.org/docs/resizing-rotating.html.
- * @platform android
+ * @platform
+ * android
  */
 resizeMethod?: "auto" | "resize" | "scale",
 
@@ -3827,14 +4629,15 @@ static abortPrefetch(requestId: number): void;
 static queryCache(urls: string[]): Promise<Map<string, "memory" | "disk">>;
 
 /**
- * @see https://facebook.github.io/react-native/docs/image.html#resolveassetsource
+ * @see
+ * https://facebook.github.io/react-native/docs/image.html#resolveassetsource
  */
 static resolveAssetSource(source: ImageSourcePropType): ImageResolvedAssetSource
 }
 	declare export type ImageBackgroundProps = {
 imageStyle?: StyleProp<ImageStyle>,
 style?: StyleProp<ViewStyle>,
-imageRef?: (image: Image) => void
+imageRef?: (image: Animated$Image) => void
 } & ImagePropsBase
 
 	declare class ImageBackgroundComponent mixins React.Component<ImageBackgroundProps> {}
@@ -3895,7 +4698,8 @@ changed: Array<ViewToken>
 	declare export type ViewabilityConfigCallbackPairs = ViewabilityConfigCallbackPair[];
 	
 /**
- * @see https://facebook.github.io/react-native/docs/flatlist.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/flatlist.html#props
  */
 declare export interface ListRenderItemInfo<ItemT> {
 item: ItemT,
@@ -4135,7 +4939,8 @@ flashScrollIndicators: () => void
 }
 	
 /**
- * @see https://facebook.github.io/react-native/docs/sectionlist.html
+ * @see
+ * https://facebook.github.io/react-native/docs/sectionlist.html
  */
 declare export interface SectionBase<ItemT> {
 data: ItemT[],
@@ -4150,7 +4955,8 @@ keyExtractor?: (item: ItemT, index: number) => string
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/sectionlist.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/sectionlist.html#props
  */
 declare export type SectionListRenderItemInfo<ItemT> = {
 section: SectionListData<ItemT>
@@ -4331,7 +5137,8 @@ scrollToLocation?: (params: SectionListScrollParams) => void
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/virtualizedlist.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/virtualizedlist.html#props
  */
 declare export type VirtualizedListProps<ItemT> = {
 renderItem: ListRenderItem<ItemT>
@@ -4462,7 +5269,8 @@ changed: Array<ViewToken>
 
 /**
  * Set this when offset is needed for the loading indicator to show correctly.
- * @platform android
+ * @platform
+ * android
  */
 progressViewOffset?: number,
 
@@ -4503,7 +5311,8 @@ windowSize?: number
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/listview.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/listview.html#props
  */
 declare export type ListViewProps = {
 
@@ -4646,7 +5455,8 @@ scrollRenderAheadDistance?: number,
  * `stickyHeaderIndices={[0]}` will cause the first child to be fixed to the
  * top of the scroll view. This property is not supported in conjunction
  * with `horizontal={true}`.
- * @platform ios
+ * @platform
+ * ios
  */
 stickyHeaderIndices?: number[],
 
@@ -4868,7 +5678,8 @@ zoomEnabled?: boolean
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/mapview.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/mapview.html#content
  */
 declare class MapViewComponent mixins React.Component<MapViewProps> {}
 	declare var MapViewBase: Constructor<NativeMethodsMixin> & typeof MapViewComponent;
@@ -4885,7 +5696,8 @@ maskElement: React.ReactElement<any>
 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/maskedviewios.html
+ * @see
+ * https://facebook.github.io/react-native/docs/maskedviewios.html
  */
 declare class MaskedViewComponent mixins React.Component<MaskedViewIOSProps> {}
 	declare var MaskedViewBase: Constructor<NativeMethodsMixin> & typeof MaskedViewComponent;
@@ -4963,7 +5775,8 @@ hardwareAccelerated?: boolean
 	declare export class Modal mixins React.Component<ModalProps> {}
 	
 /**
- * @see https://github.com/facebook/react-native/blob/0.34-stable\Libraries\Components\Touchable\Touchable.js
+ * @see
+ * https://github.com/facebook/react-native/blob/0.34-stable\Libraries\Components\Touchable\Touchable.js
  */
 declare interface TouchableMixin {
 
@@ -5020,7 +5833,8 @@ touchableGetHitSlop(): Insets
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/touchablewithoutfeedback.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/touchablewithoutfeedback.html#props
  */
 declare export type TouchableWithoutFeedbackProps = {
 
@@ -5094,14 +5908,16 @@ testID?: string
  * Do not use unless you have a very good reason.
  * All the elements that respond to press should have a visual feedback when touched.
  * This is one of the primary reason a "web" app doesn't feel "native".
- * @see https://facebook.github.io/react-native/docs/touchablewithoutfeedback.html
+ * @see
+ * https://facebook.github.io/react-native/docs/touchablewithoutfeedback.html
  */
 declare class TouchableWithoutFeedbackComponent mixins React.Component<TouchableWithoutFeedbackProps> {}
 	declare var TouchableWithoutFeedbackBase: Constructor<TimerMixin> & Constructor<TouchableMixin> & typeof TouchableWithoutFeedbackComponent;
 	declare export class TouchableWithoutFeedback mixins TouchableWithoutFeedbackBase {}
 	
 /**
- * @see https://facebook.github.io/react-native/docs/touchablehighlight.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/touchablehighlight.html#props
  */
 declare export type TouchableHighlightProps = {
 
@@ -5121,7 +5937,8 @@ onHideUnderlay?: () => void,
 onShowUnderlay?: () => void,
 
 /**
- * @see https://facebook.github.io/react-native/docs/view.html#style
+ * @see
+ * https://facebook.github.io/react-native/docs/view.html#style
  */
 style?: StyleProp<ViewStyle>,
 
@@ -5142,14 +5959,16 @@ underlayColor?: string
  * 
  * NOTE: TouchableHighlight supports only one child
  * If you wish to have several child components, wrap them in a View.
- * @see https://facebook.github.io/react-native/docs/touchablehighlight.html
+ * @see
+ * https://facebook.github.io/react-native/docs/touchablehighlight.html
  */
 declare class TouchableHighlightComponent mixins React.Component<TouchableHighlightProps> {}
 	declare var TouchableHighlightBase: Constructor<NativeMethodsMixin> & Constructor<TimerMixin> & Constructor<TouchableMixin> & typeof TouchableHighlightComponent;
 	declare export class TouchableHighlight mixins TouchableHighlightBase {}
 	
 /**
- * @see https://facebook.github.io/react-native/docs/touchableopacity.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/touchableopacity.html#props
  */
 declare export type TouchableOpacityProps = {
 
@@ -5166,7 +5985,8 @@ activeOpacity?: number
  * On press down, the opacity of the wrapped view is decreased, dimming it.
  * This is done without actually changing the view hierarchy,
  * and in general is easy to add to an app without weird side-effects.
- * @see https://facebook.github.io/react-native/docs/touchableopacity.html
+ * @see
+ * https://facebook.github.io/react-native/docs/touchableopacity.html
  */
 declare class TouchableOpacityComponent mixins React.Component<TouchableOpacityProps> {}
 	declare var TouchableOpacityBase: Constructor<TimerMixin> & Constructor<TouchableMixin> & Constructor<NativeMethodsMixin> & typeof TouchableOpacityComponent;
@@ -5194,7 +6014,8 @@ attribute: string
 	declare type BackgroundPropType = RippleBackgroundPropType | ThemeAttributeBackgroundPropType;
 	
 /**
- * @see https://facebook.github.io/react-native/docs/touchableopacity.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/touchableopacity.html#props
  */
 declare export type TouchableNativeFeedbackProps = {
 
@@ -5224,7 +6045,8 @@ useForeground?: boolean
  * as it's implemented by replacing that View with another instance of RCTView node with some additional properties set.
  * 
  * Background drawable of native feedback touchable can be customized with background property.
- * @see https://facebook.github.io/react-native/docs/touchablenativefeedback.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/touchablenativefeedback.html#content
  */
 declare class TouchableNativeFeedbackComponent mixins React.Component<TouchableNativeFeedbackProps> {}
 	declare var TouchableNativeFeedbackBase: Constructor<TouchableMixin> & typeof TouchableNativeFeedbackComponent;
@@ -5249,8 +6071,10 @@ static SelectableBackgroundBorderless(): ThemeAttributeBackgroundPropType;
  * render outside of the view bounds (see native actionbar buttons as an
  * example of that behavior). This background type is available on Android
  * API level 21+.
- * @param color The ripple color
- * @param borderless If the ripple can render outside it's bounds
+ * @param color
+ * The ripple color
+ * @param borderless
+ * If the ripple can render outside it's bounds
  */
 static Ripple(color: string, borderless?: boolean): RippleBackgroundPropType;
 static canUseNativeForeground(): boolean
@@ -5287,10 +6111,14 @@ runAfterInteractions(callback: () => any): void
  * the subscription and pass it in - this method must be the one to create
  * the subscription and therefore can guarantee it is retained in a way that
  * will be cleaned up.
- * @param eventEmitter emitter to subscribe to.
- * @param eventType Type of event to listen to.
- * @param listener Function to invoke when event occurs.
- * @param context Object to use as listener context.
+ * @param eventEmitter
+ * emitter to subscribe to.
+ * @param eventType
+ * Type of event to listen to.
+ * @param listener
+ * Function to invoke when event occurs.
+ * @param context
+ * Object to use as listener context.
  */
 addListenerOn(eventEmitter: any, eventType: string, listener: () => any, context: any): void
 } 
@@ -5402,6 +6230,11 @@ position: "absolute",
 left: 0,
 right: 0,
 top: 0,
+bottom: 0,
+position: "absolute",
+left: 0,
+right: 0,
+top: 0,
 bottom: 0
 } 
 
@@ -5463,14 +6296,16 @@ swizzleJSON(): void,
 /**
  * Measures multiple methods of a class. For example, you can do:
  * Systrace.measureMethods(JSON, 'JSON', ['parse', 'stringify']);
- * @param methodNames Map from method names to method display names.
+ * @param methodNames
+ * Map from method names to method display names.
  */
 measureMethods(object: any, objectName: string, methodNames: Array<string>): void,
 
 /**
  * Returns an profiled version of the input function. For example, you can:
  * JSON.parse = Systrace.measure('JSON', 'parse', JSON.parse);
- * @return replacement function
+ * @return
+ * replacement function
  */
 measure<T: Function>(objName: string, fnName: string, func: T): T
 } 
@@ -5608,7 +6443,8 @@ getSectionHeaderData(sectionIndex: number): any
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/tabbarios-item.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/tabbarios-item.html#props
  */
 declare export type TabBarIOSItemProps = {
 
@@ -5683,7 +6519,8 @@ title?: string
 	declare export class TabBarIOSItem mixins React.Component<TabBarIOSItemProps> {}
 	
 /**
- * @see https://facebook.github.io/react-native/docs/tabbarios.html#props
+ * @see
+ * https://facebook.github.io/react-native/docs/tabbarios.html#props
  */
 declare export type TabBarIOSProps = {
 
@@ -5753,7 +6590,8 @@ startDetecting(): void
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/platform-specific-code.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/platform-specific-code.html#content
  */
 declare export type PlatformOSType = "ios"
 | "android"
@@ -5765,7 +6603,8 @@ OS: PlatformOSType,
 Version: number | string,
 
 /**
- * @see https://facebook.github.io/react-native/docs/platform-specific-code.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/platform-specific-code.html#content
  */
 select<T>(
 specifics: $ObjMapi<{[k: PlatformOSType | "default"]: any}, <platform>(platform) => T>): T
@@ -5807,9 +6646,12 @@ fontScale: number
  * setting a value in a `StyleSheet`).
  * 
  * Example: `const {height, width} = Dimensions.get('window');`
- * @param dim Name of dimension as defined when calling `set`.
- * @returns Value for the dimension.
- * @see https://facebook.github.io/react-native/docs/dimensions.html#content
+ * @param dim
+ * Name of dimension as defined when calling `set`.
+ * @returns
+ * Value for the dimension.
+ * @see
+ * https://facebook.github.io/react-native/docs/dimensions.html#content
  */
 declare export interface Dimensions {
 
@@ -5824,14 +6666,17 @@ declare export interface Dimensions {
  * example, using inline styles rather than setting a value in a
  * StyleSheet).
  * Example: const {height, width} = Dimensions.get('window');
- * @param dim Name of dimension as defined when calling set.
- * @returns Value for the dimension.
+ * @param dim
+ * Name of dimension as defined when calling set.
+ * @returns
+ * Value for the dimension.
  */
 get(dim: "window" | "screen"): ScaledSize,
 
 /**
  * This should only be called from native code by sending the didUpdateDimensions event.
- * @param dims Simple string-keyed object of dimensions to set
+ * @param dims
+ * Simple string-keyed object of dimensions to set
  */
 set(dims: {
 [key: string]: any
@@ -5839,24 +6684,28 @@ set(dims: {
 
 /**
  * Add an event listener for dimension changes
- * @param type the type of event to listen to
- * @param handler the event handler
+ * @param type
+ * the type of event to listen to
+ * @param handler
+ * the event handler
  */
 addEventListener(
 type: "change",
-handler: ({window, screen}: {
+handler: (x: {
 window: ScaledSize,
 screen: ScaledSize
 }) => void): void,
 
 /**
  * Remove an event listener
- * @param type the type of event
- * @param handler the event handler
+ * @param type
+ * the type of event
+ * @param handler
+ * the event handler
  */
 removeEventListener(
 type: "change",
-handler: ({window, screen}: {
+handler: (x: {
 window: ScaledSize,
 screen: ScaledSize
 }) => void): void
@@ -5984,7 +6833,8 @@ scrollResponderHandleTerminationRequest(): boolean,
 
 /**
  * Invoke this from an `onTouchEnd` event.
- * @param e Event.
+ * @param e
+ * Event.
  */
 scrollResponderHandleTouchEnd(e: ScrollResponderEvent): void,
 
@@ -6031,7 +6881,8 @@ scrollResponderHandleMomentumScrollEnd(e: ScrollResponderEvent): void,
  * permitted to be the responder (presumably because a contained view became
  * responder). The `onResponderReject` won't fire in that case - it only
  * fires when a *current* responder rejects our request.
- * @param e Touch Start event.
+ * @param e
+ * Touch Start event.
  */
 scrollResponderHandleTouchStart(e: ScrollResponderEvent): void,
 
@@ -6043,7 +6894,8 @@ scrollResponderHandleTouchStart(e: ScrollResponderEvent): void,
  * permitted to be the responder (presumably because a contained view became
  * responder). The `onResponderReject` won't fire in that case - it only
  * fires when a *current* responder rejects our request.
- * @param e Touch Start event.
+ * @param e
+ * Touch Start event.
  */
 scrollResponderHandleTouchMove(e: ScrollResponderEvent): void,
 
@@ -6084,7 +6936,8 @@ animated?: boolean): void,
 /**
  * A helper function to zoom to a specific rect in the scrollview. The argument has the shape
  * {x: number; y: number; width: number; height: number; animated: boolean = true}
- * @platform ios
+ * @platform
+ * ios
  */
 scrollResponderZoomTo(
 rect: {
@@ -6100,11 +6953,14 @@ animated?: boolean): void,
  * This method should be used as the callback to onFocus in a TextInputs'
  * parent view. Note that any module using this mixin needs to return
  * the parent view's ref in getScrollViewRef() in order to use this method.
- * @param nodeHandle The TextInput node handle
- * @param additionalOffset The scroll view's top "contentInset".
-Default is 0.
- * @param preventNegativeScrolling Whether to allow pulling the content
-down to make it meet the keyboard's top. Default is false.
+ * @param nodeHandle
+ * The TextInput node handle
+ * @param additionalOffset
+ * The scroll view's top "contentInset".
+ * Default is 0.
+ * @param preventNegativeScrolling
+ * Whether to allow pulling the content
+ * down to make it meet the keyboard's top. Default is false.
  */
 scrollResponderScrollNativeHandleToKeyboard(
 nodeHandle: any,
@@ -6115,10 +6971,14 @@ preventNegativeScrollOffset?: boolean): void,
  * The calculations performed here assume the scroll view takes up the entire
  * screen - even if has some content inset. We then measure the offsets of the
  * keyboard, and compensate both for the scroll view's "contentInset".
- * @param left Position of input w.r.t. table view.
- * @param top Position of input w.r.t. table view.
- * @param width Width of the text input.
- * @param height Height of the text input.
+ * @param left
+ * Position of input w.r.t. table view.
+ * @param top
+ * Position of input w.r.t. table view.
+ * @param width
+ * Width of the text input.
+ * @param height
+ * Height of the text input.
  */
 scrollResponderInputMeasureAndScrollToKeyboard(left: number, top: number, width: number, height: number): void,
 scrollResponderTextInputFocusError(e: ScrollResponderEvent): void,
@@ -6345,7 +7205,8 @@ endFillColor?: string,
  * momentum events to be turned on (see sendMomentumEvents). This doesn't do
  * anything out of the box and you need to implement a custom native
  * FpsListener for it to be useful.
- * @platform android
+ * @platform
+ * android
  */
 scrollPerfTag?: string,
 
@@ -6635,7 +7496,8 @@ static getNewDataSource(): SwipeableListViewDataSource
 }
 	
 /**
- * @see : http://facebook.github.io/react-native/docs/actionsheetios.html#content
+ * @see
+ * : http://facebook.github.io/react-native/docs/actionsheetios.html#content
  */
 declare export interface ActionSheetIOSOptions {
 title?: string,
@@ -6658,7 +7520,8 @@ excludedActivityTypes?: string[]
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/actionsheetios.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/actionsheetios.html#content
  */
 declare export interface ActionSheetIOSStatic {
 
@@ -6760,7 +7623,8 @@ success: boolean
 	declare type AccessibilityEvent = AccessibilityChangeEvent | AccessibilityAnnoucementFinishedEvent;
 	
 /**
- * @see https://facebook.github.io/react-native/docs/accessibilityinfo.html
+ * @see
+ * https://facebook.github.io/react-native/docs/accessibilityinfo.html
  */
 declare export interface AccessibilityInfoStatic {
 
@@ -6794,19 +7658,22 @@ handler: (Animated$event: AccessibilityEvent) => void) => void,
 
 /**
  * Set acessibility focus to a react component.
- * @platform ios
+ * @platform
+ * ios
  */
 setAccessibilityFocus: (reactTag: number) => void,
 
 /**
  * Post a string to be announced by the screen reader.
- * @platform ios
+ * @platform
+ * ios
  */
 announceForAccessibility: (announcement: string) => void
 } 
 	
 /**
- * @see https://facebook.github.io/react-native/docs/alert.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/alert.html#content
  */
 declare export interface AlertButton {
 text?: string,
@@ -6816,12 +7683,14 @@ style?: "default" | "cancel" | "destructive"
 	declare interface AlertOptions {
 
 /**
- * @platform android
+ * @platform
+ * android
  */
 cancelable?: boolean,
 
 /**
- * @platform android
+ * @platform
+ * android
  */
 onDismiss?: () => void
 } 
@@ -6901,28 +7770,34 @@ style?: "default" | "cancel" | "destructive"
 	declare export type AlertType = "default" | "plain-text" | "secure-text" | "login-password";
 	
 /**
- * @description `AlertIOS` provides functionality to create an iOS alert dialog with a
-message or create a prompt for user input.
-
-We recommend using the [`Alert.alert`](/docs/alert.html) method for
-cross-platform support if you don't need to create iOS-only prompts.
- * @see https://facebook.github.io/react-native/docs/alertios.html#content
+ * @description
+ * `AlertIOS` provides functionality to create an iOS alert dialog with a
+ * message or create a prompt for user input.
+ * 
+ * We recommend using the [`Alert.alert`](/docs/alert.html) method for
+ * cross-platform support if you don't need to create iOS-only prompts.
+ * @see
+ * https://facebook.github.io/react-native/docs/alertios.html#content
  */
 declare export interface AlertIOSStatic {
 
 /**
  * Create and display a popup alert.
- * @param title The dialog's title.
- * @param message An optional message that appears below
-the dialog's title.
- * @param callbackOrButtons This optional argument should
-be either a single-argument function or an array of buttons. If passed
-a function, it will be called when the user taps 'OK'.
-
-If passed an array of button configurations, each button should include
-a `text` key, as well as optional `onPress` and `style` keys. `style`
-should be one of 'default', 'cancel' or 'destructive'.
- * @param type Deprecated, do not use.
+ * @param title
+ * The dialog's title.
+ * @param message
+ * An optional message that appears below
+ * the dialog's title.
+ * @param callbackOrButtons
+ * This optional argument should
+ * be either a single-argument function or an array of buttons. If passed
+ * a function, it will be called when the user taps 'OK'.
+ * 
+ * If passed an array of button configurations, each button should include
+ * a `text` key, as well as optional `onPress` and `style` keys. `style`
+ * should be one of 'default', 'cancel' or 'destructive'.
+ * @param type
+ * Deprecated, do not use.
  */
 alert: (
 title: string,
@@ -6932,20 +7807,25 @@ type?: AlertType) => void,
 
 /**
  * Create and display a prompt to enter some text.
- * @param title The dialog's title.
- * @param message An optional message that appears above the text
-input.
- * @param callbackOrButtons This optional argument should
-be either a single-argument function or an array of buttons. If passed
-a function, it will be called with the prompt's value when the user
-taps 'OK'.
-
-If passed an array of button configurations, each button should include
-a `text` key, as well as optional `onPress` and `style` keys (see
-example). `style` should be one of 'default', 'cancel' or 'destructive'.
- * @param type This configures the text input. One of 'plain-text',
-'secure-text' or 'login-password'.
- * @param defaultValue The default text in text input.
+ * @param title
+ * The dialog's title.
+ * @param message
+ * An optional message that appears above the text
+ * input.
+ * @param callbackOrButtons
+ * This optional argument should
+ * be either a single-argument function or an array of buttons. If passed
+ * a function, it will be called with the prompt's value when the user
+ * taps 'OK'.
+ * 
+ * If passed an array of button configurations, each button should include
+ * a `text` key, as well as optional `onPress` and `style` keys (see
+ * example). `style` should be one of 'default', 'cancel' or 'destructive'.
+ * @param type
+ * This configures the text input. One of 'plain-text',
+ * 'secure-text' or 'login-password'.
+ * @param defaultValue
+ * The default text in text input.
  */
 prompt: (
 title: string,
@@ -6969,7 +7849,8 @@ keyboardType?: KeyboardType | KeyboardTypeIOS) => void
  *       inactive - This is a transition state that currently never happens for typical React Native apps.
  * 
  * For more information, see Apple's documentation: https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html
- * @see https://facebook.github.io/react-native/docs/appstateios.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/appstateios.html#content
  */
 declare export type AppStateEvent = "change" | "memoryWarning";
 	declare export type AppStateStatus = "active" | "background" | "inactive";
@@ -7000,7 +7881,8 @@ removeEventListener(type: AppStateEvent, listener: (state: AppStateStatus) => vo
  * serialized dictionary and larger values in separate files. On Android,
  * `AsyncStorage` will use either [RocksDB](http://rocksdb.org/) or SQLite
  * based on what is available.
- * @see https://facebook.github.io/react-native/docs/asyncstorage.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/asyncstorage.html#content
  */
 declare export interface AsyncStorageStatic {
 
@@ -7119,7 +8001,7 @@ groupName?: string,
 assetType?: CameraRollAssetType
 } 
 	declare export interface CameraRollNodeInfo {
-image: Image,
+image: Animated$Image,
 group_name: string,
 timestamp: number,
 location: any
@@ -7182,12 +8064,14 @@ AssetTypeOptions: CameraRollAssetType[],
 
 /**
  * Saves the image to the camera roll / gallery.
- * @tag On Android, this is a local URI, such as "file:///sdcard/img.png".
-On iOS, the tag can be one of the following:
-local URI
-assets-library tag
-a tag not maching any of the above, which means the image data will be stored in memory (and consume memory as long as the process is alive)
- * @deprecated use saveToCameraRoll instead
+ * @tag
+ * On Android, this is a local URI, such as "file:///sdcard/img.png".
+ * On iOS, the tag can be one of the following:
+ * local URI
+ * assets-library tag
+ * a tag not maching any of the above, which means the image data will be stored in memory (and consume memory as long as the process is alive)
+ * @deprecated
+ * use saveToCameraRoll instead
  */
 saveImageWithTag(tag: string): Promise<string>,
 
@@ -7225,7 +8109,8 @@ saveToCameraRoll(tag: string, type?: "photo" | "video"): Promise<string>,
 
 /**
  * Invokes callback with photo identifier objects from the local camera roll of the device matching shape defined by getPhotosReturnChecker.
- * @param params See getPhotosParamChecker.
+ * @param params
+ * See getPhotosParamChecker.
  */
 getPhotos(params: GetPhotosParamType): Promise<GetPhotosReturnType>
 } 
@@ -7307,7 +8192,8 @@ openURL(url: string): void,
  *   You can use other URLs, like a location (e.g. "geo:37.484847,-122.148386"), a contact, or any other URL that can be opened with {@code Intent.ACTION_VIEW}.
  * 
  *   NOTE: For web URLs, the protocol ("http://", "https://") must be set accordingly!
- * @param URL the URL to open
+ * @param URL
+ * the URL to open
  * @deprecated
  */
 canOpenURL(url: string, callback: (supported: boolean) => void): void,
@@ -7349,7 +8235,8 @@ openURL(url: string): Promise<any>,
  * Determine whether or not an installed app can handle a given URL.
  * NOTE: For web URLs, the protocol ("http://", "https://") must be set accordingly!
  * NOTE: As of iOS 9, your app needs to provide the LSApplicationQueriesSchemes key inside Info.plist.
- * @param URL the URL to open
+ * @param URL
+ * the URL to open
  */
 canOpenURL(url: string): Promise<boolean>,
 
@@ -7400,7 +8287,8 @@ popInitialURL(): string
 	
 /**
  * NetInfo exposes info about online/offline status
- * @see https://facebook.github.io/react-native/docs/netinfo.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/netinfo.html#content
  */
 declare export type ConnectionType = "none"
 | "wifi"
@@ -7551,7 +8439,8 @@ _accountsForMovesUpTo: number
 } 
 	
 /**
- * @see documentation of GestureResponderHandlers
+ * @see
+ * documentation of GestureResponderHandlers
  */
 declare export interface PanResponderCallbacks {
 onMoveShouldSetPanResponder?: (e: GestureResponderEvent, gestureState: PanResponderGestureState) => boolean,
@@ -7583,36 +8472,37 @@ panHandlers: GestureResponderHandlers
 declare export interface PanResponderStatic {
 
 /**
- * @param config Enhanced versions of all of the responder callbacks
-that provide not only the typical `ResponderSyntheticEvent`, but also the
-`PanResponder` gesture state.  Simply replace the word `Responder` with
-`PanResponder` in each of the typical `onResponder*` callbacks. For
-example, the `config` object would look like:
-
-- `onMoveShouldSetPanResponder: (e, gestureState) => {...}`
-- `onMoveShouldSetPanResponderCapture: (e, gestureState) => {...}`
-- `onStartShouldSetPanResponder: (e, gestureState) => {...}`
-- `onStartShouldSetPanResponderCapture: (e, gestureState) => {...}`
-- `onPanResponderReject: (e, gestureState) => {...}`
-- `onPanResponderGrant: (e, gestureState) => {...}`
-- `onPanResponderStart: (e, gestureState) => {...}`
-- `onPanResponderEnd: (e, gestureState) => {...}`
-- `onPanResponderRelease: (e, gestureState) => {...}`
-- `onPanResponderMove: (e, gestureState) => {...}`
-- `onPanResponderTerminate: (e, gestureState) => {...}`
-- `onPanResponderTerminationRequest: (e, gestureState) => {...}`
-- `onShouldBlockNativeResponder: (e, gestureState) => {...}`
-
-In general, for events that have capture equivalents, we update the
-gestureState once in the capture phase and can use it in the bubble phase
-as well.
-
-Be careful with onStartShould* callbacks. They only reflect updated
-`gestureState` for start/end events that bubble/capture to the Node.
-Once the node is the responder, you can rely on every start/end event
-being processed by the gesture and `gestureState` being updated
-accordingly. (numberActiveTouches) may not be totally accurate unless you
-are the responder.
+ * @param config
+ * Enhanced versions of all of the responder callbacks
+ * that provide not only the typical `ResponderSyntheticEvent`, but also the
+ * `PanResponder` gesture state.  Simply replace the word `Responder` with
+ * `PanResponder` in each of the typical `onResponder*` callbacks. For
+ * example, the `config` object would look like:
+ * 
+ * - `onMoveShouldSetPanResponder: (e, gestureState) => {...}`
+ * - `onMoveShouldSetPanResponderCapture: (e, gestureState) => {...}`
+ * - `onStartShouldSetPanResponder: (e, gestureState) => {...}`
+ * - `onStartShouldSetPanResponderCapture: (e, gestureState) => {...}`
+ * - `onPanResponderReject: (e, gestureState) => {...}`
+ * - `onPanResponderGrant: (e, gestureState) => {...}`
+ * - `onPanResponderStart: (e, gestureState) => {...}`
+ * - `onPanResponderEnd: (e, gestureState) => {...}`
+ * - `onPanResponderRelease: (e, gestureState) => {...}`
+ * - `onPanResponderMove: (e, gestureState) => {...}`
+ * - `onPanResponderTerminate: (e, gestureState) => {...}`
+ * - `onPanResponderTerminationRequest: (e, gestureState) => {...}`
+ * - `onShouldBlockNativeResponder: (e, gestureState) => {...}`
+ * 
+ * In general, for events that have capture equivalents, we update the
+ * gestureState once in the capture phase and can use it in the bubble phase
+ * as well.
+ * 
+ * Be careful with onStartShould* callbacks. They only reflect updated
+ * `gestureState` for start/end events that bubble/capture to the Node.
+ * Once the node is the responder, you can rely on every start/end event
+ * being processed by the gesture and `gestureState` being updated
+ * accordingly. (numberActiveTouches) may not be totally accurate unless you
+ * are the responder.
  */
 StyleSheet$create(config: PanResponderCallbacks): PanResponderInstance
 } 
@@ -7774,9 +8664,10 @@ ResultFailed: "UIBackgroundFetchResultFailed"
 	
 /**
  * Handle push notifications for your app, including permission handling and icon badge number.
- * @see https://facebook.github.io/react-native/docs/pushnotificationios.html#content
-
-//FIXME: BGR: The documentation seems completely off compared to the actual js implementation. I could never get the example to run
+ * @see
+ * https://facebook.github.io/react-native/docs/pushnotificationios.html#content
+ * 
+ * //FIXME: BGR: The documentation seems completely off compared to the actual js implementation. I could never get the example to run
  */
 declare export interface PushNotificationIOSStatic {
 
@@ -7985,41 +8876,50 @@ hidden?: boolean
 
 /**
  * The current height of the status bar on the device.
- * @platform android
+ * @platform
+ * android
  */
 static currentHeight: number;
 
 /**
  * Show or hide the status bar
- * @param hidden The dialog's title.
- * @param animation Optional animation when
-changing the status bar hidden property.
+ * @param hidden
+ * The dialog's title.
+ * @param animation
+ * Optional animation when
+ * changing the status bar hidden property.
  */
 static setHidden: (hidden: boolean, animation?: StatusBarAnimation) => void;
 
 /**
  * Set the status bar style
- * @param style Status bar style to set
- * @param animated Animate the style change.
+ * @param style
+ * Status bar style to set
+ * @param animated
+ * Animate the style change.
  */
 static setBarStyle: (style: StatusBarStyle, animated?: boolean) => void;
 
 /**
  * Control the visibility of the network activity indicator
- * @param visible Show the indicator.
+ * @param visible
+ * Show the indicator.
  */
 static setNetworkActivityIndicatorVisible: (visible: boolean) => void;
 
 /**
  * Set the background color for the status bar
- * @param color Background color.
- * @param animated Animate the style change.
+ * @param color
+ * Background color.
+ * @param animated
+ * Animate the style change.
  */
 static setBackgroundColor: (color: string, animated?: boolean) => void;
 
 /**
  * Control the translucency of the status bar
- * @param translucent Set as translucent.
+ * @param translucent
+ * Set as translucent.
  */
 static setTranslucent: (translucent: boolean) => void
 }
@@ -8146,7 +9046,8 @@ CENTER: number
  * - quality (number) - the quality when using jpeg. 0.0 - 1.0 (default).
  * 
  * Returns a Promise<string> (tempFilePath)
- * @platform ios
+ * @platform
+ * ios
  */
 takeSnapshot: (
 view?: "window" | React.ReactElement<any> | number,
@@ -8328,7 +9229,8 @@ declare class SwitchComponent mixins React.Component<SwitchProps> {}
  * There will be no effect on devices that do not support Vibration, eg. the iOS simulator.
  * 
  * Vibration patterns are currently unsupported.
- * @see https://facebook.github.io/react-native/docs/vibrationios.html#content
+ * @see
+ * https://facebook.github.io/react-native/docs/vibrationios.html#content
  */
 declare export interface VibrationIOSStatic {
 
@@ -8573,12 +9475,16 @@ finished: boolean
 
 declare type Animated$EndCallback = (result: Animated$EndResult) => void;
 
-declare export interface Animated$CompositeAnimation {
+export interface Animated$CompositeAnimation {
+start: (callback?: Animated$EndCallback) => void,
+stop: () => void,
 start: (callback?: Animated$EndCallback) => void,
 stop: () => void
 } 
 
 declare interface Animated$AnimationConfig {
+isInteraction?: boolean,
+useNativeDriver?: boolean,
 isInteraction?: boolean,
 useNativeDriver?: boolean
 } 
@@ -8598,6 +9504,11 @@ velocity: number | {
 x: number,
 y: number
 },
+deceleration?: number,
+velocity: number | {
+x: number,
+y: number
+},
 deceleration?: number
 } & Animated$AnimationConfig
 
@@ -8612,6 +9523,13 @@ value: Animated$AnimatedValue | Animated$AnimatedValueXY,
 config: Animated$TimingAnimationConfig) => Animated$CompositeAnimation;
 
 declare type Animated$TimingAnimationConfig = {
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+easing?: (value: number) => number,
+duration?: number,
+Animated$delay?: number,
 toValue: number | Animated$AnimatedValue | {
 x: number,
 y: number
@@ -8641,11 +9559,31 @@ friction?: number,
 stiffness?: number,
 mass?: number,
 damping?: number,
+Animated$delay?: number,
+toValue: number | Animated$AnimatedValue | {
+x: number,
+y: number
+} | Animated$AnimatedValueXY,
+overshootClamping?: boolean,
+restDisplacementThreshold?: number,
+restSpeedThreshold?: number,
+velocity?: number | {
+x: number,
+y: number
+},
+bounciness?: number,
+speed?: number,
+tension?: number,
+friction?: number,
+stiffness?: number,
+mass?: number,
+damping?: number,
 Animated$delay?: number
 } & Animated$AnimationConfig
 
 
 declare interface Animated$LoopAnimationConfig {
+iterations?: number,
 iterations?: number
 } 
 
@@ -8783,6 +9721,8 @@ declare type Animated$Mapping = {
 
 declare interface Animated$EventConfig<T> {
 listener?: (Animated$event: NativeSyntheticEvent<T>) => void,
+useNativeDriver?: boolean,
+listener?: (Animated$event: NativeSyntheticEvent<T>) => void,
 useNativeDriver?: boolean
 } 
 
@@ -8902,7 +9842,8 @@ cancelCallback: (args: any[]) => void): void
 
 /**
  * Check if the ImageStore contains image data for the specified URI.
- * @platform ios
+ * @platform
+ * ios
  */
 hasImageForTag(uri: string, callback: (hasImage: boolean) => void): void,
 
@@ -8912,7 +9853,8 @@ hasImageForTag(uri: string, callback: (hasImage: boolean) => void): void,
  * will continue to use up RAM until the app is terminated. It is safe to
  * call `removeImageForTag()` without first calling `hasImageForTag()`, it
  * will simply fail silently.
- * @platform ios
+ * @platform
+ * ios
  */
 removeImageForTag(uri: string): void,
 
@@ -8925,7 +9867,8 @@ removeImageForTag(uri: string): void,
  * Note that it is very inefficient to transfer large quantities of binary
  * data between JS and native code, so you should avoid calling this more
  * than necessary.
- * @platform ios
+ * @platform
+ * ios
  */
 addImageFromBase64(
 base64ImageData: string,
@@ -8960,8 +9903,10 @@ remove(): void
  * Receive events from native-code
  * Deprecated - subclass NativeEventEmitter to create granular event modules instead of
  * adding all event listeners directly to RCTNativeAppEventEmitter.
- * @see https://github.com/facebook/react-native/blob/0.34-stable\Libraries\EventEmitter\RCTNativeAppEventEmitter.js
- * @see https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
+ * @see
+ * https://github.com/facebook/react-native/blob/0.34-stable\Libraries\EventEmitter\RCTNativeAppEventEmitter.js
+ * @see
+ * https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
  */
 declare type RCTNativeAppEventEmitter = DeviceEventEmitterStatic;
 	declare interface ImageCropData {
@@ -9267,7 +10212,10 @@ getGlobalHandler: () => ErrorHandlerCallback
         
         TestModule: typeof addons$TestModule,
       }
-declare export interface addons$TestModuleStatic {
+export interface addons$TestModuleStatic {
+verifySnapshot: (done: (indicator?: any) => void) => void,
+markTestPassed: (indicator: any) => void,
+markTestCompleted: () => void,
 verifySnapshot: (done: (indicator?: any) => void) => void,
 markTestPassed: (indicator: any) => void,
 markTestCompleted: () => void
@@ -9275,7 +10223,7 @@ markTestCompleted: () => void
 
 declare export var addons$TestModule: addons$TestModuleStatic;
 
-declare export type addons$TestModule = addons$TestModuleStatic;
+export type addons$TestModule = addons$TestModuleStatic;
 	declare export var ColorPropType: React.Validator<string>;
 	declare export var EdgeInsetsPropType: React.Validator<Insets>;
 	declare export var PointPropType: React.Validator<PointPropType>;
@@ -9286,9 +10234,19 @@ declare export type addons$TestModule = addons$TestModuleStatic;
 	
 /**
  * Console polyfill
- * @see https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
+ * @see
+ * https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
  */
 declare interface Console {
+error(message?: any, ...optionalParams: any[]): void,
+info(message?: any, ...optionalParams: any[]): void,
+log(message?: any, ...optionalParams: any[]): void,
+warn(message?: any, ...optionalParams: any[]): void,
+trace(message?: any, ...optionalParams: any[]): void,
+debug(message?: any, ...optionalParams: any[]): void,
+table(...data: any[]): void,
+disableYellowBox: boolean,
+ignoredYellowBox: string[],
 error(message?: any, ...optionalParams: any[]): void,
 info(message?: any, ...optionalParams: any[]): void,
 log(message?: any, ...optionalParams: any[]): void,
@@ -9303,9 +10261,12 @@ ignoredYellowBox: string[]
 	
 /**
  * Navigator object for accessing location API
- * @see https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
+ * @see
+ * https://facebook.github.io/react-native/docs/javascript-environment.html#polyfills
  */
 declare interface Navigator {
++product: string,
++geolocation: Geolocation,
 +product: string,
 +geolocation: Geolocation
 } 
@@ -9316,7 +10277,8 @@ declare interface Navigator {
  * through DevTools (to trace them):
  * 
  *    global.XMLHttpRequest = global.originalXMLHttpRequest;
- * @see https://github.com/facebook/react-native/issues/934
+ * @see
+ * https://github.com/facebook/react-native/issues/934
  */
 declare var originalXMLHttpRequest: any;
 	declare var __BUNDLE_START_TIME__: number;
@@ -9328,6 +10290,8 @@ declare var originalXMLHttpRequest: any;
  * <code> if (__DEV__) console.log('Running in dev mode')</code>
  */
 declare var __DEV__: boolean;
+	declare function require(name: string): any
+
     }
 
     }

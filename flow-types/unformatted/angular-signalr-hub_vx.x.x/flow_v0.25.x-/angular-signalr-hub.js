@@ -1,6 +1,6 @@
 declare module 'angular-signalr-hub' {
         declare var _: string;
-	declare module.exports: typeof _
+	declare export default typeof _
 
     }
 declare interface ngSignalr$HubFactory {

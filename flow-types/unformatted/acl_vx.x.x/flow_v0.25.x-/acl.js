@@ -130,6 +130,6 @@ new (db: mongo.Db, prefix: string): MongodbBackend,
 new (db: mongo.Db): MongodbBackend
 } 
 	declare var _: AclStatic;
-	declare module.exports: typeof _
+	declare export default typeof _
 
     }

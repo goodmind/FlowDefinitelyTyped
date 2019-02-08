@@ -8,27 +8,31 @@ version: string,
 /**
  * Callback invoked when resolving asynchronously
  * @param error
- * @param resolved Absolute path to resolved identifier
+ * @param resolved
+ * Absolute path to resolved identifier
  */
 declare type resolveCallback = (err: Error | null, resolved?: string, pkg?: PackageMeta) => void;
 	
 /**
  * Callback invoked when checking if a file exists
  * @param error
- * @param isFile If the given file exists
+ * @param isFile
+ * If the given file exists
  */
 declare type isFileCallback = (err: Error | null, isFile?: boolean) => void;
 	
 /**
  * Callback invoked when reading a file
  * @param error
- * @param isFile If the given file exists
+ * @param isFile
+ * If the given file exists
  */
 declare type readFileCallback = (err: Error | null, file?: Buffer) => void;
 	
 /**
  * Asynchronously resolve the module path string id into cb(err, res [, pkg]), where pkg (if defined) is the data from package.json
- * @param id Identifier to resolve
+ * @param id
+ * Identifier to resolve
  * @param callback
  */
 declare function resolve(id: string, cb: resolveCallback): void
@@ -36,8 +40,10 @@ declare function resolve(id: string, cb: resolveCallback): void
 	
 /**
  * Asynchronously resolve the module path string id into cb(err, res [, pkg]), where pkg (if defined) is the data from package.json
- * @param id Identifier to resolve
- * @param options Options to use for resolving, optional.
+ * @param id
+ * Identifier to resolve
+ * @param options
+ * Options to use for resolving, optional.
  * @param callback
  */
 declare function resolve(id: string, opts: resolve$resolve$AsyncOpts, cb: resolveCallback): void
@@ -45,8 +51,10 @@ declare function resolve(id: string, opts: resolve$resolve$AsyncOpts, cb: resolv
 	
 /**
  * Synchronously resolve the module path string id, returning the result and throwing an error when id can't be resolved.
- * @param id Identifier to resolve
- * @param options Options to use for resolving, optional.
+ * @param id
+ * Identifier to resolve
+ * @param options
+ * Options to use for resolving, optional.
  */
 declare function resolveSync(id: string, opts?: resolve$resolve$SyncOpts): string
 
@@ -109,7 +117,7 @@ moduleDirectory?: string | $ReadOnlyArray<string>,
 preserveSymlinks?: boolean
 } 
 
-declare export type resolve$AsyncOpts = {
+export type resolve$AsyncOpts = {
 
 /**
  * how to read files asynchronously (defaults to fs.readFile)
@@ -123,7 +131,7 @@ isFile?: (file: string, cb: isFileCallback) => void
 } & resolve$Opts
 
 
-declare export type resolve$SyncOpts = {
+export type resolve$SyncOpts = {
 
 /**
  * how to read files synchronously (defaults to fs.readFileSync)
@@ -140,6 +148,6 @@ isFile?: (file: string) => boolean
 declare export var resolve$sync: typeof resolveSync;
 
 declare export var resolve$isCore: typeof resolveIsCore;
-	declare module.exports: typeof resolve
+	declare export default typeof resolve
 
     }

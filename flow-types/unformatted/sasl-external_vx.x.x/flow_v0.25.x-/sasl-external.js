@@ -1,9 +1,11 @@
-declare module 'sasl-external' {
+declare interface ExternalMechanism$Credentials {
+authzid?: string
+} declare module 'sasl-external' {
         import type {
           Mechanism
         } from 'saslmechanisms';
 
-	declare module.exports: typeof ExternalMechanism
+	declare export default typeof ExternalMechanism
 
 	declare class ExternalMechanism mixins Mechanism {
 static Mechanism: typeof ExternalMechanism;
@@ -16,7 +18,4 @@ clientFirst: true;
 response(cred: ExternalMechanism$ExternalMechanism$Credentials): string;
 challenge(chal: string): void
 }
-	declare interface ExternalMechanism$Credentials {
-authzid?: string
-} 
     }

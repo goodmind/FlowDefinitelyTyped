@@ -1,10 +1,4 @@
-declare module 'angular-cookies' {
-        declare var _: string;
-	declare module.exports: typeof _
-
-	import typeof * as angular from 'angular';
-
-	declare module 'angular' {
+declare module 'angular' {
         
 /**
  * Cookies options
@@ -62,23 +56,32 @@ declare interface cookies$ICookieStoreService {
 
 /**
  * Returns the value of given cookie key
- * @param key Id to use for lookup
+ * @param key
+ * Id to use for lookup
  */
 get(key: string): any,
 
 /**
  * Sets a value for given cookie key
- * @param key Id for the value
- * @param value Value to be stored
+ * @param key
+ * Id for the value
+ * @param value
+ * Value to be stored
  */
 put(key: string, value: any): void,
 
 /**
  * Remove given cookie
- * @param key Id of the key-value pair to delete
+ * @param key
+ * Id of the key-value pair to delete
  */
 remove(key: string): void
 } 
     }
+declare module 'angular-cookies' {
+        declare var _: string;
+	declare export default typeof _
+
+	import typeof * as angular from 'angular';
 
     }

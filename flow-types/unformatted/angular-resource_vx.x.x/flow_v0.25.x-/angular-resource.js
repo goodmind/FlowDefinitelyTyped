@@ -1,10 +1,20 @@
-declare module 'angular-resource' {
-        declare var _: string;
-	declare module.exports: typeof _
+declare module 'global' {
+        declare interface Array<T> {
 
-	import typeof * as angular from 'angular';
+/**
+ * The promise of the original server interaction that created this collection.
+ */
+$promise: angular.IPromise<T[]>,
+$resolved: boolean,
 
-	declare module 'angular' {
+/**
+ * The promise of the original server interaction that created this collection.
+ */
+$promise: angular.IPromise<T[]>,
+$resolved: boolean
+} 
+    }
+declare module 'angular' {
         
 /**
  * Currently supported options for the $resource factory options argument.
@@ -27,10 +37,14 @@ declare interface resource$IResourceService {
 
 /**
  * A factory which creates a resource object that lets you interact with RESTful server-side data sources.
- * @param url A parameterized URL template with parameters prefixed by : as in /user/:username
- * @param paramDefaults Default values for url parameters.
- * @param actions example: {update: { method: 'PUT' }, delete: deleteDescriptor } where deleteDescriptor: IActionDescriptor
- * @param options Hash with custom settings that should extend the default $resourceProvider behavior
+ * @param url
+ * A parameterized URL template with parameters prefixed by : as in /user/:username
+ * @param paramDefaults
+ * Default values for url parameters.
+ * @param actions
+ * example: {update: { method: 'PUT' }, delete: deleteDescriptor } where deleteDescriptor: IActionDescriptor
+ * @param options
+ * Hash with custom settings that should extend the default $resourceProvider behavior
  */
 (url: string, paramDefaults?: any, actions?: resource$IActionHash, options?: resource$IResourceOptions): resource$IResourceClass<resource$IResource<any>>,
 <T>(url: string, paramDefaults?: any, actions?: resource$IActionHash, options?: resource$IResourceOptions): resource$IResourceClass<T>,
@@ -177,9 +191,20 @@ resourceServiceFactoryFunction: resource$resource$IResourceServiceFactoryFunctio
 get(name: "$resource"): resource$resource$IResourceService
 } 
     }
+declare module 'angular-resource' {
+        declare var _: string;
+	declare export default typeof _
+
+	import typeof * as angular from 'angular';
 
 	declare module 'global' {
         declare interface Array<T> {
+
+/**
+ * The promise of the original server interaction that created this collection.
+ */
+$promise: angular.IPromise<T[]>,
+$resolved: boolean,
 
 /**
  * The promise of the original server interaction that created this collection.

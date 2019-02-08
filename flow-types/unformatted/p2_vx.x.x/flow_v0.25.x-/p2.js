@@ -1,5 +1,5 @@
 declare module 'p2' {
-        declare module.exports: typeof p2
+        declare export default typeof p2
 
 	declare export class p2$AABB  {
 constructor(options?: {
@@ -363,7 +363,7 @@ static dot(a: number[], b: number[]): number;
 static str(a: number[]): string
 }
 
-declare export interface p2$BodyOptions {
+export interface p2$BodyOptions {
 mass?: number,
 position?: number[],
 velocity?: number[],
@@ -496,7 +496,7 @@ damping?: number
 restAngle: number
 }
 
-declare export type p2$CapsuleOptions = {
+export type p2$CapsuleOptions = {
 length?: number,
 radius?: number
 } & p2$SharedShapeOptions
@@ -508,7 +508,7 @@ length: number;
 radius: number
 }
 
-declare export type p2$CircleOptions = {
+export type p2$CircleOptions = {
 radius?: number
 } & p2$SharedShapeOptions
 
@@ -518,7 +518,7 @@ constructor(options?: p2$CircleOptions): this;
 radius: number
 }
 
-declare export type p2$ConvexOptions = {
+export type p2$ConvexOptions = {
 vertices?: ArrayLike<number>[],
 axes?: ArrayLike<number>[]
 } & p2$SharedShapeOptions
@@ -541,7 +541,7 @@ result: number[]): void;
 updateCenterOfMass(): void
 }
 
-declare export type p2$HeightfieldOptions = {
+export type p2$HeightfieldOptions = {
 heights?: number[],
 minValue?: number,
 maxValue?: number,
@@ -557,7 +557,7 @@ minValue: number;
 elementWidth: number
 }
 
-declare export interface p2$SharedShapeOptions {
+export interface p2$SharedShapeOptions {
 position?: number[],
 angle?: number,
 collisionGroup?: number,
@@ -566,7 +566,7 @@ collisionMask?: number,
 sensor?: boolean
 } 
 
-declare export type p2$ShapeOptions = {
+export type p2$ShapeOptions = {
 type?: number
 } & p2$SharedShapeOptions
 
@@ -599,7 +599,7 @@ updateArea(): void;
 computeAABB(out: p2$AABB, position: number[], angle: number): void
 }
 
-declare export type p2$LineOptions = {
+export type p2$LineOptions = {
 length?: number
 } & p2$SharedShapeOptions
 
@@ -617,7 +617,7 @@ declare export class p2$Plane mixins p2$Shape {
 constructor(options?: p2$SharedShapeOptions): this
 }
 
-declare export interface p2$BoxOptions {
+export interface p2$BoxOptions {
 width?: number,
 height?: number
 } 
