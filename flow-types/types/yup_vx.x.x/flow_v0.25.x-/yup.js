@@ -23,6 +23,8 @@ declare module "yup" {
 
   declare export function setLocale(customLocale: LocaleObject): void;
 
+  declare export function isSchema(obj: any): boolean;
+
   declare export var mixed: MixedSchemaConstructor;
   declare export var string: StringSchemaConstructor;
   declare export var number: NumberSchemaConstructor;

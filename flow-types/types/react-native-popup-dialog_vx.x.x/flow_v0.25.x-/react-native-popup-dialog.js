@@ -14,7 +14,7 @@ declare module "react-native-popup-dialog" {
   declare export interface DialogContentProps {
     style?: StyleProp<ViewStyle>;
   }
-  declare export interface DialogActionListProps {
+  declare export interface DialogFooterProps {
     bordered?: boolean;
     style?: StyleProp<ViewStyle>;
   }
@@ -63,9 +63,7 @@ declare module "react-native-popup-dialog" {
     onDismiss?: () => void;
     onTouchOutside?: () => void;
     onHardwareBackPress?: () => boolean;
-    actions?: any[];
-    actionContainerStyle?: StyleProp<ViewStyle>;
-    actionsBordered?: boolean;
+    footer?: any;
     useNativeDriver?: boolean;
   }
   declare export class FadeAnimation {
@@ -93,8 +91,8 @@ declare module "react-native-popup-dialog" {
   }
   declare export class DialogContent
     mixins React.Component<DialogContentProps, any> {}
-  declare export class DialogActionList
-    mixins React.Component<DialogActionListProps, any> {}
+  declare export class DialogFooter
+    mixins React.Component<DialogFooterProps, any> {}
   declare export class DialogButton
     mixins React.Component<DialogButtonProps, any> {}
   declare export class DialogTitle
