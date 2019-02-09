@@ -10,6 +10,7 @@ const flowgen = require("../../../../../../../desktop/projects/pending/flowgen")
 const infojson = require("../../../flow-types/info.json");
 const chalk = require("chalk");
 const {
+  convertSourceFile,
   fileName,
   safeFlowGenDiff,
   runFlowGen,
@@ -40,24 +41,14 @@ async function convertTyping(name) {
       const code = fs
         .readFileSync(`${baseDir}/types/${type}/index.d.ts`)
         .toString();
-      const hasHeader =
-        code.includes(`declare module '${name}'`) ||
-        code.includes(`declare module "${name}"`);
-      const template = hasHeader
-        ? code
-        : `
-declare module '${name}' {
-  ${code}
-};
-`;
-      return ts.createSourceFile(name, template, ts.ScriptTarget.Latest, false);
+      return convertSourceFile(code, name);
     },
     readFile: () => null,
     useCaseSensitiveFileNames: () => true,
     writeFile: () => null
   };
   const program = ts.createProgram(
-    [type],
+    [`${type}.ts`],
     {
       noResolve: true,
       noLib: true,
@@ -103,19 +94,18 @@ declare module '${name}' {
       name
     )}.js`
   );
-  if (!isTypescriptUpdated && convertationExists) {
-    console.log(
-      label(chalk.bgWhite, name),
-      label(chalk.bgBlue, "SKIP"),
-      `already converted`
-    );
-    return;
-  }
+  // if (!isTypescriptUpdated && convertationExists) {
+  //   console.log(
+  //     label(chalk.bgWhite, name),
+  //     label(chalk.bgBlue, "SKIP"),
+  //     `already converted`
+  //   );
+  //   return;
+  // }
 
   console.log(label(chalk.bgWhite, name), `converting...`);
   //console.log(label(chalk.bgWhite, name), `has header?`, hasHeader);
   const sourceFile = program.getSourceFile(`${type}.ts`);
-  console.log(type);
   if (isTypescriptUpdated) {
     if (!infojson[name]) infojson[name] = {};
     infojson[name].typescriptCommitHash = commitHash;
@@ -125,22 +115,13 @@ declare module '${name}' {
       "show",
       `${previousCommitHash}:types/${type}/index.d.ts`
     ]);
-    const hasHeader =
-      oldSource.includes(`declare module '${name}'`) ||
-      oldSource.includes(`declare module "${name}"`);
-    const template = hasHeader
-      ? oldSource
-      : `
-declare module '${name}' {
-  ${oldSource}
-};
-`;
+    const templateSourceFile = convertSourceFile(oldSource, name);
+    flowgen.compiler.reset();
     let oldFile = flowgen.beautify(
-      flowgen.compiler.compileDefinitionString(template).code
+      flowgen.compiler.compile(templateSourceFile)
     );
     await fs.ensureDir(folder);
     const structuredPatch = await safeFlowGenDiff(name, sourceFile, oldFile);
-    console.log(structuredPatch);
     if (structuredPatch.conflict) {
       await fs.writeFile(
         `${unpluggedExists[0]}/${fileName(name)}.js`,

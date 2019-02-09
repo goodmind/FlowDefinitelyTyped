@@ -1,4 +1,4 @@
-#!/usr/bin/env node --max-old-space-size=4096
+#!/usr/bin/env node --max-old-space-size=8192
 //@flow
 
 const fs = require("fs-extra");
@@ -11,6 +11,7 @@ const flowgen = require("../../../../../../../desktop/projects/pending/flowgen")
 const infojson = require("../../../flow-types/info.json");
 const chalk = require("chalk");
 const {
+  convertSourceFile,
   getPackageFolder,
   safeFlowGenDiff,
   label,
@@ -22,7 +23,20 @@ const {
 
 const baseDir = path.join(__dirname, "../../..");
 
-const skipList = ["chrome", "activex-libreoffice"];
+const skipList = [
+  "chrome",
+  "activex-libreoffice",
+  "echarts",
+  "jsts",
+  "ej.web.all", // Stack overflow
+  "ignite-ui", // Stack overflow
+  "office-js", // Stack overflow
+  "arcgis-js-api", // Stack overflow
+  "office-js-preview", // Stack overflow
+  "titanium", // Stack overflow
+  "winrt-uwp", // Stack overflow
+  "winrt" // Stack overflow
+];
 
 async function main(argv) {
   await fs.ensureDir(`${baseDir}/flow-types/logs`);
@@ -41,24 +55,14 @@ async function main(argv) {
       const code = fs
         .readFileSync(`${baseDir}/types/${type}/index.d.ts`)
         .toString();
-      const hasHeader =
-        code.includes(`declare module '${name}'`) ||
-        code.includes(`declare module "${name}"`);
-      const template = hasHeader
-        ? code
-        : `
-declare module '${name}' {
-  ${code}
-};
-`;
-      return ts.createSourceFile(name, template, ts.ScriptTarget.Latest, false);
+      return convertSourceFile(code, name);
     },
     readFile: () => null,
     useCaseSensitiveFileNames: () => true,
     writeFile: () => null
   };
   const program = ts.createProgram(
-    types,
+    types.filter(name => !skipList.includes(name)).map(type => `${type}.ts`),
     {
       noResolve: true,
       noLib: true,
@@ -131,7 +135,7 @@ declare module '${name}' {
     }
 
     if (argv.verbose) console.log(label(chalk.bgWhite, name), `converting...`);
-    const sourceFile = program.getSourceFile(type);
+    const sourceFile = program.getSourceFile(`${type}.ts`);
     // if (argv.verbose)
     //   console.log(label(chalk.bgWhite, name), `has header?`, hasHeader);
     if (isTypescriptUpdated) {
@@ -139,12 +143,47 @@ declare module '${name}' {
       infojson[name].typescriptCommitHash = commitHash;
     }
     if (isTypescriptUpdated && unpluggedExists[0]) {
-      await fs.ensureDir(folder);
-      await fs.writeFile(
-        `${folder}/${name}.patch`,
-        await safeFlowGenDiff(name, sourceFile)
+      const oldSource = await execa.stdout("git", [
+        "show",
+        `${previousCommitHash}:types/${type}/index.d.ts`
+      ]);
+      const templateSourceFile = convertSourceFile(oldSource, name);
+      flowgen.compiler.reset();
+      let oldFile = flowgen.beautify(
+        flowgen.compiler.compile(templateSourceFile)
       );
-      continue;
+      await fs.ensureDir(folder);
+      const structuredPatch = await safeFlowGenDiff(name, sourceFile, oldFile);
+      if (structuredPatch.conflict) {
+        await fs.writeFile(
+          `${unpluggedExists[0]}/${fileName(name)}.js`,
+          structuredPatch.result.join("\n")
+        );
+        console.log(
+          label(chalk.bgWhite, name),
+          `merged, please resolve conflicts`
+        );
+        // await fs.outputJSON(`${baseDir}/flow-types/info.json`, infojson, {
+        //   spaces: 2
+        // });
+        continue;
+      } else {
+        console.log(label(chalk.bgWhite, name), "no conflict");
+        continue;
+      }
+      // let lines = [];
+      // for (const hunk of structuredPatch.hunks) {
+      //   if (hunk.conflict) {
+      //     console.log("conflict");
+      //   } else {
+      //     lines = lines.concat(hunk.lines);
+      //   }
+      // }
+      // console.log(lines.join("\n"));
+      // await fs.writeFile(
+      //   `${folder}/${name}.patch`,
+      //   await safeFlowGenDiff(name, sourceFile)
+      // );
     }
     await runFlowGen(name, sourceFile, infojson);
     await copyTests(type, infojson);

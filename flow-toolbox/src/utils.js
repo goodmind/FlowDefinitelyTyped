@@ -1,4 +1,5 @@
 const fs = require("fs-extra");
+const ts = require("typescript");
 const path = require("path");
 const glob = require("glob-promise");
 const diff = require("node-diff3");
@@ -31,7 +32,69 @@ function fileName(inputName) {
   return name;
 }
 
+function convertSourceFile(code, name) {
+  const hasHeader =
+    code.includes(`declare module '${name}'`) ||
+    code.includes(`declare module "${name}"`) ||
+    code.includes(`declare module ${name}`);
+  const template = hasHeader
+    ? code
+    : `
+declare module '${name}' {
+  ${code}
+};
+`;
+  const sourceFile = ts.createSourceFile(
+    name,
+    template,
+    ts.ScriptTarget.Latest,
+    false
+  );
+  // function traverseNode(node) {
+  //   switch (node.kind) {
+  //     case ts.SyntaxKind.ModuleDeclaration:
+  //       if (node.name.escapedText !== name) {
+  //         const thisNode = node;
+  //         if (node && node.parent && node.parent.statements) {
+  //           node.parent.statements = node.parent.statements.filter(
+  //             el => el !== thisNode
+  //           );
+  //           sourceFile.statements.unshift(thisNode);
+  //         }
+  //       }
+  //     default:
+  //     //console.log("unknown node", ts.SyntaxKind[node.kind]);
+  //   }
+  //
+  // }
+  // console.log(sourceFile.statements);
+  // traverseNode(sourceFile);
+  if (
+    sourceFile.statements[0].body &&
+    sourceFile.statements[0].body.statements
+  ) {
+    for (const node of sourceFile.statements[0].body.statements) {
+      if (
+        node.kind === ts.SyntaxKind.ModuleDeclaration &&
+        node.name.escapedText !== name
+      ) {
+        if (sourceFile.statements[0].body.statements) {
+          sourceFile.statements[0].body.statements = sourceFile.statements[0].body.statements.filter(
+            el => el !== node
+          );
+          sourceFile.statements.unshift(node);
+        }
+      }
+    }
+  }
+  return sourceFile;
+}
+
 async function runFlowGen(name, sourceFile, infojson) {
+  if (infojson[name]) {
+    delete infojson[name].stdout;
+    delete infojson[name].err;
+  }
   const originalConsoleLog = console.log;
   const originalConsoleWarn = console.warn;
   const originalConsoleError = console.error;
@@ -40,7 +103,7 @@ async function runFlowGen(name, sourceFile, infojson) {
     fs.ensureFileSync(`${baseDir}/flow-types/logs/${name}/stdout.log`);
     fs.appendFileSync(
       `${baseDir}/flow-types/logs/${name}/stdout.log`,
-      data.join("\n"),
+      data.map(v => JSON.stringify(v)).join("\n"),
       {
         encoding: "utf8"
       }
@@ -49,6 +112,9 @@ async function runFlowGen(name, sourceFile, infojson) {
   let unformatted;
   let newAst = { imports: [] };
   try {
+    flowgen.compiler.reset({
+      noModuleExports: true
+    });
     const code = flowgen.compiler.compile(sourceFile);
     unformatted = code;
     newAst = sourceFile;
@@ -67,12 +133,15 @@ async function runFlowGen(name, sourceFile, infojson) {
     console.warn = originalConsoleWarn;
     //$FlowFixMe
     console.error = originalConsoleError;
-    console.log(err.name);
+    console.log(
+      label(chalk.bgWhite, name),
+      label(chalk.bgRed, "ERR"),
+      err.name
+    );
+    console.error(label(chalk.bgWhite, name), label(chalk.bgRed, "ERR"), err);
     try {
       console.log(ErrorStackParser.parse(err)[0].fileName.includes("prettier"));
-    } catch {
-      console.error(err);
-    }
+    } catch {}
     await fs.ensureFile(`${baseDir}/flow-types/logs/${name}/err.log`);
     await fs.writeFile(
       `${baseDir}/flow-types/logs/${name}/err.log`,
@@ -185,6 +254,7 @@ async function safeFlowGenDiff(name, sourceFile, commonAncestor) {
   const newName = `${folder}/flow_v0.25.x-/${fileName(name)}.js`;
   const mine = await fs.readFile(newName, { encoding: "utf8" });
   try {
+    flowgen.compiler.reset();
     const code = flowgen.compiler.compile(sourceFile);
     if (folder.includes("unformatted")) {
       theirs = code;
@@ -204,6 +274,7 @@ async function safeFlowGenDiff(name, sourceFile, commonAncestor) {
 }
 
 module.exports = {
+  convertSourceFile,
   label,
   fileName,
   definitelyTypedName,
