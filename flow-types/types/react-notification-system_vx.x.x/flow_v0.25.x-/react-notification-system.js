@@ -20,14 +20,14 @@ declare module "react-notification-system" {
   ) => void;
 
   declare export interface NotificationSystem$Notification {
-    title?: string | JSX.Element;
-    message?: string | JSX.Element;
+    title?: string | global$JSX$Element;
+    message?: string | global$JSX$Element;
     level?: "error" | "warning" | "info" | "success";
     position?: "tr" | "tl" | "tc" | "br" | "bl" | "bc";
     autoDismiss?: number;
     dismissible?: boolean;
     action?: NotificationSystem$ActionObject;
-    children?: React.ReactNode;
+    children?: React.Node;
     onAdd?: NotificationSystem$CallBackFunction;
     onRemove?: NotificationSystem$CallBackFunction;
     uid?: number | string;
@@ -80,6 +80,6 @@ declare module "react-notification-system" {
   declare export interface NotificationSystem$State {
     notifications: NotificationSystem$Notification[];
   }
-  declare var NotificationSystem: React.ClassicComponentClass<NotificationSystem$NotificationSystem$Attributes>;
-  declare module.exports: typeof NotificationSystem;
+  declare var NotificationSystem: React.ClassicComponentClass<NotificationSystem$Attributes>;
+  declare export default typeof NotificationSystem;
 }
