@@ -1,7 +1,7 @@
 declare module "make-dir" {
   import typeof * as fs from "fs";
 
-  declare module.exports: typeof makeDir;
+  declare export default typeof makeDir;
 
   /**
    * Returns a `Promise` for the path to the created directory.
@@ -9,7 +9,7 @@ declare module "make-dir" {
    */
   declare function makeDir(
     path: string,
-    options?: makeDir$makeDir$Options
+    options?: makeDir$Options
   ): Promise<string>;
 
   declare var npm$namespace$makeDir: {
