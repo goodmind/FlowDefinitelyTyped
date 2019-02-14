@@ -1,5 +1,5 @@
 declare module "pkg-dir" {
-  declare module.exports: typeof pkgDir;
+  declare export default typeof pkgDir;
 
   declare function pkgDir(cwd?: string): Promise<string | null>;
 
