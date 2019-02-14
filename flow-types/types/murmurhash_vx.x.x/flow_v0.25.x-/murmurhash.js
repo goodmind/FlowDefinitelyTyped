@@ -1,5 +1,5 @@
 declare module "murmurhash" {
-  declare module.exports: typeof murmurhash;
+  declare export default typeof murmurhash;
 
   /**
    * JS Implementation of MurmurHash3 (r136) (as of May 20, 2011)
