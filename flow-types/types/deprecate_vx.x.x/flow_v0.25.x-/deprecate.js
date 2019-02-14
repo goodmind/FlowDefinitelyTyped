@@ -27,5 +27,5 @@ declare module "deprecate" {
    */
   declare function deprecate(methodName: string, ...message: string[]): void;
 
-  declare module.exports: typeof deprecate;
+  declare export default typeof deprecate;
 }
