@@ -1,26 +1,30 @@
 declare module "gapi.client.container" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Container Engine API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "container",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "container",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: container$container$ProjectsResource;
+  declare var gapi$client$projects: container$ProjectsResource;
 
-  declare interface container$AcceleratorConfig {
+  declare interface gapi$client$container$AcceleratorConfig {
     /**
      * The number of the accelerator cards exposed to an instance.
      */
@@ -33,7 +37,7 @@ declare module "gapi.client.container" {
     acceleratorType?: string;
   }
 
-  declare interface container$AddonsConfig {
+  declare interface gapi$client$container$AddonsConfig {
     /**
      * Configuration for the horizontal pod autoscaling feature, which
      * increases or decreases the number of replica pods a replication controller
@@ -60,7 +64,7 @@ declare module "gapi.client.container" {
     networkPolicyConfig?: container$NetworkPolicyConfig;
   }
 
-  declare interface container$AutoUpgradeOptions {
+  declare interface gapi$client$container$AutoUpgradeOptions {
     /**
      * [Output only] This field is set when upgrades are about to commence
      * with the approximate start time for the upgrades, in
@@ -75,7 +79,7 @@ declare module "gapi.client.container" {
     description?: string;
   }
 
-  declare interface container$CidrBlock {
+  declare interface gapi$client$container$CidrBlock {
     /**
      * cidr_block must be specified in CIDR notation.
      */
@@ -87,18 +91,18 @@ declare module "gapi.client.container" {
     displayName?: string;
   }
 
-  declare interface container$ClientCertificateConfig {
+  declare interface gapi$client$container$ClientCertificateConfig {
     /**
      * Issue a client certificate.
      */
     issueClientCertificate?: boolean;
   }
 
-  declare interface container$Cluster {
+  declare interface gapi$client$container$Cluster {
     /**
      * Configurations for the various addons available to run in the cluster.
      */
-    addonsConfig?: container$AddonsConfig;
+    addonsConfig?: gapi$client$container$AddonsConfig;
 
     /**
      * The IP address range of the container pods in this cluster, in
@@ -344,11 +348,11 @@ declare module "gapi.client.container" {
     zone?: string;
   }
 
-  declare interface container$ClusterUpdate {
+  declare interface gapi$client$container$ClusterUpdate {
     /**
      * Configurations for the various addons available to run in the cluster.
      */
-    desiredAddonsConfig?: container$AddonsConfig;
+    desiredAddonsConfig?: gapi$client$container$AddonsConfig;
 
     /**
      * The desired image type for the node pool.
@@ -413,22 +417,22 @@ declare module "gapi.client.container" {
     desiredNodeVersion?: string;
   }
 
-  declare interface container$CreateClusterRequest {
+  declare interface gapi$client$container$CreateClusterRequest {
     /**
      * A [cluster
      * resource](/container-engine/reference/rest/v1/projects.zones.clusters)
      */
-    cluster?: container$Cluster;
+    cluster?: gapi$client$container$Cluster;
   }
 
-  declare interface container$CreateNodePoolRequest {
+  declare interface gapi$client$container$CreateNodePoolRequest {
     /**
      * The node pool to create.
      */
     nodePool?: container$NodePool;
   }
 
-  declare interface container$DailyMaintenanceWindow {
+  declare interface gapi$client$container$DailyMaintenanceWindow {
     /**
      * [Output only] Duration of the time window, automatically chosen to be
      * smallest possible in the given scenario.
@@ -445,7 +449,7 @@ declare module "gapi.client.container" {
     startTime?: string;
   }
 
-  declare interface container$HorizontalPodAutoscaling {
+  declare interface gapi$client$container$HorizontalPodAutoscaling {
     /**
      * Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.
      * When enabled, it ensures that a Heapster pod is running in the cluster,
@@ -454,7 +458,7 @@ declare module "gapi.client.container" {
     disabled?: boolean;
   }
 
-  declare interface container$HttpLoadBalancing {
+  declare interface gapi$client$container$HttpLoadBalancing {
     /**
      * Whether the HTTP Load Balancing controller is enabled in the cluster.
      * When enabled, it runs a small pod in the cluster that manages the load
@@ -463,7 +467,7 @@ declare module "gapi.client.container" {
     disabled?: boolean;
   }
 
-  declare interface container$IPAllocationPolicy {
+  declare interface gapi$client$container$IPAllocationPolicy {
     /**
      * This field is deprecated, use cluster_ipv4_cidr_block.
      */
@@ -577,14 +581,14 @@ declare module "gapi.client.container" {
     useIpAliases?: boolean;
   }
 
-  declare interface container$KubernetesDashboard {
+  declare interface gapi$client$container$KubernetesDashboard {
     /**
      * Whether the Kubernetes Dashboard is enabled for this cluster.
      */
     disabled?: boolean;
   }
 
-  declare interface container$LegacyAbac {
+  declare interface gapi$client$container$LegacyAbac {
     /**
      * Whether the ABAC authorizer is enabled for this cluster. When enabled,
      * identities in the system, including service accounts, nodes, and
@@ -594,12 +598,12 @@ declare module "gapi.client.container" {
     enabled?: boolean;
   }
 
-  declare interface container$ListClustersResponse {
+  declare interface gapi$client$container$ListClustersResponse {
     /**
      * A list of clusters in the project in the specified zone, or
      * across all ones.
      */
-    clusters?: container$Cluster[];
+    clusters?: gapi$client$container$Cluster[];
 
     /**
      * If any zones are listed here, the list of clusters returned
@@ -608,14 +612,14 @@ declare module "gapi.client.container" {
     missingZones?: string[];
   }
 
-  declare interface container$ListNodePoolsResponse {
+  declare interface gapi$client$container$ListNodePoolsResponse {
     /**
      * A list of node pools for a cluster.
      */
     nodePools?: container$NodePool[];
   }
 
-  declare interface container$ListOperationsResponse {
+  declare interface gapi$client$container$ListOperationsResponse {
     /**
      * If any zones are listed here, the list of operations returned
      * may be missing the operations from those zones.
@@ -628,21 +632,21 @@ declare module "gapi.client.container" {
     operations?: container$Operation[];
   }
 
-  declare interface container$MaintenancePolicy {
+  declare interface gapi$client$container$MaintenancePolicy {
     /**
      * Specifies the maintenance window in which maintenance may be performed.
      */
     window?: container$MaintenanceWindow;
   }
 
-  declare interface container$MaintenanceWindow {
+  declare interface gapi$client$container$MaintenanceWindow {
     /**
      * DailyMaintenanceWindow specifies a daily maintenance operation window.
      */
-    dailyMaintenanceWindow?: container$DailyMaintenanceWindow;
+    dailyMaintenanceWindow?: gapi$client$container$DailyMaintenanceWindow;
   }
 
-  declare interface container$MasterAuth {
+  declare interface gapi$client$container$MasterAuth {
     /**
      * [Output only] Base64-encoded public certificate used by clients to
      * authenticate to the cluster endpoint.
@@ -653,7 +657,7 @@ declare module "gapi.client.container" {
      * Configuration for client certificate authentication on the cluster.  If no
      * configuration is specified, a client certificate is issued.
      */
-    clientCertificateConfig?: container$ClientCertificateConfig;
+    clientCertificateConfig?: gapi$client$container$ClientCertificateConfig;
 
     /**
      * [Output only] Base64-encoded private key used by clients to authenticate
@@ -683,12 +687,12 @@ declare module "gapi.client.container" {
     username?: string;
   }
 
-  declare interface container$MasterAuthorizedNetworksConfig {
+  declare interface gapi$client$container$MasterAuthorizedNetworksConfig {
     /**
      * cidr_blocks define up to 10 external networks that could access
      * Kubernetes master through HTTPS.
      */
-    cidrBlocks?: container$CidrBlock[];
+    cidrBlocks?: gapi$client$container$CidrBlock[];
 
     /**
      * Whether or not master authorized networks is enabled.
@@ -696,7 +700,7 @@ declare module "gapi.client.container" {
     enabled?: boolean;
   }
 
-  declare interface container$NetworkPolicy {
+  declare interface gapi$client$container$NetworkPolicy {
     /**
      * Whether network policy is enabled on the cluster.
      */
@@ -708,20 +712,20 @@ declare module "gapi.client.container" {
     provider?: string;
   }
 
-  declare interface container$NetworkPolicyConfig {
+  declare interface gapi$client$container$NetworkPolicyConfig {
     /**
      * Whether NetworkPolicy is enabled for this cluster.
      */
     disabled?: boolean;
   }
 
-  declare interface container$NodeConfig {
+  declare interface gapi$client$container$NodeConfig {
     /**
      * A list of hardware accelerators to be attached to each node.
      * See https://cloud.google.com/compute/docs/gpus for more information about
      * support for GPUs.
      */
-    accelerators?: container$AcceleratorConfig[];
+    accelerators?: gapi$client$container$AcceleratorConfig[];
 
     /**
      * Size of the disk attached to each node, specified in GB.
@@ -836,7 +840,7 @@ declare module "gapi.client.container" {
     tags?: string[];
   }
 
-  declare interface container$NodeManagement {
+  declare interface gapi$client$container$NodeManagement {
     /**
      * A flag that specifies whether the node auto-repair is enabled for the node
      * pool. If enabled, the nodes in this node pool will be monitored and, if
@@ -855,10 +859,10 @@ declare module "gapi.client.container" {
     /**
      * Specifies the Auto Upgrade knobs for the node pool.
      */
-    upgradeOptions?: container$AutoUpgradeOptions;
+    upgradeOptions?: gapi$client$container$AutoUpgradeOptions;
   }
 
-  declare interface container$NodePool {
+  declare interface gapi$client$container$NodePool {
     /**
      * Autoscaler configuration for this NodePool. Autoscaler is enabled
      * only if a valid configuration is present.
@@ -868,7 +872,7 @@ declare module "gapi.client.container" {
     /**
      * The node configuration of the pool.
      */
-    config?: container$NodeConfig;
+    config?: gapi$client$container$NodeConfig;
 
     /**
      * The initial node count for the pool. You must ensure that your
@@ -888,7 +892,7 @@ declare module "gapi.client.container" {
     /**
      * NodeManagement configuration for this NodePool.
      */
-    management?: container$NodeManagement;
+    management?: gapi$client$container$NodeManagement;
 
     /**
      * The name of the node pool.
@@ -917,7 +921,7 @@ declare module "gapi.client.container" {
     version?: string;
   }
 
-  declare interface container$NodePoolAutoscaling {
+  declare interface gapi$client$container$NodePoolAutoscaling {
     /**
      * Is autoscaling enabled for this node pool.
      */
@@ -936,7 +940,7 @@ declare module "gapi.client.container" {
     minNodeCount?: number;
   }
 
-  declare interface container$Operation {
+  declare interface gapi$client$container$Operation {
     /**
      * Detailed operation progress, if available.
      */
@@ -992,7 +996,7 @@ declare module "gapi.client.container" {
     zone?: string;
   }
 
-  declare interface container$ServerConfig {
+  declare interface gapi$client$container$ServerConfig {
     /**
      * Version of Kubernetes the service deploys by default.
      */
@@ -1019,15 +1023,15 @@ declare module "gapi.client.container" {
     validNodeVersions?: string[];
   }
 
-  declare interface container$SetAddonsConfigRequest {
+  declare interface gapi$client$container$SetAddonsConfigRequest {
     /**
      * The desired configurations for the various addons available to run in the
      * cluster.
      */
-    addonsConfig?: container$AddonsConfig;
+    addonsConfig?: gapi$client$container$AddonsConfig;
   }
 
-  declare interface container$SetLabelsRequest {
+  declare interface gapi$client$container$SetLabelsRequest {
     /**
      * The fingerprint of the previous set of labels for this resource,
      * used to detect conflicts. The fingerprint is initially generated by
@@ -1044,14 +1048,14 @@ declare module "gapi.client.container" {
     resourceLabels?: Record<string, string>;
   }
 
-  declare interface container$SetLegacyAbacRequest {
+  declare interface gapi$client$container$SetLegacyAbacRequest {
     /**
      * Whether ABAC authorization will be enabled in the cluster.
      */
     enabled?: boolean;
   }
 
-  declare interface container$SetLocationsRequest {
+  declare interface gapi$client$container$SetLocationsRequest {
     /**
      * The desired list of Google Compute Engine
      * [locations](/compute/docs/zones#available) in which the cluster's nodes
@@ -1064,7 +1068,7 @@ declare module "gapi.client.container" {
     locations?: string[];
   }
 
-  declare interface container$SetLoggingServiceRequest {
+  declare interface gapi$client$container$SetLoggingServiceRequest {
     /**
      * The logging service the cluster should use to write metrics.
      * Currently available options:
@@ -1075,15 +1079,15 @@ declare module "gapi.client.container" {
     loggingService?: string;
   }
 
-  declare interface container$SetMaintenancePolicyRequest {
+  declare interface gapi$client$container$SetMaintenancePolicyRequest {
     /**
      * The maintenance policy to be set for the cluster. An empty field
      * clears the existing maintenance policy.
      */
-    maintenancePolicy?: container$MaintenancePolicy;
+    maintenancePolicy?: gapi$client$container$MaintenancePolicy;
   }
 
-  declare interface container$SetMasterAuthRequest {
+  declare interface gapi$client$container$SetMasterAuthRequest {
     /**
      * The exact form of action to be taken on the master auth.
      */
@@ -1092,10 +1096,10 @@ declare module "gapi.client.container" {
     /**
      * A description of the update.
      */
-    update?: container$MasterAuth;
+    update?: gapi$client$container$MasterAuth;
   }
 
-  declare interface container$SetMonitoringServiceRequest {
+  declare interface gapi$client$container$SetMonitoringServiceRequest {
     /**
      * The monitoring service the cluster should use to write metrics.
      * Currently available options:
@@ -1106,42 +1110,42 @@ declare module "gapi.client.container" {
     monitoringService?: string;
   }
 
-  declare interface container$SetNetworkPolicyRequest {
+  declare interface gapi$client$container$SetNetworkPolicyRequest {
     /**
      * Configuration options for the NetworkPolicy feature.
      */
-    networkPolicy?: container$NetworkPolicy;
+    networkPolicy?: gapi$client$container$NetworkPolicy;
   }
 
-  declare interface container$SetNodePoolAutoscalingRequest {
+  declare interface gapi$client$container$SetNodePoolAutoscalingRequest {
     /**
      * Autoscaling configuration for the node pool.
      */
-    autoscaling?: container$NodePoolAutoscaling;
+    autoscaling?: gapi$client$container$NodePoolAutoscaling;
   }
 
-  declare interface container$SetNodePoolManagementRequest {
+  declare interface gapi$client$container$SetNodePoolManagementRequest {
     /**
      * NodeManagement configuration for the node pool.
      */
-    management?: container$NodeManagement;
+    management?: gapi$client$container$NodeManagement;
   }
 
-  declare interface container$SetNodePoolSizeRequest {
+  declare interface gapi$client$container$SetNodePoolSizeRequest {
     /**
      * The desired node count for the pool.
      */
     nodeCount?: number;
   }
 
-  declare interface container$UpdateClusterRequest {
+  declare interface gapi$client$container$UpdateClusterRequest {
     /**
      * A description of the update.
      */
-    update?: container$ClusterUpdate;
+    update?: gapi$client$container$ClusterUpdate;
   }
 
-  declare interface container$UpdateMasterRequest {
+  declare interface gapi$client$container$UpdateMasterRequest {
     /**
      * The Kubernetes version to change the master to. The only valid value is the
      * latest supported version. Use "-" to have the server automatically select
@@ -1150,7 +1154,7 @@ declare module "gapi.client.container" {
     masterVersion?: string;
   }
 
-  declare interface container$UpdateNodePoolRequest {
+  declare interface gapi$client$container$UpdateNodePoolRequest {
     /**
      * The desired image type for the node pool.
      */
@@ -1164,7 +1168,7 @@ declare module "gapi.client.container" {
     nodeVersion?: string;
   }
 
-  declare interface container$NodePoolsResource {
+  declare interface gapi$client$container$NodePoolsResource {
     /**
      * Sets the autoscaling settings of a specific node pool.
      */
@@ -1256,7 +1260,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Creates a node pool for a cluster.
@@ -1344,7 +1348,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Deletes a node pool from a cluster.
@@ -1437,7 +1441,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Retrieves the node pool requested.
@@ -1530,7 +1534,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$NodePool>;
+    }): Request<gapi$client$container$NodePool>;
 
     /**
      * Lists the node pools for a cluster.
@@ -1618,7 +1622,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$ListNodePoolsResponse>;
+    }): Request<gapi$client$container$ListNodePoolsResponse>;
 
     /**
      * Roll back the previously Aborted or Failed NodePool upgrade.
@@ -1712,7 +1716,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets the NodeManagement options for a node pool.
@@ -1805,7 +1809,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets the size of a specific node pool.
@@ -1898,7 +1902,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Updates the version and/or image type of a specific node pool.
@@ -1991,10 +1995,10 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
   }
 
-  declare interface container$ClustersResource {
+  declare interface gapi$client$container$ClustersResource {
     /**
      * Sets the addons of a specific cluster.
      */
@@ -2081,7 +2085,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Completes master IP rotation.
@@ -2169,7 +2173,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Creates a cluster, consisting of the specified number and type of Google
@@ -2264,7 +2268,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -2360,7 +2364,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Gets the details of a specific cluster.
@@ -2448,7 +2452,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Cluster>;
+    }): Request<gapi$client$container$Cluster>;
 
     /**
      * Enables or disables the ABAC authorization mechanism on a cluster.
@@ -2536,7 +2540,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Lists all clusters owned by a project in either the specified zone or all
@@ -2620,7 +2624,7 @@ declare module "gapi.client.container" {
        * resides, or "-" for all zones.
        */
       zone: string
-    }): Request<container$ListClustersResponse>;
+    }): Request<gapi$client$container$ListClustersResponse>;
 
     /**
      * Sets the locations of a specific cluster.
@@ -2708,7 +2712,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets the logging service of a specific cluster.
@@ -2796,7 +2800,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Updates the master of a specific cluster.
@@ -2884,7 +2888,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets the monitoring service of a specific cluster.
@@ -2972,7 +2976,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets labels on a cluster.
@@ -3060,7 +3064,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Sets the maintenance policy for a cluster.
@@ -3148,7 +3152,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Used to set master auth materials. Currently supports :-
@@ -3238,7 +3242,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Enables/Disables Network Policy for a cluster.
@@ -3326,7 +3330,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Start master IP rotation.
@@ -3414,7 +3418,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Updates the settings of a specific cluster.
@@ -3502,11 +3506,11 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
-    nodePools: container$NodePoolsResource;
+    }): Request<gapi$client$container$Operation>;
+    nodePools: gapi$client$container$NodePoolsResource;
   }
 
-  declare interface container$OperationsResource {
+  declare interface gapi$client$container$OperationsResource {
     /**
      * Cancels the specified operation.
      */
@@ -3680,7 +3684,7 @@ declare module "gapi.client.container" {
        * resides.
        */
       zone: string
-    }): Request<container$Operation>;
+    }): Request<gapi$client$container$Operation>;
 
     /**
      * Lists all operations in a project in a specific zone or all zones.
@@ -3762,10 +3766,10 @@ declare module "gapi.client.container" {
        * to return operations for, or `-` for all zones.
        */
       zone: string
-    }): Request<container$ListOperationsResponse>;
+    }): Request<gapi$client$container$ListOperationsResponse>;
   }
 
-  declare interface container$ZonesResource {
+  declare interface gapi$client$container$ZonesResource {
     /**
      * Returns configuration info about the Container Engine service.
      */
@@ -3846,12 +3850,12 @@ declare module "gapi.client.container" {
        * to return operations for.
        */
       zone: string
-    }): Request<container$ServerConfig>;
-    clusters: container$ClustersResource;
-    operations: container$OperationsResource;
+    }): Request<gapi$client$container$ServerConfig>;
+    clusters: gapi$client$container$ClustersResource;
+    operations: gapi$client$container$OperationsResource;
   }
 
-  declare interface container$ProjectsResource {
-    zones: container$ZonesResource;
+  declare interface gapi$client$container$ProjectsResource {
+    zones: gapi$client$container$ZonesResource;
   }
 }
