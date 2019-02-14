@@ -3,7 +3,9 @@ declare module "node-wit" {
     DEBUG: typeof log$DEBUG,
     INFO: typeof log$INFO,
     WARN: typeof log$WARN,
-    ERROR: typeof log$ERROR
+    ERROR: typeof log$ERROR,
+
+    Logger: typeof log$Logger
   };
   declare class log$Logger {
     constructor(level: string): this;
@@ -44,7 +46,7 @@ declare module "node-wit" {
   declare export interface WitOption {
     accessToken: string;
     actions?: any;
-    logger?: log$log$Logger;
+    logger?: log$Logger;
   }
   declare export interface MessageResponseEntity {
     confidence?: number;
