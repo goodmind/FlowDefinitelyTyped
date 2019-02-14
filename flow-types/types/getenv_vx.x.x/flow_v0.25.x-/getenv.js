@@ -2,12 +2,12 @@ declare module "getenv" {
   import type { UrlWithStringQuery } from "url";
 
   declare interface ParseMappings {
-    getenv$string: string;
-    getenv$int: number;
-    getenv$float: number;
-    getenv$bool: boolean;
-    getenv$boolish: boolean;
-    getenv$url: UrlWithStringQuery;
+    string: string;
+    int: number;
+    float: number;
+    bool: boolean;
+    boolish: boolean;
+    url: UrlWithStringQuery;
   }
   declare type ParseTypes = $Keys<ParseMappings>;
   declare type ParseWithFallback = [
@@ -31,7 +31,7 @@ declare module "getenv" {
    * Alias for `env.string(name, [fallback])`
    */
   declare function getenv(
-    skin$name: string,
+    name: string,
     fallback?: string
   ): $ElementType<ParseMappings, "string">;
 
@@ -54,7 +54,7 @@ declare module "getenv" {
    * Return as string.
    */
   declare function getenv$string(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "string">
   ): $ElementType<ParseMappings, "string">;
 
@@ -62,7 +62,7 @@ declare module "getenv" {
    * Return as integer number.
    */
   declare function getenv$int(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "int">
   ): $ElementType<ParseMappings, "int">;
 
@@ -70,7 +70,7 @@ declare module "getenv" {
    * Return as float number.
    */
   declare function getenv$float(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "float">
   ): $ElementType<ParseMappings, "float">;
 
@@ -78,7 +78,7 @@ declare module "getenv" {
    * Return as boolean. Only allows true/false as valid values.
    */
   declare function getenv$bool(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "bool">
   ): $ElementType<ParseMappings, "bool">;
 
@@ -86,7 +86,7 @@ declare module "getenv" {
    * Return as boolean. Allows true/false/1/0 as valid values.
    */
   declare function getenv$boolish(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "boolish">
   ): $ElementType<ParseMappings, "boolish">;
 
@@ -96,10 +96,10 @@ declare module "getenv" {
    * provided as `fallback`.
    */
   declare function getenv$array<T: ParseTypes>(
-    skin$name: string,
-    notification$type?: T,
-    fallback?: core$Array<$ElementType<ParseMappings, T>>
-  ): core$Array<$ElementType<ParseMappings, T>>;
+    name: string,
+    type?: T,
+    fallback?: Array<$ElementType<ParseMappings, T>>
+  ): Array<$ElementType<ParseMappings, T>>;
 
   /**
    * Return a list of environment variables based on a spec:
@@ -127,7 +127,7 @@ declare module "getenv" {
    * Return a parsed URL as per Node's `require("url").parse`. N.B `url` doesn't validate URLs, so be sure it includes a protocol or you'll get deeply weird results.
    */
   declare function getenv$url(
-    skin$name: string,
+    name: string,
     fallback?: $ElementType<ParseMappings, "url">
   ): $ElementType<ParseMappings, "url">;
 
@@ -158,5 +158,5 @@ declare module "getenv" {
    */
   declare function getenv$enableErrors(): void;
 
-  declare module.exports: typeof getenv;
+  declare export default typeof getenv;
 }
