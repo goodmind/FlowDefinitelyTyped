@@ -2,7 +2,11 @@ declare module "clearbladejs-server" {
   declare var npm$namespace$CbServer: {
     req: typeof CbServer$req,
     resp: typeof CbServer$resp,
-    ClearBlade: typeof CbServer$ClearBlade
+    ClearBlade: typeof CbServer$ClearBlade,
+    MessagingQOS: typeof CbServer$MessagingQOS,
+    QuerySortDirections: typeof CbServer$QuerySortDirections,
+    QueryConditions: typeof CbServer$QueryConditions,
+    TriggerModule: typeof CbServer$TriggerModule
   };
   declare interface CbServer$BasicReq {
     +isLogging: boolean;
@@ -27,25 +31,11 @@ declare module "clearbladejs-server" {
 
   declare var CbServer$resp: CbServer$Resp;
 
-  declare class CbServer$MessagingQOS {
-    constructor(...args: empty): mixed;
-    static +MESSAGING_QOS_AT_MOST_ONCE: Class<CbServer$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE> &
-      CbServer$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE &
-      0; // 0
-    static +MESSAGING_QOS_AT_LEAST_ONCE: Class<CbServer$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE> &
-      CbServer$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE &
-      1; // 1
-    static +MESSAGING_QOS_EXACTLY_ONCE: Class<CbServer$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE> &
-      CbServer$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE &
-      2; // 2
-  }
-
-  declare class CbServer$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE
-    mixins CbServer$MessagingQOS {}
-  declare class CbServer$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE
-    mixins CbServer$MessagingQOS {}
-  declare class CbServer$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE
-    mixins CbServer$MessagingQOS {}
+  declare var CbServer$MessagingQOS: {|
+    +MESSAGING_QOS_AT_MOST_ONCE: 0, // 0
+    +MESSAGING_QOS_AT_LEAST_ONCE: 1, // 1
+    +MESSAGING_QOS_EXACTLY_ONCE: 2 // 2
+  |};
 
   declare interface CbServer$InitOptions {
     systemKey: string;
@@ -82,7 +72,7 @@ declare module "clearbladejs-server" {
 
   declare type CbServer$ClearBladeGlobal = {
     user: CbServer$APIUser
-  } & CbServer$ClearBladeInt;
+  } & ClearBladeInt;
 
   declare interface CbServer$ClearBladeInt {
     Trigger: CbServer$TriggerClass;
@@ -100,16 +90,16 @@ declare module "clearbladejs-server" {
       direction: CbServer$QuerySortDirections,
       column: string
     ): void;
-    CbServer$Code(): CbServer$Code;
-    CbServer$Collection(
+    Code(): CbServer$Code;
+    Collection(
       options:
         | string
         | CbServer$CollectionOptionsWithName
         | CbServer$CollectionOptionsWithID
         | CbServer$CollectionOptionsWithCollection
     ): CbServer$Collection;
-    CbServer$Deployment(): CbServer$Deployment;
-    CbServer$Device(): CbServer$Device;
+    Deployment(): CbServer$Deployment;
+    Device(): CbServer$Device;
     edgeId(): string;
     execute(
       error: { [key: string]: any },
@@ -128,7 +118,7 @@ declare module "clearbladejs-server" {
     isEdge(callback: CbServer$CbCallback): boolean;
     isCurrentUserAuthenticated(callback: CbServer$CbCallback): void;
     isObjectEmpty(obj: { [key: string]: any }): boolean;
-    CbServer$Item(
+    Item(
       data: { [key: string]: any },
       options: string | CbServer$ItemOptions
     ): CbServer$Item;
@@ -141,12 +131,12 @@ declare module "clearbladejs-server" {
     ): void;
     logoutUser(callback: CbServer$CbCallback): void;
     makeKVPair(key: string, value: string): CbServer$KeyValuePair;
-    CbServer$Messaging(
+    Messaging(
       options: CbServer$MessagingOptions,
       callback: CbServer$CbCallback
     ): CbServer$Messaging;
     newCollection(name: string, callback: CbServer$CbCallback): void;
-    CbServer$Query(
+    Query(
       options:
         | CbServer$QueryOptionsWithCollection
         | CbServer$QueryOptionsWithName
@@ -218,60 +208,20 @@ declare module "clearbladejs-server" {
     count(query: CbServer$Query, callback: CbServer$CbCallback): void;
   }
 
-  declare class CbServer$QuerySortDirections {
-    constructor(...args: empty): mixed;
-    static +QUERY_SORT_ASCENDING: Class<CbServer$QuerySortDirections__QUERY_SORT_ASCENDING> &
-      CbServer$QuerySortDirections__QUERY_SORT_ASCENDING &
-      "ASC"; // "ASC"
-    static +QUERY_SORT_DESCENDING: Class<CbServer$QuerySortDirections__QUERY_SORT_DESCENDING> &
-      CbServer$QuerySortDirections__QUERY_SORT_DESCENDING &
-      "DESC"; // "DESC"
-  }
+  declare var CbServer$QuerySortDirections: {|
+    +QUERY_SORT_ASCENDING: "ASC", // "ASC"
+    +QUERY_SORT_DESCENDING: "DESC" // "DESC"
+  |};
 
-  declare class CbServer$QuerySortDirections__QUERY_SORT_ASCENDING
-    mixins CbServer$QuerySortDirections {}
-  declare class CbServer$QuerySortDirections__QUERY_SORT_DESCENDING
-    mixins CbServer$QuerySortDirections {}
-
-  declare class CbServer$QueryConditions {
-    constructor(...args: empty): mixed;
-    static +QUERY_EQUAL: Class<CbServer$QueryConditions__QUERY_EQUAL> &
-      CbServer$QueryConditions__QUERY_EQUAL &
-      "EQ"; // "EQ"
-    static +QUERY_NOTEQUAL: Class<CbServer$QueryConditions__QUERY_NOTEQUAL> &
-      CbServer$QueryConditions__QUERY_NOTEQUAL &
-      "NEQ"; // "NEQ"
-    static +QUERY_GREATERTHAN: Class<CbServer$QueryConditions__QUERY_GREATERTHAN> &
-      CbServer$QueryConditions__QUERY_GREATERTHAN &
-      "GT"; // "GT"
-    static +QUERY_GREATERTHAN_EQUAL: Class<CbServer$QueryConditions__QUERY_GREATERTHAN_EQUAL> &
-      CbServer$QueryConditions__QUERY_GREATERTHAN_EQUAL &
-      "GTE"; // "GTE"
-    static +QUERY_LESSTHAN: Class<CbServer$QueryConditions__QUERY_LESSTHAN> &
-      CbServer$QueryConditions__QUERY_LESSTHAN &
-      "LT"; // "LT"
-    static +QUERY_LESSTHAN_EQUAL: Class<CbServer$QueryConditions__QUERY_LESSTHAN_EQUAL> &
-      CbServer$QueryConditions__QUERY_LESSTHAN_EQUAL &
-      "LTE"; // "LTE"
-    static +QUERY_MATCHES: Class<CbServer$QueryConditions__QUERY_MATCHES> &
-      CbServer$QueryConditions__QUERY_MATCHES &
-      "RE"; // "RE"
-  }
-
-  declare class CbServer$QueryConditions__QUERY_EQUAL
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_NOTEQUAL
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_GREATERTHAN
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_GREATERTHAN_EQUAL
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_LESSTHAN
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_LESSTHAN_EQUAL
-    mixins CbServer$QueryConditions {}
-  declare class CbServer$QueryConditions__QUERY_MATCHES
-    mixins CbServer$QueryConditions {}
+  declare var CbServer$QueryConditions: {|
+    +QUERY_EQUAL: "EQ", // "EQ"
+    +QUERY_NOTEQUAL: "NEQ", // "NEQ"
+    +QUERY_GREATERTHAN: "GT", // "GT"
+    +QUERY_GREATERTHAN_EQUAL: "GTE", // "GTE"
+    +QUERY_LESSTHAN: "LT", // "LT"
+    +QUERY_LESSTHAN_EQUAL: "LTE", // "LTE"
+    +QUERY_MATCHES: "RE" // "RE"
+  |};
 
   declare type CbServer$QueryValue = string | number | boolean;
 
@@ -280,14 +230,14 @@ declare module "clearbladejs-server" {
     limit?: number;
   }
 
-  declare type CbServer$QueryOptionsWithCollection = {} & CbServer$CollectionOptionsWithCollection &
-    CbServer$QueryOptions;
+  declare type CbServer$QueryOptionsWithCollection = {} & CollectionOptionsWithCollection &
+    QueryOptions;
 
-  declare type CbServer$QueryOptionsWithName = {} & CbServer$CollectionOptionsWithName &
-    CbServer$QueryOptions;
+  declare type CbServer$QueryOptionsWithName = {} & CollectionOptionsWithName &
+    QueryOptions;
 
-  declare type CbServer$QueryOptionsWithID = {} & CbServer$CollectionOptionsWithID &
-    CbServer$QueryOptions;
+  declare type CbServer$QueryOptionsWithID = {} & CollectionOptionsWithID &
+    QueryOptions;
 
   declare interface CbServer$Query {
     SELECTCOLUMNS?: string[];
@@ -298,7 +248,7 @@ declare module "clearbladejs-server" {
   }
 
   declare interface CbServer$QueryFilter {
-    [CbServer$QueryConditions: string]: CbServer$QueryFilterValue;
+    [QueryConditions: string]: CbServer$QueryFilterValue;
   }
 
   declare interface CbServer$QueryFilterValue {
@@ -335,7 +285,7 @@ declare module "clearbladejs-server" {
     remove(callback: CbServer$CbCallback): void;
   }
 
-  declare type CbServer$ItemOptions = {} & CbServer$CollectionOptionsWithID;
+  declare type CbServer$ItemOptions = {} & CollectionOptionsWithID;
 
   declare interface CbServer$Item {
     data: { [key: string]: any };
@@ -444,27 +394,12 @@ declare module "clearbladejs-server" {
     ): void;
   }
 
-  declare class CbServer$TriggerModule {
-    constructor(...args: empty): mixed;
-    static +DEVICE: Class<CbServer$TriggerModule__DEVICE> &
-      CbServer$TriggerModule__DEVICE &
-      "Device"; // "Device"
-    static +Data: Class<CbServer$TriggerModule__Data> &
-      CbServer$TriggerModule__Data &
-      "Data"; // "Data"
-    static +MESSAGING: Class<CbServer$TriggerModule__MESSAGING> &
-      CbServer$TriggerModule__MESSAGING &
-      "Messaging"; // "Messaging"
-    static +USER: Class<CbServer$TriggerModule__USER> &
-      CbServer$TriggerModule__USER &
-      "User"; // "User"
-  }
-
-  declare class CbServer$TriggerModule__DEVICE mixins CbServer$TriggerModule {}
-  declare class CbServer$TriggerModule__Data mixins CbServer$TriggerModule {}
-  declare class CbServer$TriggerModule__MESSAGING
-    mixins CbServer$TriggerModule {}
-  declare class CbServer$TriggerModule__USER mixins CbServer$TriggerModule {}
+  declare var CbServer$TriggerModule: {|
+    +DEVICE: "Device", // "Device"
+    +Data: "Data", // "Data"
+    +MESSAGING: "Messaging", // "Messaging"
+    +USER: "User" // "User"
+  |};
 
   declare interface CbServer$TriggerCreateOptions {
     system_key: string;
