@@ -2,7 +2,7 @@ declare module "multistream" {
   import type { Stream } from "stream";
 
   declare function multistream(
-    streams: multistream$multistream$Streams
+    streams: multistream$Streams
   ): NodeJS.ReadableStream;
 
   declare interface FactoryStreamCallback {
@@ -25,5 +25,5 @@ declare module "multistream" {
     streams: multistream$Streams
   ): NodeJS.ReadableStream;
 
-  declare module.exports: typeof multistream;
+  declare export default typeof multistream;
 }
