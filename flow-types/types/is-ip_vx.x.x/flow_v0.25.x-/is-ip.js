@@ -19,5 +19,5 @@ declare module "is-ip" {
    */
   declare function isIp$v6(input: string): boolean;
 
-  declare module.exports: typeof isIp;
+  declare export default typeof isIp;
 }
