@@ -9,5 +9,5 @@ declare module "require-relative" {
     relativeTo?: string
   ): string;
 
-  declare module.exports: typeof requireRelative;
+  declare export default typeof requireRelative;
 }
