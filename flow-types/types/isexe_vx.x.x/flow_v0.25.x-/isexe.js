@@ -1,9 +1,9 @@
 declare module "isexe" {
-  declare module.exports: typeof isExe;
+  declare export default typeof isExe;
 
   declare function isExe(
     path: string,
-    options?: isExe$isExe$Options
+    options?: isExe$Options
   ): Promise<boolean>;
 
   declare function isExe(
@@ -13,7 +13,7 @@ declare module "isexe" {
 
   declare function isExe(
     path: string,
-    options: isExe$isExe$Options,
+    options: isExe$Options,
     callback: (error: NodeJS.ErrnoException | void, isExe: boolean) => void
   ): void;
 
