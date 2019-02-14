@@ -1,5 +1,5 @@
 declare module "hash-file" {
-  declare module.exports: typeof hash_file;
+  declare export default typeof hash_file;
 
   declare function hash_file(src: string): Promise<string>;
 
