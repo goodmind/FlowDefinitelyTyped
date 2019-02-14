@@ -1,26 +1,30 @@
 declare module "gapi.client.servicecontrol" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    services: typeof client$services
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    services: typeof gapi$client$services
   };
 
   /**
    * Load Google Service Control API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "servicecontrol",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "servicecontrol",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$services: servicecontrol$servicecontrol$ServicesResource;
+  declare var gapi$client$services: servicecontrol$ServicesResource;
 
-  declare interface servicecontrol$AllocateInfo {
+  declare interface gapi$client$servicecontrol$AllocateInfo {
     /**
      * A list of label keys that were unused by the server in processing the
      * request. Thus, for similar requests repeated in a certain future time
@@ -30,7 +34,7 @@ declare module "gapi.client.servicecontrol" {
     unusedArguments?: string[];
   }
 
-  declare interface servicecontrol$AllocateQuotaRequest {
+  declare interface gapi$client$servicecontrol$AllocateQuotaRequest {
     /**
      * Operation that describes the quota allocation.
      */
@@ -44,7 +48,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$AllocateQuotaResponse {
+  declare interface gapi$client$servicecontrol$AllocateQuotaResponse {
     /**
      * Indicates the decision of the allocate.
      */
@@ -53,7 +57,7 @@ declare module "gapi.client.servicecontrol" {
     /**
      * WARNING: DO NOT use this field until this warning message is removed.
      */
-    allocateInfo?: servicecontrol$AllocateInfo;
+    allocateInfo?: gapi$client$servicecontrol$AllocateInfo;
 
     /**
      * The same operation_id value used in the AllocateQuotaRequest. Used for
@@ -81,7 +85,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$AuditLog {
+  declare interface gapi$client$servicecontrol$AuditLog {
     /**
      * Authentication information.
      */
@@ -170,7 +174,7 @@ declare module "gapi.client.servicecontrol" {
     status?: servicecontrol$Status;
   }
 
-  declare interface servicecontrol$AuthenticationInfo {
+  declare interface gapi$client$servicecontrol$AuthenticationInfo {
     /**
      * The authority selector specified by the requestor, if any.
      * It is not guaranteed that the principal was allowed to use this authority.
@@ -194,7 +198,7 @@ declare module "gapi.client.servicecontrol" {
     thirdPartyPrincipal?: Record<string, any>;
   }
 
-  declare interface servicecontrol$AuthorizationInfo {
+  declare interface gapi$client$servicecontrol$AuthorizationInfo {
     /**
      * Whether or not authorization for `resource` and `permission`
      * was granted.
@@ -214,7 +218,7 @@ declare module "gapi.client.servicecontrol" {
     resource?: string;
   }
 
-  declare interface servicecontrol$CheckError {
+  declare interface gapi$client$servicecontrol$CheckError {
     /**
      * The error code.
      */
@@ -226,7 +230,7 @@ declare module "gapi.client.servicecontrol" {
     detail?: string;
   }
 
-  declare interface servicecontrol$CheckInfo {
+  declare interface gapi$client$servicecontrol$CheckInfo {
     /**
      * Consumer info of this check.
      */
@@ -240,7 +244,7 @@ declare module "gapi.client.servicecontrol" {
     unusedArguments?: string[];
   }
 
-  declare interface servicecontrol$CheckRequest {
+  declare interface gapi$client$servicecontrol$CheckRequest {
     /**
      * The operation to be checked.
      */
@@ -267,7 +271,7 @@ declare module "gapi.client.servicecontrol" {
     skipActivationCheck?: boolean;
   }
 
-  declare interface servicecontrol$CheckResponse {
+  declare interface gapi$client$servicecontrol$CheckResponse {
     /**
      * Indicate the decision of the check.
      *
@@ -275,12 +279,12 @@ declare module "gapi.client.servicecontrol" {
      * Otherwise the service should use the list of errors to determine the
      * appropriate action.
      */
-    checkErrors?: servicecontrol$CheckError[];
+    checkErrors?: gapi$client$servicecontrol$CheckError[];
 
     /**
      * Feedback data returned from the server during processing a Check request.
      */
-    checkInfo?: servicecontrol$CheckInfo;
+    checkInfo?: gapi$client$servicecontrol$CheckInfo;
 
     /**
      * The same operation_id value used in the CheckRequest.
@@ -299,7 +303,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$ConsumerInfo {
+  declare interface gapi$client$servicecontrol$ConsumerInfo {
     /**
      * The Google cloud project number, e.g. 1234567890. A value of 0 indicates
      * no project number is found.
@@ -307,7 +311,7 @@ declare module "gapi.client.servicecontrol" {
     projectNumber?: string;
   }
 
-  declare interface servicecontrol$Distribution {
+  declare interface gapi$client$servicecontrol$Distribution {
     /**
      * The number of samples in each histogram bucket. `bucket_counts` are
      * optional. If present, they must sum to the `count` value.
@@ -369,7 +373,7 @@ declare module "gapi.client.servicecontrol" {
     sumOfSquaredDeviation?: number;
   }
 
-  declare interface servicecontrol$EndReconciliationRequest {
+  declare interface gapi$client$servicecontrol$EndReconciliationRequest {
     /**
      * Operation that describes the quota reconciliation.
      */
@@ -383,7 +387,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$EndReconciliationResponse {
+  declare interface gapi$client$servicecontrol$EndReconciliationResponse {
     /**
      * The same operation_id value used in the EndReconciliationRequest. Used for
      * logging and diagnostics purposes.
@@ -425,7 +429,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$ExplicitBuckets {
+  declare interface gapi$client$servicecontrol$ExplicitBuckets {
     /**
      * 'bound' is a list of strictly increasing boundaries between
      * buckets. Note that a list of length N-1 defines N buckets because
@@ -446,7 +450,7 @@ declare module "gapi.client.servicecontrol" {
     bounds?: number[];
   }
 
-  declare interface servicecontrol$ExponentialBuckets {
+  declare interface gapi$client$servicecontrol$ExponentialBuckets {
     /**
      * The i'th exponential bucket covers the interval
      * [scale &#42; growth_factor^(i-1), scale &#42; growth_factor^i)
@@ -471,7 +475,7 @@ declare module "gapi.client.servicecontrol" {
     scale?: number;
   }
 
-  declare interface servicecontrol$LinearBuckets {
+  declare interface gapi$client$servicecontrol$LinearBuckets {
     /**
      * The number of finite buckets. With the underflow and overflow buckets,
      * the total number of buckets is `num_finite_buckets` + 2.
@@ -495,7 +499,7 @@ declare module "gapi.client.servicecontrol" {
     width?: number;
   }
 
-  declare interface servicecontrol$LogEntry {
+  declare interface gapi$client$servicecontrol$LogEntry {
     /**
      * A unique ID for the log entry used for deduplication. If omitted,
      * the implementation will generate one based on operation_id.
@@ -545,7 +549,7 @@ declare module "gapi.client.servicecontrol" {
     timestamp?: string;
   }
 
-  declare interface servicecontrol$MetricValue {
+  declare interface gapi$client$servicecontrol$MetricValue {
     /**
      * A boolean value.
      */
@@ -554,7 +558,7 @@ declare module "gapi.client.servicecontrol" {
     /**
      * A distribution value.
      */
-    distributionValue?: servicecontrol$Distribution;
+    distributionValue?: gapi$client$servicecontrol$Distribution;
 
     /**
      * A double precision floating point value.
@@ -598,7 +602,7 @@ declare module "gapi.client.servicecontrol" {
     stringValue?: string;
   }
 
-  declare interface servicecontrol$MetricValueSet {
+  declare interface gapi$client$servicecontrol$MetricValueSet {
     /**
      * The metric name defined in the service configuration.
      */
@@ -607,10 +611,10 @@ declare module "gapi.client.servicecontrol" {
     /**
      * The values in this metric.
      */
-    metricValues?: servicecontrol$MetricValue[];
+    metricValues?: gapi$client$servicecontrol$MetricValue[];
   }
 
-  declare interface servicecontrol$Money {
+  declare interface gapi$client$servicecontrol$Money {
     /**
      * The 3-letter currency code defined in ISO 4217.
      */
@@ -633,7 +637,7 @@ declare module "gapi.client.servicecontrol" {
     units?: string;
   }
 
-  declare interface servicecontrol$Operation {
+  declare interface gapi$client$servicecontrol$Operation {
     /**
      * Identity of the consumer who is using the service.
      * This field should be filled in for the operations initiated by a
@@ -681,7 +685,7 @@ declare module "gapi.client.servicecontrol" {
     /**
      * Represents information to be logged.
      */
-    logEntries?: servicecontrol$LogEntry[];
+    logEntries?: gapi$client$servicecontrol$LogEntry[];
 
     /**
      * Represents information about this operation. Each MetricValueSet
@@ -695,7 +699,7 @@ declare module "gapi.client.servicecontrol" {
      * instances, the entire request is rejected with
      * an invalid argument error.
      */
-    metricValueSets?: servicecontrol$MetricValueSet[];
+    metricValueSets?: gapi$client$servicecontrol$MetricValueSet[];
 
     /**
      * Identity of the operation. This must be unique within the scope of the
@@ -751,7 +755,7 @@ declare module "gapi.client.servicecontrol" {
     userLabels?: Record<string, string>;
   }
 
-  declare interface servicecontrol$QuotaError {
+  declare interface gapi$client$servicecontrol$QuotaError {
     /**
      * Error code.
      */
@@ -770,7 +774,7 @@ declare module "gapi.client.servicecontrol" {
     subject?: string;
   }
 
-  declare interface servicecontrol$QuotaInfo {
+  declare interface gapi$client$servicecontrol$QuotaInfo {
     /**
      * Quota Metrics that have exceeded quota limits.
      * For QuotaGroup-based quota, this is QuotaGroup.name
@@ -808,10 +812,10 @@ declare module "gapi.client.servicecontrol" {
      * condition will be specified using the following boolean metric:
      * "serviceruntime.googleapis.com/quota/exceeded"
      */
-    quotaMetrics?: servicecontrol$MetricValueSet[];
+    quotaMetrics?: gapi$client$servicecontrol$MetricValueSet[];
   }
 
-  declare interface servicecontrol$QuotaOperation {
+  declare interface gapi$client$servicecontrol$QuotaOperation {
     /**
      * Identity of the consumer for whom this quota operation is being performed.
      *
@@ -862,7 +866,7 @@ declare module "gapi.client.servicecontrol" {
      * instances, the entire request is rejected with
      * an invalid argument error.
      */
-    quotaMetrics?: servicecontrol$MetricValueSet[];
+    quotaMetrics?: gapi$client$servicecontrol$MetricValueSet[];
 
     /**
      * Quota mode for this operation.
@@ -870,18 +874,18 @@ declare module "gapi.client.servicecontrol" {
     quotaMode?: string;
   }
 
-  declare interface servicecontrol$QuotaProperties {
+  declare interface gapi$client$servicecontrol$QuotaProperties {
     /**
      * Quota mode for this operation.
      */
     quotaMode?: string;
   }
 
-  declare interface servicecontrol$ReleaseQuotaRequest {
+  declare interface gapi$client$servicecontrol$ReleaseQuotaRequest {
     /**
      * Operation that describes the quota release.
      */
-    releaseOperation?: servicecontrol$QuotaOperation;
+    releaseOperation?: gapi$client$servicecontrol$QuotaOperation;
 
     /**
      * Specifies which version of service configuration should be used to process
@@ -891,7 +895,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$ReleaseQuotaResponse {
+  declare interface gapi$client$servicecontrol$ReleaseQuotaResponse {
     /**
      * The same operation_id value used in the ReleaseQuotaRequest. Used for
      * logging and diagnostics purposes.
@@ -914,12 +918,12 @@ declare module "gapi.client.servicecontrol" {
      * the metrics will be specified using the following gauge metric:
      * "serviceruntime.googleapis.com/quota/limit"
      */
-    quotaMetrics?: servicecontrol$MetricValueSet[];
+    quotaMetrics?: gapi$client$servicecontrol$MetricValueSet[];
 
     /**
      * Indicates the decision of the release.
      */
-    releaseErrors?: servicecontrol$QuotaError[];
+    releaseErrors?: gapi$client$servicecontrol$QuotaError[];
 
     /**
      * ID of the actual config used to process the request.
@@ -927,7 +931,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$ReportError {
+  declare interface gapi$client$servicecontrol$ReportError {
     /**
      * The Operation.operation_id value from the request.
      */
@@ -939,7 +943,7 @@ declare module "gapi.client.servicecontrol" {
     status?: servicecontrol$Status;
   }
 
-  declare interface servicecontrol$ReportInfo {
+  declare interface gapi$client$servicecontrol$ReportInfo {
     /**
      * The Operation.operation_id value from the request.
      */
@@ -948,10 +952,10 @@ declare module "gapi.client.servicecontrol" {
     /**
      * Quota usage info when processing the `Operation`.
      */
-    quotaInfo?: servicecontrol$QuotaInfo;
+    quotaInfo?: gapi$client$servicecontrol$QuotaInfo;
   }
 
-  declare interface servicecontrol$ReportRequest {
+  declare interface gapi$client$servicecontrol$ReportRequest {
     /**
      * Operations to be reported.
      *
@@ -964,7 +968,7 @@ declare module "gapi.client.servicecontrol" {
      * should be no larger than 1MB. See ReportResponse.report_errors for
      * partial failure behavior.
      */
-    operations?: servicecontrol$Operation[];
+    operations?: gapi$client$servicecontrol$Operation[];
 
     /**
      * Specifies which version of service config should be used to process the
@@ -976,7 +980,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$ReportResponse {
+  declare interface gapi$client$servicecontrol$ReportResponse {
     /**
      * Partial failures, one for each `Operation` in the request that failed
      * processing. There are three possible combinations of the RPC status:
@@ -993,7 +997,7 @@ declare module "gapi.client.servicecontrol" {
      * When this happens, it's impossible to know which of the
      * 'Operations' in the request succeeded or failed.
      */
-    reportErrors?: servicecontrol$ReportError[];
+    reportErrors?: gapi$client$servicecontrol$ReportError[];
 
     /**
      * Quota usage for each quota release `Operation` request.
@@ -1005,7 +1009,7 @@ declare module "gapi.client.servicecontrol" {
      *
      * If there is no quota release request, report_quota_info will be empty.
      */
-    reportInfos?: servicecontrol$ReportInfo[];
+    reportInfos?: gapi$client$servicecontrol$ReportInfo[];
 
     /**
      * The actual config id used to process the request.
@@ -1013,7 +1017,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$RequestMetadata {
+  declare interface gapi$client$servicecontrol$RequestMetadata {
     /**
      * The IP address of the caller.
      * For caller from internet, this will be public IPv4 or IPv6 address.
@@ -1054,7 +1058,7 @@ declare module "gapi.client.servicecontrol" {
     callerSuppliedUserAgent?: string;
   }
 
-  declare interface servicecontrol$ResourceInfo {
+  declare interface gapi$client$servicecontrol$ResourceInfo {
     /**
      * The identifier of the parent of this resource instance.
      * Must be in one of the following formats:
@@ -1070,11 +1074,11 @@ declare module "gapi.client.servicecontrol" {
     resourceName?: string;
   }
 
-  declare interface servicecontrol$StartReconciliationRequest {
+  declare interface gapi$client$servicecontrol$StartReconciliationRequest {
     /**
      * Operation that describes the quota reconciliation.
      */
-    reconciliationOperation?: servicecontrol$QuotaOperation;
+    reconciliationOperation?: gapi$client$servicecontrol$QuotaOperation;
 
     /**
      * Specifies which version of service configuration should be used to process
@@ -1084,7 +1088,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$StartReconciliationResponse {
+  declare interface gapi$client$servicecontrol$StartReconciliationResponse {
     /**
      * The same operation_id value used in the StartReconciliationRequest. Used
      * for logging and diagnostics purposes.
@@ -1103,12 +1107,12 @@ declare module "gapi.client.servicecontrol" {
      * using the following gauge metric:
      * "serviceruntime.googleapis.com/quota/limit"
      */
-    quotaMetrics?: servicecontrol$MetricValueSet[];
+    quotaMetrics?: gapi$client$servicecontrol$MetricValueSet[];
 
     /**
      * Indicates the decision of the reconciliation start.
      */
-    reconciliationErrors?: servicecontrol$QuotaError[];
+    reconciliationErrors?: gapi$client$servicecontrol$QuotaError[];
 
     /**
      * ID of the actual config used to process the request.
@@ -1116,7 +1120,7 @@ declare module "gapi.client.servicecontrol" {
     serviceConfigId?: string;
   }
 
-  declare interface servicecontrol$Status {
+  declare interface gapi$client$servicecontrol$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1136,7 +1140,7 @@ declare module "gapi.client.servicecontrol" {
     message?: string;
   }
 
-  declare interface servicecontrol$ServicesResource {
+  declare interface gapi$client$servicecontrol$ServicesResource {
     /**
      * Attempts to allocate quota for the specified consumer. It should be called
      * before the operation is executed.
@@ -1223,7 +1227,7 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$AllocateQuotaResponse>;
+    }): Request<gapi$client$servicecontrol$AllocateQuotaResponse>;
 
     /**
      * Checks an operation with Google Service Control to decide whether
@@ -1315,7 +1319,7 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$CheckResponse>;
+    }): Request<gapi$client$servicecontrol$CheckResponse>;
 
     /**
      * Signals the quota controller that service ends the ongoing usage
@@ -1398,7 +1402,7 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$EndReconciliationResponse>;
+    }): Request<gapi$client$servicecontrol$EndReconciliationResponse>;
 
     /**
      * Releases previously allocated quota done through AllocateQuota method.
@@ -1486,7 +1490,7 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$ReleaseQuotaResponse>;
+    }): Request<gapi$client$servicecontrol$ReleaseQuotaResponse>;
 
     /**
      * Reports operation results to Google Service Control, such as logs and
@@ -1579,7 +1583,7 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$ReportResponse>;
+    }): Request<gapi$client$servicecontrol$ReportResponse>;
 
     /**
      * Unlike rate quota, allocation quota does not get refilled periodically.
@@ -1681,6 +1685,6 @@ declare module "gapi.client.servicecontrol" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicecontrol$StartReconciliationResponse>;
+    }): Request<gapi$client$servicecontrol$StartReconciliationResponse>;
   }
 }
