@@ -1,26 +1,30 @@
 declare module "gapi.client.cloudtasks" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Cloud Tasks API v2beta2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudtasks",
     version: "v2beta2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudtasks",
     version: "v2beta2",
     callback: () => any
   ): void;
 
-  declare var client$projects: cloudtasks$cloudtasks$ProjectsResource;
+  declare var gapi$client$projects: cloudtasks$ProjectsResource;
 
-  declare interface cloudtasks$AcknowledgeTaskRequest {
+  declare interface gapi$client$cloudtasks$AcknowledgeTaskRequest {
     /**
      * Required.
      *
@@ -32,7 +36,7 @@ declare module "gapi.client.cloudtasks" {
     scheduleTime?: string;
   }
 
-  declare interface cloudtasks$AppEngineHttpRequest {
+  declare interface gapi$client$cloudtasks$AppEngineHttpRequest {
     /**
      * Task-level setting for App Engine routing.
      *
@@ -117,7 +121,7 @@ declare module "gapi.client.cloudtasks" {
     relativeUrl?: string;
   }
 
-  declare interface cloudtasks$AppEngineHttpTarget {
+  declare interface gapi$client$cloudtasks$AppEngineHttpTarget {
     /**
      * Overrides for the
      * task-level app_engine_routing.
@@ -129,14 +133,14 @@ declare module "gapi.client.cloudtasks" {
     appEngineRoutingOverride?: cloudtasks$AppEngineRouting;
   }
 
-  declare interface cloudtasks$AppEngineQueueConfig {
+  declare interface gapi$client$cloudtasks$AppEngineQueueConfig {
     /**
      * Deprecated. Use AppEngineTarget.app_engine_routing_override.
      */
     appEngineRoutingOverride?: cloudtasks$AppEngineRouting;
   }
 
-  declare interface cloudtasks$AppEngineRouting {
+  declare interface gapi$client$cloudtasks$AppEngineRouting {
     /**
      * Output only.
      *
@@ -248,11 +252,11 @@ declare module "gapi.client.cloudtasks" {
     version?: string;
   }
 
-  declare interface cloudtasks$AppEngineTaskTarget {
+  declare interface gapi$client$cloudtasks$AppEngineTaskTarget {
     /**
      * Deprecated. Use AppEngineHttpRequest.app_engine_routing.
      */
-    appEngineRouting?: cloudtasks$AppEngineRouting;
+    appEngineRouting?: gapi$client$cloudtasks$AppEngineRouting;
 
     /**
      * Deprecated. Use AppEngineHttpRequest.headers.
@@ -275,7 +279,7 @@ declare module "gapi.client.cloudtasks" {
     relativeUrl?: string;
   }
 
-  declare interface cloudtasks$AttemptStatus {
+  declare interface gapi$client$cloudtasks$AttemptStatus {
     /**
      * Output only.
      *
@@ -314,7 +318,7 @@ declare module "gapi.client.cloudtasks" {
     scheduleTime?: string;
   }
 
-  declare interface cloudtasks$Binding {
+  declare interface gapi$client$cloudtasks$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -349,7 +353,7 @@ declare module "gapi.client.cloudtasks" {
     role?: string;
   }
 
-  declare interface cloudtasks$CancelLeaseRequest {
+  declare interface gapi$client$cloudtasks$CancelLeaseRequest {
     /**
      * The response_view specifies which subset of the Task will be
      * returned.
@@ -377,7 +381,7 @@ declare module "gapi.client.cloudtasks" {
     scheduleTime?: string;
   }
 
-  declare interface cloudtasks$CreateTaskRequest {
+  declare interface gapi$client$cloudtasks$CreateTaskRequest {
     /**
      * The response_view specifies which subset of the Task will be
      * returned.
@@ -434,7 +438,7 @@ declare module "gapi.client.cloudtasks" {
     task?: cloudtasks$Task;
   }
 
-  declare interface cloudtasks$ListLocationsResponse {
+  declare interface gapi$client$cloudtasks$ListLocationsResponse {
     /**
      * A list of locations that matches the specified filter in the request.
      */
@@ -446,7 +450,7 @@ declare module "gapi.client.cloudtasks" {
     nextPageToken?: string;
   }
 
-  declare interface cloudtasks$ListQueuesResponse {
+  declare interface gapi$client$cloudtasks$ListQueuesResponse {
     /**
      * A token to retrieve next page of results.
      *
@@ -466,7 +470,7 @@ declare module "gapi.client.cloudtasks" {
     queues?: cloudtasks$Queue[];
   }
 
-  declare interface cloudtasks$ListTasksResponse {
+  declare interface gapi$client$cloudtasks$ListTasksResponse {
     /**
      * A token to retrieve next page of results.
      *
@@ -484,7 +488,7 @@ declare module "gapi.client.cloudtasks" {
     tasks?: cloudtasks$Task[];
   }
 
-  declare interface cloudtasks$Location {
+  declare interface gapi$client$cloudtasks$Location {
     /**
      * Cross-service attributes for the location. For example
      *
@@ -510,12 +514,12 @@ declare module "gapi.client.cloudtasks" {
     name?: string;
   }
 
-  declare interface cloudtasks$Policy {
+  declare interface gapi$client$cloudtasks$Policy {
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: cloudtasks$Binding[];
+    bindings?: gapi$client$cloudtasks$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -537,7 +541,7 @@ declare module "gapi.client.cloudtasks" {
     version?: number;
   }
 
-  declare interface cloudtasks$PullMessage {
+  declare interface gapi$client$cloudtasks$PullMessage {
     /**
      * A data payload consumed by the task worker to execute the task.
      */
@@ -554,7 +558,7 @@ declare module "gapi.client.cloudtasks" {
     tag?: string;
   }
 
-  declare interface cloudtasks$PullTaskTarget {
+  declare interface gapi$client$cloudtasks$PullTaskTarget {
     /**
      * Deprecated. Use PullMessage.payload.
      */
@@ -566,7 +570,7 @@ declare module "gapi.client.cloudtasks" {
     tag?: string;
   }
 
-  declare interface cloudtasks$PullTasksRequest {
+  declare interface gapi$client$cloudtasks$PullTasksRequest {
     /**
      * `filter` can be used to specify a subset of tasks to lease.
      *
@@ -637,25 +641,25 @@ declare module "gapi.client.cloudtasks" {
     responseView?: string;
   }
 
-  declare interface cloudtasks$PullTasksResponse {
+  declare interface gapi$client$cloudtasks$PullTasksResponse {
     /**
      * The leased tasks.
      */
     tasks?: cloudtasks$Task[];
   }
 
-  declare interface cloudtasks$Queue {
+  declare interface gapi$client$cloudtasks$Queue {
     /**
      * App Engine HTTP target.
      *
      * An App Engine queue is a queue that has an AppEngineHttpTarget.
      */
-    appEngineHttpTarget?: cloudtasks$AppEngineHttpTarget;
+    appEngineHttpTarget?: gapi$client$cloudtasks$AppEngineHttpTarget;
 
     /**
      * Deprecated. Use Queue.app_engine_http_target.
      */
-    appEngineQueueConfig?: cloudtasks$AppEngineQueueConfig;
+    appEngineQueueConfig?: gapi$client$cloudtasks$AppEngineQueueConfig;
 
     /**
      * The queue name.
@@ -745,7 +749,7 @@ declare module "gapi.client.cloudtasks" {
     retryConfig?: cloudtasks$RetryConfig;
   }
 
-  declare interface cloudtasks$RateLimits {
+  declare interface gapi$client$cloudtasks$RateLimits {
     /**
      * Output only.
      *
@@ -803,7 +807,7 @@ declare module "gapi.client.cloudtasks" {
     maxTasksDispatchedPerSecond?: number;
   }
 
-  declare interface cloudtasks$RenewLeaseRequest {
+  declare interface gapi$client$cloudtasks$RenewLeaseRequest {
     /**
      * Required.
      *
@@ -842,7 +846,7 @@ declare module "gapi.client.cloudtasks" {
     scheduleTime?: string;
   }
 
-  declare interface cloudtasks$RetryConfig {
+  declare interface gapi$client$cloudtasks$RetryConfig {
     /**
      * The maximum number of attempts for a task.
      *
@@ -928,7 +932,7 @@ declare module "gapi.client.cloudtasks" {
     unlimitedAttempts?: boolean;
   }
 
-  declare interface cloudtasks$RunTaskRequest {
+  declare interface gapi$client$cloudtasks$RunTaskRequest {
     /**
      * The response_view specifies which subset of the Task will be
      * returned.
@@ -946,17 +950,17 @@ declare module "gapi.client.cloudtasks" {
     responseView?: string;
   }
 
-  declare interface cloudtasks$SetIamPolicyRequest {
+  declare interface gapi$client$cloudtasks$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: cloudtasks$Policy;
+    policy?: gapi$client$cloudtasks$Policy;
   }
 
-  declare interface cloudtasks$Status {
+  declare interface gapi$client$cloudtasks$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -976,19 +980,19 @@ declare module "gapi.client.cloudtasks" {
     message?: string;
   }
 
-  declare interface cloudtasks$Task {
+  declare interface gapi$client$cloudtasks$Task {
     /**
      * App Engine HTTP request that is sent to the task's target. Can be set
      * only if Queue.app_engine_http_target is set.
      *
      * An App Engine task is a task that has AppEngineHttpRequest set.
      */
-    appEngineHttpRequest?: cloudtasks$AppEngineHttpRequest;
+    appEngineHttpRequest?: gapi$client$cloudtasks$AppEngineHttpRequest;
 
     /**
      * Deprecated. Use Task.app_engine_http_request.
      */
-    appEngineTaskTarget?: cloudtasks$AppEngineTaskTarget;
+    appEngineTaskTarget?: gapi$client$cloudtasks$AppEngineTaskTarget;
 
     /**
      * Output only.
@@ -1028,12 +1032,12 @@ declare module "gapi.client.cloudtasks" {
      *
      * A pull task is a task that has PullMessage set.
      */
-    pullMessage?: cloudtasks$PullMessage;
+    pullMessage?: gapi$client$cloudtasks$PullMessage;
 
     /**
      * Deprecated. Use Task.pull_message.
      */
-    pullTaskTarget?: cloudtasks$PullTaskTarget;
+    pullTaskTarget?: gapi$client$cloudtasks$PullTaskTarget;
 
     /**
      * The time when the task is scheduled to be attempted.
@@ -1065,7 +1069,7 @@ declare module "gapi.client.cloudtasks" {
     view?: string;
   }
 
-  declare interface cloudtasks$TaskStatus {
+  declare interface gapi$client$cloudtasks$TaskStatus {
     /**
      * Output only.
      *
@@ -1095,7 +1099,7 @@ declare module "gapi.client.cloudtasks" {
      * This field is not calculated for
      * [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
      */
-    firstAttemptStatus?: cloudtasks$AttemptStatus;
+    firstAttemptStatus?: gapi$client$cloudtasks$AttemptStatus;
 
     /**
      * Output only.
@@ -1105,10 +1109,10 @@ declare module "gapi.client.cloudtasks" {
      * This field is not calculated for
      * [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
      */
-    lastAttemptStatus?: cloudtasks$AttemptStatus;
+    lastAttemptStatus?: gapi$client$cloudtasks$AttemptStatus;
   }
 
-  declare interface cloudtasks$TestIamPermissionsRequest {
+  declare interface gapi$client$cloudtasks$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -1118,7 +1122,7 @@ declare module "gapi.client.cloudtasks" {
     permissions?: string[];
   }
 
-  declare interface cloudtasks$TestIamPermissionsResponse {
+  declare interface gapi$client$cloudtasks$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -1126,7 +1130,7 @@ declare module "gapi.client.cloudtasks" {
     permissions?: string[];
   }
 
-  declare interface cloudtasks$TasksResource {
+  declare interface gapi$client$cloudtasks$TasksResource {
     /**
      * Acknowledges a pull task.
      *
@@ -1296,7 +1300,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Task>;
+    }): Request<gapi$client$cloudtasks$Task>;
 
     /**
      * Creates a task and adds it to a queue.
@@ -1388,7 +1392,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Task>;
+    }): Request<gapi$client$cloudtasks$Task>;
 
     /**
      * Deletes a task.
@@ -1564,7 +1568,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Task>;
+    }): Request<gapi$client$cloudtasks$Task>;
 
     /**
      * Lists the tasks in a queue.
@@ -1694,7 +1698,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$ListTasksResponse>;
+    }): Request<gapi$client$cloudtasks$ListTasksResponse>;
 
     /**
      * Pulls tasks from a pull queue and acquires a lease on them for a
@@ -1788,7 +1792,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$PullTasksResponse>;
+    }): Request<gapi$client$cloudtasks$PullTasksResponse>;
 
     /**
      * Renew the current lease of a pull task.
@@ -1870,7 +1874,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Task>;
+    }): Request<gapi$client$cloudtasks$Task>;
 
     /**
      * Forces a task to run now.
@@ -1972,10 +1976,10 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Task>;
+    }): Request<gapi$client$cloudtasks$Task>;
   }
 
-  declare interface cloudtasks$QueuesResource {
+  declare interface gapi$client$cloudtasks$QueuesResource {
     /**
      * Creates a queue.
      *
@@ -2062,7 +2066,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Deletes a queue.
@@ -2229,7 +2233,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Gets the access control policy for a Queue.
@@ -2312,7 +2316,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Policy>;
+    }): Request<gapi$client$cloudtasks$Policy>;
 
     /**
      * Lists queues.
@@ -2429,7 +2433,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$ListQueuesResponse>;
+    }): Request<gapi$client$cloudtasks$ListQueuesResponse>;
 
     /**
      * Updates a queue.
@@ -2534,7 +2538,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Pauses the queue.
@@ -2625,7 +2629,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Purges a queue by deleting all of its tasks.
@@ -2708,7 +2712,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Resume a queue.
@@ -2802,7 +2806,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Queue>;
+    }): Request<gapi$client$cloudtasks$Queue>;
 
     /**
      * Sets the access control policy for a Queue. Replaces any existing
@@ -2884,7 +2888,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Policy>;
+    }): Request<gapi$client$cloudtasks$Policy>;
 
     /**
      * Returns permissions that a caller has on a Queue.
@@ -2966,11 +2970,11 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$TestIamPermissionsResponse>;
-    tasks: cloudtasks$TasksResource;
+    }): Request<gapi$client$cloudtasks$TestIamPermissionsResponse>;
+    tasks: gapi$client$cloudtasks$TasksResource;
   }
 
-  declare interface cloudtasks$LocationsResource {
+  declare interface gapi$client$cloudtasks$LocationsResource {
     /**
      * Get information about a location.
      */
@@ -3044,7 +3048,7 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$Location>;
+    }): Request<gapi$client$cloudtasks$Location>;
 
     /**
      * Lists information about the supported locations for this service.
@@ -3134,11 +3138,11 @@ declare module "gapi.client.cloudtasks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtasks$ListLocationsResponse>;
-    queues: cloudtasks$QueuesResource;
+    }): Request<gapi$client$cloudtasks$ListLocationsResponse>;
+    queues: gapi$client$cloudtasks$QueuesResource;
   }
 
-  declare interface cloudtasks$ProjectsResource {
-    locations: cloudtasks$LocationsResource;
+  declare interface gapi$client$cloudtasks$ProjectsResource {
+    locations: gapi$client$cloudtasks$LocationsResource;
   }
 }
