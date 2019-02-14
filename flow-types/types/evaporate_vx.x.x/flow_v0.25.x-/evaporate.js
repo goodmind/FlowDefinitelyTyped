@@ -1,12 +1,12 @@
 declare module "evaporate" {
-  declare module.exports: typeof Evaporate;
+  declare export default typeof Evaporate;
 
   declare class Evaporate {
-    constructor(config: Evaporate$Evaporate$CreateConfig): this;
+    constructor(config: Evaporate$CreateConfig): this;
     supported: boolean;
     add(
-      config: Evaporate$Evaporate$AddConfig,
-      options?: Evaporate$Evaporate$AddOverrideOptions
+      config: Evaporate$AddConfig,
+      options?: Evaporate$AddOverrideOptions
     ): Promise<string>;
     pause(file_key?: string, options?: { [key: string]: any }): Promise<void[]>;
     resume(file_key?: string): Promise<void[]>;
