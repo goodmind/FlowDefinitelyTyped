@@ -1,9 +1,9 @@
 declare module "dinero.js" {
-  declare module.exports: typeof DineroFactory;
+  declare export default typeof DineroFactory;
 
   declare function DineroFactory(
-    options?: DineroFactory$Dinero.DineroFactory$Options
-  ): DineroFactory$DineroFactory$Dinero;
+    options?: Dinero.Options
+  ): DineroFactory$Dinero;
 
   declare var npm$namespace$DineroFactory: {
     normalizePrecision: typeof DineroFactory$normalizePrecision,
