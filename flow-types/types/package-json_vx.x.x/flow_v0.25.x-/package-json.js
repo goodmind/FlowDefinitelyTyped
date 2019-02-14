@@ -1,5 +1,5 @@
 declare module "package-json" {
-  declare module.exports: typeof packageJson;
+  declare export default typeof packageJson;
 
   /**
    * Get metadata of a package from the npm registry.
@@ -7,8 +7,8 @@ declare module "package-json" {
    */
   declare function packageJson(
     name: string,
-    options?: packageJson$packageJson$Options
-  ): Promise<packageJson$packageJson$PackageJson>;
+    options?: packageJson$Options
+  ): Promise<packageJson$PackageJson>;
 
   declare interface packageJson$Options {
     /**
