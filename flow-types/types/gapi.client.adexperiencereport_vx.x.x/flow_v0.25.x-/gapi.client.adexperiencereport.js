@@ -1,29 +1,33 @@
 declare module "gapi.client.adexperiencereport" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    sites: typeof client$sites,
-    violatingSites: typeof client$violatingSites
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    sites: typeof gapi$client$sites,
+    violatingSites: typeof gapi$client$violatingSites
   };
 
   /**
    * Load Google Ad Experience Report API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexperiencereport",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexperiencereport",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$sites: adexperiencereport$adexperiencereport$SitesResource;
+  declare var gapi$client$sites: adexperiencereport$SitesResource;
 
-  declare var client$violatingSites: adexperiencereport$adexperiencereport$ViolatingSitesResource;
+  declare var gapi$client$violatingSites: adexperiencereport$ViolatingSitesResource;
 
-  declare interface adexperiencereport$PlatformSummary {
+  declare interface gapi$client$adexperiencereport$PlatformSummary {
     /**
      * The status of the site reviewed for the Better Ads Standards.
      */
@@ -60,16 +64,16 @@ declare module "gapi.client.adexperiencereport" {
     underReview?: boolean;
   }
 
-  declare interface adexperiencereport$SiteSummaryResponse {
+  declare interface gapi$client$adexperiencereport$SiteSummaryResponse {
     /**
      * Summary for the desktop review of the site.
      */
-    desktopSummary?: adexperiencereport$PlatformSummary;
+    desktopSummary?: gapi$client$adexperiencereport$PlatformSummary;
 
     /**
      * Summary for the mobile review of the site.
      */
-    mobileSummary?: adexperiencereport$PlatformSummary;
+    mobileSummary?: gapi$client$adexperiencereport$PlatformSummary;
 
     /**
      * The name of the site reviewed.
@@ -77,14 +81,14 @@ declare module "gapi.client.adexperiencereport" {
     reviewedSite?: string;
   }
 
-  declare interface adexperiencereport$ViolatingSitesResponse {
+  declare interface gapi$client$adexperiencereport$ViolatingSitesResponse {
     /**
      * A list of summaries of violating sites.
      */
-    client$violatingSites?: adexperiencereport$SiteSummaryResponse[];
+    violatingSites?: gapi$client$adexperiencereport$SiteSummaryResponse[];
   }
 
-  declare interface adexperiencereport$SitesResource {
+  declare interface gapi$client$adexperiencereport$SitesResource {
     /**
      * Gets a summary of the ad experience rating of a site.
      */
@@ -164,10 +168,10 @@ declare module "gapi.client.adexperiencereport" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexperiencereport$SiteSummaryResponse>;
+    }): Request<gapi$client$adexperiencereport$SiteSummaryResponse>;
   }
 
-  declare interface adexperiencereport$ViolatingSitesResource {
+  declare interface gapi$client$adexperiencereport$ViolatingSitesResource {
     /**
      * Lists sites with Ad Experience Report statuses of "Failing" or "Warning".
      */
@@ -236,6 +240,6 @@ declare module "gapi.client.adexperiencereport" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexperiencereport$ViolatingSitesResponse>;
+    }): Request<gapi$client$adexperiencereport$ViolatingSitesResponse>;
   }
 }
