@@ -1,7 +1,5 @@
 declare module "integer" {
-  declare function Integer(
-    val: Integer$Integer$IntLike
-  ): Integer$Integer$IntClass;
+  declare function Integer(val: Integer$IntLike): Integer$IntClass;
 
   declare var npm$namespace$Integer: {
     fromBits: typeof Integer$fromBits,
@@ -12,7 +10,9 @@ declare module "integer" {
     MIN_VALUE: typeof Integer$MIN_VALUE,
     ZERO: typeof Integer$ZERO,
     ONE: typeof Integer$ONE,
-    NEG_ONE: typeof Integer$NEG_ONE
+    NEG_ONE: typeof Integer$NEG_ONE,
+
+    IntClass: typeof Integer$IntClass
   };
   declare type Integer$IntLike = number | string | Integer$IntClass;
 
@@ -110,5 +110,5 @@ declare module "integer" {
     toString(radix?: number): string;
     valueOf(): number;
   }
-  declare module.exports: typeof Integer;
+  declare export default typeof Integer;
 }
