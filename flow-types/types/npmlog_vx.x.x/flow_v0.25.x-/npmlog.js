@@ -1,20 +1,12 @@
 declare module "npmlog" {
-  declare export class LogLevels {
-    constructor(...args: empty): mixed;
-    static +silly: Class<LogLevels__silly> & LogLevels__silly & "silly"; // "silly"
-    static +verbose: Class<LogLevels__verbose> & LogLevels__verbose & "verbose"; // "verbose"
-    static +info: Class<LogLevels__info> & LogLevels__info & "info"; // "info"
-    static +http: Class<LogLevels__http> & LogLevels__http & "http"; // "http"
-    static +warn: Class<LogLevels__warn> & LogLevels__warn & "warn"; // "warn"
-    static +error: Class<LogLevels__error> & LogLevels__error & "error"; // "error"
-  }
-
-  declare class LogLevels__silly mixins LogLevels {}
-  declare class LogLevels__verbose mixins LogLevels {}
-  declare class LogLevels__info mixins LogLevels {}
-  declare class LogLevels__http mixins LogLevels {}
-  declare class LogLevels__warn mixins LogLevels {}
-  declare class LogLevels__error mixins LogLevels {}
+  declare export var LogLevels: {|
+    +silly: "silly", // "silly"
+    +verbose: "verbose", // "verbose"
+    +info: "info", // "info"
+    +http: "http", // "http"
+    +warn: "warn", // "warn"
+    +error: "error" // "error"
+  |};
 
   declare export interface StyleObject {
     fg?: string;
