@@ -28,5 +28,5 @@ declare module "original" {
    */
   declare function origin$same(a: string, b: string): boolean;
 
-  declare module.exports: typeof origin;
+  declare export default typeof origin;
 }
