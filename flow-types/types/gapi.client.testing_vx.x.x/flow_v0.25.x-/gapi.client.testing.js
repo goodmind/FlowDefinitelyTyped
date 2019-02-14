@@ -1,36 +1,40 @@
 declare module "gapi.client.testing" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects,
-    testEnvironmentCatalog: typeof client$testEnvironmentCatalog
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects,
+    testEnvironmentCatalog: typeof gapi$client$testEnvironmentCatalog
   };
 
   /**
    * Load Google Cloud Testing API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "testing",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "testing",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: testing$testing$ProjectsResource;
+  declare var gapi$client$projects: testing$ProjectsResource;
 
-  declare var client$testEnvironmentCatalog: testing$testing$TestEnvironmentCatalogResource;
+  declare var gapi$client$testEnvironmentCatalog: testing$TestEnvironmentCatalogResource;
 
-  declare interface testing$Account {
+  declare interface gapi$client$testing$Account {
     /**
      * An automatic google login account
      */
     googleAuto?: any;
   }
 
-  declare interface testing$AndroidDevice {
+  declare interface gapi$client$testing$AndroidDevice {
     /**
      * The id of the Android device to be used.
      * Use the EnvironmentDiscoveryService to get supported options.
@@ -60,7 +64,7 @@ declare module "gapi.client.testing" {
     orientation?: string;
   }
 
-  declare interface testing$AndroidDeviceCatalog {
+  declare interface gapi$client$testing$AndroidDeviceCatalog {
     /**
      * The set of supported Android device models.
      * @OutputOnly
@@ -80,15 +84,15 @@ declare module "gapi.client.testing" {
     versions?: testing$AndroidVersion[];
   }
 
-  declare interface testing$AndroidDeviceList {
+  declare interface gapi$client$testing$AndroidDeviceList {
     /**
      * A list of Android devices
      * Required
      */
-    androidDevices?: testing$AndroidDevice[];
+    androidDevices?: gapi$client$testing$AndroidDevice[];
   }
 
-  declare interface testing$AndroidInstrumentationTest {
+  declare interface gapi$client$testing$AndroidInstrumentationTest {
     /**
      * The APK for the application under test.
      * Required
@@ -149,7 +153,7 @@ declare module "gapi.client.testing" {
     testTargets?: string[];
   }
 
-  declare interface testing$AndroidMatrix {
+  declare interface gapi$client$testing$AndroidMatrix {
     /**
      * The ids of the set of Android device to be used.
      * Use the EnvironmentDiscoveryService to get supported options.
@@ -179,7 +183,7 @@ declare module "gapi.client.testing" {
     orientations?: string[];
   }
 
-  declare interface testing$AndroidModel {
+  declare interface gapi$client$testing$AndroidModel {
     /**
      * The company that this device is branded with.
      * Example: "Google", "Samsung"
@@ -265,7 +269,7 @@ declare module "gapi.client.testing" {
     tags?: string[];
   }
 
-  declare interface testing$AndroidRoboTest {
+  declare interface gapi$client$testing$AndroidRoboTest {
     /**
      * The APK for the application under test.
      * Required
@@ -308,7 +312,7 @@ declare module "gapi.client.testing" {
     roboDirectives?: testing$RoboDirective[];
   }
 
-  declare interface testing$AndroidRuntimeConfiguration {
+  declare interface gapi$client$testing$AndroidRuntimeConfiguration {
     /**
      * The set of available locales.
      * @OutputOnly
@@ -322,7 +326,7 @@ declare module "gapi.client.testing" {
     orientations?: testing$Orientation[];
   }
 
-  declare interface testing$AndroidTestLoop {
+  declare interface gapi$client$testing$AndroidTestLoop {
     /**
      * The APK for the application under test.
      * Required
@@ -354,7 +358,7 @@ declare module "gapi.client.testing" {
     scenarios?: number[];
   }
 
-  declare interface testing$AndroidVersion {
+  declare interface gapi$client$testing$AndroidVersion {
     /**
      * The API level for this Android version.
      * Examples: 18, 19
@@ -402,7 +406,7 @@ declare module "gapi.client.testing" {
     versionString?: string;
   }
 
-  declare interface testing$CancelTestMatrixResponse {
+  declare interface gapi$client$testing$CancelTestMatrixResponse {
     /**
      * The current rolled-up state of the test matrix.
      * If this state is already final, then the cancelation request will
@@ -411,7 +415,7 @@ declare module "gapi.client.testing" {
     testState?: string;
   }
 
-  declare interface testing$ClientInfo {
+  declare interface gapi$client$testing$ClientInfo {
     /**
      * The list of detailed information about client.
      */
@@ -424,7 +428,7 @@ declare module "gapi.client.testing" {
     name?: string;
   }
 
-  declare interface testing$ClientInfoDetail {
+  declare interface gapi$client$testing$ClientInfoDetail {
     /**
      * The key of detailed client information.
      * Required
@@ -438,7 +442,7 @@ declare module "gapi.client.testing" {
     value?: string;
   }
 
-  declare interface testing$Date {
+  declare interface gapi$client$testing$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -457,14 +461,14 @@ declare module "gapi.client.testing" {
     year?: number;
   }
 
-  declare interface testing$DeviceFile {
+  declare interface gapi$client$testing$DeviceFile {
     /**
      * A reference to an opaque binary blob file
      */
     obbFile?: testing$ObbFile;
   }
 
-  declare interface testing$Distribution {
+  declare interface gapi$client$testing$Distribution {
     /**
      * The estimated fraction (0-1) of the total market with this configuration.
      * @OutputOnly
@@ -478,27 +482,27 @@ declare module "gapi.client.testing" {
     measurementTime?: string;
   }
 
-  declare interface testing$Environment {
+  declare interface gapi$client$testing$Environment {
     /**
      * An Android device which must be used with an Android test.
      */
-    androidDevice?: testing$AndroidDevice;
+    androidDevice?: gapi$client$testing$AndroidDevice;
   }
 
-  declare interface testing$EnvironmentMatrix {
+  declare interface gapi$client$testing$EnvironmentMatrix {
     /**
      * A list of Android devices; the test will be run only on the specified
      * devices.
      */
-    androidDeviceList?: testing$AndroidDeviceList;
+    androidDeviceList?: gapi$client$testing$AndroidDeviceList;
 
     /**
      * A matrix of Android devices.
      */
-    androidMatrix?: testing$AndroidMatrix;
+    androidMatrix?: gapi$client$testing$AndroidMatrix;
   }
 
-  declare interface testing$EnvironmentVariable {
+  declare interface gapi$client$testing$EnvironmentVariable {
     /**
      * Key for the environment variable
      */
@@ -510,7 +514,7 @@ declare module "gapi.client.testing" {
     value?: string;
   }
 
-  declare interface testing$FileReference {
+  declare interface gapi$client$testing$FileReference {
     /**
      * A path to a file in Google Cloud Storage.
      * Example: gs://build-app-1414623860166/app-debug-unaligned.apk
@@ -518,7 +522,7 @@ declare module "gapi.client.testing" {
     gcsPath?: string;
   }
 
-  declare interface testing$GoogleCloudStorage {
+  declare interface gapi$client$testing$GoogleCloudStorage {
     /**
      * The path to a directory in GCS that will
      * eventually contain the results for this test.
@@ -529,7 +533,7 @@ declare module "gapi.client.testing" {
     gcsPath?: string;
   }
 
-  declare interface testing$Locale {
+  declare interface gapi$client$testing$Locale {
     /**
      * The id for this locale.
      * Example: "en_US"
@@ -559,7 +563,7 @@ declare module "gapi.client.testing" {
     tags?: string[];
   }
 
-  declare interface testing$NetworkConfiguration {
+  declare interface gapi$client$testing$NetworkConfiguration {
     /**
      * The emulation rule applying to the download traffic
      */
@@ -577,16 +581,16 @@ declare module "gapi.client.testing" {
     upRule?: testing$TrafficRule;
   }
 
-  declare interface testing$NetworkConfigurationCatalog {
-    configurations?: testing$NetworkConfiguration[];
+  declare interface gapi$client$testing$NetworkConfigurationCatalog {
+    configurations?: gapi$client$testing$NetworkConfiguration[];
   }
 
-  declare interface testing$ObbFile {
+  declare interface gapi$client$testing$ObbFile {
     /**
      * Opaque Binary Blob (OBB) file(s) to install on the device
      * Required
      */
-    obb?: testing$FileReference;
+    obb?: gapi$client$testing$FileReference;
 
     /**
      * OBB file name which must conform to the format as specified by
@@ -600,7 +604,7 @@ declare module "gapi.client.testing" {
     obbFileName?: string;
   }
 
-  declare interface testing$Orientation {
+  declare interface gapi$client$testing$Orientation {
     /**
      * The id for this orientation.
      * Example: "portrait"
@@ -622,11 +626,11 @@ declare module "gapi.client.testing" {
     tags?: string[];
   }
 
-  declare interface testing$ResultStorage {
+  declare interface gapi$client$testing$ResultStorage {
     /**
      * Required.
      */
-    googleCloudStorage?: testing$GoogleCloudStorage;
+    googleCloudStorage?: gapi$client$testing$GoogleCloudStorage;
 
     /**
      * The tool results execution that results are written to.
@@ -643,7 +647,7 @@ declare module "gapi.client.testing" {
     toolResultsHistory?: testing$ToolResultsHistory;
   }
 
-  declare interface testing$RoboDirective {
+  declare interface gapi$client$testing$RoboDirective {
     /**
      * The type of action that Robo should perform on the specified element.
      * Required.
@@ -670,7 +674,7 @@ declare module "gapi.client.testing" {
     resourceName?: string;
   }
 
-  declare interface testing$TestDetails {
+  declare interface gapi$client$testing$TestDetails {
     /**
      * If the TestState is ERROR, then this string will contain human-readable
      * details about the error.
@@ -689,24 +693,24 @@ declare module "gapi.client.testing" {
     progressMessages?: string[];
   }
 
-  declare interface testing$TestEnvironmentCatalog {
+  declare interface gapi$client$testing$TestEnvironmentCatalog {
     /**
      * Android devices suitable for running Android Instrumentation Tests.
      */
-    androidDeviceCatalog?: testing$AndroidDeviceCatalog;
+    androidDeviceCatalog?: gapi$client$testing$AndroidDeviceCatalog;
 
     /**
      * Supported network configurations
      */
-    networkConfigurationCatalog?: testing$NetworkConfigurationCatalog;
+    networkConfigurationCatalog?: gapi$client$testing$NetworkConfigurationCatalog;
   }
 
-  declare interface testing$TestExecution {
+  declare interface gapi$client$testing$TestExecution {
     /**
      * How the host machine(s) are configured.
      * @OutputOnly
      */
-    environment?: testing$Environment;
+    environment?: gapi$client$testing$Environment;
 
     /**
      * Unique id set by the backend.
@@ -736,7 +740,7 @@ declare module "gapi.client.testing" {
      * Additional details about the running test.
      * @OutputOnly
      */
-    testDetails?: testing$TestDetails;
+    testDetails?: gapi$client$testing$TestDetails;
 
     /**
      * How to run the test.
@@ -757,18 +761,18 @@ declare module "gapi.client.testing" {
     toolResultsStep?: testing$ToolResultsStep;
   }
 
-  declare interface testing$TestMatrix {
+  declare interface gapi$client$testing$TestMatrix {
     /**
      * Information about the client which invoked the test.
      * Optional
      */
-    clientInfo?: testing$ClientInfo;
+    clientInfo?: gapi$client$testing$ClientInfo;
 
     /**
      * How the host machine(s) are configured.
      * Required
      */
-    environmentMatrix?: testing$EnvironmentMatrix;
+    environmentMatrix?: gapi$client$testing$EnvironmentMatrix;
 
     /**
      * Describes why the matrix is considered invalid.
@@ -787,7 +791,7 @@ declare module "gapi.client.testing" {
      * Where the results for the matrix are written.
      * Required
      */
-    resultStorage?: testing$ResultStorage;
+    resultStorage?: gapi$client$testing$ResultStorage;
 
     /**
      * Indicates the current progress of the test matrix (e.g., FINISHED)
@@ -799,7 +803,7 @@ declare module "gapi.client.testing" {
      * The list of test executions that the service creates for this matrix.
      * @OutputOnly
      */
-    testExecutions?: testing$TestExecution[];
+    testExecutions?: gapi$client$testing$TestExecution[];
 
     /**
      * Unique id set by the service.
@@ -820,12 +824,12 @@ declare module "gapi.client.testing" {
     timestamp?: string;
   }
 
-  declare interface testing$TestSetup {
+  declare interface gapi$client$testing$TestSetup {
     /**
      * The device will be logged in on this account for the duration of the test.
      * Optional
      */
-    account?: testing$Account;
+    account?: gapi$client$testing$Account;
 
     /**
      * The directories on the device to upload to GCS at the end of the test;
@@ -839,12 +843,12 @@ declare module "gapi.client.testing" {
      * Environment variables to set for the test (only applicable for
      * instrumentation tests).
      */
-    environmentVariables?: testing$EnvironmentVariable[];
+    environmentVariables?: gapi$client$testing$EnvironmentVariable[];
 
     /**
      * Optional
      */
-    filesToPush?: testing$DeviceFile[];
+    filesToPush?: gapi$client$testing$DeviceFile[];
 
     /**
      * The network traffic profile used for running the test.
@@ -853,21 +857,21 @@ declare module "gapi.client.testing" {
     networkProfile?: string;
   }
 
-  declare interface testing$TestSpecification {
+  declare interface gapi$client$testing$TestSpecification {
     /**
      * An Android instrumentation test.
      */
-    androidInstrumentationTest?: testing$AndroidInstrumentationTest;
+    androidInstrumentationTest?: gapi$client$testing$AndroidInstrumentationTest;
 
     /**
      * An Android robo test.
      */
-    androidRoboTest?: testing$AndroidRoboTest;
+    androidRoboTest?: gapi$client$testing$AndroidRoboTest;
 
     /**
      * An Android Application with a Test Loop
      */
-    androidTestLoop?: testing$AndroidTestLoop;
+    androidTestLoop?: gapi$client$testing$AndroidTestLoop;
 
     /**
      * Enables automatic Google account login.
@@ -896,7 +900,7 @@ declare module "gapi.client.testing" {
      * Test setup requirements e.g. files to install, bootstrap scripts
      * Optional
      */
-    testSetup?: testing$TestSetup;
+    testSetup?: gapi$client$testing$TestSetup;
 
     /**
      * Max time a test execution is allowed to run before it is
@@ -906,7 +910,7 @@ declare module "gapi.client.testing" {
     testTimeout?: string;
   }
 
-  declare interface testing$ToolResultsExecution {
+  declare interface gapi$client$testing$ToolResultsExecution {
     /**
      * A tool results execution ID.
      * @OutputOnly
@@ -926,7 +930,7 @@ declare module "gapi.client.testing" {
     projectId?: string;
   }
 
-  declare interface testing$ToolResultsHistory {
+  declare interface gapi$client$testing$ToolResultsHistory {
     /**
      * A tool results history ID.
      * Required
@@ -940,7 +944,7 @@ declare module "gapi.client.testing" {
     projectId?: string;
   }
 
-  declare interface testing$ToolResultsStep {
+  declare interface gapi$client$testing$ToolResultsStep {
     /**
      * A tool results execution ID.
      * @OutputOnly
@@ -966,7 +970,7 @@ declare module "gapi.client.testing" {
     stepId?: string;
   }
 
-  declare interface testing$TrafficRule {
+  declare interface gapi$client$testing$TrafficRule {
     /**
      * Bandwidth in kbits/second
      */
@@ -993,7 +997,7 @@ declare module "gapi.client.testing" {
     packetLossRatio?: number;
   }
 
-  declare interface testing$TestMatricesResource {
+  declare interface gapi$client$testing$TestMatricesResource {
     /**
      * Cancels unfinished test executions in a test matrix.
      * This call returns immediately and cancellation proceeds asychronously.
@@ -1080,7 +1084,7 @@ declare module "gapi.client.testing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<testing$CancelTestMatrixResponse>;
+    }): Request<gapi$client$testing$CancelTestMatrixResponse>;
 
     /**
      * Request to run a matrix of tests according to the given specifications.
@@ -1173,7 +1177,7 @@ declare module "gapi.client.testing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<testing$TestMatrix>;
+    }): Request<gapi$client$testing$TestMatrix>;
 
     /**
      * Check the status of a test matrix.
@@ -1259,14 +1263,14 @@ declare module "gapi.client.testing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<testing$TestMatrix>;
+    }): Request<gapi$client$testing$TestMatrix>;
   }
 
-  declare interface testing$ProjectsResource {
-    testMatrices: testing$TestMatricesResource;
+  declare interface gapi$client$testing$ProjectsResource {
+    testMatrices: gapi$client$testing$TestMatricesResource;
   }
 
-  declare interface testing$TestEnvironmentCatalogResource {
+  declare interface gapi$client$testing$TestEnvironmentCatalogResource {
     /**
      * Get the catalog of supported test environments.
      *
@@ -1353,6 +1357,6 @@ declare module "gapi.client.testing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<testing$TestEnvironmentCatalog>;
+    }): Request<gapi$client$testing$TestEnvironmentCatalog>;
   }
 }
