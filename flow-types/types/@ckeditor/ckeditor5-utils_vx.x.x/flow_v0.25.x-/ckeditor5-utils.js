@@ -1,12 +1,12 @@
 declare module "@ckeditor/ckeditor5-utils" {
   declare export interface DeleteChange {
     index: number;
-    notification$type: "delete";
+    type: "delete";
     howMany: number;
   }
   declare export interface InsertChange {
     index: number;
-    notification$type: "insert";
+    type: "insert";
     values: string[];
   }
   declare export interface BindChain {
@@ -20,24 +20,24 @@ declare module "@ckeditor/ckeditor5-utils" {
     ): void;
   }
   declare export interface CollectionBindTo<T, K> {
-    as: (Access$Class: {
+    as: (Class: {
       new(item: T): K
     }) => void;
-    core$using: (callbackOrProperty: $Keys<T> | ((item: T) => K)) => void;
+    using: (callbackOrProperty: $Keys<T> | ((item: T) => K)) => void;
   }
   declare export function createElement(
-    doc: ArangoDB$Document,
-    skin$name: string,
+    doc: Document,
+    name: string,
     attributes?: { [key: string]: any } | null,
-    children?: BPMNModdle$Node | string | Array<BPMNModdle$Node | string>
-  ): JSX$Element;
+    children?: Node | string | Array<Node | string>
+  ): Element;
 
   declare export function getAncestors(
-    htmlParser$node: BPMNModdle$Node
-  ): Array<BPMNModdle$Node | DocumentFragment>;
+    node: Node
+  ): Array<Node | DocumentFragment>;
 
   declare export function getBorderWidths(
-    htmlParser$element: HTMLElement
+    element: HTMLElement
   ): {
     top: number,
     right: number,
@@ -46,22 +46,22 @@ declare module "@ckeditor/ckeditor5-utils" {
   };
 
   declare export function getCommonAncestor(
-    nodeA: BPMNModdle$Node,
-    nodeB: BPMNModdle$Node
-  ): BPMNModdle$Node | DocumentFragment | ArangoDB$Document | null;
+    nodeA: Node,
+    nodeB: Node
+  ): Node | DocumentFragment | Document | null;
 
   declare export function getDataFromElement(el: HTMLElement): string;
 
   declare export function getPositionedAncestor(
-    htmlParser$element?: HTMLElement
+    element?: HTMLElement
   ): HTMLElement | null;
 
-  declare export function indexOf(htmlParser$node: BPMNModdle$Node): number;
+  declare export function indexOf(node: Node): number;
 
   declare export function insertAt(
-    parentElement: JSX$Element,
+    parentElement: Element,
     index: number,
-    nodeToInsert: BPMNModdle$Node
+    nodeToInsert: Node
   ): void;
 
   declare export function isNode(obj: any): boolean;
@@ -73,7 +73,7 @@ declare module "@ckeditor/ckeditor5-utils" {
   declare export function isWindow(obj: any): boolean;
 
   declare export interface Options {
-    htmlParser$element: HTMLElement;
+    element: HTMLElement;
     fitInViewport?: boolean;
     limiter?:
       | HTMLElement
@@ -81,7 +81,7 @@ declare module "@ckeditor/ckeditor5-utils" {
       | ClientRect
       | Rect
       | (() => HTMLElement | Range | ClientRect | Rect);
-    positions: Array<(targetRect: Rect, elementRect: Rect) => __esri$Position>;
+    positions: Array<(targetRect: Rect, elementRect: Rect) => Position>;
     target:
       | HTMLElement
       | Range
@@ -91,12 +91,10 @@ declare module "@ckeditor/ckeditor5-utils" {
   }
   declare export interface Position {
     left: number;
-    skin$name: string;
+    name: string;
     top: number;
   }
-  declare export function getOptimalPosition(
-    notification$options: Boom$Options
-  ): __esri$Position;
+  declare export function getOptimalPosition(options: Options): Position;
 
   declare export class Rect {
     bottom: number;
@@ -121,18 +119,18 @@ declare module "@ckeditor/ckeditor5-utils" {
     getIntersection(anotherRect: Rect): Rect;
     getIntersectionArea(anotherRect: Rect): number;
     getVisible(): Rect | null;
-    isEqual(balloonPanel$rect: Rect): boolean;
+    isEqual(rect: Rect): boolean;
     moveBy(x: number, y: number): Rect;
     moveTo(x: number, y: number): Rect;
-    static getDomRangeRects(dom$range: Range): Rect[];
+    static getDomRangeRects(range: Range): Rect[];
   }
-  declare export function remove(htmlParser$node: BPMNModdle$Node): void;
+  declare export function remove(node: Node): void;
 
   declare export function scrollAncestorsToShowTarget(
     target: HTMLElement | Range
   ): void;
 
-  declare export function scrollViewportToShowTarget(notification$options: {
+  declare export function scrollViewportToShowTarget(options: {
     target: HTMLElement | Range,
     viewportOffset?: number
   }): void;
@@ -142,15 +140,15 @@ declare module "@ckeditor/ckeditor5-utils" {
   declare export function toUnit(unit: string): (value: number) => string;
 
   declare export var DOCUMENTATION_URL: string;
-  declare export class CKEditorError mixins b3$Error {
+  declare export class CKEditorError mixins Error {
     data: { [key: string]: any } | void;
-    skin$name: string;
+    name: string;
     constructor(message: string, data?: { [key: string]: any }): this;
-    static isCKEditorError(log$error: b3$Error): boolean;
+    static isCKEditorError(error: Error): boolean;
   }
   declare export function attachLinkToDocumentation(message: string): string;
 
-  declare export function as(Access$Class: Function): void;
+  declare export function as(Class: Function): void;
 
   declare export function using(callbackOrProperty: Function | string): void;
 
@@ -158,13 +156,11 @@ declare module "@ckeditor/ckeditor5-utils" {
     first: T | null;
     last: T | null;
     length: number;
-    constructor(notification$options?: {
+    constructor(options?: {
       idProperty?: $Keys<T>
     }): this;
     add(item: T, index?: number): this;
-    bindTo<S>(
-      externalCollection: CanvasGauges$Collection<S>
-    ): CollectionBindTo<S, T>;
+    bindTo<S>(externalCollection: Collection<S>): CollectionBindTo<S, T>;
     clear(): void;
     filter(callbackfn: (item: T, index: number) => boolean, thisArg?: any): T[];
     find(
@@ -175,38 +171,34 @@ declare module "@ckeditor/ckeditor5-utils" {
     getIndex(idOrItem: string | T): number;
     map<U>(callbackfn: (item: T, index: number) => U, thisArg?: any): U[];
     remove(subject: T | number | string): T;
-    undefined(): Iterator<T>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<T>;
     delegate(...events: string[]): EmitterMixinDelegateChain;
     fire(eventOrInfo: string | EventInfo<Emitter>, ...args: any[]): any;
     listenTo(
       emitter: Emitter,
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority?: PriorityString | number
       }
     ): void;
-    off(CKEDITOR$event: string, braintree$callback?: Function): void;
+    off(event: string, callback?: Function): void;
     on(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
     once(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
-    stopDelegating(CKEDITOR$event?: string, emitter?: Emitter): void;
-    stopListening(
-      emitter?: Emitter,
-      CKEDITOR$event?: string,
-      braintree$callback?: Function
-    ): void;
+    stopDelegating(event?: string, emitter?: Emitter): void;
+    stopListening(emitter?: Emitter, event?: string, callback?: Function): void;
   }
   declare export type ArrayRelation = "extension" | "same" | "prefix";
   declare export function compareArrays<T>(
@@ -219,24 +211,24 @@ declare module "@ckeditor/ckeditor5-utils" {
       configurations?: { [key: string]: any },
       defaultConfigurations?: { [key: string]: any }
     ): this;
-    define(skin$name: { [key: string]: any }): void;
-    define(skin$name: string, value: any): void;
-    get(skin$name: string): any;
-    set(skin$name: string, value: any): void;
+    define(name: { [key: string]: any }): void;
+    define(name: string, value: any): void;
+    get(name: string): any;
+    set(name: string, value: any): void;
   }
-  declare export function count(dom$iterator: Iterable<any>): number;
+  declare export function count(iterator: Iterable<any>): number;
 
   declare export type Change = "equal" | "insert" | "delete";
   declare export function diff(
     a: string,
     b: string,
-    BigNum$cmp?: (a: string, b: string) => boolean
+    cmp?: (a: string, b: string) => boolean
   ): Change[];
 
   declare export function diff(
     a: $ReadOnlyArray<string>,
     b: $ReadOnlyArray<string>,
-    BigNum$cmp?: (a: string, b: string) => boolean
+    cmp?: (a: string, b: string) => boolean
   ): Change[];
 
   declare export function diffToChanges(
@@ -245,50 +237,43 @@ declare module "@ckeditor/ckeditor5-utils" {
   ): Array<DeleteChange | InsertChange>;
 
   declare export class ElementReplacer {
-    replace(htmlParser$element: HTMLElement, newElement?: HTMLElement): void;
+    replace(element: HTMLElement, newElement?: HTMLElement): void;
     restore(): void;
   }
   declare export var EmitterMixin: Emitter;
   declare export interface Emitter {
     delegate(...events: string[]): EmitterMixinDelegateChain;
-    CKEDITOR$fire(
-      eventOrInfo: string | EventInfo<Emitter>,
-      ...args: any[]
-    ): any;
+    fire(eventOrInfo: string | EventInfo<Emitter>, ...args: any[]): any;
     listenTo(
       emitter: Emitter,
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority?: PriorityString | number
       }
     ): void;
-    off(CKEDITOR$event: string, braintree$callback?: Function): void;
-    CKEDITOR$on(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+    off(event: string, callback?: Function): void;
+    on(
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
-    CKEDITOR$once(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+    once(
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
-    stopDelegating(CKEDITOR$event?: string, emitter?: Emitter): void;
-    stopListening(
-      emitter?: Emitter,
-      CKEDITOR$event?: string,
-      braintree$callback?: Function
-    ): void;
+    stopDelegating(event?: string, emitter?: Emitter): void;
+    stopListening(emitter?: Emitter, event?: string, callback?: Function): void;
   }
   declare export interface EmitterMixinDelegateChain {
     to(
       emitter: Emitter,
-      nameOrFunction?: string | ((skin$name: string) => string)
+      nameOrFunction?: string | ((name: string) => string)
     ): void;
   }
 
@@ -300,11 +285,11 @@ declare module "@ckeditor/ckeditor5-utils" {
 
   declare var env$isMac: boolean;
   declare export class EventInfo<T> {
-    skin$name: string;
-    skin$path: { [key: string]: any }[];
+    name: string;
+    path: { [key: string]: any }[];
     return: any;
     source: T;
-    constructor(source: T, skin$name: string): this;
+    constructor(source: T, name: string): this;
     off: {
       (): void,
       called: boolean
@@ -324,44 +309,40 @@ declare module "@ckeditor/ckeditor5-utils" {
   declare export class FocusTracker mixins Observable {
     focusedElement: HTMLElement;
     isFocused: boolean;
-    add(htmlParser$element: HTMLElement): void;
-    remove(htmlParser$element: HTMLElement): void;
+    add(element: HTMLElement): void;
+    remove(element: HTMLElement): void;
     bind(...bindProperties: string[]): BindChain;
     decorate(methodName: string): void;
-    set(skin$name: { [key: string]: any }): void;
-    set(skin$name: string, value: any): void;
+    set(name: { [key: string]: any }): void;
+    set(name: string, value: any): void;
     unbind(...unbindProperties: string[]): void;
     delegate(...events: string[]): EmitterMixinDelegateChain;
     fire(eventOrInfo: string | EventInfo<Emitter>, ...args: any[]): any;
     listenTo(
       emitter: Emitter,
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority?: PriorityString | number
       }
     ): void;
-    off(CKEDITOR$event: string, braintree$callback?: Function): void;
+    off(event: string, callback?: Function): void;
     on(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
     once(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void;
-    stopDelegating(CKEDITOR$event?: string, emitter?: Emitter): void;
-    stopListening(
-      emitter?: Emitter,
-      CKEDITOR$event?: string,
-      braintree$callback?: Function
-    ): void;
+    stopDelegating(event?: string, emitter?: Emitter): void;
+    stopListening(emitter?: Emitter, event?: string, callback?: Function): void;
   }
   declare export function isIterable(value: any): boolean;
 
@@ -450,11 +431,8 @@ declare module "@ckeditor/ckeditor5-utils" {
     press(keyEvtData: KeystrokeInfo): boolean;
     set(
       keystroke: string | Array<string | number>,
-      braintree$callback: (
-        keyEvtData: KeystrokeInfo,
-        cancel: () => void
-      ) => void,
-      notification$options?: {
+      callback: (keyEvtData: KeystrokeInfo, cancel: () => void) => void,
+      options?: {
         priority?: PriorityString | number
       }
     ): void;
@@ -480,8 +458,8 @@ declare module "@ckeditor/ckeditor5-utils" {
   ): void;
 
   declare export function mapsEqual<K, V>(
-    mapsA: __esri$Map<K, V>,
-    mapsB: __esri$Map<K, V>
+    mapsA: Map<K, V>,
+    mapsB: Map<K, V>
   ): boolean;
 
   declare export function mix<T>(
@@ -495,49 +473,42 @@ declare module "@ckeditor/ckeditor5-utils" {
 
   declare export function objectToMap<T: { [key: string]: any }>(
     obj: T
-  ): __esri$Map<$Keys<T>, $ElementType<T, $Keys<T>>>;
+  ): Map<$Keys<T>, $ElementType<T, $Keys<T>>>;
 
   declare export var ObservableMixin: Observable;
   declare export type Observable = {
     bind(...bindProperties: string[]): BindChain,
     decorate(methodName: string): void,
-    set(skin$name: { [key: string]: any }): void,
-    set(skin$name: string, value: any): void,
+    set(name: { [key: string]: any }): void,
+    set(name: string, value: any): void,
     unbind(...unbindProperties: string[]): void,
     delegate(...events: string[]): EmitterMixinDelegateChain,
-    CKEDITOR$fire(
-      eventOrInfo: string | EventInfo<Emitter>,
-      ...args: any[]
-    ): any,
+    fire(eventOrInfo: string | EventInfo<Emitter>, ...args: any[]): any,
     listenTo(
       emitter: Emitter,
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+      event: string,
+      callback: Function,
+      options?: {
         priority?: PriorityString | number
       }
     ): void,
-    off(CKEDITOR$event: string, braintree$callback?: Function): void,
-    CKEDITOR$on(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+    off(event: string, callback?: Function): void,
+    on(
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void,
-    CKEDITOR$once(
-      CKEDITOR$event: string,
-      braintree$callback: Function,
-      notification$options?: {
+    once(
+      event: string,
+      callback: Function,
+      options?: {
         priority: PriorityString | number
       }
     ): void,
-    stopDelegating(CKEDITOR$event?: string, emitter?: Emitter): void,
-    stopListening(
-      emitter?: Emitter,
-      CKEDITOR$event?: string,
-      braintree$callback?: Function
-    ): void
+    stopDelegating(event?: string, emitter?: Emitter): void,
+    stopListening(emitter?: Emitter, event?: string, callback?: Function): void
   } & Emitter;
 
   declare var npm$namespace$priorities: {
@@ -556,15 +527,15 @@ declare module "@ckeditor/ckeditor5-utils" {
     called: boolean
   };
 
-  declare export function toMap<K, V>(data: __esri$Map<K, V>): __esri$Map<K, V>;
+  declare export function toMap<K, V>(data: Map<K, V>): Map<K, V>;
 
   declare export function toMap<K: string, V>(
     data: $ReadOnlyArray<[K, V]>
-  ): __esri$Map<K, V>;
+  ): Map<K, V>;
 
   declare export function toMap<T: { [key: string]: any }>(
     data: T
-  ): __esri$Map<$Keys<T>, $ElementType<T, $Keys<T>>>;
+  ): Map<$Keys<T>, $ElementType<T, $Keys<T>>>;
 
   declare export function add(
     language: string,
