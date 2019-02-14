@@ -38,7 +38,7 @@ declare module "urlencode" {
    */
   declare function urlencode$parse(
     queryString: string,
-    urlencode$charsetParam: urlencode$charsetParam
+    charsetParam: urlencode$charsetParam
   ): any;
 
   declare interface urlencode$charsetParam {
@@ -53,8 +53,8 @@ declare module "urlencode" {
   declare function urlencode$stringify(
     obj: any,
     prefix?: urlencode$charsetParam,
-    urlencode$charsetParam?: urlencode$charsetParam
+    charsetParam?: urlencode$charsetParam
   ): string;
 
-  declare module.exports: typeof urlencode;
+  declare export default typeof urlencode;
 }
