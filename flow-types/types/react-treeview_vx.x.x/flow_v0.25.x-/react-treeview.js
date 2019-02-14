@@ -10,6 +10,6 @@ declare module "react-treeview" {
     childrenClassName?: string
   } & HTMLAttributes<HTMLDivElement>;
 
-  declare class TreeView mixins Component<TreeView$TreeView$TreeProps, any> {}
-  declare module.exports: typeof TreeView;
+  declare class TreeView mixins Component<TreeView$TreeProps, any> {}
+  declare export default typeof TreeView;
 }
