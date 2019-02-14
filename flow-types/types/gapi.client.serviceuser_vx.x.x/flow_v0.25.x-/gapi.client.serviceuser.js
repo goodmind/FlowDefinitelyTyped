@@ -1,29 +1,33 @@
 declare module "gapi.client.serviceuser" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects,
-    services: typeof client$services
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects,
+    services: typeof gapi$client$services
   };
 
   /**
    * Load Google Service User API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "serviceuser",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "serviceuser",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: serviceuser$serviceuser$ProjectsResource;
+  declare var gapi$client$projects: serviceuser$ProjectsResource;
 
-  declare var client$services: serviceuser$serviceuser$ServicesResource;
+  declare var gapi$client$services: serviceuser$ServicesResource;
 
-  declare interface serviceuser$Api {
+  declare interface gapi$client$serviceuser$Api {
     /**
      * The methods of this interface, in unspecified order.
      */
@@ -80,7 +84,7 @@ declare module "gapi.client.serviceuser" {
     version?: string;
   }
 
-  declare interface serviceuser$AuthProvider {
+  declare interface gapi$client$serviceuser$AuthProvider {
     /**
      * The list of JWT
      * [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
@@ -136,7 +140,7 @@ declare module "gapi.client.serviceuser" {
     jwksUri?: string;
   }
 
-  declare interface serviceuser$AuthRequirement {
+  declare interface gapi$client$serviceuser$AuthRequirement {
     /**
      * NOTE: This will be deprecated soon, once AuthProvider.audiences is
      * implemented and accepted in all the runtime components.
@@ -167,11 +171,11 @@ declare module "gapi.client.serviceuser" {
     providerId?: string;
   }
 
-  declare interface serviceuser$Authentication {
+  declare interface gapi$client$serviceuser$Authentication {
     /**
      * Defines a set of authentication providers that a service supports.
      */
-    providers?: serviceuser$AuthProvider[];
+    providers?: gapi$client$serviceuser$AuthProvider[];
 
     /**
      * A list of authentication rules that apply to individual API methods.
@@ -181,7 +185,7 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$AuthenticationRule[];
   }
 
-  declare interface serviceuser$AuthenticationRule {
+  declare interface gapi$client$serviceuser$AuthenticationRule {
     /**
      * Whether to allow requests without a credential. The credential can be
      * an OAuth token, Google cookies (first-party auth) or EndUserCreds.
@@ -206,7 +210,7 @@ declare module "gapi.client.serviceuser" {
     /**
      * Requirements for additional authentication providers.
      */
-    requirements?: serviceuser$AuthRequirement[];
+    requirements?: gapi$client$serviceuser$AuthRequirement[];
 
     /**
      * Selects the methods to which this rule applies.
@@ -216,7 +220,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$AuthorizationConfig {
+  declare interface gapi$client$serviceuser$AuthorizationConfig {
     /**
      * The name of the authorization provider, such as
      * firebaserules.googleapis.com.
@@ -224,7 +228,7 @@ declare module "gapi.client.serviceuser" {
     provider?: string;
   }
 
-  declare interface serviceuser$Backend {
+  declare interface gapi$client$serviceuser$Backend {
     /**
      * A list of API backend rules that apply to individual API methods.
      *
@@ -233,7 +237,7 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$BackendRule[];
   }
 
-  declare interface serviceuser$BackendRule {
+  declare interface gapi$client$serviceuser$BackendRule {
     /**
      * The address of the API backend.
      */
@@ -259,7 +263,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$Billing {
+  declare interface gapi$client$serviceuser$Billing {
     /**
      * Billing configurations for sending metrics to the consumer project.
      * There can be multiple consumer destinations per service, each one must have
@@ -269,7 +273,7 @@ declare module "gapi.client.serviceuser" {
     consumerDestinations?: serviceuser$BillingDestination[];
   }
 
-  declare interface serviceuser$BillingDestination {
+  declare interface gapi$client$serviceuser$BillingDestination {
     /**
      * Names of the metrics to report to this billing destination.
      * Each name must be defined in Service.metrics section.
@@ -283,7 +287,7 @@ declare module "gapi.client.serviceuser" {
     monitoredResource?: string;
   }
 
-  declare interface serviceuser$Context {
+  declare interface gapi$client$serviceuser$Context {
     /**
      * A list of RPC context rules that apply to individual API methods.
      *
@@ -292,7 +296,7 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$ContextRule[];
   }
 
-  declare interface serviceuser$ContextRule {
+  declare interface gapi$client$serviceuser$ContextRule {
     /**
      * A list of full type names of provided contexts.
      */
@@ -311,7 +315,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$Control {
+  declare interface gapi$client$serviceuser$Control {
     /**
      * The service control environment to use. If empty, no control plane
      * feature (like quota and billing) will be enabled.
@@ -319,7 +323,7 @@ declare module "gapi.client.serviceuser" {
     environment?: string;
   }
 
-  declare interface serviceuser$CustomAuthRequirements {
+  declare interface gapi$client$serviceuser$CustomAuthRequirements {
     /**
      * A configuration string containing connection information for the
      * authentication provider, typically formatted as a SmartService string
@@ -328,7 +332,7 @@ declare module "gapi.client.serviceuser" {
     provider?: string;
   }
 
-  declare interface serviceuser$CustomError {
+  declare interface gapi$client$serviceuser$CustomError {
     /**
      * The list of custom error rules that apply to individual API messages.
      *
@@ -342,7 +346,7 @@ declare module "gapi.client.serviceuser" {
     types?: string[];
   }
 
-  declare interface serviceuser$CustomErrorRule {
+  declare interface gapi$client$serviceuser$CustomErrorRule {
     /**
      * Mark this message as possible payload in error response.  Otherwise,
      * objects of this type will be filtered when they appear in error payload.
@@ -357,7 +361,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$CustomHttpPattern {
+  declare interface gapi$client$serviceuser$CustomHttpPattern {
     /**
      * The name of this custom HTTP verb.
      */
@@ -369,7 +373,7 @@ declare module "gapi.client.serviceuser" {
     path?: string;
   }
 
-  declare interface serviceuser$Documentation {
+  declare interface gapi$client$serviceuser$Documentation {
     /**
      * The URL to the root of documentation.
      */
@@ -411,7 +415,7 @@ declare module "gapi.client.serviceuser" {
     summary?: string;
   }
 
-  declare interface serviceuser$DocumentationRule {
+  declare interface gapi$client$serviceuser$DocumentationRule {
     /**
      * Deprecation description of the selected element(s). It can be provided if an
      * element is marked as `deprecated`.
@@ -434,7 +438,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$Endpoint {
+  declare interface gapi$client$serviceuser$Endpoint {
     /**
      * DEPRECATED: This field is no longer supported. Instead of using aliases,
      * please specify multiple google.api.Endpoint for each of the intented
@@ -481,7 +485,7 @@ declare module "gapi.client.serviceuser" {
     target?: string;
   }
 
-  declare interface serviceuser$Enum {
+  declare interface gapi$client$serviceuser$Enum {
     /**
      * Enum value definitions.
      */
@@ -508,7 +512,7 @@ declare module "gapi.client.serviceuser" {
     syntax?: string;
   }
 
-  declare interface serviceuser$EnumValue {
+  declare interface gapi$client$serviceuser$EnumValue {
     /**
      * Enum value name.
      */
@@ -525,14 +529,14 @@ declare module "gapi.client.serviceuser" {
     options?: serviceuser$Option[];
   }
 
-  declare interface serviceuser$Experimental {
+  declare interface gapi$client$serviceuser$Experimental {
     /**
      * Authorization configuration.
      */
-    authorization?: serviceuser$AuthorizationConfig;
+    authorization?: gapi$client$serviceuser$AuthorizationConfig;
   }
 
-  declare interface serviceuser$Field {
+  declare interface gapi$client$serviceuser$Field {
     /**
      * The field cardinality.
      */
@@ -586,7 +590,7 @@ declare module "gapi.client.serviceuser" {
     typeUrl?: string;
   }
 
-  declare interface serviceuser$Http {
+  declare interface gapi$client$serviceuser$Http {
     /**
      * When set to true, URL path parmeters will be fully URI-decoded except in
      * cases of single segment matches in reserved expansion, where "%2F" will be
@@ -605,13 +609,13 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$HttpRule[];
   }
 
-  declare interface serviceuser$HttpRule {
+  declare interface gapi$client$serviceuser$HttpRule {
     /**
      * Additional HTTP bindings for the selector. Nested bindings must
      * not contain an `additional_bindings` field themselves (that is,
      * the nesting may only be one level deep).
      */
-    additionalBindings?: serviceuser$HttpRule[];
+    additionalBindings?: gapi$client$serviceuser$HttpRule[];
 
     /**
      * The name of the request field whose value is mapped to the HTTP body, or
@@ -627,7 +631,7 @@ declare module "gapi.client.serviceuser" {
      * HTTP method unspecified for this rule. The wild-card rule is useful
      * for services that provide content to Web (HTML) clients.
      */
-    custom?: serviceuser$CustomHttpPattern;
+    custom?: gapi$client$serviceuser$CustomHttpPattern;
 
     /**
      * Used for deleting a resource.
@@ -686,7 +690,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$LabelDescriptor {
+  declare interface gapi$client$serviceuser$LabelDescriptor {
     /**
      * A human-readable description for the label.
      */
@@ -703,7 +707,7 @@ declare module "gapi.client.serviceuser" {
     valueType?: string;
   }
 
-  declare interface serviceuser$ListEnabledServicesResponse {
+  declare interface gapi$client$serviceuser$ListEnabledServicesResponse {
     /**
      * Token that can be passed to `ListEnabledServices` to resume a paginated
      * query.
@@ -713,10 +717,10 @@ declare module "gapi.client.serviceuser" {
     /**
      * Services enabled for the specified parent.
      */
-    client$services?: serviceuser$PublishedService[];
+    services?: serviceuser$PublishedService[];
   }
 
-  declare interface serviceuser$LogDescriptor {
+  declare interface gapi$client$serviceuser$LogDescriptor {
     /**
      * A human-readable description of this log. This information appears in
      * the documentation and can contain details.
@@ -734,7 +738,7 @@ declare module "gapi.client.serviceuser" {
      * Runtime requests that contain labels not specified here are
      * considered invalid.
      */
-    labels?: serviceuser$LabelDescriptor[];
+    labels?: gapi$client$serviceuser$LabelDescriptor[];
 
     /**
      * The name of the log. It must be less than 512 characters long and can
@@ -745,7 +749,7 @@ declare module "gapi.client.serviceuser" {
     name?: string;
   }
 
-  declare interface serviceuser$Logging {
+  declare interface gapi$client$serviceuser$Logging {
     /**
      * Logging configurations for sending logs to the consumer project.
      * There can be multiple consumer destinations, each one must have a
@@ -763,7 +767,7 @@ declare module "gapi.client.serviceuser" {
     producerDestinations?: serviceuser$LoggingDestination[];
   }
 
-  declare interface serviceuser$LoggingDestination {
+  declare interface gapi$client$serviceuser$LoggingDestination {
     /**
      * Names of the logs to be sent to this destination. Each name must
      * be defined in the Service.logs section. If the log name is
@@ -779,7 +783,7 @@ declare module "gapi.client.serviceuser" {
     monitoredResource?: string;
   }
 
-  declare interface serviceuser$MediaDownload {
+  declare interface gapi$client$serviceuser$MediaDownload {
     /**
      * A boolean that determines whether a notification for the completion of a
      * download should be sent to the backend.
@@ -816,7 +820,7 @@ declare module "gapi.client.serviceuser" {
     useDirectDownload?: boolean;
   }
 
-  declare interface serviceuser$MediaUpload {
+  declare interface gapi$client$serviceuser$MediaUpload {
     /**
      * A boolean that determines whether a notification for the completion of an
      * upload should be sent to the backend. These notifications will not be seen
@@ -864,7 +868,7 @@ declare module "gapi.client.serviceuser" {
     uploadService?: string;
   }
 
-  declare interface serviceuser$Method {
+  declare interface gapi$client$serviceuser$Method {
     /**
      * The simple name of this method.
      */
@@ -901,7 +905,7 @@ declare module "gapi.client.serviceuser" {
     syntax?: string;
   }
 
-  declare interface serviceuser$MetricDescriptor {
+  declare interface gapi$client$serviceuser$MetricDescriptor {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
@@ -921,7 +925,7 @@ declare module "gapi.client.serviceuser" {
      * you can look at latencies for successful responses or just
      * for responses that failed.
      */
-    labels?: serviceuser$LabelDescriptor[];
+    labels?: gapi$client$serviceuser$LabelDescriptor[];
 
     /**
      * Whether the metric records instantaneous values, changes to a value, etc.
@@ -1027,7 +1031,7 @@ declare module "gapi.client.serviceuser" {
     valueType?: string;
   }
 
-  declare interface serviceuser$MetricRule {
+  declare interface gapi$client$serviceuser$MetricRule {
     /**
      * Metrics to update when the selected methods are called, and the associated
      * cost applied to each metric.
@@ -1046,7 +1050,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$Mixin {
+  declare interface gapi$client$serviceuser$Mixin {
     /**
      * The fully qualified name of the interface which is included.
      */
@@ -1059,7 +1063,7 @@ declare module "gapi.client.serviceuser" {
     root?: string;
   }
 
-  declare interface serviceuser$MonitoredResourceDescriptor {
+  declare interface gapi$client$serviceuser$MonitoredResourceDescriptor {
     /**
      * Optional. A detailed description of the monitored resource type that might
      * be used in documentation.
@@ -1079,7 +1083,7 @@ declare module "gapi.client.serviceuser" {
      * resource type. For example, an individual Google Cloud SQL database is
      * identified by values for the labels `"database_id"` and `"zone"`.
      */
-    labels?: serviceuser$LabelDescriptor[];
+    labels?: gapi$client$serviceuser$LabelDescriptor[];
 
     /**
      * Optional. The resource name of the monitored resource descriptor:
@@ -1099,7 +1103,7 @@ declare module "gapi.client.serviceuser" {
     type?: string;
   }
 
-  declare interface serviceuser$Monitoring {
+  declare interface gapi$client$serviceuser$Monitoring {
     /**
      * Monitoring configurations for sending metrics to the consumer project.
      * There can be multiple consumer destinations, each one must have a
@@ -1117,7 +1121,7 @@ declare module "gapi.client.serviceuser" {
     producerDestinations?: serviceuser$MonitoringDestination[];
   }
 
-  declare interface serviceuser$MonitoringDestination {
+  declare interface gapi$client$serviceuser$MonitoringDestination {
     /**
      * Names of the metrics to report to this monitoring destination.
      * Each name must be defined in Service.metrics section.
@@ -1131,7 +1135,7 @@ declare module "gapi.client.serviceuser" {
     monitoredResource?: string;
   }
 
-  declare interface serviceuser$OAuthRequirements {
+  declare interface gapi$client$serviceuser$OAuthRequirements {
     /**
      * The list of publicly documented OAuth scopes that are allowed access. An
      * OAuth token containing any of these scopes will be accepted.
@@ -1144,7 +1148,7 @@ declare module "gapi.client.serviceuser" {
     canonicalScopes?: string;
   }
 
-  declare interface serviceuser$Operation {
+  declare interface gapi$client$serviceuser$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -1185,7 +1189,7 @@ declare module "gapi.client.serviceuser" {
     response?: Record<string, any>;
   }
 
-  declare interface serviceuser$OperationMetadata {
+  declare interface gapi$client$serviceuser$OperationMetadata {
     /**
      * Percentage of completion of this operation, ranging from 0 to 100.
      */
@@ -1208,7 +1212,7 @@ declare module "gapi.client.serviceuser" {
     steps?: serviceuser$Step[];
   }
 
-  declare interface serviceuser$Option {
+  declare interface gapi$client$serviceuser$Option {
     /**
      * The option's name. For protobuf built-in options (options defined in
      * descriptor.proto), this is the short name. For example, `"map_entry"`.
@@ -1226,7 +1230,7 @@ declare module "gapi.client.serviceuser" {
     value?: Record<string, any>;
   }
 
-  declare interface serviceuser$Page {
+  declare interface gapi$client$serviceuser$Page {
     /**
      * The Markdown content of the page. You can use <code>&#40;== include {path} ==&#41;</code>
      * to include content from a Markdown file.
@@ -1255,10 +1259,10 @@ declare module "gapi.client.serviceuser" {
      * Subpages of this page. The order of subpages specified here will be
      * honored in the generated docset.
      */
-    subpages?: serviceuser$Page[];
+    subpages?: gapi$client$serviceuser$Page[];
   }
 
-  declare interface serviceuser$PublishedService {
+  declare interface gapi$client$serviceuser$PublishedService {
     /**
      * The resource name of the service.
      *
@@ -1273,7 +1277,7 @@ declare module "gapi.client.serviceuser" {
     service?: serviceuser$Service;
   }
 
-  declare interface serviceuser$Quota {
+  declare interface gapi$client$serviceuser$Quota {
     /**
      * List of `QuotaLimit` definitions for the service.
      */
@@ -1283,10 +1287,10 @@ declare module "gapi.client.serviceuser" {
      * List of `MetricRule` definitions, each one mapping a selected method to one
      * or more metrics.
      */
-    metricRules?: serviceuser$MetricRule[];
+    metricRules?: gapi$client$serviceuser$MetricRule[];
   }
 
-  declare interface serviceuser$QuotaLimit {
+  declare interface gapi$client$serviceuser$QuotaLimit {
     /**
      * Default number of tokens that can be consumed during the specified
      * duration. This is the number of tokens assigned when a client
@@ -1408,7 +1412,7 @@ declare module "gapi.client.serviceuser" {
     values?: Record<string, string>;
   }
 
-  declare interface serviceuser$SearchServicesResponse {
+  declare interface gapi$client$serviceuser$SearchServicesResponse {
     /**
      * Token that can be passed to `ListAvailableServices` to resume a paginated
      * query.
@@ -1418,10 +1422,10 @@ declare module "gapi.client.serviceuser" {
     /**
      * Services available publicly or available to the authenticated caller.
      */
-    client$services?: serviceuser$PublishedService[];
+    services?: gapi$client$serviceuser$PublishedService[];
   }
 
-  declare interface serviceuser$Service {
+  declare interface gapi$client$serviceuser$Service {
     /**
      * A list of API interfaces exported by this service. Only the `name` field
      * of the google.protobuf.Api needs to be provided by the configuration
@@ -1429,22 +1433,22 @@ declare module "gapi.client.serviceuser" {
      * normalization process. It is an error to specify an API interface here
      * which cannot be resolved against the associated IDL files.
      */
-    apis?: serviceuser$Api[];
+    apis?: gapi$client$serviceuser$Api[];
 
     /**
      * Auth configuration.
      */
-    authentication?: serviceuser$Authentication;
+    authentication?: gapi$client$serviceuser$Authentication;
 
     /**
      * API backend configuration.
      */
-    backend?: serviceuser$Backend;
+    backend?: gapi$client$serviceuser$Backend;
 
     /**
      * Billing configuration.
      */
-    billing?: serviceuser$Billing;
+    billing?: gapi$client$serviceuser$Billing;
 
     /**
      * The semantic version of the service configuration. The config version
@@ -1457,29 +1461,29 @@ declare module "gapi.client.serviceuser" {
     /**
      * Context configuration.
      */
-    context?: serviceuser$Context;
+    context?: gapi$client$serviceuser$Context;
 
     /**
      * Configuration for the service control plane.
      */
-    control?: serviceuser$Control;
+    control?: gapi$client$serviceuser$Control;
 
     /**
      * Custom error configuration.
      */
-    customError?: serviceuser$CustomError;
+    customError?: gapi$client$serviceuser$CustomError;
 
     /**
      * Additional API documentation.
      */
-    documentation?: serviceuser$Documentation;
+    documentation?: gapi$client$serviceuser$Documentation;
 
     /**
      * Configuration for network endpoints.  If this is empty, then an endpoint
      * with the same name as the service is automatically generated to service all
      * defined APIs.
      */
-    endpoints?: serviceuser$Endpoint[];
+    endpoints?: gapi$client$serviceuser$Endpoint[];
 
     /**
      * A list of all enum types included in this API service.  Enums
@@ -1490,17 +1494,17 @@ declare module "gapi.client.serviceuser" {
      * enums:
      * - name: google.someapi.v1.SomeEnum
      */
-    enums?: serviceuser$Enum[];
+    enums?: gapi$client$serviceuser$Enum[];
 
     /**
      * Experimental configuration.
      */
-    experimental?: serviceuser$Experimental;
+    experimental?: gapi$client$serviceuser$Experimental;
 
     /**
      * HTTP configuration.
      */
-    http?: serviceuser$Http;
+    http?: gapi$client$serviceuser$Http;
 
     /**
      * A unique ID for a specific instance of this message, typically assigned
@@ -1512,28 +1516,28 @@ declare module "gapi.client.serviceuser" {
     /**
      * Logging configuration.
      */
-    logging?: serviceuser$Logging;
+    logging?: gapi$client$serviceuser$Logging;
 
     /**
      * Defines the logs used by this service.
      */
-    logs?: serviceuser$LogDescriptor[];
+    logs?: gapi$client$serviceuser$LogDescriptor[];
 
     /**
      * Defines the metrics used by this service.
      */
-    metrics?: serviceuser$MetricDescriptor[];
+    metrics?: gapi$client$serviceuser$MetricDescriptor[];
 
     /**
      * Defines the monitored resources used by this service. This is required
      * by the Service.monitoring and Service.logging configurations.
      */
-    monitoredResources?: serviceuser$MonitoredResourceDescriptor[];
+    monitoredResources?: gapi$client$serviceuser$MonitoredResourceDescriptor[];
 
     /**
      * Monitoring configuration.
      */
-    monitoring?: serviceuser$Monitoring;
+    monitoring?: gapi$client$serviceuser$Monitoring;
 
     /**
      * The DNS address at which this service is available,
@@ -1549,7 +1553,7 @@ declare module "gapi.client.serviceuser" {
     /**
      * Quota configuration.
      */
-    quota?: serviceuser$Quota;
+    quota?: gapi$client$serviceuser$Quota;
 
     /**
      * Output only. The source information for this configuration if available.
@@ -1598,7 +1602,7 @@ declare module "gapi.client.serviceuser" {
     visibility?: serviceuser$Visibility;
   }
 
-  declare interface serviceuser$SourceContext {
+  declare interface gapi$client$serviceuser$SourceContext {
     /**
      * The path-qualified name of the .proto file that contained the associated
      * protobuf element.  For example: `"google/protobuf/source_context.proto"`.
@@ -1606,14 +1610,14 @@ declare module "gapi.client.serviceuser" {
     fileName?: string;
   }
 
-  declare interface serviceuser$SourceInfo {
+  declare interface gapi$client$serviceuser$SourceInfo {
     /**
      * All files used during config generation.
      */
     sourceFiles?: Array<Record<string, any>>;
   }
 
-  declare interface serviceuser$Status {
+  declare interface gapi$client$serviceuser$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1633,7 +1637,7 @@ declare module "gapi.client.serviceuser" {
     message?: string;
   }
 
-  declare interface serviceuser$Step {
+  declare interface gapi$client$serviceuser$Step {
     /**
      * The short description of the step.
      */
@@ -1645,7 +1649,7 @@ declare module "gapi.client.serviceuser" {
     status?: string;
   }
 
-  declare interface serviceuser$SystemParameter {
+  declare interface gapi$client$serviceuser$SystemParameter {
     /**
      * Define the HTTP header name to use for the parameter. It is case
      * insensitive.
@@ -1664,7 +1668,7 @@ declare module "gapi.client.serviceuser" {
     urlQueryParameter?: string;
   }
 
-  declare interface serviceuser$SystemParameterRule {
+  declare interface gapi$client$serviceuser$SystemParameterRule {
     /**
      * Define parameters. Multiple names may be defined for a parameter.
      * For a given method call, only one of them should be used. If multiple
@@ -1672,7 +1676,7 @@ declare module "gapi.client.serviceuser" {
      * If none of the specified names are present the behavior is
      * parameter-dependent.
      */
-    parameters?: serviceuser$SystemParameter[];
+    parameters?: gapi$client$serviceuser$SystemParameter[];
 
     /**
      * Selects the methods to which this rule applies. Use '&#42;' to indicate all
@@ -1683,7 +1687,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$SystemParameters {
+  declare interface gapi$client$serviceuser$SystemParameters {
     /**
      * Define system parameters.
      *
@@ -1715,14 +1719,14 @@ declare module "gapi.client.serviceuser" {
      *
      * &#42;&#42;NOTE:&#42;&#42; All service configuration rules follow "last one wins" order.
      */
-    rules?: serviceuser$SystemParameterRule[];
+    rules?: gapi$client$serviceuser$SystemParameterRule[];
   }
 
-  declare interface serviceuser$Type {
+  declare interface gapi$client$serviceuser$Type {
     /**
      * The list of fields.
      */
-    fields?: serviceuser$Field[];
+    fields?: gapi$client$serviceuser$Field[];
 
     /**
      * The fully qualified message name.
@@ -1737,12 +1741,12 @@ declare module "gapi.client.serviceuser" {
     /**
      * The protocol buffer options.
      */
-    options?: serviceuser$Option[];
+    options?: gapi$client$serviceuser$Option[];
 
     /**
      * The source context.
      */
-    sourceContext?: serviceuser$SourceContext;
+    sourceContext?: gapi$client$serviceuser$SourceContext;
 
     /**
      * The source syntax.
@@ -1750,7 +1754,7 @@ declare module "gapi.client.serviceuser" {
     syntax?: string;
   }
 
-  declare interface serviceuser$Usage {
+  declare interface gapi$client$serviceuser$Usage {
     /**
      * The full resource name of a channel used for sending notifications to the
      * service producer.
@@ -1778,7 +1782,7 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$UsageRule[];
   }
 
-  declare interface serviceuser$UsageRule {
+  declare interface gapi$client$serviceuser$UsageRule {
     /**
      * True, if the method allows unregistered calls; false otherwise.
      */
@@ -1799,7 +1803,7 @@ declare module "gapi.client.serviceuser" {
     skipServiceControl?: boolean;
   }
 
-  declare interface serviceuser$Visibility {
+  declare interface gapi$client$serviceuser$Visibility {
     /**
      * A list of visibility rules that apply to individual API elements.
      *
@@ -1808,7 +1812,7 @@ declare module "gapi.client.serviceuser" {
     rules?: serviceuser$VisibilityRule[];
   }
 
-  declare interface serviceuser$VisibilityRule {
+  declare interface gapi$client$serviceuser$VisibilityRule {
     /**
      * A comma-separated list of visibility labels that apply to the `selector`.
      * Any of the listed labels can be used to grant the visibility.
@@ -1836,7 +1840,7 @@ declare module "gapi.client.serviceuser" {
     selector?: string;
   }
 
-  declare interface serviceuser$ServicesResource {
+  declare interface gapi$client$serviceuser$ServicesResource {
     /**
      * Disable a service so it can no longer be used with a
      * project. This prevents unintended usage that may cause unexpected billing
@@ -1920,7 +1924,7 @@ declare module "gapi.client.serviceuser" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<serviceuser$Operation>;
+    }): Request<gapi$client$serviceuser$Operation>;
 
     /**
      * Enable a service so it can be used with a project.
@@ -2002,7 +2006,7 @@ declare module "gapi.client.serviceuser" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<serviceuser$Operation>;
+    }): Request<gapi$client$serviceuser$Operation>;
 
     /**
      * List enabled services for the specified consumer.
@@ -2091,7 +2095,7 @@ declare module "gapi.client.serviceuser" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<serviceuser$ListEnabledServicesResponse>;
+    }): Request<gapi$client$serviceuser$ListEnabledServicesResponse>;
 
     /**
      * Search available services.
@@ -2176,10 +2180,10 @@ declare module "gapi.client.serviceuser" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<serviceuser$SearchServicesResponse>;
+    }): Request<gapi$client$serviceuser$SearchServicesResponse>;
   }
 
-  declare interface serviceuser$ProjectsResource {
-    client$services: serviceuser$ServicesResource;
+  declare interface gapi$client$serviceuser$ProjectsResource {
+    services: gapi$client$serviceuser$ServicesResource;
   }
 }
