@@ -29,43 +29,43 @@ declare module "openlayers" {
   }
 
   /**
- * @classdesc An attribution for a layer source.
-
-Example:
-
-source: new ol.source.OSM({
-attributions: [
-new ol.Attribution({
-html: 'All maps &copy; ' +
-'<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
-}),
-ol.source.OSM.ATTRIBUTION
-],
-..
- * @param options Attribution options.
- * @struct
- * @api stable
- */
+   * @classdesc An attribution for a layer source.
+   *
+   * Example:
+   *
+   * source: new ol.source.OSM({
+   * attributions: [
+   * new ol.Attribution({
+   * html: 'All maps &copy; ' +
+   * '<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
+   * }),
+   * ol.source.OSM.ATTRIBUTION
+   * ],
+   * ..
+   * @param options Attribution options.
+   * @struct
+   * @api stable
+   */
   declare export class Attribution {
     /**
- * @classdesc An attribution for a layer source.
-
-Example:
-
-source: new ol.source.OSM({
-attributions: [
-new ol.Attribution({
-html: 'All maps &copy; ' +
-'<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
-}),
-ol.source.OSM.ATTRIBUTION
-],
-..
- * @param options Attribution options.
- * @struct
- * @api stable
- */
-    constructor(options: olx$olx$AttributionOptions): this;
+     * @classdesc An attribution for a layer source.
+     *
+     * Example:
+     *
+     * source: new ol.source.OSM({
+     * attributions: [
+     * new ol.Attribution({
+     * html: 'All maps &copy; ' +
+     * '<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
+     * }),
+     * ol.source.OSM.ATTRIBUTION
+     * ],
+     * ..
+     * @param options Attribution options.
+     * @struct
+     * @api stable
+     */
+    constructor(options: olx$AttributionOptions): this;
 
     /**
      * Get the attribution markup.
@@ -76,28 +76,28 @@ ol.source.OSM.ATTRIBUTION
   }
 
   /**
- * @classdesc An expanded version of standard JS Array, adding convenience methods for
-manipulation. Add and remove changes to the Collection trigger a Collection
-event. Note that this does not cover changes to the objects _within_ the
-Collection; they trigger events on the appropriate object, not on the
-Collection as a whole.
- * @fires ol.Collection.Event
- * @param opt_array Array.
- * @template
- * @api stable
- */
+   * @classdesc An expanded version of standard JS Array, adding convenience methods for
+   * manipulation. Add and remove changes to the Collection trigger a Collection
+   * event. Note that this does not cover changes to the objects _within_ the
+   * Collection; they trigger events on the appropriate object, not on the
+   * Collection as a whole.
+   * @fires ol.Collection.Event
+   * @param opt_array Array.
+   * @template
+   * @api stable
+   */
   declare export class Collection<T> mixins Object {
     /**
- * @classdesc An expanded version of standard JS Array, adding convenience methods for
-manipulation. Add and remove changes to the Collection trigger a Collection
-event. Note that this does not cover changes to the objects _within_ the
-Collection; they trigger events on the appropriate object, not on the
-Collection as a whole.
- * @fires ol.Collection.Event
- * @param opt_array Array.
- * @template
- * @api stable
- */
+     * @classdesc An expanded version of standard JS Array, adding convenience methods for
+     * manipulation. Add and remove changes to the Collection trigger a Collection
+     * event. Note that this does not cover changes to the objects _within_ the
+     * Collection; they trigger events on the appropriate object, not on the
+     * Collection as a whole.
+     * @fires ol.Collection.Event
+     * @param opt_array Array.
+     * @template
+     * @api stable
+     */
     constructor(opt_array?: T[]): this;
 
     /**
@@ -116,14 +116,14 @@ Collection as a whole.
     extend(arr: T[]): ol.Collection<T>;
 
     /**
- * Iterate over each element, calling the provided callback.
- * @param f The function to call
-for every element. This function takes 3 arguments (the element, the
-index and the array). The return value is ignored.
- * @param opt_this The object to use as `this` in `f`.
- * @template
- * @api stable
- */
+     * Iterate over each element, calling the provided callback.
+     * @param f The function to call
+     * for every element. This function takes 3 arguments (the element, the
+     * index and the array). The return value is ignored.
+     * @param opt_this The object to use as `this` in `f`.
+     * @template
+     * @api stable
+     */
     forEach(
       f: (item: T, index: number, array: T[]) => any,
       opt_this?: any
@@ -204,21 +204,25 @@ index and the array). The return value is ignored.
      */
     setAt(index: number, elem: T): void;
   }
+
+  declare var npm$namespace$Collection: {
+    Event: typeof Collection$Event
+  };
   declare type Collection$EventType = string;
 
   /**
- * @classdesc Events emitted by {@link ol.Collection} instances are instances of this
-type.
- * @param type Type.
- * @param opt_element Element.
- */
-  declare class Collection$Event mixins events$Collection$Event {
+   * @classdesc Events emitted by {@link ol.Collection} instances are instances of this
+   * type.
+   * @param type Type.
+   * @param opt_element Element.
+   */
+  declare class Collection$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.Collection} instances are instances of this
-type.
- * @param type Type.
- * @param opt_element Element.
- */
+     * @classdesc Events emitted by {@link ol.Collection} instances are instances of this
+     * type.
+     * @param type Type.
+     * @param opt_element Element.
+     */
     constructor(type: Collection$EventType, opt_element?: any): this;
 
     /**
@@ -264,27 +268,38 @@ type.
   ): ol.ColorLike;
 
   declare var npm$namespace$control: {
-    defaults: typeof control$defaults
+    defaults: typeof control$defaults,
+
+    Attribution: typeof control$Attribution,
+    Control: typeof control$Control,
+    FullScreen: typeof control$FullScreen,
+    MousePosition: typeof control$MousePosition,
+    OverviewMap: typeof control$OverviewMap,
+    Rotate: typeof control$Rotate,
+    ScaleLine: typeof control$ScaleLine,
+    Zoom: typeof control$Zoom,
+    ZoomSlider: typeof control$ZoomSlider,
+    ZoomToExtent: typeof control$ZoomToExtent
   };
 
   /**
- * @classdesc Control to show all the attributions associated with the layer sources
-in the map. This control is one of the default controls included in maps.
-By default it will show in the bottom right portion of the map, but this can
-be changed by using a css selector for `.ol-attribution`.
- * @param opt_options Attribution options.
- * @api stable
- */
-  declare class control$Attribution mixins control$Control {
+   * @classdesc Control to show all the attributions associated with the layer sources
+   * in the map. This control is one of the default controls included in maps.
+   * By default it will show in the bottom right portion of the map, but this can
+   * be changed by using a css selector for `.ol-attribution`.
+   * @param opt_options Attribution options.
+   * @api stable
+   */
+  declare class control$Attribution mixins Control {
     /**
- * @classdesc Control to show all the attributions associated with the layer sources
-in the map. This control is one of the default controls included in maps.
-By default it will show in the bottom right portion of the map, but this can
-be changed by using a css selector for `.ol-attribution`.
- * @param opt_options Attribution options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.olx$AttributionOptions): this;
+     * @classdesc Control to show all the attributions associated with the layer sources
+     * in the map. This control is one of the default controls included in maps.
+     * By default it will show in the bottom right portion of the map, but this can
+     * be changed by using a css selector for `.ol-attribution`.
+     * @param opt_options Attribution options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$AttributionOptions): this;
 
     /**
      * Update the attribution element.
@@ -326,55 +341,55 @@ be changed by using a css selector for `.ol-attribution`.
   }
 
   /**
- * @classdesc A control is a visible widget with a DOM element in a fixed position on the
-screen. They can involve user input (buttons), or be informational only;
-the position is determined using CSS. By default these are placed in the
-container with CSS class name `ol-overlaycontainer-stopevent`, but can use
-any outside DOM element.
-
-This is the base class for controls. You can use it for simple custom
-controls by creating the element with listeners, creating an instance:
-```js
-     * var myControl = new ol.control.Control({element: myElement});
-     * ```
-and then adding this to the map.
-
-The main advantage of having this as a control rather than a simple separate
-DOM element is that preventing propagation is handled for you. Controls
-will also be `ol.Object`s in a `ol.Collection`, so you can use their
-methods.
-
-You can also extend this base for your own control class. See
-examples/custom-controls for an example of how to do this.
- * @param options Control options.
- * @api stable
- */
+   * @classdesc A control is a visible widget with a DOM element in a fixed position on the
+   * screen. They can involve user input (buttons), or be informational only;
+   * the position is determined using CSS. By default these are placed in the
+   * container with CSS class name `ol-overlaycontainer-stopevent`, but can use
+   * any outside DOM element.
+   *
+   * This is the base class for controls. You can use it for simple custom
+   * controls by creating the element with listeners, creating an instance:
+   * ```js
+   *      * var myControl = new ol.control.Control({element: myElement});
+   *      * ```
+   * and then adding this to the map.
+   *
+   * The main advantage of having this as a control rather than a simple separate
+   * DOM element is that preventing propagation is handled for you. Controls
+   * will also be `ol.Object`s in a `ol.Collection`, so you can use their
+   * methods.
+   *
+   * You can also extend this base for your own control class. See
+   * examples/custom-controls for an example of how to do this.
+   * @param options Control options.
+   * @api stable
+   */
   declare class control$Control mixins Object {
     /**
- * @classdesc A control is a visible widget with a DOM element in a fixed position on the
-screen. They can involve user input (buttons), or be informational only;
-the position is determined using CSS. By default these are placed in the
-container with CSS class name `ol-overlaycontainer-stopevent`, but can use
-any outside DOM element.
-
-This is the base class for controls. You can use it for simple custom
-controls by creating the element with listeners, creating an instance:
-```js
-         * var myControl = new ol.control.Control({element: myElement});
-         * ```
-and then adding this to the map.
-
-The main advantage of having this as a control rather than a simple separate
-DOM element is that preventing propagation is handled for you. Controls
-will also be `ol.Object`s in a `ol.Collection`, so you can use their
-methods.
-
-You can also extend this base for your own control class. See
-examples/custom-controls for an example of how to do this.
- * @param options Control options.
- * @api stable
- */
-    constructor(options: olx$control.control$ControlOptions): this;
+     * @classdesc A control is a visible widget with a DOM element in a fixed position on the
+     * screen. They can involve user input (buttons), or be informational only;
+     * the position is determined using CSS. By default these are placed in the
+     * container with CSS class name `ol-overlaycontainer-stopevent`, but can use
+     * any outside DOM element.
+     *
+     * This is the base class for controls. You can use it for simple custom
+     * controls by creating the element with listeners, creating an instance:
+     * ```js
+     *          * var myControl = new ol.control.Control({element: myElement});
+     *          * ```
+     * and then adding this to the map.
+     *
+     * The main advantage of having this as a control rather than a simple separate
+     * DOM element is that preventing propagation is handled for you. Controls
+     * will also be `ol.Object`s in a `ol.Collection`, so you can use their
+     * methods.
+     *
+     * You can also extend this base for your own control class. See
+     * examples/custom-controls for an example of how to do this.
+     * @param options Control options.
+     * @api stable
+     */
+    constructor(options: olx$control$ControlOptions): this;
 
     /**
      * Get the map associated with this control.
@@ -405,31 +420,31 @@ examples/custom-controls for an example of how to do this.
   }
 
   /**
- * @classdesc Provides a button that when clicked fills up the full screen with the map.
-The full screen source element is by default the element containing the map viewport unless
-overriden by providing the `source` option. In which case, the dom
-element introduced using this parameter will be displayed in full screen.
-
-When in full screen mode, a close button is shown to exit full screen mode.
-The [Fullscreen API](http://www.w3.org/TR/fullscreen/) is used to
-toggle the map in full screen mode.
- * @param opt_options Options.
- * @api stable
- */
-  declare class control$FullScreen mixins control$Control {
+   * @classdesc Provides a button that when clicked fills up the full screen with the map.
+   * The full screen source element is by default the element containing the map viewport unless
+   * overriden by providing the `source` option. In which case, the dom
+   * element introduced using this parameter will be displayed in full screen.
+   *
+   * When in full screen mode, a close button is shown to exit full screen mode.
+   * The [Fullscreen API](http://www.w3.org/TR/fullscreen/) is used to
+   * toggle the map in full screen mode.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class control$FullScreen mixins Control {
     /**
- * @classdesc Provides a button that when clicked fills up the full screen with the map.
-The full screen source element is by default the element containing the map viewport unless
-overriden by providing the `source` option. In which case, the dom
-element introduced using this parameter will be displayed in full screen.
-
-When in full screen mode, a close button is shown to exit full screen mode.
-The [Fullscreen API](http://www.w3.org/TR/fullscreen/) is used to
-toggle the map in full screen mode.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$FullScreenOptions): this;
+     * @classdesc Provides a button that when clicked fills up the full screen with the map.
+     * The full screen source element is by default the element containing the map viewport unless
+     * overriden by providing the `source` option. In which case, the dom
+     * element introduced using this parameter will be displayed in full screen.
+     *
+     * When in full screen mode, a close button is shown to exit full screen mode.
+     * The [Fullscreen API](http://www.w3.org/TR/fullscreen/) is used to
+     * toggle the map in full screen mode.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$FullScreenOptions): this;
   }
 
   /**
@@ -444,29 +459,29 @@ toggle the map in full screen mode.
    * @api stable
    */
   declare function control$defaults(
-    opt_options?: olx$control.interaction$DefaultsOptions
+    opt_options?: olx$control$DefaultsOptions
   ): ol.Collection<control$Control>;
 
   /**
- * @classdesc A control to show the 2D coordinates of the mouse cursor. By default, these
-are in the view projection, but can be in any supported projection.
-By default the control is shown in the top right corner of the map, but this
-can be changed by using the css selector `.ol-mouse-position`.
- * @param opt_options Mouse position
-options.
- * @api stable
- */
-  declare class control$MousePosition mixins control$Control {
+   * @classdesc A control to show the 2D coordinates of the mouse cursor. By default, these
+   * are in the view projection, but can be in any supported projection.
+   * By default the control is shown in the top right corner of the map, but this
+   * can be changed by using the css selector `.ol-mouse-position`.
+   * @param opt_options Mouse position
+   * options.
+   * @api stable
+   */
+  declare class control$MousePosition mixins Control {
     /**
- * @classdesc A control to show the 2D coordinates of the mouse cursor. By default, these
-are in the view projection, but can be in any supported projection.
-By default the control is shown in the top right corner of the map, but this
-can be changed by using the css selector `.ol-mouse-position`.
- * @param opt_options Mouse position
-options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$MousePositionOptions): this;
+     * @classdesc A control to show the 2D coordinates of the mouse cursor. By default, these
+     * are in the view projection, but can be in any supported projection.
+     * By default the control is shown in the top right corner of the map, but this
+     * can be changed by using the css selector `.ol-mouse-position`.
+     * @param opt_options Mouse position
+     * options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$MousePositionOptions): this;
 
     /**
      * Update the mouseposition element.
@@ -476,41 +491,41 @@ options.
     static render(mapEvent: ol.MapEvent): void;
 
     /**
- * Return the coordinate format type used to render the current position or
- * undefined.
- * @return The format to render the current
-position in.
- * @observable
- * @api stable
- */
+     * Return the coordinate format type used to render the current position or
+     * undefined.
+     * @return The format to render the current
+     * position in.
+     * @observable
+     * @api stable
+     */
     getCoordinateFormat(): ol.CoordinateFormatType;
 
     /**
- * Return the projection that is used to report the mouse position.
- * @return The projection to report mouse
-position in.
- * @observable
- * @api stable
- */
-    getProjection(): ol.proj.proj$Projection;
+     * Return the projection that is used to report the mouse position.
+     * @return The projection to report mouse
+     * position in.
+     * @observable
+     * @api stable
+     */
+    getProjection(): ol.proj.Projection;
 
     /**
- * Set the coordinate format type used to render the current position.
- * @param format The format to render the current
-position in.
- * @observable
- * @api stable
- */
-    setCoordinateFormat(coordinate$format: ol.CoordinateFormatType): void;
+     * Set the coordinate format type used to render the current position.
+     * @param format The format to render the current
+     * position in.
+     * @observable
+     * @api stable
+     */
+    setCoordinateFormat(format: ol.CoordinateFormatType): void;
 
     /**
- * Set the projection that is used to report the mouse position.
- * @param projection The projection to report mouse
-position in.
- * @observable
- * @api stable
- */
-    setProjection(projection: ol.proj.proj$Projection): void;
+     * Set the projection that is used to report the mouse position.
+     * @param projection The projection to report mouse
+     * position in.
+     * @observable
+     * @api stable
+     */
+    setProjection(projection: ol.proj.Projection): void;
   }
 
   /**
@@ -519,14 +534,14 @@ position in.
    * @param opt_options OverviewMap options.
    * @api
    */
-  declare class control$OverviewMap mixins control$Control {
+  declare class control$OverviewMap mixins Control {
     /**
      * Create a new control with a map acting as an overview map for an other
      * defined map.
      * @param opt_options OverviewMap options.
      * @api
      */
-    constructor(opt_options?: olx$control.control$OverviewMapOptions): this;
+    constructor(opt_options?: olx$control$OverviewMapOptions): this;
 
     /**
      * Update the overview map element.
@@ -574,21 +589,21 @@ position in.
   }
 
   /**
- * @classdesc A button control to reset rotation to 0.
-To style this control use css selector `.ol-rotate`. A `.ol-hidden` css
-selector is added to the button when the rotation is 0.
- * @param opt_options Rotate options.
- * @api stable
- */
-  declare class control$Rotate mixins control$Control {
+   * @classdesc A button control to reset rotation to 0.
+   * To style this control use css selector `.ol-rotate`. A `.ol-hidden` css
+   * selector is added to the button when the rotation is 0.
+   * @param opt_options Rotate options.
+   * @api stable
+   */
+  declare class control$Rotate mixins Control {
     /**
- * @classdesc A button control to reset rotation to 0.
-To style this control use css selector `.ol-rotate`. A `.ol-hidden` css
-selector is added to the button when the rotation is 0.
- * @param opt_options Rotate options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$RotateOptions): this;
+     * @classdesc A button control to reset rotation to 0.
+     * To style this control use css selector `.ol-rotate`. A `.ol-hidden` css
+     * selector is added to the button when the rotation is 0.
+     * @param opt_options Rotate options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$RotateOptions): this;
 
     /**
      * Update the rotate control element.
@@ -599,38 +614,38 @@ selector is added to the button when the rotation is 0.
   }
 
   /**
- * @classdesc A control displaying rough y-axis distances, calculated for the center of the
-viewport. For conformal projections (e.g. EPSG:3857, the default view
-projection in OpenLayers), the scale is valid for all directions.
-No scale line will be shown when the y-axis distance of a pixel at the
-viewport center cannot be calculated in the view projection.
-By default the scale line will show in the bottom left portion of the map,
-but this can be changed by using the css selector `.ol-scale-line`.
- * @param opt_options Scale line options.
- * @api stable
- */
-  declare class control$ScaleLine mixins control$Control {
+   * @classdesc A control displaying rough y-axis distances, calculated for the center of the
+   * viewport. For conformal projections (e.g. EPSG:3857, the default view
+   * projection in OpenLayers), the scale is valid for all directions.
+   * No scale line will be shown when the y-axis distance of a pixel at the
+   * viewport center cannot be calculated in the view projection.
+   * By default the scale line will show in the bottom left portion of the map,
+   * but this can be changed by using the css selector `.ol-scale-line`.
+   * @param opt_options Scale line options.
+   * @api stable
+   */
+  declare class control$ScaleLine mixins Control {
     /**
- * @classdesc A control displaying rough y-axis distances, calculated for the center of the
-viewport. For conformal projections (e.g. EPSG:3857, the default view
-projection in OpenLayers), the scale is valid for all directions.
-No scale line will be shown when the y-axis distance of a pixel at the
-viewport center cannot be calculated in the view projection.
-By default the scale line will show in the bottom left portion of the map,
-but this can be changed by using the css selector `.ol-scale-line`.
- * @param opt_options Scale line options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$ScaleLineOptions): this;
+     * @classdesc A control displaying rough y-axis distances, calculated for the center of the
+     * viewport. For conformal projections (e.g. EPSG:3857, the default view
+     * projection in OpenLayers), the scale is valid for all directions.
+     * No scale line will be shown when the y-axis distance of a pixel at the
+     * viewport center cannot be calculated in the view projection.
+     * By default the scale line will show in the bottom left portion of the map,
+     * but this can be changed by using the css selector `.ol-scale-line`.
+     * @param opt_options Scale line options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$ScaleLineOptions): this;
 
     /**
- * Return the units to use in the scale line.
- * @return The units to use in the scale
-line.
- * @observable
- * @api stable
- */
-    getUnits(): control$ScaleLine.proj$Units;
+     * Return the units to use in the scale line.
+     * @return The units to use in the scale
+     * line.
+     * @observable
+     * @api stable
+     */
+    getUnits(): control$ScaleLine$Units;
 
     /**
      * Update the scale line element.
@@ -645,19 +660,19 @@ line.
      * @observable
      * @api stable
      */
-    setUnits(units: control$ScaleLine.proj$Units): void;
+    setUnits(units: control$ScaleLine$Units): void;
   }
 
   /**
    * @api
    */
-  declare type ScaleLine$Property = string;
+  declare type control$ScaleLine$Property = string;
 
   /**
    * Units for the scale line. Supported values are `'degrees'`, `'imperial'`,
    * `'nautical'`, `'metric'`, `'us'`.
    */
-  declare type ScaleLine$Units =
+  declare type control$ScaleLine$Units =
     | "degrees"
     | "imperial"
     | "nautical"
@@ -665,43 +680,43 @@ line.
     | "us";
 
   /**
- * @classdesc A control with 2 buttons, one for zoom in and one for zoom out.
-This control is one of the default controls of a map. To style this control
-use css selectors `.ol-zoom-in` and `.ol-zoom-out`.
- * @param opt_options Zoom options.
- * @api stable
- */
-  declare class control$Zoom mixins control$Control {
+   * @classdesc A control with 2 buttons, one for zoom in and one for zoom out.
+   * This control is one of the default controls of a map. To style this control
+   * use css selectors `.ol-zoom-in` and `.ol-zoom-out`.
+   * @param opt_options Zoom options.
+   * @api stable
+   */
+  declare class control$Zoom mixins Control {
     /**
- * @classdesc A control with 2 buttons, one for zoom in and one for zoom out.
-This control is one of the default controls of a map. To style this control
-use css selectors `.ol-zoom-in` and `.ol-zoom-out`.
- * @param opt_options Zoom options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$ZoomOptions): this;
+     * @classdesc A control with 2 buttons, one for zoom in and one for zoom out.
+     * This control is one of the default controls of a map. To style this control
+     * use css selectors `.ol-zoom-in` and `.ol-zoom-out`.
+     * @param opt_options Zoom options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$ZoomOptions): this;
   }
 
   /**
- * @classdesc A slider type of control for zooming.
-
-Example:
-
-map.addControl(new ol.control.ZoomSlider());
- * @param opt_options Zoom slider options.
- * @api stable
- */
-  declare class control$ZoomSlider mixins control$Control {
+   * @classdesc A slider type of control for zooming.
+   *
+   * Example:
+   *
+   * map.addControl(new ol.control.ZoomSlider());
+   * @param opt_options Zoom slider options.
+   * @api stable
+   */
+  declare class control$ZoomSlider mixins Control {
     /**
- * @classdesc A slider type of control for zooming.
-
-Example:
-
-map.addControl(new ol.control.ZoomSlider());
- * @param opt_options Zoom slider options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$ZoomSliderOptions): this;
+     * @classdesc A slider type of control for zooming.
+     *
+     * Example:
+     *
+     * map.addControl(new ol.control.ZoomSlider());
+     * @param opt_options Zoom slider options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$ZoomSliderOptions): this;
 
     /**
      * Update the zoomslider element.
@@ -712,19 +727,19 @@ map.addControl(new ol.control.ZoomSlider());
   }
 
   /**
- * @classdesc A button control which, when pressed, changes the map view to a specific
-extent. To style this control use the css selector `.ol-zoom-extent`.
- * @param opt_options Options.
- * @api stable
- */
-  declare class control$ZoomToExtent mixins control$Control {
+   * @classdesc A button control which, when pressed, changes the map view to a specific
+   * extent. To style this control use the css selector `.ol-zoom-extent`.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class control$ZoomToExtent mixins Control {
     /**
- * @classdesc A button control which, when pressed, changes the map view to a specific
-extent. To style this control use the css selector `.ol-zoom-extent`.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$control.control$ZoomToExtentOptions): this;
+     * @classdesc A button control which, when pressed, changes the map view to a specific
+     * extent. To style this control use the css selector `.ol-zoom-extent`.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$control$ZoomToExtentOptions): this;
   }
 
   declare var npm$namespace$coordinate: {
@@ -756,57 +771,57 @@ extent. To style this control use the css selector `.ol-zoom-extent`.
   ): ol.Coordinate;
 
   /**
- * Returns a {@link ol.CoordinateFormatType} function that can be used to format
- * a {ol.Coordinate} to a string.
- * 
- * Example without specifying the fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var stringifyFunc = ol.coordinate.createStringXY();
- *      var out = stringifyFunc(coord);
- *      // out is now '8, 48'
- * 
- * Example with explicitly specifying 2 fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var stringifyFunc = ol.coordinate.createStringXY(2);
- *      var out = stringifyFunc(coord);
- *      // out is now '7.85, 47.98'
- * @param opt_fractionDigits The number of digits to include
-after the decimal point. Default is `0`.
- * @return Coordinate format.
- * @api stable
- */
+   * Returns a {@link ol.CoordinateFormatType} function that can be used to format
+   * a {ol.Coordinate} to a string.
+   *
+   * Example without specifying the fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var stringifyFunc = ol.coordinate.createStringXY();
+   *      var out = stringifyFunc(coord);
+   *      // out is now '8, 48'
+   *
+   * Example with explicitly specifying 2 fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var stringifyFunc = ol.coordinate.createStringXY(2);
+   *      var out = stringifyFunc(coord);
+   *      // out is now '7.85, 47.98'
+   * @param opt_fractionDigits The number of digits to include
+   * after the decimal point. Default is `0`.
+   * @return Coordinate format.
+   * @api stable
+   */
   declare function coordinate$createStringXY(
     opt_fractionDigits?: number
   ): ol.CoordinateFormatType;
 
   /**
- * Transforms the given {@link ol.Coordinate} to a string using the given string
- * template. The strings `{x}` and `{y}` in the template will be replaced with
- * the first and second coordinate values respectively.
- * 
- * Example without specifying the fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var template = 'Coordinate is ({x}|{y}).';
- *      var out = ol.coordinate.format(coord, template);
- *      // out is now 'Coordinate is (8|48).'
- * 
- * Example explicitly specifying the fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var template = 'Coordinate is ({x}|{y}).';
- *      var out = ol.coordinate.format(coord, template, 2);
- *      // out is now 'Coordinate is (7.85|47.98).'
- * @param coordinate Coordinate.
- * @param template A template string with `{x}` and `{y}` placeholders
-that will be replaced by first and second coordinate values.
- * @param opt_fractionDigits The number of digits to include
-after the decimal point. Default is `0`.
- * @return Formatted coordinate.
- * @api stable
- */
+   * Transforms the given {@link ol.Coordinate} to a string using the given string
+   * template. The strings `{x}` and `{y}` in the template will be replaced with
+   * the first and second coordinate values respectively.
+   *
+   * Example without specifying the fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var template = 'Coordinate is ({x}|{y}).';
+   *      var out = ol.coordinate.format(coord, template);
+   *      // out is now 'Coordinate is (8|48).'
+   *
+   * Example explicitly specifying the fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var template = 'Coordinate is ({x}|{y}).';
+   *      var out = ol.coordinate.format(coord, template, 2);
+   *      // out is now 'Coordinate is (7.85|47.98).'
+   * @param coordinate Coordinate.
+   * @param template A template string with `{x}` and `{y}` placeholders
+   * that will be replaced by first and second coordinate values.
+   * @param opt_fractionDigits The number of digits to include
+   * after the decimal point. Default is `0`.
+   * @return Formatted coordinate.
+   * @api stable
+   */
   declare function coordinate$format(
     coordinate: ol.Coordinate,
     template: string,
@@ -834,193 +849,193 @@ after the decimal point. Default is `0`.
   ): ol.Coordinate;
 
   /**
- * Format a geographic coordinate with the hemisphere, degrees, minutes, and
- * seconds.
- * 
- * Example without specifying fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var out = ol.coordinate.toStringHDMS(coord);
- *      // out is now '47° 58′ 60″ N 7° 50′ 60″ E'
- * 
- * Example explicitly specifying 1 fractional digit:
- * 
- *      var coord = [7.85, 47.983333];
- *      var out = ol.coordinate.toStringHDMS(coord, 1);
- *      // out is now '47° 58′ 60.0″ N 7° 50′ 60.0″ E'
- * @param coordinate Coordinate.
- * @param opt_fractionDigits The number of digits to include
-after the decimal point. Default is `0`.
- * @return Hemisphere, degrees, minutes and seconds.
- * @api stable
- */
+   * Format a geographic coordinate with the hemisphere, degrees, minutes, and
+   * seconds.
+   *
+   * Example without specifying fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var out = ol.coordinate.toStringHDMS(coord);
+   *      // out is now '47° 58′ 60″ N 7° 50′ 60″ E'
+   *
+   * Example explicitly specifying 1 fractional digit:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var out = ol.coordinate.toStringHDMS(coord, 1);
+   *      // out is now '47° 58′ 60.0″ N 7° 50′ 60.0″ E'
+   * @param coordinate Coordinate.
+   * @param opt_fractionDigits The number of digits to include
+   * after the decimal point. Default is `0`.
+   * @return Hemisphere, degrees, minutes and seconds.
+   * @api stable
+   */
   declare function coordinate$toStringHDMS(
     coordinate?: ol.Coordinate,
     opt_fractionDigits?: number
   ): string;
 
   /**
- * Format a coordinate as a comma delimited string.
- * 
- * Example without specifying fractional digits:
- * 
- *      var coord = [7.85, 47.983333];
- *      var out = ol.coordinate.toStringXY(coord);
- *      // out is now '8, 48'
- * 
- * Example explicitly specifying 1 fractional digit:
- * 
- *      var coord = [7.85, 47.983333];
- *      var out = ol.coordinate.toStringXY(coord, 1);
- *      // out is now '7.8, 48.0'
- * @param coordinate Coordinate.
- * @param opt_fractionDigits The number of digits to include
-after the decimal point. Default is `0`.
- * @return XY.
- * @api stable
- */
+   * Format a coordinate as a comma delimited string.
+   *
+   * Example without specifying fractional digits:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var out = ol.coordinate.toStringXY(coord);
+   *      // out is now '8, 48'
+   *
+   * Example explicitly specifying 1 fractional digit:
+   *
+   *      var coord = [7.85, 47.983333];
+   *      var out = ol.coordinate.toStringXY(coord, 1);
+   *      // out is now '7.8, 48.0'
+   * @param coordinate Coordinate.
+   * @param opt_fractionDigits The number of digits to include
+   * after the decimal point. Default is `0`.
+   * @return XY.
+   * @api stable
+   */
   declare function coordinate$toStringXY(
     coordinate?: ol.Coordinate,
     opt_fractionDigits?: number
   ): string;
 
   /**
- * @classdesc The ol.DeviceOrientation class provides access to information from
-DeviceOrientation events.  See the [HTML 5 DeviceOrientation Specification](
-http://www.w3.org/TR/orientation-event/) for more details.
-
-Many new computers, and especially mobile phones
-and tablets, provide hardware support for device orientation. Web
-developers targeting mobile devices will be especially interested in this
-class.
-
-Device orientation data are relative to a common starting point. For mobile
-devices, the starting point is to lay your phone face up on a table with the
-top of the phone pointing north. This represents the zero state. All
-angles are then relative to this state. For computers, it is the same except
-the screen is open at 90 degrees.
-
-Device orientation is reported as three angles - `alpha`, `beta`, and
-`gamma` - relative to the starting position along the three planar axes X, Y
-and Z. The X axis runs from the left edge to the right edge through the
-middle of the device. Similarly, the Y axis runs from the bottom to the top
-of the device through the middle. The Z axis runs from the back to the front
-through the middle. In the starting position, the X axis points to the
-right, the Y axis points away from you and the Z axis points straight up
-from the device lying flat.
-
-The three angles representing the device orientation are relative to the
-three axes. `alpha` indicates how much the device has been rotated around the
-Z axis, which is commonly interpreted as the compass heading (see note
-below). `beta` indicates how much the device has been rotated around the X
-axis, or how much it is tilted from front to back.  `gamma` indicates how
-much the device has been rotated around the Y axis, or how much it is tilted
-from left to right.
-
-For most browsers, the `alpha` value returns the compass heading so if the
-device points north, it will be 0.  With Safari on iOS, the 0 value of
-`alpha` is calculated from when device orientation was first requested.
-ol.DeviceOrientation provides the `heading` property which normalizes this
-behavior across all browsers for you.
-
-It is important to note that the HTML 5 DeviceOrientation specification
-indicates that `alpha`, `beta` and `gamma` are in degrees while the
-equivalent properties in ol.DeviceOrientation are in radians for consistency
-with all other uses of angles throughout OpenLayers.
-
-To get notified of device orientation changes, register a listener for the
-generic `change` event on your `ol.DeviceOrientation` instance.
- * @see {@link http://www.w3.org/TR/orientation-event/}
- * @param opt_options Options.
- * @api
- */
+   * @classdesc The ol.DeviceOrientation class provides access to information from
+   * DeviceOrientation events.  See the [HTML 5 DeviceOrientation Specification](
+   * http://www.w3.org/TR/orientation-event/) for more details.
+   *
+   * Many new computers, and especially mobile phones
+   * and tablets, provide hardware support for device orientation. Web
+   * developers targeting mobile devices will be especially interested in this
+   * class.
+   *
+   * Device orientation data are relative to a common starting point. For mobile
+   * devices, the starting point is to lay your phone face up on a table with the
+   * top of the phone pointing north. This represents the zero state. All
+   * angles are then relative to this state. For computers, it is the same except
+   * the screen is open at 90 degrees.
+   *
+   * Device orientation is reported as three angles - `alpha`, `beta`, and
+   * `gamma` - relative to the starting position along the three planar axes X, Y
+   * and Z. The X axis runs from the left edge to the right edge through the
+   * middle of the device. Similarly, the Y axis runs from the bottom to the top
+   * of the device through the middle. The Z axis runs from the back to the front
+   * through the middle. In the starting position, the X axis points to the
+   * right, the Y axis points away from you and the Z axis points straight up
+   * from the device lying flat.
+   *
+   * The three angles representing the device orientation are relative to the
+   * three axes. `alpha` indicates how much the device has been rotated around the
+   * Z axis, which is commonly interpreted as the compass heading (see note
+   * below). `beta` indicates how much the device has been rotated around the X
+   * axis, or how much it is tilted from front to back.  `gamma` indicates how
+   * much the device has been rotated around the Y axis, or how much it is tilted
+   * from left to right.
+   *
+   * For most browsers, the `alpha` value returns the compass heading so if the
+   * device points north, it will be 0.  With Safari on iOS, the 0 value of
+   * `alpha` is calculated from when device orientation was first requested.
+   * ol.DeviceOrientation provides the `heading` property which normalizes this
+   * behavior across all browsers for you.
+   *
+   * It is important to note that the HTML 5 DeviceOrientation specification
+   * indicates that `alpha`, `beta` and `gamma` are in degrees while the
+   * equivalent properties in ol.DeviceOrientation are in radians for consistency
+   * with all other uses of angles throughout OpenLayers.
+   *
+   * To get notified of device orientation changes, register a listener for the
+   * generic `change` event on your `ol.DeviceOrientation` instance.
+   * @see {@link http://www.w3.org/TR/orientation-event/}
+   * @param opt_options Options.
+   * @api
+   */
   declare export class DeviceOrientation mixins Object {
     /**
- * @classdesc The ol.DeviceOrientation class provides access to information from
-DeviceOrientation events.  See the [HTML 5 DeviceOrientation Specification](
-http://www.w3.org/TR/orientation-event/) for more details.
-
-Many new computers, and especially mobile phones
-and tablets, provide hardware support for device orientation. Web
-developers targeting mobile devices will be especially interested in this
-class.
-
-Device orientation data are relative to a common starting point. For mobile
-devices, the starting point is to lay your phone face up on a table with the
-top of the phone pointing north. This represents the zero state. All
-angles are then relative to this state. For computers, it is the same except
-the screen is open at 90 degrees.
-
-Device orientation is reported as three angles - `alpha`, `beta`, and
-`gamma` - relative to the starting position along the three planar axes X, Y
-and Z. The X axis runs from the left edge to the right edge through the
-middle of the device. Similarly, the Y axis runs from the bottom to the top
-of the device through the middle. The Z axis runs from the back to the front
-through the middle. In the starting position, the X axis points to the
-right, the Y axis points away from you and the Z axis points straight up
-from the device lying flat.
-
-The three angles representing the device orientation are relative to the
-three axes. `alpha` indicates how much the device has been rotated around the
-Z axis, which is commonly interpreted as the compass heading (see note
-below). `beta` indicates how much the device has been rotated around the X
-axis, or how much it is tilted from front to back.  `gamma` indicates how
-much the device has been rotated around the Y axis, or how much it is tilted
-from left to right.
-
-For most browsers, the `alpha` value returns the compass heading so if the
-device points north, it will be 0.  With Safari on iOS, the 0 value of
-`alpha` is calculated from when device orientation was first requested.
-ol.DeviceOrientation provides the `heading` property which normalizes this
-behavior across all browsers for you.
-
-It is important to note that the HTML 5 DeviceOrientation specification
-indicates that `alpha`, `beta` and `gamma` are in degrees while the
-equivalent properties in ol.DeviceOrientation are in radians for consistency
-with all other uses of angles throughout OpenLayers.
-
-To get notified of device orientation changes, register a listener for the
-generic `change` event on your `ol.DeviceOrientation` instance.
- * @see {@link http://www.w3.org/TR/orientation-event/}
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$olx$DeviceOrientationOptions): this;
+     * @classdesc The ol.DeviceOrientation class provides access to information from
+     * DeviceOrientation events.  See the [HTML 5 DeviceOrientation Specification](
+     * http://www.w3.org/TR/orientation-event/) for more details.
+     *
+     * Many new computers, and especially mobile phones
+     * and tablets, provide hardware support for device orientation. Web
+     * developers targeting mobile devices will be especially interested in this
+     * class.
+     *
+     * Device orientation data are relative to a common starting point. For mobile
+     * devices, the starting point is to lay your phone face up on a table with the
+     * top of the phone pointing north. This represents the zero state. All
+     * angles are then relative to this state. For computers, it is the same except
+     * the screen is open at 90 degrees.
+     *
+     * Device orientation is reported as three angles - `alpha`, `beta`, and
+     * `gamma` - relative to the starting position along the three planar axes X, Y
+     * and Z. The X axis runs from the left edge to the right edge through the
+     * middle of the device. Similarly, the Y axis runs from the bottom to the top
+     * of the device through the middle. The Z axis runs from the back to the front
+     * through the middle. In the starting position, the X axis points to the
+     * right, the Y axis points away from you and the Z axis points straight up
+     * from the device lying flat.
+     *
+     * The three angles representing the device orientation are relative to the
+     * three axes. `alpha` indicates how much the device has been rotated around the
+     * Z axis, which is commonly interpreted as the compass heading (see note
+     * below). `beta` indicates how much the device has been rotated around the X
+     * axis, or how much it is tilted from front to back.  `gamma` indicates how
+     * much the device has been rotated around the Y axis, or how much it is tilted
+     * from left to right.
+     *
+     * For most browsers, the `alpha` value returns the compass heading so if the
+     * device points north, it will be 0.  With Safari on iOS, the 0 value of
+     * `alpha` is calculated from when device orientation was first requested.
+     * ol.DeviceOrientation provides the `heading` property which normalizes this
+     * behavior across all browsers for you.
+     *
+     * It is important to note that the HTML 5 DeviceOrientation specification
+     * indicates that `alpha`, `beta` and `gamma` are in degrees while the
+     * equivalent properties in ol.DeviceOrientation are in radians for consistency
+     * with all other uses of angles throughout OpenLayers.
+     *
+     * To get notified of device orientation changes, register a listener for the
+     * generic `change` event on your `ol.DeviceOrientation` instance.
+     * @see {@link http://www.w3.org/TR/orientation-event/}
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$DeviceOrientationOptions): this;
 
     /**
- * Rotation around the device z-axis (in radians).
- * @return The euler angle in radians of the device from the
-standard Z axis.
- * @observable
- * @api
- */
+     * Rotation around the device z-axis (in radians).
+     * @return The euler angle in radians of the device from the
+     * standard Z axis.
+     * @observable
+     * @api
+     */
     getAlpha(): number;
 
     /**
- * Rotation around the device x-axis (in radians).
- * @return The euler angle in radians of the device from the
-planar X axis.
- * @observable
- * @api
- */
+     * Rotation around the device x-axis (in radians).
+     * @return The euler angle in radians of the device from the
+     * planar X axis.
+     * @observable
+     * @api
+     */
     getBeta(): number;
 
     /**
- * Rotation around the device y-axis (in radians).
- * @return The euler angle in radians of the device from the
-planar Y axis.
- * @observable
- * @api
- */
+     * Rotation around the device y-axis (in radians).
+     * @return The euler angle in radians of the device from the
+     * planar Y axis.
+     * @observable
+     * @api
+     */
     getGamma(): number;
 
     /**
- * The heading of the device relative to north (in radians).
- * @return The heading of the device relative to north, in
-radians, normalizing for different browser behavior.
- * @observable
- * @api
- */
+     * The heading of the device relative to north (in radians).
+     * @return The heading of the device relative to north, in
+     * radians, normalizing for different browser behavior.
+     * @observable
+     * @api
+     */
     getHeading(): number;
 
     /**
@@ -1032,12 +1047,12 @@ radians, normalizing for different browser behavior.
     getTracking(): boolean;
 
     /**
- * Enable or disable tracking of device orientation events.
- * @param tracking The status of tracking changes to alpha, beta and
-gamma. If true, changes are tracked and reported immediately.
- * @observable
- * @api
- */
+     * Enable or disable tracking of device orientation events.
+     * @param tracking The status of tracking changes to alpha, beta and
+     * gamma. If true, changes are tracked and reported immediately.
+     * @observable
+     * @api
+     */
     setTracking(tracking: boolean): void;
   }
 
@@ -1101,21 +1116,27 @@ gamma. If true, changes are tracked and reported immediately.
    */
   declare function easing$upAndDown(t: number): number;
 
-  declare var npm$namespace$condition: {
-    altKeyOnly: typeof condition$altKeyOnly,
-    altShiftKeysOnly: typeof condition$altShiftKeysOnly,
-    always: typeof condition$always,
-    click: typeof condition$click,
-    never: typeof condition$never,
-    pointerMove: typeof condition$pointerMove,
-    singleClick: typeof condition$singleClick,
-    doubleClick: typeof condition$doubleClick,
-    noModifierKeys: typeof condition$noModifierKeys,
-    platformModifierKeyOnly: typeof condition$platformModifierKeyOnly,
-    shiftKeyOnly: typeof condition$shiftKeyOnly,
-    targetNotEditable: typeof condition$targetNotEditable,
-    mouseOnly: typeof condition$mouseOnly,
-    primaryAction: typeof condition$primaryAction
+  declare var npm$namespace$events: {
+    Event: typeof events$Event,
+    EventTarget: typeof events$EventTarget,
+    condition: typeof npm$namespace$events$condition
+  };
+
+  declare var npm$namespace$events$condition: {
+    altKeyOnly: typeof events$condition$altKeyOnly,
+    altShiftKeysOnly: typeof events$condition$altShiftKeysOnly,
+    always: typeof events$condition$always,
+    click: typeof events$condition$click,
+    never: typeof events$condition$never,
+    pointerMove: typeof events$condition$pointerMove,
+    singleClick: typeof events$condition$singleClick,
+    doubleClick: typeof events$condition$doubleClick,
+    noModifierKeys: typeof events$condition$noModifierKeys,
+    platformModifierKeyOnly: typeof events$condition$platformModifierKeyOnly,
+    shiftKeyOnly: typeof events$condition$shiftKeyOnly,
+    targetNotEditable: typeof events$condition$targetNotEditable,
+    mouseOnly: typeof events$condition$mouseOnly,
+    primaryAction: typeof events$condition$primaryAction
   };
 
   /**
@@ -1125,7 +1146,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if only the alt key is pressed.
    * @api stable
    */
-  declare function condition$altKeyOnly(
+  declare function events$condition$altKeyOnly(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1136,7 +1157,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if only the alt and shift keys are pressed.
    * @api stable
    */
-  declare function condition$altShiftKeysOnly(
+  declare function events$condition$altShiftKeysOnly(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1146,7 +1167,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True.
    * @api stable
    */
-  declare function condition$always(
+  declare function events$condition$always(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1156,7 +1177,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the event is a map `click` event.
    * @api stable
    */
-  declare function condition$click(
+  declare function events$condition$click(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1166,7 +1187,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return False.
    * @api stable
    */
-  declare function condition$never(
+  declare function events$condition$never(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1177,7 +1198,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the browser event is a `pointermove` event.
    * @api
    */
-  declare function condition$pointerMove(
+  declare function events$condition$pointerMove(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1187,7 +1208,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the event is a map `singleclick` event.
    * @api stable
    */
-  declare function condition$singleClick(
+  declare function events$condition$singleClick(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1197,7 +1218,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the event is a map `dblclick` event.
    * @api stable
    */
-  declare function condition$doubleClick(
+  declare function events$condition$doubleClick(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1208,7 +1229,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True only if there no modifier keys are pressed.
    * @api stable
    */
-  declare function condition$noModifierKeys(
+  declare function events$condition$noModifierKeys(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1220,7 +1241,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if only the platform modifier key is pressed.
    * @api stable
    */
-  declare function condition$platformModifierKeyOnly(
+  declare function events$condition$platformModifierKeyOnly(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1231,7 +1252,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if only the shift key is pressed.
    * @api stable
    */
-  declare function condition$shiftKeyOnly(
+  declare function events$condition$shiftKeyOnly(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1242,7 +1263,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True only if the target element is not editable.
    * @api
    */
-  declare function condition$targetNotEditable(
+  declare function events$condition$targetNotEditable(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1252,7 +1273,7 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the event originates from a mouse device.
    * @api stable
    */
-  declare function condition$mouseOnly(
+  declare function events$condition$mouseOnly(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
@@ -1264,31 +1285,31 @@ gamma. If true, changes are tracked and reported immediately.
    * @return True if the event originates from a primary pointer.
    * @api
    */
-  declare function condition$primaryAction(
+  declare function events$condition$primaryAction(
     mapBrowserEvent: ol.MapBrowserEvent
   ): boolean;
 
   /**
- * @classdesc Stripped down implementation of the W3C DOM Level 2 Event interface.
- * @see {@link https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
-
-This implementation only provides `type` and `target` properties, and
-`stopPropagation` and `preventDefault` methods. It is meant as base class
-for higher level events defined in the library, and works with
-{@link ol.events.EventTarget}.
- * @param type Type.
- */
+   * @classdesc Stripped down implementation of the W3C DOM Level 2 Event interface.
+   * @see {@link https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
+   *
+   * This implementation only provides `type` and `target` properties, and
+   * `stopPropagation` and `preventDefault` methods. It is meant as base class
+   * for higher level events defined in the library, and works with
+   * {@link ol.events.EventTarget}.
+   * @param type Type.
+   */
   declare class events$Event {
     /**
- * @classdesc Stripped down implementation of the W3C DOM Level 2 Event interface.
- * @see {@link https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
-
-This implementation only provides `type` and `target` properties, and
-`stopPropagation` and `preventDefault` methods. It is meant as base class
-for higher level events defined in the library, and works with
-{@link ol.events.EventTarget}.
- * @param type Type.
- */
+     * @classdesc Stripped down implementation of the W3C DOM Level 2 Event interface.
+     * @see {@link https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
+     *
+     * This implementation only provides `type` and `target` properties, and
+     * `stopPropagation` and `preventDefault` methods. It is meant as base class
+     * for higher level events defined in the library, and works with
+     * {@link ol.events.EventTarget}.
+     * @param type Type.
+     */
     constructor(type: string): this;
 
     /**
@@ -1317,39 +1338,39 @@ for higher level events defined in the library, and works with
   }
 
   /**
- * @classdesc A simplified implementation of the W3C DOM Level 2 EventTarget interface.
- * @see {@link https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
-
-There are two important simplifications compared to the specification:
-
-1. The handling of `useCapture` in `addEventListener` and
-`removeEventListener`. There is no real capture model.
-2. The handling of `stopPropagation` and `preventDefault` on `dispatchEvent`.
-There is no event target hierarchy. When a listener calls
-`stopPropagation` or `preventDefault` on an event object, it means that no
-more listeners after this one will be called. Same as when the listener
-returns false.
- */
+   * @classdesc A simplified implementation of the W3C DOM Level 2 EventTarget interface.
+   * @see {@link https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
+   *
+   * There are two important simplifications compared to the specification:
+   *
+   * 1. The handling of `useCapture` in `addEventListener` and
+   * `removeEventListener`. There is no real capture model.
+   * 2. The handling of `stopPropagation` and `preventDefault` on `dispatchEvent`.
+   * There is no event target hierarchy. When a listener calls
+   * `stopPropagation` or `preventDefault` on an event object, it means that no
+   * more listeners after this one will be called. Same as when the listener
+   * returns false.
+   */
   declare class events$EventTarget mixins Disposable {
     /**
- * @classdesc A simplified implementation of the W3C DOM Level 2 EventTarget interface.
- * @see {@link https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
-
-There are two important simplifications compared to the specification:
-
-1. The handling of `useCapture` in `addEventListener` and
-`removeEventListener`. There is no real capture model.
-2. The handling of `stopPropagation` and `preventDefault` on `dispatchEvent`.
-There is no event target hierarchy. When a listener calls
-`stopPropagation` or `preventDefault` on an event object, it means that no
-more listeners after this one will be called. Same as when the listener
-returns false.
- */
+     * @classdesc A simplified implementation of the W3C DOM Level 2 EventTarget interface.
+     * @see {@link https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
+     *
+     * There are two important simplifications compared to the specification:
+     *
+     * 1. The handling of `useCapture` in `addEventListener` and
+     * `removeEventListener`. There is no real capture model.
+     * 2. The handling of `stopPropagation` and `preventDefault` on `dispatchEvent`.
+     * There is no event target hierarchy. When a listener calls
+     * `stopPropagation` or `preventDefault` on an event object, it means that no
+     * more listeners after this one will be called. Same as when the listener
+     * returns false.
+     */
     constructor(): this;
   }
   declare export type EventsListenerFunctionType =
-    | ((evt: ol.events.events$Event) => void)
-    | ((evt: ol.events.events$Event) => boolean);
+    | ((evt: ol.events.Event) => void)
+    | ((evt: ol.events.Event) => boolean);
 
   declare var npm$namespace$extent: {
     boundingExtent: typeof extent$boundingExtent,
@@ -1382,7 +1403,7 @@ returns false.
    */
   declare function extent$boundingExtent(
     coordinates: ol.Coordinate[]
-  ): ol.interaction$Extent;
+  ): ol.Extent;
 
   /**
    * Return extent increased by the provided value.
@@ -1393,10 +1414,10 @@ returns false.
    * @api stable
    */
   declare function extent$buffer(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     value: number,
-    opt_extent?: ol.interaction$Extent
-  ): ol.interaction$Extent;
+    opt_extent?: ol.Extent
+  ): ol.Extent;
 
   /**
    * Check if the passed coordinate is contained or on the edge of the extent.
@@ -1406,24 +1427,24 @@ returns false.
    * @api stable
    */
   declare function extent$containsCoordinate(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     coordinate: ol.Coordinate
   ): boolean;
 
   /**
- * Check if one extent contains another.
- * 
- * An extent is deemed contained if it lies completely within the other extent,
- * including if they share one or more edges.
- * @param extent1 Extent 1.
- * @param extent2 Extent 2.
- * @return The second extent is contained by or on the edge of the
-first.
- * @api stable
- */
+   * Check if one extent contains another.
+   *
+   * An extent is deemed contained if it lies completely within the other extent,
+   * including if they share one or more edges.
+   * @param extent1 Extent 1.
+   * @param extent2 Extent 2.
+   * @return The second extent is contained by or on the edge of the
+   * first.
+   * @api stable
+   */
   declare function extent$containsExtent(
-    extent1: ol.interaction$Extent,
-    extent2: ol.interaction$Extent
+    extent1: ol.Extent,
+    extent2: ol.Extent
   ): boolean;
 
   /**
@@ -1435,7 +1456,7 @@ first.
    * @api stable
    */
   declare function extent$containsXY(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     x: number,
     y: number
   ): boolean;
@@ -1445,7 +1466,7 @@ first.
    * @return Empty extent.
    * @api stable
    */
-  declare function extent$createEmpty(): ol.interaction$Extent;
+  declare function extent$createEmpty(): ol.Extent;
 
   /**
    * Determine if two extents are equivalent.
@@ -1455,8 +1476,8 @@ first.
    * @api stable
    */
   declare function extent$equals(
-    extent1: ol.interaction$Extent,
-    extent2: ol.interaction$Extent
+    extent1: ol.Extent,
+    extent2: ol.Extent
   ): boolean;
 
   /**
@@ -1467,9 +1488,9 @@ first.
    * @api stable
    */
   declare function extent$extend(
-    extent1: ol.interaction$Extent,
-    extent2: ol.interaction$Extent
-  ): ol.interaction$Extent;
+    extent1: ol.Extent,
+    extent2: ol.Extent
+  ): ol.Extent;
 
   /**
    * Get the bottom left coordinate of an extent.
@@ -1477,9 +1498,7 @@ first.
    * @return Bottom left coordinate.
    * @api stable
    */
-  declare function extent$getBottomLeft(
-    extent: ol.interaction$Extent
-  ): ol.Coordinate;
+  declare function extent$getBottomLeft(extent: ol.Extent): ol.Coordinate;
 
   /**
    * Get the bottom right coordinate of an extent.
@@ -1487,9 +1506,7 @@ first.
    * @return Bottom right coordinate.
    * @api stable
    */
-  declare function extent$getBottomRight(
-    extent: ol.interaction$Extent
-  ): ol.Coordinate;
+  declare function extent$getBottomRight(extent: ol.Extent): ol.Coordinate;
 
   /**
    * Get the center coordinate of an extent.
@@ -1497,9 +1514,7 @@ first.
    * @return Center.
    * @api stable
    */
-  declare function extent$getCenter(
-    extent: ol.interaction$Extent
-  ): ol.Coordinate;
+  declare function extent$getCenter(extent: ol.Extent): ol.Coordinate;
 
   /**
    * Get the height of an extent.
@@ -1507,7 +1522,7 @@ first.
    * @return Height.
    * @api stable
    */
-  declare function extent$getHeight(extent: ol.interaction$Extent): number;
+  declare function extent$getHeight(extent: ol.Extent): number;
 
   /**
    * Get the intersection of two extents.
@@ -1518,10 +1533,10 @@ first.
    * @api stable
    */
   declare function extent$getIntersection(
-    extent1: ol.interaction$Extent,
-    extent2: ol.interaction$Extent,
-    opt_extent?: ol.interaction$Extent
-  ): ol.interaction$Extent;
+    extent1: ol.Extent,
+    extent2: ol.Extent,
+    opt_extent?: ol.Extent
+  ): ol.Extent;
 
   /**
    * Get the size (width, height) of an extent.
@@ -1529,7 +1544,7 @@ first.
    * @return The extent size.
    * @api stable
    */
-  declare function extent$getSize(extent: ol.interaction$Extent): ol.Size;
+  declare function extent$getSize(extent: ol.Extent): ol.Size;
 
   /**
    * Get the top left coordinate of an extent.
@@ -1537,9 +1552,7 @@ first.
    * @return Top left coordinate.
    * @api stable
    */
-  declare function extent$getTopLeft(
-    extent: ol.interaction$Extent
-  ): ol.Coordinate;
+  declare function extent$getTopLeft(extent: ol.Extent): ol.Coordinate;
 
   /**
    * Get the top right coordinate of an extent.
@@ -1547,9 +1560,7 @@ first.
    * @return Top right coordinate.
    * @api stable
    */
-  declare function extent$getTopRight(
-    extent: ol.interaction$Extent
-  ): ol.Coordinate;
+  declare function extent$getTopRight(extent: ol.Extent): ol.Coordinate;
 
   /**
    * Get the width of an extent.
@@ -1557,7 +1568,7 @@ first.
    * @return Width.
    * @api stable
    */
-  declare function extent$getWidth(extent: ol.interaction$Extent): number;
+  declare function extent$getWidth(extent: ol.Extent): number;
 
   /**
    * Determine if one extent intersects another.
@@ -1567,8 +1578,8 @@ first.
    * @api stable
    */
   declare function extent$intersects(
-    extent1: ol.interaction$Extent,
-    extent2: ol.interaction$Extent
+    extent1: ol.Extent,
+    extent2: ol.Extent
   ): boolean;
 
   /**
@@ -1577,107 +1588,107 @@ first.
    * @return Is empty.
    * @api stable
    */
-  declare function extent$isEmpty(extent: ol.interaction$Extent): boolean;
+  declare function extent$isEmpty(extent: ol.Extent): boolean;
 
   /**
- * Apply a transform function to the extent.
- * @param extent Extent.
- * @param transformFn Transform function.  Called with
-[minX, minY, maxX, maxY] extent coordinates.
- * @param opt_extent Destination extent.
- * @return Extent.
- * @api stable
- */
+   * Apply a transform function to the extent.
+   * @param extent Extent.
+   * @param transformFn Transform function.  Called with
+   * [minX, minY, maxX, maxY] extent coordinates.
+   * @param opt_extent Destination extent.
+   * @return Extent.
+   * @api stable
+   */
   declare function extent$applyTransform(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     transformFn: ol.TransformFunction,
-    opt_extent?: ol.interaction$Extent
-  ): ol.interaction$Extent;
+    opt_extent?: ol.Extent
+  ): ol.Extent;
 
   /**
- * @classdesc A vector object for geographic features with a geometry and other
-attribute properties, similar to the features in vector file formats like
-GeoJSON.
-
-Features can be styled individually with `setStyle`; otherwise they use the
-style of their vector layer.
-
-Note that attribute properties are set as {@link ol.Object} properties on
-the feature object, so they are observable, and have get/set accessors.
-
-Typically, a feature has a single geometry property. You can set the
-geometry using the `setGeometry` method and get it with `getGeometry`.
-It is possible to store more than one geometry on a feature using attribute
-properties. By default, the geometry used for rendering is identified by
-the property name `geometry`. If you want to use another geometry property
-for rendering, use the `setGeometryName` method to change the attribute
-property associated with the geometry for the feature.  For example:
-
-```js
- * var feature = new ol.Feature({
- *   geometry: new ol.geom.Polygon(polyCoords),
- *   labelPoint: new ol.geom.Point(labelCoords),
- *   name: 'My Polygon'
- * });
- *
- * // get the polygon geometry
- * var poly = feature.getGeometry();
- *
- * // Render the feature as a point using the coordinates from labelPoint
- * feature.setGeometryName('labelPoint');
- *
- * // get the point geometry
- * var point = feature.getGeometry();
- * ```
- * @param opt_geometryOrProperties You may pass a Geometry object directly, or an object literal
-containing properties.  If you pass an object literal, you may
-include a Geometry associated with a `geometry` key.
- * @api stable
- */
+   * @classdesc A vector object for geographic features with a geometry and other
+   * attribute properties, similar to the features in vector file formats like
+   * GeoJSON.
+   *
+   * Features can be styled individually with `setStyle`; otherwise they use the
+   * style of their vector layer.
+   *
+   * Note that attribute properties are set as {@link ol.Object} properties on
+   * the feature object, so they are observable, and have get/set accessors.
+   *
+   * Typically, a feature has a single geometry property. You can set the
+   * geometry using the `setGeometry` method and get it with `getGeometry`.
+   * It is possible to store more than one geometry on a feature using attribute
+   * properties. By default, the geometry used for rendering is identified by
+   * the property name `geometry`. If you want to use another geometry property
+   * for rendering, use the `setGeometryName` method to change the attribute
+   * property associated with the geometry for the feature.  For example:
+   *
+   * ```js
+   *  * var feature = new ol.Feature({
+   *  *   geometry: new ol.geom.Polygon(polyCoords),
+   *  *   labelPoint: new ol.geom.Point(labelCoords),
+   *  *   name: 'My Polygon'
+   *  * });
+   *  *
+   *  * // get the polygon geometry
+   *  * var poly = feature.getGeometry();
+   *  *
+   *  * // Render the feature as a point using the coordinates from labelPoint
+   *  * feature.setGeometryName('labelPoint');
+   *  *
+   *  * // get the point geometry
+   *  * var point = feature.getGeometry();
+   *  * ```
+   * @param opt_geometryOrProperties You may pass a Geometry object directly, or an object literal
+   * containing properties.  If you pass an object literal, you may
+   * include a Geometry associated with a `geometry` key.
+   * @api stable
+   */
   declare export class Feature mixins Object {
     /**
- * @classdesc A vector object for geographic features with a geometry and other
-attribute properties, similar to the features in vector file formats like
-GeoJSON.
-
-Features can be styled individually with `setStyle`; otherwise they use the
-style of their vector layer.
-
-Note that attribute properties are set as {@link ol.Object} properties on
-the feature object, so they are observable, and have get/set accessors.
-
-Typically, a feature has a single geometry property. You can set the
-geometry using the `setGeometry` method and get it with `getGeometry`.
-It is possible to store more than one geometry on a feature using attribute
-properties. By default, the geometry used for rendering is identified by
-the property name `geometry`. If you want to use another geometry property
-for rendering, use the `setGeometryName` method to change the attribute
-property associated with the geometry for the feature.  For example:
-
-```js
-     * var feature = new ol.Feature({
-     *   geometry: new ol.geom.Polygon(polyCoords),
-     *   labelPoint: new ol.geom.Point(labelCoords),
-     *   name: 'My Polygon'
-     * });
+     * @classdesc A vector object for geographic features with a geometry and other
+     * attribute properties, similar to the features in vector file formats like
+     * GeoJSON.
      *
-     * // get the polygon geometry
-     * var poly = feature.getGeometry();
+     * Features can be styled individually with `setStyle`; otherwise they use the
+     * style of their vector layer.
      *
-     * // Render the feature as a point using the coordinates from labelPoint
-     * feature.setGeometryName('labelPoint');
+     * Note that attribute properties are set as {@link ol.Object} properties on
+     * the feature object, so they are observable, and have get/set accessors.
      *
-     * // get the point geometry
-     * var point = feature.getGeometry();
-     * ```
- * @param opt_geometryOrProperties You may pass a Geometry object directly, or an object literal
-containing properties.  If you pass an object literal, you may
-include a Geometry associated with a `geometry` key.
- * @api stable
- */
+     * Typically, a feature has a single geometry property. You can set the
+     * geometry using the `setGeometry` method and get it with `getGeometry`.
+     * It is possible to store more than one geometry on a feature using attribute
+     * properties. By default, the geometry used for rendering is identified by
+     * the property name `geometry`. If you want to use another geometry property
+     * for rendering, use the `setGeometryName` method to change the attribute
+     * property associated with the geometry for the feature.  For example:
+     *
+     * ```js
+     *      * var feature = new ol.Feature({
+     *      *   geometry: new ol.geom.Polygon(polyCoords),
+     *      *   labelPoint: new ol.geom.Point(labelCoords),
+     *      *   name: 'My Polygon'
+     *      * });
+     *      *
+     *      * // get the polygon geometry
+     *      * var poly = feature.getGeometry();
+     *      *
+     *      * // Render the feature as a point using the coordinates from labelPoint
+     *      * feature.setGeometryName('labelPoint');
+     *      *
+     *      * // get the point geometry
+     *      * var point = feature.getGeometry();
+     *      * ```
+     * @param opt_geometryOrProperties You may pass a Geometry object directly, or an object literal
+     * containing properties.  If you pass an object literal, you may
+     * include a Geometry associated with a `geometry` key.
+     * @api stable
+     */
     constructor(
       opt_geometryOrProperties?:
-        | ol.geom.geom$Geometry
+        | ol.geom.Geometry
         | {
             [k: string]: any
           }
@@ -1689,7 +1700,7 @@ include a Geometry associated with a `geometry` key.
      * @return The clone.
      * @api stable
      */
-    clone(): ol.render$Feature;
+    clone(): ol.Feature;
 
     /**
      * Get the feature's default geometry.  A feature may have any number of named
@@ -1699,7 +1710,7 @@ include a Geometry associated with a `geometry` key.
      * @api stable
      * @observable
      */
-    getGeometry(): ol.geom.geom$Geometry;
+    getGeometry(): ol.geom.Geometry;
 
     /**
      * Get the feature identifier.  This is a stable identifier for the feature and
@@ -1712,12 +1723,12 @@ include a Geometry associated with a `geometry` key.
     getId(): number | string;
 
     /**
- * Get the name of the feature's default geometry.  By default, the default
- * geometry is named `geometry`.
- * @return Get the property name associated with the default geometry
-for this feature.
- * @api stable
- */
+     * Get the name of the feature's default geometry.  By default, the default
+     * geometry is named `geometry`.
+     * @return Get the property name associated with the default geometry
+     * for this feature.
+     * @api stable
+     */
     getGeometryName(): string;
 
     /**
@@ -1728,17 +1739,17 @@ for this feature.
      * @observable
      */
     getStyle():
-      | ol.style.style$Style
-      | ol.style.style$Style[]
+      | ol.style.Style
+      | ol.style.Style[]
       | ol.FeatureStyleFunction
       | ol.StyleFunction;
 
     /**
- * Get the feature's style function.
- * @return Return a function
-representing the current style of this feature.
- * @api stable
- */
+     * Get the feature's style function.
+     * @return Return a function
+     * representing the current style of this feature.
+     * @api stable
+     */
     getStyleFunction(): ol.FeatureStyleFunction | void;
 
     /**
@@ -1748,7 +1759,7 @@ representing the current style of this feature.
      * @api stable
      * @observable
      */
-    setGeometry(geometry: ol.geom.geom$Geometry): void;
+    setGeometry(geometry: ol.geom.Geometry): void;
 
     /**
      * Set the style for the feature.  This can be a single style object, an array
@@ -1760,8 +1771,8 @@ representing the current style of this feature.
      */
     setStyle(
       style:
-        | ol.style.style$Style
-        | ol.style.style$Style[]
+        | ol.style.Style
+        | ol.style.Style[]
         | ol.FeatureStyleFunction
         | ol.StyleFunction
         | null
@@ -1804,7 +1815,7 @@ representing the current style of this feature.
    */
   declare function featureloader$tile(
     url: string | ol.FeatureUrlFunction,
-    coordinate$format: ol.coordinate$format.render$Feature
+    format: ol.format.Feature
   ): ol.FeatureLoader;
 
   /**
@@ -1818,23 +1829,48 @@ representing the current style of this feature.
    */
   declare function featureloader$xhr(
     url: string | ol.FeatureUrlFunction,
-    coordinate$format: ol.coordinate$format.render$Feature
+    format: ol.format.Feature
   ): ol.FeatureLoader;
+
+  declare var npm$namespace$format: {
+    EsriJSON: typeof format$EsriJSON,
+    Feature: typeof format$Feature,
+    GeoJSON: typeof format$GeoJSON,
+    GML: typeof format$GML,
+    GML2: typeof format$GML2,
+    GML3: typeof format$GML3,
+    GMLBase: typeof format$GMLBase,
+    GPX: typeof format$GPX,
+    IGC: typeof format$IGC,
+    JSONFeature: typeof format$JSONFeature,
+    KML: typeof format$KML,
+    MVT: typeof format$MVT,
+    OSMXML: typeof format$OSMXML,
+    Polyline: typeof format$Polyline,
+    TextFeature: typeof format$TextFeature,
+    TopoJSON: typeof format$TopoJSON,
+    WFS: typeof format$WFS,
+    WKT: typeof format$WKT,
+    WMSCapabilities: typeof format$WMSCapabilities,
+    WMSGetFeatureInfo: typeof format$WMSGetFeatureInfo,
+    WMTSCapabilities: typeof format$WMTSCapabilities,
+    XML: typeof format$XML,
+    XMLFeature: typeof format$XMLFeature,
+    filter: typeof npm$namespace$format$filter
+  };
 
   /**
    * @classdesc Feature format for reading and writing data in the EsriJSON format.
    * @param opt_options Options.
    * @api
    */
-  declare class format$EsriJSON mixins format$JSONFeature {
+  declare class format$EsriJSON mixins JSONFeature {
     /**
      * @classdesc Feature format for reading and writing data in the EsriJSON format.
      * @param opt_options Options.
      * @api
      */
-    constructor(
-      opt_options?: olx$coordinate$format.format$EsriJSONOptions
-    ): this;
+    constructor(opt_options?: olx$format$EsriJSONOptions): this;
 
     /**
      * Read a feature from a EsriJSON Feature source.  Only works for Feature,
@@ -1846,8 +1882,8 @@ representing the current style of this feature.
      */
     readFeature(
       source: ArrayBuffer | Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.render$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read all features from a EsriJSON source.  Works with both Feature and
@@ -1859,8 +1895,8 @@ representing the current style of this feature.
      */
     readFeatures(
       source: ArrayBuffer | Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.render$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read a geometry from a EsriJSON source.
@@ -1871,8 +1907,8 @@ representing the current style of this feature.
      */
     readGeometry(
       source: ArrayBuffer | Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.geom.geom$Geometry;
+      opt_options?: olx$format$ReadOptions
+    ): ol.geom.Geometry;
 
     /**
      * Read the projection from a EsriJSON source.
@@ -1882,7 +1918,7 @@ representing the current style of this feature.
      */
     readProjection(
       source: ArrayBuffer | Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Encode a geometry as a EsriJSON string.
@@ -1892,8 +1928,8 @@ representing the current style of this feature.
      * @api
      */
     writeGeometry(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -1904,8 +1940,8 @@ representing the current style of this feature.
      * @api
      */
     writeGeometryObject(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): format$EsriJSONGeometry;
 
     /**
@@ -1916,8 +1952,8 @@ representing the current style of this feature.
      * @api
      */
     writeFeature(
-      feature: ol.render$Feature,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      feature: ol.Feature,
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -1928,8 +1964,8 @@ representing the current style of this feature.
      * @api
      */
     writeFeatureObject(
-      feature: ol.render$Feature,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      feature: ol.Feature,
+      opt_options?: olx$format$WriteOptions
     ): GlobalObject;
 
     /**
@@ -1940,8 +1976,8 @@ representing the current style of this feature.
      * @api
      */
     writeFeatures(
-      features: ol.render$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -1952,32 +1988,32 @@ representing the current style of this feature.
      * @api
      */
     writeFeaturesObject(
-      features: ol.render$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): GlobalObject;
   }
 
   declare type format$EsriJSONGeometry = JSON;
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for feature formats.
-{ol.format.Feature} subclasses provide the ability to decode and encode
-{@link ol.Feature} objects from a variety of commonly used geospatial
-file formats.  See the documentation for each format for more details.
- * @api stable
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for feature formats.
+   * {ol.format.Feature} subclasses provide the ability to decode and encode
+   * {@link ol.Feature} objects from a variety of commonly used geospatial
+   * file formats.  See the documentation for each format for more details.
+   * @api stable
+   */
   declare class format$Feature {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for feature formats.
-{ol.format.Feature} subclasses provide the ability to decode and encode
-{@link ol.Feature} objects from a variety of commonly used geospatial
-file formats.  See the documentation for each format for more details.
- * @api stable
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for feature formats.
+     * {ol.format.Feature} subclasses provide the ability to decode and encode
+     * {@link ol.Feature} objects from a variety of commonly used geospatial
+     * file formats.  See the documentation for each format for more details.
+     * @api stable
+     */
     constructor(): this;
   }
 
@@ -1994,15 +2030,13 @@ file formats.  See the documentation for each format for more details.
    * @param opt_options Options.
    * @api stable
    */
-  declare class format$GeoJSON mixins format$JSONFeature {
+  declare class format$GeoJSON mixins JSONFeature {
     /**
      * @classdesc Feature format for reading and writing data in the GeoJSON format.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(
-      opt_options?: olx$coordinate$format.format$GeoJSONOptions
-    ): this;
+    constructor(opt_options?: olx$format$GeoJSONOptions): this;
 
     /**
      * Read a feature from a GeoJSON Feature source.  Only works for Feature,
@@ -2014,8 +2048,8 @@ file formats.  See the documentation for each format for more details.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read all features from a GeoJSON source.  Works with both Feature and
@@ -2027,8 +2061,8 @@ file formats.  See the documentation for each format for more details.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read a geometry from a GeoJSON source.
@@ -2039,8 +2073,8 @@ file formats.  See the documentation for each format for more details.
      */
     readGeometry(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.geom.geom$Geometry;
+      opt_options?: olx$format$ReadOptions
+    ): ol.geom.Geometry;
 
     /**
      * Read the projection from a GeoJSON source.
@@ -2050,7 +2084,7 @@ file formats.  See the documentation for each format for more details.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Encode a feature as a GeoJSON Feature string.
@@ -2060,8 +2094,8 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeFeature(
-      feature: ol.format$Feature,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      feature: ol.Feature,
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2072,8 +2106,8 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeFeatureObject(
-      feature: ol.format$Feature,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      feature: ol.Feature,
+      opt_options?: olx$format$WriteOptions
     ): format$GeoJSONFeature;
 
     /**
@@ -2084,8 +2118,8 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2096,8 +2130,8 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeFeaturesObject(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): format$GeoJSONFeatureCollection;
 
     /**
@@ -2108,8 +2142,8 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeGeometry(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2120,27 +2154,27 @@ file formats.  See the documentation for each format for more details.
      * @api stable
      */
     writeGeometryObject(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): format$GeoJSONGeometry | format$GeoJSONGeometryCollection;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the GML format
-version 3.1.1.
-Currently only supports GML 3.1.1 Simple Features profile.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-  declare class format$GML mixins format$GMLBase {
+   * @classdesc Feature format for reading and writing data in the GML format
+   * version 3.1.1.
+   * Currently only supports GML 3.1.1 Simple Features profile.
+   * @param opt_options Optional configuration object.
+   * @api stable
+   */
+  declare class format$GML mixins GMLBase {
     /**
- * @classdesc Feature format for reading and writing data in the GML format
-version 3.1.1.
-Currently only supports GML 3.1.1 Simple Features profile.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-    constructor(opt_options?: olx$coordinate$format.format$GMLOptions): this;
+     * @classdesc Feature format for reading and writing data in the GML format
+     * version 3.1.1.
+     * Currently only supports GML 3.1.1 Simple Features profile.
+     * @param opt_options Optional configuration object.
+     * @api stable
+     */
+    constructor(opt_options?: olx$format$GMLOptions): this;
 
     /**
      * Encode an array of features in GML 3.1.1 Simple Features.
@@ -2150,8 +2184,8 @@ Currently only supports GML 3.1.1 Simple Features profile.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2162,43 +2196,43 @@ Currently only supports GML 3.1.1 Simple Features profile.
      * @api
      */
     writeFeaturesNode(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): Node;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the GML format,
-version 2.1.2.
- * @param opt_options Optional configuration object.
- * @api
- */
-  declare class format$GML2 mixins format$GMLBase {
+   * @classdesc Feature format for reading and writing data in the GML format,
+   * version 2.1.2.
+   * @param opt_options Optional configuration object.
+   * @api
+   */
+  declare class format$GML2 mixins GMLBase {
     /**
- * @classdesc Feature format for reading and writing data in the GML format,
-version 2.1.2.
- * @param opt_options Optional configuration object.
- * @api
- */
-    constructor(opt_options?: olx$coordinate$format.format$GMLOptions): this;
+     * @classdesc Feature format for reading and writing data in the GML format,
+     * version 2.1.2.
+     * @param opt_options Optional configuration object.
+     * @api
+     */
+    constructor(opt_options?: olx$format$GMLOptions): this;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the GML format
-version 3.1.1.
-Currently only supports GML 3.1.1 Simple Features profile.
- * @param opt_options Optional configuration object.
- * @api
- */
-  declare class format$GML3 mixins format$GMLBase {
+   * @classdesc Feature format for reading and writing data in the GML format
+   * version 3.1.1.
+   * Currently only supports GML 3.1.1 Simple Features profile.
+   * @param opt_options Optional configuration object.
+   * @api
+   */
+  declare class format$GML3 mixins GMLBase {
     /**
- * @classdesc Feature format for reading and writing data in the GML format
-version 3.1.1.
-Currently only supports GML 3.1.1 Simple Features profile.
- * @param opt_options Optional configuration object.
- * @api
- */
-    constructor(opt_options?: olx$coordinate$format.format$GMLOptions): this;
+     * @classdesc Feature format for reading and writing data in the GML format
+     * version 3.1.1.
+     * Currently only supports GML 3.1.1 Simple Features profile.
+     * @param opt_options Optional configuration object.
+     * @api
+     */
+    constructor(opt_options?: olx$format$GMLOptions): this;
 
     /**
      * Encode a geometry in GML 3.1.1 Simple Features.
@@ -2208,8 +2242,8 @@ Currently only supports GML 3.1.1 Simple Features profile.
      * @api
      */
     writeGeometryNode(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): Node;
 
     /**
@@ -2220,8 +2254,8 @@ Currently only supports GML 3.1.1 Simple Features profile.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2232,31 +2266,31 @@ Currently only supports GML 3.1.1 Simple Features profile.
      * @api
      */
     writeFeaturesNode(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): Node;
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Feature base format for reading and writing data in the GML format.
-This class cannot be instantiated, it contains only base content that
-is shared with versioned format classes ol.format.GML2 and
-ol.format.GML3.
- * @param opt_options Optional configuration object.
- */
-  declare class format$GMLBase mixins format$XMLFeature {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Feature base format for reading and writing data in the GML format.
+   * This class cannot be instantiated, it contains only base content that
+   * is shared with versioned format classes ol.format.GML2 and
+   * ol.format.GML3.
+   * @param opt_options Optional configuration object.
+   */
+  declare class format$GMLBase mixins XMLFeature {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Feature base format for reading and writing data in the GML format.
-This class cannot be instantiated, it contains only base content that
-is shared with versioned format classes ol.format.GML2 and
-ol.format.GML3.
- * @param opt_options Optional configuration object.
- */
-    constructor(opt_options?: olx$coordinate$format.format$GMLOptions): this;
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Feature base format for reading and writing data in the GML format.
+     * This class cannot be instantiated, it contains only base content that
+     * is shared with versioned format classes ol.format.GML2 and
+     * ol.format.GML3.
+     * @param opt_options Optional configuration object.
+     */
+    constructor(opt_options?: olx$format$GMLOptions): this;
 
     /**
      * Read all features from a GML FeatureCollection.
@@ -2267,8 +2301,8 @@ ol.format.GML3.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
   }
 
   /**
@@ -2276,13 +2310,13 @@ ol.format.GML3.
    * @param opt_options Options.
    * @api stable
    */
-  declare class format$GPX mixins format$XMLFeature {
+  declare class format$GPX mixins XMLFeature {
     /**
      * @classdesc Feature format for reading and writing data in the GPX format.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(opt_options?: olx$coordinate$format.format$GPXOptions): this;
+    constructor(opt_options?: olx$format$GPXOptions): this;
 
     /**
      * Read the first feature from a GPX source.
@@ -2295,8 +2329,8 @@ ol.format.GML3.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read all features from a GPX source.
@@ -2309,8 +2343,8 @@ ol.format.GML3.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read the projection from a GPX source.
@@ -2320,7 +2354,7 @@ ol.format.GML3.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Encode an array of features in the GPX format.
@@ -2332,8 +2366,8 @@ ol.format.GML3.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2346,8 +2380,8 @@ ol.format.GML3.
      * @api
      */
     writeFeaturesNode(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): Node;
   }
 
@@ -2361,13 +2395,13 @@ ol.format.GML3.
    * @param opt_options Options.
    * @api
    */
-  declare class format$IGC mixins format$TextFeature {
+  declare class format$IGC mixins TextFeature {
     /**
      * @classdesc Feature format for `*.igc` flight recording files.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$coordinate$format.format$IGCOptions): this;
+    constructor(opt_options?: olx$format$IGCOptions): this;
 
     /**
      * Read the feature from the IGC source.
@@ -2378,8 +2412,8 @@ ol.format.GML3.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read the feature from the source. As IGC sources contain a single
@@ -2391,8 +2425,8 @@ ol.format.GML3.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read the projection from the IGC source.
@@ -2402,41 +2436,41 @@ ol.format.GML3.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for JSON feature formats.
- */
-  declare class format$JSONFeature mixins format$Feature {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for JSON feature formats.
+   */
+  declare class format$JSONFeature mixins Feature {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for JSON feature formats.
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for JSON feature formats.
+     */
     constructor(): this;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the KML format.
-
-Note that the KML format uses the URL() constructor. Older browsers such as IE
-which do not support this will need a URL polyfill to be loaded before use.
- * @param opt_options Options.
- * @api stable
- */
-  declare class format$KML mixins format$XMLFeature {
+   * @classdesc Feature format for reading and writing data in the KML format.
+   *
+   * Note that the KML format uses the URL() constructor. Older browsers such as IE
+   * which do not support this will need a URL polyfill to be loaded before use.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class format$KML mixins XMLFeature {
     /**
- * @classdesc Feature format for reading and writing data in the KML format.
-
-Note that the KML format uses the URL() constructor. Older browsers such as IE
-which do not support this will need a URL polyfill to be loaded before use.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$coordinate$format.format$KMLOptions): this;
+     * @classdesc Feature format for reading and writing data in the KML format.
+     *
+     * Note that the KML format uses the URL() constructor. Older browsers such as IE
+     * which do not support this will need a URL polyfill to be loaded before use.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$format$KMLOptions): this;
 
     /**
      * Read the first feature from a KML source. MultiGeometries are converted into
@@ -2449,8 +2483,8 @@ which do not support this will need a URL polyfill to be loaded before use.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read all features from a KML source. MultiGeometries are converted into
@@ -2463,8 +2497,8 @@ which do not support this will need a URL polyfill to be loaded before use.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read the name of the KML.
@@ -2490,7 +2524,7 @@ which do not support this will need a URL polyfill to be loaded before use.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Encode an array of features in the KML format. GeometryCollections, MultiPoints,
@@ -2501,8 +2535,8 @@ which do not support this will need a URL polyfill to be loaded before use.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -2514,8 +2548,8 @@ which do not support this will need a URL polyfill to be loaded before use.
      * @api
      */
     writeFeaturesNode(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): Node;
   }
 
@@ -2524,13 +2558,13 @@ which do not support this will need a URL polyfill to be loaded before use.
    * @param opt_options Options.
    * @api
    */
-  declare class format$MVT mixins format$Feature {
+  declare class format$MVT mixins Feature {
     /**
      * @classdesc Feature format for reading data in the Mapbox MVT format.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$coordinate$format.format$MVTOptions): this;
+    constructor(opt_options?: olx$format$MVTOptions): this;
 
     /**
      * @inheritDoc
@@ -2538,8 +2572,8 @@ which do not support this will need a URL polyfill to be loaded before use.
      */
     readFeatures(
       source: Document | Node | ArrayBuffer | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * @inheritDoc
@@ -2547,7 +2581,7 @@ which do not support this will need a URL polyfill to be loaded before use.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Sets the layers that features will be read from.
@@ -2557,38 +2591,60 @@ which do not support this will need a URL polyfill to be loaded before use.
     setLayers(layers: string[]): void;
   }
 
-  declare var npm$namespace$filter: {
-    intersects: typeof filter$intersects,
-    or: typeof filter$or,
-    and: typeof filter$and,
-    not: typeof filter$not,
-    bbox: typeof filter$bbox,
-    within: typeof filter$within,
-    equalTo: typeof filter$equalTo,
-    notEqualTo: typeof filter$notEqualTo,
-    lessThan: typeof filter$lessThan,
-    lessThanOrEqualTo: typeof filter$lessThanOrEqualTo,
-    greaterThan: typeof filter$greaterThan,
-    greaterThanOrEqualTo: typeof filter$greaterThanOrEqualTo,
-    isNull: typeof filter$isNull,
-    between: typeof filter$between,
-    like: typeof filter$like,
-    during: typeof filter$during
+  declare var npm$namespace$format$filter: {
+    intersects: typeof format$filter$intersects,
+    or: typeof format$filter$or,
+    and: typeof format$filter$and,
+    not: typeof format$filter$not,
+    bbox: typeof format$filter$bbox,
+    within: typeof format$filter$within,
+    equalTo: typeof format$filter$equalTo,
+    notEqualTo: typeof format$filter$notEqualTo,
+    lessThan: typeof format$filter$lessThan,
+    lessThanOrEqualTo: typeof format$filter$lessThanOrEqualTo,
+    greaterThan: typeof format$filter$greaterThan,
+    greaterThanOrEqualTo: typeof format$filter$greaterThanOrEqualTo,
+    isNull: typeof format$filter$isNull,
+    between: typeof format$filter$between,
+    like: typeof format$filter$like,
+    during: typeof format$filter$during,
+
+    Filter: typeof format$filter$Filter,
+    Spatial: typeof format$filter$Spatial,
+    Intersects: typeof format$filter$Intersects,
+    Within: typeof format$filter$Within,
+    LogicalNary: typeof format$filter$LogicalNary,
+    And: typeof format$filter$And,
+    Or: typeof format$filter$Or,
+    Comparison: typeof format$filter$Comparison,
+    ComparisonBinary: typeof format$filter$ComparisonBinary,
+    EqualTo: typeof format$filter$EqualTo,
+    GreaterThan: typeof format$filter$GreaterThan,
+    GreaterThanOrEqualTo: typeof format$filter$GreaterThanOrEqualTo,
+    LessThan: typeof format$filter$LessThan,
+    LessThanOrEqualTo: typeof format$filter$LessThanOrEqualTo,
+    NotEqualTo: typeof format$filter$NotEqualTo,
+    During: typeof format$filter$During,
+    IsBetween: typeof format$filter$IsBetween,
+    IsLike: typeof format$filter$IsLike,
+    IsNull: typeof format$filter$IsNull,
+    Not: typeof format$filter$Not,
+    Bbox: typeof format$filter$Bbox
   };
 
   /**
- * Create a `<Intersects>` operator to test whether a geometry-valued property
- * intersects a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @returns `<Intersects>` operator.
- * @api
- */
-  declare function filter$intersects(
+   * Create a `<Intersects>` operator to test whether a geometry-valued property
+   * intersects a given geometry.
+   * @param geometryName Geometry name to use.
+   * @param geometry Geometry.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @returns `<Intersects>` operator.
+   * @api
+   */
+  declare function format$filter$intersects(
     geometryName: string,
-    geometry: ol.geom.geom$Geometry,
+    geometry: ol.geom.Geometry,
     opt_srsName?: string
   ): filter$Intersects;
 
@@ -2598,7 +2654,7 @@ set on geometries when this is not provided.
    * @returns `<Or>` operator.
    * @api
    */
-  declare function filter$or(...conditions: filter$Filter[]): filter$Or;
+  declare function format$filter$or(...conditions: filter$Filter[]): filter$Or;
 
   /**
    * Create a logical `<And>` operator between two or more filter conditions.
@@ -2606,7 +2662,9 @@ set on geometries when this is not provided.
    * @returns `<And>` operator.
    * @api
    */
-  declare function filter$and(...conditions: filter$Filter[]): filter$And;
+  declare function format$filter$and(
+    ...conditions: filter$Filter[]
+  ): filter$And;
 
   /**
    * Represents a logical `<Not>` operator for a filter condition.
@@ -2614,37 +2672,37 @@ set on geometries when this is not provided.
    * @returns `<Not>` operator.
    * @api
    */
-  declare function filter$not(condition: filter$Filter): filter$Not;
+  declare function format$filter$not(condition: filter$Filter): filter$Not;
 
   /**
- * Create a `<BBOX>` operator to test whether a geometry-valued property
- * intersects a fixed bounding box
- * @param geometryName Geometry name to use.
- * @param extent Extent.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @returns `<BBOX>` operator.
- * @api
- */
-  declare function filter$bbox(
+   * Create a `<BBOX>` operator to test whether a geometry-valued property
+   * intersects a fixed bounding box
+   * @param geometryName Geometry name to use.
+   * @param extent Extent.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @returns `<BBOX>` operator.
+   * @api
+   */
+  declare function format$filter$bbox(
     geometryName: string,
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     opt_srsName?: string
   ): filter$Bbox;
 
   /**
- * Create a `<Within>` operator to test whether a geometry-valued property
- * is within a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @returns `<Within>` operator.
- * @api
- */
-  declare function filter$within(
+   * Create a `<Within>` operator to test whether a geometry-valued property
+   * is within a given geometry.
+   * @param geometryName Geometry name to use.
+   * @param geometry Geometry.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @returns `<Within>` operator.
+   * @api
+   */
+  declare function format$filter$within(
     geometryName: string,
-    geometry: ol.geom.geom$Geometry,
+    geometry: ol.geom.Geometry,
     opt_srsName?: string
   ): filter$Within;
 
@@ -2656,7 +2714,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsEqualTo>` operator.
    * @api
    */
-  declare function filter$equalTo(
+  declare function format$filter$equalTo(
     propertyName: string,
     expression: string | number,
     opt_matchCase?: boolean
@@ -2670,7 +2728,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsNotEqualTo>` operator.
    * @api
    */
-  declare function filter$notEqualTo(
+  declare function format$filter$notEqualTo(
     propertyName: string,
     expression: string | number,
     opt_matchCase?: boolean
@@ -2683,7 +2741,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsLessThan>` operator.
    * @api
    */
-  declare function filter$lessThan(
+  declare function format$filter$lessThan(
     propertyName: string,
     expression: number
   ): filter$LessThan;
@@ -2695,7 +2753,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsLessThanOrEqualTo>` operator.
    * @api
    */
-  declare function filter$lessThanOrEqualTo(
+  declare function format$filter$lessThanOrEqualTo(
     propertyName: string,
     expression: number
   ): filter$LessThanOrEqualTo;
@@ -2707,7 +2765,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsGreaterThan>` operator.
    * @api
    */
-  declare function filter$greaterThan(
+  declare function format$filter$greaterThan(
     propertyName: string,
     expression: number
   ): filter$GreaterThan;
@@ -2719,7 +2777,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsGreaterThanOrEqualTo>` operator.
    * @api
    */
-  declare function filter$greaterThanOrEqualTo(
+  declare function format$filter$greaterThanOrEqualTo(
     propertyName: string,
     expression: number
   ): filter$GreaterThanOrEqualTo;
@@ -2731,7 +2789,7 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsNull>` operator.
    * @api
    */
-  declare function filter$isNull(propertyName: string): filter$IsNull;
+  declare function format$filter$isNull(propertyName: string): filter$IsNull;
 
   /**
    * Creates a `<PropertyIsBetween>` comparison operator to test whether an expression
@@ -2742,28 +2800,28 @@ set on geometries when this is not provided.
    * @returns `<PropertyIsBetween>` operator.
    * @api
    */
-  declare function filter$between(
+  declare function format$filter$between(
     propertyName: string,
     lowerBoundary: number,
     upperBoundary: number
   ): filter$IsBetween;
 
   /**
- * Represents a `<PropertyIsLike>` comparison operator that matches a string property
- * value against a text pattern.
- * @param propertyName Name of the context property to compare.
- * @param pattern Text pattern.
- * @param opt_wildCard Pattern character which matches any sequence of
-zero or more string characters. Default is '*'.
- * @param opt_singleChar pattern character which matches any single
-string character. Default is '.'.
- * @param opt_escapeChar Escape character which can be used to escape
-the pattern characters. Default is '!'.
- * @param opt_matchCase Case-sensitive?
- * @returns `<PropertyIsLike>` operator.
- * @api
- */
-  declare function filter$like(
+   * Represents a `<PropertyIsLike>` comparison operator that matches a string property
+   * value against a text pattern.
+   * @param propertyName Name of the context property to compare.
+   * @param pattern Text pattern.
+   * @param opt_wildCard Pattern character which matches any sequence of
+   * zero or more string characters. Default is '*'.
+   * @param opt_singleChar pattern character which matches any single
+   * string character. Default is '.'.
+   * @param opt_escapeChar Escape character which can be used to escape
+   * the pattern characters. Default is '!'.
+   * @param opt_matchCase Case-sensitive?
+   * @returns `<PropertyIsLike>` operator.
+   * @api
+   */
+  declare function format$filter$like(
     propertyName: string,
     pattern: string,
     opt_wildCard?: string,
@@ -2780,27 +2838,27 @@ the pattern characters. Default is '!'.
    * @returns `<During>` operator.
    * @api
    */
-  declare function filter$during(
+  declare function format$filter$during(
     propertyName: string,
     begin: string,
     end: string
   ): filter$During;
 
   /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature filters.
- * @param tagName The XML tag name for this filter.
- * @struct
- * @api
- */
-  declare class filter$Filter {
+   * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+   * Base class for WFS GetFeature filters.
+   * @param tagName The XML tag name for this filter.
+   * @struct
+   * @api
+   */
+  declare class format$filter$Filter {
     /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature filters.
- * @param tagName The XML tag name for this filter.
- * @struct
- * @api
- */
+     * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+     * Base class for WFS GetFeature filters.
+     * @param tagName The XML tag name for this filter.
+     * @struct
+     * @api
+     */
     constructor(tagName: string): this;
 
     /**
@@ -2811,104 +2869,104 @@ Base class for WFS GetFeature filters.
   }
 
   /**
- * @classdesc Represents a spatial operator to test whether a geometry-valued property
-relates to a given geometry.
- * @param tagName The XML tag name for this filter.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
-  declare class filter$Spatial mixins filter$Filter {
+   * @classdesc Represents a spatial operator to test whether a geometry-valued property
+   * relates to a given geometry.
+   * @param tagName The XML tag name for this filter.
+   * @param geometryName Geometry name to use.
+   * @param geometry Geometry.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @api
+   */
+  declare class format$filter$Spatial mixins Filter {
     /**
- * @classdesc Represents a spatial operator to test whether a geometry-valued property
-relates to a given geometry.
- * @param tagName The XML tag name for this filter.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
+     * @classdesc Represents a spatial operator to test whether a geometry-valued property
+     * relates to a given geometry.
+     * @param tagName The XML tag name for this filter.
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param opt_srsName SRS name. No srsName attribute will be
+     * set on geometries when this is not provided.
+     * @api
+     */
     constructor(
       tagName: string,
       geometryName: string,
-      geometry: ol.geom.geom$Geometry,
+      geometry: ol.geom.Geometry,
       opt_srsName?: string
     ): this;
   }
 
   /**
- * @classdesc Represents a `<Intersects>` operator to test whether a geometry-valued property
-intersects a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
-  declare class filter$Intersects mixins filter$Spatial {
+   * @classdesc Represents a `<Intersects>` operator to test whether a geometry-valued property
+   * intersects a given geometry.
+   * @param geometryName Geometry name to use.
+   * @param geometry Geometry.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @api
+   */
+  declare class format$filter$Intersects mixins Spatial {
     /**
- * @classdesc Represents a `<Intersects>` operator to test whether a geometry-valued property
-intersects a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
+     * @classdesc Represents a `<Intersects>` operator to test whether a geometry-valued property
+     * intersects a given geometry.
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param opt_srsName SRS name. No srsName attribute will be
+     * set on geometries when this is not provided.
+     * @api
+     */
     constructor(
       geometryName: string,
-      geometry: ol.geom.geom$Geometry,
+      geometry: ol.geom.Geometry,
       opt_srsName?: string
     ): this;
   }
 
   /**
- * @classdesc Represents a `<Within>` operator to test whether a geometry-valued property
-is within a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
-  declare class filter$Within mixins filter$Spatial {
+   * @classdesc Represents a `<Within>` operator to test whether a geometry-valued property
+   * is within a given geometry.
+   * @param geometryName Geometry name to use.
+   * @param geometry Geometry.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @api
+   */
+  declare class format$filter$Within mixins Spatial {
     /**
- * @classdesc Represents a `<Within>` operator to test whether a geometry-valued property
-is within a given geometry.
- * @param geometryName Geometry name to use.
- * @param geometry Geometry.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
+     * @classdesc Represents a `<Within>` operator to test whether a geometry-valued property
+     * is within a given geometry.
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param opt_srsName SRS name. No srsName attribute will be
+     * set on geometries when this is not provided.
+     * @api
+     */
     constructor(
       geometryName: string,
-      geometry: ol.geom.geom$Geometry,
+      geometry: ol.geom.Geometry,
       opt_srsName?: string
     ): this;
   }
 
   /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature n-ary logical filters.
- */
-  declare class filter$LogicalNary mixins filter$Filter {}
+   * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+   * Base class for WFS GetFeature n-ary logical filters.
+   */
+  declare class format$filter$LogicalNary mixins Filter {}
 
   /**
    * @classdesc Represents a logical <And> operator between two or more filter conditions.
    * @param conditions Conditions
    * @api
    */
-  declare class filter$And mixins filter$LogicalNary {
+  declare class format$filter$And mixins LogicalNary {
     /**
      * @classdesc Represents a logical <And> operator between two or more filter conditions.
      * @param conditions Conditions
      * @api
      */
-    constructor(...conditions: filter$Filter[]): this;
+    constructor(...conditions: format$filter$Filter[]): this;
   }
 
   /**
@@ -2916,60 +2974,60 @@ Base class for WFS GetFeature n-ary logical filters.
    * @param conditions Conditions
    * @api
    */
-  declare class filter$Or mixins filter$LogicalNary {
+  declare class format$filter$Or mixins LogicalNary {
     /**
      * @classdesc Represents a logical <Or> operator between two or more filter conditions.
      * @param conditions Conditions
      * @api
      */
-    constructor(...conditions: filter$Filter[]): this;
+    constructor(...conditions: format$filter$Filter[]): this;
   }
 
   /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature property comparison filters.
-
-deprecated: This class will no longer be exported starting from the next major version.
- * @param tagName The XML tag name for this filter.
- * @param propertyName Name of the context property to compare.
- * @api
- */
-  declare class filter$Comparison mixins filter$Filter {
+   * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+   * Base class for WFS GetFeature property comparison filters.
+   *
+   * deprecated: This class will no longer be exported starting from the next major version.
+   * @param tagName The XML tag name for this filter.
+   * @param propertyName Name of the context property to compare.
+   * @api
+   */
+  declare class format$filter$Comparison mixins Filter {
     /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature property comparison filters.
-
-deprecated: This class will no longer be exported starting from the next major version.
- * @param tagName The XML tag name for this filter.
- * @param propertyName Name of the context property to compare.
- * @api
- */
+     * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+     * Base class for WFS GetFeature property comparison filters.
+     *
+     * deprecated: This class will no longer be exported starting from the next major version.
+     * @param tagName The XML tag name for this filter.
+     * @param propertyName Name of the context property to compare.
+     * @api
+     */
     constructor(tagName: string, propertyName: string): this;
   }
 
   /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature property binary comparison filters.
-
-deprecated: This class will no longer be exported starting from the next major version.
- * @param tagName The XML tag name for this filter.
- * @param propertyName Name of the context property to compare.
- * @param expression The value to compare.
- * @param opt_matchCase Case-sensitive?
- * @api
- */
-  declare class filter$ComparisonBinary mixins filter$Comparison {
+   * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+   * Base class for WFS GetFeature property binary comparison filters.
+   *
+   * deprecated: This class will no longer be exported starting from the next major version.
+   * @param tagName The XML tag name for this filter.
+   * @param propertyName Name of the context property to compare.
+   * @param expression The value to compare.
+   * @param opt_matchCase Case-sensitive?
+   * @api
+   */
+  declare class format$filter$ComparisonBinary mixins Comparison {
     /**
- * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
-Base class for WFS GetFeature property binary comparison filters.
-
-deprecated: This class will no longer be exported starting from the next major version.
- * @param tagName The XML tag name for this filter.
- * @param propertyName Name of the context property to compare.
- * @param expression The value to compare.
- * @param opt_matchCase Case-sensitive?
- * @api
- */
+     * @classdesc Abstract class; normally only used for creating subclasses and not instantiated in apps.
+     * Base class for WFS GetFeature property binary comparison filters.
+     *
+     * deprecated: This class will no longer be exported starting from the next major version.
+     * @param tagName The XML tag name for this filter.
+     * @param propertyName Name of the context property to compare.
+     * @param expression The value to compare.
+     * @param opt_matchCase Case-sensitive?
+     * @api
+     */
     constructor(
       tagName: string,
       propertyName: string,
@@ -2985,7 +3043,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param opt_matchCase Case-sensitive?
    * @api
    */
-  declare class filter$EqualTo mixins filter$ComparisonBinary {
+  declare class format$filter$EqualTo mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsEqualTo>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3006,7 +3064,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param expression The value to compare.
    * @api
    */
-  declare class filter$GreaterThan mixins filter$ComparisonBinary {
+  declare class format$filter$GreaterThan mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsGreaterThan>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3022,7 +3080,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param expression The value to compare.
    * @api
    */
-  declare class filter$GreaterThanOrEqualTo mixins filter$ComparisonBinary {
+  declare class format$filter$GreaterThanOrEqualTo mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsGreaterThanOrEqualTo>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3038,7 +3096,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param expression The value to compare.
    * @api
    */
-  declare class filter$LessThan mixins filter$ComparisonBinary {
+  declare class format$filter$LessThan mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsLessThan>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3054,7 +3112,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param expression The value to compare.
    * @api
    */
-  declare class filter$LessThanOrEqualTo mixins filter$ComparisonBinary {
+  declare class format$filter$LessThanOrEqualTo mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsLessThanOrEqualTo>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3071,7 +3129,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param opt_matchCase Case-sensitive?
    * @api
    */
-  declare class filter$NotEqualTo mixins filter$ComparisonBinary {
+  declare class format$filter$NotEqualTo mixins ComparisonBinary {
     /**
      * @classdesc Represents a `<PropertyIsNotEqualTo>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3093,7 +3151,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param end The end date in ISO-8601 format.
    * @api
    */
-  declare class filter$During mixins filter$Comparison {
+  declare class format$filter$During mixins Comparison {
     /**
      * @classdesc Represents a `<During>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3111,7 +3169,7 @@ deprecated: This class will no longer be exported starting from the next major v
    * @param upperBoundary The upper bound of the range.
    * @api
    */
-  declare class filter$IsBetween mixins filter$Comparison {
+  declare class format$filter$IsBetween mixins Comparison {
     /**
      * @classdesc Represents a `<PropertyIsBetween>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3127,32 +3185,32 @@ deprecated: This class will no longer be exported starting from the next major v
   }
 
   /**
- * @classdesc Represents a `<PropertyIsLike>` comparison operator.
- * @param propertyName Name of the context property to compare.
- * @param pattern Text pattern.
- * @param opt_wildCard Pattern character which matches any sequence of
-zero or more string characters. Default is '*'.
- * @param opt_singleChar pattern character which matches any single
-string character. Default is '.'.
- * @param opt_escapeChar Escape character which can be used to escape
-the pattern characters. Default is '!'.
- * @param opt_matchCase Case-sensitive?
- * @api
- */
-  declare class filter$IsLike mixins filter$Comparison {
+   * @classdesc Represents a `<PropertyIsLike>` comparison operator.
+   * @param propertyName Name of the context property to compare.
+   * @param pattern Text pattern.
+   * @param opt_wildCard Pattern character which matches any sequence of
+   * zero or more string characters. Default is '*'.
+   * @param opt_singleChar pattern character which matches any single
+   * string character. Default is '.'.
+   * @param opt_escapeChar Escape character which can be used to escape
+   * the pattern characters. Default is '!'.
+   * @param opt_matchCase Case-sensitive?
+   * @api
+   */
+  declare class format$filter$IsLike mixins Comparison {
     /**
- * @classdesc Represents a `<PropertyIsLike>` comparison operator.
- * @param propertyName Name of the context property to compare.
- * @param pattern Text pattern.
- * @param opt_wildCard Pattern character which matches any sequence of
-zero or more string characters. Default is '*'.
- * @param opt_singleChar pattern character which matches any single
-string character. Default is '.'.
- * @param opt_escapeChar Escape character which can be used to escape
-the pattern characters. Default is '!'.
- * @param opt_matchCase Case-sensitive?
- * @api
- */
+     * @classdesc Represents a `<PropertyIsLike>` comparison operator.
+     * @param propertyName Name of the context property to compare.
+     * @param pattern Text pattern.
+     * @param opt_wildCard Pattern character which matches any sequence of
+     * zero or more string characters. Default is '*'.
+     * @param opt_singleChar pattern character which matches any single
+     * string character. Default is '.'.
+     * @param opt_escapeChar Escape character which can be used to escape
+     * the pattern characters. Default is '!'.
+     * @param opt_matchCase Case-sensitive?
+     * @api
+     */
     constructor(
       propertyName: string,
       pattern: string,
@@ -3168,7 +3226,7 @@ the pattern characters. Default is '!'.
    * @param propertyName Name of the context property to compare.
    * @api
    */
-  declare class filter$IsNull mixins filter$Comparison {
+  declare class format$filter$IsNull mixins Comparison {
     /**
      * @classdesc Represents a `<PropertyIsNull>` comparison operator.
      * @param propertyName Name of the context property to compare.
@@ -3182,52 +3240,52 @@ the pattern characters. Default is '!'.
    * @param condition Filter condition.
    * @api
    */
-  declare class filter$Not mixins filter$Filter {
+  declare class format$filter$Not mixins Filter {
     /**
      * @classdesc Represents a logical `<Not>` operator for a filter condition.
      * @param condition Filter condition.
      * @api
      */
-    constructor(condition: filter$Filter): this;
+    constructor(condition: format$filter$Filter): this;
   }
 
   /**
- * @classdesc Represents a `<BBOX>` operator to test whether a geometry-valued property
-intersects a fixed bounding box
- * @param geometryName Geometry name to use.
- * @param extent Extent.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
-  declare class filter$Bbox mixins filter$Filter {
+   * @classdesc Represents a `<BBOX>` operator to test whether a geometry-valued property
+   * intersects a fixed bounding box
+   * @param geometryName Geometry name to use.
+   * @param extent Extent.
+   * @param opt_srsName SRS name. No srsName attribute will be
+   * set on geometries when this is not provided.
+   * @api
+   */
+  declare class format$filter$Bbox mixins Filter {
     /**
- * @classdesc Represents a `<BBOX>` operator to test whether a geometry-valued property
-intersects a fixed bounding box
- * @param geometryName Geometry name to use.
- * @param extent Extent.
- * @param opt_srsName SRS name. No srsName attribute will be
-set on geometries when this is not provided.
- * @api
- */
+     * @classdesc Represents a `<BBOX>` operator to test whether a geometry-valued property
+     * intersects a fixed bounding box
+     * @param geometryName Geometry name to use.
+     * @param extent Extent.
+     * @param opt_srsName SRS name. No srsName attribute will be
+     * set on geometries when this is not provided.
+     * @api
+     */
     constructor(
       geometryName: string,
-      extent: ol.interaction$Extent,
+      extent: ol.Extent,
       opt_srsName?: string
     ): this;
   }
 
   /**
- * @classdesc Feature format for reading data in the
-[OSMXML format](http://wiki.openstreetmap.org/wiki/OSM_XML).
- * @api stable
- */
-  declare class format$OSMXML mixins format$XMLFeature {
+   * @classdesc Feature format for reading data in the
+   * [OSMXML format](http://wiki.openstreetmap.org/wiki/OSM_XML).
+   * @api stable
+   */
+  declare class format$OSMXML mixins XMLFeature {
     /**
- * @classdesc Feature format for reading data in the
-[OSMXML format](http://wiki.openstreetmap.org/wiki/OSM_XML).
- * @api stable
- */
+     * @classdesc Feature format for reading data in the
+     * [OSMXML format](http://wiki.openstreetmap.org/wiki/OSM_XML).
+     * @api stable
+     */
     constructor(): this;
 
     /**
@@ -3239,8 +3297,8 @@ set on geometries when this is not provided.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read the projection from an OSM source.
@@ -3250,38 +3308,36 @@ set on geometries when this is not provided.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the Encoded
-Polyline Algorithm Format.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-  declare class format$Polyline mixins format$TextFeature {
+   * @classdesc Feature format for reading and writing data in the Encoded
+   * Polyline Algorithm Format.
+   * @param opt_options Optional configuration object.
+   * @api stable
+   */
+  declare class format$Polyline mixins TextFeature {
     /**
- * @classdesc Feature format for reading and writing data in the Encoded
-Polyline Algorithm Format.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$coordinate$format.format$PolylineOptions
-    ): this;
+     * @classdesc Feature format for reading and writing data in the Encoded
+     * Polyline Algorithm Format.
+     * @param opt_options Optional configuration object.
+     * @api stable
+     */
+    constructor(opt_options?: olx$format$PolylineOptions): this;
 
     /**
- * Encode a list of n-dimensional points and return an encoded string
- * 
- * Attention: This function will modify the passed array!
- * @param numbers A list of n-dimensional points.
- * @param stride The number of dimension of the points in the list.
- * @param opt_factor The factor by which the numbers will be
-multiplied. The remaining decimal places will get rounded away.
-Default is `1e5`.
- * @return The encoded string.
- * @api
- */
+     * Encode a list of n-dimensional points and return an encoded string
+     *
+     * Attention: This function will modify the passed array!
+     * @param numbers A list of n-dimensional points.
+     * @param stride The number of dimension of the points in the list.
+     * @param opt_factor The factor by which the numbers will be
+     * multiplied. The remaining decimal places will get rounded away.
+     * Default is `1e5`.
+     * @return The encoded string.
+     * @api
+     */
     static encodeDeltas(
       numbers: number[],
       stride: number,
@@ -3289,15 +3345,15 @@ Default is `1e5`.
     ): string;
 
     /**
- * Decode a list of n-dimensional points from an encoded string
- * @param encoded An encoded string.
- * @param stride The number of dimension of the points in the
-encoded string.
- * @param opt_factor The factor by which the resulting numbers will
-be divided. Default is `1e5`.
- * @return A list of n-dimensional points.
- * @api
- */
+     * Decode a list of n-dimensional points from an encoded string
+     * @param encoded An encoded string.
+     * @param stride The number of dimension of the points in the
+     * encoded string.
+     * @param opt_factor The factor by which the resulting numbers will
+     * be divided. Default is `1e5`.
+     * @return A list of n-dimensional points.
+     * @api
+     */
     static decodeDeltas(
       encoded: string,
       stride: number,
@@ -3305,26 +3361,26 @@ be divided. Default is `1e5`.
     ): number[];
 
     /**
- * Encode a list of floating point numbers and return an encoded string
- * 
- * Attention: This function will modify the passed array!
- * @param numbers A list of floating point numbers.
- * @param opt_factor The factor by which the numbers will be
-multiplied. The remaining decimal places will get rounded away.
-Default is `1e5`.
- * @return The encoded string.
- * @api
- */
+     * Encode a list of floating point numbers and return an encoded string
+     *
+     * Attention: This function will modify the passed array!
+     * @param numbers A list of floating point numbers.
+     * @param opt_factor The factor by which the numbers will be
+     * multiplied. The remaining decimal places will get rounded away.
+     * Default is `1e5`.
+     * @return The encoded string.
+     * @api
+     */
     static encodeFloats(numbers: number[], opt_factor?: number): string;
 
     /**
- * Decode a list of floating point numbers from an encoded string
- * @param encoded An encoded string.
- * @param opt_factor The factor by which the result will be divided.
-Default is `1e5`.
- * @return A list of floating point numbers.
- * @api
- */
+     * Decode a list of floating point numbers from an encoded string
+     * @param encoded An encoded string.
+     * @param opt_factor The factor by which the result will be divided.
+     * Default is `1e5`.
+     * @return A list of floating point numbers.
+     * @api
+     */
     static decodeFloats(encoded: string, opt_factor?: number): number[];
 
     /**
@@ -3337,8 +3393,8 @@ Default is `1e5`.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read the feature from the source. As Polyline sources contain a single
@@ -3350,8 +3406,8 @@ Default is `1e5`.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read the geometry from the source.
@@ -3362,8 +3418,8 @@ Default is `1e5`.
      */
     readGeometry(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.geom.geom$Geometry;
+      opt_options?: olx$format$ReadOptions
+    ): ol.geom.Geometry;
 
     /**
      * Read the projection from a Polyline source.
@@ -3373,7 +3429,7 @@ Default is `1e5`.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
 
     /**
      * Write a single geometry in Polyline format.
@@ -3383,22 +3439,22 @@ Default is `1e5`.
      * @api stable
      */
     writeGeometry(
-      geometry: ol.geom.geom$Geometry,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      geometry: ol.geom.Geometry,
+      opt_options?: olx$format$WriteOptions
     ): string;
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for text feature formats.
- */
-  declare class format$TextFeature mixins format$Feature {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for text feature formats.
+   */
+  declare class format$TextFeature mixins Feature {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for text feature formats.
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for text feature formats.
+     */
     constructor(): this;
   }
 
@@ -3407,15 +3463,13 @@ Base class for text feature formats.
    * @param opt_options Options.
    * @api stable
    */
-  declare class format$TopoJSON mixins format$JSONFeature {
+  declare class format$TopoJSON mixins JSONFeature {
     /**
      * @classdesc Feature format for reading data in the TopoJSON format.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(
-      opt_options?: olx$coordinate$format.format$TopoJSONOptions
-    ): this;
+    constructor(opt_options?: olx$format$TopoJSONOptions): this;
 
     /**
      * Read all features from a TopoJSON source.
@@ -3423,9 +3477,7 @@ Base class for text feature formats.
      * @return Features.
      * @api stable
      */
-    readFeatures(
-      source: Document | Node | GlobalObject | string
-    ): ol.format$Feature[];
+    readFeatures(source: Document | Node | GlobalObject | string): ol.Feature[];
 
     /**
      * Read the projection from a TopoJSON source.
@@ -3435,27 +3487,27 @@ Base class for text feature formats.
      */
     readProjection(
       object: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
   }
 
   /**
- * @classdesc Feature format for reading and writing data in the WFS format.
-By default, supports WFS version 1.1.0. You can pass a GML format
-as option if you want to read a WFS that contains GML2 (WFS 1.0.0).
-Also see {@link ol.format.GMLBase} which is used by this format.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-  declare class format$WFS mixins format$XMLFeature {
+   * @classdesc Feature format for reading and writing data in the WFS format.
+   * By default, supports WFS version 1.1.0. You can pass a GML format
+   * as option if you want to read a WFS that contains GML2 (WFS 1.0.0).
+   * Also see {@link ol.format.GMLBase} which is used by this format.
+   * @param opt_options Optional configuration object.
+   * @api stable
+   */
+  declare class format$WFS mixins XMLFeature {
     /**
- * @classdesc Feature format for reading and writing data in the WFS format.
-By default, supports WFS version 1.1.0. You can pass a GML format
-as option if you want to read a WFS that contains GML2 (WFS 1.0.0).
-Also see {@link ol.format.GMLBase} which is used by this format.
- * @param opt_options Optional configuration object.
- * @api stable
- */
-    constructor(opt_options?: olx$coordinate$format.format$WFSOptions): this;
+     * @classdesc Feature format for reading and writing data in the WFS format.
+     * By default, supports WFS version 1.1.0. You can pass a GML format
+     * as option if you want to read a WFS that contains GML2 (WFS 1.0.0).
+     * Also see {@link ol.format.GMLBase} which is used by this format.
+     * @param opt_options Optional configuration object.
+     * @api stable
+     */
+    constructor(opt_options?: olx$format$WFSOptions): this;
 
     /**
      * Read all features from a WFS FeatureCollection.
@@ -3466,8 +3518,8 @@ Also see {@link ol.format.GMLBase} which is used by this format.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read transaction response of the source.
@@ -3495,9 +3547,7 @@ Also see {@link ol.format.GMLBase} which is used by this format.
      * @return Result.
      * @api stable
      */
-    writeGetFeature(
-      options: olx$coordinate$format.format$WFSWriteGetFeatureOptions
-    ): Node;
+    writeGetFeature(options: olx$format$WFSWriteGetFeatureOptions): Node;
 
     /**
      * Encode format as WFS `Transaction` and return the Node.
@@ -3509,10 +3559,10 @@ Also see {@link ol.format.GMLBase} which is used by this format.
      * @api stable
      */
     writeTransaction(
-      inserts: ol.format$Feature[],
-      updates: ol.format$Feature[],
-      deletes: ol.format$Feature[],
-      options: olx$coordinate$format.format$WFSWriteTransactionOptions
+      inserts: ol.Feature[],
+      updates: ol.Feature[],
+      deletes: ol.Feature[],
+      options: olx$format$WFSWriteTransactionOptions
     ): Node;
 
     /**
@@ -3523,23 +3573,23 @@ Also see {@link ol.format.GMLBase} which is used by this format.
      */
     readProjection(
       source: Document | Node | GlobalObject | string
-    ): ol.proj.proj$Projection;
+    ): ol.proj.Projection;
   }
 
   /**
- * @classdesc Geometry format for reading and writing data in the `WellKnownText` (WKT)
-format.
- * @param opt_options Options.
- * @api stable
- */
-  declare class format$WKT mixins format$TextFeature {
+   * @classdesc Geometry format for reading and writing data in the `WellKnownText` (WKT)
+   * format.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class format$WKT mixins TextFeature {
     /**
- * @classdesc Geometry format for reading and writing data in the `WellKnownText` (WKT)
-format.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$coordinate$format.format$WKTOptions): this;
+     * @classdesc Geometry format for reading and writing data in the `WellKnownText` (WKT)
+     * format.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$format$WKTOptions): this;
 
     /**
      * Read a feature from a WKT source.
@@ -3550,8 +3600,8 @@ format.
      */
     readFeature(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature;
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature;
 
     /**
      * Read all features from a WKT source.
@@ -3562,8 +3612,8 @@ format.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
 
     /**
      * Read a single geometry from a WKT source.
@@ -3574,8 +3624,8 @@ format.
      */
     readGeometry(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.geom.geom$Geometry;
+      opt_options?: olx$format$ReadOptions
+    ): ol.geom.Geometry;
 
     /**
      * Encode a feature as a WKT string.
@@ -3585,8 +3635,8 @@ format.
      * @api stable
      */
     writeFeature(
-      feature: ol.format$Feature,
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      feature: ol.Feature,
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -3597,8 +3647,8 @@ format.
      * @api stable
      */
     writeFeatures(
-      features: ol.format$Feature[],
-      opt_options?: olx$coordinate$format.format$WriteOptions
+      features: ol.Feature[],
+      opt_options?: olx$format$WriteOptions
     ): string;
 
     /**
@@ -3607,14 +3657,14 @@ format.
      * @return WKT string.
      * @api stable
      */
-    writeGeometry(geometry: ol.geom.geom$Geometry): string;
+    writeGeometry(geometry: ol.geom.Geometry): string;
   }
 
   /**
    * @classdesc Format for reading WMS capabilities data
    * @api
    */
-  declare class format$WMSCapabilities mixins format$XML {
+  declare class format$WMSCapabilities mixins XML {
     /**
      * @classdesc Format for reading WMS capabilities data
      * @api
@@ -3631,21 +3681,19 @@ format.
   }
 
   /**
- * @classdesc Format for reading WMSGetFeatureInfo format. It uses
-{@link ol.format.GML2} to read features.
- * @param opt_options Options.
- * @api
- */
-  declare class format$WMSGetFeatureInfo mixins format$XMLFeature {
+   * @classdesc Format for reading WMSGetFeatureInfo format. It uses
+   * {@link ol.format.GML2} to read features.
+   * @param opt_options Options.
+   * @api
+   */
+  declare class format$WMSGetFeatureInfo mixins XMLFeature {
     /**
- * @classdesc Format for reading WMSGetFeatureInfo format. It uses
-{@link ol.format.GML2} to read features.
- * @param opt_options Options.
- * @api
- */
-    constructor(
-      opt_options?: olx$coordinate$format.format$WMSGetFeatureInfoOptions
-    ): this;
+     * @classdesc Format for reading WMSGetFeatureInfo format. It uses
+     * {@link ol.format.GML2} to read features.
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$format$WMSGetFeatureInfoOptions): this;
 
     /**
      * Read all features from a WMSGetFeatureInfo response.
@@ -3656,15 +3704,15 @@ format.
      */
     readFeatures(
       source: Document | Node | GlobalObject | string,
-      opt_options?: olx$coordinate$format.format$ReadOptions
-    ): ol.format$Feature[];
+      opt_options?: olx$format$ReadOptions
+    ): ol.Feature[];
   }
 
   /**
    * @classdesc Format for reading WMTS capabilities data.
    * @api
    */
-  declare class format$WMTSCapabilities mixins format$XML {
+  declare class format$WMTSCapabilities mixins XML {
     /**
      * @classdesc Format for reading WMTS capabilities data.
      * @api
@@ -3693,73 +3741,73 @@ format.
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for XML feature formats.
- */
-  declare class format$XMLFeature mixins format$Feature {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for XML feature formats.
+   */
+  declare class format$XMLFeature mixins Feature {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for XML feature formats.
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for XML feature formats.
+     */
     constructor(): this;
   }
 
   /**
- * @classdesc Helper class for providing HTML5 Geolocation capabilities.
-The [Geolocation API](http://www.w3.org/TR/geolocation-API/)
-is used to locate a user's position.
-
-To get notified of position changes, register a listener for the generic
-`change` event on your instance of `ol.Geolocation`.
-
-Example:
-
-var geolocation = new ol.Geolocation({
-// take the projection to use from the map's view
-projection: view.getProjection()
-});
-// listen to changes in position
-geolocation.on('change', function(evt) {
-window.console.log(geolocation.getPosition());
-});
- * @fires error
- * @param opt_options Options.
- * @api stable
- */
+   * @classdesc Helper class for providing HTML5 Geolocation capabilities.
+   * The [Geolocation API](http://www.w3.org/TR/geolocation-API/)
+   * is used to locate a user's position.
+   *
+   * To get notified of position changes, register a listener for the generic
+   * `change` event on your instance of `ol.Geolocation`.
+   *
+   * Example:
+   *
+   * var geolocation = new ol.Geolocation({
+   * // take the projection to use from the map's view
+   * projection: view.getProjection()
+   * });
+   * // listen to changes in position
+   * geolocation.on('change', function(evt) {
+   * window.console.log(geolocation.getPosition());
+   * });
+   * @fires error
+   * @param opt_options Options.
+   * @api stable
+   */
   declare export class Geolocation mixins Object {
     /**
- * @classdesc Helper class for providing HTML5 Geolocation capabilities.
-The [Geolocation API](http://www.w3.org/TR/geolocation-API/)
-is used to locate a user's position.
-
-To get notified of position changes, register a listener for the generic
-`change` event on your instance of `ol.Geolocation`.
-
-Example:
-
-var geolocation = new ol.Geolocation({
-// take the projection to use from the map's view
-projection: view.getProjection()
-});
-// listen to changes in position
-geolocation.on('change', function(evt) {
-window.console.log(geolocation.getPosition());
-});
- * @fires error
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$olx$GeolocationOptions): this;
+     * @classdesc Helper class for providing HTML5 Geolocation capabilities.
+     * The [Geolocation API](http://www.w3.org/TR/geolocation-API/)
+     * is used to locate a user's position.
+     *
+     * To get notified of position changes, register a listener for the generic
+     * `change` event on your instance of `ol.Geolocation`.
+     *
+     * Example:
+     *
+     * var geolocation = new ol.Geolocation({
+     * // take the projection to use from the map's view
+     * projection: view.getProjection()
+     * });
+     * // listen to changes in position
+     * geolocation.on('change', function(evt) {
+     * window.console.log(geolocation.getPosition());
+     * });
+     * @fires error
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$GeolocationOptions): this;
 
     /**
- * Get the accuracy of the position in meters.
- * @return The accuracy of the position measurement in
-meters.
- * @observable
- * @api stable
- */
+     * Get the accuracy of the position in meters.
+     * @return The accuracy of the position measurement in
+     * meters.
+     * @observable
+     * @api stable
+     */
     getAccuracy(): number;
 
     /**
@@ -3768,24 +3816,24 @@ meters.
      * @observable
      * @api stable
      */
-    getAccuracyGeometry(): ol.geom.geom$Geometry;
+    getAccuracyGeometry(): ol.geom.Geometry;
 
     /**
- * Get the altitude associated with the position.
- * @return The altitude of the position in meters above mean
-sea level.
- * @observable
- * @api stable
- */
+     * Get the altitude associated with the position.
+     * @return The altitude of the position in meters above mean
+     * sea level.
+     * @observable
+     * @api stable
+     */
     getAltitude(): number;
 
     /**
- * Get the altitude accuracy of the position.
- * @return The accuracy of the altitude measurement in
-meters.
- * @observable
- * @api stable
- */
+     * Get the altitude accuracy of the position.
+     * @return The accuracy of the altitude measurement in
+     * meters.
+     * @observable
+     * @api stable
+     */
     getAltitudeAccuracy(): number;
 
     /**
@@ -3797,30 +3845,30 @@ meters.
     getHeading(): number;
 
     /**
- * Get the position of the device.
- * @return The current position of the device reported
-in the current projection.
- * @observable
- * @api stable
- */
+     * Get the position of the device.
+     * @return The current position of the device reported
+     * in the current projection.
+     * @observable
+     * @api stable
+     */
     getPosition(): ol.Coordinate;
 
     /**
- * Get the projection associated with the position.
- * @return The projection the position is
-reported in.
- * @observable
- * @api stable
- */
-    getProjection(): ol.proj.proj$Projection;
+     * Get the projection associated with the position.
+     * @return The projection the position is
+     * reported in.
+     * @observable
+     * @api stable
+     */
+    getProjection(): ol.proj.Projection;
 
     /**
- * Get the speed in meters per second.
- * @return The instantaneous speed of the device in meters
-per second.
- * @observable
- * @api stable
- */
+     * Get the speed in meters per second.
+     * @return The instantaneous speed of the device in meters
+     * per second.
+     * @observable
+     * @api stable
+     */
     getSpeed(): number;
 
     /**
@@ -3832,24 +3880,24 @@ per second.
     getTracking(): boolean;
 
     /**
- * Get the tracking options.
- * @see http://www.w3.org/TR/geolocation-API/#position-options
- * @return PositionOptions as defined by
-the [HTML5 Geolocation spec
-](http://www.w3.org/TR/geolocation-API/#position_options_interface).
- * @observable
- * @api stable
- */
+     * Get the tracking options.
+     * @see http://www.w3.org/TR/geolocation-API/#position-options
+     * @return PositionOptions as defined by
+     * the [HTML5 Geolocation spec
+     * ](http://www.w3.org/TR/geolocation-API/#position_options_interface).
+     * @observable
+     * @api stable
+     */
     getTrackingOptions(): PositionOptions;
 
     /**
- * Set the projection to use for transforming the coordinates.
- * @param projection The projection the position is
-reported in.
- * @observable
- * @api stable
- */
-    setProjection(projection: ol.proj.proj$Projection): void;
+     * Set the projection to use for transforming the coordinates.
+     * @param projection The projection the position is
+     * reported in.
+     * @observable
+     * @api stable
+     */
+    setProjection(projection: ol.proj.Projection): void;
 
     /**
      * Enable or disable tracking.
@@ -3860,16 +3908,30 @@ reported in.
     setTracking(tracking: boolean): void;
 
     /**
- * Set the tracking options.
- * @see http://www.w3.org/TR/geolocation-API/#position-options
- * @param options PositionOptions as defined by the
-[HTML5 Geolocation spec
-](http://www.w3.org/TR/geolocation-API/#position_options_interface).
- * @observable
- * @api stable
- */
+     * Set the tracking options.
+     * @see http://www.w3.org/TR/geolocation-API/#position-options
+     * @param options PositionOptions as defined by the
+     * [HTML5 Geolocation spec
+     * ](http://www.w3.org/TR/geolocation-API/#position_options_interface).
+     * @observable
+     * @api stable
+     */
     setTrackingOptions(options: PositionOptions): void;
   }
+
+  declare var npm$namespace$geom: {
+    Circle: typeof geom$Circle,
+    Geometry: typeof geom$Geometry,
+    GeometryCollection: typeof geom$GeometryCollection,
+    LinearRing: typeof geom$LinearRing,
+    LineString: typeof geom$LineString,
+    MultiLineString: typeof geom$MultiLineString,
+    MultiPoint: typeof geom$MultiPoint,
+    MultiPolygon: typeof geom$MultiPolygon,
+    Point: typeof geom$Point,
+    Polygon: typeof geom$Polygon,
+    SimpleGeometry: typeof geom$SimpleGeometry
+  };
 
   /**
    * @classdesc Circle geometry.
@@ -3878,7 +3940,7 @@ reported in.
    * @param opt_layout Layout.
    * @api
    */
-  declare class geom$Circle mixins geom$SimpleGeometry {
+  declare class geom$Circle mixins SimpleGeometry {
     /**
      * @classdesc Circle geometry.
      * @param center Center.
@@ -3923,7 +3985,7 @@ reported in.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the center of the circle as {@link ol.Coordinate coordinate}.
@@ -3978,24 +4040,24 @@ reported in.
   declare type geom$GeometryLayout = "XY" | "XYZ" | "XYM" | "XYZM";
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for vector geometries.
-
-To get notified of changes to the geometry, register a listener for the
-generic `change` event on your geometry instance.
- * @api stable
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for vector geometries.
+   *
+   * To get notified of changes to the geometry, register a listener for the
+   * generic `change` event on your geometry instance.
+   * @api stable
+   */
   declare class geom$Geometry mixins Object {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for vector geometries.
-
-To get notified of changes to the geometry, register a listener for the
-generic `change` event on your geometry instance.
- * @api stable
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for vector geometries.
+     *
+     * To get notified of changes to the geometry, register a listener for the
+     * generic `change` event on your geometry instance.
+     * @api stable
+     */
     constructor(): this;
 
     /**
@@ -4026,7 +4088,7 @@ generic `change` event on your geometry instance.
      * @return extent Extent.
      * @api stable
      */
-    getExtent(opt_extent?: ol.interaction$Extent): ol.interaction$Extent;
+    getExtent(opt_extent?: ol.Extent): ol.Extent;
 
     /**
      * Rotate the geometry around a given coordinate. This modifies the geometry
@@ -4038,44 +4100,44 @@ generic `change` event on your geometry instance.
     rotate(angle: number, anchor: ol.Coordinate): void;
 
     /**
- * Scale the geometry (with an optional origin).  This modifies the geometry
- * coordinates in place.
- * @param sx The scaling factor in the x-direction.
- * @param opt_sy The scaling factor in the y-direction (defaults to
-sx).
- * @param opt_anchor The scale origin (defaults to the center
-of the geometry extent).
- * @api
- */
+     * Scale the geometry (with an optional origin).  This modifies the geometry
+     * coordinates in place.
+     * @param sx The scaling factor in the x-direction.
+     * @param opt_sy The scaling factor in the y-direction (defaults to
+     * sx).
+     * @param opt_anchor The scale origin (defaults to the center
+     * of the geometry extent).
+     * @api
+     */
     scale(sx: number, opt_sy?: number, opt_anchor?: ol.Coordinate): void;
 
     /**
- * Create a simplified version of this geometry.  For linestrings, this uses
- * the the {@link
- * https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
- * Douglas Peucker} algorithm.  For polygons, a quantization-based
- * simplification is used to preserve topology.
- * @param tolerance The tolerance distance for simplification.
- * @return A new, simplified version of the original
-geometry.
- * @api
- */
+     * Create a simplified version of this geometry.  For linestrings, this uses
+     * the the {@link
+     * https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
+     * Douglas Peucker} algorithm.  For polygons, a quantization-based
+     * simplification is used to preserve topology.
+     * @param tolerance The tolerance distance for simplification.
+     * @return A new, simplified version of the original
+     * geometry.
+     * @api
+     */
     simplify(tolerance: number): geom$Geometry;
 
     /**
- * Transform each coordinate of the geometry from one coordinate reference
- * system to another. The geometry is modified in place.
- * For example, a line will be transformed to a line and a circle to a circle.
- * If you do not want the geometry modified in place, first `clone()` it and
- * then use this function on the clone.
- * @param source The current projection.  Can be a
-string identifier or a {@link ol.proj.Projection} object.
- * @param destination The desired projection.  Can be a
-string identifier or a {@link ol.proj.Projection} object.
- * @return This geometry.  Note that original geometry is
-modified in place.
- * @api stable
- */
+     * Transform each coordinate of the geometry from one coordinate reference
+     * system to another. The geometry is modified in place.
+     * For example, a line will be transformed to a line and a circle to a circle.
+     * If you do not want the geometry modified in place, first `clone()` it and
+     * then use this function on the clone.
+     * @param source The current projection.  Can be a
+     * string identifier or a {@link ol.proj.Projection} object.
+     * @param destination The desired projection.  Can be a
+     * string identifier or a {@link ol.proj.Projection} object.
+     * @return This geometry.  Note that original geometry is
+     * modified in place.
+     * @api stable
+     */
     transform(
       source: ol.ProjectionLike,
       destination: ol.ProjectionLike
@@ -4093,7 +4155,7 @@ modified in place.
    * @param opt_geometries Geometries.
    * @api stable
    */
-  declare class geom$GeometryCollection mixins geom$Geometry {
+  declare class geom$GeometryCollection mixins Geometry {
     /**
      * @classdesc An array of {@link ol.geom.Geometry} objects.
      * @param opt_geometries Geometries.
@@ -4125,7 +4187,7 @@ modified in place.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the geometries that make up this geometry collection.
@@ -4150,20 +4212,20 @@ modified in place.
   }
 
   /**
- * @classdesc Linear ring geometry. Only used as part of polygon; cannot be rendered
-on its own.
- * @param coordinates Coordinates.
- * @param opt_layout Layout.
- * @api stable
- */
-  declare class geom$LinearRing mixins geom$SimpleGeometry {
+   * @classdesc Linear ring geometry. Only used as part of polygon; cannot be rendered
+   * on its own.
+   * @param coordinates Coordinates.
+   * @param opt_layout Layout.
+   * @api stable
+   */
+  declare class geom$LinearRing mixins SimpleGeometry {
     /**
- * @classdesc Linear ring geometry. Only used as part of polygon; cannot be rendered
-on its own.
- * @param coordinates Coordinates.
- * @param opt_layout Layout.
- * @api stable
- */
+     * @classdesc Linear ring geometry. Only used as part of polygon; cannot be rendered
+     * on its own.
+     * @param coordinates Coordinates.
+     * @param opt_layout Layout.
+     * @api stable
+     */
     constructor(
       coordinates: ol.Coordinate[],
       opt_layout?: geom$GeometryLayout
@@ -4214,7 +4276,7 @@ on its own.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$LineString mixins geom$SimpleGeometry {
+  declare class geom$LineString mixins SimpleGeometry {
     /**
      * @classdesc Linestring geometry.
      * @param coordinates Coordinates.
@@ -4241,17 +4303,17 @@ on its own.
     clone(): geom$LineString;
 
     /**
- * Iterate over each segment, calling the provided callback.
- * If the callback returns a truthy value the function returns that
- * value immediately. Otherwise the function returns `false`.
- * @param callback Function
-called for each segment.
- * @param opt_this The object to be used as the value of 'this'
-within callback.
- * @return Value.
- * @template
- * @api
- */
+     * Iterate over each segment, calling the provided callback.
+     * If the callback returns a truthy value the function returns that
+     * value immediately. Otherwise the function returns `false`.
+     * @param callback Function
+     * called for each segment.
+     * @param opt_this The object to be used as the value of 'this'
+     * within callback.
+     * @return Value.
+     * @template
+     * @api
+     */
     forEachSegment<T, S>(
       callback: (start: ol.Coordinate, end: ol.Coordinate) => T,
       opt_this?: S
@@ -4280,15 +4342,15 @@ within callback.
     getCoordinates(): ol.Coordinate[];
 
     /**
- * Return the coordinate at the provided fraction along the linestring.
- * The `fraction` is a number between 0 and 1, where 0 is the start of the
- * linestring and 1 is the end.
- * @param fraction Fraction.
- * @param opt_dest Optional coordinate whose values will
-be modified. If not provided, a new coordinate will be returned.
- * @return Coordinate of the interpolated point.
- * @api
- */
+     * Return the coordinate at the provided fraction along the linestring.
+     * The `fraction` is a number between 0 and 1, where 0 is the start of the
+     * linestring and 1 is the end.
+     * @param fraction Fraction.
+     * @param opt_dest Optional coordinate whose values will
+     * be modified. If not provided, a new coordinate will be returned.
+     * @return Coordinate of the interpolated point.
+     * @api
+     */
     getCoordinateAt(fraction: number, opt_dest?: ol.Coordinate): ol.Coordinate;
 
     /**
@@ -4308,7 +4370,7 @@ be modified. If not provided, a new coordinate will be returned.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinates of the linestring.
@@ -4328,7 +4390,7 @@ be modified. If not provided, a new coordinate will be returned.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$MultiLineString mixins geom$SimpleGeometry {
+  declare class geom$MultiLineString mixins SimpleGeometry {
     /**
      * @classdesc Multi-linestring geometry.
      * @param coordinates Coordinates.
@@ -4413,7 +4475,7 @@ be modified. If not provided, a new coordinate will be returned.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinates of the multilinestring.
@@ -4433,7 +4495,7 @@ be modified. If not provided, a new coordinate will be returned.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$MultiPoint mixins geom$SimpleGeometry {
+  declare class geom$MultiPoint mixins SimpleGeometry {
     /**
      * @classdesc Multi-point geometry.
      * @param coordinates Coordinates.
@@ -4491,7 +4553,7 @@ be modified. If not provided, a new coordinate will be returned.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinates of the multipoint.
@@ -4511,7 +4573,7 @@ be modified. If not provided, a new coordinate will be returned.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$MultiPolygon mixins geom$SimpleGeometry {
+  declare class geom$MultiPolygon mixins SimpleGeometry {
     /**
      * @classdesc Multi-polygon geometry.
      * @param coordinates Coordinates.
@@ -4545,17 +4607,17 @@ be modified. If not provided, a new coordinate will be returned.
     getArea(): number;
 
     /**
- * Get the coordinate array for this geometry.  This array has the structure
- * of a GeoJSON coordinate array for multi-polygons.
- * @param opt_right Orient coordinates according to the right-hand
-rule (counter-clockwise for exterior and clockwise for interior rings).
-If `false`, coordinates will be oriented according to the left-hand rule
-(clockwise for exterior and counter-clockwise for interior rings).
-By default, coordinate orientation will depend on how the geometry was
-constructed.
- * @return Coordinates.
- * @api stable
- */
+     * Get the coordinate array for this geometry.  This array has the structure
+     * of a GeoJSON coordinate array for multi-polygons.
+     * @param opt_right Orient coordinates according to the right-hand
+     * rule (counter-clockwise for exterior and clockwise for interior rings).
+     * If `false`, coordinates will be oriented according to the left-hand rule
+     * (clockwise for exterior and counter-clockwise for interior rings).
+     * By default, coordinate orientation will depend on how the geometry was
+     * constructed.
+     * @return Coordinates.
+     * @api stable
+     */
     getCoordinates(opt_right?: boolean): ol.Coordinate[][][];
 
     /**
@@ -4590,7 +4652,7 @@ constructed.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinates of the multipolygon.
@@ -4610,7 +4672,7 @@ constructed.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$Point mixins geom$SimpleGeometry {
+  declare class geom$Point mixins SimpleGeometry {
     /**
      * @classdesc Point geometry.
      * @param coordinates Coordinates.
@@ -4646,7 +4708,7 @@ constructed.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinate of the point.
@@ -4666,7 +4728,7 @@ constructed.
    * @param opt_layout Layout.
    * @api stable
    */
-  declare class geom$Polygon mixins geom$SimpleGeometry {
+  declare class geom$Polygon mixins SimpleGeometry {
     /**
      * @classdesc Polygon geometry.
      * @param coordinates Coordinates.
@@ -4700,17 +4762,17 @@ constructed.
     getArea(): number;
 
     /**
- * Get the coordinate array for this geometry.  This array has the structure
- * of a GeoJSON coordinate array for polygons.
- * @param opt_right Orient coordinates according to the right-hand
-rule (counter-clockwise for exterior and clockwise for interior rings).
-If `false`, coordinates will be oriented according to the left-hand rule
-(clockwise for exterior and counter-clockwise for interior rings).
-By default, coordinate orientation will depend on how the geometry was
-constructed.
- * @return Coordinates.
- * @api stable
- */
+     * Get the coordinate array for this geometry.  This array has the structure
+     * of a GeoJSON coordinate array for polygons.
+     * @param opt_right Orient coordinates according to the right-hand
+     * rule (counter-clockwise for exterior and clockwise for interior rings).
+     * If `false`, coordinates will be oriented according to the left-hand rule
+     * (clockwise for exterior and counter-clockwise for interior rings).
+     * By default, coordinate orientation will depend on how the geometry was
+     * constructed.
+     * @return Coordinates.
+     * @api stable
+     */
     getCoordinates(opt_right?: boolean): ol.Coordinate[][];
 
     /**
@@ -4756,7 +4818,7 @@ constructed.
      * @inheritDoc
      * @api stable
      */
-    intersectsExtent(extent: ol.interaction$Extent): boolean;
+    intersectsExtent(extent: ol.Extent): boolean;
 
     /**
      * Set the coordinates of the polygon.
@@ -4770,16 +4832,16 @@ constructed.
     ): void;
 
     /**
- * Create an approximation of a circle on the surface of a sphere.
- * @param sphere The sphere.
- * @param center Center (`[lon, lat]` in degrees).
- * @param radius The great-circle distance from the center to
-the polygon vertices.
- * @param opt_n Optional number of vertices for the resulting
-polygon. Default is `32`.
- * @return The "circular" polygon.
- * @api stable
- */
+     * Create an approximation of a circle on the surface of a sphere.
+     * @param sphere The sphere.
+     * @param center Center (`[lon, lat]` in degrees).
+     * @param radius The great-circle distance from the center to
+     * the polygon vertices.
+     * @param opt_n Optional number of vertices for the resulting
+     * polygon. Default is `32`.
+     * @return The "circular" polygon.
+     * @api stable
+     */
     static circular(
       sphere: ol.Sphere,
       center: ol.Coordinate,
@@ -4793,17 +4855,17 @@ polygon. Default is `32`.
      * @return The polygon.
      * @api
      */
-    static fromExtent(extent: ol.interaction$Extent): geom$Polygon;
+    static fromExtent(extent: ol.Extent): geom$Polygon;
 
     /**
- * Create a regular polygon from a circle.
- * @param circle Circle geometry.
- * @param opt_sides Number of sides of the polygon. Default is 32.
- * @param opt_angle Start angle for the first vertex of the polygon in
-radians. Default is 0.
- * @return Polygon geometry.
- * @api
- */
+     * Create a regular polygon from a circle.
+     * @param circle Circle geometry.
+     * @param opt_sides Number of sides of the polygon. Default is 32.
+     * @param opt_angle Start angle for the first vertex of the polygon in
+     * radians. Default is 0.
+     * @return Polygon geometry.
+     * @api
+     */
     static fromCircle(
       circle: geom$Circle,
       opt_sides?: number,
@@ -4812,16 +4874,16 @@ radians. Default is 0.
   }
 
   /**
- * @classdesc Abstract base class; only used for creating subclasses; do not instantiate
-in apps, as cannot be rendered.
- * @api stable
- */
-  declare class geom$SimpleGeometry mixins geom$Geometry {
+   * @classdesc Abstract base class; only used for creating subclasses; do not instantiate
+   * in apps, as cannot be rendered.
+   * @api stable
+   */
+  declare class geom$SimpleGeometry mixins Geometry {
     /**
- * @classdesc Abstract base class; only used for creating subclasses; do not instantiate
-in apps, as cannot be rendered.
- * @api stable
- */
+     * @classdesc Abstract base class; only used for creating subclasses; do not instantiate
+     * in apps, as cannot be rendered.
+     * @api stable
+     */
     constructor(): this;
 
     /**
@@ -4869,7 +4931,7 @@ in apps, as cannot be rendered.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$olx$GraticuleOptions): this;
+    constructor(opt_options?: olx$GraticuleOptions): this;
 
     /**
      * Get the map associated with this graticule.
@@ -4883,14 +4945,14 @@ in apps, as cannot be rendered.
      * @return The meridians.
      * @api
      */
-    getMeridians(): ol.geom.geom$LineString[];
+    getMeridians(): ol.geom.LineString[];
 
     /**
      * Get the list of parallels.  Pallels are lines of equal latitude.
      * @return The parallels.
      * @api
      */
-    getParallels(): ol.geom.geom$LineString[];
+    getParallels(): ol.geom.LineString[];
 
     /**
      * Set the map for this graticule.  The graticule will be rendered on the
@@ -4975,10 +5037,10 @@ in apps, as cannot be rendered.
      * @param imageLoadFunction Image load function.
      */
     constructor(
-      extent: ol.interaction$Extent,
+      extent: ol.Extent,
       resolution: number,
       pixelRatio: number,
-      attributions: ol.control$Attribution[],
+      attributions: ol.Attribution[],
       src: string,
       crossOrigin?: string,
       imageLoadFunction?: ol.ImageLoadFunctionType
@@ -5010,7 +5072,7 @@ in apps, as cannot be rendered.
    * @param state State.
    * @param attributions Attributions.
    */
-  declare export class ImageBase mixins events$events$EventTarget {
+  declare export class ImageBase mixins events$EventTarget {
     /**
      * @param extent Extent.
      * @param resolution Resolution.
@@ -5019,11 +5081,11 @@ in apps, as cannot be rendered.
      * @param attributions Attributions.
      */
     constructor(
-      extent: ol.interaction$Extent,
+      extent: ol.Extent,
       resolution: number,
       pixelRatio: number,
       state: ol.ImageState,
-      attributions: ol.control$Attribution[]
+      attributions: ol.Attribution[]
     ): this;
   }
   declare export type ImageState = number;
@@ -5035,7 +5097,7 @@ in apps, as cannot be rendered.
    * @param crossOrigin Cross origin.
    * @param tileLoadFunction Tile load function.
    */
-  declare export class ImageTile mixins source$Tile {
+  declare export class ImageTile mixins Tile {
     /**
      * @param tileCoord Tile coordinate.
      * @param state State.
@@ -5045,7 +5107,7 @@ in apps, as cannot be rendered.
      */
     constructor(
       tileCoord: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
+      state: ol.Tile.State,
       src: string,
       crossOrigin?: string,
       tileLoadFunction?: ol.TileLoadFunctionType
@@ -5087,7 +5149,35 @@ in apps, as cannot be rendered.
   ): void;
 
   declare var npm$namespace$interaction: {
-    defaults: typeof interaction$defaults
+    defaults: typeof interaction$defaults,
+
+    DoubleClickZoom: typeof interaction$DoubleClickZoom,
+    DragAndDrop: typeof interaction$DragAndDrop,
+    DragBox: typeof interaction$DragBox,
+    DragPan: typeof interaction$DragPan,
+    DragRotate: typeof interaction$DragRotate,
+    DragRotateAndZoom: typeof interaction$DragRotateAndZoom,
+    DragZoom: typeof interaction$DragZoom,
+    Draw: typeof interaction$Draw,
+    Extent: typeof interaction$Extent,
+    Interaction: typeof interaction$Interaction,
+    KeyboardPan: typeof interaction$KeyboardPan,
+    KeyboardZoom: typeof interaction$KeyboardZoom,
+    Modify: typeof interaction$Modify,
+    MouseWheelZoom: typeof interaction$MouseWheelZoom,
+    PinchRotate: typeof interaction$PinchRotate,
+    PinchZoom: typeof interaction$PinchZoom,
+    Pointer: typeof interaction$Pointer,
+    Select: typeof interaction$Select,
+    Snap: typeof interaction$Snap,
+    Translate: typeof interaction$Translate,
+    DragAndDrop: typeof npm$namespace$interaction$DragAndDrop,
+    DragBox: typeof npm$namespace$interaction$DragBox,
+    Draw: typeof npm$namespace$interaction$Draw,
+    Extent: typeof npm$namespace$interaction$Extent,
+    Modify: typeof npm$namespace$interaction$Modify,
+    Select: typeof npm$namespace$interaction$Select,
+    Translate: typeof npm$namespace$interaction$Translate
   };
 
   /**
@@ -5095,15 +5185,13 @@ in apps, as cannot be rendered.
    * @param opt_options Options.
    * @api stable
    */
-  declare class interaction$DoubleClickZoom mixins interaction$Interaction {
+  declare class interaction$DoubleClickZoom mixins Interaction {
     /**
      * @classdesc Allows the user to zoom by double-clicking on the map.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(
-      opt_options?: olx$interaction.interaction$DoubleClickZoomOptions
-    ): this;
+    constructor(opt_options?: olx$interaction$DoubleClickZoomOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} (if it was a
@@ -5121,16 +5209,14 @@ in apps, as cannot be rendered.
    * @param opt_options Options.
    * @api stable
    */
-  declare class interaction$DragAndDrop mixins interaction$Interaction {
+  declare class interaction$DragAndDrop mixins Interaction {
     /**
      * @classdesc Handles input of vector data by drag and drop.
      * @fires ol.interaction.DragAndDropEvent
      * @param opt_options Options.
      * @api stable
      */
-    constructor(
-      opt_options?: olx$interaction.interaction$DragAndDropOptions
-    ): this;
+    constructor(opt_options?: olx$interaction$DragAndDropOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} unconditionally and
@@ -5142,35 +5228,39 @@ in apps, as cannot be rendered.
     static handleEvent: any;
   }
 
+  declare var npm$namespace$interaction$DragAndDrop: {
+    Event: typeof interaction$DragAndDrop$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.DragAndDrop} instances are instances
-of this type.
- * @param type Type.
- * @param file File.
- * @param opt_features Features.
- * @param opt_projection Projection.
- */
-  declare class DragAndDrop$Event mixins events$DragAndDrop$Event {
+   * @classdesc Events emitted by {@link ol.interaction.DragAndDrop} instances are instances
+   * of this type.
+   * @param type Type.
+   * @param file File.
+   * @param opt_features Features.
+   * @param opt_projection Projection.
+   */
+  declare class interaction$DragAndDrop$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.DragAndDrop} instances are instances
-of this type.
- * @param type Type.
- * @param file File.
- * @param opt_features Features.
- * @param opt_projection Projection.
- */
+     * @classdesc Events emitted by {@link ol.interaction.DragAndDrop} instances are instances
+     * of this type.
+     * @param type Type.
+     * @param file File.
+     * @param opt_features Features.
+     * @param opt_projection Projection.
+     */
     constructor(
       type: interaction$DragAndDropEventType,
       file: File,
-      opt_features?: ol.format$Feature[],
-      opt_projection?: ol.proj.proj$Projection
+      opt_features?: ol.Feature[],
+      opt_projection?: ol.proj.Projection
     ): this;
 
     /**
      * The features parsed from dropped data.
      * @api stable
      */
-    features: ol.format$Feature[];
+    features: ol.Feature[];
 
     /**
      * The dropped file.
@@ -5182,63 +5272,67 @@ of this type.
      * The feature projection.
      * @api
      */
-    projection: ol.proj.proj$Projection;
+    projection: ol.proj.Projection;
   }
 
   declare type interaction$DragAndDropEventType = string;
 
   /**
- * @classdesc Allows the user to draw a vector box by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when the shift or other key is held down. This is used, for example,
-for zooming to a specific area of the map
-(see {@link ol.interaction.DragZoom} and
-{@link ol.interaction.DragRotateAndZoom}).
-
-This interaction is only supported for mouse devices.
- * @fires ol.DragBoxEvent
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$DragBox mixins interaction$Pointer {
+   * @classdesc Allows the user to draw a vector box by clicking and dragging on the map,
+   * normally combined with an {@link ol.events.condition} that limits
+   * it to when the shift or other key is held down. This is used, for example,
+   * for zooming to a specific area of the map
+   * (see {@link ol.interaction.DragZoom} and
+   * {@link ol.interaction.DragRotateAndZoom}).
+   *
+   * This interaction is only supported for mouse devices.
+   * @fires ol.DragBoxEvent
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$DragBox mixins Pointer {
     /**
- * @classdesc Allows the user to draw a vector box by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when the shift or other key is held down. This is used, for example,
-for zooming to a specific area of the map
-(see {@link ol.interaction.DragZoom} and
-{@link ol.interaction.DragRotateAndZoom}).
-
-This interaction is only supported for mouse devices.
- * @fires ol.DragBoxEvent
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$interaction.interaction$DragBoxOptions): this;
+     * @classdesc Allows the user to draw a vector box by clicking and dragging on the map,
+     * normally combined with an {@link ol.events.condition} that limits
+     * it to when the shift or other key is held down. This is used, for example,
+     * for zooming to a specific area of the map
+     * (see {@link ol.interaction.DragZoom} and
+     * {@link ol.interaction.DragRotateAndZoom}).
+     *
+     * This interaction is only supported for mouse devices.
+     * @fires ol.DragBoxEvent
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$DragBoxOptions): this;
 
     /**
      * Returns geometry of last drawn box.
      * @return Geometry.
      * @api stable
      */
-    getGeometry(): ol.geom.geom$Polygon;
+    getGeometry(): ol.geom.Polygon;
   }
 
+  declare var npm$namespace$interaction$DragBox: {
+    Event: typeof interaction$DragBox$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.DragBox} instances are instances of
-this type.
- * @param type The event type.
- * @param coordinate The event coordinate.
- * @param mapBrowserEvent Originating event.
- */
-  declare class DragBox$Event mixins events$DragBox$Event {
+   * @classdesc Events emitted by {@link ol.interaction.DragBox} instances are instances of
+   * this type.
+   * @param type The event type.
+   * @param coordinate The event coordinate.
+   * @param mapBrowserEvent Originating event.
+   */
+  declare class interaction$DragBox$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.DragBox} instances are instances of
-this type.
- * @param type The event type.
- * @param coordinate The event coordinate.
- * @param mapBrowserEvent Originating event.
- */
+     * @classdesc Events emitted by {@link ol.interaction.DragBox} instances are instances of
+     * this type.
+     * @param type The event type.
+     * @param coordinate The event coordinate.
+     * @param mapBrowserEvent Originating event.
+     */
     constructor(
       type: string,
       coordinate: ol.Coordinate,
@@ -5266,116 +5360,111 @@ this type.
    * @param opt_options Options.
    * @api stable
    */
-  declare class interaction$DragPan mixins interaction$Pointer {
+  declare class interaction$DragPan mixins Pointer {
     /**
      * @classdesc Allows the user to pan the map by dragging the map.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(opt_options?: olx$interaction.interaction$DragPanOptions): this;
+    constructor(opt_options?: olx$interaction$DragPanOptions): this;
   }
 
   /**
- * @classdesc Allows the user to rotate the map by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when the alt and shift keys are held down.
-
-This interaction is only supported for mouse devices.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$DragRotate mixins interaction$Pointer {
+   * @classdesc Allows the user to rotate the map by clicking and dragging on the map,
+   * normally combined with an {@link ol.events.condition} that limits
+   * it to when the alt and shift keys are held down.
+   *
+   * This interaction is only supported for mouse devices.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$DragRotate mixins Pointer {
     /**
- * @classdesc Allows the user to rotate the map by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when the alt and shift keys are held down.
-
-This interaction is only supported for mouse devices.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$DragRotateOptions
-    ): this;
+     * @classdesc Allows the user to rotate the map by clicking and dragging on the map,
+     * normally combined with an {@link ol.events.condition} that limits
+     * it to when the alt and shift keys are held down.
+     *
+     * This interaction is only supported for mouse devices.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$DragRotateOptions): this;
   }
 
   /**
- * @classdesc Allows the user to zoom and rotate the map by clicking and dragging
-on the map.  By default, this interaction is limited to when the shift
-key is held down.
-
-This interaction is only supported for mouse devices.
-
-And this interaction is not included in the default interactions.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$DragRotateAndZoom mixins interaction$Pointer {
+   * @classdesc Allows the user to zoom and rotate the map by clicking and dragging
+   * on the map.  By default, this interaction is limited to when the shift
+   * key is held down.
+   *
+   * This interaction is only supported for mouse devices.
+   *
+   * And this interaction is not included in the default interactions.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$DragRotateAndZoom mixins Pointer {
     /**
- * @classdesc Allows the user to zoom and rotate the map by clicking and dragging
-on the map.  By default, this interaction is limited to when the shift
-key is held down.
-
-This interaction is only supported for mouse devices.
-
-And this interaction is not included in the default interactions.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$DragRotateAndZoomOptions
-    ): this;
+     * @classdesc Allows the user to zoom and rotate the map by clicking and dragging
+     * on the map.  By default, this interaction is limited to when the shift
+     * key is held down.
+     *
+     * This interaction is only supported for mouse devices.
+     *
+     * And this interaction is not included in the default interactions.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$DragRotateAndZoomOptions): this;
   }
 
   /**
- * @classdesc Allows the user to zoom the map by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when a key, shift by default, is held down.
-
-To change the style of the box, use CSS and the `.ol-dragzoom` selector, or
-your custom one configured with `className`.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$DragZoom mixins interaction$DragBox {
+   * @classdesc Allows the user to zoom the map by clicking and dragging on the map,
+   * normally combined with an {@link ol.events.condition} that limits
+   * it to when a key, shift by default, is held down.
+   *
+   * To change the style of the box, use CSS and the `.ol-dragzoom` selector, or
+   * your custom one configured with `className`.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$DragZoom mixins DragBox {
     /**
- * @classdesc Allows the user to zoom the map by clicking and dragging on the map,
-normally combined with an {@link ol.events.condition} that limits
-it to when a key, shift by default, is held down.
-
-To change the style of the box, use CSS and the `.ol-dragzoom` selector, or
-your custom one configured with `className`.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$DragZoomOptions
-    ): this;
+     * @classdesc Allows the user to zoom the map by clicking and dragging on the map,
+     * normally combined with an {@link ol.events.condition} that limits
+     * it to when a key, shift by default, is held down.
+     *
+     * To change the style of the box, use CSS and the `.ol-dragzoom` selector, or
+     * your custom one configured with `className`.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$DragZoomOptions): this;
   }
 
+  declare var npm$namespace$interaction$Draw: {
+    Event: typeof interaction$Draw$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.Draw} instances are instances of
-this type.
- * @param type Type.
- * @param feature The feature drawn.
- */
-  declare class Draw$Event mixins events$Draw$Event {
+   * @classdesc Events emitted by {@link ol.interaction.Draw} instances are instances of
+   * this type.
+   * @param type Type.
+   * @param feature The feature drawn.
+   */
+  declare class interaction$Draw$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.Draw} instances are instances of
-this type.
- * @param type Type.
- * @param feature The feature drawn.
- */
-    constructor(
-      type: interaction$DrawEventType,
-      feature: ol.format$Feature
-    ): this;
+     * @classdesc Events emitted by {@link ol.interaction.Draw} instances are instances of
+     * this type.
+     * @param type Type.
+     * @param feature The feature drawn.
+     */
+    constructor(type: interaction$DrawEventType, feature: ol.Feature): this;
 
     /**
      * The feature being drawn.
      * @api stable
      */
-    feature: ol.format$Feature;
+    feature: ol.Feature;
   }
 
   declare type interaction$DrawEventType = string;
@@ -5386,14 +5475,14 @@ this type.
    * @param options Options.
    * @api stable
    */
-  declare class interaction$Draw mixins interaction$Pointer {
+  declare class interaction$Draw mixins Pointer {
     /**
      * @classdesc Interaction for drawing feature geometries.
      * @fires ol.interaction.DrawEvent
      * @param options Options.
      * @api stable
      */
-    constructor(options: olx$interaction.interaction$DrawOptions): this;
+    constructor(options: olx$interaction$DrawOptions): this;
 
     /**
      * Remove last point of the feature currently being drawn.
@@ -5416,7 +5505,7 @@ this type.
      * @param feature Feature to be extended.
      * @api
      */
-    extend(feature: ol.format$Feature): void;
+    extend(feature: ol.Feature): void;
 
     /**
      * Create a `geometryFunction` that will create a box-shaped polygon (aligned
@@ -5428,65 +5517,66 @@ this type.
     static createBox(): ol.DrawGeometryFunctionType;
 
     /**
- * Create a `geometryFunction` for `mode: 'Circle'` that will create a regular
- * polygon with a user specified number of sides and start angle instead of an
- * `ol.geom.Circle` geometry.
- * @param opt_sides Number of sides of the regular polygon. Default is
-32.
- * @param opt_angle Angle of the first point in radians. 0 means East.
-Default is the angle defined by the heading from the center of the
-regular polygon to the current pointer position.
- * @return Function that draws a
-polygon.
- * @api
- */
+     * Create a `geometryFunction` for `mode: 'Circle'` that will create a regular
+     * polygon with a user specified number of sides and start angle instead of an
+     * `ol.geom.Circle` geometry.
+     * @param opt_sides Number of sides of the regular polygon. Default is
+     * 32.
+     * @param opt_angle Angle of the first point in radians. 0 means East.
+     * Default is the angle defined by the heading from the center of the
+     * regular polygon to the current pointer position.
+     * @return Function that draws a
+     * polygon.
+     * @api
+     */
     static createRegularPolygon(
       opt_sides?: number,
       opt_angle?: number
     ): ol.DrawGeometryFunctionType;
   }
 
+  declare var npm$namespace$interaction$Extent: {
+    Event: typeof interaction$Extent$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.Extent} instances are instances of
-this type.
- * @param extent the new extent
- */
-  declare class Extent$Event mixins events$Extent$Event {
+   * @classdesc Events emitted by {@link ol.interaction.Extent} instances are instances of
+   * this type.
+   * @param extent the new extent
+   */
+  declare class interaction$Extent$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.Extent} instances are instances of
-this type.
- * @param type Type.
- * @param feature The feature drawn.
- */
-    constructor(
-      type: interaction$ExtentEventType,
-      extent: ol.interaction$Extent
-    ): this;
+     * @classdesc Events emitted by {@link ol.interaction.Extent} instances are instances of
+     * this type.
+     * @param type Type.
+     * @param feature The feature drawn.
+     */
+    constructor(type: interaction$ExtentEventType, extent: ol.Extent): this;
 
     /**
      * The current extent.
      * @api stable
      */
-    extent: ol.interaction$Extent;
+    extent: ol.Extent;
   }
 
   declare type interaction$ExtentEventType = string;
 
   /**
- * @classdesc Allows the user to draw a vector box by clicking and dragging on the map.
-Once drawn, the vector box can be modified by dragging its vertices or edges.
-This interaction is only supported for mouse devices.
- * @fires ol.interaction.Extent.Event
- * @param options Options.
- * @api stable
- */
-  declare class interaction$Extent mixins interaction$Pointer {
+   * @classdesc Allows the user to draw a vector box by clicking and dragging on the map.
+   * Once drawn, the vector box can be modified by dragging its vertices or edges.
+   * This interaction is only supported for mouse devices.
+   * @fires ol.interaction.Extent.Event
+   * @param options Options.
+   * @api stable
+   */
+  declare class interaction$Extent mixins Pointer {
     /**
      * @fires ol.interaction.Extent.Event
      * @param options Options.
      * @api stable
      */
-    constructor(options: olx$interaction.interaction$ExtentOptions): this;
+    constructor(options: olx$interaction$ExtentOptions): this;
 
     /**
      * @inheritDoc
@@ -5498,70 +5588,70 @@ This interaction is only supported for mouse devices.
      * @return Drawn extent in the view projection.
      * @api
      */
-    getExtent(): ol.interaction$Extent;
+    getExtent(): ol.Extent;
 
     /**
      * Manually sets the drawn extent, using the view projection.
      * @param extent Extent
      * @api
      */
-    setExtent(extent: ol.interaction$Extent): void;
+    setExtent(extent: ol.Extent): void;
   }
 
   /**
- * Set of interactions included in maps by default. Specific interactions can be
- * excluded by setting the appropriate option to false in the constructor
- * options, but the order of the interactions is fixed.  If you want to specify
- * a different order for interactions, you will need to create your own
- * {@link ol.interaction.Interaction} instances and insert them into a
- * {@link ol.Collection} in the order you want before creating your
- * {@link ol.Map} instance. The default set of interactions, in sequence, is:
- * * {@link ol.interaction.DragRotate}
- * * {@link ol.interaction.DoubleClickZoom}
- * * {@link ol.interaction.DragPan}
- * * {@link ol.interaction.PinchRotate}
- * * {@link ol.interaction.PinchZoom}
- * * {@link ol.interaction.KeyboardPan}
- * * {@link ol.interaction.KeyboardZoom}
- * * {@link ol.interaction.MouseWheelZoom}
- * * {@link ol.interaction.DragZoom}
- * @param opt_options Defaults options.
- * @return A collection of
-interactions to be used with the ol.Map constructor's interactions option.
- * @api stable
- */
+   * Set of interactions included in maps by default. Specific interactions can be
+   * excluded by setting the appropriate option to false in the constructor
+   * options, but the order of the interactions is fixed.  If you want to specify
+   * a different order for interactions, you will need to create your own
+   * {@link ol.interaction.Interaction} instances and insert them into a
+   * {@link ol.Collection} in the order you want before creating your
+   * {@link ol.Map} instance. The default set of interactions, in sequence, is:
+   * * {@link ol.interaction.DragRotate}
+   * * {@link ol.interaction.DoubleClickZoom}
+   * * {@link ol.interaction.DragPan}
+   * * {@link ol.interaction.PinchRotate}
+   * * {@link ol.interaction.PinchZoom}
+   * * {@link ol.interaction.KeyboardPan}
+   * * {@link ol.interaction.KeyboardZoom}
+   * * {@link ol.interaction.MouseWheelZoom}
+   * * {@link ol.interaction.DragZoom}
+   * @param opt_options Defaults options.
+   * @return A collection of
+   * interactions to be used with the ol.Map constructor's interactions option.
+   * @api stable
+   */
   declare function interaction$defaults(
-    opt_options?: olx$interaction.interaction$DefaultsOptions
+    opt_options?: olx$interaction$DefaultsOptions
   ): ol.Collection<interaction$Interaction>;
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-User actions that change the state of the map. Some are similar to controls,
-but are not associated with a DOM element.
-For example, {@link ol.interaction.KeyboardZoom} is functionally the same as
-{@link ol.control.Zoom}, but triggered by a keyboard event not a button
-element event.
-Although interactions do not have a DOM element, some of them do render
-vectors and so are visible on the screen.
- * @param options Options.
- * @api
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * User actions that change the state of the map. Some are similar to controls,
+   * but are not associated with a DOM element.
+   * For example, {@link ol.interaction.KeyboardZoom} is functionally the same as
+   * {@link ol.control.Zoom}, but triggered by a keyboard event not a button
+   * element event.
+   * Although interactions do not have a DOM element, some of them do render
+   * vectors and so are visible on the screen.
+   * @param options Options.
+   * @api
+   */
   declare class interaction$Interaction mixins Object {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-User actions that change the state of the map. Some are similar to controls,
-but are not associated with a DOM element.
-For example, {@link ol.interaction.KeyboardZoom} is functionally the same as
-{@link ol.control.Zoom}, but triggered by a keyboard event not a button
-element event.
-Although interactions do not have a DOM element, some of them do render
-vectors and so are visible on the screen.
- * @param options Options.
- * @api
- */
-    constructor(options: olx$interaction.interaction$InteractionOptions): this;
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * User actions that change the state of the map. Some are similar to controls,
+     * but are not associated with a DOM element.
+     * For example, {@link ol.interaction.KeyboardZoom} is functionally the same as
+     * {@link ol.control.Zoom}, but triggered by a keyboard event not a button
+     * element event.
+     * Although interactions do not have a DOM element, some of them do render
+     * vectors and so are visible on the screen.
+     * @param options Options.
+     * @api
+     */
+    constructor(options: olx$interaction$InteractionOptions): this;
 
     /**
      * Return whether the interaction is currently active.
@@ -5588,35 +5678,33 @@ vectors and so are visible on the screen.
   }
 
   /**
- * @classdesc Allows the user to pan the map using keyboard arrows.
-Note that, although this interaction is by default included in maps,
-the keys can only be used when browser focus is on the element to which
-the keyboard events are attached. By default, this is the map div,
-though you can change this with the `keyboardEventTarget` in
-{@link ol.Map}. `document` never loses focus but, for any other element,
-focus will have to be on, and returned to, this element if the keys are to
-function.
-See also {@link ol.interaction.KeyboardZoom}.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$KeyboardPan mixins interaction$Interaction {
+   * @classdesc Allows the user to pan the map using keyboard arrows.
+   * Note that, although this interaction is by default included in maps,
+   * the keys can only be used when browser focus is on the element to which
+   * the keyboard events are attached. By default, this is the map div,
+   * though you can change this with the `keyboardEventTarget` in
+   * {@link ol.Map}. `document` never loses focus but, for any other element,
+   * focus will have to be on, and returned to, this element if the keys are to
+   * function.
+   * See also {@link ol.interaction.KeyboardZoom}.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$KeyboardPan mixins Interaction {
     /**
- * @classdesc Allows the user to pan the map using keyboard arrows.
-Note that, although this interaction is by default included in maps,
-the keys can only be used when browser focus is on the element to which
-the keyboard events are attached. By default, this is the map div,
-though you can change this with the `keyboardEventTarget` in
-{@link ol.Map}. `document` never loses focus but, for any other element,
-focus will have to be on, and returned to, this element if the keys are to
-function.
-See also {@link ol.interaction.KeyboardZoom}.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$KeyboardPanOptions
-    ): this;
+     * @classdesc Allows the user to pan the map using keyboard arrows.
+     * Note that, although this interaction is by default included in maps,
+     * the keys can only be used when browser focus is on the element to which
+     * the keyboard events are attached. By default, this is the map div,
+     * though you can change this with the `keyboardEventTarget` in
+     * {@link ol.Map}. `document` never loses focus but, for any other element,
+     * focus will have to be on, and returned to, this element if the keys are to
+     * function.
+     * See also {@link ol.interaction.KeyboardZoom}.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$KeyboardPanOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} if it was a
@@ -5630,35 +5718,33 @@ See also {@link ol.interaction.KeyboardZoom}.
   }
 
   /**
- * @classdesc Allows the user to zoom the map using keyboard + and -.
-Note that, although this interaction is by default included in maps,
-the keys can only be used when browser focus is on the element to which
-the keyboard events are attached. By default, this is the map div,
-though you can change this with the `keyboardEventTarget` in
-{@link ol.Map}. `document` never loses focus but, for any other element,
-focus will have to be on, and returned to, this element if the keys are to
-function.
-See also {@link ol.interaction.KeyboardPan}.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$KeyboardZoom mixins interaction$Interaction {
+   * @classdesc Allows the user to zoom the map using keyboard + and -.
+   * Note that, although this interaction is by default included in maps,
+   * the keys can only be used when browser focus is on the element to which
+   * the keyboard events are attached. By default, this is the map div,
+   * though you can change this with the `keyboardEventTarget` in
+   * {@link ol.Map}. `document` never loses focus but, for any other element,
+   * focus will have to be on, and returned to, this element if the keys are to
+   * function.
+   * See also {@link ol.interaction.KeyboardPan}.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$KeyboardZoom mixins Interaction {
     /**
- * @classdesc Allows the user to zoom the map using keyboard + and -.
-Note that, although this interaction is by default included in maps,
-the keys can only be used when browser focus is on the element to which
-the keyboard events are attached. By default, this is the map div,
-though you can change this with the `keyboardEventTarget` in
-{@link ol.Map}. `document` never loses focus but, for any other element,
-focus will have to be on, and returned to, this element if the keys are to
-function.
-See also {@link ol.interaction.KeyboardPan}.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$KeyboardZoomOptions
-    ): this;
+     * @classdesc Allows the user to zoom the map using keyboard + and -.
+     * Note that, although this interaction is by default included in maps,
+     * the keys can only be used when browser focus is on the element to which
+     * the keyboard events are attached. By default, this is the map div,
+     * though you can change this with the `keyboardEventTarget` in
+     * {@link ol.Map}. `document` never loses focus but, for any other element,
+     * focus will have to be on, and returned to, this element if the keys are to
+     * function.
+     * See also {@link ol.interaction.KeyboardPan}.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$KeyboardZoomOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} if it was a
@@ -5671,26 +5757,30 @@ See also {@link ol.interaction.KeyboardPan}.
     static handleEvent(mapBrowserEvent: ol.MapBrowserEvent): boolean;
   }
 
+  declare var npm$namespace$interaction$Modify: {
+    Event: typeof interaction$Modify$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.Modify} instances are instances of
-this type.
- * @param type Type.
- * @param features The features modified.
- * @param mapBrowserPointerEvent Associated
-{@link ol.MapBrowserPointerEvent}.
- */
-  declare class Modify$Event mixins events$Modify$Event {
+   * @classdesc Events emitted by {@link ol.interaction.Modify} instances are instances of
+   * this type.
+   * @param type Type.
+   * @param features The features modified.
+   * @param mapBrowserPointerEvent Associated
+   * {@link ol.MapBrowserPointerEvent}.
+   */
+  declare class interaction$Modify$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.Modify} instances are instances of
-this type.
- * @param type Type.
- * @param features The features modified.
- * @param mapBrowserPointerEvent Associated
-{@link ol.MapBrowserPointerEvent}.
- */
+     * @classdesc Events emitted by {@link ol.interaction.Modify} instances are instances of
+     * this type.
+     * @param type Type.
+     * @param features The features modified.
+     * @param mapBrowserPointerEvent Associated
+     * {@link ol.MapBrowserPointerEvent}.
+     */
     constructor(
       type: ol.ModifyEventType,
-      features: ol.Collection<ol.format$Feature>,
+      features: ol.Collection<ol.Feature>,
       mapBrowserPointerEvent: ol.MapBrowserPointerEvent
     ): this;
 
@@ -5698,7 +5788,7 @@ this type.
      * The features being modified.
      * @api
      */
-    features: ol.Collection<ol.format$Feature>;
+    features: ol.Collection<ol.Feature>;
 
     /**
      * Associated {@link ol.MapBrowserEvent}.
@@ -5713,14 +5803,14 @@ this type.
    * @fires ol.interaction.ModifyEvent
    * @api
    */
-  declare class interaction$Modify mixins interaction$Pointer {
+  declare class interaction$Modify mixins Pointer {
     /**
      * @classdesc Interaction for modifying feature geometries.
      * @param options Options.
      * @fires ol.interaction.ModifyEvent
      * @api
      */
-    constructor(options: olx$interaction.interaction$ModifyOptions): this;
+    constructor(options: olx$interaction$ModifyOptions): this;
 
     /**
      * Removes the vertex currently being pointed.
@@ -5735,15 +5825,13 @@ this type.
    * @param opt_options Options.
    * @api stable
    */
-  declare class interaction$MouseWheelZoom mixins interaction$Interaction {
+  declare class interaction$MouseWheelZoom mixins Interaction {
     /**
      * @classdesc Allows the user to zoom the map by scrolling the mouse wheel.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(
-      opt_options?: olx$interaction.interaction$MouseWheelZoomOptions
-    ): this;
+    constructor(opt_options?: olx$interaction$MouseWheelZoomOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} (if it was a
@@ -5755,74 +5843,70 @@ this type.
     static handleEvent(mapBrowserEvent: ol.MapBrowserEvent): boolean;
 
     /**
- * Enable or disable using the mouse's location as an anchor when zooming
- * @param useAnchor true to zoom to the mouse's location, false
-to zoom to the center of the map
- * @api
- */
+     * Enable or disable using the mouse's location as an anchor when zooming
+     * @param useAnchor true to zoom to the mouse's location, false
+     * to zoom to the center of the map
+     * @api
+     */
     setMouseAnchor(useAnchor: boolean): void;
   }
 
   /**
- * @classdesc Allows the user to rotate the map by twisting with two fingers
-on a touch screen.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$PinchRotate mixins interaction$Pointer {
+   * @classdesc Allows the user to rotate the map by twisting with two fingers
+   * on a touch screen.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$PinchRotate mixins Pointer {
     /**
- * @classdesc Allows the user to rotate the map by twisting with two fingers
-on a touch screen.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$PinchRotateOptions
-    ): this;
+     * @classdesc Allows the user to rotate the map by twisting with two fingers
+     * on a touch screen.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$PinchRotateOptions): this;
   }
 
   /**
- * @classdesc Allows the user to zoom the map by pinching with two fingers
-on a touch screen.
- * @param opt_options Options.
- * @api stable
- */
-  declare class interaction$PinchZoom mixins interaction$Pointer {
+   * @classdesc Allows the user to zoom the map by pinching with two fingers
+   * on a touch screen.
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class interaction$PinchZoom mixins Pointer {
     /**
- * @classdesc Allows the user to zoom the map by pinching with two fingers
-on a touch screen.
- * @param opt_options Options.
- * @api stable
- */
-    constructor(
-      opt_options?: olx$interaction.interaction$PinchZoomOptions
-    ): this;
+     * @classdesc Allows the user to zoom the map by pinching with two fingers
+     * on a touch screen.
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$PinchZoomOptions): this;
   }
 
   /**
- * @classdesc Base class that calls user-defined functions on `down`, `move` and `up`
-events. This class also manages "drag sequences".
-
-When the `handleDownEvent` user function returns `true` a drag sequence is
-started. During a drag sequence the `handleDragEvent` user function is
-called on `move` events. The drag sequence ends when the `handleUpEvent`
-user function is called and returns `false`.
- * @param opt_options Options.
- * @api
- */
-  declare class interaction$Pointer mixins interaction$Interaction {
+   * @classdesc Base class that calls user-defined functions on `down`, `move` and `up`
+   * events. This class also manages "drag sequences".
+   *
+   * When the `handleDownEvent` user function returns `true` a drag sequence is
+   * started. During a drag sequence the `handleDragEvent` user function is
+   * called on `move` events. The drag sequence ends when the `handleUpEvent`
+   * user function is called and returns `false`.
+   * @param opt_options Options.
+   * @api
+   */
+  declare class interaction$Pointer mixins Interaction {
     /**
- * @classdesc Base class that calls user-defined functions on `down`, `move` and `up`
-events. This class also manages "drag sequences".
-
-When the `handleDownEvent` user function returns `true` a drag sequence is
-started. During a drag sequence the `handleDragEvent` user function is
-called on `move` events. The drag sequence ends when the `handleUpEvent`
-user function is called and returns `false`.
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$interaction.interaction$PointerOptions): this;
+     * @classdesc Base class that calls user-defined functions on `down`, `move` and `up`
+     * events. This class also manages "drag sequences".
+     *
+     * When the `handleDownEvent` user function returns `true` a drag sequence is
+     * started. During a drag sequence the `handleDragEvent` user function is
+     * called on `move` events. The drag sequence ends when the `handleUpEvent`
+     * user function is called and returns `false`.
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$interaction$PointerOptions): this;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} and may call into
@@ -5835,29 +5919,33 @@ user function is called and returns `false`.
     static handleEvent(mapBrowserEvent: ol.MapBrowserEvent): boolean;
   }
 
+  declare var npm$namespace$interaction$Select: {
+    Event: typeof interaction$Select$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.Select} instances are instances of
-this type.
- * @param type The event type.
- * @param selected Selected features.
- * @param deselected Deselected features.
- * @param mapBrowserEvent Associated
-{@link ol.MapBrowserEvent}.
- */
-  declare class Select$Event mixins events$Select$Event {
+   * @classdesc Events emitted by {@link ol.interaction.Select} instances are instances of
+   * this type.
+   * @param type The event type.
+   * @param selected Selected features.
+   * @param deselected Deselected features.
+   * @param mapBrowserEvent Associated
+   * {@link ol.MapBrowserEvent}.
+   */
+  declare class interaction$Select$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.Select} instances are instances of
-this type.
- * @param type The event type.
- * @param selected Selected features.
- * @param deselected Deselected features.
- * @param mapBrowserEvent Associated
-{@link ol.MapBrowserEvent}.
- */
+     * @classdesc Events emitted by {@link ol.interaction.Select} instances are instances of
+     * this type.
+     * @param type The event type.
+     * @param selected Selected features.
+     * @param deselected Deselected features.
+     * @param mapBrowserEvent Associated
+     * {@link ol.MapBrowserEvent}.
+     */
     constructor(
       type: string,
-      selected: ol.format$Feature[],
-      deselected: ol.format$Feature[],
+      selected: ol.Feature[],
+      deselected: ol.Feature[],
       mapBrowserEvent: ol.MapBrowserEvent
     ): this;
 
@@ -5865,13 +5953,13 @@ this type.
      * Selected features array.
      * @api
      */
-    selected: ol.format$Feature[];
+    selected: ol.Feature[];
 
     /**
      * Deselected features array.
      * @api
      */
-    deselected: ol.format$Feature[];
+    deselected: ol.Feature[];
 
     /**
      * Associated {@link ol.MapBrowserEvent}.
@@ -5881,42 +5969,42 @@ this type.
   }
 
   /**
- * @classdesc Interaction for selecting vector features. By default, selected features are
-styled differently, so this interaction can be used for visual highlighting,
-as well as selecting features for other actions, such as modification or
-output. There are three ways of controlling which features are selected:
-using the browser event as defined by the `condition` and optionally the
-`toggle`, `add`/`remove`, and `multi` options; a `layers` filter; and a
-further feature filter using the `filter` option.
-
-Selected features are added to an internal unmanaged layer.
- * @param opt_options Options.
- * @fires ol.interaction.SelectEvent
- * @api stable
- */
-  declare class interaction$Select mixins interaction$Interaction {
+   * @classdesc Interaction for selecting vector features. By default, selected features are
+   * styled differently, so this interaction can be used for visual highlighting,
+   * as well as selecting features for other actions, such as modification or
+   * output. There are three ways of controlling which features are selected:
+   * using the browser event as defined by the `condition` and optionally the
+   * `toggle`, `add`/`remove`, and `multi` options; a `layers` filter; and a
+   * further feature filter using the `filter` option.
+   *
+   * Selected features are added to an internal unmanaged layer.
+   * @param opt_options Options.
+   * @fires ol.interaction.SelectEvent
+   * @api stable
+   */
+  declare class interaction$Select mixins Interaction {
     /**
- * @classdesc Interaction for selecting vector features. By default, selected features are
-styled differently, so this interaction can be used for visual highlighting,
-as well as selecting features for other actions, such as modification or
-output. There are three ways of controlling which features are selected:
-using the browser event as defined by the `condition` and optionally the
-`toggle`, `add`/`remove`, and `multi` options; a `layers` filter; and a
-further feature filter using the `filter` option.
-
-Selected features are added to an internal unmanaged layer.
- * @param opt_options Options.
- * @fires ol.interaction.SelectEvent
- * @api stable
- */
-    constructor(opt_options?: olx$interaction.interaction$SelectOptions): this;
+     * @classdesc Interaction for selecting vector features. By default, selected features are
+     * styled differently, so this interaction can be used for visual highlighting,
+     * as well as selecting features for other actions, such as modification or
+     * output. There are three ways of controlling which features are selected:
+     * using the browser event as defined by the `condition` and optionally the
+     * `toggle`, `add`/`remove`, and `multi` options; a `layers` filter; and a
+     * further feature filter using the `filter` option.
+     *
+     * Selected features are added to an internal unmanaged layer.
+     * @param opt_options Options.
+     * @fires ol.interaction.SelectEvent
+     * @api stable
+     */
+    constructor(opt_options?: olx$interaction$SelectOptions): this;
 
     /**
      * Get the selected features.
      * @return Features collection.
      * @api stable
      */
-    getFeatures(): ol.Collection<ol.format$Feature>;
+    getFeatures(): ol.Collection<ol.Feature>;
 
     /**
      * Returns the associated {@link ol.layer.Vector vectorlayer} of
@@ -5927,9 +6015,7 @@ Selected features are added to an internal unmanaged layer.
      * @return Layer.
      * @api
      */
-    getLayer(
-      feature: ol.format$Feature | ol.render.format$Feature
-    ): ol.layer.source$Vector;
+    getLayer(feature: ol.Feature | ol.render.Feature): ol.layer.Vector;
 
     /**
      * Handles the {@link ol.MapBrowserEvent map browser event} and may change the
@@ -5950,81 +6036,85 @@ Selected features are added to an internal unmanaged layer.
   }
 
   /**
- * @classdesc Handles snapping of vector features while modifying or drawing them.  The
-features can come from a {@link ol.source.Vector} or {@link ol.Collection}
-Any interaction object that allows the user to interact
-with the features using the mouse can benefit from the snapping, as long
-as it is added before.
-
-The snap interaction modifies map browser event `coordinate` and `pixel`
-properties to force the snap to occur to any interaction that them.
-
-Example:
-
-var snap = new ol.interaction.Snap({
-source: source
-});
- * @param opt_options Options.
- * @api
- */
-  declare class interaction$Snap mixins interaction$Pointer {
+   * @classdesc Handles snapping of vector features while modifying or drawing them.  The
+   * features can come from a {@link ol.source.Vector} or {@link ol.Collection}
+   * Any interaction object that allows the user to interact
+   * with the features using the mouse can benefit from the snapping, as long
+   * as it is added before.
+   *
+   * The snap interaction modifies map browser event `coordinate` and `pixel`
+   * properties to force the snap to occur to any interaction that them.
+   *
+   * Example:
+   *
+   * var snap = new ol.interaction.Snap({
+   * source: source
+   * });
+   * @param opt_options Options.
+   * @api
+   */
+  declare class interaction$Snap mixins Pointer {
     /**
- * @classdesc Handles snapping of vector features while modifying or drawing them.  The
-features can come from a {@link ol.source.Vector} or {@link ol.Collection}
-Any interaction object that allows the user to interact
-with the features using the mouse can benefit from the snapping, as long
-as it is added before.
-
-The snap interaction modifies map browser event `coordinate` and `pixel`
-properties to force the snap to occur to any interaction that them.
-
-Example:
-
-var snap = new ol.interaction.Snap({
-source: source
-});
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$interaction.interaction$SnapOptions): this;
-
-    /**
- * Add a feature to the collection of features that we may snap to.
- * @param feature Feature.
- * @param opt_listen Whether to listen to the geometry change or not
-Defaults to `true`.
- * @api
- */
-    addFeature(feature: ol.format$Feature, opt_listen?: boolean): void;
+     * @classdesc Handles snapping of vector features while modifying or drawing them.  The
+     * features can come from a {@link ol.source.Vector} or {@link ol.Collection}
+     * Any interaction object that allows the user to interact
+     * with the features using the mouse can benefit from the snapping, as long
+     * as it is added before.
+     *
+     * The snap interaction modifies map browser event `coordinate` and `pixel`
+     * properties to force the snap to occur to any interaction that them.
+     *
+     * Example:
+     *
+     * var snap = new ol.interaction.Snap({
+     * source: source
+     * });
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$interaction$SnapOptions): this;
 
     /**
- * Remove a feature from the collection of features that we may snap to.
- * @param feature Feature
- * @param opt_unlisten Whether to unlisten to the geometry change
-or not. Defaults to `true`.
- * @api
- */
-    removeFeature(feature: ol.format$Feature, opt_unlisten?: boolean): void;
+     * Add a feature to the collection of features that we may snap to.
+     * @param feature Feature.
+     * @param opt_listen Whether to listen to the geometry change or not
+     * Defaults to `true`.
+     * @api
+     */
+    addFeature(feature: ol.Feature, opt_listen?: boolean): void;
+
+    /**
+     * Remove a feature from the collection of features that we may snap to.
+     * @param feature Feature
+     * @param opt_unlisten Whether to unlisten to the geometry change
+     * or not. Defaults to `true`.
+     * @api
+     */
+    removeFeature(feature: ol.Feature, opt_unlisten?: boolean): void;
   }
 
+  declare var npm$namespace$interaction$Translate: {
+    Event: typeof interaction$Translate$Event
+  };
+
   /**
- * @classdesc Events emitted by {@link ol.interaction.Translate} instances are instances of
-this type.
- * @param type Type.
- * @param features The features translated.
- * @param coordinate The event coordinate.
- */
-  declare class Translate$Event mixins events$Translate$Event {
+   * @classdesc Events emitted by {@link ol.interaction.Translate} instances are instances of
+   * this type.
+   * @param type Type.
+   * @param features The features translated.
+   * @param coordinate The event coordinate.
+   */
+  declare class interaction$Translate$Event mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.interaction.Translate} instances are instances of
-this type.
- * @param type Type.
- * @param features The features translated.
- * @param coordinate The event coordinate.
- */
+     * @classdesc Events emitted by {@link ol.interaction.Translate} instances are instances of
+     * this type.
+     * @param type Type.
+     * @param features The features translated.
+     * @param coordinate The event coordinate.
+     */
     constructor(
       type: interaction$TranslateEventType,
-      features: ol.Collection<ol.format$Feature>,
+      features: ol.Collection<ol.Feature>,
       coordinate: ol.Coordinate
     ): this;
 
@@ -6032,7 +6122,7 @@ this type.
      * The features being translated.
      * @api
      */
-    features: ol.Collection<ol.format$Feature>;
+    features: ol.Collection<ol.Feature>;
 
     /**
      * The coordinate of the drag event.
@@ -6050,58 +6140,69 @@ this type.
    * @param options Options.
    * @api
    */
-  declare class interaction$Translate mixins interaction$Pointer {
+  declare class interaction$Translate mixins Pointer {
     /**
      * @classdesc Interaction for translating (moving) features.
      * @fires ol.interaction.TranslateEvent
      * @param options Options.
      * @api
      */
-    constructor(options: olx$interaction.interaction$TranslateOptions): this;
+    constructor(options: olx$interaction$TranslateOptions): this;
   }
 
   /**
- * @classdesc Implementation of inertial deceleration for map movement.
- * @param decay Rate of decay (must be negative).
- * @param minVelocity Minimum velocity (pixels/millisecond).
- * @param delay Delay to consider to calculate the kinetic
-initial values (milliseconds).
- * @struct
- * @api
- */
+   * @classdesc Implementation of inertial deceleration for map movement.
+   * @param decay Rate of decay (must be negative).
+   * @param minVelocity Minimum velocity (pixels/millisecond).
+   * @param delay Delay to consider to calculate the kinetic
+   * initial values (milliseconds).
+   * @struct
+   * @api
+   */
   declare export class Kinetic {
     /**
- * @classdesc Implementation of inertial deceleration for map movement.
- * @param decay Rate of decay (must be negative).
- * @param minVelocity Minimum velocity (pixels/millisecond).
- * @param delay Delay to consider to calculate the kinetic
-initial values (milliseconds).
- * @struct
- * @api
- */
+     * @classdesc Implementation of inertial deceleration for map movement.
+     * @param decay Rate of decay (must be negative).
+     * @param minVelocity Minimum velocity (pixels/millisecond).
+     * @param delay Delay to consider to calculate the kinetic
+     * initial values (milliseconds).
+     * @struct
+     * @api
+     */
     constructor(decay: number, minVelocity: number, delay: number): this;
   }
 
+  declare var npm$namespace$layer: {
+    Base: typeof layer$Base,
+    Group: typeof layer$Group,
+    Heatmap: typeof layer$Heatmap,
+    Image: typeof layer$Image,
+    Layer: typeof layer$Layer,
+    Tile: typeof layer$Tile,
+    Vector: typeof layer$Vector,
+    VectorTile: typeof layer$VectorTile
+  };
+
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Note that with `ol.layer.Base` and all its subclasses, any property set in
-the options is set as a {@link ol.Object} property on the layer object, so
-is observable, and has get/set accessors.
- * @param options Layer options.
- * @api stable
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Note that with `ol.layer.Base` and all its subclasses, any property set in
+   * the options is set as a {@link ol.Object} property on the layer object, so
+   * is observable, and has get/set accessors.
+   * @param options Layer options.
+   * @api stable
+   */
   declare class layer$Base mixins Object {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Note that with `ol.layer.Base` and all its subclasses, any property set in
-the options is set as a {@link ol.Object} property on the layer object, so
-is observable, and has get/set accessors.
- * @param options Layer options.
- * @api stable
- */
-    constructor(options: olx$layer.layer$BaseOptions): this;
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Note that with `ol.layer.Base` and all its subclasses, any property set in
+     * the options is set as a {@link ol.Object} property on the layer object, so
+     * is observable, and has get/set accessors.
+     * @param options Layer options.
+     * @api stable
+     */
+    constructor(options: olx$layer$BaseOptions): this;
 
     /**
      * Return the {@link ol.Extent extent} of the layer or `undefined` if it
@@ -6110,7 +6211,7 @@ is observable, and has get/set accessors.
      * @observable
      * @api stable
      */
-    getExtent(): ol.interaction$Extent;
+    getExtent(): ol.Extent;
 
     /**
      * Return the maximum resolution of the layer.
@@ -6160,7 +6261,7 @@ is observable, and has get/set accessors.
      * @observable
      * @api stable
      */
-    setExtent(extent: ol.interaction$Extent): void;
+    setExtent(extent: ol.Extent): void;
 
     /**
      * Set the maximum resolution at which the layer is visible.
@@ -6205,63 +6306,63 @@ is observable, and has get/set accessors.
   }
 
   /**
- * @classdesc A {@link ol.Collection} of layers that are handled together.
-
-A generic `change` event is triggered when the group/Collection changes.
- * @param opt_options Layer options.
- * @api stable
- */
-  declare class layer$Group mixins layer$Base {
+   * @classdesc A {@link ol.Collection} of layers that are handled together.
+   *
+   * A generic `change` event is triggered when the group/Collection changes.
+   * @param opt_options Layer options.
+   * @api stable
+   */
+  declare class layer$Group mixins Base {
     /**
- * @classdesc A {@link ol.Collection} of layers that are handled together.
-
-A generic `change` event is triggered when the group/Collection changes.
- * @param opt_options Layer options.
- * @api stable
- */
-    constructor(opt_options?: olx$layer.layer$GroupOptions): this;
+     * @classdesc A {@link ol.Collection} of layers that are handled together.
+     *
+     * A generic `change` event is triggered when the group/Collection changes.
+     * @param opt_options Layer options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$layer$GroupOptions): this;
 
     /**
- * Returns the {@link ol.Collection collection} of {@link ol.layer.Layer layers}
- * in this group.
- * @return Collection of
-{@link ol.layer.Base layers} that are part of this group.
- * @observable
- * @api stable
- */
+     * Returns the {@link ol.Collection collection} of {@link ol.layer.Layer layers}
+     * in this group.
+     * @return Collection of
+     * {@link ol.layer.Base layers} that are part of this group.
+     * @observable
+     * @api stable
+     */
     getLayers(): ol.Collection<layer$Base>;
 
     /**
- * Set the {@link ol.Collection collection} of {@link ol.layer.Layer layers}
- * in this group.
- * @param layers Collection of
-{@link ol.layer.Base layers} that are part of this group.
- * @observable
- * @api stable
- */
+     * Set the {@link ol.Collection collection} of {@link ol.layer.Layer layers}
+     * in this group.
+     * @param layers Collection of
+     * {@link ol.layer.Base layers} that are part of this group.
+     * @observable
+     * @api stable
+     */
     setLayers(layers: ol.Collection<layer$Base>): void;
   }
 
   /**
- * @classdesc Layer for rendering vector data as a heatmap.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Options.
- * @api
- */
-  declare class layer$Heatmap mixins source$Vector {
+   * @classdesc Layer for rendering vector data as a heatmap.
+   * Note that any property set in the options is set as a {@link ol.Object}
+   * property on the layer object; for example, setting `title: 'My Title'` in the
+   * options means that `title` is observable, and has get/set accessors.
+   * @fires ol.render.Event
+   * @param opt_options Options.
+   * @api
+   */
+  declare class layer$Heatmap mixins Vector {
     /**
- * @classdesc Layer for rendering vector data as a heatmap.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$layer.layer$HeatmapOptions): this;
+     * @classdesc Layer for rendering vector data as a heatmap.
+     * Note that any property set in the options is set as a {@link ol.Object}
+     * property on the layer object; for example, setting `title: 'My Title'` in the
+     * options means that `title` is observable, and has get/set accessors.
+     * @fires ol.render.Event
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$layer$HeatmapOptions): this;
 
     /**
      * Return the blur size in pixels.
@@ -6313,65 +6414,65 @@ options means that `title` is observable, and has get/set accessors.
   }
 
   /**
- * @classdesc Server-rendered images that are available for arbitrary extents and
-resolutions.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Layer options.
- * @api stable
- */
-  declare class layer$Image mixins layer$Layer {
+   * @classdesc Server-rendered images that are available for arbitrary extents and
+   * resolutions.
+   * Note that any property set in the options is set as a {@link ol.Object}
+   * property on the layer object; for example, setting `title: 'My Title'` in the
+   * options means that `title` is observable, and has get/set accessors.
+   * @fires ol.render.Event
+   * @param opt_options Layer options.
+   * @api stable
+   */
+  declare class layer$Image mixins Layer {
     /**
- * @classdesc Server-rendered images that are available for arbitrary extents and
-resolutions.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Layer options.
- * @api stable
- */
-    constructor(opt_options?: olx$layer.layer$ImageOptions): this;
+     * @classdesc Server-rendered images that are available for arbitrary extents and
+     * resolutions.
+     * Note that any property set in the options is set as a {@link ol.Object}
+     * property on the layer object; for example, setting `title: 'My Title'` in the
+     * options means that `title` is observable, and has get/set accessors.
+     * @fires ol.render.Event
+     * @param opt_options Layer options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$layer$ImageOptions): this;
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-A visual representation of raster or vector map data.
-Layers group together those properties that pertain to how the data is to be
-displayed, irrespective of the source of that data.
-
-Layers are usually added to a map with {@link ol.Map#addLayer}. Components
-like {@link ol.interaction.Select} use unmanaged layers internally. These
-unmanaged layers are associated with the map using
-{@link ol.layer.Layer#setMap} instead.
-
-A generic `change` event is fired when the state of the source changes.
- * @fires ol.render.Event
- * @param options Layer options.
- * @api stable
- */
-  declare class layer$Layer mixins layer$Base {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * A visual representation of raster or vector map data.
+   * Layers group together those properties that pertain to how the data is to be
+   * displayed, irrespective of the source of that data.
+   *
+   * Layers are usually added to a map with {@link ol.Map#addLayer}. Components
+   * like {@link ol.interaction.Select} use unmanaged layers internally. These
+   * unmanaged layers are associated with the map using
+   * {@link ol.layer.Layer#setMap} instead.
+   *
+   * A generic `change` event is fired when the state of the source changes.
+   * @fires ol.render.Event
+   * @param options Layer options.
+   * @api stable
+   */
+  declare class layer$Layer mixins Base {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-A visual representation of raster or vector map data.
-Layers group together those properties that pertain to how the data is to be
-displayed, irrespective of the source of that data.
-
-Layers are usually added to a map with {@link ol.Map#addLayer}. Components
-like {@link ol.interaction.Select} use unmanaged layers internally. These
-unmanaged layers are associated with the map using
-{@link ol.layer.Layer#setMap} instead.
-
-A generic `change` event is fired when the state of the source changes.
- * @fires ol.render.Event
- * @param options Layer options.
- * @api stable
- */
-    constructor(options: olx$layer.layer$LayerOptions): this;
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * A visual representation of raster or vector map data.
+     * Layers group together those properties that pertain to how the data is to be
+     * displayed, irrespective of the source of that data.
+     *
+     * Layers are usually added to a map with {@link ol.Map#addLayer}. Components
+     * like {@link ol.interaction.Select} use unmanaged layers internally. These
+     * unmanaged layers are associated with the map using
+     * {@link ol.layer.Layer#setMap} instead.
+     *
+     * A generic `change` event is fired when the state of the source changes.
+     * @fires ol.render.Event
+     * @param options Layer options.
+     * @api stable
+     */
+    constructor(options: olx$layer$LayerOptions): this;
 
     /**
      * Get the layer source.
@@ -6379,7 +6480,7 @@ A generic `change` event is fired when the state of the source changes.
      * @observable
      * @api stable
      */
-    getSource(): ol.source.source$Source;
+    getSource(): ol.source.Source;
 
     /**
      * Sets the layer to be rendered on top of other layers on a map. The map will
@@ -6401,31 +6502,31 @@ A generic `change` event is fired when the state of the source changes.
      * @observable
      * @api stable
      */
-    setSource(source: ol.source.source$Source): void;
+    setSource(source: ol.source.Source): void;
   }
 
   /**
- * @classdesc For layer sources that provide pre-rendered, tiled images in grids that are
-organized by zoom levels for specific resolutions.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Tile layer options.
- * @api stable
- */
-  declare class layer$Tile mixins layer$Layer {
+   * @classdesc For layer sources that provide pre-rendered, tiled images in grids that are
+   * organized by zoom levels for specific resolutions.
+   * Note that any property set in the options is set as a {@link ol.Object}
+   * property on the layer object; for example, setting `title: 'My Title'` in the
+   * options means that `title` is observable, and has get/set accessors.
+   * @fires ol.render.Event
+   * @param opt_options Tile layer options.
+   * @api stable
+   */
+  declare class layer$Tile mixins Layer {
     /**
- * @classdesc For layer sources that provide pre-rendered, tiled images in grids that are
-organized by zoom levels for specific resolutions.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Tile layer options.
- * @api stable
- */
-    constructor(opt_options?: olx$layer.layer$TileOptions): this;
+     * @classdesc For layer sources that provide pre-rendered, tiled images in grids that are
+     * organized by zoom levels for specific resolutions.
+     * Note that any property set in the options is set as a {@link ol.Object}
+     * property on the layer object; for example, setting `title: 'My Title'` in the
+     * options means that `title` is observable, and has get/set accessors.
+     * @fires ol.render.Event
+     * @param opt_options Tile layer options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$layer$TileOptions): this;
 
     /**
      * Return the level as number to which we will preload tiles up to.
@@ -6461,32 +6562,32 @@ options means that `title` is observable, and has get/set accessors.
   }
 
   /**
- * @classdesc Vector data that is rendered client-side.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Options.
- * @api stable
- */
-  declare class layer$Vector mixins layer$Layer {
+   * @classdesc Vector data that is rendered client-side.
+   * Note that any property set in the options is set as a {@link ol.Object}
+   * property on the layer object; for example, setting `title: 'My Title'` in the
+   * options means that `title` is observable, and has get/set accessors.
+   * @fires ol.render.Event
+   * @param opt_options Options.
+   * @api stable
+   */
+  declare class layer$Vector mixins Layer {
     /**
- * @classdesc Vector data that is rendered client-side.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @fires ol.render.Event
- * @param opt_options Options.
- * @api stable
- */
-    constructor(opt_options?: olx$layer.source$VectorOptions): this;
+     * @classdesc Vector data that is rendered client-side.
+     * Note that any property set in the options is set as a {@link ol.Object}
+     * property on the layer object; for example, setting `title: 'My Title'` in the
+     * options means that `title` is observable, and has get/set accessors.
+     * @fires ol.render.Event
+     * @param opt_options Options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$layer$VectorOptions): this;
 
     /**
      * Return the associated {@link ol.source.Vector vectorsource} of the layer.
      * @return Source.
      * @api stable
      */
-    getSource(): ol.source.layer$Vector;
+    getSource(): ol.source.Vector;
 
     /**
      * Get the style for features.  This returns whatever was passed to the `style`
@@ -6494,10 +6595,7 @@ options means that `title` is observable, and has get/set accessors.
      * @return Layer style.
      * @api stable
      */
-    getStyle():
-      | ol.style.style$Style
-      | ol.style.style$Style[]
-      | ol.StyleFunction;
+    getStyle(): ol.style.Style | ol.style.Style[] | ol.StyleFunction;
 
     /**
      * Get the style function.
@@ -6517,12 +6615,7 @@ options means that `title` is observable, and has get/set accessors.
      * @api stable
      */
     setStyle(
-      style:
-        | ol.style.style$Style
-        | ol.style.style$Style[]
-        | ol.StyleFunction
-        | null
-        | void
+      style: ol.style.Style | ol.style.Style[] | ol.StyleFunction | null | void
     ): void;
   }
 
@@ -6541,23 +6634,23 @@ options means that `title` is observable, and has get/set accessors.
   declare type layer$VectorTileRenderType = "image" | "hybrid" | "vector";
 
   /**
- * @classdesc Layer for vector tile data that is rendered client-side.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @param opt_options Options.
- * @api
- */
-  declare class layer$VectorTile mixins layer$Vector {
+   * @classdesc Layer for vector tile data that is rendered client-side.
+   * Note that any property set in the options is set as a {@link ol.Object}
+   * property on the layer object; for example, setting `title: 'My Title'` in the
+   * options means that `title` is observable, and has get/set accessors.
+   * @param opt_options Options.
+   * @api
+   */
+  declare class layer$VectorTile mixins Vector {
     /**
- * @classdesc Layer for vector tile data that is rendered client-side.
-Note that any property set in the options is set as a {@link ol.Object}
-property on the layer object; for example, setting `title: 'My Title'` in the
-options means that `title` is observable, and has get/set accessors.
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$layer.source$VectorTileOptions): this;
+     * @classdesc Layer for vector tile data that is rendered client-side.
+     * Note that any property set in the options is set as a {@link ol.Object}
+     * property on the layer object; for example, setting `title: 'My Title'` in the
+     * options means that `title` is observable, and has get/set accessors.
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$layer$VectorTileOptions): this;
 
     /**
      * Return the level as number to which we will preload tiles up to.
@@ -6606,9 +6699,9 @@ options means that `title` is observable, and has get/set accessors.
    * @api
    */
   declare function loadingstrategy$all(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number
-  ): ol.interaction$Extent[];
+  ): ol.Extent[];
 
   /**
    * Strategy function for loading features based on the view's extent and
@@ -6619,9 +6712,9 @@ options means that `title` is observable, and has get/set accessors.
    * @api
    */
   declare function loadingstrategy$bbox(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number
-  ): ol.interaction$Extent[];
+  ): ol.Extent[];
 
   /**
    * Creates a strategy function for loading features based on a tile grid.
@@ -6630,115 +6723,115 @@ options means that `title` is observable, and has get/set accessors.
    * @api
    */
   declare function loadingstrategy$tile(
-    tileGrid: ol.tilegrid.tilegrid$TileGrid
-  ): (extent: ol.interaction$Extent, i: number) => ol.interaction$Extent[];
+    tileGrid: ol.tilegrid.TileGrid
+  ): (extent: ol.Extent, i: number) => ol.Extent[];
 
   /**
- * @classdesc The map is the core component of OpenLayers. For a map to render, a view,
-one or more layers, and a target container are needed:
-
-var map = new ol.Map({
-view: new ol.View({
-center: [0, 0],
-zoom: 1
-}),
-layers: [
-new ol.layer.Tile({
-source: new ol.source.OSM()
-})
-],
-target: 'map'
-});
-
-The above snippet creates a map using a {@link ol.layer.Tile} to display
-{@link ol.source.OSM} OSM data and render it to a DOM element with the
-id `map`.
-
-The constructor places a viewport container (with CSS class name
-`ol-viewport`) in the target element (see `getViewport()`), and then two
-further elements within the viewport: one with CSS class name
-`ol-overlaycontainer-stopevent` for controls and some overlays, and one with
-CSS class name `ol-overlaycontainer` for other overlays (see the `stopEvent`
-option of {@link ol.Overlay} for the difference). The map itself is placed in
-a further element within the viewport, either DOM or Canvas, depending on the
-renderer.
-
-Layers are stored as a `ol.Collection` in layerGroups. A top-level group is
-provided by the library. This is what is accessed by `getLayerGroup` and
-`setLayerGroup`. Layers entered in the options are added to this group, and
-`addLayer` and `removeLayer` change the layer collection in the group.
-`getLayers` is a convenience function for `getLayerGroup().getLayers()`.
-Note that `ol.layer.Group` is a subclass of `ol.layer.Base`, so layers
-entered in the options or added with `addLayer` can be groups, which can
-contain further groups, and so on.
- * @param options Map options.
- * @fires ol.MapBrowserEvent
- * @fires ol.MapEvent
- * @fires ol.render.Event#postcompose
- * @fires ol.render.Event#precompose
- * @api stable
- */
+   * @classdesc The map is the core component of OpenLayers. For a map to render, a view,
+   * one or more layers, and a target container are needed:
+   *
+   * var map = new ol.Map({
+   * view: new ol.View({
+   * center: [0, 0],
+   * zoom: 1
+   * }),
+   * layers: [
+   * new ol.layer.Tile({
+   * source: new ol.source.OSM()
+   * })
+   * ],
+   * target: 'map'
+   * });
+   *
+   * The above snippet creates a map using a {@link ol.layer.Tile} to display
+   * {@link ol.source.OSM} OSM data and render it to a DOM element with the
+   * id `map`.
+   *
+   * The constructor places a viewport container (with CSS class name
+   * `ol-viewport`) in the target element (see `getViewport()`), and then two
+   * further elements within the viewport: one with CSS class name
+   * `ol-overlaycontainer-stopevent` for controls and some overlays, and one with
+   * CSS class name `ol-overlaycontainer` for other overlays (see the `stopEvent`
+   * option of {@link ol.Overlay} for the difference). The map itself is placed in
+   * a further element within the viewport, either DOM or Canvas, depending on the
+   * renderer.
+   *
+   * Layers are stored as a `ol.Collection` in layerGroups. A top-level group is
+   * provided by the library. This is what is accessed by `getLayerGroup` and
+   * `setLayerGroup`. Layers entered in the options are added to this group, and
+   * `addLayer` and `removeLayer` change the layer collection in the group.
+   * `getLayers` is a convenience function for `getLayerGroup().getLayers()`.
+   * Note that `ol.layer.Group` is a subclass of `ol.layer.Base`, so layers
+   * entered in the options or added with `addLayer` can be groups, which can
+   * contain further groups, and so on.
+   * @param options Map options.
+   * @fires ol.MapBrowserEvent
+   * @fires ol.MapEvent
+   * @fires ol.render.Event#postcompose
+   * @fires ol.render.Event#precompose
+   * @api stable
+   */
   declare export class Map mixins Object {
     /**
- * @classdesc The map is the core component of OpenLayers. For a map to render, a view,
-one or more layers, and a target container are needed:
-
-var map = new ol.Map({
-view: new ol.View({
-center: [0, 0],
-zoom: 1
-}),
-layers: [
-new ol.layer.Tile({
-source: new ol.source.OSM()
-})
-],
-target: 'map'
-});
-
-The above snippet creates a map using a {@link ol.layer.Tile} to display
-{@link ol.source.OSM} OSM data and render it to a DOM element with the
-id `map`.
-
-The constructor places a viewport container (with CSS class name
-`ol-viewport`) in the target element (see `getViewport()`), and then two
-further elements within the viewport: one with CSS class name
-`ol-overlaycontainer-stopevent` for controls and some overlays, and one with
-CSS class name `ol-overlaycontainer` for other overlays (see the `stopEvent`
-option of {@link ol.Overlay} for the difference). The map itself is placed in
-a further element within the viewport, either DOM or Canvas, depending on the
-renderer.
-
-Layers are stored as a `ol.Collection` in layerGroups. A top-level group is
-provided by the library. This is what is accessed by `getLayerGroup` and
-`setLayerGroup`. Layers entered in the options are added to this group, and
-`addLayer` and `removeLayer` change the layer collection in the group.
-`getLayers` is a convenience function for `getLayerGroup().getLayers()`.
-Note that `ol.layer.Group` is a subclass of `ol.layer.Base`, so layers
-entered in the options or added with `addLayer` can be groups, which can
-contain further groups, and so on.
- * @param options Map options.
- * @fires ol.MapBrowserEvent
- * @fires ol.MapEvent
- * @fires ol.render.Event#postcompose
- * @fires ol.render.Event#precompose
- * @api stable
- */
-    constructor(options: olx$olx$MapOptions): this;
+     * @classdesc The map is the core component of OpenLayers. For a map to render, a view,
+     * one or more layers, and a target container are needed:
+     *
+     * var map = new ol.Map({
+     * view: new ol.View({
+     * center: [0, 0],
+     * zoom: 1
+     * }),
+     * layers: [
+     * new ol.layer.Tile({
+     * source: new ol.source.OSM()
+     * })
+     * ],
+     * target: 'map'
+     * });
+     *
+     * The above snippet creates a map using a {@link ol.layer.Tile} to display
+     * {@link ol.source.OSM} OSM data and render it to a DOM element with the
+     * id `map`.
+     *
+     * The constructor places a viewport container (with CSS class name
+     * `ol-viewport`) in the target element (see `getViewport()`), and then two
+     * further elements within the viewport: one with CSS class name
+     * `ol-overlaycontainer-stopevent` for controls and some overlays, and one with
+     * CSS class name `ol-overlaycontainer` for other overlays (see the `stopEvent`
+     * option of {@link ol.Overlay} for the difference). The map itself is placed in
+     * a further element within the viewport, either DOM or Canvas, depending on the
+     * renderer.
+     *
+     * Layers are stored as a `ol.Collection` in layerGroups. A top-level group is
+     * provided by the library. This is what is accessed by `getLayerGroup` and
+     * `setLayerGroup`. Layers entered in the options are added to this group, and
+     * `addLayer` and `removeLayer` change the layer collection in the group.
+     * `getLayers` is a convenience function for `getLayerGroup().getLayers()`.
+     * Note that `ol.layer.Group` is a subclass of `ol.layer.Base`, so layers
+     * entered in the options or added with `addLayer` can be groups, which can
+     * contain further groups, and so on.
+     * @param options Map options.
+     * @fires ol.MapBrowserEvent
+     * @fires ol.MapEvent
+     * @fires ol.render.Event#postcompose
+     * @fires ol.render.Event#precompose
+     * @api stable
+     */
+    constructor(options: olx$MapOptions): this;
 
     /**
      * Add the given control to the map.
      * @param control Control.
      * @api stable
      */
-    addControl(control: ol.control.control$Control): void;
+    addControl(control: ol.control.Control): void;
 
     /**
      * Add the given interaction to the map.
      * @param interaction Interaction to add.
      * @api stable
      */
-    addInteraction(interaction: ol.interaction.interaction$Interaction): void;
+    addInteraction(interaction: ol.interaction.Interaction): void;
 
     /**
      * Adds the given layer to the top of this map. If you want to add a layer
@@ -6747,7 +6840,7 @@ contain further groups, and so on.
      * @param layer Layer.
      * @api stable
      */
-    addLayer(layer: ol.layer.layer$Base): void;
+    addLayer(layer: ol.layer.Base): void;
 
     /**
      * Add the given overlay to the map.
@@ -6757,30 +6850,30 @@ contain further groups, and so on.
     addOverlay(overlay: ol.Overlay): void;
 
     /**
- * Detect features that intersect a pixel on the viewport, and execute a
- * callback with each intersecting feature. Layers included in the detection can
- * be configured through `opt_layerFilter`.
- * @param pixel Pixel.
- * @param callback Feature callback. The callback will be
-called with two arguments. The first argument is one
-{@link ol.Feature feature} or
-{@link ol.render.Feature render feature} at the pixel, the second is
-the {@link ol.layer.Layer layer} of the feature and will be null for
-unmanaged layers. To stop detection, callback functions can return a
-truthy value.
- * @param opt_options Optional options.
- * @return Callback result, i.e. the return value of last
-callback execution, or the first truthy callback return value.
- * @template
- * @api stable
- */
+     * Detect features that intersect a pixel on the viewport, and execute a
+     * callback with each intersecting feature. Layers included in the detection can
+     * be configured through `opt_layerFilter`.
+     * @param pixel Pixel.
+     * @param callback Feature callback. The callback will be
+     * called with two arguments. The first argument is one
+     * {@link ol.Feature feature} or
+     * {@link ol.render.Feature render feature} at the pixel, the second is
+     * the {@link ol.layer.Layer layer} of the feature and will be null for
+     * unmanaged layers. To stop detection, callback functions can return a
+     * truthy value.
+     * @param opt_options Optional options.
+     * @return Callback result, i.e. the return value of last
+     * callback execution, or the first truthy callback return value.
+     * @template
+     * @api stable
+     */
     forEachFeatureAtPixel<T>(
       pixel: ol.Pixel,
       callback: (
-        feature: ol.format$Feature | ol.render.format$Feature,
-        layer: ol.layer.layer$Layer
+        feature: ol.Feature | ol.render.Feature,
+        layer: ol.layer.Layer
       ) => T,
-      opt_options?: olx$olx$AtPixelOptions
+      opt_options?: olx$AtPixelOptions
     ): T;
 
     /**
@@ -6792,37 +6885,37 @@ callback execution, or the first truthy callback return value.
      */
     getFeaturesAtPixel(
       pixel: ol.Pixel,
-      opt_options?: olx$olx$AtPixelOptions
-    ): Array<ol.format$Feature | ol.render.format$Feature> | null;
+      opt_options?: olx$AtPixelOptions
+    ): Array<ol.Feature | ol.render.Feature> | null;
 
     /**
- * Detect layers that have a color value at a pixel on the viewport, and
- * execute a callback with each matching layer. Layers included in the
- * detection can be configured through `opt_layerFilter`.
- * @param pixel Pixel.
- * @param callback Layer
-callback. This callback will recieve two arguments: first is the
-{@link ol.layer.Layer layer}, second argument is {@link ol.Color}
-and will be null for layer types that do not currently support this
-argument. To stop detection callback functions can return a truthy value.
- * @param opt_this Value to use as `this` when executing `callback`.
- * @param opt_layerFilter Layer
-filter function. The filter function will receive one argument, the
-{@link ol.layer.Layer layer-candidate} and it should return a boolean
-value. Only layers which are visible and for which this function returns
-`true` will be tested for features. By default, all visible layers will
-be tested.
- * @param opt_this2 Value to use as `this` when executing `layerFilter`.
- * @return Callback result, i.e. the return value of last
-callback execution, or the first truthy callback return value.
- * @template
- * @api stable
- */
+     * Detect layers that have a color value at a pixel on the viewport, and
+     * execute a callback with each matching layer. Layers included in the
+     * detection can be configured through `opt_layerFilter`.
+     * @param pixel Pixel.
+     * @param callback Layer
+     * callback. This callback will recieve two arguments: first is the
+     * {@link ol.layer.Layer layer}, second argument is {@link ol.Color}
+     * and will be null for layer types that do not currently support this
+     * argument. To stop detection callback functions can return a truthy value.
+     * @param opt_this Value to use as `this` when executing `callback`.
+     * @param opt_layerFilter Layer
+     * filter function. The filter function will receive one argument, the
+     * {@link ol.layer.Layer layer-candidate} and it should return a boolean
+     * value. Only layers which are visible and for which this function returns
+     * `true` will be tested for features. By default, all visible layers will
+     * be tested.
+     * @param opt_this2 Value to use as `this` when executing `layerFilter`.
+     * @return Callback result, i.e. the return value of last
+     * callback execution, or the first truthy callback return value.
+     * @template
+     * @api stable
+     */
     forEachLayerAtPixel<T>(
       pixel: ol.Pixel,
-      callback: (layer: ol.layer.layer$Layer, color: ol.Color) => T,
+      callback: (layer: ol.layer.Layer, color: ol.Color) => T,
       opt_this?: any,
-      opt_layerFilter?: (layer: ol.layer.layer$Layer) => boolean,
+      opt_layerFilter?: (layer: ol.layer.Layer) => boolean,
       opt_this2?: any
     ): T;
 
@@ -6836,7 +6929,7 @@ callback execution, or the first truthy callback return value.
      */
     hasFeatureAtPixel(
       pixel: ol.Pixel,
-      opt_options?: olx$olx$AtPixelOptions
+      opt_options?: olx$AtPixelOptions
     ): boolean;
 
     /**
@@ -6845,7 +6938,7 @@ callback execution, or the first truthy callback return value.
      * @return Coordinate.
      * @api stable
      */
-    getEventCoordinate(event: Translate$Event): ol.Coordinate;
+    getEventCoordinate(event: interaction$Translate$Event): ol.Coordinate;
 
     /**
      * Returns the map pixel position for a browser event relative to the viewport.
@@ -6853,17 +6946,17 @@ callback execution, or the first truthy callback return value.
      * @return Pixel.
      * @api stable
      */
-    getEventPixel(event: Translate$Event): ol.Pixel;
+    getEventPixel(event: interaction$Translate$Event): ol.Pixel;
 
     /**
- * Get the target in which this map is rendered.
- * Note that this returns what is entered as an option or in setTarget:
- * if that was an element, it returns an element; if a string, it returns that.
- * @return The Element or id of the Element that the
-map is rendered in.
- * @observable
- * @api stable
- */
+     * Get the target in which this map is rendered.
+     * Note that this returns what is entered as an option or in setTarget:
+     * if that was an element, it returns an element; if a string, it returns that.
+     * @return The Element or id of the Element that the
+     * map is rendered in.
+     * @observable
+     * @api stable
+     */
     getTarget(): Element | string;
 
     /**
@@ -6890,7 +6983,7 @@ map is rendered in.
      * @return Controls.
      * @api stable
      */
-    getControls(): ol.Collection<ol.control.control$Control>;
+    getControls(): ol.Collection<ol.control.Control>;
 
     /**
      * Get the map overlays. Modifying this collection changes the overlays
@@ -6918,7 +7011,7 @@ map is rendered in.
      * @return Interactions.
      * @api stable
      */
-    getInteractions(): ol.Collection<ol.interaction.interaction$Interaction>;
+    getInteractions(): ol.Collection<ol.interaction.Interaction>;
 
     /**
      * Get the layergroup associated with this map.
@@ -6926,14 +7019,14 @@ map is rendered in.
      * @observable
      * @api stable
      */
-    getLayerGroup(): ol.layer.layer$Group;
+    getLayerGroup(): ol.layer.Group;
 
     /**
      * Get the collection of layers associated with this map.
      * @return Layers.
      * @api stable
      */
-    getLayers(): ol.Collection<ol.layer.layer$Base>;
+    getLayers(): ol.Collection<ol.layer.Base>;
 
     /**
      * Get the pixel for a coordinate.  This takes a coordinate in the map view
@@ -6981,53 +7074,51 @@ map is rendered in.
     render(): void;
 
     /**
- * Remove the given control from the map.
- * @param control Control.
- * @return The removed control (or undefined
-if the control was not found).
- * @api stable
- */
-    removeControl(
-      control: ol.control.control$Control
-    ): ol.control.control$Control;
+     * Remove the given control from the map.
+     * @param control Control.
+     * @return The removed control (or undefined
+     * if the control was not found).
+     * @api stable
+     */
+    removeControl(control: ol.control.Control): ol.control.Control;
 
     /**
- * Remove the given interaction from the map.
- * @param interaction Interaction to remove.
- * @return The removed interaction (or
-undefined if the interaction was not found).
- * @api stable
- */
+     * Remove the given interaction from the map.
+     * @param interaction Interaction to remove.
+     * @return The removed interaction (or
+     * undefined if the interaction was not found).
+     * @api stable
+     */
     removeInteraction(
-      interaction: ol.interaction.interaction$Interaction
-    ): ol.interaction.interaction$Interaction;
+      interaction: ol.interaction.Interaction
+    ): ol.interaction.Interaction;
 
     /**
- * Removes the given layer from the map.
- * @param layer Layer.
- * @return The removed layer (or undefined if the
-layer was not found).
- * @api stable
- */
-    removeLayer(layer: ol.layer.layer$Base): ol.layer.layer$Base;
+     * Removes the given layer from the map.
+     * @param layer Layer.
+     * @return The removed layer (or undefined if the
+     * layer was not found).
+     * @api stable
+     */
+    removeLayer(layer: ol.layer.Base): ol.layer.Base;
 
     /**
- * Remove the given overlay from the map.
- * @param overlay Overlay.
- * @return The removed overlay (or undefined
-if the overlay was not found).
- * @api stable
- */
+     * Remove the given overlay from the map.
+     * @param overlay Overlay.
+     * @return The removed overlay (or undefined
+     * if the overlay was not found).
+     * @api stable
+     */
     removeOverlay(overlay: ol.Overlay): ol.Overlay;
 
     /**
- * Sets the layergroup of this map.
- * @param layerGroup A layer group containing the layers in
-this map.
- * @observable
- * @api stable
- */
-    setLayerGroup(layerGroup: ol.layer.layer$Group): void;
+     * Sets the layergroup of this map.
+     * @param layerGroup A layer group containing the layers in
+     * this map.
+     * @observable
+     * @api stable
+     */
+    setLayerGroup(layerGroup: ol.layer.Group): void;
 
     /**
      * Set the size of this map.
@@ -7038,12 +7129,12 @@ this map.
     setSize(size: ol.Size): void;
 
     /**
- * Set the target element to render this map into.
- * @param target The Element or id of the Element
-that the map is rendered in.
- * @observable
- * @api stable
- */
+     * Set the target element to render this map into.
+     * @param target The Element or id of the Element
+     * that the map is rendered in.
+     * @observable
+     * @api stable
+     */
     setTarget(target: Element | string): void;
 
     /**
@@ -7063,30 +7154,30 @@ that the map is rendered in.
   }
 
   /**
- * @classdesc Events emitted as map browser events are instances of this type.
-See {@link ol.Map} for which events trigger a map browser event.
- * @param type Event type.
- * @param map Map.
- * @param browserEvent Browser event.
- * @param opt_dragging Is the map currently being dragged?
- * @param opt_frameState Frame state.
- */
+   * @classdesc Events emitted as map browser events are instances of this type.
+   * See {@link ol.Map} for which events trigger a map browser event.
+   * @param type Event type.
+   * @param map Map.
+   * @param browserEvent Browser event.
+   * @param opt_dragging Is the map currently being dragged?
+   * @param opt_frameState Frame state.
+   */
   declare export class MapBrowserEvent mixins MapEvent {
     /**
- * @classdesc Events emitted as map browser events are instances of this type.
-See {@link ol.Map} for which events trigger a map browser event.
- * @param type Event type.
- * @param map Map.
- * @param browserEvent Browser event.
- * @param opt_dragging Is the map currently being dragged?
- * @param opt_frameState Frame state.
- */
+     * @classdesc Events emitted as map browser events are instances of this type.
+     * See {@link ol.Map} for which events trigger a map browser event.
+     * @param type Event type.
+     * @param map Map.
+     * @param browserEvent Browser event.
+     * @param opt_dragging Is the map currently being dragged?
+     * @param opt_frameState Frame state.
+     */
     constructor(
       type: string,
       map: ol.Map,
-      browserEvent: Translate$Event,
+      browserEvent: interaction$Translate$Event,
       opt_dragging?: boolean,
-      opt_frameState?: olx$olx$FrameState
+      opt_frameState?: olx$FrameState
     ): this;
 
     /**
@@ -7094,7 +7185,7 @@ See {@link ol.Map} for which events trigger a map browser event.
      * @const
      * @api stable
      */
-    originalEvent: Translate$Event;
+    originalEvent: interaction$Translate$Event;
 
     /**
      * The pixel of the original browser event.
@@ -7124,28 +7215,28 @@ See {@link ol.Map} for which events trigger a map browser event.
    * @param opt_frameState Frame state.
    */
   declare export class MapBrowserPointerEvent mixins MapBrowserEvent {
-    pointerEvent: ol.pointer.pointer$PointerEvent;
+    pointerEvent: ol.pointer.PointerEvent;
   }
 
   /**
- * @classdesc Events emitted as map events are instances of this type.
-See {@link ol.Map} for which events trigger a map event.
- * @param type Event type.
- * @param map Map.
- * @param opt_frameState Frame state.
- */
-  declare export class MapEvent mixins events$Translate$Event {
+   * @classdesc Events emitted as map events are instances of this type.
+   * See {@link ol.Map} for which events trigger a map event.
+   * @param type Event type.
+   * @param map Map.
+   * @param opt_frameState Frame state.
+   */
+  declare export class MapEvent mixins events$Event {
     /**
- * @classdesc Events emitted as map events are instances of this type.
-See {@link ol.Map} for which events trigger a map event.
- * @param type Event type.
- * @param map Map.
- * @param opt_frameState Frame state.
- */
+     * @classdesc Events emitted as map events are instances of this type.
+     * See {@link ol.Map} for which events trigger a map event.
+     * @param type Event type.
+     * @param map Map.
+     * @param opt_frameState Frame state.
+     */
     constructor(
       type: string,
       map: ol.Map,
-      opt_frameState?: olx$olx$FrameState
+      opt_frameState?: olx$FrameState
     ): this;
 
     /**
@@ -7158,7 +7249,7 @@ See {@link ol.Map} for which events trigger a map event.
      * The frame state at the time of the event.
      * @api
      */
-    frameState: olx$olx$FrameState;
+    frameState: olx$FrameState;
   }
 
   /**
@@ -7167,7 +7258,7 @@ See {@link ol.Map} for which events trigger a map event.
    * @param key The property name.
    * @param oldValue The old value for `key`.
    */
-  declare export class ObjectEvent mixins events$Translate$Event {
+  declare export class ObjectEvent mixins events$Event {
     /**
      * @classdesc Events emitted by {@link ol.Object} instances are instances of this type.
      * @param type The event type.
@@ -7191,88 +7282,88 @@ See {@link ol.Map} for which events trigger a map event.
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Most non-trivial classes inherit from this.
-
-This extends {@link ol.Observable} with observable properties, where each
-property is observable as well as the object as a whole.
-
-Classes that inherit from this have pre-defined properties, to which you can
-add your owns. The pre-defined properties are listed in this documentation as
-'Observable Properties', and have their own accessors; for example,
-{@link ol.Map} has a `target` property, accessed with `getTarget()`  and
-changed with `setTarget()`. Not all properties are however settable. There
-are also general-purpose accessors `get()` and `set()`. For example,
-`get('target')` is equivalent to `getTarget()`.
-
-The `set` accessors trigger a change event, and you can monitor this by
-registering a listener. For example, {@link ol.View} has a `center`
-property, so `view.on('change:center', function(evt) {...});` would call the
-function whenever the value of the center property changes. Within the
-function, `evt.target` would be the view, so `evt.target.getCenter()` would
-return the new center.
-
-You can add your own observable properties with
-`object.set('prop', 'value')`, and retrieve that with `object.get('prop')`.
-You can listen for changes on that property value with
-`object.on('change:prop', listener)`. You can get a list of all
-properties with {@link ol.Object#getProperties object.getProperties()}.
-
-Note that the observable properties are separate from standard JS properties.
-You can, for example, give your map object a title with
-`map.title='New title'` and with `map.set('title', 'Another title')`. The
-first will be a `hasOwnProperty`; the second will appear in
-`getProperties()`. Only the second is observable.
-
-Properties can be deleted by using the unset method. E.g.
-object.unset('foo').
- * @param opt_values An object with key-value pairs.
- * @fires ol.ObjectEvent
- * @api
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Most non-trivial classes inherit from this.
+   *
+   * This extends {@link ol.Observable} with observable properties, where each
+   * property is observable as well as the object as a whole.
+   *
+   * Classes that inherit from this have pre-defined properties, to which you can
+   * add your owns. The pre-defined properties are listed in this documentation as
+   * 'Observable Properties', and have their own accessors; for example,
+   * {@link ol.Map} has a `target` property, accessed with `getTarget()`  and
+   * changed with `setTarget()`. Not all properties are however settable. There
+   * are also general-purpose accessors `get()` and `set()`. For example,
+   * `get('target')` is equivalent to `getTarget()`.
+   *
+   * The `set` accessors trigger a change event, and you can monitor this by
+   * registering a listener. For example, {@link ol.View} has a `center`
+   * property, so `view.on('change:center', function(evt) {...});` would call the
+   * function whenever the value of the center property changes. Within the
+   * function, `evt.target` would be the view, so `evt.target.getCenter()` would
+   * return the new center.
+   *
+   * You can add your own observable properties with
+   * `object.set('prop', 'value')`, and retrieve that with `object.get('prop')`.
+   * You can listen for changes on that property value with
+   * `object.on('change:prop', listener)`. You can get a list of all
+   * properties with {@link ol.Object#getProperties object.getProperties()}.
+   *
+   * Note that the observable properties are separate from standard JS properties.
+   * You can, for example, give your map object a title with
+   * `map.title='New title'` and with `map.set('title', 'Another title')`. The
+   * first will be a `hasOwnProperty`; the second will appear in
+   * `getProperties()`. Only the second is observable.
+   *
+   * Properties can be deleted by using the unset method. E.g.
+   * object.unset('foo').
+   * @param opt_values An object with key-value pairs.
+   * @fires ol.ObjectEvent
+   * @api
+   */
   declare export class Object mixins Observable {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Most non-trivial classes inherit from this.
-
-This extends {@link ol.Observable} with observable properties, where each
-property is observable as well as the object as a whole.
-
-Classes that inherit from this have pre-defined properties, to which you can
-add your owns. The pre-defined properties are listed in this documentation as
-'Observable Properties', and have their own accessors; for example,
-{@link ol.Map} has a `target` property, accessed with `getTarget()`  and
-changed with `setTarget()`. Not all properties are however settable. There
-are also general-purpose accessors `get()` and `set()`. For example,
-`get('target')` is equivalent to `getTarget()`.
-
-The `set` accessors trigger a change event, and you can monitor this by
-registering a listener. For example, {@link ol.View} has a `center`
-property, so `view.on('change:center', function(evt) {...});` would call the
-function whenever the value of the center property changes. Within the
-function, `evt.target` would be the view, so `evt.target.getCenter()` would
-return the new center.
-
-You can add your own observable properties with
-`object.set('prop', 'value')`, and retrieve that with `object.get('prop')`.
-You can listen for changes on that property value with
-`object.on('change:prop', listener)`. You can get a list of all
-properties with {@link ol.Object#getProperties object.getProperties()}.
-
-Note that the observable properties are separate from standard JS properties.
-You can, for example, give your map object a title with
-`map.title='New title'` and with `map.set('title', 'Another title')`. The
-first will be a `hasOwnProperty`; the second will appear in
-`getProperties()`. Only the second is observable.
-
-Properties can be deleted by using the unset method. E.g.
-object.unset('foo').
- * @param opt_values An object with key-value pairs.
- * @fires ol.ObjectEvent
- * @api
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Most non-trivial classes inherit from this.
+     *
+     * This extends {@link ol.Observable} with observable properties, where each
+     * property is observable as well as the object as a whole.
+     *
+     * Classes that inherit from this have pre-defined properties, to which you can
+     * add your owns. The pre-defined properties are listed in this documentation as
+     * 'Observable Properties', and have their own accessors; for example,
+     * {@link ol.Map} has a `target` property, accessed with `getTarget()`  and
+     * changed with `setTarget()`. Not all properties are however settable. There
+     * are also general-purpose accessors `get()` and `set()`. For example,
+     * `get('target')` is equivalent to `getTarget()`.
+     *
+     * The `set` accessors trigger a change event, and you can monitor this by
+     * registering a listener. For example, {@link ol.View} has a `center`
+     * property, so `view.on('change:center', function(evt) {...});` would call the
+     * function whenever the value of the center property changes. Within the
+     * function, `evt.target` would be the view, so `evt.target.getCenter()` would
+     * return the new center.
+     *
+     * You can add your own observable properties with
+     * `object.set('prop', 'value')`, and retrieve that with `object.get('prop')`.
+     * You can listen for changes on that property value with
+     * `object.on('change:prop', listener)`. You can get a list of all
+     * properties with {@link ol.Object#getProperties object.getProperties()}.
+     *
+     * Note that the observable properties are separate from standard JS properties.
+     * You can, for example, give your map object a title with
+     * `map.title='New title'` and with `map.set('title', 'Another title')`. The
+     * first will be a `hasOwnProperty`; the second will appear in
+     * `getProperties()`. Only the second is observable.
+     *
+     * Properties can be deleted by using the unset method. E.g.
+     * object.unset('foo').
+     * @param opt_values An object with key-value pairs.
+     * @fires ol.ObjectEvent
+     * @api
+     */
     constructor(opt_values?: {
       [k: string]: any
     }): this;
@@ -7334,34 +7425,34 @@ object.unset('foo').
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-An event target providing convenient methods for listener registration
-and unregistration. A generic `change` event is always available through
-{@link ol.Observable#changed}.
- * @fires ol.events.Event
- * @struct
- * @api stable
- */
-  declare export class Observable mixins events$events$EventTarget {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * An event target providing convenient methods for listener registration
+   * and unregistration. A generic `change` event is always available through
+   * {@link ol.Observable#changed}.
+   * @fires ol.events.Event
+   * @struct
+   * @api stable
+   */
+  declare export class Observable mixins events$EventTarget {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-An event target providing convenient methods for listener registration
-and unregistration. A generic `change` event is always available through
-{@link ol.Observable#changed}.
- * @fires ol.events.Event
- * @struct
- * @api stable
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * An event target providing convenient methods for listener registration
+     * and unregistration. A generic `change` event is always available through
+     * {@link ol.Observable#changed}.
+     * @fires ol.events.Event
+     * @struct
+     * @api stable
+     */
     constructor(): this;
 
     /**
- * Removes an event listener using the key returned by `on()` or `once()`.
- * @param key The key returned by `on()`
-or `once()` (or an array of keys).
- * @api stable
- */
+     * Removes an event listener using the key returned by `on()` or `once()`.
+     * @param key The key returned by `on()`
+     * or `once()` (or an array of keys).
+     * @api stable
+     */
     static unByKey(key: ol.EventsKey | ol.EventsKey[]): void;
 
     /**
@@ -7377,9 +7468,7 @@ or `once()` (or an array of keys).
      * @param event Event object.
      * @api
      */
-    dispatchEvent(
-      event: GlobalObject | ol.events.Translate$Event | string
-    ): void;
+    dispatchEvent(event: GlobalObject | ol.events.Event | string): void;
 
     /**
      * Get the version number for this object.  Each time the object is modified,
@@ -7390,15 +7479,15 @@ or `once()` (or an array of keys).
     getRevision(): number;
 
     /**
- * Listen for a certain type of event.
- * @param type The event type or array of event types.
- * @param listener The listener function.
- * @param opt_this The object to use as `this` in `listener`.
- * @return Unique key for the listener. If
-called with an array of event types as the first argument, the return
-will be an array of keys.
- * @api stable
- */
+     * Listen for a certain type of event.
+     * @param type The event type or array of event types.
+     * @param listener The listener function.
+     * @param opt_this The object to use as `this` in `listener`.
+     * @return Unique key for the listener. If
+     * called with an array of event types as the first argument, the return
+     * will be an array of keys.
+     * @api stable
+     */
     on(
       type: string | string[],
       listener: ol.EventsListenerFunctionType,
@@ -7406,15 +7495,15 @@ will be an array of keys.
     ): ol.EventsKey | ol.EventsKey[];
 
     /**
- * Listen once for a certain type of event.
- * @param type The event type or array of event types.
- * @param listener The listener function.
- * @param opt_this The object to use as `this` in `listener`.
- * @return Unique key for the listener. If
-called with an array of event types as the first argument, the return
-will be an array of keys.
- * @api stable
- */
+     * Listen once for a certain type of event.
+     * @param type The event type or array of event types.
+     * @param listener The listener function.
+     * @param opt_this The object to use as `this` in `listener`.
+     * @return Unique key for the listener. If
+     * called with an array of event types as the first argument, the return
+     * will be an array of keys.
+     * @api stable
+     */
     once(
       type: string | string[],
       listener: ol.EventsListenerFunctionType,
@@ -7422,13 +7511,13 @@ will be an array of keys.
     ): ol.EventsKey | ol.EventsKey[];
 
     /**
- * Unlisten for a certain type of event.
- * @param type The event type or array of event types.
- * @param listener The listener function.
- * @param opt_this The object which was used as `this` by the
-`listener`.
- * @api stable
- */
+     * Unlisten for a certain type of event.
+     * @param type The event type or array of event types.
+     * @param listener The listener function.
+     * @param opt_this The object which was used as `this` by the
+     * `listener`.
+     * @api stable
+     */
     un(
       type: string | string[],
       listener: ol.EventsListenerFunctionType,
@@ -7453,41 +7542,41 @@ will be an array of keys.
     | "top-right";
 
   /**
- * @classdesc An element to be displayed over the map and attached to a single map
-location.  Like {@link ol.control.Control}, Overlays are visible widgets.
-Unlike Controls, they are not in a fixed position on the screen, but are tied
-to a geographical coordinate, so panning the map will move an Overlay but not
-a Control.
-
-Example:
-
-var popup = new ol.Overlay({
-element: document.getElementById('popup')
-});
-popup.setPosition(coordinate);
-map.addOverlay(popup);
- * @param options Overlay options.
- * @api stable
- */
+   * @classdesc An element to be displayed over the map and attached to a single map
+   * location.  Like {@link ol.control.Control}, Overlays are visible widgets.
+   * Unlike Controls, they are not in a fixed position on the screen, but are tied
+   * to a geographical coordinate, so panning the map will move an Overlay but not
+   * a Control.
+   *
+   * Example:
+   *
+   * var popup = new ol.Overlay({
+   * element: document.getElementById('popup')
+   * });
+   * popup.setPosition(coordinate);
+   * map.addOverlay(popup);
+   * @param options Overlay options.
+   * @api stable
+   */
   declare export class Overlay mixins Object {
     /**
- * @classdesc An element to be displayed over the map and attached to a single map
-location.  Like {@link ol.control.Control}, Overlays are visible widgets.
-Unlike Controls, they are not in a fixed position on the screen, but are tied
-to a geographical coordinate, so panning the map will move an Overlay but not
-a Control.
-
-Example:
-
-var popup = new ol.Overlay({
-element: document.getElementById('popup')
-});
-popup.setPosition(coordinate);
-map.addOverlay(popup);
- * @param options Overlay options.
- * @api stable
- */
-    constructor(options: olx$olx$OverlayOptions): this;
+     * @classdesc An element to be displayed over the map and attached to a single map
+     * location.  Like {@link ol.control.Control}, Overlays are visible widgets.
+     * Unlike Controls, they are not in a fixed position on the screen, but are tied
+     * to a geographical coordinate, so panning the map will move an Overlay but not
+     * a Control.
+     *
+     * Example:
+     *
+     * var popup = new ol.Overlay({
+     * element: document.getElementById('popup')
+     * });
+     * popup.setPosition(coordinate);
+     * map.addOverlay(popup);
+     * @param options Overlay options.
+     * @api stable
+     */
+    constructor(options: olx$OverlayOptions): this;
 
     /**
      * Get the DOM element of this overlay.
@@ -7521,21 +7610,21 @@ map.addOverlay(popup);
     getOffset(): number[];
 
     /**
- * Get the current position of this overlay.
- * @return The spatial point that the overlay is
-anchored at.
- * @observable
- * @api stable
- */
+     * Get the current position of this overlay.
+     * @return The spatial point that the overlay is
+     * anchored at.
+     * @observable
+     * @api stable
+     */
     getPosition(): ol.Coordinate;
 
     /**
- * Get the current positioning of this overlay.
- * @return How the overlay is positioned
-relative to its point on the map.
- * @observable
- * @api stable
- */
+     * Get the current positioning of this overlay.
+     * @return How the overlay is positioned
+     * relative to its point on the map.
+     * @observable
+     * @api stable
+     */
     getPositioning(): ol.OverlayPositioning;
 
     /**
@@ -7563,35 +7652,39 @@ relative to its point on the map.
     setOffset(offset: number[]): void;
 
     /**
- * Set the position for this overlay. If the position is `undefined` the
- * overlay is hidden.
- * @param position The spatial point that the overlay
-is anchored at.
- * @observable
- * @api stable
- */
+     * Set the position for this overlay. If the position is `undefined` the
+     * overlay is hidden.
+     * @param position The spatial point that the overlay
+     * is anchored at.
+     * @observable
+     * @api stable
+     */
     setPosition(position: ol.Coordinate | void): void;
 
     /**
- * Set the positioning for this overlay.
- * @param positioning how the overlay is
-positioned relative to its point on the map.
- * @observable
- * @api stable
- */
+     * Set the positioning for this overlay.
+     * @param positioning how the overlay is
+     * positioned relative to its point on the map.
+     * @observable
+     * @api stable
+     */
     setPositioning(positioning: ol.OverlayPositioning): void;
   }
 
-  /**
- * @classdesc A class for pointer events.
+  declare var npm$namespace$pointer: {
+    PointerEvent: typeof pointer$PointerEvent
+  };
 
-This class is used as an abstraction for mouse events,
-touch events and even native pointer events.
- * @param type The type of the event to create.
- * @param originalEvent The event.
- * @param opt_eventDict An optional dictionary of
-initial event properties.
- */
+  /**
+   * @classdesc A class for pointer events.
+   *
+   * This class is used as an abstraction for mouse events,
+   * touch events and even native pointer events.
+   * @param type The type of the event to create.
+   * @param originalEvent The event.
+   * @param opt_eventDict An optional dictionary of
+   * initial event properties.
+   */
   declare class pointer$PointerEvent {}
 
   declare var npm$namespace$proj: {
@@ -7607,19 +7700,22 @@ initial event properties.
     transform: typeof proj$transform,
     transformExtent: typeof proj$transformExtent,
     getPointResolution: typeof proj$getPointResolution,
-    METERS_PER_UNIT: typeof proj$METERS_PER_UNIT
+    METERS_PER_UNIT: typeof proj$METERS_PER_UNIT,
+
+    Projection: typeof proj$Projection
   };
 
   /**
-   * Units for the scale line. Supported values are `'degrees'`, `'imperial'`,
-   * `'nautical'`, `'metric'`, `'us'`.
+   * Projection units: `'degrees'`, `'ft'`, `'m'`, `'pixels'`, `'tile-pixels'` or
+   * `'us-ft'`.
    */
   declare type proj$Units =
     | "degrees"
-    | "imperial"
-    | "nautical"
-    | "metric"
-    | "us";
+    | "ft"
+    | "m"
+    | "pixels"
+    | "tile-pixels"
+    | "us-ft";
 
   /**
    * Meters per unit lookup table.
@@ -7631,61 +7727,61 @@ initial event properties.
   };
 
   /**
- * @classdesc Projection definition class. One of these is created for each projection
-supported in the application and stored in the {@link ol.proj} namespace.
-You can use these in applications, but this is not required, as API params
-and options use {@link ol.ProjectionLike} which means the simple string
-code will suffice.
-
-You can use {@link ol.proj.get} to retrieve the object for a particular
-projection.
-
-The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
-with the following aliases:
-* `EPSG:4326`: CRS:84, urn:ogc:def:crs:EPSG:6.6:4326,
-urn:ogc:def:crs:OGC:1.3:CRS84, urn:ogc:def:crs:OGC:2:84,
-http://www.opengis.net/gml/srs/epsg.xml#4326,
-urn:x-ogc:def:crs:EPSG:4326
-* `EPSG:3857`: EPSG:102100, EPSG:102113, EPSG:900913,
-urn:ogc:def:crs:EPSG:6.18:3:3857,
-http://www.opengis.net/gml/srs/epsg.xml#3857
-
-If you use proj4js, aliases can be added using `proj4.defs()`; see
-[documentation](https://github.com/proj4js/proj4js). To set an alternative
-namespace for proj4, use {@link ol.proj.setProj4}.
- * @param options Projection options.
- * @struct
- * @api stable
- */
+   * @classdesc Projection definition class. One of these is created for each projection
+   * supported in the application and stored in the {@link ol.proj} namespace.
+   * You can use these in applications, but this is not required, as API params
+   * and options use {@link ol.ProjectionLike} which means the simple string
+   * code will suffice.
+   *
+   * You can use {@link ol.proj.get} to retrieve the object for a particular
+   * projection.
+   *
+   * The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
+   * with the following aliases:
+   * * `EPSG:4326`: CRS:84, urn:ogc:def:crs:EPSG:6.6:4326,
+   * urn:ogc:def:crs:OGC:1.3:CRS84, urn:ogc:def:crs:OGC:2:84,
+   * http://www.opengis.net/gml/srs/epsg.xml#4326,
+   * urn:x-ogc:def:crs:EPSG:4326
+   * * `EPSG:3857`: EPSG:102100, EPSG:102113, EPSG:900913,
+   * urn:ogc:def:crs:EPSG:6.18:3:3857,
+   * http://www.opengis.net/gml/srs/epsg.xml#3857
+   *
+   * If you use proj4js, aliases can be added using `proj4.defs()`; see
+   * [documentation](https://github.com/proj4js/proj4js). To set an alternative
+   * namespace for proj4, use {@link ol.proj.setProj4}.
+   * @param options Projection options.
+   * @struct
+   * @api stable
+   */
   declare class proj$Projection {
     /**
- * @classdesc Projection definition class. One of these is created for each projection
-supported in the application and stored in the {@link ol.proj} namespace.
-You can use these in applications, but this is not required, as API params
-and options use {@link ol.ProjectionLike} which means the simple string
-code will suffice.
-
-You can use {@link ol.proj.get} to retrieve the object for a particular
-projection.
-
-The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
-with the following aliases:
-* `EPSG:4326`: CRS:84, urn:ogc:def:crs:EPSG:6.6:4326,
-urn:ogc:def:crs:OGC:1.3:CRS84, urn:ogc:def:crs:OGC:2:84,
-http://www.opengis.net/gml/srs/epsg.xml#4326,
-urn:x-ogc:def:crs:EPSG:4326
-* `EPSG:3857`: EPSG:102100, EPSG:102113, EPSG:900913,
-urn:ogc:def:crs:EPSG:6.18:3:3857,
-http://www.opengis.net/gml/srs/epsg.xml#3857
-
-If you use proj4js, aliases can be added using `proj4.defs()`; see
-[documentation](https://github.com/proj4js/proj4js). To set an alternative
-namespace for proj4, use {@link ol.proj.setProj4}.
- * @param options Projection options.
- * @struct
- * @api stable
- */
-    constructor(options: olx$olx$ProjectionOptions): this;
+     * @classdesc Projection definition class. One of these is created for each projection
+     * supported in the application and stored in the {@link ol.proj} namespace.
+     * You can use these in applications, but this is not required, as API params
+     * and options use {@link ol.ProjectionLike} which means the simple string
+     * code will suffice.
+     *
+     * You can use {@link ol.proj.get} to retrieve the object for a particular
+     * projection.
+     *
+     * The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
+     * with the following aliases:
+     * * `EPSG:4326`: CRS:84, urn:ogc:def:crs:EPSG:6.6:4326,
+     * urn:ogc:def:crs:OGC:1.3:CRS84, urn:ogc:def:crs:OGC:2:84,
+     * http://www.opengis.net/gml/srs/epsg.xml#4326,
+     * urn:x-ogc:def:crs:EPSG:4326
+     * * `EPSG:3857`: EPSG:102100, EPSG:102113, EPSG:900913,
+     * urn:ogc:def:crs:EPSG:6.18:3:3857,
+     * http://www.opengis.net/gml/srs/epsg.xml#3857
+     *
+     * If you use proj4js, aliases can be added using `proj4.defs()`; see
+     * [documentation](https://github.com/proj4js/proj4js). To set an alternative
+     * namespace for proj4, use {@link ol.proj.setProj4}.
+     * @param options Projection options.
+     * @struct
+     * @api stable
+     */
+    constructor(options: olx$ProjectionOptions): this;
 
     /**
      * Get the code for this projection, e.g. 'EPSG:4326'.
@@ -7699,7 +7795,7 @@ namespace for proj4, use {@link ol.proj.setProj4}.
      * @return Extent.
      * @api stable
      */
-    getExtent(): ol.interaction$Extent;
+    getExtent(): ol.Extent;
 
     /**
      * Get the units of this projection.
@@ -7722,7 +7818,7 @@ namespace for proj4, use {@link ol.proj.setProj4}.
      * @return Extent.
      * @api
      */
-    getWorldExtent(): ol.interaction$Extent;
+    getWorldExtent(): ol.Extent;
 
     /**
      * Is this projection a global projection which spans the whole world?
@@ -7743,15 +7839,15 @@ namespace for proj4, use {@link ol.proj.setProj4}.
      * @param extent Extent.
      * @api stable
      */
-    setExtent(extent: ol.interaction$Extent): void;
+    setExtent(extent: ol.Extent): void;
 
     /**
- * Set the world extent for this projection.
- * @param worldExtent World extent
-[minlon, minlat, maxlon, maxlat].
- * @api
- */
-    setWorldExtent(worldExtent: ol.interaction$Extent): void;
+     * Set the world extent for this projection.
+     * @param worldExtent World extent
+     * [minlon, minlat, maxlon, maxlat].
+     * @api
+     */
+    setWorldExtent(worldExtent: ol.Extent): void;
 
     /**
      * Set the getPointResolution function for this projection.
@@ -7812,23 +7908,23 @@ namespace for proj4, use {@link ol.proj.setProj4}.
   declare function proj$addProjection(projection: proj$Projection): void;
 
   /**
- * Registers coordinate transform functions to convert coordinates between the
- * source projection and the destination projection.
- * The forward and inverse functions convert coordinate pairs; this function
- * converts these into the functions used internally which also handle
- * extents and coordinate arrays.
- * @param source Source projection.
- * @param destination Destination projection.
- * @param forward The forward transform
-function (that is, from the source projection to the destination
-projection) that takes a {@link ol.Coordinate} as argument and returns
-the transformed {@link ol.Coordinate}.
- * @param inverse The inverse transform
-function (that is, from the destination projection to the source
-projection) that takes a {@link ol.Coordinate} as argument and returns
-the transformed {@link ol.Coordinate}.
- * @api stable
- */
+   * Registers coordinate transform functions to convert coordinates between the
+   * source projection and the destination projection.
+   * The forward and inverse functions convert coordinate pairs; this function
+   * converts these into the functions used internally which also handle
+   * extents and coordinate arrays.
+   * @param source Source projection.
+   * @param destination Destination projection.
+   * @param forward The forward transform
+   * function (that is, from the source projection to the destination
+   * projection) that takes a {@link ol.Coordinate} as argument and returns
+   * the transformed {@link ol.Coordinate}.
+   * @param inverse The inverse transform
+   * function (that is, from the destination projection to the source
+   * projection) that takes a {@link ol.Coordinate} as argument and returns
+   * the transformed {@link ol.Coordinate}.
+   * @api stable
+   */
   declare function proj$addCoordinateTransforms(
     source: ol.ProjectionLike,
     destination: ol.ProjectionLike,
@@ -7837,41 +7933,41 @@ the transformed {@link ol.Coordinate}.
   ): void;
 
   /**
- * Transforms a coordinate from longitude/latitude to a different projection.
- * @param coordinate Coordinate as longitude and latitude, i.e.
-an array with longitude as 1st and latitude as 2nd element.
- * @param opt_projection Target projection. The
-default is Web Mercator, i.e. 'EPSG:3857'.
- * @return Coordinate projected to the target projection.
- * @api stable
- */
+   * Transforms a coordinate from longitude/latitude to a different projection.
+   * @param coordinate Coordinate as longitude and latitude, i.e.
+   * an array with longitude as 1st and latitude as 2nd element.
+   * @param opt_projection Target projection. The
+   * default is Web Mercator, i.e. 'EPSG:3857'.
+   * @return Coordinate projected to the target projection.
+   * @api stable
+   */
   declare function proj$fromLonLat(
     coordinate: ol.Coordinate,
     opt_projection?: ol.ProjectionLike
   ): ol.Coordinate;
 
   /**
- * Transforms a coordinate to longitude/latitude.
- * @param coordinate Projected coordinate.
- * @param opt_projection Projection of the coordinate.
-The default is Web Mercator, i.e. 'EPSG:3857'.
- * @return Coordinate as longitude and latitude, i.e. an array
-with longitude as 1st and latitude as 2nd element.
- * @api stable
- */
+   * Transforms a coordinate to longitude/latitude.
+   * @param coordinate Projected coordinate.
+   * @param opt_projection Projection of the coordinate.
+   * The default is Web Mercator, i.e. 'EPSG:3857'.
+   * @return Coordinate as longitude and latitude, i.e. an array
+   * with longitude as 1st and latitude as 2nd element.
+   * @api stable
+   */
   declare function proj$toLonLat(
     coordinate: ol.Coordinate,
     opt_projection?: ol.ProjectionLike
   ): ol.Coordinate;
 
   /**
- * Fetches a Projection object for the code specified.
- * @param projectionLike Either a code string which is
-a combination of authority and identifier such as "EPSG:4326", or an
-existing projection object, or undefined.
- * @return Projection object, or null if not in list.
- * @api stable
- */
+   * Fetches a Projection object for the code specified.
+   * @param projectionLike Either a code string which is
+   * a combination of authority and identifier such as "EPSG:4326", or an
+   * existing projection object, or undefined.
+   * @return Projection object, or null if not in list.
+   * @api stable
+   */
   declare function proj$get(projectionLike: ol.ProjectionLike): proj$Projection;
 
   /**
@@ -7929,10 +8025,10 @@ existing projection object, or undefined.
    * @api stable
    */
   declare function proj$transformExtent(
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     source: ol.ProjectionLike,
     destination: ol.ProjectionLike
-  ): ol.interaction$Extent;
+  ): ol.Extent;
 
   /**
    * Get the resolution of the point in degrees or distance units. For
@@ -7953,43 +8049,52 @@ existing projection object, or undefined.
   ): number;
 
   declare var npm$namespace$render: {
-    toContext: typeof render$toContext
+    toContext: typeof render$toContext,
+
+    Event: typeof render$Event,
+    Feature: typeof render$Feature,
+    VectorContext: typeof render$VectorContext,
+    canvas: typeof npm$namespace$render$canvas
+  };
+
+  declare var npm$namespace$render$canvas: {
+    Immediate: typeof render$canvas$Immediate
   };
 
   /**
- * @classdesc A concrete subclass of {@link ol.render.VectorContext} that implements
-direct rendering of features and geometries to an HTML5 Canvas context.
-Instances of this class are created internally by the library and
-provided to application code as vectorContext member of the
-{@link ol.render.Event} object associated with postcompose, precompose and
-render events emitted by layers and maps.
- * @param context Context.
- * @param pixelRatio Pixel ratio.
- * @param extent Extent.
- * @param transform Transform.
- * @param viewRotation View rotation.
- * @struct
- */
-  declare class canvas$Immediate mixins render$VectorContext {
+   * @classdesc A concrete subclass of {@link ol.render.VectorContext} that implements
+   * direct rendering of features and geometries to an HTML5 Canvas context.
+   * Instances of this class are created internally by the library and
+   * provided to application code as vectorContext member of the
+   * {@link ol.render.Event} object associated with postcompose, precompose and
+   * render events emitted by layers and maps.
+   * @param context Context.
+   * @param pixelRatio Pixel ratio.
+   * @param extent Extent.
+   * @param transform Transform.
+   * @param viewRotation View rotation.
+   * @struct
+   */
+  declare class render$canvas$Immediate mixins VectorContext {
     /**
- * @classdesc A concrete subclass of {@link ol.render.VectorContext} that implements
-direct rendering of features and geometries to an HTML5 Canvas context.
-Instances of this class are created internally by the library and
-provided to application code as vectorContext member of the
-{@link ol.render.Event} object associated with postcompose, precompose and
-render events emitted by layers and maps.
- * @param context Context.
- * @param pixelRatio Pixel ratio.
- * @param extent Extent.
- * @param transform Transform.
- * @param viewRotation View rotation.
- * @struct
- */
+     * @classdesc A concrete subclass of {@link ol.render.VectorContext} that implements
+     * direct rendering of features and geometries to an HTML5 Canvas context.
+     * Instances of this class are created internally by the library and
+     * provided to application code as vectorContext member of the
+     * {@link ol.render.Event} object associated with postcompose, precompose and
+     * render events emitted by layers and maps.
+     * @param context Context.
+     * @param pixelRatio Pixel ratio.
+     * @param extent Extent.
+     * @param transform Transform.
+     * @param viewRotation View rotation.
+     * @struct
+     */
     constructor(
       context: CanvasRenderingContext2D,
       pixelRatio: number,
-      extent: ol.interaction$Extent,
-      proj$transform: any,
+      extent: ol.Extent,
+      transform: any,
       viewRotation: number
     ): this;
 
@@ -7999,7 +8104,7 @@ render events emitted by layers and maps.
      * @param geometry Circle geometry.
      * @api
      */
-    drawCircle(geometry: ol.geom.geom$Circle): void;
+    drawCircle(geometry: ol.geom.Circle): void;
 
     /**
      * Set the rendering style.  Note that since this is an immediate rendering API,
@@ -8007,7 +8112,7 @@ render events emitted by layers and maps.
      * @param style The rendering style.
      * @api
      */
-    setStyle(style: ol.style.style$Style): void;
+    setStyle(style: ol.style.Style): void;
 
     /**
      * Render a geometry into the canvas.  Call
@@ -8015,7 +8120,7 @@ render events emitted by layers and maps.
      * @param geometry The geometry to render.
      * @api
      */
-    drawGeometry(geometry: ol.geom.geom$Geometry | format$Feature): void;
+    drawGeometry(geometry: ol.geom.Geometry | format$Feature): void;
 
     /**
      * Render a feature into the canvas.  Note that any `zIndex` on the provided
@@ -8026,7 +8131,7 @@ render events emitted by layers and maps.
      * @param style Style.
      * @api
      */
-    drawFeature(feature: ol.format$Feature, style: ol.style.style$Style): void;
+    drawFeature(feature: ol.Feature, style: ol.style.Style): void;
   }
 
   /**
@@ -8036,7 +8141,7 @@ render events emitted by layers and maps.
    * @param opt_context Context.
    * @param opt_glContext WebGL Context.
    */
-  declare class render$Event mixins events$render$Event {
+  declare class render$Event mixins events$Event {
     /**
      * @param type Type.
      * @param opt_vectorContext Vector context.
@@ -8047,7 +8152,7 @@ render events emitted by layers and maps.
     constructor(
       type: Collection$EventType,
       opt_vectorContext?: render$VectorContext,
-      opt_frameState?: olx$olx$FrameState,
+      opt_frameState?: olx$FrameState,
       opt_context?: CanvasRenderingContext2D,
       opt_glContext?: any
     ): this;
@@ -8062,7 +8167,7 @@ render events emitted by layers and maps.
      * An object representing the current render frame state.
      * @api
      */
-    frameState: olx$olx$FrameState;
+    frameState: olx$FrameState;
 
     /**
      * Canvas context. Only available when a Canvas renderer is used, null
@@ -8082,28 +8187,28 @@ render events emitted by layers and maps.
   declare type render$EventType = string;
 
   /**
- * Lightweight, read-only, {@link ol.Feature} and {@link ol.geom.Geometry} like
- * structure, optimized for rendering and styling. Geometry access through the
- * API is limited to getting the type and extent of the geometry.
- * @param type Geometry type.
- * @param flatCoordinates Flat coordinates. These always need
-to be right-handed for polygons.
- * @param ends Ends or Endss.
- * @param properties Properties.
- */
+   * Lightweight, read-only, {@link ol.Feature} and {@link ol.geom.Geometry} like
+   * structure, optimized for rendering and styling. Geometry access through the
+   * API is limited to getting the type and extent of the geometry.
+   * @param type Geometry type.
+   * @param flatCoordinates Flat coordinates. These always need
+   * to be right-handed for polygons.
+   * @param ends Ends or Endss.
+   * @param properties Properties.
+   */
   declare class render$Feature {
     /**
- * Lightweight, read-only, {@link ol.Feature} and {@link ol.geom.Geometry} like
- * structure, optimized for rendering and styling. Geometry access through the
- * API is limited to getting the type and extent of the geometry.
- * @param type Geometry type.
- * @param flatCoordinates Flat coordinates. These always need
-to be right-handed for polygons.
- * @param ends Ends or Endss.
- * @param properties Properties.
- */
+     * Lightweight, read-only, {@link ol.Feature} and {@link ol.geom.Geometry} like
+     * structure, optimized for rendering and styling. Geometry access through the
+     * API is limited to getting the type and extent of the geometry.
+     * @param type Geometry type.
+     * @param flatCoordinates Flat coordinates. These always need
+     * to be right-handed for polygons.
+     * @param ends Ends or Endss.
+     * @param properties Properties.
+     */
     constructor(
-      type: ol.geom.geom$GeometryType,
+      type: ol.geom.GeometryType,
       flatCoordinates: number[],
       ends: number[] | number[][],
       properties: {
@@ -8124,7 +8229,7 @@ to be right-handed for polygons.
      * @return Extent.
      * @api
      */
-    getExtent(): ol.interaction$Extent;
+    getExtent(): ol.Extent;
 
     /**
      * Get the feature for working with its geometry.
@@ -8147,7 +8252,7 @@ to be right-handed for polygons.
      * @return Geometry type.
      * @api
      */
-    getType(): ol.geom.geom$GeometryType;
+    getType(): ol.geom.GeometryType;
   }
 
   /**
@@ -8187,8 +8292,8 @@ to be right-handed for polygons.
    */
   declare function render$toContext(
     context: CanvasRenderingContext2D,
-    opt_options?: olx$render.render$ToContextOptions
-  ): canvas$canvas$Immediate;
+    opt_options?: olx$render$ToContextOptions
+  ): render$canvas$Immediate;
 
   /**
    * Available renderers: `'canvas'`, `'dom'` or `'webgl'`.
@@ -8200,18 +8305,52 @@ to be right-handed for polygons.
    */
   declare export type RasterOperationType = "pixel" | "image";
 
+  declare var npm$namespace$source: {
+    BingMaps: typeof source$BingMaps,
+    CartoDB: typeof source$CartoDB,
+    Cluster: typeof source$Cluster,
+    Image: typeof source$Image,
+    ImageEvent: typeof source$ImageEvent,
+    ImageArcGISRest: typeof source$ImageArcGISRest,
+    ImageCanvas: typeof source$ImageCanvas,
+    ImageMapGuide: typeof source$ImageMapGuide,
+    ImageStatic: typeof source$ImageStatic,
+    ImageVector: typeof source$ImageVector,
+    ImageWMS: typeof source$ImageWMS,
+    OSM: typeof source$OSM,
+    Raster: typeof source$Raster,
+    RasterEvent: typeof source$RasterEvent,
+    Source: typeof source$Source,
+    Stamen: typeof source$Stamen,
+    Tile: typeof source$Tile,
+    TileEvent: typeof source$TileEvent,
+    TileArcGISRest: typeof source$TileArcGISRest,
+    TileDebug: typeof source$TileDebug,
+    TileImage: typeof source$TileImage,
+    TileJSON: typeof source$TileJSON,
+    TileUTFGrid: typeof source$TileUTFGrid,
+    TileWMS: typeof source$TileWMS,
+    UrlTile: typeof source$UrlTile,
+    Vector: typeof source$Vector,
+    VectorEvent: typeof source$VectorEvent,
+    VectorTile: typeof source$VectorTile,
+    WMTS: typeof source$WMTS,
+    XYZ: typeof source$XYZ,
+    Zoomify: typeof source$Zoomify
+  };
+
   /**
    * @classdesc Layer source for Bing Maps tile data.
    * @param options Bing Maps options.
    * @api stable
    */
-  declare class source$BingMaps mixins source$TileImage {
+  declare class source$BingMaps mixins TileImage {
     /**
      * @classdesc Layer source for Bing Maps tile data.
      * @param options Bing Maps options.
      * @api stable
      */
-    constructor(options: olx$source.source$BingMapsOptions): this;
+    constructor(options: olx$source$BingMapsOptions): this;
 
     /**
      * The attribution containing a link to the Microsoft® Bing™ Maps Platform APIs’
@@ -8219,7 +8358,7 @@ to be right-handed for polygons.
      * @const
      * @api
      */
-    static TOS_ATTRIBUTION: ol.control$Attribution;
+    static TOS_ATTRIBUTION: ol.Attribution;
   }
 
   /**
@@ -8227,13 +8366,13 @@ to be right-handed for polygons.
    * @param options CartoDB options.
    * @api
    */
-  declare class source$CartoDB mixins source$XYZ {
+  declare class source$CartoDB mixins XYZ {
     /**
      * @classdesc Layer source for the CartoDB tiles.
      * @param options CartoDB options.
      * @api
      */
-    constructor(options: olx$source.source$CartoDBOptions): this;
+    constructor(options: olx$source$CartoDBOptions): this;
 
     /**
      * Returns the current config.
@@ -8243,39 +8382,39 @@ to be right-handed for polygons.
     getConfig(): GlobalObject;
 
     /**
- * Updates the carto db config.
- * @param config a key-value lookup. Values will replace current values
-in the config.
- * @api
- */
+     * Updates the carto db config.
+     * @param config a key-value lookup. Values will replace current values
+     * in the config.
+     * @api
+     */
     updateConfig(config: GlobalObject): void;
 
     /**
- * Sets the CartoDB config
- * @param config In the case of anonymous maps, a CartoDB configuration
-object.
-If using named maps, a key-value lookup with the template parameters.
- * @api
- */
+     * Sets the CartoDB config
+     * @param config In the case of anonymous maps, a CartoDB configuration
+     * object.
+     * If using named maps, a key-value lookup with the template parameters.
+     * @api
+     */
     setConfig(config: GlobalObject): void;
   }
 
   /**
- * @classdesc Layer source to cluster vector data. Works out of the box with point
-geometries. For other geometry types, or if not all geometries should be
-considered for clustering, a custom `geometryFunction` can be defined.
- * @param options Constructor options.
- * @api
- */
-  declare class source$Cluster mixins layer$Vector {
+   * @classdesc Layer source to cluster vector data. Works out of the box with point
+   * geometries. For other geometry types, or if not all geometries should be
+   * considered for clustering, a custom `geometryFunction` can be defined.
+   * @param options Constructor options.
+   * @api
+   */
+  declare class source$Cluster mixins Vector {
     /**
- * @classdesc Layer source to cluster vector data. Works out of the box with point
-geometries. For other geometry types, or if not all geometries should be
-considered for clustering, a custom `geometryFunction` can be defined.
- * @param options Constructor options.
- * @api
- */
-    constructor(options: olx$source.source$ClusterOptions): this;
+     * @classdesc Layer source to cluster vector data. Works out of the box with point
+     * geometries. For other geometry types, or if not all geometries should be
+     * considered for clustering, a custom `geometryFunction` can be defined.
+     * @param options Constructor options.
+     * @api
+     */
+    constructor(options: olx$source$ClusterOptions): this;
 
     /**
      * Get a reference to the wrapped source.
@@ -8300,69 +8439,69 @@ considered for clustering, a custom `geometryFunction` can be defined.
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for sources providing a single image.
- * @param options Single image source options.
- * @api
- */
-  declare class source$Image mixins source$Source {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for sources providing a single image.
+   * @param options Single image source options.
+   * @api
+   */
+  declare class source$Image mixins Source {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for sources providing a single image.
- * @param options Single image source options.
- * @api
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for sources providing a single image.
+     * @param options Single image source options.
+     * @api
+     */
     constructor(options: ol.SourceImageOptions): this;
   }
 
   /**
- * @classdesc Events emitted by {@link ol.source.Image} instances are instances of this
-type.
- * @param type Type.
- * @param image The image.
- */
-  declare class source$ImageEvent mixins events$render$Event {
+   * @classdesc Events emitted by {@link ol.source.Image} instances are instances of this
+   * type.
+   * @param type Type.
+   * @param image The image.
+   */
+  declare class source$ImageEvent mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.source.Image} instances are instances of this
-type.
- * @param type Type.
- * @param image The image.
- */
-    constructor(type: string, image: ol.source$Image): this;
+     * @classdesc Events emitted by {@link ol.source.Image} instances are instances of this
+     * type.
+     * @param type Type.
+     * @param image The image.
+     */
+    constructor(type: string, image: ol.Image): this;
 
     /**
      * The image related to the event.
      * @api
      */
-    image: ol.source$Image;
+    image: ol.Image;
   }
 
   /**
- * @classdesc Source for data from ArcGIS Rest services providing single, untiled images.
-Useful when underlying map service has labels.
-
-If underlying map service is not using labels,
-take advantage of ol image caching and use
-{@link ol.source.TileArcGISRest} data source.
- * @fires ol.source.ImageEvent
- * @param opt_options Image ArcGIS Rest Options.
- * @api
- */
-  declare class source$ImageArcGISRest mixins source$Image {
+   * @classdesc Source for data from ArcGIS Rest services providing single, untiled images.
+   * Useful when underlying map service has labels.
+   *
+   * If underlying map service is not using labels,
+   * take advantage of ol image caching and use
+   * {@link ol.source.TileArcGISRest} data source.
+   * @fires ol.source.ImageEvent
+   * @param opt_options Image ArcGIS Rest Options.
+   * @api
+   */
+  declare class source$ImageArcGISRest mixins Image {
     /**
- * @classdesc Source for data from ArcGIS Rest services providing single, untiled images.
-Useful when underlying map service has labels.
-
-If underlying map service is not using labels,
-take advantage of ol image caching and use
-{@link ol.source.TileArcGISRest} data source.
- * @fires ol.source.ImageEvent
- * @param opt_options Image ArcGIS Rest Options.
- * @api
- */
-    constructor(opt_options?: olx$source.source$ImageArcGISRestOptions): this;
+     * @classdesc Source for data from ArcGIS Rest services providing single, untiled images.
+     * Useful when underlying map service has labels.
+     *
+     * If underlying map service is not using labels,
+     * take advantage of ol image caching and use
+     * {@link ol.source.TileArcGISRest} data source.
+     * @fires ol.source.ImageEvent
+     * @param opt_options Image ArcGIS Rest Options.
+     * @api
+     */
+    constructor(opt_options?: olx$source$ImageArcGISRestOptions): this;
 
     /**
      * Get the user-provided params, i.e. those passed to the constructor through
@@ -8413,13 +8552,13 @@ take advantage of ol image caching and use
    * @param options Constructor options.
    * @api
    */
-  declare class source$ImageCanvas mixins source$Image {
+  declare class source$ImageCanvas mixins Image {
     /**
      * @classdesc Base class for image sources where a canvas element is the image.
      * @param options Constructor options.
      * @api
      */
-    constructor(options: olx$source.source$ImageCanvasOptions): this;
+    constructor(options: olx$source$ImageCanvasOptions): this;
   }
 
   /**
@@ -8428,14 +8567,14 @@ take advantage of ol image caching and use
    * @param options Options.
    * @api stable
    */
-  declare class source$ImageMapGuide mixins source$Image {
+  declare class source$ImageMapGuide mixins Image {
     /**
      * @classdesc Source for images from Mapguide servers
      * @fires ol.source.ImageEvent
      * @param options Options.
      * @api stable
      */
-    constructor(options: olx$source.source$ImageMapGuideOptions): this;
+    constructor(options: olx$source$ImageMapGuideOptions): this;
 
     /**
      * Get the user-provided params, i.e. those passed to the constructor through
@@ -8472,43 +8611,43 @@ take advantage of ol image caching and use
    * @param options Options.
    * @api stable
    */
-  declare class source$ImageStatic mixins source$Image {
+  declare class source$ImageStatic mixins Image {
     /**
      * @classdesc A layer source for displaying a single, static image.
      * @param options Options.
      * @api stable
      */
-    constructor(options: olx$source.source$ImageStaticOptions): this;
+    constructor(options: olx$source$ImageStaticOptions): this;
   }
 
   /**
- * @classdesc An image source whose images are canvas elements into which vector features
-read from a vector source (`ol.source.Vector`) are drawn. An
-`ol.source.ImageVector` object is to be used as the `source` of an image
-layer (`ol.layer.Image`). Image layers are rotated, scaled, and translated,
-as opposed to being re-rendered, during animations and interactions. So, like
-any other image layer, an image layer configured with an
-`ol.source.ImageVector` will exhibit this behaviour. This is in contrast to a
-vector layer, where vector features are re-drawn during animations and
-interactions.
- * @param options Options.
- * @api
- */
-  declare class source$ImageVector mixins source$ImageCanvas {
+   * @classdesc An image source whose images are canvas elements into which vector features
+   * read from a vector source (`ol.source.Vector`) are drawn. An
+   * `ol.source.ImageVector` object is to be used as the `source` of an image
+   * layer (`ol.layer.Image`). Image layers are rotated, scaled, and translated,
+   * as opposed to being re-rendered, during animations and interactions. So, like
+   * any other image layer, an image layer configured with an
+   * `ol.source.ImageVector` will exhibit this behaviour. This is in contrast to a
+   * vector layer, where vector features are re-drawn during animations and
+   * interactions.
+   * @param options Options.
+   * @api
+   */
+  declare class source$ImageVector mixins ImageCanvas {
     /**
- * @classdesc An image source whose images are canvas elements into which vector features
-read from a vector source (`ol.source.Vector`) are drawn. An
-`ol.source.ImageVector` object is to be used as the `source` of an image
-layer (`ol.layer.Image`). Image layers are rotated, scaled, and translated,
-as opposed to being re-rendered, during animations and interactions. So, like
-any other image layer, an image layer configured with an
-`ol.source.ImageVector` will exhibit this behaviour. This is in contrast to a
-vector layer, where vector features are re-drawn during animations and
-interactions.
- * @param options Options.
- * @api
- */
-    constructor(options: olx$source.source$ImageVectorOptions): this;
+     * @classdesc An image source whose images are canvas elements into which vector features
+     * read from a vector source (`ol.source.Vector`) are drawn. An
+     * `ol.source.ImageVector` object is to be used as the `source` of an image
+     * layer (`ol.layer.Image`). Image layers are rotated, scaled, and translated,
+     * as opposed to being re-rendered, during animations and interactions. So, like
+     * any other image layer, an image layer configured with an
+     * `ol.source.ImageVector` will exhibit this behaviour. This is in contrast to a
+     * vector layer, where vector features are re-drawn during animations and
+     * interactions.
+     * @param options Options.
+     * @api
+     */
+    constructor(options: olx$source$ImageVectorOptions): this;
 
     /**
      * Get a reference to the wrapped source.
@@ -8523,10 +8662,7 @@ interactions.
      * @return Layer style.
      * @api stable
      */
-    getStyle():
-      | ol.style.style$Style
-      | ol.style.style$Style[]
-      | ol.StyleFunction;
+    getStyle(): ol.style.Style | ol.style.Style[] | ol.StyleFunction;
 
     /**
      * Get the style function.
@@ -8546,12 +8682,7 @@ interactions.
      * @api stable
      */
     setStyle(
-      style:
-        | ol.style.style$Style
-        | ol.style.style$Style[]
-        | ol.StyleFunction
-        | null
-        | void
+      style: ol.style.Style | ol.style.Style[] | ol.StyleFunction | null | void
     ): void;
   }
 
@@ -8561,29 +8692,29 @@ interactions.
    * @param opt_options Options.
    * @api stable
    */
-  declare class source$ImageWMS mixins source$Image {
+  declare class source$ImageWMS mixins Image {
     /**
      * @classdesc Source for WMS servers providing single, untiled images.
      * @fires ol.source.ImageEvent
      * @param opt_options Options.
      * @api stable
      */
-    constructor(opt_options?: olx$source.source$ImageWMSOptions): this;
+    constructor(opt_options?: olx$source$ImageWMSOptions): this;
 
     /**
- * Return the GetFeatureInfo URL for the passed coordinate, resolution, and
- * projection. Return `undefined` if the GetFeatureInfo URL cannot be
- * constructed.
- * @param coordinate Coordinate.
- * @param resolution Resolution.
- * @param projection Projection.
- * @param params GetFeatureInfo params. `INFO_FORMAT` at least should
-be provided. If `QUERY_LAYERS` is not provided then the layers specified
-in the `LAYERS` parameter will be used. `VERSION` should not be
-specified here.
- * @return GetFeatureInfo URL.
- * @api stable
- */
+     * Return the GetFeatureInfo URL for the passed coordinate, resolution, and
+     * projection. Return `undefined` if the GetFeatureInfo URL cannot be
+     * constructed.
+     * @param coordinate Coordinate.
+     * @param resolution Resolution.
+     * @param projection Projection.
+     * @param params GetFeatureInfo params. `INFO_FORMAT` at least should
+     * be provided. If `QUERY_LAYERS` is not provided then the layers specified
+     * in the `LAYERS` parameter will be used. `VERSION` should not be
+     * specified here.
+     * @return GetFeatureInfo URL.
+     * @api stable
+     */
     getGetFeatureInfoUrl(
       coordinate: ol.Coordinate,
       resolution: number,
@@ -8640,13 +8771,13 @@ specified here.
    * @param opt_options Open Street Map options.
    * @api stable
    */
-  declare class source$OSM mixins source$XYZ {
+  declare class source$OSM mixins XYZ {
     /**
      * @classdesc Layer source for the OpenStreetMap tile server.
      * @param opt_options Open Street Map options.
      * @api stable
      */
-    constructor(opt_options?: olx$source.source$OSMOptions): this;
+    constructor(opt_options?: olx$source$OSMOptions): this;
 
     /**
      * The attribution containing a link to the OpenStreetMap Copyright and License
@@ -8654,56 +8785,56 @@ specified here.
      * @const
      * @api
      */
-    static ATTRIBUTION: ol.control$Attribution;
+    static ATTRIBUTION: ol.Attribution;
   }
 
   /**
- * @classdesc A source that transforms data from any number of input sources using an array
-of {@link ol.RasterOperation} functions to transform input pixel values into
-output pixel values.
- * @fires ol.source.RasterEvent
- * @param options Options.
- * @api
- */
-  declare class source$Raster mixins source$Image {
+   * @classdesc A source that transforms data from any number of input sources using an array
+   * of {@link ol.RasterOperation} functions to transform input pixel values into
+   * output pixel values.
+   * @fires ol.source.RasterEvent
+   * @param options Options.
+   * @api
+   */
+  declare class source$Raster mixins Image {
     /**
- * @classdesc A source that transforms data from any number of input sources using an array
-of {@link ol.RasterOperation} functions to transform input pixel values into
-output pixel values.
- * @fires ol.source.RasterEvent
- * @param options Options.
- * @api
- */
-    constructor(options: olx$source.source$RasterOptions): this;
+     * @classdesc A source that transforms data from any number of input sources using an array
+     * of {@link ol.RasterOperation} functions to transform input pixel values into
+     * output pixel values.
+     * @fires ol.source.RasterEvent
+     * @param options Options.
+     * @api
+     */
+    constructor(options: olx$source$RasterOptions): this;
 
     /**
- * Set the operation.
- * @param operation New operation.
- * @param opt_lib Functions that will be available to operations run
-in a worker.
- * @api
- */
+     * Set the operation.
+     * @param operation New operation.
+     * @param opt_lib Functions that will be available to operations run
+     * in a worker.
+     * @api
+     */
     setOperation(operation: ol.RasterOperation, opt_lib?: GlobalObject): void;
   }
 
   /**
- * @classdesc Events emitted by {@link ol.source.Raster} instances are instances of this
-type.
- * @param type Type.
- * @param frameState The frame state.
- * @param data An object made available to operations.
- */
-  declare class source$RasterEvent mixins events$render$Event {
+   * @classdesc Events emitted by {@link ol.source.Raster} instances are instances of this
+   * type.
+   * @param type Type.
+   * @param frameState The frame state.
+   * @param data An object made available to operations.
+   */
+  declare class source$RasterEvent mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.source.Raster} instances are instances of this
-type.
- * @param type Type.
- * @param frameState The frame state.
- * @param data An object made available to operations.
- */
+     * @classdesc Events emitted by {@link ol.source.Raster} instances are instances of this
+     * type.
+     * @param type Type.
+     * @param frameState The frame state.
+     * @param data An object made available to operations.
+     */
     constructor(
       type: string,
-      frameState: olx$olx$FrameState,
+      frameState: olx$FrameState,
       data: GlobalObject
     ): this;
 
@@ -8711,7 +8842,7 @@ type.
      * The raster extent.
      * @api
      */
-    extent: ol.interaction$Extent;
+    extent: ol.Extent;
 
     /**
      * The pixel resolution (map units per pixel).
@@ -8733,24 +8864,24 @@ type.
   declare type source$State = "undefined" | "loading" | "ready" | "error";
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for {@link ol.layer.Layer} sources.
-
-A generic `change` event is triggered when the state of the source changes.
- * @param options Source options.
- * @api stable
- */
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for {@link ol.layer.Layer} sources.
+   *
+   * A generic `change` event is triggered when the state of the source changes.
+   * @param options Source options.
+   * @api stable
+   */
   declare class source$Source mixins Object {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for {@link ol.layer.Layer} sources.
-
-A generic `change` event is triggered when the state of the source changes.
- * @param options Source options.
- * @api stable
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for {@link ol.layer.Layer} sources.
+     *
+     * A generic `change` event is triggered when the state of the source changes.
+     * @param options Source options.
+     * @api stable
+     */
     constructor(options: ol.SourceSourceOptions): this;
 
     /**
@@ -8758,21 +8889,21 @@ A generic `change` event is triggered when the state of the source changes.
      * @return Attributions.
      * @api stable
      */
-    getAttributions(): ol.control$Attribution[];
+    getAttributions(): ol.Attribution[];
 
     /**
      * Get the logo of the source.
      * @return Logo.
      * @api stable
      */
-    getLogo(): string | olx$olx$LogoOptions;
+    getLogo(): string | olx$LogoOptions;
 
     /**
      * Get the projection of the source.
      * @return Projection.
      * @api
      */
-    getProjection(): ol.proj.proj$Projection;
+    getProjection(): ol.proj.Projection;
 
     /**
      * Get the state of the source, see {@link ol.source.State} for possible states.
@@ -8788,12 +8919,12 @@ A generic `change` event is triggered when the state of the source changes.
     refresh(): void;
 
     /**
- * Set the attributions of the source.
- * @param attributions Attributions.
-Can be passed as `string`, `Array<string>`, `{@link ol.Attribution}`,
-`Array<{@link ol.Attribution}>` or `undefined`.
- * @api
- */
+     * Set the attributions of the source.
+     * @param attributions Attributions.
+     * Can be passed as `string`, `Array<string>`, `{@link ol.Attribution}`,
+     * `Array<{@link ol.Attribution}>` or `undefined`.
+     * @api
+     */
     setAttributions(attributions: ol.AttributionLike): void;
   }
 
@@ -8802,30 +8933,30 @@ Can be passed as `string`, `Array<string>`, `{@link ol.Attribution}`,
    * @param options Stamen options.
    * @api stable
    */
-  declare class source$Stamen mixins source$XYZ {
+  declare class source$Stamen mixins XYZ {
     /**
      * @classdesc Layer source for the Stamen tile server.
      * @param options Stamen options.
      * @api stable
      */
-    constructor(options: olx$source.source$StamenOptions): this;
+    constructor(options: olx$source$StamenOptions): this;
   }
 
   /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for sources providing images divided into a tile grid.
- * @param options Tile source options.
- * @api
- */
-  declare class source$Tile mixins source$Source {
+   * @classdesc Abstract base class; normally only used for creating subclasses and not
+   * instantiated in apps.
+   * Base class for sources providing images divided into a tile grid.
+   * @param options Tile source options.
+   * @api
+   */
+  declare class source$Tile mixins Source {
     /**
- * @classdesc Abstract base class; normally only used for creating subclasses and not
-instantiated in apps.
-Base class for sources providing images divided into a tile grid.
- * @param options Tile source options.
- * @api
- */
+     * @classdesc Abstract base class; normally only used for creating subclasses and not
+     * instantiated in apps.
+     * Base class for sources providing images divided into a tile grid.
+     * @param options Tile source options.
+     * @api
+     */
     constructor(options: ol.SourceTileOptions): this;
 
     /**
@@ -8833,53 +8964,53 @@ Base class for sources providing images divided into a tile grid.
      * @return Tile grid.
      * @api stable
      */
-    getTileGrid(): ol.tilegrid.tilegrid$TileGrid;
+    getTileGrid(): ol.tilegrid.TileGrid;
   }
 
   /**
- * @classdesc Events emitted by {@link ol.source.Tile} instances are instances of this
-type.
- * @param type Type.
- * @param tile The tile.
- */
-  declare class source$TileEvent mixins events$render$Event {
+   * @classdesc Events emitted by {@link ol.source.Tile} instances are instances of this
+   * type.
+   * @param type Type.
+   * @param tile The tile.
+   */
+  declare class source$TileEvent mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.source.Tile} instances are instances of this
-type.
- * @param type Type.
- * @param tile The tile.
- */
-    constructor(type: string, loadingstrategy$tile: ol.source$Tile): this;
+     * @classdesc Events emitted by {@link ol.source.Tile} instances are instances of this
+     * type.
+     * @param type Type.
+     * @param tile The tile.
+     */
+    constructor(type: string, tile: ol.Tile): this;
 
     /**
      * The tile related to the event.
      * @api
      */
-    loadingstrategy$tile: ol.source$Tile;
+    loadingstrategy$tile: ol.Tile;
   }
 
   /**
- * @classdesc Layer source for tile data from ArcGIS Rest services. Map and Image
-Services are supported.
-
-For cached ArcGIS services, better performance is available using the
-{@link ol.source.XYZ} data source.
- * @param opt_options Tile ArcGIS Rest
-options.
- * @api
- */
-  declare class source$TileArcGISRest mixins source$TileImage {
+   * @classdesc Layer source for tile data from ArcGIS Rest services. Map and Image
+   * Services are supported.
+   *
+   * For cached ArcGIS services, better performance is available using the
+   * {@link ol.source.XYZ} data source.
+   * @param opt_options Tile ArcGIS Rest
+   * options.
+   * @api
+   */
+  declare class source$TileArcGISRest mixins TileImage {
     /**
- * @classdesc Layer source for tile data from ArcGIS Rest services. Map and Image
-Services are supported.
-
-For cached ArcGIS services, better performance is available using the
-{@link ol.source.XYZ} data source.
- * @param opt_options Tile ArcGIS Rest
-options.
- * @api
- */
-    constructor(opt_options?: olx$source.source$TileArcGISRestOptions): this;
+     * @classdesc Layer source for tile data from ArcGIS Rest services. Map and Image
+     * Services are supported.
+     *
+     * For cached ArcGIS services, better performance is available using the
+     * {@link ol.source.XYZ} data source.
+     * @param opt_options Tile ArcGIS Rest
+     * options.
+     * @api
+     */
+    constructor(opt_options?: olx$source$TileArcGISRestOptions): this;
 
     /**
      * Get the user-provided params, i.e. those passed to the constructor through
@@ -8898,25 +9029,25 @@ options.
   }
 
   /**
- * @classdesc A pseudo tile source, which does not fetch tiles from a server, but renders
-a grid outline for the tile grid/projection along with the coordinates for
-each tile. See examples/canvas-tiles for an example.
-
-Uses Canvas context2d, so requires Canvas support.
- * @param options Debug tile options.
- * @api
- */
-  declare class source$TileDebug mixins source$Tile {
+   * @classdesc A pseudo tile source, which does not fetch tiles from a server, but renders
+   * a grid outline for the tile grid/projection along with the coordinates for
+   * each tile. See examples/canvas-tiles for an example.
+   *
+   * Uses Canvas context2d, so requires Canvas support.
+   * @param options Debug tile options.
+   * @api
+   */
+  declare class source$TileDebug mixins Tile {
     /**
- * @classdesc A pseudo tile source, which does not fetch tiles from a server, but renders
-a grid outline for the tile grid/projection along with the coordinates for
-each tile. See examples/canvas-tiles for an example.
-
-Uses Canvas context2d, so requires Canvas support.
- * @param options Debug tile options.
- * @api
- */
-    constructor(options: olx$source.source$TileDebugOptions): this;
+     * @classdesc A pseudo tile source, which does not fetch tiles from a server, but renders
+     * a grid outline for the tile grid/projection along with the coordinates for
+     * each tile. See examples/canvas-tiles for an example.
+     *
+     * Uses Canvas context2d, so requires Canvas support.
+     * @param options Debug tile options.
+     * @api
+     */
+    constructor(options: olx$source$TileDebugOptions): this;
   }
 
   /**
@@ -8925,14 +9056,14 @@ Uses Canvas context2d, so requires Canvas support.
    * @param options Image tile options.
    * @api
    */
-  declare class source$TileImage mixins source$UrlTile {
+  declare class source$TileImage mixins UrlTile {
     /**
      * @classdesc Base class for sources providing images divided into a tile grid.
      * @fires ol.source.TileEvent
      * @param options Image tile options.
      * @api
      */
-    constructor(options: olx$source.source$TileImageOptions): this;
+    constructor(options: olx$source$TileImageOptions): this;
 
     /**
      * Sets whether to render reprojection edges or not (usually for debugging).
@@ -8954,7 +9085,7 @@ Uses Canvas context2d, so requires Canvas support.
      */
     setTileGridForProjection(
       projection: ol.ProjectionLike,
-      tilegrid: ol.tilegrid.tilegrid$TileGrid
+      tilegrid: ol.tilegrid.TileGrid
     ): void;
   }
 
@@ -8963,13 +9094,13 @@ Uses Canvas context2d, so requires Canvas support.
    * @param options TileJSON options.
    * @api stable
    */
-  declare class source$TileJSON mixins source$TileImage {
+  declare class source$TileJSON mixins TileImage {
     /**
      * @classdesc Layer source for tile data in TileJSON format.
      * @param options TileJSON options.
      * @api stable
      */
-    constructor(options: olx$source.source$TileJSONOptions): this;
+    constructor(options: olx$source$TileJSONOptions): this;
 
     /**
      * @return The tilejson object.
@@ -8983,13 +9114,13 @@ Uses Canvas context2d, so requires Canvas support.
    * @param options Source options.
    * @api
    */
-  declare class source$TileUTFGrid mixins source$Tile {
+  declare class source$TileUTFGrid mixins Tile {
     /**
      * @classdesc Layer source for UTFGrid interaction data loaded from TileJSON format.
      * @param options Source options.
      * @api
      */
-    constructor(options: olx$source.source$TileUTFGridOptions): this;
+    constructor(options: olx$source$TileUTFGridOptions): this;
 
     /**
      * Return the template from TileJSON.
@@ -8999,18 +9130,18 @@ Uses Canvas context2d, so requires Canvas support.
     getTemplate(): string;
 
     /**
- * Calls the callback (synchronously by default) with the available data
- * for given coordinate and resolution (or `null` if not yet loaded or
- * in case of an error).
- * @param coordinate Coordinate.
- * @param resolution Resolution.
- * @param callback Callback.
- * @param opt_this The object to use as `this` in the callback.
- * @param opt_request If `true` the callback is always async.
-        The tile data is requested if not yet loaded.
- * @template
- * @api
- */
+     * Calls the callback (synchronously by default) with the available data
+     * for given coordinate and resolution (or `null` if not yet loaded or
+     * in case of an error).
+     * @param coordinate Coordinate.
+     * @param resolution Resolution.
+     * @param callback Callback.
+     * @param opt_this The object to use as `this` in the callback.
+     * @param opt_request If `true` the callback is always async.
+     *         The tile data is requested if not yet loaded.
+     * @template
+     * @api
+     */
     forDataAtCoordinateAndResolution(
       coordinate: ol.Coordinate,
       resolution: number,
@@ -9025,28 +9156,28 @@ Uses Canvas context2d, so requires Canvas support.
    * @param opt_options Tile WMS options.
    * @api stable
    */
-  declare class source$TileWMS mixins source$TileImage {
+  declare class source$TileWMS mixins TileImage {
     /**
      * @classdesc Layer source for tile data from WMS servers.
      * @param opt_options Tile WMS options.
      * @api stable
      */
-    constructor(opt_options?: olx$source.source$TileWMSOptions): this;
+    constructor(opt_options?: olx$source$TileWMSOptions): this;
 
     /**
- * Return the GetFeatureInfo URL for the passed coordinate, resolution, and
- * projection. Return `undefined` if the GetFeatureInfo URL cannot be
- * constructed.
- * @param coordinate Coordinate.
- * @param resolution Resolution.
- * @param projection Projection.
- * @param params GetFeatureInfo params. `INFO_FORMAT` at least should
-be provided. If `QUERY_LAYERS` is not provided then the layers specified
-in the `LAYERS` parameter will be used. `VERSION` should not be
-specified here.
- * @return GetFeatureInfo URL.
- * @api stable
- */
+     * Return the GetFeatureInfo URL for the passed coordinate, resolution, and
+     * projection. Return `undefined` if the GetFeatureInfo URL cannot be
+     * constructed.
+     * @param coordinate Coordinate.
+     * @param resolution Resolution.
+     * @param projection Projection.
+     * @param params GetFeatureInfo params. `INFO_FORMAT` at least should
+     * be provided. If `QUERY_LAYERS` is not provided then the layers specified
+     * in the `LAYERS` parameter will be used. `VERSION` should not be
+     * specified here.
+     * @return GetFeatureInfo URL.
+     * @api stable
+     */
     getGetFeatureInfoUrl(
       coordinate: ol.Coordinate,
       resolution: number,
@@ -9075,7 +9206,7 @@ specified here.
    * @fires ol.source.TileEvent
    * @param options Image tile options.
    */
-  declare class source$UrlTile mixins source$Tile {
+  declare class source$UrlTile mixins Tile {
     /**
      * @classdesc Base class for sources providing tiles divided into a tile grid over http.
      * @fires ol.source.TileEvent
@@ -9140,23 +9271,23 @@ specified here.
   }
 
   /**
- * @classdesc Provides a source of features for vector layers. Vector features provided
-by this source are suitable for editing. See {@link ol.source.VectorTile} for
-vector data that is optimized for rendering.
- * @fires ol.source.VectorEvent
- * @param opt_options Vector source options.
- * @api stable
- */
-  declare class source$Vector mixins source$Source {
+   * @classdesc Provides a source of features for vector layers. Vector features provided
+   * by this source are suitable for editing. See {@link ol.source.VectorTile} for
+   * vector data that is optimized for rendering.
+   * @fires ol.source.VectorEvent
+   * @param opt_options Vector source options.
+   * @api stable
+   */
+  declare class source$Vector mixins Source {
     /**
- * @classdesc Provides a source of features for vector layers. Vector features provided
-by this source are suitable for editing. See {@link ol.source.VectorTile} for
-vector data that is optimized for rendering.
- * @fires ol.source.VectorEvent
- * @param opt_options Vector source options.
- * @api stable
- */
-    constructor(opt_options?: olx$source.source$VectorOptions): this;
+     * @classdesc Provides a source of features for vector layers. Vector features provided
+     * by this source are suitable for editing. See {@link ol.source.VectorTile} for
+     * vector data that is optimized for rendering.
+     * @fires ol.source.VectorEvent
+     * @param opt_options Vector source options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$source$VectorOptions): this;
 
     /**
      * Add a single feature to the source.  If you want to add a batch of features
@@ -9165,14 +9296,14 @@ vector data that is optimized for rendering.
      * @param feature Feature to add.
      * @api stable
      */
-    addFeature(feature: ol.render$Feature): void;
+    addFeature(feature: ol.Feature): void;
 
     /**
      * Add a batch of features to the source.
      * @param features Features to add.
      * @api stable
      */
-    addFeatures(features: ol.render$Feature[]): void;
+    addFeatures(features: ol.Feature[]): void;
 
     /**
      * Remove all features from the source.
@@ -9182,66 +9313,63 @@ vector data that is optimized for rendering.
     clear(opt_fast?: boolean): void;
 
     /**
- * Iterate through all features on the source, calling the provided callback
- * with each one.  If the callback returns any "truthy" value, iteration will
- * stop and the function will return the same value.
- * @param callback Called with each feature
-on the source.  Return a truthy value to stop iteration.
- * @param opt_this The object to use as `this` in the callback.
- * @return The return value from the last call to the callback.
- * @template
- * @api stable
- */
-    forEachFeature<S>(
-      callback: (feature: ol.render$Feature) => S,
-      opt_this?: any
-    ): S;
+     * Iterate through all features on the source, calling the provided callback
+     * with each one.  If the callback returns any "truthy" value, iteration will
+     * stop and the function will return the same value.
+     * @param callback Called with each feature
+     * on the source.  Return a truthy value to stop iteration.
+     * @param opt_this The object to use as `this` in the callback.
+     * @return The return value from the last call to the callback.
+     * @template
+     * @api stable
+     */
+    forEachFeature<S>(callback: (feature: ol.Feature) => S, opt_this?: any): S;
 
     /**
- * Iterate through all features whose bounding box intersects the provided
- * extent (note that the feature's geometry may not intersect the extent),
- * calling the callback with each feature.  If the callback returns a "truthy"
- * value, iteration will stop and the function will return the same value.
- * 
- * If you are interested in features whose geometry intersects an extent, call
- * the {@link ol.source.Vector#forEachFeatureIntersectingExtent
- * source.forEachFeatureIntersectingExtent()} method instead.
- * 
- * When `useSpatialIndex` is set to false, this method will loop through all
- * features, equivalent to {@link ol.source.Vector#forEachFeature}.
- * @param extent Extent.
- * @param callback Called with each feature
-whose bounding box intersects the provided extent.
- * @param opt_this The object to use as `this` in the callback.
- * @return The return value from the last call to the callback.
- * @template
- * @api
- */
+     * Iterate through all features whose bounding box intersects the provided
+     * extent (note that the feature's geometry may not intersect the extent),
+     * calling the callback with each feature.  If the callback returns a "truthy"
+     * value, iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call
+     * the {@link ol.source.Vector#forEachFeatureIntersectingExtent
+     * source.forEachFeatureIntersectingExtent()} method instead.
+     *
+     * When `useSpatialIndex` is set to false, this method will loop through all
+     * features, equivalent to {@link ol.source.Vector#forEachFeature}.
+     * @param extent Extent.
+     * @param callback Called with each feature
+     * whose bounding box intersects the provided extent.
+     * @param opt_this The object to use as `this` in the callback.
+     * @return The return value from the last call to the callback.
+     * @template
+     * @api
+     */
     forEachFeatureInExtent<S>(
-      extent: ol.interaction$Extent,
-      callback: (feature: ol.render$Feature) => S,
+      extent: ol.Extent,
+      callback: (feature: ol.Feature) => S,
       opt_this?: any
     ): S;
 
     /**
- * Iterate through all features whose geometry intersects the provided extent,
- * calling the callback with each feature.  If the callback returns a "truthy"
- * value, iteration will stop and the function will return the same value.
- * 
- * If you only want to test for bounding box intersection, call the
- * {@link ol.source.Vector#forEachFeatureInExtent
- * source.forEachFeatureInExtent()} method instead.
- * @param extent Extent.
- * @param callback Called with each feature
-whose geometry intersects the provided extent.
- * @param opt_this The object to use as `this` in the callback.
- * @return The return value from the last call to the callback.
- * @template
- * @api
- */
+     * Iterate through all features whose geometry intersects the provided extent,
+     * calling the callback with each feature.  If the callback returns a "truthy"
+     * value, iteration will stop and the function will return the same value.
+     *
+     * If you only want to test for bounding box intersection, call the
+     * {@link ol.source.Vector#forEachFeatureInExtent
+     * source.forEachFeatureInExtent()} method instead.
+     * @param extent Extent.
+     * @param callback Called with each feature
+     * whose geometry intersects the provided extent.
+     * @param opt_this The object to use as `this` in the callback.
+     * @return The return value from the last call to the callback.
+     * @template
+     * @api
+     */
     forEachFeatureIntersectingExtent<S>(
-      extent: ol.interaction$Extent,
-      callback: (feature: ol.render$Feature) => S,
+      extent: ol.Extent,
+      callback: (feature: ol.Feature) => S,
       opt_this?: any
     ): S;
 
@@ -9252,14 +9380,14 @@ whose geometry intersects the provided extent.
      * @return The collection of features.
      * @api
      */
-    getFeaturesCollection(): ol.Collection<ol.render$Feature>;
+    getFeaturesCollection(): ol.Collection<ol.Feature>;
 
     /**
      * Get all features on the source.
      * @return Features.
      * @api stable
      */
-    getFeatures(): ol.render$Feature[];
+    getFeatures(): ol.Feature[];
 
     /**
      * Get all features whose geometry intersects the provided coordinate.
@@ -9267,7 +9395,7 @@ whose geometry intersects the provided extent.
      * @return Features.
      * @api stable
      */
-    getFeaturesAtCoordinate(coordinate: ol.Coordinate): ol.render$Feature[];
+    getFeaturesAtCoordinate(coordinate: ol.Coordinate): ol.Feature[];
 
     /**
      * Get all features in the provided extent.  Note that this returns all features
@@ -9280,24 +9408,24 @@ whose geometry intersects the provided extent.
      * @return Features.
      * @api
      */
-    getFeaturesInExtent(extent: ol.interaction$Extent): ol.render$Feature[];
+    getFeaturesInExtent(extent: ol.Extent): ol.Feature[];
 
     /**
- * Get the closest feature to the provided coordinate.
- * 
- * This method is not available when the source is configured with
- * `useSpatialIndex` set to `false`.
- * @param coordinate Coordinate.
- * @param opt_filter Feature filter function.
-The filter function will receive one argument, the {@link ol.Feature feature}
-and it should return a boolean value. By default, no filtering is made.
- * @return Closest feature.
- * @api stable
- */
+     * Get the closest feature to the provided coordinate.
+     *
+     * This method is not available when the source is configured with
+     * `useSpatialIndex` set to `false`.
+     * @param coordinate Coordinate.
+     * @param opt_filter Feature filter function.
+     * The filter function will receive one argument, the {@link ol.Feature feature}
+     * and it should return a boolean value. By default, no filtering is made.
+     * @return Closest feature.
+     * @api stable
+     */
     getClosestFeatureToCoordinate(
       coordinate: ol.Coordinate,
-      opt_filter?: (feature: ol.render$Feature) => boolean
-    ): ol.render$Feature;
+      opt_filter?: (feature: ol.Feature) => boolean
+    ): ol.Feature;
 
     /**
      * Get the extent of the features currently in the source.
@@ -9307,7 +9435,7 @@ and it should return a boolean value. By default, no filtering is made.
      * @return Extent.
      * @api stable
      */
-    getExtent(): ol.interaction$Extent;
+    getExtent(): ol.Extent;
 
     /**
      * Get a feature by its identifier (the value returned by feature.getId()).
@@ -9317,14 +9445,14 @@ and it should return a boolean value. By default, no filtering is made.
      * @return The feature (or `null` if not found).
      * @api stable
      */
-    getFeatureById(id: string | number): ol.render$Feature;
+    getFeatureById(id: string | number): ol.Feature;
 
     /**
      * Get the format associated with this source.
      * @return The feature format.
      * @api
      */
-    getFormat(): ol.coordinate$format.render$Feature;
+    getFormat(): ol.format.Feature;
 
     /**
      * Get the url associated with this source.
@@ -9340,57 +9468,57 @@ and it should return a boolean value. By default, no filtering is made.
      * @param feature Feature to remove.
      * @api stable
      */
-    removeFeature(feature: ol.render$Feature): void;
+    removeFeature(feature: ol.Feature): void;
   }
 
   /**
- * @classdesc Events emitted by {@link ol.source.Vector} instances are instances of this
-type.
- * @param type Type.
- * @param opt_feature Feature.
- */
-  declare class source$VectorEvent mixins events$render$Event {
+   * @classdesc Events emitted by {@link ol.source.Vector} instances are instances of this
+   * type.
+   * @param type Type.
+   * @param opt_feature Feature.
+   */
+  declare class source$VectorEvent mixins events$Event {
     /**
- * @classdesc Events emitted by {@link ol.source.Vector} instances are instances of this
-type.
- * @param type Type.
- * @param opt_feature Feature.
- */
-    constructor(type: string, opt_feature?: ol.render$Feature): this;
+     * @classdesc Events emitted by {@link ol.source.Vector} instances are instances of this
+     * type.
+     * @param type Type.
+     * @param opt_feature Feature.
+     */
+    constructor(type: string, opt_feature?: ol.Feature): this;
 
     /**
      * The feature being added or removed.
      * @api stable
      */
-    feature: ol.render$Feature;
+    feature: ol.Feature;
   }
 
   /**
- * @classdesc Class for layer sources providing vector data divided into a tile grid, to be
-used with {@link ol.layer.VectorTile}. Although this source receives tiles
-with vector features from the server, it is not meant for feature editing.
-Features are optimized for rendering, their geometries are clipped at or near
-tile boundaries and simplified for a view resolution. See
-{@link ol.source.Vector} for vector sources that are suitable for feature
-editing.
- * @fires ol.source.TileEvent
- * @param options Vector tile options.
- * @api
- */
-  declare class source$VectorTile mixins source$UrlTile {
+   * @classdesc Class for layer sources providing vector data divided into a tile grid, to be
+   * used with {@link ol.layer.VectorTile}. Although this source receives tiles
+   * with vector features from the server, it is not meant for feature editing.
+   * Features are optimized for rendering, their geometries are clipped at or near
+   * tile boundaries and simplified for a view resolution. See
+   * {@link ol.source.Vector} for vector sources that are suitable for feature
+   * editing.
+   * @fires ol.source.TileEvent
+   * @param options Vector tile options.
+   * @api
+   */
+  declare class source$VectorTile mixins UrlTile {
     /**
- * @classdesc Class for layer sources providing vector data divided into a tile grid, to be
-used with {@link ol.layer.VectorTile}. Although this source receives tiles
-with vector features from the server, it is not meant for feature editing.
-Features are optimized for rendering, their geometries are clipped at or near
-tile boundaries and simplified for a view resolution. See
-{@link ol.source.Vector} for vector sources that are suitable for feature
-editing.
- * @fires ol.source.TileEvent
- * @param options Vector tile options.
- * @api
- */
-    constructor(options: olx$source.source$VectorTileOptions): this;
+     * @classdesc Class for layer sources providing vector data divided into a tile grid, to be
+     * used with {@link ol.layer.VectorTile}. Although this source receives tiles
+     * with vector features from the server, it is not meant for feature editing.
+     * Features are optimized for rendering, their geometries are clipped at or near
+     * tile boundaries and simplified for a view resolution. See
+     * {@link ol.source.Vector} for vector sources that are suitable for feature
+     * editing.
+     * @fires ol.source.TileEvent
+     * @param options Vector tile options.
+     * @api
+     */
+    constructor(options: olx$source$VectorTileOptions): this;
   }
 
   /**
@@ -9398,7 +9526,7 @@ editing.
    *      `'qgis'`. These are servers that have vendor parameters beyond the WMS
    *      specification that OpenLayers can make use of.
    */
-  declare type wms$ServerType =
+  declare type source$wms$ServerType =
     | "carmentaserver"
     | "geoserver"
     | "mapserver"
@@ -9414,13 +9542,13 @@ editing.
    * @param options WMTS options.
    * @api stable
    */
-  declare class source$WMTS mixins source$TileImage {
+  declare class source$WMTS mixins TileImage {
     /**
      * @classdesc Layer source for tile data from WMTS servers.
      * @param options WMTS options.
      * @api stable
      */
-    constructor(options: olx$source.tilegrid$WMTSOptions): this;
+    constructor(options: olx$source$WMTSOptions): this;
 
     /**
      * Get the dimensions, i.e. those passed to the constructor through the
@@ -9481,70 +9609,70 @@ editing.
     updateDimensions(dimensions: GlobalObject): void;
 
     /**
- * Generate source options from a capabilities object.
- * @param wmtsCap An object representing the capabilities document.
- * @param config Configuration properties for the layer.  Defaults for
-   the layer will apply if not provided.
-
-Required config properties:
-- layer - {string} The layer identifier.
-
-Optional config properties:
-- matrixSet - {string} The matrix set identifier, required if there is
-more than one matrix set in the layer capabilities.
-- projection - {string} The desired CRS when no matrixSet is specified.
-eg: "EPSG:3857". If the desired projection is not available,
-an error is thrown.
-- requestEncoding - {string} url encoding format for the layer. Default is
-the first tile url format found in the GetCapabilities response.
-- style - {string} The name of the style
-- format - {string} Image format for the layer. Default is the first
-format returned in the GetCapabilities response.
- * @return WMTS source options object.
- * @api
- */
+     * Generate source options from a capabilities object.
+     * @param wmtsCap An object representing the capabilities document.
+     * @param config Configuration properties for the layer.  Defaults for
+     *    the layer will apply if not provided.
+     *
+     * Required config properties:
+     * - layer - {string} The layer identifier.
+     *
+     * Optional config properties:
+     * - matrixSet - {string} The matrix set identifier, required if there is
+     * more than one matrix set in the layer capabilities.
+     * - projection - {string} The desired CRS when no matrixSet is specified.
+     * eg: "EPSG:3857". If the desired projection is not available,
+     * an error is thrown.
+     * - requestEncoding - {string} url encoding format for the layer. Default is
+     * the first tile url format found in the GetCapabilities response.
+     * - style - {string} The name of the style
+     * - format - {string} Image format for the layer. Default is the first
+     * format returned in the GetCapabilities response.
+     * @return WMTS source options object.
+     * @api
+     */
     static optionsFromCapabilities(
       wmtsCap: GlobalObject,
       config: GlobalObject
-    ): olx$source.tilegrid$WMTSOptions;
+    ): olx$source$WMTSOptions;
   }
 
   /**
- * @classdesc Layer source for tile data with URLs in a set XYZ format that are
-defined in a URL template. By default, this follows the widely-used
-Google grid where `x` 0 and `y` 0 are in the top left. Grids like
-TMS where `x` 0 and `y` 0 are in the bottom left can be used by
-using the `{-y}` placeholder in the URL template, so long as the
-source does not have a custom tile grid. In this case,
-{@link ol.source.TileImage} can be used with a `tileUrlFunction`
-such as:
-
-tileUrlFunction: function(coordinate) {
-return 'http://mapserver.com/' + coordinate[0] + '/' +
-coordinate[1] + '/' + coordinate[2] + '.png';
-}
- * @param opt_options XYZ options.
- * @api stable
- */
-  declare class source$XYZ mixins source$TileImage {
+   * @classdesc Layer source for tile data with URLs in a set XYZ format that are
+   * defined in a URL template. By default, this follows the widely-used
+   * Google grid where `x` 0 and `y` 0 are in the top left. Grids like
+   * TMS where `x` 0 and `y` 0 are in the bottom left can be used by
+   * using the `{-y}` placeholder in the URL template, so long as the
+   * source does not have a custom tile grid. In this case,
+   * {@link ol.source.TileImage} can be used with a `tileUrlFunction`
+   * such as:
+   *
+   * tileUrlFunction: function(coordinate) {
+   * return 'http://mapserver.com/' + coordinate[0] + '/' +
+   * coordinate[1] + '/' + coordinate[2] + '.png';
+   * }
+   * @param opt_options XYZ options.
+   * @api stable
+   */
+  declare class source$XYZ mixins TileImage {
     /**
- * @classdesc Layer source for tile data with URLs in a set XYZ format that are
-defined in a URL template. By default, this follows the widely-used
-Google grid where `x` 0 and `y` 0 are in the top left. Grids like
-TMS where `x` 0 and `y` 0 are in the bottom left can be used by
-using the `{-y}` placeholder in the URL template, so long as the
-source does not have a custom tile grid. In this case,
-{@link ol.source.TileImage} can be used with a `tileUrlFunction`
-such as:
-
-tileUrlFunction: function(coordinate) {
-return 'http://mapserver.com/' + coordinate[0] + '/' +
-coordinate[1] + '/' + coordinate[2] + '.png';
-}
- * @param opt_options XYZ options.
- * @api stable
- */
-    constructor(opt_options?: olx$source.tilegrid$XYZOptions): this;
+     * @classdesc Layer source for tile data with URLs in a set XYZ format that are
+     * defined in a URL template. By default, this follows the widely-used
+     * Google grid where `x` 0 and `y` 0 are in the top left. Grids like
+     * TMS where `x` 0 and `y` 0 are in the bottom left can be used by
+     * using the `{-y}` placeholder in the URL template, so long as the
+     * source does not have a custom tile grid. In this case,
+     * {@link ol.source.TileImage} can be used with a `tileUrlFunction`
+     * such as:
+     *
+     * tileUrlFunction: function(coordinate) {
+     * return 'http://mapserver.com/' + coordinate[0] + '/' +
+     * coordinate[1] + '/' + coordinate[2] + '.png';
+     * }
+     * @param opt_options XYZ options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$source$XYZOptions): this;
   }
 
   /**
@@ -9552,13 +9680,13 @@ coordinate[1] + '/' + coordinate[2] + '.png';
    * @param opt_options Options.
    * @api stable
    */
-  declare class source$Zoomify mixins source$TileImage {
+  declare class source$Zoomify mixins TileImage {
     /**
      * @classdesc Layer source for tile data in Zoomify format.
      * @param opt_options Options.
      * @api stable
      */
-    constructor(opt_options?: olx$source.source$ZoomifyOptions): this;
+    constructor(opt_options?: olx$source$ZoomifyOptions): this;
   }
 
   /**
@@ -9570,7 +9698,7 @@ coordinate[1] + '/' + coordinate[2] + '.png';
      * Projection of the geometry.  By default, the geometry is assumed to be in
      * EPSG:3857 (Web Mercator).
      */
-    projection?: ol.proj.proj$Projection;
+    projection?: ol.proj.Projection;
 
     /**
      * Sphere radius.  By default, the radius of the earth is used (Clarke 1866
@@ -9581,47 +9709,47 @@ coordinate[1] + '/' + coordinate[2] + '.png';
   }
 
   /**
- * @classdesc Class to create objects that can be used with {@link
-ol.geom.Polygon.circular}.
-
-For example to create a sphere whose radius is equal to the semi-major
-axis of the WGS84 ellipsoid:
-
-```js
- * var wgs84Sphere= new ol.Sphere(6378137);
- * ```
- * @param radius Radius.
- * @api
- */
+   * @classdesc Class to create objects that can be used with {@link
+   * ol.geom.Polygon.circular}.
+   *
+   * For example to create a sphere whose radius is equal to the semi-major
+   * axis of the WGS84 ellipsoid:
+   *
+   * ```js
+   *  * var wgs84Sphere= new ol.Sphere(6378137);
+   *  * ```
+   * @param radius Radius.
+   * @api
+   */
   declare export class Sphere {
     /**
- * @classdesc Class to create objects that can be used with {@link
-ol.geom.Polygon.circular}.
-
-For example to create a sphere whose radius is equal to the semi-major
-axis of the WGS84 ellipsoid:
-
-```js
-     * var wgs84Sphere= new ol.Sphere(6378137);
-     * ```
- * @param radius Radius.
- * @api
- */
+     * @classdesc Class to create objects that can be used with {@link
+     * ol.geom.Polygon.circular}.
+     *
+     * For example to create a sphere whose radius is equal to the semi-major
+     * axis of the WGS84 ellipsoid:
+     *
+     * ```js
+     *      * var wgs84Sphere= new ol.Sphere(6378137);
+     *      * ```
+     * @param radius Radius.
+     * @api
+     */
     constructor(radius: number): this;
 
     /**
- * Returns the geodesic area for a list of coordinates.
- * 
- * [Reference](http://trs-new.jpl.nasa.gov/dspace/handle/2014/40409)
- * Robert. G. Chamberlain and William H. Duquette, "Some Algorithms for
- * Polygons on a Sphere", JPL Publication 07-03, Jet Propulsion
- * Laboratory, Pasadena, CA, June 2007
- * @param coordinates List of coordinates of a linear
-ring. If the ring is oriented clockwise, the area will be positive,
-otherwise it will be negative.
- * @return Area.
- * @api
- */
+     * Returns the geodesic area for a list of coordinates.
+     *
+     * [Reference](http://trs-new.jpl.nasa.gov/dspace/handle/2014/40409)
+     * Robert. G. Chamberlain and William H. Duquette, "Some Algorithms for
+     * Polygons on a Sphere", JPL Publication 07-03, Jet Propulsion
+     * Laboratory, Pasadena, CA, June 2007
+     * @param coordinates List of coordinates of a linear
+     * ring. If the ring is oriented clockwise, the area will be positive,
+     * otherwise it will be negative.
+     * @return Area.
+     * @api
+     */
     geodesicArea(coordinates: ol.Coordinate[]): number;
 
     /**
@@ -9634,37 +9762,49 @@ otherwise it will be negative.
     haversineDistance(c1: ol.Coordinate, c2: ol.Coordinate): number;
 
     /**
- * Get the spherical area of a geometry.  This is the area (in meters) assuming
- * that polygon edges are segments of great circles on a sphere.
- * @param geometry A geometry.
- * @param opt_options Options for the area
-calculation.  By default, geometries are assumed to be in 'EPSG:3857'.
-You can change this by providing a `projection` option.
- * @return The spherical area (in square meters).
- * @api
- */
+     * Get the spherical area of a geometry.  This is the area (in meters) assuming
+     * that polygon edges are segments of great circles on a sphere.
+     * @param geometry A geometry.
+     * @param opt_options Options for the area
+     * calculation.  By default, geometries are assumed to be in 'EPSG:3857'.
+     * You can change this by providing a `projection` option.
+     * @return The spherical area (in square meters).
+     * @api
+     */
     static getArea(
-      geometry: geom$geom$Geometry,
+      geometry: geom$Geometry,
       opt_options?: SphereMetricOptions
     ): number;
 
     /**
- * Get the spherical length of a geometry.  This length is the sum of the
- * great circle distances between coordinates.  For polygons, the length is
- * the sum of all rings.  For points, the length is zero.  For multi-part
- * geometries, the length is the sum of the length of each part.
- * @param geometry A geometry.
- * @param opt_options Options for the length
-calculation.  By default, geometries are assumed to be in 'EPSG:3857'.
-You can change this by providing a `projection` option.
- * @return The spherical length (in meters).
- * @api
- */
+     * Get the spherical length of a geometry.  This length is the sum of the
+     * great circle distances between coordinates.  For polygons, the length is
+     * the sum of all rings.  For points, the length is zero.  For multi-part
+     * geometries, the length is the sum of the length of each part.
+     * @param geometry A geometry.
+     * @param opt_options Options for the length
+     * calculation.  By default, geometries are assumed to be in 'EPSG:3857'.
+     * You can change this by providing a `projection` option.
+     * @return The spherical length (in meters).
+     * @api
+     */
     static getLength(
-      geometry: geom$geom$Geometry,
+      geometry: geom$Geometry,
       opt_options?: SphereMetricOptions
     ): number;
   }
+
+  declare var npm$namespace$style: {
+    AtlasManager: typeof style$AtlasManager,
+    Circle: typeof style$Circle,
+    Fill: typeof style$Fill,
+    Icon: typeof style$Icon,
+    Image: typeof style$Image,
+    RegularShape: typeof style$RegularShape,
+    Stroke: typeof style$Stroke,
+    Style: typeof style$Style,
+    Text: typeof style$Text
+  };
 
   /**
    * Manages the creation of image atlases.
@@ -9697,7 +9837,7 @@ You can change this by providing a `projection` option.
      * @api
      * @param opt_options Options.
      */
-    constructor(opt_options?: olx$style.style$AtlasManagerOptions): this;
+    constructor(opt_options?: olx$style$AtlasManagerOptions): this;
   }
 
   /**
@@ -9705,13 +9845,13 @@ You can change this by providing a `projection` option.
    * @param opt_options Options.
    * @api
    */
-  declare class style$Circle mixins source$Image {
+  declare class style$Circle mixins Image {
     /**
      * @classdesc Set circle style for vector features.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$style.style$CircleOptions): this;
+    constructor(opt_options?: olx$style$CircleOptions): this;
 
     /**
      * Get the fill style for the circle.
@@ -9761,7 +9901,7 @@ You can change this by providing a `projection` option.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$style.style$FillOptions): this;
+    constructor(opt_options?: olx$style$FillOptions): this;
 
     /**
      * Get the fill color.
@@ -9797,13 +9937,13 @@ You can change this by providing a `projection` option.
    * @param opt_options Options.
    * @api
    */
-  declare class style$Icon mixins source$Image {
+  declare class style$Icon mixins Image {
     /**
      * @classdesc Set icon style for vector features.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$style.style$IconOptions): this;
+    constructor(opt_options?: olx$style$IconOptions): this;
 
     /**
      * @inheritDoc
@@ -9849,20 +9989,20 @@ You can change this by providing a `projection` option.
   }
 
   /**
- * @classdesc A base class used for creating subclasses and not instantiated in
-apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
-{@link ol.style.RegularShape}.
- * @param options Options.
- * @api
- */
+   * @classdesc A base class used for creating subclasses and not instantiated in
+   * apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
+   * {@link ol.style.RegularShape}.
+   * @param options Options.
+   * @api
+   */
   declare class style$Image {
     /**
- * @classdesc A base class used for creating subclasses and not instantiated in
-apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
-{@link ol.style.RegularShape}.
- * @param options Options.
- * @api
- */
+     * @classdesc A base class used for creating subclasses and not instantiated in
+     * apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
+     * {@link ol.style.RegularShape}.
+     * @param options Options.
+     * @api
+     */
     constructor(options: ol.StyleImageOptions): this;
 
     /**
@@ -9923,21 +10063,21 @@ apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
   }
 
   /**
- * @classdesc Set regular shape style for vector features. The resulting shape will be
-a regular polygon when `radius` is provided, or a star when `radius1` and
-`radius2` are provided.
- * @param options Options.
- * @api
- */
-  declare class style$RegularShape mixins style$Image {
+   * @classdesc Set regular shape style for vector features. The resulting shape will be
+   * a regular polygon when `radius` is provided, or a star when `radius1` and
+   * `radius2` are provided.
+   * @param options Options.
+   * @api
+   */
+  declare class style$RegularShape mixins Image {
     /**
- * @classdesc Set regular shape style for vector features. The resulting shape will be
-a regular polygon when `radius` is provided, or a star when `radius1` and
-`radius2` are provided.
- * @param options Options.
- * @api
- */
-    constructor(options: olx$style.style$RegularShapeOptions): this;
+     * @classdesc Set regular shape style for vector features. The resulting shape will be
+     * a regular polygon when `radius` is provided, or a star when `radius1` and
+     * `radius2` are provided.
+     * @param options Options.
+     * @api
+     */
+    constructor(options: olx$style$RegularShapeOptions): this;
 
     /**
      * @inheritDoc
@@ -10009,23 +10149,23 @@ a regular polygon when `radius` is provided, or a star when `radius1` and
   }
 
   /**
- * @classdesc Set stroke style for vector features.
-Note that the defaults given are the Canvas defaults, which will be used if
-option is not defined. The `get` functions return whatever was entered in
-the options; they will not return the default.
- * @param opt_options Options.
- * @api
- */
+   * @classdesc Set stroke style for vector features.
+   * Note that the defaults given are the Canvas defaults, which will be used if
+   * option is not defined. The `get` functions return whatever was entered in
+   * the options; they will not return the default.
+   * @param opt_options Options.
+   * @api
+   */
   declare class style$Stroke {
     /**
- * @classdesc Set stroke style for vector features.
-Note that the defaults given are the Canvas defaults, which will be used if
-option is not defined. The `get` functions return whatever was entered in
-the options; they will not return the default.
- * @param opt_options Options.
- * @api
- */
-    constructor(opt_options?: olx$style.style$StrokeOptions): this;
+     * @classdesc Set stroke style for vector features.
+     * Note that the defaults given are the Canvas defaults, which will be used if
+     * option is not defined. The `get` functions return whatever was entered in
+     * the options; they will not return the default.
+     * @param opt_options Options.
+     * @api
+     */
+    constructor(opt_options?: olx$style$StrokeOptions): this;
 
     /**
      * Get the stroke color.
@@ -10133,23 +10273,23 @@ the options; they will not return the default.
   }
 
   /**
- * @classdesc Container for vector feature rendering styles. Any changes made to the style
-or its children through `set*()` methods will not take effect until the
-feature or layer that uses the style is re-rendered.
- * @struct
- * @param opt_options Style options.
- * @api
- */
+   * @classdesc Container for vector feature rendering styles. Any changes made to the style
+   * or its children through `set*()` methods will not take effect until the
+   * feature or layer that uses the style is re-rendered.
+   * @struct
+   * @param opt_options Style options.
+   * @api
+   */
   declare class style$Style {
     /**
- * @classdesc Container for vector feature rendering styles. Any changes made to the style
-or its children through `set*()` methods will not take effect until the
-feature or layer that uses the style is re-rendered.
- * @struct
- * @param opt_options Style options.
- * @api
- */
-    constructor(opt_options?: olx$style.style$StyleOptions): this;
+     * @classdesc Container for vector feature rendering styles. Any changes made to the style
+     * or its children through `set*()` methods will not take effect until the
+     * feature or layer that uses the style is re-rendered.
+     * @struct
+     * @param opt_options Style options.
+     * @api
+     */
+    constructor(opt_options?: olx$style$StyleOptions): this;
 
     /**
      * Clones the style.
@@ -10159,19 +10299,19 @@ feature or layer that uses the style is re-rendered.
     clone(): style$Style;
 
     /**
- * Get the geometry to be rendered.
- * @return Feature property or geometry or function that returns the geometry that will
-be rendered with this style.
- * @api
- */
-    getGeometry(): string | ol.geom.geom$Geometry | ol.StyleGeometryFunction;
+     * Get the geometry to be rendered.
+     * @return Feature property or geometry or function that returns the geometry that will
+     * be rendered with this style.
+     * @api
+     */
+    getGeometry(): string | ol.geom.Geometry | ol.StyleGeometryFunction;
 
     /**
- * Get the function used to generate a geometry for rendering.
- * @return Function that is called with a feature
-and returns the geometry to render instead of the feature's geometry.
- * @api
- */
+     * Get the function used to generate a geometry for rendering.
+     * @return Function that is called with a feature
+     * and returns the geometry to render instead of the feature's geometry.
+     * @api
+     */
     getGeometryFunction(): ol.StyleGeometryFunction;
 
     /**
@@ -10217,13 +10357,13 @@ and returns the geometry to render instead of the feature's geometry.
     setFill(fill: style$Fill): void;
 
     /**
- * Set a geometry that is rendered instead of the feature's geometry.
- * @param geometry Feature property or geometry or function returning a geometry to render
-for this style.
- * @api
- */
+     * Set a geometry that is rendered instead of the feature's geometry.
+     * @param geometry Feature property or geometry or function returning a geometry to render
+     * for this style.
+     * @api
+     */
     setGeometry(
-      geometry: string | ol.geom.geom$Geometry | ol.StyleGeometryFunction
+      geometry: string | ol.geom.Geometry | ol.StyleGeometryFunction
     ): void;
 
     /**
@@ -10266,7 +10406,7 @@ for this style.
      * @param opt_options Options.
      * @api
      */
-    constructor(opt_options?: olx$style.style$TextOptions): this;
+    constructor(opt_options?: olx$style$TextOptions): this;
 
     /**
      * Get the font name.
@@ -10421,16 +10561,13 @@ for this style.
    * @param tileCoord Tile coordinate.
    * @param state State.
    */
-  declare export class Tile mixins events$events$EventTarget {
+  declare export class Tile mixins events$EventTarget {
     /**
      * @classdesc Base class for tiles.
      * @param tileCoord Tile coordinate.
      * @param state State.
      */
-    constructor(
-      tileCoord: ol.TileCoord,
-      state: ol.source$Tile.source$State
-    ): this;
+    constructor(tileCoord: ol.TileCoord, state: ol.Tile.State): this;
 
     /**
      * Get the tile coordinate for this tile.
@@ -10447,14 +10584,13 @@ for this style.
      */
     load(): void;
   }
-
-  /**
-   * State of the source, one of 'undefined', 'loading', 'ready' or 'error'.
-   */
-  declare type Tile$State = "undefined" | "loading" | "ready" | "error";
+  declare type Tile$State = number;
 
   declare var npm$namespace$tilegrid: {
-    createXYZ: typeof tilegrid$createXYZ
+    createXYZ: typeof tilegrid$createXYZ,
+
+    TileGrid: typeof tilegrid$TileGrid,
+    WMTS: typeof tilegrid$WMTS
   };
 
   /**
@@ -10464,25 +10600,25 @@ for this style.
    * @api
    */
   declare function tilegrid$createXYZ(
-    opt_options?: olx$tilegrid.tilegrid$XYZOptions
+    opt_options?: olx$tilegrid$XYZOptions
   ): tilegrid$TileGrid;
 
   /**
- * @classdesc Base class for setting the grid pattern for sources accessing tiled-image
-servers.
- * @param options Tile grid options.
- * @struct
- * @api stable
- */
+   * @classdesc Base class for setting the grid pattern for sources accessing tiled-image
+   * servers.
+   * @param options Tile grid options.
+   * @struct
+   * @api stable
+   */
   declare class tilegrid$TileGrid {
     /**
- * @classdesc Base class for setting the grid pattern for sources accessing tiled-image
-servers.
- * @param options Tile grid options.
- * @struct
- * @api stable
- */
-    constructor(options: olx$tilegrid.tilegrid$TileGridOptions): this;
+     * @classdesc Base class for setting the grid pattern for sources accessing tiled-image
+     * servers.
+     * @param options Tile grid options.
+     * @struct
+     * @api stable
+     */
+    constructor(options: olx$tilegrid$TileGridOptions): this;
 
     /**
      * Call a function with each tile coordinate for a given extent and zoom level.
@@ -10492,7 +10628,7 @@ servers.
      * @api
      */
     forEachTileCoord(
-      extent: ol.interaction$Extent,
+      extent: ol.Extent,
       zoom: number,
       callback: (coords: ol.TileCoord) => any
     ): void;
@@ -10543,8 +10679,8 @@ servers.
      */
     getTileCoordExtent(
       tileCoord: ol.TileCoord,
-      opt_extent?: ol.interaction$Extent
-    ): ol.interaction$Extent;
+      opt_extent?: ol.Extent
+    ): ol.Extent;
 
     /**
      * Get the tile coordinate for the given map coordinate and resolution.  This
@@ -10587,13 +10723,13 @@ servers.
     getTileSize(z: number): number | ol.Size;
 
     /**
- * @param resolution Resolution.
- * @param opt_direction If 0, the nearest resolution will be used.
-If 1, the nearest lower resolution will be used. If -1, the nearest
-higher resolution will be used. Default is 0.
- * @return Z.
- * @api
- */
+     * @param resolution Resolution.
+     * @param opt_direction If 0, the nearest resolution will be used.
+     * If 1, the nearest lower resolution will be used. If -1, the nearest
+     * higher resolution will be used. Default is 0.
+     * @return Z.
+     * @api
+     */
     getZForResolution(resolution: number, opt_direction?: number): number;
   }
 
@@ -10603,14 +10739,14 @@ higher resolution will be used. Default is 0.
    * @struct
    * @api
    */
-  declare class tilegrid$WMTS mixins tilegrid$TileGrid {
+  declare class tilegrid$WMTS mixins TileGrid {
     /**
      * @classdesc Set the grid pattern for sources accessing WMTS tiled-image servers.
      * @param options WMTS options.
      * @struct
      * @api
      */
-    constructor(options: olx$tilegrid.tilegrid$WMTSOptions): this;
+    constructor(options: olx$tilegrid$WMTSOptions): this;
 
     /**
      * Get the list of matrix identifiers.
@@ -10620,24 +10756,24 @@ higher resolution will be used. Default is 0.
     getMatrixIds(): string[];
 
     /**
- * Create a tile grid from a WMTS capabilities matrix set.
- * @param matrixSet An object representing a matrixSet in the
-capabilities document.
- * @param opt_extent An optional extent to restrict the tile
-ranges the server provides.
- * @return WMTS tileGrid instance.
- * @api
- */
+     * Create a tile grid from a WMTS capabilities matrix set.
+     * @param matrixSet An object representing a matrixSet in the
+     * capabilities document.
+     * @param opt_extent An optional extent to restrict the tile
+     * ranges the server provides.
+     * @return WMTS tileGrid instance.
+     * @api
+     */
     static createFromCapabilitiesMatrixSet(
       matrixSet: GlobalObject,
-      opt_extent?: ol.interaction$Extent
+      opt_extent?: ol.Extent
     ): tilegrid$WMTS;
   }
   declare export type AttributionLike =
     | string
     | string[]
-    | ol.control$Attribution
-    | ol.control$Attribution[];
+    | ol.Attribution
+    | ol.Attribution[];
 
   /**
    * A function returning the canvas element (`{HTMLCanvasElement}`)
@@ -10649,11 +10785,11 @@ ranges the server provides.
    * references the {@link ol.source.ImageCanvas}.
    */
   declare export type CanvasFunctionType = (
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number,
     pixelRatio: number,
     size: ol.Size,
-    proj: ol.proj.proj$Projection
+    proj: ol.proj.Projection
   ) => HTMLCanvasElement;
 
   /**
@@ -10703,8 +10839,8 @@ ranges the server provides.
    */
   declare export type DrawGeometryFunctionType = (
     coords: ol.Coordinate | ol.Coordinate[] | ol.Coordinate[][],
-    geo?: ol.geom.geom$SimpleGeometry
-  ) => ol.geom.geom$SimpleGeometry;
+    geo?: ol.geom.SimpleGeometry
+  ) => ol.geom.SimpleGeometry;
 
   /**
    * A function that takes an {@link ol.MapBrowserEvent} and returns a
@@ -10737,9 +10873,9 @@ ranges the server provides.
    * source.
    */
   declare export type FeatureLoader = (
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number,
-    proj: ol.proj.proj$Projection
+    proj: ol.proj.Projection
   ) => void;
 
   /**
@@ -10749,7 +10885,7 @@ ranges the server provides.
    */
   declare export type FeatureStyleFunction = (
     resolution: number
-  ) => ol.style.style$Style | ol.style.style$Style[] | null;
+  ) => ol.style.Style | ol.style.Style[] | null;
 
   /**
    * {@link ol.source.Vector} sources use a function of this type to get the url
@@ -10761,9 +10897,9 @@ ranges the server provides.
    * `{string}` representing the URL.
    */
   declare export type FeatureUrlFunction = (
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number,
-    proj: ol.proj.proj$Projection
+    proj: ol.proj.Projection
   ) => string;
 
   /**
@@ -10781,7 +10917,7 @@ ranges the server provides.
    * image element would be set to a data URI when the content is loaded.
    */
   declare export type ImageLoadFunctionType = (
-    image: ol.style$Image,
+    image: ol.Image,
     url: string
   ) => void;
 
@@ -10791,9 +10927,9 @@ ranges the server provides.
    * is one of the standard {@link ol.loadingstrategy} strategies.
    */
   declare export type LoadingStrategy = (
-    extent: ol.interaction$Extent,
+    extent: ol.Extent,
     resolution: number
-  ) => ol.interaction$Extent[];
+  ) => ol.Extent[];
   declare export type ModifyEventType = string;
 
   /**
@@ -10810,14 +10946,14 @@ ranges the server provides.
    */
   declare export type PreRenderFunction = (
     map: ol.Map,
-    state?: olx$olx$FrameState
+    state?: olx$FrameState
   ) => boolean;
 
   /**
    * A projection as {@link ol.proj.Projection}, SRS identifier string or
    * undefined.
    */
-  declare export type ProjectionLike = ol.proj.proj$Projection | string | void;
+  declare export type ProjectionLike = ol.proj.Projection | string | void;
 
   /**
    * A function that takes an array of input data, performs some operation, and
@@ -10844,8 +10980,8 @@ ranges the server provides.
    * or `false` otherwise.
    */
   declare export type SelectFilterFunction = (
-    feature: ol.render$Feature | ol.render.render$Feature,
-    layer: ol.layer.layer$Layer
+    feature: ol.Feature | ol.render.Feature,
+    layer: ol.layer.Layer
   ) => boolean;
 
   /**
@@ -10854,28 +10990,28 @@ ranges the server provides.
   declare export type Size = [number, number];
   declare export interface SourceImageOptions {
     attributions?: ol.AttributionLike;
-    extent?: ol.interaction$Extent;
-    logo?: string | olx$olx$LogoOptions;
+    extent?: ol.Extent;
+    logo?: string | olx$LogoOptions;
     projection: ol.ProjectionLike;
     resolutions?: number[];
-    state?: ol.source.Tile$State;
+    state?: ol.source.State;
   }
   declare export interface SourceSourceOptions {
     attributions?: ol.AttributionLike;
-    logo?: string | olx$olx$LogoOptions;
+    logo?: string | olx$LogoOptions;
     projection: ol.ProjectionLike;
-    state?: ol.source.Tile$State;
+    state?: ol.source.State;
     wrapX?: boolean;
   }
   declare export interface SourceUrlTileOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
-    extent?: ol.interaction$Extent;
-    logo?: string | olx$olx$LogoOptions;
+    extent?: ol.Extent;
+    logo?: string | olx$LogoOptions;
     opaque?: boolean;
     projection: ol.ProjectionLike;
-    state?: ol.source.Tile$State;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    state?: ol.source.State;
+    tileGrid?: ol.tilegrid.TileGrid;
     tileLoadFunction: ol.TileLoadFunctionType;
     tilePixelRatio?: number;
     tileUrlFunction?: ol.TileUrlFunctionType;
@@ -10886,13 +11022,13 @@ ranges the server provides.
   declare export interface SourceTileOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
-    extent?: ol.interaction$Extent;
-    logo?: string | olx$olx$LogoOptions;
+    extent?: ol.Extent;
+    logo?: string | olx$LogoOptions;
     opaque?: boolean;
     tilePixelRatio?: number;
     projection: ol.ProjectionLike;
-    state?: ol.source.Tile$State;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    state?: ol.source.State;
+    tileGrid?: ol.tilegrid.TileGrid;
     wrapX?: boolean;
   }
   declare export interface StyleImageOptions {
@@ -10909,17 +11045,17 @@ ranges the server provides.
    * or an array of them. This way e.g. a vector layer can be styled.
    */
   declare export type StyleFunction = (
-    feature: ol.render$Feature | ol.render.render$Feature,
+    feature: ol.Feature | ol.render.Feature,
     resolution: number
-  ) => ol.style.style$Style | ol.style.style$Style[] | null;
+  ) => ol.style.Style | ol.style.Style[] | null;
 
   /**
    * A function that takes an {@link ol.Feature} as argument and returns an
    * {@link ol.geom.Geometry} that will be rendered and styled for the feature.
    */
   declare export type StyleGeometryFunction = (
-    feature: ol.render$Feature | ol.render.render$Feature
-  ) => ol.geom.geom$Geometry | ol.render.render$Feature;
+    feature: ol.Feature | ol.render.Feature
+  ) => ol.geom.Geometry | ol.render.Feature;
 
   /**
    * An array of three numbers representing the location of a tile in a tile
@@ -10932,7 +11068,7 @@ ranges the server provides.
    * the url as arguments.
    */
   declare export type TileLoadFunctionType = (
-    loadingstrategy$tile: ol.source$Tile,
+    tile: ol.Tile,
     url: string
   ) => void;
 
@@ -10949,7 +11085,7 @@ ranges the server provides.
   declare export type TileUrlFunctionType = (
     coords: ol.TileCoord,
     pixelRatio: number,
-    proj: ol.proj.proj$Projection
+    proj: ol.proj.Projection
   ) => string;
 
   /**
@@ -10981,7 +11117,7 @@ ranges the server provides.
    * @param format Feature format.
    * @param tileLoadFunction Tile load function.
    */
-  declare export class VectorTile mixins source$Tile {
+  declare export class VectorTile mixins Tile {
     /**
      * @param tileCoord Tile coordinate.
      * @param state State.
@@ -10991,9 +11127,9 @@ ranges the server provides.
      */
     constructor(
       tileCoord: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
+      state: ol.Tile.State,
       src: string,
-      coordinate$format: ol.coordinate$format.render$Feature,
+      format: ol.format.Feature,
       tileLoadFunction: ol.TileLoadFunctionType
     ): this;
 
@@ -11002,20 +11138,20 @@ ranges the server provides.
      * @return Feature format.
      * @api
      */
-    getFormat(): ol.coordinate$format.render$Feature;
+    getFormat(): ol.format.Feature;
 
     /**
      * @param features Features.
      * @api
      */
-    setFeatures(features: ol.render$Feature[]): void;
+    setFeatures(features: ol.Feature[]): void;
 
     /**
      * Set the projection of the features that were added with {@link #setFeatures}.
      * @param projection Feature projection.
      * @api
      */
-    setProjection(projection: ol.proj.proj$Projection): void;
+    setProjection(projection: ol.proj.Projection): void;
 
     /**
      * Set the feature loader for reading this tile's features.
@@ -11026,113 +11162,113 @@ ranges the server provides.
   }
 
   /**
- * @classdesc An ol.View object represents a simple 2D view of the map.
-
-This is the object to act upon to change the center, resolution,
-and rotation of the map.
-
-### The view states
-
-An `ol.View` is determined by three states: `center`, `resolution`,
-and `rotation`. Each state has a corresponding getter and setter, e.g.
-`getCenter` and `setCenter` for the `center` state.
-
-An `ol.View` has a `projection`. The projection determines the
-coordinate system of the center, and its units determine the units of the
-resolution (projection units per pixel). The default projection is
-Spherical Mercator (EPSG:3857).
-
-### The constraints
-
-`setCenter`, `setResolution` and `setRotation` can be used to change the
-states of the view. Any value can be passed to the setters. And the value
-that is passed to a setter will effectively be the value set in the view,
-and returned by the corresponding getter.
-
-But an `ol.View` object also has a *resolution constraint*, a
-*rotation constraint* and a *center constraint*.
-
-As said above, no constraints are applied when the setters are used to set
-new states for the view. Applying constraints is done explicitly through
-the use of the `constrain*` functions (`constrainResolution` and
-`constrainRotation` and `constrainCenter`).
-
-The main users of the constraints are the interactions and the
-controls. For example, double-clicking on the map changes the view to
-the "next" resolution. And releasing the fingers after pinch-zooming
-snaps to the closest resolution (with an animation).
-
-The *resolution constraint* snaps to specific resolutions. It is
-determined by the following options: `resolutions`, `maxResolution`,
-`maxZoom`, and `zoomFactor`. If `resolutions` is set, the other three
-options are ignored. See documentation for each option for more
-information.
-
-The *rotation constraint* snaps to specific angles. It is determined
-by the following options: `enableRotation` and `constrainRotation`.
-By default the rotation value is snapped to zero when approaching the
-horizontal.
-
-The *center constraint* is determined by the `extent` option. By
-default the center is not constrained at all.
- * @param opt_options View options.
- * @api stable
- */
+   * @classdesc An ol.View object represents a simple 2D view of the map.
+   *
+   * This is the object to act upon to change the center, resolution,
+   * and rotation of the map.
+   *
+   * ### The view states
+   *
+   * An `ol.View` is determined by three states: `center`, `resolution`,
+   * and `rotation`. Each state has a corresponding getter and setter, e.g.
+   * `getCenter` and `setCenter` for the `center` state.
+   *
+   * An `ol.View` has a `projection`. The projection determines the
+   * coordinate system of the center, and its units determine the units of the
+   * resolution (projection units per pixel). The default projection is
+   * Spherical Mercator (EPSG:3857).
+   *
+   * ### The constraints
+   *
+   * `setCenter`, `setResolution` and `setRotation` can be used to change the
+   * states of the view. Any value can be passed to the setters. And the value
+   * that is passed to a setter will effectively be the value set in the view,
+   * and returned by the corresponding getter.
+   *
+   * But an `ol.View` object also has a *resolution constraint*, a
+   * *rotation constraint* and a *center constraint*.
+   *
+   * As said above, no constraints are applied when the setters are used to set
+   * new states for the view. Applying constraints is done explicitly through
+   * the use of the `constrain*` functions (`constrainResolution` and
+   * `constrainRotation` and `constrainCenter`).
+   *
+   * The main users of the constraints are the interactions and the
+   * controls. For example, double-clicking on the map changes the view to
+   * the "next" resolution. And releasing the fingers after pinch-zooming
+   * snaps to the closest resolution (with an animation).
+   *
+   * The *resolution constraint* snaps to specific resolutions. It is
+   * determined by the following options: `resolutions`, `maxResolution`,
+   * `maxZoom`, and `zoomFactor`. If `resolutions` is set, the other three
+   * options are ignored. See documentation for each option for more
+   * information.
+   *
+   * The *rotation constraint* snaps to specific angles. It is determined
+   * by the following options: `enableRotation` and `constrainRotation`.
+   * By default the rotation value is snapped to zero when approaching the
+   * horizontal.
+   *
+   * The *center constraint* is determined by the `extent` option. By
+   * default the center is not constrained at all.
+   * @param opt_options View options.
+   * @api stable
+   */
   declare export class View mixins Object {
     /**
- * @classdesc An ol.View object represents a simple 2D view of the map.
-
-This is the object to act upon to change the center, resolution,
-and rotation of the map.
-
-### The view states
-
-An `ol.View` is determined by three states: `center`, `resolution`,
-and `rotation`. Each state has a corresponding getter and setter, e.g.
-`getCenter` and `setCenter` for the `center` state.
-
-An `ol.View` has a `projection`. The projection determines the
-coordinate system of the center, and its units determine the units of the
-resolution (projection units per pixel). The default projection is
-Spherical Mercator (EPSG:3857).
-
-### The constraints
-
-`setCenter`, `setResolution` and `setRotation` can be used to change the
-states of the view. Any value can be passed to the setters. And the value
-that is passed to a setter will effectively be the value set in the view,
-and returned by the corresponding getter.
-
-But an `ol.View` object also has a *resolution constraint*, a
-*rotation constraint* and a *center constraint*.
-
-As said above, no constraints are applied when the setters are used to set
-new states for the view. Applying constraints is done explicitly through
-the use of the `constrain*` functions (`constrainResolution` and
-`constrainRotation` and `constrainCenter`).
-
-The main users of the constraints are the interactions and the
-controls. For example, double-clicking on the map changes the view to
-the "next" resolution. And releasing the fingers after pinch-zooming
-snaps to the closest resolution (with an animation).
-
-The *resolution constraint* snaps to specific resolutions. It is
-determined by the following options: `resolutions`, `maxResolution`,
-`maxZoom`, and `zoomFactor`. If `resolutions` is set, the other three
-options are ignored. See documentation for each option for more
-information.
-
-The *rotation constraint* snaps to specific angles. It is determined
-by the following options: `enableRotation` and `constrainRotation`.
-By default the rotation value is snapped to zero when approaching the
-horizontal.
-
-The *center constraint* is determined by the `extent` option. By
-default the center is not constrained at all.
- * @param opt_options View options.
- * @api stable
- */
-    constructor(opt_options?: olx$olx$ViewOptions): this;
+     * @classdesc An ol.View object represents a simple 2D view of the map.
+     *
+     * This is the object to act upon to change the center, resolution,
+     * and rotation of the map.
+     *
+     * ### The view states
+     *
+     * An `ol.View` is determined by three states: `center`, `resolution`,
+     * and `rotation`. Each state has a corresponding getter and setter, e.g.
+     * `getCenter` and `setCenter` for the `center` state.
+     *
+     * An `ol.View` has a `projection`. The projection determines the
+     * coordinate system of the center, and its units determine the units of the
+     * resolution (projection units per pixel). The default projection is
+     * Spherical Mercator (EPSG:3857).
+     *
+     * ### The constraints
+     *
+     * `setCenter`, `setResolution` and `setRotation` can be used to change the
+     * states of the view. Any value can be passed to the setters. And the value
+     * that is passed to a setter will effectively be the value set in the view,
+     * and returned by the corresponding getter.
+     *
+     * But an `ol.View` object also has a *resolution constraint*, a
+     * *rotation constraint* and a *center constraint*.
+     *
+     * As said above, no constraints are applied when the setters are used to set
+     * new states for the view. Applying constraints is done explicitly through
+     * the use of the `constrain*` functions (`constrainResolution` and
+     * `constrainRotation` and `constrainCenter`).
+     *
+     * The main users of the constraints are the interactions and the
+     * controls. For example, double-clicking on the map changes the view to
+     * the "next" resolution. And releasing the fingers after pinch-zooming
+     * snaps to the closest resolution (with an animation).
+     *
+     * The *resolution constraint* snaps to specific resolutions. It is
+     * determined by the following options: `resolutions`, `maxResolution`,
+     * `maxZoom`, and `zoomFactor`. If `resolutions` is set, the other three
+     * options are ignored. See documentation for each option for more
+     * information.
+     *
+     * The *rotation constraint* snaps to specific angles. It is determined
+     * by the following options: `enableRotation` and `constrainRotation`.
+     * By default the rotation value is snapped to zero when approaching the
+     * horizontal.
+     *
+     * The *center constraint* is determined by the `extent` option. By
+     * default the center is not constrained at all.
+     * @param opt_options View options.
+     * @api stable
+     */
+    constructor(opt_options?: olx$ViewOptions): this;
 
     /**
      * Animate the view. The view's center, zoom (or resolution), and
@@ -11143,8 +11279,7 @@ default the center is not constrained at all.
      */
     animate(
       ...var_args: Array<
-        | olx$animation.animation$AnimateOptions
-        | olx$animation.animation$AnimateCallback
+        olx$animation$AnimateOptions | olx$animation$AnimateCallback
       >
     ): void;
 
@@ -11216,7 +11351,7 @@ default the center is not constrained at all.
      * @return Extent.
      * @api stable
      */
-    calculateExtent(size?: ol.Size): ol.interaction$Extent;
+    calculateExtent(size?: ol.Size): ol.Extent;
 
     /**
      * Get the maximum resolution of the view.
@@ -11265,7 +11400,7 @@ default the center is not constrained at all.
      * @return The projection of the view.
      * @api stable
      */
-    getProjection(): ol.proj.proj$Projection;
+    getProjection(): ol.proj.Projection;
 
     /**
      * Get the view resolution.
@@ -11284,17 +11419,14 @@ default the center is not constrained at all.
     getResolutions(): number[];
 
     /**
- * Get the resolution for a provided extent (in map units) and size (in pixels).
- * @param extent Extent.
- * @param opt_size Box pixel size.
- * @return The resolution at which the provided extent will render at
-the given size.
- * @api
- */
-    getResolutionForExtent(
-      extent: ol.interaction$Extent,
-      opt_size?: ol.Size
-    ): number;
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     * @param extent Extent.
+     * @param opt_size Box pixel size.
+     * @return The resolution at which the provided extent will render at
+     * the given size.
+     * @api
+     */
+    getResolutionForExtent(extent: ol.Extent, opt_size?: ol.Size): number;
 
     /**
      * Get the view rotation.
@@ -11339,8 +11471,8 @@ the given size.
      * @api
      */
     fit(
-      geometryOrExtent: ol.geom.geom$SimpleGeometry | ol.interaction$Extent,
-      opt_options?: olx$view.view$FitOptions
+      geometryOrExtent: ol.geom.SimpleGeometry | ol.Extent,
+      opt_options?: olx$view$FitOptions
     ): void;
 
     /**
@@ -11395,49 +11527,33 @@ the given size.
      */
     setZoom(zoom: number): void;
   }
-  declare interface animation$BounceOptions {
+  declare interface olx$animation$BounceOptions {
     resolution: number;
     start?: number;
     duration?: number;
     easing?: (t: number) => number;
   }
 
-  declare interface animation$PanOptions {
+  declare interface olx$animation$PanOptions {
     source: ol.Coordinate;
     start?: number;
     duration?: number;
     easing?: (t: number) => number;
   }
 
-  declare interface animation$RotateOptions {
+  declare interface olx$animation$RotateOptions {
     rotation?: number;
     anchor?: ol.Coordinate;
     start?: number;
     duration?: number;
     easing?: (t: number) => number;
-    className?: string;
-    label?: string | Element;
-    tipLabel?: string;
-    duration?: number;
-    autoHide?: boolean;
-    render?: (event: ol.MapEvent) => any;
-    resetNorth?: () => any;
-    target?: Element;
   }
 
-  declare interface animation$ZoomOptions {
+  declare interface olx$animation$ZoomOptions {
     resolution: number;
     start?: number;
     duration?: number;
     easing?: (t: number) => number;
-    duration?: number;
-    className?: string;
-    zoomInLabel?: string | Node;
-    zoomOutLabel?: string | Node;
-    zoomInTipLabel?: string;
-    zoomOutTipLabel?: string;
-    delta?: number;
-    target?: Element;
   }
 
   /**
@@ -11447,7 +11563,7 @@ the given size.
    * final argument. The callback will be called with a boolean indicating
    * whether the animation completed without being cancelled.
    */
-  declare interface animation$AnimateOptions {
+  declare interface olx$animation$AnimateOptions {
     center?: ol.Coordinate;
     zoom?: number;
     resolution?: number;
@@ -11457,9 +11573,9 @@ the given size.
     easing?: (t: number) => number;
   }
 
-  declare type animation$AnimateCallback = (completed: boolean) => void;
+  declare type olx$animation$AnimateCallback = (completed: boolean) => void;
 
-  declare interface control$AttributionOptions {
+  declare interface olx$control$AttributionOptions {
     className?: string;
     target?: Element;
     collapsible?: boolean;
@@ -11468,36 +11584,24 @@ the given size.
     label?: string | Node;
     collapseLabel?: string | Node;
     render?: (event: ol.MapEvent) => any;
-    html: string;
   }
 
-  declare interface control$ControlOptions {
+  declare interface olx$control$ControlOptions {
     element?: Element;
     render?: (event: ol.MapEvent) => any;
     target?: Element | string;
   }
 
-  declare interface control$DefaultsOptions {
+  declare interface olx$control$DefaultsOptions {
     attribution?: boolean;
-    attributionOptions?: control$AttributionOptions;
-    coordinate$rotate?: boolean;
-    rotateOptions?: animation$RotateOptions;
+    attributionOptions?: olx$control$AttributionOptions;
+    rotate?: boolean;
+    rotateOptions?: olx$animation$RotateOptions;
     zoom?: boolean;
-    zoomOptions?: animation$ZoomOptions;
-    altShiftDragRotate?: boolean;
-    doubleClickZoom?: boolean;
-    constrainResolution?: boolean;
-    keyboard?: boolean;
-    mouseWheelZoom?: boolean;
-    shiftDragZoom?: boolean;
-    dragPan?: boolean;
-    pinchRotate?: boolean;
-    pinchZoom?: boolean;
-    zoomDelta?: number;
-    zoomDuration?: number;
+    zoomOptions?: olx$animation$ZoomOptions;
   }
 
-  declare interface control$FullScreenOptions {
+  declare interface olx$control$FullScreenOptions {
     className?: string;
     label?: string | Node;
     labelActive?: string | Node;
@@ -11507,7 +11611,7 @@ the given size.
     source?: Element | string;
   }
 
-  declare interface control$MousePositionOptions {
+  declare interface olx$control$MousePositionOptions {
     className?: string;
     coordinateFormat?: ol.CoordinateFormatType;
     projection: ol.ProjectionLike;
@@ -11516,32 +11620,27 @@ the given size.
     undefinedHTML?: string;
   }
 
-  declare interface control$OverviewMapOptions {
+  declare interface olx$control$OverviewMapOptions {
     collapsed?: boolean;
     collapseLabel?: string | Node;
     collapsible?: boolean;
     label?: string | Node;
-    layers?: ol.layer.layer$Layer[] | ol.Collection<ol.layer.layer$Layer>;
+    layers?: ol.layer.Layer[] | ol.Collection<ol.layer.Layer>;
     render?: (event: ol.MapEvent) => any;
     target?: Element;
     tipLabel?: string;
     view?: ol.View;
   }
 
-  declare interface control$ScaleLineOptions {
+  declare interface olx$control$ScaleLineOptions {
     className?: string;
     minWidth?: number;
     render?: (event: ol.MapEvent) => any;
     target?: Element;
-    units?: ol.control.control$ScaleLine.proj$Units | string;
+    units?: ol.control.ScaleLine.Units | string;
   }
 
-  declare interface control$RotateOptions {
-    rotation?: number;
-    anchor?: ol.Coordinate;
-    start?: number;
-    duration?: number;
-    easing?: (t: number) => number;
+  declare interface olx$control$RotateOptions {
     className?: string;
     label?: string | Element;
     tipLabel?: string;
@@ -11552,11 +11651,7 @@ the given size.
     target?: Element;
   }
 
-  declare interface control$ZoomOptions {
-    resolution: number;
-    start?: number;
-    duration?: number;
-    easing?: (t: number) => number;
+  declare interface olx$control$ZoomOptions {
     duration?: number;
     className?: string;
     zoomInLabel?: string | Node;
@@ -11567,7 +11662,7 @@ the given size.
     target?: Element;
   }
 
-  declare interface control$ZoomSliderOptions {
+  declare interface olx$control$ZoomSliderOptions {
     className?: string;
     duration?: number;
     maxResolution?: number;
@@ -11575,47 +11670,47 @@ the given size.
     render?: (event: ol.MapEvent) => any;
   }
 
-  declare interface control$ZoomToExtentOptions {
+  declare interface olx$control$ZoomToExtentOptions {
     className?: string;
     target?: Element;
     label?: string | Node;
     tipLabel?: string;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
   }
 
-  declare interface format$ReadOptions {
+  declare interface olx$format$ReadOptions {
     dataProjection: ol.ProjectionLike;
     featureProjection: ol.ProjectionLike;
   }
 
-  declare interface format$WriteOptions {
+  declare interface olx$format$WriteOptions {
     dataProjection: ol.ProjectionLike;
     featureProjection?: ol.ProjectionLike;
     rightHanded?: boolean;
     decimals?: number;
   }
 
-  declare interface format$GeoJSONOptions {
+  declare interface olx$format$GeoJSONOptions {
     defaultDataProjection: ol.ProjectionLike;
     featureProjection: ol.ProjectionLike;
     geometryName?: string;
   }
 
-  declare interface format$EsriJSONOptions {
+  declare interface olx$format$EsriJSONOptions {
     geometryName?: string;
   }
 
-  declare interface format$MVTOptions {
+  declare interface olx$format$MVTOptions {
     featureClass?:
       | ((
           geom:
-            | ol.geom.geom$Geometry
+            | ol.geom.Geometry
             | {
                 [k: string]: any
               }
         ) => any)
       | ((
-          geom: ol.geom.geom$GeometryType,
+          geom: ol.geom.GeometryType,
           arg2: number[],
           arg3: number[] | number[][],
           arg4: {
@@ -11627,27 +11722,27 @@ the given size.
     layers?: string[];
   }
 
-  declare interface format$PolylineOptions {
+  declare interface olx$format$PolylineOptions {
     factor?: number;
-    geometryLayout?: ol.geom.geom$GeometryLayout;
+    geometryLayout?: ol.geom.GeometryLayout;
   }
 
-  declare interface format$TopoJSONOptions {
+  declare interface olx$format$TopoJSONOptions {
     defaultDataProjection: ol.ProjectionLike;
   }
 
-  declare interface format$IGCOptions {
-    altitudeMode?: ol.coordinate$format.format$IGCZ;
+  declare interface olx$format$IGCOptions {
+    altitudeMode?: ol.format.IGCZ;
   }
 
-  declare interface format$KMLOptions {
+  declare interface olx$format$KMLOptions {
     extractStyles?: boolean;
     showPointNames?: boolean;
-    defaultStyle?: ol.style.style$Style[];
+    defaultStyle?: ol.style.Style[];
     writeStyles?: boolean;
   }
 
-  declare interface format$GMLOptions {
+  declare interface olx$format$GMLOptions {
     featureNS?:
       | {
           [k: string]: string
@@ -11662,22 +11757,22 @@ the given size.
     schemaLocation?: string;
   }
 
-  declare interface format$GPXOptions {
-    readExtensions?: (feature: ol.render$Feature, node: Node) => any;
+  declare interface olx$format$GPXOptions {
+    readExtensions?: (feature: ol.Feature, node: Node) => any;
   }
 
-  declare interface format$WFSOptions {
+  declare interface olx$format$WFSOptions {
     featureNS?:
       | {
           [k: string]: string
         }
       | string;
     featureType?: string[] | string;
-    gmlFormat?: ol.coordinate$format.format$GMLBase;
+    gmlFormat?: ol.format.GMLBase;
     schemaLocation?: string;
   }
 
-  declare interface format$WFSWriteGetFeatureOptions {
+  declare interface olx$format$WFSWriteGetFeatureOptions {
     featureNS: string;
     featurePrefix: string;
     featureTypes: string[];
@@ -11689,43 +11784,40 @@ the given size.
     propertyNames?: string[];
     startIndex?: number;
     count?: number;
-    loadingstrategy$bbox?: ol.interaction$Extent;
-    filter?: ol.coordinate$format.filter.filter$Filter;
+    bbox?: ol.Extent;
+    filter?: ol.format.filter.Filter;
     resultType?: string;
   }
 
-  declare interface format$WFSWriteTransactionOptions {
+  declare interface olx$format$WFSWriteTransactionOptions {
     featureNS: string;
     featurePrefix: string;
     featureType: string;
     srsName?: string;
     handle?: string;
     nativeElements: GlobalObject[];
-    gmlOptions?: format$GMLOptions;
+    gmlOptions?: olx$format$GMLOptions;
   }
 
-  declare interface format$WKTOptions {
+  declare interface olx$format$WKTOptions {
     splitCollection?: boolean;
   }
 
-  declare interface format$WMSGetFeatureInfoOptions {
+  declare interface olx$format$WMSGetFeatureInfoOptions {
     layers?: string[];
   }
 
   /**
    * Object literal with config options for interactions.
    */
-  declare interface interaction$InteractionOptions {
+  declare interface olx$interaction$InteractionOptions {
     handleEvent: (event: ol.MapBrowserEvent) => boolean;
   }
 
-  declare interface interaction$DefaultsOptions {
-    attribution?: boolean;
-    attributionOptions?: control$AttributionOptions;
-    coordinate$rotate?: boolean;
-    rotateOptions?: control$RotateOptions;
-    zoom?: boolean;
-    zoomOptions?: control$ZoomOptions;
+  /**
+   * Interactions for the map. Default is `true` for all options.
+   */
+  declare interface olx$interaction$DefaultsOptions {
     altShiftDragRotate?: boolean;
     doubleClickZoom?: boolean;
     constrainResolution?: boolean;
@@ -11739,57 +11831,57 @@ the given size.
     zoomDuration?: number;
   }
 
-  declare interface interaction$DoubleClickZoomOptions {
+  declare interface olx$interaction$DoubleClickZoomOptions {
     duration?: number;
     delta?: number;
   }
 
-  declare interface interaction$DragAndDropOptions {
-    formatConstructors?: Array<typeof undefined>;
+  declare interface olx$interaction$DragAndDropOptions {
+    formatConstructors?: Array<typeof format$Feature>;
     projection: ol.ProjectionLike;
     target?: Element;
-    source?: ol.source.source$Vector;
+    source?: ol.source.Vector;
   }
 
-  declare interface interaction$DragBoxOptions {
+  declare interface olx$interaction$DragBoxOptions {
     className?: string;
     condition?: ol.EventsConditionType;
     minArea?: number;
     boxEndCondition?: ol.DragBoxEndConditionType;
   }
 
-  declare interface interaction$DragPanOptions {
+  declare interface olx$interaction$DragPanOptions {
     condition?: ol.EventsConditionType;
     kinetic?: ol.Kinetic;
   }
 
-  declare interface interaction$DragRotateAndZoomOptions {
+  declare interface olx$interaction$DragRotateAndZoomOptions {
     condition?: ol.EventsConditionType;
     duration?: number;
   }
 
-  declare interface interaction$DragRotateOptions {
+  declare interface olx$interaction$DragRotateOptions {
     condition?: ol.EventsConditionType;
     duration?: number;
   }
 
-  declare interface interaction$DragZoomOptions {
+  declare interface olx$interaction$DragZoomOptions {
     className?: string;
     condition?: ol.EventsConditionType;
     duration?: number;
     out?: boolean;
   }
 
-  declare interface interaction$DrawOptions {
+  declare interface olx$interaction$DrawOptions {
     clickTolerance?: number;
-    features?: ol.Collection<ol.render$Feature>;
-    source?: ol.source.source$Vector;
+    features?: ol.Collection<ol.Feature>;
+    source?: ol.source.Vector;
     snapTolerance?: number;
-    type: ol.geom.geom$GeometryType;
+    type: ol.geom.GeometryType;
     maxPoints?: number;
     minPoints?: number;
     finishCondition?: ol.EventsConditionType;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     geometryFunction?: ol.DrawGeometryFunctionType;
     geometryName?: string;
     condition?: ol.EventsConditionType;
@@ -11799,65 +11891,60 @@ the given size.
     stopClick?: boolean;
   }
 
-  declare interface interaction$ExtentOptions {
-    extent?: ol.interaction$Extent;
-    boxStyle?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+  declare interface olx$interaction$ExtentOptions {
+    extent?: ol.Extent;
+    boxStyle?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     pixelTolerance?: number;
-    pointerStyle?:
-      | ol.style.style$Style
-      | ol.style.style$Style[]
-      | ol.StyleFunction;
+    pointerStyle?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     wrapX?: boolean;
   }
 
-  declare interface interaction$TranslateOptions {
-    features?: ol.Collection<ol.render$Feature>;
-    layers?:
-      | ol.layer.layer$Layer[]
-      | ((layer: ol.layer.layer$Layer) => boolean);
+  declare interface olx$interaction$TranslateOptions {
+    features?: ol.Collection<ol.Feature>;
+    layers?: ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean);
   }
 
-  declare interface interaction$KeyboardPanOptions {
+  declare interface olx$interaction$KeyboardPanOptions {
     condition?: ol.EventsConditionType;
     duration?: number;
     pixelDelta?: number;
   }
 
-  declare interface interaction$KeyboardZoomOptions {
+  declare interface olx$interaction$KeyboardZoomOptions {
     duration?: number;
     condition?: ol.EventsConditionType;
     delta?: number;
   }
 
-  declare interface interaction$ModifyOptions {
+  declare interface olx$interaction$ModifyOptions {
     condition?: ol.EventsConditionType;
     deleteCondition?: ol.EventsConditionType;
     insertVertexCondition?: ol.EventsConditionType;
     pixelTolerance?: number;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
-    features?: ol.Collection<ol.render$Feature>;
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
+    features?: ol.Collection<ol.Feature>;
     wrapX?: boolean;
-    source?: ol.source.source$Vector;
+    source?: ol.source.Vector;
   }
 
-  declare interface interaction$MouseWheelZoomOptions {
+  declare interface olx$interaction$MouseWheelZoomOptions {
     constrainResolution?: boolean;
     duration?: number;
     timeout?: number;
     useAnchor?: boolean;
   }
 
-  declare interface interaction$PinchRotateOptions {
+  declare interface olx$interaction$PinchRotateOptions {
     duration?: number;
     threshold?: number;
   }
 
-  declare interface interaction$PinchZoomOptions {
+  declare interface olx$interaction$PinchZoomOptions {
     constrainResolution?: boolean;
     duration?: number;
   }
 
-  declare interface interaction$PointerOptions {
+  declare interface olx$interaction$PointerOptions {
     handleDownEvent?: (event: ol.MapBrowserPointerEvent) => boolean;
     handleDragEvent?: (event: ol.MapBrowserPointerEvent) => boolean;
     handleEvent?: (event: ol.MapBrowserPointerEvent) => boolean;
@@ -11865,17 +11952,15 @@ the given size.
     handleUpEvent?: (event: ol.MapBrowserPointerEvent) => boolean;
   }
 
-  declare interface interaction$SelectOptions {
+  declare interface olx$interaction$SelectOptions {
     addCondition?: ol.EventsConditionType;
     condition?: ol.EventsConditionType;
-    layers?:
-      | ol.layer.layer$Layer[]
-      | ((layer: ol.layer.layer$Layer) => boolean);
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+    layers?: ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean);
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     removeCondition?: ol.EventsConditionType;
     toggleCondition?: ol.EventsConditionType;
     multi?: boolean;
-    features?: ol.Collection<ol.render$Feature>;
+    features?: ol.Collection<ol.Feature>;
     filter?: ol.SelectFilterFunction;
     wrapX?: boolean;
     hitTolerance?: number;
@@ -11884,76 +11969,76 @@ the given size.
   /**
    * Options for snap
    */
-  declare interface interaction$SnapOptions {
-    features?: ol.Collection<ol.render$Feature>;
+  declare interface olx$interaction$SnapOptions {
+    features?: ol.Collection<ol.Feature>;
     edge?: boolean;
     vertex?: boolean;
     pixelTolerance?: number;
-    source?: ol.source.source$Vector;
+    source?: ol.source.Vector;
   }
 
-  declare interface layer$BaseOptions {
+  declare interface olx$layer$BaseOptions {
     opacity?: number;
     visible?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     zIndex?: number;
     minResolution?: number;
     maxResolution?: number;
   }
 
-  declare interface layer$LayerOptions {
+  declare interface olx$layer$LayerOptions {
     opacity?: number;
-    source?: ol.source.source$Source;
+    source?: ol.source.Source;
     visible?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     zIndex?: number;
     minResolution?: number;
     maxResolution?: number;
   }
 
-  declare interface layer$GroupOptions {
+  declare interface olx$layer$GroupOptions {
     opacity?: number;
     visible?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     zIndex?: number;
     minResolution?: number;
     maxResolution?: number;
-    layers?: ol.layer.layer$Base[] | ol.Collection<ol.layer.layer$Base>;
+    layers?: ol.layer.Base[] | ol.Collection<ol.layer.Base>;
   }
 
-  declare interface layer$HeatmapOptions {
+  declare interface olx$layer$HeatmapOptions {
     gradient?: string[];
     radius?: number;
     blur?: number;
     shadow?: number;
-    weight: string | ((feature: ol.render$Feature) => number);
-    extent?: ol.interaction$Extent;
+    weight: string | ((feature: ol.Feature) => number);
+    extent?: ol.Extent;
     minResolution?: number;
     maxResolution?: number;
     opacity?: number;
-    source: ol.source.source$Vector;
+    source: ol.source.Vector;
     visible?: boolean;
     zIndex?: number;
   }
 
-  declare interface layer$ImageOptions {
+  declare interface olx$layer$ImageOptions {
     opacity?: number;
-    source: ol.source.style$Image;
+    source: ol.source.Image;
     map?: ol.Map;
     visible?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     minResolution?: number;
     maxResolution?: number;
     zIndex?: number;
   }
 
-  declare interface layer$TileOptions {
+  declare interface olx$layer$TileOptions {
     opacity?: number;
     preload?: number;
-    source: ol.source.source$Tile;
+    source: ol.source.Tile;
     map?: ol.Map;
     visible?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     minResolution?: number;
     maxResolution?: number;
     useInterimTilesOnError?: boolean;
@@ -11970,86 +12055,49 @@ the given size.
    * Default is `vector`.
    * @api
    */
-  declare type layer$VectorRenderType = "image" | "vector";
+  declare type olx$layer$VectorRenderType = "image" | "vector";
 
-  declare interface layer$VectorOptions {
-    renderMode?: layer$VectorRenderType | string;
-    renderOrder?: (
-      feature1: ol.render$Feature,
-      feature2: ol.render$Feature
-    ) => number;
+  declare interface olx$layer$VectorOptions {
+    renderMode?: olx$layer$VectorRenderType | string;
+    renderOrder?: (feature1: ol.Feature, feature2: ol.Feature) => number;
     map?: ol.Map;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     minResolution?: number;
     maxResolution?: number;
     opacity?: number;
     renderBuffer?: number;
-    source: ol.source.source$Vector;
+    source: ol.source.Vector;
     declutter?: boolean;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     updateWhileAnimating?: boolean;
     updateWhileInteracting?: boolean;
     visible?: boolean;
     zIndex?: number;
-    attributions?: ol.AttributionLike;
-    features?: ol.render$Feature[] | ol.Collection<ol.render$Feature>;
-    coordinate$format?: ol.coordinate$format.render$Feature;
-    loader?: ol.FeatureLoader;
-    logo?: string | olx$LogoOptions;
-    overlaps?: boolean;
-    strategy?: ol.LoadingStrategy;
-    url?: string | ol.FeatureUrlFunction;
-    useSpatialIndex?: boolean;
-    wrapX?: boolean;
   }
 
-  declare interface layer$VectorTileOptions {
+  declare interface olx$layer$VectorTileOptions {
     renderBuffer?: number;
-    renderMode?: ol.layer.layer$VectorTileRenderType | string;
-    renderOrder?: (
-      feature1: ol.render$Feature,
-      feature2: ol.render$Feature
-    ) => number;
+    renderMode?: ol.layer.VectorTileRenderType | string;
+    renderOrder?: (feature1: ol.Feature, feature2: ol.Feature) => number;
     map?: ol.Map;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     minResolution?: number;
     maxResolution?: number;
     opacity?: number;
-    source?: ol.source.source$VectorTile;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+    source?: ol.source.VectorTile;
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
     updateWhileAnimating?: boolean;
     updateWhileInteracting?: boolean;
     visible?: boolean;
     zIndex?: number;
-    attributions?: ol.AttributionLike;
-    cacheSize?: number;
-    coordinate$format?: ol.coordinate$format.render$Feature;
-    logo?: string | olx$LogoOptions;
-    overlaps?: boolean;
-    projection: ol.ProjectionLike;
-    state?: ol.source.Tile$State;
-    tileClass?: (
-      n: ol.source$VectorTile,
-      coords: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
-      s: string,
-      feature: ol.coordinate$format.render$Feature,
-      type: ol.TileLoadFunctionType
-    ) => any;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
-    tileLoadFunction?: ol.TileLoadFunctionType;
-    tileUrlFunction?: ol.TileUrlFunctionType;
-    url?: string;
-    urls?: string[];
-    wrapX?: boolean;
   }
 
-  declare interface render$ToContextOptions {
+  declare interface olx$render$ToContextOptions {
     size?: ol.Size;
     pixelRatio?: number;
   }
 
-  declare interface source$BingMapsOptions {
+  declare interface olx$source$BingMapsOptions {
     cacheSize?: number;
     culture?: string;
     key: string;
@@ -12060,28 +12108,28 @@ the given size.
     wrapX?: boolean;
   }
 
-  declare interface source$ClusterOptions {
+  declare interface olx$source$ClusterOptions {
     attributions?: ol.AttributionLike;
     distance?: number;
-    extent?: ol.interaction$Extent;
-    geometryFunction?: (feature: ol.render$Feature) => ol.geom.geom$Point;
-    coordinate$format?: ol.coordinate$format.render$Feature;
+    extent?: ol.Extent;
+    geometryFunction?: (feature: ol.Feature) => ol.geom.Point;
+    format?: ol.format.Feature;
     logo?: string;
     projection?: ol.ProjectionLike;
-    source: ol.source.source$Vector;
+    source: ol.source.Vector;
     wrapX?: boolean;
   }
 
-  declare type source$TileJSON = JSON;
+  declare type olx$source$TileJSON = JSON;
 
-  declare interface source$TileUTFGridOptions {
+  declare interface olx$source$TileUTFGridOptions {
     jsonp?: boolean;
     preemptive?: boolean;
-    tileJSON?: source$TileJSON;
+    tileJSON?: olx$source$TileJSON;
     url?: string;
   }
 
-  declare interface source$TileImageOptions {
+  declare interface olx$source$TileImageOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12089,16 +12137,16 @@ the given size.
     opaque?: boolean;
     projection: ol.ProjectionLike;
     reprojectionErrorThreshold?: number;
-    state?: ol.source.Tile$State;
+    state?: ol.source.State;
     tileClass?: (
       n: ol.ImageTile,
       coords: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
+      state: ol.Tile.State,
       s1: string,
       s2: string,
       type: ol.TileLoadFunctionType
     ) => any;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     tileLoadFunction?: ol.TileLoadFunctionType;
     tilePixelRatio?: number;
     tileUrlFunction?: ol.TileUrlFunctionType;
@@ -12108,40 +12156,23 @@ the given size.
     transition?: number;
   }
 
-  declare interface source$VectorTileOptions {
-    renderBuffer?: number;
-    renderMode?: ol.layer.layer$VectorTileRenderType | string;
-    renderOrder?: (
-      feature1: ol.render$Feature,
-      feature2: ol.render$Feature
-    ) => number;
-    map?: ol.Map;
-    extent?: ol.interaction$Extent;
-    minResolution?: number;
-    maxResolution?: number;
-    opacity?: number;
-    source?: ol.source.source$VectorTile;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
-    updateWhileAnimating?: boolean;
-    updateWhileInteracting?: boolean;
-    visible?: boolean;
-    zIndex?: number;
+  declare interface olx$source$VectorTileOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
-    coordinate$format?: ol.coordinate$format.render$Feature;
+    format?: ol.format.Feature;
     logo?: string | olx$LogoOptions;
     overlaps?: boolean;
     projection: ol.ProjectionLike;
-    state?: ol.source.Tile$State;
+    state?: ol.source.State;
     tileClass?: (
-      n: ol.source$VectorTile,
+      n: ol.VectorTile,
       coords: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
+      state: ol.Tile.State,
       s: string,
-      feature: ol.coordinate$format.render$Feature,
+      feature: ol.format.Feature,
       type: ol.TileLoadFunctionType
     ) => any;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     tileLoadFunction?: ol.TileLoadFunctionType;
     tileUrlFunction?: ol.TileUrlFunctionType;
     url?: string;
@@ -12149,7 +12180,7 @@ the given size.
     wrapX?: boolean;
   }
 
-  declare interface source$ImageMapGuideOptions {
+  declare interface olx$source$ImageMapGuideOptions {
     url?: string;
     displayDpi?: number;
     metersPerUnit?: number;
@@ -12162,7 +12193,7 @@ the given size.
     params?: GlobalObject;
   }
 
-  declare interface source$MapQuestOptions {
+  declare interface olx$source$MapQuestOptions {
     cacheSize?: number;
     layer: string;
     reprojectionErrorThreshold?: number;
@@ -12170,13 +12201,13 @@ the given size.
     url?: string;
   }
 
-  declare interface source$TileDebugOptions {
+  declare interface olx$source$TileDebugOptions {
     projection: ol.ProjectionLike;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     wrapX?: boolean;
   }
 
-  declare interface source$OSMOptions {
+  declare interface olx$source$OSMOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12188,8 +12219,8 @@ the given size.
     wrapX?: boolean;
   }
 
-  declare interface source$ImageArcGISRestOptions {
-    attributions?: ol.control$Attribution[];
+  declare interface olx$source$ImageArcGISRestOptions {
+    attributions?: ol.Attribution[];
     crossOrigin?: string;
     hidpi?: boolean;
     logo?: string | olx$LogoOptions;
@@ -12203,43 +12234,43 @@ the given size.
     url?: string;
   }
 
-  declare interface source$ImageCanvasOptions {
+  declare interface olx$source$ImageCanvasOptions {
     attributions?: ol.AttributionLike;
     canvasFunction: ol.CanvasFunctionType;
     logo?: string | olx$LogoOptions;
     projection: ol.ProjectionLike;
     ratio?: number;
     resolutions?: number[];
-    state?: ol.source.Tile$State;
+    state?: ol.source.State;
   }
 
-  declare interface source$ImageVectorOptions {
+  declare interface olx$source$ImageVectorOptions {
     attributions?: ol.AttributionLike;
     logo?: string | olx$LogoOptions;
     projection: ol.ProjectionLike;
     ratio?: number;
     renderBuffer?: number;
     resolutions?: number[];
-    source: ol.source.source$Vector;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
+    source: ol.source.Vector;
+    style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
   }
 
   /**
    * @api
    */
-  declare interface source$RasterOptions {
-    sources: ol.source.source$Source[];
+  declare interface olx$source$RasterOptions {
+    sources: ol.source.Source[];
     operation?: ol.RasterOperation;
     lib?: GlobalObject;
     threads?: number;
     operationType?: ol.RasterOperationType;
   }
 
-  declare interface source$ImageWMSOptions {
+  declare interface olx$source$ImageWMSOptions {
     attributions?: ol.AttributionLike;
     crossOrigin?: string;
     hidpi?: boolean;
-    serverType?: ol.source.wms.wms$ServerType | string;
+    serverType?: ol.source.wms.ServerType | string;
     imageLoadFunction?: ol.ImageLoadFunctionType;
     logo?: string | olx$LogoOptions;
     params: {
@@ -12251,7 +12282,7 @@ the given size.
     url?: string;
   }
 
-  declare interface source$StamenOptions {
+  declare interface olx$source$StamenOptions {
     cacheSize?: number;
     layer: string;
     minZoom?: number;
@@ -12262,10 +12293,10 @@ the given size.
     url?: string;
   }
 
-  declare interface source$ImageStaticOptions {
+  declare interface olx$source$ImageStaticOptions {
     attributions?: ol.AttributionLike;
     crossOrigin?: string;
-    imageExtent: ol.interaction$Extent;
+    imageExtent: ol.Extent;
     imageLoadFunction?: ol.ImageLoadFunctionType;
     logo?: string | olx$LogoOptions;
     projection: ol.ProjectionLike;
@@ -12273,7 +12304,7 @@ the given size.
     url: string;
   }
 
-  declare interface source$TileArcGISRestOptions {
+  declare interface olx$source$TileArcGISRestOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12281,7 +12312,7 @@ the given size.
       [k: string]: any
     };
     logo?: string | olx$LogoOptions;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     projection?: ol.ProjectionLike;
     reprojectionErrorThreshold?: number;
     tileLoadFunction?: ol.TileLoadFunctionType;
@@ -12291,7 +12322,7 @@ the given size.
     urls?: string[];
   }
 
-  declare interface source$TileJSONOptions {
+  declare interface olx$source$TileJSONOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12303,7 +12334,7 @@ the given size.
     transition?: number;
   }
 
-  declare interface source$TileWMSOptions {
+  declare interface olx$source$TileWMSOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     params: {
@@ -12313,10 +12344,10 @@ the given size.
     gutter?: number;
     hidpi?: boolean;
     logo?: string | olx$LogoOptions;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     projection?: ol.ProjectionLike;
     reprojectionErrorThreshold?: number;
-    serverType?: ol.source.wms.wms$ServerType | string;
+    serverType?: ol.source.wms.ServerType | string;
     tileLoadFunction?: ol.TileLoadFunctionType;
     url?: string;
     urls?: string[];
@@ -12324,28 +12355,10 @@ the given size.
     transition?: number;
   }
 
-  declare interface source$VectorOptions {
-    renderMode?: layer$VectorRenderType | string;
-    renderOrder?: (
-      feature1: ol.render$Feature,
-      feature2: ol.render$Feature
-    ) => number;
-    map?: ol.Map;
-    extent?: ol.interaction$Extent;
-    minResolution?: number;
-    maxResolution?: number;
-    opacity?: number;
-    renderBuffer?: number;
-    source: ol.source.source$Vector;
-    declutter?: boolean;
-    style?: ol.style.style$Style | ol.style.style$Style[] | ol.StyleFunction;
-    updateWhileAnimating?: boolean;
-    updateWhileInteracting?: boolean;
-    visible?: boolean;
-    zIndex?: number;
+  declare interface olx$source$VectorOptions {
     attributions?: ol.AttributionLike;
-    features?: ol.render$Feature[] | ol.Collection<ol.render$Feature>;
-    coordinate$format?: ol.coordinate$format.render$Feature;
+    features?: ol.Feature[] | ol.Collection<ol.Feature>;
+    format?: ol.format.Feature;
     loader?: ol.FeatureLoader;
     logo?: string | olx$LogoOptions;
     overlaps?: boolean;
@@ -12355,46 +12368,37 @@ the given size.
     wrapX?: boolean;
   }
 
-  declare interface source$WMTSOptions {
+  declare interface olx$source$WMTSOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
     logo?: string | olx$LogoOptions;
-    tileGrid: ol.tilegrid.tilegrid$WMTS;
+    tileGrid: ol.tilegrid.WMTS;
     projection: ol.ProjectionLike;
     reprojectionErrorThreshold?: number;
-    requestEncoding?: ol.source.source$WMTSRequestEncoding | string;
+    requestEncoding?: ol.source.WMTSRequestEncoding | string;
     layer: string;
     style: string;
     tileClass?: (
       n: ol.ImageTile,
       coords: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
+      state: ol.Tile.State,
       s1: string,
       s2: string,
       type: ol.TileLoadFunctionType
     ) => any;
     tilePixelRatio?: number;
     version?: string;
-    coordinate$format?: string;
+    format?: string;
     matrixSet: string;
     dimensions?: GlobalObject;
     url?: string;
     tileLoadFunction?: ol.TileLoadFunctionType;
     urls?: string[];
     wrapX?: boolean;
-    extent?: ol.interaction$Extent;
-    origin?: ol.Coordinate;
-    origins?: ol.Coordinate[];
-    resolutions: number[];
-    matrixIds: string[];
-    sizes?: ol.Size[];
-    tileSize?: number | ol.Size;
-    tileSizes?: Array<number | ol.Size>;
-    widths?: number[];
   }
 
-  declare interface source$XYZOptions {
+  declare interface olx$source$XYZOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12404,7 +12408,7 @@ the given size.
     reprojectionErrorThreshold?: number;
     maxZoom?: number;
     minZoom?: number;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
+    tileGrid?: ol.tilegrid.TileGrid;
     tileLoadFunction?: ol.TileLoadFunctionType;
     tilePixelRatio?: number;
     tileSize?: number | ol.Size;
@@ -12412,13 +12416,9 @@ the given size.
     url?: string;
     urls?: string[];
     wrapX?: boolean;
-    extent?: ol.interaction$Extent;
-    maxZoom?: number;
-    minZoom?: number;
-    tileSize?: number | ol.Size;
   }
 
-  declare interface source$CartoDBOptions {
+  declare interface olx$source$CartoDBOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12432,7 +12432,7 @@ the given size.
     account: string;
   }
 
-  declare interface source$ZoomifyOptions {
+  declare interface olx$source$ZoomifyOptions {
     attributions?: ol.AttributionLike;
     cacheSize?: number;
     crossOrigin?: string;
@@ -12443,28 +12443,28 @@ the given size.
     size: ol.Size;
   }
 
-  declare interface style$CircleOptions {
-    fill?: ol.style.style$Fill;
+  declare interface olx$style$CircleOptions {
+    fill?: ol.style.Fill;
     radius: number;
     snapToPixel?: boolean;
-    stroke?: ol.style.style$Stroke;
-    atlasManager?: ol.style.style$AtlasManager;
+    stroke?: ol.style.Stroke;
+    atlasManager?: ol.style.AtlasManager;
   }
 
-  declare interface style$FillOptions {
+  declare interface olx$style$FillOptions {
     color?: ol.Color | ol.ColorLike;
   }
 
-  declare interface style$IconOptions {
+  declare interface olx$style$IconOptions {
     anchor?: number[];
-    anchorOrigin?: ol.style.style$IconOrigin;
-    anchorXUnits?: ol.style.style$IconAnchorUnits;
-    anchorYUnits?: ol.style.style$IconAnchorUnits;
+    anchorOrigin?: ol.style.IconOrigin;
+    anchorXUnits?: ol.style.IconAnchorUnits;
+    anchorYUnits?: ol.style.IconAnchorUnits;
     color?: ol.Color | string;
     crossOrigin?: string;
     img?: HTMLImageElement | HTMLCanvasElement;
     offset?: number[];
-    offsetOrigin?: ol.style.style$IconOrigin;
+    offsetOrigin?: ol.style.IconOrigin;
     opacity?: number;
     scale?: number;
     snapToPixel?: boolean;
@@ -12478,19 +12478,19 @@ the given size.
   /**
    * Specify radius for regular polygons, or radius1 and radius2 for stars.
    */
-  declare interface style$RegularShapeOptions {
-    fill?: ol.style.style$Fill;
+  declare interface olx$style$RegularShapeOptions {
+    fill?: ol.style.Fill;
     points: number;
     radius?: number;
     radius1?: number;
     radius2?: number;
     angle?: number;
     snapToPixel?: boolean;
-    stroke?: ol.style.style$Stroke;
+    stroke?: ol.style.Stroke;
     rotation?: number;
   }
 
-  declare interface style$StrokeOptions {
+  declare interface olx$style$StrokeOptions {
     color?: ol.Color | string;
     lineCap?: string;
     lineJoin?: string;
@@ -12506,45 +12506,45 @@ the given size.
    * {@link ol.geom.Polygon}, {@link ol.geom.MultiLineString} or
    * {@link ol.geom.MultiPolygon}.
    */
-  declare type style$TextPlacement = "point" | "line";
+  declare type olx$style$TextPlacement = "point" | "line";
 
-  declare interface style$TextOptions {
+  declare interface olx$style$TextOptions {
     font?: string;
     maxAngle?: boolean;
     offsetX?: number;
     offsetY?: number;
     overflow?: boolean;
-    placement?: style$TextPlacement;
+    placement?: olx$style$TextPlacement;
     scale?: number;
     rotateWithView?: boolean;
     rotation?: number;
     text?: string;
     textAlign?: string;
     textBaseline?: string;
-    fill?: ol.style.style$Fill;
-    stroke?: ol.style.style$Stroke;
-    backgroundFill?: ol.style.style$Fill;
-    backgroundStroke?: ol.style.style$Stroke;
+    fill?: ol.style.Fill;
+    stroke?: ol.style.Stroke;
+    backgroundFill?: ol.style.Fill;
+    backgroundStroke?: ol.style.Stroke;
     padding?: number[];
   }
 
-  declare interface style$StyleOptions {
-    geometry?: string | ol.geom.geom$Geometry | ol.StyleGeometryFunction;
-    fill?: ol.style.style$Fill;
-    image?: ol.style.style$Image;
-    stroke?: ol.style.style$Stroke;
-    text?: ol.style.style$Text;
+  declare interface olx$style$StyleOptions {
+    geometry?: string | ol.geom.Geometry | ol.StyleGeometryFunction;
+    fill?: ol.style.Fill;
+    image?: ol.style.Image;
+    stroke?: ol.style.Stroke;
+    text?: ol.style.Text;
     zIndex?: number;
   }
 
-  declare interface style$AtlasManagerOptions {
+  declare interface olx$style$AtlasManagerOptions {
     initialSize?: number;
     maxSize?: number;
     space?: number;
   }
 
-  declare interface tilegrid$TileGridOptions {
-    extent?: ol.interaction$Extent;
+  declare interface olx$tilegrid$TileGridOptions {
+    extent?: ol.Extent;
     minZoom?: number;
     origin?: ol.Coordinate;
     origins?: ol.Coordinate[];
@@ -12553,35 +12553,8 @@ the given size.
     tileSizes?: Array<number | ol.Size>;
   }
 
-  declare interface tilegrid$WMTSOptions {
-    attributions?: ol.AttributionLike;
-    cacheSize?: number;
-    crossOrigin?: string;
-    logo?: string | olx$LogoOptions;
-    tileGrid: ol.tilegrid.tilegrid$WMTS;
-    projection: ol.ProjectionLike;
-    reprojectionErrorThreshold?: number;
-    requestEncoding?: ol.source.source$WMTSRequestEncoding | string;
-    layer: string;
-    style: string;
-    tileClass?: (
-      n: ol.ImageTile,
-      coords: ol.TileCoord,
-      state: ol.source$Tile.Tile$State,
-      s1: string,
-      s2: string,
-      type: ol.TileLoadFunctionType
-    ) => any;
-    tilePixelRatio?: number;
-    version?: string;
-    coordinate$format?: string;
-    matrixSet: string;
-    dimensions?: GlobalObject;
-    url?: string;
-    tileLoadFunction?: ol.TileLoadFunctionType;
-    urls?: string[];
-    wrapX?: boolean;
-    extent?: ol.interaction$Extent;
+  declare interface olx$tilegrid$WMTSOptions {
+    extent?: ol.Extent;
     origin?: ol.Coordinate;
     origins?: ol.Coordinate[];
     resolutions: number[];
@@ -12592,39 +12565,14 @@ the given size.
     widths?: number[];
   }
 
-  declare interface tilegrid$XYZOptions {
-    attributions?: ol.AttributionLike;
-    cacheSize?: number;
-    crossOrigin?: string;
-    logo?: string | olx$LogoOptions;
-    opaque?: boolean;
-    projection?: ol.ProjectionLike;
-    reprojectionErrorThreshold?: number;
-    maxZoom?: number;
-    minZoom?: number;
-    tileGrid?: ol.tilegrid.tilegrid$TileGrid;
-    tileLoadFunction?: ol.TileLoadFunctionType;
-    tilePixelRatio?: number;
-    tileSize?: number | ol.Size;
-    tileUrlFunction?: ol.TileUrlFunctionType;
-    url?: string;
-    urls?: string[];
-    wrapX?: boolean;
-    extent?: ol.interaction$Extent;
+  declare interface olx$tilegrid$XYZOptions {
+    extent?: ol.Extent;
     maxZoom?: number;
     minZoom?: number;
     tileSize?: number | ol.Size;
   }
 
   declare interface olx$AttributionOptions {
-    className?: string;
-    target?: Element;
-    collapsible?: boolean;
-    collapsed?: boolean;
-    tipLabel?: string;
-    label?: string | Node;
-    collapseLabel?: string | Node;
-    render?: (event: ol.MapEvent) => any;
     html: string;
   }
 
@@ -12649,30 +12597,28 @@ the given size.
   declare interface olx$GraticuleOptions {
     map?: ol.Map;
     maxLines?: number;
-    strokeStyle?: ol.style.style$Stroke;
+    strokeStyle?: ol.style.Stroke;
     targetSize?: number;
     showLabels?: boolean;
     lonLabelFormatter?: (lon: number) => string;
     latLabelFormatter?: (lat: number) => string;
     lonLabelPosition?: number;
     latLabelPosition?: number;
-    lonLabelStyle?: ol.style.style$Text;
-    latLabelStyle?: ol.style.style$Text;
+    lonLabelStyle?: ol.style.Text;
+    latLabelStyle?: ol.style.Text;
   }
 
   /**
    * Object literal with config options for the map.
    */
   declare interface olx$MapOptions {
-    controls?:
-      | ol.Collection<ol.control.control$Control>
-      | ol.control.control$Control[];
+    controls?: ol.Collection<ol.control.Control> | ol.control.Control[];
     pixelRatio?: number;
     interactions?:
-      | ol.Collection<ol.interaction.interaction$Interaction>
-      | ol.interaction.interaction$Interaction[];
+      | ol.Collection<ol.interaction.Interaction>
+      | ol.interaction.Interaction[];
     keyboardEventTarget?: Element | Document | string;
-    layers?: ol.layer.layer$Base[] | ol.Collection<ol.layer.layer$Base>;
+    layers?: ol.layer.Base[] | ol.Collection<ol.layer.Base>;
     loadTilesWhileAnimating?: boolean;
     loadTilesWhileInteracting?: boolean;
     logo?: boolean | string | olx$LogoOptions | Element;
@@ -12695,7 +12641,7 @@ the given size.
     stopEvent?: boolean;
     insertFirst?: boolean;
     autoPan?: boolean;
-    autoPanAnimation?: animation$animation$PanOptions;
+    autoPanAnimation?: olx$animation$PanOptions;
     autoPanMargin?: number;
   }
 
@@ -12704,19 +12650,16 @@ the given size.
    */
   declare interface olx$ProjectionOptions {
     code: string;
-    units?: ol.proj.proj$Units | string;
-    extent?: ol.interaction$Extent;
+    units?: ol.proj.Units | string;
+    extent?: ol.Extent;
     axisOrientation?: string;
     global?: boolean;
     metersPerUnit?: number;
-    worldExtent?: ol.interaction$Extent;
-    proj$getPointResolution?: (
-      resolution: number,
-      coords: ol.Coordinate
-    ) => number;
+    worldExtent?: ol.Extent;
+    getPointResolution?: (resolution: number, coords: ol.Coordinate) => number;
   }
 
-  declare interface view$FitOptions {
+  declare interface olx$view$FitOptions {
     size?: ol.Size;
     padding?: number[];
     constrainResolution?: boolean;
@@ -12725,7 +12668,7 @@ the given size.
     maxZoom?: number;
     duration?: number;
     easing?: (t: number) => number;
-    callback?: animation$animation$AnimateCallback;
+    callback?: olx$animation$AnimateCallback;
   }
 
   /**
@@ -12735,7 +12678,7 @@ the given size.
     center?: ol.Coordinate;
     constrainRotation?: boolean | number;
     enableRotation?: boolean;
-    extent?: ol.interaction$Extent;
+    extent?: ol.Extent;
     maxResolution?: number;
     minResolution?: number;
     maxZoom?: number;
@@ -12753,7 +12696,7 @@ the given size.
    * {@link ol.Map#hasFeatureAtPixel} methods.
    */
   declare interface olx$AtPixelOptions {
-    layerFilter?: (layer: ol.layer.layer$Layer) => boolean;
+    layerFilter?: (layer: ol.layer.Layer) => boolean;
     hitTolerance?: number;
   }
 
@@ -12765,7 +12708,7 @@ the given size.
 
   declare interface olx$ViewState {
     center: ol.Coordinate;
-    projection: ol.proj.proj$Projection;
+    projection: ol.proj.Projection;
     resolution: number;
     rotation: number;
   }
