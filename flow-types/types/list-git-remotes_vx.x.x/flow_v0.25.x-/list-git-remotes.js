@@ -1,15 +1,13 @@
 declare module "list-git-remotes" {
   import type { ExecException, ExecSyncOptions } from "child_process";
 
-  declare module.exports: typeof listGitRemotes;
+  declare export default typeof listGitRemotes;
 
-  declare function listGitRemotes(
-    callback: listGitRemotes$listGitRemotes$Callback
-  ): void;
+  declare function listGitRemotes(callback: listGitRemotes$Callback): void;
 
   declare function listGitRemotes(
     cwd: string,
-    callback: listGitRemotes$listGitRemotes$Callback
+    callback: listGitRemotes$Callback
   ): void;
 
   declare var npm$namespace$listGitRemotes: {
