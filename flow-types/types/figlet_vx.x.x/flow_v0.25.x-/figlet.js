@@ -400,24 +400,24 @@ declare module "figlet" {
   ): void;
 
   /**
- * @todo Use 'node' namespace to add following methods only in node environment.
- * @warn This method works in node environment only.
-In browser environment, this method does not work.
- */
+   * @todo Use 'node' namespace to add following methods only in node environment.
+   * @warn This method works in node environment only.
+   * In browser environment, this method does not work.
+   */
   declare function figlet$loadFontSync(font: figlet$Fonts): figlet$FontOptions;
 
   /**
- * @warn This method exists in node environment only.
-In browser environment, this method does not exist.
- */
+   * @warn This method exists in node environment only.
+   * In browser environment, this method does not exist.
+   */
   declare function figlet$fonts(
     cb: (error: Error | null, fontList?: figlet$Fonts[]) => void
   ): void;
 
   /**
- * @warn This method exists in node environment only.
-In browser environment, this method does not exist.
- */
+   * @warn This method exists in node environment only.
+   * In browser environment, this method does not exist.
+   */
   declare function figlet$fontsSync(): figlet$Fonts[];
 
   declare function figlet(
@@ -427,7 +427,7 @@ In browser environment, this method does not exist.
 
   declare function figlet(
     txt: string,
-    font: figlet$figlet$Fonts,
+    font: figlet$Fonts,
     cb: (error: Error | null, result?: string) => void
   ): void;
 
@@ -436,9 +436,9 @@ In browser environment, this method does not exist.
    */
   declare function figlet(
     txt: string,
-    options: figlet$figlet$Options | void,
+    options: figlet$Options | void,
     cb: (error: Error | null, result?: string) => void
   ): void;
 
-  declare module.exports: typeof figlet;
+  declare export default typeof figlet;
 }
