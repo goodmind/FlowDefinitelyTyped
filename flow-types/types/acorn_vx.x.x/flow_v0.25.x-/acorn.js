@@ -1,5 +1,5 @@
 declare module "acorn" {
-  declare module.exports: typeof acorn;
+  declare export default typeof acorn;
 
   import typeof * as ESTree from "estree";
 
@@ -21,7 +21,14 @@ declare module "acorn" {
     parse: typeof acorn$parse,
     parse_dammit: typeof acorn$parse_dammit,
     LooseParser: typeof acorn$LooseParser,
-    pluginsLoose: typeof acorn$pluginsLoose
+    pluginsLoose: typeof acorn$pluginsLoose,
+
+    Parser: typeof acorn$Parser,
+    Position: typeof acorn$Position,
+    SourceLocation: typeof acorn$SourceLocation,
+    Node: typeof acorn$Node,
+    TokenType: typeof acorn$TokenType,
+    TokContext: typeof acorn$TokContext
   };
   declare interface acorn$PlainObject {
     [name: string]: any;
@@ -36,11 +43,11 @@ declare module "acorn" {
     sourceType?: "script" | "module";
     onInsertedSemicolon?: (
       lastTokEnd: number,
-      lastTokEndLoc?: ESTree.acorn$Position
+      lastTokEndLoc?: ESTree.Position
     ) => void;
     onTrailingComma?: (
       lastTokEnd: number,
-      lastTokEndLoc?: ESTree.acorn$Position
+      lastTokEndLoc?: ESTree.Position
     ) => void;
     allowReserved?: boolean;
     allowReturnOutsideFunction?: boolean;
@@ -54,8 +61,8 @@ declare module "acorn" {
           text: string,
           start: number,
           end: number,
-          startLoc?: ESTree.acorn$Position,
-          endLoc?: ESTree.acorn$Position
+          startLoc?: ESTree.Position,
+          endLoc?: ESTree.Position
         ) => void)
       | acorn$Comment[];
     ranges?: boolean;
@@ -75,14 +82,14 @@ declare module "acorn" {
 
   declare var acorn$defaultOptions: acorn$Options;
 
-  declare class acorn$Position mixins ESTree.acorn$Position {
+  declare class acorn$Position mixins ESTree.Position {
     line: number;
     column: number;
     constructor(line: number, col: number): this;
     offset(n: number): acorn$Position;
   }
 
-  declare class acorn$SourceLocation mixins ESTree.acorn$SourceLocation {
+  declare class acorn$SourceLocation mixins ESTree.SourceLocation {
     start: acorn$Position;
     end: acorn$Position;
     source: string | null;
@@ -96,13 +103,13 @@ declare module "acorn" {
   declare function acorn$getLineInfo(
     input: string,
     offset: number
-  ): ESTree.acorn$Position;
+  ): ESTree.Position;
 
   declare class acorn$Node {
     type: string;
     start: number;
     end: number;
-    loc: ESTree.acorn$SourceLocation;
+    loc: ESTree.SourceLocation;
     sourceFile: string;
     range: [number, number];
     constructor(parser: acorn$Parser, pos: number, loc: number): this;
@@ -248,12 +255,12 @@ declare module "acorn" {
   declare type acorn$Comment = {
     type: string,
     value: string
-  } & acorn$AbstractToken;
+  } & AbstractToken;
 
   declare type acorn$Token = {
     type: acorn$TokenType,
     value: any
-  } & acorn$AbstractToken;
+  } & AbstractToken;
 
   declare function acorn$isNewLine(code: number): boolean;
 
@@ -300,8 +307,8 @@ declare module "acorn" {
   declare interface acorn$ILooseParser {}
 
   declare function acorn$addLooseExports(
-    acorn$parse: acorn$IParse,
+    parse: acorn$IParse,
     parser: acorn$ILooseParserClass,
-    acorn$plugins: acorn$PluginsObject
+    plugins: acorn$PluginsObject
   ): void;
 }
