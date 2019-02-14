@@ -1,59 +1,63 @@
 declare module "gapi.client.adexchangebuyer" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts,
-    billingInfo: typeof client$billingInfo,
-    budget: typeof client$budget,
-    creatives: typeof client$creatives,
-    marketplacedeals: typeof client$marketplacedeals,
-    marketplacenotes: typeof client$marketplacenotes,
-    marketplaceprivateauction: typeof client$marketplaceprivateauction,
-    performanceReport: typeof client$performanceReport,
-    pretargetingConfig: typeof client$pretargetingConfig,
-    products: typeof client$products,
-    proposals: typeof client$proposals,
-    pubprofiles: typeof client$pubprofiles
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts,
+    billingInfo: typeof gapi$client$billingInfo,
+    budget: typeof gapi$client$budget,
+    creatives: typeof gapi$client$creatives,
+    marketplacedeals: typeof gapi$client$marketplacedeals,
+    marketplacenotes: typeof gapi$client$marketplacenotes,
+    marketplaceprivateauction: typeof gapi$client$marketplaceprivateauction,
+    performanceReport: typeof gapi$client$performanceReport,
+    pretargetingConfig: typeof gapi$client$pretargetingConfig,
+    products: typeof gapi$client$products,
+    proposals: typeof gapi$client$proposals,
+    pubprofiles: typeof gapi$client$pubprofiles
   };
 
   /**
    * Load Ad Exchange Buyer API v1.4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangebuyer",
     version: "v1.4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangebuyer",
     version: "v1.4",
     callback: () => any
   ): void;
 
-  declare var client$accounts: adexchangebuyer$adexchangebuyer$AccountsResource;
+  declare var gapi$client$accounts: adexchangebuyer$AccountsResource;
 
-  declare var client$billingInfo: adexchangebuyer$adexchangebuyer$BillingInfoResource;
+  declare var gapi$client$billingInfo: adexchangebuyer$BillingInfoResource;
 
-  declare var client$budget: adexchangebuyer$adexchangebuyer$BudgetResource;
+  declare var gapi$client$budget: adexchangebuyer$BudgetResource;
 
-  declare var client$creatives: adexchangebuyer$adexchangebuyer$CreativesResource;
+  declare var gapi$client$creatives: adexchangebuyer$CreativesResource;
 
-  declare var client$marketplacedeals: adexchangebuyer$adexchangebuyer$MarketplacedealsResource;
+  declare var gapi$client$marketplacedeals: adexchangebuyer$MarketplacedealsResource;
 
-  declare var client$marketplacenotes: adexchangebuyer$adexchangebuyer$MarketplacenotesResource;
+  declare var gapi$client$marketplacenotes: adexchangebuyer$MarketplacenotesResource;
 
-  declare var client$marketplaceprivateauction: adexchangebuyer$adexchangebuyer$MarketplaceprivateauctionResource;
+  declare var gapi$client$marketplaceprivateauction: adexchangebuyer$MarketplaceprivateauctionResource;
 
-  declare var client$performanceReport: adexchangebuyer$adexchangebuyer$PerformanceReportResource;
+  declare var gapi$client$performanceReport: adexchangebuyer$PerformanceReportResource;
 
-  declare var client$pretargetingConfig: adexchangebuyer$adexchangebuyer$PretargetingConfigResource;
+  declare var gapi$client$pretargetingConfig: adexchangebuyer$PretargetingConfigResource;
 
-  declare var client$products: adexchangebuyer$adexchangebuyer$ProductsResource;
+  declare var gapi$client$products: adexchangebuyer$ProductsResource;
 
-  declare var client$proposals: adexchangebuyer$adexchangebuyer$ProposalsResource;
+  declare var gapi$client$proposals: adexchangebuyer$ProposalsResource;
 
-  declare var client$pubprofiles: adexchangebuyer$adexchangebuyer$PubprofilesResource;
+  declare var gapi$client$pubprofiles: adexchangebuyer$PubprofilesResource;
 
-  declare interface adexchangebuyer$Account {
+  declare interface gapi$client$adexchangebuyer$Account {
     /**
      * Your bidder locations that have distinct URLs.
      */
@@ -130,11 +134,11 @@ declare module "gapi.client.adexchangebuyer" {
     numberActiveCreatives?: number;
   }
 
-  declare interface adexchangebuyer$AccountsList {
+  declare interface gapi$client$adexchangebuyer$AccountsList {
     /**
      * A list of accounts.
      */
-    items?: adexchangebuyer$Account[];
+    items?: gapi$client$adexchangebuyer$Account[];
 
     /**
      * Resource type.
@@ -142,7 +146,7 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$AddOrderDealsRequest {
+  declare interface gapi$client$adexchangebuyer$AddOrderDealsRequest {
     /**
      * The list of deals to add
      */
@@ -159,7 +163,7 @@ declare module "gapi.client.adexchangebuyer" {
     updateAction?: string;
   }
 
-  declare interface adexchangebuyer$AddOrderDealsResponse {
+  declare interface gapi$client$adexchangebuyer$AddOrderDealsResponse {
     /**
      * List of deals added (in the same proposal as passed in the request)
      */
@@ -171,18 +175,18 @@ declare module "gapi.client.adexchangebuyer" {
     proposalRevisionNumber?: string;
   }
 
-  declare interface adexchangebuyer$AddOrderNotesRequest {
+  declare interface gapi$client$adexchangebuyer$AddOrderNotesRequest {
     /**
      * The list of notes to add.
      */
     notes?: adexchangebuyer$MarketplaceNote[];
   }
 
-  declare interface adexchangebuyer$AddOrderNotesResponse {
+  declare interface gapi$client$adexchangebuyer$AddOrderNotesResponse {
     notes?: adexchangebuyer$MarketplaceNote[];
   }
 
-  declare interface adexchangebuyer$BillingInfo {
+  declare interface gapi$client$adexchangebuyer$BillingInfo {
     /**
      * Account id.
      */
@@ -205,11 +209,11 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$BillingInfoList {
+  declare interface gapi$client$adexchangebuyer$BillingInfoList {
     /**
      * A list of billing info relevant for your account.
      */
-    items?: adexchangebuyer$BillingInfo[];
+    items?: gapi$client$adexchangebuyer$BillingInfo[];
 
     /**
      * Resource type.
@@ -217,7 +221,7 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$Budget {
+  declare interface gapi$client$adexchangebuyer$Budget {
     /**
      * The id of the account. This is required for get and update requests.
      */
@@ -249,14 +253,14 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$Buyer {
+  declare interface gapi$client$adexchangebuyer$Buyer {
     /**
      * Adx account id of the buyer.
      */
     accountId?: string;
   }
 
-  declare interface adexchangebuyer$ContactInformation {
+  declare interface gapi$client$adexchangebuyer$ContactInformation {
     /**
      * Email address of the contact.
      */
@@ -268,11 +272,11 @@ declare module "gapi.client.adexchangebuyer" {
     name?: string;
   }
 
-  declare interface adexchangebuyer$CreateOrdersRequest {
+  declare interface gapi$client$adexchangebuyer$CreateOrdersRequest {
     /**
      * The list of proposals to create.
      */
-    client$proposals?: adexchangebuyer$Proposal[];
+    proposals?: adexchangebuyer$Proposal[];
 
     /**
      * Web property id of the seller creating these orders
@@ -280,14 +284,14 @@ declare module "gapi.client.adexchangebuyer" {
     webPropertyCode?: string;
   }
 
-  declare interface adexchangebuyer$CreateOrdersResponse {
+  declare interface gapi$client$adexchangebuyer$CreateOrdersResponse {
     /**
      * The list of proposals successfully created.
      */
-    client$proposals?: adexchangebuyer$Proposal[];
+    proposals?: adexchangebuyer$Proposal[];
   }
 
-  declare interface adexchangebuyer$Creative {
+  declare interface gapi$client$adexchangebuyer$Creative {
     /**
      * The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be set.
      */
@@ -622,7 +626,7 @@ declare module "gapi.client.adexchangebuyer" {
     width?: number;
   }
 
-  declare interface adexchangebuyer$CreativeDealIds {
+  declare interface gapi$client$adexchangebuyer$CreativeDealIds {
     /**
      * A list of external deal ids and ARC approval status.
      */
@@ -649,11 +653,11 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$CreativesList {
+  declare interface gapi$client$adexchangebuyer$CreativesList {
     /**
      * A list of creatives.
      */
-    items?: adexchangebuyer$Creative[];
+    items?: gapi$client$adexchangebuyer$Creative[];
 
     /**
      * Resource type.
@@ -666,7 +670,7 @@ declare module "gapi.client.adexchangebuyer" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer$DealServingMetadata {
+  declare interface gapi$client$adexchangebuyer$DealServingMetadata {
     /**
      * True if alcohol ads are allowed for this deal (read-only). This field is only populated when querying for finalized orders using the method
      * GetFinalizedOrderDeals
@@ -679,7 +683,7 @@ declare module "gapi.client.adexchangebuyer" {
     dealPauseStatus?: adexchangebuyer$DealServingMetadataDealPauseStatus;
   }
 
-  declare interface adexchangebuyer$DealServingMetadataDealPauseStatus {
+  declare interface gapi$client$adexchangebuyer$DealServingMetadataDealPauseStatus {
     buyerPauseReason?: string;
 
     /**
@@ -691,7 +695,7 @@ declare module "gapi.client.adexchangebuyer" {
     sellerPauseReason?: string;
   }
 
-  declare interface adexchangebuyer$DealTerms {
+  declare interface gapi$client$adexchangebuyer$DealTerms {
     /**
      * Visibilty of the URL in bid requests.
      */
@@ -744,11 +748,11 @@ declare module "gapi.client.adexchangebuyer" {
     sellerTimeZone?: string;
   }
 
-  declare interface adexchangebuyer$DealTermsGuaranteedFixedPriceTerms {
+  declare interface gapi$client$adexchangebuyer$DealTermsGuaranteedFixedPriceTerms {
     /**
      * External billing info for this Deal. This field is relevant when external billing info such as price has a different currency code than DFP/AdX.
      */
-    client$billingInfo?: adexchangebuyer$DealTermsGuaranteedFixedPriceTermsBillingInfo;
+    billingInfo?: adexchangebuyer$DealTermsGuaranteedFixedPriceTermsBillingInfo;
 
     /**
      * Fixed price for the specified buyer.
@@ -771,7 +775,7 @@ declare module "gapi.client.adexchangebuyer" {
     minimumDailyLooks?: string;
   }
 
-  declare interface adexchangebuyer$DealTermsGuaranteedFixedPriceTermsBillingInfo {
+  declare interface gapi$client$adexchangebuyer$DealTermsGuaranteedFixedPriceTermsBillingInfo {
     /**
      * The timestamp (in ms since epoch) when the original reservation price for the deal was first converted to DFP currency. This is used to convert the
      * contracted price into buyer's currency without discrepancy.
@@ -795,7 +799,7 @@ declare module "gapi.client.adexchangebuyer" {
     price?: adexchangebuyer$Price;
   }
 
-  declare interface adexchangebuyer$DealTermsNonGuaranteedAuctionTerms {
+  declare interface gapi$client$adexchangebuyer$DealTermsNonGuaranteedAuctionTerms {
     /**
      * True if open auction buyers are allowed to compete with invited buyers in this private auction (buyer-readonly).
      */
@@ -807,14 +811,14 @@ declare module "gapi.client.adexchangebuyer" {
     reservePricePerBuyers?: adexchangebuyer$PricePerBuyer[];
   }
 
-  declare interface adexchangebuyer$DealTermsNonGuaranteedFixedPriceTerms {
+  declare interface gapi$client$adexchangebuyer$DealTermsNonGuaranteedFixedPriceTerms {
     /**
      * Fixed price for the specified buyer.
      */
     fixedPrices?: adexchangebuyer$PricePerBuyer[];
   }
 
-  declare interface adexchangebuyer$DealTermsRubiconNonGuaranteedTerms {
+  declare interface gapi$client$adexchangebuyer$DealTermsRubiconNonGuaranteedTerms {
     /**
      * Optional price for Rubicon priority access in the auction.
      */
@@ -826,7 +830,7 @@ declare module "gapi.client.adexchangebuyer" {
     standardPrice?: adexchangebuyer$Price;
   }
 
-  declare interface adexchangebuyer$DeleteOrderDealsRequest {
+  declare interface gapi$client$adexchangebuyer$DeleteOrderDealsRequest {
     /**
      * List of deals to delete for a given proposal
      */
@@ -843,7 +847,7 @@ declare module "gapi.client.adexchangebuyer" {
     updateAction?: string;
   }
 
-  declare interface adexchangebuyer$DeleteOrderDealsResponse {
+  declare interface gapi$client$adexchangebuyer$DeleteOrderDealsResponse {
     /**
      * List of deals deleted (in the same proposal as passed in the request)
      */
@@ -855,24 +859,24 @@ declare module "gapi.client.adexchangebuyer" {
     proposalRevisionNumber?: string;
   }
 
-  declare interface adexchangebuyer$DeliveryControl {
+  declare interface gapi$client$adexchangebuyer$DeliveryControl {
     creativeBlockingLevel?: string;
     deliveryRateType?: string;
     frequencyCaps?: adexchangebuyer$DeliveryControlFrequencyCap[];
   }
 
-  declare interface adexchangebuyer$DeliveryControlFrequencyCap {
+  declare interface gapi$client$adexchangebuyer$DeliveryControlFrequencyCap {
     maxImpressions?: number;
     numTimeUnits?: number;
     timeUnitType?: string;
   }
 
-  declare interface adexchangebuyer$Dimension {
+  declare interface gapi$client$adexchangebuyer$Dimension {
     dimensionType?: string;
     dimensionValues?: adexchangebuyer$DimensionDimensionValue[];
   }
 
-  declare interface adexchangebuyer$DimensionDimensionValue {
+  declare interface gapi$client$adexchangebuyer$DimensionDimensionValue {
     /**
      * Id of the dimension.
      */
@@ -890,7 +894,7 @@ declare module "gapi.client.adexchangebuyer" {
     percentage?: number;
   }
 
-  declare interface adexchangebuyer$EditAllOrderDealsRequest {
+  declare interface gapi$client$adexchangebuyer$EditAllOrderDealsRequest {
     /**
      * List of deals to edit. Service may perform 3 different operations based on comparison of deals in this list vs deals already persisted in database: 1.
      * Add new deal to proposal If a deal in this list does not exist in the proposal, the service will create a new deal and add it to the proposal.
@@ -917,7 +921,7 @@ declare module "gapi.client.adexchangebuyer" {
     updateAction?: string;
   }
 
-  declare interface adexchangebuyer$EditAllOrderDealsResponse {
+  declare interface gapi$client$adexchangebuyer$EditAllOrderDealsResponse {
     /**
      * List of all deals in the proposal after edit.
      */
@@ -929,21 +933,21 @@ declare module "gapi.client.adexchangebuyer" {
     orderRevisionNumber?: string;
   }
 
-  declare interface adexchangebuyer$GetOffersResponse {
+  declare interface gapi$client$adexchangebuyer$GetOffersResponse {
     /**
      * The returned list of products.
      */
-    client$products?: adexchangebuyer$Product[];
+    products?: adexchangebuyer$Product[];
   }
 
-  declare interface adexchangebuyer$GetOrderDealsResponse {
+  declare interface gapi$client$adexchangebuyer$GetOrderDealsResponse {
     /**
      * List of deals for the proposal
      */
     deals?: adexchangebuyer$MarketplaceDeal[];
   }
 
-  declare interface adexchangebuyer$GetOrderNotesResponse {
+  declare interface gapi$client$adexchangebuyer$GetOrderNotesResponse {
     /**
      * The list of matching notes. The notes for a proposal are ordered from oldest to newest. If the notes span multiple proposals, they will be grouped by
      * proposal, with the notes for the most recently modified proposal appearing first.
@@ -951,21 +955,21 @@ declare module "gapi.client.adexchangebuyer" {
     notes?: adexchangebuyer$MarketplaceNote[];
   }
 
-  declare interface adexchangebuyer$GetOrdersResponse {
+  declare interface gapi$client$adexchangebuyer$GetOrdersResponse {
     /**
      * The list of matching proposals.
      */
-    client$proposals?: adexchangebuyer$Proposal[];
+    proposals?: adexchangebuyer$Proposal[];
   }
 
-  declare interface adexchangebuyer$GetPublisherProfilesByAccountIdResponse {
+  declare interface gapi$client$adexchangebuyer$GetPublisherProfilesByAccountIdResponse {
     /**
      * Profiles for the requested publisher
      */
     profiles?: adexchangebuyer$PublisherProfileApiProto[];
   }
 
-  declare interface adexchangebuyer$MarketplaceDeal {
+  declare interface gapi$client$adexchangebuyer$MarketplaceDeal {
     /**
      * Buyer private data (hidden from seller).
      */
@@ -994,13 +998,13 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Metadata about the serving status of this deal (readonly, writes via custom actions)
      */
-    dealServingMetadata?: adexchangebuyer$DealServingMetadata;
+    dealServingMetadata?: gapi$client$adexchangebuyer$DealServingMetadata;
 
     /**
      * The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message
      * is assigned an id of 100 since some day we would want to model this as a protobuf extension.
      */
-    deliveryControl?: adexchangebuyer$DeliveryControl;
+    deliveryControl?: gapi$client$adexchangebuyer$DeliveryControl;
 
     /**
      * The external deal id assigned to this deal once the deal is finalized. This is the deal-id that shows up in serving/reporting etc. (readonly)
@@ -1067,7 +1071,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Optional Seller contact information for the deal (buyer-readonly)
      */
-    sellerContacts?: adexchangebuyer$ContactInformation[];
+    sellerContacts?: gapi$client$adexchangebuyer$ContactInformation[];
 
     /**
      * The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd together. (updatable)
@@ -1082,15 +1086,15 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * The negotiable terms of the deal. (updatable)
      */
-    terms?: adexchangebuyer$DealTerms;
+    terms?: gapi$client$adexchangebuyer$DealTerms;
     webPropertyCode?: string;
   }
 
-  declare interface adexchangebuyer$MarketplaceDealParty {
+  declare interface gapi$client$adexchangebuyer$MarketplaceDealParty {
     /**
      * The buyer/seller associated with the deal. One of buyer/seller is specified for a deal-party.
      */
-    buyer?: adexchangebuyer$Buyer;
+    buyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * The buyer/seller associated with the deal. One of buyer/seller is specified for a deal party.
@@ -1098,7 +1102,7 @@ declare module "gapi.client.adexchangebuyer" {
     seller?: adexchangebuyer$Seller;
   }
 
-  declare interface adexchangebuyer$MarketplaceLabel {
+  declare interface gapi$client$adexchangebuyer$MarketplaceLabel {
     /**
      * The accountId of the party that created the label.
      */
@@ -1112,7 +1116,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Information about the party that created the label.
      */
-    deprecatedMarketplaceDealParty?: adexchangebuyer$MarketplaceDealParty;
+    deprecatedMarketplaceDealParty?: gapi$client$adexchangebuyer$MarketplaceDealParty;
 
     /**
      * The label to use.
@@ -1120,7 +1124,7 @@ declare module "gapi.client.adexchangebuyer" {
     label?: string;
   }
 
-  declare interface adexchangebuyer$MarketplaceNote {
+  declare interface gapi$client$adexchangebuyer$MarketplaceNote {
     /**
      * The role of the person (buyer/seller) creating the note. (readonly)
      */
@@ -1162,7 +1166,7 @@ declare module "gapi.client.adexchangebuyer" {
     timestampMs?: string;
   }
 
-  declare interface adexchangebuyer$PerformanceReport {
+  declare interface gapi$client$adexchangebuyer$PerformanceReport {
     /**
      * The number of bid responses with an ad.
      */
@@ -1274,7 +1278,7 @@ declare module "gapi.client.adexchangebuyer" {
     unsuccessfulRequestRate?: number;
   }
 
-  declare interface adexchangebuyer$PerformanceReportList {
+  declare interface gapi$client$adexchangebuyer$PerformanceReportList {
     /**
      * Resource type.
      */
@@ -1283,10 +1287,10 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * A list of performance reports relevant for the account.
      */
-    client$performanceReport?: adexchangebuyer$PerformanceReport[];
+    performanceReport?: gapi$client$adexchangebuyer$PerformanceReport[];
   }
 
-  declare interface adexchangebuyer$PretargetingConfig {
+  declare interface gapi$client$adexchangebuyer$PretargetingConfig {
     /**
      * The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically.
      */
@@ -1469,11 +1473,11 @@ declare module "gapi.client.adexchangebuyer" {
     }>;
   }
 
-  declare interface adexchangebuyer$PretargetingConfigList {
+  declare interface gapi$client$adexchangebuyer$PretargetingConfigList {
     /**
      * A list of pretargeting configs
      */
-    items?: adexchangebuyer$PretargetingConfig[];
+    items?: gapi$client$adexchangebuyer$PretargetingConfig[];
 
     /**
      * Resource type.
@@ -1481,7 +1485,7 @@ declare module "gapi.client.adexchangebuyer" {
     kind?: string;
   }
 
-  declare interface adexchangebuyer$Price {
+  declare interface gapi$client$adexchangebuyer$Price {
     /**
      * The price value in micros.
      */
@@ -1503,7 +1507,7 @@ declare module "gapi.client.adexchangebuyer" {
     pricingType?: string;
   }
 
-  declare interface adexchangebuyer$PricePerBuyer {
+  declare interface gapi$client$adexchangebuyer$PricePerBuyer {
     /**
      * Optional access type for this buyer.
      */
@@ -1512,35 +1516,35 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Reference to the buyer that will get billed.
      */
-    billedBuyer?: adexchangebuyer$Buyer;
+    billedBuyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the
      * buyer).
      */
-    buyer?: adexchangebuyer$Buyer;
+    buyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * The specified price
      */
-    price?: adexchangebuyer$Price;
+    price?: gapi$client$adexchangebuyer$Price;
   }
 
-  declare interface adexchangebuyer$PrivateData {
+  declare interface gapi$client$adexchangebuyer$PrivateData {
     referenceId?: string;
     referencePayload?: string;
   }
 
-  declare interface adexchangebuyer$Product {
+  declare interface gapi$client$adexchangebuyer$Product {
     /**
      * The billed buyer corresponding to the buyer that created the offer. (readonly, except on create)
      */
-    billedBuyer?: adexchangebuyer$Buyer;
+    billedBuyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * The buyer that created the offer if this is a buyer initiated offer (readonly, except on create)
      */
-    buyer?: adexchangebuyer$Buyer;
+    buyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * Creation time in ms. since epoch (readonly)
@@ -1550,7 +1554,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Optional contact information for the creator of this product. (buyer-readonly)
      */
-    creatorContacts?: adexchangebuyer$ContactInformation[];
+    creatorContacts?: gapi$client$adexchangebuyer$ContactInformation[];
 
     /**
      * The role that created the offer. Set to BUYER for buyer initiated offers.
@@ -1561,7 +1565,7 @@ declare module "gapi.client.adexchangebuyer" {
      * The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message
      * is assigned an id of 100 since some day we would want to model this as a protobuf extension.
      */
-    deliveryControl?: adexchangebuyer$DeliveryControl;
+    deliveryControl?: gapi$client$adexchangebuyer$DeliveryControl;
 
     /**
      * The proposed end time for the deal (ms since epoch) (buyer-readonly)
@@ -1592,7 +1596,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Optional List of labels for the product (optional, buyer-readonly).
      */
-    labels?: adexchangebuyer$MarketplaceLabel[];
+    labels?: gapi$client$adexchangebuyer$MarketplaceLabel[];
 
     /**
      * Time of last update in ms. since epoch (readonly)
@@ -1665,7 +1669,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * The negotiable terms of the deal (buyer-readonly)
      */
-    terms?: adexchangebuyer$DealTerms;
+    terms?: gapi$client$adexchangebuyer$DealTerms;
 
     /**
      * The web property code for the seller. This field is meant to be copied over as is when creating deals.
@@ -1673,26 +1677,26 @@ declare module "gapi.client.adexchangebuyer" {
     webPropertyCode?: string;
   }
 
-  declare interface adexchangebuyer$Proposal {
+  declare interface gapi$client$adexchangebuyer$Proposal {
     /**
      * Reference to the buyer that will get billed for this proposal. (readonly)
      */
-    billedBuyer?: adexchangebuyer$Buyer;
+    billedBuyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * Reference to the buyer on the proposal. (readonly, except on create)
      */
-    buyer?: adexchangebuyer$Buyer;
+    buyer?: gapi$client$adexchangebuyer$Buyer;
 
     /**
      * Optional contact information of the buyer. (seller-readonly)
      */
-    buyerContacts?: adexchangebuyer$ContactInformation[];
+    buyerContacts?: gapi$client$adexchangebuyer$ContactInformation[];
 
     /**
      * Private data for buyer. (hidden from seller).
      */
-    buyerPrivateData?: adexchangebuyer$PrivateData;
+    buyerPrivateData?: gapi$client$adexchangebuyer$PrivateData;
 
     /**
      * IDs of DBM advertisers permission to this proposal.
@@ -1735,7 +1739,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * List of labels associated with the proposal. (readonly)
      */
-    labels?: adexchangebuyer$MarketplaceLabel[];
+    labels?: gapi$client$adexchangebuyer$MarketplaceLabel[];
 
     /**
      * The role of the last user that either updated the proposal or left a comment. (readonly)
@@ -1790,10 +1794,10 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Optional contact information of the seller (buyer-readonly).
      */
-    sellerContacts?: adexchangebuyer$ContactInformation[];
+    sellerContacts?: gapi$client$adexchangebuyer$ContactInformation[];
   }
 
-  declare interface adexchangebuyer$PublisherProfileApiProto {
+  declare interface gapi$client$adexchangebuyer$PublisherProfileApiProto {
     /**
      * Deprecated: use the seller.account_id. The account id of the seller.
      */
@@ -1906,11 +1910,11 @@ declare module "gapi.client.adexchangebuyer" {
     topHeadlines?: string[];
   }
 
-  declare interface adexchangebuyer$PublisherProvidedForecast {
+  declare interface gapi$client$adexchangebuyer$PublisherProvidedForecast {
     /**
      * Publisher provided dimensions. E.g. geo, sizes etc...
      */
-    dimensions?: adexchangebuyer$Dimension[];
+    dimensions?: gapi$client$adexchangebuyer$Dimension[];
 
     /**
      * Publisher provided weekly impressions.
@@ -1923,7 +1927,7 @@ declare module "gapi.client.adexchangebuyer" {
     weeklyUniques?: string;
   }
 
-  declare interface adexchangebuyer$Seller {
+  declare interface gapi$client$adexchangebuyer$Seller {
     /**
      * The unique id for the seller. The seller fills in this field. The seller account id is then available to buyer in the product.
      */
@@ -1935,7 +1939,7 @@ declare module "gapi.client.adexchangebuyer" {
     subAccountId?: string;
   }
 
-  declare interface adexchangebuyer$SharedTargeting {
+  declare interface gapi$client$adexchangebuyer$SharedTargeting {
     /**
      * The list of values to exclude from targeting. Each value is AND'd together.
      */
@@ -1952,7 +1956,7 @@ declare module "gapi.client.adexchangebuyer" {
     key?: string;
   }
 
-  declare interface adexchangebuyer$TargetingValue {
+  declare interface gapi$client$adexchangebuyer$TargetingValue {
     /**
      * The creative size value to exclude/include.
      */
@@ -1974,7 +1978,7 @@ declare module "gapi.client.adexchangebuyer" {
     stringValue?: string;
   }
 
-  declare interface adexchangebuyer$TargetingValueCreativeSize {
+  declare interface gapi$client$adexchangebuyer$TargetingValueCreativeSize {
     /**
      * For video size type, the list of companion sizes.
      */
@@ -2001,12 +2005,12 @@ declare module "gapi.client.adexchangebuyer" {
     skippableAdType?: string;
   }
 
-  declare interface adexchangebuyer$TargetingValueDayPartTargeting {
+  declare interface gapi$client$adexchangebuyer$TargetingValueDayPartTargeting {
     dayParts?: adexchangebuyer$TargetingValueDayPartTargetingDayPart[];
     timeZoneType?: string;
   }
 
-  declare interface adexchangebuyer$TargetingValueDayPartTargetingDayPart {
+  declare interface gapi$client$adexchangebuyer$TargetingValueDayPartTargetingDayPart {
     dayOfWeek?: string;
     endHour?: number;
     endMinute?: number;
@@ -2014,7 +2018,7 @@ declare module "gapi.client.adexchangebuyer" {
     startMinute?: number;
   }
 
-  declare interface adexchangebuyer$TargetingValueSize {
+  declare interface gapi$client$adexchangebuyer$TargetingValueSize {
     /**
      * The height of the creative.
      */
@@ -2026,7 +2030,7 @@ declare module "gapi.client.adexchangebuyer" {
     width?: number;
   }
 
-  declare interface adexchangebuyer$UpdatePrivateAuctionProposalRequest {
+  declare interface gapi$client$adexchangebuyer$UpdatePrivateAuctionProposalRequest {
     /**
      * The externalDealId of the deal to be updated.
      */
@@ -2035,7 +2039,7 @@ declare module "gapi.client.adexchangebuyer" {
     /**
      * Optional note to be added.
      */
-    note?: adexchangebuyer$MarketplaceNote;
+    note?: gapi$client$adexchangebuyer$MarketplaceNote;
 
     /**
      * The current revision number of the proposal to be updated.
@@ -2048,7 +2052,7 @@ declare module "gapi.client.adexchangebuyer" {
     updateAction?: string;
   }
 
-  declare interface adexchangebuyer$AccountsResource {
+  declare interface gapi$client$adexchangebuyer$AccountsResource {
     /**
      * Gets one account by ID.
      */
@@ -2093,7 +2097,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Account>;
+    }): Request<gapi$client$adexchangebuyer$Account>;
 
     /**
      * Retrieves the authenticated user's list of accounts.
@@ -2134,7 +2138,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$AccountsList>;
+    }): Request<gapi$client$adexchangebuyer$AccountsList>;
 
     /**
      * Updates an existing account. This method supports patch semantics.
@@ -2185,7 +2189,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Account>;
+    }): Request<gapi$client$adexchangebuyer$Account>;
 
     /**
      * Updates an existing account.
@@ -2236,10 +2240,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Account>;
+    }): Request<gapi$client$adexchangebuyer$Account>;
   }
 
-  declare interface adexchangebuyer$BillingInfoResource {
+  declare interface gapi$client$adexchangebuyer$BillingInfoResource {
     /**
      * Returns the billing information for one account specified by account ID.
      */
@@ -2284,7 +2288,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$BillingInfo>;
+    }): Request<gapi$client$adexchangebuyer$BillingInfo>;
 
     /**
      * Retrieves a list of billing information for all accounts of the authenticated user.
@@ -2325,10 +2329,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$BillingInfoList>;
+    }): Request<gapi$client$adexchangebuyer$BillingInfoList>;
   }
 
-  declare interface adexchangebuyer$BudgetResource {
+  declare interface gapi$client$adexchangebuyer$BudgetResource {
     /**
      * Returns the budget information for the adgroup specified by the accountId and billingId.
      */
@@ -2378,7 +2382,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Budget>;
+    }): Request<gapi$client$adexchangebuyer$Budget>;
 
     /**
      * Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request. This method
@@ -2430,7 +2434,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Budget>;
+    }): Request<gapi$client$adexchangebuyer$Budget>;
 
     /**
      * Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request.
@@ -2481,10 +2485,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Budget>;
+    }): Request<gapi$client$adexchangebuyer$Budget>;
   }
 
-  declare interface adexchangebuyer$CreativesResource {
+  declare interface gapi$client$adexchangebuyer$CreativesResource {
     /**
      * Add a deal id association for the creative.
      */
@@ -2590,7 +2594,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Creative>;
+    }): Request<gapi$client$adexchangebuyer$Creative>;
 
     /**
      * Submit a new creative.
@@ -2631,7 +2635,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Creative>;
+    }): Request<gapi$client$adexchangebuyer$Creative>;
 
     /**
      * Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes after submission.
@@ -2703,7 +2707,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$CreativesList>;
+    }): Request<gapi$client$adexchangebuyer$CreativesList>;
 
     /**
      * Lists the external deal ids associated with the creative.
@@ -2754,7 +2758,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$CreativeDealIds>;
+    }): Request<gapi$client$adexchangebuyer$CreativeDealIds>;
 
     /**
      * Remove a deal id associated with the creative.
@@ -2813,7 +2817,7 @@ declare module "gapi.client.adexchangebuyer" {
     }): Request<void>;
   }
 
-  declare interface adexchangebuyer$MarketplacedealsResource {
+  declare interface gapi$client$adexchangebuyer$MarketplacedealsResource {
     /**
      * Delete the specified deals from the proposal
      */
@@ -2858,7 +2862,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$DeleteOrderDealsResponse>;
+    }): Request<gapi$client$adexchangebuyer$DeleteOrderDealsResponse>;
 
     /**
      * Add new deals for the specified proposal
@@ -2904,7 +2908,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$AddOrderDealsResponse>;
+    }): Request<gapi$client$adexchangebuyer$AddOrderDealsResponse>;
 
     /**
      * List all the deals for a given proposal
@@ -2955,7 +2959,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$GetOrderDealsResponse>;
+    }): Request<gapi$client$adexchangebuyer$GetOrderDealsResponse>;
 
     /**
      * Replaces all the deals in the proposal with the passed in deals
@@ -3001,10 +3005,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$EditAllOrderDealsResponse>;
+    }): Request<gapi$client$adexchangebuyer$EditAllOrderDealsResponse>;
   }
 
-  declare interface adexchangebuyer$MarketplacenotesResource {
+  declare interface gapi$client$adexchangebuyer$MarketplacenotesResource {
     /**
      * Add notes to the proposal
      */
@@ -3049,7 +3053,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$AddOrderNotesResponse>;
+    }): Request<gapi$client$adexchangebuyer$AddOrderNotesResponse>;
 
     /**
      * Get all the notes associated with a proposal
@@ -3101,10 +3105,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$GetOrderNotesResponse>;
+    }): Request<gapi$client$adexchangebuyer$GetOrderNotesResponse>;
   }
 
-  declare interface adexchangebuyer$MarketplaceprivateauctionResource {
+  declare interface gapi$client$adexchangebuyer$MarketplaceprivateauctionResource {
     /**
      * Update a given private auction proposal
      */
@@ -3152,7 +3156,7 @@ declare module "gapi.client.adexchangebuyer" {
     }): Request<void>;
   }
 
-  declare interface adexchangebuyer$PerformanceReportResource {
+  declare interface gapi$client$adexchangebuyer$PerformanceReportResource {
     /**
      * Retrieves the authenticated user's list of performance metrics.
      */
@@ -3218,10 +3222,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PerformanceReportList>;
+    }): Request<gapi$client$adexchangebuyer$PerformanceReportList>;
   }
 
-  declare interface adexchangebuyer$PretargetingConfigResource {
+  declare interface gapi$client$adexchangebuyer$PretargetingConfigResource {
     /**
      * Deletes an existing pretargeting config.
      */
@@ -3322,7 +3326,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PretargetingConfig>;
+    }): Request<gapi$client$adexchangebuyer$PretargetingConfig>;
 
     /**
      * Inserts a new pretargeting configuration.
@@ -3368,7 +3372,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PretargetingConfig>;
+    }): Request<gapi$client$adexchangebuyer$PretargetingConfig>;
 
     /**
      * Retrieves a list of the authenticated user's pretargeting configurations.
@@ -3414,7 +3418,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PretargetingConfigList>;
+    }): Request<gapi$client$adexchangebuyer$PretargetingConfigList>;
 
     /**
      * Updates an existing pretargeting config. This method supports patch semantics.
@@ -3465,7 +3469,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PretargetingConfig>;
+    }): Request<gapi$client$adexchangebuyer$PretargetingConfig>;
 
     /**
      * Updates an existing pretargeting config.
@@ -3516,10 +3520,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$PretargetingConfig>;
+    }): Request<gapi$client$adexchangebuyer$PretargetingConfig>;
   }
 
-  declare interface adexchangebuyer$ProductsResource {
+  declare interface gapi$client$adexchangebuyer$ProductsResource {
     /**
      * Gets the requested product by id.
      */
@@ -3564,7 +3568,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Product>;
+    }): Request<gapi$client$adexchangebuyer$Product>;
 
     /**
      * Gets the requested product.
@@ -3610,10 +3614,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$GetOffersResponse>;
+    }): Request<gapi$client$adexchangebuyer$GetOffersResponse>;
   }
 
-  declare interface adexchangebuyer$ProposalsResource {
+  declare interface gapi$client$adexchangebuyer$ProposalsResource {
     /**
      * Get a proposal given its id
      */
@@ -3658,7 +3662,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Proposal>;
+    }): Request<gapi$client$adexchangebuyer$Proposal>;
 
     /**
      * Create the given list of proposals
@@ -3699,7 +3703,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$CreateOrdersResponse>;
+    }): Request<gapi$client$adexchangebuyer$CreateOrdersResponse>;
 
     /**
      * Update the given proposal. This method supports patch semantics.
@@ -3756,7 +3760,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Proposal>;
+    }): Request<gapi$client$adexchangebuyer$Proposal>;
 
     /**
      * Search for proposals using pql query
@@ -3802,7 +3806,7 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$GetOrdersResponse>;
+    }): Request<gapi$client$adexchangebuyer$GetOrdersResponse>;
 
     /**
      * Update the given proposal to indicate that setup has been completed.
@@ -3905,10 +3909,10 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$Proposal>;
+    }): Request<gapi$client$adexchangebuyer$Proposal>;
   }
 
-  declare interface adexchangebuyer$PubprofilesResource {
+  declare interface gapi$client$adexchangebuyer$PubprofilesResource {
     /**
      * Gets the requested publisher profile(s) by publisher accountId.
      */
@@ -3953,6 +3957,6 @@ declare module "gapi.client.adexchangebuyer" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangebuyer$GetPublisherProfilesByAccountIdResponse>;
+    }): Request<gapi$client$adexchangebuyer$GetPublisherProfilesByAccountIdResponse>;
   }
 }
