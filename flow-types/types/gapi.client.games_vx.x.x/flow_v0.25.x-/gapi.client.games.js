@@ -1,65 +1,72 @@
 declare module "gapi.client.games" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    achievementDefinitions: typeof client$achievementDefinitions,
-    achievements: typeof client$achievements,
-    applications: typeof client$applications,
-    events: typeof client$events,
-    leaderboards: typeof client$leaderboards,
-    metagame: typeof client$metagame,
-    players: typeof client$players,
-    pushtokens: typeof client$pushtokens,
-    questMilestones: typeof client$questMilestones,
-    quests: typeof client$quests,
-    revisions: typeof client$revisions,
-    rooms: typeof client$rooms,
-    scores: typeof client$scores,
-    snapshots: typeof client$snapshots,
-    turnBasedMatches: typeof client$turnBasedMatches
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    achievementDefinitions: typeof gapi$client$achievementDefinitions,
+    achievements: typeof gapi$client$achievements,
+    applications: typeof gapi$client$applications,
+    events: typeof gapi$client$events,
+    leaderboards: typeof gapi$client$leaderboards,
+    metagame: typeof gapi$client$metagame,
+    players: typeof gapi$client$players,
+    pushtokens: typeof gapi$client$pushtokens,
+    questMilestones: typeof gapi$client$questMilestones,
+    quests: typeof gapi$client$quests,
+    revisions: typeof gapi$client$revisions,
+    rooms: typeof gapi$client$rooms,
+    scores: typeof gapi$client$scores,
+    snapshots: typeof gapi$client$snapshots,
+    turnBasedMatches: typeof gapi$client$turnBasedMatches
   };
 
   /**
    * Load Google Play Game Services API v1
    */
-  declare function client$load(name: "games", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "games",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "games",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$achievementDefinitions: games$games$AchievementDefinitionsResource;
+  declare var gapi$client$achievementDefinitions: games$AchievementDefinitionsResource;
 
-  declare var client$achievements: games$games$AchievementsResource;
+  declare var gapi$client$achievements: games$AchievementsResource;
 
-  declare var client$applications: games$games$ApplicationsResource;
+  declare var gapi$client$applications: games$ApplicationsResource;
 
-  declare var client$events: games$games$EventsResource;
+  declare var gapi$client$events: games$EventsResource;
 
-  declare var client$leaderboards: games$games$LeaderboardsResource;
+  declare var gapi$client$leaderboards: games$LeaderboardsResource;
 
-  declare var client$metagame: games$games$MetagameResource;
+  declare var gapi$client$metagame: games$MetagameResource;
 
-  declare var client$players: games$games$PlayersResource;
+  declare var gapi$client$players: games$PlayersResource;
 
-  declare var client$pushtokens: games$games$PushtokensResource;
+  declare var gapi$client$pushtokens: games$PushtokensResource;
 
-  declare var client$questMilestones: games$games$QuestMilestonesResource;
+  declare var gapi$client$questMilestones: games$QuestMilestonesResource;
 
-  declare var client$quests: games$games$QuestsResource;
+  declare var gapi$client$quests: games$QuestsResource;
 
-  declare var client$revisions: games$games$RevisionsResource;
+  declare var gapi$client$revisions: games$RevisionsResource;
 
-  declare var client$rooms: games$games$RoomsResource;
+  declare var gapi$client$rooms: games$RoomsResource;
 
-  declare var client$scores: games$games$ScoresResource;
+  declare var gapi$client$scores: games$ScoresResource;
 
-  declare var client$snapshots: games$games$SnapshotsResource;
+  declare var gapi$client$snapshots: games$SnapshotsResource;
 
-  declare var client$turnBasedMatches: games$games$TurnBasedMatchesResource;
+  declare var gapi$client$turnBasedMatches: games$TurnBasedMatchesResource;
 
-  declare interface games$AchievementDefinition {
+  declare interface gapi$client$games$AchievementDefinition {
     /**
      * The type of the achievement.
      * Possible values are:
@@ -133,11 +140,11 @@ declare module "gapi.client.games" {
     unlockedIconUrl?: string;
   }
 
-  declare interface games$AchievementDefinitionsListResponse {
+  declare interface gapi$client$games$AchievementDefinitionsListResponse {
     /**
      * The achievement definitions.
      */
-    items?: games$AchievementDefinition[];
+    items?: gapi$client$games$AchievementDefinition[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#achievementDefinitionsListResponse.
@@ -150,7 +157,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$AchievementIncrementResponse {
+  declare interface gapi$client$games$AchievementIncrementResponse {
     /**
      * The current steps recorded for this incremental achievement.
      */
@@ -167,7 +174,7 @@ declare module "gapi.client.games" {
     newlyUnlocked?: boolean;
   }
 
-  declare interface games$AchievementRevealResponse {
+  declare interface gapi$client$games$AchievementRevealResponse {
     /**
      * The current state of the achievement for which a reveal was attempted. This might be UNLOCKED if the achievement was already unlocked.
      * Possible values are:
@@ -182,7 +189,7 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$AchievementSetStepsAtLeastResponse {
+  declare interface gapi$client$games$AchievementSetStepsAtLeastResponse {
     /**
      * The current steps recorded for this incremental achievement.
      */
@@ -199,7 +206,7 @@ declare module "gapi.client.games" {
     newlyUnlocked?: boolean;
   }
 
-  declare interface games$AchievementUnlockResponse {
+  declare interface gapi$client$games$AchievementUnlockResponse {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUnlockResponse.
      */
@@ -211,7 +218,7 @@ declare module "gapi.client.games" {
     newlyUnlocked?: boolean;
   }
 
-  declare interface games$AchievementUpdateMultipleRequest {
+  declare interface gapi$client$games$AchievementUpdateMultipleRequest {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateMultipleRequest.
      */
@@ -223,7 +230,7 @@ declare module "gapi.client.games" {
     updates?: games$AchievementUpdateRequest[];
   }
 
-  declare interface games$AchievementUpdateMultipleResponse {
+  declare interface gapi$client$games$AchievementUpdateMultipleResponse {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateListResponse.
      */
@@ -235,7 +242,7 @@ declare module "gapi.client.games" {
     updatedAchievements?: games$AchievementUpdateResponse[];
   }
 
-  declare interface games$AchievementUpdateRequest {
+  declare interface gapi$client$games$AchievementUpdateRequest {
     /**
      * The achievement this update is being applied to.
      */
@@ -267,7 +274,7 @@ declare module "gapi.client.games" {
     updateType?: string;
   }
 
-  declare interface games$AchievementUpdateResponse {
+  declare interface gapi$client$games$AchievementUpdateResponse {
     /**
      * The achievement this update is was applied to.
      */
@@ -303,7 +310,7 @@ declare module "gapi.client.games" {
     updateOccurred?: boolean;
   }
 
-  declare interface games$AggregateStats {
+  declare interface gapi$client$games$AggregateStats {
     /**
      * The number of messages sent between a pair of peers.
      */
@@ -330,7 +337,7 @@ declare module "gapi.client.games" {
     sum?: string;
   }
 
-  declare interface games$AnonymousPlayer {
+  declare interface gapi$client$games$AnonymousPlayer {
     /**
      * The base URL for the image to display for the anonymous player.
      */
@@ -347,7 +354,7 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$Application {
+  declare interface gapi$client$games$Application {
     /**
      * The number of achievements visible to the currently authenticated player.
      */
@@ -416,7 +423,7 @@ declare module "gapi.client.games" {
     themeColor?: string;
   }
 
-  declare interface games$ApplicationCategory {
+  declare interface gapi$client$games$ApplicationCategory {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#applicationCategory.
      */
@@ -433,7 +440,7 @@ declare module "gapi.client.games" {
     secondary?: string;
   }
 
-  declare interface games$ApplicationVerifyResponse {
+  declare interface gapi$client$games$ApplicationVerifyResponse {
     /**
      * An alternate ID that was once used for the player that was issued the auth token used in this request. (This field is not normally populated.)
      */
@@ -450,7 +457,7 @@ declare module "gapi.client.games" {
     player_id?: string;
   }
 
-  declare interface games$Category {
+  declare interface gapi$client$games$Category {
     /**
      * The category name.
      */
@@ -467,11 +474,11 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$CategoryListResponse {
+  declare interface gapi$client$games$CategoryListResponse {
     /**
      * The list of categories with usage data.
      */
-    items?: games$Category[];
+    items?: gapi$client$games$Category[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#categoryListResponse.
@@ -484,7 +491,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$EventBatchRecordFailure {
+  declare interface gapi$client$games$EventBatchRecordFailure {
     /**
      * The cause for the update failure.
      * Possible values are:
@@ -508,7 +515,7 @@ declare module "gapi.client.games" {
     range?: games$EventPeriodRange;
   }
 
-  declare interface games$EventChild {
+  declare interface gapi$client$games$EventChild {
     /**
      * The ID of the child event.
      */
@@ -520,11 +527,11 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$EventDefinition {
+  declare interface gapi$client$games$EventDefinition {
     /**
      * A list of events that are a child of this event.
      */
-    childEvents?: games$EventChild[];
+    childEvents?: gapi$client$games$EventChild[];
 
     /**
      * Description of what this event represents.
@@ -565,11 +572,11 @@ declare module "gapi.client.games" {
     visibility?: string;
   }
 
-  declare interface games$EventDefinitionListResponse {
+  declare interface gapi$client$games$EventDefinitionListResponse {
     /**
      * The event definitions.
      */
-    items?: games$EventDefinition[];
+    items?: gapi$client$games$EventDefinition[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#eventDefinitionListResponse.
@@ -582,7 +589,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$EventPeriodRange {
+  declare interface gapi$client$games$EventPeriodRange {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#eventPeriodRange.
      */
@@ -599,7 +606,7 @@ declare module "gapi.client.games" {
     periodStartMillis?: string;
   }
 
-  declare interface games$EventPeriodUpdate {
+  declare interface gapi$client$games$EventPeriodUpdate {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#eventPeriodUpdate.
      */
@@ -608,7 +615,7 @@ declare module "gapi.client.games" {
     /**
      * The time period being covered by this update.
      */
-    timePeriod?: games$EventPeriodRange;
+    timePeriod?: gapi$client$games$EventPeriodRange;
 
     /**
      * The updates being made for this time period.
@@ -616,7 +623,7 @@ declare module "gapi.client.games" {
     updates?: games$EventUpdateRequest[];
   }
 
-  declare interface games$EventRecordFailure {
+  declare interface gapi$client$games$EventRecordFailure {
     /**
      * The ID of the event that was not updated.
      */
@@ -636,7 +643,7 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$EventRecordRequest {
+  declare interface gapi$client$games$EventRecordRequest {
     /**
      * The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch).
      */
@@ -655,10 +662,10 @@ declare module "gapi.client.games" {
     /**
      * A list of the time period updates being made in this request.
      */
-    timePeriods?: games$EventPeriodUpdate[];
+    timePeriods?: gapi$client$games$EventPeriodUpdate[];
   }
 
-  declare interface games$EventUpdateRequest {
+  declare interface gapi$client$games$EventUpdateRequest {
     /**
      * The ID of the event being modified in this update.
      */
@@ -675,16 +682,16 @@ declare module "gapi.client.games" {
     updateCount?: string;
   }
 
-  declare interface games$EventUpdateResponse {
+  declare interface gapi$client$games$EventUpdateResponse {
     /**
      * Any batch-wide failures which occurred applying updates.
      */
-    batchFailures?: games$EventBatchRecordFailure[];
+    batchFailures?: gapi$client$games$EventBatchRecordFailure[];
 
     /**
      * Any failures updating a particular event.
      */
-    eventFailures?: games$EventRecordFailure[];
+    eventFailures?: gapi$client$games$EventRecordFailure[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#eventUpdateResponse.
@@ -697,7 +704,7 @@ declare module "gapi.client.games" {
     playerEvents?: games$PlayerEvent[];
   }
 
-  declare interface games$GamesAchievementIncrement {
+  declare interface gapi$client$games$GamesAchievementIncrement {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#GamesAchievementIncrement.
      */
@@ -714,7 +721,7 @@ declare module "gapi.client.games" {
     steps?: number;
   }
 
-  declare interface games$GamesAchievementSetStepsAtLeast {
+  declare interface gapi$client$games$GamesAchievementSetStepsAtLeast {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#GamesAchievementSetStepsAtLeast.
      */
@@ -726,7 +733,7 @@ declare module "gapi.client.games" {
     steps?: number;
   }
 
-  declare interface games$ImageAsset {
+  declare interface gapi$client$games$ImageAsset {
     /**
      * The height of the asset.
      */
@@ -753,7 +760,7 @@ declare module "gapi.client.games" {
     width?: number;
   }
 
-  declare interface games$Instance {
+  declare interface gapi$client$games$Instance {
     /**
      * URI which shows where a user can acquire this instance.
      */
@@ -804,7 +811,7 @@ declare module "gapi.client.games" {
     webInstance?: games$InstanceWebDetails;
   }
 
-  declare interface games$InstanceAndroidDetails {
+  declare interface gapi$client$games$InstanceAndroidDetails {
     /**
      * Flag indicating whether the anti-piracy check is enabled.
      */
@@ -826,7 +833,7 @@ declare module "gapi.client.games" {
     preferred?: boolean;
   }
 
-  declare interface games$InstanceIosDetails {
+  declare interface gapi$client$games$InstanceIosDetails {
     /**
      * Bundle identifier.
      */
@@ -863,7 +870,7 @@ declare module "gapi.client.games" {
     supportIphone?: boolean;
   }
 
-  declare interface games$InstanceWebDetails {
+  declare interface gapi$client$games$InstanceWebDetails {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#instanceWebDetails.
      */
@@ -880,7 +887,7 @@ declare module "gapi.client.games" {
     preferred?: boolean;
   }
 
-  declare interface games$Leaderboard {
+  declare interface gapi$client$games$Leaderboard {
     /**
      * The icon for the leaderboard.
      */
@@ -915,7 +922,7 @@ declare module "gapi.client.games" {
     order?: string;
   }
 
-  declare interface games$LeaderboardEntry {
+  declare interface gapi$client$games$LeaderboardEntry {
     /**
      * The localized string for the numerical value of this score.
      */
@@ -966,11 +973,11 @@ declare module "gapi.client.games" {
     writeTimestampMillis?: string;
   }
 
-  declare interface games$LeaderboardListResponse {
+  declare interface gapi$client$games$LeaderboardListResponse {
     /**
      * The leaderboards.
      */
-    items?: games$Leaderboard[];
+    items?: gapi$client$games$Leaderboard[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardListResponse.
@@ -983,7 +990,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$LeaderboardScoreRank {
+  declare interface gapi$client$games$LeaderboardScoreRank {
     /**
      * The number of scores in the leaderboard as a string.
      */
@@ -1010,11 +1017,11 @@ declare module "gapi.client.games" {
     rank?: string;
   }
 
-  declare interface games$LeaderboardScores {
+  declare interface gapi$client$games$LeaderboardScores {
     /**
      * The scores in the leaderboard.
      */
-    items?: games$LeaderboardEntry[];
+    items?: gapi$client$games$LeaderboardEntry[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardScores.
@@ -1035,7 +1042,7 @@ declare module "gapi.client.games" {
      * The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a
      * public leaderboard and the player is not sharing their gameplay information publicly, the scoreRank and formattedScoreRank values will not be present.
      */
-    playerScore?: games$LeaderboardEntry;
+    playerScore?: gapi$client$games$LeaderboardEntry;
 
     /**
      * The pagination token for the previous page of results.
@@ -1043,7 +1050,7 @@ declare module "gapi.client.games" {
     prevPageToken?: string;
   }
 
-  declare interface games$MetagameConfig {
+  declare interface gapi$client$games$MetagameConfig {
     /**
      * Current version of the metagame configuration data. When this data is updated, the version number will be increased by one.
      */
@@ -1060,7 +1067,7 @@ declare module "gapi.client.games" {
     playerLevels?: games$PlayerLevel[];
   }
 
-  declare interface games$NetworkDiagnostics {
+  declare interface gapi$client$games$NetworkDiagnostics {
     /**
      * The Android network subtype.
      */
@@ -1101,7 +1108,7 @@ declare module "gapi.client.games" {
     registrationLatencyMillis?: number;
   }
 
-  declare interface games$ParticipantResult {
+  declare interface gapi$client$games$ParticipantResult {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#participantResult.
      */
@@ -1131,16 +1138,16 @@ declare module "gapi.client.games" {
     result?: string;
   }
 
-  declare interface games$PeerChannelDiagnostics {
+  declare interface gapi$client$games$PeerChannelDiagnostics {
     /**
      * Number of bytes received.
      */
-    bytesReceived?: games$AggregateStats;
+    bytesReceived?: gapi$client$games$AggregateStats;
 
     /**
      * Number of bytes sent.
      */
-    bytesSent?: games$AggregateStats;
+    bytesSent?: gapi$client$games$AggregateStats;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#peerChannelDiagnostics.
@@ -1170,10 +1177,10 @@ declare module "gapi.client.games" {
     /**
      * Roundtrip latency stats in milliseconds.
      */
-    roundtripLatencyMillis?: games$AggregateStats;
+    roundtripLatencyMillis?: gapi$client$games$AggregateStats;
   }
 
-  declare interface games$PeerSessionDiagnostics {
+  declare interface gapi$client$games$PeerSessionDiagnostics {
     /**
      * Connected time in milliseconds.
      */
@@ -1192,15 +1199,15 @@ declare module "gapi.client.games" {
     /**
      * Reliable channel diagnostics.
      */
-    reliableChannel?: games$PeerChannelDiagnostics;
+    reliableChannel?: gapi$client$games$PeerChannelDiagnostics;
 
     /**
      * Unreliable channel diagnostics.
      */
-    unreliableChannel?: games$PeerChannelDiagnostics;
+    unreliableChannel?: gapi$client$games$PeerChannelDiagnostics;
   }
 
-  declare interface games$Played {
+  declare interface gapi$client$games$Played {
     /**
      * True if the player was auto-matched with the currently authenticated user.
      */
@@ -1217,7 +1224,7 @@ declare module "gapi.client.games" {
     timeMillis?: string;
   }
 
-  declare interface games$Player {
+  declare interface gapi$client$games$Player {
     /**
      * The base URL for the image that represents the player.
      */
@@ -1252,7 +1259,7 @@ declare module "gapi.client.games" {
      * Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection
      * members.
      */
-    lastPlayedWith?: games$Played;
+    lastPlayedWith?: gapi$client$games$Played;
 
     /**
      * An object representation of the individual components of the player's name. For some players, these fields may not be present.
@@ -1291,7 +1298,7 @@ declare module "gapi.client.games" {
     title?: string;
   }
 
-  declare interface games$PlayerAchievement {
+  declare interface gapi$client$games$PlayerAchievement {
     /**
      * The state of the achievement.
      * Possible values are:
@@ -1333,11 +1340,11 @@ declare module "gapi.client.games" {
     lastUpdatedTimestamp?: string;
   }
 
-  declare interface games$PlayerAchievementListResponse {
+  declare interface gapi$client$games$PlayerAchievementListResponse {
     /**
      * The achievements.
      */
-    items?: games$PlayerAchievement[];
+    items?: gapi$client$games$PlayerAchievement[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerAchievementListResponse.
@@ -1350,7 +1357,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$PlayerEvent {
+  declare interface gapi$client$games$PlayerEvent {
     /**
      * The ID of the event definition.
      */
@@ -1378,11 +1385,11 @@ declare module "gapi.client.games" {
     playerId?: string;
   }
 
-  declare interface games$PlayerEventListResponse {
+  declare interface gapi$client$games$PlayerEventListResponse {
     /**
      * The player events.
      */
-    items?: games$PlayerEvent[];
+    items?: gapi$client$games$PlayerEvent[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerEventListResponse.
@@ -1395,7 +1402,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$PlayerExperienceInfo {
+  declare interface gapi$client$games$PlayerExperienceInfo {
     /**
      * The current number of experience points for the player.
      */
@@ -1422,7 +1429,7 @@ declare module "gapi.client.games" {
     nextLevel?: games$PlayerLevel;
   }
 
-  declare interface games$PlayerLeaderboardScore {
+  declare interface gapi$client$games$PlayerLeaderboardScore {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerLeaderboardScore.
      */
@@ -1436,7 +1443,7 @@ declare module "gapi.client.games" {
     /**
      * The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly.
      */
-    publicRank?: games$LeaderboardScoreRank;
+    publicRank?: gapi$client$games$LeaderboardScoreRank;
 
     /**
      * The formatted value of this score.
@@ -1456,7 +1463,7 @@ declare module "gapi.client.games" {
     /**
      * The social rank of the score in this leaderboard.
      */
-    socialRank?: games$LeaderboardScoreRank;
+    socialRank?: gapi$client$games$LeaderboardScoreRank;
 
     /**
      * The time span of this score.
@@ -1473,11 +1480,11 @@ declare module "gapi.client.games" {
     writeTimestamp?: string;
   }
 
-  declare interface games$PlayerLeaderboardScoreListResponse {
+  declare interface gapi$client$games$PlayerLeaderboardScoreListResponse {
     /**
      * The leaderboard scores.
      */
-    items?: games$PlayerLeaderboardScore[];
+    items?: gapi$client$games$PlayerLeaderboardScore[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerLeaderboardScoreListResponse.
@@ -1492,10 +1499,10 @@ declare module "gapi.client.games" {
     /**
      * The Player resources for the owner of this score.
      */
-    player?: games$Player;
+    player?: gapi$client$games$Player;
   }
 
-  declare interface games$PlayerLevel {
+  declare interface gapi$client$games$PlayerLevel {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerLevel.
      */
@@ -1517,11 +1524,11 @@ declare module "gapi.client.games" {
     minExperiencePoints?: string;
   }
 
-  declare interface games$PlayerListResponse {
+  declare interface gapi$client$games$PlayerListResponse {
     /**
      * The players.
      */
-    items?: games$Player[];
+    items?: gapi$client$games$Player[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerListResponse.
@@ -1534,7 +1541,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$PlayerScore {
+  declare interface gapi$client$games$PlayerScore {
     /**
      * The formatted score for this player score.
      */
@@ -1565,7 +1572,7 @@ declare module "gapi.client.games" {
     timeSpan?: string;
   }
 
-  declare interface games$PlayerScoreListResponse {
+  declare interface gapi$client$games$PlayerScoreListResponse {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerScoreListResponse.
      */
@@ -1577,7 +1584,7 @@ declare module "gapi.client.games" {
     submittedScores?: games$PlayerScoreResponse[];
   }
 
-  declare interface games$PlayerScoreResponse {
+  declare interface gapi$client$games$PlayerScoreResponse {
     /**
      * The time spans where the submitted score is better than the existing score for that time span.
      * Possible values are:
@@ -1611,10 +1618,10 @@ declare module "gapi.client.games" {
      * The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's DAILY score, but not better than
      * the player's scores for the WEEKLY or ALL_TIME time spans.
      */
-    unbeatenScores?: games$PlayerScore[];
+    unbeatenScores?: gapi$client$games$PlayerScore[];
   }
 
-  declare interface games$PlayerScoreSubmissionList {
+  declare interface gapi$client$games$PlayerScoreSubmissionList {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#playerScoreSubmissionList.
      */
@@ -1623,10 +1630,10 @@ declare module "gapi.client.games" {
     /**
      * The score submissions.
      */
-    client$scores?: games$ScoreSubmission[];
+    scores?: games$ScoreSubmission[];
   }
 
-  declare interface games$ProfileSettings {
+  declare interface gapi$client$games$ProfileSettings {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#profileSettings.
      */
@@ -1638,7 +1645,7 @@ declare module "gapi.client.games" {
     profileVisible?: boolean;
   }
 
-  declare interface games$PushToken {
+  declare interface gapi$client$games$PushToken {
     /**
      * The revision of the client SDK used by your application, in the same format that's used by revisions.check. Used to send backward compatible messages.
      * Format: [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of PLATFORM_TYPE are:
@@ -1662,7 +1669,7 @@ declare module "gapi.client.games" {
     language?: string;
   }
 
-  declare interface games$PushTokenId {
+  declare interface gapi$client$games$PushTokenId {
     /**
      * A push token ID for iOS devices.
      */
@@ -1684,7 +1691,7 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$Quest {
+  declare interface gapi$client$games$Quest {
     /**
      * The timestamp at which the user accepted the quest in milliseconds since the epoch in UTC. Only present if the player has accepted the quest.
      */
@@ -1775,7 +1782,7 @@ declare module "gapi.client.games" {
     state?: string;
   }
 
-  declare interface games$QuestContribution {
+  declare interface gapi$client$games$QuestContribution {
     /**
      * The formatted value of the contribution as a string. Format depends on the configuration for the associated event definition in the Play Games
      * Developer Console.
@@ -1793,18 +1800,18 @@ declare module "gapi.client.games" {
     value?: string;
   }
 
-  declare interface games$QuestCriterion {
+  declare interface gapi$client$games$QuestCriterion {
     /**
      * The total number of times the associated event must be incremented for the player to complete this quest.
      */
-    completionContribution?: games$QuestContribution;
+    completionContribution?: gapi$client$games$QuestContribution;
 
     /**
      * The number of increments the player has made toward the completion count event increments required to complete the quest. This value will not exceed
      * the completion contribution.
      * There will be no currentContribution until the player has accepted the quest.
      */
-    currentContribution?: games$QuestContribution;
+    currentContribution?: gapi$client$games$QuestContribution;
 
     /**
      * The ID of the event the criterion corresponds to.
@@ -1816,7 +1823,7 @@ declare module "gapi.client.games" {
      * before the start of quest are uploaded after the quest starts.
      * There will be no initialPlayerProgress until the player has accepted the quest.
      */
-    initialPlayerProgress?: games$QuestContribution;
+    initialPlayerProgress?: gapi$client$games$QuestContribution;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#questCriterion.
@@ -1824,11 +1831,11 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$QuestListResponse {
+  declare interface gapi$client$games$QuestListResponse {
     /**
      * The quests.
      */
-    items?: games$Quest[];
+    items?: gapi$client$games$Quest[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#questListResponse.
@@ -1841,7 +1848,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$QuestMilestone {
+  declare interface gapi$client$games$QuestMilestone {
     /**
      * The completion reward data of the milestone, represented as a Base64-encoded string. This is a developer-specified binary blob with size between 0 and
      * 2 KB before encoding.
@@ -1851,7 +1858,7 @@ declare module "gapi.client.games" {
     /**
      * The criteria of the milestone.
      */
-    criteria?: games$QuestCriterion[];
+    criteria?: gapi$client$games$QuestCriterion[];
 
     /**
      * The milestone ID.
@@ -1874,7 +1881,7 @@ declare module "gapi.client.games" {
     state?: string;
   }
 
-  declare interface games$RevisionCheckResponse {
+  declare interface gapi$client$games$RevisionCheckResponse {
     /**
      * The version of the API this client revision should use when calling API methods.
      */
@@ -1895,7 +1902,7 @@ declare module "gapi.client.games" {
     revisionStatus?: string;
   }
 
-  declare interface games$Room {
+  declare interface gapi$client$games$Room {
     /**
      * The ID of the application being played.
      */
@@ -1970,7 +1977,7 @@ declare module "gapi.client.games" {
     variant?: number;
   }
 
-  declare interface games$RoomAutoMatchStatus {
+  declare interface gapi$client$games$RoomAutoMatchStatus {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomAutoMatchStatus.
      */
@@ -1982,7 +1989,7 @@ declare module "gapi.client.games" {
     waitEstimateSeconds?: number;
   }
 
-  declare interface games$RoomAutoMatchingCriteria {
+  declare interface gapi$client$games$RoomAutoMatchingCriteria {
     /**
      * A bitmask indicating when auto-matches are valid. When ANDed with other exclusive bitmasks, the result must be zero. Can be used to support exclusive
      * roles within a game.
@@ -2005,7 +2012,7 @@ declare module "gapi.client.games" {
     minAutoMatchingPlayers?: number;
   }
 
-  declare interface games$RoomClientAddress {
+  declare interface gapi$client$games$RoomClientAddress {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomClientAddress.
      */
@@ -2017,11 +2024,11 @@ declare module "gapi.client.games" {
     xmppAddress?: string;
   }
 
-  declare interface games$RoomCreateRequest {
+  declare interface gapi$client$games$RoomCreateRequest {
     /**
      * Criteria for auto-matching players into this room.
      */
-    autoMatchingCriteria?: games$RoomAutoMatchingCriteria;
+    autoMatchingCriteria?: gapi$client$games$RoomAutoMatchingCriteria;
 
     /**
      * The capabilities that this client supports for realtime communication.
@@ -2031,7 +2038,7 @@ declare module "gapi.client.games" {
     /**
      * Client address for the player creating the room.
      */
-    clientAddress?: games$RoomClientAddress;
+    clientAddress?: gapi$client$games$RoomClientAddress;
 
     /**
      * The player IDs to invite to the room.
@@ -2046,7 +2053,7 @@ declare module "gapi.client.games" {
     /**
      * Network diagnostics for the client creating the room.
      */
-    networkDiagnostics?: games$NetworkDiagnostics;
+    networkDiagnostics?: gapi$client$games$NetworkDiagnostics;
 
     /**
      * A randomly generated numeric ID. This number is used at the server to ensure that the request is handled correctly across retries.
@@ -2060,7 +2067,7 @@ declare module "gapi.client.games" {
     variant?: number;
   }
 
-  declare interface games$RoomJoinRequest {
+  declare interface gapi$client$games$RoomJoinRequest {
     /**
      * The capabilities that this client supports for realtime communication.
      */
@@ -2069,7 +2076,7 @@ declare module "gapi.client.games" {
     /**
      * Client address for the player joining the room.
      */
-    clientAddress?: games$RoomClientAddress;
+    clientAddress?: gapi$client$games$RoomClientAddress;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomJoinRequest.
@@ -2079,10 +2086,10 @@ declare module "gapi.client.games" {
     /**
      * Network diagnostics for the client joining the room.
      */
-    networkDiagnostics?: games$NetworkDiagnostics;
+    networkDiagnostics?: gapi$client$games$NetworkDiagnostics;
   }
 
-  declare interface games$RoomLeaveDiagnostics {
+  declare interface gapi$client$games$RoomLeaveDiagnostics {
     /**
      * Android network subtype. http://developer.android.com/reference/android/net/NetworkInfo.html#getSubtype()
      */
@@ -2120,7 +2127,7 @@ declare module "gapi.client.games" {
     /**
      * Diagnostics about all peer sessions.
      */
-    peerSession?: games$PeerSessionDiagnostics[];
+    peerSession?: gapi$client$games$PeerSessionDiagnostics[];
 
     /**
      * Whether or not sockets were used.
@@ -2128,7 +2135,7 @@ declare module "gapi.client.games" {
     socketsUsed?: boolean;
   }
 
-  declare interface games$RoomLeaveRequest {
+  declare interface gapi$client$games$RoomLeaveRequest {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomLeaveRequest.
      */
@@ -2137,7 +2144,7 @@ declare module "gapi.client.games" {
     /**
      * Diagnostics for a player leaving the room.
      */
-    leaveDiagnostics?: games$RoomLeaveDiagnostics;
+    leaveDiagnostics?: gapi$client$games$RoomLeaveDiagnostics;
 
     /**
      * Reason for leaving the match.
@@ -2159,11 +2166,11 @@ declare module "gapi.client.games" {
     reason?: string;
   }
 
-  declare interface games$RoomList {
+  declare interface gapi$client$games$RoomList {
     /**
      * The rooms.
      */
-    items?: games$Room[];
+    items?: gapi$client$games$Room[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomList.
@@ -2176,7 +2183,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$RoomModification {
+  declare interface gapi$client$games$RoomModification {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomModification.
      */
@@ -2193,7 +2200,7 @@ declare module "gapi.client.games" {
     participantId?: string;
   }
 
-  declare interface games$RoomP2PStatus {
+  declare interface gapi$client$games$RoomP2PStatus {
     /**
      * The amount of time in milliseconds it took to establish connections with this peer.
      */
@@ -2237,7 +2244,7 @@ declare module "gapi.client.games" {
     unreliableRoundtripLatencyMillis?: number;
   }
 
-  declare interface games$RoomP2PStatuses {
+  declare interface gapi$client$games$RoomP2PStatuses {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomP2PStatuses.
      */
@@ -2246,10 +2253,10 @@ declare module "gapi.client.games" {
     /**
      * The updates for the peers.
      */
-    updates?: games$RoomP2PStatus[];
+    updates?: gapi$client$games$RoomP2PStatus[];
   }
 
-  declare interface games$RoomParticipant {
+  declare interface gapi$client$games$RoomParticipant {
     /**
      * True if this participant was auto-matched with the requesting player.
      */
@@ -2258,7 +2265,7 @@ declare module "gapi.client.games" {
     /**
      * Information about a player that has been anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)
      */
-    autoMatchedPlayer?: games$AnonymousPlayer;
+    autoMatchedPlayer?: gapi$client$games$AnonymousPlayer;
 
     /**
      * The capabilities which can be used when communicating with this participant.
@@ -2268,7 +2275,7 @@ declare module "gapi.client.games" {
     /**
      * Client address for the participant.
      */
-    clientAddress?: games$RoomClientAddress;
+    clientAddress?: gapi$client$games$RoomClientAddress;
 
     /**
      * True if this participant is in the fully connected set of peers in the room.
@@ -2302,7 +2309,7 @@ declare module "gapi.client.games" {
      * Information about the player. Not populated if this player was anonymously auto-matched against the requesting player. (Either player or
      * autoMatchedPlayer will be set.)
      */
-    player?: games$Player;
+    player?: gapi$client$games$Player;
 
     /**
      * The status of the participant with respect to the room.
@@ -2315,11 +2322,11 @@ declare module "gapi.client.games" {
     status?: string;
   }
 
-  declare interface games$RoomStatus {
+  declare interface gapi$client$games$RoomStatus {
     /**
      * Auto-matching status for this room. Not set if the room is not currently in the automatching queue.
      */
-    autoMatchingStatus?: games$RoomAutoMatchStatus;
+    autoMatchingStatus?: gapi$client$games$RoomAutoMatchStatus;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#roomStatus.
@@ -2329,7 +2336,7 @@ declare module "gapi.client.games" {
     /**
      * The participants involved in the room, along with their statuses. Includes participants who have left or declined invitations.
      */
-    participants?: games$RoomParticipant[];
+    participants?: gapi$client$games$RoomParticipant[];
 
     /**
      * Globally unique ID for a room.
@@ -2353,7 +2360,7 @@ declare module "gapi.client.games" {
     statusVersion?: number;
   }
 
-  declare interface games$ScoreSubmission {
+  declare interface gapi$client$games$ScoreSubmission {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#scoreSubmission.
      */
@@ -2380,7 +2387,7 @@ declare module "gapi.client.games" {
     signature?: string;
   }
 
-  declare interface games$Snapshot {
+  declare interface gapi$client$games$Snapshot {
     /**
      * The cover image of this snapshot. May be absent if there is no image.
      */
@@ -2440,7 +2447,7 @@ declare module "gapi.client.games" {
     uniqueName?: string;
   }
 
-  declare interface games$SnapshotImage {
+  declare interface gapi$client$games$SnapshotImage {
     /**
      * The height of the image.
      */
@@ -2467,11 +2474,11 @@ declare module "gapi.client.games" {
     width?: number;
   }
 
-  declare interface games$SnapshotListResponse {
+  declare interface gapi$client$games$SnapshotListResponse {
     /**
      * The snapshots.
      */
-    items?: games$Snapshot[];
+    items?: gapi$client$games$Snapshot[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#snapshotListResponse.
@@ -2484,7 +2491,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$TurnBasedAutoMatchingCriteria {
+  declare interface gapi$client$games$TurnBasedAutoMatchingCriteria {
     /**
      * A bitmask indicating when auto-matches are valid. When ANDed with other exclusive bitmasks, the result must be zero. Can be used to support exclusive
      * roles within a game.
@@ -2507,7 +2514,7 @@ declare module "gapi.client.games" {
     minAutoMatchingPlayers?: number;
   }
 
-  declare interface games$TurnBasedMatch {
+  declare interface gapi$client$games$TurnBasedMatch {
     /**
      * The ID of the application being played.
      */
@@ -2516,7 +2523,7 @@ declare module "gapi.client.games" {
     /**
      * Criteria for auto-matching players into this match.
      */
-    autoMatchingCriteria?: games$TurnBasedAutoMatchingCriteria;
+    autoMatchingCriteria?: gapi$client$games$TurnBasedAutoMatchingCriteria;
 
     /**
      * Details about the match creation.
@@ -2587,7 +2594,7 @@ declare module "gapi.client.games" {
     /**
      * The results reported for this match.
      */
-    results?: games$ParticipantResult[];
+    results?: gapi$client$games$ParticipantResult[];
 
     /**
      * The status of the match.
@@ -2623,11 +2630,11 @@ declare module "gapi.client.games" {
     withParticipantId?: string;
   }
 
-  declare interface games$TurnBasedMatchCreateRequest {
+  declare interface gapi$client$games$TurnBasedMatchCreateRequest {
     /**
      * Criteria for auto-matching players into this match.
      */
-    autoMatchingCriteria?: games$TurnBasedAutoMatchingCriteria;
+    autoMatchingCriteria?: gapi$client$games$TurnBasedAutoMatchingCriteria;
 
     /**
      * The player ids to invite to the match.
@@ -2651,7 +2658,7 @@ declare module "gapi.client.games" {
     variant?: number;
   }
 
-  declare interface games$TurnBasedMatchData {
+  declare interface gapi$client$games$TurnBasedMatchData {
     /**
      * The byte representation of the data (limited to 128 kB), as a Base64-encoded string with the URL_SAFE encoding option.
      */
@@ -2668,7 +2675,7 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$TurnBasedMatchDataRequest {
+  declare interface gapi$client$games$TurnBasedMatchDataRequest {
     /**
      * The byte representation of the data (limited to 128 kB), as a Base64-encoded string with the URL_SAFE encoding option.
      */
@@ -2680,11 +2687,11 @@ declare module "gapi.client.games" {
     kind?: string;
   }
 
-  declare interface games$TurnBasedMatchList {
+  declare interface gapi$client$games$TurnBasedMatchList {
     /**
      * The matches.
      */
-    items?: games$TurnBasedMatch[];
+    items?: gapi$client$games$TurnBasedMatch[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchList.
@@ -2697,7 +2704,7 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$TurnBasedMatchModification {
+  declare interface gapi$client$games$TurnBasedMatchModification {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchModification.
      */
@@ -2714,7 +2721,7 @@ declare module "gapi.client.games" {
     participantId?: string;
   }
 
-  declare interface games$TurnBasedMatchParticipant {
+  declare interface gapi$client$games$TurnBasedMatchParticipant {
     /**
      * True if this participant was auto-matched with the requesting player.
      */
@@ -2723,7 +2730,7 @@ declare module "gapi.client.games" {
     /**
      * Information about a player that has been anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)
      */
-    autoMatchedPlayer?: games$AnonymousPlayer;
+    autoMatchedPlayer?: gapi$client$games$AnonymousPlayer;
 
     /**
      * An identifier for the participant in the scope of the match. Cannot be used to identify a player across matches or in other contexts.
@@ -2739,7 +2746,7 @@ declare module "gapi.client.games" {
      * Information about the player. Not populated if this player was anonymously auto-matched against the requesting player. (Either player or
      * autoMatchedPlayer will be set.)
      */
-    player?: games$Player;
+    player?: gapi$client$games$Player;
 
     /**
      * The status of the participant with respect to the match.
@@ -2756,7 +2763,7 @@ declare module "gapi.client.games" {
     status?: string;
   }
 
-  declare interface games$TurnBasedMatchRematch {
+  declare interface gapi$client$games$TurnBasedMatchRematch {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchRematch.
      */
@@ -2765,19 +2772,19 @@ declare module "gapi.client.games" {
     /**
      * The old match that the rematch was created from; will be updated such that the rematchId field will point at the new match.
      */
-    previousMatch?: games$TurnBasedMatch;
+    previousMatch?: gapi$client$games$TurnBasedMatch;
 
     /**
      * The newly created match; a rematch of the old match with the same participants.
      */
-    rematch?: games$TurnBasedMatch;
+    rematch?: gapi$client$games$TurnBasedMatch;
   }
 
-  declare interface games$TurnBasedMatchResults {
+  declare interface gapi$client$games$TurnBasedMatchResults {
     /**
      * The final match data.
      */
-    data?: games$TurnBasedMatchDataRequest;
+    data?: gapi$client$games$TurnBasedMatchDataRequest;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchResults.
@@ -2792,14 +2799,14 @@ declare module "gapi.client.games" {
     /**
      * The match results for the participants in the match.
      */
-    results?: games$ParticipantResult[];
+    results?: gapi$client$games$ParticipantResult[];
   }
 
-  declare interface games$TurnBasedMatchSync {
+  declare interface gapi$client$games$TurnBasedMatchSync {
     /**
      * The matches.
      */
-    items?: games$TurnBasedMatch[];
+    items?: gapi$client$games$TurnBasedMatch[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchSync.
@@ -2817,11 +2824,11 @@ declare module "gapi.client.games" {
     nextPageToken?: string;
   }
 
-  declare interface games$TurnBasedMatchTurn {
+  declare interface gapi$client$games$TurnBasedMatchTurn {
     /**
      * The shared game state data after the turn is over.
      */
-    data?: games$TurnBasedMatchDataRequest;
+    data?: gapi$client$games$TurnBasedMatchDataRequest;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchTurn.
@@ -2843,10 +2850,10 @@ declare module "gapi.client.games" {
     /**
      * The match results for the participants in the match.
      */
-    results?: games$ParticipantResult[];
+    results?: gapi$client$games$ParticipantResult[];
   }
 
-  declare interface games$AchievementDefinitionsResource {
+  declare interface gapi$client$games$AchievementDefinitionsResource {
     /**
      * Lists all the achievement definitions for your application.
      */
@@ -2907,10 +2914,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementDefinitionsListResponse>;
+    }): Request<gapi$client$games$AchievementDefinitionsListResponse>;
   }
 
-  declare interface games$AchievementsResource {
+  declare interface gapi$client$games$AchievementsResource {
     /**
      * Increments the steps of the achievement with the given ID for the currently authenticated player.
      */
@@ -2971,7 +2978,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementIncrementResponse>;
+    }): Request<gapi$client$games$AchievementIncrementResponse>;
 
     /**
      * Lists the progress for all your application's achievements for the currently authenticated player.
@@ -3043,7 +3050,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerAchievementListResponse>;
+    }): Request<gapi$client$games$PlayerAchievementListResponse>;
 
     /**
      * Sets the state of the achievement with the given ID to REVEALED for the currently authenticated player.
@@ -3094,7 +3101,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementRevealResponse>;
+    }): Request<gapi$client$games$AchievementRevealResponse>;
 
     /**
      * Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps
@@ -3151,7 +3158,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementSetStepsAtLeastResponse>;
+    }): Request<gapi$client$games$AchievementSetStepsAtLeastResponse>;
 
     /**
      * Unlocks this achievement for the currently authenticated player.
@@ -3202,7 +3209,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementUnlockResponse>;
+    }): Request<gapi$client$games$AchievementUnlockResponse>;
 
     /**
      * Updates multiple achievements for the currently authenticated player.
@@ -3248,10 +3255,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$AchievementUpdateMultipleResponse>;
+    }): Request<gapi$client$games$AchievementUpdateMultipleResponse>;
   }
 
-  declare interface games$ApplicationsResource {
+  declare interface gapi$client$games$ApplicationsResource {
     /**
      * Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified platformType, the returned
      * response will not include any instance data.
@@ -3312,7 +3319,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Application>;
+    }): Request<gapi$client$games$Application>;
 
     /**
      * Indicate that the the currently authenticated user is playing your application.
@@ -3409,10 +3416,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$ApplicationVerifyResponse>;
+    }): Request<gapi$client$games$ApplicationVerifyResponse>;
   }
 
-  declare interface games$EventsResource {
+  declare interface gapi$client$games$EventsResource {
     /**
      * Returns a list showing the current progress on events in this application for the currently authenticated user.
      */
@@ -3473,7 +3480,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerEventListResponse>;
+    }): Request<gapi$client$games$PlayerEventListResponse>;
 
     /**
      * Returns a list of the event definitions in this application.
@@ -3535,7 +3542,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$EventDefinitionListResponse>;
+    }): Request<gapi$client$games$EventDefinitionListResponse>;
 
     /**
      * Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application.
@@ -3586,10 +3593,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$EventUpdateResponse>;
+    }): Request<gapi$client$games$EventUpdateResponse>;
   }
 
-  declare interface games$LeaderboardsResource {
+  declare interface gapi$client$games$LeaderboardsResource {
     /**
      * Retrieves the metadata of the leaderboard with the given ID.
      */
@@ -3644,7 +3651,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Leaderboard>;
+    }): Request<gapi$client$games$Leaderboard>;
 
     /**
      * Lists all the leaderboard metadata for your application.
@@ -3706,10 +3713,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$LeaderboardListResponse>;
+    }): Request<gapi$client$games$LeaderboardListResponse>;
   }
 
-  declare interface games$MetagameResource {
+  declare interface gapi$client$games$MetagameResource {
     /**
      * Return the metagame configuration data for the calling application.
      */
@@ -3754,7 +3761,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$MetagameConfig>;
+    }): Request<gapi$client$games$MetagameConfig>;
 
     /**
      * List play data aggregated per category for the player corresponding to playerId.
@@ -3826,10 +3833,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$CategoryListResponse>;
+    }): Request<gapi$client$games$CategoryListResponse>;
   }
 
-  declare interface games$PlayersResource {
+  declare interface gapi$client$games$PlayersResource {
     /**
      * Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated user, set playerId to me.
      */
@@ -3884,7 +3891,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Player>;
+    }): Request<gapi$client$games$Player>;
 
     /**
      * Get the collection of players for the currently authenticated user.
@@ -3951,10 +3958,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerListResponse>;
+    }): Request<gapi$client$games$PlayerListResponse>;
   }
 
-  declare interface games$PushtokensResource {
+  declare interface gapi$client$games$PushtokensResource {
     /**
      * Removes a push token for the current user and application. Removing a non-existent push token will report success.
      */
@@ -4048,7 +4055,7 @@ declare module "gapi.client.games" {
     }): Request<void>;
   }
 
-  declare interface games$QuestMilestonesResource {
+  declare interface gapi$client$games$QuestMilestonesResource {
     /**
      * Report that a reward for the milestone corresponding to milestoneId for the quest corresponding to questId has been claimed by the currently authorized
      * user.
@@ -4112,7 +4119,7 @@ declare module "gapi.client.games" {
     }): Request<void>;
   }
 
-  declare interface games$QuestsResource {
+  declare interface gapi$client$games$QuestsResource {
     /**
      * Indicates that the currently authorized user will participate in the quest.
      */
@@ -4167,7 +4174,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Quest>;
+    }): Request<gapi$client$games$Quest>;
 
     /**
      * Get a list of quests for your application and the currently authenticated player.
@@ -4234,10 +4241,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$QuestListResponse>;
+    }): Request<gapi$client$games$QuestListResponse>;
   }
 
-  declare interface games$RevisionsResource {
+  declare interface gapi$client$games$RevisionsResource {
     /**
      * Checks whether the games client is out of date.
      */
@@ -4292,10 +4299,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$RevisionCheckResponse>;
+    }): Request<gapi$client$games$RevisionCheckResponse>;
   }
 
-  declare interface games$RoomsResource {
+  declare interface gapi$client$games$RoomsResource {
     /**
      * Create a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
      */
@@ -4345,7 +4352,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Room>;
+    }): Request<gapi$client$games$Room>;
 
     /**
      * Decline an invitation to join a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
@@ -4401,7 +4408,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Room>;
+    }): Request<gapi$client$games$Room>;
 
     /**
      * Dismiss an invitation to join a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
@@ -4508,7 +4515,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Room>;
+    }): Request<gapi$client$games$Room>;
 
     /**
      * Join a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
@@ -4564,7 +4571,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Room>;
+    }): Request<gapi$client$games$Room>;
 
     /**
      * Leave a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
@@ -4620,7 +4627,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Room>;
+    }): Request<gapi$client$games$Room>;
 
     /**
      * Returns invitations to join rooms.
@@ -4682,7 +4689,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$RoomList>;
+    }): Request<gapi$client$games$RoomList>;
 
     /**
      * Updates sent by a client reporting the status of peers in a room. For internal use by the Games SDK only. Calling this method directly is unsupported.
@@ -4738,10 +4745,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$RoomStatus>;
+    }): Request<gapi$client$games$RoomStatus>;
   }
 
-  declare interface games$ScoresResource {
+  declare interface gapi$client$games$ScoresResource {
     /**
      * Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a specific time span, leaderboardId can be set to
      * ALL to retrieve data for all leaderboards in a given time span.
@@ -4824,7 +4831,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerLeaderboardScoreListResponse>;
+    }): Request<gapi$client$games$PlayerLeaderboardScoreListResponse>;
 
     /**
      * Lists the scores in a leaderboard, starting from the top.
@@ -4901,7 +4908,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$LeaderboardScores>;
+    }): Request<gapi$client$games$LeaderboardScores>;
 
     /**
      * Lists the scores in a leaderboard around (and including) a player's score.
@@ -4989,7 +4996,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$LeaderboardScores>;
+    }): Request<gapi$client$games$LeaderboardScores>;
 
     /**
      * Submits a score to the specified leaderboard.
@@ -5058,7 +5065,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerScoreResponse>;
+    }): Request<gapi$client$games$PlayerScoreResponse>;
 
     /**
      * Submits multiple scores to leaderboards.
@@ -5109,10 +5116,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$PlayerScoreListResponse>;
+    }): Request<gapi$client$games$PlayerScoreListResponse>;
   }
 
-  declare interface games$SnapshotsResource {
+  declare interface gapi$client$games$SnapshotsResource {
     /**
      * Retrieves the metadata for a given snapshot ID.
      */
@@ -5167,7 +5174,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$Snapshot>;
+    }): Request<gapi$client$games$Snapshot>;
 
     /**
      * Retrieves a list of snapshots created by your application for the player corresponding to the player ID.
@@ -5234,10 +5241,10 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$SnapshotListResponse>;
+    }): Request<gapi$client$games$SnapshotListResponse>;
   }
 
-  declare interface games$TurnBasedMatchesResource {
+  declare interface gapi$client$games$TurnBasedMatchesResource {
     /**
      * Cancel a turn-based match.
      */
@@ -5338,7 +5345,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Decline an invitation to play a turn-based match.
@@ -5394,7 +5401,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Dismiss a turn-based match from the match list. The match will no longer show up in the list and will not generate notifications.
@@ -5502,7 +5509,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Get the data for a turn-based match.
@@ -5563,7 +5570,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Join a turn-based match.
@@ -5619,7 +5626,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Leave a turn-based match when it is not the current player's turn, without canceling the match.
@@ -5675,7 +5682,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Leave a turn-based match during the current player's turn, without canceling the match.
@@ -5742,7 +5749,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
 
     /**
      * Returns turn-based matches the player is or was involved in.
@@ -5816,7 +5823,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatchList>;
+    }): Request<gapi$client$games$TurnBasedMatchList>;
 
     /**
      * Create a rematch of a match that was previously completed, with the same participants. This can be called by only one player on a match still in their
@@ -5879,7 +5886,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatchRematch>;
+    }): Request<gapi$client$games$TurnBasedMatchRematch>;
 
     /**
      * Returns turn-based matches the player is or was involved in that changed since the last sync call, with the least recent changes coming first. Matches
@@ -5954,7 +5961,7 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatchSync>;
+    }): Request<gapi$client$games$TurnBasedMatchSync>;
 
     /**
      * Commit the results of a player turn.
@@ -6010,6 +6017,6 @@ declare module "gapi.client.games" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<games$TurnBasedMatch>;
+    }): Request<gapi$client$games$TurnBasedMatch>;
   }
 }
