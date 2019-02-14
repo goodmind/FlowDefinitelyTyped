@@ -3,7 +3,7 @@ declare module "react-dates" {
 
   import typeof * as moment from "moment";
 
-  declare module.exports: typeof ReactDates;
+  declare export default typeof ReactDates;
 
   declare type momentPropTypes$momentObj = moment.Moment;
 
@@ -33,19 +33,19 @@ declare module "react-dates" {
     | "after";
 
   declare interface ReactDates$DateRangePickerShape {
-    startDate: momentPropTypes$momentPropTypes$momentObj | null;
+    startDate: momentPropTypes$momentObj | null;
     startDateId: string;
-    endDate: momentPropTypes$momentPropTypes$momentObj | null;
+    endDate: momentPropTypes$momentObj | null;
     endDateId: string;
     focusedInput: ReactDates$FocusedInputShape | null;
     onDatesChange: (arg: {
-      startDate: momentPropTypes$momentPropTypes$momentObj | null,
-      endDate: momentPropTypes$momentPropTypes$momentObj | null
+      startDate: momentPropTypes$momentObj | null,
+      endDate: momentPropTypes$momentObj | null
     }) => void;
     onFocusChange: (arg: ReactDates$FocusedInputShape | null) => void;
     onClose?: (final: {
-      startDate: momentPropTypes$momentPropTypes$momentObj,
-      endDate: momentPropTypes$momentPropTypes$momentObj
+      startDate: momentPropTypes$momentObj,
+      endDate: momentPropTypes$momentObj
     }) => void;
     startDatePlaceholderText?: string;
     endDatePlaceholderText?: string;
@@ -64,17 +64,15 @@ declare module "react-dates" {
     small?: boolean;
     regular?: boolean;
     keepFocusOnInput?: boolean;
-    renderMonthText?: (
-      day: momentPropTypes$momentPropTypes$momentObj
-    ) => string | JSX.Element;
+    renderMonthText?: (day: momentPropTypes$momentObj) => string | JSX.Element;
     renderMonthElement?: (props: {
-      month: momentPropTypes$momentPropTypes$momentObj,
+      month: momentPropTypes$momentObj,
       onMonthSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newMonthVal: string
       ) => void,
       onYearSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newYearVal: string
       ) => void
     }) => string | JSX.Element;
@@ -89,7 +87,7 @@ declare module "react-dates" {
     daySize?: number;
     isRTL?: boolean;
     firstDayOfWeek?: ReactDates$DayOfWeekShape;
-    initialVisibleMonth?: () => momentPropTypes$momentPropTypes$momentObj;
+    initialVisibleMonth?: () => momentPropTypes$momentObj;
     numberOfMonths?: number;
     keepOpenOnDateSelect?: boolean;
     reopenPickerOnClearDates?: boolean;
@@ -101,17 +99,13 @@ declare module "react-dates" {
     verticalSpacing?: number;
     navPrev?: string | JSX.Element;
     navNext?: string | JSX.Element;
-    onPrevMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
-    onNextMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
+    onPrevMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
+    onNextMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
     renderCalendarDay?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     renderDayContents?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     minimumNights?: number;
     enableOutsideDays?: boolean;
@@ -144,11 +138,9 @@ declare module "react-dates" {
 
   declare interface ReactDates$SingleDatePickerShape {
     id: string;
-    date: momentPropTypes$momentPropTypes$momentObj | null;
+    date: momentPropTypes$momentObj | null;
     focused: boolean;
-    onDateChange: (
-      date: momentPropTypes$momentPropTypes$momentObj | null
-    ) => void;
+    onDateChange: (date: momentPropTypes$momentObj | null) => void;
     onFocusChange: (arg: {
       focused: boolean | null
     }) => void;
@@ -168,17 +160,15 @@ declare module "react-dates" {
     regular?: boolean;
     verticalSpacing?: number;
     keepFocusOnInput?: boolean;
-    renderMonthText?: (
-      day: momentPropTypes$momentPropTypes$momentObj
-    ) => string | JSX.Element;
+    renderMonthText?: (day: momentPropTypes$momentObj) => string | JSX.Element;
     renderMonthElement?: (props: {
-      month: momentPropTypes$momentPropTypes$momentObj,
+      month: momentPropTypes$momentObj,
       onMonthSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newMonthVal: string
       ) => void,
       onYearSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newYearVal: string
       ) => void
     }) => string | JSX.Element;
@@ -190,7 +180,7 @@ declare module "react-dates" {
     withFullScreenPortal?: boolean;
     appendToBody?: boolean;
     disableScroll?: boolean;
-    initialVisibleMonth?: () => momentPropTypes$momentPropTypes$momentObj;
+    initialVisibleMonth?: () => momentPropTypes$momentObj;
     firstDayOfWeek?: ReactDates$DayOfWeekShape;
     numberOfMonths?: number;
     keepOpenOnDateSelect?: boolean;
@@ -204,21 +194,17 @@ declare module "react-dates" {
     transitionDuration?: number;
     navPrev?: string | JSX.Element;
     navNext?: string | JSX.Element;
-    onPrevMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
-    onNextMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
+    onPrevMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
+    onNextMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
     onClose?: (final: {
-      startDate: momentPropTypes$momentPropTypes$momentObj,
-      endDate: momentPropTypes$momentPropTypes$momentObj
+      startDate: momentPropTypes$momentObj,
+      endDate: momentPropTypes$momentObj
     }) => void;
     renderCalendarDay?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     renderDayContents?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     enableOutsideDays?: boolean;
     isDayBlocked?: (day: any) => boolean;
@@ -366,19 +352,19 @@ declare module "react-dates" {
   declare var ReactDates$DateRangePicker: React.ClassicComponentClass<ReactDates$DateRangePickerShape>;
 
   declare type ReactDates$DayPickerRangeControllerShape = {
-    startDate: momentPropTypes$momentPropTypes$momentObj | null,
-    endDate: momentPropTypes$momentPropTypes$momentObj | null,
+    startDate: momentPropTypes$momentObj | null,
+    endDate: momentPropTypes$momentObj | null,
     onDatesChange: (arg: {
-      startDate: momentPropTypes$momentPropTypes$momentObj | null,
-      endDate: momentPropTypes$momentPropTypes$momentObj | null
+      startDate: momentPropTypes$momentObj | null,
+      endDate: momentPropTypes$momentObj | null
     }) => void,
     focusedInput: ReactDates$FocusedInputShape,
     onFocusChange: (arg: ReactDates$FocusedInputShape | null) => void,
     startDateOffset?: (day: any) => any,
     endDateOffset?: (day: any) => any,
     onClose?: (final: {
-      startDate: momentPropTypes$momentPropTypes$momentObj,
-      endDate: momentPropTypes$momentPropTypes$momentObj
+      startDate: momentPropTypes$momentObj,
+      endDate: momentPropTypes$momentObj
     }) => void,
     keepOpenOnDateSelect?: boolean,
     minimumNights?: number,
@@ -386,24 +372,22 @@ declare module "react-dates" {
     isOutsideRange?: (day: any) => boolean,
     isDayBlocked?: (day: any) => boolean,
     isDayHighlighted?: (day: any) => boolean
-  } & ReactDates$DayPickerShape;
+  } & DayPickerShape;
 
   declare type ReactDates$DayPickerRangeController = React.ClassicComponentClass<ReactDates$DayPickerRangeControllerShape>;
 
   declare var ReactDates$DayPickerRangeController: React.ClassicComponentClass<ReactDates$DayPickerRangeControllerShape>;
 
   declare interface ReactDates$DayPickerShape {
-    renderMonthText?: (
-      day: momentPropTypes$momentPropTypes$momentObj
-    ) => string | JSX.Element;
+    renderMonthText?: (day: momentPropTypes$momentObj) => string | JSX.Element;
     renderMonthElement?: (props: {
-      month: momentPropTypes$momentPropTypes$momentObj,
+      month: momentPropTypes$momentObj,
       onMonthSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newMonthVal: string
       ) => void,
       onYearSelect: (
-        currentMonth: momentPropTypes$momentPropTypes$momentObj,
+        currentMonth: momentPropTypes$momentObj,
         newYearVal: string
       ) => void
     }) => string | JSX.Element;
@@ -411,7 +395,7 @@ declare module "react-dates" {
     numberOfMonths?: number;
     orientation?: ReactDates$ScrollableOrientationShape;
     withPortal?: boolean;
-    initialVisibleMonth?: () => momentPropTypes$momentPropTypes$momentObj;
+    initialVisibleMonth?: () => momentPropTypes$momentObj;
     firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
     hideKeyboardShortcutsPanel?: boolean;
     daySize?: number;
@@ -420,18 +404,14 @@ declare module "react-dates" {
     transitionDuration?: number;
     navPrev?: string | JSX.Element;
     navNext?: string | JSX.Element;
-    onPrevMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
-    onNextMonthClick?: (
-      newCurrentMonth: momentPropTypes$momentPropTypes$momentObj
-    ) => void;
+    onPrevMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
+    onNextMonthClick?: (newCurrentMonth: momentPropTypes$momentObj) => void;
     onOutsideClick?: (e: any) => void;
     renderCalendarDay?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     renderDayContents?: (
-      day: momentPropTypes$momentPropTypes$momentObj
+      day: momentPropTypes$momentObj
     ) => string | JSX.Element;
     renderCalendarInfo?: () => string | JSX.Element;
     calendarInfoPosition?: ReactDates$CalendarInfoPositionShape;
@@ -446,22 +426,20 @@ declare module "react-dates" {
   }
 
   declare type ReactDates$DayPickerSingleDateControllerShape = {
-    date: momentPropTypes$momentPropTypes$momentObj | null,
-    onDateChange: (
-      date: momentPropTypes$momentPropTypes$momentObj | null
-    ) => void,
+    date: momentPropTypes$momentObj | null,
+    onDateChange: (date: momentPropTypes$momentObj | null) => void,
     focused: boolean,
     onFocusChange: (arg: {
       focused: boolean | null
     }) => void,
     onClose?: (final: {
-      date: momentPropTypes$momentPropTypes$momentObj
+      date: momentPropTypes$momentObj
     }) => void,
     keepOpenOnDateSelect?: boolean,
     isOutsideRange?: (day: any) => boolean,
     isDayBlocked?: (day: any) => boolean,
     isDayHighlighted?: (day: any) => boolean
-  } & ReactDates$DayPickerShape;
+  } & DayPickerShape;
 
   declare type ReactDates$DayPickerSingleDateController = React.ClassicComponentClass<ReactDates$DayPickerSingleDateControllerShape>;
 
