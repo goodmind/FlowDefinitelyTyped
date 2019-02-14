@@ -1,26 +1,30 @@
 declare module "gapi.client.adexchangeseller" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Ad Exchange Seller API v2.0
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangeseller",
     version: "v2.0"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangeseller",
     version: "v2.0",
     callback: () => any
   ): void;
 
-  declare var client$accounts: adexchangeseller$adexchangeseller$AccountsResource;
+  declare var gapi$client$accounts: adexchangeseller$AccountsResource;
 
-  declare interface adexchangeseller$Account {
+  declare interface gapi$client$adexchangeseller$Account {
     /**
      * Unique identifier of this account.
      */
@@ -37,7 +41,7 @@ declare module "gapi.client.adexchangeseller" {
     name?: string;
   }
 
-  declare interface adexchangeseller$Accounts {
+  declare interface gapi$client$adexchangeseller$Accounts {
     /**
      * ETag of this response for caching purposes.
      */
@@ -46,7 +50,7 @@ declare module "gapi.client.adexchangeseller" {
     /**
      * The accounts returned in this list response.
      */
-    items?: adexchangeseller$Account[];
+    items?: gapi$client$adexchangeseller$Account[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#accounts.
@@ -59,7 +63,7 @@ declare module "gapi.client.adexchangeseller" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangeseller$AdClient {
+  declare interface gapi$client$adexchangeseller$AdClient {
     /**
      * Whether this ad client is opted in to ARC.
      */
@@ -86,7 +90,7 @@ declare module "gapi.client.adexchangeseller" {
     supportsReporting?: boolean;
   }
 
-  declare interface adexchangeseller$AdClients {
+  declare interface gapi$client$adexchangeseller$AdClients {
     /**
      * ETag of this response for caching purposes.
      */
@@ -95,7 +99,7 @@ declare module "gapi.client.adexchangeseller" {
     /**
      * The ad clients returned in this list response.
      */
-    items?: adexchangeseller$AdClient[];
+    items?: gapi$client$adexchangeseller$AdClient[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#adClients.
@@ -108,7 +112,7 @@ declare module "gapi.client.adexchangeseller" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangeseller$Alert {
+  declare interface gapi$client$adexchangeseller$Alert {
     /**
      * Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
      */
@@ -136,11 +140,11 @@ declare module "gapi.client.adexchangeseller" {
     type?: string;
   }
 
-  declare interface adexchangeseller$Alerts {
+  declare interface gapi$client$adexchangeseller$Alerts {
     /**
      * The alerts returned in this list response.
      */
-    items?: adexchangeseller$Alert[];
+    items?: gapi$client$adexchangeseller$Alert[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#alerts.
@@ -148,7 +152,7 @@ declare module "gapi.client.adexchangeseller" {
     kind?: string;
   }
 
-  declare interface adexchangeseller$CustomChannel {
+  declare interface gapi$client$adexchangeseller$CustomChannel {
     /**
      * Code of this custom channel, not necessarily unique across ad clients.
      */
@@ -197,7 +201,7 @@ declare module "gapi.client.adexchangeseller" {
     };
   }
 
-  declare interface adexchangeseller$CustomChannels {
+  declare interface gapi$client$adexchangeseller$CustomChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -206,7 +210,7 @@ declare module "gapi.client.adexchangeseller" {
     /**
      * The custom channels returned in this list response.
      */
-    items?: adexchangeseller$CustomChannel[];
+    items?: gapi$client$adexchangeseller$CustomChannel[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#customChannels.
@@ -219,7 +223,7 @@ declare module "gapi.client.adexchangeseller" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangeseller$Metadata {
+  declare interface gapi$client$adexchangeseller$Metadata {
     items?: adexchangeseller$ReportingMetadataEntry[];
 
     /**
@@ -228,7 +232,7 @@ declare module "gapi.client.adexchangeseller" {
     kind?: string;
   }
 
-  declare interface adexchangeseller$PreferredDeal {
+  declare interface gapi$client$adexchangeseller$PreferredDeal {
     /**
      * The name of the advertiser this deal is for.
      */
@@ -271,11 +275,11 @@ declare module "gapi.client.adexchangeseller" {
     startTime?: string;
   }
 
-  declare interface adexchangeseller$PreferredDeals {
+  declare interface gapi$client$adexchangeseller$PreferredDeals {
     /**
      * The preferred deals returned in this list response.
      */
-    items?: adexchangeseller$PreferredDeal[];
+    items?: gapi$client$adexchangeseller$PreferredDeal[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#preferredDeals.
@@ -283,7 +287,7 @@ declare module "gapi.client.adexchangeseller" {
     kind?: string;
   }
 
-  declare interface adexchangeseller$Report {
+  declare interface gapi$client$adexchangeseller$Report {
     /**
      * The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty.
      */
@@ -338,7 +342,7 @@ declare module "gapi.client.adexchangeseller" {
     warnings?: string[];
   }
 
-  declare interface adexchangeseller$ReportingMetadataEntry {
+  declare interface gapi$client$adexchangeseller$ReportingMetadataEntry {
     /**
      * For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it is a list of compatibility groups the dimension
      * belongs to.
@@ -378,7 +382,7 @@ declare module "gapi.client.adexchangeseller" {
     supportedProducts?: string[];
   }
 
-  declare interface adexchangeseller$SavedReport {
+  declare interface gapi$client$adexchangeseller$SavedReport {
     /**
      * Unique identifier of this saved report.
      */
@@ -395,7 +399,7 @@ declare module "gapi.client.adexchangeseller" {
     name?: string;
   }
 
-  declare interface adexchangeseller$SavedReports {
+  declare interface gapi$client$adexchangeseller$SavedReports {
     /**
      * ETag of this response for caching purposes.
      */
@@ -404,7 +408,7 @@ declare module "gapi.client.adexchangeseller" {
     /**
      * The saved reports returned in this list response.
      */
-    items?: adexchangeseller$SavedReport[];
+    items?: gapi$client$adexchangeseller$SavedReport[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#savedReports.
@@ -417,7 +421,7 @@ declare module "gapi.client.adexchangeseller" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangeseller$UrlChannel {
+  declare interface gapi$client$adexchangeseller$UrlChannel {
     /**
      * Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
      */
@@ -434,7 +438,7 @@ declare module "gapi.client.adexchangeseller" {
     urlPattern?: string;
   }
 
-  declare interface adexchangeseller$UrlChannels {
+  declare interface gapi$client$adexchangeseller$UrlChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -443,7 +447,7 @@ declare module "gapi.client.adexchangeseller" {
     /**
      * The URL channels returned in this list response.
      */
-    items?: adexchangeseller$UrlChannel[];
+    items?: gapi$client$adexchangeseller$UrlChannel[];
 
     /**
      * Kind of list this is, in this case adexchangeseller#urlChannels.
@@ -456,7 +460,7 @@ declare module "gapi.client.adexchangeseller" {
     nextPageToken?: string;
   }
 
-  declare interface adexchangeseller$AdclientsResource {
+  declare interface gapi$client$adexchangeseller$AdclientsResource {
     /**
      * List all ad clients in this Ad Exchange account.
      */
@@ -512,10 +516,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$AdClients>;
+    }): Request<gapi$client$adexchangeseller$AdClients>;
   }
 
-  declare interface adexchangeseller$AlertsResource {
+  declare interface gapi$client$adexchangeseller$AlertsResource {
     /**
      * List the alerts for this Ad Exchange account.
      */
@@ -566,10 +570,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Alerts>;
+    }): Request<gapi$client$adexchangeseller$Alerts>;
   }
 
-  declare interface adexchangeseller$CustomchannelsResource {
+  declare interface gapi$client$adexchangeseller$CustomchannelsResource {
     /**
      * Get the specified custom channel from the specified ad client.
      */
@@ -624,7 +628,7 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$CustomChannel>;
+    }): Request<gapi$client$adexchangeseller$CustomChannel>;
 
     /**
      * List all custom channels in the specified ad client for this Ad Exchange account.
@@ -686,10 +690,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$CustomChannels>;
+    }): Request<gapi$client$adexchangeseller$CustomChannels>;
   }
 
-  declare interface adexchangeseller$DimensionsResource {
+  declare interface gapi$client$adexchangeseller$DimensionsResource {
     /**
      * List the metadata for the dimensions available to this AdExchange account.
      */
@@ -734,10 +738,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Metadata>;
+    }): Request<gapi$client$adexchangeseller$Metadata>;
   }
 
-  declare interface adexchangeseller$MetricsResource {
+  declare interface gapi$client$adexchangeseller$MetricsResource {
     /**
      * List the metadata for the metrics available to this AdExchange account.
      */
@@ -782,15 +786,15 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Metadata>;
+    }): Request<gapi$client$adexchangeseller$Metadata>;
   }
 
-  declare interface adexchangeseller$MetadataResource {
-    dimensions: adexchangeseller$DimensionsResource;
-    metrics: adexchangeseller$MetricsResource;
+  declare interface gapi$client$adexchangeseller$MetadataResource {
+    dimensions: gapi$client$adexchangeseller$DimensionsResource;
+    metrics: gapi$client$adexchangeseller$MetricsResource;
   }
 
-  declare interface adexchangeseller$PreferreddealsResource {
+  declare interface gapi$client$adexchangeseller$PreferreddealsResource {
     /**
      * Get information about the selected Ad Exchange Preferred Deal.
      */
@@ -840,7 +844,7 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$PreferredDeal>;
+    }): Request<gapi$client$adexchangeseller$PreferredDeal>;
 
     /**
      * List the preferred deals for this Ad Exchange account.
@@ -886,10 +890,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$PreferredDeals>;
+    }): Request<gapi$client$adexchangeseller$PreferredDeals>;
   }
 
-  declare interface adexchangeseller$SavedResource {
+  declare interface gapi$client$adexchangeseller$SavedResource {
     /**
      * Generate an Ad Exchange report based on the saved report ID sent in the query parameters.
      */
@@ -954,7 +958,7 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Report>;
+    }): Request<gapi$client$adexchangeseller$Report>;
 
     /**
      * List all saved reports in this Ad Exchange account.
@@ -1011,10 +1015,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$SavedReports>;
+    }): Request<gapi$client$adexchangeseller$SavedReports>;
   }
 
-  declare interface adexchangeseller$ReportsResource {
+  declare interface gapi$client$adexchangeseller$ReportsResource {
     /**
      * Generate an Ad Exchange report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format
      * specify "alt=csv" as a query parameter.
@@ -1106,11 +1110,11 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Report>;
-    saved: adexchangeseller$SavedResource;
+    }): Request<gapi$client$adexchangeseller$Report>;
+    saved: gapi$client$adexchangeseller$SavedResource;
   }
 
-  declare interface adexchangeseller$UrlchannelsResource {
+  declare interface gapi$client$adexchangeseller$UrlchannelsResource {
     /**
      * List all URL channels in the specified ad client for this Ad Exchange account.
      */
@@ -1171,10 +1175,10 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$UrlChannels>;
+    }): Request<gapi$client$adexchangeseller$UrlChannels>;
   }
 
-  declare interface adexchangeseller$AccountsResource {
+  declare interface gapi$client$adexchangeseller$AccountsResource {
     /**
      * Get information about the selected Ad Exchange account.
      */
@@ -1219,7 +1223,7 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Account>;
+    }): Request<gapi$client$adexchangeseller$Account>;
 
     /**
      * List all accounts available to this Ad Exchange account.
@@ -1271,13 +1275,13 @@ declare module "gapi.client.adexchangeseller" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adexchangeseller$Accounts>;
-    adclients: adexchangeseller$AdclientsResource;
-    alerts: adexchangeseller$AlertsResource;
-    customchannels: adexchangeseller$CustomchannelsResource;
-    metadata: adexchangeseller$MetadataResource;
-    preferreddeals: adexchangeseller$PreferreddealsResource;
-    reports: adexchangeseller$ReportsResource;
-    urlchannels: adexchangeseller$UrlchannelsResource;
+    }): Request<gapi$client$adexchangeseller$Accounts>;
+    adclients: gapi$client$adexchangeseller$AdclientsResource;
+    alerts: gapi$client$adexchangeseller$AlertsResource;
+    customchannels: gapi$client$adexchangeseller$CustomchannelsResource;
+    metadata: gapi$client$adexchangeseller$MetadataResource;
+    preferreddeals: gapi$client$adexchangeseller$PreferreddealsResource;
+    reports: gapi$client$adexchangeseller$ReportsResource;
+    urlchannels: gapi$client$adexchangeseller$UrlchannelsResource;
   }
 }
