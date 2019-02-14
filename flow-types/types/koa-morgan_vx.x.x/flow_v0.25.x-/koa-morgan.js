@@ -26,7 +26,7 @@ declare module "koa-morgan" {
     ): string;
   }
 
-  declare type morgan$TokenIndexer = originalMorgan.morgan$TokenIndexer;
+  declare type morgan$TokenIndexer = originalMorgan.TokenIndexer;
 
   /**
    * Public interface of morgan logger
@@ -37,67 +37,64 @@ declare module "koa-morgan" {
      * format argument may be a string of a predefined name (see below for the names),
      * or a string of a format string containing defined tokens.
      */
-    (morgan$format: string, options?: morgan$Options): Koa.Middleware;
+    (format: string, options?: morgan$Options): Koa.Middleware;
 
     /**
      * Standard Apache combined log output.
      * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
      */
-    (morgan$format: "combined", options?: morgan$Options): Koa.Middleware;
+    (format: "combined", options?: morgan$Options): Koa.Middleware;
 
     /**
      * Standard Apache common log output.
      * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length]
      */
-    (morgan$format: "common", options?: morgan$Options): Koa.Middleware;
+    (format: "common", options?: morgan$Options): Koa.Middleware;
 
     /**
      * Concise output colored by response status for development use. The :status token will be colored red for
      * server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
      * :method :url :status :response-time ms - :res[content-length]
      */
-    (morgan$format: "dev", options?: morgan$Options): Koa.Middleware;
+    (format: "dev", options?: morgan$Options): Koa.Middleware;
 
     /**
      * Shorter than default, also including response time.
      * :remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms
      */
-    (morgan$format: "short", options?: morgan$Options): Koa.Middleware;
+    (format: "short", options?: morgan$Options): Koa.Middleware;
 
     /**
      * The minimal output.
      * :method :url :status :res[content-length] - :response-time ms
      */
-    (morgan$format: "tiny", options?: morgan$Options): Koa.Middleware;
+    (format: "tiny", options?: morgan$Options): Koa.Middleware;
 
     /**
      * Create a new morgan logger middleware function using the given format and options. The format argument may be a
      * custom format function which adheres to the signature.
      */
-    (morgan$format: morgan$FormatFn, options?: morgan$Options): Koa.Middleware;
+    (format: morgan$FormatFn, options?: morgan$Options): Koa.Middleware;
 
     /**
      * Define a custom token which can be used in custom morgan logging formats.
      */
-    morgan$token(
-      name: string,
-      callback: morgan$TokenCallbackFn
-    ): morgan$KoaMorgan;
+    token(name: string, callback: morgan$TokenCallbackFn): morgan$KoaMorgan;
 
     /**
      * Define a named custom format by specifying a format string in token notation
      */
-    morgan$format(name: string, fmt: string): morgan$KoaMorgan;
+    format(name: string, fmt: string): morgan$KoaMorgan;
 
     /**
      * Define a named custom format by specifying a format function
      */
-    morgan$format(name: string, fmt: morgan$FormatFn): morgan$KoaMorgan;
+    format(name: string, fmt: morgan$FormatFn): morgan$KoaMorgan;
 
     /**
      * Compile a format string in token notation into a format function
      */
-    morgan$compile(morgan$format: string): morgan$FormatFn;
+    compile(format: string): morgan$FormatFn;
   }
 
   /**
@@ -124,9 +121,9 @@ declare module "koa-morgan" {
   /**
    * Compile a format string in token notation into a format function
    */
-  declare function morgan$compile(morgan$format: string): morgan$FormatFn;
+  declare function morgan$compile(format: string): morgan$FormatFn;
 
-  declare type morgan$StreamOptions = originalMorgan.morgan$StreamOptions;
+  declare type morgan$StreamOptions = originalMorgan.StreamOptions;
 
   /**
    * Morgan accepts these properties in the options object.
@@ -159,8 +156,8 @@ declare module "koa-morgan" {
    * of a predefined name (see below for the names), or a string of a format string containing defined tokens.
    */
   declare function morgan(
-    morgan$format: string,
-    options?: morgan$morgan$Options
+    format: string,
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -168,8 +165,8 @@ declare module "koa-morgan" {
    * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
    */
   declare function morgan(
-    morgan$format: "combined",
-    options?: morgan$morgan$Options
+    format: "combined",
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -177,8 +174,8 @@ declare module "koa-morgan" {
    * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length]
    */
   declare function morgan(
-    morgan$format: "common",
-    options?: morgan$morgan$Options
+    format: "common",
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -187,8 +184,8 @@ declare module "koa-morgan" {
    * :method :url :status :response-time ms - :res[content-length]
    */
   declare function morgan(
-    morgan$format: "dev",
-    options?: morgan$morgan$Options
+    format: "dev",
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -196,8 +193,8 @@ declare module "koa-morgan" {
    * :remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms
    */
   declare function morgan(
-    morgan$format: "short",
-    options?: morgan$morgan$Options
+    format: "short",
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -205,8 +202,8 @@ declare module "koa-morgan" {
    * :method :url :status :res[content-length] - :response-time ms
    */
   declare function morgan(
-    morgan$format: "tiny",
-    options?: morgan$morgan$Options
+    format: "tiny",
+    options?: morgan$Options
   ): Koa.Middleware;
 
   /**
@@ -217,5 +214,5 @@ declare module "koa-morgan" {
     custom: (req: IncomingMessage, res: ServerResponse) => string
   ): Koa.Middleware;
 
-  declare module.exports: typeof morgan;
+  declare export default typeof morgan;
 }
