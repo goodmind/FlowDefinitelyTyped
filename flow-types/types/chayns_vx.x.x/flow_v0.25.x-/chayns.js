@@ -56,7 +56,15 @@ declare module "chayns" {
     addErrorListener: typeof chayns$addErrorListener,
     getGlobalData: typeof chayns$getGlobalData,
     ready: typeof chayns$ready,
-    smartShop: typeof chayns$smartShop
+    smartShop: typeof chayns$smartShop,
+
+    intercom: typeof npm$namespace$chayns$intercom,
+    passKit: typeof npm$namespace$chayns$passKit,
+    env: typeof npm$namespace$chayns$env,
+    dialog: typeof npm$namespace$chayns$dialog,
+    ui: typeof npm$namespace$chayns$ui,
+    utils: typeof npm$namespace$chayns$utils,
+    storage: typeof npm$namespace$chayns$storage
   };
 
   /**
@@ -112,7 +120,7 @@ declare module "chayns" {
   declare function chayns$startNfcDetection(
     callback: (result: NfcDetectionResult) => any,
     interval: number,
-    chayns$vibrate: boolean
+    vibrate: boolean
   ): Promise<any>;
 
   declare function chayns$stopNfcDetection(): Promise<any>;
@@ -268,433 +276,425 @@ declare module "chayns" {
    */
   declare var chayns$smartShop: any;
 
-  declare var npm$namespace$intercom: {
-    sendMessageToUser: typeof intercom$sendMessageToUser,
-    sendMessageToGroup: typeof intercom$sendMessageToGroup,
-    sendMessageToPage: typeof intercom$sendMessageToPage
+  declare var npm$namespace$chayns$intercom: {
+    sendMessageToUser: typeof chayns$intercom$sendMessageToUser,
+    sendMessageToGroup: typeof chayns$intercom$sendMessageToGroup,
+    sendMessageToPage: typeof chayns$intercom$sendMessageToPage
   };
-  declare function intercom$sendMessageToUser(
+  declare function chayns$intercom$sendMessageToUser(
     userId: number,
     config: IntercomConfig
   ): Promise<any>;
 
-  declare function intercom$sendMessageToGroup(
+  declare function chayns$intercom$sendMessageToGroup(
     groupId: number,
     config: IntercomConfig
   ): Promise<any>;
 
-  declare function intercom$sendMessageToPage(
+  declare function chayns$intercom$sendMessageToPage(
     config: IntercomConfig
   ): Promise<any>;
 
-  declare var npm$namespace$passKit: {
-    getInstalled: typeof passKit$getInstalled,
-    isInstalled: typeof passKit$isInstalled
+  declare var npm$namespace$chayns$passKit: {
+    getInstalled: typeof chayns$passKit$getInstalled,
+    isInstalled: typeof chayns$passKit$isInstalled
   };
-  declare function passKit$getInstalled(): Promise<any>;
+  declare function chayns$passKit$getInstalled(): Promise<any>;
 
-  declare function passKit$isInstalled(identifier: string): Promise<any>;
+  declare function chayns$passKit$isInstalled(identifier: string): Promise<any>;
 
-  declare var npm$namespace$env: {
-    _parameters: typeof env$_parameters,
-    parameters: typeof env$parameters,
-    isBrowser: typeof env$isBrowser,
-    isChaynsWeb: typeof env$isChaynsWeb,
-    isChaynsWebDesktop: typeof env$isChaynsWebDesktop,
-    isChaynsWebMobile: typeof env$isChaynsWebMobile,
-    isDesktop: typeof env$isDesktop,
-    isMobile: typeof env$isMobile,
-    isApp: typeof env$isApp,
-    isIOS: typeof env$isIOS,
-    isAndroid: typeof env$isAndroid,
-    isTablet: typeof env$isTablet,
-    isWP: typeof env$isWP,
-    appVersion: typeof env$appVersion,
-    os: typeof env$os,
-    apiVersion: typeof env$apiVersion,
-    debugMode: typeof env$debugMode,
-    isChaynsParent: typeof env$isChaynsParent,
-    isChaynsWebLight: typeof env$isChaynsWebLight,
-    isInFacebookFrame: typeof env$isInFacebookFrame,
-    isInFrame: typeof env$isInFrame,
-    isWidget: typeof env$isWidget,
-    language: typeof env$language
+  declare var npm$namespace$chayns$env: {
+    _parameters: typeof chayns$env$_parameters,
+    parameters: typeof chayns$env$parameters,
+    isBrowser: typeof chayns$env$isBrowser,
+    isChaynsWeb: typeof chayns$env$isChaynsWeb,
+    isChaynsWebDesktop: typeof chayns$env$isChaynsWebDesktop,
+    isChaynsWebMobile: typeof chayns$env$isChaynsWebMobile,
+    isDesktop: typeof chayns$env$isDesktop,
+    isMobile: typeof chayns$env$isMobile,
+    isApp: typeof chayns$env$isApp,
+    isIOS: typeof chayns$env$isIOS,
+    isAndroid: typeof chayns$env$isAndroid,
+    isTablet: typeof chayns$env$isTablet,
+    isWP: typeof chayns$env$isWP,
+    appVersion: typeof chayns$env$appVersion,
+    os: typeof chayns$env$os,
+    apiVersion: typeof chayns$env$apiVersion,
+    debugMode: typeof chayns$env$debugMode,
+    isChaynsParent: typeof chayns$env$isChaynsParent,
+    isChaynsWebLight: typeof chayns$env$isChaynsWebLight,
+    isInFacebookFrame: typeof chayns$env$isInFacebookFrame,
+    isInFrame: typeof chayns$env$isInFrame,
+    isWidget: typeof chayns$env$isWidget,
+    language: typeof chayns$env$language,
+
+    user: typeof npm$namespace$chayns$env$user,
+    site: typeof npm$namespace$chayns$env$site,
+    app: typeof npm$namespace$chayns$env$app,
+    device: typeof npm$namespace$chayns$env$device,
+    browser: typeof npm$namespace$chayns$env$browser
   };
-  declare var env$_parameters: any;
+  declare var chayns$env$_parameters: any;
 
-  declare var env$parameters: any;
+  declare var chayns$env$parameters: any;
 
-  declare var env$isBrowser: boolean;
+  declare var chayns$env$isBrowser: boolean;
 
-  declare var env$isChaynsWeb: boolean;
+  declare var chayns$env$isChaynsWeb: boolean;
 
-  declare var env$isChaynsWebDesktop: boolean;
+  declare var chayns$env$isChaynsWebDesktop: boolean;
 
-  declare var env$isChaynsWebMobile: boolean;
+  declare var chayns$env$isChaynsWebMobile: boolean;
 
-  declare var env$isDesktop: boolean;
+  declare var chayns$env$isDesktop: boolean;
 
-  declare var env$isMobile: boolean;
+  declare var chayns$env$isMobile: boolean;
 
-  declare var env$isApp: boolean;
+  declare var chayns$env$isApp: boolean;
 
-  declare var env$isIOS: boolean;
+  declare var chayns$env$isIOS: boolean;
 
-  declare var env$isAndroid: boolean;
+  declare var chayns$env$isAndroid: boolean;
 
-  declare var env$isTablet: boolean;
+  declare var chayns$env$isTablet: boolean;
 
-  declare var env$isWP: boolean;
+  declare var chayns$env$isWP: boolean;
 
-  declare var env$appVersion: number;
+  declare var chayns$env$appVersion: number;
 
-  declare var env$os: string;
+  declare var chayns$env$os: string;
 
-  declare var env$apiVersion: number;
+  declare var chayns$env$apiVersion: number;
 
-  declare var env$debugMode: boolean;
+  declare var chayns$env$debugMode: boolean;
 
-  declare var env$isChaynsParent: boolean;
+  declare var chayns$env$isChaynsParent: boolean;
 
-  declare var env$isChaynsWebLight: boolean;
+  declare var chayns$env$isChaynsWebLight: boolean;
 
-  declare var env$isInFacebookFrame: boolean;
+  declare var chayns$env$isInFacebookFrame: boolean;
 
-  declare var env$isInFrame: boolean;
+  declare var chayns$env$isInFrame: boolean;
 
-  declare var env$isWidget: boolean;
+  declare var chayns$env$isWidget: boolean;
 
-  declare var env$language: string;
+  declare var chayns$env$language: string;
 
-  declare var npm$namespace$user: {
-    tobitAccessToken: typeof user$tobitAccessToken,
-    facebookAccessToken: typeof user$facebookAccessToken,
-    facebookId: typeof user$facebookId,
-    id: typeof user$id,
-    name: typeof user$name,
-    personId: typeof user$personId,
-    isAuthenticated: typeof user$isAuthenticated,
-    language: typeof user$language,
-    groups: typeof user$groups
+  declare var npm$namespace$chayns$env$user: {
+    tobitAccessToken: typeof chayns$env$user$tobitAccessToken,
+    facebookAccessToken: typeof chayns$env$user$facebookAccessToken,
+    facebookId: typeof chayns$env$user$facebookId,
+    id: typeof chayns$env$user$id,
+    name: typeof chayns$env$user$name,
+    personId: typeof chayns$env$user$personId,
+    isAuthenticated: typeof chayns$env$user$isAuthenticated,
+    language: typeof chayns$env$user$language,
+    groups: typeof chayns$env$user$groups
   };
-  declare var user$tobitAccessToken: string;
+  declare var chayns$env$user$tobitAccessToken: string;
 
-  declare var user$facebookAccessToken: string;
+  declare var chayns$env$user$facebookAccessToken: string;
 
-  declare var user$facebookId: string;
+  declare var chayns$env$user$facebookId: string;
 
-  declare var user$id: number;
+  declare var chayns$env$user$id: number;
 
-  declare var user$name: string;
+  declare var chayns$env$user$name: string;
 
-  declare var user$personId: string;
+  declare var chayns$env$user$personId: string;
 
-  declare var user$isAuthenticated: boolean;
+  declare var chayns$env$user$isAuthenticated: boolean;
 
-  declare var user$language: string;
+  declare var chayns$env$user$language: string;
 
-  declare var user$groups: UserGroup[];
+  declare var chayns$env$user$groups: UserGroup[];
 
-  declare var npm$namespace$site: {
-    color: typeof site$color,
-    colorMode: typeof site$colorMode,
-    colorScheme: typeof site$colorScheme,
-    domain: typeof site$domain,
-    facebookAppId: typeof site$facebookAppId,
-    facebookPageId: typeof site$facebookPageId,
-    id: typeof site$id,
-    isAdEnabled: typeof site$isAdEnabled,
-    isArEnabled: typeof site$isArEnabled,
-    language: typeof site$language,
-    locationId: typeof site$locationId,
-    locationPersonId: typeof site$locationPersonId,
-    tapps: typeof site$tapps,
-    title: typeof site$title,
-    url: typeof site$url,
-    version: typeof site$version
+  declare var npm$namespace$chayns$env$site: {
+    color: typeof chayns$env$site$color,
+    colorMode: typeof chayns$env$site$colorMode,
+    colorScheme: typeof chayns$env$site$colorScheme,
+    domain: typeof chayns$env$site$domain,
+    facebookAppId: typeof chayns$env$site$facebookAppId,
+    facebookPageId: typeof chayns$env$site$facebookPageId,
+    id: typeof chayns$env$site$id,
+    isAdEnabled: typeof chayns$env$site$isAdEnabled,
+    isArEnabled: typeof chayns$env$site$isArEnabled,
+    language: typeof chayns$env$site$language,
+    locationId: typeof chayns$env$site$locationId,
+    locationPersonId: typeof chayns$env$site$locationPersonId,
+    tapps: typeof chayns$env$site$tapps,
+    title: typeof chayns$env$site$title,
+    url: typeof chayns$env$site$url,
+    version: typeof chayns$env$site$version,
+
+    tapp: typeof npm$namespace$chayns$env$site$tapp
   };
-  declare var site$color: string;
+  declare var chayns$env$site$color: string;
 
-  declare var site$colorMode: number;
+  declare var chayns$env$site$colorMode: number;
 
-  declare var site$colorScheme: number;
+  declare var chayns$env$site$colorScheme: number;
 
-  declare var site$domain: string;
+  declare var chayns$env$site$domain: string;
 
-  declare var site$facebookAppId: string;
+  declare var chayns$env$site$facebookAppId: string;
 
-  declare var site$facebookPageId: string;
+  declare var chayns$env$site$facebookPageId: string;
 
-  declare var site$id: string;
+  declare var chayns$env$site$id: string;
 
-  declare var site$isAdEnabled: boolean;
+  declare var chayns$env$site$isAdEnabled: boolean;
 
-  declare var site$isArEnabled: boolean;
+  declare var chayns$env$site$isArEnabled: boolean;
 
-  declare var site$language: string;
+  declare var chayns$env$site$language: string;
 
-  declare var site$locationId: number;
+  declare var chayns$env$site$locationId: number;
 
-  declare var site$locationPersonId: string;
+  declare var chayns$env$site$locationPersonId: string;
 
-  declare var site$tapps: SiteTapp[];
+  declare var chayns$env$site$tapps: SiteTapp[];
 
-  declare var site$title: string;
+  declare var chayns$env$site$title: string;
 
-  declare var site$url: string;
+  declare var chayns$env$site$url: string;
 
-  declare var site$version: string;
+  declare var chayns$env$site$version: string;
 
-  declare var npm$namespace$tapp: {
-    customUrl: typeof tapp$customUrl,
-    id: typeof tapp$id,
-    internalName: typeof tapp$internalName,
-    isExclusiveView: typeof tapp$isExclusiveView,
-    isKioskMode: typeof tapp$isKioskMode,
-    isSubTapp: typeof tapp$isSubTapp,
-    showName: typeof tapp$showName,
-    sortId: typeof tapp$sortId,
-    userGroupIds: typeof tapp$userGroupIds
+  declare var npm$namespace$chayns$env$site$tapp: {
+    customUrl: typeof chayns$env$site$tapp$customUrl,
+    id: typeof chayns$env$site$tapp$id,
+    internalName: typeof chayns$env$site$tapp$internalName,
+    isExclusiveView: typeof chayns$env$site$tapp$isExclusiveView,
+    isKioskMode: typeof chayns$env$site$tapp$isKioskMode,
+    isSubTapp: typeof chayns$env$site$tapp$isSubTapp,
+    showName: typeof chayns$env$site$tapp$showName,
+    sortId: typeof chayns$env$site$tapp$sortId,
+    userGroupIds: typeof chayns$env$site$tapp$userGroupIds
   };
-  declare var tapp$customUrl: string;
+  declare var chayns$env$site$tapp$customUrl: string;
 
-  declare var tapp$id: number;
+  declare var chayns$env$site$tapp$id: number;
 
-  declare var tapp$internalName: string;
+  declare var chayns$env$site$tapp$internalName: string;
 
-  declare var tapp$isExclusiveView: boolean;
+  declare var chayns$env$site$tapp$isExclusiveView: boolean;
 
-  declare var tapp$isKioskMode: boolean;
+  declare var chayns$env$site$tapp$isKioskMode: boolean;
 
-  declare var tapp$isSubTapp: boolean;
+  declare var chayns$env$site$tapp$isSubTapp: boolean;
 
-  declare var tapp$showName: string;
+  declare var chayns$env$site$tapp$showName: string;
 
-  declare var tapp$sortId: number;
+  declare var chayns$env$site$tapp$sortId: number;
 
-  declare var tapp$userGroupIds: number[];
+  declare var chayns$env$site$tapp$userGroupIds: number[];
 
-  declare var npm$namespace$app: {
-    flavor: typeof app$flavor,
-    languageId: typeof app$languageId,
-    model: typeof app$model,
-    name: typeof app$name,
-    uid: typeof app$uid,
-    version: typeof app$version
+  declare var npm$namespace$chayns$env$app: {
+    flavor: typeof chayns$env$app$flavor,
+    languageId: typeof chayns$env$app$languageId,
+    model: typeof chayns$env$app$model,
+    name: typeof chayns$env$app$name,
+    uid: typeof chayns$env$app$uid,
+    version: typeof chayns$env$app$version
   };
-  declare var app$flavor: string;
+  declare var chayns$env$app$flavor: string;
 
-  declare var app$languageId: string;
+  declare var chayns$env$app$languageId: string;
 
-  declare var app$model: string;
+  declare var chayns$env$app$model: string;
 
-  declare var app$name: string;
+  declare var chayns$env$app$name: string;
 
-  declare var app$uid: string;
+  declare var chayns$env$app$uid: string;
 
-  declare var app$version: string;
+  declare var chayns$env$app$version: string;
 
-  declare var npm$namespace$device: {
-    fontScale: typeof device$fontScale,
-    imei: typeof device$imei,
-    languageId: typeof device$languageId,
-    model: typeof device$model,
-    systemName: typeof device$systemName,
-    systemVersion: typeof device$systemVersion,
-    uid: typeof device$uid
+  declare var npm$namespace$chayns$env$device: {
+    fontScale: typeof chayns$env$device$fontScale,
+    imei: typeof chayns$env$device$imei,
+    languageId: typeof chayns$env$device$languageId,
+    model: typeof chayns$env$device$model,
+    systemName: typeof chayns$env$device$systemName,
+    systemVersion: typeof chayns$env$device$systemVersion,
+    uid: typeof chayns$env$device$uid
   };
-  declare var device$fontScale: any;
+  declare var chayns$env$device$fontScale: any;
 
-  declare var device$imei: string;
+  declare var chayns$env$device$imei: string;
 
-  declare var device$languageId: string;
+  declare var chayns$env$device$languageId: string;
 
-  declare var device$model: string;
+  declare var chayns$env$device$model: string;
 
-  declare var device$systemName: string;
+  declare var chayns$env$device$systemName: string;
 
-  declare var device$systemVersion: number;
+  declare var chayns$env$device$systemVersion: number;
 
-  declare var device$uid: string;
+  declare var chayns$env$device$uid: string;
 
-  declare var npm$namespace$browser: {
-    name: typeof browser$name,
-    version: typeof browser$version
+  declare var npm$namespace$chayns$env$browser: {
+    name: typeof chayns$env$browser$name,
+    version: typeof chayns$env$browser$version
   };
-  declare var browser$name: string;
+  declare var chayns$env$browser$name: string;
 
-  declare var browser$version: string;
+  declare var chayns$env$browser$version: string;
 
-  declare var npm$namespace$dialog: {
-    alert: typeof dialog$alert,
-    confirm: typeof dialog$confirm,
-    date: typeof dialog$date,
-    select: typeof dialog$select,
-    input: typeof dialog$input,
-    facebook: typeof dialog$facebook
+  declare var npm$namespace$chayns$dialog: {
+    alert: typeof chayns$dialog$alert,
+    confirm: typeof chayns$dialog$confirm,
+    date: typeof chayns$dialog$date,
+    select: typeof chayns$dialog$select,
+    input: typeof chayns$dialog$input,
+    facebook: typeof chayns$dialog$facebook,
+
+    buttonType: typeof chayns$dialog$buttonType,
+    buttonText: typeof chayns$dialog$buttonText,
+    dateType: typeof chayns$dialog$dateType,
+    inputType: typeof chayns$dialog$inputType
   };
-  declare class dialog$buttonType {
-    constructor(...args: empty): mixed;
-    static +CANCEL: Class<dialog$buttonType__CANCEL> &
-      dialog$buttonType__CANCEL &
-      -1; // -1
-    static +NEGATIVE: Class<dialog$buttonType__NEGATIVE> &
-      dialog$buttonType__NEGATIVE &
-      0; // 0
-    static +POSITIVE: Class<dialog$buttonType__POSITIVE> &
-      dialog$buttonType__POSITIVE &
-      1; // 1
-  }
 
-  declare class dialog$buttonType__CANCEL mixins dialog$buttonType {}
-  declare class dialog$buttonType__NEGATIVE mixins dialog$buttonType {}
-  declare class dialog$buttonType__POSITIVE mixins dialog$buttonType {}
+  declare var chayns$dialog$buttonType: {|
+    +CANCEL: -1, // -1
+    +NEGATIVE: 0, // 0
+    +POSITIVE: 1 // 1
+  |};
 
-  declare class dialog$buttonText {
-    constructor(...args: empty): mixed;
-    static +CANCEL: Class<dialog$buttonText__CANCEL> &
-      dialog$buttonText__CANCEL &
-      "Abbrechen"; // "Abbrechen"
-    static +NO: Class<dialog$buttonText__NO> & dialog$buttonText__NO & "Nein"; // "Nein"
-    static +OK: Class<dialog$buttonText__OK> & dialog$buttonText__OK & "OK"; // "OK"
-    static +YES: Class<dialog$buttonText__YES> & dialog$buttonText__YES & "Ja"; // "Ja"
-  }
+  declare var chayns$dialog$buttonText: {|
+    +CANCEL: "Abbrechen", // "Abbrechen"
+    +NO: "Nein", // "Nein"
+    +OK: "OK", // "OK"
+    +YES: "Ja" // "Ja"
+  |};
 
-  declare class dialog$buttonText__CANCEL mixins dialog$buttonText {}
-  declare class dialog$buttonText__NO mixins dialog$buttonText {}
-  declare class dialog$buttonText__OK mixins dialog$buttonText {}
-  declare class dialog$buttonText__YES mixins dialog$buttonText {}
+  declare var chayns$dialog$dateType: {|
+    +DATE: 0, // 0
+    +TIME: 1, // 1
+    +DATE_TIME: 2 // 2
+  |};
 
-  declare class dialog$dateType {
-    constructor(...args: empty): mixed;
-    static +DATE: Class<dialog$dateType__DATE> & dialog$dateType__DATE & 0; // 0
-    static +TIME: Class<dialog$dateType__TIME> & dialog$dateType__TIME & 1; // 1
-    static +DATE_TIME: Class<dialog$dateType__DATE_TIME> &
-      dialog$dateType__DATE_TIME &
-      2; // 2
-  }
+  declare var chayns$dialog$inputType: {|
+    +DEFAULT: 0, // 0
+    +PASSWORD: 1 // 1
+  |};
 
-  declare class dialog$dateType__DATE mixins dialog$dateType {}
-  declare class dialog$dateType__TIME mixins dialog$dateType {}
-  declare class dialog$dateType__DATE_TIME mixins dialog$dateType {}
-
-  declare class dialog$inputType {
-    constructor(...args: empty): mixed;
-    static +DEFAULT: Class<dialog$inputType__DEFAULT> &
-      dialog$inputType__DEFAULT &
-      0; // 0
-    static +PASSWORD: Class<dialog$inputType__PASSWORD> &
-      dialog$inputType__PASSWORD &
-      1; // 1
-  }
-
-  declare class dialog$inputType__DEFAULT mixins dialog$inputType {}
-  declare class dialog$inputType__PASSWORD mixins dialog$inputType {}
-
-  declare function dialog$alert(
-    site$title: string,
+  declare function chayns$dialog$alert(
+    title: string,
     message?: string
-  ): Promise<dialog$buttonType>;
+  ): Promise<chayns$dialog$buttonType>;
 
-  declare function dialog$confirm(
-    site$title: string,
+  declare function chayns$dialog$confirm(
+    title: string,
     message?: string,
     buttons?: DialogButton[]
-  ): Promise<dialog$buttonType>;
+  ): Promise<chayns$dialog$buttonType>;
 
-  declare function dialog$date(
+  declare function chayns$dialog$date(
     config: DialogDateConfig
   ): Promise<DialogDateResult>;
 
-  declare function dialog$select(
+  declare function chayns$dialog$select(
     config: DialogSelectConfig
   ): Promise<DialogSelectResult>;
 
-  declare function dialog$input(
+  declare function chayns$dialog$input(
     config: DialogInputConfig
   ): Promise<DialogInputResult>;
 
-  declare function dialog$facebook(
+  declare function chayns$dialog$facebook(
     options: DialogFacebookOptions
   ): Promise<DialogFacebookResult>;
 
-  declare var npm$namespace$modeSwitch: {
-    init: typeof modeSwitch$init,
-    addItem: typeof modeSwitch$addItem,
-    changeMode: typeof modeSwitch$changeMode,
-    remove: typeof modeSwitch$remove,
-    add: typeof modeSwitch$add
+  declare var npm$namespace$chayns$ui: {
+    modeSwitch: typeof npm$namespace$chayns$ui$modeSwitch,
+    gallery: typeof npm$namespace$chayns$ui$gallery,
+    tooltip: typeof npm$namespace$chayns$ui$tooltip,
+    slider: typeof npm$namespace$chayns$ui$slider
   };
-  declare function modeSwitch$init(config: ModeSwitchConfig): void;
 
-  declare function modeSwitch$addItem(
+  declare var npm$namespace$chayns$ui$modeSwitch: {
+    init: typeof chayns$ui$modeSwitch$init,
+    addItem: typeof chayns$ui$modeSwitch$addItem,
+    changeMode: typeof chayns$ui$modeSwitch$changeMode,
+    remove: typeof chayns$ui$modeSwitch$remove,
+    add: typeof chayns$ui$modeSwitch$add
+  };
+  declare function chayns$ui$modeSwitch$init(config: ModeSwitchConfig): void;
+
+  declare function chayns$ui$modeSwitch$addItem(
     item: ModeSwitchItem,
     index?: number
   ): void;
 
-  declare function modeSwitch$changeMode(item: number | ModeSwitchItem): void;
+  declare function chayns$ui$modeSwitch$changeMode(
+    item: number | ModeSwitchItem
+  ): void;
 
-  declare function modeSwitch$remove(): void;
+  declare function chayns$ui$modeSwitch$remove(): void;
 
-  declare function modeSwitch$add(): void;
+  declare function chayns$ui$modeSwitch$add(): void;
 
-  declare var npm$namespace$gallery: {
-    create: typeof gallery$create,
-    setUrls: typeof gallery$setUrls,
-    getUrls: typeof gallery$getUrls,
-    addUrl: typeof gallery$addUrl,
-    removeUrl: typeof gallery$removeUrl
+  declare var npm$namespace$chayns$ui$gallery: {
+    create: typeof chayns$ui$gallery$create,
+    setUrls: typeof chayns$ui$gallery$setUrls,
+    getUrls: typeof chayns$ui$gallery$getUrls,
+    addUrl: typeof chayns$ui$gallery$addUrl,
+    removeUrl: typeof chayns$ui$gallery$removeUrl
   };
-  declare function gallery$create(tapp$id: string, urls: string[]): void;
+  declare function chayns$ui$gallery$create(id: string, urls: string[]): void;
 
-  declare function gallery$setUrls(tapp$id: string, urls: string[]): void;
+  declare function chayns$ui$gallery$setUrls(id: string, urls: string[]): void;
 
-  declare function gallery$getUrls(tapp$id: string): string[];
+  declare function chayns$ui$gallery$getUrls(id: string): string[];
 
-  declare function gallery$addUrl(tapp$id: string, site$url: string): void;
+  declare function chayns$ui$gallery$addUrl(id: string, url: string): void;
 
-  declare function gallery$removeUrl(tapp$id: string, site$url: string): void;
+  declare function chayns$ui$gallery$removeUrl(id: string, url: string): void;
 
-  declare var npm$namespace$tooltip: {
-    init: typeof tooltip$init
+  declare var npm$namespace$chayns$ui$tooltip: {
+    init: typeof chayns$ui$tooltip$init
   };
-  declare function tooltip$init(
+  declare function chayns$ui$tooltip$init(
     config: UiTooltipInitConfig,
     rootElement: any
   ): Promise<boolean>;
 
-  declare var npm$namespace$slider: {
-    refreshTrack: typeof slider$refreshTrack
+  declare var npm$namespace$chayns$ui$slider: {
+    refreshTrack: typeof chayns$ui$slider$refreshTrack
   };
-  declare function slider$refreshTrack(): void;
+  declare function chayns$ui$slider$refreshTrack(): void;
 
-  declare var npm$namespace$utils: {
-    isHex: typeof utils$isHex,
-    isArray: typeof utils$isArray,
-    isBLEAdress: typeof utils$isBLEAdress,
-    isBlank: typeof utils$isBlank,
-    isDate: typeof utils$isDate,
-    isDefined: typeof utils$isDefined,
-    isFormData: typeof utils$isFormData,
-    isFunction: typeof utils$isFunction,
-    isGUID: typeof utils$isGUID,
-    isMacAdress: typeof utils$isMacAdress,
-    isNumber: typeof utils$isNumber,
-    isObject: typeof utils$isObject,
-    isPromise: typeof utils$isPromise,
-    isString: typeof utils$isString,
-    isUUID: typeof utils$isUUID,
-    isUndefined: typeof utils$isUndefined,
-    isDeferred: typeof utils$isDeferred,
-    isJwt: typeof utils$isJwt,
-    isUrl: typeof utils$isUrl,
-    getJwtPayload: typeof utils$getJwtPayload,
-    mod: typeof utils$mod,
-    trim: typeof utils$trim,
-    replacePlaceholder: typeof utils$replacePlaceholder,
-    mixColor: typeof utils$mixColor,
-    isPresent: typeof utils$isPresent,
-    setLevel: typeof utils$setLevel
+  declare var npm$namespace$chayns$utils: {
+    isHex: typeof chayns$utils$isHex,
+    isArray: typeof chayns$utils$isArray,
+    isBLEAdress: typeof chayns$utils$isBLEAdress,
+    isBlank: typeof chayns$utils$isBlank,
+    isDate: typeof chayns$utils$isDate,
+    isDefined: typeof chayns$utils$isDefined,
+    isFormData: typeof chayns$utils$isFormData,
+    isFunction: typeof chayns$utils$isFunction,
+    isGUID: typeof chayns$utils$isGUID,
+    isMacAdress: typeof chayns$utils$isMacAdress,
+    isNumber: typeof chayns$utils$isNumber,
+    isObject: typeof chayns$utils$isObject,
+    isPromise: typeof chayns$utils$isPromise,
+    isString: typeof chayns$utils$isString,
+    isUUID: typeof chayns$utils$isUUID,
+    isUndefined: typeof chayns$utils$isUndefined,
+    isDeferred: typeof chayns$utils$isDeferred,
+    isJwt: typeof chayns$utils$isJwt,
+    isUrl: typeof chayns$utils$isUrl,
+    getJwtPayload: typeof chayns$utils$getJwtPayload,
+    mod: typeof chayns$utils$mod,
+    trim: typeof chayns$utils$trim,
+    replacePlaceholder: typeof chayns$utils$replacePlaceholder,
+    mixColor: typeof chayns$utils$mixColor,
+    isPresent: typeof chayns$utils$isPresent,
+    setLevel: typeof chayns$utils$setLevel,
+
+    ls: typeof npm$namespace$chayns$utils$ls,
+    lang: typeof npm$namespace$chayns$utils$lang
   };
 
   /**
@@ -702,135 +702,130 @@ declare module "chayns" {
    * Check Types
    * chayns.utils
    */
-  declare function utils$isHex(parameter: any, shorthand: boolean): boolean;
+  declare function chayns$utils$isHex(
+    parameter: any,
+    shorthand: boolean
+  ): boolean;
 
-  declare function utils$isArray(parameter: any): boolean;
+  declare function chayns$utils$isArray(parameter: any): boolean;
 
-  declare function utils$isBLEAdress(parameter: any): boolean;
+  declare function chayns$utils$isBLEAdress(parameter: any): boolean;
 
-  declare function utils$isBlank(parameter: any): boolean;
+  declare function chayns$utils$isBlank(parameter: any): boolean;
 
-  declare function utils$isDate(parameter: any): boolean;
+  declare function chayns$utils$isDate(parameter: any): boolean;
 
-  declare function utils$isDefined(parameter: any): boolean;
+  declare function chayns$utils$isDefined(parameter: any): boolean;
 
-  declare function utils$isFormData(parameter: any): boolean;
+  declare function chayns$utils$isFormData(parameter: any): boolean;
 
-  declare function utils$isFunction(parameter: any): boolean;
+  declare function chayns$utils$isFunction(parameter: any): boolean;
 
-  declare function utils$isGUID(parameter: any): boolean;
+  declare function chayns$utils$isGUID(parameter: any): boolean;
 
-  declare function utils$isMacAdress(parameter: any): boolean;
+  declare function chayns$utils$isMacAdress(parameter: any): boolean;
 
-  declare function utils$isNumber(parameter: any): boolean;
+  declare function chayns$utils$isNumber(parameter: any): boolean;
 
-  declare function utils$isObject(parameter: any): boolean;
+  declare function chayns$utils$isObject(parameter: any): boolean;
 
-  declare function utils$isPromise(parameter: any): boolean;
+  declare function chayns$utils$isPromise(parameter: any): boolean;
 
-  declare function utils$isString(parameter: any): boolean;
+  declare function chayns$utils$isString(parameter: any): boolean;
 
-  declare function utils$isUUID(parameter: any): boolean;
+  declare function chayns$utils$isUUID(parameter: any): boolean;
 
-  declare function utils$isUndefined(parameter: any): boolean;
+  declare function chayns$utils$isUndefined(parameter: any): boolean;
 
-  declare function utils$isDeferred(parameter: any): boolean;
+  declare function chayns$utils$isDeferred(parameter: any): boolean;
 
-  declare function utils$isJwt(parameter: any): boolean;
+  declare function chayns$utils$isJwt(parameter: any): boolean;
 
-  declare function utils$isUrl(parameter: any): boolean;
+  declare function chayns$utils$isUrl(parameter: any): boolean;
 
   /**
    * Utility Functions
    * Miscellaneous
    * chayns.utils
    */
-  declare function utils$getJwtPayload(token: string): JwtPaylod;
+  declare function chayns$utils$getJwtPayload(token: string): JwtPaylod;
 
-  declare function utils$mod(number: number, modulo: number): number;
+  declare function chayns$utils$mod(number: number, modulo: number): number;
 
-  declare function utils$trim(test: string): string;
+  declare function chayns$utils$trim(test: string): string;
 
-  declare function utils$replacePlaceholder(
+  declare function chayns$utils$replacePlaceholder(
     text: string,
-    env$parameters: any[]
+    parameters: any[]
   ): string;
 
-  declare function utils$mixColor(
+  declare function chayns$utils$mixColor(
     color1: string,
     color2: string,
     saturation: number
   ): string;
 
-  declare function utils$isPresent(parameter: any): boolean;
+  declare function chayns$utils$isPresent(parameter: any): boolean;
 
-  declare function utils$setLevel(level: number): void;
+  declare function chayns$utils$setLevel(level: number): void;
 
-  declare var npm$namespace$ls: {
-    set: typeof ls$set,
-    get: typeof ls$get,
-    remove: typeof ls$remove,
-    removeAll: typeof ls$removeAll
+  declare var npm$namespace$chayns$utils$ls: {
+    set: typeof chayns$utils$ls$set,
+    get: typeof chayns$utils$ls$get,
+    remove: typeof chayns$utils$ls$remove,
+    removeAll: typeof chayns$utils$ls$removeAll
   };
-  declare function ls$set(key: string, value: string): void;
+  declare function chayns$utils$ls$set(key: string, value: string): void;
 
-  declare function ls$get(key: string): string;
+  declare function chayns$utils$ls$get(key: string): string;
 
-  declare function ls$remove(key: string): void;
+  declare function chayns$utils$ls$remove(key: string): void;
 
-  declare function ls$removeAll(): void;
+  declare function chayns$utils$ls$removeAll(): void;
 
-  declare var npm$namespace$lang: {
-    init: typeof lang$init,
-    renderTextStrings: typeof lang$renderTextStrings,
-    get: typeof lang$get,
-    translateDomStrings: typeof lang$translateDomStrings
+  declare var npm$namespace$chayns$utils$lang: {
+    init: typeof chayns$utils$lang$init,
+    renderTextStrings: typeof chayns$utils$lang$renderTextStrings,
+    get: typeof chayns$utils$lang$get,
+    translateDomStrings: typeof chayns$utils$lang$translateDomStrings
   };
-  declare function lang$init(config: any): void;
+  declare function chayns$utils$lang$init(config: any): void;
 
-  declare function lang$renderTextStrings(): void;
+  declare function chayns$utils$lang$renderTextStrings(): void;
 
-  declare function lang$get(textString: string): string;
+  declare function chayns$utils$lang$get(textString: string): string;
 
-  declare function lang$translateDomStrings(): void;
+  declare function chayns$utils$lang$translateDomStrings(): void;
 
-  declare var npm$namespace$storage: {
-    set: typeof storage$set,
-    get: typeof storage$get,
-    remove: typeof storage$remove
+  declare var npm$namespace$chayns$storage: {
+    set: typeof chayns$storage$set,
+    get: typeof chayns$storage$get,
+    remove: typeof chayns$storage$remove,
+
+    accessMode: typeof chayns$storage$accessMode
   };
-  declare class storage$accessMode {
-    constructor(...args: empty): mixed;
-    static +PUBLIC: Class<storage$accessMode__PUBLIC> &
-      storage$accessMode__PUBLIC &
-      0; // 0
-    static +PROTECTED: Class<storage$accessMode__PROTECTED> &
-      storage$accessMode__PROTECTED &
-      1; // 1
-    static +PRIVATE: Class<storage$accessMode__PRIVATE> &
-      storage$accessMode__PRIVATE &
-      2; // 2
-  }
 
-  declare class storage$accessMode__PUBLIC mixins storage$accessMode {}
-  declare class storage$accessMode__PROTECTED mixins storage$accessMode {}
-  declare class storage$accessMode__PRIVATE mixins storage$accessMode {}
+  declare var chayns$storage$accessMode: {|
+    +PUBLIC: 0, // 0
+    +PROTECTED: 1, // 1
+    +PRIVATE: 2 // 2
+  |};
 
-  declare function storage$set(
+  declare function chayns$storage$set(
     key: string,
     value: any,
-    storage$accessMode?: storage$accessMode,
+    accessMode?: chayns$storage$accessMode,
     tappIds?: number[]
   ): Promise<any>;
 
-  declare function storage$get(
+  declare function chayns$storage$get(
     key: string,
-    storage$accessMode?: storage$accessMode
+    accessMode?: chayns$storage$accessMode
   ): any;
 
-  declare function storage$remove(
+  declare function chayns$storage$remove(
     key: string,
-    storage$accessMode?: storage$accessMode
+    accessMode?: chayns$storage$accessMode
   ): Promise<any>;
 
   /**
@@ -856,7 +851,7 @@ declare module "chayns" {
     accessToken?: string;
     userId?: number;
     fbId?: string;
-    user$personId?: string;
+    personId?: string;
   }
   declare interface User {
     FacebookID: string;
@@ -867,9 +862,9 @@ declare module "chayns" {
     UserID: number;
   }
   declare interface UacGroup {
-    tapp$id: number;
-    browser$name: string;
-    tapp$showName: string;
+    id: number;
+    name: string;
+    showName: string;
   }
   declare interface InteractionIdentificationConfig {
     duration: number;
@@ -888,14 +883,14 @@ declare module "chayns" {
     rfid: string;
   }
   declare interface SelectTappConfig {
-    tapp$id?: number;
-    tapp$internalName?: string;
-    tapp$showName?: string;
+    id?: number;
+    internalName?: string;
+    showName?: string;
     position?: number;
   }
   declare interface OpenUrlConfig {
-    site$url: string;
-    site$title?: string;
+    url: string;
+    title?: string;
     exclusiveView?: boolean;
     darkenBackground?: boolean;
     fullSize?: boolean;
@@ -906,17 +901,17 @@ declare module "chayns" {
     latitude: number;
   }
   declare interface LocationBeacon {
-    tapp$id: number;
+    id: number;
     pushMessage: string;
     latitude: number;
     longitude: number;
   }
   declare interface BeaconHistory {
-    tapp$id: number;
+    id: number;
     timestamp: number;
   }
   declare interface ShareConfig {
-    site$title?: string;
+    title?: string;
     text: string;
     imageUrl?: string;
     sharingApp: number;
@@ -932,22 +927,22 @@ declare module "chayns" {
   }
   declare interface SubTappConfig {
     tappID: number;
-    browser$name: string;
-    site$color: string;
+    name: string;
+    color: string;
     colorText?: string;
     sortID: number;
     icon: string;
     callbackURL?: (result: any) => any;
-    site$url: string;
+    url: string;
     buttonName: string;
-    tapp$isExclusiveView?: boolean;
+    isExclusiveView?: boolean;
     replaceParent?: boolean;
     boldText?: boolean;
   }
   declare interface RemoveSubTappConfig {
     tappID: number;
     close: boolean;
-    storage$remove: boolean;
+    remove: boolean;
   }
   declare interface SetHeightConfig {
     height: number;
@@ -957,9 +952,9 @@ declare module "chayns" {
   }
   declare interface Site {
     appstoreName: string;
-    user$facebookId: string;
+    facebookId: string;
     siteId: string;
-    site$locationId: number;
+    locationId: number;
   }
 
   /**
@@ -978,20 +973,20 @@ declare module "chayns" {
    */
   declare interface DialogButton {
     text: string;
-    dialog$buttonType: chayns$dialog.dialog$buttonType;
+    buttonType: chayns$dialogbuttonType;
   }
   declare interface DialogDateConfig {
-    dialog$dateType: chayns$dialog.dialog$dateType;
+    dateType: chayns$dialogdateType;
     preSelect?: Date;
     minDate?: Date;
     maxDate?: Date;
   }
   declare interface DialogDateResult {
     timestamp: number;
-    dialog$buttonType: chayns$dialog.dialog$buttonType;
+    buttonType: chayns$dialogbuttonType;
   }
   declare interface DialogSelectConfig {
-    site$title: string;
+    title: string;
     message?: string;
     quickfind?: boolean;
     multiselect?: boolean;
@@ -999,28 +994,28 @@ declare module "chayns" {
     list: DialogSelectConfigItem[];
   }
   declare interface DialogSelectConfigItem {
-    browser$name: string;
+    name: string;
     value?: string;
     image?: string;
     isSelected?: boolean;
   }
   declare interface DialogSelectResult {
-    dialog$buttonType: chayns$dialog.dialog$buttonType;
+    buttonType: chayns$dialogbuttonType;
     selection: DialogSelectResultItem[];
   }
   declare interface DialogSelectResultItem {
-    browser$name: string;
+    name: string;
     value?: string;
   }
   declare interface DialogInputConfig {
-    site$title: string;
+    title: string;
     message?: string;
     placeholderText?: string;
     text?: string;
     buttons?: DialogButton[];
   }
   declare interface DialogInputResult {
-    dialog$buttonType: chayns$dialog.dialog$buttonType;
+    buttonType: chayns$dialogbuttonType;
     text: string;
   }
 
@@ -1036,7 +1031,7 @@ declare module "chayns" {
     preventclose?: boolean;
   }
   declare interface ModeSwitchItem {
-    browser$name: string;
+    name: string;
     value: number;
     default?: boolean;
   }
@@ -1049,7 +1044,7 @@ declare module "chayns" {
    */
   declare interface FloatingConfig {
     text?: string;
-    site$color?: string;
+    color?: string;
     colorText?: string;
     icon?: string;
   }
@@ -1061,7 +1056,7 @@ declare module "chayns" {
    * interfaces
    */
   declare interface SaveAppointmentConfig {
-    browser$name: string;
+    name: string;
     location: string;
     description: string;
     start: Date;
@@ -1091,11 +1086,11 @@ declare module "chayns" {
    * interfaces
    */
   declare interface UserGroup {
-    tapp$id: number;
+    id: number;
     isActive?: boolean;
     isSystemGroup?: boolean;
-    browser$name: string;
-    tapp$showName?: string;
+    name: string;
+    showName?: string;
   }
 
   /**
@@ -1104,21 +1099,21 @@ declare module "chayns" {
    * interfaces
    */
   declare interface SiteTapp {
-    tapp$customUrl: string;
-    tapp$id: number;
-    tapp$internalName: string;
-    tapp$isExclusiveView: boolean;
-    tapp$isKioskMode: boolean;
-    tapp$isSubTapp: boolean;
-    tapp$showName: string;
-    tapp$sortId: number;
-    tapp$userGroupIds: number[];
+    customUrl: string;
+    id: number;
+    internalName: string;
+    isExclusiveView: boolean;
+    isKioskMode: boolean;
+    isSubTapp: boolean;
+    showName: string;
+    sortId: number;
+    userGroupIds: number[];
   }
   declare interface GlobalData {
     _result: any;
   }
   declare interface DialogFacebookOptions {
-    site$title: string;
+    title: string;
     message?: string;
     quickfind?: number;
     multiselect?: number;
@@ -1130,15 +1125,15 @@ declare module "chayns" {
     value: number;
   }
   declare interface DialogFacebookResult {
-    dialog$buttonType: number;
+    buttonType: number;
     selection: DialogFacebookResultSelection[];
   }
   declare interface DialogFacebookResultSelection {
     first_name: string;
     last_name: string;
-    tapp$id: string;
+    id: string;
     gender: string;
-    browser$name: string;
+    name: string;
   }
   declare interface UiTooltipInitConfig {
     tooltipClass: string;
