@@ -1,5 +1,5 @@
 declare module 'angular' {
-        export interface ui$IState {
+        declare export interface ui$IState {
 ncyBreadcrumb?: {
 
 /**
@@ -24,7 +24,7 @@ ncyBreadcrumbLink?: string
 /**
  * Provider that returns an instance of $breadcrumb service. It contains the global configuration of the module.
  */
-export interface ncy$$breadcrumbProvider {
+declare export interface ncy$$breadcrumbProvider {
 
 /**
  * Setter for options defined in a module.config block
@@ -36,7 +36,7 @@ setOptions(options: ncy$breadcrumbProviderOptions): void
 /**
  * Global configuration options for angular-breadcrumb
  */
-export interface ncy$breadcrumbProviderOptions {
+declare export interface ncy$breadcrumbProviderOptions {
 
 /**
  * An existing state's name to be the state is the first step of the breadcrumb
@@ -63,17 +63,17 @@ includeAbstract?: boolean
 /**
  * Service responsible for access to $state and for directive configuration.
  */
-export interface ncy$$breadcrumbService {
+declare export interface ncy$$breadcrumbService {
 
 /**
  * Returns the state chain to the current state (i.e. all the steps of the breadcrumb). It's an array of state object enriched with the module-specific property ncyBreadcrumbLink (the href for the breadcrumb step).
  */
-getStatesChain(): angular.ui.ui$IState[],
+getStatesChain(): angular.ui.IState[],
 
 /**
  * Return the last step of the breadcrumb, generally the one relative to the current state, expect if it is configured as skipped (the method returns its parent). As getStatesChain, the state object is enriched with ncyBreadcrumbLink.
  */
-getLastStep(): angular.ui.ui$IState
+getLastStep(): angular.ui.IState
 } 
     }
 declare module 'angular-breadcrumb' {
