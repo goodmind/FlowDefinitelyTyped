@@ -37,5 +37,5 @@ declare module "bytes" {
    */
   declare function bytes$parse(value: string | number): number;
 
-  declare module.exports: typeof bytes;
+  declare export default typeof bytes;
 }
