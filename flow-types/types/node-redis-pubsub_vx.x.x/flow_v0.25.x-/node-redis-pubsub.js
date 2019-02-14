@@ -1,12 +1,12 @@
 declare module "node-redis-pubsub" {
   import typeof * as redis from "redis";
 
-  declare function NRP(options: {
-    [key: string]: any
-  }): NRP$NRP$NodeRedisPubSub;
+  declare function NRP(options: { [key: string]: any }): NRP$NodeRedisPubSub;
 
   declare var npm$namespace$NRP: {
-    initClient: typeof NRP$initClient
+    initClient: typeof NRP$initClient,
+
+    NodeRedisPubSub: typeof NRP$NodeRedisPubSub
   };
   declare function NRP$initClient(options: {
     [key: string]: any
@@ -30,5 +30,5 @@ declare module "node-redis-pubsub" {
     quit(): void;
     end(): void;
   }
-  declare module.exports: typeof NRP;
+  declare export default typeof NRP;
 }
