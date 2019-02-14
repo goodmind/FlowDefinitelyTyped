@@ -1,5 +1,5 @@
 declare module "pg-format" {
-  declare module.exports: typeof format;
+  declare export default typeof format;
 
   declare function format(fmt: string, ...args: any[]): string;
 
@@ -10,11 +10,11 @@ declare module "pg-format" {
     string: typeof format$string,
     withArray: typeof format$withArray
   };
-  declare function format$config(format$config?: {
+  declare function format$config(config?: {
     pattern: {
-      format$ident?: string,
-      format$literal?: string,
-      format$string?: string
+      ident?: string,
+      literal?: string,
+      string?: string
     }
   }): void;
 
