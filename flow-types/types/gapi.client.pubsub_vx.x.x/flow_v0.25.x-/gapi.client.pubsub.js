@@ -1,26 +1,30 @@
 declare module "gapi.client.pubsub" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Pub/Sub API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "pubsub",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "pubsub",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: pubsub$pubsub$ProjectsResource;
+  declare var gapi$client$projects: pubsub$ProjectsResource;
 
-  declare interface pubsub$AcknowledgeRequest {
+  declare interface gapi$client$pubsub$AcknowledgeRequest {
     /**
      * The acknowledgment ID for the messages being acknowledged that was returned
      * by the Pub/Sub system in the `Pull` response. Must not be empty.
@@ -28,7 +32,7 @@ declare module "gapi.client.pubsub" {
     ackIds?: string[];
   }
 
-  declare interface pubsub$Binding {
+  declare interface gapi$client$pubsub$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -63,7 +67,7 @@ declare module "gapi.client.pubsub" {
     role?: string;
   }
 
-  declare interface pubsub$ListSubscriptionsResponse {
+  declare interface gapi$client$pubsub$ListSubscriptionsResponse {
     /**
      * If not empty, indicates that there may be more subscriptions that match
      * the request; this value should be passed in a new
@@ -77,7 +81,7 @@ declare module "gapi.client.pubsub" {
     subscriptions?: pubsub$Subscription[];
   }
 
-  declare interface pubsub$ListTopicSubscriptionsResponse {
+  declare interface gapi$client$pubsub$ListTopicSubscriptionsResponse {
     /**
      * If not empty, indicates that there may be more subscriptions that match
      * the request; this value should be passed in a new
@@ -91,7 +95,7 @@ declare module "gapi.client.pubsub" {
     subscriptions?: string[];
   }
 
-  declare interface pubsub$ListTopicsResponse {
+  declare interface gapi$client$pubsub$ListTopicsResponse {
     /**
      * If not empty, indicates that there may be more topics that match the
      * request; this value should be passed in a new `ListTopicsRequest`.
@@ -104,7 +108,7 @@ declare module "gapi.client.pubsub" {
     topics?: pubsub$Topic[];
   }
 
-  declare interface pubsub$ModifyAckDeadlineRequest {
+  declare interface gapi$client$pubsub$ModifyAckDeadlineRequest {
     /**
      * The new ack deadline with respect to the time this request was sent to
      * the Pub/Sub system. For example, if the value is 10, the new
@@ -122,7 +126,7 @@ declare module "gapi.client.pubsub" {
     ackIds?: string[];
   }
 
-  declare interface pubsub$ModifyPushConfigRequest {
+  declare interface gapi$client$pubsub$ModifyPushConfigRequest {
     /**
      * The push configuration for future deliveries.
      *
@@ -134,12 +138,12 @@ declare module "gapi.client.pubsub" {
     pushConfig?: pubsub$PushConfig;
   }
 
-  declare interface pubsub$Policy {
+  declare interface gapi$client$pubsub$Policy {
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: pubsub$Binding[];
+    bindings?: gapi$client$pubsub$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -161,14 +165,14 @@ declare module "gapi.client.pubsub" {
     version?: number;
   }
 
-  declare interface pubsub$PublishRequest {
+  declare interface gapi$client$pubsub$PublishRequest {
     /**
      * The messages to publish.
      */
     messages?: pubsub$PubsubMessage[];
   }
 
-  declare interface pubsub$PublishResponse {
+  declare interface gapi$client$pubsub$PublishResponse {
     /**
      * The server-assigned ID of each published message, in the same order as
      * the messages in the request. IDs are guaranteed to be unique within
@@ -177,7 +181,7 @@ declare module "gapi.client.pubsub" {
     messageIds?: string[];
   }
 
-  declare interface pubsub$PubsubMessage {
+  declare interface gapi$client$pubsub$PubsubMessage {
     /**
      * Optional attributes for this message.
      */
@@ -204,7 +208,7 @@ declare module "gapi.client.pubsub" {
     publishTime?: string;
   }
 
-  declare interface pubsub$PullRequest {
+  declare interface gapi$client$pubsub$PullRequest {
     /**
      * The maximum number of messages returned for this request. The Pub/Sub
      * system may return fewer than the number specified.
@@ -222,7 +226,7 @@ declare module "gapi.client.pubsub" {
     returnImmediately?: boolean;
   }
 
-  declare interface pubsub$PullResponse {
+  declare interface gapi$client$pubsub$PullResponse {
     /**
      * Received Pub/Sub messages. The Pub/Sub system will return zero messages if
      * there are no more available in the backlog. The Pub/Sub system may return
@@ -232,7 +236,7 @@ declare module "gapi.client.pubsub" {
     receivedMessages?: pubsub$ReceivedMessage[];
   }
 
-  declare interface pubsub$PushConfig {
+  declare interface gapi$client$pubsub$PushConfig {
     /**
      * Endpoint configuration attributes.
      *
@@ -265,7 +269,7 @@ declare module "gapi.client.pubsub" {
     pushEndpoint?: string;
   }
 
-  declare interface pubsub$ReceivedMessage {
+  declare interface gapi$client$pubsub$ReceivedMessage {
     /**
      * This ID can be used to acknowledge the received message.
      */
@@ -274,20 +278,20 @@ declare module "gapi.client.pubsub" {
     /**
      * The message.
      */
-    message?: pubsub$PubsubMessage;
+    message?: gapi$client$pubsub$PubsubMessage;
   }
 
-  declare interface pubsub$SetIamPolicyRequest {
+  declare interface gapi$client$pubsub$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: pubsub$Policy;
+    policy?: gapi$client$pubsub$Policy;
   }
 
-  declare interface pubsub$Subscription {
+  declare interface gapi$client$pubsub$Subscription {
     /**
      * This value is the maximum time after a subscriber receives a message
      * before the subscriber should acknowledge the message. After message
@@ -327,7 +331,7 @@ declare module "gapi.client.pubsub" {
      * used to configure it. An empty `pushConfig` signifies that the subscriber
      * will pull and ack messages using API methods.
      */
-    pushConfig?: pubsub$PushConfig;
+    pushConfig?: gapi$client$pubsub$PushConfig;
 
     /**
      * The name of the topic from which this subscription is receiving messages.
@@ -338,7 +342,7 @@ declare module "gapi.client.pubsub" {
     topic?: string;
   }
 
-  declare interface pubsub$TestIamPermissionsRequest {
+  declare interface gapi$client$pubsub$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -348,7 +352,7 @@ declare module "gapi.client.pubsub" {
     permissions?: string[];
   }
 
-  declare interface pubsub$TestIamPermissionsResponse {
+  declare interface gapi$client$pubsub$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -356,7 +360,7 @@ declare module "gapi.client.pubsub" {
     permissions?: string[];
   }
 
-  declare interface pubsub$Topic {
+  declare interface gapi$client$pubsub$Topic {
     /**
      * The name of the topic. It must have the format
      * `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
@@ -368,7 +372,7 @@ declare module "gapi.client.pubsub" {
     name?: string;
   }
 
-  declare interface pubsub$SnapshotsResource {
+  declare interface gapi$client$pubsub$SnapshotsResource {
     /**
      * Gets the access control policy for a resource.
      * Returns an empty policy if the resource exists and does not have a policy
@@ -445,7 +449,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -522,7 +526,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -604,10 +608,10 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$TestIamPermissionsResponse>;
+    }): Request<gapi$client$pubsub$TestIamPermissionsResponse>;
   }
 
-  declare interface pubsub$SubscriptionsResource {
+  declare interface gapi$client$pubsub$SubscriptionsResource {
     /**
      * Acknowledges the messages associated with the `ack_ids` in the
      * `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
@@ -777,7 +781,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Subscription>;
+    }): Request<gapi$client$pubsub$Subscription>;
 
     /**
      * Deletes an existing subscription. All messages retained in the subscription
@@ -933,7 +937,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Subscription>;
+    }): Request<gapi$client$pubsub$Subscription>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1011,7 +1015,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Lists matching subscriptions.
@@ -1099,7 +1103,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$ListSubscriptionsResponse>;
+    }): Request<gapi$client$pubsub$ListSubscriptionsResponse>;
 
     /**
      * Modifies the ack deadline for a specific message. This method is useful
@@ -1339,7 +1343,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$PullResponse>;
+    }): Request<gapi$client$pubsub$PullResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -1416,7 +1420,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1498,7 +1502,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$TestIamPermissionsResponse>;
+    }): Request<gapi$client$pubsub$TestIamPermissionsResponse>;
 
     /**
      * Lists the name of the subscriptions for this topic.
@@ -1586,10 +1590,10 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$ListTopicSubscriptionsResponse>;
+    }): Request<gapi$client$pubsub$ListTopicSubscriptionsResponse>;
   }
 
-  declare interface pubsub$TopicsResource {
+  declare interface gapi$client$pubsub$TopicsResource {
     /**
      * Creates the given topic with the given name.
      */
@@ -1668,7 +1672,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Topic>;
+    }): Request<gapi$client$pubsub$Topic>;
 
     /**
      * Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
@@ -1824,7 +1828,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Topic>;
+    }): Request<gapi$client$pubsub$Topic>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1902,7 +1906,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Lists matching topics.
@@ -1990,7 +1994,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$ListTopicsResponse>;
+    }): Request<gapi$client$pubsub$ListTopicsResponse>;
 
     /**
      * Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
@@ -2068,7 +2072,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$PublishResponse>;
+    }): Request<gapi$client$pubsub$PublishResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -2145,7 +2149,7 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$Policy>;
+    }): Request<gapi$client$pubsub$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -2227,13 +2231,13 @@ declare module "gapi.client.pubsub" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<pubsub$TestIamPermissionsResponse>;
-    subscriptions: pubsub$SubscriptionsResource;
+    }): Request<gapi$client$pubsub$TestIamPermissionsResponse>;
+    subscriptions: gapi$client$pubsub$SubscriptionsResource;
   }
 
-  declare interface pubsub$ProjectsResource {
-    snapshots: pubsub$SnapshotsResource;
-    subscriptions: pubsub$SubscriptionsResource;
-    topics: pubsub$TopicsResource;
+  declare interface gapi$client$pubsub$ProjectsResource {
+    snapshots: gapi$client$pubsub$SnapshotsResource;
+    subscriptions: gapi$client$pubsub$SubscriptionsResource;
+    topics: gapi$client$pubsub$TopicsResource;
   }
 }
