@@ -32,5 +32,5 @@ declare module "cmd-shim" {
     cb: (err: any) => void
   ): void;
 
-  declare module.exports: typeof cmdShim;
+  declare export default typeof cmdShim;
 }
