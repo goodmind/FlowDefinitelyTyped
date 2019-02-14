@@ -1,164 +1,168 @@
 declare module "gapi.client.compute" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    acceleratorTypes: typeof client$acceleratorTypes,
-    addresses: typeof client$addresses,
-    autoscalers: typeof client$autoscalers,
-    backendBuckets: typeof client$backendBuckets,
-    backendServices: typeof client$backendServices,
-    diskTypes: typeof client$diskTypes,
-    disks: typeof client$disks,
-    firewalls: typeof client$firewalls,
-    forwardingRules: typeof client$forwardingRules,
-    globalAddresses: typeof client$globalAddresses,
-    globalForwardingRules: typeof client$globalForwardingRules,
-    globalOperations: typeof client$globalOperations,
-    healthChecks: typeof client$healthChecks,
-    httpHealthChecks: typeof client$httpHealthChecks,
-    httpsHealthChecks: typeof client$httpsHealthChecks,
-    images: typeof client$images,
-    instanceGroupManagers: typeof client$instanceGroupManagers,
-    instanceGroups: typeof client$instanceGroups,
-    instanceTemplates: typeof client$instanceTemplates,
-    instances: typeof client$instances,
-    licenses: typeof client$licenses,
-    machineTypes: typeof client$machineTypes,
-    networks: typeof client$networks,
-    projects: typeof client$projects,
-    regionAutoscalers: typeof client$regionAutoscalers,
-    regionBackendServices: typeof client$regionBackendServices,
-    regionCommitments: typeof client$regionCommitments,
-    regionInstanceGroupManagers: typeof client$regionInstanceGroupManagers,
-    regionInstanceGroups: typeof client$regionInstanceGroups,
-    regionOperations: typeof client$regionOperations,
-    regions: typeof client$regions,
-    routers: typeof client$routers,
-    routes: typeof client$routes,
-    snapshots: typeof client$snapshots,
-    sslCertificates: typeof client$sslCertificates,
-    subnetworks: typeof client$subnetworks,
-    targetHttpProxies: typeof client$targetHttpProxies,
-    targetHttpsProxies: typeof client$targetHttpsProxies,
-    targetInstances: typeof client$targetInstances,
-    targetPools: typeof client$targetPools,
-    targetSslProxies: typeof client$targetSslProxies,
-    targetTcpProxies: typeof client$targetTcpProxies,
-    targetVpnGateways: typeof client$targetVpnGateways,
-    urlMaps: typeof client$urlMaps,
-    vpnTunnels: typeof client$vpnTunnels,
-    zoneOperations: typeof client$zoneOperations,
-    zones: typeof client$zones
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    acceleratorTypes: typeof gapi$client$acceleratorTypes,
+    addresses: typeof gapi$client$addresses,
+    autoscalers: typeof gapi$client$autoscalers,
+    backendBuckets: typeof gapi$client$backendBuckets,
+    backendServices: typeof gapi$client$backendServices,
+    diskTypes: typeof gapi$client$diskTypes,
+    disks: typeof gapi$client$disks,
+    firewalls: typeof gapi$client$firewalls,
+    forwardingRules: typeof gapi$client$forwardingRules,
+    globalAddresses: typeof gapi$client$globalAddresses,
+    globalForwardingRules: typeof gapi$client$globalForwardingRules,
+    globalOperations: typeof gapi$client$globalOperations,
+    healthChecks: typeof gapi$client$healthChecks,
+    httpHealthChecks: typeof gapi$client$httpHealthChecks,
+    httpsHealthChecks: typeof gapi$client$httpsHealthChecks,
+    images: typeof gapi$client$images,
+    instanceGroupManagers: typeof gapi$client$instanceGroupManagers,
+    instanceGroups: typeof gapi$client$instanceGroups,
+    instanceTemplates: typeof gapi$client$instanceTemplates,
+    instances: typeof gapi$client$instances,
+    licenses: typeof gapi$client$licenses,
+    machineTypes: typeof gapi$client$machineTypes,
+    networks: typeof gapi$client$networks,
+    projects: typeof gapi$client$projects,
+    regionAutoscalers: typeof gapi$client$regionAutoscalers,
+    regionBackendServices: typeof gapi$client$regionBackendServices,
+    regionCommitments: typeof gapi$client$regionCommitments,
+    regionInstanceGroupManagers: typeof gapi$client$regionInstanceGroupManagers,
+    regionInstanceGroups: typeof gapi$client$regionInstanceGroups,
+    regionOperations: typeof gapi$client$regionOperations,
+    regions: typeof gapi$client$regions,
+    routers: typeof gapi$client$routers,
+    routes: typeof gapi$client$routes,
+    snapshots: typeof gapi$client$snapshots,
+    sslCertificates: typeof gapi$client$sslCertificates,
+    subnetworks: typeof gapi$client$subnetworks,
+    targetHttpProxies: typeof gapi$client$targetHttpProxies,
+    targetHttpsProxies: typeof gapi$client$targetHttpsProxies,
+    targetInstances: typeof gapi$client$targetInstances,
+    targetPools: typeof gapi$client$targetPools,
+    targetSslProxies: typeof gapi$client$targetSslProxies,
+    targetTcpProxies: typeof gapi$client$targetTcpProxies,
+    targetVpnGateways: typeof gapi$client$targetVpnGateways,
+    urlMaps: typeof gapi$client$urlMaps,
+    vpnTunnels: typeof gapi$client$vpnTunnels,
+    zoneOperations: typeof gapi$client$zoneOperations,
+    zones: typeof gapi$client$zones
   };
 
   /**
    * Load Compute Engine API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "compute",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "compute",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$acceleratorTypes: compute$compute$AcceleratorTypesResource;
+  declare var gapi$client$acceleratorTypes: compute$AcceleratorTypesResource;
 
-  declare var client$addresses: compute$compute$AddressesResource;
+  declare var gapi$client$addresses: compute$AddressesResource;
 
-  declare var client$autoscalers: compute$compute$AutoscalersResource;
+  declare var gapi$client$autoscalers: compute$AutoscalersResource;
 
-  declare var client$backendBuckets: compute$compute$BackendBucketsResource;
+  declare var gapi$client$backendBuckets: compute$BackendBucketsResource;
 
-  declare var client$backendServices: compute$compute$BackendServicesResource;
+  declare var gapi$client$backendServices: compute$BackendServicesResource;
 
-  declare var client$diskTypes: compute$compute$DiskTypesResource;
+  declare var gapi$client$diskTypes: compute$DiskTypesResource;
 
-  declare var client$disks: compute$compute$DisksResource;
+  declare var gapi$client$disks: compute$DisksResource;
 
-  declare var client$firewalls: compute$compute$FirewallsResource;
+  declare var gapi$client$firewalls: compute$FirewallsResource;
 
-  declare var client$forwardingRules: compute$compute$ForwardingRulesResource;
+  declare var gapi$client$forwardingRules: compute$ForwardingRulesResource;
 
-  declare var client$globalAddresses: compute$compute$GlobalAddressesResource;
+  declare var gapi$client$globalAddresses: compute$GlobalAddressesResource;
 
-  declare var client$globalForwardingRules: compute$compute$GlobalForwardingRulesResource;
+  declare var gapi$client$globalForwardingRules: compute$GlobalForwardingRulesResource;
 
-  declare var client$globalOperations: compute$compute$GlobalOperationsResource;
+  declare var gapi$client$globalOperations: compute$GlobalOperationsResource;
 
-  declare var client$healthChecks: compute$compute$HealthChecksResource;
+  declare var gapi$client$healthChecks: compute$HealthChecksResource;
 
-  declare var client$httpHealthChecks: compute$compute$HttpHealthChecksResource;
+  declare var gapi$client$httpHealthChecks: compute$HttpHealthChecksResource;
 
-  declare var client$httpsHealthChecks: compute$compute$HttpsHealthChecksResource;
+  declare var gapi$client$httpsHealthChecks: compute$HttpsHealthChecksResource;
 
-  declare var client$images: compute$compute$ImagesResource;
+  declare var gapi$client$images: compute$ImagesResource;
 
-  declare var client$instanceGroupManagers: compute$compute$InstanceGroupManagersResource;
+  declare var gapi$client$instanceGroupManagers: compute$InstanceGroupManagersResource;
 
-  declare var client$instanceGroups: compute$compute$InstanceGroupsResource;
+  declare var gapi$client$instanceGroups: compute$InstanceGroupsResource;
 
-  declare var client$instanceTemplates: compute$compute$InstanceTemplatesResource;
+  declare var gapi$client$instanceTemplates: compute$InstanceTemplatesResource;
 
-  declare var client$instances: compute$compute$InstancesResource;
+  declare var gapi$client$instances: compute$InstancesResource;
 
-  declare var client$licenses: compute$compute$LicensesResource;
+  declare var gapi$client$licenses: compute$LicensesResource;
 
-  declare var client$machineTypes: compute$compute$MachineTypesResource;
+  declare var gapi$client$machineTypes: compute$MachineTypesResource;
 
-  declare var client$networks: compute$compute$NetworksResource;
+  declare var gapi$client$networks: compute$NetworksResource;
 
-  declare var client$projects: compute$compute$ProjectsResource;
+  declare var gapi$client$projects: compute$ProjectsResource;
 
-  declare var client$regionAutoscalers: compute$compute$RegionAutoscalersResource;
+  declare var gapi$client$regionAutoscalers: compute$RegionAutoscalersResource;
 
-  declare var client$regionBackendServices: compute$compute$RegionBackendServicesResource;
+  declare var gapi$client$regionBackendServices: compute$RegionBackendServicesResource;
 
-  declare var client$regionCommitments: compute$compute$RegionCommitmentsResource;
+  declare var gapi$client$regionCommitments: compute$RegionCommitmentsResource;
 
-  declare var client$regionInstanceGroupManagers: compute$compute$RegionInstanceGroupManagersResource;
+  declare var gapi$client$regionInstanceGroupManagers: compute$RegionInstanceGroupManagersResource;
 
-  declare var client$regionInstanceGroups: compute$compute$RegionInstanceGroupsResource;
+  declare var gapi$client$regionInstanceGroups: compute$RegionInstanceGroupsResource;
 
-  declare var client$regionOperations: compute$compute$RegionOperationsResource;
+  declare var gapi$client$regionOperations: compute$RegionOperationsResource;
 
-  declare var client$regions: compute$compute$RegionsResource;
+  declare var gapi$client$regions: compute$RegionsResource;
 
-  declare var client$routers: compute$compute$RoutersResource;
+  declare var gapi$client$routers: compute$RoutersResource;
 
-  declare var client$routes: compute$compute$RoutesResource;
+  declare var gapi$client$routes: compute$RoutesResource;
 
-  declare var client$snapshots: compute$compute$SnapshotsResource;
+  declare var gapi$client$snapshots: compute$SnapshotsResource;
 
-  declare var client$sslCertificates: compute$compute$SslCertificatesResource;
+  declare var gapi$client$sslCertificates: compute$SslCertificatesResource;
 
-  declare var client$subnetworks: compute$compute$SubnetworksResource;
+  declare var gapi$client$subnetworks: compute$SubnetworksResource;
 
-  declare var client$targetHttpProxies: compute$compute$TargetHttpProxiesResource;
+  declare var gapi$client$targetHttpProxies: compute$TargetHttpProxiesResource;
 
-  declare var client$targetHttpsProxies: compute$compute$TargetHttpsProxiesResource;
+  declare var gapi$client$targetHttpsProxies: compute$TargetHttpsProxiesResource;
 
-  declare var client$targetInstances: compute$compute$TargetInstancesResource;
+  declare var gapi$client$targetInstances: compute$TargetInstancesResource;
 
-  declare var client$targetPools: compute$compute$TargetPoolsResource;
+  declare var gapi$client$targetPools: compute$TargetPoolsResource;
 
-  declare var client$targetSslProxies: compute$compute$TargetSslProxiesResource;
+  declare var gapi$client$targetSslProxies: compute$TargetSslProxiesResource;
 
-  declare var client$targetTcpProxies: compute$compute$TargetTcpProxiesResource;
+  declare var gapi$client$targetTcpProxies: compute$TargetTcpProxiesResource;
 
-  declare var client$targetVpnGateways: compute$compute$TargetVpnGatewaysResource;
+  declare var gapi$client$targetVpnGateways: compute$TargetVpnGatewaysResource;
 
-  declare var client$urlMaps: compute$compute$UrlMapsResource;
+  declare var gapi$client$urlMaps: compute$UrlMapsResource;
 
-  declare var client$vpnTunnels: compute$compute$VpnTunnelsResource;
+  declare var gapi$client$vpnTunnels: compute$VpnTunnelsResource;
 
-  declare var client$zoneOperations: compute$compute$ZoneOperationsResource;
+  declare var gapi$client$zoneOperations: compute$ZoneOperationsResource;
 
-  declare var client$zones: compute$compute$ZonesResource;
+  declare var gapi$client$zones: compute$ZonesResource;
 
-  declare interface compute$AcceleratorConfig {
+  declare interface gapi$client$compute$AcceleratorConfig {
     /**
      * The number of the guest accelerator cards exposed to this instance.
      */
@@ -170,7 +174,7 @@ declare module "gapi.client.compute" {
     acceleratorType?: string;
   }
 
-  declare interface compute$AcceleratorType {
+  declare interface gapi$client$compute$AcceleratorType {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -217,7 +221,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$AcceleratorTypeAggregatedList {
+  declare interface gapi$client$compute$AcceleratorTypeAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -280,7 +284,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AcceleratorTypeList {
+  declare interface gapi$client$compute$AcceleratorTypeList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -289,7 +293,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of AcceleratorType resources.
      */
-    items?: compute$AcceleratorType[];
+    items?: gapi$client$compute$AcceleratorType[];
 
     /**
      * [Output Only] Type of resource. Always compute#acceleratorTypeList for lists of accelerator types.
@@ -343,11 +347,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AcceleratorTypesScopedList {
+  declare interface gapi$client$compute$AcceleratorTypesScopedList {
     /**
      * [Output Only] List of accelerator types contained in this scope.
      */
-    client$acceleratorTypes?: compute$AcceleratorType[];
+    acceleratorTypes?: gapi$client$compute$AcceleratorType[];
 
     /**
      * [Output Only] An informational warning that appears when the accelerator types list is empty.
@@ -384,7 +388,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AccessConfig {
+  declare interface gapi$client$compute$AccessConfig {
     /**
      * [Output Only] Type of the resource. Always compute#accessConfig for access configs.
      */
@@ -409,7 +413,7 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$Address {
+  declare interface gapi$client$compute$Address {
     /**
      * The static IP address represented by this resource.
      */
@@ -482,7 +486,7 @@ declare module "gapi.client.compute" {
     users?: string[];
   }
 
-  declare interface compute$AddressAggregatedList {
+  declare interface gapi$client$compute$AddressAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -545,7 +549,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AddressList {
+  declare interface gapi$client$compute$AddressList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -554,7 +558,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Address resources.
      */
-    items?: compute$Address[];
+    items?: gapi$client$compute$Address[];
 
     /**
      * [Output Only] Type of resource. Always compute#addressList for lists of addresses.
@@ -608,11 +612,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AddressesScopedList {
+  declare interface gapi$client$compute$AddressesScopedList {
     /**
      * [Output Only] List of addresses contained in this scope.
      */
-    client$addresses?: compute$Address[];
+    addresses?: gapi$client$compute$Address[];
 
     /**
      * [Output Only] Informational warning which replaces the list of addresses when the list is empty.
@@ -649,7 +653,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AliasIpRange {
+  declare interface gapi$client$compute$AliasIpRange {
     /**
      * The IP CIDR range represented by this alias IP range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses
      * reserved by system or used by other network interfaces. This range may be a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format
@@ -664,7 +668,7 @@ declare module "gapi.client.compute" {
     subnetworkRangeName?: string;
   }
 
-  declare interface compute$AttachedDisk {
+  declare interface gapi$client$compute$AttachedDisk {
     /**
      * Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
      */
@@ -729,7 +733,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] Any valid publicly visible licenses.
      */
-    client$licenses?: string[];
+    licenses?: string[];
 
     /**
      * The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
@@ -752,7 +756,7 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$AttachedDiskInitializeParams {
+  declare interface gapi$client$compute$AttachedDiskInitializeParams {
     /**
      * Specifies the disk name. If not specified, the default is to use the name of the instance.
      */
@@ -810,7 +814,7 @@ declare module "gapi.client.compute" {
     sourceImageEncryptionKey?: compute$CustomerEncryptionKey;
   }
 
-  declare interface compute$Autoscaler {
+  declare interface gapi$client$compute$Autoscaler {
     /**
      * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
@@ -878,7 +882,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$AutoscalerAggregatedList {
+  declare interface gapi$client$compute$AutoscalerAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -941,7 +945,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AutoscalerList {
+  declare interface gapi$client$compute$AutoscalerList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -950,7 +954,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Autoscaler resources.
      */
-    items?: compute$Autoscaler[];
+    items?: gapi$client$compute$Autoscaler[];
 
     /**
      * [Output Only] Type of resource. Always compute#autoscalerList for lists of autoscalers.
@@ -1004,7 +1008,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AutoscalerStatusDetails {
+  declare interface gapi$client$compute$AutoscalerStatusDetails {
     /**
      * The status message.
      */
@@ -1016,11 +1020,11 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$AutoscalersScopedList {
+  declare interface gapi$client$compute$AutoscalersScopedList {
     /**
      * [Output Only] List of autoscalers contained in this scope.
      */
-    client$autoscalers?: compute$Autoscaler[];
+    autoscalers?: gapi$client$compute$Autoscaler[];
 
     /**
      * [Output Only] Informational warning which replaces the list of autoscalers when the list is empty.
@@ -1057,7 +1061,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$AutoscalingPolicy {
+  declare interface gapi$client$compute$AutoscalingPolicy {
     /**
      * The number of seconds that the autoscaler should wait before it starts collecting information from a new instance. This prevents the autoscaler from
      * collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is
@@ -1096,7 +1100,7 @@ declare module "gapi.client.compute" {
     minNumReplicas?: number;
   }
 
-  declare interface compute$AutoscalingPolicyCpuUtilization {
+  declare interface gapi$client$compute$AutoscalingPolicyCpuUtilization {
     /**
      * The target CPU utilization that the autoscaler should maintain. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
      *
@@ -1109,7 +1113,7 @@ declare module "gapi.client.compute" {
     utilizationTarget?: number;
   }
 
-  declare interface compute$AutoscalingPolicyCustomMetricUtilization {
+  declare interface gapi$client$compute$AutoscalingPolicyCustomMetricUtilization {
     /**
      * The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values and should be a utilization metric, which means that
      * the number of virtual machines handling requests should increase or decrease proportionally to the metric.
@@ -1133,7 +1137,7 @@ declare module "gapi.client.compute" {
     utilizationTargetType?: string;
   }
 
-  declare interface compute$AutoscalingPolicyLoadBalancingUtilization {
+  declare interface gapi$client$compute$AutoscalingPolicyLoadBalancingUtilization {
     /**
      * Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that autoscaler should maintain. Must be a positive float value.
      * If not defined, the default is 0.8.
@@ -1141,7 +1145,7 @@ declare module "gapi.client.compute" {
     utilizationTarget?: number;
   }
 
-  declare interface compute$Backend {
+  declare interface gapi$client$compute$Backend {
     /**
      * Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION,
      * RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
@@ -1215,7 +1219,7 @@ declare module "gapi.client.compute" {
     maxUtilization?: number;
   }
 
-  declare interface compute$BackendBucket {
+  declare interface gapi$client$compute$BackendBucket {
     /**
      * Cloud Storage bucket name.
      */
@@ -1259,7 +1263,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$BackendBucketList {
+  declare interface gapi$client$compute$BackendBucketList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -1268,7 +1272,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of BackendBucket resources.
      */
-    items?: compute$BackendBucket[];
+    items?: gapi$client$compute$BackendBucket[];
 
     /**
      * Type of resource.
@@ -1322,7 +1326,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$BackendService {
+  declare interface gapi$client$compute$BackendService {
     /**
      * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the
      * browser session (or equivalent). The maximum allowed value for TTL is one day.
@@ -1334,7 +1338,7 @@ declare module "gapi.client.compute" {
     /**
      * The list of backends that serve this BackendService.
      */
-    backends?: compute$Backend[];
+    backends?: gapi$client$compute$Backend[];
 
     /**
      * Cloud CDN configuration for this BackendService.
@@ -1372,7 +1376,7 @@ declare module "gapi.client.compute" {
      *
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
-    client$healthChecks?: string[];
+    healthChecks?: string[];
     iap?: compute$BackendServiceIAP;
 
     /**
@@ -1449,7 +1453,7 @@ declare module "gapi.client.compute" {
     timeoutSec?: number;
   }
 
-  declare interface compute$BackendServiceAggregatedList {
+  declare interface gapi$client$compute$BackendServiceAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -1512,14 +1516,14 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$BackendServiceCdnPolicy {
+  declare interface gapi$client$compute$BackendServiceCdnPolicy {
     /**
      * The CacheKeyPolicy for this CdnPolicy.
      */
     cacheKeyPolicy?: compute$CacheKeyPolicy;
   }
 
-  declare interface compute$BackendServiceGroupHealth {
+  declare interface gapi$client$compute$BackendServiceGroupHealth {
     healthStatus?: compute$HealthStatus[];
 
     /**
@@ -1528,7 +1532,7 @@ declare module "gapi.client.compute" {
     kind?: string;
   }
 
-  declare interface compute$BackendServiceIAP {
+  declare interface gapi$client$compute$BackendServiceIAP {
     enabled?: boolean;
     oauth2ClientId?: string;
     oauth2ClientSecret?: string;
@@ -1539,7 +1543,7 @@ declare module "gapi.client.compute" {
     oauth2ClientSecretSha256?: string;
   }
 
-  declare interface compute$BackendServiceList {
+  declare interface gapi$client$compute$BackendServiceList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -1548,7 +1552,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of BackendService resources.
      */
-    items?: compute$BackendService[];
+    items?: gapi$client$compute$BackendService[];
 
     /**
      * [Output Only] Type of resource. Always compute#backendServiceList for lists of backend services.
@@ -1602,11 +1606,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$BackendServicesScopedList {
+  declare interface gapi$client$compute$BackendServicesScopedList {
     /**
      * List of BackendServices contained in this scope.
      */
-    client$backendServices?: compute$BackendService[];
+    backendServices?: gapi$client$compute$BackendService[];
 
     /**
      * Informational warning which replaces the list of backend services when the list is empty.
@@ -1643,7 +1647,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$CacheInvalidationRule {
+  declare interface gapi$client$compute$CacheInvalidationRule {
     /**
      * If set, this invalidation rule will only apply to requests with a Host header matching host.
      */
@@ -1651,7 +1655,7 @@ declare module "gapi.client.compute" {
     path?: string;
   }
 
-  declare interface compute$CacheKeyPolicy {
+  declare interface gapi$client$compute$CacheKeyPolicy {
     /**
      * If true, requests to different hosts will be cached separately.
      */
@@ -1681,7 +1685,7 @@ declare module "gapi.client.compute" {
     queryStringWhitelist?: string[];
   }
 
-  declare interface compute$Commitment {
+  declare interface gapi$client$compute$Commitment {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -1752,7 +1756,7 @@ declare module "gapi.client.compute" {
     statusMessage?: string;
   }
 
-  declare interface compute$CommitmentAggregatedList {
+  declare interface gapi$client$compute$CommitmentAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -1815,7 +1819,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$CommitmentList {
+  declare interface gapi$client$compute$CommitmentList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -1824,7 +1828,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Commitment resources.
      */
-    items?: compute$Commitment[];
+    items?: gapi$client$compute$Commitment[];
 
     /**
      * [Output Only] Type of resource. Always compute#commitmentList for lists of commitments.
@@ -1878,11 +1882,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$CommitmentsScopedList {
+  declare interface gapi$client$compute$CommitmentsScopedList {
     /**
      * [Output Only] List of commitments contained in this scope.
      */
-    commitments?: compute$Commitment[];
+    commitments?: gapi$client$compute$Commitment[];
 
     /**
      * [Output Only] Informational warning which replaces the list of commitments when the list is empty.
@@ -1919,14 +1923,14 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ConnectionDraining {
+  declare interface gapi$client$compute$ConnectionDraining {
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started).
      */
     drainingTimeoutSec?: number;
   }
 
-  declare interface compute$CustomerEncryptionKey {
+  declare interface gapi$client$compute$CustomerEncryptionKey {
     /**
      * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
      */
@@ -1938,11 +1942,11 @@ declare module "gapi.client.compute" {
     sha256?: string;
   }
 
-  declare interface compute$CustomerEncryptionKeyProtectedDisk {
+  declare interface gapi$client$compute$CustomerEncryptionKeyProtectedDisk {
     /**
      * Decrypts data associated with the disk with a customer-supplied encryption key.
      */
-    diskEncryptionKey?: compute$CustomerEncryptionKey;
+    diskEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
@@ -1950,7 +1954,7 @@ declare module "gapi.client.compute" {
     source?: string;
   }
 
-  declare interface compute$DeprecationStatus {
+  declare interface gapi$client$compute$DeprecationStatus {
     /**
      * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status
      * will not change unless the client explicitly changes it.
@@ -1983,7 +1987,7 @@ declare module "gapi.client.compute" {
     state?: string;
   }
 
-  declare interface compute$Disk {
+  declare interface gapi$client$compute$Disk {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -2005,7 +2009,7 @@ declare module "gapi.client.compute" {
      * If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not
      * need to provide a key to use the disk later.
      */
-    diskEncryptionKey?: compute$CustomerEncryptionKey;
+    diskEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -2044,7 +2048,7 @@ declare module "gapi.client.compute" {
     /**
      * Any applicable publicly visible licenses.
      */
-    client$licenses?: string[];
+    licenses?: string[];
 
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -2098,7 +2102,7 @@ declare module "gapi.client.compute" {
     /**
      * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
      */
-    sourceImageEncryptionKey?: compute$CustomerEncryptionKey;
+    sourceImageEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk.
@@ -2119,7 +2123,7 @@ declare module "gapi.client.compute" {
     /**
      * The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
      */
-    sourceSnapshotEncryptionKey?: compute$CustomerEncryptionKey;
+    sourceSnapshotEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent
@@ -2149,7 +2153,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$DiskAggregatedList {
+  declare interface gapi$client$compute$DiskAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2212,7 +2216,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$DiskList {
+  declare interface gapi$client$compute$DiskList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2221,7 +2225,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Disk resources.
      */
-    items?: compute$Disk[];
+    items?: gapi$client$compute$Disk[];
 
     /**
      * [Output Only] Type of resource. Always compute#diskList for lists of disks.
@@ -2275,7 +2279,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$DiskMoveRequest {
+  declare interface gapi$client$compute$DiskMoveRequest {
     /**
      * The URL of the destination zone to move the disk. This can be a full or partial URL. For example, the following are all valid URLs to a zone:
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
@@ -2293,7 +2297,7 @@ declare module "gapi.client.compute" {
     targetDisk?: string;
   }
 
-  declare interface compute$DiskType {
+  declare interface gapi$client$compute$DiskType {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -2307,7 +2311,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] The deprecation status associated with this disk type.
      */
-    deprecated?: compute$DeprecationStatus;
+    deprecated?: gapi$client$compute$DeprecationStatus;
 
     /**
      * [Output Only] An optional description of this resource.
@@ -2345,7 +2349,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$DiskTypeAggregatedList {
+  declare interface gapi$client$compute$DiskTypeAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2408,7 +2412,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$DiskTypeList {
+  declare interface gapi$client$compute$DiskTypeList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2417,7 +2421,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of DiskType resources.
      */
-    items?: compute$DiskType[];
+    items?: gapi$client$compute$DiskType[];
 
     /**
      * [Output Only] Type of resource. Always compute#diskTypeList for disk types.
@@ -2471,11 +2475,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$DiskTypesScopedList {
+  declare interface gapi$client$compute$DiskTypesScopedList {
     /**
      * [Output Only] List of disk types contained in this scope.
      */
-    client$diskTypes?: compute$DiskType[];
+    diskTypes?: gapi$client$compute$DiskType[];
 
     /**
      * [Output Only] Informational warning which replaces the list of disk types when the list is empty.
@@ -2512,18 +2516,18 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$DisksResizeRequest {
+  declare interface gapi$client$compute$DisksResizeRequest {
     /**
      * The new size of the persistent disk, which is specified in GB.
      */
     sizeGb?: string;
   }
 
-  declare interface compute$DisksScopedList {
+  declare interface gapi$client$compute$DisksScopedList {
     /**
      * [Output Only] List of disks contained in this scope.
      */
-    client$disks?: compute$Disk[];
+    disks?: gapi$client$compute$Disk[];
 
     /**
      * [Output Only] Informational warning which replaces the list of disks when the list is empty.
@@ -2560,7 +2564,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Firewall {
+  declare interface gapi$client$compute$Firewall {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
      */
@@ -2684,7 +2688,7 @@ declare module "gapi.client.compute" {
     targetTags?: string[];
   }
 
-  declare interface compute$FirewallList {
+  declare interface gapi$client$compute$FirewallList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2693,7 +2697,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Firewall resources.
      */
-    items?: compute$Firewall[];
+    items?: gapi$client$compute$Firewall[];
 
     /**
      * [Output Only] Type of resource. Always compute#firewallList for lists of firewalls.
@@ -2747,7 +2751,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ForwardingRule {
+  declare interface gapi$client$compute$ForwardingRule {
     /**
      * The IP address that this forwarding rule is serving on behalf of.
      *
@@ -2879,7 +2883,7 @@ declare module "gapi.client.compute" {
     target?: string;
   }
 
-  declare interface compute$ForwardingRuleAggregatedList {
+  declare interface gapi$client$compute$ForwardingRuleAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2942,7 +2946,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ForwardingRuleList {
+  declare interface gapi$client$compute$ForwardingRuleList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -2951,7 +2955,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of ForwardingRule resources.
      */
-    items?: compute$ForwardingRule[];
+    items?: gapi$client$compute$ForwardingRule[];
 
     /**
      * Type of resource.
@@ -3005,11 +3009,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ForwardingRulesScopedList {
+  declare interface gapi$client$compute$ForwardingRulesScopedList {
     /**
      * List of forwarding rules contained in this scope.
      */
-    client$forwardingRules?: compute$ForwardingRule[];
+    forwardingRules?: gapi$client$compute$ForwardingRule[];
 
     /**
      * Informational warning which replaces the list of forwarding rules when the list is empty.
@@ -3046,7 +3050,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$GlobalSetLabelsRequest {
+  declare interface gapi$client$compute$GlobalSetLabelsRequest {
     /**
      * The fingerprint of the previous set of labels for this resource, used to detect conflicts. The fingerprint is initially generated by Compute Engine and
      * changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash when updating or changing labels. Make a
@@ -3063,7 +3067,7 @@ declare module "gapi.client.compute" {
     labels?: Record<string, string>;
   }
 
-  declare interface compute$GuestOsFeature {
+  declare interface gapi$client$compute$GuestOsFeature {
     /**
      * The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows images, the server might also populate this
      * property with the value WINDOWS to indicate that this is a Windows image.
@@ -3071,7 +3075,7 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$HTTPHealthCheck {
+  declare interface gapi$client$compute$HTTPHealthCheck {
     /**
      * The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed
      * will be used.
@@ -3099,7 +3103,7 @@ declare module "gapi.client.compute" {
     requestPath?: string;
   }
 
-  declare interface compute$HTTPSHealthCheck {
+  declare interface gapi$client$compute$HTTPSHealthCheck {
     /**
      * The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed
      * will be used.
@@ -3127,7 +3131,7 @@ declare module "gapi.client.compute" {
     requestPath?: string;
   }
 
-  declare interface compute$HealthCheck {
+  declare interface gapi$client$compute$HealthCheck {
     /**
      * How often (in seconds) to send a health check. The default value is 5 seconds.
      */
@@ -3147,8 +3151,8 @@ declare module "gapi.client.compute" {
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
     healthyThreshold?: number;
-    httpHealthCheck?: compute$HTTPHealthCheck;
-    httpsHealthCheck?: compute$HTTPSHealthCheck;
+    httpHealthCheck?: gapi$client$compute$HTTPHealthCheck;
+    httpsHealthCheck?: gapi$client$compute$HTTPSHealthCheck;
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -3192,7 +3196,7 @@ declare module "gapi.client.compute" {
     unhealthyThreshold?: number;
   }
 
-  declare interface compute$HealthCheckList {
+  declare interface gapi$client$compute$HealthCheckList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -3201,7 +3205,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of HealthCheck resources.
      */
-    items?: compute$HealthCheck[];
+    items?: gapi$client$compute$HealthCheck[];
 
     /**
      * Type of resource.
@@ -3255,11 +3259,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$HealthCheckReference {
+  declare interface gapi$client$compute$HealthCheckReference {
     healthCheck?: string;
   }
 
-  declare interface compute$HealthStatus {
+  declare interface gapi$client$compute$HealthStatus {
     /**
      * Health state of the instance.
      */
@@ -3281,7 +3285,7 @@ declare module "gapi.client.compute" {
     port?: number;
   }
 
-  declare interface compute$HostRule {
+  declare interface gapi$client$compute$HostRule {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -3299,7 +3303,7 @@ declare module "gapi.client.compute" {
     pathMatcher?: string;
   }
 
-  declare interface compute$HttpHealthCheck {
+  declare interface gapi$client$compute$HttpHealthCheck {
     /**
      * How often (in seconds) to send a health check. The default value is 5 seconds.
      */
@@ -3370,7 +3374,7 @@ declare module "gapi.client.compute" {
     unhealthyThreshold?: number;
   }
 
-  declare interface compute$HttpHealthCheckList {
+  declare interface gapi$client$compute$HttpHealthCheckList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -3379,7 +3383,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of HttpHealthCheck resources.
      */
-    items?: compute$HttpHealthCheck[];
+    items?: gapi$client$compute$HttpHealthCheck[];
 
     /**
      * Type of resource.
@@ -3433,7 +3437,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$HttpsHealthCheck {
+  declare interface gapi$client$compute$HttpsHealthCheck {
     /**
      * How often (in seconds) to send a health check. The default value is 5 seconds.
      */
@@ -3504,7 +3508,7 @@ declare module "gapi.client.compute" {
     unhealthyThreshold?: number;
   }
 
-  declare interface compute$HttpsHealthCheckList {
+  declare interface gapi$client$compute$HttpsHealthCheckList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -3513,7 +3517,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of HttpsHealthCheck resources.
      */
-    items?: compute$HttpsHealthCheck[];
+    items?: gapi$client$compute$HttpsHealthCheck[];
 
     /**
      * Type of resource.
@@ -3567,7 +3571,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Image {
+  declare interface gapi$client$compute$Image {
     /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
@@ -3581,7 +3585,7 @@ declare module "gapi.client.compute" {
     /**
      * The deprecation status associated with this image.
      */
-    deprecated?: compute$DeprecationStatus;
+    deprecated?: gapi$client$compute$DeprecationStatus;
 
     /**
      * An optional description of this resource. Provide this property when you create the resource.
@@ -3606,7 +3610,7 @@ declare module "gapi.client.compute" {
      *
      * For newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image.
      */
-    guestOsFeatures?: compute$GuestOsFeature[];
+    guestOsFeatures?: gapi$client$compute$GuestOsFeature[];
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -3624,7 +3628,7 @@ declare module "gapi.client.compute" {
      * If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not
      * need to provide a key to use the image later.
      */
-    imageEncryptionKey?: compute$CustomerEncryptionKey;
+    imageEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] Type of the resource. Always compute#image for images.
@@ -3648,7 +3652,7 @@ declare module "gapi.client.compute" {
     /**
      * Any applicable license URI.
      */
-    client$licenses?: string[];
+    licenses?: string[];
 
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -3695,7 +3699,7 @@ declare module "gapi.client.compute" {
     /**
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    sourceDiskEncryptionKey?: compute$CustomerEncryptionKey;
+    sourceDiskEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous
@@ -3714,7 +3718,7 @@ declare module "gapi.client.compute" {
     /**
      * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
      */
-    sourceImageEncryptionKey?: compute$CustomerEncryptionKey;
+    sourceImageEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or
@@ -3734,7 +3738,7 @@ declare module "gapi.client.compute" {
     status?: string;
   }
 
-  declare interface compute$ImageList {
+  declare interface gapi$client$compute$ImageList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -3743,7 +3747,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Image resources.
      */
-    items?: compute$Image[];
+    items?: gapi$client$compute$Image[];
 
     /**
      * Type of resource.
@@ -3797,7 +3801,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Instance {
+  declare interface gapi$client$compute$Instance {
     /**
      * Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to
      * forward routes. For more information, see Enabling IP Forwarding.
@@ -3822,12 +3826,12 @@ declare module "gapi.client.compute" {
     /**
      * Array of disks associated with this instance. Persistent disks must be created before you can assign them.
      */
-    client$disks?: compute$AttachedDisk[];
+    disks?: gapi$client$compute$AttachedDisk[];
 
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
-    guestAccelerators?: compute$AcceleratorConfig[];
+    guestAccelerators?: gapi$client$compute$AcceleratorConfig[];
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -3942,7 +3946,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$InstanceAggregatedList {
+  declare interface gapi$client$compute$InstanceAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4005,7 +4009,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroup {
+  declare interface gapi$client$compute$InstanceGroup {
     /**
      * [Output Only] The creation timestamp for this instance group in RFC3339 text format.
      */
@@ -4078,7 +4082,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$InstanceGroupAggregatedList {
+  declare interface gapi$client$compute$InstanceGroupAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4141,7 +4145,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupList {
+  declare interface gapi$client$compute$InstanceGroupList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4150,7 +4154,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceGroup resources.
      */
-    items?: compute$InstanceGroup[];
+    items?: gapi$client$compute$InstanceGroup[];
 
     /**
      * [Output Only] The resource type, which is always compute#instanceGroupList for instance group lists.
@@ -4204,7 +4208,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupManager {
+  declare interface gapi$client$compute$InstanceGroupManager {
     /**
      * The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a
      * random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -4276,7 +4280,7 @@ declare module "gapi.client.compute" {
      * The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the
      * instances in the managed instance group.
      */
-    client$targetPools?: string[];
+    targetPools?: string[];
 
     /**
      * The target number of running instances for this managed instance group. Deleting or abandoning instances reduces this number. Resizing the group
@@ -4290,7 +4294,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$InstanceGroupManagerActionsSummary {
+  declare interface gapi$client$compute$InstanceGroupManagerActionsSummary {
     /**
      * [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from
      * the managed instance group without deleting it.
@@ -4339,7 +4343,7 @@ declare module "gapi.client.compute" {
     restarting?: number;
   }
 
-  declare interface compute$InstanceGroupManagerAggregatedList {
+  declare interface gapi$client$compute$InstanceGroupManagerAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4402,7 +4406,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupManagerList {
+  declare interface gapi$client$compute$InstanceGroupManagerList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4411,7 +4415,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceGroupManager resources.
      */
-    items?: compute$InstanceGroupManager[];
+    items?: gapi$client$compute$InstanceGroupManager[];
 
     /**
      * [Output Only] The resource type, which is always compute#instanceGroupManagerList for a list of managed instance groups.
@@ -4465,39 +4469,39 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupManagersAbandonInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupManagersAbandonInstancesRequest {
     /**
      * The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$InstanceGroupManagersDeleteInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupManagersDeleteInstancesRequest {
     /**
      * The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$InstanceGroupManagersListManagedInstancesResponse {
+  declare interface gapi$client$compute$InstanceGroupManagersListManagedInstancesResponse {
     /**
      * [Output Only] The list of instances in the managed instance group.
      */
     managedInstances?: compute$ManagedInstance[];
   }
 
-  declare interface compute$InstanceGroupManagersRecreateInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupManagersRecreateInstancesRequest {
     /**
      * The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$InstanceGroupManagersScopedList {
+  declare interface gapi$client$compute$InstanceGroupManagersScopedList {
     /**
      * [Output Only] The list of managed instance groups that are contained in the specified project and zone.
      */
-    client$instanceGroupManagers?: compute$InstanceGroupManager[];
+    instanceGroupManagers?: gapi$client$compute$InstanceGroupManager[];
 
     /**
      * [Output Only] The warning that replaces the list of managed instance groups when the list is empty.
@@ -4534,7 +4538,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupManagersSetInstanceTemplateRequest {
+  declare interface gapi$client$compute$InstanceGroupManagersSetInstanceTemplateRequest {
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the
      * managed instance group.
@@ -4542,7 +4546,7 @@ declare module "gapi.client.compute" {
     instanceTemplate?: string;
   }
 
-  declare interface compute$InstanceGroupManagersSetTargetPoolsRequest {
+  declare interface gapi$client$compute$InstanceGroupManagersSetTargetPoolsRequest {
     /**
      * The fingerprint of the target pools information. Use this optional property to prevent conflicts when multiple users change the target pools settings
      * concurrently. Obtain the fingerprint with the instanceGroupManagers.get method. Then, include the fingerprint in your request to ensure that you do not
@@ -4554,17 +4558,17 @@ declare module "gapi.client.compute" {
      * The list of target pool URLs that instances in this managed instance group belong to. The managed instance group applies these target pools to all of
      * the instances in the group. Existing instances and new instances in the group all receive these target pool settings.
      */
-    client$targetPools?: string[];
+    targetPools?: string[];
   }
 
-  declare interface compute$InstanceGroupsAddInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupsAddInstancesRequest {
     /**
      * The list of instances to add to the instance group.
      */
-    client$instances?: compute$InstanceReference[];
+    instances?: compute$InstanceReference[];
   }
 
-  declare interface compute$InstanceGroupsListInstances {
+  declare interface gapi$client$compute$InstanceGroupsListInstances {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4627,7 +4631,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupsListInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupsListInstancesRequest {
     /**
      * A filter for the state of the instances in the instance group. Valid options are ALL or RUNNING. If you do not specify this parameter the list includes
      * all instances regardless of their state.
@@ -4635,18 +4639,18 @@ declare module "gapi.client.compute" {
     instanceState?: string;
   }
 
-  declare interface compute$InstanceGroupsRemoveInstancesRequest {
+  declare interface gapi$client$compute$InstanceGroupsRemoveInstancesRequest {
     /**
      * The list of instances to remove from the instance group.
      */
-    client$instances?: compute$InstanceReference[];
+    instances?: compute$InstanceReference[];
   }
 
-  declare interface compute$InstanceGroupsScopedList {
+  declare interface gapi$client$compute$InstanceGroupsScopedList {
     /**
      * [Output Only] The list of instance groups that are contained in this scope.
      */
-    client$instanceGroups?: compute$InstanceGroup[];
+    instanceGroups?: gapi$client$compute$InstanceGroup[];
 
     /**
      * [Output Only] An informational warning that replaces the list of instance groups when the list is empty.
@@ -4683,7 +4687,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceGroupsSetNamedPortsRequest {
+  declare interface gapi$client$compute$InstanceGroupsSetNamedPortsRequest {
     /**
      * The fingerprint of the named ports information for this instance group. Use this optional property to prevent conflicts when multiple users change the
      * named ports settings concurrently. Obtain the fingerprint with the instanceGroups.get method. Then, include the fingerprint in your request to ensure
@@ -4697,7 +4701,7 @@ declare module "gapi.client.compute" {
     namedPorts?: compute$NamedPort[];
   }
 
-  declare interface compute$InstanceList {
+  declare interface gapi$client$compute$InstanceList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4706,7 +4710,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Instance resources.
      */
-    items?: compute$Instance[];
+    items?: gapi$client$compute$Instance[];
 
     /**
      * [Output Only] Type of resource. Always compute#instanceList for lists of Instance resources.
@@ -4760,7 +4764,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceMoveRequest {
+  declare interface gapi$client$compute$InstanceMoveRequest {
     /**
      * The URL of the destination zone to move the instance. This can be a full or partial URL. For example, the following are all valid URLs to a zone:
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
@@ -4778,7 +4782,7 @@ declare module "gapi.client.compute" {
     targetInstance?: string;
   }
 
-  declare interface compute$InstanceProperties {
+  declare interface gapi$client$compute$InstanceProperties {
     /**
      * Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP
      * addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true.
@@ -4794,12 +4798,12 @@ declare module "gapi.client.compute" {
     /**
      * An array of disks that are associated with the instances that are created from this template.
      */
-    client$disks?: compute$AttachedDisk[];
+    disks?: gapi$client$compute$AttachedDisk[];
 
     /**
      * A list of guest accelerator cards' type and count to use for instances created from the instance template.
      */
-    guestAccelerators?: compute$AcceleratorConfig[];
+    guestAccelerators?: gapi$client$compute$AcceleratorConfig[];
 
     /**
      * Labels to apply to instances that are created from this template.
@@ -4847,14 +4851,14 @@ declare module "gapi.client.compute" {
     tags?: compute$Tags;
   }
 
-  declare interface compute$InstanceReference {
+  declare interface gapi$client$compute$InstanceReference {
     /**
      * The URL for a specific instance.
      */
     instance?: string;
   }
 
-  declare interface compute$InstanceTemplate {
+  declare interface gapi$client$compute$InstanceTemplate {
     /**
      * [Output Only] The creation timestamp for this instance template in RFC3339 text format.
      */
@@ -4885,7 +4889,7 @@ declare module "gapi.client.compute" {
     /**
      * The instance properties for this instance template.
      */
-    properties?: compute$InstanceProperties;
+    properties?: gapi$client$compute$InstanceProperties;
 
     /**
      * [Output Only] The URL for this instance template. The server defines this URL.
@@ -4893,7 +4897,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$InstanceTemplateList {
+  declare interface gapi$client$compute$InstanceTemplateList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -4902,7 +4906,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceTemplate resources.
      */
-    items?: compute$InstanceTemplate[];
+    items?: gapi$client$compute$InstanceTemplate[];
 
     /**
      * [Output Only] The resource type, which is always compute#instanceTemplatesListResponse for instance template lists.
@@ -4956,7 +4960,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstanceWithNamedPorts {
+  declare interface gapi$client$compute$InstanceWithNamedPorts {
     /**
      * [Output Only] The URL of the instance.
      */
@@ -4973,11 +4977,11 @@ declare module "gapi.client.compute" {
     status?: string;
   }
 
-  declare interface compute$InstancesScopedList {
+  declare interface gapi$client$compute$InstancesScopedList {
     /**
      * [Output Only] List of instances contained in this scope.
      */
-    client$instances?: compute$Instance[];
+    instances?: gapi$client$compute$Instance[];
 
     /**
      * [Output Only] Informational warning which replaces the list of instances when the list is empty.
@@ -5014,7 +5018,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$InstancesSetLabelsRequest {
+  declare interface gapi$client$compute$InstancesSetLabelsRequest {
     /**
      * Fingerprint of the previous set of labels for this resource, used to prevent conflicts. Provide the latest fingerprint value when making a request to
      * add or change labels.
@@ -5023,14 +5027,14 @@ declare module "gapi.client.compute" {
     labels?: Record<string, string>;
   }
 
-  declare interface compute$InstancesSetMachineResourcesRequest {
+  declare interface gapi$client$compute$InstancesSetMachineResourcesRequest {
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
-    guestAccelerators?: compute$AcceleratorConfig[];
+    guestAccelerators?: gapi$client$compute$AcceleratorConfig[];
   }
 
-  declare interface compute$InstancesSetMachineTypeRequest {
+  declare interface gapi$client$compute$InstancesSetMachineTypeRequest {
     /**
      * Full or partial URL of the machine type resource. See Machine Types for a full list of machine types. For example:
      * zones/us-central1-f/machineTypes/n1-standard-1
@@ -5038,14 +5042,14 @@ declare module "gapi.client.compute" {
     machineType?: string;
   }
 
-  declare interface compute$InstancesSetMinCpuPlatformRequest {
+  declare interface gapi$client$compute$InstancesSetMinCpuPlatformRequest {
     /**
      * Minimum cpu/platform this instance should be started at.
      */
     minCpuPlatform?: string;
   }
 
-  declare interface compute$InstancesSetServiceAccountRequest {
+  declare interface gapi$client$compute$InstancesSetServiceAccountRequest {
     /**
      * Email address of the service account.
      */
@@ -5057,7 +5061,7 @@ declare module "gapi.client.compute" {
     scopes?: string[];
   }
 
-  declare interface compute$InstancesStartWithEncryptionKeyRequest {
+  declare interface gapi$client$compute$InstancesStartWithEncryptionKeyRequest {
     /**
      * Array of disks associated with this instance that are protected with a customer-supplied encryption key.
      *
@@ -5065,10 +5069,10 @@ declare module "gapi.client.compute" {
      *
      * If the disk is not protected with a customer-supplied encryption key it should not be specified.
      */
-    client$disks?: compute$CustomerEncryptionKeyProtectedDisk[];
+    disks?: gapi$client$compute$CustomerEncryptionKeyProtectedDisk[];
   }
 
-  declare interface compute$License {
+  declare interface gapi$client$compute$License {
     /**
      * [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
      */
@@ -5090,7 +5094,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$MachineType {
+  declare interface gapi$client$compute$MachineType {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -5099,7 +5103,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] The deprecation status associated with this machine type.
      */
-    deprecated?: compute$DeprecationStatus;
+    deprecated?: gapi$client$compute$DeprecationStatus;
 
     /**
      * [Output Only] An optional textual description of the resource.
@@ -5172,7 +5176,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$MachineTypeAggregatedList {
+  declare interface gapi$client$compute$MachineTypeAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -5235,7 +5239,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$MachineTypeList {
+  declare interface gapi$client$compute$MachineTypeList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -5244,7 +5248,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of MachineType resources.
      */
-    items?: compute$MachineType[];
+    items?: gapi$client$compute$MachineType[];
 
     /**
      * [Output Only] Type of resource. Always compute#machineTypeList for lists of machine types.
@@ -5298,11 +5302,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$MachineTypesScopedList {
+  declare interface gapi$client$compute$MachineTypesScopedList {
     /**
      * [Output Only] List of machine types contained in this scope.
      */
-    client$machineTypes?: compute$MachineType[];
+    machineTypes?: gapi$client$compute$MachineType[];
 
     /**
      * [Output Only] An informational warning that appears when the machine types list is empty.
@@ -5339,7 +5343,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ManagedInstance {
+  declare interface gapi$client$compute$ManagedInstance {
     /**
      * [Output Only] The current action that the managed instance group has scheduled for the instance. Possible values:
      * - NONE The instance is running, and the managed instance group does not have any scheduled actions for this instance.
@@ -5377,7 +5381,7 @@ declare module "gapi.client.compute" {
     lastAttempt?: compute$ManagedInstanceLastAttempt;
   }
 
-  declare interface compute$ManagedInstanceLastAttempt {
+  declare interface gapi$client$compute$ManagedInstanceLastAttempt {
     /**
      * [Output Only] Encountered errors during the last attempt to create or delete the instance.
      */
@@ -5404,7 +5408,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Metadata {
+  declare interface gapi$client$compute$Metadata {
     /**
      * Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is
      * initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint
@@ -5435,7 +5439,7 @@ declare module "gapi.client.compute" {
     kind?: string;
   }
 
-  declare interface compute$NamedPort {
+  declare interface gapi$client$compute$NamedPort {
     /**
      * The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
      */
@@ -5447,7 +5451,7 @@ declare module "gapi.client.compute" {
     port?: number;
   }
 
-  declare interface compute$Network {
+  declare interface gapi$client$compute$Network {
     /**
      * The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client
      * when the network is created.
@@ -5512,20 +5516,20 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this network.
      */
-    client$subnetworks?: string[];
+    subnetworks?: string[];
   }
 
-  declare interface compute$NetworkInterface {
+  declare interface gapi$client$compute$NetworkInterface {
     /**
      * An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs
      * specified, then this instance will have no external internet access.
      */
-    accessConfigs?: compute$AccessConfig[];
+    accessConfigs?: gapi$client$compute$AccessConfig[];
 
     /**
      * An array of alias IP ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
      */
-    aliasIpRanges?: compute$AliasIpRange[];
+    aliasIpRanges?: gapi$client$compute$AliasIpRange[];
 
     /**
      * [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
@@ -5567,7 +5571,7 @@ declare module "gapi.client.compute" {
     subnetwork?: string;
   }
 
-  declare interface compute$NetworkList {
+  declare interface gapi$client$compute$NetworkList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -5576,7 +5580,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Network resources.
      */
-    items?: compute$Network[];
+    items?: gapi$client$compute$Network[];
 
     /**
      * [Output Only] Type of resource. Always compute#networkList for lists of networks.
@@ -5630,7 +5634,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$NetworkPeering {
+  declare interface gapi$client$compute$NetworkPeering {
     /**
      * Whether full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine will automatically create and manage
      * the routes between two networks when the state is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.
@@ -5661,7 +5665,7 @@ declare module "gapi.client.compute" {
     stateDetails?: string;
   }
 
-  declare interface compute$NetworkRoutingConfig {
+  declare interface gapi$client$compute$NetworkRoutingConfig {
     /**
      * The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only advertise routes with subnetworks of this network in
      * the same region as the router. If set to GLOBAL, this network's cloud routers will advertise routes with all subnetworks of this network, across
@@ -5670,7 +5674,7 @@ declare module "gapi.client.compute" {
     routingMode?: string;
   }
 
-  declare interface compute$NetworksAddPeeringRequest {
+  declare interface gapi$client$compute$NetworksAddPeeringRequest {
     /**
      * Whether Google Compute Engine manages the routes automatically.
      */
@@ -5688,14 +5692,14 @@ declare module "gapi.client.compute" {
     peerNetwork?: string;
   }
 
-  declare interface compute$NetworksRemovePeeringRequest {
+  declare interface gapi$client$compute$NetworksRemovePeeringRequest {
     /**
      * Name of the peering, which should conform to RFC1035.
      */
     name?: string;
   }
 
-  declare interface compute$Operation {
+  declare interface gapi$client$compute$Operation {
     /**
      * [Output Only] Reserved for future use.
      */
@@ -5865,7 +5869,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$OperationAggregatedList {
+  declare interface gapi$client$compute$OperationAggregatedList {
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -5928,7 +5932,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$OperationList {
+  declare interface gapi$client$compute$OperationList {
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -5937,7 +5941,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] A list of Operation resources.
      */
-    items?: compute$Operation[];
+    items?: gapi$client$compute$Operation[];
 
     /**
      * [Output Only] Type of resource. Always compute#operations for Operations resource.
@@ -5991,11 +5995,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$OperationsScopedList {
+  declare interface gapi$client$compute$OperationsScopedList {
     /**
      * [Output Only] List of operations contained in this scope.
      */
-    operations?: compute$Operation[];
+    operations?: gapi$client$compute$Operation[];
 
     /**
      * [Output Only] Informational warning which replaces the list of operations when the list is empty.
@@ -6032,7 +6036,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$PathMatcher {
+  declare interface gapi$client$compute$PathMatcher {
     /**
      * The full or partial URL to the BackendService resource. This will be used if none of the pathRules defined by this PathMatcher is matched by the URL's
      * path portion. For example, the following are all valid URLs to a BackendService resource:
@@ -6058,7 +6062,7 @@ declare module "gapi.client.compute" {
     pathRules?: compute$PathRule[];
   }
 
-  declare interface compute$PathRule {
+  declare interface gapi$client$compute$PathRule {
     /**
      * The list of path patterns to match. Each must start with / and the only place a &#42; is allowed is at the end following a /. The string fed to the path
      * matcher does not include any text after the first ? or #, and those chars are not allowed here.
@@ -6071,11 +6075,11 @@ declare module "gapi.client.compute" {
     service?: string;
   }
 
-  declare interface compute$Project {
+  declare interface gapi$client$compute$Project {
     /**
      * Metadata key/value pairs available to all instances contained in this project. See Custom metadata for more information.
      */
-    commonInstanceMetadata?: compute$Metadata;
+    commonInstanceMetadata?: gapi$client$compute$Metadata;
 
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
@@ -6134,21 +6138,21 @@ declare module "gapi.client.compute" {
     xpnProjectStatus?: string;
   }
 
-  declare interface compute$ProjectsDisableXpnResourceRequest {
+  declare interface gapi$client$compute$ProjectsDisableXpnResourceRequest {
     /**
      * Service resource (a.k.a service project) ID.
      */
     xpnResource?: compute$XpnResourceId;
   }
 
-  declare interface compute$ProjectsEnableXpnResourceRequest {
+  declare interface gapi$client$compute$ProjectsEnableXpnResourceRequest {
     /**
      * Service resource (a.k.a service project) ID.
      */
     xpnResource?: compute$XpnResourceId;
   }
 
-  declare interface compute$ProjectsGetXpnResources {
+  declare interface gapi$client$compute$ProjectsGetXpnResources {
     /**
      * [Output Only] Type of resource. Always compute#projectsGetXpnResources for lists of service resources (a.k.a service projects)
      */
@@ -6167,7 +6171,7 @@ declare module "gapi.client.compute" {
     resources?: compute$XpnResourceId[];
   }
 
-  declare interface compute$ProjectsListXpnHostsRequest {
+  declare interface gapi$client$compute$ProjectsListXpnHostsRequest {
     /**
      * Optional organization ID managed by Cloud Resource Manager, for which to list shared VPC host projects. If not specified, the organization will be
      * inferred from the project.
@@ -6175,7 +6179,7 @@ declare module "gapi.client.compute" {
     organization?: string;
   }
 
-  declare interface compute$Quota {
+  declare interface gapi$client$compute$Quota {
     /**
      * [Output Only] Quota limit for this metric.
      */
@@ -6192,7 +6196,7 @@ declare module "gapi.client.compute" {
     usage?: number;
   }
 
-  declare interface compute$Region {
+  declare interface gapi$client$compute$Region {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -6201,7 +6205,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] The deprecation status associated with this region.
      */
-    deprecated?: compute$DeprecationStatus;
+    deprecated?: gapi$client$compute$DeprecationStatus;
 
     /**
      * [Output Only] Textual description of the resource.
@@ -6226,7 +6230,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] Quotas assigned to this region.
      */
-    quotas?: compute$Quota[];
+    quotas?: gapi$client$compute$Quota[];
 
     /**
      * [Output Only] Server-defined URL for the resource.
@@ -6241,10 +6245,10 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] A list of zones available in this region, in the form of resource URLs.
      */
-    client$zones?: string[];
+    zones?: string[];
   }
 
-  declare interface compute$RegionAutoscalerList {
+  declare interface gapi$client$compute$RegionAutoscalerList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6253,7 +6257,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Autoscaler resources.
      */
-    items?: compute$Autoscaler[];
+    items?: gapi$client$compute$Autoscaler[];
 
     /**
      * Type of resource.
@@ -6307,7 +6311,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RegionInstanceGroupList {
+  declare interface gapi$client$compute$RegionInstanceGroupList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6316,7 +6320,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceGroup resources.
      */
-    items?: compute$InstanceGroup[];
+    items?: gapi$client$compute$InstanceGroup[];
 
     /**
      * The resource type.
@@ -6370,7 +6374,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RegionInstanceGroupManagerList {
+  declare interface gapi$client$compute$RegionInstanceGroupManagerList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6379,7 +6383,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceGroupManager resources.
      */
-    items?: compute$InstanceGroupManager[];
+    items?: gapi$client$compute$InstanceGroupManager[];
 
     /**
      * [Output Only] The resource type, which is always compute#instanceGroupManagerList for a list of managed instance groups that exist in th regional
@@ -6434,35 +6438,35 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RegionInstanceGroupManagersAbandonInstancesRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersAbandonInstancesRequest {
     /**
      * The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$RegionInstanceGroupManagersDeleteInstancesRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersDeleteInstancesRequest {
     /**
      * The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$RegionInstanceGroupManagersListInstancesResponse {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersListInstancesResponse {
     /**
      * List of managed instances.
      */
-    managedInstances?: compute$ManagedInstance[];
+    managedInstances?: gapi$client$compute$ManagedInstance[];
   }
 
-  declare interface compute$RegionInstanceGroupManagersRecreateRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersRecreateRequest {
     /**
      * The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
      */
-    client$instances?: string[];
+    instances?: string[];
   }
 
-  declare interface compute$RegionInstanceGroupManagersSetTargetPoolsRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersSetTargetPoolsRequest {
     /**
      * Fingerprint of the target pools information, which is a hash of the contents. This field is used for optimistic locking when you update the target pool
      * entries. This field is optional.
@@ -6473,17 +6477,17 @@ declare module "gapi.client.compute" {
      * The URL of all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the
      * instances in the managed instance group.
      */
-    client$targetPools?: string[];
+    targetPools?: string[];
   }
 
-  declare interface compute$RegionInstanceGroupManagersSetTemplateRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersSetTemplateRequest {
     /**
      * URL of the InstanceTemplate resource from which all new instances will be created.
      */
     instanceTemplate?: string;
   }
 
-  declare interface compute$RegionInstanceGroupsListInstances {
+  declare interface gapi$client$compute$RegionInstanceGroupsListInstances {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6492,7 +6496,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of InstanceWithNamedPorts resources.
      */
-    items?: compute$InstanceWithNamedPorts[];
+    items?: gapi$client$compute$InstanceWithNamedPorts[];
 
     /**
      * The resource type.
@@ -6546,7 +6550,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RegionInstanceGroupsListInstancesRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupsListInstancesRequest {
     /**
      * Instances in which state should be returned. Valid options are: 'ALL', 'RUNNING'. By default, it lists all instances.
      */
@@ -6559,7 +6563,7 @@ declare module "gapi.client.compute" {
     portName?: string;
   }
 
-  declare interface compute$RegionInstanceGroupsSetNamedPortsRequest {
+  declare interface gapi$client$compute$RegionInstanceGroupsSetNamedPortsRequest {
     /**
      * The fingerprint of the named ports information for this instance group. Use this optional property to prevent conflicts when multiple users change the
      * named ports settings concurrently. Obtain the fingerprint with the instanceGroups.get method. Then, include the fingerprint in your request to ensure
@@ -6570,10 +6574,10 @@ declare module "gapi.client.compute" {
     /**
      * The list of named ports to set for this instance group.
      */
-    namedPorts?: compute$NamedPort[];
+    namedPorts?: gapi$client$compute$NamedPort[];
   }
 
-  declare interface compute$RegionList {
+  declare interface gapi$client$compute$RegionList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6582,7 +6586,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Region resources.
      */
-    items?: compute$Region[];
+    items?: gapi$client$compute$Region[];
 
     /**
      * [Output Only] Type of resource. Always compute#regionList for lists of regions.
@@ -6636,7 +6640,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ResourceCommitment {
+  declare interface gapi$client$compute$ResourceCommitment {
     /**
      * The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be
      * provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
@@ -6649,14 +6653,14 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$ResourceGroupReference {
+  declare interface gapi$client$compute$ResourceGroupReference {
     /**
      * A URI referencing one of the instance groups listed in the backend service.
      */
     group?: string;
   }
 
-  declare interface compute$Route {
+  declare interface gapi$client$compute$Route {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -6777,7 +6781,7 @@ declare module "gapi.client.compute" {
     }>;
   }
 
-  declare interface compute$RouteList {
+  declare interface gapi$client$compute$RouteList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6786,7 +6790,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Route resources.
      */
-    items?: compute$Route[];
+    items?: gapi$client$compute$Route[];
 
     /**
      * Type of resource.
@@ -6840,7 +6844,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Router {
+  declare interface gapi$client$compute$Router {
     /**
      * BGP information specific to this router.
      */
@@ -6901,7 +6905,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$RouterAggregatedList {
+  declare interface gapi$client$compute$RouterAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -6964,7 +6968,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RouterBgp {
+  declare interface gapi$client$compute$RouterBgp {
     /**
      * Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource.
      * All VPN tunnels that link to this router will have the same local ASN.
@@ -6972,7 +6976,7 @@ declare module "gapi.client.compute" {
     asn?: number;
   }
 
-  declare interface compute$RouterBgpPeer {
+  declare interface gapi$client$compute$RouterBgpPeer {
     /**
      * The priority of routes advertised to this BGP peer. In the case where there is more than one matching route of maximum length, the routes with lowest
      * priority value win.
@@ -7005,7 +7009,7 @@ declare module "gapi.client.compute" {
     peerIpAddress?: string;
   }
 
-  declare interface compute$RouterInterface {
+  declare interface gapi$client$compute$RouterInterface {
     /**
      * IP address and range of the interface. The IP range must be in the RFC3927 link-local IP space. The value must be a CIDR-formatted string, for example:
      * 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
@@ -7024,7 +7028,7 @@ declare module "gapi.client.compute" {
     name?: string;
   }
 
-  declare interface compute$RouterList {
+  declare interface gapi$client$compute$RouterList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7033,7 +7037,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Router resources.
      */
-    items?: compute$Router[];
+    items?: gapi$client$compute$Router[];
 
     /**
      * [Output Only] Type of resource. Always compute#router for routers.
@@ -7087,16 +7091,16 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$RouterStatus {
+  declare interface gapi$client$compute$RouterStatus {
     /**
      * Best routes for this router's network.
      */
-    bestRoutes?: compute$Route[];
+    bestRoutes?: gapi$client$compute$Route[];
 
     /**
      * Best routes learned by this router.
      */
-    bestRoutesForRouter?: compute$Route[];
+    bestRoutesForRouter?: gapi$client$compute$Route[];
     bgpPeerStatus?: compute$RouterStatusBgpPeerStatus[];
 
     /**
@@ -7105,11 +7109,11 @@ declare module "gapi.client.compute" {
     network?: string;
   }
 
-  declare interface compute$RouterStatusBgpPeerStatus {
+  declare interface gapi$client$compute$RouterStatusBgpPeerStatus {
     /**
      * Routes that were advertised to the remote BGP peer
      */
-    advertisedRoutes?: compute$Route[];
+    advertisedRoutes?: gapi$client$compute$Route[];
 
     /**
      * IP address of the local BGP interface.
@@ -7157,26 +7161,26 @@ declare module "gapi.client.compute" {
     uptimeSeconds?: string;
   }
 
-  declare interface compute$RouterStatusResponse {
+  declare interface gapi$client$compute$RouterStatusResponse {
     /**
      * Type of resource.
      */
     kind?: string;
-    result?: compute$RouterStatus;
+    result?: gapi$client$compute$RouterStatus;
   }
 
-  declare interface compute$RoutersPreviewResponse {
+  declare interface gapi$client$compute$RoutersPreviewResponse {
     /**
      * Preview of given router.
      */
-    resource?: compute$Router;
+    resource?: gapi$client$compute$Router;
   }
 
-  declare interface compute$RoutersScopedList {
+  declare interface gapi$client$compute$RoutersScopedList {
     /**
      * List of routers contained in this scope.
      */
-    client$routers?: compute$Router[];
+    routers?: gapi$client$compute$Router[];
 
     /**
      * Informational warning which replaces the list of routers when the list is empty.
@@ -7213,7 +7217,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$SSLHealthCheck {
+  declare interface gapi$client$compute$SSLHealthCheck {
     /**
      * The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
      */
@@ -7242,7 +7246,7 @@ declare module "gapi.client.compute" {
     response?: string;
   }
 
-  declare interface compute$Scheduling {
+  declare interface gapi$client$compute$Scheduling {
     /**
      * Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the
      * automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
@@ -7264,7 +7268,7 @@ declare module "gapi.client.compute" {
     preemptible?: boolean;
   }
 
-  declare interface compute$SerialPortOutput {
+  declare interface gapi$client$compute$SerialPortOutput {
     /**
      * [Output Only] The contents of the console output.
      */
@@ -7292,7 +7296,7 @@ declare module "gapi.client.compute" {
     start?: string;
   }
 
-  declare interface compute$ServiceAccount {
+  declare interface gapi$client$compute$ServiceAccount {
     /**
      * Email address of the service account.
      */
@@ -7304,7 +7308,7 @@ declare module "gapi.client.compute" {
     scopes?: string[];
   }
 
-  declare interface compute$Snapshot {
+  declare interface gapi$client$compute$Snapshot {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -7348,7 +7352,7 @@ declare module "gapi.client.compute" {
      * [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a
      * Windows image).
      */
-    client$licenses?: string[];
+    licenses?: string[];
 
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -7373,7 +7377,7 @@ declare module "gapi.client.compute" {
      * If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do
      * not need to provide a key to use the snapshot later.
      */
-    snapshotEncryptionKey?: compute$CustomerEncryptionKey;
+    snapshotEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The source disk used to create this snapshot.
@@ -7383,7 +7387,7 @@ declare module "gapi.client.compute" {
     /**
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    sourceDiskEncryptionKey?: compute$CustomerEncryptionKey;
+    sourceDiskEncryptionKey?: gapi$client$compute$CustomerEncryptionKey;
 
     /**
      * [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the
@@ -7409,7 +7413,7 @@ declare module "gapi.client.compute" {
     storageBytesStatus?: string;
   }
 
-  declare interface compute$SnapshotList {
+  declare interface gapi$client$compute$SnapshotList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7418,7 +7422,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Snapshot resources.
      */
-    items?: compute$Snapshot[];
+    items?: gapi$client$compute$Snapshot[];
 
     /**
      * Type of resource.
@@ -7472,7 +7476,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$SslCertificate {
+  declare interface gapi$client$compute$SslCertificate {
     /**
      * A local certificate file. The certificate must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
      * least one intermediate cert.
@@ -7517,7 +7521,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$SslCertificateList {
+  declare interface gapi$client$compute$SslCertificateList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7526,7 +7530,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of SslCertificate resources.
      */
-    items?: compute$SslCertificate[];
+    items?: gapi$client$compute$SslCertificate[];
 
     /**
      * Type of resource.
@@ -7580,7 +7584,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$Subnetwork {
+  declare interface gapi$client$compute$Subnetwork {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -7650,7 +7654,7 @@ declare module "gapi.client.compute" {
     selfLink?: string;
   }
 
-  declare interface compute$SubnetworkAggregatedList {
+  declare interface gapi$client$compute$SubnetworkAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7713,7 +7717,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$SubnetworkList {
+  declare interface gapi$client$compute$SubnetworkList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7722,7 +7726,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Subnetwork resources.
      */
-    items?: compute$Subnetwork[];
+    items?: gapi$client$compute$Subnetwork[];
 
     /**
      * [Output Only] Type of resource. Always compute#subnetworkList for lists of subnetworks.
@@ -7776,7 +7780,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$SubnetworkSecondaryRange {
+  declare interface gapi$client$compute$SubnetworkSecondaryRange {
     /**
      * The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and
      * non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported.
@@ -7790,7 +7794,7 @@ declare module "gapi.client.compute" {
     rangeName?: string;
   }
 
-  declare interface compute$SubnetworksExpandIpCidrRangeRequest {
+  declare interface gapi$client$compute$SubnetworksExpandIpCidrRangeRequest {
     /**
      * The IP (in CIDR format or netmask) of internal addresses that are legal on this Subnetwork. This range should be disjoint from other subnetworks within
      * this network. This range can only be larger than (i.e. a superset of) the range previously defined before the update.
@@ -7798,11 +7802,11 @@ declare module "gapi.client.compute" {
     ipCidrRange?: string;
   }
 
-  declare interface compute$SubnetworksScopedList {
+  declare interface gapi$client$compute$SubnetworksScopedList {
     /**
      * List of subnetworks contained in this scope.
      */
-    client$subnetworks?: compute$Subnetwork[];
+    subnetworks?: gapi$client$compute$Subnetwork[];
 
     /**
      * An informational warning that appears when the list of addresses is empty.
@@ -7839,11 +7843,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$SubnetworksSetPrivateIpGoogleAccessRequest {
+  declare interface gapi$client$compute$SubnetworksSetPrivateIpGoogleAccessRequest {
     privateIpGoogleAccess?: boolean;
   }
 
-  declare interface compute$TCPHealthCheck {
+  declare interface gapi$client$compute$TCPHealthCheck {
     /**
      * The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
      */
@@ -7872,7 +7876,7 @@ declare module "gapi.client.compute" {
     response?: string;
   }
 
-  declare interface compute$Tags {
+  declare interface gapi$client$compute$Tags {
     /**
      * Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is
      * initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint
@@ -7888,7 +7892,7 @@ declare module "gapi.client.compute" {
     items?: string[];
   }
 
-  declare interface compute$TargetHttpProxy {
+  declare interface gapi$client$compute$TargetHttpProxy {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -7927,7 +7931,7 @@ declare module "gapi.client.compute" {
     urlMap?: string;
   }
 
-  declare interface compute$TargetHttpProxyList {
+  declare interface gapi$client$compute$TargetHttpProxyList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -7936,7 +7940,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetHttpProxy resources.
      */
-    items?: compute$TargetHttpProxy[];
+    items?: gapi$client$compute$TargetHttpProxy[];
 
     /**
      * Type of resource. Always compute#targetHttpProxyList for lists of target HTTP proxies.
@@ -7990,14 +7994,14 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetHttpsProxiesSetSslCertificatesRequest {
+  declare interface gapi$client$compute$TargetHttpsProxiesSetSslCertificatesRequest {
     /**
      * New set of SslCertificate resources to associate with this TargetHttpsProxy resource. Currently exactly one SslCertificate resource must be specified.
      */
-    client$sslCertificates?: string[];
+    sslCertificates?: string[];
   }
 
-  declare interface compute$TargetHttpsProxy {
+  declare interface gapi$client$compute$TargetHttpsProxy {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -8034,7 +8038,7 @@ declare module "gapi.client.compute" {
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. Currently, exactly one SSL certificate
      * must be specified.
      */
-    client$sslCertificates?: string[];
+    sslCertificates?: string[];
 
     /**
      * A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are
@@ -8046,7 +8050,7 @@ declare module "gapi.client.compute" {
     urlMap?: string;
   }
 
-  declare interface compute$TargetHttpsProxyList {
+  declare interface gapi$client$compute$TargetHttpsProxyList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8055,7 +8059,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetHttpsProxy resources.
      */
-    items?: compute$TargetHttpsProxy[];
+    items?: gapi$client$compute$TargetHttpsProxy[];
 
     /**
      * Type of resource. Always compute#targetHttpsProxyList for lists of target HTTPS proxies.
@@ -8109,7 +8113,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetInstance {
+  declare interface gapi$client$compute$TargetInstance {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -8162,7 +8166,7 @@ declare module "gapi.client.compute" {
     zone?: string;
   }
 
-  declare interface compute$TargetInstanceAggregatedList {
+  declare interface gapi$client$compute$TargetInstanceAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8225,7 +8229,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetInstanceList {
+  declare interface gapi$client$compute$TargetInstanceList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8234,7 +8238,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetInstance resources.
      */
-    items?: compute$TargetInstance[];
+    items?: gapi$client$compute$TargetInstance[];
 
     /**
      * Type of resource.
@@ -8288,11 +8292,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetInstancesScopedList {
+  declare interface gapi$client$compute$TargetInstancesScopedList {
     /**
      * List of target instances contained in this scope.
      */
-    client$targetInstances?: compute$TargetInstance[];
+    targetInstances?: gapi$client$compute$TargetInstance[];
 
     /**
      * Informational warning which replaces the list of addresses when the list is empty.
@@ -8329,7 +8333,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetPool {
+  declare interface gapi$client$compute$TargetPool {
     /**
      * This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its failoverRatio field is properly
      * set to a value between [0, 1].
@@ -8369,7 +8373,7 @@ declare module "gapi.client.compute" {
      * The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. An empty list
      * means all member instances will be considered healthy at all times. Only HttpHealthChecks are supported. Only one health check may be specified.
      */
-    client$healthChecks?: string[];
+    healthChecks?: string[];
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -8379,7 +8383,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
      */
-    client$instances?: string[];
+    instances?: string[];
 
     /**
      * [Output Only] Type of the resource. Always compute#targetPool for target pools.
@@ -8413,7 +8417,7 @@ declare module "gapi.client.compute" {
     sessionAffinity?: string;
   }
 
-  declare interface compute$TargetPoolAggregatedList {
+  declare interface gapi$client$compute$TargetPoolAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8476,8 +8480,8 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetPoolInstanceHealth {
-    healthStatus?: compute$HealthStatus[];
+  declare interface gapi$client$compute$TargetPoolInstanceHealth {
+    healthStatus?: gapi$client$compute$HealthStatus[];
 
     /**
      * [Output Only] Type of resource. Always compute#targetPoolInstanceHealth when checking the health of an instance.
@@ -8485,7 +8489,7 @@ declare module "gapi.client.compute" {
     kind?: string;
   }
 
-  declare interface compute$TargetPoolList {
+  declare interface gapi$client$compute$TargetPoolList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8494,7 +8498,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetPool resources.
      */
-    items?: compute$TargetPool[];
+    items?: gapi$client$compute$TargetPool[];
 
     /**
      * [Output Only] Type of resource. Always compute#targetPoolList for lists of target pools.
@@ -8548,45 +8552,45 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetPoolsAddHealthCheckRequest {
+  declare interface gapi$client$compute$TargetPoolsAddHealthCheckRequest {
     /**
      * The HttpHealthCheck to add to the target pool.
      */
-    client$healthChecks?: compute$HealthCheckReference[];
+    healthChecks?: gapi$client$compute$HealthCheckReference[];
   }
 
-  declare interface compute$TargetPoolsAddInstanceRequest {
+  declare interface gapi$client$compute$TargetPoolsAddInstanceRequest {
     /**
      * A full or partial URL to an instance to add to this target pool. This can be a full or partial URL. For example, the following are valid URLs:
      * - https://www.googleapis.com/compute/v1/projects/project-id/zones/zone/instances/instance-name
      * - projects/project-id/zones/zone/instances/instance-name
      * - zones/zone/instances/instance-name
      */
-    client$instances?: compute$InstanceReference[];
+    instances?: gapi$client$compute$InstanceReference[];
   }
 
-  declare interface compute$TargetPoolsRemoveHealthCheckRequest {
+  declare interface gapi$client$compute$TargetPoolsRemoveHealthCheckRequest {
     /**
      * Health check URL to be removed. This can be a full or valid partial URL. For example, the following are valid URLs:
      * - https://www.googleapis.com/compute/beta/projects/project/global/httpHealthChecks/health-check
      * - projects/project/global/httpHealthChecks/health-check
      * - global/httpHealthChecks/health-check
      */
-    client$healthChecks?: compute$HealthCheckReference[];
+    healthChecks?: gapi$client$compute$HealthCheckReference[];
   }
 
-  declare interface compute$TargetPoolsRemoveInstanceRequest {
+  declare interface gapi$client$compute$TargetPoolsRemoveInstanceRequest {
     /**
      * URLs of the instances to be removed from target pool.
      */
-    client$instances?: compute$InstanceReference[];
+    instances?: gapi$client$compute$InstanceReference[];
   }
 
-  declare interface compute$TargetPoolsScopedList {
+  declare interface gapi$client$compute$TargetPoolsScopedList {
     /**
      * List of target pools contained in this scope.
      */
-    client$targetPools?: compute$TargetPool[];
+    targetPools?: gapi$client$compute$TargetPool[];
 
     /**
      * Informational warning which replaces the list of addresses when the list is empty.
@@ -8623,32 +8627,32 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetReference {
+  declare interface gapi$client$compute$TargetReference {
     target?: string;
   }
 
-  declare interface compute$TargetSslProxiesSetBackendServiceRequest {
+  declare interface gapi$client$compute$TargetSslProxiesSetBackendServiceRequest {
     /**
      * The URL of the new BackendService resource for the targetSslProxy.
      */
     service?: string;
   }
 
-  declare interface compute$TargetSslProxiesSetProxyHeaderRequest {
+  declare interface gapi$client$compute$TargetSslProxiesSetProxyHeaderRequest {
     /**
      * The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are allowed.
      */
     proxyHeader?: string;
   }
 
-  declare interface compute$TargetSslProxiesSetSslCertificatesRequest {
+  declare interface gapi$client$compute$TargetSslProxiesSetSslCertificatesRequest {
     /**
      * New set of URLs to SslCertificate resources to associate with this TargetSslProxy. Currently exactly one ssl certificate must be specified.
      */
-    client$sslCertificates?: string[];
+    sslCertificates?: string[];
   }
 
-  declare interface compute$TargetSslProxy {
+  declare interface gapi$client$compute$TargetSslProxy {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -8694,10 +8698,10 @@ declare module "gapi.client.compute" {
     /**
      * URLs to SslCertificate resources that are used to authenticate connections to Backends. Currently exactly one SSL certificate must be specified.
      */
-    client$sslCertificates?: string[];
+    sslCertificates?: string[];
   }
 
-  declare interface compute$TargetSslProxyList {
+  declare interface gapi$client$compute$TargetSslProxyList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8706,7 +8710,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetSslProxy resources.
      */
-    items?: compute$TargetSslProxy[];
+    items?: gapi$client$compute$TargetSslProxy[];
 
     /**
      * Type of resource.
@@ -8760,21 +8764,21 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetTcpProxiesSetBackendServiceRequest {
+  declare interface gapi$client$compute$TargetTcpProxiesSetBackendServiceRequest {
     /**
      * The URL of the new BackendService resource for the targetTcpProxy.
      */
     service?: string;
   }
 
-  declare interface compute$TargetTcpProxiesSetProxyHeaderRequest {
+  declare interface gapi$client$compute$TargetTcpProxiesSetProxyHeaderRequest {
     /**
      * The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are allowed.
      */
     proxyHeader?: string;
   }
 
-  declare interface compute$TargetTcpProxy {
+  declare interface gapi$client$compute$TargetTcpProxy {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -8818,7 +8822,7 @@ declare module "gapi.client.compute" {
     service?: string;
   }
 
-  declare interface compute$TargetTcpProxyList {
+  declare interface gapi$client$compute$TargetTcpProxyList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -8827,7 +8831,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetTcpProxy resources.
      */
-    items?: compute$TargetTcpProxy[];
+    items?: gapi$client$compute$TargetTcpProxy[];
 
     /**
      * Type of resource.
@@ -8881,7 +8885,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetVpnGateway {
+  declare interface gapi$client$compute$TargetVpnGateway {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -8896,7 +8900,7 @@ declare module "gapi.client.compute" {
      * [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated to a VPN
      * gateway.
      */
-    client$forwardingRules?: string[];
+    forwardingRules?: string[];
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -8941,7 +8945,7 @@ declare module "gapi.client.compute" {
     tunnels?: string[];
   }
 
-  declare interface compute$TargetVpnGatewayAggregatedList {
+  declare interface gapi$client$compute$TargetVpnGatewayAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9004,7 +9008,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetVpnGatewayList {
+  declare interface gapi$client$compute$TargetVpnGatewayList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9013,7 +9017,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of TargetVpnGateway resources.
      */
-    items?: compute$TargetVpnGateway[];
+    items?: gapi$client$compute$TargetVpnGateway[];
 
     /**
      * [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN gateways.
@@ -9067,11 +9071,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TargetVpnGatewaysScopedList {
+  declare interface gapi$client$compute$TargetVpnGatewaysScopedList {
     /**
      * [Output Only] List of target vpn gateways contained in this scope.
      */
-    client$targetVpnGateways?: compute$TargetVpnGateway[];
+    targetVpnGateways?: gapi$client$compute$TargetVpnGateway[];
 
     /**
      * [Output Only] Informational warning which replaces the list of addresses when the list is empty.
@@ -9108,14 +9112,14 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$TestFailure {
+  declare interface gapi$client$compute$TestFailure {
     actualService?: string;
     expectedService?: string;
     host?: string;
     path?: string;
   }
 
-  declare interface compute$UrlMap {
+  declare interface gapi$client$compute$UrlMap {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -9140,7 +9144,7 @@ declare module "gapi.client.compute" {
     /**
      * The list of HostRules to use against the URL.
      */
-    hostRules?: compute$HostRule[];
+    hostRules?: gapi$client$compute$HostRule[];
 
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -9162,7 +9166,7 @@ declare module "gapi.client.compute" {
     /**
      * The list of named PathMatchers to use against the URL.
      */
-    pathMatchers?: compute$PathMatcher[];
+    pathMatchers?: gapi$client$compute$PathMatcher[];
 
     /**
      * [Output Only] Server-defined URL for the resource.
@@ -9175,7 +9179,7 @@ declare module "gapi.client.compute" {
     tests?: compute$UrlMapTest[];
   }
 
-  declare interface compute$UrlMapList {
+  declare interface gapi$client$compute$UrlMapList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9184,7 +9188,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of UrlMap resources.
      */
-    items?: compute$UrlMap[];
+    items?: gapi$client$compute$UrlMap[];
 
     /**
      * Type of resource.
@@ -9238,11 +9242,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$UrlMapReference {
+  declare interface gapi$client$compute$UrlMapReference {
     urlMap?: string;
   }
 
-  declare interface compute$UrlMapTest {
+  declare interface gapi$client$compute$UrlMapTest {
     /**
      * Description of this test case.
      */
@@ -9264,14 +9268,14 @@ declare module "gapi.client.compute" {
     service?: string;
   }
 
-  declare interface compute$UrlMapValidationResult {
+  declare interface gapi$client$compute$UrlMapValidationResult {
     loadErrors?: string[];
 
     /**
      * Whether the given UrlMap can be successfully loaded. If false, 'loadErrors' indicates the reasons.
      */
     loadSucceeded?: boolean;
-    testFailures?: compute$TestFailure[];
+    testFailures?: gapi$client$compute$TestFailure[];
 
     /**
      * If successfully loaded, this field indicates whether the test passed. If false, 'testFailures's indicate the reason of failure.
@@ -9279,18 +9283,18 @@ declare module "gapi.client.compute" {
     testPassed?: boolean;
   }
 
-  declare interface compute$UrlMapsValidateRequest {
+  declare interface gapi$client$compute$UrlMapsValidateRequest {
     /**
      * Content of the UrlMap to be validated.
      */
-    resource?: compute$UrlMap;
+    resource?: gapi$client$compute$UrlMap;
   }
 
-  declare interface compute$UrlMapsValidateResponse {
-    result?: compute$UrlMapValidationResult;
+  declare interface gapi$client$compute$UrlMapsValidateResponse {
+    result?: gapi$client$compute$UrlMapValidationResult;
   }
 
-  declare interface compute$UsageExportLocation {
+  declare interface gapi$client$compute$UsageExportLocation {
     /**
      * The name of an existing bucket in Cloud Storage where the usage report object is stored. The Google Service Account is granted write access to this
      * bucket. This can either be the bucket name by itself, such as example-bucket, or the bucket name with gs:// or https://storage.googleapis.com/ in front
@@ -9306,7 +9310,7 @@ declare module "gapi.client.compute" {
     reportNamePrefix?: string;
   }
 
-  declare interface compute$VpnTunnel {
+  declare interface gapi$client$compute$VpnTunnel {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -9397,7 +9401,7 @@ declare module "gapi.client.compute" {
     targetVpnGateway?: string;
   }
 
-  declare interface compute$VpnTunnelAggregatedList {
+  declare interface gapi$client$compute$VpnTunnelAggregatedList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9460,7 +9464,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$VpnTunnelList {
+  declare interface gapi$client$compute$VpnTunnelList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9469,7 +9473,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of VpnTunnel resources.
      */
-    items?: compute$VpnTunnel[];
+    items?: gapi$client$compute$VpnTunnel[];
 
     /**
      * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
@@ -9523,11 +9527,11 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$VpnTunnelsScopedList {
+  declare interface gapi$client$compute$VpnTunnelsScopedList {
     /**
      * List of vpn tunnels contained in this scope.
      */
-    client$vpnTunnels?: compute$VpnTunnel[];
+    vpnTunnels?: gapi$client$compute$VpnTunnel[];
 
     /**
      * Informational warning which replaces the list of addresses when the list is empty.
@@ -9564,7 +9568,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$XpnHostList {
+  declare interface gapi$client$compute$XpnHostList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9573,7 +9577,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] A list of shared VPC host project URLs.
      */
-    items?: compute$Project[];
+    items?: gapi$client$compute$Project[];
 
     /**
      * [Output Only] Type of resource. Always compute#xpnHostList for lists of shared VPC hosts.
@@ -9627,7 +9631,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$XpnResourceId {
+  declare interface gapi$client$compute$XpnResourceId {
     /**
      * The ID of the service resource. In the case of projects, this field matches the project ID (e.g., my-project), not the project number (e.g., 12345678).
      */
@@ -9639,7 +9643,7 @@ declare module "gapi.client.compute" {
     type?: string;
   }
 
-  declare interface compute$Zone {
+  declare interface gapi$client$compute$Zone {
     /**
      * [Output Only] Available cpu/platform selections for the zone.
      */
@@ -9653,7 +9657,7 @@ declare module "gapi.client.compute" {
     /**
      * [Output Only] The deprecation status associated with this zone.
      */
-    deprecated?: compute$DeprecationStatus;
+    deprecated?: gapi$client$compute$DeprecationStatus;
 
     /**
      * [Output Only] Textual description of the resource.
@@ -9691,7 +9695,7 @@ declare module "gapi.client.compute" {
     status?: string;
   }
 
-  declare interface compute$ZoneList {
+  declare interface gapi$client$compute$ZoneList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -9700,7 +9704,7 @@ declare module "gapi.client.compute" {
     /**
      * A list of Zone resources.
      */
-    items?: compute$Zone[];
+    items?: gapi$client$compute$Zone[];
 
     /**
      * Type of resource.
@@ -9754,7 +9758,7 @@ declare module "gapi.client.compute" {
     };
   }
 
-  declare interface compute$ZoneSetLabelsRequest {
+  declare interface gapi$client$compute$ZoneSetLabelsRequest {
     /**
      * The fingerprint of the previous set of labels for this resource, used to detect conflicts. The fingerprint is initially generated by Compute Engine and
      * changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.
@@ -9768,7 +9772,7 @@ declare module "gapi.client.compute" {
     labels?: Record<string, string>;
   }
 
-  declare interface compute$AcceleratorTypesResource {
+  declare interface gapi$client$compute$AcceleratorTypesResource {
     /**
      * Retrieves an aggregated list of accelerator types.
      */
@@ -9853,7 +9857,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$AcceleratorTypeAggregatedList>;
+    }): Request<gapi$client$compute$AcceleratorTypeAggregatedList>;
 
     /**
      * Returns the specified accelerator type. Get a list of available accelerator types by making a list() request.
@@ -9909,7 +9913,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$AcceleratorType>;
+    }): Request<gapi$client$compute$AcceleratorType>;
 
     /**
      * Retrieves a list of accelerator types available to the specified project.
@@ -10000,10 +10004,10 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$AcceleratorTypeList>;
+    }): Request<gapi$client$compute$AcceleratorTypeList>;
   }
 
-  declare interface compute$AddressesResource {
+  declare interface gapi$client$compute$AddressesResource {
     /**
      * Retrieves an aggregated list of addresses.
      */
@@ -10088,7 +10092,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$AddressAggregatedList>;
+    }): Request<gapi$client$compute$AddressAggregatedList>;
 
     /**
      * Deletes the specified address resource.
@@ -10156,7 +10160,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified address resource.
@@ -10212,7 +10216,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Address>;
+    }): Request<gapi$client$compute$Address>;
 
     /**
      * Creates an address resource in the specified project using the data included in the request.
@@ -10275,7 +10279,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of addresses contained within the specified region.
@@ -10366,10 +10370,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$AddressList>;
+    }): Request<gapi$client$compute$AddressList>;
   }
 
-  declare interface compute$AutoscalersResource {
+  declare interface gapi$client$compute$AutoscalersResource {
     /**
      * Retrieves an aggregated list of autoscalers.
      */
@@ -10454,7 +10458,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$AutoscalerAggregatedList>;
+    }): Request<gapi$client$compute$AutoscalerAggregatedList>;
 
     /**
      * Deletes the specified autoscaler.
@@ -10522,7 +10526,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified autoscaler resource. Get a list of available autoscalers by making a list() request.
@@ -10578,7 +10582,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Autoscaler>;
+    }): Request<gapi$client$compute$Autoscaler>;
 
     /**
      * Creates an autoscaler in the specified project using the data included in the request.
@@ -10641,7 +10645,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of autoscalers contained within the specified zone.
@@ -10732,7 +10736,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$AutoscalerList>;
+    }): Request<gapi$client$compute$AutoscalerList>;
 
     /**
      * Updates an autoscaler in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge
@@ -10801,7 +10805,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates an autoscaler in the specified project using the data included in the request.
@@ -10869,10 +10873,10 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$BackendBucketsResource {
+  declare interface gapi$client$compute$BackendBucketsResource {
     /**
      * Deletes the specified BackendBucket resource.
      */
@@ -10934,7 +10938,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified BackendBucket resource. Get a list of available backend buckets by making a list() request.
@@ -10985,7 +10989,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendBucket>;
+    }): Request<gapi$client$compute$BackendBucket>;
 
     /**
      * Creates a BackendBucket resource in the specified project using the data included in the request.
@@ -11043,7 +11047,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of BackendBucket resources available to the specified project.
@@ -11129,7 +11133,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendBucketList>;
+    }): Request<gapi$client$compute$BackendBucketList>;
 
     /**
      * Updates the specified BackendBucket resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch
@@ -11193,7 +11197,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates the specified BackendBucket resource with the data included in the request.
@@ -11256,10 +11260,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$BackendServicesResource {
+  declare interface gapi$client$compute$BackendServicesResource {
     /**
      * Retrieves the list of all BackendService resources, regional and global, available to the specified project.
      */
@@ -11344,7 +11348,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendServiceAggregatedList>;
+    }): Request<gapi$client$compute$BackendServiceAggregatedList>;
 
     /**
      * Deletes the specified BackendService resource.
@@ -11407,7 +11411,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified BackendService resource. Get a list of available backend services by making a list() request.
@@ -11458,7 +11462,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendService>;
+    }): Request<gapi$client$compute$BackendService>;
 
     /**
      * Gets the most recent health check results for this BackendService.
@@ -11505,7 +11509,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendServiceGroupHealth>;
+    }): Request<gapi$client$compute$BackendServiceGroupHealth>;
 
     /**
      * Creates a BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to
@@ -11564,7 +11568,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of BackendService resources available to the specified project.
@@ -11650,7 +11654,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendServiceList>;
+    }): Request<gapi$client$compute$BackendServiceList>;
 
     /**
      * Patches the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when
@@ -11715,7 +11719,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when
@@ -11779,10 +11783,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$DiskTypesResource {
+  declare interface gapi$client$compute$DiskTypesResource {
     /**
      * Retrieves an aggregated list of disk types.
      */
@@ -11867,7 +11871,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$DiskTypeAggregatedList>;
+    }): Request<gapi$client$compute$DiskTypeAggregatedList>;
 
     /**
      * Returns the specified disk type. Get a list of available disk types by making a list() request.
@@ -11923,7 +11927,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$DiskType>;
+    }): Request<gapi$client$compute$DiskType>;
 
     /**
      * Retrieves a list of disk types available to the specified project.
@@ -12014,10 +12018,10 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$DiskTypeList>;
+    }): Request<gapi$client$compute$DiskTypeList>;
   }
 
-  declare interface compute$DisksResource {
+  declare interface gapi$client$compute$DisksResource {
     /**
      * Retrieves an aggregated list of persistent disks.
      */
@@ -12102,7 +12106,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$DiskAggregatedList>;
+    }): Request<gapi$client$compute$DiskAggregatedList>;
 
     /**
      * Creates a snapshot of a specified persistent disk.
@@ -12171,7 +12175,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any
@@ -12240,7 +12244,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns a specified persistent disk. Get a list of available persistent disks by making a list() request.
@@ -12296,7 +12300,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Disk>;
+    }): Request<gapi$client$compute$Disk>;
 
     /**
      * Creates a persistent disk in the specified project using the data in the request. You can create a disk with a sourceImage, a sourceSnapshot, or create
@@ -12366,7 +12370,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of persistent disks contained within the specified zone.
@@ -12457,7 +12461,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$DiskList>;
+    }): Request<gapi$client$compute$DiskList>;
 
     /**
      * Resizes the specified persistent disk.
@@ -12525,7 +12529,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the labels on a disk. To learn more about labels, read the Labeling Resources documentation.
@@ -12593,10 +12597,10 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$FirewallsResource {
+  declare interface gapi$client$compute$FirewallsResource {
     /**
      * Deletes the specified firewall.
      */
@@ -12658,7 +12662,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified firewall.
@@ -12709,7 +12713,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Firewall>;
+    }): Request<gapi$client$compute$Firewall>;
 
     /**
      * Creates a firewall rule in the specified project using the data included in the request.
@@ -12767,7 +12771,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of firewall rules available to the specified project.
@@ -12853,7 +12857,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$FirewallList>;
+    }): Request<gapi$client$compute$FirewallList>;
 
     /**
      * Updates the specified firewall rule with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format
@@ -12917,7 +12921,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates the specified firewall rule with the data included in the request. Using PUT method, can only update following fields of firewall rule:
@@ -12981,10 +12985,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$ForwardingRulesResource {
+  declare interface gapi$client$compute$ForwardingRulesResource {
     /**
      * Retrieves an aggregated list of forwarding rules.
      */
@@ -13069,7 +13073,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ForwardingRuleAggregatedList>;
+    }): Request<gapi$client$compute$ForwardingRuleAggregatedList>;
 
     /**
      * Deletes the specified ForwardingRule resource.
@@ -13137,7 +13141,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified ForwardingRule resource.
@@ -13193,7 +13197,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ForwardingRule>;
+    }): Request<gapi$client$compute$ForwardingRule>;
 
     /**
      * Creates a ForwardingRule resource in the specified project and region using the data included in the request.
@@ -13256,7 +13260,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of ForwardingRule resources available to the specified project and region.
@@ -13347,7 +13351,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ForwardingRuleList>;
+    }): Request<gapi$client$compute$ForwardingRuleList>;
 
     /**
      * Changes target URL for forwarding rule. The new target should be of the same type as the old target.
@@ -13415,10 +13419,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$GlobalAddressesResource {
+  declare interface gapi$client$compute$GlobalAddressesResource {
     /**
      * Deletes the specified address resource.
      */
@@ -13480,7 +13484,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified address resource. Get a list of available addresses by making a list() request.
@@ -13531,7 +13535,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Address>;
+    }): Request<gapi$client$compute$Address>;
 
     /**
      * Creates an address resource in the specified project using the data included in the request.
@@ -13589,7 +13593,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of global addresses.
@@ -13675,10 +13679,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$AddressList>;
+    }): Request<gapi$client$compute$AddressList>;
   }
 
-  declare interface compute$GlobalForwardingRulesResource {
+  declare interface gapi$client$compute$GlobalForwardingRulesResource {
     /**
      * Deletes the specified GlobalForwardingRule resource.
      */
@@ -13740,7 +13744,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by making a list() request.
@@ -13791,7 +13795,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ForwardingRule>;
+    }): Request<gapi$client$compute$ForwardingRule>;
 
     /**
      * Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
@@ -13849,7 +13853,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of GlobalForwardingRule resources available to the specified project.
@@ -13935,7 +13939,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ForwardingRuleList>;
+    }): Request<gapi$client$compute$ForwardingRuleList>;
 
     /**
      * Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type as the old target.
@@ -13998,10 +14002,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$GlobalOperationsResource {
+  declare interface gapi$client$compute$GlobalOperationsResource {
     /**
      * Retrieves an aggregated list of all operations.
      */
@@ -14086,7 +14090,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$OperationAggregatedList>;
+    }): Request<gapi$client$compute$OperationAggregatedList>;
 
     /**
      * Deletes the specified Operations resource.
@@ -14188,7 +14192,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of Operation resources contained within the specified project.
@@ -14274,10 +14278,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$OperationList>;
+    }): Request<gapi$client$compute$OperationList>;
   }
 
-  declare interface compute$HealthChecksResource {
+  declare interface gapi$client$compute$HealthChecksResource {
     /**
      * Deletes the specified HealthCheck resource.
      */
@@ -14339,7 +14343,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified HealthCheck resource. Get a list of available health checks by making a list() request.
@@ -14390,7 +14394,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HealthCheck>;
+    }): Request<gapi$client$compute$HealthCheck>;
 
     /**
      * Creates a HealthCheck resource in the specified project using the data included in the request.
@@ -14448,7 +14452,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of HealthCheck resources available to the specified project.
@@ -14534,7 +14538,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HealthCheckList>;
+    }): Request<gapi$client$compute$HealthCheckList>;
 
     /**
      * Updates a HealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON
@@ -14598,7 +14602,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates a HealthCheck resource in the specified project using the data included in the request.
@@ -14661,10 +14665,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$HttpHealthChecksResource {
+  declare interface gapi$client$compute$HttpHealthChecksResource {
     /**
      * Deletes the specified HttpHealthCheck resource.
      */
@@ -14726,7 +14730,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by making a list() request.
@@ -14777,7 +14781,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HttpHealthCheck>;
+    }): Request<gapi$client$compute$HttpHealthCheck>;
 
     /**
      * Creates a HttpHealthCheck resource in the specified project using the data included in the request.
@@ -14835,7 +14839,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of HttpHealthCheck resources available to the specified project.
@@ -14921,7 +14925,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HttpHealthCheckList>;
+    }): Request<gapi$client$compute$HttpHealthCheckList>;
 
     /**
      * Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the
@@ -14985,7 +14989,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates a HttpHealthCheck resource in the specified project using the data included in the request.
@@ -15048,10 +15052,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$HttpsHealthChecksResource {
+  declare interface gapi$client$compute$HttpsHealthChecksResource {
     /**
      * Deletes the specified HttpsHealthCheck resource.
      */
@@ -15113,7 +15117,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by making a list() request.
@@ -15164,7 +15168,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HttpsHealthCheck>;
+    }): Request<gapi$client$compute$HttpsHealthCheck>;
 
     /**
      * Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
@@ -15222,7 +15226,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of HttpsHealthCheck resources available to the specified project.
@@ -15308,7 +15312,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$HttpsHealthCheckList>;
+    }): Request<gapi$client$compute$HttpsHealthCheckList>;
 
     /**
      * Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the
@@ -15372,7 +15376,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates a HttpsHealthCheck resource in the specified project using the data included in the request.
@@ -15435,10 +15439,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$ImagesResource {
+  declare interface gapi$client$compute$ImagesResource {
     /**
      * Deletes the specified image.
      */
@@ -15500,7 +15504,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the deprecation status of an image.
@@ -15565,7 +15569,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified image. Get a list of available images by making a list() request.
@@ -15616,7 +15620,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Image>;
+    }): Request<gapi$client$compute$Image>;
 
     /**
      * Returns the latest image that is part of an image family and is not deprecated.
@@ -15667,7 +15671,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Image>;
+    }): Request<gapi$client$compute$Image>;
 
     /**
      * Creates an image in the specified project using the data included in the request.
@@ -15730,7 +15734,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method
@@ -15818,7 +15822,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ImageList>;
+    }): Request<gapi$client$compute$ImageList>;
 
     /**
      * Sets the labels on an image. To learn more about labels, read the Labeling Resources documentation.
@@ -15869,10 +15873,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$InstanceGroupManagersResource {
+  declare interface gapi$client$compute$InstanceGroupManagersResource {
     /**
      * Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it
      * does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed
@@ -15947,7 +15951,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of managed instance groups and groups them by zone.
@@ -16033,7 +16037,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceGroupManagerAggregatedList>;
+    }): Request<gapi$client$compute$InstanceGroupManagerAggregatedList>;
 
     /**
      * Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service.
@@ -16102,7 +16106,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which
@@ -16178,7 +16182,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns all of the details about the specified managed instance group. Get a list of available managed instance groups by making a list() request.
@@ -16234,7 +16238,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroupManager>;
+    }): Request<gapi$client$compute$InstanceGroupManager>;
 
     /**
      * Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create
@@ -16301,7 +16305,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where you want to create the managed instance group.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of managed instance groups that are contained within the specified project and zone.
@@ -16392,7 +16396,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroupManagerList>;
+    }): Request<gapi$client$compute$InstanceGroupManagerList>;
 
     /**
      * Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed
@@ -16454,7 +16458,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroupManagersListManagedInstancesResponse>;
+    }): Request<gapi$client$compute$InstanceGroupManagersListManagedInstancesResponse>;
 
     /**
      * Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current
@@ -16529,7 +16533,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the
@@ -16608,7 +16612,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change
@@ -16677,7 +16681,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the
@@ -16747,10 +16751,10 @@ declare module "gapi.client.compute" {
        * The name of the zone where the managed instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$InstanceGroupsResource {
+  declare interface gapi$client$compute$InstanceGroupsResource {
     /**
      * Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork. Read
      * Adding instances for more information.
@@ -16818,7 +16822,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of instance groups and sorts them by zone.
@@ -16904,7 +16908,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceGroupAggregatedList>;
+    }): Request<gapi$client$compute$InstanceGroupAggregatedList>;
 
     /**
      * Deletes the specified instance group. The instances in the group are not deleted. Note that instance group must not belong to a backend service. Read
@@ -16973,7 +16977,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified instance group. Get a list of available instance groups by making a list() request.
@@ -17029,7 +17033,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroup>;
+    }): Request<gapi$client$compute$InstanceGroup>;
 
     /**
      * Creates an instance group in the specified project using the parameters that are included in the request.
@@ -17092,7 +17096,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where you want to create the instance group.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of instance groups that are located in the specified project and zone.
@@ -17183,7 +17187,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroupList>;
+    }): Request<gapi$client$compute$InstanceGroupList>;
 
     /**
      * Lists the instances in the specified instance group.
@@ -17279,7 +17283,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$InstanceGroupsListInstances>;
+    }): Request<gapi$client$compute$InstanceGroupsListInstances>;
 
     /**
      * Removes one or more instances from the specified instance group, but does not delete those instances.
@@ -17350,7 +17354,7 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the named ports for the specified instance group.
@@ -17418,10 +17422,10 @@ declare module "gapi.client.compute" {
        * The name of the zone where the instance group is located.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$InstanceTemplatesResource {
+  declare interface gapi$client$compute$InstanceTemplatesResource {
     /**
      * Deletes the specified instance template. If you delete an instance template that is being referenced from another instance group, the instance group
      * will not be able to create or recreate virtual machine instances. Deleting an instance template is permanent and cannot be undone.
@@ -17484,7 +17488,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified instance template. Get a list of available instance templates by making a list() request.
@@ -17535,7 +17539,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceTemplate>;
+    }): Request<gapi$client$compute$InstanceTemplate>;
 
     /**
      * Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an
@@ -17594,7 +17598,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of instance templates that are contained within the specified project and zone.
@@ -17680,10 +17684,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceTemplateList>;
+    }): Request<gapi$client$compute$InstanceTemplateList>;
   }
 
-  declare interface compute$InstancesResource {
+  declare interface gapi$client$compute$InstancesResource {
     /**
      * Adds an access config to an instance's network interface.
      */
@@ -17755,7 +17759,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves aggregated list of instances.
@@ -17841,7 +17845,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceAggregatedList>;
+    }): Request<gapi$client$compute$InstanceAggregatedList>;
 
     /**
      * Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a
@@ -17910,7 +17914,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Deletes the specified Instance resource. For more information, see Stopping or Deleting an Instance.
@@ -17978,7 +17982,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Deletes an access config from an instance's network interface.
@@ -18056,7 +18060,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Detaches a disk from an instance.
@@ -18129,7 +18133,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified Instance resource. Get a list of available instances by making a list() request.
@@ -18185,7 +18189,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Instance>;
+    }): Request<gapi$client$compute$Instance>;
 
     /**
      * Returns the specified instance's serial port output.
@@ -18252,7 +18256,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$SerialPortOutput>;
+    }): Request<gapi$client$compute$SerialPortOutput>;
 
     /**
      * Creates an instance resource in the specified project using the data included in the request.
@@ -18315,7 +18319,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of instances contained within the specified zone.
@@ -18406,7 +18410,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$InstanceList>;
+    }): Request<gapi$client$compute$InstanceList>;
 
     /**
      * Performs a reset on the instance. For more information, see Resetting an instance.
@@ -18474,7 +18478,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the auto-delete flag for a disk attached to an instance.
@@ -18552,7 +18556,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets labels on an instance. To learn more about labels, read the Labeling Resources documentation.
@@ -18620,7 +18624,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the number and/or type of accelerator for a stopped instance to the values specified in the request.
@@ -18688,7 +18692,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the machine type for a stopped instance to the machine type specified in the request.
@@ -18756,7 +18760,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets metadata for the specified instance to the data included in the request.
@@ -18824,7 +18828,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the minimum CPU platform that this instance should use. This method can only be called on a stopped instance. For more information, read
@@ -18893,7 +18897,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets an instance's scheduling options.
@@ -18961,7 +18965,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the service account on the instance. For more information, read Changing the service account and access scopes for an instance.
@@ -19029,7 +19033,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets tags for the specified instance to the data included in the request.
@@ -19097,7 +19101,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
@@ -19165,7 +19169,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
@@ -19233,7 +19237,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute,
@@ -19303,10 +19307,10 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$LicensesResource {
+  declare interface gapi$client$compute$LicensesResource {
     /**
      * Returns the specified License resource.
      */
@@ -19356,10 +19360,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$License>;
+    }): Request<gapi$client$compute$License>;
   }
 
-  declare interface compute$MachineTypesResource {
+  declare interface gapi$client$compute$MachineTypesResource {
     /**
      * Retrieves an aggregated list of machine types.
      */
@@ -19444,7 +19448,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$MachineTypeAggregatedList>;
+    }): Request<gapi$client$compute$MachineTypeAggregatedList>;
 
     /**
      * Returns the specified machine type. Get a list of available machine types by making a list() request.
@@ -19500,7 +19504,7 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$MachineType>;
+    }): Request<gapi$client$compute$MachineType>;
 
     /**
      * Retrieves a list of machine types available to the specified project.
@@ -19591,10 +19595,10 @@ declare module "gapi.client.compute" {
        * The name of the zone for this request.
        */
       zone: string
-    }): Request<compute$MachineTypeList>;
+    }): Request<gapi$client$compute$MachineTypeList>;
   }
 
-  declare interface compute$NetworksResource {
+  declare interface gapi$client$compute$NetworksResource {
     /**
      * Adds a peering to the specified network.
      */
@@ -19656,7 +19660,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Deletes the specified network.
@@ -19719,7 +19723,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified network. Get a list of available networks by making a list() request.
@@ -19770,7 +19774,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Network>;
+    }): Request<gapi$client$compute$Network>;
 
     /**
      * Creates a network in the specified project using the data included in the request.
@@ -19828,7 +19832,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of networks available to the specified project.
@@ -19914,7 +19918,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$NetworkList>;
+    }): Request<gapi$client$compute$NetworkList>;
 
     /**
      * Patches the specified network with the data included in the request.
@@ -19977,7 +19981,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Removes a peering from the specified network.
@@ -20040,7 +20044,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Switches the network mode from auto subnet mode to custom subnet mode.
@@ -20103,10 +20107,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$ProjectsResource {
+  declare interface gapi$client$compute$ProjectsResource {
     /**
      * Disable this project as a shared VPC host project.
      */
@@ -20163,7 +20167,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Disable a serivce resource (a.k.a service project) associated with this host project.
@@ -20221,7 +20225,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Enable this project as a shared VPC host project.
@@ -20279,7 +20283,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Enable service resource (a.k.a service project) for a host project, so that subnets in the host project can be used by instances in the service
@@ -20338,7 +20342,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified Project resource.
@@ -20384,7 +20388,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Project>;
+    }): Request<gapi$client$compute$Project>;
 
     /**
      * Get the shared VPC host project that this project links to. May be empty if no link exists.
@@ -20430,7 +20434,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Project>;
+    }): Request<gapi$client$compute$Project>;
 
     /**
      * Get service resources (a.k.a service project) associated with this host project.
@@ -20480,7 +20484,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ProjectsGetXpnResources>;
+    }): Request<gapi$client$compute$ProjectsGetXpnResources>;
 
     /**
      * List all shared VPC host projects visible to the user in an organization.
@@ -20530,7 +20534,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$XpnHostList>;
+    }): Request<gapi$client$compute$XpnHostList>;
 
     /**
      * Moves a persistent disk from one zone to another.
@@ -20588,7 +20592,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Moves an instance and its attached persistent disks from one zone to another.
@@ -20646,7 +20650,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets metadata common to all instances within the specified project using the data included in the request.
@@ -20704,7 +20708,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Enables the usage export feature and sets the usage export bucket where reports are stored. If you provide an empty request body using this method, the
@@ -20763,10 +20767,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RegionAutoscalersResource {
+  declare interface gapi$client$compute$RegionAutoscalersResource {
     /**
      * Deletes the specified autoscaler.
      */
@@ -20833,7 +20837,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified autoscaler.
@@ -20889,7 +20893,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Autoscaler>;
+    }): Request<gapi$client$compute$Autoscaler>;
 
     /**
      * Creates an autoscaler in the specified project using the data included in the request.
@@ -20952,7 +20956,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of autoscalers contained within the specified region.
@@ -21043,7 +21047,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionAutoscalerList>;
+    }): Request<gapi$client$compute$RegionAutoscalerList>;
 
     /**
      * Updates an autoscaler in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge
@@ -21112,7 +21116,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates an autoscaler in the specified project using the data included in the request.
@@ -21180,10 +21184,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RegionBackendServicesResource {
+  declare interface gapi$client$compute$RegionBackendServicesResource {
     /**
      * Deletes the specified regional BackendService resource.
      */
@@ -21250,7 +21254,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified regional BackendService resource.
@@ -21306,7 +21310,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendService>;
+    }): Request<gapi$client$compute$BackendService>;
 
     /**
      * Gets the most recent health check results for this regional BackendService.
@@ -21358,7 +21362,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendServiceGroupHealth>;
+    }): Request<gapi$client$compute$BackendServiceGroupHealth>;
 
     /**
      * Creates a regional BackendService resource in the specified project using the data included in the request. There are several restrictions and
@@ -21422,7 +21426,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of regional BackendService resources available to the specified project in the given region.
@@ -21513,7 +21517,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$BackendServiceList>;
+    }): Request<gapi$client$compute$BackendServiceList>;
 
     /**
      * Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in
@@ -21583,7 +21587,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in
@@ -21652,10 +21656,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RegionCommitmentsResource {
+  declare interface gapi$client$compute$RegionCommitmentsResource {
     /**
      * Retrieves an aggregated list of commitments.
      */
@@ -21740,7 +21744,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$CommitmentAggregatedList>;
+    }): Request<gapi$client$compute$CommitmentAggregatedList>;
 
     /**
      * Returns the specified commitment resource. Get a list of available commitments by making a list() request.
@@ -21796,7 +21800,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Commitment>;
+    }): Request<gapi$client$compute$Commitment>;
 
     /**
      * Creates a commitment in the specified project using the data included in the request.
@@ -21859,7 +21863,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of commitments contained within the specified region.
@@ -21950,10 +21954,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$CommitmentList>;
+    }): Request<gapi$client$compute$CommitmentList>;
   }
 
-  declare interface compute$RegionInstanceGroupManagersResource {
+  declare interface gapi$client$compute$RegionInstanceGroupManagersResource {
     /**
      * Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it
      * does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed
@@ -22028,7 +22032,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Deletes the specified managed instance group and all of the instances in that group.
@@ -22096,7 +22100,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which
@@ -22172,7 +22176,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns all of the details about the specified managed instance group.
@@ -22228,7 +22232,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceGroupManager>;
+    }): Request<gapi$client$compute$InstanceGroupManager>;
 
     /**
      * Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create
@@ -22295,7 +22299,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of managed instance groups that are contained within the specified region.
@@ -22386,7 +22390,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionInstanceGroupManagerList>;
+    }): Request<gapi$client$compute$RegionInstanceGroupManagerList>;
 
     /**
      * Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group
@@ -22447,7 +22451,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionInstanceGroupManagersListInstancesResponse>;
+    }): Request<gapi$client$compute$RegionInstanceGroupManagersListInstancesResponse>;
 
     /**
      * Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current
@@ -22522,7 +22526,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the intended size for the managed instance group. If you increase the size, the group schedules actions to create new instances using the
@@ -22601,7 +22605,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Sets the instance template to use when creating new instances or recreating instances in this group. Existing instances are not affected.
@@ -22669,7 +22673,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected.
@@ -22737,10 +22741,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RegionInstanceGroupsResource {
+  declare interface gapi$client$compute$RegionInstanceGroupsResource {
     /**
      * Returns the specified instance group resource.
      */
@@ -22795,7 +22799,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$InstanceGroup>;
+    }): Request<gapi$client$compute$InstanceGroup>;
 
     /**
      * Retrieves the list of instance group resources contained within the specified region.
@@ -22886,7 +22890,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionInstanceGroupList>;
+    }): Request<gapi$client$compute$RegionInstanceGroupList>;
 
     /**
      * Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can
@@ -22983,7 +22987,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionInstanceGroupsListInstances>;
+    }): Request<gapi$client$compute$RegionInstanceGroupsListInstances>;
 
     /**
      * Sets the named ports for the specified regional instance group.
@@ -23051,10 +23055,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RegionOperationsResource {
+  declare interface gapi$client$compute$RegionOperationsResource {
     /**
      * Deletes the specified region-specific Operations resource.
      */
@@ -23165,7 +23169,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of Operation resources contained within the specified region.
@@ -23256,10 +23260,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$OperationList>;
+    }): Request<gapi$client$compute$OperationList>;
   }
 
-  declare interface compute$RegionsResource {
+  declare interface gapi$client$compute$RegionsResource {
     /**
      * Returns the specified Region resource. Get a list of available regions by making a list() request.
      */
@@ -23309,7 +23313,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Region>;
+    }): Request<gapi$client$compute$Region>;
 
     /**
      * Retrieves the list of region resources available to the specified project.
@@ -23395,10 +23399,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RegionList>;
+    }): Request<gapi$client$compute$RegionList>;
   }
 
-  declare interface compute$RoutersResource {
+  declare interface gapi$client$compute$RoutersResource {
     /**
      * Retrieves an aggregated list of routers.
      */
@@ -23483,7 +23487,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RouterAggregatedList>;
+    }): Request<gapi$client$compute$RouterAggregatedList>;
 
     /**
      * Deletes the specified Router resource.
@@ -23551,7 +23555,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified Router resource. Get a list of available routers by making a list() request.
@@ -23607,7 +23611,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Router>;
+    }): Request<gapi$client$compute$Router>;
 
     /**
      * Retrieves runtime information of the specified router.
@@ -23663,7 +23667,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RouterStatusResponse>;
+    }): Request<gapi$client$compute$RouterStatusResponse>;
 
     /**
      * Creates a Router resource in the specified project and region using the data included in the request.
@@ -23726,7 +23730,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of Router resources available to the specified project.
@@ -23817,7 +23821,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RouterList>;
+    }): Request<gapi$client$compute$RouterList>;
 
     /**
      * Patches the specified Router resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and
@@ -23886,7 +23890,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Preview fields auto-generated during router create and update operations. Calling this method does NOT create or update the router.
@@ -23942,7 +23946,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RoutersPreviewResponse>;
+    }): Request<gapi$client$compute$RoutersPreviewResponse>;
 
     /**
      * Updates the specified Router resource with the data included in the request.
@@ -24010,10 +24014,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$RoutesResource {
+  declare interface gapi$client$compute$RoutesResource {
     /**
      * Deletes the specified Route resource.
      */
@@ -24075,7 +24079,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified Route resource. Get a list of available routes by making a list() request.
@@ -24126,7 +24130,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Route>;
+    }): Request<gapi$client$compute$Route>;
 
     /**
      * Creates a Route resource in the specified project using the data included in the request.
@@ -24184,7 +24188,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of Route resources available to the specified project.
@@ -24270,10 +24274,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$RouteList>;
+    }): Request<gapi$client$compute$RouteList>;
   }
 
-  declare interface compute$SnapshotsResource {
+  declare interface gapi$client$compute$SnapshotsResource {
     /**
      * Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If
      * any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
@@ -24338,7 +24342,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified Snapshot resource. Get a list of available snapshots by making a list() request.
@@ -24389,7 +24393,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Snapshot>;
+    }): Request<gapi$client$compute$Snapshot>;
 
     /**
      * Retrieves the list of Snapshot resources contained within the specified project.
@@ -24475,7 +24479,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$SnapshotList>;
+    }): Request<gapi$client$compute$SnapshotList>;
 
     /**
      * Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources documentation.
@@ -24526,10 +24530,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$SslCertificatesResource {
+  declare interface gapi$client$compute$SslCertificatesResource {
     /**
      * Deletes the specified SslCertificate resource.
      */
@@ -24591,7 +24595,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a list() request.
@@ -24642,7 +24646,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$SslCertificate>;
+    }): Request<gapi$client$compute$SslCertificate>;
 
     /**
      * Creates a SslCertificate resource in the specified project using the data included in the request.
@@ -24700,7 +24704,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of SslCertificate resources available to the specified project.
@@ -24786,10 +24790,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$SslCertificateList>;
+    }): Request<gapi$client$compute$SslCertificateList>;
   }
 
-  declare interface compute$SubnetworksResource {
+  declare interface gapi$client$compute$SubnetworksResource {
     /**
      * Retrieves an aggregated list of subnetworks.
      */
@@ -24874,7 +24878,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$SubnetworkAggregatedList>;
+    }): Request<gapi$client$compute$SubnetworkAggregatedList>;
 
     /**
      * Deletes the specified subnetwork.
@@ -24942,7 +24946,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Expands the IP CIDR range of the subnetwork to a specified value.
@@ -25010,7 +25014,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified subnetwork. Get a list of available subnetworks list() request.
@@ -25066,7 +25070,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Subnetwork>;
+    }): Request<gapi$client$compute$Subnetwork>;
 
     /**
      * Creates a subnetwork in the specified project using the data included in the request.
@@ -25129,7 +25133,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of subnetworks available to the specified project.
@@ -25220,7 +25224,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$SubnetworkList>;
+    }): Request<gapi$client$compute$SubnetworkList>;
 
     /**
      * Set whether VMs in this subnet can access Google services without assigning external IP addresses through Private Google Access.
@@ -25288,10 +25292,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetHttpProxiesResource {
+  declare interface gapi$client$compute$TargetHttpProxiesResource {
     /**
      * Deletes the specified TargetHttpProxy resource.
      */
@@ -25353,7 +25357,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by making a list() request.
@@ -25404,7 +25408,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetHttpProxy>;
+    }): Request<gapi$client$compute$TargetHttpProxy>;
 
     /**
      * Creates a TargetHttpProxy resource in the specified project using the data included in the request.
@@ -25462,7 +25466,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of TargetHttpProxy resources available to the specified project.
@@ -25548,7 +25552,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetHttpProxyList>;
+    }): Request<gapi$client$compute$TargetHttpProxyList>;
 
     /**
      * Changes the URL map for TargetHttpProxy.
@@ -25611,10 +25615,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetHttpsProxiesResource {
+  declare interface gapi$client$compute$TargetHttpsProxiesResource {
     /**
      * Deletes the specified TargetHttpsProxy resource.
      */
@@ -25676,7 +25680,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by making a list() request.
@@ -25727,7 +25731,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetHttpsProxy>;
+    }): Request<gapi$client$compute$TargetHttpsProxy>;
 
     /**
      * Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
@@ -25785,7 +25789,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of TargetHttpsProxy resources available to the specified project.
@@ -25871,7 +25875,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetHttpsProxyList>;
+    }): Request<gapi$client$compute$TargetHttpsProxyList>;
 
     /**
      * Replaces SslCertificates for TargetHttpsProxy.
@@ -25934,7 +25938,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the URL map for TargetHttpsProxy.
@@ -25997,10 +26001,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetInstancesResource {
+  declare interface gapi$client$compute$TargetInstancesResource {
     /**
      * Retrieves an aggregated list of target instances.
      */
@@ -26085,7 +26089,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetInstanceAggregatedList>;
+    }): Request<gapi$client$compute$TargetInstanceAggregatedList>;
 
     /**
      * Deletes the specified TargetInstance resource.
@@ -26153,7 +26157,7 @@ declare module "gapi.client.compute" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified TargetInstance resource. Get a list of available target instances by making a list() request.
@@ -26209,7 +26213,7 @@ declare module "gapi.client.compute" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<compute$TargetInstance>;
+    }): Request<gapi$client$compute$TargetInstance>;
 
     /**
      * Creates a TargetInstance resource in the specified project and zone using the data included in the request.
@@ -26272,7 +26276,7 @@ declare module "gapi.client.compute" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of TargetInstance resources available to the specified project and zone.
@@ -26363,10 +26367,10 @@ declare module "gapi.client.compute" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<compute$TargetInstanceList>;
+    }): Request<gapi$client$compute$TargetInstanceList>;
   }
 
-  declare interface compute$TargetPoolsResource {
+  declare interface gapi$client$compute$TargetPoolsResource {
     /**
      * Adds health check URLs to a target pool.
      */
@@ -26433,7 +26437,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Adds an instance to a target pool.
@@ -26501,7 +26505,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves an aggregated list of target pools.
@@ -26587,7 +26591,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetPoolAggregatedList>;
+    }): Request<gapi$client$compute$TargetPoolAggregatedList>;
 
     /**
      * Deletes the specified target pool.
@@ -26655,7 +26659,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified target pool. Get a list of available target pools by making a list() request.
@@ -26711,7 +26715,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetPool>;
+    }): Request<gapi$client$compute$TargetPool>;
 
     /**
      * Gets the most recent health check results for each IP for the instance that is referenced by the given target pool.
@@ -26767,7 +26771,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetPoolInstanceHealth>;
+    }): Request<gapi$client$compute$TargetPoolInstanceHealth>;
 
     /**
      * Creates a target pool in the specified project and region using the data included in the request.
@@ -26830,7 +26834,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of target pools available to the specified project and region.
@@ -26921,7 +26925,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetPoolList>;
+    }): Request<gapi$client$compute$TargetPoolList>;
 
     /**
      * Removes health check URL from a target pool.
@@ -26989,7 +26993,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Removes instance URL from a target pool.
@@ -27057,7 +27061,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes a backup target pool's configurations.
@@ -27130,10 +27134,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetSslProxiesResource {
+  declare interface gapi$client$compute$TargetSslProxiesResource {
     /**
      * Deletes the specified TargetSslProxy resource.
      */
@@ -27195,7 +27199,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making a list() request.
@@ -27246,7 +27250,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetSslProxy>;
+    }): Request<gapi$client$compute$TargetSslProxy>;
 
     /**
      * Creates a TargetSslProxy resource in the specified project using the data included in the request.
@@ -27304,7 +27308,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of TargetSslProxy resources available to the specified project.
@@ -27390,7 +27394,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetSslProxyList>;
+    }): Request<gapi$client$compute$TargetSslProxyList>;
 
     /**
      * Changes the BackendService for TargetSslProxy.
@@ -27453,7 +27457,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the ProxyHeaderType for TargetSslProxy.
@@ -27516,7 +27520,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes SslCertificates for TargetSslProxy.
@@ -27579,10 +27583,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetTcpProxiesResource {
+  declare interface gapi$client$compute$TargetTcpProxiesResource {
     /**
      * Deletes the specified TargetTcpProxy resource.
      */
@@ -27644,7 +27648,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making a list() request.
@@ -27695,7 +27699,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetTcpProxy>;
+    }): Request<gapi$client$compute$TargetTcpProxy>;
 
     /**
      * Creates a TargetTcpProxy resource in the specified project using the data included in the request.
@@ -27753,7 +27757,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of TargetTcpProxy resources available to the specified project.
@@ -27839,7 +27843,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetTcpProxyList>;
+    }): Request<gapi$client$compute$TargetTcpProxyList>;
 
     /**
      * Changes the BackendService for TargetTcpProxy.
@@ -27902,7 +27906,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Changes the ProxyHeaderType for TargetTcpProxy.
@@ -27965,10 +27969,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
   }
 
-  declare interface compute$TargetVpnGatewaysResource {
+  declare interface gapi$client$compute$TargetVpnGatewaysResource {
     /**
      * Retrieves an aggregated list of target VPN gateways.
      */
@@ -28053,7 +28057,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetVpnGatewayAggregatedList>;
+    }): Request<gapi$client$compute$TargetVpnGatewayAggregatedList>;
 
     /**
      * Deletes the specified target VPN gateway.
@@ -28121,7 +28125,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a list() request.
@@ -28177,7 +28181,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetVpnGateway>;
+    }): Request<gapi$client$compute$TargetVpnGateway>;
 
     /**
      * Creates a target VPN gateway in the specified project and region using the data included in the request.
@@ -28240,7 +28244,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of target VPN gateways available to the specified project and region.
@@ -28331,10 +28335,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$TargetVpnGatewayList>;
+    }): Request<gapi$client$compute$TargetVpnGatewayList>;
   }
 
-  declare interface compute$UrlMapsResource {
+  declare interface gapi$client$compute$UrlMapsResource {
     /**
      * Deletes the specified UrlMap resource.
      */
@@ -28396,7 +28400,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified UrlMap resource. Get a list of available URL maps by making a list() request.
@@ -28447,7 +28451,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$UrlMap>;
+    }): Request<gapi$client$compute$UrlMap>;
 
     /**
      * Creates a UrlMap resource in the specified project using the data included in the request.
@@ -28505,7 +28509,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.
@@ -28568,7 +28572,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves the list of UrlMap resources available to the specified project.
@@ -28654,7 +28658,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$UrlMapList>;
+    }): Request<gapi$client$compute$UrlMapList>;
 
     /**
      * Patches the specified UrlMap resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format
@@ -28718,7 +28722,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Updates the specified UrlMap resource with the data included in the request.
@@ -28781,7 +28785,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap.
@@ -28832,10 +28836,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$UrlMapsValidateResponse>;
+    }): Request<gapi$client$compute$UrlMapsValidateResponse>;
   }
 
-  declare interface compute$VpnTunnelsResource {
+  declare interface gapi$client$compute$VpnTunnelsResource {
     /**
      * Retrieves an aggregated list of VPN tunnels.
      */
@@ -28920,7 +28924,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$VpnTunnelAggregatedList>;
+    }): Request<gapi$client$compute$VpnTunnelAggregatedList>;
 
     /**
      * Deletes the specified VpnTunnel resource.
@@ -28988,7 +28992,7 @@ declare module "gapi.client.compute" {
        * Name of the VpnTunnel resource to delete.
        */
       vpnTunnel: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list() request.
@@ -29044,7 +29048,7 @@ declare module "gapi.client.compute" {
        * Name of the VpnTunnel resource to return.
        */
       vpnTunnel: string
-    }): Request<compute$VpnTunnel>;
+    }): Request<gapi$client$compute$VpnTunnel>;
 
     /**
      * Creates a VpnTunnel resource in the specified project and region using the data included in the request.
@@ -29107,7 +29111,7 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of VpnTunnel resources contained in the specified project and region.
@@ -29198,10 +29202,10 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$VpnTunnelList>;
+    }): Request<gapi$client$compute$VpnTunnelList>;
   }
 
-  declare interface compute$ZoneOperationsResource {
+  declare interface gapi$client$compute$ZoneOperationsResource {
     /**
      * Deletes the specified zone-specific Operations resource.
      */
@@ -29312,7 +29316,7 @@ declare module "gapi.client.compute" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<compute$Operation>;
+    }): Request<gapi$client$compute$Operation>;
 
     /**
      * Retrieves a list of Operation resources contained within the specified zone.
@@ -29403,10 +29407,10 @@ declare module "gapi.client.compute" {
        * Name of the zone for request.
        */
       zone: string
-    }): Request<compute$OperationList>;
+    }): Request<gapi$client$compute$OperationList>;
   }
 
-  declare interface compute$ZonesResource {
+  declare interface gapi$client$compute$ZonesResource {
     /**
      * Returns the specified Zone resource. Get a list of available zones by making a list() request.
      */
@@ -29456,7 +29460,7 @@ declare module "gapi.client.compute" {
        * Name of the zone resource to return.
        */
       zone: string
-    }): Request<compute$Zone>;
+    }): Request<gapi$client$compute$Zone>;
 
     /**
      * Retrieves the list of Zone resources available to the specified project.
@@ -29542,6 +29546,6 @@ declare module "gapi.client.compute" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<compute$ZoneList>;
+    }): Request<gapi$client$compute$ZoneList>;
   }
 }
