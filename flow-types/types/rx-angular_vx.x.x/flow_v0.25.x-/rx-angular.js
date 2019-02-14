@@ -15,7 +15,7 @@ declare module "rx-angular" {
   } & SchedulerStatic;
 
   declare export var Rx$ScopeScheduler: Rx$ScopeSchedulerStatic;
-  declare export type angular$IRxScope = {
+  declare export type rx$angular$IRxScope = {
     $toObservable(property: string): Rx$Observable<any>
   } & ng.IScope;
 }
