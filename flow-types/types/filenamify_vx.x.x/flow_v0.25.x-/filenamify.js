@@ -1,7 +1,7 @@
 declare module "filenamify" {
   declare function filenamify(
     input: string,
-    options?: filenamify$filenamify$Options
+    options?: filenamify$Options
   ): string;
 
   declare var npm$namespace$filenamify: {
@@ -16,5 +16,5 @@ declare module "filenamify" {
     options?: filenamify$Options
   ): string;
 
-  declare module.exports: typeof filenamify;
+  declare export default typeof filenamify;
 }
