@@ -1,41 +1,45 @@
 declare module "gapi.client.logging" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    billingAccounts: typeof client$billingAccounts,
-    entries: typeof client$entries,
-    folders: typeof client$folders,
-    monitoredResourceDescriptors: typeof client$monitoredResourceDescriptors,
-    organizations: typeof client$organizations,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    billingAccounts: typeof gapi$client$billingAccounts,
+    entries: typeof gapi$client$entries,
+    folders: typeof gapi$client$folders,
+    monitoredResourceDescriptors: typeof gapi$client$monitoredResourceDescriptors,
+    organizations: typeof gapi$client$organizations,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Stackdriver Logging API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "logging",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "logging",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$billingAccounts: logging$logging$BillingAccountsResource;
+  declare var gapi$client$billingAccounts: logging$BillingAccountsResource;
 
-  declare var client$entries: logging$logging$EntriesResource;
+  declare var gapi$client$entries: logging$EntriesResource;
 
-  declare var client$folders: logging$logging$FoldersResource;
+  declare var gapi$client$folders: logging$FoldersResource;
 
-  declare var client$monitoredResourceDescriptors: logging$logging$MonitoredResourceDescriptorsResource;
+  declare var gapi$client$monitoredResourceDescriptors: logging$MonitoredResourceDescriptorsResource;
 
-  declare var client$organizations: logging$logging$OrganizationsResource;
+  declare var gapi$client$organizations: logging$OrganizationsResource;
 
-  declare var client$projects: logging$logging$ProjectsResource;
+  declare var gapi$client$projects: logging$ProjectsResource;
 
-  declare interface logging$BucketOptions {
+  declare interface gapi$client$logging$BucketOptions {
     /**
      * The explicit buckets.
      */
@@ -52,14 +56,14 @@ declare module "gapi.client.logging" {
     linearBuckets?: logging$Linear;
   }
 
-  declare interface logging$Explicit {
+  declare interface gapi$client$logging$Explicit {
     /**
      * The values must be monotonically increasing.
      */
     bounds?: number[];
   }
 
-  declare interface logging$Exponential {
+  declare interface gapi$client$logging$Exponential {
     /**
      * Must be greater than 1.
      */
@@ -76,7 +80,7 @@ declare module "gapi.client.logging" {
     scale?: number;
   }
 
-  declare interface logging$HttpRequest {
+  declare interface gapi$client$logging$HttpRequest {
     /**
      * The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted.
      */
@@ -154,7 +158,7 @@ declare module "gapi.client.logging" {
     userAgent?: string;
   }
 
-  declare interface logging$LabelDescriptor {
+  declare interface gapi$client$logging$LabelDescriptor {
     /**
      * A human-readable description for the label.
      */
@@ -171,7 +175,7 @@ declare module "gapi.client.logging" {
     valueType?: string;
   }
 
-  declare interface logging$Linear {
+  declare interface gapi$client$logging$Linear {
     /**
      * Must be greater than 0.
      */
@@ -188,7 +192,7 @@ declare module "gapi.client.logging" {
     width?: number;
   }
 
-  declare interface logging$ListExclusionsResponse {
+  declare interface gapi$client$logging$ListExclusionsResponse {
     /**
      * A list of exclusions.
      */
@@ -201,7 +205,7 @@ declare module "gapi.client.logging" {
     nextPageToken?: string;
   }
 
-  declare interface logging$ListLogEntriesRequest {
+  declare interface gapi$client$logging$ListLogEntriesRequest {
     /**
      * Optional. A filter that chooses which log entries to return. See Advanced Logs Filters. Only log entries that match the filter are returned. An empty
      * filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause
@@ -245,12 +249,12 @@ declare module "gapi.client.logging" {
     resourceNames?: string[];
   }
 
-  declare interface logging$ListLogEntriesResponse {
+  declare interface gapi$client$logging$ListLogEntriesResponse {
     /**
      * A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that more entries may exist. See nextPageToken for more
      * information.
      */
-    client$entries?: logging$LogEntry[];
+    entries?: logging$LogEntry[];
 
     /**
      * If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method
@@ -262,7 +266,7 @@ declare module "gapi.client.logging" {
     nextPageToken?: string;
   }
 
-  declare interface logging$ListLogMetricsResponse {
+  declare interface gapi$client$logging$ListLogMetricsResponse {
     /**
      * A list of logs-based metrics.
      */
@@ -275,7 +279,7 @@ declare module "gapi.client.logging" {
     nextPageToken?: string;
   }
 
-  declare interface logging$ListLogsResponse {
+  declare interface gapi$client$logging$ListLogsResponse {
     /**
      * A list of log names. For example, "projects/my-project/syslog" or "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
      */
@@ -288,7 +292,7 @@ declare module "gapi.client.logging" {
     nextPageToken?: string;
   }
 
-  declare interface logging$ListMonitoredResourceDescriptorsResponse {
+  declare interface gapi$client$logging$ListMonitoredResourceDescriptorsResponse {
     /**
      * If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method
      * again using the value of nextPageToken as pageToken.
@@ -301,7 +305,7 @@ declare module "gapi.client.logging" {
     resourceDescriptors?: logging$MonitoredResourceDescriptor[];
   }
 
-  declare interface logging$ListSinksResponse {
+  declare interface gapi$client$logging$ListSinksResponse {
     /**
      * If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again
      * using the value of nextPageToken as pageToken.
@@ -314,11 +318,11 @@ declare module "gapi.client.logging" {
     sinks?: logging$LogSink[];
   }
 
-  declare interface logging$LogEntry {
+  declare interface gapi$client$logging$LogEntry {
     /**
      * Optional. Information about the HTTP request associated with this log entry, if applicable.
      */
-    httpRequest?: logging$HttpRequest;
+    httpRequest?: gapi$client$logging$HttpRequest;
 
     /**
      * Optional. A unique identifier for the log entry. If you provide a value, then Stackdriver Logging considers other log entries in the same project, with
@@ -403,7 +407,7 @@ declare module "gapi.client.logging" {
     trace?: string;
   }
 
-  declare interface logging$LogEntryOperation {
+  declare interface gapi$client$logging$LogEntryOperation {
     /**
      * Optional. Set this to True if this is the first log entry in the operation.
      */
@@ -426,7 +430,7 @@ declare module "gapi.client.logging" {
     producer?: string;
   }
 
-  declare interface logging$LogEntrySourceLocation {
+  declare interface gapi$client$logging$LogEntrySourceLocation {
     /**
      * Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.
      */
@@ -445,7 +449,7 @@ declare module "gapi.client.logging" {
     line?: string;
   }
 
-  declare interface logging$LogExclusion {
+  declare interface gapi$client$logging$LogExclusion {
     /**
      * Optional. A description of this exclusion.
      */
@@ -471,7 +475,7 @@ declare module "gapi.client.logging" {
     name?: string;
   }
 
-  declare interface logging$LogLine {
+  declare interface gapi$client$logging$LogLine {
     /**
      * App-provided log message.
      */
@@ -493,12 +497,12 @@ declare module "gapi.client.logging" {
     time?: string;
   }
 
-  declare interface logging$LogMetric {
+  declare interface gapi$client$logging$LogMetric {
     /**
      * Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to
      * create a histogram of the extracted values.
      */
-    bucketOptions?: logging$BucketOptions;
+    bucketOptions?: gapi$client$logging$BucketOptions;
 
     /**
      * Optional. A description of this metric, which is used in documentation.
@@ -559,7 +563,7 @@ declare module "gapi.client.logging" {
     version?: string;
   }
 
-  declare interface logging$LogSink {
+  declare interface gapi$client$logging$LogSink {
     /**
      * Required. The export destination:
      * "storage.googleapis.com/[GCS_BUCKET]"
@@ -618,7 +622,7 @@ declare module "gapi.client.logging" {
     writerIdentity?: string;
   }
 
-  declare interface logging$MetricDescriptor {
+  declare interface gapi$client$logging$MetricDescriptor {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
@@ -635,7 +639,7 @@ declare module "gapi.client.logging" {
      * appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies
      * for successful responses or just for responses that failed.
      */
-    labels?: logging$LabelDescriptor[];
+    labels?: gapi$client$logging$LabelDescriptor[];
 
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
@@ -707,7 +711,7 @@ declare module "gapi.client.logging" {
     valueType?: string;
   }
 
-  declare interface logging$MonitoredResource {
+  declare interface gapi$client$logging$MonitoredResource {
     /**
      * Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels
      * "project_id", "instance_id", and "zone".
@@ -721,7 +725,7 @@ declare module "gapi.client.logging" {
     type?: string;
   }
 
-  declare interface logging$MonitoredResourceDescriptor {
+  declare interface gapi$client$logging$MonitoredResourceDescriptor {
     /**
      * Optional. A detailed description of the monitored resource type that might be used in documentation.
      */
@@ -737,7 +741,7 @@ declare module "gapi.client.logging" {
      * Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is
      * identified by values for the labels "database_id" and "zone".
      */
-    labels?: logging$LabelDescriptor[];
+    labels?: gapi$client$logging$LabelDescriptor[];
 
     /**
      * Optional. The resource name of the monitored resource descriptor: "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value
@@ -753,7 +757,7 @@ declare module "gapi.client.logging" {
     type?: string;
   }
 
-  declare interface logging$RequestLog {
+  declare interface gapi$client$logging$RequestLog {
     /**
      * App Engine release version.
      */
@@ -819,7 +823,7 @@ declare module "gapi.client.logging" {
     /**
      * A list of log lines emitted by the application while serving this request.
      */
-    line?: logging$LogLine[];
+    line?: gapi$client$logging$LogLine[];
 
     /**
      * Number of CPU megacycles used to process request.
@@ -922,7 +926,7 @@ declare module "gapi.client.logging" {
     wasLoadingRequest?: boolean;
   }
 
-  declare interface logging$SourceLocation {
+  declare interface gapi$client$logging$SourceLocation {
     /**
      * Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.
      */
@@ -941,7 +945,7 @@ declare module "gapi.client.logging" {
     line?: string;
   }
 
-  declare interface logging$SourceReference {
+  declare interface gapi$client$logging$SourceReference {
     /**
      * Optional. A URI string identifying the repository. Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
      */
@@ -953,7 +957,7 @@ declare module "gapi.client.logging" {
     revisionId?: string;
   }
 
-  declare interface logging$WriteLogEntriesRequest {
+  declare interface gapi$client$logging$WriteLogEntriesRequest {
     /**
      * Required. The log entries to send to Stackdriver Logging. The order of log entries in this list does not matter. Values supplied in this method's
      * log_name, resource, and labels fields are copied into those log entries in this list that do not include values for their corresponding fields. For
@@ -964,7 +968,7 @@ declare module "gapi.client.logging" {
      * avoid exceeding the quota limit for calls to entries.write, you should try to include several log entries in this list, rather than calling this method
      * for each individual log entry.
      */
-    client$entries?: logging$LogEntry[];
+    entries?: gapi$client$logging$LogEntry[];
 
     /**
      * Optional. Default labels that are added to the labels field of all log entries in entries. If a log entry already has a label with the same key as a
@@ -997,10 +1001,10 @@ declare module "gapi.client.logging" {
      * "zone": "us-central1-a", "instance_id": "00000000000000000000" }}
      * See LogEntry.
      */
-    resource?: logging$MonitoredResource;
+    resource?: gapi$client$logging$MonitoredResource;
   }
 
-  declare interface logging$ExclusionsResource {
+  declare interface gapi$client$logging$ExclusionsResource {
     /**
      * Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions
      * in a resource.
@@ -1080,7 +1084,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Deletes an exclusion.
@@ -1240,7 +1244,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Lists all the exclusions in a parent resource.
@@ -1331,7 +1335,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListExclusionsResponse>;
+    }): Request<gapi$client$logging$ListExclusionsResponse>;
 
     /**
      * Changes one or more properties of an existing exclusion.
@@ -1418,7 +1422,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions
@@ -1499,7 +1503,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Deletes an exclusion.
@@ -1659,7 +1663,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Lists all the exclusions in a parent resource.
@@ -1750,7 +1754,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListExclusionsResponse>;
+    }): Request<gapi$client$logging$ListExclusionsResponse>;
 
     /**
      * Changes one or more properties of an existing exclusion.
@@ -1837,7 +1841,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions
@@ -1918,7 +1922,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Deletes an exclusion.
@@ -2078,7 +2082,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Lists all the exclusions in a parent resource.
@@ -2169,7 +2173,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListExclusionsResponse>;
+    }): Request<gapi$client$logging$ListExclusionsResponse>;
 
     /**
      * Changes one or more properties of an existing exclusion.
@@ -2256,7 +2260,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions
@@ -2337,7 +2341,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Deletes an exclusion.
@@ -2497,7 +2501,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
 
     /**
      * Lists all the exclusions in a parent resource.
@@ -2588,7 +2592,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListExclusionsResponse>;
+    }): Request<gapi$client$logging$ListExclusionsResponse>;
 
     /**
      * Changes one or more properties of an existing exclusion.
@@ -2675,10 +2679,10 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogExclusion>;
+    }): Request<gapi$client$logging$LogExclusion>;
   }
 
-  declare interface logging$LogsResource {
+  declare interface gapi$client$logging$LogsResource {
     /**
      * Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not
      * be deleted.
@@ -2850,180 +2854,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListLogsResponse>;
-
-    /**
-     * Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not
-     * be deleted.
-     */
-    delete(request: {
-      /**
-       * V1 error format.
-       */
-      "$.xgafv"?: string,
-
-      /**
-       * OAuth access token.
-       */
-      access_token?: string,
-
-      /**
-       * Data format for response.
-       */
-      alt?: string,
-
-      /**
-       * OAuth bearer token.
-       */
-      bearer_token?: string,
-
-      /**
-       * JSONP
-       */
-      callback?: string,
-
-      /**
-       * Selector specifying which fields to include in a partial response.
-       */
-      fields?: string,
-
-      /**
-       * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-       */
-      key?: string,
-
-      /**
-       * Required. The resource name of the log to delete:
-       * "projects/[PROJECT_ID]/logs/[LOG_ID]"
-       * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-       * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-       * "folders/[FOLDER_ID]/logs/[LOG_ID]"
-       * [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
-       * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log names, see LogEntry.
-       */
-      logName: string,
-
-      /**
-       * OAuth 2.0 token for the current user.
-       */
-      oauth_token?: string,
-
-      /**
-       * Pretty-print response.
-       */
-      pp?: boolean,
-
-      /**
-       * Returns response with indentations and line breaks.
-       */
-      prettyPrint?: boolean,
-
-      /**
-       * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-       */
-      quotaUser?: string,
-
-      /**
-       * Legacy upload protocol for media (e.g. "media", "multipart").
-       */
-      uploadType?: string,
-
-      /**
-       * Upload protocol for media (e.g. "raw", "multipart").
-       */
-      upload_protocol?: string
-    }): Request<{}>;
-
-    /**
-     * Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.
-     */
-    list(request: {
-      /**
-       * V1 error format.
-       */
-      "$.xgafv"?: string,
-
-      /**
-       * OAuth access token.
-       */
-      access_token?: string,
-
-      /**
-       * Data format for response.
-       */
-      alt?: string,
-
-      /**
-       * OAuth bearer token.
-       */
-      bearer_token?: string,
-
-      /**
-       * JSONP
-       */
-      callback?: string,
-
-      /**
-       * Selector specifying which fields to include in a partial response.
-       */
-      fields?: string,
-
-      /**
-       * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-       */
-      key?: string,
-
-      /**
-       * OAuth 2.0 token for the current user.
-       */
-      oauth_token?: string,
-
-      /**
-       * Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response
-       * indicates that more results might be available.
-       */
-      pageSize?: number,
-
-      /**
-       * Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from
-       * the previous response. The values of other method parameters should be identical to those in the previous call.
-       */
-      pageToken?: string,
-
-      /**
-       * Required. The resource name that owns the logs:
-       * "projects/[PROJECT_ID]"
-       * "organizations/[ORGANIZATION_ID]"
-       * "billingAccounts/[BILLING_ACCOUNT_ID]"
-       * "folders/[FOLDER_ID]"
-       */
-      parent: string,
-
-      /**
-       * Pretty-print response.
-       */
-      pp?: boolean,
-
-      /**
-       * Returns response with indentations and line breaks.
-       */
-      prettyPrint?: boolean,
-
-      /**
-       * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-       */
-      quotaUser?: string,
-
-      /**
-       * Legacy upload protocol for media (e.g. "media", "multipart").
-       */
-      uploadType?: string,
-
-      /**
-       * Upload protocol for media (e.g. "raw", "multipart").
-       */
-      upload_protocol?: string
-    }): Request<logging$ListLogsResponse>;
+    }): Request<gapi$client$logging$ListLogsResponse>;
 
     /**
      * Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not
@@ -3196,7 +3027,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListLogsResponse>;
+    }): Request<gapi$client$logging$ListLogsResponse>;
 
     /**
      * Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not
@@ -3369,10 +3200,183 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListLogsResponse>;
+    }): Request<gapi$client$logging$ListLogsResponse>;
+
+    /**
+     * Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not
+     * be deleted.
+     */
+    delete(request: {
+      /**
+       * V1 error format.
+       */
+      "$.xgafv"?: string,
+
+      /**
+       * OAuth access token.
+       */
+      access_token?: string,
+
+      /**
+       * Data format for response.
+       */
+      alt?: string,
+
+      /**
+       * OAuth bearer token.
+       */
+      bearer_token?: string,
+
+      /**
+       * JSONP
+       */
+      callback?: string,
+
+      /**
+       * Selector specifying which fields to include in a partial response.
+       */
+      fields?: string,
+
+      /**
+       * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+       */
+      key?: string,
+
+      /**
+       * Required. The resource name of the log to delete:
+       * "projects/[PROJECT_ID]/logs/[LOG_ID]"
+       * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+       * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+       * "folders/[FOLDER_ID]/logs/[LOG_ID]"
+       * [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
+       * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log names, see LogEntry.
+       */
+      logName: string,
+
+      /**
+       * OAuth 2.0 token for the current user.
+       */
+      oauth_token?: string,
+
+      /**
+       * Pretty-print response.
+       */
+      pp?: boolean,
+
+      /**
+       * Returns response with indentations and line breaks.
+       */
+      prettyPrint?: boolean,
+
+      /**
+       * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+       */
+      quotaUser?: string,
+
+      /**
+       * Legacy upload protocol for media (e.g. "media", "multipart").
+       */
+      uploadType?: string,
+
+      /**
+       * Upload protocol for media (e.g. "raw", "multipart").
+       */
+      upload_protocol?: string
+    }): Request<{}>;
+
+    /**
+     * Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.
+     */
+    list(request: {
+      /**
+       * V1 error format.
+       */
+      "$.xgafv"?: string,
+
+      /**
+       * OAuth access token.
+       */
+      access_token?: string,
+
+      /**
+       * Data format for response.
+       */
+      alt?: string,
+
+      /**
+       * OAuth bearer token.
+       */
+      bearer_token?: string,
+
+      /**
+       * JSONP
+       */
+      callback?: string,
+
+      /**
+       * Selector specifying which fields to include in a partial response.
+       */
+      fields?: string,
+
+      /**
+       * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+       */
+      key?: string,
+
+      /**
+       * OAuth 2.0 token for the current user.
+       */
+      oauth_token?: string,
+
+      /**
+       * Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response
+       * indicates that more results might be available.
+       */
+      pageSize?: number,
+
+      /**
+       * Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from
+       * the previous response. The values of other method parameters should be identical to those in the previous call.
+       */
+      pageToken?: string,
+
+      /**
+       * Required. The resource name that owns the logs:
+       * "projects/[PROJECT_ID]"
+       * "organizations/[ORGANIZATION_ID]"
+       * "billingAccounts/[BILLING_ACCOUNT_ID]"
+       * "folders/[FOLDER_ID]"
+       */
+      parent: string,
+
+      /**
+       * Pretty-print response.
+       */
+      pp?: boolean,
+
+      /**
+       * Returns response with indentations and line breaks.
+       */
+      prettyPrint?: boolean,
+
+      /**
+       * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+       */
+      quotaUser?: string,
+
+      /**
+       * Legacy upload protocol for media (e.g. "media", "multipart").
+       */
+      uploadType?: string,
+
+      /**
+       * Upload protocol for media (e.g. "raw", "multipart").
+       */
+      upload_protocol?: string
+    }): Request<gapi$client$logging$ListLogsResponse>;
   }
 
-  declare interface logging$SinksResource {
+  declare interface gapi$client$logging$SinksResource {
     /**
      * Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's
      * writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
@@ -3461,7 +3465,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.
@@ -3621,7 +3625,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Lists sinks.
@@ -3712,7 +3716,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListSinksResponse>;
+    }): Request<gapi$client$logging$ListSinksResponse>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -3811,7 +3815,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -3910,7 +3914,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's
@@ -4000,7 +4004,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.
@@ -4160,7 +4164,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Lists sinks.
@@ -4251,7 +4255,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListSinksResponse>;
+    }): Request<gapi$client$logging$ListSinksResponse>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -4350,7 +4354,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -4449,7 +4453,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's
@@ -4539,7 +4543,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.
@@ -4699,7 +4703,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Lists sinks.
@@ -4790,7 +4794,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListSinksResponse>;
+    }): Request<gapi$client$logging$ListSinksResponse>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -4889,7 +4893,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -4988,7 +4992,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's
@@ -5078,7 +5082,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.
@@ -5238,7 +5242,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Lists sinks.
@@ -5329,7 +5333,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListSinksResponse>;
+    }): Request<gapi$client$logging$ListSinksResponse>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -5428,7 +5432,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
 
     /**
      * Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter. The updated sink
@@ -5527,16 +5531,16 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogSink>;
+    }): Request<gapi$client$logging$LogSink>;
   }
 
-  declare interface logging$BillingAccountsResource {
-    exclusions: logging$ExclusionsResource;
-    logs: logging$LogsResource;
-    sinks: logging$SinksResource;
+  declare interface gapi$client$logging$BillingAccountsResource {
+    exclusions: gapi$client$logging$ExclusionsResource;
+    logs: gapi$client$logging$LogsResource;
+    sinks: gapi$client$logging$SinksResource;
   }
 
-  declare interface logging$EntriesResource {
+  declare interface gapi$client$logging$EntriesResource {
     /**
      * Lists log entries. Use this method to retrieve log entries from Stackdriver Logging. For ways to export log entries, see Exporting Logs.
      */
@@ -5605,7 +5609,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListLogEntriesResponse>;
+    }): Request<gapi$client$logging$ListLogEntriesResponse>;
 
     /**
      * Log entry resourcesWrites log entries to Stackdriver Logging. This API method is the only way to send log entries to Stackdriver Logging. This method
@@ -5679,13 +5683,13 @@ declare module "gapi.client.logging" {
     }): Request<{}>;
   }
 
-  declare interface logging$FoldersResource {
-    exclusions: logging$ExclusionsResource;
-    logs: logging$LogsResource;
-    sinks: logging$SinksResource;
+  declare interface gapi$client$logging$FoldersResource {
+    exclusions: gapi$client$logging$ExclusionsResource;
+    logs: gapi$client$logging$LogsResource;
+    sinks: gapi$client$logging$SinksResource;
   }
 
-  declare interface logging$MonitoredResourceDescriptorsResource {
+  declare interface gapi$client$logging$MonitoredResourceDescriptorsResource {
     /**
      * Lists the descriptors for monitored resource types used by Stackdriver Logging.
      */
@@ -5766,16 +5770,16 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListMonitoredResourceDescriptorsResponse>;
+    }): Request<gapi$client$logging$ListMonitoredResourceDescriptorsResponse>;
   }
 
-  declare interface logging$OrganizationsResource {
-    exclusions: logging$ExclusionsResource;
-    logs: logging$LogsResource;
-    sinks: logging$SinksResource;
+  declare interface gapi$client$logging$OrganizationsResource {
+    exclusions: gapi$client$logging$ExclusionsResource;
+    logs: gapi$client$logging$LogsResource;
+    sinks: gapi$client$logging$SinksResource;
   }
 
-  declare interface logging$MetricsResource {
+  declare interface gapi$client$logging$MetricsResource {
     /**
      * Creates a logs-based metric.
      */
@@ -5851,7 +5855,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogMetric>;
+    }): Request<gapi$client$logging$LogMetric>;
 
     /**
      * Deletes a logs-based metric.
@@ -6003,7 +6007,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogMetric>;
+    }): Request<gapi$client$logging$LogMetric>;
 
     /**
      * Lists logs-based metrics.
@@ -6091,7 +6095,7 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$ListLogMetricsResponse>;
+    }): Request<gapi$client$logging$ListLogMetricsResponse>;
 
     /**
      * Creates or updates a logs-based metric.
@@ -6169,13 +6173,13 @@ declare module "gapi.client.logging" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<logging$LogMetric>;
+    }): Request<gapi$client$logging$LogMetric>;
   }
 
-  declare interface logging$ProjectsResource {
-    exclusions: logging$ExclusionsResource;
-    logs: logging$LogsResource;
-    metrics: logging$MetricsResource;
-    sinks: logging$SinksResource;
+  declare interface gapi$client$logging$ProjectsResource {
+    exclusions: gapi$client$logging$ExclusionsResource;
+    logs: gapi$client$logging$LogsResource;
+    metrics: gapi$client$logging$MetricsResource;
+    sinks: gapi$client$logging$SinksResource;
   }
 }
