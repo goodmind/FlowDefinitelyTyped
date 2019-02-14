@@ -271,7 +271,7 @@ declare module "mdns" {
       ) => boolean
     ): void,
     logService(): void
-  } & MDNS$MDNSResolverSequenceTasks;
+  } & MDNSResolverSequenceTasks;
 
   declare var MDNS$Advertisement: MDNS$AdvertisementCreatable;
 
@@ -606,5 +606,5 @@ declare module "mdns" {
   declare var MDNS$kDNSServiceProtocol_UDP: number;
 
   declare var MDNS$kDNSServiceProtocol_TCP: number;
-  declare module.exports: typeof MDNS;
+  declare export default typeof MDNS;
 }
