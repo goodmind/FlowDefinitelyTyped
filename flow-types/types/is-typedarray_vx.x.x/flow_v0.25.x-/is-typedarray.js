@@ -1,5 +1,5 @@
 declare module "is-typedarray" {
-  declare module.exports: typeof isTypedArray;
+  declare export default typeof isTypedArray;
 
   declare function isTypedArray(candidate: any): boolean;
 
