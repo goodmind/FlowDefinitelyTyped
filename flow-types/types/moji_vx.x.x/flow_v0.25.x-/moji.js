@@ -35,7 +35,7 @@ declare module "moji" {
     mojisyu: moji$MojisyuRange | moji$MojisyuRegExp
   ): void;
 
-  declare function moji(moji: string): moji$moji$Moji;
+  declare function moji(moji: string): moji$Moji;
 
-  declare module.exports: typeof moji;
+  declare export default typeof moji;
 }
