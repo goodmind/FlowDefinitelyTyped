@@ -1,53 +1,57 @@
 declare module "gapi.client.partners" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    analytics: typeof client$analytics,
-    clientMessages: typeof client$clientMessages,
-    companies: typeof client$companies,
-    exams: typeof client$exams,
-    leads: typeof client$leads,
-    offers: typeof client$offers,
-    userEvents: typeof client$userEvents,
-    userStates: typeof client$userStates,
-    users: typeof client$users,
-    v2: typeof client$v2
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    analytics: typeof gapi$client$analytics,
+    clientMessages: typeof gapi$client$clientMessages,
+    companies: typeof gapi$client$companies,
+    exams: typeof gapi$client$exams,
+    leads: typeof gapi$client$leads,
+    offers: typeof gapi$client$offers,
+    userEvents: typeof gapi$client$userEvents,
+    userStates: typeof gapi$client$userStates,
+    users: typeof gapi$client$users,
+    v2: typeof gapi$client$v2
   };
 
   /**
    * Load Google Partners API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "partners",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "partners",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$analytics: partners$partners$AnalyticsResource;
+  declare var gapi$client$analytics: partners$AnalyticsResource;
 
-  declare var client$clientMessages: partners$partners$ClientMessagesResource;
+  declare var gapi$client$clientMessages: partners$ClientMessagesResource;
 
-  declare var client$companies: partners$partners$CompaniesResource;
+  declare var gapi$client$companies: partners$CompaniesResource;
 
-  declare var client$exams: partners$partners$ExamsResource;
+  declare var gapi$client$exams: partners$ExamsResource;
 
-  declare var client$leads: partners$partners$LeadsResource;
+  declare var gapi$client$leads: partners$LeadsResource;
 
-  declare var client$offers: partners$partners$OffersResource;
+  declare var gapi$client$offers: partners$OffersResource;
 
-  declare var client$userEvents: partners$partners$UserEventsResource;
+  declare var gapi$client$userEvents: partners$UserEventsResource;
 
-  declare var client$userStates: partners$partners$UserStatesResource;
+  declare var gapi$client$userStates: partners$UserStatesResource;
 
-  declare var client$users: partners$partners$UsersResource;
+  declare var gapi$client$users: partners$UsersResource;
 
-  declare var client$v2: partners$partners$V2Resource;
+  declare var gapi$client$v2: partners$V2Resource;
 
-  declare interface partners$AdWordsManagerAccountInfo {
+  declare interface gapi$client$partners$AdWordsManagerAccountInfo {
     /**
      * Name of the customer this account represents.
      */
@@ -59,7 +63,7 @@ declare module "gapi.client.partners" {
     id?: string;
   }
 
-  declare interface partners$Analytics {
+  declare interface gapi$client$partners$Analytics {
     /**
      * Instances of users contacting the `Company`
      * on the specified date.
@@ -84,7 +88,7 @@ declare module "gapi.client.partners" {
     searchViews?: partners$AnalyticsDataPoint;
   }
 
-  declare interface partners$AnalyticsDataPoint {
+  declare interface gapi$client$partners$AnalyticsDataPoint {
     /**
      * Number of times the type of event occurred.
      * Meaning depends on context (e.g. profile views, contacts, etc.).
@@ -97,7 +101,7 @@ declare module "gapi.client.partners" {
     eventLocations?: partners$LatLng[];
   }
 
-  declare interface partners$AnalyticsSummary {
+  declare interface gapi$client$partners$AnalyticsSummary {
     /**
      * Aggregated number of times users contacted the `Company`
      * for given date range.
@@ -116,7 +120,7 @@ declare module "gapi.client.partners" {
     searchViewsCount?: number;
   }
 
-  declare interface partners$AvailableOffer {
+  declare interface gapi$client$partners$AvailableOffer {
     /**
      * The number of codes for this offer that are available for distribution.
      */
@@ -178,7 +182,7 @@ declare module "gapi.client.partners" {
     terms?: string;
   }
 
-  declare interface partners$Certification {
+  declare interface gapi$client$partners$Certification {
     /**
      * Whether this certification has been achieved.
      */
@@ -205,7 +209,7 @@ declare module "gapi.client.partners" {
     warning?: boolean;
   }
 
-  declare interface partners$CertificationExamStatus {
+  declare interface gapi$client$partners$CertificationExamStatus {
     /**
      * The number of people who have passed the certification exam.
      */
@@ -217,11 +221,11 @@ declare module "gapi.client.partners" {
     type?: string;
   }
 
-  declare interface partners$CertificationStatus {
+  declare interface gapi$client$partners$CertificationStatus {
     /**
      * List of certification exam statuses.
      */
-    examStatuses?: partners$CertificationExamStatus[];
+    examStatuses?: gapi$client$partners$CertificationExamStatus[];
 
     /**
      * Whether certification is passing.
@@ -239,7 +243,7 @@ declare module "gapi.client.partners" {
     userCount?: number;
   }
 
-  declare interface partners$Company {
+  declare interface gapi$client$partners$Company {
     /**
      * URL of the company's additional websites used to verify the dynamic badges.
      * These are stored as full URLs as entered by the user, but only the TLD will
@@ -261,7 +265,7 @@ declare module "gapi.client.partners" {
     /**
      * The list of Google Partners certification statuses for the company.
      */
-    certificationStatuses?: partners$CertificationStatus[];
+    certificationStatuses?: gapi$client$partners$CertificationStatus[];
 
     /**
      * Company type labels listed on the company's profile.
@@ -357,7 +361,7 @@ declare module "gapi.client.partners" {
     websiteUrl?: string;
   }
 
-  declare interface partners$CompanyRelation {
+  declare interface gapi$client$partners$CompanyRelation {
     /**
      * The primary address for this company.
      */
@@ -458,7 +462,7 @@ declare module "gapi.client.partners" {
     website?: string;
   }
 
-  declare interface partners$CountryOfferInfo {
+  declare interface gapi$client$partners$CountryOfferInfo {
     /**
      * (localized) Get Y amount for that country's offer.
      */
@@ -480,7 +484,7 @@ declare module "gapi.client.partners" {
     spendXAmount?: string;
   }
 
-  declare interface partners$CreateLeadRequest {
+  declare interface gapi$client$partners$CreateLeadRequest {
     /**
      * The lead resource. The `LeadType` must not be `LEAD_TYPE_UNSPECIFIED`
      * and either `email` or `phone_number` must be provided.
@@ -498,7 +502,7 @@ declare module "gapi.client.partners" {
     requestMetadata?: partners$RequestMetadata;
   }
 
-  declare interface partners$CreateLeadResponse {
+  declare interface gapi$client$partners$CreateLeadResponse {
     /**
      * Lead that was created depending on the outcome of
      * <a href="https://www.google.com/recaptcha/">reCaptcha</a> validation.
@@ -517,7 +521,7 @@ declare module "gapi.client.partners" {
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$Date {
+  declare interface gapi$client$partners$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -536,7 +540,7 @@ declare module "gapi.client.partners" {
     year?: number;
   }
 
-  declare interface partners$DebugInfo {
+  declare interface gapi$client$partners$DebugInfo {
     /**
      * Info about the server that serviced this request.
      */
@@ -553,7 +557,7 @@ declare module "gapi.client.partners" {
     serviceUrl?: string;
   }
 
-  declare interface partners$EventData {
+  declare interface gapi$client$partners$EventData {
     /**
      * Data type.
      */
@@ -565,7 +569,7 @@ declare module "gapi.client.partners" {
     values?: string[];
   }
 
-  declare interface partners$ExamStatus {
+  declare interface gapi$client$partners$ExamStatus {
     /**
      * The type of the exam.
      */
@@ -597,7 +601,7 @@ declare module "gapi.client.partners" {
     warning?: boolean;
   }
 
-  declare interface partners$ExamToken {
+  declare interface gapi$client$partners$ExamToken {
     /**
      * The id of the exam the token is for.
      */
@@ -614,11 +618,11 @@ declare module "gapi.client.partners" {
     token?: string;
   }
 
-  declare interface partners$GetCompanyResponse {
+  declare interface gapi$client$partners$GetCompanyResponse {
     /**
      * The company.
      */
-    company?: partners$Company;
+    company?: gapi$client$partners$Company;
 
     /**
      * Current response metadata.
@@ -626,14 +630,14 @@ declare module "gapi.client.partners" {
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$GetPartnersStatusResponse {
+  declare interface gapi$client$partners$GetPartnersStatusResponse {
     /**
      * Current response metadata.
      */
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$HistoricalOffer {
+  declare interface gapi$client$partners$HistoricalOffer {
     /**
      * Client's AdWords page URL.
      */
@@ -695,7 +699,7 @@ declare module "gapi.client.partners" {
     status?: string;
   }
 
-  declare interface partners$LatLng {
+  declare interface gapi$client$partners$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -707,7 +711,7 @@ declare module "gapi.client.partners" {
     longitude?: number;
   }
 
-  declare interface partners$Lead {
+  declare interface gapi$client$partners$Lead {
     /**
      * The AdWords Customer ID of the lead.
      */
@@ -786,19 +790,19 @@ declare module "gapi.client.partners" {
     websiteUrl?: string;
   }
 
-  declare interface partners$ListAnalyticsResponse {
+  declare interface gapi$client$partners$ListAnalyticsResponse {
     /**
      * The list of analytics.
      * Sorted in ascending order of
      * Analytics.event_date.
      */
-    client$analytics?: partners$Analytics[];
+    analytics?: gapi$client$partners$Analytics[];
 
     /**
      * Aggregated information across the response's
      * analytics.
      */
-    analyticsSummary?: partners$AnalyticsSummary;
+    analyticsSummary?: gapi$client$partners$AnalyticsSummary;
 
     /**
      * A token to retrieve next page of results.
@@ -815,11 +819,11 @@ declare module "gapi.client.partners" {
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$ListCompaniesResponse {
+  declare interface gapi$client$partners$ListCompaniesResponse {
     /**
      * The list of companies.
      */
-    client$companies?: partners$Company[];
+    companies?: gapi$client$partners$Company[];
 
     /**
      * A token to retrieve next page of results.
@@ -836,11 +840,11 @@ declare module "gapi.client.partners" {
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$ListLeadsResponse {
+  declare interface gapi$client$partners$ListLeadsResponse {
     /**
      * The list of leads.
      */
-    client$leads?: partners$Lead[];
+    leads?: gapi$client$partners$Lead[];
 
     /**
      * A token to retrieve next page of results.
@@ -862,7 +866,7 @@ declare module "gapi.client.partners" {
     totalSize?: number;
   }
 
-  declare interface partners$ListOffersHistoryResponse {
+  declare interface gapi$client$partners$ListOffersHistoryResponse {
     /**
      * True if the user has the option to show entire company history.
      */
@@ -876,7 +880,7 @@ declare module "gapi.client.partners" {
     /**
      * Historical offers meeting request.
      */
-    client$offers?: partners$HistoricalOffer[];
+    offers?: gapi$client$partners$HistoricalOffer[];
 
     /**
      * Current response metadata.
@@ -894,11 +898,11 @@ declare module "gapi.client.partners" {
     totalResults?: number;
   }
 
-  declare interface partners$ListOffersResponse {
+  declare interface gapi$client$partners$ListOffersResponse {
     /**
      * Available Offers to be distributed.
      */
-    availableOffers?: partners$AvailableOffer[];
+    availableOffers?: gapi$client$partners$AvailableOffer[];
 
     /**
      * Reason why no Offers are available.
@@ -911,7 +915,7 @@ declare module "gapi.client.partners" {
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$ListUserStatesResponse {
+  declare interface gapi$client$partners$ListUserStatesResponse {
     /**
      * Current response metadata.
      */
@@ -920,10 +924,10 @@ declare module "gapi.client.partners" {
     /**
      * User's states.
      */
-    client$userStates?: string[];
+    userStates?: string[];
   }
 
-  declare interface partners$LocalizedCompanyInfo {
+  declare interface gapi$client$partners$LocalizedCompanyInfo {
     /**
      * List of country codes for the localized company info.
      */
@@ -947,7 +951,7 @@ declare module "gapi.client.partners" {
     overview?: string;
   }
 
-  declare interface partners$Location {
+  declare interface gapi$client$partners$Location {
     /**
      * The single string version of the address.
      */
@@ -978,7 +982,7 @@ declare module "gapi.client.partners" {
     /**
      * The latitude and longitude of the location, in degrees.
      */
-    latLng?: partners$LatLng;
+    latLng?: gapi$client$partners$LatLng;
 
     /**
      * Generally refers to the city/town portion of an address.
@@ -1002,7 +1006,7 @@ declare module "gapi.client.partners" {
     sortingCode?: string;
   }
 
-  declare interface partners$LogMessageRequest {
+  declare interface gapi$client$partners$LogMessageRequest {
     /**
      * Map of client info, such as URL, browser navigator, browser platform, etc.
      */
@@ -1024,14 +1028,14 @@ declare module "gapi.client.partners" {
     requestMetadata?: partners$RequestMetadata;
   }
 
-  declare interface partners$LogMessageResponse {
+  declare interface gapi$client$partners$LogMessageResponse {
     /**
      * Current response metadata.
      */
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$LogUserEventRequest {
+  declare interface gapi$client$partners$LogUserEventRequest {
     /**
      * The action that occurred.
      */
@@ -1045,7 +1049,7 @@ declare module "gapi.client.partners" {
     /**
      * List of event data for the event.
      */
-    eventDatas?: partners$EventData[];
+    eventDatas?: gapi$client$partners$EventData[];
 
     /**
      * The scope of the event.
@@ -1055,7 +1059,7 @@ declare module "gapi.client.partners" {
     /**
      * Advertiser lead information.
      */
-    lead?: partners$Lead;
+    lead?: gapi$client$partners$Lead;
 
     /**
      * Current request metadata.
@@ -1068,14 +1072,14 @@ declare module "gapi.client.partners" {
     url?: string;
   }
 
-  declare interface partners$LogUserEventResponse {
+  declare interface gapi$client$partners$LogUserEventResponse {
     /**
      * Current response metadata.
      */
     responseMetadata?: partners$ResponseMetadata;
   }
 
-  declare interface partners$Money {
+  declare interface gapi$client$partners$Money {
     /**
      * The 3-letter currency code defined in ISO 4217.
      */
@@ -1098,7 +1102,7 @@ declare module "gapi.client.partners" {
     units?: string;
   }
 
-  declare interface partners$OfferCustomer {
+  declare interface gapi$client$partners$OfferCustomer {
     /**
      * URL to the customer's AdWords page.
      */
@@ -1145,7 +1149,7 @@ declare module "gapi.client.partners" {
     spendXAmount?: string;
   }
 
-  declare interface partners$OptIns {
+  declare interface gapi$client$partners$OptIns {
     /**
      * An opt-in about receiving email from Partners marketing teams. Includes
      * member-only events and special promotional offers for Google products.
@@ -1174,7 +1178,7 @@ declare module "gapi.client.partners" {
     specialOffers?: boolean;
   }
 
-  declare interface partners$PublicProfile {
+  declare interface gapi$client$partners$PublicProfile {
     /**
      * The URL to the main display image of the public profile. Being deprecated.
      */
@@ -1201,7 +1205,7 @@ declare module "gapi.client.partners" {
     url?: string;
   }
 
-  declare interface partners$Rank {
+  declare interface gapi$client$partners$Rank {
     /**
      * The type of rank.
      */
@@ -1213,7 +1217,7 @@ declare module "gapi.client.partners" {
     value?: number;
   }
 
-  declare interface partners$RecaptchaChallenge {
+  declare interface gapi$client$partners$RecaptchaChallenge {
     /**
      * The ID of the reCaptcha challenge.
      */
@@ -1225,7 +1229,7 @@ declare module "gapi.client.partners" {
     response?: string;
   }
 
-  declare interface partners$RequestMetadata {
+  declare interface gapi$client$partners$RequestMetadata {
     /**
      * Experiment IDs the current request belongs to.
      */
@@ -1253,14 +1257,14 @@ declare module "gapi.client.partners" {
     userOverrides?: partners$UserOverrides;
   }
 
-  declare interface partners$ResponseMetadata {
+  declare interface gapi$client$partners$ResponseMetadata {
     /**
      * Debug information about this request.
      */
-    debugInfo?: partners$DebugInfo;
+    debugInfo?: gapi$client$partners$DebugInfo;
   }
 
-  declare interface partners$SpecializationStatus {
+  declare interface gapi$client$partners$SpecializationStatus {
     /**
      * The specialization this status is for.
      */
@@ -1272,7 +1276,7 @@ declare module "gapi.client.partners" {
     badgeSpecializationState?: string;
   }
 
-  declare interface partners$TrafficSource {
+  declare interface gapi$client$partners$TrafficSource {
     /**
      * Identifier to indicate where the traffic comes from.
      * An identifier has multiple letters created by a team which redirected the
@@ -1288,7 +1292,7 @@ declare module "gapi.client.partners" {
     trafficSubId?: string;
   }
 
-  declare interface partners$User {
+  declare interface gapi$client$partners$User {
     /**
      * This is the list of AdWords Manager Accounts the user has edit access to.
      * If the user has edit access to multiple accounts, the user can choose the
@@ -1296,20 +1300,20 @@ declare module "gapi.client.partners" {
      * be empty meaning the user has access to no accounts.
      * @OutputOnly
      */
-    availableAdwordsManagerAccounts?: partners$AdWordsManagerAccountInfo[];
+    availableAdwordsManagerAccounts?: gapi$client$partners$AdWordsManagerAccountInfo[];
 
     /**
      * The list of achieved certifications. These are calculated based on exam
      * results and other requirements.
      * @OutputOnly
      */
-    certificationStatus?: partners$Certification[];
+    certificationStatus?: gapi$client$partners$Certification[];
 
     /**
      * The company that the user is associated with.
      * If not present, the user is not associated with any company.
      */
-    company?: partners$CompanyRelation;
+    company?: gapi$client$partners$CompanyRelation;
 
     /**
      * The email address used by the user used for company verification.
@@ -1321,7 +1325,7 @@ declare module "gapi.client.partners" {
      * The list of exams the user ever taken. For each type of exam, only one
      * entry is listed.
      */
-    examStatus?: partners$ExamStatus[];
+    examStatus?: gapi$client$partners$ExamStatus[];
 
     /**
      * The ID of the user.
@@ -1355,10 +1359,10 @@ declare module "gapi.client.partners" {
     /**
      * Information about a user's external public profile outside Google Partners.
      */
-    publicProfile?: partners$PublicProfile;
+    publicProfile?: gapi$client$partners$PublicProfile;
   }
 
-  declare interface partners$UserOverrides {
+  declare interface gapi$client$partners$UserOverrides {
     /**
      * IP address to use instead of the user's geo-located IP address.
      */
@@ -1370,11 +1374,11 @@ declare module "gapi.client.partners" {
     userId?: string;
   }
 
-  declare interface partners$UserProfile {
+  declare interface gapi$client$partners$UserProfile {
     /**
      * The user's mailing address, contains multiple fields.
      */
-    address?: partners$Location;
+    address?: gapi$client$partners$Location;
 
     /**
      * If the user has edit access to multiple accounts, the user can choose the
@@ -1396,7 +1400,7 @@ declare module "gapi.client.partners" {
     /**
      * The list of opt-ins for the user, related to communication preferences.
      */
-    emailOptIns?: partners$OptIns;
+    emailOptIns?: gapi$client$partners$OptIns;
 
     /**
      * The user's family name.
@@ -1444,7 +1448,7 @@ declare module "gapi.client.partners" {
     profilePublic?: boolean;
   }
 
-  declare interface partners$AnalyticsResource {
+  declare interface gapi$client$partners$AnalyticsResource {
     /**
      * Lists analytics data for a user's associated company.
      * Should only be called within the context of an authorized logged in user.
@@ -1575,10 +1579,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ListAnalyticsResponse>;
+    }): Request<gapi$client$partners$ListAnalyticsResponse>;
   }
 
-  declare interface partners$ClientMessagesResource {
+  declare interface gapi$client$partners$ClientMessagesResource {
     /**
      * Logs a generic message from the client, such as
      * `Failed to render component`, `Profile page is running slow`,
@@ -1649,10 +1653,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$LogMessageResponse>;
+    }): Request<gapi$client$partners$LogMessageResponse>;
   }
 
-  declare interface partners$LeadsResource {
+  declare interface gapi$client$partners$LeadsResource {
     /**
      * Creates an advertiser lead for the given company ID.
      */
@@ -1726,7 +1730,7 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$CreateLeadResponse>;
+    }): Request<gapi$client$partners$CreateLeadResponse>;
 
     /**
      * Lists advertiser leads for a user's associated company.
@@ -1856,10 +1860,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ListLeadsResponse>;
+    }): Request<gapi$client$partners$ListLeadsResponse>;
   }
 
-  declare interface partners$CompaniesResource {
+  declare interface gapi$client$partners$CompaniesResource {
     /**
      * Gets a company.
      */
@@ -1999,7 +2003,7 @@ declare module "gapi.client.partners" {
        * `COMPANY_VIEW_UNSPECIFIED`.
        */
       view?: string
-    }): Request<partners$GetCompanyResponse>;
+    }): Request<gapi$client$partners$GetCompanyResponse>;
 
     /**
      * Lists companies.
@@ -2227,11 +2231,11 @@ declare module "gapi.client.partners" {
        * .
        */
       websiteUrl?: string
-    }): Request<partners$ListCompaniesResponse>;
-    client$leads: partners$LeadsResource;
+    }): Request<gapi$client$partners$ListCompaniesResponse>;
+    leads: gapi$client$partners$LeadsResource;
   }
 
-  declare interface partners$ExamsResource {
+  declare interface gapi$client$partners$ExamsResource {
     /**
      * Gets an Exam Token for a Partner's user to take an exam in the Exams System
      */
@@ -2344,10 +2348,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ExamToken>;
+    }): Request<gapi$client$partners$ExamToken>;
   }
 
-  declare interface partners$HistoryResource {
+  declare interface gapi$client$partners$HistoryResource {
     /**
      * Lists the Historical Offers for the current user (or user's entire company)
      */
@@ -2479,10 +2483,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ListOffersHistoryResponse>;
+    }): Request<gapi$client$partners$ListOffersHistoryResponse>;
   }
 
-  declare interface partners$OffersResource {
+  declare interface gapi$client$partners$OffersResource {
     /**
      * Lists the Offers available for the current user
      */
@@ -2590,11 +2594,11 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ListOffersResponse>;
-    history: partners$HistoryResource;
+    }): Request<gapi$client$partners$ListOffersResponse>;
+    history: gapi$client$partners$HistoryResource;
   }
 
-  declare interface partners$UserEventsResource {
+  declare interface gapi$client$partners$UserEventsResource {
     /**
      * Logs a user event.
      */
@@ -2663,10 +2667,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$LogUserEventResponse>;
+    }): Request<gapi$client$partners$LogUserEventResponse>;
   }
 
-  declare interface partners$UserStatesResource {
+  declare interface gapi$client$partners$UserStatesResource {
     /**
      * Lists states for current user.
      */
@@ -2774,10 +2778,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$ListUserStatesResponse>;
+    }): Request<gapi$client$partners$ListUserStatesResponse>;
   }
 
-  declare interface partners$UsersResource {
+  declare interface gapi$client$partners$UsersResource {
     /**
      * Creates a user's company relation. Affiliates the user to a company.
      */
@@ -2891,7 +2895,7 @@ declare module "gapi.client.partners" {
        * the currently authenticated user.
        */
       userId: string
-    }): Request<partners$CompanyRelation>;
+    }): Request<gapi$client$partners$CompanyRelation>;
 
     /**
      * Deletes a user's company relation. Unaffiliaites the user from a company.
@@ -3126,7 +3130,7 @@ declare module "gapi.client.partners" {
        * Specifies what parts of the user information to return.
        */
       userView?: string
-    }): Request<partners$User>;
+    }): Request<gapi$client$partners$User>;
 
     /**
      * Updates a user's profile. A user can only update their own profile and
@@ -3236,10 +3240,10 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$UserProfile>;
+    }): Request<gapi$client$partners$UserProfile>;
   }
 
-  declare interface partners$V2Resource {
+  declare interface gapi$client$partners$V2Resource {
     /**
      * Gets Partners Status of the logged in user's agency.
      * Should only be called if the logged in user is the admin of the agency.
@@ -3348,7 +3352,7 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$GetPartnersStatusResponse>;
+    }): Request<gapi$client$partners$GetPartnersStatusResponse>;
 
     /**
      * Update company.
@@ -3464,7 +3468,7 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$Company>;
+    }): Request<gapi$client$partners$Company>;
 
     /**
      * Updates the specified lead.
@@ -3580,6 +3584,6 @@ declare module "gapi.client.partners" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<partners$Lead>;
+    }): Request<gapi$client$partners$Lead>;
   }
 }
