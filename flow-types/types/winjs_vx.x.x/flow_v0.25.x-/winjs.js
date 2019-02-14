@@ -13,7 +13,7 @@ declare interface IOHelper {
    * @param filename The name of the file.
    * @returns A promise that completes with a value of either true (if the file exists) or false.
    */
-  exists(filename: string): WinJS$WinJS$Promise<boolean>;
+  exists(filename: string): WinJS$Promise<boolean>;
 
   /**
    * Reads the specified file. If the file doesn't exist, the specified default value is returned.
@@ -21,14 +21,14 @@ declare interface IOHelper {
    * @param def The default value to be returned if the file failed to open.
    * @returns A promise that completes with a value that is either the contents of the file, or the specified default value.
    */
-  readText(fileName: string, def?: string): WinJS$WinJS$Promise<string>;
+  readText(fileName: string, def?: string): WinJS$Promise<string>;
 
   /**
    * Deletes a file from the folder.
    * @param fileName The file to be deleted.
    * @returns A promise that is fulfilled when the file has been deleted.
    */
-  remove(fileName: string): WinJS$WinJS$Promise<void>;
+  remove(fileName: string): WinJS$Promise<void>;
 
   /**
    * Writes the specified text to the specified file.
@@ -36,7 +36,7 @@ declare interface IOHelper {
    * @param text The content to be written to the file.
    * @returns A promise that is completed when the file has been written.
    */
-  writeText(fileName: string, text: string): WinJS$WinJS$Promise<number>;
+  writeText(fileName: string, text: string): WinJS$Promise<number>;
 
   /**
    * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
@@ -46,49 +46,60 @@ declare interface IOHelper {
 declare var npm$namespace$WinJS: {
   log: typeof WinJS$log,
   xhr: typeof WinJS$xhr,
-  validation: typeof WinJS$validation
+  validation: typeof WinJS$validation,
+
+  ErrorFromName: typeof WinJS$ErrorFromName,
+  Promise: typeof WinJS$Promise,
+  Application: typeof npm$namespace$WinJS$Application,
+  Binding: typeof npm$namespace$WinJS$Binding,
+  Class: typeof npm$namespace$WinJS$Class,
+  Namespace: typeof npm$namespace$WinJS$Namespace,
+  Navigation: typeof npm$namespace$WinJS$Navigation,
+  Resources: typeof npm$namespace$WinJS$Resources,
+  UI: typeof npm$namespace$WinJS$UI,
+  Utilities: typeof npm$namespace$WinJS$Utilities
 };
 
-declare var npm$namespace$Application: {
-  addEventListener: typeof Application$addEventListener,
-  checkpoint: typeof Application$checkpoint,
-  queueEvent: typeof Application$queueEvent,
-  removeEventListener: typeof Application$removeEventListener,
-  start: typeof Application$start,
-  stop: typeof Application$stop,
-  onactivated: typeof Application$onactivated,
-  oncheckpoint: typeof Application$oncheckpoint,
-  onerror: typeof Application$onerror,
-  onloaded: typeof Application$onloaded,
-  onready: typeof Application$onready,
-  onsettings: typeof Application$onsettings,
-  onunload: typeof Application$onunload,
-  onbackclick: typeof Application$onbackclick,
-  local: typeof Application$local,
-  roaming: typeof Application$roaming,
-  temp: typeof Application$temp,
-  sessionState: typeof Application$sessionState
+declare var npm$namespace$WinJS$Application: {
+  addEventListener: typeof WinJS$Application$addEventListener,
+  checkpoint: typeof WinJS$Application$checkpoint,
+  queueEvent: typeof WinJS$Application$queueEvent,
+  removeEventListener: typeof WinJS$Application$removeEventListener,
+  start: typeof WinJS$Application$start,
+  stop: typeof WinJS$Application$stop,
+  onactivated: typeof WinJS$Application$onactivated,
+  oncheckpoint: typeof WinJS$Application$oncheckpoint,
+  onerror: typeof WinJS$Application$onerror,
+  onloaded: typeof WinJS$Application$onloaded,
+  onready: typeof WinJS$Application$onready,
+  onsettings: typeof WinJS$Application$onsettings,
+  onunload: typeof WinJS$Application$onunload,
+  onbackclick: typeof WinJS$Application$onbackclick,
+  local: typeof WinJS$Application$local,
+  roaming: typeof WinJS$Application$roaming,
+  temp: typeof WinJS$Application$temp,
+  sessionState: typeof WinJS$Application$sessionState
 };
 
 /**
  * The local storage of the application.
  */
-declare var Application$local: IOHelper;
+declare var WinJS$Application$local: IOHelper;
 
 /**
  * The roaming storage of the application.
  */
-declare var Application$roaming: IOHelper;
+declare var WinJS$Application$roaming: IOHelper;
 
 /**
  * The temp storage of the application.
  */
-declare var Application$temp: IOHelper;
+declare var WinJS$Application$temp: IOHelper;
 
 /**
  * An object used for storing app information that can be used to restore the app's state after it has been suspended and then resumed. Data that can usefully be contained in this object includes the current navigation page or any information the user has added to the input controls on the page. You should not add information about customization (for example colors) or user-defined lists of content.
  */
-declare var Application$sessionState: any;
+declare var WinJS$Application$sessionState: any;
 
 /**
  * Adds an event listener for application-level events: activated, checkpoint, error, loaded, ready, settings, and unload.
@@ -96,7 +107,7 @@ declare var Application$sessionState: any;
  * @param listener The listener to invoke when the event is raised.
  * @param capture true to initiate capture, otherwise false.
  */
-declare function Application$addEventListener(
+declare function WinJS$Application$addEventListener(
   type: string,
   listener: Function,
   capture?: boolean
@@ -105,13 +116,13 @@ declare function Application$addEventListener(
 /**
  * Queues a checkpoint event.
  */
-declare function Application$checkpoint(): void;
+declare function WinJS$Application$checkpoint(): void;
 
 /**
  * Queues an event to be processed by the WinJS.Application event queue.
  * @param eventRecord The event object is expected to have a type property that is used as the event name when dispatching on the WinJS.Application event queue. The entire object is provided to event listeners in the detail property of the event.
  */
-declare function Application$queueEvent(eventRecord: any): void;
+declare function WinJS$Application$queueEvent(eventRecord: any): void;
 
 /**
  * Removes an event listener from the control.
@@ -119,7 +130,7 @@ declare function Application$queueEvent(eventRecord: any): void;
  * @param listener The listener to remove.
  * @param useCapture Specifies whether or not to initiate capture.
  */
-declare function Application$removeEventListener(
+declare function WinJS$Application$removeEventListener(
   type: string,
   listener: Function,
   useCapture?: any
@@ -128,14 +139,14 @@ declare function Application$removeEventListener(
 /**
  * Starts dispatching application events (the activated, checkpoint, error, loaded, ready, settings, and unload events).
  */
-declare function Application$start(): void;
+declare function WinJS$Application$start(): void;
 
 /**
  * Stops application event processing and resets WinJS.Application to its initial state. All WinJS.Application event listeners (for the activated, checkpoint, error, loaded, ready, settings, and unload events) are removed.
  */
-declare function Application$stop(): void;
+declare function WinJS$Application$stop(): void;
 
-declare type Application$IPromiseEvent = {
+declare type WinJS$Application$IPromiseEvent = {
   /**
    * Informs the application object that asynchronous work is being performed, and that this event handler should not be considered complete until the promise completes. This function can be set inside the handlers for all WinJS.Application events: onactivated oncheckpoint onerror onloaded onready onsettings onunload.
    * @param promise The promise that should complete before processing is complete.
@@ -147,90 +158,93 @@ declare type Application$IPromiseEvent = {
  * Occurs when WinRT activation has occurred. The name of this event is "activated" (and also "mainwindowactivated"). This event occurs after the loaded event and before the ready event.
  * @param eventInfo An object that contains information about the event. For more information about event arguments, see the WinRT event argument classes: WebUICachedFileUpdaterActivatedEventArgs, WebUICameraSettingsActivatedEventArgs, WebUIContactPickerActivatedEventArgs, WebUIDeviceActivatedEventArgs, WebUIFileActivatedEventArgs, WebUIFileOpenPickerActivatedEventArgs, WebUIFileSavePickerActivatedEventArgs, WebUILaunchActivatedEventArgs, WebUIPrintTaskSettingsActivatedEventArgs, WebUIProtocolActivatedEventArgs, WebUISearchActivatedEventArgs, WebUIShareTargetActivatedEventArgs.
  */
-declare function Application$onactivated(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onactivated(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs when receiving PLM notification or when the checkpoint function is called.
  * @param eventInfo An object that contains information about the event. The detail property of this object includes the following subproperties: type, setPromise.
  */
-declare function Application$oncheckpoint(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$oncheckpoint(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs when an unhandled error has been raised.
  * @param eventInfo An object that contains information about the event.
  */
-declare function Application$onerror(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onerror(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs after the DOMContentLoaded event, which fires after the page has been parsed but before all the resources are loaded. This event occurs before the activated event and the ready event.
  * @param eventInfo An object that contains information about the event. The detail property of this object includes the following subproperties: type, setPromise.
  */
-declare function Application$onloaded(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onloaded(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs when the application is ready. This event occurs after the loaded event and the activated event.
  * @param eventInfo An object that contains information about the event. The detail property of this object includes the following sub-properties: type, setPromise.
  */
-declare function Application$onready(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onready(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs when the settings charm is invoked.
  * @param eventInfo An object that contains information about the event. The detail property of this object contains the following sub-properties: type, applicationcommands.
  */
-declare function Application$onsettings(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onsettings(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs when the application is about to be unloaded.
  * @param eventInfo An object that contains information about the event. The detail property of this object includes the following sub-properties: type, setPromise.
  */
-declare function Application$onunload(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onunload(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
 /**
  * Occurs whenever a user clicks the hardware backbutton.
  * @param eventInfo An object that contains information about the event. The detail property of this object includes the following sub-properties: type
  */
-declare function Application$onbackclick(
-  eventInfo: Application$IPromiseEvent
+declare function WinJS$Application$onbackclick(
+  eventInfo: WinJS$Application$IPromiseEvent
 ): void;
 
-declare var npm$namespace$Binding: {
-  addClassOneTime: typeof Binding$addClassOneTime,
-  as: typeof Binding$as,
-  bind: typeof Binding$bind,
-  converter: typeof Binding$converter,
-  defaultBind: typeof Binding$defaultBind,
-  define: typeof Binding$define,
-  expandProperties: typeof Binding$expandProperties,
-  getValue: typeof Binding$getValue,
-  initializer: typeof Binding$initializer,
-  oneTime: typeof Binding$oneTime,
-  processAll: typeof Binding$processAll,
-  setAttribute: typeof Binding$setAttribute,
-  setAttributeOneTime: typeof Binding$setAttributeOneTime,
-  unwrap: typeof Binding$unwrap,
-  dynamicObservableMixin: typeof Binding$dynamicObservableMixin,
-  mixin: typeof Binding$mixin,
-  observableMixin: typeof Binding$observableMixin
+declare var npm$namespace$WinJS$Binding: {
+  addClassOneTime: typeof WinJS$Binding$addClassOneTime,
+  as: typeof WinJS$Binding$as,
+  bind: typeof WinJS$Binding$bind,
+  converter: typeof WinJS$Binding$converter,
+  defaultBind: typeof WinJS$Binding$defaultBind,
+  define: typeof WinJS$Binding$define,
+  expandProperties: typeof WinJS$Binding$expandProperties,
+  getValue: typeof WinJS$Binding$getValue,
+  initializer: typeof WinJS$Binding$initializer,
+  oneTime: typeof WinJS$Binding$oneTime,
+  processAll: typeof WinJS$Binding$processAll,
+  setAttribute: typeof WinJS$Binding$setAttribute,
+  setAttributeOneTime: typeof WinJS$Binding$setAttributeOneTime,
+  unwrap: typeof WinJS$Binding$unwrap,
+  dynamicObservableMixin: typeof WinJS$Binding$dynamicObservableMixin,
+  mixin: typeof WinJS$Binding$mixin,
+  observableMixin: typeof WinJS$Binding$observableMixin,
+
+  List: typeof WinJS$Binding$List,
+  Template: typeof WinJS$Binding$Template
 };
 
 /**
  * Allows you to add bindable properties dynamically.
  */
-declare var Binding$dynamicObservableMixin: {
+declare var WinJS$Binding$dynamicObservableMixin: {
   /**
    * Adds a property with change notification to this object, including a ECMAScript5 property definition.
    * @param name The name of the property to add.
@@ -244,7 +258,7 @@ declare var Binding$dynamicObservableMixin: {
    * @param action The function to invoke asynchronously when the property may have changed.
    * @returns This object is returned.
    */
-  Binding$bind(name: string, action: any): Function,
+  bind(name: string, action: any): Function,
 
   /**
    * Gets a property value by name.
@@ -297,7 +311,7 @@ declare var Binding$dynamicObservableMixin: {
 /**
  * Do not instantiate. A list returned by the createFiltered method.
  */
-declare type Binding$FilteredListProjection<T> = {
+declare type WinJS$Binding$FilteredListProjection<T> = {
   /**
    * Returns a key/data pair for the specified index.
    * @param index The index of the value to retrieve.
@@ -329,12 +343,12 @@ declare type Binding$FilteredListProjection<T> = {
    * The length of the list. Returns an integer value one higher than the highest element defined in an list.
    */
   length: number
-} & Binding$ListProjection<T>;
+} & ListProjection<T>;
 
 /**
  * A list of groups.
  */
-declare type Binding$GroupsListProjection<T> = {
+declare type WinJS$Binding$GroupsListProjection<T> = {
   /**
    * Gets a key/data pair for the specified index.
    * @param index The index of the value to retrieve.
@@ -360,16 +374,16 @@ declare type Binding$GroupsListProjection<T> = {
    * The length of the list. Returns an integer value one higher than the highest element defined in an list.
    */
   length: number
-} & Binding$ListBase<T>;
+} & ListBase<T>;
 
 /**
  * Do not instantiate. Sorts the underlying list by group key and within a group respects the position of the item in the underlying list. Returned by createGrouped.
  */
-declare type Binding$GroupedSortedListProjection<T, G> = {
+declare type WinJS$Binding$GroupedSortedListProjection<T, G> = {
   /**
    * Gets a List, which is a projection of the groups that were identified in this list.
    */
-  groups: Binding$GroupsListProjection<G>,
+  groups: WinJS$Binding$GroupsListProjection<G>,
 
   /**
    * Returns a key/data pair for the specified index.
@@ -377,12 +391,12 @@ declare type Binding$GroupedSortedListProjection<T, G> = {
    * @returns An object that has two properties: key and data.
    */
   getItem(index: number): Binding$IGroupKeyDataPair<T>
-} & Binding$SortedListProjection<T>;
+} & SortedListProjection<T>;
 
 /**
  * Represents a list of objects that can be accessed by index or by a string key. Provides methods to search, sort, filter, and manipulate the data.
  */
-declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
+declare class WinJS$Binding$List<T> mixins ListBaseWithMutators<T> {
   /**
    * Creates a List object.
    * @constructor
@@ -461,7 +475,7 @@ declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
    */
   createFiltered(
     predicate: (x: T) => boolean
-  ): Binding$FilteredListProjection<T>;
+  ): WinJS$Binding$FilteredListProjection<T>;
 
   /**
    * Creates a live grouped projection over this list. As the list changes, the grouped projection reacts to those changes and may also change. The grouped projection sorts all the elements of the list to be in group-contiguous order. The grouped projection also contains a .groups property, which is a List representing the groups that were found in the list.
@@ -474,7 +488,7 @@ declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
     groupKey: (x: T) => string,
     groupData: (x: T) => G,
     groupSorter?: (left: string, right: string) => number
-  ): Binding$GroupedSortedListProjection<T, G>;
+  ): WinJS$Binding$GroupedSortedListProjection<T, G>;
 
   /**
    * Creates a live sorted projection over this list. As the list changes, the sorted projection reacts to those changes and may also change.
@@ -722,7 +736,7 @@ declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
    * @param item The elements to insert into the list in place of the deleted elements.
    * @returns The deleted elements.
    */
-  splice(Application$start: number, howMany?: number, ...item: T[]): T[];
+  splice(start: number, howMany?: number, ...item: T[]): T[];
 
   /**
    * Removes one or more listeners from the notification list for a given property.
@@ -743,7 +757,7 @@ declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
   /**
    * Gets the IListDataSource for the list. The only purpose of this property is to adapt a List to the data model that is used by ListView and FlipView.
    */
-  dataSource: WinJS$WinJS$UI.UI$IListDataSource<T>;
+  dataSource: WinJS$UIIListDataSource<T>;
 
   /**
    * Gets or sets the length of the list, which is an integer value one higher than the highest element defined in the list.
@@ -759,7 +773,7 @@ declare class Binding$List<T> mixins Binding$ListBaseWithMutators<T> {
 /**
  * Represents a base class for lists.
  */
-declare interface Binding$ListBase<T> {
+declare interface WinJS$Binding$ListBase<T> {
   /**
    * An item in the list has changed its value.
    * @param eventInfo An object that contains information about the event. The detail contains the following information: index, key, newItem, newValue, oldItem, oldValue.
@@ -802,7 +816,7 @@ declare interface Binding$ListBase<T> {
    * @param listener The listener to invoke when the event gets raised.
    * @param useCapture If true, initiates capture, otherwise false.
    */
-  Application$addEventListener(
+  addEventListener(
     type: string,
     listener: Function,
     useCapture?: boolean
@@ -814,7 +828,7 @@ declare interface Binding$ListBase<T> {
    * @param action The function to invoke asynchronously when the property may have changed.
    * @returns A reference to this observableMixin object.
    */
-  Binding$bind(name: string, action: Function): any;
+  bind(name: string, action: Function): any;
 
   /**
    * Returns a new list consisting of a combination of two arrays.
@@ -830,7 +844,7 @@ declare interface Binding$ListBase<T> {
    */
   createFiltered(
     predicate: (x: T) => boolean
-  ): Binding$FilteredListProjection<T>;
+  ): WinJS$Binding$FilteredListProjection<T>;
 
   /**
    * Creates a live grouped projection over this list. As the list changes, the grouped projection reacts to those changes and may also change. The grouped projection sorts all the elements of the list to be in group-contiguous order. The grouped projection also contains a .groups property, which is a List representing the groups that were found in the list.
@@ -843,7 +857,7 @@ declare interface Binding$ListBase<T> {
     groupKey: (x: T) => string,
     groupData: (x: T) => G,
     groupSorter?: (left: string, right: string) => number
-  ): Binding$GroupedSortedListProjection<T, G>;
+  ): WinJS$Binding$GroupedSortedListProjection<T, G>;
 
   /**
    * Creates a live sorted projection over this list. As the list changes, the sorted projection reacts to those changes and may also change.
@@ -860,7 +874,7 @@ declare interface Binding$ListBase<T> {
    * @param eventProperties The set of additional properties to be attached to the event object when the event is raised.
    * @returns true if preventDefault was called on the event.
    */
-  XYFocus$dispatchEvent(type: string, eventProperties: any): boolean;
+  dispatchEvent(type: string, eventProperties: any): boolean;
 
   /**
    * Checks whether the specified callback function returns true for all elements in a list.
@@ -987,7 +1001,7 @@ declare interface Binding$ListBase<T> {
    * @param listener The listener to remove.
    * @param useCapture true if capture is to be initiated, otherwise false.
    */
-  Application$removeEventListener(
+  removeEventListener(
     type: string,
     listener: Function,
     useCapture?: boolean
@@ -1023,13 +1037,13 @@ declare interface Binding$ListBase<T> {
   /**
    * Gets the IListDataSource for the list. The only purpose of this property is to adapt a List to the data model that is used by ListView and FlipView.
    */
-  dataSource: WinJS$WinJS$UI.UI$IListDataSource<T>;
+  dataSource: WinJS$UIIListDataSource<T>;
 }
 
 /**
  * Represents a base class for normal list modifying operations.
  */
-declare type Binding$ListBaseWithMutators<T> = {
+declare type WinJS$Binding$ListBaseWithMutators<T> = {
   /**
    * Removes the last element from a list and returns it.
    * @returns The last element from the list.
@@ -1057,12 +1071,12 @@ declare type Binding$ListBaseWithMutators<T> = {
    */
   unshift(value: T): number,
   unshift(...values: T[]): number
-} & Binding$ListBase<T>;
+} & ListBase<T>;
 
 /**
  * Represents a base class for list projections.
  */
-declare type Binding$ListProjection<T> = {
+declare type WinJS$Binding$ListProjection<T> = {
   /**
    * Disconnects a WinJS.Binding.List projection from its underlying WinJS.Binding.List. It's only important to call this method when the WinJS.Binding.List projection and the WinJS.Binding.List have different lifetimes. (Call this method on the WinJS.Binding.List projection, not the underlying WinJS.Binding.List.)
    */
@@ -1089,13 +1103,13 @@ declare type Binding$ListProjection<T> = {
    * @param item The elements to insert into the list in place of the deleted elements.
    * @returns The deleted elements.
    */
-  splice(Application$start: number, howMany?: number, ...item: T[]): T[]
-} & Binding$ListBaseWithMutators<T>;
+  splice(start: number, howMany?: number, ...item: T[]): T[]
+} & ListBaseWithMutators<T>;
 
 /**
  * Provides a standard implementation of the bindable contract, as well as a basic storage mechanism that participates in change notification and an asynchronous notification implementation.
  */
-declare var Binding$mixin: {
+declare var WinJS$Binding$mixin: {
   /**
    * Adds a property to the object. The property includes change notification and an ECMAScript 5 property definition .
    * @param name The name of the property to add.
@@ -1110,7 +1124,7 @@ declare var Binding$mixin: {
    * @param action The function to invoke asynchronously when the property may have changed.
    * @returns This object is returned.
    */
-  Binding$bind(name: string, action: any): Function,
+  bind(name: string, action: any): Function,
 
   /**
    * Gets a property value by name.
@@ -1163,14 +1177,14 @@ declare var Binding$mixin: {
 /**
  * Provides functions that can make an object observable.
  */
-declare var Binding$observableMixin: {
+declare var WinJS$Binding$observableMixin: {
   /**
    * Links the specified action to the property specified in the name parameter. This function is invoked when the value of the property may have changed. It is not guaranteed that the action will be called only when a value has actually changed, nor is it guaranteed that the action will be called for every value change. The implementation of this function coalesces change notifications, such that multiple updates to a property value may result in only a single call to the specified action.
    * @param name The name of the property to which to bind the action.
    * @param action The function to invoke asynchronously when the property may have changed.
    * @returns A reference to this observableMixin object.
    */
-  Binding$bind(name: string, action: Function): any,
+  bind(name: string, action: Function): any,
 
   /**
    * Notifies listeners that a property value was updated.
@@ -1193,7 +1207,7 @@ declare var Binding$observableMixin: {
 /**
  * Do not instantiate. Returned by the createSorted method.
  */
-declare type Binding$SortedListProjection<T> = {
+declare type WinJS$Binding$SortedListProjection<T> = {
   /**
    * Returns a key/data pair for the specified index.
    * @param index The index of the value to retrieve.
@@ -1225,12 +1239,12 @@ declare type Binding$SortedListProjection<T> = {
    * Gets or sets the length of the list. Returns an integer value one higher than the highest element defined in a list.
    */
   length: number
-} & Binding$ListProjection<T>;
+} & ListProjection<T>;
 
 /**
  * Provides a reusable declarative binding element.
  */
-declare class Binding$Template {
+declare class WinJS$Binding$Template {
   /**
    * Creates a template that provides a reusable declarative binding element.
    * @constructor
@@ -1251,11 +1265,11 @@ declare class Binding$Template {
    * This API supports the WinJS infrastructure and is not intended to be used directly from your code. Use render instead.
    */
   renderItem<T>(
-    item: WinJS$WinJS$Promise<T>,
+    item: WinJS$Promise<T>,
     recyled: HTMLElement
   ): {
-    element: WinJS$WinJS$Promise<HTMLElement>,
-    renderComplete: WinJS$WinJS$Promise<any>
+    element: WinJS$Promise<HTMLElement>,
+    renderComplete: WinJS$Promise<any>
   };
 
   /**
@@ -1319,7 +1333,7 @@ declare class Binding$Template {
  * @param sourceProperties The path on the source object to the source class.
  * @param dest The destination object.
  */
-declare function Binding$addClassOneTime(
+declare function WinJS$Binding$addClassOneTime(
   source: any,
   sourceProperties: any[],
   dest: HTMLElement
@@ -1330,7 +1344,7 @@ declare function Binding$addClassOneTime(
  * @param data The object to observe.
  * @returns The observable object.
  */
-declare function Binding$as<U>(Utilities$data: U): U;
+declare function WinJS$Binding$as<U>(data: U): U;
 
 /**
  * Binds to one or more properties on the observable object or or on child values of that object.
@@ -1338,14 +1352,17 @@ declare function Binding$as<U>(Utilities$data: U): U;
  * @param bindingDescriptor An object literal containing the binding declarations. Binding declarations take the form: { propertyName: (function | bindingDeclaration), ... }.
  * @returns An object that contains at least a "cancel" field, which is a function that removes all bindings associated with this bind request.
  */
-declare function Binding$bind(observable: any, bindingDescriptor: any): any;
+declare function WinJS$Binding$bind(
+  observable: any,
+  bindingDescriptor: any
+): any;
 
 /**
  * Creates a default binding initializer for binding between a source property and a destination property with the specified converter function that is executed on the value of the source property.
  * @param convert The conversion function that takes the source property and produces a value that is set to the destination property. This function must be accessible from the global namespace.
  * @returns The binding initializer.
  */
-declare function Binding$converter(convert: Function): Function;
+declare function WinJS$Binding$converter(convert: Function): Function;
 
 /**
  * Creates a one-way binding between the source object and the destination object. Warning Do not attempt to bind data to the ID of an HTML element.
@@ -1355,7 +1372,7 @@ declare function Binding$converter(convert: Function): Function;
  * @param destProperties The path on the destination object to the destination property.
  * @returns An object with a cancel method that is used to coalesce bindings.
  */
-declare function Binding$defaultBind(
+declare function WinJS$Binding$defaultBind(
   source: any,
   sourceProperties: any,
   dest: any,
@@ -1367,26 +1384,28 @@ declare function Binding$defaultBind(
  * @param data The object to use as the pattern for defining the set of properties.
  * @returns A constructor function with 1 optional argument that is the initial state of the properties.
  */
-declare function Binding$define(Utilities$data: any): Function;
+declare function WinJS$Binding$define(data: any): Function;
 
 /**
  * Wraps the specified object so that all its properties are instrumented for binding. This is meant to be used in conjunction with the binding mixin.
  * @param shape The specification for the bindable object.
  * @returns An object with a set of properties all of which are wired for binding.
  */
-declare function Binding$expandProperties(shape: any): any;
+declare function WinJS$Binding$expandProperties(shape: any): any;
 
 /**
  * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
  */
-declare function Binding$getValue(obj: any, path?: any): any;
+declare function WinJS$Binding$getValue(obj: any, path?: any): any;
 
 /**
  * Marks a custom initializer function as being compatible with declarative data binding.
  * @param customInitializer The custom initializer to be marked as compatible with declarative data binding.
  * @returns The input customInitializer.
  */
-declare function Binding$initializer(customInitializer: Function): Function;
+declare function WinJS$Binding$initializer(
+  customInitializer: Function
+): Function;
 
 /**
  * Sets the destination property to the value of the source property.
@@ -1396,7 +1415,7 @@ declare function Binding$initializer(customInitializer: Function): Function;
  * @param destProperties The path on the destination object to the destination property.
  * @returns An object with a cancel method that is used to coalesce bindings.
  */
-declare function Binding$oneTime(
+declare function WinJS$Binding$oneTime(
   source: any,
   sourceProperties: any,
   dest: any,
@@ -1412,7 +1431,7 @@ declare function Binding$oneTime(
  * @param defaultInitializer The binding initializer to use in the case that one is not specified in a binding expression. If not provided, the behavior is the same as Binding.defaultBind.
  * @returns A Promise that completes when every item that contains the data-win-bind attribute has been processed and the update has started.
  */
-declare function Binding$processAll(
+declare function WinJS$Binding$processAll(
   rootElement?: Element,
   dataContext?: any,
   skipRoot?: boolean,
@@ -1428,7 +1447,7 @@ declare function Binding$processAll(
  * @param destProperties The path on the destination object to the destination property. This must be a single name.
  * @returns An object with a cancel() method that is used to coalesce bindings.
  */
-declare function Binding$setAttribute(
+declare function WinJS$Binding$setAttribute(
   source: any,
   sourceProperties: any[],
   dest: Element,
@@ -1442,7 +1461,7 @@ declare function Binding$setAttribute(
  * @param dest The destination object.
  * @param destProperties The path on the destination object to the destination property. This must be a single name.
  */
-declare function Binding$setAttributeOneTime(
+declare function WinJS$Binding$setAttributeOneTime(
   source: any,
   sourceProperties: any[],
   dest: Element,
@@ -1454,23 +1473,23 @@ declare function Binding$setAttributeOneTime(
  * @param data The object for which to retrieve the original value.
  * @returns If the specified object is an observable proxy, the original object is returned, otherwise the same object is returned.
  */
-declare function Binding$unwrap(Utilities$data: any): any;
+declare function WinJS$Binding$unwrap(data: any): any;
 
-declare interface Binding$IKeyDataPair<T> {
+declare interface WinJS$Binding$IKeyDataPair<T> {
   key: string;
-  Utilities$data: T;
+  data: T;
 }
 
-declare type Binding$IGroupKeyDataPair<T> = {
+declare type WinJS$Binding$IGroupKeyDataPair<T> = {
   groupSize: number,
   firstItemIndexHint: number,
   firstItemKey: string
-} & Binding$IKeyDataPair<T>;
+} & IKeyDataPair<T>;
 
-declare var npm$namespace$Class: {
-  define: typeof Class$define,
-  derive: typeof Class$derive,
-  mix: typeof Class$mix
+declare var npm$namespace$WinJS$Class: {
+  define: typeof WinJS$Class$define,
+  derive: typeof WinJS$Class$derive,
+  mix: typeof WinJS$Class$mix
 };
 
 /**
@@ -1480,7 +1499,7 @@ declare var npm$namespace$Class: {
  * @param staticMembers The set of static fields, properties, and methods made available on the type.
  * @returns The newly-defined type.
  */
-declare function Class$define(
+declare function WinJS$Class$define(
   constructor?: Function,
   instanceMembers?: any,
   staticMembers?: any
@@ -1494,7 +1513,7 @@ declare function Class$define(
  * @param staticMembers The set of static fields, properties, and methods to be made available on the type.
  * @returns The newly-defined type.
  */
-declare function Class$derive(
+declare function WinJS$Class$derive(
   baseClass: any,
   constructor: Function,
   instanceMembers?: any,
@@ -1507,7 +1526,7 @@ declare function Class$derive(
  * @param mixin An object declaring the set of instance members. The mixin parameter list is of variable length.
  * @returns The newly defined class.
  */
-declare function Class$mix(constructor: Function, ...Binding$mixin: any[]): any;
+declare function WinJS$Class$mix(constructor: Function, ...mixin: any[]): any;
 
 /**
  * Can be set to show the results of a validation process.
@@ -1589,7 +1608,7 @@ declare interface WinJS$IPromise<T> {
 /**
  * Provides a mechanism to schedule work to be done on a value that has not yet been computed. It is an abstraction for managing interactions with asynchronous APIs. For more information about asynchronous programming, see Asynchronous programming. For more information about promises in JavaScript, see Asynchronous programming in JavaScript. For more information about using promises, see the WinJS Promise sample.
  */
-declare class WinJS$Promise<T> mixins WinJS$IPromise<T> {
+declare class WinJS$Promise<T> mixins IPromise<T> {
   /**
    * A promise provides a mechanism to schedule work to be done on a value that has not yet been computed. It is a convenient abstraction for managing interactions with asynchronous APIs. For more information about asynchronous programming, see Asynchronous programming. For more information about promises in JavaScript, see Asynchronous programming in JavaScript. For more information about using promises, see the WinJS Promise sample.
    * @constructor
@@ -1901,14 +1920,14 @@ declare interface WinJS$IXHROptions {
   user?: string;
   password?: string;
   headers?: any;
-  Utilities$data?: any;
+  data?: any;
   responseType?: string;
   customRequestInitializer?: (request: XMLHttpRequest) => void;
 }
 
-declare var npm$namespace$Namespace: {
-  define: typeof Namespace$define,
-  defineWithParent: typeof Namespace$defineWithParent
+declare var npm$namespace$WinJS$Namespace: {
+  define: typeof WinJS$Namespace$define,
+  defineWithParent: typeof WinJS$Namespace$defineWithParent
 };
 
 /**
@@ -1917,7 +1936,7 @@ declare var npm$namespace$Namespace: {
  * @param members The members of the new namespace.
  * @returns The newly-defined namespace.
  */
-declare function Namespace$define(name?: string, members?: any): any;
+declare function WinJS$Namespace$define(name?: string, members?: any): any;
 
 /**
  * Defines a new namespace with the specified name under the specified parent namespace. For more information, see Organizing your code with WinJS.Namespace.
@@ -1926,52 +1945,52 @@ declare function Namespace$define(name?: string, members?: any): any;
  * @param members The members of the new namespace.
  * @returns The newly-defined namespace.
  */
-declare function Namespace$defineWithParent(
+declare function WinJS$Namespace$defineWithParent(
   parentNamespace?: any,
   name?: string,
   members?: any
 ): any;
 
-declare var npm$namespace$Navigation: {
-  addEventListener: typeof Navigation$addEventListener,
-  back: typeof Navigation$back,
-  forward: typeof Navigation$forward,
-  navigate: typeof Navigation$navigate,
-  removeEventListener: typeof Navigation$removeEventListener,
-  onbeforenavigate: typeof Navigation$onbeforenavigate,
-  onnavigated: typeof Navigation$onnavigated,
-  onnavigating: typeof Navigation$onnavigating,
-  canGoBack: typeof Navigation$canGoBack,
-  canGoForward: typeof Navigation$canGoForward,
-  history: typeof Navigation$history,
-  location: typeof Navigation$location,
-  state: typeof Navigation$state
+declare var npm$namespace$WinJS$Navigation: {
+  addEventListener: typeof WinJS$Navigation$addEventListener,
+  back: typeof WinJS$Navigation$back,
+  forward: typeof WinJS$Navigation$forward,
+  navigate: typeof WinJS$Navigation$navigate,
+  removeEventListener: typeof WinJS$Navigation$removeEventListener,
+  onbeforenavigate: typeof WinJS$Navigation$onbeforenavigate,
+  onnavigated: typeof WinJS$Navigation$onnavigated,
+  onnavigating: typeof WinJS$Navigation$onnavigating,
+  canGoBack: typeof WinJS$Navigation$canGoBack,
+  canGoForward: typeof WinJS$Navigation$canGoForward,
+  history: typeof WinJS$Navigation$history,
+  location: typeof WinJS$Navigation$location,
+  state: typeof WinJS$Navigation$state
 };
 
 /**
  * Determines whether it is possible to navigate backwards.
  */
-declare var Navigation$canGoBack: boolean;
+declare var WinJS$Navigation$canGoBack: boolean;
 
 /**
  * Determines if it is possible to navigate forwards.
  */
-declare var Navigation$canGoForward: boolean;
+declare var WinJS$Navigation$canGoForward: boolean;
 
 /**
  * Gets or sets the navigation history.
  */
-declare var Navigation$history: any;
+declare var WinJS$Navigation$history: any;
 
 /**
  * Gets or sets the current location.
  */
-declare var Navigation$location: string;
+declare var WinJS$Navigation$location: string;
 
 /**
  * Gets or sets a user-defined object that represents the state associated with the current location.
  */
-declare var Navigation$state: any;
+declare var WinJS$Navigation$state: any;
 
 /**
  * Adds an event listener to the control.
@@ -1979,7 +1998,7 @@ declare var Navigation$state: any;
  * @param listener The listener to invoke when the event gets raised.
  * @param capture If true, specifies that capture should be initiated, otherwise false.
  */
-declare function Navigation$addEventListener(
+declare function WinJS$Navigation$addEventListener(
   eventType: string,
   listener: Function,
   capture?: boolean
@@ -1990,14 +2009,18 @@ declare function Navigation$addEventListener(
  * @param distance The number of entries to go back into the history.
  * @returns A promise that is completed with a value that indicates whether or not the navigation was successful.
  */
-declare function Navigation$back(distance?: number): WinJS$Promise<boolean>;
+declare function WinJS$Navigation$back(
+  distance?: number
+): WinJS$Promise<boolean>;
 
 /**
  * Navigates forwards.
  * @param distance The number of entries to go forward.
  * @returns A promise that is completed with a value that indicates whether or not the navigation was successful.
  */
-declare function Navigation$forward(distance?: number): WinJS$Promise<boolean>;
+declare function WinJS$Navigation$forward(
+  distance?: number
+): WinJS$Promise<boolean>;
 
 /**
  * Navigates to a location.
@@ -2005,8 +2028,8 @@ declare function Navigation$forward(distance?: number): WinJS$Promise<boolean>;
  * @param initialState A user-defined object that represents the navigation state that may be accessed through state.
  * @returns A promise that is completed with a value that indicates whether or not the navigation was successful (true if successful, otherwise false).
  */
-declare function Navigation$navigate(
-  Navigation$location: any,
+declare function WinJS$Navigation$navigate(
+  location: any,
   initialState?: any
 ): WinJS$Promise<boolean>;
 
@@ -2016,7 +2039,7 @@ declare function Navigation$navigate(
  * @param listener The listener to remove.
  * @param useCapture Specifies whether or not to initiate capture.
  */
-declare function Navigation$removeEventListener(
+declare function WinJS$Navigation$removeEventListener(
   eventType: string,
   listener: Function,
   useCapture?: boolean
@@ -2026,27 +2049,29 @@ declare function Navigation$removeEventListener(
  * Occurs before navigation.
  * @param eventInfo An object that contains information about the event. The detail property of this object contains the following sub-properties: location, state.
  */
-declare function Navigation$onbeforenavigate(eventInfo: CustomEvent): void;
+declare function WinJS$Navigation$onbeforenavigate(
+  eventInfo: CustomEvent
+): void;
 
 /**
  * Occurs after navigation has taken place.
  * @param eventInfo An object that contains information about the event. The detail property of this object contains the following sub-properties: location, state.
  */
-declare function Navigation$onnavigated(eventInfo: CustomEvent): void;
+declare function WinJS$Navigation$onnavigated(eventInfo: CustomEvent): void;
 
 /**
  * Occurs when navigation is taking place.
  * @param eventInfo An object that contains information about the event. The detail property of this object contains the following sub-properties: location, state.
  */
-declare function Navigation$onnavigating(eventInfo: CustomEvent): void;
+declare function WinJS$Navigation$onnavigating(eventInfo: CustomEvent): void;
 
-declare var npm$namespace$Resources: {
-  addEventListener: typeof Resources$addEventListener,
-  dispatchEvent: typeof Resources$dispatchEvent,
-  getString: typeof Resources$getString,
-  processAll: typeof Resources$processAll,
-  removeEventListener: typeof Resources$removeEventListener,
-  oncontextchanged: typeof Resources$oncontextchanged
+declare var npm$namespace$WinJS$Resources: {
+  addEventListener: typeof WinJS$Resources$addEventListener,
+  dispatchEvent: typeof WinJS$Resources$dispatchEvent,
+  getString: typeof WinJS$Resources$getString,
+  processAll: typeof WinJS$Resources$processAll,
+  removeEventListener: typeof WinJS$Resources$removeEventListener,
+  oncontextchanged: typeof WinJS$Resources$oncontextchanged
 };
 
 /**
@@ -2055,7 +2080,7 @@ declare var npm$namespace$Resources: {
  * @param listener The listener (event handler function) to associate with the event.
  * @param useCapture Set to true to register the listener for the capturing phase; otherwise, set to false to register the listener for the bubbling phase.
  */
-declare function Resources$addEventListener(
+declare function WinJS$Resources$addEventListener(
   type: string,
   listener: Function,
   useCapture?: boolean
@@ -2066,18 +2091,21 @@ declare function Resources$addEventListener(
  * @param type The name of the event to raise.
  * @param details The set of additional properties to attach to the event object.
  */
-declare function Resources$dispatchEvent(type: string, details: any): void;
+declare function WinJS$Resources$dispatchEvent(
+  type: string,
+  details: any
+): void;
 
 /**
  * Retrieves the resource string that has the specified resource identifier.
  * @param resourceId The resource ID of the string to retrieve.
  * @returns An object that can contain these properties: value, empty, lang.
  */
-declare function Resources$getString(
+declare function WinJS$Resources$getString(
   resourceId: string
 ): {
   value: string,
-  Utilities$empty?: boolean,
+  empty?: boolean,
   lang?: string
 };
 
@@ -2085,7 +2113,7 @@ declare function Resources$getString(
  * Processes data-win-res attributes on elements and replaces attributes and properties with resource strings.
  * @param rootElement The element to process. The element and its child elements will be processed. If an element isn't specified, the entire document is processed.
  */
-declare function Resources$processAll(
+declare function WinJS$Resources$processAll(
   rootElement?: HTMLElement
 ): WinJS$Promise<void>;
 
@@ -2095,7 +2123,7 @@ declare function Resources$processAll(
  * @param listener The listener (event handler function) to remove.
  * @param useCapture Set to true to remove the capturing phase listener; set to false to remove the bubbling phase listener.
  */
-declare function Resources$removeEventListener(
+declare function WinJS$Resources$removeEventListener(
   type: string,
   listener: Function,
   useCapture?: boolean
@@ -2105,11 +2133,15 @@ declare function Resources$removeEventListener(
  * Occurs when the user changes the system's language or contrast, or the scale of the display, or when the user changes any of the items in the current context's qualifier values list. For more info about the current context's qualifier values list, see the Remarks section.
  * @param eventInfo An object that contains information about the event. The detail property of this object contains the following sub-properties: detail.qualifier, detail.changed.
  */
-declare function Resources$oncontextchanged(eventInfo: CustomEvent): void;
+declare function WinJS$Resources$oncontextchanged(eventInfo: CustomEvent): void;
 
-declare var npm$namespace$TrackTabBehavior: {
-  attach: typeof TrackTabBehavior$attach,
-  detach: typeof TrackTabBehavior$detach
+declare var npm$namespace$WinJS$UI: {
+  TrackTabBehavior: typeof npm$namespace$WinJS$UI$TrackTabBehavior
+};
+
+declare var npm$namespace$WinJS$UI$TrackTabBehavior: {
+  attach: typeof WinJS$UI$TrackTabBehavior$attach,
+  detach: typeof WinJS$UI$TrackTabBehavior$detach
 };
 
 /**
@@ -2117,7 +2149,7 @@ declare var npm$namespace$TrackTabBehavior: {
  * @param element The element to update.
  * @param tabIndex The index value of the element within its container.
  */
-declare function TrackTabBehavior$attach(
+declare function WinJS$UI$TrackTabBehavior$attach(
   element: HTMLElement,
   tabIndex: number
 ): void;
@@ -2126,54 +2158,45 @@ declare function TrackTabBehavior$attach(
  * Removes the tab order information from the specified element.
  * @param element The element to remove tab information from.
  */
-declare function TrackTabBehavior$detach(element: HTMLElement): void;
+declare function WinJS$UI$TrackTabBehavior$detach(element: HTMLElement): void;
 
-declare var npm$namespace$Scheduler: {
-  createOwnerToken: typeof Scheduler$createOwnerToken,
-  execHigh: typeof Scheduler$execHigh,
-  retrieveState: typeof Scheduler$retrieveState,
-  requestDrain: typeof Scheduler$requestDrain,
-  schedule: typeof Scheduler$schedule,
-  schedulePromiseAboveNormal: typeof Scheduler$schedulePromiseAboveNormal,
-  schedulePromiseBelowNormal: typeof Scheduler$schedulePromiseBelowNormal,
-  schedulePromiseHigh: typeof Scheduler$schedulePromiseHigh,
-  schedulePromiseIdle: typeof Scheduler$schedulePromiseIdle,
-  schedulePromiseNormal: typeof Scheduler$schedulePromiseNormal,
-  currentPriority: typeof Scheduler$currentPriority
+declare var npm$namespace$WinJS$Utilities: {
+  Scheduler: typeof npm$namespace$WinJS$Utilities$Scheduler
+};
+
+declare var npm$namespace$WinJS$Utilities$Scheduler: {
+  createOwnerToken: typeof WinJS$Utilities$Scheduler$createOwnerToken,
+  execHigh: typeof WinJS$Utilities$Scheduler$execHigh,
+  retrieveState: typeof WinJS$Utilities$Scheduler$retrieveState,
+  requestDrain: typeof WinJS$Utilities$Scheduler$requestDrain,
+  schedule: typeof WinJS$Utilities$Scheduler$schedule,
+  schedulePromiseAboveNormal: typeof WinJS$Utilities$Scheduler$schedulePromiseAboveNormal,
+  schedulePromiseBelowNormal: typeof WinJS$Utilities$Scheduler$schedulePromiseBelowNormal,
+  schedulePromiseHigh: typeof WinJS$Utilities$Scheduler$schedulePromiseHigh,
+  schedulePromiseIdle: typeof WinJS$Utilities$Scheduler$schedulePromiseIdle,
+  schedulePromiseNormal: typeof WinJS$Utilities$Scheduler$schedulePromiseNormal,
+  currentPriority: typeof WinJS$Utilities$Scheduler$currentPriority,
+  Priority: typeof WinJS$Utilities$Scheduler$Priority
 };
 
 /**
  * Represents a priority for a job managed by the Scheduler.
  */
-declare class Scheduler$Priority {
-  constructor(...args: empty): mixed;
-  static +aboveNormal: Class<Scheduler$Priority__aboveNormal> &
-    Scheduler$Priority__aboveNormal &
-    0; // 0
-  static +belowNormal: Class<Scheduler$Priority__belowNormal> &
-    Scheduler$Priority__belowNormal &
-    1; // 1
-  static +high: Class<Scheduler$Priority__high> & Scheduler$Priority__high & 2; // 2
-  static +idle: Class<Scheduler$Priority__idle> & Scheduler$Priority__idle & 3; // 3
-  static +max: Class<Scheduler$Priority__max> & Scheduler$Priority__max & 4; // 4
-  static +min: Class<Scheduler$Priority__min> & Scheduler$Priority__min & 5; // 5
-  static +normal: Class<Scheduler$Priority__normal> &
-    Scheduler$Priority__normal &
-    6; // 6
-}
 
-declare class Scheduler$Priority__aboveNormal mixins Scheduler$Priority {}
-declare class Scheduler$Priority__belowNormal mixins Scheduler$Priority {}
-declare class Scheduler$Priority__high mixins Scheduler$Priority {}
-declare class Scheduler$Priority__idle mixins Scheduler$Priority {}
-declare class Scheduler$Priority__max mixins Scheduler$Priority {}
-declare class Scheduler$Priority__min mixins Scheduler$Priority {}
-declare class Scheduler$Priority__normal mixins Scheduler$Priority {}
+declare var WinJS$Utilities$Scheduler$Priority: {|
+  +aboveNormal: 0, // 0
+  +belowNormal: 1, // 1
+  +high: 2, // 2
+  +idle: 3, // 3
+  +max: 4, // 4
+  +min: 5, // 5
+  +normal: 6 // 6
+|};
 
 /**
  * Represents a work item that's executed by the Scheduler.
  */
-declare interface Scheduler$IJob {
+declare interface WinJS$Utilities$Scheduler$IJob {
   /**
    * Cancels the job.
    */
@@ -2197,7 +2220,7 @@ declare interface Scheduler$IJob {
   /**
    * Gets the unique numeric identifier assigned to the job.
    */
-  Utilities$id: number;
+  id: number;
 
   /**
    * Gets or sets the name of the job.
@@ -2212,13 +2235,13 @@ declare interface Scheduler$IJob {
   /**
    * Gets or sets the priority of the job.
    */
-  priority: Scheduler$Priority;
+  priority: WinJS$Utilities$Scheduler$Priority;
 }
 
 /**
  * Provides a control mechanism that allows a job to cooperatively yield. This object is passed to your work function when you schedule it.
  */
-declare interface Scheduler$IJobInfo {
+declare interface WinJS$Utilities$Scheduler$IJobInfo {
   /**
    * Uses a Promise to determine how long the scheduler should wait before rescheduling the job after it yields.
    * @param promise Once the work item yields, the scheduler will wait for this Promise to complete before rescheduling the job.
@@ -2234,7 +2257,7 @@ declare interface Scheduler$IJobInfo {
   /**
    * Gets the work item associated with this IJobInfo.
    */
-  job: Scheduler$IJob;
+  job: WinJS$Utilities$Scheduler$IJob;
 
   /**
    * Gets a value that specifies whether the job should yield.
@@ -2245,7 +2268,7 @@ declare interface Scheduler$IJobInfo {
 /**
  * Represents an object that owns jobs. You can use this object to cancel a set of jobs.
  */
-declare interface Scheduler$IOwnerToken {
+declare interface WinJS$Utilities$Scheduler$IOwnerToken {
   /**
    * Synchronously cancels the job that this token owns, including paused and blocked jobs.
    */
@@ -2255,26 +2278,26 @@ declare interface Scheduler$IOwnerToken {
 /**
  * Gets the current priority at which the caller is executing.
  */
-declare var Scheduler$currentPriority: Scheduler$Priority;
+declare var WinJS$Utilities$Scheduler$currentPriority: WinJS$Utilities$Scheduler$Priority;
 
 /**
  * Creates and returns a new IOwnerToken which can be set to the owner property of one or more jobs.
  * @returns A new IOwnerToken which can be set to the owner property of one or more jobs.
  */
-declare function Scheduler$createOwnerToken(): Scheduler$IOwnerToken;
+declare function WinJS$Utilities$Scheduler$createOwnerToken(): WinJS$Utilities$Scheduler$IOwnerToken;
 
 /**
  * Runs the specified callback in a high priority context.
  * @param callback The callback to run in a high priority callback.
  * @returns The return value of the callback.
  */
-declare function Scheduler$execHigh<U>(callback: () => U): U;
+declare function WinJS$Utilities$Scheduler$execHigh<U>(callback: () => U): U;
 
 /**
  * Returns a string representation of the scheduler's state for diagnostic purposes. The jobs and drain requests are displayed in the order in which they are currently expected to be processed. The current job and drain request are marked by an asterisk.
  * @returns A string representation of the scheduler's state for diagnostic purposes. The jobs and drain requests are displayed in the order in which they are currently expected to be processed. The current job and drain request are marked by an asterisk.
  */
-declare function Scheduler$retrieveState(): string;
+declare function WinJS$Utilities$Scheduler$retrieveState(): string;
 
 /**
  * Runs jobs in the scheduler without timeslicing until all jobs at the specified priority and higher have executed.
@@ -2282,8 +2305,8 @@ declare function Scheduler$retrieveState(): string;
  * @param name An optional description of the drain request for diagnostics.
  * @returns A Promise which completes when the drain has finished. Canceling this Promise cancels the drain request. This Promise will never enter an error state.
  */
-declare function Scheduler$requestDrain(
-  priority?: Scheduler$Priority,
+declare function WinJS$Utilities$Scheduler$requestDrain(
+  priority?: WinJS$Utilities$Scheduler$Priority,
   name?: string
 ): WinJS$Promise<any>;
 
@@ -2295,12 +2318,12 @@ declare function Scheduler$requestDrain(
  * @param name A description of the work item for diagnostics. The default value is an empty string.
  * @returns The job instance that represents this work item.
  */
-declare function Scheduler$schedule(
-  work: (jobInfo: Scheduler$IJobInfo) => any,
-  priority?: Scheduler$Priority,
+declare function WinJS$Utilities$Scheduler$schedule(
+  work: (jobInfo: WinJS$Utilities$Scheduler$IJobInfo) => any,
+  priority?: WinJS$Utilities$Scheduler$Priority,
   thisArg?: any,
   name?: string
-): Scheduler$IJob;
+): WinJS$Utilities$Scheduler$IJob;
 
 /**
  * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.aboveNormal priority.
@@ -2308,7 +2331,7 @@ declare function Scheduler$schedule(
  * @param jobName A string that describes the job for diagnostic purposes.
  * @returns A Promise that completes within a job of aboveNormal priority.
  */
-declare function Scheduler$schedulePromiseAboveNormal<U>(
+declare function WinJS$Utilities$Scheduler$schedulePromiseAboveNormal<U>(
   promiseValue?: U,
   jobName?: string
 ): WinJS$Promise<U>;
@@ -2319,7 +2342,7 @@ declare function Scheduler$schedulePromiseAboveNormal<U>(
  * @param jobName A string that describes the job for diagnostic purposes.
  * @returns A Promise that completes within a job of belowNormal priority.
  */
-declare function Scheduler$schedulePromiseBelowNormal<U>(
+declare function WinJS$Utilities$Scheduler$schedulePromiseBelowNormal<U>(
   promiseValue?: U,
   jobName?: string
 ): WinJS$Promise<U>;
@@ -2330,7 +2353,7 @@ declare function Scheduler$schedulePromiseBelowNormal<U>(
  * @param jobName A string that describes the job for diagnostic purposes.
  * @returns A Promise that completes within a job of high priority.
  */
-declare function Scheduler$schedulePromiseHigh<U>(
+declare function WinJS$Utilities$Scheduler$schedulePromiseHigh<U>(
   promiseValue?: U,
   jobName?: string
 ): WinJS$Promise<U>;
@@ -2341,7 +2364,7 @@ declare function Scheduler$schedulePromiseHigh<U>(
  * @param jobName A string that describes the job for diagnostic purposes.
  * @returns A Promise that completes within a job of idle priority.
  */
-declare function Scheduler$schedulePromiseIdle<U>(
+declare function WinJS$Utilities$Scheduler$schedulePromiseIdle<U>(
   promiseValue?: U,
   jobName?: string
 ): WinJS$Promise<U>;
@@ -2352,10 +2375,10 @@ declare function Scheduler$schedulePromiseIdle<U>(
  * @param jobName A string that describes the job for diagnostic purposes.
  * @returns A Promise that completes within a job of normal priority.
  */
-declare function Scheduler$schedulePromiseNormal<U>(
+declare function WinJS$Utilities$Scheduler$schedulePromiseNormal<U>(
   promiseValue?: U,
   jobName?: string
 ): WinJS$Promise<U>;
 declare module "winjs" {
-  declare module.exports: typeof WinJS;
+  declare export default typeof WinJS;
 }
