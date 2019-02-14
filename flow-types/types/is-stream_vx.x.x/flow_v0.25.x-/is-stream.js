@@ -1,7 +1,7 @@
 declare module "is-stream" {
   import typeof * as stream from "stream";
 
-  declare module.exports: typeof isStream;
+  declare export default typeof isStream;
 
   declare function isStream(maybeStream: any): boolean;
 
