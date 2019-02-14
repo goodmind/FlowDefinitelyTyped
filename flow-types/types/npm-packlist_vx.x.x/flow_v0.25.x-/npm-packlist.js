@@ -1,10 +1,8 @@
 declare module "npm-packlist" {
-  declare function packlist(
-    options?: packlist$packlist$Options
-  ): Promise<string[]>;
+  declare function packlist(options?: packlist$Options): Promise<string[]>;
 
   declare function packlist<T>(
-    options: packlist$packlist$Options | void,
+    options: packlist$Options | void,
     callback: (result: string[]) => T
   ): Promise<T>;
 
@@ -20,5 +18,5 @@ declare module "npm-packlist" {
 
   declare function packlist$sync(options?: packlist$Options): string[];
 
-  declare module.exports: typeof packlist;
+  declare export default typeof packlist;
 }
