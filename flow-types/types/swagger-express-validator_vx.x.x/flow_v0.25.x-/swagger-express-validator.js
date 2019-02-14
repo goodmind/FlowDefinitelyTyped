@@ -2,7 +2,7 @@ declare module "swagger-express-validator" {
   import type { Request, RequestHandler } from "express";
 
   declare function SwaggerExpressValidator(
-    options: SwaggerExpressValidator$SwaggerExpressValidator$Options
+    options: SwaggerExpressValidator$Options
   ): RequestHandler;
 
   declare var npm$namespace$SwaggerExpressValidator: {
@@ -21,5 +21,5 @@ declare module "swagger-express-validator" {
     options: SwaggerExpressValidator$Options
   ): RequestHandler;
 
-  declare module.exports: typeof SwaggerExpressValidator;
+  declare export default typeof SwaggerExpressValidator;
 }
