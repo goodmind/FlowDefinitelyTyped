@@ -59,7 +59,7 @@ declare type Validator$IsObjectValidator = {
     customValidator: Validator$ValidateFn
   ) => Validator$IsObjectValidator,
   validate: Validator$ValidateFn
-} & Validator$Validatable;
+} & Validatable;
 
 declare function Validator$express(validator: Validator$Validatable): any;
 
@@ -86,41 +86,41 @@ declare function Validator$run(
 declare function Validator$isObject(): Validator$IsObjectValidator;
 
 declare function Validator$isString(
-  options?: ValidatorOptions$ValidatorOptions$IsStringOptions
+  options?: ValidatorOptions$IsStringOptions
 ): Validator$Validatable;
 
 declare function Validator$isStringOrNull(
-  options?: ValidatorOptions$ValidatorOptions$IsStringOptions
+  options?: ValidatorOptions$IsStringOptions
 ): Validator$Validatable;
 
 declare function Validator$isBoolean(): Validator$Validatable;
 
 declare function Validator$isNumber(
-  options?: ValidatorOptions$ValidatorOptions$IsNumberOptions
+  options?: ValidatorOptions$IsNumberOptions
 ): Validator$Validatable;
 
 declare function Validator$isInteger(
-  options?: ValidatorOptions$ValidatorOptions$IsNumberOptions
+  options?: ValidatorOptions$IsNumberOptions
 ): Validator$Validatable;
 
 declare function Validator$isDate(
-  options?: ValidatorOptions$ValidatorOptions$IsDateOptions
+  options?: ValidatorOptions$IsDateOptions
 ): Validator$Validatable;
 
 declare function Validator$isIsoDate(
-  options?: ValidatorOptions$ValidatorOptions$IsDateOptions
+  options?: ValidatorOptions$IsDateOptions
 ): Validator$Validatable;
 
 declare function Validator$isIsoDateTime(
-  options?: ValidatorOptions$ValidatorOptions$IsDateOptions
+  options?: ValidatorOptions$IsDateOptions
 ): Validator$Validatable;
 
 declare function Validator$isArray(
   validator?: Validator$Validatable,
-  options?: ValidatorOptions$ValidatorOptions$Options
+  options?: ValidatorOptions$Options
 ): Validator$Validatable;
 
 declare function Validator$isAnyObject(): Validator$IsObjectValidator;
 declare module "node-validator" {
-  declare module.exports: typeof Validator;
+  declare export default typeof Validator;
 }
