@@ -5,19 +5,37 @@ declare module "draft-js" {
 
   declare type SyntheticKeyboardEvent = React.KeyboardEvent<{}>;
   declare type SyntheticEvent = React.SyntheticEvent<{}>;
-  declare type Base$DraftBlockRenderMap = Immutable.Map<
+
+  declare var npm$namespace$Draft: {
+    Component: typeof npm$namespace$Draft$Component,
+    Model: typeof npm$namespace$Draft$Model
+  };
+
+  declare var npm$namespace$Draft$Component: {
+    Base: typeof npm$namespace$Draft$Component$Base,
+    Components: typeof npm$namespace$Draft$Component$Components,
+    Selection: typeof npm$namespace$Draft$Component$Selection,
+    Utils: typeof npm$namespace$Draft$Component$Utils
+  };
+
+  declare var npm$namespace$Draft$Component$Base: {
+    DraftEditor: typeof Draft$Component$Base$DraftEditor
+  };
+  declare type Draft$Component$Base$DraftBlockRenderMap = Immutable.Map<
     Constants$DraftBlockType,
     ImmutableData$DraftBlockRenderConfig
   >;
 
-  declare type Base$EditorCommand = Constants$DraftEditorCommand | string;
+  declare type Draft$Component$Base$EditorCommand =
+    | Constants$DraftEditorCommand
+    | string;
 
   /**
    * `DraftEditor` is the root editor component. It composes a `contentEditable`
    * div, and provides a wide variety of useful function props for managing the
    * state of the editor. See `DraftEditorProps` for details.
    */
-  declare class Base$DraftEditor
+  declare class Draft$Component$Base$DraftEditor
     mixins React.Component<Base$DraftEditorProps, {}> {
     focus(): void;
     blur(): void;
@@ -33,7 +51,7 @@ declare module "draft-js" {
    * These props are analagous to `value` and `onChange` in controlled React
    * text inputs.
    */
-  declare export interface Base$DraftEditorProps {
+  declare export interface Draft$Component$Base$DraftEditorProps {
     editorState: ImmutableData$EditorState;
     onChange(editorState: ImmutableData$EditorState): void;
     placeholder?: string;
@@ -42,7 +60,9 @@ declare module "draft-js" {
     blockStyleFn?: (block: ImmutableData$ContentBlock) => string;
     customStyleMap?: any;
     customStyleFn?: (style: ImmutableData$DraftInlineStyle) => Object;
-    keyBindingFn?: (e: SyntheticKeyboardEvent) => Base$EditorCommand | null;
+    keyBindingFn?: (
+      e: SyntheticKeyboardEvent
+    ) => Draft$Component$Base$EditorCommand | null;
     readOnly?: boolean;
     spellCheck?: boolean;
     stripPastedStyles?: boolean;
@@ -68,7 +88,7 @@ declare module "draft-js" {
       editorState: ImmutableData$EditorState
     ) => Constants$DraftHandleValue;
     handleKeyCommand?: (
-      command: Base$EditorCommand,
+      command: Draft$Component$Base$EditorCommand,
       editorState: ImmutableData$EditorState
     ) => Constants$DraftHandleValue;
     handleBeforeInput?: (
@@ -102,17 +122,24 @@ declare module "draft-js" {
     onLeftArrow?: (e: SyntheticKeyboardEvent) => void;
     onBlur?: (e: SyntheticEvent) => void;
     onFocus?: (e: SyntheticEvent) => void;
-    blockRenderMap?: Base$DraftBlockRenderMap;
+    blockRenderMap?: Draft$Component$Base$DraftBlockRenderMap;
   }
 
-  declare type Base$DraftTextAlignment = "left" | "center" | "right";
+  declare type Draft$Component$Base$DraftTextAlignment =
+    | "left"
+    | "center"
+    | "right";
 
-  declare class Components$DraftEditorBlock mixins React.Component<any, {}> {}
-
-  declare var npm$namespace$Selection: {
-    getVisibleSelectionRect: typeof Selection$getVisibleSelectionRect
+  declare var npm$namespace$Draft$Component$Components: {
+    DraftEditorBlock: typeof Draft$Component$Components$DraftEditorBlock
   };
-  declare interface Selection$FakeClientRect {
+  declare class Draft$Component$Components$DraftEditorBlock
+    mixins React.Component<any, {}> {}
+
+  declare var npm$namespace$Draft$Component$Selection: {
+    getVisibleSelectionRect: typeof Draft$Component$Selection$getVisibleSelectionRect
+  };
+  declare interface Draft$Component$Selection$FakeClientRect {
     left: number;
     width: number;
     right: number;
@@ -126,14 +153,16 @@ declare module "draft-js" {
    * In cases where there are no selected ranges or the bounding rect is
    * temporarily invalid, return null.
    */
-  declare function Selection$getVisibleSelectionRect(
+  declare function Draft$Component$Selection$getVisibleSelectionRect(
     global: any
-  ): Selection$FakeClientRect;
+  ): Draft$Component$Selection$FakeClientRect;
 
-  declare var npm$namespace$Utils: {
-    getDefaultKeyBinding: typeof Utils$getDefaultKeyBinding
+  declare var npm$namespace$Draft$Component$Utils: {
+    getDefaultKeyBinding: typeof Draft$Component$Utils$getDefaultKeyBinding,
+
+    KeyBindingUtil: typeof Draft$Component$Utils$KeyBindingUtil
   };
-  declare class Utils$KeyBindingUtil {
+  declare class Draft$Component$Utils$KeyBindingUtil {
     /**
      * Check whether the ctrlKey modifier is *not* being used in conjunction with
      * the altKey modifier. If they are combined, the result is an `altGraph`
@@ -147,16 +176,25 @@ declare module "draft-js" {
   /**
    * Retrieve a bound key command for the given event.
    */
-  declare function Utils$getDefaultKeyBinding(
+  declare function Draft$Component$Utils$getDefaultKeyBinding(
     e: SyntheticKeyboardEvent
   ): Constants$DraftEditorCommand | null;
+
+  declare var npm$namespace$Draft$Model: {
+    Decorators: typeof npm$namespace$Draft$Model$Decorators,
+    Encoding: typeof npm$namespace$Draft$Model$Encoding,
+    Entity: typeof npm$namespace$Draft$Model$Entity,
+    ImmutableData: typeof npm$namespace$Draft$Model$ImmutableData,
+    Keys: typeof npm$namespace$Draft$Model$Keys,
+    Modifier: typeof npm$namespace$Draft$Model$Modifier
+  };
 
   /**
    * A set of editor commands that may be invoked by keyboard commands or UI
    * controls. These commands should map to operations that modify content or
    * selection state and update the editor state accordingly.
    */
-  declare type Constants$DraftEditorCommand =
+  declare type Draft$Model$Constants$DraftEditorCommand =
     | "undo"
     | "redo"
     | "delete"
@@ -180,12 +218,12 @@ declare module "draft-js" {
    * A type that allows us to avoid passing boolean arguments
    * around to indicate whether a drag type is internal or external.
    */
-  declare type Constants$DraftDragType = "internal" | "external";
+  declare type Draft$Model$Constants$DraftDragType = "internal" | "external";
 
   /**
    * The list of default valid block types.
    */
-  declare type Constants$DraftBlockType =
+  declare type Draft$Model$Constants$DraftBlockType =
     | "unstyled"
     | "paragraph"
     | "header-one"
@@ -204,24 +242,31 @@ declare module "draft-js" {
    * A type that allows us to avoid passing boolean arguments
    * around to indicate whether a deletion is forward or backward.
    */
-  declare type Constants$DraftRemovalDirection = "backward" | "forward";
+  declare type Draft$Model$Constants$DraftRemovalDirection =
+    | "backward"
+    | "forward";
 
   /**
    * A type that allows us to avoid returning boolean values
    * to indicate whether an event was handled or not.
    */
-  declare type Constants$DraftHandleValue = "handled" | "not-handled";
+  declare type Draft$Model$Constants$DraftHandleValue =
+    | "handled"
+    | "not-handled";
 
   /**
    * A type that defines if an fragment shall be inserted before or after
    * another fragment or if the selected fragment shall be replaced
    */
-  declare type Constants$DraftInsertionType = "replace" | "before" | "after";
+  declare type Draft$Model$Constants$DraftInsertionType =
+    | "replace"
+    | "before"
+    | "after";
 
   /**
    * Valid inline styles.
    */
-  declare type Constants$DraftInlineStyleType =
+  declare type Draft$Model$Constants$DraftInlineStyleType =
     | "BOLD"
     | "CODE"
     | "ITALIC"
@@ -231,7 +276,7 @@ declare module "draft-js" {
   /**
    * Default entity types.
    */
-  declare type Constants$ComposedEntityType =
+  declare type Draft$Model$Constants$ComposedEntityType =
     | "LINK"
     | "TOKEN"
     | "PHOTO"
@@ -240,9 +285,9 @@ declare module "draft-js" {
   /**
    * Possible entity types.
    */
-  declare type Constants$DraftEntityType =
+  declare type Draft$Model$Constants$DraftEntityType =
     | string
-    | Constants$ComposedEntityType;
+    | Draft$Model$Constants$ComposedEntityType;
 
   /**
    * Possible "mutability" options for an entity. This refers to the behavior
@@ -270,10 +315,14 @@ declare module "draft-js" {
    *    entity will delete only the segments affected by the deletion. Example:
    *    Facebook User mentions.
    */
-  declare type Constants$DraftEntityMutability =
+  declare type Draft$Model$Constants$DraftEntityMutability =
     | "MUTABLE"
     | "IMMUTABLE"
     | "SEGMENTED";
+
+  declare var npm$namespace$Draft$Model$Decorators: {
+    CompositeDraftDecorator: typeof Draft$Model$Decorators$CompositeDraftDecorator
+  };
 
   /**
    * An interface for document decorator classes, allowing the creation of
@@ -281,7 +330,7 @@ declare module "draft-js" {
    *
    * See `CompositeDraftDecorator` for the most common use case.
    */
-  declare interface Decorators$DraftDecoratorType {
+  declare interface Draft$Model$Decorators$DraftDecoratorType {
     /**
      * Given a `ContentBlock`, return an immutable List of decorator keys.
      */
@@ -318,7 +367,7 @@ declare module "draft-js" {
    *
    *    - "props": Props to be passed into the React component that will be used.
    */
-  declare interface Decorators$DraftDecorator {
+  declare interface Draft$Model$Decorators$DraftDecorator {
     strategy: (
       block: ImmutableData$ContentBlock,
       callback: (start: number, end: number) => void,
@@ -347,8 +396,8 @@ declare module "draft-js" {
    * Thus, when a collision like this is encountered, the earlier match is
    * preserved and the new match is discarded.
    */
-  declare class Decorators$CompositeDraftDecorator {
-    constructor(decorators: Array<Decorators$DraftDecorator>): this;
+  declare class Draft$Model$Decorators$CompositeDraftDecorator {
+    constructor(decorators: Array<Draft$Model$Decorators$DraftDecorator>): this;
     getDecorations(
       block: ImmutableData$ContentBlock,
       contentState: ImmutableData$ContentState
@@ -357,17 +406,17 @@ declare module "draft-js" {
     getPropsForKey(key: string): Object;
   }
 
-  declare var npm$namespace$Encoding: {
-    convertFromHTMLtoContentBlocks: typeof Encoding$convertFromHTMLtoContentBlocks,
-    convertFromRawToDraftState: typeof Encoding$convertFromRawToDraftState,
-    convertFromDraftStateToRaw: typeof Encoding$convertFromDraftStateToRaw
+  declare var npm$namespace$Draft$Model$Encoding: {
+    convertFromHTMLtoContentBlocks: typeof Draft$Model$Encoding$convertFromHTMLtoContentBlocks,
+    convertFromRawToDraftState: typeof Draft$Model$Encoding$convertFromRawToDraftState,
+    convertFromDraftStateToRaw: typeof Draft$Model$Encoding$convertFromDraftStateToRaw
   };
 
   /**
    * A plain object representation of an inline style range.
    */
-  declare interface Encoding$RawDraftInlineStyleRange {
-    style: Constants$DraftInlineStyleType;
+  declare interface Draft$Model$Encoding$RawDraftInlineStyleRange {
+    style: Draft$Model$Constants$DraftInlineStyleType;
     offset: number;
     length: number;
   }
@@ -378,7 +427,7 @@ declare module "draft-js" {
    * The `key` value corresponds to the key of the entity in the `entityMap` of
    * a `ComposedText` object, not for use with `DraftEntity.get()`.
    */
-  declare interface Encoding$RawDraftEntityRange {
+  declare interface Draft$Model$Encoding$RawDraftEntityRange {
     key: number;
     offset: number;
     length: number;
@@ -387,9 +436,9 @@ declare module "draft-js" {
   /**
    * A plain object representation of an EntityInstance.
    */
-  declare interface Encoding$RawDraftEntity {
-    type: Constants$DraftEntityType;
-    mutability: Constants$DraftEntityMutability;
+  declare interface Draft$Model$Encoding$RawDraftEntity {
+    type: Draft$Model$Constants$DraftEntityType;
+    mutability: Draft$Model$Constants$DraftEntityMutability;
     data: {
       [key: string]: any
     };
@@ -399,13 +448,13 @@ declare module "draft-js" {
    * A plain object representation of a ContentBlock, with all style and entity
    * attribution repackaged as range objects.
    */
-  declare interface Encoding$RawDraftContentBlock {
+  declare interface Draft$Model$Encoding$RawDraftContentBlock {
     key: string;
-    type: Constants$DraftBlockType;
+    type: Draft$Model$Constants$DraftBlockType;
     text: string;
     depth: number;
-    inlineStyleRanges: Array<Encoding$RawDraftInlineStyleRange>;
-    entityRanges: Array<Encoding$RawDraftEntityRange>;
+    inlineStyleRanges: Array<Draft$Model$Encoding$RawDraftInlineStyleRange>;
+    entityRanges: Array<Draft$Model$Encoding$RawDraftEntityRange>;
     data?: Object;
   }
 
@@ -418,29 +467,33 @@ declare module "draft-js" {
    * server for storage, as its representation is more concise than our
    * immutable objects.
    */
-  declare interface Encoding$RawDraftContentState {
-    blocks: Array<Encoding$RawDraftContentBlock>;
+  declare interface Draft$Model$Encoding$RawDraftContentState {
+    blocks: Array<Draft$Model$Encoding$RawDraftContentBlock>;
     entityMap: {
-      [key: string]: Encoding$RawDraftEntity
+      [key: string]: Draft$Model$Encoding$RawDraftEntity
     };
   }
 
-  declare function Encoding$convertFromHTMLtoContentBlocks(
+  declare function Draft$Model$Encoding$convertFromHTMLtoContentBlocks(
     html: string,
     DOMBuilder?: Function,
-    blockRenderMap?: Base$DraftBlockRenderMap
+    blockRenderMap?: Draft$Component$Base$DraftBlockRenderMap
   ): {
     contentBlocks: Array<ImmutableData$ContentBlock>,
     entityMap: any
   };
 
-  declare function Encoding$convertFromRawToDraftState(
-    rawState: Encoding$RawDraftContentState
+  declare function Draft$Model$Encoding$convertFromRawToDraftState(
+    rawState: Draft$Model$Encoding$RawDraftContentState
   ): ImmutableData$ContentState;
 
-  declare function Encoding$convertFromDraftStateToRaw(
+  declare function Draft$Model$Encoding$convertFromDraftStateToRaw(
     contentState: ImmutableData$ContentState
-  ): Encoding$RawDraftContentState;
+  ): Draft$Model$Encoding$RawDraftContentState;
+
+  declare var npm$namespace$Draft$Model$Entity: {
+    DraftEntity: typeof Draft$Model$Entity$DraftEntity
+  };
 
   /**
    * A "document entity" is an object containing metadata associated with a
@@ -455,7 +508,7 @@ declare module "draft-js" {
    * generated via DraftEntity.create() and used to obtain entity metadata
    * via DraftEntity.get().
    */
-  declare class Entity$DraftEntity {
+  declare class Draft$Model$Entity$DraftEntity {
     /**
      * Create a DraftEntityInstance and store it for later retrieval.
      *
@@ -464,8 +517,8 @@ declare module "draft-js" {
      * retrieving data about the entity at render time.
      */
     static create(
-      type: Constants$DraftEntityType,
-      mutability: Constants$DraftEntityMutability,
+      type: Draft$Model$Constants$DraftEntityType,
+      mutability: Draft$Model$Constants$DraftEntityMutability,
       data?: Object
     ): string;
 
@@ -514,44 +567,51 @@ declare module "draft-js" {
    * the rendered anchor. For a mention, the ID could be used to retrieve
    * a hovercard.
    */
-  declare interface Entity$DraftEntityInstance {
-    getType(): Constants$DraftEntityType;
-    getMutability(): Constants$DraftEntityMutability;
+  declare interface Draft$Model$Entity$DraftEntityInstance {
+    getType(): Draft$Model$Constants$DraftEntityType;
+    getMutability(): Draft$Model$Constants$DraftEntityMutability;
     getData(): any;
   }
 
-  declare var npm$namespace$ImmutableData: {
-    Record: typeof ImmutableData$Record,
-    DefaultDraftBlockRenderMap: typeof ImmutableData$DefaultDraftBlockRenderMap,
-    DefaultDraftInlineStyle: typeof ImmutableData$DefaultDraftInlineStyle
-  };
-  declare type ImmutableData$DraftInlineStyle = Immutable.OrderedSet<string>;
+  declare var npm$namespace$Draft$Model$ImmutableData: {
+    Record: typeof Draft$Model$ImmutableData$Record,
+    DefaultDraftBlockRenderMap: typeof Draft$Model$ImmutableData$DefaultDraftBlockRenderMap,
+    DefaultDraftInlineStyle: typeof Draft$Model$ImmutableData$DefaultDraftInlineStyle,
 
-  declare type ImmutableData$BlockMap = Immutable.OrderedMap<
+    EditorState: typeof Draft$Model$ImmutableData$EditorState,
+    ContentBlock: typeof Draft$Model$ImmutableData$ContentBlock,
+    ContentState: typeof Draft$Model$ImmutableData$ContentState,
+    SelectionState: typeof Draft$Model$ImmutableData$SelectionState,
+    CharacterMetadata: typeof Draft$Model$ImmutableData$CharacterMetadata,
+    BlockMapBuilder: typeof Draft$Model$ImmutableData$BlockMapBuilder
+  };
+  declare type Draft$Model$ImmutableData$DraftInlineStyle = Immutable.OrderedSet<string>;
+
+  declare type Draft$Model$ImmutableData$BlockMap = Immutable.OrderedMap<
     string,
-    Draft$Model.ImmutableData.ImmutableData$ContentBlock
+    ImmutableData$ContentBlock
   >;
 
-  declare var ImmutableData$Record: Immutable.ImmutableData$Record.Class;
+  declare var Draft$Model$ImmutableData$Record: Immutable.Record.Class;
 
-  declare interface ImmutableData$DraftBlockRenderConfig {
+  declare interface Draft$Model$ImmutableData$DraftBlockRenderConfig {
     element: string;
     wrapper?: React.ReactElement<any>;
   }
 
-  declare class ImmutableData$EditorState mixins ImmutableData$Record {
+  declare class Draft$Model$ImmutableData$EditorState mixins Record {
     static createEmpty(
-      decorator?: Decorators$DraftDecoratorType
-    ): ImmutableData$EditorState;
+      decorator?: Draft$Model$Decorators$DraftDecoratorType
+    ): Draft$Model$ImmutableData$EditorState;
     static createWithContent(
       contentState: ImmutableData$ContentState,
-      decorator?: Decorators$DraftDecoratorType
-    ): ImmutableData$EditorState;
-    static create(config: Object): ImmutableData$EditorState;
+      decorator?: Draft$Model$Decorators$DraftDecoratorType
+    ): Draft$Model$ImmutableData$EditorState;
+    static create(config: Object): Draft$Model$ImmutableData$EditorState;
     static set(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       put: Object
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Incorporate native DOM selection changes into the EditorState. This
@@ -562,9 +622,9 @@ declare module "draft-js" {
      * To forcibly move the DOM selection, see `EditorState.forceSelection`.
      */
     static acceptSelection(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       selection: ImmutableData$SelectionState
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * At times, we need to force the DOM selection to be where we
@@ -579,16 +639,16 @@ declare module "draft-js" {
      * in ContentState.
      */
     static forceSelection(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       selection: ImmutableData$SelectionState
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Move selection to the end of the editor without forcing focus.
      */
     static moveSelectionToEnd(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Force focus to the end of the editor. This is useful in scenarios
@@ -596,8 +656,8 @@ declare module "draft-js" {
      * to allow the user to continue working seamlessly.
      */
     static moveFocusToEnd(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Push the current ContentState onto the undo stack if it should be
@@ -605,33 +665,33 @@ declare module "draft-js" {
      * new current content.
      */
     static push(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       contentState: ImmutableData$ContentState,
       changeType: ImmutableData$EditorChangeType
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Make the top ContentState in the undo stack the new current content and
      * push the current content onto the redo stack.
      */
     static undo(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Make the top ContentState in the redo stack the new current content and
      * push the current content onto the undo stack.
      */
     static redo(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
     toJS(): Object;
     getAllowUndo(): boolean;
     getCurrentContent(): ImmutableData$ContentState;
     getUndoStack(): Immutable.Stack<ImmutableData$ContentState>;
     getRedoStack(): Immutable.Stack<ImmutableData$ContentState>;
     getSelection(): ImmutableData$SelectionState;
-    getDecorator(): Decorators$DraftDecoratorType;
+    getDecorator(): Draft$Model$Decorators$DraftDecoratorType;
     isInCompositionMode(): boolean;
     mustForceSelection(): boolean;
     getNativelyRenderedContent(): ImmutableData$ContentState;
@@ -645,34 +705,36 @@ declare module "draft-js" {
      *
      * If null, there is no override in place.
      */
-    getInlineStyleOverride(): ImmutableData$DraftInlineStyle;
+    getInlineStyleOverride(): Draft$Model$ImmutableData$DraftInlineStyle;
     static setInlineStyleOverride(
-      editorState: ImmutableData$EditorState,
-      inlineStyleOverride: ImmutableData$DraftInlineStyle
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState,
+      inlineStyleOverride: Draft$Model$ImmutableData$DraftInlineStyle
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Get the appropriate inline style for the editor state. If an
      * override is in place, use it. Otherwise, the current style is
      * based on the location of the selection state.
      */
-    getCurrentInlineStyle(): ImmutableData$DraftInlineStyle;
+    getCurrentInlineStyle(): Draft$Model$ImmutableData$DraftInlineStyle;
     getBlockTree(blockKey: string): Immutable.List<any>;
     isSelectionAtStartOfContent(): boolean;
     isSelectionAtEndOfContent(): boolean;
     getDirectionMap(): Immutable.OrderedMap<any, any>;
   }
 
-  declare class ImmutableData$ContentBlock mixins ImmutableData$Record {
+  declare class Draft$Model$ImmutableData$ContentBlock mixins Record {
     getKey(): string;
-    getType(): Constants$DraftBlockType;
+    getType(): Draft$Model$Constants$DraftBlockType;
     getType(): string;
     getText(): string;
     getCharacterList(): Immutable.List<ImmutableData$CharacterMetadata>;
     getLength(): number;
     getDepth(): number;
     getData(): Immutable.Map<any, any>;
-    getInlineStyleAt(offset: number): ImmutableData$DraftInlineStyle;
+    getInlineStyleAt(
+      offset: number
+    ): Draft$Model$ImmutableData$DraftInlineStyle;
     getEntityAt(offset: number): string;
 
     /**
@@ -692,20 +754,20 @@ declare module "draft-js" {
     ): void;
   }
 
-  declare class ImmutableData$ContentState mixins ImmutableData$Record {
+  declare class Draft$Model$ImmutableData$ContentState mixins Record {
     static createFromBlockArray(
-      blocks: Array<ImmutableData$ContentBlock>,
+      blocks: Array<Draft$Model$ImmutableData$ContentBlock>,
       entityMap?: any
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static createFromText(
       text: string,
       delimiter?: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     createEntity(
-      type: Constants$DraftEntityType,
-      mutability: Constants$DraftEntityMutability,
+      type: Draft$Model$Constants$DraftEntityType,
+      mutability: Draft$Model$Constants$DraftEntityMutability,
       data?: Object
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     getEntity(key: string): EntityInstance;
     getEntityMap(): any;
     getLastCreatedEntityKey(): string;
@@ -714,31 +776,33 @@ declare module "draft-js" {
       toMerge: {
         [key: string]: any
       }
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     replaceEntityData(
       key: string,
       toMerge: {
         [key: string]: any
       }
-    ): ImmutableData$ContentState;
-    addEntity(instance: Entity$DraftEntityInstance): ImmutableData$ContentState;
-    getBlockMap(): ImmutableData$BlockMap;
+    ): Draft$Model$ImmutableData$ContentState;
+    addEntity(
+      instance: Draft$Model$Entity$DraftEntityInstance
+    ): Draft$Model$ImmutableData$ContentState;
+    getBlockMap(): Draft$Model$ImmutableData$BlockMap;
     getSelectionBefore(): ImmutableData$SelectionState;
     getSelectionAfter(): ImmutableData$SelectionState;
-    getBlockForKey(key: string): ImmutableData$ContentBlock;
+    getBlockForKey(key: string): Draft$Model$ImmutableData$ContentBlock;
     getKeyBefore(key: string): string;
     getKeyAfter(key: string): string;
-    getBlockAfter(key: string): ImmutableData$ContentBlock;
-    getBlockBefore(key: string): ImmutableData$ContentBlock;
-    getBlocksAsArray(): Array<ImmutableData$ContentBlock>;
-    getFirstBlock(): ImmutableData$ContentBlock;
-    getLastBlock(): ImmutableData$ContentBlock;
+    getBlockAfter(key: string): Draft$Model$ImmutableData$ContentBlock;
+    getBlockBefore(key: string): Draft$Model$ImmutableData$ContentBlock;
+    getBlocksAsArray(): Array<Draft$Model$ImmutableData$ContentBlock>;
+    getFirstBlock(): Draft$Model$ImmutableData$ContentBlock;
+    getLastBlock(): Draft$Model$ImmutableData$ContentBlock;
     getPlainText(delimiter?: string): string;
     hasText(): boolean;
   }
 
-  declare class ImmutableData$SelectionState mixins ImmutableData$Record {
-    static createEmpty(key: string): ImmutableData$SelectionState;
+  declare class Draft$Model$ImmutableData$SelectionState mixins Record {
+    static createEmpty(key: string): Draft$Model$ImmutableData$SelectionState;
     serialize(): string;
     getAnchorKey(): string;
     getAnchorOffset(): number;
@@ -759,22 +823,22 @@ declare module "draft-js" {
     getEndOffset(): number;
   }
 
-  declare class ImmutableData$CharacterMetadata {
+  declare class Draft$Model$ImmutableData$CharacterMetadata {
     static applyStyle(
-      record: ImmutableData$CharacterMetadata,
+      record: Draft$Model$ImmutableData$CharacterMetadata,
       style: string
-    ): ImmutableData$CharacterMetadata;
+    ): Draft$Model$ImmutableData$CharacterMetadata;
     static removeStyle(
-      record: ImmutableData$CharacterMetadata,
+      record: Draft$Model$ImmutableData$CharacterMetadata,
       style: string
-    ): ImmutableData$CharacterMetadata;
+    ): Draft$Model$ImmutableData$CharacterMetadata;
     static applyEntity(
-      record: ImmutableData$CharacterMetadata,
+      record: Draft$Model$ImmutableData$CharacterMetadata,
       entityKey: string | null
-    ): ImmutableData$CharacterMetadata;
+    ): Draft$Model$ImmutableData$CharacterMetadata;
     static applyEntity(
-      record: ImmutableData$CharacterMetadata
-    ): ImmutableData$CharacterMetadata;
+      record: Draft$Model$ImmutableData$CharacterMetadata
+    ): Draft$Model$ImmutableData$CharacterMetadata;
 
     /**
      * Use this function instead of the `CharacterMetadata` constructor.
@@ -784,19 +848,19 @@ declare module "draft-js" {
      */
     static create(
       config?: ImmutableData$CharacterMetadataConfig
-    ): ImmutableData$CharacterMetadata;
-    static create(): ImmutableData$CharacterMetadata;
-    getStyle(): ImmutableData$DraftInlineStyle;
+    ): Draft$Model$ImmutableData$CharacterMetadata;
+    static create(): Draft$Model$ImmutableData$CharacterMetadata;
+    getStyle(): Draft$Model$ImmutableData$DraftInlineStyle;
     getEntity(): string;
     hasStyle(style: string): boolean;
   }
 
-  declare interface ImmutableData$CharacterMetadataConfig {
-    style?: ImmutableData$DraftInlineStyle;
+  declare interface Draft$Model$ImmutableData$CharacterMetadataConfig {
+    style?: Draft$Model$ImmutableData$DraftInlineStyle;
     entity?: string;
   }
 
-  declare type ImmutableData$EditorChangeType =
+  declare type Draft$Model$ImmutableData$EditorChangeType =
     | "adjust-depth"
     | "apply-entity"
     | "backspace-character"
@@ -812,35 +876,46 @@ declare module "draft-js" {
     | "split-block"
     | "undo";
 
-  declare class ImmutableData$BlockMapBuilder {
+  declare class Draft$Model$ImmutableData$BlockMapBuilder {
     static createFromArray(
-      blocks: Array<ImmutableData$ContentBlock>
-    ): ImmutableData$BlockMap;
+      blocks: Array<Draft$Model$ImmutableData$ContentBlock>
+    ): Draft$Model$ImmutableData$BlockMap;
   }
 
-  declare var ImmutableData$DefaultDraftBlockRenderMap: Immutable.Map<any, any>;
+  declare var Draft$Model$ImmutableData$DefaultDraftBlockRenderMap: Immutable.Map<
+    any,
+    any
+  >;
 
-  declare var ImmutableData$DefaultDraftInlineStyle: Immutable.Map<any, any>;
+  declare var Draft$Model$ImmutableData$DefaultDraftInlineStyle: Immutable.Map<
+    any,
+    any
+  >;
 
-  declare var npm$namespace$Keys: {
-    generateRandomKey: typeof Keys$generateRandomKey
+  declare var npm$namespace$Draft$Model$Keys: {
+    generateRandomKey: typeof Draft$Model$Keys$generateRandomKey
   };
-  declare function Keys$generateRandomKey(): string;
+  declare function Draft$Model$Keys$generateRandomKey(): string;
 
-  declare type Modifier$URI = any;
+  declare var npm$namespace$Draft$Model$Modifier: {
+    AtomicBlockUtils: typeof Draft$Model$Modifier$AtomicBlockUtils,
+    DraftModifier: typeof Draft$Model$Modifier$DraftModifier,
+    RichTextEditorUtil: typeof Draft$Model$Modifier$RichTextEditorUtil
+  };
+  declare type Draft$Model$Modifier$URI = any;
 
-  declare class Modifier$AtomicBlockUtils {
+  declare class Draft$Model$Modifier$AtomicBlockUtils {
     static insertAtomicBlock(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       entityKey: string,
       character: string
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
     static moveAtomicBlock(
-      editorState: ImmutableData$EditorState,
-      atomicBlock: ImmutableData$ContentBlock,
-      targetRange: ImmutableData$SelectionState,
-      insertionMode?: Constants$DraftInsertionType
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState,
+      atomicBlock: Draft$Model$ImmutableData$ContentBlock,
+      targetRange: Draft$Model$ImmutableData$SelectionState,
+      insertionMode?: Draft$Model$Constants$DraftInsertionType
+    ): Draft$Model$ImmutableData$EditorState;
   }
 
   /**
@@ -853,124 +928,126 @@ declare module "draft-js" {
    *
    * These functions encapsulate some of the most common transaction sequences.
    */
-  declare class Modifier$DraftModifier {
+  declare class Draft$Model$Modifier$DraftModifier {
     static replaceText(
-      contentState: ImmutableData$ContentState,
-      rangeToReplace: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      rangeToReplace: Draft$Model$ImmutableData$SelectionState,
       text: string,
-      inlineStyle?: ImmutableData$DraftInlineStyle,
+      inlineStyle?: Draft$Model$ImmutableData$DraftInlineStyle,
       entityKey?: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static insertText(
-      contentState: ImmutableData$ContentState,
-      targetRange: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      targetRange: Draft$Model$ImmutableData$SelectionState,
       text: string,
-      inlineStyle?: ImmutableData$DraftInlineStyle,
+      inlineStyle?: Draft$Model$ImmutableData$DraftInlineStyle,
       entityKey?: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static moveText(
-      contentState: ImmutableData$ContentState,
-      removalRange: ImmutableData$SelectionState,
-      targetRange: ImmutableData$SelectionState
-    ): ImmutableData$ContentState;
+      contentState: Draft$Model$ImmutableData$ContentState,
+      removalRange: Draft$Model$ImmutableData$SelectionState,
+      targetRange: Draft$Model$ImmutableData$SelectionState
+    ): Draft$Model$ImmutableData$ContentState;
     static replaceWithFragment(
-      contentState: ImmutableData$ContentState,
-      targetRange: ImmutableData$SelectionState,
-      fragment: ImmutableData$BlockMap
-    ): ImmutableData$ContentState;
+      contentState: Draft$Model$ImmutableData$ContentState,
+      targetRange: Draft$Model$ImmutableData$SelectionState,
+      fragment: Draft$Model$ImmutableData$BlockMap
+    ): Draft$Model$ImmutableData$ContentState;
     static removeRange(
-      contentState: ImmutableData$ContentState,
-      rangeToRemove: ImmutableData$SelectionState,
-      removalDirection: Constants$DraftRemovalDirection
-    ): ImmutableData$ContentState;
+      contentState: Draft$Model$ImmutableData$ContentState,
+      rangeToRemove: Draft$Model$ImmutableData$SelectionState,
+      removalDirection: Draft$Model$Constants$DraftRemovalDirection
+    ): Draft$Model$ImmutableData$ContentState;
     static splitBlock(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState
-    ): ImmutableData$ContentState;
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState
+    ): Draft$Model$ImmutableData$ContentState;
     static applyInlineStyle(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       inlineStyle: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static removeInlineStyle(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       inlineStyle: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static setBlockType(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
-      blockType: Constants$DraftBlockType
-    ): ImmutableData$ContentState;
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
+      blockType: Draft$Model$Constants$DraftBlockType
+    ): Draft$Model$ImmutableData$ContentState;
     static setBlockType(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       blockType: string
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static setBlockData(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       blockData: Immutable.Map<any, any>
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static mergeBlockData(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       blockData: Immutable.Map<any, any>
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
     static applyEntity(
-      contentState: ImmutableData$ContentState,
-      selectionState: ImmutableData$SelectionState,
+      contentState: Draft$Model$ImmutableData$ContentState,
+      selectionState: Draft$Model$ImmutableData$SelectionState,
       entityKey: string | null
-    ): ImmutableData$ContentState;
+    ): Draft$Model$ImmutableData$ContentState;
   }
 
-  declare class Modifier$RichTextEditorUtil {
+  declare class Draft$Model$Modifier$RichTextEditorUtil {
     static currentBlockContainsLink(
-      editorState: ImmutableData$EditorState
+      editorState: Draft$Model$ImmutableData$EditorState
     ): boolean;
     static getCurrentBlockType(
-      editorState: ImmutableData$EditorState
-    ): Constants$DraftBlockType;
-    static getCurrentBlockType(editorState: ImmutableData$EditorState): string;
-    static getDataObjectForLinkURL(uri: Modifier$URI): Object;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$Constants$DraftBlockType;
+    static getCurrentBlockType(
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): string;
+    static getDataObjectForLinkURL(uri: Draft$Model$Modifier$URI): Object;
     static handleKeyCommand(
-      editorState: ImmutableData$EditorState,
-      command: Constants$DraftEditorCommand
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState,
+      command: Draft$Model$Constants$DraftEditorCommand
+    ): Draft$Model$ImmutableData$EditorState;
     static handleKeyCommand(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       command: string
     ): null;
     static insertSoftNewline(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * For collapsed selections at the start of styled blocks, backspace should
      * just remove the existing style.
      */
     static onBackspace(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
     static onDelete(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
     static onTab(
       event: SyntheticKeyboardEvent,
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       maxDepth: number
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
     static toggleBlockType(
-      editorState: ImmutableData$EditorState,
-      blockType: Constants$DraftBlockType
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState,
+      blockType: Draft$Model$Constants$DraftBlockType
+    ): Draft$Model$ImmutableData$EditorState;
     static toggleBlockType(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       blockType: string
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
     static toggleCode(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$EditorState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * Toggle the specified inline style for the selection. If the
@@ -979,14 +1056,14 @@ declare module "draft-js" {
      * to the document state.
      */
     static toggleInlineStyle(
-      editorState: ImmutableData$EditorState,
+      editorState: Draft$Model$ImmutableData$EditorState,
       inlineStyle: string
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
     static toggleLink(
-      editorState: ImmutableData$EditorState,
-      targetSelection: ImmutableData$SelectionState,
+      editorState: Draft$Model$ImmutableData$EditorState,
+      targetSelection: Draft$Model$ImmutableData$SelectionState,
       entityKey: string | null
-    ): ImmutableData$EditorState;
+    ): Draft$Model$ImmutableData$EditorState;
 
     /**
      * When a collapsed cursor is at the start of an empty styled block, allow
@@ -994,52 +1071,52 @@ declare module "draft-js" {
      * style of the block instead of the default behavior.
      */
     static tryToRemoveBlockStyle(
-      editorState: ImmutableData$EditorState
-    ): ImmutableData$ContentState;
+      editorState: Draft$Model$ImmutableData$EditorState
+    ): Draft$Model$ImmutableData$ContentState;
   }
   declare export {
     Editor,
     EditorProps,
     EditorBlock,
-    ImmutableData$EditorState,
-    ImmutableData$EditorChangeType,
+    EditorState,
+    EditorChangeType,
     CompositeDecorator,
     Entity,
     EntityInstance,
-    ImmutableData$BlockMapBuilder,
-    ImmutableData$CharacterMetadata,
-    ImmutableData$ContentBlock,
-    ImmutableData$ContentState,
-    ImmutableData$SelectionState,
-    ImmutableData$DraftInlineStyle,
-    ImmutableData$BlockMap,
-    Modifier$AtomicBlockUtils,
-    Utils$KeyBindingUtil,
+    BlockMapBuilder,
+    CharacterMetadata,
+    ContentBlock,
+    ContentState,
+    SelectionState,
+    DraftInlineStyle,
+    BlockMap,
+    AtomicBlockUtils,
+    KeyBindingUtil,
     Modifier,
     RichUtils,
-    ImmutableData$DefaultDraftBlockRenderMap,
-    ImmutableData$DefaultDraftInlineStyle,
-    Encoding$RawDraftInlineStyleRange,
-    Encoding$RawDraftEntityRange,
-    Encoding$RawDraftEntity,
-    Encoding$RawDraftContentBlock,
-    Encoding$RawDraftContentState,
+    DefaultDraftBlockRenderMap,
+    DefaultDraftInlineStyle,
+    RawDraftInlineStyleRange,
+    RawDraftEntityRange,
+    RawDraftEntity,
+    RawDraftContentBlock,
+    RawDraftContentState,
     convertFromRaw,
     convertToRaw,
     convertFromHTML,
     genKey,
-    Utils$getDefaultKeyBinding,
-    Selection$getVisibleSelectionRect,
-    Constants$DraftEditorCommand,
-    Constants$DraftDragType,
-    Constants$DraftBlockType,
-    ImmutableData$DraftBlockRenderConfig,
-    Base$DraftBlockRenderMap,
-    Constants$DraftInlineStyleType,
-    Constants$DraftEntityType,
-    Constants$DraftEntityMutability,
-    Constants$DraftRemovalDirection,
-    Constants$DraftHandleValue,
-    Constants$DraftInsertionType
+    getDefaultKeyBinding,
+    getVisibleSelectionRect,
+    DraftEditorCommand,
+    DraftDragType,
+    DraftBlockType,
+    DraftBlockRenderConfig,
+    DraftBlockRenderMap,
+    DraftInlineStyleType,
+    DraftEntityType,
+    DraftEntityMutability,
+    DraftRemovalDirection,
+    DraftHandleValue,
+    DraftInsertionType
   };
 }
