@@ -1,37 +1,41 @@
 declare module "gapi.client.surveys" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    mobileapppanels: typeof client$mobileapppanels,
-    results: typeof client$results,
-    surveys: typeof client$surveys
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    mobileapppanels: typeof gapi$client$mobileapppanels,
+    results: typeof gapi$client$results,
+    surveys: typeof gapi$client$surveys
   };
 
   /**
    * Load Surveys API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "surveys",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "surveys",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$mobileapppanels: surveys$surveys$MobileapppanelsResource;
+  declare var gapi$client$mobileapppanels: surveys$MobileapppanelsResource;
 
-  declare var client$results: surveys$surveys$ResultsResource;
+  declare var gapi$client$results: surveys$ResultsResource;
 
-  declare var client$surveys: client$surveys.surveys$SurveysResource;
+  declare var gapi$client$surveys: surveys$SurveysResource;
 
-  declare interface surveys$FieldMask {
-    fields?: surveys$FieldMask[];
+  declare interface gapi$client$surveys$FieldMask {
+    fields?: gapi$client$surveys$FieldMask[];
     id?: number;
   }
 
-  declare interface surveys$MobileAppPanel {
+  declare interface gapi$client$surveys$MobileAppPanel {
     /**
      * Country code for the country of the users that the panel contains. Uses standard ISO 3166-1 2-character language codes. For instance, 'US' for the
      * United States, and 'GB' for the United Kingdom. Any survey created targeting this panel must also target the corresponding country.
@@ -66,7 +70,7 @@ declare module "gapi.client.surveys" {
     owners?: string[];
   }
 
-  declare interface surveys$MobileAppPanelsListResponse {
+  declare interface gapi$client$surveys$MobileAppPanelsListResponse {
     pageInfo?: surveys$PageInfo;
 
     /**
@@ -77,26 +81,26 @@ declare module "gapi.client.surveys" {
     /**
      * An individual predefined panel of Opinion Rewards mobile users.
      */
-    resources?: surveys$MobileAppPanel[];
+    resources?: gapi$client$surveys$MobileAppPanel[];
     tokenPagination?: surveys$TokenPagination;
   }
 
-  declare interface surveys$PageInfo {
+  declare interface gapi$client$surveys$PageInfo {
     resultPerPage?: number;
     startIndex?: number;
     totalResults?: number;
   }
 
-  declare interface surveys$ResultsGetRequest {
+  declare interface gapi$client$surveys$ResultsGetRequest {
     resultMask?: surveys$ResultsMask;
   }
 
-  declare interface surveys$ResultsMask {
-    fields?: surveys$FieldMask[];
+  declare interface gapi$client$surveys$ResultsMask {
+    fields?: gapi$client$surveys$FieldMask[];
     projection?: string;
   }
 
-  declare interface surveys$Survey {
+  declare interface gapi$client$surveys$Survey {
     /**
      * Targeting-criteria message containing demographic information
      */
@@ -154,7 +158,7 @@ declare module "gapi.client.surveys" {
     wantedResponseCount?: number;
   }
 
-  declare interface surveys$SurveyAudience {
+  declare interface gapi$client$surveys$SurveyAudience {
     /**
      * Optional list of age buckets to target. Supported age buckets are: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']
      */
@@ -197,7 +201,7 @@ declare module "gapi.client.surveys" {
     populationSource?: string;
   }
 
-  declare interface surveys$SurveyCost {
+  declare interface gapi$client$surveys$SurveyCost {
     /**
      * Cost per survey response in nano units of the given currency. To get the total cost for a survey, multiply this value by wanted_response_count.
      */
@@ -226,7 +230,7 @@ declare module "gapi.client.surveys" {
     nanos?: string;
   }
 
-  declare interface surveys$SurveyQuestion {
+  declare interface gapi$client$surveys$SurveyQuestion {
     /**
      * The randomization option for multiple choice and multi-select questions. If not specified, this option defaults to randomize.
      */
@@ -319,7 +323,7 @@ declare module "gapi.client.surveys" {
     videoId?: string;
   }
 
-  declare interface surveys$SurveyQuestionImage {
+  declare interface gapi$client$surveys$SurveyQuestionImage {
     /**
      * The alt text property used in image tags is required for all images.
      */
@@ -336,7 +340,7 @@ declare module "gapi.client.surveys" {
     url?: string;
   }
 
-  declare interface surveys$SurveyRejection {
+  declare interface gapi$client$surveys$SurveyRejection {
     /**
      * A human-readable explanation of what was wrong with the survey.
      */
@@ -348,7 +352,7 @@ declare module "gapi.client.surveys" {
     type?: string;
   }
 
-  declare interface surveys$SurveyResults {
+  declare interface gapi$client$surveys$SurveyResults {
     /**
      * Human readable string describing the status of the request.
      */
@@ -360,15 +364,15 @@ declare module "gapi.client.surveys" {
     surveyUrlId?: string;
   }
 
-  declare interface surveys$SurveysDeleteResponse {
+  declare interface gapi$client$surveys$SurveysDeleteResponse {
     /**
      * Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.
      */
     requestId?: string;
   }
 
-  declare interface surveys$SurveysListResponse {
-    pageInfo?: surveys$PageInfo;
+  declare interface gapi$client$surveys$SurveysListResponse {
+    pageInfo?: gapi$client$surveys$PageInfo;
 
     /**
      * Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.
@@ -378,37 +382,37 @@ declare module "gapi.client.surveys" {
     /**
      * An individual survey resource.
      */
-    resources?: surveys$Survey[];
+    resources?: gapi$client$surveys$Survey[];
     tokenPagination?: surveys$TokenPagination;
   }
 
-  declare interface surveys$SurveysStartRequest {
+  declare interface gapi$client$surveys$SurveysStartRequest {
     /**
      * Threshold to start a survey automically if the quoted prices is less than or equal to this value. See Survey.Cost for more details.
      */
     maxCostPerResponseNanos?: string;
   }
 
-  declare interface surveys$SurveysStartResponse {
+  declare interface gapi$client$surveys$SurveysStartResponse {
     /**
      * Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.
      */
     requestId?: string;
   }
 
-  declare interface surveys$SurveysStopResponse {
+  declare interface gapi$client$surveys$SurveysStopResponse {
     /**
      * Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.
      */
     requestId?: string;
   }
 
-  declare interface surveys$TokenPagination {
+  declare interface gapi$client$surveys$TokenPagination {
     nextPageToken?: string;
     previousPageToken?: string;
   }
 
-  declare interface surveys$MobileapppanelsResource {
+  declare interface gapi$client$surveys$MobileapppanelsResource {
     /**
      * Retrieves a MobileAppPanel that is available to the authenticated user.
      */
@@ -453,7 +457,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$MobileAppPanel>;
+    }): Request<gapi$client$surveys$MobileAppPanel>;
 
     /**
      * Lists the MobileAppPanels available to the authenticated user.
@@ -497,7 +501,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$MobileAppPanelsListResponse>;
+    }): Request<gapi$client$surveys$MobileAppPanelsListResponse>;
 
     /**
      * Updates a MobileAppPanel. Currently the only property that can be updated is the owners property.
@@ -543,10 +547,10 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$MobileAppPanel>;
+    }): Request<gapi$client$surveys$MobileAppPanel>;
   }
 
-  declare interface surveys$ResultsResource {
+  declare interface gapi$client$surveys$ResultsResource {
     /**
      * Retrieves any survey results that have been produced so far. Results are formatted as an Excel file. You must add "?alt=media" to the URL as an
      * argument to get results.
@@ -592,10 +596,10 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$SurveyResults>;
+    }): Request<gapi$client$surveys$SurveyResults>;
   }
 
-  declare interface surveys$SurveysResource {
+  declare interface gapi$client$surveys$SurveysResource {
     /**
      * Removes a survey from view in all user GET requests.
      */
@@ -640,7 +644,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$SurveysDeleteResponse>;
+    }): Request<gapi$client$surveys$SurveysDeleteResponse>;
 
     /**
      * Retrieves information about the specified survey.
@@ -686,7 +690,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$Survey>;
+    }): Request<gapi$client$surveys$Survey>;
 
     /**
      * Creates a survey.
@@ -727,7 +731,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$Survey>;
+    }): Request<gapi$client$surveys$Survey>;
 
     /**
      * Lists the surveys owned by the authenticated user.
@@ -771,7 +775,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$SurveysListResponse>;
+    }): Request<gapi$client$surveys$SurveysListResponse>;
 
     /**
      * Begins running a survey.
@@ -813,7 +817,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$SurveysStartResponse>;
+    }): Request<gapi$client$surveys$SurveysStartResponse>;
 
     /**
      * Stops a running survey.
@@ -855,7 +859,7 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$SurveysStopResponse>;
+    }): Request<gapi$client$surveys$SurveysStopResponse>;
 
     /**
      * Updates a survey. Currently the only property that can be updated is the owners property.
@@ -901,6 +905,6 @@ declare module "gapi.client.surveys" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<surveys$Survey>;
+    }): Request<gapi$client$surveys$Survey>;
   }
 }
