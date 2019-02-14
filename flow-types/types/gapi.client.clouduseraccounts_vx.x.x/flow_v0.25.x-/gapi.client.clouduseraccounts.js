@@ -1,35 +1,39 @@
 declare module "gapi.client.clouduseraccounts" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    globalAccountsOperations: typeof client$globalAccountsOperations,
-    groups: typeof client$groups,
-    linux: typeof client$linux,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    globalAccountsOperations: typeof gapi$client$globalAccountsOperations,
+    groups: typeof gapi$client$groups,
+    linux: typeof gapi$client$linux,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Cloud User Accounts API vm_alpha
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouduseraccounts",
     version: "vm_alpha"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouduseraccounts",
     version: "vm_alpha",
     callback: () => any
   ): void;
 
-  declare var client$globalAccountsOperations: clouduseraccounts$clouduseraccounts$GlobalAccountsOperationsResource;
+  declare var gapi$client$globalAccountsOperations: clouduseraccounts$GlobalAccountsOperationsResource;
 
-  declare var client$groups: clouduseraccounts$clouduseraccounts$GroupsResource;
+  declare var gapi$client$groups: clouduseraccounts$GroupsResource;
 
-  declare var client$linux: clouduseraccounts$clouduseraccounts$LinuxResource;
+  declare var gapi$client$linux: clouduseraccounts$LinuxResource;
 
-  declare var client$users: clouduseraccounts$clouduseraccounts$UsersResource;
+  declare var gapi$client$users: clouduseraccounts$UsersResource;
 
-  declare interface clouduseraccounts$AuditConfig {
+  declare interface gapi$client$clouduseraccounts$AuditConfig {
     /**
      * Specifies the identities that are exempted from "data access" audit logging for the `service` specified above. Follows the same format of
      * Binding.members.
@@ -43,7 +47,7 @@ declare module "gapi.client.clouduseraccounts" {
     service?: string;
   }
 
-  declare interface clouduseraccounts$AuthorizedKeysView {
+  declare interface gapi$client$clouduseraccounts$AuthorizedKeysView {
     /**
      * [Output Only] The list of authorized public keys in SSH format.
      */
@@ -55,7 +59,7 @@ declare module "gapi.client.clouduseraccounts" {
     sudoer?: boolean;
   }
 
-  declare interface clouduseraccounts$Binding {
+  declare interface gapi$client$clouduseraccounts$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:
      *
@@ -79,7 +83,7 @@ declare module "gapi.client.clouduseraccounts" {
     role?: string;
   }
 
-  declare interface clouduseraccounts$Condition {
+  declare interface gapi$client$clouduseraccounts$Condition {
     /**
      * Trusted attributes supplied by the IAM system.
      */
@@ -111,7 +115,7 @@ declare module "gapi.client.clouduseraccounts" {
     values?: string[];
   }
 
-  declare interface clouduseraccounts$Group {
+  declare interface gapi$client$clouduseraccounts$Group {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -148,7 +152,7 @@ declare module "gapi.client.clouduseraccounts" {
     selfLink?: string;
   }
 
-  declare interface clouduseraccounts$GroupList {
+  declare interface gapi$client$clouduseraccounts$GroupList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -157,7 +161,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * [Output Only] A list of Group resources.
      */
-    items?: clouduseraccounts$Group[];
+    items?: gapi$client$clouduseraccounts$Group[];
 
     /**
      * [Output Only] Type of resource. Always clouduseraccounts#groupList for lists of groups.
@@ -175,21 +179,21 @@ declare module "gapi.client.clouduseraccounts" {
     selfLink?: string;
   }
 
-  declare interface clouduseraccounts$GroupsAddMemberRequest {
+  declare interface gapi$client$clouduseraccounts$GroupsAddMemberRequest {
     /**
      * Fully-qualified URLs of the User resources to add.
      */
-    client$users?: string[];
+    users?: string[];
   }
 
-  declare interface clouduseraccounts$GroupsRemoveMemberRequest {
+  declare interface gapi$client$clouduseraccounts$GroupsRemoveMemberRequest {
     /**
      * Fully-qualified URLs of the User resources to remove.
      */
-    client$users?: string[];
+    users?: string[];
   }
 
-  declare interface clouduseraccounts$LinuxAccountViews {
+  declare interface gapi$client$clouduseraccounts$LinuxAccountViews {
     /**
      * [Output Only] A list of all groups within a project.
      */
@@ -206,21 +210,21 @@ declare module "gapi.client.clouduseraccounts" {
     userViews?: clouduseraccounts$LinuxUserView[];
   }
 
-  declare interface clouduseraccounts$LinuxGetAuthorizedKeysViewResponse {
+  declare interface gapi$client$clouduseraccounts$LinuxGetAuthorizedKeysViewResponse {
     /**
      * [Output Only] A list of authorized public keys for a user.
      */
-    resource?: clouduseraccounts$AuthorizedKeysView;
+    resource?: gapi$client$clouduseraccounts$AuthorizedKeysView;
   }
 
-  declare interface clouduseraccounts$LinuxGetLinuxAccountViewsResponse {
+  declare interface gapi$client$clouduseraccounts$LinuxGetLinuxAccountViewsResponse {
     /**
      * [Output Only] A list of authorized user accounts and groups.
      */
-    resource?: clouduseraccounts$LinuxAccountViews;
+    resource?: gapi$client$clouduseraccounts$LinuxAccountViews;
   }
 
-  declare interface clouduseraccounts$LinuxGroupView {
+  declare interface gapi$client$clouduseraccounts$LinuxGroupView {
     /**
      * [Output Only] The Group ID.
      */
@@ -237,7 +241,7 @@ declare module "gapi.client.clouduseraccounts" {
     members?: string[];
   }
 
-  declare interface clouduseraccounts$LinuxUserView {
+  declare interface gapi$client$clouduseraccounts$LinuxUserView {
     /**
      * [Output Only] The GECOS (user information) entry for this account.
      */
@@ -269,14 +273,14 @@ declare module "gapi.client.clouduseraccounts" {
     username?: string;
   }
 
-  declare interface clouduseraccounts$LogConfig {
+  declare interface gapi$client$clouduseraccounts$LogConfig {
     /**
      * Counter options.
      */
     counter?: clouduseraccounts$LogConfigCounterOptions;
   }
 
-  declare interface clouduseraccounts$LogConfigCounterOptions {
+  declare interface gapi$client$clouduseraccounts$LogConfigCounterOptions {
     /**
      * The field value to attribute.
      */
@@ -288,7 +292,7 @@ declare module "gapi.client.clouduseraccounts" {
     metric?: string;
   }
 
-  declare interface clouduseraccounts$Operation {
+  declare interface gapi$client$clouduseraccounts$Operation {
     /**
      * [Output Only] Reserved for future use.
      */
@@ -457,7 +461,7 @@ declare module "gapi.client.clouduseraccounts" {
     zone?: string;
   }
 
-  declare interface clouduseraccounts$OperationList {
+  declare interface gapi$client$clouduseraccounts$OperationList {
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -466,7 +470,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * [Output Only] A list of Operation resources.
      */
-    items?: clouduseraccounts$Operation[];
+    items?: gapi$client$clouduseraccounts$Operation[];
 
     /**
      * [Output Only] Type of resource. Always compute#operations for Operations resource.
@@ -486,20 +490,20 @@ declare module "gapi.client.clouduseraccounts" {
     selfLink?: string;
   }
 
-  declare interface clouduseraccounts$Policy {
+  declare interface gapi$client$clouduseraccounts$Policy {
     /**
      * Specifies audit logging configs for "data access". "data access": generally refers to data reads/writes and admin reads. "admin activity": generally
      * refers to admin writes.
      *
      * Note: `AuditConfig` doesn't apply to "admin activity", which always enables audit logging.
      */
-    auditConfigs?: clouduseraccounts$AuditConfig[];
+    auditConfigs?: gapi$client$clouduseraccounts$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same `role`. `bindings` with no members will result in an
      * error.
      */
-    bindings?: clouduseraccounts$Binding[];
+    bindings?: gapi$client$clouduseraccounts$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly
@@ -526,7 +530,7 @@ declare module "gapi.client.clouduseraccounts" {
     version?: number;
   }
 
-  declare interface clouduseraccounts$PublicKey {
+  declare interface gapi$client$clouduseraccounts$PublicKey {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -553,7 +557,7 @@ declare module "gapi.client.clouduseraccounts" {
     key?: string;
   }
 
-  declare interface clouduseraccounts$Rule {
+  declare interface gapi$client$clouduseraccounts$Rule {
     /**
      * Required
      */
@@ -562,7 +566,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * Additional restrictions that must be met
      */
-    conditions?: clouduseraccounts$Condition[];
+    conditions?: gapi$client$clouduseraccounts$Condition[];
 
     /**
      * Human-readable description of the rule.
@@ -577,7 +581,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
      */
-    logConfigs?: clouduseraccounts$LogConfig[];
+    logConfigs?: gapi$client$clouduseraccounts$LogConfig[];
 
     /**
      * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of entries.
@@ -591,21 +595,21 @@ declare module "gapi.client.clouduseraccounts" {
     permissions?: string[];
   }
 
-  declare interface clouduseraccounts$TestPermissionsRequest {
+  declare interface gapi$client$clouduseraccounts$TestPermissionsRequest {
     /**
      * The set of permissions to check for the 'resource'. Permissions with wildcards (such as '&#42;' or 'storage.&#42;') are not allowed.
      */
     permissions?: string[];
   }
 
-  declare interface clouduseraccounts$TestPermissionsResponse {
+  declare interface gapi$client$clouduseraccounts$TestPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
      */
     permissions?: string[];
   }
 
-  declare interface clouduseraccounts$User {
+  declare interface gapi$client$clouduseraccounts$User {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -619,7 +623,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * [Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project.
      */
-    client$groups?: string[];
+    groups?: string[];
 
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
@@ -645,7 +649,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * [Output Only] Public keys that this user may use to login.
      */
-    publicKeys?: clouduseraccounts$PublicKey[];
+    publicKeys?: gapi$client$clouduseraccounts$PublicKey[];
 
     /**
      * [Output Only] Server defined URL for the resource.
@@ -653,7 +657,7 @@ declare module "gapi.client.clouduseraccounts" {
     selfLink?: string;
   }
 
-  declare interface clouduseraccounts$UserList {
+  declare interface gapi$client$clouduseraccounts$UserList {
     /**
      * [Output Only] Unique identifier for the resource; defined by the server.
      */
@@ -662,7 +666,7 @@ declare module "gapi.client.clouduseraccounts" {
     /**
      * [Output Only] A list of User resources.
      */
-    items?: clouduseraccounts$User[];
+    items?: gapi$client$clouduseraccounts$User[];
 
     /**
      * [Output Only] Type of resource. Always clouduseraccounts#userList for lists of users.
@@ -680,7 +684,7 @@ declare module "gapi.client.clouduseraccounts" {
     selfLink?: string;
   }
 
-  declare interface clouduseraccounts$GlobalAccountsOperationsResource {
+  declare interface gapi$client$clouduseraccounts$GlobalAccountsOperationsResource {
     /**
      * Deletes the specified operation resource.
      */
@@ -781,7 +785,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Retrieves the list of operation resources contained within the specified project.
@@ -870,10 +874,10 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$OperationList>;
+    }): Request<gapi$client$clouduseraccounts$OperationList>;
   }
 
-  declare interface clouduseraccounts$GroupsResource {
+  declare interface gapi$client$clouduseraccounts$GroupsResource {
     /**
      * Adds users to the specified group.
      */
@@ -923,7 +927,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Deletes the specified Group resource.
@@ -974,7 +978,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Returns the specified Group resource.
@@ -1025,7 +1029,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Group>;
+    }): Request<gapi$client$clouduseraccounts$Group>;
 
     /**
      * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1076,7 +1080,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Policy>;
+    }): Request<gapi$client$clouduseraccounts$Policy>;
 
     /**
      * Creates a Group resource in the specified project using the data included in the request.
@@ -1122,7 +1126,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Retrieves the list of groups contained within the specified project.
@@ -1211,7 +1215,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$GroupList>;
+    }): Request<gapi$client$clouduseraccounts$GroupList>;
 
     /**
      * Removes users from the specified group.
@@ -1262,7 +1266,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -1313,7 +1317,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Policy>;
+    }): Request<gapi$client$clouduseraccounts$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1364,10 +1368,10 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$TestPermissionsResponse>;
+    }): Request<gapi$client$clouduseraccounts$TestPermissionsResponse>;
   }
 
-  declare interface clouduseraccounts$LinuxResource {
+  declare interface gapi$client$clouduseraccounts$LinuxResource {
     /**
      * Returns a list of authorized public keys for a specific user account.
      */
@@ -1432,7 +1436,7 @@ declare module "gapi.client.clouduseraccounts" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<clouduseraccounts$LinuxGetAuthorizedKeysViewResponse>;
+    }): Request<gapi$client$clouduseraccounts$LinuxGetAuthorizedKeysViewResponse>;
 
     /**
      * Retrieves a list of user accounts for an instance within a specific project.
@@ -1531,10 +1535,10 @@ declare module "gapi.client.clouduseraccounts" {
        * Name of the zone for this request.
        */
       zone: string
-    }): Request<clouduseraccounts$LinuxGetLinuxAccountViewsResponse>;
+    }): Request<gapi$client$clouduseraccounts$LinuxGetLinuxAccountViewsResponse>;
   }
 
-  declare interface clouduseraccounts$UsersResource {
+  declare interface gapi$client$clouduseraccounts$UsersResource {
     /**
      * Adds a public key to the specified User resource with the data included in the request.
      */
@@ -1584,7 +1588,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Deletes the specified User resource.
@@ -1635,7 +1639,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Returns the specified User resource.
@@ -1686,7 +1690,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$User>;
+    }): Request<gapi$client$clouduseraccounts$User>;
 
     /**
      * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1737,7 +1741,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Policy>;
+    }): Request<gapi$client$clouduseraccounts$Policy>;
 
     /**
      * Creates a User resource in the specified project using the data included in the request.
@@ -1783,7 +1787,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Retrieves a list of users contained within the specified project.
@@ -1872,7 +1876,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$UserList>;
+    }): Request<gapi$client$clouduseraccounts$UserList>;
 
     /**
      * Removes the specified public key from the user.
@@ -1929,7 +1933,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Operation>;
+    }): Request<gapi$client$clouduseraccounts$Operation>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -1980,7 +1984,7 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$Policy>;
+    }): Request<gapi$client$clouduseraccounts$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -2031,6 +2035,6 @@ declare module "gapi.client.clouduseraccounts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<clouduseraccounts$TestPermissionsResponse>;
+    }): Request<gapi$client$clouduseraccounts$TestPermissionsResponse>;
   }
 }
