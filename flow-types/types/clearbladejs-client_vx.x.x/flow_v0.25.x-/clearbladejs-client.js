@@ -1,31 +1,20 @@
 declare module "clearbladejs-client" {
   declare var npm$namespace$CbClient: {
-    ClearBlade: typeof CbClient$ClearBlade
+    ClearBlade: typeof CbClient$ClearBlade,
+    MessagingQOS: typeof CbClient$MessagingQOS,
+    QuerySortDirections: typeof CbClient$QuerySortDirections,
+    QueryConditions: typeof CbClient$QueryConditions
   };
   declare interface CbClient$Resp {
     error(msg: any): empty;
     success(msg: any): empty;
   }
 
-  declare class CbClient$MessagingQOS {
-    constructor(...args: empty): mixed;
-    static +MESSAGING_QOS_AT_MOST_ONCE: Class<CbClient$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE> &
-      CbClient$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE &
-      0; // 0
-    static +MESSAGING_QOS_AT_LEAST_ONCE: Class<CbClient$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE> &
-      CbClient$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE &
-      1; // 1
-    static +MESSAGING_QOS_EXACTLY_ONCE: Class<CbClient$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE> &
-      CbClient$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE &
-      2; // 2
-  }
-
-  declare class CbClient$MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE
-    mixins CbClient$MessagingQOS {}
-  declare class CbClient$MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE
-    mixins CbClient$MessagingQOS {}
-  declare class CbClient$MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE
-    mixins CbClient$MessagingQOS {}
+  declare var CbClient$MessagingQOS: {|
+    +MESSAGING_QOS_AT_MOST_ONCE: 0, // 0
+    +MESSAGING_QOS_AT_LEAST_ONCE: 1, // 1
+    +MESSAGING_QOS_EXACTLY_ONCE: 2 // 2
+  |};
 
   declare interface CbClient$InitOptions {
     systemKey: string;
@@ -68,14 +57,14 @@ declare module "clearbladejs-client" {
   ) => void;
 
   declare type CbClient$ClearBladeGlobal = {
-    MESSAGING_QOS_AT_MOST_ONCE: CbClient$MessagingQOS.MESSAGING_QOS_AT_MOST_ONCE,
-    MESSAGING_QOS_AT_LEAST_ONCE: CbClient$MessagingQOS.MESSAGING_QOS_AT_LEAST_ONCE,
-    MESSAGING_QOS_EXACTLY_ONCE: CbClient$MessagingQOS.MESSAGING_QOS_EXACTLY_ONCE,
+    MESSAGING_QOS_AT_MOST_ONCE: MessagingQOS.MESSAGING_QOS_AT_MOST_ONCE,
+    MESSAGING_QOS_AT_LEAST_ONCE: MessagingQOS.MESSAGING_QOS_AT_LEAST_ONCE,
+    MESSAGING_QOS_EXACTLY_ONCE: MessagingQOS.MESSAGING_QOS_EXACTLY_ONCE,
     request(
       options: CbClient$RequestOptions,
       callback: CbClient$CbCallback
     ): void
-  } & CbClient$ClearBladeInt;
+  } & ClearBladeInt;
 
   declare interface CbClient$ClearBladeInt {
     systemKey: string;
@@ -107,29 +96,29 @@ declare module "clearbladejs-client" {
       callback: CbClient$CbCallback
     ): void;
     registerMasterCallback(callback: CbClient$CbCallback): void;
-    CbClient$Collection(
+    Collection(
       options:
         | string
         | CbClient$CollectionOptionsWithName
         | CbClient$CollectionOptionsWithID
     ): CbClient$Collection;
-    CbClient$Query(
+    Query(
       options:
         | string
         | CbClient$QueryOptionsWithName
         | CbClient$QueryOptionsWithID
     ): CbClient$QueryObj;
-    CbClient$Item(
+    Item(
       data: { [key: string]: any },
       collectionID: string | CbClient$ItemOptions
     ): CbClient$Item;
-    CbClient$Code(): CbClient$Code;
+    Code(): CbClient$Code;
     User(): CbClient$AppUser;
-    CbClient$Messaging(
+    Messaging(
       options: CbClient$MessagingOptions,
       callback: CbClient$CbCallback
     ): CbClient$Messaging;
-    CbClient$MessagingStats(): CbClient$MessagingStats;
+    MessagingStats(): CbClient$MessagingStats;
     sendPush(
       users: string[],
       payload: { [key: string]: any },
@@ -137,12 +126,12 @@ declare module "clearbladejs-client" {
       callback: CbClient$CbCallback
     ): void;
     getEdges(query: CbClient$Query, callback: CbClient$CbCallback): void;
-    CbClient$Edge(): CbClient$Edge;
-    CbClient$Metrics(): CbClient$Metrics;
-    CbClient$Device(): CbClient$Device;
-    CbClient$Analytics(): CbClient$Analytics;
-    CbClient$Portal(name: string): CbClient$Portal;
-    CbClient$Triggers(): CbClient$Triggers;
+    Edge(): CbClient$Edge;
+    Metrics(): CbClient$Metrics;
+    Device(): CbClient$Device;
+    Analytics(): CbClient$Analytics;
+    Portal(name: string): CbClient$Portal;
+    Triggers(): CbClient$Triggers;
     getAllCollections(callback: CbClient$CbCallback): void;
   }
 
@@ -174,60 +163,20 @@ declare module "clearbladejs-client" {
     count(query: CbClient$Query, callback: CbClient$CbCallback): void;
   }
 
-  declare class CbClient$QuerySortDirections {
-    constructor(...args: empty): mixed;
-    static +QUERY_SORT_ASCENDING: Class<CbClient$QuerySortDirections__QUERY_SORT_ASCENDING> &
-      CbClient$QuerySortDirections__QUERY_SORT_ASCENDING &
-      "ASC"; // "ASC"
-    static +QUERY_SORT_DESCENDING: Class<CbClient$QuerySortDirections__QUERY_SORT_DESCENDING> &
-      CbClient$QuerySortDirections__QUERY_SORT_DESCENDING &
-      "DESC"; // "DESC"
-  }
+  declare var CbClient$QuerySortDirections: {|
+    +QUERY_SORT_ASCENDING: "ASC", // "ASC"
+    +QUERY_SORT_DESCENDING: "DESC" // "DESC"
+  |};
 
-  declare class CbClient$QuerySortDirections__QUERY_SORT_ASCENDING
-    mixins CbClient$QuerySortDirections {}
-  declare class CbClient$QuerySortDirections__QUERY_SORT_DESCENDING
-    mixins CbClient$QuerySortDirections {}
-
-  declare class CbClient$QueryConditions {
-    constructor(...args: empty): mixed;
-    static +QUERY_EQUAL: Class<CbClient$QueryConditions__QUERY_EQUAL> &
-      CbClient$QueryConditions__QUERY_EQUAL &
-      "EQ"; // "EQ"
-    static +QUERY_NOTEQUAL: Class<CbClient$QueryConditions__QUERY_NOTEQUAL> &
-      CbClient$QueryConditions__QUERY_NOTEQUAL &
-      "NEQ"; // "NEQ"
-    static +QUERY_GREATERTHAN: Class<CbClient$QueryConditions__QUERY_GREATERTHAN> &
-      CbClient$QueryConditions__QUERY_GREATERTHAN &
-      "GT"; // "GT"
-    static +QUERY_GREATERTHAN_EQUAL: Class<CbClient$QueryConditions__QUERY_GREATERTHAN_EQUAL> &
-      CbClient$QueryConditions__QUERY_GREATERTHAN_EQUAL &
-      "GTE"; // "GTE"
-    static +QUERY_LESSTHAN: Class<CbClient$QueryConditions__QUERY_LESSTHAN> &
-      CbClient$QueryConditions__QUERY_LESSTHAN &
-      "LT"; // "LT"
-    static +QUERY_LESSTHAN_EQUAL: Class<CbClient$QueryConditions__QUERY_LESSTHAN_EQUAL> &
-      CbClient$QueryConditions__QUERY_LESSTHAN_EQUAL &
-      "LTE"; // "LTE"
-    static +QUERY_MATCHES: Class<CbClient$QueryConditions__QUERY_MATCHES> &
-      CbClient$QueryConditions__QUERY_MATCHES &
-      "RE"; // "RE"
-  }
-
-  declare class CbClient$QueryConditions__QUERY_EQUAL
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_NOTEQUAL
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_GREATERTHAN
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_GREATERTHAN_EQUAL
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_LESSTHAN
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_LESSTHAN_EQUAL
-    mixins CbClient$QueryConditions {}
-  declare class CbClient$QueryConditions__QUERY_MATCHES
-    mixins CbClient$QueryConditions {}
+  declare var CbClient$QueryConditions: {|
+    +QUERY_EQUAL: "EQ", // "EQ"
+    +QUERY_NOTEQUAL: "NEQ", // "NEQ"
+    +QUERY_GREATERTHAN: "GT", // "GT"
+    +QUERY_GREATERTHAN_EQUAL: "GTE", // "GTE"
+    +QUERY_LESSTHAN: "LT", // "LT"
+    +QUERY_LESSTHAN_EQUAL: "LTE", // "LTE"
+    +QUERY_MATCHES: "RE" // "RE"
+  |};
 
   declare type CbClient$QueryValue = string | number | boolean;
 
@@ -236,11 +185,11 @@ declare module "clearbladejs-client" {
     limit?: number;
   }
 
-  declare type CbClient$QueryOptionsWithName = {} & CbClient$CollectionOptionsWithName &
-    CbClient$QueryOptions;
+  declare type CbClient$QueryOptionsWithName = {} & CollectionOptionsWithName &
+    QueryOptions;
 
-  declare type CbClient$QueryOptionsWithID = {} & CbClient$CollectionOptionsWithID &
-    CbClient$QueryOptions;
+  declare type CbClient$QueryOptionsWithID = {} & CollectionOptionsWithID &
+    QueryOptions;
 
   declare interface CbClient$Query {
     SELECTCOLUMNS?: string[];
@@ -251,7 +200,7 @@ declare module "clearbladejs-client" {
   }
 
   declare interface CbClient$QueryFilter {
-    [CbClient$QueryConditions: string]: CbClient$QueryFilterValue;
+    [QueryConditions: string]: CbClient$QueryFilterValue;
   }
 
   declare interface CbClient$QueryFilterValue {
@@ -299,7 +248,7 @@ declare module "clearbladejs-client" {
     remove(callback: CbClient$CbCallback): void;
   }
 
-  declare type CbClient$ItemOptions = {} & CbClient$CollectionOptionsWithID;
+  declare type CbClient$ItemOptions = {} & CollectionOptionsWithID;
 
   declare interface CbClient$Item {
     data: { [key: string]: any };
@@ -352,7 +301,7 @@ declare module "clearbladejs-client" {
     systemKey: string;
     systemSecret: string;
     callTimeout: number;
-    client: Paho.MQTT.Client;
+    client: Paho.MQTTClient;
     getMessageHistoryWithTimeFrame(
       topic: string,
       count: number,
@@ -405,12 +354,12 @@ declare module "clearbladejs-client" {
 
   declare type CbClient$MessagingOptions = {
     qos?: CbClient$MessagingQOS
-  } & CbClient$CommonMessagingProperties;
+  } & CommonMessagingProperties;
 
   declare type CbClient$MessagingConfiguration = {
     userName: string,
     password: string
-  } & CbClient$CommonMessagingProperties;
+  } & CommonMessagingProperties;
 
   declare type CbClient$MessageCallback = (message: string) => void;
 
