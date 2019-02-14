@@ -15,7 +15,9 @@ declare module "fluent-ffmpeg" {
     getAvailableEncoders: typeof Ffmpeg$getAvailableEncoders,
     availableFormats: typeof Ffmpeg$availableFormats,
     getAvailableFormats: typeof Ffmpeg$getAvailableFormats,
-    ffprobe: typeof Ffmpeg$ffprobe
+    ffprobe: typeof Ffmpeg$ffprobe,
+
+    FfmpegCommand: typeof Ffmpeg$FfmpegCommand
   };
   declare interface Ffmpeg$FfmpegCommandLogger {
     error(...data: any[]): void;
@@ -463,13 +465,13 @@ declare module "fluent-ffmpeg" {
   ): void;
 
   declare function Ffmpeg(
-    options?: Ffmpeg$Ffmpeg$FfmpegCommandOptions
-  ): Ffmpeg$Ffmpeg$FfmpegCommand;
+    options?: Ffmpeg$FfmpegCommandOptions
+  ): Ffmpeg$FfmpegCommand;
 
   declare function Ffmpeg(
     input?: string | stream.Readable,
-    options?: Ffmpeg$Ffmpeg$FfmpegCommandOptions
-  ): Ffmpeg$Ffmpeg$FfmpegCommand;
+    options?: Ffmpeg$FfmpegCommandOptions
+  ): Ffmpeg$FfmpegCommand;
 
-  declare module.exports: typeof Ffmpeg;
+  declare export default typeof Ffmpeg;
 }
