@@ -372,15 +372,15 @@ declare module "graphlib" {
   declare function json$write(graph: Graph): Object;
 
   /**
- * Takes JSON as input and returns the graph representation.
- * @example var g2 = graphlib.json.read(JSON.parse(str));
-g2.nodes();
-// ['a', 'b']
-g2.edges()
-// [ { v: 'a', w: 'b' } ]
- * @argument json - JSON serializable graph representation
- * @returns graph constructed acccording to specified representation
- */
+   * Takes JSON as input and returns the graph representation.
+   * @example var g2 = graphlib.json.read(JSON.parse(str));
+   * g2.nodes();
+   * // ['a', 'b']
+   * g2.edges()
+   * // [ { v: 'a', w: 'b' } ]
+   * @argument json - JSON serializable graph representation
+   * @returns graph constructed acccording to specified representation
+   */
   declare function json$read(json: Object): Graph;
 
   declare export interface Path {
@@ -412,22 +412,22 @@ g2.edges()
   declare function alg$components(graph: Graph): string[][];
 
   /**
- * This function is an implementation of Dijkstra's algorithm which finds the shortest
- * path from source to all other nodes in graph. This function returns a map of
- * v -> { distance, predecessor }. The distance property holds the sum of the weights
- * from source to v along the shortest path or Number.POSITIVE_INFINITY if there is no path
- * from source. The predecessor property can be used to walk the individual elements of the
- * path from source to v in reverse order.
- * Complexity: O((|E| + |V|) * log |V|).
- * @argument graph - graph where to search pathes.
- * @argument source - node to start pathes from.
- * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
-is supplied then each edge is assumed to have a weight of 1. This function throws an
-Error if any of the traversed edges have a negative edge weight.
- * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
-for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
- * @returns shortest pathes map that starts from node source
- */
+   * This function is an implementation of Dijkstra's algorithm which finds the shortest
+   * path from source to all other nodes in graph. This function returns a map of
+   * v -> { distance, predecessor }. The distance property holds the sum of the weights
+   * from source to v along the shortest path or Number.POSITIVE_INFINITY if there is no path
+   * from source. The predecessor property can be used to walk the individual elements of the
+   * path from source to v in reverse order.
+   * Complexity: O((|E| + |V|) * log |V|).
+   * @argument graph - graph where to search pathes.
+   * @argument source - node to start pathes from.
+   * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
+   * is supplied then each edge is assumed to have a weight of 1. This function throws an
+   * Error if any of the traversed edges have a negative edge weight.
+   * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
+   * for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
+   * @returns shortest pathes map that starts from node source
+   */
   declare function alg$dijkstra(
     graph: Graph,
     source: string,
@@ -438,18 +438,18 @@ for the purposes of shortest path traversal. By default this function uses the g
   };
 
   /**
- * This function finds the shortest path from each node to every other reachable node in
- * the graph. It is similar to alg.dijkstra, but instead of returning a single-source
- * array, it returns a mapping of source -> alg.dijksta(g, source, weightFn, edgeFn).
- * Complexity: O(|V| * (|E| + |V|) * log |V|).
- * @argument graph - graph where to search pathes.
- * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
-is supplied then each edge is assumed to have a weight of 1. This function throws an
-Error if any of the traversed edges have a negative edge weight.
- * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
-for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
- * @returns shortest pathes map.
- */
+   * This function finds the shortest path from each node to every other reachable node in
+   * the graph. It is similar to alg.dijkstra, but instead of returning a single-source
+   * array, it returns a mapping of source -> alg.dijksta(g, source, weightFn, edgeFn).
+   * Complexity: O(|V| * (|E| + |V|) * log |V|).
+   * @argument graph - graph where to search pathes.
+   * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
+   * is supplied then each edge is assumed to have a weight of 1. This function throws an
+   * Error if any of the traversed edges have a negative edge weight.
+   * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
+   * for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
+   * @returns shortest pathes map.
+   */
   declare function alg$dijkstraAll(
     graph: Graph,
     weightFn?: (e: Edge) => number,
@@ -482,23 +482,23 @@ for the purposes of shortest path traversal. By default this function uses the g
   declare function alg$isAcyclic(graph: Graph): boolean;
 
   /**
- * This function is an implementation of the Floyd-Warshall algorithm, which finds the
- * shortest path from each node to every other reachable node in the graph. It is similar
- * to alg.dijkstraAll, but it handles negative edge weights and is more efficient for some types
- * of graphs. This function returns a map of source -> { target -> { distance, predecessor }.
- * The distance property holds the sum of the weights from source to target along the shortest
- * path of Number.POSITIVE_INFINITY if there is no path from source. The predecessor property
- * can be used to walk the individual elements of the path from source to target in reverse
- * order.
- * Complexity: O(|V|^3).
- * @argument graph - graph where to search pathes.
- * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
-is supplied then each edge is assumed to have a weight of 1. This function throws an
-Error if any of the traversed edges have a negative edge weight.
- * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
-for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
- * @returns shortest pathes map.
- */
+   * This function is an implementation of the Floyd-Warshall algorithm, which finds the
+   * shortest path from each node to every other reachable node in the graph. It is similar
+   * to alg.dijkstraAll, but it handles negative edge weights and is more efficient for some types
+   * of graphs. This function returns a map of source -> { target -> { distance, predecessor }.
+   * The distance property holds the sum of the weights from source to target along the shortest
+   * path of Number.POSITIVE_INFINITY if there is no path from source. The predecessor property
+   * can be used to walk the individual elements of the path from source to target in reverse
+   * order.
+   * Complexity: O(|V|^3).
+   * @argument graph - graph where to search pathes.
+   * @argument weightFn - function which takes edge e and returns the weight of it. If no weightFn
+   * is supplied then each edge is assumed to have a weight of 1. This function throws an
+   * Error if any of the traversed edges have a negative edge weight.
+   * @argument edgeFn - function which takes a node v and returns the ids of all edges incident to it
+   * for the purposes of shortest path traversal. By default this function uses the graph.outEdges.
+   * @returns shortest pathes map.
+   */
   declare function alg$floydWarshall(
     graph: Graph,
     weightFn?: (e: Edge) => number,
@@ -510,29 +510,29 @@ for the purposes of shortest path traversal. By default this function uses the g
   };
 
   /**
- * Prim's algorithm takes a connected undirected graph and generates a minimum spanning tree. This
- * function returns the minimum spanning tree as an undirected graph. This algorithm is derived
- * from the description in "Introduction to Algorithms", Third Edition, Cormen, et al., Pg 634.
- * Complexity: O(|E| * log |V|);
- * @argument graph - graph to generate a minimum spanning tree of.
- * @argument weightFn - function which takes edge e and returns the weight of it. It throws an Error if
-the graph is not connected.
- * @returns minimum spanning tree of graph.
- */
+   * Prim's algorithm takes a connected undirected graph and generates a minimum spanning tree. This
+   * function returns the minimum spanning tree as an undirected graph. This algorithm is derived
+   * from the description in "Introduction to Algorithms", Third Edition, Cormen, et al., Pg 634.
+   * Complexity: O(|E| * log |V|);
+   * @argument graph - graph to generate a minimum spanning tree of.
+   * @argument weightFn - function which takes edge e and returns the weight of it. It throws an Error if
+   * the graph is not connected.
+   * @returns minimum spanning tree of graph.
+   */
   declare function alg$prim(graph: Graph, weightFn: (e: Edge) => number): Graph;
 
   /**
- * This function is an implementation of Tarjan's algorithm which finds all strongly connected
- * components in the directed graph g. Each strongly connected component is composed of nodes that
- * can reach all other nodes in the component via directed edges. A strongly connected component
- * can consist of a single node if that node cannot both reach and be reached by any other
- * specific node in the graph. Components of more than one node are guaranteed to have at least
- * one cycle.
- * Complexity: O(|V| + |E|).
- * @argument graph - graph to find all strongly connected components of.
- * @return an array of components. Each component is itself an array that contains
-the ids of all nodes in the component.
- */
+   * This function is an implementation of Tarjan's algorithm which finds all strongly connected
+   * components in the directed graph g. Each strongly connected component is composed of nodes that
+   * can reach all other nodes in the component via directed edges. A strongly connected component
+   * can consist of a single node if that node cannot both reach and be reached by any other
+   * specific node in the graph. Components of more than one node are guaranteed to have at least
+   * one cycle.
+   * Complexity: O(|V| + |E|).
+   * @argument graph - graph to find all strongly connected components of.
+   * @return an array of components. Each component is itself an array that contains
+   * the ids of all nodes in the component.
+   */
   declare function alg$tarjan(graph: Graph): string[][];
 
   /**
