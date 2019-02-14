@@ -1,10 +1,10 @@
 declare module "matcher" {
-  declare module.exports: typeof matcher;
+  declare export default typeof matcher;
 
   declare function matcher(
     inputs: string[],
     patterns: string[],
-    options?: matcher$matcher$Options
+    options?: matcher$Options
   ): string[];
 
   declare var npm$namespace$matcher: {
