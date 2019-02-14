@@ -4,9 +4,7 @@ declare module "animejs" {
     index: number,
     length: number
   ) => number;
-  declare type AnimeCallbackFunction = (
-    anim: anime$anime$AnimeInstance
-  ) => void;
+  declare type AnimeCallbackFunction = (anim: anime$AnimeInstance) => void;
   declare type AnimeTarget =
     | string
     | { [key: string]: any }
@@ -83,8 +81,7 @@ declare module "animejs" {
     [AnyAnimatedProperty: string]: any;
   }
 
-  declare type anime$AnimeParams = {} & anime$AnimeInstanceParams &
-    anime$AnimeAnimParams;
+  declare type anime$AnimeParams = {} & AnimeInstanceParams & AnimeAnimParams;
 
   declare interface anime$AnimeInstance {
     play(): void;
@@ -116,11 +113,11 @@ declare module "animejs" {
 
   declare type anime$AnimeTimelineAnimParams = {
     offset: number | string | FunctionBasedParameter
-  } & anime$AnimeAnimParams;
+  } & AnimeAnimParams;
 
   declare type anime$AnimeTimelineInstance = {
     add(params: anime$AnimeAnimParams): anime$AnimeTimelineInstance
-  } & anime$AnimeInstance;
+  } & AnimeInstance;
 
   declare var anime$speed: number;
 
@@ -140,7 +137,7 @@ declare module "animejs" {
   ): string | number;
 
   declare function anime$path(
-    anime$path: string | HTMLElement | SVGElement | null,
+    path: string | HTMLElement | SVGElement | null,
     percent?: number
   ): (
     prop: string
@@ -167,9 +164,7 @@ declare module "animejs" {
 
   declare function anime$random(min: number, max: number): number;
 
-  declare function anime(
-    params: anime$anime$AnimeParams
-  ): anime$anime$AnimeInstance;
+  declare function anime(params: anime$AnimeParams): anime$AnimeInstance;
 
-  declare module.exports: typeof anime;
+  declare export default typeof anime;
 }
