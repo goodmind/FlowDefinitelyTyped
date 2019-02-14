@@ -4,8 +4,8 @@ declare module "react-native-google-signin" {
   import type { ViewProps } from "react-native";
 
   declare export type GoogleSigninButtonProps = {
-    size?: GoogleSigninButton$GoogleSigninButton$Size,
-    color?: GoogleSigninButton$GoogleSigninButton$Color,
+    size?: GoogleSigninButton$Size,
+    color?: GoogleSigninButton$Color,
     disabled?: boolean,
     onPress?: () => void
   } & ViewProps;
@@ -14,38 +14,22 @@ declare module "react-native-google-signin" {
     mixins React.Component<GoogleSigninButtonProps> {
     constructor(props: GoogleSigninButtonProps): this;
   }
-  declare class GoogleSigninButton$Size {
-    constructor(...args: empty): mixed;
-    static +Standard: Class<GoogleSigninButton$Size__Standard> &
-      GoogleSigninButton$Size__Standard &
-      0; // 0
-    static +Wide: Class<GoogleSigninButton$Size__Wide> &
-      GoogleSigninButton$Size__Wide &
-      1; // 1
-    static +Icon: Class<GoogleSigninButton$Size__Icon> &
-      GoogleSigninButton$Size__Icon &
-      2; // 2
-  }
 
-  declare class GoogleSigninButton$Size__Standard
-    mixins GoogleSigninButton$Size {}
-  declare class GoogleSigninButton$Size__Wide mixins GoogleSigninButton$Size {}
-  declare class GoogleSigninButton$Size__Icon mixins GoogleSigninButton$Size {}
+  declare var npm$namespace$GoogleSigninButton: {
+    Size: typeof GoogleSigninButton$Size,
+    Color: typeof GoogleSigninButton$Color
+  };
 
-  declare class GoogleSigninButton$Color {
-    constructor(...args: empty): mixed;
-    static +Light: Class<GoogleSigninButton$Color__Light> &
-      GoogleSigninButton$Color__Light &
-      0; // 0
-    static +Dark: Class<GoogleSigninButton$Color__Dark> &
-      GoogleSigninButton$Color__Dark &
-      1; // 1
-  }
+  declare var GoogleSigninButton$Size: {|
+    +Standard: 0, // 0
+    +Wide: 1, // 1
+    +Icon: 2 // 2
+  |};
 
-  declare class GoogleSigninButton$Color__Light
-    mixins GoogleSigninButton$Color {}
-  declare class GoogleSigninButton$Color__Dark
-    mixins GoogleSigninButton$Color {}
+  declare var GoogleSigninButton$Color: {|
+    +Light: 0, // 0
+    +Dark: 1 // 1
+  |};
 
   declare export interface HasPlayServicesParams {
     /**
