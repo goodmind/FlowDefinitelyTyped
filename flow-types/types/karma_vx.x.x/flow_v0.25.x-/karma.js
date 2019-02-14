@@ -39,6 +39,10 @@ declare module "karma" {
     };
     EXIT_CODE: string;
   }
+
+  declare var npm$namespace$launcher: {
+    Launcher: typeof launcher$Launcher
+  };
   declare class launcher$Launcher {
     static generateId(): string;
     constructor(emitter: NodeJS.EventEmitter, injector: any): this;
@@ -132,84 +136,84 @@ declare module "karma" {
     autoWatch?: boolean;
 
     /**
- * @description When Karma is watching the files for changes, it tries to batch multiple changes into a single run
-so that the test runner doesn't try to start and restart running tests more than it should.
-The configuration setting tells Karma how long to wait (in milliseconds) after any changes have occurred
-before starting the test process again.
- * @default 250
- */
+     * @description When Karma is watching the files for changes, it tries to batch multiple changes into a single run
+     * so that the test runner doesn't try to start and restart running tests more than it should.
+     * The configuration setting tells Karma how long to wait (in milliseconds) after any changes have occurred
+     * before starting the test process again.
+     * @default 250
+     */
     autoWatchBatchDelay?: number;
 
     /**
- * @default ''
- * @description The root path location that will be used to resolve all relative paths defined in <code>files</code> and <code>exclude</code>.
-If the basePath configuration is a relative path then it will be resolved to
-the <code>__dirname</code> of the configuration file.
- */
+     * @default ''
+     * @description The root path location that will be used to resolve all relative paths defined in <code>files</code> and <code>exclude</code>.
+     * If the basePath configuration is a relative path then it will be resolved to
+     * the <code>__dirname</code> of the configuration file.
+     */
     basePath?: string;
 
     /**
- * @default 2000
- * @description How long does Karma wait for a browser to reconnect (in ms).
-<p>
-With a flaky connection it is pretty common that the browser disconnects,
-but the actual test execution is still running without any problems. Karma does not treat a disconnection
-as immediate failure and will wait <code>browserDisconnectTimeout</code> (ms).
-If the browser reconnects during that time, everything is fine.
-</p>
- */
+     * @default 2000
+     * @description How long does Karma wait for a browser to reconnect (in ms).
+     * <p>
+     * With a flaky connection it is pretty common that the browser disconnects,
+     * but the actual test execution is still running without any problems. Karma does not treat a disconnection
+     * as immediate failure and will wait <code>browserDisconnectTimeout</code> (ms).
+     * If the browser reconnects during that time, everything is fine.
+     * </p>
+     */
     browserDisconnectTimeout?: number;
 
     /**
- * @default 0
- * @description The number of disconnections tolerated.
-<p>
-The <code>disconnectTolerance</code> value represents the maximum number of tries a browser will attempt
-in the case of a disconnection. Usually any disconnection is considered a failure,
-but this option allows you to define a tolerance level when there is a flaky network link between
-the Karma server and the browsers.
-</p>
- */
+     * @default 0
+     * @description The number of disconnections tolerated.
+     * <p>
+     * The <code>disconnectTolerance</code> value represents the maximum number of tries a browser will attempt
+     * in the case of a disconnection. Usually any disconnection is considered a failure,
+     * but this option allows you to define a tolerance level when there is a flaky network link between
+     * the Karma server and the browsers.
+     * </p>
+     */
     browserDisconnectTolerance?: number;
 
     /**
- * @default 10000
- * @description How long will Karma wait for a message from a browser before disconnecting from it (in ms).
-<p>
-If, during test execution, Karma does not receive any message from a browser within
-<code>browserNoActivityTimeout</code> (ms), it will disconnect from the browser
-</p>
- */
+     * @default 10000
+     * @description How long will Karma wait for a message from a browser before disconnecting from it (in ms).
+     * <p>
+     * If, during test execution, Karma does not receive any message from a browser within
+     * <code>browserNoActivityTimeout</code> (ms), it will disconnect from the browser
+     * </p>
+     */
     browserNoActivityTimeout?: number;
 
     /**
- * @default []
-Possible Values:
-<ul>
-<li>Chrome (launcher comes installed with Karma)</li>
-<li>ChromeCanary (launcher comes installed with Karma)</li>
-<li>PhantomJS (launcher comes installed with Karma)</li>
-<li>Firefox (launcher requires karma-firefox-launcher plugin)</li>
-<li>Opera (launcher requires karma-opera-launcher plugin)</li>
-<li>Internet Explorer (launcher requires karma-ie-launcher plugin)</li>
-<li>Safari (launcher requires karma-safari-launcher plugin)</li>
-</ul>
- * @description A list of browsers to launch and capture. When Karma starts up, it will also start up each browser
-which is placed within this setting. Once Karma is shut down, it will shut down these browsers as well.
-You can capture any browser manually by opening the browser and visiting the URL where
-the Karma web server is listening (by default it is <code>http://localhost:9876/</code>).
- */
+     * @default []
+     * Possible Values:
+     * <ul>
+     * <li>Chrome (launcher comes installed with Karma)</li>
+     * <li>ChromeCanary (launcher comes installed with Karma)</li>
+     * <li>PhantomJS (launcher comes installed with Karma)</li>
+     * <li>Firefox (launcher requires karma-firefox-launcher plugin)</li>
+     * <li>Opera (launcher requires karma-opera-launcher plugin)</li>
+     * <li>Internet Explorer (launcher requires karma-ie-launcher plugin)</li>
+     * <li>Safari (launcher requires karma-safari-launcher plugin)</li>
+     * </ul>
+     * @description A list of browsers to launch and capture. When Karma starts up, it will also start up each browser
+     * which is placed within this setting. Once Karma is shut down, it will shut down these browsers as well.
+     * You can capture any browser manually by opening the browser and visiting the URL where
+     * the Karma web server is listening (by default it is <code>http://localhost:9876/</code>).
+     */
     browsers?: string[];
 
     /**
- * @default 60000
- * @description Timeout for capturing a browser (in ms).
-<p>
-The <code>captureTimeout</code> value represents the maximum boot-up time allowed for a
-browser to start and connect to Karma. If any browser does not get captured within the timeout, Karma
-will kill it and try to launch it again and, after three attempts to capture it, Karma will give up.
-</p>
- */
+     * @default 60000
+     * @description Timeout for capturing a browser (in ms).
+     * <p>
+     * The <code>captureTimeout</code> value represents the maximum boot-up time allowed for a
+     * browser to start and connect to Karma. If any browser does not get captured within the timeout, Karma
+     * will kill it and try to launch it again and, after three attempts to capture it, Karma will give up.
+     * </p>
+     */
     captureTimeout?: number;
     client?: ClientOptions;
 
@@ -220,12 +224,12 @@ will kill it and try to launch it again and, after three attempts to capture it,
     colors?: boolean;
 
     /**
- * @default 'Infinity'
- * @description How many browsers Karma launches in parallel.
-Especially on services like SauceLabs and Browserstack, it makes sense only to launch a limited
-amount of browsers at once, and only start more when those have finished. Using this configuration,
-you can specify how many browsers should be running at once at any given point in time.
- */
+     * @default 'Infinity'
+     * @description How many browsers Karma launches in parallel.
+     * Especially on services like SauceLabs and Browserstack, it makes sense only to launch a limited
+     * amount of browsers at once, and only start more when those have finished. Using this configuration,
+     * you can specify how many browsers should be running at once at any given point in time.
+     */
     concurrency?: number;
     customLaunchers?: {
       [key: string]: CustomLauncher
@@ -244,10 +248,10 @@ you can specify how many browsers should be running at once at any given point i
     files?: Array<FilePattern | string>;
 
     /**
- * @default []
- * @description List of test frameworks you want to use. Typically, you will set this to ['jasmine'], ['mocha'] or ['qunit']...
-Please note just about all frameworks in Karma require an additional plugin/framework library to be installed (via NPM).
- */
+     * @default []
+     * @description List of test frameworks you want to use. Typically, you will set this to ['jasmine'], ['mocha'] or ['qunit']...
+     * Please note just about all frameworks in Karma require an additional plugin/framework library to be installed (via NPM).
+     */
     frameworks?: string[];
 
     /**
@@ -257,25 +261,25 @@ Please note just about all frameworks in Karma require an additional plugin/fram
     hostname?: string;
 
     /**
- * @default {}
- * @description Options object to be used by Node's https class.
-Object description can be found in the
-[NodeJS.org API docs](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)
- */
+     * @default {}
+     * @description Options object to be used by Node's https class.
+     * Object description can be found in the
+     * [NodeJS.org API docs](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)
+     */
     httpsServerOptions?: https.ServerOptions;
 
     /**
- * @default config.LOG_INFO
-Possible values:
-<ul>
-<li>config.LOG_DISABLE</li>
-<li>config.LOG_ERROR</li>
-<li>config.LOG_WARN</li>
-<li>config.LOG_INFO</li>
-<li>config.LOG_DEBUG</li>
-</ul>
- * @description Level of logging.
- */
+     * @default config.LOG_INFO
+     * Possible values:
+     * <ul>
+     * <li>config.LOG_DISABLE</li>
+     * <li>config.LOG_ERROR</li>
+     * <li>config.LOG_WARN</li>
+     * <li>config.LOG_INFO</li>
+     * <li>config.LOG_DEBUG</li>
+     * </ul>
+     * @description Level of logging.
+     */
     logLevel?: string;
 
     /**
@@ -289,34 +293,34 @@ Possible values:
       | Appender[];
 
     /**
- * @default []
- * @description List of names of additional middleware you want the
-Karma server to use. Middleware will be used in the order listed.
-You must have installed the middleware via a plugin/framework
-(either inline or via NPM). Additional information can be found in
-[plugins](http://karma-runner.github.io/2.0/config/plugins.html).
-The plugin must provide an express/connect middleware function
-(details about this can be found in the
-[Express](http://expressjs.com/guide/using-middleware.html) docs).
- */
+     * @default []
+     * @description List of names of additional middleware you want the
+     * Karma server to use. Middleware will be used in the order listed.
+     * You must have installed the middleware via a plugin/framework
+     * (either inline or via NPM). Additional information can be found in
+     * [plugins](http://karma-runner.github.io/2.0/config/plugins.html).
+     * The plugin must provide an express/connect middleware function
+     * (details about this can be found in the
+     * [Express](http://expressjs.com/guide/using-middleware.html) docs).
+     */
     middleware?: string[];
 
     /**
- * @default {}
- * @description Redefine default mapping from file extensions to MIME-type.
-Set property name to required MIME, provide Array of extensions (without dots) as it's value.
- */
+     * @default {}
+     * @description Redefine default mapping from file extensions to MIME-type.
+     * Set property name to required MIME, provide Array of extensions (without dots) as it's value.
+     */
     mime?: {
       [type: string]: string[]
     };
 
     /**
- * @default ['karma-*']
- * @description List of plugins to load. A plugin can be a string (in which case it will be required
-by Karma) or an inlined plugin - Object.
-By default, Karma loads all sibling NPM modules which have a name starting with karma-*.
-Note: Just about all plugins in Karma require an additional library to be installed (via NPM).
- */
+     * @default ['karma-*']
+     * @description List of plugins to load. A plugin can be a string (in which case it will be required
+     * by Karma) or an inlined plugin - Object.
+     * By default, Karma loads all sibling NPM modules which have a name starting with karma-*.
+     * Note: Just about all plugins in Karma require an additional library to be installed (via NPM).
+     */
     plugins?: any[];
 
     /**
@@ -326,35 +330,35 @@ Note: Just about all plugins in Karma require an additional library to be instal
     port?: number;
 
     /**
- * @default {'**\/*.coffee': 'coffee'}
- * @description A map of preprocessors to use.
-
-Preprocessors can be loaded through [plugins].
-
-Note: Just about all preprocessors in Karma (other than CoffeeScript and some other defaults)
-require an additional library to be installed (via NPM).
-
-Be aware that preprocessors may be transforming the files and file types that are available at run time. For instance,
-if you are using the "coverage" preprocessor on your source files, if you then attempt to interactively debug
-your tests, you'll discover that your expected source code is completely changed from what you expected.  Because
-of that, you'll want to engineer this so that your automated builds use the coverage entry in the "reporters" list,
-but your interactive debugging does not.
- */
+     * @default {'**\/*.coffee': 'coffee'}
+     * @description A map of preprocessors to use.
+     *
+     * Preprocessors can be loaded through [plugins].
+     *
+     * Note: Just about all preprocessors in Karma (other than CoffeeScript and some other defaults)
+     * require an additional library to be installed (via NPM).
+     *
+     * Be aware that preprocessors may be transforming the files and file types that are available at run time. For instance,
+     * if you are using the "coverage" preprocessor on your source files, if you then attempt to interactively debug
+     * your tests, you'll discover that your expected source code is completely changed from what you expected.  Because
+     * of that, you'll want to engineer this so that your automated builds use the coverage entry in the "reporters" list,
+     * but your interactive debugging does not.
+     */
     preprocessors?: {
       [name: string]: string | string[]
     };
 
     /**
- * @default 'http:'
-Possible Values:
-<ul>
-<li>http:</li>
-<li>https:</li>
-</ul>
- * @description Protocol used for running the Karma webserver.
-Determines the use of the Node http or https class.
-Note: Using <code>'https:'</code> requires you to specify <code>httpsServerOptions</code>.
- */
+     * @default 'http:'
+     * Possible Values:
+     * <ul>
+     * <li>http:</li>
+     * <li>https:</li>
+     * </ul>
+     * @description Protocol used for running the Karma webserver.
+     * Determines the use of the Node http or https class.
+     * Note: Using <code>'https:'</code> requires you to specify <code>httpsServerOptions</code>.
+     */
     protocol?: string;
 
     /**
@@ -372,66 +376,66 @@ Note: Using <code>'https:'</code> requires you to specify <code>httpsServerOptio
     proxyValidateSSL?: boolean;
 
     /**
- * @default 0
- * @description Karma will report all the tests that are slower than given time limit (in ms).
-This is disabled by default (since the default value is 0).
- */
+     * @default 0
+     * @description Karma will report all the tests that are slower than given time limit (in ms).
+     * This is disabled by default (since the default value is 0).
+     */
     reportSlowerThan?: number;
 
     /**
- * @default ['progress']
-Possible Values:
-<ul>
-<li>dots</li>
-<li>progress</li>
-</ul>
- * @description A list of reporters to use.
-Additional reporters, such as growl, junit, teamcity or coverage can be loaded through plugins.
-Note: Just about all additional reporters in Karma (other than progress) require an additional library to be installed (via NPM).
- */
+     * @default ['progress']
+     * Possible Values:
+     * <ul>
+     * <li>dots</li>
+     * <li>progress</li>
+     * </ul>
+     * @description A list of reporters to use.
+     * Additional reporters, such as growl, junit, teamcity or coverage can be loaded through plugins.
+     * Note: Just about all additional reporters in Karma (other than progress) require an additional library to be installed (via NPM).
+     */
     reporters?: string[];
 
     /**
- * @default false
- * @description Continuous Integration mode.
-If true, Karma will start and capture all configured browsers, run tests and then exit with an exit code of 0 or 1 depending
-on whether all tests passed or any tests failed.
- */
+     * @default false
+     * @description Continuous Integration mode.
+     * If true, Karma will start and capture all configured browsers, run tests and then exit with an exit code of 0 or 1 depending
+     * on whether all tests passed or any tests failed.
+     */
     singleRun?: boolean;
 
     /**
- * @default ['polling', 'websocket']
- * @description An array of allowed transport methods between the browser and testing server. This configuration setting
-is handed off to [socket.io](http://socket.io/) (which manages the communication
-between browsers and the testing server).
- */
+     * @default ['polling', 'websocket']
+     * @description An array of allowed transport methods between the browser and testing server. This configuration setting
+     * is handed off to [socket.io](http://socket.io/) (which manages the communication
+     * between browsers and the testing server).
+     */
     transports?: string[];
 
     /**
- * @default '/'
- * @description The base url, where Karma runs.
-All of Karma's urls get prefixed with the urlRoot. This is helpful when using proxies, as
-sometimes you might want to proxy a url that is already taken by Karma.
- */
+     * @default '/'
+     * @description The base url, where Karma runs.
+     * All of Karma's urls get prefixed with the urlRoot. This is helpful when using proxies, as
+     * sometimes you might want to proxy a url that is already taken by Karma.
+     */
     urlRoot?: string;
   }
   declare export interface ClientOptions {
     /**
- * @default undefined
- * @description When karma run is passed additional arguments on the command-line, they
-are passed through to the test adapter as karma.config.args (an array of strings).
-The client.args option allows you to set this value for actions other than run.
-How this value is used is up to your test adapter - you should check your adapter's
-documentation to see how (and if) it uses this value.
- */
+     * @default undefined
+     * @description When karma run is passed additional arguments on the command-line, they
+     * are passed through to the test adapter as karma.config.args (an array of strings).
+     * The client.args option allows you to set this value for actions other than run.
+     * How this value is used is up to your test adapter - you should check your adapter's
+     * documentation to see how (and if) it uses this value.
+     */
     args?: string[];
 
     /**
- * @default true
- * @description Run the tests inside an iFrame or a new window
-If true, Karma runs the tests inside an iFrame. If false, Karma runs the tests in a new window. Some tests may not run in an
-iFrame and may need a new window to run.
- */
+     * @default true
+     * @description Run the tests inside an iFrame or a new window
+     * If true, Karma runs the tests inside an iFrame. If false, Karma runs the tests in a new window. Some tests may not run in an
+     * iFrame and may need a new window to run.
+     */
     useIframe?: boolean;
 
     /**
@@ -447,12 +451,12 @@ iFrame and may need a new window to run.
     runInParent?: boolean;
 
     /**
- * @default true
- * @description Clear the context window
-If true, Karma clears the context window upon the completion of running the tests.
-If false, Karma does not clear the context window upon the completion of running the tests.
-Setting this to false is useful when embedding a Jasmine Spec Runner Template.
- */
+     * @default true
+     * @description Clear the context window
+     * If true, Karma clears the context window upon the completion of running the tests.
+     * If false, Karma does not clear the context window upon the completion of running the tests.
+     * Setting this to false is useful when embedding a Jasmine Spec Runner Template.
+     */
     clearContext?: boolean;
   }
   declare export interface FilePattern {
@@ -462,17 +466,17 @@ Setting this to false is useful when embedding a Jasmine Spec Runner Template.
     pattern: string;
 
     /**
- * @default true
- * @description If <code>autoWatch</code> is true all files that have set watched to true will be watched
-for changes.
- */
+     * @default true
+     * @description If <code>autoWatch</code> is true all files that have set watched to true will be watched
+     * for changes.
+     */
     watched?: boolean;
 
     /**
- * @default true
- * @description Should the files be included in the browser using <script> tag? Use false if you want to
-load them manually, eg. using Require.js.
- */
+     * @default true
+     * @description Should the files be included in the browser using <script> tag? Use false if you want to
+     * load them manually, eg. using Require.js.
+     */
     included?: boolean;
 
     /**
