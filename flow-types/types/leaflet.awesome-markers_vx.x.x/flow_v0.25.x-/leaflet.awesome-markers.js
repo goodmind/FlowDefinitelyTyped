@@ -1,7 +1,9 @@
 declare module "leaflet" {
   declare var npm$namespace$AwesomeMarkers: {
     icon: typeof AwesomeMarkers$icon,
-    version: typeof AwesomeMarkers$version
+    version: typeof AwesomeMarkers$version,
+
+    Icon: typeof AwesomeMarkers$Icon
   };
   declare var AwesomeMarkers$version: string;
 
@@ -9,7 +11,7 @@ declare module "leaflet" {
     /**
      * Name of the icon. See glyphicons or font-awesome.
      */
-    AwesomeMarkers$icon?: string,
+    icon?: string,
 
     /**
      * Select de icon library. 'fa' for font-awesome or 'glyphicon' for bootstrap 3.
@@ -51,7 +53,7 @@ declare module "leaflet" {
   ): AwesomeMarkers$Icon;
 
   declare class AwesomeMarkers$Icon
-    mixins Leaflet.AwesomeMarkers$Icon<AwesomeMarkers$AwesomeMarkersIconOptions> {
+    mixins Leaflet.Icon<AwesomeMarkers$AwesomeMarkersIconOptions> {
     constructor(options?: AwesomeMarkers$AwesomeMarkersIconOptions): this;
   }
 }
