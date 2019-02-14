@@ -1,34 +1,69 @@
 declare module 'ember-test-helpers' {
         declare interface TestContext {
-store: DS$DS$Store,
-store: DS$DS$Store
+store: DS$Store
 } 
     }
 declare module '@ember/service' {
         declare interface Registry {
-store: DS$DS$Store,
-store: DS$DS$Store
+store: DS$Store
 } 
     }
 declare module '@ember/debug/data-adapter' {
         declare export default interface DataAdapter {
-store: DS$DS$Store,
-store: DS$DS$Store
+store: DS$Store
 } 
     }
 declare module '@ember/controller' {
         declare export default interface Controller {
-store: DS$DS$Store,
-store: DS$DS$Store
+store: DS$Store
 } 
     }
 declare module '@ember/routing/route' {
         declare export default interface Route {
-store: DS$DS$Store,
-store: DS$DS$Store
+store: DS$Store
 } 
     }
+declare module 'ember-data' {
+        import typeof Ember from 'ember';
 
+	import typeof Evented from '@ember/object/evented';
+
+	import typeof ObjectProxy from '@ember/object/proxy';
+
+	import typeof PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
+
+	import typeof RSVP from 'rsvp';
+
+	import typeof TransformRegistry from 'ember-data/types/registries/transform';
+
+	import typeof ModelRegistry from 'ember-data/types/registries/model';
+
+	import typeof SerializerRegistry from 'ember-data/types/registries/serializer';
+
+	import typeof AdapterRegistry from 'ember-data/types/registries/adapter';
+
+	declare type AttributesFor<Model> = $Keys<DS$Model>;
+	declare type RelationshipsFor<Model> = $Keys<DS$Model>;
+	declare export interface ChangedAttributes {
+[key: string]: [any, any] | void
+} 
+	declare interface AttributeMeta<Model: DS$Model> {
+type: $Keys<TransformRegistry>,
+options: {[key: string]: any},
+name: AttributesFor<DS$Model>,
+parentType: DS$Model,
+isAttribute: true
+} 
+	declare interface RelationshipMeta<Model: DS$Model> {
+key: RelationshipsFor<DS$Model>,
+kind: "belongsTo" | "hasMany",
+type: $Keys<ModelRegistry>,
+options: {[key: string]: any},
+name: string,
+parentType: DS$Model,
+isRelationship: true
+} 
+	
       declare var npm$namespace$DS: {
         errorsHashToArray: typeof DS$errorsHashToArray,
 errorsArrayToHash: typeof DS$errorsArrayToHash,
@@ -37,6 +72,47 @@ hasMany: typeof DS$hasMany,
 normalizeModelName: typeof DS$normalizeModelName,
 attr: typeof DS$attr,
         VERSION: typeof DS$VERSION,
+        
+        BuildURLMixin: typeof DS$BuildURLMixin,
+AdapterError: typeof DS$AdapterError,
+InvalidError: typeof DS$InvalidError,
+TimeoutError: typeof DS$TimeoutError,
+AbortError: typeof DS$AbortError,
+UnauthorizedError: typeof DS$UnauthorizedError,
+ForbiddenError: typeof DS$ForbiddenError,
+NotFoundError: typeof DS$NotFoundError,
+ConflictError: typeof DS$ConflictError,
+ServerError: typeof DS$ServerError,
+Errors: typeof DS$Errors,
+Model: typeof DS$Model,
+RootState: typeof DS$RootState,
+AdapterPopulatedRecordArray: typeof DS$AdapterPopulatedRecordArray,
+FilteredRecordArray: typeof DS$FilteredRecordArray,
+RecordArray: typeof DS$RecordArray,
+BelongsToReference: typeof DS$BelongsToReference,
+HasManyReference: typeof DS$HasManyReference,
+RecordReference: typeof DS$RecordReference,
+ManyArray: typeof DS$ManyArray,
+PromiseArray: typeof DS$PromiseArray,
+PromiseObject: typeof DS$PromiseObject,
+PromiseManyArray: typeof DS$PromiseManyArray,
+SnapshotRecordArray: typeof DS$SnapshotRecordArray,
+Snapshot: typeof DS$Snapshot,
+Store: typeof DS$Store,
+JSONAPIAdapter: typeof DS$JSONAPIAdapter,
+RESTAdapter: typeof DS$RESTAdapter,
+EmbeddedRecordsMixin: typeof DS$EmbeddedRecordsMixin,
+JSONAPISerializer: typeof DS$JSONAPISerializer,
+JSONSerializer: typeof DS$JSONSerializer,
+RESTSerializer: typeof DS$RESTSerializer,
+BooleanTransform: typeof DS$BooleanTransform,
+DateTransform: typeof DS$DateTransform,
+NumberTransform: typeof DS$NumberTransform,
+StringTransform: typeof DS$StringTransform,
+Transform: typeof DS$Transform,
+Adapter: typeof DS$Adapter,
+Serializer: typeof DS$Serializer,
+        
       }
 
 /**
@@ -557,7 +633,7 @@ deleteRecord(): any;
 /**
  * Same as `deleteRecord`, but saves the record immediately.
  */
-destroyRecord(options?: {}): RSVP.Promise<any>;
+destroyRecord(options?: {}): RSVP$Promise<any>;
 
 /**
  * Unloads the record from the store. This will cause the record to be destroyed and freed up for garbage collection.
@@ -580,12 +656,12 @@ rollbackAttributes(): any;
  * Save the record and persist any changes to the record to an
  * external source via the adapter.
  */
-save(options?: {}): RSVP.Promise<this>;
+save(options?: {}): RSVP$Promise<this>;
 
 /**
  * Reload the record from the adapter.
  */
-reload(): RSVP.Promise<any>;
+reload(): RSVP$Promise<any>;
 
 /**
  * Get the reference for the specified belongsTo relationship.
@@ -816,7 +892,7 @@ meta(): {};
  * Data will treat the new data as the conanical value of this
  * relationship on the backend.
  */
-push(objectOrPromise: {} | RSVP.Promise<any>): RSVP.Promise<any>;
+push(objectOrPromise: {} | RSVP$Promise<any>): RSVP$Promise<any>;
 
 /**
  * `value()` synchronously returns the current value of the belongs-to
@@ -832,7 +908,7 @@ value(): DS$Model | null;
  * loaded. If the relationship is already loaded this method does not
  * trigger a new load.
  */
-load(): RSVP.Promise<any>;
+load(): RSVP$Promise<any>;
 
 /**
  * Triggers a reload of the value in this relationship. If the
@@ -840,7 +916,7 @@ load(): RSVP.Promise<any>;
  * reload the relationship. Otherwise it will reload the record by its
  * id.
  */
-reload(): RSVP.Promise<any>
+reload(): RSVP$Promise<any>
 }
 
 
@@ -878,7 +954,7 @@ meta(): {};
  * Data will treat the new data as the canonical value of this
  * relationship on the backend.
  */
-push(objectOrPromise: T[] | RSVP.Promise<T[]>): DS$ManyArray<T>;
+push(objectOrPromise: T[] | RSVP$Promise<T[]>): DS$ManyArray<T>;
 
 /**
  * `value()` synchronously returns the current value of the has-many
@@ -894,12 +970,12 @@ value(): DS$ManyArray<T> | null;
  * relationship is already loaded this method does not trigger a new
  * load.
  */
-load(): RSVP.Promise<any>;
+load(): RSVP$Promise<any>;
 
 /**
  * Reloads this has-many relationship.
  */
-reload(): RSVP.Promise<any>
+reload(): RSVP$Promise<any>
 }
 
 
@@ -927,7 +1003,7 @@ remoteType(): string;
  * normalized hash of data and the object represented by the reference
  * will update.
  */
-push(payload: RSVP.Promise<any> | {}): DS$PromiseObject<T> & T;
+push(payload: RSVP$Promise<any> | {}): DS$PromiseObject<T> & T;
 
 /**
  * If the entity referred to by the reference is already loaded, it is
@@ -1207,7 +1283,7 @@ query: any): DS$AdapterPopulatedRecordArray<$ElementType<ModelRegistry, K>> & DS
  */
 queryRecord<K: $Keys<ModelRegistry>>(
 modelName: K,
-query: any): RSVP.Promise<$ElementType<ModelRegistry, K>>;
+query: any): RSVP$Promise<$ElementType<ModelRegistry, K>>;
 
 /**
  * `findAll` asks the adapter's `findAll` method to find the records for the
@@ -1311,7 +1387,7 @@ declare class DS$RESTAdapter mixins DS$Adapter, DS$BuildURLMixin {
 /**
  * Takes a URL, an HTTP method and a hash of data, and makes an HTTP request.
  */
-ajax(url: string, type: string, options?: {[key: string]: any}): RSVP.Promise<any>;
+ajax(url: string, type: string, options?: {[key: string]: any}): RSVP$Promise<any>;
 
 /**
  * Generate ajax options
@@ -1363,7 +1439,7 @@ findRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 id: string,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch a JSON array for all
@@ -1373,7 +1449,7 @@ findAll<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 sinceToken: string,
-snapshotRecordArray: DS$SnapshotRecordArray<K>): RSVP.Promise<any>;
+snapshotRecordArray: DS$SnapshotRecordArray<K>): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch a JSON array for
@@ -1382,7 +1458,7 @@ snapshotRecordArray: DS$SnapshotRecordArray<K>): RSVP.Promise<any>;
 query<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-query: {}): RSVP.Promise<any>;
+query: {}): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch a JSON object for
@@ -1391,7 +1467,7 @@ query: {}): RSVP.Promise<any>;
 queryRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-query: {}): RSVP.Promise<any>;
+query: {}): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch several records together if `coalesceFindRequests` is true
@@ -1400,7 +1476,7 @@ findMany<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 ids: any[],
-snapshots: any[]): RSVP.Promise<any>;
+snapshots: any[]): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch a JSON array for
@@ -1411,7 +1487,7 @@ findHasMany<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 snapshot: DS$Snapshot<K>,
 url: string,
-relationship: {}): RSVP.Promise<any>;
+relationship: {}): RSVP$Promise<any>;
 
 /**
  * Called by the store in order to fetch the JSON for the unloaded record in a
@@ -1421,7 +1497,7 @@ relationship: {}): RSVP.Promise<any>;
 findBelongsTo<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 snapshot: DS$Snapshot<K>,
-url: string): RSVP.Promise<any>;
+url: string): RSVP$Promise<any>;
 
 /**
  * Called by the store when a newly created record is
@@ -1430,7 +1506,7 @@ url: string): RSVP.Promise<any>;
 createRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Called by the store when an existing record is saved
@@ -1439,7 +1515,7 @@ snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
 updateRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Called by the store when a record is deleted.
@@ -1447,7 +1523,7 @@ snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
 deleteRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Organize records into groups, each of which is to be passed to separate
@@ -2104,7 +2180,7 @@ findRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 id: string,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * The `findAll()` method is used to retrieve all records for a given type.
@@ -2113,7 +2189,7 @@ findAll<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 sinceToken: string,
-snapshotRecordArray: DS$SnapshotRecordArray<K>): RSVP.Promise<any>;
+snapshotRecordArray: DS$SnapshotRecordArray<K>): RSVP$Promise<any>;
 
 /**
  * This method is called when you call `query` on the store.
@@ -2122,7 +2198,7 @@ query<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 query: {},
-recordArray: DS$AdapterPopulatedRecordArray<any>): RSVP.Promise<any>;
+recordArray: DS$AdapterPopulatedRecordArray<any>): RSVP$Promise<any>;
 
 /**
  * The `queryRecord()` method is invoked when the store is asked for a single
@@ -2131,7 +2207,7 @@ recordArray: DS$AdapterPopulatedRecordArray<any>): RSVP.Promise<any>;
 queryRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-query: {}): RSVP.Promise<any>;
+query: {}): RSVP$Promise<any>;
 
 /**
  * If the globally unique IDs for your records should be generated on the client,
@@ -2156,7 +2232,7 @@ serialize<K: $Keys<ModelRegistry>>(snapshot: DS$Snapshot<K>, options: {}): {};
 createRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Implement this method in a subclass to handle the updating of
@@ -2165,7 +2241,7 @@ snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
 updateRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * Implement this method in a subclass to handle the deletion of
@@ -2174,7 +2250,7 @@ snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
 deleteRecord<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
-snapshot: DS$Snapshot<K>): RSVP.Promise<any>;
+snapshot: DS$Snapshot<K>): RSVP$Promise<any>;
 
 /**
  * By default the store will try to coalesce all `fetchRecord` calls within the same runloop
@@ -2193,7 +2269,7 @@ findMany<K: $Keys<ModelRegistry>>(
 store: DS$Store,
 type: $ElementType<ModelRegistry, K>,
 ids: any[],
-snapshots: any[]): RSVP.Promise<any>;
+snapshots: any[]): RSVP$Promise<any>;
 
 /**
  * Organize records into groups, each of which is to be passed to separate
@@ -2273,81 +2349,7 @@ serialize<K: $Keys<ModelRegistry>>(snapshot: DS$Snapshot<K>, options: {}): {};
  * payload.
  */
 normalize(typeClass: DS$Model, hash: {}): {}
-}declare module 'ember-data' {
-        import typeof Ember from 'ember';
-
-	import typeof Evented from '@ember/object/evented';
-
-	import typeof ObjectProxy from '@ember/object/proxy';
-
-	import typeof PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
-
-	import typeof RSVP from 'rsvp';
-
-	import typeof TransformRegistry from 'ember-data/types/registries/transform';
-
-	import typeof ModelRegistry from 'ember-data/types/registries/model';
-
-	import typeof SerializerRegistry from 'ember-data/types/registries/serializer';
-
-	import typeof AdapterRegistry from 'ember-data/types/registries/adapter';
-
-	declare type AttributesFor<Model> = $Keys<DS$Model>;
-	declare type RelationshipsFor<Model> = $Keys<DS$Model>;
-	declare export interface ChangedAttributes {
-[key: string]: [any, any] | void
-} 
-	declare interface AttributeMeta<Model: DS$DS$Model> {
-type: $Keys<TransformRegistry>,
-options: {[key: string]: any},
-name: AttributesFor<DS$Model>,
-parentType: DS$Model,
-isAttribute: true
-} 
-	declare interface RelationshipMeta<Model: DS$DS$Model> {
-key: RelationshipsFor<DS$Model>,
-kind: "belongsTo" | "hasMany",
-type: $Keys<ModelRegistry>,
-options: {[key: string]: any},
-name: string,
-parentType: DS$Model,
-isRelationship: true
-} 
+}
 	declare export default typeof DS
-
-	declare module '@ember/routing/route' {
-        declare export default interface Route {
-store: DS$DS$Store,
-store: DS$DS$Store
-} 
-    }
-
-	declare module '@ember/controller' {
-        declare export default interface Controller {
-store: DS$DS$Store,
-store: DS$DS$Store
-} 
-    }
-
-	declare module '@ember/debug/data-adapter' {
-        declare export default interface DataAdapter {
-store: DS$DS$Store,
-store: DS$DS$Store
-} 
-    }
-
-	declare module '@ember/service' {
-        declare interface Registry {
-store: DS$DS$Store,
-store: DS$DS$Store
-} 
-    }
-
-	declare module 'ember-test-helpers' {
-        declare interface TestContext {
-store: DS$DS$Store,
-store: DS$DS$Store
-} 
-    }
 
     }
