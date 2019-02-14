@@ -25,7 +25,13 @@ declare module "aes-js" {
     cbc: typeof ModeOfOperation$cbc,
     cfb: typeof ModeOfOperation$cfb,
     ofb: typeof ModeOfOperation$ofb,
-    ctr: typeof ModeOfOperation$ctr
+    ctr: typeof ModeOfOperation$ctr,
+
+    ModeOfOperationECB: typeof ModeOfOperation$ModeOfOperationECB,
+    ModeOfOperationCBC: typeof ModeOfOperation$ModeOfOperationCBC,
+    ModeOfOperationCFB: typeof ModeOfOperation$ModeOfOperationCFB,
+    ModeOfOperationOFB: typeof ModeOfOperation$ModeOfOperationOFB,
+    ModeOfOperationCTR: typeof ModeOfOperation$ModeOfOperationCTR
   };
   declare class ModeOfOperation$ModeOfOperationECB {
     /**
@@ -92,54 +98,63 @@ declare module "aes-js" {
 
   declare var ModeOfOperation$ctr: typeof ModeOfOperationCTR;
 
-  declare var npm$namespace$utf8: {
-    toBytes: typeof utf8$toBytes,
-    fromBytes: typeof utf8$fromBytes
+  declare var npm$namespace$utils: {
+    utf8: typeof npm$namespace$utils$utf8,
+    hex: typeof npm$namespace$utils$hex
+  };
+
+  declare var npm$namespace$utils$utf8: {
+    toBytes: typeof utils$utf8$toBytes,
+    fromBytes: typeof utils$utf8$fromBytes
   };
 
   /**
    * Convert a UTF8 encoded string to a Uint8Array.
    * @param data The input string.
    */
-  declare function utf8$toBytes(data: string): Uint8Array;
+  declare function utils$utf8$toBytes(data: string): Uint8Array;
 
   /**
    * Convert an array-like object containing UTF8 data to a string.
    * @param data The input data.
    */
-  declare function utf8$fromBytes(data: ByteSource): string;
+  declare function utils$utf8$fromBytes(data: ByteSource): string;
 
-  declare var npm$namespace$hex: {
-    toBytes: typeof hex$toBytes,
-    fromBytes: typeof hex$fromBytes
+  declare var npm$namespace$utils$hex: {
+    toBytes: typeof utils$hex$toBytes,
+    fromBytes: typeof utils$hex$fromBytes
   };
 
   /**
    * Convert a hexadecimal string to a Uint8Array.
    * @param data The input string.
    */
-  declare function hex$toBytes(data: string): Uint8Array;
+  declare function utils$hex$toBytes(data: string): Uint8Array;
 
   /**
    * Convert an array-like object to a hexadecimal string.
    * @param data The input data.
    */
-  declare function hex$fromBytes(data: ByteSource): string;
+  declare function utils$hex$fromBytes(data: ByteSource): string;
 
-  declare var npm$namespace$pkcs7: {
-    pad: typeof pkcs7$pad,
-    strip: typeof pkcs7$strip
+  declare var npm$namespace$padding: {
+    pkcs7: typeof npm$namespace$padding$pkcs7
+  };
+
+  declare var npm$namespace$padding$pkcs7: {
+    pad: typeof padding$pkcs7$pad,
+    strip: typeof padding$pkcs7$strip
   };
 
   /**
    * Add standard PKCS7 padding to an array.
    * @param data The input data.
    */
-  declare function pkcs7$pad(data: ByteSource): Uint8Array;
+  declare function padding$pkcs7$pad(data: ByteSource): Uint8Array;
 
   /**
    * Remove standard PKCS7 padding from an array.
    * @param data The input data.
    */
-  declare function pkcs7$strip(data: ByteSource): Uint8Array;
+  declare function padding$pkcs7$strip(data: ByteSource): Uint8Array;
 }
