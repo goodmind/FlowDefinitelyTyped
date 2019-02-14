@@ -1,5 +1,5 @@
 declare module "v8flags" {
-  declare module.exports: typeof v8flags;
+  declare export default typeof v8flags;
 
   declare function v8flags(cb: (err: any, flags: string[]) => void): void;
 
