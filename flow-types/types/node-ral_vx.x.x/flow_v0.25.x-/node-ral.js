@@ -21,10 +21,7 @@ declare module "node-ral" {
     unpack: string;
     retry: string;
   }
-  declare export function RAL(
-    serviceName: string,
-    options?: {}
-  ): RAL$RAL$RalRunner;
+  declare export function RAL(serviceName: string, options?: {}): RAL$RalRunner;
 
   declare var npm$namespace$RAL: {
     appendExtPath: typeof RAL$appendExtPath,
@@ -32,7 +29,10 @@ declare module "node-ral" {
     getConf: typeof RAL$getConf,
     getRawConf: typeof RAL$getRawConf,
     init: typeof RAL$init,
-    reload: typeof RAL$reload
+    reload: typeof RAL$reload,
+
+    RalRunner: typeof RAL$RalRunner,
+    NormalizerManager: typeof RAL$NormalizerManager
   };
   declare function RAL$appendExtPath(extPath: string): void;
 
@@ -64,13 +64,13 @@ declare module "node-ral" {
   declare export interface Config {
     loadRawConf(config?: Service): Service;
     load(confPath: string): {};
-    normalizerManager: RAL$RAL$NormalizerManager;
+    normalizerManager: RAL$NormalizerManager;
     normalize(config?: Service): {};
     getContext(serviceID: string, options?: Service): Service;
-    RAL$getConf(name: string): Service;
+    getConf(name: string): Service;
     clearConf(): void;
     getConfNames(): string[];
-    RAL$getRawConf(): any;
+    getRawConf(): any;
     getUpdateNeededRawConf(): any;
     enableUpdate(
       interval: number,
@@ -127,11 +127,11 @@ declare module "node-ral" {
   declare export type BalanceContextConstructor = (
     serviceID: string,
     service: Service
-  ) => Balance$Balance$BalanceContextClass;
+  ) => Balance$BalanceContextClass;
   declare export class Balance {
     constructor(): this;
     fetchServer(
-      balanceContext: Balance$Balance$BalanceContextClass,
+      balanceContext: Balance$BalanceContextClass,
       conf: any,
       prevBackend: Server
     ): Server;
@@ -139,6 +139,10 @@ declare module "node-ral" {
     getContextClass(): BalanceContextConstructor;
     static BalanceContext: BalanceContextConstructor;
   }
+
+  declare var npm$namespace$Balance: {
+    BalanceContextClass: typeof Balance$BalanceContextClass
+  };
   declare class Balance$BalanceContextClass {
     constructor(serviceID: string, service: Service): this;
     currentIDC: string;
