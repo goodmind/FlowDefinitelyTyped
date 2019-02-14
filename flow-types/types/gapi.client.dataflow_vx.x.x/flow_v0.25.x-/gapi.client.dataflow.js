@@ -1,26 +1,30 @@
 declare module "gapi.client.dataflow" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Dataflow API v1b3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dataflow",
     version: "v1b3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dataflow",
     version: "v1b3",
     callback: () => any
   ): void;
 
-  declare var client$projects: dataflow$dataflow$ProjectsResource;
+  declare var gapi$client$projects: dataflow$ProjectsResource;
 
-  declare interface dataflow$ApproximateProgress {
+  declare interface gapi$client$dataflow$ApproximateProgress {
     /**
      * Obsolete.
      */
@@ -37,7 +41,7 @@ declare module "gapi.client.dataflow" {
     remainingTime?: string;
   }
 
-  declare interface dataflow$ApproximateReportedProgress {
+  declare interface gapi$client$dataflow$ApproximateReportedProgress {
     /**
      * Total amount of parallelism in the portion of input of this task that has
      * already been consumed and is no longer active. In the first two examples
@@ -89,7 +93,7 @@ declare module "gapi.client.dataflow" {
     remainingParallelism?: dataflow$ReportedParallelism;
   }
 
-  declare interface dataflow$ApproximateSplitRequest {
+  declare interface gapi$client$dataflow$ApproximateSplitRequest {
     /**
      * A fraction at which to split the work item, from 0.0 (beginning of the
      * input) to 1.0 (end of the input).
@@ -102,7 +106,7 @@ declare module "gapi.client.dataflow" {
     position?: dataflow$Position;
   }
 
-  declare interface dataflow$AutoscalingEvent {
+  declare interface gapi$client$dataflow$AutoscalingEvent {
     /**
      * The current number of workers the job has.
      */
@@ -132,7 +136,7 @@ declare module "gapi.client.dataflow" {
     time?: string;
   }
 
-  declare interface dataflow$AutoscalingSettings {
+  declare interface gapi$client$dataflow$AutoscalingSettings {
     /**
      * The algorithm to use for autoscaling.
      */
@@ -144,7 +148,7 @@ declare module "gapi.client.dataflow" {
     maxNumWorkers?: number;
   }
 
-  declare interface dataflow$CPUTime {
+  declare interface gapi$client$dataflow$CPUTime {
     /**
      * Average CPU utilization rate (% non-idle cpu / second) since previous
      * sample.
@@ -163,7 +167,7 @@ declare module "gapi.client.dataflow" {
     totalMs?: string;
   }
 
-  declare interface dataflow$ComponentSource {
+  declare interface gapi$client$dataflow$ComponentSource {
     /**
      * Dataflow service generated name for this source.
      */
@@ -181,7 +185,7 @@ declare module "gapi.client.dataflow" {
     userName?: string;
   }
 
-  declare interface dataflow$ComponentTransform {
+  declare interface gapi$client$dataflow$ComponentTransform {
     /**
      * Dataflow service generated name for this source.
      */
@@ -199,7 +203,7 @@ declare module "gapi.client.dataflow" {
     userName?: string;
   }
 
-  declare interface dataflow$ComputationTopology {
+  declare interface gapi$client$dataflow$ComputationTopology {
     /**
      * The ID of the computation.
      */
@@ -231,7 +235,7 @@ declare module "gapi.client.dataflow" {
     systemStageName?: string;
   }
 
-  declare interface dataflow$ConcatPosition {
+  declare interface gapi$client$dataflow$ConcatPosition {
     /**
      * Index of the inner source.
      */
@@ -243,7 +247,7 @@ declare module "gapi.client.dataflow" {
     position?: dataflow$Position;
   }
 
-  declare interface dataflow$CounterMetadata {
+  declare interface gapi$client$dataflow$CounterMetadata {
     /**
      * Human-readable description of the counter semantics.
      */
@@ -265,7 +269,7 @@ declare module "gapi.client.dataflow" {
     standardUnits?: string;
   }
 
-  declare interface dataflow$CounterStructuredName {
+  declare interface gapi$client$dataflow$CounterStructuredName {
     /**
      * Name of the optimized step being executed by the workers.
      */
@@ -323,19 +327,19 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$CounterStructuredNameAndMetadata {
+  declare interface gapi$client$dataflow$CounterStructuredNameAndMetadata {
     /**
      * Metadata associated with a counter
      */
-    metadata?: dataflow$CounterMetadata;
+    metadata?: gapi$client$dataflow$CounterMetadata;
 
     /**
      * Structured name of the counter.
      */
-    name?: dataflow$CounterStructuredName;
+    name?: gapi$client$dataflow$CounterStructuredName;
   }
 
-  declare interface dataflow$CounterUpdate {
+  declare interface gapi$client$dataflow$CounterUpdate {
     /**
      * Boolean value for And, Or.
      */
@@ -409,10 +413,10 @@ declare module "gapi.client.dataflow" {
     /**
      * Counter structured name and metadata.
      */
-    structuredNameAndMetadata?: dataflow$CounterStructuredNameAndMetadata;
+    structuredNameAndMetadata?: gapi$client$dataflow$CounterStructuredNameAndMetadata;
   }
 
-  declare interface dataflow$CreateJobFromTemplateRequest {
+  declare interface gapi$client$dataflow$CreateJobFromTemplateRequest {
     /**
      * The runtime environment for the job.
      */
@@ -441,14 +445,14 @@ declare module "gapi.client.dataflow" {
     parameters?: Record<string, string>;
   }
 
-  declare interface dataflow$CustomSourceLocation {
+  declare interface gapi$client$dataflow$CustomSourceLocation {
     /**
      * Whether this source is stateful.
      */
     stateful?: boolean;
   }
 
-  declare interface dataflow$DataDiskAssignment {
+  declare interface gapi$client$dataflow$DataDiskAssignment {
     /**
      * Mounted data disks. The order is important a data disk's 0-based index in
      * this list defines which persistent directory the disk is mounted to, for
@@ -464,7 +468,7 @@ declare module "gapi.client.dataflow" {
     vmInstance?: string;
   }
 
-  declare interface dataflow$DerivedSource {
+  declare interface gapi$client$dataflow$DerivedSource {
     /**
      * What source to base the produced source on (if any).
      */
@@ -476,7 +480,7 @@ declare module "gapi.client.dataflow" {
     source?: dataflow$Source;
   }
 
-  declare interface dataflow$Disk {
+  declare interface gapi$client$dataflow$Disk {
     /**
      * Disk storage type, as defined by Google Compute Engine.  This
      * must be a disk type appropriate to the project and zone in which
@@ -511,7 +515,7 @@ declare module "gapi.client.dataflow" {
     sizeGb?: number;
   }
 
-  declare interface dataflow$DisplayData {
+  declare interface gapi$client$dataflow$DisplayData {
     /**
      * Contains value if the data is of a boolean type.
      */
@@ -583,7 +587,7 @@ declare module "gapi.client.dataflow" {
     url?: string;
   }
 
-  declare interface dataflow$DistributionUpdate {
+  declare interface gapi$client$dataflow$DistributionUpdate {
     /**
      * The count of the number of elements present in the distribution.
      */
@@ -616,22 +620,22 @@ declare module "gapi.client.dataflow" {
     sumOfSquares?: number;
   }
 
-  declare interface dataflow$DynamicSourceSplit {
+  declare interface gapi$client$dataflow$DynamicSourceSplit {
     /**
      * Primary part (continued to be processed by worker).
      * Specified relative to the previously-current source.
      * Becomes current.
      */
-    primary?: dataflow$DerivedSource;
+    primary?: gapi$client$dataflow$DerivedSource;
 
     /**
      * Residual part (returned to the pool of work).
      * Specified relative to the previously-current source.
      */
-    residual?: dataflow$DerivedSource;
+    residual?: gapi$client$dataflow$DerivedSource;
   }
 
-  declare interface dataflow$Environment {
+  declare interface gapi$client$dataflow$Environment {
     /**
      * The type of cluster manager API to use.  If unknown or
      * unspecified, the service will attempt to choose a reasonable
@@ -709,7 +713,7 @@ declare module "gapi.client.dataflow" {
     workerPools?: dataflow$WorkerPool[];
   }
 
-  declare interface dataflow$ExecutionStageState {
+  declare interface gapi$client$dataflow$ExecutionStageState {
     /**
      * The time at which the stage transitioned to this state.
      */
@@ -726,16 +730,16 @@ declare module "gapi.client.dataflow" {
     executionStageState?: string;
   }
 
-  declare interface dataflow$ExecutionStageSummary {
+  declare interface gapi$client$dataflow$ExecutionStageSummary {
     /**
      * Collections produced and consumed by component transforms of this stage.
      */
-    componentSource?: dataflow$ComponentSource[];
+    componentSource?: gapi$client$dataflow$ComponentSource[];
 
     /**
      * Transforms that comprise this execution stage.
      */
-    componentTransform?: dataflow$ComponentTransform[];
+    componentTransform?: gapi$client$dataflow$ComponentTransform[];
 
     /**
      * Dataflow service generated id for this stage.
@@ -763,28 +767,28 @@ declare module "gapi.client.dataflow" {
     outputSource?: dataflow$StageSource[];
   }
 
-  declare interface dataflow$FailedLocation {
+  declare interface gapi$client$dataflow$FailedLocation {
     /**
      * The name of the failed location.
      */
     name?: string;
   }
 
-  declare interface dataflow$FlattenInstruction {
+  declare interface gapi$client$dataflow$FlattenInstruction {
     /**
      * Describes the inputs to the flatten instruction.
      */
     inputs?: dataflow$InstructionInput[];
   }
 
-  declare interface dataflow$FloatingPointList {
+  declare interface gapi$client$dataflow$FloatingPointList {
     /**
      * Elements of the list.
      */
     elements?: number[];
   }
 
-  declare interface dataflow$FloatingPointMean {
+  declare interface gapi$client$dataflow$FloatingPointMean {
     /**
      * The number of values being aggregated.
      */
@@ -796,7 +800,7 @@ declare module "gapi.client.dataflow" {
     sum?: number;
   }
 
-  declare interface dataflow$GetDebugConfigRequest {
+  declare interface gapi$client$dataflow$GetDebugConfigRequest {
     /**
      * The internal component id for which debug configuration is
      * requested.
@@ -814,14 +818,14 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$GetDebugConfigResponse {
+  declare interface gapi$client$dataflow$GetDebugConfigResponse {
     /**
      * The encoded debug configuration for the requested component.
      */
     config?: string;
   }
 
-  declare interface dataflow$GetTemplateResponse {
+  declare interface gapi$client$dataflow$GetTemplateResponse {
     /**
      * The template metadata describing the template name, available
      * parameters, etc.
@@ -835,7 +839,7 @@ declare module "gapi.client.dataflow" {
     status?: dataflow$Status;
   }
 
-  declare interface dataflow$Histogram {
+  declare interface gapi$client$dataflow$Histogram {
     /**
      * Counts of values in each bucket. For efficiency, prefix and trailing
      * buckets with count = 0 are elided. Buckets can store the full range of
@@ -852,7 +856,7 @@ declare module "gapi.client.dataflow" {
     firstBucketOffset?: number;
   }
 
-  declare interface dataflow$InstructionInput {
+  declare interface gapi$client$dataflow$InstructionInput {
     /**
      * The output index (origin zero) within the producer.
      */
@@ -867,7 +871,7 @@ declare module "gapi.client.dataflow" {
     producerInstructionIndex?: number;
   }
 
-  declare interface dataflow$InstructionOutput {
+  declare interface gapi$client$dataflow$InstructionOutput {
     /**
      * The codec to use to encode data being written via this output.
      */
@@ -903,14 +907,14 @@ declare module "gapi.client.dataflow" {
     systemName?: string;
   }
 
-  declare interface dataflow$IntegerList {
+  declare interface gapi$client$dataflow$IntegerList {
     /**
      * Elements of the list.
      */
     elements?: dataflow$SplitInt64[];
   }
 
-  declare interface dataflow$IntegerMean {
+  declare interface gapi$client$dataflow$IntegerMean {
     /**
      * The number of values being aggregated.
      */
@@ -922,7 +926,7 @@ declare module "gapi.client.dataflow" {
     sum?: dataflow$SplitInt64;
   }
 
-  declare interface dataflow$Job {
+  declare interface gapi$client$dataflow$Job {
     /**
      * The client's unique identifier of the job, re-used across retried attempts.
      * If this field is set, the service will ensure its uniqueness.
@@ -963,7 +967,7 @@ declare module "gapi.client.dataflow" {
     /**
      * The environment for the job.
      */
-    environment?: dataflow$Environment;
+    environment?: gapi$client$dataflow$Environment;
 
     /**
      * Deprecated.
@@ -1053,7 +1057,7 @@ declare module "gapi.client.dataflow" {
      * This field may be mutated by the Cloud Dataflow service;
      * callers cannot mutate it.
      */
-    stageStates?: dataflow$ExecutionStageState[];
+    stageStates?: gapi$client$dataflow$ExecutionStageState[];
 
     /**
      * The top-level steps that constitute the entire job.
@@ -1088,14 +1092,14 @@ declare module "gapi.client.dataflow" {
     type?: string;
   }
 
-  declare interface dataflow$JobExecutionInfo {
+  declare interface gapi$client$dataflow$JobExecutionInfo {
     /**
      * A mapping from each stage to the information about that stage.
      */
     stages?: Record<string, dataflow$JobExecutionStageInfo>;
   }
 
-  declare interface dataflow$JobExecutionStageInfo {
+  declare interface gapi$client$dataflow$JobExecutionStageInfo {
     /**
      * The steps associated with the execution stage.
      * Note that stages may have several steps, and that a given step
@@ -1104,7 +1108,7 @@ declare module "gapi.client.dataflow" {
     stepName?: string[];
   }
 
-  declare interface dataflow$JobMessage {
+  declare interface gapi$client$dataflow$JobMessage {
     /**
      * Deprecated.
      */
@@ -1126,7 +1130,7 @@ declare module "gapi.client.dataflow" {
     time?: string;
   }
 
-  declare interface dataflow$JobMetrics {
+  declare interface gapi$client$dataflow$JobMetrics {
     /**
      * Timestamp as of which metric values are current.
      */
@@ -1138,7 +1142,7 @@ declare module "gapi.client.dataflow" {
     metrics?: dataflow$MetricUpdate[];
   }
 
-  declare interface dataflow$KeyRangeDataDiskAssignment {
+  declare interface gapi$client$dataflow$KeyRangeDataDiskAssignment {
     /**
      * The name of the data disk where data for this range is stored.
      * This name is local to the Google Cloud Platform project and uniquely
@@ -1158,7 +1162,7 @@ declare module "gapi.client.dataflow" {
     start?: string;
   }
 
-  declare interface dataflow$KeyRangeLocation {
+  declare interface gapi$client$dataflow$KeyRangeLocation {
     /**
      * The name of the data disk where data for this range is stored.
      * This name is local to the Google Cloud Platform project and uniquely
@@ -1190,7 +1194,7 @@ declare module "gapi.client.dataflow" {
     start?: string;
   }
 
-  declare interface dataflow$LaunchTemplateParameters {
+  declare interface gapi$client$dataflow$LaunchTemplateParameters {
     /**
      * The runtime environment for the job.
      */
@@ -1207,15 +1211,15 @@ declare module "gapi.client.dataflow" {
     parameters?: Record<string, string>;
   }
 
-  declare interface dataflow$LaunchTemplateResponse {
+  declare interface gapi$client$dataflow$LaunchTemplateResponse {
     /**
      * The job that was launched, if the request was not a dry run and
      * the job was successfully launched.
      */
-    job?: dataflow$Job;
+    job?: gapi$client$dataflow$Job;
   }
 
-  declare interface dataflow$LeaseWorkItemRequest {
+  declare interface gapi$client$dataflow$LeaseWorkItemRequest {
     /**
      * The current timestamp at the worker.
      */
@@ -1249,23 +1253,23 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$LeaseWorkItemResponse {
+  declare interface gapi$client$dataflow$LeaseWorkItemResponse {
     /**
      * A list of the leased WorkItems.
      */
     workItems?: dataflow$WorkItem[];
   }
 
-  declare interface dataflow$ListJobMessagesResponse {
+  declare interface gapi$client$dataflow$ListJobMessagesResponse {
     /**
      * Autoscaling events in ascending timestamp order.
      */
-    autoscalingEvents?: dataflow$AutoscalingEvent[];
+    autoscalingEvents?: gapi$client$dataflow$AutoscalingEvent[];
 
     /**
      * Messages in ascending timestamp order.
      */
-    jobMessages?: dataflow$JobMessage[];
+    jobMessages?: gapi$client$dataflow$JobMessage[];
 
     /**
      * The token to obtain the next page of results if there are more.
@@ -1273,16 +1277,16 @@ declare module "gapi.client.dataflow" {
     nextPageToken?: string;
   }
 
-  declare interface dataflow$ListJobsResponse {
+  declare interface gapi$client$dataflow$ListJobsResponse {
     /**
      * Zero or more messages describing locations that failed to respond.
      */
-    failedLocation?: dataflow$FailedLocation[];
+    failedLocation?: gapi$client$dataflow$FailedLocation[];
 
     /**
      * A subset of the requested job information.
      */
-    jobs?: dataflow$Job[];
+    jobs?: gapi$client$dataflow$Job[];
 
     /**
      * Set if there may be more results than fit in this response.
@@ -1290,7 +1294,7 @@ declare module "gapi.client.dataflow" {
     nextPageToken?: string;
   }
 
-  declare interface dataflow$MapTask {
+  declare interface gapi$client$dataflow$MapTask {
     /**
      * The instructions in the MapTask.
      */
@@ -1309,7 +1313,7 @@ declare module "gapi.client.dataflow" {
     systemName?: string;
   }
 
-  declare interface dataflow$MetricShortId {
+  declare interface gapi$client$dataflow$MetricShortId {
     /**
      * The index of the corresponding metric in
      * the ReportWorkItemStatusRequest. Required.
@@ -1322,7 +1326,7 @@ declare module "gapi.client.dataflow" {
     shortId?: string;
   }
 
-  declare interface dataflow$MetricStructuredName {
+  declare interface gapi$client$dataflow$MetricStructuredName {
     /**
      * Zero or more labeled fields which identify the part of the job this
      * metric is associated with, such as the name of a step or collection.
@@ -1345,7 +1349,7 @@ declare module "gapi.client.dataflow" {
     origin?: string;
   }
 
-  declare interface dataflow$MetricUpdate {
+  declare interface gapi$client$dataflow$MetricUpdate {
     /**
      * True if this metric is reported as the total cumulative aggregate
      * value accumulated since the worker started working on this WorkItem.
@@ -1394,7 +1398,7 @@ declare module "gapi.client.dataflow" {
     /**
      * Name of the metric.
      */
-    name?: dataflow$MetricStructuredName;
+    name?: gapi$client$dataflow$MetricStructuredName;
 
     /**
      * Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min",
@@ -1418,7 +1422,7 @@ declare module "gapi.client.dataflow" {
     updateTime?: string;
   }
 
-  declare interface dataflow$MountedDataDisk {
+  declare interface gapi$client$dataflow$MountedDataDisk {
     /**
      * The name of the data disk.
      * This name is local to the Google Cloud Platform project and uniquely
@@ -1428,7 +1432,7 @@ declare module "gapi.client.dataflow" {
     dataDisk?: string;
   }
 
-  declare interface dataflow$MultiOutputInfo {
+  declare interface gapi$client$dataflow$MultiOutputInfo {
     /**
      * The id of the tag the user code will emit to this output by; this
      * should correspond to the tag of some SideInputInfo.
@@ -1436,7 +1440,7 @@ declare module "gapi.client.dataflow" {
     tag?: string;
   }
 
-  declare interface dataflow$NameAndKind {
+  declare interface gapi$client$dataflow$NameAndKind {
     /**
      * Counter aggregation kind.
      */
@@ -1448,7 +1452,7 @@ declare module "gapi.client.dataflow" {
     name?: string;
   }
 
-  declare interface dataflow$Package {
+  declare interface gapi$client$dataflow$Package {
     /**
      * The resource to read the package from. The supported resource type is:
      *
@@ -1465,16 +1469,16 @@ declare module "gapi.client.dataflow" {
     name?: string;
   }
 
-  declare interface dataflow$ParDoInstruction {
+  declare interface gapi$client$dataflow$ParDoInstruction {
     /**
      * The input.
      */
-    input?: dataflow$InstructionInput;
+    input?: gapi$client$dataflow$InstructionInput;
 
     /**
      * Information about each of the outputs, if user_fn is a  MultiDoFn.
      */
-    multiOutputInfos?: dataflow$MultiOutputInfo[];
+    multiOutputInfos?: gapi$client$dataflow$MultiOutputInfo[];
 
     /**
      * The number of outputs.
@@ -1492,11 +1496,11 @@ declare module "gapi.client.dataflow" {
     userFn?: Record<string, any>;
   }
 
-  declare interface dataflow$ParallelInstruction {
+  declare interface gapi$client$dataflow$ParallelInstruction {
     /**
      * Additional information for Flatten instructions.
      */
-    flatten?: dataflow$FlattenInstruction;
+    flatten?: gapi$client$dataflow$FlattenInstruction;
 
     /**
      * User-provided name of this operation.
@@ -1511,12 +1515,12 @@ declare module "gapi.client.dataflow" {
     /**
      * Describes the outputs of the instruction.
      */
-    outputs?: dataflow$InstructionOutput[];
+    outputs?: gapi$client$dataflow$InstructionOutput[];
 
     /**
      * Additional information for ParDo instructions.
      */
-    parDo?: dataflow$ParDoInstruction;
+    parDo?: gapi$client$dataflow$ParDoInstruction;
 
     /**
      * Additional information for PartialGroupByKey instructions.
@@ -1540,7 +1544,7 @@ declare module "gapi.client.dataflow" {
     write?: dataflow$WriteInstruction;
   }
 
-  declare interface dataflow$Parameter {
+  declare interface gapi$client$dataflow$Parameter {
     /**
      * Key or name for this parameter.
      */
@@ -1552,7 +1556,7 @@ declare module "gapi.client.dataflow" {
     value?: any;
   }
 
-  declare interface dataflow$ParameterMetadata {
+  declare interface gapi$client$dataflow$ParameterMetadata {
     /**
      * Required. The help text to display for the parameter.
      */
@@ -1579,11 +1583,11 @@ declare module "gapi.client.dataflow" {
     regexes?: string[];
   }
 
-  declare interface dataflow$PartialGroupByKeyInstruction {
+  declare interface gapi$client$dataflow$PartialGroupByKeyInstruction {
     /**
      * Describes the input to the partial group-by-key instruction.
      */
-    input?: dataflow$InstructionInput;
+    input?: gapi$client$dataflow$InstructionInput;
 
     /**
      * The codec to use for interpreting an element in the input PTable.
@@ -1613,16 +1617,16 @@ declare module "gapi.client.dataflow" {
     valueCombiningFn?: Record<string, any>;
   }
 
-  declare interface dataflow$PipelineDescription {
+  declare interface gapi$client$dataflow$PipelineDescription {
     /**
      * Pipeline level display data.
      */
-    displayData?: dataflow$DisplayData[];
+    displayData?: gapi$client$dataflow$DisplayData[];
 
     /**
      * Description of each stage of execution of the pipeline.
      */
-    executionPipelineStage?: dataflow$ExecutionStageSummary[];
+    executionPipelineStage?: gapi$client$dataflow$ExecutionStageSummary[];
 
     /**
      * Description of each transform in the pipeline and collections between them.
@@ -1630,7 +1634,7 @@ declare module "gapi.client.dataflow" {
     originalPipelineTransform?: dataflow$TransformSummary[];
   }
 
-  declare interface dataflow$Position {
+  declare interface gapi$client$dataflow$Position {
     /**
      * Position is a byte offset.
      */
@@ -1639,7 +1643,7 @@ declare module "gapi.client.dataflow" {
     /**
      * CloudPosition is a concat position.
      */
-    concatPosition?: dataflow$ConcatPosition;
+    concatPosition?: gapi$client$dataflow$ConcatPosition;
 
     /**
      * Position is past all other positions. Also useful for the end
@@ -1664,7 +1668,7 @@ declare module "gapi.client.dataflow" {
     shufflePosition?: string;
   }
 
-  declare interface dataflow$PubsubLocation {
+  declare interface gapi$client$dataflow$PubsubLocation {
     /**
      * Indicates whether the pipeline allows late-arriving data.
      */
@@ -1706,14 +1710,14 @@ declare module "gapi.client.dataflow" {
     withAttributes?: boolean;
   }
 
-  declare interface dataflow$ReadInstruction {
+  declare interface gapi$client$dataflow$ReadInstruction {
     /**
      * The source to read from.
      */
     source?: dataflow$Source;
   }
 
-  declare interface dataflow$ReportWorkItemStatusRequest {
+  declare interface gapi$client$dataflow$ReportWorkItemStatusRequest {
     /**
      * The current timestamp at the worker.
      */
@@ -1740,7 +1744,7 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$ReportWorkItemStatusResponse {
+  declare interface gapi$client$dataflow$ReportWorkItemStatusResponse {
     /**
      * A set of messages indicating the service-side state for each
      * WorkItem whose status was reported, in the same order as the
@@ -1750,7 +1754,7 @@ declare module "gapi.client.dataflow" {
     workItemServiceStates?: dataflow$WorkItemServiceState[];
   }
 
-  declare interface dataflow$ReportedParallelism {
+  declare interface gapi$client$dataflow$ReportedParallelism {
     /**
      * Specifies whether the parallelism is infinite. If true, "value" is
      * ignored.
@@ -1767,14 +1771,14 @@ declare module "gapi.client.dataflow" {
     value?: number;
   }
 
-  declare interface dataflow$ResourceUtilizationReport {
+  declare interface gapi$client$dataflow$ResourceUtilizationReport {
     /**
      * CPU utilization samples.
      */
-    cpuTime?: dataflow$CPUTime[];
+    cpuTime?: gapi$client$dataflow$CPUTime[];
   }
 
-  declare interface dataflow$RuntimeEnvironment {
+  declare interface gapi$client$dataflow$RuntimeEnvironment {
     /**
      * Whether to bypass the safety checks for the job's temporary directory.
      * Use with caution.
@@ -1812,7 +1816,7 @@ declare module "gapi.client.dataflow" {
     zone?: string;
   }
 
-  declare interface dataflow$SendDebugCaptureRequest {
+  declare interface gapi$client$dataflow$SendDebugCaptureRequest {
     /**
      * The internal component id for which debug information is sent.
      */
@@ -1834,7 +1838,7 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$SendWorkerMessagesRequest {
+  declare interface gapi$client$dataflow$SendWorkerMessagesRequest {
     /**
      * The location which contains the job
      */
@@ -1846,14 +1850,14 @@ declare module "gapi.client.dataflow" {
     workerMessages?: dataflow$WorkerMessage[];
   }
 
-  declare interface dataflow$SendWorkerMessagesResponse {
+  declare interface gapi$client$dataflow$SendWorkerMessagesResponse {
     /**
      * The servers response to the worker messages.
      */
     workerMessageResponses?: dataflow$WorkerMessageResponse[];
   }
 
-  declare interface dataflow$SeqMapTask {
+  declare interface gapi$client$dataflow$SeqMapTask {
     /**
      * Information about each of the inputs.
      */
@@ -1887,7 +1891,7 @@ declare module "gapi.client.dataflow" {
     userFn?: Record<string, any>;
   }
 
-  declare interface dataflow$SeqMapTaskOutputInfo {
+  declare interface gapi$client$dataflow$SeqMapTaskOutputInfo {
     /**
      * The sink to write the output value to.
      */
@@ -1899,7 +1903,7 @@ declare module "gapi.client.dataflow" {
     tag?: string;
   }
 
-  declare interface dataflow$ShellTask {
+  declare interface gapi$client$dataflow$ShellTask {
     /**
      * The shell command to run.
      */
@@ -1911,7 +1915,7 @@ declare module "gapi.client.dataflow" {
     exitCode?: number;
   }
 
-  declare interface dataflow$SideInputId {
+  declare interface gapi$client$dataflow$SideInputId {
     /**
      * The step that receives and usually consumes this side input.
      */
@@ -1923,7 +1927,7 @@ declare module "gapi.client.dataflow" {
     inputIndex?: number;
   }
 
-  declare interface dataflow$SideInputInfo {
+  declare interface gapi$client$dataflow$SideInputInfo {
     /**
      * How to interpret the source element(s) as a side input value.
      */
@@ -1944,7 +1948,7 @@ declare module "gapi.client.dataflow" {
     tag?: string;
   }
 
-  declare interface dataflow$Sink {
+  declare interface gapi$client$dataflow$Sink {
     /**
      * The codec to use to encode data written to the sink.
      */
@@ -1956,7 +1960,7 @@ declare module "gapi.client.dataflow" {
     spec?: Record<string, any>;
   }
 
-  declare interface dataflow$Source {
+  declare interface gapi$client$dataflow$Source {
     /**
      * While splitting, sources may specify the produced bundles
      * as differences against another source, in order to save backend-side
@@ -2012,7 +2016,7 @@ declare module "gapi.client.dataflow" {
     spec?: Record<string, any>;
   }
 
-  declare interface dataflow$SourceFork {
+  declare interface gapi$client$dataflow$SourceFork {
     /**
      * DEPRECATED
      */
@@ -2021,7 +2025,7 @@ declare module "gapi.client.dataflow" {
     /**
      * DEPRECATED
      */
-    primarySource?: dataflow$DerivedSource;
+    primarySource?: gapi$client$dataflow$DerivedSource;
 
     /**
      * DEPRECATED
@@ -2031,24 +2035,24 @@ declare module "gapi.client.dataflow" {
     /**
      * DEPRECATED
      */
-    residualSource?: dataflow$DerivedSource;
+    residualSource?: gapi$client$dataflow$DerivedSource;
   }
 
-  declare interface dataflow$SourceGetMetadataRequest {
+  declare interface gapi$client$dataflow$SourceGetMetadataRequest {
     /**
      * Specification of the source whose metadata should be computed.
      */
-    source?: dataflow$Source;
+    source?: gapi$client$dataflow$Source;
   }
 
-  declare interface dataflow$SourceGetMetadataResponse {
+  declare interface gapi$client$dataflow$SourceGetMetadataResponse {
     /**
      * The computed metadata.
      */
     metadata?: dataflow$SourceMetadata;
   }
 
-  declare interface dataflow$SourceMetadata {
+  declare interface gapi$client$dataflow$SourceMetadata {
     /**
      * An estimate of the total size (in bytes) of the data that would be
      * read from this source.  This estimate is in terms of external storage
@@ -2069,11 +2073,11 @@ declare module "gapi.client.dataflow" {
     producesSortedKeys?: boolean;
   }
 
-  declare interface dataflow$SourceOperationRequest {
+  declare interface gapi$client$dataflow$SourceOperationRequest {
     /**
      * Information about a request to get metadata about a source.
      */
-    getMetadata?: dataflow$SourceGetMetadataRequest;
+    getMetadata?: gapi$client$dataflow$SourceGetMetadataRequest;
 
     /**
      * Information about a request to split a source.
@@ -2081,11 +2085,11 @@ declare module "gapi.client.dataflow" {
     split?: dataflow$SourceSplitRequest;
   }
 
-  declare interface dataflow$SourceOperationResponse {
+  declare interface gapi$client$dataflow$SourceOperationResponse {
     /**
      * A response to a request to get metadata about a source.
      */
-    getMetadata?: dataflow$SourceGetMetadataResponse;
+    getMetadata?: gapi$client$dataflow$SourceGetMetadataResponse;
 
     /**
      * A response to a request to split a source.
@@ -2093,7 +2097,7 @@ declare module "gapi.client.dataflow" {
     split?: dataflow$SourceSplitResponse;
   }
 
-  declare interface dataflow$SourceSplitOptions {
+  declare interface gapi$client$dataflow$SourceSplitOptions {
     /**
      * The source should be split into a set of bundles where the estimated size
      * of each is approximately this many bytes.
@@ -2106,25 +2110,25 @@ declare module "gapi.client.dataflow" {
     desiredShardSizeBytes?: string;
   }
 
-  declare interface dataflow$SourceSplitRequest {
+  declare interface gapi$client$dataflow$SourceSplitRequest {
     /**
      * Hints for tuning the splitting process.
      */
-    options?: dataflow$SourceSplitOptions;
+    options?: gapi$client$dataflow$SourceSplitOptions;
 
     /**
      * Specification of the source to be split.
      */
-    source?: dataflow$Source;
+    source?: gapi$client$dataflow$Source;
   }
 
-  declare interface dataflow$SourceSplitResponse {
+  declare interface gapi$client$dataflow$SourceSplitResponse {
     /**
      * If outcome is SPLITTING_HAPPENED, then this is a list of bundles
      * into which the source was split. Otherwise this field is ignored.
      * This list can be empty, which means the source represents an empty input.
      */
-    bundles?: dataflow$DerivedSource[];
+    bundles?: gapi$client$dataflow$DerivedSource[];
 
     /**
      * Indicates whether splitting happened and produced a list of bundles.
@@ -2141,7 +2145,7 @@ declare module "gapi.client.dataflow" {
     shards?: dataflow$SourceSplitShard[];
   }
 
-  declare interface dataflow$SourceSplitShard {
+  declare interface gapi$client$dataflow$SourceSplitShard {
     /**
      * DEPRECATED
      */
@@ -2150,10 +2154,10 @@ declare module "gapi.client.dataflow" {
     /**
      * DEPRECATED
      */
-    source?: dataflow$Source;
+    source?: gapi$client$dataflow$Source;
   }
 
-  declare interface dataflow$SplitInt64 {
+  declare interface gapi$client$dataflow$SplitInt64 {
     /**
      * The high order bits, including the sign: n >> 32.
      */
@@ -2165,7 +2169,7 @@ declare module "gapi.client.dataflow" {
     lowBits?: number;
   }
 
-  declare interface dataflow$StageSource {
+  declare interface gapi$client$dataflow$StageSource {
     /**
      * Dataflow service generated name for this source.
      */
@@ -2188,7 +2192,7 @@ declare module "gapi.client.dataflow" {
     userName?: string;
   }
 
-  declare interface dataflow$StateFamilyConfig {
+  declare interface gapi$client$dataflow$StateFamilyConfig {
     /**
      * If true, this family corresponds to a read operation.
      */
@@ -2200,7 +2204,7 @@ declare module "gapi.client.dataflow" {
     stateFamily?: string;
   }
 
-  declare interface dataflow$Status {
+  declare interface gapi$client$dataflow$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -2220,7 +2224,7 @@ declare module "gapi.client.dataflow" {
     message?: string;
   }
 
-  declare interface dataflow$Step {
+  declare interface gapi$client$dataflow$Step {
     /**
      * The kind of step in the Cloud Dataflow job.
      */
@@ -2240,16 +2244,16 @@ declare module "gapi.client.dataflow" {
     properties?: Record<string, any>;
   }
 
-  declare interface dataflow$StreamLocation {
+  declare interface gapi$client$dataflow$StreamLocation {
     /**
      * The stream is a custom source.
      */
-    customSourceLocation?: dataflow$CustomSourceLocation;
+    customSourceLocation?: gapi$client$dataflow$CustomSourceLocation;
 
     /**
      * The stream is a pubsub stream.
      */
-    pubsubLocation?: dataflow$PubsubLocation;
+    pubsubLocation?: gapi$client$dataflow$PubsubLocation;
 
     /**
      * The stream is a streaming side input.
@@ -2263,7 +2267,7 @@ declare module "gapi.client.dataflow" {
     streamingStageLocation?: dataflow$StreamingStageLocation;
   }
 
-  declare interface dataflow$StreamingComputationConfig {
+  declare interface gapi$client$dataflow$StreamingComputationConfig {
     /**
      * Unique identifier for this computation.
      */
@@ -2272,7 +2276,7 @@ declare module "gapi.client.dataflow" {
     /**
      * Instructions that comprise the computation.
      */
-    instructions?: dataflow$ParallelInstruction[];
+    instructions?: gapi$client$dataflow$ParallelInstruction[];
 
     /**
      * Stage name of this computation.
@@ -2285,7 +2289,7 @@ declare module "gapi.client.dataflow" {
     systemName?: string;
   }
 
-  declare interface dataflow$StreamingComputationRanges {
+  declare interface gapi$client$dataflow$StreamingComputationRanges {
     /**
      * The ID of the computation.
      */
@@ -2294,19 +2298,19 @@ declare module "gapi.client.dataflow" {
     /**
      * Data disk assignments for ranges from this computation.
      */
-    rangeAssignments?: dataflow$KeyRangeDataDiskAssignment[];
+    rangeAssignments?: gapi$client$dataflow$KeyRangeDataDiskAssignment[];
   }
 
-  declare interface dataflow$StreamingComputationTask {
+  declare interface gapi$client$dataflow$StreamingComputationTask {
     /**
      * Contains ranges of a streaming computation this task should apply to.
      */
-    computationRanges?: dataflow$StreamingComputationRanges[];
+    computationRanges?: gapi$client$dataflow$StreamingComputationRanges[];
 
     /**
      * Describes the set of data disks this task should apply to.
      */
-    dataDisks?: dataflow$MountedDataDisk[];
+    dataDisks?: gapi$client$dataflow$MountedDataDisk[];
 
     /**
      * A type of streaming computation task.
@@ -2314,11 +2318,11 @@ declare module "gapi.client.dataflow" {
     taskType?: string;
   }
 
-  declare interface dataflow$StreamingConfigTask {
+  declare interface gapi$client$dataflow$StreamingConfigTask {
     /**
      * Set of computation configuration information.
      */
-    streamingComputationConfigs?: dataflow$StreamingComputationConfig[];
+    streamingComputationConfigs?: gapi$client$dataflow$StreamingComputationConfig[];
 
     /**
      * Map from user step names to state families.
@@ -2340,7 +2344,7 @@ declare module "gapi.client.dataflow" {
     windmillServicePort?: string;
   }
 
-  declare interface dataflow$StreamingSetupTask {
+  declare interface gapi$client$dataflow$StreamingSetupTask {
     /**
      * The user has requested drain.
      */
@@ -2364,7 +2368,7 @@ declare module "gapi.client.dataflow" {
     workerHarnessPort?: number;
   }
 
-  declare interface dataflow$StreamingSideInputLocation {
+  declare interface gapi$client$dataflow$StreamingSideInputLocation {
     /**
      * Identifies the state family where this side input is stored.
      */
@@ -2376,7 +2380,7 @@ declare module "gapi.client.dataflow" {
     tag?: string;
   }
 
-  declare interface dataflow$StreamingStageLocation {
+  declare interface gapi$client$dataflow$StreamingStageLocation {
     /**
      * Identifies the particular stream within the streaming Dataflow
      * job.
@@ -2384,14 +2388,14 @@ declare module "gapi.client.dataflow" {
     streamId?: string;
   }
 
-  declare interface dataflow$StringList {
+  declare interface gapi$client$dataflow$StringList {
     /**
      * Elements of the list.
      */
     elements?: string[];
   }
 
-  declare interface dataflow$StructuredMessage {
+  declare interface gapi$client$dataflow$StructuredMessage {
     /**
      * Idenfier for this message type.  Used by external systems to
      * internationalize or personalize message.
@@ -2406,10 +2410,10 @@ declare module "gapi.client.dataflow" {
     /**
      * The structured data associated with this message.
      */
-    parameters?: dataflow$Parameter[];
+    parameters?: gapi$client$dataflow$Parameter[];
   }
 
-  declare interface dataflow$TaskRunnerSettings {
+  declare interface gapi$client$dataflow$TaskRunnerSettings {
     /**
      * Whether to also send taskrunner log info to stderr.
      */
@@ -2532,7 +2536,7 @@ declare module "gapi.client.dataflow" {
     workflowFileName?: string;
   }
 
-  declare interface dataflow$TemplateMetadata {
+  declare interface gapi$client$dataflow$TemplateMetadata {
     /**
      * Optional. A description of the template.
      */
@@ -2546,19 +2550,19 @@ declare module "gapi.client.dataflow" {
     /**
      * The parameters for the template.
      */
-    parameters?: dataflow$ParameterMetadata[];
+    parameters?: gapi$client$dataflow$ParameterMetadata[];
   }
 
-  declare interface dataflow$TopologyConfig {
+  declare interface gapi$client$dataflow$TopologyConfig {
     /**
      * The computations associated with a streaming Dataflow job.
      */
-    computations?: dataflow$ComputationTopology[];
+    computations?: gapi$client$dataflow$ComputationTopology[];
 
     /**
      * The disks assigned to a streaming Dataflow job.
      */
-    dataDiskAssignments?: dataflow$DataDiskAssignment[];
+    dataDiskAssignments?: gapi$client$dataflow$DataDiskAssignment[];
 
     /**
      * The size (in bits) of keys that will be assigned to source messages.
@@ -2576,11 +2580,11 @@ declare module "gapi.client.dataflow" {
     userStageToComputationNameMap?: Record<string, string>;
   }
 
-  declare interface dataflow$TransformSummary {
+  declare interface gapi$client$dataflow$TransformSummary {
     /**
      * Transform-specific display data.
      */
-    displayData?: dataflow$DisplayData[];
+    displayData?: gapi$client$dataflow$DisplayData[];
 
     /**
      * SDK generated id of this transform instance.
@@ -2608,7 +2612,7 @@ declare module "gapi.client.dataflow" {
     outputCollectionName?: string[];
   }
 
-  declare interface dataflow$WorkItem {
+  declare interface gapi$client$dataflow$WorkItem {
     /**
      * Work item-specific configuration as an opaque blob.
      */
@@ -2637,13 +2641,13 @@ declare module "gapi.client.dataflow" {
     /**
      * Additional information for MapTask WorkItems.
      */
-    mapTask?: dataflow$MapTask;
+    mapTask?: gapi$client$dataflow$MapTask;
 
     /**
      * Any required packages that need to be fetched in order to execute
      * this WorkItem.
      */
-    packages?: dataflow$Package[];
+    packages?: gapi$client$dataflow$Package[];
 
     /**
      * Identifies the cloud project this WorkItem belongs to.
@@ -2658,35 +2662,35 @@ declare module "gapi.client.dataflow" {
     /**
      * Additional information for SeqMapTask WorkItems.
      */
-    seqMapTask?: dataflow$SeqMapTask;
+    seqMapTask?: gapi$client$dataflow$SeqMapTask;
 
     /**
      * Additional information for ShellTask WorkItems.
      */
-    shellTask?: dataflow$ShellTask;
+    shellTask?: gapi$client$dataflow$ShellTask;
 
     /**
      * Additional information for source operation WorkItems.
      */
-    sourceOperationTask?: dataflow$SourceOperationRequest;
+    sourceOperationTask?: gapi$client$dataflow$SourceOperationRequest;
 
     /**
      * Additional information for StreamingComputationTask WorkItems.
      */
-    streamingComputationTask?: dataflow$StreamingComputationTask;
+    streamingComputationTask?: gapi$client$dataflow$StreamingComputationTask;
 
     /**
      * Additional information for StreamingConfigTask WorkItems.
      */
-    streamingConfigTask?: dataflow$StreamingConfigTask;
+    streamingConfigTask?: gapi$client$dataflow$StreamingConfigTask;
 
     /**
      * Additional information for StreamingSetupTask WorkItems.
      */
-    streamingSetupTask?: dataflow$StreamingSetupTask;
+    streamingSetupTask?: gapi$client$dataflow$StreamingSetupTask;
   }
 
-  declare interface dataflow$WorkItemServiceState {
+  declare interface gapi$client$dataflow$WorkItemServiceState {
     /**
      * Other data returned by the service, specific to the particular
      * worker harness.
@@ -2706,7 +2710,7 @@ declare module "gapi.client.dataflow" {
      * NOTE: it is possible that the response may have short ids for a subset
      * of the metrics.
      */
-    metricShortId?: dataflow$MetricShortId[];
+    metricShortId?: gapi$client$dataflow$MetricShortId[];
 
     /**
      * The index value to use for the next report sent by the worker.
@@ -2724,20 +2728,20 @@ declare module "gapi.client.dataflow" {
      * The progress point in the WorkItem where the Dataflow service
      * suggests that the worker truncate the task.
      */
-    splitRequest?: dataflow$ApproximateSplitRequest;
+    splitRequest?: gapi$client$dataflow$ApproximateSplitRequest;
 
     /**
      * DEPRECATED in favor of split_request.
      */
-    suggestedStopPoint?: dataflow$ApproximateProgress;
+    suggestedStopPoint?: gapi$client$dataflow$ApproximateProgress;
 
     /**
      * Obsolete, always empty.
      */
-    suggestedStopPosition?: dataflow$Position;
+    suggestedStopPosition?: gapi$client$dataflow$Position;
   }
 
-  declare interface dataflow$WorkItemStatus {
+  declare interface gapi$client$dataflow$WorkItemStatus {
     /**
      * True if the WorkItem was completed (successfully or unsuccessfully).
      */
@@ -2746,29 +2750,29 @@ declare module "gapi.client.dataflow" {
     /**
      * Worker output counters for this WorkItem.
      */
-    counterUpdates?: dataflow$CounterUpdate[];
+    counterUpdates?: gapi$client$dataflow$CounterUpdate[];
 
     /**
      * See documentation of stop_position.
      */
-    dynamicSourceSplit?: dataflow$DynamicSourceSplit;
+    dynamicSourceSplit?: gapi$client$dataflow$DynamicSourceSplit;
 
     /**
      * Specifies errors which occurred during processing.  If errors are
      * provided, and completed = true, then the WorkItem is considered
      * to have failed.
      */
-    errors?: dataflow$Status[];
+    errors?: gapi$client$dataflow$Status[];
 
     /**
      * DEPRECATED in favor of counter_updates.
      */
-    metricUpdates?: dataflow$MetricUpdate[];
+    metricUpdates?: gapi$client$dataflow$MetricUpdate[];
 
     /**
      * DEPRECATED in favor of reported_progress.
      */
-    progress?: dataflow$ApproximateProgress;
+    progress?: gapi$client$dataflow$ApproximateProgress;
 
     /**
      * The report index.  When a WorkItem is leased, the lease will
@@ -2789,7 +2793,7 @@ declare module "gapi.client.dataflow" {
     /**
      * The worker's progress through this WorkItem.
      */
-    reportedProgress?: dataflow$ApproximateReportedProgress;
+    reportedProgress?: gapi$client$dataflow$ApproximateReportedProgress;
 
     /**
      * Amount of time the worker requests for its lease.
@@ -2799,13 +2803,13 @@ declare module "gapi.client.dataflow" {
     /**
      * DEPRECATED in favor of dynamic_source_split.
      */
-    sourceFork?: dataflow$SourceFork;
+    sourceFork?: gapi$client$dataflow$SourceFork;
 
     /**
      * If the work item represented a SourceOperationRequest, and the work
      * is completed, contains the result of the operation.
      */
-    sourceOperationResponse?: dataflow$SourceOperationResponse;
+    sourceOperationResponse?: gapi$client$dataflow$SourceOperationResponse;
 
     /**
      * A worker may split an active map task in two parts, "primary" and
@@ -2839,7 +2843,7 @@ declare module "gapi.client.dataflow" {
      * to P, and in a potential subsequent dynamic_source_split into {P', R'},
      * P' and R' must be together equivalent to P, etc.
      */
-    stopPosition?: dataflow$Position;
+    stopPosition?: gapi$client$dataflow$Position;
 
     /**
      * Total time the worker spent being throttled by external systems.
@@ -2852,7 +2856,7 @@ declare module "gapi.client.dataflow" {
     workItemId?: string;
   }
 
-  declare interface dataflow$WorkerHealthReport {
+  declare interface gapi$client$dataflow$WorkerHealthReport {
     /**
      * The pods running on the worker. See:
      * http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
@@ -2880,7 +2884,7 @@ declare module "gapi.client.dataflow" {
     vmStartupTime?: string;
   }
 
-  declare interface dataflow$WorkerHealthReportResponse {
+  declare interface gapi$client$dataflow$WorkerHealthReportResponse {
     /**
      * A positive value indicates the worker should change its reporting interval
      * to the specified value.
@@ -2891,7 +2895,7 @@ declare module "gapi.client.dataflow" {
     reportInterval?: string;
   }
 
-  declare interface dataflow$WorkerMessage {
+  declare interface gapi$client$dataflow$WorkerMessage {
     /**
      * Labels are used to group WorkerMessages.
      * For example, a worker_message about a particular container
@@ -2914,7 +2918,7 @@ declare module "gapi.client.dataflow" {
     /**
      * The health of a worker.
      */
-    workerHealthReport?: dataflow$WorkerHealthReport;
+    workerHealthReport?: gapi$client$dataflow$WorkerHealthReport;
 
     /**
      * A worker message code.
@@ -2924,7 +2928,7 @@ declare module "gapi.client.dataflow" {
     /**
      * Resource metrics reported by workers.
      */
-    workerMetrics?: dataflow$ResourceUtilizationReport;
+    workerMetrics?: gapi$client$dataflow$ResourceUtilizationReport;
 
     /**
      * Shutdown notice by workers.
@@ -2932,7 +2936,7 @@ declare module "gapi.client.dataflow" {
     workerShutdownNotice?: dataflow$WorkerShutdownNotice;
   }
 
-  declare interface dataflow$WorkerMessageCode {
+  declare interface gapi$client$dataflow$WorkerMessageCode {
     /**
      * The code is a string intended for consumption by a machine that identifies
      * the type of message being sent.
@@ -2972,11 +2976,11 @@ declare module "gapi.client.dataflow" {
     parameters?: Record<string, any>;
   }
 
-  declare interface dataflow$WorkerMessageResponse {
+  declare interface gapi$client$dataflow$WorkerMessageResponse {
     /**
      * The service's response to a worker's health report.
      */
-    workerHealthReportResponse?: dataflow$WorkerHealthReportResponse;
+    workerHealthReportResponse?: gapi$client$dataflow$WorkerHealthReportResponse;
 
     /**
      * Service's response to reporting worker metrics (currently empty).
@@ -2989,16 +2993,16 @@ declare module "gapi.client.dataflow" {
     workerShutdownNoticeResponse?: any;
   }
 
-  declare interface dataflow$WorkerPool {
+  declare interface gapi$client$dataflow$WorkerPool {
     /**
      * Settings for autoscaling of this WorkerPool.
      */
-    autoscalingSettings?: dataflow$AutoscalingSettings;
+    autoscalingSettings?: gapi$client$dataflow$AutoscalingSettings;
 
     /**
      * Data disks that are used by a VM in this workflow.
      */
-    dataDisks?: dataflow$Disk[];
+    dataDisks?: gapi$client$dataflow$Disk[];
 
     /**
      * The default package set to install.  This allows the service to
@@ -3075,7 +3079,7 @@ declare module "gapi.client.dataflow" {
     /**
      * Packages to be installed on workers.
      */
-    packages?: dataflow$Package[];
+    packages?: gapi$client$dataflow$Package[];
 
     /**
      * Extra arguments for this worker pool.
@@ -3093,7 +3097,7 @@ declare module "gapi.client.dataflow" {
      * using the standard Dataflow task runner.  Users should ignore
      * this field.
      */
-    taskrunnerSettings?: dataflow$TaskRunnerSettings;
+    taskrunnerSettings?: gapi$client$dataflow$TaskRunnerSettings;
 
     /**
      * Sets the policy for determining when to turndown worker pool.
@@ -3128,7 +3132,7 @@ declare module "gapi.client.dataflow" {
     zone?: string;
   }
 
-  declare interface dataflow$WorkerSettings {
+  declare interface gapi$client$dataflow$WorkerSettings {
     /**
      * The base URL for accessing Google Cloud APIs.
      *
@@ -3178,7 +3182,7 @@ declare module "gapi.client.dataflow" {
     workerId?: string;
   }
 
-  declare interface dataflow$WorkerShutdownNotice {
+  declare interface gapi$client$dataflow$WorkerShutdownNotice {
     /**
      * The reason for the worker shutdown.
      * Current possible values are:
@@ -3189,19 +3193,19 @@ declare module "gapi.client.dataflow" {
     reason?: string;
   }
 
-  declare interface dataflow$WriteInstruction {
+  declare interface gapi$client$dataflow$WriteInstruction {
     /**
      * The input.
      */
-    input?: dataflow$InstructionInput;
+    input?: gapi$client$dataflow$InstructionInput;
 
     /**
      * The sink to write to.
      */
-    sink?: dataflow$Sink;
+    sink?: gapi$client$dataflow$Sink;
   }
 
-  declare interface dataflow$DebugResource {
+  declare interface gapi$client$dataflow$DebugResource {
     /**
      * Get encoded debug configuration for component. Not cacheable.
      */
@@ -3280,7 +3284,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$GetDebugConfigResponse>;
+    }): Request<gapi$client$dataflow$GetDebugConfigResponse>;
 
     /**
      * Send encoded debug capture data for component.
@@ -3445,7 +3449,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$GetDebugConfigResponse>;
+    }): Request<gapi$client$dataflow$GetDebugConfigResponse>;
 
     /**
      * Send encoded debug capture data for component.
@@ -3533,7 +3537,7 @@ declare module "gapi.client.dataflow" {
     }): Request<{}>;
   }
 
-  declare interface dataflow$MessagesResource {
+  declare interface gapi$client$dataflow$MessagesResource {
     /**
      * Request the job status.
      */
@@ -3648,7 +3652,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$ListJobMessagesResponse>;
+    }): Request<gapi$client$dataflow$ListJobMessagesResponse>;
 
     /**
      * Request the job status.
@@ -3764,10 +3768,10 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$ListJobMessagesResponse>;
+    }): Request<gapi$client$dataflow$ListJobMessagesResponse>;
   }
 
-  declare interface dataflow$WorkItemsResource {
+  declare interface gapi$client$dataflow$WorkItemsResource {
     /**
      * Leases a dataflow WorkItem to run.
      */
@@ -3846,7 +3850,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$LeaseWorkItemResponse>;
+    }): Request<gapi$client$dataflow$LeaseWorkItemResponse>;
 
     /**
      * Reports the status of dataflow WorkItems leased by a worker.
@@ -3926,7 +3930,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$ReportWorkItemStatusResponse>;
+    }): Request<gapi$client$dataflow$ReportWorkItemStatusResponse>;
 
     /**
      * Leases a dataflow WorkItem to run.
@@ -4011,7 +4015,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$LeaseWorkItemResponse>;
+    }): Request<gapi$client$dataflow$LeaseWorkItemResponse>;
 
     /**
      * Reports the status of dataflow WorkItems leased by a worker.
@@ -4096,10 +4100,10 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$ReportWorkItemStatusResponse>;
+    }): Request<gapi$client$dataflow$ReportWorkItemStatusResponse>;
   }
 
-  declare interface dataflow$JobsResource {
+  declare interface gapi$client$dataflow$JobsResource {
     /**
      * List the jobs of a project across all regions.
      */
@@ -4201,7 +4205,7 @@ declare module "gapi.client.dataflow" {
        * Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
        */
       view?: string
-    }): Request<dataflow$ListJobsResponse>;
+    }): Request<gapi$client$dataflow$ListJobsResponse>;
 
     /**
      * Creates a Cloud Dataflow job.
@@ -4291,7 +4295,7 @@ declare module "gapi.client.dataflow" {
        * The level of information requested in response.
        */
       view?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Gets the state of the specified Cloud Dataflow job.
@@ -4381,7 +4385,7 @@ declare module "gapi.client.dataflow" {
        * The level of information requested in response.
        */
       view?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Request the job status.
@@ -4472,7 +4476,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$JobMetrics>;
+    }): Request<gapi$client$dataflow$JobMetrics>;
 
     /**
      * List the jobs of a project in a given region.
@@ -4575,7 +4579,7 @@ declare module "gapi.client.dataflow" {
        * Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
        */
       view?: string
-    }): Request<dataflow$ListJobsResponse>;
+    }): Request<gapi$client$dataflow$ListJobsResponse>;
 
     /**
      * Updates the state of an existing Cloud Dataflow job.
@@ -4660,10 +4664,10 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$Job>;
-    debug: dataflow$DebugResource;
-    messages: dataflow$MessagesResource;
-    workItems: dataflow$WorkItemsResource;
+    }): Request<gapi$client$dataflow$Job>;
+    debug: gapi$client$dataflow$DebugResource;
+    messages: gapi$client$dataflow$MessagesResource;
+    workItems: gapi$client$dataflow$WorkItemsResource;
 
     /**
      * Creates a Cloud Dataflow job.
@@ -4753,7 +4757,7 @@ declare module "gapi.client.dataflow" {
        * The level of information requested in response.
        */
       view?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Gets the state of the specified Cloud Dataflow job.
@@ -4843,7 +4847,7 @@ declare module "gapi.client.dataflow" {
        * The level of information requested in response.
        */
       view?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Request the job status.
@@ -4934,7 +4938,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$JobMetrics>;
+    }): Request<gapi$client$dataflow$JobMetrics>;
 
     /**
      * List the jobs of a project in a given region.
@@ -5037,7 +5041,7 @@ declare module "gapi.client.dataflow" {
        * Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
        */
       view?: string
-    }): Request<dataflow$ListJobsResponse>;
+    }): Request<gapi$client$dataflow$ListJobsResponse>;
 
     /**
      * Updates the state of an existing Cloud Dataflow job.
@@ -5122,13 +5126,13 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$Job>;
-    debug: dataflow$DebugResource;
-    messages: dataflow$MessagesResource;
-    workItems: dataflow$WorkItemsResource;
+    }): Request<gapi$client$dataflow$Job>;
+    debug: gapi$client$dataflow$DebugResource;
+    messages: gapi$client$dataflow$MessagesResource;
+    workItems: gapi$client$dataflow$WorkItemsResource;
   }
 
-  declare interface dataflow$TemplatesResource {
+  declare interface gapi$client$dataflow$TemplatesResource {
     /**
      * Creates a Cloud Dataflow job from a template.
      */
@@ -5207,7 +5211,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Get the template associated with a template.
@@ -5299,7 +5303,7 @@ declare module "gapi.client.dataflow" {
        * The view to retrieve. Defaults to METADATA_ONLY.
        */
       view?: string
-    }): Request<dataflow$GetTemplateResponse>;
+    }): Request<gapi$client$dataflow$GetTemplateResponse>;
 
     /**
      * Launch a template.
@@ -5392,7 +5396,7 @@ declare module "gapi.client.dataflow" {
        * Defaults to false.
        */
       validateOnly?: boolean
-    }): Request<dataflow$LaunchTemplateResponse>;
+    }): Request<gapi$client$dataflow$LaunchTemplateResponse>;
 
     /**
      * Creates a Cloud Dataflow job from a template.
@@ -5467,7 +5471,7 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$Job>;
+    }): Request<gapi$client$dataflow$Job>;
 
     /**
      * Get the template associated with a template.
@@ -5559,7 +5563,7 @@ declare module "gapi.client.dataflow" {
        * The view to retrieve. Defaults to METADATA_ONLY.
        */
       view?: string
-    }): Request<dataflow$GetTemplateResponse>;
+    }): Request<gapi$client$dataflow$GetTemplateResponse>;
 
     /**
      * Launch a template.
@@ -5652,10 +5656,10 @@ declare module "gapi.client.dataflow" {
        * Defaults to false.
        */
       validateOnly?: boolean
-    }): Request<dataflow$LaunchTemplateResponse>;
+    }): Request<gapi$client$dataflow$LaunchTemplateResponse>;
   }
 
-  declare interface dataflow$LocationsResource {
+  declare interface gapi$client$dataflow$LocationsResource {
     /**
      * Send a worker_message to the service.
      */
@@ -5734,12 +5738,12 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$SendWorkerMessagesResponse>;
-    jobs: dataflow$JobsResource;
-    templates: dataflow$TemplatesResource;
+    }): Request<gapi$client$dataflow$SendWorkerMessagesResponse>;
+    jobs: gapi$client$dataflow$JobsResource;
+    templates: gapi$client$dataflow$TemplatesResource;
   }
 
-  declare interface dataflow$ProjectsResource {
+  declare interface gapi$client$dataflow$ProjectsResource {
     /**
      * Send a worker_message to the service.
      */
@@ -5813,9 +5817,9 @@ declare module "gapi.client.dataflow" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataflow$SendWorkerMessagesResponse>;
-    jobs: dataflow$JobsResource;
-    locations: dataflow$LocationsResource;
-    templates: dataflow$TemplatesResource;
+    }): Request<gapi$client$dataflow$SendWorkerMessagesResponse>;
+    jobs: gapi$client$dataflow$JobsResource;
+    locations: gapi$client$dataflow$LocationsResource;
+    templates: gapi$client$dataflow$TemplatesResource;
   }
 }
