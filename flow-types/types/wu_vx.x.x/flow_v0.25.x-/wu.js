@@ -1,7 +1,7 @@
 declare module "wu" {
-  declare function wu<T>(iterable: Iterable<T>): wu$wu$WuIterable<T>;
+  declare function wu<T>(iterable: Iterable<T>): wu$WuIterable<T>;
 
-  declare module.exports: typeof wu;
+  declare export default typeof wu;
 
   declare var npm$namespace$wu: {
     chain: typeof wu$chain,
@@ -233,45 +233,38 @@ declare module "wu" {
   ): Array<wu$WuIterable<T>>;
 
   declare type wu$WuIterable<T> = {
-    wu$asyncEach(
-      fn: wu$Consumer<any>,
-      maxBlock?: number,
-      timeout?: number
-    ): any,
-    wu$drop(n: number): wu$WuIterable<T>,
-    wu$dropWhile(fn: wu$Filter<T>): wu$WuIterable<T>,
-    wu$cycle(): wu$WuIterable<T>,
-    wu$chunk(n: number): wu$WuIterable<T[]>,
-    wu$concatMap<U>(fn: (t: T) => Iterable<U>): wu$WuIterable<U>,
-    wu$enumerate(): wu$WuIterable<[T, number]>,
-    wu$every(fn: wu$Filter<T>): boolean,
-    wu$filter(fn: wu$Filter<T>): wu$WuIterable<T>,
-    wu$find(fn: wu$Filter<T>): T | void,
-    wu$flatten(shallow?: boolean): wu$WuIterable<any>,
-    wu$forEach(fn: wu$Consumer<T>): void,
-    wu$has(t: T): boolean,
-    wu$invoke: any,
-    wu$map<U>(fn: (t: T) => U): wu$WuIterable<U>,
-    wu$pluck(attribute: string): wu$WuIterable<any>,
-    wu$reduce(fn: (a: T, b: T) => T, initial?: T): T,
-    wu$reduce<U>(fn: (a: U, b: T) => U, initial?: U): U,
-    wu$reductions(fn: (a: T, b: T) => T, initial?: T): wu$WuIterable<T>,
-    wu$reductions<U>(fn: (a: U, b: T) => U, initial?: U): wu$WuIterable<U>,
-    wu$reject(fn: wu$Filter<T>): wu$WuIterable<T>,
-    wu$slice(start?: number, stop?: number): wu$WuIterable<T>,
-    wu$some(fn: wu$Filter<T>): boolean,
-    wu$spreadMap(
-      fn: (...x: any[]) => T,
-      iter: Iterable<any[]>
-    ): wu$WuIterable<T>,
-    wu$take(n: number): wu$WuIterable<T>,
-    wu$takeWhile(fn: wu$Filter<T>): wu$WuIterable<T>,
-    wu$tap(fn: wu$Consumer<T>): wu$WuIterable<T>,
-    wu$unique(): wu$WuIterable<T>,
-    wu$zip<U>(iter2: Iterable<T>): wu$WuIterable<[T, U]>,
-    wu$zipLongest<U>(iter2: Iterable<T>): wu$WuIterable<[T, U]>,
-    wu$zipWith: any,
-    wu$unzip: any,
-    wu$tee(n?: number): Array<wu$WuIterable<T>>
+    asyncEach(fn: wu$Consumer<any>, maxBlock?: number, timeout?: number): any,
+    drop(n: number): wu$WuIterable<T>,
+    dropWhile(fn: wu$Filter<T>): wu$WuIterable<T>,
+    cycle(): wu$WuIterable<T>,
+    chunk(n: number): wu$WuIterable<T[]>,
+    concatMap<U>(fn: (t: T) => Iterable<U>): wu$WuIterable<U>,
+    enumerate(): wu$WuIterable<[T, number]>,
+    every(fn: wu$Filter<T>): boolean,
+    filter(fn: wu$Filter<T>): wu$WuIterable<T>,
+    find(fn: wu$Filter<T>): T | void,
+    flatten(shallow?: boolean): wu$WuIterable<any>,
+    forEach(fn: wu$Consumer<T>): void,
+    has(t: T): boolean,
+    invoke: any,
+    map<U>(fn: (t: T) => U): wu$WuIterable<U>,
+    pluck(attribute: string): wu$WuIterable<any>,
+    reduce(fn: (a: T, b: T) => T, initial?: T): T,
+    reduce<U>(fn: (a: U, b: T) => U, initial?: U): U,
+    reductions(fn: (a: T, b: T) => T, initial?: T): wu$WuIterable<T>,
+    reductions<U>(fn: (a: U, b: T) => U, initial?: U): wu$WuIterable<U>,
+    reject(fn: wu$Filter<T>): wu$WuIterable<T>,
+    slice(start?: number, stop?: number): wu$WuIterable<T>,
+    some(fn: wu$Filter<T>): boolean,
+    spreadMap(fn: (...x: any[]) => T, iter: Iterable<any[]>): wu$WuIterable<T>,
+    take(n: number): wu$WuIterable<T>,
+    takeWhile(fn: wu$Filter<T>): wu$WuIterable<T>,
+    tap(fn: wu$Consumer<T>): wu$WuIterable<T>,
+    unique(): wu$WuIterable<T>,
+    zip<U>(iter2: Iterable<T>): wu$WuIterable<[T, U]>,
+    zipLongest<U>(iter2: Iterable<T>): wu$WuIterable<[T, U]>,
+    zipWith: any,
+    unzip: any,
+    tee(n?: number): Array<wu$WuIterable<T>>
   } & IterableIterator<T>;
 }
