@@ -38,7 +38,9 @@ declare module "js-to-java" {
     BigDecimal: typeof java$BigDecimal,
     Currency: typeof java$Currency,
     revert: typeof java$revert,
-    exception: typeof java$exception
+    exception: typeof java$exception,
+
+    array: typeof npm$namespace$java$array
   };
   declare function java$combine(
     className: string,
@@ -112,110 +114,114 @@ declare module "js-to-java" {
     [key: string]: any
   };
 
-  declare var npm$namespace$array: {
-    Boolean: typeof array$Boolean,
-    boolean: typeof array$boolean,
-    Integer: typeof array$Integer,
-    int: typeof array$int,
-    short: typeof array$short,
-    Short: typeof array$Short,
-    byte: typeof array$byte,
-    Byte: typeof array$Byte,
-    long: typeof array$long,
-    Long: typeof array$Long,
-    double: typeof array$double,
-    Double: typeof array$Double,
-    float: typeof array$float,
-    Float: typeof array$Float,
-    char: typeof array$char,
-    chars: typeof array$chars,
-    String: typeof array$String,
-    Character: typeof array$Character,
-    List: typeof array$List,
-    Set: typeof array$Set,
-    Iterator: typeof array$Iterator,
-    HashMap: typeof array$HashMap,
-    Map: typeof array$Map,
-    Enumeration: typeof array$Enumeration,
-    Dictionary: typeof array$Dictionary,
-    Class: typeof array$Class,
-    Locale: typeof array$Locale,
-    BigDecimal: typeof array$BigDecimal,
-    Currency: typeof array$Currency
+  declare var npm$namespace$java$array: {
+    Boolean: typeof java$array$Boolean,
+    boolean: typeof java$array$boolean,
+    Integer: typeof java$array$Integer,
+    int: typeof java$array$int,
+    short: typeof java$array$short,
+    Short: typeof java$array$Short,
+    byte: typeof java$array$byte,
+    Byte: typeof java$array$Byte,
+    long: typeof java$array$long,
+    Long: typeof java$array$Long,
+    double: typeof java$array$double,
+    Double: typeof java$array$Double,
+    float: typeof java$array$float,
+    Float: typeof java$array$Float,
+    char: typeof java$array$char,
+    chars: typeof java$array$chars,
+    String: typeof java$array$String,
+    Character: typeof java$array$Character,
+    List: typeof java$array$List,
+    Set: typeof java$array$Set,
+    Iterator: typeof java$array$Iterator,
+    HashMap: typeof java$array$HashMap,
+    Map: typeof java$array$Map,
+    Enumeration: typeof java$array$Enumeration,
+    Dictionary: typeof java$array$Dictionary,
+    Class: typeof java$array$Class,
+    Locale: typeof java$array$Locale,
+    BigDecimal: typeof java$array$BigDecimal,
+    Currency: typeof java$array$Currency
   };
-  declare function array$Boolean(value: boolean[]): { [key: string]: any };
+  declare function java$array$Boolean(value: boolean[]): { [key: string]: any };
 
-  declare function array$boolean(value: boolean[]): { [key: string]: any };
+  declare function java$array$boolean(value: boolean[]): { [key: string]: any };
 
-  declare function array$Integer(value: number[]): { [key: string]: any };
+  declare function java$array$Integer(value: number[]): { [key: string]: any };
 
-  declare function array$int(value: number[]): { [key: string]: any };
+  declare function java$array$int(value: number[]): { [key: string]: any };
 
-  declare function array$short(value: number[]): { [key: string]: any };
+  declare function java$array$short(value: number[]): { [key: string]: any };
 
-  declare function array$Short(value: number[]): { [key: string]: any };
+  declare function java$array$Short(value: number[]): { [key: string]: any };
 
-  declare function array$byte(value: number[]): { [key: string]: any };
+  declare function java$array$byte(value: number[]): { [key: string]: any };
 
-  declare function array$Byte(value: number[]): { [key: string]: any };
+  declare function java$array$Byte(value: number[]): { [key: string]: any };
 
-  declare function array$long(value: number[]): { [key: string]: any };
+  declare function java$array$long(value: number[]): { [key: string]: any };
 
-  declare function array$Long(value: number[]): { [key: string]: any };
+  declare function java$array$Long(value: number[]): { [key: string]: any };
 
-  declare function array$double(value: number[]): { [key: string]: any };
+  declare function java$array$double(value: number[]): { [key: string]: any };
 
-  declare function array$Double(value: number[]): { [key: string]: any };
+  declare function java$array$Double(value: number[]): { [key: string]: any };
 
-  declare function array$float(value: number[]): { [key: string]: any };
+  declare function java$array$float(value: number[]): { [key: string]: any };
 
-  declare function array$Float(value: number[]): { [key: string]: any };
+  declare function java$array$Float(value: number[]): { [key: string]: any };
 
-  declare function array$char(value: string[]): { [key: string]: any };
+  declare function java$array$char(value: string[]): { [key: string]: any };
 
-  declare function array$chars(value: string[]): { [key: string]: any };
+  declare function java$array$chars(value: string[]): { [key: string]: any };
 
-  declare function array$String(value: string[]): { [key: string]: any };
+  declare function java$array$String(value: string[]): { [key: string]: any };
 
-  declare function array$Character(value: string[]): { [key: string]: any };
+  declare function java$array$Character(
+    value: string[]
+  ): { [key: string]: any };
 
-  declare function array$List<T>(value: T[]): { [key: string]: any };
+  declare function java$array$List<T>(value: T[]): { [key: string]: any };
 
-  declare function array$Set(
+  declare function java$array$Set(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$Iterator(
+  declare function java$array$Iterator(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$HashMap(
+  declare function java$array$HashMap(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$Map(
+  declare function java$array$Map(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$Enumeration(
+  declare function java$array$Enumeration(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$Dictionary(
+  declare function java$array$Dictionary(
     value: { [key: string]: any }[]
   ): { [key: string]: any };
 
-  declare function array$Class(className: string[]): { [key: string]: any };
+  declare function java$array$Class(
+    className: string[]
+  ): { [key: string]: any };
 
-  declare function array$Locale(
+  declare function java$array$Locale(
     locale: string[],
     handle: string
   ): { [key: string]: any };
 
-  declare function array$BigDecimal(val: string[]): { [key: string]: any };
+  declare function java$array$BigDecimal(val: string[]): { [key: string]: any };
 
-  declare function array$Currency(
-    value: null[] | string[] | array$Currency[]
+  declare function java$array$Currency(
+    value: null[] | string[] | java$array$Currency[]
   ): { [key: string]: any };
 
   declare function java$abstract(
@@ -246,5 +252,5 @@ declare module "js-to-java" {
 
   declare function java(className: string, value: any): { [key: string]: any };
 
-  declare module.exports: typeof java;
+  declare export default typeof java;
 }
