@@ -42,7 +42,9 @@ declare module "wx-js-sdk-dt" {
     chooseCard: typeof wx$chooseCard,
     addCard: typeof wx$addCard,
     openCard: typeof wx$openCard,
-    chooseWXPay: typeof wx$chooseWXPay
+    chooseWXPay: typeof wx$chooseWXPay,
+
+    OpenCardObj: typeof wx$OpenCardObj
   };
 
   /**
@@ -111,7 +113,7 @@ declare module "wx-js-sdk-dt" {
     /**
      * 接口调用失败时执行的回调函数
      */
-    fail?: (wx$error?: any) => void;
+    fail?: (error?: any) => void;
 
     /**
      * 接口调用完成时执行的回调函数，无论成功或失败都会执行
@@ -132,7 +134,7 @@ declare module "wx-js-sdk-dt" {
      * 监听Menu中的按钮点击时触发的方法
      */
     trigger?: () => void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 判断当前客户端版本是否支持指定 JS 接口, checkJsApi 接口是客户端6.0.2新引入的一个预留接口，第一期开放的接口均可不使用 checkJsApi 来检测
@@ -155,7 +157,7 @@ declare module "wx-js-sdk-dt" {
         msg: string
       }
     }): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 判断当前客户端版本是否支持指定 JS 接口
@@ -177,7 +179,7 @@ declare module "wx-js-sdk-dt" {
      * 分享图标
      */
     imgUrl?: string
-  } & wx$WxBaseMenuRequestConfig;
+  } & WxBaseMenuRequestConfig;
 
   /**
    * 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
@@ -211,7 +213,7 @@ declare module "wx-js-sdk-dt" {
      */
     imgUrl?: string,
     success?: () => void
-  } & wx$WxBaseMenuRequestConfig;
+  } & WxBaseMenuRequestConfig;
 
   /**
    * “分享到朋友圈”及“分享到QQ空间”按钮的分享内容
@@ -232,7 +234,7 @@ declare module "wx-js-sdk-dt" {
      */
     imageUrl?: string,
     success?: () => void
-  } & wx$WxBaseMenuRequestConfig;
+  } & WxBaseMenuRequestConfig;
 
   /**
    * 消息分享对象
@@ -253,7 +255,7 @@ declare module "wx-js-sdk-dt" {
      * 如果 type 是 music 或 video，则要提供数据链接，默认为空
      */
     dataUrl?: string
-  } & wx$ShareTimelineConfig;
+  } & ShareTimelineConfig;
 
   /**
    * 获取“分享给朋友”按钮点击状态及自定义分享内容接口
@@ -269,38 +271,38 @@ declare module "wx-js-sdk-dt" {
      * 分享描述
      */
     desc: string
-  } & wx$ShareTimelineConfig;
+  } & ShareTimelineConfig;
 
   /**
    * “分享到QQ”按钮点击状态及自定义分享内容接口
    * @deprecated
    */
-  declare function wx$onMenuShareQQ(wx$config: wx$MenuShareQQ): void;
+  declare function wx$onMenuShareQQ(config: wx$MenuShareQQ): void;
 
   declare type wx$MenuShareWeibo = {
     /**
      * 分享描述
      */
     desc: string
-  } & wx$ShareTimelineConfig;
+  } & ShareTimelineConfig;
 
   /**
    * 获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
    */
-  declare function wx$onMenuShareWeibo(wx$config: wx$MenuShareWeibo): void;
+  declare function wx$onMenuShareWeibo(config: wx$MenuShareWeibo): void;
 
   /**
    * 获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
    * @deprecated
    */
-  declare function wx$onMenuShareQZone(wx$config: wx$MenuShareWeibo): void;
+  declare function wx$onMenuShareQZone(config: wx$MenuShareWeibo): void;
 
   /**
    * “分享给朋友”及“分享到QQ”
    * @param config
    */
   declare function wx$updateAppMessageShareData(
-    wx$config: wx$ShareToUserConfig
+    config: wx$ShareToUserConfig
   ): void;
 
   /**
@@ -308,7 +310,7 @@ declare module "wx-js-sdk-dt" {
    * @param config
    */
   declare function wx$updateTimelineShareData(
-    wx$config: wx$ShareToTimelineConfig
+    config: wx$ShareToTimelineConfig
   ): void;
 
   declare interface wx$ChooseImageConfig {
@@ -338,7 +340,7 @@ declare module "wx-js-sdk-dt" {
   /**
    * 拍照或从手机相册中选图接口
    */
-  declare function wx$chooseImage(wx$config: wx$ChooseImageConfig): void;
+  declare function wx$chooseImage(config: wx$ChooseImageConfig): void;
 
   /**
    * 显示照片预览用的配置对象
@@ -353,12 +355,12 @@ declare module "wx-js-sdk-dt" {
      * 需要预览的图片 http 链接列表
      */
     urls: string[]
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 预览图片接口
    */
-  declare function wx$previewImage(wx$config: wx$PreviewImageConfig): void;
+  declare function wx$previewImage(config: wx$PreviewImageConfig): void;
 
   declare type wx$UploadImageConfig = {
     /**
@@ -375,12 +377,12 @@ declare module "wx-js-sdk-dt" {
      * res: var serverId = res.serverId;  返回图片的服务器端 ID
      */
     success(res: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 上传图片
    */
-  declare function wx$uploadImage(wx$config: wx$UploadImageConfig): void;
+  declare function wx$uploadImage(config: wx$UploadImageConfig): void;
 
   declare type wx$DownLoadImageConfig = {
     /**
@@ -395,9 +397,9 @@ declare module "wx-js-sdk-dt" {
     success?: (res: {
       localId: string
     }) => void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
-  declare function wx$downloadImage(wx$config: wx$DownLoadImageConfig): void;
+  declare function wx$downloadImage(config: wx$DownLoadImageConfig): void;
 
   declare type wx$GetLocalImgDataConfig = {
     /**
@@ -411,14 +413,12 @@ declare module "wx-js-sdk-dt" {
     success(res: {
       localData: string
     }): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 获取本地图片接口,此接口仅在 iOS WKWebview 下提供，用于兼容 iOS WKWebview 不支持 localId 直接显示图片的问题
    */
-  declare function wx$getLocalImgData(
-    wx$config: wx$GetLocalImgDataConfig
-  ): void;
+  declare function wx$getLocalImgData(config: wx$GetLocalImgDataConfig): void;
 
   /**
    * 开始录音
@@ -471,12 +471,12 @@ declare module "wx-js-sdk-dt" {
     localId: string,
     isShowProgressTips?: number,
     success(res: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 上传语音接口, 上传语音有效期3天，可用微信多媒体接口下载语音到自己的服务器，
    */
-  declare function wx$uploadVoice(wx$config: wx$UploadVoiceConfig): void;
+  declare function wx$uploadVoice(config: wx$UploadVoiceConfig): void;
 
   declare type wx$DownloadVoiceConfig = {
     /**
@@ -493,14 +493,14 @@ declare module "wx-js-sdk-dt" {
      * 下载成功回调
      */
     success(res: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
-  declare function wx$downloadVoice(wx$config: wx$DownloadVoiceConfig): void;
+  declare function wx$downloadVoice(config: wx$DownloadVoiceConfig): void;
 
   /**
    * 识别音频并返回识别结果接口
    */
-  declare function wx$translateVoice(wx$config: wx$UploadVoiceConfig): void;
+  declare function wx$translateVoice(config: wx$UploadVoiceConfig): void;
 
   /**
    * 获取网络状态, var networkType = res.networkType; 返回网络类型 2g，3g，4g，wifi
@@ -534,12 +534,12 @@ declare module "wx-js-sdk-dt" {
      * 在查看位置界面底部显示的超链接, 可点击跳转
      */
     infoUrl?: string
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 微信内置地图查看位置
    */
-  declare function wx$openLocation(wx$config: wx$OpenLocationConfig): void;
+  declare function wx$openLocation(config: wx$OpenLocationConfig): void;
 
   declare interface wx$Location {
     latitude: number;
@@ -562,12 +562,12 @@ declare module "wx-js-sdk-dt" {
      */
     type?: string,
     success(res: wx$Location): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 获取地理位置接口
    */
-  declare function wx$getLocation(wx$config: wx$GetLocationConfig): void;
+  declare function wx$getLocation(config: wx$GetLocationConfig): void;
 
   declare type wx$StartSearchBeaconsConfig = {
     /**
@@ -579,37 +579,35 @@ declare module "wx-js-sdk-dt" {
      * 完成后的回调
      */
     complete(argv: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 开启查找周边 ibeacon 设备接口
    */
   declare function wx$startSearchBeacons(
-    wx$config: wx$StartSearchBeaconsConfig
+    config: wx$StartSearchBeaconsConfig
   ): void;
 
   declare type wx$StopSearchBeaconsConfig = {
     complete(res: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 关闭查找完成后的回调函数
    */
   declare function wx$stopSearchBeacons(
-    wx$config: wx$StopSearchBeaconsConfig
+    config: wx$StopSearchBeaconsConfig
   ): void;
 
   declare type wx$OnSearchBeaconsConfig = {
     complete(argv: any): void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 监听周边 ibeacon 设备接口,
    * 摇一摇周边接口使用注意事项及更多返回结果说明，请参考：摇一摇周边获取设备信息
    */
-  declare function wx$onSearchBeacons(
-    wx$config: wx$OnSearchBeaconsConfig
-  ): void;
+  declare function wx$onSearchBeacons(config: wx$OnSearchBeaconsConfig): void;
 
   /**
    * 关闭当前网页窗口接口
@@ -621,17 +619,17 @@ declare module "wx-js-sdk-dt" {
      * 要隐藏/显示的菜单项，只能隐藏“传播类”和“保护类”按钮
      */
     menuList: string[]
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 批量隐藏功能按钮接口
    */
-  declare function wx$hideMenuItems(wx$config: wx$MenuItemsConfig): void;
+  declare function wx$hideMenuItems(config: wx$MenuItemsConfig): void;
 
   /**
    * 批量显示功能按钮接口
    */
-  declare function wx$showMenuItems(wx$config: wx$MenuItemsConfig): void;
+  declare function wx$showMenuItems(config: wx$MenuItemsConfig): void;
 
   /**
    * 隐藏所有非基础按钮接口
@@ -660,12 +658,12 @@ declare module "wx-js-sdk-dt" {
     success?: (res: {
       resultStr: string
     }) => void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 调起微信扫一扫接口
    */
-  declare function wx$scanQRCode(wx$config: wx$ScanQRCodeConfig): void;
+  declare function wx$scanQRCode(config: wx$ScanQRCodeConfig): void;
 
   declare type wx$OpenProductSpecificViewConfig = {
     /**
@@ -677,13 +675,13 @@ declare module "wx-js-sdk-dt" {
      * 0.默认值，普通商品详情页; 1.扫一扫商品详情页; 2.小店商品详情页
      */
     viewType?: number
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 跳转微信商品页接口
    */
   declare function wx$openProductSpecificView(
-    wx$config: wx$OpenProductSpecificViewConfig
+    config: wx$OpenProductSpecificViewConfig
   ): void;
 
   declare type wx$ChooseCardConfig = {
@@ -728,7 +726,7 @@ declare module "wx-js-sdk-dt" {
     success?: (res: {
       cardList: wx$Card[]
     }) => void
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 卡券对象
@@ -741,7 +739,7 @@ declare module "wx-js-sdk-dt" {
   /**
    * 拉取适用卡券列表并获取用户选择信息
    */
-  declare function wx$chooseCard(wx$config: wx$ChooseCardConfig): void;
+  declare function wx$chooseCard(config: wx$ChooseCardConfig): void;
 
   declare interface wx$AddCardConfig {
     cardList: wx$Card[];
@@ -753,7 +751,7 @@ declare module "wx-js-sdk-dt" {
   /**
    * 批量添加卡券接口
    */
-  declare function wx$addCard(wx$config: wx$AddCardConfig): void;
+  declare function wx$addCard(config: wx$AddCardConfig): void;
 
   declare class wx$OpenCardObj {
     cardId: string;
@@ -765,12 +763,12 @@ declare module "wx-js-sdk-dt" {
    */
   declare type wx$OpenCardConfig = {
     cardList: wx$OpenCardObj[]
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 查看微信卡包中的卡券接口
    */
-  declare function wx$openCard(wx$config: wx$OpenCardConfig): void;
+  declare function wx$openCard(config: wx$OpenCardConfig): void;
 
   declare type wx$ChooseWXPayConfig = {
     /**
@@ -797,10 +795,10 @@ declare module "wx-js-sdk-dt" {
      * 支付签名
      */
     paySign: string
-  } & wx$WxBaseRequestConfig;
+  } & WxBaseRequestConfig;
 
   /**
    * 发起一个微信支付请求
    */
-  declare function wx$chooseWXPay(wx$config: wx$ChooseWXPayConfig): void;
+  declare function wx$chooseWXPay(config: wx$ChooseWXPayConfig): void;
 }
