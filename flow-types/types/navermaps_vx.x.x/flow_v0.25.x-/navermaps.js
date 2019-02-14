@@ -1,94 +1,170 @@
 declare module "navermaps" {
-  declare var npm$namespace$maps: {
-    onJSContentLoaded: typeof maps$onJSContentLoaded,
-    NaverMapTypeOption: typeof maps$NaverMapTypeOption,
-    drawing: typeof maps$drawing,
-    visualization: typeof maps$visualization,
-    Service: typeof maps$Service,
-    TransCoord: typeof maps$TransCoord,
-    Event: typeof maps$Event,
-    EPSG3857: typeof maps$EPSG3857,
-    UTMK: typeof maps$UTMK,
-    UTMK_NAVER: typeof maps$UTMK_NAVER,
-    EPSG3857Coord: typeof maps$EPSG3857Coord,
-    TM128: typeof maps$TM128,
-    TM128Coord: typeof maps$TM128Coord,
-    UTMK_NAVERCoord: typeof maps$UTMK_NAVERCoord,
-    UTMKCoord: typeof maps$UTMKCoord,
-    jsContentLoaded: typeof maps$jsContentLoaded
+  declare var npm$namespace$naver: {
+    maps: typeof npm$namespace$naver$maps
+  };
+
+  declare var npm$namespace$naver$maps: {
+    onJSContentLoaded: typeof naver$maps$onJSContentLoaded,
+    NaverMapTypeOption: typeof naver$maps$NaverMapTypeOption,
+    drawing: typeof naver$maps$drawing,
+    visualization: typeof naver$maps$visualization,
+    Service: typeof naver$maps$Service,
+    TransCoord: typeof naver$maps$TransCoord,
+    Event: typeof naver$maps$Event,
+    EPSG3857: typeof naver$maps$EPSG3857,
+    UTMK: typeof naver$maps$UTMK,
+    UTMK_NAVER: typeof naver$maps$UTMK_NAVER,
+    EPSG3857Coord: typeof naver$maps$EPSG3857Coord,
+    TM128: typeof naver$maps$TM128,
+    TM128Coord: typeof naver$maps$TM128Coord,
+    UTMK_NAVERCoord: typeof naver$maps$UTMK_NAVERCoord,
+    UTMKCoord: typeof naver$maps$UTMKCoord,
+    jsContentLoaded: typeof naver$maps$jsContentLoaded,
+    MapTypeControlStyle: typeof naver$maps$MapTypeControlStyle,
+    ZoomControlStyle: typeof naver$maps$ZoomControlStyle,
+    Animation: typeof naver$maps$Animation,
+    PointingIcon: typeof naver$maps$PointingIcon,
+    Position: typeof naver$maps$Position,
+    SymbolPath: typeof naver$maps$SymbolPath,
+    KVO: typeof naver$maps$KVO,
+    KVOArray: typeof naver$maps$KVOArray,
+    Point: typeof naver$maps$Point,
+    Size: typeof naver$maps$Size,
+    PointBounds: typeof naver$maps$PointBounds,
+    LatLng: typeof naver$maps$LatLng,
+    LatLngBounds: typeof naver$maps$LatLngBounds,
+    Map: typeof naver$maps$Map,
+    Tile: typeof naver$maps$Tile,
+    CanvasTile: typeof naver$maps$CanvasTile,
+    ImageTile: typeof naver$maps$ImageTile,
+    CanvasMapType: typeof naver$maps$CanvasMapType,
+    ImageMapType: typeof naver$maps$ImageMapType,
+    MapTypeRegistry: typeof naver$maps$MapTypeRegistry,
+    CustomControl: typeof naver$maps$CustomControl,
+    LogoControl: typeof naver$maps$LogoControl,
+    MapDataControl: typeof naver$maps$MapDataControl,
+    MapTypeControl: typeof naver$maps$MapTypeControl,
+    ScaleControl: typeof naver$maps$ScaleControl,
+    ZoomControl: typeof naver$maps$ZoomControl,
+    Layer: typeof naver$maps$Layer,
+    LabelLayer: typeof naver$maps$LabelLayer,
+    CadastralLayer: typeof naver$maps$CadastralLayer,
+    StreetLayer: typeof naver$maps$StreetLayer,
+    TrafficLayer: typeof naver$maps$TrafficLayer,
+    Data: typeof naver$maps$Data,
+    Feature: typeof naver$maps$Feature,
+    Geometry: typeof naver$maps$Geometry,
+    OverlayView: typeof naver$maps$OverlayView,
+    Circle: typeof naver$maps$Circle,
+    Ellipse: typeof naver$maps$Ellipse,
+    GroundOverlay: typeof naver$maps$GroundOverlay,
+    InfoWindow: typeof naver$maps$InfoWindow,
+    Marker: typeof naver$maps$Marker,
+    Polygon: typeof naver$maps$Polygon,
+    Polyline: typeof naver$maps$Polyline,
+    Rectangle: typeof naver$maps$Rectangle,
+    PanoramaProjection: typeof naver$maps$PanoramaProjection,
+    Panorama: typeof naver$maps$Panorama,
+    FlightSpot: typeof naver$maps$FlightSpot,
+    AroundControl: typeof naver$maps$AroundControl,
+    MapTypeId: typeof npm$namespace$naver$maps$MapTypeId,
+    SymbolStyle: typeof npm$namespace$naver$maps$SymbolStyle,
+    NaverMapTypeOption: typeof npm$namespace$naver$maps$NaverMapTypeOption,
+    drawing: typeof npm$namespace$naver$maps$drawing,
+    visualization: typeof npm$namespace$naver$maps$visualization,
+    Service: typeof npm$namespace$naver$maps$Service,
+    TransCoord: typeof npm$namespace$naver$maps$TransCoord,
+    Event: typeof npm$namespace$naver$maps$Event,
+    EPSG3857: typeof npm$namespace$naver$maps$EPSG3857,
+    UTMK: typeof npm$namespace$naver$maps$UTMK,
+    UTMK_NAVER: typeof npm$namespace$naver$maps$UTMK_NAVER,
+    EPSG3857Coord: typeof npm$namespace$naver$maps$EPSG3857Coord,
+    TM128: typeof npm$namespace$naver$maps$TM128,
+    TM128Coord: typeof npm$namespace$naver$maps$TM128Coord,
+    UTMK_NAVERCoord: typeof npm$namespace$naver$maps$UTMK_NAVERCoord,
+    UTMKCoord: typeof npm$namespace$naver$maps$UTMKCoord
   };
 
   /**
    * Types
    */
-  declare type maps$PointArrayLiteral = [number, number];
+  declare type naver$maps$PointArrayLiteral = [number, number];
 
-  declare type maps$PointLiteral =
-    | maps$PointArrayLiteral
+  declare type naver$maps$PointLiteral =
+    | naver$maps$PointArrayLiteral
     | maps$PointObjectLiteral;
 
-  declare type maps$SizeArrayLiteral = [number, number];
+  declare type naver$maps$SizeArrayLiteral = [number, number];
 
-  declare type maps$SizeLiteral =
-    | maps$SizeArrayLiteral
+  declare type naver$maps$SizeLiteral =
+    | naver$maps$SizeArrayLiteral
     | maps$SizeObjectLiteral;
 
-  declare type maps$LatLngLiteral =
-    | maps$PointLiteral
+  declare type naver$maps$LatLngLiteral =
+    | naver$maps$PointLiteral
     | maps$LatLngObjectLiteral;
 
-  declare type maps$PointBoundsArrayLiteral = [number, number, number, number];
+  declare type naver$maps$PointBoundsArrayLiteral = [
+    number,
+    number,
+    number,
+    number
+  ];
 
-  declare type maps$PointBoundsLiteral =
-    | maps$PointBoundsArrayLiteral
+  declare type naver$maps$PointBoundsLiteral =
+    | naver$maps$PointBoundsArrayLiteral
     | maps$PointBoundsObjectLiteral;
 
-  declare type maps$LatLngBoundsLiteral =
-    | maps$PointBoundsLiteral
+  declare type naver$maps$LatLngBoundsLiteral =
+    | naver$maps$PointBoundsLiteral
     | maps$LatLngBoundsObjectLiteral;
 
-  declare type maps$BoundsLiteral =
-    | maps$PointBoundsLiteral
-    | maps$LatLngBoundsLiteral;
+  declare type naver$maps$BoundsLiteral =
+    | naver$maps$PointBoundsLiteral
+    | naver$maps$LatLngBoundsLiteral;
 
-  declare type maps$CoordLiteral = maps$PointLiteral | maps$LatLngLiteral;
+  declare type naver$maps$CoordLiteral =
+    | naver$maps$PointLiteral
+    | naver$maps$LatLngLiteral;
 
-  declare type maps$Coord = maps$Point | maps$LatLng;
+  declare type naver$maps$Coord = maps$Point | maps$LatLng;
 
-  declare type maps$Bounds = maps$PointBounds | maps$LatLngBounds;
+  declare type naver$maps$Bounds = maps$PointBounds | maps$LatLngBounds;
 
-  declare type maps$DOMEvent = maps$Event;
+  declare type naver$maps$DOMEvent = maps$Event;
 
-  declare type maps$StylingFunction = (
+  declare type naver$maps$StylingFunction = (
     feature: maps$Feature
   ) => maps$StyleOptions;
 
-  declare type maps$ArrayOfCoords = maps$Point[] | maps$LatLng[];
+  declare type naver$maps$ArrayOfCoords = maps$Point[] | maps$LatLng[];
 
-  declare type maps$ArrayOfBounds = maps$PointBounds[] | maps$LatLngBounds[];
+  declare type naver$maps$ArrayOfBounds =
+    | maps$PointBounds[]
+    | maps$LatLngBounds[];
 
-  declare type maps$ArrayOfBoundsLiteral =
-    | maps$PointBoundsLiteral[]
-    | maps$LatLngBoundsLiteral[];
+  declare type naver$maps$ArrayOfBoundsLiteral =
+    | naver$maps$PointBoundsLiteral[]
+    | naver$maps$LatLngBoundsLiteral[];
 
-  declare type maps$forEachOverlayCallback = (
+  declare type naver$maps$forEachOverlayCallback = (
     overlay: maps$Marker | maps$Polyline | maps$Polygon,
     index: number
   ) => void;
 
-  declare type maps$GeoJSON = any;
+  declare type naver$maps$GeoJSON = any;
 
-  declare type maps$GPX = any;
+  declare type naver$maps$GPX = any;
 
-  declare type maps$KML = any;
+  declare type naver$maps$KML = any;
 
-  declare type maps$KVOArrayOfCoords = any;
+  declare type naver$maps$KVOArrayOfCoords = any;
 
-  declare type maps$ArrayOfCoordsLiteral =
-    | maps$PointLiteral[]
-    | maps$LatLngLiteral[];
+  declare type naver$maps$ArrayOfCoordsLiteral =
+    | naver$maps$PointLiteral[]
+    | naver$maps$LatLngLiteral[];
 
-  declare type maps$strokeStyleType =
+  declare type naver$maps$strokeStyleType =
     | "solid"
     | "shortdash"
     | "shortdot"
@@ -101,63 +177,63 @@ declare module "navermaps" {
     | "longdashdot"
     | "longdashdotdot";
 
-  declare type maps$strokeLineCapType = "butt" | "round" | "square";
+  declare type naver$maps$strokeLineCapType = "butt" | "round" | "square";
 
-  declare type maps$strokeLineJoinType = "miter" | "round " | "bevel";
+  declare type naver$maps$strokeLineJoinType = "miter" | "round " | "bevel";
 
   /**
    * Interfaces
    */
-  declare interface maps$MapEventListener {
+  declare interface naver$maps$MapEventListener {
     eventName: string;
     listener: (event: any) => any;
     listenerId: string;
     target: any;
   }
 
-  declare interface maps$PointObjectLiteral {
+  declare interface naver$maps$PointObjectLiteral {
     x: number;
     y: number;
   }
 
-  declare interface maps$SizeObjectLiteral {
+  declare interface naver$maps$SizeObjectLiteral {
     width: number;
     height: number;
   }
 
-  declare interface maps$LatLngObjectLiteral {
+  declare interface naver$maps$LatLngObjectLiteral {
     lat: number;
     lng: number;
   }
 
-  declare interface maps$PointBoundsObjectLiteral {
+  declare interface naver$maps$PointBoundsObjectLiteral {
     minX: number;
     minY: number;
     maxX: number;
     maxY: number;
   }
 
-  declare interface maps$LatLngBoundsObjectLiteral {
+  declare interface naver$maps$LatLngBoundsObjectLiteral {
     north: number;
     east: number;
     south: number;
     west: number;
   }
 
-  declare type maps$MapSystemProjection = {
+  declare type naver$maps$MapSystemProjection = {
     factor(zoom: number): number,
-    fromCoordToOffset(coord: maps$Coord): maps$Point,
-    UTMKCoord$fromCoordToPoint(coord: maps$Coord): maps$Point,
-    fromOffsetToCoord(offset: maps$Point): maps$Coord,
+    fromCoordToOffset(coord: naver$maps$Coord): maps$Point,
+    fromCoordToPoint(coord: naver$maps$Coord): maps$Point,
+    fromOffsetToCoord(offset: maps$Point): naver$maps$Coord,
     fromOffsetToPoint(offset: maps$Point): maps$Point,
-    UTMKCoord$fromPointToCoord(point: maps$Point): maps$Coord,
+    fromPointToCoord(point: maps$Point): naver$maps$Coord,
     fromPointToOffset(point: maps$Point): maps$Point,
-    UTMK$getDestinationCoord(
-      fromCoord: maps$Coord,
+    getDestinationCoord(
+      fromCoord: naver$maps$Coord,
       angle: number,
       meter: number
-    ): maps$Coord,
-    UTMK$getDistance(coord1: maps$Coord, coord2: maps$Coord): number,
+    ): naver$maps$Coord,
+    getDistance(coord1: naver$maps$Coord, coord2: naver$maps$Coord): number,
     getProjectionName(): number,
     scaleDown(
       operand: number | maps$Point | maps$Size,
@@ -167,9 +243,9 @@ declare module "navermaps" {
       operand: number | maps$Point | maps$Size,
       zoom: number
     ): number | maps$Point | maps$Size
-  } & maps$KVO;
+  } & KVO;
 
-  declare interface maps$MapOptions {
+  declare interface naver$maps$MapOptions {
     background?: string;
     baseTileOpacity?: number;
     bounds?: any;
@@ -207,7 +283,7 @@ declare module "navermaps" {
     zoomOrigin?: any;
   }
 
-  declare interface maps$MarkerOptions {
+  declare interface naver$maps$MarkerOptions {
     animation?: any;
     map?: maps$Map;
     position?: any;
@@ -221,29 +297,29 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$MapPanes {
+  declare interface naver$maps$MapPanes {
     overlayLayer: HTMLElement;
     overlayImage: HTMLElement;
     floatPane: HTMLElement;
   }
 
-  declare interface maps$InfoWindowOptions {
-    position?: maps$Coord | maps$CoordLiteral;
+  declare interface naver$maps$InfoWindowOptions {
+    position?: naver$maps$Coord | naver$maps$CoordLiteral;
     content: string | HTMLElement;
     zIndex?: number;
     maxWidth?: number;
-    pixelOffset?: maps$Point | maps$PointLiteral;
+    pixelOffset?: maps$Point | naver$maps$PointLiteral;
     backgroundColor?: string;
     borderColor?: string;
     borderWidth?: number;
     disableAutoPan?: boolean;
     disableAnchor?: boolean;
     anchorSkew?: boolean;
-    anchorSize?: maps$Size | maps$SizeLiteral;
+    anchorSize?: maps$Size | naver$maps$SizeLiteral;
     anchorColor?: string;
   }
 
-  declare interface maps$ImageTileOptions {
+  declare interface naver$maps$ImageTileOptions {
     urls: string[];
     imgonload?: () => any;
     imgonerror?: () => any;
@@ -255,12 +331,12 @@ declare module "navermaps" {
     pane?: HTMLElement;
   }
 
-  declare interface maps$ImageMapTypeOptions {
+  declare interface naver$maps$ImageMapTypeOptions {
     name: string;
     maxZoom: number;
     minZoom: number;
     projection: maps$Projection;
-    tileSize?: maps$Size | maps$SizeLiteral;
+    tileSize?: maps$Size | naver$maps$SizeLiteral;
     repeatX?: boolean;
     vendor?: string;
     provider?: maps$MapDataProvider[];
@@ -270,21 +346,21 @@ declare module "navermaps" {
     tileSet?: string | string[];
   }
 
-  declare interface maps$GroundOverlayOptions {
+  declare interface naver$maps$GroundOverlayOptions {
     clickable?: boolean;
     map?: maps$Map | null;
     opacity?: number;
   }
 
-  declare interface maps$EllipseOptions {
+  declare interface naver$maps$EllipseOptions {
     map?: maps$Map;
-    bounds: maps$Bounds | maps$BoundsLiteral;
+    bounds: naver$maps$Bounds | naver$maps$BoundsLiteral;
     strokeWeight?: number;
     strokeOpacity?: number;
     strokeColor?: string;
-    strokeStyle?: maps$strokeStyleType;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
+    strokeStyle?: naver$maps$strokeStyleType;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
     fillColor?: string;
     fillOpacity?: number;
     clickable?: boolean;
@@ -292,26 +368,26 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$FeatureEvent {
+  declare interface naver$maps$FeatureEvent {
     feature: maps$Feature;
   }
 
-  declare interface maps$PointerEvent {
-    coord: maps$Coord;
+  declare interface naver$maps$PointerEvent {
+    coord: naver$maps$Coord;
     point: maps$Point;
     offset: maps$Point;
-    pointerEvent: maps$DOMEvent;
+    pointerEvent: naver$maps$DOMEvent;
     feature: maps$Feature;
   }
 
-  declare interface maps$PropertyEvent {
+  declare interface naver$maps$PropertyEvent {
     feature: maps$Feature;
     name: string;
     oldValue: any;
     newValue: any;
   }
 
-  declare interface maps$StyleOptions {
+  declare interface naver$maps$StyleOptions {
     strokeColor?: string;
     strokeOpacity?: number;
     strokeWeight?: number;
@@ -325,20 +401,20 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$ControlOptions {
+  declare interface naver$maps$ControlOptions {
     position: maps$Position;
   }
 
-  declare interface maps$CircleOptions {
+  declare interface naver$maps$CircleOptions {
     map?: maps$Map;
-    center: maps$Coord | maps$CoordLiteral;
+    center: naver$maps$Coord | naver$maps$CoordLiteral;
     radius?: number;
     strokeWeight?: number;
     strokeOpacity?: number;
     strokeColor?: string;
-    strokeStyle?: maps$strokeStyleType;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
+    strokeStyle?: naver$maps$strokeStyleType;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
     fillColor?: string;
     fillOpacity?: number;
     clickable?: boolean;
@@ -346,7 +422,7 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$TileOptions {
+  declare interface naver$maps$TileOptions {
     opacity?: number;
     transition?: boolean;
     offset?: maps$Point;
@@ -355,12 +431,12 @@ declare module "navermaps" {
     pane?: HTMLElement;
   }
 
-  declare interface maps$TileIndex {
+  declare interface naver$maps$TileIndex {
     xIndex: number;
     yIndex: number;
   }
 
-  declare interface maps$CanvasTileOptions {
+  declare interface naver$maps$CanvasTileOptions {
     imageData?: ImageData;
     opacity?: number;
     transition?: boolean;
@@ -370,12 +446,12 @@ declare module "navermaps" {
     pane?: HTMLElement;
   }
 
-  declare interface maps$CanvasMapTypeOptions {
+  declare interface naver$maps$CanvasMapTypeOptions {
     name: string;
     maxZoom: number;
     minZoom: number;
     projection: maps$Projection;
-    tileSize?: maps$Size | maps$SizeLiteral;
+    tileSize?: maps$Size | naver$maps$SizeLiteral;
     repeatX?: boolean;
     vendor?: string;
     provider?: maps$MapDataProvider[];
@@ -384,17 +460,17 @@ declare module "navermaps" {
     getTileData?: () => any;
   }
 
-  declare interface maps$MapDataProvider {
+  declare interface naver$maps$MapDataProvider {
     title: string;
     link?: string;
     bounds?:
-      | maps$Bounds
-      | maps$BoundsLiteral
-      | maps$ArrayOfBounds
-      | maps$ArrayOfBoundsLiteral;
+      | naver$maps$Bounds
+      | naver$maps$BoundsLiteral
+      | naver$maps$ArrayOfBounds
+      | naver$maps$ArrayOfBoundsLiteral;
   }
 
-  declare interface maps$MapType {
+  declare interface naver$maps$MapType {
     maxZoom: number;
     minZoom: number;
     name: string;
@@ -403,92 +479,92 @@ declare module "navermaps" {
     getTile(x: number, y: number, z: number): HTMLElement | maps$Tile;
   }
 
-  declare interface maps$Projection {
-    UTMKCoord$fromCoordToPoint(coord: maps$Coord): maps$Point;
-    UTMKCoord$fromPointToCoord(point: maps$Point): maps$Coord;
+  declare interface naver$maps$Projection {
+    fromCoordToPoint(coord: naver$maps$Coord): maps$Point;
+    fromPointToCoord(point: maps$Point): naver$maps$Coord;
   }
 
-  declare interface maps$CadastralLayerOptions {
+  declare interface naver$maps$CadastralLayerOptions {
     overlayMap: boolean | void;
     zIndex: number | void;
     overlayMap: boolean | void;
     zIndex: number | void;
   }
 
-  declare interface maps$AroundControlOptions {
+  declare interface naver$maps$AroundControlOptions {
     position: maps$Position;
   }
 
-  declare interface maps$NaverImageMapTypeOptions {
+  declare interface naver$maps$NaverImageMapTypeOptions {
     maxZoom?: number;
     minZoom?: number;
-    projection?: maps$Projection;
+    projection?: naver$maps$Projection;
     tileSize?: maps$Size;
     hd?: string;
   }
 
-  declare interface maps$LogoControlOptions {
+  declare interface naver$maps$LogoControlOptions {
     position: maps$Position;
   }
 
-  declare interface maps$MapDataControlOptions {
+  declare interface naver$maps$MapDataControlOptions {
     position: maps$Position;
   }
 
-  declare interface maps$MapTypeControlOptions {
+  declare interface naver$maps$MapTypeControlOptions {
     mapTypeIds: maps$MapTypeId[] | null;
     position: maps$Position;
     style: maps$MapTypeControlStyle;
   }
 
-  declare interface maps$ScaleControlOptions {
+  declare interface naver$maps$ScaleControlOptions {
     position: maps$Position;
   }
 
-  declare interface maps$ZoomControlOptions {
+  declare interface naver$maps$ZoomControlOptions {
     position: maps$Position;
     style: maps$ZoomControlStyle;
     legendDisabled: boolean;
   }
 
-  declare interface maps$LayerOptions {
+  declare interface naver$maps$LayerOptions {
     hd: boolean;
     overlayMap: boolean | void;
     zIndex: number | void;
   }
 
-  declare interface maps$StreetLayerOptions {
+  declare interface naver$maps$StreetLayerOptions {
     overlayMap: boolean | void;
     zIndex: number | void;
   }
 
-  declare interface maps$TrafficLayerOptions {
+  declare interface naver$maps$TrafficLayerOptions {
     interval: number;
     overlayMap: boolean | void;
     zIndex: number | void;
   }
 
-  declare interface maps$HtmlIcon {
+  declare interface naver$maps$HtmlIcon {
     content: string | HTMLElement;
-    size?: maps$Size | maps$SizeLiteral;
-    anchor?: maps$Point | maps$PointLiteral | maps$Position;
+    size?: maps$Size | naver$maps$SizeLiteral;
+    anchor?: maps$Point | naver$maps$PointLiteral | maps$Position;
   }
 
-  declare interface maps$ImageIcon {
+  declare interface naver$maps$ImageIcon {
     url: string;
-    size?: maps$Size | maps$SizeLiteral;
-    scaledSize?: maps$Size | maps$SizeLiteral;
-    origin?: maps$Point | maps$PointLiteral;
-    anchor?: maps$Point | maps$PointLiteral | maps$Position;
+    size?: maps$Size | naver$maps$SizeLiteral;
+    scaledSize?: maps$Size | naver$maps$SizeLiteral;
+    origin?: maps$Point | naver$maps$PointLiteral;
+    anchor?: maps$Point | naver$maps$PointLiteral | maps$Position;
   }
 
-  declare interface maps$MarkerShape {
+  declare interface naver$maps$MarkerShape {
     coords: any[];
     type: string;
   }
 
-  declare interface maps$SymbolIcon {
-    path: maps$SymbolPath | maps$Point[] | maps$PointLiteral[];
+  declare interface naver$maps$SymbolIcon {
+    path: maps$SymbolPath | maps$Point[] | naver$maps$PointLiteral[];
     style?: maps$SymbolStyle;
     radius?: number;
     fillColor?: string;
@@ -496,21 +572,21 @@ declare module "navermaps" {
     strokeColor?: string;
     strokeWeight?: number;
     strokeOpacity?: number;
-    anchor?: maps$Point | maps$PointLiteral | maps$Position;
+    anchor?: maps$Point | naver$maps$PointLiteral | maps$Position;
   }
 
-  declare interface maps$PolygonOptions {
+  declare interface naver$maps$PolygonOptions {
     map?: maps$Map;
     paths:
-      | maps$ArrayOfCoords[]
-      | maps$KVOArrayOfCoords[]
-      | maps$ArrayOfCoordsLiteral[];
+      | naver$maps$ArrayOfCoords[]
+      | naver$maps$KVOArrayOfCoords[]
+      | naver$maps$ArrayOfCoordsLiteral[];
     strokeWeight?: number;
     strokeOpacity?: number;
     strokeColor?: string;
-    strokeStyle?: maps$strokeStyleType;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
+    strokeStyle?: naver$maps$strokeStyleType;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
     fillColor?: string;
     fillOpacity?: number;
     clickable?: boolean;
@@ -518,18 +594,18 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$PolylineOptions {
+  declare interface naver$maps$PolylineOptions {
     map?: maps$Map;
     path:
-      | maps$ArrayOfCoords
-      | maps$KVOArrayOfCoords
-      | maps$ArrayOfCoordsLiteral;
+      | naver$maps$ArrayOfCoords
+      | naver$maps$KVOArrayOfCoords
+      | naver$maps$ArrayOfCoordsLiteral;
     strokeWeight?: number;
     strokeOpacity?: number;
     strokeColor?: string;
-    strokeStyle?: maps$strokeStyleType;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
+    strokeStyle?: naver$maps$strokeStyleType;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
     clickable?: boolean;
     visible?: boolean;
     zIndex?: number;
@@ -539,15 +615,15 @@ declare module "navermaps" {
     endIconSize?: number;
   }
 
-  declare interface maps$RectangleOptions {
+  declare interface naver$maps$RectangleOptions {
     map?: maps$Map;
-    bounds: maps$Bounds | maps$BoundsLiteral;
+    bounds: naver$maps$Bounds | naver$maps$BoundsLiteral;
     strokeWeight?: number;
     strokeOpacity?: number;
     strokeColor?: string;
-    strokeStyle?: maps$strokeStyleType;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
+    strokeStyle?: naver$maps$strokeStyleType;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
     fillColor?: string;
     fillOpacity?: number;
     clickable?: boolean;
@@ -555,10 +631,10 @@ declare module "navermaps" {
     zIndex?: number;
   }
 
-  declare interface maps$PanoramaOptions {
-    size: maps$Size | maps$SizeLiteral;
+  declare interface naver$maps$PanoramaOptions {
+    size: maps$Size | naver$maps$SizeLiteral;
     panoId: string;
-    position: maps$LatLng | maps$LatLngLiteral;
+    position: maps$LatLng | naver$maps$LatLngLiteral;
     pov: maps$PanoramaPov;
     visible: boolean;
     minScale: number;
@@ -566,20 +642,20 @@ declare module "navermaps" {
     minZoom: number;
     maxZoom: number;
     logoControl: boolean;
-    logoControlOptions: maps$LogoControlOptions;
+    logoControlOptions: naver$maps$LogoControlOptions;
     zoomControl: boolean;
-    zoomControlOptions: maps$ZoomControlOptions;
+    zoomControlOptions: naver$maps$ZoomControlOptions;
     aroundControl: boolean;
-    aroundControlOptions: maps$AroundControlOptions;
+    aroundControlOptions: naver$maps$AroundControlOptions;
   }
 
-  declare interface maps$PanoramaPov {
+  declare interface naver$maps$PanoramaPov {
     pan: number;
     tilt: number;
     fov: number;
   }
 
-  declare interface maps$PanoramaLocation {
+  declare interface naver$maps$PanoramaLocation {
     panoId: string;
     title: string;
     address: string;
@@ -587,20 +663,20 @@ declare module "navermaps" {
     photodate: string;
   }
 
-  declare interface maps$DOMEventListener {
+  declare interface naver$maps$DOMEventListener {
     eventName: string;
     listener: () => any;
     target: HTMLElement;
   }
 
-  declare interface maps$Margin {
+  declare interface naver$maps$Margin {
     top?: number;
     right?: number;
     bottom?: number;
     left?: number;
   }
 
-  declare interface maps$TransitionOptions {
+  declare interface naver$maps$TransitionOptions {
     duration?: number;
     easing?: string;
   }
@@ -608,193 +684,109 @@ declare module "navermaps" {
   /**
    * Enums
    */
-  declare class maps$MapTypeControlStyle {
-    constructor(...args: empty): mixed;
-    static +BUTTON: Class<maps$MapTypeControlStyle__BUTTON> &
-      maps$MapTypeControlStyle__BUTTON &
-      0; // 0
-    static +DROPDOWN: Class<maps$MapTypeControlStyle__DROPDOWN> &
-      maps$MapTypeControlStyle__DROPDOWN &
-      1; // 1
-  }
 
-  declare class maps$MapTypeControlStyle__BUTTON
-    mixins maps$MapTypeControlStyle {}
-  declare class maps$MapTypeControlStyle__DROPDOWN
-    mixins maps$MapTypeControlStyle {}
+  declare var naver$maps$MapTypeControlStyle: {|
+    +BUTTON: 0, // 0
+    +DROPDOWN: 1 // 1
+  |};
 
-  declare class maps$ZoomControlStyle {
-    constructor(...args: empty): mixed;
-    static +LARGE: Class<maps$ZoomControlStyle__LARGE> &
-      maps$ZoomControlStyle__LARGE &
-      0; // 0
-    static +SMALL: Class<maps$ZoomControlStyle__SMALL> &
-      maps$ZoomControlStyle__SMALL &
-      1; // 1
-  }
-
-  declare class maps$ZoomControlStyle__LARGE mixins maps$ZoomControlStyle {}
-  declare class maps$ZoomControlStyle__SMALL mixins maps$ZoomControlStyle {}
+  declare var naver$maps$ZoomControlStyle: {|
+    +LARGE: 0, // 0
+    +SMALL: 1 // 1
+  |};
 
   /**
    * Members
    */
-  declare class maps$Animation {
-    constructor(...args: empty): mixed;
-    static +BOUNCE: Class<maps$Animation__BOUNCE> & maps$Animation__BOUNCE & 1; // 1
-    static +DROP: Class<maps$Animation__DROP> & maps$Animation__DROP & 1; // 1
-  }
 
-  declare class maps$Animation__BOUNCE mixins maps$Animation {}
-  declare class maps$Animation__DROP mixins maps$Animation {}
+  declare var naver$maps$Animation: {|
+    +BOUNCE: 1, // 1
+    +DROP: 1 // 1
+  |};
 
-  declare var maps$jsContentLoaded: boolean;
+  declare var naver$maps$jsContentLoaded: boolean;
 
-  declare type maps$MapTypeId = string;
+  declare type naver$maps$MapTypeId = string;
 
-  declare var npm$namespace$MapTypeId: {
-    NORMAL: typeof MapTypeId$NORMAL,
-    TERRAIN: typeof MapTypeId$TERRAIN,
-    SATELLITE: typeof MapTypeId$SATELLITE,
-    HYBRID: typeof MapTypeId$HYBRID
+  declare var npm$namespace$naver$maps$MapTypeId: {
+    NORMAL: typeof naver$maps$MapTypeId$NORMAL,
+    TERRAIN: typeof naver$maps$MapTypeId$TERRAIN,
+    SATELLITE: typeof naver$maps$MapTypeId$SATELLITE,
+    HYBRID: typeof naver$maps$MapTypeId$HYBRID
   };
-  declare var MapTypeId$NORMAL: string;
+  declare var naver$maps$MapTypeId$NORMAL: string;
 
-  declare var MapTypeId$TERRAIN: string;
+  declare var naver$maps$MapTypeId$TERRAIN: string;
 
-  declare var MapTypeId$SATELLITE: string;
+  declare var naver$maps$MapTypeId$SATELLITE: string;
 
-  declare var MapTypeId$HYBRID: string;
+  declare var naver$maps$MapTypeId$HYBRID: string;
 
-  declare function maps$onJSContentLoaded(...args: any[]): any;
+  declare function naver$maps$onJSContentLoaded(...args: any[]): any;
 
-  declare class maps$PointingIcon {
-    constructor(...args: empty): mixed;
-    static +OPEN_ARROW: Class<maps$PointingIcon__OPEN_ARROW> &
-      maps$PointingIcon__OPEN_ARROW &
-      1; // 1
-    static +BLOCK_ARROW: Class<maps$PointingIcon__BLOCK_ARROW> &
-      maps$PointingIcon__BLOCK_ARROW &
-      1; // 1
-    static +CIRCLE: Class<maps$PointingIcon__CIRCLE> &
-      maps$PointingIcon__CIRCLE &
-      2; // 2
-    static +DIAMOND: Class<maps$PointingIcon__DIAMOND> &
-      maps$PointingIcon__DIAMOND &
-      3; // 3
-  }
+  declare var naver$maps$PointingIcon: {|
+    +OPEN_ARROW: 1, // 1
+    +BLOCK_ARROW: 1, // 1
+    +CIRCLE: 2, // 2
+    +DIAMOND: 3 // 3
+  |};
 
-  declare class maps$PointingIcon__OPEN_ARROW mixins maps$PointingIcon {}
-  declare class maps$PointingIcon__BLOCK_ARROW mixins maps$PointingIcon {}
-  declare class maps$PointingIcon__CIRCLE mixins maps$PointingIcon {}
-  declare class maps$PointingIcon__DIAMOND mixins maps$PointingIcon {}
+  declare var naver$maps$Position: {|
+    +CENTER: 0, // 0
+    +TOP_LEFT: 1, // 1
+    +TOP_CENTER: 2, // 2
+    +TOP_RIGHT: 3, // 3
+    +LEFT_CENTER: 4, // 4
+    +LEFT_TOP: 5, // 5
+    +LEFT_BOTTOM: 6, // 6
+    +RIGHT_TOP: 7, // 7
+    +RIGHT_CENTER: 8, // 8
+    +RIGHT_BOTTOM: 9, // 9
+    +BOTTOM_LEFT: 10, // 10
+    +BOTTOM_CENTER: 11, // 11
+    +BOTTOM_RIGHT: 12 // 12
+  |};
 
-  declare class maps$Position {
-    constructor(...args: empty): mixed;
-    static +CENTER: Class<maps$Position__CENTER> & maps$Position__CENTER & 0; // 0
-    static +TOP_LEFT: Class<maps$Position__TOP_LEFT> &
-      maps$Position__TOP_LEFT &
-      1; // 1
-    static +TOP_CENTER: Class<maps$Position__TOP_CENTER> &
-      maps$Position__TOP_CENTER &
-      2; // 2
-    static +TOP_RIGHT: Class<maps$Position__TOP_RIGHT> &
-      maps$Position__TOP_RIGHT &
-      3; // 3
-    static +LEFT_CENTER: Class<maps$Position__LEFT_CENTER> &
-      maps$Position__LEFT_CENTER &
-      4; // 4
-    static +LEFT_TOP: Class<maps$Position__LEFT_TOP> &
-      maps$Position__LEFT_TOP &
-      5; // 5
-    static +LEFT_BOTTOM: Class<maps$Position__LEFT_BOTTOM> &
-      maps$Position__LEFT_BOTTOM &
-      6; // 6
-    static +RIGHT_TOP: Class<maps$Position__RIGHT_TOP> &
-      maps$Position__RIGHT_TOP &
-      7; // 7
-    static +RIGHT_CENTER: Class<maps$Position__RIGHT_CENTER> &
-      maps$Position__RIGHT_CENTER &
-      8; // 8
-    static +RIGHT_BOTTOM: Class<maps$Position__RIGHT_BOTTOM> &
-      maps$Position__RIGHT_BOTTOM &
-      9; // 9
-    static +BOTTOM_LEFT: Class<maps$Position__BOTTOM_LEFT> &
-      maps$Position__BOTTOM_LEFT &
-      10; // 10
-    static +BOTTOM_CENTER: Class<maps$Position__BOTTOM_CENTER> &
-      maps$Position__BOTTOM_CENTER &
-      11; // 11
-    static +BOTTOM_RIGHT: Class<maps$Position__BOTTOM_RIGHT> &
-      maps$Position__BOTTOM_RIGHT &
-      12; // 12
-  }
+  declare var naver$maps$SymbolPath: {|
+    +BACKWARD_CLOSED_ARROW: 1, // 1
+    +BACKWARD_OPEN_ARROW: 1, // 1
+    +CIRCLE: 2, // 2
+    +FORWARD_CLOSED_ARROW: 3, // 3
+    +FORWARD_OPEN_ARROW: 4 // 4
+  |};
 
-  declare class maps$Position__CENTER mixins maps$Position {}
-  declare class maps$Position__TOP_LEFT mixins maps$Position {}
-  declare class maps$Position__TOP_CENTER mixins maps$Position {}
-  declare class maps$Position__TOP_RIGHT mixins maps$Position {}
-  declare class maps$Position__LEFT_CENTER mixins maps$Position {}
-  declare class maps$Position__LEFT_TOP mixins maps$Position {}
-  declare class maps$Position__LEFT_BOTTOM mixins maps$Position {}
-  declare class maps$Position__RIGHT_TOP mixins maps$Position {}
-  declare class maps$Position__RIGHT_CENTER mixins maps$Position {}
-  declare class maps$Position__RIGHT_BOTTOM mixins maps$Position {}
-  declare class maps$Position__BOTTOM_LEFT mixins maps$Position {}
-  declare class maps$Position__BOTTOM_CENTER mixins maps$Position {}
-  declare class maps$Position__BOTTOM_RIGHT mixins maps$Position {}
+  declare type naver$maps$SymbolStyle = string;
 
-  declare class maps$SymbolPath {
-    constructor(...args: empty): mixed;
-    static +BACKWARD_CLOSED_ARROW: Class<maps$SymbolPath__BACKWARD_CLOSED_ARROW> &
-      maps$SymbolPath__BACKWARD_CLOSED_ARROW &
-      1; // 1
-    static +BACKWARD_OPEN_ARROW: Class<maps$SymbolPath__BACKWARD_OPEN_ARROW> &
-      maps$SymbolPath__BACKWARD_OPEN_ARROW &
-      1; // 1
-    static +CIRCLE: Class<maps$SymbolPath__CIRCLE> &
-      maps$SymbolPath__CIRCLE &
-      2; // 2
-    static +FORWARD_CLOSED_ARROW: Class<maps$SymbolPath__FORWARD_CLOSED_ARROW> &
-      maps$SymbolPath__FORWARD_CLOSED_ARROW &
-      3; // 3
-    static +FORWARD_OPEN_ARROW: Class<maps$SymbolPath__FORWARD_OPEN_ARROW> &
-      maps$SymbolPath__FORWARD_OPEN_ARROW &
-      4; // 4
-  }
-
-  declare class maps$SymbolPath__BACKWARD_CLOSED_ARROW mixins maps$SymbolPath {}
-  declare class maps$SymbolPath__BACKWARD_OPEN_ARROW mixins maps$SymbolPath {}
-  declare class maps$SymbolPath__CIRCLE mixins maps$SymbolPath {}
-  declare class maps$SymbolPath__FORWARD_CLOSED_ARROW mixins maps$SymbolPath {}
-  declare class maps$SymbolPath__FORWARD_OPEN_ARROW mixins maps$SymbolPath {}
-
-  declare type maps$SymbolStyle = string;
-
-  declare var npm$namespace$SymbolStyle: {
-    CIRCLE: typeof SymbolStyle$CIRCLE,
-    PATH: typeof SymbolStyle$PATH,
-    CLOSED_PATH: typeof SymbolStyle$CLOSED_PATH
+  declare var npm$namespace$naver$maps$SymbolStyle: {
+    CIRCLE: typeof naver$maps$SymbolStyle$CIRCLE,
+    PATH: typeof naver$maps$SymbolStyle$PATH,
+    CLOSED_PATH: typeof naver$maps$SymbolStyle$CLOSED_PATH
   };
-  declare var SymbolStyle$CIRCLE: string;
+  declare var naver$maps$SymbolStyle$CIRCLE: string;
 
-  declare var SymbolStyle$PATH: string;
+  declare var naver$maps$SymbolStyle$PATH: string;
 
-  declare var SymbolStyle$CLOSED_PATH: string;
+  declare var naver$maps$SymbolStyle$CLOSED_PATH: string;
 
   /**
    * Classes
    */
-  declare class maps$KVO {
+  declare class naver$maps$KVO {
     constructor(): this;
-    addListener(eventName: any, listener: () => any): maps$MapEventListener;
-    addListenerOnce(eventName: any, listener: () => any): maps$MapEventListener;
-    bindTo(key: string, target: maps$KVO, targetKey?: string): void;
+    addListener(
+      eventName: any,
+      listener: () => any
+    ): naver$maps$MapEventListener;
+    addListenerOnce(
+      eventName: any,
+      listener: () => any
+    ): naver$maps$MapEventListener;
+    bindTo(key: string, target: naver$maps$KVO, targetKey?: string): void;
     clearListeners(eventName: string): void;
     get(key: string): any;
     hasListener(eventName: string): boolean;
     removeListener(
-      listeners: maps$MapEventListener | maps$MapEventListener[]
+      listeners: naver$maps$MapEventListener | naver$maps$MapEventListener[]
     ): void;
     set(key: string, value: any, silently?: boolean): void;
     setValues(properties: any): void;
@@ -803,7 +795,7 @@ declare module "navermaps" {
     unbindAll(): void;
   }
 
-  declare class maps$KVOArray mixins maps$KVO {
+  declare class naver$maps$KVOArray mixins KVO {
     constructor(array: any[]): this;
     clear(): void;
     forEach(callback: (element: any, index: number) => void): void;
@@ -820,101 +812,115 @@ declare module "navermaps" {
     splice(startIndex: number, deleteCount: number, element?: any): any[];
   }
 
-  declare class maps$Point {
+  declare class naver$maps$Point {
     constructor(x: number, y: number): this;
-    add(point: maps$Coord | maps$PointLiteral): maps$Point;
-    add(x: number, y: number): maps$Point;
-    ceil(): maps$Point;
-    clone(): maps$Point;
-    div(point: maps$Coord | maps$PointLiteral): void;
-    div(x: number, y: number): maps$Point;
-    equals(point: maps$Point): boolean;
-    floor(): maps$Point;
-    mul(point: maps$Coord | maps$PointLiteral): maps$Point;
-    mul(x: number, y: number): maps$Point;
-    round(): maps$Point;
-    sub(point: maps$Coord | maps$PointLiteral): maps$Point;
-    sub(x: number, y: number): maps$Point;
+    add(point: naver$maps$Coord | naver$maps$PointLiteral): naver$maps$Point;
+    add(x: number, y: number): naver$maps$Point;
+    ceil(): naver$maps$Point;
+    clone(): naver$maps$Point;
+    div(point: naver$maps$Coord | naver$maps$PointLiteral): void;
+    div(x: number, y: number): naver$maps$Point;
+    equals(point: naver$maps$Point): boolean;
+    floor(): naver$maps$Point;
+    mul(point: naver$maps$Coord | naver$maps$PointLiteral): naver$maps$Point;
+    mul(x: number, y: number): naver$maps$Point;
+    round(): naver$maps$Point;
+    sub(point: naver$maps$Coord | naver$maps$PointLiteral): naver$maps$Point;
+    sub(x: number, y: number): naver$maps$Point;
     toString(): string;
   }
 
-  declare class maps$Size {
+  declare class naver$maps$Size {
     width: number;
     height: number;
     constructor(width: number, height: number): this;
-    add(size: maps$Size | maps$SizeLiteral): maps$Size;
-    add(width: number, height: number): maps$Size;
-    ceil(): maps$Size;
-    clone(): maps$Size;
-    div(width: number, height: number): maps$Size;
-    div(size: maps$Size | maps$SizeLiteral): maps$Size;
-    equals(size: maps$Size | maps$SizeLiteral): boolean;
-    floor(): maps$Size;
-    mul(size: maps$Size | maps$SizeLiteral): maps$Size;
-    mul(width: number, height: number): maps$Size;
-    round(): maps$Size;
-    sub(size: maps$Size | maps$SizeLiteral): maps$Size;
-    sub(width: number, height: number): maps$Size;
+    add(size: naver$maps$Size | naver$maps$SizeLiteral): naver$maps$Size;
+    add(width: number, height: number): naver$maps$Size;
+    ceil(): naver$maps$Size;
+    clone(): naver$maps$Size;
+    div(width: number, height: number): naver$maps$Size;
+    div(size: naver$maps$Size | naver$maps$SizeLiteral): naver$maps$Size;
+    equals(size: naver$maps$Size | naver$maps$SizeLiteral): boolean;
+    floor(): naver$maps$Size;
+    mul(size: naver$maps$Size | naver$maps$SizeLiteral): naver$maps$Size;
+    mul(width: number, height: number): naver$maps$Size;
+    round(): naver$maps$Size;
+    sub(size: naver$maps$Size | naver$maps$SizeLiteral): naver$maps$Size;
+    sub(width: number, height: number): naver$maps$Size;
     toString(): string;
   }
 
-  declare class maps$PointBounds {
-    constructor(minPoint: maps$Point, maxPoint: maps$Point): this;
+  declare class naver$maps$PointBounds {
+    constructor(minPoint: naver$maps$Point, maxPoint: naver$maps$Point): this;
     static bounds(
-      point: maps$Coord | maps$PointLiteral,
-      pointN: maps$Coord | maps$PointLiteral
-    ): maps$PointBounds;
-    clone(): maps$PointBounds;
-    equals(bounds: maps$Bounds | maps$PointBoundsLiteral): boolean;
-    extend(point: maps$Coord | maps$PointLiteral): maps$PointBounds;
-    getCenter(): maps$Point;
-    getMax(): maps$Point;
-    getMin(): maps$Point;
-    hasBounds(bounds: maps$Bounds | maps$PointBoundsLiteral): boolean;
-    hasPoint(point: maps$Coord | maps$PointLiteral): boolean;
-    intersects(bounds: maps$Bounds | maps$PointBoundsLiteral): boolean;
+      point: naver$maps$Coord | naver$maps$PointLiteral,
+      pointN: naver$maps$Coord | naver$maps$PointLiteral
+    ): naver$maps$PointBounds;
+    clone(): naver$maps$PointBounds;
+    equals(bounds: naver$maps$Bounds | naver$maps$PointBoundsLiteral): boolean;
+    extend(
+      point: naver$maps$Coord | naver$maps$PointLiteral
+    ): naver$maps$PointBounds;
+    getCenter(): naver$maps$Point;
+    getMax(): naver$maps$Point;
+    getMin(): naver$maps$Point;
+    hasBounds(
+      bounds: naver$maps$Bounds | naver$maps$PointBoundsLiteral
+    ): boolean;
+    hasPoint(point: naver$maps$Coord | naver$maps$PointLiteral): boolean;
+    intersects(
+      bounds: naver$maps$Bounds | naver$maps$PointBoundsLiteral
+    ): boolean;
     maxX(): number;
     maxY(): number;
     minX(): number;
     minY(): number;
     toString(): string;
-    union(bounds: maps$Bounds | maps$PointBoundsLiteral): maps$PointBounds;
+    union(
+      bounds: naver$maps$Bounds | naver$maps$PointBoundsLiteral
+    ): naver$maps$PointBounds;
   }
 
-  declare class maps$LatLng mixins maps$Point {
+  declare class naver$maps$LatLng mixins Point {
     constructor(lat: number, lng: number): this;
-    clone(): maps$LatLng;
-    destinationPoint(angle: number, meter: number): maps$LatLng;
-    equals(point: maps$Coord | maps$LatLngLiteral): boolean;
+    clone(): naver$maps$LatLng;
+    destinationPoint(angle: number, meter: number): naver$maps$LatLng;
+    equals(point: naver$maps$Coord | naver$maps$LatLngLiteral): boolean;
     lat(): number;
     lng(): number;
-    toPoint(): maps$Point;
+    toPoint(): naver$maps$Point;
     toString(): string;
   }
 
-  declare class maps$LatLngBounds mixins maps$PointBounds {
-    constructor(sw: maps$LatLng, ne: maps$LatLng): this;
+  declare class naver$maps$LatLngBounds mixins PointBounds {
+    constructor(sw: naver$maps$LatLng, ne: naver$maps$LatLng): this;
     static bounds(
-      latlng: maps$Coord | maps$LatLngLiteral,
-      latlngN: maps$Coord | maps$LatLngLiteral
-    ): maps$LatLngBounds;
-    clone(): maps$LatLngBounds;
+      latlng: naver$maps$Coord | naver$maps$LatLngLiteral,
+      latlngN: naver$maps$Coord | naver$maps$LatLngLiteral
+    ): naver$maps$LatLngBounds;
+    clone(): naver$maps$LatLngBounds;
     east(): number;
-    equals(bounds: maps$Bounds | maps$LatLngBoundsLiteral): boolean;
-    extend(latlng: maps$Coord | maps$LatLngLiteral): maps$LatLngBounds;
-    getCenter(): maps$LatLng;
-    getNE(): maps$LatLng;
-    getSW(): maps$LatLng;
-    hasLatLng(latlng: maps$Coord | maps$LatLngLiteral): boolean;
-    intersects(bounds: maps$Bounds | maps$LatLngBoundsLiteral): boolean;
+    equals(bounds: naver$maps$Bounds | naver$maps$LatLngBoundsLiteral): boolean;
+    extend(
+      latlng: naver$maps$Coord | naver$maps$LatLngLiteral
+    ): naver$maps$LatLngBounds;
+    getCenter(): naver$maps$LatLng;
+    getNE(): naver$maps$LatLng;
+    getSW(): naver$maps$LatLng;
+    hasLatLng(latlng: naver$maps$Coord | naver$maps$LatLngLiteral): boolean;
+    intersects(
+      bounds: naver$maps$Bounds | naver$maps$LatLngBoundsLiteral
+    ): boolean;
     north(): number;
     south(): number;
-    toPointBounds(): maps$PointBounds;
-    union(bounds: maps$Bounds | maps$LatLngBoundsLiteral): maps$LatLngBounds;
+    toPointBounds(): naver$maps$PointBounds;
+    union(
+      bounds: naver$maps$Bounds | naver$maps$LatLngBoundsLiteral
+    ): naver$maps$LatLngBounds;
     west(): number;
   }
 
-  declare class maps$Map mixins maps$KVO {
+  declare class naver$maps$Map mixins KVO {
     controls: any;
     data: any;
     layers: any;
@@ -922,679 +928,717 @@ declare module "navermaps" {
     mapSystemProjection: any;
     constructor(
       mapDiv: string | HTMLElement,
-      mapOptions?: maps$MapOptions
+      mapOptions?: naver$maps$MapOptions
     ): this;
     addPane(name: string, elementOrIndex: HTMLElement | number): void;
     destory(): void;
     fitBounds(bounds: any, margin?: any): void;
-    getBounds(): maps$Bounds;
-    getCenter(): maps$Coord;
-    getCenterPoint(): maps$Coord;
+    getBounds(): naver$maps$Bounds;
+    getCenter(): naver$maps$Coord;
+    getCenterPoint(): naver$maps$Coord;
     getElement(): HTMLElement;
     getMapTypeId(): string;
     getOptions(key?: string): any;
-    getPanes(): maps$MapPanes;
-    getPrimitiveProjection(): maps$Projection;
-    getProjection(): maps$MapSystemProjection;
-    getSize(): maps$Size;
+    getPanes(): naver$maps$MapPanes;
+    getPrimitiveProjection(): naver$maps$Projection;
+    getProjection(): naver$maps$MapSystemProjection;
+    getSize(): naver$maps$Size;
     getZoom(): number;
     morph(
-      coord: maps$Coord | maps$CoordLiteral,
+      coord: naver$maps$Coord | naver$maps$CoordLiteral,
       zoom?: number,
-      transitionOptions?: maps$TransitionOptions
+      transitionOptions?: naver$maps$TransitionOptions
     ): void;
-    panBy(offset: maps$Point | maps$PointLiteral): void;
+    panBy(offset: naver$maps$Point | naver$maps$PointLiteral): void;
     panTo(
-      coord: maps$Coord | maps$CoordLiteral,
-      transitionOptions: maps$TransitionOptions
+      coord: naver$maps$Coord | naver$maps$CoordLiteral,
+      transitionOptions: naver$maps$TransitionOptions
     ): void;
     panToBounds(
-      bounds: maps$Bounds | maps$BoundsLiteral,
-      transitionOptions: maps$TransitionOptions,
-      margin?: maps$Margin
+      bounds: naver$maps$Bounds | naver$maps$BoundsLiteral,
+      transitionOptions: naver$maps$TransitionOptions,
+      margin?: naver$maps$Margin
     ): void;
     refresh(noEffect?: boolean): void;
     removePane(name: string): void;
-    setCenter(center: maps$Coord | maps$CoordLiteral): void;
-    setCenterPoint(point: maps$Point | maps$PointLiteral): void;
+    setCenter(center: naver$maps$Coord | naver$maps$CoordLiteral): void;
+    setCenterPoint(point: naver$maps$Point | naver$maps$PointLiteral): void;
     setMapTypeId(mapTypeId: string): void;
     setOptions(newOptionsOrKey: any, value?: any): void;
-    setSize(size: maps$Size | maps$SizeLiteral): void;
+    setSize(size: naver$maps$Size | naver$maps$SizeLiteral): void;
     setZoom(zoom: number, effect?: boolean): void;
-    updateBy(coord: maps$Coord | maps$CoordLiteral, zoom: number): void;
+    updateBy(
+      coord: naver$maps$Coord | naver$maps$CoordLiteral,
+      zoom: number
+    ): void;
     zoomBy(
       deltaZoom: number,
-      zoomOrigin?: maps$Coord | maps$CoordLiteral,
+      zoomOrigin?: naver$maps$Coord | naver$maps$CoordLiteral,
       effect?: boolean
     ): void;
   }
 
-  declare class maps$Tile mixins maps$KVO {
-    constructor(element: HTMLElement, tileOptions?: maps$TileOptions): this;
+  declare class naver$maps$Tile mixins KVO {
+    constructor(
+      element: HTMLElement,
+      tileOptions?: naver$maps$TileOptions
+    ): this;
     appendTo(parentNode: HTMLElement): void;
     cancelFadeIn(): void;
     destroy(): void;
     fadeIn(callback: () => any, startOpacity?: number): void;
     getElement(): HTMLElement;
-    getOffset(): maps$Point;
+    getOffset(): naver$maps$Point;
     getOpacity(): number;
-    getSize(): maps$Size;
-    getTileIndex(): maps$TileIndex;
+    getSize(): naver$maps$Size;
+    getTileIndex(): naver$maps$TileIndex;
     getZIndex(): number;
     hide(): void;
-    load(tileOptions?: maps$TileOptions): void;
+    load(tileOptions?: naver$maps$TileOptions): void;
     remove(): void;
     reset(
-      mapType: maps$MapType,
+      mapType: naver$maps$MapType,
       zoom: number,
-      tileOptions?: maps$TileOptions
+      tileOptions?: naver$maps$TileOptions
     ): void;
     setBlank(): void;
-    setOffset(offset: maps$Point): void;
+    setOffset(offset: naver$maps$Point): void;
     setOffset(x: number, y: number): void;
     setOpacity(opacity: number): void;
-    setSize(size: maps$Size): void;
-    setTileIndex(tileIndex: maps$TileIndex): void;
+    setSize(size: naver$maps$Size): void;
+    setTileIndex(tileIndex: naver$maps$TileIndex): void;
     setZIndex(zIndex: number): void;
     show(): void;
   }
 
-  declare class maps$CanvasTile mixins maps$Tile {
-    constructor(canvasTileOptions: maps$CanvasTileOptions): this;
+  declare class naver$maps$CanvasTile mixins Tile {
+    constructor(canvasTileOptions: naver$maps$CanvasTileOptions): this;
   }
 
-  declare class maps$ImageTile mixins maps$Tile {
-    constructor(imageTileOptions: maps$ImageTileOptions): this;
+  declare class naver$maps$ImageTile mixins Tile {
+    constructor(imageTileOptions: naver$maps$ImageTileOptions): this;
     getImageElements(): HTMLElement[];
     getUrls(): string[];
     setUrls(urls: string[]): void;
   }
 
-  declare class maps$CanvasMapType mixins maps$MapType {
+  declare class naver$maps$CanvasMapType mixins MapType {
     maxZoom: number;
     minZoom: number;
     name: string;
-    projection: maps$Projection;
-    tileSize: maps$Size;
-    constructor(canvasMapTypeOptions: maps$CanvasMapTypeOptions): this;
-    getMapTypeOptions(): maps$CanvasMapTypeOptions;
+    projection: naver$maps$Projection;
+    tileSize: naver$maps$Size;
+    constructor(canvasMapTypeOptions: naver$maps$CanvasMapTypeOptions): this;
+    getMapTypeOptions(): naver$maps$CanvasMapTypeOptions;
     getMaxZoom(): number;
     getMinZoom(): number;
     getName(): string;
-    getTile(x: number, y: number, z: number): maps$CanvasTile;
+    getTile(x: number, y: number, z: number): naver$maps$CanvasTile;
     getTileData(x: number, y: number, z: number): ImageData;
-    setMapTypeOptions(canvasMapTypeOptions: maps$CanvasMapTypeOptions): void;
+    setMapTypeOptions(
+      canvasMapTypeOptions: naver$maps$CanvasMapTypeOptions
+    ): void;
   }
 
-  declare class maps$ImageMapType mixins maps$MapType {
+  declare class naver$maps$ImageMapType mixins MapType {
     maxZoom: number;
     minZoom: number;
     name: string;
-    projection: maps$Projection;
-    tileSize: maps$Size;
-    constructor(imageMapTypeOptions: maps$ImageMapTypeOptions): this;
-    getMapTypeOptions(): maps$ImageMapTypeOptions;
+    projection: naver$maps$Projection;
+    tileSize: naver$maps$Size;
+    constructor(imageMapTypeOptions: naver$maps$ImageMapTypeOptions): this;
+    getMapTypeOptions(): naver$maps$ImageMapTypeOptions;
     getMaxZoom(): number;
     getMinZoom(): number;
     getName(): string;
-    getTile(x: number, y: number, z: number): maps$ImageTile;
+    getTile(x: number, y: number, z: number): naver$maps$ImageTile;
     getTileUrls(x: number, y: number, z: number): string[];
-    setMapTypeOptions(imageMapTypeOptions: maps$ImageMapTypeOptions): void;
+    setMapTypeOptions(
+      imageMapTypeOptions: naver$maps$ImageMapTypeOptions
+    ): void;
   }
 
-  declare class maps$MapTypeRegistry mixins maps$KVO {
+  declare class naver$maps$MapTypeRegistry mixins KVO {
     constructor(mapTypeInfo?: any, defaultMapTypeId?: string): this;
     getPreviousTypeId(): string;
-    getSelectedType(): maps$MapType;
+    getSelectedType(): naver$maps$MapType;
     getSelectedTypeId(): string;
     getTypeIds(): string[];
-    set(mapTypeId: string, mapType: maps$MapType): void;
+    set(mapTypeId: string, mapType: naver$maps$MapType): void;
     setSelectedTypeId(mapTypeId: string): void;
   }
 
-  declare function maps$NaverMapTypeOption(
-    options: maps$NaverImageMapTypeOptions
+  declare function naver$maps$NaverMapTypeOption(
+    options: naver$maps$NaverImageMapTypeOptions
   ): void;
 
-  declare var npm$namespace$NaverMapTypeOption: {
-    getBicycleLayer: typeof NaverMapTypeOption$getBicycleLayer,
-    getBlankMap: typeof NaverMapTypeOption$getBlankMap,
-    getCadastralLayer: typeof NaverMapTypeOption$getCadastralLayer,
-    getHybridMap: typeof NaverMapTypeOption$getHybridMap,
-    getMapTypes: typeof NaverMapTypeOption$getMapTypes,
-    getNormalLabelLayer: typeof NaverMapTypeOption$getNormalLabelLayer,
-    getNormalMap: typeof NaverMapTypeOption$getNormalMap,
-    getSatelliteLabelLayer: typeof NaverMapTypeOption$getSatelliteLabelLayer,
-    getSatelliteMap: typeof NaverMapTypeOption$getSatelliteMap,
-    getStreetLayer: typeof NaverMapTypeOption$getStreetLayer,
-    getTerrainMap: typeof NaverMapTypeOption$getTerrainMap,
-    getTrafficLayer: typeof NaverMapTypeOption$getTrafficLayer,
-    getVectorMap: typeof NaverMapTypeOption$getVectorMap,
-    getWorldMap: typeof NaverMapTypeOption$getWorldMap
+  declare var npm$namespace$naver$maps$NaverMapTypeOption: {
+    getBicycleLayer: typeof naver$maps$NaverMapTypeOption$getBicycleLayer,
+    getBlankMap: typeof naver$maps$NaverMapTypeOption$getBlankMap,
+    getCadastralLayer: typeof naver$maps$NaverMapTypeOption$getCadastralLayer,
+    getHybridMap: typeof naver$maps$NaverMapTypeOption$getHybridMap,
+    getMapTypes: typeof naver$maps$NaverMapTypeOption$getMapTypes,
+    getNormalLabelLayer: typeof naver$maps$NaverMapTypeOption$getNormalLabelLayer,
+    getNormalMap: typeof naver$maps$NaverMapTypeOption$getNormalMap,
+    getSatelliteLabelLayer: typeof naver$maps$NaverMapTypeOption$getSatelliteLabelLayer,
+    getSatelliteMap: typeof naver$maps$NaverMapTypeOption$getSatelliteMap,
+    getStreetLayer: typeof naver$maps$NaverMapTypeOption$getStreetLayer,
+    getTerrainMap: typeof naver$maps$NaverMapTypeOption$getTerrainMap,
+    getTrafficLayer: typeof naver$maps$NaverMapTypeOption$getTrafficLayer,
+    getVectorMap: typeof naver$maps$NaverMapTypeOption$getVectorMap,
+    getWorldMap: typeof naver$maps$NaverMapTypeOption$getWorldMap
   };
-  declare function NaverMapTypeOption$getBicycleLayer(
-    opts: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getBicycleLayer(
+    opts: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getBlankMap(
-    opts: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getBlankMap(
+    opts: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getCadastralLayer(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getCadastralLayer(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getHybridMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getHybridMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getMapTypes(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$MapTypeRegistry;
+  declare function naver$maps$NaverMapTypeOption$getMapTypes(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$MapTypeRegistry;
 
-  declare function NaverMapTypeOption$getNormalLabelLayer(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getNormalLabelLayer(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getNormalMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getNormalMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getSatelliteLabelLayer(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getSatelliteLabelLayer(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getSatelliteMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getSatelliteMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getStreetLayer(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getStreetLayer(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getTerrainMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getTerrainMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getTrafficLayer(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getTrafficLayer(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getVectorMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getVectorMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare function NaverMapTypeOption$getWorldMap(
-    opts?: maps$NaverImageMapTypeOptions
-  ): maps$ImageMapType;
+  declare function naver$maps$NaverMapTypeOption$getWorldMap(
+    opts?: naver$maps$NaverImageMapTypeOptions
+  ): naver$maps$ImageMapType;
 
-  declare class maps$CustomControl mixins maps$KVO {
-    constructor(html: string, maps$ControlOptions: maps$ControlOptions): this;
+  declare class naver$maps$CustomControl mixins KVO {
+    constructor(html: string, ControlOptions: naver$maps$ControlOptions): this;
     getElement(): HTMLElement;
-    getMap(): maps$Map | null;
+    getMap(): naver$maps$Map | null;
     getOptions(key?: string): any;
     html(html?: string): string | void;
-    setMap(map?: maps$Map | null): void;
-    setOptions(newOptions: maps$ControlOptions): void;
-    setPosition(position: maps$Position): void;
+    setMap(map?: naver$maps$Map | null): void;
+    setOptions(newOptions: naver$maps$ControlOptions): void;
+    setPosition(position: naver$maps$Position): void;
   }
 
-  declare class maps$LogoControl mixins maps$CustomControl {
-    constructor(maps$LogoControlOptions: maps$LogoControlOptions): this;
+  declare class naver$maps$LogoControl mixins CustomControl {
+    constructor(LogoControlOptions: naver$maps$LogoControlOptions): this;
   }
 
-  declare class maps$MapDataControl mixins maps$CustomControl {
-    constructor(maps$MapDataControlOptions: maps$MapDataControlOptions): this;
+  declare class naver$maps$MapDataControl mixins CustomControl {
+    constructor(MapDataControlOptions: naver$maps$MapDataControlOptions): this;
   }
 
-  declare class maps$MapTypeControl mixins maps$CustomControl {
-    constructor(maps$MapTypeControlOptions: maps$MapTypeControlOptions): this;
+  declare class naver$maps$MapTypeControl mixins CustomControl {
+    constructor(MapTypeControlOptions: naver$maps$MapTypeControlOptions): this;
   }
 
-  declare class maps$ScaleControl mixins maps$CustomControl {
-    constructor(maps$ScaleControlOptions: maps$ScaleControlOptions): this;
+  declare class naver$maps$ScaleControl mixins CustomControl {
+    constructor(ScaleControlOptions: naver$maps$ScaleControlOptions): this;
   }
 
-  declare class maps$ZoomControl mixins maps$CustomControl {
-    constructor(maps$ZoomControlOptions: maps$ZoomControlOptions): this;
+  declare class naver$maps$ZoomControl mixins CustomControl {
+    constructor(ZoomControlOptions: naver$maps$ZoomControlOptions): this;
   }
 
-  declare class maps$Layer mixins maps$KVO {
+  declare class naver$maps$Layer mixins KVO {
     constructor(
       name: string,
-      maps$MapTypeRegistry: maps$MapTypeRegistry,
-      options: maps$LayerOptions
+      MapTypeRegistry: naver$maps$MapTypeRegistry,
+      options: naver$maps$LayerOptions
     ): this;
-    getLayerType(): maps$MapType;
+    getLayerType(): naver$maps$MapType;
     getLayerTypeId(): string;
-    getMap(): maps$Map | null;
+    getMap(): naver$maps$Map | null;
     getOpacity(): number;
     getPaneElement(): HTMLElement;
     refresh(noEffect?: boolean): void;
     setLayerTypeId(typeId: string): void;
-    setMap(map: maps$Map | null): void;
+    setMap(map: naver$maps$Map | null): void;
     setOpacity(opacity: number): void;
   }
 
-  declare class maps$LabelLayer mixins maps$Layer {
-    constructor(name: string, registry: maps$ImageMapType, option: any): this;
+  declare class naver$maps$LabelLayer mixins Layer {
+    constructor(
+      name: string,
+      registry: naver$maps$ImageMapType,
+      option: any
+    ): this;
   }
 
-  declare class maps$CadastralLayer mixins maps$LabelLayer {
+  declare class naver$maps$CadastralLayer mixins LabelLayer {
     name: string;
-    constructor(option?: maps$CadastralLayerOptions): this;
+    constructor(option?: naver$maps$CadastralLayerOptions): this;
   }
 
-  declare class maps$StreetLayer mixins maps$LabelLayer {
+  declare class naver$maps$StreetLayer mixins LabelLayer {
     name: string;
-    constructor(option?: maps$StreetLayerOptions): this;
+    constructor(option?: naver$maps$StreetLayerOptions): this;
   }
 
-  declare class maps$TrafficLayer mixins maps$LabelLayer {
+  declare class naver$maps$TrafficLayer mixins LabelLayer {
     name: string;
-    constructor(option?: maps$TrafficLayerOptions): this;
+    constructor(option?: naver$maps$TrafficLayerOptions): this;
     endAutoRefresh(): void;
     startAutoRefresh(): void;
   }
 
-  declare class maps$Data mixins maps$KVO {
+  declare class naver$maps$Data mixins KVO {
     constructor(): this;
     addFeature(feature: maps$Feature, autoStyle: boolean): void;
-    addGeoJson(geojson: maps$GeoJSON, autoStyle: boolean): void;
-    addGpx(xmlDoc: maps$GPX, autoStyle: boolean): void;
-    addKml(xmlDoc: maps$KML, autoStyle: boolean): void;
+    addGeoJson(geojson: naver$maps$GeoJSON, autoStyle: boolean): void;
+    addGpx(xmlDoc: naver$maps$GPX, autoStyle: boolean): void;
+    addKml(xmlDoc: naver$maps$KML, autoStyle: boolean): void;
     forEach(callback: (feature: maps$Feature, index: number) => void): void;
     getAllFeature(): maps$Feature[];
     getFeatureById(id: string | number): maps$Feature;
-    getMap(): maps$Map | null;
-    getStyle(): maps$StyleOptions | maps$StylingFunction;
-    overrideStyle(feature: maps$Feature, style: maps$StyleOptions): void;
+    getMap(): naver$maps$Map | null;
+    getStyle(): naver$maps$StyleOptions | naver$maps$StylingFunction;
+    overrideStyle(feature: maps$Feature, style: naver$maps$StyleOptions): void;
     removeFeature(feature: maps$Feature): void;
-    removeGeoJson(geojson: maps$GeoJSON): void;
+    removeGeoJson(geojson: naver$maps$GeoJSON): void;
     revertStyle(feature: maps$Feature): void;
-    setMap(map: maps$Map | null): void;
-    setStyle(style: maps$StyleOptions | maps$StylingFunction): void;
-    toGeoJson(): maps$GeoJSON;
+    setMap(map: naver$maps$Map | null): void;
+    setStyle(style: naver$maps$StyleOptions | naver$maps$StylingFunction): void;
+    toGeoJson(): naver$maps$GeoJSON;
   }
 
-  declare class maps$Feature mixins maps$KVO {
+  declare class naver$maps$Feature mixins KVO {
     constructor(rawFeature: any): this;
-    forEachOverlay(callback: maps$forEachOverlayCallback): void;
-    getBounds(): maps$Bounds;
+    forEachOverlay(callback: naver$maps$forEachOverlayCallback): void;
+    getBounds(): naver$maps$Bounds;
     getGeometries(): maps$Geometry[];
     getId(): string;
     getOverlays(): maps$Marker[] | maps$Polyline[] | maps$Polygon[];
     getProperty(name: string): any;
-    getRaw(): maps$GeoJSON;
+    getRaw(): naver$maps$GeoJSON;
     setProperty(name: string, value: any): void;
-    setStyle(styleOptions: maps$StyleOptions): void;
+    setStyle(styleOptions: naver$maps$StyleOptions): void;
   }
 
-  declare class maps$Geometry mixins maps$KVO {
+  declare class naver$maps$Geometry mixins KVO {
     constructor(rawGeometry: any): this;
-    getCoords(): maps$ArrayOfCoords;
+    getCoords(): naver$maps$ArrayOfCoords;
     getType(): string;
   }
 
-  declare class maps$OverlayView mixins maps$KVO {
+  declare class naver$maps$OverlayView mixins KVO {
     draw(): void;
-    getContainerTopLeft(): maps$Point;
-    getMap(): maps$Map | null;
-    getPanes(): maps$MapPanes;
-    getProjection(): maps$MapSystemProjection;
+    getContainerTopLeft(): naver$maps$Point;
+    getMap(): naver$maps$Map | null;
+    getPanes(): naver$maps$MapPanes;
+    getProjection(): naver$maps$MapSystemProjection;
     onAdd(): any;
     onRemove(): any;
-    setMap(map: maps$Map | null): void;
+    setMap(map: naver$maps$Map | null): void;
   }
 
-  declare class maps$Circle mixins maps$OverlayView {
-    constructor(options?: maps$CircleOptions): this;
+  declare class naver$maps$Circle mixins OverlayView {
+    constructor(options?: naver$maps$CircleOptions): this;
     getAreaSize(): number;
-    getBounds(): maps$Bounds;
-    getCenter(): maps$Coord;
+    getBounds(): naver$maps$Bounds;
+    getCenter(): naver$maps$Coord;
     getClickable(): boolean;
-    getDrawingRect(): maps$Bounds;
-    getOptions(key?: string): maps$CircleOptions;
+    getDrawingRect(): naver$maps$Bounds;
+    getOptions(key?: string): naver$maps$CircleOptions;
     getRadius(): number;
-    getStyles(key: string): maps$CircleOptions;
+    getStyles(key: string): naver$maps$CircleOptions;
     getVisible(): boolean;
     getZIndex(): number;
-    setCenter(center: maps$Coord | maps$CoordLiteral): void;
+    setCenter(center: naver$maps$Coord | naver$maps$CoordLiteral): void;
     setClickable(clickable: boolean): void;
     setOptions(key: string, value: any): void;
-    setOptions(options: maps$CircleOptions): void;
+    setOptions(options: naver$maps$CircleOptions): void;
     setRadius(radius: number): void;
     setStyles(key: string, value: string): void;
-    setStyles(options: maps$CircleOptions): void;
+    setStyles(options: naver$maps$CircleOptions): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$Ellipse mixins maps$OverlayView {
-    constructor(options?: maps$EllipseOptions): this;
+  declare class naver$maps$Ellipse mixins OverlayView {
+    constructor(options?: naver$maps$EllipseOptions): this;
     getAreaSize(): number;
-    getBounds(): maps$Bounds;
+    getBounds(): naver$maps$Bounds;
     getClickable(): boolean;
-    getDrawingRect(): maps$Bounds;
-    getOptions(key?: string): maps$EllipseOptions;
-    getStyles(key?: string): maps$EllipseOptions;
+    getDrawingRect(): naver$maps$Bounds;
+    getOptions(key?: string): naver$maps$EllipseOptions;
+    getStyles(key?: string): naver$maps$EllipseOptions;
     getVisible(): boolean;
     getZIndex(): number;
-    setBounds(bounds: maps$Bounds | maps$BoundsLiteral): void;
-    setOptions(options: maps$EllipseOptions): void;
+    setBounds(bounds: naver$maps$Bounds | naver$maps$BoundsLiteral): void;
+    setOptions(options: naver$maps$EllipseOptions): void;
     setOptions(key: string, value: any): void;
-    setStyles(options: maps$EllipseOptions): void;
+    setStyles(options: naver$maps$EllipseOptions): void;
     setStyles(key: string, value: any): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$GroundOverlay mixins maps$OverlayView {
+  declare class naver$maps$GroundOverlay mixins OverlayView {
     constructor(
       url: string,
-      bounds: maps$Bounds | maps$BoundsLiteral,
-      options?: maps$GroundOverlayOptions
+      bounds: naver$maps$Bounds | naver$maps$BoundsLiteral,
+      options?: naver$maps$GroundOverlayOptions
     ): this;
-    getBounds(): maps$Bounds;
+    getBounds(): naver$maps$Bounds;
     getOpacity(): number;
     getUrl(): string;
     setOpacity(opacity: number): void;
   }
 
-  declare class maps$InfoWindow mixins maps$OverlayView {
-    constructor(options: maps$InfoWindowOptions): this;
+  declare class naver$maps$InfoWindow mixins OverlayView {
+    constructor(options: naver$maps$InfoWindowOptions): this;
     close(): void;
     getContent(): HTMLElement;
-    getOptions(key?: string): maps$InfoWindowOptions;
-    getPosition(): maps$Coord;
+    getOptions(key?: string): naver$maps$InfoWindowOptions;
+    getPosition(): naver$maps$Coord;
     getZIndex(): number;
     open(
-      map: maps$Map,
-      anchor: maps$Coord | maps$CoordLiteral | maps$Marker
+      map: naver$maps$Map,
+      anchor: naver$maps$Coord | naver$maps$CoordLiteral | maps$Marker
     ): void;
     setContent(content: string | HTMLElement): void;
-    setOptions(options: maps$InfoWindowOptions): void;
-    setPosition(position: maps$Coord | maps$CoordLiteral): void;
+    setOptions(options: naver$maps$InfoWindowOptions): void;
+    setPosition(position: naver$maps$Coord | naver$maps$CoordLiteral): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$Marker mixins maps$OverlayView {
-    constructor(options: maps$MarkerOptions): this;
+  declare class naver$maps$Marker mixins OverlayView {
+    constructor(options: naver$maps$MarkerOptions): this;
     draw(): void;
-    getAnimation(): maps$Animation;
+    getAnimation(): naver$maps$Animation;
     getClickable(): boolean;
     getCursor(): string;
     getDraggable(): boolean;
-    getDrawingRect(): maps$Bounds;
-    getIcon(): maps$ImageIcon | maps$SymbolIcon | maps$HtmlIcon;
-    getOptions(key?: string): maps$MarkerOptions;
-    getPosition(): maps$Coord;
-    getShape(): maps$MarkerShape;
+    getDrawingRect(): naver$maps$Bounds;
+    getIcon():
+      | naver$maps$ImageIcon
+      | naver$maps$SymbolIcon
+      | naver$maps$HtmlIcon;
+    getOptions(key?: string): naver$maps$MarkerOptions;
+    getPosition(): naver$maps$Coord;
+    getShape(): naver$maps$MarkerShape;
     getTitle(): string;
     getVisible(): boolean;
     getZIndex(): number;
     onAdd(): void;
     onRemove(): void;
-    setAnimation(animation: maps$Animation): void;
+    setAnimation(animation: naver$maps$Animation): void;
     setClickable(clickable: boolean): void;
     setCursor(cursor: string): void;
     setDraggable(draggable: boolean): void;
     setIcon(
-      icon: string | maps$ImageIcon | maps$SymbolIcon | maps$HtmlIcon
+      icon:
+        | string
+        | naver$maps$ImageIcon
+        | naver$maps$SymbolIcon
+        | naver$maps$HtmlIcon
     ): void;
-    setOptions(options: maps$MarkerOptions): void;
-    setPosition(position: maps$Coord | maps$CoordLiteral): void;
-    setShape(shape: maps$MarkerShape): void;
+    setOptions(options: naver$maps$MarkerOptions): void;
+    setPosition(position: naver$maps$Coord | naver$maps$CoordLiteral): void;
+    setShape(shape: naver$maps$MarkerShape): void;
     setTitle(title: string): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$Polygon mixins maps$OverlayView {
-    constructor(options?: maps$PolygonOptions): this;
+  declare class naver$maps$Polygon mixins OverlayView {
+    constructor(options?: naver$maps$PolygonOptions): this;
     getAreaSize(): number;
-    getBounds(): maps$Bounds;
+    getBounds(): naver$maps$Bounds;
     getClickable(): boolean;
-    getDrawingRect(): maps$Bounds;
-    getOptions(key?: string): maps$PolygonOptions;
-    getPath(): maps$ArrayOfCoords | maps$KVOArrayOfCoords;
-    getPaths(): maps$ArrayOfCoords[] | maps$KVOArrayOfCoords[];
-    getStyles(key?: string): maps$PolygonOptions;
+    getDrawingRect(): naver$maps$Bounds;
+    getOptions(key?: string): naver$maps$PolygonOptions;
+    getPath(): naver$maps$ArrayOfCoords | naver$maps$KVOArrayOfCoords;
+    getPaths(): naver$maps$ArrayOfCoords[] | naver$maps$KVOArrayOfCoords[];
+    getStyles(key?: string): naver$maps$PolygonOptions;
     getVisible(): boolean;
     getZIndex(): number;
     setClickable(clickable: boolean): void;
     setOptions(key: string, value: any): void;
-    setOptions(options: maps$PolygonOptions): void;
+    setOptions(options: naver$maps$PolygonOptions): void;
     setPath(
       path:
-        | maps$ArrayOfCoords
-        | maps$KVOArrayOfCoords
-        | maps$ArrayOfCoordsLiteral
+        | naver$maps$ArrayOfCoords
+        | naver$maps$KVOArrayOfCoords
+        | naver$maps$ArrayOfCoordsLiteral
     ): void;
-    setPaths(paths: maps$ArrayOfCoords[] | maps$ArrayOfCoordsLiteral): void;
+    setPaths(
+      paths: naver$maps$ArrayOfCoords[] | naver$maps$ArrayOfCoordsLiteral
+    ): void;
     setStyles(key: string, value: any): void;
-    setStyles(options: maps$PolygonOptions): void;
+    setStyles(options: naver$maps$PolygonOptions): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$Polyline mixins maps$OverlayView {
-    constructor(options?: maps$PolylineOptions): this;
-    getBounds(): maps$Bounds;
+  declare class naver$maps$Polyline mixins OverlayView {
+    constructor(options?: naver$maps$PolylineOptions): this;
+    getBounds(): naver$maps$Bounds;
     getClickable(): boolean;
     getDistance(): number;
-    getDrawingRect(): maps$Bounds;
-    getOptions(key?: string): maps$PolylineOptions;
-    getPath(): maps$ArrayOfCoords | maps$KVOArrayOfCoords;
-    getStyles(key?: string): maps$PolylineOptions;
+    getDrawingRect(): naver$maps$Bounds;
+    getOptions(key?: string): naver$maps$PolylineOptions;
+    getPath(): naver$maps$ArrayOfCoords | naver$maps$KVOArrayOfCoords;
+    getStyles(key?: string): naver$maps$PolylineOptions;
     getVisible(): boolean;
     getZIndex(): number;
     setClickable(clickable: boolean): void;
     setOptions(key: string, value: any): void;
-    setOptions(options: maps$PolylineOptions): void;
+    setOptions(options: naver$maps$PolylineOptions): void;
     setPath(
       path:
-        | maps$ArrayOfCoords
-        | maps$KVOArrayOfCoords
-        | maps$ArrayOfCoordsLiteral
+        | naver$maps$ArrayOfCoords
+        | naver$maps$KVOArrayOfCoords
+        | naver$maps$ArrayOfCoordsLiteral
     ): void;
     setStyles(key: string, value: any): void;
-    setStyles(options: maps$PolylineOptions): void;
+    setStyles(options: naver$maps$PolylineOptions): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$Rectangle mixins maps$OverlayView {
-    constructor(options?: maps$RectangleOptions): this;
+  declare class naver$maps$Rectangle mixins OverlayView {
+    constructor(options?: naver$maps$RectangleOptions): this;
     getAreaSize(): number;
-    getBounds(): maps$Bounds;
+    getBounds(): naver$maps$Bounds;
     getClickable(): boolean;
-    getDrawingRect(): maps$Bounds;
-    getOptions(key?: string): maps$RectangleOptions;
-    getStyles(key?: string): maps$RectangleOptions;
+    getDrawingRect(): naver$maps$Bounds;
+    getOptions(key?: string): naver$maps$RectangleOptions;
+    getStyles(key?: string): naver$maps$RectangleOptions;
     getVisible(): boolean;
     getZIndex(): number;
-    setBounds(bounds: maps$Bounds | maps$BoundsLiteral): void;
+    setBounds(bounds: naver$maps$Bounds | naver$maps$BoundsLiteral): void;
     setClickable(clickable: boolean): void;
-    setOptions(options: maps$RectangleOptions): void;
+    setOptions(options: naver$maps$RectangleOptions): void;
     setOptions(key: string, value: any): void;
     setStyles(key: string, value: any): void;
-    setStyles(options: maps$RectangleOptions): void;
+    setStyles(options: naver$maps$RectangleOptions): void;
     setVisible(visible: boolean): void;
     setZIndex(zIndex: number): void;
   }
 
-  declare class maps$PanoramaProjection mixins maps$KVO {
-    fromCoordToPov(coord: maps$LatLng): maps$PanoramaPov;
+  declare class naver$maps$PanoramaProjection mixins KVO {
+    fromCoordToPov(coord: naver$maps$LatLng): naver$maps$PanoramaPov;
   }
 
-  declare class maps$Panorama mixins maps$KVO {
+  declare class naver$maps$Panorama mixins KVO {
     constructor(
       panoramaDiv: string | HTMLElement,
-      panoramaOptions: maps$PanoramaOptions
+      panoramaOptions: naver$maps$PanoramaOptions
     ): this;
-    getLocation(): maps$PanoramaLocation;
+    getLocation(): naver$maps$PanoramaLocation;
     getMaxScale(): number;
     getMaxZoom(): number;
     getMinScale(): number;
     getMinZoom(): number;
     getPanoId(): string;
-    getPosition(): maps$LatLng;
-    getPov(): maps$PanoramaPov;
-    getProjection(): maps$PanoramaProjection;
+    getPosition(): naver$maps$LatLng;
+    getPov(): naver$maps$PanoramaPov;
+    getProjection(): naver$maps$PanoramaProjection;
     getScale(): number;
-    getSize(): maps$Size;
+    getSize(): naver$maps$Size;
     getVisible(): boolean;
     getZoom(): number;
     setOptions(key: string, value: any): void;
-    setOptions(newOptions: maps$PanoramaOptions): void;
+    setOptions(newOptions: naver$maps$PanoramaOptions): void;
     setPanoId(panoId: string): void;
-    setPanoIdWithPov(panoId: string, pov: maps$PanoramaPov): void;
-    setPosition(position: maps$LatLng | maps$LatLngLiteral): void;
-    setPov(pov: maps$PanoramaPov): void;
+    setPanoIdWithPov(panoId: string, pov: naver$maps$PanoramaPov): void;
+    setPosition(position: naver$maps$LatLng | naver$maps$LatLngLiteral): void;
+    setPov(pov: naver$maps$PanoramaPov): void;
     setScale(scale: number): void;
-    setSize(size: maps$Size | maps$SizeLiteral): void;
+    setSize(size: naver$maps$Size | naver$maps$SizeLiteral): void;
     setVisible(visible: boolean): void;
     setZoom(zoom: number): void;
     zoomIn(): void;
     zoomOut(): void;
   }
 
-  declare class maps$FlightSpot mixins maps$KVO {
+  declare class naver$maps$FlightSpot mixins KVO {
     constructor(): this;
-    getMap(): maps$Map | null;
-    setMap(map: maps$Map | null): void;
+    getMap(): naver$maps$Map | null;
+    setMap(map: naver$maps$Map | null): void;
   }
 
-  declare class maps$AroundControl mixins maps$CustomControl {
-    constructor(aroundControlOptions: maps$AroundControlOptions): this;
+  declare class naver$maps$AroundControl mixins CustomControl {
+    constructor(aroundControlOptions: naver$maps$AroundControlOptions): this;
   }
 
-  declare function maps$drawing(): void;
+  declare function naver$maps$drawing(): void;
 
-  declare interface drawing$DrawingOptions {
-    map?: maps$Map;
+  declare var npm$namespace$naver$maps$drawing: {
+    DrawingStyle: typeof naver$maps$drawing$DrawingStyle,
+    DrawingMode: typeof naver$maps$drawing$DrawingMode,
+    DrawingEvent: typeof naver$maps$drawing$DrawingEvent,
+    DrawingManager: typeof naver$maps$drawing$DrawingManager
+  };
+  declare interface naver$maps$drawing$DrawingOptions {
+    map?: naver$maps$Map;
     drawingControl?: drawing$DrawingMode[];
-    drawing$drawingControlOptions?: drawing$drawingControlOptions;
+    drawingControlOptions?: drawing$drawingControlOptions;
     drawingMode?: drawing$DrawingMode;
-    drawing$controlPointOptions?: drawing$controlPointOptions;
-    rectangleOptions?: maps$RectangleOptions;
-    ellipseOptions?: maps$EllipseOptions;
-    polylineOptions?: maps$PolylineOptions;
-    arrowlineOptions?: maps$PolylineOptions;
-    polygonOptions?: maps$PolygonOptions;
-    markerOptions?: maps$MarkerOptions;
+    controlPointOptions?: drawing$controlPointOptions;
+    rectangleOptions?: naver$maps$RectangleOptions;
+    ellipseOptions?: naver$maps$EllipseOptions;
+    polylineOptions?: naver$maps$PolylineOptions;
+    arrowlineOptions?: naver$maps$PolylineOptions;
+    polygonOptions?: naver$maps$PolygonOptions;
+    markerOptions?: naver$maps$MarkerOptions;
   }
 
-  declare type drawing$drawingControlOptions = drawing$DrawingControlOptions;
+  declare type naver$maps$drawing$drawingControlOptions = drawing$DrawingControlOptions;
 
-  declare interface drawing$DrawingControlOptions {
-    position?: maps$Position;
+  declare interface naver$maps$drawing$DrawingControlOptions {
+    position?: naver$maps$Position;
     style?: drawing$DrawingStyle;
   }
 
-  declare type drawing$controlPointOptions = drawing$ControlPointOptions;
+  declare type naver$maps$drawing$controlPointOptions = drawing$ControlPointOptions;
 
-  declare interface drawing$ControlPointOptions {
-    anchorPointOptions: maps$CircleOptions;
-    midPointOptions: maps$CircleOptions;
+  declare interface naver$maps$drawing$ControlPointOptions {
+    anchorPointOptions: naver$maps$CircleOptions;
+    midPointOptions: naver$maps$CircleOptions;
   }
 
-  declare interface drawing$DrawingOverlay {
+  declare interface naver$maps$drawing$DrawingOverlay {
     id: string;
     name: string;
     setEditable: (
       editable: boolean,
-      drawing$controlPointOptions?: drawing$controlPointOptions
+      controlPointOptions?: naver$maps$drawing$controlPointOptions
     ) => void;
   }
 
-  declare class drawing$DrawingStyle {
-    constructor(...args: empty): mixed;
-    static +HORIZONTAL: Class<drawing$DrawingStyle__HORIZONTAL> &
-      drawing$DrawingStyle__HORIZONTAL &
-      0; // 0
-    static +VERTICAL: Class<drawing$DrawingStyle__VERTICAL> &
-      drawing$DrawingStyle__VERTICAL &
-      1; // 1
-    static +HORIZONTAL_2: Class<drawing$DrawingStyle__HORIZONTAL_2> &
-      drawing$DrawingStyle__HORIZONTAL_2 &
-      2; // 2
-    static +VERTICAL_2: Class<drawing$DrawingStyle__VERTICAL_2> &
-      drawing$DrawingStyle__VERTICAL_2 &
-      3; // 3
+  declare var naver$maps$drawing$DrawingStyle: {|
+    +HORIZONTAL: 0, // 0
+    +VERTICAL: 1, // 1
+    +HORIZONTAL_2: 2, // 2
+    +VERTICAL_2: 3 // 3
+  |};
+
+  declare var naver$maps$drawing$DrawingMode: {|
+    +HAND: 0, // 0
+    +RECTANGLE: 1, // 1
+    +ELLIPSE: 2, // 2
+    +POLYLINE: 3, // 3
+    +ARROWLINE: 4, // 4
+    +POLYGON: 5, // 5
+    +MARKER: 6 // 6
+  |};
+
+  declare var naver$maps$drawing$DrawingEvent: {|
+    +ADD: 0, // 0
+    +REMOVE: 1, // 1
+    +SELECT: 2, // 2
+    +Added: 3, // 3
+    +Removed: 4, // 4
+    +Selected: 5 // 5
+  |};
+
+  declare class naver$maps$drawing$DrawingManager mixins KVO {
+    constructor(options?: naver$maps$drawing$DrawingOptions): this;
+    addDrawing(
+      overlay: naver$maps$drawing$DrawingOverlay,
+      drawingMode: naver$maps$drawing$DrawingMode,
+      id?: string
+    ): void;
+    addListener(
+      eventName: naver$maps$drawing$DrawingEvent,
+      listener: (overlay: naver$maps$drawing$DrawingOverlay) => void
+    ): naver$maps$MapEventListener;
+    destroy(): void;
+    getDrawing(id: string): naver$maps$drawing$DrawingOverlay;
+    getDrawings(): any;
+    getMap(): naver$maps$Map | null;
+    setMap(map: naver$maps$Map | null): void;
+    toGeoJson(): any;
   }
 
-  declare class drawing$DrawingStyle__HORIZONTAL mixins drawing$DrawingStyle {}
-  declare class drawing$DrawingStyle__VERTICAL mixins drawing$DrawingStyle {}
-  declare class drawing$DrawingStyle__HORIZONTAL_2
-    mixins drawing$DrawingStyle {}
-  declare class drawing$DrawingStyle__VERTICAL_2 mixins drawing$DrawingStyle {}
+  declare function naver$maps$visualization(): void;
 
-  declare class drawing$DrawingMode {
-    constructor(...args: empty): mixed;
-    static +HAND: Class<drawing$DrawingMode__HAND> &
-      drawing$DrawingMode__HAND &
-      0; // 0
-    static +RECTANGLE: Class<drawing$DrawingMode__RECTANGLE> &
-      drawing$DrawingMode__RECTANGLE &
-      1; // 1
-    static +ELLIPSE: Class<drawing$DrawingMode__ELLIPSE> &
-      drawing$DrawingMode__ELLIPSE &
-      2; // 2
-    static +POLYLINE: Class<drawing$DrawingMode__POLYLINE> &
-      drawing$DrawingMode__POLYLINE &
-      3; // 3
-    static +ARROWLINE: Class<drawing$DrawingMode__ARROWLINE> &
-      drawing$DrawingMode__ARROWLINE &
-      4; // 4
-    static +POLYGON: Class<drawing$DrawingMode__POLYGON> &
-      drawing$DrawingMode__POLYGON &
-      5; // 5
-    static +MARKER: Class<drawing$DrawingMode__MARKER> &
-      drawing$DrawingMode__MARKER &
-      6; // 6
+  declare var npm$namespace$naver$maps$visualization: {
+    SpectrumStyle: typeof naver$maps$visualization$SpectrumStyle,
+    DotMap: typeof naver$maps$visualization$DotMap,
+    HeatMap: typeof naver$maps$visualization$HeatMap,
+    WeightedLocation: typeof naver$maps$visualization$WeightedLocation
+  };
+  declare interface naver$maps$visualization$DotMapOptions {
+    map: naver$maps$Map;
+    data:
+      | naver$maps$LatLng[]
+      | naver$maps$PointArrayLiteral[]
+      | visualization$WeightedLocation[];
+    opacity?: number;
+    radius?: number;
+    strokeWeight?: number;
+    strokeColor?: string;
+    strokeLineCap?: naver$maps$strokeLineCapType;
+    strokeLineJoin?: naver$maps$strokeLineJoinType;
+    fillColor?: string;
   }
 
-  declare class drawing$DrawingMode__HAND mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__RECTANGLE mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__ELLIPSE mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__POLYLINE mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__ARROWLINE mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__POLYGON mixins drawing$DrawingMode {}
-  declare class drawing$DrawingMode__MARKER mixins drawing$DrawingMode {}
-
-  declare class drawing$DrawingEvent {
-    constructor(...args: empty): mixed;
-    static +ADD: Class<drawing$DrawingEvent__ADD> &
-      drawing$DrawingEvent__ADD &
-      0; // 0
-    static +REMOVE: Class<drawing$DrawingEvent__REMOVE> &
-      drawing$DrawingEvent__REMOVE &
-      1; // 1
-    static +SELECT: Class<drawing$DrawingEvent__SELECT> &
-      drawing$DrawingEvent__SELECT &
-      2; // 2
-    static +Added: Class<drawing$DrawingEvent__Added> &
-      drawing$DrawingEvent__Added &
-      3; // 3
-    static +Removed: Class<drawing$DrawingEvent__Removed> &
-      drawing$DrawingEvent__Removed &
-      4; // 4
-    static +Selected: Class<drawing$DrawingEvent__Selected> &
-      drawing$DrawingEvent__Selected &
-      5; // 5
+  declare interface naver$maps$visualization$HeatMapOptions {
+    map: naver$maps$Map;
+    data:
+      | naver$maps$LatLng[]
+      | naver$maps$PointArrayLiteral[]
+      | visualization$WeightedLocation[];
+    opacity?: number;
+    radius?: number;
+    colorMap?: visualization$SpectrumStyle;
   }
 
-  declare class drawing$DrawingEvent__ADD mixins drawing$DrawingEvent {}
-  declare class drawing$DrawingEvent__REMOVE mixins drawing$DrawingEvent {}
-  declare class drawing$DrawingEvent__SELECT mixins drawing$DrawingEvent {}
-  declare class drawing$DrawingEvent__Added mixins drawing$DrawingEvent {}
-  declare class drawing$DrawingEvent__Removed mixins drawing$DrawingEvent {}
-  declare class drawing$DrawingEvent__Selected mixins drawing$DrawingEvent {}
+  declare var naver$maps$visualization$SpectrumStyle: {|
+    +JET: 0, // 0
+    +HSV: 1, // 1
+    +HOT: 2, // 2
+    +COOL: 3, // 3
+    +GREYS: 4, // 4
+    +YIGnBu: 5, // 5
+    +YIOrRd: 6, // 6
+    +RdBu: 7, // 7
+    +RAINBOW: 8, // 8
+    +PORTLAND: 9, // 9
+    +OXYGEN: 10 // 10
+  |};
 
-  declare class drawing$DrawingManager mixins maps$KVO {
-    constructor(options?: drawing$DrawingOptions): this;
+  declare class naver$maps$visualization$DotMap mixins KVO {
+    constructor(dotMapOptions?: naver$maps$visualization$DotMapOptions): this;
     addDrawing(
       overlay: drawing$DrawingOverlay,
       drawingMode: drawing$DrawingMode,
@@ -1603,171 +1647,68 @@ declare module "navermaps" {
     addListener(
       eventName: drawing$DrawingEvent,
       listener: (overlay: drawing$DrawingOverlay) => void
-    ): maps$MapEventListener;
+    ): naver$maps$MapEventListener;
     destroy(): void;
     getDrawing(id: string): drawing$DrawingOverlay;
     getDrawings(): any;
-    getMap(): maps$Map | null;
-    setMap(map: maps$Map | null): void;
+    getMap(): naver$maps$Map | null;
+    setMap(map: naver$maps$Map | null): void;
     toGeoJson(): any;
   }
 
-  declare function maps$visualization(): void;
-
-  declare interface visualization$DotMapOptions {
-    map: maps$Map;
-    data:
-      | maps$LatLng[]
-      | maps$PointArrayLiteral[]
-      | visualization$WeightedLocation[];
-    opacity?: number;
-    radius?: number;
-    strokeWeight?: number;
-    strokeColor?: string;
-    strokeLineCap?: maps$strokeLineCapType;
-    strokeLineJoin?: maps$strokeLineJoinType;
-    fillColor?: string;
-  }
-
-  declare interface visualization$HeatMapOptions {
-    map: maps$Map;
-    data:
-      | maps$LatLng[]
-      | maps$PointArrayLiteral[]
-      | visualization$WeightedLocation[];
-    opacity?: number;
-    radius?: number;
-    colorMap?: visualization$SpectrumStyle;
-  }
-
-  declare class visualization$SpectrumStyle {
-    constructor(...args: empty): mixed;
-    static +JET: Class<visualization$SpectrumStyle__JET> &
-      visualization$SpectrumStyle__JET &
-      0; // 0
-    static +HSV: Class<visualization$SpectrumStyle__HSV> &
-      visualization$SpectrumStyle__HSV &
-      1; // 1
-    static +HOT: Class<visualization$SpectrumStyle__HOT> &
-      visualization$SpectrumStyle__HOT &
-      2; // 2
-    static +COOL: Class<visualization$SpectrumStyle__COOL> &
-      visualization$SpectrumStyle__COOL &
-      3; // 3
-    static +GREYS: Class<visualization$SpectrumStyle__GREYS> &
-      visualization$SpectrumStyle__GREYS &
-      4; // 4
-    static +YIGnBu: Class<visualization$SpectrumStyle__YIGnBu> &
-      visualization$SpectrumStyle__YIGnBu &
-      5; // 5
-    static +YIOrRd: Class<visualization$SpectrumStyle__YIOrRd> &
-      visualization$SpectrumStyle__YIOrRd &
-      6; // 6
-    static +RdBu: Class<visualization$SpectrumStyle__RdBu> &
-      visualization$SpectrumStyle__RdBu &
-      7; // 7
-    static +RAINBOW: Class<visualization$SpectrumStyle__RAINBOW> &
-      visualization$SpectrumStyle__RAINBOW &
-      8; // 8
-    static +PORTLAND: Class<visualization$SpectrumStyle__PORTLAND> &
-      visualization$SpectrumStyle__PORTLAND &
-      9; // 9
-    static +OXYGEN: Class<visualization$SpectrumStyle__OXYGEN> &
-      visualization$SpectrumStyle__OXYGEN &
-      10; // 10
-  }
-
-  declare class visualization$SpectrumStyle__JET
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__HSV
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__HOT
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__COOL
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__GREYS
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__YIGnBu
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__YIOrRd
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__RdBu
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__RAINBOW
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__PORTLAND
-    mixins visualization$SpectrumStyle {}
-  declare class visualization$SpectrumStyle__OXYGEN
-    mixins visualization$SpectrumStyle {}
-
-  declare class visualization$DotMap mixins maps$KVO {
-    constructor(dotMapOptions?: visualization$DotMapOptions): this;
-    addDrawing(
-      overlay: maps$drawing.drawing$DrawingOverlay,
-      drawingMode: maps$drawing.drawing$DrawingMode,
-      id?: string
-    ): void;
-    addListener(
-      eventName: maps$drawing.drawing$DrawingEvent,
-      listener: (overlay: maps$drawing.drawing$DrawingOverlay) => void
-    ): maps$MapEventListener;
-    destroy(): void;
-    getDrawing(id: string): maps$drawing.drawing$DrawingOverlay;
-    getDrawings(): any;
-    getMap(): maps$Map | null;
-    setMap(map: maps$Map | null): void;
-    toGeoJson(): any;
-  }
-
-  declare class visualization$HeatMap {
-    constructor(heatMapOptions?: visualization$HeatMapOptions): this;
-    getColorMap(): visualization$SpectrumStyle;
-    getData(): maps$LatLng[] | maps$PointArrayLiteral[];
-    getMap(): maps$Map | null;
-    getOptions(key?: string): visualization$HeatMapOptions;
+  declare class naver$maps$visualization$HeatMap {
+    constructor(heatMapOptions?: naver$maps$visualization$HeatMapOptions): this;
+    getColorMap(): naver$maps$visualization$SpectrumStyle;
+    getData(): naver$maps$LatLng[] | naver$maps$PointArrayLiteral[];
+    getMap(): naver$maps$Map | null;
+    getOptions(key?: string): naver$maps$visualization$HeatMapOptions;
     redraw(): void;
     setColorMap(
-      colormap: visualization$SpectrumStyle,
+      colormap: naver$maps$visualization$SpectrumStyle,
       inReverse: boolean
     ): void;
-    setData(data: maps$LatLng[] | maps$PointArrayLiteral[]): void;
-    setMap(map: maps$Map | null): void;
+    setData(data: naver$maps$LatLng[] | naver$maps$PointArrayLiteral[]): void;
+    setMap(map: naver$maps$Map | null): void;
     setOptions(key: string, value: any): void;
-    setOptions(options: visualization$HeatMapOptions): void;
+    setOptions(options: naver$maps$visualization$HeatMapOptions): void;
   }
 
-  declare class visualization$WeightedLocation {
+  declare class naver$maps$visualization$WeightedLocation {
     constructor(lat: number, lng: number, weight?: number): this;
-    clone(): visualization$WeightedLocation;
-    getLocation(): maps$LatLng;
+    clone(): naver$maps$visualization$WeightedLocation;
+    getLocation(): naver$maps$LatLng;
     getWeight(): number;
     lat(): number;
     lng(): number;
     toString(): string;
   }
 
-  declare function maps$Service(): void;
+  declare function naver$maps$Service(): void;
 
-  declare var npm$namespace$Service: {
-    fromAddrToCoord: typeof Service$fromAddrToCoord,
-    fromCoordToAddr: typeof Service$fromCoordToAddr,
-    geocode: typeof Service$geocode,
-    reverseGeocode: typeof Service$reverseGeocode
+  declare var npm$namespace$naver$maps$Service: {
+    fromAddrToCoord: typeof naver$maps$Service$fromAddrToCoord,
+    fromCoordToAddr: typeof naver$maps$Service$fromCoordToAddr,
+    geocode: typeof naver$maps$Service$geocode,
+    reverseGeocode: typeof naver$maps$Service$reverseGeocode,
+
+    CoordType: typeof naver$maps$Service$CoordType,
+    Encoding: typeof naver$maps$Service$Encoding,
+    Status: typeof naver$maps$Service$Status
   };
-  declare interface Service$ServiceOptions {
+  declare interface naver$maps$Service$ServiceOptions {
     encoding?: any;
     coordType?: any;
   }
 
-  declare type Service$GeocodeServiceOptions = {
+  declare type naver$maps$Service$GeocodeServiceOptions = {
     address?: string
-  } & Service$ServiceOptions;
+  } & ServiceOptions;
 
-  declare type Service$ReverseServiceOptions = {
-    location?: maps$Coord | maps$CoordLiteral
-  } & Service$ServiceOptions;
+  declare type naver$maps$Service$ReverseServiceOptions = {
+    location?: naver$maps$Coord | naver$maps$CoordLiteral
+  } & ServiceOptions;
 
-  declare interface Service$AddressItem {
+  declare interface naver$maps$Service$AddressItem {
     address: string;
     addrdetail: {
       country: string,
@@ -1778,472 +1719,561 @@ declare module "navermaps" {
     };
   }
 
-  declare interface Service$GeocodeResponse {
+  declare interface naver$maps$Service$GeocodeResponse {
     result: {
       userquery: any,
       total: number,
-      items: Service$AddressItem[]
+      items: naver$maps$Service$AddressItem[]
     };
   }
 
-  declare interface Service$ReverseGeocodeResponse {
+  declare interface naver$maps$Service$ReverseGeocodeResponse {
     result: {
       userquery: string,
       total: number,
-      items: Service$AddressItem[]
+      items: naver$maps$Service$AddressItem[]
     };
   }
 
-  declare class Service$CoordType {
-    constructor(...args: empty): mixed;
-    static +LATLNG: Class<Service$CoordType__LATLNG> &
-      Service$CoordType__LATLNG &
-      0; // 0
-    static +TM128: Class<Service$CoordType__TM128> &
-      Service$CoordType__TM128 &
-      1; // 1
-  }
+  declare var naver$maps$Service$CoordType: {|
+    +LATLNG: 0, // 0
+    +TM128: 1 // 1
+  |};
 
-  declare class Service$CoordType__LATLNG mixins Service$CoordType {}
-  declare class Service$CoordType__TM128 mixins Service$CoordType {}
+  declare var naver$maps$Service$Encoding: {|
+    +UTF_8: 0, // 0
+    +EUC_KR: 1 // 1
+  |};
 
-  declare class Service$Encoding {
-    constructor(...args: empty): mixed;
-    static +UTF_8: Class<Service$Encoding__UTF_8> & Service$Encoding__UTF_8 & 0; // 0
-    static +EUC_KR: Class<Service$Encoding__EUC_KR> &
-      Service$Encoding__EUC_KR &
-      1; // 1
-  }
+  declare var naver$maps$Service$Status: {|
+    +OK: 0, // 0
+    +ERROR: 1 // 1
+  |};
 
-  declare class Service$Encoding__UTF_8 mixins Service$Encoding {}
-  declare class Service$Encoding__EUC_KR mixins Service$Encoding {}
+  declare function naver$maps$Service$fromAddrToCoord(): void;
 
-  declare class Service$Status {
-    constructor(...args: empty): mixed;
-    static +OK: Class<Service$Status__OK> & Service$Status__OK & 0; // 0
-    static +ERROR: Class<Service$Status__ERROR> & Service$Status__ERROR & 1; // 1
-  }
+  declare function naver$maps$Service$fromCoordToAddr(): void;
 
-  declare class Service$Status__OK mixins Service$Status {}
-  declare class Service$Status__ERROR mixins Service$Status {}
-
-  declare function Service$fromAddrToCoord(): void;
-
-  declare function Service$fromCoordToAddr(): void;
-
-  declare function Service$geocode(
-    options: Service$GeocodeServiceOptions,
+  declare function naver$maps$Service$geocode(
+    options: naver$maps$Service$GeocodeServiceOptions,
     callback?: (
-      status: Service$Status,
-      response: Service$GeocodeResponse
+      status: naver$maps$Service$Status,
+      response: naver$maps$Service$GeocodeResponse
     ) => void
   ): void;
 
-  declare function Service$reverseGeocode(
-    options: Service$ReverseServiceOptions,
+  declare function naver$maps$Service$reverseGeocode(
+    options: naver$maps$Service$ReverseServiceOptions,
     callback?: (
-      status: Service$Status,
-      response: Service$ReverseGeocodeResponse
+      status: naver$maps$Service$Status,
+      response: naver$maps$Service$ReverseGeocodeResponse
     ) => void
   ): void;
 
-  declare function maps$TransCoord(): void;
+  declare function naver$maps$TransCoord(): void;
 
-  declare var npm$namespace$TransCoord: {
-    fromEPSG3857ToLatLng: typeof TransCoord$fromEPSG3857ToLatLng,
-    fromEPSG3857ToNaver: typeof TransCoord$fromEPSG3857ToNaver,
-    fromEPSG3857ToTM128: typeof TransCoord$fromEPSG3857ToTM128,
-    fromEPSG3857ToUTMK: typeof TransCoord$fromEPSG3857ToUTMK,
-    fromLatLngToEPSG3857: typeof TransCoord$fromLatLngToEPSG3857,
-    fromLatLngToNaver: typeof TransCoord$fromLatLngToNaver,
-    fromLatLngToTM128: typeof TransCoord$fromLatLngToTM128,
-    fromLatLngToUTMK: typeof TransCoord$fromLatLngToUTMK,
-    fromNaverToEPSG3857: typeof TransCoord$fromNaverToEPSG3857,
-    fromNaverToLatLng: typeof TransCoord$fromNaverToLatLng,
-    fromNaverToTM128: typeof TransCoord$fromNaverToTM128,
-    fromNaverToUTMK: typeof TransCoord$fromNaverToUTMK,
-    fromTM128ToEPSG3857: typeof TransCoord$fromTM128ToEPSG3857,
-    fromTM128ToLatLng: typeof TransCoord$fromTM128ToLatLng,
-    fromTM128ToNaver: typeof TransCoord$fromTM128ToNaver,
-    fromTM128ToUTMK: typeof TransCoord$fromTM128ToUTMK,
-    fromUTMKToEPSG3857: typeof TransCoord$fromUTMKToEPSG3857,
-    fromUTMKToLatLng: typeof TransCoord$fromUTMKToLatLng,
-    fromUTMKToNaver: typeof TransCoord$fromUTMKToNaver,
-    fromUTMKToTM128: typeof TransCoord$fromUTMKToTM128
+  declare var npm$namespace$naver$maps$TransCoord: {
+    fromEPSG3857ToLatLng: typeof naver$maps$TransCoord$fromEPSG3857ToLatLng,
+    fromEPSG3857ToNaver: typeof naver$maps$TransCoord$fromEPSG3857ToNaver,
+    fromEPSG3857ToTM128: typeof naver$maps$TransCoord$fromEPSG3857ToTM128,
+    fromEPSG3857ToUTMK: typeof naver$maps$TransCoord$fromEPSG3857ToUTMK,
+    fromLatLngToEPSG3857: typeof naver$maps$TransCoord$fromLatLngToEPSG3857,
+    fromLatLngToNaver: typeof naver$maps$TransCoord$fromLatLngToNaver,
+    fromLatLngToTM128: typeof naver$maps$TransCoord$fromLatLngToTM128,
+    fromLatLngToUTMK: typeof naver$maps$TransCoord$fromLatLngToUTMK,
+    fromNaverToEPSG3857: typeof naver$maps$TransCoord$fromNaverToEPSG3857,
+    fromNaverToLatLng: typeof naver$maps$TransCoord$fromNaverToLatLng,
+    fromNaverToTM128: typeof naver$maps$TransCoord$fromNaverToTM128,
+    fromNaverToUTMK: typeof naver$maps$TransCoord$fromNaverToUTMK,
+    fromTM128ToEPSG3857: typeof naver$maps$TransCoord$fromTM128ToEPSG3857,
+    fromTM128ToLatLng: typeof naver$maps$TransCoord$fromTM128ToLatLng,
+    fromTM128ToNaver: typeof naver$maps$TransCoord$fromTM128ToNaver,
+    fromTM128ToUTMK: typeof naver$maps$TransCoord$fromTM128ToUTMK,
+    fromUTMKToEPSG3857: typeof naver$maps$TransCoord$fromUTMKToEPSG3857,
+    fromUTMKToLatLng: typeof naver$maps$TransCoord$fromUTMKToLatLng,
+    fromUTMKToNaver: typeof naver$maps$TransCoord$fromUTMKToNaver,
+    fromUTMKToTM128: typeof naver$maps$TransCoord$fromUTMKToTM128
   };
-  declare function TransCoord$fromEPSG3857ToLatLng(
-    coord: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$TransCoord$fromEPSG3857ToLatLng(
+    coord: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TransCoord$fromEPSG3857ToNaver(
-    coord: maps$Point
-  ): maps$Point;
+  declare function naver$maps$TransCoord$fromEPSG3857ToNaver(
+    coord: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromEPSG3857ToTM128(
-    coord: maps$Point
-  ): maps$Point;
+  declare function naver$maps$TransCoord$fromEPSG3857ToTM128(
+    coord: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromEPSG3857ToUTMK(coord: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromEPSG3857ToUTMK(
+    coord: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromLatLngToEPSG3857(
-    latlng: maps$Coord
-  ): maps$Point;
+  declare function naver$maps$TransCoord$fromLatLngToEPSG3857(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromLatLngToNaver(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TransCoord$fromLatLngToNaver(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromLatLngToTM128(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TransCoord$fromLatLngToTM128(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromLatLngToUTMK(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TransCoord$fromLatLngToUTMK(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromNaverToEPSG3857(n: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromNaverToEPSG3857(
+    n: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromNaverToLatLng(n: maps$Point): maps$LatLng;
+  declare function naver$maps$TransCoord$fromNaverToLatLng(
+    n: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TransCoord$fromNaverToTM128(n: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromNaverToTM128(
+    n: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromNaverToUTMK(n: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromNaverToUTMK(
+    n: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromTM128ToEPSG3857(
-    tm128: maps$Point
-  ): maps$Point;
+  declare function naver$maps$TransCoord$fromTM128ToEPSG3857(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromTM128ToLatLng(tm128: maps$Point): maps$LatLng;
+  declare function naver$maps$TransCoord$fromTM128ToLatLng(
+    tm128: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TransCoord$fromTM128ToNaver(tm128: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromTM128ToNaver(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromTM128ToUTMK(tm128: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromTM128ToUTMK(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromUTMKToEPSG3857(utmk: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromUTMKToEPSG3857(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromUTMKToLatLng(utmk: maps$Point): maps$LatLng;
+  declare function naver$maps$TransCoord$fromUTMKToLatLng(
+    utmk: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TransCoord$fromUTMKToNaver(utmk: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromUTMKToNaver(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TransCoord$fromUTMKToTM128(utmk: maps$Point): maps$Point;
+  declare function naver$maps$TransCoord$fromUTMKToTM128(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function maps$Event(): void;
+  declare function naver$maps$Event(): void;
 
-  declare var npm$namespace$Event: {
-    addDOMListener: typeof Event$addDOMListener,
-    addListener: typeof Event$addListener,
-    clearInstanceListeners: typeof Event$clearInstanceListeners,
-    clearListeners: typeof Event$clearListeners,
-    forward: typeof Event$forward,
-    hasListener: typeof Event$hasListener,
-    once: typeof Event$once,
-    removeDOMListener: typeof Event$removeDOMListener,
-    removeListener: typeof Event$removeListener,
-    resumeDispatch: typeof Event$resumeDispatch,
-    stopDispatch: typeof Event$stopDispatch,
-    trigger: typeof Event$trigger
+  declare var npm$namespace$naver$maps$Event: {
+    addDOMListener: typeof naver$maps$Event$addDOMListener,
+    addListener: typeof naver$maps$Event$addListener,
+    clearInstanceListeners: typeof naver$maps$Event$clearInstanceListeners,
+    clearListeners: typeof naver$maps$Event$clearListeners,
+    forward: typeof naver$maps$Event$forward,
+    hasListener: typeof naver$maps$Event$hasListener,
+    once: typeof naver$maps$Event$once,
+    removeDOMListener: typeof naver$maps$Event$removeDOMListener,
+    removeListener: typeof naver$maps$Event$removeListener,
+    resumeDispatch: typeof naver$maps$Event$resumeDispatch,
+    stopDispatch: typeof naver$maps$Event$stopDispatch,
+    trigger: typeof naver$maps$Event$trigger
   };
-  declare function Event$addDOMListener(
+  declare function naver$maps$Event$addDOMListener(
     element: HTMLElement,
     eventName: string,
     listener: (event: any) => any
   ): void;
 
-  declare function Event$addListener(
+  declare function naver$maps$Event$addListener(
     target: any,
     eventName: string,
     listener: (event: any) => any
-  ): maps$MapEventListener;
+  ): naver$maps$MapEventListener;
 
-  declare function Event$clearInstanceListeners(target: any): void;
+  declare function naver$maps$Event$clearInstanceListeners(target: any): void;
 
-  declare function Event$clearListeners(
+  declare function naver$maps$Event$clearListeners(
     target: any,
     fromEventName: string
   ): void;
 
-  declare function Event$forward(
+  declare function naver$maps$Event$forward(
     source: any,
     fromEventName: string,
     target: any,
     toEventName: string
-  ): maps$MapEventListener;
+  ): naver$maps$MapEventListener;
 
-  declare function Event$hasListener(target: any, eventName: string): boolean;
+  declare function naver$maps$Event$hasListener(
+    target: any,
+    eventName: string
+  ): boolean;
 
-  declare function Event$once(
+  declare function naver$maps$Event$once(
     target: any,
     eventName: string,
     listener: (event: any) => any
-  ): maps$MapEventListener;
+  ): naver$maps$MapEventListener;
 
-  declare function Event$removeDOMListener(
+  declare function naver$maps$Event$removeDOMListener(
     element: HTMLElement,
     eventName: string,
     listener: (event: any) => any
   ): void;
 
-  declare function Event$removeDOMListener(
-    listeners: maps$DOMEventListener | maps$DOMEventListener[]
+  declare function naver$maps$Event$removeDOMListener(
+    listeners: naver$maps$DOMEventListener | naver$maps$DOMEventListener[]
   ): void;
 
-  declare function Event$removeListener(
-    listeners: maps$MapEventListener | maps$MapEventListener[]
+  declare function naver$maps$Event$removeListener(
+    listeners: naver$maps$MapEventListener | naver$maps$MapEventListener[]
   ): void;
 
-  declare function Event$resumeDispatch(target: any, eventName: string): void;
+  declare function naver$maps$Event$resumeDispatch(
+    target: any,
+    eventName: string
+  ): void;
 
-  declare function Event$stopDispatch(target: any, eventName: string): void;
+  declare function naver$maps$Event$stopDispatch(
+    target: any,
+    eventName: string
+  ): void;
 
-  declare function Event$trigger(
+  declare function naver$maps$Event$trigger(
     target: any,
     eventName: string,
     eventObject?: any
   ): void;
 
-  declare function maps$EPSG3857(): void;
+  declare function naver$maps$EPSG3857(): void;
 
-  declare var npm$namespace$EPSG3857: {
-    fromCoordToPoint: typeof EPSG3857$fromCoordToPoint,
-    fromLatLngToPoint: typeof EPSG3857$fromLatLngToPoint,
-    fromPointToCoord: typeof EPSG3857$fromPointToCoord,
-    fromPointToLatLng: typeof EPSG3857$fromPointToLatLng,
-    getDestinationCoord: typeof EPSG3857$getDestinationCoord,
-    getDistance: typeof EPSG3857$getDistance
+  declare var npm$namespace$naver$maps$EPSG3857: {
+    fromCoordToPoint: typeof naver$maps$EPSG3857$fromCoordToPoint,
+    fromLatLngToPoint: typeof naver$maps$EPSG3857$fromLatLngToPoint,
+    fromPointToCoord: typeof naver$maps$EPSG3857$fromPointToCoord,
+    fromPointToLatLng: typeof naver$maps$EPSG3857$fromPointToLatLng,
+    getDestinationCoord: typeof naver$maps$EPSG3857$getDestinationCoord,
+    getDistance: typeof naver$maps$EPSG3857$getDistance
   };
-  declare function EPSG3857$fromCoordToPoint(coord: maps$Coord): maps$Point;
+  declare function naver$maps$EPSG3857$fromCoordToPoint(
+    coord: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function EPSG3857$fromLatLngToPoint(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$EPSG3857$fromLatLngToPoint(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function EPSG3857$fromPointToCoord(point: maps$Point): maps$LatLng;
+  declare function naver$maps$EPSG3857$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function EPSG3857$fromPointToLatLng(point: maps$Point): maps$LatLng;
+  declare function naver$maps$EPSG3857$fromPointToLatLng(
+    point: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function EPSG3857$getDestinationCoord(
-    fromLatLng: maps$LatLng,
+  declare function naver$maps$EPSG3857$getDestinationCoord(
+    fromLatLng: naver$maps$LatLng,
     angle: number,
     meter: number
-  ): maps$LatLng;
+  ): naver$maps$LatLng;
 
-  declare function EPSG3857$getDistance(
-    latlng1: maps$LatLng,
-    latlng2: maps$LatLng
+  declare function naver$maps$EPSG3857$getDistance(
+    latlng1: naver$maps$LatLng,
+    latlng2: naver$maps$LatLng
   ): number;
 
-  declare function maps$UTMK(): void;
+  declare function naver$maps$UTMK(): void;
 
-  declare var npm$namespace$UTMK: {
-    fromCoordToPoint: typeof UTMK$fromCoordToPoint,
-    fromCoordToUTMK: typeof UTMK$fromCoordToUTMK,
-    fromLatLngToPoint: typeof UTMK$fromLatLngToPoint,
-    fromLatLngToUTMK: typeof UTMK$fromLatLngToUTMK,
-    fromPointToCoord: typeof UTMK$fromPointToCoord,
-    fromPointToLatLng: typeof UTMK$fromPointToLatLng,
-    fromPointToUTMK: typeof UTMK$fromPointToUTMK,
-    fromUTMKToCoord: typeof UTMK$fromUTMKToCoord,
-    fromUTMKToLatLng: typeof UTMK$fromUTMKToLatLng,
-    fromUTMKToPoint: typeof UTMK$fromUTMKToPoint,
-    getDestinationCoord: typeof UTMK$getDestinationCoord,
-    getDistance: typeof UTMK$getDistance,
-    name: typeof UTMK$name,
-    pointPerMeter: typeof UTMK$pointPerMeter
+  declare var npm$namespace$naver$maps$UTMK: {
+    fromCoordToPoint: typeof naver$maps$UTMK$fromCoordToPoint,
+    fromCoordToUTMK: typeof naver$maps$UTMK$fromCoordToUTMK,
+    fromLatLngToPoint: typeof naver$maps$UTMK$fromLatLngToPoint,
+    fromLatLngToUTMK: typeof naver$maps$UTMK$fromLatLngToUTMK,
+    fromPointToCoord: typeof naver$maps$UTMK$fromPointToCoord,
+    fromPointToLatLng: typeof naver$maps$UTMK$fromPointToLatLng,
+    fromPointToUTMK: typeof naver$maps$UTMK$fromPointToUTMK,
+    fromUTMKToCoord: typeof naver$maps$UTMK$fromUTMKToCoord,
+    fromUTMKToLatLng: typeof naver$maps$UTMK$fromUTMKToLatLng,
+    fromUTMKToPoint: typeof naver$maps$UTMK$fromUTMKToPoint,
+    getDestinationCoord: typeof naver$maps$UTMK$getDestinationCoord,
+    getDistance: typeof naver$maps$UTMK$getDistance,
+    name: typeof naver$maps$UTMK$name,
+    pointPerMeter: typeof naver$maps$UTMK$pointPerMeter
   };
-  declare var UTMK$name: string;
+  declare var naver$maps$UTMK$name: string;
 
-  declare var UTMK$pointPerMeter: number;
+  declare var naver$maps$UTMK$pointPerMeter: number;
 
-  declare function UTMK$fromCoordToPoint(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$UTMK$fromCoordToPoint(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK$fromCoordToUTMK(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$UTMK$fromCoordToUTMK(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK$fromLatLngToPoint(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$UTMK$fromLatLngToPoint(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK$fromLatLngToUTMK(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$UTMK$fromLatLngToUTMK(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK$fromPointToCoord(point: maps$Point): maps$LatLng;
+  declare function naver$maps$UTMK$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK$fromPointToLatLng(point: maps$Point): maps$LatLng;
+  declare function naver$maps$UTMK$fromPointToLatLng(
+    point: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK$fromPointToUTMK(point: maps$Point): maps$Point;
+  declare function naver$maps$UTMK$fromPointToUTMK(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK$fromUTMKToCoord(utmk: maps$Point): maps$LatLng;
+  declare function naver$maps$UTMK$fromUTMKToCoord(
+    utmk: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK$fromUTMKToLatLng(utmk: maps$Point): maps$LatLng;
+  declare function naver$maps$UTMK$fromUTMKToLatLng(
+    utmk: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK$fromUTMKToPoint(utmk: maps$Point): maps$Point;
+  declare function naver$maps$UTMK$fromUTMKToPoint(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK$getDestinationCoord(
-    fromLatLng: maps$LatLng,
+  declare function naver$maps$UTMK$getDestinationCoord(
+    fromLatLng: naver$maps$LatLng,
     angle: number,
     meter: number
-  ): maps$LatLng;
+  ): naver$maps$LatLng;
 
-  declare function UTMK$getDistance(
-    latlng1: maps$LatLng,
-    latlng2: maps$LatLng
+  declare function naver$maps$UTMK$getDistance(
+    latlng1: naver$maps$LatLng,
+    latlng2: naver$maps$LatLng
   ): number;
 
-  declare function maps$UTMK_NAVER(): void;
+  declare function naver$maps$UTMK_NAVER(): void;
 
-  declare var npm$namespace$UTMK_NAVER: {
-    fromCoordToNaver: typeof UTMK_NAVER$fromCoordToNaver,
-    fromLatLngToNaver: typeof UTMK_NAVER$fromLatLngToNaver,
-    fromNaverToCoord: typeof UTMK_NAVER$fromNaverToCoord,
-    fromNaverToLatLng: typeof UTMK_NAVER$fromNaverToLatLng,
-    fromNaverToPoint: typeof UTMK_NAVER$fromNaverToPoint,
-    fromNaverToUTMK: typeof UTMK_NAVER$fromNaverToUTMK,
-    fromPointToNaver: typeof UTMK_NAVER$fromPointToNaver,
-    fromUTMKToNaver: typeof UTMK_NAVER$fromUTMKToNaver,
-    name: typeof UTMK_NAVER$name,
-    pointPerMeter: typeof UTMK_NAVER$pointPerMeter
+  declare var npm$namespace$naver$maps$UTMK_NAVER: {
+    fromCoordToNaver: typeof naver$maps$UTMK_NAVER$fromCoordToNaver,
+    fromLatLngToNaver: typeof naver$maps$UTMK_NAVER$fromLatLngToNaver,
+    fromNaverToCoord: typeof naver$maps$UTMK_NAVER$fromNaverToCoord,
+    fromNaverToLatLng: typeof naver$maps$UTMK_NAVER$fromNaverToLatLng,
+    fromNaverToPoint: typeof naver$maps$UTMK_NAVER$fromNaverToPoint,
+    fromNaverToUTMK: typeof naver$maps$UTMK_NAVER$fromNaverToUTMK,
+    fromPointToNaver: typeof naver$maps$UTMK_NAVER$fromPointToNaver,
+    fromUTMKToNaver: typeof naver$maps$UTMK_NAVER$fromUTMKToNaver,
+    name: typeof naver$maps$UTMK_NAVER$name,
+    pointPerMeter: typeof naver$maps$UTMK_NAVER$pointPerMeter
   };
-  declare var UTMK_NAVER$name: string;
+  declare var naver$maps$UTMK_NAVER$name: string;
 
-  declare var UTMK_NAVER$pointPerMeter: number;
+  declare var naver$maps$UTMK_NAVER$pointPerMeter: number;
 
-  declare function UTMK_NAVER$fromCoordToNaver(latlng: maps$LatLng): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromCoordToNaver(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVER$fromLatLngToNaver(
-    latlng: maps$LatLng
-  ): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromLatLngToNaver(
+    latlng: naver$maps$LatLng
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVER$fromNaverToCoord(
-    naverPoint: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$UTMK_NAVER$fromNaverToCoord(
+    naverPoint: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK_NAVER$fromNaverToLatLng(
-    naverPoint: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$UTMK_NAVER$fromNaverToLatLng(
+    naverPoint: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK_NAVER$fromNaverToPoint(
-    naverPoint: maps$Point
-  ): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromNaverToPoint(
+    naverPoint: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVER$fromNaverToUTMK(
-    naverPoint: maps$Point
-  ): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromNaverToUTMK(
+    naverPoint: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVER$fromPointToNaver(point: maps$Point): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromPointToNaver(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVER$fromUTMKToNaver(utmk: maps$Point): maps$Point;
+  declare function naver$maps$UTMK_NAVER$fromUTMKToNaver(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function maps$EPSG3857Coord(): void;
+  declare function naver$maps$EPSG3857Coord(): void;
 
-  declare var npm$namespace$EPSG3857Coord: {
-    fromCoordToLatLng: typeof EPSG3857Coord$fromCoordToLatLng,
-    fromCoordToPoint: typeof EPSG3857Coord$fromCoordToPoint,
-    fromEPSG3857ToLatLng: typeof EPSG3857Coord$fromEPSG3857ToLatLng,
-    fromEPSG3857ToPoint: typeof EPSG3857Coord$fromEPSG3857ToPoint,
-    fromLatLngToCoord: typeof EPSG3857Coord$fromLatLngToCoord,
-    fromLatLngToEPSG3857: typeof EPSG3857Coord$fromLatLngToEPSG3857,
-    fromPointToCoord: typeof EPSG3857Coord$fromPointToCoord,
-    fromPointToEPSG3857: typeof EPSG3857Coord$fromPointToEPSG3857
+  declare var npm$namespace$naver$maps$EPSG3857Coord: {
+    fromCoordToLatLng: typeof naver$maps$EPSG3857Coord$fromCoordToLatLng,
+    fromCoordToPoint: typeof naver$maps$EPSG3857Coord$fromCoordToPoint,
+    fromEPSG3857ToLatLng: typeof naver$maps$EPSG3857Coord$fromEPSG3857ToLatLng,
+    fromEPSG3857ToPoint: typeof naver$maps$EPSG3857Coord$fromEPSG3857ToPoint,
+    fromLatLngToCoord: typeof naver$maps$EPSG3857Coord$fromLatLngToCoord,
+    fromLatLngToEPSG3857: typeof naver$maps$EPSG3857Coord$fromLatLngToEPSG3857,
+    fromPointToCoord: typeof naver$maps$EPSG3857Coord$fromPointToCoord,
+    fromPointToEPSG3857: typeof naver$maps$EPSG3857Coord$fromPointToEPSG3857
   };
-  declare function EPSG3857Coord$fromCoordToLatLng(
-    coord: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$EPSG3857Coord$fromCoordToLatLng(
+    coord: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function EPSG3857Coord$fromCoordToPoint(
-    coord: maps$Point
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromCoordToPoint(
+    coord: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function EPSG3857Coord$fromEPSG3857ToLatLng(
-    coord: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$EPSG3857Coord$fromEPSG3857ToLatLng(
+    coord: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function EPSG3857Coord$fromEPSG3857ToPoint(
-    coord: maps$Point
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromEPSG3857ToPoint(
+    coord: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function EPSG3857Coord$fromLatLngToCoord(
-    coord: maps$Coord
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromLatLngToCoord(
+    coord: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function EPSG3857Coord$fromLatLngToEPSG3857(
-    coord: maps$Coord
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromLatLngToEPSG3857(
+    coord: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function EPSG3857Coord$fromPointToCoord(
-    point: maps$Point
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function EPSG3857Coord$fromPointToEPSG3857(
-    point: maps$Point
-  ): maps$Point;
+  declare function naver$maps$EPSG3857Coord$fromPointToEPSG3857(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function maps$TM128(): void;
+  declare function naver$maps$TM128(): void;
 
-  declare var npm$namespace$TM128: {
-    fromCoordToPoint: typeof TM128$fromCoordToPoint,
-    fromPointToCoord: typeof TM128$fromPointToCoord
+  declare var npm$namespace$naver$maps$TM128: {
+    fromCoordToPoint: typeof naver$maps$TM128$fromCoordToPoint,
+    fromPointToCoord: typeof naver$maps$TM128$fromPointToCoord
   };
-  declare function TM128$fromCoordToPoint(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TM128$fromCoordToPoint(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TM128$fromPointToCoord(point: maps$Point): maps$LatLng;
+  declare function naver$maps$TM128$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function maps$TM128Coord(): void;
+  declare function naver$maps$TM128Coord(): void;
 
-  declare var npm$namespace$TM128Coord: {
-    fromCoordToLatLng: typeof TM128Coord$fromCoordToLatLng,
-    fromCoordToPoint: typeof TM128Coord$fromCoordToPoint,
-    fromLatLngToCoord: typeof TM128Coord$fromLatLngToCoord,
-    fromLatLngToTM128: typeof TM128Coord$fromLatLngToTM128,
-    fromPointToCoord: typeof TM128Coord$fromPointToCoord,
-    fromPointToTM128: typeof TM128Coord$fromPointToTM128,
-    fromTM128ToLatLng: typeof TM128Coord$fromTM128ToLatLng,
-    fromTM128ToPoint: typeof TM128Coord$fromTM128ToPoint,
-    fromTM128ToUTMK: typeof TM128Coord$fromTM128ToUTMK,
-    fromUTMKToTM128: typeof TM128Coord$fromUTMKToTM128
+  declare var npm$namespace$naver$maps$TM128Coord: {
+    fromCoordToLatLng: typeof naver$maps$TM128Coord$fromCoordToLatLng,
+    fromCoordToPoint: typeof naver$maps$TM128Coord$fromCoordToPoint,
+    fromLatLngToCoord: typeof naver$maps$TM128Coord$fromLatLngToCoord,
+    fromLatLngToTM128: typeof naver$maps$TM128Coord$fromLatLngToTM128,
+    fromPointToCoord: typeof naver$maps$TM128Coord$fromPointToCoord,
+    fromPointToTM128: typeof naver$maps$TM128Coord$fromPointToTM128,
+    fromTM128ToLatLng: typeof naver$maps$TM128Coord$fromTM128ToLatLng,
+    fromTM128ToPoint: typeof naver$maps$TM128Coord$fromTM128ToPoint,
+    fromTM128ToUTMK: typeof naver$maps$TM128Coord$fromTM128ToUTMK,
+    fromUTMKToTM128: typeof naver$maps$TM128Coord$fromUTMKToTM128
   };
-  declare function TM128Coord$fromCoordToLatLng(tm128: maps$Point): maps$LatLng;
+  declare function naver$maps$TM128Coord$fromCoordToLatLng(
+    tm128: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TM128Coord$fromCoordToPoint(tm128: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromCoordToPoint(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromLatLngToCoord(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TM128Coord$fromLatLngToCoord(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromLatLngToTM128(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$TM128Coord$fromLatLngToTM128(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromPointToCoord(point: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromPointToTM128(point: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromPointToTM128(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromTM128ToLatLng(tm128: maps$Point): maps$LatLng;
+  declare function naver$maps$TM128Coord$fromTM128ToLatLng(
+    tm128: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function TM128Coord$fromTM128ToPoint(tm128: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromTM128ToPoint(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromTM128ToUTMK(tm128: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromTM128ToUTMK(
+    tm128: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function TM128Coord$fromUTMKToTM128(utmk: maps$Point): maps$Point;
+  declare function naver$maps$TM128Coord$fromUTMKToTM128(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function maps$UTMK_NAVERCoord(): void;
+  declare function naver$maps$UTMK_NAVERCoord(): void;
 
-  declare var npm$namespace$UTMK_NAVERCoord: {
-    fromCoordToLatLng: typeof UTMK_NAVERCoord$fromCoordToLatLng,
-    fromCoordToPoint: typeof UTMK_NAVERCoord$fromCoordToPoint,
-    fromLatLngToCoord: typeof UTMK_NAVERCoord$fromLatLngToCoord,
-    fromPointToCoord: typeof UTMK_NAVERCoord$fromPointToCoord
+  declare var npm$namespace$naver$maps$UTMK_NAVERCoord: {
+    fromCoordToLatLng: typeof naver$maps$UTMK_NAVERCoord$fromCoordToLatLng,
+    fromCoordToPoint: typeof naver$maps$UTMK_NAVERCoord$fromCoordToPoint,
+    fromLatLngToCoord: typeof naver$maps$UTMK_NAVERCoord$fromLatLngToCoord,
+    fromPointToCoord: typeof naver$maps$UTMK_NAVERCoord$fromPointToCoord
   };
-  declare function UTMK_NAVERCoord$fromCoordToLatLng(
-    n: maps$Point
-  ): maps$LatLng;
+  declare function naver$maps$UTMK_NAVERCoord$fromCoordToLatLng(
+    n: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMK_NAVERCoord$fromCoordToPoint(n: maps$Point): maps$Point;
+  declare function naver$maps$UTMK_NAVERCoord$fromCoordToPoint(
+    n: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVERCoord$fromLatLngToCoord(
-    latlng: maps$Coord
-  ): maps$Point;
+  declare function naver$maps$UTMK_NAVERCoord$fromLatLngToCoord(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function UTMK_NAVERCoord$fromPointToCoord(
-    point: maps$Point
-  ): maps$Point;
+  declare function naver$maps$UTMK_NAVERCoord$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function maps$UTMKCoord(): void;
+  declare function naver$maps$UTMKCoord(): void;
 
-  declare var npm$namespace$UTMKCoord: {
-    fromCoordToLatLng: typeof UTMKCoord$fromCoordToLatLng,
-    fromCoordToPoint: typeof UTMKCoord$fromCoordToPoint,
-    fromLatLngToCoord: typeof UTMKCoord$fromLatLngToCoord,
-    fromPointToCoord: typeof UTMKCoord$fromPointToCoord
+  declare var npm$namespace$naver$maps$UTMKCoord: {
+    fromCoordToLatLng: typeof naver$maps$UTMKCoord$fromCoordToLatLng,
+    fromCoordToPoint: typeof naver$maps$UTMKCoord$fromCoordToPoint,
+    fromLatLngToCoord: typeof naver$maps$UTMKCoord$fromLatLngToCoord,
+    fromPointToCoord: typeof naver$maps$UTMKCoord$fromPointToCoord
   };
-  declare function UTMKCoord$fromCoordToLatLng(utmk: maps$Point): maps$LatLng;
+  declare function naver$maps$UTMKCoord$fromCoordToLatLng(
+    utmk: naver$maps$Point
+  ): naver$maps$LatLng;
 
-  declare function UTMKCoord$fromCoordToPoint(utmk: maps$Point): maps$Point;
+  declare function naver$maps$UTMKCoord$fromCoordToPoint(
+    utmk: naver$maps$Point
+  ): naver$maps$Point;
 
-  declare function UTMKCoord$fromLatLngToCoord(latlng: maps$Coord): maps$Point;
+  declare function naver$maps$UTMKCoord$fromLatLngToCoord(
+    latlng: naver$maps$Coord
+  ): naver$maps$Point;
 
-  declare function UTMKCoord$fromPointToCoord(point: maps$Point): maps$Point;
+  declare function naver$maps$UTMKCoord$fromPointToCoord(
+    point: naver$maps$Point
+  ): naver$maps$Point;
 }
