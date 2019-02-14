@@ -3,7 +3,10 @@ declare module "createjs-lib" {
     extend: typeof createjs$extend,
     indexOf: typeof createjs$indexOf,
     promote: typeof createjs$promote,
-    proxy: typeof createjs$proxy
+    proxy: typeof createjs$proxy,
+
+    Event: typeof createjs$Event,
+    EventDispatcher: typeof createjs$EventDispatcher
   };
   declare export class createjs$Event {
     constructor(type: string, bubbles: boolean, cancelable: boolean): this;
