@@ -1,5 +1,5 @@
 declare module "ip-regex" {
-  declare function ip(options?: ip$ip$IpRegexOptions): RegExp;
+  declare function ip(options?: ip$IpRegexOptions): RegExp;
 
   declare var npm$namespace$ip: {
     v4: typeof ip$v4,
@@ -13,5 +13,5 @@ declare module "ip-regex" {
 
   declare function ip$v6(options?: ip$IpRegexOptions): RegExp;
 
-  declare module.exports: typeof ip;
+  declare export default typeof ip;
 }
