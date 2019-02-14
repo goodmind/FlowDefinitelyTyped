@@ -1,8 +1,68 @@
 declare module "react-mdl" {
   import typeof * as React from "react";
 
-  declare module.exports: typeof __ReactMDL;
+  declare export default typeof ___ReactMDL;
 
+  declare var npm$namespace$__ReactMDL: {
+    __MDLComponent: typeof __ReactMDL$__MDLComponent,
+    __MDLBasicComponent: typeof __ReactMDL$__MDLBasicComponent,
+    Badge: typeof __ReactMDL$Badge,
+    Chip: typeof __ReactMDL$Chip,
+    ChipContact: typeof __ReactMDL$ChipContact,
+    Button: typeof __ReactMDL$Button,
+    FABButton: typeof __ReactMDL$FABButton,
+    IconButton: typeof __ReactMDL$IconButton,
+    Card: typeof __ReactMDL$Card,
+    CardActions: typeof __ReactMDL$CardActions,
+    CardTitle: typeof __ReactMDL$CardTitle,
+    CardText: typeof __ReactMDL$CardText,
+    CardMenu: typeof __ReactMDL$CardMenu,
+    CardMedia: typeof __ReactMDL$CardMedia,
+    Checkbox: typeof __ReactMDL$Checkbox,
+    Table: typeof __ReactMDL$Table,
+    TableHeader: typeof __ReactMDL$TableHeader,
+    UndecoratedTable: typeof __ReactMDL$UndecoratedTable,
+    DataTable: typeof __ReactMDL$DataTable,
+    Dialog: typeof __ReactMDL$Dialog,
+    DialogActions: typeof __ReactMDL$DialogActions,
+    DialogTitle: typeof __ReactMDL$DialogTitle,
+    DialogContent: typeof __ReactMDL$DialogContent,
+    Grid: typeof __ReactMDL$Grid,
+    Cell: typeof __ReactMDL$Cell,
+    Icon: typeof __ReactMDL$Icon,
+    IconToggle: typeof __ReactMDL$IconToggle,
+    Content: typeof __ReactMDL$Content,
+    Drawer: typeof __ReactMDL$Drawer,
+    Header: typeof __ReactMDL$Header,
+    HeaderRow: typeof __ReactMDL$HeaderRow,
+    HeaderTabs: typeof __ReactMDL$HeaderTabs,
+    Layout: typeof __ReactMDL$Layout,
+    Navigation: typeof __ReactMDL$Navigation,
+    Spacer: typeof __ReactMDL$Spacer,
+    Footer: typeof __ReactMDL$Footer,
+    FooterDropDownSection: typeof __ReactMDL$FooterDropDownSection,
+    FooterLinkList: typeof __ReactMDL$FooterLinkList,
+    FooterSection: typeof __ReactMDL$FooterSection,
+    List: typeof __ReactMDL$List,
+    ListItem: typeof __ReactMDL$ListItem,
+    ListItemAction: typeof __ReactMDL$ListItemAction,
+    ListItemContent: typeof __ReactMDL$ListItemContent,
+    Menu: typeof __ReactMDL$Menu,
+    MenuItem: typeof __ReactMDL$MenuItem,
+    ProgressBar: typeof __ReactMDL$ProgressBar,
+    Radio: typeof __ReactMDL$Radio,
+    RadioGroup: typeof __ReactMDL$RadioGroup,
+    Slider: typeof __ReactMDL$Slider,
+    Snackbar: typeof __ReactMDL$Snackbar,
+    Spinner: typeof __ReactMDL$Spinner,
+    Switch: typeof __ReactMDL$Switch,
+    Tab: typeof __ReactMDL$Tab,
+    TabBar: typeof __ReactMDL$TabBar,
+    Tabs: typeof __ReactMDL$Tabs,
+    Textfield: typeof __ReactMDL$Textfield,
+    Tooltip: typeof __ReactMDL$Tooltip,
+    MDLComponent: typeof __ReactMDL$MDLComponent
+  };
   declare type __ReactMDL$__MDLClassProps = React.ClassAttributes<any>;
 
   declare type __ReactMDL$__MDLOtherProps = React.HTMLProps<any>;
@@ -10,7 +70,7 @@ declare module "react-mdl" {
   declare class __ReactMDL$__MDLComponent<P> mixins React.Component<P> {}
 
   declare class __ReactMDL$__MDLBasicComponent
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$__MDLOtherProps> {}
+    mixins ___MDLComponent<___MDLOtherProps> {}
 
   declare interface __ReactMDL$ShadowedComponent {
     shadow?: number;
@@ -166,7 +226,7 @@ declare module "react-mdl" {
   declare interface __ReactMDL$MDLDOMAttributes<T> {
     children?: React.ReactNode;
     dangerouslySetInnerHTML?: {
-      __html: string
+      ___html: string
     };
     onCopy?: React.ClipboardEventHandler<T>;
     onCut?: React.ClipboardEventHandler<T>;
@@ -236,103 +296,100 @@ declare module "react-mdl" {
     className?: string,
     noBackground?: boolean,
     overlap?: boolean
-  } & __ReactMDL$__MDLClassProps;
+  } & ___MDLClassProps;
 
   declare class __ReactMDL$Badge
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$BadgeProps> {}
+    mixins ___MDLComponent<__ReactMDL$BadgeProps> {}
 
   declare type __ReactMDL$ChipProps = {
     onClick?: React.MouseEventHandler<__ReactMDL$Chip>,
     onClose?: React.MouseEventHandler<__ReactMDL$Chip>
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
-  declare class __ReactMDL$Chip
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ChipProps> {}
+  declare class __ReactMDL$Chip mixins ___MDLComponent<__ReactMDL$ChipProps> {}
 
   declare class __ReactMDL$ChipContact
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$__MDLOtherProps> {}
+    mixins ___MDLComponent<___MDLOtherProps> {}
 
   declare type __ReactMDL$ButtonProps = {
     accent?: boolean,
     colored?: boolean,
     primary?: boolean
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent &
-    __ReactMDL$CustomRenderedComponent;
+  } & ___MDLOtherProps &
+    RippleComponent &
+    CustomRenderedComponent;
 
   declare type __ReactMDL$StandardButtonProps = {
     raised?: boolean
-  } & __ReactMDL$ButtonProps;
+  } & ButtonProps;
 
   declare type __ReactMDL$FABButtonProps = {
     mini?: boolean
-  } & __ReactMDL$ButtonProps;
+  } & ButtonProps;
 
   declare type __ReactMDL$IconButtonProps = {
     name?: string,
     raised?: boolean
-  } & __ReactMDL$ButtonProps;
+  } & ButtonProps;
 
   declare class __ReactMDL$Button
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$StandardButtonProps> {}
+    mixins ___MDLComponent<__ReactMDL$StandardButtonProps> {}
 
   declare class __ReactMDL$FABButton
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$FABButtonProps> {}
+    mixins ___MDLComponent<__ReactMDL$FABButtonProps> {}
 
   declare class __ReactMDL$IconButton
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$IconButtonProps> {}
+    mixins ___MDLComponent<__ReactMDL$IconButtonProps> {}
 
-  declare type __ReactMDL$CardProps = {} & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$ShadowedComponent;
+  declare type __ReactMDL$CardProps = {} & ___MDLOtherProps & ShadowedComponent;
 
   declare type __ReactMDL$CardActionProps = {
     border?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$CardTitleProps = {
     expand?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
-  declare class __ReactMDL$Card
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$CardProps> {}
+  declare class __ReactMDL$Card mixins ___MDLComponent<__ReactMDL$CardProps> {}
 
   declare class __ReactMDL$CardActions
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$CardActionProps> {}
+    mixins ___MDLComponent<__ReactMDL$CardActionProps> {}
 
   declare class __ReactMDL$CardTitle
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$CardTitleProps> {}
+    mixins ___MDLComponent<__ReactMDL$CardTitleProps> {}
 
-  declare class __ReactMDL$CardText mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$CardText mixins ___MDLBasicComponent {}
 
-  declare class __ReactMDL$CardMenu mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$CardMenu mixins ___MDLBasicComponent {}
 
-  declare class __ReactMDL$CardMedia mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$CardMedia mixins ___MDLBasicComponent {}
 
   declare type __ReactMDL$CheckboxProps = {
     checked?: boolean,
     disabled?: boolean,
     label?: string
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent;
+  } & ___MDLOtherProps &
+    RippleComponent;
 
   declare class __ReactMDL$Checkbox
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$CheckboxProps> {}
+    mixins ___MDLComponent<__ReactMDL$CheckboxProps> {}
 
   declare type __ReactMDL$UndecoratedTableProps = {
     rows: Array<any>,
     rowKeyColumn?: string,
     name?: string,
     title?: string
-  } & __ReactMDL$__MDLClassProps &
-    __ReactMDL$MDLHTMLAttributes &
+  } & ___MDLClassProps &
+    MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$UndecoratedTable> &
-    __ReactMDL$ShadowedComponent;
+    ShadowedComponent;
 
   declare type __ReactMDL$TableProps = {
     sortable?: boolean,
     selectable?: boolean,
     onSelectionChanged?: (row: any) => any
-  } & __ReactMDL$UndecoratedTableProps;
+  } & UndecoratedTableProps;
 
   declare type __ReactMDL$TableHeaderProps = {
     name: string,
@@ -346,50 +403,49 @@ declare module "react-mdl" {
     ) => any,
     sortFn?: (a: any, b: any, isAsc: boolean) => number,
     tooltip?: React.ReactNode
-  } & __ReactMDL$__MDLClassProps &
-    __ReactMDL$MDLHTMLAttributes &
-    __ReactMDL$MDLDOMAttributes<__ReactMDL$TableHeader>;
+  } & ___MDLClassProps &
+    MDLHTMLAttributes &
+    MDLDOMAttributes<__ReactMDL$TableHeader>;
 
   declare class __ReactMDL$Table
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TableProps> {}
+    mixins ___MDLComponent<__ReactMDL$TableProps> {}
 
   declare class __ReactMDL$TableHeader
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TableHeaderProps> {}
+    mixins ___MDLComponent<__ReactMDL$TableHeaderProps> {}
 
   declare class __ReactMDL$UndecoratedTable
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$UndecoratedTableProps> {}
+    mixins ___MDLComponent<__ReactMDL$UndecoratedTableProps> {}
 
-  declare class __ReactMDL$DataTable mixins __ReactMDL$Table {}
+  declare class __ReactMDL$DataTable mixins Table {}
 
   declare type __ReactMDL$DialogProps = {
     open?: boolean,
     onCancel?: (e: any) => void
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$DialogActionsProps = {
     fullWidth?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
-  declare type __ReactMDL$DialogTitleProps = {} & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$CustomRenderedComponent;
+  declare type __ReactMDL$DialogTitleProps = {} & ___MDLOtherProps &
+    CustomRenderedComponent;
 
   declare class __ReactMDL$Dialog
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$DialogProps> {}
+    mixins ___MDLComponent<__ReactMDL$DialogProps> {}
 
   declare class __ReactMDL$DialogActions
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$DialogActionsProps> {}
+    mixins ___MDLComponent<__ReactMDL$DialogActionsProps> {}
 
   declare class __ReactMDL$DialogTitle
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$DialogTitleProps> {}
+    mixins ___MDLComponent<__ReactMDL$DialogTitleProps> {}
 
-  declare class __ReactMDL$DialogContent
-    mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$DialogContent mixins ___MDLBasicComponent {}
 
   declare type __ReactMDL$GridProps = {
     noSpacing?: boolean
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$CustomRenderedComponent &
-    __ReactMDL$ShadowedComponent;
+  } & ___MDLOtherProps &
+    CustomRenderedComponent &
+    ShadowedComponent;
 
   declare type __ReactMDL$CellProps = {
     col: number,
@@ -403,39 +459,36 @@ declare module "react-mdl" {
     hideDesktop?: boolean,
     hidePhone?: boolean,
     hideTablet?: boolean
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$CustomRenderedComponent &
-    __ReactMDL$ShadowedComponent;
+  } & ___MDLOtherProps &
+    CustomRenderedComponent &
+    ShadowedComponent;
 
-  declare class __ReactMDL$Grid
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$GridProps> {}
+  declare class __ReactMDL$Grid mixins ___MDLComponent<__ReactMDL$GridProps> {}
 
-  declare class __ReactMDL$Cell
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$CellProps> {}
+  declare class __ReactMDL$Cell mixins ___MDLComponent<__ReactMDL$CellProps> {}
 
   declare type __ReactMDL$IconProps = {
     name: string
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
-  declare class __ReactMDL$Icon
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$IconProps> {}
+  declare class __ReactMDL$Icon mixins ___MDLComponent<__ReactMDL$IconProps> {}
 
   declare type __ReactMDL$IconToggleProps = {
     name: string,
     checked?: boolean,
     disabled?: boolean
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent;
+  } & ___MDLOtherProps &
+    RippleComponent;
 
   declare class __ReactMDL$IconToggle
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$IconToggleProps> {}
+    mixins ___MDLComponent<__ReactMDL$IconToggleProps> {}
 
-  declare type __ReactMDL$ContentProps = {} & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$CustomRenderedComponent;
+  declare type __ReactMDL$ContentProps = {} & ___MDLOtherProps &
+    CustomRenderedComponent;
 
   declare type __ReactMDL$DrawerProps = {
     title?: string
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$HeaderProps = {
     title?: any,
@@ -445,66 +498,66 @@ declare module "react-mdl" {
     waterfall?: boolean,
     hideTop?: boolean,
     hideSpacer?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$HeaderRowProps = {
     title?: any,
     hideSpacer?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$HeaderTabsProps = {
     activeTab?: number,
     onChange?: React.FormEventHandler<__ReactMDL$Header>
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent;
+  } & ___MDLOtherProps &
+    RippleComponent;
 
   declare type __ReactMDL$LayoutProps = {
     fixedDrawer?: boolean,
     fixedHeader?: boolean,
     fixedTabs?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
-  declare type __ReactMDL$NavigationProps = {} & __ReactMDL$__MDLOtherProps;
+  declare type __ReactMDL$NavigationProps = {} & ___MDLOtherProps;
 
   declare class __ReactMDL$Content
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ContentProps> {}
+    mixins ___MDLComponent<__ReactMDL$ContentProps> {}
 
   declare class __ReactMDL$Drawer
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$DrawerProps> {}
+    mixins ___MDLComponent<__ReactMDL$DrawerProps> {}
 
   declare class __ReactMDL$Header
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$HeaderProps> {}
+    mixins ___MDLComponent<__ReactMDL$HeaderProps> {}
 
   declare class __ReactMDL$HeaderRow
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$HeaderRowProps> {}
+    mixins ___MDLComponent<__ReactMDL$HeaderRowProps> {}
 
   declare class __ReactMDL$HeaderTabs
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$HeaderTabsProps> {}
+    mixins ___MDLComponent<__ReactMDL$HeaderTabsProps> {}
 
   declare class __ReactMDL$Layout
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$LayoutProps> {}
+    mixins ___MDLComponent<__ReactMDL$LayoutProps> {}
 
   declare class __ReactMDL$Navigation
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$NavigationProps> {}
+    mixins ___MDLComponent<__ReactMDL$NavigationProps> {}
 
-  declare class __ReactMDL$Spacer mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$Spacer mixins ___MDLBasicComponent {}
 
   declare type __ReactMDL$FooterProps = {
     size?: string,
     title?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$Footer>;
 
   declare type __ReactMDL$FooterDropDownSectionProps = {
     size?: string,
     title: React.ReactNode
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$FooterDropDownSection>;
 
   declare type __ReactMDL$FooterLinkListProps = {
     size?: string,
     title?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$FooterLinkList>;
 
   declare type __ReactMDL$FooterSectionProps = {
@@ -512,69 +565,68 @@ declare module "react-mdl" {
     type?: string,
     logo?: React.ReactNode,
     title?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$FooterSection>;
 
   declare class __ReactMDL$Footer
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$FooterProps> {}
+    mixins ___MDLComponent<__ReactMDL$FooterProps> {}
 
   declare class __ReactMDL$FooterDropDownSection
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$FooterDropDownSectionProps> {}
+    mixins ___MDLComponent<__ReactMDL$FooterDropDownSectionProps> {}
 
   declare class __ReactMDL$FooterLinkList
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$FooterLinkListProps> {}
+    mixins ___MDLComponent<__ReactMDL$FooterLinkListProps> {}
 
   declare class __ReactMDL$FooterSection
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$FooterSectionProps> {}
+    mixins ___MDLComponent<__ReactMDL$FooterSectionProps> {}
 
   declare type __ReactMDL$ListItemProps = {
     twoLine?: boolean,
     threeLine?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$ListItemActionProps = {
     info?: string
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare type __ReactMDL$ListItemContentProps = {
     avatar?: string | JSX.Element,
     icon?: string | JSX.Element,
     subtitle?: React.ReactNode,
     useBodyClass?: boolean
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$ListItemContent>;
 
-  declare class __ReactMDL$List mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$List mixins ___MDLBasicComponent {}
 
   declare class __ReactMDL$ListItem
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ListItemProps> {}
+    mixins ___MDLComponent<__ReactMDL$ListItemProps> {}
 
   declare class __ReactMDL$ListItemAction
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ListItemActionProps> {}
+    mixins ___MDLComponent<__ReactMDL$ListItemActionProps> {}
 
   declare class __ReactMDL$ListItemContent
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ListItemContentProps> {}
+    mixins ___MDLComponent<__ReactMDL$ListItemContentProps> {}
 
   declare type __ReactMDL$MenuProps = {
     target: string,
     align?: string,
     valign?: string
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent;
+  } & ___MDLOtherProps &
+    RippleComponent;
 
-  declare class __ReactMDL$Menu
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$MenuProps> {}
+  declare class __ReactMDL$Menu mixins ___MDLComponent<__ReactMDL$MenuProps> {}
 
-  declare class __ReactMDL$MenuItem mixins __ReactMDL$__MDLBasicComponent {}
+  declare class __ReactMDL$MenuItem mixins ___MDLBasicComponent {}
 
   declare type __ReactMDL$ProgressBarProps = {
     buffer?: number,
     indeterminate?: boolean,
     progress?: number
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare class __ReactMDL$ProgressBar
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$ProgressBarProps> {}
+    mixins ___MDLComponent<__ReactMDL$ProgressBarProps> {}
 
   declare type __ReactMDL$RadioProps = {
     value: string | number,
@@ -583,9 +635,9 @@ declare module "react-mdl" {
     name?: string,
     onChange?: React.FormEventHandler<__ReactMDL$Radio>,
     label?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$Radio> &
-    __ReactMDL$RippleComponent;
+    RippleComponent;
 
   declare type __ReactMDL$RadioGroupProps = {
     name: string,
@@ -594,25 +646,25 @@ declare module "react-mdl" {
     container?: string,
     onChange?: React.FormEventHandler<__ReactMDL$RadioGroup>,
     label?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$RadioGroup>;
 
   declare class __ReactMDL$Radio
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$RadioProps> {}
+    mixins ___MDLComponent<__ReactMDL$RadioProps> {}
 
   declare class __ReactMDL$RadioGroup
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$RadioGroupProps> {}
+    mixins ___MDLComponent<__ReactMDL$RadioGroupProps> {}
 
   declare type __ReactMDL$SliderProps = {
     max: number,
     min: number,
     onChange?: React.FormEventHandler<__ReactMDL$Slider>,
     value?: number
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$Slider>;
 
   declare class __ReactMDL$Slider
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$SliderProps> {}
+    mixins ___MDLComponent<__ReactMDL$SliderProps> {}
 
   declare type __ReactMDL$SnackbarProps = {
     active: boolean,
@@ -620,35 +672,35 @@ declare module "react-mdl" {
     action?: string,
     onActionClick?: React.MouseEventHandler<__ReactMDL$Snackbar>,
     timeout?: number
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare class __ReactMDL$Snackbar
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$SnackbarProps> {}
+    mixins ___MDLComponent<__ReactMDL$SnackbarProps> {}
 
   declare type __ReactMDL$SpinnerProps = {
     singleColor?: boolean
-  } & __ReactMDL$__MDLOtherProps;
+  } & ___MDLOtherProps;
 
   declare class __ReactMDL$Spinner
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$SpinnerProps> {}
+    mixins ___MDLComponent<__ReactMDL$SpinnerProps> {}
 
   declare type __ReactMDL$SwitchProps = {
     checked?: boolean,
     disabled?: boolean,
     onChange?: React.FormEventHandler<__ReactMDL$Switch>
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$RippleComponent;
+  } & ___MDLOtherProps &
+    RippleComponent;
 
   declare class __ReactMDL$Switch
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$SwitchProps> {}
+    mixins ___MDLComponent<__ReactMDL$SwitchProps> {}
 
   declare type __ReactMDL$TabProps = {
     active?: boolean,
     cssPrefix?: string,
     onTabClick?: (tabId: number) => any,
     tabId?: number
-  } & __ReactMDL$__MDLOtherProps &
-    __ReactMDL$CustomRenderedComponent;
+  } & ___MDLOtherProps &
+    CustomRenderedComponent;
 
   declare type __ReactMDL$TabBarProps = {
     cssPrefix: string,
@@ -657,8 +709,8 @@ declare module "react-mdl" {
     name?: string,
     title?: string,
     onClick?: React.MouseEventHandler<__ReactMDL$TabBar>
-  } & __ReactMDL$MDLHTMLAttributes &
-    __ReactMDL$MDLDOMAttributes<__ReactMDL$TabBar>;
+  } & MDLHTMLAttributes &
+    MDLDOMAttributes<__ReactMDL$TabBar>;
 
   declare type __ReactMDL$TabsProps = {
     activeTab?: number,
@@ -667,17 +719,15 @@ declare module "react-mdl" {
     name?: string,
     title?: string,
     onClick?: React.MouseEventHandler<__ReactMDL$Tabs>
-  } & __ReactMDL$MDLHTMLAttributes &
-    __ReactMDL$MDLDOMAttributes<__ReactMDL$Tabs>;
+  } & MDLHTMLAttributes &
+    MDLDOMAttributes<__ReactMDL$Tabs>;
 
-  declare class __ReactMDL$Tab
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TabProps> {}
+  declare class __ReactMDL$Tab mixins ___MDLComponent<__ReactMDL$TabProps> {}
 
   declare class __ReactMDL$TabBar
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TabBarProps> {}
+    mixins ___MDLComponent<__ReactMDL$TabBarProps> {}
 
-  declare class __ReactMDL$Tabs
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TabsProps> {}
+  declare class __ReactMDL$Tabs mixins ___MDLComponent<__ReactMDL$TabsProps> {}
 
   declare type __ReactMDL$TextfieldProps = {
     label: string,
@@ -696,11 +746,11 @@ declare module "react-mdl" {
     value?: string | number,
     name?: string,
     title?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<HTMLInputElement>;
 
   declare class __ReactMDL$Textfield
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TextfieldProps> {
+    mixins ___MDLComponent<__ReactMDL$TextfieldProps> {
     inputRef: HTMLInputElement;
   }
 
@@ -710,11 +760,11 @@ declare module "react-mdl" {
     position?: string,
     name?: string,
     title?: string
-  } & __ReactMDL$MDLHTMLAttributes &
+  } & MDLHTMLAttributes &
     React.DOMAttributes<__ReactMDL$Tooltip>;
 
   declare class __ReactMDL$Tooltip
-    mixins __ReactMDL$__MDLComponent<__ReactMDL$TooltipProps> {}
+    mixins ___MDLComponent<__ReactMDL$TooltipProps> {}
 
   declare class __ReactMDL$MDLComponent
     mixins React.Component<{
