@@ -1,4 +1,12 @@
-declare interface Lowdb$AdapterOptions<SchemaT= any> {
+declare module 'lowdb' {
+        import type {
+          LoDashStatic
+        } from 'lodash';
+
+	declare var Lowdb: Lowdb$lowdb;
+	declare export default typeof Lowdb
+
+	declare interface Lowdb$AdapterOptions<SchemaT= any> {
 defaultValue?: SchemaT,
 serialize?: (data: SchemaT) => string,
 deserialize?: (serializedData: string) => SchemaT
@@ -39,8 +47,7 @@ _: LoDashStatic,
 read: () => this,
 
 /**
- * @description
- * Be careful: This function overwrites the whole database.
+ * @description Be careful: This function overwrites the whole database.
  */
 write<T>(returnValue?: T): T
 } & Lowdb$LowdbBase<SchemaT> & Lowdb$LoDashExplicitSyncWrapper<SchemaT>
@@ -51,8 +58,7 @@ _: LoDashStatic,
 read: () => Promise<this>,
 
 /**
- * @description
- * Be careful: This function overwrites the whole database.
+ * @description Be careful: This function overwrites the whole database.
  */
 write<T>(returnValue?: T): Promise<T>
 } & Lowdb$LowdbBase<SchemaT> & Lowdb$LoDashExplicitAsyncWrapper<SchemaT>
@@ -61,16 +67,13 @@ write<T>(returnValue?: T): Promise<T>
 declare type Lowdb$LowdbFpSync<SchemaT> = {
 
 /**
- * @description
- * Be careful: This function overwrites the whole database.
+ * @description Be careful: This function overwrites the whole database.
  */
 write<T>(returnValue?: T): T,
 
 /**
- * @description
- * Returns a function that allows you to access/modify the database at a given path.
- * @example
- * ```js
+ * @description Returns a function that allows you to access/modify the database at a given path.
+ * @example ```js
  *      *  const posts = db('posts')
  *      *  const firstPost = posts(all => all[0])
  *      *  posts.write((allPosts) => [...allPosts, {title: 'Yup!'}])
@@ -88,16 +91,13 @@ write<T>(returnValue?: T): T,
 declare type Lowdb$LowdbFpAsync<SchemaT> = {
 
 /**
- * @description
- * Be careful: This function overwrites the whole database.
+ * @description Be careful: This function overwrites the whole database.
  */
 write<T>(returnValue?: T): Promise<T>,
 
 /**
- * @description
- * Returns a function that allows you to access/modify the database at a given path.
- * @example
- * ```js
+ * @description Returns a function that allows you to access/modify the database at a given path.
+ * @example ```js
  *      *  const posts = db('posts')
  *      *  const firstPost = posts(all => all[0])
  *      *  posts.write((allPosts) => [...allPosts, {title: 'Yup!'}])
@@ -132,10 +132,8 @@ declare interface Lowdb$FpReturnBase<PathT> {
 declare type Lowdb$FpReturnSync<PathT> = {
 
 /**
- * @description
- * Writes the change to the database, based on the callback's return value.
- * @example
- * ```js
+ * @description Writes the change to the database, based on the callback's return value.
+ * @example ```js
  *      *  posts.write((allPosts) => [...allPosts, {title: 'Yup!'}])
  *      * ```
  */
@@ -146,10 +144,8 @@ write<R1: PathT>(f1: (a1: PathT) => R1): R1
 declare type Lowdb$FpReturnAsync<PathT> = {
 
 /**
- * @description
- * Writes the change to the database, based on the callback's return value.
- * @example
- * ```js
+ * @description Writes the change to the database, based on the callback's return value.
+ * @example ```js
  *      *  posts.write((allPosts) => [...allPosts, {title: 'Yup!'}])
  *      * ```
  */
@@ -175,13 +171,6 @@ write(): TValue
 declare type Lowdb$LoDashExplicitAsyncWrapper<TValue> = {
 write(): Promise<TValue>
 } & _.LoDashWrapper<TValue>
-declare module 'lowdb' {
-        import type {
-          LoDashStatic
-        } from 'lodash';
-
-	declare var Lowdb: Lowdb$Lowdb$lowdb;
-	declare export default typeof Lowdb
 
 	declare type ReferenceProperty = "@@reference";
     }
