@@ -1,4 +1,10 @@
 declare module "azure-sb" {
+  import typeof * as ServiceBusService from "./lib/servicebusservice";
+
+  import typeof * as NotificationHubService from "./lib/notificationhubservice";
+
+  import typeof * as WrapService from "./lib/wrapservice";
+
   declare export function createServiceBusService(
     namespaceOrConnectionString?: string,
     accessKey?: string,
@@ -21,30 +27,37 @@ declare module "azure-sb" {
     accessKey?: string
   ): WrapService;
 
-  declare export type ServiceBus$Duration = string;
+  declare var npm$namespace$Azure: {
+    ServiceBus: typeof npm$namespace$Azure$ServiceBus
+  };
 
-  declare export type ServiceBus$DateString = string;
+  declare var npm$namespace$Azure$ServiceBus: {
+    Results: typeof npm$namespace$Azure$ServiceBus$Results
+  };
+  declare export type Azure$ServiceBus$Duration = string;
 
-  declare export interface ServiceBus$Dictionary<T> {
+  declare export type Azure$ServiceBus$DateString = string;
+
+  declare export interface Azure$ServiceBus$Dictionary<T> {
     [k: string]: T;
   }
 
-  declare export interface ServiceBus$ReceiveQueueMessageOptions {
+  declare export interface Azure$ServiceBus$ReceiveQueueMessageOptions {
     timeoutIntervalInS?: number;
   }
 
-  declare export type ServiceBus$ReceiveSubscriptionMessageOptions = {
+  declare export type Azure$ServiceBus$ReceiveSubscriptionMessageOptions = {
     isPeekLock?: boolean
-  } & ServiceBus$ReceiveQueueMessageOptions;
+  } & ReceiveQueueMessageOptions;
 
-  declare interface ServiceBus$IBrokerPropertiesResponse {
+  declare interface Azure$ServiceBus$IBrokerPropertiesResponse {
     +DeliveryCount: number;
-    +LockedUntil: ServiceBus$DateString;
+    +LockedUntil: Azure$ServiceBus$DateString;
     +LockToken: string;
     +SequenceNumber: number;
   }
 
-  declare interface ServiceBus$IBrokerProperties {
+  declare interface Azure$ServiceBus$IBrokerProperties {
     CorrelationId: string;
     Label: string;
     MessageId: string;
@@ -57,14 +70,14 @@ declare module "azure-sb" {
     To: string;
   }
 
-  declare export interface ServiceBus$Message {
+  declare export interface Azure$ServiceBus$Message {
     body: string;
     brokerProperties?: ServiceBus$BrokerProperties;
     contentType?: string;
-    customProperties?: ServiceBus$Dictionary<any>;
+    customProperties?: Azure$ServiceBus$Dictionary<any>;
   }
 
-  declare interface ServiceBus$CreateOptions {
+  declare interface Azure$ServiceBus$CreateOptions {
     DefaultMessageTimeToLive: string;
     DuplicateDetectionHistoryTimeWindow: string;
     EnablePartitioning: boolean;
@@ -72,28 +85,28 @@ declare module "azure-sb" {
     RequiresDuplicateDetection: boolean;
   }
 
-  declare type ServiceBus$IQueueOptions = {
+  declare type Azure$ServiceBus$IQueueOptions = {
     AutoDeleteOnIdle: string,
     DeadLetteringOnMessageExpiration: boolean,
     LockDuration: string,
     RequiresSession: boolean
-  } & ServiceBus$CreateOptions;
+  } & CreateOptions;
 
-  declare type ServiceBus$ICreateTopicOptions = {
+  declare type Azure$ServiceBus$ICreateTopicOptions = {
     EnableBatchedOperations: boolean,
     SizeInBytes: boolean,
     SupportOrdering: boolean
-  } & ServiceBus$CreateOptions;
+  } & CreateOptions;
 
-  declare type ServiceBus$ICreateTopicIfNotExistsOptions = {
+  declare type Azure$ServiceBus$ICreateTopicIfNotExistsOptions = {
     EnableDeadLetteringOnFilterEvaluationExceptions: boolean,
     EnableDeadLetteringOnMessageExpiration: boolean,
     MaxCorrelationFiltersPerTopic: number,
     MaxSqlFiltersPerTopic: number,
     MaxSubscriptionsPerTopic: number
-  } & ServiceBus$ICreateTopicOptions;
+  } & ICreateTopicOptions;
 
-  declare interface ServiceBus$ICreateSubscriptionOptions {
+  declare interface Azure$ServiceBus$ICreateSubscriptionOptions {
     DefaultMessageTimeToLive: string;
     EnableDeadLetteringOnFilterEvaluationExceptions: boolean;
     EnableDeadLetteringOnMessageExpiration: boolean;
@@ -101,12 +114,12 @@ declare module "azure-sb" {
     RequiresSession: boolean;
   }
 
-  declare interface ServiceBus$PaginationOptions {
+  declare interface Azure$ServiceBus$PaginationOptions {
     top: number;
     skip: number;
   }
 
-  declare interface ServiceBus$ICreateRuleOptions {
+  declare interface Azure$ServiceBus$ICreateRuleOptions {
     trueFilter: string;
     falseFilter: string;
     sqlExpressionFilter: string;
@@ -114,14 +127,14 @@ declare module "azure-sb" {
     sqlRuleAction: string;
   }
 
-  declare interface ServiceBus$ICreateNotificationHubOptions {
-    apns: ServiceBus$Dictionary<string>;
-    gcm: ServiceBus$Dictionary<string>;
-    mpns: ServiceBus$Dictionary<string>;
-    wns: ServiceBus$Dictionary<string>;
+  declare interface Azure$ServiceBus$ICreateNotificationHubOptions {
+    apns: Azure$ServiceBus$Dictionary<string>;
+    gcm: Azure$ServiceBus$Dictionary<string>;
+    mpns: Azure$ServiceBus$Dictionary<string>;
+    wns: Azure$ServiceBus$Dictionary<string>;
   }
 
-  declare export interface ServiceBus$NotificationHubRegistration {
+  declare export interface Azure$ServiceBus$NotificationHubRegistration {
     BodyTemplate?: any;
     ChannelUri?: string;
     DeviceToken?: string;
@@ -133,7 +146,7 @@ declare module "azure-sb" {
     WnsHeaders?: any;
   }
 
-  declare export interface ServiceBus$NotificationHubInstallation {
+  declare export interface Azure$ServiceBus$NotificationHubInstallation {
     installationId: string;
     +lastActiveOn?: string;
     +expirationTime?: string;
@@ -159,146 +172,101 @@ declare module "azure-sb" {
     };
   }
 
-  declare export interface ServiceBus$Response {
-    body: ServiceBus$Dictionary<string | { [key: string]: any }>;
-    headers: ServiceBus$Dictionary<string>;
+  declare export interface Azure$ServiceBus$Response {
+    body: Azure$ServiceBus$Dictionary<string | { [key: string]: any }>;
+    headers: Azure$ServiceBus$Dictionary<string>;
     isSuccessful: boolean;
     md5?: string;
     statusCode: number;
   }
 
-  declare export type ServiceBus$ErrorResponse = {
+  declare export type Azure$ServiceBus$ErrorResponse = {
     body: {
       Error: {
         Code: string,
         Detail: string
       }
     }
-  } & ServiceBus$Response;
+  } & Response;
 
-  declare var npm$namespace$Models: {
-    ActiveMessageCount: typeof Models$ActiveMessageCount,
-    DeadLetterMessageCount: typeof Models$DeadLetterMessageCount,
-    ScheduledMessageCount: typeof Models$ScheduledMessageCount,
-    TransferMessageCount: typeof Models$TransferMessageCount,
-    TransferDeadLetterMessageCount: typeof Models$TransferDeadLetterMessageCount
+  declare var npm$namespace$Azure$ServiceBus$Results: {
+    Models: typeof npm$namespace$Azure$ServiceBus$Results$Models
   };
-  declare export class Models$EntityStatus {
-    constructor(...args: empty): mixed;
-    static +Active: Class<Models$EntityStatus__Active> &
-      Models$EntityStatus__Active &
-      "Active"; // "Active"
-    static +Creating: Class<Models$EntityStatus__Creating> &
-      Models$EntityStatus__Creating &
-      "Creating"; // "Creating"
-    static +Deleting: Class<Models$EntityStatus__Deleting> &
-      Models$EntityStatus__Deleting &
-      "Deleting"; // "Deleting"
-    static +Disabled: Class<Models$EntityStatus__Disabled> &
-      Models$EntityStatus__Disabled &
-      "Disabled"; // "Disabled"
-    static +ReceiveDisabled: Class<Models$EntityStatus__ReceiveDisabled> &
-      Models$EntityStatus__ReceiveDisabled &
-      "ReceiveDisabled"; // "ReceiveDisabled"
-    static +Renaming: Class<Models$EntityStatus__Renaming> &
-      Models$EntityStatus__Renaming &
-      "Renaming"; // "Renaming"
-    static +Restoring: Class<Models$EntityStatus__Restoring> &
-      Models$EntityStatus__Restoring &
-      "Restoring"; // "Restoring"
-    static +SendDisabled: Class<Models$EntityStatus__SendDisabled> &
-      Models$EntityStatus__SendDisabled &
-      "SendDisabled"; // "SendDisabled"
-    static +Unknown: Class<Models$EntityStatus__Unknown> &
-      Models$EntityStatus__Unknown &
-      "Unknown"; // "Unknown"
-  }
 
-  declare class Models$EntityStatus__Active mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Creating mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Deleting mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Disabled mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__ReceiveDisabled
-    mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Renaming mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Restoring mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__SendDisabled mixins Models$EntityStatus {}
-  declare class Models$EntityStatus__Unknown mixins Models$EntityStatus {}
+  declare var npm$namespace$Azure$ServiceBus$Results$Models: {
+    ActiveMessageCount: typeof Azure$ServiceBus$Results$Models$ActiveMessageCount,
+    DeadLetterMessageCount: typeof Azure$ServiceBus$Results$Models$DeadLetterMessageCount,
+    ScheduledMessageCount: typeof Azure$ServiceBus$Results$Models$ScheduledMessageCount,
+    TransferMessageCount: typeof Azure$ServiceBus$Results$Models$TransferMessageCount,
+    TransferDeadLetterMessageCount: typeof Azure$ServiceBus$Results$Models$TransferDeadLetterMessageCount,
+    EntityStatus: typeof Azure$ServiceBus$Results$Models$EntityStatus,
+    EntityAvailabilityStatus: typeof Azure$ServiceBus$Results$Models$EntityAvailabilityStatus
+  };
 
-  declare export class Models$EntityAvailabilityStatus {
-    constructor(...args: empty): mixed;
-    static +Available: Class<Models$EntityAvailabilityStatus__Available> &
-      Models$EntityAvailabilityStatus__Available &
-      "Available"; // "Available"
-    static +Limited: Class<Models$EntityAvailabilityStatus__Limited> &
-      Models$EntityAvailabilityStatus__Limited &
-      "Limited"; // "Limited"
-    static +Renaming: Class<Models$EntityAvailabilityStatus__Renaming> &
-      Models$EntityAvailabilityStatus__Renaming &
-      "Renaming"; // "Renaming"
-    static +Restoring: Class<Models$EntityAvailabilityStatus__Restoring> &
-      Models$EntityAvailabilityStatus__Restoring &
-      "Restoring"; // "Restoring"
-    static +Unknown: Class<Models$EntityAvailabilityStatus__Unknown> &
-      Models$EntityAvailabilityStatus__Unknown &
-      "Unknown"; // "Unknown"
-  }
+  declare export var Azure$ServiceBus$Results$Models$EntityStatus: {|
+    +Active: "Active", // "Active"
+    +Creating: "Creating", // "Creating"
+    +Deleting: "Deleting", // "Deleting"
+    +Disabled: "Disabled", // "Disabled"
+    +ReceiveDisabled: "ReceiveDisabled", // "ReceiveDisabled"
+    +Renaming: "Renaming", // "Renaming"
+    +Restoring: "Restoring", // "Restoring"
+    +SendDisabled: "SendDisabled", // "SendDisabled"
+    +Unknown: "Unknown" // "Unknown"
+  |};
 
-  declare class Models$EntityAvailabilityStatus__Available
-    mixins Models$EntityAvailabilityStatus {}
-  declare class Models$EntityAvailabilityStatus__Limited
-    mixins Models$EntityAvailabilityStatus {}
-  declare class Models$EntityAvailabilityStatus__Renaming
-    mixins Models$EntityAvailabilityStatus {}
-  declare class Models$EntityAvailabilityStatus__Restoring
-    mixins Models$EntityAvailabilityStatus {}
-  declare class Models$EntityAvailabilityStatus__Unknown
-    mixins Models$EntityAvailabilityStatus {}
+  declare export var Azure$ServiceBus$Results$Models$EntityAvailabilityStatus: {|
+    +Available: "Available", // "Available"
+    +Limited: "Limited", // "Limited"
+    +Renaming: "Renaming", // "Renaming"
+    +Restoring: "Restoring", // "Restoring"
+    +Unknown: "Unknown" // "Unknown"
+  |};
 
-  declare interface Models$Base {
+  declare interface Azure$ServiceBus$Results$Models$Base {
     _: {
       ContentRootElement: string,
       id: string,
       title: string,
-      published: ServiceBus$DateString,
-      updated: ServiceBus$DateString,
+      published: Azure$ServiceBus$DateString,
+      updated: Azure$ServiceBus$DateString,
       author?: {
         name: string
       },
       link: string
     };
-    CreatedAt: ServiceBus$DateString;
+    CreatedAt: Azure$ServiceBus$DateString;
   }
 
-  declare type Models$ExtendedBase = {
+  declare type Azure$ServiceBus$Results$Models$ExtendedBase = {
     AuthorizationRules: string,
     AutoDeleteOnIdle: string,
     DefaultMessageTimeToLive: string,
-    DuplicateDetectionHistoryTimeWindow: ServiceBus$Duration,
+    DuplicateDetectionHistoryTimeWindow: Azure$ServiceBus$Duration,
     EnableBatchedOperations: string,
     EnableExpress: string,
     EnablePartitioning: string,
-    Models$EntityAvailabilityStatus: string,
+    EntityAvailabilityStatus: string,
     IsAnonymousAccessible: string,
     MaxSizeInMegabytes: string,
     RequiresDuplicateDetection: string,
     SizeInBytes: string,
-    Status: Models$EntityStatus,
-    UpdatedAt: ServiceBus$DateString
-  } & Models$Base;
+    Status: $Values<typeof Azure$ServiceBus$Results$Models$EntityStatus>,
+    UpdatedAt: Azure$ServiceBus$DateString
+  } & Base;
 
-  declare export var Models$ActiveMessageCount: any; // "d2p1:ActiveMessageCount";
+  declare export var Azure$ServiceBus$Results$Models$ActiveMessageCount: any; // "d2p1:ActiveMessageCount";
 
-  declare export var Models$DeadLetterMessageCount: any; // "d2p1:DeadLetterMessageCount";
+  declare export var Azure$ServiceBus$Results$Models$DeadLetterMessageCount: any; // "d2p1:DeadLetterMessageCount";
 
-  declare export var Models$ScheduledMessageCount: any; // "d2p1:ScheduledMessageCount";
+  declare export var Azure$ServiceBus$Results$Models$ScheduledMessageCount: any; // "d2p1:ScheduledMessageCount";
 
-  declare export var Models$TransferMessageCount: any; // "d2p1:TransferMessageCount";
+  declare export var Azure$ServiceBus$Results$Models$TransferMessageCount: any; // "d2p1:TransferMessageCount";
 
-  declare export var Models$TransferDeadLetterMessageCount: any; // "d2p1:TransferDeadLetterMessageCount";
+  declare export var Azure$ServiceBus$Results$Models$TransferDeadLetterMessageCount: any; // "d2p1:TransferDeadLetterMessageCount";
 
-  declare export type Models$Topic = {
-    AccessedAt: ServiceBus$DateString,
+  declare export type Azure$ServiceBus$Results$Models$Topic = {
+    AccessedAt: Azure$ServiceBus$DateString,
     CountDetails: {
       [key: string]: string
     },
@@ -308,19 +276,19 @@ declare module "azure-sb" {
     SubscriptionCount: string,
     SupportOrdering: string,
     TopicName: string
-  } & Models$ExtendedBase;
+  } & ExtendedBase;
 
-  declare export type Models$Queue = {
+  declare export type Azure$ServiceBus$Results$Models$Queue = {
     DeadLetteringOnMessageExpiration: string,
-    LockDuration: ServiceBus$Duration,
+    LockDuration: Azure$ServiceBus$Duration,
     MaxDeliveryCount: string,
     MessageCount: string,
     QueueName: string,
     RequiresSession: string,
     SupportOrdering: string
-  } & Models$ExtendedBase;
+  } & ExtendedBase;
 
-  declare export type Models$Subscription = {
+  declare export type Azure$ServiceBus$Results$Models$Subscription = {
     CountDetails: {
       [key: string]: string
     },
@@ -332,19 +300,19 @@ declare module "azure-sb" {
     RequiresSession: string,
     SubscriptionName: string,
     TopicName: string
-  } & Models$ExtendedBase;
+  } & ExtendedBase;
 
   /**
    * @see https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-sql-filter
    */
-  declare interface Models$SqlFilter {
+  declare interface Azure$ServiceBus$Results$Models$SqlFilter {
     +CompatibilityLevel: string;
-    Parameters?: ServiceBus$Dictionary<any>;
+    Parameters?: Azure$ServiceBus$Dictionary<any>;
     RequiresPreprocessing?: string;
     SqlExpression: string;
   }
 
-  declare type Models$CorrelationFilter = $Shape<{
+  declare type Azure$ServiceBus$Results$Models$CorrelationFilter = $Shape<{
     ContentType: string,
     CorrelationId: string,
     Label: string,
@@ -356,58 +324,65 @@ declare module "azure-sb" {
     To: string
   }>;
 
-  declare export type Models$Rule = {
-    Action: string | Models$SqlFilter,
-    Filter: Models$SqlFilter | Models$CorrelationFilter,
+  declare export type Azure$ServiceBus$Results$Models$Rule = {
+    Action: string | Azure$ServiceBus$Results$Models$SqlFilter,
+    Filter:
+      | Azure$ServiceBus$Results$Models$SqlFilter
+      | Azure$ServiceBus$Results$Models$CorrelationFilter,
     Name: string,
     TopicName: string,
     SubscriptionName: string,
     RuleName: string
-  } & Models$Base;
+  } & Base;
 
-  declare export type ServiceBus$ResponseCallback = (
+  declare export type Azure$ServiceBus$ResponseCallback = (
     error: Error | null,
-    response: ServiceBus$Response
+    response: Azure$ServiceBus$Response
   ) => void;
 
-  declare export type ServiceBus$ResultAndResponseCallback = (
+  declare export type Azure$ServiceBus$ResultAndResponseCallback = (
     error: Error | null,
-    result: boolean | ResultsModelsModels$Base | ResultsModelsModels$Base[],
-    response: ServiceBus$Response
+    result:
+      | boolean
+      | Azure$ServiceBus$Results$Models$Base
+      | Azure$ServiceBus$Results$Models$Base[],
+    response: Azure$ServiceBus$Response
   ) => void;
 
-  declare export type ServiceBus$TypedResultAndResponseCallback<T> = (
+  declare export type Azure$ServiceBus$TypedResultAndResponseCallback<T> = (
     error: Error | null,
     result: T,
-    response: ServiceBus$Response
+    response: Azure$ServiceBus$Response
   ) => void;
 
-  declare export type ServiceBus$BrokerProperties = $Shape<ServiceBus$IBrokerProperties>;
+  declare export type Azure$ServiceBus$BrokerProperties = $Shape<Azure$ServiceBus$IBrokerProperties>;
 
-  declare export type ServiceBus$BrokerPropertiesResponse = ServiceBus$IBrokerPropertiesResponse &
-    $Shape<ServiceBus$IBrokerProperties>;
+  declare export type Azure$ServiceBus$BrokerPropertiesResponse = Azure$ServiceBus$IBrokerPropertiesResponse &
+    $Shape<Azure$ServiceBus$IBrokerProperties>;
 
-  declare export type ServiceBus$CreateQueueOptions = $Shape<ServiceBus$IQueueOptions>;
+  declare export type Azure$ServiceBus$CreateQueueOptions = $Shape<Azure$ServiceBus$IQueueOptions>;
 
-  declare export type ServiceBus$CreateTopicOptions = $Shape<ServiceBus$ICreateTopicOptions>;
+  declare export type Azure$ServiceBus$CreateTopicOptions = $Shape<Azure$ServiceBus$ICreateTopicOptions>;
 
-  declare export type ServiceBus$CreateTopicIfNotExistsOptions = $Shape<ServiceBus$ICreateTopicIfNotExistsOptions>;
+  declare export type Azure$ServiceBus$CreateTopicIfNotExistsOptions = $Shape<Azure$ServiceBus$ICreateTopicIfNotExistsOptions>;
 
-  declare export type ServiceBus$CreateSubscriptionOptions = $Shape<ServiceBus$ICreateSubscriptionOptions>;
+  declare export type Azure$ServiceBus$CreateSubscriptionOptions = $Shape<Azure$ServiceBus$ICreateSubscriptionOptions>;
 
-  declare export type ServiceBus$ListSubscriptionsOptions = $Shape<ServiceBus$PaginationOptions>;
+  declare export type Azure$ServiceBus$ListSubscriptionsOptions = $Shape<Azure$ServiceBus$PaginationOptions>;
 
-  declare export type ServiceBus$ListRulesOptions = $Shape<ServiceBus$PaginationOptions>;
+  declare export type Azure$ServiceBus$ListRulesOptions = $Shape<Azure$ServiceBus$PaginationOptions>;
 
-  declare export type ServiceBus$ListTopicsOptions = $Shape<ServiceBus$PaginationOptions>;
+  declare export type Azure$ServiceBus$ListTopicsOptions = $Shape<Azure$ServiceBus$PaginationOptions>;
 
-  declare export type ServiceBus$ListQueuesOptions = $Shape<ServiceBus$PaginationOptions>;
+  declare export type Azure$ServiceBus$ListQueuesOptions = $Shape<Azure$ServiceBus$PaginationOptions>;
 
-  declare export type ServiceBus$CreateRuleOptions = $Shape<ServiceBus$ICreateRuleOptions>;
+  declare export type Azure$ServiceBus$CreateRuleOptions = $Shape<Azure$ServiceBus$ICreateRuleOptions>;
 
-  declare export type ServiceBus$CreateNotificationHubOptions = $Shape<ServiceBus$ICreateNotificationHubOptions>;
+  declare export type Azure$ServiceBus$CreateNotificationHubOptions = $Shape<Azure$ServiceBus$ICreateNotificationHubOptions>;
 
-  declare export type ServiceBus$ListNotificationHubsOptions = $Shape<ServiceBus$PaginationOptions>;
+  declare export type Azure$ServiceBus$ListNotificationHubsOptions = $Shape<Azure$ServiceBus$PaginationOptions>;
 
-  declare export type ServiceBus$MessageOrName = ServiceBus$Message | string;
+  declare export type Azure$ServiceBus$MessageOrName =
+    | Azure$ServiceBus$Message
+    | string;
 }
