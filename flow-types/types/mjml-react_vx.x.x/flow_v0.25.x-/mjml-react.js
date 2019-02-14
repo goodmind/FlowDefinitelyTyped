@@ -1,6 +1,12 @@
 declare module "mjml-react" {
   import typeof * as React from "react";
 
+  declare var npm$namespace$extensions: {
+    MjmlComment: typeof extensions$MjmlComment,
+    MjmlConditionalComment: typeof extensions$MjmlConditionalComment,
+    MjmlTrackingPixel: typeof extensions$MjmlTrackingPixel,
+    MjmlYahooStyle: typeof extensions$MjmlYahooStyle
+  };
   declare class extensions$MjmlComment
     mixins React.Component<{
         children: string
