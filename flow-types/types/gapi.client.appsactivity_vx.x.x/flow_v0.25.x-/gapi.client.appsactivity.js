@@ -1,26 +1,30 @@
 declare module "gapi.client.appsactivity" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    activities: typeof client$activities
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    activities: typeof gapi$client$activities
   };
 
   /**
    * Load G Suite Activity API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appsactivity",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appsactivity",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$activities: appsactivity$appsactivity$ActivitiesResource;
+  declare var gapi$client$activities: appsactivity$ActivitiesResource;
 
-  declare interface appsactivity$Activity {
+  declare interface gapi$client$appsactivity$Activity {
     /**
      * The fields common to all of the singleEvents that make up the Activity.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.appsactivity" {
     singleEvents?: appsactivity$Event[];
   }
 
-  declare interface appsactivity$Event {
+  declare interface gapi$client$appsactivity$Event {
     /**
      * Additional event types. Some events may have multiple types when multiple actions are part of a single event. For example, creating a document,
      * renaming it, and sharing it may be part of a single file-creation event.
@@ -80,11 +84,11 @@ declare module "gapi.client.appsactivity" {
     user?: appsactivity$User;
   }
 
-  declare interface appsactivity$ListActivitiesResponse {
+  declare interface gapi$client$appsactivity$ListActivitiesResponse {
     /**
      * List of activities.
      */
-    client$activities?: appsactivity$Activity[];
+    activities?: gapi$client$appsactivity$Activity[];
 
     /**
      * Token for the next page of results.
@@ -92,7 +96,7 @@ declare module "gapi.client.appsactivity" {
     nextPageToken?: string;
   }
 
-  declare interface appsactivity$Move {
+  declare interface gapi$client$appsactivity$Move {
     /**
      * The added parent(s).
      */
@@ -104,7 +108,7 @@ declare module "gapi.client.appsactivity" {
     removedParents?: appsactivity$Parent[];
   }
 
-  declare interface appsactivity$Parent {
+  declare interface gapi$client$appsactivity$Parent {
     /**
      * The parent's ID.
      */
@@ -121,7 +125,7 @@ declare module "gapi.client.appsactivity" {
     title?: string;
   }
 
-  declare interface appsactivity$Permission {
+  declare interface gapi$client$appsactivity$Permission {
     /**
      * The name of the user or group the permission applies to.
      */
@@ -153,26 +157,26 @@ declare module "gapi.client.appsactivity" {
     withLink?: boolean;
   }
 
-  declare interface appsactivity$PermissionChange {
+  declare interface gapi$client$appsactivity$PermissionChange {
     /**
      * Lists all Permission objects added.
      */
-    addedPermissions?: appsactivity$Permission[];
+    addedPermissions?: gapi$client$appsactivity$Permission[];
 
     /**
      * Lists all Permission objects removed.
      */
-    removedPermissions?: appsactivity$Permission[];
+    removedPermissions?: gapi$client$appsactivity$Permission[];
   }
 
-  declare interface appsactivity$Photo {
+  declare interface gapi$client$appsactivity$Photo {
     /**
      * The URL of the photo.
      */
     url?: string;
   }
 
-  declare interface appsactivity$Rename {
+  declare interface gapi$client$appsactivity$Rename {
     /**
      * The new title.
      */
@@ -184,7 +188,7 @@ declare module "gapi.client.appsactivity" {
     oldTitle?: string;
   }
 
-  declare interface appsactivity$Target {
+  declare interface gapi$client$appsactivity$Target {
     /**
      * The ID of the target. For example, in Google Drive, this is the file or folder ID.
      */
@@ -201,7 +205,7 @@ declare module "gapi.client.appsactivity" {
     name?: string;
   }
 
-  declare interface appsactivity$User {
+  declare interface gapi$client$appsactivity$User {
     /**
      * A boolean which indicates whether the specified User was deleted. If true, name, photo and permission_id will be omitted.
      */
@@ -226,10 +230,10 @@ declare module "gapi.client.appsactivity" {
     /**
      * The profile photo of the user. Not present if the user has no profile photo.
      */
-    photo?: appsactivity$Photo;
+    photo?: gapi$client$appsactivity$Photo;
   }
 
-  declare interface appsactivity$ActivitiesResource {
+  declare interface gapi$client$appsactivity$ActivitiesResource {
     /**
      * Returns a list of activities visible to the current logged in user. Visible activities are determined by the visiblity settings of the object that was
      * acted on, e.g. Drive files a user can see. An activity is a record of past events. Multiple events may be merged if they are similar. A request is
@@ -307,6 +311,6 @@ declare module "gapi.client.appsactivity" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<appsactivity$ListActivitiesResponse>;
+    }): Request<gapi$client$appsactivity$ListActivitiesResponse>;
   }
 }
