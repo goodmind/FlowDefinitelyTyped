@@ -30,5 +30,5 @@ declare module "is-color" {
 
   declare function isColor$isTransparent(str: string): boolean;
 
-  declare module.exports: typeof isColor;
+  declare export default typeof isColor;
 }
