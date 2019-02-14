@@ -1,26 +1,30 @@
 declare module "gapi.client.groupsmigration" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    archive: typeof client$archive
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    archive: typeof gapi$client$archive
   };
 
   /**
    * Load Groups Migration API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "groupsmigration",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "groupsmigration",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$archive: groupsmigration$groupsmigration$ArchiveResource;
+  declare var gapi$client$archive: groupsmigration$ArchiveResource;
 
-  declare interface groupsmigration$Groups {
+  declare interface gapi$client$groupsmigration$Groups {
     /**
      * The kind of insert resource this is.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.groupsmigration" {
     responseCode?: string;
   }
 
-  declare interface groupsmigration$ArchiveResource {
+  declare interface gapi$client$groupsmigration$ArchiveResource {
     /**
      * Inserts a new mail into the archive of the Google group.
      */
@@ -77,6 +81,6 @@ declare module "gapi.client.groupsmigration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<groupsmigration$Groups>;
+    }): Request<gapi$client$groupsmigration$Groups>;
   }
 }
