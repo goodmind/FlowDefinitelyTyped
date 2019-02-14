@@ -1,29 +1,33 @@
 declare module "gapi.client.androiddeviceprovisioning" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations,
-    partners: typeof client$partners
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations,
+    partners: typeof gapi$client$partners
   };
 
   /**
    * Load Android Device Provisioning Partner API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androiddeviceprovisioning",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androiddeviceprovisioning",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: androiddeviceprovisioning$androiddeviceprovisioning$OperationsResource;
+  declare var gapi$client$operations: androiddeviceprovisioning$OperationsResource;
 
-  declare var client$partners: androiddeviceprovisioning$androiddeviceprovisioning$PartnersResource;
+  declare var gapi$client$partners: androiddeviceprovisioning$PartnersResource;
 
-  declare interface androiddeviceprovisioning$ClaimDeviceRequest {
+  declare interface gapi$client$androiddeviceprovisioning$ClaimDeviceRequest {
     /**
      * The customer to claim for.
      */
@@ -40,7 +44,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$ClaimDeviceResponse {
+  declare interface gapi$client$androiddeviceprovisioning$ClaimDeviceResponse {
     /**
      * The device ID of the claimed device.
      */
@@ -53,14 +57,14 @@ declare module "gapi.client.androiddeviceprovisioning" {
     deviceName?: string;
   }
 
-  declare interface androiddeviceprovisioning$ClaimDevicesRequest {
+  declare interface gapi$client$androiddeviceprovisioning$ClaimDevicesRequest {
     /**
      * List of claims.
      */
     claims?: androiddeviceprovisioning$PartnerClaim[];
   }
 
-  declare interface androiddeviceprovisioning$Company {
+  declare interface gapi$client$androiddeviceprovisioning$Company {
     /**
      * Input only. Optional. Email address of customer's users in the admin role.
      * Each email address must be associated with a Google Account.
@@ -94,16 +98,16 @@ declare module "gapi.client.androiddeviceprovisioning" {
     ownerEmails?: string[];
   }
 
-  declare interface androiddeviceprovisioning$CreateCustomerRequest {
+  declare interface gapi$client$androiddeviceprovisioning$CreateCustomerRequest {
     /**
      * Required. The company data to populate the new customer. Must contain a
      * value for `companyName` and at least one `owner_email` that's associated
      * with a Google Account. The values for `companyId` and `name` must be empty.
      */
-    customer?: androiddeviceprovisioning$Company;
+    customer?: gapi$client$androiddeviceprovisioning$Company;
   }
 
-  declare interface androiddeviceprovisioning$Device {
+  declare interface gapi$client$androiddeviceprovisioning$Device {
     /**
      * Claims.
      */
@@ -136,7 +140,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     name?: string;
   }
 
-  declare interface androiddeviceprovisioning$DeviceClaim {
+  declare interface gapi$client$androiddeviceprovisioning$DeviceClaim {
     /**
      * Owner ID.
      */
@@ -148,7 +152,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$DeviceIdentifier {
+  declare interface gapi$client$androiddeviceprovisioning$DeviceIdentifier {
     /**
      * IMEI number.
      */
@@ -172,14 +176,14 @@ declare module "gapi.client.androiddeviceprovisioning" {
     serialNumber?: string;
   }
 
-  declare interface androiddeviceprovisioning$DeviceMetadata {
+  declare interface gapi$client$androiddeviceprovisioning$DeviceMetadata {
     /**
      * Metadata entries
      */
     entries?: Record<string, string>;
   }
 
-  declare interface androiddeviceprovisioning$DevicesLongRunningOperationMetadata {
+  declare interface gapi$client$androiddeviceprovisioning$DevicesLongRunningOperationMetadata {
     /**
      * Number of devices parsed in your requests.
      */
@@ -196,7 +200,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     progress?: number;
   }
 
-  declare interface androiddeviceprovisioning$DevicesLongRunningOperationResponse {
+  declare interface gapi$client$androiddeviceprovisioning$DevicesLongRunningOperationResponse {
     /**
      * Processing status for each device.
      * One `PerDeviceStatus` per device. The order is the same as in your requests.
@@ -209,11 +213,11 @@ declare module "gapi.client.androiddeviceprovisioning" {
     successCount?: number;
   }
 
-  declare interface androiddeviceprovisioning$FindDevicesByDeviceIdentifierRequest {
+  declare interface gapi$client$androiddeviceprovisioning$FindDevicesByDeviceIdentifierRequest {
     /**
      * The device identifier to search.
      */
-    deviceIdentifier?: androiddeviceprovisioning$DeviceIdentifier;
+    deviceIdentifier?: gapi$client$androiddeviceprovisioning$DeviceIdentifier;
 
     /**
      * Number of devices to show.
@@ -226,11 +230,11 @@ declare module "gapi.client.androiddeviceprovisioning" {
     pageToken?: string;
   }
 
-  declare interface androiddeviceprovisioning$FindDevicesByDeviceIdentifierResponse {
+  declare interface gapi$client$androiddeviceprovisioning$FindDevicesByDeviceIdentifierResponse {
     /**
      * Found devices.
      */
-    devices?: androiddeviceprovisioning$Device[];
+    devices?: gapi$client$androiddeviceprovisioning$Device[];
 
     /**
      * Page token of the next page.
@@ -238,7 +242,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     nextPageToken?: string;
   }
 
-  declare interface androiddeviceprovisioning$FindDevicesByOwnerRequest {
+  declare interface gapi$client$androiddeviceprovisioning$FindDevicesByOwnerRequest {
     /**
      * List of customer IDs to search for.
      */
@@ -260,11 +264,11 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$FindDevicesByOwnerResponse {
+  declare interface gapi$client$androiddeviceprovisioning$FindDevicesByOwnerResponse {
     /**
      * Devices found.
      */
-    devices?: androiddeviceprovisioning$Device[];
+    devices?: gapi$client$androiddeviceprovisioning$Device[];
 
     /**
      * Page token of the next page.
@@ -272,14 +276,14 @@ declare module "gapi.client.androiddeviceprovisioning" {
     nextPageToken?: string;
   }
 
-  declare interface androiddeviceprovisioning$ListCustomersResponse {
+  declare interface gapi$client$androiddeviceprovisioning$ListCustomersResponse {
     /**
      * List of customers related to this partner.
      */
-    customers?: androiddeviceprovisioning$Company[];
+    customers?: gapi$client$androiddeviceprovisioning$Company[];
   }
 
-  declare interface androiddeviceprovisioning$Operation {
+  declare interface gapi$client$androiddeviceprovisioning$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -313,7 +317,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     response?: Record<string, any>;
   }
 
-  declare interface androiddeviceprovisioning$OperationPerDevice {
+  declare interface gapi$client$androiddeviceprovisioning$OperationPerDevice {
     /**
      * Request to claim a device.
      */
@@ -335,7 +339,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     updateMetadata?: androiddeviceprovisioning$UpdateMetadataArguments;
   }
 
-  declare interface androiddeviceprovisioning$PartnerClaim {
+  declare interface gapi$client$androiddeviceprovisioning$PartnerClaim {
     /**
      * Customer ID to claim for.
      */
@@ -344,12 +348,12 @@ declare module "gapi.client.androiddeviceprovisioning" {
     /**
      * Device identifier of the device.
      */
-    deviceIdentifier?: androiddeviceprovisioning$DeviceIdentifier;
+    deviceIdentifier?: gapi$client$androiddeviceprovisioning$DeviceIdentifier;
 
     /**
      * Metadata to set at claim.
      */
-    deviceMetadata?: androiddeviceprovisioning$DeviceMetadata;
+    deviceMetadata?: gapi$client$androiddeviceprovisioning$DeviceMetadata;
 
     /**
      * Section type to claim.
@@ -357,7 +361,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$PartnerUnclaim {
+  declare interface gapi$client$androiddeviceprovisioning$PartnerUnclaim {
     /**
      * Device ID of the device.
      */
@@ -366,7 +370,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     /**
      * Device identifier of the device.
      */
-    deviceIdentifier?: androiddeviceprovisioning$DeviceIdentifier;
+    deviceIdentifier?: gapi$client$androiddeviceprovisioning$DeviceIdentifier;
 
     /**
      * Section type to unclaim.
@@ -374,7 +378,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$PerDeviceStatusInBatch {
+  declare interface gapi$client$androiddeviceprovisioning$PerDeviceStatusInBatch {
     /**
      * Device ID of the device if process succeeds.
      */
@@ -396,7 +400,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     status?: string;
   }
 
-  declare interface androiddeviceprovisioning$Status {
+  declare interface gapi$client$androiddeviceprovisioning$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -416,7 +420,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     message?: string;
   }
 
-  declare interface androiddeviceprovisioning$UnclaimDeviceRequest {
+  declare interface gapi$client$androiddeviceprovisioning$UnclaimDeviceRequest {
     /**
      * The device ID returned by `ClaimDevice`.
      */
@@ -425,7 +429,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
     /**
      * The device identifier you used when you claimed this device.
      */
-    deviceIdentifier?: androiddeviceprovisioning$DeviceIdentifier;
+    deviceIdentifier?: gapi$client$androiddeviceprovisioning$DeviceIdentifier;
 
     /**
      * The section type to unclaim for.
@@ -433,28 +437,28 @@ declare module "gapi.client.androiddeviceprovisioning" {
     sectionType?: string;
   }
 
-  declare interface androiddeviceprovisioning$UnclaimDevicesRequest {
+  declare interface gapi$client$androiddeviceprovisioning$UnclaimDevicesRequest {
     /**
      * List of devices to unclaim.
      */
-    unclaims?: androiddeviceprovisioning$PartnerUnclaim[];
+    unclaims?: gapi$client$androiddeviceprovisioning$PartnerUnclaim[];
   }
 
-  declare interface androiddeviceprovisioning$UpdateDeviceMetadataInBatchRequest {
+  declare interface gapi$client$androiddeviceprovisioning$UpdateDeviceMetadataInBatchRequest {
     /**
      * List of metadata updates.
      */
     updates?: androiddeviceprovisioning$UpdateMetadataArguments[];
   }
 
-  declare interface androiddeviceprovisioning$UpdateDeviceMetadataRequest {
+  declare interface gapi$client$androiddeviceprovisioning$UpdateDeviceMetadataRequest {
     /**
      * The metdata to set.
      */
-    deviceMetadata?: androiddeviceprovisioning$DeviceMetadata;
+    deviceMetadata?: gapi$client$androiddeviceprovisioning$DeviceMetadata;
   }
 
-  declare interface androiddeviceprovisioning$UpdateMetadataArguments {
+  declare interface gapi$client$androiddeviceprovisioning$UpdateMetadataArguments {
     /**
      * Device ID of the device.
      */
@@ -463,15 +467,15 @@ declare module "gapi.client.androiddeviceprovisioning" {
     /**
      * Device identifier.
      */
-    deviceIdentifier?: androiddeviceprovisioning$DeviceIdentifier;
+    deviceIdentifier?: gapi$client$androiddeviceprovisioning$DeviceIdentifier;
 
     /**
      * The metadata to update.
      */
-    deviceMetadata?: androiddeviceprovisioning$DeviceMetadata;
+    deviceMetadata?: gapi$client$androiddeviceprovisioning$DeviceMetadata;
   }
 
-  declare interface androiddeviceprovisioning$OperationsResource {
+  declare interface gapi$client$androiddeviceprovisioning$OperationsResource {
     /**
      * Gets the latest state of a long-running operation.  Clients can use this
      * method to poll the operation result at intervals as recommended by the API
@@ -547,10 +551,10 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Operation>;
+    }): Request<gapi$client$androiddeviceprovisioning$Operation>;
   }
 
-  declare interface androiddeviceprovisioning$CustomersResource {
+  declare interface gapi$client$androiddeviceprovisioning$CustomersResource {
     /**
      * Creates a customer for zero-touch enrollment. After the method returns
      * successfully, admin and owner roles can manage devices and EMM configs
@@ -628,7 +632,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Company>;
+    }): Request<gapi$client$androiddeviceprovisioning$Company>;
 
     /**
      * Lists the customers that are enrolled to the reseller identified by the
@@ -705,10 +709,10 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$ListCustomersResponse>;
+    }): Request<gapi$client$androiddeviceprovisioning$ListCustomersResponse>;
   }
 
-  declare interface androiddeviceprovisioning$DevicesResource {
+  declare interface gapi$client$androiddeviceprovisioning$DevicesResource {
     /**
      * Claim the device identified by device identifier.
      */
@@ -782,7 +786,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$ClaimDeviceResponse>;
+    }): Request<gapi$client$androiddeviceprovisioning$ClaimDeviceResponse>;
 
     /**
      * Claim devices asynchronously.
@@ -857,7 +861,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Operation>;
+    }): Request<gapi$client$androiddeviceprovisioning$Operation>;
 
     /**
      * Find devices by device identifier.
@@ -932,7 +936,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$FindDevicesByDeviceIdentifierResponse>;
+    }): Request<gapi$client$androiddeviceprovisioning$FindDevicesByDeviceIdentifierResponse>;
 
     /**
      * Find devices by ownership.
@@ -1007,7 +1011,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$FindDevicesByOwnerResponse>;
+    }): Request<gapi$client$androiddeviceprovisioning$FindDevicesByOwnerResponse>;
 
     /**
      * Get a device.
@@ -1082,7 +1086,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Device>;
+    }): Request<gapi$client$androiddeviceprovisioning$Device>;
 
     /**
      * Update the metadata.
@@ -1162,7 +1166,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$DeviceMetadata>;
+    }): Request<gapi$client$androiddeviceprovisioning$DeviceMetadata>;
 
     /**
      * Unclaim the device identified by the `device_id` or the `deviceIdentifier`.
@@ -1312,7 +1316,7 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Operation>;
+    }): Request<gapi$client$androiddeviceprovisioning$Operation>;
 
     /**
      * Set metadata in batch asynchronously.
@@ -1387,11 +1391,11 @@ declare module "gapi.client.androiddeviceprovisioning" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<androiddeviceprovisioning$Operation>;
+    }): Request<gapi$client$androiddeviceprovisioning$Operation>;
   }
 
-  declare interface androiddeviceprovisioning$PartnersResource {
-    customers: androiddeviceprovisioning$CustomersResource;
-    devices: androiddeviceprovisioning$DevicesResource;
+  declare interface gapi$client$androiddeviceprovisioning$PartnersResource {
+    customers: gapi$client$androiddeviceprovisioning$CustomersResource;
+    devices: gapi$client$androiddeviceprovisioning$DevicesResource;
   }
 }
