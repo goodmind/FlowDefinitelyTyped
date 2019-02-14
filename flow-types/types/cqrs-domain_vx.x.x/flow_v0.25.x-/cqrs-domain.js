@@ -17,34 +17,34 @@ declare module "cqrs-domain" {
     apply(event: any, data?: any, version?: number): void;
 
     /**
- * Sets attributes for the aggregate.
- * @example :
-aggregate.set('firstname', 'Jack');
-// or
-aggregate.set({
-  firstname: 'Jack',
-  lastname: 'X-Man'
-});
- */
+     * Sets attributes for the aggregate.
+     * @example :
+     * aggregate.set('firstname', 'Jack');
+     * // or
+     * aggregate.set({
+     *   firstname: 'Jack',
+     *   lastname: 'X-Man'
+     * });
+     */
     set(attribute: any, value?: any): void;
 
     /**
- * Gets an attribute of the vm.
- * @param attr The attribute name.
- * @return The result value.
- * @example :
-aggregate.get('firstname'); // returns 'Jack'
- */
+     * Gets an attribute of the vm.
+     * @param attr The attribute name.
+     * @return The result value.
+     * @example :
+     * aggregate.get('firstname'); // returns 'Jack'
+     */
     get(attr: string): any;
 
     /**
- * Returns `true` if the attribute contains a value that is not null
- * or undefined.
- * @param attr The attribute name.
- * @return The result value.
- * @example :
-aggregate.has('firstname'); // returns true or false
- */
+     * Returns `true` if the attribute contains a value that is not null
+     * or undefined.
+     * @param attr The attribute name.
+     * @return The result value.
+     * @example :
+     * aggregate.has('firstname'); // returns true or false
+     */
     has(attr: string): boolean;
 
     /**
@@ -419,7 +419,7 @@ aggregate.has('firstname'); // returns true or false
   declare type Domain$commandHandlerHandler = (
     aggId: string,
     cmd: any,
-    Domain$commandHandler: any,
+    commandHandler: any,
     callback?: (err: string | Error) => string | Error
   ) => void | string | Error;
 
@@ -550,30 +550,28 @@ aggregate.has('firstname'); // returns true or false
      * @param definition the definition to be injected
      * @returns to be able to chain...
      */
-    Domain$defineCommand(
-      definition: Domain$CommandDefinition
-    ): Domain$CqrsDomain;
+    defineCommand(definition: Domain$CommandDefinition): Domain$CqrsDomain;
 
     /**
      * Inject definition for event structure.
      * @param definition the definition to be injected
      * @returns to be able to chain...
      */
-    Domain$defineEvent(definition: Domain$EventDefinition): Domain$CqrsDomain;
+    defineEvent(definition: Domain$EventDefinition): Domain$CqrsDomain;
 
     /**
- * Call this function to initialize the domain.
- * @param callback the function that will be called when this action has finished [optional]
-            `function(err, warnings){}`
- */
+     * Call this function to initialize the domain.
+     * @param callback the function that will be called when this action has finished [optional]
+     *             `function(err, warnings){}`
+     */
     init(cb: (err: Error, warnings: Error[]) => void): void;
 
     /**
- * Call this function to let the domain handle it.
- * @param cmd the command object
- * @param callback the function that will be called when this action has finished [optional]
-           `function(err, evts, aggregateData, meta){}` evts is of type Array, aggregateData and meta are an object
- */
+     * Call this function to let the domain handle it.
+     * @param cmd the command object
+     * @param callback the function that will be called when this action has finished [optional]
+     *            `function(err, evts, aggregateData, meta){}` evts is of type Array, aggregateData and meta are an object
+     */
     handle(
       cmd: any,
       cb?:
@@ -627,15 +625,15 @@ aggregate.has('firstname'); // returns true or false
     createCommandRejectedEvent(cmd: any, err: Error): any;
 
     /**
- * Is called when dispatched a command.
- * @param cmd the command object
- * @param err the error
- * @param eventsToDispatch the events to dispatch
- * @param aggregateData the aggregate data
- * @param meta the meta infos
- * @param callback the function that will be called when this action has finished [optional]
-       `function(err, evts, aggregateData, meta){}` evts is of type Array, aggregateData and meta are an object
- */
+     * Is called when dispatched a command.
+     * @param cmd the command object
+     * @param err the error
+     * @param eventsToDispatch the events to dispatch
+     * @param aggregateData the aggregate data
+     * @param meta the meta infos
+     * @param callback the function that will be called when this action has finished [optional]
+     *        `function(err, evts, aggregateData, meta){}` evts is of type Array, aggregateData and meta are an object
+     */
     onDispatched(
       cmd: any,
       err: Error,
@@ -743,8 +741,8 @@ aggregate.has('firstname'); // returns true or false
     useLoaderExtensions?: true;
   }
   declare function Domain(
-    options: Domain$Domain$CreateDomainOptions
-  ): Domain$Domain$CqrsDomain;
+    options: Domain$CreateDomainOptions
+  ): Domain$CqrsDomain;
 
-  declare module.exports: typeof Domain;
+  declare export default typeof Domain;
 }
