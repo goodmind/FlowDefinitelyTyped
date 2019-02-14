@@ -4,7 +4,11 @@ declare module "asana" {
   declare var npm$namespace$asana: {
     Client: typeof asana$Client,
     Dispatcher: typeof asana$Dispatcher,
-    VERSION: typeof asana$VERSION
+    VERSION: typeof asana$VERSION,
+
+    auth: typeof npm$namespace$asana$auth,
+    errors: typeof npm$namespace$asana$errors,
+    resources: typeof npm$namespace$asana$resources
   };
   declare var asana$Client: asana$ClientStatic;
 
@@ -22,10 +26,7 @@ declare module "asana" {
      * @param {String} redirectUri Default redirect URI for this client
      * @param {String} asanaBaseUrl Base URL for Asana, for debugging
      */
-    (
-      dispatcher: asana$Dispatcher,
-      options?: asana$ClientOptions
-    ): asana$asana$Client;
+    (dispatcher: asana$Dispatcher, options?: asana$ClientOptions): asana$Client;
 
     /**
      * Creates a new client.
@@ -42,15 +43,15 @@ declare module "asana" {
     clientSecret?: string,
     redirectUri?: string,
     asanaBaseUrl?: string
-  } & asana$DispatcherOptions;
+  } & DispatcherOptions;
 
   declare interface asana$Client {
     /**
- * Ensures the client is authorized to make requests. Kicks off the
- * configured Oauth flow, if any.
- * @returns {Promise<asana$Client>} A promise that resolves to this client when
-authorization is complete.
- */
+     * Ensures the client is authorized to make requests. Kicks off the
+     * configured Oauth flow, if any.
+     * @returns {Promise<asana$Client>} A promise that resolves to this client when
+     * authorization is complete.
+     */
     authorize(): Promise<asana$Client>;
 
     /**
@@ -66,30 +67,30 @@ authorization is complete.
     useBasicAuth(apiKey: string): this;
 
     /**
- * Configure the client to authenticate using a Personal Access Token.
- * @param {String} accessToken The Personal Access Token to use for
-authenticating requests.
- * @return {asana$Client} this
- * @param accessToken
- * @return
- */
+     * Configure the client to authenticate using a Personal Access Token.
+     * @param {String} accessToken The Personal Access Token to use for
+     * authenticating requests.
+     * @return {asana$Client} this
+     * @param accessToken
+     * @return
+     */
     useAccessToken(accessToken: string): this;
 
     /**
- * Configure the client to authenticate via Oauth. Credentials can be
- * supplied, or they can be obtained by running an Oauth flow.
- * @param {Object} options Options for Oauth. Includes any options for
-the selected flow.
- * @option {Function} [flowType]  Type of OauthFlow to use to obtain user
-authorization. Defaults to autodetect based on environment.
- * @option {Object} [credentials] Credentials to use; no flow required to
-obtain authorization. This object should at a minimum contain an
-`access_token` string field.
- * @return {asana$Client} this
- * @param options
- * @return
- */
-    useOauth(options?: auth$auth$OauthAuthenticatorOptions): this;
+     * Configure the client to authenticate via Oauth. Credentials can be
+     * supplied, or they can be obtained by running an Oauth flow.
+     * @param {Object} options Options for Oauth. Includes any options for
+     * the selected flow.
+     * @option {Function} [flowType]  Type of OauthFlow to use to obtain user
+     * authorization. Defaults to autodetect based on environment.
+     * @option {Object} [credentials] Credentials to use; no flow required to
+     * obtain authorization. This object should at a minimum contain an
+     * `access_token` string field.
+     * @return {asana$Client} this
+     * @param options
+     * @return
+     */
+    useOauth(options?: auth$OauthAuthenticatorOptions): this;
 
     /**
      * The internal dispatcher. This is mostly used by the resources but provided
@@ -103,83 +104,83 @@ obtain authorization. This object should at a minimum contain an
      * An instance of the Attachments resource.
      * @type {resources$Attachments}
      */
-    attachments: resources$resources$Attachments;
+    attachments: resources$Attachments;
 
     /**
      * An instance of the Events resource.
      * @type {resources$Events}
      */
-    events: resources$resources$Events;
+    events: resources$Events;
 
     /**
      * An instance of the Projects resource.
      * @type {resources$Projects}
      */
-    projects: resources$resources$Projects;
+    projects: resources$Projects;
 
     /**
      * An instance of the Stories resource.
      * @type {resources$Stories}
      */
-    stories: resources$resources$Stories;
+    stories: resources$Stories;
 
     /**
      * An instance of the Tags resource.
      * @type {resources$Tags}
      */
-    tags: resources$resources$Tags;
+    tags: resources$Tags;
 
     /**
      * An instance of the Tasks resource.
      * @type {resources$Tasks}
      */
-    tasks: resources$resources$Tasks;
+    tasks: resources$Tasks;
 
     /**
      * An instance of the Teams resource.
      * @type {resources$Teams}
      */
-    teams: resources$resources$Teams;
+    teams: resources$Teams;
 
     /**
      * An instance of the Users resource.
      * @type {resources$Users}
      */
-    users: resources$resources$Users;
+    users: resources$Users;
 
     /**
      * An instance of the Workspaces resource.
      * @type {resources$Workspaces}
      */
-    workspaces: resources$resources$Workspaces;
+    workspaces: resources$Workspaces;
 
     /**
      * Store off Oauth info.
      */
-    app: auth$auth$App;
+    app: auth$App;
   }
 
   declare var asana$Dispatcher: asana$DispatcherStatic;
 
   declare interface asana$DispatcherStatic {
     /**
- * Creates a dispatcher which will act as a basic wrapper for making HTTP
- * requests to the API, and handle authentication.
- * @class
- * @classdesc A HTTP wrapper for the Asana API
- * @param {Object} options for default behavior of the Dispatcher
- * @option {Authenticator} [authenticator] Object to use for authentication.
-Can also be set later with `setAuthenticator`.
- * @option {String} [retryOnRateLimit] Automatically handle `RateLimitEnforced`
-errors by sleeping and retrying after the waiting period.
- * @option {Function} [handleUnauthorized] Automatically handle
-`NoAuthorization` with the callback. If the callback returns `true`
-(or a promise resolving to `true), will retry the request.
-         * @option {String} [asanaBaseUrl] Base URL for Asana, for debugging
-         * @option {Number} [requestTimeout] Timeout (in milliseconds) to wait for the
-         *     request to finish.
-         *
- */
+     * Creates a dispatcher which will act as a basic wrapper for making HTTP
+     * requests to the API, and handle authentication.
+     * @class
+     * @classdesc A HTTP wrapper for the Asana API
+     * @param {Object} options for default behavior of the Dispatcher
+     * @option {Authenticator} [authenticator] Object to use for authentication.
+     * Can also be set later with `setAuthenticator`.
+     * @option {String} [retryOnRateLimit] Automatically handle `RateLimitEnforced`
+     * errors by sleeping and retrying after the waiting period.
+     * @option {Function} [handleUnauthorized] Automatically handle
+     * `NoAuthorization` with the callback. If the callback returns `true`
+     * (or a promise resolving to `true), will retry the request.
+     *          * @option {String} [asanaBaseUrl] Base URL for Asana, for debugging
+     *          * @option {Number} [requestTimeout] Timeout (in milliseconds) to wait for the
+     *          *     request to finish.
+     *          *
+     */
     new(options?: asana$DispatcherOptions): asana$Dispatcher;
 
     /**
@@ -199,7 +200,7 @@ errors by sleeping and retrying after the waiting period.
   }
 
   declare interface asana$DispatcherOptions {
-    authenticator?: auth$auth$Authenticator;
+    authenticator?: auth$Authenticator;
     retryOnRateLimit?: boolean;
     handleUnauthorized?: () => boolean | Promise<boolean>;
     requestTimeout?: string;
@@ -221,15 +222,15 @@ errors by sleeping and retrying after the waiting period.
      * @param authenticator
      * @return
      */
-    setAuthenticator(authenticator: auth$auth$Authenticator): this;
+    setAuthenticator(authenticator: auth$Authenticator): this;
 
     /**
- * Ensure the dispatcher is authorized to make requests. Call this before
- * making any API requests.
- * @returns {Promise} Resolves when the dispatcher is authorized, rejected if
-there was a problem authorizing.
- * @return
- */
+     * Ensure the dispatcher is authorized to make requests. Call this before
+     * making any API requests.
+     * @returns {Promise} Resolves when the dispatcher is authorized, rejected if
+     * there was a problem authorizing.
+     * @return
+     */
     authorize(): Promise<void>;
 
     /**
@@ -245,57 +246,57 @@ there was a problem authorizing.
     dispatch(params: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a GET request to the Asana API.
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a GET request to the Asana API.
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     * @return
+     */
     get(path: string, query?: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a POST request to the Asana API.
- * @param {String} path The path of the API
- * @param {Object} data The data to be sent
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param data
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a POST request to the Asana API.
+     * @param {String} path The path of the API
+     * @param {Object} data The data to be sent
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param data
+     * @param dispatchOptions ?
+     * @return
+     */
     post(path: string, data: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a PUT request to the Asana API.
- * @param {String} path The path of the API
- * @param {Object} data The data to be sent
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param data
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a PUT request to the Asana API.
+     * @param {String} path The path of the API
+     * @param {Object} data The data to be sent
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param data
+     * @param dispatchOptions ?
+     * @return
+     */
     put(path: string, data: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a DELETE request to the Asana API.
- * @param {String} path The path of the API
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a DELETE request to the Asana API.
+     * @param {String} path The path of the API
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param dispatchOptions ?
+     * @return
+     */
     delete(path: string, dispatchOptions?: any): Promise<any>;
 
     /**
@@ -325,90 +326,90 @@ response. See `dispatch`.
     requestTimeout: number;
   }
 
-  declare var npm$namespace$auth: {
-    autoDetect: typeof auth$autoDetect,
-    BasicAuthenticator: typeof auth$BasicAuthenticator,
-    OauthAuthenticator: typeof auth$OauthAuthenticator,
-    App: typeof auth$App,
-    OauthError: typeof auth$OauthError,
-    RedirectFlow: typeof auth$RedirectFlow,
-    PopupFlow: typeof auth$PopupFlow,
-    NativeFlow: typeof auth$NativeFlow,
-    ChromeExtensionFlow: typeof auth$ChromeExtensionFlow,
-    BaseBrowserFlow: typeof auth$BaseBrowserFlow
+  declare var npm$namespace$asana$auth: {
+    autoDetect: typeof asana$auth$autoDetect,
+    BasicAuthenticator: typeof asana$auth$BasicAuthenticator,
+    OauthAuthenticator: typeof asana$auth$OauthAuthenticator,
+    App: typeof asana$auth$App,
+    OauthError: typeof asana$auth$OauthError,
+    RedirectFlow: typeof asana$auth$RedirectFlow,
+    PopupFlow: typeof asana$auth$PopupFlow,
+    NativeFlow: typeof asana$auth$NativeFlow,
+    ChromeExtensionFlow: typeof asana$auth$ChromeExtensionFlow,
+    BaseBrowserFlow: typeof asana$auth$BaseBrowserFlow
   };
-  declare var auth$BasicAuthenticator: auth$BasicAuthenticatorStatic;
+  declare var asana$auth$BasicAuthenticator: auth$BasicAuthenticatorStatic;
 
-  declare interface auth$BasicAuthenticatorStatic {
+  declare interface asana$auth$BasicAuthenticatorStatic {
     /**
      * @param apiKey
      */
-    new(apiKey: string): auth$BasicAuthenticator;
+    new(apiKey: string): asana$auth$BasicAuthenticator;
   }
 
-  declare type auth$BasicAuthenticator = {
+  declare type asana$auth$BasicAuthenticator = {
     /**
- * @param {Object} request The request to modify, for the `request` library.
- * @return {Object} The `request` parameter, modified to include authentication
-information using the stored credentials.
- * @param request
- * @return
- */
+     * @param {Object} request The request to modify, for the `request` library.
+     * @return {Object} The `request` parameter, modified to include authentication
+     * information using the stored credentials.
+     * @param request
+     * @return
+     */
     authenticateRequest(
       request: auth$BasicAuthenticatorRequest
     ): auth$BasicAuthenticatorRequest
-  } & auth$Authenticator;
+  } & Authenticator;
 
-  declare interface auth$BasicAuthenticatorRequest {
+  declare interface asana$auth$BasicAuthenticatorRequest {
     auth: {
       username: string,
       password: string
     };
   }
 
-  declare var auth$OauthAuthenticator: auth$OauthAuthenticatorStatic;
+  declare var asana$auth$OauthAuthenticator: auth$OauthAuthenticatorStatic;
 
-  declare interface auth$OauthAuthenticatorStatic {
+  declare interface asana$auth$OauthAuthenticatorStatic {
     /**
- * Creates an authenticator that uses Oauth for authentication.
- * @param {Object} options Configure the authenticator; must specify one
-of `flow` or `credentials`.
- * @option {App}           app           The app being authenticated for.
- * @option {OauthFlow}     [flow]        The flow to use to get credentials
-when needed.
- * @option {String|Object} [credentials] Initial credentials to use. This can
-be either the object returned from an access token request (which
-contains the token and some other metadata) or just the `access_token`
-field.
- * @constructor
- */
-    new(options: auth$OauthAuthenticatorOptions): auth$OauthAuthenticator;
+     * Creates an authenticator that uses Oauth for authentication.
+     * @param {Object} options Configure the authenticator; must specify one
+     * of `flow` or `credentials`.
+     * @option {App}           app           The app being authenticated for.
+     * @option {OauthFlow}     [flow]        The flow to use to get credentials
+     * when needed.
+     * @option {String|Object} [credentials] Initial credentials to use. This can
+     * be either the object returned from an access token request (which
+     * contains the token and some other metadata) or just the `access_token`
+     * field.
+     * @constructor
+     */
+    new(options: auth$OauthAuthenticatorOptions): asana$auth$OauthAuthenticator;
   }
 
-  declare interface auth$OauthAuthenticatorOptions {
-    flowType?: auth$auth$FlowType;
+  declare interface asana$auth$OauthAuthenticatorOptions {
+    flowType?: auth$FlowType;
     credentials?: auth$Credentials | string;
   }
 
-  declare interface auth$Credentials {
+  declare interface asana$auth$Credentials {
     access_token?: string;
     refresh_token?: string;
   }
 
-  declare type auth$OauthAuthenticator = {
+  declare type asana$auth$OauthAuthenticator = {
     /**
- * @param {Object} request The request to modify, for the `request` library.
- * @return {Object} The `request` parameter, modified to include authentication
-information using the stored credentials.
- * @param request
- * @return
- */
+     * @param {Object} request The request to modify, for the `request` library.
+     * @return {Object} The `request` parameter, modified to include authentication
+     * information using the stored credentials.
+     * @param request
+     * @return
+     */
     authenticateRequest(
       request: auth$OauthAuthenticatorRequest
     ): auth$OauthAuthenticatorRequest
-  } & auth$Authenticator;
+  } & Authenticator;
 
-  declare interface auth$OauthAuthenticatorRequest {
+  declare interface asana$auth$OauthAuthenticatorRequest {
     /**
      * When browserify-d, the `auth` component of the `request` library
      * doesn't work so well, so we just manually set the bearer token instead.
@@ -424,28 +425,28 @@ information using the stored credentials.
    * establishing credentials and applying them to outgoing requests.
    * @constructor
    */
-  declare interface auth$Authenticator {
+  declare interface asana$auth$Authenticator {
     /**
- * Establishes credentials.
- * @return {Promise} Resolves when initial credentials have been
-completed and `authenticateRequest` calls can expect to succeed.
- * @return
- */
+     * Establishes credentials.
+     * @return {Promise} Resolves when initial credentials have been
+     * completed and `authenticateRequest` calls can expect to succeed.
+     * @return
+     */
     establishCredentials(): Promise<void>;
 
     /**
- * Attempts to refresh credentials, if possible, given the current credentials.
- * @return {Promise} Resolves to `true` if credentials have been successfully
-established and `authenticateRequests` can expect to succeed, else
-resolves to `false`.
- * @return
- */
+     * Attempts to refresh credentials, if possible, given the current credentials.
+     * @return {Promise} Resolves to `true` if credentials have been successfully
+     * established and `authenticateRequests` can expect to succeed, else
+     * resolves to `false`.
+     * @return
+     */
     refreshCredentials(): Promise<boolean>;
   }
 
-  declare var auth$App: auth$AppStatic;
+  declare var asana$auth$App: auth$AppStatic;
 
-  declare interface auth$AppStatic {
+  declare interface asana$auth$AppStatic {
     /**
      * An abstraction around an App used with Asana.
      * @options {Object} Options to construct the app
@@ -456,16 +457,16 @@ resolves to `false`.
      * @option {String} [asanaBaseUrl] Base URL to use for Asana, for debugging
      * @constructor
      */
-    new(options: auth$AppOptions): auth$App;
+    new(options: auth$AppOptions): asana$auth$App;
   }
 
-  declare type auth$AppOptions = {
+  declare type asana$auth$AppOptions = {
     clientId?: string | number,
     clientSecret?: string,
     scope?: string
-  } & auth$AsanaAuthorizeUrlOptions;
+  } & AsanaAuthorizeUrlOptions;
 
-  declare interface auth$App {
+  declare interface asana$auth$App {
     /**
      * @param {Object} options Overrides to the app's defaults
      * @option {String} asanaBaseUrl
@@ -487,81 +488,81 @@ resolves to `false`.
     asanaTokenUrl(options?: auth$AsanaAuthorizeUrlOptions): string;
 
     /**
- * @param {String} code An authorization code obtained via `asanaAuthorizeUrl`.
- * @param {Object} options Overrides to the app's defaults
- * @option {String} asanaBaseUrl
- * @option {String} redirectUri
- * @return {Promise<Object>} The token, which will include the `access_token`
-used for API access, as well as a `refresh_token` which can be stored
-to get a new access token without going through the flow again.
- * @param code
- * @param options
- * @return
- */
+     * @param {String} code An authorization code obtained via `asanaAuthorizeUrl`.
+     * @param {Object} options Overrides to the app's defaults
+     * @option {String} asanaBaseUrl
+     * @option {String} redirectUri
+     * @return {Promise<Object>} The token, which will include the `access_token`
+     * used for API access, as well as a `refresh_token` which can be stored
+     * to get a new access token without going through the flow again.
+     * @param code
+     * @param options
+     * @return
+     */
     accessTokenFromCode(
       code: string,
       options?: auth$AsanaAuthorizeUrlOptions
-    ): Promise<auth$Credentials>;
+    ): Promise<asana$auth$Credentials>;
 
     /**
- * @param {String} refreshToken A refresh token obtained via Oauth.
- * @param {Object} options Overrides to the app's defaults
- * @option {String} asanaBaseUrl
- * @option {String} redirectUri
- * @return {Promise<Object>} The token, which will include the `access_token`
-used for API access.
- * @param refreshToken
- * @param options
- * @return
- */
+     * @param {String} refreshToken A refresh token obtained via Oauth.
+     * @param {Object} options Overrides to the app's defaults
+     * @option {String} asanaBaseUrl
+     * @option {String} redirectUri
+     * @return {Promise<Object>} The token, which will include the `access_token`
+     * used for API access.
+     * @param refreshToken
+     * @param options
+     * @return
+     */
     accessTokenFromRefreshToken(
       refreshToken: string,
       options: auth$AsanaAuthorizeUrlOptions
-    ): Promise<auth$Credentials>;
+    ): Promise<asana$auth$Credentials>;
     scope: string;
     asanaBaseUrl: string;
   }
 
-  declare interface auth$AsanaAuthorizeUrlOptions {
+  declare interface asana$auth$AsanaAuthorizeUrlOptions {
     redirectUri?: string;
     asanaBaseUrl?: string;
   }
 
-  declare var auth$OauthError: auth$OauthErrorStatic;
+  declare var asana$auth$OauthError: auth$OauthErrorStatic;
 
-  declare interface auth$OauthErrorStatic {
+  declare interface asana$auth$OauthErrorStatic {
     /**
- * @param {Object} options A data blob parsed from a query string or JSON
-response from the Asana API
- * @option {String} error The string code identifying the error.
- * @option {String} [error_uri] A link to help and information about the error.
- * @option {String} [error_description] A description of the error.
- * @constructor
- */
-    new(options: auth$OauthErrorOptions): auth$OauthError;
+     * @param {Object} options A data blob parsed from a query string or JSON
+     * response from the Asana API
+     * @option {String} error The string code identifying the error.
+     * @option {String} [error_uri] A link to help and information about the error.
+     * @option {String} [error_description] A description of the error.
+     * @constructor
+     */
+    new(options: auth$OauthErrorOptions): asana$auth$OauthError;
   }
 
-  declare interface auth$OauthErrorOptions {
+  declare interface asana$auth$OauthErrorOptions {
     error?: string;
     error_uri?: string;
     error_description?: string;
   }
 
-  declare type auth$OauthError = {} & Error;
+  declare type asana$auth$OauthError = {} & Error;
 
   /**
- * Auto-detects the type of Oauth flow to use that's appropriate to the
- * environment.
- * @returns {Function | null} The type of Oauth flow to use, or null if no
-appropriate type could be determined.
- * @param env
- * @return
- */
-  declare function auth$autoDetect(env: any): Function;
+   * Auto-detects the type of Oauth flow to use that's appropriate to the
+   * environment.
+   * @returns {Function | null} The type of Oauth flow to use, or null if no
+   * appropriate type could be determined.
+   * @param env
+   * @return
+   */
+  declare function asana$auth$autoDetect(env: any): Function;
 
-  declare var auth$RedirectFlow: auth$RedirectFlowStatic;
+  declare var asana$auth$RedirectFlow: auth$RedirectFlowStatic;
 
-  declare type auth$RedirectFlowStatic = {
+  declare type asana$auth$RedirectFlowStatic = {
     /**
      * An Oauth flow that runs in the browser and requests user authorization by
      * redirecting to an authorization page on Asana, and redirecting back with
@@ -569,127 +570,127 @@ appropriate type could be determined.
      * @param {Object} options See `BaseBrowserFlow` for options.
      * @constructor
      */
-    new(options: any): auth$RedirectFlow
-  } & auth$FlowType;
+    new(options: any): asana$auth$RedirectFlow
+  } & FlowType;
 
-  declare type auth$RedirectFlow = {} & auth$BaseBrowserFlow;
+  declare type asana$auth$RedirectFlow = {} & BaseBrowserFlow;
 
-  declare var auth$PopupFlow: auth$PopupFlowStatic;
+  declare var asana$auth$PopupFlow: auth$PopupFlowStatic;
 
-  declare type auth$PopupFlowStatic = {
+  declare type asana$auth$PopupFlowStatic = {
     /**
      * An Oauth flow that runs in the browser and requests user authorization by
      * popping up a window and prompting the user.
      * @param {Object} options See `BaseBrowserFlow` for options.
      * @constructor
      */
-    new(options: any): auth$PopupFlow
-  } & auth$FlowType;
+    new(options: any): asana$auth$PopupFlow
+  } & FlowType;
 
-  declare type auth$PopupFlow = {
+  declare type asana$auth$PopupFlow = {
     /**
      * @param popupWidth
      * @param popupHeight
      */
     _popupParams(popupWidth: number, popupHeight: number): void,
     runReceiver(): void
-  } & auth$BaseBrowserFlow;
+  } & BaseBrowserFlow;
 
-  declare var auth$NativeFlow: auth$NativeFlowStatic;
+  declare var asana$auth$NativeFlow: auth$NativeFlowStatic;
 
-  declare type auth$NativeFlowStatic = {
+  declare type asana$auth$NativeFlowStatic = {
     /**
- * An Oauth flow that can be run from the console or an app that does
- * not have the ability to open and manage a browser on its own.
- * @param {Object} options
- * @option {App} app App to authenticate for
- * @option {String function(String)} [instructions] Function returning the
-instructions to output to the user. Passed the authorize url.
- * @option {String function()} [prompt] String to output immediately before
-waiting for a line from stdin.
- * @constructor
- */
-    new(options: any): auth$NativeFlow
-  } & auth$FlowType;
+     * An Oauth flow that can be run from the console or an app that does
+     * not have the ability to open and manage a browser on its own.
+     * @param {Object} options
+     * @option {App} app App to authenticate for
+     * @option {String function(String)} [instructions] Function returning the
+     * instructions to output to the user. Passed the authorize url.
+     * @option {String function()} [prompt] String to output immediately before
+     * waiting for a line from stdin.
+     * @constructor
+     */
+    new(options: any): asana$auth$NativeFlow
+  } & FlowType;
 
-  declare type auth$NativeFlow = {
+  declare type asana$auth$NativeFlow = {
     /**
- * Run the Oauth flow, prompting the user to go to the authorization URL
- * and enter the code it displays when finished.
- * @return {Promise<Object>} The access token object, which will include
-`access_token` and `refresh_token`.
- */
+     * Run the Oauth flow, prompting the user to go to the authorization URL
+     * and enter the code it displays when finished.
+     * @return {Promise<Object>} The access token object, which will include
+     * `access_token` and `refresh_token`.
+     */
     run(): void,
 
     /**
- * @param {String} code An authorization code obtained via `asanaAuthorizeUrl`.
- * @return {Promise<Object>} The token, which will include the `access_token`
-used for API access, as well as a `refresh_token` which can be stored
-to get a new access token without going through the flow again.
- * @param code
- */
+     * @param {String} code An authorization code obtained via `asanaAuthorizeUrl`.
+     * @return {Promise<Object>} The token, which will include the `access_token`
+     * used for API access, as well as a `refresh_token` which can be stored
+     * to get a new access token without going through the flow again.
+     * @param code
+     */
     accessToken(code: string): void,
 
     /**
- * @return {Promise} The access token, which will include a refresh token
-that can be stored in the future to create a client without going
-through the Oauth flow.
- * @param url
- * @return
- */
+     * @return {Promise} The access token, which will include a refresh token
+     * that can be stored in the future to create a client without going
+     * through the Oauth flow.
+     * @param url
+     * @return
+     */
     promptForCode(url: string): any
-  } & auth$Flow;
+  } & Flow;
 
-  declare var auth$ChromeExtensionFlow: auth$ChromeExtensionFlowStatic;
+  declare var asana$auth$ChromeExtensionFlow: auth$ChromeExtensionFlowStatic;
 
-  declare type auth$ChromeExtensionFlowStatic = {
+  declare type asana$auth$ChromeExtensionFlowStatic = {
     /**
- * An Oauth flow that runs in a Chrome browser extension and requests user
- * authorization by opening a temporary tab to prompt the user.
- * @param {Object} options See `BaseBrowserFlow` for options, plus the below:
- * @options {String} [receiverPath] Full path and filename from the base
-directory of the extension to the receiver page. This is an HTML file
-that has been made web-accessible, and that calls the receiver method
-`Asana.auth.ChromeExtensionFlow.runReceiver();`.
- * @constructor
- */
-    new(options: any): auth$ChromeExtensionFlow
-  } & auth$FlowType;
+     * An Oauth flow that runs in a Chrome browser extension and requests user
+     * authorization by opening a temporary tab to prompt the user.
+     * @param {Object} options See `BaseBrowserFlow` for options, plus the below:
+     * @options {String} [receiverPath] Full path and filename from the base
+     * directory of the extension to the receiver page. This is an HTML file
+     * that has been made web-accessible, and that calls the receiver method
+     * `Asana.auth.ChromeExtensionFlow.runReceiver();`.
+     * @constructor
+     */
+    new(options: any): asana$auth$ChromeExtensionFlow
+  } & FlowType;
 
-  declare type auth$ChromeExtensionFlow = {
+  declare type asana$auth$ChromeExtensionFlow = {
     /**
      * Runs the receiver code to send the Oauth result to the requesting tab.
      */
     runReceiver(): void
-  } & auth$BaseBrowserFlow;
+  } & BaseBrowserFlow;
 
-  declare var auth$BaseBrowserFlow: auth$BaseBrowserFlowStatic;
+  declare var asana$auth$BaseBrowserFlow: auth$BaseBrowserFlowStatic;
 
-  declare type auth$BaseBrowserFlowStatic = {
+  declare type asana$auth$BaseBrowserFlowStatic = {
     /**
- * A base class for any flow that runs in the browser. All subclasses use the
- * "implicit grant" flow to authenticate via the browser.
- * @param {Object} options
- * @option {App} app The app this flow is for
- * @option {String} [redirectUri] The URL that Asana should redirect to once
-user authorization is complete. Defaults to the URL configured in
-the app, and if none then the current page URL.
- * @constructor
- */
-    new(options: any): auth$BaseBrowserFlow
-  } & auth$FlowType;
+     * A base class for any flow that runs in the browser. All subclasses use the
+     * "implicit grant" flow to authenticate via the browser.
+     * @param {Object} options
+     * @option {App} app The app this flow is for
+     * @option {String} [redirectUri] The URL that Asana should redirect to once
+     * user authorization is complete. Defaults to the URL configured in
+     * the app, and if none then the current page URL.
+     * @constructor
+     */
+    new(options: any): asana$auth$BaseBrowserFlow
+  } & FlowType;
 
-  declare type auth$BaseBrowserFlow = {
+  declare type asana$auth$BaseBrowserFlow = {
     /**
- * @param {String} authUrl The URL the user should be navigated to in order
-to authorize the app.
- * @param {String} state The unique state generated for this auth request.
- * @return {Promise} Resolved when authorization has successfully started,
-i.e. the user has been navigated to a page requesting authorization.
- * @param authUrl
- * @param state
- * @return
- */
+     * @param {String} authUrl The URL the user should be navigated to in order
+     * to authorize the app.
+     * @param {String} state The unique state generated for this auth request.
+     * @return {Promise} Resolved when authorization has successfully started,
+     * i.e. the user has been navigated to a page requesting authorization.
+     * @param authUrl
+     * @param state
+     * @return
+     */
     startAuthorization(authUrl: string, state: string): any,
 
     /**
@@ -715,13 +716,13 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     getStateParam(): string
-  } & auth$Flow;
+  } & Flow;
 
-  declare interface auth$FlowType {
+  declare interface asana$auth$FlowType {
     new(options: any): auth$Flow;
   }
 
-  declare interface auth$Flow {
+  declare interface asana$auth$Flow {
     /**
      * @returns {String} The URL used to authorize the user for the app.
      * @return
@@ -736,7 +737,16 @@ i.e. the user has been navigated to a page requesting authorization.
     run(): void;
   }
 
-  declare class errors$AsanaError mixins Error {
+  declare var npm$namespace$asana$errors: {
+    AsanaError: typeof asana$errors$AsanaError,
+    Forbidden: typeof asana$errors$Forbidden,
+    InvalidRequest: typeof asana$errors$InvalidRequest,
+    NoAuthorization: typeof asana$errors$NoAuthorization,
+    NotFound: typeof asana$errors$NotFound,
+    RateLimitEnforced: typeof asana$errors$RateLimitEnforced,
+    ServerError: typeof asana$errors$ServerError
+  };
+  declare class asana$errors$AsanaError mixins Error {
     /**
      * @param message
      * @return
@@ -746,7 +756,7 @@ i.e. the user has been navigated to a page requesting authorization.
     value: any;
   }
 
-  declare class errors$Forbidden mixins errors$AsanaError {
+  declare class asana$errors$Forbidden mixins AsanaError {
     /**
      * @param value
      * @return
@@ -754,7 +764,7 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare class errors$InvalidRequest mixins errors$AsanaError {
+  declare class asana$errors$InvalidRequest mixins AsanaError {
     /**
      * @param value
      * @return
@@ -762,7 +772,7 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare class errors$NoAuthorization mixins errors$AsanaError {
+  declare class asana$errors$NoAuthorization mixins AsanaError {
     /**
      * @param value
      * @return
@@ -770,7 +780,7 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare class errors$NotFound mixins errors$AsanaError {
+  declare class asana$errors$NotFound mixins AsanaError {
     /**
      * @param value
      * @return
@@ -778,7 +788,7 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare class errors$RateLimitEnforced mixins errors$AsanaError {
+  declare class asana$errors$RateLimitEnforced mixins AsanaError {
     /**
      * @param value
      * @return
@@ -786,7 +796,7 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare class errors$ServerError mixins errors$AsanaError {
+  declare class asana$errors$ServerError mixins AsanaError {
     /**
      * @param value
      * @return
@@ -794,26 +804,28 @@ i.e. the user has been navigated to a page requesting authorization.
     constructor(value: any): this;
   }
 
-  declare var npm$namespace$resources: {
-    Attachments: typeof resources$Attachments,
-    Events: typeof resources$Events,
-    Projects: typeof resources$Projects,
-    Stories: typeof resources$Stories,
-    Tags: typeof resources$Tags,
-    Tasks: typeof resources$Tasks,
-    Teams: typeof resources$Teams,
-    Users: typeof resources$Users,
-    Workspaces: typeof resources$Workspaces,
-    Resource: typeof resources$Resource
+  declare var npm$namespace$asana$resources: {
+    Attachments: typeof asana$resources$Attachments,
+    Events: typeof asana$resources$Events,
+    Projects: typeof asana$resources$Projects,
+    Stories: typeof asana$resources$Stories,
+    Tags: typeof asana$resources$Tags,
+    Tasks: typeof asana$resources$Tasks,
+    Teams: typeof asana$resources$Teams,
+    Users: typeof asana$resources$Users,
+    Workspaces: typeof asana$resources$Workspaces,
+    Resource: typeof asana$resources$Resource,
+
+    Webhooks: typeof asana$resources$Webhooks
   };
-  declare interface resources$AttachmentsStatic {
+  declare interface asana$resources$AttachmentsStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Attachments;
   }
 
-  declare type Attachments$Type = {
+  declare type asana$resources$Attachments$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -836,7 +848,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Attachments$Type[],
+    hearts: asana$resources$Attachments$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -867,9 +879,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare var resources$Attachments: resources$AttachmentsStatic;
+  declare var asana$resources$Attachments: asana$resources$AttachmentsStatic;
 
   /**
    * An _attachment_ object represents any file attached to a task in Asana,
@@ -878,7 +890,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Attachments = {
+  declare type asana$resources$Attachments = {
     /**
      * * Returns the full record for a single attachment.
      *    * @param {Number} attachment Globally unique identifier for the attachment.
@@ -894,7 +906,7 @@ i.e. the user has been navigated to a page requesting authorization.
       attachment: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Attachments.Attachments$Type>,
+    ): Promise<Attachments$Type>,
 
     /**
      * * Returns the compact records for all attachments on the task.
@@ -911,10 +923,10 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Attachments.Attachments$Type>>
-  } & resources$Resource;
+    ): Promise<resources$ResourceList<Attachments$Type>>
+  } & Resource;
 
-  declare interface resources$EventsStatic {
+  declare interface asana$resources$EventsStatic {
     /**
      * @param dispatcher
      * @return
@@ -922,7 +934,7 @@ i.e. the user has been navigated to a page requesting authorization.
     new(dispatcher: asana$Dispatcher): resources$Events;
   }
 
-  declare var resources$Events: resources$EventsStatic;
+  declare var asana$resources$Events: asana$resources$EventsStatic;
 
   /**
    * An _event_ is an object representing a change to a resource that was observed
@@ -953,16 +965,16 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Events = {} & resources$Resource;
+  declare type asana$resources$Events = {} & Resource;
 
-  declare interface resources$ProjectsStatic {
+  declare interface asana$resources$ProjectsStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Projects;
   }
 
-  declare type Projects$Type = {
+  declare type asana$resources$Projects$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -985,7 +997,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Projects$Type[],
+    hearts: asana$resources$Projects$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -1016,9 +1028,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare interface Projects$CreateParams {
+  declare interface asana$resources$Projects$CreateParams {
     name?: string;
     team?: number;
     public?: boolean;
@@ -1031,16 +1043,16 @@ i.e. the user has been navigated to a page requesting authorization.
     notes?: string;
   }
 
-  declare interface Projects$FollowersParams {
+  declare interface asana$resources$Projects$FollowersParams {
     followers: (number | string)[];
     followers: (number | string)[];
   }
 
-  declare interface Projects$MembersParams {
+  declare interface asana$resources$Projects$MembersParams {
     members: (number | string)[];
   }
 
-  declare interface Projects$Status {
+  declare interface asana$resources$Projects$Status {
     color: string;
     text: string;
     html_text: string;
@@ -1048,7 +1060,7 @@ i.e. the user has been navigated to a page requesting authorization.
     author: resources$Resource;
   }
 
-  declare type Projects$FindAllParams = {
+  declare type asana$resources$Projects$FindAllParams = {
     team?: number,
     archived?: boolean,
     team?: number,
@@ -1058,13 +1070,13 @@ i.e. the user has been navigated to a page requesting authorization.
     completed_since?: string,
     modified_since?: string,
     workspace: number
-  } & resources$PaginationParams;
+  } & PaginationParams;
 
-  declare type Projects$FindByParams = {
+  declare type asana$resources$Projects$FindByParams = {
     archived?: boolean
-  } & resources$PaginationParams;
+  } & PaginationParams;
 
-  declare var resources$Projects: resources$ProjectsStatic;
+  declare var asana$resources$Projects: asana$resources$ProjectsStatic;
 
   /**
    * A _project_ represents a prioritized list of tasks in Asana. It exists in a
@@ -1078,7 +1090,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Projects = {
+  declare type asana$resources$Projects = {
     /**
      * * Creates a new project in a workspace or team.
      * *
@@ -1102,11 +1114,11 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     create(
-      data: resources$Projects.Projects$CreateParams & {
+      data: Projects$CreateParams & {
         workspace: number
       },
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * If the workspace for your project _is_ an organization, you must also
@@ -1124,9 +1136,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     createInWorkspace(
       workspace: number,
-      data: resources$Projects.Projects$CreateParams,
+      data: Projects$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * Creates a project shared with the given team.
@@ -1143,9 +1155,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     createInTeam(
       team: number,
-      data: resources$Projects.Projects$CreateParams,
+      data: Projects$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * Returns the complete project record for a single project.
@@ -1162,7 +1174,7 @@ i.e. the user has been navigated to a page requesting authorization.
       project: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * A specific, existing project can be updated by making a PUT request on the
@@ -1185,9 +1197,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     update(
       project: number,
-      data: resources$Projects.Projects$CreateParams,
+      data: Projects$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * A specific, existing project can be deleted by making a DELETE request
@@ -1218,9 +1230,9 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     findAll(
-      params?: resources$Projects.Projects$FindAllParams,
+      params?: Projects$FindAllParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Projects.Projects$Type>>,
+    ): Promise<resources$ResourceList<Projects$Type>>,
 
     /**
      * * Returns the compact project records for all projects in the workspace.
@@ -1237,9 +1249,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     findByWorkspace(
       workspace: number,
-      params?: resources$Projects.Projects$FindByParams,
+      params?: Projects$FindByParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Projects.Projects$Type>>,
+    ): Promise<resources$ResourceList<Projects$Type>>,
 
     /**
      * * Returns the compact project records for all projects in the team.
@@ -1256,9 +1268,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     findByTeam(
       team: number,
-      params?: resources$Projects.Projects$FindByParams,
+      params?: Projects$FindByParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Projects.Projects$Type>>,
+    ): Promise<resources$ResourceList<Projects$Type>>,
 
     /**
      * * Returns compact records for all sections in the specified project.
@@ -1275,7 +1287,7 @@ i.e. the user has been navigated to a page requesting authorization.
       project: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Projects$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Returns the compact task records for all tasks within the given project,
@@ -1293,7 +1305,7 @@ i.e. the user has been navigated to a page requesting authorization.
       project: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Projects$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Adds the specified list of users as followers to the project. Followers are a subset of members, therefore if
@@ -1311,9 +1323,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addFollowers(
       project: number,
-      data: resources$Projects.Projects$FollowersParams,
+      data: Projects$FollowersParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * Removes the specified list of users from following the project, this will not affect project membership status.
@@ -1330,9 +1342,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     removeFollowers(
       project: number,
-      data: resources$Projects.Projects$FollowersParams,
+      data: Projects$FollowersParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * Adds the specified list of users as members of the project. Returns the updated project record.
@@ -1348,9 +1360,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addMembers(
       project: number,
-      data: resources$Projects.Projects$MembersParams,
+      data: Projects$MembersParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>,
+    ): Promise<Projects$Type>,
 
     /**
      * * Removes the specified list of members from the project. Returns the updated project record.
@@ -1366,27 +1378,27 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     removeMembers(
       project: number,
-      data: resources$Projects.Projects$MembersParams,
+      data: Projects$MembersParams,
       dispatchOptions?: any
-    ): Promise<resources$Projects.Projects$Type>
-  } & resources$Resource;
+    ): Promise<Projects$Type>
+  } & Resource;
 
-  declare interface resources$StoriesStatic {
+  declare interface asana$resources$StoriesStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Stories;
   }
 
-  declare type Stories$ShortType = {
+  declare type asana$resources$Stories$ShortType = {
     created_at: string,
     created_by: resources$Resource,
     type: string,
     text: string,
     id_organization?: boolean
-  } & resources$Resource;
+  } & Resource;
 
-  declare type Stories$Type = {
+  declare type asana$resources$Stories$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -1397,7 +1409,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -1409,7 +1421,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Stories$Type[],
+    hearts: asana$resources$Stories$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -1440,9 +1452,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare var resources$Stories: resources$StoriesStatic;
+  declare var asana$resources$Stories: asana$resources$StoriesStatic;
 
   /**
    * A _story_ represents an activity associated with an object in the Asana
@@ -1455,7 +1467,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Stories = {
+  declare type asana$resources$Stories = {
     /**
      * * Returns the compact records for all stories on the task.
      *    * @param {Number} task Globally unique identifier for the task.
@@ -1471,7 +1483,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Stories.Stories$Type>>,
+    ): Promise<resources$ResourceList<Stories$Type>>,
 
     /**
      * * Returns the full record for a single story.
@@ -1488,7 +1500,7 @@ i.e. the user has been navigated to a page requesting authorization.
       story: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Stories.Stories$Type>,
+    ): Promise<Stories$Type>,
 
     /**
      * * Adds a comment to a task. The comment will be authored by the
@@ -1510,17 +1522,17 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       data: any,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Stories.Stories$ShortType>>
-  } & resources$Resource;
+    ): Promise<resources$ResourceList<Stories$ShortType>>
+  } & Resource;
 
-  declare interface resources$TagsStatic {
+  declare interface asana$resources$TagsStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Tags;
   }
 
-  declare type Tags$Type = {
+  declare type asana$resources$Tags$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -1531,7 +1543,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -1543,7 +1555,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Tags$Type[],
+    hearts: asana$resources$Tags$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -1574,9 +1586,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare type Tags$FindAllParams = {
+  declare type asana$resources$Tags$FindAllParams = {
     team?: number,
     archived?: boolean,
     team?: number,
@@ -1586,9 +1598,9 @@ i.e. the user has been navigated to a page requesting authorization.
     completed_since?: string,
     modified_since?: string,
     workspace: number
-  } & resources$PaginationParams;
+  } & PaginationParams;
 
-  declare var resources$Tags: resources$TagsStatic;
+  declare var asana$resources$Tags: asana$resources$TagsStatic;
 
   /**
    * A _tag_ is a label that can be attached to any task in Asana. It exists in a
@@ -1601,7 +1613,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Tags = {
+  declare type asana$resources$Tags = {
     /**
      * * Creates a new tag in a workspace or organization.
      * *
@@ -1620,11 +1632,11 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     create(
-      data: resources$Tags.Tags$Type & {
+      data: Tags$Type & {
         workspace: string
       },
       dispatchOptions?: any
-    ): Promise<resources$Tags.Tags$Type>,
+    ): Promise<Tags$Type>,
 
     /**
      * * Creates a new tag in a workspace or organization.
@@ -1646,9 +1658,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     createInWorkspace(
       workspace: number,
-      data: resources$Tags.Tags$Type,
+      data: Tags$Type,
       dispatchOptions?: any
-    ): Promise<resources$Tags.Tags$Type>,
+    ): Promise<Tags$Type>,
 
     /**
      * * Returns the complete tag record for a single tag.
@@ -1665,7 +1677,7 @@ i.e. the user has been navigated to a page requesting authorization.
       tag: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Tags.Tags$Type>,
+    ): Promise<Tags$Type>,
 
     /**
      * * Updates the properties of a tag. Only the fields provided in the `data`
@@ -1687,9 +1699,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     update(
       tag: number,
-      data: resources$Tags.Tags$Type,
+      data: Tags$Type,
       dispatchOptions?: any
-    ): Promise<resources$Tags.Tags$Type>,
+    ): Promise<Tags$Type>,
 
     /**
      * * A specific, existing tag can be deleted by making a DELETE request
@@ -1720,9 +1732,9 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     findAll(
-      params?: resources$Tags.Tags$FindAllParams,
+      params?: Tags$FindAllParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tags.Tags$Type>>,
+    ): Promise<resources$ResourceList<Tags$Type>>,
 
     /**
      * * Returns the compact tag records for all tags in the workspace.
@@ -1739,7 +1751,7 @@ i.e. the user has been navigated to a page requesting authorization.
       workspace: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tags.Tags$Type>>,
+    ): Promise<resources$ResourceList<Tags$Type>>,
 
     /**
      * * Returns the compact task records for all tasks with the given tag.
@@ -1757,17 +1769,17 @@ i.e. the user has been navigated to a page requesting authorization.
       tag: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Tags$Type>>
-  } & resources$Resource;
+    ): Promise<resources$ResourceList<Tasks$Type>>
+  } & Resource;
 
-  declare interface resources$TasksStatic {
+  declare interface asana$resources$TasksStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Tasks;
   }
 
-  declare type Tasks$Type = {
+  declare type asana$resources$Tasks$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -1778,7 +1790,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -1790,7 +1802,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Tasks$Type[],
+    hearts: asana$resources$Tasks$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -1821,9 +1833,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare interface Tasks$CreateParams {
+  declare interface asana$resources$Tasks$CreateParams {
     name?: string;
     team?: number;
     public?: boolean;
@@ -1836,31 +1848,31 @@ i.e. the user has been navigated to a page requesting authorization.
     notes?: string;
   }
 
-  declare interface Tasks$FollowersParams {
+  declare interface asana$resources$Tasks$FollowersParams {
     followers: (number | string)[];
     followers: (number | string)[];
   }
 
-  declare interface Tasks$AddProjectParams {
+  declare interface asana$resources$Tasks$AddProjectParams {
     project: number;
     insertBefore?: number;
     insertAfter?: number;
     section?: number;
   }
 
-  declare interface Tasks$RemoveProjectParams {
+  declare interface asana$resources$Tasks$RemoveProjectParams {
     project: number;
   }
 
-  declare interface Tasks$TagParams {
+  declare interface asana$resources$Tasks$TagParams {
     tag: string;
   }
 
-  declare interface Tasks$CommentParams {
+  declare interface asana$resources$Tasks$CommentParams {
     text: string;
   }
 
-  declare type Tasks$FindAllParams = {
+  declare type asana$resources$Tasks$FindAllParams = {
     team?: number,
     archived?: boolean,
     team?: number,
@@ -1870,9 +1882,9 @@ i.e. the user has been navigated to a page requesting authorization.
     completed_since?: string,
     modified_since?: string,
     workspace: number
-  } & resources$PaginationParams;
+  } & PaginationParams;
 
-  declare var resources$Tasks: resources$TasksStatic;
+  declare var asana$resources$Tasks: asana$resources$TasksStatic;
 
   /**
    * The _task_ is the basic object around which many operations in Asana are
@@ -1882,7 +1894,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Tasks = {
+  declare type asana$resources$Tasks = {
     /**
      * * Creating a new task is as easy as POSTing to the `/tasks` endpoint
      * * with a data block containing the fields you'd like to set on the task.
@@ -1900,11 +1912,11 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     create(
-      data: resources$Tasks.Tasks$CreateParams & {
+      data: Tasks$CreateParams & {
         workspace: string
       },
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * Creating a new task is as easy as POSTing to the `/tasks` endpoint
@@ -1925,9 +1937,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     createInWorkspace(
       workspace: number,
-      data: resources$Tasks.Tasks$CreateParams,
+      data: Tasks$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * Returns the complete task record for a single task.
@@ -1944,7 +1956,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * A specific, existing task can be updated by making a PUT request on the
@@ -1967,9 +1979,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     update(
       task: number,
-      data: resources$Tasks.Tasks$CreateParams,
+      data: Tasks$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * A specific, existing task can be deleted by making a DELETE request on the
@@ -2003,7 +2015,7 @@ i.e. the user has been navigated to a page requesting authorization.
       projectId: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Returns the compact task records for all tasks with the given tag.
@@ -2020,7 +2032,7 @@ i.e. the user has been navigated to a page requesting authorization.
       tag: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Returns the compact task records for some filtered set of tasks. Use one
@@ -2038,9 +2050,9 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     findAll(
-      params?: resources$Tasks.Tasks$FindAllParams,
+      params?: Tasks$FindAllParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Adds each of the specified followers to the task, if they are not already
@@ -2057,9 +2069,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addFollowers(
       task: number,
-      data: resources$Tasks.Tasks$FollowersParams,
+      data: Tasks$FollowersParams,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * Removes each of the specified followers from the task if they are
@@ -2076,9 +2088,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     removeFollowers(
       task: number,
-      data: resources$Tasks.Tasks$FollowersParams,
+      data: Tasks$FollowersParams,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * Returns a compact representation of all of the projects the task is in.
@@ -2095,7 +2107,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Projects.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Projects$Type>>,
 
     /**
      * * Adds the task to the specified project, in the optional location
@@ -2124,7 +2136,7 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addProject(
       task: number,
-      data: resources$Tasks.Tasks$AddProjectParams,
+      data: Tasks$AddProjectParams,
       dispatchOptions?: any
     ): Promise<{}>,
 
@@ -2145,7 +2157,7 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     removeProject(
       task: number,
-      data: resources$Tasks.Tasks$RemoveProjectParams,
+      data: Tasks$RemoveProjectParams,
       dispatchOptions?: any
     ): Promise<{}>,
 
@@ -2164,7 +2176,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tags.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Tags$Type>>,
 
     /**
      * * Adds a tag to a task. Returns an empty data block.
@@ -2180,7 +2192,7 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addTag(
       task: number,
-      data: resources$Tasks.Tasks$TagParams,
+      data: Tasks$TagParams,
       dispatchOptions?: any
     ): Promise<{}>,
 
@@ -2198,7 +2210,7 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     removeTag(
       task: number,
-      data: resources$Tasks.Tasks$TagParams,
+      data: Tasks$TagParams,
       dispatchOptions?: any
     ): Promise<{}>,
 
@@ -2217,7 +2229,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Tasks.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Tasks$Type>>,
 
     /**
      * * Creates a new subtask and adds it to the parent task. Returns the full record
@@ -2233,9 +2245,9 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addSubtask(
       task: number,
-      data: resources$Tasks.Tasks$CreateParams,
+      data: Tasks$CreateParams,
       dispatchOptions?: any
-    ): Promise<resources$Tasks.Tasks$Type>,
+    ): Promise<Tasks$Type>,
 
     /**
      * * Returns a compact representation of all of the stories on the task.
@@ -2252,7 +2264,7 @@ i.e. the user has been navigated to a page requesting authorization.
       task: number,
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Stories.Tasks$Type>>,
+    ): Promise<resources$ResourceList<Stories$Type>>,
 
     /**
      * * Adds a comment to a task. The comment will be authored by the
@@ -2272,19 +2284,19 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     addComment(
       task: number,
-      data: resources$Tasks.Tasks$CommentParams,
+      data: Tasks$CommentParams,
       dispatchOptions?: any
-    ): Promise<resources$Stories.Tasks$Type>
-  } & resources$Resource;
+    ): Promise<Stories$Type>
+  } & Resource;
 
-  declare interface resources$TeamsStatic {
+  declare interface asana$resources$TeamsStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Teams;
   }
 
-  declare type Teams$Type = {
+  declare type asana$resources$Teams$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -2295,7 +2307,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -2307,7 +2319,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Teams$Type[],
+    hearts: asana$resources$Teams$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -2338,9 +2350,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare var resources$Teams: resources$TeamsStatic;
+  declare var asana$resources$Teams: asana$resources$TeamsStatic;
 
   /**
    * A _team_ is used to group related projects and people together within an
@@ -2348,7 +2360,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Teams = {
+  declare type asana$resources$Teams = {
     /**
      * * Returns the full record for a single team.
      *    * @param {Number} team Globally unique identifier for the team.
@@ -2364,7 +2376,7 @@ i.e. the user has been navigated to a page requesting authorization.
       team: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Teams.Teams$Type>,
+    ): Promise<Teams$Type>,
 
     /**
      * * Returns the compact records for all teams in the organization visible to
@@ -2444,16 +2456,16 @@ i.e. the user has been navigated to a page requesting authorization.
       data: resources$UserParams,
       dispatchOptions?: any
     ): Promise<any>
-  } & resources$Resource;
+  } & Resource;
 
-  declare interface resources$UsersStatic {
+  declare interface asana$resources$UsersStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Users;
   }
 
-  declare type Users$FindAllParams = {
+  declare type asana$resources$Users$FindAllParams = {
     team?: number,
     archived?: boolean,
     team?: number,
@@ -2463,9 +2475,9 @@ i.e. the user has been navigated to a page requesting authorization.
     completed_since?: string,
     modified_since?: string,
     workspace: number
-  } & resources$PaginationParams;
+  } & PaginationParams;
 
-  declare type Users$Type = {
+  declare type asana$resources$Users$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -2476,7 +2488,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -2488,7 +2500,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Users$Type[],
+    hearts: asana$resources$Users$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -2519,9 +2531,9 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare var resources$Users: resources$UsersStatic;
+  declare var asana$resources$Users: asana$resources$UsersStatic;
 
   /**
    * A _user_ object represents an account in Asana that can be given access to
@@ -2533,7 +2545,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Users = {
+  declare type asana$resources$Users = {
     /**
      * * Returns the full user record for the currently authenticated user.
      *    * @param {Object} [params] Parameters for the request
@@ -2543,10 +2555,7 @@ i.e. the user has been navigated to a page requesting authorization.
      * @param dispatchOptions ?
      * @return
      */
-    me(
-      params?: resources$Params,
-      dispatchOptions?: any
-    ): Promise<resources$Users.Users$Type>,
+    me(params?: resources$Params, dispatchOptions?: any): Promise<Users$Type>,
 
     /**
      * * Returns the full user record for the single user with the provided ID.
@@ -2565,7 +2574,7 @@ i.e. the user has been navigated to a page requesting authorization.
       user: string | number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Users.Users$Type>,
+    ): Promise<Users$Type>,
 
     /**
      * * Returns the user records for all users in the specified workspace or
@@ -2583,7 +2592,7 @@ i.e. the user has been navigated to a page requesting authorization.
       workspace: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$ResourceList<resources$Users.Users$Type>>,
+    ): Promise<resources$ResourceList<Users$Type>>,
 
     /**
      * * Returns the user records for all users in all workspaces and organizations
@@ -2598,10 +2607,10 @@ i.e. the user has been navigated to a page requesting authorization.
      * @return
      */
     findAll(
-      params: resources$Users.Users$FindAllParams,
+      params: Users$FindAllParams,
       dispatchOptions?: any
     ): Promise<resources$SimpleResourceList>
-  } & resources$Resource;
+  } & Resource;
 
   /**
    * **Webhooks are currently in BETA - The information here may change.**
@@ -2653,7 +2662,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare class resources$Webhooks mixins resources$Resource {
+  declare class asana$resources$Webhooks mixins Resource {
     /**
      * @param dispatcher
      */
@@ -2739,22 +2748,22 @@ i.e. the user has been navigated to a page requesting authorization.
     deleteById(webhook: string, dispatchOptions?: any): Promise<any>;
   }
 
-  declare interface resources$WorkspacesStatic {
+  declare interface asana$resources$WorkspacesStatic {
     /**
      * @param dispatcher
      */
     new(dispatcher: asana$Dispatcher): resources$Workspaces;
   }
 
-  declare type Workspaces$ShortType = {
+  declare type asana$resources$Workspaces$ShortType = {
     created_at: string,
     created_by: resources$Resource,
     type: string,
     text: string,
     id_organization?: boolean
-  } & resources$Resource;
+  } & Resource;
 
-  declare type Workspaces$Type = {
+  declare type asana$resources$Workspaces$Type = {
     +id: number,
     +created_at: string,
     +download_url: string,
@@ -2765,7 +2774,7 @@ i.e. the user has been navigated to a page requesting authorization.
     created_at: string,
     modified_at: string,
     due_date: string,
-    current_status: Projects$Status,
+    current_status: asana$resources$Projects$Status,
     public: boolean,
     archived: boolean,
     notes: string,
@@ -2777,7 +2786,7 @@ i.e. the user has been navigated to a page requesting authorization.
     html_text: string,
     source: string,
     target: resources$Resource,
-    hearts: Workspaces$Type[],
+    hearts: asana$resources$Workspaces$Type[],
     created_at: string,
     notes: string,
     workspace: resources$Resource,
@@ -2808,15 +2817,15 @@ i.e. the user has been navigated to a page requesting authorization.
     },
     id_organization: boolean,
     email_domains: string[]
-  } & resources$Resource;
+  } & Resource;
 
-  declare interface Workspaces$TypeaheadParams {
+  declare interface asana$resources$Workspaces$TypeaheadParams {
     type: string;
     query?: string;
     count?: number;
   }
 
-  declare var resources$Workspaces: resources$WorkspacesStatic;
+  declare var asana$resources$Workspaces: asana$resources$WorkspacesStatic;
 
   /**
    * A _workspace_ is the highest-level organizational unit in Asana. All projects
@@ -2836,7 +2845,7 @@ i.e. the user has been navigated to a page requesting authorization.
    * @class
    * @param {asana$Dispatcher} dispatcher The API dispatcher
    */
-  declare type resources$Workspaces = {
+  declare type asana$resources$Workspaces = {
     /**
      * * Returns the full workspace record for a single workspace.
      *    * @param {Number} workspace Globally unique identifier for the workspace or organization.
@@ -2852,7 +2861,7 @@ i.e. the user has been navigated to a page requesting authorization.
       workspace: number,
       params?: resources$Params,
       dispatchOptions?: any
-    ): Promise<resources$Workspaces.Workspaces$Type>,
+    ): Promise<Workspaces$Type>,
 
     /**
      * * Returns the compact records for all workspaces visible to the authorized user.
@@ -2866,9 +2875,7 @@ i.e. the user has been navigated to a page requesting authorization.
     findAll(
       params?: resources$PaginationParams,
       dispatchOptions?: any
-    ): Promise<
-      resources$ResourceList<resources$Workspaces.Workspaces$ShortType>
-    >,
+    ): Promise<resources$ResourceList<Workspaces$ShortType>>,
 
     /**
      * * A specific, existing workspace can be updated by making a PUT request on
@@ -2893,7 +2900,7 @@ i.e. the user has been navigated to a page requesting authorization.
         name?: string
       },
       dispatchOptions?: any
-    ): Promise<resources$Workspaces.Workspaces$Type>,
+    ): Promise<Workspaces$Type>,
 
     /**
      * * Retrieves objects in the workspace based on an auto-completion/typeahead
@@ -2921,7 +2928,7 @@ i.e. the user has been navigated to a page requesting authorization.
      */
     typeahead(
       workspace: number,
-      params?: resources$Workspaces.Workspaces$TypeaheadParams,
+      params?: Workspaces$TypeaheadParams,
       dispatchOptions?: any
     ): Promise<resources$SimpleResourceList>,
 
@@ -2944,7 +2951,7 @@ i.e. the user has been navigated to a page requesting authorization.
       workspace: number,
       data: resources$UserParams,
       dispatchOptions?: any
-    ): Promise<resources$Users.Workspaces$Type>,
+    ): Promise<Users$Type>,
 
     /**
      * * The user making this call must be an admin in the workspace.
@@ -2966,9 +2973,9 @@ i.e. the user has been navigated to a page requesting authorization.
       data: resources$UserParams,
       dispatchOptions?: any
     ): Promise<any>
-  } & resources$Resource;
+  } & Resource;
 
-  declare interface resources$ResourceStatic {
+  declare interface asana$resources$ResourceStatic {
     /**
      * @param dispatcher
      */
@@ -2980,19 +2987,19 @@ i.e. the user has been navigated to a page requesting authorization.
     DEFAULT_PAGE_LIMIT: number;
 
     /**
- * Helper method that dispatches a GET request to the API, where the expected
- * result is a collection.
- * @param {asana$Dispatcher} dispatcher
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise<resources$SimpleResourceList>} The Collection response for the request
- * @param dispatcher
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- */
+     * Helper method that dispatches a GET request to the API, where the expected
+     * result is a collection.
+     * @param {asana$Dispatcher} dispatcher
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise<resources$SimpleResourceList>} The Collection response for the request
+     * @param dispatcher
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     */
     getCollection(
       dispatcher: any,
       path: string,
@@ -3011,7 +3018,7 @@ response. See `Dispatcher.dispatch`.
     unwrap(promise: any): Promise<any>;
   }
 
-  declare var resources$Resource: resources$ResourceStatic;
+  declare var asana$resources$Resource: asana$resources$ResourceStatic;
 
   /**
    * Base class for a resource accessible via the API. Uses a `Dispatcher` to
@@ -3019,35 +3026,35 @@ response. See `Dispatcher.dispatch`.
    * @param {asana$Dispatcher} dispatcher
    * @constructor
    */
-  declare interface resources$Resource {
+  declare interface asana$resources$Resource {
     /**
- * Dispatches a GET request to the API, where the expected result is a
- * single resource.
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a GET request to the API, where the expected result is a
+     * single resource.
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     * @return
+     */
     dispatchGet(path: string, query?: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a GET request to the API, where the expected result is a
- * collection.
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a GET request to the API, where the expected result is a
+     * collection.
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     * @return
+     */
     dispatchGetCollection(
       path: string,
       query?: any,
@@ -3055,18 +3062,18 @@ response. See `Dispatcher.dispatch`.
     ): Promise<any>;
 
     /**
- * Dispatches a POST request to the API, where the expected response is a
- * single resource.
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a POST request to the API, where the expected response is a
+     * single resource.
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     * @return
+     */
     dispatchPost(
       path: string,
       query?: any,
@@ -3074,37 +3081,37 @@ response. See `Dispatcher.dispatch`.
     ): Promise<any>;
 
     /**
- * Dispatches a POST request to the API, where the expected response is a
- * single resource.
- * @param {String} path The path of the API
- * @param {Object} query The query params
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param query ?
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a POST request to the API, where the expected response is a
+     * single resource.
+     * @param {String} path The path of the API
+     * @param {Object} query The query params
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param query ?
+     * @param dispatchOptions ?
+     * @return
+     */
     dispatchPut(path: string, query?: any, dispatchOptions?: any): Promise<any>;
 
     /**
- * Dispatches a DELETE request to the API. The expected response is an
- * empty resource.
- * @param {String} path The path of the API
- * @param {Object} dispatchOptions Options for handling the request and
-response. See `Dispatcher.dispatch`.
- * @return {Promise} The response for the request
- * @param path
- * @param dispatchOptions ?
- * @return
- */
+     * Dispatches a DELETE request to the API. The expected response is an
+     * empty resource.
+     * @param {String} path The path of the API
+     * @param {Object} dispatchOptions Options for handling the request and
+     * response. See `Dispatcher.dispatch`.
+     * @return {Promise} The response for the request
+     * @param path
+     * @param dispatchOptions ?
+     * @return
+     */
     dispatchDelete(path: string, dispatchOptions?: any): Promise<any>;
     id: number;
     name: string;
   }
 
-  declare interface resources$ResourceList<T: resources$Resource> {
+  declare interface asana$resources$ResourceList<T: asana$resources$Resource> {
     data: T[];
     _response: {
       data: T[],
@@ -3121,15 +3128,15 @@ response. See `Dispatcher.dispatch`.
     };
   }
 
-  declare type resources$SimpleResourceList = resources$ResourceList<resources$Resource>;
+  declare type asana$resources$SimpleResourceList = asana$resources$ResourceList<asana$resources$Resource>;
 
-  declare interface resources$NextPage {
+  declare interface asana$resources$NextPage {
     offset: string;
     uri: string;
     path: string;
   }
 
-  declare interface resources$VersionInfo {
+  declare interface asana$resources$VersionInfo {
     version: string;
     language: string;
     language_version: string;
@@ -3137,25 +3144,25 @@ response. See `Dispatcher.dispatch`.
     os_version: string;
   }
 
-  declare type resources$PaginationParams = {
+  declare type asana$resources$PaginationParams = {
     limit?: number,
     offset?: string
-  } & resources$Params;
+  } & Params;
 
-  declare interface resources$Params {
+  declare interface asana$resources$Params {
     opt_fields?: string;
     opt_expand?: string;
   }
 
-  declare interface resources$UserParams {
+  declare interface asana$resources$UserParams {
     user: string | number;
   }
 
-  declare interface resources$Membership {
-    project: resources$Resource;
-    section: resources$Resource;
+  declare interface asana$resources$Membership {
+    project: asana$resources$Resource;
+    section: asana$resources$Resource;
   }
 
   declare var asana$VERSION: string;
-  declare module.exports: typeof asana;
+  declare export default typeof asana;
 }
