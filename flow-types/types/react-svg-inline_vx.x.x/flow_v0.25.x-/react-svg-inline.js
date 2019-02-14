@@ -38,6 +38,6 @@ declare module "react-svg-inline" {
   }
 
   declare type svgInline$SVGInline = React.ComponentClass<svgInline$SVGInlineProps>;
-  declare var svgInline: svgInline$svgInline$SVGInline;
-  declare module.exports: typeof svgInline;
+  declare var svgInline: svgInline$SVGInline;
+  declare export default typeof svgInline;
 }
