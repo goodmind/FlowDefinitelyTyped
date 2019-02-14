@@ -5,9 +5,9 @@ declare module "mina" {
     b: number,
     B: number,
     get: () => number,
-    set: (mina$time: number) => void,
+    set: (time: number) => void,
     easing?: (num: number) => number
-  ): mina$mina$AnimationDescriptor;
+  ): mina$AnimationDescriptor;
 
   declare var npm$namespace$mina: {
     backin: typeof mina$backin,
