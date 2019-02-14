@@ -23,7 +23,7 @@ declare module "stamplay-js-sdk" {
   }
 
   declare interface Stamplay$StamplayObject {
-    Stamplay$Model: Stamplay$Model;
+    Model: Stamplay$Model;
     Collection: any;
   }
 }
