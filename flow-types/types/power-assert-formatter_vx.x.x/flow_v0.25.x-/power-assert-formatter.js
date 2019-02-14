@@ -1,7 +1,7 @@
 declare module "power-assert-formatter" {
   declare function powerAssertFormatter(
-    options?: powerAssertFormatter$powerAssertFormatter$Options
-  ): powerAssertFormatter$powerAssertFormatter$Formatter;
+    options?: powerAssertFormatter$Options
+  ): powerAssertFormatter$Formatter;
 
   declare var npm$namespace$powerAssertFormatter: {
     defaultOptions: typeof powerAssertFormatter$defaultOptions
