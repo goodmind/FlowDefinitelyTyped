@@ -1,26 +1,30 @@
 declare module "gapi.client.monitoring" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Stackdriver Monitoring API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "monitoring",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "monitoring",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$projects: monitoring$monitoring$ProjectsResource;
+  declare var gapi$client$projects: monitoring$ProjectsResource;
 
-  declare interface monitoring$BucketOptions {
+  declare interface gapi$client$monitoring$BucketOptions {
     /**
      * The explicit buckets.
      */
@@ -37,7 +41,7 @@ declare module "gapi.client.monitoring" {
     linearBuckets?: monitoring$Linear;
   }
 
-  declare interface monitoring$CollectdPayload {
+  declare interface gapi$client$monitoring$CollectdPayload {
     /**
      * The end time of the interval.
      */
@@ -79,7 +83,7 @@ declare module "gapi.client.monitoring" {
     values?: monitoring$CollectdValue[];
   }
 
-  declare interface monitoring$CollectdPayloadError {
+  declare interface gapi$client$monitoring$CollectdPayloadError {
     /**
      * Records the error status for the payload. If this field is present, the partial errors for nested values won't be populated.
      */
@@ -97,7 +101,7 @@ declare module "gapi.client.monitoring" {
     valueErrors?: monitoring$CollectdValueError[];
   }
 
-  declare interface monitoring$CollectdValue {
+  declare interface gapi$client$monitoring$CollectdValue {
     /**
      * The data source for the collectd value. For example there are two data sources for network measurements: "rx" and "tx".
      */
@@ -114,7 +118,7 @@ declare module "gapi.client.monitoring" {
     value?: monitoring$TypedValue;
   }
 
-  declare interface monitoring$CollectdValueError {
+  declare interface gapi$client$monitoring$CollectdValueError {
     /**
      * Records the error status for the value.
      */
@@ -126,12 +130,12 @@ declare module "gapi.client.monitoring" {
     index?: number;
   }
 
-  declare interface monitoring$CreateCollectdTimeSeriesRequest {
+  declare interface gapi$client$monitoring$CreateCollectdTimeSeriesRequest {
     /**
      * The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can
      * have the same values for all of the fields plugin, plugin_instance, type, and type_instance.
      */
-    collectdPayloads?: monitoring$CollectdPayload[];
+    collectdPayloads?: gapi$client$monitoring$CollectdPayload[];
 
     /**
      * The version of collectd that collected the data. Example: "5.3.0-192.el6".
@@ -144,15 +148,15 @@ declare module "gapi.client.monitoring" {
     resource?: monitoring$MonitoredResource;
   }
 
-  declare interface monitoring$CreateCollectdTimeSeriesResponse {
+  declare interface gapi$client$monitoring$CreateCollectdTimeSeriesResponse {
     /**
      * Records the error status for points that were not written due to an error.Failed requests for which nothing is written will return an error response
      * instead.
      */
-    payloadErrors?: monitoring$CollectdPayloadError[];
+    payloadErrors?: gapi$client$monitoring$CollectdPayloadError[];
   }
 
-  declare interface monitoring$CreateTimeSeriesRequest {
+  declare interface gapi$client$monitoring$CreateTimeSeriesRequest {
     /**
      * The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent
      * than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and
@@ -161,7 +165,7 @@ declare module "gapi.client.monitoring" {
     timeSeries?: monitoring$TimeSeries[];
   }
 
-  declare interface monitoring$Distribution {
+  declare interface gapi$client$monitoring$Distribution {
     /**
      * Required in the Stackdriver Monitoring API v3. The values for each bucket specified in bucket_options. The sum of the values in bucketCounts must equal
      * the value in the count field of the Distribution object. The order of the bucket counts follows the numbering schemes described for the three bucket
@@ -173,7 +177,7 @@ declare module "gapi.client.monitoring" {
     /**
      * Required in the Stackdriver Monitoring API v3. Defines the histogram bucket boundaries.
      */
-    bucketOptions?: monitoring$BucketOptions;
+    bucketOptions?: gapi$client$monitoring$BucketOptions;
 
     /**
      * The number of values in the population. Must be non-negative. This value must equal the sum of the values in bucket_counts if a histogram is provided.
@@ -200,14 +204,14 @@ declare module "gapi.client.monitoring" {
     sumOfSquaredDeviation?: number;
   }
 
-  declare interface monitoring$Explicit {
+  declare interface gapi$client$monitoring$Explicit {
     /**
      * The values must be monotonically increasing.
      */
     bounds?: number[];
   }
 
-  declare interface monitoring$Exponential {
+  declare interface gapi$client$monitoring$Exponential {
     /**
      * Must be greater than 1.
      */
@@ -224,7 +228,7 @@ declare module "gapi.client.monitoring" {
     scale?: number;
   }
 
-  declare interface monitoring$Field {
+  declare interface gapi$client$monitoring$Field {
     /**
      * The field cardinality.
      */
@@ -276,7 +280,7 @@ declare module "gapi.client.monitoring" {
     typeUrl?: string;
   }
 
-  declare interface monitoring$Group {
+  declare interface gapi$client$monitoring$Group {
     /**
      * A user-assigned name for this group, used only for display purposes.
      */
@@ -305,7 +309,7 @@ declare module "gapi.client.monitoring" {
     parentName?: string;
   }
 
-  declare interface monitoring$LabelDescriptor {
+  declare interface gapi$client$monitoring$LabelDescriptor {
     /**
      * A human-readable description for the label.
      */
@@ -322,7 +326,7 @@ declare module "gapi.client.monitoring" {
     valueType?: string;
   }
 
-  declare interface monitoring$Linear {
+  declare interface gapi$client$monitoring$Linear {
     /**
      * Must be greater than 0.
      */
@@ -339,7 +343,7 @@ declare module "gapi.client.monitoring" {
     width?: number;
   }
 
-  declare interface monitoring$ListGroupMembersResponse {
+  declare interface gapi$client$monitoring$ListGroupMembersResponse {
     /**
      * A set of monitored resources in the group.
      */
@@ -357,11 +361,11 @@ declare module "gapi.client.monitoring" {
     totalSize?: number;
   }
 
-  declare interface monitoring$ListGroupsResponse {
+  declare interface gapi$client$monitoring$ListGroupsResponse {
     /**
      * The groups that match the specified filters.
      */
-    group?: monitoring$Group[];
+    group?: gapi$client$monitoring$Group[];
 
     /**
      * If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as
@@ -370,7 +374,7 @@ declare module "gapi.client.monitoring" {
     nextPageToken?: string;
   }
 
-  declare interface monitoring$ListMetricDescriptorsResponse {
+  declare interface gapi$client$monitoring$ListMetricDescriptorsResponse {
     /**
      * The metric descriptors that are available to the project and that match the value of filter, if present.
      */
@@ -383,7 +387,7 @@ declare module "gapi.client.monitoring" {
     nextPageToken?: string;
   }
 
-  declare interface monitoring$ListMonitoredResourceDescriptorsResponse {
+  declare interface gapi$client$monitoring$ListMonitoredResourceDescriptorsResponse {
     /**
      * If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as
      * pageToken in the next call to this method.
@@ -396,7 +400,7 @@ declare module "gapi.client.monitoring" {
     resourceDescriptors?: monitoring$MonitoredResourceDescriptor[];
   }
 
-  declare interface monitoring$ListTimeSeriesResponse {
+  declare interface gapi$client$monitoring$ListTimeSeriesResponse {
     /**
      * If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as
      * pageToken in the next call to this method.
@@ -409,7 +413,7 @@ declare module "gapi.client.monitoring" {
     timeSeries?: monitoring$TimeSeries[];
   }
 
-  declare interface monitoring$Metric {
+  declare interface gapi$client$monitoring$Metric {
     /**
      * The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values.
      */
@@ -421,7 +425,7 @@ declare module "gapi.client.monitoring" {
     type?: string;
   }
 
-  declare interface monitoring$MetricDescriptor {
+  declare interface gapi$client$monitoring$MetricDescriptor {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
@@ -438,7 +442,7 @@ declare module "gapi.client.monitoring" {
      * appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies
      * for successful responses or just for responses that failed.
      */
-    labels?: monitoring$LabelDescriptor[];
+    labels?: gapi$client$monitoring$LabelDescriptor[];
 
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
@@ -510,7 +514,7 @@ declare module "gapi.client.monitoring" {
     valueType?: string;
   }
 
-  declare interface monitoring$MonitoredResource {
+  declare interface gapi$client$monitoring$MonitoredResource {
     /**
      * Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels
      * "project_id", "instance_id", and "zone".
@@ -524,7 +528,7 @@ declare module "gapi.client.monitoring" {
     type?: string;
   }
 
-  declare interface monitoring$MonitoredResourceDescriptor {
+  declare interface gapi$client$monitoring$MonitoredResourceDescriptor {
     /**
      * Optional. A detailed description of the monitored resource type that might be used in documentation.
      */
@@ -540,7 +544,7 @@ declare module "gapi.client.monitoring" {
      * Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is
      * identified by values for the labels "database_id" and "zone".
      */
-    labels?: monitoring$LabelDescriptor[];
+    labels?: gapi$client$monitoring$LabelDescriptor[];
 
     /**
      * Optional. The resource name of the monitored resource descriptor: "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value
@@ -556,7 +560,7 @@ declare module "gapi.client.monitoring" {
     type?: string;
   }
 
-  declare interface monitoring$Option {
+  declare interface gapi$client$monitoring$Option {
     /**
      * The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, "map_entry". For custom
      * options, it should be the fully-qualified name. For example, "google.api.http".
@@ -570,7 +574,7 @@ declare module "gapi.client.monitoring" {
     value?: Record<string, any>;
   }
 
-  declare interface monitoring$Point {
+  declare interface gapi$client$monitoring$Point {
     /**
      * The time interval to which the data point applies. For GAUGE metrics, only the end time of the interval is used. For DELTA metrics, the start and end
      * time should specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For CUMULATIVE metrics, the start
@@ -585,7 +589,7 @@ declare module "gapi.client.monitoring" {
     value?: monitoring$TypedValue;
   }
 
-  declare interface monitoring$Range {
+  declare interface gapi$client$monitoring$Range {
     /**
      * The maximum of the population values.
      */
@@ -597,14 +601,14 @@ declare module "gapi.client.monitoring" {
     min?: number;
   }
 
-  declare interface monitoring$SourceContext {
+  declare interface gapi$client$monitoring$SourceContext {
     /**
      * The path-qualified name of the .proto file that contained the associated protobuf element. For example: "google/protobuf/source_context.proto".
      */
     fileName?: string;
   }
 
-  declare interface monitoring$Status {
+  declare interface gapi$client$monitoring$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -622,7 +626,7 @@ declare module "gapi.client.monitoring" {
     message?: string;
   }
 
-  declare interface monitoring$TimeInterval {
+  declare interface gapi$client$monitoring$TimeInterval {
     /**
      * Required. The end of the time interval.
      */
@@ -634,11 +638,11 @@ declare module "gapi.client.monitoring" {
     startTime?: string;
   }
 
-  declare interface monitoring$TimeSeries {
+  declare interface gapi$client$monitoring$TimeSeries {
     /**
      * The associated metric. A fully-specified metric used to identify the time series.
      */
-    metric?: monitoring$Metric;
+    metric?: gapi$client$monitoring$Metric;
 
     /**
      * The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this
@@ -654,12 +658,12 @@ declare module "gapi.client.monitoring" {
      * descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or
      * DISTRIBUTION.
      */
-    points?: monitoring$Point[];
+    points?: gapi$client$monitoring$Point[];
 
     /**
      * The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
      */
-    resource?: monitoring$MonitoredResource;
+    resource?: gapi$client$monitoring$MonitoredResource;
 
     /**
      * The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this
@@ -669,11 +673,11 @@ declare module "gapi.client.monitoring" {
     valueType?: string;
   }
 
-  declare interface monitoring$Type {
+  declare interface gapi$client$monitoring$Type {
     /**
      * The list of fields.
      */
-    fields?: monitoring$Field[];
+    fields?: gapi$client$monitoring$Field[];
 
     /**
      * The fully qualified message name.
@@ -688,12 +692,12 @@ declare module "gapi.client.monitoring" {
     /**
      * The protocol buffer options.
      */
-    options?: monitoring$Option[];
+    options?: gapi$client$monitoring$Option[];
 
     /**
      * The source context.
      */
-    sourceContext?: monitoring$SourceContext;
+    sourceContext?: gapi$client$monitoring$SourceContext;
 
     /**
      * The source syntax.
@@ -701,7 +705,7 @@ declare module "gapi.client.monitoring" {
     syntax?: string;
   }
 
-  declare interface monitoring$TypedValue {
+  declare interface gapi$client$monitoring$TypedValue {
     /**
      * A Boolean value: true or false.
      */
@@ -710,7 +714,7 @@ declare module "gapi.client.monitoring" {
     /**
      * A distribution value.
      */
-    distributionValue?: monitoring$Distribution;
+    distributionValue?: gapi$client$monitoring$Distribution;
 
     /**
      * A 64-bit double-precision floating-point number. Its magnitude is approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant digits of
@@ -729,7 +733,7 @@ declare module "gapi.client.monitoring" {
     stringValue?: string;
   }
 
-  declare interface monitoring$CollectdTimeSeriesResource {
+  declare interface gapi$client$monitoring$CollectdTimeSeriesResource {
     /**
      * Stackdriver Monitoring Agent only: Creates a new time series.<aside class="caution">This method is only for use by the Stackdriver Monitoring Agent.
      * Use projects.timeSeries.create instead.</aside>
@@ -804,10 +808,10 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$CreateCollectdTimeSeriesResponse>;
+    }): Request<gapi$client$monitoring$CreateCollectdTimeSeriesResponse>;
   }
 
-  declare interface monitoring$MembersResource {
+  declare interface gapi$client$monitoring$MembersResource {
     /**
      * Lists the monitored resources that are members of a group.
      */
@@ -909,10 +913,10 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$ListGroupMembersResponse>;
+    }): Request<gapi$client$monitoring$ListGroupMembersResponse>;
   }
 
-  declare interface monitoring$GroupsResource {
+  declare interface gapi$client$monitoring$GroupsResource {
     /**
      * Creates a new group.
      */
@@ -991,7 +995,7 @@ declare module "gapi.client.monitoring" {
        * If true, validate this request but do not create the group.
        */
       validateOnly?: boolean
-    }): Request<monitoring$Group>;
+    }): Request<gapi$client$monitoring$Group>;
 
     /**
      * Deletes an existing group.
@@ -1141,7 +1145,7 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$Group>;
+    }): Request<gapi$client$monitoring$Group>;
 
     /**
      * Lists the existing groups.
@@ -1246,7 +1250,7 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$ListGroupsResponse>;
+    }): Request<gapi$client$monitoring$ListGroupsResponse>;
 
     /**
      * Updates an existing group. You can change any group attributes except name.
@@ -1327,11 +1331,11 @@ declare module "gapi.client.monitoring" {
        * If true, validate this request but do not update the existing group.
        */
       validateOnly?: boolean
-    }): Request<monitoring$Group>;
-    members: monitoring$MembersResource;
+    }): Request<gapi$client$monitoring$Group>;
+    members: gapi$client$monitoring$MembersResource;
   }
 
-  declare interface monitoring$MetricDescriptorsResource {
+  declare interface gapi$client$monitoring$MetricDescriptorsResource {
     /**
      * Creates a new metric descriptor. User-created metric descriptors define custom metrics.
      */
@@ -1405,7 +1409,7 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$MetricDescriptor>;
+    }): Request<gapi$client$monitoring$MetricDescriptor>;
 
     /**
      * Deletes a metric descriptor. Only user-created custom metrics can be deleted.
@@ -1557,7 +1561,7 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$MetricDescriptor>;
+    }): Request<gapi$client$monitoring$MetricDescriptor>;
 
     /**
      * Lists metric descriptors that match a filter. This method does not require a Stackdriver account.
@@ -1650,10 +1654,10 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$ListMetricDescriptorsResponse>;
+    }): Request<gapi$client$monitoring$ListMetricDescriptorsResponse>;
   }
 
-  declare interface monitoring$MonitoredResourceDescriptorsResource {
+  declare interface gapi$client$monitoring$MonitoredResourceDescriptorsResource {
     /**
      * Gets a single monitored resource descriptor. This method does not require a Stackdriver account.
      */
@@ -1728,7 +1732,7 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$MonitoredResourceDescriptor>;
+    }): Request<gapi$client$monitoring$MonitoredResourceDescriptor>;
 
     /**
      * Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.
@@ -1821,10 +1825,10 @@ declare module "gapi.client.monitoring" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<monitoring$ListMonitoredResourceDescriptorsResponse>;
+    }): Request<gapi$client$monitoring$ListMonitoredResourceDescriptorsResponse>;
   }
 
-  declare interface monitoring$TimeSeriesResource {
+  declare interface gapi$client$monitoring$TimeSeriesResource {
     /**
      * Creates or adds data to one or more time series. The response is empty if all time series in the request were written. If any time series could not be
      * written, a corresponding failure message is included in the error response.
@@ -2048,14 +2052,14 @@ declare module "gapi.client.monitoring" {
        * Specifies which information is returned about the time series.
        */
       view?: string
-    }): Request<monitoring$ListTimeSeriesResponse>;
+    }): Request<gapi$client$monitoring$ListTimeSeriesResponse>;
   }
 
-  declare interface monitoring$ProjectsResource {
-    collectdTimeSeries: monitoring$CollectdTimeSeriesResource;
-    groups: monitoring$GroupsResource;
-    metricDescriptors: monitoring$MetricDescriptorsResource;
-    monitoredResourceDescriptors: monitoring$MonitoredResourceDescriptorsResource;
-    timeSeries: monitoring$TimeSeriesResource;
+  declare interface gapi$client$monitoring$ProjectsResource {
+    collectdTimeSeries: gapi$client$monitoring$CollectdTimeSeriesResource;
+    groups: gapi$client$monitoring$GroupsResource;
+    metricDescriptors: gapi$client$monitoring$MetricDescriptorsResource;
+    monitoredResourceDescriptors: gapi$client$monitoring$MonitoredResourceDescriptorsResource;
+    timeSeries: gapi$client$monitoring$TimeSeriesResource;
   }
 }
