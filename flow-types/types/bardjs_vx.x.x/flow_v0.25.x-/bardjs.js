@@ -31,7 +31,7 @@ declare module "bardjs" {
    * Could restore $q with $qReal in which case don't need to flush.
    */
   declare function bard$$httpBackend(
-    $provide: angular.auto.IProvideService
+    $provide: angular.autoIProvideService
   ): any;
 
   /**
@@ -39,7 +39,7 @@ declare module "bardjs" {
    * obviating the need to flush $http and $q queues
    * at the expense of ability to control $q timing.
    */
-  declare function bard$$q($provide: angular.auto.IProvideService): any;
+  declare function bard$$q($provide: angular.autoIProvideService): any;
 
   /**
    * Add names of globals to list of OK globals for this mocha spec
@@ -85,15 +85,13 @@ declare module "bardjs" {
   /**
    * Registers a fake logger service that you can spy on
    */
-  declare function bard$fakeLogger(
-    $provide: angular.auto.IProvideService
-  ): void;
+  declare function bard$fakeLogger($provide: angular.autoIProvideService): void;
 
   /**
    * Registers a fake route helper provider service that you can spy on
    */
   declare function bard$fakeRouteHelperProvider(
-    $provide: angular.auto.IProvideService
+    $provide: angular.autoIProvideService
   ): void;
 
   /**
@@ -103,7 +101,7 @@ declare module "bardjs" {
    * Make sure this goes before the inject in the spec.
    */
   declare function bard$fakeRouteProvider(
-    $provide: angular.auto.IProvideService
+    $provide: angular.autoIProvideService
   ): void;
 
   /**
@@ -113,15 +111,13 @@ declare module "bardjs" {
    * Make sure this goes before the inject in the spec.
    */
   declare function bard$fakeStateProvider(
-    $provide: angular.auto.IProvideService
+    $provide: angular.autoIProvideService
   ): void;
 
   /**
    * Registers a fake toastr service that you can spy on
    */
-  declare function bard$fakeToastr(
-    $provide: angular.auto.IProvideService
-  ): void;
+  declare function bard$fakeToastr($provide: angular.autoIProvideService): void;
 
   /**
    * Inject selected services into the windows object during test
