@@ -1,4 +1,14 @@
+declare module 'module-deps' {
+        import typeof * as browserResolve from 'browser-resolve';
 
+	
+/**
+ * Return an object transform stream 'd' that expects entry filenames or '{ id: ..., file: ... }' objects
+ * as input and produces objects for every dependency from a recursive module traversal as output.
+ */
+declare function moduleDeps(opts?: moduleDeps$Options): moduleDeps$ModuleDepsObject
+
+	
 /**
  * module-deps constructor options
  */
@@ -120,14 +130,14 @@ err: Error | null,
 file?: string,
 pkg?: moduleDeps$PackageObject,
 fakePath?: any) => any): any,
-readFile(file: string, id?: any, pkg?: moduleDeps$PackageObject): NodeJS.ReadableStream,
+readFile(file: string, id?: any, pkg?: moduleDeps$PackageObject): NodeJS$ReadableStream,
 getTransforms(
 file: string,
 pkg: moduleDeps$PackageObject,
 opts?: {
 builtin?: boolean,
 inNodeModules?: boolean
-}): NodeJS.ReadWriteStream,
+}): NodeJS$ReadWriteStream,
 walk(
 id: string | {
 file: string,
@@ -178,7 +188,7 @@ filename: string,
  */
 on(event: "package", listener: (package: moduleDeps$PackageObject) => any): this,
 on(event: string | Symbol, listener: (...args: any[]) => void): this
-} & NodeJS.ReadWriteStream
+} & NodeJS$ReadWriteStream
 
 
 declare type moduleDeps$CacheCallback = (
@@ -222,16 +232,7 @@ deps: {
  */
 declare interface moduleDeps$PackageObject {
 [prop: string]: any
-} declare module 'module-deps' {
-        import typeof * as browserResolve from 'browser-resolve';
-
-	
-/**
- * Return an object transform stream 'd' that expects entry filenames or '{ id: ..., file: ... }' objects
- * as input and produces objects for every dependency from a recursive module traversal as output.
- */
-declare function moduleDeps(opts?: moduleDeps$moduleDeps$Options): moduleDeps$moduleDeps$ModuleDepsObject
-
+} 
 	declare export default typeof moduleDeps
 
     }
