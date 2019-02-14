@@ -55,5 +55,5 @@ declare module "autosize" {
    */
   declare function autosize$destroy(collection: JQuery): JQuery;
 
-  declare module.exports: typeof autosize;
+  declare export default typeof autosize;
 }
