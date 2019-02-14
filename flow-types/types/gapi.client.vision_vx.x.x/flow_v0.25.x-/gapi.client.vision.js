@@ -1,26 +1,30 @@
 declare module "gapi.client.vision" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    images: typeof client$images
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    images: typeof gapi$client$images
   };
 
   /**
    * Load Google Cloud Vision API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "vision",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "vision",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$images: vision$vision$ImagesResource;
+  declare var gapi$client$images: vision$ImagesResource;
 
-  declare interface vision$AnnotateImageRequest {
+  declare interface gapi$client$vision$AnnotateImageRequest {
     /**
      * Requested features.
      */
@@ -37,7 +41,7 @@ declare module "gapi.client.vision" {
     imageContext?: vision$ImageContext;
   }
 
-  declare interface vision$AnnotateImageResponse {
+  declare interface gapi$client$vision$AnnotateImageResponse {
     /**
      * If present, crop hints have completed successfully.
      */
@@ -99,21 +103,21 @@ declare module "gapi.client.vision" {
     webDetection?: vision$WebDetection;
   }
 
-  declare interface vision$BatchAnnotateImagesRequest {
+  declare interface gapi$client$vision$BatchAnnotateImagesRequest {
     /**
      * Individual image annotation requests for this batch.
      */
-    requests?: vision$AnnotateImageRequest[];
+    requests?: gapi$client$vision$AnnotateImageRequest[];
   }
 
-  declare interface vision$BatchAnnotateImagesResponse {
+  declare interface gapi$client$vision$BatchAnnotateImagesResponse {
     /**
      * Individual responses to image annotation requests within the batch.
      */
-    responses?: vision$AnnotateImageResponse[];
+    responses?: gapi$client$vision$AnnotateImageResponse[];
   }
 
-  declare interface vision$Block {
+  declare interface gapi$client$vision$Block {
     /**
      * Detected block type (text, image etc) for this block.
      */
@@ -149,14 +153,14 @@ declare module "gapi.client.vision" {
     property?: vision$TextProperty;
   }
 
-  declare interface vision$BoundingPoly {
+  declare interface gapi$client$vision$BoundingPoly {
     /**
      * The bounding polygon vertices.
      */
     vertices?: vision$Vertex[];
   }
 
-  declare interface vision$Color {
+  declare interface gapi$client$vision$Color {
     /**
      * The fraction of this color that should be applied to the pixel. That is,
      * the final pixel color is defined by the equation:
@@ -188,11 +192,11 @@ declare module "gapi.client.vision" {
     red?: number;
   }
 
-  declare interface vision$ColorInfo {
+  declare interface gapi$client$vision$ColorInfo {
     /**
      * RGB components of the color.
      */
-    color?: vision$Color;
+    color?: gapi$client$vision$Color;
 
     /**
      * The fraction of pixels the color occupies in the image.
@@ -206,12 +210,12 @@ declare module "gapi.client.vision" {
     score?: number;
   }
 
-  declare interface vision$CropHint {
+  declare interface gapi$client$vision$CropHint {
     /**
      * The bounding polygon for the crop region. The coordinates of the bounding
      * box are in the original image's scale, as returned in `ImageParams`.
      */
-    boundingPoly?: vision$BoundingPoly;
+    boundingPoly?: gapi$client$vision$BoundingPoly;
 
     /**
      * Confidence of this being a salient region.  Range [0, 1].
@@ -225,14 +229,14 @@ declare module "gapi.client.vision" {
     importanceFraction?: number;
   }
 
-  declare interface vision$CropHintsAnnotation {
+  declare interface gapi$client$vision$CropHintsAnnotation {
     /**
      * Crop hint results.
      */
-    cropHints?: vision$CropHint[];
+    cropHints?: gapi$client$vision$CropHint[];
   }
 
-  declare interface vision$CropHintsParams {
+  declare interface gapi$client$vision$CropHintsParams {
     /**
      * Aspect ratios in floats, representing the ratio of the width to the height
      * of the image. For example, if the desired aspect ratio is 4/3, the
@@ -244,7 +248,7 @@ declare module "gapi.client.vision" {
     aspectRatios?: number[];
   }
 
-  declare interface vision$DetectedBreak {
+  declare interface gapi$client$vision$DetectedBreak {
     /**
      * True if break prepends the element.
      */
@@ -256,7 +260,7 @@ declare module "gapi.client.vision" {
     type?: string;
   }
 
-  declare interface vision$DetectedLanguage {
+  declare interface gapi$client$vision$DetectedLanguage {
     /**
      * Confidence of detected language. Range [0, 1].
      */
@@ -270,19 +274,19 @@ declare module "gapi.client.vision" {
     languageCode?: string;
   }
 
-  declare interface vision$DominantColorsAnnotation {
+  declare interface gapi$client$vision$DominantColorsAnnotation {
     /**
      * RGB color values with their score and pixel fraction.
      */
-    colors?: vision$ColorInfo[];
+    colors?: gapi$client$vision$ColorInfo[];
   }
 
-  declare interface vision$EntityAnnotation {
+  declare interface gapi$client$vision$EntityAnnotation {
     /**
      * Image region to which this entity belongs. Not produced
      * for `LABEL_DETECTION` features.
      */
-    boundingPoly?: vision$BoundingPoly;
+    boundingPoly?: gapi$client$vision$BoundingPoly;
 
     /**
      * The accuracy of the entity detection in an image.
@@ -339,7 +343,7 @@ declare module "gapi.client.vision" {
     topicality?: number;
   }
 
-  declare interface vision$FaceAnnotation {
+  declare interface gapi$client$vision$FaceAnnotation {
     /**
      * Anger likelihood.
      */
@@ -359,7 +363,7 @@ declare module "gapi.client.vision" {
      * `BoundingPoly` (the polygon will be unbounded) if only a partial face
      * appears in the image to be annotated.
      */
-    boundingPoly?: vision$BoundingPoly;
+    boundingPoly?: gapi$client$vision$BoundingPoly;
 
     /**
      * Detection confidence. Range [0, 1].
@@ -374,7 +378,7 @@ declare module "gapi.client.vision" {
      * landmarker results, only on the initial face detection, hence
      * the <code>fd</code> (face detection) prefix.
      */
-    fdBoundingPoly?: vision$BoundingPoly;
+    fdBoundingPoly?: gapi$client$vision$BoundingPoly;
 
     /**
      * Headwear likelihood.
@@ -432,7 +436,7 @@ declare module "gapi.client.vision" {
     underExposedLikelihood?: string;
   }
 
-  declare interface vision$Feature {
+  declare interface gapi$client$vision$Feature {
     /**
      * Maximum number of results of this type.
      */
@@ -444,7 +448,7 @@ declare module "gapi.client.vision" {
     type?: string;
   }
 
-  declare interface vision$Image {
+  declare interface gapi$client$vision$Image {
     /**
      * Image content, represented as a stream of bytes.
      * Note: as with all `bytes` fields, protobuffers use a pure binary
@@ -460,11 +464,11 @@ declare module "gapi.client.vision" {
     source?: vision$ImageSource;
   }
 
-  declare interface vision$ImageContext {
+  declare interface gapi$client$vision$ImageContext {
     /**
      * Parameters for crop hints annotation request.
      */
-    cropHintsParams?: vision$CropHintsParams;
+    cropHintsParams?: gapi$client$vision$CropHintsParams;
 
     /**
      * List of languages to use for TEXT_DETECTION. In most cases, an empty value
@@ -484,14 +488,14 @@ declare module "gapi.client.vision" {
     latLongRect?: vision$LatLongRect;
   }
 
-  declare interface vision$ImageProperties {
+  declare interface gapi$client$vision$ImageProperties {
     /**
      * If present, dominant colors completed successfully.
      */
-    dominantColors?: vision$DominantColorsAnnotation;
+    dominantColors?: gapi$client$vision$DominantColorsAnnotation;
   }
 
-  declare interface vision$ImageSource {
+  declare interface gapi$client$vision$ImageSource {
     /**
      * NOTE: For new code `image_uri` below is preferred.
      * Google Cloud Storage image URI, which must be in the following form:
@@ -517,7 +521,7 @@ declare module "gapi.client.vision" {
     imageUri?: string;
   }
 
-  declare interface vision$Landmark {
+  declare interface gapi$client$vision$Landmark {
     /**
      * Face landmark position.
      */
@@ -529,7 +533,7 @@ declare module "gapi.client.vision" {
     type?: string;
   }
 
-  declare interface vision$LatLng {
+  declare interface gapi$client$vision$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -541,30 +545,30 @@ declare module "gapi.client.vision" {
     longitude?: number;
   }
 
-  declare interface vision$LatLongRect {
+  declare interface gapi$client$vision$LatLongRect {
     /**
      * Max lat/long pair.
      */
-    maxLatLng?: vision$LatLng;
+    maxLatLng?: gapi$client$vision$LatLng;
 
     /**
      * Min lat/long pair.
      */
-    minLatLng?: vision$LatLng;
+    minLatLng?: gapi$client$vision$LatLng;
   }
 
-  declare interface vision$LocationInfo {
+  declare interface gapi$client$vision$LocationInfo {
     /**
      * lat/long location coordinates.
      */
-    latLng?: vision$LatLng;
+    latLng?: gapi$client$vision$LatLng;
   }
 
-  declare interface vision$Page {
+  declare interface gapi$client$vision$Page {
     /**
      * List of blocks of text, images etc on this page.
      */
-    blocks?: vision$Block[];
+    blocks?: gapi$client$vision$Block[];
 
     /**
      * Page height in pixels.
@@ -582,7 +586,7 @@ declare module "gapi.client.vision" {
     width?: number;
   }
 
-  declare interface vision$Paragraph {
+  declare interface gapi$client$vision$Paragraph {
     /**
      * The bounding box for the paragraph.
      * The vertices are in the order of top-left, top-right, bottom-right,
@@ -600,7 +604,7 @@ declare module "gapi.client.vision" {
      * 1----0
      * and the vertice order will still be (0, 1, 2, 3).
      */
-    boundingBox?: vision$BoundingPoly;
+    boundingBox?: gapi$client$vision$BoundingPoly;
 
     /**
      * Additional information detected for the paragraph.
@@ -613,7 +617,7 @@ declare module "gapi.client.vision" {
     words?: vision$Word[];
   }
 
-  declare interface vision$Position {
+  declare interface gapi$client$vision$Position {
     /**
      * X coordinate.
      */
@@ -630,7 +634,7 @@ declare module "gapi.client.vision" {
     z?: number;
   }
 
-  declare interface vision$Property {
+  declare interface gapi$client$vision$Property {
     /**
      * Name of the property.
      */
@@ -647,7 +651,7 @@ declare module "gapi.client.vision" {
     value?: string;
   }
 
-  declare interface vision$SafeSearchAnnotation {
+  declare interface gapi$client$vision$SafeSearchAnnotation {
     /**
      * Represents the adult content likelihood for the image. Adult content may
      * contain elements such as nudity, pornographic images or cartoons, or
@@ -673,7 +677,7 @@ declare module "gapi.client.vision" {
     violence?: string;
   }
 
-  declare interface vision$Status {
+  declare interface gapi$client$vision$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -693,7 +697,7 @@ declare module "gapi.client.vision" {
     message?: string;
   }
 
-  declare interface vision$Symbol {
+  declare interface gapi$client$vision$Symbol {
     /**
      * The bounding box for the symbol.
      * The vertices are in the order of top-left, top-right, bottom-right,
@@ -711,7 +715,7 @@ declare module "gapi.client.vision" {
      * 1----0
      * and the vertice order will still be (0, 1, 2, 3).
      */
-    boundingBox?: vision$BoundingPoly;
+    boundingBox?: gapi$client$vision$BoundingPoly;
 
     /**
      * Additional information detected for the symbol.
@@ -724,11 +728,11 @@ declare module "gapi.client.vision" {
     text?: string;
   }
 
-  declare interface vision$TextAnnotation {
+  declare interface gapi$client$vision$TextAnnotation {
     /**
      * List of pages detected by OCR.
      */
-    pages?: vision$Page[];
+    pages?: gapi$client$vision$Page[];
 
     /**
      * UTF-8 text detected on the pages.
@@ -736,19 +740,19 @@ declare module "gapi.client.vision" {
     text?: string;
   }
 
-  declare interface vision$TextProperty {
+  declare interface gapi$client$vision$TextProperty {
     /**
      * Detected start or end of a text segment.
      */
-    detectedBreak?: vision$DetectedBreak;
+    detectedBreak?: gapi$client$vision$DetectedBreak;
 
     /**
      * A list of detected languages together with confidence.
      */
-    detectedLanguages?: vision$DetectedLanguage[];
+    detectedLanguages?: gapi$client$vision$DetectedLanguage[];
   }
 
-  declare interface vision$Vertex {
+  declare interface gapi$client$vision$Vertex {
     /**
      * X coordinate.
      */
@@ -760,7 +764,7 @@ declare module "gapi.client.vision" {
     y?: number;
   }
 
-  declare interface vision$WebDetection {
+  declare interface gapi$client$vision$WebDetection {
     /**
      * Fully matching images from the Internet.
      * Can include resized copies of the query image.
@@ -790,7 +794,7 @@ declare module "gapi.client.vision" {
     webEntities?: vision$WebEntity[];
   }
 
-  declare interface vision$WebEntity {
+  declare interface gapi$client$vision$WebEntity {
     /**
      * Canonical description of the entity, in English.
      */
@@ -808,7 +812,7 @@ declare module "gapi.client.vision" {
     score?: number;
   }
 
-  declare interface vision$WebImage {
+  declare interface gapi$client$vision$WebImage {
     /**
      * (Deprecated) Overall relevancy score for the image.
      */
@@ -820,7 +824,7 @@ declare module "gapi.client.vision" {
     url?: string;
   }
 
-  declare interface vision$WebPage {
+  declare interface gapi$client$vision$WebPage {
     /**
      * (Deprecated) Overall relevancy score for the web page.
      */
@@ -832,7 +836,7 @@ declare module "gapi.client.vision" {
     url?: string;
   }
 
-  declare interface vision$Word {
+  declare interface gapi$client$vision$Word {
     /**
      * The bounding box for the word.
      * The vertices are in the order of top-left, top-right, bottom-right,
@@ -850,21 +854,21 @@ declare module "gapi.client.vision" {
      * 1----0
      * and the vertice order will still be (0, 1, 2, 3).
      */
-    boundingBox?: vision$BoundingPoly;
+    boundingBox?: gapi$client$vision$BoundingPoly;
 
     /**
      * Additional information detected for the word.
      */
-    property?: vision$TextProperty;
+    property?: gapi$client$vision$TextProperty;
 
     /**
      * List of symbols in the word.
      * The order of the symbols follows the natural reading order.
      */
-    symbols?: vision$Symbol[];
+    symbols?: gapi$client$vision$Symbol[];
   }
 
-  declare interface vision$ImagesResource {
+  declare interface gapi$client$vision$ImagesResource {
     /**
      * Run image detection and annotation for a batch of images.
      */
@@ -933,6 +937,6 @@ declare module "gapi.client.vision" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vision$BatchAnnotateImagesResponse>;
+    }): Request<gapi$client$vision$BatchAnnotateImagesResponse>;
   }
 }
