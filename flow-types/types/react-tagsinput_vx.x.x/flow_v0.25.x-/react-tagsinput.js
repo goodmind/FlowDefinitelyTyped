@@ -1,11 +1,11 @@
 declare module "react-tagsinput" {
   import typeof * as React from "react";
 
-  declare module.exports: typeof TagsInput;
+  declare export default typeof TagsInput;
 
   declare type Tag = any;
   declare class TagsInput
-    mixins React.Component<TagsInput$TagsInput$ReactTagsInputProps> {
+    mixins React.Component<TagsInput$ReactTagsInputProps> {
     accept(): any;
     addTag(tag: Tag): any;
     blur(): void;
@@ -25,7 +25,7 @@ declare module "react-tagsinput" {
     ) => void,
     +ref: (r: any) => void,
     +value: Tag
-  } & TagsInput$InputProps;
+  } & InputProps;
 
   declare interface TagsInput$TagProps {
     [prop: string]: any;
@@ -36,7 +36,7 @@ declare module "react-tagsinput" {
     +getTagDisplayValue: (tag: Tag) => string,
     +onRemove: (tagIndex: number) => void,
     +tag: Tag
-  } & TagsInput$TagProps;
+  } & TagProps;
 
   declare type TagsInput$ReactTagsInputProps = {
     value: Tag[],
