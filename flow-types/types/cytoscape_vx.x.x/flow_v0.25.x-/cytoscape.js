@@ -1,15 +1,15 @@
 declare module "cytoscape" {
-  declare module.exports: typeof cytoscape;
+  declare export default typeof cytoscape;
 
   declare function cytoscape(
-    options?: cytoscape$cytoscape$CytoscapeOptions
-  ): cytoscape$Css$Core;
+    options?: cytoscape$CytoscapeOptions
+  ): cytoscape$Core;
 
   declare function cytoscape(
     extensionName: string,
     foo: string,
     bar: any
-  ): cytoscape$Css$Core;
+  ): cytoscape$Core;
 
   declare var npm$namespace$cytoscape: {
     use: typeof cytoscape$use
@@ -73,7 +73,7 @@ declare module "cytoscape" {
     /**
      * you should only use `style`/`css` for very special cases; use classes instead
      */
-    css?: Css$Css$Node | Css$Css$Edge;
+    css?: Css$Node | Css$Edge;
   }
 
   declare interface cytoscape$ElementDataDefinition {
@@ -86,7 +86,7 @@ declare module "cytoscape" {
 
   declare type cytoscape$EdgeDefinition = {
     data: cytoscape$EdgeDataDefinition
-  } & cytoscape$ElementDefinition;
+  } & ElementDefinition;
 
   declare type cytoscape$EdgeDataDefinition = {
     id?: string,
@@ -101,17 +101,17 @@ declare module "cytoscape" {
      */
     target: string,
     [key: string]: any
-  } & cytoscape$ElementDataDefinition;
+  } & ElementDataDefinition;
 
   declare type cytoscape$NodeDefinition = {
     data: cytoscape$NodeDataDefinition
-  } & cytoscape$ElementDefinition;
+  } & ElementDefinition;
 
   declare type cytoscape$NodeDataDefinition = {
     id?: string,
     parent?: string,
     [key: string]: any
-  } & cytoscape$ElementDataDefinition;
+  } & ElementDataDefinition;
 
   declare interface cytoscape$CytoscapeOptions {
     /**
@@ -401,14 +401,14 @@ declare module "cytoscape" {
      * The opacity of the area outside the viewport texture.
      */
     "outside-texture-bg-opacity": number
-  } & cytoscape$CoreGraphManipulation &
-    cytoscape$CoreGraphManipulationExt &
-    cytoscape$CoreEvents &
-    cytoscape$CoreViewportManipulation &
-    cytoscape$CoreAnimation &
-    cytoscape$CoreLayout &
-    cytoscape$CoreStyle &
-    cytoscape$CoreExport;
+  } & CoreGraphManipulation &
+    CoreGraphManipulationExt &
+    CoreEvents &
+    CoreViewportManipulation &
+    CoreAnimation &
+    CoreLayout &
+    CoreStyle &
+    CoreExport;
 
   /**
    * These are the principle functions used to interact with the graph model.
@@ -1101,7 +1101,7 @@ declare module "cytoscape" {
     /**
      * easing - A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing?: Css$Css$TransitionTimingFunction;
+    easing?: Css$TransitionTimingFunction;
 
     /**
      * duration - The duration of the animation in milliseconds.
@@ -1124,7 +1124,7 @@ declare module "cytoscape" {
      * step - A function to call each time the animation steps.
      */
     step?: () => void
-  } & cytoscape$AnimationOptions;
+  } & AnimationOptions;
 
   declare interface cytoscape$CoreAnimation {
     /**
@@ -1217,11 +1217,11 @@ declare module "cytoscape" {
    */
   declare type cytoscape$ElementStylesheetStyle = {
     json(): any
-  } & cytoscape$StylesheetStyle;
+  } & StylesheetStyle;
 
   declare type cytoscape$ElementStylesheetCSS = {
     json(): any
-  } & cytoscape$StylesheetCSS;
+  } & StylesheetCSS;
 
   declare interface cytoscape$CoreStyle {
     /**
@@ -1246,7 +1246,7 @@ declare module "cytoscape" {
 
   declare interface cytoscape$StylesheetStyle {
     selector: string;
-    style: Css$Css$Node | Css$Css$Edge;
+    style: Css$Node | Css$Edge;
   }
 
   /**
@@ -1254,7 +1254,7 @@ declare module "cytoscape" {
    */
   declare interface cytoscape$StylesheetCSS {
     selector: string;
-    css: Css$Css$Node | Css$Css$Edge;
+    css: Css$Node | Css$Edge;
   }
 
   /**
@@ -1292,14 +1292,14 @@ declare module "cytoscape" {
      * output Whether the output should be 'base64uri' (default), 'base64', or 'blob'.
      */
     output?: "base64uri" | "base64"
-  } & cytoscape$ExportOptions;
+  } & ExportOptions;
 
   declare type cytoscape$ExportBlobOptions = {
     /**
      * output Whether the output should be 'base64uri' (default), 'base64', or 'blob'.
      */
     output?: "blob"
-  } & cytoscape$ExportOptions;
+  } & ExportOptions;
 
   declare type cytoscape$ExportJpgOptions = {
     /**
@@ -1308,13 +1308,13 @@ declare module "cytoscape" {
      * If not set, the browser's default quality value is used.
      */
     quality?: number
-  } & cytoscape$ExportOptions;
+  } & ExportOptions;
 
-  declare type cytoscape$ExportJpgStringOptions = {} & cytoscape$ExportJpgOptions &
-    cytoscape$ExportStringOptions;
+  declare type cytoscape$ExportJpgStringOptions = {} & ExportJpgOptions &
+    ExportStringOptions;
 
-  declare type cytoscape$ExportJpgBlobOptions = {} & cytoscape$ExportJpgOptions &
-    cytoscape$ExportBlobOptions;
+  declare type cytoscape$ExportJpgBlobOptions = {} & ExportJpgOptions &
+    ExportBlobOptions;
 
   declare interface cytoscape$CoreExport {
     /**
@@ -1352,19 +1352,19 @@ declare module "cytoscape" {
   declare type cytoscape$Collection<
     TOut = cytoscape$SingularElementReturnValue,
     TIn = cytoscape$SingularElementArgument
-  > = {} & cytoscape$CollectionGraphManipulation &
-    cytoscape$CollectionEvents &
-    cytoscape$CollectionData &
-    cytoscape$CollectionPosition &
-    cytoscape$CollectionTraversing &
-    cytoscape$CollectionLayout &
-    cytoscape$CollectionSelection &
-    cytoscape$CollectionStyle &
-    cytoscape$CollectionAnimation &
-    cytoscape$CollectionComparision &
-    cytoscape$CollectionIteration<TIn, TOut> &
-    cytoscape$CollectionBuildingFiltering<TIn, TOut> &
-    cytoscape$CollectionAlgorithms;
+  > = {} & CollectionGraphManipulation &
+    CollectionEvents &
+    CollectionData &
+    CollectionPosition &
+    CollectionTraversing &
+    CollectionLayout &
+    CollectionSelection &
+    CollectionStyle &
+    CollectionAnimation &
+    CollectionComparision &
+    CollectionIteration<TIn, TOut> &
+    CollectionBuildingFiltering<TIn, TOut> &
+    CollectionAlgorithms;
 
   /**
    * ele  --> Cy.Singular
@@ -1374,13 +1374,13 @@ declare module "cytoscape" {
   declare type cytoscape$Singular<
     TOut = cytoscape$SingularElementReturnValue,
     TIn = cytoscape$SingularElementArgument
-  > = {} & cytoscape$Collection<TOut, TIn> &
-    cytoscape$SingularGraphManipulation &
-    cytoscape$SingularData &
-    cytoscape$SingularPosition &
-    cytoscape$SingularSelection &
-    cytoscape$SingularStyle &
-    cytoscape$SingularAnimation;
+  > = {} & Collection<TOut, TIn> &
+    SingularGraphManipulation &
+    SingularData &
+    SingularPosition &
+    SingularSelection &
+    SingularStyle &
+    SingularAnimation;
 
   declare interface cytoscape$ElementsDefinition {
     nodes: cytoscape$NodeDefinition[];
@@ -1409,11 +1409,11 @@ declare module "cytoscape" {
    *
    * The output is a collection of edge elements OR single edge.
    */
-  declare type cytoscape$EdgeCollection = {} & cytoscape$Collection<
+  declare type cytoscape$EdgeCollection = {} & Collection<
     cytoscape$EdgeSingular,
     cytoscape$EdgeSingular
   > &
-    cytoscape$EdgeCollectionTraversing;
+    EdgeCollectionTraversing;
 
   /**
    * nodes -> Cy.NodeCollection
@@ -1421,14 +1421,14 @@ declare module "cytoscape" {
    *
    * The output is a collection of node elements OR single node.
    */
-  declare type cytoscape$NodeCollection = {} & cytoscape$Collection<
+  declare type cytoscape$NodeCollection = {} & Collection<
     cytoscape$NodeSingular,
     cytoscape$NodeSingular
   > &
-    cytoscape$NodeCollectionMetadata &
-    cytoscape$NodeCollectionPosition &
-    cytoscape$NodeCollectionTraversing &
-    cytoscape$NodeCollectionCompound;
+    NodeCollectionMetadata &
+    NodeCollectionPosition &
+    NodeCollectionTraversing &
+    NodeCollectionCompound;
 
   declare type cytoscape$SingularElementArgument =
     | cytoscape$EdgeSingular
@@ -1441,27 +1441,27 @@ declare module "cytoscape" {
    * edge --> Cy.EdgeSingular
    * a collection of a single edge
    */
-  declare type cytoscape$EdgeSingular = {} & cytoscape$Singular<
+  declare type cytoscape$EdgeSingular = {} & Singular<
     cytoscape$EdgeSingular,
     cytoscape$EdgeSingular
   > &
-    cytoscape$EdgeCollection &
-    cytoscape$EdgeSingularData &
-    cytoscape$EdgeSingularPoints &
-    cytoscape$EdgeSingularTraversing;
+    EdgeCollection &
+    EdgeSingularData &
+    EdgeSingularPoints &
+    EdgeSingularTraversing;
 
   /**
    * node --> Cy.NodeSingular
    * a collection of a single node
    */
-  declare type cytoscape$NodeSingular = {} & cytoscape$Singular<
+  declare type cytoscape$NodeSingular = {} & Singular<
     cytoscape$NodeSingular,
     cytoscape$NodeSingular
   > &
-    cytoscape$NodeCollection &
-    cytoscape$NodeSingularMetadata &
-    cytoscape$NodeSingularPosition &
-    cytoscape$NodeSingularCompound;
+    NodeCollection &
+    NodeSingularMetadata &
+    NodeSingularPosition &
+    NodeSingularCompound;
 
   /**
    * http://js.cytoscape.org/#collection/graph-manipulation
@@ -1604,13 +1604,13 @@ declare module "cytoscape" {
     ): Promise<cytoscape$EventHandler>;
 
     /**
- * @param events A space separated list of event names.
- * @param selector [optional] A delegate selector to specify child elements for which the handler is triggered.
- * @param data [optional] A plain object which is passed to the handler in the event object argument.
- * @param function (event) The handler function that is called when one of the specified events occurs.
- * @param event The event object.
-http://js.cytoscape.org/#eles.one
- */
+     * @param events A space separated list of event names.
+     * @param selector [optional] A delegate selector to specify child elements for which the handler is triggered.
+     * @param data [optional] A plain object which is passed to the handler in the event object argument.
+     * @param function (event) The handler function that is called when one of the specified events occurs.
+     * @param event The event object.
+     * http://js.cytoscape.org/#eles.one
+     */
     one(
       events: cytoscape$EventNames,
       selector: string,
@@ -2082,11 +2082,11 @@ http://js.cytoscape.org/#eles.one
     shift(pos: cytoscape$Position): this;
 
     /**
- * Set the positions via a function.
- * @param handler A callback function that returns the position to set for each element.
- * @param pos An object specifying name-value pairs representing dimensions to set.
-http://js.cytoscape.org/#nodes.positions
- */
+     * Set the positions via a function.
+     * @param handler A callback function that returns the position to set for each element.
+     * @param pos An object specifying name-value pairs representing dimensions to set.
+     * http://js.cytoscape.org/#nodes.positions
+     */
     positions(
       handler: cytoscape$ElementPositionFunction | cytoscape$Position
     ): this;
@@ -2195,10 +2195,10 @@ http://js.cytoscape.org/#nodes.positions
    */
   declare interface cytoscape$CollectionPosition {
     /**
- * Get the bounding box of the elements in model coordinates.
- * @param options An object containing options for the function.
-http://js.cytoscape.org/#eles.boundingBox
- */
+     * Get the bounding box of the elements in model coordinates.
+     * @param options An object containing options for the function.
+     * http://js.cytoscape.org/#eles.boundingBox
+     */
     boundingBox(
       options: cytoscape$BoundingBoxOptions
     ): cytoscape$BoundingBox12 | cytoscape$BoundingBoxWH;
@@ -2354,34 +2354,34 @@ http://js.cytoscape.org/#eles.boundingBox
     addClass(classes: cytoscape$ClassNames): this;
 
     /**
- * Remove classes from elements.
- * @param classes A space-separated list of class names to remove from the elements.
-http://js.cytoscape.org/#eles.removeClass
- */
+     * Remove classes from elements.
+     * @param classes A space-separated list of class names to remove from the elements.
+     * http://js.cytoscape.org/#eles.removeClass
+     */
     removeClass(classes: cytoscape$ClassNames): this;
 
     /**
- * Toggle whether the elements have the specified classes.
- * @param classes A space-separated list of class names to toggle on the elements.
- * @param toggle [optional] Instead of automatically toggling, adds the classes on truthy values or removes them on falsey values.
-http://js.cytoscape.org/#eles.toggleClass
- */
+     * Toggle whether the elements have the specified classes.
+     * @param classes A space-separated list of class names to toggle on the elements.
+     * @param toggle [optional] Instead of automatically toggling, adds the classes on truthy values or removes them on falsey values.
+     * http://js.cytoscape.org/#eles.toggleClass
+     */
     toggleClass(classes: cytoscape$ClassNames, toggle?: boolean): this;
 
     /**
- * Replace the current list of classes on the elements with the specified list.
- * @param classes A space-separated list of class names that replaces the current class list.
-http://js.cytoscape.org/#eles.classes
-Note: can be used to clear all classes (no arguments).
- */
+     * Replace the current list of classes on the elements with the specified list.
+     * @param classes A space-separated list of class names that replaces the current class list.
+     * http://js.cytoscape.org/#eles.classes
+     * Note: can be used to clear all classes (no arguments).
+     */
     classes(classes?: cytoscape$ClassNames): this;
 
     /**
- * Add classes to the elements, and then remove the classes after a specified duration.
- * @param classes A space-separated list of class names to flash on the elements.
- * @param duration [optional] The duration in milliseconds that the classes should be added on the elements. After the duration, the classes are removed.
-http://js.cytoscape.org/#eles.flashClass
- */
+     * Add classes to the elements, and then remove the classes after a specified duration.
+     * @param classes A space-separated list of class names to flash on the elements.
+     * @param duration [optional] The duration in milliseconds that the classes should be added on the elements. After the duration, the classes are removed.
+     * http://js.cytoscape.org/#eles.flashClass
+     */
     flashClass(classes: cytoscape$ClassNames, duration?: number): this;
 
     /**
@@ -2448,10 +2448,10 @@ http://js.cytoscape.org/#eles.flashClass
    */
   declare interface cytoscape$SingularStyle {
     /**
- * Get whether an element has a particular class.
- * @param className The name of the class to test for.
-http://js.cytoscape.org/#ele.hasClass
- */
+     * Get whether an element has a particular class.
+     * @param className The name of the class to test for.
+     * http://js.cytoscape.org/#ele.hasClass
+     */
     hasClass(className: cytoscape$ClassName): boolean;
 
     /**
@@ -2469,18 +2469,18 @@ http://js.cytoscape.org/#ele.hasClass
     renderedCss(name: string): any;
 
     /**
- * Get the numeric value of a style property in
- * preferred units that can be used for calculations.
- * @param name The name of the style property to get.
-http://js.cytoscape.org/#ele.numericStyle
- */
+     * Get the numeric value of a style property in
+     * preferred units that can be used for calculations.
+     * @param name The name of the style property to get.
+     * http://js.cytoscape.org/#ele.numericStyle
+     */
     numericStyle(name: string): any;
 
     /**
- * Get the units that ele.numericStyle() is expressed in, for a particular property.
- * @param name The name of the style property to get.
-http://js.cytoscape.org/#ele.numericStyleUnits
- */
+     * Get the units that ele.numericStyle() is expressed in, for a particular property.
+     * @param name The name of the style property to get.
+     * http://js.cytoscape.org/#ele.numericStyleUnits
+     */
     numericStyleUnits(name: string): any;
 
     /**
@@ -2545,7 +2545,7 @@ http://js.cytoscape.org/#ele.numericStyleUnits
     /**
      * A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing?: Css$Css$TransitionTimingFunction;
+    easing?: Css$TransitionTimingFunction;
   }
 
   declare type cytoscape$ElementAnimateOptionPos = {
@@ -2553,21 +2553,21 @@ http://js.cytoscape.org/#ele.numericStyleUnits
      * A position to which the elements will be animated.
      */
     position: cytoscape$Position
-  } & cytoscape$ElementAnimateOptionsBase;
+  } & ElementAnimateOptionsBase;
 
   declare type cytoscape$ElementAnimateOptionRen = {
     /**
      * A rendered position to which the elements will be animated.
      */
     renderedPosition: cytoscape$Position
-  } & cytoscape$ElementAnimateOptionsBase;
+  } & ElementAnimateOptionsBase;
 
   declare interface cytoscape$CollectionAnimation {
     /**
- * Animate the elements.
- * @param options An object containing the details of the animation.
-http://js.cytoscape.org/#eles.animate
- */
+     * Animate the elements.
+     * @param options An object containing the details of the animation.
+     * http://js.cytoscape.org/#eles.animate
+     */
     animate(
       options:
         | cytoscape$ElementAnimateOptionPos
@@ -2576,19 +2576,19 @@ http://js.cytoscape.org/#eles.animate
     ): this;
 
     /**
- * Add a delay between animations for the elements.
- * @param duration How long the delay should be in milliseconds.
- * @param complete A function to call when the delay is complete.
-http://js.cytoscape.org/#eles.delay
- */
+     * Add a delay between animations for the elements.
+     * @param duration How long the delay should be in milliseconds.
+     * @param complete A function to call when the delay is complete.
+     * http://js.cytoscape.org/#eles.delay
+     */
     delay(duration: number, complete: () => void): this;
 
     /**
- * Stop all animations that are currently running.
- * @param clearQueue A boolean, indicating whether the queue of animations should be emptied.
- * @param jumpToEnd A boolean, indicating whether the currently-running animations should jump to their ends rather than just stopping midway.
-http://js.cytoscape.org/#eles.stop
- */
+     * Stop all animations that are currently running.
+     * @param clearQueue A boolean, indicating whether the queue of animations should be emptied.
+     * @param jumpToEnd A boolean, indicating whether the currently-running animations should jump to their ends rather than just stopping midway.
+     * http://js.cytoscape.org/#eles.stop
+     */
     stop(clearQueue: boolean, jumpToEnd: boolean): this;
 
     /**
@@ -2622,7 +2622,7 @@ http://js.cytoscape.org/#eles.stop
     /**
      * A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing: Css$Css$TransitionTimingFunction;
+    easing: Css$TransitionTimingFunction;
   }
 
   declare type cytoscape$SingularAnimationOptionsPos = {
@@ -2630,14 +2630,14 @@ http://js.cytoscape.org/#eles.stop
      * A position to which the elements will be animated.
      */
     position: cytoscape$Position
-  } & cytoscape$SingularAnimationOptionsBase;
+  } & SingularAnimationOptionsBase;
 
   declare type cytoscape$SingularAnimationOptionsRen = {
     /**
      * A rendered position to which the elements will be animated.
      */
     renderedPosition: cytoscape$Position
-  } & cytoscape$SingularAnimationOptionsBase;
+  } & SingularAnimationOptionsBase;
 
   declare interface cytoscape$SingularAnimation {
     /**
@@ -2656,10 +2656,10 @@ http://js.cytoscape.org/#eles.stop
     ): cytoscape$AnimationManipulation;
 
     /**
- * Get a delay animation for the element.
- * @param duration How long the delay should be in milliseconds.
-http://js.cytoscape.org/#ele.delayAnimation
- */
+     * Get a delay animation for the element.
+     * @param duration How long the delay should be in milliseconds.
+     * http://js.cytoscape.org/#ele.delayAnimation
+     */
     delayAnimation(duration: number): cytoscape$AnimationManipulation;
   }
 
@@ -2714,13 +2714,13 @@ http://js.cytoscape.org/#ele.delayAnimation
     allAre(selector: cytoscape$Selector): boolean;
 
     /**
- * Determine whether any element in this collection satisfies the specified test function.
- * @param test The test function that returns truthy values for elements that satisfy the test and falsey values for elements that do not satisfy the test.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being tested.
- * @param thisArg [optional] The value for this within the test function.
- */
+     * Determine whether any element in this collection satisfies the specified test function.
+     * @param test The test function that returns truthy values for elements that satisfy the test and falsey values for elements that do not satisfy the test.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being tested.
+     * @param thisArg [optional] The value for this within the test function.
+     */
     some(
       test: (
         ele: cytoscape$CollectionArgument,
@@ -2731,13 +2731,13 @@ eles - The collection of elements being tested.
     ): boolean;
 
     /**
- * Determine whether all elements in this collection satisfy the specified test function.
- * @param test The test function that returns truthy values for elements that satisfy the test and falsey values for elements that do not satisfy the test.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being tested.
- * @param thisArg [optional] The value for this within the test function.
- */
+     * Determine whether all elements in this collection satisfy the specified test function.
+     * @param test The test function that returns truthy values for elements that satisfy the test and falsey values for elements that do not satisfy the test.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being tested.
+     * @param thisArg [optional] The value for this within the test function.
+     */
     every(
       test: (
         ele: cytoscape$CollectionArgument,
@@ -2773,17 +2773,17 @@ eles - The collection of elements being tested.
     nonempty(): boolean;
 
     /**
- * Iterate over the elements in the collection using an implementation like the native array function namesake.
- * 
- * This function behaves like Array.prototype.forEach() with minor changes for convenience:
- * You can exit the iteration early by returning false in the iterating function.
- * The Array.prototype.forEach() implementation does not support this, but it is included anyway on account of its utility.
- * @param each The function executed each iteration.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being iterated.
- * @param thisArg [optional] The value for this within the iterating function.
- */
+     * Iterate over the elements in the collection using an implementation like the native array function namesake.
+     *
+     * This function behaves like Array.prototype.forEach() with minor changes for convenience:
+     * You can exit the iteration early by returning false in the iterating function.
+     * The Array.prototype.forEach() implementation does not support this, but it is included anyway on account of its utility.
+     * @param each The function executed each iteration.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being iterated.
+     * @param thisArg [optional] The value for this within the iterating function.
+     */
     each(
       each: (ele: TIn, i: number, eles: this) => void | boolean,
       thisArg?: any
@@ -2818,14 +2818,14 @@ eles - The collection of elements being iterated.
     last(): TOut;
 
     /**
- * Get a subset of the elements in the collection based on specified indices.
- * @param start [optional] An integer that specifies where to start the selection.
-The first element has an index of 0.
-Use negative numbers to select from the end of an array.
- * @param end [optional] An integer that specifies where to end the selection.
-If omitted, all elements from the start position and to the end of the array will be selected.
-Use negative numbers to select from the end of an array.
- */
+     * Get a subset of the elements in the collection based on specified indices.
+     * @param start [optional] An integer that specifies where to start the selection.
+     * The first element has an index of 0.
+     * Use negative numbers to select from the end of an array.
+     * @param end [optional] An integer that specifies where to end the selection.
+     * If omitted, all elements from the start position and to the end of the array will be selected.
+     * Use negative numbers to select from the end of an array.
+     */
     slice(start?: number, end?: number): this;
 
     /**
@@ -2835,11 +2835,11 @@ Use negative numbers to select from the end of an array.
   }
 
   /**
- * http://js.cytoscape.org/#collection/building--filtering
- * Get a new collection, resulting from adding the collection with another one
- * @param eles The elements or array of elements to add or elements in the graph matching the selector.
-http://js.cytoscape.org/#eles.union
- */
+   * http://js.cytoscape.org/#collection/building--filtering
+   * Get a new collection, resulting from adding the collection with another one
+   * @param eles The elements or array of elements to add or elements in the graph matching the selector.
+   * http://js.cytoscape.org/#eles.union
+   */
   declare type cytoscape$CollectionBuildingUnionFunc = (
     eles:
       | cytoscape$CollectionArgument
@@ -2848,33 +2848,33 @@ http://js.cytoscape.org/#eles.union
   ) => cytoscape$CollectionReturnValue;
 
   /**
- * Get a new collection, resulting from the collection without some specified elements.
- * http://js.cytoscape.org/#eles.difference
- * @param eles The elements that will not be in the resultant collection.
-Elements from the calling collection matching this selector will not be in the resultant collection.
- */
+   * Get a new collection, resulting from the collection without some specified elements.
+   * http://js.cytoscape.org/#eles.difference
+   * @param eles The elements that will not be in the resultant collection.
+   * Elements from the calling collection matching this selector will not be in the resultant collection.
+   */
   declare type cytoscape$CollectionBuildingDifferenceFunc = (
     eles: cytoscape$CollectionArgument | cytoscape$Selector
   ) => cytoscape$CollectionReturnValue;
 
   /**
- * Get the elements in both this collection and another specified collection.
- * http://js.cytoscape.org/#eles.intersection
- * @param eles The elements to intersect with.
-A selector representing the elements to intersect with.
-All elements in the graph matching the selector are used as the passed collection.
- */
+   * Get the elements in both this collection and another specified collection.
+   * http://js.cytoscape.org/#eles.intersection
+   * @param eles The elements to intersect with.
+   * A selector representing the elements to intersect with.
+   * All elements in the graph matching the selector are used as the passed collection.
+   */
   declare type cytoscape$CollectionBuildingIntersectionFunc = (
     eles: cytoscape$CollectionArgument | cytoscape$Selector
   ) => cytoscape$CollectionReturnValue;
 
   /**
- * Get the elements that are in the calling collection or the passed collection but not in both.
- * http://js.cytoscape.org/#eles.symmetricDifference
- * @param eles The elements to apply the symmetric difference with.
-A selector representing the elements to apply the symmetric difference with.
-All elements in the graph matching the selector are used as the passed collection.
- */
+   * Get the elements that are in the calling collection or the passed collection but not in both.
+   * http://js.cytoscape.org/#eles.symmetricDifference
+   * @param eles The elements to apply the symmetric difference with.
+   * A selector representing the elements to apply the symmetric difference with.
+   * All elements in the graph matching the selector are used as the passed collection.
+   */
   declare type cytoscape$CollectionSymmetricDifferenceFunc = (
     eles: cytoscape$CollectionArgument | cytoscape$Selector
   ) => cytoscape$CollectionReturnValue;
@@ -2950,15 +2950,15 @@ All elements in the graph matching the selector are used as the passed collectio
     "(-)": cytoscape$CollectionSymmetricDifferenceFunc;
 
     /**
- * Perform a traditional left/right diff on the two collections.
- * @param selector A selector representing the elements on the right side of the diff. All elements in the graph matching the selector are used as the passed collection.
-The elements on the right side of the diff.
- * @return This function returns a plain object of the form { left, right, both } where
-left - is the set of elements only in the calling (i.e. left) collection,
-right - is the set of elements only in the passed (i.e. right) collection, and
-both - is the set of elements in both collections.
-http://js.cytoscape.org/#eles.diff
- */
+     * Perform a traditional left/right diff on the two collections.
+     * @param selector A selector representing the elements on the right side of the diff. All elements in the graph matching the selector are used as the passed collection.
+     * The elements on the right side of the diff.
+     * @return This function returns a plain object of the form { left, right, both } where
+     * left - is the set of elements only in the calling (i.e. left) collection,
+     * right - is the set of elements only in the passed (i.e. right) collection, and
+     * both - is the set of elements in both collections.
+     * http://js.cytoscape.org/#eles.diff
+     */
     diff(
       selector: cytoscape$Selector | cytoscape$CollectionArgument
     ): {
@@ -2968,60 +2968,60 @@ http://js.cytoscape.org/#eles.diff
     };
 
     /**
- * Perform a in-place merge of the given elements into the calling collection.
- * @param eles The elements to merge in-place or a selector representing the elements to merge.
-All elements in the graph matching the selector are used as the passed collection.
-
-This function modifies the calling collection instead of returning a new one.
-Use of this function should be considered for performance in some cases, but otherwise should be avoided. Consider using eles.union() instead.
-Use this function only on new collections that you create yourself, using cy.collection().
-This ensures that you do not unintentionally modify another collection.
-
-Examples
-With a collection:
- * @example var col = cy.collection(); // new, empty collection
-var j = cy.$('#j');
-var e = cy.$('#e');
-col.merge( j ).merge( e );
-
-With a selector:
- * @example var col = cy.collection(); // new, empty collection
-col.merge('#j').merge('#e');
- */
+     * Perform a in-place merge of the given elements into the calling collection.
+     * @param eles The elements to merge in-place or a selector representing the elements to merge.
+     * All elements in the graph matching the selector are used as the passed collection.
+     *
+     * This function modifies the calling collection instead of returning a new one.
+     * Use of this function should be considered for performance in some cases, but otherwise should be avoided. Consider using eles.union() instead.
+     * Use this function only on new collections that you create yourself, using cy.collection().
+     * This ensures that you do not unintentionally modify another collection.
+     *
+     * Examples
+     * With a collection:
+     * @example var col = cy.collection(); // new, empty collection
+     * var j = cy.$('#j');
+     * var e = cy.$('#e');
+     * col.merge( j ).merge( e );
+     *
+     * With a selector:
+     * @example var col = cy.collection(); // new, empty collection
+     * col.merge('#j').merge('#e');
+     */
     merge(eles: cytoscape$CollectionArgument | cytoscape$Selector): this;
 
     /**
- * Perform an in-place operation on the calling collection to remove the given elements.
- * @param eles The elements to remove  in-place or a selector representing the elements to remove .
-All elements in the graph matching the selector are used as the passed collection.
-
-This function modifies the calling collection instead of returning a new one.
-Use of this function should be considered for performance in some cases, but otherwise should be avoided. Consider using eles.filter() or eles.remove() instead.
-Use this function only on new collections that you create yourself, using cy.collection().
-This ensures that you do not unintentionally modify another collection.
-
-Examples
-With a collection:
- * @example var col = cy.collection(); // new, empty collection
-var e = cy.$('#e');
-col.merge( cy.nodes() );
-col.unmerge( e );
-
-With a selector:
- * @example var col = cy.collection(); // new, empty collection
-col.merge( cy.nodes() );
-col.unmerge('#e');
- */
+     * Perform an in-place operation on the calling collection to remove the given elements.
+     * @param eles The elements to remove  in-place or a selector representing the elements to remove .
+     * All elements in the graph matching the selector are used as the passed collection.
+     *
+     * This function modifies the calling collection instead of returning a new one.
+     * Use of this function should be considered for performance in some cases, but otherwise should be avoided. Consider using eles.filter() or eles.remove() instead.
+     * Use this function only on new collections that you create yourself, using cy.collection().
+     * This ensures that you do not unintentionally modify another collection.
+     *
+     * Examples
+     * With a collection:
+     * @example var col = cy.collection(); // new, empty collection
+     * var e = cy.$('#e');
+     * col.merge( cy.nodes() );
+     * col.unmerge( e );
+     *
+     * With a selector:
+     * @example var col = cy.collection(); // new, empty collection
+     * col.merge( cy.nodes() );
+     * col.unmerge('#e');
+     */
     unmerge(eles: cytoscape$CollectionArgument | cytoscape$Selector): this;
 
     /**
- * Get a new collection containing elements that are accepted by the specified filter.
- * @param selector The selector to match against.
- * @param filter selector The filter function that returns true for elements to include.
-i - The index of the current element being considered.
-ele - The element being considered.
-http://js.cytoscape.org/#eles.filter
- */
+     * Get a new collection containing elements that are accepted by the specified filter.
+     * @param selector The selector to match against.
+     * @param filter selector The filter function that returns true for elements to include.
+     * i - The index of the current element being considered.
+     * ele - The element being considered.
+     * http://js.cytoscape.org/#eles.filter
+     */
     filter(
       selector:
         | cytoscape$Selector
@@ -3029,61 +3029,61 @@ http://js.cytoscape.org/#eles.filter
     ): cytoscape$CollectionReturnValue;
 
     /**
- * Get the nodes that match the specified selector.
- * @param selector The selector to match against.
-http://js.cytoscape.org/#eles.filter
- */
+     * Get the nodes that match the specified selector.
+     * @param selector The selector to match against.
+     * http://js.cytoscape.org/#eles.filter
+     */
     nodes(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get the edges that match the specified selector.
- * @param selector The selector to match against.
-http://js.cytoscape.org/#eles.filter
- */
+     * Get the edges that match the specified selector.
+     * @param selector The selector to match against.
+     * http://js.cytoscape.org/#eles.filter
+     */
     edges(selector?: cytoscape$Selector): cytoscape$EdgeCollection;
 
     /**
- * Get a new collection containing the elements sorted by the
- * specified comparison function.
- * @param sort The sorting comparison function that returns a negative number
-for ele1 before ele2, 0 for ele1 same as ele2,
-or a positive number for ele1 after ele2.
-
-http://js.cytoscape.org/#eles.sort
- */
+     * Get a new collection containing the elements sorted by the
+     * specified comparison function.
+     * @param sort The sorting comparison function that returns a negative number
+     * for ele1 before ele2, 0 for ele1 same as ele2,
+     * or a positive number for ele1 after ele2.
+     *
+     * http://js.cytoscape.org/#eles.sort
+     */
     sort(
       sort: (ele1: TIn, ele2: TIn) => number
     ): cytoscape$CollectionReturnValue;
 
     /**
- * Get an array containing values mapped from the collection.
- * @param fn The function that returns the mapped value for each element.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being mapped.
- * @param thisArg [optional] The value for this within the iterating function.
-
-http://js.cytoscape.org/#eles.map
- */
+     * Get an array containing values mapped from the collection.
+     * @param fn The function that returns the mapped value for each element.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being mapped.
+     * @param thisArg [optional] The value for this within the iterating function.
+     *
+     * http://js.cytoscape.org/#eles.map
+     */
     map<T>(
       fn: (ele: TIn, i: number, eles: cytoscape$CollectionArgument) => T,
       thisArg?: any
     ): T[];
 
     /**
- * Reduce a single value by applying a
- * function against an accumulator and each value of the collection.
- * @param fn The function that returns the accumulated value
-given the previous value and the current element.
-prevVal The value accumulated from previous elements.
-ele The current element.
-i The index of the current element.
-eles The collection of elements being reduced.
- * @param initialValue The initial value for reducing
-It is used also for type inference of output, but the type can be
-also stated explicitly as generic
-http://js.cytoscape.org/#eles.reduce
- */
+     * Reduce a single value by applying a
+     * function against an accumulator and each value of the collection.
+     * @param fn The function that returns the accumulated value
+     * given the previous value and the current element.
+     * prevVal The value accumulated from previous elements.
+     * ele The current element.
+     * i The index of the current element.
+     * eles The collection of elements being reduced.
+     * @param initialValue The initial value for reducing
+     * It is used also for type inference of output, but the type can be
+     * also stated explicitly as generic
+     * http://js.cytoscape.org/#eles.reduce
+     */
     reduce<T>(
       fn: (
         prevVal: T,
@@ -3095,15 +3095,15 @@ http://js.cytoscape.org/#eles.reduce
     ): T;
 
     /**
- * Find a minimum value in a collection.
- * @param fn The function that returns the value to compare for each element.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being mapped.
- * @param thisArg [optional] The value for this within the iterating function.
-
-http://js.cytoscape.org/#eles.min
- */
+     * Find a minimum value in a collection.
+     * @param fn The function that returns the value to compare for each element.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being mapped.
+     * @param thisArg [optional] The value for this within the iterating function.
+     *
+     * http://js.cytoscape.org/#eles.min
+     */
     min<T>(
       fn: (ele: TIn, i: number, eles: cytoscape$CollectionArgument) => T,
       thisArg?: any
@@ -3120,15 +3120,15 @@ http://js.cytoscape.org/#eles.min
     };
 
     /**
- * Find a maximum value and the corresponding element.
- * @param fn The function that returns the value to compare for each element.
-ele - The current element.
-i - The index of the current element.
-eles - The collection of elements being mapped.
- * @param thisArg [optional] The value for this within the iterating function.
-
-http://js.cytoscape.org/#eles.max
- */
+     * Find a maximum value and the corresponding element.
+     * @param fn The function that returns the value to compare for each element.
+     * ele - The current element.
+     * i - The index of the current element.
+     * eles - The collection of elements being mapped.
+     * @param thisArg [optional] The value for this within the iterating function.
+     *
+     * http://js.cytoscape.org/#eles.max
+     */
     max<T>(
       fn: (ele: TIn, i: number, eles: cytoscape$CollectionArgument) => T,
       thisArg?: any
@@ -3242,17 +3242,17 @@ http://js.cytoscape.org/#eles.max
 
   declare interface cytoscape$EdgeSingularTraversing {
     /**
- * Get source node of this edge.
- * @param selector An optional selector that is used to filter the resultant collection.
-http://js.cytoscape.org/#edge.source
- */
+     * Get source node of this edge.
+     * @param selector An optional selector that is used to filter the resultant collection.
+     * http://js.cytoscape.org/#edge.source
+     */
     source(selector?: cytoscape$Selector): cytoscape$NodeSingular;
 
     /**
- * Get target node of this edge.
- * @param selector An optional selector that is used to filter the resultant collection.
-http://js.cytoscape.org/#edge.target
- */
+     * Get target node of this edge.
+     * @param selector An optional selector that is used to filter the resultant collection.
+     * http://js.cytoscape.org/#edge.target
+     */
     target(selector?: cytoscape$Selector): cytoscape$NodeSingular;
   }
 
@@ -3944,64 +3944,64 @@ http://js.cytoscape.org/#edge.target
    */
   declare interface cytoscape$NodeCollectionCompound {
     /**
- * Get the compound parent node of each node in the collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.parent
- */
+     * Get the compound parent node of each node in the collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.parent
+     */
     parent(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all compound ancestor nodes
- * (i.e. parents, parents' parents, etc.) of each node in the collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.ancestors
- */
+     * Get all compound ancestor nodes
+     * (i.e. parents, parents' parents, etc.) of each node in the collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.ancestors
+     */
     ancestors(selector?: cytoscape$Selector): cytoscape$NodeCollection;
     parents(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all compound ancestors common to all the nodes in the collection,
- * starting with the closest and getting progressively farther.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.commonAncestors
- */
+     * Get all compound ancestors common to all the nodes in the collection,
+     * starting with the closest and getting progressively farther.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.commonAncestors
+     */
     commonAncestors(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all orphan (i.e. has no compound parent) nodes in the calling collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.orphans
- */
+     * Get all orphan (i.e. has no compound parent) nodes in the calling collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.orphans
+     */
     orphans(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all nonorphan (i.e. has a compound parent) nodes in the calling collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.nonorphans
- */
+     * Get all nonorphan (i.e. has a compound parent) nodes in the calling collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.nonorphans
+     */
     nonorphans(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all compound child (i.e. direct descendant) nodes of each node in the collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.children
- */
+     * Get all compound child (i.e. direct descendant) nodes of each node in the collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.children
+     */
     children(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all compound descendant (i.e. children, children's children, etc.)
- * nodes of each node in the collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.descendants
- */
+     * Get all compound descendant (i.e. children, children's children, etc.)
+     * nodes of each node in the collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.descendants
+     */
     descendants(selector?: cytoscape$Selector): cytoscape$NodeCollection;
 
     /**
- * Get all sibling (i.e. same compound parent)
- * nodes of each node in the collection.
- * @param selector A selector used to filter the resultant collection.
-http://js.cytoscape.org/#nodes.siblings
- */
+     * Get all sibling (i.e. same compound parent)
+     * nodes of each node in the collection.
+     * @param selector A selector used to filter the resultant collection.
+     * http://js.cytoscape.org/#nodes.siblings
+     */
     siblings(selector?: cytoscape$Selector): cytoscape$NodeCollection;
   }
 
@@ -4059,7 +4059,7 @@ http://js.cytoscape.org/#nodes.siblings
    */
   declare type cytoscape$Scratchpad = any;
 
-  declare type Css$Colour = string;
+  declare type cytoscape$Css$Colour = string;
 
   /**
    * The shape of the node’s body.
@@ -4069,7 +4069,7 @@ http://js.cytoscape.org/#nodes.siblings
    * (i.e. width !== height for several equilateral shapes).
    * 'polygon' is a custom polygon specified via shape-polygon-points.
    */
-  declare type Css$NodeShape =
+  declare type cytoscape$Css$NodeShape =
     | "rectangle"
     | "roundrectangle"
     | "ellipse"
@@ -4090,17 +4090,21 @@ http://js.cytoscape.org/#nodes.siblings
    * This represents the points in the polygon for the node’s shape.
    * The bounding box of the node is given by (-1, -1), (1, -1), (1, 1), (-1, 1).
    */
-  declare type Css$ShapePolygonPoints = string;
+  declare type cytoscape$Css$ShapePolygonPoints = string;
 
   /**
    * The line style; may be solid, dotted, dashed, or double
    */
-  declare type Css$LineStyle = "solid" | "dotted" | "dashed" | "double";
+  declare type cytoscape$Css$LineStyle =
+    | "solid"
+    | "dotted"
+    | "dashed"
+    | "double";
 
   /**
    * http://js.cytoscape.org/#style/node-body
    */
-  declare type Css$Node = {
+  declare type cytoscape$Css$Node = {
     label?: string,
 
     /**
@@ -4120,15 +4124,15 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The shape of the node’s body.
      */
-    shape?: Css$NodeShape,
-    "shape-polygon-points"?: Css$ShapePolygonPoints,
+    shape?: cytoscape$Css$NodeShape,
+    "shape-polygon-points"?: cytoscape$Css$ShapePolygonPoints,
     opacity?: number,
-    backgroundColor?: Css$Colour,
+    backgroundColor?: cytoscape$Css$Colour,
 
     /**
      * The colour of the node’s body.
      */
-    "background-color"?: Css$Colour,
+    "background-color"?: cytoscape$Css$Colour,
 
     /**
      * Blackens the node’s body for values from 0 to 1;
@@ -4149,12 +4153,12 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The style of the node’s border.
      */
-    "border-style"?: Css$LineStyle,
+    "border-style"?: cytoscape$Css$LineStyle,
 
     /**
      * The colour of the node’s border.
      */
-    "border-color"?: Css$Colour,
+    "border-color"?: cytoscape$Css$Colour,
 
     /**
      * The opacity of the node’s border.
@@ -4163,7 +4167,7 @@ http://js.cytoscape.org/#nodes.siblings
     "border-opacity"?: number,
     "text-opacity"?: number
   } & $Shape<Css$Overlay> &
-    Css$PaddingNode;
+    PaddingNode;
 
   /**
    * A padding defines an addition to a node’s dimension.
@@ -4171,14 +4175,14 @@ http://js.cytoscape.org/#nodes.siblings
    * This can be used to add spacing around the label of width: label; height: label; nodes,
    * or it can be used to add spacing between a compound node parent and its children.
    */
-  declare interface Css$PaddingNode {
+  declare interface cytoscape$Css$PaddingNode {
     "padding-left"?: string;
     "padding-right"?: string;
     "padding-top"?: string;
     "padding-bottom"?: string;
   }
 
-  declare interface Css$Dictionary {
+  declare interface cytoscape$Css$Dictionary {
     [key: string]: any;
   }
 
@@ -4187,7 +4191,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/background-image
    */
-  declare interface Css$BackgroundImage {
+  declare interface cytoscape$Css$BackgroundImage {
     /**
      * The URL that points to the image that should be used as the node’s background.
      * PNG, JPG, and SVG are supported formats.
@@ -4273,7 +4277,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/pie-chart-background
    */
-  declare interface Css$PieChartBackground {
+  declare interface cytoscape$Css$PieChartBackground {
     /**
      * The diameter of the pie, measured as a percent of node size (e.g. 100%) or an absolute length (e.g. 25px).
      */
@@ -4282,7 +4286,7 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The colour of the node’s ith pie chart slice.
      */
-    "pie-i-background-color": Css$Colour;
+    "pie-i-background-color": cytoscape$Css$Colour;
 
     /**
      * The size of the node’s ith pie chart slice, measured in percent (e.g. 25% or 25).
@@ -4295,8 +4299,8 @@ http://js.cytoscape.org/#nodes.siblings
     "pie-i-background-opacity": number;
   }
 
-  declare type Css$Edge = {} & Css$EdgeLine &
-    Css$EdgeArror &
+  declare type cytoscape$Css$Edge = {} & EdgeLine &
+    EdgeArror &
     $Shape<Css$Overlay>;
 
   /**
@@ -4304,7 +4308,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/edge-line
    */
-  declare interface Css$EdgeLine {
+  declare interface cytoscape$Css$EdgeLine {
     /**
      * The width of an edge’s line.
      */
@@ -4326,12 +4330,12 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The colour of the edge’s line.
      */
-    "line-color"?: Css$Colour;
+    "line-color"?: cytoscape$Css$Colour;
 
     /**
      * The style of the edge’s line.
      */
-    "line-style"?: Css$LineStyle;
+    "line-style"?: cytoscape$Css$LineStyle;
   }
 
   /**
@@ -4339,7 +4343,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/bezier-edges
    */
-  declare interface Css$BezierEdges {
+  declare interface cytoscape$Css$BezierEdges {
     /**
      * From the line perpendicular from source to target,
      * this value specifies the distance between successive bezier edges.
@@ -4381,7 +4385,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/unbundled-bezier-edges
    */
-  declare interface Css$UnbundledBezierEdges {
+  declare interface cytoscape$Css$UnbundledBezierEdges {
     /**
      * A series of values that specify for each control point the
      * distance perpendicular to a line formed
@@ -4421,7 +4425,7 @@ http://js.cytoscape.org/#nodes.siblings
    * For fast, straight line edges (curve - style: haystack):
    * http://js.cytoscape.org/#style/haystack-edges
    */
-  declare interface Css$HaystackEdges {
+  declare interface cytoscape$Css$HaystackEdges {
     /**
      * A value between 0 and 1 inclusive that indicates the relative radius used to position haystack edges on their connected nodes.
      * The outside of the node is at 1, and the centre of the node is at 0.
@@ -4434,7 +4438,7 @@ http://js.cytoscape.org/#nodes.siblings
    * For edges made of several straight lines (curve - style: segments):
    * http://js.cytoscape.org/#style/segments-edges
    */
-  declare interface Css$SegmentsEdges {
+  declare interface cytoscape$Css$SegmentsEdges {
     /**
      * A series of values that specify for each segment point the distance perpendicular to a line formed from source to target, e.g. -20 20 - 20.
      */
@@ -4459,7 +4463,7 @@ http://js.cytoscape.org/#nodes.siblings
     "edge-distances": "intersection" | "segment-weights" | "node-position";
   }
 
-  declare type Css$ArrowShape =
+  declare type cytoscape$Css$ArrowShape =
     | "tee"
     | "triangle"
     | "triangle-tee"
@@ -4469,7 +4473,7 @@ http://js.cytoscape.org/#nodes.siblings
     | "diamond"
     | "none";
 
-  declare type Css$ArrowFill = "filled" | "hollow";
+  declare type cytoscape$Css$ArrowFill = "filled" | "hollow";
 
   /**
    * Edge arrow
@@ -4486,72 +4490,72 @@ http://js.cytoscape.org/#nodes.siblings
    * Only mid arrows are supported on haystack edges.
    * http://js.cytoscape.org/#style/edge-arrow
    */
-  declare interface Css$EdgeArror {
+  declare interface cytoscape$Css$EdgeArror {
     /**
      * The colour of the edge’s source arrow.
      */
-    "source-arrow-color"?: Css$Colour;
+    "source-arrow-color"?: cytoscape$Css$Colour;
 
     /**
      * The colour of the edge’s "mid-source" arrow.
      */
-    "mid-source-arrow-color"?: Css$Colour;
+    "mid-source-arrow-color"?: cytoscape$Css$Colour;
 
     /**
      * The colour of the edge’s target arrow.
      */
-    "target-arrow-color"?: Css$Colour;
+    "target-arrow-color"?: cytoscape$Css$Colour;
 
     /**
      * The colour of the edge’s "mid-target" arrow.
      */
-    "mid-target-arrow-color"?: Css$Colour;
+    "mid-target-arrow-color"?: cytoscape$Css$Colour;
 
     /**
      * The shape of the edge’s source arrow.
      */
-    "source-arrow-shape"?: Css$ArrowShape;
+    "source-arrow-shape"?: cytoscape$Css$ArrowShape;
 
     /**
      * The shape of the edge’s mid-source arrow.
      */
-    "mid-source-arrow-shape"?: Css$ArrowShape;
+    "mid-source-arrow-shape"?: cytoscape$Css$ArrowShape;
 
     /**
      * The shape of the edge’s target arrow.
      */
-    "target-arrow-shape"?: Css$ArrowShape;
+    "target-arrow-shape"?: cytoscape$Css$ArrowShape;
 
     /**
      * The shape of the edge’s mid-target arrow.
      */
-    "mid-target-arrow-shape"?: Css$ArrowShape;
+    "mid-target-arrow-shape"?: cytoscape$Css$ArrowShape;
 
     /**
      * The fill state of the edge’s source arrow.
      */
-    "source-arrow-fill"?: Css$ArrowFill;
+    "source-arrow-fill"?: cytoscape$Css$ArrowFill;
 
     /**
      * The fill state of the edge’s mid-source arrow.
      */
-    "mid-source-arrow-fill"?: Css$ArrowFill;
+    "mid-source-arrow-fill"?: cytoscape$Css$ArrowFill;
 
     /**
      * The fill state of the edge’s target arrow.
      */
-    "target-arrow-fill"?: Css$ArrowFill;
+    "target-arrow-fill"?: cytoscape$Css$ArrowFill;
 
     /**
      * The fill state of the edge’s mid-target arrow.
      */
-    "mid-target-arrow-fill"?: Css$ArrowFill;
+    "mid-target-arrow-fill"?: cytoscape$Css$ArrowFill;
   }
 
   /**
    * http://js.cytoscape.org/#style/visibility
    */
-  declare interface Css$Visibility {
+  declare interface cytoscape$Css$Visibility {
     /**
      * Whether to display the element; may be element for displayed or none for not displayed.
      * Note that a "display: none" bezier edge does not take up space in its bundle.
@@ -4581,12 +4585,12 @@ http://js.cytoscape.org/#nodes.siblings
   /**
    * https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
    */
-  declare type Css$FontStyle = "normal" | "italic" | "oblique";
+  declare type cytoscape$Css$FontStyle = "normal" | "italic" | "oblique";
 
   /**
    * https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
    */
-  declare type Css$FontWeight =
+  declare type cytoscape$Css$FontWeight =
     | number
     | "normal"
     | "bold"
@@ -4596,7 +4600,10 @@ http://js.cytoscape.org/#nodes.siblings
   /**
    * http://js.cytoscape.org/#style/labels
    */
-  declare type Css$TextTranformation = "none" | "uppercase" | "lowercase";
+  declare type cytoscape$Css$TextTranformation =
+    | "none"
+    | "uppercase"
+    | "lowercase";
 
   /**
    * Labels
@@ -4604,7 +4611,7 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#style/labels
    */
-  declare interface Css$Labels {
+  declare interface cytoscape$Css$Labels {
     /**
      * The text to display for an element’s label.
      */
@@ -4624,7 +4631,7 @@ http://js.cytoscape.org/#nodes.siblings
      * Basic font styling:
      * The colour of the element’s label.
      */
-    color: Css$Colour;
+    color: cytoscape$Css$Colour;
 
     /**
      * The opacity of the label text, including its outline.
@@ -4646,17 +4653,17 @@ http://js.cytoscape.org/#nodes.siblings
      * A CSS font style to be applied to the label text.
      * https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
      */
-    "font-style": Css$FontStyle;
+    "font-style": cytoscape$Css$FontStyle;
 
     /**
      * A CSS font weight to be applied to the label text.
      */
-    "font-weight": Css$FontWeight;
+    "font-weight": cytoscape$Css$FontWeight;
 
     /**
      * A transformation to apply to the label text.
      */
-    "text-transform": Css$TextTranformation;
+    "text-transform": cytoscape$Css$TextTranformation;
 
     /**
      * Wrapping text:
@@ -4751,7 +4758,7 @@ http://js.cytoscape.org/#nodes.siblings
      * Outline:
      * The colour of the outline around the element’s label text.
      */
-    "text-outline-color": Css$Colour;
+    "text-outline-color": cytoscape$Css$Colour;
 
     /**
      * The opacity of the outline on label text.
@@ -4772,7 +4779,7 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The colour of the shadow.
      */
-    "text-shadow-color": Css$Colour;
+    "text-shadow-color": cytoscape$Css$Colour;
 
     /**
      * The x offset relative to the text where the shadow will be displayed, can be negative.
@@ -4795,7 +4802,7 @@ http://js.cytoscape.org/#nodes.siblings
      * Background:
      * A colour to apply on the text background.
      */
-    "text-background-color": Css$Colour;
+    "text-background-color": cytoscape$Css$Colour;
 
     /**
      * The opacity of the label background; the background is disabled for 0 (default value).
@@ -4821,12 +4828,12 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The style of the border around the label.
      */
-    "text-border-style": Css$LineStyle;
+    "text-border-style": cytoscape$Css$LineStyle;
 
     /**
      * The colour of the border around the label.
      */
-    "text-border-color": Css$Colour;
+    "text-border-color": cytoscape$Css$Colour;
 
     /**
      * Interactivity:
@@ -4849,7 +4856,7 @@ http://js.cytoscape.org/#nodes.siblings
   /**
    * http://js.cytoscape.org/#style/events
    */
-  declare interface Css$Events {
+  declare interface cytoscape$Css$Events {
     /**
      * Whether events should occur on an element (e.g.tap, mouseover, etc.).
      *   * For "no", the element receives no events and events simply pass through to the core/viewport.
@@ -4868,11 +4875,11 @@ http://js.cytoscape.org/#nodes.siblings
    * and are often used in the :active state.
    * http://js.cytoscape.org/#style/overlay
    */
-  declare interface Css$Overlay {
+  declare interface cytoscape$Css$Overlay {
     /**
      * The colour of the overlay.
      */
-    "overlay-color": Css$Colour;
+    "overlay-color": cytoscape$Css$Colour;
 
     /**
      * The area outside of the element within which the overlay is shown.
@@ -4890,7 +4897,7 @@ http://js.cytoscape.org/#nodes.siblings
    * Note that shadow-blur could seriously impact performance on large graph.
    * http://js.cytoscape.org/#style/shadow
    */
-  declare interface Css$Shadow {
+  declare interface cytoscape$Css$Shadow {
     /**
      * The shadow blur, note that if greater than 0, this could impact performance.
      */
@@ -4899,7 +4906,7 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * The colour of the shadow.
      */
-    "shadow-color": Css$Colour;
+    "shadow-color": cytoscape$Css$Colour;
 
     /**
      * The x offset relative to the node/edge where the shadow will be displayed, can be negative. If you set blur to 0, add an offset to view your shadow.
@@ -4920,7 +4927,7 @@ http://js.cytoscape.org/#nodes.siblings
   /**
    * Transition animation
    */
-  declare type Css$TransitionTimingFunction =
+  declare type cytoscape$Css$TransitionTimingFunction =
     | "linear"
     | "spring"
     | "cubic-bezier"
@@ -4953,7 +4960,7 @@ http://js.cytoscape.org/#nodes.siblings
   /**
    * http://js.cytoscape.org/#style/transition-animation
    */
-  declare interface Css$TransitionAnimation {
+  declare interface cytoscape$Css$TransitionAnimation {
     /**
      * A comma separated list of style properties to animate in this state.
      */
@@ -4972,7 +4979,7 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * An easing function that controls the animation progress curve (a visualisation of easings serves as a reference).
      */
-    "transition-timing-function": Css$TransitionTimingFunction;
+    "transition-timing-function": cytoscape$Css$TransitionTimingFunction;
   }
 
   /**
@@ -4983,12 +4990,12 @@ http://js.cytoscape.org/#nodes.siblings
    * All of the library’s features are accessed through this object.
    * http://js.cytoscape.org/#core
    */
-  declare type Css$Core = {
+  declare type cytoscape$Css$Core = {
     /**
      * Indicator:
      * The colour of the indicator shown when the background is grabbed by the user.
      */
-    "active-bg-color": Css$Colour,
+    "active-bg-color": cytoscape$Css$Colour,
 
     /**
      * The opacity of the active background indicator.
@@ -5004,12 +5011,12 @@ http://js.cytoscape.org/#nodes.siblings
      * Selection box:
      * The background colour of the selection box used for drag selection.
      */
-    "selection-box-color": Css$Colour,
+    "selection-box-color": cytoscape$Css$Colour,
 
     /**
      * The colour of the border on the selection box.
      */
-    "selection-box-border-color": Css$Colour,
+    "selection-box-border-color": cytoscape$Css$Colour,
 
     /**
      * The size of the border on the selection box.
@@ -5025,20 +5032,20 @@ http://js.cytoscape.org/#nodes.siblings
      * Texture during viewport gestures:
      * The colour of the area outside the viewport texture when initOptions.textureOnViewport === true.
      */
-    "outside-texture-bg-color": Css$Colour,
+    "outside-texture-bg-color": cytoscape$Css$Colour,
 
     /**
      * The opacity of the area outside the viewport texture.
      */
     "outside-texture-bg-opacity": number
-  } & cytoscape$CoreGraphManipulation &
-    cytoscape$CoreGraphManipulationExt &
-    cytoscape$CoreEvents &
-    cytoscape$CoreViewportManipulation &
-    cytoscape$CoreAnimation &
-    cytoscape$CoreLayout &
-    cytoscape$CoreStyle &
-    cytoscape$CoreExport;
+  } & CoreGraphManipulation &
+    CoreGraphManipulationExt &
+    CoreEvents &
+    CoreViewportManipulation &
+    CoreAnimation &
+    CoreLayout &
+    CoreStyle &
+    CoreExport;
 
   /**
    * Events passed to handler callbacks are similar to
@@ -5047,8 +5054,8 @@ http://js.cytoscape.org/#nodes.siblings
    *
    * http://js.cytoscape.org/#events
    */
-  declare type cytoscape$EventObject = {} & cytoscape$InputEventObject &
-    cytoscape$LayoutEventObject;
+  declare type cytoscape$EventObject = {} & InputEventObject &
+    LayoutEventObject;
 
   /**
    * http://js.cytoscape.org/#events/event-object
@@ -5057,7 +5064,7 @@ http://js.cytoscape.org/#nodes.siblings
     /**
      * a reference to the corresponding core Core
      */
-    cy: Css$Core;
+    cy: cytoscape$Css$Core;
 
     /**
      * indicates the element or core that first caused the event
@@ -5097,7 +5104,7 @@ http://js.cytoscape.org/#nodes.siblings
      * originalEvent : the original user input device event object
      */
     originalEvent: cytoscape$EventObject
-  } & cytoscape$AbstractEventObject;
+  } & AbstractEventObject;
 
   declare type cytoscape$LayoutEventObject = {
     /**
@@ -5105,7 +5112,7 @@ http://js.cytoscape.org/#nodes.siblings
      * (useful if running multiple layouts simultaneously)
      */
     layout: any
-  } & cytoscape$AbstractEventObject;
+  } & AbstractEventObject;
 
   /**
    * These are normal browser events that you can bind to via Cytoscape.js.
@@ -5211,8 +5218,7 @@ http://js.cytoscape.org/#nodes.siblings
    * Setting edge length depends on the particular layout,
    * and some layouts will allow for more precise edge lengths than others.
    */
-  declare type cytoscape$Layouts = {} & cytoscape$LayoutManipulation &
-    cytoscape$LayoutEvents;
+  declare type cytoscape$Layouts = {} & LayoutManipulation & LayoutEvents;
 
   declare type cytoscape$LayoutOptions =
     | cytoscape$NullLayoutOptions
@@ -5270,8 +5276,8 @@ http://js.cytoscape.org/#nodes.siblings
     fit: boolean,
     padding?: number,
     boundingBox: void | cytoscape$BoundingBox12 | cytoscape$BoundingBoxWH
-  } & cytoscape$BaseLayoutOptions &
-    cytoscape$AnimatedLayoutOptions;
+  } & BaseLayoutOptions &
+    AnimatedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/preset
@@ -5291,8 +5297,8 @@ http://js.cytoscape.org/#nodes.siblings
     pan?: number,
     fit?: boolean,
     padding?: number
-  } & cytoscape$BaseLayoutOptions &
-    cytoscape$AnimatedLayoutOptions;
+  } & BaseLayoutOptions &
+    AnimatedLayoutOptions;
 
   declare interface cytoscape$SortableNode {
     data: {
@@ -5313,8 +5319,8 @@ http://js.cytoscape.org/#nodes.siblings
     nodeDimensionsIncludeLabels: boolean,
     spacingFactor?: number,
     sort?: cytoscape$SortingFunction
-  } & cytoscape$BaseLayoutOptions &
-    cytoscape$AnimatedLayoutOptions;
+  } & BaseLayoutOptions &
+    AnimatedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/grid
@@ -5331,7 +5337,7 @@ http://js.cytoscape.org/#nodes.siblings
       row: number,
       col: number
     }
-  } & cytoscape$ShapedLayoutOptions;
+  } & ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/circle
@@ -5342,7 +5348,7 @@ http://js.cytoscape.org/#nodes.siblings
     startAngle: number,
     sweep?: number,
     clockwise?: boolean
-  } & cytoscape$ShapedLayoutOptions;
+  } & ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/concentric
@@ -5363,7 +5369,7 @@ http://js.cytoscape.org/#nodes.siblings
     levelWidth(node: {
       maxDegree(): number
     }): number
-  } & cytoscape$ShapedLayoutOptions;
+  } & ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/breadthfirst
@@ -5374,7 +5380,7 @@ http://js.cytoscape.org/#nodes.siblings
     circle: boolean,
     roots?: string,
     maximalAdjustments: number
-  } & cytoscape$ShapedLayoutOptions;
+  } & ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/cose
@@ -5395,7 +5401,7 @@ http://js.cytoscape.org/#nodes.siblings
     coolingFactor: number,
     minTemp: number,
     weaver: boolean
-  } & cytoscape$ShapedLayoutOptions;
+  } & ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/layout-manipulation
@@ -5420,13 +5426,13 @@ http://js.cytoscape.org/#nodes.siblings
 
   declare interface cytoscape$LayoutEvents {
     /**
- * http://js.cytoscape.org/#layouts/layout-events
- * @param events A space separated list of event names.
- * @param data [optional] A plain object which is passed to the
-handler in the event object argument.
- * @param handler The handler function that is called
-when one of the specified events occurs.
- */
+     * http://js.cytoscape.org/#layouts/layout-events
+     * @param events A space separated list of event names.
+     * @param data [optional] A plain object which is passed to the
+     * handler in the event object argument.
+     * @param handler The handler function that is called
+     * when one of the specified events occurs.
+     */
     on(events: cytoscape$EventNames, handler: cytoscape$EventHandler): this;
     on(
       events: cytoscape$EventNames,
@@ -5547,10 +5553,10 @@ when one of the specified events occurs.
     time(): number;
 
     /**
- * Set the progress of the animation in milliseconds.
- * @param time The progress in milliseconds
-(i.e. between 0 and the duration inclusive) to set to the animation.
- */
+     * Set the progress of the animation in milliseconds.
+     * @param time The progress in milliseconds
+     * (i.e. between 0 and the duration inclusive) to set to the animation.
+     */
     time(time: number): cytoscape$AnimationManipulation;
 
     /**
@@ -5603,33 +5609,33 @@ when one of the specified events occurs.
     reverse(): cytoscape$AnimationManipulation;
 
     /**
- * Get a promise that is fulfilled with the specified animation event.
- * @param animationEvent A string for the event name; completed or complete for
-completing the animation or frame for the next frame of the animation.
-http://js.cytoscape.org/#ani.promise
- */
+     * Get a promise that is fulfilled with the specified animation event.
+     * @param animationEvent A string for the event name; completed or complete for
+     * completing the animation or frame for the next frame of the animation.
+     * http://js.cytoscape.org/#ani.promise
+     */
     promise(
       animationEvent?: "completed" | "complete" | "frame"
     ): Promise<cytoscape$EventObject>;
   }
 
   /**
- * Cytoscape extension type
- * Definition of an extension would be in following form:
- * @example declare module 'cytoscape-ext' {
-const ext: cytoscape.Ext;
-export = ext;
-}
- */
+   * Cytoscape extension type
+   * Definition of an extension would be in following form:
+   * @example declare module 'cytoscape-ext' {
+   * const ext: cytoscape.Ext;
+   * export = ext;
+   * }
+   */
   declare type cytoscape$Ext = (
-    cytoscape: (options?: cytoscape$CytoscapeOptions) => Css$Core
+    cytoscape: (options?: cytoscape$CytoscapeOptions) => cytoscape$Css$Core
   ) => void;
 
   /**
- * Register imported extension into cytoscape
- * @param module Entry point for the extension, got by module = require('cy-ext')
-or by import module from 'cy-ext'
-http://js.cytoscape.org/#extensions
- */
+   * Register imported extension into cytoscape
+   * @param module Entry point for the extension, got by module = require('cy-ext')
+   * or by import module from 'cy-ext'
+   * http://js.cytoscape.org/#extensions
+   */
   declare function cytoscape$use(module: cytoscape$Ext): void;
 }
