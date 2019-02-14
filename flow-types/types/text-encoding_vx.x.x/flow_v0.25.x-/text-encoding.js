@@ -46,5 +46,5 @@ declare interface TextDecoder {
   decode(input?: Uint8Array, options?: TextDecoderOptions): string;
 }
 declare module "text-encoding" {
-  declare module.exports: typeof TextEncoding;
+  declare export default typeof TextEncoding;
 }
