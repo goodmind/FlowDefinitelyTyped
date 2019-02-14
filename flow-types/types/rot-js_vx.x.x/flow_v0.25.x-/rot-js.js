@@ -1,290 +1,7 @@
-declare class Scheduler$Simple mixins Scheduler {}
-
-declare class Scheduler$Speed mixins Scheduler {}
-
-declare class Scheduler$Action mixins Scheduler {
-  setDuration(time: number): Scheduler$Action;
-}
-declare class Noise$Simplex mixins Noise {
-  constructor(gradients?: number): this;
-  get(xin: number, yin: number): number;
-}
-declare class Path$Dijkstra mixins Path {}
-
-declare class Path$AStar mixins Path {}
-declare var npm$namespace$Color: {
-  fromString: typeof Color$fromString,
-  add: typeof Color$add,
-  add_: typeof Color$add_,
-  multiply: typeof Color$multiply,
-  multiply_: typeof Color$multiply_,
-  interpolate: typeof Color$interpolate,
-  interpolateHSL: typeof Color$interpolateHSL,
-  randomize: typeof Color$randomize,
-  rgb2hsl: typeof Color$rgb2hsl,
-  hsl2rgb: typeof Color$hsl2rgb,
-  toRGB: typeof Color$toRGB,
-  toHex: typeof Color$toHex
-};
-declare function Color$fromString(str: string): [number, number, number];
-
-declare function Color$add(
-  color1: [number, number, number],
-  ...colors2: Array<[number, number, number]>
-): [number, number, number];
-
-declare function Color$add_(
-  color1: [number, number, number],
-  ...colors2: Array<[number, number, number]>
-): [number, number, number];
-
-declare function Color$multiply(
-  color1: [number, number, number],
-  ...colors2: Array<[number, number, number]>
-): [number, number, number];
-
-declare function Color$multiply_(
-  color1: [number, number, number],
-  ...colors2: Array<[number, number, number]>
-): [number, number, number];
-
-declare function Color$interpolate(
-  color1: [number, number, number],
-  color2: [number, number, number],
-  factor: number
-): [number, number, number];
-
-declare function Color$interpolateHSL(
-  color1: [number, number, number],
-  color2: [number, number, number],
-  factor: number
-): [number, number, number];
-
-declare function Color$randomize(
-  color: [number, number, number],
-  diff: number | [number, number, number]
-): [number, number, number];
-
-declare function Color$rgb2hsl(
-  color: [number, number, number]
-): [number, number, number];
-
-declare function Color$hsl2rgb(
-  color: [number, number, number]
-): [number, number, number];
-
-declare function Color$toRGB(color: [number, number, number]): string;
-
-declare function Color$toHex(color: [number, number, number]): string;
-
-declare var npm$namespace$RecursiveShadowcasting: {
-  OCTANTS: typeof RecursiveShadowcasting$OCTANTS
-};
-declare var RecursiveShadowcasting$OCTANTS: Array<
-  [number, number, number, number]
->;
-declare class FOV$DiscreteShadowcasting mixins FOV {}
-
-declare class FOV$PreciseShadowcasting mixins FOV {}
-
-declare class FOV$RecursiveShadowcasting mixins FOV {
-  compute180(
-    x: number,
-    y: number,
-    R: number,
-    dir: number,
-    callback: FOVCallback
-  ): void;
-  compute90(
-    x: number,
-    y: number,
-    R: number,
-    dir: number,
-    callback: FOVCallback
-  ): void;
-}
-declare class Feature$Room {
-  constructor(
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    doorX?: number,
-    doorY?: number
-  ): this;
-  static createRandom(
-    availWidth: number,
-    availHeight: number,
-    options?: RoomOptions
-  ): Feature$Room;
-  static createRandomAt(
-    x: number,
-    y: number,
-    dx: number,
-    dy: number,
-    options?: RoomOptions
-  ): Feature$Room;
-  static createRandomCenter(
-    cx: number,
-    cy: number,
-    options?: RoomOptions
-  ): Feature$Room;
-  create(digCallback: DigCallback): void;
-  debug(): void;
-  addDoor(x: number, y: number): this;
-  getDoors(callback: DoorCallback): this;
-  clearDoors(): this;
-  addDoors(isWallCallback: IsWallCallback): this;
-  isValid(
-    isWallCallback: IsWallCallback,
-    canBeDugCallback: CanBeDugCallback
-  ): boolean;
-  getCenter(): [number, number];
-  getLeft(): number;
-  getRight(): number;
-  getTop(): number;
-  getBottom(): number;
-}
-
-declare class Feature$Corridor {
-  constructor(startX: number, startY: number, endX: number, endY: number): this;
-  static createRandomAt(
-    x: number,
-    y: number,
-    dx: number,
-    dy: number,
-    options?: CorridorOptions
-  ): Feature$Corridor;
-  create(digCallback: DigCallback): boolean;
-  debug(): void;
-  isValid(
-    isWallCallback: IsWallCallback,
-    canBeDugCallback: CanBeDugCallback
-  ): boolean;
-  createPriorityWalls(priorityWallCallback: DoorCallback): void;
-}
-declare class Map$Arena mixins Map {}
-
-declare class Map$DividedMaze mixins Map {}
-
-declare class Map$IceyMaze mixins Map {
-  constructor(width?: number, height?: number, regularity?: number): this;
-}
-
-declare class Map$EllerMaze mixins Map {}
-
-declare class Map$Cellular mixins Map {
-  constructor(width?: number, height?: number, options?: CellularOptions): this;
-  randomize(probability: number): this;
-  setOptions(options: CellularOptions): void;
-  set(x: number, y: number, value: any): void;
-  serviceCallback(callback: DigCallback): void;
-  connect(
-    callback: DigCallback,
-    value?: number,
-    connectionCallback?: DoorCallback
-  ): void;
-}
-
-declare class Map$Dungeon mixins Map {
-  getRooms(): Map$Feature.Feature$Room[];
-  getCorridors(): Map$Feature.Feature$Corridor[];
-}
-
-declare class Map$Digger mixins Map$Dungeon {
-  constructor(width?: number, height?: number, options?: DiggerOptions): this;
-}
-
-declare class Map$Uniform mixins Map$Dungeon {
-  constructor(width?: number, height?: number, options?: UniformOptions): this;
-}
-
-declare class Map$Rogue mixins Map {
-  constructor(width?: number, height?: number, options?: RogueOptions): this;
-}
-
-declare class Map$Feature {
-  isValid(canBeDugCallback: CanBeDugCallback): boolean;
-  create(digCallback: DigCallback): void;
-  debug(): void;
-  static createRandomAt(
-    x: number,
-    y: number,
-    dx: number,
-    dy: number,
-    options?: FeatureOptions
-  ): Map$Feature;
-}
-declare var npm$namespace$RNG: {
-  getSeed: typeof RNG$getSeed,
-  setSeed: typeof RNG$setSeed,
-  getUniform: typeof RNG$getUniform,
-  getUniformInt: typeof RNG$getUniformInt,
-  getNormal: typeof RNG$getNormal,
-  getPercentage: typeof RNG$getPercentage,
-  getWeightedValue: typeof RNG$getWeightedValue,
-  getState: typeof RNG$getState,
-  setState: typeof RNG$setState,
-  clone: typeof RNG$clone
-};
-declare function RNG$getSeed(): number;
-
-declare function RNG$setSeed(seed: number): RNGable;
-
-declare function RNG$getUniform(): number;
-
-declare function RNG$getUniformInt(
-  lowerBound: number,
-  upperBound: number
-): number;
-
-declare function RNG$getNormal(mean?: number, stddev?: number): number;
-
-declare function RNG$getPercentage(): number;
-
-declare function RNG$getWeightedValue(data: {
-  [key: string]: number
-}): string;
-
-declare function RNG$getWeightedValue(data: any): any;
-
-declare function RNG$getState(): [number, number, number, number];
-
-declare function RNG$setState(state: [number, number, number, number]): RNGable;
-
-declare function RNG$clone(): RNGable;
-
-declare var npm$namespace$Text: {
-  measure: typeof Text$measure,
-  tokenize: typeof Text$tokenize,
-  RE_COLORS: typeof Text$RE_COLORS,
-  TYPE_BG: typeof Text$TYPE_BG,
-  TYPE_FG: typeof Text$TYPE_FG,
-  TYPE_NEWLINE: typeof Text$TYPE_NEWLINE,
-  TYPE_TEXT: typeof Text$TYPE_TEXT
-};
-declare var Text$RE_COLORS: RegExp;
-
-declare var Text$TYPE_BG: number;
-
-declare var Text$TYPE_FG: number;
-
-declare var Text$TYPE_NEWLINE: number;
-
-declare var Text$TYPE_TEXT: number;
-
-declare function Text$measure(str: string, maxWidth: number): Size;
-
-declare interface Text$Token {
-  type: number;
-  value?: string;
-}
-
-declare function Text$tokenize(str: string, maxWidth: number): Text$Token[];
 declare module "global" {
   declare interface Array<T> {
     random(): T;
-    Color$randomize(): T[];
+    randomize(): T[];
   }
   declare interface Number {
     mod(n: number): number;
@@ -937,18 +654,89 @@ declare module "rot-js" {
     width: number;
     height: number;
   }
-  declare export interface RNGable {
-    RNG$getSeed(): number;
-    RNG$setSeed(seed: number): RNGable;
-    RNG$getUniform(): number;
-    RNG$getUniformInt(lowerBound: number, upperBound: number): number;
-    RNG$getNormal(mean?: number, stddev?: number): number;
-    RNG$getPercentage(): number;
-    RNG$getWeightedValue<K: string>(data: Record<K, number>): K;
-    RNG$getState(): [number, number, number, number];
-    RNG$setState(state: [number, number, number, number]): RNGable;
-    RNG$clone(): RNGable;
+
+  declare var npm$namespace$Text: {
+    measure: typeof Text$measure,
+    tokenize: typeof Text$tokenize,
+    RE_COLORS: typeof Text$RE_COLORS,
+    TYPE_BG: typeof Text$TYPE_BG,
+    TYPE_FG: typeof Text$TYPE_FG,
+    TYPE_NEWLINE: typeof Text$TYPE_NEWLINE,
+    TYPE_TEXT: typeof Text$TYPE_TEXT
+  };
+  declare var Text$RE_COLORS: RegExp;
+
+  declare var Text$TYPE_BG: number;
+
+  declare var Text$TYPE_FG: number;
+
+  declare var Text$TYPE_NEWLINE: number;
+
+  declare var Text$TYPE_TEXT: number;
+
+  declare function Text$measure(str: string, maxWidth: number): Size;
+
+  declare interface Text$Token {
+    type: number;
+    value?: string;
   }
+
+  declare function Text$tokenize(str: string, maxWidth: number): Text$Token[];
+
+  declare export interface RNGable {
+    getSeed(): number;
+    setSeed(seed: number): RNGable;
+    getUniform(): number;
+    getUniformInt(lowerBound: number, upperBound: number): number;
+    getNormal(mean?: number, stddev?: number): number;
+    getPercentage(): number;
+    getWeightedValue<K: string>(data: Record<K, number>): K;
+    getState(): [number, number, number, number];
+    setState(state: [number, number, number, number]): RNGable;
+    clone(): RNGable;
+  }
+
+  declare var npm$namespace$RNG: {
+    getSeed: typeof RNG$getSeed,
+    setSeed: typeof RNG$setSeed,
+    getUniform: typeof RNG$getUniform,
+    getUniformInt: typeof RNG$getUniformInt,
+    getNormal: typeof RNG$getNormal,
+    getPercentage: typeof RNG$getPercentage,
+    getWeightedValue: typeof RNG$getWeightedValue,
+    getState: typeof RNG$getState,
+    setState: typeof RNG$setState,
+    clone: typeof RNG$clone
+  };
+  declare function RNG$getSeed(): number;
+
+  declare function RNG$setSeed(seed: number): RNGable;
+
+  declare function RNG$getUniform(): number;
+
+  declare function RNG$getUniformInt(
+    lowerBound: number,
+    upperBound: number
+  ): number;
+
+  declare function RNG$getNormal(mean?: number, stddev?: number): number;
+
+  declare function RNG$getPercentage(): number;
+
+  declare function RNG$getWeightedValue(data: {
+    [key: string]: number
+  }): string;
+
+  declare function RNG$getWeightedValue(data: any): any;
+
+  declare function RNG$getState(): [number, number, number, number];
+
+  declare function RNG$setState(
+    state: [number, number, number, number]
+  ): RNGable;
+
+  declare function RNG$clone(): RNGable;
+
   declare export interface DisplayOptions {
     width?: number;
     height?: number;
@@ -1033,6 +821,150 @@ declare module "rot-js" {
     corridorLength: [number, number];
   }
   declare export type FeatureOptions = RoomOptions | CorridorOptions;
+
+  declare var npm$namespace$Map: {
+    Arena: typeof Map$Arena,
+    DividedMaze: typeof Map$DividedMaze,
+    IceyMaze: typeof Map$IceyMaze,
+    EllerMaze: typeof Map$EllerMaze,
+    Cellular: typeof Map$Cellular,
+    Dungeon: typeof Map$Dungeon,
+    Digger: typeof Map$Digger,
+    Uniform: typeof Map$Uniform,
+    Rogue: typeof Map$Rogue,
+    Feature: typeof Map$Feature,
+    Feature: typeof npm$namespace$Map$Feature
+  };
+  declare class Map$Arena mixins Map {}
+
+  declare class Map$DividedMaze mixins Map {}
+
+  declare class Map$IceyMaze mixins Map {
+    constructor(width?: number, height?: number, regularity?: number): this;
+  }
+
+  declare class Map$EllerMaze mixins Map {}
+
+  declare class Map$Cellular mixins Map {
+    constructor(
+      width?: number,
+      height?: number,
+      options?: CellularOptions
+    ): this;
+    randomize(probability: number): this;
+    setOptions(options: CellularOptions): void;
+    set(x: number, y: number, value: any): void;
+    serviceCallback(callback: DigCallback): void;
+    connect(
+      callback: DigCallback,
+      value?: number,
+      connectionCallback?: DoorCallback
+    ): void;
+  }
+
+  declare class Map$Dungeon mixins Map {
+    getRooms(): Feature$Room[];
+    getCorridors(): Feature$Corridor[];
+  }
+
+  declare class Map$Digger mixins Dungeon {
+    constructor(width?: number, height?: number, options?: DiggerOptions): this;
+  }
+
+  declare class Map$Uniform mixins Dungeon {
+    constructor(
+      width?: number,
+      height?: number,
+      options?: UniformOptions
+    ): this;
+  }
+
+  declare class Map$Rogue mixins Map {
+    constructor(width?: number, height?: number, options?: RogueOptions): this;
+  }
+
+  declare class Map$Feature {
+    isValid(canBeDugCallback: CanBeDugCallback): boolean;
+    create(digCallback: DigCallback): void;
+    debug(): void;
+    static createRandomAt(
+      x: number,
+      y: number,
+      dx: number,
+      dy: number,
+      options?: FeatureOptions
+    ): Map$Feature;
+  }
+
+  declare var npm$namespace$Map$Feature: {
+    Room: typeof Map$Feature$Room,
+    Corridor: typeof Map$Feature$Corridor
+  };
+  declare class Map$Feature$Room {
+    constructor(
+      x1: number,
+      y1: number,
+      x2: number,
+      y2: number,
+      doorX?: number,
+      doorY?: number
+    ): this;
+    static createRandom(
+      availWidth: number,
+      availHeight: number,
+      options?: RoomOptions
+    ): Map$Feature$Room;
+    static createRandomAt(
+      x: number,
+      y: number,
+      dx: number,
+      dy: number,
+      options?: RoomOptions
+    ): Map$Feature$Room;
+    static createRandomCenter(
+      cx: number,
+      cy: number,
+      options?: RoomOptions
+    ): Map$Feature$Room;
+    create(digCallback: DigCallback): void;
+    debug(): void;
+    addDoor(x: number, y: number): this;
+    getDoors(callback: DoorCallback): this;
+    clearDoors(): this;
+    addDoors(isWallCallback: IsWallCallback): this;
+    isValid(
+      isWallCallback: IsWallCallback,
+      canBeDugCallback: CanBeDugCallback
+    ): boolean;
+    getCenter(): [number, number];
+    getLeft(): number;
+    getRight(): number;
+    getTop(): number;
+    getBottom(): number;
+  }
+
+  declare class Map$Feature$Corridor {
+    constructor(
+      startX: number,
+      startY: number,
+      endX: number,
+      endY: number
+    ): this;
+    static createRandomAt(
+      x: number,
+      y: number,
+      dx: number,
+      dy: number,
+      options?: CorridorOptions
+    ): Map$Feature$Corridor;
+    create(digCallback: DigCallback): boolean;
+    debug(): void;
+    isValid(
+      isWallCallback: IsWallCallback,
+      canBeDugCallback: CanBeDugCallback
+    ): boolean;
+    createPriorityWalls(priorityWallCallback: DoorCallback): void;
+  }
   declare export type LightPassesCallback = (x: number, y: number) => boolean;
   declare export type FOVCallback = (
     x: number,
@@ -1050,7 +982,107 @@ declare module "rot-js" {
     ): this;
     compute(x: number, y: number, R: number, callback: FOVCallback): void;
   }
+
+  declare var npm$namespace$FOV: {
+    DiscreteShadowcasting: typeof FOV$DiscreteShadowcasting,
+    PreciseShadowcasting: typeof FOV$PreciseShadowcasting,
+    RecursiveShadowcasting: typeof FOV$RecursiveShadowcasting,
+    RecursiveShadowcasting: typeof npm$namespace$FOV$RecursiveShadowcasting
+  };
+  declare class FOV$DiscreteShadowcasting mixins FOV {}
+
+  declare class FOV$PreciseShadowcasting mixins FOV {}
+
+  declare class FOV$RecursiveShadowcasting mixins FOV {
+    compute180(
+      x: number,
+      y: number,
+      R: number,
+      dir: number,
+      callback: FOVCallback
+    ): void;
+    compute90(
+      x: number,
+      y: number,
+      R: number,
+      dir: number,
+      callback: FOVCallback
+    ): void;
+  }
+
+  declare var npm$namespace$FOV$RecursiveShadowcasting: {
+    OCTANTS: typeof FOV$RecursiveShadowcasting$OCTANTS
+  };
+  declare var FOV$RecursiveShadowcasting$OCTANTS: Array<
+    [number, number, number, number]
+  >;
   declare export type ColorArray = [number, number, number];
+
+  declare var npm$namespace$Color: {
+    fromString: typeof Color$fromString,
+    add: typeof Color$add,
+    add_: typeof Color$add_,
+    multiply: typeof Color$multiply,
+    multiply_: typeof Color$multiply_,
+    interpolate: typeof Color$interpolate,
+    interpolateHSL: typeof Color$interpolateHSL,
+    randomize: typeof Color$randomize,
+    rgb2hsl: typeof Color$rgb2hsl,
+    hsl2rgb: typeof Color$hsl2rgb,
+    toRGB: typeof Color$toRGB,
+    toHex: typeof Color$toHex
+  };
+  declare function Color$fromString(str: string): [number, number, number];
+
+  declare function Color$add(
+    color1: [number, number, number],
+    ...colors2: Array<[number, number, number]>
+  ): [number, number, number];
+
+  declare function Color$add_(
+    color1: [number, number, number],
+    ...colors2: Array<[number, number, number]>
+  ): [number, number, number];
+
+  declare function Color$multiply(
+    color1: [number, number, number],
+    ...colors2: Array<[number, number, number]>
+  ): [number, number, number];
+
+  declare function Color$multiply_(
+    color1: [number, number, number],
+    ...colors2: Array<[number, number, number]>
+  ): [number, number, number];
+
+  declare function Color$interpolate(
+    color1: [number, number, number],
+    color2: [number, number, number],
+    factor: number
+  ): [number, number, number];
+
+  declare function Color$interpolateHSL(
+    color1: [number, number, number],
+    color2: [number, number, number],
+    factor: number
+  ): [number, number, number];
+
+  declare function Color$randomize(
+    color: [number, number, number],
+    diff: number | [number, number, number]
+  ): [number, number, number];
+
+  declare function Color$rgb2hsl(
+    color: [number, number, number]
+  ): [number, number, number];
+
+  declare function Color$hsl2rgb(
+    color: [number, number, number]
+  ): [number, number, number];
+
+  declare function Color$toRGB(color: [number, number, number]): string;
+
+  declare function Color$toHex(color: [number, number, number]): string;
+
   declare export type ReflectivityCallback = (x: number, y: number) => number;
   declare export type LightingCallback = (
     x: number,
@@ -1092,8 +1124,24 @@ declare module "rot-js" {
     ): this;
     compute(fromX: number, fromY: number, callback: PathCallback): void;
   }
+
+  declare var npm$namespace$Path: {
+    Dijkstra: typeof Path$Dijkstra,
+    AStar: typeof Path$AStar
+  };
+  declare class Path$Dijkstra mixins Path {}
+
+  declare class Path$AStar mixins Path {}
   declare export interface Noise {
     get(x: number, y: number): number;
+  }
+
+  declare var npm$namespace$Noise: {
+    Simplex: typeof Noise$Simplex
+  };
+  declare class Noise$Simplex mixins Noise {
+    constructor(gradients?: number): this;
+    get(xin: number, yin: number): number;
   }
   declare export class EventQueue<T> {
     getTime(): number;
@@ -1111,6 +1159,19 @@ declare module "rot-js" {
     clear(): Scheduler;
     remove(item: any): any;
     next(): any;
+  }
+
+  declare var npm$namespace$Scheduler: {
+    Simple: typeof Scheduler$Simple,
+    Speed: typeof Scheduler$Speed,
+    Action: typeof Scheduler$Action
+  };
+  declare class Scheduler$Simple mixins Scheduler {}
+
+  declare class Scheduler$Speed mixins Scheduler {}
+
+  declare class Scheduler$Action mixins Scheduler {
+    setDuration(time: number): Scheduler$Action;
   }
   declare export class Engine {
     constructor(scheduler: Scheduler): this;
