@@ -1,9 +1,9 @@
 declare module "locate-path" {
-  declare module.exports: typeof locatePath;
+  declare export default typeof locatePath;
 
   declare function locatePath(
     input: Iterable<string>,
-    options?: locatePath$locatePath$Options
+    options?: locatePath$Options
   ): Promise<string | void>;
 
   declare var npm$namespace$locatePath: {
