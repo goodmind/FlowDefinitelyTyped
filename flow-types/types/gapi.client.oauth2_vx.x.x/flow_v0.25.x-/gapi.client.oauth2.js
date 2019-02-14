@@ -1,26 +1,30 @@
 declare module "gapi.client.oauth2" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    userinfo: typeof client$userinfo
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    userinfo: typeof gapi$client$userinfo
   };
 
   /**
    * Load Google OAuth2 API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "oauth2",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "oauth2",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$userinfo: oauth2$oauth2$UserinfoResource;
+  declare var gapi$client$userinfo: oauth2$UserinfoResource;
 
-  declare interface oauth2$Jwk {
+  declare interface gapi$client$oauth2$Jwk {
     keys?: Array<{
       alg?: string,
       e?: string,
@@ -31,7 +35,7 @@ declare module "gapi.client.oauth2" {
     }>;
   }
 
-  declare interface oauth2$Tokeninfo {
+  declare interface gapi$client$oauth2$Tokeninfo {
     /**
      * The access type granted with this token. It can be offline or online.
      */
@@ -78,7 +82,7 @@ declare module "gapi.client.oauth2" {
     verified_email?: boolean;
   }
 
-  declare interface oauth2$Userinfoplus {
+  declare interface gapi$client$oauth2$Userinfoplus {
     /**
      * The user's email address.
      */
@@ -135,7 +139,7 @@ declare module "gapi.client.oauth2" {
     verified_email?: boolean;
   }
 
-  declare interface oauth2$MeResource {
+  declare interface gapi$client$oauth2$MeResource {
     get(request: {
       /**
        * Data format for the response.
@@ -172,14 +176,14 @@ declare module "gapi.client.oauth2" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<oauth2$Userinfoplus>;
+    }): Request<gapi$client$oauth2$Userinfoplus>;
   }
 
-  declare interface oauth2$V2Resource {
-    me: oauth2$MeResource;
+  declare interface gapi$client$oauth2$V2Resource {
+    me: gapi$client$oauth2$MeResource;
   }
 
-  declare interface oauth2$UserinfoResource {
+  declare interface gapi$client$oauth2$UserinfoResource {
     get(request: {
       /**
        * Data format for the response.
@@ -216,7 +220,7 @@ declare module "gapi.client.oauth2" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<oauth2$Userinfoplus>;
-    v2: oauth2$V2Resource;
+    }): Request<gapi$client$oauth2$Userinfoplus>;
+    v2: gapi$client$oauth2$V2Resource;
   }
 }
