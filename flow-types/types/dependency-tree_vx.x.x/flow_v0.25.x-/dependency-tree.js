@@ -24,8 +24,8 @@ declare module "dependency-tree" {
   ): string[];
 
   declare function dependencyTree(
-    options: dependencyTree$dependencyTree$Options
-  ): dependencyTree$dependencyTree$DependencyObj;
+    options: dependencyTree$Options
+  ): dependencyTree$DependencyObj;
 
-  declare module.exports: typeof dependencyTree;
+  declare export default typeof dependencyTree;
 }
