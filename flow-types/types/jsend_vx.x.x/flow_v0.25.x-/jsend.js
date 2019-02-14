@@ -1,5 +1,5 @@
 export interface Express$Response {
-  jsend$jsend: jsend$jsend.jsend$jsendExpress;
+  jsend: jsend$jsendExpress;
 }
 declare var npm$namespace$jsend: {
   jsend: typeof jsend$jsend
@@ -27,14 +27,14 @@ declare interface jsend$jsendCore {
 
 declare type jsend$jsendExpress = {
   (err: string | Object, json?: Object): void
-} & jsend$jsendCore;
+} & jsendCore;
 
 declare type jsend$jsend = {
   isValid(json: Object): boolean,
   forward(json: Object, done: (err: any, data: any) => any): void,
   fromArguments(err: string | Object, json?: Object): jsend$JSendObject,
   middleware(req: any, res: any, next: Function): any
-} & jsend$jsendCore;
+} & jsendCore;
 
 declare type jsend$jsendExport = {
   (
@@ -43,9 +43,9 @@ declare type jsend$jsendExport = {
     },
     host?: Object
   ): jsend$jsend
-} & jsend$jsend;
+} & jsend;
 
 declare var jsend$jsend: jsend$jsendExport;
 declare module "jsend" {
-  declare export default typeof jsend$jsend$jsend;
+  declare export default typeof jsend$jsend;
 }
