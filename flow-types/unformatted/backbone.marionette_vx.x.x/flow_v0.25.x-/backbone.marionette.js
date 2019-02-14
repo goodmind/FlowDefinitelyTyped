@@ -1,43 +1,3 @@
-
-      declare var npm$namespace$Behaviors: {
-        behaviorsLookup: typeof Behaviors$behaviorsLookup,
-getBehaviorClass: typeof Behaviors$getBehaviorClass,
-        
-      }
-
-/**
- * This method defines where your behavior classes are stored. Override this to provide another lookup.
- */
-declare function Behaviors$behaviorsLookup(): any
-
-
-
-/**
- * This method has a default implementation that is simple to override. It
- * is responsible for the lookup of single behavior from within the
- * Behaviors.behaviorsLookup or elsewhere. Note that it should return the type of the
- * class to instantiate, not an instance of that class.
- */
-declare function Behaviors$getBehaviorClass(options: any, key: string): any
-
-      declare var npm$namespace$Renderer: {
-        render: typeof Renderer$render,
-        
-      }
-
-/**
- * This method returns a string containing the result of applying the
- * template using the data object as the context.
- * @param template
- * The template to render. If this is a function this is
- * treated as a pre-compiled template and does not try to compile it again. This
- * allows any view that supports a template parameter to specify a pre-compiled
- * template function as the template setting. The template function does not
- * have to be any specific template engine. It only needs to be a function
- * that returns valid HTML as a string from the data parameter passed to
- * the function.
- */
-declare function Renderer$render(template: any, data: any): string
 declare module 'backbone.marionette' {
         import typeof * as Backbone from 'backbone';
 
@@ -209,150 +169,126 @@ add(view: TView, customIndex?: number): void;
 remove(view: TView): void;
 
 /**
- * @see
- * _.forEach
+ * @see _.forEach
  */
 forEach(iterator: _.ListIterator<TView, void>, context?: any): Container<TView>;
 
 /**
- * @see
- * _.each
+ * @see _.each
  */
 each(iterator: _.ListIterator<TView, void>, context?: any): Container<TView>;
 
 /**
- * @see
- * _.map
+ * @see _.map
  */
 map<TResult>(iterator: _.ListIterator<TView, TResult>, context?: any): TResult[];
 
 /**
- * @see
- * _.find
+ * @see _.find
  */
 find(
 iterator: _.ListIterator<TView, boolean>,
 context?: any): Container<TView> | void;
 
 /**
- * @see
- * _.detect
+ * @see _.detect
  */
 detect(
 iterator: _.ListIterator<TView, boolean>,
 context?: any): Container<TView> | void;
 
 /**
- * @see
- * _.filter
+ * @see _.filter
  */
 filter(iterator: _.ListIterator<TView, boolean>, context?: any): TView[];
 
 /**
- * @see
- * _.select
+ * @see _.select
  */
 select(iterator: _.ListIterator<TView, boolean>, context?: any): TView[];
 
 /**
- * @see
- * _.reject
+ * @see _.reject
  */
 reject(iterator: _.ListIterator<TView, boolean>, context?: any): TView[];
 
 /**
- * @see
- * _.every
+ * @see _.every
  */
 every(iterator: _.ListIterator<TView, boolean>, context?: any): boolean;
 
 /**
- * @see
- * _.all
+ * @see _.all
  */
 all(iterator: _.ListIterator<TView, boolean>, context?: any): boolean;
 
 /**
- * @see
- * _.some
+ * @see _.some
  */
 some(iterator: _.ListIterator<TView, boolean>, context?: any): boolean;
 
 /**
- * @see
- * _.any
+ * @see _.any
  */
 any(iterator: _.ListIterator<TView, boolean>, context?: any): boolean;
 
 /**
- * @see
- * _.include
+ * @see _.include
  */
 include(value: TView, fromIndex?: number): boolean;
 
 /**
- * @see
- * _.contains
+ * @see _.contains
  */
 contains(value: TView, fromIndex?: number): boolean;
 
 /**
- * @see
- * _.invoke
+ * @see _.invoke
  */
 invoke(methodName: string, ...args: any[]): any;
 
 /**
- * @see
- * _.toArray
+ * @see _.toArray
  */
 toArray(): TView[];
 
 /**
- * @see
- * _.first
+ * @see _.first
  */
 first(): TView | void;
 
 /**
- * @see
- * _.initial
+ * @see _.initial
  */
 initial(n?: number): TView[];
 
 /**
- * @see
- * _.rest
+ * @see _.rest
  */
 rest(n?: number): TView[];
 
 /**
- * @see
- * _.last
+ * @see _.last
  */
 last(n: number): TView[];
 
 /**
- * @see
- * _.without
+ * @see _.without
  */
 without(...values: TView[]): TView[];
 
 /**
- * @see
- * _.isEmpty
+ * @see _.isEmpty
  */
 isEmpty(): boolean;
 
 /**
- * @see
- * _.pluck
+ * @see _.pluck
  */
 pluck(propertyName: string): any[];
 
 /**
- * @see
- * _.reduce
+ * @see _.reduce
  */
 reduce<TResult>(
 iterator: _.MemoIterator<TView, TResult>,
@@ -360,8 +296,7 @@ memo?: TResult,
 context?: any): TResult;
 
 /**
- * @see
- * _.partition
+ * @see _.partition
  */
 partition(iterator: _.ListIterator<TView, boolean>, context?: any): TView[][]
 }
@@ -410,24 +345,18 @@ declare export function triggerMethodOn(ctx: any, name: string, ...args: any[]):
 	
 /**
  * This method is used to bind a backbone "entity" (collection/model) to methods on a target object.
- * @param target
- * An object that must have a listenTo method from the EventBinder object.
- * @param entity
- * The entity (Backbone.Model or Backbone.Collection) to bind the events from.
- * @param bindings
- * a hash of { "event:name": "eventHandler" } configuration. Multiple handlers can be separated by a space. A function can be supplied instead of a string handler name.
+ * @param target An object that must have a listenTo method from the EventBinder object.
+ * @param entity The entity (Backbone.Model or Backbone.Collection) to bind the events from.
+ * @param bindings a hash of { "event:name": "eventHandler" } configuration. Multiple handlers can be separated by a space. A function can be supplied instead of a string handler name.
  */
 declare export function bindEvents(target: any, entity: any, bindings: any): void
 
 	
 /**
  * This method can be used to unbind callbacks from entities' (collection/model) events. It's the opposite of bindEvents
- * @param target
- * An object that must have a listenTo method from the EventBinder object.
- * @param entity
- * The entity (Backbone.Model or Backbone.Collection) to bind the events from.
- * @param bindings
- * a hash of { "event:name": "eventHandler" } configuration. Multiple handlers can be separated by a space. A function can be supplied instead of a string handler name.
+ * @param target An object that must have a listenTo method from the EventBinder object.
+ * @param entity The entity (Backbone.Model or Backbone.Collection) to bind the events from.
+ * @param bindings a hash of { "event:name": "eventHandler" } configuration. Multiple handlers can be separated by a space. A function can be supplied instead of a string handler name.
  */
 declare export function unbindEvents(target: any, entity: any, bindings: any): void
 
@@ -514,8 +443,7 @@ mergeOptions(options: any, keys: any): void;
 /**
  * Retrieve an object's attribute either directly from the object, or from
  * the object's this.options, with this.options taking precedence.
- * @param optionName
- * the name of the option to retrieve.
+ * @param optionName the name of the option to retrieve.
  */
 getOption(optionName: string): any;
 
@@ -579,8 +507,7 @@ initialize(options?: ObjectOptions): void;
  * attached to the instance. Invoking the destroy method will trigger a
  * "before:destroy" event and corresponding onBeforeDestroy method call.
  * These calls will be passed any arguments destroy was invoked with.
- * @param args
- * any arguments to pass to the "before:destory" event and call to
+ * @param args any arguments to pass to the "before:destory" event and call to
  * onBeforeDestroy.
  */
 destroy(...args: any[]): void;
@@ -609,20 +536,16 @@ createBuffer(): DocumentFragment;
 /**
  * Takes the DOM node el and appends the rendered children to the end of
  * the element's contents.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param children
- * is jQuery.append argument: http://api.jquery.com/append/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param children is jQuery.append argument: http://api.jquery.com/append/
  */
 appendChildren(el: any, children: any): void;
 
 /**
  * Add sibling to the DOM immediately before the DOM node el. The
  * sibling will be at the same level as el.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param sibling
- * is jQuery.before argument: http://api.jquery.com/before/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param sibling is jQuery.before argument: http://api.jquery.com/before/
  */
 beforeEl(el: any, sibling: any): void;
 
@@ -634,32 +557,27 @@ replaceEl(newEl: HTMLElement, oldEL: HTMLElement): void;
 /**
  * Remove the inner contents of el from the DOM while leaving el itself
  * in the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachContents(el: any): void;
 
 /**
  * Replace the contents of el with the HTML string of html. Unlike other
  * DOM functions, this takes a literal string for its second argument.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param html
- * is a jQuery.html argument: https://api.jquery.com/html/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param html is a jQuery.html argument: https://api.jquery.com/html/
  */
 setInnerContent(el: any, html: string): void;
 
 /**
  * Detach el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachEl(el: any): void;
 
 /**
  * Remove el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 removeEl(el: any): void;
 
@@ -668,10 +586,8 @@ removeEl(el: any): void;
  * optional context argument will come in as a DOM Node reference to run
  * the selector search. If context hasn't been set, then findEls should
  * search the entire document for the selector.
- * @param selector
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param context
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param selector is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param context is a jQuery argument: https://api.jquery.com/jQuery/
  */
 findEls(selector: any, context: any): void;
 
@@ -687,8 +603,7 @@ static get(templateId: string, options?: any): any;
  * You can clear one or more, or all items from the cache using the clear
  * method. Clearing a template from the cache will force it to re-load
  * from the DOM the next time it is retrieved.
- * @param the
- * templateId used for loading / caching of the templates to clear. If none specified, all templates will be cleared from the cache.
+ * @param the templateId used for loading / caching of the templates to clear. If none specified, all templates will be cleared from the cache.
  */
 static clear(...templateId: string[]): void;
 
@@ -766,20 +681,16 @@ createBuffer(): DocumentFragment;
 /**
  * Takes the DOM node el and appends the rendered children to the end of
  * the element's contents.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param children
- * is jQuery.append argument: http://api.jquery.com/append/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param children is jQuery.append argument: http://api.jquery.com/append/
  */
 appendChildren(el: any, children: any): void;
 
 /**
  * Add sibling to the DOM immediately before the DOM node el. The
  * sibling will be at the same level as el.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param sibling
- * is jQuery.before argument: http://api.jquery.com/before/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param sibling is jQuery.before argument: http://api.jquery.com/before/
  */
 beforeEl(el: any, sibling: any): void;
 
@@ -791,32 +702,27 @@ replaceEl(newEl: HTMLElement, oldEL: HTMLElement): void;
 /**
  * Remove the inner contents of el from the DOM while leaving el itself
  * in the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachContents(el: any): void;
 
 /**
  * Replace the contents of el with the HTML string of html. Unlike other
  * DOM functions, this takes a literal string for its second argument.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param html
- * is a jQuery.html argument: https://api.jquery.com/html/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param html is a jQuery.html argument: https://api.jquery.com/html/
  */
 setInnerContent(el: any, html: string): void;
 
 /**
  * Detach el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachEl(el: any): void;
 
 /**
  * Remove el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 removeEl(el: any): void;
 
@@ -825,10 +731,8 @@ removeEl(el: any): void;
  * optional context argument will come in as a DOM Node reference to run
  * the selector search. If context hasn't been set, then findEls should
  * search the entire document for the selector.
- * @param selector
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param context
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param selector is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param context is a jQuery argument: https://api.jquery.com/jQuery/
  */
 findEls(selector: any, context: any): void;
 
@@ -856,8 +760,7 @@ el: any;
 
 /**
  * Renders and displays the specified view in this region.
- * @param view
- * the view to display.
+ * @param view the view to display.
  */
 show(view: Backbone.View<Backbone.Model>, options?: RegionViewOptions): void;
 
@@ -929,11 +832,32 @@ hasView(): boolean;
 reset(): any;
 
 /**
- * @returns
- * view that this region has.
+ * @returns view that this region has.
  */
 currentView: Backbone.View<Backbone.Model>
 }
+	
+      declare var npm$namespace$Renderer: {
+        render: typeof Renderer$render,
+        
+        
+        
+        
+      }
+
+/**
+ * This method returns a string containing the result of applying the
+ * template using the data object as the context.
+ * @param template The template to render. If this is a function this is
+ * treated as a pre-compiled template and does not try to compile it again. This
+ * allows any view that supports a template parameter to specify a pre-compiled
+ * template function as the template setting. The template function does not
+ * have to be any specific template engine. It only needs to be a function
+ * that returns valid HTML as a string from the data parameter passed to
+ * the function.
+ */
+declare function Renderer$render(template: any, data: any): string
+
 	declare export type ViewOptions<TModel: Backbone.Model> = {
 
 /**
@@ -985,20 +909,16 @@ createBuffer(): DocumentFragment;
 /**
  * Takes the DOM node el and appends the rendered children to the end of
  * the element's contents.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param children
- * is jQuery.append argument: http://api.jquery.com/append/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param children is jQuery.append argument: http://api.jquery.com/append/
  */
 appendChildren(el: any, children: any): void;
 
 /**
  * Add sibling to the DOM immediately before the DOM node el. The
  * sibling will be at the same level as el.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param sibling
- * is jQuery.before argument: http://api.jquery.com/before/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param sibling is jQuery.before argument: http://api.jquery.com/before/
  */
 beforeEl(el: any, sibling: any): void;
 
@@ -1010,32 +930,27 @@ replaceEl(newEl: HTMLElement, oldEL: HTMLElement): void;
 /**
  * Remove the inner contents of el from the DOM while leaving el itself
  * in the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachContents(el: any): void;
 
 /**
  * Replace the contents of el with the HTML string of html. Unlike other
  * DOM functions, this takes a literal string for its second argument.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param html
- * is a jQuery.html argument: https://api.jquery.com/html/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param html is a jQuery.html argument: https://api.jquery.com/html/
  */
 setInnerContent(el: any, html: string): void;
 
 /**
  * Detach el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 detachEl(el: any): void;
 
 /**
  * Remove el from the DOM.
- * @param el
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param el is a jQuery argument: https://api.jquery.com/jQuery/
  */
 removeEl(el: any): void;
 
@@ -1044,10 +959,8 @@ removeEl(el: any): void;
  * optional context argument will come in as a DOM Node reference to run
  * the selector search. If context hasn't been set, then findEls should
  * search the entire document for the selector.
- * @param selector
- * is a jQuery argument: https://api.jquery.com/jQuery/
- * @param context
- * is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param selector is a jQuery argument: https://api.jquery.com/jQuery/
+ * @param context is a jQuery argument: https://api.jquery.com/jQuery/
  */
 findEls(selector: any, context: any): void;
 
@@ -1067,8 +980,7 @@ mergeOptions(options: any, keys: any): void;
 /**
  * Retrieve an object's attribute either directly from the object, or from
  * the object's this.options, with this.options taking precedence.
- * @param optionName
- * the name of the option to retrieve.
+ * @param optionName the name of the option to retrieve.
  */
 getOption(optionName: string): any;
 
@@ -1394,7 +1306,7 @@ getUI(ui: string): JQuery
 /**
  * Specify a child view to use.
  */
-childView?: ((model: TModel) => typeof undefined) | typeof undefined,
+childView?: ((model: TModel) => typeof Backbone.View) | typeof Backbone.View,
 
 /**
  * Define options to pass to the childView constructor.
@@ -1416,7 +1328,7 @@ filter?: (child?: TModel, index?: number, collection?: TCollection) => boolean,
 /**
  * Specify a view to use if the collection has no children.
  */
-emptyView?: (() => typeof undefined) | typeof undefined,
+emptyView?: (() => typeof Backbone.View) | typeof Backbone.View,
 
 /**
  * Define options to pass to the emptyView constructor.
@@ -1901,6 +1813,9 @@ $(selector: any): JQuery
       declare var npm$namespace$Behaviors: {
         behaviorsLookup: typeof Behaviors$behaviorsLookup,
 getBehaviorClass: typeof Behaviors$getBehaviorClass,
+        
+        
+        
         
       }
 
