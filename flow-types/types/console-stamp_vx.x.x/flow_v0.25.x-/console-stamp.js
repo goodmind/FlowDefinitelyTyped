@@ -49,5 +49,5 @@ declare module "console-stamp" {
     }
   ): void;
 
-  declare module.exports: typeof consoleStamp;
+  declare export default typeof consoleStamp;
 }
