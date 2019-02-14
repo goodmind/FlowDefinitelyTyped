@@ -1,10 +1,10 @@
 declare module "chownr" {
   import type { URL } from "url";
 
-  declare module.exports: typeof chownr;
+  declare export default typeof chownr;
 
   declare function chownr(
-    path: chownr$chownr$PathLike,
+    path: chownr$PathLike,
     uid: number,
     gid: number,
     callback: (err: NodeJS.ErrnoException) => void
