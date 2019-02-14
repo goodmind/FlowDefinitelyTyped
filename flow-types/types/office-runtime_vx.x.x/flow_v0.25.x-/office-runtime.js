@@ -20,14 +20,14 @@ declare module "office-runtime" {
   declare var OfficeRuntime$AsyncStorage: OfficeRuntime$AsyncStorage;
 
   /**
- * Asynchronous, global, and persistent key-value storage that can be used by Excel Custom Functions.
- * @beta
- * @remarks Each add-in instance has its own storage partition, unique to a user and their device.
-
-The default amount of total storage allowed per add-in is 5MB.
-
-Each method listed below returns a Promise object.
- */
+   * Asynchronous, global, and persistent key-value storage that can be used by Excel Custom Functions.
+   * @beta
+   * @remarks Each add-in instance has its own storage partition, unique to a user and their device.
+   *
+   * The default amount of total storage allowed per add-in is 5MB.
+   *
+   * Each method listed below returns a Promise object.
+   */
   declare interface OfficeRuntime$AsyncStorage {
     /**
      * @beta Retrieves an object based on a key and invokes a callback when finished. Returns a Promise.
