@@ -16,7 +16,9 @@ declare module "canvasjs" {
     addColorSet: typeof CanvasJS$addColorSet,
     addCultureInfo: typeof CanvasJS$addCultureInfo,
     formatNumber: typeof CanvasJS$formatNumber,
-    formatDate: typeof CanvasJS$formatDate
+    formatDate: typeof CanvasJS$formatDate,
+
+    Chart: typeof CanvasJS$Chart
   };
   declare class CanvasJS$Chart {
     /**
@@ -564,7 +566,7 @@ declare module "canvasjs" {
      * Removes title of the chart.
      */
     remove(): void
-  } & CanvasJS$ChartTitleOptions;
+  } & ChartTitleOptions;
 
   declare interface CanvasJS$ChartLegendOptions {
     /**
@@ -743,7 +745,7 @@ declare module "canvasjs" {
       value: number | string | boolean,
       updateChart?: boolean
     ): void
-  } & CanvasJS$ChartLegendOptions;
+  } & ChartLegendOptions;
 
   declare interface CanvasJS$ChartEvent {
     /**
@@ -1050,7 +1052,7 @@ declare module "canvasjs" {
      * Removes specified stripLine from stripLines Array.
      */
     remove(): void
-  } & CanvasJS$ChartStripLinesOptions;
+  } & ChartStripLinesOptions;
 
   declare type CanvasJS$ChartAxisXOptions = {
     /**
@@ -1269,7 +1271,7 @@ declare module "canvasjs" {
     stripLines?:
       | CanvasJS$ChartStripLinesOptions
       | CanvasJS$ChartStripLinesOptions[]
-  } & CanvasJS$ChartAxisOptions;
+  } & ChartAxisOptions;
 
   declare type CanvasJS$ChartAxisX = {
     /**
@@ -1320,7 +1322,7 @@ declare module "canvasjs" {
      * @param pixel pixel value over Axis
      */
     convertPixelToValue(pixel: number): number
-  } & CanvasJS$ChartAxisXOptions;
+  } & ChartAxisXOptions;
 
   declare type CanvasJS$ChartAxisYOptions = {
     /**
@@ -1331,7 +1333,7 @@ declare module "canvasjs" {
      * Example: true, false
      */
     includeZero?: boolean
-  } & CanvasJS$ChartAxisXOptions;
+  } & ChartAxisXOptions;
 
   declare type CanvasJS$ChartAxisY = {
     /**
@@ -1382,7 +1384,7 @@ declare module "canvasjs" {
      * @param pixel pixel value over Axis
      */
     convertPixelToValue(pixel: number): number
-  } & CanvasJS$ChartAxisYOptions;
+  } & ChartAxisYOptions;
 
   declare interface CanvasJS$ChartToolTipOptions {
     /**
@@ -1516,7 +1518,7 @@ declare module "canvasjs" {
       value: number | string | boolean,
       updateChart?: boolean
     ): void
-  } & CanvasJS$ChartToolTipOptions;
+  } & ChartToolTipOptions;
 
   declare interface CanvasJS$ChartDataCommon {
     /**
@@ -1941,7 +1943,7 @@ declare module "canvasjs" {
      * Default: "dash"
      */
     nullDataLineDashType?: DashType
-  } & CanvasJS$ChartDataCommon;
+  } & ChartDataCommon;
 
   declare type CanvasJS$ChartDataSeries = {
     /**
@@ -1982,7 +1984,7 @@ declare module "canvasjs" {
      * Removes specified dataSeries from data Array.
      */
     remove(): void
-  } & CanvasJS$ChartDataSeriesOptions;
+  } & ChartDataSeriesOptions;
 
   declare type CanvasJS$ChartDataPoint = {
     /**
@@ -2021,9 +2023,9 @@ declare module "canvasjs" {
      * Example: true, false
      */
     exploded?: boolean
-  } & CanvasJS$ChartDataCommon;
+  } & ChartDataCommon;
 
   declare function CanvasJS(): void;
 
-  declare module.exports: typeof CanvasJS;
+  declare export default typeof CanvasJS;
 }
