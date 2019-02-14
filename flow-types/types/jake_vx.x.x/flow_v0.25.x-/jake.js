@@ -15,7 +15,7 @@ declare module "jake" {
    * Creates a Jake DirectoryTask. Can be used as a prerequisite for FileTasks, or for simply ensuring a directory exists for use with a Task's action.
    * @param name The name of the DiretoryTask
    */
-  declare function directory(name: string): jake$jake$DirectoryTask;
+  declare function directory(name: string): jake$DirectoryTask;
 
   /**
    * Causes Jake execution to abort with an error. Allows passing an optional error code, which will be used to set the exit-code of exiting process.
@@ -38,8 +38,8 @@ declare module "jake" {
     name: string,
     prereqs?: string[],
     action?: () => void,
-    opts?: jake$jake$FileTaskOptions
-  ): jake$jake$FileTask;
+    opts?: jake$FileTaskOptions
+  ): jake$FileTask;
 
   /**
    * Creates Jake FileTask from regex patterns
@@ -58,7 +58,7 @@ declare module "jake" {
         },
     prereqs?: string[],
     action?: () => void,
-    opts?: jake$jake$TaskOptions
+    opts?: jake$TaskOptions
   ): void;
 
   /**
@@ -78,20 +78,20 @@ declare module "jake" {
     name: string,
     prereqs?: string[],
     action?: (...params: any[]) => any,
-    opts?: jake$jake$TaskOptions
-  ): jake$jake$Task;
+    opts?: jake$TaskOptions
+  ): jake$Task;
 
   declare function task(
     name: string,
     action?: (...params: any[]) => any,
-    opts?: jake$jake$TaskOptions
-  ): jake$jake$Task;
+    opts?: jake$TaskOptions
+  ): jake$Task;
 
   declare function task(
     name: string,
-    opts?: jake$jake$TaskOptions,
+    opts?: jake$TaskOptions,
     action?: (...params: any[]) => any
-  ): jake$jake$Task;
+  ): jake$Task;
 
   /**
    * @param name The name of the NpmPublishTask
@@ -101,12 +101,12 @@ declare module "jake" {
   declare function npmPublishTask(
     name: string,
     packageFiles: string[]
-  ): jake$jake$NpmPublishTask;
+  ): jake$NpmPublishTask;
 
   declare function npmPublishTask(
     name: string,
     definition?: () => void
-  ): jake$jake$NpmPublishTask;
+  ): jake$NpmPublishTask;
 
   declare var npm$namespace$jake: {
     mkdirP: typeof jake$mkdirP,
@@ -124,7 +124,15 @@ declare module "jake" {
     listeners: typeof jake$listeners,
     emit: typeof jake$emit,
     logger: typeof jake$logger,
-    program: typeof jake$program
+    program: typeof jake$program,
+
+    Task: typeof jake$Task,
+    DirectoryTask: typeof jake$DirectoryTask,
+    FileTask: typeof jake$FileTask,
+    FileList: typeof jake$FileList,
+    PackageTask: typeof jake$PackageTask,
+    TestTask: typeof jake$TestTask,
+    NpmPublishTask: typeof jake$NpmPublishTask
   };
   declare interface jake$UtilOptions {
     silent?: boolean;
@@ -324,7 +332,7 @@ declare module "jake" {
     fullName: string;
   }
 
-  declare export class jake$DirectoryTask mixins jake$FileTask {
+  declare export class jake$DirectoryTask mixins FileTask {
     /**
      * @param name The name of the directory to create.
      */
@@ -339,7 +347,7 @@ declare module "jake" {
     async?: boolean;
   }
 
-  declare export class jake$FileTask mixins jake$Task {
+  declare export class jake$FileTask mixins Task {
     /**
      * @param name The name of the Task
      * @param prereqs Prerequisites to be run before this task
@@ -495,26 +503,26 @@ declare module "jake" {
   declare export function jake$addListener(
     event: string,
     listener: Function
-  ): NodeJS.EventEmitter;
+  ): NodeJS$EventEmitter;
 
   declare export function jake$on(
     event: string,
     listener: Function
-  ): NodeJS.EventEmitter;
+  ): NodeJS$EventEmitter;
 
   declare export function jake$once(
     event: string,
     listener: Function
-  ): NodeJS.EventEmitter;
+  ): NodeJS$EventEmitter;
 
   declare export function jake$removeListener(
     event: string,
     listener: Function
-  ): NodeJS.EventEmitter;
+  ): NodeJS$EventEmitter;
 
   declare export function jake$removeAllListener(
     event: string
-  ): NodeJS.EventEmitter;
+  ): NodeJS$EventEmitter;
 
   declare export function jake$setMaxListeners(n: number): void;
 
