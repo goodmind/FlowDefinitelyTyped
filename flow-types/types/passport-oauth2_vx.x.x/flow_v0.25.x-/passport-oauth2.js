@@ -1,13 +1,13 @@
 declare module "passport-oauth2" {
   import type { Request } from "express";
 
-  import type { OAuth2Strategy$Strategy } from "passport";
+  import type { Strategy } from "passport";
 
   import type { OAuth2 } from "oauth";
 
   import type { OutgoingHttpHeaders } from "http";
 
-  declare class OAuth2Strategy mixins OAuth2Strategy$Strategy {
+  declare class OAuth2Strategy mixins Strategy {
     name: string;
 
     /**
@@ -17,12 +17,12 @@ declare module "passport-oauth2" {
      */
     _oauth2: OAuth2;
     constructor(
-      options: OAuth2Strategy$OAuth2Strategy$StrategyOptions,
-      verify: OAuth2Strategy$OAuth2Strategy$VerifyFunction
+      options: OAuth2Strategy$StrategyOptions,
+      verify: OAuth2Strategy$VerifyFunction
     ): this;
     constructor(
-      options: OAuth2Strategy$OAuth2Strategy$StrategyOptionsWithRequest,
-      verify: OAuth2Strategy$OAuth2Strategy$VerifyFunctionWithRequest
+      options: OAuth2Strategy$StrategyOptionsWithRequest,
+      verify: OAuth2Strategy$VerifyFunctionWithRequest
     ): this;
     authenticate(req: Request, options?: any): void;
     userProfile(
@@ -35,7 +35,11 @@ declare module "passport-oauth2" {
   }
 
   declare var npm$namespace$OAuth2Strategy: {
-    Strategy: typeof OAuth2Strategy$Strategy
+    Strategy: typeof OAuth2Strategy$Strategy,
+
+    TokenError: typeof OAuth2Strategy$TokenError,
+    AuthorizationError: typeof OAuth2Strategy$AuthorizationError,
+    InternalOAuthError: typeof OAuth2Strategy$InternalOAuthError
   };
   declare interface OAuth2Strategy$Metadata {
     authorizationURL: string;
@@ -128,11 +132,11 @@ declare module "passport-oauth2" {
 
   declare type OAuth2Strategy$StrategyOptions = {
     passReqToCallback?: false
-  } & OAuth2Strategy$_StrategyOptionsBase;
+  } & _StrategyOptionsBase;
 
   declare type OAuth2Strategy$StrategyOptionsWithRequest = {
     passReqToCallback: true
-  } & OAuth2Strategy$_StrategyOptionsBase;
+  } & _StrategyOptionsBase;
 
   declare type OAuth2Strategy$Strategy = OAuth2Strategy;
 
@@ -166,5 +170,5 @@ declare module "passport-oauth2" {
     constructor(message: string, err: any): this;
     oauthError: any;
   }
-  declare module.exports: typeof OAuth2Strategy;
+  declare export default typeof OAuth2Strategy;
 }
