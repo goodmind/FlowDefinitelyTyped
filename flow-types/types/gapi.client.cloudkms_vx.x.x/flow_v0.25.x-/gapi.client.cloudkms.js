@@ -1,26 +1,30 @@
 declare module "gapi.client.cloudkms" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Key Management Service (KMS) API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudkms",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudkms",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: cloudkms$cloudkms$ProjectsResource;
+  declare var gapi$client$projects: cloudkms$ProjectsResource;
 
-  declare interface cloudkms$AuditConfig {
+  declare interface gapi$client$cloudkms$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -36,7 +40,7 @@ declare module "gapi.client.cloudkms" {
     service?: string;
   }
 
-  declare interface cloudkms$AuditLogConfig {
+  declare interface gapi$client$cloudkms$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -50,7 +54,7 @@ declare module "gapi.client.cloudkms" {
     logType?: string;
   }
 
-  declare interface cloudkms$Binding {
+  declare interface gapi$client$cloudkms$Binding {
     /**
      * The condition that is associated with this binding.
      * NOTE: an unsatisfied condition will not allow user access via current
@@ -94,7 +98,7 @@ declare module "gapi.client.cloudkms" {
     role?: string;
   }
 
-  declare interface cloudkms$CryptoKey {
+  declare interface gapi$client$cloudkms$CryptoKey {
     /**
      * Output only. The time at which this CryptoKey was created.
      */
@@ -149,7 +153,7 @@ declare module "gapi.client.cloudkms" {
     rotationPeriod?: string;
   }
 
-  declare interface cloudkms$CryptoKeyVersion {
+  declare interface gapi$client$cloudkms$CryptoKeyVersion {
     /**
      * Output only. The time at which this CryptoKeyVersion was created.
      */
@@ -181,7 +185,7 @@ declare module "gapi.client.cloudkms" {
     state?: string;
   }
 
-  declare interface cloudkms$DecryptRequest {
+  declare interface gapi$client$cloudkms$DecryptRequest {
     /**
      * Optional data that must match the data originally supplied in
      * EncryptRequest.additional_authenticated_data.
@@ -195,14 +199,14 @@ declare module "gapi.client.cloudkms" {
     ciphertext?: string;
   }
 
-  declare interface cloudkms$DecryptResponse {
+  declare interface gapi$client$cloudkms$DecryptResponse {
     /**
      * The decrypted data originally supplied in EncryptRequest.plaintext.
      */
     plaintext?: string;
   }
 
-  declare interface cloudkms$EncryptRequest {
+  declare interface gapi$client$cloudkms$EncryptRequest {
     /**
      * Optional data that, if specified, must also be provided during decryption
      * through DecryptRequest.additional_authenticated_data.  Must be no
@@ -216,7 +220,7 @@ declare module "gapi.client.cloudkms" {
     plaintext?: string;
   }
 
-  declare interface cloudkms$EncryptResponse {
+  declare interface gapi$client$cloudkms$EncryptResponse {
     /**
      * The encrypted data.
      */
@@ -228,7 +232,7 @@ declare module "gapi.client.cloudkms" {
     name?: string;
   }
 
-  declare interface cloudkms$Expr {
+  declare interface gapi$client$cloudkms$Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -258,7 +262,7 @@ declare module "gapi.client.cloudkms" {
     title?: string;
   }
 
-  declare interface cloudkms$KeyRing {
+  declare interface gapi$client$cloudkms$KeyRing {
     /**
      * Output only. The time at which this KeyRing was created.
      */
@@ -271,11 +275,11 @@ declare module "gapi.client.cloudkms" {
     name?: string;
   }
 
-  declare interface cloudkms$ListCryptoKeyVersionsResponse {
+  declare interface gapi$client$cloudkms$ListCryptoKeyVersionsResponse {
     /**
      * The list of CryptoKeyVersions.
      */
-    cryptoKeyVersions?: cloudkms$CryptoKeyVersion[];
+    cryptoKeyVersions?: gapi$client$cloudkms$CryptoKeyVersion[];
 
     /**
      * A token to retrieve next page of results. Pass this value in
@@ -291,11 +295,11 @@ declare module "gapi.client.cloudkms" {
     totalSize?: number;
   }
 
-  declare interface cloudkms$ListCryptoKeysResponse {
+  declare interface gapi$client$cloudkms$ListCryptoKeysResponse {
     /**
      * The list of CryptoKeys.
      */
-    cryptoKeys?: cloudkms$CryptoKey[];
+    cryptoKeys?: gapi$client$cloudkms$CryptoKey[];
 
     /**
      * A token to retrieve next page of results. Pass this value in
@@ -309,11 +313,11 @@ declare module "gapi.client.cloudkms" {
     totalSize?: number;
   }
 
-  declare interface cloudkms$ListKeyRingsResponse {
+  declare interface gapi$client$cloudkms$ListKeyRingsResponse {
     /**
      * The list of KeyRings.
      */
-    keyRings?: cloudkms$KeyRing[];
+    keyRings?: gapi$client$cloudkms$KeyRing[];
 
     /**
      * A token to retrieve next page of results. Pass this value in
@@ -327,7 +331,7 @@ declare module "gapi.client.cloudkms" {
     totalSize?: number;
   }
 
-  declare interface cloudkms$ListLocationsResponse {
+  declare interface gapi$client$cloudkms$ListLocationsResponse {
     /**
      * A list of locations that matches the specified filter in the request.
      */
@@ -339,7 +343,7 @@ declare module "gapi.client.cloudkms" {
     nextPageToken?: string;
   }
 
-  declare interface cloudkms$Location {
+  declare interface gapi$client$cloudkms$Location {
     /**
      * Cross-service attributes for the location. For example
      *
@@ -365,17 +369,17 @@ declare module "gapi.client.cloudkms" {
     name?: string;
   }
 
-  declare interface cloudkms$Policy {
+  declare interface gapi$client$cloudkms$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: cloudkms$AuditConfig[];
+    auditConfigs?: gapi$client$cloudkms$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: cloudkms$Binding[];
+    bindings?: gapi$client$cloudkms$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -398,14 +402,14 @@ declare module "gapi.client.cloudkms" {
     version?: number;
   }
 
-  declare interface cloudkms$SetIamPolicyRequest {
+  declare interface gapi$client$cloudkms$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: cloudkms$Policy;
+    policy?: gapi$client$cloudkms$Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -417,7 +421,7 @@ declare module "gapi.client.cloudkms" {
     updateMask?: string;
   }
 
-  declare interface cloudkms$TestIamPermissionsRequest {
+  declare interface gapi$client$cloudkms$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -427,7 +431,7 @@ declare module "gapi.client.cloudkms" {
     permissions?: string[];
   }
 
-  declare interface cloudkms$TestIamPermissionsResponse {
+  declare interface gapi$client$cloudkms$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -435,14 +439,14 @@ declare module "gapi.client.cloudkms" {
     permissions?: string[];
   }
 
-  declare interface cloudkms$UpdateCryptoKeyPrimaryVersionRequest {
+  declare interface gapi$client$cloudkms$UpdateCryptoKeyPrimaryVersionRequest {
     /**
      * The id of the child CryptoKeyVersion to use as primary.
      */
     cryptoKeyVersionId?: string;
   }
 
-  declare interface cloudkms$CryptoKeyVersionsResource {
+  declare interface gapi$client$cloudkms$CryptoKeyVersionsResource {
     /**
      * Create a new CryptoKeyVersion in a CryptoKey.
      *
@@ -521,7 +525,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKeyVersion>;
+    }): Request<gapi$client$cloudkms$CryptoKeyVersion>;
 
     /**
      * Schedule a CryptoKeyVersion for destruction.
@@ -607,7 +611,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKeyVersion>;
+    }): Request<gapi$client$cloudkms$CryptoKeyVersion>;
 
     /**
      * Returns metadata for a given CryptoKeyVersion.
@@ -682,7 +686,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKeyVersion>;
+    }): Request<gapi$client$cloudkms$CryptoKeyVersion>;
 
     /**
      * Lists CryptoKeyVersions.
@@ -773,7 +777,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$ListCryptoKeyVersionsResponse>;
+    }): Request<gapi$client$cloudkms$ListCryptoKeyVersionsResponse>;
 
     /**
      * Update a CryptoKeyVersion's metadata.
@@ -860,7 +864,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKeyVersion>;
+    }): Request<gapi$client$cloudkms$CryptoKeyVersion>;
 
     /**
      * Restore a CryptoKeyVersion in the
@@ -941,10 +945,10 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKeyVersion>;
+    }): Request<gapi$client$cloudkms$CryptoKeyVersion>;
   }
 
-  declare interface cloudkms$CryptoKeysResource {
+  declare interface gapi$client$cloudkms$CryptoKeysResource {
     /**
      * Create a new CryptoKey within a KeyRing.
      *
@@ -1027,7 +1031,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKey>;
+    }): Request<gapi$client$cloudkms$CryptoKey>;
 
     /**
      * Decrypts data that was protected by Encrypt.
@@ -1103,7 +1107,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$DecryptResponse>;
+    }): Request<gapi$client$cloudkms$DecryptResponse>;
 
     /**
      * Encrypts data, so that it can only be recovered by a call to Decrypt.
@@ -1182,7 +1186,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$EncryptResponse>;
+    }): Request<gapi$client$cloudkms$EncryptResponse>;
 
     /**
      * Returns metadata for a given CryptoKey, as well as its
@@ -1258,7 +1262,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKey>;
+    }): Request<gapi$client$cloudkms$CryptoKey>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1336,7 +1340,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$Policy>;
+    }): Request<gapi$client$cloudkms$Policy>;
 
     /**
      * Lists CryptoKeys.
@@ -1426,7 +1430,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$ListCryptoKeysResponse>;
+    }): Request<gapi$client$cloudkms$ListCryptoKeysResponse>;
 
     /**
      * Update a CryptoKey.
@@ -1507,7 +1511,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKey>;
+    }): Request<gapi$client$cloudkms$CryptoKey>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -1584,7 +1588,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$Policy>;
+    }): Request<gapi$client$cloudkms$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1666,7 +1670,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$TestIamPermissionsResponse>;
+    }): Request<gapi$client$cloudkms$TestIamPermissionsResponse>;
 
     /**
      * Update the version of a CryptoKey that will be used in Encrypt
@@ -1741,11 +1745,11 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$CryptoKey>;
-    cryptoKeyVersions: cloudkms$CryptoKeyVersionsResource;
+    }): Request<gapi$client$cloudkms$CryptoKey>;
+    cryptoKeyVersions: gapi$client$cloudkms$CryptoKeyVersionsResource;
   }
 
-  declare interface cloudkms$KeyRingsResource {
+  declare interface gapi$client$cloudkms$KeyRingsResource {
     /**
      * Create a new KeyRing in a given Project and Location.
      */
@@ -1826,7 +1830,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$KeyRing>;
+    }): Request<gapi$client$cloudkms$KeyRing>;
 
     /**
      * Returns metadata for a given KeyRing.
@@ -1901,7 +1905,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$KeyRing>;
+    }): Request<gapi$client$cloudkms$KeyRing>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1979,7 +1983,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$Policy>;
+    }): Request<gapi$client$cloudkms$Policy>;
 
     /**
      * Lists KeyRings.
@@ -2069,7 +2073,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$ListKeyRingsResponse>;
+    }): Request<gapi$client$cloudkms$ListKeyRingsResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -2146,7 +2150,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$Policy>;
+    }): Request<gapi$client$cloudkms$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -2228,11 +2232,11 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$TestIamPermissionsResponse>;
-    cryptoKeys: cloudkms$CryptoKeysResource;
+    }): Request<gapi$client$cloudkms$TestIamPermissionsResponse>;
+    cryptoKeys: gapi$client$cloudkms$CryptoKeysResource;
   }
 
-  declare interface cloudkms$LocationsResource {
+  declare interface gapi$client$cloudkms$LocationsResource {
     /**
      * Get information about a location.
      */
@@ -2306,7 +2310,7 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$Location>;
+    }): Request<gapi$client$cloudkms$Location>;
 
     /**
      * Lists information about the supported locations for this service.
@@ -2396,11 +2400,11 @@ declare module "gapi.client.cloudkms" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudkms$ListLocationsResponse>;
-    keyRings: cloudkms$KeyRingsResource;
+    }): Request<gapi$client$cloudkms$ListLocationsResponse>;
+    keyRings: gapi$client$cloudkms$KeyRingsResource;
   }
 
-  declare interface cloudkms$ProjectsResource {
-    locations: cloudkms$LocationsResource;
+  declare interface gapi$client$cloudkms$ProjectsResource {
+    locations: gapi$client$cloudkms$LocationsResource;
   }
 }
