@@ -1,53 +1,57 @@
 declare module "gapi.client.adsense" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts,
-    adclients: typeof client$adclients,
-    adunits: typeof client$adunits,
-    alerts: typeof client$alerts,
-    customchannels: typeof client$customchannels,
-    metadata: typeof client$metadata,
-    payments: typeof client$payments,
-    reports: typeof client$reports,
-    savedadstyles: typeof client$savedadstyles,
-    urlchannels: typeof client$urlchannels
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts,
+    adclients: typeof gapi$client$adclients,
+    adunits: typeof gapi$client$adunits,
+    alerts: typeof gapi$client$alerts,
+    customchannels: typeof gapi$client$customchannels,
+    metadata: typeof gapi$client$metadata,
+    payments: typeof gapi$client$payments,
+    reports: typeof gapi$client$reports,
+    savedadstyles: typeof gapi$client$savedadstyles,
+    urlchannels: typeof gapi$client$urlchannels
   };
 
   /**
    * Load AdSense Management API v1.4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adsense",
     version: "v1.4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adsense",
     version: "v1.4",
     callback: () => any
   ): void;
 
-  declare var client$accounts: adsense$adsense$AccountsResource;
+  declare var gapi$client$accounts: adsense$AccountsResource;
 
-  declare var client$adclients: adsense$adsense$AdclientsResource;
+  declare var gapi$client$adclients: adsense$AdclientsResource;
 
-  declare var client$adunits: adsense$adsense$AdunitsResource;
+  declare var gapi$client$adunits: adsense$AdunitsResource;
 
-  declare var client$alerts: adsense$adsense$AlertsResource;
+  declare var gapi$client$alerts: adsense$AlertsResource;
 
-  declare var client$customchannels: adsense$adsense$CustomchannelsResource;
+  declare var gapi$client$customchannels: adsense$CustomchannelsResource;
 
-  declare var client$metadata: adsense$adsense$MetadataResource;
+  declare var gapi$client$metadata: adsense$MetadataResource;
 
-  declare var client$payments: adsense$adsense$PaymentsResource;
+  declare var gapi$client$payments: adsense$PaymentsResource;
 
-  declare var client$reports: adsense$adsense$ReportsResource;
+  declare var gapi$client$reports: adsense$ReportsResource;
 
-  declare var client$savedadstyles: adsense$adsense$SavedadstylesResource;
+  declare var gapi$client$savedadstyles: adsense$SavedadstylesResource;
 
-  declare var client$urlchannels: adsense$adsense$UrlchannelsResource;
+  declare var gapi$client$urlchannels: adsense$UrlchannelsResource;
 
-  declare interface adsense$Account {
+  declare interface gapi$client$adsense$Account {
     creation_time?: string;
 
     /**
@@ -73,7 +77,7 @@ declare module "gapi.client.adsense" {
     /**
      * Sub accounts of the this account.
      */
-    subAccounts?: adsense$Account[];
+    subAccounts?: gapi$client$adsense$Account[];
 
     /**
      * AdSense timezone of this account.
@@ -81,7 +85,7 @@ declare module "gapi.client.adsense" {
     timezone?: string;
   }
 
-  declare interface adsense$Accounts {
+  declare interface gapi$client$adsense$Accounts {
     /**
      * ETag of this response for caching purposes.
      */
@@ -90,7 +94,7 @@ declare module "gapi.client.adsense" {
     /**
      * The accounts returned in this list response.
      */
-    items?: adsense$Account[];
+    items?: gapi$client$adsense$Account[];
 
     /**
      * Kind of list this is, in this case adsense#accounts.
@@ -103,7 +107,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$AdClient {
+  declare interface gapi$client$adsense$AdClient {
     /**
      * Whether this ad client is opted in to ARC.
      */
@@ -130,7 +134,7 @@ declare module "gapi.client.adsense" {
     supportsReporting?: boolean;
   }
 
-  declare interface adsense$AdClients {
+  declare interface gapi$client$adsense$AdClients {
     /**
      * ETag of this response for caching purposes.
      */
@@ -139,7 +143,7 @@ declare module "gapi.client.adsense" {
     /**
      * The ad clients returned in this list response.
      */
-    items?: adsense$AdClient[];
+    items?: gapi$client$adsense$AdClient[];
 
     /**
      * Kind of list this is, in this case adsense#adClients.
@@ -152,7 +156,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$AdCode {
+  declare interface gapi$client$adsense$AdCode {
     /**
      * The ad code snippet.
      */
@@ -164,7 +168,7 @@ declare module "gapi.client.adsense" {
     kind?: string;
   }
 
-  declare interface adsense$AdStyle {
+  declare interface gapi$client$adsense$AdStyle {
     /**
      * The colors which are included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading
      * hash.
@@ -222,7 +226,7 @@ declare module "gapi.client.adsense" {
     kind?: string;
   }
 
-  declare interface adsense$AdUnit {
+  declare interface gapi$client$adsense$AdUnit {
     /**
      * Identity code of this ad unit, not necessarily unique across ad clients.
      */
@@ -266,7 +270,7 @@ declare module "gapi.client.adsense" {
     /**
      * Custom style information specific to this ad unit.
      */
-    customStyle?: adsense$AdStyle;
+    customStyle?: gapi$client$adsense$AdStyle;
 
     /**
      * Settings specific to feed ads (AFF) - deprecated.
@@ -349,7 +353,7 @@ declare module "gapi.client.adsense" {
     status?: string;
   }
 
-  declare interface adsense$AdUnits {
+  declare interface gapi$client$adsense$AdUnits {
     /**
      * ETag of this response for caching purposes.
      */
@@ -358,7 +362,7 @@ declare module "gapi.client.adsense" {
     /**
      * The ad units returned in this list response.
      */
-    items?: adsense$AdUnit[];
+    items?: gapi$client$adsense$AdUnit[];
 
     /**
      * Kind of list this is, in this case adsense#adUnits.
@@ -371,7 +375,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$AdsenseReportsGenerateResponse {
+  declare interface gapi$client$adsense$AdsenseReportsGenerateResponse {
     /**
      * The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty.
      */
@@ -436,7 +440,7 @@ declare module "gapi.client.adsense" {
     warnings?: string[];
   }
 
-  declare interface adsense$Alert {
+  declare interface gapi$client$adsense$Alert {
     /**
      * Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
      */
@@ -469,11 +473,11 @@ declare module "gapi.client.adsense" {
     type?: string;
   }
 
-  declare interface adsense$Alerts {
+  declare interface gapi$client$adsense$Alerts {
     /**
      * The alerts returned in this list response.
      */
-    items?: adsense$Alert[];
+    items?: gapi$client$adsense$Alert[];
 
     /**
      * Kind of list this is, in this case adsense#alerts.
@@ -481,7 +485,7 @@ declare module "gapi.client.adsense" {
     kind?: string;
   }
 
-  declare interface adsense$CustomChannel {
+  declare interface gapi$client$adsense$CustomChannel {
     /**
      * Code of this custom channel, not necessarily unique across ad clients.
      */
@@ -530,7 +534,7 @@ declare module "gapi.client.adsense" {
     };
   }
 
-  declare interface adsense$CustomChannels {
+  declare interface gapi$client$adsense$CustomChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -539,7 +543,7 @@ declare module "gapi.client.adsense" {
     /**
      * The custom channels returned in this list response.
      */
-    items?: adsense$CustomChannel[];
+    items?: gapi$client$adsense$CustomChannel[];
 
     /**
      * Kind of list this is, in this case adsense#customChannels.
@@ -552,7 +556,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$Metadata {
+  declare interface gapi$client$adsense$Metadata {
     items?: adsense$ReportingMetadataEntry[];
 
     /**
@@ -561,7 +565,7 @@ declare module "gapi.client.adsense" {
     kind?: string;
   }
 
-  declare interface adsense$Payment {
+  declare interface gapi$client$adsense$Payment {
     /**
      * Unique identifier of this Payment.
      */
@@ -588,11 +592,11 @@ declare module "gapi.client.adsense" {
     paymentDate?: string;
   }
 
-  declare interface adsense$Payments {
+  declare interface gapi$client$adsense$Payments {
     /**
      * The list of Payments for the account. One or both of a) the account's most recent payment; and b) the account's upcoming payment.
      */
-    items?: adsense$Payment[];
+    items?: gapi$client$adsense$Payment[];
 
     /**
      * Kind of list this is, in this case adsense#payments.
@@ -600,7 +604,7 @@ declare module "gapi.client.adsense" {
     kind?: string;
   }
 
-  declare interface adsense$ReportingMetadataEntry {
+  declare interface gapi$client$adsense$ReportingMetadataEntry {
     /**
      * For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it is a list of compatibility groups the dimension
      * belongs to.
@@ -640,11 +644,11 @@ declare module "gapi.client.adsense" {
     supportedProducts?: string[];
   }
 
-  declare interface adsense$SavedAdStyle {
+  declare interface gapi$client$adsense$SavedAdStyle {
     /**
      * The AdStyle itself.
      */
-    adStyle?: adsense$AdStyle;
+    adStyle?: gapi$client$adsense$AdStyle;
 
     /**
      * Unique identifier of this saved ad style. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
@@ -662,7 +666,7 @@ declare module "gapi.client.adsense" {
     name?: string;
   }
 
-  declare interface adsense$SavedAdStyles {
+  declare interface gapi$client$adsense$SavedAdStyles {
     /**
      * ETag of this response for caching purposes.
      */
@@ -671,7 +675,7 @@ declare module "gapi.client.adsense" {
     /**
      * The saved ad styles returned in this list response.
      */
-    items?: adsense$SavedAdStyle[];
+    items?: gapi$client$adsense$SavedAdStyle[];
 
     /**
      * Kind of list this is, in this case adsense#savedAdStyles.
@@ -684,7 +688,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$SavedReport {
+  declare interface gapi$client$adsense$SavedReport {
     /**
      * Unique identifier of this saved report.
      */
@@ -701,7 +705,7 @@ declare module "gapi.client.adsense" {
     name?: string;
   }
 
-  declare interface adsense$SavedReports {
+  declare interface gapi$client$adsense$SavedReports {
     /**
      * ETag of this response for caching purposes.
      */
@@ -710,7 +714,7 @@ declare module "gapi.client.adsense" {
     /**
      * The saved reports returned in this list response.
      */
-    items?: adsense$SavedReport[];
+    items?: gapi$client$adsense$SavedReport[];
 
     /**
      * Kind of list this is, in this case adsense#savedReports.
@@ -723,7 +727,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$UrlChannel {
+  declare interface gapi$client$adsense$UrlChannel {
     /**
      * Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
      */
@@ -740,7 +744,7 @@ declare module "gapi.client.adsense" {
     urlPattern?: string;
   }
 
-  declare interface adsense$UrlChannels {
+  declare interface gapi$client$adsense$UrlChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -749,7 +753,7 @@ declare module "gapi.client.adsense" {
     /**
      * The URL channels returned in this list response.
      */
-    items?: adsense$UrlChannel[];
+    items?: gapi$client$adsense$UrlChannel[];
 
     /**
      * Kind of list this is, in this case adsense#urlChannels.
@@ -762,7 +766,7 @@ declare module "gapi.client.adsense" {
     nextPageToken?: string;
   }
 
-  declare interface adsense$AdclientsResource {
+  declare interface gapi$client$adsense$AdclientsResource {
     /**
      * List all ad clients in the specified account.
      */
@@ -818,7 +822,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdClients>;
+    }): Request<gapi$client$adsense$AdClients>;
 
     /**
      * List all ad clients in this AdSense account.
@@ -870,10 +874,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdClients>;
+    }): Request<gapi$client$adsense$AdClients>;
   }
 
-  declare interface adsense$CustomchannelsResource {
+  declare interface gapi$client$adsense$CustomchannelsResource {
     /**
      * List all custom channels which the specified ad unit belongs to.
      */
@@ -939,7 +943,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannels>;
+    }): Request<gapi$client$adsense$CustomChannels>;
 
     /**
      * Get the specified custom channel from the specified ad client for the specified account.
@@ -995,7 +999,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannel>;
+    }): Request<gapi$client$adsense$CustomChannel>;
 
     /**
      * List all custom channels in the specified ad client for the specified account.
@@ -1057,8 +1061,8 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannels>;
-    client$adunits: adsense$AdunitsResource;
+    }): Request<gapi$client$adsense$CustomChannels>;
+    adunits: adsense$AdunitsResource;
 
     /**
      * List all custom channels which the specified ad unit belongs to.
@@ -1120,7 +1124,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannels>;
+    }): Request<gapi$client$adsense$CustomChannels>;
 
     /**
      * Get the specified custom channel from the specified ad client.
@@ -1171,7 +1175,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannel>;
+    }): Request<gapi$client$adsense$CustomChannel>;
 
     /**
      * List all custom channels in the specified ad client for this AdSense account.
@@ -1228,11 +1232,11 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$CustomChannels>;
-    client$adunits: adsense$AdunitsResource;
+    }): Request<gapi$client$adsense$CustomChannels>;
+    adunits: adsense$AdunitsResource;
   }
 
-  declare interface adsense$AdunitsResource {
+  declare interface gapi$client$adsense$AdunitsResource {
     /**
      * Gets the specified ad unit in the specified ad client for the specified account.
      */
@@ -1287,7 +1291,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnit>;
+    }): Request<gapi$client$adsense$AdUnit>;
 
     /**
      * Get ad code for the specified ad unit.
@@ -1343,7 +1347,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdCode>;
+    }): Request<gapi$client$adsense$AdCode>;
 
     /**
      * List all ad units in the specified ad client for the specified account.
@@ -1410,8 +1414,8 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnits>;
-    client$customchannels: adsense$CustomchannelsResource;
+    }): Request<gapi$client$adsense$AdUnits>;
+    customchannels: gapi$client$adsense$CustomchannelsResource;
 
     /**
      * List all ad units in the specified custom channel.
@@ -1483,7 +1487,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnits>;
+    }): Request<gapi$client$adsense$AdUnits>;
 
     /**
      * Gets the specified ad unit in the specified ad client.
@@ -1534,7 +1538,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnit>;
+    }): Request<gapi$client$adsense$AdUnit>;
 
     /**
      * Get ad code for the specified ad unit.
@@ -1585,7 +1589,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdCode>;
+    }): Request<gapi$client$adsense$AdCode>;
 
     /**
      * List all ad units in the specified ad client for this AdSense account.
@@ -1647,8 +1651,8 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnits>;
-    client$customchannels: adsense$CustomchannelsResource;
+    }): Request<gapi$client$adsense$AdUnits>;
+    customchannels: gapi$client$adsense$CustomchannelsResource;
 
     /**
      * List all ad units in the specified custom channel.
@@ -1715,10 +1719,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdUnits>;
+    }): Request<gapi$client$adsense$AdUnits>;
   }
 
-  declare interface adsense$AlertsResource {
+  declare interface gapi$client$adsense$AlertsResource {
     /**
      * Dismiss (delete) the specified alert from the specified publisher AdSense account.
      */
@@ -1820,7 +1824,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Alerts>;
+    }): Request<gapi$client$adsense$Alerts>;
 
     /**
      * Dismiss (delete) the specified alert from the publisher's AdSense account.
@@ -1913,10 +1917,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Alerts>;
+    }): Request<gapi$client$adsense$Alerts>;
   }
 
-  declare interface adsense$PaymentsResource {
+  declare interface gapi$client$adsense$PaymentsResource {
     /**
      * List the payments for the specified AdSense account.
      */
@@ -1961,7 +1965,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Payments>;
+    }): Request<gapi$client$adsense$Payments>;
 
     /**
      * List the payments for this AdSense account.
@@ -2002,10 +2006,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Payments>;
+    }): Request<gapi$client$adsense$Payments>;
   }
 
-  declare interface adsense$SavedResource {
+  declare interface gapi$client$adsense$SavedResource {
     /**
      * Generate an AdSense report based on the saved report ID sent in the query parameters.
      */
@@ -2070,7 +2074,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdsenseReportsGenerateResponse>;
+    }): Request<gapi$client$adsense$AdsenseReportsGenerateResponse>;
 
     /**
      * List all saved reports in the specified AdSense account.
@@ -2127,7 +2131,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedReports>;
+    }): Request<gapi$client$adsense$SavedReports>;
 
     /**
      * Generate an AdSense report based on the saved report ID sent in the query parameters.
@@ -2188,7 +2192,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdsenseReportsGenerateResponse>;
+    }): Request<gapi$client$adsense$AdsenseReportsGenerateResponse>;
 
     /**
      * List all saved reports in this AdSense account.
@@ -2240,10 +2244,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedReports>;
+    }): Request<gapi$client$adsense$SavedReports>;
   }
 
-  declare interface adsense$ReportsResource {
+  declare interface gapi$client$adsense$ReportsResource {
     /**
      * Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format
      * specify "alt=csv" as a query parameter.
@@ -2345,8 +2349,8 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdsenseReportsGenerateResponse>;
-    saved: adsense$SavedResource;
+    }): Request<gapi$client$adsense$AdsenseReportsGenerateResponse>;
+    saved: gapi$client$adsense$SavedResource;
 
     /**
      * Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -2449,11 +2453,11 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$AdsenseReportsGenerateResponse>;
-    saved: adsense$SavedResource;
+    }): Request<gapi$client$adsense$AdsenseReportsGenerateResponse>;
+    saved: gapi$client$adsense$SavedResource;
   }
 
-  declare interface adsense$SavedadstylesResource {
+  declare interface gapi$client$adsense$SavedadstylesResource {
     /**
      * List a specific saved ad style for the specified account.
      */
@@ -2503,7 +2507,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedAdStyle>;
+    }): Request<gapi$client$adsense$SavedAdStyle>;
 
     /**
      * List all saved ad styles in the specified account.
@@ -2560,7 +2564,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedAdStyles>;
+    }): Request<gapi$client$adsense$SavedAdStyles>;
 
     /**
      * Get a specific saved ad style from the user's account.
@@ -2606,7 +2610,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedAdStyle>;
+    }): Request<gapi$client$adsense$SavedAdStyle>;
 
     /**
      * List all saved ad styles in the user's account.
@@ -2658,10 +2662,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$SavedAdStyles>;
+    }): Request<gapi$client$adsense$SavedAdStyles>;
   }
 
-  declare interface adsense$UrlchannelsResource {
+  declare interface gapi$client$adsense$UrlchannelsResource {
     /**
      * List all URL channels in the specified ad client for the specified account.
      */
@@ -2722,7 +2726,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$UrlChannels>;
+    }): Request<gapi$client$adsense$UrlChannels>;
 
     /**
      * List all URL channels in the specified ad client for this AdSense account.
@@ -2779,10 +2783,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$UrlChannels>;
+    }): Request<gapi$client$adsense$UrlChannels>;
   }
 
-  declare interface adsense$AccountsResource {
+  declare interface gapi$client$adsense$AccountsResource {
     /**
      * Get information about the selected AdSense account.
      */
@@ -2832,7 +2836,7 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Account>;
+    }): Request<gapi$client$adsense$Account>;
 
     /**
      * List all accounts available to this AdSense account.
@@ -2884,18 +2888,18 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Accounts>;
-    client$adclients: adsense$AdclientsResource;
-    client$adunits: adsense$AdunitsResource;
-    client$alerts: adsense$AlertsResource;
-    client$customchannels: adsense$CustomchannelsResource;
-    client$payments: adsense$PaymentsResource;
-    client$reports: adsense$ReportsResource;
-    client$savedadstyles: adsense$SavedadstylesResource;
-    client$urlchannels: adsense$UrlchannelsResource;
+    }): Request<gapi$client$adsense$Accounts>;
+    adclients: gapi$client$adsense$AdclientsResource;
+    adunits: gapi$client$adsense$AdunitsResource;
+    alerts: gapi$client$adsense$AlertsResource;
+    customchannels: gapi$client$adsense$CustomchannelsResource;
+    payments: gapi$client$adsense$PaymentsResource;
+    reports: gapi$client$adsense$ReportsResource;
+    savedadstyles: gapi$client$adsense$SavedadstylesResource;
+    urlchannels: gapi$client$adsense$UrlchannelsResource;
   }
 
-  declare interface adsense$DimensionsResource {
+  declare interface gapi$client$adsense$DimensionsResource {
     /**
      * List the metadata for the dimensions available to this AdSense account.
      */
@@ -2935,10 +2939,10 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Metadata>;
+    }): Request<gapi$client$adsense$Metadata>;
   }
 
-  declare interface adsense$MetricsResource {
+  declare interface gapi$client$adsense$MetricsResource {
     /**
      * List the metadata for the metrics available to this AdSense account.
      */
@@ -2978,11 +2982,11 @@ declare module "gapi.client.adsense" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsense$Metadata>;
+    }): Request<gapi$client$adsense$Metadata>;
   }
 
-  declare interface adsense$MetadataResource {
-    dimensions: adsense$DimensionsResource;
-    metrics: adsense$MetricsResource;
+  declare interface gapi$client$adsense$MetadataResource {
+    dimensions: gapi$client$adsense$DimensionsResource;
+    metrics: gapi$client$adsense$MetricsResource;
   }
 }
