@@ -1,7 +1,7 @@
 declare module "react-s-alert" {
   import typeof * as React from "react";
 
-  declare class SAlert mixins React.Component<SAlert$SAlert$SAlertProps> {}
+  declare class SAlert mixins React.Component<SAlert$SAlertProps> {}
 
   declare var npm$namespace$SAlert: {
     info: typeof SAlert$info,
@@ -27,7 +27,7 @@ declare module "react-s-alert" {
 
   declare type SAlert$SAlertProps = {
     message?: string
-  } & SAlert$SAlertConfigProps;
+  } & SAlertConfigProps;
 
   declare interface SAlert$SAlertStackProps {
     limit?: number;
@@ -35,10 +35,10 @@ declare module "react-s-alert" {
   }
 
   declare interface SAlert$SAlertBeepProps {
-    SAlert$info?: string;
-    SAlert$error?: string;
-    SAlert$warning?: string;
-    SAlert$success?: string;
+    info?: string;
+    error?: string;
+    warning?: string;
+    success?: string;
   }
 
   declare function SAlert$info(
