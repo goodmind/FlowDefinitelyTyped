@@ -1,5 +1,5 @@
 declare module "read-chunk" {
-  declare module.exports: typeof ReadChunk;
+  declare export default typeof ReadChunk;
 
   /**
    * Asynchronous: Reads a chunk from a file. Returns a Promise<Buffer>.
