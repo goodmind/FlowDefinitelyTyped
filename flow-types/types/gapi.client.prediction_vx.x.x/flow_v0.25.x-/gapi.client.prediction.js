@@ -1,29 +1,33 @@
 declare module "gapi.client.prediction" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    hostedmodels: typeof client$hostedmodels,
-    trainedmodels: typeof client$trainedmodels
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    hostedmodels: typeof gapi$client$hostedmodels,
+    trainedmodels: typeof gapi$client$trainedmodels
   };
 
   /**
    * Load Prediction API v1.6
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "prediction",
     version: "v1.6"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "prediction",
     version: "v1.6",
     callback: () => any
   ): void;
 
-  declare var client$hostedmodels: prediction$prediction$HostedmodelsResource;
+  declare var gapi$client$hostedmodels: prediction$HostedmodelsResource;
 
-  declare var client$trainedmodels: prediction$prediction$TrainedmodelsResource;
+  declare var gapi$client$trainedmodels: prediction$TrainedmodelsResource;
 
-  declare interface prediction$Analyze {
+  declare interface gapi$client$prediction$Analyze {
     /**
      * Description of the data the model was trained on.
      */
@@ -177,7 +181,7 @@ declare module "gapi.client.prediction" {
     selfLink?: string;
   }
 
-  declare interface prediction$Input {
+  declare interface gapi$client$prediction$Input {
     /**
      * Input to the model for a prediction.
      */
@@ -189,7 +193,7 @@ declare module "gapi.client.prediction" {
     };
   }
 
-  declare interface prediction$Insert {
+  declare interface gapi$client$prediction$Insert {
     /**
      * The unique name for the predictive model.
      */
@@ -241,7 +245,7 @@ declare module "gapi.client.prediction" {
     utility?: Array<Record<string, number>>;
   }
 
-  declare interface prediction$Insert2 {
+  declare interface gapi$client$prediction$Insert2 {
     /**
      * Insert time of the model (as a RFC 3339 timestamp).
      */
@@ -330,11 +334,11 @@ declare module "gapi.client.prediction" {
     trainingStatus?: string;
   }
 
-  declare interface prediction$List {
+  declare interface gapi$client$prediction$List {
     /**
      * List of models.
      */
-    items?: prediction$Insert2[];
+    items?: gapi$client$prediction$Insert2[];
 
     /**
      * What kind of resource this is.
@@ -352,7 +356,7 @@ declare module "gapi.client.prediction" {
     selfLink?: string;
   }
 
-  declare interface prediction$Output {
+  declare interface gapi$client$prediction$Output {
     /**
      * The unique name for the predictive model.
      */
@@ -394,7 +398,7 @@ declare module "gapi.client.prediction" {
     selfLink?: string;
   }
 
-  declare interface prediction$Update {
+  declare interface gapi$client$prediction$Update {
     /**
      * The input features for this instance.
      */
@@ -406,7 +410,7 @@ declare module "gapi.client.prediction" {
     output?: string;
   }
 
-  declare interface prediction$HostedmodelsResource {
+  declare interface gapi$client$prediction$HostedmodelsResource {
     /**
      * Submit input and request an output against a hosted model.
      */
@@ -456,10 +460,10 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Output>;
+    }): Request<gapi$client$prediction$Output>;
   }
 
-  declare interface prediction$TrainedmodelsResource {
+  declare interface gapi$client$prediction$TrainedmodelsResource {
     /**
      * Get analysis of the model and the data the model was trained on.
      */
@@ -509,7 +513,7 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Analyze>;
+    }): Request<gapi$client$prediction$Analyze>;
 
     /**
      * Delete a trained model.
@@ -611,7 +615,7 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Insert2>;
+    }): Request<gapi$client$prediction$Insert2>;
 
     /**
      * Train a Prediction API model.
@@ -657,7 +661,7 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Insert2>;
+    }): Request<gapi$client$prediction$Insert2>;
 
     /**
      * List available models.
@@ -713,7 +717,7 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$List>;
+    }): Request<gapi$client$prediction$List>;
 
     /**
      * Submit model id and request a prediction.
@@ -764,7 +768,7 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Output>;
+    }): Request<gapi$client$prediction$Output>;
 
     /**
      * Add new data to a trained model.
@@ -815,6 +819,6 @@ declare module "gapi.client.prediction" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<prediction$Insert2>;
+    }): Request<gapi$client$prediction$Insert2>;
   }
 }
