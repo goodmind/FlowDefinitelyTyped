@@ -1,8 +1,8 @@
 declare module "git-repo-name" {
-  declare module.exports: typeof gitRepoName;
+  declare export default typeof gitRepoName;
 
   declare function gitRepoName(
-    options?: string | gitRepoName$gitRepoName$Options
+    options?: string | gitRepoName$Options
   ): Promise<string>;
 
   declare function gitRepoName(
@@ -10,7 +10,7 @@ declare module "git-repo-name" {
   ): void;
 
   declare function gitRepoName(
-    options: string | gitRepoName$gitRepoName$Options,
+    options: string | gitRepoName$Options,
     callback: (err: Error | null, repoName: string) => void
   ): void;
 
