@@ -1,26 +1,30 @@
 declare module "gapi.client.kgsearch" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    entities: typeof client$entities
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    entities: typeof gapi$client$entities
   };
 
   /**
    * Load Knowledge Graph Search API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "kgsearch",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "kgsearch",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$entities: kgsearch$kgsearch$EntitiesResource;
+  declare var gapi$client$entities: kgsearch$EntitiesResource;
 
-  declare interface kgsearch$SearchResponse {
+  declare interface gapi$client$kgsearch$SearchResponse {
     /**
      * The local context applicable for the response. See more details at
      * http://www.w3.org/TR/json-ld/#context-definitions.
@@ -38,7 +42,7 @@ declare module "gapi.client.kgsearch" {
     itemListElement?: any[];
   }
 
-  declare interface kgsearch$EntitiesResource {
+  declare interface gapi$client$kgsearch$EntitiesResource {
     /**
      * Searches Knowledge Graph for entities that match the constraints.
      * A list of matched entities will be returned in response, which will be in
@@ -149,6 +153,6 @@ declare module "gapi.client.kgsearch" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<kgsearch$SearchResponse>;
+    }): Request<gapi$client$kgsearch$SearchResponse>;
   }
 }
