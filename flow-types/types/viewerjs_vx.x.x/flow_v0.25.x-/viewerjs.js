@@ -224,7 +224,7 @@ declare module "viewerjs" {
    * @see {@link https://github.com/fengyuanchen/viewerjs}
    */
   declare class Viewer {
-    constructor(element: Element, options?: Viewer$Viewer$ViewerOption): this;
+    constructor(element: Element, options?: Viewer$ViewerOption): this;
 
     /**
      * Show the viewer.
@@ -361,5 +361,5 @@ declare module "viewerjs" {
      */
     destroy(): void;
   }
-  declare module.exports: typeof Viewer;
+  declare export default typeof Viewer;
 }
