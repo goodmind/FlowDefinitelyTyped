@@ -1,26 +1,30 @@
 declare module "gapi.client.script" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    scripts: typeof client$scripts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    scripts: typeof gapi$client$scripts
   };
 
   /**
    * Load Google Apps Script Execution API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "script",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "script",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$scripts: script$script$ScriptsResource;
+  declare var gapi$client$scripts: script$ScriptsResource;
 
-  declare interface script$ExecutionError {
+  declare interface gapi$client$script$ExecutionError {
     /**
      * The error message thrown by Apps Script, usually localized into the user's
      * language.
@@ -40,7 +44,7 @@ declare module "gapi.client.script" {
     scriptStackTraceElements?: script$ScriptStackTraceElement[];
   }
 
-  declare interface script$ExecutionRequest {
+  declare interface gapi$client$script$ExecutionRequest {
     /**
      * If `true` and the user is an owner of the script, the script runs at the
      * most recently saved version rather than the version deployed for use with
@@ -78,7 +82,7 @@ declare module "gapi.client.script" {
     sessionState?: string;
   }
 
-  declare interface script$ExecutionResponse {
+  declare interface gapi$client$script$ExecutionResponse {
     /**
      * The return value of the script function. The type matches the object type
      * returned in Apps Script. Functions called through the Execution API cannot
@@ -89,7 +93,7 @@ declare module "gapi.client.script" {
     result?: any;
   }
 
-  declare interface script$Operation {
+  declare interface gapi$client$script$Operation {
     /**
      * This field is only used with asynchronous executions and indicates whether or not the script execution has completed. A completed execution has a
      * populated response field containing the `ExecutionResponse` from function that was executed.
@@ -114,7 +118,7 @@ declare module "gapi.client.script" {
     response?: Record<string, any>;
   }
 
-  declare interface script$ScriptStackTraceElement {
+  declare interface gapi$client$script$ScriptStackTraceElement {
     /**
      * The name of the function that failed.
      */
@@ -126,7 +130,7 @@ declare module "gapi.client.script" {
     lineNumber?: number;
   }
 
-  declare interface script$Status {
+  declare interface gapi$client$script$Status {
     /**
      * The status code. For this API, this value will always be 3, corresponding to an <code>INVALID_ARGUMENT</code> error.
      */
@@ -144,7 +148,7 @@ declare module "gapi.client.script" {
     message?: string;
   }
 
-  declare interface script$ScriptsResource {
+  declare interface gapi$client$script$ScriptsResource {
     /**
      * Runs a function in an Apps Script project. The project must be deployed
      * for use with the Apps Script Execution API.
@@ -227,6 +231,6 @@ declare module "gapi.client.script" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<script$Operation>;
+    }): Request<gapi$client$script$Operation>;
   }
 }
