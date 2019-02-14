@@ -1,26 +1,33 @@
 declare module "gapi.client.tasks" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    tasklists: typeof client$tasklists,
-    tasks: typeof client$tasks
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    tasklists: typeof gapi$client$tasklists,
+    tasks: typeof gapi$client$tasks
   };
 
   /**
    * Load Tasks API v1
    */
-  declare function client$load(name: "tasks", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "tasks",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "tasks",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$tasklists: tasks$tasks$TasklistsResource;
+  declare var gapi$client$tasklists: tasks$TasklistsResource;
 
-  declare var client$tasks: client$tasks.tasks$TasksResource;
+  declare var gapi$client$tasks: tasks$TasksResource;
 
-  declare interface tasks$Task {
+  declare interface gapi$client$tasks$Task {
     /**
      * Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been completed.
      */
@@ -116,7 +123,7 @@ declare module "gapi.client.tasks" {
     updated?: string;
   }
 
-  declare interface tasks$TaskList {
+  declare interface gapi$client$tasks$TaskList {
     /**
      * ETag of the resource.
      */
@@ -148,7 +155,7 @@ declare module "gapi.client.tasks" {
     updated?: string;
   }
 
-  declare interface tasks$TaskLists {
+  declare interface gapi$client$tasks$TaskLists {
     /**
      * ETag of the resource.
      */
@@ -157,7 +164,7 @@ declare module "gapi.client.tasks" {
     /**
      * Collection of task lists.
      */
-    items?: tasks$TaskList[];
+    items?: gapi$client$tasks$TaskList[];
 
     /**
      * Type of the resource. This is always "tasks#taskLists".
@@ -170,7 +177,7 @@ declare module "gapi.client.tasks" {
     nextPageToken?: string;
   }
 
-  declare interface tasks$Tasks {
+  declare interface gapi$client$tasks$Tasks {
     /**
      * ETag of the resource.
      */
@@ -179,7 +186,7 @@ declare module "gapi.client.tasks" {
     /**
      * Collection of tasks.
      */
-    items?: tasks$Task[];
+    items?: gapi$client$tasks$Task[];
 
     /**
      * Type of the resource. This is always "tasks#tasks".
@@ -192,7 +199,7 @@ declare module "gapi.client.tasks" {
     nextPageToken?: string;
   }
 
-  declare interface tasks$TasklistsResource {
+  declare interface gapi$client$tasks$TasklistsResource {
     /**
      * Deletes the authenticated user's specified task list.
      */
@@ -283,7 +290,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$TaskList>;
+    }): Request<gapi$client$tasks$TaskList>;
 
     /**
      * Creates a new task list and adds it to the authenticated user's task lists.
@@ -324,7 +331,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$TaskList>;
+    }): Request<gapi$client$tasks$TaskList>;
 
     /**
      * Returns all the authenticated user's task lists.
@@ -375,7 +382,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$TaskLists>;
+    }): Request<gapi$client$tasks$TaskLists>;
 
     /**
      * Updates the authenticated user's specified task list. This method supports patch semantics.
@@ -421,7 +428,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$TaskList>;
+    }): Request<gapi$client$tasks$TaskList>;
 
     /**
      * Updates the authenticated user's specified task list.
@@ -467,10 +474,10 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$TaskList>;
+    }): Request<gapi$client$tasks$TaskList>;
   }
 
-  declare interface tasks$TasksResource {
+  declare interface gapi$client$tasks$TasksResource {
     /**
      * Clears all completed tasks from the specified task list. The affected tasks will be marked as 'hidden' and no longer be returned by default when
      * retrieving all tasks for a task list.
@@ -618,7 +625,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Task>;
+    }): Request<gapi$client$tasks$Task>;
 
     /**
      * Creates a new task on the specified task list.
@@ -674,7 +681,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Task>;
+    }): Request<gapi$client$tasks$Task>;
 
     /**
      * Returns all tasks in the specified task list.
@@ -771,7 +778,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Tasks>;
+    }): Request<gapi$client$tasks$Tasks>;
 
     /**
      * Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a
@@ -833,7 +840,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Task>;
+    }): Request<gapi$client$tasks$Task>;
 
     /**
      * Updates the specified task. This method supports patch semantics.
@@ -884,7 +891,7 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Task>;
+    }): Request<gapi$client$tasks$Task>;
 
     /**
      * Updates the specified task.
@@ -935,6 +942,6 @@ declare module "gapi.client.tasks" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tasks$Task>;
+    }): Request<gapi$client$tasks$Task>;
   }
 }
