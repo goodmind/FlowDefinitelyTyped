@@ -1,5 +1,5 @@
 declare module "when-dom-ready" {
-  declare module.exports: typeof whenDomReady;
+  declare export default typeof whenDomReady;
 
   declare function whenDomReady(document?: EventTarget): Promise<void>;
 
