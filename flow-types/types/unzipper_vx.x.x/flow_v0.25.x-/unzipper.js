@@ -18,7 +18,7 @@ declare module "unzipper" {
     autodrain(): Transform & {
       promise(): Promise<void>
     },
-    Open$buffer(): Promise<Buffer>,
+    buffer(): Promise<Buffer>,
     path: string,
     props: {
       path: string
@@ -104,7 +104,7 @@ declare module "unzipper" {
         path: string,
         comment: string,
         stream: (password?: string) => Entry,
-        Open$buffer: (password?: string) => Promise<Buffer>
+        buffer: (password?: string) => Promise<Buffer>
       }
     ];
   }
