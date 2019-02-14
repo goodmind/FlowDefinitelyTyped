@@ -7,13 +7,13 @@ declare module "stream-chain" {
     DuplexOptions
   } from "stream";
 
-  declare module.exports: typeof Chain;
+  declare export default typeof Chain;
 
   declare type TransformFunction = (chunk: any, encoding?: string) => any;
   declare type Stream = Readable | Writable | Duplex | Transform;
   declare type StreamItem = Stream | TransformFunction;
   declare class Chain mixins Duplex {
-    constructor(fns: StreamItem[], options?: Chain$Chain$ChainOptions): this;
+    constructor(fns: StreamItem[], options?: Chain$ChainOptions): this;
     input: Stream;
     output: Stream;
     streams: Stream[];
