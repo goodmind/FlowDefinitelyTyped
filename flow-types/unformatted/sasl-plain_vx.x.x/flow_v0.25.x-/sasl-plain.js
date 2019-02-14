@@ -1,8 +1,4 @@
-declare interface PlainMechanism$Credentials {
-authzid?: string,
-username: string,
-password: string
-} declare module 'sasl-plain' {
+declare module 'sasl-plain' {
         import type {
           Mechanism
         } from 'saslmechanisms';
@@ -17,7 +13,12 @@ clientFirst: true
 };
 name: "PLAIN";
 clientFirst: true;
-response(cred: PlainMechanism$PlainMechanism$Credentials): string;
+response(cred: PlainMechanism$Credentials): string;
 challenge(chal: string): this
 }
+	declare interface PlainMechanism$Credentials {
+authzid?: string,
+username: string,
+password: string
+} 
     }
