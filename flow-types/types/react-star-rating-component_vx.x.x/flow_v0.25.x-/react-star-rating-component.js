@@ -59,5 +59,5 @@ declare module "react-star-rating-component" {
   }
   declare class StarRatingComponent
     mixins React.Component<StarRatingComponentProps> {}
-  declare module.exports: typeof StarRatingComponent;
+  declare export default typeof StarRatingComponent;
 }
