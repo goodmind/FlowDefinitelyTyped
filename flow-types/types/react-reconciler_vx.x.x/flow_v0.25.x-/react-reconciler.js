@@ -15,7 +15,7 @@ declare module "react-reconciler" {
     TimeoutHandle,
     NoTimeout
   >(
-    config: ReactReconciler$ReactReconciler$HostConfig<
+    config: ReactReconciler$HostConfig<
       Type,
       Props,
       Container,
@@ -29,7 +29,7 @@ declare module "react-reconciler" {
       TimeoutHandle,
       NoTimeout
     >
-  ): ReactReconciler$ReactReconciler$Reconciler<
+  ): ReactReconciler$Reconciler<
     Instance,
     TextInstance,
     Container,
@@ -445,7 +445,7 @@ declare module "react-reconciler" {
   }
 
   declare interface ReactReconciler$Interaction {
-    __count: number;
+    ___count: number;
     id: number;
     name: string;
     timestamp: number;
@@ -506,5 +506,5 @@ declare module "react-reconciler" {
     | 16
     | 17
     | 18;
-  declare module.exports: typeof ReactReconciler;
+  declare export default typeof ReactReconciler;
 }
