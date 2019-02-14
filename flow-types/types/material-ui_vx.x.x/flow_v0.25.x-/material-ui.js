@@ -1,21 +1,67 @@
 declare module "material-ui" {
 }
+
+declare var npm$namespace$__MaterialUI: {
+  ThemeWrapper: typeof __MaterialUI$ThemeWrapper,
+  AppBar: typeof __MaterialUI$AppBar,
+  AppCanvas: typeof __MaterialUI$AppCanvas,
+  AutoComplete: typeof __MaterialUI$AutoComplete,
+  Avatar: typeof __MaterialUI$Avatar,
+  Badge: typeof __MaterialUI$Badge,
+  BeforeAfterWrapper: typeof __MaterialUI$BeforeAfterWrapper,
+  EnhancedButton: typeof __MaterialUI$EnhancedButton,
+  FlatButton: typeof __MaterialUI$FlatButton,
+  RaisedButton: typeof __MaterialUI$RaisedButton,
+  FloatingActionButton: typeof __MaterialUI$FloatingActionButton,
+  IconButton: typeof __MaterialUI$IconButton,
+  Chip: typeof __MaterialUI$Chip,
+  Dialog: typeof __MaterialUI$Dialog,
+  Divider: typeof __MaterialUI$Divider,
+  Drawer: typeof __MaterialUI$Drawer,
+  FontIcon: typeof __MaterialUI$FontIcon,
+  SvgIcon: typeof __MaterialUI$SvgIcon,
+  Overlay: typeof __MaterialUI$Overlay,
+  Paper: typeof __MaterialUI$Paper,
+  CircularProgress: typeof __MaterialUI$CircularProgress,
+  LinearProgress: typeof __MaterialUI$LinearProgress,
+  RefreshIndicator: typeof __MaterialUI$RefreshIndicator,
+  SelectField: typeof __MaterialUI$SelectField,
+  Slider: typeof __MaterialUI$Slider,
+  Snackbar: typeof __MaterialUI$Snackbar,
+  Subheader: typeof __MaterialUI$Subheader,
+  TextField: typeof __MaterialUI$TextField,
+  TimePicker: typeof __MaterialUI$TimePicker,
+  Styles: typeof npm$namespace$__MaterialUI$Styles,
+  BottomNavigation: typeof npm$namespace$__MaterialUI$BottomNavigation,
+  Card: typeof npm$namespace$__MaterialUI$Card,
+  DatePicker: typeof npm$namespace$__MaterialUI$DatePicker,
+  GridList: typeof npm$namespace$__MaterialUI$GridList,
+  List: typeof npm$namespace$__MaterialUI$List,
+  Menus: typeof npm$namespace$__MaterialUI$Menus,
+  Popover: typeof npm$namespace$__MaterialUI$Popover,
+  Switches: typeof npm$namespace$__MaterialUI$Switches,
+  Stepper: typeof npm$namespace$__MaterialUI$Stepper,
+  Table: typeof npm$namespace$__MaterialUI$Table,
+  Tabs: typeof npm$namespace$__MaterialUI$Tabs,
+  Toolbar: typeof npm$namespace$__MaterialUI$Toolbar,
+  Utils: typeof npm$namespace$__MaterialUI$Utils
+};
 declare interface __MaterialUI$ReactLink<T> {
   value: T;
   requestChange(newValue: T): void;
 }
 
 export interface __MaterialUI$ThemeWrapperProps {
-  theme: __MaterialUI$Styles.Styles$MuiTheme;
+  theme: Styles$MuiTheme;
 }
 
 declare export class __MaterialUI$ThemeWrapper
   mixins React.Component<__MaterialUI$ThemeWrapperProps> {}
 
-declare var npm$namespace$Styles: {
-  Colors: typeof Styles$Colors
+declare var npm$namespace$__MaterialUI$Styles: {
+  Colors: typeof __MaterialUI$Styles$Colors
 };
-declare interface Styles$Colors {
+declare interface __MaterialUI$Styles$Colors {
   red50: string;
   red100: string;
   red200: string;
@@ -283,7 +329,7 @@ declare interface Styles$Colors {
   lightWhite: string;
 }
 
-declare export var Styles$Colors: Styles$Colors;
+declare export var __MaterialUI$Styles$Colors: __MaterialUI$Styles$Colors;
 
 export interface __MaterialUI$AppBarProps {
   className?: string;
@@ -311,20 +357,27 @@ export interface __MaterialUI$AppCanvasProps {}
 declare export class __MaterialUI$AppCanvas
   mixins React.Component<__MaterialUI$AppCanvasProps> {}
 
-declare type propTypes$horizontal = "left" | "middle" | "right";
+declare type __MaterialUI$propTypes$horizontal = "left" | "middle" | "right";
 
-declare type propTypes$tooltipHorizontal = "left" | "center" | "right";
+declare type __MaterialUI$propTypes$tooltipHorizontal =
+  | "left"
+  | "center"
+  | "right";
 
-declare type propTypes$vertical = "top" | "center" | "bottom";
+declare type __MaterialUI$propTypes$vertical = "top" | "center" | "bottom";
 
-declare type propTypes$direction = "left" | "right" | "up" | "down";
+declare type __MaterialUI$propTypes$direction =
+  | "left"
+  | "right"
+  | "up"
+  | "down";
 
-declare interface propTypes$origin {
-  propTypes$horizontal: propTypes$horizontal;
-  propTypes$vertical: propTypes$vertical;
+declare interface __MaterialUI$propTypes$origin {
+  horizontal: __MaterialUI$propTypes$horizontal;
+  vertical: __MaterialUI$propTypes$vertical;
 }
 
-declare interface propTypes$utils {
+declare interface __MaterialUI$propTypes$utils {
   getWeekArray(date: Date, firstDayOfWeek: number): Array<Array<Date | null>>;
   getYear(date: Date): number;
   setYear(date: Date, year: number): Date;
@@ -335,13 +388,13 @@ declare interface propTypes$utils {
   monthDiff(date1: Date, date2: Date): number;
 }
 
-declare type propTypes$corners =
+declare type __MaterialUI$propTypes$corners =
   | "bottom-left"
   | "bottom-right"
   | "top-left"
   | "top-right";
 
-declare type propTypes$cornersAndCenter =
+declare type __MaterialUI$propTypes$cornersAndCenter =
   | "bottom-center"
   | "bottom-left"
   | "bottom-right"
@@ -350,9 +403,9 @@ declare type propTypes$cornersAndCenter =
   | "top-right";
 
 export type __MaterialUI$AutoCompleteProps<DataItem> = {
-  anchorOrigin?: propTypes$propTypes$origin,
+  anchorOrigin?: propTypes$origin,
   animated?: boolean,
-  animation?: React.ComponentClass<Popover$Popover.Popover$PopoverAnimationProps>,
+  animation?: React.ComponentClass<Popover$PopoverAnimationProps>,
   dataSource: DataItem[],
   dataSourceConfig?: {
     text: string,
@@ -377,12 +430,12 @@ export type __MaterialUI$AutoCompleteProps<DataItem> = {
   onUpdateInput?: (searchText: string, dataSource: DataItem[]) => void,
   open?: boolean,
   openOnFocus?: boolean,
-  popoverProps?: Popover$Popover.Popover$PopoverProps,
+  popoverProps?: Popover$PopoverProps,
   searchText?: string,
   style?: React.CSSProperties,
-  targetOrigin?: propTypes$propTypes$origin,
+  targetOrigin?: propTypes$origin,
   textFieldStyle?: React.CSSProperties
-} & __MaterialUI$TextFieldProps;
+} & TextFieldProps;
 
 declare export class __MaterialUI$AutoComplete
   mixins React.Component<__MaterialUI$AutoCompleteProps<any>> {
@@ -394,7 +447,7 @@ declare export class __MaterialUI$AutoComplete
     distanceLessThan: number
   ): (searchText: string, key: string) => boolean;
   static fuzzyFilter(searchText: string, key: string): boolean;
-  static Item: Menus$Menus$MenuItem;
+  static Item: Menus$MenuItem;
   static __MaterialUI$Divider: __MaterialUI$Divider;
 }
 
@@ -467,7 +520,7 @@ export type __MaterialUI$EnhancedButtonProps = {
   containerElement?: React.ReactNode | string,
   disabled?: boolean
 } & React.HTMLAttributes<{}> &
-  __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$EnhancedButton>;
+  SharedEnhancedButtonProps<__MaterialUI$EnhancedButton>;
 
 declare export class __MaterialUI$EnhancedButton
   mixins React.Component<__MaterialUI$EnhancedButtonProps> {}
@@ -495,7 +548,7 @@ export type __MaterialUI$FlatButtonProps = {
   secondary?: boolean,
   style?: React.CSSProperties
 } & React.DOMAttributes<{}> &
-  __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$FlatButton>;
+  SharedEnhancedButtonProps<__MaterialUI$FlatButton>;
 
 declare export class __MaterialUI$FlatButton
   mixins React.Component<__MaterialUI$FlatButtonProps> {}
@@ -525,7 +578,7 @@ export type __MaterialUI$RaisedButtonProps = {
   rippleStyle?: React.CSSProperties,
   secondary?: boolean,
   style?: React.CSSProperties
-} & __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$RaisedButton>;
+} & SharedEnhancedButtonProps<__MaterialUI$RaisedButton>;
 
 declare export class __MaterialUI$RaisedButton
   mixins React.Component<__MaterialUI$RaisedButtonProps> {}
@@ -548,7 +601,7 @@ export type __MaterialUI$FloatingActionButtonProps = {
   style?: React.CSSProperties,
   zDepth?: number
 } & React.HTMLAttributes<{}> &
-  __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$FloatingActionButton>;
+  SharedEnhancedButtonProps<__MaterialUI$FloatingActionButton>;
 
 declare export class __MaterialUI$FloatingActionButton
   mixins React.Component<__MaterialUI$FloatingActionButtonProps> {}
@@ -571,34 +624,47 @@ export type __MaterialUI$IconButtonProps = {
   onMouseOut?: React.MouseEventHandler<{}>,
   style?: React.CSSProperties,
   tooltip?: React.ReactNode | string,
-  tooltipPosition?: propTypes$propTypes$cornersAndCenter,
+  tooltipPosition?: propTypes$cornersAndCenter,
   tooltipStyles?: React.CSSProperties,
   touch?: boolean
 } & React.HTMLAttributes<{}> &
-  __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$IconButton>;
+  SharedEnhancedButtonProps<__MaterialUI$IconButton>;
 
 declare export class __MaterialUI$IconButton
   mixins React.Component<__MaterialUI$IconButtonProps> {}
 
-export interface BottomNavigation$BottomNavigationProps {
+declare var npm$namespace$__MaterialUI$BottomNavigation: {
+  BottomNavigation: typeof __MaterialUI$BottomNavigation$BottomNavigation,
+  BottomNavigationItem: typeof __MaterialUI$BottomNavigation$BottomNavigationItem
+};
+export interface __MaterialUI$BottomNavigation$BottomNavigationProps {
   className?: string;
   selectedIndex?: number;
   style?: React.CSSProperties;
 }
 
-declare export class BottomNavigation$BottomNavigation
-  mixins React.Component<BottomNavigation$BottomNavigationProps> {}
+declare export class __MaterialUI$BottomNavigation$BottomNavigation
+  mixins React.Component<__MaterialUI$BottomNavigation$BottomNavigationProps> {}
 
-export type BottomNavigation$BottomNavigationItemProps = {
+export type __MaterialUI$BottomNavigation$BottomNavigationItemProps = {
   className?: string,
   icon?: React.ReactNode,
   label?: React.ReactNode
-} & __MaterialUI$SharedEnhancedButtonProps<BottomNavigation$BottomNavigationItem>;
+} & SharedEnhancedButtonProps<BottomNavigation$BottomNavigationItem>;
 
-declare export class BottomNavigation$BottomNavigationItem
-  mixins React.Component<BottomNavigation$BottomNavigationItemProps> {}
+declare export class __MaterialUI$BottomNavigation$BottomNavigationItem
+  mixins React.Component<__MaterialUI$BottomNavigation$BottomNavigationItemProps> {}
 
-export interface Card$CardProps {
+declare var npm$namespace$__MaterialUI$Card: {
+  Card: typeof __MaterialUI$Card$Card,
+  CardActions: typeof __MaterialUI$Card$CardActions,
+  CardExpandable: typeof __MaterialUI$Card$CardExpandable,
+  CardHeader: typeof __MaterialUI$Card$CardHeader,
+  CardMedia: typeof __MaterialUI$Card$CardMedia,
+  CardText: typeof __MaterialUI$Card$CardText,
+  CardTitle: typeof __MaterialUI$Card$CardTitle
+};
+export interface __MaterialUI$Card$CardProps {
   className?: string;
   actAsExpander?: boolean;
   containerStyle?: React.CSSProperties;
@@ -610,9 +676,10 @@ export interface Card$CardProps {
   style?: React.CSSProperties;
 }
 
-declare export class Card$Card mixins React.Component<Card$CardProps> {}
+declare export class __MaterialUI$Card$Card
+  mixins React.Component<__MaterialUI$Card$CardProps> {}
 
-export interface Card$CardActionsProps {
+export interface __MaterialUI$Card$CardActionsProps {
   actAsExpander?: boolean;
   expandable?: boolean;
   showExpandableButton?: boolean;
@@ -620,19 +687,19 @@ export interface Card$CardActionsProps {
   className?: string;
 }
 
-declare export class Card$CardActions
-  mixins React.Component<Card$CardActionsProps> {}
+declare export class __MaterialUI$Card$CardActions
+  mixins React.Component<__MaterialUI$Card$CardActionsProps> {}
 
-export interface Card$CardExpandableProps {
+export interface __MaterialUI$Card$CardExpandableProps {
   expanded?: boolean;
   onExpanding?: (isExpanded: boolean) => void;
   style?: React.CSSProperties;
 }
 
-declare export class Card$CardExpandable
-  mixins React.Component<Card$CardExpandableProps> {}
+declare export class __MaterialUI$Card$CardExpandable
+  mixins React.Component<__MaterialUI$Card$CardExpandableProps> {}
 
-export interface Card$CardHeaderProps {
+export interface __MaterialUI$Card$CardHeaderProps {
   actAsExpander?: boolean;
   avatar?: React.ReactNode;
   expandable?: boolean;
@@ -651,10 +718,10 @@ export interface Card$CardHeaderProps {
   iconStyle?: React.CSSProperties;
 }
 
-declare export class Card$CardHeader
-  mixins React.Component<Card$CardHeaderProps> {}
+declare export class __MaterialUI$Card$CardHeader
+  mixins React.Component<__MaterialUI$Card$CardHeaderProps> {}
 
-export interface Card$CardMediaProps {
+export interface __MaterialUI$Card$CardMediaProps {
   actAsExpander?: boolean;
   expandable?: boolean;
   mediaStyle?: React.CSSProperties;
@@ -665,10 +732,10 @@ export interface Card$CardMediaProps {
   style?: React.CSSProperties;
 }
 
-declare export class Card$CardMedia
-  mixins React.Component<Card$CardMediaProps> {}
+declare export class __MaterialUI$Card$CardMedia
+  mixins React.Component<__MaterialUI$Card$CardMediaProps> {}
 
-export interface Card$CardTextProps {
+export interface __MaterialUI$Card$CardTextProps {
   actAsExpander?: boolean;
   color?: string;
   expandable?: boolean;
@@ -676,9 +743,10 @@ export interface Card$CardTextProps {
   className?: string;
 }
 
-declare export class Card$CardText mixins React.Component<Card$CardTextProps> {}
+declare export class __MaterialUI$Card$CardText
+  mixins React.Component<__MaterialUI$Card$CardTextProps> {}
 
-export interface Card$CardTitleProps {
+export interface __MaterialUI$Card$CardTitleProps {
   actAsExpander?: boolean;
   expandable?: boolean;
   showExpandableButton?: boolean;
@@ -691,8 +759,8 @@ export interface Card$CardTitleProps {
   titleStyle?: React.CSSProperties;
 }
 
-declare export class Card$CardTitle
-  mixins React.Component<Card$CardTitleProps> {}
+declare export class __MaterialUI$Card$CardTitle
+  mixins React.Component<__MaterialUI$Card$CardTitleProps> {}
 
 export interface __MaterialUI$ChipProps {
   backgroundColor?: string;
@@ -709,8 +777,12 @@ export interface __MaterialUI$ChipProps {
 declare export class __MaterialUI$Chip
   mixins React.Component<__MaterialUI$ChipProps> {}
 
-export interface DatePicker$DatePickerProps {
-  DateTimeFormat?: typeof undefined;
+declare var npm$namespace$__MaterialUI$DatePicker: {
+  DatePicker: typeof __MaterialUI$DatePicker$DatePicker,
+  DatePickerDialog: typeof __MaterialUI$DatePicker$DatePickerDialog
+};
+export interface __MaterialUI$DatePicker$DatePickerProps {
+  DateTimeFormat?: typeof Intl.DateTimeFormat;
   autoOk?: boolean;
   cancelLabel?: React.ReactNode;
   container?: "dialog" | "inline";
@@ -756,18 +828,18 @@ export interface DatePicker$DatePickerProps {
   underlineFocusStyle?: React.CSSProperties;
   underlineShow?: boolean;
   underlineStyle?: React.CSSProperties;
-  propTypes$utils?: propTypes$propTypes$utils;
+  utils?: propTypes$utils;
 }
 
-declare export class DatePicker$DatePicker
-  mixins React.Component<DatePicker$DatePickerProps> {
+declare export class __MaterialUI$DatePicker$DatePicker
+  mixins React.Component<__MaterialUI$DatePicker$DatePickerProps> {
   focus(): void;
   openDialog(): void;
 }
 
-export interface DatePicker$DatePickerDialogProps {
-  DateTimeFormat?: typeof undefined;
-  animation?: React.ComponentClass<Popover$Popover.Popover$PopoverAnimationProps>;
+export interface __MaterialUI$DatePicker$DatePickerDialogProps {
+  DateTimeFormat?: typeof Intl.DateTimeFormat;
+  animation?: React.ComponentClass<Popover$PopoverAnimationProps>;
   autoOk?: boolean;
   cancelLabel?: React.ReactNode;
   container?: "dialog" | "inline";
@@ -784,11 +856,11 @@ export interface DatePicker$DatePickerDialogProps {
   onShow?: () => void;
   shouldDisableDate?: (day: Date) => boolean;
   style?: React.CSSProperties;
-  propTypes$utils?: propTypes$propTypes$utils;
+  utils?: propTypes$utils;
 }
 
-declare export class DatePicker$DatePickerDialog
-  mixins React.Component<DatePicker$DatePickerDialogProps> {
+declare export class __MaterialUI$DatePicker$DatePickerDialog
+  mixins React.Component<__MaterialUI$DatePicker$DatePickerDialogProps> {
   show(): void;
   dismiss(): void;
 }
@@ -866,17 +938,21 @@ export interface __MaterialUI$DrawerProps {
 declare export class __MaterialUI$Drawer
   mixins React.Component<__MaterialUI$DrawerProps> {}
 
-export interface GridList$GridListProps {
+declare var npm$namespace$__MaterialUI$GridList: {
+  GridList: typeof __MaterialUI$GridList$GridList,
+  GridTile: typeof __MaterialUI$GridList$GridTile
+};
+export interface __MaterialUI$GridList$GridListProps {
   cellHeight?: number | "auto";
   cols?: number;
   padding?: number;
   style?: React.CSSProperties;
 }
 
-declare export class GridList$GridList
-  mixins React.Component<GridList$GridListProps> {}
+declare export class __MaterialUI$GridList$GridList
+  mixins React.Component<__MaterialUI$GridList$GridListProps> {}
 
-export interface GridList$GridTileProps {
+export interface __MaterialUI$GridList$GridTileProps {
   actionIcon?: React.ReactElement<any>;
   actionPosition?: "left" | "right";
   cols?: number;
@@ -895,8 +971,8 @@ export interface GridList$GridTileProps {
   onClick?: React.MouseEventHandler<{}>;
 }
 
-declare export class GridList$GridTile
-  mixins React.Component<GridList$GridTileProps> {}
+declare export class __MaterialUI$GridList$GridTile
+  mixins React.Component<__MaterialUI$GridList$GridTileProps> {}
 
 export type __MaterialUI$FontIconProps = {
   color?: string,
@@ -923,14 +999,18 @@ export type __MaterialUI$SvgIconProps = {
 declare export class __MaterialUI$SvgIcon
   mixins React.Component<__MaterialUI$SvgIconProps> {}
 
-declare var npm$namespace$List: {
-  makeSelectable: typeof List$makeSelectable
+declare var npm$namespace$__MaterialUI$List: {
+  makeSelectable: typeof __MaterialUI$List$makeSelectable,
+
+  List: typeof __MaterialUI$List$List,
+  ListItem: typeof __MaterialUI$List$ListItem
 };
-export type List$ListProps = {} & React.HTMLAttributes<{}>;
+export type __MaterialUI$List$ListProps = {} & React.HTMLAttributes<{}>;
 
-declare export class List$List mixins React.Component<List$ListProps> {}
+declare export class __MaterialUI$List$List
+  mixins React.Component<__MaterialUI$List$ListProps> {}
 
-export type List$ListItemProps = {
+export type __MaterialUI$List$ListItemProps = {
   autoGenerateNestedIndicator?: boolean,
   disableKeyboardFocus?: boolean,
   disabled?: boolean,
@@ -941,7 +1021,7 @@ export type List$ListItemProps = {
   leftAvatar?: React.ReactElement<any>,
   leftCheckbox?: React.ReactElement<any>,
   leftIcon?: React.ReactElement<any>,
-  nestedItems?: Array<React.ReactElement<List$ListItemProps>>,
+  nestedItems?: Array<React.ReactElement<__MaterialUI$List$ListItemProps>>,
   nestedLevel?: number,
   nestedListStyle?: React.CSSProperties,
   onKeyboardFocus?: (
@@ -964,21 +1044,28 @@ export type List$ListItemProps = {
   secondaryTextLines?: number,
   style?: React.CSSProperties,
   value?: any
-} & __MaterialUI$EnhancedButtonProps;
+} & EnhancedButtonProps;
 
-declare export class List$ListItem mixins React.Component<List$ListItemProps> {}
+declare export class __MaterialUI$List$ListItem
+  mixins React.Component<__MaterialUI$List$ListItemProps> {}
 
-export interface List$SelectableProps {
+export interface __MaterialUI$List$SelectableProps {
   onChange?: (e: React.SyntheticEvent<{}>, value: any) => void;
   selectedItemStyle?: React.CSSProperties;
   value?: any;
 }
 
-declare export function List$makeSelectable<P: {}>(
+declare export function __MaterialUI$List$makeSelectable<P: {}>(
   component: React.ComponentClass<P>
-): React.ComponentClass<P & List$SelectableProps>;
+): React.ComponentClass<P & __MaterialUI$List$SelectableProps>;
 
-export interface Menus$MenuProps {
+declare var npm$namespace$__MaterialUI$Menus: {
+  Menu: typeof __MaterialUI$Menus$Menu,
+  MenuItem: typeof __MaterialUI$Menus$MenuItem,
+  IconMenu: typeof __MaterialUI$Menus$IconMenu,
+  DropDownMenu: typeof __MaterialUI$Menus$DropDownMenu
+};
+export interface __MaterialUI$Menus$MenuProps {
   autoWidth?: boolean;
   desktop?: boolean;
   disableAutoFocus?: boolean;
@@ -997,10 +1084,11 @@ export interface Menus$MenuProps {
   width?: string | number;
 }
 
-declare export class Menus$Menu mixins React.Component<Menus$MenuProps> {}
+declare export class __MaterialUI$Menus$Menu
+  mixins React.Component<__MaterialUI$Menus$MenuProps> {}
 
-export type Menus$MenuItemProps = {
-  animation?: React.ComponentClass<Popover$Popover.Popover$PopoverAnimationProps>,
+export type __MaterialUI$Menus$MenuItemProps = {
+  animation?: React.ComponentClass<Popover$PopoverAnimationProps>,
   checked?: boolean,
   desktop?: boolean,
   disabled?: boolean,
@@ -1016,22 +1104,25 @@ export type Menus$MenuItemProps = {
   secondaryText?: React.ReactNode,
   style?: React.CSSProperties,
   containerElement?: React.ReactNode | string
-} & List$List$ListItemProps;
+} & List$ListItemProps;
 
-declare export class Menus$MenuItem
-  mixins React.Component<Menus$MenuItemProps> {}
+declare export class __MaterialUI$Menus$MenuItem
+  mixins React.Component<__MaterialUI$Menus$MenuItemProps> {}
 
-export interface Menus$IconMenuProps {
-  anchorOrigin?: propTypes$propTypes$origin;
+export interface __MaterialUI$Menus$IconMenuProps {
+  anchorOrigin?: propTypes$origin;
   animated?: boolean;
-  animation?: React.ComponentClass<Popover$Popover.Popover$PopoverAnimationProps>;
+  animation?: React.ComponentClass<Popover$PopoverAnimationProps>;
   className?: string;
   clickCloseDelay?: number;
   iconButtonElement: React.ReactElement<__MaterialUI$IconButton>;
   iconStyle?: React.CSSProperties;
   menuStyle?: React.CSSProperties;
   onClick?: (e: React.SyntheticEvent<{}>) => void;
-  onItemClick?: (e: React.SyntheticEvent<{}>, item: Menus$MenuItem) => void;
+  onItemClick?: (
+    e: React.SyntheticEvent<{}>,
+    item: __MaterialUI$Menus$MenuItem
+  ) => void;
   onKeyboardFocus?: (
     e: React.FocusEvent<{}>,
     isKeyboardFocused: boolean
@@ -1042,7 +1133,7 @@ export interface Menus$IconMenuProps {
   onMouseUp?: React.MouseEventHandler<{}>;
   onRequestChange?: (opening: boolean, reason: string) => void;
   open?: boolean;
-  targetOrigin?: propTypes$propTypes$origin;
+  targetOrigin?: propTypes$origin;
   useLayerForClickAway?: boolean;
   autoWidth?: boolean;
   desktop?: boolean;
@@ -1056,13 +1147,13 @@ export interface Menus$IconMenuProps {
   value?: any | any[];
 }
 
-declare export class Menus$IconMenu
-  mixins React.Component<Menus$IconMenuProps> {}
+declare export class __MaterialUI$Menus$IconMenu
+  mixins React.Component<__MaterialUI$Menus$IconMenuProps> {}
 
-export interface Menus$DropDownMenuProps {
-  anchorOrigin?: propTypes$propTypes$origin;
+export interface __MaterialUI$Menus$DropDownMenuProps {
+  anchorOrigin?: propTypes$origin;
   animated?: boolean;
-  animation?: React.ComponentClass<Popover$Popover.Popover$PopoverAnimationProps>;
+  animation?: React.ComponentClass<Popover$PopoverAnimationProps>;
   className?: string;
   disabled?: boolean;
   iconButton?: React.ReactNode;
@@ -1083,13 +1174,13 @@ export interface Menus$DropDownMenuProps {
   selectedMenuItemStyle?: React.CSSProperties;
   selectionRenderer?: (value: any, menuItem: any) => void;
   style?: React.CSSProperties;
-  targetOrigin?: propTypes$propTypes$origin;
+  targetOrigin?: propTypes$origin;
   underlineStyle?: React.CSSProperties;
   value?: any;
 }
 
-declare export class Menus$DropDownMenu
-  mixins React.Component<Menus$DropDownMenuProps> {}
+declare export class __MaterialUI$Menus$DropDownMenu
+  mixins React.Component<__MaterialUI$Menus$DropDownMenuProps> {}
 
 export type __MaterialUI$OverlayProps = {
   autoLockScrolling?: boolean,
@@ -1115,47 +1206,52 @@ export type __MaterialUI$PaperProps = {
 declare export class __MaterialUI$Paper
   mixins React.Component<__MaterialUI$PaperProps> {}
 
-export interface Popover$PopoverAnimationProps {
+declare var npm$namespace$__MaterialUI$Popover: {
+  Popover: typeof __MaterialUI$Popover$Popover,
+  PopoverAnimationVertical: typeof __MaterialUI$Popover$PopoverAnimationVertical,
+  PopoverAnimationDefault: typeof __MaterialUI$Popover$PopoverAnimationDefault
+};
+export interface __MaterialUI$Popover$PopoverAnimationProps {
   open: boolean;
   style?: React.CSSProperties;
 }
 
-export interface Popover$PopoverProps {
+export interface __MaterialUI$Popover$PopoverProps {
   anchorEl?: React.ReactInstance;
-  anchorOrigin?: propTypes$propTypes$origin;
+  anchorOrigin?: propTypes$origin;
   animated?: boolean;
-  animation?: React.ComponentClass<Popover$PopoverAnimationProps>;
+  animation?: React.ComponentClass<__MaterialUI$Popover$PopoverAnimationProps>;
   autoCloseWhenOffScreen?: boolean;
   canAutoPosition?: boolean;
   className?: string;
   onRequestClose?: (reason: string) => void;
   open?: boolean;
   style?: React.CSSProperties;
-  targetOrigin?: propTypes$propTypes$origin;
+  targetOrigin?: propTypes$origin;
   useLayerForClickAway?: boolean;
   zDepth?: number;
 }
 
-declare export class Popover$Popover
-  mixins React.Component<Popover$PopoverProps> {}
+declare export class __MaterialUI$Popover$Popover
+  mixins React.Component<__MaterialUI$Popover$PopoverProps> {}
 
-export type Popover$PopoverAnimationVerticalProps = {
+export type __MaterialUI$Popover$PopoverAnimationVerticalProps = {
   className?: string,
-  targetOrigin?: propTypes$propTypes$origin,
+  targetOrigin?: propTypes$origin,
   zDepth?: number
-} & Popover$PopoverAnimationProps;
+} & PopoverAnimationProps;
 
-declare export class Popover$PopoverAnimationVertical
-  mixins React.Component<Popover$PopoverAnimationVerticalProps> {}
+declare export class __MaterialUI$Popover$PopoverAnimationVertical
+  mixins React.Component<__MaterialUI$Popover$PopoverAnimationVerticalProps> {}
 
-export type Popover$PopoverAnimationDefaultProps = {
+export type __MaterialUI$Popover$PopoverAnimationDefaultProps = {
   className?: string,
-  targetOrigin?: propTypes$propTypes$origin,
+  targetOrigin?: propTypes$origin,
   zDepth?: number
-} & Popover$PopoverAnimationProps;
+} & PopoverAnimationProps;
 
-declare export class Popover$PopoverAnimationDefault
-  mixins React.Component<Popover$PopoverAnimationDefaultProps> {}
+declare export class __MaterialUI$Popover$PopoverAnimationDefault
+  mixins React.Component<__MaterialUI$Popover$PopoverAnimationDefaultProps> {}
 
 export interface __MaterialUI$CircularProgressProps {
   color?: string;
@@ -1201,7 +1297,7 @@ declare export class __MaterialUI$RefreshIndicator
 export interface __MaterialUI$SelectFieldProps {
   autoWidth?: boolean;
   disabled?: boolean;
-  dropDownMenuProps?: Menus$Menus$DropDownMenuProps;
+  dropDownMenuProps?: Menus$DropDownMenuProps;
   errorStyle?: React.CSSProperties;
   errorText?: React.ReactNode;
   floatingLabelFixed?: boolean;
@@ -1266,12 +1362,19 @@ export interface __MaterialUI$SliderProps {
 declare export class __MaterialUI$Slider
   mixins React.Component<__MaterialUI$SliderProps> {}
 
-export type Switches$CommonEnhancedSwitchProps<T> = {
+declare var npm$namespace$__MaterialUI$Switches: {
+  EnhancedSwitch: typeof __MaterialUI$Switches$EnhancedSwitch,
+  Checkbox: typeof __MaterialUI$Switches$Checkbox,
+  RadioButton: typeof __MaterialUI$Switches$RadioButton,
+  RadioButtonGroup: typeof __MaterialUI$Switches$RadioButtonGroup,
+  Toggle: typeof __MaterialUI$Switches$Toggle
+};
+export type __MaterialUI$Switches$CommonEnhancedSwitchProps<T> = {
   label?: React.ReactNode
 } & React.InputHTMLAttributes<{}> &
   React.Props<T>;
 
-export type Switches$EnhancedSwitchProps = {
+export type __MaterialUI$Switches$EnhancedSwitchProps = {
   className?: string,
   defaultSwitched?: boolean,
   disableFocusRipple?: boolean,
@@ -1302,17 +1405,17 @@ export type Switches$EnhancedSwitchProps = {
   thumbStyle?: React.CSSProperties,
   trackStyle?: React.CSSProperties,
   value?: string
-} & Switches$CommonEnhancedSwitchProps<Switches$EnhancedSwitch>;
+} & CommonEnhancedSwitchProps<Switches$EnhancedSwitch>;
 
-declare export class Switches$EnhancedSwitch
-  mixins React.Component<Switches$EnhancedSwitchProps> {
+declare export class __MaterialUI$Switches$EnhancedSwitch
+  mixins React.Component<__MaterialUI$Switches$EnhancedSwitchProps> {
   getValue(): string;
   isKeyboardFocused(): boolean;
   isSwitched(): boolean;
   setSwitched(newSwitchedValue: boolean): void;
 }
 
-export type Switches$CheckboxProps = {
+export type __MaterialUI$Switches$CheckboxProps = {
   checked?: boolean,
   checkedIcon?: React.ReactElement<{
     style?: React.CSSProperties
@@ -1329,10 +1432,10 @@ export type Switches$CheckboxProps = {
   }>,
   valueLink?: __MaterialUI$ReactLink<boolean>,
   inputStyle?: React.CSSProperties
-} & Switches$CommonEnhancedSwitchProps<Switches$Checkbox>;
+} & CommonEnhancedSwitchProps<Switches$Checkbox>;
 
-declare export class Switches$Checkbox
-  mixins React.Component<Switches$CheckboxProps> {
+declare export class __MaterialUI$Switches$Checkbox
+  mixins React.Component<__MaterialUI$Switches$CheckboxProps> {
   /**
    * @deprecated Use checked property instead
    */
@@ -1344,7 +1447,7 @@ declare export class Switches$Checkbox
   setChecked(newCheckedValue: boolean): void;
 }
 
-export type Switches$RadioButtonProps = {
+export type __MaterialUI$Switches$RadioButtonProps = {
   checkedIcon?: React.ReactElement<{
     style?: React.CSSProperties
   }>,
@@ -1358,15 +1461,15 @@ export type Switches$RadioButtonProps = {
     style?: React.CSSProperties
   }>,
   value?: any
-} & Switches$CommonEnhancedSwitchProps<Switches$RadioButton>;
+} & CommonEnhancedSwitchProps<Switches$RadioButton>;
 
-declare export class Switches$RadioButton
-  mixins React.Component<Switches$RadioButtonProps> {
+declare export class __MaterialUI$Switches$RadioButton
+  mixins React.Component<__MaterialUI$Switches$RadioButtonProps> {
   isChecked(): boolean;
   getValue(): string;
 }
 
-export interface Switches$RadioButtonGroupProps {
+export interface __MaterialUI$Switches$RadioButtonGroupProps {
   className?: string;
   defaultSelected?: any;
   labelPosition?: "left" | "right";
@@ -1376,14 +1479,14 @@ export interface Switches$RadioButtonGroupProps {
   valueSelected?: any;
 }
 
-declare export class Switches$RadioButtonGroup
-  mixins React.Component<Switches$RadioButtonGroupProps> {
+declare export class __MaterialUI$Switches$RadioButtonGroup
+  mixins React.Component<__MaterialUI$Switches$RadioButtonGroupProps> {
   clearValue(): void;
   getSelectedValue(): string;
   setSelectedValue(newSelectionValue: string): void;
 }
 
-export type Switches$ToggleProps = {
+export type __MaterialUI$Switches$ToggleProps = {
   defaultToggled?: boolean,
   disabled?: boolean,
   elementStyle?: React.CSSProperties,
@@ -1401,10 +1504,10 @@ export type Switches$ToggleProps = {
   toggled?: boolean,
   trackStyle?: React.CSSProperties,
   valueLink?: __MaterialUI$ReactLink<boolean>
-} & Switches$CommonEnhancedSwitchProps<Switches$Toggle>;
+} & CommonEnhancedSwitchProps<Switches$Toggle>;
 
-declare export class Switches$Toggle
-  mixins React.Component<Switches$ToggleProps> {
+declare export class __MaterialUI$Switches$Toggle
+  mixins React.Component<__MaterialUI$Switches$ToggleProps> {
   isToggled(): boolean;
   setToggled(newToggledValue: boolean): void;
 }
@@ -1448,16 +1551,24 @@ export interface __MaterialUI$SnackbarProps {
 declare export class __MaterialUI$Snackbar
   mixins React.Component<__MaterialUI$SnackbarProps> {}
 
-export interface Stepper$StepProps {
+declare var npm$namespace$__MaterialUI$Stepper: {
+  Step: typeof __MaterialUI$Stepper$Step,
+  StepButton: typeof __MaterialUI$Stepper$StepButton,
+  StepContent: typeof __MaterialUI$Stepper$StepContent,
+  StepLabel: typeof __MaterialUI$Stepper$StepLabel,
+  Stepper: typeof __MaterialUI$Stepper$Stepper
+};
+export interface __MaterialUI$Stepper$StepProps {
   active?: boolean;
   completed?: boolean;
   disabled?: boolean;
   style?: React.CSSProperties;
 }
 
-declare export class Stepper$Step mixins React.Component<Stepper$StepProps> {}
+declare export class __MaterialUI$Stepper$Step
+  mixins React.Component<__MaterialUI$Stepper$StepProps> {}
 
-export type Stepper$StepButtonProps = {
+export type __MaterialUI$Stepper$StepButtonProps = {
   active?: boolean,
   completed?: boolean,
   disabled?: boolean,
@@ -1466,21 +1577,21 @@ export type Stepper$StepButtonProps = {
   onMouseLeave?: React.MouseEventHandler<{}>,
   onTouchStart?: React.TouchEventHandler<{}>,
   style?: React.CSSProperties
-} & __MaterialUI$SharedEnhancedButtonProps<Stepper$StepButton>;
+} & SharedEnhancedButtonProps<Stepper$StepButton>;
 
-declare export class Stepper$StepButton
-  mixins React.Component<Stepper$StepButtonProps> {}
+declare export class __MaterialUI$Stepper$StepButton
+  mixins React.Component<__MaterialUI$Stepper$StepButtonProps> {}
 
-export interface Stepper$StepContentProps {
+export interface __MaterialUI$Stepper$StepContentProps {
   active?: boolean;
   last?: boolean;
   style?: React.CSSProperties;
 }
 
-declare export class Stepper$StepContent
-  mixins React.Component<Stepper$StepContentProps> {}
+declare export class __MaterialUI$Stepper$StepContent
+  mixins React.Component<__MaterialUI$Stepper$StepContentProps> {}
 
-export interface Stepper$StepLabelProps {
+export interface __MaterialUI$Stepper$StepLabelProps {
   active?: boolean;
   completed?: boolean;
   disabled?: boolean;
@@ -1489,10 +1600,10 @@ export interface Stepper$StepLabelProps {
   style?: React.CSSProperties;
 }
 
-declare export class Stepper$StepLabel
-  mixins React.Component<Stepper$StepLabelProps> {}
+declare export class __MaterialUI$Stepper$StepLabel
+  mixins React.Component<__MaterialUI$Stepper$StepLabelProps> {}
 
-export interface Stepper$SnackbarProps {
+export interface __MaterialUI$Stepper$SnackbarProps {
   action?: React.ReactNode;
   autoHideDuration?: number;
   bodyStyle?: React.CSSProperties;
@@ -1528,15 +1639,15 @@ export interface Stepper$SnackbarProps {
   openOnMount?: boolean;
 }
 
-export interface Stepper$StepperProps {
+export interface __MaterialUI$Stepper$StepperProps {
   activeStep?: number;
   linear?: boolean;
   orientation?: "horizontal" | "vertical";
   style?: React.CSSProperties;
 }
 
-declare export class Stepper$Stepper
-  mixins React.Component<Stepper$StepperProps> {}
+declare export class __MaterialUI$Stepper$Stepper
+  mixins React.Component<__MaterialUI$Stepper$StepperProps> {}
 
 export interface __MaterialUI$SubheaderProps {
   inset?: boolean;
@@ -1546,7 +1657,16 @@ export interface __MaterialUI$SubheaderProps {
 declare export class __MaterialUI$Subheader
   mixins React.Component<__MaterialUI$SubheaderProps> {}
 
-export interface Table$TableProps {
+declare var npm$namespace$__MaterialUI$Table: {
+  Table: typeof __MaterialUI$Table$Table,
+  TableRow: typeof __MaterialUI$Table$TableRow,
+  TableRowColumn: typeof __MaterialUI$Table$TableRowColumn,
+  TableHeader: typeof __MaterialUI$Table$TableHeader,
+  TableHeaderColumn: typeof __MaterialUI$Table$TableHeaderColumn,
+  TableBody: typeof __MaterialUI$Table$TableBody,
+  TableFooter: typeof __MaterialUI$Table$TableFooter
+};
+export interface __MaterialUI$Table$TableProps {
   allRowsSelected?: boolean;
   bodyStyle?: React.CSSProperties;
   className?: string;
@@ -1567,9 +1687,10 @@ export interface Table$TableProps {
   wrapperStyle?: React.CSSProperties;
 }
 
-declare export class Table$Table mixins React.Component<Table$TableProps> {}
+declare export class __MaterialUI$Table$Table
+  mixins React.Component<__MaterialUI$Table$TableProps> {}
 
-export interface Table$TableRowProps {
+export interface __MaterialUI$Table$TableRowProps {
   className?: string;
   displayBorder?: boolean;
   hoverable?: boolean;
@@ -1615,10 +1736,10 @@ export interface Table$TableRowProps {
   style?: React.CSSProperties;
 }
 
-declare export class Table$TableRow
-  mixins React.Component<Table$TableRowProps> {}
+declare export class __MaterialUI$Table$TableRow
+  mixins React.Component<__MaterialUI$Table$TableRowProps> {}
 
-export interface Table$TableRowColumnProps {
+export interface __MaterialUI$Table$TableRowColumnProps {
   className?: string;
   columnNumber?: number;
   hoverable?: boolean;
@@ -1643,10 +1764,10 @@ export interface Table$TableRowColumnProps {
   rowSpan?: number;
 }
 
-declare export class Table$TableRowColumn
-  mixins React.Component<Table$TableRowColumnProps> {}
+declare export class __MaterialUI$Table$TableRowColumn
+  mixins React.Component<__MaterialUI$Table$TableRowColumnProps> {}
 
-export interface Table$TableHeaderProps {
+export interface __MaterialUI$Table$TableHeaderProps {
   adjustForCheckbox?: boolean;
   className?: string;
   displaySelectAll?: boolean;
@@ -1664,10 +1785,10 @@ export interface Table$TableHeaderProps {
   style?: React.CSSProperties;
 }
 
-declare export class Table$TableHeader
-  mixins React.Component<Table$TableHeaderProps> {}
+declare export class __MaterialUI$Table$TableHeader
+  mixins React.Component<__MaterialUI$Table$TableHeaderProps> {}
 
-export interface Table$TableHeaderColumnProps {
+export interface __MaterialUI$Table$TableHeaderColumnProps {
   className?: string;
   columnNumber?: number;
   key?: string;
@@ -1679,10 +1800,10 @@ export interface Table$TableHeaderColumnProps {
   rowSpan?: number;
 }
 
-declare export class Table$TableHeaderColumn
-  mixins React.Component<Table$TableHeaderColumnProps> {}
+declare export class __MaterialUI$Table$TableHeaderColumn
+  mixins React.Component<__MaterialUI$Table$TableHeaderColumnProps> {}
 
-export interface Table$TableBodyProps {
+export interface __MaterialUI$Table$TableBodyProps {
   /**
    * @deprecated Instead, use property on Table
    */
@@ -1736,19 +1857,23 @@ export interface Table$TableBodyProps {
   style?: React.CSSProperties;
 }
 
-declare export class Table$TableBody
-  mixins React.Component<Table$TableBodyProps> {}
+declare export class __MaterialUI$Table$TableBody
+  mixins React.Component<__MaterialUI$Table$TableBodyProps> {}
 
-export interface Table$TableFooterProps {
+export interface __MaterialUI$Table$TableFooterProps {
   adjustForCheckbox?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
 
-declare export class Table$TableFooter
-  mixins React.Component<Table$TableFooterProps> {}
+declare export class __MaterialUI$Table$TableFooter
+  mixins React.Component<__MaterialUI$Table$TableFooterProps> {}
 
-export interface Tabs$TabsProps {
+declare var npm$namespace$__MaterialUI$Tabs: {
+  Tabs: typeof __MaterialUI$Tabs$Tabs,
+  Tab: typeof __MaterialUI$Tabs$Tab
+};
+export interface __MaterialUI$Tabs$TabsProps {
   className?: string;
   contentContainerClassName?: string;
   contentContainerStyle?: React.CSSProperties;
@@ -1762,9 +1887,10 @@ export interface Tabs$TabsProps {
   value?: any;
 }
 
-declare export class Tabs$Tabs mixins React.Component<Tabs$TabsProps> {}
+declare export class __MaterialUI$Tabs$Tabs
+  mixins React.Component<__MaterialUI$Tabs$TabsProps> {}
 
-export type Tabs$TabProps = {
+export type __MaterialUI$Tabs$TabProps = {
   buttonStyle?: React.CSSProperties,
   className?: string,
   icon?: React.ReactNode,
@@ -1773,9 +1899,10 @@ export type Tabs$TabProps = {
   style?: React.CSSProperties,
   value?: any,
   disabled?: boolean
-} & __MaterialUI$SharedEnhancedButtonProps<Tabs$Tab>;
+} & SharedEnhancedButtonProps<Tabs$Tab>;
 
-declare export class Tabs$Tab mixins React.Component<Tabs$TabProps> {}
+declare export class __MaterialUI$Tabs$Tab
+  mixins React.Component<__MaterialUI$Tabs$TabProps> {}
 
 export interface __MaterialUI$TextFieldProps {
   className?: string;
@@ -1884,16 +2011,22 @@ declare export class __MaterialUI$TimePicker
   openDialog(): void;
 }
 
-export interface Toolbar$ToolbarProps {
+declare var npm$namespace$__MaterialUI$Toolbar: {
+  Toolbar: typeof __MaterialUI$Toolbar$Toolbar,
+  ToolbarGroup: typeof __MaterialUI$Toolbar$ToolbarGroup,
+  ToolbarSeparator: typeof __MaterialUI$Toolbar$ToolbarSeparator,
+  ToolbarTitle: typeof __MaterialUI$Toolbar$ToolbarTitle
+};
+export interface __MaterialUI$Toolbar$ToolbarProps {
   className?: string;
   noGutter?: boolean;
   style?: React.CSSProperties;
 }
 
-declare export class Toolbar$Toolbar
-  mixins React.Component<Toolbar$ToolbarProps> {}
+declare export class __MaterialUI$Toolbar$Toolbar
+  mixins React.Component<__MaterialUI$Toolbar$ToolbarProps> {}
 
-export interface Toolbar$ToolbarGroupProps {
+export interface __MaterialUI$Toolbar$ToolbarGroupProps {
   className?: string;
   firstChild?: boolean;
   float?: "left" | "right";
@@ -1901,81 +2034,92 @@ export interface Toolbar$ToolbarGroupProps {
   style?: React.CSSProperties;
 }
 
-declare export class Toolbar$ToolbarGroup
-  mixins React.Component<Toolbar$ToolbarGroupProps> {}
+declare export class __MaterialUI$Toolbar$ToolbarGroup
+  mixins React.Component<__MaterialUI$Toolbar$ToolbarGroupProps> {}
 
-export interface Toolbar$ToolbarSeparatorProps {
+export interface __MaterialUI$Toolbar$ToolbarSeparatorProps {
   className?: string;
   style?: React.CSSProperties;
 }
 
-declare export class Toolbar$ToolbarSeparator
-  mixins React.Component<Toolbar$ToolbarSeparatorProps> {}
+declare export class __MaterialUI$Toolbar$ToolbarSeparator
+  mixins React.Component<__MaterialUI$Toolbar$ToolbarSeparatorProps> {}
 
-export type Toolbar$ToolbarTitleProps = {
+export type __MaterialUI$Toolbar$ToolbarTitleProps = {
   className?: string,
   style?: React.CSSProperties,
   text?: string
 } & React.HTMLAttributes<{}> &
   React.Props<Toolbar$ToolbarTitle>;
 
-declare export class Toolbar$ToolbarTitle
-  mixins React.Component<Toolbar$ToolbarTitleProps> {}
+declare export class __MaterialUI$Toolbar$ToolbarTitle
+  mixins React.Component<__MaterialUI$Toolbar$ToolbarTitleProps> {}
 
-declare var npm$namespace$Utils: {
-  Dom: typeof Utils$Dom,
-  Events: typeof Utils$Events
+declare var npm$namespace$__MaterialUI$Utils: {
+  Dom: typeof __MaterialUI$Utils$Dom,
+  Events: typeof __MaterialUI$Utils$Events,
+
+  ColorManipulator: typeof npm$namespace$__MaterialUI$Utils$ColorManipulator
 };
 
-declare var npm$namespace$ColorManipulator: {
-  convertColorToString: typeof ColorManipulator$convertColorToString,
-  convertHexToRGB: typeof ColorManipulator$convertHexToRGB,
-  decomposeColor: typeof ColorManipulator$decomposeColor,
-  getContrastRatio: typeof ColorManipulator$getContrastRatio,
-  getLuminance: typeof ColorManipulator$getLuminance,
-  emphasize: typeof ColorManipulator$emphasize,
-  fade: typeof ColorManipulator$fade,
-  darken: typeof ColorManipulator$darken,
-  lighten: typeof ColorManipulator$lighten
+declare var npm$namespace$__MaterialUI$Utils$ColorManipulator: {
+  convertColorToString: typeof __MaterialUI$Utils$ColorManipulator$convertColorToString,
+  convertHexToRGB: typeof __MaterialUI$Utils$ColorManipulator$convertHexToRGB,
+  decomposeColor: typeof __MaterialUI$Utils$ColorManipulator$decomposeColor,
+  getContrastRatio: typeof __MaterialUI$Utils$ColorManipulator$getContrastRatio,
+  getLuminance: typeof __MaterialUI$Utils$ColorManipulator$getLuminance,
+  emphasize: typeof __MaterialUI$Utils$ColorManipulator$emphasize,
+  fade: typeof __MaterialUI$Utils$ColorManipulator$fade,
+  darken: typeof __MaterialUI$Utils$ColorManipulator$darken,
+  lighten: typeof __MaterialUI$Utils$ColorManipulator$lighten
 };
-declare interface ColorManipulator$MuiColorObject {
+declare interface __MaterialUI$Utils$ColorManipulator$MuiColorObject {
   type: string;
   values: number[];
 }
 
-declare function ColorManipulator$convertColorToString(color: any): string;
+declare function __MaterialUI$Utils$ColorManipulator$convertColorToString(
+  color: any
+): string;
 
-declare function ColorManipulator$convertHexToRGB(color: string): string;
-
-declare function ColorManipulator$decomposeColor(
+declare function __MaterialUI$Utils$ColorManipulator$convertHexToRGB(
   color: string
-): ColorManipulator$MuiColorObject;
+): string;
 
-declare function ColorManipulator$getContrastRatio(
+declare function __MaterialUI$Utils$ColorManipulator$decomposeColor(
+  color: string
+): __MaterialUI$Utils$ColorManipulator$MuiColorObject;
+
+declare function __MaterialUI$Utils$ColorManipulator$getContrastRatio(
   foreground: string,
   background: string
 ): number;
 
-declare function ColorManipulator$getLuminance(color: string): number;
+declare function __MaterialUI$Utils$ColorManipulator$getLuminance(
+  color: string
+): number;
 
-declare function ColorManipulator$emphasize(
+declare function __MaterialUI$Utils$ColorManipulator$emphasize(
   color: string,
   coefficient?: number
 ): string;
 
-declare function ColorManipulator$fade(color: string, value: number): string;
+declare function __MaterialUI$Utils$ColorManipulator$fade(
+  color: string,
+  value: number
+): string;
 
-declare function ColorManipulator$darken(
+declare function __MaterialUI$Utils$ColorManipulator$darken(
   color: string,
   coefficient: number
 ): string;
 
-declare function ColorManipulator$lighten(
+declare function __MaterialUI$Utils$ColorManipulator$lighten(
   color: string,
   coefficient: number
 ): string;
 
-declare interface Utils$Dom {
+declare interface __MaterialUI$Utils$Dom {
   addClass(el: Element, className: string): void;
   forceRedraw(el: HTMLElement): void;
   getStyleAttributeAsNumber(el: HTMLElement, attr: string): number;
@@ -1992,173 +2136,173 @@ declare interface Utils$Dom {
   withoutTransition(el: HTMLElement, callback: () => void): void;
 }
 
-declare export var Utils$Dom: Utils$Dom;
+declare export var __MaterialUI$Utils$Dom: __MaterialUI$Utils$Dom;
 
-declare interface Utils$Events {
+declare interface __MaterialUI$Utils$Events {
   isKeyboard(e: Event): boolean;
   off(el: Element, type: string, callback: EventListener): void;
   on(el: Element, type: string, callback: EventListener): void;
   once(el: Element, type: string, callback: EventListener): void;
 }
 
-declare export var Utils$Events: Utils$Events;
+declare export var __MaterialUI$Utils$Events: __MaterialUI$Utils$Events;
 declare module "material-ui/AppBar" {
-  declare export default typeof __MaterialUI$AppBar;
+  declare export default typeof AppBar;
 }
 declare module "material-ui/AutoComplete" {
-  declare export default typeof __MaterialUI$AutoComplete;
+  declare export default typeof AutoComplete;
 }
 declare module "material-ui/Avatar" {
-  declare export default typeof __MaterialUI$Avatar;
+  declare export default typeof Avatar;
 }
 declare module "material-ui/Badge" {
-  declare export default typeof __MaterialUI$Badge;
+  declare export default typeof Badge;
 }
 declare module "material-ui/BottomNavigation" {
-  declare export default typeof BottomNavigation$BottomNavigation;
+  declare export default typeof BottomNavigation;
 }
 declare module "material-ui/BottomNavigation/BottomNavigationItem" {
-  declare export default typeof BottomNavigation$BottomNavigationItem;
+  declare export default typeof BottomNavigationItem;
 }
 declare module "material-ui/Card" {
-  declare export default typeof Card$Card;
+  declare export default typeof Card;
 }
 declare module "material-ui/Card/Card" {
-  declare export default typeof Card$Card;
+  declare export default typeof Card;
 }
 declare module "material-ui/Card/CardActions" {
-  declare export default typeof Card$CardActions;
+  declare export default typeof CardActions;
 }
 declare module "material-ui/Card/CardExpandable" {
-  declare export default typeof Card$CardExpandable;
+  declare export default typeof CardExpandable;
 }
 declare module "material-ui/Card/CardHeader" {
-  declare export default typeof Card$CardHeader;
+  declare export default typeof CardHeader;
 }
 declare module "material-ui/Card/CardMedia" {
-  declare export default typeof Card$CardMedia;
+  declare export default typeof CardMedia;
 }
 declare module "material-ui/Card/CardText" {
-  declare export default typeof Card$CardText;
+  declare export default typeof CardText;
 }
 declare module "material-ui/Card/CardTitle" {
-  declare export default typeof Card$CardTitle;
+  declare export default typeof CardTitle;
 }
 declare module "material-ui/Checkbox" {
-  declare export default typeof Switches$Checkbox;
+  declare export default typeof Checkbox;
 }
 declare module "material-ui/Chip" {
-  declare export default typeof __MaterialUI$Chip;
+  declare export default typeof Chip;
 }
 declare module "material-ui/CircularProgress" {
-  declare export default typeof __MaterialUI$CircularProgress;
+  declare export default typeof CircularProgress;
 }
 declare module "material-ui/DatePicker" {
-  declare export default typeof DatePicker$DatePicker;
+  declare export default typeof DatePicker;
 }
 declare module "material-ui/DatePicker/DatePickerDialog" {
-  declare export default typeof DatePicker$DatePickerDialog;
+  declare export default typeof DatePickerDialog;
 }
 declare module "material-ui/Dialog" {
-  declare export default typeof __MaterialUI$Dialog;
+  declare export default typeof Dialog;
 }
 declare module "material-ui/Divider" {
-  declare export default typeof __MaterialUI$Divider;
+  declare export default typeof Divider;
 }
 declare module "material-ui/Drawer" {
-  declare export default typeof __MaterialUI$Drawer;
+  declare export default typeof Drawer;
 }
 declare module "material-ui/DropDownMenu" {
-  declare export default typeof Menus$DropDownMenu;
+  declare export default typeof DropDownMenu;
 }
 declare module "material-ui/FlatButton" {
-  declare export default typeof __MaterialUI$FlatButton;
+  declare export default typeof FlatButton;
 }
 declare module "material-ui/FloatingActionButton" {
-  declare export default typeof __MaterialUI$FloatingActionButton;
+  declare export default typeof FloatingActionButton;
 }
 declare module "material-ui/FontIcon" {
-  declare export default typeof __MaterialUI$FontIcon;
+  declare export default typeof FontIcon;
 }
 declare module "material-ui/GridList" {
-  declare export default typeof GridList$GridList;
+  declare export default typeof GridList;
 }
 declare module "material-ui/GridList/GridList" {
-  declare export default typeof GridList$GridList;
+  declare export default typeof GridList;
 }
 declare module "material-ui/GridList/GridTile" {
-  declare export default typeof GridList$GridTile;
+  declare export default typeof GridTile;
 }
 declare module "material-ui/IconButton" {
-  declare export default typeof __MaterialUI$IconButton;
+  declare export default typeof IconButton;
 }
 declare module "material-ui/IconMenu" {
-  declare export default typeof Menus$IconMenu;
+  declare export default typeof IconMenu;
 }
 declare module "material-ui/LinearProgress" {
-  declare export default typeof __MaterialUI$LinearProgress;
+  declare export default typeof LinearProgress;
 }
 declare module "material-ui/List" {
-  declare export default typeof List$List;
+  declare export default typeof List;
 }
 declare module "material-ui/List/List" {
-  declare export default typeof List$List;
+  declare export default typeof List;
 }
 declare module "material-ui/List/ListItem" {
-  declare export default typeof List$ListItem;
+  declare export default typeof ListItem;
 }
 declare module "material-ui/List/makeSelectable" {
-  declare export default typeof List$makeSelectable;
+  declare export default typeof makeSelectable;
 }
 declare module "material-ui/Menu" {
-  declare export default typeof Menus$Menu;
+  declare export default typeof Menu;
 }
 declare module "material-ui/MenuItem" {
-  declare export default typeof Menus$MenuItem;
+  declare export default typeof MenuItem;
 }
 declare module "material-ui/Paper" {
-  declare export default typeof __MaterialUI$Paper;
+  declare export default typeof Paper;
 }
 declare module "material-ui/Popover" {
-  declare export default typeof Popover$Popover;
+  declare export default typeof Popover;
 }
 declare module "material-ui/Popover/Popover" {
-  declare export default typeof Popover$Popover;
+  declare export default typeof Popover;
 }
 declare module "material-ui/Popover/PopoverAnimationDefault" {
-  declare export default typeof Popover$PopoverAnimationDefault;
+  declare export default typeof PopoverAnimationDefault;
 }
 declare module "material-ui/Popover/PopoverAnimationVertical" {
-  declare export default typeof Popover$PopoverAnimationVertical;
+  declare export default typeof PopoverAnimationVertical;
 }
 declare module "material-ui/RadioButton" {
-  declare export default typeof Switches$RadioButton;
+  declare export default typeof RadioButton;
 }
 declare module "material-ui/RadioButton/RadioButtonGroup" {
-  declare export default typeof Switches$RadioButtonGroup;
+  declare export default typeof RadioButtonGroup;
 }
 declare module "material-ui/RaisedButton" {
-  declare export default typeof __MaterialUI$RaisedButton;
+  declare export default typeof RaisedButton;
 }
 declare module "material-ui/RefreshIndicator" {
-  declare export default typeof __MaterialUI$RefreshIndicator;
+  declare export default typeof RefreshIndicator;
 }
 declare module "material-ui/SelectField" {
-  declare export default typeof __MaterialUI$SelectField;
+  declare export default typeof SelectField;
 }
 declare module "material-ui/Slider" {
-  declare export default typeof __MaterialUI$Slider;
+  declare export default typeof Slider;
 }
 declare module "material-ui/Snackbar" {
-  declare export default typeof __MaterialUI$Snackbar;
+  declare export default typeof Snackbar;
 }
 declare module "material-ui/Stepper" {
 }
 declare module "material-ui/Subheader" {
-  declare export default typeof __MaterialUI$Subheader;
+  declare export default typeof Subheader;
 }
 declare module "material-ui/SvgIcon" {
-  declare export default typeof __MaterialUI$SvgIcon;
+  declare export default typeof SvgIcon;
 }
 declare module "material-ui/svg-icons/action/accessibility" {
   declare export default typeof ActionAccessibility;
@@ -5044,27 +5188,27 @@ declare module "material-ui/svg-icons/navigation-arrow-drop-right" {
   declare export default typeof NavigationArrowDropRight;
 }
 declare module "material-ui/styles" {
-  declare export type MuiTheme = __MaterialUI$__MaterialUI$Styles.Styles$MuiTheme;
+  declare export type MuiTheme = __MaterialUI$Styles.MuiTheme;
 }
 declare module "material-ui/styles/getMuiTheme" {
-  declare export default typeof Styles$getMuiTheme;
+  declare export default typeof getMuiTheme;
 }
 declare module "material-ui/styles/muiThemeable" {
-  declare export default typeof Styles$muiThemeable;
+  declare export default typeof muiThemeable;
 }
 declare module "material-ui/styles/MuiThemeProvider" {
-  declare export default typeof Styles$MuiThemeProvider;
+  declare export default typeof MuiThemeProvider;
 }
 declare module "material-ui/styles/spacing" {
-  declare type Spacing = __MaterialUI$__MaterialUI$Styles.Styles$Spacing;
+  declare type Spacing = __MaterialUI$Styles.Spacing;
   declare var Styles$Spacing: Styles$Spacing;
-  declare export default typeof Styles$Spacing;
+  declare export default typeof Spacing;
 }
 declare module "material-ui/styles/transitions" {
-  declare export default typeof Styles$Transitions;
+  declare export default typeof Transitions;
 }
 declare module "material-ui/styles/typography" {
-  declare export default typeof Styles$Typography;
+  declare export default typeof Typography;
 }
 declare module "material-ui/styles/baseThemes/lightBaseTheme" {
   declare export default typeof lightBaseTheme;
@@ -5073,7 +5217,7 @@ declare module "material-ui/styles/baseThemes/darkBaseTheme" {
   declare export default typeof darkBaseTheme;
 }
 declare module "material-ui/styles/zIndex" {
-  declare export default typeof Styles$zIndex;
+  declare export default typeof zIndex;
 }
 declare module "material-ui/styles/colors" {
   declare export var red50: string;
@@ -5343,69 +5487,69 @@ declare module "material-ui/styles/colors" {
   declare export var lightWhite: string;
 }
 declare module "material-ui/Table" {
-  declare export default typeof Table$Table;
+  declare export default typeof Table;
 }
 declare module "material-ui/Table/Table" {
-  declare export default typeof Table$Table;
+  declare export default typeof Table;
 }
 declare module "material-ui/Table/TableBody" {
-  declare export default typeof Table$TableBody;
+  declare export default typeof TableBody;
 }
 declare module "material-ui/Table/TableFooter" {
-  declare export default typeof Table$TableFooter;
+  declare export default typeof TableFooter;
 }
 declare module "material-ui/Table/TableHeader" {
-  declare export default typeof Table$TableHeader;
+  declare export default typeof TableHeader;
 }
 declare module "material-ui/Table/TableHeaderColumn" {
-  declare export default typeof Table$TableHeaderColumn;
+  declare export default typeof TableHeaderColumn;
 }
 declare module "material-ui/Table/TableRow" {
-  declare export default typeof Table$TableRow;
+  declare export default typeof TableRow;
 }
 declare module "material-ui/Table/TableRowColumn" {
-  declare export default typeof Table$TableRowColumn;
+  declare export default typeof TableRowColumn;
 }
 declare module "material-ui/Tabs" {
-  declare export default typeof Tabs$Tabs;
+  declare export default typeof Tabs;
 }
 declare module "material-ui/Tabs/Tab" {
-  declare export default typeof Tabs$Tab;
+  declare export default typeof Tab;
 }
 declare module "material-ui/Tabs/Tabs" {
-  declare export default typeof Tabs$Tabs;
+  declare export default typeof Tabs;
 }
 declare module "material-ui/TextField" {
-  declare export default typeof __MaterialUI$TextField;
+  declare export default typeof TextField;
 }
 declare module "material-ui/TimePicker" {
-  declare export default typeof __MaterialUI$TimePicker;
+  declare export default typeof TimePicker;
 }
 declare module "material-ui/Toggle" {
-  declare export default typeof Switches$Toggle;
+  declare export default typeof Toggle;
 }
 declare module "material-ui/Toolbar" {
-  declare export default typeof Toolbar$Toolbar;
+  declare export default typeof Toolbar;
 }
 declare module "material-ui/Toolbar/Toolbar" {
-  declare export default typeof Toolbar$Toolbar;
+  declare export default typeof Toolbar;
 }
 declare module "material-ui/Toolbar/ToolbarGroup" {
-  declare export default typeof Toolbar$ToolbarGroup;
+  declare export default typeof ToolbarGroup;
 }
 declare module "material-ui/Toolbar/ToolbarSeparator" {
-  declare export default typeof Toolbar$ToolbarSeparator;
+  declare export default typeof ToolbarSeparator;
 }
 declare module "material-ui/Toolbar/ToolbarTitle" {
-  declare export default typeof Toolbar$ToolbarTitle;
+  declare export default typeof ToolbarTitle;
 }
 declare module "material-ui/utils/colorManipulator" {
 }
 declare module "material-ui/utils/dom" {
-  declare export default typeof Utils$Dom;
+  declare export default typeof Dom;
 }
 declare module "material-ui/utils/events" {
-  declare export default typeof Utils$Events;
+  declare export default typeof Events;
 }
 declare module "material-ui/utils/withWidth" {
   declare export var SMALL: number;
@@ -5426,7 +5570,7 @@ declare module "material-ui/internal/AppCanvas" {
   declare export type AppCanvasProps = {} & React.Props<__MaterialUI$AppCanvas>;
 
   declare class AppCanvas mixins React.Component<__MaterialUI$AppCanvasProps> {}
-  declare export default typeof __MaterialUI$AppCanvas;
+  declare export default typeof AppCanvas;
 }
 declare module "material-ui/internal/AutoLockScrolling" {
   declare export type AutoLockScrollingProps = {
@@ -5449,7 +5593,7 @@ declare module "material-ui/internal/BeforeAfterWrapper" {
 
   declare class BeforeAfterWrapper
     mixins React.Component<__MaterialUI$BeforeAfterWrapperProps> {}
-  declare export default typeof __MaterialUI$BeforeAfterWrapper;
+  declare export default typeof BeforeAfterWrapper;
 }
 declare module "material-ui/internal/CircleRipple" {
   declare export type CircleRippleProps = {
@@ -5480,18 +5624,18 @@ declare module "material-ui/internal/ClickAwayListener" {
   declare export default typeof ClickAwayListener;
 }
 declare module "material-ui/internal/EnhancedButton" {
-  declare export type EnhancedButtonProps = {} & __MaterialUI$__MaterialUI$SharedEnhancedButtonProps<__MaterialUI$EnhancedButton>;
+  declare export type EnhancedButtonProps = {} & __MaterialUI$SharedEnhancedButtonProps<__MaterialUI$EnhancedButton>;
 
   declare class EnhancedButton
     mixins React.Component<__MaterialUI$EnhancedButtonProps> {}
-  declare export default typeof __MaterialUI$EnhancedButton;
+  declare export default typeof EnhancedButton;
 }
 declare module "material-ui/internal/EnhancedSwitch" {
-  declare export type EnhancedSwitchProps = {} & undefined.Switches$CommonEnhancedSwitchProps<Switches$EnhancedSwitch>;
+  declare export type EnhancedSwitchProps = {} & undefined.CommonEnhancedSwitchProps<__MaterialUI$Switches$EnhancedSwitch>;
 
   declare class EnhancedSwitch
-    mixins React.Component<Switches$EnhancedSwitchProps> {}
-  declare export default typeof Switches$EnhancedSwitch;
+    mixins React.Component<__MaterialUI$Switches$EnhancedSwitchProps> {}
+  declare export default typeof EnhancedSwitch;
 }
 declare module "material-ui/internal/ExpandTransition" {
   declare export type ExpandTransitionProps = {
@@ -5541,7 +5685,7 @@ declare module "material-ui/internal/Overlay" {
   } & React.Props<__MaterialUI$Overlay>;
 
   declare class Overlay mixins React.Component<__MaterialUI$OverlayProps> {}
-  declare export default typeof __MaterialUI$Overlay;
+  declare export default typeof Overlay;
 }
 declare module "material-ui/internal/RenderToLayer" {
   declare export type RenderToLayerProps = {
@@ -5579,7 +5723,7 @@ declare module "material-ui/internal/ScaleInChild" {
 declare module "material-ui/internal/SlideIn" {
   declare export type SlideInProps = {
     childStyle?: React.CSSProperties,
-    propTypes$direction?: __MaterialUI$propTypes.propTypes$direction,
+    direction?: __MaterialUI$propTypes.direction,
     enterDelay?: number,
     style?: React.CSSProperties
   } & React.Props<SlideIn>;
@@ -5589,7 +5733,7 @@ declare module "material-ui/internal/SlideIn" {
 }
 declare module "material-ui/internal/SlideInChild" {
   declare export type SlideInChildProps = {
-    propTypes$direction?: string,
+    direction?: string,
     enterDelay?: number,
     getLeaveDirection: Function,
     style?: React.CSSProperties
@@ -5601,12 +5745,12 @@ declare module "material-ui/internal/SlideInChild" {
 declare module "material-ui/internal/Tooltip" {
   declare export type TooltipProps = {
     className?: string,
-    horizontalPosition?: __MaterialUI$propTypes.propTypes$tooltipHorizontal,
+    horizontalPosition?: __MaterialUI$propTypes.tooltipHorizontal,
     label: any,
     show?: boolean,
     style?: React.CSSProperties,
     touch?: boolean,
-    verticalPosition?: __MaterialUI$propTypes.propTypes$vertical
+    verticalPosition?: __MaterialUI$propTypes.vertical
   } & React.Props<Tooltip>;
 
   declare class Tooltip mixins React.Component<TooltipProps> {}
