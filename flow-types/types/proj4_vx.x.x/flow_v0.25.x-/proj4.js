@@ -124,18 +124,18 @@ declare module "proj4" {
   declare function proj4(
     fromProjection: string,
     toProjection?: string
-  ): proj4$proj4$Converter;
+  ): proj4$Converter;
 
-  declare function proj4<T: proj4$proj4$TemplateCoordinates>(
+  declare function proj4<T: proj4$TemplateCoordinates>(
     toProjection: string,
     coordinates: T
   ): T;
 
-  declare function proj4<T: proj4$proj4$TemplateCoordinates>(
+  declare function proj4<T: proj4$TemplateCoordinates>(
     fromProjection: string,
     toProjection: string,
     coordinates: T
   ): T;
 
-  declare module.exports: typeof proj4;
+  declare export default typeof proj4;
 }
