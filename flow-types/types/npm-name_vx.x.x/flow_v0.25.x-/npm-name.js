@@ -1,5 +1,5 @@
 declare module "npm-name" {
-  declare module.exports: typeof npmName;
+  declare export default typeof npmName;
 
   declare function npmName(name: string): Promise<boolean>;
 
