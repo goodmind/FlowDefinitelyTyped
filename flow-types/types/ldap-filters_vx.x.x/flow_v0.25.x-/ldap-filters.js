@@ -74,18 +74,18 @@ declare module "ldap-filters" {
     type: string;
     comp: string;
     filters: Filter[];
-    toString(Filter$indent?: boolean | number): string;
+    toString(indent?: boolean | number): string;
     match(data: { [key: string]: any }): boolean;
   }
 
   declare type Filter$GroupNot = {
     simplify(): Filter
-  } & Filter$Group;
+  } & Group;
 
   declare interface Filter$Attribute {
     name: string;
     escapeChars: string[];
-    Filter$escape(value: string): string;
+    escape(value: string): string;
     present(): Filter;
     raw(value: string): Filter;
     equalTo(value: string): Filter;
@@ -96,5 +96,5 @@ declare module "ldap-filters" {
     lte(value: string): Filter;
     gte(value: string): Filter;
   }
-  declare module.exports: typeof Filter;
+  declare export default typeof Filter;
 }
