@@ -1,10 +1,10 @@
 declare module "write-file-atomic" {
-  declare module.exports: typeof writeFile;
+  declare export default typeof writeFile;
 
   declare function writeFile(
     filename: string,
     data: string | Buffer,
-    options: writeFile$writeFile$Options,
+    options: writeFile$Options,
     callback: (error?: Error) => void
   ): void;
 
