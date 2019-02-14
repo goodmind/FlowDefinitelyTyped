@@ -1,11 +1,11 @@
 declare module "ora" {
-  declare module.exports: typeof ora;
+  declare export default typeof ora;
 
   /**
    * Elegant terminal spinner.
    * @param options If a string is provided, it is treated as a shortcut for `options.text`.
    */
-  declare function ora(options?: ora$ora$Options | string): ora$ora$Ora;
+  declare function ora(options?: ora$Options | string): ora$Ora;
 
   declare var npm$namespace$ora: {
     promise: typeof ora$promise
@@ -113,16 +113,16 @@ declare module "ora" {
     text?: string;
 
     /**
- * Name of one of the provided spinners. See `example.js` in this repo if you want to test out different spinners.
- * On Windows, it will always use the line spinner as the Windows command-line doesn't have proper Unicode support.
- * 
- * Or an object like:
- * @example {
-interval: 80, // optional
-frames: ['-', '+', '-']
-}
- * @default 'dots'
- */
+     * Name of one of the provided spinners. See `example.js` in this repo if you want to test out different spinners.
+     * On Windows, it will always use the line spinner as the Windows command-line doesn't have proper Unicode support.
+     *
+     * Or an object like:
+     * @example {
+     * interval: 80, // optional
+     * frames: ['-', '+', '-']
+     * }
+     * @default 'dots'
+     */
     spinner?: ora$SpinnerName | ora$Spinner;
 
     /**
