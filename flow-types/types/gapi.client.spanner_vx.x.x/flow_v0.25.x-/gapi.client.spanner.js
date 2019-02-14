@@ -1,33 +1,37 @@
 declare module "gapi.client.spanner" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Cloud Spanner API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "spanner",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "spanner",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: spanner$spanner$ProjectsResource;
+  declare var gapi$client$projects: spanner$ProjectsResource;
 
-  declare interface spanner$BeginTransactionRequest {
+  declare interface gapi$client$spanner$BeginTransactionRequest {
     /**
      * Required. Options for the new transaction.
      */
     options?: spanner$TransactionOptions;
   }
 
-  declare interface spanner$Binding {
+  declare interface gapi$client$spanner$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -62,7 +66,7 @@ declare module "gapi.client.spanner" {
     role?: string;
   }
 
-  declare interface spanner$ChildLink {
+  declare interface gapi$client$spanner$ChildLink {
     /**
      * The node to which the link points.
      */
@@ -89,7 +93,7 @@ declare module "gapi.client.spanner" {
     variable?: string;
   }
 
-  declare interface spanner$CommitRequest {
+  declare interface gapi$client$spanner$CommitRequest {
     /**
      * The mutations to be executed when this transaction commits. All
      * mutations are applied atomically, in the order they appear in
@@ -116,21 +120,21 @@ declare module "gapi.client.spanner" {
     transactionId?: string;
   }
 
-  declare interface spanner$CommitResponse {
+  declare interface gapi$client$spanner$CommitResponse {
     /**
      * The Cloud Spanner timestamp at which the transaction committed.
      */
     commitTimestamp?: string;
   }
 
-  declare interface spanner$CreateDatabaseMetadata {
+  declare interface gapi$client$spanner$CreateDatabaseMetadata {
     /**
      * The database being created.
      */
     database?: string;
   }
 
-  declare interface spanner$CreateDatabaseRequest {
+  declare interface gapi$client$spanner$CreateDatabaseRequest {
     /**
      * Required. A `CREATE DATABASE` statement, which specifies the ID of the
      * new database.  The database ID must conform to the regular expression
@@ -150,7 +154,7 @@ declare module "gapi.client.spanner" {
     extraStatements?: string[];
   }
 
-  declare interface spanner$CreateInstanceMetadata {
+  declare interface gapi$client$spanner$CreateInstanceMetadata {
     /**
      * The time at which this operation was cancelled. If set, this operation is
      * in the process of undoing itself (which is guaranteed to succeed) and
@@ -176,7 +180,7 @@ declare module "gapi.client.spanner" {
     startTime?: string;
   }
 
-  declare interface spanner$CreateInstanceRequest {
+  declare interface gapi$client$spanner$CreateInstanceRequest {
     /**
      * Required. The instance to create.  The name may be omitted, but if
      * specified must be `<parent>/instances/<instance_id>`.
@@ -191,14 +195,14 @@ declare module "gapi.client.spanner" {
     instanceId?: string;
   }
 
-  declare interface spanner$CreateSessionRequest {
+  declare interface gapi$client$spanner$CreateSessionRequest {
     /**
      * The session to create.
      */
     session?: spanner$Session;
   }
 
-  declare interface spanner$Database {
+  declare interface gapi$client$spanner$Database {
     /**
      * Required. The name of the database. Values are of the form
      * `projects/<project>/instances/<instance>/databases/<database>`,
@@ -214,7 +218,7 @@ declare module "gapi.client.spanner" {
     state?: string;
   }
 
-  declare interface spanner$Delete {
+  declare interface gapi$client$spanner$Delete {
     /**
      * Required. The primary keys of the rows within table to delete.
      */
@@ -226,7 +230,7 @@ declare module "gapi.client.spanner" {
     table?: string;
   }
 
-  declare interface spanner$ExecuteSqlRequest {
+  declare interface gapi$client$spanner$ExecuteSqlRequest {
     /**
      * It is not always possible for Cloud Spanner to infer the right SQL type
      * from a JSON value.  For example, values of type `BYTES` and values
@@ -285,7 +289,7 @@ declare module "gapi.client.spanner" {
     transaction?: spanner$TransactionSelector;
   }
 
-  declare interface spanner$Field {
+  declare interface gapi$client$spanner$Field {
     /**
      * The name of the field. For reads, this is the column name. For
      * SQL queries, it is the column alias (e.g., `"Word"` in the
@@ -304,7 +308,7 @@ declare module "gapi.client.spanner" {
     type?: spanner$Type;
   }
 
-  declare interface spanner$GetDatabaseDdlResponse {
+  declare interface gapi$client$spanner$GetDatabaseDdlResponse {
     /**
      * A list of formatted DDL statements defining the schema of the database
      * specified in the request.
@@ -312,7 +316,7 @@ declare module "gapi.client.spanner" {
     statements?: string[];
   }
 
-  declare interface spanner$Instance {
+  declare interface gapi$client$spanner$Instance {
     /**
      * Required. The name of the instance's configuration. Values are of the form
      * `projects/<project>/instanceConfigs/<configuration>`. See
@@ -390,7 +394,7 @@ declare module "gapi.client.spanner" {
     state?: string;
   }
 
-  declare interface spanner$InstanceConfig {
+  declare interface gapi$client$spanner$InstanceConfig {
     /**
      * The name of this instance configuration as it appears in UIs.
      */
@@ -404,7 +408,7 @@ declare module "gapi.client.spanner" {
     name?: string;
   }
 
-  declare interface spanner$KeyRange {
+  declare interface gapi$client$spanner$KeyRange {
     /**
      * If the end is closed, then the range includes all rows whose
      * first `len(end_closed)` key columns exactly match `end_closed`.
@@ -430,7 +434,7 @@ declare module "gapi.client.spanner" {
     startOpen?: any[];
   }
 
-  declare interface spanner$KeySet {
+  declare interface gapi$client$spanner$KeySet {
     /**
      * For convenience `all` can be set to `true` to indicate that this
      * `KeySet` matches all keys in the table or index. Note that any keys
@@ -450,14 +454,14 @@ declare module "gapi.client.spanner" {
      * A list of key ranges. See KeyRange for more information about
      * key range specifications.
      */
-    ranges?: spanner$KeyRange[];
+    ranges?: gapi$client$spanner$KeyRange[];
   }
 
-  declare interface spanner$ListDatabasesResponse {
+  declare interface gapi$client$spanner$ListDatabasesResponse {
     /**
      * Databases that matched the request.
      */
-    databases?: spanner$Database[];
+    databases?: gapi$client$spanner$Database[];
 
     /**
      * `next_page_token` can be sent in a subsequent
@@ -467,11 +471,11 @@ declare module "gapi.client.spanner" {
     nextPageToken?: string;
   }
 
-  declare interface spanner$ListInstanceConfigsResponse {
+  declare interface gapi$client$spanner$ListInstanceConfigsResponse {
     /**
      * The list of requested instance configurations.
      */
-    instanceConfigs?: spanner$InstanceConfig[];
+    instanceConfigs?: gapi$client$spanner$InstanceConfig[];
 
     /**
      * `next_page_token` can be sent in a subsequent
@@ -481,11 +485,11 @@ declare module "gapi.client.spanner" {
     nextPageToken?: string;
   }
 
-  declare interface spanner$ListInstancesResponse {
+  declare interface gapi$client$spanner$ListInstancesResponse {
     /**
      * The list of requested instances.
      */
-    instances?: spanner$Instance[];
+    instances?: gapi$client$spanner$Instance[];
 
     /**
      * `next_page_token` can be sent in a subsequent
@@ -495,7 +499,7 @@ declare module "gapi.client.spanner" {
     nextPageToken?: string;
   }
 
-  declare interface spanner$ListOperationsResponse {
+  declare interface gapi$client$spanner$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -507,7 +511,7 @@ declare module "gapi.client.spanner" {
     operations?: spanner$Operation[];
   }
 
-  declare interface spanner$ListSessionsResponse {
+  declare interface gapi$client$spanner$ListSessionsResponse {
     /**
      * `next_page_token` can be sent in a subsequent
      * ListSessions call to fetch more of the matching
@@ -521,12 +525,12 @@ declare module "gapi.client.spanner" {
     sessions?: spanner$Session[];
   }
 
-  declare interface spanner$Mutation {
+  declare interface gapi$client$spanner$Mutation {
     /**
      * Delete rows from a table. Succeeds whether or not the named
      * rows were present.
      */
-    delete?: spanner$Delete;
+    delete?: gapi$client$spanner$Delete;
 
     /**
      * Insert new rows in a table. If any of the rows already exist,
@@ -556,7 +560,7 @@ declare module "gapi.client.spanner" {
     update?: spanner$Write;
   }
 
-  declare interface spanner$Operation {
+  declare interface gapi$client$spanner$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -597,7 +601,7 @@ declare module "gapi.client.spanner" {
     response?: Record<string, any>;
   }
 
-  declare interface spanner$PartialResultSet {
+  declare interface gapi$client$spanner$PartialResultSet {
     /**
      * If true, then the final value in values is chunked, and must
      * be combined with more values from subsequent `PartialResultSet`s
@@ -706,11 +710,11 @@ declare module "gapi.client.spanner" {
     values?: any[];
   }
 
-  declare interface spanner$PlanNode {
+  declare interface gapi$client$spanner$PlanNode {
     /**
      * List of child node `index`es and their relationship to this parent.
      */
-    childLinks?: spanner$ChildLink[];
+    childLinks?: gapi$client$spanner$ChildLink[];
 
     /**
      * The display name for the node.
@@ -757,12 +761,12 @@ declare module "gapi.client.spanner" {
     shortRepresentation?: spanner$ShortRepresentation;
   }
 
-  declare interface spanner$Policy {
+  declare interface gapi$client$spanner$Policy {
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: spanner$Binding[];
+    bindings?: gapi$client$spanner$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -784,16 +788,16 @@ declare module "gapi.client.spanner" {
     version?: number;
   }
 
-  declare interface spanner$QueryPlan {
+  declare interface gapi$client$spanner$QueryPlan {
     /**
      * The nodes in the query plan. Plan nodes are returned in pre-order starting
      * with the plan root. Each PlanNode's `id` corresponds to its index in
      * `plan_nodes`.
      */
-    planNodes?: spanner$PlanNode[];
+    planNodes?: gapi$client$spanner$PlanNode[];
   }
 
-  declare interface spanner$ReadOnly {
+  declare interface gapi$client$spanner$ReadOnly {
     /**
      * Executes all reads at a timestamp that is `exact_staleness`
      * old. The timestamp is chosen soon after the read is started.
@@ -863,7 +867,7 @@ declare module "gapi.client.spanner" {
     strong?: boolean;
   }
 
-  declare interface spanner$ReadRequest {
+  declare interface gapi$client$spanner$ReadRequest {
     /**
      * The columns of table to be returned for each row matching
      * this request.
@@ -889,7 +893,7 @@ declare module "gapi.client.spanner" {
      * It is not an error for the `key_set` to name rows that do not
      * exist in the database. Read yields nothing for nonexistent rows.
      */
-    keySet?: spanner$KeySet;
+    keySet?: gapi$client$spanner$KeySet;
 
     /**
      * If greater than zero, only the first `limit` rows are yielded. If `limit`
@@ -920,7 +924,7 @@ declare module "gapi.client.spanner" {
     transaction?: spanner$TransactionSelector;
   }
 
-  declare interface spanner$ResultSet {
+  declare interface gapi$client$spanner$ResultSet {
     /**
      * Metadata about the result set, such as row type information.
      */
@@ -944,7 +948,7 @@ declare module "gapi.client.spanner" {
     stats?: spanner$ResultSetStats;
   }
 
-  declare interface spanner$ResultSetMetadata {
+  declare interface gapi$client$spanner$ResultSetMetadata {
     /**
      * Indicates the field names and types for the rows in the result
      * set.  For example, a SQL query like `"SELECT UserId, UserName FROM
@@ -964,11 +968,11 @@ declare module "gapi.client.spanner" {
     transaction?: spanner$Transaction;
   }
 
-  declare interface spanner$ResultSetStats {
+  declare interface gapi$client$spanner$ResultSetStats {
     /**
      * QueryPlan for the query associated with this result.
      */
-    queryPlan?: spanner$QueryPlan;
+    queryPlan?: gapi$client$spanner$QueryPlan;
 
     /**
      * Aggregated statistics from the execution of the query. Only present when
@@ -984,14 +988,14 @@ declare module "gapi.client.spanner" {
     queryStats?: Record<string, any>;
   }
 
-  declare interface spanner$RollbackRequest {
+  declare interface gapi$client$spanner$RollbackRequest {
     /**
      * Required. The transaction to roll back.
      */
     transactionId?: string;
   }
 
-  declare interface spanner$Session {
+  declare interface gapi$client$spanner$Session {
     /**
      * Output only. The approximate timestamp when the session is last used. It is
      * typically earlier than the actual last use time.
@@ -1020,17 +1024,17 @@ declare module "gapi.client.spanner" {
     name?: string;
   }
 
-  declare interface spanner$SetIamPolicyRequest {
+  declare interface gapi$client$spanner$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: spanner$Policy;
+    policy?: gapi$client$spanner$Policy;
   }
 
-  declare interface spanner$ShortRepresentation {
+  declare interface gapi$client$spanner$ShortRepresentation {
     /**
      * A string representation of the expression subtree rooted at this node.
      */
@@ -1046,7 +1050,7 @@ declare module "gapi.client.spanner" {
     subqueries?: Record<string, number>;
   }
 
-  declare interface spanner$Status {
+  declare interface gapi$client$spanner$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1066,7 +1070,7 @@ declare module "gapi.client.spanner" {
     message?: string;
   }
 
-  declare interface spanner$StructType {
+  declare interface gapi$client$spanner$StructType {
     /**
      * The list of fields that make up this struct. Order is
      * significant, because values of this struct type are represented as
@@ -1075,10 +1079,10 @@ declare module "gapi.client.spanner" {
      * matches the order of columns in a read request, or the order of
      * fields in the `SELECT` clause of a query.
      */
-    fields?: spanner$Field[];
+    fields?: gapi$client$spanner$Field[];
   }
 
-  declare interface spanner$TestIamPermissionsRequest {
+  declare interface gapi$client$spanner$TestIamPermissionsRequest {
     /**
      * REQUIRED: The set of permissions to check for 'resource'.
      * Permissions with wildcards (such as '&#42;', 'spanner.&#42;', 'spanner.instances.&#42;') are not allowed.
@@ -1086,7 +1090,7 @@ declare module "gapi.client.spanner" {
     permissions?: string[];
   }
 
-  declare interface spanner$TestIamPermissionsResponse {
+  declare interface gapi$client$spanner$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -1094,7 +1098,7 @@ declare module "gapi.client.spanner" {
     permissions?: string[];
   }
 
-  declare interface spanner$Transaction {
+  declare interface gapi$client$spanner$Transaction {
     /**
      * `id` may be used to identify the transaction in subsequent
      * Read,
@@ -1115,7 +1119,7 @@ declare module "gapi.client.spanner" {
     readTimestamp?: string;
   }
 
-  declare interface spanner$TransactionOptions {
+  declare interface gapi$client$spanner$TransactionOptions {
     /**
      * Transaction will not write.
      *
@@ -1123,7 +1127,7 @@ declare module "gapi.client.spanner" {
      * `spanner.databases.beginReadOnlyTransaction` permission
      * on the `session` resource.
      */
-    readOnly?: spanner$ReadOnly;
+    readOnly?: gapi$client$spanner$ReadOnly;
 
     /**
      * Transaction may write.
@@ -1135,13 +1139,13 @@ declare module "gapi.client.spanner" {
     readWrite?: any;
   }
 
-  declare interface spanner$TransactionSelector {
+  declare interface gapi$client$spanner$TransactionSelector {
     /**
      * Begin a new transaction and execute this read or SQL query in
      * it. The transaction ID of the new transaction is returned in
      * ResultSetMetadata.transaction, which is a Transaction.
      */
-    begin?: spanner$TransactionOptions;
+    begin?: gapi$client$spanner$TransactionOptions;
 
     /**
      * Execute the read or SQL query in a previously-started transaction.
@@ -1153,15 +1157,15 @@ declare module "gapi.client.spanner" {
      * This is the most efficient way to execute a transaction that
      * consists of a single SQL query.
      */
-    singleUse?: spanner$TransactionOptions;
+    singleUse?: gapi$client$spanner$TransactionOptions;
   }
 
-  declare interface spanner$Type {
+  declare interface gapi$client$spanner$Type {
     /**
      * If code == ARRAY, then `array_element_type`
      * is the type of the array elements.
      */
-    arrayElementType?: spanner$Type;
+    arrayElementType?: gapi$client$spanner$Type;
 
     /**
      * Required. The TypeCode for this type.
@@ -1172,10 +1176,10 @@ declare module "gapi.client.spanner" {
      * If code == STRUCT, then `struct_type`
      * provides type information for the struct's fields.
      */
-    structType?: spanner$StructType;
+    structType?: gapi$client$spanner$StructType;
   }
 
-  declare interface spanner$UpdateDatabaseDdlMetadata {
+  declare interface gapi$client$spanner$UpdateDatabaseDdlMetadata {
     /**
      * Reports the commit timestamps of all statements that have
      * succeeded so far, where `commit_timestamps[i]` is the commit
@@ -1195,7 +1199,7 @@ declare module "gapi.client.spanner" {
     statements?: string[];
   }
 
-  declare interface spanner$UpdateDatabaseDdlRequest {
+  declare interface gapi$client$spanner$UpdateDatabaseDdlRequest {
     /**
      * If empty, the new update request is assigned an
      * automatically-generated operation ID. Otherwise, `operation_id`
@@ -1225,7 +1229,7 @@ declare module "gapi.client.spanner" {
     statements?: string[];
   }
 
-  declare interface spanner$UpdateInstanceMetadata {
+  declare interface gapi$client$spanner$UpdateInstanceMetadata {
     /**
      * The time at which this operation was cancelled. If set, this operation is
      * in the process of undoing itself (which is guaranteed to succeed) and
@@ -1241,7 +1245,7 @@ declare module "gapi.client.spanner" {
     /**
      * The desired end state of the update.
      */
-    instance?: spanner$Instance;
+    instance?: gapi$client$spanner$Instance;
 
     /**
      * The time at which UpdateInstance
@@ -1250,7 +1254,7 @@ declare module "gapi.client.spanner" {
     startTime?: string;
   }
 
-  declare interface spanner$UpdateInstanceRequest {
+  declare interface gapi$client$spanner$UpdateInstanceRequest {
     /**
      * Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.
      * The field mask must always be specified; this prevents any future fields in
@@ -1263,10 +1267,10 @@ declare module "gapi.client.spanner" {
      * Required. The instance to update, which must always include the instance
      * name.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
      */
-    instance?: spanner$Instance;
+    instance?: gapi$client$spanner$Instance;
   }
 
-  declare interface spanner$Write {
+  declare interface gapi$client$spanner$Write {
     /**
      * The names of the columns in table to be written.
      *
@@ -1294,7 +1298,7 @@ declare module "gapi.client.spanner" {
     values?: any[][];
   }
 
-  declare interface spanner$InstanceConfigsResource {
+  declare interface gapi$client$spanner$InstanceConfigsResource {
     /**
      * Gets information about a particular instance configuration.
      */
@@ -1369,7 +1373,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$InstanceConfig>;
+    }): Request<gapi$client$spanner$InstanceConfig>;
 
     /**
      * Lists the supported instance configurations for a given project.
@@ -1459,10 +1463,10 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListInstanceConfigsResponse>;
+    }): Request<gapi$client$spanner$ListInstanceConfigsResponse>;
   }
 
-  declare interface spanner$OperationsResource {
+  declare interface gapi$client$spanner$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -1700,7 +1704,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
+    }): Request<gapi$client$spanner$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -1799,7 +1803,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListOperationsResponse>;
+    }): Request<gapi$client$spanner$ListOperationsResponse>;
 
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
@@ -2038,7 +2042,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
+    }): Request<gapi$client$spanner$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -2137,10 +2141,10 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListOperationsResponse>;
+    }): Request<gapi$client$spanner$ListOperationsResponse>;
   }
 
-  declare interface spanner$SessionsResource {
+  declare interface gapi$client$spanner$SessionsResource {
     /**
      * Begins a new transaction. This step can often be skipped:
      * Read, ExecuteSql and
@@ -2217,7 +2221,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Transaction>;
+    }): Request<gapi$client$spanner$Transaction>;
 
     /**
      * Commits a transaction. The request includes the mutations to be
@@ -2299,7 +2303,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$CommitResponse>;
+    }): Request<gapi$client$spanner$CommitResponse>;
 
     /**
      * Creates a new session. A session can be used to perform
@@ -2392,7 +2396,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Session>;
+    }): Request<gapi$client$spanner$Session>;
 
     /**
      * Ends a session, releasing server resources associated with it.
@@ -2552,7 +2556,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ResultSet>;
+    }): Request<gapi$client$spanner$ResultSet>;
 
     /**
      * Like ExecuteSql, except returns the result
@@ -2631,7 +2635,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$PartialResultSet>;
+    }): Request<gapi$client$spanner$PartialResultSet>;
 
     /**
      * Gets a session. Returns `NOT_FOUND` if the session does not exist.
@@ -2708,7 +2712,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Session>;
+    }): Request<gapi$client$spanner$Session>;
 
     /**
      * Lists all sessions in a given database.
@@ -2810,7 +2814,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListSessionsResponse>;
+    }): Request<gapi$client$spanner$ListSessionsResponse>;
 
     /**
      * Reads rows from the database using key lookups and scans, as a
@@ -2897,7 +2901,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ResultSet>;
+    }): Request<gapi$client$spanner$ResultSet>;
 
     /**
      * Rolls back a transaction, releasing any locks it holds. It is a good
@@ -3058,10 +3062,10 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$PartialResultSet>;
+    }): Request<gapi$client$spanner$PartialResultSet>;
   }
 
-  declare interface spanner$DatabasesResource {
+  declare interface gapi$client$spanner$DatabasesResource {
     /**
      * Creates a new Cloud Spanner database and starts to prepare it for serving.
      * The returned long-running operation will
@@ -3143,7 +3147,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
+    }): Request<gapi$client$spanner$Operation>;
 
     /**
      * Drops (aka deletes) a Cloud Spanner database.
@@ -3294,7 +3298,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Database>;
+    }): Request<gapi$client$spanner$Database>;
 
     /**
      * Returns the schema of a Cloud Spanner database as a list of formatted
@@ -3371,7 +3375,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$GetDatabaseDdlResponse>;
+    }): Request<gapi$client$spanner$GetDatabaseDdlResponse>;
 
     /**
      * Gets the access control policy for a database resource. Returns an empty
@@ -3451,7 +3455,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Policy>;
+    }): Request<gapi$client$spanner$Policy>;
 
     /**
      * Lists Cloud Spanner databases.
@@ -3540,7 +3544,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListDatabasesResponse>;
+    }): Request<gapi$client$spanner$ListDatabasesResponse>;
 
     /**
      * Sets the access control policy on a database resource. Replaces any
@@ -3620,7 +3624,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Policy>;
+    }): Request<gapi$client$spanner$Policy>;
 
     /**
      * Returns permissions that the caller has on the specified database resource.
@@ -3701,7 +3705,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$TestIamPermissionsResponse>;
+    }): Request<gapi$client$spanner$TestIamPermissionsResponse>;
 
     /**
      * Updates the schema of a Cloud Spanner database by
@@ -3782,12 +3786,12 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
-    operations: spanner$OperationsResource;
-    sessions: spanner$SessionsResource;
+    }): Request<gapi$client$spanner$Operation>;
+    operations: gapi$client$spanner$OperationsResource;
+    sessions: gapi$client$spanner$SessionsResource;
   }
 
-  declare interface spanner$InstancesResource {
+  declare interface gapi$client$spanner$InstancesResource {
     /**
      * Creates an instance and begins preparing it to begin serving. The
      * returned long-running operation
@@ -3895,7 +3899,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
+    }): Request<gapi$client$spanner$Operation>;
 
     /**
      * Deletes an instance.
@@ -4057,7 +4061,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Instance>;
+    }): Request<gapi$client$spanner$Instance>;
 
     /**
      * Gets the access control policy for an instance resource. Returns an empty
@@ -4137,7 +4141,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Policy>;
+    }): Request<gapi$client$spanner$Policy>;
 
     /**
      * Lists all instances in the given project.
@@ -4249,7 +4253,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$ListInstancesResponse>;
+    }): Request<gapi$client$spanner$ListInstancesResponse>;
 
     /**
      * Updates an instance, and begins allocating or releasing resources
@@ -4366,7 +4370,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Operation>;
+    }): Request<gapi$client$spanner$Operation>;
 
     /**
      * Sets the access control policy on an instance resource. Replaces any
@@ -4446,7 +4450,7 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$Policy>;
+    }): Request<gapi$client$spanner$Policy>;
 
     /**
      * Returns permissions that the caller has on the specified instance resource.
@@ -4527,13 +4531,13 @@ declare module "gapi.client.spanner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<spanner$TestIamPermissionsResponse>;
-    databases: spanner$DatabasesResource;
-    operations: spanner$OperationsResource;
+    }): Request<gapi$client$spanner$TestIamPermissionsResponse>;
+    databases: gapi$client$spanner$DatabasesResource;
+    operations: gapi$client$spanner$OperationsResource;
   }
 
-  declare interface spanner$ProjectsResource {
-    instanceConfigs: spanner$InstanceConfigsResource;
-    instances: spanner$InstancesResource;
+  declare interface gapi$client$spanner$ProjectsResource {
+    instanceConfigs: gapi$client$spanner$InstanceConfigsResource;
+    instances: gapi$client$spanner$InstancesResource;
   }
 }
