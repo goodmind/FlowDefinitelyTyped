@@ -20,7 +20,22 @@ declare module "maker.js" {
     environmentTypes: typeof MakerJs$environmentTypes,
     environment: typeof MakerJs$environment,
     unitType: typeof MakerJs$unitType,
-    pathType: typeof MakerJs$pathType
+    pathType: typeof MakerJs$pathType,
+
+    Collector: typeof MakerJs$Collector,
+    angle: typeof npm$namespace$MakerJs$angle,
+    point: typeof npm$namespace$MakerJs$point,
+    path: typeof npm$namespace$MakerJs$path,
+    paths: typeof npm$namespace$MakerJs$paths,
+    model: typeof npm$namespace$MakerJs$model,
+    units: typeof npm$namespace$MakerJs$units,
+    measure: typeof npm$namespace$MakerJs$measure,
+    exporter: typeof npm$namespace$MakerJs$exporter,
+    importer: typeof npm$namespace$MakerJs$importer,
+    solvers: typeof npm$namespace$MakerJs$solvers,
+    chain: typeof npm$namespace$MakerJs$chain,
+    kit: typeof npm$namespace$MakerJs$kit,
+    models: typeof npm$namespace$MakerJs$models
   };
 
   /**
@@ -86,7 +101,7 @@ declare module "maker.js" {
     modelContext: MakerJs$IModel,
     routeKeyOrRoute: string | string[]
   ): {
-    MakerJs$path: MakerJs$IPath | MakerJs$IModel,
+    path: MakerJs$IPath | MakerJs$IModel,
     offset: MakerJs$IPoint
   };
 
@@ -173,8 +188,8 @@ declare module "maker.js" {
     /**
      * The center point of the rectangle containing the item being measured.
      */
-    model$center: MakerJs$IPoint
-  } & MakerJs$IMeasure;
+    center: MakerJs$IPoint
+  } & IMeasure;
 
   /**
    * A map of measurements.
@@ -223,7 +238,7 @@ declare module "maker.js" {
      * The end point defining the line. The start point is the origin.
      */
     end: MakerJs$IPoint
-  } & MakerJs$IPath;
+  } & IPath;
 
   /**
    * Test to see if an object implements the required properties of a line.
@@ -245,7 +260,7 @@ declare module "maker.js" {
      * The radius of the circle.
      */
     radius: number
-  } & MakerJs$IPath;
+  } & IPath;
 
   /**
    * Test to see if an object implements the required properties of a circle.
@@ -272,7 +287,7 @@ declare module "maker.js" {
      * The angle (in degrees) to end drawing the arc, in polar (counter-clockwise) direction. May be less than start angle if it past 360.
      */
     endAngle: number
-  } & MakerJs$IPathCircle;
+  } & IPathCircle;
 
   /**
    * Test to see if an object implements the required properties of an arc.
@@ -293,7 +308,7 @@ declare module "maker.js" {
      * T values of the parent if this is a child that represents a split.
      */
     parentRange?: MakerJs$IBezierRange
-  } & MakerJs$IPathLine;
+  } & IPathLine;
 
   /**
    * Bezier t values for an arc path segment in a bezier curve.
@@ -315,7 +330,7 @@ declare module "maker.js" {
    */
   declare type MakerJs$IPathArcInBezierCurve = {
     bezierData: MakerJs$IBezierRange
-  } & MakerJs$IPathArc;
+  } & IPathArc;
 
   /**
    * Test to see if an object implements the required properties of an arc in a bezier curve.
@@ -358,9 +373,9 @@ declare module "maker.js" {
    *      * ```
    */
   declare var MakerJs$pathType: {
-    paths$Line: string,
-    paths$Circle: string,
-    paths$Arc: string,
+    Line: string,
+    Circle: string,
+    Arc: string,
     BezierSeed: string
   };
 
@@ -417,7 +432,7 @@ declare module "maker.js" {
      * Optional output variable which will be set to true if the paths are overlapped.
      */
     path2Offset?: MakerJs$IPoint
-  } & MakerJs$IPathIntersectionBaseOptions;
+  } & IPathIntersectionBaseOptions;
 
   /**
    * An intersection of two paths.
@@ -470,13 +485,13 @@ declare module "maker.js" {
     /**
      * Cached measurements for model A.
      */
-    measureA?: MakerJs$measure.measure$Atlas,
+    measureA?: measure$Atlas,
 
     /**
      * Cached measurements for model B.
      */
-    measureB?: MakerJs$measure.measure$Atlas
-  } & MakerJs$IPointMatchOptions;
+    measureB?: measure$Atlas
+  } & IPointMatchOptions;
 
   /**
    * Options to pass to model.findLoops.
@@ -486,7 +501,7 @@ declare module "maker.js" {
      * Flag to remove looped paths from the original model.
      */
     removeFromOriginal?: boolean
-  } & MakerJs$IPointMatchOptions;
+  } & IPointMatchOptions;
 
   /**
    * Options to pass to model.simplify()
@@ -516,7 +531,7 @@ declare module "maker.js" {
      * Path flows forwards or reverse.
      */
     reversed?: boolean
-  } & MakerJs$IPath;
+  } & IPath;
 
   /**
    * Path objects by id.
@@ -559,17 +574,17 @@ declare module "maker.js" {
     /**
      * Optional array of path objects in this model.
      */
-    MakerJs$paths?: MakerJs$IPathMap;
+    paths?: MakerJs$IPathMap;
 
     /**
      * Optional array of models within this model.
      */
-    MakerJs$models?: MakerJs$IModelMap;
+    models?: MakerJs$IModelMap;
 
     /**
      * Optional unit system of this model. See UnitType for possible values.
      */
-    MakerJs$units?: string;
+    units?: string;
 
     /**
      * An author may wish to add notes to this model instance.
@@ -628,8 +643,8 @@ declare module "maker.js" {
    */
   declare type MakerJs$IWalkPath = {
     pathContext: MakerJs$IPath
-  } & MakerJs$IRefPathIdInModel &
-    MakerJs$IRouteOffset;
+  } & IRefPathIdInModel &
+    IRouteOffset;
 
   /**
    * Callback signature for path in model.walk().
@@ -667,7 +682,7 @@ declare module "maker.js" {
     /**
      * Length of the path.
      */
-    measure$pathLength: number;
+    pathLength: number;
   }
 
   /**
@@ -687,7 +702,7 @@ declare module "maker.js" {
     /**
      * Total length of all paths in the chain.
      */
-    measure$pathLength: number;
+    pathLength: number;
   }
 
   /**
@@ -716,7 +731,7 @@ declare module "maker.js" {
      * Flag to not recurse models, look only within current model's immediate paths.
      */
     shallow?: boolean
-  } & MakerJs$IPointMatchOptions;
+  } & IPointMatchOptions;
 
   /**
    * Reference to a model within a model.
@@ -730,8 +745,7 @@ declare module "maker.js" {
   /**
    * A model reference in a walk.
    */
-  declare type MakerJs$IWalkModel = {} & MakerJs$IRefModelInModel &
-    MakerJs$IRouteOffset;
+  declare type MakerJs$IWalkModel = {} & IRefModelInModel & IRouteOffset;
 
   /**
    * Callback signature for model.walk().
@@ -813,17 +827,17 @@ declare module "maker.js" {
     notes?: string;
   }
 
-  declare var npm$namespace$angle: {
-    noRevolutions: typeof angle$noRevolutions,
-    toRadians: typeof angle$toRadians,
-    toDegrees: typeof angle$toDegrees,
-    ofArcEnd: typeof angle$ofArcEnd,
-    ofArcMiddle: typeof angle$ofArcMiddle,
-    ofArcSpan: typeof angle$ofArcSpan,
-    ofLineInDegrees: typeof angle$ofLineInDegrees,
-    ofPointInDegrees: typeof angle$ofPointInDegrees,
-    ofPointInRadians: typeof angle$ofPointInRadians,
-    mirror: typeof angle$mirror
+  declare var npm$namespace$MakerJs$angle: {
+    noRevolutions: typeof MakerJs$angle$noRevolutions,
+    toRadians: typeof MakerJs$angle$toRadians,
+    toDegrees: typeof MakerJs$angle$toDegrees,
+    ofArcEnd: typeof MakerJs$angle$ofArcEnd,
+    ofArcMiddle: typeof MakerJs$angle$ofArcMiddle,
+    ofArcSpan: typeof MakerJs$angle$ofArcSpan,
+    ofLineInDegrees: typeof MakerJs$angle$ofLineInDegrees,
+    ofPointInDegrees: typeof MakerJs$angle$ofPointInDegrees,
+    ofPointInRadians: typeof MakerJs$angle$ofPointInRadians,
+    mirror: typeof MakerJs$angle$mirror
   };
 
   /**
@@ -831,28 +845,28 @@ declare module "maker.js" {
    * @param angleInDegrees Angle in degrees.
    * @retiurns Same polar angle but not greater than 360 degrees.
    */
-  declare function angle$noRevolutions(angleInDegrees: number): number;
+  declare function MakerJs$angle$noRevolutions(angleInDegrees: number): number;
 
   /**
    * Convert an angle from degrees to radians.
    * @param angleInDegrees Angle in degrees.
    * @returns Angle in radians.
    */
-  declare function angle$toRadians(angleInDegrees: number): number;
+  declare function MakerJs$angle$toRadians(angleInDegrees: number): number;
 
   /**
    * Convert an angle from radians to degrees.
    * @param angleInRadians Angle in radians.
    * @returns Angle in degrees.
    */
-  declare function angle$toDegrees(angleInRadians: number): number;
+  declare function MakerJs$angle$toDegrees(angleInRadians: number): number;
 
   /**
    * Get an arc's end angle, ensured to be greater than its start angle.
    * @param arc An arc path object.
    * @returns End angle of arc.
    */
-  declare function angle$ofArcEnd(arc: MakerJs$IPathArc): number;
+  declare function MakerJs$angle$ofArcEnd(arc: MakerJs$IPathArc): number;
 
   /**
    * Get the angle in the middle of an arc's start and end angles.
@@ -860,7 +874,7 @@ declare module "maker.js" {
    * @param ratio Optional number between 0 and 1 specifying percentage between start and end angles. Default is .5
    * @returns Middle angle of arc.
    */
-  declare function angle$ofArcMiddle(
+  declare function MakerJs$angle$ofArcMiddle(
     arc: MakerJs$IPathArc,
     ratio?: number
   ): number;
@@ -870,14 +884,16 @@ declare module "maker.js" {
    * @param arc The arc to measure.
    * @returns Angle of arc.
    */
-  declare function angle$ofArcSpan(arc: MakerJs$IPathArc): number;
+  declare function MakerJs$angle$ofArcSpan(arc: MakerJs$IPathArc): number;
 
   /**
    * Angle of a line path.
    * @param line The line path to find the angle of.
    * @returns Angle of the line path, in degrees.
    */
-  declare function angle$ofLineInDegrees(line: MakerJs$IPathLine): number;
+  declare function MakerJs$angle$ofLineInDegrees(
+    line: MakerJs$IPathLine
+  ): number;
 
   /**
    * Angle of a line through a point, in degrees.
@@ -885,7 +901,7 @@ declare module "maker.js" {
    * @param origin Point of origin of the angle.
    * @returns Angle of the line throught the point, in degrees.
    */
-  declare function angle$ofPointInDegrees(
+  declare function MakerJs$angle$ofPointInDegrees(
     origin: MakerJs$IPoint,
     pointToFindAngle: MakerJs$IPoint
   ): number;
@@ -896,7 +912,7 @@ declare module "maker.js" {
    * @param origin Point of origin of the angle.
    * @returns Angle of the line throught the point, in radians.
    */
-  declare function angle$ofPointInRadians(
+  declare function MakerJs$angle$ofPointInRadians(
     origin: MakerJs$IPoint,
     pointToFindAngle: MakerJs$IPoint
   ): number;
@@ -908,30 +924,30 @@ declare module "maker.js" {
    * @param mirrorY Boolean to mirror on the y axis.
    * @returns Mirrored angle.
    */
-  declare function angle$mirror(
+  declare function MakerJs$angle$mirror(
     angleInDegrees: number,
     mirrorX: boolean,
     mirrorY: boolean
   ): number;
 
-  declare var npm$namespace$point: {
-    add: typeof point$add,
-    average: typeof point$average,
-    clone: typeof point$clone,
-    closest: typeof point$closest,
-    fromPolar: typeof point$fromPolar,
-    fromAngleOnCircle: typeof point$fromAngleOnCircle,
-    fromArc: typeof point$fromArc,
-    fromPathEnds: typeof point$fromPathEnds,
-    fromSlopeIntersection: typeof point$fromSlopeIntersection,
-    middle: typeof point$middle,
-    mirror: typeof point$mirror,
-    rounded: typeof point$rounded,
-    rotate: typeof point$rotate,
-    scale: typeof point$scale,
-    distort: typeof point$distort,
-    subtract: typeof point$subtract,
-    zero: typeof point$zero
+  declare var npm$namespace$MakerJs$point: {
+    add: typeof MakerJs$point$add,
+    average: typeof MakerJs$point$average,
+    clone: typeof MakerJs$point$clone,
+    closest: typeof MakerJs$point$closest,
+    fromPolar: typeof MakerJs$point$fromPolar,
+    fromAngleOnCircle: typeof MakerJs$point$fromAngleOnCircle,
+    fromArc: typeof MakerJs$point$fromArc,
+    fromPathEnds: typeof MakerJs$point$fromPathEnds,
+    fromSlopeIntersection: typeof MakerJs$point$fromSlopeIntersection,
+    middle: typeof MakerJs$point$middle,
+    mirror: typeof MakerJs$point$mirror,
+    rounded: typeof MakerJs$point$rounded,
+    rotate: typeof MakerJs$point$rotate,
+    scale: typeof MakerJs$point$scale,
+    distort: typeof MakerJs$point$distort,
+    subtract: typeof MakerJs$point$subtract,
+    zero: typeof MakerJs$point$zero
   };
 
   /**
@@ -941,10 +957,10 @@ declare module "maker.js" {
    * @param subtract Optional boolean to subtract instead of add.
    * @returns A new point object.
    */
-  declare function point$add(
+  declare function MakerJs$point$add(
     a: MakerJs$IPoint,
     b: MakerJs$IPoint,
-    point$subtract?: boolean
+    subtract?: boolean
   ): MakerJs$IPoint;
 
   /**
@@ -953,7 +969,7 @@ declare module "maker.js" {
    * @param b Second point.
    * @returns New point object which is the average of a and b.
    */
-  declare function point$average(
+  declare function MakerJs$point$average(
     a: MakerJs$IPoint,
     b: MakerJs$IPoint
   ): MakerJs$IPoint;
@@ -963,7 +979,9 @@ declare module "maker.js" {
    * @param pointToClone The point to clone.
    * @returns A new point with same values as the original.
    */
-  declare function point$clone(pointToClone: MakerJs$IPoint): MakerJs$IPoint;
+  declare function MakerJs$point$clone(
+    pointToClone: MakerJs$IPoint
+  ): MakerJs$IPoint;
 
   /**
    * From an array of points, find the closest point to a given reference point.
@@ -971,7 +989,7 @@ declare module "maker.js" {
    * @param pointOptions Array of points to choose from.
    * @returns The first closest point from the pointOptions.
    */
-  declare function point$closest(
+  declare function MakerJs$point$closest(
     referencePoint: MakerJs$IPoint,
     pointOptions: MakerJs$IPoint[]
   ): MakerJs$IPoint;
@@ -982,7 +1000,7 @@ declare module "maker.js" {
    * @param radius The radius of the polar coordinate.
    * @returns A new point object.
    */
-  declare function point$fromPolar(
+  declare function MakerJs$point$fromPolar(
     angleInRadians: number,
     radius: number
   ): MakerJs$IPoint;
@@ -993,7 +1011,7 @@ declare module "maker.js" {
    * @param circle A circle or arc.
    * @returns A new point object.
    */
-  declare function point$fromAngleOnCircle(
+  declare function MakerJs$point$fromAngleOnCircle(
     angleInDegrees: number,
     circle: MakerJs$IPathCircle
   ): MakerJs$IPoint;
@@ -1003,14 +1021,16 @@ declare module "maker.js" {
    * @param arc The arc path object.
    * @returns Array with 2 elements: [0] is the point object corresponding to the start angle, [1] is the point object corresponding to the end angle.
    */
-  declare function point$fromArc(arc: MakerJs$IPathArc): MakerJs$IPoint[];
+  declare function MakerJs$point$fromArc(
+    arc: MakerJs$IPathArc
+  ): MakerJs$IPoint[];
 
   /**
    * Get the two end points of a path.
    * @param pathContext The path object.
    * @returns Array with 2 elements: [0] is the point object corresponding to the origin, [1] is the point object corresponding to the end.
    */
-  declare function point$fromPathEnds(
+  declare function MakerJs$point$fromPathEnds(
     pathContext: MakerJs$IPath,
     pathOffset?: MakerJs$IPoint
   ): MakerJs$IPoint[];
@@ -1022,7 +1042,7 @@ declare module "maker.js" {
    * @param options Optional IPathIntersectionOptions.
    * @returns point of intersection of the two slopes, or null if the slopes did not intersect.
    */
-  declare function point$fromSlopeIntersection(
+  declare function MakerJs$point$fromSlopeIntersection(
     lineA: MakerJs$IPathLine,
     lineB: MakerJs$IPathLine,
     options?: MakerJs$IPathIntersectionBaseOptions
@@ -1034,7 +1054,7 @@ declare module "maker.js" {
    * @param ratio Optional ratio (between 0 and 1) of point along the path. Default is .5 for middle.
    * @returns Point on the path, in the middle of the path.
    */
-  declare function point$middle(
+  declare function MakerJs$point$middle(
     pathContext: MakerJs$IPath,
     ratio?: number
   ): MakerJs$IPoint;
@@ -1046,7 +1066,7 @@ declare module "maker.js" {
    * @param mirrorY Boolean to mirror on the y axis.
    * @returns Mirrored point.
    */
-  declare function point$mirror(
+  declare function MakerJs$point$mirror(
     pointToMirror: MakerJs$IPoint,
     mirrorX: boolean,
     mirrorY: boolean
@@ -1058,7 +1078,7 @@ declare module "maker.js" {
    * @param accuracy Optional exemplar number of decimal places.
    * @returns A new point with the values rounded.
    */
-  declare function point$rounded(
+  declare function MakerJs$point$rounded(
     pointContext: MakerJs$IPoint,
     accuracy?: number
   ): MakerJs$IPoint;
@@ -1070,7 +1090,7 @@ declare module "maker.js" {
    * @param rotationOrigin The center point of rotation.
    * @returns A new point.
    */
-  declare function point$rotate(
+  declare function MakerJs$point$rotate(
     pointToRotate: MakerJs$IPoint,
     angleInDegrees: number,
     rotationOrigin?: MakerJs$IPoint
@@ -1082,7 +1102,7 @@ declare module "maker.js" {
    * @param scaleValue The amount of scaling.
    * @returns A new point.
    */
-  declare function point$scale(
+  declare function MakerJs$point$scale(
     pointToScale: MakerJs$IPoint,
     scaleValue: number
   ): MakerJs$IPoint;
@@ -1094,7 +1114,7 @@ declare module "maker.js" {
    * @param scaleY The amount of y scaling.
    * @returns A new point.
    */
-  declare function point$distort(
+  declare function MakerJs$point$distort(
     pointToDistort: MakerJs$IPoint,
     scaleX: number,
     scaleY: number
@@ -1106,7 +1126,7 @@ declare module "maker.js" {
    * @param b Second point.
    * @returns A new point object.
    */
-  declare function point$subtract(
+  declare function MakerJs$point$subtract(
     a: MakerJs$IPoint,
     b: MakerJs$IPoint
   ): MakerJs$IPoint;
@@ -1116,11 +1136,11 @@ declare module "maker.js" {
    * NOTE: It is important to call this as a method, with the empty parentheses.
    * @returns A new point.
    */
-  declare function point$zero(): MakerJs$IPoint;
+  declare function MakerJs$point$zero(): MakerJs$IPoint;
 
-  declare var npm$namespace$path: {
-    dogbone: typeof path$dogbone,
-    fillet: typeof path$fillet
+  declare var npm$namespace$MakerJs$path: {
+    dogbone: typeof MakerJs$path$dogbone,
+    fillet: typeof MakerJs$path$fillet
   };
 
   /**
@@ -1129,7 +1149,7 @@ declare module "maker.js" {
    * @param lineB Second line to fillet, which will be modified to fit the fillet.
    * @returns Arc path object of the new fillet.
    */
-  declare function path$dogbone(
+  declare function MakerJs$path$dogbone(
     lineA: MakerJs$IPathLine,
     lineB: MakerJs$IPathLine,
     filletRadius: number,
@@ -1144,17 +1164,25 @@ declare module "maker.js" {
    * @param options Optional IPointMatchOptions object to specify pointMatchingDistance.
    * @returns Arc path object of the new fillet.
    */
-  declare function path$fillet(
+  declare function MakerJs$path$fillet(
     pathA: MakerJs$IPath,
     pathB: MakerJs$IPath,
     filletRadius: number,
     options?: MakerJs$IPointMatchOptions
   ): MakerJs$IPathArc;
 
+  declare var npm$namespace$MakerJs$paths: {
+    Arc: typeof MakerJs$paths$Arc,
+    Circle: typeof MakerJs$paths$Circle,
+    Line: typeof MakerJs$paths$Line,
+    Chord: typeof MakerJs$paths$Chord,
+    Parallel: typeof MakerJs$paths$Parallel
+  };
+
   /**
    * Class for arc path.
    */
-  declare class paths$Arc mixins MakerJs$IPathArc {
+  declare class MakerJs$paths$Arc mixins IPathArc {
     origin: MakerJs$IPoint;
     radius: number;
     startAngle: number;
@@ -1219,7 +1247,7 @@ declare module "maker.js" {
   /**
    * Class for circle path.
    */
-  declare class paths$Circle mixins MakerJs$IPathCircle {
+  declare class MakerJs$paths$Circle mixins IPathCircle {
     type: string;
     origin: MakerJs$IPoint;
     radius: number;
@@ -1280,7 +1308,7 @@ declare module "maker.js" {
   /**
    * Class for line path.
    */
-  declare class paths$Line mixins MakerJs$IPathLine {
+  declare class MakerJs$paths$Line mixins IPathLine {
     type: string;
     origin: MakerJs$IPoint;
     end: MakerJs$IPoint;
@@ -1303,7 +1331,7 @@ declare module "maker.js" {
    * Class for chord, which is simply a line path that connects the endpoints of an arc.
    * @param arc Arc to use as the basic for the chord.
    */
-  declare class paths$Chord mixins MakerJs$IPathLine {
+  declare class MakerJs$paths$Chord mixins IPathLine {
     type: string;
     origin: MakerJs$IPoint;
     end: MakerJs$IPoint;
@@ -1316,7 +1344,7 @@ declare module "maker.js" {
    * @param distance Distance between parallel and original line.
    * @param nearPoint Any point to determine which side of the line to place the parallel.
    */
-  declare class paths$Parallel mixins MakerJs$IPathLine {
+  declare class MakerJs$paths$Parallel mixins IPathLine {
     type: string;
     origin: MakerJs$IPoint;
     end: MakerJs$IPoint;
@@ -1327,10 +1355,10 @@ declare module "maker.js" {
     ): this;
   }
 
-  declare var npm$namespace$model: {
-    findLoops: typeof model$findLoops,
-    detachLoop: typeof model$detachLoop,
-    removeDeadEnds: typeof model$removeDeadEnds
+  declare var npm$namespace$MakerJs$model: {
+    findLoops: typeof MakerJs$model$findLoops,
+    detachLoop: typeof MakerJs$model$detachLoop,
+    removeDeadEnds: typeof MakerJs$model$removeDeadEnds
   };
 
   /**
@@ -1339,7 +1367,7 @@ declare module "maker.js" {
    * @param options Optional options object.
    * @returns A new model with child models ranked according to their containment within other found loops. The paths of models will be IPathDirectionalWithPrimeContext.
    */
-  declare function model$findLoops(
+  declare function MakerJs$model$findLoops(
     modelContext: MakerJs$IModel,
     options?: MakerJs$IFindLoopsOptions
   ): MakerJs$IModel;
@@ -1348,7 +1376,7 @@ declare module "maker.js" {
    * Remove all paths in a loop model from the model(s) which contained them.
    * @param loopToDetach The model to search for loops.
    */
-  declare function model$detachLoop(loopToDetach: MakerJs$IModel): void;
+  declare function MakerJs$model$detachLoop(loopToDetach: MakerJs$IModel): void;
 
   /**
    * Remove paths from a model which have endpoints that do not connect to other paths.
@@ -1356,7 +1384,7 @@ declare module "maker.js" {
    * @param options Optional options object.
    * @returns The input model (for cascading).
    */
-  declare function model$removeDeadEnds(
+  declare function MakerJs$model$removeDeadEnds(
     modelContext: MakerJs$IModel,
     pointMatchingDistance?: any,
     keep?: MakerJs$IWalkPathBooleanCallback
@@ -1390,8 +1418,8 @@ declare module "maker.js" {
     getCollectionsOfMultiple(cb: (key: K, items: T[]) => void): void;
   }
 
-  declare var npm$namespace$units: {
-    conversionScale: typeof units$conversionScale
+  declare var npm$namespace$MakerJs$units: {
+    conversionScale: typeof MakerJs$units$conversionScale
   };
 
   /**
@@ -1400,27 +1428,29 @@ declare module "maker.js" {
    * @param destUnitType unitType converting to.
    * @returns Numeric ratio of the conversion.
    */
-  declare function units$conversionScale(
+  declare function MakerJs$units$conversionScale(
     srcUnitType: string,
     destUnitType: string
   ): number;
 
-  declare var npm$namespace$measure: {
-    increase: typeof measure$increase,
-    isArcConcaveTowardsPoint: typeof measure$isArcConcaveTowardsPoint,
-    isArcOverlapping: typeof measure$isArcOverlapping,
-    isBetween: typeof measure$isBetween,
-    isBetweenArcAngles: typeof measure$isBetweenArcAngles,
-    isBetweenPoints: typeof measure$isBetweenPoints,
-    isBezierSeedLinear: typeof measure$isBezierSeedLinear,
-    isLineOverlapping: typeof measure$isLineOverlapping,
-    isMeasurementOverlapping: typeof measure$isMeasurementOverlapping,
-    lineSlope: typeof measure$lineSlope,
-    pointDistance: typeof measure$pointDistance,
-    pathExtents: typeof measure$pathExtents,
-    pathLength: typeof measure$pathLength,
-    modelExtents: typeof measure$modelExtents,
-    boundingHexagon: typeof measure$boundingHexagon
+  declare var npm$namespace$MakerJs$measure: {
+    increase: typeof MakerJs$measure$increase,
+    isArcConcaveTowardsPoint: typeof MakerJs$measure$isArcConcaveTowardsPoint,
+    isArcOverlapping: typeof MakerJs$measure$isArcOverlapping,
+    isBetween: typeof MakerJs$measure$isBetween,
+    isBetweenArcAngles: typeof MakerJs$measure$isBetweenArcAngles,
+    isBetweenPoints: typeof MakerJs$measure$isBetweenPoints,
+    isBezierSeedLinear: typeof MakerJs$measure$isBezierSeedLinear,
+    isLineOverlapping: typeof MakerJs$measure$isLineOverlapping,
+    isMeasurementOverlapping: typeof MakerJs$measure$isMeasurementOverlapping,
+    lineSlope: typeof MakerJs$measure$lineSlope,
+    pointDistance: typeof MakerJs$measure$pointDistance,
+    pathExtents: typeof MakerJs$measure$pathExtents,
+    pathLength: typeof MakerJs$measure$pathLength,
+    modelExtents: typeof MakerJs$measure$modelExtents,
+    boundingHexagon: typeof MakerJs$measure$boundingHexagon,
+
+    Atlas: typeof MakerJs$measure$Atlas
   };
 
   /**
@@ -1430,7 +1460,7 @@ declare module "maker.js" {
    * @param addOffset Optional offset point of the additional measurement.
    * @returns The increased original measurement (for cascading).
    */
-  declare function measure$increase(
+  declare function MakerJs$measure$increase(
     baseMeasure: MakerJs$IMeasure,
     addMeasure: MakerJs$IMeasure
   ): MakerJs$IMeasure;
@@ -1441,7 +1471,7 @@ declare module "maker.js" {
    * @param towardsPoint The point to test.
    * @returns Boolean true if arc is concave towards point.
    */
-  declare function measure$isArcConcaveTowardsPoint(
+  declare function MakerJs$measure$isArcConcaveTowardsPoint(
     arc: MakerJs$IPathArc,
     towardsPoint: MakerJs$IPoint
   ): boolean;
@@ -1453,7 +1483,7 @@ declare module "maker.js" {
    * @param excludeTangents Boolean to exclude exact endpoints and only look for deep overlaps.
    * @returns Boolean true if arcA is overlapped with arcB.
    */
-  declare function measure$isArcOverlapping(
+  declare function MakerJs$measure$isArcOverlapping(
     arcA: MakerJs$IPathArc,
     arcB: MakerJs$IPathArc,
     excludeTangents: boolean
@@ -1467,7 +1497,7 @@ declare module "maker.js" {
    * @param exclusive Flag to exclude equaling the limits.
    * @returns Boolean true if value is between (or equal to) the limits.
    */
-  declare function measure$isBetween(
+  declare function MakerJs$measure$isBetween(
     valueInQuestion: number,
     limitA: number,
     limitB: number,
@@ -1481,7 +1511,7 @@ declare module "maker.js" {
    * @param exclusive Flag to exclude equaling the start or end angles.
    * @returns Boolean true if angle is between (or equal to) the arc's start and end angles.
    */
-  declare function measure$isBetweenArcAngles(
+  declare function MakerJs$measure$isBetweenArcAngles(
     angleInQuestion: number,
     arc: MakerJs$IPathArc,
     exclusive: boolean
@@ -1494,7 +1524,7 @@ declare module "maker.js" {
    * @param exclusive Flag to exclude equaling the origin or end points.
    * @returns Boolean true if point is between (or equal to) the line's origin and end points.
    */
-  declare function measure$isBetweenPoints(
+  declare function MakerJs$measure$isBetweenPoints(
     pointInQuestion: MakerJs$IPoint,
     line: MakerJs$IPathLine,
     exclusive: boolean
@@ -1505,7 +1535,7 @@ declare module "maker.js" {
    * @param seed The bezier seed to test.
    * @returns Boolean true if bezier seed has control points on the line slope and between the line endpoints.
    */
-  declare function measure$isBezierSeedLinear(
+  declare function MakerJs$measure$isBezierSeedLinear(
     seed: MakerJs$IPathBezierSeed
   ): boolean;
 
@@ -1516,7 +1546,7 @@ declare module "maker.js" {
    * @param excludeTangents Boolean to exclude exact endpoints and only look for deep overlaps.
    * @returns Boolean true if lineA is overlapped with lineB.
    */
-  declare function measure$isLineOverlapping(
+  declare function MakerJs$measure$isLineOverlapping(
     lineA: MakerJs$IPathLine,
     lineB: MakerJs$IPathLine,
     excludeTangents: boolean
@@ -1528,7 +1558,7 @@ declare module "maker.js" {
    * @param measureB The measurement to check for overlap.
    * @returns Boolean true if measureA is overlapped with measureB.
    */
-  declare function measure$isMeasurementOverlapping(
+  declare function MakerJs$measure$isMeasurementOverlapping(
     measureA: MakerJs$IMeasure,
     measureB: MakerJs$IMeasure
   ): boolean;
@@ -1536,7 +1566,9 @@ declare module "maker.js" {
   /**
    * Gets the slope of a line.
    */
-  declare function measure$lineSlope(line: MakerJs$IPathLine): MakerJs$ISlope;
+  declare function MakerJs$measure$lineSlope(
+    line: MakerJs$IPathLine
+  ): MakerJs$ISlope;
 
   /**
    * Calculates the distance between two points.
@@ -1544,7 +1576,7 @@ declare module "maker.js" {
    * @param b Second point.
    * @returns Distance between points.
    */
-  declare function measure$pointDistance(
+  declare function MakerJs$measure$pointDistance(
     a: MakerJs$IPoint,
     b: MakerJs$IPoint
   ): number;
@@ -1554,7 +1586,7 @@ declare module "maker.js" {
    * @param pathToMeasure The path to measure.
    * @returns object with low and high points.
    */
-  declare function measure$pathExtents(
+  declare function MakerJs$measure$pathExtents(
     pathToMeasure: MakerJs$IPath,
     addOffset?: MakerJs$IPoint
   ): MakerJs$IMeasure;
@@ -1564,7 +1596,9 @@ declare module "maker.js" {
    * @param pathToMeasure The path to measure.
    * @returns Length of the path.
    */
-  declare function measure$pathLength(pathToMeasure: MakerJs$IPath): number;
+  declare function MakerJs$measure$pathLength(
+    pathToMeasure: MakerJs$IPath
+  ): number;
 
   /**
    * Measures the smallest rectangle which contains a model.
@@ -1572,9 +1606,9 @@ declare module "maker.js" {
    * @param atlas Optional atlas to save measurements.
    * @returns object with low and high points.
    */
-  declare function measure$modelExtents(
+  declare function MakerJs$measure$modelExtents(
     modelToMeasure: MakerJs$IModel,
-    atlas?: MakerJs$measure.measure$Atlas
+    atlas?: measure$Atlas
   ): MakerJs$IMeasureWithCenter;
 
   /**
@@ -1583,7 +1617,7 @@ declare module "maker.js" {
    * @param atlas Optional atlas to save measurements.
    * @returns object with low and high points.
    */
-  declare class measure$Atlas {
+  declare class MakerJs$measure$Atlas {
     modelContext: MakerJs$IModel;
 
     /**
@@ -1612,49 +1646,49 @@ declare module "maker.js" {
   /**
    * A hexagon which surrounds a model.
    */
-  declare type measure$IBoundingHex = {
+  declare type MakerJs$measure$IBoundingHex = {
     /**
      * Radius of the hexagon, which is also the length of a side.
      */
     radius: number
-  } & MakerJs$IModel;
+  } & IModel;
 
   /**
    * Measures the minimum bounding hexagon surrounding a model. The hexagon is oriented such that the right and left sides are vertical, and the top and bottom are pointed.
    * @param modelToMeasure The model to measure.
    * @returns IBoundingHex object which is a hexagon model, with an additional radius property.
    */
-  declare function measure$boundingHexagon(
+  declare function MakerJs$measure$boundingHexagon(
     modelToMeasure: MakerJs$IModel
-  ): measure$IBoundingHex;
+  ): MakerJs$measure$IBoundingHex;
 
-  declare var npm$namespace$exporter: {
-    chainToSVGPathData: typeof exporter$chainToSVGPathData,
-    pathToSVGPathData: typeof exporter$pathToSVGPathData,
-    toSVGPathData: typeof exporter$toSVGPathData,
-    toSVG: typeof exporter$toSVG,
-    svgUnit: typeof exporter$svgUnit
+  declare var npm$namespace$MakerJs$exporter: {
+    chainToSVGPathData: typeof MakerJs$exporter$chainToSVGPathData,
+    pathToSVGPathData: typeof MakerJs$exporter$pathToSVGPathData,
+    toSVGPathData: typeof MakerJs$exporter$toSVGPathData,
+    toSVG: typeof MakerJs$exporter$toSVG,
+    svgUnit: typeof MakerJs$exporter$svgUnit
   };
 
   /**
    * Map of SVG Path Data by layer name.
    */
-  declare interface exporter$IPathDataByLayerMap {
+  declare interface MakerJs$exporter$IPathDataByLayerMap {
     [layer: string]: string;
   }
 
   /**
    * Convert a chain to SVG path data.
    */
-  declare function exporter$chainToSVGPathData(
-    MakerJs$chain: MakerJs$IChain,
+  declare function MakerJs$exporter$chainToSVGPathData(
+    chain: MakerJs$IChain,
     offset: MakerJs$IPoint
   ): string;
 
   /**
    * Convert a path to SVG path data.
    */
-  declare function exporter$pathToSVGPathData(
+  declare function MakerJs$exporter$pathToSVGPathData(
     pathToExport: MakerJs$IPath,
     offset: MakerJs$IPoint,
     offset2: MakerJs$IPoint
@@ -1667,23 +1701,23 @@ declare module "maker.js" {
    * @param origin Optional reference origin.
    * @returns String of SVG path data (if byLayers is false) or an object map of path data by layer .
    */
-  declare function exporter$toSVGPathData(
+  declare function MakerJs$exporter$toSVGPathData(
     modelToExport: MakerJs$IModel,
     byLayers?: boolean,
     origin?: MakerJs$IPoint
-  ): exporter$IPathDataByLayerMap | string;
+  ): MakerJs$exporter$IPathDataByLayerMap | string;
 
-  declare function exporter$toSVG(
+  declare function MakerJs$exporter$toSVG(
     modelToExport: MakerJs$IModel,
     options?: exporter$ISVGRenderOptions
   ): string;
 
-  declare function exporter$toSVG(
+  declare function MakerJs$exporter$toSVG(
     pathsToExport: MakerJs$IPath[],
     options?: exporter$ISVGRenderOptions
   ): string;
 
-  declare function exporter$toSVG(
+  declare function MakerJs$exporter$toSVG(
     pathToExport: MakerJs$IPath,
     options?: exporter$ISVGRenderOptions
   ): string;
@@ -1691,8 +1725,8 @@ declare module "maker.js" {
   /**
    * Map of MakerJs unit system to SVG unit system
    */
-  declare interface exporter$svgUnitConversion {
-    [MakerJs$unitType: string]: {
+  declare interface MakerJs$exporter$svgUnitConversion {
+    [unitType: string]: {
       svgUnitType: string,
       scaleConversion: number
     };
@@ -1701,12 +1735,12 @@ declare module "maker.js" {
   /**
    * Map of MakerJs unit system to SVG unit system
    */
-  declare var exporter$svgUnit: exporter$svgUnitConversion;
+  declare var MakerJs$exporter$svgUnit: MakerJs$exporter$svgUnitConversion;
 
   /**
    * SVG rendering options.
    */
-  declare type exporter$ISVGRenderOptions = {
+  declare type MakerJs$exporter$ISVGRenderOptions = {
     /**
      * Optional attributes to add to the root svg tag.
      */
@@ -1735,7 +1769,7 @@ declare module "maker.js" {
     /**
      * Scale of the SVG rendering.
      */
-    point$scale?: number,
+    scale?: number,
 
     /**
      * Indicate that the id's of paths should be rendered as SVG text elements.
@@ -1756,16 +1790,18 @@ declare module "maker.js" {
      * Flag to use SVG viewbox.
      */
     viewBox?: boolean
-  } & exporter$IExportOptions;
+  } & IExportOptions;
 
-  declare var npm$namespace$importer: {
-    fromSVGPathData: typeof importer$fromSVGPathData
+  declare var npm$namespace$MakerJs$importer: {
+    fromSVGPathData: typeof MakerJs$importer$fromSVGPathData
   };
-  declare function importer$fromSVGPathData(pathData: string): MakerJs$IModel;
+  declare function MakerJs$importer$fromSVGPathData(
+    pathData: string
+  ): MakerJs$IModel;
 
-  declare var npm$namespace$solvers: {
-    solveTriangleSSS: typeof solvers$solveTriangleSSS,
-    solveTriangleASA: typeof solvers$solveTriangleASA
+  declare var npm$namespace$MakerJs$solvers: {
+    solveTriangleSSS: typeof MakerJs$solvers$solveTriangleSSS,
+    solveTriangleASA: typeof MakerJs$solvers$solveTriangleASA
   };
 
   /**
@@ -1775,7 +1811,7 @@ declare module "maker.js" {
    * @param lengthC Length of the remaining side of the triangle.
    * @returns Angle opposite of the side represented by the first parameter.
    */
-  declare function solvers$solveTriangleSSS(
+  declare function MakerJs$solvers$solveTriangleSSS(
     lengthA: number,
     lengthB: number,
     lengthC: number
@@ -1788,18 +1824,18 @@ declare module "maker.js" {
    * @param otherAngleInDegrees An other angle of the triangle.
    * @returns Length of the side of the triangle which is opposite of the first angle parameter.
    */
-  declare function solvers$solveTriangleASA(
+  declare function MakerJs$solvers$solveTriangleASA(
     oppositeAngleInDegrees: number,
     lengthOfSideBetweenAngles: number,
     otherAngleInDegrees: number
   ): number;
 
-  declare var npm$namespace$chain: {
-    cycle: typeof chain$cycle,
-    reverse: typeof chain$reverse,
-    startAt: typeof chain$startAt,
-    toPoints: typeof chain$toPoints,
-    toKeyPoints: typeof chain$toKeyPoints
+  declare var npm$namespace$MakerJs$chain: {
+    cycle: typeof MakerJs$chain$cycle,
+    reverse: typeof MakerJs$chain$reverse,
+    startAt: typeof MakerJs$chain$startAt,
+    toPoints: typeof MakerJs$chain$toPoints,
+    toKeyPoints: typeof MakerJs$chain$toKeyPoints
   };
 
   /**
@@ -1808,7 +1844,7 @@ declare module "maker.js" {
    * @param amount Optional number of links to shift. May be negative to cycle backwards.
    * @returns The chainContext for cascading.
    */
-  declare function chain$cycle(
+  declare function MakerJs$chain$cycle(
     chainContext: MakerJs$IChain,
     amount?: number
   ): MakerJs$IChain;
@@ -1818,7 +1854,9 @@ declare module "maker.js" {
    * @param chainContext Chain to reverse.
    * @returns The chainContext for cascading.
    */
-  declare function chain$reverse(chainContext: MakerJs$IChain): MakerJs$IChain;
+  declare function MakerJs$chain$reverse(
+    chainContext: MakerJs$IChain
+  ): MakerJs$IChain;
 
   /**
    * Set the beginning of an endless chain to a known routeKey of a path.
@@ -1826,7 +1864,7 @@ declare module "maker.js" {
    * @param routeKey RouteKey of the desired path to start the chain with.
    * @returns The chainContext for cascading.
    */
-  declare function chain$startAt(
+  declare function MakerJs$chain$startAt(
     chainContext: MakerJs$IChain,
     routeKey: string
   ): MakerJs$IChain;
@@ -1838,7 +1876,7 @@ declare module "maker.js" {
    * @param maxPoints Maximum number of points to retrieve.
    * @returns Array of points which are on the chain spread at a uniform interval.
    */
-  declare function chain$toPoints(
+  declare function MakerJs$chain$toPoints(
     chainContext: MakerJs$IChain,
     distance: number,
     maxPoints?: number
@@ -1850,14 +1888,14 @@ declare module "maker.js" {
    * @param maxArcFacet The maximum length between points on an arc or circle.
    * @returns Array of points which are on the chain.
    */
-  declare function chain$toKeyPoints(
+  declare function MakerJs$chain$toKeyPoints(
     chainContext: MakerJs$IChain,
     maxArcFacet?: number
   ): MakerJs$IPoint[];
 
-  declare var npm$namespace$kit: {
-    construct: typeof kit$construct,
-    getParameterValues: typeof kit$getParameterValues
+  declare var npm$namespace$MakerJs$kit: {
+    construct: typeof MakerJs$kit$construct,
+    getParameterValues: typeof MakerJs$kit$getParameterValues
   };
 
   /**
@@ -1866,25 +1904,31 @@ declare module "maker.js" {
    * @param args The array of parameters passed to the constructor.
    * @returns A new instance of the class, which implements the IModel interface.
    */
-  declare function kit$construct(ctor: MakerJs$IKit, args: any): MakerJs$IModel;
+  declare function MakerJs$kit$construct(
+    ctor: MakerJs$IKit,
+    args: any
+  ): MakerJs$IModel;
 
   /**
    * Extract just the initial sample values from a kit.
    * @param ctor The constructor for the class which is an IKit.
    * @returns Array of the inital sample values provided in the metaParameters array.
    */
-  declare function kit$getParameterValues(ctor: MakerJs$IKit): any[];
+  declare function MakerJs$kit$getParameterValues(ctor: MakerJs$IKit): any[];
 
-  declare class models$Text mixins MakerJs$IModel {
+  declare var npm$namespace$MakerJs$models: {
+    Text: typeof MakerJs$models$Text
+  };
+  declare class MakerJs$models$Text mixins IModel {
     MakerJs$models: MakerJs$IModelMap;
     constructor(
       font: opentype.Font,
       text: string,
       fontSize: number,
-      model$combine?: boolean,
+      combine?: boolean,
       centerCharacterOrigin?: boolean,
       bezierAccuracy?: number
     ): this;
   }
-  declare var Bezier: typeof undefined;
+  declare var Bezier: typeof BezierJs.Bezier;
 }
