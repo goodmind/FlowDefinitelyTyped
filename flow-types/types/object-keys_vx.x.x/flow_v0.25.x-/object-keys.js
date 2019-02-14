@@ -6,5 +6,5 @@ declare module "object-keys" {
   };
   declare function objectKeys$shim(): typeof objectKeys;
 
-  declare module.exports: typeof objectKeys;
+  declare export default typeof objectKeys;
 }
