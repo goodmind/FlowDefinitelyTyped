@@ -1,69 +1,76 @@
-declare var npm$namespace$AFRAME: {
-  AComponent: typeof AFRAME$AComponent,
-  AEntity: typeof AFRAME$AEntity,
-  ANode: typeof AFRAME$ANode,
-  AScene: typeof AFRAME$AScene,
-  components: typeof AFRAME$components,
-  geometries: typeof AFRAME$geometries,
-  primitives: typeof AFRAME$primitives,
-  scenes: typeof AFRAME$scenes,
-  schema: typeof AFRAME$schema,
-  shaders: typeof AFRAME$shaders,
-  systems: typeof AFRAME$systems,
-  THREE: typeof AFRAME$THREE,
-  TWEEN: typeof AFRAME$TWEEN,
-  utils: typeof AFRAME$utils,
-  version: typeof AFRAME$version,
-  registerComponent: typeof AFRAME$registerComponent,
-  registerElement: typeof AFRAME$registerElement,
-  registerGeometry: typeof AFRAME$registerGeometry,
-  registerPrimitive: typeof AFRAME$registerPrimitive,
-  registerShader: typeof AFRAME$registerShader,
-  registerSystem: typeof AFRAME$registerSystem
-};
-declare var AFRAME$AComponent: $ElementType<AFrame, "AComponent">;
-
-declare var AFRAME$AEntity: $ElementType<AFrame, "AEntity">;
-
-declare var AFRAME$ANode: $ElementType<AFrame, "ANode">;
-
-declare var AFRAME$AScene: $ElementType<AFrame, "AScene">;
-
-declare var AFRAME$components: $ElementType<AFrame, "components">;
-
-declare var AFRAME$geometries: $ElementType<AFrame, "geometries">;
-
-declare var AFRAME$primitives: $ElementType<AFrame, "primitives">;
-
-declare var AFRAME$scenes: $ElementType<AFrame, "scenes">;
-
-declare var AFRAME$schema: $ElementType<AFrame, "schema">;
-
-declare var AFRAME$shaders: $ElementType<AFrame, "shaders">;
-
-declare var AFRAME$systems: $ElementType<AFrame, "systems">;
-
-declare var AFRAME$THREE: $ElementType<AFrame, "THREE">;
-
-declare var AFRAME$TWEEN: $ElementType<AFrame, "TWEEN">;
-
-declare var AFRAME$utils: $ElementType<AFrame, "utils">;
-
-declare var AFRAME$version: string;
-
-declare var AFRAME$registerComponent: $ElementType<AFrame, "registerComponent">;
-
-declare var AFRAME$registerElement: $ElementType<AFrame, "registerElement">;
-
-declare var AFRAME$registerGeometry: $ElementType<AFrame, "registerGeometry">;
-
-declare var AFRAME$registerPrimitive: $ElementType<AFrame, "registerPrimitive">;
-
-declare var AFRAME$registerShader: $ElementType<AFrame, "registerShader">;
-
-declare var AFRAME$registerSystem: $ElementType<AFrame, "registerSystem">;
 declare module "global" {
   declare var hasNativeWebVRImplementation: boolean;
+
+  declare var npm$namespace$AFRAME: {
+    AComponent: typeof AFRAME$AComponent,
+    AEntity: typeof AFRAME$AEntity,
+    ANode: typeof AFRAME$ANode,
+    AScene: typeof AFRAME$AScene,
+    components: typeof AFRAME$components,
+    geometries: typeof AFRAME$geometries,
+    primitives: typeof AFRAME$primitives,
+    scenes: typeof AFRAME$scenes,
+    schema: typeof AFRAME$schema,
+    shaders: typeof AFRAME$shaders,
+    systems: typeof AFRAME$systems,
+    THREE: typeof AFRAME$THREE,
+    TWEEN: typeof AFRAME$TWEEN,
+    utils: typeof AFRAME$utils,
+    version: typeof AFRAME$version,
+    registerComponent: typeof AFRAME$registerComponent,
+    registerElement: typeof AFRAME$registerElement,
+    registerGeometry: typeof AFRAME$registerGeometry,
+    registerPrimitive: typeof AFRAME$registerPrimitive,
+    registerShader: typeof AFRAME$registerShader,
+    registerSystem: typeof AFRAME$registerSystem
+  };
+  declare var AFRAME$AComponent: $ElementType<AFrame, "AComponent">;
+
+  declare var AFRAME$AEntity: $ElementType<AFrame, "AEntity">;
+
+  declare var AFRAME$ANode: $ElementType<AFrame, "ANode">;
+
+  declare var AFRAME$AScene: $ElementType<AFrame, "AScene">;
+
+  declare var AFRAME$components: $ElementType<AFrame, "components">;
+
+  declare var AFRAME$geometries: $ElementType<AFrame, "geometries">;
+
+  declare var AFRAME$primitives: $ElementType<AFrame, "primitives">;
+
+  declare var AFRAME$scenes: $ElementType<AFrame, "scenes">;
+
+  declare var AFRAME$schema: $ElementType<AFrame, "schema">;
+
+  declare var AFRAME$shaders: $ElementType<AFrame, "shaders">;
+
+  declare var AFRAME$systems: $ElementType<AFrame, "systems">;
+
+  declare var AFRAME$THREE: $ElementType<AFrame, "THREE">;
+
+  declare var AFRAME$TWEEN: $ElementType<AFrame, "TWEEN">;
+
+  declare var AFRAME$utils: $ElementType<AFrame, "utils">;
+
+  declare var AFRAME$version: string;
+
+  declare var AFRAME$registerComponent: $ElementType<
+    AFrame,
+    "registerComponent"
+  >;
+
+  declare var AFRAME$registerElement: $ElementType<AFrame, "registerElement">;
+
+  declare var AFRAME$registerGeometry: $ElementType<AFrame, "registerGeometry">;
+
+  declare var AFRAME$registerPrimitive: $ElementType<
+    AFrame,
+    "registerPrimitive"
+  >;
+
+  declare var AFRAME$registerShader: $ElementType<AFrame, "registerShader">;
+
+  declare var AFRAME$registerSystem: $ElementType<AFrame, "registerSystem">;
 
   /**
    * Custom elements augment document methods to return custom HTML
@@ -134,7 +141,7 @@ declare module "aframe" {
     id: string;
     multiple?: boolean;
     name: string;
-    AFRAME$schema: Schema<T>;
+    schema: Schema<T>;
     system: S | void;
     init(data?: T): void;
     pause(): void;
@@ -171,10 +178,10 @@ declare module "aframe" {
     scale: Component<Coordinate>;
   }
   declare export type Entity<C = ObjectMap<Component>> = {
-    AFRAME$components: C & DefaultComponents,
+    components: C & DefaultComponents,
     isPlaying: boolean,
-    object3D: AFRAME$THREE.Object3D,
-    object3DMap: ObjectMap<AFRAME$THREE.Object3D>,
+    object3D: THREE.Object3D,
+    object3DMap: ObjectMap<THREE.Object3D>,
     sceneEl?: Scene,
     addState(name: string): void,
     flushToDOM(recursive?: boolean): void,
@@ -184,12 +191,12 @@ declare module "aframe" {
      */
     getComputedAttribute(attr: string): Component,
     getDOMAttribute(attr: string): any,
-    getObject3D(type: string): AFRAME$THREE.Object3D,
-    getOrCreateObject3D(type: string, construct: any): AFRAME$THREE.Object3D,
+    getObject3D(type: string): THREE.Object3D,
+    getOrCreateObject3D(type: string, construct: any): THREE.Object3D,
     is(stateName: string): boolean,
     pause(): void,
     play(): void,
-    setObject3D(type: string, obj: AFRAME$THREE.Object3D): void,
+    setObject3D(type: string, obj: THREE.Object3D): void,
     removeAttribute(attr: string, property?: string): void,
     removeObject3D(type: string): void,
     removeState(stateName: string): void,
@@ -215,7 +222,7 @@ declare module "aframe" {
       listener: EventListenerOrEventListenerObject,
       useCapture?: boolean
     ): void
-  } & AFRAME$ANode;
+  } & ANode;
 
   declare export type DetailEvent<D> = Event & {
     detail: D,
@@ -254,8 +261,8 @@ declare module "aframe" {
   declare export interface Geometry<T = any> {
     data: T;
     name: string;
-    geometry: AFRAME$THREE.Geometry;
-    AFRAME$schema: Schema<any>;
+    geometry: THREE.Geometry;
+    schema: Schema<any>;
     init(data: any): void;
   }
   declare export interface GeometryConstructor<
@@ -265,7 +272,7 @@ declare module "aframe" {
   }
   declare export interface GeometryDescriptor<T: Geometry = Geometry> {
     Geometry: GeometryConstructor<T>;
-    AFRAME$schema: Schema;
+    schema: Schema;
   }
   declare export type MultiPropertySchema<T: { [key: string]: any }> = $ObjMapi<
     T,
@@ -294,14 +301,14 @@ declare module "aframe" {
     | "renderstart";
   declare export type Scene = {
     behaviors: Behavior[],
-    camera: AFRAME$THREE.Camera,
+    camera: THREE.Camera,
     canvas: HTMLCanvasElement,
-    effect: AFRAME$THREE.VREffect,
+    effect: THREE.VREffect,
     isMobile: boolean,
-    object3D: AFRAME$THREE.Scene,
-    renderer: AFRAME$THREE.WebGLRenderer,
+    object3D: THREE.Scene,
+    renderer: THREE.WebGLRenderer,
     renderStarted: boolean,
-    AFRAME$systems: ObjectMap<System>,
+    systems: ObjectMap<System>,
     time: number,
     enterVR(): Promise<void> | void,
     exitVR(): Promise<void> | void,
@@ -322,14 +329,14 @@ declare module "aframe" {
     T: { [key: string]: any } = { [key: string]: any }
   > = SinglePropertySchema<T> | MultiPropertySchema<T>;
   declare export interface SchemaUtils {
-    isSingleProperty(AFRAME$schema: Schema): boolean;
-    process(AFRAME$schema: Schema): boolean;
+    isSingleProperty(schema: Schema): boolean;
+    process(schema: Schema): boolean;
   }
   declare export interface Shader {
     name: string;
     data: { [key: string]: any };
-    AFRAME$schema: Schema<$ElementType<this, "data">>;
-    material: AFRAME$THREE.Material;
+    schema: Schema<$ElementType<this, "data">>;
+    material: THREE.Material;
     vertexShader: string;
     fragmentShader: string;
     init(data?: $ElementType<this, "data">): void;
@@ -341,7 +348,7 @@ declare module "aframe" {
   }
   declare export interface ShaderDescriptor<T: Shader = Shader> {
     Shader: ShaderConstructor<T>;
-    AFRAME$schema: Schema;
+    schema: Schema;
   }
   declare export interface SinglePropertySchema<T> {
     type?: PropertyTypes;
@@ -351,7 +358,7 @@ declare module "aframe" {
   }
   declare export interface System<T: { [key: string]: any } = any> {
     data: T;
-    AFRAME$schema: Schema<T>;
+    schema: Schema<T>;
     init(): void;
     pause(): void;
     play(): void;
@@ -395,7 +402,7 @@ declare module "aframe" {
       isLandscape(): boolean,
       isBrowserEnvironment(): boolean,
       isNodeEnvironment(): boolean,
-      PolyfillControls(object3D: AFRAME$THREE.Object3D): void
+      PolyfillControls(object3D: THREE.Object3D): void
     };
     styleParser: {
       parse(value: string): { [key: string]: any },
@@ -442,7 +449,7 @@ declare module "aframe" {
     transforms?: any;
   }
   declare export interface MinimalShaderDefinition {
-    AFRAME$schema: $ElementType<Shader, "schema">;
+    schema: $ElementType<Shader, "schema">;
   }
   declare export type ShaderDefinition<
     T: { [key: string]: any } = MinimalShaderDefinition & { [key: string]: any }
@@ -451,13 +458,13 @@ declare module "aframe" {
     T: { [key: string]: any } = { [key: string]: any }
   > = T & $Shape<System>;
   declare export interface AFrame {
-    AFRAME$AComponent: Component;
-    AFRAME$AEntity: Entity;
-    AFRAME$ANode: AFRAME$ANode;
-    AFRAME$AScene: Scene;
-    AFRAME$components: ObjectMap<ComponentDescriptor>;
-    AFRAME$geometries: ObjectMap<GeometryDescriptor>;
-    AFRAME$primitives: {
+    AComponent: Component;
+    AEntity: Entity;
+    ANode: AFRAME$ANode;
+    AScene: Scene;
+    components: ObjectMap<ComponentDescriptor>;
+    geometries: ObjectMap<GeometryDescriptor>;
+    primitives: {
       getMeshMixin(): {
         defaultComponents: {
           material: { [key: string]: any }
@@ -466,34 +473,31 @@ declare module "aframe" {
           [key: string]: any
         }
       },
-      AFRAME$primitives: ObjectMap<Entity>
+      primitives: ObjectMap<Entity>
     };
-    AFRAME$scenes: Scene[];
-    AFRAME$schema: SchemaUtils;
-    AFRAME$shaders: ObjectMap<ShaderDescriptor>;
-    AFRAME$systems: ObjectMap<SystemConstructor>;
-    AFRAME$THREE: ThreeLib;
-    AFRAME$TWEEN: TweenLib;
-    AFRAME$utils: Utils;
-    AFRAME$version: string;
-    AFRAME$registerComponent<T: { [key: string]: any }>(
+    scenes: Scene[];
+    schema: SchemaUtils;
+    shaders: ObjectMap<ShaderDescriptor>;
+    systems: ObjectMap<SystemConstructor>;
+    THREE: ThreeLib;
+    TWEEN: TweenLib;
+    utils: Utils;
+    version: string;
+    registerComponent<T: { [key: string]: any }>(
       name: string,
       component: ComponentDefinition<T>
     ): ComponentConstructor<T>;
-    AFRAME$registerElement(name: string, element: { [key: string]: any }): void;
-    AFRAME$registerGeometry<T: { [key: string]: any }>(
+    registerElement(name: string, element: { [key: string]: any }): void;
+    registerGeometry<T: { [key: string]: any }>(
       name: string,
       geometry: GeometryDefinition<T>
     ): GeometryConstructor<T>;
-    AFRAME$registerPrimitive(
-      name: string,
-      primitive: PrimitiveDefinition
-    ): void;
-    AFRAME$registerShader<T: MinimalShaderDefinition & { [key: string]: any }>(
+    registerPrimitive(name: string, primitive: PrimitiveDefinition): void;
+    registerShader<T: MinimalShaderDefinition & { [key: string]: any }>(
       name: string,
       shader: ShaderDefinition<T>
     ): ShaderConstructor<T>;
-    AFRAME$registerSystem<T: { [key: string]: any }>(
+    registerSystem<T: { [key: string]: any }>(
       name: string,
       definition: SystemDefinition<T>
     ): SystemConstructor<T>;
