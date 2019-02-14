@@ -4,8 +4,8 @@ declare module "react-google-maps-loader" {
   declare export default typeof ReactGoogleMapsLoader;
 
   declare class ReactGoogleMapsLoader
-    mixins Component<ReactGoogleMapsLoader$ReactGoogleMapsLoader$Props> {}
-  declare type ReactGoogleMapsLoader$GoogleMaps = typeof undefined;
+    mixins Component<ReactGoogleMapsLoader$Props> {}
+  declare type ReactGoogleMapsLoader$GoogleMaps = typeof google.maps;
 
   declare interface ReactGoogleMapsLoader$Params {
     key: string;
