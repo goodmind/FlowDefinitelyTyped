@@ -1,82 +1,121 @@
-
-      declare var npm$namespace$Events: {
-        
-        WORKLIGHT_IS_CONNECTED: typeof Events$WORKLIGHT_IS_CONNECTED,
-WORKLIGHT_IS_DISCONNECTED: typeof Events$WORKLIGHT_IS_DISCONNECTED,
-      }
-declare var Events$WORKLIGHT_IS_CONNECTED: string;
-
-declare var Events$WORKLIGHT_IS_DISCONNECTED: string;declare module 'ibm-mobilefirst' {
+declare module 'ibm-mobilefirst' {
         
       declare var npm$namespace$WL: {
         
         Logger: typeof WL$Logger,
 ClientMessages: typeof WL$ClientMessages,
-      }
-
-      declare var npm$namespace$AppProperty: {
         
-        AIR_ICON_16x16_PATH: typeof AppProperty$AIR_ICON_16x16_PATH,
-AIR_ICON_128x128_PATH: typeof AppProperty$AIR_ICON_128x128_PATH,
-DOWNLOAD_APP_LINK: typeof AppProperty$DOWNLOAD_APP_LINK,
-APP_DISPLAY_NAME: typeof AppProperty$APP_DISPLAY_NAME,
-APP_LOGIN_TYPE: typeof AppProperty$APP_LOGIN_TYPE,
-APP_VERSION: typeof AppProperty$APP_VERSION,
-LATEST_VERSION: typeof AppProperty$LATEST_VERSION,
-MAIN_FILE_PATH: typeof AppProperty$MAIN_FILE_PATH,
-SHOW_IN_TASKBAR: typeof AppProperty$SHOW_IN_TASKBAR,
-THUMBNAIL_IMAGE_URL: typeof AppProperty$THUMBNAIL_IMAGE_URL,
+        ResponseBase: typeof WL$ResponseBase,
+FailureResponse: typeof WL$FailureResponse,
+Response: typeof WL$Response,
+BusyIndicator: typeof WL$BusyIndicator,
+Item: typeof WL$Item,
+LoggerObject: typeof WL$LoggerObject,
+LogInstance: typeof WL$LogInstance,
+TabBarItem: typeof WL$TabBarItem,
+        Events: typeof npm$namespace$WL$Events,
+AppProperty: typeof npm$namespace$WL$AppProperty,
+Environment: typeof npm$namespace$WL$Environment,
+Analytics: typeof npm$namespace$WL$Analytics,
+App: typeof npm$namespace$WL$App,
+Badge: typeof npm$namespace$WL$Badge,
+Client: typeof npm$namespace$WL$Client,
+Device: typeof npm$namespace$WL$Device,
+EncryptedCache: typeof npm$namespace$WL$EncryptedCache,
+Geo: typeof npm$namespace$WL$Geo,
+JSONStore: typeof npm$namespace$WL$JSONStore,
+LocalStorage: typeof npm$namespace$WL$LocalStorage,
+NativePage: typeof npm$namespace$WL$NativePage,
+SecurityUtils: typeof npm$namespace$WL$SecurityUtils,
+SimpleDialog: typeof npm$namespace$WL$SimpleDialog,
+TabBar: typeof npm$namespace$WL$TabBar,
+Toast: typeof npm$namespace$WL$Toast,
+Trusteer: typeof npm$namespace$WL$Trusteer,
+UserAuth: typeof npm$namespace$WL$UserAuth,
       }
-declare var AppProperty$AIR_ICON_16x16_PATH: string;
 
-declare var AppProperty$AIR_ICON_128x128_PATH: string;
-
-declare var AppProperty$DOWNLOAD_APP_LINK: string;
-
-declare var AppProperty$APP_DISPLAY_NAME: string;
-
-declare var AppProperty$APP_LOGIN_TYPE: string;
-
-declare var AppProperty$APP_VERSION: string;
-
-declare var AppProperty$LATEST_VERSION: string;
-
-declare var AppProperty$MAIN_FILE_PATH: string;
-
-declare var AppProperty$SHOW_IN_TASKBAR: string;
-
-declare var AppProperty$THUMBNAIL_IMAGE_URL: string;
-
-
-      declare var npm$namespace$Environment: {
+      declare var npm$namespace$WL$Events: {
         
-        ADOBE_AIR: typeof Environment$ADOBE_AIR,
-ANDROID: typeof Environment$ANDROID,
-EMBEDDED: typeof Environment$EMBEDDED,
-IPAD: typeof Environment$IPAD,
-IPHONE: typeof Environment$IPHONE,
-MOBILE_WEB: typeof Environment$MOBILE_WEB,
-PREVIEW: typeof Environment$PREVIEW,
-WINDOWS_PHONE_8: typeof Environment$WINDOWS_PHONE_8,
-WINDOWS8: typeof Environment$WINDOWS8,
+        WORKLIGHT_IS_CONNECTED: typeof WL$Events$WORKLIGHT_IS_CONNECTED,
+WORKLIGHT_IS_DISCONNECTED: typeof WL$Events$WORKLIGHT_IS_DISCONNECTED,
+        
+        
+        
       }
-declare var Environment$ADOBE_AIR: string;
+declare var WL$Events$WORKLIGHT_IS_CONNECTED: string;
 
-declare var Environment$ANDROID: string;
+declare var WL$Events$WORKLIGHT_IS_DISCONNECTED: string;
 
-declare var Environment$EMBEDDED: string;
 
-declare var Environment$IPAD: string;
+      declare var npm$namespace$WL$AppProperty: {
+        
+        AIR_ICON_16x16_PATH: typeof WL$AppProperty$AIR_ICON_16x16_PATH,
+AIR_ICON_128x128_PATH: typeof WL$AppProperty$AIR_ICON_128x128_PATH,
+DOWNLOAD_APP_LINK: typeof WL$AppProperty$DOWNLOAD_APP_LINK,
+APP_DISPLAY_NAME: typeof WL$AppProperty$APP_DISPLAY_NAME,
+APP_LOGIN_TYPE: typeof WL$AppProperty$APP_LOGIN_TYPE,
+APP_VERSION: typeof WL$AppProperty$APP_VERSION,
+LATEST_VERSION: typeof WL$AppProperty$LATEST_VERSION,
+MAIN_FILE_PATH: typeof WL$AppProperty$MAIN_FILE_PATH,
+SHOW_IN_TASKBAR: typeof WL$AppProperty$SHOW_IN_TASKBAR,
+THUMBNAIL_IMAGE_URL: typeof WL$AppProperty$THUMBNAIL_IMAGE_URL,
+        
+        
+        
+      }
+declare var WL$AppProperty$AIR_ICON_16x16_PATH: string;
 
-declare var Environment$IPHONE: string;
+declare var WL$AppProperty$AIR_ICON_128x128_PATH: string;
 
-declare var Environment$MOBILE_WEB: string;
+declare var WL$AppProperty$DOWNLOAD_APP_LINK: string;
 
-declare var Environment$PREVIEW: string;
+declare var WL$AppProperty$APP_DISPLAY_NAME: string;
 
-declare var Environment$WINDOWS_PHONE_8: string;
+declare var WL$AppProperty$APP_LOGIN_TYPE: string;
 
-declare var Environment$WINDOWS8: string;
+declare var WL$AppProperty$APP_VERSION: string;
+
+declare var WL$AppProperty$LATEST_VERSION: string;
+
+declare var WL$AppProperty$MAIN_FILE_PATH: string;
+
+declare var WL$AppProperty$SHOW_IN_TASKBAR: string;
+
+declare var WL$AppProperty$THUMBNAIL_IMAGE_URL: string;
+
+
+      declare var npm$namespace$WL$Environment: {
+        
+        ADOBE_AIR: typeof WL$Environment$ADOBE_AIR,
+ANDROID: typeof WL$Environment$ANDROID,
+EMBEDDED: typeof WL$Environment$EMBEDDED,
+IPAD: typeof WL$Environment$IPAD,
+IPHONE: typeof WL$Environment$IPHONE,
+MOBILE_WEB: typeof WL$Environment$MOBILE_WEB,
+PREVIEW: typeof WL$Environment$PREVIEW,
+WINDOWS_PHONE_8: typeof WL$Environment$WINDOWS_PHONE_8,
+WINDOWS8: typeof WL$Environment$WINDOWS8,
+        
+        
+        
+      }
+declare var WL$Environment$ADOBE_AIR: string;
+
+declare var WL$Environment$ANDROID: string;
+
+declare var WL$Environment$EMBEDDED: string;
+
+declare var WL$Environment$IPAD: string;
+
+declare var WL$Environment$IPHONE: string;
+
+declare var WL$Environment$MOBILE_WEB: string;
+
+declare var WL$Environment$PREVIEW: string;
+
+declare var WL$Environment$WINDOWS_PHONE_8: string;
+
+declare var WL$Environment$WINDOWS8: string;
 
 declare interface WL$IResponse {
 invocationContext?: any
@@ -115,9 +154,7 @@ getHeader(name: any): string
 declare interface WL$Options {
 onSuccess?: (response: WL$IResponse) => void,
 onFailure?: (response: WL$IResponse) => void,
-invocationContext?: any,
-title: string,
-text: string
+invocationContext?: any
 } 
 
 declare interface WL$ResponseHandler<T> {
@@ -125,69 +162,180 @@ declare interface WL$ResponseHandler<T> {
 } 
 
 
-      declare var npm$namespace$Analytics: {
-        disable: typeof Analytics$disable,
-enable: typeof Analytics$enable,
-log: typeof Analytics$log,
-restart: typeof Analytics$restart,
-send: typeof Analytics$send,
-state: typeof Analytics$state,
+      declare var npm$namespace$WL$Analytics: {
+        disable: typeof WL$Analytics$disable,
+enable: typeof WL$Analytics$enable,
+log: typeof WL$Analytics$log,
+restart: typeof WL$Analytics$restart,
+send: typeof WL$Analytics$send,
+state: typeof WL$Analytics$state,
+        
+        
+        
         
       }
-declare function Analytics$disable(): void
+declare function WL$Analytics$disable(): void
 
 
-declare function Analytics$enable(): void
+declare function WL$Analytics$enable(): void
 
 
-declare function Analytics$log(message: string, name: string): void
+declare function WL$Analytics$log(message: string, name: string): void
 
 
 
 /**
- * @deprecated
- * since version 6.2. WL.Analytics.restart is now a NOP.
+ * @deprecated since version 6.2. WL.Analytics.restart is now a NOP.
  */
-declare function Analytics$restart(): void
+declare function WL$Analytics$restart(): void
 
 
-declare function Analytics$send(): void
+declare function WL$Analytics$send(): void
 
 
-declare function Analytics$state(): void
+declare function WL$Analytics$state(): void
 
 
 
-      declare var npm$namespace$BackgroundHandler: {
-        setOnAppEnteringBackground: typeof BackgroundHandler$setOnAppEnteringBackground,
-        hideView: typeof BackgroundHandler$hideView,
-defaultIOSBehavior: typeof BackgroundHandler$defaultIOSBehavior,
-hideElements: typeof BackgroundHandler$hideElements,
+      declare var npm$namespace$WL$App: {
+        addActionReceiver: typeof WL$App$addActionReceiver,
+close: typeof WL$App$close,
+copyToClipboard: typeof WL$App$copyToClipboard,
+getDeviceLanguage: typeof WL$App$getDeviceLanguage,
+getDeviceLocale: typeof WL$App$getDeviceLocale,
+getErrorMessage: typeof WL$App$getErrorMessage,
+hideSplashScreen: typeof WL$App$hideSplashScreen,
+openURL: typeof WL$App$openURL,
+overrideBackButton: typeof WL$App$overrideBackButton,
+removeActionReceiver: typeof WL$App$removeActionReceiver,
+resetBackButton: typeof WL$App$resetBackButton,
+sendActionToNative: typeof WL$App$sendActionToNative,
+setKeepAliveInBackground: typeof WL$App$setKeepAliveInBackground,
+showSplashScreen: typeof WL$App$showSplashScreen,
+        
+        
+        
+        BackgroundHandler: typeof npm$namespace$WL$App$BackgroundHandler,
       }
-declare interface BackgroundHandler$Handler {
+declare interface WL$App$ActionReceiverCallback {
+(action: any): void
+} 
+
+declare interface WL$App$Callback {
 (): void
 } 
 
-declare function BackgroundHandler$setOnAppEnteringBackground(handler: BackgroundHandler$Handler): void
+declare interface WL$App$OpenURLOptions {
+status?: number,
+toolbar?: number,
+location?: number,
+menubar?: number,
+directories?: number,
+resizable?: number,
+scrollbars?: number
+} 
 
+declare interface WL$App$Data {} 
 
-declare var BackgroundHandler$hideView: BackgroundHandler$Handler;
+declare interface WL$App$KeepAliveInBackgroundOptions {
+tickerText?: string,
+contentTitle?: string,
+contentTextText?: string,
+icon?: string,
+notificationId?: number,
+className?: string
+} 
 
-declare var BackgroundHandler$defaultIOSBehavior: BackgroundHandler$Handler;
+declare function WL$App$addActionReceiver(id: string, callback: WL$App$ActionReceiverCallback): void
+
 
 
 /**
- * @deprecated
- * since version 6.0.0
+ * @deprecate Deprecated.
  */
-declare var BackgroundHandler$hideElements: BackgroundHandler$Handler;
+declare function WL$App$close(): void
 
 
-      declare var npm$namespace$Badge: {
-        setNumber: typeof Badge$setNumber,
+declare function WL$App$copyToClipboard(stringToCopy: string, callback?: WL$App$Callback): void
+
+
+declare function WL$App$getDeviceLanguage(): string
+
+
+declare function WL$App$getDeviceLocale(): string
+
+
+
+/**
+ * TODO: declare exception type. (Exceptions that are thrown by the IBM® Worklight® client runtime framework)
+ */
+declare function WL$App$getErrorMessage(exception: any): string
+
+
+declare function WL$App$hideSplashScreen(): void
+
+
+declare function WL$App$openURL(url: string, target?: string, options?: WL$App$OpenURLOptions): void
+
+
+declare function WL$App$overrideBackButton(callback: WL$App$Callback): void
+
+
+declare function WL$App$removeActionReceiver(id: string): void
+
+
+
+/**
+ * @deprecated since version 6.0.0
+ */
+declare function WL$App$resetBackButton(): void
+
+
+declare function WL$App$sendActionToNative(action: string, data?: WL$App$Data): void
+
+
+declare function WL$App$setKeepAliveInBackground(enabled: boolean, options?: WL$App$KeepAliveInBackgroundOptions): void
+
+
+declare function WL$App$showSplashScreen(): void
+
+
+
+      declare var npm$namespace$WL$App$BackgroundHandler: {
+        setOnAppEnteringBackground: typeof WL$App$BackgroundHandler$setOnAppEnteringBackground,
+        hideView: typeof WL$App$BackgroundHandler$hideView,
+defaultIOSBehavior: typeof WL$App$BackgroundHandler$defaultIOSBehavior,
+hideElements: typeof WL$App$BackgroundHandler$hideElements,
+        
+        
         
       }
-declare function Badge$setNumber(badgeNumber: number): void
+declare interface WL$App$BackgroundHandler$Handler {
+(): void
+} 
+
+declare function WL$App$BackgroundHandler$setOnAppEnteringBackground(handler: WL$App$BackgroundHandler$Handler): void
+
+
+declare var WL$App$BackgroundHandler$hideView: WL$App$BackgroundHandler$Handler;
+
+declare var WL$App$BackgroundHandler$defaultIOSBehavior: WL$App$BackgroundHandler$Handler;
+
+
+/**
+ * @deprecated since version 6.0.0
+ */
+declare var WL$App$BackgroundHandler$hideElements: WL$App$BackgroundHandler$Handler;
+
+
+      declare var npm$namespace$WL$Badge: {
+        setNumber: typeof WL$Badge$setNumber,
+        
+        
+        
+        
+      }
+declare function WL$Badge$setNumber(badgeNumber: number): void
 
 
 declare interface WL$BusyIndicatorOptions {
@@ -206,92 +354,94 @@ show(): void
 }
 
 
-      declare var npm$namespace$Client: {
-        addGlobalHeader: typeof Client$addGlobalHeader,
-checkForDirectUpdate: typeof Client$checkForDirectUpdate,
-clearSharedToken: typeof Client$clearSharedToken,
-close: typeof Client$close,
-connect: typeof Client$connect,
-createChallengeHandler: typeof Client$createChallengeHandler,
-createProvisioningChallengeHandler: typeof Client$createProvisioningChallengeHandler,
-createWLChallengeHandler: typeof Client$createWLChallengeHandler,
-deleteUserPref: typeof Client$deleteUserPref,
-getAppProperty: typeof Client$getAppProperty,
-getEnvironment: typeof Client$getEnvironment,
-getLanguage: typeof Client$getLanguage,
-getLastAccessToken: typeof Client$getLastAccessToken,
-getLoginName: typeof Client$getLoginName,
-getRequiredAccessTokenScope: typeof Client$getRequiredAccessTokenScope,
-getSharedToken: typeof Client$getSharedToken,
-getUserInfo: typeof Client$getUserInfo,
-getUserName: typeof Client$getUserName,
-getUserPref: typeof Client$getUserPref,
-hasUserPref: typeof Client$hasUserPref,
-init: typeof Client$init,
-invokeProcedure: typeof Client$invokeProcedure,
-isConnected: typeof Client$isConnected,
-isUserAuthenticated: typeof Client$isUserAuthenticated,
-logActivity: typeof Client$logActivity,
-login: typeof Client$login,
-logout: typeof Client$logout,
-minimize: typeof Client$minimize,
-obtainAccessToken: typeof Client$obtainAccessToken,
-purgeEventTransmissionBuffer: typeof Client$purgeEventTransmissionBuffer,
-reloadApp: typeof Client$reloadApp,
-removeGlobalHeader: typeof Client$removeGlobalHeader,
-setEventTransmissionPolicy: typeof Client$setEventTransmissionPolicy,
-setHeartBeatInterval: typeof Client$setHeartBeatInterval,
-setSharedToken: typeof Client$setSharedToken,
-setUserPref: typeof Client$setUserPref,
-setUserPrefs: typeof Client$setUserPrefs,
-transmitEvent: typeof Client$transmitEvent,
-updateUserInfo: typeof Client$updateUserInfo,
+      declare var npm$namespace$WL$Client: {
+        addGlobalHeader: typeof WL$Client$addGlobalHeader,
+checkForDirectUpdate: typeof WL$Client$checkForDirectUpdate,
+clearSharedToken: typeof WL$Client$clearSharedToken,
+close: typeof WL$Client$close,
+connect: typeof WL$Client$connect,
+createChallengeHandler: typeof WL$Client$createChallengeHandler,
+createProvisioningChallengeHandler: typeof WL$Client$createProvisioningChallengeHandler,
+createWLChallengeHandler: typeof WL$Client$createWLChallengeHandler,
+deleteUserPref: typeof WL$Client$deleteUserPref,
+getAppProperty: typeof WL$Client$getAppProperty,
+getEnvironment: typeof WL$Client$getEnvironment,
+getLanguage: typeof WL$Client$getLanguage,
+getLastAccessToken: typeof WL$Client$getLastAccessToken,
+getLoginName: typeof WL$Client$getLoginName,
+getRequiredAccessTokenScope: typeof WL$Client$getRequiredAccessTokenScope,
+getSharedToken: typeof WL$Client$getSharedToken,
+getUserInfo: typeof WL$Client$getUserInfo,
+getUserName: typeof WL$Client$getUserName,
+getUserPref: typeof WL$Client$getUserPref,
+hasUserPref: typeof WL$Client$hasUserPref,
+init: typeof WL$Client$init,
+invokeProcedure: typeof WL$Client$invokeProcedure,
+isConnected: typeof WL$Client$isConnected,
+isUserAuthenticated: typeof WL$Client$isUserAuthenticated,
+logActivity: typeof WL$Client$logActivity,
+login: typeof WL$Client$login,
+logout: typeof WL$Client$logout,
+minimize: typeof WL$Client$minimize,
+obtainAccessToken: typeof WL$Client$obtainAccessToken,
+purgeEventTransmissionBuffer: typeof WL$Client$purgeEventTransmissionBuffer,
+reloadApp: typeof WL$Client$reloadApp,
+removeGlobalHeader: typeof WL$Client$removeGlobalHeader,
+setEventTransmissionPolicy: typeof WL$Client$setEventTransmissionPolicy,
+setHeartBeatInterval: typeof WL$Client$setHeartBeatInterval,
+setSharedToken: typeof WL$Client$setSharedToken,
+setUserPref: typeof WL$Client$setUserPref,
+setUserPrefs: typeof WL$Client$setUserPrefs,
+transmitEvent: typeof WL$Client$transmitEvent,
+updateUserInfo: typeof WL$Client$updateUserInfo,
+        
+        
+        AbstractChallengeHandler: typeof WL$Client$AbstractChallengeHandler,
         
       }
-declare interface Client$SharedTokenObject {
+declare interface WL$Client$SharedTokenObject {
 key: string
 } 
 
-declare interface Client$ConnectOptions {
+declare interface WL$Client$ConnectOptions {
 onSuccess: (response: WL$ResponseBase) => void,
 onFailure: (response: WL$FailureResponse) => void,
 timeout?: number
 } 
 
-declare interface Client$ChallengehandlerInvocationData {
+declare interface WL$Client$ChallengehandlerInvocationData {
 adapter: string,
 procedure: string,
 parameters: any[]
 } 
 
-declare interface Client$ChallengeHandlerAuthenticationOptions {} 
+declare interface WL$Client$ChallengeHandlerAuthenticationOptions {} 
 
-declare interface Client$ChallengeHandlerSubmitLoginFormOptions {
+declare interface WL$Client$ChallengeHandlerSubmitLoginFormOptions {
 timeout?: number,
 headers?: Object,
 parameters?: Object
 } 
 
-declare class Client$AbstractChallengeHandler  {
+declare class WL$Client$AbstractChallengeHandler  {
 handleChallenge(challenge: any): boolean;
 isCustomResponse(transport: any): boolean;
 submitAdapterAuthentication(
-invocationData: Client$ChallengehandlerInvocationData,
-options: Client$ChallengeHandlerAuthenticationOptions): void;
+invocationData: WL$Client$ChallengehandlerInvocationData,
+options: WL$Client$ChallengeHandlerAuthenticationOptions): void;
 submitFailure(error: string): void;
 submitLoginForm(
 reqURL: string,
-options: Client$ChallengeHandlerSubmitLoginFormOptions,
+options: WL$Client$ChallengeHandlerSubmitLoginFormOptions,
 submitLoginFormCallback: (transport: any) => void): void;
 submitSuccess(): void
 }
 
-declare type Client$InitOptions = {
+declare type WL$Client$InitOptions = {
 timeout?: number,
 
 /**
- * @deprecated
- * since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
+ * @deprecated since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
  */
 enableLogger?: boolean,
 messages?: string,
@@ -299,228 +449,220 @@ authenticator?: Object,
 heartBeatIntervalInSecs?: number,
 
 /**
- * @deprecated
- * . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
+ * @deprecated . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
  */
 connectOnStartup?: boolean,
-onConnectionFailure?: (response: WL$WL$FailureResponse) => void,
-onUnsupportedVersion?: (response: WL$WL$FailureResponse) => void,
-onRequestTimeout?: (response: WL$WL$FailureResponse) => void,
-onUnsupportedBrowser?: (response: WL$WL$FailureResponse) => void,
-onDisabledCookies?: (response: WL$WL$FailureResponse) => void,
-onUserInstanceAccessViolation?: (response: WL$WL$FailureResponse) => void,
-onErrorRemoteDisableDenial?: (response: WL$WL$FailureResponse) => void,
+onConnectionFailure?: (response: WL$FailureResponse) => void,
+onUnsupportedVersion?: (response: WL$FailureResponse) => void,
+onRequestTimeout?: (response: WL$FailureResponse) => void,
+onUnsupportedBrowser?: (response: WL$FailureResponse) => void,
+onDisabledCookies?: (response: WL$FailureResponse) => void,
+onUserInstanceAccessViolation?: (response: WL$FailureResponse) => void,
+onErrorRemoteDisableDenial?: (response: WL$FailureResponse) => void,
 
 /**
- * @deprecated
- * since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
+ * @deprecated since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
  */
-onErrorAppVersionAccessDenial?: (response: WL$WL$FailureResponse) => void,
+onErrorAppVersionAccessDenial?: (response: WL$FailureResponse) => void,
 validateArguments?: boolean,
 autoHideSplash?: boolean,
-onGetCustomDeviceProvisioningProperties: (resumeDeviceProvisioningProcess: (data: any) => void) => void,
-username?: string,
-password?: string,
-LocalStorage$clear?: boolean,
-localKeyGen?: boolean,
-analytics?: boolean
+onGetCustomDeviceProvisioningProperties: (resumeDeviceProvisioningProcess: (data: any) => void) => void
 } & WL$Options
 
 
-declare interface Client$ProcedureInvocationData {
+declare interface WL$Client$ProcedureInvocationData {
 adapter: string,
 procedure: string,
 parameters?: any[],
 compressResponse?: boolean
 } 
 
-declare interface Client$ProcedureInvocationResult {
+declare interface WL$Client$ProcedureInvocationResult {
 isSuccessful: boolean,
 errors?: string[]
 } 
 
-declare type Client$ProcedureResponse = {
-invocationResult?: Client$ProcedureInvocationResult,
+declare type WL$Client$ProcedureResponse = {
+invocationResult?: WL$Client$ProcedureInvocationResult,
 parameters?: any[]
 } & WL$ResponseBase
 
 
-declare type Client$ProcedureInvocationOptions = {
+declare type WL$Client$ProcedureInvocationOptions = {
 timeout: number,
-onSuccess: (response: Client$ProcedureResponse) => void
+onSuccess: (response: WL$Client$ProcedureResponse) => void
 } & WL$Options
 
 
-declare function Client$addGlobalHeader(headerName: string, headerValue: string): void
+declare function WL$Client$addGlobalHeader(headerName: string, headerValue: string): void
 
 
-declare function Client$checkForDirectUpdate(options: WL$Options): void
+declare function WL$Client$checkForDirectUpdate(options: WL$Options): void
 
 
-declare function Client$clearSharedToken(object: Client$SharedTokenObject): JQueryDeferred<any>
+declare function WL$Client$clearSharedToken(object: WL$Client$SharedTokenObject): JQueryDeferred<any>
 
 
-declare function Client$close(): void
+declare function WL$Client$close(): void
 
 
-declare function Client$connect(options?: Client$ConnectOptions): void
+declare function WL$Client$connect(options?: WL$Client$ConnectOptions): void
 
 
-declare function Client$createChallengeHandler(realmName: string): Client$AbstractChallengeHandler
+declare function WL$Client$createChallengeHandler(realmName: string): WL$Client$AbstractChallengeHandler
 
 
-declare function Client$createProvisioningChallengeHandler(realmName: string): Client$AbstractChallengeHandler
+declare function WL$Client$createProvisioningChallengeHandler(realmName: string): WL$Client$AbstractChallengeHandler
 
 
-declare function Client$createWLChallengeHandler(realName: string): Client$AbstractChallengeHandler
+declare function WL$Client$createWLChallengeHandler(realName: string): WL$Client$AbstractChallengeHandler
 
 
-declare function Client$deleteUserPref(key: string, options?: WL$Options): void
+declare function WL$Client$deleteUserPref(key: string, options?: WL$Options): void
 
 
 
 /**
  * See WL.AppProperty for possible results
  */
-declare function Client$getAppProperty(property: any): any
+declare function WL$Client$getAppProperty(property: any): any
 
 
 
 /**
  * See WL.Environment for possible results
  */
-declare function Client$getEnvironment(): string
+declare function WL$Client$getEnvironment(): string
 
 
-declare function Client$getLanguage(): string
+declare function WL$Client$getLanguage(): string
 
 
-declare function Client$getLastAccessToken(scope?: string): string
+declare function WL$Client$getLastAccessToken(scope?: string): string
 
 
-declare function Client$getLoginName(realmName: string): string
-
-
-
-/**
- * @deprecated
- * since version 7.0
- */
-declare function Client$getRequiredAccessTokenScope(status: number, header: string): string
-
-
-declare function Client$getSharedToken(object: Client$SharedTokenObject): JQueryDeferred<any>
-
-
-declare function Client$getUserInfo(realm: string, key: string): any
-
-
-declare function Client$getUserName(realm: any): string
-
-
-declare function Client$getUserPref(key: any): any
-
-
-declare function Client$hasUserPref(key: any): boolean
-
-
-declare function Client$init(options: Client$InitOptions): void
-
-
-declare function Client$invokeProcedure(
-invocationData: Client$ProcedureInvocationData,
-options?: Client$ProcedureInvocationOptions): JQueryDeferred<WL$Response>
+declare function WL$Client$getLoginName(realmName: string): string
 
 
 
 /**
- * @deprecated
- * since version 4.1.3. Use WL.Device.getNetworkInfo instead.
+ * @deprecated since version 7.0
  */
-declare function Client$isConnected(): void
+declare function WL$Client$getRequiredAccessTokenScope(status: number, header: string): string
 
 
-declare function Client$isUserAuthenticated(realm: string): boolean
+declare function WL$Client$getSharedToken(object: WL$Client$SharedTokenObject): JQueryDeferred<any>
+
+
+declare function WL$Client$getUserInfo(realm: string, key: string): any
+
+
+declare function WL$Client$getUserName(realm: any): string
+
+
+declare function WL$Client$getUserPref(key: any): any
+
+
+declare function WL$Client$hasUserPref(key: any): boolean
+
+
+declare function WL$Client$init(options: WL$Client$InitOptions): void
+
+
+declare function WL$Client$invokeProcedure(
+invocationData: WL$Client$ProcedureInvocationData,
+options?: WL$Client$ProcedureInvocationOptions): JQueryDeferred<WL$Response>
 
 
 
 /**
- * @deprecated
- * since version 7.0. Use WL.Logger instead.
+ * @deprecated since version 4.1.3. Use WL.Device.getNetworkInfo instead.
  */
-declare function Client$logActivity(activityType: string): void
+declare function WL$Client$isConnected(): void
 
 
-declare function Client$login(realm: string, options?: WL$Options): void
-
-
-declare function Client$logout(realm: string, options?: WL$Options): void
-
-
-declare function Client$minimize(): void
+declare function WL$Client$isUserAuthenticated(realm: string): boolean
 
 
 
 /**
- * @deprecated
- * since version 7.0
+ * @deprecated since version 7.0. Use WL.Logger instead.
  */
-declare function Client$obtainAccessToken(
+declare function WL$Client$logActivity(activityType: string): void
+
+
+declare function WL$Client$login(realm: string, options?: WL$Options): void
+
+
+declare function WL$Client$logout(realm: string, options?: WL$Options): void
+
+
+declare function WL$Client$minimize(): void
+
+
+
+/**
+ * @deprecated since version 7.0
+ */
+declare function WL$Client$obtainAccessToken(
 scope: string,
 onSuccess: WL$ResponseHandler<WL$Response>,
 onFailure: WL$ResponseHandler<WL$FailureResponse>): void
 
 
-declare function Client$purgeEventTransmissionBuffer(): void
+declare function WL$Client$purgeEventTransmissionBuffer(): void
 
 
-declare function Client$reloadApp(): void
+declare function WL$Client$reloadApp(): void
 
 
-declare function Client$removeGlobalHeader(headerName: string): void
+declare function WL$Client$removeGlobalHeader(headerName: string): void
 
 
-declare interface Client$EventTransmissionPolicy {
+declare interface WL$Client$EventTransmissionPolicy {
 eventStorageEnabled?: boolean,
 interval?: number
 } 
 
-declare function Client$setEventTransmissionPolicy(policy: Client$EventTransmissionPolicy): void
+declare function WL$Client$setEventTransmissionPolicy(policy: WL$Client$EventTransmissionPolicy): void
 
 
-declare function Client$setHeartBeatInterval(interval: number): void
+declare function WL$Client$setHeartBeatInterval(interval: number): void
 
 
-declare function Client$setSharedToken(token: Client$SharedTokenObject): void
+declare function WL$Client$setSharedToken(token: WL$Client$SharedTokenObject): void
 
 
-declare function Client$setUserPref(key: string, value: string, options?: WL$Options): void
+declare function WL$Client$setUserPref(key: string, value: string, options?: WL$Options): void
 
 
-declare interface Client$UserPreferences {
+declare interface WL$Client$UserPreferences {
 [key: string]: string
 } 
 
-declare function Client$setUserPrefs(userPrefsHash: Client$UserPreferences, options?: WL$Options): void
+declare function WL$Client$setUserPrefs(userPrefsHash: WL$Client$UserPreferences, options?: WL$Options): void
 
 
-declare function Client$transmitEvent(event: any, immediate?: boolean): void
+declare function WL$Client$transmitEvent(event: any, immediate?: boolean): void
 
 
-declare function Client$updateUserInfo(options: WL$Options): void
+declare function WL$Client$updateUserInfo(options: WL$Options): void
 
 
 
-      declare var npm$namespace$Device: {
-        getNetworkInfo: typeof Device$getNetworkInfo,
+      declare var npm$namespace$WL$Device: {
+        getNetworkInfo: typeof WL$Device$getNetworkInfo,
+        
+        
+        
         
       }
-declare interface Device$AddressPair {
+declare interface WL$Device$AddressPair {
 wifiAddress: string,
 "3GAddress": string
 } 
 
-declare interface Device$NetworkInfo {
+declare interface WL$Device$NetworkInfo {
 isNetworkConnected?: boolean,
 isAirplaneMode?: boolean,
 isRoaming?: boolean,
@@ -529,137 +671,143 @@ wifiName?: string,
 telephonyNetworkType?: string,
 carrierName?: string,
 ipAddress?: string,
-Ipv4Addresses?: Device$AddressPair[],
-Ipv6Addresses?: Device$AddressPair[]
+Ipv4Addresses?: WL$Device$AddressPair[],
+Ipv6Addresses?: WL$Device$AddressPair[]
 } 
 
-declare function Device$getNetworkInfo(callback: (networkInfo: Device$NetworkInfo) => void): void
+declare function WL$Device$getNetworkInfo(callback: (networkInfo: WL$Device$NetworkInfo) => void): void
 
 
 
-      declare var npm$namespace$EncryptedCache: {
-        close: typeof EncryptedCache$close,
-destroy: typeof EncryptedCache$destroy,
-open: typeof EncryptedCache$open,
-read: typeof EncryptedCache$read,
-remove: typeof EncryptedCache$remove,
-write: typeof EncryptedCache$write,
-        OK: typeof EncryptedCache$OK,
-ERROR_COULD_NOT_GENERATE_KEY: typeof EncryptedCache$ERROR_COULD_NOT_GENERATE_KEY,
-ERROR_CREDENTIALS_MISMATCH: typeof EncryptedCache$ERROR_CREDENTIALS_MISMATCH,
-ERROR_EOC_CLOSED: typeof EncryptedCache$ERROR_EOC_CLOSED,
-ERROR_EOC_DELETED: typeof EncryptedCache$ERROR_EOC_DELETED,
-ERROR_EOC_TO_BE_DELETED: typeof EncryptedCache$ERROR_EOC_TO_BE_DELETED,
-ERROR_INVALID_PARAMETER: typeof EncryptedCache$ERROR_INVALID_PARAMETER,
-ERROR_KEY_CREATION_IN_PROGRESS: typeof EncryptedCache$ERROR_KEY_CREATION_IN_PROGRESS,
-ERROR_LOCAL_STORAGE_NOT_SUPPORTED: typeof EncryptedCache$ERROR_LOCAL_STORAGE_NOT_SUPPORTED,
-ERROR_MIGRATION: typeof EncryptedCache$ERROR_MIGRATION,
-ERROR_NO_EOC: typeof EncryptedCache$ERROR_NO_EOC,
-ERROR_NO_SUCH_KEY: typeof EncryptedCache$ERROR_NO_SUCH_KEY,
-ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE: typeof EncryptedCache$ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE,
-ERROR_UNKNOWN: typeof EncryptedCache$ERROR_UNKNOWN,
-ERROR_UNSAFE_CREDENTIALS: typeof EncryptedCache$ERROR_UNSAFE_CREDENTIALS,
+      declare var npm$namespace$WL$EncryptedCache: {
+        close: typeof WL$EncryptedCache$close,
+destroy: typeof WL$EncryptedCache$destroy,
+open: typeof WL$EncryptedCache$open,
+read: typeof WL$EncryptedCache$read,
+remove: typeof WL$EncryptedCache$remove,
+write: typeof WL$EncryptedCache$write,
+        OK: typeof WL$EncryptedCache$OK,
+ERROR_COULD_NOT_GENERATE_KEY: typeof WL$EncryptedCache$ERROR_COULD_NOT_GENERATE_KEY,
+ERROR_CREDENTIALS_MISMATCH: typeof WL$EncryptedCache$ERROR_CREDENTIALS_MISMATCH,
+ERROR_EOC_CLOSED: typeof WL$EncryptedCache$ERROR_EOC_CLOSED,
+ERROR_EOC_DELETED: typeof WL$EncryptedCache$ERROR_EOC_DELETED,
+ERROR_EOC_TO_BE_DELETED: typeof WL$EncryptedCache$ERROR_EOC_TO_BE_DELETED,
+ERROR_INVALID_PARAMETER: typeof WL$EncryptedCache$ERROR_INVALID_PARAMETER,
+ERROR_KEY_CREATION_IN_PROGRESS: typeof WL$EncryptedCache$ERROR_KEY_CREATION_IN_PROGRESS,
+ERROR_LOCAL_STORAGE_NOT_SUPPORTED: typeof WL$EncryptedCache$ERROR_LOCAL_STORAGE_NOT_SUPPORTED,
+ERROR_MIGRATION: typeof WL$EncryptedCache$ERROR_MIGRATION,
+ERROR_NO_EOC: typeof WL$EncryptedCache$ERROR_NO_EOC,
+ERROR_NO_SUCH_KEY: typeof WL$EncryptedCache$ERROR_NO_SUCH_KEY,
+ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE: typeof WL$EncryptedCache$ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE,
+ERROR_UNKNOWN: typeof WL$EncryptedCache$ERROR_UNKNOWN,
+ERROR_UNSAFE_CREDENTIALS: typeof WL$EncryptedCache$ERROR_UNSAFE_CREDENTIALS,
+        
+        
+        
       }
-declare var EncryptedCache$OK: number;
+declare var WL$EncryptedCache$OK: number;
 
-declare var EncryptedCache$ERROR_COULD_NOT_GENERATE_KEY: number;
+declare var WL$EncryptedCache$ERROR_COULD_NOT_GENERATE_KEY: number;
 
-declare var EncryptedCache$ERROR_CREDENTIALS_MISMATCH: number;
+declare var WL$EncryptedCache$ERROR_CREDENTIALS_MISMATCH: number;
 
-declare var EncryptedCache$ERROR_EOC_CLOSED: number;
+declare var WL$EncryptedCache$ERROR_EOC_CLOSED: number;
 
-declare var EncryptedCache$ERROR_EOC_DELETED: number;
+declare var WL$EncryptedCache$ERROR_EOC_DELETED: number;
 
-declare var EncryptedCache$ERROR_EOC_TO_BE_DELETED: number;
+declare var WL$EncryptedCache$ERROR_EOC_TO_BE_DELETED: number;
 
-declare var EncryptedCache$ERROR_INVALID_PARAMETER: number;
+declare var WL$EncryptedCache$ERROR_INVALID_PARAMETER: number;
 
-declare var EncryptedCache$ERROR_KEY_CREATION_IN_PROGRESS: number;
+declare var WL$EncryptedCache$ERROR_KEY_CREATION_IN_PROGRESS: number;
 
-declare var EncryptedCache$ERROR_LOCAL_STORAGE_NOT_SUPPORTED: number;
+declare var WL$EncryptedCache$ERROR_LOCAL_STORAGE_NOT_SUPPORTED: number;
 
-declare var EncryptedCache$ERROR_MIGRATION: number;
+declare var WL$EncryptedCache$ERROR_MIGRATION: number;
 
-declare var EncryptedCache$ERROR_NO_EOC: number;
+declare var WL$EncryptedCache$ERROR_NO_EOC: number;
 
-declare var EncryptedCache$ERROR_NO_SUCH_KEY: number;
+declare var WL$EncryptedCache$ERROR_NO_SUCH_KEY: number;
 
-declare var EncryptedCache$ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE: number;
+declare var WL$EncryptedCache$ERROR_SECURE_RANDOM_GENERATOR_UNAVAILABLE: number;
 
-declare var EncryptedCache$ERROR_UNKNOWN: number;
+declare var WL$EncryptedCache$ERROR_UNKNOWN: number;
 
-declare var EncryptedCache$ERROR_UNSAFE_CREDENTIALS: number;
+declare var WL$EncryptedCache$ERROR_UNSAFE_CREDENTIALS: number;
 
 
 /**
  * See above statuses for possible values
  */
-declare interface EncryptedCache$StatusHandler {
+declare interface WL$EncryptedCache$StatusHandler {
 (status: number): void
 } 
 
-declare function EncryptedCache$close(
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+declare function WL$EncryptedCache$close(
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
-declare function EncryptedCache$destroy(
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+declare function WL$EncryptedCache$destroy(
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
-declare function EncryptedCache$open(
+declare function WL$EncryptedCache$open(
 credentials: string,
 createIfNone: boolean,
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
-declare function EncryptedCache$read(
+declare function WL$EncryptedCache$read(
 key: string,
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
-declare function EncryptedCache$remove(
+declare function WL$EncryptedCache$remove(
 key: string,
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
-declare function EncryptedCache$write(
+declare function WL$EncryptedCache$write(
 key: string,
 value: string,
-successHandler: EncryptedCache$StatusHandler,
-failureHandler: EncryptedCache$StatusHandler): void
+successHandler: WL$EncryptedCache$StatusHandler,
+failureHandler: WL$EncryptedCache$StatusHandler): void
 
 
 
-      declare var npm$namespace$Geo: {
-        getDistanceBetweenCoordinates: typeof Geo$getDistanceBetweenCoordinates,
-getDistanceToCircle: typeof Geo$getDistanceToCircle,
-getDistanceToPolygon: typeof Geo$getDistanceToPolygon,
-isInsideCircle: typeof Geo$isInsideCircle,
-isInsidePolygon: typeof Geo$isInsidePolygon,
-isOutsideCircle: typeof Geo$isOutsideCircle,
-isOutsidePolygon: typeof Geo$isOutsidePolygon,
+      declare var npm$namespace$WL$Geo: {
+        getDistanceBetweenCoordinates: typeof WL$Geo$getDistanceBetweenCoordinates,
+getDistanceToCircle: typeof WL$Geo$getDistanceToCircle,
+getDistanceToPolygon: typeof WL$Geo$getDistanceToPolygon,
+isInsideCircle: typeof WL$Geo$isInsideCircle,
+isInsidePolygon: typeof WL$Geo$isInsidePolygon,
+isOutsideCircle: typeof WL$Geo$isOutsideCircle,
+isOutsidePolygon: typeof WL$Geo$isOutsidePolygon,
+        
+        
+        
         
       }
-declare interface Geo$Coordinate {
+declare interface WL$Geo$Coordinate {
 latitute: number,
 longitude: number
 } 
 
-declare type Geo$Circle = {
+declare type WL$Geo$Circle = {
 radius: number
-} & Geo$Coordinate
+} & WL$Geo$Coordinate
 
 
-declare interface Geo$DistanceOptions {
+declare interface WL$Geo$DistanceOptions {
 bufferZoneWidth: number
 } 
 
-declare interface Geo$InsideOutsideOptions {
+declare interface WL$Geo$InsideOutsideOptions {
 
 /**
  * confidenceLevel can be 'low', 'medium', 'high'
@@ -667,43 +815,43 @@ declare interface Geo$InsideOutsideOptions {
 confidenceLevel: string
 } 
 
-declare function Geo$getDistanceBetweenCoordinates(coordinate1: Geo$Coordinate, coordinate2: Geo$Coordinate): number
+declare function WL$Geo$getDistanceBetweenCoordinates(coordinate1: WL$Geo$Coordinate, coordinate2: WL$Geo$Coordinate): number
 
 
-declare function Geo$getDistanceToCircle(
-coordinate: Geo$Coordinate,
-circle: Geo$Circle,
-options: Geo$DistanceOptions): number
+declare function WL$Geo$getDistanceToCircle(
+coordinate: WL$Geo$Coordinate,
+circle: WL$Geo$Circle,
+options: WL$Geo$DistanceOptions): number
 
 
-declare function Geo$getDistanceToPolygon(
-coordinate: Geo$Coordinate,
-polygon: Geo$Coordinate[],
-options: Geo$DistanceOptions): number
+declare function WL$Geo$getDistanceToPolygon(
+coordinate: WL$Geo$Coordinate,
+polygon: WL$Geo$Coordinate[],
+options: WL$Geo$DistanceOptions): number
 
 
-declare function Geo$isInsideCircle(
-coordinate: Geo$Coordinate,
-circle: Geo$Circle,
-options: Geo$InsideOutsideOptions): boolean
+declare function WL$Geo$isInsideCircle(
+coordinate: WL$Geo$Coordinate,
+circle: WL$Geo$Circle,
+options: WL$Geo$InsideOutsideOptions): boolean
 
 
-declare function Geo$isInsidePolygon(
-coordinate: Geo$Coordinate,
-polygon: Geo$Coordinate[],
-options: Geo$InsideOutsideOptions): boolean
+declare function WL$Geo$isInsidePolygon(
+coordinate: WL$Geo$Coordinate,
+polygon: WL$Geo$Coordinate[],
+options: WL$Geo$InsideOutsideOptions): boolean
 
 
-declare function Geo$isOutsideCircle(
-coordinate: Geo$Coordinate,
-circle: Geo$Circle,
-options: Geo$InsideOutsideOptions): boolean
+declare function WL$Geo$isOutsideCircle(
+coordinate: WL$Geo$Coordinate,
+circle: WL$Geo$Circle,
+options: WL$Geo$InsideOutsideOptions): boolean
 
 
-declare function Geo$isOutsidePolygon(
-coordinate: Geo$Coordinate,
-polygon: Geo$Coordinate[],
-options: Geo$InsideOutsideOptions): boolean
+declare function WL$Geo$isOutsidePolygon(
+coordinate: WL$Geo$Coordinate,
+polygon: WL$Geo$Coordinate[],
+options: WL$Geo$InsideOutsideOptions): boolean
 
 
 declare class WL$Item  {
@@ -713,73 +861,74 @@ setTitle(title: string): void
 }
 
 
-      declare var npm$namespace$JSONStore: {
-        changePassword: typeof JSONStore$changePassword,
-clearPassword: typeof JSONStore$clearPassword,
-closeAll: typeof JSONStore$closeAll,
-commitTransaction: typeof JSONStore$commitTransaction,
-destroy: typeof JSONStore$destroy,
-documentify: typeof JSONStore$documentify,
-fileInfo: typeof JSONStore$fileInfo,
-get: typeof JSONStore$get,
-getErrorMessage: typeof JSONStore$getErrorMessage,
-init: typeof JSONStore$init,
-initCollection: typeof JSONStore$initCollection,
-QueryPart: typeof JSONStore$QueryPart,
-rollbackTransaction: typeof JSONStore$rollbackTransaction,
-startTransaction: typeof JSONStore$startTransaction,
-usePassword: typeof JSONStore$usePassword,
+      declare var npm$namespace$WL$JSONStore: {
+        changePassword: typeof WL$JSONStore$changePassword,
+clearPassword: typeof WL$JSONStore$clearPassword,
+closeAll: typeof WL$JSONStore$closeAll,
+commitTransaction: typeof WL$JSONStore$commitTransaction,
+destroy: typeof WL$JSONStore$destroy,
+documentify: typeof WL$JSONStore$documentify,
+fileInfo: typeof WL$JSONStore$fileInfo,
+get: typeof WL$JSONStore$get,
+getErrorMessage: typeof WL$JSONStore$getErrorMessage,
+init: typeof WL$JSONStore$init,
+initCollection: typeof WL$JSONStore$initCollection,
+QueryPart: typeof WL$JSONStore$QueryPart,
+rollbackTransaction: typeof WL$JSONStore$rollbackTransaction,
+startTransaction: typeof WL$JSONStore$startTransaction,
+usePassword: typeof WL$JSONStore$usePassword,
+        
+        
+        JSONStoreInstance: typeof WL$JSONStore$JSONStoreInstance,
+QueryPartObj: typeof WL$JSONStore$QueryPartObj,
         
       }
 
 /**
  * Changes the password for the internal storage. You must have an initialized collection before calling WL.JSONStore.changePassword.
  */
-declare function JSONStore$changePassword(
+declare function WL$JSONStore$changePassword(
 oldPassword: string,
 newPassword: string,
 username: string,
-options: WL$WL$Options): JQueryDeferred<any>
+options: WL$Options): JQueryDeferred<any>
 
 
 
 /**
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
-declare function JSONStore$clearPassword(): boolean
+declare function WL$JSONStore$clearPassword(): boolean
 
 
 
 /**
  * Locks access to all the collections until WL.JSONStore.init is called.
  */
-declare function JSONStore$closeAll(options?: WL$WL$Options): JQueryDeferred<any>
+declare function WL$JSONStore$closeAll(options?: WL$Options): JQueryDeferred<any>
 
 
 
 /**
  * Commit a transaction.
  */
-declare function JSONStore$commitTransaction(): JQueryDeferred<number>
+declare function WL$JSONStore$commitTransaction(): JQueryDeferred<number>
 
 
 
 /**
  * Completely wipes data for all users, destroys the internal storage, and clears security artifacts.
- * @parameters
- * options is
+ * @parameters options is
  * @deprecated
  */
-declare function JSONStore$destroy(username: string, options?: WL$WL$Options): JQueryDeferred<number>
+declare function WL$JSONStore$destroy(username: string, options?: WL$Options): JQueryDeferred<number>
 
 
 
 /**
- * @deprecated
- * since version 6.2.0.
+ * @deprecated since version 6.2.0.
  */
-declare function JSONStore$documentify(id: number, data: any): any
+declare function WL$JSONStore$documentify(id: number, data: any): any
 
 
 
@@ -789,109 +938,74 @@ declare function JSONStore$documentify(id: number, data: any): any
  * size - the total size, in bytes, of the store
  * isEncrypted - boolean that is true when encrypted and false otherwise.
  */
-declare function JSONStore$fileInfo(): JQueryDeferred<any>
+declare function WL$JSONStore$fileInfo(): JQueryDeferred<any>
 
 
 
 /**
  * Provides an accessor to the collection if the collection exists, otherwise it returns undefined.
  */
-declare function JSONStore$get(collectionName: string): JSONStore$JSONStoreInstance
+declare function WL$JSONStore$get(collectionName: string): JSONStore$JSONStoreInstance
 
 
 
 /**
  * Returns the message that is associated with a JSONStore error code.
  */
-declare function JSONStore$getErrorMessage(errorCode: number): string
+declare function WL$JSONStore$getErrorMessage(errorCode: number): string
 
 
-declare type JSONStore$InitOptions = {
-timeout?: number,
-
-/**
- * @deprecated
- * since version 6.2. Use WL.Logger.config function with an object specifying the level instead.
- */
-enableLogger?: boolean,
-messages?: string,
-authenticator?: Object,
-heartBeatIntervalInSecs?: number,
-
-/**
- * @deprecated
- * . If you would like your application to connect to the Worklight Server, use WL.Client.connect().
- */
-connectOnStartup?: boolean,
-onConnectionFailure?: (response: WL$WL$FailureResponse) => void,
-onUnsupportedVersion?: (response: WL$WL$FailureResponse) => void,
-onRequestTimeout?: (response: WL$WL$FailureResponse) => void,
-onUnsupportedBrowser?: (response: WL$WL$FailureResponse) => void,
-onDisabledCookies?: (response: WL$WL$FailureResponse) => void,
-onUserInstanceAccessViolation?: (response: WL$WL$FailureResponse) => void,
-onErrorRemoteDisableDenial?: (response: WL$WL$FailureResponse) => void,
-
-/**
- * @deprecated
- * since version 5.0.6. Instead, use onErrorRemoteDisableDenial.
- */
-onErrorAppVersionAccessDenial?: (response: WL$WL$FailureResponse) => void,
-validateArguments?: boolean,
-autoHideSplash?: boolean,
-onGetCustomDeviceProvisioningProperties: (resumeDeviceProvisioningProcess: (data: any) => void) => void,
+declare interface WL$JSONStore$InitOptions {
 username?: string,
 password?: string,
-LocalStorage$clear?: boolean,
+clear?: boolean,
 localKeyGen?: boolean,
 analytics?: boolean
-} & WL$Options
+} 
 
-
-declare function JSONStore$init(collections: any, options?: JSONStore$InitOptions): JQueryDeferred<any>
+declare function WL$JSONStore$init(collections: any, options?: WL$JSONStore$InitOptions): JQueryDeferred<any>
 
 
 
 /**
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
-declare function JSONStore$initCollection(
+declare function WL$JSONStore$initCollection(
 name: string,
 searchFields: any,
-options?: JSONStore$InitOptions): WL$WL$JSONStore.JSONStore$JSONStoreInstance
+options?: WL$JSONStore$InitOptions): WL$JSONStore$JSONStoreInstance
 
 
 
 /**
  * Creates a query for advanced find. See WL.JSONStore.QueryPart for more information.
  */
-declare function JSONStore$QueryPart(): JSONStore$QueryPartObj
+declare function WL$JSONStore$QueryPart(): JSONStore$QueryPartObj
 
 
 
 /**
  * Roll back a transaction
  */
-declare function JSONStore$rollbackTransaction(): JQueryDeferred<number>
+declare function WL$JSONStore$rollbackTransaction(): JQueryDeferred<number>
 
 
 
 /**
  * Initiates a transaction
  */
-declare function JSONStore$startTransaction(): JQueryDeferred<number>
+declare function WL$JSONStore$startTransaction(): JQueryDeferred<number>
 
 
 
 /**
  * Sets the password that is used to generate keys to encrypt data that is stored locally on the device.
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.init
  */
-declare function JSONStore$usePassword(pwd: string): boolean
+declare function WL$JSONStore$usePassword(pwd: string): boolean
 
 
-declare type JSONStore$AddOptions = {
+declare type WL$JSONStore$AddOptions = {
 additionalSearchFields?: any,
 markDirty?: boolean,
 
@@ -899,46 +1013,46 @@ markDirty?: boolean,
  * @deprecated
  */
 push?: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$BasicFindOptions = {
+declare type WL$JSONStore$BasicFindOptions = {
 filter?: string[],
 sort?: string[]
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$AdvancedFindOptions = {
+declare type WL$JSONStore$AdvancedFindOptions = {
 limit?: number,
 offset?: number
-} & JSONStore$BasicFindOptions
+} & WL$JSONStore$BasicFindOptions
 
 
-declare type JSONStore$FindOptions = {
+declare type WL$JSONStore$FindOptions = {
 exact?: boolean,
 limit?: number,
 offset?: number
-} & JSONStore$BasicFindOptions
+} & WL$JSONStore$BasicFindOptions
 
 
-declare type JSONStore$EraseOptions = {
+declare type WL$JSONStore$EraseOptions = {
 push?: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$RefreshOptions = {
+declare type WL$JSONStore$RefreshOptions = {
 push: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$ChangeOptions = {
+declare type WL$JSONStore$ChangeOptions = {
 addNew?: boolean,
 markDirty?: boolean,
 replaceCriteria?: string[]
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$RemoveOptions = {
+declare type WL$JSONStore$RemoveOptions = {
 markDirty?: boolean,
 
 /**
@@ -946,88 +1060,84 @@ markDirty?: boolean,
  */
 push?: boolean,
 exact?: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$ReplaceOptions = {
+declare type WL$JSONStore$ReplaceOptions = {
 markDirty?: boolean,
 
 /**
  * @deprecated
  */
 push?: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare type JSONStore$StoreOptions = {
+declare type WL$JSONStore$StoreOptions = {
 additionalSearchFields?: Object,
 push?: boolean
-} & WL$WL$Options
+} & WL$Options
 
 
-declare class JSONStore$JSONStoreInstance  {
-add(data: any, options?: JSONStore$AddOptions): JQueryDeferred<any>;
-advancedFind(query: any[], options?: JSONStore$AdvancedFindOptions): JQueryDeferred<any>;
-change(data: any, options?: JSONStore$ChangeOptions): JQueryDeferred<any>;
-clear(options?: WL$WL$Options): JQueryDeferred<any>;
-count(query?: any, options?: WL$WL$Options): JQueryDeferred<any>;
-countAllDirty(options?: WL$WL$Options): JQueryDeferred<any>;
+declare class WL$JSONStore$JSONStoreInstance  {
+add(data: any, options?: WL$JSONStore$AddOptions): JQueryDeferred<any>;
+advancedFind(query: any[], options?: WL$JSONStore$AdvancedFindOptions): JQueryDeferred<any>;
+change(data: any, options?: WL$JSONStore$ChangeOptions): JQueryDeferred<any>;
+clear(options?: WL$Options): JQueryDeferred<any>;
+count(query?: any, options?: WL$Options): JQueryDeferred<any>;
+countAllDirty(options?: WL$Options): JQueryDeferred<any>;
 enhance(name: string, fn: Function): number;
 
 /**
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.remove with {push: false}.
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.remove with {push: false}.
  */
-erase(doc: any, options?: JSONStore$EraseOptions): void;
-find(query: Object | Object[], options?: JSONStore$FindOptions): JQueryDeferred<any>;
-findAll(options?: JSONStore$BasicFindOptions): JQueryDeferred<any>;
-findById(options?: WL$WL$Options): JQueryDeferred<any>;
-isDirty(doc: any, options?: WL$WL$Options): JQueryDeferred<boolean>;
+erase(doc: any, options?: WL$JSONStore$EraseOptions): void;
+find(
+query: Object | Object[],
+options?: WL$JSONStore$FindOptions): JQueryDeferred<any>;
+findAll(options?: WL$JSONStore$BasicFindOptions): JQueryDeferred<any>;
+findById(options?: WL$Options): JQueryDeferred<any>;
+isDirty(doc: any, options?: WL$Options): JQueryDeferred<boolean>;
 
 /**
- * @deprecated
- * since version 6.2.0.
+ * @deprecated since version 6.2.0.
  */
-load(options?: WL$WL$Options): JQueryDeferred<any>;
-markClean(docs: any[], options?: WL$WL$Options): JQueryDeferred<any>;
+load(options?: WL$Options): JQueryDeferred<any>;
+markClean(docs: any[], options?: WL$Options): JQueryDeferred<any>;
 
 /**
- * @deprecated
- * since version 6.2.0.
+ * @deprecated since version 6.2.0.
  */
 push(options?: any): JQueryDeferred<any>;
 
 /**
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.push.
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.push.
  */
-pushSelected(doc: any, options?: WL$WL$Options): JQueryDeferred<any>;
+pushSelected(doc: any, options?: WL$Options): JQueryDeferred<any>;
 
 /**
- * @deprecated
- * since version 5.0.6. It is no longer needed if you use WL.JSONStore.JSONStoreInstance.replace with {push: false}.
+ * @deprecated since version 5.0.6. It is no longer needed if you use WL.JSONStore.JSONStoreInstance.replace with {push: false}.
  */
-refresh(doc: any, options?: JSONStore$RefreshOptions): JQueryDeferred<any>;
-remove(doc: any, options?: JSONStore$RemoveOptions): JQueryDeferred<any>;
+refresh(doc: any, options?: WL$JSONStore$RefreshOptions): JQueryDeferred<any>;
+remove(doc: any, options?: WL$JSONStore$RemoveOptions): JQueryDeferred<any>;
 
 /**
  * Deletes all the documents that are stored inside a collection.
  */
-removeCollection(options?: WL$WL$Options): JQueryDeferred<any>;
+removeCollection(options?: WL$Options): JQueryDeferred<any>;
 replace(
 doc: Object | Object[],
-options?: JSONStore$ReplaceOptions): JQueryDeferred<any>;
+options?: WL$JSONStore$ReplaceOptions): JQueryDeferred<any>;
 
 /**
  * Writes data to a collection.
- * @deprecated
- * since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.add with {push: false}.
+ * @deprecated since version 5.0.6, it is no longer needed if you use WL.JSONStore.JSONStoreInstance.add with {push: false}.
  */
-store(data: Object | Object[], options?: JSONStore$StoreOptions): void;
+store(data: Object | Object[], options?: WL$JSONStore$StoreOptions): void;
 toString(limit?: number, offset?: number): JQueryDeferred<number>
 }
 
-declare class JSONStore$QueryPartObj  {
+declare class WL$JSONStore$QueryPartObj  {
 
 /**
  * Add a between clause to a query for advanced find.
@@ -1111,23 +1221,26 @@ rightLike(searchField: any, value: any): any[]
 }
 
 
-      declare var npm$namespace$LocalStorage: {
-        getValue: typeof LocalStorage$getValue,
-setValue: typeof LocalStorage$setValue,
-clear: typeof LocalStorage$clear,
-clearAll: typeof LocalStorage$clearAll,
+      declare var npm$namespace$WL$LocalStorage: {
+        getValue: typeof WL$LocalStorage$getValue,
+setValue: typeof WL$LocalStorage$setValue,
+clear: typeof WL$LocalStorage$clear,
+clearAll: typeof WL$LocalStorage$clearAll,
+        
+        
+        
         
       }
-declare function LocalStorage$getValue(key: string): string
+declare function WL$LocalStorage$getValue(key: string): string
 
 
-declare function LocalStorage$setValue(key: string, value: string): void
+declare function WL$LocalStorage$setValue(key: string, value: string): void
 
 
-declare function LocalStorage$clear(key: string): void
+declare function WL$LocalStorage$clear(key: string): void
 
 
-declare function LocalStorage$clearAll(): void
+declare function WL$LocalStorage$clearAll(): void
 
 
 declare var WL$Logger: WL$LoggerObject;
@@ -1154,14 +1267,12 @@ pkg?: string,
 tag?: WL$Tag,
 
 /**
- * @deprecated
- * since version 6.2. use filters instead.
+ * @deprecated since version 6.2. use filters instead.
  */
 whitelist?: string[],
 
 /**
- * @deprecated
- * since version 6.2. use filters instead.
+ * @deprecated since version 6.2. use filters instead.
  */
 blacklist?: string[],
 filters?: WL$Filter,
@@ -1199,7 +1310,7 @@ create(options?: WL$LoggerOptions): WL$LogInstance;
 /**
  * Updates the state (also called context or status) of the logger.
  */
-ctx(options?: WL$LoggerOptions): WL$WL$LoggerObject;
+ctx(options?: WL$LoggerOptions): WL$LoggerObject;
 
 /**
  * Prints arguments to the console.
@@ -1232,16 +1343,14 @@ log(message: string): void;
 metadata(options: any): WL$LoggerObject;
 
 /**
- * @deprecated
- * since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
+ * @deprecated since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
  */
-off(): WL$WL$LoggerObject;
+off(): WL$LoggerObject;
 
 /**
- * @deprecated
- * since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
+ * @deprecated since version 6.2. WL.Logger.on is now a no-op. WL.Logger is always enabled. Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
  */
-on(options: any): WL$WL$LoggerObject;
+on(options: any): WL$LoggerObject;
 
 /**
  * Send any logs collected up to this point to the IBM® Worklight® server.
@@ -1249,8 +1358,7 @@ on(options: any): WL$WL$LoggerObject;
 send(): JQueryDeferred<any>;
 
 /**
- * @deprecated
- * since version 6.2. Use WL.Logger.config instead. Sets options in native application layer (iOS and Android only)
+ * @deprecated since version 6.2. Use WL.Logger.config instead. Sets options in native application layer (iOS and Android only)
  */
 setNativeOptions(options?: WL$NativeOptions): void;
 
@@ -1290,25 +1398,31 @@ warn(message: string): void
 }
 
 
-      declare var npm$namespace$NativePage: {
-        show: typeof NativePage$show,
+      declare var npm$namespace$WL$NativePage: {
+        show: typeof WL$NativePage$show,
+        
+        
+        
         
       }
-declare function NativePage$show(className: string, callback: (data: any) => void, data: any): void
+declare function WL$NativePage$show(className: string, callback: (data: any) => void, data: any): void
 
 
 
-      declare var npm$namespace$SecurityUtils: {
-        base64Decode: typeof SecurityUtils$base64Decode,
-base64Encode: typeof SecurityUtils$base64Encode,
-decrypt: typeof SecurityUtils$decrypt,
-encrypt: typeof SecurityUtils$encrypt,
-keygen: typeof SecurityUtils$keygen,
-localRandomString: typeof SecurityUtils$localRandomString,
-remoteRandomString: typeof SecurityUtils$remoteRandomString,
+      declare var npm$namespace$WL$SecurityUtils: {
+        base64Decode: typeof WL$SecurityUtils$base64Decode,
+base64Encode: typeof WL$SecurityUtils$base64Encode,
+decrypt: typeof WL$SecurityUtils$decrypt,
+encrypt: typeof WL$SecurityUtils$encrypt,
+keygen: typeof WL$SecurityUtils$keygen,
+localRandomString: typeof WL$SecurityUtils$localRandomString,
+remoteRandomString: typeof WL$SecurityUtils$remoteRandomString,
+        
+        
+        
         
       }
-declare interface SecurityUtils$DecryptOptions {
+declare interface WL$SecurityUtils$DecryptOptions {
 key: string,
 ct: string,
 lv: string,
@@ -1316,111 +1430,114 @@ src: string,
 v: string
 } 
 
-declare interface SecurityUtils$EncryptOptions {
+declare interface WL$SecurityUtils$EncryptOptions {
 key: string,
 text: string
 } 
 
-declare interface SecurityUtils$KeygenOptions {
+declare interface WL$SecurityUtils$KeygenOptions {
 password: string,
 salt: string,
 iterations: number
 } 
 
-declare function SecurityUtils$base64Decode(input: string): JQueryDeferred<string>
+declare function WL$SecurityUtils$base64Decode(input: string): JQueryDeferred<string>
 
 
-declare function SecurityUtils$base64Encode(input: string): JQueryDeferred<string>
+declare function WL$SecurityUtils$base64Encode(input: string): JQueryDeferred<string>
 
 
-declare function SecurityUtils$decrypt(options: SecurityUtils$DecryptOptions): JQueryDeferred<string>
+declare function WL$SecurityUtils$decrypt(options: WL$SecurityUtils$DecryptOptions): JQueryDeferred<string>
 
 
-declare function SecurityUtils$encrypt(options: SecurityUtils$EncryptOptions): JQueryDeferred<string>
+declare function WL$SecurityUtils$encrypt(options: WL$SecurityUtils$EncryptOptions): JQueryDeferred<string>
 
 
-declare function SecurityUtils$keygen(options: SecurityUtils$KeygenOptions): JQueryDeferred<string>
+declare function WL$SecurityUtils$keygen(options: WL$SecurityUtils$KeygenOptions): JQueryDeferred<string>
 
 
-declare function SecurityUtils$localRandomString(bytes?: number): JQueryDeferred<string>
+declare function WL$SecurityUtils$localRandomString(bytes?: number): JQueryDeferred<string>
 
 
-declare function SecurityUtils$remoteRandomString(bytes?: number): JQueryDeferred<string>
+declare function WL$SecurityUtils$remoteRandomString(bytes?: number): JQueryDeferred<string>
 
 
 
-      declare var npm$namespace$SimpleDialog: {
-        show: typeof SimpleDialog$show,
+      declare var npm$namespace$WL$SimpleDialog: {
+        show: typeof WL$SimpleDialog$show,
+        
+        
+        
         
       }
-declare interface SimpleDialog$Button {
+declare interface WL$SimpleDialog$Button {
 text: string,
 handler?: Function
 } 
 
-declare interface SimpleDialog$Options {
-onSuccess?: (response: WL$IResponse) => void,
-onFailure?: (response: WL$IResponse) => void,
-invocationContext?: any,
+declare interface WL$SimpleDialog$Options {
 title: string,
 text: string
 } 
 
-declare function SimpleDialog$show(
+declare function WL$SimpleDialog$show(
 title: string,
 text: string,
-buttons: SimpleDialog$Button[],
-options?: SimpleDialog$Options): void
+buttons: WL$SimpleDialog$Button[],
+options?: WL$SimpleDialog$Options): void
 
 
 
-      declare var npm$namespace$TabBar: {
-        addItem: typeof TabBar$addItem,
-init: typeof TabBar$init,
-isVisible: typeof TabBar$isVisible,
-RemoveAllItems: typeof TabBar$RemoveAllItems,
-setEnabled: typeof TabBar$setEnabled,
-setParentDivId: typeof TabBar$setParentDivId,
-setSelectedItem: typeof TabBar$setSelectedItem,
-setVisible: typeof TabBar$setVisible,
+      declare var npm$namespace$WL$TabBar: {
+        addItem: typeof WL$TabBar$addItem,
+init: typeof WL$TabBar$init,
+isVisible: typeof WL$TabBar$isVisible,
+RemoveAllItems: typeof WL$TabBar$RemoveAllItems,
+setEnabled: typeof WL$TabBar$setEnabled,
+setParentDivId: typeof WL$TabBar$setParentDivId,
+setSelectedItem: typeof WL$TabBar$setSelectedItem,
+setVisible: typeof WL$TabBar$setVisible,
+        
+        
+        
         
       }
-declare interface TabBar$ItemOptions {
+declare interface WL$TabBar$ItemOptions {
 image: string,
 badge?: string,
 imageSelected?: string
 } 
 
-declare function TabBar$addItem(
+declare function WL$TabBar$addItem(
 id: string,
 callback: Function,
 title: string,
-options: TabBar$ItemOptions): WL$WL$TabBarItem
+options: WL$TabBar$ItemOptions): WL$TabBarItem
 
 
-declare function TabBar$init(): void
+declare function WL$TabBar$init(): void
 
 
-declare function TabBar$isVisible(): boolean
+declare function WL$TabBar$isVisible(): boolean
 
 
-declare function TabBar$RemoveAllItems(): void
+declare function WL$TabBar$RemoveAllItems(): void
 
 
-declare function TabBar$setEnabled(isEnabled: boolean): void
+declare function WL$TabBar$setEnabled(isEnabled: boolean): void
 
 
 
 /**
  * @deprecated
  */
-declare function TabBar$setParentDivId(parentId: string): void
+declare function WL$TabBar$setParentDivId(parentId: string): void
 
 
-declare function TabBar$setSelectedItem(id: string): void
+declare function WL$TabBar$setSelectedItem(id: string): void
 
 
-declare function TabBar$setVisible(TabBar$isVisible: boolean): void
+declare function WL$TabBar$setVisible(isVisible: boolean): void
 
 
 declare class WL$TabBarItem  {
@@ -1429,50 +1546,59 @@ updateBadge(badge?: string): void
 }
 
 
-      declare var npm$namespace$Toast: {
-        show: typeof Toast$show,
+      declare var npm$namespace$WL$Toast: {
+        show: typeof WL$Toast$show,
+        
+        
+        
         
       }
-declare function Toast$show(): void
+declare function WL$Toast$show(): void
 
 
 
-      declare var npm$namespace$Trusteer: {
-        getRiskAssessment: typeof Trusteer$getRiskAssessment,
+      declare var npm$namespace$WL$Trusteer: {
+        getRiskAssessment: typeof WL$Trusteer$getRiskAssessment,
+        
+        
+        
         
       }
-declare interface Trusteer$AssesmentRisk {
+declare interface WL$Trusteer$AssesmentRisk {
 value: number,
 additionalData: string,
 lastCalculated: number,
 name: string
 } 
 
-declare interface Trusteer$AssetmentRisks {
+declare interface WL$Trusteer$AssetmentRisks {
 device_key: string,
-"malware.any"?: Trusteer$AssesmentRisk,
-"network.wifi"?: Trusteer$AssesmentRisk,
-"os.rooted"?: Trusteer$AssesmentRisk,
-"os.rooted.native"?: Trusteer$AssesmentRisk,
-"os.rooted.hiders"?: Trusteer$AssesmentRisk,
-"os.ver_up_to_date"?: Trusteer$AssesmentRisk,
-"plat.android.dumpsys"?: Trusteer$AssesmentRisk,
-"plat.android.apprestrict"?: Trusteer$AssesmentRisk,
-"total.risk.generic"?: Trusteer$AssesmentRisk,
-"tas.config_update"?: Trusteer$AssesmentRisk
+"malware.any"?: WL$Trusteer$AssesmentRisk,
+"network.wifi"?: WL$Trusteer$AssesmentRisk,
+"os.rooted"?: WL$Trusteer$AssesmentRisk,
+"os.rooted.native"?: WL$Trusteer$AssesmentRisk,
+"os.rooted.hiders"?: WL$Trusteer$AssesmentRisk,
+"os.ver_up_to_date"?: WL$Trusteer$AssesmentRisk,
+"plat.android.dumpsys"?: WL$Trusteer$AssesmentRisk,
+"plat.android.apprestrict"?: WL$Trusteer$AssesmentRisk,
+"total.risk.generic"?: WL$Trusteer$AssesmentRisk,
+"tas.config_update"?: WL$Trusteer$AssesmentRisk
 } 
 
-declare function Trusteer$getRiskAssessment(
+declare function WL$Trusteer$getRiskAssessment(
 onSuccess: WL$ResponseHandler<WL$Response>,
-onFailure: WL$ResponseHandler<WL$FailureResponse>): Trusteer$AssetmentRisks
+onFailure: WL$ResponseHandler<WL$FailureResponse>): WL$Trusteer$AssetmentRisks
 
 
 
-      declare var npm$namespace$UserAuth: {
-        deleteCertificate: typeof UserAuth$deleteCertificate,
+      declare var npm$namespace$WL$UserAuth: {
+        deleteCertificate: typeof WL$UserAuth$deleteCertificate,
+        
+        
+        
         
       }
-declare function UserAuth$deleteCertificate(provisioningEntity?: string): JQueryDeferred<void>
+declare function WL$UserAuth$deleteCertificate(provisioningEntity?: string): JQueryDeferred<void>
 
 
 declare var WL$ClientMessages: {
@@ -1491,6 +1617,9 @@ obtainAuthorizationHeader: typeof WLAuthorizationManager$obtainAuthorizationHead
 setAuthorizationPersistencePolicy: typeof WLAuthorizationManager$setAuthorizationPersistencePolicy,
         ALWAYS: typeof WLAuthorizationManager$ALWAYS,
 NEVER: typeof WLAuthorizationManager$NEVER,
+        
+        
+        
       }
 
 /**
