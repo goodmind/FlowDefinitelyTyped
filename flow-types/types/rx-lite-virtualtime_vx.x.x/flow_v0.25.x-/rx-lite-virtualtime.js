@@ -26,10 +26,7 @@ declare type Rx$VirtualTimeScheduler<TAbsolute, TRelative> = {
   getNext(): internals.ScheduledItem<TAbsolute>
 } & Scheduler;
 
-declare type Rx$HistoricalScheduler = {} & Rx$VirtualTimeScheduler<
-  number,
-  number
->;
+declare type Rx$HistoricalScheduler = {} & VirtualTimeScheduler<number, number>;
 
 declare var Rx$HistoricalScheduler: {
   new(
@@ -38,5 +35,5 @@ declare var Rx$HistoricalScheduler: {
   ): Rx$HistoricalScheduler
 };
 declare module "rx-lite-virtualtime" {
-  declare module.exports: typeof Rx;
+  declare export default typeof Rx;
 }
