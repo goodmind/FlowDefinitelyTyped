@@ -1,7 +1,7 @@
 declare module "sha.js" {
   import type { Hash } from "crypto";
 
-  declare module.exports: typeof SHA;
+  declare export default typeof SHA;
 
   declare function SHA(algorithm: string): Hash;
 
