@@ -1,6 +1,8 @@
 declare module "google-earth" {
   declare var npm$namespace$google: {
-    load: typeof google$load
+    load: typeof google$load,
+
+    earth: typeof npm$namespace$google$earth
   };
   declare export function google$load(
     moduleName: string,
@@ -8,89 +10,171 @@ declare module "google-earth" {
     optionalSettings?: any
   ): void;
 
-  declare var npm$namespace$earth: {
-    isSupported: typeof earth$isSupported,
-    isInstalled: typeof earth$isInstalled,
-    createInstance: typeof earth$createInstance,
-    addEventListener: typeof earth$addEventListener,
-    removeEventListener: typeof earth$removeEventListener,
-    fetchKml: typeof earth$fetchKml,
-    executeBatch: typeof earth$executeBatch,
-    setLanguage: typeof earth$setLanguage
+  declare var npm$namespace$google$earth: {
+    isSupported: typeof google$earth$isSupported,
+    isInstalled: typeof google$earth$isInstalled,
+    createInstance: typeof google$earth$createInstance,
+    addEventListener: typeof google$earth$addEventListener,
+    removeEventListener: typeof google$earth$removeEventListener,
+    fetchKml: typeof google$earth$fetchKml,
+    executeBatch: typeof google$earth$executeBatch,
+    setLanguage: typeof google$earth$setLanguage,
+
+    GEPhotoOverlayViewer: typeof google$earth$GEPhotoOverlayViewer,
+    GENavigationControl: typeof google$earth$GENavigationControl,
+    KmlTour: typeof google$earth$KmlTour,
+    GETourPlayer: typeof google$earth$GETourPlayer,
+    GEHitTestResult: typeof google$earth$GEHitTestResult,
+    KmlStyleMap: typeof google$earth$KmlStyleMap,
+    KmlNetworkLink: typeof google$earth$KmlNetworkLink,
+    KmlScreenOverlay: typeof google$earth$KmlScreenOverlay,
+    KmlPhotoOverlay: typeof google$earth$KmlPhotoOverlay,
+    KmlGroundOverlay: typeof google$earth$KmlGroundOverlay,
+    KmlOverlay: typeof google$earth$KmlOverlay,
+    KmlViewerOptions: typeof google$earth$KmlViewerOptions,
+    KmlOrientation: typeof google$earth$KmlOrientation,
+    KmlLocation: typeof google$earth$KmlLocation,
+    KmlScale: typeof google$earth$KmlScale,
+    KmlCoord: typeof google$earth$KmlCoord,
+    KmlCoordArray: typeof google$earth$KmlCoordArray,
+    GEWindow: typeof google$earth$GEWindow,
+    GEGlobe: typeof google$earth$GEGlobe,
+    GEView: typeof google$earth$GEView,
+    KmlIcon: typeof google$earth$KmlIcon,
+    KmlLink: typeof google$earth$KmlLink,
+    GETime: typeof google$earth$GETime,
+    GEOptions: typeof google$earth$GEOptions,
+    GESchemaObjectContainer: typeof google$earth$GESchemaObjectContainer,
+    GEFeatureContainer: typeof google$earth$GEFeatureContainer,
+    GEGeometryContainer: typeof google$earth$GEGeometryContainer,
+    GELinearRingContainer: typeof google$earth$GELinearRingContainer,
+    GEStyleSelectorContainer: typeof google$earth$GEStyleSelectorContainer,
+    KmlVec2: typeof google$earth$KmlVec2,
+    GESun: typeof google$earth$GESun,
+    KmlColor: typeof google$earth$KmlColor,
+    KmlEvent: typeof google$earth$KmlEvent,
+    KmlMouseEvent: typeof google$earth$KmlMouseEvent,
+    GEEventEmitter: typeof google$earth$GEEventEmitter,
+    KmlObject: typeof google$earth$KmlObject,
+    KmlObjectList: typeof google$earth$KmlObjectList,
+    KmlStyleSelector: typeof google$earth$KmlStyleSelector,
+    KmlStyle: typeof google$earth$KmlStyle,
+    KmlColorStyle: typeof google$earth$KmlColorStyle,
+    KmlIconStyle: typeof google$earth$KmlIconStyle,
+    KmlLabelStyle: typeof google$earth$KmlLabelStyle,
+    KmlLineStyle: typeof google$earth$KmlLineStyle,
+    KmlPolyStyle: typeof google$earth$KmlPolyStyle,
+    KmlListStyle: typeof google$earth$KmlListStyle,
+    KmlBalloonStyle: typeof google$earth$KmlBalloonStyle,
+    KmlLatLonBox: typeof google$earth$KmlLatLonBox,
+    KmlLatLonAltBox: typeof google$earth$KmlLatLonAltBox,
+    KmlLod: typeof google$earth$KmlLod,
+    KmlRegion: typeof google$earth$KmlRegion,
+    KmlDateTime: typeof google$earth$KmlDateTime,
+    KmlTimePrimitive: typeof google$earth$KmlTimePrimitive,
+    KmlTimeStamp: typeof google$earth$KmlTimeStamp,
+    KmlTimeSpan: typeof google$earth$KmlTimeSpan,
+    KmlAbstractView: typeof google$earth$KmlAbstractView,
+    KmlLookAt: typeof google$earth$KmlLookAt,
+    KmlCamera: typeof google$earth$KmlCamera,
+    KmlGeometry: typeof google$earth$KmlGeometry,
+    KmlAltitudeGeometry: typeof google$earth$KmlAltitudeGeometry,
+    KmlModel: typeof google$earth$KmlModel,
+    KmlMultiGeometry: typeof google$earth$KmlMultiGeometry,
+    KmlExtrudableGeometry: typeof google$earth$KmlExtrudableGeometry,
+    KmlPolygon: typeof google$earth$KmlPolygon,
+    KmlPoint: typeof google$earth$KmlPoint,
+    KmlLineString: typeof google$earth$KmlLineString,
+    KmlLinearRing: typeof google$earth$KmlLinearRing,
+    KmlFeature: typeof google$earth$KmlFeature,
+    KmlContainer: typeof google$earth$KmlContainer,
+    KmlFolder: typeof google$earth$KmlFolder,
+    KmlLayer: typeof google$earth$KmlLayer,
+    KmlLayerRoot: typeof google$earth$KmlLayerRoot,
+    KmlDocument: typeof google$earth$KmlDocument,
+    KmlPlacemark: typeof google$earth$KmlPlacemark,
+    GEAbstractBalloon: typeof google$earth$GEAbstractBalloon,
+    GEFeatureBalloon: typeof google$earth$GEFeatureBalloon,
+    GEHtmlBalloon: typeof google$earth$GEHtmlBalloon,
+    GEHtmlDivBalloon: typeof google$earth$GEHtmlDivBalloon,
+    GEHtmlStringBalloon: typeof google$earth$GEHtmlStringBalloon,
+    GEControl: typeof google$earth$GEControl,
+    GETimeControl: typeof google$earth$GETimeControl,
+    GEPlugin: typeof google$earth$GEPlugin
   };
 
   /**
    * Specifies the current stage of the flow of events.
    */
-  declare export type earth$GEEventPhaseEnum = any;
+  declare export type google$earth$GEEventPhaseEnum = any;
 
   /**
    * Specifies how a feature should be displayed in a list view.
    */
-  declare export type earth$KmlListItemTypeEnum = any;
+  declare export type google$earth$KmlListItemTypeEnum = any;
 
   /**
    * Specifies which color mode effect to apply to the base color.
    */
-  declare export type earth$KmlColorModeEnum = any;
+  declare export type google$earth$KmlColorModeEnum = any;
 
-  declare export type earth$KmlAltitudeModeEnum = any;
+  declare export type google$earth$KmlAltitudeModeEnum = any;
 
   /**
    * Specifies how the link is refreshed.
    */
-  declare export type earth$KmlRefreshModeEnum = any;
+  declare export type google$earth$KmlRefreshModeEnum = any;
 
   /**
    * Specifies how the link is refreshed when the viewport changes.
    */
-  declare export type earth$KmlViewRefreshModeEnum = any;
+  declare export type google$earth$KmlViewRefreshModeEnum = any;
 
   /**
    * Specifies which units a value is specified in.
    */
-  declare type earth$KmlUnitsEnum = any;
+  declare type google$earth$KmlUnitsEnum = any;
 
   /**
    * Specifies if the map type is Earth or sky mode.
    */
-  declare type earth$GEMapTypeEnum = any;
+  declare type google$earth$GEMapTypeEnum = any;
 
   /**
    * Specifies if a control is always visible, always hidden,
    * or visible only when the user intends to use the control.
    */
-  declare type earth$GEVisibilityEnum = any;
+  declare type google$earth$GEVisibilityEnum = any;
 
   /**
    * Specifies what to sample when performing a hit test.
    */
-  declare type earth$GEHitTestModeEnum = any;
+  declare type google$earth$GEHitTestModeEnum = any;
 
   /**
    * Specifies the size of the navigation control.
    */
-  declare type earth$GENavigationControlEnum = any;
+  declare type google$earth$GENavigationControlEnum = any;
 
   /**
    * Specifies the state of viewer options, including sunlight,
    * Street View, and historical imagery.
    */
-  declare type earth$GEViewerOptionsValueEnum = any;
+  declare type google$earth$GEViewerOptionsValueEnum = any;
 
-  declare type earth$GEViewerOptionsTypeEnum = any;
+  declare type google$earth$GEViewerOptionsTypeEnum = any;
 
   /**
    * Whether or not the Google Earth Browser Plug-in and API are supported on the current browser and operating system.
    */
-  declare export function earth$isSupported(): boolean;
+  declare export function google$earth$isSupported(): boolean;
 
   /**
    * Whether or not the Google Earth Browser Plug-in is currently installed on the user's machine.
    *
    * Note: if the plug-in is not installed, the user will be presented with a 'download' link upon calls to google.earth.createInstance().
    */
-  declare export function earth$isInstalled(): boolean;
+  declare export function google$earth$isInstalled(): boolean;
 
   /**
    * Attempts to create an instance of the plugin under the given web browser HTML DOM node.
@@ -102,7 +186,7 @@ declare module "google-earth" {
    *     The HTML DOM must be loaded before this function can be called.
    *     Common usage is to call this function upon the <body>'s load event, or to use google.setOnLoadCallback.
    */
-  declare export function earth$createInstance(
+  declare export function google$earth$createInstance(
     domNode: string | Element,
     initCallback: (plugin: earth$GEPlugin) => void,
     failureCallback: (error: any) => void,
@@ -112,7 +196,7 @@ declare module "google-earth" {
   /**
    * Attaches a listener to a given object for a specific event; when the event occurs on the object, the given callback is invoked.
    */
-  declare export function earth$addEventListener(
+  declare export function google$earth$addEventListener(
     targetObject: any,
     eventID: string,
     listenerCallback: (event: earth$KmlEvent) => void,
@@ -127,7 +211,7 @@ declare module "google-earth" {
    *     You must pass in the exact same function object as was passed to addEventListener.
    *     If you are using an anonymous function callback, it will need to be refactored into its own variable.
    */
-  declare export function earth$removeEventListener(
+  declare export function google$earth$removeEventListener(
     targetObject: any,
     eventID: string,
     listenerCallback: (event: earth$KmlEvent) => void,
@@ -139,7 +223,7 @@ declare module "google-earth" {
    *
    * Note: This function does not display the feature on the Earth. See below for more information.
    */
-  declare export function earth$fetchKml(
+  declare export function google$earth$fetchKml(
     pluginInstance: earth$GEPlugin,
     url: string,
     completionCallback: (feature: earth$KmlFeature) => void
@@ -149,7 +233,7 @@ declare module "google-earth" {
    * Efficiently executes an arbitrary, user-defined function (the batch function), minimizing the amount of overhead incurred during cross-process communication between the web browser and Google Earth Plugin.
    * This method is useful for batching together a large set of calls to the Earth API, for example, a large number of consecutive calls to KmlCoordArray.pushLatLngAlt.
    */
-  declare export function earth$executeBatch(
+  declare export function google$earth$executeBatch(
     pluginInstance: earth$GEPlugin,
     batchFunction: Function
   ): void;
@@ -159,14 +243,14 @@ declare module "google-earth" {
    * Needs to be called before google.earth.createInstance().
    * Affects road and border labels, the error message displayed when the plugin fails to load, as well as the language of the Terms of Use page linked from the plugin.
    */
-  declare export function earth$setLanguage(languageCode: string): void;
+  declare export function google$earth$setLanguage(languageCode: string): void;
 
   /**
    * This interface enables programmatic and user-driven interaction with photo overlays in the Google Earth Plugin.
    *
    * Note: This interface is still under development.
    */
-  declare export class earth$GEPhotoOverlayViewer {
+  declare export class google$earth$GEPhotoOverlayViewer {
     /**
      * Enters the given photo overlay object, exiting any other currently active photo overlay.
      * If the argument is null, then any currently active photo overlay is exited and normal global navigation is enabled.
@@ -177,7 +261,7 @@ declare module "google-earth" {
   /**
    * Used to manipulate the navigation controls in Google Earth.
    */
-  declare export class earth$GENavigationControl {
+  declare export class google$earth$GENavigationControl {
     /**
      * Whether the control is always visible, always hidden, or visible only when the user intends to use the control.
      *
@@ -187,7 +271,7 @@ declare module "google-earth" {
      * * GEPlugin.VISIBILITY_HIDE
      * * GEPlugin.VISIBILITY_AUTO
      */
-    getVisibility(): earth$GEVisibilityEnum;
+    getVisibility(): google$earth$GEVisibilityEnum;
 
     /**
      * Whether the control is always visible, always hidden, or visible only when the user intends to use the control.
@@ -198,7 +282,7 @@ declare module "google-earth" {
      * * GEPlugin.VISIBILITY_HIDE
      * * GEPlugin.VISIBILITY_AUTO
      */
-    setVisibility(visibility: earth$GEVisibilityEnum): void;
+    setVisibility(visibility: google$earth$GEVisibilityEnum): void;
 
     /**
      * Specifies the size of the navigation control.
@@ -208,7 +292,7 @@ declare module "google-earth" {
      * * GEPlugin.NAVIGATION_CONTROL_LARGE
      * * GEPlugin.NAVIGATION_CONTROL_SMALL
      */
-    getControlType(): earth$GENavigationControlEnum;
+    getControlType(): google$earth$GENavigationControlEnum;
 
     /**
      * Specifies the size of the navigation control.
@@ -218,7 +302,7 @@ declare module "google-earth" {
      * * GEPlugin.NAVIGATION_CONTROL_LARGE
      * * GEPlugin.NAVIGATION_CONTROL_SMALL
      */
-    setControlType(controlType: earth$GENavigationControlEnum): void;
+    setControlType(controlType: google$earth$GENavigationControlEnum): void;
 
     /**
      * The position of the navigation controls in Google Earth
@@ -243,20 +327,20 @@ declare module "google-earth" {
    *
    * Note: This interface is still under development.
    */
-  declare export class earth$KmlTour mixins earth$KmlFeature {}
+  declare export class google$earth$KmlTour mixins KmlFeature {}
 
   /**
    * This interface enables programmatic and user-driven interaction with KML tours in the Google Earth Plugin.
    *
    * Note: This interface is still under development.
    */
-  declare export class earth$GETourPlayer {
+  declare export class google$earth$GETourPlayer {
     /**
      * Enters the given tour object, exiting any other currently active tour.
      * This method does not automatically begin playing the tour.
      * If the argument is null, then any currently active tour is exited and normal globe navigation is enabled.
      */
-    setTour(tour: earth$KmlTour): void;
+    setTour(tour: google$earth$KmlTour): void;
 
     /**
      * Plays the currently active tour.
@@ -296,7 +380,7 @@ declare module "google-earth" {
    *
    * * GEView.hitTest
    */
-  declare export class earth$GEHitTestResult {
+  declare export class google$earth$GEHitTestResult {
     /**
      * Latitude of sampled point.
      */
@@ -332,7 +416,7 @@ declare module "google-earth" {
    * Maps between two different icon styles.
    * Typically this interface is used to provide separate normal and highlighted styles for a placemark, so that the highlighted version appears when the user mouses over the icon.
    */
-  declare export class earth$KmlStyleMap mixins earth$KmlStyleSelector {
+  declare export class google$earth$KmlStyleMap mixins KmlStyleSelector {
     /**
      * Sets both URLs for the placemark style.
      */
@@ -390,7 +474,7 @@ declare module "google-earth" {
    * Within that property, you can define the refresh options for updating the file, based on time and camera change.
    * NetworkLinks can be used in combination with Regions to handle very large datasets efficiently.
    */
-  declare export class earth$KmlNetworkLink mixins earth$KmlFeature {
+  declare export class google$earth$KmlNetworkLink mixins KmlFeature {
     /**
      * Sets the link, refreshVisibility, and flyToView for the network link.
      */
@@ -459,7 +543,7 @@ declare module "google-earth" {
    *   screenXY and overlayXY behave opposite to their corresponding behaviors in KML.
    *   This is due to a bug in the Earth API that will intentionally remain unfixed until a major version change.
    */
-  declare export class earth$KmlScreenOverlay mixins earth$KmlOverlay {
+  declare export class google$earth$KmlScreenOverlay mixins KmlOverlay {
     /**
      * Specifies a point on (or outside of) the overlay image that is mapped to the screen coordinate.
      * It requires x and y values, and the units for those values.
@@ -517,14 +601,14 @@ declare module "google-earth" {
    *
    * Note: This interface is still under development.
    */
-  declare export class earth$KmlPhotoOverlay mixins earth$KmlOverlay {}
+  declare export class google$earth$KmlPhotoOverlay mixins KmlOverlay {}
 
   /**
    * Draws an image overlay draped onto the terrain.
    * The href child of Icon specifies the image to be used as the overlay.
    * If this object is omitted or contains no href, a rectangle is drawn using the color defined by the overlay.
    */
-  declare export class earth$KmlGroundOverlay mixins earth$KmlOverlay {
+  declare export class google$earth$KmlGroundOverlay mixins KmlOverlay {
     /**
      * Specifies the distance above the earth's surface.
      */
@@ -544,7 +628,7 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_ABSOLUTE
      * * GEPlugin.ALTITUDE_CLAMP_TO_SEA_FLOOR
      */
-    getAltitudeMode(): earth$KmlAltitudeModeEnum;
+    getAltitudeMode(): google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies how the altitude property is interpreted.
@@ -555,7 +639,7 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_ABSOLUTE
      * * GEPlugin.ALTITUDE_CLAMP_TO_SEA_FLOOR
      */
-    setAltitudeMode(altitudeMode: earth$KmlAltitudeModeEnum): void;
+    setAltitudeMode(altitudeMode: google$earth$KmlAltitudeModeEnum): void;
 
     /**
      * The bounding box of the ground overlay.
@@ -574,7 +658,7 @@ declare module "google-earth" {
    * Icon specifies the image to use and can be configured to reload images based on a timer or by camera changes.
    * This object also includes specifications for stacking order of multiple overlays and for adding color and transparency values to the base image.
    */
-  declare export class earth$KmlOverlay mixins earth$KmlFeature {
+  declare export class google$earth$KmlOverlay mixins KmlFeature {
     /**
      * Specifies the color values.
      */
@@ -607,7 +691,7 @@ declare module "google-earth" {
    * This class controls the display of sunlight, historical imagery, and Street View panoramas in the plugin.
    * The KmlViewerOptions object is passed to KmlAbstractView.setViewerOptions()
    */
-  declare export class earth$KmlViewerOptions mixins earth$KmlObject {
+  declare export class google$earth$KmlViewerOptions mixins KmlObject {
     /**
      * Returns the current state of the specified viewer option type.
      *
@@ -621,8 +705,8 @@ declare module "google-earth" {
      * * GEPlugin.OPTION_STATE_DISABLED
      */
     setOption(
-      type: earth$GEViewerOptionsTypeEnum,
-      state: earth$GEViewerOptionsValueEnum
+      type: google$earth$GEViewerOptionsTypeEnum,
+      state: google$earth$GEViewerOptionsValueEnum
     ): void;
 
     /**
@@ -638,14 +722,14 @@ declare module "google-earth" {
      * * GEPlugin.OPTION_STATE_DISABLED
      */
     getOption(
-      type: earth$GEViewerOptionsValueEnum
-    ): earth$GEViewerOptionsValueEnum;
+      type: google$earth$GEViewerOptionsValueEnum
+    ): google$earth$GEViewerOptionsValueEnum;
   }
 
   /**
    * Describes rotation of a 3D model's coordinate system to position the object in Google Earth.
    */
-  declare export class earth$KmlOrientation mixins earth$KmlObject {
+  declare export class google$earth$KmlOrientation mixins KmlObject {
     /**
      * Sets the heading, tilt, and roll of a model.
      */
@@ -695,7 +779,7 @@ declare module "google-earth" {
    * Latitude and longitude measurements are standard lat-lon projection with WGS84 datum.
    * Altitude is distance above the earth's surface, in meters, and is interpreted according to altitudeMode.
    */
-  declare export class earth$KmlLocation mixins earth$KmlObject {
+  declare export class google$earth$KmlLocation mixins KmlObject {
     /**
      * Sets the latitude, longitude, and altitude of the Model.
      */
@@ -745,7 +829,7 @@ declare module "google-earth" {
   /**
    * Scales a model along the x, y, and z axes in the model's coordinate space.
    */
-  declare export class earth$KmlScale mixins earth$KmlObject {
+  declare export class google$earth$KmlScale mixins KmlObject {
     /**
      * Sets the x, y, and z coordinates for a model.
      */
@@ -790,7 +874,7 @@ declare module "google-earth" {
    * * latitude = -90 and = 90
    * * altitude values (optional) are in meters above sea level
    */
-  declare export class earth$KmlCoord {
+  declare export class google$earth$KmlCoord {
     /**
      * Sets the latitude, longitude, altitude.
      */
@@ -834,16 +918,16 @@ declare module "google-earth" {
   /**
    * The KmlCoordArray object defines an array of coordinates.
    */
-  declare export class earth$KmlCoordArray {
+  declare export class google$earth$KmlCoordArray {
     /**
      * Returns the coordinates at the given index.
      */
-    get(index: number): earth$KmlCoord;
+    get(index: number): google$earth$KmlCoord;
 
     /**
      * Sets the coordinates at the given index..
      */
-    set(index: number, coord: earth$KmlCoord): void;
+    set(index: number, coord: google$earth$KmlCoord): void;
 
     /**
      * Sets the latitude, longitude, and altitude.
@@ -863,17 +947,17 @@ declare module "google-earth" {
     /**
      * Appends one or more new elements to the end of an array and returns the new length of the array.
      */
-    push(coordOrList: earth$KmlCoord): void;
+    push(coordOrList: google$earth$KmlCoord): void;
 
     /**
      * Deletes the last element of an array, decrements the array length, and returns the value that is removed.
      */
-    pop(): earth$KmlCoord;
+    pop(): google$earth$KmlCoord;
 
     /**
      * Adds an element or elements to the beginning of an array.
      */
-    unshift(coordOrList: earth$KmlCoord): number;
+    unshift(coordOrList: google$earth$KmlCoord): number;
 
     /**
      * Adds an element or elements to the beginning of an array.
@@ -887,7 +971,7 @@ declare module "google-earth" {
     /**
      * Removes and returns the first element of the array.
      */
-    shift(): earth$KmlCoord;
+    shift(): google$earth$KmlCoord;
 
     /**
      * Reverses the order of the elements in the array.
@@ -908,7 +992,7 @@ declare module "google-earth" {
   /**
    * The object corresponding to the retangular region in which Google Earth is displayed.
    */
-  declare export class earth$GEWindow mixins earth$GEEventEmitter {
+  declare export class google$earth$GEWindow mixins GEEventEmitter {
     /**
      * Gives the Google Earth object focus.
      */
@@ -933,7 +1017,7 @@ declare module "google-earth" {
   /**
    * The GEGlobe class encapsulates the Google Earth globe to determine access and event behavior.
    */
-  declare export class earth$GEGlobe mixins earth$KmlObject {
+  declare export class google$earth$GEGlobe mixins KmlObject {
     /**
      * Returns the altitude for a given location on the globe.
      * If the altitude data for the location has not yet been loaded, the return value is 0.
@@ -949,7 +1033,7 @@ declare module "google-earth" {
   /**
    * Controls the behavior of the camera that views the scene in Google Earth.
    */
-  declare export class earth$GEView {
+  declare export class google$earth$GEView {
     /**
      * Returns the screen x,y coordinates of a given point on the globe.
      *
@@ -965,7 +1049,7 @@ declare module "google-earth" {
       lat: number,
       lng: number,
       alt: number,
-      altitudeMode: earth$KmlAltitudeModeEnum
+      altitudeMode: google$earth$KmlAltitudeModeEnum
     ): earth$KmlVec2;
 
     /**
@@ -983,7 +1067,9 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_ABSOLUTE
      * * GEPlugin.ALTITUDE_RELATIVE_TO_SEA_FLOOR
      */
-    copyAsLookAt(altitudeMode: earth$KmlAltitudeModeEnum): earth$KmlLookAt;
+    copyAsLookAt(
+      altitudeMode: google$earth$KmlAltitudeModeEnum
+    ): earth$KmlLookAt;
 
     /**
      * Creates and returns a new KmlCamera object, initialized to the current camera position and orientation.
@@ -995,7 +1081,9 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_ABSOLUTE
      * * GEPlugin.ALTITUDE_RELATIVE_TO_SEA_FLOOR
      */
-    copyAsCamera(altitudeMode: earth$KmlAltitudeModeEnum): earth$KmlCamera;
+    copyAsCamera(
+      altitudeMode: google$earth$KmlAltitudeModeEnum
+    ): earth$KmlCamera;
 
     /**
      * Returns a bounding box that completely contains the region of the globe that is currently visible.
@@ -1018,17 +1106,17 @@ declare module "google-earth" {
      */
     hitTest(
       x: number,
-      xUnits: earth$KmlUnitsEnum,
+      xUnits: google$earth$KmlUnitsEnum,
       y: number,
-      yUnits: earth$KmlUnitsEnum,
-      mode: earth$GEHitTestModeEnum
-    ): earth$GEHitTestResult;
+      yUnits: google$earth$KmlUnitsEnum,
+      mode: google$earth$GEHitTestModeEnum
+    ): google$earth$GEHitTestResult;
   }
 
   /**
    * Defines an image associated with an Icon style or overlay.
    */
-  declare export class earth$KmlIcon mixins earth$KmlLink {
+  declare export class google$earth$KmlIcon mixins KmlLink {
     /**
      * Gets the offset from the left (<gx:x>), in pixels, of the icon.
      */
@@ -1073,7 +1161,7 @@ declare module "google-earth" {
   /**
    * Specifies the location of any KML files fetched by network links, image files used by icons in icon styles, ground overlays, and screen overlays, or model files used in the Model object.
    */
-  declare export class earth$KmlLink mixins earth$KmlObject {
+  declare export class google$earth$KmlLink mixins KmlObject {
     /**
      * A URL (either an HTTP address or a local file specification).
      * When the parent of Link is a NetworkLink, href is a KML file.
@@ -1099,7 +1187,7 @@ declare module "google-earth" {
      * * GEPlugin.REFRESH_ON_INTERVAL
      * * GEPlugin.REFRESH_ON_EXPIRE
      */
-    getRefreshMode(): earth$KmlRefreshModeEnum;
+    getRefreshMode(): google$earth$KmlRefreshModeEnum;
 
     /**
      * Specifies to use a time-based refresh mode.
@@ -1110,7 +1198,7 @@ declare module "google-earth" {
      * * GEPlugin.REFRESH_ON_INTERVAL
      * * GEPlugin.REFRESH_ON_EXPIRE
      */
-    setRefreshMode(refreshMode: earth$KmlRefreshModeEnum): void;
+    setRefreshMode(refreshMode: google$earth$KmlRefreshModeEnum): void;
 
     /**
      * Indicates to refresh the file every n seconds.
@@ -1131,7 +1219,7 @@ declare module "google-earth" {
      * * GEPlugin.VIEW_REFRESH_ON_STOP
      * * GEPlugin.VIEW_REFRESH_ON_REGION
      */
-    getViewRefreshMode(): earth$KmlViewRefreshModeEnum;
+    getViewRefreshMode(): google$earth$KmlViewRefreshModeEnum;
 
     /**
      * Specifies how the link is refreshed when the viewport changes.
@@ -1142,7 +1230,9 @@ declare module "google-earth" {
      * * GEPlugin.VIEW_REFRESH_ON_STOP
      * * GEPlugin.VIEW_REFRESH_ON_REGION
      */
-    setViewRefreshMode(viewRefreshMode: earth$KmlViewRefreshModeEnum): void;
+    setViewRefreshMode(
+      viewRefreshMode: google$earth$KmlViewRefreshModeEnum
+    ): void;
 
     /**
      * Specifies how the link is refreshed when the camera changes.
@@ -1184,7 +1274,7 @@ declare module "google-earth" {
   /**
    * Controls time in the plugin.
    */
-  declare export class earth$GETime {
+  declare export class google$earth$GETime {
     /**
      * Set the plugin's clock rate.
      * A value of 1 corresponds with real time; to pass one year in the plugin for every real second, set the rate to 31536000 (60 times 60 times 24 times 365).
@@ -1231,11 +1321,11 @@ declare module "google-earth" {
   /**
    * Used to manipulate the behavior of the Google Earth options such as, navigation, flyToSpeed, scroll wheel speed and so on.
    */
-  declare export class earth$GEOptions {
+  declare export class google$earth$GEOptions {
     /**
      * Sets the map type to Earth or sky mode.
      */
-    setMapType(type: earth$GEMapTypeEnum): void;
+    setMapType(type: google$earth$GEMapTypeEnum): void;
 
     /**
      * Speed of zoom when user rolls the mouse wheel. Default is 1.
@@ -1409,7 +1499,9 @@ declare module "google-earth" {
    * Adds a node to the end of the list of children of a specified feature.
    * Returns the appended object.
    */
-  declare export class earth$GESchemaObjectContainer<T: earth$KmlObject> {
+  declare export class google$earth$GESchemaObjectContainer<
+    T: earth$KmlObject
+  > {
     /**
      * Adds a node to the end of the list of children of a specified feature.
      * Returns the appended object.
@@ -1457,43 +1549,43 @@ declare module "google-earth" {
   /**
    * A container class that holds one or more features and allows the creation of nested hierarchies.
    */
-  declare export class earth$GEFeatureContainer
-    mixins earth$GESchemaObjectContainer<earth$KmlFeature> {}
+  declare export class google$earth$GEFeatureContainer
+    mixins GESchemaObjectContainer<earth$KmlFeature> {}
 
   /**
    * A container object that contains an array of geometries, typically the children of a multi-geometry.
    */
-  declare export class earth$GEGeometryContainer
-    mixins earth$GESchemaObjectContainer<earth$KmlGeometry> {}
+  declare export class google$earth$GEGeometryContainer
+    mixins GESchemaObjectContainer<earth$KmlGeometry> {}
 
   /**
    * A container object that contains an array of closed line strings, typically the outer boundary of a Polygon.
    * Optionally, a LinearRing can also be used as the inner boundary of a Polygon to create holes in the Polygon.
    * A Polygon can contain multiple LinearRing objects used as inner boundaries.
    */
-  declare export class earth$GELinearRingContainer
-    mixins earth$GESchemaObjectContainer<earth$KmlLinearRing> {}
+  declare export class google$earth$GELinearRingContainer
+    mixins GESchemaObjectContainer<earth$KmlLinearRing> {}
 
   /**
    * A container that holds a collection of KmlStyle and KmlStyleMap objects.
    * The KmlStyleMap object selects a style based on the current mode of the Placemark.
    * An object derived from KmlStyleSelector is uniquely identified by its ID and its URL.
    */
-  declare export class earth$GEStyleSelectorContainer
-    mixins earth$GESchemaObjectContainer<earth$KmlStyleSelector> {}
+  declare export class google$earth$GEStyleSelectorContainer
+    mixins GESchemaObjectContainer<earth$KmlStyleSelector> {}
 
   /**
    * Defines the x and y coordinates of a 2D vector.
    */
-  declare export class earth$KmlVec2 {
+  declare export class google$earth$KmlVec2 {
     /**
      * Sets the coordinates of the vector.
      */
     set(
       x: number,
-      xUnits: earth$KmlUnitsEnum,
+      xUnits: google$earth$KmlUnitsEnum,
       y: number,
-      yUnits: earth$KmlUnitsEnum
+      yUnits: google$earth$KmlUnitsEnum
     ): void;
 
     /**
@@ -1525,7 +1617,7 @@ declare module "google-earth" {
      * * GEPlugin.UNITS_PIXELS
      * * GEPlugin.UNITS_INSET_PIXELS
      */
-    getXUnits(): earth$KmlUnitsEnum;
+    getXUnits(): google$earth$KmlUnitsEnum;
 
     /**
      * Units in which the x value is specified.
@@ -1536,7 +1628,7 @@ declare module "google-earth" {
      * * GEPlugin.UNITS_PIXELS
      * * GEPlugin.UNITS_INSET_PIXELS
      */
-    setXUnits(xUnits: earth$KmlUnitsEnum): void;
+    setXUnits(xUnits: google$earth$KmlUnitsEnum): void;
 
     /**
      * Units in which the y value is specified.
@@ -1547,7 +1639,7 @@ declare module "google-earth" {
      * * GEPlugin.UNITS_PIyELS
      * * GEPlugin.UNITS_INSET_PIyELS
      */
-    getYUnits(): earth$KmlUnitsEnum;
+    getYUnits(): google$earth$KmlUnitsEnum;
 
     /**
      * Units in which the y value is specified.
@@ -1558,13 +1650,13 @@ declare module "google-earth" {
      * * GEPlugin.UNITS_PIyELS
      * * GEPlugin.UNITS_INSET_PIyELS
      */
-    setYUnits(xUnits: earth$KmlUnitsEnum): void;
+    setYUnits(xUnits: google$earth$KmlUnitsEnum): void;
   }
 
   /**
    * The GESun class controls the dawn to dusk views.
    */
-  declare export class earth$GESun {
+  declare export class google$earth$GESun {
     /**
      * Specifies whether the feature is drawn in the 3D viewer when it is initially loaded.
      * In order for a feature to be visible, the visibility property and all of its ancestors must also be set to 1.
@@ -1586,7 +1678,7 @@ declare module "google-earth" {
    * For example, if you want to apply a blue color with 50 percent opacity to an overlay,
    * you would specify the following when setting color value: 7fff0000, where alpha=0x7f, blue=0xff, green=0x00, and red=0x00.
    */
-  declare export class earth$KmlColor {
+  declare export class google$earth$KmlColor {
     /**
      * Set the color of an object.
      */
@@ -1642,7 +1734,7 @@ declare module "google-earth" {
    * The event object used with all KMLObjects.
    * For more information about events, see the Document Object Model Events specification at http:
    */
-  declare export class earth$KmlEvent {
+  declare export class google$earth$KmlEvent {
     /**
      * Cancels the default action of the event.
      * For example, calling this method in a placemark click handler prevents the placemark's default balloon from popping up.
@@ -1669,7 +1761,7 @@ declare module "google-earth" {
     /**
      * The current stage of the flow of events.
      */
-    getEventPhase(): earth$GEEventPhaseEnum;
+    getEventPhase(): google$earth$GEEventPhaseEnum;
 
     /**
      * Indicates whether or not an event is a bubbling event.
@@ -1687,7 +1779,7 @@ declare module "google-earth" {
   /**
    * Represents a mouse input event.
    */
-  declare export class earth$KmlMouseEvent mixins earth$KmlEvent {
+  declare export class google$earth$KmlMouseEvent mixins KmlEvent {
     /**
      * The button on the mouse was pressed.
      * Possible values include 0, 1, 2, where 0 is left, 1 is middle, and 2 is right mouse key.
@@ -1765,41 +1857,41 @@ declare module "google-earth" {
   /**
    * Defines when and how an event gets passed in and triggered from the Google Earth Plug-in.
    */
-  declare export class earth$GEEventEmitter {
+  declare export class google$earth$GEEventEmitter {
     /**
      * Triggers an event when the user clicks a location in Google Earth with the mouse.
      */
-    click(event: earth$KmlMouseEvent): void;
+    click(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user double clicks a location in Google Earth with the mouse.
      */
-    dblclick(event: earth$KmlMouseEvent): void;
+    dblclick(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user moves the mouse pointer over a location in Google Earth.
      */
-    mouseover(event: earth$KmlMouseEvent): void;
+    mouseover(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user presses the mouse button over a location in Google Earth.
      */
-    mousedown(event: earth$KmlMouseEvent): void;
+    mousedown(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user releases the mouse button over a location in Google Earth.
      */
-    mouseup(event: earth$KmlMouseEvent): void;
+    mouseup(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user moves the mouse off of the object in Google Earth.
      */
-    mouseout(event: earth$KmlMouseEvent): void;
+    mouseout(event: google$earth$KmlMouseEvent): void;
 
     /**
      * Triggers an event when the user moves the mouse inside Google Earth.
      */
-    mousemove(event: earth$KmlMouseEvent): void;
+    mousemove(event: google$earth$KmlMouseEvent): void;
   }
 
   /**
@@ -1808,7 +1900,7 @@ declare module "google-earth" {
    * This is an abstract base class and cannot be used directly.
    * It provides the id attribute, which allows unique identification of an object.
    */
-  declare export class earth$KmlObject mixins earth$GEEventEmitter {
+  declare export class google$earth$KmlObject mixins GEEventEmitter {
     /**
      * The interface name (i.e. 'KmlPlacemark') of the object.
      */
@@ -1818,7 +1910,7 @@ declare module "google-earth" {
      * Test whether this object is the same as another object.
      * Useful for Chrome and Safari, where the comparison a==b sometimes fails for plugin objects.
      */
-    equals(compareTo: earth$KmlObject): boolean;
+    equals(compareTo: google$earth$KmlObject): boolean;
 
     /**
      * The unique ID of the KML object.
@@ -1836,7 +1928,7 @@ declare module "google-earth" {
     /**
      * The parent node of the KML object.
      */
-    getParentNode(): earth$KmlObject;
+    getParentNode(): google$earth$KmlObject;
 
     /**
      * The document that owns the KML object.
@@ -1853,7 +1945,7 @@ declare module "google-earth" {
   /**
    * A collection of KmlObjects.
    */
-  declare export class earth$KmlObjectList<T: earth$KmlObject> {
+  declare export class google$earth$KmlObjectList<T: google$earth$KmlObject> {
     /**
      * Gets an item from the object list. For example, list.item(0) returns the first object in the list.
      */
@@ -1868,12 +1960,12 @@ declare module "google-earth" {
   /**
    * The base class for KmlStyle and KmlStyleMap.
    */
-  declare export class earth$KmlStyleSelector mixins earth$KmlObject {}
+  declare export class google$earth$KmlStyleSelector mixins KmlObject {}
 
   /**
    * Defines the icon, label, line, list, polygon, and balloon styles.
    */
-  declare export class earth$KmlStyle mixins earth$KmlStyleSelector {
+  declare export class google$earth$KmlStyle mixins KmlStyleSelector {
     /**
      * Specifies how icons for point placemarks are drawn in Google Earth.
      */
@@ -1911,11 +2003,11 @@ declare module "google-earth" {
    * The KmlColorStyle object is an abstract object.
    * It specifies the color and color mode of extended style types.
    */
-  declare export class earth$KmlColorStyle mixins earth$KmlObject {
+  declare export class google$earth$KmlColorStyle mixins KmlObject {
     /**
      * Color and opacity (alpha) values.
      */
-    getColor(): earth$KmlColor;
+    getColor(): google$earth$KmlColor;
 
     /**
      * Specifies which color mode effect to apply to the base color.
@@ -1926,7 +2018,7 @@ declare module "google-earth" {
      * * GEPlugin.COLOR_INHERIT
      * * GEPlugin.COLOR_RANDOM
      */
-    getColorMode(): earth$KmlColorModeEnum;
+    getColorMode(): google$earth$KmlColorModeEnum;
 
     /**
      * Specifies which color mode effect to apply to the base color.
@@ -1937,7 +2029,7 @@ declare module "google-earth" {
      * * GEPlugin.COLOR_INHERIT
      * * GEPlugin.COLOR_RANDOM
      */
-    setColorMode(colorMode: earth$KmlColorModeEnum): void;
+    setColorMode(colorMode: google$earth$KmlColorModeEnum): void;
   }
 
   /**
@@ -1946,7 +2038,7 @@ declare module "google-earth" {
    * The scale property specifies the x, y scaling of the icon.
    * The color specified in the color property of KmlIconStyle is blended with the color of the Icon.
    */
-  declare export class earth$KmlIconStyle mixins earth$KmlColorStyle {
+  declare export class google$earth$KmlIconStyle mixins KmlColorStyle {
     /**
      * Resizes the icon.
      */
@@ -1970,12 +2062,12 @@ declare module "google-earth" {
     /**
      * A custom Icon. In KmlIconStyle, the only child element of KmlIcon is href and href is an HTTP address or a local file specification used to load an icon.
      */
-    getIcon(): earth$KmlIcon;
+    getIcon(): google$earth$KmlIcon;
 
     /**
      * A custom Icon. In KmlIconStyle, the only child element of KmlIcon is href and href is an HTTP address or a local file specification used to load an icon.
      */
-    setIcon(icon: earth$KmlIcon): void;
+    setIcon(icon: google$earth$KmlIcon): void;
 
     /**
      * Specifies the position within the Icon that is anchored to the point specified in the placemark.
@@ -1984,14 +2076,14 @@ declare module "google-earth" {
      * For example, x can be in pixels and y can be a fraction.
      * The origin of the coordinate system is in the lower left corner of the icon.
      */
-    getHotSpot(): earth$KmlVec2;
+    getHotSpot(): google$earth$KmlVec2;
   }
 
   /**
    * Specifies how the name of a feature is drawn in the 3D viewer.
    * A custom color, color mode, and scale for the label (name) can be specified.
    */
-  declare export class earth$KmlLabelStyle mixins earth$KmlColorStyle {
+  declare export class google$earth$KmlLabelStyle mixins KmlColorStyle {
     /**
      * Resizes the label.
      */
@@ -2007,7 +2099,7 @@ declare module "google-earth" {
    * The KmlLineStyle object specifies the drawing style (color, color mode, and line width) for all line geometry.
    * Line geometry includes the outlines of outlined polygons and the extruded "tether" of Placemark icons (if extrusion is enabled).
    */
-  declare export class earth$KmlLineStyle mixins earth$KmlColorStyle {
+  declare export class google$earth$KmlLineStyle mixins KmlColorStyle {
     /**
      * Width of the line, in pixels.
      */
@@ -2022,7 +2114,7 @@ declare module "google-earth" {
   /**
    * Specifies the drawing style for all polygons, including polygon extrusions (which look like the walls of buildings) and line extrusions (which look like solid fences).
    */
-  declare export class earth$KmlPolyStyle mixins earth$KmlColorStyle {
+  declare export class google$earth$KmlPolyStyle mixins KmlColorStyle {
     /**
      * Specifies whether or not to fill the polygon. Possible values 1 (fill) and 0 (no fill).
      */
@@ -2047,11 +2139,11 @@ declare module "google-earth" {
   /**
    * Specifies how a feature is displayed in the list view.
    */
-  declare export class earth$KmlListStyle mixins earth$KmlObject {
+  declare export class google$earth$KmlListStyle mixins KmlObject {
     /**
      * Background color for the Snippet.
      */
-    getBgColor(): earth$KmlColor;
+    getBgColor(): google$earth$KmlColor;
 
     /**
      * Maximum number of lines of text for the Snippet.
@@ -2066,22 +2158,22 @@ declare module "google-earth" {
     /**
      * Specifies how a feature should be displayed in a list view.
      */
-    getListItemType(): earth$KmlListItemTypeEnum;
+    getListItemType(): google$earth$KmlListItemTypeEnum;
   }
 
   /**
    * Specifies how the description balloon for placemarks is drawn.
    */
-  declare export class earth$KmlBalloonStyle mixins earth$KmlObject {
+  declare export class google$earth$KmlBalloonStyle mixins KmlObject {
     /**
      * Background color of the balloon (optional).
      */
-    getBgColor(): earth$KmlColor;
+    getBgColor(): google$earth$KmlColor;
 
     /**
      * Foreground color for text. The default is black (ff000000).
      */
-    getTextColor(): earth$KmlColor;
+    getTextColor(): google$earth$KmlColor;
 
     /**
      * The text contained in the balloon.
@@ -2097,7 +2189,7 @@ declare module "google-earth" {
   /**
    * Specifies the top, bottom, right, and left sides of a bounding box on the Earth's surface.
    */
-  declare export class earth$KmlLatLonBox mixins earth$KmlObject {
+  declare export class google$earth$KmlLatLonBox mixins KmlObject {
     /**
      * Sets the north, south, east, and west edges of the bounding box, as well as the rotation of the overlay.
      */
@@ -2171,7 +2263,7 @@ declare module "google-earth" {
   /**
    * Specifies a bounding box that describes an area of interest defined by geographic coordinates and altitudes.
    */
-  declare export class earth$KmlLatLonAltBox mixins earth$KmlLatLonBox {
+  declare export class google$earth$KmlLatLonAltBox mixins KmlLatLonBox {
     /**
      * Sets the north, south, east, west, rotation, minAltitude, maxAltitude, and altitudeMode of bounding box.
      */
@@ -2183,7 +2275,7 @@ declare module "google-earth" {
       rotation: number,
       minAltitude: number,
       maxAltitude: number,
-      altitudeMode: earth$KmlAltitudeModeEnum
+      altitudeMode: google$earth$KmlAltitudeModeEnum
     ): void;
 
     /**
@@ -2217,7 +2309,7 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_CLAMP_TO_SEA_FLOOR
      * * GEPlugin.ALTITUDE_RELATIVE_TO_SEA_FLOOR
      */
-    getAltitudeMode(): earth$KmlAltitudeModeEnum;
+    getAltitudeMode(): google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies how the altitude property is interpreted.
@@ -2230,14 +2322,14 @@ declare module "google-earth" {
      * * GEPlugin.ALTITUDE_CLAMP_TO_SEA_FLOOR
      * * GEPlugin.ALTITUDE_RELATIVE_TO_SEA_FLOOR
      */
-    setAltitudeMode(altitudeMode: earth$KmlAltitudeModeEnum): number;
+    setAltitudeMode(altitudeMode: google$earth$KmlAltitudeModeEnum): number;
   }
 
   /**
    * The KmlLod or level of detail, describes the size of the projected region on the screen that is required in order for the region to be considered active.
    * Also specifies the size of the pixel ramp used for fading in (from transparent to opaque) and fading out (from opaque to transparent).
    */
-  declare export class earth$KmlLod mixins earth$KmlObject {
+  declare export class google$earth$KmlLod mixins KmlObject {
     /**
      * Sets the minLodPixels, maxLodPixels, minFadeExtent, and maxFadeExtent for the projected region on the screen.
      */
@@ -2311,42 +2403,45 @@ declare module "google-earth" {
    * Objects associated with a Region are drawn only when the Region is active.
    * When the viewRefreshMode is onRegion, the Link or Icon is loaded only when the Region is active.
    */
-  declare export class earth$KmlRegion mixins earth$KmlObject {
+  declare export class google$earth$KmlRegion mixins KmlObject {
     /**
      * Sets the latLonAltBox and lod for the region.
      */
-    set(latLonAltBox: earth$KmlLatLonAltBox, lod: earth$KmlLod): void;
+    set(
+      latLonAltBox: google$earth$KmlLatLonAltBox,
+      lod: google$earth$KmlLod
+    ): void;
 
     /**
      * A bounding box that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    getLatLonAltBox(): earth$KmlLatLonAltBox;
+    getLatLonAltBox(): google$earth$KmlLatLonAltBox;
 
     /**
      * A bounding box that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    setLatLonAltBox(latLonAltBox: earth$KmlLatLonAltBox): void;
+    setLatLonAltBox(latLonAltBox: google$earth$KmlLatLonAltBox): void;
 
     /**
      * LOD is an abbreviation for Level of Detail.
      * Lod describes the size of the projected region on the screen that is required in order for the region to be considered "active.
      * " Also specifies the size of the pixel ramp used for fading in (from transparent to opaque) and fading out (from opaque to transparent).
      */
-    getLod(): earth$KmlLod;
+    getLod(): google$earth$KmlLod;
 
     /**
      * LOD is an abbreviation for Level of Detail.
      * Lod describes the size of the projected region on the screen that is required in order for the region to be considered "active.
      * " Also specifies the size of the pixel ramp used for fading in (from transparent to opaque) and fading out (from opaque to transparent).
      */
-    setLod(lod: earth$KmlLod): void;
+    setLod(lod: google$earth$KmlLod): void;
   }
 
   /**
    * Represents a specific point in time.
    * The plugin accepts time in this format only; it does not accept JavaScript date or time objects.
    */
-  declare export class earth$KmlDateTime {
+  declare export class google$earth$KmlDateTime {
     /**
      * Set the date.  Accepts only XML Schema time (see XML Schema Part 2: Datatypes Second Edition).
      * The value can be expressed as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time,
@@ -2365,7 +2460,7 @@ declare module "google-earth" {
    * An abstract object and cannot be used directly in a JavaScript file.
    * This element is extended by the TimeSpan and TimeStamp objects.
    */
-  declare export class earth$KmlTimePrimitive mixins earth$KmlObject {}
+  declare export class google$earth$KmlTimePrimitive mixins KmlObject {}
 
   /**
    * Represents a single moment in time.
@@ -2373,7 +2468,7 @@ declare module "google-earth" {
    * Its value is a dateTime, specified in XML time.
    * The precision of the TimeStamp is dictated by the dateTime value in the when property.
    */
-  declare export class earth$KmlTimeStamp mixins earth$KmlTimePrimitive {
+  declare export class google$earth$KmlTimeStamp mixins KmlTimePrimitive {
     /**
      * Represents a single moment in time.
      * This is a simple element and contains no children.
@@ -2385,31 +2480,31 @@ declare module "google-earth" {
      * * gYearMonth gives month resolution
      * * gYear gives year resolution
      */
-    getWhen(): earth$KmlDateTime;
+    getWhen(): google$earth$KmlDateTime;
   }
 
   /**
    * Represents an extent in time bounded by begin and end dateTimes.
    */
-  declare export class earth$KmlTimeSpan mixins earth$KmlTimePrimitive {
+  declare export class google$earth$KmlTimeSpan mixins KmlTimePrimitive {
     /**
      * Describes the beginning instant of a time period.
      * If absent, the beginning of the period is unbounded.
      */
-    getBegin(): earth$KmlDateTime;
+    getBegin(): google$earth$KmlDateTime;
 
     /**
      * Describes the ending instant of a time period.
      * If absent, the end of the period is unbounded.
      */
-    getEnd(): earth$KmlDateTime;
+    getEnd(): google$earth$KmlDateTime;
   }
 
   /**
    * This is an abstract class and cannot be created directly.
    * This class is extended by KmlCamera and KmlLookAt.
    */
-  declare export class earth$KmlAbstractView mixins earth$KmlObject {
+  declare export class google$earth$KmlAbstractView mixins KmlObject {
     /**
      * Creates a new KmlLookAt object that matches as closely as possible this KmlAbstractView.
      * KmlLookAt is unable to represent roll, so roll values in the current view will not be passed to the new KmlLookAt object.
@@ -2428,12 +2523,12 @@ declare module "google-earth" {
     /**
      * Returns the KmlTimeStamp or KmlTimeSpan object associated with this view.
      */
-    getTimePrimitive(): earth$KmlTimePrimitive;
+    getTimePrimitive(): google$earth$KmlTimePrimitive;
 
     /**
      * Associate a KmlTimeStamp or KmlTimeSpan object with this view.
      */
-    setTimePrimitive(timePrimitive: earth$KmlTimePrimitive): void;
+    setTimePrimitive(timePrimitive: google$earth$KmlTimePrimitive): void;
 
     /**
      * Returns the viewer options on the current view.
@@ -2444,7 +2539,7 @@ declare module "google-earth" {
      * * GEPlugin.OPTION_SUNLIGHT
      * * GEPlugin.OPTION_HISTORICAL_IMAGERY
      */
-    getViewerOptions(): earth$KmlViewerOptions;
+    getViewerOptions(): google$earth$KmlViewerOptions;
 
     /**
      * Sets the viewer options on the current view.
@@ -2455,7 +2550,7 @@ declare module "google-earth" {
      * * GEPlugin.OPTION_SUNLIGHT
      * * GEPlugin.OPTION_HISTORICAL_IMAGERY
      */
-    setViewerOptions(viewerOptions: earth$KmlViewerOptions): void;
+    setViewerOptions(viewerOptions: google$earth$KmlViewerOptions): void;
   }
 
   /**
@@ -2463,7 +2558,7 @@ declare module "google-earth" {
    * The LookAt element positions the "camera" in relation to the object that is being viewed.
    * This class either positions the relative to a feature, or you can manually change the view, using ge.getView().setAbstractView().
    */
-  declare export class earth$KmlLookAt mixins earth$KmlAbstractView {
+  declare export class google$earth$KmlLookAt mixins KmlAbstractView {
     /**
      * Sets the latitude, longitude, altitude, altitudeMode, heading, tilt, and range for the camera.
      */
@@ -2471,7 +2566,7 @@ declare module "google-earth" {
       latitude: number,
       longitude: number,
       altitude: number,
-      altitudeMode: earth$KmlAltitudeModeEnum,
+      altitudeMode: google$earth$KmlAltitudeModeEnum,
       heading: number,
       tilt: number,
       range: number
@@ -2554,12 +2649,12 @@ declare module "google-earth" {
     /**
      * Specifies how altitude components in the coordinates element are interpreted.
      */
-    getAltitudeMode(): earth$KmlAltitudeModeEnum;
+    getAltitudeMode(): google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies how altitude components in the coordinates element are interpreted.
      */
-    setAltitudeMode(altitudeMode: earth$KmlAltitudeModeEnum): void;
+    setAltitudeMode(altitudeMode: google$earth$KmlAltitudeModeEnum): void;
   }
 
   /**
@@ -2569,7 +2664,7 @@ declare module "google-earth" {
    * The viewing direction of the camera is defined by heading, tilt, and roll.
    * Camera can be a child element of any feature.
    */
-  declare export class earth$KmlCamera mixins earth$KmlAbstractView {
+  declare export class google$earth$KmlCamera mixins KmlAbstractView {
     /**
      * Sets the latitude, longitude, altitude, alitudeMode, heading, tilt, and roll values.
      */
@@ -2577,7 +2672,7 @@ declare module "google-earth" {
       latitude: number,
       longitude: number,
       altitude: number,
-      altitudeMode: earth$KmlAltitudeModeEnum,
+      altitudeMode: google$earth$KmlAltitudeModeEnum,
       heading: number,
       tilt: number,
       roll: number
@@ -2650,33 +2745,33 @@ declare module "google-earth" {
     /**
      * Specifies how altitude components in the coordinates are interpreted.
      */
-    getAltitudeMode(): earth$KmlAltitudeModeEnum;
+    getAltitudeMode(): google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies how altitude components in the coordinates are interpreted.
      */
-    setAltitudeMode(altitudeMode: earth$KmlAltitudeModeEnum): void;
+    setAltitudeMode(altitudeMode: google$earth$KmlAltitudeModeEnum): void;
   }
 
   /**
    * The KmlGeometry object is an abstract object and cannot be used directly.
    * It provides a placeholder object for all derived Geometry objects.
    */
-  declare export class earth$KmlGeometry mixins earth$KmlObject {}
+  declare export class google$earth$KmlGeometry mixins KmlObject {}
 
   /**
    * Specifies an AltitudeMode for derived classes.
    */
-  declare export class earth$KmlAltitudeGeometry mixins earth$KmlGeometry {
+  declare export class google$earth$KmlAltitudeGeometry mixins KmlGeometry {
     /**
      * Specifies how altitude components in the geometry coordinates are interpreted.
      */
-    getAltitudeMode(): earth$KmlAltitudeModeEnum;
+    getAltitudeMode(): google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies how altitude components in the geometry coordinates are interpreted.
      */
-    setAltitudeMode(altitudeMode: earth$KmlAltitudeModeEnum): void;
+    setAltitudeMode(altitudeMode: google$earth$KmlAltitudeModeEnum): void;
   }
 
   /**
@@ -2689,67 +2784,67 @@ declare module "google-earth" {
    * * Google Earth does not support animation or skinning.
    * * Google Earth does not support external geometry references.
    */
-  declare export class earth$KmlModel mixins earth$KmlAltitudeGeometry {
+  declare export class google$earth$KmlModel mixins KmlAltitudeGeometry {
     /**
      * Specifies the exact coordinates of the Model's origin in latitude, longitude, and altitude.
      * Latitude and longitude measurements are standard lat-lon projection with WGS84 datum.
      * Altitude is distance above the earth's surface, in meters, and is interpreted according to altitudeMode.
      */
-    getLocation(): earth$KmlLocation;
+    getLocation(): google$earth$KmlLocation;
 
     /**
      * Specifies the exact coordinates of the Model's origin in latitude, longitude, and altitude.
      * Latitude and longitude measurements are standard lat-lon projection with WGS84 datum.
      * Altitude is distance above the earth's surface, in meters, and is interpreted according to altitudeMode.
      */
-    setLocation(location: earth$KmlLocation): void;
+    setLocation(location: google$earth$KmlLocation): void;
 
     /**
      * Describes rotation of a 3D model's coordinate system to position the object in Google Earth.
      */
-    getOrientation(): earth$KmlOrientation;
+    getOrientation(): google$earth$KmlOrientation;
 
     /**
      * Describes rotation of a 3D model's coordinate system to position the object in Google Earth.
      */
-    setOrientation(orientation: earth$KmlOrientation): void;
+    setOrientation(orientation: google$earth$KmlOrientation): void;
 
     /**
      * Scales a model along the x, y, and z axes in the model's coordinate space
      */
-    getScale(): earth$KmlScale;
+    getScale(): google$earth$KmlScale;
 
     /**
      * Scales a model along the x, y, and z axes in the model's coordinate space
      */
-    setScale(scale: earth$KmlScale): void;
+    setScale(scale: google$earth$KmlScale): void;
 
     /**
      * Returns the link of the collada model.
      */
-    getLink(): earth$KmlLink;
+    getLink(): google$earth$KmlLink;
 
     /**
      * Sets the link of the collada model.
      */
-    setLink(link: earth$KmlLink): void;
+    setLink(link: google$earth$KmlLink): void;
   }
 
   /**
    * A container for zero or more geometry primitives associated with the same feature.
    */
-  declare export class earth$KmlMultiGeometry mixins earth$KmlGeometry {
+  declare export class google$earth$KmlMultiGeometry mixins KmlGeometry {
     /**
      * The collection of geometries that are children of this multi-geometry.
      */
-    getGeometries(): earth$GEGeometryContainer;
+    getGeometries(): google$earth$GEGeometryContainer;
   }
 
   /**
    * Specifies the behavior of the object's geometry.
    */
-  declare export class earth$KmlExtrudableGeometry
-    mixins earth$KmlAltitudeGeometry {
+  declare export class google$earth$KmlExtrudableGeometry
+    mixins KmlAltitudeGeometry {
     /**
      * Specifies whether to connect the geometry to the ground.
      */
@@ -2777,7 +2872,7 @@ declare module "google-earth" {
    * When a Polygon is extruded, its boundaries are connected to the ground to form additional polygons, which gives the appearance of a building or a box.
    * Extruded Polygons use PolyStyle for their color, color mode, and fill.
    */
-  declare export class earth$KmlPolygon mixins earth$KmlExtrudableGeometry {
+  declare export class google$earth$KmlPolygon mixins KmlExtrudableGeometry {
     /**
      * Contains a LinearRing element.
      */
@@ -2792,7 +2887,7 @@ declare module "google-earth" {
      * Contains a LinearRing element.
      * You can specify multiple innerBoundary properties, which create multiple cut-outs inside the Polygon.
      */
-    getInnerBoundaries(): earth$GELinearRingContainer;
+    getInnerBoundaries(): google$earth$GELinearRingContainer;
   }
 
   /**
@@ -2800,7 +2895,7 @@ declare module "google-earth" {
    * When a Point is contained by a Placemark, the point itself determines the position of the Placemark's name and icon.
    * When a Point is extruded, it is connected to the ground with a line. This tether uses the current LineStyle.
    */
-  declare export class earth$KmlPoint mixins earth$KmlExtrudableGeometry {
+  declare export class google$earth$KmlPoint mixins KmlExtrudableGeometry {
     /**
      * Sets altitudeMode, extrude, tessellate, latitude, longitude, and altitude values.
      */
@@ -2808,7 +2903,7 @@ declare module "google-earth" {
       latitude: number,
       longitude: number,
       altitude: number,
-      altitudeMode: earth$KmlAltitudeModeEnum,
+      altitudeMode: google$earth$KmlAltitudeModeEnum,
       extrude: boolean,
       tessellate: boolean
     ): void;
@@ -2860,12 +2955,12 @@ declare module "google-earth" {
    * When a LineString is extruded, the line is extended to the ground, forming a polygon that looks somewhat like a wall or fence.
    * For extruded LineStrings, the line itself uses the current LineStyle, and the extrusion uses the current PolyStyle.
    */
-  declare export class earth$KmlLineString mixins earth$KmlExtrudableGeometry {
+  declare export class google$earth$KmlLineString mixins KmlExtrudableGeometry {
     /**
      * Two or more coordinate tuples, each consisting of floating point values for longitude, latitude, and altitude.
      * The altitude component is optional.
      */
-    getCoordinates(): earth$KmlCoordArray;
+    getCoordinates(): google$earth$KmlCoordArray;
 
     /**
      * Added to the altitude values for all points on the line string.
@@ -2885,12 +2980,12 @@ declare module "google-earth" {
    * A Polygon can contain multiple LinearRing elements used as inner boundaries.
    * You do not need to connect the first and last points.
    */
-  declare export class earth$KmlLinearRing mixins earth$KmlLineString {}
+  declare export class google$earth$KmlLinearRing mixins KmlLineString {}
 
   /**
    * The KmlFeature object is an abstract object and is the base for all feature types (for example Placemarks, Overlays, and NetworkLinks).
    */
-  declare export class earth$KmlFeature mixins earth$KmlObject {
+  declare export class google$earth$KmlFeature mixins KmlObject {
     /**
      * Retrieves the contents of the feature's <ExtendedData> element.
      * The retrieved contents are scrubbed to remove JavaScript; CSS; and iframe, embed, and object tags.
@@ -2973,12 +3068,12 @@ declare module "google-earth" {
     /**
      * Stores either the lookAt or camera view.
      */
-    getAbstractView(): earth$KmlAbstractView;
+    getAbstractView(): google$earth$KmlAbstractView;
 
     /**
      * Stores either the lookAt or camera view.
      */
-    setAbstractView(abstractView: earth$KmlAbstractView): void;
+    setAbstractView(abstractView: google$earth$KmlAbstractView): void;
 
     /**
      * URI of a Style or StyleMap defined in a Document.
@@ -2995,24 +3090,24 @@ declare module "google-earth" {
     /**
      * The style based on the current mode of the Placemark.
      */
-    getStyleSelector(): earth$KmlStyleSelector;
+    getStyleSelector(): google$earth$KmlStyleSelector;
 
     /**
      * The style based on the current mode of the Placemark.
      */
-    setStyleSelector(styleSelector: earth$KmlStyleSelector): void;
+    setStyleSelector(styleSelector: google$earth$KmlStyleSelector): void;
 
     /**
      * Specifies region objects and their properties.
      * A region contains a bounding box (LatLonAltBox) that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    getRegion(): earth$KmlRegion;
+    getRegion(): google$earth$KmlRegion;
 
     /**
      * Specifies region objects and their properties.
      * A region contains a bounding box (LatLonAltBox) that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    setRegion(region: earth$KmlRegion): void;
+    setRegion(region: google$earth$KmlRegion): void;
 
     /**
      * Returns the KML for a feature.
@@ -3022,29 +3117,29 @@ declare module "google-earth" {
     /**
      * Returns previous sibling node within the container.
      */
-    getPreviousSibling(): earth$KmlFeature;
+    getPreviousSibling(): google$earth$KmlFeature;
 
     /**
      * Returns the next sibling node within the container.
      */
-    getNextSibling(): earth$KmlFeature;
+    getNextSibling(): google$earth$KmlFeature;
 
     /**
      * Returns the KmlTimeStamp or KmlTimeSpan object associated with this feature.
      */
-    getTimePrimitive(): earth$KmlTimePrimitive;
+    getTimePrimitive(): google$earth$KmlTimePrimitive;
 
     /**
      * Attach a KmlTimeStamp or KmlTimeSpan object to this feature.
      */
-    setTimePrimitive(timePrimitive: earth$KmlTimePrimitive): void;
+    setTimePrimitive(timePrimitive: google$earth$KmlTimePrimitive): void;
 
     /**
      * Returns the computed style of a feature, merging any inline styles with styles imported from setHref() or a StyleUrl.
      *
      * Note: Modifying the returned KmlStyle object is undefined and not recommended.
      */
-    getComputedStyle(): earth$KmlStyle;
+    getComputedStyle(): google$earth$KmlStyle;
 
     /**
      * Experimental Feature — this is an experimental feature and can change (or even be removed) at any time.
@@ -3067,7 +3162,7 @@ declare module "google-earth" {
    * An abstract object and cannot be used directly.
    * A KmlContainer object holds one or more features and allows the creation of nested hierarchies.
    */
-  declare export class earth$KmlContainer mixins earth$KmlFeature {
+  declare export class google$earth$KmlContainer mixins KmlFeature {
     /**
      * Get an element by ID.
      * This is functionally equivalent to getElementByUrl with an unspecified base URL.
@@ -3077,7 +3172,7 @@ declare module "google-earth" {
      * Usage is when finding objects created with JavaScript, which have unspecified base URLs.
      * The object must be a descendant of the container before it can be found.
      */
-    getElementById(id: string): earth$KmlObject;
+    getElementById(id: string): google$earth$KmlObject;
 
     /**
      * Get an element by URL. A URL consists of the base address and ID, joined with the # character.
@@ -3088,39 +3183,41 @@ declare module "google-earth" {
      * In the case of plugin created objects, the URL is simply #foo.
      * The object must be a descendant of the container before it can be found.
      */
-    getElementByUrl(url: string): earth$KmlObject;
+    getElementByUrl(url: string): google$earth$KmlObject;
 
     /**
      * Get an element by type.
      */
-    getElementsByType(type: string): earth$KmlObjectList<earth$KmlObject>;
+    getElementsByType(
+      type: string
+    ): google$earth$KmlObjectList<google$earth$KmlObject>;
 
     /**
      * A collection of features, such as name, description, and so on.
      */
-    getFeatures(): earth$GEFeatureContainer;
+    getFeatures(): google$earth$GEFeatureContainer;
   }
 
   /**
    * A Folder is used to arrange other features hierarchically (Folders, Placemarks, NetworkLinks, or Overlays).
    * A feature is visible only if it and all of its ancestors are visible.
    */
-  declare export class earth$KmlFolder mixins earth$KmlContainer {}
+  declare export class google$earth$KmlFolder mixins KmlContainer {}
 
   /**
    * A layer displayed in Google Earth.
    */
-  declare export class earth$KmlLayer mixins earth$KmlFolder {}
+  declare export class google$earth$KmlLayer mixins KmlFolder {}
 
   /**
    * A container for the various layers displayed with the Google Earth Plug-in.
    * It contains the same layers as Google Earth.
    */
-  declare export class earth$KmlLayerRoot mixins earth$KmlFolder {
+  declare export class google$earth$KmlLayerRoot mixins KmlFolder {
     /**
      * Returns the layer based on the layer's ID.
      */
-    getLayerById(id: string): earth$KmlLayer;
+    getLayerById(id: string): google$earth$KmlLayer;
 
     /**
      * Enables a layer based on its ID.
@@ -3151,39 +3248,39 @@ declare module "google-earth" {
    *
    * Note: Shared styles are not inherited by the features in the Document.
    */
-  declare export class earth$KmlDocument mixins earth$KmlContainer {
+  declare export class google$earth$KmlDocument mixins KmlContainer {
     /**
      * Returns a list of elements using a particular style URL.
      */
     getElementsByStyleUrl(
       styleUrl: string
-    ): earth$KmlObjectList<earth$KmlObject>;
+    ): google$earth$KmlObjectList<google$earth$KmlObject>;
 
     /**
      * Returns an array containing the style selectors present in the KML document.
      */
-    getStyleSelectors(): earth$GEStyleSelectorContainer;
+    getStyleSelectors(): google$earth$GEStyleSelectorContainer;
   }
 
   /**
    * The KmlPlacemark is a feature with associated Geometry.
    */
-  declare export class earth$KmlPlacemark mixins earth$KmlFeature {
+  declare export class google$earth$KmlPlacemark mixins KmlFeature {
     /**
      * The geometry associated with the placemark.
      */
-    getGeometry(): earth$KmlGeometry;
+    getGeometry(): google$earth$KmlGeometry;
 
     /**
      * The geometry associated with the placemark.
      */
-    setGeometry(geometry: earth$KmlGeometry): void;
+    setGeometry(geometry: google$earth$KmlGeometry): void;
   }
 
   /**
    * The base class for the three types of balloon windows that can overlay the 3D window.
    */
-  declare export class earth$GEAbstractBalloon {
+  declare export class google$earth$GEAbstractBalloon {
     /**
      * The ID of the balloon.
      */
@@ -3197,12 +3294,12 @@ declare module "google-earth" {
     /**
      * Determines what the balloon is attached to.
      */
-    getFeature(): earth$KmlFeature;
+    getFeature(): google$earth$KmlFeature;
 
     /**
      * Determines what the balloon is attached to.
      */
-    setFeature(feature: earth$KmlFeature): void;
+    setFeature(feature: google$earth$KmlFeature): void;
 
     /**
      * Minimum width of the balloon.
@@ -3266,12 +3363,12 @@ declare module "google-earth" {
   /**
    * Base class for GEHtmlStringBalloon and GEHtmlDivBalloon.
    */
-  declare export class earth$GEFeatureBalloon mixins earth$GEAbstractBalloon {}
+  declare export class google$earth$GEFeatureBalloon mixins GEAbstractBalloon {}
 
   /**
    * Creates a balloon that contains HTML.
    */
-  declare export class earth$GEHtmlBalloon mixins earth$GEAbstractBalloon {
+  declare export class google$earth$GEHtmlBalloon mixins GEAbstractBalloon {
     /**
      * The color of the text in the balloon.
      * This must be set using the HTML hex format #RRGGBB.
@@ -3304,7 +3401,7 @@ declare module "google-earth" {
   /**
    * The GEHtmlDivBalloon object creates a balloon based on the contentDiv property.
    */
-  declare export class earth$GEHtmlDivBalloon mixins earth$GEHtmlBalloon {
+  declare export class google$earth$GEHtmlDivBalloon mixins GEHtmlBalloon {
     /**
      * An HTMLDivElement to be used as the contents of the balloon.
      * When the balloon is shown, the HTMLDivElement is attached to the balloon element in the web page.
@@ -3323,7 +3420,7 @@ declare module "google-earth" {
   /**
    * The GEHtmlStringBalloon class represents a balloon based on the contentString.
    */
-  declare export class earth$GEHtmlStringBalloon mixins earth$GEHtmlBalloon {
+  declare export class google$earth$GEHtmlStringBalloon mixins GEHtmlBalloon {
     /**
      * You can include any HTML using the contentString property.
      * When the balloon is visible, the content specified in contentString property,
@@ -3342,21 +3439,21 @@ declare module "google-earth" {
   /**
    * The base class for GETimeControl.
    */
-  declare export class earth$GEControl {}
+  declare export class google$earth$GEControl {}
 
   /**
    * Represents the time slider object.
    */
-  declare export class earth$GETimeControl mixins earth$GEControl {
+  declare export class google$earth$GETimeControl mixins GEControl {
     /**
      * Whether the time slider is visible or not.
      */
-    getVisibility(): earth$GEVisibilityEnum;
+    getVisibility(): google$earth$GEVisibilityEnum;
 
     /**
      * Specifies whether the control is visible or hidden.
      */
-    setVisibility(visibility: earth$GEVisibilityEnum): void;
+    setVisibility(visibility: google$earth$GEVisibilityEnum): void;
 
     /**
      * Returns the clock rate that the plugin would use, if the play button on the time slider UI was pressed.
@@ -3368,28 +3465,28 @@ declare module "google-earth" {
      * Returns a KmlTimeSpan object encompassing the earliest and latest times present in the time slider.
      * For more information, refer to the Time chapter of the Developer's Guide.
      */
-    getExtents(): earth$KmlTimeSpan;
+    getExtents(): google$earth$KmlTimeSpan;
 
     /**
      * Returns an array containing the KmlTimeStamp objects associated with the historical imagery available in this view.
      */
-    getAvailableImageDates(): earth$KmlObjectList<earth$KmlTimeStamp>;
+    getAvailableImageDates(): google$earth$KmlObjectList<google$earth$KmlTimeStamp>;
   }
 
   /**
    * The GEPlugin is the Google Earth Plugin's main object, and this is the object that is returned to the JavaScript application when you first create a plug-in instance.
    * GEPlugin provides factory methods for ructing other objects (placemarks, and so on), and is also used to retrieve the root document objects.
    */
-  declare export class earth$GEPlugin {
+  declare export class google$earth$GEPlugin {
     /**
      * A Specifies that altitudes are at ground level. For Ground overlays, this means that the image will be draped over the terrain.
      */
-    ALTITUDE_CLAMP_TO_GROUND: earth$KmlAltitudeModeEnum;
+    ALTITUDE_CLAMP_TO_GROUND: google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies that altitudes are to be interpreted as meters above or below ground level (i.e. the elevation of the terrain at the location).
      */
-    ALTITUDE_RELATIVE_TO_GROUND: earth$KmlAltitudeModeEnum;
+    ALTITUDE_RELATIVE_TO_GROUND: google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies that altitudes are to be interpreted as meters above or below sea level, regardless of the actual elevation of the terrain beneath the object.
@@ -3397,27 +3494,27 @@ declare module "google-earth" {
      * If the terrain is 3 meters above sea level, the object will appear elevated above the terrain by 7 meters.
      * If, on the other hand, the terrain is 15 meters above sea level, the object may be completely invisible.
      */
-    ALTITUDE_ABSOLUTE: earth$KmlAltitudeModeEnum;
+    ALTITUDE_ABSOLUTE: google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies that altitudes are at sea floor level.
      */
-    ALTITUDE_CLAMP_TO_SEA_FLOOR: earth$KmlAltitudeModeEnum;
+    ALTITUDE_CLAMP_TO_SEA_FLOOR: google$earth$KmlAltitudeModeEnum;
 
     /**
      * Specifies that altitudes are to be interpreted as meters above sea floor (i.e. the elevation of the sea floor at the location).
      */
-    ALTITUDE_RELATIVE_TO_SEA_FLOOR: earth$KmlAltitudeModeEnum;
+    ALTITUDE_RELATIVE_TO_SEA_FLOOR: google$earth$KmlAltitudeModeEnum;
 
     /**
      * Refresh when the file is loaded and whenever the Link parameters change. This refresh mode is the default.
      */
-    REFRESH_ON_CHANGE: earth$KmlRefreshModeEnum;
+    REFRESH_ON_CHANGE: google$earth$KmlRefreshModeEnum;
 
     /**
      * Refresh every n seconds (specified in refreshInterval).
      */
-    REFRESH_ON_INTERVAL: earth$KmlRefreshModeEnum;
+    REFRESH_ON_INTERVAL: google$earth$KmlRefreshModeEnum;
 
     /**
      * Refresh when the expiration time is reached.
@@ -3425,83 +3522,83 @@ declare module "google-earth" {
      * If no expires time is specified, the HTTP max-age header is used (if present).
      * If max-age is not present, the Expires HTTP header is used (if present).
      */
-    REFRESH_ON_EXPIRE: earth$KmlRefreshModeEnum;
+    REFRESH_ON_EXPIRE: google$earth$KmlRefreshModeEnum;
 
     /**
      * Ignore changes in the view. Also ignore viewFormat parameters, if any.
      * This view refresh mode is the default.
      */
-    VIEW_REFRESH_NEVER: earth$KmlViewRefreshModeEnum;
+    VIEW_REFRESH_NEVER: google$earth$KmlViewRefreshModeEnum;
 
     /**
      * Refresh the file only when the user explicitly requests it.
      */
-    VIEW_REFRESH_ON_REQUEST: earth$KmlViewRefreshModeEnum;
+    VIEW_REFRESH_ON_REQUEST: google$earth$KmlViewRefreshModeEnum;
 
     /**
      * Refresh n seconds after movement stops, where n is specified in viewRefreshTime.
      */
-    VIEW_REFRESH_ON_STOP: earth$KmlViewRefreshModeEnum;
+    VIEW_REFRESH_ON_STOP: google$earth$KmlViewRefreshModeEnum;
 
     /**
      * Refresh only when the feature's Region becomes active.
      */
-    VIEW_REFRESH_ON_REGION: earth$KmlViewRefreshModeEnum;
+    VIEW_REFRESH_ON_REGION: google$earth$KmlViewRefreshModeEnum;
 
     /**
      * Screen coordinates are to be interpreted as a fraction of an item, like an image or Google Earth window.
      */
-    UNITS_FRACTION: earth$KmlUnitsEnum;
+    UNITS_FRACTION: google$earth$KmlUnitsEnum;
 
     /**
      * Screen coordinates are to be interpreted as pixels from the left or bottom edge.
      */
-    UNITS_PIXELS: earth$KmlUnitsEnum;
+    UNITS_PIXELS: google$earth$KmlUnitsEnum;
 
     /**
      * Screen coordinates are to be interpreted as pixels from the top or right edge.
      */
-    UNITS_INSET_PIXELS: earth$KmlUnitsEnum;
+    UNITS_INSET_PIXELS: google$earth$KmlUnitsEnum;
 
     /**
      * Apply no color mode effect, i.e. use the base color as is.
      */
-    COLOR_NORMAL: earth$KmlColorModeEnum;
+    COLOR_NORMAL: google$earth$KmlColorModeEnum;
 
     /**
      * Apply a random linear scale to the base color. See the KML <colorMode> documentation for more details.
      */
-    COLOR_RANDOM: earth$KmlColorModeEnum;
+    COLOR_RANDOM: google$earth$KmlColorModeEnum;
 
     /**
      * Inherit the color mode from ancestor styles.
      */
-    COLOR_INHERIT: earth$KmlColorModeEnum;
+    COLOR_INHERIT: google$earth$KmlColorModeEnum;
 
     /**
      * The Earth map type, used with GEOptions' setMapType.
      */
-    MAP_TYPE_EARTH: earth$GEMapTypeEnum;
+    MAP_TYPE_EARTH: google$earth$GEMapTypeEnum;
 
     /**
      * The Sky map type, used with GEOptions' setMapType.
      */
-    MAP_TYPE_SKY: earth$GEMapTypeEnum;
+    MAP_TYPE_SKY: google$earth$GEMapTypeEnum;
 
     /**
      * Hide the UI element.
      */
-    VISIBILITY_HIDE: earth$GEVisibilityEnum;
+    VISIBILITY_HIDE: google$earth$GEVisibilityEnum;
 
     /**
      * Show the UI element always.
      */
-    VISIBILITY_SHOW: earth$GEVisibilityEnum;
+    VISIBILITY_SHOW: google$earth$GEVisibilityEnum;
 
     /**
      * Automatically show or hide the UI element depending on user interaction.
      */
-    VISIBILITY_AUTO: earth$GEVisibilityEnum;
+    VISIBILITY_AUTO: google$earth$GEVisibilityEnum;
 
     /**
      * Specifies that fly-to should happen immediately, without a smooth transition.
@@ -3544,86 +3641,86 @@ declare module "google-earth" {
     /**
      * When using the GEView.hitTest method, this mode samples the globe (the earth's sphere at altitude 0, without terrain or buildings).
      */
-    HIT_TEST_GLOBE: earth$GEHitTestModeEnum;
+    HIT_TEST_GLOBE: google$earth$GEHitTestModeEnum;
 
     /**
      * When using the GEView.hitTest method, this mode samples the earth's terrain (the ground surface, including variations in altitude).
      */
-    HIT_TEST_TERRAIN: earth$GEHitTestModeEnum;
+    HIT_TEST_TERRAIN: google$earth$GEHitTestModeEnum;
 
     /**
      * When using the GEView.hitTest method, this mode samples 3D buildings.
      */
-    HIT_TEST_BUILDINGS: earth$GEHitTestModeEnum;
+    HIT_TEST_BUILDINGS: google$earth$GEHitTestModeEnum;
 
     /**
      * Sets the render state to its default value. Currently, sunlight, Street View, and historical imagery all default to a disabled state.
      */
-    OPTION_STATE_DEFAULT: earth$GEViewerOptionsValueEnum;
+    OPTION_STATE_DEFAULT: google$earth$GEViewerOptionsValueEnum;
 
     /**
      * Set the render state to on. Passed to the KmlViewerOptions.setOption method.
      */
-    OPTION_STATE_ENABLED: earth$GEViewerOptionsValueEnum;
+    OPTION_STATE_ENABLED: google$earth$GEViewerOptionsValueEnum;
 
     /**
      * Set the render state to off. Passed to the KmlViewerOptions.setOption method.
      */
-    OPTION_STATE_DISABLED: earth$GEViewerOptionsValueEnum;
+    OPTION_STATE_DISABLED: google$earth$GEViewerOptionsValueEnum;
 
     /**
      * Passed to the KmlViewerOptions.setOption method, along with a GEViewerOptionsValueEnum, to specify whether the Sun option should be visible.
      * Sun can also be enabled/disabled with GEPlugin.getSun.
      */
-    OPTION_SUNLIGHT: earth$GEViewerOptionsTypeEnum;
+    OPTION_SUNLIGHT: google$earth$GEViewerOptionsTypeEnum;
 
     /**
      * Passed to the KmlViewerOptions.setOption method, along with a GEViewerOptionsValueEnum, to specify whether historical imagery should be enabled.
      */
-    OPTION_HISTORICAL_IMAGERY: earth$GEViewerOptionsTypeEnum;
+    OPTION_HISTORICAL_IMAGERY: google$earth$GEViewerOptionsTypeEnum;
 
     /**
      * Passed to the KmlViewerOptions.setOption method, along with a GEViewerOptionsValueEnum, to specify whether Street View should be enabled when the view reaches ground level.
      * Note that this applies only to programmatic movement, such as fly-tos; to control whether the user can enter Street View using manual navigation controls, call ge.getPlugin().streetViewEnabled(true).
      */
-    OPTION_STREET_VIEW: earth$GEViewerOptionsTypeEnum;
+    OPTION_STREET_VIEW: google$earth$GEViewerOptionsTypeEnum;
 
     /**
      * The feature's visibility is tied to its list item's checkbox state.
      */
-    LIST_ITEM_CHECK: earth$KmlListItemTypeEnum;
+    LIST_ITEM_CHECK: google$earth$KmlListItemTypeEnum;
 
     /**
      * When specified for a folder, document or network link, prevents all items from being made visible at once—that is, the user can turn all children off but cannot turn them all on at the same time.
      * This setting is useful for containers or network links containing large amounts of data.
      */
-    LIST_ITEM_CHECK_OFF_ONLY: earth$KmlListItemTypeEnum;
+    LIST_ITEM_CHECK_OFF_ONLY: google$earth$KmlListItemTypeEnum;
 
     /**
      * Use a normal checkbox for visibility but do not display children in a list view.
      * The item's checkbox should allows the user to toggle visibility of the child objects in the viewport.
      */
-    LIST_ITEM_CHECK_HIDE_CHILDREN: earth$KmlListItemTypeEnum;
+    LIST_ITEM_CHECK_HIDE_CHILDREN: google$earth$KmlListItemTypeEnum;
 
     /**
      * When specified for a container (a folder or a document), only one of the container's items should be visible at a time.
      */
-    LIST_ITEM_RADIO_FOLDER: earth$KmlListItemTypeEnum;
+    LIST_ITEM_RADIO_FOLDER: google$earth$KmlListItemTypeEnum;
 
     /**
      * The large navigation control type, used with GENavigationControl.setControlType().
      */
-    NAVIGATION_CONTROL_LARGE: earth$GENavigationControlEnum;
+    NAVIGATION_CONTROL_LARGE: google$earth$GENavigationControlEnum;
 
     /**
      * The small navigation control type, used with GENavigationControl.setControlType().
      */
-    NAVIGATION_CONTROL_SMALL: earth$GENavigationControlEnum;
+    NAVIGATION_CONTROL_SMALL: google$earth$GENavigationControlEnum;
 
     /**
      * Parse a string of KML and return a handle to the root of the KML object structure that was created.
      */
-    parseKml(kml: string): earth$KmlObject;
+    parseKml(kml: string): google$earth$KmlObject;
 
     /**
      * Get an element by ID. This is functionally equivalent to getElementByUrl with an unspecified base URL.
@@ -3633,7 +3730,7 @@ declare module "google-earth" {
      * Usage is when finding objects created with JavaScript, which have unspecified base URLs.
      * The object must be a descendant of the DOM before it can be found.
      */
-    getElementById(id: string): earth$KmlObject;
+    getElementById(id: string): google$earth$KmlObject;
 
     /**
      * Get an element by URL. A URL consists of the base address and the ID, joined with the # character.
@@ -3644,12 +3741,12 @@ declare module "google-earth" {
      * In the case of plugin created objects, the URL is simply #foo.
      * The object must be a descendant of the DOM before it can be found.
      */
-    getElementByUrl(url: string): earth$KmlObject;
+    getElementByUrl(url: string): google$earth$KmlObject;
 
     /**
      * Get a list of elements by type.
      */
-    getElementsByType(): earth$KmlObjectList<earth$KmlObject>;
+    getElementsByType(): google$earth$KmlObjectList<google$earth$KmlObject>;
 
     /**
      * Creates a placemark on the globe.
@@ -3659,69 +3756,69 @@ declare module "google-earth" {
      * Other Geometry objects do not have an icon in the 3D viewer.
      * To allow the user to click in the 3D viewer, you would need to create a MultiGeometry object that contains both a Point and the other Geometry object.)
      */
-    createPlacemark(id: string): earth$KmlPlacemark;
+    createPlacemark(id: string): google$earth$KmlPlacemark;
 
     /**
      * Creates a point on the globe. Specifies the geographic location defined by longitude, latitude, and (optional) altitude.
      */
-    createPoint(id: string): earth$KmlPoint;
+    createPoint(id: string): google$earth$KmlPoint;
 
     /**
      * Creates a line string on Google Earth.
      */
-    createLineString(id: string): earth$KmlLineString;
+    createLineString(id: string): google$earth$KmlLineString;
 
     /**
      * Creates a folder.
      * A KMLFolder is used to arrange other features hierarchically (Folders, Placemarks, NetworkLinks, or Overlays).
      * A feature is visible only if it and all its ancestors are visible.
      */
-    createFolder(id: string): earth$KmlFolder;
+    createFolder(id: string): google$earth$KmlFolder;
 
     /**
      * Creates level of detail (LOD).
      * LOD describes the size of the projected region on the screen that is required in order for the region to be considered active.
      * Also specifies the size of the pixel ramp used for fading in (from transparent to opaque) and fading out (from opaque to transparent).
      */
-    createLod(id: string): earth$KmlLod;
+    createLod(id: string): google$earth$KmlLod;
 
     /**
      * Creates a LatLonBox, a bounding box that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    createLatLonBox(id: string): earth$KmlLatLonBox;
+    createLatLonBox(id: string): google$earth$KmlLatLonBox;
 
     /**
      * Creates a LatLonAltBox, a bounding box that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    createLatLonAltBox(id: string): earth$KmlLatLonAltBox;
+    createLatLonAltBox(id: string): google$earth$KmlLatLonAltBox;
 
     /**
      * Creates a Document. A Document is a container for features and styles.
      */
-    createDocument(id: string): earth$KmlDocument;
+    createDocument(id: string): google$earth$KmlDocument;
 
     /**
      * Creates a Region in Google Earth.
      * A Region contains a bounding box that describes an area of interest defined by geographic coordinates and altitudes.
      */
-    createRegion(id: string): earth$KmlRegion;
+    createRegion(id: string): google$earth$KmlRegion;
 
     /**
      * Specifies the exact coordinates of the Model's origin in latitude, longitude, and altitude.
      * Latitude and longitude measurements are standard lat-lon projection with WGS84 datum.
      * Altitude is distance above the earth's surface, in meters, and is interpreted according to altitudeMode.
      */
-    createLocation(id: string): earth$KmlLocation;
+    createLocation(id: string): google$earth$KmlLocation;
 
     /**
      * Sets the rotation of a 3D model's coordinate system to position the object in Google Earth.
      */
-    createOrientation(id: string): earth$KmlOrientation;
+    createOrientation(id: string): google$earth$KmlOrientation;
 
     /**
      * Sets the scale of a model along the x, y, and z axes in the model's coordinate space.
      */
-    createScale(id: string): earth$KmlScale;
+    createScale(id: string): google$earth$KmlScale;
 
     /**
      * Creates a model.
@@ -3729,114 +3826,114 @@ declare module "google-earth" {
      * COLLADA files have a .dae file extension.
      * Models are created in their own coordinate space and then located, positioned, and scaled in Google Earth.
      */
-    createModel(id: string): earth$KmlModel;
+    createModel(id: string): google$earth$KmlModel;
 
     /**
      * A Style defines an addressable style group that can be referenced by StyleMaps and features.
      */
-    createStyle(id: string): earth$KmlStyle;
+    createStyle(id: string): google$earth$KmlStyle;
 
     /**
      * Creates a LinearRing.
      * A LinearRing defines a closed line string, typically the outer boundary of a Polygon.
      * Optionally, a LinearRing can also be used as the inner boundary of a Polygon to create holes in the Polygon.
      */
-    createLinearRing(id: string): earth$KmlLinearRing;
+    createLinearRing(id: string): google$earth$KmlLinearRing;
 
     /**
      * Creates a Polygon. A Polygon is defined by an outer boundary and 0 or more inner boundaries.
      */
-    createPolygon(id: string): earth$KmlPolygon;
+    createPolygon(id: string): google$earth$KmlPolygon;
 
     /**
      * Creates an Icon. An icon defines an image associated with an Icon style or overlay.
      */
-    createIcon(id: string): earth$KmlIcon;
+    createIcon(id: string): google$earth$KmlIcon;
 
     /**
      * Creates a Link.
      * A Link specifies the location of KML files fetched by network links, image files used in any overlay, or model files used with the Model object.
      */
-    createLink(id: string): earth$KmlLink;
+    createLink(id: string): google$earth$KmlLink;
 
     /**
      * Creates a GroundOverlay.
      * A GroundOverlay draws an image overlay draped onto the terrain.
      */
-    createGroundOverlay(id: string): earth$KmlGroundOverlay;
+    createGroundOverlay(id: string): google$earth$KmlGroundOverlay;
 
     /**
      * Creates a NetworkLink.
      * A NetworkLink references a KML file or KMZ archive on a local or remote network.
      */
-    createNetworkLink(id: string): earth$KmlNetworkLink;
+    createNetworkLink(id: string): google$earth$KmlNetworkLink;
 
     /**
      * Creates a ScreenOverlay.
      * A ScreenOverlay draws an image overlay fixed to the screen.
      */
-    createScreenOverlay(id: string): earth$KmlScreenOverlay;
+    createScreenOverlay(id: string): google$earth$KmlScreenOverlay;
 
     /**
      * Creates a container for one or more geometry primitives associated with the same feature.
      */
-    createMultiGeometry(id: string): earth$KmlMultiGeometry;
+    createMultiGeometry(id: string): google$earth$KmlMultiGeometry;
 
     /**
      * Creates a StyleMap.
      * A StyleMap maps between two different icon styles.
      * Typically, a StyleMap is used to provide separate normal and highlighted styles for a Placemark, so that the highlighted version appears when the user mouses over the icon in Google Earth.
      */
-    createStyleMap(id: string): earth$KmlStyleMap;
+    createStyleMap(id: string): google$earth$KmlStyleMap;
 
     /**
      * Creates a new LookAt.
      * A LookAt element positions the camera view in relation to an object that is being viewed.
      */
-    createLookAt(id: string): earth$KmlLookAt;
+    createLookAt(id: string): google$earth$KmlLookAt;
 
     /**
      * Creates a new Camera.
      * This element positions the camera relative to the Earth's surface and defines the view direction.
      */
-    createCamera(id: string): earth$KmlCamera;
+    createCamera(id: string): google$earth$KmlCamera;
 
     /**
      * Creates a new viewer options object.
      */
-    createViewerOptions(id: string): earth$KmlViewerOptions;
+    createViewerOptions(id: string): google$earth$KmlViewerOptions;
 
     /**
      * Create a KmlTimeStamp object.
      * For more information, refer to the Time chapter of the Google Earth API developer's guide.
      */
-    createTimeStamp(id: string): earth$KmlTimeStamp;
+    createTimeStamp(id: string): google$earth$KmlTimeStamp;
 
     /**
      * Create a KmlTimeSpan object.
      * For more information, refer to the Time chapter of the Google Earth API developer's guide.
      */
-    createTimeSpan(id: string): earth$KmlTimeSpan;
+    createTimeSpan(id: string): google$earth$KmlTimeSpan;
 
     /**
      * Creates a Feature balloon.
      */
-    createFeatureBalloon(id: string): earth$GEFeatureBalloon;
+    createFeatureBalloon(id: string): google$earth$GEFeatureBalloon;
 
     /**
      * Creates an HTML string balloon.
      */
-    createHtmlStringBalloon(id: string): earth$GEHtmlStringBalloon;
+    createHtmlStringBalloon(id: string): google$earth$GEHtmlStringBalloon;
 
     /**
      * Creates an Html Div Balloon.
      */
-    createHtmlDivBalloon(id: string): earth$GEHtmlDivBalloon;
+    createHtmlDivBalloon(id: string): google$earth$GEHtmlDivBalloon;
 
     /**
      * Returns the currently active balloon, or null.
      */
-    getBalloon(): earth$GEAbstractBalloon;
+    getBalloon(): google$earth$GEAbstractBalloon;
 
     /**
      * Sets the given balloon as the active balloon, replacing any existing active balloon.
@@ -3844,7 +3941,7 @@ declare module "google-earth" {
      *
      * If the argument is null, then any existing active balloon will be hidden.
      */
-    setBalloon(newActiveBalloon: earth$GEAbstractBalloon): void;
+    setBalloon(newActiveBalloon: google$earth$GEAbstractBalloon): void;
 
     /**
      * Used for debugging purposes; if this value is not equal to the value returned by getPluginVersion then there is a misconfiguration on the end user's system.
@@ -3860,57 +3957,57 @@ declare module "google-earth" {
     /**
      * The options used to manipulate the behavior of the Google Earth plugin.
      */
-    getOptions(): earth$GEOptions;
+    getOptions(): google$earth$GEOptions;
 
     /**
      * The time class used to manipulate the behavior of the Google Earth plugin time.
      */
-    getTime(): earth$GETime;
+    getTime(): google$earth$GETime;
 
     /**
      * Controls the window options.
      */
-    getWindow(): earth$GEWindow;
+    getWindow(): google$earth$GEWindow;
 
     /**
      * Controls the globe behavior.
      */
-    getGlobe(): earth$GEGlobe;
+    getGlobe(): google$earth$GEGlobe;
 
     /**
      * Displays the dawn to dusk views.
      */
-    getSun(): earth$GESun;
+    getSun(): google$earth$GESun;
 
     /**
      * Controls built-in layer behavior.
      */
-    getLayerRoot(): earth$KmlLayerRoot;
+    getLayerRoot(): google$earth$KmlLayerRoot;
 
     /**
      * Controls the plugin viewport.
      */
-    getView(): earth$GEView;
+    getView(): google$earth$GEView;
 
     /**
      * Controls the navigation controls on the globe.
      */
-    getNavigationControl(): earth$GENavigationControl;
+    getNavigationControl(): google$earth$GENavigationControl;
 
     /**
      * The top-level features currently in the Earth object.
      */
-    getFeatures(): earth$GEFeatureContainer;
+    getFeatures(): google$earth$GEFeatureContainer;
 
     /**
      * Exposes functionality for interacting with KML tours.
      */
-    getTourPlayer(): earth$GETourPlayer;
+    getTourPlayer(): google$earth$GETourPlayer;
 
     /**
      * Exposes functionality for interacting with photo overlays.
      */
-    getPhotoOverlayViewer(): earth$GEPhotoOverlayViewer;
+    getPhotoOverlayViewer(): google$earth$GEPhotoOverlayViewer;
 
     /**
      * Returns a number between 0 and 100 (inclusive) that indicates the progress of the streaming of imagery for the current view.
