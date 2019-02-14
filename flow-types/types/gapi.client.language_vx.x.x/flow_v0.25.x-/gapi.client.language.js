@@ -1,26 +1,30 @@
 declare module "gapi.client.language" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    documents: typeof client$documents
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    documents: typeof gapi$client$documents
   };
 
   /**
    * Load Google Cloud Natural Language API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "language",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "language",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$documents: language$language$DocumentsResource;
+  declare var gapi$client$documents: language$DocumentsResource;
 
-  declare interface language$AnalyzeEntitiesRequest {
+  declare interface gapi$client$language$AnalyzeEntitiesRequest {
     /**
      * Input document.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.language" {
     encodingType?: string;
   }
 
-  declare interface language$AnalyzeEntitiesResponse {
+  declare interface gapi$client$language$AnalyzeEntitiesResponse {
     /**
      * The recognized entities in the input document.
      */
@@ -46,7 +50,7 @@ declare module "gapi.client.language" {
     language?: string;
   }
 
-  declare interface language$AnalyzeEntitySentimentRequest {
+  declare interface gapi$client$language$AnalyzeEntitySentimentRequest {
     /**
      * Input document.
      */
@@ -58,7 +62,7 @@ declare module "gapi.client.language" {
     encodingType?: string;
   }
 
-  declare interface language$AnalyzeEntitySentimentResponse {
+  declare interface gapi$client$language$AnalyzeEntitySentimentResponse {
     /**
      * The recognized entities in the input document with associated sentiments.
      */
@@ -72,7 +76,7 @@ declare module "gapi.client.language" {
     language?: string;
   }
 
-  declare interface language$AnalyzeSentimentRequest {
+  declare interface gapi$client$language$AnalyzeSentimentRequest {
     /**
      * Input document.
      */
@@ -84,7 +88,7 @@ declare module "gapi.client.language" {
     encodingType?: string;
   }
 
-  declare interface language$AnalyzeSentimentResponse {
+  declare interface gapi$client$language$AnalyzeSentimentResponse {
     /**
      * The overall sentiment of the input document.
      */
@@ -103,7 +107,7 @@ declare module "gapi.client.language" {
     sentences?: language$Sentence[];
   }
 
-  declare interface language$AnalyzeSyntaxRequest {
+  declare interface gapi$client$language$AnalyzeSyntaxRequest {
     /**
      * Input document.
      */
@@ -115,7 +119,7 @@ declare module "gapi.client.language" {
     encodingType?: string;
   }
 
-  declare interface language$AnalyzeSyntaxResponse {
+  declare interface gapi$client$language$AnalyzeSyntaxResponse {
     /**
      * The language of the text, which will be the same as the language specified
      * in the request or, if not specified, the automatically-detected language.
@@ -134,7 +138,7 @@ declare module "gapi.client.language" {
     tokens?: language$Token[];
   }
 
-  declare interface language$AnnotateTextRequest {
+  declare interface gapi$client$language$AnnotateTextRequest {
     /**
      * Input document.
      */
@@ -151,7 +155,7 @@ declare module "gapi.client.language" {
     features?: language$Features;
   }
 
-  declare interface language$AnnotateTextResponse {
+  declare interface gapi$client$language$AnnotateTextResponse {
     /**
      * The overall sentiment for the document. Populated if the user enables
      * AnnotateTextRequest.Features.extract_document_sentiment.
@@ -186,7 +190,7 @@ declare module "gapi.client.language" {
     tokens?: language$Token[];
   }
 
-  declare interface language$DependencyEdge {
+  declare interface gapi$client$language$DependencyEdge {
     /**
      * Represents the head of this token in the dependency tree.
      * This is the index of the token which has an arc going to this token.
@@ -202,7 +206,7 @@ declare module "gapi.client.language" {
     label?: string;
   }
 
-  declare interface language$Document {
+  declare interface gapi$client$language$Document {
     /**
      * The content of the input in string format.
      */
@@ -235,7 +239,7 @@ declare module "gapi.client.language" {
     type?: string;
   }
 
-  declare interface language$Entity {
+  declare interface gapi$client$language$Entity {
     /**
      * The mentions of this entity in the input document. The API currently
      * supports proper noun mentions.
@@ -279,7 +283,7 @@ declare module "gapi.client.language" {
     type?: string;
   }
 
-  declare interface language$EntityMention {
+  declare interface gapi$client$language$EntityMention {
     /**
      * For calls to AnalyzeEntitySentiment or if
      * AnnotateTextRequest.Features.extract_entity_sentiment is set to
@@ -299,7 +303,7 @@ declare module "gapi.client.language" {
     type?: string;
   }
 
-  declare interface language$Features {
+  declare interface gapi$client$language$Features {
     /**
      * Extract document-level sentiment.
      */
@@ -321,7 +325,7 @@ declare module "gapi.client.language" {
     extractSyntax?: boolean;
   }
 
-  declare interface language$PartOfSpeech {
+  declare interface gapi$client$language$PartOfSpeech {
     /**
      * The grammatical aspect.
      */
@@ -383,7 +387,7 @@ declare module "gapi.client.language" {
     voice?: string;
   }
 
-  declare interface language$Sentence {
+  declare interface gapi$client$language$Sentence {
     /**
      * For calls to AnalyzeSentiment or if
      * AnnotateTextRequest.Features.extract_document_sentiment is set to
@@ -397,7 +401,7 @@ declare module "gapi.client.language" {
     text?: language$TextSpan;
   }
 
-  declare interface language$Sentiment {
+  declare interface gapi$client$language$Sentiment {
     /**
      * A non-negative number in the [0, +inf) range, which represents
      * the absolute magnitude of sentiment regardless of score (positive or
@@ -412,7 +416,7 @@ declare module "gapi.client.language" {
     score?: number;
   }
 
-  declare interface language$Status {
+  declare interface gapi$client$language$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -432,7 +436,7 @@ declare module "gapi.client.language" {
     message?: string;
   }
 
-  declare interface language$TextSpan {
+  declare interface gapi$client$language$TextSpan {
     /**
      * The API calculates the beginning offset of the content in the original
      * document according to the EncodingType specified in the API request.
@@ -445,11 +449,11 @@ declare module "gapi.client.language" {
     content?: string;
   }
 
-  declare interface language$Token {
+  declare interface gapi$client$language$Token {
     /**
      * Dependency tree parse for this token.
      */
-    dependencyEdge?: language$DependencyEdge;
+    dependencyEdge?: gapi$client$language$DependencyEdge;
 
     /**
      * [Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.
@@ -459,15 +463,15 @@ declare module "gapi.client.language" {
     /**
      * Parts of speech tag for this token.
      */
-    partOfSpeech?: language$PartOfSpeech;
+    partOfSpeech?: gapi$client$language$PartOfSpeech;
 
     /**
      * The token text.
      */
-    text?: language$TextSpan;
+    text?: gapi$client$language$TextSpan;
   }
 
-  declare interface language$DocumentsResource {
+  declare interface gapi$client$language$DocumentsResource {
     /**
      * Finds named entities (currently proper names and common nouns) in the text
      * along with entity types, salience, mentions for each entity, and
@@ -538,7 +542,7 @@ declare module "gapi.client.language" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<language$AnalyzeEntitiesResponse>;
+    }): Request<gapi$client$language$AnalyzeEntitiesResponse>;
 
     /**
      * Finds entities, similar to AnalyzeEntities in the text and analyzes
@@ -609,7 +613,7 @@ declare module "gapi.client.language" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<language$AnalyzeEntitySentimentResponse>;
+    }): Request<gapi$client$language$AnalyzeEntitySentimentResponse>;
 
     /**
      * Analyzes the sentiment of the provided text.
@@ -679,7 +683,7 @@ declare module "gapi.client.language" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<language$AnalyzeSentimentResponse>;
+    }): Request<gapi$client$language$AnalyzeSentimentResponse>;
 
     /**
      * Analyzes the syntax of the text and provides sentence boundaries and
@@ -751,7 +755,7 @@ declare module "gapi.client.language" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<language$AnalyzeSyntaxResponse>;
+    }): Request<gapi$client$language$AnalyzeSyntaxResponse>;
 
     /**
      * A convenience method that provides all the features that analyzeSentiment,
@@ -822,6 +826,6 @@ declare module "gapi.client.language" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<language$AnnotateTextResponse>;
+    }): Request<gapi$client$language$AnnotateTextResponse>;
   }
 }
