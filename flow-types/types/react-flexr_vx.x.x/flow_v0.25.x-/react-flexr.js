@@ -7,7 +7,10 @@ declare var npm$namespace$__ReactFlexr: {
   palm: typeof __ReactFlexr$palm,
   lap: typeof __ReactFlexr$lap,
   portable: typeof __ReactFlexr$portable,
-  desk: typeof __ReactFlexr$desk
+  desk: typeof __ReactFlexr$desk,
+
+  Grid: typeof __ReactFlexr$Grid,
+  Cell: typeof __ReactFlexr$Cell
 };
 declare type __ReactFlexr$GridProps = {
   /**
