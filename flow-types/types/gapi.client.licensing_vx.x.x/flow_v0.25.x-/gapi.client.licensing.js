@@ -1,26 +1,30 @@
 declare module "gapi.client.licensing" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    licenseAssignments: typeof client$licenseAssignments
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    licenseAssignments: typeof gapi$client$licenseAssignments
   };
 
   /**
    * Load Enterprise License Manager API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "licensing",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "licensing",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$licenseAssignments: licensing$licensing$LicenseAssignmentsResource;
+  declare var gapi$client$licenseAssignments: licensing$LicenseAssignmentsResource;
 
-  declare interface licensing$LicenseAssignment {
+  declare interface gapi$client$licensing$LicenseAssignment {
     /**
      * ETag of the resource.
      */
@@ -62,14 +66,14 @@ declare module "gapi.client.licensing" {
     userId?: string;
   }
 
-  declare interface licensing$LicenseAssignmentInsert {
+  declare interface gapi$client$licensing$LicenseAssignmentInsert {
     /**
      * Email id of the user
      */
     userId?: string;
   }
 
-  declare interface licensing$LicenseAssignmentList {
+  declare interface gapi$client$licensing$LicenseAssignmentList {
     /**
      * ETag of the resource.
      */
@@ -78,7 +82,7 @@ declare module "gapi.client.licensing" {
     /**
      * The LicenseAssignments in this page of results.
      */
-    items?: licensing$LicenseAssignment[];
+    items?: gapi$client$licensing$LicenseAssignment[];
 
     /**
      * Identifies the resource as a collection of LicenseAssignments.
@@ -91,7 +95,7 @@ declare module "gapi.client.licensing" {
     nextPageToken?: string;
   }
 
-  declare interface licensing$LicenseAssignmentsResource {
+  declare interface gapi$client$licensing$LicenseAssignmentsResource {
     /**
      * Revoke License.
      */
@@ -202,7 +206,7 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignment>;
+    }): Request<gapi$client$licensing$LicenseAssignment>;
 
     /**
      * Assign License.
@@ -253,7 +257,7 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignment>;
+    }): Request<gapi$client$licensing$LicenseAssignment>;
 
     /**
      * List license assignments for given product of the customer.
@@ -314,7 +318,7 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignmentList>;
+    }): Request<gapi$client$licensing$LicenseAssignmentList>;
 
     /**
      * List license assignments for given product and sku of the customer.
@@ -380,7 +384,7 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignmentList>;
+    }): Request<gapi$client$licensing$LicenseAssignmentList>;
 
     /**
      * Assign License. This method supports patch semantics.
@@ -436,7 +440,7 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignment>;
+    }): Request<gapi$client$licensing$LicenseAssignment>;
 
     /**
      * Assign License.
@@ -492,6 +496,6 @@ declare module "gapi.client.licensing" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<licensing$LicenseAssignment>;
+    }): Request<gapi$client$licensing$LicenseAssignment>;
   }
 }
