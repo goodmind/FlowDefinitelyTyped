@@ -18,7 +18,7 @@ declare module "email-templates" {
     /**
      * Do you really want to send, false for test or development
      */
-    EmailTemplate$send?: boolean;
+    send?: boolean;
 
     /**
      * Preview the email
@@ -33,7 +33,7 @@ declare module "email-templates" {
     /**
      * Pass a custom render function if necessary
      */
-    EmailTemplate$render?: {
+    render?: {
       view: string,
       locals: any
     };
@@ -62,7 +62,7 @@ declare module "email-templates" {
     /**
      * <https://github.com/Automattic/juice>
      */
-    EmailTemplate$juiceResources?: any;
+    juiceResources?: any;
   }
   declare interface EmailOptions {
     /**
@@ -127,5 +127,5 @@ declare module "email-templates" {
    */
   declare function EmailTemplate$send(options: EmailOptions): any;
 
-  declare module.exports: typeof EmailTemplate;
+  declare export default typeof EmailTemplate;
 }
