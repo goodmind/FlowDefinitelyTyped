@@ -15,7 +15,7 @@ declare module "swagger-parser" {
       empty?: boolean,
       unknown?: boolean
     };
-    SwaggerParser$$ref?: {
+    $ref?: {
       internal?: boolean,
       external?: boolean,
       circular?: boolean | "ignore"
@@ -31,81 +31,81 @@ declare module "swagger-parser" {
     };
   }
   declare export function parse(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options?: Options
   ): Promise<any>;
 
   declare export function parse(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function parse(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options: Options,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function validate(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options?: Options
   ): Promise<any>;
 
   declare export function validate(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function validate(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options: Options,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function dereference(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options?: Options
   ): Promise<any>;
 
   declare export function dereference(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function dereference(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options: Options,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function bundle(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options?: Options
   ): Promise<any>;
 
   declare export function bundle(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function bundle(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options: Options,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function resolve(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options?: Options
   ): Promise<any>;
 
   declare export function resolve(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     callback: (err: any, result?: any) => void
   ): void;
 
   declare export function resolve(
-    SwaggerParser$api: string | Swagger,
+    api: string | Swagger,
     options: Options,
     callback: (err: any, result?: any) => void
   ): void;
