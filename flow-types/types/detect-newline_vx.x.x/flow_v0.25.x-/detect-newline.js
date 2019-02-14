@@ -1,5 +1,5 @@
 declare module "detect-newline" {
-  declare module.exports: typeof detectNewline;
+  declare export default typeof detectNewline;
 
   declare function detectNewline(str: string): "\r\n" | "\n" | null;
 
