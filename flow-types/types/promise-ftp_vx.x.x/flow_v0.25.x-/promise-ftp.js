@@ -47,12 +47,12 @@ declare module "promise-ftp" {
     reconnect: () => Promise<string>;
 
     /**
- * Close the connection to the server after any/all enqueued
- * commands have been executed.
- * @returns a promise that resolves with the last error recieved if there
-was an error, true if there was an error but the client didn't recieve it,
-or false if there was no error.
- */
+     * Close the connection to the server after any/all enqueued
+     * commands have been executed.
+     * @returns a promise that resolves with the last error recieved if there
+     * was an error, true if there was an error but the client didn't recieve it,
+     * or false if there was no error.
+     */
     end(): Promise<Error | boolean>;
 
     /**
@@ -137,11 +137,11 @@ or false if there was no error.
     delete: (path: string) => Promise<void>;
 
     /**
- * Change the current working directory.
- * @param cwd - the path to change the CWD to.
- * @returns the current directory if the server replies with the path in the
-response text, otherwise undefined.
- */
+     * Change the current working directory.
+     * @param cwd - the path to change the CWD to.
+     * @returns the current directory if the server replies with the path in the
+     * response text, otherwise undefined.
+     */
     cwd(path: string): Promise<string | void>;
 
     /**
@@ -221,12 +221,12 @@ response text, otherwise undefined.
     size(path: string): Promise<number>;
 
     /**
- * Extended commands (RFC 3659)
- * Retrieve the last modified date and time for a file or directory.
- * @param path - the path of the file/directory whose modified date is to
-be retrieved.
- * @returns the last modified date at the specified path.
- */
+     * Extended commands (RFC 3659)
+     * Retrieve the last modified date and time for a file or directory.
+     * @param path - the path of the file/directory whose modified date is to
+     * be retrieved.
+     * @returns the last modified date at the specified path.
+     */
     lastMod(path: string): Promise<Date>;
 
     /**
@@ -236,5 +236,5 @@ be retrieved.
      */
     restart(byteOffset: number): Promise<void>;
   }
-  declare module.exports: typeof PromiseFtp;
+  declare export default typeof PromiseFtp;
 }
