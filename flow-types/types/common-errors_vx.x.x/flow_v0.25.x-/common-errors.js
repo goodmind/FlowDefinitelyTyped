@@ -30,20 +30,20 @@ declare module "common-errors" {
   };
 
   /**
- * Simple interface for generating a new Error class type.
- * @param name The full name of the new Error class
- * @param The base class for the new Error
-class. Default is Error.
- * @param Boolean (default true) to store the
-Error in global space so that the
-Error is equivalent to others included
-from other versions of the module.
- * @param Array of names of values to accept and
-store from the class constructor.
-Default is ['message', 'inner_error'].
- * @param A function for defining a custom error
-message.
- */
+   * Simple interface for generating a new Error class type.
+   * @param name The full name of the new Error class
+   * @param The base class for the new Error
+   * class. Default is Error.
+   * @param Boolean (default true) to store the
+   * Error in global space so that the
+   * Error is equivalent to others included
+   * from other versions of the module.
+   * @param Array of names of values to accept and
+   * store from the class constructor.
+   * Default is ['message', 'inner_error'].
+   * @param A function for defining a custom error
+   * message.
+   */
   declare function helpers$generateClass(
     name: string,
     options?: {
@@ -65,7 +65,7 @@ message.
    * have caused a crash is logged to stderr.
    */
   declare function middleware$crashProtector(
-    middleware$errorHandler: (
+    errorHandler: (
       err: Error,
       req: express.Request,
       res: express.Response
@@ -90,10 +90,10 @@ message.
    */
   declare export class Error mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(entityName: string, inner_error?: Error): this;
   }
 
@@ -117,10 +117,10 @@ Stack trace will be appended.
    */
   declare export class ArgumentError mixins global.Error {
     /**
- * @param argumentName the name of the argument that has a problem
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param argumentName the name of the argument that has a problem
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(argumentName: string, inner_error?: Error): this;
   }
 
@@ -131,10 +131,10 @@ Stack trace will be appended.
    */
   declare export class ArgumentNullError mixins ArgumentError {
     /**
- * @param argumentName the name of the argument that is null
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param argumentName the name of the argument that is null
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(argumentName: string, inner_error?: Error): this;
   }
 
@@ -144,10 +144,10 @@ Stack trace will be appended.
    */
   declare export class AuthenticationRequiredError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -157,10 +157,10 @@ Stack trace will be appended.
    */
   declare export class ConnectionError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -197,10 +197,10 @@ Stack trace will be appended.
    */
   declare export class InvalidOperationError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -210,10 +210,10 @@ Stack trace will be appended.
    */
   declare export class SocketError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -223,10 +223,10 @@ Stack trace will be appended.
    */
   declare export class NotFoundError mixins global.Error {
     /**
- * @param entity_name a description for what was not found
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param entity_name a description for what was not found
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(entity_name: string, inner_error?: Error): this;
   }
 
@@ -236,10 +236,10 @@ Stack trace will be appended.
    */
   declare export class NotImplementedError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -249,10 +249,10 @@ Stack trace will be appended.
    */
   declare export class NotPermittedError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -262,10 +262,10 @@ Stack trace will be appended.
    */
   declare export class NotSupportedError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -275,10 +275,10 @@ Stack trace will be appended.
    */
   declare export class OutOfMemoryError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -290,10 +290,10 @@ Stack trace will be appended.
    */
   declare export class RangeError mixins global.RangeError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -305,10 +305,10 @@ Stack trace will be appended.
    */
   declare export class ReferenceError mixins global.ReferenceError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -319,10 +319,10 @@ Stack trace will be appended.
    */
   declare export class StackOverflowError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -334,10 +334,10 @@ Stack trace will be appended.
    */
   declare export class SyntaxError mixins global.SyntaxError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -347,10 +347,10 @@ Stack trace will be appended.
    */
   declare export class TimeoutError mixins global.Error {
     /**
- * @param time a time duration
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param time a time duration
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(time: string, inner_error?: Error): this;
   }
 
@@ -362,10 +362,10 @@ Stack trace will be appended.
    */
   declare export class TypeError mixins global.TypeError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -377,24 +377,24 @@ Stack trace will be appended.
    */
   declare export class URIError mixins global.URIError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current error.
-Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current error.
+     * Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
   /**
- * Useful for denoting a problem with a user-defined value. Generally, you
- * won't throw this error. It serializes to JSON, and it can also function
- * as an envelope for multiple errors.
- * @example function validateUsername(username) {
-var errors = new errors.ValidationError()
-if (username.length < 3) errors.addError(new errors.ValidationError("username must be at least two characters long", "VAL_MIN_USERNAME_LENGTH", "username"))
-if(/-%$*&!/.test(username)) errors.addError(new errors.ValidationError("username may not contain special characters", "VAL_USERNAME_SPECIALCHARS", "username"))
-return errors
-}
- */
+   * Useful for denoting a problem with a user-defined value. Generally, you
+   * won't throw this error. It serializes to JSON, and it can also function
+   * as an envelope for multiple errors.
+   * @example function validateUsername(username) {
+   * var errors = new errors.ValidationError()
+   * if (username.length < 3) errors.addError(new errors.ValidationError("username must be at least two characters long", "VAL_MIN_USERNAME_LENGTH", "username"))
+   * if(/-%$*&!/.test(username)) errors.addError(new errors.ValidationError("username may not contain special characters", "VAL_USERNAME_SPECIALCHARS", "username"))
+   * return errors
+   * }
+   */
   declare export class ValidationError mixins global.Error {
     /**
      * @param message any message
@@ -414,16 +414,26 @@ return errors
     addErrors(errors: Error[]): this;
   }
 
+  declare var npm$namespace$data: {
+    DataError: typeof data$DataError,
+    MemcachedError: typeof data$MemcachedError,
+    MongoDBError: typeof data$MongoDBError,
+    RedisError: typeof data$RedisError,
+    RollbackError: typeof data$RollbackError,
+    SQLError: typeof data$SQLError,
+    TransactionError: typeof data$TransactionError
+  };
+
   /**
    * Applicable when an error occurs on or with an external data source.
    * @example throw new errors.data.DataError('Too many rows returned from database', err)
    */
   declare class data$DataError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -431,12 +441,12 @@ error. Stack trace will be appended.
    * Applicable when an error occurs while using memcached.
    * @example throw new errors.data.MemcachedError('Expected value not found', err)
    */
-  declare class data$MemcachedError mixins data$DataError {
+  declare class data$MemcachedError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -444,12 +454,12 @@ error. Stack trace will be appended.
    * Applicable when an error occurs while using MongoDB.
    * @example throw new errors.data.MongoDBError('Retrieved value not in expected format', err)
    */
-  declare class data$MongoDBError mixins data$DataError {
+  declare class data$MongoDBError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -457,12 +467,12 @@ error. Stack trace will be appended.
    * Applicable when an error occurs while using redis.
    * @example throw new errors.data.RedisError('expected value not found in redis', err)
    */
-  declare class data$RedisError mixins data$DataError {
+  declare class data$RedisError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -470,12 +480,12 @@ error. Stack trace will be appended.
    * Applicable when a transaction was unexpectedly rolled back.
    * @example throw new errors.data.RollbackError('database transaction was unexpectedly rolled back', err)
    */
-  declare class data$RollbackError mixins data$DataError {
+  declare class data$RollbackError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -483,12 +493,12 @@ error. Stack trace will be appended.
    * Applicable when an error occurs while using a SQL database.
    * @example throw new errors.data.SQLError('foreign key constraint violated', err)
    */
-  declare class data$SQLError mixins data$DataError {
+  declare class data$SQLError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -496,14 +506,23 @@ error. Stack trace will be appended.
    * Applicable when an error unexpectedly interrupts a transaction.
    * @example throw new errors.data.TransactionError('transaction already complete', err)
    */
-  declare class data$TransactionError mixins data$DataError {
+  declare class data$TransactionError mixins DataError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
+
+  declare var npm$namespace$io: {
+    IOError: typeof io$IOError,
+    DirectoryNotFoundError: typeof io$DirectoryNotFoundError,
+    DriveNotFoundError: typeof io$DriveNotFoundError,
+    EndOfStreamError: typeof io$EndOfStreamError,
+    FileLoadError: typeof io$FileLoadError,
+    FileNotFoundError: typeof io$FileNotFoundError
+  };
 
   /**
    * Base class for Errors while accessing information using streams,
@@ -512,10 +531,10 @@ error. Stack trace will be appended.
    */
   declare class io$IOError mixins global.Error {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -523,12 +542,12 @@ error. Stack trace will be appended.
    * Applicable when part of a file or directory cannot be found.
    * @example throw new errors.io.DirectoryNotFoundError("/var/log", err)
    */
-  declare class io$DirectoryNotFoundError mixins io$IOError {
+  declare class io$DirectoryNotFoundError mixins IOError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -537,12 +556,12 @@ error. Stack trace will be appended.
    * available.
    * @example throw new errors.io.DriveNotFoundError("c", err)
    */
-  declare class io$DriveNotFoundError mixins io$IOError {
+  declare class io$DriveNotFoundError mixins IOError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -550,12 +569,12 @@ error. Stack trace will be appended.
    * Applicable when reading is attempted past the end of a stream.
    * @example throw new errors.io.EndOfStreamError("EOS while reading header", err)
    */
-  declare class io$EndOfStreamError mixins io$IOError {
+  declare class io$EndOfStreamError mixins IOError {
     /**
- * @param message any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param message any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(message: string, inner_error?: Error): this;
   }
 
@@ -563,12 +582,12 @@ error. Stack trace will be appended.
    * Applicable when a file is found and read but cannot be loaded.
    * @example throw new errors.io.FileLoadError("./package.json", err)
    */
-  declare class io$FileLoadError mixins io$IOError {
+  declare class io$FileLoadError mixins IOError {
     /**
- * @param file_name any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param file_name any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(file_name: string, inner_error?: Error): this;
   }
 
@@ -577,12 +596,12 @@ error. Stack trace will be appended.
    * disk fails.
    * @example throw new errors.io.FileNotFoundError("./package.json", err)
    */
-  declare class io$FileNotFoundError mixins io$IOError {
+  declare class io$FileNotFoundError mixins IOError {
     /**
- * @param file_name any message
- * @param inner_error the Error instance that caused the current
-error. Stack trace will be appended.
- */
+     * @param file_name any message
+     * @param inner_error the Error instance that caused the current
+     * error. Stack trace will be appended.
+     */
     constructor(file_name: string, inner_error?: Error): this;
   }
 }
