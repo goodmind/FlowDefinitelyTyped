@@ -13,19 +13,19 @@ declare module "stellar-base" {
 
   declare type AssetType$credit12 = "credit_alphanum12";
   declare export type AssetType =
-    | AssetTypeAssetType$native
-    | AssetTypeAssetType$credit4
-    | AssetTypeAssetType$credit12;
+    | AssetType$native
+    | AssetType$credit4
+    | AssetType$credit12;
   declare export class Asset {
     static native(): xdr$Asset;
-    static fromOperation(xdr: xdrxdr$Asset): xdr$Asset;
+    static fromOperation(xdr: xdr$Asset): xdr$Asset;
     constructor(code: string, issuer: string): this;
     getCode(): string;
     getIssuer(): string;
     getAssetType(): AssetType;
     isNative(): boolean;
     equals(other: xdr$Asset): boolean;
-    toXDRObject(): xdrxdr$Asset;
+    toXDRObject(): xdr$Asset;
     code: string;
     issuer: string;
   }
@@ -56,10 +56,10 @@ declare module "stellar-base" {
     rawPublicKey(): Buffer;
     rawSecretKey(): Buffer;
     canSign(): boolean;
-    sign(data: Buffer): xdrxdr$Signature;
-    signDecorated(data: Buffer): xdrxdr$DecoratedSignature;
-    signatureHint(): xdrxdr$SignatureHint;
-    verify(data: Buffer, signature: xdrxdr$Signature): boolean;
+    sign(data: Buffer): xdr$Signature;
+    signDecorated(data: Buffer): xdr$DecoratedSignature;
+    signatureHint(): xdr$SignatureHint;
+    verify(data: Buffer, signature: xdr$Signature): boolean;
   }
   declare export var MemoNone: any; // "none";
   declare export var MemoID: any; // "id";
@@ -76,49 +76,35 @@ declare module "stellar-base" {
 
   declare type MemoType$Return = typeof MemoReturn;
   declare export type MemoType =
-    | MemoTypeMemoType$None
-    | MemoTypeMemoType$ID
-    | MemoTypeMemoType$Text
-    | MemoTypeMemoType$Hash
-    | MemoTypeMemoType$Return;
+    | MemoType$None
+    | MemoType$ID
+    | MemoType$Text
+    | MemoType$Hash
+    | MemoType$Return;
   declare export type MemoValue = null | string | Buffer;
   declare export class Memo<T: MemoType = MemoType> {
-    static fromXDRObject(memo: xdrxdr$Memo): xdr$Memo;
-    static hash(hash: string): xdr$Memo<MemoTypeMemoType$Hash>;
-    static id(id: string): xdr$Memo<MemoTypeMemoType$ID>;
-    static none(): xdr$Memo<MemoTypeMemoType$None>;
-    static return(hash: string): xdr$Memo<MemoTypeMemoType$Return>;
-    static text(text: string): xdr$Memo<MemoTypeMemoType$Text>;
-    constructor(type: MemoTypeMemoType$None, value?: null): this;
+    static fromXDRObject(memo: xdr$Memo): xdr$Memo;
+    static hash(hash: string): xdr$Memo<MemoType$Hash>;
+    static id(id: string): xdr$Memo<MemoType$ID>;
+    static none(): xdr$Memo<MemoType$None>;
+    static return(hash: string): xdr$Memo<MemoType$Return>;
+    static text(text: string): xdr$Memo<MemoType$Text>;
+    constructor(type: MemoType$None, value?: null): this;
+    constructor(type: MemoType$Hash | MemoType$Return, value: Buffer): this;
     constructor(
-      type: MemoTypeMemoType$Hash | MemoTypeMemoType$Return,
-      value: Buffer
-    ): this;
-    constructor(
-      type:
-        | MemoTypeMemoType$Hash
-        | MemoTypeMemoType$Return
-        | MemoTypeMemoType$ID
-        | MemoTypeMemoType$Text,
+      type: MemoType$Hash | MemoType$Return | MemoType$ID | MemoType$Text,
       value: string
     ): this;
     constructor(type: T, value: MemoValue): this;
     type: T;
     value: "There was Conditional Type, use $Call utility type";
-    toXDRObject(): xdrxdr$Memo;
-  }
-  declare export class Networks {
-    constructor(...args: empty): mixed;
-    static +PUBLIC: Class<Networks__PUBLIC> &
-      Networks__PUBLIC &
-      "Public Global Stellar Network ; September 2015"; // "Public Global Stellar Network ; September 2015"
-    static +TESTNET: Class<Networks__TESTNET> &
-      Networks__TESTNET &
-      "Test SDF Network ; September 2015"; // "Test SDF Network ; September 2015"
+    toXDRObject(): xdr$Memo;
   }
 
-  declare class Networks__PUBLIC mixins Networks {}
-  declare class Networks__TESTNET mixins Networks {}
+  declare export var Networks: {|
+    +PUBLIC: "Public Global Stellar Network ; September 2015", // "Public Global Stellar Network ; September 2015"
+    +TESTNET: "Test SDF Network ; September 2015" // "Test SDF Network ; September 2015"
+  |};
 
   declare export class Network {
     static use(network: Network): void;
@@ -138,45 +124,57 @@ declare module "stellar-base" {
 
   declare type AuthFlag$rmmutable = typeof AuthImmutableFlag;
   declare export type AuthFlag =
-    | AuthFlagAuthFlag$required
-    | AuthFlagAuthFlag$revocable
-    | AuthFlagAuthFlag$rmmutable;
+    | AuthFlag$required
+    | AuthFlag$revocable
+    | AuthFlag$rmmutable;
   declare interface Signer$Ed25519PublicKey {
     ed25519PublicKey: string;
     weight: number | void;
+    ed25519PublicKey: string;
+    weight?: number | string;
   }
 
   declare interface Signer$Sha256Hash {
     sha256Hash: Buffer;
     weight: number | void;
+    sha256Hash: Buffer | string;
+    weight?: number | string;
   }
 
   declare interface Signer$PreAuthTx {
     preAuthTx: Buffer;
     weight: number | void;
+    preAuthTx: Buffer | string;
+    weight?: number | string;
   }
   declare export type Signer =
-    | SignerSigner$Ed25519PublicKey
-    | SignerSigner$Sha256Hash
-    | SignerSigner$PreAuthTx;
+    | Signer$Ed25519PublicKey
+    | Signer$Sha256Hash
+    | Signer$PreAuthTx;
   declare interface SignerOptions$Ed25519PublicKey {
+    ed25519PublicKey: string;
+    weight: number | void;
     ed25519PublicKey: string;
     weight?: number | string;
   }
 
   declare interface SignerOptions$Sha256Hash {
+    sha256Hash: Buffer;
+    weight: number | void;
     sha256Hash: Buffer | string;
     weight?: number | string;
   }
 
   declare interface SignerOptions$PreAuthTx {
+    preAuthTx: Buffer;
+    weight: number | void;
     preAuthTx: Buffer | string;
     weight?: number | string;
   }
   declare export type SignerOptions =
-    | SignerOptionsSignerOptions$Ed25519PublicKey
-    | SignerOptionsSignerOptions$Sha256Hash
-    | SignerOptionsSignerOptions$PreAuthTx;
+    | SignerOptions$Ed25519PublicKey
+    | SignerOptions$Sha256Hash
+    | SignerOptions$PreAuthTx;
   declare type OperationType$CreateAccount = "createAccount";
 
   declare type OperationType$Payment = "payment";
@@ -201,104 +199,58 @@ declare module "stellar-base" {
 
   declare type OperationType$BumpSequence = "bumpSequence";
   declare export type OperationType =
-    | OperationTypeOperationType$CreateAccount
-    | OperationTypeOperationType$Payment
-    | OperationTypeOperationType$PathPayment
-    | OperationTypeOperationType$CreatePassiveOffer
-    | OperationTypeOperationType$ManageOffer
-    | OperationTypeOperationType$SetOptions
-    | OperationTypeOperationType$ChangeTrust
-    | OperationTypeOperationType$AllowTrust
-    | OperationTypeOperationType$AccountMerge
-    | OperationTypeOperationType$Inflation
-    | OperationTypeOperationType$ManageData
-    | OperationTypeOperationType$BumpSequence;
+    | OperationType$CreateAccount
+    | OperationType$Payment
+    | OperationType$PathPayment
+    | OperationType$CreatePassiveOffer
+    | OperationType$ManageOffer
+    | OperationType$SetOptions
+    | OperationType$ChangeTrust
+    | OperationType$AllowTrust
+    | OperationType$AccountMerge
+    | OperationType$Inflation
+    | OperationType$ManageData
+    | OperationType$BumpSequence;
   declare interface OperationOptions$BaseOptions {
     source?: string;
   }
 
-  declare type OperationOptions$AccountMerge = {
-    destination: string
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$AccountMerge = "accountMerge";
 
-  declare type OperationOptions$AllowTrust = {
-    trustor: string,
-    assetCode: string,
-    authorize?: boolean
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$AllowTrust = "allowTrust";
 
-  declare type OperationOptions$ChangeTrust = {
-    asset: xdr$Asset,
-    limit?: string
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$ChangeTrust = "changeTrust";
 
-  declare type OperationOptions$CreateAccount = {
-    destination: string,
-    startingBalance: string
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$CreateAccount = "createAccount";
 
-  declare type OperationOptions$CreatePassiveOffer = {
-    selling: xdr$Asset,
-    buying: xdr$Asset,
-    amount: string,
-    price: number | string | { [key: string]: any }
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$CreatePassiveOffer = "createPassiveOffer";
 
-  declare type OperationOptions$ManageOffer = {
-    offerId?: number | string
-  } & OperationOptions$CreatePassiveOffer;
+  declare type OperationOptions$ManageOffer = "manageOffer";
 
-  declare type OperationOptions$Inflation = {} & OperationOptions$BaseOptions;
+  declare type OperationOptions$Inflation = "inflation";
 
-  declare type OperationOptions$ManageData = {
-    name: string,
-    value: string | Buffer
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$ManageData = "manageData";
 
-  declare type OperationOptions$PathPayment = {
-    sendAsset: xdr$Asset,
-    sendMax: string,
-    destination: string,
-    destAsset: xdr$Asset,
-    destAmount: string,
-    path?: xdr$Asset[]
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$PathPayment = "pathPayment";
 
-  declare type OperationOptions$Payment = {
-    amount: string,
-    asset: xdr$Asset,
-    destination: string
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$Payment = "payment";
 
-  declare type OperationOptions$SetOptions<T: SignerOptions = empty> = {
-    inflationDest?: string,
-    clearFlags?: AuthFlag,
-    setFlags?: AuthFlag,
-    masterWeight?: number | string,
-    lowThreshold?: number | string,
-    medThreshold?: number | string,
-    highThreshold?: number | string,
-    homeDomain?: string,
-    signer?: T
-  } & OperationOptions$BaseOptions;
+  declare type OperationOptions$SetOptions = "setOptions";
 
-  declare type OperationOptions$BumpSequence = {
-    bumpTo: string
-  } & OperationOptions$BaseOptions;
-
+  declare type OperationOptions$BumpSequence = "bumpSequence";
   declare export type OperationOptions =
-    | OperationOptionsOperationOptions$CreateAccount
-    | OperationOptionsOperationOptions$Payment
-    | OperationOptionsOperationOptions$PathPayment
-    | OperationOptionsOperationOptions$CreatePassiveOffer
-    | OperationOptionsOperationOptions$ManageOffer
-    | OperationOptionsOperationOptions$SetOptions
-    | OperationOptionsOperationOptions$ChangeTrust
-    | OperationOptionsOperationOptions$AllowTrust
-    | OperationOptionsOperationOptions$AccountMerge
-    | OperationOptionsOperationOptions$Inflation
-    | OperationOptionsOperationOptions$ManageData
-    | OperationOptionsOperationOptions$BumpSequence;
+    | OperationOptions$CreateAccount
+    | OperationOptions$Payment
+    | OperationOptions$PathPayment
+    | OperationOptions$CreatePassiveOffer
+    | OperationOptions$ManageOffer
+    | OperationOptions$SetOptions
+    | OperationOptions$ChangeTrust
+    | OperationOptions$AllowTrust
+    | OperationOptions$AccountMerge
+    | OperationOptions$Inflation
+    | OperationOptions$ManageData
+    | OperationOptions$BumpSequence;
 
   declare var npm$namespace$Operation: {
     accountMerge: typeof Operation$accountMerge,
@@ -320,144 +272,95 @@ declare module "stellar-base" {
     source?: string;
   }
 
-  declare type Operation$AccountMerge = {
-    destination: string
-  } & Operation$BaseOperation<OperationTypeOperation$AccountMerge>;
+  declare type Operation$AccountMerge = "accountMerge";
 
   declare function Operation$accountMerge(
-    options: OperationOptionsOperation$AccountMerge
-  ): xdrOperation<Operation$AccountMerge>;
+    options: OperationOptions$AccountMerge
+  ): xdr$Operation<Operation$AccountMerge>;
 
-  declare type Operation$AllowTrust = {
-    trustor: string,
-    assetCode: string,
-    authorize: boolean | void
-  } & Operation$BaseOperation<OperationTypeOperation$AllowTrust>;
+  declare type Operation$AllowTrust = "allowTrust";
 
   declare function Operation$allowTrust(
-    options: OperationOptionsOperation$AllowTrust
-  ): xdrOperation<Operation$AllowTrust>;
+    options: OperationOptions$AllowTrust
+  ): xdr$Operation<Operation$AllowTrust>;
 
-  declare type Operation$ChangeTrust = {
-    line: xdr$Asset,
-    limit: string
-  } & Operation$BaseOperation<OperationTypeOperation$ChangeTrust>;
+  declare type Operation$ChangeTrust = "changeTrust";
 
   declare function Operation$changeTrust(
-    options: OperationOptionsOperation$ChangeTrust
-  ): xdrOperation<Operation$ChangeTrust>;
+    options: OperationOptions$ChangeTrust
+  ): xdr$Operation<Operation$ChangeTrust>;
 
-  declare type Operation$CreateAccount = {
-    destination: string,
-    startingBalance: string
-  } & Operation$BaseOperation<OperationTypeOperation$CreateAccount>;
+  declare type Operation$CreateAccount = "createAccount";
 
   declare function Operation$createAccount(
-    options: OperationOptionsOperation$CreateAccount
-  ): xdrOperation<Operation$CreateAccount>;
+    options: OperationOptions$CreateAccount
+  ): xdr$Operation<Operation$CreateAccount>;
 
-  declare type Operation$CreatePassiveOffer = {
-    selling: xdr$Asset,
-    buying: xdr$Asset,
-    amount: string,
-    price: string
-  } & Operation$BaseOperation<OperationTypeOperation$CreatePassiveOffer>;
+  declare type Operation$CreatePassiveOffer = "createPassiveOffer";
 
   declare function Operation$createPassiveOffer(
-    options: OperationOptionsOperation$CreatePassiveOffer
-  ): xdrOperation<Operation$CreatePassiveOffer>;
+    options: OperationOptions$CreatePassiveOffer
+  ): xdr$Operation<Operation$CreatePassiveOffer>;
 
-  declare type Operation$Inflation = {} & Operation$BaseOperation<OperationTypeOperation$Inflation>;
+  declare type Operation$Inflation = "inflation";
 
   declare function Operation$inflation(
-    options: OperationOptionsOperation$Inflation
-  ): xdrOperation<Operation$Inflation>;
+    options: OperationOptions$Inflation
+  ): xdr$Operation<Operation$Inflation>;
 
-  declare type Operation$ManageData = {
-    name: string,
-    value: Buffer
-  } & Operation$BaseOperation<OperationTypeOperation$ManageData>;
+  declare type Operation$ManageData = "manageData";
 
   declare function Operation$manageData(
-    options: OperationOptionsOperation$ManageData
-  ): xdrOperation<Operation$ManageData>;
+    options: OperationOptions$ManageData
+  ): xdr$Operation<Operation$ManageData>;
 
-  declare type Operation$ManageOffer = {
-    selling: xdr$Asset,
-    buying: xdr$Asset,
-    amount: string,
-    price: string,
-    offerId: string
-  } & Operation$BaseOperation<OperationTypeOperation$ManageOffer>;
+  declare type Operation$ManageOffer = "manageOffer";
 
   declare function Operation$manageOffer(
-    options: OperationOptionsOperation$ManageOffer
-  ): xdrOperation<Operation$ManageOffer>;
+    options: OperationOptions$ManageOffer
+  ): xdr$Operation<Operation$ManageOffer>;
 
-  declare type Operation$PathPayment = {
-    sendAsset: xdr$Asset,
-    sendMax: string,
-    destination: string,
-    destAsset: xdr$Asset,
-    destAmount: string,
-    path: xdr$Asset[]
-  } & Operation$BaseOperation<OperationTypeOperation$PathPayment>;
+  declare type Operation$PathPayment = "pathPayment";
 
   declare function Operation$pathPayment(
-    options: OperationOptionsOperation$PathPayment
-  ): xdrOperation<Operation$PathPayment>;
+    options: OperationOptions$PathPayment
+  ): xdr$Operation<Operation$PathPayment>;
 
-  declare type Operation$Payment = {
-    amount: string,
-    asset: xdr$Asset,
-    destination: string
-  } & Operation$BaseOperation<OperationTypeOperation$Payment>;
+  declare type Operation$Payment = "payment";
 
   declare function Operation$payment(
-    options: OperationOptionsOperation$Payment
-  ): xdrOperation<Operation$Payment>;
+    options: OperationOptions$Payment
+  ): xdr$Operation<Operation$Payment>;
 
-  declare type Operation$SetOptions<T: SignerOptions = SignerOptions> = {
-    inflationDest?: string,
-    clearFlags?: AuthFlag,
-    setFlags?: AuthFlag,
-    masterWeight?: number,
-    lowThreshold?: number,
-    medThreshold?: number,
-    highThreshold?: number,
-    homeDomain?: string,
-    signer: "There was Conditional Type, use $Call utility type"
-  } & Operation$BaseOperation<OperationTypeOperation$SetOptions>;
+  declare type Operation$SetOptions = "setOptions";
 
   declare function Operation$setOptions<T: SignerOptions>(
-    options: OperationOptionsOperation$SetOptions<T>
-  ): xdrOperation<Operation$SetOptions<T>>;
+    options: OperationOptions$SetOptions<T>
+  ): xdr$Operation<Operation$SetOptions<T>>;
 
-  declare type Operation$BumpSequence = {
-    bumpTo: string
-  } & Operation$BaseOperation<OperationTypeOperation$BumpSequence>;
+  declare type Operation$BumpSequence = "bumpSequence";
 
   declare function Operation$bumpSequence(
-    options: OperationOptionsOperation$BumpSequence
-  ): xdrOperation<Operation$BumpSequence>;
+    options: OperationOptions$BumpSequence
+  ): xdr$Operation<Operation$BumpSequence>;
 
   declare function Operation$fromXDRObject<T: Operation>(
-    xdrOperation: xdrOperation<T>
+    xdrOperation: xdr$Operation<T>
   ): T;
 
   declare export type Operation =
-    | OperationOperation$CreateAccount
-    | OperationOperation$Payment
-    | OperationOperation$PathPayment
-    | OperationOperation$CreatePassiveOffer
-    | OperationOperation$ManageOffer
-    | OperationOperation$SetOptions
-    | OperationOperation$ChangeTrust
-    | OperationOperation$AllowTrust
-    | OperationOperation$AccountMerge
-    | OperationOperation$Inflation
-    | OperationOperation$ManageData
-    | OperationOperation$BumpSequence;
+    | Operation$CreateAccount
+    | Operation$Payment
+    | Operation$PathPayment
+    | Operation$CreatePassiveOffer
+    | Operation$ManageOffer
+    | Operation$SetOptions
+    | Operation$ChangeTrust
+    | Operation$AllowTrust
+    | Operation$AccountMerge
+    | Operation$Inflation
+    | Operation$ManageData
+    | Operation$BumpSequence;
 
   declare var npm$namespace$StrKey: {
     encodeEd25519PublicKey: typeof StrKey$encodeEd25519PublicKey,
@@ -495,26 +398,26 @@ declare module "stellar-base" {
     TMemo: xdr$Memo = xdr$Memo,
     TOps: Operation[] = Operation[]
   > {
-    constructor(envelope: string | xdrxdr$TransactionEnvelope): this;
+    constructor(envelope: string | xdr$TransactionEnvelope): this;
     hash(): Buffer;
     sign(...keypairs: Keypair[]): void;
     signatureBase(): Buffer;
     signHashX(preimage: Buffer | string): void;
-    toEnvelope(): xdrxdr$TransactionEnvelope;
+    toEnvelope(): xdr$TransactionEnvelope;
     operations: TOps;
     sequence: number;
     fee: number;
     source: string;
     memo: TMemo;
-    signatures: xdrxdr$DecoratedSignature[];
+    signatures: xdr$DecoratedSignature[];
   }
   declare export var TimeoutInfinite: any; // 0;
   declare export class TransactionBuilder {
     constructor(
       sourceAccount: Account,
-      options?: TransactionBuilderTransactionBuilder$TransactionBuilderOptions
+      options?: TransactionBuilder$TransactionBuilderOptions
     ): this;
-    addOperation(operation: xdrOperation): this;
+    addOperation(operation: xdr$Operation): this;
     addMemo(memo: xdr$Memo): this;
     setTimeout(timeoutInSeconds: number): this;
     build(): Transaction;
@@ -527,29 +430,42 @@ declare module "stellar-base" {
     };
     memo?: xdr$Memo;
   }
+
+  declare var npm$namespace$xdrHidden: {
+    Operation2: typeof xdrHidden$Operation2
+  };
   declare class xdrHidden$Operation2<T: Operation = Operation>
-    mixins xdr$xdr$XDRStruct {
-    static fromXDR(xdr: Buffer): xdrOperation;
+    mixins xdr$XDRStruct {
+    static fromXDR(xdr: Buffer): xdr$Operation;
   }
+
+  declare var npm$namespace$xdr: {
+    XDRStruct: typeof xdr$XDRStruct,
+    Asset: typeof xdr$Asset,
+    Memo: typeof xdr$Memo,
+    TransactionEnvelope: typeof xdr$TransactionEnvelope,
+    DecoratedSignature: typeof xdr$DecoratedSignature,
+    TransactionResult: typeof xdr$TransactionResult
+  };
   declare class xdr$XDRStruct {
     static fromXDR(xdr: Buffer): xdr$XDRStruct;
     toXDR(base?: string): Buffer;
     toXDR(encoding: string): string;
   }
 
-  declare class xdr$Asset mixins xdr$XDRStruct {
+  declare class xdr$Asset mixins XDRStruct {
     static fromXDR(xdr: Buffer): xdr$Asset;
   }
 
-  declare class xdr$Memo mixins xdr$XDRStruct {
+  declare class xdr$Memo mixins XDRStruct {
     static fromXDR(xdr: Buffer): xdr$Memo;
   }
 
-  declare class xdr$TransactionEnvelope mixins xdr$XDRStruct {
+  declare class xdr$TransactionEnvelope mixins XDRStruct {
     static fromXDR(xdr: Buffer): xdr$TransactionEnvelope;
   }
 
-  declare class xdr$DecoratedSignature mixins xdr$XDRStruct {
+  declare class xdr$DecoratedSignature mixins XDRStruct {
     static fromXDR(xdr: Buffer): xdr$DecoratedSignature;
     constructor(keys: {
       hint: xdr$SignatureHint,
@@ -563,19 +479,16 @@ declare module "stellar-base" {
 
   declare type xdr$Signature = Buffer;
 
-  declare class xdr$TransactionResult mixins xdr$XDRStruct {
+  declare class xdr$TransactionResult mixins XDRStruct {
     static fromXDR(xdr: Buffer): xdr$TransactionResult;
   }
   declare export function hash(data: Buffer): Buffer;
 
-  declare export function sign(
-    data: Buffer,
-    rawSecret: Buffer
-  ): xdrxdr$Signature;
+  declare export function sign(data: Buffer, rawSecret: Buffer): xdr$Signature;
 
   declare export function verify(
     data: Buffer,
-    signature: xdrxdr$Signature,
+    signature: xdr$Signature,
     rawPublicKey: Buffer
   ): boolean;
 }
