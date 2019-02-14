@@ -1,32 +1,36 @@
 declare module "gapi.client.doubleclicksearch" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    conversion: typeof client$conversion,
-    reports: typeof client$reports,
-    savedColumns: typeof client$savedColumns
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    conversion: typeof gapi$client$conversion,
+    reports: typeof gapi$client$reports,
+    savedColumns: typeof gapi$client$savedColumns
   };
 
   /**
    * Load DoubleClick Search API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "doubleclicksearch",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "doubleclicksearch",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$conversion: doubleclicksearch$doubleclicksearch$ConversionResource;
+  declare var gapi$client$conversion: doubleclicksearch$ConversionResource;
 
-  declare var client$reports: doubleclicksearch$doubleclicksearch$ReportsResource;
+  declare var gapi$client$reports: doubleclicksearch$ReportsResource;
 
-  declare var client$savedColumns: doubleclicksearch$doubleclicksearch$SavedColumnsResource;
+  declare var gapi$client$savedColumns: doubleclicksearch$SavedColumnsResource;
 
-  declare interface doubleclicksearch$Availability {
+  declare interface gapi$client$doubleclicksearch$Availability {
     /**
      * DS advertiser ID.
      */
@@ -58,7 +62,7 @@ declare module "gapi.client.doubleclicksearch" {
     segmentationType?: string;
   }
 
-  declare interface doubleclicksearch$Conversion {
+  declare interface gapi$client$doubleclicksearch$Conversion {
     /**
      * DS ad group ID.
      */
@@ -232,11 +236,11 @@ declare module "gapi.client.doubleclicksearch" {
     type?: string;
   }
 
-  declare interface doubleclicksearch$ConversionList {
+  declare interface gapi$client$doubleclicksearch$ConversionList {
     /**
      * The conversions being requested.
      */
-    client$conversion?: doubleclicksearch$Conversion[];
+    conversion?: gapi$client$doubleclicksearch$Conversion[];
 
     /**
      * Identifies this as a ConversionList resource. Value: the fixed string doubleclicksearch#conversionList.
@@ -244,7 +248,7 @@ declare module "gapi.client.doubleclicksearch" {
     kind?: string;
   }
 
-  declare interface doubleclicksearch$CustomDimension {
+  declare interface gapi$client$doubleclicksearch$CustomDimension {
     /**
      * Custom dimension name.
      */
@@ -256,7 +260,7 @@ declare module "gapi.client.doubleclicksearch" {
     value?: string;
   }
 
-  declare interface doubleclicksearch$CustomMetric {
+  declare interface gapi$client$doubleclicksearch$CustomMetric {
     /**
      * Custom metric name.
      */
@@ -268,7 +272,7 @@ declare module "gapi.client.doubleclicksearch" {
     value?: number;
   }
 
-  declare interface doubleclicksearch$Report {
+  declare interface gapi$client$doubleclicksearch$Report {
     /**
      * Asynchronous report only. Contains a list of generated report files once the report has succesfully completed.
      */
@@ -326,7 +330,7 @@ declare module "gapi.client.doubleclicksearch" {
     statisticsTimeZone?: string;
   }
 
-  declare interface doubleclicksearch$ReportApiColumnSpec {
+  declare interface gapi$client$doubleclicksearch$ReportApiColumnSpec {
     /**
      * Name of a DoubleClick Search column to include in the report.
      */
@@ -388,13 +392,13 @@ declare module "gapi.client.doubleclicksearch" {
     startDate?: string;
   }
 
-  declare interface doubleclicksearch$ReportRequest {
+  declare interface gapi$client$doubleclicksearch$ReportRequest {
     /**
      * The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the
      * columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set
      * in the same stanza.
      */
-    columns?: doubleclicksearch$ReportApiColumnSpec[];
+    columns?: gapi$client$doubleclicksearch$ReportApiColumnSpec[];
 
     /**
      * Format that the report should be returned in. Currently csv or tsv is supported.
@@ -408,7 +412,7 @@ declare module "gapi.client.doubleclicksearch" {
       /**
        * Column to perform the filter on. This can be a DoubleClick Search column or a saved column.
        */
-      column?: doubleclicksearch$ReportApiColumnSpec,
+      column?: gapi$client$doubleclicksearch$ReportApiColumnSpec,
 
       /**
        * Operator to use in the filter. See the filter reference for a list of available operators.
@@ -444,7 +448,7 @@ declare module "gapi.client.doubleclicksearch" {
       /**
        * Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column.
        */
-      column?: doubleclicksearch$ReportApiColumnSpec,
+      column?: gapi$client$doubleclicksearch$ReportApiColumnSpec,
 
       /**
        * The sort direction, which is either ascending or descending.
@@ -547,11 +551,11 @@ declare module "gapi.client.doubleclicksearch" {
     verifySingleTimeZone?: boolean;
   }
 
-  declare interface doubleclicksearch$ReportRow {
+  declare interface gapi$client$doubleclicksearch$ReportRow {
     [key: string]: any;
   }
 
-  declare interface doubleclicksearch$SavedColumn {
+  declare interface gapi$client$doubleclicksearch$SavedColumn {
     /**
      * Identifies this as a SavedColumn resource. Value: the fixed string doubleclicksearch#savedColumn.
      */
@@ -568,11 +572,11 @@ declare module "gapi.client.doubleclicksearch" {
     type?: string;
   }
 
-  declare interface doubleclicksearch$SavedColumnList {
+  declare interface gapi$client$doubleclicksearch$SavedColumnList {
     /**
      * The saved columns being requested.
      */
-    items?: doubleclicksearch$SavedColumn[];
+    items?: gapi$client$doubleclicksearch$SavedColumn[];
 
     /**
      * Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList.
@@ -580,21 +584,21 @@ declare module "gapi.client.doubleclicksearch" {
     kind?: string;
   }
 
-  declare interface doubleclicksearch$UpdateAvailabilityRequest {
+  declare interface gapi$client$doubleclicksearch$UpdateAvailabilityRequest {
     /**
      * The availabilities being requested.
      */
-    availabilities?: doubleclicksearch$Availability[];
+    availabilities?: gapi$client$doubleclicksearch$Availability[];
   }
 
-  declare interface doubleclicksearch$UpdateAvailabilityResponse {
+  declare interface gapi$client$doubleclicksearch$UpdateAvailabilityResponse {
     /**
      * The availabilities being returned.
      */
-    availabilities?: doubleclicksearch$Availability[];
+    availabilities?: gapi$client$doubleclicksearch$Availability[];
   }
 
-  declare interface doubleclicksearch$ConversionResource {
+  declare interface gapi$client$doubleclicksearch$ConversionResource {
     /**
      * Retrieves a list of conversions from a DoubleClick Search engine account.
      */
@@ -689,7 +693,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$ConversionList>;
+    }): Request<gapi$client$doubleclicksearch$ConversionList>;
 
     /**
      * Inserts a batch of new conversions into DoubleClick Search.
@@ -730,7 +734,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$ConversionList>;
+    }): Request<gapi$client$doubleclicksearch$ConversionList>;
 
     /**
      * Updates a batch of conversions in DoubleClick Search. This method supports patch semantics.
@@ -806,7 +810,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$ConversionList>;
+    }): Request<gapi$client$doubleclicksearch$ConversionList>;
 
     /**
      * Updates a batch of conversions in DoubleClick Search.
@@ -847,7 +851,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$ConversionList>;
+    }): Request<gapi$client$doubleclicksearch$ConversionList>;
 
     /**
      * Updates the availabilities of a batch of floodlight activities in DoubleClick Search.
@@ -888,10 +892,10 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$UpdateAvailabilityResponse>;
+    }): Request<gapi$client$doubleclicksearch$UpdateAvailabilityResponse>;
   }
 
-  declare interface doubleclicksearch$ReportsResource {
+  declare interface gapi$client$doubleclicksearch$ReportsResource {
     /**
      * Generates and returns a report immediately.
      */
@@ -931,7 +935,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$Report>;
+    }): Request<gapi$client$doubleclicksearch$Report>;
 
     /**
      * Polls for the status of a report request.
@@ -977,7 +981,7 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$Report>;
+    }): Request<gapi$client$doubleclicksearch$Report>;
 
     /**
      * Downloads a report file encoded in UTF-8.
@@ -1069,10 +1073,10 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$Report>;
+    }): Request<gapi$client$doubleclicksearch$Report>;
   }
 
-  declare interface doubleclicksearch$SavedColumnsResource {
+  declare interface gapi$client$doubleclicksearch$SavedColumnsResource {
     /**
      * Retrieve the list of saved columns for a specified advertiser.
      */
@@ -1122,6 +1126,6 @@ declare module "gapi.client.doubleclicksearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclicksearch$SavedColumnList>;
+    }): Request<gapi$client$doubleclicksearch$SavedColumnList>;
   }
 }
