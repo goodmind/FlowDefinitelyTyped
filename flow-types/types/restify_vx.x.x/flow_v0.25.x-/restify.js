@@ -63,99 +63,99 @@ declare module "restify" {
     inflightRequests(): number,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     del(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     get(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     head(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     opts(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     post(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     put(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Mounts a chain on the given path against this HTTP verb
- * @param opts if string, the URL to handle.
-                   if options, the URL to handle, at minimum.
- * @returns the newly created route.
- */
+     * Mounts a chain on the given path against this HTTP verb
+     * @param opts if string, the URL to handle.
+     *                    if options, the URL to handle, at minimum.
+     * @returns the newly created route.
+     */
     patch(
       opts: string | RegExp | RouteOptions,
       ...handlers: RequestHandlerType[]
     ): Route | boolean,
 
     /**
- * Minimal port of the functionality offered by Express.js Route Param
- * Pre-conditions
- * @link http://expressjs.com/guide.html#route-param%20pre-conditions
-
-This basically piggy-backs on the `server.use` method. It attaches a
-new middleware function that only fires if the specified parameter exists
-in req.params
-
-Exposes an API:
-server.param("user", function (req, res, next) {
-// load the user's information here, always making sure to call next()
-});
- * @param name The name of the URL param to respond to
- * @param fn The middleware function to execute
- * @returns returns self
- */
+     * Minimal port of the functionality offered by Express.js Route Param
+     * Pre-conditions
+     * @link http://expressjs.com/guide.html#route-param%20pre-conditions
+     *
+     * This basically piggy-backs on the `server.use` method. It attaches a
+     * new middleware function that only fires if the specified parameter exists
+     * in req.params
+     *
+     * Exposes an API:
+     * server.param("user", function (req, res, next) {
+     * // load the user's information here, always making sure to call next()
+     * });
+     * @param name The name of the URL param to respond to
+     * @param fn The middleware function to execute
+     * @returns returns self
+     */
     param(name: string, fn: RequestHandler): Server,
 
     /**
@@ -988,7 +988,9 @@ server.param("user", function (req, res, next) {
 
   declare var npm$namespace$bunyan: {
     createLogger: typeof bunyan$createLogger,
-    serializers: typeof bunyan$serializers
+    serializers: typeof bunyan$serializers,
+
+    RequestCaptureStream: typeof bunyan$RequestCaptureStream
   };
   declare interface bunyan$RequestCaptureOptions {
     /**
@@ -1088,54 +1090,56 @@ server.param("user", function (req, res, next) {
     throttle: typeof plugins$throttle,
     metrics: typeof plugins$metrics,
     oauth2TokenParser: typeof plugins$oauth2TokenParser,
-    requestExpiry: typeof plugins$requestExpiry
+    requestExpiry: typeof plugins$requestExpiry,
+
+    pre: typeof npm$namespace$plugins$pre
   };
 
-  declare var npm$namespace$pre: {
-    context: typeof pre$context,
-    dedupeSlashes: typeof pre$dedupeSlashes,
-    pause: typeof pre$pause,
-    sanitizePath: typeof pre$sanitizePath,
-    reqIdHeaders: typeof pre$reqIdHeaders,
-    strictQueryParams: typeof pre$strictQueryParams,
-    userAgentConnection: typeof pre$userAgentConnection
+  declare var npm$namespace$plugins$pre: {
+    context: typeof plugins$pre$context,
+    dedupeSlashes: typeof plugins$pre$dedupeSlashes,
+    pause: typeof plugins$pre$pause,
+    sanitizePath: typeof plugins$pre$sanitizePath,
+    reqIdHeaders: typeof plugins$pre$reqIdHeaders,
+    strictQueryParams: typeof plugins$pre$strictQueryParams,
+    userAgentConnection: typeof plugins$pre$userAgentConnection
   };
 
   /**
    * Provide req.set(key, val) and req.get(key) methods for setting and retrieving context to a specific request.
    */
-  declare function pre$context(): RequestHandler;
+  declare function plugins$pre$context(): RequestHandler;
 
-  declare function pre$dedupeSlashes(): RequestHandler;
+  declare function plugins$pre$dedupeSlashes(): RequestHandler;
 
   /**
    * This pre handler fixes issues with node hanging when an asyncHandler is used prior to bodyParser.
    */
-  declare function pre$pause(): RequestHandler;
+  declare function plugins$pre$pause(): RequestHandler;
 
   /**
    * Cleans up duplicate or trailing / on the URL
    */
-  declare function pre$sanitizePath(): RequestHandler;
+  declare function plugins$pre$sanitizePath(): RequestHandler;
 
   /**
    * Automatically reuse incoming request header as the request id.
    */
-  declare function pre$reqIdHeaders(options: {
+  declare function plugins$pre$reqIdHeaders(options: {
     headers: string[]
   }): RequestHandler;
 
   /**
    * Checks req.urls query params with strict key/val format and rejects non-strict requests with status code 400.
    */
-  declare function pre$strictQueryParams(options?: {
+  declare function plugins$pre$strictQueryParams(options?: {
     message: string
   }): RequestHandler;
 
   /**
    * Regexp to capture curl user-agents
    */
-  declare function pre$userAgentConnection(options?: {
+  declare function plugins$pre$userAgentConnection(options?: {
     userAgentRegExp: any
   }): RequestHandler;
 
@@ -1175,7 +1179,7 @@ server.param("user", function (req, res, next) {
      * req, res, route, and err objects. The output of this function will be
      * available on the `context` key in the audit object.
      */
-    pre$context?: plugins$AuditLoggerContext;
+    context?: plugins$AuditLoggerContext;
 
     /**
      * Ringbuffer which is written to if passed in
@@ -1323,7 +1327,7 @@ server.param("user", function (req, res, next) {
   declare interface plugins$UrlEncodedBodyParserOptions {
     mapParams?: boolean;
     overrideParams?: boolean;
-    plugins$bodyReader?: boolean;
+    bodyReader?: boolean;
   }
 
   /**
@@ -1340,7 +1344,7 @@ server.param("user", function (req, res, next) {
     mapParams?: boolean;
     overrideParams?: boolean;
     reviver?: (key: any, value: any) => any;
-    plugins$bodyReader?: boolean;
+    bodyReader?: boolean;
   }
 
   /**
@@ -1433,7 +1437,7 @@ server.param("user", function (req, res, next) {
 
   declare interface plugins$RequestLogger {
     properties?: any;
-    bunyan$serializers?: any;
+    serializers?: any;
     headers?: any;
     log?: any;
   }
@@ -1511,7 +1515,7 @@ server.param("user", function (req, res, next) {
 
   declare type plugins$MetricsCallback = (
     err: Error,
-    plugins$metrics: plugins$MetricsCallbackOptions,
+    metrics: plugins$MetricsCallbackOptions,
     req: Request,
     res: Response,
     route: Route
