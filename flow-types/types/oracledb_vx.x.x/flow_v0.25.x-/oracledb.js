@@ -78,10 +78,10 @@ declare module "oracledb" {
     type: string;
 
     /**
- * Release method on ILob class.
- * @remarks The cleanup() called by Release() only frees OCI error handle and Lob
-locator.  These calls acquire mutex on OCI environment handle very briefly.
- */
+     * Release method on ILob class.
+     * @remarks The cleanup() called by Release() only frees OCI error handle and Lob
+     * locator.  These calls acquire mutex on OCI environment handle very briefly.
+     */
     release?: () => void;
 
     /**
@@ -159,7 +159,7 @@ locator.  These calls acquire mutex on OCI environment handle very briefly.
     poolMin?: number,
     poolIncrement?: number,
     poolTimeout?: number
-  } & oracledb$IConnectionAttributes;
+  } & IConnectionAttributes;
 
   declare interface oracledb$IExecuteOptions {
     /**
@@ -590,7 +590,7 @@ locator.  These calls acquire mutex on OCI environment handle very briefly.
      * @see {@link https://jsao.io/2015/03/making-a-wrapper-module-for-the-node-js-driver-for-oracle-database/}
      * @see {@link https://github.com/OraOpenSource/orawrap}
      */
-    oracledb$getConnection(
+    getConnection(
       callback: (err: any, connection: oracledb$IConnection) => void
     ): void,
 
@@ -601,7 +601,7 @@ locator.  These calls acquire mutex on OCI environment handle very briefly.
      * @see {@link https://jsao.io/2015/03/making-a-wrapper-module-for-the-node-js-driver-for-oracle-database/}
      * @see {@link https://github.com/OraOpenSource/orawrap}
      */
-    oracledb$getConnection(): oracledb$IPromise<oracledb$IConnection>,
+    getConnection(): oracledb$IPromise<oracledb$IConnection>,
 
     /**
      * An alias for IConnectionPool.close().
@@ -956,5 +956,5 @@ locator.  These calls acquire mutex on OCI environment handle very briefly.
     connectionAttributes: oracledb$IConnectionAttributes
   ): oracledb$IPromise<oracledb$IConnection>;
 
-  declare module.exports: typeof oracledb;
+  declare export default typeof oracledb;
 }
