@@ -1,26 +1,30 @@
 declare module "gapi.client.playmoviespartner" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Google Play Movies Partner API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "playmoviespartner",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "playmoviespartner",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: playmoviespartner$playmoviespartner$AccountsResource;
+  declare var gapi$client$accounts: playmoviespartner$AccountsResource;
 
-  declare interface playmoviespartner$Avail {
+  declare interface gapi$client$playmoviespartner$Avail {
     /**
      * Other identifier referring to the Edit, as defined by partner.
      * Example: "GOOGLER_2006"
@@ -252,11 +256,11 @@ declare module "gapi.client.playmoviespartner" {
     workType?: string;
   }
 
-  declare interface playmoviespartner$ListAvailsResponse {
+  declare interface gapi$client$playmoviespartner$ListAvailsResponse {
     /**
      * List of Avails that match the request criteria.
      */
-    avails?: playmoviespartner$Avail[];
+    avails?: gapi$client$playmoviespartner$Avail[];
 
     /**
      * See _List methods rules_ for info about this field.
@@ -269,7 +273,7 @@ declare module "gapi.client.playmoviespartner" {
     totalSize?: number;
   }
 
-  declare interface playmoviespartner$ListOrdersResponse {
+  declare interface gapi$client$playmoviespartner$ListOrdersResponse {
     /**
      * See _List methods rules_ for info about this field.
      */
@@ -286,7 +290,7 @@ declare module "gapi.client.playmoviespartner" {
     totalSize?: number;
   }
 
-  declare interface playmoviespartner$ListStoreInfosResponse {
+  declare interface gapi$client$playmoviespartner$ListStoreInfosResponse {
     /**
      * See 'List methods rules' for info about this field.
      */
@@ -303,7 +307,7 @@ declare module "gapi.client.playmoviespartner" {
     totalSize?: number;
   }
 
-  declare interface playmoviespartner$Order {
+  declare interface gapi$client$playmoviespartner$Order {
     /**
      * Timestamp when the Order was approved.
      */
@@ -444,7 +448,7 @@ declare module "gapi.client.playmoviespartner" {
     videoId?: string;
   }
 
-  declare interface playmoviespartner$StoreInfo {
+  declare interface gapi$client$playmoviespartner$StoreInfo {
     /**
      * Audio tracks available for this Edit.
      */
@@ -598,7 +602,7 @@ declare module "gapi.client.playmoviespartner" {
     videoId?: string;
   }
 
-  declare interface playmoviespartner$AvailsResource {
+  declare interface gapi$client$playmoviespartner$AvailsResource {
     /**
      * Get an Avail given its avail group id and avail id.
      */
@@ -677,7 +681,7 @@ declare module "gapi.client.playmoviespartner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<playmoviespartner$Avail>;
+    }): Request<gapi$client$playmoviespartner$Avail>;
 
     /**
      * List Avails owned or managed by the partner.
@@ -806,10 +810,10 @@ declare module "gapi.client.playmoviespartner" {
        * Filter Avails that match any of the given `video_id`s.
        */
       videoIds?: string
-    }): Request<playmoviespartner$ListAvailsResponse>;
+    }): Request<gapi$client$playmoviespartner$ListAvailsResponse>;
   }
 
-  declare interface playmoviespartner$OrdersResource {
+  declare interface gapi$client$playmoviespartner$OrdersResource {
     /**
      * Get an Order given its id.
      *
@@ -891,7 +895,7 @@ declare module "gapi.client.playmoviespartner" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<playmoviespartner$Order>;
+    }): Request<gapi$client$playmoviespartner$Order>;
 
     /**
      * List Orders owned or managed by the partner.
@@ -1010,10 +1014,10 @@ declare module "gapi.client.playmoviespartner" {
        * Filter Orders that match any of the given `video_id`s.
        */
       videoIds?: string
-    }): Request<playmoviespartner$ListOrdersResponse>;
+    }): Request<gapi$client$playmoviespartner$ListOrdersResponse>;
   }
 
-  declare interface playmoviespartner$CountryResource {
+  declare interface gapi$client$playmoviespartner$CountryResource {
     /**
      * Get a StoreInfo given its video id and country.
      *
@@ -1100,10 +1104,10 @@ declare module "gapi.client.playmoviespartner" {
        * REQUIRED. Video ID.
        */
       videoId: string
-    }): Request<playmoviespartner$StoreInfo>;
+    }): Request<gapi$client$playmoviespartner$StoreInfo>;
   }
 
-  declare interface playmoviespartner$StoreInfosResource {
+  declare interface gapi$client$playmoviespartner$StoreInfosResource {
     /**
      * List StoreInfos owned or managed by the partner.
      *
@@ -1234,13 +1238,13 @@ declare module "gapi.client.playmoviespartner" {
        * Filter StoreInfos that match any of the given `video_id`s.
        */
       videoIds?: string
-    }): Request<playmoviespartner$ListStoreInfosResponse>;
-    country: playmoviespartner$CountryResource;
+    }): Request<gapi$client$playmoviespartner$ListStoreInfosResponse>;
+    country: gapi$client$playmoviespartner$CountryResource;
   }
 
-  declare interface playmoviespartner$AccountsResource {
-    avails: playmoviespartner$AvailsResource;
-    orders: playmoviespartner$OrdersResource;
-    storeInfos: playmoviespartner$StoreInfosResource;
+  declare interface gapi$client$playmoviespartner$AccountsResource {
+    avails: gapi$client$playmoviespartner$AvailsResource;
+    orders: gapi$client$playmoviespartner$OrdersResource;
+    storeInfos: gapi$client$playmoviespartner$StoreInfosResource;
   }
 }
