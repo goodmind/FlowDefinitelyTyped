@@ -1,5 +1,5 @@
 declare module "showdown" {
-  declare module.exports: typeof Showdown;
+  declare export default typeof Showdown;
 
   declare var npm$namespace$Showdown: {
     setOption: typeof Showdown$setOption,
@@ -45,7 +45,7 @@ declare module "showdown" {
      * exactly as if it were making use of string.replace (internally it does this actually).
      */
     replace?: any
-  } & Showdown$Extension;
+  } & Extension;
 
   /**
    * If you'd just like to do everything yourself,you can specify a filter property.
@@ -57,7 +57,7 @@ declare module "showdown" {
       converter: Showdown$Converter,
       options?: Showdown$ConverterOptions
     ) => string
-  } & Showdown$Extension;
+  } & Extension;
 
   /**
    * Defines a plugin/extension
@@ -68,8 +68,8 @@ declare module "showdown" {
    *
    * Each extension can provide two combinations of interfaces for showdown.
    */
-  declare type Showdown$ShowdownExtension = {} & Showdown$RegexReplaceExtension &
-    Showdown$FilterExtension;
+  declare type Showdown$ShowdownExtension = {} & RegexReplaceExtension &
+    FilterExtension;
 
   declare interface Showdown$ConverterExtensions {
     language: Showdown$ShowdownExtension[];
@@ -308,7 +308,7 @@ declare module "showdown" {
 
   declare type Showdown$ConverterOptions = {
     extensions?: string | string[]
-  } & Showdown$ShowdownOptions;
+  } & ShowdownOptions;
 
   declare interface Showdown$Converter {
     /**
@@ -330,32 +330,26 @@ declare module "showdown" {
      * @param optionKey
      * @param value
      */
-    Showdown$setOption(optionKey: string, value: any): void;
+    setOption(optionKey: string, value: any): void;
 
     /**
      * Get the option of this Converter instance.
      * @param optionKey
      */
-    Showdown$getOption(optionKey: string): any;
+    getOption(optionKey: string): any;
 
     /**
      * Get the options of this Converter instance.
      */
-    Showdown$getOptions(): Showdown$ShowdownOptions;
+    getOptions(): Showdown$ShowdownOptions;
 
     /**
      * Add extension to THIS converter.
      * @param extension
      * @param name
      */
-    addExtension(
-      Showdown$extension: Showdown$ShowdownExtension,
-      name: string
-    ): void;
-    addExtension(
-      Showdown$extension: Showdown$ShowdownExtension[],
-      name: string
-    ): void;
+    addExtension(extension: Showdown$ShowdownExtension, name: string): void;
+    addExtension(extension: Showdown$ShowdownExtension[], name: string): void;
 
     /**
      * Use a global registered extension with THIS converter
@@ -367,7 +361,7 @@ declare module "showdown" {
      * Get all extensions.
      * @return all extensions.
      */
-    Showdown$getAllExtensions(): Showdown$ConverterExtensions;
+    getAllExtensions(): Showdown$ConverterExtensions;
 
     /**
      * Remove an extension from THIS converter.
@@ -376,7 +370,7 @@ declare module "showdown" {
      * and specify the extensions you wish to use.
      * @param extensions
      */
-    Showdown$removeExtension(
+    removeExtension(
       extensions: Showdown$ShowdownExtension[] | Showdown$ShowdownExtension
     ): void;
 
@@ -384,7 +378,7 @@ declare module "showdown" {
      * Set a "local" flavor for THIS Converter instance
      * @param flavor name
      */
-    Showdown$setFlavor(
+    setFlavor(
       name: "github" | "original" | "ghost" | "vanilla" | "allOn"
     ): void;
 
@@ -462,7 +456,7 @@ declare module "showdown" {
    */
   declare function Showdown$extension(
     name: string,
-    Showdown$extension:
+    extension:
       | (() => Showdown$ShowdownExtension)
       | (() => Showdown$ShowdownExtension[])
       | Showdown$ShowdownExtension
@@ -493,7 +487,7 @@ declare module "showdown" {
    */
   declare function Showdown$extension(
     name: string,
-    Showdown$extension:
+    extension:
       | (() => Showdown$ShowdownExtension)
       | (() => Showdown$ShowdownExtension[])
       | Showdown$ShowdownExtension
