@@ -9,7 +9,7 @@ declare module "through2-concurrent" {
   ): TransformStream;
 
   declare function through2Concurrent(
-    opts?: through2Concurrent$through2Concurrent$Through2ConcurrentOptions,
+    opts?: through2Concurrent$Through2ConcurrentOptions,
     transform?: TransformFunction,
     flush?: FlushCallback
   ): TransformStream;
@@ -32,5 +32,5 @@ declare module "through2-concurrent" {
     flush?: FlushCallback
   ): TransformStream;
 
-  declare module.exports: typeof through2Concurrent;
+  declare export default typeof through2Concurrent;
 }
