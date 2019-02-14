@@ -1,5 +1,5 @@
 declare module "riotcontrol" {
-  declare module.exports: typeof RiotControl;
+  declare export default typeof RiotControl;
 
   declare var npm$namespace$RiotControl: {
     addStore: typeof RiotControl$addStore,
@@ -10,10 +10,10 @@ declare module "riotcontrol" {
     _stores: typeof RiotControl$_stores
   };
   declare interface RiotControl$Store {
-    RiotControl$on(events: string, fn: Function): RiotControl$Store;
-    RiotControl$one(name: string, fn: Function): RiotControl$Store;
-    RiotControl$off(events: string, fn?: Function): RiotControl$Store;
-    RiotControl$trigger(name: string, ...args: any[]): RiotControl$Store;
+    on(events: string, fn: Function): RiotControl$Store;
+    one(name: string, fn: Function): RiotControl$Store;
+    off(events: string, fn?: Function): RiotControl$Store;
+    trigger(name: string, ...args: any[]): RiotControl$Store;
   }
 
   declare var RiotControl$_stores: RiotControl$Store[];
