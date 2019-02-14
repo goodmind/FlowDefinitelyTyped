@@ -1,6 +1,6 @@
 declare module "jsonquery" {
   declare function jsonquery<T>(
-    query: jsonquery$jsonquery$Query<T>
+    query: jsonquery$Query<T>
   ): NodeJS.ReadWriteStream;
 
   declare var npm$namespace$jsonquery: {
@@ -49,5 +49,5 @@ declare module "jsonquery" {
     T,
     <P>(P) => $ElementType<T, P> | jsonquery$BaseCondition<$ElementType<T, P>>
   >;
-  declare module.exports: typeof jsonquery;
+  declare export default typeof jsonquery;
 }
