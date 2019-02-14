@@ -13,5 +13,5 @@ declare module "debounce" {
     flush(): void
   };
 
-  declare module.exports: typeof _debounce;
+  declare export default typeof _debounce;
 }
