@@ -1,10 +1,10 @@
 declare module "chmodr" {
   import type { URL } from "url";
 
-  declare module.exports: typeof chmodr;
+  declare export default typeof chmodr;
 
   declare function chmodr(
-    path: chmodr$chmodr$PathLike,
+    path: chmodr$PathLike,
     mode: string | number,
     callback: (err: NodeJS.ErrnoException) => void
   ): void;
