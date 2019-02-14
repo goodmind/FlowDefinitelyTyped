@@ -15,5 +15,5 @@ declare module "capitalize" {
    */
   declare function capitalize$words(input: string): string;
 
-  declare module.exports: typeof capitalize;
+  declare export default typeof capitalize;
 }
