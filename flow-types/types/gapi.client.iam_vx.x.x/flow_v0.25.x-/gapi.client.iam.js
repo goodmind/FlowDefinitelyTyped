@@ -1,39 +1,46 @@
 declare module "gapi.client.iam" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    organizations: typeof client$organizations,
-    permissions: typeof client$permissions,
-    projects: typeof client$projects,
-    roles: typeof client$roles
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    organizations: typeof gapi$client$organizations,
+    permissions: typeof gapi$client$permissions,
+    projects: typeof gapi$client$projects,
+    roles: typeof gapi$client$roles
   };
 
   /**
    * Load Google Identity and Access Management (IAM) API v1
    */
-  declare function client$load(name: "iam", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "iam",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "iam",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$organizations: iam$iam$OrganizationsResource;
+  declare var gapi$client$organizations: iam$OrganizationsResource;
 
-  declare var client$permissions: iam$iam$PermissionsResource;
+  declare var gapi$client$permissions: iam$PermissionsResource;
 
-  declare var client$projects: iam$iam$ProjectsResource;
+  declare var gapi$client$projects: iam$ProjectsResource;
 
-  declare var client$roles: iam$iam$RolesResource;
+  declare var gapi$client$roles: iam$RolesResource;
 
-  declare interface iam$AuditData {
+  declare interface gapi$client$iam$AuditData {
     /**
      * Policy delta between the original policy and the newly set policy.
      */
     policyDelta?: iam$PolicyDelta;
   }
 
-  declare interface iam$Binding {
+  declare interface gapi$client$iam$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -68,7 +75,7 @@ declare module "gapi.client.iam" {
     role?: string;
   }
 
-  declare interface iam$BindingDelta {
+  declare interface gapi$client$iam$BindingDelta {
     /**
      * The action that was performed on a Binding.
      * Required
@@ -98,7 +105,7 @@ declare module "gapi.client.iam" {
     role?: string;
   }
 
-  declare interface iam$CreateRoleRequest {
+  declare interface gapi$client$iam$CreateRoleRequest {
     /**
      * The Role resource to create.
      */
@@ -110,7 +117,7 @@ declare module "gapi.client.iam" {
     roleId?: string;
   }
 
-  declare interface iam$CreateServiceAccountKeyRequest {
+  declare interface gapi$client$iam$CreateServiceAccountKeyRequest {
     /**
      * Which type of key and algorithm to use for the key.
      * The default is currently a 2K RSA key.  However this may change in the
@@ -125,7 +132,7 @@ declare module "gapi.client.iam" {
     privateKeyType?: string;
   }
 
-  declare interface iam$CreateServiceAccountRequest {
+  declare interface gapi$client$iam$CreateServiceAccountRequest {
     /**
      * Required. The account id that is used to generate the service account
      * email address and a stable unique id. It is unique within a project,
@@ -142,7 +149,7 @@ declare module "gapi.client.iam" {
     serviceAccount?: iam$ServiceAccount;
   }
 
-  declare interface iam$Expr {
+  declare interface gapi$client$iam$Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -172,7 +179,7 @@ declare module "gapi.client.iam" {
     title?: string;
   }
 
-  declare interface iam$ListRolesResponse {
+  declare interface gapi$client$iam$ListRolesResponse {
     /**
      * To retrieve the next page of results, set
      * `ListRolesRequest.page_token` to this value.
@@ -182,17 +189,17 @@ declare module "gapi.client.iam" {
     /**
      * The Roles defined on this resource.
      */
-    client$roles?: iam$Role[];
+    roles?: iam$Role[];
   }
 
-  declare interface iam$ListServiceAccountKeysResponse {
+  declare interface gapi$client$iam$ListServiceAccountKeysResponse {
     /**
      * The public keys for the service account.
      */
     keys?: iam$ServiceAccountKey[];
   }
 
-  declare interface iam$ListServiceAccountsResponse {
+  declare interface gapi$client$iam$ListServiceAccountsResponse {
     /**
      * The list of matching service accounts.
      */
@@ -206,7 +213,7 @@ declare module "gapi.client.iam" {
     nextPageToken?: string;
   }
 
-  declare interface iam$Permission {
+  declare interface gapi$client$iam$Permission {
     /**
      * The current custom role support level.
      */
@@ -238,12 +245,12 @@ declare module "gapi.client.iam" {
     title?: string;
   }
 
-  declare interface iam$Policy {
+  declare interface gapi$client$iam$Policy {
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: iam$Binding[];
+    bindings?: gapi$client$iam$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -265,14 +272,14 @@ declare module "gapi.client.iam" {
     version?: number;
   }
 
-  declare interface iam$PolicyDelta {
+  declare interface gapi$client$iam$PolicyDelta {
     /**
      * The delta for Bindings between two policies.
      */
-    bindingDeltas?: iam$BindingDelta[];
+    bindingDeltas?: gapi$client$iam$BindingDelta[];
   }
 
-  declare interface iam$QueryGrantableRolesRequest {
+  declare interface gapi$client$iam$QueryGrantableRolesRequest {
     /**
      * Required. The full resource name to query from the list of grantable roles.
      *
@@ -295,7 +302,7 @@ declare module "gapi.client.iam" {
     view?: string;
   }
 
-  declare interface iam$QueryGrantableRolesResponse {
+  declare interface gapi$client$iam$QueryGrantableRolesResponse {
     /**
      * To retrieve the next page of results, set
      * `QueryGrantableRolesRequest.page_token` to this value.
@@ -305,10 +312,10 @@ declare module "gapi.client.iam" {
     /**
      * The list of matching roles.
      */
-    client$roles?: iam$Role[];
+    roles?: iam$Role[];
   }
 
-  declare interface iam$QueryTestablePermissionsRequest {
+  declare interface gapi$client$iam$QueryTestablePermissionsRequest {
     /**
      * Required. The full resource name to query from the list of testable
      * permissions.
@@ -331,7 +338,7 @@ declare module "gapi.client.iam" {
     pageToken?: string;
   }
 
-  declare interface iam$QueryTestablePermissionsResponse {
+  declare interface gapi$client$iam$QueryTestablePermissionsResponse {
     /**
      * To retrieve the next page of results, set
      * `QueryTestableRolesRequest.page_token` to this value.
@@ -341,10 +348,10 @@ declare module "gapi.client.iam" {
     /**
      * The Permissions testable on the requested resource.
      */
-    client$permissions?: iam$Permission[];
+    permissions?: gapi$client$iam$Permission[];
   }
 
-  declare interface iam$Role {
+  declare interface gapi$client$iam$Role {
     /**
      * The current deleted state of the role. This field is read only.
      * It will be ignored in calls to CreateRole and UpdateRole.
@@ -389,7 +396,7 @@ declare module "gapi.client.iam" {
     title?: string;
   }
 
-  declare interface iam$ServiceAccount {
+  declare interface gapi$client$iam$ServiceAccount {
     /**
      * Optional. A user-specified description of the service account.  Must be
      * fewer than 100 UTF-8 bytes.
@@ -420,10 +427,10 @@ declare module "gapi.client.iam" {
     name?: string;
 
     /**
- * @OutputOnly . The OAuth2 client id for the service account.
-This is used in conjunction with the OAuth2 clientconfig API to make
-three legged OAuth2 (3LO) flows to access the data of Google users.
- */
+     * @OutputOnly . The OAuth2 client id for the service account.
+     * This is used in conjunction with the OAuth2 clientconfig API to make
+     * three legged OAuth2 (3LO) flows to access the data of Google users.
+     */
     oauth2ClientId?: string;
 
     /**
@@ -437,7 +444,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
     uniqueId?: string;
   }
 
-  declare interface iam$ServiceAccountKey {
+  declare interface gapi$client$iam$ServiceAccountKey {
     /**
      * Specifies the algorithm (and possibly key size) for the key.
      */
@@ -486,24 +493,24 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
     validBeforeTime?: string;
   }
 
-  declare interface iam$SetIamPolicyRequest {
+  declare interface gapi$client$iam$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: iam$Policy;
+    policy?: gapi$client$iam$Policy;
   }
 
-  declare interface iam$SignBlobRequest {
+  declare interface gapi$client$iam$SignBlobRequest {
     /**
      * The bytes to sign.
      */
     bytesToSign?: string;
   }
 
-  declare interface iam$SignBlobResponse {
+  declare interface gapi$client$iam$SignBlobResponse {
     /**
      * The id of the key used to sign the blob.
      */
@@ -515,14 +522,14 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
     signature?: string;
   }
 
-  declare interface iam$SignJwtRequest {
+  declare interface gapi$client$iam$SignJwtRequest {
     /**
      * The JWT payload to sign, a JSON JWT Claim set.
      */
     payload?: string;
   }
 
-  declare interface iam$SignJwtResponse {
+  declare interface gapi$client$iam$SignJwtResponse {
     /**
      * The id of the key used to sign the JWT.
      */
@@ -534,32 +541,32 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
     signedJwt?: string;
   }
 
-  declare interface iam$TestIamPermissionsRequest {
+  declare interface gapi$client$iam$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
      * information see
      * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
      */
-    client$permissions?: string[];
+    permissions?: string[];
   }
 
-  declare interface iam$TestIamPermissionsResponse {
+  declare interface gapi$client$iam$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
      */
-    client$permissions?: string[];
+    permissions?: string[];
   }
 
-  declare interface iam$UndeleteRoleRequest {
+  declare interface gapi$client$iam$UndeleteRoleRequest {
     /**
      * Used to perform a consistent read-modify-write.
      */
     etag?: string;
   }
 
-  declare interface iam$RolesResource {
+  declare interface gapi$client$iam$RolesResource {
     /**
      * Creates a new Role.
      */
@@ -635,7 +642,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Soft deletes a role. The role is suspended and cannot be used to create new
@@ -723,7 +730,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Gets a Role definition.
@@ -801,7 +808,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Lists the Roles defined on a resource.
@@ -899,7 +906,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Optional view for the returned Role objects.
        */
       view?: string
-    }): Request<iam$ListRolesResponse>;
+    }): Request<gapi$client$iam$ListRolesResponse>;
 
     /**
      * Updates a Role definition.
@@ -982,7 +989,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Undelete a Role, bringing it back in its previous state.
@@ -1059,7 +1066,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Creates a new Role.
@@ -1136,7 +1143,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Soft deletes a role. The role is suspended and cannot be used to create new
@@ -1224,7 +1231,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Gets a Role definition.
@@ -1302,7 +1309,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Lists the Roles defined on a resource.
@@ -1400,7 +1407,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Optional view for the returned Role objects.
        */
       view?: string
-    }): Request<iam$ListRolesResponse>;
+    }): Request<gapi$client$iam$ListRolesResponse>;
 
     /**
      * Updates a Role definition.
@@ -1483,7 +1490,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Undelete a Role, bringing it back in its previous state.
@@ -1560,7 +1567,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Gets a Role definition.
@@ -1638,7 +1645,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Role>;
+    }): Request<gapi$client$iam$Role>;
 
     /**
      * Lists the Roles defined on a resource.
@@ -1736,7 +1743,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Optional view for the returned Role objects.
        */
       view?: string
-    }): Request<iam$ListRolesResponse>;
+    }): Request<gapi$client$iam$ListRolesResponse>;
 
     /**
      * Queries roles that can be granted on a particular resource.
@@ -1808,14 +1815,14 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$QueryGrantableRolesResponse>;
+    }): Request<gapi$client$iam$QueryGrantableRolesResponse>;
   }
 
-  declare interface iam$OrganizationsResource {
-    client$roles: iam$RolesResource;
+  declare interface gapi$client$iam$OrganizationsResource {
+    roles: gapi$client$iam$RolesResource;
   }
 
-  declare interface iam$PermissionsResource {
+  declare interface gapi$client$iam$PermissionsResource {
     /**
      * Lists the permissions testable on a resource.
      * A permission is testable if it can be tested for an identity on a resource.
@@ -1885,10 +1892,10 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$QueryTestablePermissionsResponse>;
+    }): Request<gapi$client$iam$QueryTestablePermissionsResponse>;
   }
 
-  declare interface iam$KeysResource {
+  declare interface gapi$client$iam$KeysResource {
     /**
      * Creates a ServiceAccountKey
      * and returns it.
@@ -1967,7 +1974,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ServiceAccountKey>;
+    }): Request<gapi$client$iam$ServiceAccountKey>;
 
     /**
      * Deletes a ServiceAccountKey.
@@ -2133,7 +2140,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ServiceAccountKey>;
+    }): Request<gapi$client$iam$ServiceAccountKey>;
 
     /**
      * Lists ServiceAccountKeys.
@@ -2220,10 +2227,10 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ListServiceAccountKeysResponse>;
+    }): Request<gapi$client$iam$ListServiceAccountKeysResponse>;
   }
 
-  declare interface iam$ServiceAccountsResource {
+  declare interface gapi$client$iam$ServiceAccountsResource {
     /**
      * Creates a ServiceAccount
      * and returns it.
@@ -2299,7 +2306,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ServiceAccount>;
+    }): Request<gapi$client$iam$ServiceAccount>;
 
     /**
      * Deletes a ServiceAccount.
@@ -2457,7 +2464,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ServiceAccount>;
+    }): Request<gapi$client$iam$ServiceAccount>;
 
     /**
      * Returns the IAM access control policy for a
@@ -2534,7 +2541,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Policy>;
+    }): Request<gapi$client$iam$Policy>;
 
     /**
      * Lists ServiceAccounts for a project.
@@ -2624,7 +2631,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ListServiceAccountsResponse>;
+    }): Request<gapi$client$iam$ListServiceAccountsResponse>;
 
     /**
      * Sets the IAM access control policy for a
@@ -2701,7 +2708,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$Policy>;
+    }): Request<gapi$client$iam$Policy>;
 
     /**
      * Signs a blob using a service account's system-managed private key.
@@ -2780,7 +2787,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$SignBlobResponse>;
+    }): Request<gapi$client$iam$SignBlobResponse>;
 
     /**
      * Signs a JWT using a service account's system-managed private key.
@@ -2863,7 +2870,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$SignJwtResponse>;
+    }): Request<gapi$client$iam$SignJwtResponse>;
 
     /**
      * Tests the specified permissions against the IAM access control policy
@@ -2940,7 +2947,7 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$TestIamPermissionsResponse>;
+    }): Request<gapi$client$iam$TestIamPermissionsResponse>;
 
     /**
      * Updates a ServiceAccount.
@@ -3027,12 +3034,12 @@ three legged OAuth2 (3LO) flows to access the data of Google users.
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<iam$ServiceAccount>;
-    keys: iam$KeysResource;
+    }): Request<gapi$client$iam$ServiceAccount>;
+    keys: gapi$client$iam$KeysResource;
   }
 
-  declare interface iam$ProjectsResource {
-    client$roles: iam$RolesResource;
-    serviceAccounts: iam$ServiceAccountsResource;
+  declare interface gapi$client$iam$ProjectsResource {
+    roles: gapi$client$iam$RolesResource;
+    serviceAccounts: gapi$client$iam$ServiceAccountsResource;
   }
 }
