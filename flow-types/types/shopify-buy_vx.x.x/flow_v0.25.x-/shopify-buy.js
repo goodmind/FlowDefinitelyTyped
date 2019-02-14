@@ -7,9 +7,9 @@ declare export function ShopifyBuy$buildClient(
 ): ShopifyBuy$Client;
 
 export interface ShopifyBuy$Client {
-  product: ShopifyBuy$ShopifyBuy$ProductResource;
-  collection: ShopifyBuy$ShopifyBuy$CollectionResource;
-  checkout: ShopifyBuy$ShopifyBuy$CheckoutResource;
+  product: ShopifyBuy$ProductResource;
+  collection: ShopifyBuy$CollectionResource;
+  checkout: ShopifyBuy$CheckoutResource;
   shop: ShopifyBuy$ShopResource;
   image: ShopifyBuy$Image;
   fetchNextPage<T: ShopifyBuy$GraphModel>(nextArray: T[]): T[];
@@ -168,7 +168,7 @@ export type ShopifyBuy$Product = {
    * The product’s vendor name
    */
   vendor: string
-} & ShopifyBuy$GraphModel;
+} & GraphModel;
 
 export type ShopifyBuy$ProductVariant = {
   /**
@@ -232,7 +232,7 @@ export type ShopifyBuy$ProductVariant = {
    */
   title: string,
   checkoutUrl(quantitiy: number): string
-} & ShopifyBuy$GraphModel;
+} & GraphModel;
 
 export interface ShopifyBuy$Option {
   /**
@@ -302,7 +302,7 @@ export type ShopifyBuy$Cart = {
    * Example: two items have been added to the cart that cost $1.25 then the subtotal will be 2.50
    */
   subtotalPrice: string
-} & ShopifyBuy$GraphModel;
+} & GraphModel;
 
 export type ShopifyBuy$LineItem = {
   /**
@@ -362,7 +362,7 @@ export type ShopifyBuy$LineItem = {
    * Title of variant.
    */
   variant_title: string
-} & ShopifyBuy$GraphModel;
+} & GraphModel;
 
 export interface ShopifyBuy$Item {
   variant: ShopifyBuy$ProductVariant;
@@ -425,7 +425,7 @@ export type ShopifyBuy$Image = {
   product_id: string,
   src: string,
   variant_ids: Array<string>
-} & ShopifyBuy$GraphModel;
+} & GraphModel;
 
 export type ShopifyBuy$ImageVariant = {
   name: string,
@@ -441,7 +441,7 @@ export type ShopifyBuy$ImageVariant = {
     image: ShopifyBuy$Image,
     options: ShopifyBuy$ImageOptions
   ): string
-} & ShopifyBuy$Image;
+} & Image;
 
 export interface ShopifyBuy$ImageOptions {
   maxWidth: number;
