@@ -1,52 +1,59 @@
 declare module "digibyte" {
+  declare var npm$namespace$crypto: {
+    BN: typeof crypto$BN,
+    Signature: typeof crypto$Signature,
+    ECDSA: typeof npm$namespace$crypto$ECDSA,
+    Hash: typeof npm$namespace$crypto$Hash,
+    Random: typeof npm$namespace$crypto$Random
+  };
   declare class crypto$BN {}
 
-  declare var npm$namespace$ECDSA: {
-    sign: typeof ECDSA$sign,
-    verify: typeof ECDSA$verify
+  declare var npm$namespace$crypto$ECDSA: {
+    sign: typeof crypto$ECDSA$sign,
+    verify: typeof crypto$ECDSA$verify
   };
-  declare function ECDSA$sign(
+  declare function crypto$ECDSA$sign(
     message: Buffer,
     key: PrivateKey
   ): crypto$Signature;
 
-  declare function ECDSA$verify(
+  declare function crypto$ECDSA$verify(
     hashbuf: Buffer,
     sig: crypto$Signature,
     pubkey: PublicKey,
     endian?: "little"
   ): boolean;
 
-  declare var npm$namespace$Hash: {
-    sha1: typeof Hash$sha1,
-    sha256: typeof Hash$sha256,
-    sha256sha256: typeof Hash$sha256sha256,
-    sha256ripemd160: typeof Hash$sha256ripemd160,
-    sha512: typeof Hash$sha512,
-    ripemd160: typeof Hash$ripemd160,
-    sha256hmac: typeof Hash$sha256hmac,
-    sha512hmac: typeof Hash$sha512hmac
+  declare var npm$namespace$crypto$Hash: {
+    sha1: typeof crypto$Hash$sha1,
+    sha256: typeof crypto$Hash$sha256,
+    sha256sha256: typeof crypto$Hash$sha256sha256,
+    sha256ripemd160: typeof crypto$Hash$sha256ripemd160,
+    sha512: typeof crypto$Hash$sha512,
+    ripemd160: typeof crypto$Hash$ripemd160,
+    sha256hmac: typeof crypto$Hash$sha256hmac,
+    sha512hmac: typeof crypto$Hash$sha512hmac
   };
-  declare function Hash$sha1(buffer: Buffer): Buffer;
+  declare function crypto$Hash$sha1(buffer: Buffer): Buffer;
 
-  declare function Hash$sha256(buffer: Buffer): Buffer;
+  declare function crypto$Hash$sha256(buffer: Buffer): Buffer;
 
-  declare function Hash$sha256sha256(buffer: Buffer): Buffer;
+  declare function crypto$Hash$sha256sha256(buffer: Buffer): Buffer;
 
-  declare function Hash$sha256ripemd160(buffer: Buffer): Buffer;
+  declare function crypto$Hash$sha256ripemd160(buffer: Buffer): Buffer;
 
-  declare function Hash$sha512(buffer: Buffer): Buffer;
+  declare function crypto$Hash$sha512(buffer: Buffer): Buffer;
 
-  declare function Hash$ripemd160(buffer: Buffer): Buffer;
+  declare function crypto$Hash$ripemd160(buffer: Buffer): Buffer;
 
-  declare function Hash$sha256hmac(data: Buffer, key: Buffer): Buffer;
+  declare function crypto$Hash$sha256hmac(data: Buffer, key: Buffer): Buffer;
 
-  declare function Hash$sha512hmac(data: Buffer, key: Buffer): Buffer;
+  declare function crypto$Hash$sha512hmac(data: Buffer, key: Buffer): Buffer;
 
-  declare var npm$namespace$Random: {
-    getRandomBuffer: typeof Random$getRandomBuffer
+  declare var npm$namespace$crypto$Random: {
+    getRandomBuffer: typeof crypto$Random$getRandomBuffer
   };
-  declare function Random$getRandomBuffer(size: number): Buffer;
+  declare function crypto$Random$getRandomBuffer(size: number): Buffer;
 
   declare class crypto$Signature {
     static fromDER(sig: Buffer): crypto$Signature;
@@ -54,6 +61,12 @@ declare module "digibyte" {
     SIGHASH_ALL: number;
     toString(): string;
   }
+
+  declare var npm$namespace$Transaction: {
+    UnspentOutput: typeof Transaction$UnspentOutput,
+    Output: typeof Transaction$Output,
+    Input: typeof Transaction$Input
+  };
   declare class Transaction$UnspentOutput {
     static fromObject(o: { [key: string]: any }): Transaction$UnspentOutput;
     address: Address;
@@ -84,27 +97,27 @@ declare module "digibyte" {
     output: Transaction$Output;
   }
   declare export class Transaction {
-    inputs: Transaction$Transaction$Input[];
-    outputs: Transaction$Transaction$Output[];
+    inputs: Transaction$Input[];
+    outputs: Transaction$Output[];
     id: string;
     hash: string;
     nid: string;
     constructor(serialized?: any): this;
-    from(utxos: Transaction$Transaction$UnspentOutput[]): this;
+    from(utxos: Transaction$UnspentOutput[]): this;
     to(address: Address[] | Address | string, amount: number): this;
     change(address: Address | string): this;
     fee(amount: number): this;
     feePerKb(amount: number): this;
     sign(privateKey: PrivateKey | string): this;
-    applySignature(sig: crypto$crypto$Signature): this;
-    addInput(input: Transaction$Transaction$Input): this;
-    addOutput(output: Transaction$Transaction$Output): this;
+    applySignature(sig: crypto$Signature): this;
+    addInput(input: Transaction$Input): this;
+    addOutput(output: Transaction$Output): this;
     addData(value: Buffer): this;
     lockUntilDate(time: Date | number): this;
     lockUntilBlockHeight(height: number): this;
     hasWitnesses(): boolean;
     getFee(): number;
-    getChangeOutput(): Transaction$Transaction$Output | null;
+    getChangeOutput(): Transaction$Output | null;
     getLockTime(): Date | number;
     verify(): string | boolean;
     isCoinbase(): boolean;
@@ -125,14 +138,14 @@ declare module "digibyte" {
   }
   declare export class PrivateKey {
     publicKey: PublicKey;
-    network: Networks$Networks$Network;
+    network: Networks$Network;
     toAddress(): Address;
     toPublicKey(): PublicKey;
     toString(): string;
     toObject(): { [key: string]: any };
     toJSON(): { [key: string]: any };
     toWIF(): string;
-    constructor(key?: string, network?: Networks$Networks$Network): this;
+    constructor(key?: string, network?: Networks$Network): this;
   }
   declare export class PublicKey {
     constructor(source: string): this;
@@ -155,7 +168,7 @@ declare module "digibyte" {
   }
   declare export class HDPublicKey {
     xpubkey: Buffer;
-    network: Networks$Networks$Network;
+    network: Networks$Network;
     depth: number;
     publicKey: PublicKey;
     fingerPrint: Buffer;
@@ -220,13 +233,13 @@ declare module "digibyte" {
   declare function Script$buildScriptHashOut(script: Script): Script;
 
   declare function Script$buildPublicKeyIn(
-    signature: crypto$crypto$Signature | Buffer,
+    signature: crypto$Signature | Buffer,
     sigtype: number
   ): Script;
 
   declare function Script$buildPublicKeyHashIn(
     publicKey: PublicKey,
-    signature: crypto$crypto$Signature | Buffer,
+    signature: crypto$Signature | Buffer,
     sigtype: number
   ): Script;
 
@@ -308,11 +321,11 @@ declare module "digibyte" {
 
   declare export class Address {
     hashBuffer: Buffer;
-    network: Networks$Networks$Network;
+    network: Networks$Network;
     type: string;
     constructor(
       data: Buffer | Uint8Array | string | { [key: string]: any },
-      network?: Networks$Networks$Network,
+      network?: Networks$Network,
       type?: string
     ): this;
   }
