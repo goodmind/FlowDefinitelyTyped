@@ -17,25 +17,31 @@ declare module "@ckeditor/ckeditor5-core" {
   declare export interface ComponentFactory {}
   declare export interface EditorUIView {}
 
-  declare var npm$namespace$utils: {
-    attachToForm: typeof utils$attachToForm,
-    DataApiMixin: typeof utils$DataApiMixin,
-    ElementApiMixin: typeof utils$ElementApiMixin
+  declare var npm$namespace$editor: {
+    Editor: typeof editor$Editor,
+    EditorUI: typeof editor$EditorUI,
+    utils: typeof npm$namespace$editor$utils
   };
-  declare function utils$attachToForm(
+
+  declare var npm$namespace$editor$utils: {
+    attachToForm: typeof editor$utils$attachToForm,
+    DataApiMixin: typeof editor$utils$DataApiMixin,
+    ElementApiMixin: typeof editor$utils$ElementApiMixin
+  };
+  declare function editor$utils$attachToForm(
     editor: editor$Editor & utils$ElementApi
   ): void;
 
-  declare var utils$DataApiMixin: utils$DataApi;
+  declare var editor$utils$DataApiMixin: utils$DataApi;
 
-  declare interface utils$DataApi {
+  declare interface editor$utils$DataApi {
     getData(): string;
     setData(data: string): void;
   }
 
-  declare var utils$ElementApiMixin: utils$ElementApi;
+  declare var editor$utils$ElementApiMixin: utils$ElementApi;
 
-  declare interface utils$ElementApi {
+  declare interface editor$utils$ElementApi {
     +sourceElement: HTMLElement;
     updateSourceElement(): void;
   }
@@ -43,13 +49,13 @@ declare module "@ckeditor/ckeditor5-core" {
   declare class editor$Editor mixins ckutils.Emitter, ckutils.Observable {
     commands: CommandCollection;
     config: ckutils.Config;
-    conversion: engine.conversion.Conversion;
-    data: engine.controller.DataController;
-    editing: engine.controller.EditingController;
+    conversion: engine.conversionConversion;
+    data: engine.controllerDataController;
+    editing: engine.controllerEditingController;
     isReadOnly: boolean;
     keystrokes: EditingKeystrokeHandler;
     locale: ckutils.Locale;
-    model: engine.model.Model;
+    model: engine.modelModel;
     plugins: PluginCollection<Plugin<any>>;
     state: "initializing" | "ready" | "destroyed";
     static builtinPlugins: Array<Plugin<any>>;
@@ -176,10 +182,10 @@ declare module "@ckeditor/ckeditor5-core" {
   }
   declare export class Command<T = void>
     mixins ckutils.Emitter, ckutils.Observable {
-    editor: editor$editor$Editor;
+    editor: editor$Editor;
     isEnabled: boolean;
     value: T | void;
-    constructor(editor: editor$editor$Editor): this;
+    constructor(editor: editor$Editor): this;
     destroy(): void;
     execute(): void;
     refresh(): void;
@@ -225,7 +231,7 @@ declare module "@ckeditor/ckeditor5-core" {
   }
   declare export class CommandCollection {
     constructor(): this;
-    undefined(): Iterator<[string, Command]>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<[string, Command]>;
     add(commandName: string, command: Command): void;
     commands(): IterableIterator<Command>;
     destroy(): void;
@@ -234,14 +240,14 @@ declare module "@ckeditor/ckeditor5-core" {
     names(): IterableIterator<string>;
   }
   declare export class EditingKeystrokeHandler mixins ckutils.KeystrokeHandler {
-    editor: editor$editor$Editor;
-    constructor(editor: editor$editor$Editor): this;
+    editor: editor$Editor;
+    constructor(editor: editor$Editor): this;
     set(
       keystroke: string | Array<string | number>,
       callback:
         | string
         | ((
-            keyEvtData: engine.view.observer.KeyEventData,
+            keyEvtData: engine.viewobserverKeyEventData,
             cancel: () => void
           ) => void),
       options?: {
@@ -257,7 +263,7 @@ declare module "@ckeditor/ckeditor5-core" {
           message: string
         });
     hasAny: boolean;
-    undefined(): Iterator<
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<
       ckutils.Observable & {
         message: string
       }
@@ -275,10 +281,10 @@ declare module "@ckeditor/ckeditor5-core" {
   }
   declare export class Plugin<T = void>
     mixins ckutils.Emitter, ckutils.Observable {
-    editor: editor$editor$Editor;
+    editor: editor$Editor;
     static pluginName: string;
-    static requires: Array<(editor: editor$editor$Editor) => Plugin>;
-    constructor(editor: editor$editor$Editor): this;
+    static requires: Array<(editor: editor$Editor) => Plugin>;
+    constructor(editor: editor$Editor): this;
     afterInit(): null | Promise<T>;
     destroy(): null | Promise<T>;
     init(): null | Promise<T>;
@@ -324,10 +330,12 @@ declare module "@ckeditor/ckeditor5-core" {
   }
   declare export class PluginCollection<P: Plugin<any>> {
     constructor(
-      editor: editor$editor$Editor,
-      availablePlugins?: Array<(editor: editor$editor$Editor) => P>
+      editor: editor$Editor,
+      availablePlugins?: Array<(editor: editor$Editor) => P>
     ): this;
-    undefined(): Iterator<[(editor: editor$editor$Editor) => P, P]>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<
+      [(editor: editor$Editor) => P, P]
+    >;
     destroy(): Promise<
       Array<
         P & {
@@ -335,10 +343,10 @@ declare module "@ckeditor/ckeditor5-core" {
         }
       >
     >;
-    get(key: string | ((editor: editor$editor$Editor) => P)): P | void;
+    get(key: string | ((editor: editor$Editor) => P)): P | void;
     load(
-      plugins: Array<string | ((editor: editor$editor$Editor) => P)>,
-      removePlugins?: Array<string | ((editor: editor$editor$Editor) => P)>
+      plugins: Array<string | ((editor: editor$Editor) => P)>,
+      removePlugins?: Array<string | ((editor: editor$Editor) => P)>
     ): Promise<P[]>;
   }
 }
