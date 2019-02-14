@@ -1,35 +1,39 @@
 declare module "gapi.client.admin" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    activities: typeof client$activities,
-    channels: typeof client$channels,
-    customerUsageReports: typeof client$customerUsageReports,
-    userUsageReport: typeof client$userUsageReport
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    activities: typeof gapi$client$activities,
+    channels: typeof gapi$client$channels,
+    customerUsageReports: typeof gapi$client$customerUsageReports,
+    userUsageReport: typeof gapi$client$userUsageReport
   };
 
   /**
    * Load Admin Reports API reports_v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "admin",
     version: "reports_v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "admin",
     version: "reports_v1",
     callback: () => any
   ): void;
 
-  declare var client$activities: admin$admin$ActivitiesResource;
+  declare var gapi$client$activities: admin$ActivitiesResource;
 
-  declare var client$channels: admin$admin$ChannelsResource;
+  declare var gapi$client$channels: admin$ChannelsResource;
 
-  declare var client$customerUsageReports: admin$admin$CustomerUsageReportsResource;
+  declare var gapi$client$customerUsageReports: admin$CustomerUsageReportsResource;
 
-  declare var client$userUsageReport: admin$admin$UserUsageReportResource;
+  declare var gapi$client$userUsageReport: admin$UserUsageReportResource;
 
-  declare interface admin$Activities {
+  declare interface gapi$client$admin$Activities {
     /**
      * ETag of the resource.
      */
@@ -51,7 +55,7 @@ declare module "gapi.client.admin" {
     nextPageToken?: string;
   }
 
-  declare interface admin$Activity {
+  declare interface gapi$client$admin$Activity {
     /**
      * User doing the action.
      */
@@ -173,7 +177,7 @@ declare module "gapi.client.admin" {
     ownerDomain?: string;
   }
 
-  declare interface admin$Channel {
+  declare interface gapi$client$admin$Channel {
     /**
      * The address where notifications are delivered for this channel.
      */
@@ -225,7 +229,7 @@ declare module "gapi.client.admin" {
     type?: string;
   }
 
-  declare interface admin$UsageReport {
+  declare interface gapi$client$admin$UsageReport {
     /**
      * The date to which the record belongs.
      */
@@ -302,7 +306,7 @@ declare module "gapi.client.admin" {
     }>;
   }
 
-  declare interface admin$UsageReports {
+  declare interface gapi$client$admin$UsageReports {
     /**
      * ETag of the resource.
      */
@@ -321,7 +325,7 @@ declare module "gapi.client.admin" {
     /**
      * Various application parameter records.
      */
-    usageReports?: admin$UsageReport[];
+    usageReports?: gapi$client$admin$UsageReport[];
 
     /**
      * Warnings if any.
@@ -354,7 +358,7 @@ declare module "gapi.client.admin" {
     }>;
   }
 
-  declare interface admin$ActivitiesResource {
+  declare interface gapi$client$admin$ActivitiesResource {
     /**
      * Retrieves a list of activities for a specific customer and application.
      */
@@ -445,7 +449,7 @@ declare module "gapi.client.admin" {
        * all users.
        */
       userKey: string
-    }): Request<admin$Activities>;
+    }): Request<gapi$client$admin$Activities>;
 
     /**
      * Push changes to activities
@@ -537,10 +541,10 @@ declare module "gapi.client.admin" {
        * all users.
        */
       userKey: string
-    }): Request<admin$Channel>;
+    }): Request<gapi$client$admin$Channel>;
   }
 
-  declare interface admin$ChannelsResource {
+  declare interface gapi$client$admin$ChannelsResource {
     /**
      * Stop watching resources through this channel
      */
@@ -583,7 +587,7 @@ declare module "gapi.client.admin" {
     }): Request<void>;
   }
 
-  declare interface admin$CustomerUsageReportsResource {
+  declare interface gapi$client$admin$CustomerUsageReportsResource {
     /**
      * Retrieves a report which is a collection of properties / statistics for a specific customer.
      */
@@ -643,10 +647,10 @@ declare module "gapi.client.admin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<admin$UsageReports>;
+    }): Request<gapi$client$admin$UsageReports>;
   }
 
-  declare interface admin$UserUsageReportResource {
+  declare interface gapi$client$admin$UserUsageReportResource {
     /**
      * Retrieves a report which is a collection of properties / statistics for a set of users.
      */
@@ -721,6 +725,6 @@ declare module "gapi.client.admin" {
        * Represents the profile id or the user email for which the data should be filtered.
        */
       userKey: string
-    }): Request<admin$UsageReports>;
+    }): Request<gapi$client$admin$UsageReports>;
   }
 }
