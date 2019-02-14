@@ -1,7 +1,10 @@
 declare var npm$namespace$Rx: {
   TestScheduler: typeof Rx$TestScheduler,
   ReactiveTest: typeof Rx$ReactiveTest,
-  MockObserver: typeof Rx$MockObserver
+  MockObserver: typeof Rx$MockObserver,
+
+  Recorded: typeof Rx$Recorded,
+  Subscription: typeof Rx$Subscription
 };
 declare type Rx$TestScheduler = {
   createColdObservable<T>(...records: Rx$Recorded[]): Observable<T>,
@@ -61,5 +64,5 @@ declare type Rx$MockObserverStatic = {
 
 declare var Rx$MockObserver: Rx$MockObserverStatic;
 declare module "rx-lite-testing" {
-  declare module.exports: typeof Rx;
+  declare export default typeof Rx;
 }
