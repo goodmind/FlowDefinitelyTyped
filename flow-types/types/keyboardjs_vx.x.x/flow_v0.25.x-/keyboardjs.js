@@ -61,11 +61,11 @@ declare module "keyboardjs" {
   ): void;
 
   /**
- * Sets the context KeyboardJS operates in. Default is global context.
- * Bindings in global context will execute in all contexts.
- * @param identifier The name of the context. If the context doesn't exists, it will be created.
-Use 'global' to switch to global context.
- */
+   * Sets the context KeyboardJS operates in. Default is global context.
+   * Bindings in global context will execute in all contexts.
+   * @param identifier The name of the context. If the context doesn't exists, it will be created.
+   * Use 'global' to switch to global context.
+   */
   declare export function keyboardjs$setContext(identifier: string): void;
 
   /**
