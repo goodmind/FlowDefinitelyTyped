@@ -41,5 +41,5 @@ declare module "uglifycss" {
     options?: UglifyCSS$UglifyCSSOptions
   ): string;
 
-  declare module.exports: typeof UglifyCSS;
+  declare export default typeof UglifyCSS;
 }
