@@ -1,47 +1,51 @@
 declare module "gapi.client.blogger" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    blogUserInfos: typeof client$blogUserInfos,
-    blogs: typeof client$blogs,
-    comments: typeof client$comments,
-    pageViews: typeof client$pageViews,
-    pages: typeof client$pages,
-    postUserInfos: typeof client$postUserInfos,
-    posts: typeof client$posts,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    blogUserInfos: typeof gapi$client$blogUserInfos,
+    blogs: typeof gapi$client$blogs,
+    comments: typeof gapi$client$comments,
+    pageViews: typeof gapi$client$pageViews,
+    pages: typeof gapi$client$pages,
+    postUserInfos: typeof gapi$client$postUserInfos,
+    posts: typeof gapi$client$posts,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Blogger API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "blogger",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "blogger",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$blogUserInfos: blogger$blogger$BlogUserInfosResource;
+  declare var gapi$client$blogUserInfos: blogger$BlogUserInfosResource;
 
-  declare var client$blogs: blogger$blogger$BlogsResource;
+  declare var gapi$client$blogs: blogger$BlogsResource;
 
-  declare var client$comments: blogger$blogger$CommentsResource;
+  declare var gapi$client$comments: blogger$CommentsResource;
 
-  declare var client$pageViews: blogger$blogger$PageViewsResource;
+  declare var gapi$client$pageViews: blogger$PageViewsResource;
 
-  declare var client$pages: blogger$blogger$PagesResource;
+  declare var gapi$client$pages: blogger$PagesResource;
 
-  declare var client$postUserInfos: blogger$blogger$PostUserInfosResource;
+  declare var gapi$client$postUserInfos: blogger$PostUserInfosResource;
 
-  declare var client$posts: blogger$blogger$PostsResource;
+  declare var gapi$client$posts: blogger$PostsResource;
 
-  declare var client$users: blogger$blogger$UsersResource;
+  declare var gapi$client$users: blogger$UsersResource;
 
-  declare interface blogger$Blog {
+  declare interface gapi$client$blogger$Blog {
     /**
      * The JSON custom meta-data for the Blog
      */
@@ -90,7 +94,7 @@ declare module "gapi.client.blogger" {
     /**
      * The container of pages in this blog.
      */
-    client$pages?: {
+    pages?: {
       /**
        * The URL of the container for pages in this blog.
        */
@@ -105,7 +109,7 @@ declare module "gapi.client.blogger" {
     /**
      * The container of posts in this blog.
      */
-    client$posts?: {
+    posts?: {
       /**
        * The List of Posts for this Blog.
        */
@@ -148,16 +152,16 @@ declare module "gapi.client.blogger" {
     url?: string;
   }
 
-  declare interface blogger$BlogList {
+  declare interface gapi$client$blogger$BlogList {
     /**
      * Admin level list of blog per-user information
      */
-    client$blogUserInfos?: blogger$BlogUserInfo[];
+    blogUserInfos?: blogger$BlogUserInfo[];
 
     /**
      * The list of Blogs this user has Authorship or Admin rights over.
      */
-    items?: blogger$Blog[];
+    items?: gapi$client$blogger$Blog[];
 
     /**
      * The kind of this entity. Always blogger#blogList
@@ -165,7 +169,7 @@ declare module "gapi.client.blogger" {
     kind?: string;
   }
 
-  declare interface blogger$BlogPerUserInfo {
+  declare interface gapi$client$blogger$BlogPerUserInfo {
     /**
      * ID of the Blog resource
      */
@@ -197,16 +201,16 @@ declare module "gapi.client.blogger" {
     userId?: string;
   }
 
-  declare interface blogger$BlogUserInfo {
+  declare interface gapi$client$blogger$BlogUserInfo {
     /**
      * The Blog resource.
      */
-    blog?: blogger$Blog;
+    blog?: gapi$client$blogger$Blog;
 
     /**
      * Information about a User for the Blog.
      */
-    blog_user_info?: blogger$BlogPerUserInfo;
+    blog_user_info?: gapi$client$blogger$BlogPerUserInfo;
 
     /**
      * The kind of this entity. Always blogger#blogUserInfo
@@ -214,7 +218,7 @@ declare module "gapi.client.blogger" {
     kind?: string;
   }
 
-  declare interface blogger$Comment {
+  declare interface gapi$client$blogger$Comment {
     /**
      * The author of this Comment.
      */
@@ -311,7 +315,7 @@ declare module "gapi.client.blogger" {
     updated?: string;
   }
 
-  declare interface blogger$CommentList {
+  declare interface gapi$client$blogger$CommentList {
     /**
      * Etag of the response.
      */
@@ -320,7 +324,7 @@ declare module "gapi.client.blogger" {
     /**
      * The List of Comments for a Post.
      */
-    items?: blogger$Comment[];
+    items?: gapi$client$blogger$Comment[];
 
     /**
      * The kind of this entry. Always blogger#commentList
@@ -338,7 +342,7 @@ declare module "gapi.client.blogger" {
     prevPageToken?: string;
   }
 
-  declare interface blogger$Page {
+  declare interface gapi$client$blogger$Page {
     /**
      * The author of this Page.
      */
@@ -430,7 +434,7 @@ declare module "gapi.client.blogger" {
     url?: string;
   }
 
-  declare interface blogger$PageList {
+  declare interface gapi$client$blogger$PageList {
     /**
      * Etag of the response.
      */
@@ -439,7 +443,7 @@ declare module "gapi.client.blogger" {
     /**
      * The list of Pages for a Blog.
      */
-    items?: blogger$Page[];
+    items?: gapi$client$blogger$Page[];
 
     /**
      * The kind of this entity. Always blogger#pageList
@@ -452,7 +456,7 @@ declare module "gapi.client.blogger" {
     nextPageToken?: string;
   }
 
-  declare interface blogger$Pageviews {
+  declare interface gapi$client$blogger$Pageviews {
     /**
      * Blog Id
      */
@@ -479,7 +483,7 @@ declare module "gapi.client.blogger" {
     kind?: string;
   }
 
-  declare interface blogger$Post {
+  declare interface gapi$client$blogger$Post {
     /**
      * The author of this Post.
      */
@@ -599,7 +603,7 @@ declare module "gapi.client.blogger" {
       /**
        * The List of Comments for this Post.
        */
-      items?: blogger$Comment[],
+      items?: gapi$client$blogger$Comment[],
 
       /**
        * The URL of the comments on this post.
@@ -643,7 +647,7 @@ declare module "gapi.client.blogger" {
     url?: string;
   }
 
-  declare interface blogger$PostList {
+  declare interface gapi$client$blogger$PostList {
     /**
      * Etag of the response.
      */
@@ -652,7 +656,7 @@ declare module "gapi.client.blogger" {
     /**
      * The list of Posts for this Blog.
      */
-    items?: blogger$Post[];
+    items?: gapi$client$blogger$Post[];
 
     /**
      * The kind of this entity. Always blogger#postList
@@ -665,7 +669,7 @@ declare module "gapi.client.blogger" {
     nextPageToken?: string;
   }
 
-  declare interface blogger$PostPerUserInfo {
+  declare interface gapi$client$blogger$PostPerUserInfo {
     /**
      * ID of the Blog that the post resource belongs to.
      */
@@ -692,7 +696,7 @@ declare module "gapi.client.blogger" {
     userId?: string;
   }
 
-  declare interface blogger$PostUserInfo {
+  declare interface gapi$client$blogger$PostUserInfo {
     /**
      * The kind of this entity. Always blogger#postUserInfo
      */
@@ -701,19 +705,19 @@ declare module "gapi.client.blogger" {
     /**
      * The Post resource.
      */
-    post?: blogger$Post;
+    post?: gapi$client$blogger$Post;
 
     /**
      * Information about a User for the Post.
      */
-    post_user_info?: blogger$PostPerUserInfo;
+    post_user_info?: gapi$client$blogger$PostPerUserInfo;
   }
 
-  declare interface blogger$PostUserInfosList {
+  declare interface gapi$client$blogger$PostUserInfosList {
     /**
      * The list of Posts with User information for the post, for this Blog.
      */
-    items?: blogger$PostUserInfo[];
+    items?: gapi$client$blogger$PostUserInfo[];
 
     /**
      * The kind of this entity. Always blogger#postList
@@ -726,7 +730,7 @@ declare module "gapi.client.blogger" {
     nextPageToken?: string;
   }
 
-  declare interface blogger$User {
+  declare interface gapi$client$blogger$User {
     /**
      * Profile summary information.
      */
@@ -735,7 +739,7 @@ declare module "gapi.client.blogger" {
     /**
      * The container of blogs for this user.
      */
-    client$blogs?: {
+    blogs?: {
       /**
        * The URL of the Blogs for this user.
        */
@@ -793,7 +797,7 @@ declare module "gapi.client.blogger" {
     url?: string;
   }
 
-  declare interface blogger$BlogUserInfosResource {
+  declare interface gapi$client$blogger$BlogUserInfosResource {
     /**
      * Gets one blog and user info pair by blogId and userId.
      */
@@ -848,10 +852,10 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$BlogUserInfo>;
+    }): Request<gapi$client$blogger$BlogUserInfo>;
   }
 
-  declare interface blogger$BlogsResource {
+  declare interface gapi$client$blogger$BlogsResource {
     /**
      * Gets one blog by ID.
      */
@@ -906,7 +910,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the blog. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$Blog>;
+    }): Request<gapi$client$blogger$Blog>;
 
     /**
      * Retrieve a Blog by URL.
@@ -957,7 +961,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the blog. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$Blog>;
+    }): Request<gapi$client$blogger$Blog>;
 
     /**
      * Retrieves a list of blogs, possibly filtered.
@@ -1024,10 +1028,10 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the blogs. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$BlogList>;
+    }): Request<gapi$client$blogger$BlogList>;
   }
 
-  declare interface blogger$CommentsResource {
+  declare interface gapi$client$blogger$CommentsResource {
     /**
      * Marks a comment as not spam.
      */
@@ -1082,7 +1086,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Comment>;
+    }): Request<gapi$client$blogger$Comment>;
 
     /**
      * Delete a comment by ID.
@@ -1200,7 +1204,7 @@ declare module "gapi.client.blogger" {
        * parent posts which is in a draft state, or comments that are pending moderation.
        */
       view?: string
-    }): Request<blogger$Comment>;
+    }): Request<gapi$client$blogger$Comment>;
 
     /**
      * Retrieves the comments for a post, possibly filtered.
@@ -1282,7 +1286,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$CommentList>;
+    }): Request<gapi$client$blogger$CommentList>;
 
     /**
      * Retrieves the comments for a blog, across all posts, possibly filtered.
@@ -1354,7 +1358,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$CommentList>;
+    }): Request<gapi$client$blogger$CommentList>;
 
     /**
      * Marks a comment as spam.
@@ -1410,7 +1414,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Comment>;
+    }): Request<gapi$client$blogger$Comment>;
 
     /**
      * Removes the content of a comment.
@@ -1466,10 +1470,10 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Comment>;
+    }): Request<gapi$client$blogger$Comment>;
   }
 
-  declare interface blogger$PageViewsResource {
+  declare interface gapi$client$blogger$PageViewsResource {
     /**
      * Retrieve pageview stats for a Blog.
      */
@@ -1515,10 +1519,10 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Pageviews>;
+    }): Request<gapi$client$blogger$Pageviews>;
   }
 
-  declare interface blogger$PagesResource {
+  declare interface gapi$client$blogger$PagesResource {
     /**
      * Delete a page by ID.
      */
@@ -1620,7 +1624,7 @@ declare module "gapi.client.blogger" {
        */
       userIp?: string,
       view?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
 
     /**
      * Add a page.
@@ -1671,7 +1675,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
 
     /**
      * Retrieves the pages for a blog, optionally including non-LIVE statuses.
@@ -1738,7 +1742,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$PageList>;
+    }): Request<gapi$client$blogger$PageList>;
 
     /**
      * Update a page. This method supports patch semantics.
@@ -1799,7 +1803,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
 
     /**
      * Publishes a draft page.
@@ -1850,7 +1854,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
 
     /**
      * Revert a published or scheduled page to draft state.
@@ -1901,7 +1905,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
 
     /**
      * Update a page.
@@ -1962,10 +1966,10 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Page>;
+    }): Request<gapi$client$blogger$Page>;
   }
 
-  declare interface blogger$PostUserInfosResource {
+  declare interface gapi$client$blogger$PostUserInfosResource {
     /**
      * Gets one post and user info pair, by post ID and user ID. The post user info contains per-user information about the post, such as access rights,
      * specific to the user.
@@ -2026,7 +2030,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$PostUserInfo>;
+    }): Request<gapi$client$blogger$PostUserInfo>;
 
     /**
      * Retrieves a list of post and post user info pairs, possibly filtered. The post user info contains per-user information about the post, such as access
@@ -2119,10 +2123,10 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$PostUserInfosList>;
+    }): Request<gapi$client$blogger$PostUserInfosList>;
   }
 
-  declare interface blogger$PostsResource {
+  declare interface gapi$client$blogger$PostsResource {
     /**
      * Delete a post by ID.
      */
@@ -2244,7 +2248,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Retrieve a Post by Path.
@@ -2305,7 +2309,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require elevated access.
        */
       view?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Add a post.
@@ -2366,7 +2370,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Retrieves a list of posts, possibly filtered.
@@ -2463,7 +2467,7 @@ declare module "gapi.client.blogger" {
        * Access level with which to view the returned result. Note that some fields require escalated access.
        */
       view?: string
-    }): Request<blogger$PostList>;
+    }): Request<gapi$client$blogger$PostList>;
 
     /**
      * Update a post. This method supports patch semantics.
@@ -2539,7 +2543,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Publishes a draft post, optionally at the specific time of the given publishDate parameter.
@@ -2596,7 +2600,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Revert a published or scheduled post to draft state.
@@ -2647,7 +2651,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
 
     /**
      * Search for a post.
@@ -2709,7 +2713,7 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$PostList>;
+    }): Request<gapi$client$blogger$PostList>;
 
     /**
      * Update a post.
@@ -2785,10 +2789,10 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$Post>;
+    }): Request<gapi$client$blogger$Post>;
   }
 
-  declare interface blogger$UsersResource {
+  declare interface gapi$client$blogger$UsersResource {
     /**
      * Gets one user by ID.
      */
@@ -2833,6 +2837,6 @@ declare module "gapi.client.blogger" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<blogger$User>;
+    }): Request<gapi$client$blogger$User>;
   }
 }
