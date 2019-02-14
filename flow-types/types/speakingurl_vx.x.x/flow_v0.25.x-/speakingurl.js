@@ -26,5 +26,5 @@ declare module "speakingurl" {
     options: SpeakingURLOptions
   ): (input: string) => string;
 
-  declare module.exports: typeof getSlug;
+  declare export default typeof getSlug;
 }
