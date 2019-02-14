@@ -22,16 +22,18 @@ declare module "color-string" {
     rgb: typeof to$rgb,
     keyword: typeof to$keyword,
     hsl: typeof to$hsl,
-    hwb: typeof to$hwb
+    hwb: typeof to$hwb,
+
+    rgb: typeof npm$namespace$to$rgb
   };
   declare function to$hex(...args: Array<number | number[]>): string;
 
   declare function to$rgb(...args: Array<number | number[]>): string;
 
-  declare var npm$namespace$rgb: {
-    percent: typeof rgb$percent
+  declare var npm$namespace$to$rgb: {
+    percent: typeof to$rgb$percent
   };
-  declare function rgb$percent(...args: Array<number | number[]>): string;
+  declare function to$rgb$percent(...args: Array<number | number[]>): string;
 
   declare function to$keyword(...args: Array<number | number[]>): string;
 
