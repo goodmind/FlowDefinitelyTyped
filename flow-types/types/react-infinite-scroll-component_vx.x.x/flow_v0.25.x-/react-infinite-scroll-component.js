@@ -98,9 +98,6 @@ declare module "react-infinite-scroll-component" {
     height?: number;
   }
   declare class InfiniteScroll
-    mixins React.Component<
-        InfiniteScroll$InfiniteScroll$InfiniteScrollProps,
-        any
-      > {}
-  declare module.exports: typeof InfiniteScroll;
+    mixins React.Component<InfiniteScroll$InfiniteScrollProps, any> {}
+  declare export default typeof InfiniteScroll;
 }
