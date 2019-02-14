@@ -8,13 +8,13 @@ declare module "openpgp" {
     algorithm: string;
   }
   declare export interface EncryptOptions {
-    message: message$message$Message;
-    publicKeys?: key$key$Key | key$key$Key[];
-    privateKeys?: key$key$Key | key$key$Key[];
+    message: message$Message;
+    publicKeys?: key$Key | key$Key[];
+    privateKeys?: key$Key | key$Key[];
     passwords?: string | string[];
     sessionKey?: SessionKey;
-    enums$compression?: enums$enums$compression;
-    enums$armor?: boolean;
+    compression?: enums$compression;
+    armor?: boolean;
     streaming?: "web" | "node" | false;
     detached?: boolean;
     signature?: Signature;
@@ -26,25 +26,25 @@ declare module "openpgp" {
   }
   declare export interface EncryptedMessage {
     data?: string;
-    message?: message$message$Message;
+    message?: message$Message;
     signature?: string | ReadableStream | Signature;
     sessionKey?: SessionKey;
   }
   declare export interface DecryptOptions {
-    message: message$message$Message;
-    privateKeys?: key$key$Key | key$key$Key[];
+    message: message$Message;
+    privateKeys?: key$Key | key$Key[];
     passwords?: string | string[];
     sessionKeys?: SessionKey | SessionKey[];
-    publicKeys?: key$key$Key | key$key$Key[];
+    publicKeys?: key$Key | key$Key[];
     format?: string;
     streaming?: "web" | "node" | false;
     signature?: Signature;
     date?: Date;
   }
   declare export interface SignOptions {
-    message: message$message$Message;
-    privateKeys?: key$key$Key | key$key$Key[];
-    enums$armor?: boolean;
+    message: message$Message;
+    privateKeys?: key$Key | key$Key[];
+    armor?: boolean;
     streaming?: "web" | "node" | false;
     detached?: boolean;
     date?: Date;
@@ -53,10 +53,10 @@ declare module "openpgp" {
   declare export interface SignedMessage {
     signature?: string | ReadableStream | Signature;
     data?: string | ReadableStream;
-    message?: message$message$Message;
+    message?: message$Message;
   }
   declare export interface KeyContainer {
-    key: key$key$Key;
+    key: key$Key;
   }
   declare export type KeyPair = {
     privateKeyArmored: string,
@@ -82,8 +82,8 @@ declare module "openpgp" {
     verified?: boolean;
   }
   declare export interface VerifyOptions {
-    message: message$message$Message;
-    publicKeys: key$key$Key | key$key$Key[];
+    message: message$Message;
+    publicKeys: key$Key | key$Key[];
     streaming?: "web" | "node" | false;
     signature?: Signature;
     date?: Date;
@@ -139,164 +139,164 @@ declare module "openpgp" {
   declare export function destroyWorker(): void;
 
   /**
- * Encrypts message text/data with public keys, passwords or both at once. At least either public keys or passwords
- *    must be specified. If private keys are specified, those will be used to sign the message.
- * @param {message$Message} message message to be encrypted as created by openpgp.message.fromText or openpgp.message.fromBinary
- * @param {key$Key | Array<key$Key>} publicKeys (optional) array of keys or single key, used to encrypt the message
- * @param {key$Key | Array<key$Key>} privateKeys (optional) private keys for signing. If omitted message will not be signed
- * @param {String | Array<String>} passwords (optional) array of passwords or a single password to encrypt the message
- * @param {Object} sessionKey (optional) session key in the form: { data:Uint8Array, algorithm:String }
- * @param {module} :enums.compression} compression (optional) which compression algorithm to compress the message with, defaults to what is specified in config
- * @param {Boolean} armor (optional) if the return values should be ascii armored or the message/signature objects
- * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
- * @param {Boolean} detached (optional) if the signature should be detached (if true, signature will be added to returned object)
- * @param {Signature} signature (optional) a detached signature to add to the encrypted message
- * @param {Boolean} returnSessionKey (optional) if the unencrypted session key should be added to returned object
- * @param {Boolean} wildcard (optional) use a key ID of 0 instead of the public key IDs
- * @param {Date} date (optional) override the creation date of the message signature
- * @param {Object} fromUserId (optional) user ID to sign with, e.g. { name:'Steve Sender', email:'steve
- * @openpgp .org' }
- * @param {Object} toUserId (optional) user ID to encrypt for, e.g. { name:'Robert Receiver', email:'robert
- * @openpgp .org' }
- * @returns {Promise<Object>} Object containing encrypted (and optionally signed) message in the form:
-
-{
-data: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
-message: Message, (if `armor` was false)
-signature: String|ReadableStream<String>|NodeStream, (if `detached` was true and `armor` was true)
-signature: Signature (if `detached` was true and `armor` was false)
-sessionKey: { data, algorithm, aeadAlgorithm } (if `returnSessionKey` was true)
-}
- * @async
- * @static
- */
+   * Encrypts message text/data with public keys, passwords or both at once. At least either public keys or passwords
+   *    must be specified. If private keys are specified, those will be used to sign the message.
+   * @param {message$Message} message message to be encrypted as created by openpgp.message.fromText or openpgp.message.fromBinary
+   * @param {key$Key | Array<key$Key>} publicKeys (optional) array of keys or single key, used to encrypt the message
+   * @param {key$Key | Array<key$Key>} privateKeys (optional) private keys for signing. If omitted message will not be signed
+   * @param {String | Array<String>} passwords (optional) array of passwords or a single password to encrypt the message
+   * @param {Object} sessionKey (optional) session key in the form: { data:Uint8Array, algorithm:String }
+   * @param {module} :enums.compression} compression (optional) which compression algorithm to compress the message with, defaults to what is specified in config
+   * @param {Boolean} armor (optional) if the return values should be ascii armored or the message/signature objects
+   * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
+   * @param {Boolean} detached (optional) if the signature should be detached (if true, signature will be added to returned object)
+   * @param {Signature} signature (optional) a detached signature to add to the encrypted message
+   * @param {Boolean} returnSessionKey (optional) if the unencrypted session key should be added to returned object
+   * @param {Boolean} wildcard (optional) use a key ID of 0 instead of the public key IDs
+   * @param {Date} date (optional) override the creation date of the message signature
+   * @param {Object} fromUserId (optional) user ID to sign with, e.g. { name:'Steve Sender', email:'steve
+   * @openpgp .org' }
+   * @param {Object} toUserId (optional) user ID to encrypt for, e.g. { name:'Robert Receiver', email:'robert
+   * @openpgp .org' }
+   * @returns {Promise<Object>} Object containing encrypted (and optionally signed) message in the form:
+   *
+   * {
+   * data: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
+   * message: Message, (if `armor` was false)
+   * signature: String|ReadableStream<String>|NodeStream, (if `detached` was true and `armor` was true)
+   * signature: Signature (if `detached` was true and `armor` was false)
+   * sessionKey: { data, algorithm, aeadAlgorithm } (if `returnSessionKey` was true)
+   * }
+   * @async
+   * @static
+   */
   declare export function encrypt(
     options: EncryptOptions
   ): Promise<EncryptedMessage>;
 
   /**
- * Decrypts a message with the user's private key, a session key or a password. Either a private key,
- *    a session key or a password must be specified.
- * @param {message$Message} message the message object with the encrypted data
- * @param {key$Key | Array<key$Key>} privateKeys (optional) private keys with decrypted secret key data or session key
- * @param {String | Array<String>} passwords (optional) passwords to decrypt the message
- * @param {Object | Array<Object>} sessionKeys (optional) session keys in the form: { data:Uint8Array, algorithm:String }
- * @param {key$Key | Array<key$Key>} publicKeys (optional) array of public keys or single key, to verify signatures
- * @param {String} format (optional) return data format either as 'utf8' or 'binary'
- * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
- * @param {Signature} signature (optional) detached signature for verification
- * @param {Date} date (optional) use the given date for verification instead of the current time
- * @returns {Promise<Object>} Object containing decrypted and verified message in the form:
-
-{
-data: String|ReadableStream<String>|NodeStream, (if format was 'utf8', the default)
-data: Uint8Array|ReadableStream<Uint8Array>|NodeStream, (if format was 'binary')
-filename: String,
-signatures: [
-{
-keyid: module:type/keyid,
-verified: Promise<Boolean>,
-valid: Boolean (if streaming was false)
-}, ...
-]
-}
- * @async
- * @static
- */
+   * Decrypts a message with the user's private key, a session key or a password. Either a private key,
+   *    a session key or a password must be specified.
+   * @param {message$Message} message the message object with the encrypted data
+   * @param {key$Key | Array<key$Key>} privateKeys (optional) private keys with decrypted secret key data or session key
+   * @param {String | Array<String>} passwords (optional) passwords to decrypt the message
+   * @param {Object | Array<Object>} sessionKeys (optional) session keys in the form: { data:Uint8Array, algorithm:String }
+   * @param {key$Key | Array<key$Key>} publicKeys (optional) array of public keys or single key, to verify signatures
+   * @param {String} format (optional) return data format either as 'utf8' or 'binary'
+   * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
+   * @param {Signature} signature (optional) detached signature for verification
+   * @param {Date} date (optional) use the given date for verification instead of the current time
+   * @returns {Promise<Object>} Object containing decrypted and verified message in the form:
+   *
+   * {
+   * data: String|ReadableStream<String>|NodeStream, (if format was 'utf8', the default)
+   * data: Uint8Array|ReadableStream<Uint8Array>|NodeStream, (if format was 'binary')
+   * filename: String,
+   * signatures: [
+   * {
+   * keyid: module:type/keyid,
+   * verified: Promise<Boolean>,
+   * valid: Boolean (if streaming was false)
+   * }, ...
+   * ]
+   * }
+   * @async
+   * @static
+   */
   declare export function decrypt(
     options: DecryptOptions
   ): Promise<DecryptedMessage>;
 
   /**
- * Signs a cleartext message.
- * @param {cleartext$CleartextMessage | message$Message} message (cleartext) message to be signed
- * @param {key$Key | Array<key$Key>} privateKeys array of keys or single key with decrypted secret key data to sign cleartext
- * @param {Boolean} armor (optional) if the return value should be ascii armored or the message object
- * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
- * @param {Boolean} detached (optional) if the return value should contain a detached signature
- * @param {Date} date (optional) override the creation date of the signature
- * @param {Array} fromUserIds (optional) array of user IDs to sign with, one per key in `privateKeys`, e.g. [{ name:'Steve Sender', email:'steve
- * @openpgp .org' }]
- * @returns {Promise<Object>} Object containing signed message in the form:
-
-{
-data: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
-message: Message (if `armor` was false)
-}
-
-Or, if `detached` was true:
-
-{
-signature: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
-signature: Signature (if `armor` was false)
-}
- * @async
- * @static
- */
+   * Signs a cleartext message.
+   * @param {cleartext$CleartextMessage | message$Message} message (cleartext) message to be signed
+   * @param {key$Key | Array<key$Key>} privateKeys array of keys or single key with decrypted secret key data to sign cleartext
+   * @param {Boolean} armor (optional) if the return value should be ascii armored or the message object
+   * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
+   * @param {Boolean} detached (optional) if the return value should contain a detached signature
+   * @param {Date} date (optional) override the creation date of the signature
+   * @param {Array} fromUserIds (optional) array of user IDs to sign with, one per key in `privateKeys`, e.g. [{ name:'Steve Sender', email:'steve
+   * @openpgp .org' }]
+   * @returns {Promise<Object>} Object containing signed message in the form:
+   *
+   * {
+   * data: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
+   * message: Message (if `armor` was false)
+   * }
+   *
+   * Or, if `detached` was true:
+   *
+   * {
+   * signature: String|ReadableStream<String>|NodeStream, (if `armor` was true, the default)
+   * signature: Signature (if `armor` was false)
+   * }
+   * @async
+   * @static
+   */
   declare export function sign(options: SignOptions): Promise<SignedMessage>;
 
   /**
- * Verifies signatures of cleartext signed message
- * @param {key$Key | Array<key$Key>} publicKeys array of publicKeys or single key, to verify signatures
- * @param {cleartext$CleartextMessage | message$Message} message (cleartext) message object with signatures
- * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
- * @param {Signature} signature (optional) detached signature for verification
- * @param {Date} date (optional) use the given date for verification instead of the current time
- * @returns {Promise<Object>} Object containing verified message in the form:
-
-{
-data: String|ReadableStream<String>|NodeStream, (if `message` was a CleartextMessage)
-data: Uint8Array|ReadableStream<Uint8Array>|NodeStream, (if `message` was a Message)
-signatures: [
-{
-keyid: module:type/keyid,
-verified: Promise<Boolean>,
-valid: Boolean (if `streaming` was false)
-}, ...
-]
-}
- * @async
- * @static
- */
+   * Verifies signatures of cleartext signed message
+   * @param {key$Key | Array<key$Key>} publicKeys array of publicKeys or single key, to verify signatures
+   * @param {cleartext$CleartextMessage | message$Message} message (cleartext) message object with signatures
+   * @param {"web" | "node" | false} streaming (optional) whether to return data as a stream. Defaults to the type of stream `message` was created from, if any.
+   * @param {Signature} signature (optional) detached signature for verification
+   * @param {Date} date (optional) use the given date for verification instead of the current time
+   * @returns {Promise<Object>} Object containing verified message in the form:
+   *
+   * {
+   * data: String|ReadableStream<String>|NodeStream, (if `message` was a CleartextMessage)
+   * data: Uint8Array|ReadableStream<Uint8Array>|NodeStream, (if `message` was a Message)
+   * signatures: [
+   * {
+   * keyid: module:type/keyid,
+   * verified: Promise<Boolean>,
+   * valid: Boolean (if `streaming` was false)
+   * }, ...
+   * ]
+   * }
+   * @async
+   * @static
+   */
   declare export function verify(
     options: VerifyOptions
   ): Promise<VerifiedMessage>;
 
   /**
- * Generates a new OpenPGP key pair. Supports RSA and ECC keys. Primary and subkey will be of same type.
- * @param {Array<Object>} userIds array of user IDs e.g. [{ name:'Phil Zimmermann', email:'phil
- * @openpgp .org' }]
- * @param {String} passphrase (optional) The passphrase used to encrypt the resulting private key
- * @param {Number} numBits (optional) number of bits for RSA keys: 2048 or 4096.
- * @param {Number} keyExpirationTime (optional) The number of seconds after the key creation time that the key expires
- * @param {String} curve (optional) elliptic curve for ECC keys:
-       curve25519, p256, p384, p521, secp256k1,
-       brainpoolP256r1, brainpoolP384r1, or brainpoolP512r1.
- * @param {Date} date (optional) override the creation date of the key and the key signatures
- * @param {Array<Object>} subkeys (optional) options for each subkey, default to main key options. e.g. [{sign: true, passphrase: '123'}]
-     sign parameter defaults to false, and indicates whether the subkey should sign rather than encrypt
- * @returns {Promise<Object>} The generated key object in the form:
-   { key:Key, privateKeyArmored:String, publicKeyArmored:String, revocationCertificate:String }
- * @async
- * @static
- */
+   * Generates a new OpenPGP key pair. Supports RSA and ECC keys. Primary and subkey will be of same type.
+   * @param {Array<Object>} userIds array of user IDs e.g. [{ name:'Phil Zimmermann', email:'phil
+   * @openpgp .org' }]
+   * @param {String} passphrase (optional) The passphrase used to encrypt the resulting private key
+   * @param {Number} numBits (optional) number of bits for RSA keys: 2048 or 4096.
+   * @param {Number} keyExpirationTime (optional) The number of seconds after the key creation time that the key expires
+   * @param {String} curve (optional) elliptic curve for ECC keys:
+   *        curve25519, p256, p384, p521, secp256k1,
+   *        brainpoolP256r1, brainpoolP384r1, or brainpoolP512r1.
+   * @param {Date} date (optional) override the creation date of the key and the key signatures
+   * @param {Array<Object>} subkeys (optional) options for each subkey, default to main key options. e.g. [{sign: true, passphrase: '123'}]
+   *      sign parameter defaults to false, and indicates whether the subkey should sign rather than encrypt
+   * @returns {Promise<Object>} The generated key object in the form:
+   *    { key:Key, privateKeyArmored:String, publicKeyArmored:String, revocationCertificate:String }
+   * @async
+   * @static
+   */
   declare export function generateKey(options: KeyOptions): Promise<KeyPair>;
 
   /**
- * Reformats signature packets for a key and rewraps key object.
- * @param {key$Key} privateKey private key to reformat
- * @param {Array<Object>} userIds array of user IDs e.g. [{ name:'Phil Zimmermann', email:'phil
- * @openpgp .org' }]
- * @param {String} passphrase (optional) The passphrase used to encrypt the resulting private key
- * @param {Number} keyExpirationTime (optional) The number of seconds after the key creation time that the key expires
- * @param {Boolean} revocationCertificate (optional) Whether the returned object should include a revocation certificate to revoke the public key
- * @returns {Promise<Object>} The generated key object in the form:
-     { key:Key, privateKeyArmored:String, publicKeyArmored:String, revocationCertificate:String }
- * @async
- * @static
- */
+   * Reformats signature packets for a key and rewraps key object.
+   * @param {key$Key} privateKey private key to reformat
+   * @param {Array<Object>} userIds array of user IDs e.g. [{ name:'Phil Zimmermann', email:'phil
+   * @openpgp .org' }]
+   * @param {String} passphrase (optional) The passphrase used to encrypt the resulting private key
+   * @param {Number} keyExpirationTime (optional) The number of seconds after the key creation time that the key expires
+   * @param {Boolean} revocationCertificate (optional) Whether the returned object should include a revocation certificate to revoke the public key
+   * @returns {Promise<Object>} The generated key object in the form:
+   *      { key:Key, privateKeyArmored:String, publicKeyArmored:String, revocationCertificate:String }
+   * @async
+   * @static
+   */
   declare export function reformatKey(options: {
-    privateKey: key$key$Key,
+    privateKey: key$Key,
     userIds?: UserId[],
     passphrase?: string,
     keyExpirationTime?: number,
@@ -304,23 +304,23 @@ valid: Boolean (if `streaming` was false)
   }): Promise<KeyPair>;
 
   /**
- * Revokes a key. Requires either a private key or a revocation certificate.
- *    If a revocation certificate is passed, the reasonForRevocation parameters will be ignored.
- * @param {key$Key} key (optional) public or private key to revoke
- * @param {String} revocationCertificate (optional) revocation certificate to revoke the key with
- * @param {Object} reasonForRevocation (optional) object indicating the reason for revocation
- * @param {module} :enums.reasonForRevocation} reasonForRevocation.flag (optional) flag indicating the reason for revocation
- * @param {String} (optional) string explaining the reason for revocation
- * @returns {Promise<Object>} The revoked key object in the form:
-      { privateKey:Key, privateKeyArmored:String, publicKey:Key, publicKeyArmored:String }
-      (if private key is passed) or { publicKey:Key, publicKeyArmored:String } (otherwise)
- * @static
- */
+   * Revokes a key. Requires either a private key or a revocation certificate.
+   *    If a revocation certificate is passed, the reasonForRevocation parameters will be ignored.
+   * @param {key$Key} key (optional) public or private key to revoke
+   * @param {String} revocationCertificate (optional) revocation certificate to revoke the key with
+   * @param {Object} reasonForRevocation (optional) object indicating the reason for revocation
+   * @param {module} :enums.reasonForRevocation} reasonForRevocation.flag (optional) flag indicating the reason for revocation
+   * @param {String} (optional) string explaining the reason for revocation
+   * @returns {Promise<Object>} The revoked key object in the form:
+   *       { privateKey:Key, privateKeyArmored:String, publicKey:Key, publicKeyArmored:String }
+   *       (if private key is passed) or { publicKey:Key, publicKeyArmored:String } (otherwise)
+   * @static
+   */
   declare export function revokeKey(options: {
-    key?: key$key$Key,
+    key?: key$Key,
     revocationCertificate?: string,
-    enums$reasonForRevocation?: {
-      flag: enums$enums$reasonForRevocation,
+    reasonForRevocation?: {
+      flag: enums$reasonForRevocation,
       string: string
     }
   }): Promise<KeyPair>;
@@ -333,7 +333,7 @@ valid: Boolean (if `streaming` was false)
    * @async
    */
   declare export function decryptKey(options: {
-    privateKey: key$key$Key,
+    privateKey: key$Key,
     passphrase?: string | string[]
   }): Promise<KeyContainer>;
 
@@ -345,7 +345,7 @@ valid: Boolean (if `streaming` was false)
    * @async
    */
   declare export function encryptKey(options: {
-    privateKey: key$key$Key,
+    privateKey: key$Key,
     passphrase?: string | string[]
   }): Promise<KeyContainer>;
 
@@ -362,7 +362,7 @@ valid: Boolean (if `streaming` was false)
    * @param parttotal
    */
   declare function armor$armor(
-    messagetype: enums$armor$armor,
+    messagetype: enums$armor,
     body: Object,
     partindex: number,
     parttotal: number
@@ -386,7 +386,7 @@ valid: Boolean (if `streaming` was false)
     /**
      * Returns ASCII armored text of cleartext signed message
      */
-    armor$armor(): string;
+    armor(): string;
 
     /**
      * Returns the key IDs of the keys that signed the cleartext message
@@ -402,13 +402,13 @@ valid: Boolean (if `streaming` was false)
      * Sign the cleartext message
      * @param privateKeys private keys with decrypted secret key data for signing
      */
-    signature$sign(privateKeys: Array<key$key$Key>): void;
+    sign(privateKeys: Array<key$Key>): void;
 
     /**
      * Verify signatures of cleartext signed message
      * @param keys array of keys to verify signatures
      */
-    signature$verify(keys: Array<key$key$Key>): Array<VerifiedMessage>;
+    verify(keys: Array<key$Key>): Array<VerifiedMessage>;
   }
 
   /**
@@ -431,11 +431,11 @@ valid: Boolean (if `streaming` was false)
     keyserver: typeof config$keyserver,
     debug: typeof config$debug
   };
-  declare var config$prefer_hash_algorithm: enums$enums$hash;
+  declare var config$prefer_hash_algorithm: enums$hash;
 
-  declare var config$encryption_cipher: enums$enums$symmetric;
+  declare var config$encryption_cipher: enums$symmetric;
 
-  declare var config$compression: enums$config$compression;
+  declare var config$compression: enums$compression;
 
   declare var config$show_version: boolean;
 
@@ -452,11 +452,16 @@ valid: Boolean (if `streaming` was false)
     getPrefixRandom: typeof crypto$getPrefixRandom,
     getPrivateMpiCount: typeof crypto$getPrivateMpiCount,
     publicKeyDecrypt: typeof crypto$publicKeyDecrypt,
-    publicKeyEncrypt: typeof crypto$publicKeyEncrypt
+    publicKeyEncrypt: typeof crypto$publicKeyEncrypt,
+
+    cfb: typeof npm$namespace$crypto$cfb,
+    hash: typeof npm$namespace$crypto$hash,
+    random: typeof npm$namespace$crypto$random,
+    signature: typeof npm$namespace$crypto$signature
   };
   declare interface crypto$Mpi {
     data: number;
-    message$read(input: string): number;
+    read(input: string): number;
     write(): string;
   }
 
@@ -464,23 +469,19 @@ valid: Boolean (if `streaming` was false)
    * Generating a session key for the specified symmetric algorithm
    * @param algo Algorithm to use
    */
-  declare function crypto$generateSessionKey(
-    algo: enums$enums$symmetric
-  ): string;
+  declare function crypto$generateSessionKey(algo: enums$symmetric): string;
 
   /**
    * generate random byte prefix as string for the specified algorithm
    * @param algo Algorithm to use
    */
-  declare function crypto$getPrefixRandom(algo: enums$enums$symmetric): string;
+  declare function crypto$getPrefixRandom(algo: enums$symmetric): string;
 
   /**
    * Returns the number of integers comprising the private key of an algorithm
    * @param algo The public key algorithm
    */
-  declare function crypto$getPrivateMpiCount(
-    algo: enums$enums$symmetric
-  ): number;
+  declare function crypto$getPrivateMpiCount(algo: enums$symmetric): number;
 
   /**
    * Decrypts data using the specified public key multiprecision integers of the private key, the specified secretMPIs of the private key and the specified algorithm.
@@ -490,7 +491,7 @@ valid: Boolean (if `streaming` was false)
    * @param data Data to be encrypted as MPI
    */
   declare function crypto$publicKeyDecrypt(
-    algo: enums$enums$publicKey,
+    algo: enums$publicKey,
     publicMPIs: Array<crypto$Mpi>,
     secretMPIs: Array<crypto$Mpi>,
     data: crypto$Mpi
@@ -503,15 +504,15 @@ valid: Boolean (if `streaming` was false)
    * @param data Data to be encrypted as MPI
    */
   declare function crypto$publicKeyEncrypt(
-    algo: enums$enums$publicKey,
+    algo: enums$publicKey,
     publicMPIs: Array<crypto$Mpi>,
     data: crypto$Mpi
   ): Array<crypto$Mpi>;
 
-  declare var npm$namespace$cfb: {
-    decrypt: typeof cfb$decrypt,
-    encrypt: typeof cfb$encrypt,
-    mdc: typeof cfb$mdc
+  declare var npm$namespace$crypto$cfb: {
+    decrypt: typeof crypto$cfb$decrypt,
+    encrypt: typeof crypto$cfb$encrypt,
+    mdc: typeof crypto$cfb$mdc
   };
 
   /**
@@ -521,7 +522,7 @@ valid: Boolean (if `streaming` was false)
    * @param ciphertext to be decrypted provided as a string
    * @param resync a boolean value specifying if a resync of the IV should be used or not. The encrypteddatapacket uses the "old" style with a resync. Decryption within an encryptedintegrityprotecteddata packet is not resyncing the IV.
    */
-  declare function cfb$decrypt(
+  declare function crypto$cfb$decrypt(
     cipherfn: string,
     key: string,
     ciphertext: string,
@@ -536,7 +537,7 @@ valid: Boolean (if `streaming` was false)
    * @param key binary string representation of key to be used to encrypt the plaintext. This will be passed to the cipherfn
    * @param resync a boolean value specifying if a resync of the IV should be used or not. The encrypteddatapacket uses the "old" style with a resync. Encryption within an encryptedintegrityprotecteddata packet is not resyncing the IV.
    */
-  declare function cfb$encrypt(
+  declare function crypto$cfb$encrypt(
     prefixrandom: string,
     cipherfn: string,
     plaintext: string,
@@ -550,15 +551,15 @@ valid: Boolean (if `streaming` was false)
    * @param key binary string representation of key to be used to check the mdc This will be passed to the cipherfn
    * @param ciphertext The encrypted data
    */
-  declare function cfb$mdc(
+  declare function crypto$cfb$mdc(
     cipherfn: Object,
     key: string,
     ciphertext: string
   ): string;
 
-  declare var npm$namespace$hash: {
-    digest: typeof hash$digest,
-    getHashByteLength: typeof hash$getHashByteLength
+  declare var npm$namespace$crypto$hash: {
+    digest: typeof crypto$hash$digest,
+    getHashByteLength: typeof crypto$hash$getHashByteLength
   };
 
   /**
@@ -566,49 +567,52 @@ valid: Boolean (if `streaming` was false)
    * @param algo Hash algorithm type
    * @param data Data to be hashed
    */
-  declare function hash$digest(algo: enums$enums$hash, data: string): string;
+  declare function crypto$hash$digest(algo: enums$hash, data: string): string;
 
   /**
    * Returns the hash size in bytes of the specified hash algorithm type
    * @param algo Hash algorithm type
    */
-  declare function hash$getHashByteLength(algo: enums$enums$hash): number;
+  declare function crypto$hash$getHashByteLength(algo: enums$hash): number;
 
-  declare var npm$namespace$random: {
-    getRandomBigInteger: typeof random$getRandomBigInteger,
-    getRandomBytes: typeof random$getRandomBytes,
-    getRandomValues: typeof random$getRandomValues,
-    getSecureRandom: typeof random$getSecureRandom
+  declare var npm$namespace$crypto$random: {
+    getRandomBigInteger: typeof crypto$random$getRandomBigInteger,
+    getRandomBytes: typeof crypto$random$getRandomBytes,
+    getRandomValues: typeof crypto$random$getRandomValues,
+    getSecureRandom: typeof crypto$random$getSecureRandom
   };
 
   /**
    * Create a secure random big integer of bits length
    * @param bits Bit length of the MPI to create
    */
-  declare function random$getRandomBigInteger(bits: number): number;
+  declare function crypto$random$getRandomBigInteger(bits: number): number;
 
   /**
    * Retrieve secure random byte string of the specified length
    * @param length Length in bytes to generate
    */
-  declare function random$getRandomBytes(length: number): string;
+  declare function crypto$random$getRandomBytes(length: number): string;
 
   /**
    * Helper routine which calls platform specific crypto random generator
    * @param buf
    */
-  declare function random$getRandomValues(buf: Uint8Array): void;
+  declare function crypto$random$getRandomValues(buf: Uint8Array): void;
 
   /**
    * Return a secure random number in the specified range
    * @param from Min of the random number
    * @param to Max of the random number (max 32bit)
    */
-  declare function random$getSecureRandom(from: number, to: number): number;
+  declare function crypto$random$getSecureRandom(
+    from: number,
+    to: number
+  ): number;
 
-  declare var npm$namespace$signature: {
-    sign: typeof signature$sign,
-    verify: typeof signature$verify
+  declare var npm$namespace$crypto$signature: {
+    sign: typeof crypto$signature$sign,
+    verify: typeof crypto$signature$verify
   };
 
   /**
@@ -619,9 +623,9 @@ valid: Boolean (if `streaming` was false)
    * @param secretMPIs Private key multiprecision integers which is used to sign the data
    * @param data Data to be signed
    */
-  declare function signature$sign(
-    hash_algo: enums$enums$hash,
-    algo: enums$enums$publicKey,
+  declare function crypto$signature$sign(
+    hash_algo: enums$hash,
+    algo: enums$publicKey,
     publicMPIs: Array<crypto$Mpi>,
     secretMPIs: Array<crypto$Mpi>,
     data: string
@@ -634,254 +638,106 @@ valid: Boolean (if `streaming` was false)
    * @param publickey_MPIs Public key multiprecision integers
    * @param data Data on where the signature was computed on
    */
-  declare function signature$verify(
-    algo: enums$enums$publicKey,
-    hash_algo: enums$enums$hash,
+  declare function crypto$signature$verify(
+    algo: enums$publicKey,
+    hash_algo: enums$hash,
     msg_MPIs: Array<crypto$Mpi>,
     publickey_MPIs: Array<crypto$Mpi>,
     data: string
   ): boolean;
 
-  declare class enums$armor {
-    constructor(...args: empty): mixed;
-    static +multipart_section: Class<enums$armor__multipart_section> &
-      enums$armor__multipart_section &
-      0; // 0
-    static +multipart_last: Class<enums$armor__multipart_last> &
-      enums$armor__multipart_last &
-      1; // 1
-    static +signed: Class<enums$armor__signed> & enums$armor__signed & 2; // 2
-    static +message: Class<enums$armor__message> & enums$armor__message & 3; // 3
-    static +public_key: Class<enums$armor__public_key> &
-      enums$armor__public_key &
-      4; // 4
-    static +private_key: Class<enums$armor__private_key> &
-      enums$armor__private_key &
-      5; // 5
-  }
+  declare var npm$namespace$enums: {
+    armor: typeof enums$armor,
+    compression: typeof enums$compression,
+    hash: typeof enums$hash,
+    packet: typeof enums$packet,
+    publicKey: typeof enums$publicKey,
+    symmetric: typeof enums$symmetric,
+    keyStatus: typeof enums$keyStatus,
+    reasonForRevocation: typeof enums$reasonForRevocation
+  };
 
-  declare class enums$armor__multipart_section mixins enums$armor {}
-  declare class enums$armor__multipart_last mixins enums$armor {}
-  declare class enums$armor__signed mixins enums$armor {}
-  declare class enums$armor__message mixins enums$armor {}
-  declare class enums$armor__public_key mixins enums$armor {}
-  declare class enums$armor__private_key mixins enums$armor {}
+  declare var enums$armor: {|
+    +multipart_section: 0, // 0
+    +multipart_last: 1, // 1
+    +signed: 2, // 2
+    +message: 3, // 3
+    +public_key: 4, // 4
+    +private_key: 5 // 5
+  |};
 
-  declare class enums$compression {
-    constructor(...args: empty): mixed;
-    static +uncompressed: Class<enums$compression__uncompressed> &
-      enums$compression__uncompressed &
-      0; // 0
-    static +zip: Class<enums$compression__zip> & enums$compression__zip & 1; // 1
-    static +zlib: Class<enums$compression__zlib> & enums$compression__zlib & 2; // 2
-    static +bzip2: Class<enums$compression__bzip2> &
-      enums$compression__bzip2 &
-      3; // 3
-  }
+  declare var enums$compression: {|
+    +uncompressed: 0, // 0
+    +zip: 1, // 1
+    +zlib: 2, // 2
+    +bzip2: 3 // 3
+  |};
 
-  declare class enums$compression__uncompressed mixins enums$compression {}
-  declare class enums$compression__zip mixins enums$compression {}
-  declare class enums$compression__zlib mixins enums$compression {}
-  declare class enums$compression__bzip2 mixins enums$compression {}
+  declare var enums$hash: {|
+    +md5: 0, // 0
+    +sha1: 1, // 1
+    +ripemd: 2, // 2
+    +sha256: 3, // 3
+    +sha384: 4, // 4
+    +sha512: 5, // 5
+    +sha224: 6 // 6
+  |};
 
-  declare class enums$hash {
-    constructor(...args: empty): mixed;
-    static +md5: Class<enums$hash__md5> & enums$hash__md5 & 0; // 0
-    static +sha1: Class<enums$hash__sha1> & enums$hash__sha1 & 1; // 1
-    static +ripemd: Class<enums$hash__ripemd> & enums$hash__ripemd & 2; // 2
-    static +sha256: Class<enums$hash__sha256> & enums$hash__sha256 & 3; // 3
-    static +sha384: Class<enums$hash__sha384> & enums$hash__sha384 & 4; // 4
-    static +sha512: Class<enums$hash__sha512> & enums$hash__sha512 & 5; // 5
-    static +sha224: Class<enums$hash__sha224> & enums$hash__sha224 & 6; // 6
-  }
+  declare var enums$packet: {|
+    +publicKeyEncryptedSessionKey: 0, // 0
+    +signature: 1, // 1
+    +symEncryptedSessionKey: 2, // 2
+    +onePassSignature: 3, // 3
+    +secretKey: 4, // 4
+    +publicKey: 5, // 5
+    +secretSubkey: 6, // 6
+    +compressed: 7, // 7
+    +symmetricallyEncrypted: 8, // 8
+    +marker: 9, // 9
+    +literal: 10, // 10
+    +trust: 11, // 11
+    +userid: 12, // 12
+    +publicSubkey: 13, // 13
+    +userAttribute: 14, // 14
+    +symEncryptedIntegrityProtected: 15, // 15
+    +modificationDetectionCode: 16 // 16
+  |};
 
-  declare class enums$hash__md5 mixins enums$hash {}
-  declare class enums$hash__sha1 mixins enums$hash {}
-  declare class enums$hash__ripemd mixins enums$hash {}
-  declare class enums$hash__sha256 mixins enums$hash {}
-  declare class enums$hash__sha384 mixins enums$hash {}
-  declare class enums$hash__sha512 mixins enums$hash {}
-  declare class enums$hash__sha224 mixins enums$hash {}
+  declare var enums$publicKey: {|
+    +rsa_encrypt_sign: 0, // 0
+    +rsa_encrypt: 1, // 1
+    +rsa_sign: 2, // 2
+    +elgamal: 3, // 3
+    +dsa: 4 // 4
+  |};
 
-  declare class enums$packet {
-    constructor(...args: empty): mixed;
-    static +publicKeyEncryptedSessionKey: Class<enums$packet__publicKeyEncryptedSessionKey> &
-      enums$packet__publicKeyEncryptedSessionKey &
-      0; // 0
-    static +signature: Class<enums$packet__signature> &
-      enums$packet__signature &
-      1; // 1
-    static +symEncryptedSessionKey: Class<enums$packet__symEncryptedSessionKey> &
-      enums$packet__symEncryptedSessionKey &
-      2; // 2
-    static +onePassSignature: Class<enums$packet__onePassSignature> &
-      enums$packet__onePassSignature &
-      3; // 3
-    static +secretKey: Class<enums$packet__secretKey> &
-      enums$packet__secretKey &
-      4; // 4
-    static +publicKey: Class<enums$packet__publicKey> &
-      enums$packet__publicKey &
-      5; // 5
-    static +secretSubkey: Class<enums$packet__secretSubkey> &
-      enums$packet__secretSubkey &
-      6; // 6
-    static +compressed: Class<enums$packet__compressed> &
-      enums$packet__compressed &
-      7; // 7
-    static +symmetricallyEncrypted: Class<enums$packet__symmetricallyEncrypted> &
-      enums$packet__symmetricallyEncrypted &
-      8; // 8
-    static +marker: Class<enums$packet__marker> & enums$packet__marker & 9; // 9
-    static +literal: Class<enums$packet__literal> & enums$packet__literal & 10; // 10
-    static +trust: Class<enums$packet__trust> & enums$packet__trust & 11; // 11
-    static +userid: Class<enums$packet__userid> & enums$packet__userid & 12; // 12
-    static +publicSubkey: Class<enums$packet__publicSubkey> &
-      enums$packet__publicSubkey &
-      13; // 13
-    static +userAttribute: Class<enums$packet__userAttribute> &
-      enums$packet__userAttribute &
-      14; // 14
-    static +symEncryptedIntegrityProtected: Class<enums$packet__symEncryptedIntegrityProtected> &
-      enums$packet__symEncryptedIntegrityProtected &
-      15; // 15
-    static +modificationDetectionCode: Class<enums$packet__modificationDetectionCode> &
-      enums$packet__modificationDetectionCode &
-      16; // 16
-  }
+  declare var enums$symmetric: {|
+    +plaintext: 0, // 0
+    +idea: 1, // 1
+    +tripledes: 2, // 2
+    +cast5: 3, // 3
+    +blowfish: 4, // 4
+    +aes128: 5, // 5
+    +aes192: 6, // 6
+    +aes256: 7, // 7
+    +twofish: 8 // 8
+  |};
 
-  declare class enums$packet__publicKeyEncryptedSessionKey
-    mixins enums$packet {}
-  declare class enums$packet__signature mixins enums$packet {}
-  declare class enums$packet__symEncryptedSessionKey mixins enums$packet {}
-  declare class enums$packet__onePassSignature mixins enums$packet {}
-  declare class enums$packet__secretKey mixins enums$packet {}
-  declare class enums$packet__publicKey mixins enums$packet {}
-  declare class enums$packet__secretSubkey mixins enums$packet {}
-  declare class enums$packet__compressed mixins enums$packet {}
-  declare class enums$packet__symmetricallyEncrypted mixins enums$packet {}
-  declare class enums$packet__marker mixins enums$packet {}
-  declare class enums$packet__literal mixins enums$packet {}
-  declare class enums$packet__trust mixins enums$packet {}
-  declare class enums$packet__userid mixins enums$packet {}
-  declare class enums$packet__publicSubkey mixins enums$packet {}
-  declare class enums$packet__userAttribute mixins enums$packet {}
-  declare class enums$packet__symEncryptedIntegrityProtected
-    mixins enums$packet {}
-  declare class enums$packet__modificationDetectionCode mixins enums$packet {}
+  declare var enums$keyStatus: {|
+    +invalid: 0, // 0
+    +expired: 1, // 1
+    +revoked: 2, // 2
+    +valid: 3, // 3
+    +no_self_cert: 4 // 4
+  |};
 
-  declare class enums$publicKey {
-    constructor(...args: empty): mixed;
-    static +rsa_encrypt_sign: Class<enums$publicKey__rsa_encrypt_sign> &
-      enums$publicKey__rsa_encrypt_sign &
-      0; // 0
-    static +rsa_encrypt: Class<enums$publicKey__rsa_encrypt> &
-      enums$publicKey__rsa_encrypt &
-      1; // 1
-    static +rsa_sign: Class<enums$publicKey__rsa_sign> &
-      enums$publicKey__rsa_sign &
-      2; // 2
-    static +elgamal: Class<enums$publicKey__elgamal> &
-      enums$publicKey__elgamal &
-      3; // 3
-    static +dsa: Class<enums$publicKey__dsa> & enums$publicKey__dsa & 4; // 4
-  }
-
-  declare class enums$publicKey__rsa_encrypt_sign mixins enums$publicKey {}
-  declare class enums$publicKey__rsa_encrypt mixins enums$publicKey {}
-  declare class enums$publicKey__rsa_sign mixins enums$publicKey {}
-  declare class enums$publicKey__elgamal mixins enums$publicKey {}
-  declare class enums$publicKey__dsa mixins enums$publicKey {}
-
-  declare class enums$symmetric {
-    constructor(...args: empty): mixed;
-    static +plaintext: Class<enums$symmetric__plaintext> &
-      enums$symmetric__plaintext &
-      0; // 0
-    static +idea: Class<enums$symmetric__idea> & enums$symmetric__idea & 1; // 1
-    static +tripledes: Class<enums$symmetric__tripledes> &
-      enums$symmetric__tripledes &
-      2; // 2
-    static +cast5: Class<enums$symmetric__cast5> & enums$symmetric__cast5 & 3; // 3
-    static +blowfish: Class<enums$symmetric__blowfish> &
-      enums$symmetric__blowfish &
-      4; // 4
-    static +aes128: Class<enums$symmetric__aes128> &
-      enums$symmetric__aes128 &
-      5; // 5
-    static +aes192: Class<enums$symmetric__aes192> &
-      enums$symmetric__aes192 &
-      6; // 6
-    static +aes256: Class<enums$symmetric__aes256> &
-      enums$symmetric__aes256 &
-      7; // 7
-    static +twofish: Class<enums$symmetric__twofish> &
-      enums$symmetric__twofish &
-      8; // 8
-  }
-
-  declare class enums$symmetric__plaintext mixins enums$symmetric {}
-  declare class enums$symmetric__idea mixins enums$symmetric {}
-  declare class enums$symmetric__tripledes mixins enums$symmetric {}
-  declare class enums$symmetric__cast5 mixins enums$symmetric {}
-  declare class enums$symmetric__blowfish mixins enums$symmetric {}
-  declare class enums$symmetric__aes128 mixins enums$symmetric {}
-  declare class enums$symmetric__aes192 mixins enums$symmetric {}
-  declare class enums$symmetric__aes256 mixins enums$symmetric {}
-  declare class enums$symmetric__twofish mixins enums$symmetric {}
-
-  declare class enums$keyStatus {
-    constructor(...args: empty): mixed;
-    static +invalid: Class<enums$keyStatus__invalid> &
-      enums$keyStatus__invalid &
-      0; // 0
-    static +expired: Class<enums$keyStatus__expired> &
-      enums$keyStatus__expired &
-      1; // 1
-    static +revoked: Class<enums$keyStatus__revoked> &
-      enums$keyStatus__revoked &
-      2; // 2
-    static +valid: Class<enums$keyStatus__valid> & enums$keyStatus__valid & 3; // 3
-    static +no_self_cert: Class<enums$keyStatus__no_self_cert> &
-      enums$keyStatus__no_self_cert &
-      4; // 4
-  }
-
-  declare class enums$keyStatus__invalid mixins enums$keyStatus {}
-  declare class enums$keyStatus__expired mixins enums$keyStatus {}
-  declare class enums$keyStatus__revoked mixins enums$keyStatus {}
-  declare class enums$keyStatus__valid mixins enums$keyStatus {}
-  declare class enums$keyStatus__no_self_cert mixins enums$keyStatus {}
-
-  declare class enums$reasonForRevocation {
-    constructor(...args: empty): mixed;
-    static +no_reason: Class<enums$reasonForRevocation__no_reason> &
-      enums$reasonForRevocation__no_reason &
-      0; // 0
-    static +key_superseded: Class<enums$reasonForRevocation__key_superseded> &
-      enums$reasonForRevocation__key_superseded &
-      1; // 1
-    static +key_compromised: Class<enums$reasonForRevocation__key_compromised> &
-      enums$reasonForRevocation__key_compromised &
-      2; // 2
-    static +key_retired: Class<enums$reasonForRevocation__key_retired> &
-      enums$reasonForRevocation__key_retired &
-      3; // 3
-    static +userid_invalid: Class<enums$reasonForRevocation__userid_invalid> &
-      enums$reasonForRevocation__userid_invalid &
-      4; // 4
-  }
-
-  declare class enums$reasonForRevocation__no_reason
-    mixins enums$reasonForRevocation {}
-  declare class enums$reasonForRevocation__key_superseded
-    mixins enums$reasonForRevocation {}
-  declare class enums$reasonForRevocation__key_compromised
-    mixins enums$reasonForRevocation {}
-  declare class enums$reasonForRevocation__key_retired
-    mixins enums$reasonForRevocation {}
-  declare class enums$reasonForRevocation__userid_invalid
-    mixins enums$reasonForRevocation {}
+  declare var enums$reasonForRevocation: {|
+    +no_reason: 0, // 0
+    +key_superseded: 1, // 1
+    +key_compromised: 2, // 2
+    +key_retired: 3, // 3
+    +userid_invalid: 4 // 4
+  |};
 
   declare var npm$namespace$key: {
     generate: typeof key$generate,
@@ -896,8 +752,8 @@ valid: Boolean (if `streaming` was false)
    * Class that represents an OpenPGP key. Must contain a primary key. Can contain additional subkeys, signatures, user ids, user attributes.
    */
   declare interface key$Key {
-    enums$armor(): string;
-    cfb$decrypt(passphrase: string): boolean;
+    armor(): string;
+    decrypt(passphrase: string): boolean;
     getExpirationTime(): Date;
     getKeyIds(): Array<Keyid>;
     getPreferredHashAlgorithm(): string;
@@ -905,10 +761,10 @@ valid: Boolean (if `streaming` was false)
     getUserIds(): Array<string>;
     isPrivate(): boolean;
     isPublic(): boolean;
-    primaryKey: enums$packet.packet$PublicKey;
+    primaryKey: packet$PublicKey;
     toPublic(): key$Key;
     update(key: key$Key): void;
-    verifyPrimaryKey(): enums$enums$keyStatus;
+    verifyPrimaryKey(): enums$keyStatus;
   }
 
   /**
@@ -937,19 +793,19 @@ valid: Boolean (if `streaming` was false)
     /**
      * Returns ASCII armored text of message
      */
-    enums$armor(): string;
+    armor(): string;
 
     /**
      * Decrypt the message
      * @param privateKey private key with decrypted secret data
      */
-    cfb$decrypt(privateKey: key$key$Key): Array<message$Message>;
+    decrypt(privateKey: key$Key): Array<message$Message>;
 
     /**
      * Encrypt the message
      * @param keys array of keys, used to encrypt the message
      */
-    cfb$encrypt(keys: Array<key$key$Key>): Array<message$Message>;
+    encrypt(keys: Array<key$Key>): Array<message$Message>;
 
     /**
      * Returns the key IDs of the keys to which the session key is encrypted
@@ -975,7 +831,7 @@ valid: Boolean (if `streaming` was false)
      * Sign the message (the literal data packet of the message)
      * @param privateKey private keys with decrypted secret key data for signing
      */
-    signature$sign(privateKey: Array<key$key$Key>): message$Message;
+    sign(privateKey: Array<key$Key>): message$Message;
 
     /**
      * Unwrap compressed message
@@ -986,7 +842,7 @@ valid: Boolean (if `streaming` was false)
      * Verify message signatures
      * @param keys array of keys to verify signatures
      */
-    signature$verify(keys: Array<key$key$Key>): Array<Object>;
+    verify(keys: Array<key$Key>): Array<Object>;
     packets: {
       write(): Uint8Array
     };
@@ -1027,22 +883,22 @@ valid: Boolean (if `streaming` was false)
     newPacketFromTag: typeof packet$newPacketFromTag
   };
   declare interface packet$PublicKey {
-    algorithm: enums$enums$publicKey;
+    algorithm: enums$publicKey;
     created: Date;
     fingerprint: string;
     getBitSize(): number;
     getFingerprint(): string;
     getKeyId(): string;
-    message$read(input: string): any;
+    read(input: string): any;
     write(): any;
   }
 
   declare type packet$SecretKey = {
-    message$read(bytes: string): void,
+    read(bytes: string): void,
     write(): string,
     clearPrivateMPIs(str_passphrase: string): boolean,
-    cfb$encrypt(passphrase: string): void
-  } & packet$PublicKey;
+    encrypt(passphrase: string): void
+  } & PublicKey;
 
   /**
    * Allocate a new packet from structured packet clone
