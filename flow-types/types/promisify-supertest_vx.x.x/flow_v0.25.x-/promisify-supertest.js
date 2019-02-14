@@ -3,18 +3,13 @@ declare module "promisify-supertest" {
 
   import typeof * as express from "express";
 
-  declare type CallbackHandler = (
-    err: any,
-    res: supertest$supertest$Response
-  ) => void;
-  declare function supertest(
-    app: express.Express
-  ): supertest$supertest$SuperTest;
+  declare type CallbackHandler = (err: any, res: supertest$Response) => void;
+  declare function supertest(app: express.Express): supertest$SuperTest;
 
   declare var npm$namespace$supertest: {
     agent: typeof supertest$agent
   };
-  declare function supertest$agent(app?: any): supertest$supertest$SuperTest;
+  declare function supertest$agent(app?: any): supertest$SuperTest;
 
   declare type supertest$SuperTest = {} & superagent.SuperAgent<supertest$Test>;
 
@@ -32,7 +27,7 @@ declare module "promisify-supertest" {
     end(callback?: CallbackHandler): this & Promise<supertest$Response>
   } & superagent.SuperAgentRequest;
 
-  declare type supertest$Response = {} & superagent.supertest$Response;
+  declare type supertest$Response = {} & superagent.Response;
 
-  declare module.exports: typeof supertest;
+  declare export default typeof supertest;
 }
