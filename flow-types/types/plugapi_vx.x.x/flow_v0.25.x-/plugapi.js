@@ -48,7 +48,7 @@ declare module "plugapi" {
   }
 
   declare interface PlugAPI$LastPlay {
-    dj: User$User.User$DJ;
+    dj: User$DJ;
     media: PlugAPI$Media;
     score: PlugAPI$Score;
   }
@@ -63,26 +63,26 @@ declare module "plugapi" {
     log(): void;
   }
 
-  declare interface User$Default {
+  declare interface PlugAPI$User$Default {
     username: string;
     language: string;
     avatarID: string;
   }
 
-  declare type User$Extended = {
+  declare type PlugAPI$User$Extended = {
     status: number,
     fans: number,
     listenerPoints: number,
     id: string,
     curatorPoints: number,
     djPoints: number
-  } & User$Default;
+  } & Default;
 
-  declare type User$Update = {
+  declare type PlugAPI$User$Update = {
     dateJoined: string
-  } & User$Extended;
+  } & Extended;
 
-  declare type User$Room = {
+  declare type PlugAPI$User$Room = {
     sub: number,
     level: number,
     joined: string,
@@ -91,29 +91,29 @@ declare module "plugapi" {
     role: number,
     gRole: number,
     slug: string
-  } & User$Default;
+  } & Default;
 
-  declare type User$User = {
+  declare type PlugAPI$User$User = {
     silver: boolean,
     guest: boolean
-  } & User$Room;
+  } & Room;
 
-  declare type User$DJ = {
+  declare type PlugAPI$User$DJ = {
     blurp: any,
     grab: boolean,
     status: number,
     vote: number
-  } & User$Room;
+  } & Room;
 
-  declare type User$Audience = {
+  declare type PlugAPI$User$Audience = {
     ignores: any[],
     notifications: PlugAPI$Notification[],
     pp: number,
     pw: number,
     xp: number
-  } & User$DJ;
+  } & DJ;
 
-  declare interface Enum$RoomRole {
+  declare interface PlugAPI$Enum$RoomRole {
     NONE: number;
     RESIDENTDJ: number;
     BOUNCER: number;
@@ -122,7 +122,7 @@ declare module "plugapi" {
     HOST: number;
   }
 
-  declare interface Enum$GlobalRole {
+  declare interface PlugAPI$Enum$GlobalRole {
     NONE: number;
     VOLUNTEER: number;
     AMBASSADOR: number;
@@ -130,18 +130,18 @@ declare module "plugapi" {
     ADMIN: number;
   }
 
-  declare interface Enum$Status {
+  declare interface PlugAPI$Enum$Status {
     OFFLINE: number;
     ONLINE: number;
   }
 
-  declare interface Enum$Ban {
+  declare interface PlugAPI$Enum$Ban {
     HOUR: "h";
     DAY: "d";
     PERMA: "f";
   }
 
-  declare interface Enum$BanReason {
+  declare interface PlugAPI$Enum$BanReason {
     SPAMMING_TROLLING: number;
     VERBAL_ABUSE: number;
     OFFENSIVE_MEDIA: number;
@@ -149,13 +149,13 @@ declare module "plugapi" {
     NEGATIVE_ATTITUDE: number;
   }
 
-  declare interface Enum$Mute {
+  declare interface PlugAPI$Enum$Mute {
     SHORT: "s";
     MEDIUM: "m";
     LONG: "l";
   }
 
-  declare interface Enum$MuteReason {
+  declare interface PlugAPI$Enum$MuteReason {
     VIOLATING_COMMUNITY_RULES: number;
     VERBAL_ABUSE: number;
     SPAMMING_TROLLING: number;
@@ -163,7 +163,7 @@ declare module "plugapi" {
     NEGATIVE_ATTITUDE: number;
   }
 
-  declare interface Enum$Events {
+  declare interface PlugAPI$Enum$Events {
     ADVANCE: "advance";
     BAN: "ban";
     BOOTH_LOCKED: "boothLocked";
@@ -218,51 +218,51 @@ declare module "plugapi" {
     VOTE: "vote";
   }
 
-  declare interface Event$BoothCycle {
+  declare interface PlugAPI$Event$BoothCycle {
     moderator: string;
     cycle: boolean;
   }
 
-  declare interface Event$BoothLocked {
+  declare interface PlugAPI$Event$BoothLocked {
     m: string;
     c: boolean;
     ml: string;
     f: boolean;
   }
 
-  declare interface Event$Chat {
+  declare interface PlugAPI$Event$Chat {
     raw: PlugAPI$RawChatMessage;
     id: string;
-    from: User$User.User$User;
+    from: User$User;
     message: string;
     mentions: any[];
     muted: boolean;
     type: string;
   }
 
-  declare interface Event$ChatDelete {
+  declare interface PlugAPI$Event$ChatDelete {
     mi: number;
     chatID: string;
   }
 
-  declare type Event$Grab = number;
+  declare type PlugAPI$Event$Grab = number;
 
-  declare interface Event$Advance {
+  declare interface PlugAPI$Event$Advance {
     media: PlugAPI$Media;
     startTime: string;
     historyID: string;
-    djs: User$User.User$DJ[];
-    currentDJ: User$User.User$DJ;
+    djs: User$DJ[];
+    currentDJ: User$DJ;
     playlistID: number;
     lastPlay: PlugAPI$LastPlay;
   }
 
-  declare interface Event$DJListUpdate {
-    djs: User$User.User$DJ[];
+  declare interface PlugAPI$Event$DJListUpdate {
+    djs: User$DJ[];
     remove: string;
   }
 
-  declare interface Event$Emote {
+  declare interface PlugAPI$Event$Emote {
     fromID: string;
     message: string;
     from: string;
@@ -270,17 +270,17 @@ declare module "plugapi" {
     chatID: string;
   }
 
-  declare interface Event$FollowJoin {
+  declare interface PlugAPI$Event$FollowJoin {
     data: PlugAPI$FollowJoinData;
     type: string;
   }
 
-  declare interface Event$ModAddDJ {
+  declare interface PlugAPI$Event$ModAddDJ {
     moderator: string;
     username: string;
   }
 
-  declare interface Event$ModBan {
+  declare interface PlugAPI$Event$ModBan {
     moderator: string;
     username: string;
     duration: number;
@@ -288,37 +288,37 @@ declare module "plugapi" {
     reason: string;
   }
 
-  declare interface Event$ModMoveDJ {
+  declare interface PlugAPI$Event$ModMoveDJ {
     moderator: string;
     index: number;
     old: number;
     userID: string;
   }
 
-  declare interface Event$ModRemoveDJ {
+  declare interface PlugAPI$Event$ModRemoveDJ {
     moderator: string;
     username: string;
     userID: string;
   }
 
-  declare interface Event$ModSkip {
+  declare interface PlugAPI$Event$ModSkip {
     mi: number;
     m: string;
   }
 
-  declare interface Event$RoomMinChatLevelUpdate {
+  declare interface PlugAPI$Event$RoomMinChatLevelUpdate {
     level: number;
     id: number;
-    user: User$User.User$User;
+    user: User$User;
   }
 
-  declare type Event$RoomJoin = string;
+  declare type PlugAPI$Event$RoomJoin = string;
 
-  declare type Event$UserJoin = User$User.User$User;
+  declare type PlugAPI$Event$UserJoin = User$User;
 
-  declare type Event$UserLeave = User$User.User$User;
+  declare type PlugAPI$Event$UserLeave = User$User;
 
-  declare interface Event$UserUpdate {
+  declare interface PlugAPI$Event$UserUpdate {
     username: string;
     status: number;
     fans: number;
@@ -331,38 +331,38 @@ declare module "plugapi" {
     djPoints: number;
   }
 
-  declare interface Event$Vote {
+  declare interface PlugAPI$Event$Vote {
     i: number;
     v: number;
   }
 
-  declare type Event$Command = {
+  declare type PlugAPI$Event$Command = {
     command: string,
     args: string[],
     respond(...args: any[]): any,
     respondTimeout(...args: any[]): any,
     havePermission(...args: any[]): boolean,
     isFrom(...args: any[]): boolean
-  } & Event$Chat;
+  } & Chat;
 
-  declare var PlugAPI$ROOM_ROLE: Enum$Enum$RoomRole;
+  declare var PlugAPI$ROOM_ROLE: Enum$RoomRole;
 
-  declare var PlugAPI$GLOBAL_ROLES: Enum$Enum$GlobalRole;
+  declare var PlugAPI$GLOBAL_ROLES: Enum$GlobalRole;
 
-  declare var PlugAPI$STATUS: Enum$Enum$Status;
+  declare var PlugAPI$STATUS: Enum$Status;
 
-  declare var PlugAPI$BAN: Enum$Enum$Ban;
+  declare var PlugAPI$BAN: Enum$Ban;
 
-  declare var PlugAPI$BAN_REASON: Enum$Enum$BanReason;
+  declare var PlugAPI$BAN_REASON: Enum$BanReason;
 
-  declare var PlugAPI$MUTE: Enum$Enum$Mute;
+  declare var PlugAPI$MUTE: Enum$Mute;
 
-  declare var PlugAPI$MUTE_REASON: Enum$Enum$MuteReason;
+  declare var PlugAPI$MUTE_REASON: Enum$MuteReason;
 
-  declare var PlugAPI$events: Enum$Enum$Events;
+  declare var PlugAPI$events: Enum$Events;
   declare class PlugAPI {
     constructor(
-      login: PlugAPI$PlugAPI$PlugLogin,
+      login: PlugAPI$PlugLogin,
       callback?: (error: Error, bot: PlugAPI) => void | ((bot: PlugAPI) => void)
     ): this;
     deleteAllChat: boolean;
@@ -372,21 +372,21 @@ declare module "plugapi" {
     changeDJCycle(enabled: boolean, callback?: () => void): boolean;
     changeRoom(room: string, callback?: () => void): void;
     close(): void;
-    getAdmins(): PlugAPI$User$User.User$Extended[];
-    getAmbassadors(): PlugAPI$User$User.User$Extended[];
-    getAudience(): PlugAPI$User$User.User$Audience[];
-    getDJ(): PlugAPI$User$User.User$DJ;
-    getDJs(): PlugAPI$User$User.User$DJ[];
-    getHost(): PlugAPI$User$User.User$Extended;
-    getMedia(): PlugAPI$PlugAPI$Media;
-    getRoomScore(): PlugAPI$PlugAPI$Score;
-    getSelf(): PlugAPI$User$User.User$Audience;
-    getStaff(): PlugAPI$User$User.User$Extended[];
+    getAdmins(): PlugAPI$UserExtended[];
+    getAmbassadors(): PlugAPI$UserExtended[];
+    getAudience(): PlugAPI$UserAudience[];
+    getDJ(): PlugAPI$UserDJ;
+    getDJs(): PlugAPI$UserDJ[];
+    getHost(): PlugAPI$UserExtended;
+    getMedia(): PlugAPI$Media;
+    getRoomScore(): PlugAPI$Score;
+    getSelf(): PlugAPI$UserAudience;
+    getStaff(): PlugAPI$UserExtended[];
     getTimeElapsed(): number;
     getTimeRemaining(): number;
-    getUser(userID: number): PlugAPI$User$User.User$DJ;
-    getUsers(): PlugAPI$User$User.User$DJ[];
-    getWaitList(): PlugAPI$User$User.User$Extended;
+    getUser(userID: number): PlugAPI$UserDJ;
+    getUsers(): PlugAPI$UserDJ[];
+    getWaitList(): PlugAPI$UserExtended;
     getWaitListPosition(userID: number): number;
     havePermission(
       userID: number,
@@ -397,83 +397,68 @@ declare module "plugapi" {
     leaveBooth(callback?: () => void): boolean;
     selfSkip(callback?: () => void): boolean;
     sendChat(msg: string, timeout?: number): void;
-    setLogger(logObject: PlugAPI$PlugAPI$LogObject): boolean;
+    setLogger(logObject: PlugAPI$LogObject): boolean;
     on(
       event: "boothCycle",
-      callback: (data: PlugAPI$Event.Event$BoothCycle) => void
+      callback: (data: PlugAPI$EventBoothCycle) => void
     ): void;
     on(
       event: "boothLocked",
-      callback: (data: PlugAPI$Event.Event$BoothLocked) => void
+      callback: (data: PlugAPI$EventBoothLocked) => void
     ): void;
-    on(event: "chat", callback: (data: PlugAPI$Event.Event$Chat) => void): void;
+    on(event: "chat", callback: (data: PlugAPI$EventChat) => void): void;
     on(
       event: "chatDelete",
-      callback: (data: PlugAPI$Event.Event$ChatDelete) => void
+      callback: (data: PlugAPI$EventChatDelete) => void
     ): void;
-    on(event: "grab", callback: (data: PlugAPI$Event.Event$Grab) => void): void;
-    on(
-      event: "advance",
-      callback: (data: PlugAPI$Event.Event$Advance) => void
-    ): void;
+    on(event: "grab", callback: (data: PlugAPI$EventGrab) => void): void;
+    on(event: "advance", callback: (data: PlugAPI$EventAdvance) => void): void;
     on(
       event: "djListUpdate",
-      callback: (data: PlugAPI$Event.Event$DJListUpdate) => void
+      callback: (data: PlugAPI$EventDJListUpdate) => void
     ): void;
-    on(
-      event: "emote",
-      callback: (data: PlugAPI$Event.Event$Emote) => void
-    ): void;
+    on(event: "emote", callback: (data: PlugAPI$EventEmote) => void): void;
     on(
       event: "followJoin",
-      callback: (data: PlugAPI$Event.Event$FollowJoin) => void
+      callback: (data: PlugAPI$EventFollowJoin) => void
     ): void;
     on(
       event: "modAddDJ",
-      callback: (data: PlugAPI$Event.Event$ModAddDJ) => void
+      callback: (data: PlugAPI$EventModAddDJ) => void
     ): void;
-    on(
-      event: "modBan",
-      callback: (data: PlugAPI$Event.Event$ModBan) => void
-    ): void;
+    on(event: "modBan", callback: (data: PlugAPI$EventModBan) => void): void;
     on(
       event: "modMoveDJ",
-      callback: (data: PlugAPI$Event.Event$ModMoveDJ) => void
+      callback: (data: PlugAPI$EventModMoveDJ) => void
     ): void;
     on(
       event: "modRemoveDJ",
-      callback: (data: PlugAPI$Event.Event$ModRemoveDJ) => void
+      callback: (data: PlugAPI$EventModRemoveDJ) => void
     ): void;
-    on(
-      event: "modSkip",
-      callback: (data: PlugAPI$Event.Event$ModSkip) => void
-    ): void;
+    on(event: "modSkip", callback: (data: PlugAPI$EventModSkip) => void): void;
     on(
       event: "roomMinChatLevelUpdate",
-      callback: (data: PlugAPI$Event.Event$RoomMinChatLevelUpdate) => void
+      callback: (data: PlugAPI$EventRoomMinChatLevelUpdate) => void
     ): void;
     on(
       event: "roomJoin",
-      callback: (data: PlugAPI$Event.Event$RoomJoin) => void
+      callback: (data: PlugAPI$EventRoomJoin) => void
     ): void;
     on(
       event: "userJoin",
-      callback: (data: PlugAPI$Event.Event$UserJoin) => void
+      callback: (data: PlugAPI$EventUserJoin) => void
     ): void;
     on(
       event: "userLeave",
-      callback: (data: PlugAPI$Event.Event$UserLeave) => void
+      callback: (data: PlugAPI$EventUserLeave) => void
     ): void;
     on(
       event: "userUpdate",
-      callback: (data: PlugAPI$Event.Event$UserUpdate) => void
+      callback: (data: PlugAPI$EventUserUpdate) => void
     ): void;
-    on(event: "vote", callback: (data: PlugAPI$Event.Event$Vote) => void): void;
-    on(
-      event: "command",
-      callback: (data: PlugAPI$Event.Event$Command) => void
-    ): void;
+    on(event: "vote", callback: (data: PlugAPI$EventVote) => void): void;
+    on(event: "command", callback: (data: PlugAPI$EventCommand) => void): void;
     on(event: string, callback: (data: any) => void): void;
   }
-  declare module.exports: typeof PlugAPI;
+  declare export default typeof PlugAPI;
 }
