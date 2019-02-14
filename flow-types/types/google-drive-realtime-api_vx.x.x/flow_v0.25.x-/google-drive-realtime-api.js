@@ -1,26 +1,40 @@
 declare module "google-drive-realtime-api" {
-  declare var npm$namespace$databinding: {
-    bindString: typeof databinding$bindString
+  declare var npm$namespace$gapi: {
+    drive: typeof npm$namespace$gapi$drive
   };
-  declare export interface databinding$Binding {
+
+  declare var npm$namespace$gapi$drive: {
+    realtime: typeof npm$namespace$gapi$drive$realtime
+  };
+
+  declare var npm$namespace$gapi$drive$realtime: {
+    databinding: typeof npm$namespace$gapi$drive$realtime$databinding
+  };
+
+  declare var npm$namespace$gapi$drive$realtime$databinding: {
+    bindString: typeof gapi$drive$realtime$databinding$bindString
+  };
+  declare export interface gapi$drive$realtime$databinding$Binding {
     collaborativeObject: realtime$CollaborativeObject;
     domElement: Element;
     unbind(): void;
   }
 
-  declare export function databinding$bindString(
+  declare export function gapi$drive$realtime$databinding$bindString(
     s: realtime$CollaborativeString,
     textinput: HTMLInputElement
-  ): databinding$Binding;
+  ): gapi$drive$realtime$databinding$Binding;
 
   declare var npm$namespace$rtclient: {
     createRealtimeFile: typeof rtclient$createRealtimeFile,
-    RealtimeLoader: typeof rtclient$RealtimeLoader
+    RealtimeLoader: typeof rtclient$RealtimeLoader,
+
+    params: typeof npm$namespace$rtclient$params
   };
   declare export interface rtclient$RealtimeLoader {
     start(): void;
-    realtime$load(): void;
-    handleErrors(e: gapi$gapi$drive.realtime.realtime$Error): void;
+    load(): void;
+    handleErrors(e: gapi$drive$realtime$Error): void;
   }
 
   declare interface rtclient$RealtimeLoaderFactory {
@@ -36,8 +50,8 @@ declare module "google-drive-realtime-api" {
     registerTypes: () => void;
     defaultTitle: string;
     afterAuth: () => void;
-    initializeModel: (model: gapi$gapi$drive.realtime.realtime$Model) => void;
-    onFileLoaded: (rtdoc: gapi$gapi$drive.realtime.realtime$Document) => void;
+    initializeModel: (model: gapi$drive$realtime$Model) => void;
+    onFileLoaded: (rtdoc: gapi$drive$realtime$Document) => void;
   }
 
   declare export interface rtclient$DriveAPIFileResource {
@@ -45,10 +59,10 @@ declare module "google-drive-realtime-api" {
   }
 
   declare export interface rtclient$ClientUtils {
-    rtclient$params: {
+    params: {
       fileIds: string
     };
-    rtclient$RealtimeLoader: rtclient$RealtimeLoaderFactory;
+    RealtimeLoader: rtclient$RealtimeLoaderFactory;
 
     /**
      * Creates a new Realtime file.
@@ -56,7 +70,7 @@ declare module "google-drive-realtime-api" {
      * @param {string} mimeType the MIME type of the new file.
      * @param {(file: rtclient$DriveAPIFileResource) => void} callback the callback to call after creation.
      */
-    rtclient$createRealtimeFile(
+    createRealtimeFile(
       title: string,
       mimeType: string,
       callback: (file: rtclient$DriveAPIFileResource) => void
@@ -77,8 +91,8 @@ declare module "google-drive-realtime-api" {
     callback: (file: rtclient$DriveAPIFileResource) => void
   ): void;
 
-  declare var npm$namespace$params: {
-    fileIds: typeof params$fileIds
+  declare var npm$namespace$rtclient$params: {
+    fileIds: typeof rtclient$params$fileIds
   };
-  declare export var params$fileIds: string;
+  declare export var rtclient$params$fileIds: string;
 }
