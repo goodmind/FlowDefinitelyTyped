@@ -2,8 +2,8 @@ declare module "react-autosuggest" {
   import typeof * as React from "react";
 
   declare class Autosuggest<T = any>
-    mixins React.Component<Autosuggest$Autosuggest$AutosuggestProps<T>> {}
-  declare module.exports: typeof Autosuggest;
+    mixins React.Component<Autosuggest$AutosuggestProps<T>> {}
+  declare export default typeof Autosuggest;
 
   /**
    * Utilies types based on:
@@ -61,7 +61,7 @@ declare module "react-autosuggest" {
     ) => void,
     value: string,
     [key: string]: any
-  } & Autosuggest$Omit<React.InputHTMLAttributes<any>, "onChange" | "onBlur">;
+  } & Omit<React.InputHTMLAttributes<any>, "onChange" | "onBlur">;
 
   declare interface Autosuggest$SuggestionSelectedEventData<TSuggestion> {
     suggestion: TSuggestion;
