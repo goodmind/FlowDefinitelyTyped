@@ -14,8 +14,8 @@ declare module "leaflet" {
   }
   declare export class Transformation {
     constructor(a: number, b: number, c: number, d: number): this;
-    transform(point: math$Point, control$scale?: number): math$Point;
-    untransform(point: math$Point, control$scale?: number): math$Point;
+    transform(point: Point, scale?: number): Point;
+    untransform(point: Point, scale?: number): Point;
   }
 
   declare var npm$namespace$LineUtil: {
@@ -25,21 +25,21 @@ declare module "leaflet" {
     isFlat: typeof LineUtil$isFlat
   };
   declare function LineUtil$simplify(
-    points: math$Point[],
+    points: Point[],
     tolerance: number
-  ): math$Point[];
+  ): Point[];
 
   declare function LineUtil$pointToSegmentDistance(
-    p: math$Point,
-    p1: math$Point,
-    p2: math$Point
+    p: Point,
+    p1: Point,
+    p2: Point
   ): number;
 
   declare function LineUtil$closestPointOnSegment(
-    p: math$Point,
-    p1: math$Point,
-    p2: math$Point
-  ): math$Point;
+    p: Point,
+    p1: Point,
+    p2: Point
+  ): Point;
 
   declare function LineUtil$isFlat(latlngs: LatLngExpression[]): boolean;
 
@@ -47,10 +47,10 @@ declare module "leaflet" {
     clipPolygon: typeof PolyUtil$clipPolygon
   };
   declare function PolyUtil$clipPolygon(
-    points: math$Point[],
+    points: Point[],
     bounds: BoundsExpression,
     round?: boolean
-  ): math$Point[];
+  ): Point[];
 
   declare var npm$namespace$DomUtil: {
     get: typeof DomUtil$get,
@@ -85,7 +85,7 @@ declare module "leaflet" {
    * Get Element by its ID or with the given HTML-Element
    */
   declare function DomUtil$get(
-    htmlParser$element: string | HTMLElement
+    element: string | HTMLElement
   ): HTMLElement | null;
 
   declare function DomUtil$getStyle(
@@ -107,41 +107,29 @@ declare module "leaflet" {
 
   declare function DomUtil$toBack(el: HTMLElement): void;
 
-  declare function DomUtil$hasClass(
-    el: HTMLElement,
-    skin$name: string
-  ): boolean;
+  declare function DomUtil$hasClass(el: HTMLElement, name: string): boolean;
 
-  declare function DomUtil$addClass(el: HTMLElement, skin$name: string): void;
+  declare function DomUtil$addClass(el: HTMLElement, name: string): void;
 
-  declare function DomUtil$removeClass(
-    el: HTMLElement,
-    skin$name: string
-  ): void;
+  declare function DomUtil$removeClass(el: HTMLElement, name: string): void;
 
-  declare function DomUtil$setClass(el: HTMLElement, skin$name: string): void;
+  declare function DomUtil$setClass(el: HTMLElement, name: string): void;
 
   declare function DomUtil$getClass(el: HTMLElement): string;
 
-  declare function DomUtil$setOpacity(
-    el: HTMLElement,
-    __esri$opacity: number
-  ): void;
+  declare function DomUtil$setOpacity(el: HTMLElement, opacity: number): void;
 
   declare function DomUtil$testProp(props: string[]): string | false;
 
   declare function DomUtil$setTransform(
     el: HTMLElement,
-    offset: math$Point,
-    control$scale?: number
+    offset: Point,
+    scale?: number
   ): void;
 
-  declare function DomUtil$setPosition(
-    el: HTMLElement,
-    dom$position: math$Point
-  ): void;
+  declare function DomUtil$setPosition(el: HTMLElement, position: Point): void;
 
-  declare function DomUtil$getPosition(el: HTMLElement): math$Point;
+  declare function DomUtil$getPosition(el: HTMLElement): Point;
 
   declare function DomUtil$disableTextSelection(): void;
 
@@ -161,15 +149,15 @@ declare module "leaflet" {
 
   declare var DomUtil$TRANSITION_END: string;
   declare export interface CRS {
-    latLngToPoint(latlng: LatLngExpression, control$zoom: number): math$Point;
-    pointToLatLng(point: PointExpression, control$zoom: number): maps$LatLng;
-    project(latlng: maps$LatLng | maps$LatLngLiteral): math$Point;
-    unproject(point: PointExpression): maps$LatLng;
-    control$scale(control$zoom: number): number;
-    control$zoom(control$scale: number): number;
-    getProjectedBounds(control$zoom: number): BPMNModdle$Bounds;
+    latLngToPoint(latlng: LatLngExpression, zoom: number): Point;
+    pointToLatLng(point: PointExpression, zoom: number): LatLng;
+    project(latlng: LatLng | LatLngLiteral): Point;
+    unproject(point: PointExpression): LatLng;
+    scale(zoom: number): number;
+    zoom(scale: number): number;
+    getProjectedBounds(zoom: number): Bounds;
     distance(latlng1: LatLngExpression, latlng2: LatLngExpression): number;
-    wrapLatLng(latlng: maps$LatLng | maps$LatLngLiteral): maps$LatLng;
+    wrapLatLng(latlng: LatLng | LatLngLiteral): LatLng;
     code?: string;
     wrapLng?: [number, number];
     wrapLat?: [number, number];
@@ -193,9 +181,9 @@ declare module "leaflet" {
 
   declare var CRS$Simple: CRS;
   declare export interface Projection {
-    project(latlng: maps$LatLng | maps$LatLngLiteral): math$Point;
-    unproject(point: PointExpression): maps$LatLng;
-    bounds: BPMNModdle$Bounds;
+    project(latlng: LatLng | LatLngLiteral): Point;
+    unproject(point: PointExpression): LatLng;
+    bounds: Bounds;
   }
 
   declare var npm$namespace$Projection: {
@@ -203,18 +191,18 @@ declare module "leaflet" {
     Mercator: typeof Projection$Mercator,
     SphericalMercator: typeof Projection$SphericalMercator
   };
-  declare var Projection$LonLat: maps$Projection;
+  declare var Projection$LonLat: Projection;
 
-  declare var Projection$Mercator: maps$Projection;
+  declare var Projection$Mercator: Projection;
 
-  declare var Projection$SphericalMercator: maps$Projection;
+  declare var Projection$SphericalMercator: Projection;
   declare export class LatLng {
     constructor(latitude: number, longitude: number, altitude?: number): this;
     equals(otherLatLng: LatLngExpression, maxMargin?: number): boolean;
     toString(): string;
     distanceTo(otherLatLng: LatLngExpression): number;
-    wrap(): maps$LatLng;
-    toBounds(sizeInMeters: number): maps$LatLngBounds;
+    wrap(): LatLng;
+    toBounds(sizeInMeters: number): LatLngBounds;
     lat: number;
     lng: number;
     alt: number;
@@ -224,38 +212,35 @@ declare module "leaflet" {
     lng: number;
   }
   declare export type LatLngTuple = [number, number];
-  declare export type LatLngExpression =
-    | maps$LatLng
-    | maps$LatLngLiteral
-    | LatLngTuple;
+  declare export type LatLngExpression = LatLng | LatLngLiteral | LatLngTuple;
   declare export function latLng(
     latitude: number,
     longitude: number,
     altitude?: number
-  ): maps$LatLng;
+  ): LatLng;
 
   declare export function latLng(
     coords:
       | LatLngTuple
       | [number, number, number]
-      | maps$LatLngLiteral
+      | LatLngLiteral
       | {
           lat: number,
           lng: number,
           alt?: number
         }
-  ): maps$LatLng;
+  ): LatLng;
 
   declare export class LatLngBounds {
     constructor(southWest: LatLngExpression, northEast: LatLngExpression): this;
-    constructor(latlngs: maps$LatLngBoundsLiteral): this;
+    constructor(latlngs: LatLngBoundsLiteral): this;
     extend(latlngOrBounds: LatLngExpression | LatLngBoundsExpression): this;
-    pad(bufferRatio: number): maps$LatLngBounds;
-    getCenter(): maps$LatLng;
-    getSouthWest(): maps$LatLng;
-    getNorthEast(): maps$LatLng;
-    getNorthWest(): maps$LatLng;
-    getSouthEast(): maps$LatLng;
+    pad(bufferRatio: number): LatLngBounds;
+    getCenter(): LatLng;
+    getSouthWest(): LatLng;
+    getNorthEast(): LatLng;
+    getNorthWest(): LatLng;
+    getSouthEast(): LatLng;
     getWest(): number;
     getSouth(): number;
     getEast(): number;
@@ -271,30 +256,30 @@ declare module "leaflet" {
   }
   declare export type LatLngBoundsLiteral = LatLngTuple[];
   declare export type LatLngBoundsExpression =
-    | maps$LatLngBounds
-    | maps$LatLngBoundsLiteral;
+    | LatLngBounds
+    | LatLngBoundsLiteral;
   declare export function latLngBounds(
     southWest: LatLngExpression,
     northEast: LatLngExpression
-  ): maps$LatLngBounds;
+  ): LatLngBounds;
 
   declare export function latLngBounds(
     latlngs: LatLngExpression[]
-  ): maps$LatLngBounds;
+  ): LatLngBounds;
 
   declare export type PointTuple = [number, number];
   declare export class Point {
     constructor(x: number, y: number, round?: boolean): this;
-    clone(): math$Point;
-    add(otherPoint: PointExpression): math$Point;
-    subtract(otherPoint: PointExpression): math$Point;
-    divideBy(num: number): math$Point;
-    multiplyBy(num: number): math$Point;
-    scaleBy(control$scale: PointExpression): math$Point;
-    unscaleBy(control$scale: PointExpression): math$Point;
-    round(): math$Point;
-    floor(): math$Point;
-    ceil(): math$Point;
+    clone(): Point;
+    add(otherPoint: PointExpression): Point;
+    subtract(otherPoint: PointExpression): Point;
+    divideBy(num: number): Point;
+    multiplyBy(num: number): Point;
+    scaleBy(scale: PointExpression): Point;
+    unscaleBy(scale: PointExpression): Point;
+    round(): Point;
+    floor(): Point;
+    ceil(): Point;
     distanceTo(otherPoint: PointExpression): number;
     equals(otherPoint: PointExpression): boolean;
     contains(otherPoint: PointExpression): boolean;
@@ -304,14 +289,10 @@ declare module "leaflet" {
   }
   declare export type Coords = {
     z: number
-  } & math$Point;
+  } & Point;
 
-  declare export type PointExpression = math$Point | PointTuple;
-  declare export function point(
-    x: number,
-    y: number,
-    round?: boolean
-  ): math$Point;
+  declare export type PointExpression = Point | PointTuple;
+  declare export function point(x: number, y: number, round?: boolean): Point;
 
   declare export function point(
     coords:
@@ -320,38 +301,34 @@ declare module "leaflet" {
           x: number,
           y: number
         }
-  ): math$Point;
+  ): Point;
 
   declare export type BoundsLiteral = [PointTuple, PointTuple];
   declare export class Bounds {
     constructor(topLeft: PointExpression, bottomRight: PointExpression): this;
-    constructor(points: math$Point[] | BoundsLiteral): this;
+    constructor(points: Point[] | BoundsLiteral): this;
     extend(point: PointExpression): this;
-    getCenter(round?: boolean): math$Point;
-    getBottomLeft(): math$Point;
-    getTopRight(): math$Point;
-    getSize(): math$Point;
+    getCenter(round?: boolean): Point;
+    getBottomLeft(): Point;
+    getTopRight(): Point;
+    getSize(): Point;
     contains(pointOrBounds: BoundsExpression | PointExpression): boolean;
     intersects(otherBounds: BoundsExpression): boolean;
     overlaps(otherBounds: BoundsExpression): boolean;
-    min: math$Point;
-    max: math$Point;
+    min: Point;
+    max: Point;
   }
-  declare export type BoundsExpression = BPMNModdle$Bounds | BoundsLiteral;
+  declare export type BoundsExpression = Bounds | BoundsLiteral;
   declare export function bounds(
     topLeft: PointExpression,
     bottomRight: PointExpression
-  ): BPMNModdle$Bounds;
+  ): Bounds;
 
-  declare export function bounds(
-    points: math$Point[] | BoundsLiteral
-  ): BPMNModdle$Bounds;
+  declare export function bounds(points: Point[] | BoundsLiteral): Bounds;
 
-  declare export type LeafletEventHandlerFn = (
-    maps$event: LeafletEvent
-  ) => void;
+  declare export type LeafletEventHandlerFn = (event: LeafletEvent) => void;
   declare export interface LeafletEventHandlerFnMap {
-    [notification$type: string]: LeafletEventHandlerFn;
+    [type: string]: LeafletEventHandlerFn;
   }
 
   /**
@@ -360,18 +337,14 @@ declare module "leaflet" {
    * with an object (e.g. the user clicks on the map, causing the map to fire
    * 'click' event).
    */
-  declare export class Evented mixins Access$Class {
+  declare export class Evented mixins Class {
     /**
      * Adds a listener function (fn) to a particular event type of the object.
      * You can optionally specify the context of the listener (object the this
      * keyword will point to). You can also pass several space-separated types
      * (e.g. 'click dblclick').
      */
-    on(
-      notification$type: string,
-      fn: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
-    ): this;
+    on(type: string, fn: LeafletEventHandlerFn, context?: any): this;
 
     /**
      * Adds a set of type/listener pairs, e.g. {click: onClick, mousemove: onMouseMove}
@@ -384,11 +357,7 @@ declare module "leaflet" {
      * Note that if you passed a custom context to on, you must pass the same context
      * to off in order to remove the listener.
      */
-    off(
-      notification$type: string,
-      fn?: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
-    ): this;
+    off(type: string, fn?: LeafletEventHandlerFn, context?: any): this;
 
     /**
      * Removes a set of type/listener pairs.
@@ -405,21 +374,17 @@ declare module "leaflet" {
      * object — the first argument of the listener function will contain its properties.
      * The event might can optionally be propagated to event parents.
      */
-    fire(notification$type: string, main$data?: any, propagate?: boolean): this;
+    fire(type: string, data?: any, propagate?: boolean): this;
 
     /**
      * Returns true if a particular event type has any listeners attached to it.
      */
-    listens(notification$type: string): boolean;
+    listens(type: string): boolean;
 
     /**
      * Behaves as on(...), except the listener will only get fired once and then removed.
      */
-    once(
-      notification$type: string,
-      fn: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
-    ): this;
+    once(type: string, fn: LeafletEventHandlerFn, context?: any): this;
 
     /**
      * Behaves as on(...), except the listener will only get fired once and then removed.
@@ -429,12 +394,12 @@ declare module "leaflet" {
     /**
      * Adds an event parent - an Evented that will receive propagated events
      */
-    addEventParent(obj: dojo$Evented): this;
+    addEventParent(obj: Evented): this;
 
     /**
      * Removes an event parent, so it will stop receiving propagated events
      */
-    removeEventParent(obj: dojo$Evented): this;
+    removeEventParent(obj: Evented): this;
 
     /**
      * Alias for on(...)
@@ -445,9 +410,9 @@ declare module "leaflet" {
      * (e.g. 'click dblclick').
      */
     addEventListener(
-      notification$type: string,
+      type: string,
       fn: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
+      context?: any
     ): this;
 
     /**
@@ -466,9 +431,9 @@ declare module "leaflet" {
      * to off in order to remove the listener.
      */
     removeEventListener(
-      notification$type: string,
+      type: string,
       fn?: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
+      context?: any
     ): this;
 
     /**
@@ -491,9 +456,9 @@ declare module "leaflet" {
      * Behaves as on(...), except the listener will only get fired once and then removed.
      */
     addOneTimeEventListener(
-      notification$type: string,
+      type: string,
       fn: LeafletEventHandlerFn,
-      balloontoolbar$context?: any
+      context?: any
     ): this;
 
     /**
@@ -510,18 +475,14 @@ declare module "leaflet" {
      * object — the first argument of the listener function will contain its properties.
      * The event might can optionally be propagated to event parents.
      */
-    fireEvent(
-      notification$type: string,
-      main$data?: any,
-      propagate?: boolean
-    ): this;
+    fireEvent(type: string, data?: any, propagate?: boolean): this;
 
     /**
      * Alias for listens(...)
      *
      * Returns true if a particular event type has any listeners attached to it.
      */
-    hasEventListeners(notification$type: string): boolean;
+    hasEventListeners(type: string): boolean;
   }
 
   /**
@@ -529,11 +490,11 @@ declare module "leaflet" {
    * Used internally for map and marker dragging. Only works for elements
    * that were positioned with [`L.DomUtil.setPosition`](#domutil-setposition).
    */
-  declare export class Draggable mixins dojo$Evented {
+  declare export class Draggable mixins Evented {
     constructor(
-      htmlParser$element: HTMLElement,
+      element: HTMLElement,
       dragStartTarget?: HTMLElement,
-      DomUtil$preventOutline?: boolean
+      preventOutline?: boolean
     ): this;
     enable(): void;
     disable(): void;
@@ -541,63 +502,57 @@ declare module "leaflet" {
   }
   declare export interface LayerOptions {
     pane?: string;
-    control$attribution?: string;
+    attribution?: string;
   }
   declare export type InteractiveLayerOptions = {
     interactive?: boolean,
     bubblingMouseEvents?: boolean
-  } & __esri$LayerOptions;
+  } & LayerOptions;
 
-  declare export class Layer mixins dojo$Evented {
-    constructor(notification$options?: __esri$LayerOptions): this;
-    addTo(array$map: H$Map | LayerGroup): this;
+  declare export class Layer mixins Evented {
+    constructor(options?: LayerOptions): this;
+    addTo(map: Map | LayerGroup): this;
     remove(): this;
-    removeFrom(array$map: H$Map): this;
-    getPane(skin$name?: string): HTMLElement | void;
+    removeFrom(map: Map): this;
+    getPane(name?: string): HTMLElement | void;
     bindPopup(
-      definition$content:
-        | ((layer: layer$Layer) => Content)
-        | Content
-        | __esri$Popup,
-      notification$options?: PopupOptions
+      content: ((layer: Layer) => Content) | Content | Popup,
+      options?: PopupOptions
     ): this;
     unbindPopup(): this;
     openPopup(latlng?: LatLngExpression): this;
     closePopup(): this;
     togglePopup(): this;
     isPopupOpen(): boolean;
-    setPopupContent(definition$content: Content | __esri$Popup): this;
-    getPopup(): __esri$Popup | void;
+    setPopupContent(content: Content | Popup): this;
+    getPopup(): Popup | void;
     bindTooltip(
-      definition$content:
-        | ((layer: layer$Layer) => Content)
-        | ImageMapster$Tooltip
-        | Content,
-      notification$options?: Highcharts$TooltipOptions
+      content: ((layer: Layer) => Content) | Tooltip | Content,
+      options?: TooltipOptions
     ): this;
     unbindTooltip(): this;
     openTooltip(latlng?: LatLngExpression): this;
     closeTooltip(): this;
     toggleTooltip(): this;
     isTooltipOpen(): boolean;
-    setTooltipContent(definition$content: Content | ImageMapster$Tooltip): this;
-    getTooltip(): ImageMapster$Tooltip | void;
-    onAdd(array$map: H$Map): this;
-    onRemove(array$map: H$Map): this;
+    setTooltipContent(content: Content | Tooltip): this;
+    getTooltip(): Tooltip | void;
+    onAdd(map: Map): this;
+    onRemove(map: Map): this;
     getEvents(): {
-      [skin$name: string]: (maps$event: LeafletEvent) => void
+      [name: string]: (event: LeafletEvent) => void
     };
     getAttribution(): string | null;
-    beforeAdd(array$map: H$Map): this;
-    _map: H$Map;
+    beforeAdd(map: Map): this;
+    _map: Map;
   }
   declare export interface GridLayerOptions {
-    tileSize?: number | math$Point;
-    __esri$opacity?: number;
+    tileSize?: number | Point;
+    opacity?: number;
     updateWhenIdle?: boolean;
     updateWhenZooming?: boolean;
     updateInterval?: number;
-    control$attribution?: string;
+    attribution?: string;
     zIndex?: number;
     bounds?: LatLngBoundsExpression;
     minZoom?: number;
@@ -608,37 +563,35 @@ declare module "leaflet" {
     keepBuffer?: number;
   }
   declare export type DoneCallback = (
-    log$error?: EventType$Error,
+    error?: Error,
     tile?: HTMLElement
   ) => void;
   declare export interface InternalTiles {
     [key: string]: {
       active?: boolean,
-      coords: Location$Coords,
-      fibers$current: boolean,
+      coords: Coords,
+      current: boolean,
       el: HTMLElement,
-      loaded?: entities$Date,
+      loaded?: Date,
       retain?: boolean
     };
   }
-  declare export class GridLayer mixins layer$Layer {
-    constructor(notification$options?: GridLayerOptions): this;
+  declare export class GridLayer mixins Layer {
+    constructor(options?: GridLayerOptions): this;
     bringToFront(): this;
     bringToBack(): this;
     getContainer(): HTMLElement | null;
-    setOpacity(__esri$opacity: number): this;
+    setOpacity(opacity: number): this;
     setZIndex(zIndex: number): this;
     isLoading(): boolean;
     redraw(): this;
-    getTileSize(): math$Point;
-    createTile(coords: Location$Coords, done: DoneCallback): HTMLElement;
-    _tileCoordsToKey(coords: Location$Coords): string;
+    getTileSize(): Point;
+    createTile(coords: Coords, done: DoneCallback): HTMLElement;
+    _tileCoordsToKey(coords: Coords): string;
     _tiles: InternalTiles;
     _tileZoom: number;
   }
-  declare export function gridLayer(
-    notification$options?: GridLayerOptions
-  ): GridLayer;
+  declare export function gridLayer(options?: GridLayerOptions): GridLayer;
 
   declare export type TileLayerOptions = {
     minZoom?: number,
@@ -655,43 +608,43 @@ declare module "leaflet" {
   } & GridLayerOptions;
 
   declare export class TileLayer mixins GridLayer {
-    constructor(
-      urlTemplate: string,
-      notification$options?: TileLayerOptions
-    ): this;
-    setUrl(data$url: string, noRedraw?: boolean): this;
+    constructor(urlTemplate: string, options?: TileLayerOptions): this;
+    setUrl(url: string, noRedraw?: boolean): this;
     _abortLoading(): void;
     _getZoomForUrl(): number;
-    notification$options: TileLayerOptions;
+    options: TileLayerOptions;
   }
   declare export function tileLayer(
     urlTemplate: string,
-    notification$options?: TileLayerOptions
-  ): layer$TileLayer;
+    options?: TileLayerOptions
+  ): TileLayer;
 
-  declare class TileLayer$WMS mixins layer$TileLayer {
-    constructor(baseUrl: string, notification$options: WMSOptions): this;
+  declare var npm$namespace$TileLayer: {
+    WMS: typeof TileLayer$WMS
+  };
+  declare class TileLayer$WMS mixins TileLayer {
+    constructor(baseUrl: string, options: WMSOptions): this;
     setParams(params: WMSParams, noRedraw?: boolean): this;
     wmsParams: WMSParams;
-    notification$options: WMSOptions;
+    options: WMSOptions;
   }
   declare export type WMSOptions = {
-    control$layers?: string,
-    pastefromword$styles?: string,
+    layers?: string,
+    styles?: string,
     format?: string,
     transparent?: boolean,
-    Giraffe$version?: string,
+    version?: string,
     crs?: CRS,
     uppercase?: boolean
   } & TileLayerOptions;
 
   declare export interface WMSParams {
     format?: string;
-    control$layers: string;
-    client$request?: string;
+    layers: string;
+    request?: string;
     service?: string;
-    pastefromword$styles?: string;
-    Giraffe$version?: string;
+    styles?: string;
+    version?: string;
     transparent?: boolean;
     width?: number;
     height?: number;
@@ -702,49 +655,49 @@ declare module "leaflet" {
   };
   declare function tileLayer$wms(
     baseUrl: string,
-    notification$options?: WMSOptions
-  ): layer$TileLayer.TileLayer$WMS;
+    options?: WMSOptions
+  ): TileLayer$WMS;
 
   declare export type ImageOverlayOptions = {
-    __esri$opacity?: number,
+    opacity?: number,
     alt?: string,
     interactive?: boolean,
-    control$attribution?: string,
+    attribution?: string,
     crossOrigin?: boolean,
     className?: string
   } & InteractiveLayerOptions;
 
-  declare export class ImageOverlay mixins layer$Layer {
+  declare export class ImageOverlay mixins Layer {
     constructor(
       imageUrl: string,
       bounds: LatLngBoundsExpression,
-      notification$options?: ImageOverlayOptions
+      options?: ImageOverlayOptions
     ): this;
-    setOpacity(__esri$opacity: number): this;
+    setOpacity(opacity: number): this;
     bringToFront(): this;
     bringToBack(): this;
-    setUrl(data$url: string): this;
+    setUrl(url: string): this;
 
     /**
      * Update the bounds that this ImageOverlay covers
      */
-    setBounds(bounds: maps$LatLngBounds): this;
+    setBounds(bounds: LatLngBounds): this;
 
     /**
      * Get the bounds that this ImageOverlay covers
      */
-    getBounds(): maps$LatLngBounds;
+    getBounds(): LatLngBounds;
 
     /**
      * Get the img element that represents the ImageOverlay on the map
      */
     getElement(): HTMLImageElement | void;
-    notification$options: ImageOverlayOptions;
+    options: ImageOverlayOptions;
   }
   declare export function imageOverlay(
     imageUrl: string,
     bounds: LatLngBoundsExpression,
-    notification$options?: ImageOverlayOptions
+    options?: ImageOverlayOptions
   ): ImageOverlay;
 
   declare export type VideoOverlayOptions = {
@@ -752,37 +705,37 @@ declare module "leaflet" {
     loop?: boolean
   } & ImageOverlayOptions;
 
-  declare export class VideoOverlay mixins layer$Layer {
+  declare export class VideoOverlay mixins Layer {
     constructor(
-      video: string | string[] | MSHTML$HTMLVideoElement,
+      video: string | string[] | HTMLVideoElement,
       bounds: LatLngBoundsExpression,
-      notification$options?: VideoOverlayOptions
+      options?: VideoOverlayOptions
     ): this;
-    setOpacity(__esri$opacity: number): this;
+    setOpacity(opacity: number): this;
     bringToFront(): this;
     bringToBack(): this;
-    setUrl(data$url: string): this;
+    setUrl(url: string): this;
 
     /**
      * Update the bounds that this VideoOverlay covers
      */
-    setBounds(bounds: maps$LatLngBounds): this;
+    setBounds(bounds: LatLngBounds): this;
 
     /**
      * Get the bounds that this VideoOverlay covers
      */
-    getBounds(): maps$LatLngBounds;
+    getBounds(): LatLngBounds;
 
     /**
      * Get the video element that represents the VideoOverlay on the map
      */
-    getElement(): MSHTML$HTMLVideoElement | void;
-    notification$options: VideoOverlayOptions;
+    getElement(): HTMLVideoElement | void;
+    options: VideoOverlayOptions;
   }
   declare export function videoOverlay(
-    video: string | string[] | MSHTML$HTMLVideoElement,
+    video: string | string[] | HTMLVideoElement,
     bounds: LatLngBoundsExpression,
-    notification$options?: VideoOverlayOptions
+    options?: VideoOverlayOptions
   ): VideoOverlay;
 
   declare export type LineCapShape = "butt" | "round" | "square" | "inherit";
@@ -790,9 +743,9 @@ declare module "leaflet" {
   declare export type FillRule = "nonzero" | "evenodd" | "inherit";
   declare export type PathOptions = {
     stroke?: boolean,
-    __esri$color?: string,
+    color?: string,
     weight?: number,
-    __esri$opacity?: number,
+    opacity?: number,
     lineCap?: LineCapShape,
     lineJoin?: LineJoinShape,
     dashArray?: string,
@@ -801,17 +754,17 @@ declare module "leaflet" {
     fillColor?: string,
     fillOpacity?: number,
     fillRule?: FillRule,
-    renderer?: Highcharts$Renderer,
+    renderer?: Renderer,
     className?: string
   } & InteractiveLayerOptions;
 
-  declare export class Path mixins layer$Layer {
+  declare export class Path mixins Layer {
     redraw(): this;
-    setStyle(CKEDITOR$style: PathOptions): this;
+    setStyle(style: PathOptions): this;
     bringToFront(): this;
     bringToBack(): this;
-    getElement(): JSX$Element | void;
-    notification$options: PathOptions;
+    getElement(): Element | void;
+    options: PathOptions;
   }
   declare export type PolylineOptions = {
     smoothFactor?: number,
@@ -819,17 +772,15 @@ declare module "leaflet" {
   } & PathOptions;
 
   declare export class Polyline<
-    T: geojson.GeometryObject =
-      | geojson.geo$LineString
-      | geojson.geo$MultiLineString,
+    T: geojson.GeometryObject = geojson.LineString | geojson.MultiLineString,
     P = any
   > mixins Path {
     constructor(
       latlngs: LatLngExpression[] | LatLngExpression[][],
-      notification$options?: maps$PolylineOptions
+      options?: PolylineOptions
     ): this;
-    toGeoJSON(): geojson.__esri$Feature<T, P>;
-    getLatLngs(): maps$LatLng[] | maps$LatLng[][] | maps$LatLng[][][];
+    toGeoJSON(): geojson.Feature<T, P>;
+    getLatLngs(): LatLng[] | LatLng[][] | LatLng[][][];
     setLatLngs(
       latlngs:
         | LatLngExpression[]
@@ -837,150 +788,139 @@ declare module "leaflet" {
         | LatLngExpression[][][]
     ): this;
     isEmpty(): boolean;
-    getCenter(): maps$LatLng;
-    getBounds(): maps$LatLngBounds;
+    getCenter(): LatLng;
+    getBounds(): LatLngBounds;
     addLatLng(latlng: LatLngExpression | LatLngExpression[]): this;
-    CKEDITOR$feature: geojson.__esri$Feature<T, P>;
-    notification$options: maps$PolylineOptions;
+    feature: geojson.Feature<T, P>;
+    options: PolylineOptions;
   }
   declare export function polyline(
     latlngs: LatLngExpression[] | LatLngExpression[][],
-    notification$options?: maps$PolylineOptions
-  ): map$Polyline;
+    options?: PolylineOptions
+  ): Polyline;
 
   declare export class Polygon<P = any>
-    mixins map$Polyline<geojson.map$Polygon | geojson.MultiPolygon, P> {
+    mixins Polyline<geojson.Polygon | geojson.MultiPolygon, P> {
     constructor(
       latlngs:
         | LatLngExpression[]
         | LatLngExpression[][]
         | LatLngExpression[][][],
-      notification$options?: maps$PolylineOptions
+      options?: PolylineOptions
     ): this;
   }
   declare export function polygon(
     latlngs: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][],
-    notification$options?: maps$PolylineOptions
-  ): map$Polygon;
+    options?: PolylineOptions
+  ): Polygon;
 
-  declare export class Rectangle<P = any> mixins map$Polygon<P> {
+  declare export class Rectangle<P = any> mixins Polygon<P> {
     constructor(
       latLngBounds: LatLngBoundsExpression,
-      notification$options?: maps$PolylineOptions
+      options?: PolylineOptions
     ): this;
     setBounds(latLngBounds: LatLngBoundsExpression): this;
   }
   declare export function rectangle(
     latLngBounds: LatLngBoundsExpression,
-    notification$options?: maps$PolylineOptions
-  ): maps$Rectangle;
+    options?: PolylineOptions
+  ): Rectangle;
 
   declare export type CircleMarkerOptions = {
     radius?: number
   } & PathOptions;
 
   declare export class CircleMarker<P = any> mixins Path {
-    constructor(
-      latlng: LatLngExpression,
-      notification$options?: CircleMarkerOptions
-    ): this;
-    toGeoJSON(): geojson.__esri$Feature<geojson.math$Point, P>;
+    constructor(latlng: LatLngExpression, options?: CircleMarkerOptions): this;
+    toGeoJSON(): geojson.Feature<geojson.Point, P>;
     setLatLng(latLng: LatLngExpression): this;
-    getLatLng(): maps$LatLng;
+    getLatLng(): LatLng;
     setRadius(radius: number): this;
     getRadius(): number;
-    notification$options: CircleMarkerOptions;
-    CKEDITOR$feature: geojson.__esri$Feature<geojson.math$Point, P>;
+    options: CircleMarkerOptions;
+    feature: geojson.Feature<geojson.Point, P>;
   }
   declare export function circleMarker(
     latlng: LatLngExpression,
-    notification$options?: CircleMarkerOptions
+    options?: CircleMarkerOptions
   ): CircleMarker;
 
   declare export class Circle<P = any> mixins CircleMarker<P> {
-    constructor(
-      latlng: LatLngExpression,
-      notification$options?: CircleMarkerOptions
-    ): this;
+    constructor(latlng: LatLngExpression, options?: CircleMarkerOptions): this;
     constructor(
       latlng: LatLngExpression,
       radius: number,
-      notification$options?: CircleMarkerOptions
+      options?: CircleMarkerOptions
     ): this;
-    getBounds(): maps$LatLngBounds;
+    getBounds(): LatLngBounds;
   }
   declare export function circle(
     latlng: LatLngExpression,
-    notification$options?: CircleMarkerOptions
-  ): Geo$Circle;
+    options?: CircleMarkerOptions
+  ): Circle;
 
   declare export function circle(
     latlng: LatLngExpression,
     radius: number,
-    notification$options?: CircleMarkerOptions
-  ): Geo$Circle;
+    options?: CircleMarkerOptions
+  ): Circle;
 
   declare export type RendererOptions = {
     padding?: number
-  } & __esri$LayerOptions;
+  } & LayerOptions;
 
-  declare export class Renderer mixins layer$Layer {
-    constructor(notification$options?: RendererOptions): this;
-    notification$options: RendererOptions;
+  declare export class Renderer mixins Layer {
+    constructor(options?: RendererOptions): this;
+    options: RendererOptions;
   }
-  declare export class SVG mixins Highcharts$Renderer {}
+  declare export class SVG mixins Renderer {}
 
   declare var npm$namespace$SVG: {
     create: typeof SVG$create,
     pointsToPath: typeof SVG$pointsToPath
   };
-  declare function SVG$create(skin$name: string): MSHTML$SVGElement;
+  declare function SVG$create(name: string): SVGElement;
 
   declare function SVG$pointsToPath(
     rings: PointExpression[],
-    EncryptedCache$close: boolean
+    close: boolean
   ): string;
 
-  declare export function svg(notification$options?: RendererOptions): SVG;
+  declare export function svg(options?: RendererOptions): SVG;
 
-  declare export class Canvas mixins Highcharts$Renderer {}
-  declare export function canvas(
-    notification$options?: RendererOptions
-  ): Canvas;
+  declare export class Canvas mixins Renderer {}
+  declare export function canvas(options?: RendererOptions): Canvas;
 
   /**
    * Used to group several layers and handle them as one.
    * If you add it to the map, any layers added or removed from the group will be
    * added/removed on the map as well. Extends Layer.
    */
-  declare export class LayerGroup<P = any> mixins layer$Layer {
-    constructor(
-      control$layers?: layer$Layer[],
-      notification$options?: __esri$LayerOptions
-    ): this;
+  declare export class LayerGroup<P = any> mixins Layer {
+    constructor(layers?: Layer[], options?: LayerOptions): this;
 
     /**
      * Returns a GeoJSON representation of the layer group (as a GeoJSON GeometryCollection, GeoJSONFeatureCollection or Multipoint).
      */
     toGeoJSON():
       | geojson.FeatureCollection<geojson.GeometryObject, P>
-      | geojson.__esri$Feature<geojson.MultiPoint, P>
+      | geojson.Feature<geojson.MultiPoint, P>
       | geojson.GeometryCollection;
 
     /**
      * Adds the given layer to the group.
      */
-    addLayer(layer: layer$Layer): this;
+    addLayer(layer: Layer): this;
 
     /**
      * Removes the layer with the given internal ID or the given layer from the group.
      */
-    removeLayer(layer: number | layer$Layer): this;
+    removeLayer(layer: number | Layer): this;
 
     /**
      * Returns true if the given layer is currently added to the group.
      */
-    hasLayer(layer: layer$Layer): boolean;
+    hasLayer(layer: Layer): boolean;
 
     /**
      * Removes all the layers from the group.
@@ -997,20 +937,17 @@ declare module "leaflet" {
      * Iterates over the layers of the group,
      * optionally specifying context of the iterator function.
      */
-    eachLayer(
-      fn: (layer: layer$Layer) => void,
-      balloontoolbar$context?: any
-    ): this;
+    eachLayer(fn: (layer: Layer) => void, context?: any): this;
 
     /**
      * Returns the layer with the given internal ID.
      */
-    getLayer(id: number): layer$Layer | void;
+    getLayer(id: number): Layer | void;
 
     /**
      * Returns an array of all the layers added to the group.
      */
-    getLayers(): layer$Layer[];
+    getLayers(): Layer[];
 
     /**
      * Calls setZIndex on every layer contained in this group, passing the z-index.
@@ -1020,10 +957,10 @@ declare module "leaflet" {
     /**
      * Returns the internal ID for a layer
      */
-    getLayerId(layer: layer$Layer): number;
-    CKEDITOR$feature:
+    getLayerId(layer: Layer): number;
+    feature:
       | geojson.FeatureCollection<geojson.GeometryObject, P>
-      | geojson.__esri$Feature<geojson.MultiPoint, P>
+      | geojson.Feature<geojson.MultiPoint, P>
       | geojson.GeometryCollection;
   }
 
@@ -1031,8 +968,8 @@ declare module "leaflet" {
    * Create a layer group, optionally given an initial set of layers and an `options` object.
    */
   declare export function layerGroup(
-    control$layers?: layer$Layer[],
-    notification$options?: __esri$LayerOptions
+    layers?: Layer[],
+    options?: LayerOptions
   ): LayerGroup;
 
   /**
@@ -1043,7 +980,7 @@ declare module "leaflet" {
     /**
      * Sets the given path options to each layer of the group that has a setStyle method.
      */
-    setStyle(CKEDITOR$style: PathOptions): this;
+    setStyle(style: PathOptions): this;
 
     /**
      * Brings the layer group to the top of all other layers
@@ -1059,18 +996,16 @@ declare module "leaflet" {
      * Returns the LatLngBounds of the Feature Group (created from
      * bounds and coordinates of its children).
      */
-    getBounds(): maps$LatLngBounds;
+    getBounds(): LatLngBounds;
   }
 
   /**
    * Create a feature group, optionally given an initial set of layers.
    */
-  declare export function featureGroup(
-    control$layers?: layer$Layer[]
-  ): FeatureGroup;
+  declare export function featureGroup(layers?: Layer[]): FeatureGroup;
 
   declare export type StyleFunction<P = any> = (
-    CKEDITOR$feature?: geojson.__esri$Feature<geojson.GeometryObject, P>
+    feature?: geojson.Feature<geojson.GeometryObject, P>
   ) => PathOptions;
   declare export type GeoJSONOptions<P = any> = {
     /**
@@ -1087,9 +1022,9 @@ declare module "leaflet" {
      *      * ```
      */
     pointToLayer?: (
-      geoJsonPoint: geojson.__esri$Feature<geojson.math$Point, P>,
-      latlng: maps$LatLng
-    ) => layer$Layer,
+      geoJsonPoint: geojson.Feature<geojson.Point, P>,
+      latlng: LatLng
+    ) => Layer,
 
     /**
      * PathOptions or a Function defining the Path options for styling GeoJSON lines and polygons,
@@ -1103,7 +1038,7 @@ declare module "leaflet" {
      *      * }
      *      * ```
      */
-    CKEDITOR$style?: PathOptions | StyleFunction<P>,
+    style?: PathOptions | StyleFunction<P>,
 
     /**
      * A Function that will be called once for each created Feature, after it
@@ -1116,8 +1051,8 @@ declare module "leaflet" {
      *      * ```
      */
     onEachFeature?: (
-      CKEDITOR$feature: geojson.__esri$Feature<geojson.GeometryObject, P>,
-      layer: layer$Layer
+      feature: geojson.Feature<geojson.GeometryObject, P>,
+      layer: Layer
     ) => void,
 
     /**
@@ -1131,8 +1066,8 @@ declare module "leaflet" {
      *      * }
      *      * ```
      */
-    util$filter?: (
-      geoJsonFeature: geojson.__esri$Feature<geojson.GeometryObject, P>
+    filter?: (
+      geoJsonFeature: geojson.Feature<geojson.GeometryObject, P>
     ) => boolean,
 
     /**
@@ -1141,8 +1076,8 @@ declare module "leaflet" {
      */
     coordsToLatLng?: (
       coords: [number, number] | [number, number, number]
-    ) => maps$LatLng
-  } & __esri$LayerOptions;
+    ) => LatLng
+  } & LayerOptions;
 
   /**
    * Represents a GeoJSON object or an array of GeoJSON objects.
@@ -1154,9 +1089,9 @@ declare module "leaflet" {
      * and/or coordsToLatLng functions if provided as options.
      */
     static geometryToLayer<P>(
-      featureData: geojson.__esri$Feature<geojson.GeometryObject, P>,
-      notification$options?: GeoJSONOptions<P>
-    ): layer$Layer;
+      featureData: geojson.Feature<geojson.GeometryObject, P>,
+      options?: GeoJSONOptions<P>
+    ): Layer;
 
     /**
      * Creates a LatLng object from an array of 2 numbers (longitude, latitude) or
@@ -1164,7 +1099,7 @@ declare module "leaflet" {
      */
     static coordsToLatLng(
       coords: [number, number] | [number, number, number]
-    ): maps$LatLng;
+    ): LatLng;
 
     /**
      * Creates a multidimensional array of LatLngs from a GeoJSON coordinates array.
@@ -1177,14 +1112,14 @@ declare module "leaflet" {
       levelsDeep?: number,
       coordsToLatLng?: (
         coords: [number, number] | [number, number, number]
-      ) => maps$LatLng
+      ) => LatLng
     ): any[];
 
     /**
      * Reverse of coordsToLatLng
      */
     static latLngToCoords(
-      latlng: maps$LatLng
+      latlng: LatLng
     ): [number, number] | [number, number, number];
 
     /**
@@ -1203,31 +1138,31 @@ declare module "leaflet" {
      */
     static asFeature<P>(
       geojson:
-        | geojson.__esri$Feature<geojson.GeometryObject, P>
+        | geojson.Feature<geojson.GeometryObject, P>
         | geojson.GeometryObject
-    ): geojson.__esri$Feature<geojson.GeometryObject, P>;
+    ): geojson.Feature<geojson.GeometryObject, P>;
     constructor(
       geojson?: geojson.GeoJsonObject,
-      notification$options?: GeoJSONOptions<P>
+      options?: GeoJSONOptions<P>
     ): this;
 
     /**
      * Adds a GeoJSON object to the layer.
      */
-    addData(main$data: geojson.GeoJsonObject): layer$Layer;
+    addData(data: geojson.GeoJsonObject): Layer;
 
     /**
      * Resets the given vector layer's style to the original GeoJSON style,
      * useful for resetting style after hover events.
      */
-    resetStyle(layer: layer$Layer): layer$Layer;
+    resetStyle(layer: Layer): Layer;
 
     /**
      * Same as FeatureGroup's setStyle method, but style-functions are also
      * allowed here to set the style according to the feature.
      */
-    setStyle(CKEDITOR$style: PathOptions | StyleFunction<P>): this;
-    notification$options: GeoJSONOptions<P>;
+    setStyle(style: PathOptions | StyleFunction<P>): this;
+    options: GeoJSONOptions<P>;
   }
 
   /**
@@ -1239,7 +1174,7 @@ declare module "leaflet" {
    */
   declare export function geoJSON<P>(
     geojson?: geojson.GeoJsonObject,
-    notification$options?: GeoJSONOptions<P>
+    options?: GeoJSONOptions<P>
   ): GeoJSON<P>;
 
   declare export type Zoom = boolean | "center";
@@ -1256,12 +1191,12 @@ declare module "leaflet" {
     dragging?: boolean;
     crs?: CRS;
     center?: LatLngExpression;
-    control$zoom?: number;
+    zoom?: number;
     minZoom?: number;
     maxZoom?: number;
-    control$layers?: layer$Layer[];
+    layers?: Layer[];
     maxBounds?: LatLngBoundsExpression;
-    renderer?: Highcharts$Renderer;
+    renderer?: Renderer;
     fadeAnimation?: boolean;
     markerZoomAnimation?: boolean;
     transform3DLimit?: number;
@@ -1289,65 +1224,72 @@ declare module "leaflet" {
     | "bottomleft"
     | "bottomright";
   declare export interface ControlOptions {
-    dom$position?: maps$ControlPosition;
+    position?: ControlPosition;
   }
-  declare export class Control mixins Access$Class {
-    constructor(notification$options?: UI$ControlOptions): this;
-    getPosition(): maps$ControlPosition;
-    setPosition(dom$position: maps$ControlPosition): this;
+  declare export class Control mixins Class {
+    constructor(options?: ControlOptions): this;
+    getPosition(): ControlPosition;
+    setPosition(position: ControlPosition): this;
     getContainer(): HTMLElement | void;
-    addTo(array$map: H$Map): this;
+    addTo(map: Map): this;
     remove(): this;
-    onAdd(array$map: H$Map): HTMLElement;
-    onRemove(array$map: H$Map): void;
-    notification$options: UI$ControlOptions;
+    onAdd(map: Map): HTMLElement;
+    onRemove(map: Map): void;
+    options: ControlOptions;
   }
+
+  declare var npm$namespace$Control: {
+    Zoom: typeof Control$Zoom,
+    Attribution: typeof Control$Attribution,
+    Layers: typeof Control$Layers,
+    Scale: typeof Control$Scale
+  };
   declare type Control$ZoomOptions = {
     zoomInText?: string,
     zoomInTitle?: string,
     zoomOutText?: string,
     zoomOutTitle?: string
-  } & UI$ControlOptions;
+  } & ControlOptions;
 
-  declare class Control$Zoom mixins ui$Control {
-    constructor(notification$options?: Control$ZoomOptions): this;
-    notification$options: Control$ZoomOptions;
+  declare class Control$Zoom mixins Control {
+    constructor(options?: Control$ZoomOptions): this;
+    options: Control$ZoomOptions;
   }
 
   declare type Control$AttributionOptions = {
     prefix?: string | boolean
-  } & UI$ControlOptions;
+  } & ControlOptions;
 
-  declare class Control$Attribution mixins ui$Control {
-    constructor(notification$options?: Control$AttributionOptions): this;
+  declare class Control$Attribution mixins Control {
+    constructor(options?: Control$AttributionOptions): this;
     setPrefix(prefix: string): this;
-    addAttribution(dojo$text: string): this;
-    removeAttribution(dojo$text: string): this;
-    notification$options: Control$AttributionOptions;
+    addAttribution(text: string): this;
+    removeAttribution(text: string): this;
+    options: Control$AttributionOptions;
   }
 
   declare type Control$LayersOptions = {
     collapsed?: boolean,
     autoZIndex?: boolean,
     hideSingleBase?: boolean
-  } & UI$ControlOptions;
+  } & ControlOptions;
 
   declare interface Control$LayersObject {
-    [skin$name: string]: layer$Layer;
+    [name: string]: Layer;
   }
 
-  declare class Control$Layers mixins ui$Control {
+  declare class Control$Layers mixins Control {
     constructor(
       baseLayers?: Control$LayersObject,
       overlays?: Control$LayersObject,
-      notification$options?: Control$LayersOptions
+      options?: Control$LayersOptions
     ): this;
-    addBaseLayer(layer: layer$Layer, skin$name: string): this;
-    addOverlay(layer: layer$Layer, skin$name: string): this;
-    removeLayer(layer: layer$Layer): this;
+    addBaseLayer(layer: Layer, name: string): this;
+    addOverlay(layer: Layer, name: string): this;
+    removeLayer(layer: Layer): this;
     expand(): this;
     collapse(): this;
-    notification$options: Control$LayersOptions;
+    options: Control$LayersOptions;
   }
 
   declare type Control$ScaleOptions = {
@@ -1355,11 +1297,11 @@ declare module "leaflet" {
     metric?: boolean,
     imperial?: boolean,
     updateWhenIdle?: boolean
-  } & UI$ControlOptions;
+  } & ControlOptions;
 
-  declare class Control$Scale mixins ui$Control {
-    constructor(notification$options?: Control$ScaleOptions): this;
-    notification$options: Control$ScaleOptions;
+  declare class Control$Scale mixins Control {
+    constructor(options?: Control$ScaleOptions): this;
+    options: Control$ScaleOptions;
   }
 
   declare var npm$namespace$control: {
@@ -1368,23 +1310,19 @@ declare module "leaflet" {
     layers: typeof control$layers,
     scale: typeof control$scale
   };
-  declare function control$zoom(
-    notification$options?: ui$Control.Control$ZoomOptions
-  ): ui$Control.Control$Zoom;
+  declare function control$zoom(options?: Control$ZoomOptions): Control$Zoom;
 
   declare function control$attribution(
-    notification$options?: ui$Control.Control$AttributionOptions
-  ): ui$Control.Control$Attribution;
+    options?: Control$AttributionOptions
+  ): Control$Attribution;
 
   declare function control$layers(
-    baseLayers?: ui$Control.Control$LayersObject,
-    overlays?: ui$Control.Control$LayersObject,
-    notification$options?: ui$Control.Control$LayersOptions
-  ): ui$Control.Control$Layers;
+    baseLayers?: Control$LayersObject,
+    overlays?: Control$LayersObject,
+    options?: Control$LayersOptions
+  ): Control$Layers;
 
-  declare function control$scale(
-    notification$options?: ui$Control.Control$ScaleOptions
-  ): ui$Control.Control$Scale;
+  declare function control$scale(options?: Control$ScaleOptions): Control$Scale;
 
   declare export interface DivOverlayOptions {
     offset?: PointExpression;
@@ -1407,27 +1345,21 @@ declare module "leaflet" {
   } & DivOverlayOptions;
 
   declare export type Content = string | HTMLElement;
-  declare export class Popup mixins layer$Layer {
-    constructor(
-      notification$options?: PopupOptions,
-      source?: layer$Layer
-    ): this;
-    getLatLng(): maps$LatLng | void;
+  declare export class Popup mixins Layer {
+    constructor(options?: PopupOptions, source?: Layer): this;
+    getLatLng(): LatLng | void;
     setLatLng(latlng: LatLngExpression): this;
-    getContent(): Content | ((source: layer$Layer) => Content) | void;
-    setContent(htmlContent: ((source: layer$Layer) => Content) | Content): this;
+    getContent(): Content | ((source: Layer) => Content) | void;
+    setContent(htmlContent: ((source: Layer) => Content) | Content): this;
     getElement(): HTMLElement | void;
     update(): void;
     isOpen(): boolean;
     bringToFront(): this;
     bringToBack(): this;
-    openOn(array$map: H$Map): this;
-    notification$options: PopupOptions;
+    openOn(map: Map): this;
+    options: PopupOptions;
   }
-  declare export function popup(
-    notification$options?: PopupOptions,
-    source?: layer$Layer
-  ): __esri$Popup;
+  declare export function popup(options?: PopupOptions, source?: Layer): Popup;
 
   declare export type Direction =
     | "right"
@@ -1443,30 +1375,27 @@ declare module "leaflet" {
     permanent?: boolean,
     sticky?: boolean,
     interactive?: boolean,
-    __esri$opacity?: number
+    opacity?: number
   } & DivOverlayOptions;
 
-  declare export class Tooltip mixins layer$Layer {
-    constructor(
-      notification$options?: Highcharts$TooltipOptions,
-      source?: layer$Layer
-    ): this;
+  declare export class Tooltip mixins Layer {
+    constructor(options?: TooltipOptions, source?: Layer): this;
     setOpacity(val: number): void;
-    getLatLng(): maps$LatLng | void;
+    getLatLng(): LatLng | void;
     setLatLng(latlng: LatLngExpression): this;
     getContent(): Content | void;
-    setContent(htmlContent: ((source: layer$Layer) => Content) | Content): this;
+    setContent(htmlContent: ((source: Layer) => Content) | Content): this;
     getElement(): HTMLElement | void;
     update(): void;
     isOpen(): boolean;
     bringToFront(): this;
     bringToBack(): this;
-    notification$options: Highcharts$TooltipOptions;
+    options: TooltipOptions;
   }
   declare export function tooltip(
-    notification$options?: Highcharts$TooltipOptions,
-    source?: layer$Layer
-  ): ImageMapster$Tooltip;
+    options?: TooltipOptions,
+    source?: Layer
+  ): Tooltip;
 
   declare export interface ZoomOptions {
     animate?: boolean;
@@ -1477,14 +1406,14 @@ declare module "leaflet" {
     easeLinearity?: number;
     noMoveStart?: boolean;
   }
-  declare export type ZoomPanOptions = {} & Control$ZoomOptions & PanOptions;
+  declare export type ZoomPanOptions = {} & ZoomOptions & PanOptions;
 
   declare export type FitBoundsOptions = {
     paddingTopLeft?: PointExpression,
     paddingBottomRight?: PointExpression,
     padding?: PointExpression,
     maxZoom?: number
-  } & Control$ZoomOptions &
+  } & ZoomOptions &
     PanOptions;
 
   declare export interface PanInsideOptions {
@@ -1493,15 +1422,15 @@ declare module "leaflet" {
     padding?: PointExpression;
   }
   declare export interface LocateOptions {
-    keyboardjs$watch?: boolean;
+    watch?: boolean;
     setView?: boolean;
     maxZoom?: number;
     timeout?: number;
     maximumAge?: number;
     enableHighAccuracy?: boolean;
   }
-  declare export class Handler mixins Access$Class {
-    constructor(array$map: H$Map): this;
+  declare export class Handler mixins Class {
+    constructor(map: Map): this;
     enable(): this;
     disable(): this;
     enabled(): boolean;
@@ -1509,14 +1438,14 @@ declare module "leaflet" {
     removeHooks(): void;
   }
   declare export interface LeafletEvent {
-    notification$type: string;
+    type: string;
     target: any;
   }
   declare export type LeafletMouseEvent = {
-    latlng: maps$LatLng,
-    layerPoint: math$Point,
-    containerPoint: math$Point,
-    originalEvent: maps$MouseEvent
+    latlng: LatLng,
+    layerPoint: Point,
+    containerPoint: Point,
+    originalEvent: MouseEvent
   } & LeafletEvent;
 
   declare export type LeafletKeyboardEvent = {
@@ -1524,14 +1453,14 @@ declare module "leaflet" {
   } & LeafletEvent;
 
   declare export type LocationEvent = {
-    latlng: maps$LatLng,
-    bounds: maps$LatLngBounds,
+    latlng: LatLng,
+    bounds: LatLngBounds,
     accuracy: number,
     altitude: number,
     altitudeAccuracy: number,
     heading: number,
     speed: number,
-    CKEDITOR$timestamp: number
+    timestamp: number
   } & LeafletEvent;
 
   declare export type ErrorEvent = {
@@ -1540,40 +1469,40 @@ declare module "leaflet" {
   } & LeafletEvent;
 
   declare export type LayerEvent = {
-    layer: layer$Layer
+    layer: Layer
   } & LeafletEvent;
 
   declare export type LayersControlEvent = {
-    skin$name: string
+    name: string
   } & LayerEvent;
 
   declare export type TileEvent = {
     tile: HTMLImageElement,
-    coords: math$Point
+    coords: Point
   } & LeafletEvent;
 
   declare export type TileErrorEvent = {
-    log$error: EventType$Error
+    error: Error
   } & TileEvent;
 
   declare export type ResizeEvent = {
-    oldSize: math$Point,
-    newSize: math$Point
+    oldSize: Point,
+    newSize: Point
   } & LeafletEvent;
 
   declare export type GeoJSONEvent = {
-    layer: layer$Layer,
+    layer: Layer,
     properties: any,
     geometryType: string,
     id: string
   } & LeafletEvent;
 
   declare export type PopupEvent = {
-    popup: __esri$Popup
+    popup: Popup
   } & LeafletEvent;
 
   declare export type TooltipEvent = {
-    tooltip: ImageMapster$Tooltip
+    tooltip: Tooltip
   } & LeafletEvent;
 
   declare export type DragEndEvent = {
@@ -1581,8 +1510,8 @@ declare module "leaflet" {
   } & LeafletEvent;
 
   declare export type ZoomAnimEvent = {
-    center: maps$LatLng,
-    control$zoom: number,
+    center: LatLng,
+    zoom: number,
     noUpdate: boolean
   } & LeafletEvent;
 
@@ -1599,13 +1528,13 @@ declare module "leaflet" {
     addListener: typeof DomEvent$addListener,
     removeListener: typeof DomEvent$removeListener
   };
-  declare type DomEvent$EventHandlerFn = (maps$event: Client$Event) => void;
+  declare type DomEvent$EventHandlerFn = (event: Event) => void;
 
   declare function DomEvent$on(
     el: HTMLElement,
     types: string,
     fn: DomEvent$EventHandlerFn,
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$on(
@@ -1613,14 +1542,14 @@ declare module "leaflet" {
     eventMap: {
       [eventName: string]: DomEvent$EventHandlerFn
     },
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$off(
     el: HTMLElement,
     types: string,
     fn: DomEvent$EventHandlerFn,
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$off(
@@ -1628,10 +1557,10 @@ declare module "leaflet" {
     eventMap: {
       [eventName: string]: DomEvent$EventHandlerFn
     },
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
-  declare function DomEvent$stopPropagation(ev: Client$Event): typeof DomEvent;
+  declare function DomEvent$stopPropagation(ev: Event): typeof DomEvent;
 
   declare function DomEvent$disableScrollPropagation(
     el: HTMLElement
@@ -1641,22 +1570,22 @@ declare module "leaflet" {
     el: HTMLElement
   ): typeof DomEvent;
 
-  declare function DomEvent$preventDefault(ev: Client$Event): typeof DomEvent;
+  declare function DomEvent$preventDefault(ev: Event): typeof DomEvent;
 
-  declare function DomEvent$stop(ev: Client$Event): typeof DomEvent;
+  declare function DomEvent$stop(ev: Event): typeof DomEvent;
 
   declare function DomEvent$getMousePosition(
-    ev: maps$MouseEvent,
+    ev: MouseEvent,
     container?: HTMLElement
-  ): math$Point;
+  ): Point;
 
-  declare function DomEvent$getWheelDelta(ev: Client$Event): number;
+  declare function DomEvent$getWheelDelta(ev: Event): number;
 
   declare function DomEvent$addListener(
     el: HTMLElement,
     types: string,
     fn: DomEvent$EventHandlerFn,
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$addListener(
@@ -1664,14 +1593,14 @@ declare module "leaflet" {
     eventMap: {
       [eventName: string]: DomEvent$EventHandlerFn
     },
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$removeListener(
     el: HTMLElement,
     types: string,
     fn: DomEvent$EventHandlerFn,
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare function DomEvent$removeListener(
@@ -1679,7 +1608,7 @@ declare module "leaflet" {
     eventMap: {
       [eventName: string]: DomEvent$EventHandlerFn
     },
-    balloontoolbar$context?: any
+    context?: any
   ): typeof DomEvent;
 
   declare export interface DefaultMapPanes {
@@ -1691,140 +1620,125 @@ declare module "leaflet" {
     tooltipPane: HTMLElement;
     popupPane: HTMLElement;
   }
-  declare export class Map mixins dojo$Evented {
-    constructor(
-      htmlParser$element: string | HTMLElement,
-      notification$options?: maps$MapOptions
-    ): this;
-    getRenderer(layer: Path): Highcharts$Renderer;
-    addControl(control: ui$Control): this;
-    removeControl(control: ui$Control): this;
-    addLayer(layer: layer$Layer): this;
-    removeLayer(layer: layer$Layer): this;
-    hasLayer(layer: layer$Layer): boolean;
-    eachLayer(
-      fn: (layer: layer$Layer) => void,
-      balloontoolbar$context?: any
-    ): this;
-    openPopup(popup: __esri$Popup): this;
+  declare export class Map mixins Evented {
+    constructor(element: string | HTMLElement, options?: MapOptions): this;
+    getRenderer(layer: Path): Renderer;
+    addControl(control: Control): this;
+    removeControl(control: Control): this;
+    addLayer(layer: Layer): this;
+    removeLayer(layer: Layer): this;
+    hasLayer(layer: Layer): boolean;
+    eachLayer(fn: (layer: Layer) => void, context?: any): this;
+    openPopup(popup: Popup): this;
     openPopup(
-      definition$content: Content,
+      content: Content,
       latlng: LatLngExpression,
-      notification$options?: PopupOptions
+      options?: PopupOptions
     ): this;
-    closePopup(popup?: __esri$Popup): this;
-    openTooltip(tooltip: ImageMapster$Tooltip): this;
+    closePopup(popup?: Popup): this;
+    openTooltip(tooltip: Tooltip): this;
     openTooltip(
-      definition$content: Content,
+      content: Content,
       latlng: LatLngExpression,
-      notification$options?: Highcharts$TooltipOptions
+      options?: TooltipOptions
     ): this;
-    closeTooltip(tooltip?: ImageMapster$Tooltip): this;
+    closeTooltip(tooltip?: Tooltip): this;
     setView(
       center: LatLngExpression,
-      control$zoom: number,
-      notification$options?: ZoomPanOptions
+      zoom: number,
+      options?: ZoomPanOptions
     ): this;
-    setZoom(control$zoom: number, notification$options?: ZoomPanOptions): this;
-    zoomIn(delta?: number, notification$options?: Control$ZoomOptions): this;
-    zoomOut(delta?: number, notification$options?: Control$ZoomOptions): this;
+    setZoom(zoom: number, options?: ZoomPanOptions): this;
+    zoomIn(delta?: number, options?: Control$ZoomOptions): this;
+    zoomOut(delta?: number, options?: Control$ZoomOptions): this;
     setZoomAround(
-      dom$position: math$Point | LatLngExpression,
-      control$zoom: number,
-      notification$options?: Control$ZoomOptions
+      position: Point | LatLngExpression,
+      zoom: number,
+      options?: Control$ZoomOptions
     ): this;
-    fitBounds(
-      bounds: LatLngBoundsExpression,
-      notification$options?: FitBoundsOptions
-    ): this;
-    fitWorld(notification$options?: FitBoundsOptions): this;
-    panTo(latlng: LatLngExpression, notification$options?: PanOptions): this;
+    fitBounds(bounds: LatLngBoundsExpression, options?: FitBoundsOptions): this;
+    fitWorld(options?: FitBoundsOptions): this;
+    panTo(latlng: LatLngExpression, options?: PanOptions): this;
     panBy(offset: PointExpression): this;
     setMaxBounds(bounds: LatLngBoundsExpression): this;
-    setMinZoom(control$zoom: number): this;
-    setMaxZoom(control$zoom: number): this;
-    panInside(
-      latLng: LatLngExpression,
-      notification$options?: PanInsideOptions
-    ): this;
-    panInsideBounds(
-      bounds: LatLngBoundsExpression,
-      notification$options?: PanOptions
-    ): this;
+    setMinZoom(zoom: number): this;
+    setMaxZoom(zoom: number): this;
+    panInside(latLng: LatLngExpression, options?: PanInsideOptions): this;
+    panInsideBounds(bounds: LatLngBoundsExpression, options?: PanOptions): this;
 
     /**
      * Boolean for animate or advanced ZoomPanOptions
      */
-    invalidateSize(notification$options?: boolean | ZoomPanOptions): this;
+    invalidateSize(options?: boolean | ZoomPanOptions): this;
     stop(): this;
     flyTo(
       latlng: LatLngExpression,
-      control$zoom?: number,
-      notification$options?: ZoomPanOptions
+      zoom?: number,
+      options?: ZoomPanOptions
     ): this;
     flyToBounds(
       bounds: LatLngBoundsExpression,
-      notification$options?: FitBoundsOptions
+      options?: FitBoundsOptions
     ): this;
-    addHandler(skin$name: string, HandlerClass: typeof Handler): this;
+    addHandler(name: string, HandlerClass: typeof Handler): this;
     remove(): this;
-    createPane(skin$name: string, container?: HTMLElement): HTMLElement;
+    createPane(name: string, container?: HTMLElement): HTMLElement;
 
     /**
      * Name of the pane or the pane as HTML-Element
      */
     getPane(pane: string | HTMLElement): HTMLElement | void;
     getPanes(): {
-      [skin$name: string]: HTMLElement
+      [name: string]: HTMLElement
     } & DefaultMapPanes;
     getContainer(): HTMLElement;
-    whenReady(fn: () => void, balloontoolbar$context?: any): this;
-    getCenter(): maps$LatLng;
+    whenReady(fn: () => void, context?: any): this;
+    getCenter(): LatLng;
     getZoom(): number;
-    getBounds(): maps$LatLngBounds;
+    getBounds(): LatLngBounds;
     getMinZoom(): number;
     getMaxZoom(): number;
     getBoundsZoom(bounds: LatLngBoundsExpression, inside?: boolean): number;
-    getSize(): math$Point;
-    getPixelBounds(): BPMNModdle$Bounds;
-    getPixelOrigin(): math$Point;
-    getPixelWorldBounds(control$zoom?: number): BPMNModdle$Bounds;
+    getSize(): Point;
+    getPixelBounds(): Bounds;
+    getPixelOrigin(): Point;
+    getPixelWorldBounds(zoom?: number): Bounds;
     getZoomScale(toZoom: number, fromZoom: number): number;
-    getScaleZoom(control$scale: number, fromZoom: number): number;
-    project(latlng: LatLngExpression, control$zoom: number): math$Point;
-    unproject(point: PointExpression, control$zoom: number): maps$LatLng;
-    layerPointToLatLng(point: PointExpression): maps$LatLng;
-    latLngToLayerPoint(latlng: LatLngExpression): math$Point;
-    wrapLatLng(latlng: LatLngExpression): maps$LatLng;
-    wrapLatLngBounds(bounds: maps$LatLngBounds): maps$LatLngBounds;
+    getScaleZoom(scale: number, fromZoom: number): number;
+    project(latlng: LatLngExpression, zoom: number): Point;
+    unproject(point: PointExpression, zoom: number): LatLng;
+    layerPointToLatLng(point: PointExpression): LatLng;
+    latLngToLayerPoint(latlng: LatLngExpression): Point;
+    wrapLatLng(latlng: LatLngExpression): LatLng;
+    wrapLatLngBounds(bounds: LatLngBounds): LatLngBounds;
     distance(latlng1: LatLngExpression, latlng2: LatLngExpression): number;
-    containerPointToLayerPoint(point: PointExpression): math$Point;
-    containerPointToLatLng(point: PointExpression): maps$LatLng;
-    layerPointToContainerPoint(point: PointExpression): math$Point;
-    latLngToContainerPoint(latlng: LatLngExpression): math$Point;
-    mouseEventToContainerPoint(ev: maps$MouseEvent): math$Point;
-    mouseEventToLayerPoint(ev: maps$MouseEvent): math$Point;
-    mouseEventToLatLng(ev: maps$MouseEvent): maps$LatLng;
-    locate(notification$options?: LocateOptions): this;
+    containerPointToLayerPoint(point: PointExpression): Point;
+    containerPointToLatLng(point: PointExpression): LatLng;
+    layerPointToContainerPoint(point: PointExpression): Point;
+    latLngToContainerPoint(latlng: LatLngExpression): Point;
+    mouseEventToContainerPoint(ev: MouseEvent): Point;
+    mouseEventToLayerPoint(ev: MouseEvent): Point;
+    mouseEventToLatLng(ev: MouseEvent): LatLng;
+    locate(options?: LocateOptions): this;
     stopLocate(): this;
-    boxZoom: createRouter$Handler;
-    doubleClickZoom: createRouter$Handler;
-    dragging: createRouter$Handler;
-    keyboard: createRouter$Handler;
-    scrollWheelZoom: createRouter$Handler;
-    tap: createRouter$Handler;
-    touchZoom: createRouter$Handler;
-    zoomControl: ui$Control.Control$Zoom;
-    notification$options: maps$MapOptions;
+    boxZoom: Handler;
+    doubleClickZoom: Handler;
+    dragging: Handler;
+    keyboard: Handler;
+    scrollWheelZoom: Handler;
+    tap: Handler;
+    touchZoom: Handler;
+    zoomControl: Control$Zoom;
+    options: MapOptions;
   }
 
   /**
    * ID of a HTML-Element as string or the HTML-ELement itself
    */
   declare export function map(
-    htmlParser$element: string | HTMLElement,
-    notification$options?: maps$MapOptions
-  ): H$Map;
+    element: string | HTMLElement,
+    options?: MapOptions
+  ): Map;
 
   declare export type BaseIconOptions = {
     iconUrl?: string,
@@ -1838,33 +1752,34 @@ declare module "leaflet" {
     shadowSize?: PointExpression,
     shadowAnchor?: PointExpression,
     className?: string
-  } & __esri$LayerOptions;
+  } & LayerOptions;
 
   declare export type IconOptions = {
     iconUrl: string
   } & BaseIconOptions;
 
-  declare export class Icon<T: BaseIconOptions = IconOptions>
-    mixins layer$Layer {
-    constructor(notification$options: T): this;
+  declare export class Icon<T: BaseIconOptions = IconOptions> mixins Layer {
+    constructor(options: T): this;
     createIcon(oldIcon?: HTMLElement): HTMLElement;
     createShadow(oldIcon?: HTMLElement): HTMLElement;
-    notification$options: T;
+    options: T;
   }
+
+  declare var npm$namespace$Icon: {
+    Default: typeof Icon$Default
+  };
   declare type Icon$DefaultIconOptions = {
     imagePath?: string
   } & BaseIconOptions;
 
-  declare class Icon$Default mixins FFAddonSDK$Icon<Icon$DefaultIconOptions> {
+  declare class Icon$Default mixins Icon<Icon$DefaultIconOptions> {
     static imagePath: string;
-    constructor(notification$options?: Icon$DefaultIconOptions): this;
+    constructor(options?: Icon$DefaultIconOptions): this;
   }
-  declare export function icon(
-    notification$options: IconOptions
-  ): FFAddonSDK$Icon;
+  declare export function icon(options: IconOptions): Icon;
 
   declare export type DivIconOptions = {
-    main$html?: string | false,
+    html?: string | false,
     bgPos?: PointExpression,
     iconSize?: PointExpression,
     iconAnchor?: PointExpression,
@@ -1872,46 +1787,41 @@ declare module "leaflet" {
     className?: string
   } & BaseIconOptions;
 
-  declare export class DivIcon mixins FFAddonSDK$Icon<DivIconOptions> {
-    constructor(notification$options?: DivIconOptions): this;
+  declare export class DivIcon mixins Icon<DivIconOptions> {
+    constructor(options?: DivIconOptions): this;
   }
-  declare export function divIcon(
-    notification$options?: DivIconOptions
-  ): DivIcon;
+  declare export function divIcon(options?: DivIconOptions): DivIcon;
 
   declare export type MarkerOptions = {
-    icon?: FFAddonSDK$Icon | DivIcon,
+    icon?: Icon | DivIcon,
     clickable?: boolean,
     draggable?: boolean,
     keyboard?: boolean,
     title?: string,
     alt?: string,
     zIndexOffset?: number,
-    __esri$opacity?: number,
+    opacity?: number,
     riseOnHover?: boolean,
     riseOffset?: number
   } & InteractiveLayerOptions;
 
-  declare export class Marker<P = any> mixins layer$Layer {
-    constructor(
-      latlng: LatLngExpression,
-      notification$options?: maps$MarkerOptions
-    ): this;
-    toGeoJSON(): geojson.__esri$Feature<geojson.math$Point, P>;
-    getLatLng(): maps$LatLng;
+  declare export class Marker<P = any> mixins Layer {
+    constructor(latlng: LatLngExpression, options?: MarkerOptions): this;
+    toGeoJSON(): geojson.Feature<geojson.Point, P>;
+    getLatLng(): LatLng;
     setLatLng(latlng: LatLngExpression): this;
     setZIndexOffset(offset: number): this;
-    setIcon(icon: FFAddonSDK$Icon | DivIcon): this;
-    setOpacity(__esri$opacity: number): this;
+    setIcon(icon: Icon | DivIcon): this;
+    setOpacity(opacity: number): this;
     getElement(): HTMLElement | void;
-    notification$options: maps$MarkerOptions;
-    dragging: createRouter$Handler;
-    CKEDITOR$feature: geojson.__esri$Feature<geojson.math$Point, P>;
+    options: MarkerOptions;
+    dragging: Handler;
+    feature: geojson.Feature<geojson.Point, P>;
   }
   declare export function marker(
     latlng: LatLngExpression,
-    notification$options?: maps$MarkerOptions
-  ): Highcharts$Marker;
+    options?: MarkerOptions
+  ): Marker;
 
   declare var npm$namespace$Browser: {
     ie: typeof Browser$ie,
@@ -2061,12 +1971,12 @@ declare module "leaflet" {
   declare function Util$throttle(
     fn: () => void,
     time: number,
-    balloontoolbar$context: any
+    context: any
   ): () => void;
 
   declare function Util$wrapNum(
     num: number,
-    dom$range: number[],
+    range: number[],
     includeMax?: boolean
   ): number;
 
@@ -2078,7 +1988,7 @@ declare module "leaflet" {
 
   declare function Util$splitWords(str: string): string[];
 
-  declare function Util$setOptions(obj: any, notification$options: any): any;
+  declare function Util$setOptions(obj: any, options: any): any;
 
   declare function Util$getParamString(
     obj: any,
@@ -2086,15 +1996,15 @@ declare module "leaflet" {
     uppercase?: boolean
   ): string;
 
-  declare function Util$template(str: string, main$data: any): string;
+  declare function Util$template(str: string, data: any): string;
 
   declare function Util$isArray(obj: any): boolean;
 
-  declare function Util$indexOf(getenv$array: any[], el: any): number;
+  declare function Util$indexOf(array: any[], el: any): number;
 
   declare function Util$requestAnimFrame(
-    fn: (CKEDITOR$timestamp: number) => void,
-    balloontoolbar$context?: any,
+    fn: (timestamp: number) => void,
+    context?: any,
     immediate?: boolean
   ): number;
 
