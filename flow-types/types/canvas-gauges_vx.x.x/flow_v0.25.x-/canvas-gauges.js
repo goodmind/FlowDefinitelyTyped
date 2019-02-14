@@ -1,5 +1,12 @@
 declare var npm$namespace$CanvasGauges: {
-  GenericOptions: typeof CanvasGauges$GenericOptions
+  GenericOptions: typeof CanvasGauges$GenericOptions,
+
+  Animation: typeof CanvasGauges$Animation,
+  SmartCanvas: typeof CanvasGauges$SmartCanvas,
+  DomObserver: typeof CanvasGauges$DomObserver,
+  BaseGauge: typeof CanvasGauges$BaseGauge,
+  RadialGauge: typeof CanvasGauges$RadialGauge,
+  LinearGauge: typeof CanvasGauges$LinearGauge
 };
 export type CanvasGauges$FontStyle = "normal" | "italic" | "oblique";
 
@@ -143,7 +150,7 @@ export type CanvasGauges$RadialGaugeOptions = {
   needleCircleOuter?: boolean,
   animationTarget?: string,
   useMinPath?: boolean
-} & CanvasGauges$GenericOptions;
+} & GenericOptions;
 
 export type CanvasGauges$LinearGaugeOptions = {
   borderRadius?: number,
@@ -157,7 +164,7 @@ export type CanvasGauges$LinearGaugeOptions = {
   ticksWidthMinor?: number,
   ticksPadding?: number,
   barLength?: number
-} & CanvasGauges$GenericOptions;
+} & GenericOptions;
 
 export interface CanvasGauges$DrawEventCallback {
   (percent: number): any;
@@ -265,14 +272,14 @@ declare export class CanvasGauges$BaseGauge {
   static ensureValue(value: number): number;
 }
 
-declare export class CanvasGauges$RadialGauge mixins CanvasGauges$BaseGauge {
+declare export class CanvasGauges$RadialGauge mixins BaseGauge {
   type: CanvasGauges$RadialGauge;
   options: CanvasGauges$RadialGaugeOptions;
   constructor(options: CanvasGauges$RadialGaugeOptions): this;
   draw(): CanvasGauges$RadialGauge;
 }
 
-declare export class CanvasGauges$LinearGauge mixins CanvasGauges$BaseGauge {
+declare export class CanvasGauges$LinearGauge mixins BaseGauge {
   type: CanvasGauges$LinearGauge;
   options: CanvasGauges$LinearGaugeOptions;
   constructor(options: CanvasGauges$LinearGaugeOptions): this;
@@ -286,10 +293,10 @@ declare module "canvas-gauges" {
   declare export default typeof CanvasGauges;
 }
 declare interface Document {
-  gauges: CanvasGauges$CanvasGauges$Collection;
+  gauges: CanvasGauges$Collection;
 }
 declare interface Window {
-  CanvasGauges$BaseGauge: CanvasGauges$CanvasGauges$BaseGauge;
-  CanvasGauges$RadialGauge: CanvasGauges$CanvasGauges$RadialGauge;
-  CanvasGauges$LinearGauge: CanvasGauges$CanvasGauges$LinearGauge;
+  BaseGauge: CanvasGauges$BaseGauge;
+  RadialGauge: CanvasGauges$RadialGauge;
+  LinearGauge: CanvasGauges$LinearGauge;
 }
