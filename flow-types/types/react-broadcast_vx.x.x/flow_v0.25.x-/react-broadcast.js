@@ -28,7 +28,7 @@ declare module "react-broadcast" {
   } & $Shape<Broadcast$DefaultProps>;
 
   declare export class Broadcast<T>
-    mixins React.Component<Broadcast$Broadcast$Props<T>, any> {}
+    mixins React.Component<Broadcast$Props<T>, any> {}
   declare export class Subscriber<T>
-    mixins React.Component<Subscriber$Broadcast$Props<T>, any> {}
+    mixins React.Component<Subscriber$Props<T>, any> {}
 }
