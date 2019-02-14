@@ -1,4 +1,7 @@
 declare module "leaflet" {
+  declare var npm$namespace$Control: {
+    Locate: typeof Control$Locate
+  };
   declare class Control$Locate mixins Control {
     onAdd(map: Map): HTMLElement;
     start(): void;
@@ -30,7 +33,7 @@ declare module "leaflet" {
     onLocationOutsideMapBounds?: any;
     showPopup?: boolean;
     strings?: any;
-    locateOptions?: L.Control$LocateOptions;
+    locateOptions?: L.LocateOptions;
   }
 
   declare var npm$namespace$control: {
@@ -41,8 +44,8 @@ declare module "leaflet" {
    * Creates a Leaflet.Locate control
    */
   declare function control$locate(
-    options?: Control$Control$LocateOptions
-  ): Control$Control$Locate;
+    options?: Control$LocateOptions
+  ): Control$Locate;
 }
 declare module "leaflet.locatecontrol" {
   import typeof * as L from "leaflet";
