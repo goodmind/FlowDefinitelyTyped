@@ -207,9 +207,7 @@ declare module "koa-multer" {
 
   declare function multer$memoryStorage(): multer$StorageEngine;
 
-  declare function multer(
-    options?: multer$multer$Options
-  ): multer$multer$Instance;
+  declare function multer(options?: multer$Options): multer$Instance;
 
-  declare module.exports: typeof multer;
+  declare export default typeof multer;
 }
