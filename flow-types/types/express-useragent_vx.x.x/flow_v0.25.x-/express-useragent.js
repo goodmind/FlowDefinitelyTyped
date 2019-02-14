@@ -1,5 +1,5 @@
 declare interface Express$Request {
-  useragent?: ExpressUseragent$ExpressUseragent$UserAgent;
+  useragent?: ExpressUseragent$UserAgent;
 }
 declare var npm$namespace$ExpressUseragent: {
   parse: typeof ExpressUseragent$parse,
@@ -59,10 +59,10 @@ declare function ExpressUseragent$parse(
 ): ExpressUseragent$UserAgent;
 
 declare function ExpressUseragent$express(): (
-  req: ExpressUseragent$express.Express$Request,
-  res: ExpressUseragent$express.Response,
+  req: express.Request,
+  res: express.Response,
   next?: Function
 ) => void;
 declare module "express-useragent" {
-  declare module.exports: typeof ExpressUseragent;
+  declare export default typeof ExpressUseragent;
 }
