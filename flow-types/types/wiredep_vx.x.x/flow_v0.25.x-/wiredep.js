@@ -1,29 +1,30 @@
-declare var npm$namespace$Wiredep: {
-  stream: typeof Wiredep$stream
-};
-declare export function Wiredep$stream(
-  config: WiredepParams
-): NodeJS.ReadWriteStream;
 declare module "wiredep" {
   declare interface PathFiles {
     [type: string]: string[];
   }
 
   /**
- * @return {PathFiles} paths to your files by extension
- * @example :
-{
-js: [
-'paths/to/your/js/files.js',
-'in/their/order/of/dependency.js'
-],
-css: [
-'paths/to/your/css/files.css'
-],
-// etc.
-}
- */
+   * @return {PathFiles} paths to your files by extension
+   * @example :
+   * {
+   * js: [
+   * 'paths/to/your/js/files.js',
+   * 'in/their/order/of/dependency.js'
+   * ],
+   * css: [
+   * 'paths/to/your/css/files.css'
+   * ],
+   * // etc.
+   * }
+   */
   declare function Wiredep(config: WiredepParams): PathFiles;
+
+  declare var npm$namespace$Wiredep: {
+    stream: typeof Wiredep$stream
+  };
+  declare export function Wiredep$stream(
+    config: WiredepParams
+  ): NodeJS.ReadWriteStream;
 
   declare interface WiredepParams {
     src?: string | string[];
@@ -61,16 +62,16 @@ css: [
     includeSelf?: boolean;
 
     /**
- * @example :
-[ /jquery/, 'bower_components/modernizr/modernizr.js' ]
- */
+     * @example :
+     * [ /jquery/, 'bower_components/modernizr/modernizr.js' ]
+     */
     exclude?: Array<string | RegExp>;
 
     /**
- * string or regexp to ignore from the injected filepath
- * @example :
-[ /jquery/, 'bower_components/modernizr/modernizr.js' ]
- */
+     * string or regexp to ignore from the injected filepath
+     * @example :
+     * [ /jquery/, 'bower_components/modernizr/modernizr.js' ]
+     */
     ignorePath?: string | RegExp;
 
     /**
@@ -139,236 +140,236 @@ css: [
         typeOfBowerFile: string,
 
         /**
- * @exemple :
-return '<script class="random-' + Math.random() + '" src="' + filePath + '"></script>'
- */
+         * @exemple :
+         * return '<script class="random-' + Math.random() + '" src="' + filePath + '"></script>'
+         */
         anotherTypeOfBowerFile: (filePath: string) => string
       }
     };
     html: {
       /**
- * @example :
-/(([ \t]*)<!--\s*bower:*(\S*)\s*-->)(\n|\r|.)*?(<!--\s*endbower\s*-->)/gi
- */
+       * @example :
+       * /(([ \t]*)<!--\s*bower:*(\S*)\s*-->)(\n|\r|.)*?(<!--\s*endbower\s*-->)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/<script.*src=['"]([^'"]+)/gi
- */
+         * @example :
+         * /<script.*src=['"]([^'"]+)/gi
+         */
         js: RegExp,
 
         /**
- * @example :
-/<link.*href=['"]([^'"]+)/gi
- */
+         * @example :
+         * /<link.*href=['"]([^'"]+)/gi
+         */
         css: RegExp
       },
       replace: {
         /**
- * @example :
-'<script src="{{filePath}}"></script>'
- */
+         * @example :
+         * '<script src="{{filePath}}"></script>'
+         */
         js: string,
 
         /**
- * @example :
-'<link rel="stylesheet" href="{{filePath}}" />'
- */
+         * @example :
+         * '<link rel="stylesheet" href="{{filePath}}" />'
+         */
         css: string
       }
     };
     jade: {
       /**
- * @example :
-/(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
- */
+       * @example :
+       * /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/script\(.*src=['"]([^'"]+)/gi
- */
+         * @example :
+         * /script\(.*src=['"]([^'"]+)/gi
+         */
         js: RegExp,
 
         /**
- * @example :
-/link\(.*href=['"]([^'"]+)/gi
- */
+         * @example :
+         * /link\(.*href=['"]([^'"]+)/gi
+         */
         css: RegExp
       },
       replace: {
         /**
- * @example :
-'script(src=\'{{filePath}}\')'
- */
+         * @example :
+         * 'script(src=\'{{filePath}}\')'
+         */
         js: string,
 
         /**
- * @example :
-'link(rel=\'stylesheet\', href=\'{{filePath}}\')'
- */
+         * @example :
+         * 'link(rel=\'stylesheet\', href=\'{{filePath}}\')'
+         */
         css: string
       }
     };
     less: {
       /**
- * @example :
-/(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
- */
+       * @example :
+       * /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/
- * @import \s['"](.+css)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+css)['"]/gi
+         */
         css: RegExp,
 
         /**
- * @example :
-/
- * @import \s['"](.+less)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+less)['"]/gi
+         */
         less: RegExp
       },
       replace: {
         /**
- * @example :
-'
- * @import "{{filePath}}";'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}";'
+         */
         css: string,
 
         /**
- * @example :
-'
- * @import "{{filePath}}";'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}";'
+         */
         less: string
       }
     };
     scss: {
       /**
- * @example :
-/(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
- */
+       * @example :
+       * /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/
- * @import \s['"](.+css)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+css)['"]/gi
+         */
         css: RegExp,
 
         /**
- * @example :
-/
- * @import \s['"](.+sass)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+sass)['"]/gi
+         */
         sass: RegExp,
 
         /**
- * @example :
-/
- * @import \s['"](.+scss)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+scss)['"]/gi
+         */
         scss: RegExp
       },
       replace: {
         /**
- * @example :
-'
- * @import "{{filePath}}";'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}";'
+         */
         css: string,
 
         /**
- * @example :
-'
- * @import "{{filePath}}";'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}";'
+         */
         sass: string,
 
         /**
- * @example :
-'
- * @import "{{filePath}}";'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}";'
+         */
         scss: string
       }
     };
     styl: {
       /**
- * @example :
-/(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
- */
+       * @example :
+       * /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/
- * @import \s['"](.+css)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+css)['"]/gi
+         */
         css: RegExp,
 
         /**
- * @example :
-/
- * @import \s['"](.+styl)['"]/gi
- */
+         * @example :
+         * /
+         * @import \s['"](.+styl)['"]/gi
+         */
         styl: RegExp
       },
       replace: {
         /**
- * @example :
-'
- * @import "{{filePath}}"'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}"'
+         */
         css: string,
 
         /**
- * @example :
-'
- * @import "{{filePath}}"'
- */
+         * @example :
+         * '
+         * @import "{{filePath}}"'
+         */
         styl: string
       }
     };
     yaml: {
       /**
- * @example :
-/(([ \t]*)#\s*bower:*(\S*))(\n|\r|.)*?(#\s*endbower)/gi
- */
+       * @example :
+       * /(([ \t]*)#\s*bower:*(\S*))(\n|\r|.)*?(#\s*endbower)/gi
+       */
       block: RegExp,
       detect: {
         /**
- * @example :
-/-\s(.+js)/gi
- */
+         * @example :
+         * /-\s(.+js)/gi
+         */
         js: RegExp,
 
         /**
- * @example :
-/-\s(.+css)/gi
- */
+         * @example :
+         * /-\s(.+css)/gi
+         */
         css: RegExp
       },
       replace: {
         /**
- * @example :
-'- {{filePath}}'
- */
+         * @example :
+         * '- {{filePath}}'
+         */
         js: string,
 
         /**
- * @example :
-'- {{filePath}}'
- */
+         * @example :
+         * '- {{filePath}}'
+         */
         css: string
       }
     };
   }
-  declare module.exports: typeof Wiredep;
+  declare export default typeof Wiredep;
 }
