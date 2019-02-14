@@ -1,5 +1,5 @@
 declare module "is-absolute" {
-  declare module.exports: typeof isAbsolute;
+  declare export default typeof isAbsolute;
 
   declare function isAbsolute(path: string): boolean;
 
