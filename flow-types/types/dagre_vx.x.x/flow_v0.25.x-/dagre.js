@@ -1,4 +1,9 @@
 declare module "dagre" {
+  declare var npm$namespace$graphlib: {
+    Graph: typeof graphlib$Graph,
+    json: typeof npm$namespace$graphlib$json,
+    alg: typeof npm$namespace$graphlib$alg
+  };
   declare class graphlib$Graph {
     constructor(opt?: {
       directed?: boolean,
@@ -54,70 +59,70 @@ declare module "dagre" {
     successors(name: string): Node[] | void;
   }
 
-  declare var npm$namespace$json: {
-    read: typeof json$read,
-    write: typeof json$write
+  declare var npm$namespace$graphlib$json: {
+    read: typeof graphlib$json$read,
+    write: typeof graphlib$json$write
   };
-  declare function json$read(graph: any): graphlib$Graph;
+  declare function graphlib$json$read(graph: any): graphlib$Graph;
 
-  declare function json$write(graph: graphlib$Graph): any;
+  declare function graphlib$json$write(graph: graphlib$Graph): any;
 
-  declare var npm$namespace$alg: {
-    components: typeof alg$components,
-    dijkstra: typeof alg$dijkstra,
-    dijkstraAll: typeof alg$dijkstraAll,
-    findCycles: typeof alg$findCycles,
-    floydWarchall: typeof alg$floydWarchall,
-    isAcyclic: typeof alg$isAcyclic,
-    postorder: typeof alg$postorder,
-    preorder: typeof alg$preorder,
-    prim: typeof alg$prim,
-    tarjam: typeof alg$tarjam,
-    topsort: typeof alg$topsort
+  declare var npm$namespace$graphlib$alg: {
+    components: typeof graphlib$alg$components,
+    dijkstra: typeof graphlib$alg$dijkstra,
+    dijkstraAll: typeof graphlib$alg$dijkstraAll,
+    findCycles: typeof graphlib$alg$findCycles,
+    floydWarchall: typeof graphlib$alg$floydWarchall,
+    isAcyclic: typeof graphlib$alg$isAcyclic,
+    postorder: typeof graphlib$alg$postorder,
+    preorder: typeof graphlib$alg$preorder,
+    prim: typeof graphlib$alg$prim,
+    tarjam: typeof graphlib$alg$tarjam,
+    topsort: typeof graphlib$alg$topsort
   };
-  declare function alg$components(graph: graphlib$Graph): string[][];
+  declare function graphlib$alg$components(graph: graphlib$Graph): string[][];
 
-  declare function alg$dijkstra(
+  declare function graphlib$alg$dijkstra(
     graph: graphlib$Graph,
     source: string,
     weightFn?: WeightFn,
     edgeFn?: EdgeFn
   ): any;
 
-  declare function alg$dijkstraAll(
+  declare function graphlib$alg$dijkstraAll(
     graph: graphlib$Graph,
     weightFn?: WeightFn,
     edgeFn?: EdgeFn
   ): any;
 
-  declare function alg$findCycles(graph: graphlib$Graph): string[][];
+  declare function graphlib$alg$findCycles(graph: graphlib$Graph): string[][];
 
-  declare function alg$floydWarchall(
+  declare function graphlib$alg$floydWarchall(
     graph: graphlib$Graph,
     weightFn?: WeightFn,
     edgeFn?: EdgeFn
   ): any;
 
-  declare function alg$isAcyclic(graph: graphlib$Graph): boolean;
+  declare function graphlib$alg$isAcyclic(graph: graphlib$Graph): boolean;
 
-  declare function alg$postorder(
+  declare function graphlib$alg$postorder(
     graph: graphlib$Graph,
     nodeNames: string | string[]
   ): string[];
 
-  declare function alg$preorder(
+  declare function graphlib$alg$preorder(
     graph: graphlib$Graph,
     nodeNames: string | string[]
   ): string[];
 
-  declare function alg$prim(
+  declare function graphlib$alg$prim(
     graph: graphlib$Graph,
     weightFn?: WeightFn
   ): graphlib$Graph;
 
-  declare function alg$tarjam(graph: graphlib$Graph): string[][];
+  declare function graphlib$alg$tarjam(graph: graphlib$Graph): string[][];
 
-  declare function alg$topsort(graph: graphlib$Graph): string[];
+  declare function graphlib$alg$topsort(graph: graphlib$Graph): string[];
 
   declare export interface Label {
     [key: string]: any;
@@ -151,7 +156,7 @@ declare module "dagre" {
     labeloffest?: number;
   }
   declare export function layout(
-    graph: graphlib$graphlib$Graph,
+    graph: graphlib$Graph,
     layout?: GraphLabel & NodeConfig & EdgeConfig
   ): void;
 
