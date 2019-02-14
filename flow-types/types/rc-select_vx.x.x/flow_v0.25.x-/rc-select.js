@@ -1,10 +1,15 @@
 declare module "rc-select" {
   import typeof * as React from "react";
 
-  declare export default typeof RcSelect$Select;
+  declare export default typeof Select;
 
-  declare export { RcSelect$Option, RcSelect$OptGroup };
+  declare export { Option, OptGroup };
 
+  declare var npm$namespace$RcSelect: {
+    Select: typeof RcSelect$Select,
+    Option: typeof RcSelect$Option,
+    OptGroup: typeof RcSelect$OptGroup
+  };
   declare interface RcSelect$SelectProps {
     allowClear?: boolean;
     animation?: string;
