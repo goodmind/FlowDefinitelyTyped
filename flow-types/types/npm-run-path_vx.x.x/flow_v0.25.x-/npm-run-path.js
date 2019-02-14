@@ -1,10 +1,10 @@
 declare module "npm-run-path" {
-  declare module.exports: typeof npmRunPath;
+  declare export default typeof npmRunPath;
 
   /**
    * Get your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) prepended with locally installed binaries.
    */
-  declare function npmRunPath(options?: npmRunPath$npmRunPath$Options): string;
+  declare function npmRunPath(options?: npmRunPath$Options): string;
 
   declare var npm$namespace$npmRunPath: {
     env: typeof npmRunPath$env
@@ -38,7 +38,7 @@ declare module "npm-run-path" {
      * [PATH key](https://github.com/sindresorhus/path-key). Use this if you're modifying the PATH for use
      * in the `child_process` options.
      */
-    npmRunPath$env?: npmRunPath$ProcessEnv;
+    env?: npmRunPath$ProcessEnv;
   }
 
   declare interface npmRunPath$ProcessEnv {
