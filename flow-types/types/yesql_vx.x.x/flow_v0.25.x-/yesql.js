@@ -2,7 +2,7 @@ declare module "yesql" {
   declare function readSqlFiles(
     dir: string,
     options?: {
-      readSqlFiles$pg?: boolean,
+      pg?: boolean,
       type?: "pg" | "mysql"
     }
   ): string;
@@ -25,5 +25,5 @@ declare module "yesql" {
     values: any[]
   };
 
-  declare module.exports: typeof readSqlFiles;
+  declare export default typeof readSqlFiles;
 }
