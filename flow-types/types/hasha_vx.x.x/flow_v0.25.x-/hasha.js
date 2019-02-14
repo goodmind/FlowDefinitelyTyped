@@ -1,18 +1,18 @@
 declare module "hasha" {
   import typeof * as crypto from "crypto";
 
-  declare module.exports: typeof hasha;
+  declare export default typeof hasha;
 
-  declare function hasha(input: hasha$hasha$HashaInput): string;
+  declare function hasha(input: hasha$HashaInput): string;
 
-  declare function hasha<E: hasha$hasha$ToStringEncoding>(
-    input: hasha$hasha$HashaInput,
-    options: hasha$hasha$HashaOptions<E>
+  declare function hasha<E: hasha$ToStringEncoding>(
+    input: hasha$HashaInput,
+    options: hasha$HashaOptions<E>
   ): string;
 
   declare function hasha<E: "buffer">(
-    input: hasha$hasha$HashaInput,
-    options: hasha$hasha$HashaOptions<E>
+    input: hasha$HashaInput,
+    options: hasha$HashaOptions<E>
   ): Buffer;
 
   declare var npm$namespace$hasha: {
@@ -42,16 +42,16 @@ declare module "hasha" {
   ): crypto.Hash;
 
   declare function hasha$fromStream(
-    hasha$stream: NodeJS.ReadableStream
+    stream: NodeJS.ReadableStream
   ): Promise<string | null>;
 
   declare function hasha$fromStream<E: hasha$ToStringEncoding>(
-    hasha$stream: NodeJS.ReadableStream,
+    stream: NodeJS.ReadableStream,
     options?: hasha$HashaOptions<E>
   ): Promise<string | null>;
 
   declare function hasha$fromStream<E: "buffer">(
-    hasha$stream: NodeJS.ReadableStream,
+    stream: NodeJS.ReadableStream,
     options?: hasha$HashaOptions<E>
   ): Promise<Buffer | null>;
 
