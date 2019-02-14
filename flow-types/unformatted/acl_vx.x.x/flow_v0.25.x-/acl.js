@@ -1,5 +1,11 @@
 declare module 'acl' {
-        declare type strings = string | string[];
+        import typeof * as http from 'http';
+
+	import typeof * as Promise from 'bluebird';
+
+	import typeof * as express from 'express';
+
+	declare type strings = string | string[];
 	declare type Value = string | number;
 	declare type Values = Value | Value[];
 	declare type Action = () => any;
@@ -116,12 +122,16 @@ end: () => void
 params: (...types: string[]) => NoOp,
 end: () => void
 } 
+	import typeof * as redis from 'redis';
+
 	declare type RedisBackend = {} & Backend<redis.RedisClient>
 
 	declare interface RedisBackendStatic {
 new (redis: redis.RedisClient, prefix: string): RedisBackend,
 new (redis: redis.RedisClient): RedisBackend
 } 
+	import typeof * as mongo from 'mongodb';
+
 	declare type MongodbBackend = {} & Backend<Callback>
 
 	declare interface MongodbBackendStatic {
