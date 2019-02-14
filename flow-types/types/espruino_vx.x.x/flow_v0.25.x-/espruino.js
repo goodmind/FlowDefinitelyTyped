@@ -1,1528 +1,3 @@
-declare var npm$namespace$Badge: {
-  capSense: typeof Badge$capSense,
-  getBatteryPercentage: typeof Badge$getBatteryPercentage,
-  setContrast: typeof Badge$setContrast
-};
-
-/**
- * <p>Capacitive sense - the higher the capacitance, the higher the number returned.</p>
- * <p>Supply a corner between 1 and 6, and a</p>
- * @param corner
- * @return
- * @url http://www.espruino.com/Reference#l_Badge_capSense
- */
-declare function Badge$capSense(corner: number): number;
-
-/**
- * <p>Return an approximate battery percentage remaining based on
- * a normal CR2032 battery (2.8 - 2.2v)</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Badge_getBatteryPercentage
- */
-declare function Badge$getBatteryPercentage(): number;
-
-/**
- * <p>Set the LCD&#39;s contrast</p>
- * @param c
- * @url http://www.espruino.com/Reference#l_Badge_setContrast
- */
-declare function Badge$setContrast(c: number): void;
-
-declare var npm$namespace$Puck: {
-  mag: typeof Puck$mag,
-  magTemp: typeof Puck$magTemp,
-  magOff: typeof Puck$magOff,
-  capSense: typeof Puck$capSense,
-  light: typeof Puck$light,
-  getBatteryPercentage: typeof Puck$getBatteryPercentage,
-  selfTest: typeof Puck$selfTest
-};
-
-/**
- * <p>Turn on the magnetometer, take a single reading, and then turn it off again.</p>
- * <p>An object of the form <code>{x,y,z}</code> is returned containing magnetometer readings.
- * Due to residual magnetism in the Puck and magnetometer itself, with
- * no magnetic field the Puck will not return <code>{x:0,y:0,z:0}</code>.</p>
- * <p>Instead, it&#39;s up to you to figure out what the &#39;zero value&#39; is for your
- * Puck in your location and to then subtract that from the value returned. If
- * you&#39;re not trying to measure the Earth&#39;s magnetic field then it&#39;s a good idea
- * to just take a reading at startup and use that.</p>
- * <p>With the aerial at the top of the board, the <code>y</code> reading is vertical, <code>x</code> is
- * horizontal, and <code>z</code> is through the board.</p>
- * <p>Readings are in increments of 0.1 micro Tesla (uT). The Earth&#39;s magnetic field
- * varies from around 25-60 uT, so the reading will vary by 250 to 600 depending
- * on location.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_mag
- */
-declare function Puck$mag(): any;
-
-/**
- * <p>Turn on the magnetometer, take a single temperature reading from the MAG3110 chip, and then turn it off again.</p>
- * <p>(If the magnetometer is already on, this just returns the last reading obtained)</p>
- * <p><code>E.getTemperature()</code> uses the microcontroller&#39;s temperature sensor, but this uses the magnetometer&#39;s.</p>
- * <p>The reading obtained is an integer (so no decimal places), but the sensitivity is factory trimmed. to 1&deg;C, however the temperature
- * offset isn&#39;t - so absolute readings may still need calibrating.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_magTemp
- */
-declare function Puck$magTemp(): number;
-
-/**
- * <p>Turn the magnetometer off</p>
- * @url http://www.espruino.com/Reference#l_Puck_magOff
- */
-declare function Puck$magOff(): void;
-
-/**
- * <p>Transmit the given set of IR pulses - data should be an array of pulse times
- * in milliseconds (as <code>[on, off, on, off, on, etc]</code>).</p>
- * <p>For example <code>Puck.IR(pulseTimes)</code> - see <a href="http://www.espruino.com/Puck.js+Infrared">http://www.espruino.com/Puck.js+Infrared</a>
- * for a full example.</p>
- * <p>You can also attach an external LED to Puck.js, in which case
- * you can just execute <code>Puck.IR(pulseTimes, led_cathode, led_anode)</code></p>
- * @url http://www.espruino.com/Reference#l_Puck_IR
- */
-declare interface Puck$IR {
-  /**
-   * @param data
-   * @param cathode
-   * @param anode
-   * @return
-   */
-  new(data: any, cathode: Pin, anode: Pin): Puck$IR;
-}
-
-/**
- * <p>Capacitive sense - the higher the capacitance, the higher the number returned.</p>
- * <p>If called without arguments, a value depending on the capacitance of what is
- * attached to pin D11 will be returned. If you attach a length of wire to D11,
- * you&#39;ll be able to see a higher value returned when your hand is near the wire
- * than when it is away.</p>
- * <p>You can also supply pins to use yourself, however if you do this then
- * the TX pin must be connected to RX pin and sense plate via a roughly 1MOhm
- * resistor.</p>
- * <p>When not supplying pins, Puck.js uses an internal resistor between D12(tx)
- * and D11(rx).</p>
- * @param tx
- * @param rx
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_capSense
- */
-declare function Puck$capSense(tx: Pin, rx: Pin): number;
-
-/**
- * <p>Return a light value based on the light the red LED is seeing.</p>
- * <p><strong>Note:</strong> If called more than 5 times per second, the received light value
- * may not be accurate.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_light
- */
-declare function Puck$light(): number;
-
-/**
- * <p>Return an approximate battery percentage remaining based on
- * a normal CR2032 battery (2.8 - 2.2v)</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_getBatteryPercentage
- */
-declare function Puck$getBatteryPercentage(): number;
-
-/**
- * <p>Run a self-test, and return true for a pass. This checks for shorts
- * between pins, so your Puck shouldn&#39;t have anything connected to it.</p>
- * <p><strong>Note:</strong> This self-test auto starts if you hold the button on your Puck
- * down while inserting the battery, leave it pressed for 3 seconds (while
- * the green LED is lit) and release it soon after all LEDs turn on. 5
- * red blinks is a fail, 5 green is a pass.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Puck_selfTest
- */
-declare function Puck$selfTest(): boolean;
-
-declare var npm$namespace$fs: {
-  pipe: typeof fs$pipe,
-  readdir: typeof fs$readdir,
-  readdirSync: typeof fs$readdirSync,
-  writeFile: typeof fs$writeFile,
-  writeFileSync: typeof fs$writeFileSync,
-  appendFile: typeof fs$appendFile,
-  appendFileSync: typeof fs$appendFileSync,
-  readFile: typeof fs$readFile,
-  readFileSync: typeof fs$readFileSync,
-  unlink: typeof fs$unlink,
-  unlinkSync: typeof fs$unlinkSync,
-  statSync: typeof fs$statSync,
-  mkdir: typeof fs$mkdir,
-  mkdirSync: typeof fs$mkdirSync
-};
-
-/**
- * @param source
- * @param destination
- * @param options
- * @url http://www.espruino.com/Reference#l_fs_pipe
- */
-declare function fs$pipe(source: any, destination: any, options: any): void;
-
-/**
- * <p>List all files in the supplied directory, returning them as an array of strings.</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_readdir
- */
-declare function fs$readdir(path: any): any;
-
-/**
- * <p>List all files in the supplied directory, returning them as an array of strings.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_readdirSync
- */
-declare function fs$readdirSync(path: any): any;
-
-/**
- * <p>Write the data to the given file</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_fs_writeFile
- */
-declare function fs$writeFile(path: any, data: any): boolean;
-
-/**
- * <p>Write the data to the given file</p>
- * @param path
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_fs_writeFileSync
- */
-declare function fs$writeFileSync(path: any, data: any): boolean;
-
-/**
- * <p>Append the data to the given file, created a new file if it doesn&#39;t exist</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_fs_appendFile
- */
-declare function fs$appendFile(path: any, data: any): boolean;
-
-/**
- * <p>Append the data to the given file, created a new file if it doesn&#39;t exist</p>
- * @param path
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_fs_appendFileSync
- */
-declare function fs$appendFileSync(path: any, data: any): boolean;
-
-/**
- * <p>Read all data from a file and return as a string</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_readFile
- */
-declare function fs$readFile(path: any): any;
-
-/**
- * <p>Read all data from a file and return as a string.</p>
- * <p><strong>Note:</strong> The size of files you can load using this method is limited by the amount of available RAM. To read files a bit at a time, see the <code>File</code> class.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_readFileSync
- */
-declare function fs$readFileSync(path: any): any;
-
-/**
- * <p>Delete the given file</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_unlink
- */
-declare function fs$unlink(path: any): boolean;
-
-/**
- * <p>Delete the given file</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_unlinkSync
- */
-declare function fs$unlinkSync(path: any): boolean;
-
-/**
- * <p>Return information on the given file. This returns an object with the following
- * fields:</p>
- * <p>size: size in bytes
- * dir: a boolean specifying if the file is a directory or not
- * mtime: A Date structure specifying the time the file was last modified</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_statSync
- */
-declare function fs$statSync(path: any): any;
-
-/**
- * <p>Create the directory</p>
- * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_mkdir
- */
-declare function fs$mkdir(path: any): boolean;
-
-/**
- * <p>Create the directory</p>
- * @param path
- * @return
- * @url http://www.espruino.com/Reference#l_fs_mkdirSync
- */
-declare function fs$mkdirSync(path: any): boolean;
-
-declare var npm$namespace$WioLTE: {
-  setGrovePower: typeof WioLTE$setGrovePower,
-  setLEDPower: typeof WioLTE$setLEDPower,
-  D38: typeof WioLTE$D38,
-  D20: typeof WioLTE$D20,
-  A6: typeof WioLTE$A6,
-  I2C: typeof WioLTE$I2C,
-  UART: typeof WioLTE$UART,
-  A4: typeof WioLTE$A4
-};
-
-/**
- * <p>Set the WIO&#39;s LED</p>
- * @url http://www.espruino.com/Reference#l_WioLTE_LED
- */
-declare interface WioLTE$LED {
-  /**
-   * @param red
-   * @param green
-   * @param blue
-   * @return
-   */
-  new(red: number, green: number, blue: number): WioLTE$LED;
-}
-
-/**
- * <p>Set the power of Grove connectors, except for <code>D38</code> and <code>D39</code> which are always on.</p>
- * @param onoff
- * @url http://www.espruino.com/Reference#l_WioLTE_setGrovePower
- */
-declare function WioLTE$setGrovePower(onoff: boolean): void;
-
-/**
- * <p>Turn power to the WIO&#39;s LED on or off.</p>
- * <p>Turning the LED on won&#39;t immediately display a color - that must be done with <code>WioLTE.LED(r,g,b)</code></p>
- * @param onoff
- * @url http://www.espruino.com/Reference#l_WioLTE_setLEDPower
- */
-declare function WioLTE$setLEDPower(onoff: boolean): void;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_D38
- */
-declare var WioLTE$D38: any;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_D20
- */
-declare var WioLTE$D20: any;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_A6
- */
-declare var WioLTE$A6: any;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_I2C
- */
-declare var WioLTE$I2C: any;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_UART
- */
-declare var WioLTE$UART: any;
-
-/**
- * @url http://www.espruino.com/Reference#l_WioLTE_A4
- */
-declare var WioLTE$A4: any;
-declare var npm$namespace$hashlib: {
-  sha224: typeof hashlib$sha224,
-  sha256: typeof hashlib$sha256
-};
-
-/**
- * @param message
- * @return
- * @url http://www.espruino.com/Reference#l_hashlib_sha224
- */
-declare function hashlib$sha224(message: any): HASH;
-
-/**
- * @param message
- * @return
- * @url http://www.espruino.com/Reference#l_hashlib_sha256
- */
-declare function hashlib$sha256(message: any): HASH;
-
-declare var npm$namespace$net: {
-  createServer: typeof net$createServer,
-  connect: typeof net$connect
-};
-
-/**
- * <p>Create a Server</p>
- * <p>When a request to the server is made, the callback is called. In the callback you can use the methods on the connection to send data. You can also add <code>connection.on(&#39;data&#39;,function() { ... })</code> to listen for received data</p>
- * @param callback
- * @return
- * @url http://www.espruino.com/Reference#l_net_createServer
- */
-declare function net$createServer(callback: any): Server;
-
-/**
- * <p>Create a socket connection</p>
- * @param options
- * @param callback
- * @return
- * @url http://www.espruino.com/Reference#l_net_connect
- */
-declare function net$connect(options: any, callback: any): Socket;
-
-declare var npm$namespace$url: {
-  parse: typeof url$parse
-};
-
-/**
- * <p>A utility function to split a URL into parts</p>
- * <p>This is useful in web servers for instance when handling a request.</p>
- * <p>For instance <code>url.parse(&quot;/a?b=c&amp;d=e&quot;,true)</code> returns <code>{&quot;method&quot;:&quot;GET&quot;,&quot;host&quot;:&quot;&quot;,&quot;path&quot;:&quot;/a?b=c&amp;d=e&quot;,&quot;pathname&quot;:&quot;/a&quot;,&quot;search&quot;:&quot;?b=c&amp;d=e&quot;,&quot;port&quot;:80,&quot;query&quot;:{&quot;b&quot;:&quot;c&quot;,&quot;d&quot;:&quot;e&quot;}}</code></p>
- * @param urlStr
- * @param parseQuery
- * @return
- * @url http://www.espruino.com/Reference#l_url_parse
- */
-declare function url$parse(urlStr: any, parseQuery: boolean): any;
-
-declare var npm$namespace$WIZnet: {
-  connect: typeof WIZnet$connect
-};
-
-/**
- * <p>Initialise the WIZnet module and return an Ethernet object</p>
- * @param spi
- * @param cs
- * @return
- * @url http://www.espruino.com/Reference#l_WIZnet_connect
- */
-declare function WIZnet$connect(spi: any, cs: Pin): Ethernet;
-
-declare var npm$namespace$TelnetServer: {
-  setOptions: typeof TelnetServer$setOptions
-};
-
-/**
- * @param options
- * @url http://www.espruino.com/Reference#l_TelnetServer_setOptions
- */
-declare function TelnetServer$setOptions(options: any): void;
-
-declare var npm$namespace$CC3000: {
-  connect: typeof CC3000$connect
-};
-
-/**
- * <p>Initialise the CC3000 and return a WLAN object</p>
- * @param spi
- * @param cs
- * @param en
- * @param irq
- * @return
- * @url http://www.espruino.com/Reference#l_CC3000_connect
- */
-declare function CC3000$connect(spi: any, cs: Pin, en: Pin, irq: Pin): WLAN;
-
-declare var npm$namespace$http: {
-  createServer: typeof http$createServer
-};
-
-/**
- * <p>Create an HTTP Server</p>
- * <p>When a request to the server is made, the callback is called. In the callback you can use the methods on the response (httpSRs) to send data. You can also add <code>request.on(&#39;data&#39;,function() { ... })</code> to listen for POSTed data</p>
- * @param callback
- * @return
- * @url http://www.espruino.com/Reference#l_http_createServer
- */
-declare function http$createServer(callback: any): httpSrv;
-
-declare var npm$namespace$ESP8266: {
-  reboot: typeof ESP8266$reboot,
-  logDebug: typeof ESP8266$logDebug,
-  setLog: typeof ESP8266$setLog,
-  printLog: typeof ESP8266$printLog,
-  readLog: typeof ESP8266$readLog,
-  dumpSocketInfo: typeof ESP8266$dumpSocketInfo,
-  setCPUFreq: typeof ESP8266$setCPUFreq,
-  getState: typeof ESP8266$getState,
-  getFreeFlash: typeof ESP8266$getFreeFlash,
-  crc32: typeof ESP8266$crc32,
-  neopixelWrite: typeof ESP8266$neopixelWrite,
-  deepSleep: typeof ESP8266$deepSleep,
-  ping: typeof ESP8266$ping
-};
-
-/**
- * <p>Perform a hardware reset/reboot of the esp8266.</p>
- * @url http://www.espruino.com/Reference#l_ESP8266_reboot
- */
-declare function ESP8266$reboot(): void;
-
-/**
- * <p>Enable or disable the logging of debug information.  A value of <code>true</code> enables debug logging while a value of <code>false</code> disables debug logging.  Debug output is sent to UART1 (gpio2).</p>
- * @param enable
- * @url http://www.espruino.com/Reference#l_ESP8266_logDebug
- */
-declare function ESP8266$logDebug(enable: boolean): void;
-
-/**
- * <p>Set the debug logging mode. It can be disabled (which frees ~1.2KB of heap), enabled in-memory only, or in-memory and output to a UART.</p>
- * @param mode
- * @url http://www.espruino.com/Reference#l_ESP8266_setLog
- */
-declare function ESP8266$setLog(mode: number): void;
-
-/**
- * <p>Prints the contents of the debug log to the console.</p>
- * @url http://www.espruino.com/Reference#l_ESP8266_printLog
- */
-declare function ESP8266$printLog(): void;
-
-/**
- * <p>Returns one line from the log or up to 128 characters.</p>
- * @url http://www.espruino.com/Reference#l_ESP8266_readLog
- */
-declare function ESP8266$readLog(): void;
-
-/**
- * <p>Dumps info about all sockets to the log. This is for troubleshooting the socket implementation.</p>
- * @url http://www.espruino.com/Reference#l_ESP8266_dumpSocketInfo
- */
-declare function ESP8266$dumpSocketInfo(): void;
-
-/**
- * <p><strong>Note:</strong> This is deprecated. Use <code>E.setClock(80/160)</code>
- * <strong>Note:</strong>
- * Set the operating frequency of the ESP8266 processor. The default is 160Mhz.</p>
- * <p><strong>Warning</strong>: changing the cpu frequency affects the timing of some I/O operations, notably of software SPI and I2C, so things may be a bit slower at 80Mhz.</p>
- * @param freq
- * @url http://www.espruino.com/Reference#l_ESP8266_setCPUFreq
- */
-declare function ESP8266$setCPUFreq(freq: any): void;
-
-/**
- * <p>Returns an object that contains details about the state of the ESP8266 with the following fields:</p>
- * <ul>
- * <li><code>sdkVersion</code>   - Version of the SDK.</li>
- * <li><code>cpuFrequency</code> - CPU operating frequency in Mhz.</li>
- * <li><code>freeHeap</code>     - Amount of free heap in bytes.</li>
- * <li><code>maxCon</code>       - Maximum number of concurrent connections.</li>
- * <li><code>flashMap</code>     - Configured flash size&amp;map: &#39;512KB:256/256&#39; .. &#39;4MB:512/512&#39;</li>
- * <li><code>flashKB</code>      - Configured flash size in KB as integer</li>
- * <li><code>flashChip</code>    - Type of flash chip as string with manufacturer &amp; chip, ex: &#39;0xEF 0x4016`</li>
- *      * </ul>
- *      *
- *      * @return
- *      * @url http://www.espruino.com/Reference#l_ESP8266_getState
- *      *
- */
-declare function ESP8266$getState(): any;
-
-/**
- * <p><strong>Note:</strong> This is deprecated. Use <code>require(&quot;flash&quot;).getFree()</code></p>
- * @return
- * @url http://www.espruino.com/Reference#l_ESP8266_getFreeFlash
- */
-declare function ESP8266$getFreeFlash(): any;
-
-/**
- * @param arrayOfData
- * @return
- * @url http://www.espruino.com/Reference#l_ESP8266_crc32
- */
-declare function ESP8266$crc32(arrayOfData: any): any;
-
-/**
- * <p><strong>This function is deprecated.</strong> Please use <code>require(&quot;neopixel&quot;).write(pin, data)</code> instead</p>
- * @param pin
- * @param arrayOfData
- * @url http://www.espruino.com/Reference#l_ESP8266_neopixelWrite
- */
-declare function ESP8266$neopixelWrite(pin: Pin, arrayOfData: any): void;
-
-/**
- * <p>Put the ESP8266 into &#39;deep sleep&#39; for the given number of microseconds,
- * reducing power consumption drastically. </p>
- * <p>meaning of option values:</p>
- * <p>0 - the 108th Byte of init parameter decides whether RF calibration will be performed or not.</p>
- * <p>1 - run RF calibration after waking up. Power consumption is high.</p>
- * <p>2 - no RF calibration after waking up. Power consumption is low.</p>
- * <p>4 - no RF after waking up. Power consumption is the lowest.</p>
- * <p><strong>Note:</strong> unlike normal Espruino boards&#39; &#39;deep sleep&#39; mode, ESP8266 deep sleep actually turns off the processor. After the given number of microseconds have elapsed, the ESP8266 will restart as if power had been turned off and then back on. <em>All contents of RAM will be lost</em>.
- * Connect GPIO 16 to RST to enable wakeup.</p>
- * <p><strong>Special:</strong> 0 microseconds cause sleep forever until external wakeup RST pull down occurs.</p>
- * @param micros
- * @param option
- * @url http://www.espruino.com/Reference#l_ESP8266_deepSleep
- */
-declare function ESP8266$deepSleep(micros: any, option: any): void;
-
-/**
- * <p>Perform a network ping request. The parameter can be either a String or a numeric IP address.
- * <strong>Note:</strong> This function should probably be removed, or should it be part of the wifi library?</p>
- * @param ipAddr
- * @param pingCallback
- * @url http://www.espruino.com/Reference#l_ESP8266_ping
- */
-declare function ESP8266$ping(ipAddr: any, pingCallback: any): void;
-
-declare var npm$namespace$Trig: {
-  getPosAtTime: typeof Trig$getPosAtTime,
-  setup: typeof Trig$setup,
-  setTrigger: typeof Trig$setTrigger,
-  killTrigger: typeof Trig$killTrigger,
-  getTrigger: typeof Trig$getTrigger,
-  getRPM: typeof Trig$getRPM,
-  getErrors: typeof Trig$getErrors,
-  getErrorArray: typeof Trig$getErrorArray
-};
-
-/**
- * <p>Get the position of the trigger wheel at the given time (from getTime)</p>
- * @param time
- * @return
- * @url http://www.espruino.com/Reference#l_Trig_getPosAtTime
- */
-declare function Trig$getPosAtTime(time: number): number;
-
-/**
- * <p>Initialise the trigger class</p>
- * @param pin
- * @param options
- * @url http://www.espruino.com/Reference#l_Trig_setup
- */
-declare function Trig$setup(pin: Pin, options: any): void;
-
-/**
- * <p>Set a trigger for a certain point in the cycle</p>
- * @param num
- * @param pos
- * @param pins
- * @param pulseLength
- * @url http://www.espruino.com/Reference#l_Trig_setTrigger
- */
-declare function Trig$setTrigger(
-  num: number,
-  pos: number,
-  pins: any,
-  pulseLength: number
-): void;
-
-/**
- * <p>Disable a trigger</p>
- * @param num
- * @url http://www.espruino.com/Reference#l_Trig_killTrigger
- */
-declare function Trig$killTrigger(num: number): void;
-
-/**
- * <p>Get the current state of a trigger</p>
- * @param num
- * @return
- * @url http://www.espruino.com/Reference#l_Trig_getTrigger
- */
-declare function Trig$getTrigger(num: number): any;
-
-/**
- * <p>Get the RPM of the trigger wheel</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Trig_getRPM
- */
-declare function Trig$getRPM(): number;
-
-/**
- * <p>Get the current error flags from the trigger wheel - and zero them</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Trig_getErrors
- */
-declare function Trig$getErrors(): number;
-
-/**
- * <p>Get the current error flags from the trigger wheel - and zero them</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Trig_getErrorArray
- */
-declare function Trig$getErrorArray(): any;
-
-declare var npm$namespace$NRF: {
-  disconnect: typeof NRF$disconnect,
-  sleep: typeof NRF$sleep,
-  wake: typeof NRF$wake,
-  restart: typeof NRF$restart,
-  getAddress: typeof NRF$getAddress,
-  getBattery: typeof NRF$getBattery,
-  getAdvertisingData: typeof NRF$getAdvertisingData,
-  setTxPower: typeof NRF$setTxPower,
-  setLowPowerConnection: typeof NRF$setLowPowerConnection,
-  sendHIDReport: typeof NRF$sendHIDReport,
-  setWhitelist: typeof NRF$setWhitelist
-};
-
-/**
- * <p>If a device is connected to Espruino, disconnect from it.</p>
- * @url http://www.espruino.com/Reference#l_NRF_disconnect
- */
-declare function NRF$disconnect(): void;
-
-/**
- * <p>Disable Bluetooth advertising and disconnect from any device that
- * connected to Puck.js as a peripheral (this won&#39;t affect any devices
- * that Puck.js initiated connections to).</p>
- * <p>This makes Puck.js undiscoverable, so it can&#39;t be connected to.</p>
- * <p>Use <code>NRF.wake()</code> to wake up and make Puck.js connectable again.</p>
- * @url http://www.espruino.com/Reference#l_NRF_sleep
- */
-declare function NRF$sleep(): void;
-
-/**
- * <p>Enable Bluetooth advertising (this is enabled by default), which
- * allows other devices to discover and connect to Puck.js.</p>
- * <p>Use <code>NRF.sleep()</code> to disable advertising.</p>
- * @url http://www.espruino.com/Reference#l_NRF_wake
- */
-declare function NRF$wake(): void;
-
-/**
- * <p>Restart the Bluetooth softdevice (if there is currently a BLE connection,
- * it will queue a restart to be done when the connection closes).</p>
- * <p>You shouldn&#39;t need to call this function in normal usage. However, Nordic&#39;s
- * BLE softdevice has some settings that cannot be reset. For example there
- * are only a certain number of unique UUIDs. Once these are all used the
- * only option is to restart the softdevice to clear them all out.</p>
- * @url http://www.espruino.com/Reference#l_NRF_restart
- */
-declare function NRF$restart(): void;
-
-/**
- * <p>Get this device&#39;s Bluetooth MAC address.</p>
- * <p>For Puck.js, the last 5 characters of this (eg. <code>ee:ff</code>)
- * are used in the device&#39;s advertised Bluetooth name.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_NRF_getAddress
- */
-declare function NRF$getAddress(): any;
-
-/**
- * <p>Get the battery level in volts (the voltage that the NRF chip is running off of).</p>
- * <p>This is the battery level of the device itself - it has nothing to with any
- * device that might be connected.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_NRF_getBattery
- */
-declare function NRF$getBattery(): number;
-
-/**
- * <p>This is just like <code>NRF.setAdvertising</code>, except instead of advertising
- * the data, it returns the packet that would be advertised as an array.</p>
- * @param data
- * @param options
- * @return
- * @url http://www.espruino.com/Reference#l_NRF_getAdvertisingData
- */
-declare function NRF$getAdvertisingData(data: any, options: any): any;
-
-/**
- * <p>Set the BLE radio transmit power. The default TX power is 0 dBm.</p>
- * @param power
- * @url http://www.espruino.com/Reference#l_NRF_setTxPower
- */
-declare function NRF$setTxPower(power: number): void;
-
-/**
- * <p>This sets the connection parameters - these affect the transfer speed and
- * power usage when the device is connected.</p>
- * <ul>
- * <li>When not low power, the connection interval is between 7.5 and 20ms</li>
- * <li>When low power, the connection interval is between 500 and 1000ms</li>
- * </ul>
- * <p>When low power connection is enabled, transfers of data over Bluetooth
- * will be very slow, however power usage while connected will be drastically
- * decreased.</p>
- * <p>This will only take effect after the connection is disconnected and
- * re-established.</p>
- * @param lowPower
- * @url http://www.espruino.com/Reference#l_NRF_setLowPowerConnection
- */
-declare function NRF$setLowPowerConnection(lowPower: boolean): void;
-
-/**
- * <p>Send a USB HID report. HID must first be enabled with <code>NRF.setServices({}, {hid: hid_report})</code></p>
- * @param data
- * @param callback
- * @url http://www.espruino.com/Reference#l_NRF_sendHIDReport
- */
-declare function NRF$sendHIDReport(data: any, callback: any): void;
-
-/**
- * <p>If set to true, whenever a device bonds it will be added to the
- * whitelist.</p>
- * <p>When set to false, the whitelist is cleared and newly bonded
- * devices will not be added to the whitelist.</p>
- * <p><strong>Note:</strong> This is remembered between <code>reset()</code>s but isn&#39;t
- * remembered after power-on (you&#39;ll have to add it to <code>onInit()</code>.</p>
- * @param whitelisting
- * @url http://www.espruino.com/Reference#l_NRF_setWhitelist
- */
-declare function NRF$setWhitelist(whitelisting: boolean): void;
-
-declare var npm$namespace$AES: {
-  encrypt: typeof AES$encrypt,
-  decrypt: typeof AES$decrypt
-};
-
-/**
- * @param passphrase
- * @param key
- * @param options
- * @return
- * @url http://www.espruino.com/Reference#l_AES_encrypt
- */
-declare function AES$encrypt(
-  passphrase: any,
-  key: any,
-  options: any
-): ArrayBuffer;
-
-/**
- * @param passphrase
- * @param key
- * @param options
- * @return
- * @url http://www.espruino.com/Reference#l_AES_decrypt
- */
-declare function AES$decrypt(
-  passphrase: any,
-  key: any,
-  options: any
-): ArrayBuffer;
-
-declare var npm$namespace$Modules: {
-  getCached: typeof Modules$getCached,
-  removeCached: typeof Modules$removeCached,
-  removeAllCached: typeof Modules$removeAllCached,
-  addCached: typeof Modules$addCached
-};
-
-/**
- * <p>Return an array of module names that have been cached</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Modules_getCached
- */
-declare function Modules$getCached(): any;
-
-/**
- * <p>Remove the given module from the list of cached modules</p>
- * @param id
- * @url http://www.espruino.com/Reference#l_Modules_removeCached
- */
-declare function Modules$removeCached(id: any): void;
-
-/**
- * <p>Remove all cached modules</p>
- * @url http://www.espruino.com/Reference#l_Modules_removeAllCached
- */
-declare function Modules$removeAllCached(): void;
-
-/**
- * <p>Add the given module to the cache</p>
- * @param id
- * @param sourcecode
- * @url http://www.espruino.com/Reference#l_Modules_addCached
- */
-declare function Modules$addCached(id: any, sourcecode: any): void;
-
-declare var npm$namespace$E: {
-  getTemperature: typeof E$getTemperature,
-  getAnalogVRef: typeof E$getAnalogVRef,
-  nativeCall: typeof E$nativeCall,
-  clip: typeof E$clip,
-  sum: typeof E$sum,
-  variance: typeof E$variance,
-  convolve: typeof E$convolve,
-  interpolate: typeof E$interpolate,
-  interpolate2d: typeof E$interpolate2d,
-  kickWatchdog: typeof E$kickWatchdog,
-  getErrorFlags: typeof E$getErrorFlags,
-  getFlags: typeof E$getFlags,
-  setFlags: typeof E$setFlags,
-  toArrayBuffer: typeof E$toArrayBuffer,
-  toUint8Array: typeof E$toUint8Array,
-  memoryArea: typeof E$memoryArea,
-  setBootCode: typeof E$setBootCode,
-  setClock: typeof E$setClock,
-  reverseByte: typeof E$reverseByte,
-  dumpTimers: typeof E$dumpTimers,
-  dumpLockedVars: typeof E$dumpLockedVars,
-  mapInPlace: typeof E$mapInPlace,
-  dumpStr: typeof E$dumpStr,
-  srand: typeof E$srand,
-  hwRand: typeof E$hwRand,
-  setPassword: typeof E$setPassword,
-  lockConsole: typeof E$lockConsole,
-  setTimeZone: typeof E$setTimeZone,
-  setUSBHID: typeof E$setUSBHID,
-  sendUSBHID: typeof E$sendUSBHID,
-  unmountSD: typeof E$unmountSD,
-  openFile: typeof E$openFile
-};
-
-/**
- * <p>Use the STM32&#39;s internal thermistor to work out the temperature.</p>
- * <p>While this is implemented on Espruino boards, it may not be implemented on other devices. If so it&#39;ll return NaN.</p>
- * <p> <strong>Note:</strong> This is not entirely accurate and varies by a few degrees from chip to chip. It measures the <strong>die temperature</strong>, so when connected to USB it could be reading 10 over degrees C above ambient temperature. When running from battery with <code>setDeepSleep(true)</code> it is much more accurate though.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_E_getTemperature
- */
-declare function E$getTemperature(): number;
-
-/**
- * <p>Check the internal voltage reference. To work out an actual voltage of an input pin, you can use <code>analogRead(pin)*E.getAnalogVRef()</code></p>
- * <p> <strong>Note:</strong> This value is calculated by reading the voltage on an internal voltage reference with the ADC.
- * It will be slightly noisy, so if you need this for accurate measurements we&#39;d recommend that you call
- * this function several times and average the results.</p>
- * <p>While this is implemented on Espruino boards, it may not be implemented on other devices. If so it&#39;ll return NaN.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_E_getAnalogVRef
- */
-declare function E$getAnalogVRef(): number;
-
-/**
- * <p>ADVANCED: This is a great way to crash Espruino if you&#39;re not sure what you are doing</p>
- * <p>Create a native function that executes the code at the given address. Eg. <code>E.nativeCall(0x08012345,&#39;double (double,double)&#39;)(1.1, 2.2)</code></p>
- * <p>If you&#39;re executing a thumb function, you&#39;ll almost certainly need to set the bottom bit of the address to 1.</p>
- * <p>Note it&#39;s not guaranteed that the call signature you provide can be used - there are limits on the number of arguments allowed.</p>
- * <p>When supplying <code>data</code>, if it is a &#39;flat string&#39; then it will be used directly, otherwise it&#39;ll be converted to a flat string and used.</p>
- * @param addr
- * @param sig
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_E_nativeCall
- */
-declare function E$nativeCall(addr: number, sig: any, data: any): any;
-
-/**
- * <p>Clip a number to be between min and max (inclusive)</p>
- * @param x
- * @param min
- * @param max
- * @return
- * @url http://www.espruino.com/Reference#l_E_clip
- */
-declare function E$clip(x: number, min: number, max: number): number;
-
-/**
- * <p>Sum the contents of the given Array, String or ArrayBuffer and return the result</p>
- * @param arr
- * @return
- * @url http://www.espruino.com/Reference#l_E_sum
- */
-declare function E$sum(arr: any): number;
-
-/**
- * <p>Work out the variance of the contents of the given Array, String or ArrayBuffer and return the result. This is equivalent to <code>v=0;for (i in arr) v+=Math.pow(mean-arr[i],2)</code></p>
- * @param arr
- * @param mean
- * @return
- * @url http://www.espruino.com/Reference#l_E_variance
- */
-declare function E$variance(arr: any, mean: number): number;
-
-/**
- * <p>Convolve arr1 with arr2. This is equivalent to <code>v=0;for (i in arr1) v+=arr1[i] * arr2[(i+offset) % arr2.length]</code></p>
- * @param arr1
- * @param arr2
- * @param offset
- * @return
- * @url http://www.espruino.com/Reference#l_E_convolve
- */
-declare function E$convolve(arr1: any, arr2: any, offset: number): number;
-
-/**
- * <p>Performs a Fast Fourier Transform (fft) on the supplied data and writes it back into the original arrays. Note that if only one array is supplied, the data written back is the modulus of the complex result <code>sqrt(r*r+i*i)</code>.</p>
- * @url http://www.espruino.com/Reference#l_E_FFT
- */
-declare interface E$FFT {
-  /**
-   * @param arrReal
-   * @param arrImage
-   * @param inverse
-   * @return
-   */
-  new(arrReal: any, arrImage: any, inverse: boolean): E$FFT;
-}
-
-/**
- * <p>Interpolate between two adjacent values in the Typed Array</p>
- * @param array
- * @param index
- * @return
- * @url http://www.espruino.com/Reference#l_E_interpolate
- */
-declare function E$interpolate(array: any, index: number): number;
-
-/**
- * <p>Interpolate between four adjacent values in the Typed Array, in 2D.</p>
- * @param array
- * @param width
- * @param x
- * @param y
- * @return
- * @url http://www.espruino.com/Reference#l_E_interpolate2d
- */
-declare function E$interpolate2d(
-  array: any,
-  width: number,
-  x: number,
-  y: number
-): number;
-
-/**
- * <p>Kicks a Watchdog timer set up with <code>E.enableWatchdog(..., false)</code>. See
- * <code>E.enableWatchdog</code> for more information.</p>
- * <p><strong>NOTE:</strong> This is only implemented on STM32 and nRF5x devices (all official Espruino boards).</p>
- * @url http://www.espruino.com/Reference#l_E_kickWatchdog
- */
-declare function E$kickWatchdog(): void;
-
-/**
- * <p>Get and reset the error flags. Returns an array that can contain:</p>
- * <p><code>&#39;FIFO_FULL&#39;</code>: The receive FIFO filled up and data was lost. This could be state transitions for setWatch, or received characters.</p>
- * <p><code>&#39;BUFFER_FULL&#39;</code>: A buffer for a stream filled up and characters were lost. This can happen to any stream - Serial,HTTP,etc.</p>
- * <p><code>&#39;CALLBACK&#39;</code>: A callback (s<code>etWatch</code>, <code>setInterval</code>, <code>on(&#39;data&#39;,...)</code>) caused an error and so was removed.</p>
- * <p><code>&#39;LOW_MEMORY&#39;</code>: Memory is running low - Espruino had to run a garbage collection pass or remove some of the command history</p>
- * <p><code>&#39;MEMORY&#39;</code>: Espruino ran out of memory and was unable to allocate some data that it needed.</p>
- * <p><code>&#39;JSERR_UART_OVERFLOW&#39;</code> : A UART received data but it was not read in time and was lost</p>
- * @return
- * @url http://www.espruino.com/Reference#l_E_getErrorFlags
- */
-declare function E$getErrorFlags(): any;
-
-/**
- * <p>Get Espruino&#39;s interpreter flags that control the way it handles your JavaScript code.</p>
- * <ul>
- * <li><code>deepSleep</code> - Allow deep sleep modes (also set by setDeepSleep)</li>
- * <li><code>pretokenise</code> - When adding functions, pre-minify them and tokenise reserved words</li>
- * </ul>
- * @return
- * @url http://www.espruino.com/Reference#l_E_getFlags
- */
-declare function E$getFlags(): any;
-
-/**
- * <p>Set the Espruino interpreter flags that control the way it handles your JavaScript code.</p>
- * <p>Run <code>E.getFlags()</code> and check its description for a list of available flags and their values.</p>
- * @param flags
- * @url http://www.espruino.com/Reference#l_E_setFlags
- */
-declare function E$setFlags(flags: any): void;
-
-/**
- * <p>Create an ArrayBuffer from the given string. This is done via a reference, not a copy - so it is very fast and memory efficient.</p>
- * <p>Note that this is an ArrayBuffer, not a Uint8Array. To get one of those, do: <code>new Uint8Array(E.toArrayBuffer(&#39;....&#39;))</code>.</p>
- * @param str
- * @return
- * @url http://www.espruino.com/Reference#l_E_toArrayBuffer
- */
-declare function E$toArrayBuffer(str: any): ArrayBuffer;
-
-/**
- * <p>This creates a Uint8Array from the given arguments. If an argument is a String or an Array,
- * each element is traversed and added as if it were an 8 bit value. If it is anything else, it is
- * converted to an 8 bit value directly.</p>
- * @param args
- * @return
- * @url http://www.espruino.com/Reference#l_E_toUint8Array
- */
-declare function E$toUint8Array(args: any): Uint8Array;
-
-/**
- * <p>This creates and returns a special type of string, which actually references
- * a specific memory address. It can be used in order to use sections of
- * Flash memory directly in Espruino (for example to execute code straight
- * from flash memory with <code>eval(E.memoryArea( ... ))</code>)</p>
- * <p><strong>Note:</strong> This is only tested on STM32-based platforms (Espruino Original
- * and Espruino Pico) at the moment.</p>
- * @param addr
- * @param len
- * @return
- * @url http://www.espruino.com/Reference#l_E_memoryArea
- */
-declare function E$memoryArea(addr: number, len: number): string;
-
-/**
- * <p>This writes JavaScript code into Espruino&#39;s flash memory, to be executed on
- * startup. It differs from <code>save()</code> in that <code>save()</code> saves the whole state of
- * the interpreter, whereas this just saves JS code that is executed at boot.</p>
- * <p>Code will be executed before <code>onInit()</code> and <code>E.on(&#39;init&#39;, ...)</code>.</p>
- * <p>If <code>alwaysExec</code> is <code>true</code>, the code will be executed even after a call to
- * <code>reset()</code>. This is useful if you&#39;re making something that you want to
- * program, but you want some code that is always built in (for instance
- * setting up a display or keyboard).</p>
- * <p>To remove boot code that has been saved previously, use <code>E.setBootCode(&quot;&quot;)</code></p>
- * <p><strong>Note:</strong> this removes any code that was previously saved with <code>save()</code></p>
- * @param code
- * @param alwaysExec
- * @url http://www.espruino.com/Reference#l_E_setBootCode
- */
-declare function E$setBootCode(code: any, alwaysExec: boolean): void;
-
-/**
- * <p>This sets the clock frequency of Espruino&#39;s processor. It will return <code>0</code> if
- * it is unimplemented or the clock speed cannot be changed.</p>
- * <p><strong>Note:</strong> On pretty much all boards, UART, SPI, I2C, PWM, etc will change
- * frequency and will need setting up again in order to work.</p>
- * <h3 id="stm32f4">STM32F4</h3>
- * <p>Options is of the form <code>{ M: int, N: int, P: int, Q: int }</code> - see the &#39;Clocks&#39;
- * section of the microcontroller&#39;s reference manual for what these mean.</p>
- * <ul>
- * <li>System clock = 8Mhz <em> N / ( M </em> P )</li>
- * <li>USB clock (should be 48Mhz) = 8Mhz <em> N / ( M </em> Q )</li>
- * </ul>
- * <p>Optional arguments are:</p>
- * <ul>
- * <li><code>latency</code> - flash latency from 0..15</li>
- * <li><code>PCLK1</code> - Peripheral clock 1 divisor (default: 2)</li>
- * <li><code>PCLK2</code> - Peripheral clock 2 divisor (default: 4)</li>
- * </ul>
- * <p>The Pico&#39;s default is <code>{M:8, N:336, P:4, Q:7, PCLK1:2, PCLK2:4}</code>, use
- * <code>{M:8, N:336, P:8, Q:7, PCLK:1, PCLK2:2}</code> to halve the system clock speed
- * while keeping the peripherals running at the same speed (omitting PCLK1/2
- * will lead to the peripherals changing speed too).</p>
- * <p>On STM32F4 boards (eg. Espruino Pico), the USB clock needs to be kept at 48Mhz
- * or USB will fail to work. You&#39;ll also experience USB instability if the processor
- * clock falls much below 48Mhz.</p>
- * <h3 id="esp8266">ESP8266</h3>
- * <p>Just specify an integer value, either 80 or 160 (for 80 or 160Mhz)</p>
- * @param options
- * @return
- * @url http://www.espruino.com/Reference#l_E_setClock
- */
-declare function E$setClock(options: any): number;
-
-/**
- * <p>Reverse the 8 bits in a byte, swapping MSB and LSB.</p>
- * <p>For example, <code>E.reverseByte(0b10010000) == 0b00001001</code>.</p>
- * <p>Note that you can reverse all the bytes in an array with: <code>arr = arr.map(E.reverseByte)</code></p>
- * @param x
- * @return
- * @url http://www.espruino.com/Reference#l_E_reverseByte
- */
-declare function E$reverseByte(x: number): number;
-
-/**
- * <p>Output the current list of Utility Timer Tasks - for debugging only</p>
- * @url http://www.espruino.com/Reference#l_E_dumpTimers
- */
-declare function E$dumpTimers(): void;
-
-/**
- * <p>Dump any locked variables that aren&#39;t referenced from <code>global</code> - for debugging memory leaks only.</p>
- * @url http://www.espruino.com/Reference#l_E_dumpLockedVars
- */
-declare function E$dumpLockedVars(): void;
-
-/**
- * <p>Take each element of the <code>from</code> array, look it up in <code>map</code> (or call the
- * function with it as a first argument), and write it into the corresponding
- * element in the <code>to</code> array.</p>
- * @param from
- * @param to
- * @param map
- * @param bits
- * @url http://www.espruino.com/Reference#l_E_mapInPlace
- */
-declare function E$mapInPlace(from: any, to: any, map: any, bits: number): void;
-
-/**
- * <p>Get the current interpreter state in a text form such that it can be copied to a new device</p>
- * @return
- * @url http://www.espruino.com/Reference#l_E_dumpStr
- */
-declare function E$dumpStr(): string;
-
-/**
- * <p>Set the seed for the random number generator used by <code>Math.random()</code>.</p>
- * @param v
- * @url http://www.espruino.com/Reference#l_E_srand
- */
-declare function E$srand(v: number): void;
-
-/**
- * <p>Unlike &#39;Math.random()&#39; which uses a pseudo-random number generator, this
- * method reads from the internal voltage reference several times, xoring and
- * rotating to try and make a relatively random value from the noise in the
- * signal.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_E_hwRand
- */
-declare function E$hwRand(): number;
-
-/**
- * <p>Convert hue, saturation and brightness to red, green and blue (packed into an integer)</p>
- * <p>This replaces <code>Graphics.setColorHSB</code> and <code>Graphics.setBgColorHSB</code>. On devices with 24 bit colour it can
- * be used as: <code>Graphics.setColorHSB(E.HSBtoRGB(h, s, b))</code></p>
- * @url http://www.espruino.com/Reference#l_E_HSBtoRGB
- */
-declare interface E$HSBtoRGB {
-  /**
-   * @param hue
-   * @param sat
-   * @param bri
-   * @return
-   */
-  new(hue: number, sat: number, bri: number): number;
-}
-
-/**
- * <p>Set a password on the console (REPL). When powered on, Espruino will
- * then demand a password before the console can be used. If you want to
- * lock the console immediately after this you can call <code>E.lockConsole()</code></p>
- * <p>To remove the password, call this function with no arguments.</p>
- * <p><strong>Note:</strong> There is no protection against multiple password attempts, so someone
- * could conceivably try every password in a dictionary.</p>
- * <p><strong>Note:</strong> This password is stored in memory in plain text. If someone is able
- * to execute arbitrary JavaScript code on the device (eg, you use <code>eval</code> on input
- * from unknown sources) or read the device&#39;s firmware then they may be able to
- * obtain it.</p>
- * @param password
- * @url http://www.espruino.com/Reference#l_E_setPassword
- */
-declare function E$setPassword(password: any): void;
-
-/**
- * <p>If a password has been set with <code>E.setPassword()</code>, this will lock the console
- * so the password needs to be entered to unlock it.</p>
- * @url http://www.espruino.com/Reference#l_E_lockConsole
- */
-declare function E$lockConsole(): void;
-
-/**
- * <p>Set the time zone to be used with <code>Date</code> objects.</p>
- * <p>For example <code>E.setTimeZone(1)</code> will be GMT+0100</p>
- * @param zone
- * @url http://www.espruino.com/Reference#l_E_setTimeZone
- */
-declare function E$setTimeZone(zone: number): void;
-
-/**
- * <p>USB HID will only take effect next time you unplug and re-plug your Espruino. If you&#39;re
- * disconnecting it from power you&#39;ll have to make sure you have <code>save()</code>d after calling
- * this function.</p>
- * @param opts
- * @url http://www.espruino.com/Reference#l_E_setUSBHID
- */
-declare function E$setUSBHID(opts: any): void;
-
-/**
- * @param data
- * @return
- * @url http://www.espruino.com/Reference#l_E_sendUSBHID
- */
-declare function E$sendUSBHID(data: any): boolean;
-
-/**
- * <p>Unmount the SD card, so it can be removed. If you remove the SD card without calling this you may cause corruption, and you will be unable to access another SD card until you reset Espruino or call <code>E.unmountSD()</code>.</p>
- * @url http://www.espruino.com/Reference#l_E_unmountSD
- */
-declare function E$unmountSD(): void;
-
-/**
- * <p>Open a file</p>
- * @param path
- * @param mode
- * @return
- * @url http://www.espruino.com/Reference#l_E_openFile
- */
-declare function E$openFile(path: any, mode: any): File;
-
-declare var npm$namespace$Flash: {
-  getPage: typeof Flash$getPage,
-  getFree: typeof Flash$getFree,
-  erasePage: typeof Flash$erasePage,
-  write: typeof Flash$write,
-  read: typeof Flash$read
-};
-
-/**
- * <p>Returns the start and length of the flash page containing the given address.</p>
- * @param addr
- * @return
- * @url http://www.espruino.com/Reference#l_Flash_getPage
- */
-declare function Flash$getPage(addr: number): any;
-
-/**
- * <p>This method returns an array of objects of the form <code>{addr : #, length : #}</code>, representing
- * contiguous areas of flash memory in the chip that are not used for anything.</p>
- * <p>The memory areas returned are on page boundaries. This means that you can
- * safely erase the page containing any address here, and you won&#39;t risk
- * deleting part of the Espruino firmware.</p>
- * @return
- * @url http://www.espruino.com/Reference#l_Flash_getFree
- */
-declare function Flash$getFree(): any;
-
-/**
- * <p>Erase a page of flash memory</p>
- * @param addr
- * @url http://www.espruino.com/Reference#l_Flash_erasePage
- */
-declare function Flash$erasePage(addr: any): void;
-
-/**
- * <p>Write data into memory at the given address - IN MULTIPLES OF 4 BYTES.</p>
- * <p>In flash memory you may only turn bits that are 1 into bits that are 0. If
- * you&#39;re writing data into an area that you have already written (so <code>read</code>
- * doesn&#39;t return all <code>0xFF</code>) you&#39;ll need to call <code>erasePage</code> to clear the
- * entire page.</p>
- * @param data
- * @param addr
- * @url http://www.espruino.com/Reference#l_Flash_write
- */
-declare function Flash$write(data: any, addr: number): void;
-
-/**
- * <p>Read flash memory from the given address</p>
- * @param length
- * @param addr
- * @return
- * @url http://www.espruino.com/Reference#l_Flash_read
- */
-declare function Flash$read(length: number, addr: number): any;
-
-declare var npm$namespace$NodeMCU: {
-  A0: typeof NodeMCU$A0,
-  D0: typeof NodeMCU$D0,
-  D1: typeof NodeMCU$D1,
-  D2: typeof NodeMCU$D2,
-  D3: typeof NodeMCU$D3,
-  D4: typeof NodeMCU$D4,
-  D5: typeof NodeMCU$D5,
-  D6: typeof NodeMCU$D6,
-  D7: typeof NodeMCU$D7,
-  D8: typeof NodeMCU$D8,
-  D9: typeof NodeMCU$D9,
-  D10: typeof NodeMCU$D10
-};
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_A0
- */
-declare var NodeMCU$A0: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D0
- */
-declare var NodeMCU$D0: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D1
- */
-declare var NodeMCU$D1: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D2
- */
-declare var NodeMCU$D2: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D3
- */
-declare var NodeMCU$D3: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D4
- */
-declare var NodeMCU$D4: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D5
- */
-declare var NodeMCU$D5: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D6
- */
-declare var NodeMCU$D6: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D7
- */
-declare var NodeMCU$D7: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D8
- */
-declare var NodeMCU$D8: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D9
- */
-declare var NodeMCU$D9: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_NodeMCU_D10
- */
-declare var NodeMCU$D10: Pin;
-declare var npm$namespace$Nucleo: {
-  A0: typeof Nucleo$A0,
-  A1: typeof Nucleo$A1,
-  A2: typeof Nucleo$A2,
-  A3: typeof Nucleo$A3,
-  A4: typeof Nucleo$A4,
-  A5: typeof Nucleo$A5,
-  D0: typeof Nucleo$D0,
-  D1: typeof Nucleo$D1,
-  D2: typeof Nucleo$D2,
-  D3: typeof Nucleo$D3,
-  D4: typeof Nucleo$D4,
-  D5: typeof Nucleo$D5,
-  D6: typeof Nucleo$D6,
-  D7: typeof Nucleo$D7,
-  D8: typeof Nucleo$D8,
-  D9: typeof Nucleo$D9,
-  D10: typeof Nucleo$D10,
-  D11: typeof Nucleo$D11,
-  D12: typeof Nucleo$D12,
-  D13: typeof Nucleo$D13,
-  D14: typeof Nucleo$D14,
-  D15: typeof Nucleo$D15
-};
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A0
- */
-declare var Nucleo$A0: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A1
- */
-declare var Nucleo$A1: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A2
- */
-declare var Nucleo$A2: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A3
- */
-declare var Nucleo$A3: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A4
- */
-declare var Nucleo$A4: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_A5
- */
-declare var Nucleo$A5: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D0
- */
-declare var Nucleo$D0: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D1
- */
-declare var Nucleo$D1: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D2
- */
-declare var Nucleo$D2: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D3
- */
-declare var Nucleo$D3: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D4
- */
-declare var Nucleo$D4: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D5
- */
-declare var Nucleo$D5: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D6
- */
-declare var Nucleo$D6: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D7
- */
-declare var Nucleo$D7: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D8
- */
-declare var Nucleo$D8: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D9
- */
-declare var Nucleo$D9: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D10
- */
-declare var Nucleo$D10: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D11
- */
-declare var Nucleo$D11: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D12
- */
-declare var Nucleo$D12: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D13
- */
-declare var Nucleo$D13: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D14
- */
-declare var Nucleo$D14: Pin;
-
-/**
- * @url http://www.espruino.com/Reference#l_Nucleo_D15
- */
-declare var Nucleo$D15: Pin;
 declare module "InfluxDB" {
   declare function setup(options: any): any;
 
@@ -1557,6 +32,141 @@ declare module "espruino" {
     new(): Nucleo;
   }
 
+  declare var npm$namespace$Nucleo: {
+    A0: typeof Nucleo$A0,
+    A1: typeof Nucleo$A1,
+    A2: typeof Nucleo$A2,
+    A3: typeof Nucleo$A3,
+    A4: typeof Nucleo$A4,
+    A5: typeof Nucleo$A5,
+    D0: typeof Nucleo$D0,
+    D1: typeof Nucleo$D1,
+    D2: typeof Nucleo$D2,
+    D3: typeof Nucleo$D3,
+    D4: typeof Nucleo$D4,
+    D5: typeof Nucleo$D5,
+    D6: typeof Nucleo$D6,
+    D7: typeof Nucleo$D7,
+    D8: typeof Nucleo$D8,
+    D9: typeof Nucleo$D9,
+    D10: typeof Nucleo$D10,
+    D11: typeof Nucleo$D11,
+    D12: typeof Nucleo$D12,
+    D13: typeof Nucleo$D13,
+    D14: typeof Nucleo$D14,
+    D15: typeof Nucleo$D15
+  };
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A0
+   */
+  declare var Nucleo$A0: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A1
+   */
+  declare var Nucleo$A1: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A2
+   */
+  declare var Nucleo$A2: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A3
+   */
+  declare var Nucleo$A3: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A4
+   */
+  declare var Nucleo$A4: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_A5
+   */
+  declare var Nucleo$A5: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D0
+   */
+  declare var Nucleo$D0: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D1
+   */
+  declare var Nucleo$D1: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D2
+   */
+  declare var Nucleo$D2: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D3
+   */
+  declare var Nucleo$D3: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D4
+   */
+  declare var Nucleo$D4: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D5
+   */
+  declare var Nucleo$D5: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D6
+   */
+  declare var Nucleo$D6: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D7
+   */
+  declare var Nucleo$D7: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D8
+   */
+  declare var Nucleo$D8: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D9
+   */
+  declare var Nucleo$D9: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D10
+   */
+  declare var Nucleo$D10: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D11
+   */
+  declare var Nucleo$D11: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D12
+   */
+  declare var Nucleo$D12: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D13
+   */
+  declare var Nucleo$D13: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D14
+   */
+  declare var Nucleo$D14: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_Nucleo_D15
+   */
+  declare var Nucleo$D15: Pin;
+
   /**
    * <p>This is a built-in class to allow you to use the ESP8266 NodeMCU boards&#39;s pin namings to access pins. It is only available on ESP8266-based boards.</p>
    * @url http://www.espruino.com/Reference#NodeMCU
@@ -1567,6 +177,81 @@ declare module "espruino" {
      */
     new(): NodeMCU;
   }
+
+  declare var npm$namespace$NodeMCU: {
+    A0: typeof NodeMCU$A0,
+    D0: typeof NodeMCU$D0,
+    D1: typeof NodeMCU$D1,
+    D2: typeof NodeMCU$D2,
+    D3: typeof NodeMCU$D3,
+    D4: typeof NodeMCU$D4,
+    D5: typeof NodeMCU$D5,
+    D6: typeof NodeMCU$D6,
+    D7: typeof NodeMCU$D7,
+    D8: typeof NodeMCU$D8,
+    D9: typeof NodeMCU$D9,
+    D10: typeof NodeMCU$D10
+  };
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_A0
+   */
+  declare var NodeMCU$A0: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D0
+   */
+  declare var NodeMCU$D0: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D1
+   */
+  declare var NodeMCU$D1: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D2
+   */
+  declare var NodeMCU$D2: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D3
+   */
+  declare var NodeMCU$D3: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D4
+   */
+  declare var NodeMCU$D4: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D5
+   */
+  declare var NodeMCU$D5: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D6
+   */
+  declare var NodeMCU$D6: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D7
+   */
+  declare var NodeMCU$D7: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D8
+   */
+  declare var NodeMCU$D8: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D9
+   */
+  declare var NodeMCU$D9: Pin;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_NodeMCU_D10
+   */
+  declare var NodeMCU$D10: Pin;
 
   /**
    * <p>Creates a Queue Object</p>
@@ -1583,7 +268,7 @@ declare module "espruino" {
      * <p>reads one character from queue, if available</p>
      * @url http://www.espruino.com/Reference#l_Queue_read
      */
-    Flash$read(): void;
+    read(): void;
 
     /**
      * <p>Writes one character to queue</p>
@@ -1696,7 +381,7 @@ declare module "espruino" {
      * @url http://www.espruino.com/Reference#l_Serial_setConsole
      */
     setConsole(force: boolean): void,
-    Trig$setup(baudrate: number, options: any): void,
+    setup(baudrate: number, options: any): void,
 
     /**
      * <p>Print a string to the serial port - without a line feed</p>
@@ -1723,7 +408,7 @@ declare module "espruino" {
      * @param data
      * @url http://www.espruino.com/Reference#l_Serial_write
      */
-    Flash$write(data: any): void,
+    write(data: any): void,
 
     /**
      * <p>Return how many bytes are available to read. If there is already a listener for data, this will always return 0.</p>
@@ -1738,7 +423,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_Serial_read
      */
-    Flash$read(chars?: number): any,
+    read(chars?: number): any,
 
     /**
      * <p>Pipe this USART to a stream (an object with a &#39;write&#39; method)</p>
@@ -1746,7 +431,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_Serial_pipe
      */
-    fs$pipe(destination: any, options: any): void,
+    pipe(destination: any, options: any): void,
 
     /**
      * <p>Try and find a USART (Serial) hardware device that will work on this pin (eg. <code>Serial1</code>)</p>
@@ -1837,6 +522,61 @@ declare module "espruino" {
     new(): Flash;
   }
 
+  declare var npm$namespace$Flash: {
+    getPage: typeof Flash$getPage,
+    getFree: typeof Flash$getFree,
+    erasePage: typeof Flash$erasePage,
+    write: typeof Flash$write,
+    read: typeof Flash$read
+  };
+
+  /**
+   * <p>Returns the start and length of the flash page containing the given address.</p>
+   * @param addr
+   * @return
+   * @url http://www.espruino.com/Reference#l_Flash_getPage
+   */
+  declare function Flash$getPage(addr: number): any;
+
+  /**
+   * <p>This method returns an array of objects of the form <code>{addr : #, length : #}</code>, representing
+   * contiguous areas of flash memory in the chip that are not used for anything.</p>
+   * <p>The memory areas returned are on page boundaries. This means that you can
+   * safely erase the page containing any address here, and you won&#39;t risk
+   * deleting part of the Espruino firmware.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Flash_getFree
+   */
+  declare function Flash$getFree(): any;
+
+  /**
+   * <p>Erase a page of flash memory</p>
+   * @param addr
+   * @url http://www.espruino.com/Reference#l_Flash_erasePage
+   */
+  declare function Flash$erasePage(addr: any): void;
+
+  /**
+   * <p>Write data into memory at the given address - IN MULTIPLES OF 4 BYTES.</p>
+   * <p>In flash memory you may only turn bits that are 1 into bits that are 0. If
+   * you&#39;re writing data into an area that you have already written (so <code>read</code>
+   * doesn&#39;t return all <code>0xFF</code>) you&#39;ll need to call <code>erasePage</code> to clear the
+   * entire page.</p>
+   * @param data
+   * @param addr
+   * @url http://www.espruino.com/Reference#l_Flash_write
+   */
+  declare function Flash$write(data: any, addr: number): void;
+
+  /**
+   * <p>Read flash memory from the given address</p>
+   * @param length
+   * @param addr
+   * @return
+   * @url http://www.espruino.com/Reference#l_Flash_read
+   */
+  declare function Flash$read(length: number, addr: number): any;
+
   /**
    * <p>This is the built-in JavaScript class for Espruino utility functions.</p>
    * @url http://www.espruino.com/Reference#E
@@ -1847,6 +587,415 @@ declare module "espruino" {
      */
     new(): E;
   }
+
+  declare var npm$namespace$E: {
+    getTemperature: typeof E$getTemperature,
+    getAnalogVRef: typeof E$getAnalogVRef,
+    nativeCall: typeof E$nativeCall,
+    clip: typeof E$clip,
+    sum: typeof E$sum,
+    variance: typeof E$variance,
+    convolve: typeof E$convolve,
+    interpolate: typeof E$interpolate,
+    interpolate2d: typeof E$interpolate2d,
+    kickWatchdog: typeof E$kickWatchdog,
+    getErrorFlags: typeof E$getErrorFlags,
+    getFlags: typeof E$getFlags,
+    setFlags: typeof E$setFlags,
+    toArrayBuffer: typeof E$toArrayBuffer,
+    toUint8Array: typeof E$toUint8Array,
+    memoryArea: typeof E$memoryArea,
+    setBootCode: typeof E$setBootCode,
+    setClock: typeof E$setClock,
+    reverseByte: typeof E$reverseByte,
+    dumpTimers: typeof E$dumpTimers,
+    dumpLockedVars: typeof E$dumpLockedVars,
+    mapInPlace: typeof E$mapInPlace,
+    dumpStr: typeof E$dumpStr,
+    srand: typeof E$srand,
+    hwRand: typeof E$hwRand,
+    setPassword: typeof E$setPassword,
+    lockConsole: typeof E$lockConsole,
+    setTimeZone: typeof E$setTimeZone,
+    setUSBHID: typeof E$setUSBHID,
+    sendUSBHID: typeof E$sendUSBHID,
+    unmountSD: typeof E$unmountSD,
+    openFile: typeof E$openFile
+  };
+
+  /**
+   * <p>Use the STM32&#39;s internal thermistor to work out the temperature.</p>
+   * <p>While this is implemented on Espruino boards, it may not be implemented on other devices. If so it&#39;ll return NaN.</p>
+   * <p> <strong>Note:</strong> This is not entirely accurate and varies by a few degrees from chip to chip. It measures the <strong>die temperature</strong>, so when connected to USB it could be reading 10 over degrees C above ambient temperature. When running from battery with <code>setDeepSleep(true)</code> it is much more accurate though.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_getTemperature
+   */
+  declare function E$getTemperature(): number;
+
+  /**
+   * <p>Check the internal voltage reference. To work out an actual voltage of an input pin, you can use <code>analogRead(pin)*E.getAnalogVRef()</code></p>
+   * <p> <strong>Note:</strong> This value is calculated by reading the voltage on an internal voltage reference with the ADC.
+   * It will be slightly noisy, so if you need this for accurate measurements we&#39;d recommend that you call
+   * this function several times and average the results.</p>
+   * <p>While this is implemented on Espruino boards, it may not be implemented on other devices. If so it&#39;ll return NaN.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_getAnalogVRef
+   */
+  declare function E$getAnalogVRef(): number;
+
+  /**
+   * <p>ADVANCED: This is a great way to crash Espruino if you&#39;re not sure what you are doing</p>
+   * <p>Create a native function that executes the code at the given address. Eg. <code>E.nativeCall(0x08012345,&#39;double (double,double)&#39;)(1.1, 2.2)</code></p>
+   * <p>If you&#39;re executing a thumb function, you&#39;ll almost certainly need to set the bottom bit of the address to 1.</p>
+   * <p>Note it&#39;s not guaranteed that the call signature you provide can be used - there are limits on the number of arguments allowed.</p>
+   * <p>When supplying <code>data</code>, if it is a &#39;flat string&#39; then it will be used directly, otherwise it&#39;ll be converted to a flat string and used.</p>
+   * @param addr
+   * @param sig
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_nativeCall
+   */
+  declare function E$nativeCall(addr: number, sig: any, data: any): any;
+
+  /**
+   * <p>Clip a number to be between min and max (inclusive)</p>
+   * @param x
+   * @param min
+   * @param max
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_clip
+   */
+  declare function E$clip(x: number, min: number, max: number): number;
+
+  /**
+   * <p>Sum the contents of the given Array, String or ArrayBuffer and return the result</p>
+   * @param arr
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_sum
+   */
+  declare function E$sum(arr: any): number;
+
+  /**
+   * <p>Work out the variance of the contents of the given Array, String or ArrayBuffer and return the result. This is equivalent to <code>v=0;for (i in arr) v+=Math.pow(mean-arr[i],2)</code></p>
+   * @param arr
+   * @param mean
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_variance
+   */
+  declare function E$variance(arr: any, mean: number): number;
+
+  /**
+   * <p>Convolve arr1 with arr2. This is equivalent to <code>v=0;for (i in arr1) v+=arr1[i] * arr2[(i+offset) % arr2.length]</code></p>
+   * @param arr1
+   * @param arr2
+   * @param offset
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_convolve
+   */
+  declare function E$convolve(arr1: any, arr2: any, offset: number): number;
+
+  /**
+   * <p>Performs a Fast Fourier Transform (fft) on the supplied data and writes it back into the original arrays. Note that if only one array is supplied, the data written back is the modulus of the complex result <code>sqrt(r*r+i*i)</code>.</p>
+   * @url http://www.espruino.com/Reference#l_E_FFT
+   */
+  declare interface E$FFT {
+    /**
+     * @param arrReal
+     * @param arrImage
+     * @param inverse
+     * @return
+     */
+    new(arrReal: any, arrImage: any, inverse: boolean): E$FFT;
+  }
+
+  /**
+   * <p>Interpolate between two adjacent values in the Typed Array</p>
+   * @param array
+   * @param index
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_interpolate
+   */
+  declare function E$interpolate(array: any, index: number): number;
+
+  /**
+   * <p>Interpolate between four adjacent values in the Typed Array, in 2D.</p>
+   * @param array
+   * @param width
+   * @param x
+   * @param y
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_interpolate2d
+   */
+  declare function E$interpolate2d(
+    array: any,
+    width: number,
+    x: number,
+    y: number
+  ): number;
+
+  /**
+   * <p>Kicks a Watchdog timer set up with <code>E.enableWatchdog(..., false)</code>. See
+   * <code>E.enableWatchdog</code> for more information.</p>
+   * <p><strong>NOTE:</strong> This is only implemented on STM32 and nRF5x devices (all official Espruino boards).</p>
+   * @url http://www.espruino.com/Reference#l_E_kickWatchdog
+   */
+  declare function E$kickWatchdog(): void;
+
+  /**
+   * <p>Get and reset the error flags. Returns an array that can contain:</p>
+   * <p><code>&#39;FIFO_FULL&#39;</code>: The receive FIFO filled up and data was lost. This could be state transitions for setWatch, or received characters.</p>
+   * <p><code>&#39;BUFFER_FULL&#39;</code>: A buffer for a stream filled up and characters were lost. This can happen to any stream - Serial,HTTP,etc.</p>
+   * <p><code>&#39;CALLBACK&#39;</code>: A callback (s<code>etWatch</code>, <code>setInterval</code>, <code>on(&#39;data&#39;,...)</code>) caused an error and so was removed.</p>
+   * <p><code>&#39;LOW_MEMORY&#39;</code>: Memory is running low - Espruino had to run a garbage collection pass or remove some of the command history</p>
+   * <p><code>&#39;MEMORY&#39;</code>: Espruino ran out of memory and was unable to allocate some data that it needed.</p>
+   * <p><code>&#39;JSERR_UART_OVERFLOW&#39;</code> : A UART received data but it was not read in time and was lost</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_getErrorFlags
+   */
+  declare function E$getErrorFlags(): any;
+
+  /**
+   * <p>Get Espruino&#39;s interpreter flags that control the way it handles your JavaScript code.</p>
+   * <ul>
+   * <li><code>deepSleep</code> - Allow deep sleep modes (also set by setDeepSleep)</li>
+   * <li><code>pretokenise</code> - When adding functions, pre-minify them and tokenise reserved words</li>
+   * </ul>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_getFlags
+   */
+  declare function E$getFlags(): any;
+
+  /**
+   * <p>Set the Espruino interpreter flags that control the way it handles your JavaScript code.</p>
+   * <p>Run <code>E.getFlags()</code> and check its description for a list of available flags and their values.</p>
+   * @param flags
+   * @url http://www.espruino.com/Reference#l_E_setFlags
+   */
+  declare function E$setFlags(flags: any): void;
+
+  /**
+   * <p>Create an ArrayBuffer from the given string. This is done via a reference, not a copy - so it is very fast and memory efficient.</p>
+   * <p>Note that this is an ArrayBuffer, not a Uint8Array. To get one of those, do: <code>new Uint8Array(E.toArrayBuffer(&#39;....&#39;))</code>.</p>
+   * @param str
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_toArrayBuffer
+   */
+  declare function E$toArrayBuffer(str: any): ArrayBuffer;
+
+  /**
+   * <p>This creates a Uint8Array from the given arguments. If an argument is a String or an Array,
+   * each element is traversed and added as if it were an 8 bit value. If it is anything else, it is
+   * converted to an 8 bit value directly.</p>
+   * @param args
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_toUint8Array
+   */
+  declare function E$toUint8Array(args: any): Uint8Array;
+
+  /**
+   * <p>This creates and returns a special type of string, which actually references
+   * a specific memory address. It can be used in order to use sections of
+   * Flash memory directly in Espruino (for example to execute code straight
+   * from flash memory with <code>eval(E.memoryArea( ... ))</code>)</p>
+   * <p><strong>Note:</strong> This is only tested on STM32-based platforms (Espruino Original
+   * and Espruino Pico) at the moment.</p>
+   * @param addr
+   * @param len
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_memoryArea
+   */
+  declare function E$memoryArea(addr: number, len: number): string;
+
+  /**
+   * <p>This writes JavaScript code into Espruino&#39;s flash memory, to be executed on
+   * startup. It differs from <code>save()</code> in that <code>save()</code> saves the whole state of
+   * the interpreter, whereas this just saves JS code that is executed at boot.</p>
+   * <p>Code will be executed before <code>onInit()</code> and <code>E.on(&#39;init&#39;, ...)</code>.</p>
+   * <p>If <code>alwaysExec</code> is <code>true</code>, the code will be executed even after a call to
+   * <code>reset()</code>. This is useful if you&#39;re making something that you want to
+   * program, but you want some code that is always built in (for instance
+   * setting up a display or keyboard).</p>
+   * <p>To remove boot code that has been saved previously, use <code>E.setBootCode(&quot;&quot;)</code></p>
+   * <p><strong>Note:</strong> this removes any code that was previously saved with <code>save()</code></p>
+   * @param code
+   * @param alwaysExec
+   * @url http://www.espruino.com/Reference#l_E_setBootCode
+   */
+  declare function E$setBootCode(code: any, alwaysExec: boolean): void;
+
+  /**
+   * <p>This sets the clock frequency of Espruino&#39;s processor. It will return <code>0</code> if
+   * it is unimplemented or the clock speed cannot be changed.</p>
+   * <p><strong>Note:</strong> On pretty much all boards, UART, SPI, I2C, PWM, etc will change
+   * frequency and will need setting up again in order to work.</p>
+   * <h3 id="stm32f4">STM32F4</h3>
+   * <p>Options is of the form <code>{ M: int, N: int, P: int, Q: int }</code> - see the &#39;Clocks&#39;
+   * section of the microcontroller&#39;s reference manual for what these mean.</p>
+   * <ul>
+   * <li>System clock = 8Mhz <em> N / ( M </em> P )</li>
+   * <li>USB clock (should be 48Mhz) = 8Mhz <em> N / ( M </em> Q )</li>
+   * </ul>
+   * <p>Optional arguments are:</p>
+   * <ul>
+   * <li><code>latency</code> - flash latency from 0..15</li>
+   * <li><code>PCLK1</code> - Peripheral clock 1 divisor (default: 2)</li>
+   * <li><code>PCLK2</code> - Peripheral clock 2 divisor (default: 4)</li>
+   * </ul>
+   * <p>The Pico&#39;s default is <code>{M:8, N:336, P:4, Q:7, PCLK1:2, PCLK2:4}</code>, use
+   * <code>{M:8, N:336, P:8, Q:7, PCLK:1, PCLK2:2}</code> to halve the system clock speed
+   * while keeping the peripherals running at the same speed (omitting PCLK1/2
+   * will lead to the peripherals changing speed too).</p>
+   * <p>On STM32F4 boards (eg. Espruino Pico), the USB clock needs to be kept at 48Mhz
+   * or USB will fail to work. You&#39;ll also experience USB instability if the processor
+   * clock falls much below 48Mhz.</p>
+   * <h3 id="esp8266">ESP8266</h3>
+   * <p>Just specify an integer value, either 80 or 160 (for 80 or 160Mhz)</p>
+   * @param options
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_setClock
+   */
+  declare function E$setClock(options: any): number;
+
+  /**
+   * <p>Reverse the 8 bits in a byte, swapping MSB and LSB.</p>
+   * <p>For example, <code>E.reverseByte(0b10010000) == 0b00001001</code>.</p>
+   * <p>Note that you can reverse all the bytes in an array with: <code>arr = arr.map(E.reverseByte)</code></p>
+   * @param x
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_reverseByte
+   */
+  declare function E$reverseByte(x: number): number;
+
+  /**
+   * <p>Output the current list of Utility Timer Tasks - for debugging only</p>
+   * @url http://www.espruino.com/Reference#l_E_dumpTimers
+   */
+  declare function E$dumpTimers(): void;
+
+  /**
+   * <p>Dump any locked variables that aren&#39;t referenced from <code>global</code> - for debugging memory leaks only.</p>
+   * @url http://www.espruino.com/Reference#l_E_dumpLockedVars
+   */
+  declare function E$dumpLockedVars(): void;
+
+  /**
+   * <p>Take each element of the <code>from</code> array, look it up in <code>map</code> (or call the
+   * function with it as a first argument), and write it into the corresponding
+   * element in the <code>to</code> array.</p>
+   * @param from
+   * @param to
+   * @param map
+   * @param bits
+   * @url http://www.espruino.com/Reference#l_E_mapInPlace
+   */
+  declare function E$mapInPlace(
+    from: any,
+    to: any,
+    map: any,
+    bits: number
+  ): void;
+
+  /**
+   * <p>Get the current interpreter state in a text form such that it can be copied to a new device</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_dumpStr
+   */
+  declare function E$dumpStr(): string;
+
+  /**
+   * <p>Set the seed for the random number generator used by <code>Math.random()</code>.</p>
+   * @param v
+   * @url http://www.espruino.com/Reference#l_E_srand
+   */
+  declare function E$srand(v: number): void;
+
+  /**
+   * <p>Unlike &#39;Math.random()&#39; which uses a pseudo-random number generator, this
+   * method reads from the internal voltage reference several times, xoring and
+   * rotating to try and make a relatively random value from the noise in the
+   * signal.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_hwRand
+   */
+  declare function E$hwRand(): number;
+
+  /**
+   * <p>Convert hue, saturation and brightness to red, green and blue (packed into an integer)</p>
+   * <p>This replaces <code>Graphics.setColorHSB</code> and <code>Graphics.setBgColorHSB</code>. On devices with 24 bit colour it can
+   * be used as: <code>Graphics.setColorHSB(E.HSBtoRGB(h, s, b))</code></p>
+   * @url http://www.espruino.com/Reference#l_E_HSBtoRGB
+   */
+  declare interface E$HSBtoRGB {
+    /**
+     * @param hue
+     * @param sat
+     * @param bri
+     * @return
+     */
+    new(hue: number, sat: number, bri: number): number;
+  }
+
+  /**
+   * <p>Set a password on the console (REPL). When powered on, Espruino will
+   * then demand a password before the console can be used. If you want to
+   * lock the console immediately after this you can call <code>E.lockConsole()</code></p>
+   * <p>To remove the password, call this function with no arguments.</p>
+   * <p><strong>Note:</strong> There is no protection against multiple password attempts, so someone
+   * could conceivably try every password in a dictionary.</p>
+   * <p><strong>Note:</strong> This password is stored in memory in plain text. If someone is able
+   * to execute arbitrary JavaScript code on the device (eg, you use <code>eval</code> on input
+   * from unknown sources) or read the device&#39;s firmware then they may be able to
+   * obtain it.</p>
+   * @param password
+   * @url http://www.espruino.com/Reference#l_E_setPassword
+   */
+  declare function E$setPassword(password: any): void;
+
+  /**
+   * <p>If a password has been set with <code>E.setPassword()</code>, this will lock the console
+   * so the password needs to be entered to unlock it.</p>
+   * @url http://www.espruino.com/Reference#l_E_lockConsole
+   */
+  declare function E$lockConsole(): void;
+
+  /**
+   * <p>Set the time zone to be used with <code>Date</code> objects.</p>
+   * <p>For example <code>E.setTimeZone(1)</code> will be GMT+0100</p>
+   * @param zone
+   * @url http://www.espruino.com/Reference#l_E_setTimeZone
+   */
+  declare function E$setTimeZone(zone: number): void;
+
+  /**
+   * <p>USB HID will only take effect next time you unplug and re-plug your Espruino. If you&#39;re
+   * disconnecting it from power you&#39;ll have to make sure you have <code>save()</code>d after calling
+   * this function.</p>
+   * @param opts
+   * @url http://www.espruino.com/Reference#l_E_setUSBHID
+   */
+  declare function E$setUSBHID(opts: any): void;
+
+  /**
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_sendUSBHID
+   */
+  declare function E$sendUSBHID(data: any): boolean;
+
+  /**
+   * <p>Unmount the SD card, so it can be removed. If you remove the SD card without calling this you may cause corruption, and you will be unable to access another SD card until you reset Espruino or call <code>E.unmountSD()</code>.</p>
+   * @url http://www.espruino.com/Reference#l_E_unmountSD
+   */
+  declare function E$unmountSD(): void;
+
+  /**
+   * <p>Open a file</p>
+   * @param path
+   * @param mode
+   * @return
+   * @url http://www.espruino.com/Reference#l_E_openFile
+   */
+  declare function E$openFile(path: any, mode: any): File;
 
   /**
    * <p>Creates a pin from the given argument (or returns undefined if no argument)</p>
@@ -1865,7 +1014,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_Pin_read
      */
-    Flash$read(): boolean;
+    read(): boolean;
 
     /**
      * <p>Sets the output state of the pin to a 1</p>
@@ -1887,7 +1036,7 @@ declare module "espruino" {
      * @param value
      * @url http://www.espruino.com/Reference#l_Pin_write
      */
-    Flash$write(value: boolean): void;
+    write(value: boolean): void;
 
     /**
      * <p>Sets the output state of the pin to the parameter given at the specified time.</p>
@@ -1932,6 +1081,41 @@ declare module "espruino" {
      */
     new(): Modules;
   }
+
+  declare var npm$namespace$Modules: {
+    getCached: typeof Modules$getCached,
+    removeCached: typeof Modules$removeCached,
+    removeAllCached: typeof Modules$removeAllCached,
+    addCached: typeof Modules$addCached
+  };
+
+  /**
+   * <p>Return an array of module names that have been cached</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Modules_getCached
+   */
+  declare function Modules$getCached(): any;
+
+  /**
+   * <p>Remove the given module from the list of cached modules</p>
+   * @param id
+   * @url http://www.espruino.com/Reference#l_Modules_removeCached
+   */
+  declare function Modules$removeCached(id: any): void;
+
+  /**
+   * <p>Remove all cached modules</p>
+   * @url http://www.espruino.com/Reference#l_Modules_removeAllCached
+   */
+  declare function Modules$removeAllCached(): void;
+
+  /**
+   * <p>Add the given module to the cache</p>
+   * @param id
+   * @param sourcecode
+   * @url http://www.espruino.com/Reference#l_Modules_addCached
+   */
+  declare function Modules$addCached(id: any, sourcecode: any): void;
 
   /**
    * <p>Create a waveform class. This allows high speed input and output of waveforms. It has an internal variable called <code>buffer</code> (as well as <code>buffer2</code> when double-buffered - see <code>options</code> below) which contains the data to input/output.</p>
@@ -2008,7 +1192,7 @@ declare module "espruino" {
      * @param power
      * @url http://www.espruino.com/Reference#l_OneWire_write
      */
-    Flash$write(data: any, power: boolean): void;
+    write(data: any, power: boolean): void;
 
     /**
      * <p>Read a byte</p>
@@ -2016,7 +1200,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_OneWire_read
      */
-    Flash$read(count: any): any;
+    read(count: any): any;
 
     /**
      * <p>Search for devices</p>
@@ -2043,7 +1227,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_SPI_setup
      */
-    Trig$setup(options: any): void;
+    setup(options: any): void;
 
     /**
      * <p>Send data down SPI, and return the result. Sending an integer will return an integer, a String will return a String, and anything else will return a Uint8Array.</p>
@@ -2062,7 +1246,7 @@ declare module "espruino" {
      * @param data
      * @url http://www.espruino.com/Reference#l_SPI_write
      */
-    Flash$write(data: any): void;
+    write(data: any): void;
 
     /**
      * <p>Send data down SPI, using 4 bits for each &#39;real&#39; bit (MSB first). This can be useful for faking one-wire style protocols</p>
@@ -2128,7 +1312,7 @@ declare module "espruino" {
     /**
      * @return
      */
-    new(): WioLTE$I2C;
+    new(): I2C;
 
     /**
      * <p>Set up this I2C port</p>
@@ -2136,7 +1320,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_I2C_setup
      */
-    Trig$setup(options: I2CSetupOptions): void;
+    setup(options: I2CSetupOptions): void;
 
     /**
      * <p>Transmit to the slave device with the given address. This is like Arduino&#39;s beginTransmission, write, and endTransmission rolled up into one.</p>
@@ -2169,19 +1353,19 @@ declare module "espruino" {
    * <p>The first I2C port</p>
    * @url http://www.espruino.com/Reference#l__global_I2C1
    */
-  declare var I2C1: WioLTE$I2C;
+  declare var I2C1: I2C;
 
   /**
    * <p>The second I2C port</p>
    * @url http://www.espruino.com/Reference#l__global_I2C2
    */
-  declare var I2C2: WioLTE$I2C;
+  declare var I2C2: I2C;
 
   /**
    * <p>The third I2C port</p>
    * @url http://www.espruino.com/Reference#l__global_I2C3
    */
-  declare var I2C3: WioLTE$I2C;
+  declare var I2C3: I2C;
 
   /**
    * <p>This library provides TV out capability on the Espruino and Espruino Pico.</p>
@@ -2202,6 +1386,37 @@ declare module "espruino" {
     new(): AES;
   }
 
+  declare var npm$namespace$AES: {
+    encrypt: typeof AES$encrypt,
+    decrypt: typeof AES$decrypt
+  };
+
+  /**
+   * @param passphrase
+   * @param key
+   * @param options
+   * @return
+   * @url http://www.espruino.com/Reference#l_AES_encrypt
+   */
+  declare function AES$encrypt(
+    passphrase: any,
+    key: any,
+    options: any
+  ): ArrayBuffer;
+
+  /**
+   * @param passphrase
+   * @param key
+   * @param options
+   * @return
+   * @url http://www.espruino.com/Reference#l_AES_decrypt
+   */
+  declare function AES$decrypt(
+    passphrase: any,
+    key: any,
+    options: any
+  ): ArrayBuffer;
+
   /**
    * <p>The NRF class is for controlling functionality of the Nordic nRF51/nRF52 chips. Currently these only used in <a href="http://puck-js.com">Puck.js</a> and the <a href="/MicroBit">BBC micro:bit</a>.</p>
    * <p>The main part of this is control of Bluetooth Low Energy - both searching for devices, and changing advertising data.</p>
@@ -2213,6 +1428,127 @@ declare module "espruino" {
      */
     new(): NRF;
   }
+
+  declare var npm$namespace$NRF: {
+    disconnect: typeof NRF$disconnect,
+    sleep: typeof NRF$sleep,
+    wake: typeof NRF$wake,
+    restart: typeof NRF$restart,
+    getAddress: typeof NRF$getAddress,
+    getBattery: typeof NRF$getBattery,
+    getAdvertisingData: typeof NRF$getAdvertisingData,
+    setTxPower: typeof NRF$setTxPower,
+    setLowPowerConnection: typeof NRF$setLowPowerConnection,
+    sendHIDReport: typeof NRF$sendHIDReport,
+    setWhitelist: typeof NRF$setWhitelist
+  };
+
+  /**
+   * <p>If a device is connected to Espruino, disconnect from it.</p>
+   * @url http://www.espruino.com/Reference#l_NRF_disconnect
+   */
+  declare function NRF$disconnect(): void;
+
+  /**
+   * <p>Disable Bluetooth advertising and disconnect from any device that
+   * connected to Puck.js as a peripheral (this won&#39;t affect any devices
+   * that Puck.js initiated connections to).</p>
+   * <p>This makes Puck.js undiscoverable, so it can&#39;t be connected to.</p>
+   * <p>Use <code>NRF.wake()</code> to wake up and make Puck.js connectable again.</p>
+   * @url http://www.espruino.com/Reference#l_NRF_sleep
+   */
+  declare function NRF$sleep(): void;
+
+  /**
+   * <p>Enable Bluetooth advertising (this is enabled by default), which
+   * allows other devices to discover and connect to Puck.js.</p>
+   * <p>Use <code>NRF.sleep()</code> to disable advertising.</p>
+   * @url http://www.espruino.com/Reference#l_NRF_wake
+   */
+  declare function NRF$wake(): void;
+
+  /**
+   * <p>Restart the Bluetooth softdevice (if there is currently a BLE connection,
+   * it will queue a restart to be done when the connection closes).</p>
+   * <p>You shouldn&#39;t need to call this function in normal usage. However, Nordic&#39;s
+   * BLE softdevice has some settings that cannot be reset. For example there
+   * are only a certain number of unique UUIDs. Once these are all used the
+   * only option is to restart the softdevice to clear them all out.</p>
+   * @url http://www.espruino.com/Reference#l_NRF_restart
+   */
+  declare function NRF$restart(): void;
+
+  /**
+   * <p>Get this device&#39;s Bluetooth MAC address.</p>
+   * <p>For Puck.js, the last 5 characters of this (eg. <code>ee:ff</code>)
+   * are used in the device&#39;s advertised Bluetooth name.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_NRF_getAddress
+   */
+  declare function NRF$getAddress(): any;
+
+  /**
+   * <p>Get the battery level in volts (the voltage that the NRF chip is running off of).</p>
+   * <p>This is the battery level of the device itself - it has nothing to with any
+   * device that might be connected.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_NRF_getBattery
+   */
+  declare function NRF$getBattery(): number;
+
+  /**
+   * <p>This is just like <code>NRF.setAdvertising</code>, except instead of advertising
+   * the data, it returns the packet that would be advertised as an array.</p>
+   * @param data
+   * @param options
+   * @return
+   * @url http://www.espruino.com/Reference#l_NRF_getAdvertisingData
+   */
+  declare function NRF$getAdvertisingData(data: any, options: any): any;
+
+  /**
+   * <p>Set the BLE radio transmit power. The default TX power is 0 dBm.</p>
+   * @param power
+   * @url http://www.espruino.com/Reference#l_NRF_setTxPower
+   */
+  declare function NRF$setTxPower(power: number): void;
+
+  /**
+   * <p>This sets the connection parameters - these affect the transfer speed and
+   * power usage when the device is connected.</p>
+   * <ul>
+   * <li>When not low power, the connection interval is between 7.5 and 20ms</li>
+   * <li>When low power, the connection interval is between 500 and 1000ms</li>
+   * </ul>
+   * <p>When low power connection is enabled, transfers of data over Bluetooth
+   * will be very slow, however power usage while connected will be drastically
+   * decreased.</p>
+   * <p>This will only take effect after the connection is disconnected and
+   * re-established.</p>
+   * @param lowPower
+   * @url http://www.espruino.com/Reference#l_NRF_setLowPowerConnection
+   */
+  declare function NRF$setLowPowerConnection(lowPower: boolean): void;
+
+  /**
+   * <p>Send a USB HID report. HID must first be enabled with <code>NRF.setServices({}, {hid: hid_report})</code></p>
+   * @param data
+   * @param callback
+   * @url http://www.espruino.com/Reference#l_NRF_sendHIDReport
+   */
+  declare function NRF$sendHIDReport(data: any, callback: any): void;
+
+  /**
+   * <p>If set to true, whenever a device bonds it will be added to the
+   * whitelist.</p>
+   * <p>When set to false, the whitelist is cleared and newly bonded
+   * devices will not be added to the whitelist.</p>
+   * <p><strong>Note:</strong> This is remembered between <code>reset()</code>s but isn&#39;t
+   * remembered after power-on (you&#39;ll have to add it to <code>onInit()</code>.</p>
+   * @param whitelisting
+   * @url http://www.espruino.com/Reference#l_NRF_setWhitelist
+   */
+  declare function NRF$setWhitelist(whitelisting: boolean): void;
 
   /**
    * <p>The Bluetooth Serial port - used when data is sent or received over Bluetooth Smart on nRF51/nRF52 chips.</p>
@@ -2257,7 +1593,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_BluetoothRemoteGATTServer_connect
      */
-    CC3000$connect(): any;
+    connect(): any;
 
     /**
      * <p>Disconnect from a previously connected BLE device connected with
@@ -2266,7 +1602,7 @@ declare module "espruino" {
      * <p><strong>Note:</strong> This is only available on some devices</p>
      * @url http://www.espruino.com/Reference#l_BluetoothRemoteGATTServer_disconnect
      */
-    NRF$disconnect(): void;
+    disconnect(): void;
 
     /**
      * <p><strong>Note:</strong> This is only available on some devices</p>
@@ -2342,6 +1678,84 @@ declare module "espruino" {
     new(): Trig;
   }
 
+  declare var npm$namespace$Trig: {
+    getPosAtTime: typeof Trig$getPosAtTime,
+    setup: typeof Trig$setup,
+    setTrigger: typeof Trig$setTrigger,
+    killTrigger: typeof Trig$killTrigger,
+    getTrigger: typeof Trig$getTrigger,
+    getRPM: typeof Trig$getRPM,
+    getErrors: typeof Trig$getErrors,
+    getErrorArray: typeof Trig$getErrorArray
+  };
+
+  /**
+   * <p>Get the position of the trigger wheel at the given time (from getTime)</p>
+   * @param time
+   * @return
+   * @url http://www.espruino.com/Reference#l_Trig_getPosAtTime
+   */
+  declare function Trig$getPosAtTime(time: number): number;
+
+  /**
+   * <p>Initialise the trigger class</p>
+   * @param pin
+   * @param options
+   * @url http://www.espruino.com/Reference#l_Trig_setup
+   */
+  declare function Trig$setup(pin: Pin, options: any): void;
+
+  /**
+   * <p>Set a trigger for a certain point in the cycle</p>
+   * @param num
+   * @param pos
+   * @param pins
+   * @param pulseLength
+   * @url http://www.espruino.com/Reference#l_Trig_setTrigger
+   */
+  declare function Trig$setTrigger(
+    num: number,
+    pos: number,
+    pins: any,
+    pulseLength: number
+  ): void;
+
+  /**
+   * <p>Disable a trigger</p>
+   * @param num
+   * @url http://www.espruino.com/Reference#l_Trig_killTrigger
+   */
+  declare function Trig$killTrigger(num: number): void;
+
+  /**
+   * <p>Get the current state of a trigger</p>
+   * @param num
+   * @return
+   * @url http://www.espruino.com/Reference#l_Trig_getTrigger
+   */
+  declare function Trig$getTrigger(num: number): any;
+
+  /**
+   * <p>Get the RPM of the trigger wheel</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Trig_getRPM
+   */
+  declare function Trig$getRPM(): number;
+
+  /**
+   * <p>Get the current error flags from the trigger wheel - and zero them</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Trig_getErrors
+   */
+  declare function Trig$getErrors(): number;
+
+  /**
+   * <p>Get the current error flags from the trigger wheel - and zero them</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Trig_getErrorArray
+   */
+  declare function Trig$getErrorArray(): any;
+
   /**
    * <p>This library allows you to write to Neopixel/WS281x/APA10x LED strips</p>
    * <p>These use a high speed single-wire protocol which needs platform-specific
@@ -2362,6 +1776,136 @@ declare module "espruino" {
     new(): ESP8266;
   }
 
+  declare var npm$namespace$ESP8266: {
+    reboot: typeof ESP8266$reboot,
+    logDebug: typeof ESP8266$logDebug,
+    setLog: typeof ESP8266$setLog,
+    printLog: typeof ESP8266$printLog,
+    readLog: typeof ESP8266$readLog,
+    dumpSocketInfo: typeof ESP8266$dumpSocketInfo,
+    setCPUFreq: typeof ESP8266$setCPUFreq,
+    getState: typeof ESP8266$getState,
+    getFreeFlash: typeof ESP8266$getFreeFlash,
+    crc32: typeof ESP8266$crc32,
+    neopixelWrite: typeof ESP8266$neopixelWrite,
+    deepSleep: typeof ESP8266$deepSleep,
+    ping: typeof ESP8266$ping
+  };
+
+  /**
+   * <p>Perform a hardware reset/reboot of the esp8266.</p>
+   * @url http://www.espruino.com/Reference#l_ESP8266_reboot
+   */
+  declare function ESP8266$reboot(): void;
+
+  /**
+   * <p>Enable or disable the logging of debug information.  A value of <code>true</code> enables debug logging while a value of <code>false</code> disables debug logging.  Debug output is sent to UART1 (gpio2).</p>
+   * @param enable
+   * @url http://www.espruino.com/Reference#l_ESP8266_logDebug
+   */
+  declare function ESP8266$logDebug(enable: boolean): void;
+
+  /**
+   * <p>Set the debug logging mode. It can be disabled (which frees ~1.2KB of heap), enabled in-memory only, or in-memory and output to a UART.</p>
+   * @param mode
+   * @url http://www.espruino.com/Reference#l_ESP8266_setLog
+   */
+  declare function ESP8266$setLog(mode: number): void;
+
+  /**
+   * <p>Prints the contents of the debug log to the console.</p>
+   * @url http://www.espruino.com/Reference#l_ESP8266_printLog
+   */
+  declare function ESP8266$printLog(): void;
+
+  /**
+   * <p>Returns one line from the log or up to 128 characters.</p>
+   * @url http://www.espruino.com/Reference#l_ESP8266_readLog
+   */
+  declare function ESP8266$readLog(): void;
+
+  /**
+   * <p>Dumps info about all sockets to the log. This is for troubleshooting the socket implementation.</p>
+   * @url http://www.espruino.com/Reference#l_ESP8266_dumpSocketInfo
+   */
+  declare function ESP8266$dumpSocketInfo(): void;
+
+  /**
+   * <p><strong>Note:</strong> This is deprecated. Use <code>E.setClock(80/160)</code>
+   * <strong>Note:</strong>
+   * Set the operating frequency of the ESP8266 processor. The default is 160Mhz.</p>
+   * <p><strong>Warning</strong>: changing the cpu frequency affects the timing of some I/O operations, notably of software SPI and I2C, so things may be a bit slower at 80Mhz.</p>
+   * @param freq
+   * @url http://www.espruino.com/Reference#l_ESP8266_setCPUFreq
+   */
+  declare function ESP8266$setCPUFreq(freq: any): void;
+
+  /**
+   * <p>Returns an object that contains details about the state of the ESP8266 with the following fields:</p>
+   * <ul>
+   * <li><code>sdkVersion</code>   - Version of the SDK.</li>
+   * <li><code>cpuFrequency</code> - CPU operating frequency in Mhz.</li>
+   * <li><code>freeHeap</code>     - Amount of free heap in bytes.</li>
+   * <li><code>maxCon</code>       - Maximum number of concurrent connections.</li>
+   * <li><code>flashMap</code>     - Configured flash size&amp;map: &#39;512KB:256/256&#39; .. &#39;4MB:512/512&#39;</li>
+   * <li><code>flashKB</code>      - Configured flash size in KB as integer</li>
+   * <li><code>flashChip</code>    - Type of flash chip as string with manufacturer &amp; chip, ex: &#39;0xEF 0x4016`</li>
+   *      * </ul>
+   *      *
+   *      * @return
+   *      * @url http://www.espruino.com/Reference#l_ESP8266_getState
+   *      *
+   */
+  declare function ESP8266$getState(): any;
+
+  /**
+   * <p><strong>Note:</strong> This is deprecated. Use <code>require(&quot;flash&quot;).getFree()</code></p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_ESP8266_getFreeFlash
+   */
+  declare function ESP8266$getFreeFlash(): any;
+
+  /**
+   * @param arrayOfData
+   * @return
+   * @url http://www.espruino.com/Reference#l_ESP8266_crc32
+   */
+  declare function ESP8266$crc32(arrayOfData: any): any;
+
+  /**
+   * <p><strong>This function is deprecated.</strong> Please use <code>require(&quot;neopixel&quot;).write(pin, data)</code> instead</p>
+   * @param pin
+   * @param arrayOfData
+   * @url http://www.espruino.com/Reference#l_ESP8266_neopixelWrite
+   */
+  declare function ESP8266$neopixelWrite(pin: Pin, arrayOfData: any): void;
+
+  /**
+   * <p>Put the ESP8266 into &#39;deep sleep&#39; for the given number of microseconds,
+   * reducing power consumption drastically. </p>
+   * <p>meaning of option values:</p>
+   * <p>0 - the 108th Byte of init parameter decides whether RF calibration will be performed or not.</p>
+   * <p>1 - run RF calibration after waking up. Power consumption is high.</p>
+   * <p>2 - no RF calibration after waking up. Power consumption is low.</p>
+   * <p>4 - no RF after waking up. Power consumption is the lowest.</p>
+   * <p><strong>Note:</strong> unlike normal Espruino boards&#39; &#39;deep sleep&#39; mode, ESP8266 deep sleep actually turns off the processor. After the given number of microseconds have elapsed, the ESP8266 will restart as if power had been turned off and then back on. <em>All contents of RAM will be lost</em>.
+   * Connect GPIO 16 to RST to enable wakeup.</p>
+   * <p><strong>Special:</strong> 0 microseconds cause sleep forever until external wakeup RST pull down occurs.</p>
+   * @param micros
+   * @param option
+   * @url http://www.espruino.com/Reference#l_ESP8266_deepSleep
+   */
+  declare function ESP8266$deepSleep(micros: any, option: any): void;
+
+  /**
+   * <p>Perform a network ping request. The parameter can be either a String or a numeric IP address.
+   * <strong>Note:</strong> This function should probably be removed, or should it be part of the wifi library?</p>
+   * @param ipAddr
+   * @param pingCallback
+   * @url http://www.espruino.com/Reference#l_ESP8266_ping
+   */
+  declare function ESP8266$ping(ipAddr: any, pingCallback: any): void;
+
   /**
    * <p>This library allows you to create http servers and make http requests</p>
    * <p>In order to use this, you will need an extra module to get network connectivity such as the <a href="/CC3000">TI CC3000</a> or <a href="/WIZnet">WIZnet W5500</a>.</p>
@@ -2369,6 +1913,19 @@ declare module "espruino" {
    * @url http://www.espruino.com/Reference#l_http_undefined
    */
   declare function http(): void;
+
+  declare var npm$namespace$http: {
+    createServer: typeof http$createServer
+  };
+
+  /**
+   * <p>Create an HTTP Server</p>
+   * <p>When a request to the server is made, the callback is called. In the callback you can use the methods on the response (httpSRs) to send data. You can also add <code>request.on(&#39;data&#39;,function() { ... })</code> to listen for POSTed data</p>
+   * @param callback
+   * @return
+   * @url http://www.espruino.com/Reference#l_http_createServer
+   */
+  declare function http$createServer(callback: any): httpSrv;
 
   /**
    * <p>The HTTP server created by <code>require(&#39;http&#39;).createServer</code></p>
@@ -2417,7 +1974,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_httpSRq_read
      */
-    Flash$read(chars: number): any;
+    read(chars: number): any;
 
     /**
      * <p>Pipe this to a stream (an object with a &#39;write&#39; method)</p>
@@ -2425,7 +1982,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_httpSRq_pipe
      */
-    fs$pipe(destination: any, options: any): void;
+    pipe(destination: any, options: any): void;
   }
 
   /**
@@ -2446,7 +2003,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_httpSRs_write
      */
-    Flash$write(data: any): boolean;
+    write(data: any): boolean;
 
     /**
      * <p>See <code>Socket.write</code> for more information about the data argument</p>
@@ -2481,7 +2038,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_httpCRq_write
      */
-    Flash$write(data: any): boolean;
+    write(data: any): boolean;
 
     /**
      * <p>Finish this HTTP request - optional data to append as an argument</p>
@@ -2515,7 +2072,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_httpCRs_read
      */
-    Flash$read(chars: number): any;
+    read(chars: number): any;
 
     /**
      * <p>Pipe this to a stream (an object with a &#39;write&#39; method)</p>
@@ -2523,7 +2080,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_httpCRs_pipe
      */
-    fs$pipe(destination: any, options: any): void;
+    pipe(destination: any, options: any): void;
   }
 
   /**
@@ -2535,6 +2092,21 @@ declare module "espruino" {
      */
     new(): CC3000;
   }
+
+  declare var npm$namespace$CC3000: {
+    connect: typeof CC3000$connect
+  };
+
+  /**
+   * <p>Initialise the CC3000 and return a WLAN object</p>
+   * @param spi
+   * @param cs
+   * @param en
+   * @param irq
+   * @return
+   * @url http://www.espruino.com/Reference#l_CC3000_connect
+   */
+  declare function CC3000$connect(spi: any, cs: Pin, en: Pin, irq: Pin): WLAN;
 
   /**
    * <p>An instantiation of a WiFi network adaptor</p>
@@ -2554,13 +2126,13 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_WLAN_connect
      */
-    CC3000$connect(ap: any, key: any, callback: any): boolean;
+    connect(ap: any, key: any, callback: any): boolean;
 
     /**
      * <p>Completely uninitialise and power down the CC3000. After this you&#39;ll have to use <code>require(&quot;CC3000&quot;).connect()</code> again.</p>
      * @url http://www.espruino.com/Reference#l_WLAN_disconnect
      */
-    NRF$disconnect(): void;
+    disconnect(): void;
 
     /**
      * <p>Completely uninitialise and power down the CC3000, then reconnect to the old access point.</p>
@@ -2599,6 +2171,16 @@ declare module "espruino" {
     new(): TelnetServer;
   }
 
+  declare var npm$namespace$TelnetServer: {
+    setOptions: typeof TelnetServer$setOptions
+  };
+
+  /**
+   * @param options
+   * @url http://www.espruino.com/Reference#l_TelnetServer_setOptions
+   */
+  declare function TelnetServer$setOptions(options: any): void;
+
   /**
    * <p>Library for communication with the WIZnet Ethernet module</p>
    * @url http://www.espruino.com/Reference#l_WIZnet_undefined
@@ -2609,6 +2191,19 @@ declare module "espruino" {
      */
     new(): WIZnet;
   }
+
+  declare var npm$namespace$WIZnet: {
+    connect: typeof WIZnet$connect
+  };
+
+  /**
+   * <p>Initialise the WIZnet module and return an Ethernet object</p>
+   * @param spi
+   * @param cs
+   * @return
+   * @url http://www.espruino.com/Reference#l_WIZnet_connect
+   */
+  declare function WIZnet$connect(spi: any, cs: Pin): Ethernet;
 
   /**
    * <p>An instantiation of an Ethernet network adaptor</p>
@@ -2654,6 +2249,21 @@ declare module "espruino" {
    */
   declare function url(): void;
 
+  declare var npm$namespace$url: {
+    parse: typeof url$parse
+  };
+
+  /**
+   * <p>A utility function to split a URL into parts</p>
+   * <p>This is useful in web servers for instance when handling a request.</p>
+   * <p>For instance <code>url.parse(&quot;/a?b=c&amp;d=e&quot;,true)</code> returns <code>{&quot;method&quot;:&quot;GET&quot;,&quot;host&quot;:&quot;&quot;,&quot;path&quot;:&quot;/a?b=c&amp;d=e&quot;,&quot;pathname&quot;:&quot;/a&quot;,&quot;search&quot;:&quot;?b=c&amp;d=e&quot;,&quot;port&quot;:80,&quot;query&quot;:{&quot;b&quot;:&quot;c&quot;,&quot;d&quot;:&quot;e&quot;}}</code></p>
+   * @param urlStr
+   * @param parseQuery
+   * @return
+   * @url http://www.espruino.com/Reference#l_url_parse
+   */
+  declare function url$parse(urlStr: any, parseQuery: boolean): any;
+
   /**
    * <p>This library allows you to create TCPIP servers and clients</p>
    * <p>In order to use this, you will need an extra module to get network connectivity.</p>
@@ -2661,6 +2271,29 @@ declare module "espruino" {
    * @url http://www.espruino.com/Reference#l_net_undefined
    */
   declare function net(): void;
+
+  declare var npm$namespace$net: {
+    createServer: typeof net$createServer,
+    connect: typeof net$connect
+  };
+
+  /**
+   * <p>Create a Server</p>
+   * <p>When a request to the server is made, the callback is called. In the callback you can use the methods on the connection to send data. You can also add <code>connection.on(&#39;data&#39;,function() { ... })</code> to listen for received data</p>
+   * @param callback
+   * @return
+   * @url http://www.espruino.com/Reference#l_net_createServer
+   */
+  declare function net$createServer(callback: any): Server;
+
+  /**
+   * <p>Create a socket connection</p>
+   * @param options
+   * @param callback
+   * @return
+   * @url http://www.espruino.com/Reference#l_net_connect
+   */
+  declare function net$connect(options: any, callback: any): Socket;
 
   /**
    * <p>The socket server created by <code>require(&#39;net&#39;).createServer</code></p>
@@ -2709,7 +2342,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_Socket_read
      */
-    Flash$read(chars: number): any;
+    read(chars: number): any;
 
     /**
      * <p>Pipe this to a stream (an object with a &#39;write&#39; method)</p>
@@ -2717,7 +2350,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_Socket_pipe
      */
-    fs$pipe(destination: any, options: any): void;
+    pipe(destination: any, options: any): void;
 
     /**
      * <p>Close this socket - optional data to append as an argument.</p>
@@ -2742,6 +2375,25 @@ declare module "espruino" {
    * @url http://www.espruino.com/Reference#l_hashlib_undefined
    */
   declare function hashlib(): void;
+
+  declare var npm$namespace$hashlib: {
+    sha224: typeof hashlib$sha224,
+    sha256: typeof hashlib$sha256
+  };
+
+  /**
+   * @param message
+   * @return
+   * @url http://www.espruino.com/Reference#l_hashlib_sha224
+   */
+  declare function hashlib$sha224(message: any): HASH;
+
+  /**
+   * @param message
+   * @return
+   * @url http://www.espruino.com/Reference#l_hashlib_sha256
+   */
+  declare function hashlib$sha256(message: any): HASH;
 
   /**
    * <p><strong>Note:</strong> This class is currently only included in builds for the original Espruino boards.
@@ -2786,6 +2438,76 @@ declare module "espruino" {
     new(): WioLTE;
   }
 
+  declare var npm$namespace$WioLTE: {
+    setGrovePower: typeof WioLTE$setGrovePower,
+    setLEDPower: typeof WioLTE$setLEDPower,
+    D38: typeof WioLTE$D38,
+    D20: typeof WioLTE$D20,
+    A6: typeof WioLTE$A6,
+    I2C: typeof WioLTE$I2C,
+    UART: typeof WioLTE$UART,
+    A4: typeof WioLTE$A4
+  };
+
+  /**
+   * <p>Set the WIO&#39;s LED</p>
+   * @url http://www.espruino.com/Reference#l_WioLTE_LED
+   */
+  declare interface WioLTE$LED {
+    /**
+     * @param red
+     * @param green
+     * @param blue
+     * @return
+     */
+    new(red: number, green: number, blue: number): WioLTE$LED;
+  }
+
+  /**
+   * <p>Set the power of Grove connectors, except for <code>D38</code> and <code>D39</code> which are always on.</p>
+   * @param onoff
+   * @url http://www.espruino.com/Reference#l_WioLTE_setGrovePower
+   */
+  declare function WioLTE$setGrovePower(onoff: boolean): void;
+
+  /**
+   * <p>Turn power to the WIO&#39;s LED on or off.</p>
+   * <p>Turning the LED on won&#39;t immediately display a color - that must be done with <code>WioLTE.LED(r,g,b)</code></p>
+   * @param onoff
+   * @url http://www.espruino.com/Reference#l_WioLTE_setLEDPower
+   */
+  declare function WioLTE$setLEDPower(onoff: boolean): void;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_D38
+   */
+  declare var WioLTE$D38: any;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_D20
+   */
+  declare var WioLTE$D20: any;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_A6
+   */
+  declare var WioLTE$A6: any;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_I2C
+   */
+  declare var WioLTE$I2C: any;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_UART
+   */
+  declare var WioLTE$UART: any;
+
+  /**
+   * @url http://www.espruino.com/Reference#l_WioLTE_A4
+   */
+  declare var WioLTE$A4: any;
+
   /**
    * <p>This library handles interfacing with a FAT32 filesystem on an SD card. The API is designed to be similar to node.js&#39;s - However Espruino does not currently support asynchronous file IO, so the functions behave like node.js&#39;s xxxxSync functions. Versions of the functions with &#39;Sync&#39; after them are also provided for compatibility.</p>
    * <p>Currently this provides minimal file IO - it&#39;s great for logging and loading/saving settings, but not good for loading large amounts of data as you will soon fill your memory up.</p>
@@ -2794,6 +2516,150 @@ declare module "espruino" {
    * @url http://www.espruino.com/Reference#l_fs_undefined
    */
   declare function fs(): void;
+
+  declare var npm$namespace$fs: {
+    pipe: typeof fs$pipe,
+    readdir: typeof fs$readdir,
+    readdirSync: typeof fs$readdirSync,
+    writeFile: typeof fs$writeFile,
+    writeFileSync: typeof fs$writeFileSync,
+    appendFile: typeof fs$appendFile,
+    appendFileSync: typeof fs$appendFileSync,
+    readFile: typeof fs$readFile,
+    readFileSync: typeof fs$readFileSync,
+    unlink: typeof fs$unlink,
+    unlinkSync: typeof fs$unlinkSync,
+    statSync: typeof fs$statSync,
+    mkdir: typeof fs$mkdir,
+    mkdirSync: typeof fs$mkdirSync
+  };
+
+  /**
+   * @param source
+   * @param destination
+   * @param options
+   * @url http://www.espruino.com/Reference#l_fs_pipe
+   */
+  declare function fs$pipe(source: any, destination: any, options: any): void;
+
+  /**
+   * <p>List all files in the supplied directory, returning them as an array of strings.</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_readdir
+   */
+  declare function fs$readdir(path: any): any;
+
+  /**
+   * <p>List all files in the supplied directory, returning them as an array of strings.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_readdirSync
+   */
+  declare function fs$readdirSync(path: any): any;
+
+  /**
+   * <p>Write the data to the given file</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_writeFile
+   */
+  declare function fs$writeFile(path: any, data: any): boolean;
+
+  /**
+   * <p>Write the data to the given file</p>
+   * @param path
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_writeFileSync
+   */
+  declare function fs$writeFileSync(path: any, data: any): boolean;
+
+  /**
+   * <p>Append the data to the given file, created a new file if it doesn&#39;t exist</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_appendFile
+   */
+  declare function fs$appendFile(path: any, data: any): boolean;
+
+  /**
+   * <p>Append the data to the given file, created a new file if it doesn&#39;t exist</p>
+   * @param path
+   * @param data
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_appendFileSync
+   */
+  declare function fs$appendFileSync(path: any, data: any): boolean;
+
+  /**
+   * <p>Read all data from a file and return as a string</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_readFile
+   */
+  declare function fs$readFile(path: any): any;
+
+  /**
+   * <p>Read all data from a file and return as a string.</p>
+   * <p><strong>Note:</strong> The size of files you can load using this method is limited by the amount of available RAM. To read files a bit at a time, see the <code>File</code> class.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_readFileSync
+   */
+  declare function fs$readFileSync(path: any): any;
+
+  /**
+   * <p>Delete the given file</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_unlink
+   */
+  declare function fs$unlink(path: any): boolean;
+
+  /**
+   * <p>Delete the given file</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_unlinkSync
+   */
+  declare function fs$unlinkSync(path: any): boolean;
+
+  /**
+   * <p>Return information on the given file. This returns an object with the following
+   * fields:</p>
+   * <p>size: size in bytes
+   * dir: a boolean specifying if the file is a directory or not
+   * mtime: A Date structure specifying the time the file was last modified</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_statSync
+   */
+  declare function fs$statSync(path: any): any;
+
+  /**
+   * <p>Create the directory</p>
+   * <p>NOTE: Espruino does not yet support Async file IO, so this function behaves like the &#39;Sync&#39; version.</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_mkdir
+   */
+  declare function fs$mkdir(path: any): boolean;
+
+  /**
+   * <p>Create the directory</p>
+   * @param path
+   * @return
+   * @url http://www.espruino.com/Reference#l_fs_mkdirSync
+   */
+  declare function fs$mkdirSync(path: any): boolean;
 
   /**
    * <p>This is the File object - it allows you to stream data to and from files (As opposed to the <code>require(&#39;fs&#39;).readFile(..)</code> style functions that read an entire file).</p>
@@ -2819,7 +2685,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_File_write
      */
-    Flash$write(buffer: any): number;
+    write(buffer: any): number;
 
     /**
      * <p>Read data in a file in byte size chunks</p>
@@ -2827,7 +2693,7 @@ declare module "espruino" {
      * @return
      * @url http://www.espruino.com/Reference#l_File_read
      */
-    Flash$read(length: number): any;
+    read(length: number): any;
 
     /**
      * <p>Skip the specified number of bytes forward in the file</p>
@@ -2849,7 +2715,7 @@ declare module "espruino" {
      * @param options
      * @url http://www.espruino.com/Reference#l_File_pipe
      */
-    fs$pipe(destination: any, options: any): void;
+    pipe(destination: any, options: any): void;
   }
 
   /**
@@ -3131,6 +2997,118 @@ declare module "espruino" {
     new(): Puck;
   }
 
+  declare var npm$namespace$Puck: {
+    mag: typeof Puck$mag,
+    magTemp: typeof Puck$magTemp,
+    magOff: typeof Puck$magOff,
+    capSense: typeof Puck$capSense,
+    light: typeof Puck$light,
+    getBatteryPercentage: typeof Puck$getBatteryPercentage,
+    selfTest: typeof Puck$selfTest
+  };
+
+  /**
+   * <p>Turn on the magnetometer, take a single reading, and then turn it off again.</p>
+   * <p>An object of the form <code>{x,y,z}</code> is returned containing magnetometer readings.
+   * Due to residual magnetism in the Puck and magnetometer itself, with
+   * no magnetic field the Puck will not return <code>{x:0,y:0,z:0}</code>.</p>
+   * <p>Instead, it&#39;s up to you to figure out what the &#39;zero value&#39; is for your
+   * Puck in your location and to then subtract that from the value returned. If
+   * you&#39;re not trying to measure the Earth&#39;s magnetic field then it&#39;s a good idea
+   * to just take a reading at startup and use that.</p>
+   * <p>With the aerial at the top of the board, the <code>y</code> reading is vertical, <code>x</code> is
+   * horizontal, and <code>z</code> is through the board.</p>
+   * <p>Readings are in increments of 0.1 micro Tesla (uT). The Earth&#39;s magnetic field
+   * varies from around 25-60 uT, so the reading will vary by 250 to 600 depending
+   * on location.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_mag
+   */
+  declare function Puck$mag(): any;
+
+  /**
+   * <p>Turn on the magnetometer, take a single temperature reading from the MAG3110 chip, and then turn it off again.</p>
+   * <p>(If the magnetometer is already on, this just returns the last reading obtained)</p>
+   * <p><code>E.getTemperature()</code> uses the microcontroller&#39;s temperature sensor, but this uses the magnetometer&#39;s.</p>
+   * <p>The reading obtained is an integer (so no decimal places), but the sensitivity is factory trimmed. to 1&deg;C, however the temperature
+   * offset isn&#39;t - so absolute readings may still need calibrating.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_magTemp
+   */
+  declare function Puck$magTemp(): number;
+
+  /**
+   * <p>Turn the magnetometer off</p>
+   * @url http://www.espruino.com/Reference#l_Puck_magOff
+   */
+  declare function Puck$magOff(): void;
+
+  /**
+   * <p>Transmit the given set of IR pulses - data should be an array of pulse times
+   * in milliseconds (as <code>[on, off, on, off, on, etc]</code>).</p>
+   * <p>For example <code>Puck.IR(pulseTimes)</code> - see <a href="http://www.espruino.com/Puck.js+Infrared">http://www.espruino.com/Puck.js+Infrared</a>
+   * for a full example.</p>
+   * <p>You can also attach an external LED to Puck.js, in which case
+   * you can just execute <code>Puck.IR(pulseTimes, led_cathode, led_anode)</code></p>
+   * @url http://www.espruino.com/Reference#l_Puck_IR
+   */
+  declare interface Puck$IR {
+    /**
+     * @param data
+     * @param cathode
+     * @param anode
+     * @return
+     */
+    new(data: any, cathode: Pin, anode: Pin): Puck$IR;
+  }
+
+  /**
+   * <p>Capacitive sense - the higher the capacitance, the higher the number returned.</p>
+   * <p>If called without arguments, a value depending on the capacitance of what is
+   * attached to pin D11 will be returned. If you attach a length of wire to D11,
+   * you&#39;ll be able to see a higher value returned when your hand is near the wire
+   * than when it is away.</p>
+   * <p>You can also supply pins to use yourself, however if you do this then
+   * the TX pin must be connected to RX pin and sense plate via a roughly 1MOhm
+   * resistor.</p>
+   * <p>When not supplying pins, Puck.js uses an internal resistor between D12(tx)
+   * and D11(rx).</p>
+   * @param tx
+   * @param rx
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_capSense
+   */
+  declare function Puck$capSense(tx: Pin, rx: Pin): number;
+
+  /**
+   * <p>Return a light value based on the light the red LED is seeing.</p>
+   * <p><strong>Note:</strong> If called more than 5 times per second, the received light value
+   * may not be accurate.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_light
+   */
+  declare function Puck$light(): number;
+
+  /**
+   * <p>Return an approximate battery percentage remaining based on
+   * a normal CR2032 battery (2.8 - 2.2v)</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_getBatteryPercentage
+   */
+  declare function Puck$getBatteryPercentage(): number;
+
+  /**
+   * <p>Run a self-test, and return true for a pass. This checks for shorts
+   * between pins, so your Puck shouldn&#39;t have anything connected to it.</p>
+   * <p><strong>Note:</strong> This self-test auto starts if you hold the button on your Puck
+   * down while inserting the battery, leave it pressed for 3 seconds (while
+   * the green LED is lit) and release it soon after all LEDs turn on. 5
+   * red blinks is a fail, 5 green is a pass.</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Puck_selfTest
+   */
+  declare function Puck$selfTest(): boolean;
+
   /**
    * <p>Class containing utility functions for accessing IO on the hexagonal badge</p>
    * @url http://www.espruino.com/Reference#Badge
@@ -3141,6 +3119,36 @@ declare module "espruino" {
      */
     new(): Badge;
   }
+
+  declare var npm$namespace$Badge: {
+    capSense: typeof Badge$capSense,
+    getBatteryPercentage: typeof Badge$getBatteryPercentage,
+    setContrast: typeof Badge$setContrast
+  };
+
+  /**
+   * <p>Capacitive sense - the higher the capacitance, the higher the number returned.</p>
+   * <p>Supply a corner between 1 and 6, and a</p>
+   * @param corner
+   * @return
+   * @url http://www.espruino.com/Reference#l_Badge_capSense
+   */
+  declare function Badge$capSense(corner: number): number;
+
+  /**
+   * <p>Return an approximate battery percentage remaining based on
+   * a normal CR2032 battery (2.8 - 2.2v)</p>
+   * @return
+   * @url http://www.espruino.com/Reference#l_Badge_getBatteryPercentage
+   */
+  declare function Badge$getBatteryPercentage(): number;
+
+  /**
+   * <p>Set the LCD&#39;s contrast</p>
+   * @param c
+   * @url http://www.espruino.com/Reference#l_Badge_setContrast
+   */
+  declare function Badge$setContrast(c: number): void;
 
   /**
    * @url http://www.espruino.com/Reference#l__global_HIGH
@@ -3361,7 +3369,7 @@ declare module "espruino" {
    * @param sleep
    * @url http://www.espruino.com/Reference#l__global_setDeepSleep
    */
-  declare function setDeepSleep(NRF$sleep: boolean): void;
+  declare function setDeepSleep(sleep: boolean): void;
 
   /**
    * <p>Output debugging information</p>
@@ -3619,17 +3627,17 @@ declare module "espruino" {
    * @url http://www.espruino.com/Reference#l__global_BTNR
    */
   declare var BTNR: Pin;
-  declare var Nucleo$D0: Pin;
-  declare var Nucleo$D1: Pin;
-  declare var Nucleo$D2: Pin;
-  declare var Nucleo$D3: Pin;
-  declare var Nucleo$D4: Pin;
-  declare var Nucleo$D5: Pin;
-  declare var Nucleo$D6: Pin;
-  declare var Nucleo$D7: Pin;
-  declare var Nucleo$D8: Pin;
-  declare var Nucleo$D9: Pin;
-  declare var Nucleo$D10: Pin;
+  declare var NodeMCU$D0: Pin;
+  declare var NodeMCU$D1: Pin;
+  declare var NodeMCU$D2: Pin;
+  declare var NodeMCU$D3: Pin;
+  declare var NodeMCU$D4: Pin;
+  declare var NodeMCU$D5: Pin;
+  declare var NodeMCU$D6: Pin;
+  declare var NodeMCU$D7: Pin;
+  declare var NodeMCU$D8: Pin;
+  declare var NodeMCU$D9: Pin;
+  declare var NodeMCU$D10: Pin;
   declare var Nucleo$D11: Pin;
   declare var Nucleo$D12: Pin;
   declare var Nucleo$D13: Pin;
