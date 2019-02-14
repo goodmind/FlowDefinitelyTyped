@@ -44,7 +44,7 @@ declare module "zookeeper" {
     stat: Stat
   ) => void;
   declare type Callback<T> = (rc: number, error: string, value: T) => void;
-  declare module.exports: typeof Zookeeper;
+  declare export default typeof Zookeeper;
 
   declare class Zookeeper mixins Client {
     constructor(options: ConnectionOptions): this;
