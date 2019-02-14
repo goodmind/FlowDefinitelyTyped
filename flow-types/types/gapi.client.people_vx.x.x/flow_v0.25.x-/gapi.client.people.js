@@ -1,29 +1,33 @@
 declare module "gapi.client.people" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    contactGroups: typeof client$contactGroups,
-    people: typeof client$people
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    contactGroups: typeof gapi$client$contactGroups,
+    people: typeof gapi$client$people
   };
 
   /**
    * Load Google People API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "people",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "people",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$contactGroups: people$people$ContactGroupsResource;
+  declare var gapi$client$contactGroups: people$ContactGroupsResource;
 
-  declare var client$people: client$people.people$PeopleResource;
+  declare var gapi$client$people: people$PeopleResource;
 
-  declare interface people$Address {
+  declare interface gapi$client$people$Address {
     /**
      * The city of the address.
      */
@@ -93,7 +97,7 @@ declare module "gapi.client.people" {
     type?: string;
   }
 
-  declare interface people$AgeRangeType {
+  declare interface gapi$client$people$AgeRangeType {
     /**
      * The age range.
      */
@@ -105,14 +109,14 @@ declare module "gapi.client.people" {
     metadata?: people$FieldMetadata;
   }
 
-  declare interface people$BatchGetContactGroupsResponse {
+  declare interface gapi$client$people$BatchGetContactGroupsResponse {
     /**
      * The list of responses for each requested contact group resource.
      */
     responses?: people$ContactGroupResponse[];
   }
 
-  declare interface people$Biography {
+  declare interface gapi$client$people$Biography {
     /**
      * The content type of the biography.
      */
@@ -129,7 +133,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Birthday {
+  declare interface gapi$client$people$Birthday {
     /**
      * The date of the birthday.
      */
@@ -146,7 +150,7 @@ declare module "gapi.client.people" {
     text?: string;
   }
 
-  declare interface people$BraggingRights {
+  declare interface gapi$client$people$BraggingRights {
     /**
      * Metadata about the bragging rights.
      */
@@ -158,7 +162,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$ContactGroup {
+  declare interface gapi$client$people$ContactGroup {
     /**
      * The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
      * resource. Used for web cache validation.
@@ -209,7 +213,7 @@ declare module "gapi.client.people" {
     resourceName?: string;
   }
 
-  declare interface people$ContactGroupMembership {
+  declare interface gapi$client$people$ContactGroupMembership {
     /**
      * The contact group ID for the contact group membership. The contact group
      * ID can be custom or predefined. Possible values include, but are not
@@ -222,7 +226,7 @@ declare module "gapi.client.people" {
     contactGroupId?: string;
   }
 
-  declare interface people$ContactGroupMetadata {
+  declare interface gapi$client$people$ContactGroupMetadata {
     /**
      * True if the contact group resource has been deleted. Populated only for
      * [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
@@ -236,11 +240,11 @@ declare module "gapi.client.people" {
     updateTime?: string;
   }
 
-  declare interface people$ContactGroupResponse {
+  declare interface gapi$client$people$ContactGroupResponse {
     /**
      * The contact group.
      */
-    contactGroup?: people$ContactGroup;
+    contactGroup?: gapi$client$people$ContactGroup;
 
     /**
      * The original requested resource name.
@@ -253,7 +257,7 @@ declare module "gapi.client.people" {
     status?: people$Status;
   }
 
-  declare interface people$CoverPhoto {
+  declare interface gapi$client$people$CoverPhoto {
     /**
      * True if the cover photo is the default cover photo;
      * false if the cover photo is a user-provided cover photo.
@@ -271,14 +275,14 @@ declare module "gapi.client.people" {
     url?: string;
   }
 
-  declare interface people$CreateContactGroupRequest {
+  declare interface gapi$client$people$CreateContactGroupRequest {
     /**
      * The contact group to create.
      */
-    contactGroup?: people$ContactGroup;
+    contactGroup?: gapi$client$people$ContactGroup;
   }
 
-  declare interface people$Date {
+  declare interface gapi$client$people$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -297,14 +301,14 @@ declare module "gapi.client.people" {
     year?: number;
   }
 
-  declare interface people$DomainMembership {
+  declare interface gapi$client$people$DomainMembership {
     /**
      * True if the person is in the viewer's Google Apps domain.
      */
     inViewerDomain?: boolean;
   }
 
-  declare interface people$EmailAddress {
+  declare interface gapi$client$people$EmailAddress {
     /**
      * The display name of the email.
      */
@@ -337,11 +341,11 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Event {
+  declare interface gapi$client$people$Event {
     /**
      * The date of the event.
      */
-    date?: people$Date;
+    date?: gapi$client$people$Date;
 
     /**
      * The read-only type of the event translated and formatted in the
@@ -364,7 +368,7 @@ declare module "gapi.client.people" {
     type?: string;
   }
 
-  declare interface people$FieldMetadata {
+  declare interface gapi$client$people$FieldMetadata {
     /**
      * True if the field is the primary field; false if the field is a secondary
      * field.
@@ -384,7 +388,7 @@ declare module "gapi.client.people" {
     verified?: boolean;
   }
 
-  declare interface people$Gender {
+  declare interface gapi$client$people$Gender {
     /**
      * The read-only value of the gender translated and formatted in the viewer's
      * account locale or the `Accept-Language` HTTP header locale.
@@ -394,7 +398,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the gender.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The gender for the person. The gender can be custom or predefined.
@@ -409,14 +413,14 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$GetPeopleResponse {
+  declare interface gapi$client$people$GetPeopleResponse {
     /**
      * The response for each requested resource name.
      */
     responses?: people$PersonResponse[];
   }
 
-  declare interface people$ImClient {
+  declare interface gapi$client$people$ImClient {
     /**
      * The read-only protocol of the IM client formatted in the viewer's account
      * locale or the `Accept-Language` HTTP header locale.
@@ -432,7 +436,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the IM client.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The protocol of the IM client. The protocol can be custom or predefined.
@@ -466,11 +470,11 @@ declare module "gapi.client.people" {
     username?: string;
   }
 
-  declare interface people$Interest {
+  declare interface gapi$client$people$Interest {
     /**
      * Metadata about the interest.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The interest; for example, `stargazing`.
@@ -478,7 +482,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$ListConnectionsResponse {
+  declare interface gapi$client$people$ListConnectionsResponse {
     /**
      * The list of people that the requestor is connected to.
      */
@@ -506,12 +510,12 @@ declare module "gapi.client.people" {
     totalPeople?: number;
   }
 
-  declare interface people$ListContactGroupsResponse {
+  declare interface gapi$client$people$ListContactGroupsResponse {
     /**
      * The list of contact groups. Members of the contact groups are not
      * populated.
      */
-    client$contactGroups?: people$ContactGroup[];
+    contactGroups?: gapi$client$people$ContactGroup[];
 
     /**
      * The token that can be used to retrieve the next page of results.
@@ -529,11 +533,11 @@ declare module "gapi.client.people" {
     totalItems?: number;
   }
 
-  declare interface people$Locale {
+  declare interface gapi$client$people$Locale {
     /**
      * Metadata about the locale.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)
@@ -542,24 +546,24 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Membership {
+  declare interface gapi$client$people$Membership {
     /**
      * The contact group membership.
      */
-    contactGroupMembership?: people$ContactGroupMembership;
+    contactGroupMembership?: gapi$client$people$ContactGroupMembership;
 
     /**
      * The domain membership.
      */
-    domainMembership?: people$DomainMembership;
+    domainMembership?: gapi$client$people$DomainMembership;
 
     /**
      * Metadata about the membership.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
   }
 
-  declare interface people$ModifyContactGroupMembersRequest {
+  declare interface gapi$client$people$ModifyContactGroupMembersRequest {
     /**
      * The resource names of the contact people to add in the form of in the form
      * `people/`<var>person_id</var>.
@@ -573,14 +577,14 @@ declare module "gapi.client.people" {
     resourceNamesToRemove?: string[];
   }
 
-  declare interface people$ModifyContactGroupMembersResponse {
+  declare interface gapi$client$people$ModifyContactGroupMembersResponse {
     /**
      * The contact people resource names that were not found.
      */
     notFoundResourceNames?: string[];
   }
 
-  declare interface people$Name {
+  declare interface gapi$client$people$Name {
     /**
      * The read-only display name formatted according to the locale specified by
      * the viewer's account or the `Accept-Language` HTTP header.
@@ -617,7 +621,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the name.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The middle name(s).
@@ -655,11 +659,11 @@ declare module "gapi.client.people" {
     phoneticMiddleName?: string;
   }
 
-  declare interface people$Nickname {
+  declare interface gapi$client$people$Nickname {
     /**
      * Metadata about the nickname.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The type of the nickname.
@@ -672,11 +676,11 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Occupation {
+  declare interface gapi$client$people$Occupation {
     /**
      * Metadata about the occupation.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The occupation; for example, `carpenter`.
@@ -684,7 +688,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Organization {
+  declare interface gapi$client$people$Organization {
     /**
      * True if the organization is the person's current organization;
      * false if the organization is a past organization.
@@ -704,7 +708,7 @@ declare module "gapi.client.people" {
     /**
      * The end date when the person left the organization.
      */
-    endDate?: people$Date;
+    endDate?: gapi$client$people$Date;
 
     /**
      * The read-only type of the organization translated and formatted in the
@@ -725,7 +729,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the organization.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The name of the organization.
@@ -740,7 +744,7 @@ declare module "gapi.client.people" {
     /**
      * The start date when the person joined the organization.
      */
-    startDate?: people$Date;
+    startDate?: gapi$client$people$Date;
 
     /**
      * The symbol associated with the organization; for example, a stock ticker
@@ -763,11 +767,11 @@ declare module "gapi.client.people" {
     type?: string;
   }
 
-  declare interface people$Person {
+  declare interface gapi$client$people$Person {
     /**
      * The person's street addresses.
      */
-    addresses?: people$Address[];
+    addresses?: gapi$client$people$Address[];
 
     /**
      * &#42;&#42;DEPRECATED&#42;&#42; (Please use `person.ageRanges` instead)&#42;&#42;
@@ -779,32 +783,32 @@ declare module "gapi.client.people" {
     /**
      * The person's read-only age ranges.
      */
-    ageRanges?: people$AgeRangeType[];
+    ageRanges?: gapi$client$people$AgeRangeType[];
 
     /**
      * The person's biographies.
      */
-    biographies?: people$Biography[];
+    biographies?: gapi$client$people$Biography[];
 
     /**
      * The person's birthdays.
      */
-    birthdays?: people$Birthday[];
+    birthdays?: gapi$client$people$Birthday[];
 
     /**
      * The person's bragging rights.
      */
-    braggingRights?: people$BraggingRights[];
+    braggingRights?: gapi$client$people$BraggingRights[];
 
     /**
      * The person's read-only cover photos.
      */
-    coverPhotos?: people$CoverPhoto[];
+    coverPhotos?: gapi$client$people$CoverPhoto[];
 
     /**
      * The person's email addresses.
      */
-    emailAddresses?: people$EmailAddress[];
+    emailAddresses?: gapi$client$people$EmailAddress[];
 
     /**
      * The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
@@ -815,32 +819,32 @@ declare module "gapi.client.people" {
     /**
      * The person's events.
      */
-    events?: people$Event[];
+    events?: gapi$client$people$Event[];
 
     /**
      * The person's genders.
      */
-    genders?: people$Gender[];
+    genders?: gapi$client$people$Gender[];
 
     /**
      * The person's instant messaging clients.
      */
-    imClients?: people$ImClient[];
+    imClients?: gapi$client$people$ImClient[];
 
     /**
      * The person's interests.
      */
-    interests?: people$Interest[];
+    interests?: gapi$client$people$Interest[];
 
     /**
      * The person's locale preferences.
      */
-    locales?: people$Locale[];
+    locales?: gapi$client$people$Locale[];
 
     /**
      * The person's read-only group memberships.
      */
-    memberships?: people$Membership[];
+    memberships?: gapi$client$people$Membership[];
 
     /**
      * Read-only metadata about the person.
@@ -850,22 +854,22 @@ declare module "gapi.client.people" {
     /**
      * The person's names.
      */
-    names?: people$Name[];
+    names?: gapi$client$people$Name[];
 
     /**
      * The person's nicknames.
      */
-    nicknames?: people$Nickname[];
+    nicknames?: gapi$client$people$Nickname[];
 
     /**
      * The person's occupations.
      */
-    occupations?: people$Occupation[];
+    occupations?: gapi$client$people$Occupation[];
 
     /**
      * The person's past or current organizations.
      */
-    organizations?: people$Organization[];
+    organizations?: gapi$client$people$Organization[];
 
     /**
      * The person's phone numbers.
@@ -925,7 +929,7 @@ declare module "gapi.client.people" {
     userDefined?: people$UserDefined[];
   }
 
-  declare interface people$PersonMetadata {
+  declare interface gapi$client$people$PersonMetadata {
     /**
      * True if the person resource has been deleted. Populated only for
      * [`connections.list`](/people/api/rest/v1/people.connections/list) requests
@@ -963,7 +967,7 @@ declare module "gapi.client.people" {
     sources?: people$Source[];
   }
 
-  declare interface people$PersonResponse {
+  declare interface gapi$client$people$PersonResponse {
     /**
      * &#42;&#42;DEPRECATED&#42;&#42; (Please use status instead)
      *
@@ -975,7 +979,7 @@ declare module "gapi.client.people" {
     /**
      * The person.
      */
-    person?: people$Person;
+    person?: gapi$client$people$Person;
 
     /**
      * The original requested resource name. May be different than the resource
@@ -993,7 +997,7 @@ declare module "gapi.client.people" {
     status?: people$Status;
   }
 
-  declare interface people$PhoneNumber {
+  declare interface gapi$client$people$PhoneNumber {
     /**
      * The read-only canonicalized [ITU-T E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
      * form of the phone number.
@@ -1009,7 +1013,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the phone number.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The type of the phone number. The type can be custom or predefined.
@@ -1036,7 +1040,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Photo {
+  declare interface gapi$client$people$Photo {
     /**
      * True if the photo is a default photo;
      * false if the photo is a user-provided photo.
@@ -1046,7 +1050,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the photo.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The URL of the photo. You can change the desired size by appending a query
@@ -1056,7 +1060,7 @@ declare module "gapi.client.people" {
     url?: string;
   }
 
-  declare interface people$ProfileMetadata {
+  declare interface gapi$client$people$ProfileMetadata {
     /**
      * The profile object type.
      */
@@ -1068,7 +1072,7 @@ declare module "gapi.client.people" {
     userTypes?: string[];
   }
 
-  declare interface people$Relation {
+  declare interface gapi$client$people$Relation {
     /**
      * The type of the relation translated and formatted in the viewer's account
      * locale or the locale specified in the Accept-Language HTTP header.
@@ -1078,7 +1082,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the relation.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The name of the other person this relation refers to.
@@ -1107,7 +1111,7 @@ declare module "gapi.client.people" {
     type?: string;
   }
 
-  declare interface people$RelationshipInterest {
+  declare interface gapi$client$people$RelationshipInterest {
     /**
      * The value of the relationship interest translated and formatted in the
      * viewer's account locale or the locale specified in the Accept-Language
@@ -1118,7 +1122,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the relationship interest.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The kind of relationship the person is looking for. The value can be custom
@@ -1133,7 +1137,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$RelationshipStatus {
+  declare interface gapi$client$people$RelationshipStatus {
     /**
      * The read-only value of the relationship status translated and formatted in
      * the viewer's account locale or the `Accept-Language` HTTP header locale.
@@ -1143,7 +1147,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the relationship status.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The relationship status. The value can be custom or predefined.
@@ -1162,7 +1166,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Residence {
+  declare interface gapi$client$people$Residence {
     /**
      * True if the residence is the person's current residence;
      * false if the residence is a past residence.
@@ -1172,7 +1176,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the residence.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The address of the residence.
@@ -1180,11 +1184,11 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Skill {
+  declare interface gapi$client$people$Skill {
     /**
      * Metadata about the skill.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The skill; for example, `underwater basket weaving`.
@@ -1192,7 +1196,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$Source {
+  declare interface gapi$client$people$Source {
     /**
      * &#42;&#42;Only populated in `person.metadata.sources`.&#42;&#42;
      *
@@ -1211,7 +1215,7 @@ declare module "gapi.client.people" {
      *
      * Metadata about a source of type PROFILE.
      */
-    profileMetadata?: people$ProfileMetadata;
+    profileMetadata?: gapi$client$people$ProfileMetadata;
 
     /**
      * The source type.
@@ -1226,7 +1230,7 @@ declare module "gapi.client.people" {
     updateTime?: string;
   }
 
-  declare interface people$Status {
+  declare interface gapi$client$people$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1246,11 +1250,11 @@ declare module "gapi.client.people" {
     message?: string;
   }
 
-  declare interface people$Tagline {
+  declare interface gapi$client$people$Tagline {
     /**
      * Metadata about the tagline.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The tagline.
@@ -1258,14 +1262,14 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$UpdateContactGroupRequest {
+  declare interface gapi$client$people$UpdateContactGroupRequest {
     /**
      * The contact group to update.
      */
-    contactGroup?: people$ContactGroup;
+    contactGroup?: gapi$client$people$ContactGroup;
   }
 
-  declare interface people$Url {
+  declare interface gapi$client$people$Url {
     /**
      * The read-only type of the URL translated and formatted in the viewer's
      * account locale or the `Accept-Language` HTTP header locale.
@@ -1275,7 +1279,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the URL.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The type of the URL. The type can be custom or predefined.
@@ -1299,7 +1303,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$UserDefined {
+  declare interface gapi$client$people$UserDefined {
     /**
      * The end user specified key of the user defined data.
      */
@@ -1308,7 +1312,7 @@ declare module "gapi.client.people" {
     /**
      * Metadata about the user defined data.
      */
-    metadata?: people$FieldMetadata;
+    metadata?: gapi$client$people$FieldMetadata;
 
     /**
      * The end user specified value of the user defined data.
@@ -1316,7 +1320,7 @@ declare module "gapi.client.people" {
     value?: string;
   }
 
-  declare interface people$MembersResource {
+  declare interface gapi$client$people$MembersResource {
     /**
      * Modify the members of a contact group owned by the authenticated user.
      */
@@ -1390,10 +1394,10 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ModifyContactGroupMembersResponse>;
+    }): Request<gapi$client$people$ModifyContactGroupMembersResponse>;
   }
 
-  declare interface people$ContactGroupsResource {
+  declare interface gapi$client$people$ContactGroupsResource {
     /**
      * Get a list of contact groups owned by the authenticated user by specifying
      * a list of contact group resource names.
@@ -1473,7 +1477,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$BatchGetContactGroupsResponse>;
+    }): Request<gapi$client$people$BatchGetContactGroupsResponse>;
 
     /**
      * Create a new contact group owned by the authenticated user.
@@ -1543,7 +1547,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ContactGroup>;
+    }): Request<gapi$client$people$ContactGroup>;
 
     /**
      * Delete an existing contact group owned by the authenticated user by
@@ -1705,7 +1709,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ContactGroup>;
+    }): Request<gapi$client$people$ContactGroup>;
 
     /**
      * List all contact groups owned by the authenticated user. Members of the
@@ -1794,7 +1798,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ListContactGroupsResponse>;
+    }): Request<gapi$client$people$ListContactGroupsResponse>;
 
     /**
      * Update the name of an existing contact group owned by the authenticated
@@ -1871,11 +1875,11 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ContactGroup>;
-    members: people$MembersResource;
+    }): Request<gapi$client$people$ContactGroup>;
+    members: gapi$client$people$MembersResource;
   }
 
-  declare interface people$ConnectionsResource {
+  declare interface gapi$client$people$ConnectionsResource {
     /**
      * Provides a list of the authenticated user's contacts merged with any
      * connected profiles.
@@ -2022,10 +2026,10 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$ListConnectionsResponse>;
+    }): Request<gapi$client$people$ListConnectionsResponse>;
   }
 
-  declare interface people$PeopleResource {
+  declare interface gapi$client$people$PeopleResource {
     /**
      * Create a new contact and return the person resource for that contact.
      */
@@ -2099,7 +2103,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$Person>;
+    }): Request<gapi$client$people$Person>;
 
     /**
      * Delete a contact person. Any non-contact data will not be deleted.
@@ -2300,7 +2304,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$Person>;
+    }): Request<gapi$client$people$Person>;
 
     /**
      * Provides information about a list of specific people by specifying a list
@@ -2429,7 +2433,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$GetPeopleResponse>;
+    }): Request<gapi$client$people$GetPeopleResponse>;
 
     /**
      * Update contact data for an existing contact person. Any non-contact data
@@ -2543,7 +2547,7 @@ declare module "gapi.client.people" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<people$Person>;
-    connections: people$ConnectionsResource;
+    }): Request<gapi$client$people$Person>;
+    connections: gapi$client$people$ConnectionsResource;
   }
 }
