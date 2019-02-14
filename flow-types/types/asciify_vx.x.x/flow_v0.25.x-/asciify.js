@@ -28,5 +28,5 @@ declare module "asciify" {
     callback: (err: Error, fonts: string[]) => void
   ): void;
 
-  declare module.exports: typeof asciify;
+  declare export default typeof asciify;
 }
