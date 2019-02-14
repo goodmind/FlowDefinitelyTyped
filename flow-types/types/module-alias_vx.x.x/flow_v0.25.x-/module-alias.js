@@ -1,10 +1,10 @@
 declare module "module-alias" {
-  declare module.exports: typeof init;
+  declare export default typeof init;
 
   /**
    * Import aliases from package.json
    */
-  declare function init(options?: string | init$init$Options): void;
+  declare function init(options?: string | init$Options): void;
 
   declare var npm$namespace$init: {
     isPathMatchesAlias: typeof init$isPathMatchesAlias,
