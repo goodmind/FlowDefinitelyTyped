@@ -19,5 +19,5 @@ declare module "object.getownpropertydescriptors" {
 
   declare function getOwnPropertyDescriptors$implementation(): typeof getOwnPropertyDescriptors;
 
-  declare module.exports: typeof getOwnPropertyDescriptors;
+  declare export default typeof getOwnPropertyDescriptors;
 }
