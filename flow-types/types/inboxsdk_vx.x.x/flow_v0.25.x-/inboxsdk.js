@@ -1,9 +1,11 @@
 declare module "inboxsdk" {
-  declare module.exports: typeof InboxSDK;
+  declare export default typeof InboxSDK;
 
   declare var npm$namespace$InboxSDK: {
     load: typeof InboxSDK$load,
-    loadScript: typeof InboxSDK$loadScript
+    loadScript: typeof InboxSDK$loadScript,
+
+    Router: typeof npm$namespace$InboxSDK$Router
   };
   declare function InboxSDK$load(
     version: number,
@@ -27,26 +29,26 @@ declare module "inboxsdk" {
   }
 
   declare interface InboxSDK$InboxSDKInstance {
-    Compose: Compose$Compose$ComposeInstance;
-    Lists: Lists$Lists$ListsInstance;
-    Conversations: Conversations$Conversations$ConversationsInstance;
-    Toolbars: Toolbars$Toolbars$ToolbarsInstance;
-    Router: Router$Router$RouterInstance;
-    NavMenu: NavMenu$NavMenu$NavMenuInstance;
-    Widgets: Widgets$Widgets$WidgetsInstance;
-    ButterBar: ButterBar$ButterBar$ButterBarInstance;
-    Search: Search$Search$SearchInstance;
-    User: User$User$UserInstance;
-    Keyboard: Keyboard$Keyboard$KeyboardInstance;
-    Global: Global$Global$GlobalInstance;
+    Compose: Compose$ComposeInstance;
+    Lists: Lists$ListsInstance;
+    Conversations: Conversations$ConversationsInstance;
+    Toolbars: Toolbars$ToolbarsInstance;
+    Router: Router$RouterInstance;
+    NavMenu: NavMenu$NavMenuInstance;
+    Widgets: Widgets$WidgetsInstance;
+    ButterBar: ButterBar$ButterBarInstance;
+    Search: Search$SearchInstance;
+    User: User$UserInstance;
+    Keyboard: Keyboard$KeyboardInstance;
+    Global: Global$GlobalInstance;
   }
 
-  declare interface Common$Contact {
+  declare interface InboxSDK$Common$Contact {
     name: string;
     emailAddress: string;
   }
 
-  declare interface Common$DropdownView {
+  declare interface InboxSDK$Common$DropdownView {
     setPlacementOptions(options: Common$PositionOptions): void;
     close(): void;
     reposition(): void;
@@ -59,13 +61,13 @@ declare module "inboxsdk" {
     ): void;
   }
 
-  declare interface Common$PreAutoCloseEvent {
+  declare interface InboxSDK$Common$PreAutoCloseEvent {
     type: "outsideInteraction" | "escape";
     cause: Event;
     cancel(): void;
   }
 
-  declare interface Common$PositionOptions {
+  declare interface InboxSDK$Common$PositionOptions {
     position?: string;
     forcePosition?: boolean;
     hAlign?: string;
@@ -79,21 +81,21 @@ declare module "inboxsdk" {
     rightBuffer?: number;
   }
 
-  declare interface Common$SimpleElementView {
+  declare interface InboxSDK$Common$SimpleElementView {
     destroy(): void;
     el: HTMLElement;
     destroyed: boolean;
     on(name: "destroy", cb: () => void): void;
   }
 
-  declare interface Compose$ComposeInstance {
+  declare interface InboxSDK$Compose$ComposeInstance {
     registerComposeViewHandler(
       handler: (composeView: Compose$ComposeView) => void
     ): () => void;
     openNewComposeView(): Promise<Compose$ComposeView>;
   }
 
-  declare interface Compose$ComposeView {
+  declare interface InboxSDK$Compose$ComposeView {
     addButton(buttonDescriptor: Compose$ComposeButtonDescriptor): void;
     addStatusBar(
       statusBarDescriptor: Compose$StatusBarDescriptor
@@ -110,9 +112,9 @@ declare module "inboxsdk" {
     getSelectedBodyText(): string;
     getSubject(): string;
     getTextContent(): string;
-    getToRecipients(): Common$Common$Contact[];
-    getCcRecipients(): Common$Common$Contact[];
-    getBccRecipients(): Common$Common$Contact[];
+    getToRecipients(): Common$Contact[];
+    getCcRecipients(): Common$Contact[];
+    getBccRecipients(): Common$Contact[];
     insertTextIntoBodyAtCursor(text: string): void;
     insertHTMLIntoBodyAtCursor(html: string | HTMLElement): HTMLElement;
     insertLinkChipIntoBodyAtCursor(
@@ -126,14 +128,14 @@ declare module "inboxsdk" {
     setFullscreen(minimized: boolean): void;
     isMinimized(): boolean;
     setMinimized(minimized: boolean): void;
-    popOut(): Promise<Compose$ComposeView>;
+    popOut(): Promise<InboxSDK$Compose$ComposeView>;
     setTitleBarColor(color: string): () => void;
     isReply(): boolean;
     setToRecipients(emails: string[]): void;
     setCcRecipients(emails: string[]): void;
     setBccRecipients(emails: string[]): void;
-    getFromContact(): Common$Common$Contact;
-    getFromContactChoices(): Common$Common$Contact[];
+    getFromContact(): Common$Contact;
+    getFromContactChoices(): Common$Contact[];
     setFromEmail(email: string): void;
     setSubject(text: string): void;
     setBodyHTML(html: string): void;
@@ -163,7 +165,7 @@ declare module "inboxsdk" {
         | "bccContactAdded"
         | "bccContactRemoved",
       cb: (event: {
-        contact: Common$Common$Contact
+        contact: Common$Contact
       }) => void
     ): void;
     on(
@@ -196,22 +198,22 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface Compose$RecipientsChangedEvent {
+  declare interface InboxSDK$Compose$RecipientsChangedEvent {
     to: {
-      added: Common$Common$Contact[],
-      removed: Common$Common$Contact[]
+      added: Common$Contact[],
+      removed: Common$Contact[]
     };
     cc: {
-      added: Common$Common$Contact[],
-      removed: Common$Common$Contact[]
+      added: Common$Contact[],
+      removed: Common$Contact[]
     };
     bcc: {
-      added: Common$Common$Contact[],
-      removed: Common$Common$Contact[]
+      added: Common$Contact[],
+      removed: Common$Contact[]
     };
   }
 
-  declare interface Compose$ComposeButtonDescriptor {
+  declare interface InboxSDK$Compose$ComposeButtonDescriptor {
     title: string;
     iconUrl?: string;
     iconClass?: string;
@@ -222,31 +224,31 @@ declare module "inboxsdk" {
     enabled?: boolean;
   }
 
-  declare interface Compose$ComposeButtonClickEvent {
-    composeView: Compose$ComposeView;
-    dropdown: Common$Common$DropdownView;
+  declare interface InboxSDK$Compose$ComposeButtonClickEvent {
+    composeView: InboxSDK$Compose$ComposeView;
+    dropdown: Common$DropdownView;
   }
 
-  declare interface Compose$StatusBarDescriptor {
+  declare interface InboxSDK$Compose$StatusBarDescriptor {
     height?: number;
     orderHint?: number;
   }
 
-  declare type Compose$StatusBarView = {
+  declare type InboxSDK$Compose$StatusBarView = {
     setHeight(height: number): void
-  } & Common$Common$SimpleElementView;
+  } & Common$SimpleElementView;
 
-  declare interface Compose$SendOptions {
+  declare interface InboxSDK$Compose$SendOptions {
     sendAndArchive?: boolean;
   }
 
-  declare interface Lists$ListsInstance {
+  declare interface InboxSDK$Lists$ListsInstance {
     registerThreadRowViewHandler(
       handler: (threadRowView: Lists$ThreadRowView) => any
     ): () => void;
   }
 
-  declare interface Lists$ThreadRowView {
+  declare interface InboxSDK$Lists$ThreadRowView {
     addLabel(labelDescriptor: Lists$LabelDescriptor): void;
     addImage(imageDescriptor: Lists$ImageDescriptor): void;
     addButton(buttonDescriptor: Lists$ThreadRowButtonDescriptor): void;
@@ -267,12 +269,12 @@ declare module "inboxsdk" {
     getDraftID(): Promise<string>;
     getVisibleDraftCount(): number;
     getVisibleMessageCount(): number;
-    getContacts(): Common$Common$Contact[];
+    getContacts(): Common$Contact[];
     on(name: "destroy", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare interface Lists$ThreadRowButtonDescriptor {
+  declare interface InboxSDK$Lists$ThreadRowButtonDescriptor {
     title: string;
     iconUrl: string;
     iconClass?: string;
@@ -280,12 +282,12 @@ declare module "inboxsdk" {
     hasDropdown?: boolean;
   }
 
-  declare interface Lists$ThreadRowButtonClickEvent {
-    threadRowView: Lists$ThreadRowView;
-    dropdown?: Common$Common$DropdownView;
+  declare interface InboxSDK$Lists$ThreadRowButtonClickEvent {
+    threadRowView: InboxSDK$Lists$ThreadRowView;
+    dropdown?: Common$DropdownView;
   }
 
-  declare interface Lists$ThreadRowActionButtonDescriptor {
+  declare interface InboxSDK$Lists$ThreadRowActionButtonDescriptor {
     type: "LINK";
     title: string;
     className?: string;
@@ -293,7 +295,7 @@ declare module "inboxsdk" {
     url: string;
   }
 
-  declare interface Lists$LabelDescriptor {
+  declare interface InboxSDK$Lists$LabelDescriptor {
     title: string;
     foregroundColor?: string;
     backgroundColor?: string;
@@ -302,31 +304,31 @@ declare module "inboxsdk" {
     iconBackgroundColor?: string;
   }
 
-  declare interface Lists$ImageDescriptor {
+  declare interface InboxSDK$Lists$ImageDescriptor {
     imageUrl: string;
     imageClass?: string;
     tooltip?: string;
     orderHint?: number;
   }
 
-  declare interface Lists$ThreadRowDateDescriptor {
+  declare interface InboxSDK$Lists$ThreadRowDateDescriptor {
     text: string;
     textColor?: string;
     tooltip?: string;
   }
 
-  declare interface Lists$ThreadRowAttachmentIconDescriptor {
+  declare interface InboxSDK$Lists$ThreadRowAttachmentIconDescriptor {
     iconUrl?: string;
     iconClass?: string;
     tooltip?: string;
   }
 
-  declare interface Lists$ThreadRowDraftLabelDescriptor {
+  declare interface InboxSDK$Lists$ThreadRowDraftLabelDescriptor {
     text: string;
     count?: string;
   }
 
-  declare interface Conversations$ConversationsInstance {
+  declare interface InboxSDK$Conversations$ConversationsInstance {
     registerThreadViewHandler(
       handler: (threadView: Conversations$ThreadView) => void
     ): () => void;
@@ -341,8 +343,8 @@ declare module "inboxsdk" {
     ): () => void;
   }
 
-  declare interface Conversations$ThreadView {
-    addNoticeBar(): Common$Common$SimpleElementView;
+  declare interface InboxSDK$Conversations$ThreadView {
+    addNoticeBar(): Common$SimpleElementView;
     addSidebarContentPanel(
       contentPanelDescriptor: Conversations$ContentPanelDescriptor
     ): Conversations$ContentPanelView;
@@ -358,14 +360,14 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface Conversations$ContactHoverEvent {
-    contact: Common$Common$Contact;
+  declare interface InboxSDK$Conversations$ContactHoverEvent {
+    contact: Common$Contact;
     contactType: "sender" | "recipient";
     messageView: Conversations$MessageView;
-    threadView: Conversations$ThreadView;
+    threadView: InboxSDK$Conversations$ThreadView;
   }
 
-  declare interface Conversations$MessageView {
+  declare interface InboxSDK$Conversations$MessageView {
     addAttachmentCardView(
       cardOptions:
         | Conversations$AttachmentCardOptions
@@ -383,10 +385,10 @@ declare module "inboxsdk" {
     isElementInQuotedArea(): boolean;
     isLoaded(): boolean;
     getLinksInBody(): Conversations$MessageViewLinkDescriptor[];
-    getSender(): Common$Common$Contact;
+    getSender(): Common$Contact;
     getRecipientEmailAddresses(): string[];
-    getRecipientsFull(): Promise<Common$Common$Contact[]>;
-    getThreadView(): Conversations$ThreadView;
+    getRecipientsFull(): Promise<Common$Contact[]>;
+    getThreadView(): InboxSDK$Conversations$ThreadView;
     getDateString(): string;
     addAttachmentIcon(
       iconDescriptor: Conversations$MessageAttachmentIconDescriptor
@@ -397,29 +399,29 @@ declare module "inboxsdk" {
       cb: (event: {
         newViewState: Conversations$MessageViewViewStates,
         oldViewState: Conversations$MessageViewViewStates,
-        messageView: Conversations$MessageView
+        messageView: InboxSDK$Conversations$MessageView
       }) => void
     ): void;
     on(
       name: "contactHover",
-      cb: (event: Conversations$ContactHoverEvent) => void
+      cb: (event: InboxSDK$Conversations$ContactHoverEvent) => void
     ): void;
     on(name: "destroy" | "load", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare type Conversations$MessageViewViewStates =
+  declare type InboxSDK$Conversations$MessageViewViewStates =
     | "HIDDEN"
     | "COLLAPSED"
     | "EXPANDED";
 
-  declare interface Conversations$ContentPanelView {
+  declare interface InboxSDK$Conversations$ContentPanelView {
     remove(): void;
     on(name: "destroy" | "activate" | "deactivate", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare interface Conversations$AttachmentCardView {
+  declare interface InboxSDK$Conversations$AttachmentCardView {
     getAttachmentType(): string;
     addButton(buttonDescriptor: Conversations$CustomButtonDescriptor): void;
     getTitle(): string;
@@ -428,12 +430,12 @@ declare module "inboxsdk" {
      * @deprecated . Use AttachmentCardClickEvent.getDownloadURL() instead
      */
     getDownloadURL(): Promise<string>;
-    getMessageView(): Conversations$MessageView | null;
+    getMessageView(): InboxSDK$Conversations$MessageView | null;
     on(name: "destroy", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare interface Conversations$AttachmentCardOptions {
+  declare interface InboxSDK$Conversations$AttachmentCardOptions {
     title: string;
     description: string;
     previewUrl: string;
@@ -449,7 +451,7 @@ declare module "inboxsdk" {
     mimeType?: string;
   }
 
-  declare interface Conversations$AttachmentCardNoPreviewOptions {
+  declare interface InboxSDK$Conversations$AttachmentCardNoPreviewOptions {
     title: string;
     description: string;
     previewUrl: string;
@@ -463,12 +465,12 @@ declare module "inboxsdk" {
     foldColor?: string;
   }
 
-  declare interface Conversations$PreviewClickEvent {
-    attachmentCardView: Conversations$AttachmentCardView;
+  declare interface InboxSDK$Conversations$PreviewClickEvent {
+    attachmentCardView: InboxSDK$Conversations$AttachmentCardView;
     preventDefault(): void;
   }
 
-  declare interface Conversations$ContentPanelDescriptor {
+  declare interface InboxSDK$Conversations$ContentPanelDescriptor {
     el: HTMLElement;
     title: string;
     iconUrl: string;
@@ -479,34 +481,34 @@ declare module "inboxsdk" {
     orderHint?: number;
   }
 
-  declare interface Conversations$DownloadButtonDescriptor {
+  declare interface InboxSDK$Conversations$DownloadButtonDescriptor {
     downloadUrl: string;
     downloadFilename?: string;
     onClick: (event: any) => void;
     openInNewTab?: boolean;
   }
 
-  declare interface Conversations$CustomButtonDescriptor {
+  declare interface InboxSDK$Conversations$CustomButtonDescriptor {
     iconUrl: string;
     tooltip: string;
     onClick: (event: Conversations$AttachmentCardClickEvent) => void;
   }
 
-  declare interface Conversations$AttachmentCardClickEvent {
+  declare interface InboxSDK$Conversations$AttachmentCardClickEvent {
     getDownloadURL(): Promise<string>;
   }
 
-  declare interface Conversations$AttachmentsToolbarButtonDescriptor {
+  declare interface InboxSDK$Conversations$AttachmentsToolbarButtonDescriptor {
     tooltip: string;
     iconUrl: string;
     onClick: (event: Conversations$AttachmentsToolbarButtonEvent) => void;
   }
 
-  declare interface Conversations$AttachmentsToolbarButtonEvent {
-    attachmentCardViews: Conversations$AttachmentCardView[];
+  declare interface InboxSDK$Conversations$AttachmentsToolbarButtonEvent {
+    attachmentCardViews: InboxSDK$Conversations$AttachmentCardView[];
   }
 
-  declare interface Conversations$MessageViewLinkDescriptor {
+  declare interface InboxSDK$Conversations$MessageViewLinkDescriptor {
     text: string;
     html: string;
     element: HTMLElement;
@@ -514,14 +516,14 @@ declare module "inboxsdk" {
     isInQuotedArea: boolean;
   }
 
-  declare interface Conversations$MessageAttachmentIconDescriptor {
+  declare interface InboxSDK$Conversations$MessageAttachmentIconDescriptor {
     iconUrl: string;
     iconClass?: string;
     tooltip: string;
     onClick?: () => void;
   }
 
-  declare interface Conversations$MessageViewToolbarButtonDescriptor {
+  declare interface InboxSDK$Conversations$MessageViewToolbarButtonDescriptor {
     section: "MORE";
     title: string;
     iconUrl: string;
@@ -530,7 +532,7 @@ declare module "inboxsdk" {
     orderHint: number;
   }
 
-  declare interface Toolbars$ToolbarsInstance {
+  declare interface InboxSDK$Toolbars$ToolbarsInstance {
     registerThreadButton(
       toolbarButtonDescriptor: Toolbars$ToolbarButtonDescriptor
     ): () => void;
@@ -555,7 +557,7 @@ declare module "inboxsdk" {
     ): Toolbars$AppToolbarButtonView;
   }
 
-  declare interface Toolbars$ToolbarButtonDescriptor {
+  declare interface InboxSDK$Toolbars$ToolbarButtonDescriptor {
     title: string;
     onClick: (event: Toolbars$ToolbarButtonEvent) => void;
     iconUrl?: string;
@@ -564,21 +566,24 @@ declare module "inboxsdk" {
     threadSection?: Toolbars$SectionNames;
     listSection?: Toolbars$SectionNames;
     hasDropdown?: boolean;
-    hideFor?: (routeView: Router$Router$RouteView) => void;
+    hideFor?: (routeView: Router$RouteView) => void;
     orderHint?: number;
-    keyboardShortcutHandle?: Keyboard$Keyboard$KeyboardShortcutHandle;
+    keyboardShortcutHandle?: Keyboard$KeyboardShortcutHandle;
   }
 
-  declare type Toolbars$ToolbarButtonPosition = "THREAD" | "ROW" | "LIST";
+  declare type InboxSDK$Toolbars$ToolbarButtonPosition =
+    | "THREAD"
+    | "ROW"
+    | "LIST";
 
-  declare interface Toolbars$ToolbarButtonEvent {
-    position: Toolbars$ToolbarButtonPosition;
-    selectedThreadRowViews: Lists$Lists$ThreadRowView[];
-    selectedThreadViews: Conversations$Conversations$ThreadView[];
-    dropdown?: Common$Common$DropdownView;
+  declare interface InboxSDK$Toolbars$ToolbarButtonEvent {
+    position: InboxSDK$Toolbars$ToolbarButtonPosition;
+    selectedThreadRowViews: Lists$ThreadRowView[];
+    selectedThreadViews: Conversations$ThreadView[];
+    dropdown?: Common$DropdownView;
   }
 
-  declare interface Toolbars$AppToolbarButtonDescriptor {
+  declare interface InboxSDK$Toolbars$AppToolbarButtonDescriptor {
     title: string;
     titleClass?: string;
     iconUrl: string;
@@ -587,7 +592,7 @@ declare module "inboxsdk" {
     arrowColor?: string;
   }
 
-  declare interface Toolbars$AppToolbarButtonView {
+  declare interface InboxSDK$Toolbars$AppToolbarButtonView {
     open(): void;
     close(): void;
     remove(): void;
@@ -595,16 +600,20 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface Toolbars$AppToolbarButtonEvent {
-    dropdown: Common$Common$DropdownView;
+  declare interface InboxSDK$Toolbars$AppToolbarButtonEvent {
+    dropdown: Common$DropdownView;
   }
 
-  declare type Toolbars$SectionNames =
+  declare type InboxSDK$Toolbars$SectionNames =
     | "INBOX_STATE"
     | "METADATA_STATE"
     | "OTHER";
 
-  declare interface Router$RouterInstance {
+  declare var npm$namespace$InboxSDK$Router: {
+    NativeRouteIDs: typeof InboxSDK$Router$NativeRouteIDs,
+    NativeListRouteIDs: typeof InboxSDK$Router$NativeListRouteIDs
+  };
+  declare interface InboxSDK$Router$RouterInstance {
     createLink(
       routeID: string | Router$NativeRouteIDs,
       params: Router$RouteParams
@@ -630,35 +639,35 @@ declare module "inboxsdk" {
       ) => Router$CustomListDescriptor | Promise<Router$CustomListDescriptor>
     ): () => void;
     getCurrentRouteView(): Router$RouteView;
-    Router$NativeListRouteIDs: typeof NativeListRouteIDs;
-    Router$NativeRouteIDs: typeof NativeRouteIDs;
+    NativeListRouteIDs: typeof NativeListRouteIDs;
+    NativeRouteIDs: typeof NativeRouteIDs;
   }
 
-  declare interface Router$CustomListDescriptor {
+  declare interface InboxSDK$Router$CustomListDescriptor {
     threads: Array<Router$ThreadDescriptor | string>;
     total?: number;
     hasMore?: boolean;
   }
 
-  declare interface Router$ThreadDescriptor {
+  declare interface InboxSDK$Router$ThreadDescriptor {
     rfcMessageId?: string;
     gmailThreadId?: string;
   }
 
-  declare interface Router$RouteParams {
+  declare interface InboxSDK$Router$RouteParams {
     [key: number]: string | number;
     [key: string]: string | number;
   }
 
-  declare interface Router$RouteView {
+  declare interface InboxSDK$Router$RouteView {
     getRouteID(): string;
     getRouteType(): Router$RouteTypes;
-    getParams(): Router$RouteParams;
+    getParams(): InboxSDK$Router$RouteParams;
     on(name: "destroy", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare type Router$RouteTypes =
+  declare type InboxSDK$Router$RouteTypes =
     | "LIST"
     | "THREAD"
     | "SETTINGS"
@@ -666,32 +675,32 @@ declare module "inboxsdk" {
     | "CUSTOM"
     | "UNKNOWN";
 
-  declare type Router$CustomRouteView = {
+  declare type InboxSDK$Router$CustomRouteView = {
     getElement(): HTMLElement,
     setFullWidth(fullWidth: boolean): void
-  } & Router$RouteView;
+  } & RouteView;
 
-  declare type Router$ListRouteView = {
+  declare type InboxSDK$Router$ListRouteView = {
     addCollapsibleSection(
       options: Router$SectionDescriptor
     ): Router$CollapsibleSectionView,
     addSection(options: Router$SectionDescriptor): Router$SectionView,
     refresh(): void
-  } & Router$RouteView;
+  } & RouteView;
 
-  declare interface Router$SectionView {
+  declare interface InboxSDK$Router$SectionView {
     remove(): void;
     on(name: "destroy", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare type Router$CollapsibleSectionView = {
+  declare type InboxSDK$Router$CollapsibleSectionView = {
     setCollapsed(value: boolean): void,
     remove(): void,
     on(name: "destroy" | "expanded" | "collapsed", cb: () => void): void
-  } & Router$SectionView;
+  } & SectionView;
 
-  declare interface Router$SectionDescriptor {
+  declare interface InboxSDK$Router$SectionDescriptor {
     title: string;
     subtitle?: string;
     titleLinkText?: string;
@@ -704,16 +713,16 @@ declare module "inboxsdk" {
     onFooterLinkClick?: (event: any) => void;
   }
 
-  declare interface Router$SectionDropdownClickEvent {
-    dropdown: Common$Common$DropdownView;
+  declare interface InboxSDK$Router$SectionDropdownClickEvent {
+    dropdown: Common$DropdownView;
   }
 
-  declare interface Router$RowDescriptor {
+  declare interface InboxSDK$Router$RowDescriptor {
     title: string;
     body: string;
     shortDetailText: string;
     isRead: string;
-    labels: Lists$Lists$LabelDescriptor[];
+    labels: Lists$LabelDescriptor[];
     iconUrl?: string;
     iconClass?: string;
     routeID?: string;
@@ -721,176 +730,56 @@ declare module "inboxsdk" {
     onClick?: () => void;
   }
 
-  declare class Router$NativeRouteIDs {
-    constructor(...args: empty): mixed;
-    static +INBOX: Class<Router$NativeRouteIDs__INBOX> &
-      Router$NativeRouteIDs__INBOX &
-      0; // 0
-    static +ALL_MAIL: Class<Router$NativeRouteIDs__ALL_MAIL> &
-      Router$NativeRouteIDs__ALL_MAIL &
-      1; // 1
-    static +SENT: Class<Router$NativeRouteIDs__SENT> &
-      Router$NativeRouteIDs__SENT &
-      2; // 2
-    static +STARRED: Class<Router$NativeRouteIDs__STARRED> &
-      Router$NativeRouteIDs__STARRED &
-      3; // 3
-    static +DRAFTS: Class<Router$NativeRouteIDs__DRAFTS> &
-      Router$NativeRouteIDs__DRAFTS &
-      4; // 4
-    static +SNOOZED: Class<Router$NativeRouteIDs__SNOOZED> &
-      Router$NativeRouteIDs__SNOOZED &
-      5; // 5
-    static +DONE: Class<Router$NativeRouteIDs__DONE> &
-      Router$NativeRouteIDs__DONE &
-      6; // 6
-    static +REMINDERS: Class<Router$NativeRouteIDs__REMINDERS> &
-      Router$NativeRouteIDs__REMINDERS &
-      7; // 7
-    static +LABEL: Class<Router$NativeRouteIDs__LABEL> &
-      Router$NativeRouteIDs__LABEL &
-      8; // 8
-    static +TRASH: Class<Router$NativeRouteIDs__TRASH> &
-      Router$NativeRouteIDs__TRASH &
-      9; // 9
-    static +SPAM: Class<Router$NativeRouteIDs__SPAM> &
-      Router$NativeRouteIDs__SPAM &
-      10; // 10
-    static +IMPORTANT: Class<Router$NativeRouteIDs__IMPORTANT> &
-      Router$NativeRouteIDs__IMPORTANT &
-      11; // 11
-    static +SEARCH: Class<Router$NativeRouteIDs__SEARCH> &
-      Router$NativeRouteIDs__SEARCH &
-      12; // 12
-    static +THREAD: Class<Router$NativeRouteIDs__THREAD> &
-      Router$NativeRouteIDs__THREAD &
-      13; // 13
-    static +CHATS: Class<Router$NativeRouteIDs__CHATS> &
-      Router$NativeRouteIDs__CHATS &
-      14; // 14
-    static +CHAT: Class<Router$NativeRouteIDs__CHAT> &
-      Router$NativeRouteIDs__CHAT &
-      15; // 15
-    static +CONTACTS: Class<Router$NativeRouteIDs__CONTACTS> &
-      Router$NativeRouteIDs__CONTACTS &
-      16; // 16
-    static +CONTACT: Class<Router$NativeRouteIDs__CONTACT> &
-      Router$NativeRouteIDs__CONTACT &
-      17; // 17
-    static +SETTINGS: Class<Router$NativeRouteIDs__SETTINGS> &
-      Router$NativeRouteIDs__SETTINGS &
-      18; // 18
-    static +ANY_LIST: Class<Router$NativeRouteIDs__ANY_LIST> &
-      Router$NativeRouteIDs__ANY_LIST &
-      19; // 19
-  }
+  declare var InboxSDK$Router$NativeRouteIDs: {|
+    +INBOX: 0, // 0
+    +ALL_MAIL: 1, // 1
+    +SENT: 2, // 2
+    +STARRED: 3, // 3
+    +DRAFTS: 4, // 4
+    +SNOOZED: 5, // 5
+    +DONE: 6, // 6
+    +REMINDERS: 7, // 7
+    +LABEL: 8, // 8
+    +TRASH: 9, // 9
+    +SPAM: 10, // 10
+    +IMPORTANT: 11, // 11
+    +SEARCH: 12, // 12
+    +THREAD: 13, // 13
+    +CHATS: 14, // 14
+    +CHAT: 15, // 15
+    +CONTACTS: 16, // 16
+    +CONTACT: 17, // 17
+    +SETTINGS: 18, // 18
+    +ANY_LIST: 19 // 19
+  |};
 
-  declare class Router$NativeRouteIDs__INBOX mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__ALL_MAIL mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__SENT mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__STARRED mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__DRAFTS mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__SNOOZED mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__DONE mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__REMINDERS mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__LABEL mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__TRASH mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__SPAM mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__IMPORTANT mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__SEARCH mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__THREAD mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__CHATS mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__CHAT mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__CONTACTS mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__CONTACT mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__SETTINGS mixins Router$NativeRouteIDs {}
-  declare class Router$NativeRouteIDs__ANY_LIST mixins Router$NativeRouteIDs {}
+  declare var InboxSDK$Router$NativeListRouteIDs: {|
+    +INBOX: 0, // 0
+    +ALL_MAIL: 1, // 1
+    +SENT: 2, // 2
+    +STARRED: 3, // 3
+    +DRAFTS: 4, // 4
+    +SNOOZED: 5, // 5
+    +DONE: 6, // 6
+    +REMINDERS: 7, // 7
+    +LABEL: 8, // 8
+    +TRASH: 9, // 9
+    +SPAM: 10, // 10
+    +IMPORTANT: 11, // 11
+    +SEARCH: 12, // 12
+    +ANY_LIST: 13 // 13
+  |};
 
-  declare class Router$NativeListRouteIDs {
-    constructor(...args: empty): mixed;
-    static +INBOX: Class<Router$NativeListRouteIDs__INBOX> &
-      Router$NativeListRouteIDs__INBOX &
-      0; // 0
-    static +ALL_MAIL: Class<Router$NativeListRouteIDs__ALL_MAIL> &
-      Router$NativeListRouteIDs__ALL_MAIL &
-      1; // 1
-    static +SENT: Class<Router$NativeListRouteIDs__SENT> &
-      Router$NativeListRouteIDs__SENT &
-      2; // 2
-    static +STARRED: Class<Router$NativeListRouteIDs__STARRED> &
-      Router$NativeListRouteIDs__STARRED &
-      3; // 3
-    static +DRAFTS: Class<Router$NativeListRouteIDs__DRAFTS> &
-      Router$NativeListRouteIDs__DRAFTS &
-      4; // 4
-    static +SNOOZED: Class<Router$NativeListRouteIDs__SNOOZED> &
-      Router$NativeListRouteIDs__SNOOZED &
-      5; // 5
-    static +DONE: Class<Router$NativeListRouteIDs__DONE> &
-      Router$NativeListRouteIDs__DONE &
-      6; // 6
-    static +REMINDERS: Class<Router$NativeListRouteIDs__REMINDERS> &
-      Router$NativeListRouteIDs__REMINDERS &
-      7; // 7
-    static +LABEL: Class<Router$NativeListRouteIDs__LABEL> &
-      Router$NativeListRouteIDs__LABEL &
-      8; // 8
-    static +TRASH: Class<Router$NativeListRouteIDs__TRASH> &
-      Router$NativeListRouteIDs__TRASH &
-      9; // 9
-    static +SPAM: Class<Router$NativeListRouteIDs__SPAM> &
-      Router$NativeListRouteIDs__SPAM &
-      10; // 10
-    static +IMPORTANT: Class<Router$NativeListRouteIDs__IMPORTANT> &
-      Router$NativeListRouteIDs__IMPORTANT &
-      11; // 11
-    static +SEARCH: Class<Router$NativeListRouteIDs__SEARCH> &
-      Router$NativeListRouteIDs__SEARCH &
-      12; // 12
-    static +ANY_LIST: Class<Router$NativeListRouteIDs__ANY_LIST> &
-      Router$NativeListRouteIDs__ANY_LIST &
-      13; // 13
-  }
-
-  declare class Router$NativeListRouteIDs__INBOX
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__ALL_MAIL
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__SENT
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__STARRED
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__DRAFTS
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__SNOOZED
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__DONE
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__REMINDERS
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__LABEL
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__TRASH
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__SPAM
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__IMPORTANT
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__SEARCH
-    mixins Router$NativeListRouteIDs {}
-  declare class Router$NativeListRouteIDs__ANY_LIST
-    mixins Router$NativeListRouteIDs {}
-
-  declare interface NavMenu$NavMenuInstance {
+  declare interface InboxSDK$NavMenu$NavMenuInstance {
     addNavItem(
       navItemDescriptor: NavMenu$NavItemDescriptor
     ): NavMenu$NavItemView;
   }
 
-  declare interface NavMenu$NavItemView {
+  declare interface InboxSDK$NavMenu$NavItemView {
     addNavItem(
       navItemDescriptor: NavMenu$NavItemDescriptor
-    ): NavMenu$NavItemView;
+    ): InboxSDK$NavMenu$NavItemView;
     remove(): void;
     isCollapsed(): boolean;
     setCollapsed(collapseValue: boolean): void;
@@ -898,7 +787,7 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface NavMenu$NavItemDescriptor {
+  declare interface InboxSDK$NavMenu$NavItemDescriptor {
     name: string;
     routeID?: string;
     routeParams?: { [key: string]: any };
@@ -917,38 +806,38 @@ declare module "inboxsdk" {
     type?: NavMenu$NavItemTypes;
   }
 
-  declare interface NavMenu$CreateAccessoryDescriptor {
+  declare interface InboxSDK$NavMenu$CreateAccessoryDescriptor {
     type: "CREATE";
     onClick: () => void;
   }
 
-  declare interface NavMenu$IconButtonAccessoryDescriptor {
+  declare interface InboxSDK$NavMenu$IconButtonAccessoryDescriptor {
     type: "ICON_BUTTON";
     onClick: () => void;
     iconUrl: string;
     iconClass?: string;
   }
 
-  declare interface NavMenu$DropdownButtonAccessoryDescriptor {
+  declare interface InboxSDK$NavMenu$DropdownButtonAccessoryDescriptor {
     type: "DROPDOWN_BUTTON";
     buttonBackgroundColor: string;
     buttonForegroundColor: string;
     onClick: (event: NavMenu$DropdownButtonClickEvent) => void;
   }
 
-  declare interface NavMenu$DropdownButtonClickEvent {
-    dropdown: Common$Common$DropdownView;
+  declare interface InboxSDK$NavMenu$DropdownButtonClickEvent {
+    dropdown: Common$DropdownView;
   }
 
-  declare type NavMenu$NavItemTypes = "MANAGE" | "NAVIGATION";
+  declare type InboxSDK$NavMenu$NavItemTypes = "MANAGE" | "NAVIGATION";
 
-  declare interface Widgets$WidgetsInstance {
+  declare interface InboxSDK$Widgets$WidgetsInstance {
     showModalView(options: Widgets$ModalOptions): Widgets$ModalView;
     showMoleView(options: Widgets$MoleOptions): Widgets$MoleView;
     showDrawerView(options: Widgets$DrawerOptions): Widgets$DrawerView;
   }
 
-  declare interface Widgets$ModalOptions {
+  declare interface InboxSDK$Widgets$ModalOptions {
     el: HTMLElement;
     chrome?: boolean;
     constrainTitleWidth?: boolean;
@@ -957,7 +846,7 @@ declare module "inboxsdk" {
     buttons?: Widgets$ModalButtonDescriptor[];
   }
 
-  declare interface Widgets$ModalButtonDescriptor {
+  declare interface InboxSDK$Widgets$ModalButtonDescriptor {
     text: string;
     title: string;
     onClick: () => void;
@@ -966,7 +855,7 @@ declare module "inboxsdk" {
     orderHint?: number;
   }
 
-  declare interface Widgets$MoleOptions {
+  declare interface InboxSDK$Widgets$MoleOptions {
     el: HTMLElement;
     title?: string;
     titleEl?: HTMLElement;
@@ -976,28 +865,28 @@ declare module "inboxsdk" {
     chrome?: boolean;
   }
 
-  declare interface Widgets$MoleButtonDescriptor {
+  declare interface InboxSDK$Widgets$MoleButtonDescriptor {
     title: string;
     iconUrl: string;
     iconClass?: string;
     onClick: () => void;
   }
 
-  declare interface Widgets$DrawerOptions {
+  declare interface InboxSDK$Widgets$DrawerOptions {
     el: HTMLElement;
     chrome?: boolean;
     title?: string;
-    composeView?: Compose$Compose$ComposeView;
+    composeView?: Compose$ComposeView;
     closeWithCompose?: boolean;
   }
 
-  declare interface Widgets$ModalView {
+  declare interface InboxSDK$Widgets$ModalView {
     close(): void;
     on(name: "destroy", cb: () => void): void;
     destroyed: boolean;
   }
 
-  declare interface Widgets$MoleView {
+  declare interface InboxSDK$Widgets$MoleView {
     close(): void;
     setTitle(text: string): void;
     setMinimized(minimized: boolean): void;
@@ -1006,10 +895,10 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface Widgets$DrawerView {
+  declare interface InboxSDK$Widgets$DrawerView {
     close(): void;
     associateComposeView(
-      composeView: Compose$Compose$ComposeView,
+      composeView: Compose$ComposeView,
       closeWithCompose: boolean
     ): void;
     disassociateComposeView(): void;
@@ -1020,7 +909,7 @@ declare module "inboxsdk" {
     destroyed: boolean;
   }
 
-  declare interface ButterBar$ButterBarInstance {
+  declare interface InboxSDK$ButterBar$ButterBarInstance {
     showMessage(options: ButterBar$MessageDescriptor): { [key: string]: any };
     showLoading(): { [key: string]: any };
     showError(options: ButterBar$MessageDescriptor): { [key: string]: any };
@@ -1031,7 +920,7 @@ declare module "inboxsdk" {
     hideGmailMessage(): void;
   }
 
-  declare interface ButterBar$MessageDescriptorBase {
+  declare interface InboxSDK$ButterBar$MessageDescriptorBase {
     className?: string;
     priority?: number;
     time?: number;
@@ -1040,47 +929,47 @@ declare module "inboxsdk" {
     messageKey?: { [key: string]: any } | string;
   }
 
-  declare type ButterBar$MessageDescriptorText = {
+  declare type InboxSDK$ButterBar$MessageDescriptorText = {
     text: string
-  } & ButterBar$MessageDescriptorBase;
+  } & MessageDescriptorBase;
 
-  declare type ButterBar$MessageDescriptorHtml = {
+  declare type InboxSDK$ButterBar$MessageDescriptorHtml = {
     html: string
-  } & ButterBar$MessageDescriptorBase;
+  } & MessageDescriptorBase;
 
-  declare type ButterBar$MessageDescriptorHtmlElement = {
+  declare type InboxSDK$ButterBar$MessageDescriptorHtmlElement = {
     el: HTMLElement
-  } & ButterBar$MessageDescriptorBase;
+  } & MessageDescriptorBase;
 
-  declare type ButterBar$MessageDescriptor =
-    | ButterBar$MessageDescriptorText
-    | ButterBar$MessageDescriptorHtml
-    | ButterBar$MessageDescriptorHtmlElement;
+  declare type InboxSDK$ButterBar$MessageDescriptor =
+    | InboxSDK$ButterBar$MessageDescriptorText
+    | InboxSDK$ButterBar$MessageDescriptorHtml
+    | InboxSDK$ButterBar$MessageDescriptorHtmlElement;
 
-  declare type ButterBar$SavingMessageDescriptorBase = {
+  declare type InboxSDK$ButterBar$SavingMessageDescriptorBase = {
     confirmationText?: string,
     confirmationTime?: number,
     showConfirmation?: boolean
-  } & ButterBar$MessageDescriptorBase;
+  } & MessageDescriptorBase;
 
-  declare type ButterBar$SavingMessageDescriptorText = {
+  declare type InboxSDK$ButterBar$SavingMessageDescriptorText = {
     text: string
-  } & ButterBar$SavingMessageDescriptorBase;
+  } & SavingMessageDescriptorBase;
 
-  declare type ButterBar$SavingMessageDescriptorHtml = {
+  declare type InboxSDK$ButterBar$SavingMessageDescriptorHtml = {
     html: string
-  } & ButterBar$SavingMessageDescriptorBase;
+  } & SavingMessageDescriptorBase;
 
-  declare type ButterBar$SavingMessageDescriptorHtmlElement = {
+  declare type InboxSDK$ButterBar$SavingMessageDescriptorHtmlElement = {
     el: HTMLElement
-  } & ButterBar$SavingMessageDescriptorBase;
+  } & SavingMessageDescriptorBase;
 
-  declare type ButterBar$SavingMessageDescriptor =
-    | ButterBar$SavingMessageDescriptorText
-    | ButterBar$SavingMessageDescriptorHtml
-    | ButterBar$SavingMessageDescriptorHtmlElement;
+  declare type InboxSDK$ButterBar$SavingMessageDescriptor =
+    | InboxSDK$ButterBar$SavingMessageDescriptorText
+    | InboxSDK$ButterBar$SavingMessageDescriptorHtml
+    | InboxSDK$ButterBar$SavingMessageDescriptorHtmlElement;
 
-  declare interface Search$SearchInstance {
+  declare interface InboxSDK$Search$SearchInstance {
     registerSearchSuggestionsProvider(
       handler: (
         query: string
@@ -1091,7 +980,7 @@ declare module "inboxsdk" {
     registerSearchQueryRewriter(rewriter: Search$SearchQueryRewriter): void;
   }
 
-  declare interface Search$AutocompleteSearchResultBase {
+  declare interface InboxSDK$Search$AutocompleteSearchResultBase {
     iconUrl?: string;
     routeName?: string;
     routeParams?: string[];
@@ -1099,51 +988,51 @@ declare module "inboxsdk" {
     onClick?: () => void;
   }
 
-  declare type Search$AutocompleteSearchResultText = {
+  declare type InboxSDK$Search$AutocompleteSearchResultText = {
     name: string,
     description: string
-  } & Search$AutocompleteSearchResultBase;
+  } & AutocompleteSearchResultBase;
 
-  declare type Search$AutocompleteSearchResultHtml = {
+  declare type InboxSDK$Search$AutocompleteSearchResultHtml = {
     nameHTML: string,
     descriptionHTML: string
-  } & Search$AutocompleteSearchResultBase;
+  } & AutocompleteSearchResultBase;
 
-  declare type Search$AutocompleteSearchResult =
-    | Search$AutocompleteSearchResultText
-    | Search$AutocompleteSearchResultHtml;
+  declare type InboxSDK$Search$AutocompleteSearchResult =
+    | InboxSDK$Search$AutocompleteSearchResultText
+    | InboxSDK$Search$AutocompleteSearchResultHtml;
 
-  declare interface Search$SearchQueryRewriter {
+  declare interface InboxSDK$Search$SearchQueryRewriter {
     term: string;
     termReplacer: () => string | Promise<string>;
   }
 
-  declare interface User$UserInstance {
+  declare interface InboxSDK$User$UserInstance {
     getEmailAddress(): string;
     isUsingGmailMaterialUI(): boolean;
     isConversationViewDisabled(): boolean;
     getLanguage(): string;
-    getAccountSwitcherContactList(): Common$Common$Contact[];
+    getAccountSwitcherContactList(): Common$Contact[];
   }
 
-  declare interface Keyboard$KeyboardInstance {
+  declare interface InboxSDK$Keyboard$KeyboardInstance {
     createShortcutHandle(
       keyboardShortcutDescriptor: Keyboard$KeyboardShortcutDescriptor
     ): Keyboard$KeyboardShortcutHandle;
   }
 
-  declare interface Keyboard$KeyboardShortcutHandle {
+  declare interface InboxSDK$Keyboard$KeyboardShortcutHandle {
     remove(): void;
   }
 
-  declare interface Keyboard$KeyboardShortcutDescriptor {
+  declare interface InboxSDK$Keyboard$KeyboardShortcutDescriptor {
     chord: string;
     description: string;
   }
 
-  declare interface Global$GlobalInstance {
+  declare interface InboxSDK$Global$GlobalInstance {
     addSidebarContentPanel(
-      contentPanelDescriptor: Conversations$Conversations$ContentPanelDescriptor
-    ): Conversations$Conversations$ContentPanelView;
+      contentPanelDescriptor: Conversations$ContentPanelDescriptor
+    ): Conversations$ContentPanelView;
   }
 }
