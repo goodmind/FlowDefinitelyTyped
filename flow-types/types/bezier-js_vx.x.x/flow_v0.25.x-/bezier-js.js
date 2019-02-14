@@ -1,3 +1,9 @@
+declare var npm$namespace$BezierJs: {
+  Bezier: typeof BezierJs$Bezier,
+  BezierCap: typeof BezierJs$BezierCap,
+  PolyBezier: typeof BezierJs$PolyBezier,
+  utils: typeof npm$namespace$BezierJs$utils
+};
 declare interface BezierJs$Point {
   x: number;
   y: number;
@@ -7,7 +13,7 @@ declare interface BezierJs$Point {
 declare type BezierJs$Projection = {
   t?: number,
   d?: number
-} & BezierJs$Point;
+} & Point;
 
 declare interface BezierJs$Inflection {
   x: number[];
@@ -19,7 +25,7 @@ declare interface BezierJs$Inflection {
 declare type BezierJs$Offset = {
   c: BezierJs$Point,
   n: BezierJs$Point
-} & BezierJs$Point;
+} & Point;
 
 declare interface BezierJs$Pair {
   left: BezierJs$Bezier;
@@ -30,7 +36,7 @@ declare type BezierJs$Split = {
   span: BezierJs$Point[],
   _t1?: number,
   _t2?: number
-} & BezierJs$Pair;
+} & Pair;
 
 declare interface BezierJs$MinMax {
   min: number;
@@ -58,7 +64,7 @@ declare type BezierJs$Arc = {
     start: number,
     end: number
   }
-} & BezierJs$Point;
+} & Point;
 
 declare interface BezierJs$Shape {
   startcap: BezierJs$BezierCap;
@@ -155,6 +161,9 @@ declare class BezierJs$Bezier {
   derivative(t: number): BezierJs$Point;
   inflections(): number[];
   normal(t: number): BezierJs$Point;
+  __normal2(t: any): void;
+  __normal3(t: any): void;
+  __normal(t: any): void;
   hull(t: number): BezierJs$Point[];
   split(t1: number): BezierJs$Split;
   split(t1: number, t2: number): BezierJs$Bezier;
@@ -190,64 +199,73 @@ declare class BezierJs$Bezier {
     curveIntersectionThreshold?: number
   ): string[];
   arcs(errorThreshold?: number): BezierJs$Arc[];
+  _error(pc: any, np1: any, s: any, e: any): void;
+  _iterate(errorThreshold: any, circles: any): void;
 }
 
-declare class BezierJs$BezierCap mixins BezierJs$Bezier {
+declare class BezierJs$BezierCap mixins Bezier {
   virtual: boolean;
 }
 
-declare var npm$namespace$utils: {
-  arcfn: typeof utils$arcfn,
-  between: typeof utils$between,
-  approximately: typeof utils$approximately,
-  length: typeof utils$length,
-  map: typeof utils$map,
-  lerp: typeof utils$lerp,
-  pointToString: typeof utils$pointToString,
-  pointsToString: typeof utils$pointsToString,
-  copy: typeof utils$copy,
-  angle: typeof utils$angle,
-  round: typeof utils$round,
-  dist: typeof utils$dist,
-  closest: typeof utils$closest,
-  abcratio: typeof utils$abcratio,
-  projectionratio: typeof utils$projectionratio,
-  lli8: typeof utils$lli8,
-  lli4: typeof utils$lli4,
-  lli: typeof utils$lli,
-  makeline: typeof utils$makeline,
-  findbbox: typeof utils$findbbox,
-  shapeintersections: typeof utils$shapeintersections,
-  makeshape: typeof utils$makeshape,
-  getminmax: typeof utils$getminmax,
-  align: typeof utils$align,
-  roots: typeof utils$roots,
-  droots: typeof utils$droots,
-  inflections: typeof utils$inflections,
-  bboxoverlap: typeof utils$bboxoverlap,
-  expandbox: typeof utils$expandbox,
-  pairiteration: typeof utils$pairiteration,
-  getccenter: typeof utils$getccenter,
-  Tvalues: typeof utils$Tvalues,
-  Cvalues: typeof utils$Cvalues
+declare var npm$namespace$BezierJs$utils: {
+  arcfn: typeof BezierJs$utils$arcfn,
+  between: typeof BezierJs$utils$between,
+  approximately: typeof BezierJs$utils$approximately,
+  length: typeof BezierJs$utils$length,
+  map: typeof BezierJs$utils$map,
+  lerp: typeof BezierJs$utils$lerp,
+  pointToString: typeof BezierJs$utils$pointToString,
+  pointsToString: typeof BezierJs$utils$pointsToString,
+  copy: typeof BezierJs$utils$copy,
+  angle: typeof BezierJs$utils$angle,
+  round: typeof BezierJs$utils$round,
+  dist: typeof BezierJs$utils$dist,
+  closest: typeof BezierJs$utils$closest,
+  abcratio: typeof BezierJs$utils$abcratio,
+  projectionratio: typeof BezierJs$utils$projectionratio,
+  lli8: typeof BezierJs$utils$lli8,
+  lli4: typeof BezierJs$utils$lli4,
+  lli: typeof BezierJs$utils$lli,
+  makeline: typeof BezierJs$utils$makeline,
+  findbbox: typeof BezierJs$utils$findbbox,
+  shapeintersections: typeof BezierJs$utils$shapeintersections,
+  makeshape: typeof BezierJs$utils$makeshape,
+  getminmax: typeof BezierJs$utils$getminmax,
+  align: typeof BezierJs$utils$align,
+  roots: typeof BezierJs$utils$roots,
+  droots: typeof BezierJs$utils$droots,
+  inflections: typeof BezierJs$utils$inflections,
+  bboxoverlap: typeof BezierJs$utils$bboxoverlap,
+  expandbox: typeof BezierJs$utils$expandbox,
+  pairiteration: typeof BezierJs$utils$pairiteration,
+  getccenter: typeof BezierJs$utils$getccenter,
+  Tvalues: typeof BezierJs$utils$Tvalues,
+  Cvalues: typeof BezierJs$utils$Cvalues
 };
-declare var utils$Tvalues: number[];
+declare var BezierJs$utils$Tvalues: number[];
 
-declare var utils$Cvalues: number[];
+declare var BezierJs$utils$Cvalues: number[];
 
-declare function utils$arcfn(t: number, derivativeFn: Function): number;
+declare function BezierJs$utils$arcfn(
+  t: number,
+  derivativeFn: Function
+): number;
 
-declare function utils$between(v: number, m: number, M: number): boolean;
+declare function BezierJs$utils$between(
+  v: number,
+  m: number,
+  M: number
+): boolean;
 
-declare function utils$approximately(
+declare function BezierJs$utils$approximately(
   a: number,
   b: number,
   precision?: number
 ): boolean;
 
-declare function utils$length(derivativeFn: Function): number;
+declare function BezierJs$utils$length(derivativeFn: Function): number;
 
-declare function utils$map(
+declare function BezierJs$utils$map(
   v: number,
   ds: number,
   de: number,
@@ -255,38 +273,43 @@ declare function utils$map(
   te: number
 ): number;
 
-declare function utils$lerp(
+declare function BezierJs$utils$lerp(
   r: number,
   v1: BezierJs$Point,
   v2: BezierJs$Point
 ): BezierJs$Point;
 
-declare function utils$pointToString(p: BezierJs$Point): string;
+declare function BezierJs$utils$pointToString(p: BezierJs$Point): string;
 
-declare function utils$pointsToString(points: BezierJs$Point[]): string;
+declare function BezierJs$utils$pointsToString(
+  points: BezierJs$Point[]
+): string;
 
-declare function utils$copy(obj: Object): any;
+declare function BezierJs$utils$copy(obj: Object): any;
 
-declare function utils$angle(
+declare function BezierJs$utils$angle(
   o: BezierJs$Point,
   v1: BezierJs$Point,
   v2: BezierJs$Point
 ): number;
 
-declare function utils$round(v: number, d: number): number;
+declare function BezierJs$utils$round(v: number, d: number): number;
 
-declare function utils$dist(p1: BezierJs$Point, p2: BezierJs$Point): number;
+declare function BezierJs$utils$dist(
+  p1: BezierJs$Point,
+  p2: BezierJs$Point
+): number;
 
-declare function utils$closest(
+declare function BezierJs$utils$closest(
   LUT: BezierJs$Point[],
   point: BezierJs$Point
 ): BezierJs$Closest;
 
-declare function utils$abcratio(t: number, n: number): number;
+declare function BezierJs$utils$abcratio(t: number, n: number): number;
 
-declare function utils$projectionratio(t: number, n: number): number;
+declare function BezierJs$utils$projectionratio(t: number, n: number): number;
 
-declare function utils$lli8(
+declare function BezierJs$utils$lli8(
   x1: number,
   y1: number,
   x2: number,
@@ -297,26 +320,28 @@ declare function utils$lli8(
   y4: number
 ): BezierJs$Point;
 
-declare function utils$lli4(
+declare function BezierJs$utils$lli4(
   p1: BezierJs$Point,
   p2: BezierJs$Point,
   p3: BezierJs$Point,
   p4: BezierJs$Point
 ): BezierJs$Point;
 
-declare function utils$lli(
+declare function BezierJs$utils$lli(
   v1: BezierJs$Offset,
   v2: BezierJs$Offset
 ): BezierJs$Point;
 
-declare function utils$makeline(
+declare function BezierJs$utils$makeline(
   p1: BezierJs$Point,
   p2: BezierJs$Point
 ): BezierJs$Bezier;
 
-declare function utils$findbbox(sections: BezierJs$Bezier[]): BezierJs$BBox;
+declare function BezierJs$utils$findbbox(
+  sections: BezierJs$Bezier[]
+): BezierJs$BBox;
 
-declare function utils$shapeintersections(
+declare function BezierJs$utils$shapeintersections(
   s1: BezierJs$Shape,
   bbox1: BezierJs$BBox,
   s2: BezierJs$Shape,
@@ -324,49 +349,49 @@ declare function utils$shapeintersections(
   curveIntersectionThreshold?: number
 ): string[][] | number[][];
 
-declare function utils$makeshape(
+declare function BezierJs$utils$makeshape(
   forward: BezierJs$Bezier,
   back: BezierJs$Bezier,
   curveIntersectionThreshold?: number
 ): BezierJs$Shape;
 
-declare function utils$getminmax(
+declare function BezierJs$utils$getminmax(
   curve: BezierJs$Bezier,
   d: string,
   list: number[]
 ): BezierJs$MinMax;
 
-declare function utils$align(
+declare function BezierJs$utils$align(
   points: BezierJs$Point[],
   line: BezierJs$Line
 ): BezierJs$Point[];
 
-declare function utils$roots(
+declare function BezierJs$utils$roots(
   points: BezierJs$Point[],
   line: BezierJs$Line
 ): number[];
 
-declare function utils$droots(p: number[]): number[];
+declare function BezierJs$utils$droots(p: number[]): number[];
 
-declare function utils$inflections(points: BezierJs$Point[]): number[];
+declare function BezierJs$utils$inflections(points: BezierJs$Point[]): number[];
 
-declare function utils$bboxoverlap(
+declare function BezierJs$utils$bboxoverlap(
   b1: BezierJs$BBox,
   b2: BezierJs$BBox
 ): boolean;
 
-declare function utils$expandbox(
+declare function BezierJs$utils$expandbox(
   bbox: BezierJs$BBox,
   _bbox: BezierJs$BBox
 ): void;
 
-declare function utils$pairiteration(
+declare function BezierJs$utils$pairiteration(
   c1: BezierJs$Bezier,
   c2: BezierJs$Bezier,
   curveIntersectionThreshold?: number
 ): string[];
 
-declare function utils$getccenter(
+declare function BezierJs$utils$getccenter(
   p1: BezierJs$Point,
   p2: BezierJs$Point,
   p3: BezierJs$Point
@@ -389,5 +414,5 @@ declare class BezierJs$PolyBezier {
   offset(d: number): BezierJs$PolyBezier;
 }
 declare module "bezier-js" {
-  declare module.exports: typeof BezierJs$BezierJs$Bezier;
+  declare export default typeof BezierJs$Bezier;
 }
