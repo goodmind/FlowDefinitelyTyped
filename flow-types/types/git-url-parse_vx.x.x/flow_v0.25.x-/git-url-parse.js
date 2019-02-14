@@ -81,7 +81,7 @@ declare module "git-url-parse" {
     type?: string
   ): string;
 
-  declare function gitUrlParse(url: string): gitUrlParse$gitUrlParse$GitUrl;
+  declare function gitUrlParse(url: string): gitUrlParse$GitUrl;
 
-  declare module.exports: typeof gitUrlParse;
+  declare export default typeof gitUrlParse;
 }
