@@ -22,7 +22,7 @@ declare module "contextjs" {
     attach: typeof context$attach,
     settings: typeof context$settings
   };
-  declare function context$init(context$settings?: InitSettings): void;
+  declare function context$init(settings?: InitSettings): void;
 
   declare function context$destroy(selector: any): void;
 
@@ -31,7 +31,7 @@ declare module "contextjs" {
     menuObjects: MenuObject[]
   ): void;
 
-  declare function context$settings(context$settings: InitSettings): void;
+  declare function context$settings(settings: InitSettings): void;
 
-  declare module.exports: typeof context;
+  declare export default typeof context;
 }
