@@ -1,9 +1,9 @@
 declare module "p-some" {
-  declare module.exports: typeof pSome;
+  declare export default typeof pSome;
 
   declare function pSome<T>(
     values: Array<Value<T>> | Iterable<Value<T>>,
-    options: pSome$pSome$Options<T>
+    options: pSome$Options<T>
   ): Promise<T[]>;
 
   declare type Value<T> = T | PromiseLike<T>;
