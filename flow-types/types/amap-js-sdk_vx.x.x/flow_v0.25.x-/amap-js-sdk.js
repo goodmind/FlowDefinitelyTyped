@@ -2,7 +2,42 @@ declare module "amap-js-sdk" {
   declare var npm$namespace$AMap: {
     plugin: typeof AMap$plugin,
     service: typeof AMap$service,
-    convertFrom: typeof AMap$convertFrom
+    convertFrom: typeof AMap$convertFrom,
+
+    DrivingPolicy: typeof AMap$DrivingPolicy,
+    EventBindable: typeof AMap$EventBindable,
+    Pixel: typeof AMap$Pixel,
+    Size: typeof AMap$Size,
+    LngLat: typeof AMap$LngLat,
+    Bounds: typeof AMap$Bounds,
+    Layer: typeof AMap$Layer,
+    TileLayer: typeof AMap$TileLayer,
+    IndoorMap: typeof AMap$IndoorMap,
+    View2D: typeof AMap$View2D,
+    Map: typeof AMap$Map,
+    Icon: typeof AMap$Icon,
+    MarkerShape: typeof AMap$MarkerShape,
+    Marker: typeof AMap$Marker,
+    MarkerClusterer: typeof AMap$MarkerClusterer,
+    Circle: typeof AMap$Circle,
+    Polygon: typeof AMap$Polygon,
+    Polyline: typeof AMap$Polyline,
+    MapType: typeof AMap$MapType,
+    OverView: typeof AMap$OverView,
+    Scale: typeof AMap$Scale,
+    ToolBar: typeof AMap$ToolBar,
+    InfoWindow: typeof AMap$InfoWindow,
+    AdvancedInfoWindow: typeof AMap$AdvancedInfoWindow,
+    Geolocation: typeof AMap$Geolocation,
+    Geocoder: typeof AMap$Geocoder,
+    CitySearch: typeof AMap$CitySearch,
+    Driving: typeof AMap$Driving,
+    Weather: typeof AMap$Weather,
+    Autocomplete: typeof AMap$Autocomplete,
+    PlaceSearch: typeof AMap$PlaceSearch,
+    DistrictSearch: typeof AMap$DistrictSearch,
+    event: typeof npm$namespace$AMap$event,
+    TileLayer: typeof npm$namespace$AMap$TileLayer
   };
   declare type AMap$EventCallback = (...args: any[]) => void;
 
@@ -22,12 +57,12 @@ declare module "amap-js-sdk" {
    */
   declare function AMap$service(serviceName: string, ready?: () => void): void;
 
-  declare var npm$namespace$event: {
-    addDomListener: typeof event$addDomListener,
-    addListener: typeof event$addListener,
-    addListenerOnce: typeof event$addListenerOnce,
-    removeListener: typeof event$removeListener,
-    trigger: typeof event$trigger
+  declare var npm$namespace$AMap$event: {
+    addDomListener: typeof AMap$event$addDomListener,
+    addListener: typeof AMap$event$addListener,
+    addListenerOnce: typeof AMap$event$addListenerOnce,
+    removeListener: typeof AMap$event$removeListener,
+    trigger: typeof AMap$event$trigger
   };
 
   /**
@@ -37,7 +72,7 @@ declare module "amap-js-sdk" {
    * @param handler ：事件功能函数（必填）
    * @param context ：事件上下文（可选，缺省时，handler中this指向参数instance引用的对象，否则this指向context引用的对象）
    */
-  declare var event$addDomListener: (
+  declare var AMap$event$addDomListener: (
     instance: any,
     eventName: string,
     handler: AMap$EventCallback,
@@ -51,7 +86,7 @@ declare module "amap-js-sdk" {
    * @param handler ：事件功能函数（必填）
    * @param context ：事件上下文（可选，缺省时，handler中this指向参数instance引用的对象，否则this指向context引用的对象）
    */
-  declare var event$addListener: (
+  declare var AMap$event$addListener: (
     instance: any,
     eventName: string,
     handler: AMap$EventCallback,
@@ -61,7 +96,7 @@ declare module "amap-js-sdk" {
   /**
    * 类似于addListener，但处理程序会在处理完第一个事件后将自已移除。
    */
-  declare var event$addListenerOnce: (
+  declare var AMap$event$addListenerOnce: (
     instance: any,
     eventName: string,
     handler: AMap$EventCallback,
@@ -71,12 +106,12 @@ declare module "amap-js-sdk" {
   /**
    * 删除由上述 event.addDomListener 和 event.addListener 传回的指定侦听器。
    */
-  declare var event$removeListener: (listener: EventListener) => void;
+  declare var AMap$event$removeListener: (listener: EventListener) => void;
 
   /**
    * 触发非DOM事件：触发非DOM事件eventName，extArgs将扩展到事件监听函数（handler）接受到的event参数中。如:在extArgs内写入{m:10,p:2}，eventName监听函数（handler）可以接收到包含m,p两个key值的event对象。
    */
-  declare var event$trigger: (
+  declare var AMap$event$trigger: (
     instance: any,
     eventName: string,
     extArgs: any
@@ -250,7 +285,7 @@ declare module "amap-js-sdk" {
     detectRetina: boolean;
   }
 
-  declare class AMap$Layer mixins AMap$EventBindable {
+  declare class AMap$Layer mixins EventBindable {
     setOpacity(alpha: number): void;
     show(): void;
     hide(): void;
@@ -262,7 +297,7 @@ declare module "amap-js-sdk" {
     setMap(map: AMap$Map): void;
   }
 
-  declare class AMap$TileLayer mixins AMap$Layer {
+  declare class AMap$TileLayer mixins Layer {
     constructor(tileOpt?: {
       map: AMap$Map,
       tileSize?: number,
@@ -276,7 +311,13 @@ declare module "amap-js-sdk" {
     }): this;
   }
 
-  declare class TileLayer$MapTypeLayer mixins AMap$Layer {
+  declare var npm$namespace$AMap$TileLayer: {
+    MapTypeLayer: typeof AMap$TileLayer$MapTypeLayer,
+    Satellite: typeof AMap$TileLayer$Satellite,
+    RoadNet: typeof AMap$TileLayer$RoadNet,
+    Traffic: typeof AMap$TileLayer$Traffic
+  };
+  declare class AMap$TileLayer$MapTypeLayer mixins Layer {
     constructor(options?: {
       map: AMap$Map,
       zIndex?: number,
@@ -286,11 +327,11 @@ declare module "amap-js-sdk" {
     }): this;
   }
 
-  declare class TileLayer$Satellite mixins TileLayer$MapTypeLayer {}
+  declare class AMap$TileLayer$Satellite mixins MapTypeLayer {}
 
-  declare class TileLayer$RoadNet mixins TileLayer$MapTypeLayer {}
+  declare class AMap$TileLayer$RoadNet mixins MapTypeLayer {}
 
-  declare class TileLayer$Traffic mixins TileLayer$MapTypeLayer {
+  declare class AMap$TileLayer$Traffic mixins MapTypeLayer {
     constructor(options?: {
       map: AMap$Map,
       zIndex?: number,
@@ -371,7 +412,7 @@ declare module "amap-js-sdk" {
     toString(): string;
   }
 
-  declare class AMap$Map mixins AMap$EventBindable {
+  declare class AMap$Map mixins EventBindable {
     constructor(mapDiv: string, opts?: AMap$MapOptions): this;
     getZoom(): number;
     getLayers(): AMap$TileLayer[];
@@ -504,7 +545,7 @@ declare module "amap-js-sdk" {
   /**
    * 点标记。
    */
-  declare class AMap$Marker mixins AMap$EventBindable {
+  declare class AMap$Marker mixins EventBindable {
     constructor(options?: AMap$MarkerOptions): this;
     markOnAMAP(obj: {
       name: string,
@@ -577,7 +618,7 @@ declare module "amap-js-sdk" {
   /**
    * 用于地图上加载大量点标记，提高地图的绘制和显示性能。
    */
-  declare class AMap$MarkerClusterer mixins AMap$EventBindable {
+  declare class AMap$MarkerClusterer mixins EventBindable {
     constructor(
       map: AMap$Map,
       markers: AMap$Marker[],
@@ -740,7 +781,7 @@ declare module "amap-js-sdk" {
     strokeDasharray?: number[];
   }
 
-  declare class AMap$Polygon mixins AMap$EventBindable {
+  declare class AMap$Polygon mixins EventBindable {
     constructor(options?: AMap$PolygonOptions): this;
     setPath(path: AMap$LngLat[] | AMap$LngLat[][]): void;
     getPath(): AMap$LngLat[] | AMap$LngLat[][];
@@ -771,7 +812,7 @@ declare module "amap-js-sdk" {
     extData?: any;
   }
 
-  declare class AMap$Polyline mixins AMap$EventBindable {
+  declare class AMap$Polyline mixins EventBindable {
     constructor(options?: AMap$PolylineOptions): this;
     setPath(path: AMap$LngLat[]): void;
     getPath(): AMap$LngLat[];
@@ -791,7 +832,7 @@ declare module "amap-js-sdk" {
     hide(): void;
   }
 
-  declare class AMap$MapType mixins AMap$MapControl {
+  declare class AMap$MapType mixins MapControl {
     constructor(options?: {
       defaultType?: number,
       showTraffic?: boolean,
@@ -801,7 +842,7 @@ declare module "amap-js-sdk" {
     hide(): void;
   }
 
-  declare class AMap$OverView mixins AMap$EventBindable, AMap$MapControl {
+  declare class AMap$OverView mixins EventBindable, MapControl {
     constructor(options?: {
       tileLayer?: AMap$TileLayer[],
       isOpen?: boolean,
@@ -815,14 +856,14 @@ declare module "amap-js-sdk" {
     hide(): void;
   }
 
-  declare class AMap$Scale mixins AMap$EventBindable, AMap$MapControl {
+  declare class AMap$Scale mixins EventBindable, MapControl {
     offset: AMap$Pixel;
     position: string;
     show(): void;
     hide(): void;
   }
 
-  declare class AMap$ToolBar mixins AMap$EventBindable, AMap$MapControl {
+  declare class AMap$ToolBar mixins EventBindable, MapControl {
     constructor(options?: {
       offset?: AMap$Pixel,
       position?: string,
@@ -852,7 +893,7 @@ declare module "amap-js-sdk" {
     hide(): void;
   }
 
-  declare class AMap$InfoWindow mixins AMap$EventBindable {
+  declare class AMap$InfoWindow mixins EventBindable {
     constructor(options?: {
       isCustom?: boolean,
       autoMove?: boolean,
@@ -874,7 +915,7 @@ declare module "amap-js-sdk" {
     setContent(content: string | HTMLElement): void;
   }
 
-  declare class AMap$AdvancedInfoWindow mixins AMap$EventBindable {
+  declare class AMap$AdvancedInfoWindow mixins EventBindable {
     constructor(options?: {
       autoMove?: boolean,
       closeWhenClickMap?: boolean,
@@ -899,7 +940,7 @@ declare module "amap-js-sdk" {
     getContent(): string;
   }
 
-  declare class AMap$Geolocation mixins AMap$EventBindable {
+  declare class AMap$Geolocation mixins EventBindable {
     constructor(options: {
       enableHighAccuracy?: boolean,
       timeout?: number,
@@ -1080,7 +1121,7 @@ declare module "amap-js-sdk" {
     bounds: AMap$Bounds;
   }
 
-  declare class AMap$CitySearch mixins AMap$EventBindable {
+  declare class AMap$CitySearch mixins EventBindable {
     getLocalCity(
       callback: (status: string, result: string | AMap$CitySearchResult) => void
     ): void;
@@ -1090,26 +1131,12 @@ declare module "amap-js-sdk" {
     ): void;
   }
 
-  declare class AMap$DrivingPolicy {
-    constructor(...args: empty): mixed;
-    static +LEAST_TIME: Class<AMap$DrivingPolicy__LEAST_TIME> &
-      AMap$DrivingPolicy__LEAST_TIME &
-      0; // 0
-    static +LEAST_FEE: Class<AMap$DrivingPolicy__LEAST_FEE> &
-      AMap$DrivingPolicy__LEAST_FEE &
-      1; // 1
-    static +LEAST_DISTANCE: Class<AMap$DrivingPolicy__LEAST_DISTANCE> &
-      AMap$DrivingPolicy__LEAST_DISTANCE &
-      2; // 2
-    static +REAL_TRAFFIC: Class<AMap$DrivingPolicy__REAL_TRAFFIC> &
-      AMap$DrivingPolicy__REAL_TRAFFIC &
-      3; // 3
-  }
-
-  declare class AMap$DrivingPolicy__LEAST_TIME mixins AMap$DrivingPolicy {}
-  declare class AMap$DrivingPolicy__LEAST_FEE mixins AMap$DrivingPolicy {}
-  declare class AMap$DrivingPolicy__LEAST_DISTANCE mixins AMap$DrivingPolicy {}
-  declare class AMap$DrivingPolicy__REAL_TRAFFIC mixins AMap$DrivingPolicy {}
+  declare var AMap$DrivingPolicy: {|
+    +LEAST_TIME: 0, // 0
+    +LEAST_FEE: 1, // 1
+    +LEAST_DISTANCE: 2, // 2
+    +REAL_TRAFFIC: 3 // 3
+  |};
 
   declare interface AMap$ViaCity {
     name: string;
@@ -1173,7 +1200,7 @@ declare module "amap-js-sdk" {
     routes: AMap$DriveRoute[];
   }
 
-  declare class AMap$Driving mixins AMap$EventBindable {
+  declare class AMap$Driving mixins EventBindable {
     constructor(options?: {
       policy?: AMap$DrivingPolicy,
       extensions?: string,
