@@ -11,9 +11,7 @@ declare module "canvas-confetti" {
    * will return the same promise every time. Internally, the same canvas element will be reused, continuing the existing animation with the new confetti added. The promise returned by each call to
    * `confetti` will resolve once all animations are done.
    */
-  declare function confetti(
-    options?: confetti$confetti$Options
-  ): Promise<null> | null;
+  declare function confetti(options?: confetti$Options): Promise<null> | null;
 
   declare var npm$namespace$confetti: {
     Promise: typeof confetti$Promise
@@ -91,5 +89,5 @@ declare module "canvas-confetti" {
      */
     y?: number;
   }
-  declare module.exports: typeof confetti;
+  declare export default typeof confetti;
 }
