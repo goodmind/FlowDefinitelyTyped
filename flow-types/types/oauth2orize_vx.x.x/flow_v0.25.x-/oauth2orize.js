@@ -93,24 +93,24 @@ declare module "oauth2orize" {
     redirectUri: string,
     user: any,
     res: any,
-    issued: (err: Error | null, exchange$code?: string) => void
+    issued: (err: Error | null, code?: string) => void
   ) => void;
   declare export type IssueGrantTokenFunction = (
     client: any,
     user: any,
     ares: any,
-    issued: (err: Error | null, exchange$code?: string, params?: any) => void
+    issued: (err: Error | null, code?: string, params?: any) => void
   ) => void;
   declare export type IssueExchangeCodeFunction = (
     client: any,
-    exchange$code: string,
+    code: string,
     redirectURI: string,
     issued: ExchangeDoneFunction
   ) => void;
   declare export type ExchangeDoneFunction = (
     err: Error | null,
     accessToken?: string | boolean,
-    exchange$refreshToken?: string,
+    refreshToken?: string,
     params?: any
   ) => void;
   declare export class OAuth2Server {
@@ -249,7 +249,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       scope: string[],
       body: any,
       authInfo: any,
@@ -262,7 +262,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       scope: string[],
       body: any,
       issued: ExchangeDoneFunction
@@ -274,7 +274,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       scope: string[],
       issued: ExchangeDoneFunction
     ) => void
@@ -285,7 +285,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       issued: ExchangeDoneFunction
     ) => void
   ): MiddlewareFunction;
@@ -294,7 +294,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       scope: string[],
       issued: ExchangeDoneFunction
     ) => void
@@ -304,7 +304,7 @@ declare module "oauth2orize" {
     issue: (
       client: any,
       username: string,
-      exchange$password: string,
+      password: string,
       issued: ExchangeDoneFunction
     ) => void
   ): MiddlewareFunction;
@@ -313,7 +313,7 @@ declare module "oauth2orize" {
     options: exchange$Options,
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       scope: string[],
       body: any,
       authInfo: any,
@@ -325,7 +325,7 @@ declare module "oauth2orize" {
     options: exchange$Options,
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       scope: string[],
       body: any,
       issued: ExchangeDoneFunction
@@ -336,7 +336,7 @@ declare module "oauth2orize" {
     options: exchange$Options,
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       scope: string[],
       issued: ExchangeDoneFunction
     ) => void
@@ -346,7 +346,7 @@ declare module "oauth2orize" {
     options: exchange$Options,
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       issued: ExchangeDoneFunction
     ) => void
   ): MiddlewareFunction;
@@ -354,7 +354,7 @@ declare module "oauth2orize" {
   declare function exchange$refreshToken(
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       scope: string[],
       issued: ExchangeDoneFunction
     ) => void
@@ -363,7 +363,7 @@ declare module "oauth2orize" {
   declare function exchange$refreshToken(
     issue: (
       client: any,
-      exchange$refreshToken: string,
+      refreshToken: string,
       issued: ExchangeDoneFunction
     ) => void
   ): MiddlewareFunction;
