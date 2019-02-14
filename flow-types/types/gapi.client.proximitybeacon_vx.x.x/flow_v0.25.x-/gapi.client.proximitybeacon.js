@@ -1,35 +1,39 @@
 declare module "gapi.client.proximitybeacon" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    beaconinfo: typeof client$beaconinfo,
-    beacons: typeof client$beacons,
-    namespaces: typeof client$namespaces,
-    v1beta1: typeof client$v1beta1
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    beaconinfo: typeof gapi$client$beaconinfo,
+    beacons: typeof gapi$client$beacons,
+    namespaces: typeof gapi$client$namespaces,
+    v1beta1: typeof gapi$client$v1beta1
   };
 
   /**
    * Load Google Proximity Beacon API v1beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "proximitybeacon",
     version: "v1beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "proximitybeacon",
     version: "v1beta1",
     callback: () => any
   ): void;
 
-  declare var client$beaconinfo: proximitybeacon$proximitybeacon$BeaconinfoResource;
+  declare var gapi$client$beaconinfo: proximitybeacon$BeaconinfoResource;
 
-  declare var client$beacons: proximitybeacon$proximitybeacon$BeaconsResource;
+  declare var gapi$client$beacons: proximitybeacon$BeaconsResource;
 
-  declare var client$namespaces: proximitybeacon$proximitybeacon$NamespacesResource;
+  declare var gapi$client$namespaces: proximitybeacon$NamespacesResource;
 
-  declare var client$v1beta1: proximitybeacon$proximitybeacon$V1beta1Resource;
+  declare var gapi$client$v1beta1: proximitybeacon$V1beta1Resource;
 
-  declare interface proximitybeacon$AdvertisedId {
+  declare interface gapi$client$proximitybeacon$AdvertisedId {
     /**
      * The actual beacon identifier, as broadcast by the beacon hardware. Must be
      * [base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP
@@ -47,7 +51,7 @@ declare module "gapi.client.proximitybeacon" {
     type?: string;
   }
 
-  declare interface proximitybeacon$AttachmentInfo {
+  declare interface gapi$client$proximitybeacon$AttachmentInfo {
     /**
      * An opaque data container for client-provided data.
      */
@@ -61,7 +65,7 @@ declare module "gapi.client.proximitybeacon" {
     namespacedType?: string;
   }
 
-  declare interface proximitybeacon$Beacon {
+  declare interface gapi$client$proximitybeacon$Beacon {
     /**
      * The identifier of a beacon as advertised by it. This field must be
      * populated when registering. It may be empty when updating a beacon
@@ -72,7 +76,7 @@ declare module "gapi.client.proximitybeacon" {
      * links it to its attachments. The stable Eddystone-UID is only used for
      * administering the beacon.
      */
-    advertisedId?: proximitybeacon$AdvertisedId;
+    advertisedId?: gapi$client$proximitybeacon$AdvertisedId;
 
     /**
      * Resource name of this beacon. A beacon name has the format
@@ -157,7 +161,7 @@ declare module "gapi.client.proximitybeacon" {
     status?: string;
   }
 
-  declare interface proximitybeacon$BeaconAttachment {
+  declare interface gapi$client$proximitybeacon$BeaconAttachment {
     /**
      * Resource name of this attachment. Attachment names have the format:
      * <code>beacons/<var>beacon_id</var>/attachments/<var>attachment_id</var></code>.
@@ -210,17 +214,17 @@ declare module "gapi.client.proximitybeacon" {
     namespacedType?: string;
   }
 
-  declare interface proximitybeacon$BeaconInfo {
+  declare interface gapi$client$proximitybeacon$BeaconInfo {
     /**
      * The ID advertised by the beacon.
      */
-    advertisedId?: proximitybeacon$AdvertisedId;
+    advertisedId?: gapi$client$proximitybeacon$AdvertisedId;
 
     /**
      * Attachments matching the type(s) requested.
      * May be empty if no attachment types were requested.
      */
-    attachments?: proximitybeacon$AttachmentInfo[];
+    attachments?: gapi$client$proximitybeacon$AttachmentInfo[];
 
     /**
      * The name under which the beacon is registered.
@@ -228,7 +232,7 @@ declare module "gapi.client.proximitybeacon" {
     beaconName?: string;
   }
 
-  declare interface proximitybeacon$Date {
+  declare interface gapi$client$proximitybeacon$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -247,14 +251,14 @@ declare module "gapi.client.proximitybeacon" {
     year?: number;
   }
 
-  declare interface proximitybeacon$DeleteAttachmentsResponse {
+  declare interface gapi$client$proximitybeacon$DeleteAttachmentsResponse {
     /**
      * The number of attachments that were deleted.
      */
     numDeleted?: number;
   }
 
-  declare interface proximitybeacon$Diagnostics {
+  declare interface gapi$client$proximitybeacon$Diagnostics {
     /**
      * An unordered list of Alerts that the beacon has.
      */
@@ -271,10 +275,10 @@ declare module "gapi.client.proximitybeacon" {
      * then there is no estimate for when the battery will be low.
      * This value is only an estimate, not an exact date.
      */
-    estimatedLowBatteryDate?: proximitybeacon$Date;
+    estimatedLowBatteryDate?: gapi$client$proximitybeacon$Date;
   }
 
-  declare interface proximitybeacon$EphemeralIdRegistration {
+  declare interface gapi$client$proximitybeacon$EphemeralIdRegistration {
     /**
      * The beacon's public key used for the Elliptic curve Diffie-Hellman
      * key exchange. When this field is populated, `service_ecdh_public_key`
@@ -325,7 +329,7 @@ declare module "gapi.client.proximitybeacon" {
     serviceEcdhPublicKey?: string;
   }
 
-  declare interface proximitybeacon$EphemeralIdRegistrationParams {
+  declare interface gapi$client$proximitybeacon$EphemeralIdRegistrationParams {
     /**
      * Indicates the maximum rotation period supported by the service.
      * See EddystoneEidRegistration.rotation_period_exponent
@@ -345,7 +349,7 @@ declare module "gapi.client.proximitybeacon" {
     serviceEcdhPublicKey?: string;
   }
 
-  declare interface proximitybeacon$GetInfoForObservedBeaconsRequest {
+  declare interface gapi$client$proximitybeacon$GetInfoForObservedBeaconsRequest {
     /**
      * Specifies what kind of attachments to include in the response.
      * When given, the response will include only attachments of the given types.
@@ -363,22 +367,22 @@ declare module "gapi.client.proximitybeacon" {
     observations?: proximitybeacon$Observation[];
   }
 
-  declare interface proximitybeacon$GetInfoForObservedBeaconsResponse {
+  declare interface gapi$client$proximitybeacon$GetInfoForObservedBeaconsResponse {
     /**
      * Public information about beacons.
      * May be empty if the request matched no beacons.
      */
-    client$beacons?: proximitybeacon$BeaconInfo[];
+    beacons?: gapi$client$proximitybeacon$BeaconInfo[];
   }
 
-  declare interface proximitybeacon$IndoorLevel {
+  declare interface gapi$client$proximitybeacon$IndoorLevel {
     /**
      * The name of this level.
      */
     name?: string;
   }
 
-  declare interface proximitybeacon$LatLng {
+  declare interface gapi$client$proximitybeacon$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -390,18 +394,18 @@ declare module "gapi.client.proximitybeacon" {
     longitude?: number;
   }
 
-  declare interface proximitybeacon$ListBeaconAttachmentsResponse {
+  declare interface gapi$client$proximitybeacon$ListBeaconAttachmentsResponse {
     /**
      * The attachments that corresponded to the request params.
      */
-    attachments?: proximitybeacon$BeaconAttachment[];
+    attachments?: gapi$client$proximitybeacon$BeaconAttachment[];
   }
 
-  declare interface proximitybeacon$ListBeaconsResponse {
+  declare interface gapi$client$proximitybeacon$ListBeaconsResponse {
     /**
      * The beacons that matched the search criteria.
      */
-    client$beacons?: proximitybeacon$Beacon[];
+    beacons?: gapi$client$proximitybeacon$Beacon[];
 
     /**
      * An opaque pagination token that the client may provide in their next
@@ -416,11 +420,11 @@ declare module "gapi.client.proximitybeacon" {
     totalCount?: string;
   }
 
-  declare interface proximitybeacon$ListDiagnosticsResponse {
+  declare interface gapi$client$proximitybeacon$ListDiagnosticsResponse {
     /**
      * The diagnostics matching the given request.
      */
-    diagnostics?: proximitybeacon$Diagnostics[];
+    diagnostics?: gapi$client$proximitybeacon$Diagnostics[];
 
     /**
      * Token that can be used for pagination. Returned only if the
@@ -429,14 +433,14 @@ declare module "gapi.client.proximitybeacon" {
     nextPageToken?: string;
   }
 
-  declare interface proximitybeacon$ListNamespacesResponse {
+  declare interface gapi$client$proximitybeacon$ListNamespacesResponse {
     /**
      * The attachments that corresponded to the request params.
      */
-    client$namespaces?: proximitybeacon$Namespace[];
+    namespaces?: proximitybeacon$Namespace[];
   }
 
-  declare interface proximitybeacon$Namespace {
+  declare interface gapi$client$proximitybeacon$Namespace {
     /**
      * Resource name of this namespace. Namespaces names have the format:
      * <code>namespaces/<var>namespace</var></code>.
@@ -450,7 +454,7 @@ declare module "gapi.client.proximitybeacon" {
     servingVisibility?: string;
   }
 
-  declare interface proximitybeacon$Observation {
+  declare interface gapi$client$proximitybeacon$Observation {
     /**
      * The ID advertised by the beacon the client has encountered.
      *
@@ -459,7 +463,7 @@ declare module "gapi.client.proximitybeacon" {
      * returned for that beacon.
      * Required.
      */
-    advertisedId?: proximitybeacon$AdvertisedId;
+    advertisedId?: gapi$client$proximitybeacon$AdvertisedId;
 
     /**
      * The array of telemetry bytes received from the beacon. The server is
@@ -474,7 +478,7 @@ declare module "gapi.client.proximitybeacon" {
     timestampMs?: string;
   }
 
-  declare interface proximitybeacon$BeaconinfoResource {
+  declare interface gapi$client$proximitybeacon$BeaconinfoResource {
     /**
      * Given one or more beacon observations, returns any beacon information
      * and attachments accessible to your application. Authorize by using the
@@ -546,10 +550,10 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$GetInfoForObservedBeaconsResponse>;
+    }): Request<gapi$client$proximitybeacon$GetInfoForObservedBeaconsResponse>;
   }
 
-  declare interface proximitybeacon$AttachmentsResource {
+  declare interface gapi$client$proximitybeacon$AttachmentsResource {
     /**
      * Deletes multiple attachments on a given beacon. This operation is
      * permanent and cannot be undone.
@@ -657,7 +661,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$DeleteAttachmentsResponse>;
+    }): Request<gapi$client$proximitybeacon$DeleteAttachmentsResponse>;
 
     /**
      * Associates the given data with the specified beacon. Attachment data must
@@ -761,7 +765,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$BeaconAttachment>;
+    }): Request<gapi$client$proximitybeacon$BeaconAttachment>;
 
     /**
      * Deletes the specified attachment for the given beacon. Each attachment has
@@ -964,10 +968,10 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$ListBeaconAttachmentsResponse>;
+    }): Request<gapi$client$proximitybeacon$ListBeaconAttachmentsResponse>;
   }
 
-  declare interface proximitybeacon$DiagnosticsResource {
+  declare interface gapi$client$proximitybeacon$DiagnosticsResource {
     /**
      * List the diagnostics for a single beacon. You can also list diagnostics for
      * all the beacons owned by your Google Developers Console project by using
@@ -1072,10 +1076,10 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$ListDiagnosticsResponse>;
+    }): Request<gapi$client$proximitybeacon$ListDiagnosticsResponse>;
   }
 
-  declare interface proximitybeacon$BeaconsResource {
+  declare interface gapi$client$proximitybeacon$BeaconsResource {
     /**
      * Activates a beacon. A beacon that is active will return information
      * and attachment data when queried via `beaconinfo.getforobserved`.
@@ -1555,7 +1559,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$Beacon>;
+    }): Request<gapi$client$proximitybeacon$Beacon>;
 
     /**
      * Searches the beacon registry for beacons that match the given search
@@ -1720,7 +1724,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$ListBeaconsResponse>;
+    }): Request<gapi$client$proximitybeacon$ListBeaconsResponse>;
 
     /**
      * Registers a previously unregistered beacon given its `advertisedId`.
@@ -1803,7 +1807,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$Beacon>;
+    }): Request<gapi$client$proximitybeacon$Beacon>;
 
     /**
      * Updates the information about the specified beacon. &#42;&#42;Any field that you do
@@ -1902,12 +1906,12 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$Beacon>;
-    attachments: proximitybeacon$AttachmentsResource;
-    diagnostics: proximitybeacon$DiagnosticsResource;
+    }): Request<gapi$client$proximitybeacon$Beacon>;
+    attachments: gapi$client$proximitybeacon$AttachmentsResource;
+    diagnostics: gapi$client$proximitybeacon$DiagnosticsResource;
   }
 
-  declare interface proximitybeacon$NamespacesResource {
+  declare interface gapi$client$proximitybeacon$NamespacesResource {
     /**
      * Lists all attachment namespaces owned by your Google Developers Console
      * project. Attachment data associated with a beacon must include a
@@ -1988,7 +1992,7 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$ListNamespacesResponse>;
+    }): Request<gapi$client$proximitybeacon$ListNamespacesResponse>;
 
     /**
      * Updates the information about the specified namespace. Only the namespace
@@ -2073,10 +2077,10 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$Namespace>;
+    }): Request<gapi$client$proximitybeacon$Namespace>;
   }
 
-  declare interface proximitybeacon$V1beta1Resource {
+  declare interface gapi$client$proximitybeacon$V1beta1Resource {
     /**
      * Gets the Proximity Beacon API's current public key and associated
      * parameters used to initiate the Diffie-Hellman key exchange required to
@@ -2151,6 +2155,6 @@ declare module "gapi.client.proximitybeacon" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<proximitybeacon$EphemeralIdRegistrationParams>;
+    }): Request<gapi$client$proximitybeacon$EphemeralIdRegistrationParams>;
   }
 }
