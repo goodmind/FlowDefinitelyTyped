@@ -5,10 +5,10 @@ declare module "gfc" {
     ExecSyncOptions
   } from "child_process";
 
-  declare module.exports: typeof gitFirstCommit;
+  declare export default typeof gitFirstCommit;
 
   declare function gitFirstCommit(
-    options?: gitFirstCommit$gitFirstCommit$Options<gitFirstCommit$gitFirstCommit$ExecOptionsWithEncoding>
+    options?: gitFirstCommit$Options<gitFirstCommit$ExecOptionsWithEncoding>
   ): Promise<{
     stdout: string | Buffer,
     stderr: string | Buffer
@@ -16,7 +16,7 @@ declare module "gfc" {
 
   declare function gitFirstCommit(
     cwd: string,
-    options?: gitFirstCommit$gitFirstCommit$Options<gitFirstCommit$gitFirstCommit$ExecOptionsWithEncoding>
+    options?: gitFirstCommit$Options<gitFirstCommit$ExecOptionsWithEncoding>
   ): Promise<{
     stdout: string | Buffer,
     stderr: string | Buffer
@@ -33,7 +33,7 @@ declare module "gfc" {
 
   declare function gitFirstCommit(
     cwd: string,
-    options: gitFirstCommit$gitFirstCommit$Options<gitFirstCommit$gitFirstCommit$ExecOptionsWithEncoding>,
+    options: gitFirstCommit$Options<gitFirstCommit$ExecOptionsWithEncoding>,
     callback: (
       error: ExecException | null,
       stdout: string | Buffer,
