@@ -1,26 +1,30 @@
 declare module "gapi.client.sourcerepo" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Cloud Source Repositories API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sourcerepo",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sourcerepo",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: sourcerepo$sourcerepo$ProjectsResource;
+  declare var gapi$client$projects: sourcerepo$ProjectsResource;
 
-  declare interface sourcerepo$AuditConfig {
+  declare interface gapi$client$sourcerepo$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -36,7 +40,7 @@ declare module "gapi.client.sourcerepo" {
     service?: string;
   }
 
-  declare interface sourcerepo$AuditLogConfig {
+  declare interface gapi$client$sourcerepo$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -50,7 +54,7 @@ declare module "gapi.client.sourcerepo" {
     logType?: string;
   }
 
-  declare interface sourcerepo$Binding {
+  declare interface gapi$client$sourcerepo$Binding {
     /**
      * The condition that is associated with this binding.
      * NOTE: an unsatisfied condition will not allow user access via current
@@ -94,7 +98,7 @@ declare module "gapi.client.sourcerepo" {
     role?: string;
   }
 
-  declare interface sourcerepo$Expr {
+  declare interface gapi$client$sourcerepo$Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -124,7 +128,7 @@ declare module "gapi.client.sourcerepo" {
     title?: string;
   }
 
-  declare interface sourcerepo$ListReposResponse {
+  declare interface gapi$client$sourcerepo$ListReposResponse {
     /**
      * If non-empty, additional repositories exist within the project. These
      * can be retrieved by including this value in the next ListReposRequest's
@@ -138,7 +142,7 @@ declare module "gapi.client.sourcerepo" {
     repos?: sourcerepo$Repo[];
   }
 
-  declare interface sourcerepo$MirrorConfig {
+  declare interface gapi$client$sourcerepo$MirrorConfig {
     /**
      * ID of the SSH deploy key at the other hosting service.
      * Removing this key from the other service would deauthorize
@@ -160,17 +164,17 @@ declare module "gapi.client.sourcerepo" {
     webhookId?: string;
   }
 
-  declare interface sourcerepo$Policy {
+  declare interface gapi$client$sourcerepo$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: sourcerepo$AuditConfig[];
+    auditConfigs?: gapi$client$sourcerepo$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: sourcerepo$Binding[];
+    bindings?: gapi$client$sourcerepo$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -193,11 +197,11 @@ declare module "gapi.client.sourcerepo" {
     version?: number;
   }
 
-  declare interface sourcerepo$Repo {
+  declare interface gapi$client$sourcerepo$Repo {
     /**
      * How this repository mirrors a repository managed by another service.
      */
-    mirrorConfig?: sourcerepo$MirrorConfig;
+    mirrorConfig?: gapi$client$sourcerepo$MirrorConfig;
 
     /**
      * Resource name of the repository, of the form
@@ -218,14 +222,14 @@ declare module "gapi.client.sourcerepo" {
     url?: string;
   }
 
-  declare interface sourcerepo$SetIamPolicyRequest {
+  declare interface gapi$client$sourcerepo$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: sourcerepo$Policy;
+    policy?: gapi$client$sourcerepo$Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -237,7 +241,7 @@ declare module "gapi.client.sourcerepo" {
     updateMask?: string;
   }
 
-  declare interface sourcerepo$TestIamPermissionsRequest {
+  declare interface gapi$client$sourcerepo$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -247,7 +251,7 @@ declare module "gapi.client.sourcerepo" {
     permissions?: string[];
   }
 
-  declare interface sourcerepo$TestIamPermissionsResponse {
+  declare interface gapi$client$sourcerepo$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -255,7 +259,7 @@ declare module "gapi.client.sourcerepo" {
     permissions?: string[];
   }
 
-  declare interface sourcerepo$ReposResource {
+  declare interface gapi$client$sourcerepo$ReposResource {
     /**
      * Creates a repo in the given project with the given name.
      *
@@ -333,7 +337,7 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$Repo>;
+    }): Request<gapi$client$sourcerepo$Repo>;
 
     /**
      * Deletes a repo.
@@ -485,7 +489,7 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$Repo>;
+    }): Request<gapi$client$sourcerepo$Repo>;
 
     /**
      * Gets the access control policy for a resource.
@@ -563,7 +567,7 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$Policy>;
+    }): Request<gapi$client$sourcerepo$Policy>;
 
     /**
      * Returns all repos belonging to a project. The sizes of the repos are
@@ -653,7 +657,7 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$ListReposResponse>;
+    }): Request<gapi$client$sourcerepo$ListReposResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -730,7 +734,7 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$Policy>;
+    }): Request<gapi$client$sourcerepo$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -808,10 +812,10 @@ declare module "gapi.client.sourcerepo" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<sourcerepo$TestIamPermissionsResponse>;
+    }): Request<gapi$client$sourcerepo$TestIamPermissionsResponse>;
   }
 
-  declare interface sourcerepo$ProjectsResource {
-    repos: sourcerepo$ReposResource;
+  declare interface gapi$client$sourcerepo$ProjectsResource {
+    repos: gapi$client$sourcerepo$ReposResource;
   }
 }
