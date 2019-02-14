@@ -1,26 +1,30 @@
 declare module "gapi.client.tagmanager" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Tag Manager API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "tagmanager",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "tagmanager",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$accounts: tagmanager$tagmanager$AccountsResource;
+  declare var gapi$client$accounts: tagmanager$AccountsResource;
 
-  declare interface tagmanager$Account {
+  declare interface gapi$client$tagmanager$Account {
     /**
      * The Account ID uniquely identifies the GTM Account.
      */
@@ -54,14 +58,14 @@ declare module "gapi.client.tagmanager" {
     tagManagerUrl?: string;
   }
 
-  declare interface tagmanager$AccountAccess {
+  declare interface gapi$client$tagmanager$AccountAccess {
     /**
      * Whether the user has no access, user access, or admin access to an account.
      */
     permission?: string;
   }
 
-  declare interface tagmanager$BuiltInVariable {
+  declare interface gapi$client$tagmanager$BuiltInVariable {
     /**
      * GTM Account ID.
      */
@@ -93,7 +97,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$Condition {
+  declare interface gapi$client$tagmanager$Condition {
     /**
      * A list of named parameters (key/value), depending on the condition's type. Notes:
      * - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively.
@@ -110,7 +114,7 @@ declare module "gapi.client.tagmanager" {
     type?: string;
   }
 
-  declare interface tagmanager$Container {
+  declare interface gapi$client$tagmanager$Container {
     /**
      * GTM Account ID.
      */
@@ -162,7 +166,7 @@ declare module "gapi.client.tagmanager" {
     usageContext?: string[];
   }
 
-  declare interface tagmanager$ContainerAccess {
+  declare interface gapi$client$tagmanager$ContainerAccess {
     /**
      * GTM Container ID.
      */
@@ -174,7 +178,7 @@ declare module "gapi.client.tagmanager" {
     permission?: string;
   }
 
-  declare interface tagmanager$ContainerVersion {
+  declare interface gapi$client$tagmanager$ContainerVersion {
     /**
      * GTM Account ID.
      */
@@ -183,12 +187,12 @@ declare module "gapi.client.tagmanager" {
     /**
      * The built-in variables in the container that this version was taken from.
      */
-    builtInVariable?: tagmanager$BuiltInVariable[];
+    builtInVariable?: gapi$client$tagmanager$BuiltInVariable[];
 
     /**
      * The container that this version was taken from.
      */
-    container?: tagmanager$Container;
+    container?: gapi$client$tagmanager$Container;
 
     /**
      * GTM Container ID.
@@ -256,7 +260,7 @@ declare module "gapi.client.tagmanager" {
     zone?: tagmanager$Zone[];
   }
 
-  declare interface tagmanager$ContainerVersionHeader {
+  declare interface gapi$client$tagmanager$ContainerVersionHeader {
     /**
      * GTM Account ID.
      */
@@ -318,14 +322,14 @@ declare module "gapi.client.tagmanager" {
     path?: string;
   }
 
-  declare interface tagmanager$CreateBuiltInVariableResponse {
+  declare interface gapi$client$tagmanager$CreateBuiltInVariableResponse {
     /**
      * List of created built-in variables.
      */
-    builtInVariable?: tagmanager$BuiltInVariable[];
+    builtInVariable?: gapi$client$tagmanager$BuiltInVariable[];
   }
 
-  declare interface tagmanager$CreateContainerVersionRequestVersionOptions {
+  declare interface gapi$client$tagmanager$CreateContainerVersionRequestVersionOptions {
     /**
      * The name of the container version to be created.
      */
@@ -337,7 +341,7 @@ declare module "gapi.client.tagmanager" {
     notes?: string;
   }
 
-  declare interface tagmanager$CreateContainerVersionResponse {
+  declare interface gapi$client$tagmanager$CreateContainerVersionResponse {
     /**
      * Compiler errors or not.
      */
@@ -346,7 +350,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * The container version created.
      */
-    containerVersion?: tagmanager$ContainerVersion;
+    containerVersion?: gapi$client$tagmanager$ContainerVersion;
 
     /**
      * Auto generated workspace path created as a result of version creation. This field should only be populated if the created version was not a quick
@@ -360,7 +364,7 @@ declare module "gapi.client.tagmanager" {
     syncStatus?: tagmanager$SyncStatus;
   }
 
-  declare interface tagmanager$CreateWorkspaceProposalRequest {
+  declare interface gapi$client$tagmanager$CreateWorkspaceProposalRequest {
     /**
      * If present, an initial comment to associate with the workspace proposal.
      */
@@ -372,7 +376,7 @@ declare module "gapi.client.tagmanager" {
     reviewers?: tagmanager$WorkspaceProposalUser[];
   }
 
-  declare interface tagmanager$Entity {
+  declare interface gapi$client$tagmanager$Entity {
     /**
      * Represents how the entity has been changed in the workspace.
      */
@@ -399,7 +403,7 @@ declare module "gapi.client.tagmanager" {
     variable?: tagmanager$Variable;
   }
 
-  declare interface tagmanager$Environment {
+  declare interface gapi$client$tagmanager$Environment {
     /**
      * GTM Account ID.
      */
@@ -476,7 +480,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$Folder {
+  declare interface gapi$client$tagmanager$Folder {
     /**
      * GTM Account ID.
      */
@@ -523,7 +527,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$FolderEntities {
+  declare interface gapi$client$tagmanager$FolderEntities {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -545,7 +549,7 @@ declare module "gapi.client.tagmanager" {
     variable?: tagmanager$Variable[];
   }
 
-  declare interface tagmanager$GetWorkspaceStatusResponse {
+  declare interface gapi$client$tagmanager$GetWorkspaceStatusResponse {
     /**
      * The merge conflict after sync.
      */
@@ -554,14 +558,14 @@ declare module "gapi.client.tagmanager" {
     /**
      * Entities that have been changed in the workspace.
      */
-    workspaceChange?: tagmanager$Entity[];
+    workspaceChange?: gapi$client$tagmanager$Entity[];
   }
 
-  declare interface tagmanager$ListAccountsResponse {
+  declare interface gapi$client$tagmanager$ListAccountsResponse {
     /**
      * List of GTM Accounts that a user has access to.
      */
-    account?: tagmanager$Account[];
+    account?: gapi$client$tagmanager$Account[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -569,11 +573,11 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListContainerVersionsResponse {
+  declare interface gapi$client$tagmanager$ListContainerVersionsResponse {
     /**
      * All container version headers of a GTM Container.
      */
-    containerVersionHeader?: tagmanager$ContainerVersionHeader[];
+    containerVersionHeader?: gapi$client$tagmanager$ContainerVersionHeader[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -581,11 +585,11 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListContainersResponse {
+  declare interface gapi$client$tagmanager$ListContainersResponse {
     /**
      * All Containers of a GTM Account.
      */
-    container?: tagmanager$Container[];
+    container?: gapi$client$tagmanager$Container[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -593,11 +597,11 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListEnabledBuiltInVariablesResponse {
+  declare interface gapi$client$tagmanager$ListEnabledBuiltInVariablesResponse {
     /**
      * All GTM BuiltInVariables of a GTM container.
      */
-    builtInVariable?: tagmanager$BuiltInVariable[];
+    builtInVariable?: gapi$client$tagmanager$BuiltInVariable[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -605,11 +609,11 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListEnvironmentsResponse {
+  declare interface gapi$client$tagmanager$ListEnvironmentsResponse {
     /**
      * All Environments of a GTM Container.
      */
-    environment?: tagmanager$Environment[];
+    environment?: gapi$client$tagmanager$Environment[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -617,11 +621,11 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListFoldersResponse {
+  declare interface gapi$client$tagmanager$ListFoldersResponse {
     /**
      * All GTM Folders of a GTM Container.
      */
-    folder?: tagmanager$Folder[];
+    folder?: gapi$client$tagmanager$Folder[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -629,7 +633,7 @@ declare module "gapi.client.tagmanager" {
     nextPageToken?: string;
   }
 
-  declare interface tagmanager$ListTagsResponse {
+  declare interface gapi$client$tagmanager$ListTagsResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -641,7 +645,7 @@ declare module "gapi.client.tagmanager" {
     tag?: tagmanager$Tag[];
   }
 
-  declare interface tagmanager$ListTriggersResponse {
+  declare interface gapi$client$tagmanager$ListTriggersResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -653,7 +657,7 @@ declare module "gapi.client.tagmanager" {
     trigger?: tagmanager$Trigger[];
   }
 
-  declare interface tagmanager$ListUserPermissionsResponse {
+  declare interface gapi$client$tagmanager$ListUserPermissionsResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -665,7 +669,7 @@ declare module "gapi.client.tagmanager" {
     userPermission?: tagmanager$UserPermission[];
   }
 
-  declare interface tagmanager$ListVariablesResponse {
+  declare interface gapi$client$tagmanager$ListVariablesResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -677,7 +681,7 @@ declare module "gapi.client.tagmanager" {
     variable?: tagmanager$Variable[];
   }
 
-  declare interface tagmanager$ListWorkspacesResponse {
+  declare interface gapi$client$tagmanager$ListWorkspacesResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -689,21 +693,21 @@ declare module "gapi.client.tagmanager" {
     workspace?: tagmanager$Workspace[];
   }
 
-  declare interface tagmanager$MergeConflict {
+  declare interface gapi$client$tagmanager$MergeConflict {
     /**
      * The base version entity (since the latest sync operation) that has conflicting changes compared to the workspace. If this field is missing, it means
      * the workspace entity is deleted from the base version.
      */
-    entityInBaseVersion?: tagmanager$Entity;
+    entityInBaseVersion?: gapi$client$tagmanager$Entity;
 
     /**
      * The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a
      * deleted change status.
      */
-    entityInWorkspace?: tagmanager$Entity;
+    entityInWorkspace?: gapi$client$tagmanager$Entity;
   }
 
-  declare interface tagmanager$Parameter {
+  declare interface gapi$client$tagmanager$Parameter {
     /**
      * The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values.
      */
@@ -712,12 +716,12 @@ declare module "gapi.client.tagmanager" {
     /**
      * This list parameter's parameters (keys will be ignored).
      */
-    list?: tagmanager$Parameter[];
+    list?: gapi$client$tagmanager$Parameter[];
 
     /**
      * This map parameter's parameters (must have keys; keys must be unique).
      */
-    map?: tagmanager$Parameter[];
+    map?: gapi$client$tagmanager$Parameter[];
 
     /**
      * The parameter type. Valid values are:
@@ -735,7 +739,7 @@ declare module "gapi.client.tagmanager" {
     value?: string;
   }
 
-  declare interface tagmanager$PublishContainerVersionResponse {
+  declare interface gapi$client$tagmanager$PublishContainerVersionResponse {
     /**
      * Compiler errors or not.
      */
@@ -744,10 +748,10 @@ declare module "gapi.client.tagmanager" {
     /**
      * The container version created.
      */
-    containerVersion?: tagmanager$ContainerVersion;
+    containerVersion?: gapi$client$tagmanager$ContainerVersion;
   }
 
-  declare interface tagmanager$QuickPreviewResponse {
+  declare interface gapi$client$tagmanager$QuickPreviewResponse {
     /**
      * Were there compiler errors or not.
      */
@@ -756,7 +760,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * The quick previewed container version.
      */
-    containerVersion?: tagmanager$ContainerVersion;
+    containerVersion?: gapi$client$tagmanager$ContainerVersion;
 
     /**
      * Whether quick previewing failed when syncing the workspace to the latest container version.
@@ -764,22 +768,22 @@ declare module "gapi.client.tagmanager" {
     syncStatus?: tagmanager$SyncStatus;
   }
 
-  declare interface tagmanager$RevertBuiltInVariableResponse {
+  declare interface gapi$client$tagmanager$RevertBuiltInVariableResponse {
     /**
      * Whether the built-in variable is enabled after reversion.
      */
     enabled?: boolean;
   }
 
-  declare interface tagmanager$RevertFolderResponse {
+  declare interface gapi$client$tagmanager$RevertFolderResponse {
     /**
      * Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder
      * was deleted in the latest container version.
      */
-    folder?: tagmanager$Folder;
+    folder?: gapi$client$tagmanager$Folder;
   }
 
-  declare interface tagmanager$RevertTagResponse {
+  declare interface gapi$client$tagmanager$RevertTagResponse {
     /**
      * Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was
      * deleted in the latest container version.
@@ -787,7 +791,7 @@ declare module "gapi.client.tagmanager" {
     tag?: tagmanager$Tag;
   }
 
-  declare interface tagmanager$RevertTriggerResponse {
+  declare interface gapi$client$tagmanager$RevertTriggerResponse {
     /**
      * Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the
      * trigger was deleted in the latest container version.
@@ -795,7 +799,7 @@ declare module "gapi.client.tagmanager" {
     trigger?: tagmanager$Trigger;
   }
 
-  declare interface tagmanager$RevertVariableResponse {
+  declare interface gapi$client$tagmanager$RevertVariableResponse {
     /**
      * Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the
      * variable was deleted in the latest container version.
@@ -803,7 +807,7 @@ declare module "gapi.client.tagmanager" {
     variable?: tagmanager$Variable;
   }
 
-  declare interface tagmanager$SetupTag {
+  declare interface gapi$client$tagmanager$SetupTag {
     /**
      * If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status.
      */
@@ -815,7 +819,7 @@ declare module "gapi.client.tagmanager" {
     tagName?: string;
   }
 
-  declare interface tagmanager$SyncStatus {
+  declare interface gapi$client$tagmanager$SyncStatus {
     /**
      * Synchornization operation detected a merge conflict.
      */
@@ -827,20 +831,20 @@ declare module "gapi.client.tagmanager" {
     syncError?: boolean;
   }
 
-  declare interface tagmanager$SyncWorkspaceResponse {
+  declare interface gapi$client$tagmanager$SyncWorkspaceResponse {
     /**
      * The merge conflict after sync. If this field is not empty, the sync is still treated as successful. But a version cannot be created until all conflicts
      * are resolved.
      */
-    mergeConflict?: tagmanager$MergeConflict[];
+    mergeConflict?: gapi$client$tagmanager$MergeConflict[];
 
     /**
      * Indicates whether synchronization caused a merge conflict or sync error.
      */
-    syncStatus?: tagmanager$SyncStatus;
+    syncStatus?: gapi$client$tagmanager$SyncStatus;
   }
 
-  declare interface tagmanager$Tag {
+  declare interface gapi$client$tagmanager$Tag {
     /**
      * GTM Account ID.
      */
@@ -894,7 +898,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * The tag's parameters.
      */
-    parameter?: tagmanager$Parameter[];
+    parameter?: gapi$client$tagmanager$Parameter[];
 
     /**
      * Parent folder id.
@@ -910,7 +914,7 @@ declare module "gapi.client.tagmanager" {
      * User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's
      * priority can be a positive or negative value. The default value is 0.
      */
-    priority?: tagmanager$Parameter;
+    priority?: gapi$client$tagmanager$Parameter;
 
     /**
      * The end timestamp in milliseconds to schedule a tag.
@@ -925,7 +929,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * The list of setup tags. Currently we only allow one.
      */
-    setupTag?: tagmanager$SetupTag[];
+    setupTag?: gapi$client$tagmanager$SetupTag[];
 
     /**
      * Option to fire this tag.
@@ -958,7 +962,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$TeardownTag {
+  declare interface gapi$client$tagmanager$TeardownTag {
     /**
      * If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status.
      */
@@ -970,7 +974,7 @@ declare module "gapi.client.tagmanager" {
     tagName?: string;
   }
 
-  declare interface tagmanager$Timestamp {
+  declare interface gapi$client$tagmanager$Timestamp {
     /**
      * Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count
      * forward in time. Must be from 0 to 999,999,999 inclusive.
@@ -983,7 +987,7 @@ declare module "gapi.client.tagmanager" {
     seconds?: string;
   }
 
-  declare interface tagmanager$Trigger {
+  declare interface gapi$client$tagmanager$Trigger {
     /**
      * GTM Account ID.
      */
@@ -992,13 +996,13 @@ declare module "gapi.client.tagmanager" {
     /**
      * Used in the case of auto event tracking.
      */
-    autoEventFilter?: tagmanager$Condition[];
+    autoEventFilter?: gapi$client$tagmanager$Condition[];
 
     /**
      * Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of
      * validation). Only valid for Form Submission and Link Click triggers.
      */
-    checkValidation?: tagmanager$Parameter;
+    checkValidation?: gapi$client$tagmanager$Parameter;
 
     /**
      * GTM Container ID.
@@ -1008,22 +1012,22 @@ declare module "gapi.client.tagmanager" {
     /**
      * A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger.
      */
-    continuousTimeMinMilliseconds?: tagmanager$Parameter;
+    continuousTimeMinMilliseconds?: gapi$client$tagmanager$Parameter;
 
     /**
      * Used in the case of custom event, which is fired iff all Conditions are true.
      */
-    customEventFilter?: tagmanager$Condition[];
+    customEventFilter?: gapi$client$tagmanager$Condition[];
 
     /**
      * Name of the GTM event that is fired. Only valid for Timer triggers.
      */
-    eventName?: tagmanager$Parameter;
+    eventName?: gapi$client$tagmanager$Parameter;
 
     /**
      * The trigger will only fire iff all Conditions are true.
      */
-    filter?: tagmanager$Condition[];
+    filter?: gapi$client$tagmanager$Condition[];
 
     /**
      * The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified.
@@ -1034,28 +1038,28 @@ declare module "gapi.client.tagmanager" {
      * List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally.
      * Only valid for AMP scroll triggers.
      */
-    horizontalScrollPercentageList?: tagmanager$Parameter;
+    horizontalScrollPercentageList?: gapi$client$tagmanager$Parameter;
 
     /**
      * Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
      */
-    interval?: tagmanager$Parameter;
+    interval?: gapi$client$tagmanager$Parameter;
 
     /**
      * Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.
      */
-    intervalSeconds?: tagmanager$Parameter;
+    intervalSeconds?: gapi$client$tagmanager$Parameter;
 
     /**
      * Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page.
      * Only valid for Timer triggers.
      */
-    limit?: tagmanager$Parameter;
+    limit?: gapi$client$tagmanager$Parameter;
 
     /**
      * Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.
      */
-    maxTimerLengthSeconds?: tagmanager$Parameter;
+    maxTimerLengthSeconds?: gapi$client$tagmanager$Parameter;
 
     /**
      * Trigger display name.
@@ -1070,7 +1074,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * Additional parameters.
      */
-    parameter?: tagmanager$Parameter[];
+    parameter?: gapi$client$tagmanager$Parameter[];
 
     /**
      * Parent folder id.
@@ -1085,7 +1089,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.
      */
-    selector?: tagmanager$Parameter;
+    selector?: gapi$client$tagmanager$Parameter;
 
     /**
      * Auto generated link to the tag manager UI
@@ -1095,7 +1099,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
      */
-    totalTimeMinMilliseconds?: tagmanager$Parameter;
+    totalTimeMinMilliseconds?: gapi$client$tagmanager$Parameter;
 
     /**
      * The Trigger ID uniquely identifies the GTM Trigger.
@@ -1112,40 +1116,40 @@ declare module "gapi.client.tagmanager" {
      * work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't
      * exist until then. Only valid for Form Submit, Link Click and Timer triggers.
      */
-    uniqueTriggerId?: tagmanager$Parameter;
+    uniqueTriggerId?: gapi$client$tagmanager$Parameter;
 
     /**
      * List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only
      * valid for AMP scroll triggers.
      */
-    verticalScrollPercentageList?: tagmanager$Parameter;
+    verticalScrollPercentageList?: gapi$client$tagmanager$Parameter;
 
     /**
      * A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.
      */
-    visibilitySelector?: tagmanager$Parameter;
+    visibilitySelector?: gapi$client$tagmanager$Parameter;
 
     /**
      * A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.
      */
-    visiblePercentageMax?: tagmanager$Parameter;
+    visiblePercentageMax?: gapi$client$tagmanager$Parameter;
 
     /**
      * A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.
      */
-    visiblePercentageMin?: tagmanager$Parameter;
+    visiblePercentageMin?: gapi$client$tagmanager$Parameter;
 
     /**
      * Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later
      * simulating the default action). Only valid for Form Submission and Link Click triggers.
      */
-    waitForTags?: tagmanager$Parameter;
+    waitForTags?: gapi$client$tagmanager$Parameter;
 
     /**
      * How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click
      * triggers.
      */
-    waitForTagsTimeout?: tagmanager$Parameter;
+    waitForTagsTimeout?: gapi$client$tagmanager$Parameter;
 
     /**
      * GTM Workspace ID.
@@ -1153,7 +1157,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$UpdateWorkspaceProposalRequest {
+  declare interface gapi$client$tagmanager$UpdateWorkspaceProposalRequest {
     /**
      * When provided, this fingerprint must match the fingerprint of the proposal in storage.
      */
@@ -1175,11 +1179,11 @@ declare module "gapi.client.tagmanager" {
     status?: string;
   }
 
-  declare interface tagmanager$UserPermission {
+  declare interface gapi$client$tagmanager$UserPermission {
     /**
      * GTM Account access permissions.
      */
-    accountAccess?: tagmanager$AccountAccess;
+    accountAccess?: gapi$client$tagmanager$AccountAccess;
 
     /**
      * The Account ID uniquely identifies the GTM Account.
@@ -1189,7 +1193,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * GTM Container access permissions.
      */
-    containerAccess?: tagmanager$ContainerAccess[];
+    containerAccess?: gapi$client$tagmanager$ContainerAccess[];
 
     /**
      * User's email address.
@@ -1202,7 +1206,7 @@ declare module "gapi.client.tagmanager" {
     path?: string;
   }
 
-  declare interface tagmanager$Variable {
+  declare interface gapi$client$tagmanager$Variable {
     /**
      * GTM Account ID.
      */
@@ -1243,7 +1247,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * The variable's parameters.
      */
-    parameter?: tagmanager$Parameter[];
+    parameter?: gapi$client$tagmanager$Parameter[];
 
     /**
      * Parent folder id.
@@ -1286,7 +1290,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$Workspace {
+  declare interface gapi$client$tagmanager$Workspace {
     /**
      * GTM Account ID.
      */
@@ -1328,7 +1332,7 @@ declare module "gapi.client.tagmanager" {
     workspaceId?: string;
   }
 
-  declare interface tagmanager$WorkspaceProposal {
+  declare interface gapi$client$tagmanager$WorkspaceProposal {
     /**
      * List of authors for the workspace proposal.
      */
@@ -1360,7 +1364,7 @@ declare module "gapi.client.tagmanager" {
     status?: string;
   }
 
-  declare interface tagmanager$WorkspaceProposalHistory {
+  declare interface gapi$client$tagmanager$WorkspaceProposalHistory {
     /**
      * A user or reviewer comment.
      */
@@ -1374,7 +1378,7 @@ declare module "gapi.client.tagmanager" {
     /**
      * When this history event was added to the workspace proposal.
      */
-    createdTimestamp?: tagmanager$Timestamp;
+    createdTimestamp?: gapi$client$tagmanager$Timestamp;
 
     /**
      * A change in the proposal's status.
@@ -1387,14 +1391,14 @@ declare module "gapi.client.tagmanager" {
     type?: string;
   }
 
-  declare interface tagmanager$WorkspaceProposalHistoryComment {
+  declare interface gapi$client$tagmanager$WorkspaceProposalHistoryComment {
     /**
      * The contents of the reviewer or author comment.
      */
     content?: string;
   }
 
-  declare interface tagmanager$WorkspaceProposalHistoryStatusChange {
+  declare interface gapi$client$tagmanager$WorkspaceProposalHistoryStatusChange {
     /**
      * The new proposal status after that status change.
      */
@@ -1406,7 +1410,7 @@ declare module "gapi.client.tagmanager" {
     oldStatus?: string;
   }
 
-  declare interface tagmanager$WorkspaceProposalUser {
+  declare interface gapi$client$tagmanager$WorkspaceProposalUser {
     /**
      * Gaia id associated with a user, absent for the Google Tag Manager system.
      */
@@ -1418,7 +1422,7 @@ declare module "gapi.client.tagmanager" {
     type?: string;
   }
 
-  declare interface tagmanager$Zone {
+  declare interface gapi$client$tagmanager$Zone {
     /**
      * GTM Account ID.
      */
@@ -1480,11 +1484,11 @@ declare module "gapi.client.tagmanager" {
     zoneId?: string;
   }
 
-  declare interface tagmanager$ZoneBoundary {
+  declare interface gapi$client$tagmanager$ZoneBoundary {
     /**
      * The conditions that, when conjoined, make up the boundary.
      */
-    condition?: tagmanager$Condition[];
+    condition?: gapi$client$tagmanager$Condition[];
 
     /**
      * Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true.
@@ -1492,7 +1496,7 @@ declare module "gapi.client.tagmanager" {
     customEvaluationTriggerId?: string[];
   }
 
-  declare interface tagmanager$ZoneChildContainer {
+  declare interface gapi$client$tagmanager$ZoneChildContainer {
     /**
      * The zone's nickname for the child container.
      */
@@ -1504,7 +1508,7 @@ declare module "gapi.client.tagmanager" {
     publicId?: string;
   }
 
-  declare interface tagmanager$ZoneTypeRestriction {
+  declare interface gapi$client$tagmanager$ZoneTypeRestriction {
     /**
      * True if type restrictions have been enabled for this Zone.
      */
@@ -1516,7 +1520,7 @@ declare module "gapi.client.tagmanager" {
     whitelistedTypeId?: string[];
   }
 
-  declare interface tagmanager$EnvironmentsResource {
+  declare interface gapi$client$tagmanager$EnvironmentsResource {
     /**
      * Creates a GTM Environment.
      */
@@ -1561,7 +1565,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Environment>;
+    }): Request<gapi$client$tagmanager$Environment>;
 
     /**
      * Deletes a GTM Environment.
@@ -1653,7 +1657,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Environment>;
+    }): Request<gapi$client$tagmanager$Environment>;
 
     /**
      * Lists all GTM Environments of a GTM Container.
@@ -1704,7 +1708,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListEnvironmentsResponse>;
+    }): Request<gapi$client$tagmanager$ListEnvironmentsResponse>;
 
     /**
      * Updates a GTM Environment. This method supports patch semantics.
@@ -1755,7 +1759,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Environment>;
+    }): Request<gapi$client$tagmanager$Environment>;
 
     /**
      * Re-generates the authorization code for a GTM Environment.
@@ -1801,7 +1805,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Environment>;
+    }): Request<gapi$client$tagmanager$Environment>;
 
     /**
      * Updates a GTM Environment.
@@ -1852,10 +1856,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Environment>;
+    }): Request<gapi$client$tagmanager$Environment>;
   }
 
-  declare interface tagmanager$Version_headersResource {
+  declare interface gapi$client$tagmanager$Version_headersResource {
     /**
      * Gets the latest container version header
      */
@@ -1900,7 +1904,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersionHeader>;
+    }): Request<gapi$client$tagmanager$ContainerVersionHeader>;
 
     /**
      * Lists all Container Versions of a GTM Container.
@@ -1956,10 +1960,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListContainerVersionsResponse>;
+    }): Request<gapi$client$tagmanager$ListContainerVersionsResponse>;
   }
 
-  declare interface tagmanager$VersionsResource {
+  declare interface gapi$client$tagmanager$VersionsResource {
     /**
      * Deletes a Container Version.
      */
@@ -2055,7 +2059,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersion>;
+    }): Request<gapi$client$tagmanager$ContainerVersion>;
 
     /**
      * Gets the live (i.e. published) container version
@@ -2101,7 +2105,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersion>;
+    }): Request<gapi$client$tagmanager$ContainerVersion>;
 
     /**
      * Publishes a Container Version.
@@ -2152,7 +2156,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$PublishContainerVersionResponse>;
+    }): Request<gapi$client$tagmanager$PublishContainerVersionResponse>;
 
     /**
      * Sets the latest version used for synchronization of workspaces when detecting conflicts and errors.
@@ -2198,7 +2202,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersion>;
+    }): Request<gapi$client$tagmanager$ContainerVersion>;
 
     /**
      * Undeletes a Container Version.
@@ -2244,7 +2248,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersion>;
+    }): Request<gapi$client$tagmanager$ContainerVersion>;
 
     /**
      * Updates a Container Version.
@@ -2295,10 +2299,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ContainerVersion>;
+    }): Request<gapi$client$tagmanager$ContainerVersion>;
   }
 
-  declare interface tagmanager$Built_in_variablesResource {
+  declare interface gapi$client$tagmanager$Built_in_variablesResource {
     /**
      * Creates one or more GTM Built-In Variables.
      */
@@ -2348,7 +2352,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$CreateBuiltInVariableResponse>;
+    }): Request<gapi$client$tagmanager$CreateBuiltInVariableResponse>;
 
     /**
      * Deletes one or more GTM Built-In Variables.
@@ -2450,7 +2454,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListEnabledBuiltInVariablesResponse>;
+    }): Request<gapi$client$tagmanager$ListEnabledBuiltInVariablesResponse>;
 
     /**
      * Reverts changes to a GTM Built-In Variables in a GTM Workspace.
@@ -2501,10 +2505,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$RevertBuiltInVariableResponse>;
+    }): Request<gapi$client$tagmanager$RevertBuiltInVariableResponse>;
   }
 
-  declare interface tagmanager$FoldersResource {
+  declare interface gapi$client$tagmanager$FoldersResource {
     /**
      * Creates a GTM Folder.
      */
@@ -2549,7 +2553,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Folder>;
+    }): Request<gapi$client$tagmanager$Folder>;
 
     /**
      * Deletes a GTM Folder.
@@ -2646,7 +2650,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$FolderEntities>;
+    }): Request<gapi$client$tagmanager$FolderEntities>;
 
     /**
      * Gets a GTM Folder.
@@ -2692,7 +2696,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Folder>;
+    }): Request<gapi$client$tagmanager$Folder>;
 
     /**
      * Lists all GTM Folders of a Container.
@@ -2743,7 +2747,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListFoldersResponse>;
+    }): Request<gapi$client$tagmanager$ListFoldersResponse>;
 
     /**
      * Moves entities to a GTM Folder.
@@ -2855,7 +2859,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$RevertFolderResponse>;
+    }): Request<gapi$client$tagmanager$RevertFolderResponse>;
 
     /**
      * Updates a GTM Folder.
@@ -2906,10 +2910,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Folder>;
+    }): Request<gapi$client$tagmanager$Folder>;
   }
 
-  declare interface tagmanager$ProposalResource {
+  declare interface gapi$client$tagmanager$ProposalResource {
     /**
      * Creates a GTM Workspace Proposal.
      */
@@ -2954,7 +2958,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$WorkspaceProposal>;
+    }): Request<gapi$client$tagmanager$WorkspaceProposal>;
 
     /**
      * Deletes a GTM Workspace Proposal.
@@ -3003,7 +3007,7 @@ declare module "gapi.client.tagmanager" {
     }): Request<void>;
   }
 
-  declare interface tagmanager$TagsResource {
+  declare interface gapi$client$tagmanager$TagsResource {
     /**
      * Creates a GTM Tag.
      */
@@ -3048,7 +3052,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Tag>;
+    }): Request<gapi$client$tagmanager$Tag>;
 
     /**
      * Deletes a GTM Tag.
@@ -3140,7 +3144,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Tag>;
+    }): Request<gapi$client$tagmanager$Tag>;
 
     /**
      * Lists all GTM Tags of a Container.
@@ -3191,7 +3195,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListTagsResponse>;
+    }): Request<gapi$client$tagmanager$ListTagsResponse>;
 
     /**
      * Reverts changes to a GTM Tag in a GTM Workspace.
@@ -3242,7 +3246,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$RevertTagResponse>;
+    }): Request<gapi$client$tagmanager$RevertTagResponse>;
 
     /**
      * Updates a GTM Tag.
@@ -3293,10 +3297,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Tag>;
+    }): Request<gapi$client$tagmanager$Tag>;
   }
 
-  declare interface tagmanager$TriggersResource {
+  declare interface gapi$client$tagmanager$TriggersResource {
     /**
      * Creates a GTM Trigger.
      */
@@ -3341,7 +3345,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Trigger>;
+    }): Request<gapi$client$tagmanager$Trigger>;
 
     /**
      * Deletes a GTM Trigger.
@@ -3433,7 +3437,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Trigger>;
+    }): Request<gapi$client$tagmanager$Trigger>;
 
     /**
      * Lists all GTM Triggers of a Container.
@@ -3484,7 +3488,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListTriggersResponse>;
+    }): Request<gapi$client$tagmanager$ListTriggersResponse>;
 
     /**
      * Reverts changes to a GTM Trigger in a GTM Workspace.
@@ -3535,7 +3539,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$RevertTriggerResponse>;
+    }): Request<gapi$client$tagmanager$RevertTriggerResponse>;
 
     /**
      * Updates a GTM Trigger.
@@ -3586,10 +3590,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Trigger>;
+    }): Request<gapi$client$tagmanager$Trigger>;
   }
 
-  declare interface tagmanager$VariablesResource {
+  declare interface gapi$client$tagmanager$VariablesResource {
     /**
      * Creates a GTM Variable.
      */
@@ -3634,7 +3638,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Variable>;
+    }): Request<gapi$client$tagmanager$Variable>;
 
     /**
      * Deletes a GTM Variable.
@@ -3726,7 +3730,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Variable>;
+    }): Request<gapi$client$tagmanager$Variable>;
 
     /**
      * Lists all GTM Variables of a Container.
@@ -3777,7 +3781,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListVariablesResponse>;
+    }): Request<gapi$client$tagmanager$ListVariablesResponse>;
 
     /**
      * Reverts changes to a GTM Variable in a GTM Workspace.
@@ -3828,7 +3832,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$RevertVariableResponse>;
+    }): Request<gapi$client$tagmanager$RevertVariableResponse>;
 
     /**
      * Updates a GTM Variable.
@@ -3879,10 +3883,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Variable>;
+    }): Request<gapi$client$tagmanager$Variable>;
   }
 
-  declare interface tagmanager$WorkspacesResource {
+  declare interface gapi$client$tagmanager$WorkspacesResource {
     /**
      * Creates a Workspace.
      */
@@ -3927,7 +3931,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Workspace>;
+    }): Request<gapi$client$tagmanager$Workspace>;
 
     /**
      * Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created
@@ -3974,7 +3978,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$CreateContainerVersionResponse>;
+    }): Request<gapi$client$tagmanager$CreateContainerVersionResponse>;
 
     /**
      * Deletes a Workspace.
@@ -4066,7 +4070,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Workspace>;
+    }): Request<gapi$client$tagmanager$Workspace>;
 
     /**
      * Gets a GTM Workspace Proposal.
@@ -4112,7 +4116,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$WorkspaceProposal>;
+    }): Request<gapi$client$tagmanager$WorkspaceProposal>;
 
     /**
      * Finds conflicting and modified entities in the workspace.
@@ -4158,7 +4162,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$GetWorkspaceStatusResponse>;
+    }): Request<gapi$client$tagmanager$GetWorkspaceStatusResponse>;
 
     /**
      * Lists all Workspaces that belong to a GTM Container.
@@ -4209,7 +4213,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListWorkspacesResponse>;
+    }): Request<gapi$client$tagmanager$ListWorkspacesResponse>;
 
     /**
      * Quick previews a workspace by creating a fake container version from all entities in the provided workspace.
@@ -4255,7 +4259,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$QuickPreviewResponse>;
+    }): Request<gapi$client$tagmanager$QuickPreviewResponse>;
 
     /**
      * Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request.
@@ -4352,7 +4356,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$SyncWorkspaceResponse>;
+    }): Request<gapi$client$tagmanager$SyncWorkspaceResponse>;
 
     /**
      * Updates a Workspace.
@@ -4403,7 +4407,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Workspace>;
+    }): Request<gapi$client$tagmanager$Workspace>;
 
     /**
      * Updates a GTM Workspace Proposal.
@@ -4449,16 +4453,16 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$WorkspaceProposal>;
-    built_in_variables: tagmanager$Built_in_variablesResource;
-    folders: tagmanager$FoldersResource;
-    proposal: tagmanager$ProposalResource;
-    tags: tagmanager$TagsResource;
-    triggers: tagmanager$TriggersResource;
-    variables: tagmanager$VariablesResource;
+    }): Request<gapi$client$tagmanager$WorkspaceProposal>;
+    built_in_variables: gapi$client$tagmanager$Built_in_variablesResource;
+    folders: gapi$client$tagmanager$FoldersResource;
+    proposal: gapi$client$tagmanager$ProposalResource;
+    tags: gapi$client$tagmanager$TagsResource;
+    triggers: gapi$client$tagmanager$TriggersResource;
+    variables: gapi$client$tagmanager$VariablesResource;
   }
 
-  declare interface tagmanager$ContainersResource {
+  declare interface gapi$client$tagmanager$ContainersResource {
     /**
      * Creates a Container.
      */
@@ -4503,7 +4507,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Container>;
+    }): Request<gapi$client$tagmanager$Container>;
 
     /**
      * Deletes a Container.
@@ -4595,7 +4599,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Container>;
+    }): Request<gapi$client$tagmanager$Container>;
 
     /**
      * Lists all Containers that belongs to a GTM Account.
@@ -4646,7 +4650,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListContainersResponse>;
+    }): Request<gapi$client$tagmanager$ListContainersResponse>;
 
     /**
      * Updates a Container.
@@ -4697,14 +4701,14 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Container>;
-    environments: tagmanager$EnvironmentsResource;
-    version_headers: tagmanager$Version_headersResource;
-    versions: tagmanager$VersionsResource;
-    workspaces: tagmanager$WorkspacesResource;
+    }): Request<gapi$client$tagmanager$Container>;
+    environments: gapi$client$tagmanager$EnvironmentsResource;
+    version_headers: gapi$client$tagmanager$Version_headersResource;
+    versions: gapi$client$tagmanager$VersionsResource;
+    workspaces: gapi$client$tagmanager$WorkspacesResource;
   }
 
-  declare interface tagmanager$User_permissionsResource {
+  declare interface gapi$client$tagmanager$User_permissionsResource {
     /**
      * Creates a user's Account & Container access.
      */
@@ -4749,7 +4753,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$UserPermission>;
+    }): Request<gapi$client$tagmanager$UserPermission>;
 
     /**
      * Removes a user from the account, revoking access to it and all of its containers.
@@ -4841,7 +4845,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$UserPermission>;
+    }): Request<gapi$client$tagmanager$UserPermission>;
 
     /**
      * List all users that have access to the account along with Account and Container user access granted to each of them.
@@ -4892,7 +4896,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListUserPermissionsResponse>;
+    }): Request<gapi$client$tagmanager$ListUserPermissionsResponse>;
 
     /**
      * Updates a user's Account & Container access.
@@ -4938,10 +4942,10 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$UserPermission>;
+    }): Request<gapi$client$tagmanager$UserPermission>;
   }
 
-  declare interface tagmanager$AccountsResource {
+  declare interface gapi$client$tagmanager$AccountsResource {
     /**
      * Gets a GTM Account.
      */
@@ -4986,7 +4990,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Account>;
+    }): Request<gapi$client$tagmanager$Account>;
 
     /**
      * Lists all GTM Accounts that a user has access to.
@@ -5032,7 +5036,7 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$ListAccountsResponse>;
+    }): Request<gapi$client$tagmanager$ListAccountsResponse>;
 
     /**
      * Updates a GTM Account.
@@ -5083,8 +5087,8 @@ declare module "gapi.client.tagmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<tagmanager$Account>;
-    containers: tagmanager$ContainersResource;
-    user_permissions: tagmanager$User_permissionsResource;
+    }): Request<gapi$client$tagmanager$Account>;
+    containers: gapi$client$tagmanager$ContainersResource;
+    user_permissions: gapi$client$tagmanager$User_permissionsResource;
   }
 }
