@@ -1,7 +1,7 @@
 declare module "parse-torrent-file" {
   declare function ParseTorrentFile(
-    torrent: Buffer | ParseTorrentFile$ParseTorrentFile$Torrent
-  ): ParseTorrentFile$ParseTorrentFile$Instance;
+    torrent: Buffer | ParseTorrentFile$Torrent
+  ): ParseTorrentFile$Instance;
 
   declare var npm$namespace$ParseTorrentFile: {
     decode: typeof ParseTorrentFile$decode,
@@ -59,5 +59,5 @@ declare module "parse-torrent-file" {
     files?: ParseTorrentFile$ParsedFile[]
   } & Object;
 
-  declare module.exports: typeof ParseTorrentFile;
+  declare export default typeof ParseTorrentFile;
 }
