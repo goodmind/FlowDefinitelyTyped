@@ -83,5 +83,5 @@ declare function ngeohash$neighbors_int(
   bitDepth?: number
 ): number;
 declare module "ngeohash" {
-  declare module.exports: typeof ngeohash;
+  declare export default typeof ngeohash;
 }
