@@ -1,38 +1,42 @@
 declare module "gapi.client.deploymentmanager" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    deployments: typeof client$deployments,
-    manifests: typeof client$manifests,
-    operations: typeof client$operations,
-    resources: typeof client$resources,
-    types: typeof client$types
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    deployments: typeof gapi$client$deployments,
+    manifests: typeof gapi$client$manifests,
+    operations: typeof gapi$client$operations,
+    resources: typeof gapi$client$resources,
+    types: typeof gapi$client$types
   };
 
   /**
    * Load Google Cloud Deployment Manager API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "deploymentmanager",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "deploymentmanager",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$deployments: deploymentmanager$deploymentmanager$DeploymentsResource;
+  declare var gapi$client$deployments: deploymentmanager$DeploymentsResource;
 
-  declare var client$manifests: deploymentmanager$deploymentmanager$ManifestsResource;
+  declare var gapi$client$manifests: deploymentmanager$ManifestsResource;
 
-  declare var client$operations: deploymentmanager$deploymentmanager$OperationsResource;
+  declare var gapi$client$operations: deploymentmanager$OperationsResource;
 
-  declare var client$resources: deploymentmanager$deploymentmanager$ResourcesResource;
+  declare var gapi$client$resources: deploymentmanager$ResourcesResource;
 
-  declare var client$types: deploymentmanager$deploymentmanager$TypesResource;
+  declare var gapi$client$types: deploymentmanager$TypesResource;
 
-  declare interface deploymentmanager$AuditConfig {
+  declare interface gapi$client$deploymentmanager$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      */
@@ -46,7 +50,7 @@ declare module "gapi.client.deploymentmanager" {
     service?: string;
   }
 
-  declare interface deploymentmanager$AuditLogConfig {
+  declare interface gapi$client$deploymentmanager$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of permission. Follows the same format of [Binding.members][].
      */
@@ -58,14 +62,14 @@ declare module "gapi.client.deploymentmanager" {
     logType?: string;
   }
 
-  declare interface deploymentmanager$AuthorizationLoggingOptions {
+  declare interface gapi$client$deploymentmanager$AuthorizationLoggingOptions {
     /**
      * The type of the permission that was checked.
      */
     permissionType?: string;
   }
 
-  declare interface deploymentmanager$Binding {
+  declare interface gapi$client$deploymentmanager$Binding {
     /**
      * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings,
      * including their conditions, are examined independently. This field is GOOGLE_INTERNAL.
@@ -99,7 +103,7 @@ declare module "gapi.client.deploymentmanager" {
     role?: string;
   }
 
-  declare interface deploymentmanager$Condition {
+  declare interface gapi$client$deploymentmanager$Condition {
     /**
      * Trusted attributes supplied by the IAM system.
      */
@@ -131,14 +135,14 @@ declare module "gapi.client.deploymentmanager" {
     values?: string[];
   }
 
-  declare interface deploymentmanager$ConfigFile {
+  declare interface gapi$client$deploymentmanager$ConfigFile {
     /**
      * The contents of the file.
      */
     content?: string;
   }
 
-  declare interface deploymentmanager$Deployment {
+  declare interface gapi$client$deploymentmanager$Deployment {
     /**
      * An optional user-provided description of the deployment.
      */
@@ -204,12 +208,12 @@ declare module "gapi.client.deploymentmanager" {
     update?: deploymentmanager$DeploymentUpdate;
   }
 
-  declare interface deploymentmanager$DeploymentLabelEntry {
+  declare interface gapi$client$deploymentmanager$DeploymentLabelEntry {
     key?: string;
     value?: string;
   }
 
-  declare interface deploymentmanager$DeploymentUpdate {
+  declare interface gapi$client$deploymentmanager$DeploymentUpdate {
     /**
      * Output only. An optional user-provided description of the deployment after the current update has been applied.
      */
@@ -228,12 +232,12 @@ declare module "gapi.client.deploymentmanager" {
     manifest?: string;
   }
 
-  declare interface deploymentmanager$DeploymentUpdateLabelEntry {
+  declare interface gapi$client$deploymentmanager$DeploymentUpdateLabelEntry {
     key?: string;
     value?: string;
   }
 
-  declare interface deploymentmanager$DeploymentsCancelPreviewRequest {
+  declare interface gapi$client$deploymentmanager$DeploymentsCancelPreviewRequest {
     /**
      * Specifies a fingerprint for cancelPreview() requests. A fingerprint is a randomly generated value that must be provided in cancelPreview() requests to
      * perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to
@@ -245,11 +249,11 @@ declare module "gapi.client.deploymentmanager" {
     fingerprint?: string;
   }
 
-  declare interface deploymentmanager$DeploymentsListResponse {
+  declare interface gapi$client$deploymentmanager$DeploymentsListResponse {
     /**
      * Output only. The deployments contained in this response.
      */
-    client$deployments?: deploymentmanager$Deployment[];
+    deployments?: gapi$client$deploymentmanager$Deployment[];
 
     /**
      * Output only. A token used to continue a truncated list request.
@@ -257,7 +261,7 @@ declare module "gapi.client.deploymentmanager" {
     nextPageToken?: string;
   }
 
-  declare interface deploymentmanager$DeploymentsStopRequest {
+  declare interface gapi$client$deploymentmanager$DeploymentsStopRequest {
     /**
      * Specifies a fingerprint for stop() requests. A fingerprint is a randomly generated value that must be provided in stop() requests to perform optimistic
      * locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update
@@ -269,7 +273,7 @@ declare module "gapi.client.deploymentmanager" {
     fingerprint?: string;
   }
 
-  declare interface deploymentmanager$Expr {
+  declare interface gapi$client$deploymentmanager$Expr {
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
@@ -293,7 +297,7 @@ declare module "gapi.client.deploymentmanager" {
     title?: string;
   }
 
-  declare interface deploymentmanager$ImportFile {
+  declare interface gapi$client$deploymentmanager$ImportFile {
     /**
      * The contents of the file.
      */
@@ -305,7 +309,7 @@ declare module "gapi.client.deploymentmanager" {
     name?: string;
   }
 
-  declare interface deploymentmanager$LogConfig {
+  declare interface gapi$client$deploymentmanager$LogConfig {
     /**
      * Cloud audit options.
      */
@@ -322,11 +326,11 @@ declare module "gapi.client.deploymentmanager" {
     dataAccess?: deploymentmanager$LogConfigDataAccessOptions;
   }
 
-  declare interface deploymentmanager$LogConfigCloudAuditOptions {
+  declare interface gapi$client$deploymentmanager$LogConfigCloudAuditOptions {
     /**
      * Information used by the Cloud Audit Logging pipeline.
      */
-    authorizationLoggingOptions?: deploymentmanager$AuthorizationLoggingOptions;
+    authorizationLoggingOptions?: gapi$client$deploymentmanager$AuthorizationLoggingOptions;
 
     /**
      * The log_name to populate in the Cloud Audit Record.
@@ -334,7 +338,7 @@ declare module "gapi.client.deploymentmanager" {
     logName?: string;
   }
 
-  declare interface deploymentmanager$LogConfigCounterOptions {
+  declare interface gapi$client$deploymentmanager$LogConfigCounterOptions {
     /**
      * The field value to attribute.
      */
@@ -346,18 +350,18 @@ declare module "gapi.client.deploymentmanager" {
     metric?: string;
   }
 
-  declare interface deploymentmanager$LogConfigDataAccessOptions {
+  declare interface gapi$client$deploymentmanager$LogConfigDataAccessOptions {
     /**
      * Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now.
      */
     logMode?: string;
   }
 
-  declare interface deploymentmanager$Manifest {
+  declare interface gapi$client$deploymentmanager$Manifest {
     /**
      * Output only. The YAML configuration for this manifest.
      */
-    config?: deploymentmanager$ConfigFile;
+    config?: gapi$client$deploymentmanager$ConfigFile;
 
     /**
      * Output only. The fully-expanded configuration file, including any templates and references.
@@ -372,7 +376,7 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Output only. The imported files for this manifest.
      */
-    imports?: deploymentmanager$ImportFile[];
+    imports?: gapi$client$deploymentmanager$ImportFile[];
 
     /**
      * Output only. Timestamp when the manifest was created, in RFC3339 text format.
@@ -397,11 +401,11 @@ declare module "gapi.client.deploymentmanager" {
     selfLink?: string;
   }
 
-  declare interface deploymentmanager$ManifestsListResponse {
+  declare interface gapi$client$deploymentmanager$ManifestsListResponse {
     /**
      * Output only. Manifests contained in this list response.
      */
-    client$manifests?: deploymentmanager$Manifest[];
+    manifests?: gapi$client$deploymentmanager$Manifest[];
 
     /**
      * Output only. A token used to continue a truncated list request.
@@ -409,7 +413,7 @@ declare module "gapi.client.deploymentmanager" {
     nextPageToken?: string;
   }
 
-  declare interface deploymentmanager$Operation {
+  declare interface gapi$client$deploymentmanager$Operation {
     /**
      * [Output Only] Reserved for future use.
      */
@@ -579,7 +583,7 @@ declare module "gapi.client.deploymentmanager" {
     zone?: string;
   }
 
-  declare interface deploymentmanager$OperationsListResponse {
+  declare interface gapi$client$deploymentmanager$OperationsListResponse {
     /**
      * Output only. A token used to continue a truncated list request.
      */
@@ -588,19 +592,19 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Output only. Operations contained in this list response.
      */
-    client$operations?: deploymentmanager$Operation[];
+    operations?: gapi$client$deploymentmanager$Operation[];
   }
 
-  declare interface deploymentmanager$Policy {
+  declare interface gapi$client$deploymentmanager$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: deploymentmanager$AuditConfig[];
+    auditConfigs?: gapi$client$deploymentmanager$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`. `bindings` with no members will result in an error.
      */
-    bindings?: deploymentmanager$Binding[];
+    bindings?: gapi$client$deploymentmanager$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly
@@ -627,7 +631,7 @@ declare module "gapi.client.deploymentmanager" {
     version?: number;
   }
 
-  declare interface deploymentmanager$Resource {
+  declare interface gapi$client$deploymentmanager$Resource {
     /**
      * The Access Control Policy set on this resource.
      */
@@ -718,18 +722,18 @@ declare module "gapi.client.deploymentmanager" {
     }>;
   }
 
-  declare interface deploymentmanager$ResourceAccessControl {
+  declare interface gapi$client$deploymentmanager$ResourceAccessControl {
     /**
      * The GCP IAM Policy to set on the resource.
      */
     gcpIamPolicy?: string;
   }
 
-  declare interface deploymentmanager$ResourceUpdate {
+  declare interface gapi$client$deploymentmanager$ResourceUpdate {
     /**
      * The Access Control Policy to set on this resource after updating the resource itself.
      */
-    accessControl?: deploymentmanager$ResourceAccessControl;
+    accessControl?: gapi$client$deploymentmanager$ResourceAccessControl;
 
     /**
      * Output only. If errors are generated during update of the resource, this field will be populated.
@@ -816,7 +820,7 @@ declare module "gapi.client.deploymentmanager" {
     }>;
   }
 
-  declare interface deploymentmanager$ResourcesListResponse {
+  declare interface gapi$client$deploymentmanager$ResourcesListResponse {
     /**
      * A token used to continue a truncated list request.
      */
@@ -825,10 +829,10 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Resources contained in this list response.
      */
-    client$resources?: deploymentmanager$Resource[];
+    resources?: gapi$client$deploymentmanager$Resource[];
   }
 
-  declare interface deploymentmanager$Rule {
+  declare interface gapi$client$deploymentmanager$Rule {
     /**
      * Required
      */
@@ -837,7 +841,7 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Additional restrictions that must be met. All conditions must pass for the rule to match.
      */
-    conditions?: deploymentmanager$Condition[];
+    conditions?: gapi$client$deploymentmanager$Condition[];
 
     /**
      * Human-readable description of the rule.
@@ -852,7 +856,7 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
      */
-    logConfigs?: deploymentmanager$LogConfig[];
+    logConfigs?: gapi$client$deploymentmanager$LogConfig[];
 
     /**
      * If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
@@ -866,34 +870,34 @@ declare module "gapi.client.deploymentmanager" {
     permissions?: string[];
   }
 
-  declare interface deploymentmanager$TargetConfiguration {
+  declare interface gapi$client$deploymentmanager$TargetConfiguration {
     /**
      * The configuration to use for this deployment.
      */
-    config?: deploymentmanager$ConfigFile;
+    config?: gapi$client$deploymentmanager$ConfigFile;
 
     /**
      * Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in
      * order to use the file in a template.
      */
-    imports?: deploymentmanager$ImportFile[];
+    imports?: gapi$client$deploymentmanager$ImportFile[];
   }
 
-  declare interface deploymentmanager$TestPermissionsRequest {
+  declare interface gapi$client$deploymentmanager$TestPermissionsRequest {
     /**
      * The set of permissions to check for the 'resource'. Permissions with wildcards (such as '&#42;' or 'storage.&#42;') are not allowed.
      */
     permissions?: string[];
   }
 
-  declare interface deploymentmanager$TestPermissionsResponse {
+  declare interface gapi$client$deploymentmanager$TestPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
      */
     permissions?: string[];
   }
 
-  declare interface deploymentmanager$Type {
+  declare interface gapi$client$deploymentmanager$Type {
     /**
      * Output only. Unique identifier for the resource; defined by the server.
      */
@@ -912,7 +916,7 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Output only. The Operation that most recently ran, or is currently running, on this type.
      */
-    operation?: deploymentmanager$Operation;
+    operation?: gapi$client$deploymentmanager$Operation;
 
     /**
      * Output only. Self link for the type.
@@ -920,7 +924,7 @@ declare module "gapi.client.deploymentmanager" {
     selfLink?: string;
   }
 
-  declare interface deploymentmanager$TypesListResponse {
+  declare interface gapi$client$deploymentmanager$TypesListResponse {
     /**
      * A token used to continue a truncated list request.
      */
@@ -929,10 +933,10 @@ declare module "gapi.client.deploymentmanager" {
     /**
      * Output only. A list of resource types supported by Deployment Manager.
      */
-    client$types?: deploymentmanager$Type[];
+    types?: gapi$client$deploymentmanager$Type[];
   }
 
-  declare interface deploymentmanager$DeploymentsResource {
+  declare interface gapi$client$deploymentmanager$DeploymentsResource {
     /**
      * Cancels and removes the preview currently associated with the deployment.
      */
@@ -982,7 +986,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Deletes a deployment and all of the resources in the deployment.
@@ -1038,7 +1042,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Gets information about a specific deployment.
@@ -1089,7 +1093,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Deployment>;
+    }): Request<gapi$client$deploymentmanager$Deployment>;
 
     /**
      * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1140,7 +1144,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Policy>;
+    }): Request<gapi$client$deploymentmanager$Policy>;
 
     /**
      * Creates a deployment and all of the resources described by the deployment manifest.
@@ -1194,7 +1198,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Lists all deployments for a given project.
@@ -1280,7 +1284,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$DeploymentsListResponse>;
+    }): Request<gapi$client$deploymentmanager$DeploymentsListResponse>;
 
     /**
      * Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.
@@ -1350,7 +1354,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -1401,7 +1405,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Policy>;
+    }): Request<gapi$client$deploymentmanager$Policy>;
 
     /**
      * Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.
@@ -1452,7 +1456,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1503,7 +1507,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$TestPermissionsResponse>;
+    }): Request<gapi$client$deploymentmanager$TestPermissionsResponse>;
 
     /**
      * Updates a deployment and all of the resources described by the deployment manifest.
@@ -1573,10 +1577,10 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
   }
 
-  declare interface deploymentmanager$ManifestsResource {
+  declare interface gapi$client$deploymentmanager$ManifestsResource {
     /**
      * Gets information about a specific manifest.
      */
@@ -1631,7 +1635,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Manifest>;
+    }): Request<gapi$client$deploymentmanager$Manifest>;
 
     /**
      * Lists all manifests for a given deployment.
@@ -1722,10 +1726,10 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$ManifestsListResponse>;
+    }): Request<gapi$client$deploymentmanager$ManifestsListResponse>;
   }
 
-  declare interface deploymentmanager$OperationsResource {
+  declare interface gapi$client$deploymentmanager$OperationsResource {
     /**
      * Gets information about a specific operation.
      */
@@ -1775,7 +1779,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Operation>;
+    }): Request<gapi$client$deploymentmanager$Operation>;
 
     /**
      * Lists all operations for a project.
@@ -1861,10 +1865,10 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$OperationsListResponse>;
+    }): Request<gapi$client$deploymentmanager$OperationsListResponse>;
   }
 
-  declare interface deploymentmanager$ResourcesResource {
+  declare interface gapi$client$deploymentmanager$ResourcesResource {
     /**
      * Gets information about a single resource.
      */
@@ -1919,7 +1923,7 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$Resource>;
+    }): Request<gapi$client$deploymentmanager$Resource>;
 
     /**
      * Lists all resources in a given deployment.
@@ -2010,10 +2014,10 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$ResourcesListResponse>;
+    }): Request<gapi$client$deploymentmanager$ResourcesListResponse>;
   }
 
-  declare interface deploymentmanager$TypesResource {
+  declare interface gapi$client$deploymentmanager$TypesResource {
     /**
      * Lists all resource types for Deployment Manager.
      */
@@ -2098,6 +2102,6 @@ declare module "gapi.client.deploymentmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<deploymentmanager$TypesListResponse>;
+    }): Request<gapi$client$deploymentmanager$TypesListResponse>;
   }
 }
