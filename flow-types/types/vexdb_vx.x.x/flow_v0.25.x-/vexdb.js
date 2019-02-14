@@ -544,7 +544,7 @@ declare module "vexdb" {
     params: { [key: string]: any }
   ): { [key: string]: any };
 
-  declare function cache$setTTL(cache$ttl: number): { [key: string]: any };
+  declare function cache$setTTL(ttl: number): { [key: string]: any };
 
   declare var npm$namespace$constant: {
     header: typeof constant$header,
@@ -560,7 +560,7 @@ declare module "vexdb" {
   declare var constant$settings: {
     baseURL: string,
     cache: {
-      cache$ttl: number
+      ttl: number
     },
     headers: {},
     live: {
