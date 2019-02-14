@@ -82,38 +82,29 @@ declare module "plupload" {
     reset(): void;
   }
   declare interface plupload_event {
-    (uploader: plupload$plupload$Uploader): any;
+    (uploader: plupload$Uploader): any;
   }
   declare interface plupload_event_file {
-    (uploader: plupload$plupload$Uploader, file: any): any;
+    (uploader: plupload$Uploader, file: any): any;
   }
   declare interface plupload_event_files {
-    (uploader: plupload$plupload$Uploader, files: any[]): any;
+    (uploader: plupload$Uploader, files: any[]): any;
   }
   declare interface plupload_event_OptionChanged {
-    (
-      uploader: plupload$plupload$Uploader,
-      name: string,
-      value: any,
-      oldValue: any
-    ): any;
+    (uploader: plupload$Uploader, name: string, value: any, oldValue: any): any;
   }
   declare interface plupload_event_FileUploaded {
-    (
-      uploader: plupload$plupload$Uploader,
-      file: any,
-      response: plupload_response
-    ): any;
+    (uploader: plupload$Uploader, file: any, response: plupload_response): any;
   }
   declare interface plupload_event_ChunkUploaded {
     (
-      uploader: plupload$plupload$Uploader,
+      uploader: plupload$Uploader,
       file: any,
       response: plupload_chunk_response
     ): any;
   }
   declare interface plupload_event_Error {
-    (uploader: plupload$plupload$Uploader, error: plupload_error): any;
+    (uploader: plupload$Uploader, error: plupload_error): any;
   }
   declare interface plupload_events {
     Init?: plupload_event;
@@ -197,7 +188,9 @@ declare module "plupload" {
     MEMORY_ERROR: typeof plupload$MEMORY_ERROR,
     IMAGE_DIMENSIONS_ERROR: typeof plupload$IMAGE_DIMENSIONS_ERROR,
     mimeTypes: typeof plupload$mimeTypes,
-    ua: typeof plupload$ua
+    ua: typeof plupload$ua,
+
+    Uploader: typeof plupload$Uploader
   };
   declare class plupload$Uploader {
     constructor(settings: plupload_settings): this;
@@ -349,7 +342,7 @@ declare module "plupload" {
      * Dispatches the specified event name and its arguments to all listeners.
      * @method trigger
      * @param {String} name Event name to fire.
-     * @param {Object..} Multiple arguments to pass along to the listener functions.
+     * @param {Object.} Multiple arguments to pass along to the listener functions.
      */
     trigger(name: string, Multiple: any): any;
     hasEventListener(name: string): any;
@@ -517,7 +510,7 @@ declare module "plupload" {
    * @method extend
    * @static
    * @param {Object} target Object to extend.
-   * @param {Object..} obj Multiple objects to extend with.
+   * @param {Object.} obj Multiple objects to extend with.
    * @return {Object} Same as target, the extended object.
    */
   declare function plupload$extend(target: any): any;
@@ -532,7 +525,7 @@ declare module "plupload" {
    * @static
    * @return {String} Virtually unique id.
    */
-  declare function plupload$guid(plupload$guid: string): string;
+  declare function plupload$guid(guid: string): string;
 
   /**
    * Utility methods *
