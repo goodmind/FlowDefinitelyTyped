@@ -1,8 +1,10 @@
 declare module "nouislider" {
-  declare module.exports: typeof noUiSlider$noUiSlider;
+  declare export default typeof noUiSlider;
 
   declare var npm$namespace$noUiSlider: {
-    create: typeof noUiSlider$create
+    create: typeof noUiSlider$create,
+
+    PipFilterResult: typeof noUiSlider$PipFilterResult
   };
 
   /**
@@ -11,7 +13,7 @@ declare module "nouislider" {
   declare function noUiSlider$create(
     target: HTMLElement,
     options: noUiSlider$Options
-  ): noUiSlider$noUiSlider.noUiSlider$noUiSlider;
+  ): noUiSlider$noUiSlider;
 
   declare interface noUiSlider$Options {
     /**
@@ -168,25 +170,11 @@ declare module "nouislider" {
     stepped?: boolean;
   }
 
-  declare class noUiSlider$PipFilterResult {
-    constructor(...args: empty): mixed;
-    static +NoValue: Class<noUiSlider$PipFilterResult__NoValue> &
-      noUiSlider$PipFilterResult__NoValue &
-      0; // 0
-    static +LargeValue: Class<noUiSlider$PipFilterResult__LargeValue> &
-      noUiSlider$PipFilterResult__LargeValue &
-      1; // 1
-    static +SmallValue: Class<noUiSlider$PipFilterResult__SmallValue> &
-      noUiSlider$PipFilterResult__SmallValue &
-      2; // 2
-  }
-
-  declare class noUiSlider$PipFilterResult__NoValue
-    mixins noUiSlider$PipFilterResult {}
-  declare class noUiSlider$PipFilterResult__LargeValue
-    mixins noUiSlider$PipFilterResult {}
-  declare class noUiSlider$PipFilterResult__SmallValue
-    mixins noUiSlider$PipFilterResult {}
+  declare var noUiSlider$PipFilterResult: {|
+    +NoValue: 0, // 0
+    +LargeValue: 1, // 1
+    +SmallValue: 2 // 2
+  |};
 
   declare interface noUiSlider$Callback {
     /**
@@ -245,6 +233,6 @@ declare module "nouislider" {
   }
 
   declare type noUiSlider$Instance = {
-    noUiSlider$noUiSlider: noUiSlider$noUiSlider
+    noUiSlider: noUiSlider$noUiSlider
   } & HTMLElement;
 }
