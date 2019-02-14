@@ -43,38 +43,38 @@ declare module "streamtest" {
   };
 
   /**
- * Create a readable stream streaming 'chunks' each after 'timeout'
- * milliseconds and then end. Useful for testing buffer based streams.
- * @param chunks The input chunks for the readable stream
- * @param timeout The timeout (in milliseconds) used to space chunks.
-Defaults to 0.
- * @returns A new readable stream
- */
+   * Create a readable stream streaming 'chunks' each after 'timeout'
+   * milliseconds and then end. Useful for testing buffer based streams.
+   * @param chunks The input chunks for the readable stream
+   * @param timeout The timeout (in milliseconds) used to space chunks.
+   * Defaults to 0.
+   * @returns A new readable stream
+   */
   declare function v2$fromChunks(chunks: Chunk[], timeout?: number): Readable;
 
   /**
- * Create a readable stream streaming 'objects' each after 'timeout'
- * milliseconds and then end. Useful for testing objectMode based streams.
- * @param chunks The input objects for the readable stream
- * @param timeout The timeout (in milliseconds) used to space chunks.
-Defaults to 0.
- * @returns A new readable stream
- */
+   * Create a readable stream streaming 'objects' each after 'timeout'
+   * milliseconds and then end. Useful for testing objectMode based streams.
+   * @param chunks The input objects for the readable stream
+   * @param timeout The timeout (in milliseconds) used to space chunks.
+   * Defaults to 0.
+   * @returns A new readable stream
+   */
   declare function v2$fromObjects(
     objects: NonNull[],
     timeout?: number
   ): Readable;
 
   /**
- * Create a readable stream streaming 'chunks' each after 'timeout'
- * milliseconds, emit 'err,' and then end. Useful for testing buffer based
- * streams.
- * @param err The error to emit
- * @param chunks The input objects for the readable stream
- * @param timeout The timeout (in milliseconds) used to space chunks.
-Defaults to 0.
- * @returns A new readable stream
- */
+   * Create a readable stream streaming 'chunks' each after 'timeout'
+   * milliseconds, emit 'err,' and then end. Useful for testing buffer based
+   * streams.
+   * @param err The error to emit
+   * @param chunks The input objects for the readable stream
+   * @param timeout The timeout (in milliseconds) used to space chunks.
+   * Defaults to 0.
+   * @returns A new readable stream
+   */
   declare function v2$fromErroredChunks(
     err: Error,
     chunks: Chunk[],
@@ -82,15 +82,15 @@ Defaults to 0.
   ): Readable;
 
   /**
- * Create a readable stream streaming 'objects' each after 'timeout'
- * milliseconds, emit 'err,' and then end. Useful for testing objectMode
- * based streams.
- * @param err The error to emit
- * @param chunks The input objects for the readable stream
- * @param timeout The timeout (in milliseconds) used to space chunks.
-Defaults to 0.
- * @returns A new readable stream
- */
+   * Create a readable stream streaming 'objects' each after 'timeout'
+   * milliseconds, emit 'err,' and then end. Useful for testing objectMode
+   * based streams.
+   * @param err The error to emit
+   * @param chunks The input objects for the readable stream
+   * @param timeout The timeout (in milliseconds) used to space chunks.
+   * Defaults to 0.
+   * @returns A new readable stream
+   */
   declare function v2$fromErroredObjects(
     err: Error,
     objects: NonNull[],
@@ -98,34 +98,34 @@ Defaults to 0.
   ): Readable;
 
   /**
- * Create a writable stream collecting written chunks and call the passed
- * callback function when it finishes.
- * @param cb The callback function. Takes an error as its first argument and
-an array of chunks as its second
- * @returns A new writable stream
- */
+   * Create a writable stream collecting written chunks and call the passed
+   * callback function when it finishes.
+   * @param cb The callback function. Takes an error as its first argument and
+   * an array of chunks as its second
+   * @returns A new writable stream
+   */
   declare function v2$toChunks(
     cb: (err: Error, chunks: Chunk[]) => any
   ): Writable;
 
   /**
- * Create a writable stream collecting written chunks and call the passed
- * callback function when it finishes.
- * @param cb The callback function. Takes an error as its first argument and
-an array of objects as its second
- * @returns A new writable stream
- */
+   * Create a writable stream collecting written chunks and call the passed
+   * callback function when it finishes.
+   * @param cb The callback function. Takes an error as its first argument and
+   * an array of objects as its second
+   * @returns A new writable stream
+   */
   declare function v2$toObjects(
     cb: (err: Error, objects: NonNull[]) => any
   ): Writable;
 
   /**
- * Create a writable stream collecting written chunks and call the passed
- * callback function when it finishes.
- * @param cb The callback function. Takes an error as its first argument and
-an string as its second
- * @returns A new writable stream
- */
+   * Create a writable stream collecting written chunks and call the passed
+   * callback function when it finishes.
+   * @param cb The callback function. Takes an error as its first argument and
+   * an string as its second
+   * @returns A new writable stream
+   */
   declare function v2$toText(cb: (err: Error, text: string) => any): Writable;
 
   /**
