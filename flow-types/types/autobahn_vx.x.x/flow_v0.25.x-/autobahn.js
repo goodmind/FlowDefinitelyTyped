@@ -5,7 +5,17 @@ declare module "autobahn" {
     util: typeof autobahn$util,
     log: typeof autobahn$log,
     transports: typeof autobahn$transports,
-    auth_cra: typeof autobahn$auth_cra
+    auth_cra: typeof autobahn$auth_cra,
+
+    Session: typeof autobahn$Session,
+    Invocation: typeof autobahn$Invocation,
+    Event: typeof autobahn$Event,
+    Result: typeof autobahn$Result,
+    Error: typeof autobahn$Error,
+    Subscription: typeof autobahn$Subscription,
+    Registration: typeof autobahn$Registration,
+    Publication: typeof autobahn$Publication,
+    Connection: typeof autobahn$Connection
   };
   declare export class autobahn$Session {
     id: number;
@@ -59,7 +69,7 @@ declare module "autobahn" {
     procedure: string;
   }
 
-  declare class autobahn$Invocation mixins autobahn$IInvocation {
+  declare class autobahn$Invocation mixins IInvocation {
     constructor(caller?: number, progress?: boolean, procedure?: string): this;
     procedure: string;
   }
@@ -70,7 +80,7 @@ declare module "autobahn" {
     topic: string;
   }
 
-  declare class autobahn$Event mixins autobahn$IEvent {
+  declare class autobahn$Event mixins IEvent {
     constructor(publication?: number, publisher?: string, topic?: string): this;
     publication: number;
     topic: string;
@@ -81,7 +91,7 @@ declare module "autobahn" {
     kwargs: any;
   }
 
-  declare class autobahn$Result mixins autobahn$IResult {
+  declare class autobahn$Result mixins IResult {
     constructor(args?: any[], kwargs?: any): this;
     args: any[];
     kwargs: any;
@@ -93,7 +103,7 @@ declare module "autobahn" {
     kwargs: any;
   }
 
-  declare class autobahn$Error mixins autobahn$IError {
+  declare class autobahn$Error mixins IError {
     constructor(error?: string, args?: any[], kwargs?: any): this;
     error: string;
     args: any[];
@@ -116,7 +126,7 @@ declare module "autobahn" {
     unsubscribe(): When.Promise<any>;
   }
 
-  declare class autobahn$Subscription mixins autobahn$ISubscription {
+  declare class autobahn$Subscription mixins ISubscription {
     constructor(
       topic?: string,
       handler?: autobahn$SubscribeHandler,
@@ -149,7 +159,7 @@ declare module "autobahn" {
     unregister(): When.Promise<any>;
   }
 
-  declare class autobahn$Registration mixins autobahn$IRegistration {
+  declare class autobahn$Registration mixins IRegistration {
     constructor(
       procedure?: string,
       endpoint?: autobahn$RegisterEndpoint,
@@ -170,7 +180,7 @@ declare module "autobahn" {
     id: number;
   }
 
-  declare class autobahn$Publication mixins autobahn$IPublication {
+  declare class autobahn$Publication mixins IPublication {
     constructor(id: number): this;
     id: number;
   }
