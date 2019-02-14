@@ -1,33 +1,37 @@
 declare module "gapi.client.searchconsole" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    urlTestingTools: typeof client$urlTestingTools
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    urlTestingTools: typeof gapi$client$urlTestingTools
   };
 
   /**
    * Load Google Search Console URL Testing Tools API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "searchconsole",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "searchconsole",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$urlTestingTools: searchconsole$searchconsole$UrlTestingToolsResource;
+  declare var gapi$client$urlTestingTools: searchconsole$UrlTestingToolsResource;
 
-  declare interface searchconsole$BlockedResource {
+  declare interface gapi$client$searchconsole$BlockedResource {
     /**
      * URL of the blocked resource.
      */
     url?: string;
   }
 
-  declare interface searchconsole$Image {
+  declare interface gapi$client$searchconsole$Image {
     /**
      * Image data in format determined by the mime type. Currently, the format
      * will always be "image/png", but this might change in the future.
@@ -40,21 +44,21 @@ declare module "gapi.client.searchconsole" {
     mimeType?: string;
   }
 
-  declare interface searchconsole$MobileFriendlyIssue {
+  declare interface gapi$client$searchconsole$MobileFriendlyIssue {
     /**
      * Rule violated.
      */
     rule?: string;
   }
 
-  declare interface searchconsole$ResourceIssue {
+  declare interface gapi$client$searchconsole$ResourceIssue {
     /**
      * Describes a blocked resource issue.
      */
-    blockedResource?: searchconsole$BlockedResource;
+    blockedResource?: gapi$client$searchconsole$BlockedResource;
   }
 
-  declare interface searchconsole$RunMobileFriendlyTestRequest {
+  declare interface gapi$client$searchconsole$RunMobileFriendlyTestRequest {
     /**
      * Whether or not screenshot is requested. Default is false.
      */
@@ -66,7 +70,7 @@ declare module "gapi.client.searchconsole" {
     url?: string;
   }
 
-  declare interface searchconsole$RunMobileFriendlyTestResponse {
+  declare interface gapi$client$searchconsole$RunMobileFriendlyTestResponse {
     /**
      * Test verdict, whether the page is mobile friendly or not.
      */
@@ -75,17 +79,17 @@ declare module "gapi.client.searchconsole" {
     /**
      * List of mobile-usability issues.
      */
-    mobileFriendlyIssues?: searchconsole$MobileFriendlyIssue[];
+    mobileFriendlyIssues?: gapi$client$searchconsole$MobileFriendlyIssue[];
 
     /**
      * Information about embedded resources issues.
      */
-    resourceIssues?: searchconsole$ResourceIssue[];
+    resourceIssues?: gapi$client$searchconsole$ResourceIssue[];
 
     /**
      * Screenshot of the requested URL.
      */
-    screenshot?: searchconsole$Image;
+    screenshot?: gapi$client$searchconsole$Image;
 
     /**
      * Final state of the test, can be either complete or an error.
@@ -93,7 +97,7 @@ declare module "gapi.client.searchconsole" {
     testStatus?: searchconsole$TestStatus;
   }
 
-  declare interface searchconsole$TestStatus {
+  declare interface gapi$client$searchconsole$TestStatus {
     /**
      * Error details if applicable.
      */
@@ -105,7 +109,7 @@ declare module "gapi.client.searchconsole" {
     status?: string;
   }
 
-  declare interface searchconsole$MobileFriendlyTestResource {
+  declare interface gapi$client$searchconsole$MobileFriendlyTestResource {
     /**
      * Runs Mobile-Friendly Test for a given URL.
      */
@@ -174,10 +178,10 @@ declare module "gapi.client.searchconsole" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<searchconsole$RunMobileFriendlyTestResponse>;
+    }): Request<gapi$client$searchconsole$RunMobileFriendlyTestResponse>;
   }
 
-  declare interface searchconsole$UrlTestingToolsResource {
-    mobileFriendlyTest: searchconsole$MobileFriendlyTestResource;
+  declare interface gapi$client$searchconsole$UrlTestingToolsResource {
+    mobileFriendlyTest: gapi$client$searchconsole$MobileFriendlyTestResource;
   }
 }
