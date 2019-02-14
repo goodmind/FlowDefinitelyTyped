@@ -1,9 +1,9 @@
 declare module "loopback" {
   import typeof * as core from "express-serve-static-core";
 
-  import type { Foxx$NextFunction, inert$RequestHandler } from "express";
+  import type { NextFunction, RequestHandler } from "express";
 
-  declare function l(): l$l$LoopBackApplication;
+  declare function l(): l$LoopBackApplication;
 
   declare var npm$namespace$l: {
     favicon: typeof l$favicon,
@@ -12,21 +12,38 @@ declare module "loopback" {
     status: typeof l$status,
     rewriteUserLiteral: typeof l$rewriteUserLiteral,
     token: typeof l$token,
-    urlNotFound: typeof l$urlNotFound
+    urlNotFound: typeof l$urlNotFound,
+
+    loopback: typeof l$loopback,
+    Registry: typeof l$Registry,
+    AccessContext: typeof l$AccessContext,
+    AccessRequest: typeof l$AccessRequest,
+    Principal: typeof l$Principal,
+    Model: typeof l$Model,
+    SharedClass: typeof l$SharedClass,
+    PersistedModel: typeof l$PersistedModel,
+    AccessToken: typeof l$AccessToken,
+    ACL: typeof l$ACL,
+    Application: typeof l$Application,
+    Change: typeof l$Change,
+    Conflict: typeof l$Conflict,
+    Email: typeof l$Email,
+    KeyValueModel: typeof l$KeyValueModel,
+    Role: typeof l$Role,
+    RoleMapping: typeof l$RoleMapping,
+    Scope: typeof l$Scope,
+    User: typeof l$User
   };
 
   /**
    * General type for a callback to an async function.
    */
-  declare type l$CallbackWithoutResult = (err: EventType$Error | null) => any;
+  declare type l$CallbackWithoutResult = (err: Error | null) => any;
 
-  declare type l$CallbackWithResult<T> = (
-    err: EventType$Error | null,
-    result: T
-  ) => any;
+  declare type l$CallbackWithResult<T> = (err: Error | null, result: T) => any;
 
   declare type l$CallbackWithMultipleResults<T, G> = (
-    err: EventType$Error | null,
+    err: Error | null,
     arg0: T,
     arg1: G
   ) => any;
@@ -52,24 +69,24 @@ declare module "loopback" {
     start(): void,
 
     /**
- * Register a connector
- * When a new data-source is being added via `app.dataSource`, the connector
- * name is looked up in the registered connectors first
- * Connectors are required to be explicitly registered only for applications
- * using browserify, because browserify does not support dynamic require,
- * which is used by LoopBack to automatically load the connector module
- * @param {string} name Name of the connector, e.g. 'mysql'.
- * @param {any} connector Connector object as returne
-by `require('loopback-connector-{name}')`
- */
-    connector(skin$name: string, connector: any): void,
+     * Register a connector
+     * When a new data-source is being added via `app.dataSource`, the connector
+     * name is looked up in the registered connectors first
+     * Connectors are required to be explicitly registered only for applications
+     * using browserify, because browserify does not support dynamic require,
+     * which is used by LoopBack to automatically load the connector module
+     * @param {string} name Name of the connector, e.g. 'mysql'.
+     * @param {any} connector Connector object as returne
+     * by `require('loopback-connector-{name}')`
+     */
+    connector(name: string, connector: any): void,
 
     /**
      * Define a DataSource
      * @param {string} name The data source name
      * @param {any} config The data source confi
      */
-    dataSource(skin$name: string, main$config: any): void,
+    dataSource(name: string, config: any): void,
 
     /**
      * Enable app wide authentication
@@ -77,51 +94,51 @@ by `require('loopback-connector-{name}')`
     enableAuth(): void,
 
     /**
- * Listen for connections and update the configured port
- * When there are no parameters or there is only one callback parameter,
- * the server will listen on `app.get('host')` and `app.get('port')`
- * For example, to listen on host/port configured in app config:
- * ```js
- *              * app.listen();
- *              * ``
- *              * Otherwise all arguments are forwarded to `http.Server.listen`
- *              * For example, to listen on the specified port and all hosts, and ignore app config.
- *              * ```js
- * app.listen(80);
- * ``
- * The function also installs a `listening` callback that calls
- * `app.set('port')` with the value returned by `server.address().port`.
- * This way the port param contains always the real port number, even when
- * listen was called with port number 0
- * @param {() => void} cb If specified, the callback is added as a listener
-for the server's "listening" event.
- * @returns {any} http.Server A node `http.Server` with this application configured
-as the request handle
-listen(cb?: () => void):http.Serve
- * Attach a model to the app. The `Model` will be available on the
- * `app.models` object
- * Example - Attach an existing mode
- * ```js
- *              * var User = loopback.User;
- *              * app.model(User)
- *              * ```
- * Example - Attach an existing model, alter some aspects of the model:
- * ```js
- *              * var User = loopback.User;
- *              * app.model(User, { dataSource: 'db' })
- *              * ``
- *              * @param {any|string} Model The model to attach
- *              * @options {any} config The model's configuration
- *              * @property {string|any} dataSource The `DataSource` to which to attach the model
- *              * @property {boolean} [public] Whether the model should be exposed via REST API
- *              * @property {any} [relations] Relations to add/update
- *              * @en
- *              * @returns {any} the model clas
- *              *
- */
+     * Listen for connections and update the configured port
+     * When there are no parameters or there is only one callback parameter,
+     * the server will listen on `app.get('host')` and `app.get('port')`
+     * For example, to listen on host/port configured in app config:
+     * ```js
+     *              * app.listen();
+     *              * ``
+     *              * Otherwise all arguments are forwarded to `http.Server.listen`
+     *              * For example, to listen on the specified port and all hosts, and ignore app config.
+     *              * ```js
+     * app.listen(80);
+     * ``
+     * The function also installs a `listening` callback that calls
+     * `app.set('port')` with the value returned by `server.address().port`.
+     * This way the port param contains always the real port number, even when
+     * listen was called with port number 0
+     * @param {() => void} cb If specified, the callback is added as a listener
+     * for the server's "listening" event.
+     * @returns {any} http.Server A node `http.Server` with this application configured
+     * as the request handle
+     * listen(cb?: () => void):http.Serve
+     * Attach a model to the app. The `Model` will be available on the
+     * `app.models` object
+     * Example - Attach an existing mode
+     * ```js
+     *              * var User = loopback.User;
+     *              * app.model(User)
+     *              * ```
+     * Example - Attach an existing model, alter some aspects of the model:
+     * ```js
+     *              * var User = loopback.User;
+     *              * app.model(User, { dataSource: 'db' })
+     *              * ``
+     *              * @param {any|string} Model The model to attach
+     *              * @options {any} config The model's configuration
+     *              * @property {string|any} dataSource The `DataSource` to which to attach the model
+     *              * @property {boolean} [public] Whether the model should be exposed via REST API
+     *              * @property {any} [relations] Relations to add/update
+     *              * @en
+     *              * @returns {any} the model clas
+     *              *
+     */
     model(
-      l$Model: any | string,
-      main$config: {
+      Model: any | string,
+      config: {
         dataSource: string | any,
         public?: boolean,
         relations?: any
@@ -161,9 +178,9 @@ listen(cb?: () => void):http.Serve
      * // also available as camelCase
      * var customerReceipt = app.models.customerReceipt;
      * ``
-     * @returns {core$Array} Array of model classes
+     * @returns {Array} Array of model classes
      */
-    models(): core$Array<typeof Model>,
+    models(): Array<typeof Model>,
 
     /**
      * Get all remote objects.
@@ -209,11 +226,11 @@ listen(cb?: () => void):http.Serve
      */
     middlewareFromConfig(
       factory: () => void,
-      main$config: {
+      config: {
         phase: string,
-        debug$enabled?: boolean,
+        enabled?: boolean,
         params?: any[] | any,
-        paths?: any[] | string | core$RegExp
+        paths?: any[] | string | RegExp
       }
     ): any,
 
@@ -248,49 +265,49 @@ listen(cb?: () => void):http.Serve
     defineMiddlewarePhases(nameOrArray: string | string[]): any,
 
     /**
- * Register a middleware handler to be executed in a given phase.
- * @param {string} name The phase name, e.g. "init" or "routes".
- * @param {core$Array | string | core$RegExp} paths Optional list of paths limiting
-the scope of the middleware.
-string paths are interpreted as expressjs path patterns,
-regular expressions are used as-is.
- * @param {function} handler The middleware handler, one of
-`function(req, res, next)` or
-`function(err, req, res, next)`
- * @returns {any} this (fluent API
- * @header app.middleware(name, handler
- */
-    KoaBouncer$middleware(
-      skin$name: string,
-      paths?: any[] | string | core$RegExp,
-      panel$handler?: core$createRouter$Handler
+     * Register a middleware handler to be executed in a given phase.
+     * @param {string} name The phase name, e.g. "init" or "routes".
+     * @param {Array | string | RegExp} paths Optional list of paths limiting
+     * the scope of the middleware.
+     * string paths are interpreted as expressjs path patterns,
+     * regular expressions are used as-is.
+     * @param {function} handler The middleware handler, one of
+     * `function(req, res, next)` or
+     * `function(err, req, res, next)`
+     * @returns {any} this (fluent API
+     * @header app.middleware(name, handler
+     */
+    middleware(
+      name: string,
+      paths?: any[] | string | RegExp,
+      handler?: core.Handler
     ): any
-  } & core$l$Application;
+  } & core.Application;
 
   /**
- * LoopBack core module. It provides static properties and
- * methods to create models and data sources. The module itself is a function
- * that creates loopback `app`. For example:
- * 
- * ```js
- *        * var loopback = require('loopback');
- *        * var app = loopback();
- *        * ```
- * @property {string} version Version of LoopBack framework.  Static read-only property.
- * @property {string} mime
- * @property {boolean} isBrowser True if running in a browser environment; false otherwise.  Static read-only property.
- * @property {boolean} isServer True if running in a server environment; false otherwise.  Static read-only property.
- * @property {Registry} registry The global `Registry` object.
- * @property {string} faviconFile Path to a default favicon shipped with LoopBack.
-Use as follows: `app.use(require('serve-favicon')(loopback.faviconFile));`
- * @class loopback
- * @header loopback
- */
+   * LoopBack core module. It provides static properties and
+   * methods to create models and data sources. The module itself is a function
+   * that creates loopback `app`. For example:
+   *
+   * ```js
+   *        * var loopback = require('loopback');
+   *        * var app = loopback();
+   *        * ```
+   * @property {string} version Version of LoopBack framework.  Static read-only property.
+   * @property {string} mime
+   * @property {boolean} isBrowser True if running in a browser environment; false otherwise.  Static read-only property.
+   * @property {boolean} isServer True if running in a server environment; false otherwise.  Static read-only property.
+   * @property {Registry} registry The global `Registry` object.
+   * @property {string} faviconFile Path to a default favicon shipped with LoopBack.
+   * Use as follows: `app.use(require('serve-favicon')(loopback.faviconFile));`
+   * @class loopback
+   * @header loopback
+   */
   declare class l$loopback {
     /**
      * Version of LoopBack framework.  Static read-only property.
      */
-    Giraffe$version: string;
+    version: string;
 
     /**
      * Mime
@@ -310,7 +327,7 @@ Use as follows: `app.use(require('serve-favicon')(loopback.faviconFile));`
     /**
      * The global `Registry` object.
      */
-    request$registry: l$Registry;
+    registry: l$Registry;
 
     /**
      * Path to a default favicon shipped with LoopBack.
@@ -328,23 +345,23 @@ Use as follows: `app.use(require('serve-favicon')(loopback.faviconFile));`
      */
     static configureModel(
       ModelCtor: l$Model,
-      main$config: {
+      config: {
         dataSource: any,
         relations?: any
       }
     ): void;
 
     /**
- * Create a data source with passing the provided options to the connector
- * @param {string} name Optional name.
- * @options {any} options Data Source options
- * @property {any} connector LoopBack connector.
- * @property {*} [*] Other&nbsp;connector properties.
-See the relevant connector documentation
- */
+     * Create a data source with passing the provided options to the connector
+     * @param {string} name Optional name.
+     * @options {any} options Data Source options
+     * @property {any} connector LoopBack connector.
+     * @property {*} [*] Other&nbsp;connector properties.
+     * See the relevant connector documentation
+     */
     static createDataSource(
-      skin$name: string,
-      notification$options: {
+      name: string,
+      options: {
         connector: any,
         properties?: any
       }
@@ -404,11 +421,7 @@ See the relevant connector documentation
      * @param {any} options (optional
      * @header loopback.createMode
      */
-    static createModel(
-      skin$name: string,
-      properties: any,
-      notification$options: any
-    ): void;
+    static createModel(name: string, properties: any, options: any): void;
 
     /**
      * Look up a model class by name from all models created by
@@ -439,18 +452,18 @@ See the relevant connector documentation
     static getModelByType(modelType: l$Model): l$Model;
 
     /**
- * Get an in-memory data source. Use one if it already exists
- * @param {string} name The name of the data source.
-If not provided, the `'default'` is used
- */
-    static memory(skin$name?: string): void;
+     * Get an in-memory data source. Use one if it already exists
+     * @param {string} name The name of the data source.
+     * If not provided, the `'default'` is used
+     */
+    static memory(name?: string): void;
 
     /**
      * Add a remote method to a model.
      * @param {() => void} fn
      * @param {any} options (optional
      */
-    static remoteMethod(fn: () => void, notification$options: any): void;
+    static remoteMethod(fn: () => void, options: any): void;
 
     /**
      * Create a template helper
@@ -459,7 +472,7 @@ If not provided, the `'default'` is used
      * @param {string} path Path to the template file.
      * @returns {() => void}
      */
-    static template(skin$path: string): void;
+    static template(path: string): void;
   }
 
   /**
@@ -479,23 +492,23 @@ If not provided, the `'default'` is used
      */
     configureModel(
       ModelCtor: l$Model,
-      main$config: {
+      config: {
         dataSource: any,
         relations?: any
       }
     ): void;
 
     /**
- * Create a data source with passing the provided options to the connector
- * @param {string} name Optional name.
- * @options {any} options Data Source options
- * @property {any} connector LoopBack connector.
- * @property {*} [*] Other&nbsp;connector properties.
-See the relevant connector documentation
- */
+     * Create a data source with passing the provided options to the connector
+     * @param {string} name Optional name.
+     * @options {any} options Data Source options
+     * @property {any} connector LoopBack connector.
+     * @property {*} [*] Other&nbsp;connector properties.
+     * See the relevant connector documentation
+     */
     createDataSource(
-      skin$name: string,
-      notification$options: {
+      name: string,
+      options: {
         connector: any,
         properties?: any
       }
@@ -554,11 +567,7 @@ See the relevant connector documentation
      * @param {any} options (optional
      * @header loopback.createMode
      */
-    createModel(
-      skin$name: string,
-      properties: any,
-      notification$options: any
-    ): void;
+    createModel(name: string, properties: any, options: any): void;
 
     /**
      * Look up a model class by name from all models created by
@@ -589,11 +598,11 @@ See the relevant connector documentation
     getModelByType(modelType: l$Model): l$Model;
 
     /**
- * Get an in-memory data source. Use one if it already exists
- * @param {string} name The name of the data source.
-If not provided, the `'default'` is used
- */
-    memory(skin$name?: string): void;
+     * Get an in-memory data source. Use one if it already exists
+     * @param {string} name The name of the data source.
+     * If not provided, the `'default'` is used
+     */
+    memory(name?: string): void;
   }
 
   /**
@@ -607,7 +616,7 @@ If not provided, the `'default'` is used
     /**
      * context The context object
      */
-    constructor(balloontoolbar$context: l$Context): this;
+    constructor(context: l$Context): this;
 
     /**
      * Add a principal to the context
@@ -743,7 +752,7 @@ If not provided, the `'default'` is used
    * @class
    */
   declare class l$Principal {
-    constructor(notification$type: string, id: any, skin$name: string): this;
+    constructor(type: string, id: any, name: string): this;
 
     /**
      * Compare if two principals are equal
@@ -767,7 +776,7 @@ If not provided, the `'default'` is used
      *              * http: {path: '/sayhi'}
      *              * ```
      */
-    skin$path: string;
+    path: string;
 
     /**
      * HTTP method (verb) at which the method is available.
@@ -784,7 +793,7 @@ If not provided, the `'default'` is used
      *              * {status: 201}
      *              * ```
      */
-    l$status?: number;
+    status?: number;
 
     /**
      * errorStatus	Default HTTP status set when the callback is called with an error.
@@ -905,7 +914,7 @@ If not provided, the `'default'` is used
     /**
      * Argument datatype; must be a Loopback type. Additionally, callback arguments allow a special type "file"; see below.
      */
-    notification$type:
+    type:
       | "any"
       | "Array"
       | "Boolean"
@@ -1013,7 +1022,7 @@ If not provided, the `'default'` is used
      * Contains additional model settings.
      */
     settings: l$Settings;
-    constructor(main$data: any): this;
+    constructor(data: any): this;
 
     /**
      * Check if the given access token can invoke the specified method
@@ -1024,43 +1033,35 @@ If not provided, the `'default'` is used
      * @callback {() => void} callback The callback function.
      */
     static checkAccess(
-      l$token: l$AccessToken,
+      token: l$AccessToken,
       modelId: any,
       sharedMethod: any,
       ctx: any,
-      braintree$callback: (
-        err: string | EventType$Error,
-        allowed: boolean
-      ) => void
+      callback: (err: string | Error, allowed: boolean) => void
     ): void;
 
     /**
- * Disable remote invocation for the method with the given name
- * @param {string} name The name of the method.
- * @param {boolean} isStatic Is the method static (eg. `MyModel.myMethod`)? Pass
-`false` if the method defined on the prototype (eg.
-`MyModel.prototype.myMethod`)
- */
-    static disableRemoteMethod(skin$name: string, isStatic: boolean): void;
+     * Disable remote invocation for the method with the given name
+     * @param {string} name The name of the method.
+     * @param {boolean} isStatic Is the method static (eg. `MyModel.myMethod`)? Pass
+     * `false` if the method defined on the prototype (eg.
+     * `MyModel.prototype.myMethod`)
+     */
+    static disableRemoteMethod(name: string, isStatic: boolean): void;
 
     /**
- * Disable remote invocation for the method with the given name.
- * @param {string} name The name of the method.
-The name of the method (include "prototype." if the method is defined on the prototype).
- */
-    static disableRemoteMethodByName(skin$name: string): void;
+     * Disable remote invocation for the method with the given name.
+     * @param {string} name The name of the method.
+     * The name of the method (include "prototype." if the method is defined on the prototype).
+     */
+    static disableRemoteMethodByName(name: string): void;
 
     /**
      * Get the `Application` object to which the Model is attached
      * @callback {() => void} callback Callback function called with `(err, app)` arguments.
      * @end
      */
-    static getApp(
-      braintree$callback: (
-        err: EventType$Error,
-        Giraffe$app: l$Application
-      ) => void
-    ): void;
+    static getApp(callback: (err: Error, app: l$Application) => void): void;
 
     /**
      * Enabled deeply-nested queries of related models via REST API
@@ -1080,7 +1081,7 @@ The name of the method (include "prototype." if the method is defined on the pro
       paramName: string,
       getterName: string,
       hooks: boolean,
-      notification$options?: {},
+      options?: {},
       filterCallback?: (SharedMethod: any, RelationDefinition: any) => void
     ): void;
 
@@ -1097,10 +1098,7 @@ The name of the method (include "prototype." if the method is defined on the pro
      *              * See [Remote methods - Options](docs.strongloop.com/display/LB/Remote+methods#Remotemethods-Options)
      *              *
      */
-    static remoteMethod(
-      skin$name: string,
-      notification$options: l$RemoteMethodOptions
-    ): void;
+    static remoteMethod(name: string, options: l$RemoteMethodOptions): void;
 
     /**
      * The `loopback.Model.extend()` method calls this when you create a model that extends another model.
@@ -1117,24 +1115,21 @@ The name of the method (include "prototype." if the method is defined on the pro
      */
     beforeRemote(
       method: string,
-      braintree$callback: (
+      callback: (
         ctx: l$Context,
-        modelInstanceOrNext: l$Model | Foxx$NextFunction,
-        next?: Foxx$NextFunction
+        modelInstanceOrNext: l$Model | NextFunction,
+        next?: NextFunction
       ) => void
     ): void;
     afterRemote(
       method: string,
-      braintree$callback: (
+      callback: (
         ctx: l$Context,
-        modelInstanceOrNext: l$Model | Foxx$NextFunction,
-        next?: Foxx$NextFunction
+        modelInstanceOrNext: l$Model | NextFunction,
+        next?: NextFunction
       ) => void
     ): void;
-    afterRemoteError(
-      method: string,
-      braintree$callback: Foxx$NextFunction
-    ): void;
+    afterRemoteError(method: string, callback: NextFunction): void;
   }
 
   /**
@@ -1153,7 +1148,7 @@ The name of the method (include "prototype." if the method is defined on the pro
      */
     ctor: () => void;
     http: any;
-    constructor(skin$name: string, constructor: () => void): this;
+    constructor(name: string, constructor: () => void): this;
 
     /**
      * Normalize HTTP path.
@@ -1165,7 +1160,7 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {string} name The method name
      * @param {any} options Set of options used to create a SharedMethod. See the full set of options https://apidocs.strongloop.com/strong-remoting/#sharedmethod
      */
-    defineMethod(skin$name: string, notification$options: any): void;
+    defineMethod(name: string, options: any): void;
 
     /**
      * Disable a sharedMethod with the given name or function object.
@@ -1207,7 +1202,7 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {any} options
      * @return {any[]} An array of shared methods SharedMethod[]
      */
-    methods(notification$options: {
+    methods(options: {
       includeDisabled: boolean
     }): any[];
 
@@ -1233,7 +1228,7 @@ The name of the method (include "prototype." if the method is defined on the pro
 
   declare interface l$Settings {
     http: {
-      skin$path: string
+      path: string
     };
     acls: l$ACL[];
   }
@@ -1249,31 +1244,28 @@ The name of the method (include "prototype." if the method is defined on the pro
    *        * ```
    * @class PersistedModel
    */
-  declare class l$PersistedModel mixins l$Model {
+  declare class l$PersistedModel mixins Model {
     /**
      * Apply an update list
      * **Note: this is not atomic*
-     * @param {core$Array} updates An updates list, usually from [createUpdates()](#persistedmodel-createupdates).
+     * @param {Array} updates An updates list, usually from [createUpdates()](#persistedmodel-createupdates).
      * @param {any} options An optional options object to pass to underlying data-access calls.
      * @param {() => void} callback Callback function
      */
     static bulkUpdate(
       updates: any[],
-      notification$options: any,
-      braintree$callback: l$CallbackWithoutResult
+      options: any,
+      callback: l$CallbackWithoutResult
     ): void;
 
     /**
      * Apply an update list
      * **Note: this is not atomic*
-     * @param {core$Array} updates An updates list, usually from [createUpdates()](#persistedmodel-createupdates).
+     * @param {Array} updates An updates list, usually from [createUpdates()](#persistedmodel-createupdates).
      * @param {any} options An optional options object to pass to underlying data-access calls.
      * @param {() => void} callback Callback function
      */
-    static bulkUpdate(
-      updates: any[],
-      notification$options: any
-    ): promise$Promise<void>;
+    static bulkUpdate(updates: any[], options: any): Promise<void>;
 
     /**
      * Get the changes to a model since the specified checkpoint. Provide a filter object
@@ -1284,8 +1276,8 @@ The name of the method (include "prototype." if the method is defined on the pro
      */
     static changes(
       since: number,
-      util$filter: any,
-      braintree$callback: l$CallbackWithResult<any>
+      filter: any,
+      callback: l$CallbackWithResult<any>
     ): void;
 
     /**
@@ -1295,45 +1287,42 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {any} filter Include only changes that match this filter, the same as for [#persistedmodel-find](find()).
      * @callback {() => void} callback Callback function called with `(err, changes)` arguments.
      */
-    static changes(since: number, util$filter: any): promise$Promise<any[]>;
+    static changes(since: number, filter: any): Promise<any[]>;
 
     /**
      * Create a checkpoint
      * @param {() => void} callback
      */
-    static checkpoint(braintree$callback?: () => void): void;
+    static checkpoint(callback?: () => void): void;
 
     /**
      * Create a checkpoint
      */
-    static checkpoint(): promise$Promise<void>;
+    static checkpoint(): Promise<void>;
 
     /**
- * Return the number of records that match the optional "where" filter.
- * @param {any} where Optional where filter, like
-```
-             * { key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
- * @callback {() => void} callback Callback function called with `(err, count)` arguments.  Required.
- */
-    static count(
-      where: any,
-      braintree$callback: l$CallbackWithResult<number>
-    ): void;
+     * Return the number of records that match the optional "where" filter.
+     * @param {any} where Optional where filter, like
+     * ```
+     *              * { key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
+     * @callback {() => void} callback Callback function called with `(err, count)` arguments.  Required.
+     */
+    static count(where: any, callback: l$CallbackWithResult<number>): void;
 
     /**
- * Return the number of records that match the optional "where" filter.
- * @param {any} where Optional where filter, like
-```
-             * { key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
- * @callback {() => void} callback Callback function called with `(err, count)` arguments.  Required.
- */
-    static count(where?: any): promise$Promise<number>;
+     * Return the number of records that match the optional "where" filter.
+     * @param {any} where Optional where filter, like
+     * ```
+     *              * { key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
+     * @callback {() => void} callback Callback function called with `(err, count)` arguments.  Required.
+     */
+    static count(where?: any): Promise<number>;
 
     /**
      * Create new instance of Model, and save to database
@@ -1341,8 +1330,8 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
     static create<T>(
-      main$data: any | any[],
-      braintree$callback: l$CallbackWithResult<T | T[] | null>
+      data: any | any[],
+      callback: l$CallbackWithResult<T | T[] | null>
     ): void;
 
     /**
@@ -1350,7 +1339,7 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {any} |[{any}] data Optional data argument.  Can be either a single model instance or an Array of instances
      * @returns {T | T[]} Model instances or null
      */
-    static create<T>(main$data?: any | any[]): promise$Promise<T | T[] | null>;
+    static create<T>(data?: any | any[]): Promise<T | T[] | null>;
 
     /**
      * Create a change stream. See here for more info http://loopback.io/doc/en/lb2/Realtime-server-sent-events.html
@@ -1358,10 +1347,10 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {() => void} callback
      */
     static createChangeStream(
-      notification$options: {
+      options: {
         where: any
       },
-      braintree$callback: l$CallbackWithResult<any>
+      callback: l$CallbackWithResult<any>
     ): void;
 
     /**
@@ -1369,72 +1358,70 @@ The name of the method (include "prototype." if the method is defined on the pro
      * @param {any} options Only changes to models matching this where filter will be included in the ChangeStream.
      * @returns {any} changes
      */
-    static createChangeStream(notification$options: {
+    static createChangeStream(options: {
       where: any
-    }): promise$Promise<any>;
+    }): Promise<any>;
 
     /**
      * Create an update list (for `Model.bulkUpdate()`) from a delta list
      * (result of `Change.diff()`)
-     * @param {core$Array} deltas
+     * @param {Array} deltas
      * @param {() => void} callback
      */
     static createUpdates(
       deltas: any[],
-      braintree$callback: l$CallbackWithoutResult
+      callback: l$CallbackWithoutResult
     ): void;
 
     /**
      * Create an update list (for `Model.bulkUpdate()`) from a delta list
      * (result of `Change.diff()`)
-     * @param {core$Array} deltas
+     * @param {Array} deltas
      */
-    static createUpdates(deltas: any[]): promise$Promise<void>;
+    static createUpdates(deltas: any[]): Promise<void>;
 
     /**
      * Get the current checkpoint ID
      * @callback {() => void} callback Callback function called with `(err, currentCheckpointId)` arguments.  Required.
      */
-    static currentCheckpoint(
-      braintree$callback: l$CallbackWithResult<number>
-    ): void;
+    static currentCheckpoint(callback: l$CallbackWithResult<number>): void;
 
     /**
      * Get the current checkpoint ID
-     * @returns {promise$Promise<number>} resolves to currentCheckpointId
+     * @returns {Promise<number>} resolves to currentCheckpointId
      */
-    static currentCheckpoint(): promise$Promise<number>;
+    static currentCheckpoint(): Promise<number>;
 
     /**
- * Destroy all model instances that match the optional `where` specification
- * @param {any} where Optional where filter, like:
-```
-             * {key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods)
- * @callback {() => void} callback Optional callback function called with `(err, info)` arguments.
- */
+     * Destroy all model instances that match the optional `where` specification
+     * @param {any} where Optional where filter, like:
+     * ```
+     *              * {key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods)
+     * @callback {() => void} callback Optional callback function called with `(err, info)` arguments.
+     */
     static destroyAll(
       where: any,
-      braintree$callback: l$CallbackWithMultipleResults<any, number>
+      callback: l$CallbackWithMultipleResults<any, number>
     ): void;
 
     /**
  * Destroy all model instances that match the optional `where` specification
  * @param {any} where Optional where filter, like:
-```
-             * {key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods)
- * @returns {promise$Promise<{
+ * ```
+ *              * {key: val, key2: {gt: 'val2'}, ...}
+ *              * ```
+ * <br/>See
+ * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods)
+ * @returns {Promise<{
 count: number
 }>} number of instances (rows, documents) destroyed
  */
     static destroyAll(
       where?: any
-    ): promise$Promise<{
+    ): Promise<{
       info: any,
       infoCount: number
     }>;
@@ -1444,37 +1431,34 @@ count: number
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id The ID value of model instance to delete.
      * @callback {() => void} callback Callback function called with `(err)` arguments.  Required.
      */
-    static destroyById(
-      id: any,
-      braintree$callback: l$CallbackWithoutResult
-    ): void;
+    static destroyById(id: any, callback: l$CallbackWithoutResult): void;
 
     /**
      * Destroy model instance with the specified ID.
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id The ID value of model instance to delete.
      */
-    static destroyById(id: any): promise$Promise<void>;
+    static destroyById(id: any): Promise<void>;
 
     /**
      * Get a set of deltas and conflicts since the given checkpoint
      * See [Change.diff()](#change-diff) for details
      * @param {number} since Find deltas since this checkpoint.
-     * @param {core$Array} remoteChanges An Array of change objects.
+     * @param {Array} remoteChanges An Array of change objects.
      * @callback {() => void} callback Callback function called with `(err, result)` arguments.  Required.
      */
     static diff(
       since: number,
       remoteChanges: any[],
-      braintree$callback: l$CallbackWithResult<any>
+      callback: l$CallbackWithResult<any>
     ): void;
 
     /**
      * Get a set of deltas and conflicts since the given checkpoint
      * See [Change.diff()](#change-diff) for details
      * @param {number} since Find deltas since this checkpoint.
-     * @param {core$Array} remoteChanges An Array of change objects.
+     * @param {Array} remoteChanges An Array of change objects.
      */
-    static diff(since: number, remoteChanges: any[]): promise$Promise<any>;
+    static diff(since: number, remoteChanges: any[]): Promise<any>;
 
     /**
      * Enable the tracking of changes made to the model. Usually for replication.
@@ -1486,41 +1470,38 @@ count: number
      * @param {id} id Identifier of object (primary key value)
      * @callback {() => void} callback Callback function called with `(err, exists)` arguments.  Required.
      */
-    static exists(
-      id: any,
-      braintree$callback: l$CallbackWithResult<boolean>
-    ): void;
+    static exists(id: any, callback: l$CallbackWithResult<boolean>): void;
 
     /**
      * Check whether a model instance exists in database
      * @param {id} id Identifier of object (primary key value)
      */
-    static exists(id: any): promise$Promise<boolean>;
+    static exists(id: any): Promise<boolean>;
 
     /**
- * Find all model instances that match `filter` specification.
- * See [Querying models](docs.strongloop.com/display/LB/Querying+models)
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {number} limit Maximum number of instances to return.
-<br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * { where: { key: val, key2: {gt: 'val2'}, ...} }
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
- * @callback {() => void} callback Callback function called with `(err, returned-instances)` arguments.    Required.
- */
+     * Find all model instances that match `filter` specification.
+     * See [Querying models](docs.strongloop.com/display/LB/Querying+models)
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {number} limit Maximum number of instances to return.
+     * <br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * { where: { key: val, key2: {gt: 'val2'}, ...} }
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
+     * @callback {() => void} callback Callback function called with `(err, returned-instances)` arguments.    Required.
+     */
     static find<T>(
-      util$filter: {
+      filter: {
         fields?: string | any | any[],
         include?: string | any | any[],
         limit?: number,
@@ -1528,84 +1509,81 @@ count: number
         skip?: number,
         where?: any
       },
-      braintree$callback: l$CallbackWithResult<T[]>
+      callback: l$CallbackWithResult<T[]>
     ): void;
 
     /**
- * Find all model instances that match `filter` specification.
- * See [Querying models](docs.strongloop.com/display/LB/Querying+models)
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {number} limit Maximum number of instances to return.
-<br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * { where: { key: val, key2: {gt: 'val2'}, ...} }
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
- */
-    static find<T>(util$filter?: {
+     * Find all model instances that match `filter` specification.
+     * See [Querying models](docs.strongloop.com/display/LB/Querying+models)
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {number} limit Maximum number of instances to return.
+     * <br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * { where: { key: val, key2: {gt: 'val2'}, ...} }
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
+     */
+    static find<T>(filter?: {
       fields?: string | any | any[],
       include?: string | any | any[],
       limit?: number,
       order?: string,
       skip?: number,
       where?: any
-    }): promise$Promise<T[] | null>;
+    }): Promise<T[] | null>;
 
     /**
      * Find object by ID with an optional filter for include/fields
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id Primary key value
      * @callback {() => void} callback Callback function called with `(err, instance)` arguments.  Required.
      */
-    static findById<T>(
-      id: any,
-      braintree$callback: l$CallbackWithResult<T>
-    ): void;
+    static findById<T>(id: any, callback: l$CallbackWithResult<T>): void;
 
     /**
- * Find object by ID with an optional filter for include/fields
- * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id Primary key value
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @callback {() => void} callback Callback function called with `(err, instance)` arguments.  Required.
- */
+     * Find object by ID with an optional filter for include/fields
+     * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id Primary key value
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @callback {() => void} callback Callback function called with `(err, instance)` arguments.  Required.
+     */
     static findById<T>(
       id: any,
-      util$filter: {
+      filter: {
         fields?: string | any | any[],
         include?: string | any | any[]
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
- * Find object by ID with an optional filter for include/fields
- * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id Primary key value
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- */
+     * Find object by ID with an optional filter for include/fields
+     * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id Primary key value
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     */
     static findById<T>(
       id: any,
-      util$filter?: {
+      filter?: {
         fields?: string | any | any[],
         include?: string | any | any[]
       }
-    ): promise$Promise<T | null>;
+    ): Promise<T | null>;
 
     /**
      * Find one model instance that matches `filter` specification.
@@ -1613,67 +1591,67 @@ count: number
      * Returns object, not collection
      * @callback {() => void} callback Callback function called with `(err, returned-instance)` arguments.  Required.
      */
-    static findOne<T>(braintree$callback: l$CallbackWithResult<T>): void;
+    static findOne<T>(callback: l$CallbackWithResult<T>): void;
 
     /**
- * Find one model instance that matches `filter` specification.
- * Same as `find`, but limited to one result;
- * Returns object, not collection
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * {where: { key: val, key2: {gt: 'val2'}, ...} }
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
- * @callback {() => void} callback Callback function called with `(err, returned-instance)` arguments.  Required.
- */
+     * Find one model instance that matches `filter` specification.
+     * Same as `find`, but limited to one result;
+     * Returns object, not collection
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * {where: { key: val, key2: {gt: 'val2'}, ...} }
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
+     * @callback {() => void} callback Callback function called with `(err, returned-instance)` arguments.  Required.
+     */
     static findOne<T>(
-      util$filter: {
+      filter: {
         fields?: string | any | any[],
         include?: string | any | any[],
         order?: string,
         skip?: number,
         where?: any
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
- * Find one model instance that matches `filter` specification.
- * Same as `find`, but limited to one result;
- * Returns object, not collection
- * @options {any} [filter] Optional Filter JSON object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * {where: { key: val, key2: {gt: 'val2'}, ...} }
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
- */
-    static findOne<T>(util$filter?: {
+     * Find one model instance that matches `filter` specification.
+     * Same as `find`, but limited to one result;
+     * Returns object, not collection
+     * @options {any} [filter] Optional Filter JSON object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * {where: { key: val, key2: {gt: 'val2'}, ...} }
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
+     */
+    static findOne<T>(filter?: {
       fields?: string | any | any[],
       include?: string | any | any[],
       order?: string,
       skip?: number,
       where?: any
-    }): promise$Promise<T | null>;
+    }): Promise<T | null>;
 
     /**
      * Finds one record matching the optional filter object. If not found, creates
@@ -1685,39 +1663,39 @@ count: number
      * @callback {() => void} callback Callback function called with `cb(err, instance, created)` arguments.  Required.
      */
     static findOrCreate<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithMultipleResults<T, boolean>
+      data: any,
+      callback: l$CallbackWithMultipleResults<T, boolean>
     ): void;
 
     /**
- * Finds one record matching the optional filter object. If not found, creates
- * the object using the data provided as second argument. In this sense it is
- * the same as `find`, but limited to one object. Returns an object, not
- * collection. If you don't provide the filter object argument, it tries to
- * locate an existing object that matches the `data` argument
- * @options {any} [filter] Optional Filter object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {number} limit Maximum number of instances to return.
-<br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * {where: {key: val, key2: {gt: val2}, ...}}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries).
- * @param {any} data Data to insert if object matching the `where` filter is not found.
- * @callback {() => void} callback Callback function called with `cb(err, instance, created)` arguments.  Required.
- */
+     * Finds one record matching the optional filter object. If not found, creates
+     * the object using the data provided as second argument. In this sense it is
+     * the same as `find`, but limited to one object. Returns an object, not
+     * collection. If you don't provide the filter object argument, it tries to
+     * locate an existing object that matches the `data` argument
+     * @options {any} [filter] Optional Filter object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {number} limit Maximum number of instances to return.
+     * <br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * {where: {key: val, key2: {gt: val2}, ...}}
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries).
+     * @param {any} data Data to insert if object matching the `where` filter is not found.
+     * @callback {() => void} callback Callback function called with `cb(err, instance, created)` arguments.  Required.
+     */
     static findOrCreate<T>(
-      main$data: any,
-      util$filter: {
+      data: any,
+      filter: {
         fields?: string | any | any[],
         include?: string | any | any[],
         limit?: number,
@@ -1725,37 +1703,37 @@ count: number
         skip?: number,
         where?: any
       },
-      braintree$callback: l$CallbackWithMultipleResults<T, boolean>
+      callback: l$CallbackWithMultipleResults<T, boolean>
     ): void;
 
     /**
- * Finds one record matching the optional filter object. If not found, creates
- * the object using the data provided as second argument. In this sense it is
- * the same as `find`, but limited to one object. Returns an object, not
- * collection. If you don't provide the filter object argument, it tries to
- * locate an existing object that matches the `data` argument
- * @options {any} [filter] Optional Filter object; see below.
- * @property {string|any|Array} fields Identify fields to include in return result.
-<br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
- * @property {string|any|Array} include  See PersistedModel.include documentation.
-<br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
- * @property {number} limit Maximum number of instances to return.
-<br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
- * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
-<br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
- * @property {number} skip number of results to skip.
-<br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
- * @property {any} where Where clause, like
-```
-             * {where: {key: val, key2: {gt: val2}, ...}}
-             * ```
-<br/>See
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries).
- * @param {any} data Data to insert if object matching the `where` filter is not found.
- */
+     * Finds one record matching the optional filter object. If not found, creates
+     * the object using the data provided as second argument. In this sense it is
+     * the same as `find`, but limited to one object. Returns an object, not
+     * collection. If you don't provide the filter object argument, it tries to
+     * locate an existing object that matches the `data` argument
+     * @options {any} [filter] Optional Filter object; see below.
+     * @property {string|any|Array} fields Identify fields to include in return result.
+     * <br/>See [Fields filter](docs.strongloop.com/display/LB/Fields+filter).
+     * @property {string|any|Array} include  See PersistedModel.include documentation.
+     * <br/>See [Include filter](docs.strongloop.com/display/LB/Include+filter).
+     * @property {number} limit Maximum number of instances to return.
+     * <br/>See [Limit filter](docs.strongloop.com/display/LB/Limit+filter).
+     * @property {string} order Sort order: either "ASC" for ascending or "DESC" for descending.
+     * <br/>See [Order filter](docs.strongloop.com/display/LB/Order+filter).
+     * @property {number} skip number of results to skip.
+     * <br/>See [Skip filter](docs.strongloop.com/display/LB/Skip+filter).
+     * @property {any} where Where clause, like
+     * ```
+     *              * {where: {key: val, key2: {gt: val2}, ...}}
+     *              * ```
+     * <br/>See
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries).
+     * @param {any} data Data to insert if object matching the `where` filter is not found.
+     */
     static findOrCreate<T>(
-      main$data: any,
-      util$filter?: {
+      data: any,
+      filter?: {
         fields?: string | any | any[],
         include?: string | any | any[],
         limit?: number,
@@ -1763,7 +1741,7 @@ count: number
         skip?: number,
         where?: any
       }
-    ): promise$Promise<{
+    ): Promise<{
       instance: T,
       created: boolean
     } | null>;
@@ -1784,35 +1762,32 @@ count: number
      * Get the source identifier for this model or dataSource
      * @callback {() => void} callback Callback function called with `(err, id)` arguments.
      */
-    static getSourceId(braintree$callback: l$CallbackWithResult<string>): void;
+    static getSourceId(callback: l$CallbackWithResult<string>): void;
 
     /**
      * Get the source identifier for this model or dataSource
      */
-    static getSourceId(): promise$Promise<string>;
+    static getSourceId(): Promise<string>;
 
     /**
      * Handle a change error. Override this method in a subclassing model to customize
      * change error handling
-     * @param {EventType$Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object)
+     * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object)
      */
-    static handleChangeError(err: EventType$Error): void;
+    static handleChangeError(err: Error): void;
 
     /**
      * Specify that a change to the model with the given ID has occurred
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id The ID of the model that has changed.
      * @callback {() => void} callback
      */
-    static rectifyChange(
-      id: any,
-      braintree$callback: l$CallbackWithoutResult
-    ): void;
+    static rectifyChange(id: any, callback: l$CallbackWithoutResult): void;
 
     /**
      * Specify that a change to the model with the given ID has occurred
      * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} id The ID of the model that has changed.
      */
-    static rectifyChange(id: any): promise$Promise<void>;
+    static rectifyChange(id: any): Promise<void>;
 
     /**
      * Replace attributes for a model instance whose id is the first input
@@ -1824,8 +1799,8 @@ count: number
      */
     static replaceById<T>(
       id: any,
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
+      data: any,
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -1840,11 +1815,11 @@ count: number
      */
     static replaceById<T>(
       id: any,
-      main$data: any,
-      notification$options: {
+      data: any,
+      options: {
         validate: boolean
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -1858,11 +1833,11 @@ count: number
      */
     static replaceById<T>(
       id: any,
-      main$data: any,
-      notification$options?: {
+      data: any,
+      options?: {
         validate: boolean
       }
-    ): promise$Promise<T>;
+    ): Promise<T>;
 
     /**
      * Replace or insert a model instance; replace existing record if one is found,
@@ -1872,8 +1847,8 @@ count: number
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
     static replaceOrCreate<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
+      data: any,
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -1886,11 +1861,11 @@ count: number
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
     static replaceOrCreate<T>(
-      main$data: any,
-      notification$options: {
+      data: any,
+      options: {
         validate: boolean
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -1902,11 +1877,11 @@ count: number
      * @property {boolean} validate Perform validation before saving.  Default is true.
      */
     static replaceOrCreate<T>(
-      main$data: any,
-      notification$options?: {
+      data: any,
+      options?: {
         validate: boolean
       }
-    ): promise$Promise<T>;
+    ): Promise<T>;
 
     /**
      * Replicate changes since the given checkpoint to the given target model
@@ -1919,14 +1894,10 @@ count: number
     static replicate(
       since?: number,
       targetModel?: l$Model,
-      notification$options?: any,
+      options?: any,
       optionsFilter?: any,
-      braintree$callback?: (
-        err: EventType$Error,
-        conflicts: l$Conflict[],
-        param: any
-      ) => void
-    ): promise$Promise<{
+      callback?: (err: Error, conflicts: l$Conflict[], param: any) => void
+    ): Promise<{
       conflicts: l$Conflict[],
       params: any
     }> | void;
@@ -1936,94 +1907,91 @@ count: number
      * @callback {() => void} callback Callback function called with `(err, info)` arguments.  Required.
      */
     static updateAll(
-      braintree$callback: l$CallbackWithMultipleResults<any, number>
+      callback: l$CallbackWithMultipleResults<any, number>
     ): void;
 
     /**
- * Update multiple instances that match the where clause.
- * 
- * Example:
- * 
- * ```js
- *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
- *              *     ...
- *              * });
- *              * ```
- * @param {any} where Optional `where` filter, like
-```
-             * { key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>see
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
- * @param {any} data any containing data to replace matching instances, if any.
- * @callback {() => void} callback Callback function called with `(err, info)` arguments.  Required.
- */
+     * Update multiple instances that match the where clause.
+     *
+     * Example:
+     *
+     * ```js
+     *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
+     *              *     ...
+     *              * });
+     *              * ```
+     * @param {any} where Optional `where` filter, like
+     * ```
+     *              * { key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>see
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
+     * @param {any} data any containing data to replace matching instances, if any.
+     * @callback {() => void} callback Callback function called with `(err, info)` arguments.  Required.
+     */
     static updateAll(
       whereOrData: any,
-      braintree$callback: l$CallbackWithMultipleResults<any, number>
+      callback: l$CallbackWithMultipleResults<any, number>
     ): void;
 
     /**
- * Update multiple instances that match the where clause.
- * 
- * Example:
- * 
- * ```js
- *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
- *              *     ...
- *              * });
- *              * ```
- * @param {any} where Optional `where` filter, like
-```
-             * { key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>see
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
- * @param {any} data any containing data to replace matching instances, if any.
- * @callback {() => void} callback Callback function called with `(err, info)` arguments.  Required.
- */
+     * Update multiple instances that match the where clause.
+     *
+     * Example:
+     *
+     * ```js
+     *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
+     *              *     ...
+     *              * });
+     *              * ```
+     * @param {any} where Optional `where` filter, like
+     * ```
+     *              * { key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>see
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
+     * @param {any} data any containing data to replace matching instances, if any.
+     * @callback {() => void} callback Callback function called with `(err, info)` arguments.  Required.
+     */
     static updateAll(
       where: any,
-      main$data: any,
-      braintree$callback: l$CallbackWithMultipleResults<any, number>
+      data: any,
+      callback: l$CallbackWithMultipleResults<any, number>
     ): void;
 
     /**
- * Update multiple instances that match the where clause.
- * 
- * Example:
- * 
- * ```js
- *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
- *              *     ...
- *              * });
- *              * ```
- * @param {any} where Optional `where` filter, like
-```
-             * { key: val, key2: {gt: 'val2'}, ...}
-             * ```
-<br/>see
-[Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
- * @param {any} data any containing data to replace matching instances, if any.
- */
-    static updateAll(where?: any, main$data?: any): promise$Promise<number>;
+     * Update multiple instances that match the where clause.
+     *
+     * Example:
+     *
+     * ```js
+     *              * Employee.updateAll({managerId: 'x001'}, {managerId: 'x002'}, function(err, info) {
+     *              *     ...
+     *              * });
+     *              * ```
+     * @param {any} where Optional `where` filter, like
+     * ```
+     *              * { key: val, key2: {gt: 'val2'}, ...}
+     *              * ```
+     * <br/>see
+     * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
+     * @param {any} data any containing data to replace matching instances, if any.
+     */
+    static updateAll(where?: any, data?: any): Promise<number>;
 
     /**
      * Update or insert a model instance
      * @param {any} data The model instance data to insert.
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
-    static upsert<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
-    ): void;
+    static upsert<T>(data: any, callback: l$CallbackWithResult<T>): void;
 
     /**
      * Update or insert a model instance
      * @param {any} data The model instance data to insert.
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
-    static upsert<T>(main$data: any): promise$Promise<T>;
+    static upsert<T>(data: any): Promise<T>;
 
     /**
      * Update or insert a model instance based on the search criteria.
@@ -2040,8 +2008,8 @@ count: number
      * @callback {() => void} callback Callback function called with `cb(err, obj)` signature.
      */
     static upsertWithWhere<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
+      data: any,
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -2057,20 +2025,20 @@ count: number
      * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
      * @param {any} data The model instance data to insert.
      */
-    static upsertWithWhere<T>(main$data: any): promise$Promise<T>;
+    static upsertWithWhere<T>(data: any): Promise<T>;
 
     /**
      * Deletes the model from persistence.
      * Triggers `destroy` hook (async) before and after destroying object.
      * @param {() => void} callback Callback function
      */
-    destroy(braintree$callback: l$CallbackWithoutResult): void;
+    destroy(callback: l$CallbackWithoutResult): void;
 
     /**
      * Deletes the model from persistence.
      * Triggers `destroy` hook (async) before and after destroying object.
      */
-    destroy(): promise$Promise<void>;
+    destroy(): Promise<void>;
 
     /**
      * Get the `id` value for the `PersistedModel`
@@ -2094,12 +2062,12 @@ count: number
      * Reload object from persistence.  Requires `id` member of `object` to be able to call `find`.
      * @callback {() => void} callback Callback function called with `(err, instance)` arguments.  Required.
      */
-    reload<T>(braintree$callback: l$CallbackWithResult<T>): void;
+    reload<T>(callback: l$CallbackWithResult<T>): void;
 
     /**
      * Reload object from persistence.  Requires `id` member of `object` to be able to call `find`.
      */
-    reload<T>(): promise$Promise<T>;
+    reload<T>(): Promise<T>;
 
     /**
      * Replace attributes for a model instance and persist it into the datasource.
@@ -2107,10 +2075,7 @@ count: number
      * @param {any} data Data to replace.
      * @callback {() => void} callback Callback function called with `(err, instance)` arguments.
      */
-    replaceAttributes<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
-    ): void;
+    replaceAttributes<T>(data: any, callback: l$CallbackWithResult<T>): void;
 
     /**
      * Replace attributes for a model instance and persist it into the datasource.
@@ -2121,11 +2086,11 @@ count: number
      * @callback {() => void} callback Callback function called with `(err, instance)` arguments.
      */
     replaceAttributes<T>(
-      main$data: any,
-      notification$options: {
+      data: any,
+      options: {
         validate: boolean
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -2136,48 +2101,48 @@ count: number
      * @property {boolean} validate Perform validation before saving.  Default is true.
      */
     replaceAttributes<T>(
-      main$data: any,
-      notification$options?: {
+      data: any,
+      options?: {
         validate: boolean
       }
-    ): promise$Promise<T>;
+    ): Promise<T>;
 
     /**
      * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
      * Triggers: validate, save, update, or create.
      * @callback {() => void} callback Optional callback function called with `(err, obj)` arguments.
      */
-    save<T>(braintree$callback: l$CallbackWithResult<T>): void;
+    save<T>(callback: l$CallbackWithResult<T>): void;
 
     /**
- * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
- * Triggers: validate, save, update, or create.
- * @options {any} [options] See below.
- * @property {boolean} validate Perform validation before saving.  Default is true.
- * @property {boolean} throws If true, throw a validation error; WARNING: This can crash Node.
-If false, report the error via callback.  Default is false.
- * @callback {() => void} callback Optional callback function called with `(err, obj)` arguments.
- */
+     * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
+     * Triggers: validate, save, update, or create.
+     * @options {any} [options] See below.
+     * @property {boolean} validate Perform validation before saving.  Default is true.
+     * @property {boolean} throws If true, throw a validation error; WARNING: This can crash Node.
+     * If false, report the error via callback.  Default is false.
+     * @callback {() => void} callback Optional callback function called with `(err, obj)` arguments.
+     */
     save<T>(
-      notification$options: {
+      options: {
         validate: boolean,
         throws: boolean
       },
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
- * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
- * Triggers: validate, save, update, or create.
- * @options {any} [options] See below.
- * @property {boolean} validate Perform validation before saving.  Default is true.
- * @property {boolean} throws If true, throw a validation error; WARNING: This can crash Node.
-If false, report the error via callback.  Default is false.
- */
-    save<T>(notification$options?: {
+     * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
+     * Triggers: validate, save, update, or create.
+     * @options {any} [options] See below.
+     * @property {boolean} validate Perform validation before saving.  Default is true.
+     * @property {boolean} throws If true, throw a validation error; WARNING: This can crash Node.
+     * If false, report the error via callback.  Default is false.
+     */
+    save<T>(options?: {
       validate: boolean,
       throws: boolean
-    }): promise$Promise<T>;
+    }): Promise<T>;
 
     /**
      * Set the correct `id` property for the `PersistedModel`. Uses the `setId` method if the model is attached to
@@ -2198,9 +2163,9 @@ If false, report the error via callback.  Default is false.
      *              *
      */
     updateAttribute<T>(
-      skin$name: string,
+      name: string,
       value: any,
-      braintree$callback: l$CallbackWithResult<T>
+      callback: l$CallbackWithResult<T>
     ): void;
 
     /**
@@ -2210,7 +2175,7 @@ If false, report the error via callback.  Default is false.
      *              * @param {any} value Value of property.
      *              *
      */
-    updateAttribute<T>(skin$name: string, value: any): promise$Promise<T>;
+    updateAttribute<T>(name: string, value: any): Promise<T>;
 
     /**
      * Update set of attributes.  Performs validation before updating
@@ -2218,24 +2183,21 @@ If false, report the error via callback.  Default is false.
      * @param {any} data Data to update.
      * @callback {() => void} callback Callback function called with `(err, instance)` arguments.  Required.
      */
-    updateAttributes<T>(
-      main$data: any,
-      braintree$callback: l$CallbackWithResult<T>
-    ): void;
+    updateAttributes<T>(data: any, callback: l$CallbackWithResult<T>): void;
 
     /**
      * Update set of attributes.  Performs validation before updating
      * Triggers: `validation`, `save` and `update` hooks
      * @param {any} data Data to update.
      */
-    updateAttributes<T>(main$data: any): promise$Promise<T>;
+    updateAttributes<T>(data: any): Promise<T>;
   }
 
   /**
    * Serve the LoopBack favicon.
    * @header loopback.favicon(
    */
-  declare function l$favicon(): inert$RequestHandler;
+  declare function l$favicon(): RequestHandler;
 
   /**
    * Expose models over REST
@@ -2246,21 +2208,18 @@ If false, report the error via callback.  Default is false.
    * For more information, see [Exposing models over a REST API](docs.strongloop.com/display/DOC/Exposing+models+over+a+REST+API).
    * @header loopback.rest(
    */
-  declare function l$rest(): inert$RequestHandler;
+  declare function l$rest(): RequestHandler;
 
   /**
- * Serve static assets of a LoopBack application
- * @param {string} root The root directory from which the static assets are to
-be served.
- * @param {any} options Refer to
-[express documentation](expressjs.com/4x/api.html#express.static)
-for the full list of available options.
- * @header loopback.static(root, [options])
- */
-  declare function l$static(
-    root: string,
-    notification$options?: any
-  ): inert$RequestHandler;
+   * Serve static assets of a LoopBack application
+   * @param {string} root The root directory from which the static assets are to
+   * be served.
+   * @param {any} options Refer to
+   * [express documentation](expressjs.com/4x/api.html#express.static)
+   * for the full list of available options.
+   * @header loopback.static(root, [options])
+   */
+  declare function l$static(root: string, options?: any): RequestHandler;
 
   /**
    * Return HTTP response with basic application status information:
@@ -2272,12 +2231,12 @@ for the full list of available options.
    *        * }
    *        * ```
    */
-  declare function l$status(): inert$RequestHandler;
+  declare function l$status(): RequestHandler;
 
   /**
    * Rewrite the url to replace current user literal with the logged in user id
    */
-  declare function l$rewriteUserLiteral(): inert$RequestHandler;
+  declare function l$rewriteUserLiteral(): RequestHandler;
 
   /**
    * Check for an access token in cookies, headers, and query string parameters.
@@ -2309,7 +2268,7 @@ for the full list of available options.
    * @property {string} [currentUserLiteral] string literal for the current user.
    * @header loopback.token([options])
    */
-  declare function l$token(notification$options?: {
+  declare function l$token(options?: {
     cookies?: any[],
     headers?: any[],
     params?: any[],
@@ -2318,30 +2277,30 @@ for the full list of available options.
     overwriteExistingToken?: boolean,
     model?: () => void | string,
     currentUserLiteral?: string
-  }): inert$RequestHandler;
+  }): RequestHandler;
 
   /**
    * Convert any request not handled so far to a 404 error
    * to be handled by error-handling middleware.
    * @header loopback.urlNotFound(
    */
-  declare function l$urlNotFound(): inert$RequestHandler;
+  declare function l$urlNotFound(): RequestHandler;
 
   /**
- * Token based authentication and access control
- * **Default ACLs*
- *   - DENY EVERYONE `*`
- *   - ALLOW EVERYONE creat
- * @property {string} id Generated token ID.
- * @property {number} ttl Time to live in seconds, 2 weeks by default.
- * @property {Date} created When the token was created.
- * @property {any} settings Extends the `Model.settings` object.
- * @property {number} settings.accessTokenIdLength Length of the base64-encoded string access token. Default value is 64.
-Increase the length for a more secure access token
- * @class AccessToken
- * @inherits {PersistedModel}
- */
-  declare class l$AccessToken mixins l$PersistedModel {
+   * Token based authentication and access control
+   * **Default ACLs*
+   *   - DENY EVERYONE `*`
+   *   - ALLOW EVERYONE creat
+   * @property {string} id Generated token ID.
+   * @property {number} ttl Time to live in seconds, 2 weeks by default.
+   * @property {Date} created When the token was created.
+   * @property {any} settings Extends the `Model.settings` object.
+   * @property {number} settings.accessTokenIdLength Length of the base64-encoded string access token. Default value is 64.
+   * Increase the length for a more secure access token
+   * @class AccessToken
+   * @inherits {PersistedModel}
+   */
+  declare class l$AccessToken mixins PersistedModel {
     /**
      * Generated token ID
      */
@@ -2355,14 +2314,14 @@ Increase the length for a more secure access token
     /**
      * When the token was created.
      */
-    created: entities$Date;
+    created: Date;
 
     /**
      * Extends the `Model.settings` object.
      */
     settings: {
       http: {
-        skin$path: string
+        path: string
       },
       acls: l$ACL[],
       accessTokenIdLength: number
@@ -2373,7 +2332,7 @@ Increase the length for a more secure access token
      * @callback {() => void} callback
      */
     static createAccessTokenId(
-      braintree$callback: (err: EventType$Error, l$token: string) => void
+      callback: (err: Error, token: string) => void
     ): void;
 
     /**
@@ -2384,49 +2343,44 @@ Increase the length for a more secure access token
      */
     static findForRequest(
       req: any,
-      notification$options?: any,
-      braintree$callback?: (
-        err: EventType$Error,
-        l$token: l$AccessToken
-      ) => void
+      options?: any,
+      callback?: (err: Error, token: l$AccessToken) => void
     ): void;
 
     /**
      * Validate the token.
      * @callback {() => void} callback
      */
-    validate(
-      braintree$callback: (err: EventType$Error, isValid: boolean) => void
-    ): void;
+    validate(callback: (err: Error, isValid: boolean) => void): void;
   }
 
   /**
- * A Model for access control meta data
- * System grants permissions to principals (users/applications, can be grouped
- * into roles)
- * Protected resource: the model data and operations
- * (model/property/method/relation/…
- * For a given principal, such as client application and/or user, is it allowed
- * to access (read/write/execute)
- * the protected resource
- * @header ACL
- * @property {string} model Name of the model.
- * @property {string} property Name of the property, method, scope, or relation.
- * @property {string} accessType Type of access being granted: one of READ, WRITE, or EXECUTE.
- * @property {string} permission Type of permission granted. One of
-- ALARM: Generate an alarm, in a system-dependent way, the access specified in the permissions component of the ACL entry.
-- ALLOW: Explicitly grants access to the resource.
-- AUDIT: Log, in a system-dependent way, the access specified in the permissions component of the ACL entry.
-- DENY: Explicitly denies access to the resource.
- * @property {string} principalType Type of the principal; one of: Application, Use, Role.
- * @property {string} principalId ID of the principal - such as appId, userId or roleId.
- * @property {any} settings Extends the `Model.settings` object.
- * @property {string} settings.defaultPermission Default permission setting: ALLOW, DENY, ALARM, or AUDIT. Default is ALLOW.
-Set to DENY to prohibit all API access by default
- * @class ACL
- * @inherits PersistedMode
- */
-  declare class l$ACL mixins l$PersistedModel {
+   * A Model for access control meta data
+   * System grants permissions to principals (users/applications, can be grouped
+   * into roles)
+   * Protected resource: the model data and operations
+   * (model/property/method/relation/…
+   * For a given principal, such as client application and/or user, is it allowed
+   * to access (read/write/execute)
+   * the protected resource
+   * @header ACL
+   * @property {string} model Name of the model.
+   * @property {string} property Name of the property, method, scope, or relation.
+   * @property {string} accessType Type of access being granted: one of READ, WRITE, or EXECUTE.
+   * @property {string} permission Type of permission granted. One of
+   * - ALARM: Generate an alarm, in a system-dependent way, the access specified in the permissions component of the ACL entry.
+   * - ALLOW: Explicitly grants access to the resource.
+   * - AUDIT: Log, in a system-dependent way, the access specified in the permissions component of the ACL entry.
+   * - DENY: Explicitly denies access to the resource.
+   * @property {string} principalType Type of the principal; one of: Application, Use, Role.
+   * @property {string} principalId ID of the principal - such as appId, userId or roleId.
+   * @property {any} settings Extends the `Model.settings` object.
+   * @property {string} settings.defaultPermission Default permission setting: ALLOW, DENY, ALARM, or AUDIT. Default is ALLOW.
+   * Set to DENY to prohibit all API access by default
+   * @class ACL
+   * @inherits PersistedMode
+   */
+  declare class l$ACL mixins PersistedModel {
     /**
      * model Name of the model.
      */
@@ -2466,32 +2420,32 @@ Set to DENY to prohibit all API access by default
      */
     settings: {
       http: {
-        skin$path: string
+        path: string
       },
       acls: l$ACL[],
       defaultPermission: "DENY"
     };
 
     /**
- * Check if the request has the permission to access.
- * @options {any} context See below.
- * @property {any[]} principals An Array of principals.
- * @property {string|Model} model The model name or model class.
- * @property {*} id The model instance ID.
- * @property {string} property The property/method/relation name.
- * @property {string} accessType The access type:
-READ, REPLICATE, WRITE, or EXECUTE.
- * @param {() => void} callback Callback functio
- */
+     * Check if the request has the permission to access.
+     * @options {any} context See below.
+     * @property {any[]} principals An Array of principals.
+     * @property {string|Model} model The model name or model class.
+     * @property {*} id The model instance ID.
+     * @property {string} property The property/method/relation name.
+     * @property {string} accessType The access type:
+     * READ, REPLICATE, WRITE, or EXECUTE.
+     * @param {() => void} callback Callback functio
+     */
     static checkAccessForContext(
-      balloontoolbar$context: {
+      context: {
         principals: any[],
         model: string | l$Model,
         id: any,
         property: string,
         accessType: string
       },
-      braintree$callback: () => void
+      callback: () => void
     ): void;
 
     /**
@@ -2503,14 +2457,11 @@ READ, REPLICATE, WRITE, or EXECUTE.
      * @callback {() => void} callback Callback function
      */
     static checkAccessForToken(
-      l$token: l$AccessToken,
+      token: l$AccessToken,
       model: string,
       modelId: any,
       method: string,
-      braintree$callback: (
-        err: string | EventType$Error,
-        allowed: boolean
-      ) => void
+      callback: (err: string | Error, allowed: boolean) => void
     ): void;
 
     /**
@@ -2528,10 +2479,7 @@ READ, REPLICATE, WRITE, or EXECUTE.
       model: string,
       property: string,
       accessType: string,
-      braintree$callback: (
-        err: string | EventType$Error,
-        result: l$AccessRequest
-      ) => void
+      callback: (err: string | Error, result: l$AccessRequest) => void
     ): void;
 
     /**
@@ -2540,10 +2488,7 @@ READ, REPLICATE, WRITE, or EXECUTE.
      * @param {l$AccessRequest} req The request
      * @returns {number}
      */
-    static getMatchingScore(
-      htmlParser$rule: l$ACL,
-      req: l$AccessRequest
-    ): number;
+    static getMatchingScore(rule: l$ACL, req: l$AccessRequest): number;
 
     /**
      * Check if the given principal is mapped to the role
@@ -2566,7 +2511,7 @@ READ, REPLICATE, WRITE, or EXECUTE.
      * @param {() => void} cb Callback function
      */
     static resolvePrincipal(
-      notification$type: string,
+      type: string,
       id: string | number,
       cb: () => void
     ): void;
@@ -2580,47 +2525,47 @@ READ, REPLICATE, WRITE, or EXECUTE.
   }
 
   /**
- * Manage client applications and organize their users
- * @property {string} id  Generated ID.
- * @property {string} name Name; required.
- * @property {string} description Text description
- * @property {string} icon string Icon image URL.
- * @property {string} owner User ID of the developer who registers the application.
- * @property {string} email E-mail address
- * @property {boolean} emailVerified Whether the e-mail is verified.
- * @property {string} url OAuth 2.0  application URL.
- * @property {string}[]} callbackUrls The OAuth 2.0 code/token callback URL.
- * @property {string} status Status of the application; Either `production`, `sandbox` (default), or `disabled`.
- * @property {Date} created Date Application object was created.  Default: current date.
- * @property {Date} modified Date Application object was modified.  Default: current date
- * @property {any} pushSettings.apns APNS configuration, see the options
-below and also
-github.com/argon/node-apn/blob/master/doc/apn.markdown
- * @property {boolean} pushSettings.apns.production Whether to use production Apple Push Notification Service (APNS) servers to send push notifications.
-If true, uses `gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`.
-If false, uses `gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`
- * @property {string} pushSettings.apns.certData The certificate data loaded from the cert.pem file (APNS).
- * @property {string} pushSettings.apns.keyData The key data loaded from the key.pem file (APNS).
- * @property {string} pushSettings.apns.pushOptions.gateway (APNS).
- * @property {number} pushSettings.apns.pushOptions.port (APNS).
- * @property {string} pushSettings.apns.feedbackOptions.gateway  (APNS).
- * @property {number} pushSettings.apns.feedbackOptions.port (APNS).
- * @property {boolean} pushSettings.apns.feedbackOptions.batchFeedback (APNS).
- * @property {number} pushSettings.apns.feedbackOptions.interval (APNS).
- * @property {string} pushSettings.gcm.serverApiKey: Google Cloud Messaging API key
- * @property {boolean} authenticationEnabled
- * @property {boolean} anonymousAllowed
- * @property {Array} authenticationSchemes List of authentication schemes
-(see below).
- * @property {string} authenticationSchemes.scheme Scheme name.
-Supported values: `local`, `facebook`, `google`,
-`twitter`, `linkedin`, `github`.
- * @property {any} authenticationSchemes.credential
-Scheme-specific credentials
- * @class Application
- * @inherits {PersistedModel}
- */
-  declare class l$Application mixins l$PersistedModel {
+   * Manage client applications and organize their users
+   * @property {string} id  Generated ID.
+   * @property {string} name Name; required.
+   * @property {string} description Text description
+   * @property {string} icon string Icon image URL.
+   * @property {string} owner User ID of the developer who registers the application.
+   * @property {string} email E-mail address
+   * @property {boolean} emailVerified Whether the e-mail is verified.
+   * @property {string} url OAuth 2.0  application URL.
+   * @property {string}[]} callbackUrls The OAuth 2.0 code/token callback URL.
+   * @property {string} status Status of the application; Either `production`, `sandbox` (default), or `disabled`.
+   * @property {Date} created Date Application object was created.  Default: current date.
+   * @property {Date} modified Date Application object was modified.  Default: current date
+   * @property {any} pushSettings.apns APNS configuration, see the options
+   * below and also
+   * github.com/argon/node-apn/blob/master/doc/apn.markdown
+   * @property {boolean} pushSettings.apns.production Whether to use production Apple Push Notification Service (APNS) servers to send push notifications.
+   * If true, uses `gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`.
+   * If false, uses `gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`
+   * @property {string} pushSettings.apns.certData The certificate data loaded from the cert.pem file (APNS).
+   * @property {string} pushSettings.apns.keyData The key data loaded from the key.pem file (APNS).
+   * @property {string} pushSettings.apns.pushOptions.gateway (APNS).
+   * @property {number} pushSettings.apns.pushOptions.port (APNS).
+   * @property {string} pushSettings.apns.feedbackOptions.gateway  (APNS).
+   * @property {number} pushSettings.apns.feedbackOptions.port (APNS).
+   * @property {boolean} pushSettings.apns.feedbackOptions.batchFeedback (APNS).
+   * @property {number} pushSettings.apns.feedbackOptions.interval (APNS).
+   * @property {string} pushSettings.gcm.serverApiKey: Google Cloud Messaging API key
+   * @property {boolean} authenticationEnabled
+   * @property {boolean} anonymousAllowed
+   * @property {Array} authenticationSchemes List of authentication schemes
+   * (see below).
+   * @property {string} authenticationSchemes.scheme Scheme name.
+   * Supported values: `local`, `facebook`, `google`,
+   * `twitter`, `linkedin`, `github`.
+   * @property {any} authenticationSchemes.credential
+   * Scheme-specific credentials
+   * @class Application
+   * @inherits {PersistedModel}
+   */
+  declare class l$Application mixins PersistedModel {
     /**
      * Generated ID.
      */
@@ -2629,7 +2574,7 @@ Scheme-specific credentials
     /**
      * Name; required.
      */
-    skin$name: string;
+    name: string;
 
     /**
      * Text description
@@ -2659,7 +2604,7 @@ Scheme-specific credentials
     /**
      * OAuth 2.0  application URL.
      */
-    data$url: string;
+    url: string;
 
     /**
      * The OAuth 2.0 code/token callback URL.
@@ -2674,12 +2619,12 @@ Scheme-specific credentials
     /**
      * Date Application object was created.  Default: current date.
      */
-    created: entities$Date;
+    created: Date;
 
     /**
      * modified Date Application object was modified.  Default: current date.
      */
-    modified: entities$Date;
+    modified: Date;
 
     /**
      * pushSettings.apns APNS configuration, see the options
@@ -2705,11 +2650,11 @@ Scheme-specific credentials
         keyData: string,
         pushOptions: {
           gateway: string,
-          url$port: number
+          port: number
         },
         feedBackOptions: {
           gateway: string,
-          url$port: number,
+          port: number,
           batchFeedback: boolean,
           interval: number
         }
@@ -2724,14 +2669,14 @@ Scheme-specific credentials
 
     /**
      * Authenticate the application id and key
-     * @param {Asn1js$Any} appId
+     * @param {Any} appId
      * @param {string} key
      * @callback {() => void} callback
      */
     static authenticate(
       appId: any,
       key: string,
-      braintree$callback: (err: EventType$Error, matched: string) => void
+      callback: (err: Error, matched: string) => void
     ): void;
 
     /**
@@ -2743,45 +2688,42 @@ Scheme-specific credentials
      */
     static register(
       owner: string,
-      skin$name: string,
-      notification$options: any,
-      braintree$callback: () => void
+      name: string,
+      options: any,
+      callback: () => void
     ): void;
 
     /**
      * Reset keys for the application instance
      * @callback {() => void} callback
      */
-    static resetKeys(braintree$callback: (err: EventType$Error) => void): void;
+    static resetKeys(callback: (err: Error) => void): void;
 
     /**
      * Reset keys for a given application by the appId
-     * @param {Asn1js$Any} appId
+     * @param {Any} appId
      * @callback {() => void} callback
      */
-    resetKeys(
-      appId: any,
-      braintree$callback: (err: EventType$Error) => void
-    ): void;
+    resetKeys(appId: any, callback: (err: Error) => void): void;
   }
 
   /**
- * Change list entry.
- * @property {string} id Hash of the modelName and ID.
- * @property {string} rev The current model revision.
- * @property {string} prev The previous model revision.
- * @property {number} checkpoint The current checkpoint at time of the change.
- * @property {string} modelName Model name.
- * @property {string} modelId Model ID.
- * @property {any} settings Extends the `Model.settings` object.
- * @property {string} settings.hashAlgorithm Algorithm used to create cryptographic hash, used as argument
-to [crypto.createHash](nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm).  Default is sha1.
- * @property {boolean} settings.ignoreErrors By default, when changes are rectified, an error will throw an exception.
-However, if this setting is true, then errors will not throw exceptions.
- * @class Change
- * @inherits {PersistedModel}
- */
-  declare class l$Change mixins l$PersistedModel {
+   * Change list entry.
+   * @property {string} id Hash of the modelName and ID.
+   * @property {string} rev The current model revision.
+   * @property {string} prev The previous model revision.
+   * @property {number} checkpoint The current checkpoint at time of the change.
+   * @property {string} modelName Model name.
+   * @property {string} modelId Model ID.
+   * @property {any} settings Extends the `Model.settings` object.
+   * @property {string} settings.hashAlgorithm Algorithm used to create cryptographic hash, used as argument
+   * to [crypto.createHash](nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm).  Default is sha1.
+   * @property {boolean} settings.ignoreErrors By default, when changes are rectified, an error will throw an exception.
+   * However, if this setting is true, then errors will not throw exceptions.
+   * @class Change
+   * @inherits {PersistedModel}
+   */
+  declare class l$Change mixins PersistedModel {
     /**
      * Hash of the modelName and ID.
      */
@@ -2813,7 +2755,7 @@ However, if this setting is true, then errors will not throw exceptions.
      */
     settings: {
       http: {
-        skin$path: string
+        path: string
       },
       acls: l$ACL[],
       hashAlgorithm: string,
@@ -2861,7 +2803,7 @@ However, if this setting is true, then errors will not throw exceptions.
     static findOrCreateChange(
       modelName: string,
       modelId: string,
-      braintree$callback: (err: EventType$Error, change: l$Change) => void
+      callback: (err: Error, change: l$Change) => void
     ): void;
 
     /**
@@ -2892,13 +2834,13 @@ However, if this setting is true, then errors will not throw exceptions.
     /**
      * Track the recent change of the given modelIds
      * @param {string} modelName
-     * @param {core$Array} modelIds
+     * @param {Array} modelIds
      * @callback {() => void} callback
      */
     static rectifyModelChanges(
       modelName: string,
       modelIds: any[],
-      braintree$callback: (err: EventType$Error, changes: any[]) => void
+      callback: (err: Error, changes: any[]) => void
     ): void;
 
     /**
@@ -2918,9 +2860,7 @@ However, if this setting is true, then errors will not throw exceptions.
      * Get a change's current revision based on current data.
      * @callback {() => void} callback
      */
-    currentRevision(
-      braintree$callback: (err: EventType$Error, rev: string) => void
-    ): void;
+    currentRevision(callback: (err: Error, rev: string) => void): void;
 
     /**
      * Compare two changes.
@@ -2944,9 +2884,7 @@ However, if this setting is true, then errors will not throw exceptions.
      * Update (or create) the change with the current revision
      * @callback {() => void} callback
      */
-    rectify(
-      braintree$callback: (err: EventType$Error, change: l$Change) => void
-    ): void;
+    rectify(callback: (err: Error, change: l$Change) => void): void;
 
     /**
      * Get a change's type. Returns one of
@@ -2974,7 +2912,7 @@ However, if this setting is true, then errors will not throw exceptions.
     target: any;
     constructor(
       modelId: any,
-      AltJS$SourceModel: l$PersistedModel,
+      SourceModel: l$PersistedModel,
       TargetModel: l$PersistedModel
     ): this;
 
@@ -2983,8 +2921,8 @@ However, if this setting is true, then errors will not throw exceptions.
      * @callback {() => void} callback
      */
     changes(
-      braintree$callback: (
-        err: EventType$Error,
+      callback: (
+        err: Error,
         sourceChange: l$Change,
         targetChange: l$Change
       ) => void
@@ -2995,8 +2933,8 @@ However, if this setting is true, then errors will not throw exceptions.
      * @callback {() => void} callback
      */
     models(
-      braintree$callback: (
-        err: EventType$Error,
+      callback: (
+        err: Error,
         source: l$PersistedModel,
         target: l$PersistedModel
       ) => void
@@ -3011,34 +2949,27 @@ However, if this setting is true, then errors will not throw exceptions.
      * This is effectively resolving the conflict using the source version
      * @callback {() => void} callback
      */
-    resolve(braintree$callback: (err: EventType$Error) => void): void;
+    resolve(callback: (err: Error) => void): void;
 
     /**
- * Resolve the conflict using the supplied instance data
- * @param {any} data The set of changes to apply on the model
-instance. Use `null` value to delete the source instance instead.
- * @callback {() => void} callback
- */
-    resolveManually(
-      main$data: any,
-      braintree$callback: (err: EventType$Error) => void
-    ): void;
+     * Resolve the conflict using the supplied instance data
+     * @param {any} data The set of changes to apply on the model
+     * instance. Use `null` value to delete the source instance instead.
+     * @callback {() => void} callback
+     */
+    resolveManually(data: any, callback: (err: Error) => void): void;
 
     /**
      * Resolve the conflict using the instance data in the source model
      * @callback {() => void} callback
      */
-    resolveUsingSource(
-      braintree$callback: (err: EventType$Error) => void
-    ): void;
+    resolveUsingSource(callback: (err: Error) => void): void;
 
     /**
      * Resolve the conflict using the instance data in the target model
      * @callback {() => void} callback
      */
-    resolveUsingTarget(
-      braintree$callback: (err: EventType$Error) => void
-    ): void;
+    resolveUsingTarget(callback: (err: Error) => void): void;
 
     /**
      * Return a new Conflict instance with swapped Source and Target models
@@ -3061,12 +2992,7 @@ instance. Use `null` value to delete the source instance instead.
      * - `Change.UNKNOWN`: the conflict type is uknown or due to an erro
      * @callback {() => void} callback
      */
-    type(
-      braintree$callback: (
-        err: EventType$Error,
-        notification$type: string
-      ) => void
-    ): void;
+    type(callback: (err: Error, type: string) => void): void;
   }
 
   /**
@@ -3079,7 +3005,7 @@ instance. Use `null` value to delete the source instance instead.
    * @class Email
    * @inherits {Model}
    */
-  declare class l$Email mixins l$Model {
+  declare class l$Email mixins Model {
     /**
      * Email addressee.  Required.
      */
@@ -3098,12 +3024,12 @@ instance. Use `null` value to delete the source instance instead.
     /**
      * Text body of email.
      */
-    dojo$text: string;
+    text: string;
 
     /**
      * HTML body of email.
      */
-    main$html: string;
+    html: string;
 
     /**
      * Send an email with the given `options`
@@ -3129,13 +3055,13 @@ instance. Use `null` value to delete the source instance instead.
      *              *
      */
     static send(
-      braintree$callback: () => void,
-      notification$options: {
+      callback: () => void,
+      options: {
         from: string,
         to: string,
         subject: string,
-        dojo$text: string,
-        main$html: string
+        text: string,
+        html: string
       }
     ): void;
 
@@ -3168,8 +3094,8 @@ instance. Use `null` value to delete the source instance instead.
     static expire(
       key: string,
       ttl: number,
-      notification$options: any,
-      braintree$callback: () => void
+      options: any,
+      callback: () => void
     ): PromiseLike<any>;
 
     /**
@@ -3188,75 +3114,75 @@ instance. Use `null` value to delete the source instance instead.
     static get(
       key: string,
       option?: any,
-      braintree$callback?: (err: EventType$Error, result: any) => void
+      callback?: (err: Error, result: any) => void
     ): PromiseLike<any>;
 
     /**
- * Asynchronously iterate all keys in the database. Similar to .keys()
- * but instead allows for iteration over large data sets without having
- * to load everything into memory at once.
- * Callback example:
- * ```
- *              * // Given a model named `Color` with two keys `red` and `blue`
- *              *    var iterator = Color.iterateKeys();
- *              *    t.next(function(err, key) {
- *              *    // key contains `red`
- *              *          it.next(function(err, key) {
- *              *          // key contains `blue`
- *              *          });
- *              *    });
- *              * ```
- * 
- * Promise example:
- * ```
- *              * // Given a model named `Color` with two keys `red` and `blue`
- *              * var iterator = Color.iterateKeys();
- *              * Promise.resolve().then(function() {
- *              *   return it.next();
- *              * })
- *              * .then(function(key) {
- *              *  // key contains `red`
- *              *   return it.next();
- *              * });
- *              * .then(function(key) {
- *              *   // key contains `blue`
- *              * });
- *              * ```
- * @param {any} filter An optional filter object with the following
- * @param {string} Glob string to use to filter returned keys (i.e. userid.*).
-All connectors are required to support * and ?.
-They may also support additional special characters that are specific to the backing database.
- * @param {any}
- * @return {any} result AsyncIterator An Object implementing next(cb) -> Promise function that can be used to iterate all keys.
- */
-    static iterateKeys(util$filter: {
+     * Asynchronously iterate all keys in the database. Similar to .keys()
+     * but instead allows for iteration over large data sets without having
+     * to load everything into memory at once.
+     * Callback example:
+     * ```
+     *              * // Given a model named `Color` with two keys `red` and `blue`
+     *              *    var iterator = Color.iterateKeys();
+     *              *    t.next(function(err, key) {
+     *              *    // key contains `red`
+     *              *          it.next(function(err, key) {
+     *              *          // key contains `blue`
+     *              *          });
+     *              *    });
+     *              * ```
+     *
+     * Promise example:
+     * ```
+     *              * // Given a model named `Color` with two keys `red` and `blue`
+     *              * var iterator = Color.iterateKeys();
+     *              * Promise.resolve().then(function() {
+     *              *   return it.next();
+     *              * })
+     *              * .then(function(key) {
+     *              *  // key contains `red`
+     *              *   return it.next();
+     *              * });
+     *              * .then(function(key) {
+     *              *   // key contains `blue`
+     *              * });
+     *              * ```
+     * @param {any} filter An optional filter object with the following
+     * @param {string} Glob string to use to filter returned keys (i.e. userid.*).
+     * All connectors are required to support * and ?.
+     * They may also support additional special characters that are specific to the backing database.
+     * @param {any}
+     * @return {any} result AsyncIterator An Object implementing next(cb) -> Promise function that can be used to iterate all keys.
+     */
+    static iterateKeys(filter: {
       match: string,
-      notification$options: any
+      options: any
     }): any;
 
     /**
- * Return all keys in the database.
- * WARNING: This method is not suitable for large data sets as all key-values pairs
- * are loaded into memory at once. For large data sets, use iterateKeys() instead.
- * 
- * This method supports both callback-based and promise-based invocation.
- * Call this method with no callback argument to get back a promise instead
- * 
- * WARNING: this promise implementation will not resolve according to the callback function.
- * @param {any} filter An optional filter object with the following
- * @param {string} Glob string used to filter returned keys (i.e. userid.*).
-All connectors are required to support * and ?, but may also support additional special
-characters specific to the database.
- * @param {any}
- * @param {() => void} callback
- * @return {PromiseLike<any>}
- */
+     * Return all keys in the database.
+     * WARNING: This method is not suitable for large data sets as all key-values pairs
+     * are loaded into memory at once. For large data sets, use iterateKeys() instead.
+     *
+     * This method supports both callback-based and promise-based invocation.
+     * Call this method with no callback argument to get back a promise instead
+     *
+     * WARNING: this promise implementation will not resolve according to the callback function.
+     * @param {any} filter An optional filter object with the following
+     * @param {string} Glob string used to filter returned keys (i.e. userid.*).
+     * All connectors are required to support * and ?, but may also support additional special
+     * characters specific to the database.
+     * @param {any}
+     * @param {() => void} callback
+     * @return {PromiseLike<any>}
+     */
     static keys(
-      util$filter: {
+      filter: {
         match: string,
-        notification$options: any
+        options: any
       },
-      braintree$callback: () => void
+      callback: () => void
     ): PromiseLike<any>;
 
     /**
@@ -3276,8 +3202,8 @@ characters specific to the database.
     static set(
       key: string,
       value: any,
-      notification$options?: number | any,
-      braintree$callback?: (err: EventType$Error) => void
+      options?: number | any,
+      callback?: (err: Error) => void
     ): PromiseLike<any>;
 
     /**
@@ -3293,8 +3219,8 @@ characters specific to the database.
      */
     static ttl(
       key: string,
-      notification$options?: any,
-      cb?: (log$error: EventType$Error) => void
+      options?: any,
+      cb?: (error: Error) => void
     ): PromiseLike<any>;
   }
 
@@ -3304,15 +3230,15 @@ characters specific to the database.
    * @inherits {PersistedModel}
    * @header Role objec
    */
-  declare class l$Role mixins l$PersistedModel {
+  declare class l$Role mixins PersistedModel {
     /**
      * List roles for a given principal.
      * @param {any} context The security context.
      * @callback {() => void} callback Callback function.
      */
     static getRoles(
-      balloontoolbar$context: any,
-      braintree$callback: (err: EventType$Error, roles: string[]) => void
+      context: any,
+      callback: (err: Error, roles: string[]) => void
     ): void;
 
     /**
@@ -3321,11 +3247,8 @@ characters specific to the database.
      * @callback {() => void} callback Callback function.
      */
     static isAuthenticated(
-      balloontoolbar$context: any,
-      braintree$callback: (
-        err: EventType$Error,
-        isAuthenticated: boolean
-      ) => void
+      context: any,
+      callback: (err: Error, isAuthenticated: boolean) => void
     ): void;
 
     /**
@@ -3336,8 +3259,8 @@ characters specific to the database.
      */
     static isInRole(
       role: string,
-      balloontoolbar$context: any,
-      braintree$callback: (err: EventType$Error, isInRole: boolean) => void
+      context: any,
+      callback: (err: Error, isInRole: boolean) => void
     ): void;
 
     /**
@@ -3351,23 +3274,23 @@ characters specific to the database.
       modelClass: () => void,
       modelId: any,
       userId: any,
-      braintree$callback: () => void
+      callback: () => void
     ): void;
 
     /**
- * Add custom handler for roles.
- * @param {string} role Name of role.
- * @param {() => void} resolver () => void that determines
-if a principal is in the specified role.
-Should provide a callback or return a promise.
- */
+     * Add custom handler for roles.
+     * @param {string} role Name of role.
+     * @param {() => void} resolver () => void that determines
+     * if a principal is in the specified role.
+     * Should provide a callback or return a promise.
+     */
     static registerResolver(
       role: string,
       resolver: (
         role: string,
         ctx: l$Context,
-        braintree$callback?: (err: EventType$Error, resolved: boolean) => void
-      ) => promise$Promise<boolean> | void
+        callback?: (err: Error, resolved: boolean) => void
+      ) => Promise<boolean> | void
     ): void;
   }
 
@@ -3379,7 +3302,7 @@ Should provide a callback or return a promise.
    * @class RoleMapping
    * @inherits {PersistedModel}
    */
-  declare class l$RoleMapping mixins l$PersistedModel {
+  declare class l$RoleMapping mixins PersistedModel {
     /**
      * Generated ID.
      */
@@ -3388,7 +3311,7 @@ Should provide a callback or return a promise.
     /**
      * Name of the role.
      */
-    skin$name: string;
+    name: string;
 
     /**
      * Description Text description.
@@ -3400,27 +3323,20 @@ Should provide a callback or return a promise.
      * @callback {() => void} callback
      */
     application(
-      braintree$callback: (
-        err: EventType$Error,
-        application: l$Application
-      ) => void
+      callback: (err: Error, application: l$Application) => void
     ): void;
 
     /**
      * Get the child role principal
      * @callback {() => void} callback
      */
-    childRole(
-      braintree$callback: (err: EventType$Error, childUser: l$User) => void
-    ): void;
+    childRole(callback: (err: Error, childUser: l$User) => void): void;
 
     /**
      * Get the user principal
      * @callback {() => void} callback
      */
-    user(
-      braintree$callback: (err: EventType$Error, url$user: l$User) => void
-    ): void;
+    user(callback: (err: Error, user: l$User) => void): void;
   }
 
   /**
@@ -3444,49 +3360,46 @@ Should provide a callback or return a promise.
       model: string,
       property: string,
       accessType: string,
-      braintree$callback: (
-        err: string | EventType$Error,
-        result: l$AccessRequest
-      ) => void
+      callback: (err: string | Error, result: l$AccessRequest) => void
     ): void;
   }
 
   /**
- * Built-in User model.
- * Extends LoopBack [PersistedModel](#persistedmodel-new-persistedmodel)
- * Default `User` ACLs
- * - DENY EVERYONE `*`
- * - ALLOW EVERYONE `create`
- * - ALLOW OWNER `deleteById`
- * - ALLOW EVERYONE `login`
- * - ALLOW EVERYONE `logout`
- * - ALLOW OWNER `findById`
- * - ALLOW OWNER `updateAttributes`
- * @property {string} username Must be unique.
- * @property {string} password Hidden from remote clients.
- * @property {string} email Must be valid email.
- * @property {boolean} emailVerified Set when a user's email has been verified via `confirm()`.
- * @property {string} verificationToken Set when `verify()` is called.
- * @property {string} realm The namespace the user belongs to. See [Partitioning users with realms](docs.strongloop.com/display/public/LB/Partitioning+users+with+realms) for details.
- * @property {Date} created The property is not used by LoopBack, you are free to use it for your own purposes.
- * @property {Date} lastUpdated The property is not used by LoopBack, you are free to use it for your own purposes.
- * @property {string} status The property is not used by LoopBack, you are free to use it for your own purposes.
- * @property {any} settings Extends the `Model.settings` object.
- * @property {boolean} settings.emailVerificationRequired Require the email verification
-process before allowing a login.
- * @property {number} settings.ttl Default time to live (in seconds) for the `AccessToken` created by `User.login() / user.createAccessToken()`.
-Default is `1209600` (2 weeks)
- * @property {number} settings.maxTTL The max value a user can request a token to be alive / valid for.
-Default is `31556926` (1 year)
- * @property {boolean} settings.realmRequired Require a realm when logging in a user.
- * @property {string} settings.realmDelimiter When set a realm is required.
- * @property {number} settings.resetPasswordTokenTTL Time to live for password reset `AccessToken`. Default is `900` (15 minutes).
- * @property {number} settings.saltWorkFactor The `bcrypt` salt work factor. Default is `10`.
- * @property {boolean} settings.caseSensitiveEmail Enable case sensitive email.
- * @class User
- * @inherits {PersistedModel}
- */
-  declare class l$User mixins l$PersistedModel {
+   * Built-in User model.
+   * Extends LoopBack [PersistedModel](#persistedmodel-new-persistedmodel)
+   * Default `User` ACLs
+   * - DENY EVERYONE `*`
+   * - ALLOW EVERYONE `create`
+   * - ALLOW OWNER `deleteById`
+   * - ALLOW EVERYONE `login`
+   * - ALLOW EVERYONE `logout`
+   * - ALLOW OWNER `findById`
+   * - ALLOW OWNER `updateAttributes`
+   * @property {string} username Must be unique.
+   * @property {string} password Hidden from remote clients.
+   * @property {string} email Must be valid email.
+   * @property {boolean} emailVerified Set when a user's email has been verified via `confirm()`.
+   * @property {string} verificationToken Set when `verify()` is called.
+   * @property {string} realm The namespace the user belongs to. See [Partitioning users with realms](docs.strongloop.com/display/public/LB/Partitioning+users+with+realms) for details.
+   * @property {Date} created The property is not used by LoopBack, you are free to use it for your own purposes.
+   * @property {Date} lastUpdated The property is not used by LoopBack, you are free to use it for your own purposes.
+   * @property {string} status The property is not used by LoopBack, you are free to use it for your own purposes.
+   * @property {any} settings Extends the `Model.settings` object.
+   * @property {boolean} settings.emailVerificationRequired Require the email verification
+   * process before allowing a login.
+   * @property {number} settings.ttl Default time to live (in seconds) for the `AccessToken` created by `User.login() / user.createAccessToken()`.
+   * Default is `1209600` (2 weeks)
+   * @property {number} settings.maxTTL The max value a user can request a token to be alive / valid for.
+   * Default is `31556926` (1 year)
+   * @property {boolean} settings.realmRequired Require a realm when logging in a user.
+   * @property {string} settings.realmDelimiter When set a realm is required.
+   * @property {number} settings.resetPasswordTokenTTL Time to live for password reset `AccessToken`. Default is `900` (15 minutes).
+   * @property {number} settings.saltWorkFactor The `bcrypt` salt work factor. Default is `10`.
+   * @property {boolean} settings.caseSensitiveEmail Enable case sensitive email.
+   * @class User
+   * @inherits {PersistedModel}
+   */
+  declare class l$User mixins PersistedModel {
     /**
      * Must be unique.
      */
@@ -3495,7 +3408,7 @@ Default is `31556926` (1 year)
     /**
      * Hidden from remote clients.
      */
-    url$password: string;
+    password: string;
 
     /**
      * Must be valid email.
@@ -3520,12 +3433,12 @@ Default is `31556926` (1 year)
     /**
      * The property is not used by LoopBack, you are free to use it for your own purposes.
      */
-    created: entities$Date;
+    created: Date;
 
     /**
      * The property is not used by LoopBack, you are free to use it for your own purposes.
      */
-    lastUpdate: entities$Date;
+    lastUpdate: Date;
 
     /**
      * The property is not used by LoopBack, you are free to use it for your own purposes.
@@ -3548,7 +3461,7 @@ Default is `31556926` (1 year)
      */
     settings: {
       http: {
-        skin$path: string
+        path: string
       },
       acls: l$ACL[],
       emailVerificationRequired: boolean,
@@ -3563,17 +3476,17 @@ Default is `31556926` (1 year)
 
     /**
      * Confirm the user's identity
-     * @param {Asn1js$Any} userId
+     * @param {Any} userId
      * @param {string} token The validation token
      * @param {string} redirect URL to redirect the user to once confirmed
      * @callback {() => void} callback
      */
     static confirm(
       userId: any,
-      l$token: string,
+      token: string,
       redirect: string,
-      braintree$callback?: (err: EventType$Error) => void
-    ): promise$Promise<void> | void;
+      callback?: (err: Error) => void
+    ): Promise<void> | void;
 
     /**
      * A default verification token generator which accepts the user the token is
@@ -3585,31 +3498,28 @@ Default is `31556926` (1 year)
      * @param {() => void} cb The generator must pass back the new token with this function cal
      */
     static generateVerificationToken(
-      url$user: any,
-      braintree$callback?: () => void
-    ): promise$Promise<void> | void;
+      user: any,
+      callback?: () => void
+    ): Promise<void> | void;
 
     /**
- * Login a user by with the given `credentials`
- * 
- * ```js
- *              *    User.login({username: 'foo', password: 'bar'}, function (err, token) {
- *              *          console.log(token.id);
- *              *    });
- *              * ```
- * @param {any} credentials username/password or email/password
- * @param {string[] | string} include Optionally set it to "user" to include
-the user info
- * @callback {() => void} callback Callback function
- */
+     * Login a user by with the given `credentials`
+     *
+     * ```js
+     *              *    User.login({username: 'foo', password: 'bar'}, function (err, token) {
+     *              *          console.log(token.id);
+     *              *    });
+     *              * ```
+     * @param {any} credentials username/password or email/password
+     * @param {string[] | string} include Optionally set it to "user" to include
+     * the user info
+     * @callback {() => void} callback Callback function
+     */
     static login(
       credentials: any,
       include?: string[] | string,
-      braintree$callback?: (
-        err: EventType$Error,
-        l$token: l$AccessToken
-      ) => void
-    ): promise$Promise<l$AccessToken> | void;
+      callback?: (err: Error, token: l$AccessToken) => void
+    ): Promise<l$AccessToken> | void;
 
     /**
      * Logout a user with the given accessToken id
@@ -3624,8 +3534,8 @@ the user info
      */
     static logout(
       accessTokenID: string,
-      braintree$callback?: (err: EventType$Error) => void
-    ): promise$Promise<void> | void;
+      callback?: (err: Error) => void
+    ): Promise<void> | void;
 
     /**
      * Normalize the credentials
@@ -3648,9 +3558,9 @@ the user info
      * @callback {() => void} callback
      */
     static resetPassword(
-      notification$options: {},
-      braintree$callback?: (err: EventType$Error) => void
-    ): promise$Promise<void> | void;
+      options: {},
+      callback?: (err: Error) => void
+    ): Promise<void> | void;
 
     /**
      * Create access token for the logged in user. This method can be overridden to
@@ -3661,12 +3571,9 @@ the user info
      */
     createAccessToken(
       ttl: number,
-      notification$options?: any,
-      braintree$callback?: (
-        err: string | EventType$Error,
-        l$token: l$AccessToken
-      ) => void
-    ): promise$Promise<l$AccessToken> | void;
+      options?: any,
+      callback?: (err: string | Error, token: l$AccessToken) => void
+    ): Promise<l$AccessToken> | void;
 
     /**
      * Compare the given `password` with the users hashed password
@@ -3674,51 +3581,51 @@ the user info
      * @callback {() => void} callback Callback function
      */
     hasPassword(
-      url$password: string,
-      braintree$callback?: (err: EventType$Error, isMatch: boolean) => void
-    ): promise$Promise<boolean> | void;
+      password: string,
+      callback?: (err: Error, isMatch: boolean) => void
+    ): Promise<boolean> | void;
 
     /**
- * Verify a user's identity by sending them a confirmation email
- *   ```js
- *              *   var options = {
- *              *     type: 'email',
- *              *     to: user.email,
- *              *     template: 'verify.ejs',
- *              *     redirect: '/',
- *              *     tokenGenerator: function (user, cb) { cb("random-token"); }
- *              *   };
- *              *
- *              *   user.verify(options, next);
- *              * ```
- * @options {any} options
- * @property {string} type Must be 'email'.
- * @property {string} to Email address to which verification email is sent.
- * @property {string} from Sender email addresss, for example
-`'noreply@myapp.com'`.
- * @property {string} subject Subject line text.
- * @property {string} text Text of email.
- * @property {string} template Name of template that displays verification
-page, for example, `'verify.ejs'.
-             * @property {string} redirect Page to which user will be redirected after
-             *  they verify their email, for example `'/'` for root URI.
-             * @property {() => void} generateVerificationToken A function to be used to
-             *  generate the verification token. It must accept the user object and a
-             *  callback function. This function should NOT add the token to the user
-             *  object, instead simply execute the callback with the token! User saving
-             *  and email sending will be handled in the `verify()` method
-             *
- */
-    verify(notification$options: {
-      notification$type: string,
+     * Verify a user's identity by sending them a confirmation email
+     *   ```js
+     *              *   var options = {
+     *              *     type: 'email',
+     *              *     to: user.email,
+     *              *     template: 'verify.ejs',
+     *              *     redirect: '/',
+     *              *     tokenGenerator: function (user, cb) { cb("random-token"); }
+     *              *   };
+     *              *
+     *              *   user.verify(options, next);
+     *              * ```
+     * @options {any} options
+     * @property {string} type Must be 'email'.
+     * @property {string} to Email address to which verification email is sent.
+     * @property {string} from Sender email addresss, for example
+     * `'noreply@myapp.com'`.
+     * @property {string} subject Subject line text.
+     * @property {string} text Text of email.
+     * @property {string} template Name of template that displays verification
+     * page, for example, `'verify.ejs'.
+     *              * @property {string} redirect Page to which user will be redirected after
+     *              *  they verify their email, for example `'/'` for root URI.
+     *              * @property {() => void} generateVerificationToken A function to be used to
+     *              *  generate the verification token. It must accept the user object and a
+     *              *  callback function. This function should NOT add the token to the user
+     *              *  object, instead simply execute the callback with the token! User saving
+     *              *  and email sending will be handled in the `verify()` method
+     *              *
+     */
+    verify(options: {
+      type: string,
       to: string,
       from: string,
       subject: string,
-      dojo$text: string,
-      Util$template: string,
+      text: string,
+      template: string,
       redirect: string,
       generateVerificationToken(): void
     }): void;
   }
-  declare module.exports: typeof l;
+  declare export default typeof l;
 }
