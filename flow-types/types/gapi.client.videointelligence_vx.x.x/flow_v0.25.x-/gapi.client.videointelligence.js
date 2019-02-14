@@ -1,40 +1,44 @@
 declare module "gapi.client.videointelligence" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    videos: typeof client$videos
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    videos: typeof gapi$client$videos
   };
 
   /**
    * Load Cloud Video Intelligence API v1beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "videointelligence",
     version: "v1beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "videointelligence",
     version: "v1beta1",
     callback: () => any
   ): void;
 
-  declare var client$videos: videointelligence$videointelligence$VideosResource;
+  declare var gapi$client$videos: videointelligence$VideosResource;
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_AnnotateVideoProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_AnnotateVideoProgress {
     /**
      * Progress metadata for all videos specified in `AnnotateVideoRequest`.
      */
     annotationProgress?: videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationProgress[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_AnnotateVideoResponse {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_AnnotateVideoResponse {
     /**
      * Annotation results for all videos specified in `AnnotateVideoRequest`.
      */
     annotationResults?: videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationResults[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_LabelAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_LabelAnnotation {
     /**
      * Textual description, e.g. `Fixed-gear bicycle`.
      */
@@ -51,7 +55,7 @@ declare module "gapi.client.videointelligence" {
     locations?: videointelligence$GoogleCloudVideointelligenceV1_LabelLocation[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_LabelLocation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_LabelLocation {
     /**
      * Confidence that the label is accurate. Range: [0, 1].
      */
@@ -71,7 +75,7 @@ declare module "gapi.client.videointelligence" {
     segment?: videointelligence$GoogleCloudVideointelligenceV1_VideoSegment;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_SafeSearchAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_SafeSearchAnnotation {
     /**
      * Likelihood of adult content.
      */
@@ -84,7 +88,7 @@ declare module "gapi.client.videointelligence" {
     time?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationProgress {
     /**
      * Video file location in
      * [Google Cloud Storage](https://cloud.google.com/storage/).
@@ -108,7 +112,7 @@ declare module "gapi.client.videointelligence" {
     updateTime?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationResults {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_VideoAnnotationResults {
     /**
      * If set, indicates an error. Note that for a single `AnnotateVideoRequest`
      * some videos may succeed and some may fail.
@@ -124,12 +128,12 @@ declare module "gapi.client.videointelligence" {
     /**
      * Label annotations. There is exactly one element for each unique label.
      */
-    labelAnnotations?: videointelligence$GoogleCloudVideointelligenceV1_LabelAnnotation[];
+    labelAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1_LabelAnnotation[];
 
     /**
      * Safe search annotations.
      */
-    safeSearchAnnotations?: videointelligence$GoogleCloudVideointelligenceV1_SafeSearchAnnotation[];
+    safeSearchAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1_SafeSearchAnnotation[];
 
     /**
      * Shot annotations. Each shot is represented as a video segment.
@@ -137,7 +141,7 @@ declare module "gapi.client.videointelligence" {
     shotAnnotations?: videointelligence$GoogleCloudVideointelligenceV1_VideoSegment[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1_VideoSegment {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1_VideoSegment {
     /**
      * Time-offset, relative to the beginning of the video,
      * corresponding to the end of the segment (inclusive).
@@ -151,14 +155,14 @@ declare module "gapi.client.videointelligence" {
     startTime?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoProgress {
     /**
      * Progress metadata for all videos specified in `AnnotateVideoRequest`.
      */
     annotationProgress?: videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest {
     /**
      * Requested video annotation features.
      */
@@ -207,14 +211,14 @@ declare module "gapi.client.videointelligence" {
     videoContext?: videointelligence$GoogleCloudVideointelligenceV1beta1_VideoContext;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse {
     /**
      * Annotation results for all videos specified in `AnnotateVideoRequest`.
      */
     annotationResults?: videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_LabelAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_LabelAnnotation {
     /**
      * Textual description, e.g. `Fixed-gear bicycle`.
      */
@@ -231,7 +235,7 @@ declare module "gapi.client.videointelligence" {
     locations?: videointelligence$GoogleCloudVideointelligenceV1beta1_LabelLocation[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_LabelLocation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_LabelLocation {
     /**
      * Confidence that the label is accurate. Range: [0, 1].
      */
@@ -251,7 +255,7 @@ declare module "gapi.client.videointelligence" {
     segment?: videointelligence$GoogleCloudVideointelligenceV1beta1_VideoSegment;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation {
     /**
      * Likelihood of adult content.
      */
@@ -284,7 +288,7 @@ declare module "gapi.client.videointelligence" {
     violent?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress {
     /**
      * Video file location in
      * [Google Cloud Storage](https://cloud.google.com/storage/).
@@ -308,7 +312,7 @@ declare module "gapi.client.videointelligence" {
     updateTime?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults {
     /**
      * If set, indicates an error. Note that for a single `AnnotateVideoRequest`
      * some videos may succeed and some may fail.
@@ -324,12 +328,12 @@ declare module "gapi.client.videointelligence" {
     /**
      * Label annotations. There is exactly one element for each unique label.
      */
-    labelAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta1_LabelAnnotation[];
+    labelAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_LabelAnnotation[];
 
     /**
      * Safe search annotations.
      */
-    safeSearchAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation[];
+    safeSearchAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation[];
 
     /**
      * Shot annotations. Each shot is represented as a video segment.
@@ -337,7 +341,7 @@ declare module "gapi.client.videointelligence" {
     shotAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta1_VideoSegment[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_VideoContext {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_VideoContext {
     /**
      * If label detection has been requested, what labels should be detected
      * in addition to video-level labels or segment-level labels. If unspecified,
@@ -377,7 +381,7 @@ declare module "gapi.client.videointelligence" {
     stationaryCamera?: boolean;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta1_VideoSegment {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta1_VideoSegment {
     /**
      * End offset in microseconds (inclusive). Unset means 0.
      */
@@ -389,21 +393,21 @@ declare module "gapi.client.videointelligence" {
     startTimeOffset?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_AnnotateVideoProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_AnnotateVideoProgress {
     /**
      * Progress metadata for all videos specified in `AnnotateVideoRequest`.
      */
     annotationProgress?: videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_AnnotateVideoResponse {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_AnnotateVideoResponse {
     /**
      * Annotation results for all videos specified in `AnnotateVideoRequest`.
      */
     annotationResults?: videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_Entity {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_Entity {
     /**
      * Textual description, e.g. `Fixed-gear bicycle`.
      */
@@ -422,14 +426,14 @@ declare module "gapi.client.videointelligence" {
     languageCode?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation {
     /**
      * All video frames where explicit content was detected.
      */
     frames?: videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame {
     /**
      * Likelihood of the pornography content..
      */
@@ -442,19 +446,19 @@ declare module "gapi.client.videointelligence" {
     timeOffset?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation {
     /**
      * Common categories for the detected entity.
      * E.g. when the label is `Terrier` the category is likely `dog`. And in some
      * cases there might be more than one categories e.g. `Terrier` could also be
      * a `pet`.
      */
-    categoryEntities?: videointelligence$GoogleCloudVideointelligenceV1beta2_Entity[];
+    categoryEntities?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_Entity[];
 
     /**
      * Detected entity.
      */
-    entity?: videointelligence$GoogleCloudVideointelligenceV1beta2_Entity;
+    entity?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_Entity;
 
     /**
      * All video frames where a label was detected.
@@ -467,7 +471,7 @@ declare module "gapi.client.videointelligence" {
     segments?: videointelligence$GoogleCloudVideointelligenceV1beta2_LabelSegment[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_LabelFrame {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelFrame {
     /**
      * Confidence that the label is accurate. Range: [0, 1].
      */
@@ -480,7 +484,7 @@ declare module "gapi.client.videointelligence" {
     timeOffset?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_LabelSegment {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelSegment {
     /**
      * Confidence that the label is accurate. Range: [0, 1].
      */
@@ -492,7 +496,7 @@ declare module "gapi.client.videointelligence" {
     segment?: videointelligence$GoogleCloudVideointelligenceV1beta2_VideoSegment;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress {
     /**
      * Video file location in
      * [Google Cloud Storage](https://cloud.google.com/storage/).
@@ -516,7 +520,7 @@ declare module "gapi.client.videointelligence" {
     updateTime?: string;
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults {
     /**
      * If set, indicates an error. Note that for a single `AnnotateVideoRequest`
      * some videos may succeed and some may fail.
@@ -526,13 +530,13 @@ declare module "gapi.client.videointelligence" {
     /**
      * Explicit content annotation.
      */
-    explicitAnnotation?: videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation;
+    explicitAnnotation?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation;
 
     /**
      * Label annotations on frame level.
      * There is exactly one element for each unique label.
      */
-    frameLabelAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
+    frameLabelAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
 
     /**
      * Video file location in
@@ -544,7 +548,7 @@ declare module "gapi.client.videointelligence" {
      * Label annotations on video level or user specified segment level.
      * There is exactly one element for each unique label.
      */
-    segmentLabelAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
+    segmentLabelAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
 
     /**
      * Shot annotations. Each shot is represented as a video segment.
@@ -555,10 +559,10 @@ declare module "gapi.client.videointelligence" {
      * Label annotations on shot level.
      * There is exactly one element for each unique label.
      */
-    shotLabelAnnotations?: videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
+    shotLabelAnnotations?: gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_LabelAnnotation[];
   }
 
-  declare interface videointelligence$GoogleCloudVideointelligenceV1beta2_VideoSegment {
+  declare interface gapi$client$videointelligence$GoogleCloudVideointelligenceV1beta2_VideoSegment {
     /**
      * Time-offset, relative to the beginning of the video,
      * corresponding to the end of the segment (inclusive).
@@ -572,7 +576,7 @@ declare module "gapi.client.videointelligence" {
     startTimeOffset?: string;
   }
 
-  declare interface videointelligence$GoogleLongrunning_Operation {
+  declare interface gapi$client$videointelligence$GoogleLongrunning_Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -613,7 +617,7 @@ declare module "gapi.client.videointelligence" {
     response?: Record<string, any>;
   }
 
-  declare interface videointelligence$GoogleRpc_Status {
+  declare interface gapi$client$videointelligence$GoogleRpc_Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -633,7 +637,7 @@ declare module "gapi.client.videointelligence" {
     message?: string;
   }
 
-  declare interface videointelligence$VideosResource {
+  declare interface gapi$client$videointelligence$VideosResource {
     /**
      * Performs asynchronous video annotation. Progress and results can be
      * retrieved through the `google.longrunning.Operations` interface.
@@ -705,6 +709,6 @@ declare module "gapi.client.videointelligence" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<videointelligence$GoogleLongrunning_Operation>;
+    }): Request<gapi$client$videointelligence$GoogleLongrunning_Operation>;
   }
 }
