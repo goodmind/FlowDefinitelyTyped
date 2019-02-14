@@ -1,7 +1,7 @@
 declare module "youtube-dl" {
   import typeof * as fs from "fs";
 
-  declare module.exports: typeof youtubedl;
+  declare export default typeof youtubedl;
 
   declare function youtubedl(
     url: string,
@@ -9,7 +9,7 @@ declare module "youtube-dl" {
     opt: {
       [key: string]: string
     }
-  ): youtubedl$youtubedl$Youtubedl;
+  ): youtubedl$Youtubedl;
 
   declare var npm$namespace$youtubedl: {
     exec: typeof youtubedl$exec,
