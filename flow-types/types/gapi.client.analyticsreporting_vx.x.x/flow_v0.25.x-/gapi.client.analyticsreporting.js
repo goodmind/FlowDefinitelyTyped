@@ -1,26 +1,30 @@
 declare module "gapi.client.analyticsreporting" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    reports: typeof client$reports
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    reports: typeof gapi$client$reports
   };
 
   /**
    * Load Google Analytics Reporting API v4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "analyticsreporting",
     version: "v4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "analyticsreporting",
     version: "v4",
     callback: () => any
   ): void;
 
-  declare var client$reports: analyticsreporting$analyticsreporting$ReportsResource;
+  declare var gapi$client$reports: analyticsreporting$ReportsResource;
 
-  declare interface analyticsreporting$Cohort {
+  declare interface gapi$client$analyticsreporting$Cohort {
     /**
      * This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users
      * whose first visit date is between start date and end date defined in the
@@ -50,11 +54,11 @@ declare module "gapi.client.analyticsreporting" {
     type?: string;
   }
 
-  declare interface analyticsreporting$CohortGroup {
+  declare interface gapi$client$analyticsreporting$CohortGroup {
     /**
      * The definition for the cohort.
      */
-    cohorts?: analyticsreporting$Cohort[];
+    cohorts?: gapi$client$analyticsreporting$Cohort[];
 
     /**
      * Enable Life Time Value (LTV).  LTV measures lifetime value for users
@@ -90,7 +94,7 @@ declare module "gapi.client.analyticsreporting" {
     lifetimeValue?: boolean;
   }
 
-  declare interface analyticsreporting$ColumnHeader {
+  declare interface gapi$client$analyticsreporting$ColumnHeader {
     /**
      * The dimension names in the response.
      */
@@ -102,7 +106,7 @@ declare module "gapi.client.analyticsreporting" {
     metricHeader?: analyticsreporting$MetricHeader;
   }
 
-  declare interface analyticsreporting$DateRange {
+  declare interface gapi$client$analyticsreporting$DateRange {
     /**
      * The end date for the query in the format `YYYY-MM-DD`.
      */
@@ -114,7 +118,7 @@ declare module "gapi.client.analyticsreporting" {
     startDate?: string;
   }
 
-  declare interface analyticsreporting$DateRangeValues {
+  declare interface gapi$client$analyticsreporting$DateRangeValues {
     /**
      * The values of each pivot region.
      */
@@ -126,7 +130,7 @@ declare module "gapi.client.analyticsreporting" {
     values?: string[];
   }
 
-  declare interface analyticsreporting$Dimension {
+  declare interface gapi$client$analyticsreporting$Dimension {
     /**
      * If non-empty, we place dimension values into buckets after string to
      * int64. Dimension values that are not the string representation of an
@@ -168,7 +172,7 @@ declare module "gapi.client.analyticsreporting" {
     name?: string;
   }
 
-  declare interface analyticsreporting$DimensionFilter {
+  declare interface gapi$client$analyticsreporting$DimensionFilter {
     /**
      * Should the match be case sensitive? Default is false.
      */
@@ -199,12 +203,12 @@ declare module "gapi.client.analyticsreporting" {
     operator?: string;
   }
 
-  declare interface analyticsreporting$DimensionFilterClause {
+  declare interface gapi$client$analyticsreporting$DimensionFilterClause {
     /**
      * The repeated set of filters. They are logically combined based on the
      * operator specified.
      */
-    filters?: analyticsreporting$DimensionFilter[];
+    filters?: gapi$client$analyticsreporting$DimensionFilter[];
 
     /**
      * The operator for combining multiple dimension filters. If unspecified, it
@@ -213,7 +217,7 @@ declare module "gapi.client.analyticsreporting" {
     operator?: string;
   }
 
-  declare interface analyticsreporting$DynamicSegment {
+  declare interface gapi$client$analyticsreporting$DynamicSegment {
     /**
      * The name of the dynamic segment.
      */
@@ -230,7 +234,7 @@ declare module "gapi.client.analyticsreporting" {
     userSegment?: analyticsreporting$SegmentDefinition;
   }
 
-  declare interface analyticsreporting$GetReportsRequest {
+  declare interface gapi$client$analyticsreporting$GetReportsRequest {
     /**
      * Requests, each request will have a separate response.
      * There can be a maximum of 5 requests. All requests should have the same
@@ -239,14 +243,14 @@ declare module "gapi.client.analyticsreporting" {
     reportRequests?: analyticsreporting$ReportRequest[];
   }
 
-  declare interface analyticsreporting$GetReportsResponse {
+  declare interface gapi$client$analyticsreporting$GetReportsResponse {
     /**
      * Responses corresponding to each of the request.
      */
-    client$reports?: analyticsreporting$Report[];
+    reports?: analyticsreporting$Report[];
   }
 
-  declare interface analyticsreporting$Metric {
+  declare interface gapi$client$analyticsreporting$Metric {
     /**
      * An alias for the metric expression is an alternate name for the
      * expression. The alias can be used for filtering and sorting. This field
@@ -275,7 +279,7 @@ declare module "gapi.client.analyticsreporting" {
     formattingType?: string;
   }
 
-  declare interface analyticsreporting$MetricFilter {
+  declare interface gapi$client$analyticsreporting$MetricFilter {
     /**
      * The value to compare against.
      */
@@ -303,12 +307,12 @@ declare module "gapi.client.analyticsreporting" {
     operator?: string;
   }
 
-  declare interface analyticsreporting$MetricFilterClause {
+  declare interface gapi$client$analyticsreporting$MetricFilterClause {
     /**
      * The repeated set of filters. They are logically combined based on the
      * operator specified.
      */
-    filters?: analyticsreporting$MetricFilter[];
+    filters?: gapi$client$analyticsreporting$MetricFilter[];
 
     /**
      * The operator for combining multiple metric filters. If unspecified, it is
@@ -317,7 +321,7 @@ declare module "gapi.client.analyticsreporting" {
     operator?: string;
   }
 
-  declare interface analyticsreporting$MetricHeader {
+  declare interface gapi$client$analyticsreporting$MetricHeader {
     /**
      * Headers for the metrics in the response.
      */
@@ -329,7 +333,7 @@ declare module "gapi.client.analyticsreporting" {
     pivotHeaders?: analyticsreporting$PivotHeader[];
   }
 
-  declare interface analyticsreporting$MetricHeaderEntry {
+  declare interface gapi$client$analyticsreporting$MetricHeaderEntry {
     /**
      * The name of the header.
      */
@@ -341,14 +345,14 @@ declare module "gapi.client.analyticsreporting" {
     type?: string;
   }
 
-  declare interface analyticsreporting$OrFiltersForSegment {
+  declare interface gapi$client$analyticsreporting$OrFiltersForSegment {
     /**
      * List of segment filters to be combined with a `OR` operator.
      */
     segmentFilterClauses?: analyticsreporting$SegmentFilterClause[];
   }
 
-  declare interface analyticsreporting$OrderBy {
+  declare interface gapi$client$analyticsreporting$OrderBy {
     /**
      * The field which to sort by. The default sort order is ascending. Example:
      * `ga:browser`.
@@ -368,7 +372,7 @@ declare module "gapi.client.analyticsreporting" {
     sortOrder?: string;
   }
 
-  declare interface analyticsreporting$Pivot {
+  declare interface gapi$client$analyticsreporting$Pivot {
     /**
      * DimensionFilterClauses are logically combined with an `AND` operator: only
      * data that is included by all these DimensionFilterClauses contributes to
@@ -378,14 +382,14 @@ declare module "gapi.client.analyticsreporting" {
      * specify key filters to restrict `ga:browser` to only "IE" or "Firefox",
      * then only those two browsers would show up as columns.
      */
-    dimensionFilterClauses?: analyticsreporting$DimensionFilterClause[];
+    dimensionFilterClauses?: gapi$client$analyticsreporting$DimensionFilterClause[];
 
     /**
      * A list of dimensions to show as pivot columns. A Pivot can have a maximum
      * of 4 dimensions. Pivot dimensions are part of the restriction on the
      * total number of dimensions allowed in the request.
      */
-    dimensions?: analyticsreporting$Dimension[];
+    dimensions?: gapi$client$analyticsreporting$Dimension[];
 
     /**
      * Specifies the maximum number of groups to return.
@@ -397,7 +401,7 @@ declare module "gapi.client.analyticsreporting" {
      * The pivot metrics. Pivot metrics are part of the
      * restriction on total number of metrics allowed in the request.
      */
-    metrics?: analyticsreporting$Metric[];
+    metrics?: gapi$client$analyticsreporting$Metric[];
 
     /**
      * If k metrics were requested, then the response will contain some
@@ -417,7 +421,7 @@ declare module "gapi.client.analyticsreporting" {
     startGroup?: number;
   }
 
-  declare interface analyticsreporting$PivotHeader {
+  declare interface gapi$client$analyticsreporting$PivotHeader {
     /**
      * A single pivot section header.
      */
@@ -429,7 +433,7 @@ declare module "gapi.client.analyticsreporting" {
     totalPivotGroupsCount?: number;
   }
 
-  declare interface analyticsreporting$PivotHeaderEntry {
+  declare interface gapi$client$analyticsreporting$PivotHeaderEntry {
     /**
      * The name of the dimensions in the pivot response.
      */
@@ -443,21 +447,21 @@ declare module "gapi.client.analyticsreporting" {
     /**
      * The metric header for the metric in the pivot.
      */
-    metric?: analyticsreporting$MetricHeaderEntry;
+    metric?: gapi$client$analyticsreporting$MetricHeaderEntry;
   }
 
-  declare interface analyticsreporting$PivotValueRegion {
+  declare interface gapi$client$analyticsreporting$PivotValueRegion {
     /**
      * The values of the metrics in each of the pivot regions.
      */
     values?: string[];
   }
 
-  declare interface analyticsreporting$Report {
+  declare interface gapi$client$analyticsreporting$Report {
     /**
      * The column headers.
      */
-    columnHeader?: analyticsreporting$ColumnHeader;
+    columnHeader?: gapi$client$analyticsreporting$ColumnHeader;
 
     /**
      * Response data.
@@ -470,7 +474,7 @@ declare module "gapi.client.analyticsreporting" {
     nextPageToken?: string;
   }
 
-  declare interface analyticsreporting$ReportData {
+  declare interface gapi$client$analyticsreporting$ReportData {
     /**
      * The last time the data in the report was refreshed. All the hits received
      * before this timestamp are included in the calculation of the report.
@@ -489,14 +493,14 @@ declare module "gapi.client.analyticsreporting" {
      * empty when `hideValueRanges` in the request is false, or when
      * rowCount is zero.
      */
-    maximums?: analyticsreporting$DateRangeValues[];
+    maximums?: gapi$client$analyticsreporting$DateRangeValues[];
 
     /**
      * Minimum and maximum values seen over all matching rows. These are both
      * empty when `hideValueRanges` in the request is false, or when
      * rowCount is zero.
      */
-    minimums?: analyticsreporting$DateRangeValues[];
+    minimums?: gapi$client$analyticsreporting$DateRangeValues[];
 
     /**
      * Total number of matching rows for this query.
@@ -539,17 +543,17 @@ declare module "gapi.client.analyticsreporting" {
      * `3 / ((sum of all relevant ga:sessions) + 2)`.
      * Totals are computed before pagination.
      */
-    totals?: analyticsreporting$DateRangeValues[];
+    totals?: gapi$client$analyticsreporting$DateRangeValues[];
   }
 
-  declare interface analyticsreporting$ReportRequest {
+  declare interface gapi$client$analyticsreporting$ReportRequest {
     /**
      * Cohort group associated with this request. If there is a cohort group
      * in the request the `ga:cohort` dimension must be present.
      * Every [ReportRequest](#ReportRequest) within a `batchGet` method must
      * contain the same `cohortGroup` definition.
      */
-    cohortGroup?: analyticsreporting$CohortGroup;
+    cohortGroup?: gapi$client$analyticsreporting$CohortGroup;
 
     /**
      * Date ranges in the request. The request can have a maximum of 2 date
@@ -564,7 +568,7 @@ declare module "gapi.client.analyticsreporting" {
      * [ReportRequest](#ReportRequest) within a `batchGet` method must
      * contain the same `dateRanges` definition.
      */
-    dateRanges?: analyticsreporting$DateRange[];
+    dateRanges?: gapi$client$analyticsreporting$DateRange[];
 
     /**
      * The dimension filter clauses for filtering Dimension Values. They are
@@ -572,13 +576,13 @@ declare module "gapi.client.analyticsreporting" {
      * before any dimensions are aggregated, so that the returned metrics
      * represent the total for only the relevant dimensions.
      */
-    dimensionFilterClauses?: analyticsreporting$DimensionFilterClause[];
+    dimensionFilterClauses?: gapi$client$analyticsreporting$DimensionFilterClause[];
 
     /**
      * The dimensions requested.
      * Requests can have a total of 7 dimensions.
      */
-    dimensions?: analyticsreporting$Dimension[];
+    dimensions?: gapi$client$analyticsreporting$Dimension[];
 
     /**
      * Dimension or metric filters that restrict the data returned for your
@@ -616,21 +620,21 @@ declare module "gapi.client.analyticsreporting" {
      * comparing date range. Note that filtering on metrics occurs after the
      * metrics are aggregated.
      */
-    metricFilterClauses?: analyticsreporting$MetricFilterClause[];
+    metricFilterClauses?: gapi$client$analyticsreporting$MetricFilterClause[];
 
     /**
      * The metrics requested.
      * Requests must specify at least one metric. Requests can have a
      * total of 10 metrics.
      */
-    metrics?: analyticsreporting$Metric[];
+    metrics?: gapi$client$analyticsreporting$Metric[];
 
     /**
      * Sort order on output rows. To compare two rows, the elements of the
      * following are applied in order until a difference is found.  All date
      * ranges in the output get the same row order.
      */
-    orderBys?: analyticsreporting$OrderBy[];
+    orderBys?: gapi$client$analyticsreporting$OrderBy[];
 
     /**
      * Page size is for paging and specifies the maximum number of returned rows.
@@ -655,7 +659,7 @@ declare module "gapi.client.analyticsreporting" {
     /**
      * The pivot definitions. Requests can have a maximum of 2 pivots.
      */
-    pivots?: analyticsreporting$Pivot[];
+    pivots?: gapi$client$analyticsreporting$Pivot[];
 
     /**
      * The desired report
@@ -686,7 +690,7 @@ declare module "gapi.client.analyticsreporting" {
     viewId?: string;
   }
 
-  declare interface analyticsreporting$ReportRow {
+  declare interface gapi$client$analyticsreporting$ReportRow {
     /**
      * List of requested dimensions.
      */
@@ -695,14 +699,14 @@ declare module "gapi.client.analyticsreporting" {
     /**
      * List of metrics for each requested DateRange.
      */
-    metrics?: analyticsreporting$DateRangeValues[];
+    metrics?: gapi$client$analyticsreporting$DateRangeValues[];
   }
 
-  declare interface analyticsreporting$Segment {
+  declare interface gapi$client$analyticsreporting$Segment {
     /**
      * A dynamic segment definition in the request.
      */
-    dynamicSegment?: analyticsreporting$DynamicSegment;
+    dynamicSegment?: gapi$client$analyticsreporting$DynamicSegment;
 
     /**
      * The segment ID of a built-in or custom segment, for example `gaid::-3`.
@@ -710,7 +714,7 @@ declare module "gapi.client.analyticsreporting" {
     segmentId?: string;
   }
 
-  declare interface analyticsreporting$SegmentDefinition {
+  declare interface gapi$client$analyticsreporting$SegmentDefinition {
     /**
      * A segment is defined by a set of segment filters which are combined
      * together with a logical `AND` operation.
@@ -718,7 +722,7 @@ declare module "gapi.client.analyticsreporting" {
     segmentFilters?: analyticsreporting$SegmentFilter[];
   }
 
-  declare interface analyticsreporting$SegmentDimensionFilter {
+  declare interface gapi$client$analyticsreporting$SegmentDimensionFilter {
     /**
      * Should the match be case sensitive, ignored for `IN_LIST` operator.
      */
@@ -750,7 +754,7 @@ declare module "gapi.client.analyticsreporting" {
     operator?: string;
   }
 
-  declare interface analyticsreporting$SegmentFilter {
+  declare interface gapi$client$analyticsreporting$SegmentFilter {
     /**
      * If true, match the complement of simple or sequence segment.
      * For example, to match all visits not from "New York", we can define the
@@ -788,11 +792,11 @@ declare module "gapi.client.analyticsreporting" {
     simpleSegment?: analyticsreporting$SimpleSegment;
   }
 
-  declare interface analyticsreporting$SegmentFilterClause {
+  declare interface gapi$client$analyticsreporting$SegmentFilterClause {
     /**
      * Dimension Filter for the segment definition.
      */
-    dimensionFilter?: analyticsreporting$SegmentDimensionFilter;
+    dimensionFilter?: gapi$client$analyticsreporting$SegmentDimensionFilter;
 
     /**
      * Metric Filter for the segment definition.
@@ -805,7 +809,7 @@ declare module "gapi.client.analyticsreporting" {
     not?: boolean;
   }
 
-  declare interface analyticsreporting$SegmentMetricFilter {
+  declare interface gapi$client$analyticsreporting$SegmentMetricFilter {
     /**
      * The value to compare against. If the operator is `BETWEEN`, this value is
      * treated as minimum comparison value.
@@ -838,7 +842,7 @@ declare module "gapi.client.analyticsreporting" {
     scope?: string;
   }
 
-  declare interface analyticsreporting$SegmentSequenceStep {
+  declare interface gapi$client$analyticsreporting$SegmentSequenceStep {
     /**
      * Specifies if the step immediately precedes or can be any time before the
      * next step.
@@ -849,10 +853,10 @@ declare module "gapi.client.analyticsreporting" {
      * A sequence is specified with a list of Or grouped filters which are
      * combined with `AND` operator.
      */
-    orFiltersForSegment?: analyticsreporting$OrFiltersForSegment[];
+    orFiltersForSegment?: gapi$client$analyticsreporting$OrFiltersForSegment[];
   }
 
-  declare interface analyticsreporting$SequenceSegment {
+  declare interface gapi$client$analyticsreporting$SequenceSegment {
     /**
      * If set, first step condition must match the first hit of the visitor (in
      * the date range).
@@ -862,18 +866,18 @@ declare module "gapi.client.analyticsreporting" {
     /**
      * The list of steps in the sequence.
      */
-    segmentSequenceSteps?: analyticsreporting$SegmentSequenceStep[];
+    segmentSequenceSteps?: gapi$client$analyticsreporting$SegmentSequenceStep[];
   }
 
-  declare interface analyticsreporting$SimpleSegment {
+  declare interface gapi$client$analyticsreporting$SimpleSegment {
     /**
      * A list of segment filters groups which are combined with logical `AND`
      * operator.
      */
-    orFiltersForSegment?: analyticsreporting$OrFiltersForSegment[];
+    orFiltersForSegment?: gapi$client$analyticsreporting$OrFiltersForSegment[];
   }
 
-  declare interface analyticsreporting$ReportsResource {
+  declare interface gapi$client$analyticsreporting$ReportsResource {
     /**
      * Returns the Analytics data.
      */
@@ -942,6 +946,6 @@ declare module "gapi.client.analyticsreporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<analyticsreporting$GetReportsResponse>;
+    }): Request<gapi$client$analyticsreporting$GetReportsResponse>;
   }
 }
