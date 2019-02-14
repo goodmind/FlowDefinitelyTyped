@@ -44,7 +44,9 @@ skipInit?: boolean): PaginateModel<any>
 
     }
 declare module 'mongoose-paginate-v2' {
-        declare function _(schema: mongoose.Schema): void
+        import typeof * as mongoose from 'mongoose';
+
+	declare function _(schema: mongoose.Schema): void
 
 	declare export default typeof _
 
