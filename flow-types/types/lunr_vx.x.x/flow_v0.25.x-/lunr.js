@@ -1,5 +1,5 @@
 declare module "lunr" {
-  declare module.exports: typeof lunr;
+  declare export default typeof lunr;
 
   declare var npm$namespace$lunr: {
     stemmer: typeof lunr$stemmer,
@@ -7,7 +7,20 @@ declare module "lunr" {
     stopWordFilter: typeof lunr$stopWordFilter,
     tokenizer: typeof lunr$tokenizer,
     trimmer: typeof lunr$trimmer,
-    version: typeof lunr$version
+    version: typeof lunr$version,
+
+    Builder: typeof lunr$Builder,
+    Index: typeof lunr$Index,
+    MatchData: typeof lunr$MatchData,
+    Pipeline: typeof lunr$Pipeline,
+    Query: typeof lunr$Query,
+    QueryParseError: typeof lunr$QueryParseError,
+    Token: typeof lunr$Token,
+    TokenSet: typeof lunr$TokenSet,
+    Vector: typeof lunr$Vector,
+    Query: typeof npm$namespace$lunr$Query,
+    tokenizer: typeof npm$namespace$lunr$tokenizer,
+    utils: typeof npm$namespace$lunr$utils
   };
 
   /**
@@ -20,7 +33,7 @@ declare module "lunr" {
    * arguments can also be passed when calling use. The function will be called
    * with the index builder as its context.
    */
-  declare type Builder$Plugin = (...args: any[]) => void;
+  declare type lunr$Builder$Plugin = (...args: any[]) => void;
 
   /**
    * lunr.Builder performs indexing on a set of documents and
@@ -182,10 +195,10 @@ declare module "lunr" {
      * with the index builder as its context.
      * @param plugin The plugin to apply.
      */
-    use(plugin: lunr$Builder.Builder$Plugin, ...args: any[]): void;
+    use(plugin: Builder$Plugin, ...args: any[]): void;
   }
 
-  declare interface Index$Attributes {
+  declare interface lunr$Index$Attributes {
     /**
      * An index of term/field to document reference.
      */
@@ -217,7 +230,7 @@ declare module "lunr" {
   /**
    * A result contains details of a document matching a search query.
    */
-  declare interface Index$Result {
+  declare interface lunr$Index$Result {
     /**
      * The reference of the document this result represents.
      */
@@ -239,48 +252,48 @@ declare module "lunr" {
    * the query to perform on the index.
    * @param query - The query object to build up.
    */
-  declare type Index$QueryBuilder = (query: lunr$Query) => void;
+  declare type lunr$Index$QueryBuilder = (query: lunr$Query) => void;
 
   /**
- * Although lunr provides the ability to create queries using lunr.Query, it also provides a simple
- * query language which itself is parsed into an instance of lunr.Query.
- * 
- * For programmatically building queries it is advised to directly use lunr.Query, the query language
- * is best used for human entered text rather than program generated text.
- * 
- * At its simplest queries can just be a single term, e.g. `hello`, multiple terms are also supported
- * and will be combined with OR, e.g `hello world` will match documents that contain either 'hello'
- * or 'world', though those that contain both will rank higher in the results.
- * 
- * Wildcards can be included in terms to match one or more unspecified characters, these wildcards can
- * be inserted anywhere within the term, and more than one wildcard can exist in a single term. Adding
- * wildcards will increase the number of documents that will be found but can also have a negative
- * impact on query performance, especially with wildcards at the beginning of a term.
- * 
- * Terms can be restricted to specific fields, e.g. `title:hello`, only documents with the term
- * hello in the title field will match this query. Using a field not present in the index will lead
- * to an error being thrown.
- * 
- * Modifiers can also be added to terms, lunr supports edit distance and boost modifiers on terms. A term
- * boost will make documents matching that term score higher, e.g. `foo^5`. Edit distance is also supported
- * to provide fuzzy matching, e.g. 'hello~2' will match documents with hello with an edit distance of 2.
- * Avoid large values for edit distance to improve query performance.
- * 
- * To escape special characters the backslash character '\' can be used, this allows searches to include
- * characters that would normally be considered modifiers, e.g. `foo\~2` will search for a term "foo~2" instead
- * of attempting to apply a boost of 2 to the search term "foo".
- * @example <caption>Simple single term query</caption>
-hello
- * @example <caption>Multiple term query</caption>
-hello world
- * @example <caption>term scoped to a field</caption>
-title:hello
- * @example <caption>term with a boost of 10</caption>
-hello^10
- * @example <caption>term with an edit distance of 2</caption>
-hello~2
- */
-  declare type Index$QueryString = string;
+   * Although lunr provides the ability to create queries using lunr.Query, it also provides a simple
+   * query language which itself is parsed into an instance of lunr.Query.
+   *
+   * For programmatically building queries it is advised to directly use lunr.Query, the query language
+   * is best used for human entered text rather than program generated text.
+   *
+   * At its simplest queries can just be a single term, e.g. `hello`, multiple terms are also supported
+   * and will be combined with OR, e.g `hello world` will match documents that contain either 'hello'
+   * or 'world', though those that contain both will rank higher in the results.
+   *
+   * Wildcards can be included in terms to match one or more unspecified characters, these wildcards can
+   * be inserted anywhere within the term, and more than one wildcard can exist in a single term. Adding
+   * wildcards will increase the number of documents that will be found but can also have a negative
+   * impact on query performance, especially with wildcards at the beginning of a term.
+   *
+   * Terms can be restricted to specific fields, e.g. `title:hello`, only documents with the term
+   * hello in the title field will match this query. Using a field not present in the index will lead
+   * to an error being thrown.
+   *
+   * Modifiers can also be added to terms, lunr supports edit distance and boost modifiers on terms. A term
+   * boost will make documents matching that term score higher, e.g. `foo^5`. Edit distance is also supported
+   * to provide fuzzy matching, e.g. 'hello~2' will match documents with hello with an edit distance of 2.
+   * Avoid large values for edit distance to improve query performance.
+   *
+   * To escape special characters the backslash character '\' can be used, this allows searches to include
+   * characters that would normally be considered modifiers, e.g. `foo\~2` will search for a term "foo~2" instead
+   * of attempting to apply a boost of 2 to the search term "foo".
+   * @example <caption>Simple single term query</caption>
+   * hello
+   * @example <caption>Multiple term query</caption>
+   * hello world
+   * @example <caption>term scoped to a field</caption>
+   * title:hello
+   * @example <caption>term with a boost of 10</caption>
+   * hello^10
+   * @example <caption>term with an edit distance of 2</caption>
+   * hello~2
+   */
+  declare type lunr$Index$QueryString = string;
 
   /**
    * An index contains the built index of all documents and provides a query interface
@@ -294,7 +307,7 @@ hello~2
     /**
      * @param attrs The attributes of the built search index.
      */
-    constructor(attrs: lunr$Index.Index$Attributes): this;
+    constructor(attrs: Index$Attributes): this;
 
     /**
      * Performs a search against the index using lunr query syntax.
@@ -306,9 +319,7 @@ hello~2
      * @param queryString - A string containing a lunr query.
      * @throws {lunr.QueryParseError} If the passed query string cannot be parsed.
      */
-    search(
-      queryString: lunr$Index.Index$QueryString
-    ): lunr$Index.Index$Result[];
+    search(queryString: Index$QueryString): Index$Result[];
 
     /**
      * Performs a query against the index using the yielded lunr.Query object.
@@ -324,7 +335,7 @@ hello~2
      * customized.
      * @param fn - A function that is used to build the query.
      */
-    query(fn: lunr$Index.Index$QueryBuilder): lunr$Index.Index$Result[];
+    query(fn: Index$QueryBuilder): Index$Result[];
 
     /**
      * Prepares the index for JSON serialization.
@@ -518,46 +529,32 @@ hello~2
     toJSON(): lunr$PipelineFunction[];
   }
 
+  declare var npm$namespace$lunr$Query: {
+    presence: typeof lunr$Query$presence,
+    wildcard: typeof lunr$Query$wildcard
+  };
+
   /**
    * Constants for indicating what kind of presence a term must have in matching documents.
    */
-  declare class Query$presence {
-    constructor(...args: empty): mixed;
-    static +OPTIONAL: Class<Query$presence__OPTIONAL> &
-      Query$presence__OPTIONAL &
-      1; // 1
-    static +REQUIRED: Class<Query$presence__REQUIRED> &
-      Query$presence__REQUIRED &
-      2; // 2
-    static +PROHIBITED: Class<Query$presence__PROHIBITED> &
-      Query$presence__PROHIBITED &
-      3; // 3
-  }
 
-  declare class Query$presence__OPTIONAL mixins Query$presence {}
-  declare class Query$presence__REQUIRED mixins Query$presence {}
-  declare class Query$presence__PROHIBITED mixins Query$presence {}
+  declare var lunr$Query$presence: {|
+    +OPTIONAL: 1, // 1
+    +REQUIRED: 2, // 2
+    +PROHIBITED: 3 // 3
+  |};
 
-  declare class Query$wildcard {
-    constructor(...args: empty): mixed;
-    static +NONE: Class<Query$wildcard__NONE> & Query$wildcard__NONE & 0; // 0
-    static +LEADING: Class<Query$wildcard__LEADING> &
-      Query$wildcard__LEADING &
-      "NO PRINT IMPLEMENTED: BinaryExpression"; // "NO PRINT IMPLEMENTED: BinaryExpression"
-    static +TRAILING: Class<Query$wildcard__TRAILING> &
-      Query$wildcard__TRAILING &
-      "NO PRINT IMPLEMENTED: BinaryExpression"; // "NO PRINT IMPLEMENTED: BinaryExpression"
-  }
-
-  declare class Query$wildcard__NONE mixins Query$wildcard {}
-  declare class Query$wildcard__LEADING mixins Query$wildcard {}
-  declare class Query$wildcard__TRAILING mixins Query$wildcard {}
+  declare var lunr$Query$wildcard: {|
+    +NONE: 0, // 0
+    +LEADING: "NO PRINT IMPLEMENTED: BinaryExpression", // "NO PRINT IMPLEMENTED: BinaryExpression"
+    +TRAILING: "NO PRINT IMPLEMENTED: BinaryExpression" // "NO PRINT IMPLEMENTED: BinaryExpression"
+  |};
 
   /**
    * A single clause in a {@link lunr.Query} contains a term and details on how to
    * match that term against a {@link lunr.Index}.
    */
-  declare interface Query$Clause {
+  declare interface lunr$Query$Clause {
     term: string;
 
     /**
@@ -583,7 +580,7 @@ hello~2
     /**
      * Whether the term should have wildcards appended or prepended.
      */
-    Query$wildcard: number;
+    wildcard: number;
   }
 
   /**
@@ -597,7 +594,7 @@ hello~2
     /**
      * An array of query clauses.
      */
-    clauses: lunr$Query.Query$Clause[];
+    clauses: Query$Clause[];
 
     /**
      * An array of all available fields in a lunr.Index.
@@ -617,30 +614,30 @@ hello~2
      * @param clause - The clause to add to this query.
      * @see lunr.Query~Clause
      */
-    clause(clause: lunr$Query.Query$Clause): lunr$Query;
+    clause(clause: Query$Clause): lunr$Query;
 
     /**
- * Adds a term to the current query, under the covers this will create a {@link lunr.Query~Clause}
- * to the list of clauses that make up this query.
- * 
- * The term is used as is, i.e. no tokenization will be performed by this method. Instead conversion
- * to a token or token-like string should be done before calling this method.
- * 
- * The term will be converted to a string by calling `toString`. Multiple terms can be passed as an
- * array, each term in the array will share the same options.
- * @param term - The term to add to the query.
- * @param options - Any additional properties to add to the query clause.
- * @see lunr.Query#clause
- * @see lunr.Query~Clause
- * @example <caption>adding a single term to a query</caption>
-query.term("foo")
- * @example <caption>adding a single term to a query and specifying search fields, term boost and automatic trailing wildcard</caption>
-query.term("foo", {
-fields: ["title"],
-boost: 10,
-wildcard: lunr.Query.wildcard.TRAILING
-})
- */
+     * Adds a term to the current query, under the covers this will create a {@link lunr.Query~Clause}
+     * to the list of clauses that make up this query.
+     *
+     * The term is used as is, i.e. no tokenization will be performed by this method. Instead conversion
+     * to a token or token-like string should be done before calling this method.
+     *
+     * The term will be converted to a string by calling `toString`. Multiple terms can be passed as an
+     * array, each term in the array will share the same options.
+     * @param term - The term to add to the query.
+     * @param options - Any additional properties to add to the query clause.
+     * @see lunr.Query#clause
+     * @see lunr.Query~Clause
+     * @example <caption>adding a single term to a query</caption>
+     * query.term("foo")
+     * @example <caption>adding a single term to a query and specifying search fields, term boost and automatic trailing wildcard</caption>
+     * query.term("foo", {
+     * fields: ["title"],
+     * boost: 10,
+     * wildcard: lunr.Query.wildcard.TRAILING
+     * })
+     */
     term(
       term: string | string[] | lunr$Token | lunr$Token[],
       options: { [key: string]: any }
@@ -698,7 +695,7 @@ wildcard: lunr.Query.wildcard.TRAILING
    * @param str - The string representation of the token.
    * @param metadata - All metadata associated with this token.
    */
-  declare type Token$UpdateFunction = (
+  declare type lunr$Token$UpdateFunction = (
     str: string,
     metadata: { [key: string]: any }
   ) => void;
@@ -720,20 +717,20 @@ wildcard: lunr.Query.wildcard.TRAILING
     toString(): string;
 
     /**
- * Applies the given function to the wrapped string token.
- * @example token.update(function (str, metadata) {
-return str.toUpperCase()
-})
- * @param fn - A function to apply to the token string.
- */
-    update(fn: lunr$Token.Token$UpdateFunction): lunr$Token;
+     * Applies the given function to the wrapped string token.
+     * @example token.update(function (str, metadata) {
+     * return str.toUpperCase()
+     * })
+     * @param fn - A function to apply to the token string.
+     */
+    update(fn: Token$UpdateFunction): lunr$Token;
 
     /**
      * Creates a clone of this token. Optionally a function can be
      * applied to the cloned token.
      * @param fn - An optional function to apply to the cloned token.
      */
-    clone(fn?: lunr$Token.Token$UpdateFunction): lunr$Token;
+    clone(fn?: Token$UpdateFunction): lunr$Token;
   }
 
   /**
@@ -817,8 +814,8 @@ return str.toUpperCase()
     intersect(b: lunr$TokenSet): lunr$TokenSet;
   }
 
-  declare var npm$namespace$tokenizer: {
-    separator: typeof tokenizer$separator
+  declare var npm$namespace$lunr$tokenizer: {
+    separator: typeof lunr$tokenizer$separator
   };
 
   /**
@@ -826,7 +823,7 @@ return str.toUpperCase()
    * `lunr.tokenizer` behaviour when tokenizing strings. By default this splits on whitespace and hyphens.
    * @see lunr.tokenizer
    */
-  declare var tokenizer$separator: RegExp;
+  declare var lunr$tokenizer$separator: RegExp;
 
   /**
    * A function for splitting a string into tokens ready to be inserted into
@@ -857,16 +854,16 @@ return str.toUpperCase()
    */
   declare function lunr$trimmer(token: lunr$Token): lunr$Token;
 
-  declare var npm$namespace$utils: {
-    warn: typeof utils$warn,
-    asString: typeof utils$asString
+  declare var npm$namespace$lunr$utils: {
+    warn: typeof lunr$utils$warn,
+    asString: typeof lunr$utils$asString
   };
 
   /**
    * Print a warning message to the console.
    * @param message The message to be printed.
    */
-  declare function utils$warn(message: string): void;
+  declare function lunr$utils$warn(message: string): void;
 
   /**
    * Convert an object to a string.
@@ -877,7 +874,7 @@ return str.toUpperCase()
    * @param obj The object to convert to a string.
    * @return string representation of the passed object.
    */
-  declare function utils$asString(obj: any): string;
+  declare function lunr$utils$asString(obj: any): string;
 
   /**
    * A vector is used to construct the vector space of documents and queries. These
@@ -919,12 +916,12 @@ return str.toUpperCase()
     insert(insertIdx: number, val: number): void;
 
     /**
- * Inserts or updates an existing index within the vector.
- * @param insertIdx - The index at which the element should be inserted.
- * @param val - The value to be inserted into the vector.
- * @param fn - A function that is called for updates, the existing value and the
-requested value are passed as arguments
- */
+     * Inserts or updates an existing index within the vector.
+     * @param insertIdx - The index at which the element should be inserted.
+     * @param val - The value to be inserted into the vector.
+     * @param fn - A function that is called for updates, the existing value and the
+     * requested value are passed as arguments
+     */
     upsert(
       insertIdx: number,
       val: number,
@@ -943,11 +940,11 @@ requested value are passed as arguments
     dot(otherVector: lunr$Vector): number;
 
     /**
- * Calculates the cosine similarity between this vector and another
- * vector.
- * @param otherVector - The other vector to calculate the
-similarity with.
- */
+     * Calculates the cosine similarity between this vector and another
+     * vector.
+     * @param otherVector - The other vector to calculate the
+     * similarity with.
+     */
     similarity(otherVector: lunr$Vector): number;
 
     /**
@@ -992,5 +989,5 @@ similarity with.
    *  *   });
    *  * ```
    */
-  declare function lunr(config: lunr$lunr$ConfigFunction): lunr$lunr$Index;
+  declare function lunr(config: lunr$ConfigFunction): lunr$Index;
 }
