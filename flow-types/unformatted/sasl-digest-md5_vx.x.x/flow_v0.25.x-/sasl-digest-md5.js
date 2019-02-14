@@ -1,16 +1,4 @@
-declare interface DigestMd5Mechanism$Options {
-genNonce?: () => number
-} 
-
-declare interface DigestMd5Mechanism$Credentials {
-serviceType: string,
-host: string,
-username: string,
-password: string,
-serviceName?: string,
-realm?: string,
-authzid?: string
-} declare module 'sasl-digest-md5' {
+declare module 'sasl-digest-md5' {
         import type {
           Mechanism
         } from 'saslmechanisms';
@@ -25,8 +13,21 @@ clientFirst: false
 };
 name: "DIGEST-MD5";
 clientFirst: false;
-constructor(options?: DigestMd5Mechanism$DigestMd5Mechanism$Options): this;
-response(cred: DigestMd5Mechanism$DigestMd5Mechanism$Credentials): string;
+constructor(options?: DigestMd5Mechanism$Options): this;
+response(cred: DigestMd5Mechanism$Credentials): string;
 challenge(chal: string): this
 }
+	declare interface DigestMd5Mechanism$Options {
+genNonce?: () => number
+} 
+
+declare interface DigestMd5Mechanism$Credentials {
+serviceType: string,
+host: string,
+username: string,
+password: string,
+serviceName?: string,
+realm?: string,
+authzid?: string
+} 
     }
