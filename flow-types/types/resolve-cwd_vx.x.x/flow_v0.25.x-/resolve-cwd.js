@@ -1,5 +1,5 @@
 declare module "resolve-cwd" {
-  declare module.exports: typeof resolveCwd;
+  declare export default typeof resolveCwd;
 
   declare function resolveCwd(moduleId: string): string;
 
