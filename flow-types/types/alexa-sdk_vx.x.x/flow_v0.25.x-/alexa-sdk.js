@@ -505,6 +505,18 @@ declare module "alexa-sdk" {
     status: ListItemObjectStatus;
     version: number;
   }
+
+  declare var npm$namespace$templateBuilders: {
+    TemplateBuilder: typeof templateBuilders$TemplateBuilder,
+    ListItemBuilder: typeof templateBuilders$ListItemBuilder,
+    BodyTemplate1Builder: typeof templateBuilders$BodyTemplate1Builder,
+    BodyTemplate2Builder: typeof templateBuilders$BodyTemplate2Builder,
+    BodyTemplate3Builder: typeof templateBuilders$BodyTemplate3Builder,
+    BodyTemplate6Builder: typeof templateBuilders$BodyTemplate6Builder,
+    BodyTemplate7Builder: typeof templateBuilders$BodyTemplate7Builder,
+    ListTemplate1Builder: typeof templateBuilders$ListTemplate1Builder,
+    ListTemplate2Builder: typeof templateBuilders$ListTemplate2Builder
+  };
   declare interface templateBuilders$SetTextContent<
     T: templateBuilders$TemplateBuilder<T>
   > {
@@ -594,8 +606,8 @@ declare module "alexa-sdk" {
    * Used to create BodyTemplate1 objects
    */
   declare class templateBuilders$BodyTemplate1Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$BodyTemplate1Builder>,
-      templateBuilders$SetTextContent<templateBuilders$BodyTemplate1Builder> {
+    mixins TemplateBuilder<templateBuilders$BodyTemplate1Builder>,
+      SetTextContent<templateBuilders$BodyTemplate1Builder> {
     constructor(): this;
 
     /**
@@ -616,8 +628,8 @@ declare module "alexa-sdk" {
    * Used to create BodyTemplate2 objects
    */
   declare class templateBuilders$BodyTemplate2Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$BodyTemplate2Builder>,
-      templateBuilders$SetTextContent<templateBuilders$BodyTemplate2Builder> {
+    mixins TemplateBuilder<templateBuilders$BodyTemplate2Builder>,
+      SetTextContent<templateBuilders$BodyTemplate2Builder> {
     constructor(): this;
 
     /**
@@ -645,8 +657,8 @@ declare module "alexa-sdk" {
    * Used to create BodyTemplate3 objects
    */
   declare class templateBuilders$BodyTemplate3Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$BodyTemplate3Builder>,
-      templateBuilders$SetTextContent<templateBuilders$BodyTemplate3Builder> {
+    mixins TemplateBuilder<templateBuilders$BodyTemplate3Builder>,
+      SetTextContent<templateBuilders$BodyTemplate3Builder> {
     constructor(): this;
 
     /**
@@ -674,8 +686,8 @@ declare module "alexa-sdk" {
    * Used to create BodyTemplate6 objects
    */
   declare class templateBuilders$BodyTemplate6Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$BodyTemplate6Builder>,
-      templateBuilders$SetTextContent<templateBuilders$BodyTemplate6Builder> {
+    mixins TemplateBuilder<templateBuilders$BodyTemplate6Builder>,
+      SetTextContent<templateBuilders$BodyTemplate6Builder> {
     constructor(): this;
 
     /**
@@ -703,7 +715,7 @@ declare module "alexa-sdk" {
    * Used to create BodyTemplate7 objects
    */
   declare class templateBuilders$BodyTemplate7Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$BodyTemplate7Builder> {
+    mixins TemplateBuilder<templateBuilders$BodyTemplate7Builder> {
     constructor(): this;
 
     /**
@@ -718,8 +730,8 @@ declare module "alexa-sdk" {
    * Used to create ListTemplate1 objects
    */
   declare class templateBuilders$ListTemplate1Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$ListTemplate1Builder>,
-      templateBuilders$SetListItems<templateBuilders$ListTemplate1Builder> {
+    mixins TemplateBuilder<templateBuilders$ListTemplate1Builder>,
+      SetListItems<templateBuilders$ListTemplate1Builder> {
     constructor(): this;
 
     /**
@@ -734,8 +746,8 @@ declare module "alexa-sdk" {
    * Used to create ListTemplate2 objects
    */
   declare class templateBuilders$ListTemplate2Builder
-    mixins templateBuilders$TemplateBuilder<templateBuilders$ListTemplate2Builder>,
-      templateBuilders$SetListItems<templateBuilders$ListTemplate2Builder> {
+    mixins TemplateBuilder<templateBuilders$ListTemplate2Builder>,
+      SetListItems<templateBuilders$ListTemplate2Builder> {
     constructor(): this;
 
     /**
@@ -745,6 +757,13 @@ declare module "alexa-sdk" {
      */
     setListItems(listItems: ListItem[]): templateBuilders$ListTemplate2Builder;
   }
+
+  declare var npm$namespace$services: {
+    ApiClient: typeof services$ApiClient,
+    DeviceAddressService: typeof services$DeviceAddressService,
+    DirectiveService: typeof services$DirectiveService,
+    ListManagementService: typeof services$ListManagementService
+  };
   declare class services$ApiClient {
     /**
      * Make a POST API call to the specified uri with headers and optional body
@@ -1049,23 +1068,23 @@ declare module "alexa-sdk" {
     ): ResponseBuilder;
 
     /**
- * Creates an AudioPlayer play directive
- * @param behavior Describes playback behavior. Accepted values:
-REPLACE_ALL: Immediately begin playback of the specified stream, and replace current and enqueued streams.
-ENQUEUE: Add the specified stream to the end of the current queue. This does not impact the currently playing stream.
-REPLACE_ENQUEUED: Replace all streams in the queue. This does not impact the currently playing stream.
- * @param url Identifies the location of audio content at a remote HTTPS location.
-The audio file must be hosted at an Internet-accessible HTTPS endpoint. HTTPS is required, and the domain hosting the
-files must present a valid, trusted SSL certificate. Self-signed certificates cannot be used.
-The supported formats for the audio file include AAC/MP4, MP3, HLS, PLS and M3U. Bitrates: 16kbps to 384 kbps.
- * @param token A token that represents the audio stream. This token cannot exceed 1024 characters
- * @param expectedPreviousToken A token that represents the expected previous stream.
-This property is required and allowed only when the playBehavior is ENQUEUE. This is used to prevent potential race conditions
-if requests to progress through a playlist and change tracks occur at the same time.
- * @param offsetInMilliseconds The timestamp in the stream from which Alexa should begin playback.
-Set to 0 to start playing the stream from the beginning. Set to any other value to start playback from that associated point in the stream
- * @returns ResponseBuilder
- */
+     * Creates an AudioPlayer play directive
+     * @param behavior Describes playback behavior. Accepted values:
+     * REPLACE_ALL: Immediately begin playback of the specified stream, and replace current and enqueued streams.
+     * ENQUEUE: Add the specified stream to the end of the current queue. This does not impact the currently playing stream.
+     * REPLACE_ENQUEUED: Replace all streams in the queue. This does not impact the currently playing stream.
+     * @param url Identifies the location of audio content at a remote HTTPS location.
+     * The audio file must be hosted at an Internet-accessible HTTPS endpoint. HTTPS is required, and the domain hosting the
+     * files must present a valid, trusted SSL certificate. Self-signed certificates cannot be used.
+     * The supported formats for the audio file include AAC/MP4, MP3, HLS, PLS and M3U. Bitrates: 16kbps to 384 kbps.
+     * @param token A token that represents the audio stream. This token cannot exceed 1024 characters
+     * @param expectedPreviousToken A token that represents the expected previous stream.
+     * This property is required and allowed only when the playBehavior is ENQUEUE. This is used to prevent potential race conditions
+     * if requests to progress through a playlist and change tracks occur at the same time.
+     * @param offsetInMilliseconds The timestamp in the stream from which Alexa should begin playback.
+     * Set to 0 to start playing the stream from the beginning. Set to any other value to start playback from that associated point in the stream
+     * @returns ResponseBuilder
+     */
     audioPlayerPlay(
       behavior: string,
       url: string,
@@ -1081,13 +1100,13 @@ Set to 0 to start playing the stream from the beginning. Set to any other value 
     audioPlayerStop(): ResponseBuilder;
 
     /**
- * Creates an AudioPlayer ClearQueue directive - clear the queue without stopping the currently playing stream,
- * or clear the queue and stop any currently playing stream.
- * @param clearBehavior Describes the clear queue behavior. Accepted values:
-CLEAR_ENQUEUED: clears the queue and continues to play the currently playing stream
-CLEAR_ALL: clears the entire playback queue and stops the currently playing stream (if applicable).
- * @returns ResponseBuilder
- */
+     * Creates an AudioPlayer ClearQueue directive - clear the queue without stopping the currently playing stream,
+     * or clear the queue and stop any currently playing stream.
+     * @param clearBehavior Describes the clear queue behavior. Accepted values:
+     * CLEAR_ENQUEUED: clears the queue and continues to play the currently playing stream
+     * CLEAR_ALL: clears the entire playback queue and stops the currently playing stream (if applicable).
+     * @returns ResponseBuilder
+     */
     audioPlayerClearQueue(clearBehavior: string): ResponseBuilder;
 
     /**
@@ -1107,13 +1126,13 @@ CLEAR_ALL: clears the entire playback queue and stops the currently playing stre
     hint(hintText: string, hintType?: HintType): ResponseBuilder;
 
     /**
- * Creates a VideoApp play directive to play a video
- * @param source Identifies the location of video content at a remote HTTPS location.
-The video file must be hosted at an Internet-accessible HTTPS endpoint.
- * @param metadata (optional) Contains an object that provides the
-information that can be displayed on VideoApp.
- * @returns ResponseBuilder
- */
+     * Creates a VideoApp play directive to play a video
+     * @param source Identifies the location of video content at a remote HTTPS location.
+     * The video file must be hosted at an Internet-accessible HTTPS endpoint.
+     * @param metadata (optional) Contains an object that provides the
+     * information that can be displayed on VideoApp.
+     * @returns ResponseBuilder
+     */
     playVideo(
       source: string,
       metadata?: {
@@ -1122,6 +1141,10 @@ information that can be displayed on VideoApp.
       }
     ): ResponseBuilder;
   }
+
+  declare var npm$namespace$directives: {
+    VoicePlayerSpeakDirective: typeof directives$VoicePlayerSpeakDirective
+  };
   declare class directives$VoicePlayerSpeakDirective {
     header: {
       requestId: string
@@ -1139,9 +1162,14 @@ information that can be displayed on VideoApp.
     constructor(requestId: string, speechContent: string): this;
   }
 
-  declare var npm$namespace$ImageUtils: {
-    makeImage: typeof ImageUtils$makeImage,
-    makeImages: typeof ImageUtils$makeImages
+  declare var npm$namespace$utils: {
+    ImageUtils: typeof npm$namespace$utils$ImageUtils,
+    TextUtils: typeof npm$namespace$utils$TextUtils
+  };
+
+  declare var npm$namespace$utils$ImageUtils: {
+    makeImage: typeof utils$ImageUtils$makeImage,
+    makeImages: typeof utils$ImageUtils$makeImages
   };
 
   /**
@@ -1161,7 +1189,7 @@ information that can be displayed on VideoApp.
    * @param description text used to describe the image in a screen reader
    * @returns Image
    */
-  declare function ImageUtils$makeImage(
+  declare function utils$ImageUtils$makeImage(
     url: string,
     widthPixels?: number,
     heightPixels?: number,
@@ -1188,7 +1216,7 @@ information that can be displayed on VideoApp.
    * @param description text used to describe the image in a screen reader
    * @returns Image
    */
-  declare function ImageUtils$makeImages(
+  declare function utils$ImageUtils$makeImages(
     imgArr: Array<{
       url: string,
       widthPixels?: number,
@@ -1198,10 +1226,10 @@ information that can be displayed on VideoApp.
     description: string
   ): Image;
 
-  declare var npm$namespace$TextUtils: {
-    makePlainText: typeof TextUtils$makePlainText,
-    makeRichText: typeof TextUtils$makeRichText,
-    makeTextContent: typeof TextUtils$makeTextContent
+  declare var npm$namespace$utils$TextUtils: {
+    makePlainText: typeof utils$TextUtils$makePlainText,
+    makeRichText: typeof utils$TextUtils$makeRichText,
+    makeTextContent: typeof utils$TextUtils$makeTextContent
   };
 
   /**
@@ -1209,14 +1237,14 @@ information that can be displayed on VideoApp.
    * @param text contents of plain text object
    * @returns TextField
    */
-  declare function TextUtils$makePlainText(text: string): TextField;
+  declare function utils$TextUtils$makePlainText(text: string): TextField;
 
   /**
    * Creates a rich TextField object with contents : text
    * @param text text
    * @returns TextField
    */
-  declare function TextUtils$makeRichText(text: string): TextField;
+  declare function utils$TextUtils$makeRichText(text: string): TextField;
 
   /**
    * Creates a textContent
@@ -1225,7 +1253,7 @@ information that can be displayed on VideoApp.
    * @param tertiaryText tertiary Text
    * @returns TextContent
    */
-  declare function TextUtils$makeTextContent(
+  declare function utils$TextUtils$makeTextContent(
     primaryText: {
       type: TextContentType,
       text: string
