@@ -1,29 +1,33 @@
 declare module "gapi.client.cloudbuild" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Container Builder API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudbuild",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudbuild",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: cloudbuild$cloudbuild$OperationsResource;
+  declare var gapi$client$operations: cloudbuild$OperationsResource;
 
-  declare var client$projects: cloudbuild$cloudbuild$ProjectsResource;
+  declare var gapi$client$projects: cloudbuild$ProjectsResource;
 
-  declare interface cloudbuild$Build {
+  declare interface gapi$client$cloudbuild$Build {
     /**
      * The ID of the BuildTrigger that triggered this build, if it was
      * triggered automatically.
@@ -155,14 +159,14 @@ declare module "gapi.client.cloudbuild" {
     timeout?: string;
   }
 
-  declare interface cloudbuild$BuildOperationMetadata {
+  declare interface gapi$client$cloudbuild$BuildOperationMetadata {
     /**
      * The build that the operation is tracking.
      */
-    build?: cloudbuild$Build;
+    build?: gapi$client$cloudbuild$Build;
   }
 
-  declare interface cloudbuild$BuildOptions {
+  declare interface gapi$client$cloudbuild$BuildOptions {
     /**
      * Requested verifiability options.
      */
@@ -179,7 +183,7 @@ declare module "gapi.client.cloudbuild" {
     substitutionOption?: string;
   }
 
-  declare interface cloudbuild$BuildStep {
+  declare interface gapi$client$cloudbuild$BuildStep {
     /**
      * A list of arguments that will be presented to the step when it is started.
      *
@@ -264,11 +268,11 @@ declare module "gapi.client.cloudbuild" {
     waitFor?: string[];
   }
 
-  declare interface cloudbuild$BuildTrigger {
+  declare interface gapi$client$cloudbuild$BuildTrigger {
     /**
      * Contents of the build template.
      */
-    build?: cloudbuild$Build;
+    build?: gapi$client$cloudbuild$Build;
 
     /**
      * Time when the trigger was created.
@@ -313,7 +317,7 @@ declare module "gapi.client.cloudbuild" {
     triggerTemplate?: cloudbuild$RepoSource;
   }
 
-  declare interface cloudbuild$BuiltImage {
+  declare interface gapi$client$cloudbuild$BuiltImage {
     /**
      * Docker Registry 2.0 digest.
      */
@@ -326,14 +330,14 @@ declare module "gapi.client.cloudbuild" {
     name?: string;
   }
 
-  declare interface cloudbuild$FileHashes {
+  declare interface gapi$client$cloudbuild$FileHashes {
     /**
      * Collection of file hashes.
      */
     fileHash?: cloudbuild$Hash[];
   }
 
-  declare interface cloudbuild$Hash {
+  declare interface gapi$client$cloudbuild$Hash {
     /**
      * The type of hash that was performed.
      */
@@ -345,18 +349,18 @@ declare module "gapi.client.cloudbuild" {
     value?: string;
   }
 
-  declare interface cloudbuild$ListBuildTriggersResponse {
+  declare interface gapi$client$cloudbuild$ListBuildTriggersResponse {
     /**
      * BuildTriggers for the project, sorted by create_time descending.
      */
-    triggers?: cloudbuild$BuildTrigger[];
+    triggers?: gapi$client$cloudbuild$BuildTrigger[];
   }
 
-  declare interface cloudbuild$ListBuildsResponse {
+  declare interface gapi$client$cloudbuild$ListBuildsResponse {
     /**
      * Builds will be sorted by create_time, descending.
      */
-    builds?: cloudbuild$Build[];
+    builds?: gapi$client$cloudbuild$Build[];
 
     /**
      * Token to receive the next page of results.
@@ -364,7 +368,7 @@ declare module "gapi.client.cloudbuild" {
     nextPageToken?: string;
   }
 
-  declare interface cloudbuild$ListOperationsResponse {
+  declare interface gapi$client$cloudbuild$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -373,10 +377,10 @@ declare module "gapi.client.cloudbuild" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: cloudbuild$Operation[];
+    operations?: cloudbuild$Operation[];
   }
 
-  declare interface cloudbuild$Operation {
+  declare interface gapi$client$cloudbuild$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -417,7 +421,7 @@ declare module "gapi.client.cloudbuild" {
     response?: Record<string, any>;
   }
 
-  declare interface cloudbuild$RepoSource {
+  declare interface gapi$client$cloudbuild$RepoSource {
     /**
      * Name of the branch to build.
      */
@@ -445,7 +449,7 @@ declare module "gapi.client.cloudbuild" {
     tagName?: string;
   }
 
-  declare interface cloudbuild$Results {
+  declare interface gapi$client$cloudbuild$Results {
     /**
      * List of build step digests, in order corresponding to build step indices.
      */
@@ -454,10 +458,10 @@ declare module "gapi.client.cloudbuild" {
     /**
      * Images that were built as a part of the build.
      */
-    images?: cloudbuild$BuiltImage[];
+    images?: gapi$client$cloudbuild$BuiltImage[];
   }
 
-  declare interface cloudbuild$Secret {
+  declare interface gapi$client$cloudbuild$Secret {
     /**
      * Cloud KMS key name to use to decrypt these envs.
      */
@@ -474,11 +478,11 @@ declare module "gapi.client.cloudbuild" {
     secretEnv?: Record<string, string>;
   }
 
-  declare interface cloudbuild$Source {
+  declare interface gapi$client$cloudbuild$Source {
     /**
      * If provided, get source from this location in a Cloud Repo.
      */
-    repoSource?: cloudbuild$RepoSource;
+    repoSource?: gapi$client$cloudbuild$RepoSource;
 
     /**
      * If provided, get the source from this location in Google Cloud Storage.
@@ -486,7 +490,7 @@ declare module "gapi.client.cloudbuild" {
     storageSource?: cloudbuild$StorageSource;
   }
 
-  declare interface cloudbuild$SourceProvenance {
+  declare interface gapi$client$cloudbuild$SourceProvenance {
     /**
      * Hash(es) of the build source, which can be used to verify that the original
      * source integrity was maintained in the build. Note that FileHashes will
@@ -499,13 +503,13 @@ declare module "gapi.client.cloudbuild" {
      * (.tar.gz), the FileHash will be for the single path to that file.
      * @OutputOnly
      */
-    fileHashes?: Record<string, cloudbuild$FileHashes>;
+    fileHashes?: Record<string, gapi$client$cloudbuild$FileHashes>;
 
     /**
      * A copy of the build's source.repo_source, if exists, with any
      * revisions resolved.
      */
-    resolvedRepoSource?: cloudbuild$RepoSource;
+    resolvedRepoSource?: gapi$client$cloudbuild$RepoSource;
 
     /**
      * A copy of the build's source.storage_source, if exists, with any
@@ -514,7 +518,7 @@ declare module "gapi.client.cloudbuild" {
     resolvedStorageSource?: cloudbuild$StorageSource;
   }
 
-  declare interface cloudbuild$Status {
+  declare interface gapi$client$cloudbuild$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -534,7 +538,7 @@ declare module "gapi.client.cloudbuild" {
     message?: string;
   }
 
-  declare interface cloudbuild$StorageSource {
+  declare interface gapi$client$cloudbuild$StorageSource {
     /**
      * Google Cloud Storage bucket containing source (see
      * [Bucket Name
@@ -557,7 +561,7 @@ declare module "gapi.client.cloudbuild" {
     object?: string;
   }
 
-  declare interface cloudbuild$Volume {
+  declare interface gapi$client$cloudbuild$Volume {
     /**
      * Name of the volume to mount.
      *
@@ -575,7 +579,7 @@ declare module "gapi.client.cloudbuild" {
     path?: string;
   }
 
-  declare interface cloudbuild$OperationsResource {
+  declare interface gapi$client$cloudbuild$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -735,7 +739,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$Operation>;
+    }): Request<gapi$client$cloudbuild$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -834,10 +838,10 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$ListOperationsResponse>;
+    }): Request<gapi$client$cloudbuild$ListOperationsResponse>;
   }
 
-  declare interface cloudbuild$BuildsResource {
+  declare interface gapi$client$cloudbuild$BuildsResource {
     /**
      * Cancels a requested build in progress.
      */
@@ -916,7 +920,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$Build>;
+    }): Request<gapi$client$cloudbuild$Build>;
 
     /**
      * Starts a build with the specified configuration.
@@ -995,7 +999,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$Operation>;
+    }): Request<gapi$client$cloudbuild$Operation>;
 
     /**
      * Returns information about a previously requested build.
@@ -1078,7 +1082,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$Build>;
+    }): Request<gapi$client$cloudbuild$Build>;
 
     /**
      * Lists previously requested builds.
@@ -1171,10 +1175,10 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$ListBuildsResponse>;
+    }): Request<gapi$client$cloudbuild$ListBuildsResponse>;
   }
 
-  declare interface cloudbuild$TriggersResource {
+  declare interface gapi$client$cloudbuild$TriggersResource {
     /**
      * Creates a new BuildTrigger.
      *
@@ -1250,7 +1254,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$BuildTrigger>;
+    }): Request<gapi$client$cloudbuild$BuildTrigger>;
 
     /**
      * Deletes an BuildTrigger by its project ID and trigger ID.
@@ -1414,7 +1418,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$BuildTrigger>;
+    }): Request<gapi$client$cloudbuild$BuildTrigger>;
 
     /**
      * Lists existing BuildTrigger.
@@ -1491,7 +1495,7 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$ListBuildTriggersResponse>;
+    }): Request<gapi$client$cloudbuild$ListBuildTriggersResponse>;
 
     /**
      * Updates an BuildTrigger by its project ID and trigger ID.
@@ -1573,11 +1577,11 @@ declare module "gapi.client.cloudbuild" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbuild$BuildTrigger>;
+    }): Request<gapi$client$cloudbuild$BuildTrigger>;
   }
 
-  declare interface cloudbuild$ProjectsResource {
-    builds: cloudbuild$BuildsResource;
-    triggers: cloudbuild$TriggersResource;
+  declare interface gapi$client$cloudbuild$ProjectsResource {
+    builds: gapi$client$cloudbuild$BuildsResource;
+    triggers: gapi$client$cloudbuild$TriggersResource;
   }
 }
