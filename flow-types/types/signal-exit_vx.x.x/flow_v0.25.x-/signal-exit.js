@@ -1,12 +1,9 @@
 declare module "signal-exit" {
-  declare module.exports: typeof signalExit;
+  declare export default typeof signalExit;
 
   declare function signalExit(
-    callback: (
-      code: number | null,
-      signal: signalExit$signalExit$Signal | null
-    ) => void,
-    options?: signalExit$signalExit$Options
+    callback: (code: number | null, signal: signalExit$Signal | null) => void,
+    options?: signalExit$Options
   ): () => void;
 
   declare var npm$namespace$signalExit: {
