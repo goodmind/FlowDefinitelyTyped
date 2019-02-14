@@ -1,7 +1,7 @@
 declare module "extract-text-webpack-plugin" {
   import type { Plugin, Loader } from "webpack";
 
-  declare module.exports: typeof ExtractTextPlugin;
+  declare export default typeof ExtractTextPlugin;
 
   /**
    * Use an `ExtractTextPlugin` instance and a loader returned by `extract` in concert to write files to disk instead of loading them into others.
@@ -11,9 +11,7 @@ declare module "extract-text-webpack-plugin" {
     /**
      * Create a plugin instance defining the extraction target file(s) for the files loaded by `extract`
      */
-    constructor(
-      options: string | ExtractTextPlugin$ExtractTextPlugin$PluginOptions
-    ): this;
+    constructor(options: string | ExtractTextPlugin$PluginOptions): this;
 
     /**
      * Creates an extracting loader from an existing loader (static).
@@ -21,10 +19,7 @@ declare module "extract-text-webpack-plugin" {
      * @see {@link https://www.npmjs.com/package/extract-text-webpack-plugin#extract}
      */
     static extract: (
-      loader:
-        | Loader
-        | Loader[]
-        | ExtractTextPlugin$ExtractTextPlugin$LoaderOptions
+      loader: Loader | Loader[] | ExtractTextPlugin$LoaderOptions
     ) => Loader[];
 
     /**
@@ -33,10 +28,7 @@ declare module "extract-text-webpack-plugin" {
      * @see {@link https://www.npmjs.com/package/extract-text-webpack-plugin#multiple-instances}
      */
     extract: (
-      loader:
-        | Loader
-        | Loader[]
-        | ExtractTextPlugin$ExtractTextPlugin$LoaderOptions
+      loader: Loader | Loader[] | ExtractTextPlugin$LoaderOptions
     ) => Loader[];
   }
   declare interface ExtractTextPlugin$PluginOptions {
