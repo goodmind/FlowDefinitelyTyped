@@ -18,8 +18,8 @@ declare module "content-disposition" {
 
   declare function contentDisposition(
     filename?: string,
-    options?: contentDisposition$contentDisposition$Options
+    options?: contentDisposition$Options
   ): string;
 
-  declare module.exports: typeof contentDisposition;
+  declare export default typeof contentDisposition;
 }
