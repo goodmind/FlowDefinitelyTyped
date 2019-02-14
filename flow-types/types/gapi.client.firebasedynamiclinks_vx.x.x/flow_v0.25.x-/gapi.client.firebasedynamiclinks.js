@@ -1,29 +1,33 @@
 declare module "gapi.client.firebasedynamiclinks" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    shortLinks: typeof client$shortLinks,
-    v1: typeof client$v1
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    shortLinks: typeof gapi$client$shortLinks,
+    v1: typeof gapi$client$v1
   };
 
   /**
    * Load Firebase Dynamic Links API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebasedynamiclinks",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebasedynamiclinks",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$shortLinks: firebasedynamiclinks$firebasedynamiclinks$ShortLinksResource;
+  declare var gapi$client$shortLinks: firebasedynamiclinks$ShortLinksResource;
 
-  declare var client$v1: firebasedynamiclinks$firebasedynamiclinks$V1Resource;
+  declare var gapi$client$v1: firebasedynamiclinks$V1Resource;
 
-  declare interface firebasedynamiclinks$AnalyticsInfo {
+  declare interface gapi$client$firebasedynamiclinks$AnalyticsInfo {
     /**
      * Google Play Campaign Measurements.
      */
@@ -35,7 +39,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     itunesConnectAnalytics?: firebasedynamiclinks$ITunesConnectAnalytics;
   }
 
-  declare interface firebasedynamiclinks$AndroidInfo {
+  declare interface gapi$client$firebasedynamiclinks$AndroidInfo {
     /**
      * Link to open on Android if the app is not installed.
      */
@@ -58,7 +62,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     androidPackageName?: string;
   }
 
-  declare interface firebasedynamiclinks$CreateShortDynamicLinkRequest {
+  declare interface gapi$client$firebasedynamiclinks$CreateShortDynamicLinkRequest {
     /**
      * Information about the Dynamic Link to be shortened.
      * [Learn more](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
@@ -79,7 +83,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     suffix?: firebasedynamiclinks$Suffix;
   }
 
-  declare interface firebasedynamiclinks$CreateShortDynamicLinkResponse {
+  declare interface gapi$client$firebasedynamiclinks$CreateShortDynamicLinkResponse {
     /**
      * Preivew link to show the link flow chart.
      */
@@ -96,7 +100,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     warning?: firebasedynamiclinks$DynamicLinkWarning[];
   }
 
-  declare interface firebasedynamiclinks$DeviceInfo {
+  declare interface gapi$client$firebasedynamiclinks$DeviceInfo {
     /**
      * Device model name.
      */
@@ -123,7 +127,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     timezone?: string;
   }
 
-  declare interface firebasedynamiclinks$DynamicLinkEventStat {
+  declare interface gapi$client$firebasedynamiclinks$DynamicLinkEventStat {
     /**
      * The number of times this event occurred.
      */
@@ -140,18 +144,18 @@ declare module "gapi.client.firebasedynamiclinks" {
     platform?: string;
   }
 
-  declare interface firebasedynamiclinks$DynamicLinkInfo {
+  declare interface gapi$client$firebasedynamiclinks$DynamicLinkInfo {
     /**
      * Parameters used for tracking. See all tracking parameters in the
      * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
      */
-    analyticsInfo?: firebasedynamiclinks$AnalyticsInfo;
+    analyticsInfo?: gapi$client$firebasedynamiclinks$AnalyticsInfo;
 
     /**
      * Android related information. See Android related parameters in the
      * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
      */
-    androidInfo?: firebasedynamiclinks$AndroidInfo;
+    androidInfo?: gapi$client$firebasedynamiclinks$AndroidInfo;
 
     /**
      * Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
@@ -190,14 +194,14 @@ declare module "gapi.client.firebasedynamiclinks" {
     socialMetaTagInfo?: firebasedynamiclinks$SocialMetaTagInfo;
   }
 
-  declare interface firebasedynamiclinks$DynamicLinkStats {
+  declare interface gapi$client$firebasedynamiclinks$DynamicLinkStats {
     /**
      * Dynamic Link event stats.
      */
-    linkEventStats?: firebasedynamiclinks$DynamicLinkEventStat[];
+    linkEventStats?: gapi$client$firebasedynamiclinks$DynamicLinkEventStat[];
   }
 
-  declare interface firebasedynamiclinks$DynamicLinkWarning {
+  declare interface gapi$client$firebasedynamiclinks$DynamicLinkWarning {
     /**
      * The warning code.
      */
@@ -214,7 +218,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     warningMessage?: string;
   }
 
-  declare interface firebasedynamiclinks$GetIosPostInstallAttributionRequest {
+  declare interface gapi$client$firebasedynamiclinks$GetIosPostInstallAttributionRequest {
     /**
      * App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).
      * This is a client signal for a more accurate weak match.
@@ -229,7 +233,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     /**
      * Device information.
      */
-    device?: firebasedynamiclinks$DeviceInfo;
+    device?: gapi$client$firebasedynamiclinks$DeviceInfo;
 
     /**
      * iOS version, ie: 9.3.5.
@@ -263,7 +267,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     visualStyle?: string;
   }
 
-  declare interface firebasedynamiclinks$GetIosPostInstallAttributionResponse {
+  declare interface gapi$client$firebasedynamiclinks$GetIosPostInstallAttributionResponse {
     /**
      * The minimum version for app, specified by dev through ?imv= parameter.
      * Return to iSDK to allow app to evaluate if current version meets this.
@@ -349,7 +353,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     utmSource?: string;
   }
 
-  declare interface firebasedynamiclinks$GooglePlayAnalytics {
+  declare interface gapi$client$firebasedynamiclinks$GooglePlayAnalytics {
     /**
      * [AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en);
      * used to measure Google AdWords ads. This value is generated dynamically
@@ -386,7 +390,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     utmTerm?: string;
   }
 
-  declare interface firebasedynamiclinks$ITunesConnectAnalytics {
+  declare interface gapi$client$firebasedynamiclinks$ITunesConnectAnalytics {
     /**
      * Affiliate token used to create affiliate-coded links.
      */
@@ -410,7 +414,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     pt?: string;
   }
 
-  declare interface firebasedynamiclinks$IosInfo {
+  declare interface gapi$client$firebasedynamiclinks$IosInfo {
     /**
      * iOS App Store ID.
      */
@@ -444,7 +448,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     iosIpadFallbackLink?: string;
   }
 
-  declare interface firebasedynamiclinks$NavigationInfo {
+  declare interface gapi$client$firebasedynamiclinks$NavigationInfo {
     /**
      * If this option is on, FDL click will be forced to redirect rather than
      * show an interstitial page.
@@ -452,7 +456,7 @@ declare module "gapi.client.firebasedynamiclinks" {
     enableForcedRedirect?: boolean;
   }
 
-  declare interface firebasedynamiclinks$SocialMetaTagInfo {
+  declare interface gapi$client$firebasedynamiclinks$SocialMetaTagInfo {
     /**
      * A short description of the link. Optional.
      */
@@ -469,14 +473,14 @@ declare module "gapi.client.firebasedynamiclinks" {
     socialTitle?: string;
   }
 
-  declare interface firebasedynamiclinks$Suffix {
+  declare interface gapi$client$firebasedynamiclinks$Suffix {
     /**
      * Suffix option.
      */
     option?: string;
   }
 
-  declare interface firebasedynamiclinks$ShortLinksResource {
+  declare interface gapi$client$firebasedynamiclinks$ShortLinksResource {
     /**
      * Creates a short Dynamic Link given either a valid long Dynamic Link or
      * details such as Dynamic Link domain, Android and iOS app information.
@@ -553,10 +557,10 @@ declare module "gapi.client.firebasedynamiclinks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebasedynamiclinks$CreateShortDynamicLinkResponse>;
+    }): Request<gapi$client$firebasedynamiclinks$CreateShortDynamicLinkResponse>;
   }
 
-  declare interface firebasedynamiclinks$V1Resource {
+  declare interface gapi$client$firebasedynamiclinks$V1Resource {
     /**
      * Fetches analytics stats of a short Dynamic Link for a given
      * duration. Metrics include number of clicks, redirects, installs,
@@ -637,7 +641,7 @@ declare module "gapi.client.firebasedynamiclinks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebasedynamiclinks$DynamicLinkStats>;
+    }): Request<gapi$client$firebasedynamiclinks$DynamicLinkStats>;
 
     /**
      * Get iOS strong/weak-match info for post-install attribution.
@@ -707,6 +711,6 @@ declare module "gapi.client.firebasedynamiclinks" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebasedynamiclinks$GetIosPostInstallAttributionResponse>;
+    }): Request<gapi$client$firebasedynamiclinks$GetIosPostInstallAttributionResponse>;
   }
 }
