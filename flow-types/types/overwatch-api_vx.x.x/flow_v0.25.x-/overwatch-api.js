@@ -165,7 +165,7 @@ declare module "overwatch-api" {
 
   declare type owl$StageStandingInfo = {
     isPlayoffWinner: boolean
-  } & owl$PreseasonStandingInfo;
+  } & PreseasonStandingInfo;
 
   declare interface owl$Stages {
     stage1: owl$StageStandingInfo;
@@ -176,7 +176,7 @@ declare module "overwatch-api" {
 
   declare type owl$PreseasonStandingInfo = {
     comparisons: owl$StandingComparison[]
-  } & owl$StandingInfo;
+  } & StandingInfo;
 
   declare interface owl$TeamStandingInfo {
     id: number;
