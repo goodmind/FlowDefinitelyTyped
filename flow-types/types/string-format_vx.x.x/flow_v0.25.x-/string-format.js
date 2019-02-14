@@ -33,5 +33,5 @@ declare module "string-format" {
     transformers: Transformers
   ): void;
 
-  declare module.exports: typeof Format;
+  declare export default typeof Format;
 }
