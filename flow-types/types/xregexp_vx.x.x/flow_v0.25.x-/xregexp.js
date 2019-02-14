@@ -24,7 +24,9 @@ declare module "xregexp" {
     test: typeof OuterXRegExp$test,
     uninstall: typeof OuterXRegExp$uninstall,
     union: typeof OuterXRegExp$union,
-    version: typeof OuterXRegExp$version
+    version: typeof OuterXRegExp$version,
+
+    XRegExp: typeof npm$namespace$OuterXRegExp$XRegExp
   };
   declare interface OuterXRegExp$TokenOpts {
     scope?: string;
@@ -195,52 +197,55 @@ declare module "xregexp" {
 
   declare var OuterXRegExp$version: string;
 
-  declare var npm$namespace$XRegExp: {
-    addToken: typeof XRegExp$addToken,
-    build: typeof XRegExp$build,
-    cache: typeof XRegExp$cache,
-    escape: typeof XRegExp$escape,
-    exec: typeof XRegExp$exec,
-    forEach: typeof XRegExp$forEach,
-    globalize: typeof XRegExp$globalize,
-    install: typeof XRegExp$install,
-    isInstalled: typeof XRegExp$isInstalled,
-    isRegExp: typeof XRegExp$isRegExp,
-    match: typeof XRegExp$match,
-    matchChain: typeof XRegExp$matchChain,
-    matchRecursive: typeof XRegExp$matchRecursive,
-    replace: typeof XRegExp$replace,
-    replaceEach: typeof XRegExp$replaceEach,
-    split: typeof XRegExp$split,
-    test: typeof XRegExp$test,
-    uninstall: typeof XRegExp$uninstall,
-    union: typeof XRegExp$union,
-    version: typeof XRegExp$version
+  declare var npm$namespace$OuterXRegExp$XRegExp: {
+    addToken: typeof OuterXRegExp$XRegExp$addToken,
+    build: typeof OuterXRegExp$XRegExp$build,
+    cache: typeof OuterXRegExp$XRegExp$cache,
+    escape: typeof OuterXRegExp$XRegExp$escape,
+    exec: typeof OuterXRegExp$XRegExp$exec,
+    forEach: typeof OuterXRegExp$XRegExp$forEach,
+    globalize: typeof OuterXRegExp$XRegExp$globalize,
+    install: typeof OuterXRegExp$XRegExp$install,
+    isInstalled: typeof OuterXRegExp$XRegExp$isInstalled,
+    isRegExp: typeof OuterXRegExp$XRegExp$isRegExp,
+    match: typeof OuterXRegExp$XRegExp$match,
+    matchChain: typeof OuterXRegExp$XRegExp$matchChain,
+    matchRecursive: typeof OuterXRegExp$XRegExp$matchRecursive,
+    replace: typeof OuterXRegExp$XRegExp$replace,
+    replaceEach: typeof OuterXRegExp$XRegExp$replaceEach,
+    split: typeof OuterXRegExp$XRegExp$split,
+    test: typeof OuterXRegExp$XRegExp$test,
+    uninstall: typeof OuterXRegExp$XRegExp$uninstall,
+    union: typeof OuterXRegExp$XRegExp$union,
+    version: typeof OuterXRegExp$XRegExp$version
   };
-  declare function XRegExp$addToken(
+  declare function OuterXRegExp$XRegExp$addToken(
     regex: RegExp,
     handler: (matchArr: RegExpExecArray, scope: string) => string,
     options?: OuterXRegExp$TokenOpts
   ): void;
 
-  declare function XRegExp$build(
+  declare function OuterXRegExp$XRegExp$build(
     pattern: string,
     subs: string[],
     flags?: string
   ): RegExp;
 
-  declare function XRegExp$cache(pattern: string, flags?: string): RegExp;
+  declare function OuterXRegExp$XRegExp$cache(
+    pattern: string,
+    flags?: string
+  ): RegExp;
 
-  declare function XRegExp$escape(str: string): string;
+  declare function OuterXRegExp$XRegExp$escape(str: string): string;
 
-  declare function XRegExp$exec(
+  declare function OuterXRegExp$XRegExp$exec(
     str: string,
     regex: RegExp,
     pos?: number,
     sticky?: boolean
   ): RegExpExecArray;
 
-  declare function XRegExp$forEach(
+  declare function OuterXRegExp$XRegExp$forEach(
     str: string,
     regex: RegExp,
     callback: (
@@ -251,39 +256,45 @@ declare module "xregexp" {
     ) => void
   ): any;
 
-  declare function XRegExp$globalize(regex: RegExp): RegExp;
+  declare function OuterXRegExp$XRegExp$globalize(regex: RegExp): RegExp;
 
-  declare function XRegExp$install(options: string): void;
+  declare function OuterXRegExp$XRegExp$install(options: string): void;
 
-  declare function XRegExp$install(options: Object): void;
+  declare function OuterXRegExp$XRegExp$install(options: Object): void;
 
-  declare function XRegExp$isInstalled(feature: string): boolean;
+  declare function OuterXRegExp$XRegExp$isInstalled(feature: string): boolean;
 
-  declare function XRegExp$isRegExp(value: any): boolean;
+  declare function OuterXRegExp$XRegExp$isRegExp(value: any): boolean;
 
-  declare function XRegExp$match(
+  declare function OuterXRegExp$XRegExp$match(
     str: string,
     regex: RegExp,
     scope: string
   ): any;
 
-  declare function XRegExp$match(
+  declare function OuterXRegExp$XRegExp$match(
     str: string,
     regex: RegExp,
     scope: "one"
   ): string;
 
-  declare function XRegExp$match(
+  declare function OuterXRegExp$XRegExp$match(
     str: string,
     regex: RegExp,
     scope: "all"
   ): string[];
 
-  declare function XRegExp$match(str: string, regex: RegExp): string[];
+  declare function OuterXRegExp$XRegExp$match(
+    str: string,
+    regex: RegExp
+  ): string[];
 
-  declare function XRegExp$matchChain(str: string, chain: RegExp[]): string[];
+  declare function OuterXRegExp$XRegExp$matchChain(
+    str: string,
+    chain: RegExp[]
+  ): string[];
 
-  declare function XRegExp$matchChain(
+  declare function OuterXRegExp$XRegExp$matchChain(
     str: string,
     chain: {
       regex: RegExp,
@@ -291,7 +302,7 @@ declare module "xregexp" {
     }[]
   ): string[];
 
-  declare function XRegExp$matchChain(
+  declare function OuterXRegExp$XRegExp$matchChain(
     str: string,
     chain: {
       regex: RegExp,
@@ -299,7 +310,7 @@ declare module "xregexp" {
     }[]
   ): string[];
 
-  declare function XRegExp$matchRecursive(
+  declare function OuterXRegExp$XRegExp$matchRecursive(
     str: string,
     left: string,
     right: string,
@@ -307,67 +318,67 @@ declare module "xregexp" {
     options?: Object
   ): string[];
 
-  declare function XRegExp$replace(
+  declare function OuterXRegExp$XRegExp$replace(
     str: string,
     search: string,
     replacement: string,
     scope?: string
   ): string;
 
-  declare function XRegExp$replace(
+  declare function OuterXRegExp$XRegExp$replace(
     str: string,
     search: string,
     replacement: Function,
     scope?: string
   ): string;
 
-  declare function XRegExp$replace(
+  declare function OuterXRegExp$XRegExp$replace(
     str: string,
     search: RegExp,
     replacement: string,
     scope?: string
   ): string;
 
-  declare function XRegExp$replace(
+  declare function OuterXRegExp$XRegExp$replace(
     str: string,
     search: RegExp,
     replacement: Function,
     scope?: string
   ): string;
 
-  declare function XRegExp$replaceEach(
+  declare function OuterXRegExp$XRegExp$replaceEach(
     str: string,
     replacements: Array<RegExp | string>[]
   ): string;
 
-  declare function XRegExp$split(
+  declare function OuterXRegExp$XRegExp$split(
     str: string,
     separator: string,
     limit?: number
   ): string[];
 
-  declare function XRegExp$split(
+  declare function OuterXRegExp$XRegExp$split(
     str: string,
     separator: RegExp,
     limit?: number
   ): string[];
 
-  declare function XRegExp$test(
+  declare function OuterXRegExp$XRegExp$test(
     str: string,
     regex: RegExp,
     pos?: number,
     sticky?: boolean
   ): boolean;
 
-  declare function XRegExp$uninstall(options: Object): void;
+  declare function OuterXRegExp$XRegExp$uninstall(options: Object): void;
 
-  declare function XRegExp$uninstall(options: string): void;
+  declare function OuterXRegExp$XRegExp$uninstall(options: string): void;
 
-  declare function XRegExp$union(
+  declare function OuterXRegExp$XRegExp$union(
     patterns: (string | RegExp)[],
     flags?: string
   ): RegExp;
 
-  declare var XRegExp$version: string;
-  declare module.exports: typeof OuterXRegExp;
+  declare var OuterXRegExp$XRegExp$version: string;
+  declare export default typeof OuterXRegExp;
 }
