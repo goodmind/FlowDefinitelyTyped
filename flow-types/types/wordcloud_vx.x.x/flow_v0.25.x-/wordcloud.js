@@ -1,9 +1,9 @@
 declare module "wordcloud" {
-  declare module.exports: typeof WordCloud;
+  declare export default typeof WordCloud;
 
   declare function WordCloud(
     elements: HTMLElement | HTMLElement[],
-    options: WordCloud$WordCloud$Options
+    options: WordCloud$Options
   ): void;
 
   declare var npm$namespace$WordCloud: {
