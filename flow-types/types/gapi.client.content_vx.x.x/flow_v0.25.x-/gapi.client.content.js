@@ -1,53 +1,57 @@
 declare module "gapi.client.content" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts,
-    accountstatuses: typeof client$accountstatuses,
-    accounttax: typeof client$accounttax,
-    datafeeds: typeof client$datafeeds,
-    datafeedstatuses: typeof client$datafeedstatuses,
-    inventory: typeof client$inventory,
-    orders: typeof client$orders,
-    products: typeof client$products,
-    productstatuses: typeof client$productstatuses,
-    shippingsettings: typeof client$shippingsettings
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts,
+    accountstatuses: typeof gapi$client$accountstatuses,
+    accounttax: typeof gapi$client$accounttax,
+    datafeeds: typeof gapi$client$datafeeds,
+    datafeedstatuses: typeof gapi$client$datafeedstatuses,
+    inventory: typeof gapi$client$inventory,
+    orders: typeof gapi$client$orders,
+    products: typeof gapi$client$products,
+    productstatuses: typeof gapi$client$productstatuses,
+    shippingsettings: typeof gapi$client$shippingsettings
   };
 
   /**
    * Load Content API for Shopping v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "content",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "content",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$accounts: content$content$AccountsResource;
+  declare var gapi$client$accounts: content$AccountsResource;
 
-  declare var client$accountstatuses: content$content$AccountstatusesResource;
+  declare var gapi$client$accountstatuses: content$AccountstatusesResource;
 
-  declare var client$accounttax: content$content$AccounttaxResource;
+  declare var gapi$client$accounttax: content$AccounttaxResource;
 
-  declare var client$datafeeds: content$content$DatafeedsResource;
+  declare var gapi$client$datafeeds: content$DatafeedsResource;
 
-  declare var client$datafeedstatuses: content$content$DatafeedstatusesResource;
+  declare var gapi$client$datafeedstatuses: content$DatafeedstatusesResource;
 
-  declare var client$inventory: content$content$InventoryResource;
+  declare var gapi$client$inventory: content$InventoryResource;
 
-  declare var client$orders: content$content$OrdersResource;
+  declare var gapi$client$orders: content$OrdersResource;
 
-  declare var client$products: content$content$ProductsResource;
+  declare var gapi$client$products: content$ProductsResource;
 
-  declare var client$productstatuses: content$content$ProductstatusesResource;
+  declare var gapi$client$productstatuses: content$ProductstatusesResource;
 
-  declare var client$shippingsettings: content$content$ShippingsettingsResource;
+  declare var gapi$client$shippingsettings: content$ShippingsettingsResource;
 
-  declare interface content$Account {
+  declare interface gapi$client$content$Account {
     /**
      * Indicates whether the merchant sells adult content.
      */
@@ -103,7 +107,7 @@ declare module "gapi.client.content" {
     youtubeChannelLinks?: content$AccountYouTubeChannelLink[];
   }
 
-  declare interface content$AccountAdwordsLink {
+  declare interface gapi$client$content$AccountAdwordsLink {
     /**
      * Customer ID of the AdWords account.
      */
@@ -119,7 +123,7 @@ declare module "gapi.client.content" {
     status?: string;
   }
 
-  declare interface content$AccountIdentifier {
+  declare interface gapi$client$content$AccountIdentifier {
     /**
      * The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator of the subaccount).
      */
@@ -131,7 +135,7 @@ declare module "gapi.client.content" {
     merchantId?: string;
   }
 
-  declare interface content$AccountStatus {
+  declare interface gapi$client$content$AccountStatus {
     /**
      * The ID of the account for which the status is reported.
      */
@@ -158,7 +162,7 @@ declare module "gapi.client.content" {
     websiteClaimed?: boolean;
   }
 
-  declare interface content$AccountStatusAccountLevelIssue {
+  declare interface gapi$client$content$AccountStatusAccountLevelIssue {
     /**
      * Country for which this issue is reported.
      */
@@ -185,7 +189,7 @@ declare module "gapi.client.content" {
     title?: string;
   }
 
-  declare interface content$AccountStatusDataQualityIssue {
+  declare interface gapi$client$content$AccountStatusDataQualityIssue {
     /**
      * Country for which this issue is reported.
      */
@@ -237,7 +241,7 @@ declare module "gapi.client.content" {
     submittedValue?: string;
   }
 
-  declare interface content$AccountStatusExampleItem {
+  declare interface gapi$client$content$AccountStatusExampleItem {
     /**
      * Unique item ID as specified in the uploaded product data.
      */
@@ -264,7 +268,7 @@ declare module "gapi.client.content" {
     valueOnLandingPage?: string;
   }
 
-  declare interface content$AccountTax {
+  declare interface gapi$client$content$AccountTax {
     /**
      * The ID of the account to which these account tax settings belong.
      */
@@ -281,7 +285,7 @@ declare module "gapi.client.content" {
     rules?: content$AccountTaxTaxRule[];
   }
 
-  declare interface content$AccountTaxTaxRule {
+  declare interface gapi$client$content$AccountTaxTaxRule {
     /**
      * Country code in which tax is applicable.
      */
@@ -308,7 +312,7 @@ declare module "gapi.client.content" {
     useGlobalRate?: boolean;
   }
 
-  declare interface content$AccountUser {
+  declare interface gapi$client$content$AccountUser {
     /**
      * Whether user is an admin.
      */
@@ -320,7 +324,7 @@ declare module "gapi.client.content" {
     emailAddress?: string;
   }
 
-  declare interface content$AccountYouTubeChannelLink {
+  declare interface gapi$client$content$AccountYouTubeChannelLink {
     /**
      * Channel ID.
      */
@@ -336,14 +340,14 @@ declare module "gapi.client.content" {
     status?: string;
   }
 
-  declare interface content$AccountsAuthInfoResponse {
+  declare interface gapi$client$content$AccountsAuthInfoResponse {
     /**
      * The account identifiers corresponding to the authenticated user.
      * - For an individual account: only the merchant ID is defined
      * - For an aggregator: only the aggregator ID is defined
      * - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined.
      */
-    accountIdentifiers?: content$AccountIdentifier[];
+    accountIdentifiers?: gapi$client$content$AccountIdentifier[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#accountsAuthInfoResponse".
@@ -351,25 +355,25 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccountsClaimWebsiteResponse {
+  declare interface gapi$client$content$AccountsClaimWebsiteResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#accountsClaimWebsiteResponse".
      */
     kind?: string;
   }
 
-  declare interface content$AccountsCustomBatchRequest {
+  declare interface gapi$client$content$AccountsCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$AccountsCustomBatchRequestEntry[];
   }
 
-  declare interface content$AccountsCustomBatchRequestEntry {
+  declare interface gapi$client$content$AccountsCustomBatchRequestEntry {
     /**
      * The account to create or update. Only defined if the method is insert or update.
      */
-    account?: content$Account;
+    account?: gapi$client$content$Account;
 
     /**
      * The ID of the targeted account. Only defined if the method is get, delete or claimwebsite.
@@ -398,7 +402,7 @@ declare module "gapi.client.content" {
     overwrite?: boolean;
   }
 
-  declare interface content$AccountsCustomBatchResponse {
+  declare interface gapi$client$content$AccountsCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -410,11 +414,11 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccountsCustomBatchResponseEntry {
+  declare interface gapi$client$content$AccountsCustomBatchResponseEntry {
     /**
      * The retrieved, created, or updated account. Not defined if the method was delete or claimwebsite.
      */
-    account?: content$Account;
+    account?: gapi$client$content$Account;
 
     /**
      * The ID of the request entry this entry responds to.
@@ -432,7 +436,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccountsListResponse {
+  declare interface gapi$client$content$AccountsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#accountsListResponse".
      */
@@ -442,17 +446,17 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of accounts.
      */
     nextPageToken?: string;
-    resources?: content$Account[];
+    resources?: gapi$client$content$Account[];
   }
 
-  declare interface content$AccountstatusesCustomBatchRequest {
+  declare interface gapi$client$content$AccountstatusesCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$AccountstatusesCustomBatchRequestEntry[];
   }
 
-  declare interface content$AccountstatusesCustomBatchRequestEntry {
+  declare interface gapi$client$content$AccountstatusesCustomBatchRequestEntry {
     /**
      * The ID of the (sub-)account whose status to get.
      */
@@ -474,7 +478,7 @@ declare module "gapi.client.content" {
     method?: string;
   }
 
-  declare interface content$AccountstatusesCustomBatchResponse {
+  declare interface gapi$client$content$AccountstatusesCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -486,11 +490,11 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccountstatusesCustomBatchResponseEntry {
+  declare interface gapi$client$content$AccountstatusesCustomBatchResponseEntry {
     /**
      * The requested account status. Defined if and only if the request was successful.
      */
-    accountStatus?: content$AccountStatus;
+    accountStatus?: gapi$client$content$AccountStatus;
 
     /**
      * The ID of the request entry this entry responds to.
@@ -503,7 +507,7 @@ declare module "gapi.client.content" {
     errors?: content$Errors;
   }
 
-  declare interface content$AccountstatusesListResponse {
+  declare interface gapi$client$content$AccountstatusesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#accountstatusesListResponse".
      */
@@ -513,17 +517,17 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of account statuses.
      */
     nextPageToken?: string;
-    resources?: content$AccountStatus[];
+    resources?: gapi$client$content$AccountStatus[];
   }
 
-  declare interface content$AccounttaxCustomBatchRequest {
+  declare interface gapi$client$content$AccounttaxCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$AccounttaxCustomBatchRequestEntry[];
   }
 
-  declare interface content$AccounttaxCustomBatchRequestEntry {
+  declare interface gapi$client$content$AccounttaxCustomBatchRequestEntry {
     /**
      * The ID of the account for which to get/update account tax settings.
      */
@@ -532,7 +536,7 @@ declare module "gapi.client.content" {
     /**
      * The account tax settings to update. Only defined if the method is update.
      */
-    accountTax?: content$AccountTax;
+    accountTax?: gapi$client$content$AccountTax;
 
     /**
      * An entry ID, unique within the batch request.
@@ -546,7 +550,7 @@ declare module "gapi.client.content" {
     method?: string;
   }
 
-  declare interface content$AccounttaxCustomBatchResponse {
+  declare interface gapi$client$content$AccounttaxCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -558,11 +562,11 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccounttaxCustomBatchResponseEntry {
+  declare interface gapi$client$content$AccounttaxCustomBatchResponseEntry {
     /**
      * The retrieved or updated account tax settings.
      */
-    accountTax?: content$AccountTax;
+    accountTax?: gapi$client$content$AccountTax;
 
     /**
      * The ID of the request entry this entry responds to.
@@ -580,7 +584,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$AccounttaxListResponse {
+  declare interface gapi$client$content$AccounttaxListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#accounttaxListResponse".
      */
@@ -590,10 +594,10 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of account tax settings.
      */
     nextPageToken?: string;
-    resources?: content$AccountTax[];
+    resources?: gapi$client$content$AccountTax[];
   }
 
-  declare interface content$CarrierRate {
+  declare interface gapi$client$content$CarrierRate {
     /**
      * Carrier service, such as "UPS" or "Fedex". The list of supported carriers can be retrieved via the getSupportedCarriers method. Required.
      */
@@ -628,7 +632,7 @@ declare module "gapi.client.content" {
     percentageAdjustment?: string;
   }
 
-  declare interface content$CarriersCarrier {
+  declare interface gapi$client$content$CarriersCarrier {
     /**
      * The CLDR country code of the carrier (e.g., "US"). Always present.
      */
@@ -645,7 +649,7 @@ declare module "gapi.client.content" {
     services?: string[];
   }
 
-  declare interface content$Datafeed {
+  declare interface gapi$client$content$Datafeed {
     /**
      * The two-letter ISO 639-1 language in which the attributes are defined in the data feed.
      */
@@ -709,7 +713,7 @@ declare module "gapi.client.content" {
     targets?: content$DatafeedTarget[];
   }
 
-  declare interface content$DatafeedFetchSchedule {
+  declare interface gapi$client$content$DatafeedFetchSchedule {
     /**
      * The day of the month the feed file should be fetched (1-31).
      */
@@ -757,7 +761,7 @@ declare module "gapi.client.content" {
     weekday?: string;
   }
 
-  declare interface content$DatafeedFormat {
+  declare interface gapi$client$content$DatafeedFormat {
     /**
      * Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV
      * data feeds.
@@ -775,7 +779,7 @@ declare module "gapi.client.content" {
     quotingMode?: string;
   }
 
-  declare interface content$DatafeedStatus {
+  declare interface gapi$client$content$DatafeedStatus {
     /**
      * The country for which the status is reported, represented as a  CLDR territory code.
      */
@@ -827,7 +831,7 @@ declare module "gapi.client.content" {
     warnings?: content$DatafeedStatusError[];
   }
 
-  declare interface content$DatafeedStatusError {
+  declare interface gapi$client$content$DatafeedStatusError {
     /**
      * The code of the error, e.g., "validation/invalid_value".
      */
@@ -849,7 +853,7 @@ declare module "gapi.client.content" {
     message?: string;
   }
 
-  declare interface content$DatafeedStatusExample {
+  declare interface gapi$client$content$DatafeedStatusExample {
     /**
      * The ID of the example item.
      */
@@ -866,7 +870,7 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$DatafeedTarget {
+  declare interface gapi$client$content$DatafeedTarget {
     /**
      * The country where the items in the feed will be included in the search index, represented as a  CLDR territory code.
      */
@@ -889,14 +893,14 @@ declare module "gapi.client.content" {
     language?: string;
   }
 
-  declare interface content$DatafeedsCustomBatchRequest {
+  declare interface gapi$client$content$DatafeedsCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$DatafeedsCustomBatchRequestEntry[];
   }
 
-  declare interface content$DatafeedsCustomBatchRequestEntry {
+  declare interface gapi$client$content$DatafeedsCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -905,7 +909,7 @@ declare module "gapi.client.content" {
     /**
      * The data feed to insert.
      */
-    datafeed?: content$Datafeed;
+    datafeed?: gapi$client$content$Datafeed;
 
     /**
      * The ID of the data feed to get or delete.
@@ -919,7 +923,7 @@ declare module "gapi.client.content" {
     method?: string;
   }
 
-  declare interface content$DatafeedsCustomBatchResponse {
+  declare interface gapi$client$content$DatafeedsCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -931,7 +935,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$DatafeedsCustomBatchResponseEntry {
+  declare interface gapi$client$content$DatafeedsCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -940,7 +944,7 @@ declare module "gapi.client.content" {
     /**
      * The requested data feed. Defined if and only if the request was successful.
      */
-    datafeed?: content$Datafeed;
+    datafeed?: gapi$client$content$Datafeed;
 
     /**
      * A list of errors defined if and only if the request failed.
@@ -948,7 +952,7 @@ declare module "gapi.client.content" {
     errors?: content$Errors;
   }
 
-  declare interface content$DatafeedsListResponse {
+  declare interface gapi$client$content$DatafeedsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#datafeedsListResponse".
      */
@@ -958,17 +962,17 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of datafeeds.
      */
     nextPageToken?: string;
-    resources?: content$Datafeed[];
+    resources?: gapi$client$content$Datafeed[];
   }
 
-  declare interface content$DatafeedstatusesCustomBatchRequest {
+  declare interface gapi$client$content$DatafeedstatusesCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$DatafeedstatusesCustomBatchRequestEntry[];
   }
 
-  declare interface content$DatafeedstatusesCustomBatchRequestEntry {
+  declare interface gapi$client$content$DatafeedstatusesCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -998,7 +1002,7 @@ declare module "gapi.client.content" {
     method?: string;
   }
 
-  declare interface content$DatafeedstatusesCustomBatchResponse {
+  declare interface gapi$client$content$DatafeedstatusesCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -1010,7 +1014,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$DatafeedstatusesCustomBatchResponseEntry {
+  declare interface gapi$client$content$DatafeedstatusesCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -1019,7 +1023,7 @@ declare module "gapi.client.content" {
     /**
      * The requested data feed status. Defined if and only if the request was successful.
      */
-    datafeedStatus?: content$DatafeedStatus;
+    datafeedStatus?: gapi$client$content$DatafeedStatus;
 
     /**
      * A list of errors defined if and only if the request failed.
@@ -1027,7 +1031,7 @@ declare module "gapi.client.content" {
     errors?: content$Errors;
   }
 
-  declare interface content$DatafeedstatusesListResponse {
+  declare interface gapi$client$content$DatafeedstatusesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#datafeedstatusesListResponse".
      */
@@ -1037,10 +1041,10 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of datafeed statuses.
      */
     nextPageToken?: string;
-    resources?: content$DatafeedStatus[];
+    resources?: gapi$client$content$DatafeedStatus[];
   }
 
-  declare interface content$DeliveryTime {
+  declare interface gapi$client$content$DeliveryTime {
     /**
      * Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Must be greater than or equal to
      * minTransitTimeInDays. Required.
@@ -1053,7 +1057,7 @@ declare module "gapi.client.content" {
     minTransitTimeInDays?: number;
   }
 
-  declare interface content$Error {
+  declare interface gapi$client$content$Error {
     /**
      * The domain of the error.
      */
@@ -1070,7 +1074,7 @@ declare module "gapi.client.content" {
     reason?: string;
   }
 
-  declare interface content$Errors {
+  declare interface gapi$client$content$Errors {
     /**
      * The HTTP status of the first error in errors.
      */
@@ -1079,7 +1083,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors.
      */
-    errors?: content$Error[];
+    errors?: gapi$client$content$Error[];
 
     /**
      * The message of the first error in errors.
@@ -1087,7 +1091,7 @@ declare module "gapi.client.content" {
     message?: string;
   }
 
-  declare interface content$Headers {
+  declare interface gapi$client$content$Headers {
     /**
      * A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set.
      */
@@ -1119,7 +1123,7 @@ declare module "gapi.client.content" {
     weights?: content$Weight[];
   }
 
-  declare interface content$Installment {
+  declare interface gapi$client$content$Installment {
     /**
      * The amount the buyer has to pay per month.
      */
@@ -1131,7 +1135,7 @@ declare module "gapi.client.content" {
     months?: string;
   }
 
-  declare interface content$Inventory {
+  declare interface gapi$client$content$Inventory {
     /**
      * The availability of the product.
      */
@@ -1140,7 +1144,7 @@ declare module "gapi.client.content" {
     /**
      * Number and amount of installments to pay for an item. Brazil only.
      */
-    installment?: content$Installment;
+    installment?: gapi$client$content$Installment;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#inventory".
@@ -1184,14 +1188,14 @@ declare module "gapi.client.content" {
     sellOnGoogleQuantity?: number;
   }
 
-  declare interface content$InventoryCustomBatchRequest {
+  declare interface gapi$client$content$InventoryCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$InventoryCustomBatchRequestEntry[];
   }
 
-  declare interface content$InventoryCustomBatchRequestEntry {
+  declare interface gapi$client$content$InventoryCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -1200,7 +1204,7 @@ declare module "gapi.client.content" {
     /**
      * Price and availability of the product.
      */
-    client$inventory?: content$Inventory;
+    inventory?: gapi$client$content$Inventory;
 
     /**
      * The ID of the managing account.
@@ -1218,7 +1222,7 @@ declare module "gapi.client.content" {
     storeCode?: string;
   }
 
-  declare interface content$InventoryCustomBatchResponse {
+  declare interface gapi$client$content$InventoryCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -1230,7 +1234,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$InventoryCustomBatchResponseEntry {
+  declare interface gapi$client$content$InventoryCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -1239,7 +1243,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors defined if and only if the request failed.
      */
-    errors?: content$Errors;
+    errors?: gapi$client$content$Errors;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#inventoryCustomBatchResponseEntry".
@@ -1247,7 +1251,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$InventoryPickup {
+  declare interface gapi$client$content$InventoryPickup {
     /**
      * Whether store pickup is available for this offer and whether the pickup option should be shown as buy, reserve, or not supported. Only supported for
      * local inventory. Unless the value is "not supported", must be submitted together with pickupSla.
@@ -1261,7 +1265,7 @@ declare module "gapi.client.content" {
     pickupSla?: string;
   }
 
-  declare interface content$InventorySetRequest {
+  declare interface gapi$client$content$InventorySetRequest {
     /**
      * The availability of the product.
      */
@@ -1270,7 +1274,7 @@ declare module "gapi.client.content" {
     /**
      * Number and amount of installments to pay for an item. Brazil only.
      */
-    installment?: content$Installment;
+    installment?: gapi$client$content$Installment;
 
     /**
      * Loyalty points that users receive after purchasing the item. Japan only.
@@ -1281,7 +1285,7 @@ declare module "gapi.client.content" {
      * Store pickup information. Only supported for local inventory. Not setting pickup means "don't update" while setting it to the empty value ({} in JSON)
      * means "delete". Otherwise, pickupMethod and pickupSla must be set together, unless pickupMethod is "not supported".
      */
-    pickup?: content$InventoryPickup;
+    pickup?: gapi$client$content$InventoryPickup;
 
     /**
      * The price of the product.
@@ -1309,21 +1313,21 @@ declare module "gapi.client.content" {
     sellOnGoogleQuantity?: number;
   }
 
-  declare interface content$InventorySetResponse {
+  declare interface gapi$client$content$InventorySetResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#inventorySetResponse".
      */
     kind?: string;
   }
 
-  declare interface content$LocationIdSet {
+  declare interface gapi$client$content$LocationIdSet {
     /**
      * A non-empty list of location IDs. They must all be of the same location type (e.g., state).
      */
     locationIds?: string[];
   }
 
-  declare interface content$LoyaltyPoints {
+  declare interface gapi$client$content$LoyaltyPoints {
     /**
      * Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or 24 Roman characters.
      */
@@ -1340,7 +1344,7 @@ declare module "gapi.client.content" {
     ratio?: number;
   }
 
-  declare interface content$Order {
+  declare interface gapi$client$content$Order {
     /**
      * Whether the order was acknowledged.
      */
@@ -1439,7 +1443,7 @@ declare module "gapi.client.content" {
     status?: string;
   }
 
-  declare interface content$OrderAddress {
+  declare interface gapi$client$content$OrderAddress {
     /**
      * CLDR country code (e.g. "US").
      */
@@ -1485,7 +1489,7 @@ declare module "gapi.client.content" {
     streetAddress?: string[];
   }
 
-  declare interface content$OrderCancellation {
+  declare interface gapi$client$content$OrderCancellation {
     /**
      * The actor that created the cancellation.
      */
@@ -1513,7 +1517,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrderCustomer {
+  declare interface gapi$client$content$OrderCustomer {
     /**
      * Email address of the customer.
      */
@@ -1531,11 +1535,11 @@ declare module "gapi.client.content" {
     fullName?: string;
   }
 
-  declare interface content$OrderDeliveryDetails {
+  declare interface gapi$client$content$OrderDeliveryDetails {
     /**
      * The delivery address
      */
-    address?: content$OrderAddress;
+    address?: gapi$client$content$OrderAddress;
 
     /**
      * The phone number of the person receiving the delivery.
@@ -1543,11 +1547,11 @@ declare module "gapi.client.content" {
     phoneNumber?: string;
   }
 
-  declare interface content$OrderLineItem {
+  declare interface gapi$client$content$OrderLineItem {
     /**
      * Cancellations of the line item.
      */
-    cancellations?: content$OrderCancellation[];
+    cancellations?: gapi$client$content$OrderCancellation[];
 
     /**
      * The channel type of the order: "purchaseOnGoogle" or "googleExpress".
@@ -1620,7 +1624,7 @@ declare module "gapi.client.content" {
     tax?: content$Price;
   }
 
-  declare interface content$OrderLineItemProduct {
+  declare interface gapi$client$content$OrderLineItemProduct {
     /**
      * Brand of the item.
      */
@@ -1698,7 +1702,7 @@ declare module "gapi.client.content" {
     variantAttributes?: content$OrderLineItemProductVariantAttribute[];
   }
 
-  declare interface content$OrderLineItemProductVariantAttribute {
+  declare interface gapi$client$content$OrderLineItemProductVariantAttribute {
     /**
      * The dimension of the variant.
      */
@@ -1710,7 +1714,7 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$OrderLineItemReturnInfo {
+  declare interface gapi$client$content$OrderLineItemReturnInfo {
     /**
      * How many days later the item can be returned.
      */
@@ -1727,7 +1731,7 @@ declare module "gapi.client.content" {
     policyUrl?: string;
   }
 
-  declare interface content$OrderLineItemShippingDetails {
+  declare interface gapi$client$content$OrderLineItemShippingDetails {
     /**
      * The delivery by date, in ISO 8601 format.
      */
@@ -1744,7 +1748,7 @@ declare module "gapi.client.content" {
     shipByDate?: string;
   }
 
-  declare interface content$OrderLineItemShippingDetailsMethod {
+  declare interface gapi$client$content$OrderLineItemShippingDetailsMethod {
     /**
      * The carrier for the shipping. Optional. See shipments[].carrier for a list of acceptable values.
      */
@@ -1766,11 +1770,11 @@ declare module "gapi.client.content" {
     minDaysInTransit?: number;
   }
 
-  declare interface content$OrderPaymentMethod {
+  declare interface gapi$client$content$OrderPaymentMethod {
     /**
      * The billing address.
      */
-    billingAddress?: content$OrderAddress;
+    billingAddress?: gapi$client$content$OrderAddress;
 
     /**
      * The card expiration month (January = 1, February = 2 etc.).
@@ -1807,7 +1811,7 @@ declare module "gapi.client.content" {
     type?: string;
   }
 
-  declare interface content$OrderPromotion {
+  declare interface gapi$client$content$OrderPromotion {
     benefits?: content$OrderPromotionBenefit[];
 
     /**
@@ -1845,7 +1849,7 @@ declare module "gapi.client.content" {
     redemptionChannel?: string;
   }
 
-  declare interface content$OrderPromotionBenefit {
+  declare interface gapi$client$content$OrderPromotionBenefit {
     /**
      * The discount in the order price when the promotion is applied.
      */
@@ -1872,7 +1876,7 @@ declare module "gapi.client.content" {
     type?: string;
   }
 
-  declare interface content$OrderRefund {
+  declare interface gapi$client$content$OrderRefund {
     /**
      * The actor that created the refund.
      */
@@ -1899,7 +1903,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrderReturn {
+  declare interface gapi$client$content$OrderReturn {
     /**
      * The actor that created the refund.
      */
@@ -1926,7 +1930,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrderShipment {
+  declare interface gapi$client$content$OrderShipment {
     /**
      * The carrier handling the shipment.
      *
@@ -1987,7 +1991,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrderShipmentLineItemShipment {
+  declare interface gapi$client$content$OrderShipmentLineItemShipment {
     /**
      * The id of the line item that is shipped.
      */
@@ -1999,14 +2003,14 @@ declare module "gapi.client.content" {
     quantity?: number;
   }
 
-  declare interface content$OrdersAcknowledgeRequest {
+  declare interface gapi$client$content$OrdersAcknowledgeRequest {
     /**
      * The ID of the operation. Unique across all operations for a given order.
      */
     operationId?: string;
   }
 
-  declare interface content$OrdersAcknowledgeResponse {
+  declare interface gapi$client$content$OrdersAcknowledgeResponse {
     /**
      * The status of the execution.
      */
@@ -2018,14 +2022,14 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersAdvanceTestOrderResponse {
+  declare interface gapi$client$content$OrdersAdvanceTestOrderResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#ordersAdvanceTestOrderResponse".
      */
     kind?: string;
   }
 
-  declare interface content$OrdersCancelLineItemRequest {
+  declare interface gapi$client$content$OrdersCancelLineItemRequest {
     /**
      * Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The
      * amount must not be larger than the net amount left on the order.
@@ -2058,7 +2062,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCancelLineItemResponse {
+  declare interface gapi$client$content$OrdersCancelLineItemResponse {
     /**
      * The status of the execution.
      */
@@ -2070,7 +2074,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersCancelRequest {
+  declare interface gapi$client$content$OrdersCancelRequest {
     /**
      * The ID of the operation. Unique across all operations for a given order.
      */
@@ -2087,7 +2091,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCancelResponse {
+  declare interface gapi$client$content$OrdersCancelResponse {
     /**
      * The status of the execution.
      */
@@ -2099,7 +2103,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersCreateTestOrderRequest {
+  declare interface gapi$client$content$OrdersCreateTestOrderRequest {
     /**
      * The test order template to use. Specify as an alternative to testOrder as a shortcut for retrieving a template and then creating an order using that
      * template.
@@ -2112,7 +2116,7 @@ declare module "gapi.client.content" {
     testOrder?: content$TestOrder;
   }
 
-  declare interface content$OrdersCreateTestOrderResponse {
+  declare interface gapi$client$content$OrdersCreateTestOrderResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#ordersCreateTestOrderResponse".
      */
@@ -2124,14 +2128,14 @@ declare module "gapi.client.content" {
     orderId?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequest {
+  declare interface gapi$client$content$OrdersCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$OrdersCustomBatchRequestEntry[];
   }
 
-  declare interface content$OrdersCustomBatchRequestEntry {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -2193,7 +2197,7 @@ declare module "gapi.client.content" {
     updateShipment?: content$OrdersCustomBatchRequestEntryUpdateShipment;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryCancel {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryCancel {
     /**
      * The reason for the cancellation.
      */
@@ -2205,7 +2209,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryCancelLineItem {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryCancelLineItem {
     /**
      * Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The
      * amount must not be larger than the net amount left on the order.
@@ -2233,7 +2237,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryRefund {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryRefund {
     /**
      * The amount that is refunded.
      */
@@ -2250,7 +2254,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryReturnLineItem {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryReturnLineItem {
     /**
      * The ID of the line item to return.
      */
@@ -2272,7 +2276,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryShipLineItems {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryShipLineItems {
     /**
      * Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a
      * list of acceptable values.
@@ -2282,7 +2286,7 @@ declare module "gapi.client.content" {
     /**
      * Line items to ship.
      */
-    lineItems?: content$OrderShipmentLineItemShipment[];
+    lineItems?: gapi$client$content$OrderShipmentLineItemShipment[];
 
     /**
      * Deprecated. Please use shipmentInfo instead. The ID of the shipment.
@@ -2300,7 +2304,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
     /**
      * The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a list of acceptable values.
      */
@@ -2317,7 +2321,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrdersCustomBatchRequestEntryUpdateShipment {
+  declare interface gapi$client$content$OrdersCustomBatchRequestEntryUpdateShipment {
     /**
      * The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable
      * values.
@@ -2340,7 +2344,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrdersCustomBatchResponse {
+  declare interface gapi$client$content$OrdersCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -2352,7 +2356,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersCustomBatchResponseEntry {
+  declare interface gapi$client$content$OrdersCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -2361,7 +2365,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors defined if and only if the request failed.
      */
-    errors?: content$Errors;
+    errors?: gapi$client$content$Errors;
 
     /**
      * The status of the execution. Only defined if the method is not get or getByMerchantOrderId and if the request was successful.
@@ -2376,10 +2380,10 @@ declare module "gapi.client.content" {
     /**
      * The retrieved order. Only defined if the method is get and if the request was successful.
      */
-    order?: content$Order;
+    order?: gapi$client$content$Order;
   }
 
-  declare interface content$OrdersGetByMerchantOrderIdResponse {
+  declare interface gapi$client$content$OrdersGetByMerchantOrderIdResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#ordersGetByMerchantOrderIdResponse".
      */
@@ -2388,10 +2392,10 @@ declare module "gapi.client.content" {
     /**
      * The requested order.
      */
-    order?: content$Order;
+    order?: gapi$client$content$Order;
   }
 
-  declare interface content$OrdersGetTestOrderTemplateResponse {
+  declare interface gapi$client$content$OrdersGetTestOrderTemplateResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#ordersGetTestOrderTemplateResponse".
      */
@@ -2403,7 +2407,7 @@ declare module "gapi.client.content" {
     template?: content$TestOrder;
   }
 
-  declare interface content$OrdersListResponse {
+  declare interface gapi$client$content$OrdersListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#ordersListResponse".
      */
@@ -2413,10 +2417,10 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of orders.
      */
     nextPageToken?: string;
-    resources?: content$Order[];
+    resources?: gapi$client$content$Order[];
   }
 
-  declare interface content$OrdersRefundRequest {
+  declare interface gapi$client$content$OrdersRefundRequest {
     /**
      * The amount that is refunded.
      */
@@ -2438,7 +2442,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersRefundResponse {
+  declare interface gapi$client$content$OrdersRefundResponse {
     /**
      * The status of the execution.
      */
@@ -2450,7 +2454,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersReturnLineItemRequest {
+  declare interface gapi$client$content$OrdersReturnLineItemRequest {
     /**
      * The ID of the line item to return.
      */
@@ -2477,7 +2481,7 @@ declare module "gapi.client.content" {
     reasonText?: string;
   }
 
-  declare interface content$OrdersReturnLineItemResponse {
+  declare interface gapi$client$content$OrdersReturnLineItemResponse {
     /**
      * The status of the execution.
      */
@@ -2489,7 +2493,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersShipLineItemsRequest {
+  declare interface gapi$client$content$OrdersShipLineItemsRequest {
     /**
      * Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a
      * list of acceptable values.
@@ -2499,7 +2503,7 @@ declare module "gapi.client.content" {
     /**
      * Line items to ship.
      */
-    lineItems?: content$OrderShipmentLineItemShipment[];
+    lineItems?: gapi$client$content$OrderShipmentLineItemShipment[];
 
     /**
      * The ID of the operation. Unique across all operations for a given order.
@@ -2514,7 +2518,7 @@ declare module "gapi.client.content" {
     /**
      * Shipment information. This field is repeated because a single line item can be shipped in several packages (and have several tracking IDs).
      */
-    shipmentInfos?: content$OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[];
+    shipmentInfos?: gapi$client$content$OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[];
 
     /**
      * Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.
@@ -2522,7 +2526,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrdersShipLineItemsResponse {
+  declare interface gapi$client$content$OrdersShipLineItemsResponse {
     /**
      * The status of the execution.
      */
@@ -2534,7 +2538,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersUpdateMerchantOrderIdRequest {
+  declare interface gapi$client$content$OrdersUpdateMerchantOrderIdRequest {
     /**
      * The merchant order id to be assigned to the order. Must be unique per merchant.
      */
@@ -2546,7 +2550,7 @@ declare module "gapi.client.content" {
     operationId?: string;
   }
 
-  declare interface content$OrdersUpdateMerchantOrderIdResponse {
+  declare interface gapi$client$content$OrdersUpdateMerchantOrderIdResponse {
     /**
      * The status of the execution.
      */
@@ -2558,7 +2562,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$OrdersUpdateShipmentRequest {
+  declare interface gapi$client$content$OrdersUpdateShipmentRequest {
     /**
      * The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable
      * values.
@@ -2586,7 +2590,7 @@ declare module "gapi.client.content" {
     trackingId?: string;
   }
 
-  declare interface content$OrdersUpdateShipmentResponse {
+  declare interface gapi$client$content$OrdersUpdateShipmentResponse {
     /**
      * The status of the execution.
      */
@@ -2598,7 +2602,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$PostalCodeGroup {
+  declare interface gapi$client$content$PostalCodeGroup {
     /**
      * The CLDR territory code of the country the postal code group applies to. Required.
      */
@@ -2615,7 +2619,7 @@ declare module "gapi.client.content" {
     postalCodeRanges?: content$PostalCodeRange[];
   }
 
-  declare interface content$PostalCodeRange {
+  declare interface gapi$client$content$PostalCodeRange {
     /**
      * A postal code or a pattern of the form prefix&#42; denoting the inclusive lower bound of the range defining the area. Examples values: "94108", "9410&#42;",
      * "9&#42;". Required.
@@ -2631,7 +2635,7 @@ declare module "gapi.client.content" {
     postalCodeRangeEnd?: string;
   }
 
-  declare interface content$Price {
+  declare interface gapi$client$content$Price {
     /**
      * The currency of the price.
      */
@@ -2643,7 +2647,7 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$Product {
+  declare interface gapi$client$content$Product {
     /**
      * Additional URLs of images of the item.
      */
@@ -2835,7 +2839,7 @@ declare module "gapi.client.content" {
     /**
      * Number and amount of installments to pay for an item. Brazil only.
      */
-    installment?: content$Installment;
+    installment?: gapi$client$content$Installment;
 
     /**
      * Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price.
@@ -2860,7 +2864,7 @@ declare module "gapi.client.content" {
     /**
      * Loyalty points that users receive after purchasing the item. Japan only.
      */
-    loyaltyPoints?: content$LoyaltyPoints;
+    loyaltyPoints?: gapi$client$content$LoyaltyPoints;
 
     /**
      * The material of which the item is made.
@@ -2911,7 +2915,7 @@ declare module "gapi.client.content" {
     /**
      * Price of the item.
      */
-    price?: content$Price;
+    price?: gapi$client$content$Price;
 
     /**
      * Your category of the item (formatted as in products feed specification).
@@ -2926,7 +2930,7 @@ declare module "gapi.client.content" {
     /**
      * Advertised sale price of the item.
      */
-    salePrice?: content$Price;
+    salePrice?: gapi$client$content$Price;
 
     /**
      * Date range during which the item is on sale (see products feed specification).
@@ -3016,10 +3020,10 @@ declare module "gapi.client.content" {
     /**
      * Read-only warnings.
      */
-    warnings?: content$Error[];
+    warnings?: gapi$client$content$Error[];
   }
 
-  declare interface content$ProductAspect {
+  declare interface gapi$client$content$ProductAspect {
     /**
      * The name of the aspect.
      */
@@ -3036,7 +3040,7 @@ declare module "gapi.client.content" {
     intention?: string;
   }
 
-  declare interface content$ProductCustomAttribute {
+  declare interface gapi$client$content$ProductCustomAttribute {
     /**
      * The name of the attribute. Underscores will be replaced by spaces upon insertion.
      */
@@ -3058,11 +3062,11 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$ProductCustomGroup {
+  declare interface gapi$client$content$ProductCustomGroup {
     /**
      * The sub-attributes.
      */
-    attributes?: content$ProductCustomAttribute[];
+    attributes?: gapi$client$content$ProductCustomAttribute[];
 
     /**
      * The name of the group. Underscores will be replaced by spaces upon insertion.
@@ -3070,7 +3074,7 @@ declare module "gapi.client.content" {
     name?: string;
   }
 
-  declare interface content$ProductDestination {
+  declare interface gapi$client$content$ProductDestination {
     /**
      * The name of the destination.
      */
@@ -3082,7 +3086,7 @@ declare module "gapi.client.content" {
     intention?: string;
   }
 
-  declare interface content$ProductShipping {
+  declare interface gapi$client$content$ProductShipping {
     /**
      * The CLDR territory code of the country to which an item will ship.
      */
@@ -3107,7 +3111,7 @@ declare module "gapi.client.content" {
     /**
      * Fixed shipping price, represented as a number.
      */
-    price?: content$Price;
+    price?: gapi$client$content$Price;
 
     /**
      * The geographic region to which a shipping rate applies.
@@ -3120,7 +3124,7 @@ declare module "gapi.client.content" {
     service?: string;
   }
 
-  declare interface content$ProductShippingDimension {
+  declare interface gapi$client$content$ProductShippingDimension {
     /**
      * The unit of value.
      *
@@ -3136,7 +3140,7 @@ declare module "gapi.client.content" {
     value?: number;
   }
 
-  declare interface content$ProductShippingWeight {
+  declare interface gapi$client$content$ProductShippingWeight {
     /**
      * The unit of value.
      */
@@ -3148,7 +3152,7 @@ declare module "gapi.client.content" {
     value?: number;
   }
 
-  declare interface content$ProductStatus {
+  declare interface gapi$client$content$ProductStatus {
     /**
      * Date on which the item has been created, in ISO 8601 format.
      */
@@ -3187,7 +3191,7 @@ declare module "gapi.client.content" {
     /**
      * Product data after applying all the join inputs.
      */
-    product?: content$Product;
+    product?: gapi$client$content$Product;
 
     /**
      * The id of the product for which status is reported.
@@ -3200,7 +3204,7 @@ declare module "gapi.client.content" {
     title?: string;
   }
 
-  declare interface content$ProductStatusDataQualityIssue {
+  declare interface gapi$client$content$ProductStatusDataQualityIssue {
     /**
      * A more detailed error string.
      */
@@ -3242,7 +3246,7 @@ declare module "gapi.client.content" {
     valueProvided?: string;
   }
 
-  declare interface content$ProductStatusDestinationStatus {
+  declare interface gapi$client$content$ProductStatusDestinationStatus {
     /**
      * The destination's approval status.
      */
@@ -3259,7 +3263,7 @@ declare module "gapi.client.content" {
     intention?: string;
   }
 
-  declare interface content$ProductTax {
+  declare interface gapi$client$content$ProductTax {
     /**
      * The country within which the item is taxed, specified as a CLDR territory code.
      */
@@ -3292,7 +3296,7 @@ declare module "gapi.client.content" {
     taxShip?: boolean;
   }
 
-  declare interface content$ProductUnitPricingBaseMeasure {
+  declare interface gapi$client$content$ProductUnitPricingBaseMeasure {
     /**
      * The unit of the denominator.
      */
@@ -3304,7 +3308,7 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$ProductUnitPricingMeasure {
+  declare interface gapi$client$content$ProductUnitPricingMeasure {
     /**
      * The unit of the measure.
      */
@@ -3316,14 +3320,14 @@ declare module "gapi.client.content" {
     value?: number;
   }
 
-  declare interface content$ProductsCustomBatchRequest {
+  declare interface gapi$client$content$ProductsCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$ProductsCustomBatchRequestEntry[];
   }
 
-  declare interface content$ProductsCustomBatchRequestEntry {
+  declare interface gapi$client$content$ProductsCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -3338,7 +3342,7 @@ declare module "gapi.client.content" {
     /**
      * The product to insert. Only required if the method is insert.
      */
-    product?: content$Product;
+    product?: gapi$client$content$Product;
 
     /**
      * The ID of the product to get or delete. Only defined if the method is get or delete.
@@ -3346,7 +3350,7 @@ declare module "gapi.client.content" {
     productId?: string;
   }
 
-  declare interface content$ProductsCustomBatchResponse {
+  declare interface gapi$client$content$ProductsCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -3358,7 +3362,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$ProductsCustomBatchResponseEntry {
+  declare interface gapi$client$content$ProductsCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -3367,7 +3371,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors defined if and only if the request failed.
      */
-    errors?: content$Errors;
+    errors?: gapi$client$content$Errors;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#productsCustomBatchResponseEntry".
@@ -3377,10 +3381,10 @@ declare module "gapi.client.content" {
     /**
      * The inserted product. Only defined if the method is insert and if the request was successful.
      */
-    product?: content$Product;
+    product?: gapi$client$content$Product;
   }
 
-  declare interface content$ProductsListResponse {
+  declare interface gapi$client$content$ProductsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#productsListResponse".
      */
@@ -3390,17 +3394,17 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of products.
      */
     nextPageToken?: string;
-    resources?: content$Product[];
+    resources?: gapi$client$content$Product[];
   }
 
-  declare interface content$ProductstatusesCustomBatchRequest {
+  declare interface gapi$client$content$ProductstatusesCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$ProductstatusesCustomBatchRequestEntry[];
   }
 
-  declare interface content$ProductstatusesCustomBatchRequestEntry {
+  declare interface gapi$client$content$ProductstatusesCustomBatchRequestEntry {
     /**
      * An entry ID, unique within the batch request.
      */
@@ -3419,7 +3423,7 @@ declare module "gapi.client.content" {
     productId?: string;
   }
 
-  declare interface content$ProductstatusesCustomBatchResponse {
+  declare interface gapi$client$content$ProductstatusesCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -3431,7 +3435,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$ProductstatusesCustomBatchResponseEntry {
+  declare interface gapi$client$content$ProductstatusesCustomBatchResponseEntry {
     /**
      * The ID of the request entry this entry responds to.
      */
@@ -3440,7 +3444,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors, if the request failed.
      */
-    errors?: content$Errors;
+    errors?: gapi$client$content$Errors;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#productstatusesCustomBatchResponseEntry".
@@ -3450,10 +3454,10 @@ declare module "gapi.client.content" {
     /**
      * The requested product status. Only defined if the request was successful.
      */
-    productStatus?: content$ProductStatus;
+    productStatus?: gapi$client$content$ProductStatus;
   }
 
-  declare interface content$ProductstatusesListResponse {
+  declare interface gapi$client$content$ProductstatusesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#productstatusesListResponse".
      */
@@ -3463,10 +3467,10 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of products statuses.
      */
     nextPageToken?: string;
-    resources?: content$ProductStatus[];
+    resources?: gapi$client$content$ProductStatus[];
   }
 
-  declare interface content$RateGroup {
+  declare interface gapi$client$content$RateGroup {
     /**
      * A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the
      * rate group to apply. May only be empty for the last rate group of a service. Required.
@@ -3476,7 +3480,7 @@ declare module "gapi.client.content" {
     /**
      * A list of carrier rates that can be referred to by mainTable or singleValue.
      */
-    carrierRates?: content$CarrierRate[];
+    carrierRates?: gapi$client$content$CarrierRate[];
 
     /**
      * A table defining the rate group, when singleValue is not expressive enough. Can only be set if singleValue is not set.
@@ -3494,7 +3498,7 @@ declare module "gapi.client.content" {
     subtables?: content$Table[];
   }
 
-  declare interface content$Row {
+  declare interface gapi$client$content$Row {
     /**
      * The list of cells that constitute the row. Must have the same length as columnHeaders for two-dimensional tables, a length of 1 for one-dimensional
      * tables. Required.
@@ -3502,7 +3506,7 @@ declare module "gapi.client.content" {
     cells?: content$Value[];
   }
 
-  declare interface content$Service {
+  declare interface gapi$client$content$Service {
     /**
      * A boolean exposing the active status of the shipping service. Required.
      */
@@ -3521,13 +3525,13 @@ declare module "gapi.client.content" {
     /**
      * Time spent in various aspects from order to the delivery of the product. Required.
      */
-    deliveryTime?: content$DeliveryTime;
+    deliveryTime?: gapi$client$content$DeliveryTime;
 
     /**
      * Minimum order value for this service. If set, indicates that customers will have to spend at least this amount. All prices within a service must have
      * the same currency.
      */
-    minimumOrderValue?: content$Price;
+    minimumOrderValue?: gapi$client$content$Price;
 
     /**
      * Free-form name of the service. Must be unique within target account. Required.
@@ -3538,10 +3542,10 @@ declare module "gapi.client.content" {
      * Shipping rate group definitions. Only the last one is allowed to have an empty applicableShippingLabels, which means "everything else". The other
      * applicableShippingLabels must not overlap.
      */
-    rateGroups?: content$RateGroup[];
+    rateGroups?: gapi$client$content$RateGroup[];
   }
 
-  declare interface content$ShippingSettings {
+  declare interface gapi$client$content$ShippingSettings {
     /**
      * The ID of the account to which these account shipping settings belong. Ignored upon update, always present in get request responses.
      */
@@ -3550,22 +3554,22 @@ declare module "gapi.client.content" {
     /**
      * A list of postal code groups that can be referred to in services. Optional.
      */
-    postalCodeGroups?: content$PostalCodeGroup[];
+    postalCodeGroups?: gapi$client$content$PostalCodeGroup[];
 
     /**
      * The target account's list of services. Optional.
      */
-    services?: content$Service[];
+    services?: gapi$client$content$Service[];
   }
 
-  declare interface content$ShippingsettingsCustomBatchRequest {
+  declare interface gapi$client$content$ShippingsettingsCustomBatchRequest {
     /**
      * The request entries to be processed in the batch.
      */
     entries?: content$ShippingsettingsCustomBatchRequestEntry[];
   }
 
-  declare interface content$ShippingsettingsCustomBatchRequestEntry {
+  declare interface gapi$client$content$ShippingsettingsCustomBatchRequestEntry {
     /**
      * The ID of the account for which to get/update account shipping settings.
      */
@@ -3585,10 +3589,10 @@ declare module "gapi.client.content" {
     /**
      * The account shipping settings to update. Only defined if the method is update.
      */
-    shippingSettings?: content$ShippingSettings;
+    shippingSettings?: gapi$client$content$ShippingSettings;
   }
 
-  declare interface content$ShippingsettingsCustomBatchResponse {
+  declare interface gapi$client$content$ShippingsettingsCustomBatchResponse {
     /**
      * The result of the execution of the batch requests.
      */
@@ -3600,7 +3604,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$ShippingsettingsCustomBatchResponseEntry {
+  declare interface gapi$client$content$ShippingsettingsCustomBatchResponseEntry {
     /**
      * The ID of the request entry to which this entry responds.
      */
@@ -3609,7 +3613,7 @@ declare module "gapi.client.content" {
     /**
      * A list of errors defined if, and only if, the request failed.
      */
-    errors?: content$Errors;
+    errors?: gapi$client$content$Errors;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#shippingsettingsCustomBatchResponseEntry".
@@ -3619,14 +3623,14 @@ declare module "gapi.client.content" {
     /**
      * The retrieved or updated account shipping settings.
      */
-    shippingSettings?: content$ShippingSettings;
+    shippingSettings?: gapi$client$content$ShippingSettings;
   }
 
-  declare interface content$ShippingsettingsGetSupportedCarriersResponse {
+  declare interface gapi$client$content$ShippingsettingsGetSupportedCarriersResponse {
     /**
      * A list of supported carriers. May be empty.
      */
-    carriers?: content$CarriersCarrier[];
+    carriers?: gapi$client$content$CarriersCarrier[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#shippingsettingsGetSupportedCarriersResponse".
@@ -3634,7 +3638,7 @@ declare module "gapi.client.content" {
     kind?: string;
   }
 
-  declare interface content$ShippingsettingsListResponse {
+  declare interface gapi$client$content$ShippingsettingsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "content#shippingsettingsListResponse".
      */
@@ -3644,14 +3648,14 @@ declare module "gapi.client.content" {
      * The token for the retrieval of the next page of shipping settings.
      */
     nextPageToken?: string;
-    resources?: content$ShippingSettings[];
+    resources?: gapi$client$content$ShippingSettings[];
   }
 
-  declare interface content$Table {
+  declare interface gapi$client$content$Table {
     /**
      * Headers of the table's columns. Optional: if not set then the table has only one dimension.
      */
-    columnHeaders?: content$Headers;
+    columnHeaders?: gapi$client$content$Headers;
 
     /**
      * Name of the table. Required for subtables, ignored for the main table.
@@ -3661,15 +3665,15 @@ declare module "gapi.client.content" {
     /**
      * Headers of the table's rows. Required.
      */
-    rowHeaders?: content$Headers;
+    rowHeaders?: gapi$client$content$Headers;
 
     /**
      * The list of rows that constitute the table. Must have the same length as rowHeaders. Required.
      */
-    rows?: content$Row[];
+    rows?: gapi$client$content$Row[];
   }
 
-  declare interface content$TestOrder {
+  declare interface gapi$client$content$TestOrder {
     /**
      * The details of the customer who placed the order.
      */
@@ -3698,17 +3702,17 @@ declare module "gapi.client.content" {
     /**
      * The details of the merchant provided promotions applied to the order. More details about the program are here.
      */
-    promotions?: content$OrderPromotion[];
+    promotions?: gapi$client$content$OrderPromotion[];
 
     /**
      * The total cost of shipping for all items.
      */
-    shippingCost?: content$Price;
+    shippingCost?: gapi$client$content$Price;
 
     /**
      * The tax for the total shipping cost.
      */
-    shippingCostTax?: content$Price;
+    shippingCostTax?: gapi$client$content$Price;
 
     /**
      * The requested shipping option.
@@ -3716,7 +3720,7 @@ declare module "gapi.client.content" {
     shippingOption?: string;
   }
 
-  declare interface content$TestOrderCustomer {
+  declare interface gapi$client$content$TestOrderCustomer {
     /**
      * Email address of the customer.
      */
@@ -3734,7 +3738,7 @@ declare module "gapi.client.content" {
     fullName?: string;
   }
 
-  declare interface content$TestOrderLineItem {
+  declare interface gapi$client$content$TestOrderLineItem {
     /**
      * Product data from the time of the order placement.
      */
@@ -3748,20 +3752,20 @@ declare module "gapi.client.content" {
     /**
      * Details of the return policy for the line item.
      */
-    returnInfo?: content$OrderLineItemReturnInfo;
+    returnInfo?: gapi$client$content$OrderLineItemReturnInfo;
 
     /**
      * Details of the requested shipping for the line item.
      */
-    shippingDetails?: content$OrderLineItemShippingDetails;
+    shippingDetails?: gapi$client$content$OrderLineItemShippingDetails;
 
     /**
      * Unit tax for the line item.
      */
-    unitTax?: content$Price;
+    unitTax?: gapi$client$content$Price;
   }
 
-  declare interface content$TestOrderLineItemProduct {
+  declare interface gapi$client$content$TestOrderLineItemProduct {
     /**
      * Brand of the item.
      */
@@ -3810,7 +3814,7 @@ declare module "gapi.client.content" {
     /**
      * The price for the product.
      */
-    price?: content$Price;
+    price?: gapi$client$content$Price;
 
     /**
      * The CLDR territory code of the target country of the product.
@@ -3825,10 +3829,10 @@ declare module "gapi.client.content" {
     /**
      * Variant attributes for the item. Optional.
      */
-    variantAttributes?: content$OrderLineItemProductVariantAttribute[];
+    variantAttributes?: gapi$client$content$OrderLineItemProductVariantAttribute[];
   }
 
-  declare interface content$TestOrderPaymentMethod {
+  declare interface gapi$client$content$TestOrderPaymentMethod {
     /**
      * The card expiration month (January = 1, February = 2 etc.).
      */
@@ -3855,7 +3859,7 @@ declare module "gapi.client.content" {
     type?: string;
   }
 
-  declare interface content$Value {
+  declare interface gapi$client$content$Value {
     /**
      * The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be set if all other fields are not set.
      */
@@ -3864,7 +3868,7 @@ declare module "gapi.client.content" {
     /**
      * A flat rate. Can only be set if all other fields are not set.
      */
-    flatRate?: content$Price;
+    flatRate?: gapi$client$content$Price;
 
     /**
      * If true, then the product can't ship. Must be true when set, can only be set if all other fields are not set.
@@ -3882,7 +3886,7 @@ declare module "gapi.client.content" {
     subtableName?: string;
   }
 
-  declare interface content$Weight {
+  declare interface gapi$client$content$Weight {
     /**
      * The weight unit.
      */
@@ -3894,7 +3898,7 @@ declare module "gapi.client.content" {
     value?: string;
   }
 
-  declare interface content$AccountsResource {
+  declare interface gapi$client$content$AccountsResource {
     /**
      * Returns information about the authenticated user.
      */
@@ -3934,7 +3938,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountsAuthInfoResponse>;
+    }): Request<gapi$client$content$AccountsAuthInfoResponse>;
 
     /**
      * Claims the website of a Merchant Center sub-account. This method can only be called for accounts to which the managing account has access: either the
@@ -3992,7 +3996,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountsClaimWebsiteResponse>;
+    }): Request<gapi$client$content$AccountsClaimWebsiteResponse>;
 
     /**
      * Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.
@@ -4038,7 +4042,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountsCustomBatchResponse>;
+    }): Request<gapi$client$content$AccountsCustomBatchResponse>;
 
     /**
      * Deletes a Merchant Center sub-account. This method can only be called for multi-client accounts.
@@ -4151,7 +4155,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Account>;
+    }): Request<gapi$client$content$Account>;
 
     /**
      * Creates a Merchant Center sub-account. This method can only be called for multi-client accounts.
@@ -4202,7 +4206,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Account>;
+    }): Request<gapi$client$content$Account>;
 
     /**
      * Lists the sub-accounts in your Merchant Center account. This method can only be called for multi-client accounts.
@@ -4258,7 +4262,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountsListResponse>;
+    }): Request<gapi$client$content$AccountsListResponse>;
 
     /**
      * Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account
@@ -4315,7 +4319,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Account>;
+    }): Request<gapi$client$content$Account>;
 
     /**
      * Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account
@@ -4372,10 +4376,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Account>;
+    }): Request<gapi$client$content$Account>;
   }
 
-  declare interface content$AccountstatusesResource {
+  declare interface gapi$client$content$AccountstatusesResource {
     custombatch(request: {
       /**
        * Data format for the response.
@@ -4412,7 +4416,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountstatusesCustomBatchResponse>;
+    }): Request<gapi$client$content$AccountstatusesCustomBatchResponse>;
 
     /**
      * Retrieves the status of a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the
@@ -4464,7 +4468,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountStatus>;
+    }): Request<gapi$client$content$AccountStatus>;
 
     /**
      * Lists the statuses of the sub-accounts in your Merchant Center account. This method can only be called for multi-client accounts.
@@ -4520,10 +4524,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountstatusesListResponse>;
+    }): Request<gapi$client$content$AccountstatusesListResponse>;
   }
 
-  declare interface content$AccounttaxResource {
+  declare interface gapi$client$content$AccounttaxResource {
     /**
      * Retrieves and updates tax settings of multiple accounts in a single request.
      */
@@ -4568,7 +4572,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccounttaxCustomBatchResponse>;
+    }): Request<gapi$client$content$AccounttaxCustomBatchResponse>;
 
     /**
      * Retrieves the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing
@@ -4620,7 +4624,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountTax>;
+    }): Request<gapi$client$content$AccountTax>;
 
     /**
      * Lists the tax settings of the sub-accounts in your Merchant Center account. This method can only be called for multi-client accounts.
@@ -4676,7 +4680,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccounttaxListResponse>;
+    }): Request<gapi$client$content$AccounttaxListResponse>;
 
     /**
      * Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing
@@ -4734,7 +4738,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountTax>;
+    }): Request<gapi$client$content$AccountTax>;
 
     /**
      * Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing
@@ -4791,10 +4795,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$AccountTax>;
+    }): Request<gapi$client$content$AccountTax>;
   }
 
-  declare interface content$DatafeedsResource {
+  declare interface gapi$client$content$DatafeedsResource {
     custombatch(request: {
       /**
        * Data format for the response.
@@ -4836,7 +4840,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$DatafeedsCustomBatchResponse>;
+    }): Request<gapi$client$content$DatafeedsCustomBatchResponse>;
 
     /**
      * Deletes a datafeed configuration from your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -4927,7 +4931,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Datafeed>;
+    }): Request<gapi$client$content$Datafeed>;
 
     /**
      * Registers a datafeed configuration with your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -4974,7 +4978,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Datafeed>;
+    }): Request<gapi$client$content$Datafeed>;
 
     /**
      * Lists the datafeeds in your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5030,7 +5034,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$DatafeedsListResponse>;
+    }): Request<gapi$client$content$DatafeedsListResponse>;
 
     /**
      * Updates a datafeed configuration of your Merchant Center account. This method can only be called for non-multi-client accounts. This method supports
@@ -5079,7 +5083,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Datafeed>;
+    }): Request<gapi$client$content$Datafeed>;
 
     /**
      * Updates a datafeed configuration of your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5127,10 +5131,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Datafeed>;
+    }): Request<gapi$client$content$Datafeed>;
   }
 
-  declare interface content$DatafeedstatusesResource {
+  declare interface gapi$client$content$DatafeedstatusesResource {
     custombatch(request: {
       /**
        * Data format for the response.
@@ -5167,7 +5171,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$DatafeedstatusesCustomBatchResponse>;
+    }): Request<gapi$client$content$DatafeedstatusesCustomBatchResponse>;
 
     /**
      * Retrieves the status of a datafeed from your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5222,7 +5226,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$DatafeedStatus>;
+    }): Request<gapi$client$content$DatafeedStatus>;
 
     /**
      * Lists the statuses of the datafeeds in your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5278,10 +5282,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$DatafeedstatusesListResponse>;
+    }): Request<gapi$client$content$DatafeedstatusesListResponse>;
   }
 
-  declare interface content$InventoryResource {
+  declare interface gapi$client$content$InventoryResource {
     /**
      * Updates price and availability for multiple products or stores in a single request. This operation does not update the expiration date of the products.
      * This method can only be called for non-multi-client accounts.
@@ -5327,7 +5331,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$InventoryCustomBatchResponse>;
+    }): Request<gapi$client$content$InventoryCustomBatchResponse>;
 
     /**
      * Updates price and availability of a product in your Merchant Center account. This operation does not update the expiration date of the product. This
@@ -5389,10 +5393,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$InventorySetResponse>;
+    }): Request<gapi$client$content$InventorySetResponse>;
   }
 
-  declare interface content$OrdersResource {
+  declare interface gapi$client$content$OrdersResource {
     /**
      * Marks an order as acknowledged. This method can only be called for non-multi-client accounts.
      */
@@ -5442,7 +5446,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersAcknowledgeResponse>;
+    }): Request<gapi$client$content$OrdersAcknowledgeResponse>;
 
     /**
      * Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method can only be called for non-multi-client accounts.
@@ -5493,7 +5497,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersAdvanceTestOrderResponse>;
+    }): Request<gapi$client$content$OrdersAdvanceTestOrderResponse>;
 
     /**
      * Cancels all line items in an order, making a full refund. This method can only be called for non-multi-client accounts.
@@ -5544,7 +5548,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersCancelResponse>;
+    }): Request<gapi$client$content$OrdersCancelResponse>;
 
     /**
      * Cancels a line item, making a full refund. This method can only be called for non-multi-client accounts.
@@ -5595,7 +5599,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersCancelLineItemResponse>;
+    }): Request<gapi$client$content$OrdersCancelLineItemResponse>;
 
     /**
      * Sandbox only. Creates a test order. This method can only be called for non-multi-client accounts.
@@ -5641,7 +5645,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersCreateTestOrderResponse>;
+    }): Request<gapi$client$content$OrdersCreateTestOrderResponse>;
 
     /**
      * Retrieves or modifies multiple orders in a single request. This method can only be called for non-multi-client accounts.
@@ -5682,7 +5686,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersCustomBatchResponse>;
+    }): Request<gapi$client$content$OrdersCustomBatchResponse>;
 
     /**
      * Retrieves an order from your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5733,7 +5737,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Order>;
+    }): Request<gapi$client$content$Order>;
 
     /**
      * Retrieves an order using merchant order id. This method can only be called for non-multi-client accounts.
@@ -5784,7 +5788,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersGetByMerchantOrderIdResponse>;
+    }): Request<gapi$client$content$OrdersGetByMerchantOrderIdResponse>;
 
     /**
      * Sandbox only. Retrieves an order template that can be used to quickly create a new order in sandbox. This method can only be called for
@@ -5836,7 +5840,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersGetTestOrderTemplateResponse>;
+    }): Request<gapi$client$content$OrdersGetTestOrderTemplateResponse>;
 
     /**
      * Lists the orders in your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -5925,7 +5929,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersListResponse>;
+    }): Request<gapi$client$content$OrdersListResponse>;
 
     /**
      * Refund a portion of the order, up to the full amount paid. This method can only be called for non-multi-client accounts.
@@ -5976,7 +5980,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersRefundResponse>;
+    }): Request<gapi$client$content$OrdersRefundResponse>;
 
     /**
      * Returns a line item. This method can only be called for non-multi-client accounts.
@@ -6027,7 +6031,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersReturnLineItemResponse>;
+    }): Request<gapi$client$content$OrdersReturnLineItemResponse>;
 
     /**
      * Marks line item(s) as shipped. This method can only be called for non-multi-client accounts.
@@ -6078,7 +6082,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersShipLineItemsResponse>;
+    }): Request<gapi$client$content$OrdersShipLineItemsResponse>;
 
     /**
      * Updates the merchant order ID for a given order. This method can only be called for non-multi-client accounts.
@@ -6129,7 +6133,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersUpdateMerchantOrderIdResponse>;
+    }): Request<gapi$client$content$OrdersUpdateMerchantOrderIdResponse>;
 
     /**
      * Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-multi-client accounts.
@@ -6180,10 +6184,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$OrdersUpdateShipmentResponse>;
+    }): Request<gapi$client$content$OrdersUpdateShipmentResponse>;
   }
 
-  declare interface content$ProductsResource {
+  declare interface gapi$client$content$ProductsResource {
     /**
      * Retrieves, inserts, and deletes multiple products in a single request. This method can only be called for non-multi-client accounts.
      */
@@ -6228,7 +6232,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ProductsCustomBatchResponse>;
+    }): Request<gapi$client$content$ProductsCustomBatchResponse>;
 
     /**
      * Deletes a product from your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -6335,7 +6339,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Product>;
+    }): Request<gapi$client$content$Product>;
 
     /**
      * Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this
@@ -6387,7 +6391,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$Product>;
+    }): Request<gapi$client$content$Product>;
 
     /**
      * Lists the products in your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -6448,10 +6452,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ProductsListResponse>;
+    }): Request<gapi$client$content$ProductsListResponse>;
   }
 
-  declare interface content$ProductstatusesResource {
+  declare interface gapi$client$content$ProductstatusesResource {
     /**
      * Gets the statuses of multiple products in a single request. This method can only be called for non-multi-client accounts.
      */
@@ -6496,7 +6500,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ProductstatusesCustomBatchResponse>;
+    }): Request<gapi$client$content$ProductstatusesCustomBatchResponse>;
 
     /**
      * Gets the status of a product from your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -6552,7 +6556,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ProductStatus>;
+    }): Request<gapi$client$content$ProductStatus>;
 
     /**
      * Lists the statuses of the products in your Merchant Center account. This method can only be called for non-multi-client accounts.
@@ -6618,10 +6622,10 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ProductstatusesListResponse>;
+    }): Request<gapi$client$content$ProductstatusesListResponse>;
   }
 
-  declare interface content$ShippingsettingsResource {
+  declare interface gapi$client$content$ShippingsettingsResource {
     /**
      * Retrieves and updates the shipping settings of multiple accounts in a single request.
      */
@@ -6666,7 +6670,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingsettingsCustomBatchResponse>;
+    }): Request<gapi$client$content$ShippingsettingsCustomBatchResponse>;
 
     /**
      * Retrieves the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the
@@ -6718,7 +6722,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingSettings>;
+    }): Request<gapi$client$content$ShippingSettings>;
 
     /**
      * Retrieves supported carriers and carrier services for an account.
@@ -6764,7 +6768,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingsettingsGetSupportedCarriersResponse>;
+    }): Request<gapi$client$content$ShippingsettingsGetSupportedCarriersResponse>;
 
     /**
      * Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can only be called for multi-client accounts.
@@ -6820,7 +6824,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingsettingsListResponse>;
+    }): Request<gapi$client$content$ShippingsettingsListResponse>;
 
     /**
      * Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing
@@ -6878,7 +6882,7 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingSettings>;
+    }): Request<gapi$client$content$ShippingSettings>;
 
     /**
      * Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing
@@ -6935,6 +6939,6 @@ declare module "gapi.client.content" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<content$ShippingSettings>;
+    }): Request<gapi$client$content$ShippingSettings>;
   }
 }
