@@ -1,5 +1,5 @@
 declare module "i18n-js" {
-  declare module.exports: typeof I18n;
+  declare export default typeof I18n;
 
   declare var npm$namespace$I18n: {
     reset: typeof I18n$reset,
@@ -50,30 +50,27 @@ declare module "i18n-js" {
   ) => string | null | void;
 
   declare var I18n$missingPlaceholder: (
-    I18n$placeholder: string,
+    placeholder: string,
     message: string,
     options?: I18n$InterpolateOptions
   ) => string | null | void;
 
   declare var I18n$nullPlaceholder: (
-    I18n$placeholder: string,
+    placeholder: string,
     message: string,
     options?: I18n$InterpolateOptions
   ) => string | null | void;
 
   declare var I18n$translations: {
-    [I18n$locale: string]: { [key: string]: any }
+    [locale: string]: { [key: string]: any }
   };
 
   declare var I18n$locales: {
-    [key: string]:
-      | string
-      | string[]
-      | ((I18n$locale: string) => string | string[])
+    [key: string]: string | string[] | ((locale: string) => string | string[])
   };
 
   declare var I18n$pluralization: {
-    [I18n$locale: string]: (count: number) => string[]
+    [locale: string]: (count: number) => string[]
   };
 
   declare function I18n$reset(): void;
@@ -96,7 +93,7 @@ declare module "i18n-js" {
         }
     >,
     defaultValue?: string
-  } & I18n$InterpolateOptions;
+  } & InterpolateOptions;
 
   declare function I18n$translate(
     scope: I18n$Scope,
@@ -155,7 +152,7 @@ declare module "i18n-js" {
     format?: string,
     unit?: string,
     sign_first?: boolean
-  } & I18n$ToNumberOptions;
+  } & ToNumberOptions;
 
   declare function I18n$toCurrency(
     num: number,
@@ -169,7 +166,7 @@ declare module "i18n-js" {
 
   declare type I18n$ToHumanSizeOptions = {
     format?: string
-  } & I18n$ToNumberOptions;
+  } & ToNumberOptions;
 
   declare function I18n$toHumanSize(
     num: number,
