@@ -6,5 +6,5 @@ declare module "array-unique" {
   };
   declare function arrayUnique$immutable<T>(arr: $ReadOnlyArray<T>): T[];
 
-  declare module.exports: typeof arrayUnique;
+  declare export default typeof arrayUnique;
 }
