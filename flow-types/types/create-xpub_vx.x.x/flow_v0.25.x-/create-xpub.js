@@ -1,5 +1,5 @@
 declare module "create-xpub" {
-  declare module.exports: typeof createXpub;
+  declare export default typeof createXpub;
 
   /**
    * Creates a Base58 encoded extended public key (xpub) for use in a
@@ -9,7 +9,7 @@ declare module "create-xpub" {
    * [`getWalletPublicKey()`](http://ledgerhq.github.io/ledgerjs/docs/#btcgetwalletpublickey) almost directly in.
    * @returns A Base58 encoded extended public key.
    */
-  declare function createXpub(options: createXpub$createXpub$Options): string;
+  declare function createXpub(options: createXpub$Options): string;
 
   declare var npm$namespace$createXpub: {
     mainnet: typeof createXpub$mainnet,
