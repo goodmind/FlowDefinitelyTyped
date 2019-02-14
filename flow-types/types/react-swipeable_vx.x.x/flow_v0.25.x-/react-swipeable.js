@@ -2,7 +2,7 @@ declare module "react-swipeable" {
   import typeof * as React from "react";
 
   declare class ReactSwipeable<T: Element = HTMLElement>
-    mixins React.Component<ReactSwipeable$ReactSwipeable$SwipeableProps<T>> {}
+    mixins React.Component<ReactSwipeable$SwipeableProps<T>> {}
   declare type ReactSwipeable$OnSwipingCallback<T: Element = HTMLElement> = (
     event: React.TouchEvent<T>,
     deltaX: number,
@@ -56,5 +56,5 @@ declare module "react-swipeable" {
   } & React.ClassAttributes<ReactSwipeable<T>> &
     React.HTMLAttributes<T>;
 
-  declare module.exports: typeof ReactSwipeable;
+  declare export default typeof ReactSwipeable;
 }
