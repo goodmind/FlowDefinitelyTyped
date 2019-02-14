@@ -27,24 +27,24 @@ declare module "hapi" {
            * Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
            * TODO check if it can have `defaultExtension`.
            */
-          options?: vision$vision$ViewHandlerOrReplyOptions
+          options?: vision$ViewHandlerOrReplyOptions
         };
   }
   declare interface ResponseToolkit {
     /**
- * Concludes the handler activity by returning control over to the router with a templatized view response
- * Returns a response object. The generated response will have the variety property set to view.
- * The response flow control rules apply.
- * @param template the template filename and path, relative to the templates path configured via the server views manager.
- * @param context optional object used by the template to render context-specific result. Defaults to no context {}.
- * @param options optional object used to override the server's views manager configuration for this response.
-Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
- * @see {@link https://github.com/hapijs/vision/blob/master/API.md#replyviewtemplate-context-options}
- */
+     * Concludes the handler activity by returning control over to the router with a templatized view response
+     * Returns a response object. The generated response will have the variety property set to view.
+     * The response flow control rules apply.
+     * @param template the template filename and path, relative to the templates path configured via the server views manager.
+     * @param context optional object used by the template to render context-specific result. Defaults to no context {}.
+     * @param options optional object used to override the server's views manager configuration for this response.
+     * Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
+     * @see {@link https://github.com/hapijs/vision/blob/master/API.md#replyviewtemplate-context-options}
+     */
     view(
       templatePath: string,
       context?: any,
-      options?: vision$vision$ViewHandlerOrReplyOptions
+      options?: vision$ViewHandlerOrReplyOptions
     ): ResponseObject;
   }
   declare interface Request {
@@ -57,22 +57,20 @@ Cannot override isCached, partialsPath, or helpersPath which are only loaded at 
      * lifecycle and the request.render() method will produce the same limited results server.render() can.
      * @see {@link https://github.com/hapijs/vision/blob/master/API.md#requestrendertemplate-context-options-callback}
      */
-    render: vision$vision$RenderMethod;
+    render: vision$RenderMethod;
   }
   declare interface Server {
     /**
      * Initializes the server views manager
      * @see {@link https://github.com/hapijs/vision/blob/master/API.md#serverviewsoptions}
      */
-    views(
-      options: vision$vision$ServerViewsConfiguration
-    ): vision$vision$ViewManager;
+    views(options: vision$ServerViewsConfiguration): vision$ViewManager;
 
     /**
      * Utilizes the server views manager to render a template
      * @see {@link https://github.com/hapijs/vision/blob/master/API.md#serverrendertemplate-context-options-callback}
      */
-    render: vision$vision$RenderMethod;
+    render: vision$RenderMethod;
   }
 }
 declare module "vision" {
@@ -104,7 +102,7 @@ declare module "vision" {
      * @see {@link https://github.com/hapijs/vision/blob/master/API.md#serverviewsoptions} > options > engines > module
      */
     module: vision$NpmModule
-  } & vision$ServerViewsConfiguration;
+  } & ServerViewsConfiguration;
 
   declare type vision$ServerViewsConfiguration = {
     /**
@@ -128,8 +126,8 @@ declare module "vision" {
      * if set to false, templates will not be cached (thus will be read from file on every use). Defaults to true.
      */
     isCached?: boolean
-  } & vision$ViewHandlerOrReplyOptions &
-    vision$EnginesConfiguration;
+  } & ViewHandlerOrReplyOptions &
+    EnginesConfiguration;
 
   /**
    * @see {@link https://github.com/hapijs/vision/blob/master/API.md#the-view-handler} > options for the list of attributes it can not have (isCached, partialsPath, helpersPath)
@@ -329,6 +327,6 @@ declare module "vision" {
      */
     render: vision$RenderMethod;
   }
-  declare var vision: Plugin<vision$vision$ServerViewsConfiguration>;
-  declare module.exports: typeof vision;
+  declare var vision: Plugin<vision$ServerViewsConfiguration>;
+  declare export default typeof vision;
 }
