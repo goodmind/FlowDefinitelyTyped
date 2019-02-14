@@ -30,8 +30,8 @@ declare module "leaflet" {
     polylineMeasure: typeof control$polylineMeasure
   };
   declare function control$polylineMeasure(
-    options?: Control$Control$PolylineMeasureOptions
-  ): Control$Control$PolylineMeasure;
+    options?: Control$PolylineMeasureOptions
+  ): Control$PolylineMeasure;
 }
 declare module "leaflet.polylinemeasure" {
   import typeof * as L from "leaflet";
