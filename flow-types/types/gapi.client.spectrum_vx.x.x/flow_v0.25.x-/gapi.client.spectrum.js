@@ -1,26 +1,30 @@
 declare module "gapi.client.spectrum" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    paws: typeof client$paws
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    paws: typeof gapi$client$paws
   };
 
   /**
    * Load Google Spectrum Database API v1explorer
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "spectrum",
     version: "v1explorer"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "spectrum",
     version: "v1explorer",
     callback: () => any
   ): void;
 
-  declare var client$paws: spectrum$spectrum$PawsResource;
+  declare var gapi$client$paws: spectrum$PawsResource;
 
-  declare interface spectrum$AntennaCharacteristics {
+  declare interface gapi$client$spectrum$AntennaCharacteristics {
     /**
      * The antenna height in meters. Whether the antenna height is required depends on the device type and the regulatory domain. Note that the height may be
      * negative.
@@ -38,7 +42,7 @@ declare module "gapi.client.spectrum" {
     heightUncertainty?: number;
   }
 
-  declare interface spectrum$DatabaseSpec {
+  declare interface gapi$client$spectrum$DatabaseSpec {
     /**
      * The display name for a database.
      */
@@ -50,15 +54,15 @@ declare module "gapi.client.spectrum" {
     uri?: string;
   }
 
-  declare interface spectrum$DbUpdateSpec {
+  declare interface gapi$client$spectrum$DbUpdateSpec {
     /**
      * A required list of one or more databases. A device should update its preconfigured list of databases to replace (only) the database that provided the
      * response with the specified entries.
      */
-    databases?: spectrum$DatabaseSpec[];
+    databases?: gapi$client$spectrum$DatabaseSpec[];
   }
 
-  declare interface spectrum$DeviceCapabilities {
+  declare interface gapi$client$spectrum$DeviceCapabilities {
     /**
      * An optional list of frequency ranges supported by the device. Each element must contain start and stop frequencies in which the device can operate.
      * Channel identifiers are optional. When specified, the database should not return available spectrum that falls outside these ranges or channel IDs.
@@ -66,7 +70,7 @@ declare module "gapi.client.spectrum" {
     frequencyRanges?: spectrum$FrequencyRange[];
   }
 
-  declare interface spectrum$DeviceDescriptor {
+  declare interface gapi$client$spectrum$DeviceDescriptor {
     /**
      * Specifies the ETSI white space device category. Valid values are the strings master and slave. This field is case-insensitive. Consult the ETSI
      * documentation for details about the device types.
@@ -129,7 +133,7 @@ declare module "gapi.client.spectrum" {
     serialNumber?: string;
   }
 
-  declare interface spectrum$DeviceOwner {
+  declare interface gapi$client$spectrum$DeviceOwner {
     /**
      * The vCard contact information for the device operator is optional, but may be required by specific regulatory domains.
      */
@@ -141,11 +145,11 @@ declare module "gapi.client.spectrum" {
     owner?: spectrum$Vcard;
   }
 
-  declare interface spectrum$DeviceValidity {
+  declare interface gapi$client$spectrum$DeviceValidity {
     /**
      * The descriptor of the device for which the validity check was requested. It will always be present.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * The validity status: true if the device is valid for operation, false otherwise. It will always be present.
@@ -159,7 +163,7 @@ declare module "gapi.client.spectrum" {
     reason?: string;
   }
 
-  declare interface spectrum$EventTime {
+  declare interface gapi$client$spectrum$EventTime {
     /**
      * The inclusive start of the event. It will be present.
      */
@@ -171,7 +175,7 @@ declare module "gapi.client.spectrum" {
     stopTime?: string;
   }
 
-  declare interface spectrum$FrequencyRange {
+  declare interface gapi$client$spectrum$FrequencyRange {
     /**
      * The database may include a channel identifier, when applicable. When it is included, the device should treat it as informative. The length of the
      * identifier should not exceed 16 characters.
@@ -197,7 +201,7 @@ declare module "gapi.client.spectrum" {
     stopHz?: number;
   }
 
-  declare interface spectrum$GeoLocation {
+  declare interface gapi$client$spectrum$GeoLocation {
     /**
      * The location confidence level, as an integer percentage, may be required, depending on the regulatory domain. When the parameter is optional and not
      * provided, its value is assumed to be 95. Valid values range from 0 to 99, since, in practice, 100-percent confidence is not achievable. The confidence
@@ -218,7 +222,7 @@ declare module "gapi.client.spectrum" {
     region?: spectrum$GeoLocationPolygon;
   }
 
-  declare interface spectrum$GeoLocationEllipse {
+  declare interface gapi$client$spectrum$GeoLocationEllipse {
     /**
      * A required geo-spatial point representing the center of the ellipse.
      */
@@ -244,7 +248,7 @@ declare module "gapi.client.spectrum" {
     semiMinorAxis?: number;
   }
 
-  declare interface spectrum$GeoLocationPoint {
+  declare interface gapi$client$spectrum$GeoLocationPoint {
     /**
      * A required floating-point number that expresses the latitude in degrees using the WGS84 datum. For details on this encoding, see the National Imagery
      * and Mapping Agency's Technical Report TR8350.2.
@@ -258,7 +262,7 @@ declare module "gapi.client.spectrum" {
     longitude?: number;
   }
 
-  declare interface spectrum$GeoLocationPolygon {
+  declare interface gapi$client$spectrum$GeoLocationPolygon {
     /**
      * When the geolocation describes a region, the exterior field refers to a list of latitude/longitude points that represent the vertices of a polygon. The
      * first and last points must be the same. Thus, a minimum of four points is required. The following polygon restrictions from RFC5491 apply:
@@ -269,14 +273,14 @@ declare module "gapi.client.spectrum" {
      * - All vertices are assumed to be at the same altitude.
      * - Polygon shapes should be restricted to a maximum of 15 vertices (16 points that include the repeated vertex).
      */
-    exterior?: spectrum$GeoLocationPoint[];
+    exterior?: gapi$client$spectrum$GeoLocationPoint[];
   }
 
-  declare interface spectrum$GeoSpectrumSchedule {
+  declare interface gapi$client$spectrum$GeoSpectrumSchedule {
     /**
      * The geolocation identifies the location at which the spectrum schedule applies. It will always be present.
      */
-    location?: spectrum$GeoLocation;
+    location?: gapi$client$spectrum$GeoLocation;
 
     /**
      * A list of available spectrum profiles and associated times. It will always be present, and at least one schedule must be included (though it may be
@@ -285,24 +289,24 @@ declare module "gapi.client.spectrum" {
     spectrumSchedules?: spectrum$SpectrumSchedule[];
   }
 
-  declare interface spectrum$PawsGetSpectrumBatchRequest {
+  declare interface gapi$client$spectrum$PawsGetSpectrumBatchRequest {
     /**
      * Depending on device type and regulatory domain, antenna characteristics may be required.
      */
-    antenna?: spectrum$AntennaCharacteristics;
+    antenna?: gapi$client$spectrum$AntennaCharacteristics;
 
     /**
      * The master device may include its device capabilities to limit the available-spectrum batch response to the spectrum that is compatible with its
      * capabilities. The database should not return spectrum that is incompatible with the specified capabilities.
      */
-    capabilities?: spectrum$DeviceCapabilities;
+    capabilities?: gapi$client$spectrum$DeviceCapabilities;
 
     /**
      * When the available spectrum request is made on behalf of a specific device (a master or slave device), device descriptor information for the device on
      * whose behalf the request is made is required (in such cases, the requestType parameter must be empty). When a requestType value is specified, device
      * descriptor information may be optional or required according to the rules of the applicable regulatory domain.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * A geolocation list is required. This allows a device to specify its current location plus additional anticipated locations when allowed by the
@@ -314,20 +318,20 @@ declare module "gapi.client.spectrum" {
      * master device (a device with geolocation capability that makes an available spectrum batch request), whether the master device is making the request on
      * its own behalf or on behalf of a slave device (one without geolocation capability).
      */
-    locations?: spectrum$GeoLocation[];
+    locations?: gapi$client$spectrum$GeoLocation[];
 
     /**
      * When an available spectrum batch request is made by the master device (a device with geolocation capability) on behalf of a slave device (a device
      * without geolocation capability), the rules of the applicable regulatory domain may require the master device to provide its own device descriptor
      * information (in addition to device descriptor information for the slave device in a separate parameter).
      */
-    masterDeviceDesc?: spectrum$DeviceDescriptor;
+    masterDeviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * Depending on device type and regulatory domain, device owner information may be included in an available spectrum batch request. This allows the device
      * to register and get spectrum-availability information in a single request.
      */
-    owner?: spectrum$DeviceOwner;
+    owner?: gapi$client$spectrum$DeviceOwner;
 
     /**
      * The request type parameter is an optional parameter that can be used to modify an available spectrum batch request, but its use depends on applicable
@@ -352,19 +356,19 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsGetSpectrumBatchResponse {
+  declare interface gapi$client$spectrum$PawsGetSpectrumBatchResponse {
     /**
      * A database may include the databaseChange parameter to notify a device of a change to its database URI, providing one or more alternate database URIs.
      * The device should use this information to update its list of pre-configured databases by (only) replacing its entry for the responding database with
      * the list of alternate URIs.
      */
-    databaseChange?: spectrum$DbUpdateSpec;
+    databaseChange?: gapi$client$spectrum$DbUpdateSpec;
 
     /**
      * The database must return in its available spectrum response the device descriptor information it received in the master device's available spectrum
      * batch request.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * The available spectrum batch response must contain a geo-spectrum schedule list, The list may be empty if spectrum is not available. The database may
@@ -373,7 +377,7 @@ declare module "gapi.client.spectrum" {
      * assumptions about the order of the entries in the list, and must use the geolocation value in each geo-spectrum schedule entry to match available
      * spectrum to a location.
      */
-    geoSpectrumSchedules?: spectrum$GeoSpectrumSchedule[];
+    geoSpectrumSchedules?: gapi$client$spectrum$GeoSpectrumSchedule[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsGetSpectrumBatchResponse".
@@ -430,24 +434,24 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsGetSpectrumRequest {
+  declare interface gapi$client$spectrum$PawsGetSpectrumRequest {
     /**
      * Depending on device type and regulatory domain, the characteristics of the antenna may be required.
      */
-    antenna?: spectrum$AntennaCharacteristics;
+    antenna?: gapi$client$spectrum$AntennaCharacteristics;
 
     /**
      * The master device may include its device capabilities to limit the available-spectrum response to the spectrum that is compatible with its
      * capabilities. The database should not return spectrum that is incompatible with the specified capabilities.
      */
-    capabilities?: spectrum$DeviceCapabilities;
+    capabilities?: gapi$client$spectrum$DeviceCapabilities;
 
     /**
      * When the available spectrum request is made on behalf of a specific device (a master or slave device), device descriptor information for that device is
      * required (in such cases, the requestType parameter must be empty). When a requestType value is specified, device descriptor information may be optional
      * or required according to the rules of the applicable regulatory domain.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * The geolocation of the master device (a device with geolocation capability that makes an available spectrum request) is required whether the master
@@ -456,20 +460,20 @@ declare module "gapi.client.spectrum" {
      * device to be given instead. If the location specifies a region, rather than a point, the database may return an UNIMPLEMENTED error code if it does not
      * support query by region.
      */
-    location?: spectrum$GeoLocation;
+    location?: gapi$client$spectrum$GeoLocation;
 
     /**
      * When an available spectrum request is made by the master device (a device with geolocation capability) on behalf of a slave device (a device without
      * geolocation capability), the rules of the applicable regulatory domain may require the master device to provide its own device descriptor information
      * (in addition to device descriptor information for the slave device, which is provided in a separate parameter).
      */
-    masterDeviceDesc?: spectrum$DeviceDescriptor;
+    masterDeviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * Depending on device type and regulatory domain, device owner information may be included in an available spectrum request. This allows the device to
      * register and get spectrum-availability information in a single request.
      */
-    owner?: spectrum$DeviceOwner;
+    owner?: gapi$client$spectrum$DeviceOwner;
 
     /**
      * The request type parameter is an optional parameter that can be used to modify an available spectrum request, but its use depends on applicable
@@ -494,19 +498,19 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsGetSpectrumResponse {
+  declare interface gapi$client$spectrum$PawsGetSpectrumResponse {
     /**
      * A database may include the databaseChange parameter to notify a device of a change to its database URI, providing one or more alternate database URIs.
      * The device should use this information to update its list of pre-configured databases by (only) replacing its entry for the responding database with
      * the list of alternate URIs.
      */
-    databaseChange?: spectrum$DbUpdateSpec;
+    databaseChange?: gapi$client$spectrum$DbUpdateSpec;
 
     /**
      * The database must return, in its available spectrum response, the device descriptor information it received in the master device's available spectrum
      * request.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsGetSpectrumResponse".
@@ -570,17 +574,17 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsInitRequest {
+  declare interface gapi$client$spectrum$PawsInitRequest {
     /**
      * The DeviceDescriptor parameter is required. If the database does not support the device or any of the rulesets specified in the device descriptor, it
      * must return an UNSUPPORTED error code in the error response.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * A device's geolocation is required.
      */
-    location?: spectrum$GeoLocation;
+    location?: gapi$client$spectrum$GeoLocation;
 
     /**
      * The message type (e.g., INIT_REQ, AVAIL_SPECTRUM_REQ, ...).
@@ -597,13 +601,13 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsInitResponse {
+  declare interface gapi$client$spectrum$PawsInitResponse {
     /**
      * A database may include the databaseChange parameter to notify a device of a change to its database URI, providing one or more alternate database URIs.
      * The device should use this information to update its list of pre-configured databases by (only) replacing its entry for the responding database with
      * the list of alternate URIs.
      */
-    databaseChange?: spectrum$DbUpdateSpec;
+    databaseChange?: gapi$client$spectrum$DbUpdateSpec;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsInitResponse".
@@ -631,17 +635,17 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsNotifySpectrumUseRequest {
+  declare interface gapi$client$spectrum$PawsNotifySpectrumUseRequest {
     /**
      * Device descriptor information is required in the spectrum-use notification message.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * The geolocation of the master device (the device that is sending the spectrum-use notification) to the database is required in the spectrum-use
      * notification message.
      */
-    location?: spectrum$GeoLocation;
+    location?: gapi$client$spectrum$GeoLocation;
 
     /**
      * A spectrum list is required in the spectrum-use notification. The list specifies the spectrum that the device expects to use, which includes frequency
@@ -669,7 +673,7 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsNotifySpectrumUseResponse {
+  declare interface gapi$client$spectrum$PawsNotifySpectrumUseResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsNotifySpectrumUseResponse".
      */
@@ -690,26 +694,26 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsRegisterRequest {
+  declare interface gapi$client$spectrum$PawsRegisterRequest {
     /**
      * Antenna characteristics, including its height and height type.
      */
-    antenna?: spectrum$AntennaCharacteristics;
+    antenna?: gapi$client$spectrum$AntennaCharacteristics;
 
     /**
      * A DeviceDescriptor is required.
      */
-    deviceDesc?: spectrum$DeviceDescriptor;
+    deviceDesc?: gapi$client$spectrum$DeviceDescriptor;
 
     /**
      * Device owner information is required.
      */
-    deviceOwner?: spectrum$DeviceOwner;
+    deviceOwner?: gapi$client$spectrum$DeviceOwner;
 
     /**
      * A device's geolocation is required.
      */
-    location?: spectrum$GeoLocation;
+    location?: gapi$client$spectrum$GeoLocation;
 
     /**
      * The message type (e.g., INIT_REQ, AVAIL_SPECTRUM_REQ, ...).
@@ -726,13 +730,13 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsRegisterResponse {
+  declare interface gapi$client$spectrum$PawsRegisterResponse {
     /**
      * A database may include the databaseChange parameter to notify a device of a change to its database URI, providing one or more alternate database URIs.
      * The device should use this information to update its list of pre-configured databases by (only) replacing its entry for the responding database with
      * the list of alternate URIs.
      */
-    databaseChange?: spectrum$DbUpdateSpec;
+    databaseChange?: gapi$client$spectrum$DbUpdateSpec;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsRegisterResponse".
@@ -754,11 +758,11 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsVerifyDeviceRequest {
+  declare interface gapi$client$spectrum$PawsVerifyDeviceRequest {
     /**
      * A list of device descriptors, which specifies the slave devices to be validated, is required.
      */
-    deviceDescs?: spectrum$DeviceDescriptor[];
+    deviceDescs?: gapi$client$spectrum$DeviceDescriptor[];
 
     /**
      * The message type (e.g., INIT_REQ, AVAIL_SPECTRUM_REQ, ...).
@@ -775,19 +779,19 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$PawsVerifyDeviceResponse {
+  declare interface gapi$client$spectrum$PawsVerifyDeviceResponse {
     /**
      * A database may include the databaseChange parameter to notify a device of a change to its database URI, providing one or more alternate database URIs.
      * The device should use this information to update its list of pre-configured databases by (only) replacing its entry for the responding database with
      * the list of alternate URIs.
      */
-    databaseChange?: spectrum$DbUpdateSpec;
+    databaseChange?: gapi$client$spectrum$DbUpdateSpec;
 
     /**
      * A device validities list is required in the device validation response to report whether each slave device listed in a previous device validation
      * request is valid. The number of entries must match the number of device descriptors listed in the previous device validation request.
      */
-    deviceValidities?: spectrum$DeviceValidity[];
+    deviceValidities?: gapi$client$spectrum$DeviceValidity[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "spectrum#pawsVerifyDeviceResponse".
@@ -809,7 +813,7 @@ declare module "gapi.client.spectrum" {
     version?: string;
   }
 
-  declare interface spectrum$RulesetInfo {
+  declare interface gapi$client$spectrum$RulesetInfo {
     /**
      * The regulatory domain to which the ruleset belongs is required. It must be a 2-letter country code. The device should use this to determine additional
      * device behavior required by the associated regulatory domain.
@@ -842,7 +846,7 @@ declare module "gapi.client.spectrum" {
     rulesetIds?: string[];
   }
 
-  declare interface spectrum$SpectrumMessage {
+  declare interface gapi$client$spectrum$SpectrumMessage {
     /**
      * The bandwidth (in Hertz) for which permissible power levels are specified. For example, FCC regulation would require only one spectrum specification at
      * 6MHz bandwidth, but Ofcom regulation would require two specifications, at 0.1MHz and 8MHz. This parameter may be empty if there is no available
@@ -853,22 +857,22 @@ declare module "gapi.client.spectrum" {
     /**
      * The list of frequency ranges and permissible power levels. The list may be empty if there is no available spectrum, otherwise it will be present.
      */
-    frequencyRanges?: spectrum$FrequencyRange[];
+    frequencyRanges?: gapi$client$spectrum$FrequencyRange[];
   }
 
-  declare interface spectrum$SpectrumSchedule {
+  declare interface gapi$client$spectrum$SpectrumSchedule {
     /**
      * The event time expresses when the spectrum profile is valid. It will always be present.
      */
-    eventTime?: spectrum$EventTime;
+    eventTime?: gapi$client$spectrum$EventTime;
 
     /**
      * A list of spectrum messages representing the usable profile. It will always be present, but may be empty when there is no available spectrum.
      */
-    spectra?: spectrum$SpectrumMessage[];
+    spectra?: gapi$client$spectrum$SpectrumMessage[];
   }
 
-  declare interface spectrum$Vcard {
+  declare interface gapi$client$spectrum$Vcard {
     /**
      * The street address of the entity.
      */
@@ -895,7 +899,7 @@ declare module "gapi.client.spectrum" {
     tel?: spectrum$VcardTelephone;
   }
 
-  declare interface spectrum$VcardAddress {
+  declare interface gapi$client$spectrum$VcardAddress {
     /**
      * The postal code associated with the address. For example: 94423.
      */
@@ -927,21 +931,21 @@ declare module "gapi.client.spectrum" {
     street?: string;
   }
 
-  declare interface spectrum$VcardTelephone {
+  declare interface gapi$client$spectrum$VcardTelephone {
     /**
      * A nested telephone URI of the form: tel:+1-123-456-7890.
      */
     uri?: string;
   }
 
-  declare interface spectrum$VcardTypedText {
+  declare interface gapi$client$spectrum$VcardTypedText {
     /**
      * The text string associated with this item. For example, for an org field: ACME, inc. For an email field: smith@example.com.
      */
     text?: string;
   }
 
-  declare interface spectrum$PawsResource {
+  declare interface gapi$client$spectrum$PawsResource {
     /**
      * Requests information about the available spectrum for a device at a location. Requests from a fixed-mode device must include owner information so the
      * device can be registered with the database.
@@ -982,7 +986,7 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsGetSpectrumResponse>;
+    }): Request<gapi$client$spectrum$PawsGetSpectrumResponse>;
 
     /**
      * The Google Spectrum Database does not support batch requests, so this method always yields an UNIMPLEMENTED error.
@@ -1023,7 +1027,7 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsGetSpectrumBatchResponse>;
+    }): Request<gapi$client$spectrum$PawsGetSpectrumBatchResponse>;
 
     /**
      * Initializes the connection between a white space device and the database.
@@ -1064,7 +1068,7 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsInitResponse>;
+    }): Request<gapi$client$spectrum$PawsInitResponse>;
 
     /**
      * Notifies the database that the device has selected certain frequency ranges for transmission. Only to be invoked when required by the regulator. The
@@ -1106,7 +1110,7 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsNotifySpectrumUseResponse>;
+    }): Request<gapi$client$spectrum$PawsNotifySpectrumUseResponse>;
 
     /**
      * The Google Spectrum Database implements registration in the getSpectrum method. As such this always returns an UNIMPLEMENTED error.
@@ -1147,7 +1151,7 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsRegisterResponse>;
+    }): Request<gapi$client$spectrum$PawsRegisterResponse>;
 
     /**
      * Validates a device for white space use in accordance with regulatory rules. The Google Spectrum Database does not support master/slave configurations,
@@ -1189,6 +1193,6 @@ declare module "gapi.client.spectrum" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<spectrum$PawsVerifyDeviceResponse>;
+    }): Request<gapi$client$spectrum$PawsVerifyDeviceResponse>;
   }
 }
