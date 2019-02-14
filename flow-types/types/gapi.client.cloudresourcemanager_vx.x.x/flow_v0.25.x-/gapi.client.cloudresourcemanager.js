@@ -1,45 +1,49 @@
 declare module "gapi.client.cloudresourcemanager" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    folders: typeof client$folders,
-    liens: typeof client$liens,
-    operations: typeof client$operations,
-    organizations: typeof client$organizations,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    folders: typeof gapi$client$folders,
+    liens: typeof gapi$client$liens,
+    operations: typeof gapi$client$operations,
+    organizations: typeof gapi$client$organizations,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Resource Manager API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudresourcemanager",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudresourcemanager",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$folders: cloudresourcemanager$cloudresourcemanager$FoldersResource;
+  declare var gapi$client$folders: cloudresourcemanager$FoldersResource;
 
-  declare var client$liens: cloudresourcemanager$cloudresourcemanager$LiensResource;
+  declare var gapi$client$liens: cloudresourcemanager$LiensResource;
 
-  declare var client$operations: cloudresourcemanager$cloudresourcemanager$OperationsResource;
+  declare var gapi$client$operations: cloudresourcemanager$OperationsResource;
 
-  declare var client$organizations: cloudresourcemanager$cloudresourcemanager$OrganizationsResource;
+  declare var gapi$client$organizations: cloudresourcemanager$OrganizationsResource;
 
-  declare var client$projects: cloudresourcemanager$cloudresourcemanager$ProjectsResource;
+  declare var gapi$client$projects: cloudresourcemanager$ProjectsResource;
 
-  declare interface cloudresourcemanager$Ancestor {
+  declare interface gapi$client$cloudresourcemanager$Ancestor {
     /**
      * Resource id of the ancestor.
      */
     resourceId?: cloudresourcemanager$ResourceId;
   }
 
-  declare interface cloudresourcemanager$AuditConfig {
+  declare interface gapi$client$cloudresourcemanager$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -54,7 +58,7 @@ declare module "gapi.client.cloudresourcemanager" {
     service?: string;
   }
 
-  declare interface cloudresourcemanager$AuditLogConfig {
+  declare interface gapi$client$cloudresourcemanager$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -68,7 +72,7 @@ declare module "gapi.client.cloudresourcemanager" {
     logType?: string;
   }
 
-  declare interface cloudresourcemanager$Binding {
+  declare interface gapi$client$cloudresourcemanager$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -103,7 +107,7 @@ declare module "gapi.client.cloudresourcemanager" {
     role?: string;
   }
 
-  declare interface cloudresourcemanager$BooleanPolicy {
+  declare interface gapi$client$cloudresourcemanager$BooleanPolicy {
     /**
      * If `true`, then the `Policy` is enforced. If `false`, then any
      * configuration is acceptable.
@@ -152,7 +156,7 @@ declare module "gapi.client.cloudresourcemanager" {
     enforced?: boolean;
   }
 
-  declare interface cloudresourcemanager$ClearOrgPolicyRequest {
+  declare interface gapi$client$cloudresourcemanager$ClearOrgPolicyRequest {
     /**
      * Name of the `Constraint` of the `Policy` to clear.
      */
@@ -165,7 +169,7 @@ declare module "gapi.client.cloudresourcemanager" {
     etag?: string;
   }
 
-  declare interface cloudresourcemanager$Constraint {
+  declare interface gapi$client$cloudresourcemanager$Constraint {
     /**
      * Defines this constraint as being a BooleanConstraint.
      */
@@ -208,7 +212,7 @@ declare module "gapi.client.cloudresourcemanager" {
     version?: number;
   }
 
-  declare interface cloudresourcemanager$FolderOperation {
+  declare interface gapi$client$cloudresourcemanager$FolderOperation {
     /**
      * The resource name of the folder or organization we are either creating
      * the folder under or moving the folder to.
@@ -232,37 +236,37 @@ declare module "gapi.client.cloudresourcemanager" {
     sourceParent?: string;
   }
 
-  declare interface cloudresourcemanager$FolderOperationError {
+  declare interface gapi$client$cloudresourcemanager$FolderOperationError {
     /**
      * The type of operation error experienced.
      */
     errorMessageId?: string;
   }
 
-  declare interface cloudresourcemanager$GetAncestryResponse {
+  declare interface gapi$client$cloudresourcemanager$GetAncestryResponse {
     /**
      * Ancestors are ordered from bottom to top of the resource hierarchy. The
      * first ancestor is the project itself, followed by the project's parent,
      * etc.
      */
-    ancestor?: cloudresourcemanager$Ancestor[];
+    ancestor?: gapi$client$cloudresourcemanager$Ancestor[];
   }
 
-  declare interface cloudresourcemanager$GetEffectiveOrgPolicyRequest {
+  declare interface gapi$client$cloudresourcemanager$GetEffectiveOrgPolicyRequest {
     /**
      * The name of the `Constraint` to compute the effective `Policy`.
      */
     constraint?: string;
   }
 
-  declare interface cloudresourcemanager$GetOrgPolicyRequest {
+  declare interface gapi$client$cloudresourcemanager$GetOrgPolicyRequest {
     /**
      * Name of the `Constraint` to get the `Policy`.
      */
     constraint?: string;
   }
 
-  declare interface cloudresourcemanager$Lien {
+  declare interface gapi$client$cloudresourcemanager$Lien {
     /**
      * The creation time of this Lien.
      */
@@ -312,7 +316,7 @@ declare module "gapi.client.cloudresourcemanager" {
     restrictions?: string[];
   }
 
-  declare interface cloudresourcemanager$ListAvailableOrgPolicyConstraintsRequest {
+  declare interface gapi$client$cloudresourcemanager$ListAvailableOrgPolicyConstraintsRequest {
     /**
      * Size of the pages to be returned. This is currently unsupported and will
      * be ignored. The server may at any point start using this field to limit
@@ -327,11 +331,11 @@ declare module "gapi.client.cloudresourcemanager" {
     pageToken?: string;
   }
 
-  declare interface cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse {
+  declare interface gapi$client$cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse {
     /**
      * The collection of constraints that are settable on the request resource.
      */
-    constraints?: cloudresourcemanager$Constraint[];
+    constraints?: gapi$client$cloudresourcemanager$Constraint[];
 
     /**
      * Page token used to retrieve the next page. This is currently not used.
@@ -339,7 +343,7 @@ declare module "gapi.client.cloudresourcemanager" {
     nextPageToken?: string;
   }
 
-  declare interface cloudresourcemanager$ListConstraint {
+  declare interface gapi$client$cloudresourcemanager$ListConstraint {
     /**
      * Optional. The Google Cloud Console will try to default to a configuration
      * that matches the value specified in this `Constraint`.
@@ -347,11 +351,11 @@ declare module "gapi.client.cloudresourcemanager" {
     suggestedValue?: string;
   }
 
-  declare interface cloudresourcemanager$ListLiensResponse {
+  declare interface gapi$client$cloudresourcemanager$ListLiensResponse {
     /**
      * A list of Liens.
      */
-    client$liens?: cloudresourcemanager$Lien[];
+    liens?: gapi$client$cloudresourcemanager$Lien[];
 
     /**
      * Token to retrieve the next page of results, or empty if there are no more
@@ -360,7 +364,7 @@ declare module "gapi.client.cloudresourcemanager" {
     nextPageToken?: string;
   }
 
-  declare interface cloudresourcemanager$ListOrgPoliciesRequest {
+  declare interface gapi$client$cloudresourcemanager$ListOrgPoliciesRequest {
     /**
      * Size of the pages to be returned. This is currently unsupported and will
      * be ignored. The server may at any point start using this field to limit
@@ -375,7 +379,7 @@ declare module "gapi.client.cloudresourcemanager" {
     pageToken?: string;
   }
 
-  declare interface cloudresourcemanager$ListOrgPoliciesResponse {
+  declare interface gapi$client$cloudresourcemanager$ListOrgPoliciesResponse {
     /**
      * Page token used to retrieve the next page. This is currently not used, but
      * the server may at any point start supplying a valid token.
@@ -389,7 +393,7 @@ declare module "gapi.client.cloudresourcemanager" {
     policies?: cloudresourcemanager$OrgPolicy[];
   }
 
-  declare interface cloudresourcemanager$ListPolicy {
+  declare interface gapi$client$cloudresourcemanager$ListPolicy {
     /**
      * The policy all_values state.
      */
@@ -504,7 +508,7 @@ declare module "gapi.client.cloudresourcemanager" {
     suggestedValue?: string;
   }
 
-  declare interface cloudresourcemanager$ListProjectsResponse {
+  declare interface gapi$client$cloudresourcemanager$ListProjectsResponse {
     /**
      * Pagination token.
      *
@@ -524,10 +528,10 @@ declare module "gapi.client.cloudresourcemanager" {
      * The list of Projects that matched the list filter. This list can
      * be paginated.
      */
-    client$projects?: cloudresourcemanager$Project[];
+    projects?: cloudresourcemanager$Project[];
   }
 
-  declare interface cloudresourcemanager$Operation {
+  declare interface gapi$client$cloudresourcemanager$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -568,11 +572,11 @@ declare module "gapi.client.cloudresourcemanager" {
     response?: Record<string, any>;
   }
 
-  declare interface cloudresourcemanager$OrgPolicy {
+  declare interface gapi$client$cloudresourcemanager$OrgPolicy {
     /**
      * For boolean `Constraints`, whether to enforce the `Constraint` or not.
      */
-    booleanPolicy?: cloudresourcemanager$BooleanPolicy;
+    booleanPolicy?: gapi$client$cloudresourcemanager$BooleanPolicy;
 
     /**
      * The name of the `Constraint` the `Policy` is configuring, for example,
@@ -604,7 +608,7 @@ declare module "gapi.client.cloudresourcemanager" {
     /**
      * List of values either allowed or disallowed.
      */
-    listPolicy?: cloudresourcemanager$ListPolicy;
+    listPolicy?: gapi$client$cloudresourcemanager$ListPolicy;
 
     /**
      * Restores the default behavior of the constraint; independent of
@@ -626,7 +630,7 @@ declare module "gapi.client.cloudresourcemanager" {
     version?: number;
   }
 
-  declare interface cloudresourcemanager$Organization {
+  declare interface gapi$client$cloudresourcemanager$Organization {
     /**
      * Timestamp when the Organization was created. Assigned by the server.
      * @OutputOnly
@@ -662,24 +666,24 @@ declare module "gapi.client.cloudresourcemanager" {
     owner?: cloudresourcemanager$OrganizationOwner;
   }
 
-  declare interface cloudresourcemanager$OrganizationOwner {
+  declare interface gapi$client$cloudresourcemanager$OrganizationOwner {
     /**
      * The Google for Work customer id used in the Directory API.
      */
     directoryCustomerId?: string;
   }
 
-  declare interface cloudresourcemanager$Policy {
+  declare interface gapi$client$cloudresourcemanager$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: cloudresourcemanager$AuditConfig[];
+    auditConfigs?: gapi$client$cloudresourcemanager$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: cloudresourcemanager$Binding[];
+    bindings?: gapi$client$cloudresourcemanager$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -701,7 +705,7 @@ declare module "gapi.client.cloudresourcemanager" {
     version?: number;
   }
 
-  declare interface cloudresourcemanager$Project {
+  declare interface gapi$client$cloudresourcemanager$Project {
     /**
      * Creation time.
      *
@@ -778,7 +782,7 @@ declare module "gapi.client.cloudresourcemanager" {
     projectNumber?: string;
   }
 
-  declare interface cloudresourcemanager$ProjectCreationStatus {
+  declare interface gapi$client$cloudresourcemanager$ProjectCreationStatus {
     /**
      * Creation time of the project creation workflow.
      */
@@ -797,7 +801,7 @@ declare module "gapi.client.cloudresourcemanager" {
     ready?: boolean;
   }
 
-  declare interface cloudresourcemanager$ResourceId {
+  declare interface gapi$client$cloudresourcemanager$ResourceId {
     /**
      * Required field for the type-specific id. This should correspond to the id
      * used in the type-specific API's.
@@ -811,7 +815,7 @@ declare module "gapi.client.cloudresourcemanager" {
     type?: string;
   }
 
-  declare interface cloudresourcemanager$SearchOrganizationsRequest {
+  declare interface gapi$client$cloudresourcemanager$SearchOrganizationsRequest {
     /**
      * An optional query string used to filter the Organizations to return in
      * the response. Filter rules are case-insensitive.
@@ -844,7 +848,7 @@ declare module "gapi.client.cloudresourcemanager" {
     pageToken?: string;
   }
 
-  declare interface cloudresourcemanager$SearchOrganizationsResponse {
+  declare interface gapi$client$cloudresourcemanager$SearchOrganizationsResponse {
     /**
      * A pagination token to be used to retrieve the next page of results. If the
      * result is too large to fit within the page size specified in the request,
@@ -858,17 +862,17 @@ declare module "gapi.client.cloudresourcemanager" {
      * The list of Organizations that matched the search query, possibly
      * paginated.
      */
-    client$organizations?: cloudresourcemanager$Organization[];
+    organizations?: gapi$client$cloudresourcemanager$Organization[];
   }
 
-  declare interface cloudresourcemanager$SetIamPolicyRequest {
+  declare interface gapi$client$cloudresourcemanager$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: cloudresourcemanager$Policy;
+    policy?: gapi$client$cloudresourcemanager$Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -880,14 +884,14 @@ declare module "gapi.client.cloudresourcemanager" {
     updateMask?: string;
   }
 
-  declare interface cloudresourcemanager$SetOrgPolicyRequest {
+  declare interface gapi$client$cloudresourcemanager$SetOrgPolicyRequest {
     /**
      * `Policy` to set on the resource.
      */
-    policy?: cloudresourcemanager$OrgPolicy;
+    policy?: gapi$client$cloudresourcemanager$OrgPolicy;
   }
 
-  declare interface cloudresourcemanager$Status {
+  declare interface gapi$client$cloudresourcemanager$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -907,7 +911,7 @@ declare module "gapi.client.cloudresourcemanager" {
     message?: string;
   }
 
-  declare interface cloudresourcemanager$TestIamPermissionsRequest {
+  declare interface gapi$client$cloudresourcemanager$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -917,7 +921,7 @@ declare module "gapi.client.cloudresourcemanager" {
     permissions?: string[];
   }
 
-  declare interface cloudresourcemanager$TestIamPermissionsResponse {
+  declare interface gapi$client$cloudresourcemanager$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -925,7 +929,7 @@ declare module "gapi.client.cloudresourcemanager" {
     permissions?: string[];
   }
 
-  declare interface cloudresourcemanager$FoldersResource {
+  declare interface gapi$client$cloudresourcemanager$FoldersResource {
     /**
      * Clears a `Policy` from a resource.
      */
@@ -1076,7 +1080,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Gets a `Policy` on a resource.
@@ -1156,7 +1160,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Lists `Constraints` that could be applied on the specified resource.
@@ -1231,7 +1235,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
 
     /**
      * Lists all the `Policies` set for a particular resource.
@@ -1306,7 +1310,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListOrgPoliciesResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListOrgPoliciesResponse>;
 
     /**
      * Updates the specified `Policy` on the resource. Creates a new `Policy` for
@@ -1385,10 +1389,10 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
   }
 
-  declare interface cloudresourcemanager$LiensResource {
+  declare interface gapi$client$cloudresourcemanager$LiensResource {
     /**
      * Create a Lien which applies to the resource denoted by the `parent` field.
      *
@@ -1463,7 +1467,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Lien>;
+    }): Request<gapi$client$cloudresourcemanager$Lien>;
 
     /**
      * Delete a Lien by `name`.
@@ -1632,10 +1636,10 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListLiensResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListLiensResponse>;
   }
 
-  declare interface cloudresourcemanager$OperationsResource {
+  declare interface gapi$client$cloudresourcemanager$OperationsResource {
     /**
      * Gets the latest state of a long-running operation.  Clients can use this
      * method to poll the operation result at intervals as recommended by the API
@@ -1711,10 +1715,10 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Operation>;
+    }): Request<gapi$client$cloudresourcemanager$Operation>;
   }
 
-  declare interface cloudresourcemanager$OrganizationsResource {
+  declare interface gapi$client$cloudresourcemanager$OrganizationsResource {
     /**
      * Clears a `Policy` from a resource.
      */
@@ -1863,7 +1867,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Organization>;
+    }): Request<gapi$client$cloudresourcemanager$Organization>;
 
     /**
      * Gets the effective `Policy` on a resource. This is the result of merging
@@ -1940,7 +1944,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Gets the access control policy for an Organization resource. May be empty
@@ -2021,7 +2025,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Policy>;
+    }): Request<gapi$client$cloudresourcemanager$Policy>;
 
     /**
      * Gets a `Policy` on a resource.
@@ -2101,7 +2105,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Lists `Constraints` that could be applied on the specified resource.
@@ -2176,7 +2180,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
 
     /**
      * Lists all the `Policies` set for a particular resource.
@@ -2251,7 +2255,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListOrgPoliciesResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListOrgPoliciesResponse>;
 
     /**
      * Searches Organization resources that are visible to the user and satisfy
@@ -2327,7 +2331,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$SearchOrganizationsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$SearchOrganizationsResponse>;
 
     /**
      * Sets the access control policy on an Organization resource. Replaces any
@@ -2408,7 +2412,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Policy>;
+    }): Request<gapi$client$cloudresourcemanager$Policy>;
 
     /**
      * Updates the specified `Policy` on the resource. Creates a new `Policy` for
@@ -2487,7 +2491,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Returns permissions that a caller has on the specified Organization.
@@ -2567,10 +2571,10 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$TestIamPermissionsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$TestIamPermissionsResponse>;
   }
 
-  declare interface cloudresourcemanager$ProjectsResource {
+  declare interface gapi$client$cloudresourcemanager$ProjectsResource {
     /**
      * Clears a `Policy` from a resource.
      */
@@ -2725,7 +2729,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Operation>;
+    }): Request<gapi$client$cloudresourcemanager$Operation>;
 
     /**
      * Marks the Project identified by the specified
@@ -2905,7 +2909,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Project>;
+    }): Request<gapi$client$cloudresourcemanager$Project>;
 
     /**
      * Gets a list of ancestors in the resource hierarchy for the Project
@@ -2985,7 +2989,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$GetAncestryResponse>;
+    }): Request<gapi$client$cloudresourcemanager$GetAncestryResponse>;
 
     /**
      * Gets the effective `Policy` on a resource. This is the result of merging
@@ -3062,7 +3066,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Returns the IAM access control policy for the specified Project.
@@ -3142,7 +3146,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Policy>;
+    }): Request<gapi$client$cloudresourcemanager$Policy>;
 
     /**
      * Gets a `Policy` on a resource.
@@ -3222,7 +3226,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Lists Projects that are visible to the user and satisfy the
@@ -3344,7 +3348,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListProjectsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListProjectsResponse>;
 
     /**
      * Lists `Constraints` that could be applied on the specified resource.
@@ -3419,7 +3423,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListAvailableOrgPolicyConstraintsResponse>;
 
     /**
      * Lists all the `Policies` set for a particular resource.
@@ -3494,7 +3498,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$ListOrgPoliciesResponse>;
+    }): Request<gapi$client$cloudresourcemanager$ListOrgPoliciesResponse>;
 
     /**
      * Sets the IAM access control policy for the specified Project. Replaces
@@ -3611,7 +3615,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Policy>;
+    }): Request<gapi$client$cloudresourcemanager$Policy>;
 
     /**
      * Updates the specified `Policy` on the resource. Creates a new `Policy` for
@@ -3690,7 +3694,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$OrgPolicy>;
+    }): Request<gapi$client$cloudresourcemanager$OrgPolicy>;
 
     /**
      * Returns permissions that a caller has on the specified Project.
@@ -3768,7 +3772,7 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$TestIamPermissionsResponse>;
+    }): Request<gapi$client$cloudresourcemanager$TestIamPermissionsResponse>;
 
     /**
      * Restores the Project identified by the specified
@@ -3931,6 +3935,6 @@ declare module "gapi.client.cloudresourcemanager" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudresourcemanager$Project>;
+    }): Request<gapi$client$cloudresourcemanager$Project>;
   }
 }
