@@ -1,10 +1,10 @@
 declare module "move-file" {
-  declare module.exports: typeof moveFile;
+  declare export default typeof moveFile;
 
   declare function moveFile(
     source: string,
     destination: string,
-    options?: moveFile$moveFile$Options
+    options?: moveFile$Options
   ): Promise<void>;
 
   declare var npm$namespace$moveFile: {
