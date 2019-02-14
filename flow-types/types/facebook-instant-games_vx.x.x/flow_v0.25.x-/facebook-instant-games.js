@@ -145,15 +145,15 @@ declare module "facebook-instant-games" {
   ): Promise<void>;
 
   /**
- * Request that the client switch to a different Instant Game. The API will reject if the switch fails - else, the client will load the new game.
- * @param appID The Application ID of the Instant Game to switch to. The application must be an Instant Game, and must belong to the same business as the current game.
-To associate different games with the same business, you can use Business Manager: https://developers.facebook.com/docs/apps/business-manager#update-business.
- * @param data An optional data payload. This will be set as the entrypoint data for the game being switched to. Must be less than or equal to 1000 characters when stringified.
- * @throws USER_INPUT
- * @throws INVALID_PARAM
- * @throws PENDING_REQUEST
- * @throws CLIENT_REQUIRES_UPDATE
- */
+   * Request that the client switch to a different Instant Game. The API will reject if the switch fails - else, the client will load the new game.
+   * @param appID The Application ID of the Instant Game to switch to. The application must be an Instant Game, and must belong to the same business as the current game.
+   * To associate different games with the same business, you can use Business Manager: https://developers.facebook.com/docs/apps/business-manager#update-business.
+   * @param data An optional data payload. This will be set as the entrypoint data for the game being switched to. Must be less than or equal to 1000 characters when stringified.
+   * @throws USER_INPUT
+   * @throws INVALID_PARAM
+   * @throws PENDING_REQUEST
+   * @throws CLIENT_REQUIRES_UPDATE
+   */
   declare function FBInstant$switchGameAsync(
     appID: string,
     data?: any
@@ -185,13 +185,13 @@ To associate different games with the same business, you can use Business Manage
   declare function FBInstant$quit(): void;
 
   /**
- * Log an app event with FB Analytics. See https://developers.facebook.com/docs/javascript/reference/v2.8#app_events for more details about FB Analytics.
- * @param eventName Name of the event. Must be 2 to 40 characters, and can only contain '_', '-', ' ', and alphanumeric characters.
- * @param valueToSum An optional numeric value that FB Analytics can calculate a sum with.
- * @param parameters An optional object that can contain up to 25 key-value pairs to be logged with the event. Keys must be 2 to 40 characters,
-and can only contain '_', '-', ' ', and alphanumeric characters. Values must be less than 100 characters in length.
- * @returns The error if the event failed to log; otherwise returns null.
- */
+   * Log an app event with FB Analytics. See https://developers.facebook.com/docs/javascript/reference/v2.8#app_events for more details about FB Analytics.
+   * @param eventName Name of the event. Must be 2 to 40 characters, and can only contain '_', '-', ' ', and alphanumeric characters.
+   * @param valueToSum An optional numeric value that FB Analytics can calculate a sum with.
+   * @param parameters An optional object that can contain up to 25 key-value pairs to be logged with the event. Keys must be 2 to 40 characters,
+   * and can only contain '_', '-', ' ', and alphanumeric characters. Values must be less than 100 characters in length.
+   * @returns The error if the event failed to log; otherwise returns null.
+   */
   declare function FBInstant$logEvent(
     eventName: string,
     valueToSum?: number,
@@ -229,23 +229,23 @@ and can only contain '_', '-', ' ', and alphanumeric characters. Values must be 
   ): Promise<FBInstant$AdInstance>;
 
   /**
- * Attempts to match the current player with other users looking for people to play with. If successful, a new Messenger group
- * thread will be created containing the matched players and the player will be context switched to that thread.
- * The default minimum and maximum number of players in one matched thread are 2 and 20 respectively, depending on how many players
- * are trying to get matched around the same time. The values can be changed in fbapp-config.json. See the
- * [Bundle Config documentation]https://developers.facebook.com/docs/games/instant-games/bundle-config for documentation about fbapp-config.json.
- * @param matchTag Optional extra information about the player used to group them with similar players. Players will only be grouped with other players with exactly the same tag.
-The tag must only include letters, numbers, and underscores and be 100 characters or less in length.
- * @param switchContextWhenMatched Optional extra parameter that specifies whether the player should be immediately switched to the new context when a match is found.
-By default this will be false which will mean the player needs explicitly press play after being matched to switch to the new context.
- * @returns A promise that resolves when the player has been added to a group thread and switched into the thread's context.
- * @throws INVALID_PARAM
- * @throws NETWORK_FAILURE
- * @throws USER_INPUT
- * @throws PENDING_REQUEST
- * @throws CLIENT_UNSUPPORTED_OPERATION
- * @throws INVALID_OPERATION
- */
+   * Attempts to match the current player with other users looking for people to play with. If successful, a new Messenger group
+   * thread will be created containing the matched players and the player will be context switched to that thread.
+   * The default minimum and maximum number of players in one matched thread are 2 and 20 respectively, depending on how many players
+   * are trying to get matched around the same time. The values can be changed in fbapp-config.json. See the
+   * [Bundle Config documentation]https://developers.facebook.com/docs/games/instant-games/bundle-config for documentation about fbapp-config.json.
+   * @param matchTag Optional extra information about the player used to group them with similar players. Players will only be grouped with other players with exactly the same tag.
+   * The tag must only include letters, numbers, and underscores and be 100 characters or less in length.
+   * @param switchContextWhenMatched Optional extra parameter that specifies whether the player should be immediately switched to the new context when a match is found.
+   * By default this will be false which will mean the player needs explicitly press play after being matched to switch to the new context.
+   * @returns A promise that resolves when the player has been added to a group thread and switched into the thread's context.
+   * @throws INVALID_PARAM
+   * @throws NETWORK_FAILURE
+   * @throws USER_INPUT
+   * @throws PENDING_REQUEST
+   * @throws CLIENT_UNSUPPORTED_OPERATION
+   * @throws INVALID_OPERATION
+   */
   declare function FBInstant$matchPlayerAsync(
     matchTag?: string,
     switchContextWhenMatched?: boolean
@@ -343,16 +343,16 @@ By default this will be false which will mean the player needs explicitly press 
     getDataAsync(keys: string[]): Promise<FBInstant$DataObject>;
 
     /**
- * Set data to be saved to the designated cloud storage of the current player. The game can store up to 1MB of data for each unique player.
- * @param data An object containing a set of key-value pairs that should be persisted to cloud storage. The object must contain only serializable
-values - any non-serializable values will cause the entire modification to be rejected.
- * @returns A promise that resolves when the input values are set. NOTE: The promise resolving does not necessarily mean that the input has already been persisted.
-Rather, it means that the data was valid and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getDataAsync.
- * @throws INVALID_PARAM
- * @throws NETWORK_FAILURE
- * @throws PENDING_REQUEST
- * @throws CLIENT_UNSUPPORTED_OPERATION
- */
+     * Set data to be saved to the designated cloud storage of the current player. The game can store up to 1MB of data for each unique player.
+     * @param data An object containing a set of key-value pairs that should be persisted to cloud storage. The object must contain only serializable
+     * values - any non-serializable values will cause the entire modification to be rejected.
+     * @returns A promise that resolves when the input values are set. NOTE: The promise resolving does not necessarily mean that the input has already been persisted.
+     * Rather, it means that the data was valid and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getDataAsync.
+     * @throws INVALID_PARAM
+     * @throws NETWORK_FAILURE
+     * @throws PENDING_REQUEST
+     * @throws CLIENT_UNSUPPORTED_OPERATION
+     */
     setDataAsync(data: FBInstant$DataObject): Promise<void>;
 
     /**
@@ -378,30 +378,30 @@ Rather, it means that the data was valid and has been scheduled to be saved. It 
     getStatsAsync(keys?: string[]): Promise<FBInstant$StatsObject>;
 
     /**
- * Set stats to be saved to the designated cloud storage of the current player.
- * @param stats An object containing a set of key-value pairs that should be persisted to cloud storage as stats, which can be surfaced or used in a
-variety of ways to benefit player engagement.The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
- * @returns A promise that resolves when the input values are set. NOTE: The promise resolving does not necessarily mean that the input has already been persisted.
-Rather, it means that the data was validated and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getStatsAsync.
- * @throws INVALID_PARAM
- * @throws NETWORK_FAILURE
- * @throws PENDING_REQUEST
- * @throws CLIENT_UNSUPPORTED_OPERATION
- */
+     * Set stats to be saved to the designated cloud storage of the current player.
+     * @param stats An object containing a set of key-value pairs that should be persisted to cloud storage as stats, which can be surfaced or used in a
+     * variety of ways to benefit player engagement.The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
+     * @returns A promise that resolves when the input values are set. NOTE: The promise resolving does not necessarily mean that the input has already been persisted.
+     * Rather, it means that the data was validated and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getStatsAsync.
+     * @throws INVALID_PARAM
+     * @throws NETWORK_FAILURE
+     * @throws PENDING_REQUEST
+     * @throws CLIENT_UNSUPPORTED_OPERATION
+     */
     setStatsAsync(stats: FBInstant$StatsObject): Promise<void>;
 
     /**
- * Increment stats saved in the designated cloud storage of the current player.
- * @param increments An object containing a set of key-value pairs indicating how much to increment each stat in cloud storage.
-The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
- * @returns A promise that resolves with an object which contains the updated key-value pairs for each key specified in the input dictionary.
-NOTE: The promise resolving does not necessarily mean that the changes have already been persisted. Rather, it means that the increments were
-valid and have been scheduled to be performed. It also guarantees that all values that were incremented are now available in player.getStatsAsync.
- * @throws INVALID_PARAM
- * @throws NETWORK_FAILURE
- * @throws PENDING_REQUEST
- * @throws CLIENT_UNSUPPORTED_OPERATION
- */
+     * Increment stats saved in the designated cloud storage of the current player.
+     * @param increments An object containing a set of key-value pairs indicating how much to increment each stat in cloud storage.
+     * The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
+     * @returns A promise that resolves with an object which contains the updated key-value pairs for each key specified in the input dictionary.
+     * NOTE: The promise resolving does not necessarily mean that the changes have already been persisted. Rather, it means that the increments were
+     * valid and have been scheduled to be performed. It also guarantees that all values that were incremented are now available in player.getStatsAsync.
+     * @throws INVALID_PARAM
+     * @throws NETWORK_FAILURE
+     * @throws PENDING_REQUEST
+     * @throws CLIENT_UNSUPPORTED_OPERATION
+     */
     incrementStatsAsync(
       increments: FBInstant$IncrementObject
     ): Promise<FBInstant$StatsObject>;
