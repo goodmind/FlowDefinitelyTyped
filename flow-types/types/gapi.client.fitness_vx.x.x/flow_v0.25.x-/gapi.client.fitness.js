@@ -1,26 +1,30 @@
 declare module "gapi.client.fitness" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Fitness v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "fitness",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "fitness",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$users: fitness$fitness$UsersResource;
+  declare var gapi$client$users: fitness$UsersResource;
 
-  declare interface fitness$AggregateBucket {
+  declare interface gapi$client$fitness$AggregateBucket {
     /**
      * Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
      */
@@ -52,7 +56,7 @@ declare module "gapi.client.fitness" {
     type?: string;
   }
 
-  declare interface fitness$AggregateBy {
+  declare interface gapi$client$fitness$AggregateBy {
     /**
      * A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data from the specified data source ID will be included in the aggregation. The
      * dataset in the response will have the same data source ID.
@@ -66,12 +70,12 @@ declare module "gapi.client.fitness" {
     dataTypeName?: string;
   }
 
-  declare interface fitness$AggregateRequest {
+  declare interface gapi$client$fitness$AggregateRequest {
     /**
      * The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the
      * same bucketing criteria. There will be one dataset in the response for every aggregateBy spec.
      */
-    aggregateBy?: fitness$AggregateBy[];
+    aggregateBy?: gapi$client$fitness$AggregateBy[];
 
     /**
      * Specifies that data be aggregated each activity segment recored for a user. Similar to bucketByActivitySegment, but bucketing is done for each activity
@@ -114,14 +118,14 @@ declare module "gapi.client.fitness" {
     startTimeMillis?: string;
   }
 
-  declare interface fitness$AggregateResponse {
+  declare interface gapi$client$fitness$AggregateResponse {
     /**
      * A list of buckets containing the aggregated data.
      */
-    bucket?: fitness$AggregateBucket[];
+    bucket?: gapi$client$fitness$AggregateBucket[];
   }
 
-  declare interface fitness$Application {
+  declare interface gapi$client$fitness$Application {
     /**
      * An optional URI that can be used to link back to the application.
      */
@@ -145,7 +149,7 @@ declare module "gapi.client.fitness" {
     version?: string;
   }
 
-  declare interface fitness$BucketByActivity {
+  declare interface gapi$client$fitness$BucketByActivity {
     /**
      * The default activity stream will be used if a specific activityDataSourceId is not specified.
      */
@@ -157,14 +161,14 @@ declare module "gapi.client.fitness" {
     minDurationMillis?: string;
   }
 
-  declare interface fitness$BucketBySession {
+  declare interface gapi$client$fitness$BucketBySession {
     /**
      * Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data.
      */
     minDurationMillis?: string;
   }
 
-  declare interface fitness$BucketByTime {
+  declare interface gapi$client$fitness$BucketByTime {
     /**
      * Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response
      * with an empty dataset.
@@ -173,7 +177,7 @@ declare module "gapi.client.fitness" {
     period?: fitness$BucketByTimePeriod;
   }
 
-  declare interface fitness$BucketByTimePeriod {
+  declare interface gapi$client$fitness$BucketByTimePeriod {
     /**
      * org.joda.timezone.DateTimeZone
      */
@@ -182,7 +186,7 @@ declare module "gapi.client.fitness" {
     value?: number;
   }
 
-  declare interface fitness$DataPoint {
+  declare interface gapi$client$fitness$DataPoint {
     /**
      * Used for version checking during transformation; that is, a datapoint can only replace another datapoint that has an older computation time stamp.
      */
@@ -229,11 +233,11 @@ declare module "gapi.client.fitness" {
     value?: fitness$Value[];
   }
 
-  declare interface fitness$DataSource {
+  declare interface gapi$client$fitness$DataSource {
     /**
      * Information about an application which feeds sensor data into the platform.
      */
-    application?: fitness$Application;
+    application?: gapi$client$fitness$Application;
     dataQualityStandard?: string[];
 
     /**
@@ -290,7 +294,7 @@ declare module "gapi.client.fitness" {
     type?: string;
   }
 
-  declare interface fitness$DataType {
+  declare interface gapi$client$fitness$DataType {
     /**
      * A field represents one dimension of a data type.
      */
@@ -302,7 +306,7 @@ declare module "gapi.client.fitness" {
     name?: string;
   }
 
-  declare interface fitness$DataTypeField {
+  declare interface gapi$client$fitness$DataTypeField {
     /**
      * The different supported formats for each field in a data type.
      */
@@ -315,7 +319,7 @@ declare module "gapi.client.fitness" {
     optional?: boolean;
   }
 
-  declare interface fitness$Dataset {
+  declare interface gapi$client$fitness$Dataset {
     /**
      * The data stream ID of the data source that created the points in this dataset.
      */
@@ -343,10 +347,10 @@ declare module "gapi.client.fitness" {
      * A partial list of data points contained in the dataset, ordered by largest endTimeNanos first. This list is considered complete when retrieving a small
      * dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response.
      */
-    point?: fitness$DataPoint[];
+    point?: gapi$client$fitness$DataPoint[];
   }
 
-  declare interface fitness$Device {
+  declare interface gapi$client$fitness$Device {
     /**
      * Manufacturer of the product/hardware.
      */
@@ -374,7 +378,7 @@ declare module "gapi.client.fitness" {
     version?: string;
   }
 
-  declare interface fitness$ListDataPointChangesResponse {
+  declare interface gapi$client$fitness$ListDataPointChangesResponse {
     /**
      * The data stream ID of the data source with data point changes.
      */
@@ -383,12 +387,12 @@ declare module "gapi.client.fitness" {
     /**
      * Deleted data points for the user. Note, for modifications this should be parsed before handling insertions.
      */
-    deletedDataPoint?: fitness$DataPoint[];
+    deletedDataPoint?: gapi$client$fitness$DataPoint[];
 
     /**
      * Inserted data points for the user.
      */
-    insertedDataPoint?: fitness$DataPoint[];
+    insertedDataPoint?: gapi$client$fitness$DataPoint[];
 
     /**
      * The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results.
@@ -396,14 +400,14 @@ declare module "gapi.client.fitness" {
     nextPageToken?: string;
   }
 
-  declare interface fitness$ListDataSourcesResponse {
+  declare interface gapi$client$fitness$ListDataSourcesResponse {
     /**
      * A previously created data source.
      */
-    dataSource?: fitness$DataSource[];
+    dataSource?: gapi$client$fitness$DataSource[];
   }
 
-  declare interface fitness$ListSessionsResponse {
+  declare interface gapi$client$fitness$ListSessionsResponse {
     /**
      * If includeDeleted is set to true in the request, this list will contain sessions deleted with original end times that are within the startTime and
      * endTime frame.
@@ -426,14 +430,14 @@ declare module "gapi.client.fitness" {
     session?: fitness$Session[];
   }
 
-  declare interface fitness$MapValue {
+  declare interface gapi$client$fitness$MapValue {
     /**
      * Floating point value.
      */
     fpVal?: number;
   }
 
-  declare interface fitness$Session {
+  declare interface gapi$client$fitness$Session {
     /**
      * Session active time. While start_time_millis and end_time_millis define the full session time, the active time can be shorter and specified by
      * active_time_millis. If the inactive time during the session is known, it should also be inserted via a com.google.activity.segment data point with a
@@ -449,7 +453,7 @@ declare module "gapi.client.fitness" {
     /**
      * The application that created the session.
      */
-    application?: fitness$Application;
+    application?: gapi$client$fitness$Application;
 
     /**
      * A description for this session.
@@ -482,7 +486,7 @@ declare module "gapi.client.fitness" {
     startTimeMillis?: string;
   }
 
-  declare interface fitness$Value {
+  declare interface gapi$client$fitness$Value {
     /**
      * Floating point value. When this is set, other values must not be set.
      */
@@ -506,12 +510,12 @@ declare module "gapi.client.fitness" {
     stringVal?: string;
   }
 
-  declare interface fitness$ValueMapValEntry {
+  declare interface gapi$client$fitness$ValueMapValEntry {
     key?: string;
-    value?: fitness$MapValue;
+    value?: gapi$client$fitness$MapValue;
   }
 
-  declare interface fitness$DataPointChangesResource {
+  declare interface gapi$client$fitness$DataPointChangesResource {
     /**
      * Queries for user's data point changes for a particular data source.
      */
@@ -572,10 +576,10 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$ListDataPointChangesResponse>;
+    }): Request<gapi$client$fitness$ListDataPointChangesResponse>;
   }
 
-  declare interface fitness$DatasetsResource {
+  declare interface gapi$client$fitness$DatasetsResource {
     /**
      * Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most
      * data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as
@@ -716,7 +720,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$Dataset>;
+    }): Request<gapi$client$fitness$Dataset>;
 
     /**
      * Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to
@@ -780,10 +784,10 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$Dataset>;
+    }): Request<gapi$client$fitness$Dataset>;
   }
 
-  declare interface fitness$DataSourcesResource {
+  declare interface gapi$client$fitness$DataSourcesResource {
     /**
      * Creates a new data source that is unique across all data sources belonging to this user. The data stream ID field can be omitted and will be generated
      * by the server with the correct format. The data stream ID is an ordered combination of some fields from the data source. In addition to the data source
@@ -831,7 +835,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$DataSource>;
+    }): Request<gapi$client$fitness$DataSource>;
 
     /**
      * Deletes the specified data source. The request will fail if the data source contains any data points.
@@ -882,7 +886,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$DataSource>;
+    }): Request<gapi$client$fitness$DataSource>;
 
     /**
      * Returns the specified data source.
@@ -933,7 +937,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$DataSource>;
+    }): Request<gapi$client$fitness$DataSource>;
 
     /**
      * Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data
@@ -985,7 +989,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$ListDataSourcesResponse>;
+    }): Request<gapi$client$fitness$ListDataSourcesResponse>;
 
     /**
      * Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be
@@ -1039,7 +1043,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$DataSource>;
+    }): Request<gapi$client$fitness$DataSource>;
 
     /**
      * Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be
@@ -1093,12 +1097,12 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$DataSource>;
-    dataPointChanges: fitness$DataPointChangesResource;
-    datasets: fitness$DatasetsResource;
+    }): Request<gapi$client$fitness$DataSource>;
+    dataPointChanges: gapi$client$fitness$DataPointChangesResource;
+    datasets: gapi$client$fitness$DatasetsResource;
   }
 
-  declare interface fitness$DatasetResource {
+  declare interface gapi$client$fitness$DatasetResource {
     /**
      * Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple
      * sources can be aggreated into exactly one bucket type per request.
@@ -1144,10 +1148,10 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$AggregateResponse>;
+    }): Request<gapi$client$fitness$AggregateResponse>;
   }
 
-  declare interface fitness$SessionsResource {
+  declare interface gapi$client$fitness$SessionsResource {
     /**
      * Deletes a session specified by the given session ID.
      */
@@ -1270,7 +1274,7 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$ListSessionsResponse>;
+    }): Request<gapi$client$fitness$ListSessionsResponse>;
 
     /**
      * Updates or insert a given session.
@@ -1326,12 +1330,12 @@ declare module "gapi.client.fitness" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fitness$Session>;
+    }): Request<gapi$client$fitness$Session>;
   }
 
-  declare interface fitness$UsersResource {
-    dataSources: fitness$DataSourcesResource;
-    dataset: fitness$DatasetResource;
-    sessions: fitness$SessionsResource;
+  declare interface gapi$client$fitness$UsersResource {
+    dataSources: gapi$client$fitness$DataSourcesResource;
+    dataset: gapi$client$fitness$DatasetResource;
+    sessions: gapi$client$fitness$SessionsResource;
   }
 }
