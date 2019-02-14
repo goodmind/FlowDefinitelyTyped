@@ -1,13 +1,13 @@
 declare module "@xmpp/jid" {
-  declare module.exports: typeof jid$jid;
+  declare export default typeof jid;
 
-  declare function jid(address: string): jid$jid.jid$JID;
+  declare function jid(address: string): jid$JID;
 
   declare function jid(
     local: string | void,
     domain: string,
     resource?: string
-  ): jid$jid.jid$JID;
+  ): jid$JID;
 
   declare var npm$namespace$jid: {
     jid: typeof jid$jid,
@@ -16,7 +16,9 @@ declare module "@xmpp/jid" {
     detectEscape: typeof jid$detectEscape,
     escapeLocal: typeof jid$escapeLocal,
     unescapeLocal: typeof jid$unescapeLocal,
-    parse: typeof jid$parse
+    parse: typeof jid$parse,
+
+    JID: typeof jid$JID
   };
   declare function jid$jid(address: string): jid$JID;
 
