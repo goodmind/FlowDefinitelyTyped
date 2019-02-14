@@ -1,5 +1,5 @@
 declare module "npm-email" {
-  declare module.exports: typeof npmEmail;
+  declare export default typeof npmEmail;
 
   /**
    * Get the email of an npm user.
