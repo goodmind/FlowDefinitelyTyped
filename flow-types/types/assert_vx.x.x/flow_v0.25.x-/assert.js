@@ -12,7 +12,9 @@ declare module "assert" {
     notStrictEqual: typeof assert$notStrictEqual,
     throws: typeof assert$throws,
     doesNotThrow: typeof assert$doesNotThrow,
-    ifError: typeof assert$ifError
+    ifError: typeof assert$ifError,
+
+    AssertionError: typeof assert$AssertionError
   };
   declare function assert$fail(
     actual?: any,
@@ -95,5 +97,5 @@ declare module "assert" {
       stackStartFunction?: () => void
     }): this;
   }
-  declare module.exports: typeof assert;
+  declare export default typeof assert;
 }
