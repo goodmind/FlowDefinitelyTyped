@@ -1,7 +1,11 @@
 declare module "async-writer" {
   declare var npm$namespace$async_writer: {
     create: typeof async_writer$create,
-    enableAsyncStackTrace: typeof async_writer$enableAsyncStackTrace
+    enableAsyncStackTrace: typeof async_writer$enableAsyncStackTrace,
+
+    StringWriter: typeof async_writer$StringWriter,
+    BufferedWriter: typeof async_writer$BufferedWriter,
+    AsyncWriter: typeof async_writer$AsyncWriter
   };
   declare interface async_writer$EventFunction {
     (event: string, callback: Function): void;
@@ -91,5 +95,5 @@ declare module "async-writer" {
 
   declare function async_writer$enableAsyncStackTrace(): void;
 
-  declare module.exports: typeof async_writer;
+  declare export default typeof async_writer;
 }
