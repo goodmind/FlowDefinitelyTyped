@@ -1,26 +1,30 @@
 declare module "gapi.client.qpxexpress" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    trips: typeof client$trips
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    trips: typeof gapi$client$trips
   };
 
   /**
    * Load QPX Express API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "qpxexpress",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "qpxexpress",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$trips: qpxexpress$qpxexpress$TripsResource;
+  declare var gapi$client$trips: qpxexpress$TripsResource;
 
-  declare interface qpxexpress$AircraftData {
+  declare interface gapi$client$qpxexpress$AircraftData {
     /**
      * The aircraft code. For example, for a Boeing 777 the code would be 777.
      */
@@ -37,7 +41,7 @@ declare module "gapi.client.qpxexpress" {
     name?: string;
   }
 
-  declare interface qpxexpress$AirportData {
+  declare interface gapi$client$qpxexpress$AirportData {
     /**
      * The city code an airport is located in. For example, for JFK airport, this is NYC.
      */
@@ -59,7 +63,7 @@ declare module "gapi.client.qpxexpress" {
     name?: string;
   }
 
-  declare interface qpxexpress$BagDescriptor {
+  declare interface gapi$client$qpxexpress$BagDescriptor {
     /**
      * Provides the commercial name for an optional service.
      */
@@ -86,7 +90,7 @@ declare module "gapi.client.qpxexpress" {
     subcode?: string;
   }
 
-  declare interface qpxexpress$CarrierData {
+  declare interface gapi$client$qpxexpress$CarrierData {
     /**
      * The IATA designator of a carrier (airline, etc). For example, for American Airlines, the code is AA.
      */
@@ -103,7 +107,7 @@ declare module "gapi.client.qpxexpress" {
     name?: string;
   }
 
-  declare interface qpxexpress$CityData {
+  declare interface gapi$client$qpxexpress$CityData {
     /**
      * The IATA character ID of a city. For example, for Boston this is BOS.
      */
@@ -125,26 +129,26 @@ declare module "gapi.client.qpxexpress" {
     name?: string;
   }
 
-  declare interface qpxexpress$Data {
+  declare interface gapi$client$qpxexpress$Data {
     /**
      * The aircraft that is flying between an origin and destination.
      */
-    aircraft?: qpxexpress$AircraftData[];
+    aircraft?: gapi$client$qpxexpress$AircraftData[];
 
     /**
      * The airport of an origin or destination.
      */
-    airport?: qpxexpress$AirportData[];
+    airport?: gapi$client$qpxexpress$AirportData[];
 
     /**
      * The airline carrier of the aircraft flying between an origin and destination. Allowed values are IATA carrier codes.
      */
-    carrier?: qpxexpress$CarrierData[];
+    carrier?: gapi$client$qpxexpress$CarrierData[];
 
     /**
      * The city that is either the origin or destination of part of a trip.
      */
-    city?: qpxexpress$CityData[];
+    city?: gapi$client$qpxexpress$CityData[];
 
     /**
      * Identifies this as QPX Express response resource, including a trip's airport, city, taxes, airline, and aircraft. Value: the fixed string
@@ -158,7 +162,7 @@ declare module "gapi.client.qpxexpress" {
     tax?: qpxexpress$TaxData[];
   }
 
-  declare interface qpxexpress$FareInfo {
+  declare interface gapi$client$qpxexpress$FareInfo {
     basisCode?: string;
 
     /**
@@ -192,7 +196,7 @@ declare module "gapi.client.qpxexpress" {
     private?: boolean;
   }
 
-  declare interface qpxexpress$FlightInfo {
+  declare interface gapi$client$qpxexpress$FlightInfo {
     carrier?: string;
 
     /**
@@ -201,11 +205,11 @@ declare module "gapi.client.qpxexpress" {
     number?: string;
   }
 
-  declare interface qpxexpress$FreeBaggageAllowance {
+  declare interface gapi$client$qpxexpress$FreeBaggageAllowance {
     /**
      * A representation of a type of bag, such as an ATPCo subcode, Commercial Name, or other description.
      */
-    bagDescriptor?: qpxexpress$BagDescriptor[];
+    bagDescriptor?: gapi$client$qpxexpress$BagDescriptor[];
 
     /**
      * The maximum number of kilos all the free baggage together may weigh.
@@ -233,7 +237,7 @@ declare module "gapi.client.qpxexpress" {
     pounds?: number;
   }
 
-  declare interface qpxexpress$LegInfo {
+  declare interface gapi$client$qpxexpress$LegInfo {
     /**
      * The aircraft (or bus, ferry, railcar, etc) travelling between the two points of this leg.
      */
@@ -322,7 +326,7 @@ declare module "gapi.client.qpxexpress" {
     secure?: boolean;
   }
 
-  declare interface qpxexpress$PassengerCounts {
+  declare interface gapi$client$qpxexpress$PassengerCounts {
     /**
      * The number of passengers that are adults.
      */
@@ -354,7 +358,7 @@ declare module "gapi.client.qpxexpress" {
     seniorCount?: number;
   }
 
-  declare interface qpxexpress$PricingInfo {
+  declare interface gapi$client$qpxexpress$PricingInfo {
     /**
      * The total fare in the base fare currency (the currency of the country of origin). This element is only present when the sales currency and the currency
      * of the country of commencement are different.
@@ -364,7 +368,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The fare used to price one or more segments.
      */
-    fare?: qpxexpress$FareInfo[];
+    fare?: gapi$client$qpxexpress$FareInfo[];
 
     /**
      * The horizontal fare calculation. This is a field on a ticket that displays all of the relevant items that go into the calculation of the fare.
@@ -385,7 +389,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The number of passengers to which this price applies.
      */
-    passengers?: qpxexpress$PassengerCounts;
+    passengers?: gapi$client$qpxexpress$PassengerCounts;
 
     /**
      * The passenger type code for this pricing. An alphanumeric code used by a carrier to restrict fares to certain categories of passenger. For instance, a
@@ -424,7 +428,7 @@ declare module "gapi.client.qpxexpress" {
     tax?: qpxexpress$TaxInfo[];
   }
 
-  declare interface qpxexpress$SegmentInfo {
+  declare interface gapi$client$qpxexpress$SegmentInfo {
     /**
      * The booking code or class for this segment.
      */
@@ -453,7 +457,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The flight this is a segment of.
      */
-    flight?: qpxexpress$FlightInfo;
+    flight?: gapi$client$qpxexpress$FlightInfo;
 
     /**
      * An id uniquely identifying the segment in the solution.
@@ -469,7 +473,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The legs composing this segment.
      */
-    leg?: qpxexpress$LegInfo[];
+    leg?: gapi$client$qpxexpress$LegInfo[];
 
     /**
      * The solution-based index of a segment in a married segment group. Married segments can only be booked together. For example, an airline might report a
@@ -486,7 +490,7 @@ declare module "gapi.client.qpxexpress" {
     subjectToGovernmentApproval?: boolean;
   }
 
-  declare interface qpxexpress$SegmentPricing {
+  declare interface gapi$client$qpxexpress$SegmentPricing {
     /**
      * A segment identifier unique within a single solution. It is used to refer to different parts of the same solution.
      */
@@ -495,7 +499,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * Details of the free baggage allowance on this segment.
      */
-    freeBaggageOption?: qpxexpress$FreeBaggageAllowance[];
+    freeBaggageOption?: gapi$client$qpxexpress$FreeBaggageAllowance[];
 
     /**
      * Identifies this as a segment pricing object, representing the price of this segment. Value: the fixed string qpxexpress#segmentPricing.
@@ -508,7 +512,7 @@ declare module "gapi.client.qpxexpress" {
     segmentId?: string;
   }
 
-  declare interface qpxexpress$SliceInfo {
+  declare interface gapi$client$qpxexpress$SliceInfo {
     /**
      * The duration of the slice in minutes.
      */
@@ -523,10 +527,10 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The segment(s) constituting the slice.
      */
-    segment?: qpxexpress$SegmentInfo[];
+    segment?: gapi$client$qpxexpress$SegmentInfo[];
   }
 
-  declare interface qpxexpress$SliceInput {
+  declare interface gapi$client$qpxexpress$SliceInput {
     /**
      * Slices with only the carriers in this alliance should be returned; do not use this field with permittedCarrier. Allowed values are ONEWORLD, SKYTEAM,
      * and STAR.
@@ -584,7 +588,7 @@ declare module "gapi.client.qpxexpress" {
     prohibitedCarrier?: string[];
   }
 
-  declare interface qpxexpress$TaxData {
+  declare interface gapi$client$qpxexpress$TaxData {
     /**
      * An identifier uniquely identifying a tax in a response.
      */
@@ -601,7 +605,7 @@ declare module "gapi.client.qpxexpress" {
     name?: string;
   }
 
-  declare interface qpxexpress$TaxInfo {
+  declare interface gapi$client$qpxexpress$TaxInfo {
     /**
      * Whether this is a government charge or a carrier surcharge.
      */
@@ -633,7 +637,7 @@ declare module "gapi.client.qpxexpress" {
     salePrice?: string;
   }
 
-  declare interface qpxexpress$TimeOfDayRange {
+  declare interface gapi$client$qpxexpress$TimeOfDayRange {
     /**
      * The earliest time of day in HH:MM format.
      */
@@ -651,7 +655,7 @@ declare module "gapi.client.qpxexpress" {
     latestTime?: string;
   }
 
-  declare interface qpxexpress$TripOption {
+  declare interface gapi$client$qpxexpress$TripOption {
     /**
      * Identifier uniquely identifying this trip in a response.
      */
@@ -665,7 +669,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * Per passenger pricing information.
      */
-    pricing?: qpxexpress$PricingInfo[];
+    pricing?: gapi$client$qpxexpress$PricingInfo[];
 
     /**
      * The total price for all passengers on the trip, in the form of a currency followed by an amount, e.g. USD253.35.
@@ -675,10 +679,10 @@ declare module "gapi.client.qpxexpress" {
     /**
      * The slices that make up this trip's itinerary.
      */
-    slice?: qpxexpress$SliceInfo[];
+    slice?: gapi$client$qpxexpress$SliceInfo[];
   }
 
-  declare interface qpxexpress$TripOptionsRequest {
+  declare interface gapi$client$qpxexpress$TripOptionsRequest {
     /**
      * Do not return solutions that cost more than this price. The alphabetical part of the price is in ISO 4217. The format, in regex, is [A-Z]{3}\d+(\.\d+)?
      * Example: $102.07
@@ -688,7 +692,7 @@ declare module "gapi.client.qpxexpress" {
     /**
      * Counts for each passenger type in the request.
      */
-    passengers?: qpxexpress$PassengerCounts;
+    passengers?: gapi$client$qpxexpress$PassengerCounts;
 
     /**
      * Return only solutions with refundable fares.
@@ -705,7 +709,7 @@ declare module "gapi.client.qpxexpress" {
      * traveler's request to get between two points. One-way journeys are generally expressed using one slice, round-trips using two. An example of a one
      * slice trip with three segments might be BOS-SYD, SYD-LAX, LAX-BOS if the traveler only stopped in SYD and LAX just long enough to change planes.
      */
-    slice?: qpxexpress$SliceInput[];
+    slice?: gapi$client$qpxexpress$SliceInput[];
 
     /**
      * The number of solutions to return, maximum 500.
@@ -718,11 +722,11 @@ declare module "gapi.client.qpxexpress" {
     ticketingCountry?: string;
   }
 
-  declare interface qpxexpress$TripOptionsResponse {
+  declare interface gapi$client$qpxexpress$TripOptionsResponse {
     /**
      * Informational data global to list of solutions.
      */
-    data?: qpxexpress$Data;
+    data?: gapi$client$qpxexpress$Data;
 
     /**
      * Identifies this as a QPX Express trip response object, which consists of zero or more solutions. Value: the fixed string qpxexpress#tripOptions.
@@ -737,17 +741,17 @@ declare module "gapi.client.qpxexpress" {
     /**
      * A list of priced itinerary solutions to the QPX Express query.
      */
-    tripOption?: qpxexpress$TripOption[];
+    tripOption?: gapi$client$qpxexpress$TripOption[];
   }
 
-  declare interface qpxexpress$TripsSearchRequest {
+  declare interface gapi$client$qpxexpress$TripsSearchRequest {
     /**
      * A QPX Express search request. Required values are at least one adult or senior passenger, an origin, a destination, and a date.
      */
-    request?: qpxexpress$TripOptionsRequest;
+    request?: gapi$client$qpxexpress$TripOptionsRequest;
   }
 
-  declare interface qpxexpress$TripsSearchResponse {
+  declare interface gapi$client$qpxexpress$TripsSearchResponse {
     /**
      * Identifies this as a QPX Express API search response resource. Value: the fixed string qpxExpress#tripsSearch.
      */
@@ -756,10 +760,10 @@ declare module "gapi.client.qpxexpress" {
     /**
      * All possible solutions to the QPX Express search request.
      */
-    client$trips?: qpxexpress$TripOptionsResponse;
+    trips?: gapi$client$qpxexpress$TripOptionsResponse;
   }
 
-  declare interface qpxexpress$TripsResource {
+  declare interface gapi$client$qpxexpress$TripsResource {
     /**
      * Returns a list of flights.
      */
@@ -799,6 +803,6 @@ declare module "gapi.client.qpxexpress" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<qpxexpress$TripsSearchResponse>;
+    }): Request<gapi$client$qpxexpress$TripsSearchResponse>;
   }
 }
