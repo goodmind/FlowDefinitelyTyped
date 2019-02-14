@@ -1,10 +1,3 @@
-declare var npm$namespace$Helpers: {
-  returns: typeof Helpers$returns,
-  constructs: typeof Helpers$constructs
-};
-declare export function Helpers$returns<T>(what: T): () => T;
-
-declare export function Helpers$constructs<T>(what: T): () => () => T;
 declare module "squirejs" {
   declare class Squire {
     constructor(): this;
@@ -24,5 +17,18 @@ declare module "squirejs" {
     remove(): String;
     run(dependencies: string[], test: Function): (done: Function) => void;
   }
-  declare module.exports: typeof Squire;
+
+  declare var npm$namespace$Squire: {
+    Helpers: typeof npm$namespace$Squire$Helpers
+  };
+
+  declare var npm$namespace$Squire$Helpers: {
+    returns: typeof Squire$Helpers$returns,
+    constructs: typeof Squire$Helpers$constructs
+  };
+  declare export function Squire$Helpers$returns<T>(what: T): () => T;
+
+  declare export function Squire$Helpers$constructs<T>(what: T): () => () => T;
+
+  declare export default typeof Squire;
 }
