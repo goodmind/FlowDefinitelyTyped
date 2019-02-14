@@ -1,5 +1,5 @@
 declare module "toobusy-js" {
-  declare module.exports: typeof toobusy_js;
+  declare export default typeof toobusy_js;
 
   /**
    * Main export function.
@@ -70,7 +70,7 @@ declare module "toobusy-js" {
    * @param threshold Optional minimum lag value for events to be emitted
    */
   declare function toobusy_js$onLag(
-    fn: (toobusy_js$lag: number) => void,
+    fn: (lag: number) => void,
     threshold?: number
   ): void;
 
