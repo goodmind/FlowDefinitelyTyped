@@ -1,13 +1,13 @@
-declare var npm$namespace$NW: {
-  Dom: typeof NW$Dom
-};
-declare var NW$Dom: nwmatcher$nwmatcher$Matcher;
 declare module "global" {
+  declare var npm$namespace$NW: {
+    Dom: typeof NW$Dom
+  };
+  declare var NW$Dom: nwmatcher$Matcher;
 }
 declare module "nwmatcher" {
   declare function nwmatcher(global: {
     document: Document
-  }): nwmatcher$nwmatcher$Matcher;
+  }): nwmatcher$Matcher;
 
   declare interface nwmatcher$Matcher {
     first: (selector: string, context?: Element) => Element | null;
@@ -24,5 +24,5 @@ declare module "nwmatcher" {
     getAttribute: (element: Element, attribute: string) => string | void;
     hasAttribute: (element: Element, attribute: string) => boolean;
   }
-  declare module.exports: typeof nwmatcher;
+  declare export default typeof nwmatcher;
 }
