@@ -44,12 +44,12 @@ declare module "wegame-api" {
     /**
      * 将当前 Canvas 保存为一个临时文件，并生成相应的临时文件路径。
      */
-    toTempFilePath(p: wx$types.types$ToTempFileParams): void;
+    toTempFilePath(p: wx$typesToTempFileParams): void;
 
     /**
      * toTempFilePath 的同步版本
      */
-    toTempFilePathSync(p: wx$types.types$ToTempFileSyncParams): string;
+    toTempFilePathSync(p: wx$typesToTempFileSyncParams): string;
 
     /**
      * 获取画布对象的绘图上下文
@@ -58,7 +58,7 @@ declare module "wegame-api" {
      */
     getContext(
       contextType: "2d" | "webgl",
-      contextAttributes?: wx$types.types$RenderingContextConfig
+      contextAttributes?: wx$typesRenderingContextConfig
     ): WxRenderingContext | WxWebGLRenderingContext;
 
     /**
@@ -101,7 +101,7 @@ declare module "wegame-api" {
     /**
      * 重命名文件，可以把文件从 oldPath 移动到 newPath
      */
-    rename(param: wx$types.types$RenameParams): void;
+    rename(param: wx$typesRenameParams): void;
 
     /**
      * FileSystemManager.rename 的同步版本
@@ -115,7 +115,7 @@ declare module "wegame-api" {
     /**
      * 删除目录
      */
-    rmdir(param: wx$types.types$RmdirParams): void;
+    rmdir(param: wx$typesRmdirParams): void;
 
     /**
      * rmdir 的同步版本
@@ -128,7 +128,7 @@ declare module "wegame-api" {
     /**
      * 读取目录内文件列表
      */
-    readdir(param: wx$types.types$ReaddirParams): void;
+    readdir(param: wx$typesReaddirParams): void;
 
     /**
      * readdir的同步版本
@@ -142,7 +142,7 @@ declare module "wegame-api" {
     /**
      * 创建目录
      */
-    mkdir(param: wx$types.types$MkdirParams): void;
+    mkdir(param: wx$typesMkdirParams): void;
 
     /**
      * mkdir 的同步版本
@@ -157,7 +157,7 @@ declare module "wegame-api" {
     /**
      * 解链文件
      */
-    unlink(param: wx$types.types$UnlinkParams): void;
+    unlink(param: wx$typesUnlinkParams): void;
 
     /**
      * unlink 的同步版本
@@ -171,12 +171,12 @@ declare module "wegame-api" {
     /**
      * 解压文件
      */
-    unzip(param: wx$types.types$UnzipParams): void;
+    unzip(param: wx$typesUnzipParams): void;
 
     /**
      * 读取本地文件内容
      */
-    readFile(param: wx$types.types$ReadfileParams): void;
+    readFile(param: wx$typesReadfileParams): void;
 
     /**
      * readFile 的同步版本
@@ -187,13 +187,13 @@ declare module "wegame-api" {
      */
     readFileSync(
       filePath: string,
-      encoding?: wx$types.types$FileContentEncoding
+      encoding?: wx$typesFileContentEncoding
     ): string | ArrayBuffer;
 
     /**
      * 获取文件 Stats 对象
      */
-    stat(param: wx$types.types$StatParams): void;
+    stat(param: wx$typesStatParams): void;
 
     /**
      * stat 的同步版本
@@ -206,7 +206,7 @@ declare module "wegame-api" {
     /**
      * 写文件
      */
-    writeFile(param: wx$types.types$WritefileParams): void;
+    writeFile(param: wx$typesWritefileParams): void;
 
     /**
      * writeFile 的同步版本
@@ -219,13 +219,13 @@ declare module "wegame-api" {
     writeFileSync(
       filePath: string,
       data: string | ArrayBuffer,
-      encoding?: wx$types.types$FileContentEncoding
+      encoding?: wx$typesFileContentEncoding
     ): void;
 
     /**
      * 判断文件/目录是否存在
      */
-    access(param: wx$types.types$AccessfileParams): void;
+    access(param: wx$typesAccessfileParams): void;
 
     /**
      * access的同步版本
@@ -237,7 +237,7 @@ declare module "wegame-api" {
     /**
      * 复制文件
      */
-    copyFile(param: wx$types.types$CopyfileParams): void;
+    copyFile(param: wx$typesCopyfileParams): void;
 
     /**
      * copyFile 的同步版本
@@ -255,23 +255,23 @@ declare module "wegame-api" {
      * @param 文件创建时间
      */
     getSavedFileList(
-      param: wx$types.types$CallbacksWithType<wx$types.types$SavedfileList>
+      param: wx$typesCallbacksWithType<wx$typesSavedfileList>
     ): void;
 
     /**
      * 获取该小程序下的 本地临时文件 或 本地缓存文件 信息
      */
-    getFileInfo(param: wx$types.types$FileinfoParams): void;
+    getFileInfo(param: wx$typesFileinfoParams): void;
 
     /**
      * 删除该小程序下已保存的本地缓存文件（新版本应使用unlink）
      */
-    removeSavedFile(param: wx$types.types$RemovefileParams): void;
+    removeSavedFile(param: wx$typesRemovefileParams): void;
 
     /**
      * 保存临时文件到本地。此接口会移动临时文件，因此调用成功后，tempFilePath 将不可用。
      */
-    saveFile(param: wx$types.types$SavefileParams): void;
+    saveFile(param: wx$typesSavefileParams): void;
 
     /**
      * saveFile的同步版本
@@ -286,7 +286,7 @@ declare module "wegame-api" {
     /**
      * 在文件结尾追加内容
      */
-    appendFile(param: wx$types.types$AppendfileParams): void;
+    appendFile(param: wx$typesAppendfileParams): void;
 
     /**
      * appendFile的同步版本
@@ -301,7 +301,7 @@ declare module "wegame-api" {
     appendFileSync(
       filePath: string,
       data: string | ArrayBuffer,
-      encoding: wx$types.types$FileContentEncoding
+      encoding: wx$typesFileContentEncoding
     ): void;
   }
   declare class DownloadTask {
@@ -334,17 +334,17 @@ declare module "wegame-api" {
     /**
      * 通过WebSocket发送数据
      */
-    send(param: wx$types.types$SocketSendParams): void;
+    send(param: wx$typesSocketSendParams): void;
 
     /**
      * 关闭WebSocket连接
      */
-    close(param: wx$types.types$SocketCloseParams): void;
+    close(param: wx$typesSocketCloseParams): void;
 
     /**
      * 监听WebSocket 连接打开事件
      */
-    onOpen(callback: wx$types.types$SocketOpenCallback): void;
+    onOpen(callback: wx$typesSocketOpenCallback): void;
 
     /**
      * 监听WebSocket 连接关闭事件
@@ -354,12 +354,12 @@ declare module "wegame-api" {
     /**
      * 监听WebSocket 错误事件
      */
-    onError(callback: wx$types.types$SocketErrorCallback): void;
+    onError(callback: wx$typesSocketErrorCallback): void;
 
     /**
      * 监听WebSocket 接受到服务器的消息事件
      */
-    onMessage(callback: wx$types.types$SocketMessageCallback): void;
+    onMessage(callback: wx$typesSocketMessageCallback): void;
   }
   declare class UploadTask {
     /**
@@ -407,10 +407,10 @@ declare module "wegame-api" {
     KVDataList: KVData[];
   }
   declare class CreatedButton {
-    type: wx$types.types$ButtonType;
+    type: wx$typesButtonType;
     text: string;
     image: string;
-    style: wx$types.types$ButtonStyle;
+    style: wx$typesButtonStyle;
   }
   declare class UserInfoButton mixins CreatedButton {
     onTap(
@@ -418,7 +418,7 @@ declare module "wegame-api" {
         /**
          * 用户信息对象，不包含 openid 等敏感信息
          */
-        userInfo: wx$types.types$UserInfo,
+        userInfo: wx$typesUserInfo,
 
         /**
          * 不包括敏感信息的原始数据字符串，用于计算签名
@@ -445,7 +445,7 @@ declare module "wegame-api" {
   }
   declare class OpenSettingButton mixins CreatedButton {}
   declare class GameClubButton mixins CreatedButton {
-    icon: wx$types.types$GameClubButtonIcon;
+    icon: wx$typesGameClubButtonIcon;
   }
   declare class FeedbackButton mixins CreatedButton {}
   declare class OpenDataContext {
@@ -741,7 +741,7 @@ declare module "wegame-api" {
       /**
        * 指定录音的音频源，可通过 wx.getAvailableAudioSources() 获取当前可用的音频源，默认值auto
        */
-      audioSource?: wx$types.types$AudioSourceType
+      audioSource?: wx$typesAudioSourceType
     }): void;
 
     /**
@@ -988,12 +988,12 @@ declare module "wegame-api" {
     ): void;
 
     /**
- * 监听视频错误事件
- * @param 错误信息，有如下值
-MEDIA_ERR_NETWORK - 当下载时发生错误
-MEDIA_ERR_DECODE  - 当解码时发生错误
-MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
- */
+     * 监听视频错误事件
+     * @param 错误信息，有如下值
+     * MEDIA_ERR_NETWORK - 当下载时发生错误
+     * MEDIA_ERR_DECODE  - 当解码时发生错误
+     * MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
+     */
     onError(
       callback: (res: {
         errMsg: string
@@ -1053,7 +1053,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * banner 广告组件的样式。style 上的属性的值仅为开发者设置的值，banner 广告会根据开发者设置的宽度进行等比缩放，缩放后的真实尺寸需要通过 BannerAd.onResize() 事件获得。
      */
-    style: wx$types.types$AdStyle;
+    style: wx$typesAdStyle;
 
     /**
      * 显示 banner 广告。
@@ -1298,19 +1298,19 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     requestMidasPayment: typeof wx$requestMidasPayment,
     env: typeof wx$env
   };
-  declare interface types$Callbacks {
+  declare interface wx$types$Callbacks {
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$CallbacksWithType<T> {
+  declare interface wx$types$CallbacksWithType<T> {
     success?: (res: T) => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$RenderingContextConfig {
+  declare interface wx$types$RenderingContextConfig {
     /**
      * 表示是否抗锯齿
      */
@@ -1327,7 +1327,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     antialiasSamples?: number;
   }
 
-  declare interface types$ToTempFileSyncParams {
+  declare interface wx$types$ToTempFileSyncParams {
     /**
      * 截取 canvas 的左上角横坐标
      */
@@ -1369,15 +1369,15 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     quality?: number;
   }
 
-  declare type types$ToTempFileParams = {
+  declare type wx$types$ToTempFileParams = {
     success?: (res: {
       tempFilePath: string
     }) => void,
     fail?: () => void,
     complete?: () => void
-  } & types$ToTempFileSyncParams;
+  } & ToTempFileSyncParams;
 
-  declare interface types$RenameParams {
+  declare interface wx$types$RenameParams {
     oldPath: string;
     newPath: string;
     success?: () => void;
@@ -1387,7 +1387,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$RmdirParams {
+  declare interface wx$types$RmdirParams {
     dirPath: string;
     recursive?: boolean;
     success?: () => void;
@@ -1397,7 +1397,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$ReaddirParams {
+  declare interface wx$types$ReaddirParams {
     dirPath: string;
     success?: (res: {
       files: string[]
@@ -1408,7 +1408,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$MkdirParams {
+  declare interface wx$types$MkdirParams {
     dirPath: string;
     recursive?: boolean;
     success?: () => void;
@@ -1418,7 +1418,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare type types$FileContentEncoding =
+  declare type wx$types$FileContentEncoding =
     | "ascii"
     | "base64"
     | "binary"
@@ -1431,9 +1431,9 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     | "utf8"
     | "latin1";
 
-  declare interface types$ReadfileParams {
+  declare interface wx$types$ReadfileParams {
     filePath: string;
-    encoding?: types$FileContentEncoding;
+    encoding?: wx$types$FileContentEncoding;
     success?: (res: {
       data: string | ArrayBuffer
     }) => void;
@@ -1443,7 +1443,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$StatParams {
+  declare interface wx$types$StatParams {
     path: string;
     success?: (res: {
       stat: Stats
@@ -1454,10 +1454,10 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$WritefileParams {
+  declare interface wx$types$WritefileParams {
     filePath: string;
     data: string | ArrayBuffer;
-    encoding?: types$FileContentEncoding;
+    encoding?: wx$types$FileContentEncoding;
     success?: () => void;
     fail?: (res: {
       errMsg: string
@@ -1465,7 +1465,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$UnlinkParams {
+  declare interface wx$types$UnlinkParams {
     filePath: string;
     success?: () => void;
     fail?: (res: {
@@ -1474,7 +1474,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$UnzipParams {
+  declare interface wx$types$UnzipParams {
     zipFilePath: string;
     targetPath: string;
     success?: () => void;
@@ -1484,7 +1484,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$AccessfileParams {
+  declare interface wx$types$AccessfileParams {
     path: string;
     success?: () => void;
     fail?: (res: {
@@ -1493,7 +1493,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$SavedfileList {
+  declare interface wx$types$SavedfileList {
     fileList: {
       filePath: string,
       size: number,
@@ -1501,7 +1501,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     };
   }
 
-  declare interface types$CopyfileParams {
+  declare interface wx$types$CopyfileParams {
     srcPath: string;
     destPath: string;
     success?: () => void;
@@ -1511,7 +1511,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$FileinfoParams {
+  declare interface wx$types$FileinfoParams {
     filePath: string;
     success?: (res: {
       size: number,
@@ -1523,14 +1523,14 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$RemovefileParams {
+  declare interface wx$types$RemovefileParams {
     filePath: string;
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$SavefileParams {
+  declare interface wx$types$SavefileParams {
     tempFilePath: string;
     filePath?: string;
     success?: (res: {
@@ -1542,10 +1542,10 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$AppendfileParams {
+  declare interface wx$types$AppendfileParams {
     filePath: string;
     data: string | ArrayBuffer;
-    encoding?: types$FileContentEncoding;
+    encoding?: wx$types$FileContentEncoding;
     success?: () => void;
     fail?: (res: {
       errMsg: string
@@ -1553,7 +1553,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$LineHeightParams {
+  declare interface wx$types$LineHeightParams {
     fontStyle?: "normal" | "italic";
     fontWeight?: "normal" | "bold";
     fontSize?: number;
@@ -1566,7 +1566,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$Image {
+  declare interface wx$types$Image {
     src: string;
     width: number;
     height: number;
@@ -1574,7 +1574,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     onerror: (e?: any) => void;
   }
 
-  declare interface types$LaunchOption {
+  declare interface wx$types$LaunchOption {
     /**
      * 场景值
      */
@@ -1596,7 +1596,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     shareTicket: string;
   }
 
-  declare interface types$SystemInfo {
+  declare interface wx$types$SystemInfo {
     /**
      * 手机品牌
      */
@@ -1678,7 +1678,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     wifiSignal: number;
   }
 
-  declare interface types$Touch {
+  declare interface wx$types$Touch {
     /**
      * Touch 对象的唯一标识符，只读属性。一次触摸动作(我们值的是手指的触摸)在平面上移动的整个过程中, 该标识符不变。可以根据它来判断跟踪的是否是同一次触摸过程。
      */
@@ -1695,16 +1695,16 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     screenY: number;
   }
 
-  declare interface types$TouchData {
+  declare interface wx$types$TouchData {
     /**
      * 当前所有触摸点的列表
      */
-    touches: types$Touch[];
+    touches: wx$types$Touch[];
 
     /**
      * 触发此次事件的触摸点列表
      */
-    changedTouches: types$Touch[];
+    changedTouches: wx$types$Touch[];
 
     /**
      * 事件触发时的时间戳
@@ -1712,7 +1712,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     timeStamp: number;
   }
 
-  declare interface types$BatteryInfo {
+  declare interface wx$types$BatteryInfo {
     /**
      * 设备电量，范围 1 - 100
      */
@@ -1724,25 +1724,25 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     isCharging: boolean;
   }
 
-  declare interface types$ClipboardData {
+  declare interface wx$types$ClipboardData {
     data: string;
   }
 
-  declare interface types$SetClipboardDataParams {
+  declare interface wx$types$SetClipboardDataParams {
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
     data: string;
   }
 
-  declare interface types$SetKeepScreenOnParams {
+  declare interface wx$types$SetKeepScreenOnParams {
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
     keepScreenOn: boolean;
   }
 
-  declare interface types$SetScreenBrightnessParams {
+  declare interface wx$types$SetScreenBrightnessParams {
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
@@ -1753,7 +1753,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     value: number;
   }
 
-  declare interface types$DownfileParams {
+  declare interface wx$types$DownfileParams {
     url: string;
 
     /**
@@ -1782,7 +1782,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare type types$NetworkType =
+  declare type wx$types$NetworkType =
     | "wifi"
     | "2g"
     | "3g"
@@ -1790,7 +1790,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     | "unknown"
     | "none";
 
-  declare type types$RequestMethod =
+  declare type wx$types$RequestMethod =
     | "GET"
     | "HEAD"
     | "POST"
@@ -1799,7 +1799,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     | "TRACE"
     | "CONNECT";
 
-  declare interface types$RequestParams {
+  declare interface wx$types$RequestParams {
     /**
      * 开发者服务器接口地址
      */
@@ -1824,7 +1824,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * HTTP 请求方法
      */
-    method?: types$RequestMethod;
+    method?: wx$types$RequestMethod;
 
     /**
      * 返回的数据格式
@@ -1845,26 +1845,26 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$SocketSendParams {
+  declare interface wx$types$SocketSendParams {
     data: string | ArrayBuffer;
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$SocketConnectParams {
+  declare interface wx$types$SocketConnectParams {
     url: string;
     protocols?: string[];
     header?: {
       [key: string]: string
     };
-    method?: types$RequestMethod;
+    method?: wx$types$RequestMethod;
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$SocketCloseParams {
+  declare interface wx$types$SocketCloseParams {
     /**
      * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
      */
@@ -1879,24 +1879,24 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare type types$SocketOpenCallback = (res: {
+  declare type wx$types$SocketOpenCallback = (res: {
     header?: {
       [key: string]: string
     }
   }) => void;
 
-  declare type types$SocketMessageCallback = (res: {
+  declare type wx$types$SocketMessageCallback = (res: {
     data: string | ArrayBuffer
   }) => void;
 
-  declare type types$SocketErrorCallback = (res: {
+  declare type wx$types$SocketErrorCallback = (res: {
     errMsg: string
   }) => void;
 
   /**
    * wx.getUserInfo的旧版本API参数，随时会被删除，不推荐使用
    */
-  declare interface types$OldUserInfoParam {
+  declare interface wx$types$OldUserInfoParam {
     /**
      * 是否带上登录态信息。当 withCredentials 为 true 时，要求此前有调用过 wx.login 且登录态尚未过期，此时返回的数据会包含 encryptedData, iv 等敏感信息；当 withCredentials 为 false 时，不要求有登录态，返回的数据不包含 encryptedData, iv 等敏感信息。
      */
@@ -1940,7 +1940,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 新版本wx.getUserInfo的参数，需要在开放数据域内调用
    */
-  declare interface types$NewUserInfoParam {
+  declare interface wx$types$NewUserInfoParam {
     /**
      * 要获取信息的用户的 openId 数组，如果要获取当前用户信息，则将数组中的一个元素设为 'selfOpenId'
      */
@@ -1957,7 +1957,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$UserInfo {
+  declare interface wx$types$UserInfo {
     language: string;
     nickName: string;
     avatarUrl: string;
@@ -1971,9 +1971,9 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     city: string;
   }
 
-  declare type types$ButtonType = "text" | "image";
+  declare type wx$types$ButtonType = "text" | "image";
 
-  declare interface types$ButtonStyle {
+  declare interface wx$types$ButtonStyle {
     left: number;
     top: number;
     width: number;
@@ -1995,9 +1995,13 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     lineHeight: number;
   }
 
-  declare type types$GameClubButtonIcon = "green" | "white" | "dark" | "light";
+  declare type wx$types$GameClubButtonIcon =
+    | "green"
+    | "white"
+    | "dark"
+    | "light";
 
-  declare interface types$AuthSetting {
+  declare interface wx$types$AuthSetting {
     /**
      * 用户信息，对应接口 wx.getUserInfo
      */
@@ -2039,7 +2043,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     "scope.camera"?: boolean;
   }
 
-  declare interface types$SetStorageParams {
+  declare interface wx$types$SetStorageParams {
     key: string;
     data: any;
     success?: () => void;
@@ -2047,14 +2051,14 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$RemoveStorageParams {
+  declare interface wx$types$RemoveStorageParams {
     key: string;
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare interface types$GetStorageParams {
+  declare interface wx$types$GetStorageParams {
     key: string;
     success?: (res: {
       data: any
@@ -2063,7 +2067,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     complete?: () => void;
   }
 
-  declare interface types$StorageInfo {
+  declare interface wx$types$StorageInfo {
     /**
      * 当前 storage 中所有的 key
      */
@@ -2080,7 +2084,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     limitSize: number;
   }
 
-  declare interface types$ShareOption {
+  declare interface wx$types$ShareOption {
     /**
      * 转发标题，不传则默认使用当前小游戏的昵称。
      */
@@ -2097,21 +2101,21 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     query?: string;
   }
 
-  declare interface types$AccelerometerParams {
+  declare interface wx$types$AccelerometerParams {
     interval: "game" | "ui" | "normal";
     success?: () => void;
     fail?: () => void;
     complete?: () => void;
   }
 
-  declare type types$AudioSourceType =
+  declare type wx$types$AudioSourceType =
     | "auto"
     | "buildInMic"
     | "headsetMic"
     | "mic"
     | "camcorder";
 
-  declare interface types$AdStyle {
+  declare interface wx$types$AdStyle {
     /**
      * 广告组件的左上角横坐标
      */
@@ -2156,15 +2160,13 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 创建一个图片对象
    */
-  declare function wx$createImage(): types$types$Image;
+  declare function wx$createImage(): types$Image;
 
   /**
    * 获取一行文本的行高
    * @param p 字体参数
    */
-  declare function wx$getTextLineHeight(
-    p: types$types$LineHeightParams
-  ): number;
+  declare function wx$getTextLineHeight(p: types$LineHeightParams): number;
 
   /**
    * 加载自定义字体文件
@@ -2178,9 +2180,9 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    */
   declare function wx$setPreferredFramesPerSecond(fps: number): void;
 
-  declare function wx$exitMiniProgram(cb?: types$types$Callbacks): void;
+  declare function wx$exitMiniProgram(cb?: types$Callbacks): void;
 
-  declare function wx$getLaunchOptionsSync(): types$types$LaunchOption;
+  declare function wx$getLaunchOptionsSync(): types$LaunchOption;
 
   declare function wx$onHide(cb: () => void): void;
 
@@ -2203,10 +2205,10 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   ): void;
 
   declare function wx$getSystemInfo(
-    cb: types$types$CallbacksWithType<types$types$SystemInfo>
+    cb: types$CallbacksWithType<types$SystemInfo>
   ): void;
 
-  declare function wx$getSystemInfoSync(): types$types$SystemInfo;
+  declare function wx$getSystemInfoSync(): types$SystemInfo;
 
   /**
    * 监听音频中断结束，在收到 onAudioInterruptionBegin 事件之后，小程序内所有音频会暂停，收到此事件之后才可再次播放成功
@@ -2248,46 +2250,30 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 监听开始始触摸事件
    */
-  declare function wx$onTouchStart(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$onTouchStart(cb: (res: types$TouchData) => void): void;
 
-  declare function wx$offTouchStart(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$offTouchStart(cb: (res: types$TouchData) => void): void;
 
   /**
    * 监听触点移动事件
    */
-  declare function wx$onTouchMove(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$onTouchMove(cb: (res: types$TouchData) => void): void;
 
-  declare function wx$offTouchMove(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$offTouchMove(cb: (res: types$TouchData) => void): void;
 
   /**
    * 监听触摸结束事件
    */
-  declare function wx$onTouchEnd(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$onTouchEnd(cb: (res: types$TouchData) => void): void;
 
-  declare function wx$offTouchEnd(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$offTouchEnd(cb: (res: types$TouchData) => void): void;
 
   /**
    * 监听触点失效事件
    */
-  declare function wx$onTouchCancel(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$onTouchCancel(cb: (res: types$TouchData) => void): void;
 
-  declare function wx$offTouchCancel(
-    cb: (res: types$types$TouchData) => void
-  ): void;
+  declare function wx$offTouchCancel(cb: (res: types$TouchData) => void): void;
 
   /**
    * 监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 wx.stopAccelerometer 停止监听。
@@ -2303,40 +2289,36 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 开始监听加速度数据。
    */
-  declare function wx$startAccelerometer(
-    cb: types$types$AccelerometerParams
-  ): void;
+  declare function wx$startAccelerometer(cb: types$AccelerometerParams): void;
 
   /**
    * 停止监听加速度数据。
    */
-  declare function wx$stopAccelerometer(cb?: types$types$Callbacks): void;
+  declare function wx$stopAccelerometer(cb?: types$Callbacks): void;
 
   /**
    * 获取设备电量。同步 API wx.getBatteryInfoSync 在 iOS 上不可用。
    */
   declare function wx$getBatteryInfo(
-    cb: types$types$CallbacksWithType<types$types$BatteryInfo>
+    cb: types$CallbacksWithType<types$BatteryInfo>
   ): void;
 
   /**
    * IOS上这个同步API无法使用
    */
-  declare function wx$getBatteryInfoSync(): types$types$BatteryInfo;
+  declare function wx$getBatteryInfoSync(): types$BatteryInfo;
 
   /**
    * 取得系统剪贴板的内容
    */
   declare function wx$getClipboardData(
-    cb: types$types$CallbacksWithType<types$types$ClipboardData>
+    cb: types$CallbacksWithType<types$ClipboardData>
   ): void;
 
   /**
    * 设置系统剪贴板的内容
    */
-  declare function wx$setClipboardData(
-    p: types$types$SetClipboardDataParams
-  ): void;
+  declare function wx$setClipboardData(p: types$SetClipboardDataParams): void;
 
   /**
    * 监听罗盘数据，频率：5 次/秒，接口调用后会自动开始监听，可使用 wx.stopCompass 停止监听。
@@ -2351,20 +2333,20 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 开始监听罗盘数据
    */
-  declare function wx$startCompass(cb?: types$types$Callbacks): void;
+  declare function wx$startCompass(cb?: types$Callbacks): void;
 
   /**
    * 停止监听罗盘数据
    */
-  declare function wx$stopCompass(cb?: types$types$Callbacks): void;
+  declare function wx$stopCompass(cb?: types$Callbacks): void;
 
   /**
    * 获取网络类型
    */
   declare function wx$getNetworkType(
-    cb: types$types$CallbacksWithType<{
+    cb: types$CallbacksWithType<{
       isConnected: boolean,
-      networkType: types$types$NetworkType
+      networkType: types$NetworkType
     }>
   ): void;
 
@@ -2381,7 +2363,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
       /**
        * none - 无网络, unknown - Android 下不常见的网络类型
        */
-      networkType: types$types$NetworkType
+      networkType: types$NetworkType
     }) => void
   ): void;
 
@@ -2389,7 +2371,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 获取屏幕亮度
    */
   declare function wx$getScreenBrightness(
-    cb: types$types$CallbacksWithType<{
+    cb: types$CallbacksWithType<{
       value: number
     }>
   ): void;
@@ -2397,15 +2379,13 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 设置是否保持常亮状态。仅在当前小程序生效，离开小程序后设置失效。
    */
-  declare function wx$setKeepScreenOn(
-    p: types$types$SetKeepScreenOnParams
-  ): void;
+  declare function wx$setKeepScreenOn(p: types$SetKeepScreenOnParams): void;
 
   /**
    * 设置屏幕亮度
    */
   declare function wx$setScreenBrightness(
-    p: types$types$SetScreenBrightnessParams
+    p: types$SetScreenBrightnessParams
   ): void;
 
   /**
@@ -2429,12 +2409,12 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 使手机发生较短时间的振动（15 ms）
    */
-  declare function wx$vibrateShort(cb?: types$types$Callbacks): void;
+  declare function wx$vibrateShort(cb?: types$Callbacks): void;
 
   /**
    * 使手机发生较长时间的振动（400 ms)
    */
-  declare function wx$vibrateLong(cb?: types$types$Callbacks): void;
+  declare function wx$vibrateLong(cb?: types$Callbacks): void;
 
   declare function wx$getFileSystemManager(): FileSystemManager;
 
@@ -2504,30 +2484,26 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 下载文件
    */
-  declare function wx$downloadFile(
-    param: types$types$DownfileParams
-  ): DownloadTask;
+  declare function wx$downloadFile(param: types$DownfileParams): DownloadTask;
 
-  declare function wx$request(param: types$types$RequestParams): RequestTask;
+  declare function wx$request(param: types$RequestParams): RequestTask;
 
   /**
    * 创建一个 WebSocket 连接。最多同时存在 5 个 WebSocket 连接。
    */
   declare function wx$connectSocket(
-    param: types$types$SocketConnectParams
+    param: types$SocketConnectParams
   ): SocketTask;
 
   /**
    * 关闭WebSocket
    */
-  declare function wx$closeSocket(param: types$types$SocketCloseParams): void;
+  declare function wx$closeSocket(param: types$SocketCloseParams): void;
 
   /**
    * 监听WebSocket 连接打开事件
    */
-  declare function wx$onSocketOpen(
-    callback: types$types$SocketOpenCallback
-  ): void;
+  declare function wx$onSocketOpen(callback: types$SocketOpenCallback): void;
 
   /**
    * 监听WebSocket 连接关闭事件
@@ -2538,22 +2514,18 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 监听WebSocket 接受到服务器的消息事件
    */
   declare function wx$onSocketMessage(
-    callback: types$types$SocketMessageCallback
+    callback: types$SocketMessageCallback
   ): void;
 
   /**
    * 监听WebSocket 错误事件
    */
-  declare function wx$onSocketError(
-    callback: types$types$SocketErrorCallback
-  ): void;
+  declare function wx$onSocketError(callback: types$SocketErrorCallback): void;
 
   /**
    * 通过 WebSocket 连接发送数据，需要先 wx.connectSocket，并在 wx.onSocketOpen 回调之后才能发送。
    */
-  declare function wx$sendSocketMessage(
-    param: types$types$SocketSendParams
-  ): void;
+  declare function wx$sendSocketMessage(param: types$SocketSendParams): void;
 
   declare function wx$uploadFile(param: {
     /**
@@ -2628,7 +2600,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 如使用旧接口取得用户信息，withCredentials 为 true 时需要先调用 wx.login 接口。需要用户授权 scope.userInfo
    */
   declare function wx$getUserInfo(
-    param: types$types$NewUserInfoParam | types$types$OldUserInfoParam
+    param: types$NewUserInfoParam | types$OldUserInfoParam
   ): void;
 
   /**
@@ -2684,13 +2656,13 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 通过 wx.login 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 wx.checkSession 接口检测当前用户登录态是否有效。登录态过期后开发者可以再调用 wx.login 获取新的用户登录态。
    */
-  declare function wx$checkSession(cb: types$types$Callbacks): void;
+  declare function wx$checkSession(cb: types$Callbacks): void;
 
   /**
    * 调用接口获取登录凭证（code）进而换取用户登录态信息，包括用户的唯一标识（openid） 及本次登录的 会话密钥（session_key）等。用户数据的加解密通讯需要依赖会话密钥完成。
    */
   declare function wx$login(
-    cb: types$types$CallbacksWithType<{
+    cb: types$CallbacksWithType<{
       /**
        * 用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 code2accessToken，使用 code 换取 openid 和 session_key 等信息
        */
@@ -2720,7 +2692,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * 按钮类型
      */
-    type: types$types$ButtonType,
+    type: types$ButtonType,
 
     /**
      * 按钮上的文本，仅当 type 为 text 时有效
@@ -2735,7 +2707,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * 按钮的样式
      */
-    style: types$types$ButtonStyle,
+    style: types$ButtonStyle,
 
     /**
      * 是否带上登录态信息。当 withCredentials 为 true 时，要求此前有调用过 wx.login 且登录态尚未过期，此时返回的数据会包含 encryptedData, iv 等敏感信息；当 withCredentials 为 false 时，不要求有登录态，返回的数据不包含 encryptedData, iv 等敏感信息。
@@ -2751,7 +2723,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * 按钮类型
      */
-    type: types$types$ButtonType,
+    type: types$ButtonType,
 
     /**
      * 按钮上的文本，仅当 type 为 text 时有效
@@ -2766,15 +2738,15 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * 按钮的样式
      */
-    style: types$types$ButtonStyle
+    style: types$ButtonStyle
   }): OpenSettingButton;
 
   /**
    * 获取用户的当前设置。返回值中只会出现小程序已经向用户请求过的权限。
    */
   declare function wx$getSetting(
-    p: types$types$CallbacksWithType<{
-      authSetting: types$types$AuthSetting
+    p: types$CallbacksWithType<{
+      authSetting: types$AuthSetting
     }>
   ): void;
 
@@ -2783,8 +2755,8 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * @deprecated
    */
   declare function wx$openSetting(
-    p: types$types$CallbacksWithType<{
-      authSetting: types$types$AuthSetting
+    p: types$CallbacksWithType<{
+      authSetting: types$AuthSetting
     }>
   ): void;
 
@@ -2792,7 +2764,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 获取用户过去三十天微信运动步数，需要先调用 wx.login 接口。需要用户授权 scope.werun。
    */
   declare function wx$getWeRunData(
-    p: types$types$CallbacksWithType<{
+    p: types$CallbacksWithType<{
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见加密数据解密算法
        */
@@ -2822,25 +2794,25 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 创建游戏圈按钮。游戏圈按钮被点击后会跳转到小游戏的游戏圈。更多关于游戏圈的信息见 游戏圈使用指南
    */
   declare function wx$createGameClubButton(param: {
-    type: types$types$ButtonType,
+    type: types$ButtonType,
     text?: string,
     image?: string,
-    style: types$types$ButtonStyle,
+    style: types$ButtonStyle,
 
     /**
      * 游戏圈按钮的图标，仅当 object.type 参数为 image 时有效
      */
-    icon?: types$types$GameClubButtonIcon
+    icon?: types$GameClubButtonIcon
   }): GameClubButton;
 
   /**
    * 用户点击后打开意见反馈页面的按钮
    */
   declare function wx$createFeedbackButton(param: {
-    type: types$types$ButtonType,
+    type: types$ButtonType,
     text?: string,
     image?: string,
-    style: types$types$ButtonStyle
+    style: types$ButtonStyle
   }): FeedbackButton;
 
   /**
@@ -2914,21 +2886,17 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 隐藏转发按钮
    */
-  declare function wx$hideShareMenu(cb?: types$types$Callbacks): void;
+  declare function wx$hideShareMenu(cb?: types$Callbacks): void;
 
   /**
    * 监听用户点击右上角菜单的“转发”按钮时触发的事件
    */
-  declare function wx$onShareAppMessage(
-    cb: () => types$types$ShareOption
-  ): void;
+  declare function wx$onShareAppMessage(cb: () => types$ShareOption): void;
 
   /**
    * 取消监听用户点击右上角菜单的“转发”按钮时触发的事件
    */
-  declare function wx$offShareAppMessage(
-    cb: () => types$types$ShareOption
-  ): void;
+  declare function wx$offShareAppMessage(cb: () => types$ShareOption): void;
 
   /**
    * 显示当前页面的转发按钮
@@ -2946,7 +2914,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 主动拉起转发，进入选择通讯录界面。
    */
-  declare function wx$shareAppMessage(param: types$types$ShareOption): void;
+  declare function wx$shareAppMessage(param: types$ShareOption): void;
 
   /**
    * 更新转发属性
@@ -2972,11 +2940,11 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   declare function wx$triggerGC(): void;
 
   /**
- * 监听内存不足告警
- * @param 内存告警等级，只有 Android 才有，对应系统宏定义:
-10 TRIM_MEMORY_RUNNING_LOW
-15 TRIM_MEMORY_RUNNING_CRITICAL
- */
+   * 监听内存不足告警
+   * @param 内存告警等级，只有 Android 才有，对应系统宏定义:
+   * 10 TRIM_MEMORY_RUNNING_LOW
+   * 15 TRIM_MEMORY_RUNNING_CRITICAL
+   */
   declare function wx$onMemoryWarning(
     callback: (res: {
       level: number
@@ -2993,7 +2961,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 清理本地数据缓存
    */
-  declare function wx$clearStorage(param: types$types$Callbacks): void;
+  declare function wx$clearStorage(param: types$Callbacks): void;
 
   /**
    * clearStorage的同步版本
@@ -3003,7 +2971,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 从本地缓存中异步获取指定 key 的内容
    */
-  declare function wx$getStorage(param: types$types$GetStorageParams): void;
+  declare function wx$getStorage(param: types$GetStorageParams): void;
 
   /**
    * getStorage 的同步版本
@@ -3014,20 +2982,18 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 异步获取当前storage的相关信息
    */
   declare function wx$getStorageInfo(
-    param: types$types$CallbacksWithType<types$types$StorageInfo>
+    param: types$CallbacksWithType<types$StorageInfo>
   ): void;
 
   /**
    * getStorageInfo 的同步版本
    */
-  declare function wx$getStorageInfoSync(): types$types$StorageInfo;
+  declare function wx$getStorageInfoSync(): types$StorageInfo;
 
   /**
    * 从本地缓存中移除指定 key
    */
-  declare function wx$removeStorage(
-    param: types$types$RemoveStorageParams
-  ): void;
+  declare function wx$removeStorage(param: types$RemoveStorageParams): void;
 
   /**
    * removeStorage 的同步版本
@@ -3038,7 +3004,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容。
    */
-  declare function wx$setStorage(param: types$types$SetStorageParams): void;
+  declare function wx$setStorage(param: types$SetStorageParams): void;
 
   /**
    * setStorage 的同步版本
@@ -3136,7 +3102,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 隐藏消息提示框
    */
-  declare function wx$hideToast(cb?: types$types$Callbacks): void;
+  declare function wx$hideToast(cb?: types$Callbacks): void;
 
   /**
    * 显示模态对话框
@@ -3205,7 +3171,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
   /**
    * 隐藏 loading 提示框
    */
-  declare function wx$hideLoading(cb?: types$types$Callbacks): void;
+  declare function wx$hideLoading(cb?: types$Callbacks): void;
 
   /**
    * 显示选择器
@@ -3373,11 +3339,11 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
    * 获取当前支持的音频输入源
    */
   declare function wx$getAvailableAudioSources(
-    param: types$types$CallbacksWithType<{
+    param: types$CallbacksWithType<{
       /**
        * 音频输入源，每一项对应一种音频输入源
        */
-      audioSources: types$types$AudioSourceType[]
+      audioSources: types$AudioSourceType[]
     }>
   ): void;
 
@@ -3524,7 +3490,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     /**
      * banner 广告组件的样式
      */
-    style: types$types$AdStyle
+    style: types$AdStyle
   }): BannerAd;
 
   /**
@@ -3552,7 +3518,7 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
      *    0 - 米大师正式环境
      *    1 - 米大师沙箱环境
      */
-    wx$env?: 0 | 1,
+    env?: 0 | 1,
 
     /**
      * 在米大师侧申请的应用 id
@@ -3610,25 +3576,25 @@ MEDIA_ERR_SRC_NOT_SUPPORTED - video 的 src 属性是不支持的资源类型
     success?: () => void,
 
     /**
- * @param 有如下值：
--1	系统失败
--2	支付取消
--15001	虚拟支付接口错误码，缺少参数
--15002	虚拟支付接口错误码，参数不合法
--15003	虚拟支付接口错误码，订单重复
--15004	虚拟支付接口错误码，后台错误
--15006	虚拟支付接口错误码，appId 权限被封禁
--15006	虚拟支付接口错误码，货币类型不支持
--15007	虚拟支付接口错误码，订单已支付
-1	虚拟支付接口错误码，用户取消支付
-2	虚拟支付接口错误码，客户端错误, 判断到小程序在用户处于支付中时,又发起了一笔支付请求
-3	虚拟支付接口错误码，Android 独有错误：用户使用 Google Play 支付，而手机未安装 Google Play
-4	虚拟支付接口错误码，用户操作系统支付状态异常
-5	虚拟支付接口错误码，操作系统错误
-6	虚拟支付接口错误码，其他错误
-1000	参数错误
-1003	米大师 Portal 错误
- */
+     * @param 有如下值：
+     * -1	系统失败
+     * -2	支付取消
+     * -15001	虚拟支付接口错误码，缺少参数
+     * -15002	虚拟支付接口错误码，参数不合法
+     * -15003	虚拟支付接口错误码，订单重复
+     * -15004	虚拟支付接口错误码，后台错误
+     * -15006	虚拟支付接口错误码，appId 权限被封禁
+     * -15006	虚拟支付接口错误码，货币类型不支持
+     * -15007	虚拟支付接口错误码，订单已支付
+     * 1	虚拟支付接口错误码，用户取消支付
+     * 2	虚拟支付接口错误码，客户端错误, 判断到小程序在用户处于支付中时,又发起了一笔支付请求
+     * 3	虚拟支付接口错误码，Android 独有错误：用户使用 Google Play 支付，而手机未安装 Google Play
+     * 4	虚拟支付接口错误码，用户操作系统支付状态异常
+     * 5	虚拟支付接口错误码，操作系统错误
+     * 6	虚拟支付接口错误码，其他错误
+     * 1000	参数错误
+     * 1003	米大师 Portal 错误
+     */
     fail?: (res: {
       errMsg: string,
       errCode: number
