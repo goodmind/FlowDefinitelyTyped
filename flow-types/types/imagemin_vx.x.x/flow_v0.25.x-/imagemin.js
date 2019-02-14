@@ -1,14 +1,14 @@
 declare module "imagemin" {
   declare function imagemin(
     input: $ReadOnlyArray<string>,
-    outputOrOptions?: string | imagemin$imagemin$Options
-  ): Promise<imagemin$imagemin$Result[]>;
+    outputOrOptions?: string | imagemin$Options
+  ): Promise<imagemin$Result[]>;
 
   declare function imagemin(
     input: $ReadOnlyArray<string>,
     output?: string,
-    options?: imagemin$imagemin$Options
-  ): Promise<imagemin$imagemin$Result[]>;
+    options?: imagemin$Options
+  ): Promise<imagemin$Result[]>;
 
   declare var npm$namespace$imagemin: {
     buffer: typeof imagemin$buffer
@@ -25,9 +25,9 @@ declare module "imagemin" {
   }
 
   declare function imagemin$buffer(
-    imagemin$buffer: Buffer,
+    buffer: Buffer,
     options?: imagemin$Options
   ): Promise<Buffer>;
 
-  declare module.exports: typeof imagemin;
+  declare export default typeof imagemin;
 }
