@@ -1,5 +1,5 @@
 declare module "array-move" {
-  declare module.exports: typeof arrayMove;
+  declare export default typeof arrayMove;
 
   /**
    * Move an array item to a different position.
