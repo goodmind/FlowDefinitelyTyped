@@ -1,29 +1,33 @@
 declare module "gapi.client.servicemanagement" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations,
-    services: typeof client$services
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations,
+    services: typeof gapi$client$services
   };
 
   /**
    * Load Google Service Management API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "servicemanagement",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "servicemanagement",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: servicemanagement$servicemanagement$OperationsResource;
+  declare var gapi$client$operations: servicemanagement$OperationsResource;
 
-  declare var client$services: servicemanagement$servicemanagement$ServicesResource;
+  declare var gapi$client$services: servicemanagement$ServicesResource;
 
-  declare interface servicemanagement$Advice {
+  declare interface gapi$client$servicemanagement$Advice {
     /**
      * Useful description for why this advice was applied and what actions should
      * be taken to mitigate any implied risks.
@@ -31,7 +35,7 @@ declare module "gapi.client.servicemanagement" {
     description?: string;
   }
 
-  declare interface servicemanagement$Api {
+  declare interface gapi$client$servicemanagement$Api {
     /**
      * The methods of this interface, in unspecified order.
      */
@@ -88,7 +92,7 @@ declare module "gapi.client.servicemanagement" {
     version?: string;
   }
 
-  declare interface servicemanagement$AuditConfig {
+  declare interface gapi$client$servicemanagement$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -104,7 +108,7 @@ declare module "gapi.client.servicemanagement" {
     service?: string;
   }
 
-  declare interface servicemanagement$AuditLogConfig {
+  declare interface gapi$client$servicemanagement$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -118,7 +122,7 @@ declare module "gapi.client.servicemanagement" {
     logType?: string;
   }
 
-  declare interface servicemanagement$AuthProvider {
+  declare interface gapi$client$servicemanagement$AuthProvider {
     /**
      * The list of JWT
      * [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
@@ -174,7 +178,7 @@ declare module "gapi.client.servicemanagement" {
     jwksUri?: string;
   }
 
-  declare interface servicemanagement$AuthRequirement {
+  declare interface gapi$client$servicemanagement$AuthRequirement {
     /**
      * NOTE: This will be deprecated soon, once AuthProvider.audiences is
      * implemented and accepted in all the runtime components.
@@ -205,11 +209,11 @@ declare module "gapi.client.servicemanagement" {
     providerId?: string;
   }
 
-  declare interface servicemanagement$Authentication {
+  declare interface gapi$client$servicemanagement$Authentication {
     /**
      * Defines a set of authentication providers that a service supports.
      */
-    providers?: servicemanagement$AuthProvider[];
+    providers?: gapi$client$servicemanagement$AuthProvider[];
 
     /**
      * A list of authentication rules that apply to individual API methods.
@@ -219,7 +223,7 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$AuthenticationRule[];
   }
 
-  declare interface servicemanagement$AuthenticationRule {
+  declare interface gapi$client$servicemanagement$AuthenticationRule {
     /**
      * Whether to allow requests without a credential. The credential can be
      * an OAuth token, Google cookies (first-party auth) or EndUserCreds.
@@ -244,7 +248,7 @@ declare module "gapi.client.servicemanagement" {
     /**
      * Requirements for additional authentication providers.
      */
-    requirements?: servicemanagement$AuthRequirement[];
+    requirements?: gapi$client$servicemanagement$AuthRequirement[];
 
     /**
      * Selects the methods to which this rule applies.
@@ -254,7 +258,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$AuthorizationConfig {
+  declare interface gapi$client$servicemanagement$AuthorizationConfig {
     /**
      * The name of the authorization provider, such as
      * firebaserules.googleapis.com.
@@ -262,7 +266,7 @@ declare module "gapi.client.servicemanagement" {
     provider?: string;
   }
 
-  declare interface servicemanagement$Backend {
+  declare interface gapi$client$servicemanagement$Backend {
     /**
      * A list of API backend rules that apply to individual API methods.
      *
@@ -271,7 +275,7 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$BackendRule[];
   }
 
-  declare interface servicemanagement$BackendRule {
+  declare interface gapi$client$servicemanagement$BackendRule {
     /**
      * The address of the API backend.
      */
@@ -297,7 +301,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$Billing {
+  declare interface gapi$client$servicemanagement$Billing {
     /**
      * Billing configurations for sending metrics to the consumer project.
      * There can be multiple consumer destinations per service, each one must have
@@ -307,7 +311,7 @@ declare module "gapi.client.servicemanagement" {
     consumerDestinations?: servicemanagement$BillingDestination[];
   }
 
-  declare interface servicemanagement$BillingDestination {
+  declare interface gapi$client$servicemanagement$BillingDestination {
     /**
      * Names of the metrics to report to this billing destination.
      * Each name must be defined in Service.metrics section.
@@ -321,7 +325,7 @@ declare module "gapi.client.servicemanagement" {
     monitoredResource?: string;
   }
 
-  declare interface servicemanagement$Binding {
+  declare interface gapi$client$servicemanagement$Binding {
     /**
      * The condition that is associated with this binding.
      * NOTE: an unsatisfied condition will not allow user access via current
@@ -365,7 +369,7 @@ declare module "gapi.client.servicemanagement" {
     role?: string;
   }
 
-  declare interface servicemanagement$ChangeReport {
+  declare interface gapi$client$servicemanagement$ChangeReport {
     /**
      * List of changes between two service configurations.
      * The changes will be alphabetically sorted based on the identifier
@@ -376,12 +380,12 @@ declare module "gapi.client.servicemanagement" {
     configChanges?: servicemanagement$ConfigChange[];
   }
 
-  declare interface servicemanagement$ConfigChange {
+  declare interface gapi$client$servicemanagement$ConfigChange {
     /**
      * Collection of advice provided for this change, useful for determining the
      * possible impact of this change.
      */
-    advices?: servicemanagement$Advice[];
+    advices?: gapi$client$servicemanagement$Advice[];
 
     /**
      * The type for this change, either ADDED, REMOVED, or MODIFIED.
@@ -414,7 +418,7 @@ declare module "gapi.client.servicemanagement" {
     oldValue?: string;
   }
 
-  declare interface servicemanagement$ConfigFile {
+  declare interface gapi$client$servicemanagement$ConfigFile {
     /**
      * The bytes that constitute the file.
      */
@@ -431,7 +435,7 @@ declare module "gapi.client.servicemanagement" {
     fileType?: string;
   }
 
-  declare interface servicemanagement$ConfigRef {
+  declare interface gapi$client$servicemanagement$ConfigRef {
     /**
      * Resource name of a service config. It must have the following
      * format: "services/{service name}/configs/{config id}".
@@ -439,12 +443,12 @@ declare module "gapi.client.servicemanagement" {
     name?: string;
   }
 
-  declare interface servicemanagement$ConfigSource {
+  declare interface gapi$client$servicemanagement$ConfigSource {
     /**
      * Set of source configuration files that are used to generate a service
      * configuration (`google.api.Service`).
      */
-    files?: servicemanagement$ConfigFile[];
+    files?: gapi$client$servicemanagement$ConfigFile[];
 
     /**
      * A unique ID for a specific instance of this message, typically assigned
@@ -454,7 +458,7 @@ declare module "gapi.client.servicemanagement" {
     id?: string;
   }
 
-  declare interface servicemanagement$Context {
+  declare interface gapi$client$servicemanagement$Context {
     /**
      * A list of RPC context rules that apply to individual API methods.
      *
@@ -463,7 +467,7 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$ContextRule[];
   }
 
-  declare interface servicemanagement$ContextRule {
+  declare interface gapi$client$servicemanagement$ContextRule {
     /**
      * A list of full type names of provided contexts.
      */
@@ -482,7 +486,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$Control {
+  declare interface gapi$client$servicemanagement$Control {
     /**
      * The service control environment to use. If empty, no control plane
      * feature (like quota and billing) will be enabled.
@@ -490,7 +494,7 @@ declare module "gapi.client.servicemanagement" {
     environment?: string;
   }
 
-  declare interface servicemanagement$CustomAuthRequirements {
+  declare interface gapi$client$servicemanagement$CustomAuthRequirements {
     /**
      * A configuration string containing connection information for the
      * authentication provider, typically formatted as a SmartService string
@@ -499,7 +503,7 @@ declare module "gapi.client.servicemanagement" {
     provider?: string;
   }
 
-  declare interface servicemanagement$CustomError {
+  declare interface gapi$client$servicemanagement$CustomError {
     /**
      * The list of custom error rules that apply to individual API messages.
      *
@@ -513,7 +517,7 @@ declare module "gapi.client.servicemanagement" {
     types?: string[];
   }
 
-  declare interface servicemanagement$CustomErrorRule {
+  declare interface gapi$client$servicemanagement$CustomErrorRule {
     /**
      * Mark this message as possible payload in error response.  Otherwise,
      * objects of this type will be filtered when they appear in error payload.
@@ -528,7 +532,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$CustomHttpPattern {
+  declare interface gapi$client$servicemanagement$CustomHttpPattern {
     /**
      * The name of this custom HTTP verb.
      */
@@ -540,7 +544,7 @@ declare module "gapi.client.servicemanagement" {
     path?: string;
   }
 
-  declare interface servicemanagement$Diagnostic {
+  declare interface gapi$client$servicemanagement$Diagnostic {
     /**
      * The kind of diagnostic information provided.
      */
@@ -557,7 +561,7 @@ declare module "gapi.client.servicemanagement" {
     message?: string;
   }
 
-  declare interface servicemanagement$DisableServiceRequest {
+  declare interface gapi$client$servicemanagement$DisableServiceRequest {
     /**
      * The identity of consumer resource which service disablement will be
      * applied to.
@@ -572,7 +576,7 @@ declare module "gapi.client.servicemanagement" {
     consumerId?: string;
   }
 
-  declare interface servicemanagement$Documentation {
+  declare interface gapi$client$servicemanagement$Documentation {
     /**
      * The URL to the root of documentation.
      */
@@ -614,7 +618,7 @@ declare module "gapi.client.servicemanagement" {
     summary?: string;
   }
 
-  declare interface servicemanagement$DocumentationRule {
+  declare interface gapi$client$servicemanagement$DocumentationRule {
     /**
      * Deprecation description of the selected element(s). It can be provided if an
      * element is marked as `deprecated`.
@@ -637,7 +641,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$EnableServiceRequest {
+  declare interface gapi$client$servicemanagement$EnableServiceRequest {
     /**
      * The identity of consumer resource which service enablement will be
      * applied to.
@@ -652,7 +656,7 @@ declare module "gapi.client.servicemanagement" {
     consumerId?: string;
   }
 
-  declare interface servicemanagement$Endpoint {
+  declare interface gapi$client$servicemanagement$Endpoint {
     /**
      * DEPRECATED: This field is no longer supported. Instead of using aliases,
      * please specify multiple google.api.Endpoint for each of the intented
@@ -699,7 +703,7 @@ declare module "gapi.client.servicemanagement" {
     target?: string;
   }
 
-  declare interface servicemanagement$Enum {
+  declare interface gapi$client$servicemanagement$Enum {
     /**
      * Enum value definitions.
      */
@@ -726,7 +730,7 @@ declare module "gapi.client.servicemanagement" {
     syntax?: string;
   }
 
-  declare interface servicemanagement$EnumValue {
+  declare interface gapi$client$servicemanagement$EnumValue {
     /**
      * Enum value name.
      */
@@ -743,14 +747,14 @@ declare module "gapi.client.servicemanagement" {
     options?: servicemanagement$Option[];
   }
 
-  declare interface servicemanagement$Experimental {
+  declare interface gapi$client$servicemanagement$Experimental {
     /**
      * Authorization configuration.
      */
-    authorization?: servicemanagement$AuthorizationConfig;
+    authorization?: gapi$client$servicemanagement$AuthorizationConfig;
   }
 
-  declare interface servicemanagement$Expr {
+  declare interface gapi$client$servicemanagement$Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -780,7 +784,7 @@ declare module "gapi.client.servicemanagement" {
     title?: string;
   }
 
-  declare interface servicemanagement$Field {
+  declare interface gapi$client$servicemanagement$Field {
     /**
      * The field cardinality.
      */
@@ -834,7 +838,7 @@ declare module "gapi.client.servicemanagement" {
     typeUrl?: string;
   }
 
-  declare interface servicemanagement$FlowOperationMetadata {
+  declare interface gapi$client$servicemanagement$FlowOperationMetadata {
     /**
      * The state of the operation with respect to cancellation.
      */
@@ -879,7 +883,7 @@ declare module "gapi.client.servicemanagement" {
     surface?: string;
   }
 
-  declare interface servicemanagement$GenerateConfigReportRequest {
+  declare interface gapi$client$servicemanagement$GenerateConfigReportRequest {
     /**
      * Service configuration for which we want to generate the report.
      * For this version of API, the supported types are
@@ -899,19 +903,19 @@ declare module "gapi.client.servicemanagement" {
     oldConfig?: Record<string, any>;
   }
 
-  declare interface servicemanagement$GenerateConfigReportResponse {
+  declare interface gapi$client$servicemanagement$GenerateConfigReportResponse {
     /**
      * list of ChangeReport, each corresponding to comparison between two
      * service configurations.
      */
-    changeReports?: servicemanagement$ChangeReport[];
+    changeReports?: gapi$client$servicemanagement$ChangeReport[];
 
     /**
      * Errors / Linter warnings associated with the service definition this
      * report
      * belongs to.
      */
-    diagnostics?: servicemanagement$Diagnostic[];
+    diagnostics?: gapi$client$servicemanagement$Diagnostic[];
 
     /**
      * ID of the service configuration this report belongs to.
@@ -924,7 +928,7 @@ declare module "gapi.client.servicemanagement" {
     serviceName?: string;
   }
 
-  declare interface servicemanagement$Http {
+  declare interface gapi$client$servicemanagement$Http {
     /**
      * When set to true, URL path parmeters will be fully URI-decoded except in
      * cases of single segment matches in reserved expansion, where "%2F" will be
@@ -943,13 +947,13 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$HttpRule[];
   }
 
-  declare interface servicemanagement$HttpRule {
+  declare interface gapi$client$servicemanagement$HttpRule {
     /**
      * Additional HTTP bindings for the selector. Nested bindings must
      * not contain an `additional_bindings` field themselves (that is,
      * the nesting may only be one level deep).
      */
-    additionalBindings?: servicemanagement$HttpRule[];
+    additionalBindings?: gapi$client$servicemanagement$HttpRule[];
 
     /**
      * The name of the request field whose value is mapped to the HTTP body, or
@@ -965,7 +969,7 @@ declare module "gapi.client.servicemanagement" {
      * HTTP method unspecified for this rule. The wild-card rule is useful
      * for services that provide content to Web (HTML) clients.
      */
-    custom?: servicemanagement$CustomHttpPattern;
+    custom?: gapi$client$servicemanagement$CustomHttpPattern;
 
     /**
      * Used for deleting a resource.
@@ -1024,7 +1028,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$LabelDescriptor {
+  declare interface gapi$client$servicemanagement$LabelDescriptor {
     /**
      * A human-readable description for the label.
      */
@@ -1041,7 +1045,7 @@ declare module "gapi.client.servicemanagement" {
     valueType?: string;
   }
 
-  declare interface servicemanagement$ListOperationsResponse {
+  declare interface gapi$client$servicemanagement$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -1050,10 +1054,10 @@ declare module "gapi.client.servicemanagement" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: servicemanagement$Operation[];
+    operations?: servicemanagement$Operation[];
   }
 
-  declare interface servicemanagement$ListServiceConfigsResponse {
+  declare interface gapi$client$servicemanagement$ListServiceConfigsResponse {
     /**
      * The token of the next page of results.
      */
@@ -1065,7 +1069,7 @@ declare module "gapi.client.servicemanagement" {
     serviceConfigs?: servicemanagement$Service[];
   }
 
-  declare interface servicemanagement$ListServiceRolloutsResponse {
+  declare interface gapi$client$servicemanagement$ListServiceRolloutsResponse {
     /**
      * The token of the next page of results.
      */
@@ -1077,7 +1081,7 @@ declare module "gapi.client.servicemanagement" {
     rollouts?: servicemanagement$Rollout[];
   }
 
-  declare interface servicemanagement$ListServicesResponse {
+  declare interface gapi$client$servicemanagement$ListServicesResponse {
     /**
      * Token that can be passed to `ListServices` to resume a paginated query.
      */
@@ -1086,10 +1090,10 @@ declare module "gapi.client.servicemanagement" {
     /**
      * The returned services will only have the name field set.
      */
-    client$services?: servicemanagement$ManagedService[];
+    services?: servicemanagement$ManagedService[];
   }
 
-  declare interface servicemanagement$LogDescriptor {
+  declare interface gapi$client$servicemanagement$LogDescriptor {
     /**
      * A human-readable description of this log. This information appears in
      * the documentation and can contain details.
@@ -1107,7 +1111,7 @@ declare module "gapi.client.servicemanagement" {
      * Runtime requests that contain labels not specified here are
      * considered invalid.
      */
-    labels?: servicemanagement$LabelDescriptor[];
+    labels?: gapi$client$servicemanagement$LabelDescriptor[];
 
     /**
      * The name of the log. It must be less than 512 characters long and can
@@ -1118,7 +1122,7 @@ declare module "gapi.client.servicemanagement" {
     name?: string;
   }
 
-  declare interface servicemanagement$Logging {
+  declare interface gapi$client$servicemanagement$Logging {
     /**
      * Logging configurations for sending logs to the consumer project.
      * There can be multiple consumer destinations, each one must have a
@@ -1136,7 +1140,7 @@ declare module "gapi.client.servicemanagement" {
     producerDestinations?: servicemanagement$LoggingDestination[];
   }
 
-  declare interface servicemanagement$LoggingDestination {
+  declare interface gapi$client$servicemanagement$LoggingDestination {
     /**
      * Names of the logs to be sent to this destination. Each name must
      * be defined in the Service.logs section. If the log name is
@@ -1152,7 +1156,7 @@ declare module "gapi.client.servicemanagement" {
     monitoredResource?: string;
   }
 
-  declare interface servicemanagement$ManagedService {
+  declare interface gapi$client$servicemanagement$ManagedService {
     /**
      * ID of the project that produces and owns this service.
      */
@@ -1165,7 +1169,7 @@ declare module "gapi.client.servicemanagement" {
     serviceName?: string;
   }
 
-  declare interface servicemanagement$MediaDownload {
+  declare interface gapi$client$servicemanagement$MediaDownload {
     /**
      * A boolean that determines whether a notification for the completion of a
      * download should be sent to the backend.
@@ -1202,7 +1206,7 @@ declare module "gapi.client.servicemanagement" {
     useDirectDownload?: boolean;
   }
 
-  declare interface servicemanagement$MediaUpload {
+  declare interface gapi$client$servicemanagement$MediaUpload {
     /**
      * A boolean that determines whether a notification for the completion of an
      * upload should be sent to the backend. These notifications will not be seen
@@ -1250,7 +1254,7 @@ declare module "gapi.client.servicemanagement" {
     uploadService?: string;
   }
 
-  declare interface servicemanagement$Method {
+  declare interface gapi$client$servicemanagement$Method {
     /**
      * The simple name of this method.
      */
@@ -1287,7 +1291,7 @@ declare module "gapi.client.servicemanagement" {
     syntax?: string;
   }
 
-  declare interface servicemanagement$MetricDescriptor {
+  declare interface gapi$client$servicemanagement$MetricDescriptor {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
@@ -1307,7 +1311,7 @@ declare module "gapi.client.servicemanagement" {
      * you can look at latencies for successful responses or just
      * for responses that failed.
      */
-    labels?: servicemanagement$LabelDescriptor[];
+    labels?: gapi$client$servicemanagement$LabelDescriptor[];
 
     /**
      * Whether the metric records instantaneous values, changes to a value, etc.
@@ -1413,7 +1417,7 @@ declare module "gapi.client.servicemanagement" {
     valueType?: string;
   }
 
-  declare interface servicemanagement$MetricRule {
+  declare interface gapi$client$servicemanagement$MetricRule {
     /**
      * Metrics to update when the selected methods are called, and the associated
      * cost applied to each metric.
@@ -1432,7 +1436,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$Mixin {
+  declare interface gapi$client$servicemanagement$Mixin {
     /**
      * The fully qualified name of the interface which is included.
      */
@@ -1445,7 +1449,7 @@ declare module "gapi.client.servicemanagement" {
     root?: string;
   }
 
-  declare interface servicemanagement$MonitoredResourceDescriptor {
+  declare interface gapi$client$servicemanagement$MonitoredResourceDescriptor {
     /**
      * Optional. A detailed description of the monitored resource type that might
      * be used in documentation.
@@ -1465,7 +1469,7 @@ declare module "gapi.client.servicemanagement" {
      * resource type. For example, an individual Google Cloud SQL database is
      * identified by values for the labels `"database_id"` and `"zone"`.
      */
-    labels?: servicemanagement$LabelDescriptor[];
+    labels?: gapi$client$servicemanagement$LabelDescriptor[];
 
     /**
      * Optional. The resource name of the monitored resource descriptor:
@@ -1485,7 +1489,7 @@ declare module "gapi.client.servicemanagement" {
     type?: string;
   }
 
-  declare interface servicemanagement$Monitoring {
+  declare interface gapi$client$servicemanagement$Monitoring {
     /**
      * Monitoring configurations for sending metrics to the consumer project.
      * There can be multiple consumer destinations, each one must have a
@@ -1503,7 +1507,7 @@ declare module "gapi.client.servicemanagement" {
     producerDestinations?: servicemanagement$MonitoringDestination[];
   }
 
-  declare interface servicemanagement$MonitoringDestination {
+  declare interface gapi$client$servicemanagement$MonitoringDestination {
     /**
      * Names of the metrics to report to this monitoring destination.
      * Each name must be defined in Service.metrics section.
@@ -1517,7 +1521,7 @@ declare module "gapi.client.servicemanagement" {
     monitoredResource?: string;
   }
 
-  declare interface servicemanagement$OAuthRequirements {
+  declare interface gapi$client$servicemanagement$OAuthRequirements {
     /**
      * The list of publicly documented OAuth scopes that are allowed access. An
      * OAuth token containing any of these scopes will be accepted.
@@ -1530,7 +1534,7 @@ declare module "gapi.client.servicemanagement" {
     canonicalScopes?: string;
   }
 
-  declare interface servicemanagement$Operation {
+  declare interface gapi$client$servicemanagement$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -1571,7 +1575,7 @@ declare module "gapi.client.servicemanagement" {
     response?: Record<string, any>;
   }
 
-  declare interface servicemanagement$OperationMetadata {
+  declare interface gapi$client$servicemanagement$OperationMetadata {
     /**
      * Percentage of completion of this operation, ranging from 0 to 100.
      */
@@ -1594,7 +1598,7 @@ declare module "gapi.client.servicemanagement" {
     steps?: servicemanagement$Step[];
   }
 
-  declare interface servicemanagement$Option {
+  declare interface gapi$client$servicemanagement$Option {
     /**
      * The option's name. For protobuf built-in options (options defined in
      * descriptor.proto), this is the short name. For example, `"map_entry"`.
@@ -1612,7 +1616,7 @@ declare module "gapi.client.servicemanagement" {
     value?: Record<string, any>;
   }
 
-  declare interface servicemanagement$Page {
+  declare interface gapi$client$servicemanagement$Page {
     /**
      * The Markdown content of the page. You can use <code>&#40;== include {path} ==&#41;</code>
      * to include content from a Markdown file.
@@ -1641,20 +1645,20 @@ declare module "gapi.client.servicemanagement" {
      * Subpages of this page. The order of subpages specified here will be
      * honored in the generated docset.
      */
-    subpages?: servicemanagement$Page[];
+    subpages?: gapi$client$servicemanagement$Page[];
   }
 
-  declare interface servicemanagement$Policy {
+  declare interface gapi$client$servicemanagement$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: servicemanagement$AuditConfig[];
+    auditConfigs?: gapi$client$servicemanagement$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: servicemanagement$Binding[];
+    bindings?: gapi$client$servicemanagement$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -1677,7 +1681,7 @@ declare module "gapi.client.servicemanagement" {
     version?: number;
   }
 
-  declare interface servicemanagement$Quota {
+  declare interface gapi$client$servicemanagement$Quota {
     /**
      * List of `QuotaLimit` definitions for the service.
      */
@@ -1687,10 +1691,10 @@ declare module "gapi.client.servicemanagement" {
      * List of `MetricRule` definitions, each one mapping a selected method to one
      * or more metrics.
      */
-    metricRules?: servicemanagement$MetricRule[];
+    metricRules?: gapi$client$servicemanagement$MetricRule[];
   }
 
-  declare interface servicemanagement$QuotaLimit {
+  declare interface gapi$client$servicemanagement$QuotaLimit {
     /**
      * Default number of tokens that can be consumed during the specified
      * duration. This is the number of tokens assigned when a client
@@ -1812,7 +1816,7 @@ declare module "gapi.client.servicemanagement" {
     values?: Record<string, string>;
   }
 
-  declare interface servicemanagement$Rollout {
+  declare interface gapi$client$servicemanagement$Rollout {
     /**
      * Creation time of the rollout. Readonly.
      */
@@ -1860,7 +1864,7 @@ declare module "gapi.client.servicemanagement" {
     trafficPercentStrategy?: servicemanagement$TrafficPercentStrategy;
   }
 
-  declare interface servicemanagement$Service {
+  declare interface gapi$client$servicemanagement$Service {
     /**
      * A list of API interfaces exported by this service. Only the `name` field
      * of the google.protobuf.Api needs to be provided by the configuration
@@ -1868,22 +1872,22 @@ declare module "gapi.client.servicemanagement" {
      * normalization process. It is an error to specify an API interface here
      * which cannot be resolved against the associated IDL files.
      */
-    apis?: servicemanagement$Api[];
+    apis?: gapi$client$servicemanagement$Api[];
 
     /**
      * Auth configuration.
      */
-    authentication?: servicemanagement$Authentication;
+    authentication?: gapi$client$servicemanagement$Authentication;
 
     /**
      * API backend configuration.
      */
-    backend?: servicemanagement$Backend;
+    backend?: gapi$client$servicemanagement$Backend;
 
     /**
      * Billing configuration.
      */
-    billing?: servicemanagement$Billing;
+    billing?: gapi$client$servicemanagement$Billing;
 
     /**
      * The semantic version of the service configuration. The config version
@@ -1896,29 +1900,29 @@ declare module "gapi.client.servicemanagement" {
     /**
      * Context configuration.
      */
-    context?: servicemanagement$Context;
+    context?: gapi$client$servicemanagement$Context;
 
     /**
      * Configuration for the service control plane.
      */
-    control?: servicemanagement$Control;
+    control?: gapi$client$servicemanagement$Control;
 
     /**
      * Custom error configuration.
      */
-    customError?: servicemanagement$CustomError;
+    customError?: gapi$client$servicemanagement$CustomError;
 
     /**
      * Additional API documentation.
      */
-    documentation?: servicemanagement$Documentation;
+    documentation?: gapi$client$servicemanagement$Documentation;
 
     /**
      * Configuration for network endpoints.  If this is empty, then an endpoint
      * with the same name as the service is automatically generated to service all
      * defined APIs.
      */
-    endpoints?: servicemanagement$Endpoint[];
+    endpoints?: gapi$client$servicemanagement$Endpoint[];
 
     /**
      * A list of all enum types included in this API service.  Enums
@@ -1929,17 +1933,17 @@ declare module "gapi.client.servicemanagement" {
      * enums:
      * - name: google.someapi.v1.SomeEnum
      */
-    enums?: servicemanagement$Enum[];
+    enums?: gapi$client$servicemanagement$Enum[];
 
     /**
      * Experimental configuration.
      */
-    experimental?: servicemanagement$Experimental;
+    experimental?: gapi$client$servicemanagement$Experimental;
 
     /**
      * HTTP configuration.
      */
-    http?: servicemanagement$Http;
+    http?: gapi$client$servicemanagement$Http;
 
     /**
      * A unique ID for a specific instance of this message, typically assigned
@@ -1951,28 +1955,28 @@ declare module "gapi.client.servicemanagement" {
     /**
      * Logging configuration.
      */
-    logging?: servicemanagement$Logging;
+    logging?: gapi$client$servicemanagement$Logging;
 
     /**
      * Defines the logs used by this service.
      */
-    logs?: servicemanagement$LogDescriptor[];
+    logs?: gapi$client$servicemanagement$LogDescriptor[];
 
     /**
      * Defines the metrics used by this service.
      */
-    metrics?: servicemanagement$MetricDescriptor[];
+    metrics?: gapi$client$servicemanagement$MetricDescriptor[];
 
     /**
      * Defines the monitored resources used by this service. This is required
      * by the Service.monitoring and Service.logging configurations.
      */
-    monitoredResources?: servicemanagement$MonitoredResourceDescriptor[];
+    monitoredResources?: gapi$client$servicemanagement$MonitoredResourceDescriptor[];
 
     /**
      * Monitoring configuration.
      */
-    monitoring?: servicemanagement$Monitoring;
+    monitoring?: gapi$client$servicemanagement$Monitoring;
 
     /**
      * The DNS address at which this service is available,
@@ -1988,7 +1992,7 @@ declare module "gapi.client.servicemanagement" {
     /**
      * Quota configuration.
      */
-    quota?: servicemanagement$Quota;
+    quota?: gapi$client$servicemanagement$Quota;
 
     /**
      * Output only. The source information for this configuration if available.
@@ -2037,14 +2041,14 @@ declare module "gapi.client.servicemanagement" {
     visibility?: servicemanagement$Visibility;
   }
 
-  declare interface servicemanagement$SetIamPolicyRequest {
+  declare interface gapi$client$servicemanagement$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: servicemanagement$Policy;
+    policy?: gapi$client$servicemanagement$Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -2056,7 +2060,7 @@ declare module "gapi.client.servicemanagement" {
     updateMask?: string;
   }
 
-  declare interface servicemanagement$SourceContext {
+  declare interface gapi$client$servicemanagement$SourceContext {
     /**
      * The path-qualified name of the .proto file that contained the associated
      * protobuf element.  For example: `"google/protobuf/source_context.proto"`.
@@ -2064,14 +2068,14 @@ declare module "gapi.client.servicemanagement" {
     fileName?: string;
   }
 
-  declare interface servicemanagement$SourceInfo {
+  declare interface gapi$client$servicemanagement$SourceInfo {
     /**
      * All files used during config generation.
      */
     sourceFiles?: Array<Record<string, any>>;
   }
 
-  declare interface servicemanagement$Status {
+  declare interface gapi$client$servicemanagement$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -2091,7 +2095,7 @@ declare module "gapi.client.servicemanagement" {
     message?: string;
   }
 
-  declare interface servicemanagement$Step {
+  declare interface gapi$client$servicemanagement$Step {
     /**
      * The short description of the step.
      */
@@ -2103,11 +2107,11 @@ declare module "gapi.client.servicemanagement" {
     status?: string;
   }
 
-  declare interface servicemanagement$SubmitConfigSourceRequest {
+  declare interface gapi$client$servicemanagement$SubmitConfigSourceRequest {
     /**
      * The source configuration for the service.
      */
-    configSource?: servicemanagement$ConfigSource;
+    configSource?: gapi$client$servicemanagement$ConfigSource;
 
     /**
      * Optional. If set, this will result in the generation of a
@@ -2117,14 +2121,14 @@ declare module "gapi.client.servicemanagement" {
     validateOnly?: boolean;
   }
 
-  declare interface servicemanagement$SubmitConfigSourceResponse {
+  declare interface gapi$client$servicemanagement$SubmitConfigSourceResponse {
     /**
      * The generated service configuration.
      */
-    serviceConfig?: servicemanagement$Service;
+    serviceConfig?: gapi$client$servicemanagement$Service;
   }
 
-  declare interface servicemanagement$SystemParameter {
+  declare interface gapi$client$servicemanagement$SystemParameter {
     /**
      * Define the HTTP header name to use for the parameter. It is case
      * insensitive.
@@ -2143,7 +2147,7 @@ declare module "gapi.client.servicemanagement" {
     urlQueryParameter?: string;
   }
 
-  declare interface servicemanagement$SystemParameterRule {
+  declare interface gapi$client$servicemanagement$SystemParameterRule {
     /**
      * Define parameters. Multiple names may be defined for a parameter.
      * For a given method call, only one of them should be used. If multiple
@@ -2151,7 +2155,7 @@ declare module "gapi.client.servicemanagement" {
      * If none of the specified names are present the behavior is
      * parameter-dependent.
      */
-    parameters?: servicemanagement$SystemParameter[];
+    parameters?: gapi$client$servicemanagement$SystemParameter[];
 
     /**
      * Selects the methods to which this rule applies. Use '&#42;' to indicate all
@@ -2162,7 +2166,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$SystemParameters {
+  declare interface gapi$client$servicemanagement$SystemParameters {
     /**
      * Define system parameters.
      *
@@ -2194,10 +2198,10 @@ declare module "gapi.client.servicemanagement" {
      *
      * &#42;&#42;NOTE:&#42;&#42; All service configuration rules follow "last one wins" order.
      */
-    rules?: servicemanagement$SystemParameterRule[];
+    rules?: gapi$client$servicemanagement$SystemParameterRule[];
   }
 
-  declare interface servicemanagement$TestIamPermissionsRequest {
+  declare interface gapi$client$servicemanagement$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -2207,7 +2211,7 @@ declare module "gapi.client.servicemanagement" {
     permissions?: string[];
   }
 
-  declare interface servicemanagement$TestIamPermissionsResponse {
+  declare interface gapi$client$servicemanagement$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -2215,7 +2219,7 @@ declare module "gapi.client.servicemanagement" {
     permissions?: string[];
   }
 
-  declare interface servicemanagement$TrafficPercentStrategy {
+  declare interface gapi$client$servicemanagement$TrafficPercentStrategy {
     /**
      * Maps service configuration IDs to their corresponding traffic percentage.
      * Key is the service configuration ID, Value is the traffic percentage
@@ -2224,11 +2228,11 @@ declare module "gapi.client.servicemanagement" {
     percentages?: Record<string, number>;
   }
 
-  declare interface servicemanagement$Type {
+  declare interface gapi$client$servicemanagement$Type {
     /**
      * The list of fields.
      */
-    fields?: servicemanagement$Field[];
+    fields?: gapi$client$servicemanagement$Field[];
 
     /**
      * The fully qualified message name.
@@ -2243,12 +2247,12 @@ declare module "gapi.client.servicemanagement" {
     /**
      * The protocol buffer options.
      */
-    options?: servicemanagement$Option[];
+    options?: gapi$client$servicemanagement$Option[];
 
     /**
      * The source context.
      */
-    sourceContext?: servicemanagement$SourceContext;
+    sourceContext?: gapi$client$servicemanagement$SourceContext;
 
     /**
      * The source syntax.
@@ -2256,14 +2260,14 @@ declare module "gapi.client.servicemanagement" {
     syntax?: string;
   }
 
-  declare interface servicemanagement$UndeleteServiceResponse {
+  declare interface gapi$client$servicemanagement$UndeleteServiceResponse {
     /**
      * Revived service resource.
      */
-    service?: servicemanagement$ManagedService;
+    service?: gapi$client$servicemanagement$ManagedService;
   }
 
-  declare interface servicemanagement$Usage {
+  declare interface gapi$client$servicemanagement$Usage {
     /**
      * The full resource name of a channel used for sending notifications to the
      * service producer.
@@ -2291,7 +2295,7 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$UsageRule[];
   }
 
-  declare interface servicemanagement$UsageRule {
+  declare interface gapi$client$servicemanagement$UsageRule {
     /**
      * True, if the method allows unregistered calls; false otherwise.
      */
@@ -2312,7 +2316,7 @@ declare module "gapi.client.servicemanagement" {
     skipServiceControl?: boolean;
   }
 
-  declare interface servicemanagement$Visibility {
+  declare interface gapi$client$servicemanagement$Visibility {
     /**
      * A list of visibility rules that apply to individual API elements.
      *
@@ -2321,7 +2325,7 @@ declare module "gapi.client.servicemanagement" {
     rules?: servicemanagement$VisibilityRule[];
   }
 
-  declare interface servicemanagement$VisibilityRule {
+  declare interface gapi$client$servicemanagement$VisibilityRule {
     /**
      * A comma-separated list of visibility labels that apply to the `selector`.
      * Any of the listed labels can be used to grant the visibility.
@@ -2349,7 +2353,7 @@ declare module "gapi.client.servicemanagement" {
     selector?: string;
   }
 
-  declare interface servicemanagement$OperationsResource {
+  declare interface gapi$client$servicemanagement$OperationsResource {
     /**
      * Gets the latest state of a long-running operation.  Clients can use this
      * method to poll the operation result at intervals as recommended by the API
@@ -2425,7 +2429,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Lists service operations that match the specified filter in the request.
@@ -2535,10 +2539,10 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$ListOperationsResponse>;
+    }): Request<gapi$client$servicemanagement$ListOperationsResponse>;
   }
 
-  declare interface servicemanagement$ConfigsResource {
+  declare interface gapi$client$servicemanagement$ConfigsResource {
     /**
      * Creates a new service configuration (version) for a managed service.
      * This method only stores the service configuration. To roll out the service
@@ -2616,7 +2620,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Service>;
+    }): Request<gapi$client$servicemanagement$Service>;
 
     /**
      * Gets a service configuration (version) for a managed service.
@@ -2703,7 +2707,7 @@ declare module "gapi.client.servicemanagement" {
        * response.
        */
       view?: string
-    }): Request<servicemanagement$Service>;
+    }): Request<gapi$client$servicemanagement$Service>;
 
     /**
      * Lists the history of the service configuration for a managed service,
@@ -2790,7 +2794,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$ListServiceConfigsResponse>;
+    }): Request<gapi$client$servicemanagement$ListServiceConfigsResponse>;
 
     /**
      * Creates a new service configuration (version) for a managed service based
@@ -2874,10 +2878,10 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
   }
 
-  declare interface servicemanagement$ConsumersResource {
+  declare interface gapi$client$servicemanagement$ConsumersResource {
     /**
      * Gets the access control policy for a resource.
      * Returns an empty policy if the resource exists and does not have a policy
@@ -2954,7 +2958,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Policy>;
+    }): Request<gapi$client$servicemanagement$Policy>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -3031,7 +3035,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Policy>;
+    }): Request<gapi$client$servicemanagement$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -3113,10 +3117,10 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$TestIamPermissionsResponse>;
+    }): Request<gapi$client$servicemanagement$TestIamPermissionsResponse>;
   }
 
-  declare interface servicemanagement$RolloutsResource {
+  declare interface gapi$client$servicemanagement$RolloutsResource {
     /**
      * Creates a new service configuration rollout. Based on rollout, the
      * Google Service Management will roll out the service configurations to
@@ -3200,7 +3204,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Gets a service configuration rollout.
@@ -3281,7 +3285,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Rollout>;
+    }): Request<gapi$client$servicemanagement$Rollout>;
 
     /**
      * Lists the history of the service configuration rollouts for a managed
@@ -3380,10 +3384,10 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$ListServiceRolloutsResponse>;
+    }): Request<gapi$client$servicemanagement$ListServiceRolloutsResponse>;
   }
 
-  declare interface servicemanagement$ServicesResource {
+  declare interface gapi$client$servicemanagement$ServicesResource {
     /**
      * Creates a new managed service.
      * Please note one producer project can own no more than 20 services.
@@ -3455,7 +3459,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Deletes a managed service. This method will change the service to the
@@ -3536,7 +3540,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Disables a service for a project, so it can no longer be
@@ -3616,7 +3620,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Enables a service for a project, so it can be used
@@ -3697,7 +3701,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
+    }): Request<gapi$client$servicemanagement$Operation>;
 
     /**
      * Generates and returns a report (errors, warnings and changes from
@@ -3777,7 +3781,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$GenerateConfigReportResponse>;
+    }): Request<gapi$client$servicemanagement$GenerateConfigReportResponse>;
 
     /**
      * Gets a managed service. Authentication is required unless the service is
@@ -3854,7 +3858,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$ManagedService>;
+    }): Request<gapi$client$servicemanagement$ManagedService>;
 
     /**
      * Gets a service configuration (version) for a managed service.
@@ -3941,7 +3945,7 @@ declare module "gapi.client.servicemanagement" {
        * response.
        */
       view?: string
-    }): Request<servicemanagement$Service>;
+    }): Request<gapi$client$servicemanagement$Service>;
 
     /**
      * Gets the access control policy for a resource.
@@ -4019,7 +4023,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Policy>;
+    }): Request<gapi$client$servicemanagement$Policy>;
 
     /**
      * Lists managed services.
@@ -4122,7 +4126,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$ListServicesResponse>;
+    }): Request<gapi$client$servicemanagement$ListServicesResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -4199,7 +4203,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Policy>;
+    }): Request<gapi$client$servicemanagement$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -4281,7 +4285,7 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$TestIamPermissionsResponse>;
+    }): Request<gapi$client$servicemanagement$TestIamPermissionsResponse>;
 
     /**
      * Revives a previously deleted managed service. The method restores the
@@ -4362,9 +4366,9 @@ declare module "gapi.client.servicemanagement" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<servicemanagement$Operation>;
-    configs: servicemanagement$ConfigsResource;
-    consumers: servicemanagement$ConsumersResource;
-    rollouts: servicemanagement$RolloutsResource;
+    }): Request<gapi$client$servicemanagement$Operation>;
+    configs: gapi$client$servicemanagement$ConfigsResource;
+    consumers: gapi$client$servicemanagement$ConsumersResource;
+    rollouts: gapi$client$servicemanagement$RolloutsResource;
   }
 }
