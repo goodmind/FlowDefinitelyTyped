@@ -1,16 +1,20 @@
 declare module "jee-jsf" {
-  declare var npm$namespace$ajax: {
-    addOnEvent: typeof ajax$addOnEvent,
-    addOnError: typeof ajax$addOnError,
-    request: typeof ajax$request,
-    response: typeof ajax$response
+  declare var npm$namespace$jsf: {
+    ajax: typeof npm$namespace$jsf$ajax
   };
-  declare interface ajax$RequestData {
+
+  declare var npm$namespace$jsf$ajax: {
+    addOnEvent: typeof jsf$ajax$addOnEvent,
+    addOnError: typeof jsf$ajax$addOnError,
+    request: typeof jsf$ajax$request,
+    response: typeof jsf$ajax$response
+  };
+  declare interface jsf$ajax$RequestData {
     status: string;
     description: string;
   }
 
-  declare interface ajax$RequestOptions {
+  declare interface jsf$ajax$RequestOptions {
     /**
      * space seperated list of client identifiers
      */
@@ -25,13 +29,13 @@ declare module "jee-jsf" {
      * function to callback for event
      * @param callback the callback function
      */
-    onevent?: (callback: (data: ajax$RequestData) => void) => void;
+    onevent?: (callback: (data: jsf$ajax$RequestData) => void) => void;
 
     /**
      * function to callback for error
      * @param callback the callback function
      */
-    onerror?: (callback: (data: ajax$RequestData) => void) => void;
+    onerror?: (callback: (data: jsf$ajax$RequestData) => void) => void;
 
     /**
      * object containing parameters to include in the request
@@ -48,16 +52,16 @@ declare module "jee-jsf" {
    * Register a callback for event handling.
    * @param callback a reference to a function to call on an event
    */
-  declare function ajax$addOnEvent(
-    callback: (data: ajax$RequestData) => void
+  declare function jsf$ajax$addOnEvent(
+    callback: (data: jsf$ajax$RequestData) => void
   ): void;
 
   /**
    * Register a callback for error handling.
    * @param callback a reference to a function to call on an error
    */
-  declare function ajax$addOnError(
-    callback: (data: ajax$RequestData) => void
+  declare function jsf$ajax$addOnError(
+    callback: (data: jsf$ajax$RequestData) => void
   ): void;
 
   /**
@@ -66,10 +70,10 @@ declare module "jee-jsf" {
    * @param event The DOM event that triggered this Ajax request. The event argument is optional.
    * @param options The set of available options that can be sent as request parameters to control client and/or server side request processing.
    */
-  declare function ajax$request(
+  declare function jsf$ajax$request(
     source: any,
     event?: String,
-    options?: ajax$RequestOptions
+    options?: jsf$ajax$RequestOptions
   ): void;
 
   /**
@@ -78,5 +82,5 @@ declare module "jee-jsf" {
    * @param context An object containing the request context, including the following properties: the source element, per call onerror callback function, and per call onevent callback function.
    * @throws EmptyResponse error if request contains no data
    */
-  declare function ajax$response(ajax$request: any, context: any): void;
+  declare function jsf$ajax$response(request: any, context: any): void;
 }
