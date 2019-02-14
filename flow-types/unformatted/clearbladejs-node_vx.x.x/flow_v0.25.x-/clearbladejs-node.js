@@ -3,17 +3,13 @@ declare module 'clearbladejs-node' {
           Response,RequestCallback
         } from 'request/index';
 
-	declare export  class MessagingQOS {
-  constructor(...args: empty): mixed;
-static +MESSAGING_QOS_AT_MOST_ONCE: Class<MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE> & MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE & 0;// 0
-static +MESSAGING_QOS_AT_LEAST_ONCE: Class<MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE> & MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE & 1;// 1
-static +MESSAGING_QOS_EXACTLY_ONCE: Class<MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE> & MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE & 2;// 2
+	
+declare export  var MessagingQOS: {|
+  +MESSAGING_QOS_AT_MOST_ONCE: 0,// 0
++MESSAGING_QOS_AT_LEAST_ONCE: 1,// 1
++MESSAGING_QOS_EXACTLY_ONCE: 2,// 2
 
-}
-
-declare class MessagingQOS__MESSAGING_QOS_AT_MOST_ONCE mixins MessagingQOS {}
-declare class MessagingQOS__MESSAGING_QOS_AT_LEAST_ONCE mixins MessagingQOS {}
-declare class MessagingQOS__MESSAGING_QOS_EXACTLY_ONCE mixins MessagingQOS {}
+|};
 
 	declare export interface Resp {
 error(msg: any): empty,
@@ -31,7 +27,7 @@ useUser?: APIUser,
 URI?: string,
 messagingURI?: string,
 messagingPort?: number,
-defaultQoS?: MessagingQOS,
+defaultQoS?: $Values<typeof MessagingQOS>,
 callTimeout?: number
 } 
 	declare export interface RequestOptions {
@@ -62,10 +58,13 @@ isCurrentUserAuthenticated(callback: CbCallback): void
 addToQuery(queryObj: QueryObj, key: string, value: string): void,
 addFilterToQuery(
 queryObj: QueryObj,
-condition: QueryConditions,
+condition: $Values<typeof QueryConditions>,
 key: string,
 value: QueryValue): void,
-addSortToQuery(queryObj: QueryObj, direction: QuerySortDirections, column: string): void,
+addSortToQuery(
+queryObj: QueryObj,
+direction: $Values<typeof QuerySortDirections>,
+column: string): void,
 Code(): Code,
 Collection(
 options: string | CollectionOptionsWithName | CollectionOptionsWithID): Collection,
@@ -114,35 +113,24 @@ create(newItem: Item, callback: CbCallback): void,
 update(query: Query, changes: {[key: string]: any}, callback: CbCallback): void,
 remove(query: Query, callback: CbCallback): void
 } 
-	declare export  class QuerySortDirections {
-  constructor(...args: empty): mixed;
-static +QUERY_SORT_ASCENDING: Class<QuerySortDirections__QUERY_SORT_ASCENDING> & QuerySortDirections__QUERY_SORT_ASCENDING & "ASC";// "ASC"
-static +QUERY_SORT_DESCENDING: Class<QuerySortDirections__QUERY_SORT_DESCENDING> & QuerySortDirections__QUERY_SORT_DESCENDING & "DESC";// "DESC"
+	
+declare export  var QuerySortDirections: {|
+  +QUERY_SORT_ASCENDING: "ASC",// "ASC"
++QUERY_SORT_DESCENDING: "DESC",// "DESC"
 
-}
+|};
 
-declare class QuerySortDirections__QUERY_SORT_ASCENDING mixins QuerySortDirections {}
-declare class QuerySortDirections__QUERY_SORT_DESCENDING mixins QuerySortDirections {}
+	
+declare export  var QueryConditions: {|
+  +QUERY_EQUAL: "EQ",// "EQ"
++QUERY_NOTEQUAL: "NEQ",// "NEQ"
++QUERY_GREATERTHAN: "GT",// "GT"
++QUERY_GREATERTHAN_EQUAL: "GTE",// "GTE"
++QUERY_LESSTHAN: "LT",// "LT"
++QUERY_LESSTHAN_EQUAL: "LTE",// "LTE"
++QUERY_MATCHES: "RE",// "RE"
 
-	declare export  class QueryConditions {
-  constructor(...args: empty): mixed;
-static +QUERY_EQUAL: Class<QueryConditions__QUERY_EQUAL> & QueryConditions__QUERY_EQUAL & "EQ";// "EQ"
-static +QUERY_NOTEQUAL: Class<QueryConditions__QUERY_NOTEQUAL> & QueryConditions__QUERY_NOTEQUAL & "NEQ";// "NEQ"
-static +QUERY_GREATERTHAN: Class<QueryConditions__QUERY_GREATERTHAN> & QueryConditions__QUERY_GREATERTHAN & "GT";// "GT"
-static +QUERY_GREATERTHAN_EQUAL: Class<QueryConditions__QUERY_GREATERTHAN_EQUAL> & QueryConditions__QUERY_GREATERTHAN_EQUAL & "GTE";// "GTE"
-static +QUERY_LESSTHAN: Class<QueryConditions__QUERY_LESSTHAN> & QueryConditions__QUERY_LESSTHAN & "LT";// "LT"
-static +QUERY_LESSTHAN_EQUAL: Class<QueryConditions__QUERY_LESSTHAN_EQUAL> & QueryConditions__QUERY_LESSTHAN_EQUAL & "LTE";// "LTE"
-static +QUERY_MATCHES: Class<QueryConditions__QUERY_MATCHES> & QueryConditions__QUERY_MATCHES & "RE";// "RE"
-
-}
-
-declare class QueryConditions__QUERY_EQUAL mixins QueryConditions {}
-declare class QueryConditions__QUERY_NOTEQUAL mixins QueryConditions {}
-declare class QueryConditions__QUERY_GREATERTHAN mixins QueryConditions {}
-declare class QueryConditions__QUERY_GREATERTHAN_EQUAL mixins QueryConditions {}
-declare class QueryConditions__QUERY_LESSTHAN mixins QueryConditions {}
-declare class QueryConditions__QUERY_LESSTHAN_EQUAL mixins QueryConditions {}
-declare class QueryConditions__QUERY_MATCHES mixins QueryConditions {}
+|};
 
 	declare export type QueryValue = string | number | boolean;
 	declare export interface QueryOptions {
@@ -159,7 +147,7 @@ collection: string
 
 	declare export interface Query {
 SELECTCOLUMNS?: string[],
-SORT?: QuerySortDirections,
+SORT?: $Values<typeof QuerySortDirections>,
 FILTERS?: QueryFilter[],
 PAGESIZE?: number,
 PAGENUM?: number
@@ -242,11 +230,11 @@ hosts?: string,
 ports?: string
 } 
 	declare export type MessagingOptions = {
-qos?: MessagingQOS
+qos?: $Values<typeof MessagingQOS>
 } & CommonMessagingProperties
 
 	declare export interface MessagingSubscribeOptions {
-qos?: MessagingQOS,
+qos?: $Values<typeof MessagingQOS>,
 timeout?: number
 } 
 	declare export type MessageCallback = (message: string) => void;
