@@ -10,7 +10,7 @@ declare module "serve-static" {
    */
   declare function serveStatic(
     root: string,
-    options?: serveStatic$serveStatic.serveStatic$ServeStaticOptions
+    options?: serveStatic$ServeStaticOptions
   ): express.Handler;
 
   declare var npm$namespace$serveStatic: {
@@ -97,5 +97,5 @@ declare module "serve-static" {
     options?: serveStatic$ServeStaticOptions
   ): express.Handler;
 
-  declare module.exports: typeof serveStatic$serveStatic;
+  declare export default typeof serveStatic;
 }
