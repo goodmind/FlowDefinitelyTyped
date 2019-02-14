@@ -1,11 +1,11 @@
 declare module "cp-file" {
-  declare module.exports: typeof cpFile;
+  declare export default typeof cpFile;
 
   declare function cpFile(
     source: string,
     destination: string,
-    options?: cpFile$cpFile$Options
-  ): Promise<void> & cpFile$cpFile$ProgressEmitter;
+    options?: cpFile$Options
+  ): Promise<void> & cpFile$ProgressEmitter;
 
   declare var npm$namespace$cpFile: {
     sync: typeof cpFile$sync
