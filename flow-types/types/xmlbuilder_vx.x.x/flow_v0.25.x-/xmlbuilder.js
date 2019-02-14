@@ -1,9 +1,12 @@
 declare module "xmlbuilder" {
-  declare module.exports: typeof xmlbuilder;
+  declare export default typeof xmlbuilder;
 
   declare var npm$namespace$xmlbuilder: {
     create: typeof xmlbuilder$create,
-    begin: typeof xmlbuilder$begin
+    begin: typeof xmlbuilder$begin,
+
+    XMLDocType: typeof xmlbuilder$XMLDocType,
+    XMLElementOrXMLNode: typeof xmlbuilder$XMLElementOrXMLNode
   };
   declare class xmlbuilder$XMLDocType {
     clone(): xmlbuilder$XMLDocType;
@@ -175,7 +178,7 @@ declare module "xmlbuilder" {
 
   declare type xmlbuilder$XMLEndOptions = {
     writer?: xmlbuilder$XMLWriter
-  } & xmlbuilder$XMLToStringOptions;
+  } & XMLToStringOptions;
 
   declare function xmlbuilder$create(
     nameOrObjSpec:
