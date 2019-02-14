@@ -1,9 +1,9 @@
 declare module "xmlrpc" {
   import type { EventEmitter } from "events";
 
-  import type { xmlrpc$Server as HttpServer } from "http";
+  import type { Server as HttpServer } from "http";
 
-  import type { xmlrpc$Server as HttpsServer } from "https";
+  import type { Server as HttpsServer } from "https";
 
   import type { TlsOptions } from "tls";
 
@@ -52,7 +52,9 @@ declare module "xmlrpc" {
     createSecureClient: typeof xmlrpc$createSecureClient,
     createServer: typeof xmlrpc$createServer,
     createSecureServer: typeof xmlrpc$createSecureServer,
-    dateFormatter: typeof xmlrpc$dateFormatter
+    dateFormatter: typeof xmlrpc$dateFormatter,
+
+    CustomType: typeof xmlrpc$CustomType
   };
   declare function xmlrpc$createClient(
     options: string | ClientOptions
