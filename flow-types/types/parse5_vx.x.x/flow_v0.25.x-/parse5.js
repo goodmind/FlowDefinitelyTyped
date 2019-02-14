@@ -563,13 +563,13 @@ declare module "parse5" {
    * @param html - Input HTML string.
    * @param options - Parsing options.
    * @example ```js
-   *
-   * const parse5 = require('parse5');
-   *
-   * const document = parse5.parse('<!DOCTYPE html><html><head></head><body>Hi there!</body></html>');
-   *
-   * console.log(document.childNodes[1].tagName); //> 'html'
-   * ```
+   *  *
+   *  * const parse5 = require('parse5');
+   *  *
+   *  * const document = parse5.parse('<!DOCTYPE html><html><head></head><body>Hi there!</body></html>');
+   *  *
+   *  * console.log(document.childNodes[1].tagName); //> 'html'
+   *  * ```
    */
   declare export function parse(
     html: string,
@@ -582,18 +582,18 @@ declare module "parse5" {
    * @param html - Input HTML fragment string.
    * @param options - Parsing options.
    * @example ```js
-   *
-   * const parse5 = require('parse5');
-   *
-   * const documentFragment = parse5.parseFragment('<table></table>');
-   *
-   * console.log(documentFragment.childNodes[0].tagName); //> 'table'
-   *
-   * // Parses the html fragment in the context of the parsed <table> element.
-   * const trFragment = parser.parseFragment(documentFragment.childNodes[0], '<tr><td>Shake it, baby</td></tr>');
-   *
-   * console.log(trFragment.childNodes[0].childNodes[0].tagName); //> 'td'
-   * ```
+   *  *
+   *  * const parse5 = require('parse5');
+   *  *
+   *  * const documentFragment = parse5.parseFragment('<table></table>');
+   *  *
+   *  * console.log(documentFragment.childNodes[0].tagName); //> 'table'
+   *  *
+   *  * // Parses the html fragment in the context of the parsed <table> element.
+   *  * const trFragment = parser.parseFragment(documentFragment.childNodes[0], '<tr><td>Shake it, baby</td></tr>');
+   *  *
+   *  * console.log(trFragment.childNodes[0].childNodes[0].tagName); //> 'td'
+   *  * ```
    */
   declare export function parseFragment(
     fragmentContext: Element,
@@ -611,19 +611,19 @@ declare module "parse5" {
    * @param node - Node to serialize.
    * @param options - Serialization options.
    * @example ```js
-   *
-   * const parse5 = require('parse5');
-   *
-   * const document = parse5.parse('<!DOCTYPE html><html><head></head><body>Hi there!</body></html>');
-   *
-   * // Serializes a document.
-   * const html = parse5.serialize(document);
-   *
-   * // Serializes the <html> element content.
-   * const str = parse5.serialize(document.childNodes[1]);
-   *
-   * console.log(str); //> '<head></head><body>Hi there!</body>'
-   * ```
+   *  *
+   *  * const parse5 = require('parse5');
+   *  *
+   *  * const document = parse5.parse('<!DOCTYPE html><html><head></head><body>Hi there!</body></html>');
+   *  *
+   *  * // Serializes a document.
+   *  * const html = parse5.serialize(document);
+   *  *
+   *  * // Serializes the <html> element content.
+   *  * const str = parse5.serialize(document.childNodes[1]);
+   *  *
+   *  * console.log(str); //> '<head></head><body>Hi there!</body>'
+   *  * ```
    */
   declare export function serialize(
     node: Node,
