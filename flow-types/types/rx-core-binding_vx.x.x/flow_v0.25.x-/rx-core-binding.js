@@ -7,11 +7,11 @@ declare var npm$namespace$Rx: {
 };
 declare type Rx$ISubject<T> = {
   hasObservers(): boolean
-} & Rx$Observable<T> &
+} & Observable<T> &
   Observer<T> &
   IDisposable;
 
-declare type Rx$Subject<T> = {} & Rx$ISubject<T>;
+declare type Rx$Subject<T> = {} & ISubject<T>;
 
 declare interface Rx$SubjectStatic {
   new<T>(): Rx$Subject<T>;
@@ -23,7 +23,7 @@ declare interface Rx$SubjectStatic {
 
 declare var Rx$Subject: Rx$SubjectStatic;
 
-declare type Rx$AsyncSubject<T> = {} & Rx$Subject<T>;
+declare type Rx$AsyncSubject<T> = {} & Subject<T>;
 
 declare interface Rx$AsyncSubjectStatic {
   new<T>(): Rx$AsyncSubject<T>;
@@ -33,7 +33,7 @@ declare var Rx$AsyncSubject: Rx$AsyncSubjectStatic;
 
 declare type Rx$BehaviorSubject<T> = {
   getValue(): T
-} & Rx$Subject<T>;
+} & Subject<T>;
 
 declare interface Rx$BehaviorSubjectStatic {
   new<T>(initialValue: T): Rx$BehaviorSubject<T>;
@@ -41,7 +41,7 @@ declare interface Rx$BehaviorSubjectStatic {
 
 declare var Rx$BehaviorSubject: Rx$BehaviorSubjectStatic;
 
-declare type Rx$ReplaySubject<T> = {} & Rx$Subject<T>;
+declare type Rx$ReplaySubject<T> = {} & Subject<T>;
 
 declare interface Rx$ReplaySubjectStatic {
   new<T>(
@@ -56,7 +56,7 @@ declare var Rx$ReplaySubject: Rx$ReplaySubjectStatic;
 declare type Rx$ConnectableObservable<T> = {
   connect(): IDisposable,
   refCount(): Rx$Observable<T>
-} & Rx$Observable<T>;
+} & Observable<T>;
 
 declare interface Rx$ConnectableObservableStatic {
   new<T>(): Rx$ConnectableObservable<T>;
@@ -121,5 +121,5 @@ declare interface Rx$Observable<T> {
   ): Rx$Observable<T>;
 }
 declare module "rx-core-binding" {
-  declare module.exports: typeof Rx;
+  declare export default typeof Rx;
 }
