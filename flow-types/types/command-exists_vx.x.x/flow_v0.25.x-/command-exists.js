@@ -1,5 +1,5 @@
 declare module "command-exists" {
-  declare module.exports: typeof commandExists;
+  declare export default typeof commandExists;
 
   declare function commandExists(commandName: string): Promise<string>;
 
