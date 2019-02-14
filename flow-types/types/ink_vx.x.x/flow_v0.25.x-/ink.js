@@ -1,33 +1,28 @@
-declare type JSX$Element = InkElement;
-
-declare type JSX$ElementClass = Component;
-
-declare type JSX$FunctionalElement = StatelessComponent;
-
-declare interface JSX$ElementAttributesProperty {
-  props: {};
-}
-
-declare interface JSX$ElementChildrenAttribute {
-  children: {};
-}
-
-declare interface JSX$IntrinsicClassAttributes<T> {
-  ref?: (ref: T | null) => void;
-}
-
-declare interface JSX$IntrinsicElements {
-  div: {};
-  span: {};
-  br: {};
-}
 declare module "global" {
-}
+  declare type JSX$Element = InkElement;
 
-declare var npm$namespace$h: {
-  Fragment: typeof h$Fragment
-};
-declare var h$Fragment: InkComponent;
+  declare type JSX$ElementClass = Component;
+
+  declare type JSX$FunctionalElement = StatelessComponent;
+
+  declare interface JSX$ElementAttributesProperty {
+    props: {};
+  }
+
+  declare interface JSX$ElementChildrenAttribute {
+    children: {};
+  }
+
+  declare interface JSX$IntrinsicClassAttributes<T> {
+    ref?: (ref: T | null) => void;
+  }
+
+  declare interface JSX$IntrinsicElements {
+    div: {};
+    span: {};
+    br: {};
+  }
+}
 declare module "ink" {
   import type { ValidationMap } from "prop-types";
 
@@ -50,9 +45,9 @@ declare module "ink" {
     ...children: InkNode[]
   ): InkElement;
 
-  declare export function h<T: $Keys<JSX$JSX$IntrinsicElements>>(
+  declare export function h<T: $Keys<JSX$IntrinsicElements>>(
     type: T,
-    props: $ElementType<JSX$JSX$IntrinsicElements, T>,
+    props: $ElementType<JSX$IntrinsicElements, T>,
     ...children: InkNode[]
   ): InkElement;
 
@@ -118,7 +113,12 @@ declare module "ink" {
     defaultProps?: Record<string, any>;
     propTypes?: ValidationMap<Record<string, any>>;
   }
-  declare export var h$Fragment: typeof undefined;
+
+  declare var npm$namespace$h: {
+    Fragment: typeof h$Fragment
+  };
+  declare var h$Fragment: InkComponent;
+  declare export var h$Fragment: typeof h$Fragment;
   declare export var Color: ComponentClass<{
     rgb?: [number, number, number],
     hsl?: [number, number, number],
