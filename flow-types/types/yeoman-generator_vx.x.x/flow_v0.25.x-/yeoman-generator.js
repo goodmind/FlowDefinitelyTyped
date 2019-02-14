@@ -4,19 +4,23 @@ declare module "yeoman-generator" {
   import typeof * as inquirer from "inquirer";
 
   declare type Callback = (err: any) => void;
+
+  declare var npm$namespace$Generator: {
+    Storage: typeof Generator$Storage
+  };
   declare type Generator$Question = {
     /**
      * whether to store the user's previous answer
      */
     store?: boolean
-  } & inquirer.Generator$Question;
+  } & inquirer.Question;
 
   declare type Generator$Questions =
     | Generator$Question
     | Generator$Question[]
     | Rx.Observable<Generator$Question>;
 
-  declare type Generator$Answers = inquirer.Generator$Answers;
+  declare type Generator$Answers = inquirer.Answers;
 
   declare class Generator$Storage {
     constructor(
@@ -111,13 +115,13 @@ declare module "yeoman-generator" {
     resolved: string;
     description: string;
     appname: string;
-    config: Generator$Generator$Storage;
-    fs: Generator$Generator$MemFsEditor;
+    config: Generator$Storage;
+    fs: Generator$MemFsEditor;
     options: {
       [name: string]: any
     };
     log(message?: string, context?: any): void;
-    argument(name: string, config: Generator$Generator$ArgumentConfig): this;
+    argument(name: string, config: Generator$ArgumentConfig): this;
     composeWith(
       namespace: string,
       options: {
@@ -131,10 +135,8 @@ declare module "yeoman-generator" {
     destinationPath(...path: string[]): string;
     destinationRoot(rootPath?: string): string;
     determineAppname(): string;
-    option(name: string, config: Generator$Generator$OptionConfig): this;
-    prompt(
-      questions: Generator$Generator$Questions
-    ): Promise<Generator$Generator$Answers>;
+    option(name: string, config: Generator$OptionConfig): this;
+    prompt(questions: Generator$Questions): Promise<Generator$Answers>;
     registerTransformStream(stream: {} | Array<{}>): this;
     rootGeneratorName(): string;
     rootGeneratorVersion(): string;
@@ -164,18 +166,18 @@ declare module "yeoman-generator" {
     ): void;
 
     /**
- * Runs `npm` and `bower`, in sequence, in the generated directory and prints a
- * message to let the user know.
- * @example this.installDependencies({
-bower: true,
-npm: true
-}).then(() => console.log('Everything is ready!'));
- * @example this.installDependencies({
-yarn: {force: true},
-npm: false
-}).then(() => console.log('Everything is ready!'));
- */
-    installDependencies(options?: Generator$Generator$InstallOptions): void;
+     * Runs `npm` and `bower`, in sequence, in the generated directory and prints a
+     * message to let the user know.
+     * @example this.installDependencies({
+     * bower: true,
+     * npm: true
+     * }).then(() => console.log('Everything is ready!'));
+     * @example this.installDependencies({
+     * yarn: {force: true},
+     * npm: false
+     * }).then(() => console.log('Everything is ready!'));
+     */
+    installDependencies(options?: Generator$InstallOptions): void;
 
     /**
      * Receives a list of `packages` and an `options` object to install through npm.
@@ -192,16 +194,16 @@ npm: false
     ): void;
 
     /**
- * Combine package manager cmd line arguments and run the `install` command.
- * 
- * During the `install` step, every command will be scheduled to run once, on the
- * run loop.
- * @param installer Which package manager to use
- * @param paths Packages to install. Use an empty string for `npm install`
- * @param options Options to pass to `dargs` as arguments
- * @param spawnOptions Options to pass `child_process.spawn`. ref
-https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options
- */
+     * Combine package manager cmd line arguments and run the `install` command.
+     *
+     * During the `install` step, every command will be scheduled to run once, on the
+     * run loop.
+     * @param installer Which package manager to use
+     * @param paths Packages to install. Use an empty string for `npm install`
+     * @param options Options to pass to `dargs` as arguments
+     * @param spawnOptions Options to pass `child_process.spawn`. ref
+     * https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options
+     */
     scheduleInstallTask(
       installer: string,
       paths?: string | string[],
@@ -240,13 +242,13 @@ https://nodejs.org/api/child_process.html#child_process_child_process_spawn_comm
       },
       +github: {
         /**
- * Retrieves GitHub's username from the GitHub API
- * @return Resolved with the GitHub username or rejected if unable to
-get the information
- */
+         * Retrieves GitHub's username from the GitHub API
+         * @return Resolved with the GitHub username or rejected if unable to
+         * get the information
+         */
         username(): Promise<string>
       }
     };
   }
-  declare module.exports: typeof Generator;
+  declare export default typeof Generator;
 }
