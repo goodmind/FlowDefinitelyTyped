@@ -7,7 +7,17 @@ declare module "vortex-web-client" {
     DataReaderQos: typeof DDS$DataReaderQos,
     DataWriterQos: typeof DDS$DataWriterQos,
     runtime: typeof DDS$runtime,
-    VERSION: typeof DDS$VERSION
+    VERSION: typeof DDS$VERSION,
+    HistoryKind: typeof DDS$HistoryKind,
+    ReliabilityKind: typeof DDS$ReliabilityKind,
+    DurabilityKind: typeof DDS$DurabilityKind,
+    History: typeof DDS$History,
+    Reliability: typeof DDS$Reliability,
+    Durability: typeof DDS$Durability,
+    Topic: typeof DDS$Topic,
+    DataReader: typeof DDS$DataReader,
+    DataWriter: typeof DDS$DataWriter,
+    DataCache: typeof DDS$DataCache
   };
 
   /**
@@ -18,23 +28,16 @@ declare module "vortex-web-client" {
   /**
    * History policy
    */
-  declare export class DDS$HistoryKind {
-    constructor(...args: empty): mixed;
-    static +KeepAll: Class<DDS$HistoryKind__KeepAll> &
-      DDS$HistoryKind__KeepAll &
-      0; // 0
-    static +KeepLast: Class<DDS$HistoryKind__KeepLast> &
-      DDS$HistoryKind__KeepLast &
-      1; // 1
-  }
 
-  declare class DDS$HistoryKind__KeepAll mixins DDS$HistoryKind {}
-  declare class DDS$HistoryKind__KeepLast mixins DDS$HistoryKind {}
+  declare export var DDS$HistoryKind: {|
+    +KeepAll: 0, // 0
+    +KeepLast: 1 // 1
+  |};
 
   /**
    * History policy
    */
-  declare export class DDS$History mixins DDS$Policy {
+  declare export class DDS$History mixins Policy {
     /**
      * KeepAll - KEEP_ALL qos policy
      */
@@ -50,23 +53,16 @@ declare module "vortex-web-client" {
    * Reliability Policy
    * @example var qos = Reliability.Reliable
    */
-  declare export class DDS$ReliabilityKind {
-    constructor(...args: empty): mixed;
-    static +Reliable: Class<DDS$ReliabilityKind__Reliable> &
-      DDS$ReliabilityKind__Reliable &
-      0; // 0
-    static +BestEffort: Class<DDS$ReliabilityKind__BestEffort> &
-      DDS$ReliabilityKind__BestEffort &
-      1; // 1
-  }
 
-  declare class DDS$ReliabilityKind__Reliable mixins DDS$ReliabilityKind {}
-  declare class DDS$ReliabilityKind__BestEffort mixins DDS$ReliabilityKind {}
+  declare export var DDS$ReliabilityKind: {|
+    +Reliable: 0, // 0
+    +BestEffort: 1 // 1
+  |};
 
   /**
    * History policy
    */
-  declare export class DDS$Reliability mixins DDS$Policy {
+  declare export class DDS$Reliability mixins Policy {
     /**
      * Reliable - 'Reliable' reliability policy
      */
@@ -102,31 +98,18 @@ declare module "vortex-web-client" {
   /**
    * Durability Policy
    */
-  declare export class DDS$DurabilityKind {
-    constructor(...args: empty): mixed;
-    static +Volatile: Class<DDS$DurabilityKind__Volatile> &
-      DDS$DurabilityKind__Volatile &
-      0; // 0
-    static +TransientLocal: Class<DDS$DurabilityKind__TransientLocal> &
-      DDS$DurabilityKind__TransientLocal &
-      1; // 1
-    static +Transient: Class<DDS$DurabilityKind__Transient> &
-      DDS$DurabilityKind__Transient &
-      2; // 2
-    static +Persistent: Class<DDS$DurabilityKind__Persistent> &
-      DDS$DurabilityKind__Persistent &
-      3; // 3
-  }
 
-  declare class DDS$DurabilityKind__Volatile mixins DDS$DurabilityKind {}
-  declare class DDS$DurabilityKind__TransientLocal mixins DDS$DurabilityKind {}
-  declare class DDS$DurabilityKind__Transient mixins DDS$DurabilityKind {}
-  declare class DDS$DurabilityKind__Persistent mixins DDS$DurabilityKind {}
+  declare export var DDS$DurabilityKind: {|
+    +Volatile: 0, // 0
+    +TransientLocal: 1, // 1
+    +Transient: 2, // 2
+    +Persistent: 3 // 3
+  |};
 
   /**
    * Durability Qos Policy
    */
-  declare export class DDS$Durability mixins DDS$Policy {
+  declare export class DDS$Durability mixins Policy {
     /**
      * Volatile - Volatile durability policy
      */
@@ -465,7 +448,7 @@ declare module "vortex-web-client" {
   }
 
   declare export var DDS$runtime: {
-    DDS$Runtime: DDS$Runtime
+    Runtime: DDS$Runtime
   };
 
   declare export var DDS$VERSION: string;
