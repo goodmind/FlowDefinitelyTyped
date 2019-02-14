@@ -221,8 +221,8 @@ declare module "react-native-fetch-blob" {
     +UNSENT: number,
     +OPENED: number,
     +HEADERS_RECEIVED: number,
-    +PolyfillFileReader$LOADING: number,
-    +PolyfillFileReader$DONE: number,
+    +LOADING: number,
+    +DONE: number,
 
     /**
      * XMLHttpRequest.open, always async, user and password not supported. When
@@ -313,10 +313,10 @@ declare module "react-native-fetch-blob" {
     getCookies(domain: string): Promise<string[]>;
 
     /**
- * Remove cookies for a specific domain
- * @param domain Domain of the cookies to be removed, remove all
-cookies when this is null.
- */
+     * Remove cookies for a specific domain
+     * @param domain Domain of the cookies to be removed, remove all
+     * cookies when this is null.
+     */
     removeCookies(domain?: string): Promise<null>;
   }
   declare export interface FS {
