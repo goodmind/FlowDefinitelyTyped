@@ -76,5 +76,5 @@ declare module "xml" {
     options?: boolean | string | Option
   ): string;
 
-  declare module.exports: typeof xml;
+  declare export default typeof xml;
 }
