@@ -1,26 +1,30 @@
 declare module "gapi.client.acceleratedmobilepageurl" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    ampUrls: typeof client$ampUrls
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    ampUrls: typeof gapi$client$ampUrls
   };
 
   /**
    * Load Accelerated Mobile Pages (AMP) URL API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "acceleratedmobilepageurl",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "acceleratedmobilepageurl",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$ampUrls: acceleratedmobilepageurl$acceleratedmobilepageurl$AmpUrlsResource;
+  declare var gapi$client$ampUrls: acceleratedmobilepageurl$AmpUrlsResource;
 
-  declare interface acceleratedmobilepageurl$AmpUrl {
+  declare interface gapi$client$acceleratedmobilepageurl$AmpUrl {
     /**
      * The AMP URL pointing to the publisher's web server.
      */
@@ -38,7 +42,7 @@ declare module "gapi.client.acceleratedmobilepageurl" {
     originalUrl?: string;
   }
 
-  declare interface acceleratedmobilepageurl$AmpUrlError {
+  declare interface gapi$client$acceleratedmobilepageurl$AmpUrlError {
     /**
      * The error code of an API call.
      */
@@ -55,7 +59,7 @@ declare module "gapi.client.acceleratedmobilepageurl" {
     originalUrl?: string;
   }
 
-  declare interface acceleratedmobilepageurl$BatchGetAmpUrlsRequest {
+  declare interface gapi$client$acceleratedmobilepageurl$BatchGetAmpUrlsRequest {
     /**
      * The lookup_strategy being requested.
      */
@@ -69,22 +73,22 @@ declare module "gapi.client.acceleratedmobilepageurl" {
     urls?: string[];
   }
 
-  declare interface acceleratedmobilepageurl$BatchGetAmpUrlsResponse {
+  declare interface gapi$client$acceleratedmobilepageurl$BatchGetAmpUrlsResponse {
     /**
      * For each URL in BatchAmpUrlsRequest, the URL response. The response might
      * not be in the same order as URLs in the batch request.
      * If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
      * only once.
      */
-    client$ampUrls?: acceleratedmobilepageurl$AmpUrl[];
+    ampUrls?: gapi$client$acceleratedmobilepageurl$AmpUrl[];
 
     /**
      * The errors for requested URLs that have no AMP URL.
      */
-    urlErrors?: acceleratedmobilepageurl$AmpUrlError[];
+    urlErrors?: gapi$client$acceleratedmobilepageurl$AmpUrlError[];
   }
 
-  declare interface acceleratedmobilepageurl$AmpUrlsResource {
+  declare interface gapi$client$acceleratedmobilepageurl$AmpUrlsResource {
     /**
      * Returns AMP URL(s) and equivalent
      * [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
@@ -154,6 +158,6 @@ declare module "gapi.client.acceleratedmobilepageurl" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<acceleratedmobilepageurl$BatchGetAmpUrlsResponse>;
+    }): Request<gapi$client$acceleratedmobilepageurl$BatchGetAmpUrlsResponse>;
   }
 }
