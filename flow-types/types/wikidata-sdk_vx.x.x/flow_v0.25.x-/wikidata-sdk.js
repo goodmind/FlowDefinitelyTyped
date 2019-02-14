@@ -110,10 +110,10 @@ declare module "wikidata-sdk" {
   }): string;
 
   /**
- * @alias getEntities
-
-Without id limitation and return the array of url instead.
- */
+   * @alias getEntities
+   *
+   * Without id limitation and return the array of url instead.
+   */
   declare export function getManyEntities(
     ids: string | string[],
     languages?: WikidataLanguage | WikidataLanguage[],
@@ -349,10 +349,7 @@ Without id limitation and return the array of url instead.
    * @param opt simlify option. currently only simplify claims and simplify sitelinks.
    * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-entity | Github[simplify-entity]}
    */
-  declare function simplify$entity<T>(
-    simplify$entity: T,
-    opt?: SimplifyOption
-  ): T;
+  declare function simplify$entity<T>(entity: T, opt?: SimplifyOption): T;
 
   /**
    * This is a same of {@link entity} method except this input as multiple array of entities.
@@ -361,64 +358,64 @@ Without id limitation and return the array of url instead.
    * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities | Github[simplify-entities]}
    */
   declare function simplify$entities<T>(
-    simplify$entities: T[],
+    entities: T[],
     opt?: SimplifyOption
   ): T[];
 
   /**
- * Make label simplifier and easier to understand
- * @param labels label object, you will receive this from getEntities method
- * @example const label = simplify.labels("{ pl: { language: 'pl', value: 'książka' } }");
-console.log(label) // { pl: 'książka' }
- * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-labels | Github[simplify-labels]}
- */
+   * Make label simplifier and easier to understand
+   * @param labels label object, you will receive this from getEntities method
+   * @example const label = simplify.labels("{ pl: { language: 'pl', value: 'książka' } }");
+   * console.log(label) // { pl: 'książka' }
+   * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-labels | Github[simplify-labels]}
+   */
   declare function simplify$labels(
-    simplify$labels: WikidataLanguageBaseString
+    labels: WikidataLanguageBaseString
   ): WikidataLanguageBaseStringSimplify;
 
   /**
- * Make description simplifier and easier to understand
- * @param descriptions description object, you will receive this from getEntities method
- * @example const desc = simplify.descriptions("{ pl: { language: 'pl', value: 'dokument piśmienniczy [...]' } }");
-console.log(desc) // { pl: 'dokument piśmienniczy [...]' }
- * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-descriptions | Github[simplify-descriptions]}
- */
+   * Make description simplifier and easier to understand
+   * @param descriptions description object, you will receive this from getEntities method
+   * @example const desc = simplify.descriptions("{ pl: { language: 'pl', value: 'dokument piśmienniczy [...]' } }");
+   * console.log(desc) // { pl: 'dokument piśmienniczy [...]' }
+   * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-descriptions | Github[simplify-descriptions]}
+   */
   declare function simplify$descriptions(
-    simplify$descriptions: WikidataLanguageBaseString
+    descriptions: WikidataLanguageBaseString
   ): WikidataLanguageBaseStringSimplify;
 
   /**
- * Make alias simplifier and easier to understand
- * @param aliases alias object, you will receive this from getEntities method
- * @example const alias = simplify.aliases("{ pl: [ { language: 'pl', value: 'Tom' }, { language: 'pl', value: 'Tomik' } ] }");
-console.log(alias) // { pl: [ 'Tom', 'Tomik' ] }
- * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-aliases | Github[simplify-aliases]}
- */
+   * Make alias simplifier and easier to understand
+   * @param aliases alias object, you will receive this from getEntities method
+   * @example const alias = simplify.aliases("{ pl: [ { language: 'pl', value: 'Tom' }, { language: 'pl', value: 'Tomik' } ] }");
+   * console.log(alias) // { pl: [ 'Tom', 'Tomik' ] }
+   * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-aliases | Github[simplify-aliases]}
+   */
   declare function simplify$aliases(
-    simplify$aliases: WikidataLanguageBaseArrayString
+    aliases: WikidataLanguageBaseArrayString
   ): WikidataLanguageBaseArrayStringSimplify;
 
   /**
- * Make sitelink simplifier and easier to understand
- * @param sitelinks sitelink object, you will receive this from getEntities method
- * @example const site = simplify.sitelinks("{ plwiki: { site: 'plwiki', title: 'Książka', badges: [] } }");
-console.log(site) // { plwiki: 'Książka' }
- * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-sitelinks | Github[simplify-sitelinks]}
- */
+   * Make sitelink simplifier and easier to understand
+   * @param sitelinks sitelink object, you will receive this from getEntities method
+   * @example const site = simplify.sitelinks("{ plwiki: { site: 'plwiki', title: 'Książka', badges: [] } }");
+   * console.log(site) // { plwiki: 'Książka' }
+   * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#simplify-sitelinks | Github[simplify-sitelinks]}
+   */
   declare function simplify$sitelinks(
-    simplify$sitelinks: WikidataSiteLink
+    sitelinks: WikidataSiteLink
   ): WikidataSiteLinkSimplify;
 
   /**
- * Make sitelink simplifier and easier to understand. include URL in the result.
- * @param sitelinks sitelink object, you will receive this from getEntities method
- * @param options add url to a result
- * @example const site = simplify.sitelinks("{ plwiki: { site: 'plwiki', title: 'Książka', badges: [] } }", {addUrl: true});
-console.log(site) // { plwiki: { title: 'Książka', url: 'https://pl.wikipedia.org/wiki/Książka' } }
- * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#add-sitelinks-urls | Github[simplify-sitelinks-with-url]}
- */
+   * Make sitelink simplifier and easier to understand. include URL in the result.
+   * @param sitelinks sitelink object, you will receive this from getEntities method
+   * @param options add url to a result
+   * @example const site = simplify.sitelinks("{ plwiki: { site: 'plwiki', title: 'Książka', badges: [] } }", {addUrl: true});
+   * console.log(site) // { plwiki: { title: 'Książka', url: 'https://pl.wikipedia.org/wiki/Książka' } }
+   * @see {@link https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md#add-sitelinks-urls | Github[simplify-sitelinks-with-url]}
+   */
   declare function simplify$sitelinks(
-    simplify$sitelinks: WikidataSiteLink,
+    sitelinks: WikidataSiteLink,
     options: {
       addUrl: true
     }
