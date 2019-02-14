@@ -1,104 +1,108 @@
 declare module "gapi.client.youtube" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    activities: typeof client$activities,
-    captions: typeof client$captions,
-    channelBanners: typeof client$channelBanners,
-    channelSections: typeof client$channelSections,
-    channels: typeof client$channels,
-    commentThreads: typeof client$commentThreads,
-    comments: typeof client$comments,
-    fanFundingEvents: typeof client$fanFundingEvents,
-    guideCategories: typeof client$guideCategories,
-    i18nLanguages: typeof client$i18nLanguages,
-    i18nRegions: typeof client$i18nRegions,
-    liveBroadcasts: typeof client$liveBroadcasts,
-    liveChatBans: typeof client$liveChatBans,
-    liveChatMessages: typeof client$liveChatMessages,
-    liveChatModerators: typeof client$liveChatModerators,
-    liveStreams: typeof client$liveStreams,
-    playlistItems: typeof client$playlistItems,
-    playlists: typeof client$playlists,
-    search: typeof client$search,
-    sponsors: typeof client$sponsors,
-    subscriptions: typeof client$subscriptions,
-    superChatEvents: typeof client$superChatEvents,
-    thumbnails: typeof client$thumbnails,
-    videoAbuseReportReasons: typeof client$videoAbuseReportReasons,
-    videoCategories: typeof client$videoCategories,
-    videos: typeof client$videos,
-    watermarks: typeof client$watermarks
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    activities: typeof gapi$client$activities,
+    captions: typeof gapi$client$captions,
+    channelBanners: typeof gapi$client$channelBanners,
+    channelSections: typeof gapi$client$channelSections,
+    channels: typeof gapi$client$channels,
+    commentThreads: typeof gapi$client$commentThreads,
+    comments: typeof gapi$client$comments,
+    fanFundingEvents: typeof gapi$client$fanFundingEvents,
+    guideCategories: typeof gapi$client$guideCategories,
+    i18nLanguages: typeof gapi$client$i18nLanguages,
+    i18nRegions: typeof gapi$client$i18nRegions,
+    liveBroadcasts: typeof gapi$client$liveBroadcasts,
+    liveChatBans: typeof gapi$client$liveChatBans,
+    liveChatMessages: typeof gapi$client$liveChatMessages,
+    liveChatModerators: typeof gapi$client$liveChatModerators,
+    liveStreams: typeof gapi$client$liveStreams,
+    playlistItems: typeof gapi$client$playlistItems,
+    playlists: typeof gapi$client$playlists,
+    search: typeof gapi$client$search,
+    sponsors: typeof gapi$client$sponsors,
+    subscriptions: typeof gapi$client$subscriptions,
+    superChatEvents: typeof gapi$client$superChatEvents,
+    thumbnails: typeof gapi$client$thumbnails,
+    videoAbuseReportReasons: typeof gapi$client$videoAbuseReportReasons,
+    videoCategories: typeof gapi$client$videoCategories,
+    videos: typeof gapi$client$videos,
+    watermarks: typeof gapi$client$watermarks
   };
 
   /**
    * Load YouTube Data API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtube",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtube",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$activities: youtube$youtube$ActivitiesResource;
+  declare var gapi$client$activities: youtube$ActivitiesResource;
 
-  declare var client$captions: youtube$youtube$CaptionsResource;
+  declare var gapi$client$captions: youtube$CaptionsResource;
 
-  declare var client$channelBanners: youtube$youtube$ChannelBannersResource;
+  declare var gapi$client$channelBanners: youtube$ChannelBannersResource;
 
-  declare var client$channelSections: youtube$youtube$ChannelSectionsResource;
+  declare var gapi$client$channelSections: youtube$ChannelSectionsResource;
 
-  declare var client$channels: youtube$youtube$ChannelsResource;
+  declare var gapi$client$channels: youtube$ChannelsResource;
 
-  declare var client$commentThreads: youtube$youtube$CommentThreadsResource;
+  declare var gapi$client$commentThreads: youtube$CommentThreadsResource;
 
-  declare var client$comments: youtube$youtube$CommentsResource;
+  declare var gapi$client$comments: youtube$CommentsResource;
 
-  declare var client$fanFundingEvents: youtube$youtube$FanFundingEventsResource;
+  declare var gapi$client$fanFundingEvents: youtube$FanFundingEventsResource;
 
-  declare var client$guideCategories: youtube$youtube$GuideCategoriesResource;
+  declare var gapi$client$guideCategories: youtube$GuideCategoriesResource;
 
-  declare var client$i18nLanguages: youtube$youtube$I18nLanguagesResource;
+  declare var gapi$client$i18nLanguages: youtube$I18nLanguagesResource;
 
-  declare var client$i18nRegions: youtube$youtube$I18nRegionsResource;
+  declare var gapi$client$i18nRegions: youtube$I18nRegionsResource;
 
-  declare var client$liveBroadcasts: youtube$youtube$LiveBroadcastsResource;
+  declare var gapi$client$liveBroadcasts: youtube$LiveBroadcastsResource;
 
-  declare var client$liveChatBans: youtube$youtube$LiveChatBansResource;
+  declare var gapi$client$liveChatBans: youtube$LiveChatBansResource;
 
-  declare var client$liveChatMessages: youtube$youtube$LiveChatMessagesResource;
+  declare var gapi$client$liveChatMessages: youtube$LiveChatMessagesResource;
 
-  declare var client$liveChatModerators: youtube$youtube$LiveChatModeratorsResource;
+  declare var gapi$client$liveChatModerators: youtube$LiveChatModeratorsResource;
 
-  declare var client$liveStreams: youtube$youtube$LiveStreamsResource;
+  declare var gapi$client$liveStreams: youtube$LiveStreamsResource;
 
-  declare var client$playlistItems: youtube$youtube$PlaylistItemsResource;
+  declare var gapi$client$playlistItems: youtube$PlaylistItemsResource;
 
-  declare var client$playlists: youtube$youtube$PlaylistsResource;
+  declare var gapi$client$playlists: youtube$PlaylistsResource;
 
-  declare var client$search: youtube$youtube$SearchResource;
+  declare var gapi$client$search: youtube$SearchResource;
 
-  declare var client$sponsors: youtube$youtube$SponsorsResource;
+  declare var gapi$client$sponsors: youtube$SponsorsResource;
 
-  declare var client$subscriptions: youtube$youtube$SubscriptionsResource;
+  declare var gapi$client$subscriptions: youtube$SubscriptionsResource;
 
-  declare var client$superChatEvents: youtube$youtube$SuperChatEventsResource;
+  declare var gapi$client$superChatEvents: youtube$SuperChatEventsResource;
 
-  declare var client$thumbnails: youtube$youtube$ThumbnailsResource;
+  declare var gapi$client$thumbnails: youtube$ThumbnailsResource;
 
-  declare var client$videoAbuseReportReasons: youtube$youtube$VideoAbuseReportReasonsResource;
+  declare var gapi$client$videoAbuseReportReasons: youtube$VideoAbuseReportReasonsResource;
 
-  declare var client$videoCategories: youtube$youtube$VideoCategoriesResource;
+  declare var gapi$client$videoCategories: youtube$VideoCategoriesResource;
 
-  declare var client$videos: youtube$youtube$VideosResource;
+  declare var gapi$client$videos: youtube$VideosResource;
 
-  declare var client$watermarks: youtube$youtube$WatermarksResource;
+  declare var gapi$client$watermarks: youtube$WatermarksResource;
 
-  declare interface youtube$AccessPolicy {
+  declare interface gapi$client$youtube$AccessPolicy {
     /**
      * The value of allowed indicates whether the access to the policy is allowed or denied by default.
      */
@@ -110,7 +114,7 @@ declare module "gapi.client.youtube" {
     exception?: string[];
   }
 
-  declare interface youtube$Activity {
+  declare interface gapi$client$youtube$Activity {
     /**
      * The contentDetails object contains information about the content associated with the activity. For example, if the snippet.type value is videoRated,
      * then the contentDetails object's content identifies the rated video.
@@ -138,7 +142,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$ActivitySnippet;
   }
 
-  declare interface youtube$ActivityContentDetails {
+  declare interface gapi$client$youtube$ActivityContentDetails {
     /**
      * The bulletin object contains details about a channel bulletin post. This object is only present if the snippet.type is bulletin.
      */
@@ -199,42 +203,42 @@ declare module "gapi.client.youtube" {
     upload?: youtube$ActivityContentDetailsUpload;
   }
 
-  declare interface youtube$ActivityContentDetailsBulletin {
+  declare interface gapi$client$youtube$ActivityContentDetailsBulletin {
     /**
      * The resourceId object contains information that identifies the resource associated with a bulletin post.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsChannelItem {
+  declare interface gapi$client$youtube$ActivityContentDetailsChannelItem {
     /**
      * The resourceId object contains information that identifies the resource that was added to the channel.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsComment {
+  declare interface gapi$client$youtube$ActivityContentDetailsComment {
     /**
      * The resourceId object contains information that identifies the resource associated with the comment.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsFavorite {
+  declare interface gapi$client$youtube$ActivityContentDetailsFavorite {
     /**
      * The resourceId object contains information that identifies the resource that was marked as a favorite.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsLike {
+  declare interface gapi$client$youtube$ActivityContentDetailsLike {
     /**
      * The resourceId object contains information that identifies the rated resource.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsPlaylistItem {
+  declare interface gapi$client$youtube$ActivityContentDetailsPlaylistItem {
     /**
      * The value that YouTube uses to uniquely identify the playlist.
      */
@@ -251,7 +255,7 @@ declare module "gapi.client.youtube" {
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsPromotedItem {
+  declare interface gapi$client$youtube$ActivityContentDetailsPromotedItem {
     /**
      * The URL the client should fetch to request a promoted item.
      */
@@ -304,7 +308,7 @@ declare module "gapi.client.youtube" {
     videoId?: string;
   }
 
-  declare interface youtube$ActivityContentDetailsRecommendation {
+  declare interface gapi$client$youtube$ActivityContentDetailsRecommendation {
     /**
      * The reason that the resource is recommended to the user.
      */
@@ -321,7 +325,7 @@ declare module "gapi.client.youtube" {
     seedResourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsSocial {
+  declare interface gapi$client$youtube$ActivityContentDetailsSocial {
     /**
      * The author of the social network post.
      */
@@ -348,21 +352,21 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$ActivityContentDetailsSubscription {
+  declare interface gapi$client$youtube$ActivityContentDetailsSubscription {
     /**
      * The resourceId object contains information that identifies the resource that the user subscribed to.
      */
     resourceId?: youtube$ResourceId;
   }
 
-  declare interface youtube$ActivityContentDetailsUpload {
+  declare interface gapi$client$youtube$ActivityContentDetailsUpload {
     /**
      * The ID that YouTube uses to uniquely identify the uploaded video.
      */
     videoId?: string;
   }
 
-  declare interface youtube$ActivityListResponse {
+  declare interface gapi$client$youtube$ActivityListResponse {
     /**
      * Etag of this resource.
      */
@@ -376,7 +380,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of activities, or events, that match the request criteria.
      */
-    items?: youtube$Activity[];
+    items?: gapi$client$youtube$Activity[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#activityListResponse".
@@ -401,7 +405,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$ActivitySnippet {
+  declare interface gapi$client$youtube$ActivitySnippet {
     /**
      * The ID that YouTube uses to uniquely identify the channel associated with the activity.
      */
@@ -433,7 +437,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the resource that is primarily associated with the activity. For each object in the map, the key is the name
      * of the thumbnail image, and the value is an object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The title of the resource primarily associated with the activity.
@@ -446,7 +450,7 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$Caption {
+  declare interface gapi$client$youtube$Caption {
     /**
      * Etag of this resource.
      */
@@ -468,7 +472,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$CaptionSnippet;
   }
 
-  declare interface youtube$CaptionListResponse {
+  declare interface gapi$client$youtube$CaptionListResponse {
     /**
      * Etag of this resource.
      */
@@ -482,7 +486,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of captions that match the request criteria.
      */
-    items?: youtube$Caption[];
+    items?: gapi$client$youtube$Caption[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#captionListResponse".
@@ -495,7 +499,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$CaptionSnippet {
+  declare interface gapi$client$youtube$CaptionSnippet {
     /**
      * The type of audio track associated with the caption track.
      */
@@ -565,7 +569,7 @@ declare module "gapi.client.youtube" {
     videoId?: string;
   }
 
-  declare interface youtube$CdnSettings {
+  declare interface gapi$client$youtube$CdnSettings {
     /**
      * The format of the video stream that you are sending to Youtube.
      */
@@ -592,7 +596,7 @@ declare module "gapi.client.youtube" {
     resolution?: string;
   }
 
-  declare interface youtube$Channel {
+  declare interface gapi$client$youtube$Channel {
     /**
      * The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during the audition process.
      */
@@ -664,7 +668,7 @@ declare module "gapi.client.youtube" {
     topicDetails?: youtube$ChannelTopicDetails;
   }
 
-  declare interface youtube$ChannelAuditDetails {
+  declare interface gapi$client$youtube$ChannelAuditDetails {
     /**
      * Whether or not the channel respects the community guidelines.
      */
@@ -688,7 +692,7 @@ declare module "gapi.client.youtube" {
     overallGoodStanding?: boolean;
   }
 
-  declare interface youtube$ChannelBannerResource {
+  declare interface gapi$client$youtube$ChannelBannerResource {
     /**
      * Etag of this resource.
      */
@@ -705,7 +709,7 @@ declare module "gapi.client.youtube" {
     url?: string;
   }
 
-  declare interface youtube$ChannelBrandingSettings {
+  declare interface gapi$client$youtube$ChannelBrandingSettings {
     /**
      * Branding properties for the channel view.
      */
@@ -727,7 +731,7 @@ declare module "gapi.client.youtube" {
     watch?: youtube$WatchSettings;
   }
 
-  declare interface youtube$ChannelContentDetails {
+  declare interface gapi$client$youtube$ChannelContentDetails {
     relatedPlaylists?: {
       /**
        * The ID of the playlist that contains the channel"s favorite videos. Use the  playlistItems.insert and  playlistItems.delete to add or remove items from
@@ -761,7 +765,7 @@ declare module "gapi.client.youtube" {
     };
   }
 
-  declare interface youtube$ChannelContentOwnerDetails {
+  declare interface gapi$client$youtube$ChannelContentOwnerDetails {
     /**
      * The ID of the content owner linked to the channel.
      */
@@ -773,7 +777,7 @@ declare module "gapi.client.youtube" {
     timeLinked?: string;
   }
 
-  declare interface youtube$ChannelConversionPing {
+  declare interface gapi$client$youtube$ChannelConversionPing {
     /**
      * Defines the context of the ping.
      */
@@ -788,15 +792,15 @@ declare module "gapi.client.youtube" {
     conversionUrl?: string;
   }
 
-  declare interface youtube$ChannelConversionPings {
+  declare interface gapi$client$youtube$ChannelConversionPings {
     /**
      * Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying
      * the ping.
      */
-    pings?: youtube$ChannelConversionPing[];
+    pings?: gapi$client$youtube$ChannelConversionPing[];
   }
 
-  declare interface youtube$ChannelListResponse {
+  declare interface gapi$client$youtube$ChannelListResponse {
     /**
      * Etag of this resource.
      */
@@ -810,7 +814,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of channels that match the request criteria.
      */
-    items?: youtube$Channel[];
+    items?: gapi$client$youtube$Channel[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#channelListResponse".
@@ -835,7 +839,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$ChannelLocalization {
+  declare interface gapi$client$youtube$ChannelLocalization {
     /**
      * The localized strings for channel's description.
      */
@@ -847,7 +851,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$ChannelProfileDetails {
+  declare interface gapi$client$youtube$ChannelProfileDetails {
     /**
      * The YouTube channel ID.
      */
@@ -869,7 +873,7 @@ declare module "gapi.client.youtube" {
     profileImageUrl?: string;
   }
 
-  declare interface youtube$ChannelSection {
+  declare interface gapi$client$youtube$ChannelSection {
     /**
      * The contentDetails object contains details about the channel section content, such as a list of playlists or channels featured in the section.
      */
@@ -906,19 +910,19 @@ declare module "gapi.client.youtube" {
     targeting?: youtube$ChannelSectionTargeting;
   }
 
-  declare interface youtube$ChannelSectionContentDetails {
+  declare interface gapi$client$youtube$ChannelSectionContentDetails {
     /**
      * The channel ids for type multiple_channels.
      */
-    client$channels?: string[];
+    channels?: string[];
 
     /**
      * The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed.
      */
-    client$playlists?: string[];
+    playlists?: string[];
   }
 
-  declare interface youtube$ChannelSectionListResponse {
+  declare interface gapi$client$youtube$ChannelSectionListResponse {
     /**
      * Etag of this resource.
      */
@@ -932,7 +936,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of ChannelSections that match the request criteria.
      */
-    items?: youtube$ChannelSection[];
+    items?: gapi$client$youtube$ChannelSection[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#channelSectionListResponse".
@@ -945,14 +949,14 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$ChannelSectionLocalization {
+  declare interface gapi$client$youtube$ChannelSectionLocalization {
     /**
      * The localized strings for channel section's title.
      */
     title?: string;
   }
 
-  declare interface youtube$ChannelSectionSnippet {
+  declare interface gapi$client$youtube$ChannelSectionSnippet {
     /**
      * The ID that YouTube uses to uniquely identify the channel that published the channel section.
      */
@@ -966,7 +970,7 @@ declare module "gapi.client.youtube" {
     /**
      * Localized title, read-only.
      */
-    localized?: youtube$ChannelSectionLocalization;
+    localized?: gapi$client$youtube$ChannelSectionLocalization;
 
     /**
      * The position of the channel section in the channel.
@@ -989,7 +993,7 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$ChannelSectionTargeting {
+  declare interface gapi$client$youtube$ChannelSectionTargeting {
     /**
      * The country the channel section is targeting.
      */
@@ -1006,7 +1010,7 @@ declare module "gapi.client.youtube" {
     regions?: string[];
   }
 
-  declare interface youtube$ChannelSettings {
+  declare interface gapi$client$youtube$ChannelSettings {
     /**
      * The country of the channel.
      */
@@ -1074,7 +1078,7 @@ declare module "gapi.client.youtube" {
     unsubscribedTrailer?: string;
   }
 
-  declare interface youtube$ChannelSnippet {
+  declare interface gapi$client$youtube$ChannelSnippet {
     /**
      * The country of the channel.
      */
@@ -1098,7 +1102,7 @@ declare module "gapi.client.youtube" {
     /**
      * Localized title and description, read-only.
      */
-    localized?: youtube$ChannelLocalization;
+    localized?: gapi$client$youtube$ChannelLocalization;
 
     /**
      * The date and time that the channel was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -1109,7 +1113,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an
      * object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The channel's title.
@@ -1117,7 +1121,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$ChannelStatistics {
+  declare interface gapi$client$youtube$ChannelStatistics {
     /**
      * The number of comments for the channel.
      */
@@ -1144,7 +1148,7 @@ declare module "gapi.client.youtube" {
     viewCount?: string;
   }
 
-  declare interface youtube$ChannelStatus {
+  declare interface gapi$client$youtube$ChannelStatus {
     /**
      * If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity.
      */
@@ -1161,7 +1165,7 @@ declare module "gapi.client.youtube" {
     privacyStatus?: string;
   }
 
-  declare interface youtube$ChannelTopicDetails {
+  declare interface gapi$client$youtube$ChannelTopicDetails {
     /**
      * A list of Wikipedia URLs that describe the channel's content.
      */
@@ -1173,7 +1177,7 @@ declare module "gapi.client.youtube" {
     topicIds?: string[];
   }
 
-  declare interface youtube$Comment {
+  declare interface gapi$client$youtube$Comment {
     /**
      * Etag of this resource.
      */
@@ -1195,7 +1199,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$CommentSnippet;
   }
 
-  declare interface youtube$CommentListResponse {
+  declare interface gapi$client$youtube$CommentListResponse {
     /**
      * Etag of this resource.
      */
@@ -1209,7 +1213,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of comments that match the request criteria.
      */
-    items?: youtube$Comment[];
+    items?: gapi$client$youtube$Comment[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#commentListResponse".
@@ -1229,7 +1233,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$CommentSnippet {
+  declare interface gapi$client$youtube$CommentSnippet {
     /**
      * The id of the author's YouTube channel, if any.
      */
@@ -1310,7 +1314,7 @@ declare module "gapi.client.youtube" {
     viewerRating?: string;
   }
 
-  declare interface youtube$CommentThread {
+  declare interface gapi$client$youtube$CommentThread {
     /**
      * Etag of this resource.
      */
@@ -1337,7 +1341,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$CommentThreadSnippet;
   }
 
-  declare interface youtube$CommentThreadListResponse {
+  declare interface gapi$client$youtube$CommentThreadListResponse {
     /**
      * Etag of this resource.
      */
@@ -1351,7 +1355,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of comment threads that match the request criteria.
      */
-    items?: youtube$CommentThread[];
+    items?: gapi$client$youtube$CommentThread[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#commentThreadListResponse".
@@ -1371,15 +1375,15 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$CommentThreadReplies {
+  declare interface gapi$client$youtube$CommentThreadReplies {
     /**
      * A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of
      * the total number of replies.
      */
-    client$comments?: youtube$Comment[];
+    comments?: gapi$client$youtube$Comment[];
   }
 
-  declare interface youtube$CommentThreadSnippet {
+  declare interface gapi$client$youtube$CommentThreadSnippet {
     /**
      * Whether the current viewer of the thread can reply to it. This is viewer specific - other viewers may see a different value for this field.
      */
@@ -1399,7 +1403,7 @@ declare module "gapi.client.youtube" {
     /**
      * The top level comment of this thread.
      */
-    topLevelComment?: youtube$Comment;
+    topLevelComment?: gapi$client$youtube$Comment;
 
     /**
      * The total number of replies (not including the top level comment).
@@ -1412,7 +1416,7 @@ declare module "gapi.client.youtube" {
     videoId?: string;
   }
 
-  declare interface youtube$ContentRating {
+  declare interface gapi$client$youtube$ContentRating {
     /**
      * The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify
      * children's television programming.
@@ -1767,7 +1771,7 @@ declare module "gapi.client.youtube" {
     ytRating?: string;
   }
 
-  declare interface youtube$FanFundingEvent {
+  declare interface gapi$client$youtube$FanFundingEvent {
     /**
      * Etag of this resource.
      */
@@ -1789,7 +1793,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$FanFundingEventSnippet;
   }
 
-  declare interface youtube$FanFundingEventListResponse {
+  declare interface gapi$client$youtube$FanFundingEventListResponse {
     /**
      * Etag of this resource.
      */
@@ -1803,7 +1807,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of fan funding events that match the request criteria.
      */
-    items?: youtube$FanFundingEvent[];
+    items?: gapi$client$youtube$FanFundingEvent[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#fanFundingEventListResponse".
@@ -1823,7 +1827,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$FanFundingEventSnippet {
+  declare interface gapi$client$youtube$FanFundingEventSnippet {
     /**
      * The amount of funding in micros of fund_currency. e.g., 1 is represented
      */
@@ -1857,10 +1861,10 @@ declare module "gapi.client.youtube" {
     /**
      * Details about the supporter. Only filled if the event was made public by the user.
      */
-    supporterDetails?: youtube$ChannelProfileDetails;
+    supporterDetails?: gapi$client$youtube$ChannelProfileDetails;
   }
 
-  declare interface youtube$GeoPoint {
+  declare interface gapi$client$youtube$GeoPoint {
     /**
      * Altitude above the reference ellipsoid, in meters.
      */
@@ -1877,7 +1881,7 @@ declare module "gapi.client.youtube" {
     longitude?: number;
   }
 
-  declare interface youtube$GuideCategory {
+  declare interface gapi$client$youtube$GuideCategory {
     /**
      * Etag of this resource.
      */
@@ -1899,7 +1903,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$GuideCategorySnippet;
   }
 
-  declare interface youtube$GuideCategoryListResponse {
+  declare interface gapi$client$youtube$GuideCategoryListResponse {
     /**
      * Etag of this resource.
      */
@@ -1914,7 +1918,7 @@ declare module "gapi.client.youtube" {
      * A list of categories that can be associated with YouTube channels. In this map, the category ID is the map key, and its value is the corresponding
      * guideCategory resource.
      */
-    items?: youtube$GuideCategory[];
+    items?: gapi$client$youtube$GuideCategory[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#guideCategoryListResponse".
@@ -1939,7 +1943,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$GuideCategorySnippet {
+  declare interface gapi$client$youtube$GuideCategorySnippet {
     channelId?: string;
 
     /**
@@ -1948,7 +1952,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$I18nLanguage {
+  declare interface gapi$client$youtube$I18nLanguage {
     /**
      * Etag of this resource.
      */
@@ -1970,7 +1974,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$I18nLanguageSnippet;
   }
 
-  declare interface youtube$I18nLanguageListResponse {
+  declare interface gapi$client$youtube$I18nLanguageListResponse {
     /**
      * Etag of this resource.
      */
@@ -1984,7 +1988,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value is the corresponding i18nLanguage resource.
      */
-    items?: youtube$I18nLanguage[];
+    items?: gapi$client$youtube$I18nLanguage[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#i18nLanguageListResponse".
@@ -1997,7 +2001,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$I18nLanguageSnippet {
+  declare interface gapi$client$youtube$I18nLanguageSnippet {
     /**
      * A short BCP-47 code that uniquely identifies a language.
      */
@@ -2009,7 +2013,7 @@ declare module "gapi.client.youtube" {
     name?: string;
   }
 
-  declare interface youtube$I18nRegion {
+  declare interface gapi$client$youtube$I18nRegion {
     /**
      * Etag of this resource.
      */
@@ -2031,7 +2035,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$I18nRegionSnippet;
   }
 
-  declare interface youtube$I18nRegionListResponse {
+  declare interface gapi$client$youtube$I18nRegionListResponse {
     /**
      * Etag of this resource.
      */
@@ -2045,7 +2049,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource.
      */
-    items?: youtube$I18nRegion[];
+    items?: gapi$client$youtube$I18nRegion[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#i18nRegionListResponse".
@@ -2058,7 +2062,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$I18nRegionSnippet {
+  declare interface gapi$client$youtube$I18nRegionSnippet {
     /**
      * The region code as a 2-letter ISO country code.
      */
@@ -2070,7 +2074,7 @@ declare module "gapi.client.youtube" {
     name?: string;
   }
 
-  declare interface youtube$ImageSettings {
+  declare interface gapi$client$youtube$ImageSettings {
     /**
      * The URL for the background image shown on the video watch page. The image should be 1200px by 615px, with a maximum file size of 128k.
      */
@@ -2183,7 +2187,7 @@ declare module "gapi.client.youtube" {
     watchIconImageUrl?: string;
   }
 
-  declare interface youtube$IngestionInfo {
+  declare interface gapi$client$youtube$IngestionInfo {
     /**
      * The backup ingestion URL that you should use to stream video to YouTube. You have the option of simultaneously streaming the content that you are
      * sending to the ingestionAddress to this URL.
@@ -2206,7 +2210,7 @@ declare module "gapi.client.youtube" {
     streamName?: string;
   }
 
-  declare interface youtube$InvideoBranding {
+  declare interface gapi$client$youtube$InvideoBranding {
     imageBytes?: string;
     imageUrl?: string;
     position?: youtube$InvideoPosition;
@@ -2214,7 +2218,7 @@ declare module "gapi.client.youtube" {
     timing?: youtube$InvideoTiming;
   }
 
-  declare interface youtube$InvideoPosition {
+  declare interface gapi$client$youtube$InvideoPosition {
     /**
      * Describes in which corner of the video the visual widget will appear.
      */
@@ -2226,7 +2230,7 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$InvideoPromotion {
+  declare interface gapi$client$youtube$InvideoPromotion {
     /**
      * The default temporal position within the video where the promoted item will be displayed. Can be overriden by more specific timing in the item.
      */
@@ -2240,7 +2244,7 @@ declare module "gapi.client.youtube" {
     /**
      * The spatial position within the video where the promoted item will be displayed.
      */
-    position?: youtube$InvideoPosition;
+    position?: gapi$client$youtube$InvideoPosition;
 
     /**
      * Indicates whether the channel's promotional campaign uses "smart timing." This feature attempts to show promotions at a point in the video when they
@@ -2249,7 +2253,7 @@ declare module "gapi.client.youtube" {
     useSmartTiming?: boolean;
   }
 
-  declare interface youtube$InvideoTiming {
+  declare interface gapi$client$youtube$InvideoTiming {
     /**
      * Defines the duration in milliseconds for which the promotion should be displayed. If missing, the client should use the default.
      */
@@ -2268,11 +2272,11 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$LanguageTag {
+  declare interface gapi$client$youtube$LanguageTag {
     value?: string;
   }
 
-  declare interface youtube$LiveBroadcast {
+  declare interface gapi$client$youtube$LiveBroadcast {
     /**
      * The contentDetails object contains information about the event's video content, such as whether the content can be shown in an embedded video player or
      * if it will be archived and therefore available for viewing after the event has concluded.
@@ -2311,7 +2315,7 @@ declare module "gapi.client.youtube" {
     status?: youtube$LiveBroadcastStatus;
   }
 
-  declare interface youtube$LiveBroadcastContentDetails {
+  declare interface gapi$client$youtube$LiveBroadcastContentDetails {
     /**
      * This value uniquely identifies the live stream bound to the broadcast.
      */
@@ -2394,7 +2398,7 @@ declare module "gapi.client.youtube" {
     startWithSlate?: boolean;
   }
 
-  declare interface youtube$LiveBroadcastListResponse {
+  declare interface gapi$client$youtube$LiveBroadcastListResponse {
     /**
      * Etag of this resource.
      */
@@ -2408,7 +2412,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of broadcasts that match the request criteria.
      */
-    items?: youtube$LiveBroadcast[];
+    items?: gapi$client$youtube$LiveBroadcast[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#liveBroadcastListResponse".
@@ -2433,7 +2437,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$LiveBroadcastSnippet {
+  declare interface gapi$client$youtube$LiveBroadcastSnippet {
     /**
      * The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete. The value is specified
      * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -2483,7 +2487,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is the name of the thumbnail image, and the
      * value is an object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set this field by modifying the broadcast resource or by
@@ -2492,7 +2496,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$LiveBroadcastStatistics {
+  declare interface gapi$client$youtube$LiveBroadcastStatistics {
     /**
      * The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the
      * broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the
@@ -2508,7 +2512,7 @@ declare module "gapi.client.youtube" {
     totalChatCount?: string;
   }
 
-  declare interface youtube$LiveBroadcastStatus {
+  declare interface gapi$client$youtube$LiveBroadcastStatus {
     /**
      * The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method.
      */
@@ -2532,7 +2536,7 @@ declare module "gapi.client.youtube" {
     recordingStatus?: string;
   }
 
-  declare interface youtube$LiveChatBan {
+  declare interface gapi$client$youtube$LiveChatBan {
     /**
      * Etag of this resource.
      */
@@ -2554,12 +2558,12 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$LiveChatBanSnippet;
   }
 
-  declare interface youtube$LiveChatBanSnippet {
+  declare interface gapi$client$youtube$LiveChatBanSnippet {
     /**
      * The duration of a ban, only filled if the ban has type TEMPORARY.
      */
     banDurationSeconds?: string;
-    bannedUserDetails?: youtube$ChannelProfileDetails;
+    bannedUserDetails?: gapi$client$youtube$ChannelProfileDetails;
 
     /**
      * The chat this ban is pertinent to.
@@ -2572,7 +2576,7 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$LiveChatFanFundingEventDetails {
+  declare interface gapi$client$youtube$LiveChatFanFundingEventDetails {
     /**
      * A rendered string that displays the fund amount and currency to the user.
      */
@@ -2594,7 +2598,7 @@ declare module "gapi.client.youtube" {
     userComment?: string;
   }
 
-  declare interface youtube$LiveChatMessage {
+  declare interface gapi$client$youtube$LiveChatMessage {
     /**
      * The authorDetails object contains basic details about the user that posted this message.
      */
@@ -2621,7 +2625,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$LiveChatMessageSnippet;
   }
 
-  declare interface youtube$LiveChatMessageAuthorDetails {
+  declare interface gapi$client$youtube$LiveChatMessageAuthorDetails {
     /**
      * The YouTube channel ID.
      */
@@ -2663,11 +2667,11 @@ declare module "gapi.client.youtube" {
     profileImageUrl?: string;
   }
 
-  declare interface youtube$LiveChatMessageDeletedDetails {
+  declare interface gapi$client$youtube$LiveChatMessageDeletedDetails {
     deletedMessageId?: string;
   }
 
-  declare interface youtube$LiveChatMessageListResponse {
+  declare interface gapi$client$youtube$LiveChatMessageListResponse {
     /**
      * Etag of this resource.
      */
@@ -2681,7 +2685,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of live chat messages.
      */
-    items?: youtube$LiveChatMessage[];
+    items?: gapi$client$youtube$LiveChatMessage[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatMessageListResponse".
@@ -2711,11 +2715,11 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$LiveChatMessageRetractedDetails {
+  declare interface gapi$client$youtube$LiveChatMessageRetractedDetails {
     retractedMessageId?: string;
   }
 
-  declare interface youtube$LiveChatMessageSnippet {
+  declare interface gapi$client$youtube$LiveChatMessageSnippet {
     /**
      * The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent -
      * the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action
@@ -2733,15 +2737,15 @@ declare module "gapi.client.youtube" {
     /**
      * Details about the funding event, this is only set if the type is 'fanFundingEvent'.
      */
-    fanFundingEventDetails?: youtube$LiveChatFanFundingEventDetails;
+    fanFundingEventDetails?: gapi$client$youtube$LiveChatFanFundingEventDetails;
 
     /**
      * Whether the message has display content that should be displayed to users.
      */
     hasDisplayContent?: boolean;
     liveChatId?: string;
-    messageDeletedDetails?: youtube$LiveChatMessageDeletedDetails;
-    messageRetractedDetails?: youtube$LiveChatMessageRetractedDetails;
+    messageDeletedDetails?: gapi$client$youtube$LiveChatMessageDeletedDetails;
+    messageRetractedDetails?: gapi$client$youtube$LiveChatMessageRetractedDetails;
     pollClosedDetails?: youtube$LiveChatPollClosedDetails;
     pollEditedDetails?: youtube$LiveChatPollEditedDetails;
     pollOpenedDetails?: youtube$LiveChatPollOpenedDetails;
@@ -2769,7 +2773,7 @@ declare module "gapi.client.youtube" {
     userBannedDetails?: youtube$LiveChatUserBannedMessageDetails;
   }
 
-  declare interface youtube$LiveChatModerator {
+  declare interface gapi$client$youtube$LiveChatModerator {
     /**
      * Etag of this resource.
      */
@@ -2791,7 +2795,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$LiveChatModeratorSnippet;
   }
 
-  declare interface youtube$LiveChatModeratorListResponse {
+  declare interface gapi$client$youtube$LiveChatModeratorListResponse {
     /**
      * Etag of this resource.
      */
@@ -2805,7 +2809,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of moderators that match the request criteria.
      */
-    items?: youtube$LiveChatModerator[];
+    items?: gapi$client$youtube$LiveChatModerator[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatModeratorListResponse".
@@ -2830,7 +2834,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$LiveChatModeratorSnippet {
+  declare interface gapi$client$youtube$LiveChatModeratorSnippet {
     /**
      * The ID of the live chat this moderator can act on.
      */
@@ -2839,23 +2843,23 @@ declare module "gapi.client.youtube" {
     /**
      * Details about the moderator.
      */
-    moderatorDetails?: youtube$ChannelProfileDetails;
+    moderatorDetails?: gapi$client$youtube$ChannelProfileDetails;
   }
 
-  declare interface youtube$LiveChatPollClosedDetails {
+  declare interface gapi$client$youtube$LiveChatPollClosedDetails {
     /**
      * The id of the poll that was closed.
      */
     pollId?: string;
   }
 
-  declare interface youtube$LiveChatPollEditedDetails {
+  declare interface gapi$client$youtube$LiveChatPollEditedDetails {
     id?: string;
     items?: youtube$LiveChatPollItem[];
     prompt?: string;
   }
 
-  declare interface youtube$LiveChatPollItem {
+  declare interface gapi$client$youtube$LiveChatPollItem {
     /**
      * Plain text description of the item.
      */
@@ -2863,13 +2867,13 @@ declare module "gapi.client.youtube" {
     itemId?: string;
   }
 
-  declare interface youtube$LiveChatPollOpenedDetails {
+  declare interface gapi$client$youtube$LiveChatPollOpenedDetails {
     id?: string;
-    items?: youtube$LiveChatPollItem[];
+    items?: gapi$client$youtube$LiveChatPollItem[];
     prompt?: string;
   }
 
-  declare interface youtube$LiveChatPollVotedDetails {
+  declare interface gapi$client$youtube$LiveChatPollVotedDetails {
     /**
      * The poll item the user chose.
      */
@@ -2881,7 +2885,7 @@ declare module "gapi.client.youtube" {
     pollId?: string;
   }
 
-  declare interface youtube$LiveChatSuperChatDetails {
+  declare interface gapi$client$youtube$LiveChatSuperChatDetails {
     /**
      * A rendered string that displays the fund amount and currency to the user.
      */
@@ -2908,14 +2912,14 @@ declare module "gapi.client.youtube" {
     userComment?: string;
   }
 
-  declare interface youtube$LiveChatTextMessageDetails {
+  declare interface gapi$client$youtube$LiveChatTextMessageDetails {
     /**
      * The user's message.
      */
     messageText?: string;
   }
 
-  declare interface youtube$LiveChatUserBannedMessageDetails {
+  declare interface gapi$client$youtube$LiveChatUserBannedMessageDetails {
     /**
      * The duration of the ban. This property is only present if the banType is temporary.
      */
@@ -2929,15 +2933,15 @@ declare module "gapi.client.youtube" {
     /**
      * The details of the user that was banned.
      */
-    bannedUserDetails?: youtube$ChannelProfileDetails;
+    bannedUserDetails?: gapi$client$youtube$ChannelProfileDetails;
   }
 
-  declare interface youtube$LiveStream {
+  declare interface gapi$client$youtube$LiveStream {
     /**
      * The cdn object defines the live stream's content delivery network (CDN) settings. These settings provide details about the manner in which you stream
      * your content to YouTube.
      */
-    cdn?: youtube$CdnSettings;
+    cdn?: gapi$client$youtube$CdnSettings;
 
     /**
      * The content_details object contains information about the stream, including the closed captions ingestion URL.
@@ -2970,7 +2974,7 @@ declare module "gapi.client.youtube" {
     status?: youtube$LiveStreamStatus;
   }
 
-  declare interface youtube$LiveStreamConfigurationIssue {
+  declare interface gapi$client$youtube$LiveStreamConfigurationIssue {
     /**
      * The long-form description of the issue and how to resolve it.
      */
@@ -2992,7 +2996,7 @@ declare module "gapi.client.youtube" {
     type?: string;
   }
 
-  declare interface youtube$LiveStreamContentDetails {
+  declare interface gapi$client$youtube$LiveStreamContentDetails {
     /**
      * The ingestion URL where the closed captions of this stream are sent.
      */
@@ -3012,11 +3016,11 @@ declare module "gapi.client.youtube" {
     isReusable?: boolean;
   }
 
-  declare interface youtube$LiveStreamHealthStatus {
+  declare interface gapi$client$youtube$LiveStreamHealthStatus {
     /**
      * The configurations issues on this stream
      */
-    configurationIssues?: youtube$LiveStreamConfigurationIssue[];
+    configurationIssues?: gapi$client$youtube$LiveStreamConfigurationIssue[];
 
     /**
      * The last time this status was updated (in seconds)
@@ -3029,7 +3033,7 @@ declare module "gapi.client.youtube" {
     status?: string;
   }
 
-  declare interface youtube$LiveStreamListResponse {
+  declare interface gapi$client$youtube$LiveStreamListResponse {
     /**
      * Etag of this resource.
      */
@@ -3043,7 +3047,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of live streams that match the request criteria.
      */
-    items?: youtube$LiveStream[];
+    items?: gapi$client$youtube$LiveStream[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#liveStreamListResponse".
@@ -3068,7 +3072,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$LiveStreamSnippet {
+  declare interface gapi$client$youtube$LiveStreamSnippet {
     /**
      * The ID that YouTube uses to uniquely identify the channel that is transmitting the stream.
      */
@@ -3091,30 +3095,30 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$LiveStreamStatus {
+  declare interface gapi$client$youtube$LiveStreamStatus {
     /**
      * The health status of the stream.
      */
-    healthStatus?: youtube$LiveStreamHealthStatus;
+    healthStatus?: gapi$client$youtube$LiveStreamHealthStatus;
     streamStatus?: string;
   }
 
-  declare interface youtube$LocalizedProperty {
+  declare interface gapi$client$youtube$LocalizedProperty {
     default?: string;
 
     /**
      * The language of the default property.
      */
-    defaultLanguage?: youtube$LanguageTag;
+    defaultLanguage?: gapi$client$youtube$LanguageTag;
     localized?: youtube$LocalizedString[];
   }
 
-  declare interface youtube$LocalizedString {
+  declare interface gapi$client$youtube$LocalizedString {
     language?: string;
     value?: string;
   }
 
-  declare interface youtube$MonitorStreamInfo {
+  declare interface gapi$client$youtube$MonitorStreamInfo {
     /**
      * If you have set the enableMonitorStream property to true, then this property determines the length of the live broadcast delay.
      */
@@ -3137,7 +3141,7 @@ declare module "gapi.client.youtube" {
     enableMonitorStream?: boolean;
   }
 
-  declare interface youtube$PageInfo {
+  declare interface gapi$client$youtube$PageInfo {
     /**
      * The number of results included in the API response.
      */
@@ -3149,7 +3153,7 @@ declare module "gapi.client.youtube" {
     totalResults?: number;
   }
 
-  declare interface youtube$Playlist {
+  declare interface gapi$client$youtube$Playlist {
     /**
      * The contentDetails object contains information like video count.
      */
@@ -3191,14 +3195,14 @@ declare module "gapi.client.youtube" {
     status?: youtube$PlaylistStatus;
   }
 
-  declare interface youtube$PlaylistContentDetails {
+  declare interface gapi$client$youtube$PlaylistContentDetails {
     /**
      * The number of videos in the playlist.
      */
     itemCount?: number;
   }
 
-  declare interface youtube$PlaylistItem {
+  declare interface gapi$client$youtube$PlaylistItem {
     /**
      * The contentDetails object is included in the resource if the included item is a YouTube video. The object contains additional information about the
      * video.
@@ -3231,7 +3235,7 @@ declare module "gapi.client.youtube" {
     status?: youtube$PlaylistItemStatus;
   }
 
-  declare interface youtube$PlaylistItemContentDetails {
+  declare interface gapi$client$youtube$PlaylistItemContentDetails {
     /**
      * The time, measured in seconds from the start of the video, when the video should stop playing. (The playlist owner can specify the times when the video
      * should start and stop playing when the video is played in the context of the playlist.) By default, assume that the video.endTime is the end of the
@@ -3261,7 +3265,7 @@ declare module "gapi.client.youtube" {
     videoPublishedAt?: string;
   }
 
-  declare interface youtube$PlaylistItemListResponse {
+  declare interface gapi$client$youtube$PlaylistItemListResponse {
     /**
      * Etag of this resource.
      */
@@ -3275,7 +3279,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of playlist items that match the request criteria.
      */
-    items?: youtube$PlaylistItem[];
+    items?: gapi$client$youtube$PlaylistItem[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItemListResponse".
@@ -3286,7 +3290,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -3300,7 +3304,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$PlaylistItemSnippet {
+  declare interface gapi$client$youtube$PlaylistItemSnippet {
     /**
      * The ID that YouTube uses to uniquely identify the user that added the item to the playlist.
      */
@@ -3341,7 +3345,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the playlist item. For each object in the map, the key is the name of the thumbnail image, and the value is
      * an object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The item's title.
@@ -3349,14 +3353,14 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$PlaylistItemStatus {
+  declare interface gapi$client$youtube$PlaylistItemStatus {
     /**
      * This resource's privacy status.
      */
     privacyStatus?: string;
   }
 
-  declare interface youtube$PlaylistListResponse {
+  declare interface gapi$client$youtube$PlaylistListResponse {
     /**
      * Etag of this resource.
      */
@@ -3370,7 +3374,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of playlists that match the request criteria.
      */
-    items?: youtube$Playlist[];
+    items?: gapi$client$youtube$Playlist[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#playlistListResponse".
@@ -3381,7 +3385,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -3395,7 +3399,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$PlaylistLocalization {
+  declare interface gapi$client$youtube$PlaylistLocalization {
     /**
      * The localized strings for playlist's description.
      */
@@ -3407,14 +3411,14 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$PlaylistPlayer {
+  declare interface gapi$client$youtube$PlaylistPlayer {
     /**
      * An <iframe> tag that embeds a player that will play the playlist.
      */
     embedHtml?: string;
   }
 
-  declare interface youtube$PlaylistSnippet {
+  declare interface gapi$client$youtube$PlaylistSnippet {
     /**
      * The ID that YouTube uses to uniquely identify the channel that published the playlist.
      */
@@ -3438,7 +3442,7 @@ declare module "gapi.client.youtube" {
     /**
      * Localized title and description, read-only.
      */
-    localized?: youtube$PlaylistLocalization;
+    localized?: gapi$client$youtube$PlaylistLocalization;
 
     /**
      * The date and time that the playlist was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -3454,7 +3458,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the playlist. For each object in the map, the key is the name of the thumbnail image, and the value is an
      * object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The playlist's title.
@@ -3462,14 +3466,14 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$PlaylistStatus {
+  declare interface gapi$client$youtube$PlaylistStatus {
     /**
      * The playlist's privacy status.
      */
     privacyStatus?: string;
   }
 
-  declare interface youtube$PromotedItem {
+  declare interface gapi$client$youtube$PromotedItem {
     /**
      * A custom message to display for this promotion. This field is currently ignored unless the promoted item is a website.
      */
@@ -3489,10 +3493,10 @@ declare module "gapi.client.youtube" {
     /**
      * The temporal position within the video where the promoted item will be displayed. If present, it overrides the default timing.
      */
-    timing?: youtube$InvideoTiming;
+    timing?: gapi$client$youtube$InvideoTiming;
   }
 
-  declare interface youtube$PromotedItemId {
+  declare interface gapi$client$youtube$PromotedItemId {
     /**
      * If type is recentUpload, this field identifies the channel from which to take the recent upload. If missing, the channel is assumed to be the same
      * channel for which the invideoPromotion is set.
@@ -3517,7 +3521,7 @@ declare module "gapi.client.youtube" {
     websiteUrl?: string;
   }
 
-  declare interface youtube$PropertyValue {
+  declare interface gapi$client$youtube$PropertyValue {
     /**
      * A property.
      */
@@ -3529,7 +3533,7 @@ declare module "gapi.client.youtube" {
     value?: string;
   }
 
-  declare interface youtube$ResourceId {
+  declare interface gapi$client$youtube$ResourceId {
     /**
      * The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the
      * resourceId.kind value is youtube#channel.
@@ -3554,7 +3558,7 @@ declare module "gapi.client.youtube" {
     videoId?: string;
   }
 
-  declare interface youtube$SearchListResponse {
+  declare interface gapi$client$youtube$SearchListResponse {
     /**
      * Etag of this resource.
      */
@@ -3579,7 +3583,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -3594,7 +3598,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$SearchResult {
+  declare interface gapi$client$youtube$SearchResult {
     /**
      * Etag of this resource.
      */
@@ -3603,7 +3607,7 @@ declare module "gapi.client.youtube" {
     /**
      * The id object contains information that can be used to uniquely identify the resource that matches the search request.
      */
-    id?: youtube$ResourceId;
+    id?: gapi$client$youtube$ResourceId;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#searchResult".
@@ -3617,7 +3621,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$SearchResultSnippet;
   }
 
-  declare interface youtube$SearchResultSnippet {
+  declare interface gapi$client$youtube$SearchResultSnippet {
     /**
      * The value that YouTube uses to uniquely identify the channel that published the resource that the search result identifies.
      */
@@ -3648,7 +3652,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the search result. For each object in the map, the key is the name of the thumbnail image, and the value is
      * an object that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The title of the search result.
@@ -3656,7 +3660,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$Sponsor {
+  declare interface gapi$client$youtube$Sponsor {
     /**
      * Etag of this resource.
      */
@@ -3678,7 +3682,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$SponsorSnippet;
   }
 
-  declare interface youtube$SponsorListResponse {
+  declare interface gapi$client$youtube$SponsorListResponse {
     /**
      * Etag of this resource.
      */
@@ -3692,7 +3696,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of sponsors that match the request criteria.
      */
-    items?: youtube$Sponsor[];
+    items?: gapi$client$youtube$Sponsor[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#sponsorListResponse".
@@ -3703,7 +3707,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
     tokenPagination?: any;
 
     /**
@@ -3712,7 +3716,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$SponsorSnippet {
+  declare interface gapi$client$youtube$SponsorSnippet {
     /**
      * The id of the channel being sponsored.
      */
@@ -3721,7 +3725,7 @@ declare module "gapi.client.youtube" {
     /**
      * Details about the sponsor.
      */
-    sponsorDetails?: youtube$ChannelProfileDetails;
+    sponsorDetails?: gapi$client$youtube$ChannelProfileDetails;
 
     /**
      * The date and time when the user became a sponsor. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -3729,7 +3733,7 @@ declare module "gapi.client.youtube" {
     sponsorSince?: string;
   }
 
-  declare interface youtube$Subscription {
+  declare interface gapi$client$youtube$Subscription {
     /**
      * The contentDetails object contains basic statistics about the subscription.
      */
@@ -3761,7 +3765,7 @@ declare module "gapi.client.youtube" {
     subscriberSnippet?: youtube$SubscriptionSubscriberSnippet;
   }
 
-  declare interface youtube$SubscriptionContentDetails {
+  declare interface gapi$client$youtube$SubscriptionContentDetails {
     /**
      * The type of activity this subscription is for (only uploads, everything).
      */
@@ -3778,7 +3782,7 @@ declare module "gapi.client.youtube" {
     totalItemCount?: number;
   }
 
-  declare interface youtube$SubscriptionListResponse {
+  declare interface gapi$client$youtube$SubscriptionListResponse {
     /**
      * Etag of this resource.
      */
@@ -3792,7 +3796,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of subscriptions that match the request criteria.
      */
-    items?: youtube$Subscription[];
+    items?: gapi$client$youtube$Subscription[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#subscriptionListResponse".
@@ -3803,7 +3807,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -3817,7 +3821,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$SubscriptionSnippet {
+  declare interface gapi$client$youtube$SubscriptionSnippet {
     /**
      * The ID that YouTube uses to uniquely identify the subscriber's channel.
      */
@@ -3841,13 +3845,13 @@ declare module "gapi.client.youtube" {
     /**
      * The id object contains information about the channel that the user subscribed to.
      */
-    resourceId?: youtube$ResourceId;
+    resourceId?: gapi$client$youtube$ResourceId;
 
     /**
      * A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object
      * that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The subscription's title.
@@ -3855,7 +3859,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$SubscriptionSubscriberSnippet {
+  declare interface gapi$client$youtube$SubscriptionSubscriberSnippet {
     /**
      * The channel ID of the subscriber.
      */
@@ -3869,7 +3873,7 @@ declare module "gapi.client.youtube" {
     /**
      * Thumbnails for this subscriber.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: youtube$ThumbnailDetails;
 
     /**
      * The title of the subscriber.
@@ -3877,7 +3881,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$SuperChatEvent {
+  declare interface gapi$client$youtube$SuperChatEvent {
     /**
      * Etag of this resource.
      */
@@ -3899,7 +3903,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$SuperChatEventSnippet;
   }
 
-  declare interface youtube$SuperChatEventListResponse {
+  declare interface gapi$client$youtube$SuperChatEventListResponse {
     /**
      * Etag of this resource.
      */
@@ -3913,7 +3917,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of Super Chat purchases that match the request criteria.
      */
-    items?: youtube$SuperChatEvent[];
+    items?: gapi$client$youtube$SuperChatEvent[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#superChatEventListResponse".
@@ -3924,7 +3928,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
     tokenPagination?: any;
 
     /**
@@ -3933,7 +3937,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$SuperChatEventSnippet {
+  declare interface gapi$client$youtube$SuperChatEventSnippet {
     /**
      * The purchase amount, in micros of the purchase currency. e.g., 1 is represented as 1000000.
      */
@@ -3972,10 +3976,10 @@ declare module "gapi.client.youtube" {
     /**
      * Details about the supporter.
      */
-    supporterDetails?: youtube$ChannelProfileDetails;
+    supporterDetails?: gapi$client$youtube$ChannelProfileDetails;
   }
 
-  declare interface youtube$Thumbnail {
+  declare interface gapi$client$youtube$Thumbnail {
     /**
      * (Optional) Height of the thumbnail image.
      */
@@ -3992,34 +3996,34 @@ declare module "gapi.client.youtube" {
     width?: number;
   }
 
-  declare interface youtube$ThumbnailDetails {
+  declare interface gapi$client$youtube$ThumbnailDetails {
     /**
      * The default image for this resource.
      */
-    default?: youtube$Thumbnail;
+    default?: gapi$client$youtube$Thumbnail;
 
     /**
      * The high quality image for this resource.
      */
-    high?: youtube$Thumbnail;
+    high?: gapi$client$youtube$Thumbnail;
 
     /**
      * The maximum resolution quality image for this resource.
      */
-    maxres?: youtube$Thumbnail;
+    maxres?: gapi$client$youtube$Thumbnail;
 
     /**
      * The medium quality image for this resource.
      */
-    medium?: youtube$Thumbnail;
+    medium?: gapi$client$youtube$Thumbnail;
 
     /**
      * The standard quality image for this resource.
      */
-    standard?: youtube$Thumbnail;
+    standard?: gapi$client$youtube$Thumbnail;
   }
 
-  declare interface youtube$ThumbnailSetResponse {
+  declare interface gapi$client$youtube$ThumbnailSetResponse {
     /**
      * Etag of this resource.
      */
@@ -4033,7 +4037,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of thumbnails.
      */
-    items?: youtube$ThumbnailDetails[];
+    items?: gapi$client$youtube$ThumbnailDetails[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#thumbnailSetResponse".
@@ -4046,7 +4050,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$Video {
+  declare interface gapi$client$youtube$Video {
     /**
      * Age restriction details related to a video. This data can only be retrieved by the video owner.
      */
@@ -4146,11 +4150,11 @@ declare module "gapi.client.youtube" {
     topicDetails?: youtube$VideoTopicDetails;
   }
 
-  declare interface youtube$VideoAbuseReport {
+  declare interface gapi$client$youtube$VideoAbuseReport {
     /**
      * Additional comments regarding the abuse report.
      */
-    client$comments?: string;
+    comments?: string;
 
     /**
      * The language that the content was viewed in.
@@ -4174,7 +4178,7 @@ declare module "gapi.client.youtube" {
     videoId?: string;
   }
 
-  declare interface youtube$VideoAbuseReportReason {
+  declare interface gapi$client$youtube$VideoAbuseReportReason {
     /**
      * Etag of this resource.
      */
@@ -4196,7 +4200,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$VideoAbuseReportReasonSnippet;
   }
 
-  declare interface youtube$VideoAbuseReportReasonListResponse {
+  declare interface gapi$client$youtube$VideoAbuseReportReasonListResponse {
     /**
      * Etag of this resource.
      */
@@ -4210,7 +4214,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of valid abuse reasons that are used with video.ReportAbuse.
      */
-    items?: youtube$VideoAbuseReportReason[];
+    items?: gapi$client$youtube$VideoAbuseReportReason[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#videoAbuseReportReasonListResponse".
@@ -4223,7 +4227,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$VideoAbuseReportReasonSnippet {
+  declare interface gapi$client$youtube$VideoAbuseReportReasonSnippet {
     /**
      * The localized label belonging to this abuse report reason.
      */
@@ -4235,7 +4239,7 @@ declare module "gapi.client.youtube" {
     secondaryReasons?: youtube$VideoAbuseReportSecondaryReason[];
   }
 
-  declare interface youtube$VideoAbuseReportSecondaryReason {
+  declare interface gapi$client$youtube$VideoAbuseReportSecondaryReason {
     /**
      * The ID of this abuse report secondary reason.
      */
@@ -4247,7 +4251,7 @@ declare module "gapi.client.youtube" {
     label?: string;
   }
 
-  declare interface youtube$VideoAgeGating {
+  declare interface gapi$client$youtube$VideoAgeGating {
     /**
      * Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing age in a particular country, as identified by ICAP,
      * can view the content.
@@ -4266,7 +4270,7 @@ declare module "gapi.client.youtube" {
     videoGameRating?: string;
   }
 
-  declare interface youtube$VideoCategory {
+  declare interface gapi$client$youtube$VideoCategory {
     /**
      * Etag of this resource.
      */
@@ -4288,7 +4292,7 @@ declare module "gapi.client.youtube" {
     snippet?: youtube$VideoCategorySnippet;
   }
 
-  declare interface youtube$VideoCategoryListResponse {
+  declare interface gapi$client$youtube$VideoCategoryListResponse {
     /**
      * Etag of this resource.
      */
@@ -4303,7 +4307,7 @@ declare module "gapi.client.youtube" {
      * A list of video categories that can be associated with YouTube videos. In this map, the video category ID is the map key, and its value is the
      * corresponding videoCategory resource.
      */
-    items?: youtube$VideoCategory[];
+    items?: gapi$client$youtube$VideoCategory[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#videoCategoryListResponse".
@@ -4314,7 +4318,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -4328,7 +4332,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$VideoCategorySnippet {
+  declare interface gapi$client$youtube$VideoCategorySnippet {
     assignable?: boolean;
 
     /**
@@ -4342,7 +4346,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$VideoContentDetails {
+  declare interface gapi$client$youtube$VideoContentDetails {
     /**
      * The value of captions indicates whether the video has captions or not.
      */
@@ -4351,12 +4355,12 @@ declare module "gapi.client.youtube" {
     /**
      * Specifies the ratings that the video received under various rating schemes.
      */
-    contentRating?: youtube$ContentRating;
+    contentRating?: gapi$client$youtube$ContentRating;
 
     /**
      * The countryRestriction object contains information about the countries where a video is (or is not) viewable.
      */
-    countryRestriction?: youtube$AccessPolicy;
+    countryRestriction?: gapi$client$youtube$AccessPolicy;
 
     /**
      * The value of definition indicates whether the video is available in high definition or only in standard definition.
@@ -4398,7 +4402,7 @@ declare module "gapi.client.youtube" {
     regionRestriction?: youtube$VideoContentDetailsRegionRestriction;
   }
 
-  declare interface youtube$VideoContentDetailsRegionRestriction {
+  declare interface gapi$client$youtube$VideoContentDetailsRegionRestriction {
     /**
      * A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then
      * the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries.
@@ -4412,7 +4416,7 @@ declare module "gapi.client.youtube" {
     blocked?: string[];
   }
 
-  declare interface youtube$VideoFileDetails {
+  declare interface gapi$client$youtube$VideoFileDetails {
     /**
      * A list of audio streams contained in the uploaded video file. Each item in the list contains detailed metadata about an audio stream.
      */
@@ -4464,7 +4468,7 @@ declare module "gapi.client.youtube" {
     videoStreams?: youtube$VideoFileDetailsVideoStream[];
   }
 
-  declare interface youtube$VideoFileDetailsAudioStream {
+  declare interface gapi$client$youtube$VideoFileDetailsAudioStream {
     /**
      * The audio stream's bitrate, in bits per second.
      */
@@ -4486,7 +4490,7 @@ declare module "gapi.client.youtube" {
     vendor?: string;
   }
 
-  declare interface youtube$VideoFileDetailsVideoStream {
+  declare interface gapi$client$youtube$VideoFileDetailsVideoStream {
     /**
      * The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed.
      */
@@ -4528,7 +4532,7 @@ declare module "gapi.client.youtube" {
     widthPixels?: number;
   }
 
-  declare interface youtube$VideoGetRatingResponse {
+  declare interface gapi$client$youtube$VideoGetRatingResponse {
     /**
      * Etag of this resource.
      */
@@ -4555,7 +4559,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$VideoListResponse {
+  declare interface gapi$client$youtube$VideoListResponse {
     /**
      * Etag of this resource.
      */
@@ -4569,7 +4573,7 @@ declare module "gapi.client.youtube" {
     /**
      * A list of videos that match the request criteria.
      */
-    items?: youtube$Video[];
+    items?: gapi$client$youtube$Video[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "youtube#videoListResponse".
@@ -4580,7 +4584,7 @@ declare module "gapi.client.youtube" {
      * The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
      */
     nextPageToken?: string;
-    pageInfo?: youtube$PageInfo;
+    pageInfo?: gapi$client$youtube$PageInfo;
 
     /**
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
@@ -4594,7 +4598,7 @@ declare module "gapi.client.youtube" {
     visitorId?: string;
   }
 
-  declare interface youtube$VideoLiveStreamingDetails {
+  declare interface gapi$client$youtube$VideoLiveStreamingDetails {
     /**
      * The ID of the currently active live chat attached to this video. This field is filled only if the video is a currently live broadcast that has live
      * chat. Once the broadcast transitions to complete this field will be removed and the live chat closed down. For persistent broadcasts that live chat id
@@ -4633,7 +4637,7 @@ declare module "gapi.client.youtube" {
     scheduledStartTime?: string;
   }
 
-  declare interface youtube$VideoLocalization {
+  declare interface gapi$client$youtube$VideoLocalization {
     /**
      * Localized version of the video's description.
      */
@@ -4645,14 +4649,14 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$VideoMonetizationDetails {
+  declare interface gapi$client$youtube$VideoMonetizationDetails {
     /**
      * The value of access indicates whether the video can be monetized or not.
      */
-    access?: youtube$AccessPolicy;
+    access?: gapi$client$youtube$AccessPolicy;
   }
 
-  declare interface youtube$VideoPlayer {
+  declare interface gapi$client$youtube$VideoPlayer {
     embedHeight?: string;
 
     /**
@@ -4666,7 +4670,7 @@ declare module "gapi.client.youtube" {
     embedWidth?: string;
   }
 
-  declare interface youtube$VideoProcessingDetails {
+  declare interface gapi$client$youtube$VideoProcessingDetails {
     /**
      * This value indicates whether video editing suggestions, which might improve video quality or the playback experience, are available for the video. You
      * can retrieve these suggestions by requesting the suggestions part in your videos.list() request.
@@ -4714,7 +4718,7 @@ declare module "gapi.client.youtube" {
     thumbnailsAvailability?: string;
   }
 
-  declare interface youtube$VideoProcessingDetailsProcessingProgress {
+  declare interface gapi$client$youtube$VideoProcessingDetailsProcessingProgress {
     /**
      * The number of parts of the video that YouTube has already processed. You can estimate the percentage of the video that YouTube has already processed by
      * calculating:
@@ -4737,23 +4741,23 @@ declare module "gapi.client.youtube" {
     timeLeftMs?: string;
   }
 
-  declare interface youtube$VideoProjectDetails {
+  declare interface gapi$client$youtube$VideoProjectDetails {
     /**
      * A list of project tags associated with the video during the upload.
      */
     tags?: string[];
   }
 
-  declare interface youtube$VideoRating {
+  declare interface gapi$client$youtube$VideoRating {
     rating?: string;
     videoId?: string;
   }
 
-  declare interface youtube$VideoRecordingDetails {
+  declare interface gapi$client$youtube$VideoRecordingDetails {
     /**
      * The geolocation information associated with the video.
      */
-    location?: youtube$GeoPoint;
+    location?: gapi$client$youtube$GeoPoint;
 
     /**
      * The text description of the location where the video was recorded.
@@ -4766,7 +4770,7 @@ declare module "gapi.client.youtube" {
     recordingDate?: string;
   }
 
-  declare interface youtube$VideoSnippet {
+  declare interface gapi$client$youtube$VideoSnippet {
     /**
      * The YouTube video category associated with the video.
      */
@@ -4805,7 +4809,7 @@ declare module "gapi.client.youtube" {
     /**
      * Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)
      */
-    localized?: youtube$VideoLocalization;
+    localized?: gapi$client$youtube$VideoLocalization;
 
     /**
      * The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -4821,7 +4825,7 @@ declare module "gapi.client.youtube" {
      * A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object
      * that contains other information about the thumbnail.
      */
-    client$thumbnails?: youtube$ThumbnailDetails;
+    thumbnails?: gapi$client$youtube$ThumbnailDetails;
 
     /**
      * The video's title.
@@ -4829,7 +4833,7 @@ declare module "gapi.client.youtube" {
     title?: string;
   }
 
-  declare interface youtube$VideoStatistics {
+  declare interface gapi$client$youtube$VideoStatistics {
     /**
      * The number of comments for the video.
      */
@@ -4856,7 +4860,7 @@ declare module "gapi.client.youtube" {
     viewCount?: string;
   }
 
-  declare interface youtube$VideoStatus {
+  declare interface gapi$client$youtube$VideoStatus {
     /**
      * This value indicates if the video can be embedded on another website.
      */
@@ -4901,7 +4905,7 @@ declare module "gapi.client.youtube" {
     uploadStatus?: string;
   }
 
-  declare interface youtube$VideoSuggestions {
+  declare interface gapi$client$youtube$VideoSuggestions {
     /**
      * A list of video editing operations that might improve the video quality or playback experience of the uploaded video.
      */
@@ -4932,7 +4936,7 @@ declare module "gapi.client.youtube" {
     tagSuggestions?: youtube$VideoSuggestionsTagSuggestion[];
   }
 
-  declare interface youtube$VideoSuggestionsTagSuggestion {
+  declare interface gapi$client$youtube$VideoSuggestionsTagSuggestion {
     /**
      * A set of video categories for which the tag is relevant. You can use this information to display appropriate tag suggestions based on the video
      * category that the video uploader associates with the video. By default, tag suggestions are relevant for all categories if there are no restricts
@@ -4946,7 +4950,7 @@ declare module "gapi.client.youtube" {
     tag?: string;
   }
 
-  declare interface youtube$VideoTopicDetails {
+  declare interface gapi$client$youtube$VideoTopicDetails {
     /**
      * Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You
      * can retrieve information about each topic using Freebase Topic API.
@@ -4965,7 +4969,7 @@ declare module "gapi.client.youtube" {
     topicIds?: string[];
   }
 
-  declare interface youtube$WatchSettings {
+  declare interface gapi$client$youtube$WatchSettings {
     /**
      * The text color for the video watch page's branded area.
      */
@@ -4982,7 +4986,7 @@ declare module "gapi.client.youtube" {
     textColor?: string;
   }
 
-  declare interface youtube$ActivitiesResource {
+  declare interface gapi$client$youtube$ActivitiesResource {
     /**
      * Posts a bulletin for a specific channel. (The user submitting the request must be authorized to act on the channel's behalf.)
      *
@@ -5032,7 +5036,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Activity>;
+    }): Request<gapi$client$youtube$Activity>;
 
     /**
      * Returns a list of channel activity events that match the request criteria. For example, you can retrieve events associated with a particular channel,
@@ -5129,10 +5133,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ActivityListResponse>;
+    }): Request<gapi$client$youtube$ActivityListResponse>;
   }
 
-  declare interface youtube$CaptionsResource {
+  declare interface gapi$client$youtube$CaptionsResource {
     /**
      * Deletes a specified caption track.
      */
@@ -5339,7 +5343,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Caption>;
+    }): Request<gapi$client$youtube$Caption>;
 
     /**
      * Returns a list of caption tracks that are associated with a specified video. Note that the API response does not contain the actual captions and that
@@ -5413,7 +5417,7 @@ declare module "gapi.client.youtube" {
        * The videoId parameter specifies the YouTube video ID of the video for which the API should return caption tracks.
        */
       videoId: string
-    }): Request<youtube$CaptionListResponse>;
+    }): Request<gapi$client$youtube$CaptionListResponse>;
 
     /**
      * Updates a caption track. When updating a caption track, you can change the track's draft status, upload a new caption file for the track, or both.
@@ -5483,10 +5487,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Caption>;
+    }): Request<gapi$client$youtube$Caption>;
   }
 
-  declare interface youtube$ChannelBannersResource {
+  declare interface gapi$client$youtube$ChannelBannersResource {
     /**
      * Uploads a channel banner image to YouTube. This method represents the first two steps in a three-step process to update the banner image for a channel:
      *
@@ -5550,10 +5554,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ChannelBannerResource>;
+    }): Request<gapi$client$youtube$ChannelBannerResource>;
   }
 
-  declare interface youtube$ChannelSectionsResource {
+  declare interface gapi$client$youtube$ChannelSectionsResource {
     /**
      * Deletes a channelSection.
      */
@@ -5683,7 +5687,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ChannelSection>;
+    }): Request<gapi$client$youtube$ChannelSection>;
 
     /**
      * Returns channelSection resources that match the API request criteria.
@@ -5768,7 +5772,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ChannelSectionListResponse>;
+    }): Request<gapi$client$youtube$ChannelSectionListResponse>;
 
     /**
      * Update a channelSection.
@@ -5827,10 +5831,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ChannelSection>;
+    }): Request<gapi$client$youtube$ChannelSection>;
   }
 
-  declare interface youtube$ChannelsResource {
+  declare interface gapi$client$youtube$ChannelsResource {
     /**
      * Returns a collection of zero or more channel resources that match the request criteria.
      */
@@ -5939,7 +5943,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$ChannelListResponse>;
+    }): Request<gapi$client$youtube$ChannelListResponse>;
 
     /**
      * Updates a channel's metadata. Note that this method currently only supports updates to the channel resource's brandingSettings and invideoPromotion
@@ -6001,10 +6005,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Channel>;
+    }): Request<gapi$client$youtube$Channel>;
   }
 
-  declare interface youtube$CommentThreadsResource {
+  declare interface gapi$client$youtube$CommentThreadsResource {
     /**
      * Creates a new top-level comment. To add a reply to an existing comment, use the comments.insert method instead.
      */
@@ -6050,7 +6054,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$CommentThread>;
+    }): Request<gapi$client$youtube$CommentThread>;
 
     /**
      * Returns a list of comment threads that match the API request parameters.
@@ -6159,7 +6163,7 @@ declare module "gapi.client.youtube" {
        * The videoId parameter instructs the API to return comment threads associated with the specified video ID.
        */
       videoId?: string
-    }): Request<youtube$CommentThreadListResponse>;
+    }): Request<gapi$client$youtube$CommentThreadListResponse>;
 
     /**
      * Modifies the top-level comment in a comment thread.
@@ -6206,10 +6210,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$CommentThread>;
+    }): Request<gapi$client$youtube$CommentThread>;
   }
 
-  declare interface youtube$CommentsResource {
+  declare interface gapi$client$youtube$CommentsResource {
     /**
      * Deletes a comment.
      */
@@ -6301,7 +6305,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Comment>;
+    }): Request<gapi$client$youtube$Comment>;
 
     /**
      * Returns a list of comments that match the API request parameters.
@@ -6380,7 +6384,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$CommentListResponse>;
+    }): Request<gapi$client$youtube$CommentListResponse>;
 
     /**
      * Expresses the caller's opinion that one or more comments should be flagged as spam.
@@ -6533,10 +6537,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Comment>;
+    }): Request<gapi$client$youtube$Comment>;
   }
 
-  declare interface youtube$FanFundingEventsResource {
+  declare interface gapi$client$youtube$FanFundingEventsResource {
     /**
      * Lists fan funding events for a channel.
      */
@@ -6601,10 +6605,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$FanFundingEventListResponse>;
+    }): Request<gapi$client$youtube$FanFundingEventListResponse>;
   }
 
-  declare interface youtube$GuideCategoriesResource {
+  declare interface gapi$client$youtube$GuideCategoriesResource {
     /**
      * Returns a list of categories that can be associated with YouTube channels.
      */
@@ -6666,10 +6670,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$GuideCategoryListResponse>;
+    }): Request<gapi$client$youtube$GuideCategoryListResponse>;
   }
 
-  declare interface youtube$I18nLanguagesResource {
+  declare interface gapi$client$youtube$I18nLanguagesResource {
     /**
      * Returns a list of application languages that the YouTube website supports.
      */
@@ -6719,10 +6723,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$I18nLanguageListResponse>;
+    }): Request<gapi$client$youtube$I18nLanguageListResponse>;
   }
 
-  declare interface youtube$I18nRegionsResource {
+  declare interface gapi$client$youtube$I18nRegionsResource {
     /**
      * Returns a list of content regions that the YouTube website supports.
      */
@@ -6772,10 +6776,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$I18nRegionListResponse>;
+    }): Request<gapi$client$youtube$I18nRegionListResponse>;
   }
 
-  declare interface youtube$LiveBroadcastsResource {
+  declare interface gapi$client$youtube$LiveBroadcastsResource {
     /**
      * Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream. A broadcast can only be bound to one video
      * stream, though a video stream may be bound to more than one broadcast.
@@ -6858,7 +6862,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveBroadcast>;
+    }): Request<gapi$client$youtube$LiveBroadcast>;
 
     /**
      * Controls the settings for a slate that can be displayed in the broadcast stream.
@@ -6957,7 +6961,7 @@ declare module "gapi.client.youtube" {
        * (YYYY-MM-DDThh:mm:ss.sssZ) format.
        */
       walltime?: string
-    }): Request<youtube$LiveBroadcast>;
+    }): Request<gapi$client$youtube$LiveBroadcast>;
 
     /**
      * Deletes a broadcast.
@@ -7102,7 +7106,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveBroadcast>;
+    }): Request<gapi$client$youtube$LiveBroadcast>;
 
     /**
      * Returns a list of YouTube broadcasts that match the API request parameters.
@@ -7208,7 +7212,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveBroadcastListResponse>;
+    }): Request<gapi$client$youtube$LiveBroadcastListResponse>;
 
     /**
      * Changes the status of a YouTube live broadcast and initiates any processes associated with the new status. For example, when you transition a
@@ -7293,7 +7297,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveBroadcast>;
+    }): Request<gapi$client$youtube$LiveBroadcast>;
 
     /**
      * Updates a broadcast. For example, you could modify the broadcast settings defined in the liveBroadcast resource's contentDetails object.
@@ -7373,10 +7377,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveBroadcast>;
+    }): Request<gapi$client$youtube$LiveBroadcast>;
   }
 
-  declare interface youtube$LiveChatBansResource {
+  declare interface gapi$client$youtube$LiveChatBansResource {
     /**
      * Removes a chat ban.
      */
@@ -7468,10 +7472,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveChatBan>;
+    }): Request<gapi$client$youtube$LiveChatBan>;
   }
 
-  declare interface youtube$LiveChatMessagesResource {
+  declare interface gapi$client$youtube$LiveChatMessagesResource {
     /**
      * Deletes a chat message.
      */
@@ -7563,7 +7567,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveChatMessage>;
+    }): Request<gapi$client$youtube$LiveChatMessage>;
 
     /**
      * Lists live chat messages for a specific chat.
@@ -7639,10 +7643,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveChatMessageListResponse>;
+    }): Request<gapi$client$youtube$LiveChatMessageListResponse>;
   }
 
-  declare interface youtube$LiveChatModeratorsResource {
+  declare interface gapi$client$youtube$LiveChatModeratorsResource {
     /**
      * Removes a chat moderator.
      */
@@ -7734,7 +7738,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveChatModerator>;
+    }): Request<gapi$client$youtube$LiveChatModerator>;
 
     /**
      * Lists moderators for a live chat.
@@ -7796,10 +7800,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveChatModeratorListResponse>;
+    }): Request<gapi$client$youtube$LiveChatModeratorListResponse>;
   }
 
-  declare interface youtube$LiveStreamsResource {
+  declare interface gapi$client$youtube$LiveStreamsResource {
     /**
      * Deletes a video stream.
      */
@@ -7943,7 +7947,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveStream>;
+    }): Request<gapi$client$youtube$LiveStream>;
 
     /**
      * Returns a list of video streams that match the API request parameters.
@@ -8038,7 +8042,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveStreamListResponse>;
+    }): Request<gapi$client$youtube$LiveStreamListResponse>;
 
     /**
      * Updates a video stream. If the properties that you want to change cannot be updated, then you need to create a new stream with the proper settings.
@@ -8115,10 +8119,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$LiveStream>;
+    }): Request<gapi$client$youtube$LiveStream>;
   }
 
-  declare interface youtube$PlaylistItemsResource {
+  declare interface gapi$client$youtube$PlaylistItemsResource {
     /**
      * Deletes a playlist item.
      */
@@ -8231,7 +8235,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$PlaylistItem>;
+    }): Request<gapi$client$youtube$PlaylistItem>;
 
     /**
      * Returns a collection of playlist items that match the API request parameters. You can retrieve all of the playlist items in a specified playlist or
@@ -8319,7 +8323,7 @@ declare module "gapi.client.youtube" {
        * The videoId parameter specifies that the request should return only the playlist items that contain the specified video.
        */
       videoId?: string
-    }): Request<youtube$PlaylistItemListResponse>;
+    }): Request<gapi$client$youtube$PlaylistItemListResponse>;
 
     /**
      * Modifies a playlist item. For example, you could update the item's position in the playlist.
@@ -8382,10 +8386,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$PlaylistItem>;
+    }): Request<gapi$client$youtube$PlaylistItem>;
   }
 
-  declare interface youtube$PlaylistsResource {
+  declare interface gapi$client$youtube$PlaylistsResource {
     /**
      * Deletes a playlist.
      */
@@ -8513,7 +8517,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Playlist>;
+    }): Request<gapi$client$youtube$Playlist>;
 
     /**
      * Returns a collection of playlists that match the API request parameters. For example, you can retrieve all playlists that the authenticated user owns,
@@ -8621,7 +8625,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$PlaylistListResponse>;
+    }): Request<gapi$client$youtube$PlaylistListResponse>;
 
     /**
      * Modifies a playlist. For example, you could change a playlist's title, description, or privacy status.
@@ -8682,10 +8686,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Playlist>;
+    }): Request<gapi$client$youtube$Playlist>;
   }
 
-  declare interface youtube$SearchResource {
+  declare interface gapi$client$youtube$SearchResource {
     /**
      * Returns a collection of search results that match the query parameters specified in the API request. By default, a search result set identifies
      * matching video, channel, and playlist resources, but you can also configure queries to only retrieve a specific type of resource.
@@ -8931,10 +8935,10 @@ declare module "gapi.client.youtube" {
        * type parameter's value to video.
        */
       videoType?: string
-    }): Request<youtube$SearchListResponse>;
+    }): Request<gapi$client$youtube$SearchListResponse>;
   }
 
-  declare interface youtube$SponsorsResource {
+  declare interface gapi$client$youtube$SponsorsResource {
     /**
      * Lists sponsors for a channel.
      */
@@ -8995,10 +8999,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$SponsorListResponse>;
+    }): Request<gapi$client$youtube$SponsorListResponse>;
   }
 
-  declare interface youtube$SubscriptionsResource {
+  declare interface gapi$client$youtube$SubscriptionsResource {
     /**
      * Deletes a subscription.
      */
@@ -9091,7 +9095,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Subscription>;
+    }): Request<gapi$client$youtube$Subscription>;
 
     /**
      * Returns subscription resources that match the API request criteria.
@@ -9214,10 +9218,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$SubscriptionListResponse>;
+    }): Request<gapi$client$youtube$SubscriptionListResponse>;
   }
 
-  declare interface youtube$SuperChatEventsResource {
+  declare interface gapi$client$youtube$SuperChatEventsResource {
     /**
      * Lists Super Chat events for a channel.
      */
@@ -9282,10 +9286,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$SuperChatEventListResponse>;
+    }): Request<gapi$client$youtube$SuperChatEventListResponse>;
   }
 
-  declare interface youtube$ThumbnailsResource {
+  declare interface gapi$client$youtube$ThumbnailsResource {
     /**
      * Uploads a custom video thumbnail to YouTube and sets it for a video.
      */
@@ -9340,10 +9344,10 @@ declare module "gapi.client.youtube" {
        * The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is being provided.
        */
       videoId: string
-    }): Request<youtube$ThumbnailSetResponse>;
+    }): Request<gapi$client$youtube$ThumbnailSetResponse>;
   }
 
-  declare interface youtube$VideoAbuseReportReasonsResource {
+  declare interface gapi$client$youtube$VideoAbuseReportReasonsResource {
     /**
      * Returns a list of abuse reasons that can be used for reporting abusive videos.
      */
@@ -9393,10 +9397,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$VideoAbuseReportReasonListResponse>;
+    }): Request<gapi$client$youtube$VideoAbuseReportReasonListResponse>;
   }
 
-  declare interface youtube$VideoCategoriesResource {
+  declare interface gapi$client$youtube$VideoCategoriesResource {
     /**
      * Returns a list of categories that can be associated with YouTube videos.
      */
@@ -9457,10 +9461,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$VideoCategoryListResponse>;
+    }): Request<gapi$client$youtube$VideoCategoryListResponse>;
   }
 
-  declare interface youtube$VideosResource {
+  declare interface gapi$client$youtube$VideosResource {
     /**
      * Deletes a YouTube video.
      */
@@ -9572,7 +9576,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$VideoGetRatingResponse>;
+    }): Request<gapi$client$youtube$VideoGetRatingResponse>;
 
     /**
      * Uploads a video to YouTube and optionally sets the video's metadata.
@@ -9665,7 +9669,7 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Video>;
+    }): Request<gapi$client$youtube$Video>;
 
     /**
      * Returns a list of videos that match the API request parameters.
@@ -9796,7 +9800,7 @@ declare module "gapi.client.youtube" {
        * with the chart parameter. By default, charts are not restricted to a particular category.
        */
       videoCategoryId?: string
-    }): Request<youtube$VideoListResponse>;
+    }): Request<gapi$client$youtube$VideoListResponse>;
 
     /**
      * Add a like or dislike rating to a video or remove a rating from a video.
@@ -9964,10 +9968,10 @@ declare module "gapi.client.youtube" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtube$Video>;
+    }): Request<gapi$client$youtube$Video>;
   }
 
-  declare interface youtube$WatermarksResource {
+  declare interface gapi$client$youtube$WatermarksResource {
     /**
      * Uploads a watermark image to YouTube and sets it for a channel.
      */
