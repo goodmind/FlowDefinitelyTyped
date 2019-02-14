@@ -1,5 +1,5 @@
 declare module "deep-freeze-es6" {
-  declare module.exports: typeof deepFreeze;
+  declare export default typeof deepFreeze;
 
   declare function deepFreeze<T>(obj: T): T;
 
