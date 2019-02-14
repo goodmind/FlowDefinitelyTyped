@@ -1,8 +1,8 @@
 declare module "into-stream" {
-  declare module.exports: typeof intoStream;
+  declare export default typeof intoStream;
 
   declare function intoStream(
-    input: intoStream$intoStream$Input | Promise<intoStream$intoStream$Input>
+    input: intoStream$Input | Promise<intoStream$Input>
   ): NodeJS.ReadableStream;
 
   declare var npm$namespace$intoStream: {
