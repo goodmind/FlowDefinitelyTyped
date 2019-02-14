@@ -9,7 +9,7 @@ declare module "umd" {
   declare function Umd(
     name: string,
     src: string,
-    options?: boolean | Umd$Umd$Options
+    options?: boolean | Umd$Options
   ): string;
 
   declare var npm$namespace$Umd: {
@@ -30,5 +30,5 @@ declare module "umd" {
     options?: boolean | Umd$Options
   ): string;
 
-  declare module.exports: typeof Umd;
+  declare export default typeof Umd;
 }
