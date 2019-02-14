@@ -1,18 +1,15 @@
 declare module "boom" {
-  declare module.exports: typeof Boom;
+  declare export default typeof Boom;
 
   /**
    * boom provides a set of utilities for returning HTTP errors. Each utility returns a Boom error response object (instance of Error) which includes the following properties:
    * @see {@link https://github.com/hapijs/boom#boom}
    */
-  declare class Boom<Data = any> mixins b3$Error {
+  declare class Boom<Data = any> mixins Error {
     /**
      * Creates a new Boom object using the provided message and then calling boomify() to decorate the error with the Boom properties.
      */
-    constructor(
-      message?: string | b3$Error,
-      options?: Boom$Boom$Options<oauth2$Data>
-    ): this;
+    constructor(message?: string | Error, options?: Boom$Options<Data>): this;
 
     /**
      * isBoom - if true, indicates this is a Boom object instance.
@@ -32,7 +29,7 @@ declare module "boom" {
     /**
      * output - the formatted response. Can be directly manipulated after object construction to return a custom error response. Allowed root keys:
      */
-    output: Boom$Boom$Output;
+    output: Boom$Output;
 
     /**
      * reformat() - rebuilds error.output using the other object properties.
@@ -49,7 +46,7 @@ declare module "boom" {
     /**
      * https://github.com/hapijs/boom#createstatuscode-message-data and https://github.com/hapijs/boom/blob/v4.3.0/lib/index.js#L99
      */
-    data: oauth2$Data;
+    data: Data;
   }
 
   declare var npm$namespace$Boom: {
@@ -96,7 +93,7 @@ declare module "boom" {
     /**
      * data - additional error information (assigned to error.data).
      */
-    data?: oauth2$Data;
+    data?: Data;
 
     /**
      * decorate - an option with extra properties to set on the error object.
@@ -174,7 +171,7 @@ declare module "boom" {
    * @see {@link https://github.com/hapijs/boom#boomifyerror-options}
    */
   declare function Boom$boomify(
-    error: b3$Error,
+    error: Error,
     options?: {
       statusCode?: number,
       message?: string,
@@ -186,7 +183,7 @@ declare module "boom" {
    * Identifies whether an error is a Boom object. Same as calling instanceof Boom.
    * @param error the error object to identify.
    */
-  declare function Boom$isBoom(error: b3$Error): boolean;
+  declare function Boom$isBoom(error: Error): boolean;
 
   /**
    * Returns a 400 Bad Request error
@@ -196,27 +193,27 @@ declare module "boom" {
    */
   declare function Boom$badRequest<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
- * Returns a 401 Unauthorized error
- * @param message optional message.
- * @param scheme can be one of the following:
-* an authentication scheme name
-* an array of string values. These values will be separated by ', ' and set to the 'WWW-Authenticate' header.
- * @param attributes an object of values to use while setting the 'WWW-Authenticate' header.
-This value is only used when scheme is a string, otherwise it is ignored.
-Every key/value pair will be included in the 'WWW-Authenticate' in the format of
-'key="value"' as well as in the response payload under the attributes key.
-Alternatively value can be a string which is use to set the value of the scheme,
-for example setting the token value for negotiate header.
-If string is used message parameter must be null.
-null and undefined will be replaced with an empty string. If attributes is set,
-message will be used as the 'error' segment of the 'WWW-Authenticate' header.
-If message is unset, the 'error' segment of the header will not be present and isMissing will be true on the error object.
- * @see {@link https://github.com/hapijs/boom#boomunauthorizedmessage-scheme-attributes}
- */
+   * Returns a 401 Unauthorized error
+   * @param message optional message.
+   * @param scheme can be one of the following:
+   * * an authentication scheme name
+   * * an array of string values. These values will be separated by ', ' and set to the 'WWW-Authenticate' header.
+   * @param attributes an object of values to use while setting the 'WWW-Authenticate' header.
+   * This value is only used when scheme is a string, otherwise it is ignored.
+   * Every key/value pair will be included in the 'WWW-Authenticate' in the format of
+   * 'key="value"' as well as in the response payload under the attributes key.
+   * Alternatively value can be a string which is use to set the value of the scheme,
+   * for example setting the token value for negotiate header.
+   * If string is used message parameter must be null.
+   * null and undefined will be replaced with an empty string. If attributes is set,
+   * message will be used as the 'error' segment of the 'WWW-Authenticate' header.
+   * If message is unset, the 'error' segment of the header will not be present and isMissing will be true on the error object.
+   * @see {@link https://github.com/hapijs/boom#boomunauthorizedmessage-scheme-attributes}
+   */
   declare function Boom$unauthorized(
     message?: string,
     scheme?: string,
@@ -248,8 +245,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$paymentRequired<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 403 Forbidden error
@@ -259,8 +256,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$forbidden<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 404 Not Found error
@@ -270,8 +267,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$notFound<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 405 Method Not Allowed error
@@ -282,9 +279,9 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$methodNotAllowed<Data>(
     message?: string,
-    data?: oauth2$Data,
+    data?: Data,
     allow?: string | string[]
-  ): Boom<oauth2$Data>;
+  ): Boom<Data>;
 
   /**
    * Returns a 406 Not Acceptable error
@@ -294,8 +291,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$notAcceptable<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 407 Proxy Authentication Required error
@@ -305,8 +302,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$proxyAuthRequired<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 408 Request Time-out error
@@ -316,8 +313,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$clientTimeout<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 409 Conflict error
@@ -327,8 +324,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$conflict<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 410 Gone error
@@ -338,8 +335,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$resourceGone<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 411 Length Required error
@@ -349,8 +346,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$lengthRequired<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 412 Precondition Failed error
@@ -360,8 +357,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$preconditionFailed<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 413 Request Entity Too Large error
@@ -371,8 +368,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$entityTooLarge<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 414 Request-URI Too Large error
@@ -382,8 +379,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$uriTooLong<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 415 Unsupported Media Type error
@@ -393,8 +390,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$unsupportedMediaType<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 416 Requested Range Not Satisfiable error
@@ -404,8 +401,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$rangeNotSatisfiable<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 417 Expectation Failed error
@@ -415,8 +412,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$expectationFailed<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 418 I'm a Teapot error
@@ -424,10 +421,7 @@ If message is unset, the 'error' segment of the header will not be present and i
    * @param data optional additional error data.
    * @see {@link https://github.com/hapijs/boom#boomteapotmessage-data}
    */
-  declare function Boom$teapot<Data>(
-    message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+  declare function Boom$teapot<Data>(message?: string, data?: Data): Boom<Data>;
 
   /**
    * Returns a 422 Unprocessable Entity error
@@ -437,8 +431,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$badData<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 423 Locked error
@@ -446,10 +440,7 @@ If message is unset, the 'error' segment of the header will not be present and i
    * @param data optional additional error data.
    * @see {@link https://github.com/hapijs/boom#boomlockedmessage-data}
    */
-  declare function Boom$locked<Data>(
-    message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+  declare function Boom$locked<Data>(message?: string, data?: Data): Boom<Data>;
 
   /**
    * Returns a 424 Failed Dependency error
@@ -459,8 +450,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$failedDependency<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 428 Precondition Required error
@@ -470,8 +461,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$preconditionRequired<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 429 Too Many Requests error
@@ -481,8 +472,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$tooManyRequests<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 451 Unavailable For Legal Reasons error
@@ -492,8 +483,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$illegal<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 500 Internal Server Error error
@@ -504,8 +495,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$badImplementation<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 500 Internal Server Error error
@@ -516,8 +507,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$internal<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 501 Not Implemented error with your error message to the user
@@ -527,8 +518,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$notImplemented<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 502 Bad Gateway error with your error message to the user
@@ -538,8 +529,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$badGateway<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 503 Service Unavailable error with your error message to the user
@@ -549,8 +540,8 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$serverUnavailable<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 
   /**
    * Returns a 504 Gateway Time-out error with your error message to the user
@@ -560,6 +551,6 @@ If message is unset, the 'error' segment of the header will not be present and i
    */
   declare function Boom$gatewayTimeout<Data>(
     message?: string,
-    data?: oauth2$Data
-  ): Boom<oauth2$Data>;
+    data?: Data
+  ): Boom<Data>;
 }
