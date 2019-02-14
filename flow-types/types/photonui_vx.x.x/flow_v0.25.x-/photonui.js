@@ -1,30 +1,80 @@
 declare module "photonui" {
   declare var npm$namespace$photonui: {
     domInsert: typeof photonui$domInsert,
-    getWidget: typeof photonui$getWidget
+    getWidget: typeof photonui$getWidget,
+
+    Base: typeof photonui$Base,
+    Widget: typeof photonui$Widget,
+    FileManager: typeof photonui$FileManager,
+    Translation: typeof photonui$Translation,
+    AccelManager: typeof photonui$AccelManager,
+    MouseManager: typeof photonui$MouseManager,
+    BaseIcon: typeof photonui$BaseIcon,
+    FAIcon: typeof photonui$FAIcon,
+    SpriteIcon: typeof photonui$SpriteIcon,
+    Image: typeof photonui$Image,
+    SpriteSheet: typeof photonui$SpriteSheet,
+    Canvas: typeof photonui$Canvas,
+    Label: typeof photonui$Label,
+    Text: typeof photonui$Text,
+    ProgressBar: typeof photonui$ProgressBar,
+    Separator: typeof photonui$Separator,
+    Button: typeof photonui$Button,
+    ColorButton: typeof photonui$ColorButton,
+    CheckBox: typeof photonui$CheckBox,
+    Switch: typeof photonui$Switch,
+    ToggleButton: typeof photonui$ToggleButton,
+    Color: typeof photonui$Color,
+    ColorPalette: typeof photonui$ColorPalette,
+    ColorPicker: typeof photonui$ColorPicker,
+    Field: typeof photonui$Field,
+    NumericField: typeof photonui$NumericField,
+    Slider: typeof photonui$Slider,
+    TextAreaField: typeof photonui$TextAreaField,
+    TextField: typeof photonui$TextField,
+    Select: typeof photonui$Select,
+    FontSelect: typeof photonui$FontSelect,
+    Container: typeof photonui$Container,
+    Layout: typeof photonui$Layout,
+    BoxLayout: typeof photonui$BoxLayout,
+    FluidLayout: typeof photonui$FluidLayout,
+    GridLayout: typeof photonui$GridLayout,
+    Menu: typeof photonui$Menu,
+    MenuItem: typeof photonui$MenuItem,
+    SubMenuItem: typeof photonui$SubMenuItem,
+    Viewport: typeof photonui$Viewport,
+    BaseWindow: typeof photonui$BaseWindow,
+    PopupWindow: typeof photonui$PopupWindow,
+    PopupMenu: typeof photonui$PopupMenu,
+    Window: typeof photonui$Window,
+    Dialog: typeof photonui$Dialog,
+    ColorPickerDialog: typeof photonui$ColorPickerDialog,
+    TabItem: typeof photonui$TabItem,
+    TabLayout: typeof photonui$TabLayout,
+    Helpers: typeof npm$namespace$photonui$Helpers
   };
 
-  declare var npm$namespace$Helpers: {
-    escapeHtml: typeof Helpers$escapeHtml,
-    uuid4: typeof Helpers$uuid4,
-    cleanNode: typeof Helpers$cleanNode,
-    getAbsolutePosition: typeof Helpers$getAbsolutePosition,
-    numberToCssSize: typeof Helpers$numberToCssSize
+  declare var npm$namespace$photonui$Helpers: {
+    escapeHtml: typeof photonui$Helpers$escapeHtml,
+    uuid4: typeof photonui$Helpers$uuid4,
+    cleanNode: typeof photonui$Helpers$cleanNode,
+    getAbsolutePosition: typeof photonui$Helpers$getAbsolutePosition,
+    numberToCssSize: typeof photonui$Helpers$numberToCssSize
   };
-  declare function Helpers$escapeHtml(string: string): void;
+  declare function photonui$Helpers$escapeHtml(string: string): void;
 
-  declare function Helpers$uuid4(): string;
+  declare function photonui$Helpers$uuid4(): string;
 
-  declare function Helpers$cleanNode(node: HTMLElement): void;
+  declare function photonui$Helpers$cleanNode(node: HTMLElement): void;
 
-  declare function Helpers$getAbsolutePosition(
+  declare function photonui$Helpers$getAbsolutePosition(
     element: HTMLElement | string
   ): {
     x: number,
     y: number
   };
 
-  declare function Helpers$numberToCssSize(
+  declare function photonui$Helpers$numberToCssSize(
     value: number,
     defaultValue?: number,
     nullValue?: string
@@ -44,7 +94,7 @@ declare module "photonui" {
     removeCallback(id: string): void;
   }
 
-  declare class photonui$Widget mixins photonui$Base {
+  declare class photonui$Widget mixins Base {
     absolutePosition: {
       x: number,
       y: number
@@ -81,7 +131,7 @@ declare module "photonui" {
 
   declare function photonui$getWidget(name: string): photonui$Widget;
 
-  declare class photonui$FileManager mixins photonui$Base {
+  declare class photonui$FileManager mixins Base {
     acceptedExts: string[];
     acceptedMimes: string[];
     dropZone: HTMLElement;
@@ -89,7 +139,7 @@ declare module "photonui" {
     open(): void;
   }
 
-  declare class photonui$Translation mixins photonui$Base {
+  declare class photonui$Translation mixins Base {
     locale: string;
     addCatalogs(catalogs: {
       [key: string]: any
@@ -111,7 +161,7 @@ declare module "photonui" {
     updateDomTranslation(): void;
   }
 
-  declare class photonui$AccelManager mixins photonui$Base {
+  declare class photonui$AccelManager mixins Base {
     addAccel(
       id: string,
       keys: string,
@@ -121,7 +171,7 @@ declare module "photonui" {
     removeAccel(id: string): void;
   }
 
-  declare class photonui$MouseManager mixins photonui$Base {
+  declare class photonui$MouseManager mixins Base {
     constructor(params?: {
       [key: string]: any
     }): this;
@@ -146,9 +196,9 @@ declare module "photonui" {
     deltaY: number;
   }
 
-  declare class photonui$BaseIcon mixins photonui$Widget {}
+  declare class photonui$BaseIcon mixins Widget {}
 
-  declare class photonui$FAIcon mixins photonui$BaseIcon {
+  declare class photonui$FAIcon mixins BaseIcon {
     constructor(params?: {
       [key: string]: any
     }): this;
@@ -163,7 +213,7 @@ declare module "photonui" {
     size: string;
   }
 
-  declare class photonui$SpriteIcon mixins photonui$BaseIcon {
+  declare class photonui$SpriteIcon mixins BaseIcon {
     constructor(params?: {
       [key: string]: any
     }): this;
@@ -178,13 +228,13 @@ declare module "photonui" {
     spriteSheetName: string;
   }
 
-  declare class photonui$Image mixins photonui$Widget {
+  declare class photonui$Image mixins Widget {
     width: number;
     height: number;
     url: string;
   }
 
-  declare class photonui$SpriteSheet mixins photonui$Base {
+  declare class photonui$SpriteSheet mixins Base {
     name: string;
     imageUrl: string;
     size: string;
@@ -203,7 +253,7 @@ declare module "photonui" {
     static getSpriteSheet(name: string): photonui$SpriteSheet;
   }
 
-  declare class photonui$Canvas mixins photonui$Widget {
+  declare class photonui$Canvas mixins Widget {
     canvas: HTMLElement;
     interactiveMode: HTMLElement;
     width: number;
@@ -218,7 +268,7 @@ declare module "photonui" {
     transferControlToProxy(): void;
   }
 
-  declare class photonui$Label mixins photonui$Widget {
+  declare class photonui$Label mixins Widget {
     constructor(params?: {
       [key: string]: any
     }): this;
@@ -234,23 +284,23 @@ declare module "photonui" {
     textAlign: string;
   }
 
-  declare class photonui$Text mixins photonui$Widget {
+  declare class photonui$Text mixins Widget {
     rawHtml: string;
     text: string;
   }
 
-  declare class photonui$ProgressBar mixins photonui$Widget {
+  declare class photonui$ProgressBar mixins Widget {
     orientation: string;
     pulsate: boolean;
     textVisible: boolean;
     value: number;
   }
 
-  declare class photonui$Separator mixins photonui$Widget {
+  declare class photonui$Separator mixins Widget {
     orientation: string;
   }
 
-  declare class photonui$Button mixins photonui$Widget {
+  declare class photonui$Button mixins Widget {
     appearance: string;
     buttonColor: string;
     leftIconName: string;
@@ -263,21 +313,21 @@ declare module "photonui" {
     textVisible: boolean;
   }
 
-  declare class photonui$ColorButton mixins photonui$Widget {
+  declare class photonui$ColorButton mixins Widget {
     color: photonui$Color;
     dialogOnly: boolean;
     value: string;
   }
 
-  declare class photonui$CheckBox mixins photonui$Widget {
+  declare class photonui$CheckBox mixins Widget {
     value: boolean;
   }
 
-  declare class photonui$Switch mixins photonui$CheckBox {}
+  declare class photonui$Switch mixins CheckBox {}
 
-  declare class photonui$ToggleButton mixins photonui$CheckBox {}
+  declare class photonui$ToggleButton mixins CheckBox {}
 
-  declare class photonui$Color mixins photonui$Base {
+  declare class photonui$Color mixins Base {
     constructor(color: string): this;
     constructor(params?: {
       [key: string]: any
@@ -299,24 +349,24 @@ declare module "photonui" {
     setHSB(hue: number, saturation: number, brightness: number): void;
   }
 
-  declare class photonui$ColorPalette mixins photonui$Widget {
+  declare class photonui$ColorPalette mixins Widget {
     color: photonui$Color;
     palette: Array<string[]>;
     value: string;
     static palette: Array<string[]>;
   }
 
-  declare class photonui$ColorPicker mixins photonui$Widget {
+  declare class photonui$ColorPicker mixins Widget {
     color: photonui$Color;
     value: string;
   }
 
-  declare class photonui$Field mixins photonui$Widget {
+  declare class photonui$Field mixins Widget {
     placeholder: string;
     value: boolean;
   }
 
-  declare class photonui$NumericField mixins photonui$Field {
+  declare class photonui$NumericField mixins Field {
     min: number;
     max: number;
     step: number;
@@ -324,20 +374,20 @@ declare module "photonui" {
     decimalSymbol: string;
   }
 
-  declare class photonui$Slider mixins photonui$NumericField {
+  declare class photonui$Slider mixins NumericField {
     fieldVisible: boolean;
   }
 
-  declare class photonui$TextAreaField mixins photonui$Field {
+  declare class photonui$TextAreaField mixins Field {
     cols: number;
     rows: number;
   }
 
-  declare class photonui$TextField mixins photonui$Field {
+  declare class photonui$TextField mixins Field {
     type: string;
   }
 
-  declare class photonui$Select mixins photonui$Widget {
+  declare class photonui$Select mixins Widget {
     children: photonui$Widget[];
     childrenNames: string[];
     iconVisible: boolean;
@@ -355,12 +405,12 @@ declare module "photonui" {
     addChild(widget: photonui$Widget, layoutOptions?: any): void;
   }
 
-  declare class photonui$FontSelect mixins photonui$Select {
+  declare class photonui$FontSelect mixins Select {
     fonts: string[];
     addFont(fontName: string): void;
   }
 
-  declare class photonui$Container mixins photonui$Widget {
+  declare class photonui$Container mixins Widget {
     child: photonui$Widget;
     childName: string;
     containerNode: HTMLElement;
@@ -369,7 +419,7 @@ declare module "photonui" {
     removeChild(widget: photonui$Widget): void;
   }
 
-  declare class photonui$Layout mixins photonui$Container {
+  declare class photonui$Layout mixins Container {
     children: photonui$Widget[];
     childrenNames: string[];
     addChild(
@@ -381,30 +431,30 @@ declare module "photonui" {
     empty(): void;
   }
 
-  declare class photonui$BoxLayout mixins photonui$Layout {
+  declare class photonui$BoxLayout mixins Layout {
     horizontalPadding: number;
     verticalPadding: number;
     orientation: string;
     spacing: number;
   }
 
-  declare class photonui$FluidLayout mixins photonui$Layout {
+  declare class photonui$FluidLayout mixins Layout {
     horizontalPadding: number;
     verticalPadding: number;
   }
 
-  declare class photonui$GridLayout mixins photonui$Layout {
+  declare class photonui$GridLayout mixins Layout {
     horizontalPadding: number;
     verticalPadding: number;
     horizontalSpacing: number;
     verticalSpacing: number;
   }
 
-  declare class photonui$Menu mixins photonui$Layout {
+  declare class photonui$Menu mixins Layout {
     iconVisible: boolean;
   }
 
-  declare class photonui$MenuItem mixins photonui$Menu {
+  declare class photonui$MenuItem mixins Menu {
     active: boolean;
     icon: photonui$BaseIcon;
     iconName: string;
@@ -412,12 +462,12 @@ declare module "photonui" {
     value: any;
   }
 
-  declare class photonui$SubMenuItem mixins photonui$MenuItem {
+  declare class photonui$SubMenuItem mixins MenuItem {
     menu: photonui$Menu;
     menuName: string;
   }
 
-  declare class photonui$Viewport mixins photonui$Container {
+  declare class photonui$Viewport mixins Container {
     width: number;
     minWidth: number;
     maxWidth: number;
@@ -429,7 +479,7 @@ declare module "photonui" {
     verticalScrollbar: boolean;
   }
 
-  declare class photonui$BaseWindow mixins photonui$Container {
+  declare class photonui$BaseWindow mixins Container {
     width: number;
     minWidth: number;
     maxWidth: number;
@@ -446,14 +496,14 @@ declare module "photonui" {
     center(): void;
   }
 
-  declare class photonui$PopupWindow mixins photonui$BaseWindow {
+  declare class photonui$PopupWindow mixins BaseWindow {
     popupXY(x: number, y: number): void;
     popupWidget(widget: photonui$Widget): void;
   }
 
-  declare class photonui$PopupMenu mixins photonui$PopupWindow {}
+  declare class photonui$PopupMenu mixins PopupWindow {}
 
-  declare class photonui$Window mixins photonui$BaseWindow {
+  declare class photonui$Window mixins BaseWindow {
     closeButtonVisible: boolean;
     modal: boolean;
     movable: boolean;
@@ -462,23 +512,23 @@ declare module "photonui" {
     moveToBack(): void;
   }
 
-  declare class photonui$Dialog mixins photonui$Window {
+  declare class photonui$Dialog mixins Window {
     buttons: photonui$Widget[];
     buttonNames: string[];
     addButton(widget: photonui$Widget, layoutOptions: any): void;
     removeButton(widget: photonui$Widget): void;
   }
 
-  declare class photonui$ColorPickerDialog mixins photonui$Dialog {
+  declare class photonui$ColorPickerDialog mixins Dialog {
     color: photonui$Color;
   }
 
-  declare class photonui$TabItem mixins photonui$Container {
+  declare class photonui$TabItem mixins Container {
     tabHtml: HTMLElement;
     title: string;
   }
 
-  declare class photonui$TabLayout mixins photonui$Layout {
+  declare class photonui$TabLayout mixins Layout {
     activeTab: photonui$Widget;
     activeTabName: string;
     padding: number;
