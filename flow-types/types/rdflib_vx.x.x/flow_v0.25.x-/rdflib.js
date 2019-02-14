@@ -456,7 +456,7 @@ declare module "rdflib" {
       subject: ValueType,
       predicate: ValueType,
       object: ValueType,
-      DataFactory$graph: ValueType
+      graph: ValueType
     ): this;
 
     /**
@@ -552,7 +552,7 @@ declare module "rdflib" {
      * Adds a statement to this formula
      * @param st The statement to add
      */
-    addStatement(DataFactory$st: Statement): number;
+    addStatement(st: Statement): number;
 
     /**
      * Gets a node that matches the specified pattern
@@ -745,7 +745,7 @@ declare module "rdflib" {
      * Gets whether this formula holds the specified statement
      * @param st A statement
      */
-    holdsStatement(DataFactory$st: Statement): boolean;
+    holdsStatement(st: Statement): boolean;
 
     /**
      * Gets a collection from a list of values
@@ -959,7 +959,7 @@ declare module "rdflib" {
       subject: ValueType,
       predicate: ValueType,
       object: ValueType,
-      DataFactory$graph: ValueType
+      graph: ValueType
     ): Statement[];
 
     /**
@@ -992,7 +992,7 @@ declare module "rdflib" {
      * Removes a statement from this formula
      * @param st A statement to remove
      */
-    remove(DataFactory$st: Statement): IndexedFormula;
+    remove(st: Statement): IndexedFormula;
 
     /**
      * Removes all statemnts in a doc
@@ -1027,14 +1027,14 @@ declare module "rdflib" {
       subject: ValueType,
       predicate: ValueType,
       object: ValueType,
-      DataFactory$graph: ValueType
+      graph: ValueType
     ): void;
 
     /**
      * Removes a statement
      * @param st The statement to remove
      */
-    removeStatement(DataFactory$st: Statement): Formula;
+    removeStatement(st: Statement): Formula;
 
     /**
      * Removes statements
@@ -1147,7 +1147,7 @@ declare module "rdflib" {
     subject: Node,
     predicate: Node,
     object: Node,
-    DataFactory$graph: Node
+    graph: Node
   ): Statement;
 
   /**
@@ -1161,7 +1161,7 @@ declare module "rdflib" {
     subject: Node,
     predicate: Node,
     object: Node,
-    DataFactory$graph: Node
+    graph: Node
   ): Statement;
 
   /**
@@ -1303,7 +1303,7 @@ declare module "rdflib" {
     subject: Node,
     predicate: Node,
     object: Node,
-    DataFactory$graph: Node
+    graph: Node
   ): Statement;
 
   /**
@@ -1356,7 +1356,7 @@ declare module "rdflib" {
     subject: Node,
     predicate: Node,
     object: Node,
-    DataFactory$graph: Node
+    graph: Node
   ): Statement;
 
   /**
@@ -1387,7 +1387,7 @@ declare module "rdflib" {
     kb: Formula,
     base: string,
     contentType: string,
-    callback: (log$error: any, kb: Formula) => void
+    callback: (error: any, kb: Formula) => void
   ): void;
 
   /**
