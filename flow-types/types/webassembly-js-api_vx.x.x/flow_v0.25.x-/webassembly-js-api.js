@@ -2,7 +2,15 @@ declare module "webassembly-js-api" {
   declare var npm$namespace$WebAssembly: {
     compile: typeof WebAssembly$compile,
     instantiate: typeof WebAssembly$instantiate,
-    validate: typeof WebAssembly$validate
+    validate: typeof WebAssembly$validate,
+
+    Module: typeof WebAssembly$Module,
+    Instance: typeof WebAssembly$Instance,
+    Memory: typeof WebAssembly$Memory,
+    Table: typeof WebAssembly$Table,
+    CompileError: typeof WebAssembly$CompileError,
+    LinkError: typeof WebAssembly$LinkError,
+    RuntimeError: typeof WebAssembly$RuntimeError
   };
   declare type WebAssembly$Imports = Array<{
     name: string,
