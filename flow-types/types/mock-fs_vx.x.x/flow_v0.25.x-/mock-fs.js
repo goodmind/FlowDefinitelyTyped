@@ -1,15 +1,16 @@
 declare module "mock-fs" {
-  declare function mock(
-    config?: mock$mock$Config,
-    options?: mock$mock$Options
-  ): void;
+  declare function mock(config?: mock$Config, options?: mock$Options): void;
 
   declare var npm$namespace$mock: {
     file: typeof mock$file,
     directory: typeof mock$directory,
     symlink: typeof mock$symlink,
     restore: typeof mock$restore,
-    fs: typeof mock$fs
+    fs: typeof mock$fs,
+
+    File: typeof mock$File,
+    Directory: typeof mock$Directory,
+    Symlink: typeof mock$Symlink
   };
   declare function mock$file(config: mock$FileConfig): mock$File;
 
@@ -51,20 +52,20 @@ declare module "mock-fs" {
 
   declare type mock$FileConfig = {
     content: string | Buffer
-  } & mock$CommonConfig;
+  } & CommonConfig;
 
   declare type mock$DirectoryConfig = {
     items: mock$Config
-  } & mock$CommonConfig;
+  } & CommonConfig;
 
   declare type mock$SymlinkConfig = {
     path: string
-  } & mock$CommonConfig;
+  } & CommonConfig;
 
   declare class mock$File {}
 
   declare class mock$Directory {}
 
   declare class mock$Symlink {}
-  declare module.exports: typeof mock;
+  declare export default typeof mock;
 }
