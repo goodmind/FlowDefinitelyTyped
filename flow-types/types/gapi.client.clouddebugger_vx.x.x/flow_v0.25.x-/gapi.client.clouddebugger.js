@@ -1,26 +1,30 @@
 declare module "gapi.client.clouddebugger" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    controller: typeof client$controller
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    controller: typeof gapi$client$controller
   };
 
   /**
    * Load Stackdriver Debugger API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouddebugger",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouddebugger",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$controller: clouddebugger$clouddebugger$ControllerResource;
+  declare var gapi$client$controller: clouddebugger$ControllerResource;
 
-  declare interface clouddebugger$AliasContext {
+  declare interface gapi$client$clouddebugger$AliasContext {
     /**
      * The alias kind.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.clouddebugger" {
     name?: string;
   }
 
-  declare interface clouddebugger$Breakpoint {
+  declare interface gapi$client$clouddebugger$Breakpoint {
     /**
      * Action that the agent should perform when the code at the
      * breakpoint location is hit.
@@ -161,11 +165,11 @@ declare module "gapi.client.clouddebugger" {
     variableTable?: clouddebugger$Variable[];
   }
 
-  declare interface clouddebugger$CloudRepoSourceContext {
+  declare interface gapi$client$clouddebugger$CloudRepoSourceContext {
     /**
      * An alias, which may be a branch or tag.
      */
-    aliasContext?: clouddebugger$AliasContext;
+    aliasContext?: gapi$client$clouddebugger$AliasContext;
 
     /**
      * The name of an alias (branch, tag, etc.).
@@ -183,7 +187,7 @@ declare module "gapi.client.clouddebugger" {
     revisionId?: string;
   }
 
-  declare interface clouddebugger$CloudWorkspaceId {
+  declare interface gapi$client$clouddebugger$CloudWorkspaceId {
     /**
      * The unique name of the workspace within the repo.  This is the name
      * chosen by the client in the Source API's CreateWorkspace method.
@@ -196,7 +200,7 @@ declare module "gapi.client.clouddebugger" {
     repoId?: clouddebugger$RepoId;
   }
 
-  declare interface clouddebugger$CloudWorkspaceSourceContext {
+  declare interface gapi$client$clouddebugger$CloudWorkspaceSourceContext {
     /**
      * The ID of the snapshot.
      * An empty snapshot_id refers to the most recent snapshot.
@@ -206,10 +210,10 @@ declare module "gapi.client.clouddebugger" {
     /**
      * The ID of the workspace.
      */
-    workspaceId?: clouddebugger$CloudWorkspaceId;
+    workspaceId?: gapi$client$clouddebugger$CloudWorkspaceId;
   }
 
-  declare interface clouddebugger$Debuggee {
+  declare interface gapi$client$clouddebugger$Debuggee {
     /**
      * Version ID of the agent.
      * Schema: `domain/language-platform/vmajor.minor` (for example
@@ -285,7 +289,7 @@ declare module "gapi.client.clouddebugger" {
     uniquifier?: string;
   }
 
-  declare interface clouddebugger$ExtendedSourceContext {
+  declare interface gapi$client$clouddebugger$ExtendedSourceContext {
     /**
      * Any source context.
      */
@@ -297,7 +301,7 @@ declare module "gapi.client.clouddebugger" {
     labels?: Record<string, string>;
   }
 
-  declare interface clouddebugger$FormatMessage {
+  declare interface gapi$client$clouddebugger$FormatMessage {
     /**
      * Format template for the message. The `format` uses placeholders `$0`,
      * `$1`, etc. to reference parameters. `$$` can be used to denote the `$`
@@ -317,11 +321,11 @@ declare module "gapi.client.clouddebugger" {
     parameters?: string[];
   }
 
-  declare interface clouddebugger$GerritSourceContext {
+  declare interface gapi$client$clouddebugger$GerritSourceContext {
     /**
      * An alias, which may be a branch or tag.
      */
-    aliasContext?: clouddebugger$AliasContext;
+    aliasContext?: gapi$client$clouddebugger$AliasContext;
 
     /**
      * The name of an alias (branch, tag, etc.).
@@ -346,15 +350,15 @@ declare module "gapi.client.clouddebugger" {
     revisionId?: string;
   }
 
-  declare interface clouddebugger$GetBreakpointResponse {
+  declare interface gapi$client$clouddebugger$GetBreakpointResponse {
     /**
      * Complete breakpoint state.
      * The fields `id` and `location` are guaranteed to be set.
      */
-    breakpoint?: clouddebugger$Breakpoint;
+    breakpoint?: gapi$client$clouddebugger$Breakpoint;
   }
 
-  declare interface clouddebugger$GitSourceContext {
+  declare interface gapi$client$clouddebugger$GitSourceContext {
     /**
      * Git commit hash.
      * required.
@@ -367,12 +371,12 @@ declare module "gapi.client.clouddebugger" {
     url?: string;
   }
 
-  declare interface clouddebugger$ListActiveBreakpointsResponse {
+  declare interface gapi$client$clouddebugger$ListActiveBreakpointsResponse {
     /**
      * List of all active breakpoints.
      * The fields `id` and `location` are guaranteed to be set on each breakpoint.
      */
-    breakpoints?: clouddebugger$Breakpoint[];
+    breakpoints?: gapi$client$clouddebugger$Breakpoint[];
 
     /**
      * A token that can be used in the next method call to block until
@@ -388,14 +392,14 @@ declare module "gapi.client.clouddebugger" {
     waitExpired?: boolean;
   }
 
-  declare interface clouddebugger$ListBreakpointsResponse {
+  declare interface gapi$client$clouddebugger$ListBreakpointsResponse {
     /**
      * List of breakpoints matching the request.
      * The fields `id` and `location` are guaranteed to be set on each breakpoint.
      * The fields: `stack_frames`, `evaluated_expressions` and `variable_table`
      * are cleared on each breakpoint regardless of its status.
      */
-    breakpoints?: clouddebugger$Breakpoint[];
+    breakpoints?: gapi$client$clouddebugger$Breakpoint[];
 
     /**
      * A wait token that can be used in the next call to `list` (REST) or
@@ -404,17 +408,17 @@ declare module "gapi.client.clouddebugger" {
     nextWaitToken?: string;
   }
 
-  declare interface clouddebugger$ListDebuggeesResponse {
+  declare interface gapi$client$clouddebugger$ListDebuggeesResponse {
     /**
      * List of debuggees accessible to the calling user.
      * The fields `debuggee.id` and `description` are guaranteed to be set.
      * The `description` field is a human readable field provided by agents and
      * can be displayed to users.
      */
-    debuggees?: clouddebugger$Debuggee[];
+    debuggees?: gapi$client$clouddebugger$Debuggee[];
   }
 
-  declare interface clouddebugger$ProjectRepoId {
+  declare interface gapi$client$clouddebugger$ProjectRepoId {
     /**
      * The ID of the project.
      */
@@ -426,16 +430,16 @@ declare module "gapi.client.clouddebugger" {
     repoName?: string;
   }
 
-  declare interface clouddebugger$RegisterDebuggeeRequest {
+  declare interface gapi$client$clouddebugger$RegisterDebuggeeRequest {
     /**
      * Debuggee information to register.
      * The fields `project`, `uniquifier`, `description` and `agent_version`
      * of the debuggee must be set.
      */
-    debuggee?: clouddebugger$Debuggee;
+    debuggee?: gapi$client$clouddebugger$Debuggee;
   }
 
-  declare interface clouddebugger$RegisterDebuggeeResponse {
+  declare interface gapi$client$clouddebugger$RegisterDebuggeeResponse {
     /**
      * Debuggee resource.
      * The field `id` is guranteed to be set (in addition to the echoed fields).
@@ -443,14 +447,14 @@ declare module "gapi.client.clouddebugger" {
      * itself by removing all breakpoints and detaching from the application.
      * It should however continue to poll `RegisterDebuggee` until reenabled.
      */
-    debuggee?: clouddebugger$Debuggee;
+    debuggee?: gapi$client$clouddebugger$Debuggee;
   }
 
-  declare interface clouddebugger$RepoId {
+  declare interface gapi$client$clouddebugger$RepoId {
     /**
      * A combination of a project ID and a repo name.
      */
-    projectRepoId?: clouddebugger$ProjectRepoId;
+    projectRepoId?: gapi$client$clouddebugger$ProjectRepoId;
 
     /**
      * A server-assigned, globally unique identifier.
@@ -458,37 +462,37 @@ declare module "gapi.client.clouddebugger" {
     uid?: string;
   }
 
-  declare interface clouddebugger$SetBreakpointResponse {
+  declare interface gapi$client$clouddebugger$SetBreakpointResponse {
     /**
      * Breakpoint resource.
      * The field `id` is guaranteed to be set (in addition to the echoed fileds).
      */
-    breakpoint?: clouddebugger$Breakpoint;
+    breakpoint?: gapi$client$clouddebugger$Breakpoint;
   }
 
-  declare interface clouddebugger$SourceContext {
+  declare interface gapi$client$clouddebugger$SourceContext {
     /**
      * A SourceContext referring to a revision in a cloud repo.
      */
-    cloudRepo?: clouddebugger$CloudRepoSourceContext;
+    cloudRepo?: gapi$client$clouddebugger$CloudRepoSourceContext;
 
     /**
      * A SourceContext referring to a snapshot in a cloud workspace.
      */
-    cloudWorkspace?: clouddebugger$CloudWorkspaceSourceContext;
+    cloudWorkspace?: gapi$client$clouddebugger$CloudWorkspaceSourceContext;
 
     /**
      * A SourceContext referring to a Gerrit project.
      */
-    gerrit?: clouddebugger$GerritSourceContext;
+    gerrit?: gapi$client$clouddebugger$GerritSourceContext;
 
     /**
      * A SourceContext referring to any third party Git repo (e.g. GitHub).
      */
-    git?: clouddebugger$GitSourceContext;
+    git?: gapi$client$clouddebugger$GitSourceContext;
   }
 
-  declare interface clouddebugger$SourceLocation {
+  declare interface gapi$client$clouddebugger$SourceLocation {
     /**
      * Line inside the file. The first line in the file has the value `1`.
      */
@@ -500,7 +504,7 @@ declare module "gapi.client.clouddebugger" {
     path?: string;
   }
 
-  declare interface clouddebugger$StackFrame {
+  declare interface gapi$client$clouddebugger$StackFrame {
     /**
      * Set of arguments passed to this function.
      * Note that this might not be populated for all stack frames.
@@ -521,14 +525,14 @@ declare module "gapi.client.clouddebugger" {
     /**
      * Source location of the call site.
      */
-    location?: clouddebugger$SourceLocation;
+    location?: gapi$client$clouddebugger$SourceLocation;
   }
 
-  declare interface clouddebugger$StatusMessage {
+  declare interface gapi$client$clouddebugger$StatusMessage {
     /**
      * Status message text.
      */
-    description?: clouddebugger$FormatMessage;
+    description?: gapi$client$clouddebugger$FormatMessage;
 
     /**
      * Distinguishes errors from informational messages.
@@ -541,20 +545,20 @@ declare module "gapi.client.clouddebugger" {
     refersTo?: string;
   }
 
-  declare interface clouddebugger$UpdateActiveBreakpointRequest {
+  declare interface gapi$client$clouddebugger$UpdateActiveBreakpointRequest {
     /**
      * Updated breakpoint information.
      * The field `id` must be set.
      * The agent must echo all Breakpoint specification fields in the update.
      */
-    breakpoint?: clouddebugger$Breakpoint;
+    breakpoint?: gapi$client$clouddebugger$Breakpoint;
   }
 
-  declare interface clouddebugger$Variable {
+  declare interface gapi$client$clouddebugger$Variable {
     /**
      * Members contained or pointed to by the variable.
      */
-    members?: clouddebugger$Variable[];
+    members?: gapi$client$clouddebugger$Variable[];
 
     /**
      * Name of the variable, if any.
@@ -582,7 +586,7 @@ declare module "gapi.client.clouddebugger" {
      * &#42;   `Field f not found in class C`
      * &#42;   `Null pointer dereference`
      */
-    status?: clouddebugger$StatusMessage;
+    status?: gapi$client$clouddebugger$StatusMessage;
 
     /**
      * Variable type (e.g. `MyClass`). If the variable is split with
@@ -605,7 +609,7 @@ declare module "gapi.client.clouddebugger" {
     varTableIndex?: number;
   }
 
-  declare interface clouddebugger$BreakpointsResource {
+  declare interface gapi$client$clouddebugger$BreakpointsResource {
     /**
      * Returns the list of all active breakpoints for the debuggee.
      *
@@ -709,7 +713,7 @@ declare module "gapi.client.clouddebugger" {
        * the last response. The initial value should be set to `"init"`.
        */
       waitToken?: string
-    }): Request<clouddebugger$ListActiveBreakpointsResponse>;
+    }): Request<gapi$client$clouddebugger$ListActiveBreakpointsResponse>;
 
     /**
      * Updates the breakpoint state or mutable fields.
@@ -968,7 +972,7 @@ declare module "gapi.client.clouddebugger" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouddebugger$GetBreakpointResponse>;
+    }): Request<gapi$client$clouddebugger$GetBreakpointResponse>;
 
     /**
      * Lists all breakpoints for the debuggee.
@@ -1081,7 +1085,7 @@ declare module "gapi.client.clouddebugger" {
        * should be called again with the same `wait_token`.
        */
       waitToken?: string
-    }): Request<clouddebugger$ListBreakpointsResponse>;
+    }): Request<gapi$client$clouddebugger$ListBreakpointsResponse>;
 
     /**
      * Sets the breakpoint to the debuggee.
@@ -1162,10 +1166,10 @@ declare module "gapi.client.clouddebugger" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouddebugger$SetBreakpointResponse>;
+    }): Request<gapi$client$clouddebugger$SetBreakpointResponse>;
   }
 
-  declare interface clouddebugger$DebuggeesResource {
+  declare interface gapi$client$clouddebugger$DebuggeesResource {
     /**
      * Registers the debuggee with the controller service.
      *
@@ -1243,8 +1247,8 @@ declare module "gapi.client.clouddebugger" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouddebugger$RegisterDebuggeeResponse>;
-    breakpoints: clouddebugger$BreakpointsResource;
+    }): Request<gapi$client$clouddebugger$RegisterDebuggeeResponse>;
+    breakpoints: gapi$client$clouddebugger$BreakpointsResource;
 
     /**
      * Lists all the debuggees that the user has access to.
@@ -1331,15 +1335,15 @@ declare module "gapi.client.clouddebugger" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouddebugger$ListDebuggeesResponse>;
-    breakpoints: clouddebugger$BreakpointsResource;
+    }): Request<gapi$client$clouddebugger$ListDebuggeesResponse>;
+    breakpoints: gapi$client$clouddebugger$BreakpointsResource;
   }
 
-  declare interface clouddebugger$ControllerResource {
-    debuggees: clouddebugger$DebuggeesResource;
+  declare interface gapi$client$clouddebugger$ControllerResource {
+    debuggees: gapi$client$clouddebugger$DebuggeesResource;
   }
 
-  declare interface clouddebugger$DebuggerResource {
-    debuggees: clouddebugger$DebuggeesResource;
+  declare interface gapi$client$clouddebugger$DebuggerResource {
+    debuggees: gapi$client$clouddebugger$DebuggeesResource;
   }
 }
