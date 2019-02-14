@@ -635,10 +635,10 @@ declare module "documentdb" {
     executeNext(callback: RequestCallback<TResultRow[]>): void;
 
     /**
- * Execute a provided function once per feed element.
- * @param callback Function to execute for each element. the function takes two parameters error, element. Note: the last element the callback
-will be called on will be undefined. If the callback explicitly returned false, the loop gets stopped.
- */
+     * Execute a provided function once per feed element.
+     * @param callback Function to execute for each element. the function takes two parameters error, element. Note: the last element the callback
+     * will be called on will be undefined. If the callback explicitly returned false, the loop gets stopped.
+     */
     forEach(callback: RequestCallback<TResultRow>): void;
 
     /**
@@ -679,16 +679,16 @@ will be called on will be undefined. If the callback explicitly returned false, 
    */
   declare export class HashPartitionResolver mixins PartitionResolver {
     /**
- * DEPRECATED
- * 
- * Support for IPartitionResolver is now obsolete.
- * It's recommended that you use Partitioned Collections for higher storage and throughput.
- * @deprecated
- * @param partitionKeyExtractor - If partitionKeyExtractor is a string, it should be the name of the property in the document to execute the hashing on.
-If partitionKeyExtractor is a function, it should be a function to extract the partition key from an object.
- * @param collectionLink - Array of strings in the format 'dbs/foo/colls/bar'
- * @param options - Options forr the ConsistentHashRing (MurmurHash)
- */
+     * DEPRECATED
+     *
+     * Support for IPartitionResolver is now obsolete.
+     * It's recommended that you use Partitioned Collections for higher storage and throughput.
+     * @deprecated
+     * @param partitionKeyExtractor - If partitionKeyExtractor is a string, it should be the name of the property in the document to execute the hashing on.
+     * If partitionKeyExtractor is a function, it should be a function to extract the partition key from an object.
+     * @param collectionLink - Array of strings in the format 'dbs/foo/colls/bar'
+     * @param options - Options forr the ConsistentHashRing (MurmurHash)
+     */
     constructor(
       partitionKeyExtractor: string | ((obj: any) => any),
       collectionLinks: string[],
@@ -742,16 +742,16 @@ If partitionKeyExtractor is a function, it should be a function to extract the p
    */
   declare export class RangePartitionResolver mixins PartitionResolver {
     /**
- * DEPRECATED
- * 
- * Support for IPartitionResolver is now obsolete.
- * It's recommended that you use Partitioned Collections for higher storage and throughput.
- * @deprecated
- * @param partitionKeyExtractor - If partitionKeyExtractor is a string, it should be the name of the property in the document to execute the
-hashing on. If partitionKeyExtractor is a function, it should be a function to extract the partition key from an object.
- * @param partitionKeyMap - The map from Range to collection link that is used for partitioning requests.
- * @param compareFunction - Optional function that accepts two arguments a and b and returns a negative value if a < b, zero if a = b, or a positive value if a > b.
- */
+     * DEPRECATED
+     *
+     * Support for IPartitionResolver is now obsolete.
+     * It's recommended that you use Partitioned Collections for higher storage and throughput.
+     * @deprecated
+     * @param partitionKeyExtractor - If partitionKeyExtractor is a string, it should be the name of the property in the document to execute the
+     * hashing on. If partitionKeyExtractor is a function, it should be a function to extract the partition key from an object.
+     * @param partitionKeyMap - The map from Range to collection link that is used for partitioning requests.
+     * @param compareFunction - Optional function that accepts two arguments a and b and returns a negative value if a < b, zero if a = b, or a positive value if a > b.
+     */
     constructor(
       partitionKeyExtractor: string | ((obj: any) => any),
       partitionKeyMap: PartitionKeyMap[],
@@ -1989,27 +1989,27 @@ hashing on. If partitionKeyExtractor is a function, it should be a function to e
   declare function UriFactory$createDatabaseUri(databaseId: string): string;
 
   /**
- * Given a database and collection id, this creates a collection link.
- * @param databaseId -The database id
- * @param collectionId -The collection id
- * @returns A collection link in the format of dbs/{0}/colls/{1} with {0} being a Uri escaped version of the databaseId and {1} being collectionId
- * @description Would be used when updating or deleting a DocumentCollection, creating a Document, a StoredProcedure, a
-Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQuery in Azure DocumentDB database service.
- */
+   * Given a database and collection id, this creates a collection link.
+   * @param databaseId -The database id
+   * @param collectionId -The collection id
+   * @returns A collection link in the format of dbs/{0}/colls/{1} with {0} being a Uri escaped version of the databaseId and {1} being collectionId
+   * @description Would be used when updating or deleting a DocumentCollection, creating a Document, a StoredProcedure, a
+   * Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQuery in Azure DocumentDB database service.
+   */
   declare function UriFactory$createDocumentCollectionUri(
     databaseId: string,
     collectionId: string
   ): string;
 
   /**
- * Given a database and collection id, this creates a collection link.
- * @param databaseId -The database id
- * @param collectionId -The collection id
- * @param documentId -The document id
- * @returns -A document link in the format of dbs/{0}/colls/{1}/docs/{2} with {0}
-        being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the documentId
- * @description Would be used when creating an Attachment, or when replacing or deleting a Document in Azure DocumentDB database service
- */
+   * Given a database and collection id, this creates a collection link.
+   * @param databaseId -The database id
+   * @param collectionId -The collection id
+   * @param documentId -The document id
+   * @returns -A document link in the format of dbs/{0}/colls/{1}/docs/{2} with {0}
+   *         being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the documentId
+   * @description Would be used when creating an Attachment, or when replacing or deleting a Document in Azure DocumentDB database service
+   */
   declare function UriFactory$createDocumentUri(
     databaseId: string,
     collectionId: string,
@@ -2031,15 +2031,15 @@ Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQue
   ): string;
 
   /**
- * Given a database, collection and stored proc id, this creates a stored proc link.
- * @param databaseId -The database Id
- * @param collectionId -The collection Id
- * @param storedProcedureId -The stored procedure Id
- * @returns -A stored procedure link in the format of dbs/{0}/colls/{1}/sprocs/{2}
-        with {0} being a Uri escaped version of the databaseId,
-        {1} being collectionId and {2} being the storedProcedureId
- * @description Would be used when replacing, executing, or deleting a StoredProcedure in Azure DocumentDB database service.
- */
+   * Given a database, collection and stored proc id, this creates a stored proc link.
+   * @param databaseId -The database Id
+   * @param collectionId -The collection Id
+   * @param storedProcedureId -The stored procedure Id
+   * @returns -A stored procedure link in the format of dbs/{0}/colls/{1}/sprocs/{2}
+   *         with {0} being a Uri escaped version of the databaseId,
+   *         {1} being collectionId and {2} being the storedProcedureId
+   * @description Would be used when replacing, executing, or deleting a StoredProcedure in Azure DocumentDB database service.
+   */
   declare function UriFactory$createStoredProcedureUri(
     databaseId: string,
     collectionId: string,
@@ -2047,15 +2047,15 @@ Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQue
   ): string;
 
   /**
- * @summary Given a database, collection and trigger id, this creates a trigger link.
- * @param databaseId -The database Id
- * @param collectionId -The collection Id
- * @param triggerId -The trigger Id
- * @returns -A trigger link in the format of dbs/{0}/colls/{1}/triggers/{2}
-       with {0} being a Uri escaped version of the databaseId,
-       {1} being collectionId and {2} being the triggerId
- * @description Would be used when replacing, executing, or deleting a Trigger in Azure DocumentDB database service
- */
+   * @summary Given a database, collection and trigger id, this creates a trigger link.
+   * @param databaseId -The database Id
+   * @param collectionId -The collection Id
+   * @param triggerId -The trigger Id
+   * @returns -A trigger link in the format of dbs/{0}/colls/{1}/triggers/{2}
+   *        with {0} being a Uri escaped version of the databaseId,
+   *        {1} being collectionId and {2} being the triggerId
+   * @description Would be used when replacing, executing, or deleting a Trigger in Azure DocumentDB database service
+   */
   declare function UriFactory$createTriggerUri(
     databaseId: string,
     collectionId: string,
@@ -2077,14 +2077,14 @@ Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQue
   ): string;
 
   /**
- * @summary
- * @param databaseId -The database Id
- * @param collectionId -The collection Id
- * @param conflictId -The conflict Id
- * @returns -A conflict link in the format of dbs/{0}/colls/{1}/conflicts/{2}
-       with {0} being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the conflictId
- * @description Would be used when creating a Conflict in Azure DocumentDB database service.
- */
+   * @summary
+   * @param databaseId -The database Id
+   * @param collectionId -The collection Id
+   * @param conflictId -The conflict Id
+   * @returns -A conflict link in the format of dbs/{0}/colls/{1}/conflicts/{2}
+   *        with {0} being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the conflictId
+   * @description Would be used when creating a Conflict in Azure DocumentDB database service.
+   */
   declare function UriFactory$createConflictUri(
     databaseId: string,
     collectionId: string,
@@ -2092,15 +2092,15 @@ Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQue
   ): string;
 
   /**
- * @summary Given a database, collection and conflict id, this creates a conflict link.
- * @param databaseId -The database Id
- * @param collectionId -The collection Id
- * @param documentId -The document Id\
- * @param attachmentId -The attachment Id
- * @returns -A conflict link in the format of dbs/{0}/colls/{1}/conflicts/{2} with {0} being a Uri escaped version of the databaseId,
-      {1} being collectionId and {2} being the conflictId
- * @description Would be used when creating a Conflict in Azure DocumentDB database service.
- */
+   * @summary Given a database, collection and conflict id, this creates a conflict link.
+   * @param databaseId -The database Id
+   * @param collectionId -The collection Id
+   * @param documentId -The document Id\
+   * @param attachmentId -The attachment Id
+   * @returns -A conflict link in the format of dbs/{0}/colls/{1}/conflicts/{2} with {0} being a Uri escaped version of the databaseId,
+   *       {1} being collectionId and {2} being the conflictId
+   * @description Would be used when creating a Conflict in Azure DocumentDB database service.
+   */
   declare function UriFactory$createAttachmentUri(
     databaseId: string,
     collectionId: string,
