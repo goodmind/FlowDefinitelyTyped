@@ -1,7 +1,7 @@
 declare module "vary" {
   import type { ServerResponse } from "http";
 
-  declare module.exports: typeof vary;
+  declare export default typeof vary;
 
   declare function vary(res: ServerResponse, field: string | string[]): void;
 
