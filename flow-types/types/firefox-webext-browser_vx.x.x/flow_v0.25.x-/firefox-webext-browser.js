@@ -14,15 +14,59 @@ declare module "firefox-webext-browser" {
     browser: typeof browser;
   }
 
-  declare var npm$namespace$alarms: {
-    create: typeof alarms$create,
-    get: typeof alarms$get,
-    getAll: typeof alarms$getAll,
-    clear: typeof alarms$clear,
-    clearAll: typeof alarms$clearAll,
-    onAlarm: typeof alarms$onAlarm
+  declare var npm$namespace$browser: {
+    alarms: typeof npm$namespace$browser$alarms,
+    browserSettings: typeof npm$namespace$browser$browserSettings,
+    clipboard: typeof npm$namespace$browser$clipboard,
+    contentScripts: typeof npm$namespace$browser$contentScripts,
+    contextualIdentities: typeof npm$namespace$browser$contextualIdentities,
+    cookies: typeof npm$namespace$browser$cookies,
+    dns: typeof npm$namespace$browser$dns,
+    downloads: typeof npm$namespace$browser$downloads,
+    extension: typeof npm$namespace$browser$extension,
+    i18n: typeof npm$namespace$browser$i18n,
+    identity: typeof npm$namespace$browser$identity,
+    idle: typeof npm$namespace$browser$idle,
+    management: typeof npm$namespace$browser$management,
+    notifications: typeof npm$namespace$browser$notifications,
+    permissions: typeof npm$namespace$browser$permissions,
+    proxy: typeof npm$namespace$browser$proxy,
+    runtime: typeof npm$namespace$browser$runtime,
+    storage: typeof npm$namespace$browser$storage,
+    telemetry: typeof npm$namespace$browser$telemetry,
+    theme: typeof npm$namespace$browser$theme,
+    topSites: typeof npm$namespace$browser$topSites,
+    userScripts: typeof npm$namespace$browser$userScripts,
+    webNavigation: typeof npm$namespace$browser$webNavigation,
+    webRequest: typeof npm$namespace$browser$webRequest,
+    bookmarks: typeof npm$namespace$browser$bookmarks,
+    browserAction: typeof npm$namespace$browser$browserAction,
+    browsingData: typeof npm$namespace$browser$browsingData,
+    commands: typeof npm$namespace$browser$commands,
+    find: typeof npm$namespace$browser$find,
+    geckoProfiler: typeof npm$namespace$browser$geckoProfiler,
+    history: typeof npm$namespace$browser$history,
+    contextMenus: typeof npm$namespace$browser$contextMenus,
+    menus: typeof npm$namespace$browser$menus,
+    omnibox: typeof npm$namespace$browser$omnibox,
+    pageAction: typeof npm$namespace$browser$pageAction,
+    pkcs11: typeof npm$namespace$browser$pkcs11,
+    search: typeof npm$namespace$browser$search,
+    sessions: typeof npm$namespace$browser$sessions,
+    sidebarAction: typeof npm$namespace$browser$sidebarAction,
+    tabs: typeof npm$namespace$browser$tabs,
+    windows: typeof npm$namespace$browser$windows
   };
-  declare interface alarms$Alarm {
+
+  declare var npm$namespace$browser$alarms: {
+    create: typeof browser$alarms$create,
+    get: typeof browser$alarms$get,
+    getAll: typeof browser$alarms$getAll,
+    clear: typeof browser$alarms$clear,
+    clearAll: typeof browser$alarms$clearAll,
+    onAlarm: typeof browser$alarms$onAlarm
+  };
+  declare interface browser$alarms$Alarm {
     /**
      * Name of this alarm.
      */
@@ -40,15 +84,15 @@ declare module "firefox-webext-browser" {
   }
 
   /**
- * Creates an alarm. After the delay is expired, the onAlarm event is fired. If there is another alarm with the
- * same name (or no name if none is specified), it will be cancelled and replaced by this alarm.
- * @param alarmInfo Details about the alarm. The alarm first fires either at 'when' milliseconds past the epoch (if
-'when' is provided), after 'delayInMinutes' minutes from the current time (if 'delayInMinutes' is provided
-instead), or after 'periodInMinutes' minutes from the current time (if only 'periodInMinutes' is provided).
-Users should never provide both 'when' and 'delayInMinutes'. If 'periodInMinutes' is provided, then the
-alarm recurs repeatedly after that many minutes.
- */
-  declare function alarms$create(alarmInfo: {
+   * Creates an alarm. After the delay is expired, the onAlarm event is fired. If there is another alarm with the
+   * same name (or no name if none is specified), it will be cancelled and replaced by this alarm.
+   * @param alarmInfo Details about the alarm. The alarm first fires either at 'when' milliseconds past the epoch (if
+   * 'when' is provided), after 'delayInMinutes' minutes from the current time (if 'delayInMinutes' is provided
+   * instead), or after 'periodInMinutes' minutes from the current time (if only 'periodInMinutes' is provided).
+   * Users should never provide both 'when' and 'delayInMinutes'. If 'periodInMinutes' is provided, then the
+   * alarm recurs repeatedly after that many minutes.
+   */
+  declare function browser$alarms$create(alarmInfo: {
     /**
      * Time when the alarm is scheduled to first fire, in milliseconds past the epoch.
      */
@@ -66,16 +110,16 @@ alarm recurs repeatedly after that many minutes.
   }): void;
 
   /**
- * Creates an alarm. After the delay is expired, the onAlarm event is fired. If there is another alarm with the
- * same name (or no name if none is specified), it will be cancelled and replaced by this alarm.
- * @param name Optional name to identify this alarm. Defaults to the empty string.
- * @param alarmInfo Details about the alarm. The alarm first fires either at 'when' milliseconds past the epoch (if
-'when' is provided), after 'delayInMinutes' minutes from the current time (if 'delayInMinutes' is provided
-instead), or after 'periodInMinutes' minutes from the current time (if only 'periodInMinutes' is provided).
-Users should never provide both 'when' and 'delayInMinutes'. If 'periodInMinutes' is provided, then the
-alarm recurs repeatedly after that many minutes.
- */
-  declare function alarms$create(
+   * Creates an alarm. After the delay is expired, the onAlarm event is fired. If there is another alarm with the
+   * same name (or no name if none is specified), it will be cancelled and replaced by this alarm.
+   * @param name Optional name to identify this alarm. Defaults to the empty string.
+   * @param alarmInfo Details about the alarm. The alarm first fires either at 'when' milliseconds past the epoch (if
+   * 'when' is provided), after 'delayInMinutes' minutes from the current time (if 'delayInMinutes' is provided
+   * instead), or after 'periodInMinutes' minutes from the current time (if only 'periodInMinutes' is provided).
+   * Users should never provide both 'when' and 'delayInMinutes'. If 'periodInMinutes' is provided, then the
+   * alarm recurs repeatedly after that many minutes.
+   */
+  declare function browser$alarms$create(
     name: string,
     alarmInfo: {
       /**
@@ -99,42 +143,46 @@ alarm recurs repeatedly after that many minutes.
    * Retrieves details about the specified alarm.
    * @param name The name of the alarm to get. Defaults to the empty string.
    */
-  declare function alarms$get(name?: string): Promise<alarms$Alarm>;
+  declare function browser$alarms$get(
+    name?: string
+  ): Promise<browser$alarms$Alarm>;
 
   /**
    * Gets an array of all the alarms.
    */
-  declare function alarms$getAll(): Promise<alarms$Alarm[]>;
+  declare function browser$alarms$getAll(): Promise<browser$alarms$Alarm[]>;
 
   /**
    * Clears the alarm with the given name.
    * @param name The name of the alarm to clear. Defaults to the empty string.
    */
-  declare function alarms$clear(name?: string): Promise<boolean>;
+  declare function browser$alarms$clear(name?: string): Promise<boolean>;
 
   /**
    * Clears all alarms.
    */
-  declare function alarms$clearAll(): Promise<boolean>;
+  declare function browser$alarms$clearAll(): Promise<boolean>;
 
   /**
    * Fired when an alarm has expired. Useful for transient background pages.
    * @param name The alarm that has expired.
    */
-  declare var alarms$onAlarm: WebExtEvent<(name: alarms$Alarm) => void>;
+  declare var browser$alarms$onAlarm: WebExtEvent<
+    (name: browser$alarms$Alarm) => void
+  >;
 
-  declare type _manifest$OptionalPermission = _manifest$_OptionalPermission;
+  declare type browser$_manifest$OptionalPermission = _manifest$_OptionalPermission;
 
-  declare type _manifest$Permission =
+  declare type browser$_manifest$Permission =
     | string
-    | _manifest$OptionalPermission
+    | browser$_manifest$OptionalPermission
     | _manifest$_Permission;
 
   /**
    * Represents a WebExtension manifest.json file
    */
-  declare interface _manifest$WebExtensionManifest {
-    experiment_apis?: browser$experiments.experiments$ExperimentAPI;
+  declare interface browser$_manifest$WebExtensionManifest {
+    experiment_apis?: browser$experiments$ExperimentAPI;
 
     /**
      * A list of protocol handler definitions.
@@ -164,7 +212,7 @@ alarm recurs repeatedly after that many minutes.
     };
     content_scripts?: _manifest$ContentScript[];
     content_security_policy?: string;
-    browser$permissions?: _manifest$PermissionOrOrigin[];
+    permissions?: _manifest$PermissionOrOrigin[];
     optional_permissions?: _manifest$OptionalPermissionOrOrigin[];
     web_accessible_resources?: string[];
     developer?: {
@@ -283,12 +331,12 @@ alarm recurs repeatedly after that many minutes.
         }>
       }
     };
-    browser$commands?: {
+    commands?: {
       suggested_key?: {
         default?: _manifest$KeyName,
         mac?: _manifest$KeyName,
         linux?: _manifest$KeyName,
-        browser$windows?: _manifest$KeyName,
+        windows?: _manifest$KeyName,
         chromeos?: string,
         android?: string,
         ios?: string,
@@ -301,7 +349,7 @@ alarm recurs repeatedly after that many minutes.
       description?: string
     };
     devtools_page?: _manifest$ExtensionURL;
-    browser$omnibox?: {
+    omnibox?: {
       keyword: string
     };
     page_action?: {
@@ -330,12 +378,12 @@ alarm recurs repeatedly after that many minutes.
       /**
        * @deprecated Unsupported on Firefox at this time.
        */
-      browser$bookmarks?: _manifest$ExtensionURL,
+      bookmarks?: _manifest$ExtensionURL,
 
       /**
        * @deprecated Unsupported on Firefox at this time.
        */
-      browser$history?: _manifest$ExtensionURL
+      history?: _manifest$ExtensionURL
     };
     manifest_version: number;
     applications?: {
@@ -355,7 +403,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Represents a protocol handler definition.
    */
-  declare interface _manifest$ProtocolHandler {
+  declare interface browser$_manifest$ProtocolHandler {
     /**
      * A user-readable title string for the protocol handler. This will be displayed to the user in interface
      * objects as needed.
@@ -379,7 +427,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Common properties for all manifest.json files
    */
-  declare interface _manifest$ManifestBase {
+  declare interface browser$_manifest$ManifestBase {
     manifest_version: number;
     applications?: {
       gecko?: _manifest$FirefoxSpecificProperties
@@ -398,7 +446,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Represents a WebExtension language pack manifest.json file
    */
-  declare interface _manifest$WebExtensionLangpackManifest {
+  declare interface browser$_manifest$WebExtensionLangpackManifest {
     homepage_url?: string;
     langpack_id: string;
     languages: {
@@ -436,7 +484,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Represents a WebExtension dictionary manifest.json file
    */
-  declare interface _manifest$WebExtensionDictionaryManifest {
+  declare interface browser$_manifest$WebExtensionDictionaryManifest {
     homepage_url?: string;
     dictionaries: {
       [key: string]: string
@@ -455,7 +503,7 @@ alarm recurs repeatedly after that many minutes.
     version: string;
   }
 
-  declare interface _manifest$ThemeIcons {
+  declare interface browser$_manifest$ThemeIcons {
     /**
      * A light icon to use for dark themes
      */
@@ -472,30 +520,30 @@ alarm recurs repeatedly after that many minutes.
     size: number;
   }
 
-  declare type _manifest$OptionalPermissionOrOrigin =
-    | _manifest$OptionalPermission
+  declare type browser$_manifest$OptionalPermissionOrOrigin =
+    | browser$_manifest$OptionalPermission
     | _manifest$MatchPattern;
 
-  declare type _manifest$PermissionOrOrigin =
-    | _manifest$Permission
+  declare type browser$_manifest$PermissionOrOrigin =
+    | browser$_manifest$Permission
     | _manifest$MatchPattern;
 
-  declare type _manifest$HttpURL = string;
+  declare type browser$_manifest$HttpURL = string;
 
-  declare type _manifest$ExtensionURL = string;
+  declare type browser$_manifest$ExtensionURL = string;
 
-  declare type _manifest$ImageDataOrExtensionURL = string;
+  declare type browser$_manifest$ImageDataOrExtensionURL = string;
 
-  declare type _manifest$ExtensionID = string;
+  declare type browser$_manifest$ExtensionID = string;
 
-  declare interface _manifest$FirefoxSpecificProperties {
-    id?: _manifest$ExtensionID;
+  declare interface browser$_manifest$FirefoxSpecificProperties {
+    id?: browser$_manifest$ExtensionID;
     update_url?: string;
     strict_min_version?: string;
     strict_max_version?: string;
   }
 
-  declare type _manifest$MatchPattern =
+  declare type browser$_manifest$MatchPattern =
     | _manifest$MatchPatternRestricted
     | _manifest$MatchPatternUnestricted
     | _manifest$_MatchPattern;
@@ -503,33 +551,33 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Same as MatchPattern above, but excludes<all_urls></all_urls>
    */
-  declare type _manifest$MatchPatternRestricted = string;
+  declare type browser$_manifest$MatchPatternRestricted = string;
 
   /**
    * Mostly unrestricted match patterns for privileged add-ons. This should technically be rejected for unprivileged
    * add-ons, but, reasons. The MatchPattern class will still refuse privileged schemes for those extensions.
    */
-  declare type _manifest$MatchPatternUnestricted = string;
+  declare type browser$_manifest$MatchPatternUnestricted = string;
 
   /**
    * Details of the script or CSS to inject. Either the code or the file property must be set, but both may not be
    * set at the same time. Based on InjectDetails, but using underscore rather than camel case naming conventions.
    */
-  declare interface _manifest$ContentScript {
-    matches: _manifest$MatchPattern[];
-    exclude_matches?: _manifest$MatchPattern[];
+  declare interface browser$_manifest$ContentScript {
+    matches: browser$_manifest$MatchPattern[];
+    exclude_matches?: browser$_manifest$MatchPattern[];
     include_globs?: string[];
     exclude_globs?: string[];
 
     /**
      * The list of CSS files to inject
      */
-    css?: _manifest$ExtensionURL[];
+    css?: browser$_manifest$ExtensionURL[];
 
     /**
      * The list of JS files to inject
      */
-    js?: _manifest$ExtensionURL[];
+    js?: browser$_manifest$ExtensionURL[];
 
     /**
      * If allFrames is `true`, implies that the JavaScript or CSS should be injected into all frames of current
@@ -547,207 +595,207 @@ alarm recurs repeatedly after that many minutes.
     /**
      * The soonest that the JavaScript or CSS will be injected into the tab. Defaults to "document_idle".
      */
-    run_at?: browser$extensionTypes.extensionTypes$RunAt;
+    run_at?: browser$extensionTypes$RunAt;
   }
 
-  declare type _manifest$IconPath =
+  declare type browser$_manifest$IconPath =
     | {
-        [key: number]: _manifest$ExtensionURL
+        [key: number]: browser$_manifest$ExtensionURL
       }
-    | _manifest$ExtensionURL;
+    | browser$_manifest$ExtensionURL;
 
-  declare type _manifest$IconImageData =
+  declare type browser$_manifest$IconImageData =
     | {
         [key: number]: _manifest$ImageData
       }
     | _manifest$ImageData;
 
-  declare type _manifest$ImageData = any;
+  declare type browser$_manifest$ImageData = any;
 
   /**
    * @deprecated An unexpected property was found in the WebExtension manifest.
    */
-  declare type _manifest$UnrecognizedProperty = any;
+  declare type browser$_manifest$UnrecognizedProperty = any;
 
   /**
    * @deprecated Event pages are not currently supported. This will run as a persistent background page.
    */
-  declare type _manifest$PersistentBackgroundProperty = boolean;
+  declare type browser$_manifest$PersistentBackgroundProperty = boolean;
 
   /**
    * Represents a native manifest file
    */
-  declare type _manifest$NativeManifest =
+  declare type browser$_manifest$NativeManifest =
     | {
         name: string,
         description: string,
         path: string,
         type: "pkcs11" | "stdio",
-        allowed_extensions: _manifest$ExtensionID[]
+        allowed_extensions: browser$_manifest$ExtensionID[]
       }
     | {
-        name: _manifest$ExtensionID,
+        name: browser$_manifest$ExtensionID,
         description: string,
         data: any,
         type: "storage"
       };
 
-  declare type _manifest$ThemeColor =
+  declare type browser$_manifest$ThemeColor =
     | string
     | [number, number, number]
     | [number, number, number, number];
 
-  declare interface _manifest$ThemeExperiment {
-    stylesheet?: _manifest$ExtensionURL;
+  declare interface browser$_manifest$ThemeExperiment {
+    stylesheet?: browser$_manifest$ExtensionURL;
     images?: string;
     colors?: string;
     properties?: string;
   }
 
-  declare interface _manifest$ThemeType {
+  declare interface browser$_manifest$ThemeType {
     images?: {
-      additional_backgrounds?: _manifest$ImageDataOrExtensionURL[],
+      additional_backgrounds?: browser$_manifest$ImageDataOrExtensionURL[],
 
       /**
        * @deprecated Please use _theme.images.theme_frame_, this alias will be removed in Firefox 69.
        */
-      headerURL?: _manifest$ImageDataOrExtensionURL,
-      theme_frame?: _manifest$ImageDataOrExtensionURL
+      headerURL?: browser$_manifest$ImageDataOrExtensionURL,
+      theme_frame?: browser$_manifest$ImageDataOrExtensionURL
     };
     colors?: {
-      tab_selected?: _manifest$ThemeColor,
+      tab_selected?: browser$_manifest$ThemeColor,
 
       /**
        * @deprecated Please use _theme.colors.frame_, this alias will be removed in Firefox 69.
        */
-      accentcolor?: _manifest$ThemeColor,
-      frame?: _manifest$ThemeColor,
-      frame_inactive?: _manifest$ThemeColor,
+      accentcolor?: browser$_manifest$ThemeColor,
+      frame?: browser$_manifest$ThemeColor,
+      frame_inactive?: browser$_manifest$ThemeColor,
 
       /**
        * @deprecated Please use _theme.colors.tab_background_text_, this alias will be removed in Firefox 69.
        */
-      textcolor?: _manifest$ThemeColor,
-      tab_background_text?: _manifest$ThemeColor,
-      tab_background_separator?: _manifest$ThemeColor,
-      tab_loading?: _manifest$ThemeColor,
-      tab_text?: _manifest$ThemeColor,
-      tab_line?: _manifest$ThemeColor,
-      toolbar?: _manifest$ThemeColor,
+      textcolor?: browser$_manifest$ThemeColor,
+      tab_background_text?: browser$_manifest$ThemeColor,
+      tab_background_separator?: browser$_manifest$ThemeColor,
+      tab_loading?: browser$_manifest$ThemeColor,
+      tab_text?: browser$_manifest$ThemeColor,
+      tab_line?: browser$_manifest$ThemeColor,
+      toolbar?: browser$_manifest$ThemeColor,
 
       /**
        * @deprecated Please use _theme.colors.bookmark_text_, this alias will be removed in Firefox 69.
        */
-      toolbar_text?: _manifest$ThemeColor,
-      bookmark_text?: _manifest$ThemeColor,
-      toolbar_field?: _manifest$ThemeColor,
-      toolbar_field_text?: _manifest$ThemeColor,
-      toolbar_field_border?: _manifest$ThemeColor,
-      toolbar_field_separator?: _manifest$ThemeColor,
-      toolbar_top_separator?: _manifest$ThemeColor,
-      toolbar_bottom_separator?: _manifest$ThemeColor,
-      toolbar_vertical_separator?: _manifest$ThemeColor,
-      icons?: _manifest$ThemeColor,
-      icons_attention?: _manifest$ThemeColor,
-      button_background_hover?: _manifest$ThemeColor,
-      button_background_active?: _manifest$ThemeColor,
-      popup?: _manifest$ThemeColor,
-      popup_text?: _manifest$ThemeColor,
-      popup_border?: _manifest$ThemeColor,
-      toolbar_field_focus?: _manifest$ThemeColor,
-      toolbar_field_text_focus?: _manifest$ThemeColor,
-      toolbar_field_border_focus?: _manifest$ThemeColor,
-      popup_highlight?: _manifest$ThemeColor,
-      popup_highlight_text?: _manifest$ThemeColor,
-      ntp_background?: _manifest$ThemeColor,
-      ntp_text?: _manifest$ThemeColor,
-      sidebar?: _manifest$ThemeColor,
-      sidebar_border?: _manifest$ThemeColor,
-      sidebar_text?: _manifest$ThemeColor,
-      sidebar_highlight?: _manifest$ThemeColor,
-      sidebar_highlight_text?: _manifest$ThemeColor
+      toolbar_text?: browser$_manifest$ThemeColor,
+      bookmark_text?: browser$_manifest$ThemeColor,
+      toolbar_field?: browser$_manifest$ThemeColor,
+      toolbar_field_text?: browser$_manifest$ThemeColor,
+      toolbar_field_border?: browser$_manifest$ThemeColor,
+      toolbar_field_separator?: browser$_manifest$ThemeColor,
+      toolbar_top_separator?: browser$_manifest$ThemeColor,
+      toolbar_bottom_separator?: browser$_manifest$ThemeColor,
+      toolbar_vertical_separator?: browser$_manifest$ThemeColor,
+      icons?: browser$_manifest$ThemeColor,
+      icons_attention?: browser$_manifest$ThemeColor,
+      button_background_hover?: browser$_manifest$ThemeColor,
+      button_background_active?: browser$_manifest$ThemeColor,
+      popup?: browser$_manifest$ThemeColor,
+      popup_text?: browser$_manifest$ThemeColor,
+      popup_border?: browser$_manifest$ThemeColor,
+      toolbar_field_focus?: browser$_manifest$ThemeColor,
+      toolbar_field_text_focus?: browser$_manifest$ThemeColor,
+      toolbar_field_border_focus?: browser$_manifest$ThemeColor,
+      popup_highlight?: browser$_manifest$ThemeColor,
+      popup_highlight_text?: browser$_manifest$ThemeColor,
+      ntp_background?: browser$_manifest$ThemeColor,
+      ntp_text?: browser$_manifest$ThemeColor,
+      sidebar?: browser$_manifest$ThemeColor,
+      sidebar_border?: browser$_manifest$ThemeColor,
+      sidebar_text?: browser$_manifest$ThemeColor,
+      sidebar_highlight?: browser$_manifest$ThemeColor,
+      sidebar_highlight_text?: browser$_manifest$ThemeColor
     };
     icons?: {
-      back?: _manifest$ExtensionURL,
-      forward?: _manifest$ExtensionURL,
-      tabs$reload?: _manifest$ExtensionURL,
-      geckoProfiler$stop?: _manifest$ExtensionURL,
-      bookmark_star?: _manifest$ExtensionURL,
-      bookmark_menu?: _manifest$ExtensionURL,
-      browser$downloads?: _manifest$ExtensionURL,
-      home?: _manifest$ExtensionURL,
-      app_menu?: _manifest$ExtensionURL,
-      cut?: _manifest$ExtensionURL,
-      copy?: _manifest$ExtensionURL,
-      paste?: _manifest$ExtensionURL,
-      new_window?: _manifest$ExtensionURL,
-      new_private_window?: _manifest$ExtensionURL,
-      save_page?: _manifest$ExtensionURL,
-      tabs$print?: _manifest$ExtensionURL,
-      browser$history?: _manifest$ExtensionURL,
-      full_screen?: _manifest$ExtensionURL,
-      browser$find?: _manifest$ExtensionURL,
-      options?: _manifest$ExtensionURL,
-      addons?: _manifest$ExtensionURL,
-      developer?: _manifest$ExtensionURL,
-      synced_tabs?: _manifest$ExtensionURL,
-      open_file?: _manifest$ExtensionURL,
-      sidebars?: _manifest$ExtensionURL,
-      subscribe?: _manifest$ExtensionURL,
-      text_encoding?: _manifest$ExtensionURL,
-      email_link?: _manifest$ExtensionURL,
-      forget?: _manifest$ExtensionURL,
-      pocket?: _manifest$ExtensionURL,
-      getmsg?: _manifest$ExtensionURL,
-      newmsg?: _manifest$ExtensionURL,
-      address?: _manifest$ExtensionURL,
-      reply?: _manifest$ExtensionURL,
-      replyall?: _manifest$ExtensionURL,
-      replylist?: _manifest$ExtensionURL,
-      forwarding?: _manifest$ExtensionURL,
-      delete?: _manifest$ExtensionURL,
-      junk?: _manifest$ExtensionURL,
-      file?: _manifest$ExtensionURL,
-      nextUnread?: _manifest$ExtensionURL,
-      prevUnread?: _manifest$ExtensionURL,
-      mark?: _manifest$ExtensionURL,
-      tag?: _manifest$ExtensionURL,
-      compact?: _manifest$ExtensionURL,
-      archive?: _manifest$ExtensionURL,
-      chat?: _manifest$ExtensionURL,
-      nextMsg?: _manifest$ExtensionURL,
-      prevMsg?: _manifest$ExtensionURL,
-      QFB?: _manifest$ExtensionURL,
-      conversation?: _manifest$ExtensionURL,
-      newcard?: _manifest$ExtensionURL,
-      newlist?: _manifest$ExtensionURL,
-      editcard?: _manifest$ExtensionURL,
-      newim?: _manifest$ExtensionURL,
-      send?: _manifest$ExtensionURL,
-      spelling?: _manifest$ExtensionURL,
-      attach?: _manifest$ExtensionURL,
-      security?: _manifest$ExtensionURL,
-      save?: _manifest$ExtensionURL,
-      quote?: _manifest$ExtensionURL,
-      buddy?: _manifest$ExtensionURL,
-      join_chat?: _manifest$ExtensionURL,
-      chat_accounts?: _manifest$ExtensionURL,
-      calendar?: _manifest$ExtensionURL,
-      tasks?: _manifest$ExtensionURL,
-      synchronize?: _manifest$ExtensionURL,
-      newevent?: _manifest$ExtensionURL,
-      newtask?: _manifest$ExtensionURL,
-      editevent?: _manifest$ExtensionURL,
-      today?: _manifest$ExtensionURL,
-      category?: _manifest$ExtensionURL,
-      complete?: _manifest$ExtensionURL,
-      priority?: _manifest$ExtensionURL,
-      saveandclose?: _manifest$ExtensionURL,
-      attendees?: _manifest$ExtensionURL,
-      browser$privacy?: _manifest$ExtensionURL,
-      status?: _manifest$ExtensionURL,
-      freebusy?: _manifest$ExtensionURL,
-      timezones?: _manifest$ExtensionURL
+      back?: browser$_manifest$ExtensionURL,
+      forward?: browser$_manifest$ExtensionURL,
+      reload?: browser$_manifest$ExtensionURL,
+      stop?: browser$_manifest$ExtensionURL,
+      bookmark_star?: browser$_manifest$ExtensionURL,
+      bookmark_menu?: browser$_manifest$ExtensionURL,
+      downloads?: browser$_manifest$ExtensionURL,
+      home?: browser$_manifest$ExtensionURL,
+      app_menu?: browser$_manifest$ExtensionURL,
+      cut?: browser$_manifest$ExtensionURL,
+      copy?: browser$_manifest$ExtensionURL,
+      paste?: browser$_manifest$ExtensionURL,
+      new_window?: browser$_manifest$ExtensionURL,
+      new_private_window?: browser$_manifest$ExtensionURL,
+      save_page?: browser$_manifest$ExtensionURL,
+      print?: browser$_manifest$ExtensionURL,
+      history?: browser$_manifest$ExtensionURL,
+      full_screen?: browser$_manifest$ExtensionURL,
+      find?: browser$_manifest$ExtensionURL,
+      options?: browser$_manifest$ExtensionURL,
+      addons?: browser$_manifest$ExtensionURL,
+      developer?: browser$_manifest$ExtensionURL,
+      synced_tabs?: browser$_manifest$ExtensionURL,
+      open_file?: browser$_manifest$ExtensionURL,
+      sidebars?: browser$_manifest$ExtensionURL,
+      subscribe?: browser$_manifest$ExtensionURL,
+      text_encoding?: browser$_manifest$ExtensionURL,
+      email_link?: browser$_manifest$ExtensionURL,
+      forget?: browser$_manifest$ExtensionURL,
+      pocket?: browser$_manifest$ExtensionURL,
+      getmsg?: browser$_manifest$ExtensionURL,
+      newmsg?: browser$_manifest$ExtensionURL,
+      address?: browser$_manifest$ExtensionURL,
+      reply?: browser$_manifest$ExtensionURL,
+      replyall?: browser$_manifest$ExtensionURL,
+      replylist?: browser$_manifest$ExtensionURL,
+      forwarding?: browser$_manifest$ExtensionURL,
+      delete?: browser$_manifest$ExtensionURL,
+      junk?: browser$_manifest$ExtensionURL,
+      file?: browser$_manifest$ExtensionURL,
+      nextUnread?: browser$_manifest$ExtensionURL,
+      prevUnread?: browser$_manifest$ExtensionURL,
+      mark?: browser$_manifest$ExtensionURL,
+      tag?: browser$_manifest$ExtensionURL,
+      compact?: browser$_manifest$ExtensionURL,
+      archive?: browser$_manifest$ExtensionURL,
+      chat?: browser$_manifest$ExtensionURL,
+      nextMsg?: browser$_manifest$ExtensionURL,
+      prevMsg?: browser$_manifest$ExtensionURL,
+      QFB?: browser$_manifest$ExtensionURL,
+      conversation?: browser$_manifest$ExtensionURL,
+      newcard?: browser$_manifest$ExtensionURL,
+      newlist?: browser$_manifest$ExtensionURL,
+      editcard?: browser$_manifest$ExtensionURL,
+      newim?: browser$_manifest$ExtensionURL,
+      send?: browser$_manifest$ExtensionURL,
+      spelling?: browser$_manifest$ExtensionURL,
+      attach?: browser$_manifest$ExtensionURL,
+      security?: browser$_manifest$ExtensionURL,
+      save?: browser$_manifest$ExtensionURL,
+      quote?: browser$_manifest$ExtensionURL,
+      buddy?: browser$_manifest$ExtensionURL,
+      join_chat?: browser$_manifest$ExtensionURL,
+      chat_accounts?: browser$_manifest$ExtensionURL,
+      calendar?: browser$_manifest$ExtensionURL,
+      tasks?: browser$_manifest$ExtensionURL,
+      synchronize?: browser$_manifest$ExtensionURL,
+      newevent?: browser$_manifest$ExtensionURL,
+      newtask?: browser$_manifest$ExtensionURL,
+      editevent?: browser$_manifest$ExtensionURL,
+      today?: browser$_manifest$ExtensionURL,
+      category?: browser$_manifest$ExtensionURL,
+      complete?: browser$_manifest$ExtensionURL,
+      priority?: browser$_manifest$ExtensionURL,
+      saveandclose?: browser$_manifest$ExtensionURL,
+      attendees?: browser$_manifest$ExtensionURL,
+      privacy?: browser$_manifest$ExtensionURL,
+      status?: browser$_manifest$ExtensionURL,
+      freebusy?: browser$_manifest$ExtensionURL,
+      timezones?: browser$_manifest$ExtensionURL
     };
     properties?: {
       additional_backgrounds_alignment?: _manifest$_ThemeTypeAdditionalBackgroundsAlignment[],
@@ -758,18 +806,18 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Contents of manifest.json for a static theme
    */
-  declare interface _manifest$ThemeManifest {
-    browser$theme: _manifest$ThemeType;
+  declare interface browser$_manifest$ThemeManifest {
+    theme: browser$_manifest$ThemeType;
     default_locale?: string;
-    theme_experiment?: _manifest$ThemeExperiment;
+    theme_experiment?: browser$_manifest$ThemeExperiment;
     icons?: {
       [key: number]: string
     };
   }
 
-  declare type _manifest$KeyName = string;
+  declare type browser$_manifest$KeyName = string;
 
-  declare type _manifest$_OptionalPermission =
+  declare type browser$_manifest$_OptionalPermission =
     | "browserSettings"
     | "cookies"
     | "downloads"
@@ -792,7 +840,7 @@ alarm recurs repeatedly after that many minutes.
     | "tabs"
     | "tabHide";
 
-  declare type _manifest$_Permission =
+  declare type browser$_manifest$_Permission =
     | "contextualIdentities"
     | "dns"
     | "identity"
@@ -814,12 +862,12 @@ alarm recurs repeatedly after that many minutes.
     | "pkcs11"
     | "sessions";
 
-  declare type _manifest$_WebExtensionManifestIncognito = "spanning";
+  declare type browser$_manifest$_WebExtensionManifestIncognito = "spanning";
 
   /**
    * Defines the location the browserAction will appear by default. The default location is navbar.
    */
-  declare type _manifest$_WebExtensionManifestBrowserActionDefaultArea =
+  declare type browser$_manifest$_WebExtensionManifestBrowserActionDefaultArea =
     | "navbar"
     | "menupanel"
     | "tabstrip"
@@ -828,21 +876,21 @@ alarm recurs repeatedly after that many minutes.
   /**
    * The type of param can be either "purpose" or "pref".
    */
-  declare type _manifest$_WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition =
+  declare type browser$_manifest$_WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition =
     | "purpose"
     | "pref";
 
   /**
    * The context that initiates a search, required if condition is "purpose".
    */
-  declare type _manifest$_WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose =
+  declare type browser$_manifest$_WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose =
     | "contextmenu"
     | "searchbar"
     | "homepage"
     | "keyword"
     | "newtab";
 
-  declare type _manifest$_ProtocolHandlerProtocol =
+  declare type browser$_manifest$_ProtocolHandlerProtocol =
     | "bitcoin"
     | "dat"
     | "dweb"
@@ -869,9 +917,9 @@ alarm recurs repeatedly after that many minutes.
     | "wtai"
     | "xmpp";
 
-  declare type _manifest$_MatchPattern = "<all_urls>";
+  declare type browser$_manifest$_MatchPattern = "<all_urls>";
 
-  declare type _manifest$_ThemeTypeAdditionalBackgroundsAlignment =
+  declare type browser$_manifest$_ThemeTypeAdditionalBackgroundsAlignment =
     | "bottom"
     | "center"
     | "left"
@@ -887,33 +935,33 @@ alarm recurs repeatedly after that many minutes.
     | "right center"
     | "right top";
 
-  declare type _manifest$_ThemeTypeAdditionalBackgroundsTiling =
+  declare type browser$_manifest$_ThemeTypeAdditionalBackgroundsTiling =
     | "no-repeat"
     | "repeat"
     | "repeat-x"
     | "repeat-y";
 
-  declare var npm$namespace$browserSettings: {
-    allowPopupsForUserEvents: typeof browserSettings$allowPopupsForUserEvents,
-    cacheEnabled: typeof browserSettings$cacheEnabled,
-    closeTabsByDoubleClick: typeof browserSettings$closeTabsByDoubleClick,
-    contextMenuShowEvent: typeof browserSettings$contextMenuShowEvent,
-    homepageOverride: typeof browserSettings$homepageOverride,
-    imageAnimationBehavior: typeof browserSettings$imageAnimationBehavior,
-    newTabPageOverride: typeof browserSettings$newTabPageOverride,
-    newTabPosition: typeof browserSettings$newTabPosition,
-    openBookmarksInNewTabs: typeof browserSettings$openBookmarksInNewTabs,
-    openSearchResultsInNewTabs: typeof browserSettings$openSearchResultsInNewTabs,
-    openUrlbarResultsInNewTabs: typeof browserSettings$openUrlbarResultsInNewTabs,
-    webNotificationsDisabled: typeof browserSettings$webNotificationsDisabled,
-    overrideDocumentColors: typeof browserSettings$overrideDocumentColors,
-    useDocumentFonts: typeof browserSettings$useDocumentFonts
+  declare var npm$namespace$browser$browserSettings: {
+    allowPopupsForUserEvents: typeof browser$browserSettings$allowPopupsForUserEvents,
+    cacheEnabled: typeof browser$browserSettings$cacheEnabled,
+    closeTabsByDoubleClick: typeof browser$browserSettings$closeTabsByDoubleClick,
+    contextMenuShowEvent: typeof browser$browserSettings$contextMenuShowEvent,
+    homepageOverride: typeof browser$browserSettings$homepageOverride,
+    imageAnimationBehavior: typeof browser$browserSettings$imageAnimationBehavior,
+    newTabPageOverride: typeof browser$browserSettings$newTabPageOverride,
+    newTabPosition: typeof browser$browserSettings$newTabPosition,
+    openBookmarksInNewTabs: typeof browser$browserSettings$openBookmarksInNewTabs,
+    openSearchResultsInNewTabs: typeof browser$browserSettings$openSearchResultsInNewTabs,
+    openUrlbarResultsInNewTabs: typeof browser$browserSettings$openUrlbarResultsInNewTabs,
+    webNotificationsDisabled: typeof browser$browserSettings$webNotificationsDisabled,
+    overrideDocumentColors: typeof browser$browserSettings$overrideDocumentColors,
+    useDocumentFonts: typeof browser$browserSettings$useDocumentFonts
   };
 
   /**
    * How images should be animated in the browser.
    */
-  declare type browserSettings$ImageAnimationBehavior =
+  declare type browser$browserSettings$ImageAnimationBehavior =
     | "normal"
     | "none"
     | "once";
@@ -921,91 +969,93 @@ alarm recurs repeatedly after that many minutes.
   /**
    * After which mouse event context menus should popup.
    */
-  declare type browserSettings$ContextMenuMouseEvent = "mouseup" | "mousedown";
+  declare type browser$browserSettings$ContextMenuMouseEvent =
+    | "mouseup"
+    | "mousedown";
 
   /**
    * Allows or disallows pop-up windows from opening in response to user events.
    */
-  declare var browserSettings$allowPopupsForUserEvents: browser$types.types$Setting;
+  declare var browser$browserSettings$allowPopupsForUserEvents: browser$types$Setting;
 
   /**
    * Enables or disables the browser cache.
    */
-  declare var browserSettings$cacheEnabled: browser$types.types$Setting;
+  declare var browser$browserSettings$cacheEnabled: browser$types$Setting;
 
   /**
    * This boolean setting controls whether the selected tab can be closed with a double click.
    */
-  declare var browserSettings$closeTabsByDoubleClick: browser$types.types$Setting;
+  declare var browser$browserSettings$closeTabsByDoubleClick: browser$types$Setting;
 
   /**
    * Controls after which mouse event context menus popup. This setting's value is of type ContextMenuMouseEvent,
    * which has possible values of `mouseup` and `mousedown`.
    */
-  declare var browserSettings$contextMenuShowEvent: browser$types.types$Setting;
+  declare var browser$browserSettings$contextMenuShowEvent: browser$types$Setting;
 
   /**
    * Returns the value of the overridden home page. Read-only.
    */
-  declare var browserSettings$homepageOverride: browser$types.types$Setting;
+  declare var browser$browserSettings$homepageOverride: browser$types$Setting;
 
   /**
    * Controls the behaviour of image animation in the browser. This setting's value is of type
    * ImageAnimationBehavior, defaulting to `normal`.
    */
-  declare var browserSettings$imageAnimationBehavior: browser$types.types$Setting;
+  declare var browser$browserSettings$imageAnimationBehavior: browser$types$Setting;
 
   /**
    * Returns the value of the overridden new tab page. Read-only.
    */
-  declare var browserSettings$newTabPageOverride: browser$types.types$Setting;
+  declare var browser$browserSettings$newTabPageOverride: browser$types$Setting;
 
   /**
    * Controls where new tabs are opened. `afterCurrent` will open all new tabs next to the current tab,
    * `relatedAfterCurrent` will open only related tabs next to the current tab, and `atEnd` will open all tabs at the
    * end of the tab strip. The default is `relatedAfterCurrent`.
    */
-  declare var browserSettings$newTabPosition: browser$types.types$Setting;
+  declare var browser$browserSettings$newTabPosition: browser$types$Setting;
 
   /**
    * This boolean setting controls whether bookmarks are opened in the current tab or in a new tab.
    */
-  declare var browserSettings$openBookmarksInNewTabs: browser$types.types$Setting;
+  declare var browser$browserSettings$openBookmarksInNewTabs: browser$types$Setting;
 
   /**
    * This boolean setting controls whether search results are opened in the current tab or in a new tab.
    */
-  declare var browserSettings$openSearchResultsInNewTabs: browser$types.types$Setting;
+  declare var browser$browserSettings$openSearchResultsInNewTabs: browser$types$Setting;
 
   /**
    * This boolean setting controls whether urlbar results are opened in the current tab or in a new tab.
    */
-  declare var browserSettings$openUrlbarResultsInNewTabs: browser$types.types$Setting;
+  declare var browser$browserSettings$openUrlbarResultsInNewTabs: browser$types$Setting;
 
   /**
    * Disables webAPI notifications.
    */
-  declare var browserSettings$webNotificationsDisabled: browser$types.types$Setting;
+  declare var browser$browserSettings$webNotificationsDisabled: browser$types$Setting;
 
   /**
    * This setting controls whether the user-chosen colors override the page's colors.
    */
-  declare var browserSettings$overrideDocumentColors: browser$types.types$Setting;
+  declare var browser$browserSettings$overrideDocumentColors: browser$types$Setting;
 
   /**
    * This setting controls whether the document's fonts are used.
    */
-  declare var browserSettings$useDocumentFonts: browser$types.types$Setting;
+  declare var browser$browserSettings$useDocumentFonts: browser$types$Setting;
 
-  declare var npm$namespace$clipboard: {
-    setImageData: typeof clipboard$setImageData
+  declare var npm$namespace$browser$clipboard: {
+    setImageData: typeof browser$clipboard$setImageData
   };
-  declare type clipboard$ArrayBuffer = any;
+  declare type browser$clipboard$ArrayBuffer = any;
 
   /**
    * The type of imageData.
    */
-  declare type clipboard$_SetImageData = "jpeg" | "png";
+  declare type browser$clipboard$_SetImageData = "jpeg" | "png";
 
   /**
    * Copy an image to the clipboard. The image is re-encoded before it is written to the clipboard. If the image is
@@ -1013,33 +1063,33 @@ alarm recurs repeatedly after that many minutes.
    * @param imageData The image data to be copied.
    * @param imageType The type of imageData.
    */
-  declare function clipboard$setImageData(
-    imageData: clipboard$ArrayBuffer,
-    imageType: clipboard$_SetImageData
+  declare function browser$clipboard$setImageData(
+    imageData: browser$clipboard$ArrayBuffer,
+    imageType: browser$clipboard$_SetImageData
   ): Promise<void>;
 
-  declare var npm$namespace$contentScripts: {
-    register: typeof contentScripts$register
+  declare var npm$namespace$browser$contentScripts: {
+    register: typeof browser$contentScripts$register
   };
 
   /**
    * Details of a content script registered programmatically
    */
-  declare interface contentScripts$RegisteredContentScriptOptions {
-    matches: browser$_manifest._manifest$MatchPattern[];
-    excludeMatches?: browser$_manifest._manifest$MatchPattern[];
+  declare interface browser$contentScripts$RegisteredContentScriptOptions {
+    matches: browser$_manifest$MatchPattern[];
+    excludeMatches?: browser$_manifest$MatchPattern[];
     includeGlobs?: string[];
     excludeGlobs?: string[];
 
     /**
      * The list of CSS files to inject
      */
-    css?: browser$extensionTypes.extensionTypes$ExtensionFileOrCode[];
+    css?: browser$extensionTypes$ExtensionFileOrCode[];
 
     /**
      * The list of JS files to inject
      */
-    js?: browser$extensionTypes.extensionTypes$ExtensionFileOrCode[];
+    js?: browser$extensionTypes$ExtensionFileOrCode[];
 
     /**
      * If allFrames is `true`, implies that the JavaScript or CSS should be injected into all frames of current
@@ -1057,41 +1107,41 @@ alarm recurs repeatedly after that many minutes.
     /**
      * The soonest that the JavaScript or CSS will be injected into the tab. Defaults to "document_idle".
      */
-    runAt?: browser$extensionTypes.extensionTypes$RunAt;
+    runAt?: browser$extensionTypes$RunAt;
   }
 
   /**
    * An object that represents a content script registered programmatically
    */
-  declare interface contentScripts$RegisteredContentScript {
+  declare interface browser$contentScripts$RegisteredContentScript {
     /**
      * Unregister a content script registered programmatically
      */
-    proxy$unregister(): Promise<any>;
+    unregister(): Promise<any>;
   }
 
   /**
    * Register a content script programmatically
    */
-  declare function contentScripts$register(
-    contentScriptOptions: contentScripts$RegisteredContentScriptOptions
-  ): Promise<contentScripts$RegisteredContentScript>;
+  declare function browser$contentScripts$register(
+    contentScriptOptions: browser$contentScripts$RegisteredContentScriptOptions
+  ): Promise<browser$contentScripts$RegisteredContentScript>;
 
-  declare var npm$namespace$contextualIdentities: {
-    get: typeof contextualIdentities$get,
-    query: typeof contextualIdentities$query,
-    create: typeof contextualIdentities$create,
-    update: typeof contextualIdentities$update,
-    remove: typeof contextualIdentities$remove,
-    onUpdated: typeof contextualIdentities$onUpdated,
-    onCreated: typeof contextualIdentities$onCreated,
-    onRemoved: typeof contextualIdentities$onRemoved
+  declare var npm$namespace$browser$contextualIdentities: {
+    get: typeof browser$contextualIdentities$get,
+    query: typeof browser$contextualIdentities$query,
+    create: typeof browser$contextualIdentities$create,
+    update: typeof browser$contextualIdentities$update,
+    remove: typeof browser$contextualIdentities$remove,
+    onUpdated: typeof browser$contextualIdentities$onUpdated,
+    onCreated: typeof browser$contextualIdentities$onCreated,
+    onRemoved: typeof browser$contextualIdentities$onRemoved
   };
 
   /**
    * Represents information about a contextual identity.
    */
-  declare interface contextualIdentities$ContextualIdentity {
+  declare interface browser$contextualIdentities$ContextualIdentity {
     /**
      * The name of the contextual identity.
      */
@@ -1127,26 +1177,26 @@ alarm recurs repeatedly after that many minutes.
    * Retrieves information about a single contextual identity.
    * @param cookieStoreId The ID of the contextual identity cookie store.
    */
-  declare function contextualIdentities$get(
+  declare function browser$contextualIdentities$get(
     cookieStoreId: string
-  ): Promise<contextualIdentities$ContextualIdentity>;
+  ): Promise<browser$contextualIdentities$ContextualIdentity>;
 
   /**
    * Retrieves all contextual identities
    * @param details Information to filter the contextual identities being retrieved.
    */
-  declare function contextualIdentities$query(details: {
+  declare function browser$contextualIdentities$query(details: {
     /**
      * Filters the contextual identity by name.
      */
     name?: string
-  }): Promise<contextualIdentities$ContextualIdentity[]>;
+  }): Promise<browser$contextualIdentities$ContextualIdentity[]>;
 
   /**
    * Creates a contextual identity with the given data.
    * @param details Details about the contextual identity being created.
    */
-  declare function contextualIdentities$create(details: {
+  declare function browser$contextualIdentities$create(details: {
     /**
      * The name of the contextual identity.
      */
@@ -1161,14 +1211,14 @@ alarm recurs repeatedly after that many minutes.
      * The icon of the contextual identity.
      */
     icon: string
-  }): Promise<contextualIdentities$ContextualIdentity>;
+  }): Promise<browser$contextualIdentities$ContextualIdentity>;
 
   /**
    * Updates a contextual identity with the given data.
    * @param cookieStoreId The ID of the contextual identity cookie store.
    * @param details Details about the contextual identity being created.
    */
-  declare function contextualIdentities$update(
+  declare function browser$contextualIdentities$update(
     cookieStoreId: string,
     details: {
       /**
@@ -1186,59 +1236,59 @@ alarm recurs repeatedly after that many minutes.
        */
       icon?: string
     }
-  ): Promise<contextualIdentities$ContextualIdentity>;
+  ): Promise<browser$contextualIdentities$ContextualIdentity>;
 
   /**
    * Deletes a contetual identity by its cookie Store ID.
    * @param cookieStoreId The ID of the contextual identity cookie store.
    */
-  declare function contextualIdentities$remove(
+  declare function browser$contextualIdentities$remove(
     cookieStoreId: string
-  ): Promise<contextualIdentities$ContextualIdentity>;
+  ): Promise<browser$contextualIdentities$ContextualIdentity>;
 
   /**
    * Fired when a container is updated.
    */
-  declare var contextualIdentities$onUpdated: WebExtEvent<
+  declare var browser$contextualIdentities$onUpdated: WebExtEvent<
     (changeInfo: {
       /**
        * Contextual identity that has been updated
        */
-      contextualIdentity: contextualIdentities$ContextualIdentity
+      contextualIdentity: browser$contextualIdentities$ContextualIdentity
     }) => void
   >;
 
   /**
    * Fired when a new container is created.
    */
-  declare var contextualIdentities$onCreated: WebExtEvent<
+  declare var browser$contextualIdentities$onCreated: WebExtEvent<
     (changeInfo: {
       /**
        * Contextual identity that has been created
        */
-      contextualIdentity: contextualIdentities$ContextualIdentity
+      contextualIdentity: browser$contextualIdentities$ContextualIdentity
     }) => void
   >;
 
   /**
    * Fired when a container is removed.
    */
-  declare var contextualIdentities$onRemoved: WebExtEvent<
+  declare var browser$contextualIdentities$onRemoved: WebExtEvent<
     (changeInfo: {
       /**
        * Contextual identity that has been removed
        */
-      contextualIdentity: contextualIdentities$ContextualIdentity
+      contextualIdentity: browser$contextualIdentities$ContextualIdentity
     }) => void
   >;
 
-  declare var npm$namespace$cookies: {
-    get: typeof cookies$get,
-    getAll: typeof cookies$getAll,
-    set: typeof cookies$set,
-    remove: typeof cookies$remove,
-    getAllCookieStores: typeof cookies$getAllCookieStores,
-    onChanged: typeof cookies$onChanged
+  declare var npm$namespace$browser$cookies: {
+    get: typeof browser$cookies$get,
+    getAll: typeof browser$cookies$getAll,
+    set: typeof browser$cookies$set,
+    remove: typeof browser$cookies$remove,
+    getAllCookieStores: typeof browser$cookies$getAllCookieStores,
+    onChanged: typeof browser$cookies$onChanged
   };
 
   /**
@@ -1246,12 +1296,15 @@ alarm recurs repeatedly after that many minutes.
    * corresponds to a cookie set without a 'SameSite' attribute, 'lax' to 'SameSite=Lax', and 'strict' to
    * 'SameSite=Strict'.
    */
-  declare type cookies$SameSiteStatus = "no_restriction" | "lax" | "strict";
+  declare type browser$cookies$SameSiteStatus =
+    | "no_restriction"
+    | "lax"
+    | "strict";
 
   /**
    * Represents information about an HTTP cookie.
    */
-  declare interface cookies$Cookie {
+  declare interface browser$cookies$Cookie {
     /**
      * The name of the cookie.
      */
@@ -1290,7 +1343,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * The cookie's same-site status (i.e. whether the cookie is sent with cross-site requests).
      */
-    sameSite: cookies$SameSiteStatus;
+    sameSite: browser$cookies$SameSiteStatus;
 
     /**
      * True if the cookie is a session cookie, as opposed to a persistent cookie with an expiration date.
@@ -1318,7 +1371,7 @@ alarm recurs repeatedly after that many minutes.
    * Represents a cookie store in the browser. An incognito mode window, for instance, uses a separate cookie store
    * from a non-incognito window.
    */
-  declare interface cookies$CookieStore {
+  declare interface browser$cookies$CookieStore {
     /**
      * The unique identifier for the cookie store.
      */
@@ -1343,7 +1396,7 @@ alarm recurs repeatedly after that many minutes.
    * will be "evicted". If a cookie was automatically removed due to a "set" call that overwrote it, "cause" will be
    * "overwrite". Plan your response accordingly.
    */
-  declare type cookies$OnChangedCause =
+  declare type browser$cookies$OnChangedCause =
     | "evicted"
     | "expired"
     | "explicit"
@@ -1356,7 +1409,7 @@ alarm recurs repeatedly after that many minutes.
    * earliest creation time will be returned.
    * @param details Details to identify the cookie being retrieved.
    */
-  declare function cookies$get(details: {
+  declare function browser$cookies$get(details: {
     /**
      * The URL with which the cookie to retrieve is associated. This argument may be a full URL, in which case any
      * data following the URL path (e.g. the query string) is simply ignored. If host permissions for this URL are
@@ -1380,7 +1433,7 @@ alarm recurs repeatedly after that many minutes.
      * Isolation is enabled.
      */
     firstPartyDomain?: string
-  }): Promise<cookies$Cookie>;
+  }): Promise<browser$cookies$Cookie>;
 
   /**
    * Retrieves all cookies from a single cookie store that match the given information. The cookies returned will be
@@ -1388,7 +1441,7 @@ alarm recurs repeatedly after that many minutes.
    * earliest creation time will be first.
    * @param details Information to filter the cookies being retrieved.
    */
-  declare function cookies$getAll(details: {
+  declare function browser$cookies$getAll(details: {
     /**
      * Restricts the retrieved cookies to those that would match the given URL.
      */
@@ -1431,13 +1484,13 @@ alarm recurs repeatedly after that many minutes.
      * `undefined`.
      */
     firstPartyDomain?: string
-  }): Promise<cookies$Cookie[]>;
+  }): Promise<browser$cookies$Cookie[]>;
 
   /**
    * Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
    * @param details Details about the cookie being set.
    */
-  declare function cookies$set(details: {
+  declare function browser$cookies$set(details: {
     /**
      * The request-URI to associate with the setting of the cookie. This value can affect the default domain and
      * path values of the created cookie. If host permissions for this URL are not specified in the manifest file,
@@ -1478,7 +1531,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * The cookie's same-site status.
      */
-    sameSite?: cookies$SameSiteStatus,
+    sameSite?: browser$cookies$SameSiteStatus,
 
     /**
      * The expiration date of the cookie as the number of seconds since the UNIX epoch. If omitted, the cookie
@@ -1496,13 +1549,13 @@ alarm recurs repeatedly after that many minutes.
      * The first-party domain of the cookie. This attribute is required if First-Party Isolation is enabled.
      */
     firstPartyDomain?: string
-  }): Promise<cookies$Cookie | void>;
+  }): Promise<browser$cookies$Cookie | void>;
 
   /**
    * Deletes a cookie by name.
    * @param details Information to identify the cookie to remove.
    */
-  declare function cookies$remove(details: {
+  declare function browser$cookies$remove(details: {
     /**
      * The URL associated with the cookie. If host permissions for this URL are not specified in the manifest file,
      * the API call will fail.
@@ -1550,7 +1603,9 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Lists all existing cookie stores.
    */
-  declare function cookies$getAllCookieStores(): Promise<cookies$CookieStore[]>;
+  declare function browser$cookies$getAllCookieStores(): Promise<
+    browser$cookies$CookieStore[]
+  >;
 
   /**
    * Fired when a cookie is set or removed. As a special case, note that updating a cookie's properties is
@@ -1558,7 +1613,7 @@ alarm recurs repeatedly after that many minutes.
    * with "cause" of "overwrite" . Afterwards, a new cookie is written with the updated values, generating a second
    * notification with "cause" "explicit".
    */
-  declare var cookies$onChanged: WebExtEvent<
+  declare var browser$cookies$onChanged: WebExtEvent<
     (changeInfo: {
       /**
        * True if a cookie was removed.
@@ -1568,23 +1623,23 @@ alarm recurs repeatedly after that many minutes.
       /**
        * Information about the cookie that was set or removed.
        */
-      cookie: cookies$Cookie,
+      cookie: browser$cookies$Cookie,
 
       /**
        * The underlying reason behind the cookie's change.
        */
-      cause: cookies$OnChangedCause
+      cause: browser$cookies$OnChangedCause
     }) => void
   >;
 
-  declare var npm$namespace$dns: {
-    resolve: typeof dns$resolve
+  declare var npm$namespace$browser$dns: {
+    resolve: typeof browser$dns$resolve
   };
 
   /**
    * An object encapsulating a DNS Record.
    */
-  declare interface dns$DNSRecord {
+  declare interface browser$dns$DNSRecord {
     /**
      * The canonical hostname for this record. this value is empty if the record was not fetched with the
      * 'canonical_name' flag.
@@ -1598,9 +1653,9 @@ alarm recurs repeatedly after that many minutes.
     addresses: string[];
   }
 
-  declare type dns$ResolveFlags = dns$_ResolveFlags[];
+  declare type browser$dns$ResolveFlags = dns$_ResolveFlags[];
 
-  declare type dns$_ResolveFlags =
+  declare type browser$dns$_ResolveFlags =
     | "allow_name_collisions"
     | "bypass_cache"
     | "canonical_name"
@@ -1615,36 +1670,36 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Resolves a hostname to a DNS record.
    */
-  declare function dns$resolve(
+  declare function browser$dns$resolve(
     hostname: string,
-    flags?: dns$ResolveFlags
-  ): Promise<dns$DNSRecord>;
+    flags?: browser$dns$ResolveFlags
+  ): Promise<browser$dns$DNSRecord>;
 
-  declare var npm$namespace$downloads: {
-    download: typeof downloads$download,
-    search: typeof downloads$search,
-    pause: typeof downloads$pause,
-    resume: typeof downloads$resume,
-    cancel: typeof downloads$cancel,
-    getFileIcon: typeof downloads$getFileIcon,
-    open: typeof downloads$open,
-    show: typeof downloads$show,
-    showDefaultFolder: typeof downloads$showDefaultFolder,
-    erase: typeof downloads$erase,
-    removeFile: typeof downloads$removeFile,
-    acceptDanger: typeof downloads$acceptDanger,
-    drag: typeof downloads$drag,
-    setShelfEnabled: typeof downloads$setShelfEnabled,
-    onCreated: typeof downloads$onCreated,
-    onErased: typeof downloads$onErased,
-    onChanged: typeof downloads$onChanged
+  declare var npm$namespace$browser$downloads: {
+    download: typeof browser$downloads$download,
+    search: typeof browser$downloads$search,
+    pause: typeof browser$downloads$pause,
+    resume: typeof browser$downloads$resume,
+    cancel: typeof browser$downloads$cancel,
+    getFileIcon: typeof browser$downloads$getFileIcon,
+    open: typeof browser$downloads$open,
+    show: typeof browser$downloads$show,
+    showDefaultFolder: typeof browser$downloads$showDefaultFolder,
+    erase: typeof browser$downloads$erase,
+    removeFile: typeof browser$downloads$removeFile,
+    acceptDanger: typeof browser$downloads$acceptDanger,
+    drag: typeof browser$downloads$drag,
+    setShelfEnabled: typeof browser$downloads$setShelfEnabled,
+    onCreated: typeof browser$downloads$onCreated,
+    onErased: typeof browser$downloads$onErased,
+    onChanged: typeof browser$downloads$onChanged
   };
-  declare type downloads$FilenameConflictAction =
+  declare type browser$downloads$FilenameConflictAction =
     | "uniquify"
     | "overwrite"
     | "prompt";
 
-  declare type downloads$InterruptReason =
+  declare type browser$downloads$InterruptReason =
     | "FILE_FAILED"
     | "FILE_ACCESS_DENIED"
     | "FILE_NO_SPACE"
@@ -1684,7 +1739,7 @@ alarm recurs repeatedly after that many minutes.
    *
    * These string constants will never change, however the set of DangerTypes may change.
    */
-  declare type downloads$DangerType =
+  declare type browser$downloads$DangerType =
     | "file"
     | "url"
     | "content"
@@ -1704,9 +1759,12 @@ alarm recurs repeatedly after that many minutes.
    *
    * These string constants will never change, however the set of States may change.
    */
-  declare type downloads$State = "in_progress" | "interrupted" | "complete";
+  declare type browser$downloads$State =
+    | "in_progress"
+    | "interrupted"
+    | "complete";
 
-  declare interface downloads$DownloadItem {
+  declare interface browser$downloads$DownloadItem {
     /**
      * An identifier that is persistent across browser sessions.
      */
@@ -1731,7 +1789,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Indication of whether this download is thought to be safe or known to be suspicious.
      */
-    danger: downloads$DangerType;
+    danger: browser$downloads$DangerType;
 
     /**
      * The file's MIME type.
@@ -1752,7 +1810,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Indicates whether the download is progressing, interrupted, or complete.
      */
-    state: downloads$State;
+    state: browser$downloads$State;
 
     /**
      * True if the download has stopped reading data from the host, but kept the connection open.
@@ -1763,7 +1821,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Number indicating why a download was interrupted.
      */
-    error?: downloads$InterruptReason;
+    error?: browser$downloads$InterruptReason;
 
     /**
      * Number of bytes received so far from the host, without considering file compression.
@@ -1784,17 +1842,17 @@ alarm recurs repeatedly after that many minutes.
     byExtensionName?: string;
   }
 
-  declare interface downloads$StringDelta {
+  declare interface browser$downloads$StringDelta {
     current?: string;
     previous?: string;
   }
 
-  declare interface downloads$DoubleDelta {
+  declare interface browser$downloads$DoubleDelta {
     current?: number;
     previous?: number;
   }
 
-  declare interface downloads$BooleanDelta {
+  declare interface browser$downloads$BooleanDelta {
     current?: boolean;
     previous?: boolean;
   }
@@ -1803,40 +1861,40 @@ alarm recurs repeatedly after that many minutes.
    * A time specified as a Date object, a number or string representing milliseconds since the epoch, or an ISO 8601
    * string
    */
-  declare type downloads$DownloadTime =
+  declare type browser$downloads$DownloadTime =
     | string
-    | browser$extensionTypes.extensionTypes$Date;
+    | browser$extensionTypes$Date;
 
   /**
    * Parameters that combine to specify a predicate that can be used to select a set of downloads. Used for example
    * in search() and erase()
    */
-  declare interface downloads$DownloadQuery {
+  declare interface browser$downloads$DownloadQuery {
     /**
      * This array of search terms limits results to DownloadItems whose `filename` or `url` contain all of the
      * search terms that do not begin with a dash '-' and none of the search terms that do begin with a dash.
      */
-    contextualIdentities$query?: string[];
+    query?: string[];
 
     /**
      * Limits results to downloads that started before the given ms since the epoch.
      */
-    startedBefore?: downloads$DownloadTime;
+    startedBefore?: browser$downloads$DownloadTime;
 
     /**
      * Limits results to downloads that started after the given ms since the epoch.
      */
-    startedAfter?: downloads$DownloadTime;
+    startedAfter?: browser$downloads$DownloadTime;
 
     /**
      * Limits results to downloads that ended before the given ms since the epoch.
      */
-    endedBefore?: downloads$DownloadTime;
+    endedBefore?: browser$downloads$DownloadTime;
 
     /**
      * Limits results to downloads that ended after the given ms since the epoch.
      */
-    endedAfter?: downloads$DownloadTime;
+    endedAfter?: browser$downloads$DownloadTime;
 
     /**
      * Limits results to downloads whose totalBytes is greater than the given integer.
@@ -1884,7 +1942,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Indication of whether this download is thought to be safe or known to be suspicious.
      */
-    danger?: downloads$DangerType;
+    danger?: browser$downloads$DangerType;
 
     /**
      * The file's MIME type.
@@ -1896,7 +1954,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Indicates whether the download is progressing, interrupted, or complete.
      */
-    state?: downloads$State;
+    state?: browser$downloads$State;
 
     /**
      * True if the download has stopped reading data from the host, but kept the connection open.
@@ -1906,7 +1964,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * Why a download was interrupted.
      */
-    error?: downloads$InterruptReason;
+    error?: browser$downloads$InterruptReason;
 
     /**
      * Number of bytes received so far from the host, without considering file compression.
@@ -1928,7 +1986,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * The HTTP method to use if the URL uses the HTTP[S] protocol.
    */
-  declare type downloads$_DownloadMethod = "GET" | "POST";
+  declare type browser$downloads$_DownloadMethod = "GET" | "POST";
 
   /**
    * Download a URL. If the URL uses the HTTP[S] protocol, then the request will include all cookies currently set
@@ -1939,7 +1997,7 @@ alarm recurs repeatedly after that many minutes.
    * strings are not guaranteed to remain backwards compatible between releases. You must not parse it.
    * @param options What to download and how.
    */
-  declare function downloads$download(options: {
+  declare function browser$downloads$download(options: {
     /**
      * The URL to download.
      */
@@ -1954,7 +2012,7 @@ alarm recurs repeatedly after that many minutes.
      * Whether to associate the download with a private browsing session.
      */
     incognito?: boolean,
-    conflictAction?: downloads$FilenameConflictAction,
+    conflictAction?: browser$downloads$FilenameConflictAction,
 
     /**
      * Use a file-chooser to allow the user to select a filename. If the option is not specified, the file chooser
@@ -1966,7 +2024,7 @@ alarm recurs repeatedly after that many minutes.
     /**
      * The HTTP method to use if the URL uses the HTTP[S] protocol.
      */
-    method?: downloads$_DownloadMethod,
+    method?: browser$downloads$_DownloadMethod,
 
     /**
      * Extra HTTP headers to send with the request if the URL uses the HTTP[s] protocol. Each header is represented
@@ -1995,30 +2053,30 @@ alarm recurs repeatedly after that many minutes.
    * Find DownloadItems. Set `query` to the empty object to get all DownloadItems. To get a specific DownloadItem,
    * set only the `id` field.
    */
-  declare function downloads$search(
-    contextualIdentities$query: downloads$DownloadQuery
-  ): Promise<downloads$DownloadItem[]>;
+  declare function browser$downloads$search(
+    query: browser$downloads$DownloadQuery
+  ): Promise<browser$downloads$DownloadItem[]>;
 
   /**
    * Pause the download. If the request was successful the download is in a paused state. Otherwise
    * browser.extension.lastError contains an error message. The request will fail if the download is not active.
    * @param downloadId The id of the download to pause.
    */
-  declare function downloads$pause(downloadId: number): Promise<void>;
+  declare function browser$downloads$pause(downloadId: number): Promise<void>;
 
   /**
    * Resume a paused download. If the request was successful the download is in progress and unpaused. Otherwise
    * browser.extension.lastError contains an error message. The request will fail if the download is not active.
    * @param downloadId The id of the download to resume.
    */
-  declare function downloads$resume(downloadId: number): Promise<void>;
+  declare function browser$downloads$resume(downloadId: number): Promise<void>;
 
   /**
    * Cancel a download. When `callback` is run, the download is cancelled, completed, interrupted or doesn't exist
    * anymore.
    * @param downloadId The id of the download to cancel.
    */
-  declare function downloads$cancel(downloadId: number): Promise<void>;
+  declare function browser$downloads$cancel(downloadId: number): Promise<void>;
 
   /**
    * Retrieve an icon for the specified download. For new downloads, file icons are available after the onCreated
@@ -2029,7 +2087,7 @@ alarm recurs repeatedly after that many minutes.
    * icon cannot be determined, browser.extension.lastError will contain an error message.
    * @param downloadId The identifier for the download.
    */
-  declare function downloads$getFileIcon(
+  declare function browser$downloads$getFileIcon(
     downloadId: number,
     options?: {
       /**
@@ -2043,60 +2101,68 @@ alarm recurs repeatedly after that many minutes.
   /**
    * Open the downloaded file.
    */
-  declare function downloads$open(downloadId: number): Promise<void>;
+  declare function browser$downloads$open(downloadId: number): Promise<void>;
 
   /**
    * Show the downloaded file in its folder in a file manager.
    */
-  declare function downloads$show(downloadId: number): Promise<boolean | void>;
+  declare function browser$downloads$show(
+    downloadId: number
+  ): Promise<boolean | void>;
 
-  declare function downloads$showDefaultFolder(): void;
+  declare function browser$downloads$showDefaultFolder(): void;
 
   /**
    * Erase matching DownloadItems from history
    */
-  declare function downloads$erase(
-    contextualIdentities$query: downloads$DownloadQuery
+  declare function browser$downloads$erase(
+    query: browser$downloads$DownloadQuery
   ): Promise<number[] | void>;
 
-  declare function downloads$removeFile(downloadId: number): Promise<void>;
+  declare function browser$downloads$removeFile(
+    downloadId: number
+  ): Promise<void>;
 
   /**
    * Prompt the user to either accept or cancel a dangerous download. `acceptDanger()` does not automatically accept
    * dangerous downloads.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function downloads$acceptDanger(downloadId: number): Promise<void>;
+  declare function browser$downloads$acceptDanger(
+    downloadId: number
+  ): Promise<void>;
 
   /**
    * Initiate dragging the file to another application.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function downloads$drag(downloadId: number): void;
+  declare function browser$downloads$drag(downloadId: number): void;
 
   /**
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function downloads$setShelfEnabled(enabled: boolean): void;
+  declare function browser$downloads$setShelfEnabled(enabled: boolean): void;
 
   /**
    * This event fires with the DownloadItem object when a download begins.
    */
-  declare var downloads$onCreated: WebExtEvent<
-    (downloadItem: downloads$DownloadItem) => void
+  declare var browser$downloads$onCreated: WebExtEvent<
+    (downloadItem: browser$downloads$DownloadItem) => void
   >;
 
   /**
    * Fires with the `downloadId` when a download is erased from history.
    * @param downloadId The `id` of the DownloadItem that was erased.
    */
-  declare var downloads$onErased: WebExtEvent<(downloadId: number) => void>;
+  declare var browser$downloads$onErased: WebExtEvent<
+    (downloadId: number) => void
+  >;
 
   /**
    * When any of a DownloadItem's properties except `bytesReceived` changes, this event fires with the `downloadId`
    * and an object containing the properties that changed.
    */
-  declare var downloads$onChanged: WebExtEvent<
+  declare var browser$downloads$onChanged: WebExtEvent<
     (downloadDelta: {
       /**
        * The `id` of the DownloadItem that changed.
@@ -2106,66 +2172,66 @@ alarm recurs repeatedly after that many minutes.
       /**
        * Describes a change in a DownloadItem's `url`.
        */
-      url?: downloads$StringDelta,
+      url?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `filename`.
        */
-      filename?: downloads$StringDelta,
+      filename?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `danger`.
        */
-      danger?: downloads$StringDelta,
+      danger?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `mime`.
        */
-      mime?: downloads$StringDelta,
+      mime?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `startTime`.
        */
-      startTime?: downloads$StringDelta,
+      startTime?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `endTime`.
        */
-      endTime?: downloads$StringDelta,
+      endTime?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `state`.
        */
-      state?: downloads$StringDelta,
-      canResume?: downloads$BooleanDelta,
+      state?: browser$downloads$StringDelta,
+      canResume?: browser$downloads$BooleanDelta,
 
       /**
        * Describes a change in a DownloadItem's `paused`.
        */
-      paused?: downloads$BooleanDelta,
+      paused?: browser$downloads$BooleanDelta,
 
       /**
        * Describes a change in a DownloadItem's `error`.
        */
-      error?: downloads$StringDelta,
+      error?: browser$downloads$StringDelta,
 
       /**
        * Describes a change in a DownloadItem's `totalBytes`.
        */
-      totalBytes?: downloads$DoubleDelta,
+      totalBytes?: browser$downloads$DoubleDelta,
 
       /**
        * Describes a change in a DownloadItem's `fileSize`.
        */
-      fileSize?: downloads$DoubleDelta,
-      exists?: downloads$BooleanDelta
+      fileSize?: browser$downloads$DoubleDelta,
+      exists?: browser$downloads$BooleanDelta
     }) => void
   >;
 
   /**
    * Description of a declarative rule for handling events.
    */
-  declare interface events$Rule {
+  declare interface browser$events$Rule {
     /**
      * Optional identifier that allows referencing this rule.
      */
@@ -2195,7 +2261,7 @@ alarm recurs repeatedly after that many minutes.
   /**
    * An object which allows the addition and removal of listeners for a Chrome event.
    */
-  declare interface events$Event {
+  declare interface browser$events$Event {
     /**
      * Registers an event listener _callback_ to an event.
      * @param callback Called when an event occurs. The parameters of this function depend on the type of event.
@@ -2220,43 +2286,43 @@ alarm recurs repeatedly after that many minutes.
     hasListeners(): boolean;
 
     /**
- * Registers rules to handle events.
- * @param eventName Name of the event this function affects.
- * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
-with this function call.
- * @param rules Rules to be registered. These do not replace previously registered rules.
- * @deprecated Unsupported on Firefox at this time.
- */
+     * Registers rules to handle events.
+     * @param eventName Name of the event this function affects.
+     * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
+     * with this function call.
+     * @param rules Rules to be registered. These do not replace previously registered rules.
+     * @deprecated Unsupported on Firefox at this time.
+     */
     addRules?: (
       eventName: string,
       webViewInstanceId: number,
-      rules: events$Rule[]
-    ) => Promise<events$Rule[] | void>;
+      rules: browser$events$Rule[]
+    ) => Promise<browser$events$Rule[] | void>;
 
     /**
- * Returns currently registered rules.
- * @param eventName Name of the event this function affects.
- * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
-with this function call.
- * @param ruleIdentifiers If an array is passed, only rules with identifiers contained in this array are
-returned.
- * @deprecated Unsupported on Firefox at this time.
- */
+     * Returns currently registered rules.
+     * @param eventName Name of the event this function affects.
+     * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
+     * with this function call.
+     * @param ruleIdentifiers If an array is passed, only rules with identifiers contained in this array are
+     * returned.
+     * @deprecated Unsupported on Firefox at this time.
+     */
     getRules?: (
       eventName: string,
       webViewInstanceId: number,
       ruleIdentifiers?: string[]
-    ) => Promise<events$Rule[]>;
+    ) => Promise<browser$events$Rule[]>;
 
     /**
- * Unregisters currently registered rules.
- * @param eventName Name of the event this function affects.
- * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
-with this function call.
- * @param ruleIdentifiers If an array is passed, only rules with identifiers contained in this array are
-unregistered.
- * @deprecated Unsupported on Firefox at this time.
- */
+     * Unregisters currently registered rules.
+     * @param eventName Name of the event this function affects.
+     * @param webViewInstanceId If provided, this is an integer that uniquely identfies the <webview> associated
+     * with this function call.
+     * @param ruleIdentifiers If an array is passed, only rules with identifiers contained in this array are
+     * unregistered.
+     * @deprecated Unsupported on Firefox at this time.
+     */
     removeRules?: (
       eventName: string,
       webViewInstanceId: number,
@@ -2267,7 +2333,7 @@ unregistered.
   /**
    * Filters URLs for various criteria. See event filtering. All criteria are case sensitive.
    */
-  declare interface events$UrlFilter {
+  declare interface browser$events$UrlFilter {
     /**
      * Matches if the host name of the URL contains a specified string. To test whether a host name component has a
      * prefix 'foo', use hostContains: '.foo'. This matches 'www.foobar.com' and 'foo.com', because an implicit dot
@@ -2383,10 +2449,10 @@ unregistered.
     ports?: Array<number | [number, number]>;
   }
 
-  declare interface experiments$ExperimentAPI {
+  declare interface browser$experiments$ExperimentAPI {
     schema: experiments$ExperimentURL;
     parent?: {
-      browser$events?: experiments$APIEvents,
+      events?: experiments$APIEvents,
       paths?: experiments$APIPaths,
       script: experiments$ExperimentURL,
       scopes?: experiments$APIParentScope[]
@@ -2398,49 +2464,49 @@ unregistered.
     };
   }
 
-  declare type experiments$ExperimentURL = string;
+  declare type browser$experiments$ExperimentURL = string;
 
-  declare type experiments$APIPaths = experiments$APIPath[];
+  declare type browser$experiments$APIPaths = experiments$APIPath[];
 
-  declare type experiments$APIPath = string[];
+  declare type browser$experiments$APIPath = string[];
 
-  declare type experiments$APIEvents = experiments$APIEvent[];
+  declare type browser$experiments$APIEvents = experiments$APIEvent[];
 
-  declare type experiments$APIEvent = "startup";
+  declare type browser$experiments$APIEvent = "startup";
 
-  declare type experiments$APIParentScope =
+  declare type browser$experiments$APIParentScope =
     | "addon_parent"
     | "content_parent"
     | "devtools_parent";
 
-  declare type experiments$APIChildScope =
+  declare type browser$experiments$APIChildScope =
     | "addon_child"
     | "content_child"
     | "devtools_child";
 
-  declare var npm$namespace$extension: {
-    getURL: typeof extension$getURL,
-    getViews: typeof extension$getViews,
-    getBackgroundPage: typeof extension$getBackgroundPage,
-    isAllowedIncognitoAccess: typeof extension$isAllowedIncognitoAccess,
-    isAllowedFileSchemeAccess: typeof extension$isAllowedFileSchemeAccess,
-    setUpdateUrlData: typeof extension$setUpdateUrlData,
-    lastError: typeof extension$lastError,
-    inIncognitoContext: typeof extension$inIncognitoContext,
-    onRequest: typeof extension$onRequest,
-    onRequestExternal: typeof extension$onRequestExternal
+  declare var npm$namespace$browser$extension: {
+    getURL: typeof browser$extension$getURL,
+    getViews: typeof browser$extension$getViews,
+    getBackgroundPage: typeof browser$extension$getBackgroundPage,
+    isAllowedIncognitoAccess: typeof browser$extension$isAllowedIncognitoAccess,
+    isAllowedFileSchemeAccess: typeof browser$extension$isAllowedFileSchemeAccess,
+    setUpdateUrlData: typeof browser$extension$setUpdateUrlData,
+    lastError: typeof browser$extension$lastError,
+    inIncognitoContext: typeof browser$extension$inIncognitoContext,
+    onRequest: typeof browser$extension$onRequest,
+    onRequestExternal: typeof browser$extension$onRequestExternal
   };
 
   /**
    * The type of extension view.
    */
-  declare type extension$ViewType = "tab" | "popup" | "sidebar";
+  declare type browser$extension$ViewType = "tab" | "popup" | "sidebar";
 
   /**
    * Set for the lifetime of a callback if an ansychronous extension api has resulted in an error. If no error has
    * occured lastError will be `undefined`.
    */
-  declare var extension$lastError: {
+  declare var browser$extension$lastError: {
     /**
      * Description of the error that has taken place.
      */
@@ -2451,25 +2517,25 @@ unregistered.
    * True for content scripts running inside incognito tabs, and for extension pages running inside an incognito
    * process. The latter only applies to extensions with 'split' incognito_behavior.
    */
-  declare var extension$inIncognitoContext: boolean | void;
+  declare var browser$extension$inIncognitoContext: boolean | void;
 
   /**
    * Converts a relative path within an extension install directory to a fully-qualified URL.
    * @param path A path to a resource within an extension expressed relative to its install directory.
    * @returns The fully-qualified URL to the resource.
    */
-  declare function extension$getURL(path: string): string;
+  declare function browser$extension$getURL(path: string): string;
 
   /**
    * Returns an array of the JavaScript 'window' objects for each of the pages running inside the current extension.
    * @returns Array of global objects
    */
-  declare function extension$getViews(fetchProperties?: {
+  declare function browser$extension$getViews(fetchProperties?: {
     /**
      * The type of view to get. If omitted, returns all views (including background pages and tabs). Valid values:
      * 'tab', 'popup', 'sidebar'.
      */
-    type?: extension$ViewType,
+    type?: browser$extension$ViewType,
 
     /**
      * The window to restrict the search to. If omitted, returns all views.
@@ -2486,54 +2552,54 @@ unregistered.
    * Returns the JavaScript 'window' object for the background page running inside the current extension. Returns
    * null if the extension has no background page.
    */
-  declare function extension$getBackgroundPage(): windows$Window | void;
+  declare function browser$extension$getBackgroundPage(): windows$Window | void;
 
   /**
    * Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed
    * in Incognito' checkbox.
    */
-  declare function extension$isAllowedIncognitoAccess(): Promise<boolean>;
+  declare function browser$extension$isAllowedIncognitoAccess(): Promise<boolean>;
 
   /**
    * Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled
    * 'Allow access to File URLs' checkbox.
    */
-  declare function extension$isAllowedFileSchemeAccess(): Promise<boolean>;
+  declare function browser$extension$isAllowedFileSchemeAccess(): Promise<boolean>;
 
   /**
    * Sets the value of the ap CGI parameter used in the extension's update URL. This value is ignored for extensions
    * that are hosted in the browser vendor's store.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function extension$setUpdateUrlData(data: string): void;
+  declare function browser$extension$setUpdateUrlData(data: string): void;
 
   /**
- * Fired when a request is sent from either an extension process or a content script.
- * @param request The request sent by the calling script.
- * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
-JSON-ifiable object, or undefined if there is no response. If you have more than one `onRequest` listener in
-the same document, then only one may send a response.
- * @deprecated Please use `runtime.onMessage`.
- */
-  declare var extension$onRequest: WebExtEvent<
+   * Fired when a request is sent from either an extension process or a content script.
+   * @param request The request sent by the calling script.
+   * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
+   * JSON-ifiable object, or undefined if there is no response. If you have more than one `onRequest` listener in
+   * the same document, then only one may send a response.
+   * @deprecated Please use `runtime.onMessage`.
+   */
+  declare var browser$extension$onRequest: WebExtEvent<
     (
-      permissions$request: any,
-      sender: browser$runtime.runtime$MessageSender,
+      request: any,
+      sender: browser$runtime$MessageSender,
       sendResponse: (response?: any) => void
     ) => void
   > | void;
 
   /**
- * Fired when a request is sent from another extension.
- * @param request The request sent by the calling script.
- * @param sendResponse Function to call when you have a response. The argument should be any JSON-ifiable object,
-or undefined if there is no response.
- * @deprecated Please use `runtime.onMessageExternal`.
- */
-  declare var extension$onRequestExternal: WebExtEvent<
+   * Fired when a request is sent from another extension.
+   * @param request The request sent by the calling script.
+   * @param sendResponse Function to call when you have a response. The argument should be any JSON-ifiable object,
+   * or undefined if there is no response.
+   * @deprecated Please use `runtime.onMessageExternal`.
+   */
+  declare var browser$extension$onRequestExternal: WebExtEvent<
     (
-      permissions$request: any,
-      sender: browser$runtime.runtime$MessageSender,
+      request: any,
+      sender: browser$runtime$MessageSender,
       sendResponse: (response?: any) => void
     ) => void
   > | void;
@@ -2541,16 +2607,16 @@ or undefined if there is no response.
   /**
    * The format of an image.
    */
-  declare type extensionTypes$ImageFormat = "jpeg" | "png";
+  declare type browser$extensionTypes$ImageFormat = "jpeg" | "png";
 
   /**
    * Details about the format and quality of an image.
    */
-  declare interface extensionTypes$ImageDetails {
+  declare interface browser$extensionTypes$ImageDetails {
     /**
      * The format of the resulting image. Default is `"jpeg"`.
      */
-    format?: extensionTypes$ImageFormat;
+    format?: browser$extensionTypes$ImageFormat;
 
     /**
      * When format is `"jpeg"`, controls the quality of the resulting image. This value is ignored for PNG images.
@@ -2563,7 +2629,7 @@ or undefined if there is no response.
   /**
    * The soonest that the JavaScript or CSS will be injected into the tab.
    */
-  declare type extensionTypes$RunAt =
+  declare type browser$extensionTypes$RunAt =
     | "document_start"
     | "document_end"
     | "document_idle";
@@ -2571,13 +2637,13 @@ or undefined if there is no response.
   /**
    * The origin of the CSS to inject, this affects the cascading order (priority) of the stylesheet.
    */
-  declare type extensionTypes$CSSOrigin = "user" | "author";
+  declare type browser$extensionTypes$CSSOrigin = "user" | "author";
 
   /**
    * Details of the script or CSS to inject. Either the code or the file property must be set, but both may not be
    * set at the same time.
    */
-  declare interface extensionTypes$InjectDetails {
+  declare interface browser$extensionTypes$InjectDetails {
     /**
      * JavaScript or CSS code to inject.
      *
@@ -2613,19 +2679,22 @@ or undefined if there is no response.
     /**
      * The soonest that the JavaScript or CSS will be injected into the tab. Defaults to "document_idle".
      */
-    runAt?: extensionTypes$RunAt;
+    runAt?: browser$extensionTypes$RunAt;
 
     /**
      * The css origin of the stylesheet to inject. Defaults to "author".
      */
-    cssOrigin?: extensionTypes$CSSOrigin;
+    cssOrigin?: browser$extensionTypes$CSSOrigin;
   }
 
-  declare type extensionTypes$Date = string | number | { [key: string]: any };
+  declare type browser$extensionTypes$Date =
+    | string
+    | number
+    | { [key: string]: any };
 
-  declare type extensionTypes$ExtensionFileOrCode =
+  declare type browser$extensionTypes$ExtensionFileOrCode =
     | {
-        file: browser$_manifest._manifest$ExtensionURL
+        file: browser$_manifest$ExtensionURL
       }
     | {
         code: string
@@ -2634,7 +2703,7 @@ or undefined if there is no response.
   /**
    * A plain JSON value
    */
-  declare type extensionTypes$PlainJSONValue =
+  declare type browser$extensionTypes$PlainJSONValue =
     | null
     | string
     | number
@@ -2642,17 +2711,17 @@ or undefined if there is no response.
     | extensionTypes$_PlainJSONArray
     | extensionTypes$_PlainJSONObject;
 
-  declare type extensionTypes$_PlainJSONArray = {} & Array<extensionTypes$PlainJSONValue>;
+  declare type browser$extensionTypes$_PlainJSONArray = {} & Array<browser$extensionTypes$PlainJSONValue>;
 
-  declare interface extensionTypes$_PlainJSONObject {
-    [key: string]: extensionTypes$PlainJSONValue;
+  declare interface browser$extensionTypes$_PlainJSONObject {
+    [key: string]: browser$extensionTypes$PlainJSONValue;
   }
 
-  declare var npm$namespace$i18n: {
-    getAcceptLanguages: typeof i18n$getAcceptLanguages,
-    getMessage: typeof i18n$getMessage,
-    getUILanguage: typeof i18n$getUILanguage,
-    detectLanguage: typeof i18n$detectLanguage
+  declare var npm$namespace$browser$i18n: {
+    getAcceptLanguages: typeof browser$i18n$getAcceptLanguages,
+    getMessage: typeof browser$i18n$getMessage,
+    getUILanguage: typeof browser$i18n$getUILanguage,
+    detectLanguage: typeof browser$i18n$detectLanguage
   };
 
   /**
@@ -2660,13 +2729,15 @@ or undefined if there is no response.
    * [kLanguageInfoTable](http://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc).
    * For an unknown language, `und` will be returned, which means that [percentage] of the text is unknown to CLD
    */
-  declare type i18n$LanguageCode = string;
+  declare type browser$i18n$LanguageCode = string;
 
   /**
    * Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the
    * locale, use `i18n.getUILanguage`.
    */
-  declare function i18n$getAcceptLanguages(): Promise<i18n$LanguageCode[]>;
+  declare function browser$i18n$getAcceptLanguages(): Promise<
+    browser$i18n$LanguageCode[]
+  >;
 
   /**
    * Gets the localized string for the specified message. If the message is missing, this method returns an empty
@@ -2676,7 +2747,7 @@ or undefined if there is no response.
    * @param substitutions Substitution strings, if the message requires any.
    * @returns Message localized for current locale.
    */
-  declare function i18n$getMessage(
+  declare function browser$i18n$getMessage(
     messageName: string,
     substitutions?: any
   ): string;
@@ -2686,13 +2757,13 @@ or undefined if there is no response.
    * preferred user languages.
    * @returns The browser UI language code such as en-US or fr-FR.
    */
-  declare function i18n$getUILanguage(): string;
+  declare function browser$i18n$getUILanguage(): string;
 
   /**
    * Detects the language of the provided text using CLD.
    * @param text User input string to be translated.
    */
-  declare function i18n$detectLanguage(
+  declare function browser$i18n$detectLanguage(
     text: string
   ): Promise<{
     /**
@@ -2704,7 +2775,7 @@ or undefined if there is no response.
      * array of detectedLanguage
      */
     languages: Array<{
-      language: i18n$LanguageCode,
+      language: browser$i18n$LanguageCode,
 
       /**
        * The percentage of the detected language
@@ -2713,20 +2784,20 @@ or undefined if there is no response.
     }>
   }>;
 
-  declare var npm$namespace$identity: {
-    getAccounts: typeof identity$getAccounts,
-    getAuthToken: typeof identity$getAuthToken,
-    getProfileUserInfo: typeof identity$getProfileUserInfo,
-    removeCachedAuthToken: typeof identity$removeCachedAuthToken,
-    launchWebAuthFlow: typeof identity$launchWebAuthFlow,
-    getRedirectURL: typeof identity$getRedirectURL,
-    onSignInChanged: typeof identity$onSignInChanged
+  declare var npm$namespace$browser$identity: {
+    getAccounts: typeof browser$identity$getAccounts,
+    getAuthToken: typeof browser$identity$getAuthToken,
+    getProfileUserInfo: typeof browser$identity$getProfileUserInfo,
+    removeCachedAuthToken: typeof browser$identity$removeCachedAuthToken,
+    launchWebAuthFlow: typeof browser$identity$launchWebAuthFlow,
+    getRedirectURL: typeof browser$identity$getRedirectURL,
+    onSignInChanged: typeof browser$identity$onSignInChanged
   };
 
   /**
    * An object encapsulating an OAuth account id.
    */
-  declare interface identity$AccountInfo {
+  declare interface browser$identity$AccountInfo {
     /**
      * A unique identifier for the account. This ID will not change for the lifetime of the account.
      */
@@ -2737,23 +2808,25 @@ or undefined if there is no response.
    * Retrieves a list of AccountInfo objects describing the accounts present on the profile.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function identity$getAccounts(): Promise<identity$AccountInfo[]>;
+  declare function browser$identity$getAccounts(): Promise<
+    browser$identity$AccountInfo[]
+  >;
 
   /**
    * Gets an OAuth2 access token using the client ID and scopes specified in the oauth2 section of manifest.json.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function identity$getAuthToken(details?: {
+  declare function browser$identity$getAuthToken(details?: {
     interactive?: boolean,
-    account?: identity$AccountInfo,
+    account?: browser$identity$AccountInfo,
     scopes?: string[]
-  }): Promise<identity$AccountInfo[] | void>;
+  }): Promise<browser$identity$AccountInfo[] | void>;
 
   /**
    * Retrieves email address and obfuscated gaia id of the user signed into a profile.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function identity$getProfileUserInfo(): Promise<{
+  declare function browser$identity$getProfileUserInfo(): Promise<{
     email: string,
     id: string
   }>;
@@ -2762,7 +2835,7 @@ or undefined if there is no response.
    * Removes an OAuth2 access token from the Identity API's token cache.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function identity$removeCachedAuthToken(details: {
+  declare function browser$identity$removeCachedAuthToken(details: {
     token: string
   }): Promise<{
     email: string,
@@ -2772,8 +2845,8 @@ or undefined if there is no response.
   /**
    * Starts an auth flow at the specified URL.
    */
-  declare function identity$launchWebAuthFlow(details: {
-    url: browser$_manifest._manifest$HttpURL,
+  declare function browser$identity$launchWebAuthFlow(details: {
+    url: browser$_manifest$HttpURL,
     interactive?: boolean
   }): Promise<string>;
 
@@ -2781,65 +2854,67 @@ or undefined if there is no response.
    * Generates a redirect URL to be used in |launchWebAuthFlow|.
    * @param path The path appended to the end of the generated URL.
    */
-  declare function identity$getRedirectURL(path?: string): string;
+  declare function browser$identity$getRedirectURL(path?: string): string;
 
   /**
    * Fired when signin state changes for an account on the user's profile.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var identity$onSignInChanged: WebExtEvent<
-    (account: identity$AccountInfo, signedIn: boolean) => void
+  declare var browser$identity$onSignInChanged: WebExtEvent<
+    (account: browser$identity$AccountInfo, signedIn: boolean) => void
   > | void;
 
-  declare var npm$namespace$idle: {
-    queryState: typeof idle$queryState,
-    setDetectionInterval: typeof idle$setDetectionInterval,
-    onStateChanged: typeof idle$onStateChanged
+  declare var npm$namespace$browser$idle: {
+    queryState: typeof browser$idle$queryState,
+    setDetectionInterval: typeof browser$idle$setDetectionInterval,
+    onStateChanged: typeof browser$idle$onStateChanged
   };
-  declare type idle$IdleState = "active" | "idle";
+  declare type browser$idle$IdleState = "active" | "idle";
 
   /**
- * Returns "idle" if the user has not generated any input for a specified number of seconds, or "active" otherwise.
- * @param detectionIntervalInSeconds The system is considered idle if detectionIntervalInSeconds seconds have
-elapsed since the last user input detected.
- */
-  declare function idle$queryState(
+   * Returns "idle" if the user has not generated any input for a specified number of seconds, or "active" otherwise.
+   * @param detectionIntervalInSeconds The system is considered idle if detectionIntervalInSeconds seconds have
+   * elapsed since the last user input detected.
+   */
+  declare function browser$idle$queryState(
     detectionIntervalInSeconds: number
-  ): Promise<idle$IdleState>;
+  ): Promise<browser$idle$IdleState>;
 
   /**
    * Sets the interval, in seconds, used to determine when the system is in an idle state for onStateChanged events.
    * The default interval is 60 seconds.
    * @param intervalInSeconds Threshold, in seconds, used to determine when the system is in an idle state.
    */
-  declare function idle$setDetectionInterval(intervalInSeconds: number): void;
+  declare function browser$idle$setDetectionInterval(
+    intervalInSeconds: number
+  ): void;
 
   /**
    * Fired when the system changes to an active or idle state. The event fires with "idle" if the the user has not
    * generated any input for a specified number of seconds, and "active" when the user generates input on an idle
    * system.
    */
-  declare var idle$onStateChanged: WebExtEvent<
-    (newState: idle$IdleState) => void
+  declare var browser$idle$onStateChanged: WebExtEvent<
+    (newState: browser$idle$IdleState) => void
   >;
 
-  declare var npm$namespace$management: {
-    getAll: typeof management$getAll,
-    get: typeof management$get,
-    install: typeof management$install,
-    getSelf: typeof management$getSelf,
-    uninstallSelf: typeof management$uninstallSelf,
-    setEnabled: typeof management$setEnabled,
-    onDisabled: typeof management$onDisabled,
-    onEnabled: typeof management$onEnabled,
-    onInstalled: typeof management$onInstalled,
-    onUninstalled: typeof management$onUninstalled
+  declare var npm$namespace$browser$management: {
+    getAll: typeof browser$management$getAll,
+    get: typeof browser$management$get,
+    install: typeof browser$management$install,
+    getSelf: typeof browser$management$getSelf,
+    uninstallSelf: typeof browser$management$uninstallSelf,
+    setEnabled: typeof browser$management$setEnabled,
+    onDisabled: typeof browser$management$onDisabled,
+    onEnabled: typeof browser$management$onEnabled,
+    onInstalled: typeof browser$management$onInstalled,
+    onUninstalled: typeof browser$management$onUninstalled
   };
 
   /**
    * Information about an icon belonging to an extension.
    */
-  declare interface management$IconInfo {
+  declare interface browser$management$IconInfo {
     /**
      * A number representing the width and height of the icon. Likely values include (but are not limited to) 128,
      * 48, 24, and 16.
@@ -2856,14 +2931,14 @@ elapsed since the last user input detected.
   /**
    * A reason the item is disabled.
    */
-  declare type management$ExtensionDisabledReason =
+  declare type browser$management$ExtensionDisabledReason =
     | "unknown"
     | "permissions_increase";
 
   /**
    * The type of this extension, 'extension' or 'theme'.
    */
-  declare type management$ExtensionType = "extension" | "theme";
+  declare type browser$management$ExtensionType = "extension" | "theme";
 
   /**
    * How the extension was installed. One of
@@ -2872,7 +2947,7 @@ elapsed since the last user input detected.
    * `sideload`: The extension was installed by other software on the machine,
    * `other`: The extension was installed by other means.
    */
-  declare type management$ExtensionInstallType =
+  declare type browser$management$ExtensionInstallType =
     | "development"
     | "normal"
     | "sideload"
@@ -2881,7 +2956,7 @@ elapsed since the last user input detected.
   /**
    * Information about an installed extension.
    */
-  declare interface management$ExtensionInfo {
+  declare interface browser$management$ExtensionInfo {
     /**
      * The extension's unique identifier.
      */
@@ -2925,12 +3000,12 @@ elapsed since the last user input detected.
     /**
      * A reason the item is disabled.
      */
-    disabledReason?: management$ExtensionDisabledReason;
+    disabledReason?: browser$management$ExtensionDisabledReason;
 
     /**
      * The type of this extension, 'extension' or 'theme'.
      */
-    type: management$ExtensionType;
+    type: browser$management$ExtensionType;
 
     /**
      * The URL of the homepage of this extension.
@@ -2953,12 +3028,12 @@ elapsed since the last user input detected.
      * width and height attributes on img tags referencing these images. See the manifest documentation on icons
      * for more details.
      */
-    icons?: management$IconInfo[];
+    icons?: browser$management$IconInfo[];
 
     /**
      * Returns a list of API based permissions.
      */
-    browser$permissions?: string[];
+    permissions?: string[];
 
     /**
      * Returns a list of host based permissions.
@@ -2968,52 +3043,52 @@ elapsed since the last user input detected.
     /**
      * How the extension was installed.
      */
-    installType: management$ExtensionInstallType;
+    installType: browser$management$ExtensionInstallType;
   }
 
   /**
    * Returns a list of information about installed extensions.
    */
-  declare function management$getAll(): Promise<
-    management$ExtensionInfo[] | void
+  declare function browser$management$getAll(): Promise<
+    browser$management$ExtensionInfo[] | void
   >;
 
   /**
    * Returns information about the installed extension that has the given ID.
    * @param id The ID from an item of `management.ExtensionInfo`.
    */
-  declare function management$get(
-    id: browser$_manifest._manifest$ExtensionID
-  ): Promise<management$ExtensionInfo | void>;
+  declare function browser$management$get(
+    id: browser$_manifest$ExtensionID
+  ): Promise<browser$management$ExtensionInfo | void>;
 
   /**
    * Installs and enables a theme extension from the given url.
    */
-  declare function management$install(options: {
+  declare function browser$management$install(options: {
     /**
      * URL pointing to the XPI file on addons.mozilla.org or similar.
      */
-    url: browser$_manifest._manifest$HttpURL,
+    url: browser$_manifest$HttpURL,
 
     /**
      * A hash of the XPI file, using sha256 or stronger.
      */
     hash?: string
   }): Promise<{
-    id: browser$_manifest._manifest$ExtensionID
+    id: browser$_manifest$ExtensionID
   } | void>;
 
   /**
    * Returns information about the calling extension. Note: This function can be used without requesting the
    * 'management' permission in the manifest.
    */
-  declare function management$getSelf(): Promise<management$ExtensionInfo | void>;
+  declare function browser$management$getSelf(): Promise<browser$management$ExtensionInfo | void>;
 
   /**
    * Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission
    * in the manifest.
    */
-  declare function management$uninstallSelf(options?: {
+  declare function browser$management$uninstallSelf(options?: {
     /**
      * Whether or not a confirm-uninstall dialog should prompt the user. Defaults to false.
      */
@@ -3030,7 +3105,7 @@ elapsed since the last user input detected.
    * @param id ID of the add-on to enable/disable.
    * @param enabled Whether to enable or disable the add-on.
    */
-  declare function management$setEnabled(
+  declare function browser$management$setEnabled(
     id: string,
     enabled: boolean
   ): Promise<void>;
@@ -3038,53 +3113,53 @@ elapsed since the last user input detected.
   /**
    * Fired when an addon has been disabled.
    */
-  declare var management$onDisabled: WebExtEvent<
-    (info: management$ExtensionInfo) => void
+  declare var browser$management$onDisabled: WebExtEvent<
+    (info: browser$management$ExtensionInfo) => void
   >;
 
   /**
    * Fired when an addon has been enabled.
    */
-  declare var management$onEnabled: WebExtEvent<
-    (info: management$ExtensionInfo) => void
+  declare var browser$management$onEnabled: WebExtEvent<
+    (info: browser$management$ExtensionInfo) => void
   >;
 
   /**
    * Fired when an addon has been installed.
    */
-  declare var management$onInstalled: WebExtEvent<
-    (info: management$ExtensionInfo) => void
+  declare var browser$management$onInstalled: WebExtEvent<
+    (info: browser$management$ExtensionInfo) => void
   >;
 
   /**
    * Fired when an addon has been uninstalled.
    */
-  declare var management$onUninstalled: WebExtEvent<
-    (info: management$ExtensionInfo) => void
+  declare var browser$management$onUninstalled: WebExtEvent<
+    (info: browser$management$ExtensionInfo) => void
   >;
 
-  declare var npm$namespace$notifications: {
-    create: typeof notifications$create,
-    update: typeof notifications$update,
-    clear: typeof notifications$clear,
-    getAll: typeof notifications$getAll,
-    getPermissionLevel: typeof notifications$getPermissionLevel,
-    onClosed: typeof notifications$onClosed,
-    onClicked: typeof notifications$onClicked,
-    onButtonClicked: typeof notifications$onButtonClicked,
-    onPermissionLevelChanged: typeof notifications$onPermissionLevelChanged,
-    onShowSettings: typeof notifications$onShowSettings,
-    onShown: typeof notifications$onShown
+  declare var npm$namespace$browser$notifications: {
+    create: typeof browser$notifications$create,
+    update: typeof browser$notifications$update,
+    clear: typeof browser$notifications$clear,
+    getAll: typeof browser$notifications$getAll,
+    getPermissionLevel: typeof browser$notifications$getPermissionLevel,
+    onClosed: typeof browser$notifications$onClosed,
+    onClicked: typeof browser$notifications$onClicked,
+    onButtonClicked: typeof browser$notifications$onButtonClicked,
+    onPermissionLevelChanged: typeof browser$notifications$onPermissionLevelChanged,
+    onShowSettings: typeof browser$notifications$onShowSettings,
+    onShown: typeof browser$notifications$onShown
   };
-  declare type notifications$TemplateType =
+  declare type browser$notifications$TemplateType =
     | "basic"
     | "image"
     | "list"
     | "progress";
 
-  declare type notifications$PermissionLevel = "granted" | "denied";
+  declare type browser$notifications$PermissionLevel = "granted" | "denied";
 
-  declare interface notifications$NotificationItem {
+  declare interface browser$notifications$NotificationItem {
     /**
      * Title of one item of a list notification.
      */
@@ -3096,11 +3171,11 @@ elapsed since the last user input detected.
     message: string;
   }
 
-  declare interface notifications$CreateNotificationOptions {
+  declare interface browser$notifications$CreateNotificationOptions {
     /**
      * Which type of notification to display.
      */
-    type: notifications$TemplateType;
+    type: browser$notifications$TemplateType;
 
     /**
      * A URL to the sender's avatar, app icon, or a thumbnail for image notifications.
@@ -3154,7 +3229,7 @@ elapsed since the last user input detected.
     /**
      * Items for multi-item notifications.
      */
-    items?: notifications$NotificationItem[];
+    items?: browser$notifications$NotificationItem[];
 
     /**
      * Current progress ranges from 0 to 100.
@@ -3167,11 +3242,11 @@ elapsed since the last user input detected.
     isClickable?: boolean;
   }
 
-  declare interface notifications$UpdateNotificationOptions {
+  declare interface browser$notifications$UpdateNotificationOptions {
     /**
      * Which type of notification to display.
      */
-    type?: notifications$TemplateType;
+    type?: browser$notifications$TemplateType;
 
     /**
      * A URL to the sender's avatar, app icon, or a thumbnail for image notifications.
@@ -3225,7 +3300,7 @@ elapsed since the last user input detected.
     /**
      * Items for multi-item notifications.
      */
-    items?: notifications$NotificationItem[];
+    items?: browser$notifications$NotificationItem[];
 
     /**
      * Current progress ranges from 0 to 100.
@@ -3242,20 +3317,20 @@ elapsed since the last user input detected.
    * Creates and displays a notification.
    * @param options Contents of the notification.
    */
-  declare function notifications$create(
-    options: notifications$CreateNotificationOptions
+  declare function browser$notifications$create(
+    options: browser$notifications$CreateNotificationOptions
   ): Promise<string | void>;
 
   /**
- * Creates and displays a notification.
- * @param notificationId Identifier of the notification. If it is empty, this method generates an id. If it matches
-an existing notification, this method first clears that notification before proceeding with the create
-operation.
- * @param options Contents of the notification.
- */
-  declare function notifications$create(
+   * Creates and displays a notification.
+   * @param notificationId Identifier of the notification. If it is empty, this method generates an id. If it matches
+   * an existing notification, this method first clears that notification before proceeding with the create
+   * operation.
+   * @param options Contents of the notification.
+   */
+  declare function browser$notifications$create(
     notificationId: string,
-    options: notifications$CreateNotificationOptions
+    options: browser$notifications$CreateNotificationOptions
   ): Promise<string | void>;
 
   /**
@@ -3264,36 +3339,36 @@ operation.
    * @param options Contents of the notification to update to.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function notifications$update(
+  declare function browser$notifications$update(
     notificationId: string,
-    options: notifications$UpdateNotificationOptions
+    options: browser$notifications$UpdateNotificationOptions
   ): Promise<boolean | void>;
 
   /**
    * Clears an existing notification.
    * @param notificationId The id of the notification to be updated.
    */
-  declare function notifications$clear(
+  declare function browser$notifications$clear(
     notificationId: string
   ): Promise<boolean | void>;
 
   /**
    * Retrieves all the notifications.
    */
-  declare function notifications$getAll(): Promise<notifications$CreateNotificationOptions>;
+  declare function browser$notifications$getAll(): Promise<browser$notifications$CreateNotificationOptions>;
 
   /**
    * Retrieves whether the user has enabled notifications from this app or extension.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function notifications$getPermissionLevel(): Promise<notifications$PermissionLevel>;
+  declare function browser$notifications$getPermissionLevel(): Promise<browser$notifications$PermissionLevel>;
 
   /**
    * Fired when the notification closed, either by the system or by user action.
    * @param notificationId The notificationId of the closed notification.
    * @param byUser True if the notification was closed by the user.
    */
-  declare var notifications$onClosed: WebExtEvent<
+  declare var browser$notifications$onClosed: WebExtEvent<
     (notificationId: string, byUser: boolean) => void
   >;
 
@@ -3301,7 +3376,7 @@ operation.
    * Fired when the user clicked in a non-button area of the notification.
    * @param notificationId The notificationId of the clicked notification.
    */
-  declare var notifications$onClicked: WebExtEvent<
+  declare var browser$notifications$onClicked: WebExtEvent<
     (notificationId: string) => void
   >;
 
@@ -3310,7 +3385,7 @@ operation.
    * @param notificationId The notificationId of the clicked notification.
    * @param buttonIndex The index of the button clicked by the user.
    */
-  declare var notifications$onButtonClicked: WebExtEvent<
+  declare var browser$notifications$onButtonClicked: WebExtEvent<
     (notificationId: string, buttonIndex: number) => void
   >;
 
@@ -3319,52 +3394,54 @@ operation.
    * @param level The new permission level.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var notifications$onPermissionLevelChanged: WebExtEvent<
-    (level: notifications$PermissionLevel) => void
+  declare var browser$notifications$onPermissionLevelChanged: WebExtEvent<
+    (level: browser$notifications$PermissionLevel) => void
   > | void;
 
   /**
    * Fired when the user clicked on a link for the app's notification settings.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var notifications$onShowSettings: WebExtEvent<() => void> | void;
+  declare var browser$notifications$onShowSettings: WebExtEvent<
+    () => void
+  > | void;
 
   /**
    * Fired when the notification is shown.
    * @param notificationId The notificationId of the shown notification.
    */
-  declare var notifications$onShown: WebExtEvent<
+  declare var browser$notifications$onShown: WebExtEvent<
     (notificationId: string) => void
   >;
 
-  declare var npm$namespace$permissions: {
-    getAll: typeof permissions$getAll,
-    contains: typeof permissions$contains,
-    request: typeof permissions$request,
-    remove: typeof permissions$remove,
-    onAdded: typeof permissions$onAdded,
-    onRemoved: typeof permissions$onRemoved
+  declare var npm$namespace$browser$permissions: {
+    getAll: typeof browser$permissions$getAll,
+    contains: typeof browser$permissions$contains,
+    request: typeof browser$permissions$request,
+    remove: typeof browser$permissions$remove,
+    onAdded: typeof browser$permissions$onAdded,
+    onRemoved: typeof browser$permissions$onRemoved
   };
-  declare interface permissions$Permissions {
-    browser$permissions?: browser$_manifest._manifest$OptionalPermission[];
-    origins?: browser$_manifest._manifest$MatchPattern[];
+  declare interface browser$permissions$Permissions {
+    permissions?: browser$_manifest$OptionalPermission[];
+    origins?: browser$_manifest$MatchPattern[];
   }
 
-  declare interface permissions$AnyPermissions {
-    browser$permissions?: browser$_manifest._manifest$Permission[];
-    origins?: browser$_manifest._manifest$MatchPattern[];
+  declare interface browser$permissions$AnyPermissions {
+    permissions?: browser$_manifest$Permission[];
+    origins?: browser$_manifest$MatchPattern[];
   }
 
   /**
    * Get a list of all the extension's permissions.
    */
-  declare function permissions$getAll(): Promise<permissions$AnyPermissions>;
+  declare function browser$permissions$getAll(): Promise<browser$permissions$AnyPermissions>;
 
   /**
    * Check if the extension has the given permissions.
    */
-  declare function permissions$contains(
-    browser$permissions: permissions$AnyPermissions
+  declare function browser$permissions$contains(
+    permissions: browser$permissions$AnyPermissions
   ): Promise<boolean>;
 
   /**
@@ -3372,48 +3449,98 @@ operation.
    *
    * Not allowed in: Devtools pages
    */
-  declare function permissions$request(
-    browser$permissions: permissions$Permissions
+  declare function browser$permissions$request(
+    permissions: browser$permissions$Permissions
   ): Promise<boolean>;
 
   /**
    * Relinquish the given permissions.
    */
-  declare function permissions$remove(
-    browser$permissions: permissions$Permissions
+  declare function browser$permissions$remove(
+    permissions: browser$permissions$Permissions
   ): Promise<void>;
 
   /**
    * Fired when the extension acquires new permissions.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var permissions$onAdded: WebExtEvent<
-    (browser$permissions: permissions$Permissions) => void
+  declare var browser$permissions$onAdded: WebExtEvent<
+    (permissions: browser$permissions$Permissions) => void
   > | void;
 
   /**
    * Fired when permissions are removed from the extension.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var permissions$onRemoved: WebExtEvent<
-    (browser$permissions: permissions$Permissions) => void
+  declare var browser$permissions$onRemoved: WebExtEvent<
+    (permissions: browser$permissions$Permissions) => void
   > | void;
 
-  declare var npm$namespace$websites: {
-    thirdPartyCookiesAllowed: typeof websites$thirdPartyCookiesAllowed,
-    hyperlinkAuditingEnabled: typeof websites$hyperlinkAuditingEnabled,
-    referrersEnabled: typeof websites$referrersEnabled,
-    resistFingerprinting: typeof websites$resistFingerprinting,
-    firstPartyIsolate: typeof websites$firstPartyIsolate,
-    protectedContentEnabled: typeof websites$protectedContentEnabled,
-    trackingProtectionMode: typeof websites$trackingProtectionMode,
-    cookieConfig: typeof websites$cookieConfig
+  declare var npm$namespace$browser$privacy: {
+    network: typeof npm$namespace$browser$privacy$network,
+    services: typeof npm$namespace$browser$privacy$services,
+    websites: typeof npm$namespace$browser$privacy$websites
+  };
+
+  declare var npm$namespace$browser$privacy$network: {
+    networkPredictionEnabled: typeof browser$privacy$network$networkPredictionEnabled,
+    peerConnectionEnabled: typeof browser$privacy$network$peerConnectionEnabled,
+    webRTCIPHandlingPolicy: typeof browser$privacy$network$webRTCIPHandlingPolicy
+  };
+
+  /**
+   * The IP handling policy of WebRTC.
+   */
+  declare type browser$privacy$network$IPHandlingPolicy =
+    | "default"
+    | "default_public_and_private_interfaces"
+    | "default_public_interface_only"
+    | "disable_non_proxied_udp";
+
+  /**
+   * If enabled, the browser attempts to speed up your web browsing experience by pre-resolving DNS entries,
+   * prerendering sites (`<link rel='prefetch' ...>`), and preemptively opening TCP and SSL connections to servers.
+   * This preference's value is a boolean, defaulting to `true`.
+   */
+  declare var browser$privacy$network$networkPredictionEnabled: browser$types$Setting;
+
+  /**
+   * Allow users to enable and disable RTCPeerConnections (aka WebRTC).
+   */
+  declare var browser$privacy$network$peerConnectionEnabled: browser$types$Setting;
+
+  /**
+   * Allow users to specify the media performance/privacy tradeoffs which impacts how WebRTC traffic will be routed
+   * and how much local address information is exposed. This preference's value is of type IPHandlingPolicy,
+   * defaulting to `default`.
+   */
+  declare var browser$privacy$network$webRTCIPHandlingPolicy: browser$types$Setting;
+
+  declare var npm$namespace$browser$privacy$services: {
+    passwordSavingEnabled: typeof browser$privacy$services$passwordSavingEnabled
+  };
+
+  /**
+   * If enabled, the password manager will ask if you want to save passwords. This preference's value is a boolean,
+   * defaulting to `true`.
+   */
+  declare var browser$privacy$services$passwordSavingEnabled: browser$types$Setting;
+
+  declare var npm$namespace$browser$privacy$websites: {
+    thirdPartyCookiesAllowed: typeof browser$privacy$websites$thirdPartyCookiesAllowed,
+    hyperlinkAuditingEnabled: typeof browser$privacy$websites$hyperlinkAuditingEnabled,
+    referrersEnabled: typeof browser$privacy$websites$referrersEnabled,
+    resistFingerprinting: typeof browser$privacy$websites$resistFingerprinting,
+    firstPartyIsolate: typeof browser$privacy$websites$firstPartyIsolate,
+    protectedContentEnabled: typeof browser$privacy$websites$protectedContentEnabled,
+    trackingProtectionMode: typeof browser$privacy$websites$trackingProtectionMode,
+    cookieConfig: typeof browser$privacy$websites$cookieConfig
   };
 
   /**
    * The mode for tracking protection.
    */
-  declare type websites$TrackingProtectionModeOption =
+  declare type browser$privacy$websites$TrackingProtectionModeOption =
     | "always"
     | "never"
     | "private_browsing";
@@ -3421,7 +3548,7 @@ operation.
   /**
    * The settings for cookies.
    */
-  declare interface websites$CookieConfig {
+  declare interface browser$privacy$websites$CookieConfig {
     /**
      * The type of cookies to allow.
      */
@@ -3436,7 +3563,7 @@ operation.
   /**
    * The type of cookies to allow.
    */
-  declare type websites$_CookieConfigBehavior =
+  declare type browser$privacy$websites$_CookieConfigBehavior =
     | "allow_all"
     | "reject_all"
     | "reject_third_party"
@@ -3448,20 +3575,20 @@ operation.
    * boolean, and the default value is `true`.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var websites$thirdPartyCookiesAllowed: browser$types.types$Setting | void;
+  declare var browser$privacy$websites$thirdPartyCookiesAllowed: browser$types$Setting | void;
 
   /**
    * If enabled, the browser sends auditing pings when requested by a website (`<a ping>`). The value of this
    * preference is of type boolean, and the default value is `true`.
    */
-  declare var websites$hyperlinkAuditingEnabled: browser$types.types$Setting;
+  declare var browser$privacy$websites$hyperlinkAuditingEnabled: browser$types$Setting;
 
   /**
    * If enabled, the browser sends `referer` headers with your requests. Yes, the name of this preference doesn't
    * match the misspelled header. No, we're not going to change it. The value of this preference is of type boolean,
    * and the default value is `true`.
    */
-  declare var websites$referrersEnabled: browser$types.types$Setting;
+  declare var browser$privacy$websites$referrersEnabled: browser$types$Setting;
 
   /**
    * If enabled, the browser attempts to appear similar to other users by reporting generic information to websites.
@@ -3470,7 +3597,7 @@ operation.
    * and the WebSpeech and Navigator APIs. The value of this preference is of type boolean, and the default value is
    * `false`.
    */
-  declare var websites$resistFingerprinting: browser$types.types$Setting;
+  declare var browser$privacy$websites$resistFingerprinting: browser$types$Setting;
 
   /**
    * If enabled, the browser will associate all data (including cookies, HSTS data, cached images, and more) for any
@@ -3479,41 +3606,41 @@ operation.
    * third party account (such as a Facebook or Google login.) The value of this preference is of type boolean, and
    * the default value is `false`.
    */
-  declare var websites$firstPartyIsolate: browser$types.types$Setting;
+  declare var browser$privacy$websites$firstPartyIsolate: browser$types$Setting;
 
   /**
    * **Available on Windows and ChromeOS only**: If enabled, the browser provides a unique ID to plugins in order to
    * run protected content. The value of this preference is of type boolean, and the default value is `true`.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var websites$protectedContentEnabled: browser$types.types$Setting | void;
+  declare var browser$privacy$websites$protectedContentEnabled: browser$types$Setting | void;
 
   /**
    * Allow users to specify the mode for tracking protection. This setting's value is of type
    * TrackingProtectionModeOption, defaulting to `private_browsing_only`.
    */
-  declare var websites$trackingProtectionMode: browser$types.types$Setting;
+  declare var browser$privacy$websites$trackingProtectionMode: browser$types$Setting;
 
   /**
    * Allow users to specify the default settings for allowing cookies, as well as whether all cookies should be
    * created as non-persistent cookies. This setting's value is of type CookieConfig.
    */
-  declare var websites$cookieConfig: browser$types.types$Setting;
+  declare var browser$privacy$websites$cookieConfig: browser$types$Setting;
 
-  declare var npm$namespace$proxy: {
-    register: typeof proxy$register,
-    unregister: typeof proxy$unregister,
-    registerProxyScript: typeof proxy$registerProxyScript,
-    settings: typeof proxy$settings,
-    onRequest: typeof proxy$onRequest,
-    onError: typeof proxy$onError,
-    onProxyError: typeof proxy$onProxyError
+  declare var npm$namespace$browser$proxy: {
+    register: typeof browser$proxy$register,
+    unregister: typeof browser$proxy$unregister,
+    registerProxyScript: typeof browser$proxy$registerProxyScript,
+    settings: typeof browser$proxy$settings,
+    onRequest: typeof browser$proxy$onRequest,
+    onError: typeof browser$proxy$onError,
+    onProxyError: typeof browser$proxy$onProxyError
   };
 
   /**
    * An object which describes proxy settings.
    */
-  declare interface proxy$ProxyConfig {
+  declare interface browser$proxy$ProxyConfig {
     /**
      * The type of proxy to use.
      */
@@ -3573,14 +3700,14 @@ operation.
   /**
    * The type of proxy to use.
    */
-  declare type proxy$_ProxyConfigProxyType =
+  declare type browser$proxy$_ProxyConfigProxyType =
     | "none"
     | "autoDetect"
     | "system"
     | "manual"
     | "autoConfig";
 
-  declare type proxy$_ProxyOnRequestEvent<
+  declare type browser$proxy$_ProxyOnRequestEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -3597,7 +3724,7 @@ operation.
 
       tabId: number,
 
-      type: browser$webRequest.webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -3605,7 +3732,7 @@ operation.
 
       fromCache: boolean,
 
-      requestHeaders?: browser$webRequest.webRequest$HttpHeaders
+      requestHeaders?: browser$webRequest$HttpHeaders
     }) => void
 
     /**
@@ -3662,7 +3789,7 @@ operation.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: browser$webRequest.webRequest$RequestFilter,
+      filter: browser$webRequest$RequestFilter,
       extraInfoSpec?: Array<"requestHeaders">
     ) => void,
     T
@@ -3671,82 +3798,82 @@ operation.
   /**
    * Configures proxy settings. This setting's value is an object of type ProxyConfig.
    */
-  declare var proxy$settings: browser$types.types$Setting;
+  declare var browser$proxy$settings: browser$types$Setting;
 
   /**
    * Registers the proxy script for the extension.
    */
-  declare function proxy$register(url: string): Promise<void>;
+  declare function browser$proxy$register(url: string): Promise<void>;
 
   /**
    * Unregisters the proxy script for the extension.
    */
-  declare function proxy$unregister(): Promise<void>;
+  declare function browser$proxy$unregister(): Promise<void>;
 
   /**
    * Registers the proxy script for the extension.
    * @deprecated Please use `proxy.register`
    */
-  declare function proxy$registerProxyScript(url: string): Promise<any>;
+  declare function browser$proxy$registerProxyScript(url: string): Promise<any>;
 
   /**
    * Fired when proxy data is needed for a request.
    */
-  declare var proxy$onRequest: proxy$_ProxyOnRequestEvent;
+  declare var browser$proxy$onRequest: browser$proxy$_ProxyOnRequestEvent;
 
   /**
    * Notifies about proxy script errors.
    */
-  declare var proxy$onError: WebExtEvent<
+  declare var browser$proxy$onError: WebExtEvent<
     (error: { [key: string]: any }) => void
   >;
 
   /**
    * Please use `proxy.onError`.
    */
-  declare var proxy$onProxyError: WebExtEvent<
+  declare var browser$proxy$onProxyError: WebExtEvent<
     (error: { [key: string]: any }) => void
   >;
 
-  declare var npm$namespace$runtime: {
-    getBackgroundPage: typeof runtime$getBackgroundPage,
-    openOptionsPage: typeof runtime$openOptionsPage,
-    getManifest: typeof runtime$getManifest,
-    getURL: typeof runtime$getURL,
-    setUninstallURL: typeof runtime$setUninstallURL,
-    reload: typeof runtime$reload,
-    requestUpdateCheck: typeof runtime$requestUpdateCheck,
-    restart: typeof runtime$restart,
-    connect: typeof runtime$connect,
-    connectNative: typeof runtime$connectNative,
-    sendMessage: typeof runtime$sendMessage,
-    sendNativeMessage: typeof runtime$sendNativeMessage,
-    getBrowserInfo: typeof runtime$getBrowserInfo,
-    getPlatformInfo: typeof runtime$getPlatformInfo,
-    getPackageDirectoryEntry: typeof runtime$getPackageDirectoryEntry,
-    lastError: typeof runtime$lastError,
-    id: typeof runtime$id,
-    onStartup: typeof runtime$onStartup,
-    onInstalled: typeof runtime$onInstalled,
-    onSuspend: typeof runtime$onSuspend,
-    onSuspendCanceled: typeof runtime$onSuspendCanceled,
-    onUpdateAvailable: typeof runtime$onUpdateAvailable,
-    onBrowserUpdateAvailable: typeof runtime$onBrowserUpdateAvailable,
-    onConnect: typeof runtime$onConnect,
-    onConnectExternal: typeof runtime$onConnectExternal,
-    onMessage: typeof runtime$onMessage,
-    onMessageExternal: typeof runtime$onMessageExternal,
-    onRestartRequired: typeof runtime$onRestartRequired
+  declare var npm$namespace$browser$runtime: {
+    getBackgroundPage: typeof browser$runtime$getBackgroundPage,
+    openOptionsPage: typeof browser$runtime$openOptionsPage,
+    getManifest: typeof browser$runtime$getManifest,
+    getURL: typeof browser$runtime$getURL,
+    setUninstallURL: typeof browser$runtime$setUninstallURL,
+    reload: typeof browser$runtime$reload,
+    requestUpdateCheck: typeof browser$runtime$requestUpdateCheck,
+    restart: typeof browser$runtime$restart,
+    connect: typeof browser$runtime$connect,
+    connectNative: typeof browser$runtime$connectNative,
+    sendMessage: typeof browser$runtime$sendMessage,
+    sendNativeMessage: typeof browser$runtime$sendNativeMessage,
+    getBrowserInfo: typeof browser$runtime$getBrowserInfo,
+    getPlatformInfo: typeof browser$runtime$getPlatformInfo,
+    getPackageDirectoryEntry: typeof browser$runtime$getPackageDirectoryEntry,
+    lastError: typeof browser$runtime$lastError,
+    id: typeof browser$runtime$id,
+    onStartup: typeof browser$runtime$onStartup,
+    onInstalled: typeof browser$runtime$onInstalled,
+    onSuspend: typeof browser$runtime$onSuspend,
+    onSuspendCanceled: typeof browser$runtime$onSuspendCanceled,
+    onUpdateAvailable: typeof browser$runtime$onUpdateAvailable,
+    onBrowserUpdateAvailable: typeof browser$runtime$onBrowserUpdateAvailable,
+    onConnect: typeof browser$runtime$onConnect,
+    onConnectExternal: typeof browser$runtime$onConnectExternal,
+    onMessage: typeof browser$runtime$onMessage,
+    onMessageExternal: typeof browser$runtime$onMessageExternal,
+    onRestartRequired: typeof browser$runtime$onRestartRequired
   };
 
   /**
    * An object which allows two way communication with other pages.
    */
-  declare interface runtime$Port {
+  declare interface browser$runtime$Port {
     name: string;
     disconnect: () => void;
-    onDisconnect: browser$events.events$Event;
-    onMessage: browser$events.events$Event;
+    onDisconnect: browser$events$Event;
+    onMessage: browser$events$Event;
     postMessage: (message: { [key: string]: any }) => void;
 
     /**
@@ -3758,13 +3885,13 @@ operation.
   /**
    * An object containing information about the script context that sent a message or request.
    */
-  declare interface runtime$MessageSender {
+  declare interface browser$runtime$MessageSender {
     /**
      * The `tabs.Tab` which opened the connection, if any. This property will **only** be present when the
      * connection was opened from a tab (including content scripts), and **only** if the receiver is an extension,
      * not an app.
      */
-    tab?: browser$tabs.tabs$Tab;
+    tab?: browser$tabs$Tab;
 
     /**
      * The frame that opened the connection. 0 for top-level frames, positive for child frames. This will only be
@@ -3794,7 +3921,7 @@ operation.
   /**
    * The operating system the browser is running on.
    */
-  declare type runtime$PlatformOs =
+  declare type browser$runtime$PlatformOs =
     | "mac"
     | "win"
     | "android"
@@ -3805,21 +3932,21 @@ operation.
   /**
    * The machine's processor architecture.
    */
-  declare type runtime$PlatformArch = "arm" | "x86-32" | "x86-64";
+  declare type browser$runtime$PlatformArch = "arm" | "x86-32" | "x86-64";
 
   /**
    * An object containing information about the current platform.
    */
-  declare interface runtime$PlatformInfo {
+  declare interface browser$runtime$PlatformInfo {
     /**
      * The operating system the browser is running on.
      */
-    os: runtime$PlatformOs;
+    os: browser$runtime$PlatformOs;
 
     /**
      * The machine's processor architecture.
      */
-    arch: runtime$PlatformArch;
+    arch: browser$runtime$PlatformArch;
 
     /**
      * The native client architecture. This may be different from arch on some platforms.
@@ -3831,7 +3958,7 @@ operation.
   /**
    * An object containing information about the current browser.
    */
-  declare interface runtime$BrowserInfo {
+  declare interface browser$runtime$BrowserInfo {
     /**
      * The name of the browser, for example 'Firefox'.
      */
@@ -3856,7 +3983,7 @@ operation.
   /**
    * Result of the update check.
    */
-  declare type runtime$RequestUpdateCheckStatus =
+  declare type browser$runtime$RequestUpdateCheckStatus =
     | "throttled"
     | "no_update"
     | "update_available";
@@ -3864,7 +3991,7 @@ operation.
   /**
    * The reason that this event is being dispatched.
    */
-  declare type runtime$OnInstalledReason =
+  declare type browser$runtime$OnInstalledReason =
     | "install"
     | "update"
     | "browser_update";
@@ -3875,17 +4002,17 @@ operation.
    * is updated to a newer version. 'periodic' is used when the system runs for more than the permitted uptime set in
    * the enterprise policy.
    */
-  declare type runtime$OnRestartRequiredReason =
+  declare type browser$runtime$OnRestartRequiredReason =
     | "app_update"
     | "os_update"
     | "periodic";
 
-  declare type runtime$PlatformNaclArch = any;
+  declare type browser$runtime$PlatformNaclArch = any;
 
   /**
    * This will be defined during an API method callback if there was an error
    */
-  declare var runtime$lastError: {
+  declare var browser$runtime$lastError: {
     /**
      * Details about the error which occurred.
      */
@@ -3895,14 +4022,14 @@ operation.
   /**
    * The ID of the extension/app.
    */
-  declare var runtime$id: string;
+  declare var browser$runtime$id: string;
 
   /**
    * Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If
    * the background page is an event page, the system will ensure it is loaded before calling the callback. If there
    * is no background page, an error is set.
    */
-  declare function runtime$getBackgroundPage(): Promise<windows$Window>;
+  declare function browser$runtime$getBackgroundPage(): Promise<windows$Window>;
 
   /**
    * Open your Extension's options page, if possible.
@@ -3913,39 +4040,39 @@ operation.
    * If your Extension does not declare an options page, or the browser failed to create one for some other reason,
    * the callback will set `lastError`.
    */
-  declare function runtime$openOptionsPage(): Promise<void>;
+  declare function browser$runtime$openOptionsPage(): Promise<void>;
 
   /**
    * Returns details about the app or extension from the manifest. The object returned is a serialization of the full
    * manifest file.
    */
-  declare function runtime$getManifest(): browser$_manifest._manifest$WebExtensionManifest;
+  declare function browser$runtime$getManifest(): browser$_manifest$WebExtensionManifest;
 
   /**
    * Converts a relative path within an app/extension install directory to a fully-qualified URL.
    * @param path A path to a resource within an app/extension expressed relative to its install directory.
    * @returns The fully-qualified URL to the resource.
    */
-  declare function runtime$getURL(path: string): string;
+  declare function browser$runtime$getURL(path: string): string;
 
   /**
- * Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and
- * implement surveys. Maximum 255 characters.
- * @param url URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme.
-Set an empty string to not open a new tab upon uninstallation.
- */
-  declare function runtime$setUninstallURL(url: string): Promise<void>;
+   * Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and
+   * implement surveys. Maximum 255 characters.
+   * @param url URL to be opened after the extension is uninstalled. This URL must have an http: or https: scheme.
+   * Set an empty string to not open a new tab upon uninstallation.
+   */
+  declare function browser$runtime$setUninstallURL(url: string): Promise<void>;
 
   /**
    * Reloads the app or extension.
    */
-  declare function runtime$reload(): void;
+  declare function browser$runtime$reload(): void;
 
   /**
    * Requests an update check for this app/extension.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function runtime$requestUpdateCheck(): Promise<{
+  declare function browser$runtime$requestUpdateCheck(): Promise<{
     [key: string]: any
   }>;
 
@@ -3953,19 +4080,19 @@ Set an empty string to not open a new tab upon uninstallation.
    * Restart the device when the app runs in kiosk mode. Otherwise, it's no-op.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function runtime$restart(): void;
+  declare function browser$runtime$restart(): void;
 
   /**
- * Attempts to connect to connect listeners within an extension/app (such as the background page), or other
- * extensions/apps. This is useful for content scripts connecting to their extension processes, inter-app/extension
- * communication, and web messaging. Note that this does not connect to any listeners in a content script.
- * Extensions may connect to content scripts embedded in tabs via `tabs.connect`.
- * @param extensionId The ID of the extension or app to connect to. If omitted, a connection will be attempted
-with your own extension. Required if sending messages from a web page for web messaging.
- * @returns Port through which messages can be sent and received. The port's `runtime.Port onDisconnect` event is
-fired if the extension/app does not exist.
- */
-  declare function runtime$connect(
+   * Attempts to connect to connect listeners within an extension/app (such as the background page), or other
+   * extensions/apps. This is useful for content scripts connecting to their extension processes, inter-app/extension
+   * communication, and web messaging. Note that this does not connect to any listeners in a content script.
+   * Extensions may connect to content scripts embedded in tabs via `tabs.connect`.
+   * @param extensionId The ID of the extension or app to connect to. If omitted, a connection will be attempted
+   * with your own extension. Required if sending messages from a web page for web messaging.
+   * @returns Port through which messages can be sent and received. The port's `runtime.Port onDisconnect` event is
+   * fired if the extension/app does not exist.
+   */
+  declare function browser$runtime$connect(
     extensionId?: string,
     connectInfo?: {
       /**
@@ -3979,14 +4106,16 @@ fired if the extension/app does not exist.
        */
       includeTlsChannelId?: boolean
     }
-  ): runtime$Port;
+  ): browser$runtime$Port;
 
   /**
    * Connects to a native application in the host machine.
    * @param application The name of the registered application to connect to.
    * @returns Port through which messages can be sent and received with the application
    */
-  declare function runtime$connectNative(application: string): runtime$Port;
+  declare function browser$runtime$connectNative(
+    application: string
+  ): browser$runtime$Port;
 
   /**
    * Sends a single message to event listeners within your extension/app or a different extension/app. Similar to
@@ -3997,7 +4126,7 @@ fired if the extension/app does not exist.
    *
    * Allowed in: Proxy scripts
    */
-  declare function runtime$sendMessage(
+  declare function browser$runtime$sendMessage(
     message: any,
     options?: {
       /**
@@ -4015,17 +4144,17 @@ fired if the extension/app does not exist.
   ): Promise<any>;
 
   /**
- * Sends a single message to event listeners within your extension/app or a different extension/app. Similar to
- * `runtime.connect` but only sends a single message, with an optional response. If sending to your extension, the
- * `runtime.onMessage` event will be fired in each page, or `runtime.onMessageExternal`, if a different extension.
- * Note that extensions cannot send messages to content scripts using this method. To send messages to content
- * scripts, use `tabs.sendMessage`.
- * 
- * Allowed in: Proxy scripts
- * @param extensionId The ID of the extension/app to send the message to. If omitted, the message will be sent to
-your own extension/app. Required if sending messages from a web page for web messaging.
- */
-  declare function runtime$sendMessage(
+   * Sends a single message to event listeners within your extension/app or a different extension/app. Similar to
+   * `runtime.connect` but only sends a single message, with an optional response. If sending to your extension, the
+   * `runtime.onMessage` event will be fired in each page, or `runtime.onMessageExternal`, if a different extension.
+   * Note that extensions cannot send messages to content scripts using this method. To send messages to content
+   * scripts, use `tabs.sendMessage`.
+   *
+   * Allowed in: Proxy scripts
+   * @param extensionId The ID of the extension/app to send the message to. If omitted, the message will be sent to
+   * your own extension/app. Required if sending messages from a web page for web messaging.
+   */
+  declare function browser$runtime$sendMessage(
     extensionId: string,
     message: any,
     options?: {
@@ -4048,7 +4177,7 @@ your own extension/app. Required if sending messages from a web page for web mes
    * @param application The name of the native messaging host.
    * @param message The message that will be passed to the native messaging host.
    */
-  declare function runtime$sendNativeMessage(
+  declare function browser$runtime$sendNativeMessage(
     application: string,
     message: any
   ): Promise<any>;
@@ -4056,18 +4185,18 @@ your own extension/app. Required if sending messages from a web page for web mes
   /**
    * Returns information about the current browser.
    */
-  declare function runtime$getBrowserInfo(): Promise<runtime$BrowserInfo>;
+  declare function browser$runtime$getBrowserInfo(): Promise<browser$runtime$BrowserInfo>;
 
   /**
    * Returns information about the current platform.
    */
-  declare function runtime$getPlatformInfo(): Promise<runtime$PlatformInfo>;
+  declare function browser$runtime$getPlatformInfo(): Promise<browser$runtime$PlatformInfo>;
 
   /**
    * Returns a DirectoryEntry for the package directory.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function runtime$getPackageDirectoryEntry(): Promise<{
+  declare function browser$runtime$getPackageDirectoryEntry(): Promise<{
     [key: string]: any
   }>;
 
@@ -4075,18 +4204,18 @@ your own extension/app. Required if sending messages from a web page for web mes
    * Fired when a profile that has this extension installed first starts up. This event is not fired for incognito
    * profiles.
    */
-  declare var runtime$onStartup: WebExtEvent<() => void>;
+  declare var browser$runtime$onStartup: WebExtEvent<() => void>;
 
   /**
    * Fired when the extension is first installed, when the extension is updated to a new version, and when the
    * browser is updated to a new version.
    */
-  declare var runtime$onInstalled: WebExtEvent<
+  declare var browser$runtime$onInstalled: WebExtEvent<
     (details: {
       /**
        * The reason that this event is being dispatched.
        */
-      reason: runtime$OnInstalledReason,
+      reason: browser$runtime$OnInstalledReason,
 
       /**
        * Indicates the previous version of the extension, which has just been updated. This is present only if
@@ -4104,7 +4233,7 @@ your own extension/app. Required if sending messages from a web page for web mes
        * 'shared_module_update'.
        * @deprecated Unsupported on Firefox at this time.
        */
-      runtime$id?: string
+      id?: string
     }) => void
   >;
 
@@ -4115,13 +4244,13 @@ your own extension/app. Required if sending messages from a web page for web mes
    * event will be sent and the page won't be unloaded.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var runtime$onSuspend: WebExtEvent<() => void> | void;
+  declare var browser$runtime$onSuspend: WebExtEvent<() => void> | void;
 
   /**
    * Sent after onSuspend to indicate that the app won't be unloaded after all.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var runtime$onSuspendCanceled: WebExtEvent<() => void> | void;
+  declare var browser$runtime$onSuspendCanceled: WebExtEvent<() => void> | void;
 
   /**
    * Fired when an update is available, but isn't installed immediately because the app is currently running. If you
@@ -4133,7 +4262,7 @@ your own extension/app. Required if sending messages from a web page for web mes
    * `runtime.reload` is called in response to this event.
    * @param details The manifest details of the available update.
    */
-  declare var runtime$onUpdateAvailable: WebExtEvent<
+  declare var browser$runtime$onUpdateAvailable: WebExtEvent<
     (details: {
       /**
        * The version number of the available update.
@@ -4147,56 +4276,60 @@ your own extension/app. Required if sending messages from a web page for web mes
    * required.
    * @deprecated Please use `runtime.onRestartRequired`.
    */
-  declare var runtime$onBrowserUpdateAvailable: WebExtEvent<() => void> | void;
+  declare var browser$runtime$onBrowserUpdateAvailable: WebExtEvent<
+    () => void
+  > | void;
 
   /**
    * Fired when a connection is made from either an extension process or a content script.
    */
-  declare var runtime$onConnect: WebExtEvent<(port: runtime$Port) => void>;
+  declare var browser$runtime$onConnect: WebExtEvent<
+    (port: browser$runtime$Port) => void
+  >;
 
   /**
    * Fired when a connection is made from another extension.
    */
-  declare var runtime$onConnectExternal: WebExtEvent<
-    (port: runtime$Port) => void
+  declare var browser$runtime$onConnectExternal: WebExtEvent<
+    (port: browser$runtime$Port) => void
   >;
 
   /**
- * Fired when a message is sent from either an extension process or a content script.
- * 
- * Allowed in: Proxy scripts
- * @param message The message sent by the calling script.
- * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
-JSON-ifiable object. If you have more than one `onMessage` listener in the same document, then only one may
-send a response. This function becomes invalid when the event listener returns, unless you return true from
-the event listener to indicate you wish to send a response asynchronously (this will keep the message
-channel open to the other end until `sendResponse` is called).
- * @returns Return true from the event listener if you wish to call `sendResponse` after the event listener
-returns.
- */
-  declare var runtime$onMessage: WebExtEvent<
+   * Fired when a message is sent from either an extension process or a content script.
+   *
+   * Allowed in: Proxy scripts
+   * @param message The message sent by the calling script.
+   * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
+   * JSON-ifiable object. If you have more than one `onMessage` listener in the same document, then only one may
+   * send a response. This function becomes invalid when the event listener returns, unless you return true from
+   * the event listener to indicate you wish to send a response asynchronously (this will keep the message
+   * channel open to the other end until `sendResponse` is called).
+   * @returns Return true from the event listener if you wish to call `sendResponse` after the event listener
+   * returns.
+   */
+  declare var browser$runtime$onMessage: WebExtEvent<
     (
       message: any,
-      sender: runtime$MessageSender,
+      sender: browser$runtime$MessageSender,
       sendResponse: (response?: any) => void
     ) => boolean | Promise<any> | void
   >;
 
   /**
- * Fired when a message is sent from another extension/app. Cannot be used in a content script.
- * @param message The message sent by the calling script.
- * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
-JSON-ifiable object. If you have more than one `onMessage` listener in the same document, then only one may
-send a response. This function becomes invalid when the event listener returns, unless you return true from
-the event listener to indicate you wish to send a response asynchronously (this will keep the message
-channel open to the other end until `sendResponse` is called).
- * @returns Return true from the event listener if you wish to call `sendResponse` after the event listener
-returns.
- */
-  declare var runtime$onMessageExternal: WebExtEvent<
+   * Fired when a message is sent from another extension/app. Cannot be used in a content script.
+   * @param message The message sent by the calling script.
+   * @param sendResponse Function to call (at most once) when you have a response. The argument should be any
+   * JSON-ifiable object. If you have more than one `onMessage` listener in the same document, then only one may
+   * send a response. This function becomes invalid when the event listener returns, unless you return true from
+   * the event listener to indicate you wish to send a response asynchronously (this will keep the message
+   * channel open to the other end until `sendResponse` is called).
+   * @returns Return true from the event listener if you wish to call `sendResponse` after the event listener
+   * returns.
+   */
+  declare var browser$runtime$onMessageExternal: WebExtEvent<
     (
       message: any,
-      sender: runtime$MessageSender,
+      sender: browser$runtime$MessageSender,
       sendResponse: (response?: any) => void
     ) => boolean | Promise<any> | void
   >;
@@ -4208,17 +4341,17 @@ returns.
    * @param reason The reason that the event is being dispatched.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var runtime$onRestartRequired: WebExtEvent<
-    (reason: runtime$OnRestartRequiredReason) => void
+  declare var browser$runtime$onRestartRequired: WebExtEvent<
+    (reason: browser$runtime$OnRestartRequiredReason) => void
   > | void;
 
-  declare var npm$namespace$storage: {
-    sync: typeof storage$sync,
-    local: typeof storage$local,
-    managed: typeof storage$managed,
-    onChanged: typeof storage$onChanged
+  declare var npm$namespace$browser$storage: {
+    sync: typeof browser$storage$sync,
+    local: typeof browser$storage$local,
+    managed: typeof browser$storage$managed,
+    onChanged: typeof browser$storage$onChanged
   };
-  declare interface storage$StorageChange {
+  declare interface browser$storage$StorageChange {
     /**
      * The old value of the item, if there was an old value.
      */
@@ -4230,96 +4363,94 @@ returns.
     newValue?: any;
   }
 
-  declare interface storage$StorageArea {
+  declare interface browser$storage$StorageArea {
     /**
- * Gets one or more items from storage.
- * @param keys A single key to get, list of keys to get, or a dictionary specifying default values (see
-description of the object). An empty list or object will return an empty result object. Pass in `null`
-to get the entire contents of storage.
- */
-    management$get(
-      keys?: string | string[] | { [key: string]: any }
-    ): Promise<any>;
+     * Gets one or more items from storage.
+     * @param keys A single key to get, list of keys to get, or a dictionary specifying default values (see
+     * description of the object). An empty list or object will return an empty result object. Pass in `null`
+     * to get the entire contents of storage.
+     */
+    get(keys?: string | string[] | { [key: string]: any }): Promise<any>;
 
     /**
- * Gets the amount of space (in bytes) being used by one or more items.
- * @param keys A single key or list of keys to get the total usage for. An empty list will return 0\. Pass in
-`null` to get the total usage of all of storage.
- * @deprecated Unsupported on Firefox at this time.
- */
+     * Gets the amount of space (in bytes) being used by one or more items.
+     * @param keys A single key or list of keys to get the total usage for. An empty list will return 0\. Pass in
+     * `null` to get the total usage of all of storage.
+     * @deprecated Unsupported on Firefox at this time.
+     */
     getBytesInUse?: (keys?: string | string[]) => Promise<number>;
 
     /**
- * Sets multiple items.
- * @param items An object which gives each key/value pair to update storage with. Any other key/value pairs in
-storage will not be affected.
-
-Primitive values such as numbers will serialize as expected. Values with a `typeof` `"object"` and
-`"function"` will typically serialize to `{}`, with the exception of `Array` (serializes as expected),
-`Date`, and `Regex` (serialize using their `String` representation).
- */
-    cookies$set(items: any): Promise<void>;
+     * Sets multiple items.
+     * @param items An object which gives each key/value pair to update storage with. Any other key/value pairs in
+     * storage will not be affected.
+     *
+     * Primitive values such as numbers will serialize as expected. Values with a `typeof` `"object"` and
+     * `"function"` will typically serialize to `{}`, with the exception of `Array` (serializes as expected),
+     * `Date`, and `Regex` (serialize using their `String` representation).
+     */
+    set(items: any): Promise<void>;
 
     /**
      * Removes one or more items from storage.
      * @param keys A single key or a list of keys for items to remove.
      */
-    permissions$remove(keys: string | string[]): Promise<void>;
+    remove(keys: string | string[]): Promise<void>;
 
     /**
      * Removes all items from storage.
      */
-    notifications$clear(): Promise<void>;
+    clear(): Promise<void>;
   }
 
   /**
    * Items in the `sync` storage area are synced by the browser.
    */
-  declare var storage$sync: storage$StorageArea;
+  declare var browser$storage$sync: browser$storage$StorageArea;
 
   /**
    * Items in the `local` storage area are local to each machine.
    */
-  declare var storage$local: storage$StorageArea;
+  declare var browser$storage$local: browser$storage$StorageArea;
 
   /**
    * Items in the `managed` storage area are set by administrators or native applications, and are read-only for the
    * extension; trying to modify this namespace results in an error.
    */
-  declare var storage$managed: storage$StorageArea;
+  declare var browser$storage$managed: browser$storage$StorageArea;
 
   /**
    * Fired when one or more items change.
    * @param changes Object mapping each key that changed to its corresponding `storage.StorageChange` for that item.
    * @param areaName The name of the storage area (`"sync"`, `"local"` or `"managed"`) the changes are for.
    */
-  declare var storage$onChanged: WebExtEvent<
-    (changes: storage$StorageChange, areaName: string) => void
+  declare var browser$storage$onChanged: WebExtEvent<
+    (changes: browser$storage$StorageChange, areaName: string) => void
   >;
 
-  declare var npm$namespace$telemetry: {
-    submitPing: typeof telemetry$submitPing,
-    canUpload: typeof telemetry$canUpload,
-    scalarAdd: typeof telemetry$scalarAdd,
-    scalarSet: typeof telemetry$scalarSet,
-    scalarSetMaximum: typeof telemetry$scalarSetMaximum,
-    recordEvent: typeof telemetry$recordEvent,
-    registerScalars: typeof telemetry$registerScalars,
-    registerEvents: typeof telemetry$registerEvents,
-    setEventRecordingEnabled: typeof telemetry$setEventRecordingEnabled
+  declare var npm$namespace$browser$telemetry: {
+    submitPing: typeof browser$telemetry$submitPing,
+    canUpload: typeof browser$telemetry$canUpload,
+    scalarAdd: typeof browser$telemetry$scalarAdd,
+    scalarSet: typeof browser$telemetry$scalarSet,
+    scalarSetMaximum: typeof browser$telemetry$scalarSetMaximum,
+    recordEvent: typeof browser$telemetry$recordEvent,
+    registerScalars: typeof browser$telemetry$registerScalars,
+    registerEvents: typeof browser$telemetry$registerEvents,
+    setEventRecordingEnabled: typeof browser$telemetry$setEventRecordingEnabled
   };
 
   /**
    * Type of scalar: 'count' for numeric values, 'string' for string values, 'boolean' for boolean values. Maps to
    * `nsITelemetry.SCALAR_TYPE_*`.
    */
-  declare type telemetry$ScalarType = "count" | "string" | "boolean";
+  declare type browser$telemetry$ScalarType = "count" | "string" | "boolean";
 
   /**
    * Represents registration data for a Telemetry scalar.
    */
-  declare interface telemetry$ScalarData {
-    kind: telemetry$ScalarType;
+  declare interface browser$telemetry$ScalarData {
+    kind: browser$telemetry$ScalarType;
 
     /**
      * True if this is a keyed scalar.
@@ -4340,7 +4471,7 @@ Primitive values such as numbers will serialize as expected. Values with a `type
   /**
    * Represents registration data for a Telemetry event.
    */
-  declare interface telemetry$EventData {
+  declare interface browser$telemetry$EventData {
     /**
      * List of methods for this event entry.
      */
@@ -4374,7 +4505,7 @@ Primitive values such as numbers will serialize as expected. Values with a `type
    * @param message The data payload for the ping.
    * @param options Options object.
    */
-  declare function telemetry$submitPing(
+  declare function browser$telemetry$submitPing(
     type: string,
     message: any,
     options: {
@@ -4403,14 +4534,14 @@ Primitive values such as numbers will serialize as expected. Values with a `type
   /**
    * Checks if Telemetry is enabled.
    */
-  declare function telemetry$canUpload(): Promise<any>;
+  declare function browser$telemetry$canUpload(): Promise<any>;
 
   /**
    * Adds the value to the given scalar.
    * @param name The scalar name.
    * @param value The numeric value to add to the scalar. Only unsigned integers supported.
    */
-  declare function telemetry$scalarAdd(
+  declare function browser$telemetry$scalarAdd(
     name: string,
     value: number
   ): Promise<any>;
@@ -4420,7 +4551,7 @@ Primitive values such as numbers will serialize as expected. Values with a `type
    * @param name The scalar name
    * @param value The value to set the scalar to
    */
-  declare function telemetry$scalarSet(
+  declare function browser$telemetry$scalarSet(
     name: string,
     value: string | boolean | number | { [key: string]: any }
   ): Promise<any>;
@@ -4430,7 +4561,7 @@ Primitive values such as numbers will serialize as expected. Values with a `type
    * @param name The scalar name.
    * @param value The numeric value to set the scalar to. Only unsigned integers supported.
    */
-  declare function telemetry$scalarSetMaximum(
+  declare function browser$telemetry$scalarSetMaximum(
     name: string,
     value: number
   ): Promise<any>;
@@ -4443,7 +4574,7 @@ Primitive values such as numbers will serialize as expected. Values with a `type
    * @param value An optional string value to record.
    * @param extra An optional object of the form (string -> string). It should only contain registered extra keys.
    */
-  declare function telemetry$recordEvent(
+  declare function browser$telemetry$recordEvent(
     category: string,
     method: string,
     object: string,
@@ -4452,25 +4583,25 @@ Primitive values such as numbers will serialize as expected. Values with a `type
   ): Promise<any>;
 
   /**
- * Register new scalars to record them from addons. See nsITelemetry.idl for more details.
- * @param category The unique category the scalars are registered in.
- * @param data An object that contains registration data for multiple scalars. Each property name is the scalar
-name, and the corresponding property value is an object of ScalarData type.
- */
-  declare function telemetry$registerScalars(
+   * Register new scalars to record them from addons. See nsITelemetry.idl for more details.
+   * @param category The unique category the scalars are registered in.
+   * @param data An object that contains registration data for multiple scalars. Each property name is the scalar
+   * name, and the corresponding property value is an object of ScalarData type.
+   */
+  declare function browser$telemetry$registerScalars(
     category: string,
-    data: telemetry$ScalarData
+    data: browser$telemetry$ScalarData
   ): Promise<any>;
 
   /**
- * Register new events to record them from addons. See nsITelemetry.idl for more details.
- * @param category The unique category the events are registered in.
- * @param data An object that contains registration data for 1+ events. Each property name is the category name,
-and the corresponding property value is an object of EventData type.
- */
-  declare function telemetry$registerEvents(
+   * Register new events to record them from addons. See nsITelemetry.idl for more details.
+   * @param category The unique category the events are registered in.
+   * @param data An object that contains registration data for 1+ events. Each property name is the category name,
+   * and the corresponding property value is an object of EventData type.
+   */
+  declare function browser$telemetry$registerEvents(
     category: string,
-    data: telemetry$EventData
+    data: browser$telemetry$EventData
   ): Promise<any>;
 
   /**
@@ -4479,26 +4610,26 @@ and the corresponding property value is an object of EventData type.
    * @param category The category name.
    * @param enabled Whether recording is enabled for events in that category.
    */
-  declare function telemetry$setEventRecordingEnabled(
+  declare function browser$telemetry$setEventRecordingEnabled(
     category: string,
     enabled: boolean
   ): Promise<any>;
 
-  declare var npm$namespace$theme: {
-    getCurrent: typeof theme$getCurrent,
-    update: typeof theme$update,
-    reset: typeof theme$reset,
-    onUpdated: typeof theme$onUpdated
+  declare var npm$namespace$browser$theme: {
+    getCurrent: typeof browser$theme$getCurrent,
+    update: typeof browser$theme$update,
+    reset: typeof browser$theme$reset,
+    onUpdated: typeof browser$theme$onUpdated
   };
 
   /**
    * Info provided in the onUpdated listener.
    */
-  declare interface theme$ThemeUpdateInfo {
+  declare interface browser$theme$ThemeUpdateInfo {
     /**
      * The new theme after update
      */
-    browser$theme: { [key: string]: any };
+    theme: { [key: string]: any };
 
     /**
      * The id of the window the theme has been applied to
@@ -4510,16 +4641,16 @@ and the corresponding property value is an object of EventData type.
    * Returns the current theme for the specified window or the last focused window.
    * @param windowId The window for which we want the theme.
    */
-  declare function theme$getCurrent(
+  declare function browser$theme$getCurrent(
     windowId?: number
-  ): Promise<browser$_manifest._manifest$ThemeType>;
+  ): Promise<browser$_manifest$ThemeType>;
 
   /**
    * Make complete updates to the theme. Resolves when the update has completed.
    * @param details The properties of the theme to update.
    */
-  declare function theme$update(
-    details: browser$_manifest._manifest$ThemeType
+  declare function browser$theme$update(
+    details: browser$_manifest$ThemeType
   ): void;
 
   /**
@@ -4527,33 +4658,33 @@ and the corresponding property value is an object of EventData type.
    * @param windowId The id of the window to update. No id updates all windows.
    * @param details The properties of the theme to update.
    */
-  declare function theme$update(
+  declare function browser$theme$update(
     windowId: number,
-    details: browser$_manifest._manifest$ThemeType
+    details: browser$_manifest$ThemeType
   ): void;
 
   /**
    * Removes the updates made to the theme.
    * @param windowId The id of the window to reset. No id resets all windows.
    */
-  declare function theme$reset(windowId?: number): void;
+  declare function browser$theme$reset(windowId?: number): void;
 
   /**
    * Fired when a new theme has been applied
    * @param updateInfo Details of the theme update
    */
-  declare var theme$onUpdated: WebExtEvent<
-    (updateInfo: theme$ThemeUpdateInfo) => void
+  declare var browser$theme$onUpdated: WebExtEvent<
+    (updateInfo: browser$theme$ThemeUpdateInfo) => void
   >;
 
-  declare var npm$namespace$topSites: {
-    get: typeof topSites$get
+  declare var npm$namespace$browser$topSites: {
+    get: typeof browser$topSites$get
   };
 
   /**
    * An object encapsulating a most visited URL, such as the URLs on the new tab page.
    */
-  declare interface topSites$MostVisitedURL {
+  declare interface browser$topSites$MostVisitedURL {
     /**
      * The most visited URL.
      */
@@ -4573,7 +4704,7 @@ and the corresponding property value is an object of EventData type.
   /**
    * Gets a list of top sites.
    */
-  declare function topSites$get(options?: {
+  declare function browser$topSites$get(options?: {
     /**
      * @deprecated Please use the other options to tune the results received from topSites.
      */
@@ -4598,7 +4729,7 @@ and the corresponding property value is an object of EventData type.
      * Include sites favicon if available.
      */
     includeFavicon?: boolean
-  }): Promise<topSites$MostVisitedURL[]>;
+  }): Promise<browser$topSites$MostVisitedURL[]>;
 
   /**
    * The scope of the Setting. One of
@@ -4613,7 +4744,7 @@ and the corresponding property value is an object of EventData type.
    *
    * Only `regular` is supported by Firefox at this time.
    */
-  declare type types$SettingScope =
+  declare type browser$types$SettingScope =
     | "regular"
     | "regular_only"
     | "incognito_persistent"
@@ -4627,18 +4758,18 @@ and the corresponding property value is an object of EventData type.
    * *   `controllable_by_this_extension`: can be controlled by this extension
    * *   `controlled_by_this_extension`: controlled by this extension
    */
-  declare type types$LevelOfControl =
+  declare type browser$types$LevelOfControl =
     | "not_controllable"
     | "controlled_by_other_extensions"
     | "controllable_by_this_extension"
     | "controlled_by_this_extension";
 
-  declare interface types$Setting {
+  declare interface browser$types$Setting {
     /**
      * Gets the value of a setting.
      * @param details Which setting to consider.
      */
-    topSites$get(details: {
+    get(details: {
       /**
        * Whether to return the value that applies to the incognito session (default false).
        */
@@ -4652,7 +4783,7 @@ and the corresponding property value is an object of EventData type.
       /**
        * The level of control of the setting.
        */
-      levelOfControl: types$LevelOfControl,
+      levelOfControl: browser$types$LevelOfControl,
 
       /**
        * Whether the effective value is specific to the incognito session.
@@ -4666,7 +4797,7 @@ and the corresponding property value is an object of EventData type.
      * Sets the value of a setting.
      * @param details Which setting to change.
      */
-    cookies$set(details: {
+    set(details: {
       /**
        * The value of the setting.
        * Note that every setting has a specific value type, which is described together with the setting. An
@@ -4677,18 +4808,18 @@ and the corresponding property value is an object of EventData type.
       /**
        * Where to set the setting (default: regular).
        */
-      scope?: types$SettingScope
+      scope?: browser$types$SettingScope
     }): Promise<void>;
 
     /**
      * Clears the setting, restoring any default value.
      * @param details Which setting to clear.
      */
-    notifications$clear(details: {
+    clear(details: {
       /**
        * Where to clear the setting (default: regular).
        */
-      scope?: types$SettingScope
+      scope?: browser$types$SettingScope
     }): Promise<void>;
 
     /**
@@ -4705,7 +4836,7 @@ and the corresponding property value is an object of EventData type.
         /**
          * The level of control of the setting.
          */
-        levelOfControl: types$LevelOfControl,
+        levelOfControl: browser$types$LevelOfControl,
 
         /**
          * Whether the value that has changed is specific to the incognito session.
@@ -4716,26 +4847,26 @@ and the corresponding property value is an object of EventData type.
     >;
   }
 
-  declare var npm$namespace$userScripts: {
-    register: typeof userScripts$register,
-    onBeforeScript: typeof userScripts$onBeforeScript
+  declare var npm$namespace$browser$userScripts: {
+    register: typeof browser$userScripts$register,
+    onBeforeScript: typeof browser$userScripts$onBeforeScript
   };
 
   /**
    * Details of a user script
    */
-  declare interface userScripts$UserScriptOptions {
+  declare interface browser$userScripts$UserScriptOptions {
     /**
      * The list of JS files to inject
      */
-    js?: browser$extensionTypes.extensionTypes$ExtensionFileOrCode[];
+    js?: browser$extensionTypes$ExtensionFileOrCode[];
 
     /**
      * An opaque user script metadata value
      */
-    scriptMetadata?: browser$extensionTypes.extensionTypes$PlainJSONValue;
-    matches: browser$_manifest._manifest$MatchPattern[];
-    excludeMatches?: browser$_manifest._manifest$MatchPattern[];
+    scriptMetadata?: browser$extensionTypes$PlainJSONValue;
+    matches: browser$_manifest$MatchPattern[];
+    excludeMatches?: browser$_manifest$MatchPattern[];
     includeGlobs?: string[];
     excludeGlobs?: string[];
 
@@ -4755,33 +4886,33 @@ and the corresponding property value is an object of EventData type.
     /**
      * The soonest that the JavaScript will be injected into the tab. Defaults to "document_idle".
      */
-    runAt?: browser$extensionTypes.extensionTypes$RunAt;
+    runAt?: browser$extensionTypes$RunAt;
   }
 
   /**
    * An object that represents a user script registered programmatically
    */
-  declare interface userScripts$RegisteredUserScript {
+  declare interface browser$userScripts$RegisteredUserScript {
     /**
      * Unregister a user script registered programmatically
      */
-    proxy$unregister(): Promise<any>;
+    unregister(): Promise<any>;
   }
 
   /**
    * Register a user script programmatically given its `userScripts.UserScriptOptions`, and resolves to a
    * `userScripts.RegisteredUserScript` instance
    */
-  declare function userScripts$register(
-    userScriptOptions: userScripts$UserScriptOptions
-  ): Promise<userScripts$RegisteredUserScript>;
+  declare function browser$userScripts$register(
+    userScriptOptions: browser$userScripts$UserScriptOptions
+  ): Promise<browser$userScripts$RegisteredUserScript>;
 
   /**
    * Event called when a new userScript global has been created
    *
    * Allowed in: Content scripts only
    */
-  declare var userScripts$onBeforeScript: WebExtEvent<
+  declare var browser$userScripts$onBeforeScript: WebExtEvent<
     (userScript: {
       /**
        * The userScript metadata (as set in userScripts.register)
@@ -4807,18 +4938,18 @@ and the corresponding property value is an object of EventData type.
     }) => void
   >;
 
-  declare var npm$namespace$webNavigation: {
-    getFrame: typeof webNavigation$getFrame,
-    getAllFrames: typeof webNavigation$getAllFrames,
-    onBeforeNavigate: typeof webNavigation$onBeforeNavigate,
-    onCommitted: typeof webNavigation$onCommitted,
-    onDOMContentLoaded: typeof webNavigation$onDOMContentLoaded,
-    onCompleted: typeof webNavigation$onCompleted,
-    onErrorOccurred: typeof webNavigation$onErrorOccurred,
-    onCreatedNavigationTarget: typeof webNavigation$onCreatedNavigationTarget,
-    onReferenceFragmentUpdated: typeof webNavigation$onReferenceFragmentUpdated,
-    onTabReplaced: typeof webNavigation$onTabReplaced,
-    onHistoryStateUpdated: typeof webNavigation$onHistoryStateUpdated
+  declare var npm$namespace$browser$webNavigation: {
+    getFrame: typeof browser$webNavigation$getFrame,
+    getAllFrames: typeof browser$webNavigation$getAllFrames,
+    onBeforeNavigate: typeof browser$webNavigation$onBeforeNavigate,
+    onCommitted: typeof browser$webNavigation$onCommitted,
+    onDOMContentLoaded: typeof browser$webNavigation$onDOMContentLoaded,
+    onCompleted: typeof browser$webNavigation$onCompleted,
+    onErrorOccurred: typeof browser$webNavigation$onErrorOccurred,
+    onCreatedNavigationTarget: typeof browser$webNavigation$onCreatedNavigationTarget,
+    onReferenceFragmentUpdated: typeof browser$webNavigation$onReferenceFragmentUpdated,
+    onTabReplaced: typeof browser$webNavigation$onTabReplaced,
+    onHistoryStateUpdated: typeof browser$webNavigation$onHistoryStateUpdated
   };
 
   /**
@@ -4826,7 +4957,7 @@ and the corresponding property value is an object of EventData type.
    * transition types as defined in the history API except with `"start_page"` in place of `"auto_toplevel"` (for
    * backwards compatibility).
    */
-  declare type webNavigation$TransitionType =
+  declare type browser$webNavigation$TransitionType =
     | "link"
     | "typed"
     | "auto_bookmark"
@@ -4839,17 +4970,17 @@ and the corresponding property value is an object of EventData type.
     | "keyword"
     | "keyword_generated";
 
-  declare type webNavigation$TransitionQualifier =
+  declare type browser$webNavigation$TransitionQualifier =
     | "client_redirect"
     | "server_redirect"
     | "forward_back"
     | "from_address_bar";
 
-  declare interface webNavigation$EventUrlFilters {
-    url: browser$events.events$UrlFilter[];
+  declare interface browser$webNavigation$EventUrlFilters {
+    url: browser$events$UrlFilter[];
   }
 
-  declare type webNavigation$_WebNavigationOnBeforeNavigateEvent<
+  declare type browser$webNavigation$_WebNavigationOnBeforeNavigateEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -4885,11 +5016,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the browser was about to start the navigation, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnCommittedEvent<
+  declare type browser$webNavigation$_WebNavigationOnCommittedEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -4898,9 +5029,9 @@ and the corresponding property value is an object of EventData type.
 
       frameId: number,
 
-      transitionType?: webNavigation$TransitionType,
+      transitionType?: browser$webNavigation$TransitionType,
 
-      transitionQualifiers?: webNavigation$TransitionQualifier[],
+      transitionQualifiers?: browser$webNavigation$TransitionQualifier[],
 
       timeStamp: number
     }) => void
@@ -4933,11 +5064,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the navigation was committed, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnDOMContentLoadedEvent<
+  declare type browser$webNavigation$_WebNavigationOnDOMContentLoadedEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -4967,11 +5098,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the page's DOM was fully constructed, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnCompletedEvent<
+  declare type browser$webNavigation$_WebNavigationOnCompletedEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -5001,11 +5132,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the document finished loading, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnErrorOccurredEvent<
+  declare type browser$webNavigation$_WebNavigationOnErrorOccurredEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -5042,11 +5173,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the error occurred, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnCreatedNavigationTargetEvent<
+  declare type browser$webNavigation$_WebNavigationOnCreatedNavigationTargetEvent<
     T = (details: {
       sourceTabId: number,
 
@@ -5085,11 +5216,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the browser was about to create a new view, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent<
+  declare type browser$webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -5098,9 +5229,9 @@ and the corresponding property value is an object of EventData type.
 
       frameId: number,
 
-      transitionType?: webNavigation$TransitionType,
+      transitionType?: browser$webNavigation$TransitionType,
 
-      transitionQualifiers?: webNavigation$TransitionQualifier[],
+      transitionQualifiers?: browser$webNavigation$TransitionQualifier[],
 
       timeStamp: number
     }) => void
@@ -5133,11 +5264,11 @@ and the corresponding property value is an object of EventData type.
      * The time when the navigation was committed, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
-  declare type webNavigation$_WebNavigationOnHistoryStateUpdatedEvent<
+  declare type browser$webNavigation$_WebNavigationOnHistoryStateUpdatedEvent<
     T = (details: {
       tabId: number,
       url: string,
@@ -5146,9 +5277,9 @@ and the corresponding property value is an object of EventData type.
 
       frameId: number,
 
-      transitionType?: webNavigation$TransitionType,
+      transitionType?: browser$webNavigation$TransitionType,
 
-      transitionQualifiers?: webNavigation$TransitionQualifier[],
+      transitionQualifiers?: browser$webNavigation$TransitionQualifier[],
 
       timeStamp: number
     }) => void
@@ -5181,7 +5312,7 @@ and the corresponding property value is an object of EventData type.
      * The time when the navigation was committed, in milliseconds since the epoch.
      */
   > = WebExtEventBase<
-    (callback: T, filters?: webNavigation$EventUrlFilters) => void,
+    (callback: T, filters?: browser$webNavigation$EventUrlFilters) => void,
     T
   >;
 
@@ -5190,7 +5321,7 @@ and the corresponding property value is an object of EventData type.
    * identified by a tab ID and a frame ID.
    * @param details Information about the frame to retrieve information about.
    */
-  declare function webNavigation$getFrame(details: {
+  declare function browser$webNavigation$getFrame(details: {
     /**
      * The ID of the tab in which the frame is.
      */
@@ -5239,7 +5370,7 @@ and the corresponding property value is an object of EventData type.
    * Retrieves information about all frames of a given tab.
    * @param details Information about the tab to retrieve all frames from.
    */
-  declare function webNavigation$getAllFrames(details: {
+  declare function browser$webNavigation$getAllFrames(details: {
     /**
      * The ID of the tab.
      */
@@ -5283,46 +5414,46 @@ and the corresponding property value is an object of EventData type.
   /**
    * Fired when a navigation is about to occur.
    */
-  declare var webNavigation$onBeforeNavigate: webNavigation$_WebNavigationOnBeforeNavigateEvent;
+  declare var browser$webNavigation$onBeforeNavigate: browser$webNavigation$_WebNavigationOnBeforeNavigateEvent;
 
   /**
    * Fired when a navigation is committed. The document (and the resources it refers to, such as images and
    * subframes) might still be downloading, but at least part of the document has been received from the server and
    * the browser has decided to switch to the new document.
    */
-  declare var webNavigation$onCommitted: webNavigation$_WebNavigationOnCommittedEvent;
+  declare var browser$webNavigation$onCommitted: browser$webNavigation$_WebNavigationOnCommittedEvent;
 
   /**
    * Fired when the page's DOM is fully constructed, but the referenced resources may not finish loading.
    */
-  declare var webNavigation$onDOMContentLoaded: webNavigation$_WebNavigationOnDOMContentLoadedEvent;
+  declare var browser$webNavigation$onDOMContentLoaded: browser$webNavigation$_WebNavigationOnDOMContentLoadedEvent;
 
   /**
    * Fired when a document, including the resources it refers to, is completely loaded and initialized.
    */
-  declare var webNavigation$onCompleted: webNavigation$_WebNavigationOnCompletedEvent;
+  declare var browser$webNavigation$onCompleted: browser$webNavigation$_WebNavigationOnCompletedEvent;
 
   /**
    * Fired when an error occurs and the navigation is aborted. This can happen if either a network error occurred, or
    * the user aborted the navigation.
    */
-  declare var webNavigation$onErrorOccurred: webNavigation$_WebNavigationOnErrorOccurredEvent;
+  declare var browser$webNavigation$onErrorOccurred: browser$webNavigation$_WebNavigationOnErrorOccurredEvent;
 
   /**
    * Fired when a new window, or a new tab in an existing window, is created to host a navigation.
    */
-  declare var webNavigation$onCreatedNavigationTarget: webNavigation$_WebNavigationOnCreatedNavigationTargetEvent;
+  declare var browser$webNavigation$onCreatedNavigationTarget: browser$webNavigation$_WebNavigationOnCreatedNavigationTargetEvent;
 
   /**
    * Fired when the reference fragment of a frame was updated. All future events for that frame will use the updated
    * URL.
    */
-  declare var webNavigation$onReferenceFragmentUpdated: webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent;
+  declare var browser$webNavigation$onReferenceFragmentUpdated: browser$webNavigation$_WebNavigationOnReferenceFragmentUpdatedEvent;
 
   /**
    * Fired when the contents of the tab is replaced by a different (usually previously pre-rendered) tab.
    */
-  declare var webNavigation$onTabReplaced: WebExtEvent<
+  declare var browser$webNavigation$onTabReplaced: WebExtEvent<
     (details: {
       /**
        * The ID of the tab that was replaced.
@@ -5345,24 +5476,24 @@ and the corresponding property value is an object of EventData type.
    * Fired when the frame's history was updated to a new URL. All future events for that frame will use the updated
    * URL.
    */
-  declare var webNavigation$onHistoryStateUpdated: webNavigation$_WebNavigationOnHistoryStateUpdatedEvent;
+  declare var browser$webNavigation$onHistoryStateUpdated: browser$webNavigation$_WebNavigationOnHistoryStateUpdatedEvent;
 
-  declare var npm$namespace$webRequest: {
-    handlerBehaviorChanged: typeof webRequest$handlerBehaviorChanged,
-    filterResponseData: typeof webRequest$filterResponseData,
-    getSecurityInfo: typeof webRequest$getSecurityInfo,
-    MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES: typeof webRequest$MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES,
-    onBeforeRequest: typeof webRequest$onBeforeRequest,
-    onBeforeSendHeaders: typeof webRequest$onBeforeSendHeaders,
-    onSendHeaders: typeof webRequest$onSendHeaders,
-    onHeadersReceived: typeof webRequest$onHeadersReceived,
-    onAuthRequired: typeof webRequest$onAuthRequired,
-    onResponseStarted: typeof webRequest$onResponseStarted,
-    onBeforeRedirect: typeof webRequest$onBeforeRedirect,
-    onCompleted: typeof webRequest$onCompleted,
-    onErrorOccurred: typeof webRequest$onErrorOccurred
+  declare var npm$namespace$browser$webRequest: {
+    handlerBehaviorChanged: typeof browser$webRequest$handlerBehaviorChanged,
+    filterResponseData: typeof browser$webRequest$filterResponseData,
+    getSecurityInfo: typeof browser$webRequest$getSecurityInfo,
+    MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES: typeof browser$webRequest$MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES,
+    onBeforeRequest: typeof browser$webRequest$onBeforeRequest,
+    onBeforeSendHeaders: typeof browser$webRequest$onBeforeSendHeaders,
+    onSendHeaders: typeof browser$webRequest$onSendHeaders,
+    onHeadersReceived: typeof browser$webRequest$onHeadersReceived,
+    onAuthRequired: typeof browser$webRequest$onAuthRequired,
+    onResponseStarted: typeof browser$webRequest$onResponseStarted,
+    onBeforeRedirect: typeof browser$webRequest$onBeforeRedirect,
+    onCompleted: typeof browser$webRequest$onCompleted,
+    onErrorOccurred: typeof browser$webRequest$onErrorOccurred
   };
-  declare type webRequest$ResourceType =
+  declare type browser$webRequest$ResourceType =
     | "main_frame"
     | "sub_frame"
     | "stylesheet"
@@ -5385,33 +5516,35 @@ and the corresponding property value is an object of EventData type.
     | "speculative"
     | "other";
 
-  declare type webRequest$OnBeforeRequestOptions = "blocking" | "requestBody";
+  declare type browser$webRequest$OnBeforeRequestOptions =
+    | "blocking"
+    | "requestBody";
 
-  declare type webRequest$OnBeforeSendHeadersOptions =
+  declare type browser$webRequest$OnBeforeSendHeadersOptions =
     | "requestHeaders"
     | "blocking";
 
-  declare type webRequest$OnSendHeadersOptions = "requestHeaders";
+  declare type browser$webRequest$OnSendHeadersOptions = "requestHeaders";
 
-  declare type webRequest$OnHeadersReceivedOptions =
+  declare type browser$webRequest$OnHeadersReceivedOptions =
     | "blocking"
     | "responseHeaders";
 
-  declare type webRequest$OnAuthRequiredOptions =
+  declare type browser$webRequest$OnAuthRequiredOptions =
     | "responseHeaders"
     | "blocking"
     | "asyncBlocking";
 
-  declare type webRequest$OnResponseStartedOptions = "responseHeaders";
+  declare type browser$webRequest$OnResponseStartedOptions = "responseHeaders";
 
-  declare type webRequest$OnBeforeRedirectOptions = "responseHeaders";
+  declare type browser$webRequest$OnBeforeRedirectOptions = "responseHeaders";
 
-  declare type webRequest$OnCompletedOptions = "responseHeaders";
+  declare type browser$webRequest$OnCompletedOptions = "responseHeaders";
 
   /**
    * An object describing filters to apply to webRequest events.
    */
-  declare interface webRequest$RequestFilter {
+  declare interface browser$webRequest$RequestFilter {
     /**
      * A list of URLs or URL patterns. Requests that cannot match any of the URLs will be filtered out.
      */
@@ -5420,7 +5553,7 @@ and the corresponding property value is an object of EventData type.
     /**
      * A list of request types. Requests that cannot match any of the types will be filtered out.
      */
-    browser$types?: webRequest$ResourceType[];
+    types?: browser$webRequest$ResourceType[];
     tabId?: number;
     windowId?: number;
   }
@@ -5429,7 +5562,7 @@ and the corresponding property value is an object of EventData type.
    * An array of HTTP headers. Each header is represented as a dictionary containing the keys `name` and either
    * `value` or `binaryValue`.
    */
-  declare type webRequest$HttpHeaders = Array<{
+  declare type browser$webRequest$HttpHeaders = Array<{
     /**
      * Name of the HTTP header.
      */
@@ -5450,11 +5583,11 @@ and the corresponding property value is an object of EventData type.
    * Returns value for event handlers that have the 'blocking' extraInfoSpec applied. Allows the event handler to
    * modify network requests.
    */
-  declare interface webRequest$BlockingResponse {
+  declare interface browser$webRequest$BlockingResponse {
     /**
      * If true, the request is cancelled. Used in onBeforeRequest, this prevents the request from being sent.
      */
-    downloads$cancel?: boolean;
+    cancel?: boolean;
 
     /**
      * Only used as a response to the onBeforeRequest and onHeadersReceived events. If set, the original request is
@@ -5476,14 +5609,14 @@ and the corresponding property value is an object of EventData type.
      * Only used as a response to the onBeforeSendHeaders event. If set, the request is made with these request
      * headers instead.
      */
-    requestHeaders?: webRequest$HttpHeaders;
+    requestHeaders?: browser$webRequest$HttpHeaders;
 
     /**
      * Only used as a response to the onHeadersReceived event. If set, the server is assumed to have responded with
      * these response headers instead. Only return `responseHeaders` if you really want to modify the headers in
      * order to limit the number of conflicts (only one extension may modify `responseHeaders` for each request).
      */
-    responseHeaders?: webRequest$HttpHeaders;
+    responseHeaders?: browser$webRequest$HttpHeaders;
 
     /**
      * Only used as a response to the onAuthRequired event. If set, the request is made using the supplied
@@ -5498,7 +5631,7 @@ and the corresponding property value is an object of EventData type.
   /**
    * Contains the certificate properties of the request if it is a secure request.
    */
-  declare interface webRequest$CertificateInfo {
+  declare interface browser$webRequest$CertificateInfo {
     subject: string;
     issuer: string;
 
@@ -5506,7 +5639,7 @@ and the corresponding property value is an object of EventData type.
      * Contains start and end timestamps.
      */
     validity: {
-      geckoProfiler$start: number,
+      start: number,
       end: number
     };
     fingerprint: {
@@ -5521,18 +5654,18 @@ and the corresponding property value is an object of EventData type.
     rawDER?: number[];
   }
 
-  declare type webRequest$CertificateTransparencyStatus =
+  declare type browser$webRequest$CertificateTransparencyStatus =
     | "not_applicable"
     | "policy_compliant"
     | "policy_not_enough_scts"
     | "policy_not_diverse_scts";
 
-  declare type webRequest$TransportWeaknessReasons = "cipher";
+  declare type browser$webRequest$TransportWeaknessReasons = "cipher";
 
   /**
    * Contains the security properties of the request (ie. SSL/TLS information).
    */
-  declare interface webRequest$SecurityInfo {
+  declare interface browser$webRequest$SecurityInfo {
     state: webRequest$_SecurityInfoState;
 
     /**
@@ -5564,7 +5697,7 @@ and the corresponding property value is an object of EventData type.
      * Certificate data if state is "secure". Will only contain one entry unless `certificateChain` is passed as an
      * option.
      */
-    certificates: webRequest$CertificateInfo[];
+    certificates: browser$webRequest$CertificateInfo[];
 
     /**
      * The domain name does not match the certificate domain.
@@ -5583,7 +5716,7 @@ and the corresponding property value is an object of EventData type.
      * Certificate transparency compliance per RFC 6962\. See `https://www.certificate-transparency.org/what-is-ct`
      * for more information.
      */
-    certificateTransparencyStatus?: webRequest$CertificateTransparencyStatus;
+    certificateTransparencyStatus?: browser$webRequest$CertificateTransparencyStatus;
 
     /**
      * True if host uses Strict Transport Security and state is "secure".
@@ -5598,13 +5731,13 @@ and the corresponding property value is an object of EventData type.
     /**
      * list of reasons that cause the request to be considered weak, if state is "weak"
      */
-    weaknessReasons?: webRequest$TransportWeaknessReasons[];
+    weaknessReasons?: browser$webRequest$TransportWeaknessReasons[];
   }
 
   /**
    * Contains data uploaded in a URL request.
    */
-  declare interface webRequest$UploadData {
+  declare interface browser$webRequest$UploadData {
     /**
      * An ArrayBuffer with a copy of the data.
      */
@@ -5616,7 +5749,7 @@ and the corresponding property value is an object of EventData type.
     file?: string;
   }
 
-  declare type webRequest$_SecurityInfoState =
+  declare type browser$webRequest$_SecurityInfoState =
     | "insecure"
     | "weak"
     | "broken"
@@ -5625,14 +5758,14 @@ and the corresponding property value is an object of EventData type.
   /**
    * Protocol version if state is "secure"
    */
-  declare type webRequest$_SecurityInfoProtocolVersion =
+  declare type browser$webRequest$_SecurityInfoProtocolVersion =
     | "TLSv1"
     | "TLSv1.1"
     | "TLSv1.2"
     | "TLSv1.3"
     | "unknown";
 
-  declare type webRequest$_WebRequestOnBeforeRequestEvent<
+  declare type browser$webRequest$_WebRequestOnBeforeRequestEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -5652,17 +5785,17 @@ and the corresponding property value is an object of EventData type.
 
         formData?: { [key: string]: any },
 
-        raw?: webRequest$UploadData[]
+        raw?: browser$webRequest$UploadData[]
       },
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number
     }) =>
-      | webRequest$BlockingResponse
-      | Promise<webRequest$BlockingResponse>
+      | browser$webRequest$BlockingResponse
+      | Promise<browser$webRequest$BlockingResponse>
       | void
 
     /**
@@ -5728,13 +5861,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnBeforeRequestOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnBeforeRequestOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnBeforeSendHeadersEvent<
+  declare type browser$webRequest$_WebRequestOnBeforeSendHeadersEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -5751,14 +5884,14 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
-      requestHeaders?: webRequest$HttpHeaders
+      requestHeaders?: browser$webRequest$HttpHeaders
     }) =>
-      | webRequest$BlockingResponse
-      | Promise<webRequest$BlockingResponse>
+      | browser$webRequest$BlockingResponse
+      | Promise<browser$webRequest$BlockingResponse>
       | void
 
     /**
@@ -5807,13 +5940,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnBeforeSendHeadersOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnBeforeSendHeadersOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnSendHeadersEvent<
+  declare type browser$webRequest$_WebRequestOnSendHeadersEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -5830,11 +5963,11 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
-      requestHeaders?: webRequest$HttpHeaders
+      requestHeaders?: browser$webRequest$HttpHeaders
     }) => void
 
     /**
@@ -5883,13 +6016,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnSendHeadersOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnSendHeadersOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnHeadersReceivedEvent<
+  declare type browser$webRequest$_WebRequestOnHeadersReceivedEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -5906,18 +6039,18 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
       statusLine: string,
 
-      responseHeaders?: webRequest$HttpHeaders,
+      responseHeaders?: browser$webRequest$HttpHeaders,
 
       statusCode: number
     }) =>
-      | webRequest$BlockingResponse
-      | Promise<webRequest$BlockingResponse>
+      | browser$webRequest$BlockingResponse
+      | Promise<browser$webRequest$BlockingResponse>
       | void
 
     /**
@@ -5975,13 +6108,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnHeadersReceivedOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnHeadersReceivedOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnAuthRequiredEvent<
+  declare type browser$webRequest$_WebRequestOnAuthRequiredEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -5998,7 +6131,7 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -6013,14 +6146,14 @@ and the corresponding property value is an object of EventData type.
 
       isProxy: boolean,
 
-      responseHeaders?: webRequest$HttpHeaders,
+      responseHeaders?: browser$webRequest$HttpHeaders,
 
       statusLine: string,
 
       statusCode: number
     }) =>
-      | webRequest$BlockingResponse
-      | Promise<webRequest$BlockingResponse>
+      | browser$webRequest$BlockingResponse
+      | Promise<browser$webRequest$BlockingResponse>
       | void
 
     /**
@@ -6094,13 +6227,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnAuthRequiredOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnAuthRequiredOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnResponseStartedEvent<
+  declare type browser$webRequest$_WebRequestOnResponseStartedEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -6117,7 +6250,7 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -6127,7 +6260,7 @@ and the corresponding property value is an object of EventData type.
 
       statusCode: number,
 
-      responseHeaders?: webRequest$HttpHeaders,
+      responseHeaders?: browser$webRequest$HttpHeaders,
 
       statusLine: string
     }) => void
@@ -6195,13 +6328,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnResponseStartedOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnResponseStartedOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnBeforeRedirectEvent<
+  declare type browser$webRequest$_WebRequestOnBeforeRedirectEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -6218,7 +6351,7 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -6230,7 +6363,7 @@ and the corresponding property value is an object of EventData type.
 
       redirectUrl: string,
 
-      responseHeaders?: webRequest$HttpHeaders,
+      responseHeaders?: browser$webRequest$HttpHeaders,
 
       statusLine: string
     }) => void
@@ -6302,13 +6435,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnBeforeRedirectOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnBeforeRedirectOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnCompletedEvent<
+  declare type browser$webRequest$_WebRequestOnCompletedEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -6325,7 +6458,7 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -6335,7 +6468,7 @@ and the corresponding property value is an object of EventData type.
 
       statusCode: number,
 
-      responseHeaders?: webRequest$HttpHeaders,
+      responseHeaders?: browser$webRequest$HttpHeaders,
 
       statusLine: string
     }) => void
@@ -6403,13 +6536,13 @@ and the corresponding property value is an object of EventData type.
   > = WebExtEventBase<
     (
       callback: T,
-      filter: webRequest$RequestFilter,
-      extraInfoSpec?: webRequest$OnCompletedOptions[]
+      filter: browser$webRequest$RequestFilter,
+      extraInfoSpec?: browser$webRequest$OnCompletedOptions[]
     ) => void,
     T
   >;
 
-  declare type webRequest$_WebRequestOnErrorOccurredEvent<
+  declare type browser$webRequest$_WebRequestOnErrorOccurredEvent<
     T = (details: {
       requestId: string,
       url: string,
@@ -6426,7 +6559,7 @@ and the corresponding property value is an object of EventData type.
 
       tabId: number,
 
-      type: webRequest$ResourceType,
+      type: browser$webRequest$ResourceType,
 
       timeStamp: number,
 
@@ -6490,7 +6623,7 @@ and the corresponding property value is an object of EventData type.
      * must not parse and act based upon its content.
      */
   > = WebExtEventBase<
-    (callback: T, filter: webRequest$RequestFilter) => void,
+    (callback: T, filter: browser$webRequest$RequestFilter) => void,
     T
   >;
 
@@ -6498,25 +6631,25 @@ and the corresponding property value is an object of EventData type.
    * The maximum number of times that `handlerBehaviorChanged` can be called per 10 minute sustained interval.
    * `handlerBehaviorChanged` is an expensive function call that shouldn't be called often.
    */
-  declare var webRequest$MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES: number;
+  declare var browser$webRequest$MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES: number;
 
   /**
    * Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to
    * caching. This function call is expensive. Don't call it often.
    */
-  declare function webRequest$handlerBehaviorChanged(): Promise<void>;
+  declare function browser$webRequest$handlerBehaviorChanged(): Promise<void>;
 
   /**
    * ...
    */
-  declare function webRequest$filterResponseData(
+  declare function browser$webRequest$filterResponseData(
     requestId: string
   ): { [key: string]: any };
 
   /**
    * Retrieves the security information for the request. Returns a promise that will resolve to a SecurityInfo object.
    */
-  declare function webRequest$getSecurityInfo(
+  declare function browser$webRequest$getSecurityInfo(
     requestId: string,
     options?: {
       /**
@@ -6529,83 +6662,83 @@ and the corresponding property value is an object of EventData type.
        */
       rawDER?: boolean
     }
-  ): Promise<webRequest$SecurityInfo>;
+  ): Promise<browser$webRequest$SecurityInfo>;
 
   /**
- * Fired when a request is about to occur.
- * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
-of this type.
- */
-  declare var webRequest$onBeforeRequest: webRequest$_WebRequestOnBeforeRequestEvent;
+   * Fired when a request is about to occur.
+   * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
+   * of this type.
+   */
+  declare var browser$webRequest$onBeforeRequest: browser$webRequest$_WebRequestOnBeforeRequestEvent;
 
   /**
- * Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP
- * connection is made to the server, but before any HTTP data is sent.
- * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
-of this type.
- */
-  declare var webRequest$onBeforeSendHeaders: webRequest$_WebRequestOnBeforeSendHeadersEvent;
+   * Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP
+   * connection is made to the server, but before any HTTP data is sent.
+   * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
+   * of this type.
+   */
+  declare var browser$webRequest$onBeforeSendHeaders: browser$webRequest$_WebRequestOnBeforeSendHeadersEvent;
 
   /**
    * Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders
    * callbacks are visible by the time onSendHeaders is fired).
    */
-  declare var webRequest$onSendHeaders: webRequest$_WebRequestOnSendHeadersEvent;
+  declare var browser$webRequest$onSendHeaders: browser$webRequest$_WebRequestOnSendHeadersEvent;
 
   /**
- * Fired when HTTP response headers of a request have been received.
- * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
-of this type.
- */
-  declare var webRequest$onHeadersReceived: webRequest$_WebRequestOnHeadersReceivedEvent;
+   * Fired when HTTP response headers of a request have been received.
+   * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
+   * of this type.
+   */
+  declare var browser$webRequest$onHeadersReceived: browser$webRequest$_WebRequestOnHeadersReceivedEvent;
 
   /**
- * Fired when an authentication failure is received. The listener has three options: it can provide authentication
- * credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If
- * bad user credentials are provided, this may be called multiple times for the same request.
- * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
-of this type.
- */
-  declare var webRequest$onAuthRequired: webRequest$_WebRequestOnAuthRequiredEvent;
+   * Fired when an authentication failure is received. The listener has three options: it can provide authentication
+   * credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If
+   * bad user credentials are provided, this may be called multiple times for the same request.
+   * @returns If "blocking" is specified in the "extraInfoSpec" parameter, the event listener should return an object
+   * of this type.
+   */
+  declare var browser$webRequest$onAuthRequired: browser$webRequest$_WebRequestOnAuthRequiredEvent;
 
   /**
    * Fired when the first byte of the response body is received. For HTTP requests, this means that the status line
    * and response headers are available.
    */
-  declare var webRequest$onResponseStarted: webRequest$_WebRequestOnResponseStartedEvent;
+  declare var browser$webRequest$onResponseStarted: browser$webRequest$_WebRequestOnResponseStartedEvent;
 
   /**
    * Fired when a server-initiated redirect is about to occur.
    */
-  declare var webRequest$onBeforeRedirect: webRequest$_WebRequestOnBeforeRedirectEvent;
+  declare var browser$webRequest$onBeforeRedirect: browser$webRequest$_WebRequestOnBeforeRedirectEvent;
 
   /**
    * Fired when a request is completed.
    */
-  declare var webRequest$onCompleted: webRequest$_WebRequestOnCompletedEvent;
+  declare var browser$webRequest$onCompleted: browser$webRequest$_WebRequestOnCompletedEvent;
 
   /**
    * Fired when an error occurs.
    */
-  declare var webRequest$onErrorOccurred: webRequest$_WebRequestOnErrorOccurredEvent;
+  declare var browser$webRequest$onErrorOccurred: browser$webRequest$_WebRequestOnErrorOccurredEvent;
 
-  declare var npm$namespace$bookmarks: {
-    get: typeof bookmarks$get,
-    getChildren: typeof bookmarks$getChildren,
-    getRecent: typeof bookmarks$getRecent,
-    getTree: typeof bookmarks$getTree,
-    getSubTree: typeof bookmarks$getSubTree,
-    search: typeof bookmarks$search,
-    create: typeof bookmarks$create,
-    move: typeof bookmarks$move,
-    update: typeof bookmarks$update,
-    remove: typeof bookmarks$remove,
-    removeTree: typeof bookmarks$removeTree,
-    onCreated: typeof bookmarks$onCreated,
-    onRemoved: typeof bookmarks$onRemoved,
-    onChanged: typeof bookmarks$onChanged,
-    onMoved: typeof bookmarks$onMoved,
-    onChildrenReordered: typeof bookmarks$onChildrenReordered
+  declare var npm$namespace$browser$bookmarks: {
+    get: typeof browser$bookmarks$get,
+    getChildren: typeof browser$bookmarks$getChildren,
+    getRecent: typeof browser$bookmarks$getRecent,
+    getTree: typeof browser$bookmarks$getTree,
+    getSubTree: typeof browser$bookmarks$getSubTree,
+    search: typeof browser$bookmarks$search,
+    create: typeof browser$bookmarks$create,
+    move: typeof browser$bookmarks$move,
+    update: typeof browser$bookmarks$update,
+    remove: typeof browser$bookmarks$remove,
+    removeTree: typeof browser$bookmarks$removeTree,
+    onCreated: typeof browser$bookmarks$onCreated,
+    onRemoved: typeof browser$bookmarks$onRemoved,
+    onChanged: typeof browser$bookmarks$onChanged,
+    onMoved: typeof browser$bookmarks$onMoved,
+    onChildrenReordered: typeof browser$bookmarks$onChildrenReordered
   };
 
   /**
@@ -6613,12 +6746,12 @@ of this type.
    * by the system administrator or by the custodian of a supervised user. Omitted if the node can be modified by the
    * user and the extension (default).
    */
-  declare type bookmarks$BookmarkTreeNodeUnmodifiable = "managed";
+  declare type browser$bookmarks$BookmarkTreeNodeUnmodifiable = "managed";
 
   /**
    * Indicates the type of a BookmarkTreeNode, which can be one of bookmark, folder or separator.
    */
-  declare type bookmarks$BookmarkTreeNodeType =
+  declare type browser$bookmarks$BookmarkTreeNodeType =
     | "bookmark"
     | "folder"
     | "separator";
@@ -6626,12 +6759,12 @@ of this type.
   /**
    * A node (either a bookmark or a folder) in the bookmark tree. Child nodes are ordered within their parent folder.
    */
-  declare interface bookmarks$BookmarkTreeNode {
+  declare interface browser$bookmarks$BookmarkTreeNode {
     /**
      * The unique identifier for the node. IDs are unique within the current profile, and they remain valid even
      * after the browser is restarted.
      */
-    runtime$id: string;
+    id: string;
 
     /**
      * The `id` of the parent folder. Omitted for the root node.
@@ -6668,23 +6801,23 @@ of this type.
      * configured by the system administrator or by the custodian of a supervised user. Omitted if the node can be
      * modified by the user and the extension (default).
      */
-    unmodifiable?: bookmarks$BookmarkTreeNodeUnmodifiable;
+    unmodifiable?: browser$bookmarks$BookmarkTreeNodeUnmodifiable;
 
     /**
      * Indicates the type of the BookmarkTreeNode, which can be one of bookmark, folder or separator.
      */
-    type?: bookmarks$BookmarkTreeNodeType;
+    type?: browser$bookmarks$BookmarkTreeNodeType;
 
     /**
      * An ordered list of children of this node.
      */
-    children?: bookmarks$BookmarkTreeNode[];
+    children?: browser$bookmarks$BookmarkTreeNode[];
   }
 
   /**
    * Object passed to the create() function.
    */
-  declare interface bookmarks$CreateDetails {
+  declare interface browser$bookmarks$CreateDetails {
     /**
      * Defaults to the Other Bookmarks folder.
      */
@@ -6696,60 +6829,62 @@ of this type.
     /**
      * Indicates the type of BookmarkTreeNode to create, which can be one of bookmark, folder or separator.
      */
-    type?: bookmarks$BookmarkTreeNodeType;
+    type?: browser$bookmarks$BookmarkTreeNodeType;
   }
 
   /**
    * Retrieves the specified BookmarkTreeNode(s).
    * @param idOrIdList A single string-valued id, or an array of string-valued ids
    */
-  declare function bookmarks$get(
+  declare function browser$bookmarks$get(
     idOrIdList: string | string[]
-  ): Promise<bookmarks$BookmarkTreeNode[]>;
+  ): Promise<browser$bookmarks$BookmarkTreeNode[]>;
 
   /**
    * Retrieves the children of the specified BookmarkTreeNode id.
    */
-  declare function bookmarks$getChildren(
-    runtime$id: string
-  ): Promise<bookmarks$BookmarkTreeNode[]>;
+  declare function browser$bookmarks$getChildren(
+    id: string
+  ): Promise<browser$bookmarks$BookmarkTreeNode[]>;
 
   /**
    * Retrieves the recently added bookmarks.
    * @param numberOfItems The maximum number of items to return.
    */
-  declare function bookmarks$getRecent(
+  declare function browser$bookmarks$getRecent(
     numberOfItems: number
-  ): Promise<bookmarks$BookmarkTreeNode[]>;
+  ): Promise<browser$bookmarks$BookmarkTreeNode[]>;
 
   /**
    * Retrieves the entire Bookmarks hierarchy.
    */
-  declare function bookmarks$getTree(): Promise<bookmarks$BookmarkTreeNode[]>;
+  declare function browser$bookmarks$getTree(): Promise<
+    browser$bookmarks$BookmarkTreeNode[]
+  >;
 
   /**
    * Retrieves part of the Bookmarks hierarchy, starting at the specified node.
    * @param id The ID of the root of the subtree to retrieve.
    */
-  declare function bookmarks$getSubTree(
-    runtime$id: string
-  ): Promise<bookmarks$BookmarkTreeNode[]>;
+  declare function browser$bookmarks$getSubTree(
+    id: string
+  ): Promise<browser$bookmarks$BookmarkTreeNode[]>;
 
   /**
- * Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce
- * BookmarkTreeNodes matching all specified properties.
- * @param query Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or
-an object. If an object, the properties `query`, `url`, and `title` may be specified and bookmarks matching
-all specified properties will be produced.
- */
-  declare function bookmarks$search(
-    contextualIdentities$query:
+   * Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce
+   * BookmarkTreeNodes matching all specified properties.
+   * @param query Either a string of words and quoted phrases that are matched against bookmark URLs and titles, or
+   * an object. If an object, the properties `query`, `url`, and `title` may be specified and bookmarks matching
+   * all specified properties will be produced.
+   */
+  declare function browser$bookmarks$search(
+    query:
       | string
       | {
           /**
            * A string of words and quoted phrases that are matched against bookmark URLs and titles.
            */
-          contextualIdentities$query?: string,
+          query?: string,
 
           /**
            * The URL of the bookmark; matches verbatim. Note that folders have no URL.
@@ -6761,66 +6896,66 @@ all specified properties will be produced.
            */
           title?: string
         }
-  ): Promise<bookmarks$BookmarkTreeNode[]>;
+  ): Promise<browser$bookmarks$BookmarkTreeNode[]>;
 
   /**
    * Creates a bookmark or folder under the specified parentId. If url is NULL or missing, it will be a folder.
    */
-  declare function bookmarks$create(
-    bookmark: bookmarks$CreateDetails
-  ): Promise<bookmarks$BookmarkTreeNode | void>;
+  declare function browser$bookmarks$create(
+    bookmark: browser$bookmarks$CreateDetails
+  ): Promise<browser$bookmarks$BookmarkTreeNode | void>;
 
   /**
    * Moves the specified BookmarkTreeNode to the provided location.
    */
-  declare function bookmarks$move(
-    runtime$id: string,
+  declare function browser$bookmarks$move(
+    id: string,
     destination: {
       parentId?: string,
       index?: number
     }
-  ): Promise<bookmarks$BookmarkTreeNode | void>;
+  ): Promise<browser$bookmarks$BookmarkTreeNode | void>;
 
   /**
    * Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified
    * properties will be left unchanged. **Note:** Currently, only 'title' and 'url' are supported.
    */
-  declare function bookmarks$update(
-    runtime$id: string,
+  declare function browser$bookmarks$update(
+    id: string,
     changes: {
       title?: string,
       url?: string
     }
-  ): Promise<bookmarks$BookmarkTreeNode | void>;
+  ): Promise<browser$bookmarks$BookmarkTreeNode | void>;
 
   /**
    * Removes a bookmark or an empty bookmark folder.
    */
-  declare function bookmarks$remove(runtime$id: string): Promise<void>;
+  declare function browser$bookmarks$remove(id: string): Promise<void>;
 
   /**
    * Recursively removes a bookmark folder.
    */
-  declare function bookmarks$removeTree(runtime$id: string): Promise<void>;
+  declare function browser$bookmarks$removeTree(id: string): Promise<void>;
 
   /**
    * Fired when a bookmark or folder is created.
    */
-  declare var bookmarks$onCreated: WebExtEvent<
-    (runtime$id: string, bookmark: bookmarks$BookmarkTreeNode) => void
+  declare var browser$bookmarks$onCreated: WebExtEvent<
+    (id: string, bookmark: browser$bookmarks$BookmarkTreeNode) => void
   >;
 
   /**
    * Fired when a bookmark or folder is removed. When a folder is removed recursively, a single notification is fired
    * for the folder, and none for its contents.
    */
-  declare var bookmarks$onRemoved: WebExtEvent<
+  declare var browser$bookmarks$onRemoved: WebExtEvent<
     (
-      runtime$id: string,
+      id: string,
       removeInfo: {
         parentId: string,
         index: number,
-        node: bookmarks$BookmarkTreeNode
+        node: browser$bookmarks$BookmarkTreeNode
       }
     ) => void
   >;
@@ -6828,9 +6963,9 @@ all specified properties will be produced.
   /**
    * Fired when a bookmark or folder changes. **Note:** Currently, only title and url changes trigger this.
    */
-  declare var bookmarks$onChanged: WebExtEvent<
+  declare var browser$bookmarks$onChanged: WebExtEvent<
     (
-      runtime$id: string,
+      id: string,
       changeInfo: {
         title: string,
         url?: string
@@ -6841,9 +6976,9 @@ all specified properties will be produced.
   /**
    * Fired when a bookmark or folder is moved to a different parent folder.
    */
-  declare var bookmarks$onMoved: WebExtEvent<
+  declare var browser$bookmarks$onMoved: WebExtEvent<
     (
-      runtime$id: string,
+      id: string,
       moveInfo: {
         parentId: string,
         index: number,
@@ -6858,39 +6993,39 @@ all specified properties will be produced.
    * not called as a result of a move().
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare var bookmarks$onChildrenReordered: WebExtEvent<
+  declare var browser$bookmarks$onChildrenReordered: WebExtEvent<
     (
-      runtime$id: string,
+      id: string,
       reorderInfo: {
         childIds: string[]
       }
     ) => void
   > | void;
 
-  declare var npm$namespace$browserAction: {
-    setTitle: typeof browserAction$setTitle,
-    getTitle: typeof browserAction$getTitle,
-    setIcon: typeof browserAction$setIcon,
-    setPopup: typeof browserAction$setPopup,
-    getPopup: typeof browserAction$getPopup,
-    setBadgeText: typeof browserAction$setBadgeText,
-    getBadgeText: typeof browserAction$getBadgeText,
-    setBadgeBackgroundColor: typeof browserAction$setBadgeBackgroundColor,
-    getBadgeBackgroundColor: typeof browserAction$getBadgeBackgroundColor,
-    setBadgeTextColor: typeof browserAction$setBadgeTextColor,
-    getBadgeTextColor: typeof browserAction$getBadgeTextColor,
-    enable: typeof browserAction$enable,
-    disable: typeof browserAction$disable,
-    isEnabled: typeof browserAction$isEnabled,
-    openPopup: typeof browserAction$openPopup,
-    onClicked: typeof browserAction$onClicked
+  declare var npm$namespace$browser$browserAction: {
+    setTitle: typeof browser$browserAction$setTitle,
+    getTitle: typeof browser$browserAction$getTitle,
+    setIcon: typeof browser$browserAction$setIcon,
+    setPopup: typeof browser$browserAction$setPopup,
+    getPopup: typeof browser$browserAction$getPopup,
+    setBadgeText: typeof browser$browserAction$setBadgeText,
+    getBadgeText: typeof browser$browserAction$getBadgeText,
+    setBadgeBackgroundColor: typeof browser$browserAction$setBadgeBackgroundColor,
+    getBadgeBackgroundColor: typeof browser$browserAction$getBadgeBackgroundColor,
+    setBadgeTextColor: typeof browser$browserAction$setBadgeTextColor,
+    getBadgeTextColor: typeof browser$browserAction$getBadgeTextColor,
+    enable: typeof browser$browserAction$enable,
+    disable: typeof browser$browserAction$disable,
+    isEnabled: typeof browser$browserAction$isEnabled,
+    openPopup: typeof browser$browserAction$openPopup,
+    onClicked: typeof browser$browserAction$onClicked
   };
 
   /**
    * Specifies to which tab or window the value should be set, or from which one it should be retrieved. If no tab
    * nor window is specified, the global value is set or retrieved.
    */
-  declare interface browserAction$Details {
+  declare interface browser$browserAction$Details {
     /**
      * When setting a value, it will be specific to the specified tab, and will automatically reset when the tab
      * navigates. When getting, specifies the tab to get the value from; if there is no tab-specific value, the
@@ -6905,28 +7040,33 @@ all specified properties will be produced.
     windowId?: number;
   }
 
-  declare type browserAction$ColorArray = [number, number, number, number];
+  declare type browser$browserAction$ColorArray = [
+    number,
+    number,
+    number,
+    number
+  ];
 
   /**
    * Pixel data for an image. Must be an ImageData object (for example, from a `canvas` element).
    */
-  declare type browserAction$ImageDataType = { [key: string]: any };
+  declare type browser$browserAction$ImageDataType = { [key: string]: any };
 
   /**
    * An array of four integers in the range [0,255] that make up the RGBA color of the badge. For example, opaque red
    * is `[255, 0, 0, 255]`. Can also be a string with a CSS value, with opaque red being `#FF0000` or `#F00`.
    */
-  declare type browserAction$ColorValue =
+  declare type browser$browserAction$ColorValue =
     | string
-    | browserAction$ColorArray
+    | browser$browserAction$ColorArray
     | null;
 
   /**
- * Sets the title of the browser action. This shows up in the tooltip.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setTitle(details: {
+   * Sets the title of the browser action. This shows up in the tooltip.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setTitle(details: {
     /**
      * The string the browser action should display when moused over.
      */
@@ -6949,18 +7089,18 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Gets the title of the browser action.
    */
-  declare function browserAction$getTitle(
-    details: browserAction$Details
+  declare function browser$browserAction$getTitle(
+    details: browser$browserAction$Details
   ): Promise<string>;
 
   /**
- * Sets the icon for the browser action. The icon can be specified either as the path to an image file or as the
- * pixel data from a canvas element, or as dictionary of either one of those. Either the **path** or the
- * **imageData** property must be specified.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setIcon(details: {
+   * Sets the icon for the browser action. The icon can be specified either as the path to an image file or as the
+   * pixel data from a canvas element, or as dictionary of either one of those. Either the **path** or the
+   * **imageData** property must be specified.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setIcon(details: {
     /**
      * Either an ImageData object or a dictionary {size -> ImageData} representing icon to be set. If the icon is
      * specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the
@@ -6969,9 +7109,9 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
      * Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'
      */
     imageData?:
-      | browserAction$ImageDataType
+      | browser$browserAction$ImageDataType
       | {
-          [key: number]: browserAction$ImageDataType
+          [key: number]: browser$browserAction$ImageDataType
         },
 
     /**
@@ -7002,11 +7142,11 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   }): Promise<void>;
 
   /**
- * Sets the html document to be opened as a popup when the user clicks on the browser action's icon.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setPopup(details: {
+   * Sets the html document to be opened as a popup when the user clicks on the browser action's icon.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setPopup(details: {
     /**
      * The html file to show in a popup. If set to the empty string (''), no popup is shown.
      */
@@ -7029,16 +7169,16 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Gets the html document set as the popup for this browser action.
    */
-  declare function browserAction$getPopup(
-    details: browserAction$Details
+  declare function browser$browserAction$getPopup(
+    details: browser$browserAction$Details
   ): Promise<string>;
 
   /**
- * Sets the badge text for the browser action. The badge is displayed on top of the icon.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setBadgeText(details: {
+   * Sets the badge text for the browser action. The badge is displayed on top of the icon.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setBadgeText(details: {
     /**
      * Any number of characters can be passed, but only about four can fit in the space.
      */
@@ -7062,17 +7202,17 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
    * Gets the badge text of the browser action. If no tab nor window is specified is specified, the global badge text
    * is returned.
    */
-  declare function browserAction$getBadgeText(
-    details: browserAction$Details
+  declare function browser$browserAction$getBadgeText(
+    details: browser$browserAction$Details
   ): Promise<string>;
 
   /**
- * Sets the background color for the badge.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setBadgeBackgroundColor(details: {
-    color: browserAction$ColorValue,
+   * Sets the background color for the badge.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setBadgeBackgroundColor(details: {
+    color: browser$browserAction$ColorValue,
 
     /**
      * When setting a value, it will be specific to the specified tab, and will automatically reset when the tab
@@ -7091,17 +7231,17 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Gets the background color of the browser action badge.
    */
-  declare function browserAction$getBadgeBackgroundColor(
-    details: browserAction$Details
-  ): Promise<browserAction$ColorArray>;
+  declare function browser$browserAction$getBadgeBackgroundColor(
+    details: browser$browserAction$Details
+  ): Promise<browser$browserAction$ColorArray>;
 
   /**
- * Sets the text color for the badge.
- * @param details Specifies to which tab or window the value should be set, or from which one it should be
-retrieved. If no tab nor window is specified, the global value is set or retrieved.
- */
-  declare function browserAction$setBadgeTextColor(details: {
-    color: browserAction$ColorValue,
+   * Sets the text color for the badge.
+   * @param details Specifies to which tab or window the value should be set, or from which one it should be
+   * retrieved. If no tab nor window is specified, the global value is set or retrieved.
+   */
+  declare function browser$browserAction$setBadgeTextColor(details: {
+    color: browser$browserAction$ColorValue,
 
     /**
      * When setting a value, it will be specific to the specified tab, and will automatically reset when the tab
@@ -7120,68 +7260,68 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Gets the text color of the browser action badge.
    */
-  declare function browserAction$getBadgeTextColor(
-    details: browserAction$Details
+  declare function browser$browserAction$getBadgeTextColor(
+    details: browser$browserAction$Details
   ): Promise<any>;
 
   /**
    * Enables the browser action for a tab. By default, browser actions are enabled.
    * @param tabId The id of the tab for which you want to modify the browser action.
    */
-  declare function browserAction$enable(tabId?: number): Promise<void>;
+  declare function browser$browserAction$enable(tabId?: number): Promise<void>;
 
   /**
    * Disables the browser action for a tab.
    * @param tabId The id of the tab for which you want to modify the browser action.
    */
-  declare function browserAction$disable(tabId?: number): Promise<void>;
+  declare function browser$browserAction$disable(tabId?: number): Promise<void>;
 
   /**
    * Checks whether the browser action is enabled.
    */
-  declare function browserAction$isEnabled(
-    details: browserAction$Details
+  declare function browser$browserAction$isEnabled(
+    details: browser$browserAction$Details
   ): Promise<any>;
 
   /**
    * Opens the extension popup window in the active window.
    */
-  declare function browserAction$openPopup(): Promise<void>;
+  declare function browser$browserAction$openPopup(): Promise<void>;
 
   /**
    * Fired when a browser action icon is clicked. This event will not fire if the browser action has a popup.
    */
-  declare var browserAction$onClicked: WebExtEvent<
-    (tab: browser$tabs.tabs$Tab) => void
+  declare var browser$browserAction$onClicked: WebExtEvent<
+    (tab: browser$tabs$Tab) => void
   >;
 
-  declare var npm$namespace$browsingData: {
-    settings: typeof browsingData$settings,
-    remove: typeof browsingData$remove,
-    removeAppcache: typeof browsingData$removeAppcache,
-    removeCache: typeof browsingData$removeCache,
-    removeCookies: typeof browsingData$removeCookies,
-    removeDownloads: typeof browsingData$removeDownloads,
-    removeFileSystems: typeof browsingData$removeFileSystems,
-    removeFormData: typeof browsingData$removeFormData,
-    removeHistory: typeof browsingData$removeHistory,
-    removeIndexedDB: typeof browsingData$removeIndexedDB,
-    removeLocalStorage: typeof browsingData$removeLocalStorage,
-    removePluginData: typeof browsingData$removePluginData,
-    removePasswords: typeof browsingData$removePasswords,
-    removeWebSQL: typeof browsingData$removeWebSQL
+  declare var npm$namespace$browser$browsingData: {
+    settings: typeof browser$browsingData$settings,
+    remove: typeof browser$browsingData$remove,
+    removeAppcache: typeof browser$browsingData$removeAppcache,
+    removeCache: typeof browser$browsingData$removeCache,
+    removeCookies: typeof browser$browsingData$removeCookies,
+    removeDownloads: typeof browser$browsingData$removeDownloads,
+    removeFileSystems: typeof browser$browsingData$removeFileSystems,
+    removeFormData: typeof browser$browsingData$removeFormData,
+    removeHistory: typeof browser$browsingData$removeHistory,
+    removeIndexedDB: typeof browser$browsingData$removeIndexedDB,
+    removeLocalStorage: typeof browser$browsingData$removeLocalStorage,
+    removePluginData: typeof browser$browsingData$removePluginData,
+    removePasswords: typeof browser$browsingData$removePasswords,
+    removeWebSQL: typeof browser$browsingData$removeWebSQL
   };
 
   /**
    * Options that determine exactly what data will be removed.
    */
-  declare interface browsingData$RemovalOptions {
+  declare interface browser$browsingData$RemovalOptions {
     /**
      * Remove data accumulated on or after this date, represented in milliseconds since the epoch (accessible via
      * the `getTime` method of the JavaScript `Date` object). If absent, defaults to 0 (which would remove all
      * browsing data).
      */
-    since?: browser$extensionTypes.extensionTypes$Date;
+    since?: browser$extensionTypes$Date;
 
     /**
      * Only remove data associated with these hostnames (only applies to cookies and localStorage).
@@ -7207,14 +7347,14 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
       /**
        * Extensions and packaged applications a user has installed (be _really_ careful!).
        */
-      browser$extension?: boolean
+      extension?: boolean
     };
   }
 
   /**
    * A set of data types. Missing data types are interpreted as `false`.
    */
-  declare interface browsingData$DataTypeSet {
+  declare interface browser$browsingData$DataTypeSet {
     /**
      * The browser's cache. Note: when removing data, this clears the _entire_ cache: it is not limited to the
      * range you specify.
@@ -7224,12 +7364,12 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
     /**
      * The browser's cookies.
      */
-    browser$cookies?: boolean;
+    cookies?: boolean;
 
     /**
      * The browser's download list.
      */
-    browser$downloads?: boolean;
+    downloads?: boolean;
 
     /**
      * The browser's stored form data.
@@ -7239,7 +7379,7 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
     /**
      * The browser's history.
      */
-    browser$history?: boolean;
+    history?: boolean;
 
     /**
      * Websites' IndexedDB data.
@@ -7277,126 +7417,126 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
    * data types included in this API are not available in the settings UI, and some UI settings control more than one
    * data type listed here.
    */
-  declare function browsingData$settings(): Promise<{
-    options: browsingData$RemovalOptions,
+  declare function browser$browsingData$settings(): Promise<{
+    options: browser$browsingData$RemovalOptions,
 
     /**
      * All of the types will be present in the result, with values of `true` if they are both selected to be
      * removed and permitted to be removed, otherwise `false`.
      */
-    dataToRemove: browsingData$DataTypeSet,
+    dataToRemove: browser$browsingData$DataTypeSet,
 
     /**
      * All of the types will be present in the result, with values of `true` if they are permitted to be removed
      * (e.g., by enterprise policy) and `false` if not.
      */
-    dataRemovalPermitted: browsingData$DataTypeSet
+    dataRemovalPermitted: browser$browsingData$DataTypeSet
   }>;
 
   /**
    * Clears various types of browsing data stored in a user's profile.
    * @param dataToRemove The set of data types to remove.
    */
-  declare function browsingData$remove(
-    options: browsingData$RemovalOptions,
-    dataToRemove: browsingData$DataTypeSet
+  declare function browser$browsingData$remove(
+    options: browser$browsingData$RemovalOptions,
+    dataToRemove: browser$browsingData$DataTypeSet
   ): Promise<void>;
 
   /**
    * Clears websites' appcache data.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function browsingData$removeAppcache(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeAppcache(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's cache.
    */
-  declare function browsingData$removeCache(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeCache(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's cookies and server-bound certificates modified within a particular timeframe.
    */
-  declare function browsingData$removeCookies(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeCookies(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's list of downloaded files (_not_ the downloaded files themselves).
    */
-  declare function browsingData$removeDownloads(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeDownloads(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears websites' file system data.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function browsingData$removeFileSystems(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeFileSystems(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's stored form data (autofill).
    */
-  declare function browsingData$removeFormData(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeFormData(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's history.
    */
-  declare function browsingData$removeHistory(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeHistory(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears websites' IndexedDB data.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function browsingData$removeIndexedDB(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeIndexedDB(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears websites' local storage data.
    */
-  declare function browsingData$removeLocalStorage(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeLocalStorage(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears plugins' data.
    */
-  declare function browsingData$removePluginData(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removePluginData(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears the browser's stored passwords.
    */
-  declare function browsingData$removePasswords(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removePasswords(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
   /**
    * Clears websites' WebSQL data.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function browsingData$removeWebSQL(
-    options: browsingData$RemovalOptions
+  declare function browser$browsingData$removeWebSQL(
+    options: browser$browsingData$RemovalOptions
   ): Promise<void>;
 
-  declare var npm$namespace$commands: {
-    update: typeof commands$update,
-    reset: typeof commands$reset,
-    getAll: typeof commands$getAll,
-    onCommand: typeof commands$onCommand
+  declare var npm$namespace$browser$commands: {
+    update: typeof browser$commands$update,
+    reset: typeof browser$commands$reset,
+    getAll: typeof browser$commands$getAll,
+    onCommand: typeof browser$commands$onCommand
   };
-  declare interface commands$Command {
+  declare interface browser$commands$Command {
     /**
      * The name of the Extension Command
      */
@@ -7417,7 +7557,7 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
    * Update the details of an already defined command.
    * @param detail The new description for the command.
    */
-  declare function commands$update(detail: {
+  declare function browser$commands$update(detail: {
     /**
      * The name of the command.
      */
@@ -7427,39 +7567,229 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
      * The new description for the command.
      */
     description?: string,
-    shortcut?: browser$_manifest._manifest$KeyName
+    shortcut?: browser$_manifest$KeyName
   }): Promise<void>;
 
   /**
    * Reset a command's details to what is specified in the manifest.
    * @param name The name of the command.
    */
-  declare function commands$reset(name: string): Promise<void>;
+  declare function browser$commands$reset(name: string): Promise<void>;
 
   /**
    * Returns all the registered extension commands for this extension and their shortcut (if active).
    */
-  declare function commands$getAll(): Promise<commands$Command[] | void>;
+  declare function browser$commands$getAll(): Promise<
+    browser$commands$Command[] | void
+  >;
 
   /**
    * Fired when a registered command is activated using a keyboard shortcut.
    */
-  declare var commands$onCommand: WebExtEvent<(command: string) => void>;
+  declare var browser$commands$onCommand: WebExtEvent<
+    (command: string) => void
+  >;
 
-  declare var npm$namespace$panels: {
-    create: typeof panels$create,
-    setOpenResourceHandler: typeof panels$setOpenResourceHandler,
-    openResource: typeof panels$openResource,
-    elements: typeof panels$elements,
-    sources: typeof panels$sources,
-    themeName: typeof panels$themeName,
-    onThemeChanged: typeof panels$onThemeChanged
+  declare var npm$namespace$browser$devtools: {
+    inspectedWindow: typeof npm$namespace$browser$devtools$inspectedWindow,
+    network: typeof npm$namespace$browser$devtools$network,
+    panels: typeof npm$namespace$browser$devtools$panels
+  };
+
+  declare var npm$namespace$browser$devtools$inspectedWindow: {
+    eval: typeof browser$devtools$inspectedWindow$eval,
+    reload: typeof browser$devtools$inspectedWindow$reload,
+    getResources: typeof browser$devtools$inspectedWindow$getResources,
+    tabId: typeof browser$devtools$inspectedWindow$tabId,
+    onResourceAdded: typeof browser$devtools$inspectedWindow$onResourceAdded,
+    onResourceContentCommitted: typeof browser$devtools$inspectedWindow$onResourceContentCommitted
+  };
+
+  /**
+   * A resource within the inspected page, such as a document, a script, or an image.
+   */
+  declare interface browser$devtools$inspectedWindow$Resource {
+    /**
+     * The URL of the resource.
+     */
+    url: string;
+
+    /**
+     * Gets the content of the resource.
+     * @deprecated Unsupported on Firefox at this time.
+     */
+    getContent?: () => Promise<{ [key: string]: any }>;
+
+    /**
+     * Sets the content of the resource.
+     * @param content New content of the resource. Only resources with the text type are currently supported.
+     * @param commit True if the user has finished editing the resource, and the new content of the resource should
+     * be persisted; false if this is a minor change sent in progress of the user editing the resource.
+     * @deprecated Unsupported on Firefox at this time.
+     */
+    setContent?: (content: string, commit: boolean) => Promise<any>;
+  }
+
+  /**
+   * The ID of the tab being inspected. This ID may be used with browser.tabs.* API.
+   */
+  declare var browser$devtools$inspectedWindow$tabId: number;
+
+  /**
+   * Evaluates a JavaScript expression in the context of the main frame of the inspected page. The expression must
+   * evaluate to a JSON-compliant object, otherwise an exception is thrown. The eval function can report either a
+   * DevTools-side error or a JavaScript exception that occurs during evaluation. In either case, the `result`
+   * parameter of the callback is `undefined`. In the case of a DevTools-side error, the `isException` parameter is
+   * non-null and has `isError` set to true and `code` set to an error code. In the case of a JavaScript error,
+   * `isException` is set to true and `value` is set to the string value of thrown object.
+   * @param expression An expression to evaluate.
+   * @param options The options parameter can contain one or more options.
+   */
+  declare function browser$devtools$inspectedWindow$eval(
+    expression: string,
+    options?: {
+      /**
+       * If specified, the expression is evaluated on the iframe whose URL matches the one specified. By default, the
+       * expression is evaluated in the top frame of the inspected page.
+       * @deprecated Unsupported on Firefox at this time.
+       */
+      frameURL?: string,
+
+      /**
+       * Evaluate the expression in the context of the content script of the calling extension, provided that the
+       * content script is already injected into the inspected page. If not, the expression is not evaluated and the
+       * callback is invoked with the exception parameter set to an object that has the `isError` field set to true
+       * and the `code` field set to `E_NOTFOUND`.
+       * @deprecated Unsupported on Firefox at this time.
+       */
+      useContentScriptContext?: boolean,
+
+      /**
+       * Evaluate the expression in the context of a content script of an extension that matches the specified
+       * origin. If given, contextSecurityOrigin overrides the 'true' setting on userContentScriptContext.
+       * @deprecated Unsupported on Firefox at this time.
+       */
+      contextSecurityOrigin?: string
+    }
+  ): Promise<{ [key: string]: any } | void>;
+
+  /**
+   * Reloads the inspected page.
+   */
+  declare function browser$devtools$inspectedWindow$reload(reloadOptions?: {
+    /**
+     * When true, the loader will bypass the cache for all inspected page resources loaded before the `load` event
+     * is fired. The effect is similar to pressing Ctrl+Shift+R in the inspected window or within the Developer
+     * Tools window.
+     */
+    ignoreCache?: boolean,
+
+    /**
+     * If specified, the string will override the value of the `User-Agent` HTTP header that's sent while loading
+     * the resources of the inspected page. The string will also override the value of the `navigator.userAgent`
+     * property that's returned to any scripts that are running within the inspected page.
+     */
+    userAgent?: string,
+
+    /**
+     * If specified, the script will be injected into every frame of the inspected page immediately upon load,
+     * before any of the frame's scripts. The script will not be injected after subsequent reloads—for example, if
+     * the user presses Ctrl+R.
+     */
+    injectedScript?: string,
+
+    /**
+     * If specified, this script evaluates into a function that accepts three string arguments: the source to
+     * preprocess, the URL of the source, and a function name if the source is an DOM event handler. The
+     * preprocessorerScript function should return a string to be compiled by Chrome in place of the input source.
+     * In the case that the source is a DOM event handler, the returned source must compile to a single JS
+     * function.
+     * @deprecated Please avoid using this parameter, it will be removed soon.
+     */
+    preprocessorScript?: string
+  }): void;
+
+  /**
+   * Retrieves the list of resources from the inspected page.
+   * @deprecated Unsupported on Firefox at this time.
+   */
+  declare function browser$devtools$inspectedWindow$getResources(): Promise<
+    browser$devtools$inspectedWindow$Resource[]
+  >;
+
+  /**
+   * Fired when a new resource is added to the inspected page.
+   * @deprecated Unsupported on Firefox at this time.
+   */
+  declare var browser$devtools$inspectedWindow$onResourceAdded: WebExtEvent<
+    (resource: browser$devtools$inspectedWindow$Resource) => void
+  > | void;
+
+  /**
+   * Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the
+   * Developer Tools).
+   * @param content New content of the resource.
+   * @deprecated Unsupported on Firefox at this time.
+   */
+  declare var browser$devtools$inspectedWindow$onResourceContentCommitted: WebExtEvent<
+    (
+      resource: browser$devtools$inspectedWindow$Resource,
+      content: string
+    ) => void
+  > | void;
+
+  declare var npm$namespace$browser$devtools$network: {
+    getHAR: typeof browser$devtools$network$getHAR,
+    onRequestFinished: typeof browser$devtools$network$onRequestFinished,
+    onNavigated: typeof browser$devtools$network$onNavigated
+  };
+
+  /**
+   * Represents a network request for a document resource (script, image and so on). See HAR Specification for
+   * reference.
+   */
+  declare interface browser$devtools$network$Request {
+    /**
+     * Returns content of the response body.
+     */
+    getContent(): Promise<{ [key: string]: any }>;
+  }
+
+  /**
+   * Returns HAR log that contains all known network requests.
+   */
+  declare function browser$devtools$network$getHAR(): Promise<any>;
+
+  /**
+   * Fired when a network request is finished and all request data are available.
+   * @param request Description of a network request in the form of a HAR entry. See HAR specification for details.
+   */
+  declare var browser$devtools$network$onRequestFinished: WebExtEvent<
+    (request: browser$devtools$network$Request) => void
+  >;
+
+  /**
+   * Fired when the inspected window navigates to a new page.
+   * @param url URL of the new page.
+   */
+  declare var browser$devtools$network$onNavigated: WebExtEvent<
+    (url: string) => void
+  >;
+
+  declare var npm$namespace$browser$devtools$panels: {
+    create: typeof browser$devtools$panels$create,
+    setOpenResourceHandler: typeof browser$devtools$panels$setOpenResourceHandler,
+    openResource: typeof browser$devtools$panels$openResource,
+    elements: typeof browser$devtools$panels$elements,
+    sources: typeof browser$devtools$panels$sources,
+    themeName: typeof browser$devtools$panels$themeName,
+    onThemeChanged: typeof browser$devtools$panels$onThemeChanged
   };
 
   /**
    * Represents the Elements panel.
    */
-  declare interface panels$ElementsPanel {
+  declare interface browser$devtools$panels$ElementsPanel {
     /**
      * Creates a pane within panel's sidebar.
      * @param title Text that is displayed in sidebar caption.
@@ -7479,7 +7809,7 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Represents the Sources panel.
    */
-  declare interface panels$SourcesPanel {
+  declare interface browser$devtools$panels$SourcesPanel {
     /**
      * Creates a pane within panel's sidebar.
      * @param title Text that is displayed in sidebar caption.
@@ -7499,16 +7829,16 @@ retrieved. If no tab nor window is specified, the global value is set or retriev
   /**
    * Represents a panel created by extension.
    */
-  declare interface panels$ExtensionPanel {
+  declare interface browser$devtools$panels$ExtensionPanel {
     /**
- * Appends a button to the status bar of the panel.
- * @param iconPath Path to the icon of the button. The file should contain a 64x24-pixel image composed of two
-32x24 icons. The left icon is used when the button is inactive; the right icon is displayed when the
-button is pressed.
- * @param tooltipText Text shown as a tooltip when user hovers the mouse over the button.
- * @param disabled Whether the button is disabled.
- * @deprecated Unsupported on Firefox at this time.
- */
+     * Appends a button to the status bar of the panel.
+     * @param iconPath Path to the icon of the button. The file should contain a 64x24-pixel image composed of two
+     * 32x24 icons. The left icon is used when the button is inactive; the right icon is displayed when the
+     * button is pressed.
+     * @param tooltipText Text shown as a tooltip when user hovers the mouse over the button.
+     * @param disabled Whether the button is disabled.
+     * @deprecated Unsupported on Firefox at this time.
+     */
     createStatusBarButton?: (
       iconPath: string,
       tooltipText: string,
@@ -7527,9 +7857,7 @@ button is pressed.
      * Fired when the user switches to the panel.
      * @param window The JavaScript `window` object of panel's page.
      */
-    notifications$onShown: WebExtEvent<
-      (window: { [key: string]: any }) => void
-    >;
+    onShown: WebExtEvent<(window: { [key: string]: any }) => void>;
 
     /**
      * Fired when the user switches away from the panel.
@@ -7540,7 +7868,7 @@ button is pressed.
   /**
    * A sidebar created by the extension.
    */
-  declare interface panels$ExtensionSidebarPane {
+  declare interface browser$devtools$panels$ExtensionSidebarPane {
     /**
      * Sets the height of the sidebar.
      * @param height A CSS-like size specification, such as `'100px'` or `'12ex'`.
@@ -7549,34 +7877,32 @@ button is pressed.
     setHeight?: (height: string) => void;
 
     /**
- * Sets an expression that is evaluated within the inspected page. The result is displayed in the sidebar pane.
- * @param expression An expression to be evaluated in context of the inspected page. JavaScript objects and DOM
-nodes are displayed in an expandable tree similar to the console/watch.
- * @param rootTitle An optional title for the root of the expression tree.
- */
+     * Sets an expression that is evaluated within the inspected page. The result is displayed in the sidebar pane.
+     * @param expression An expression to be evaluated in context of the inspected page. JavaScript objects and DOM
+     * nodes are displayed in an expandable tree similar to the console/watch.
+     * @param rootTitle An optional title for the root of the expression tree.
+     */
     setExpression(expression: string, rootTitle?: string): Promise<void>;
 
     /**
- * Sets a JSON-compliant object to be displayed in the sidebar pane.
- * @param jsonObject An object to be displayed in context of the inspected page. Evaluated in the context of
-the caller (API client).
- * @param rootTitle An optional title for the root of the expression tree.
- */
+     * Sets a JSON-compliant object to be displayed in the sidebar pane.
+     * @param jsonObject An object to be displayed in context of the inspected page. Evaluated in the context of
+     * the caller (API client).
+     * @param rootTitle An optional title for the root of the expression tree.
+     */
     setObject(jsonObject: string, rootTitle?: string): Promise<void>;
 
     /**
      * Sets an HTML page to be displayed in the sidebar pane.
      * @param path Relative path of an extension page to display within the sidebar.
      */
-    setPage(path: browser$_manifest._manifest$ExtensionURL): Promise<any>;
+    setPage(path: browser$_manifest$ExtensionURL): Promise<any>;
 
     /**
      * Fired when the sidebar pane becomes visible as a result of user switching to the panel that hosts it.
      * @param window The JavaScript `window` object of the sidebar page, if one was set with the `setPage()` method.
      */
-    notifications$onShown: WebExtEvent<
-      (window: { [key: string]: any }) => void
-    >;
+    onShown: WebExtEvent<(window: { [key: string]: any }) => void>;
 
     /**
      * Fired when the sidebar pane becomes hidden as a result of the user switching away from the panel that hosts
@@ -7588,7 +7914,7 @@ the caller (API client).
   /**
    * A button created by the extension.
    */
-  declare interface panels$Button {
+  declare interface browser$devtools$panels$Button {
     /**
      * Updates the attributes of the button. If some of the arguments are omitted or `null`, the corresponding
      * attributes are not updated.
@@ -7597,7 +7923,7 @@ the caller (API client).
      * @param disabled Whether the button is disabled.
      * @deprecated Unsupported on Firefox at this time.
      */
-    commands$update?: (
+    update?: (
       iconPath?: string,
       tooltipText?: string,
       disabled?: boolean
@@ -7607,45 +7933,45 @@ the caller (API client).
      * Fired when the button is clicked.
      * @deprecated Unsupported on Firefox at this time.
      */
-    browserAction$onClicked: WebExtEvent<() => void>;
+    onClicked: WebExtEvent<() => void>;
   }
 
-  declare type panels$_Create = "";
+  declare type browser$devtools$panels$_Create = "";
 
   /**
    * Elements panel.
    */
-  declare var panels$elements: panels$ElementsPanel;
+  declare var browser$devtools$panels$elements: browser$devtools$panels$ElementsPanel;
 
   /**
    * Sources panel.
    */
-  declare var panels$sources: panels$SourcesPanel;
+  declare var browser$devtools$panels$sources: browser$devtools$panels$SourcesPanel;
 
   /**
    * The name of the current devtools theme.
    */
-  declare var panels$themeName: string;
+  declare var browser$devtools$panels$themeName: string;
 
   /**
- * Creates an extension panel.
- * @param title Title that is displayed next to the extension icon in the Developer Tools toolbar.
- * @param iconPath Path of the panel's icon relative to the extension directory, or an empty string to use the
-default extension icon as the panel icon.
- * @param pagePath Path of the panel's HTML page relative to the extension directory.
- */
-  declare function panels$create(
+   * Creates an extension panel.
+   * @param title Title that is displayed next to the extension icon in the Developer Tools toolbar.
+   * @param iconPath Path of the panel's icon relative to the extension directory, or an empty string to use the
+   * default extension icon as the panel icon.
+   * @param pagePath Path of the panel's HTML page relative to the extension directory.
+   */
+  declare function browser$devtools$panels$create(
     title: string,
-    iconPath: browser$_manifest._manifest$ExtensionURL | panels$_Create,
-    pagePath: browser$_manifest._manifest$ExtensionURL
-  ): Promise<panels$ExtensionPanel | void>;
+    iconPath: browser$_manifest$ExtensionURL | browser$devtools$panels$_Create,
+    pagePath: browser$_manifest$ExtensionURL
+  ): Promise<browser$devtools$panels$ExtensionPanel | void>;
 
   /**
    * Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset
    * the handler, either call the method with no parameters or pass null as the parameter.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function panels$setOpenResourceHandler(): Promise<browser$devtools.inspectedWindow.inspectedWindow$Resource | void>;
+  declare function browser$devtools$panels$setOpenResourceHandler(): Promise<browser$devtools$inspectedWindow$Resource | void>;
 
   /**
    * Requests DevTools to open a URL in a Developer Tools panel.
@@ -7653,7 +7979,7 @@ default extension icon as the panel icon.
    * @param lineNumber Specifies the line number to scroll to when the resource is loaded.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function panels$openResource(
+  declare function browser$devtools$panels$openResource(
     url: string,
     lineNumber: number
   ): Promise<void>;
@@ -7662,14 +7988,14 @@ default extension icon as the panel icon.
    * Fired when the devtools theme changes.
    * @param themeName The name of the current devtools theme.
    */
-  declare var panels$onThemeChanged: WebExtEvent<
-    (panels$themeName: string) => void
+  declare var browser$devtools$panels$onThemeChanged: WebExtEvent<
+    (themeName: string) => void
   >;
 
-  declare var npm$namespace$find: {
-    find: typeof find$find,
-    highlightResults: typeof find$highlightResults,
-    removeHighlighting: typeof find$removeHighlighting
+  declare var npm$namespace$browser$find: {
+    find: typeof browser$find$find,
+    highlightResults: typeof browser$find$highlightResults,
+    removeHighlighting: typeof browser$find$removeHighlighting
   };
 
   /**
@@ -7677,7 +8003,7 @@ default extension icon as the panel icon.
    * @param queryphrase The string to search for.
    * @param params Search parameters.
    */
-  declare function find$find(
+  declare function browser$find$find(
     queryphrase: string,
     params?: {
       /**
@@ -7732,7 +8058,7 @@ default extension icon as the panel icon.
    * Highlight a range
    * @param params highlightResults parameters
    */
-  declare function find$highlightResults(params?: {
+  declare function browser$find$highlightResults(params?: {
     /**
      * Found range to be highlighted. Default highlights all ranges.
      */
@@ -7753,19 +8079,19 @@ default extension icon as the panel icon.
    * Remove all highlighting from previous searches.
    * @param tabId Tab to highlight. Defaults to the active tab.
    */
-  declare function find$removeHighlighting(tabId?: number): void;
+  declare function browser$find$removeHighlighting(tabId?: number): void;
 
-  declare var npm$namespace$geckoProfiler: {
-    start: typeof geckoProfiler$start,
-    stop: typeof geckoProfiler$stop,
-    pause: typeof geckoProfiler$pause,
-    resume: typeof geckoProfiler$resume,
-    getProfile: typeof geckoProfiler$getProfile,
-    getProfileAsArrayBuffer: typeof geckoProfiler$getProfileAsArrayBuffer,
-    getSymbols: typeof geckoProfiler$getSymbols,
-    onRunning: typeof geckoProfiler$onRunning
+  declare var npm$namespace$browser$geckoProfiler: {
+    start: typeof browser$geckoProfiler$start,
+    stop: typeof browser$geckoProfiler$stop,
+    pause: typeof browser$geckoProfiler$pause,
+    resume: typeof browser$geckoProfiler$resume,
+    getProfile: typeof browser$geckoProfiler$getProfile,
+    getProfileAsArrayBuffer: typeof browser$geckoProfiler$getProfileAsArrayBuffer,
+    getSymbols: typeof browser$geckoProfiler$getSymbols,
+    onRunning: typeof browser$geckoProfiler$onRunning
   };
-  declare type geckoProfiler$ProfilerFeature =
+  declare type browser$geckoProfiler$ProfilerFeature =
     | "java"
     | "js"
     | "leaf"
@@ -7781,12 +8107,12 @@ default extension icon as the panel icon.
     | "trackopts"
     | "jstracer";
 
-  declare type geckoProfiler$Supports = "windowLength";
+  declare type browser$geckoProfiler$Supports = "windowLength";
 
   /**
    * Starts the profiler with the specified settings.
    */
-  declare function geckoProfiler$start(browsingData$settings: {
+  declare function browser$geckoProfiler$start(settings: {
     /**
      * The maximum size in bytes of the buffer used to store profiling data. A larger value allows capturing a
      * profile that covers a greater amount of time.
@@ -7808,7 +8134,7 @@ default extension icon as the panel icon.
     /**
      * A list of active features for the profiler.
      */
-    features: geckoProfiler$ProfilerFeature[],
+    features: browser$geckoProfiler$ProfilerFeature[],
 
     /**
      * A list of thread names for which to capture profiles.
@@ -7819,35 +8145,35 @@ default extension icon as the panel icon.
   /**
    * Stops the profiler and discards any captured profile data.
    */
-  declare function geckoProfiler$stop(): Promise<any>;
+  declare function browser$geckoProfiler$stop(): Promise<any>;
 
   /**
    * Pauses the profiler, keeping any profile data that is already written.
    */
-  declare function geckoProfiler$pause(): Promise<any>;
+  declare function browser$geckoProfiler$pause(): Promise<any>;
 
   /**
    * Resumes the profiler with the settings that were initially used to start it.
    */
-  declare function geckoProfiler$resume(): Promise<any>;
+  declare function browser$geckoProfiler$resume(): Promise<any>;
 
   /**
    * Gathers the profile data from the current profiling session.
    */
-  declare function geckoProfiler$getProfile(): Promise<any>;
+  declare function browser$geckoProfiler$getProfile(): Promise<any>;
 
   /**
    * Gathers the profile data from the current profiling session. The returned promise resolves to an array buffer
    * that contains a JSON string.
    */
-  declare function geckoProfiler$getProfileAsArrayBuffer(): Promise<any>;
+  declare function browser$geckoProfiler$getProfileAsArrayBuffer(): Promise<any>;
 
   /**
    * Gets the debug symbols for a particular library.
    * @param debugName The name of the library's debug file. For example, 'xul.pdb
    * @param breakpadId The Breakpad ID of the library
    */
-  declare function geckoProfiler$getSymbols(
+  declare function browser$geckoProfiler$getSymbols(
     debugName: string,
     breakpadId: string
   ): Promise<any>;
@@ -7856,35 +8182,33 @@ default extension icon as the panel icon.
    * Fires when the profiler starts/stops running.
    * @param isRunning Whether the profiler is running or not. Pausing the profiler will not affect this value.
    */
-  declare var geckoProfiler$onRunning: WebExtEvent<
+  declare var browser$geckoProfiler$onRunning: WebExtEvent<
     (isRunning: boolean) => void
   >;
 
-  declare var npm$namespace$history: {
-    search: typeof history$search,
-    getVisits: typeof history$getVisits,
-    addUrl: typeof history$addUrl,
-    deleteUrl: typeof history$deleteUrl,
-    deleteRange: typeof history$deleteRange,
-    deleteAll: typeof history$deleteAll,
-    onVisited: typeof history$onVisited,
-    onVisitRemoved: typeof history$onVisitRemoved,
-    onTitleChanged: typeof history$onTitleChanged
+  declare var npm$namespace$browser$history: {
+    search: typeof browser$history$search,
+    getVisits: typeof browser$history$getVisits,
+    addUrl: typeof browser$history$addUrl,
+    deleteUrl: typeof browser$history$deleteUrl,
+    deleteRange: typeof browser$history$deleteRange,
+    deleteAll: typeof browser$history$deleteAll,
+    onVisited: typeof browser$history$onVisited,
+    onVisitRemoved: typeof browser$history$onVisitRemoved,
+    onTitleChanged: typeof browser$history$onTitleChanged
   };
 
   /**
-   * Cause of the navigation. The same transition types as defined in the history API are used. These are the same
-   * transition types as defined in the history API except with `"start_page"` in place of `"auto_toplevel"` (for
-   * backwards compatibility).
+   * The transition type for this visit from its referrer.
    */
-  declare type history$TransitionType =
+  declare type browser$history$TransitionType =
     | "link"
     | "typed"
     | "auto_bookmark"
     | "auto_subframe"
     | "manual_subframe"
     | "generated"
-    | "start_page"
+    | "auto_toplevel"
     | "form_submit"
     | "reload"
     | "keyword"
@@ -7893,11 +8217,11 @@ default extension icon as the panel icon.
   /**
    * An object encapsulating one result of a history query.
    */
-  declare interface history$HistoryItem {
+  declare interface browser$history$HistoryItem {
     /**
      * The unique identifier for the item.
      */
-    runtime$id: string;
+    id: string;
 
     /**
      * The URL navigated to by a user.
@@ -7928,11 +8252,11 @@ default extension icon as the panel icon.
   /**
    * An object encapsulating one visit to a URL.
    */
-  declare interface history$VisitItem {
+  declare interface browser$history$VisitItem {
     /**
      * The unique identifier for the item.
      */
-    runtime$id: string;
+    id: string;
 
     /**
      * The unique identifier for this visit.
@@ -7952,13 +8276,13 @@ default extension icon as the panel icon.
     /**
      * The transition type for this visit from its referrer.
      */
-    transition: history$TransitionType;
+    transition: browser$history$TransitionType;
   }
 
   /**
    * Searches the history for the last visit time of each page matching the query.
    */
-  declare function history$search(contextualIdentities$query: {
+  declare function browser$history$search(query: {
     /**
      * A free-text query to the history service. Leave empty to retrieve all pages.
      */
@@ -7967,34 +8291,34 @@ default extension icon as the panel icon.
     /**
      * Limit results to those visited after this date. If not specified, this defaults to 24 hours in the past.
      */
-    startTime?: browser$extensionTypes.extensionTypes$Date,
+    startTime?: browser$extensionTypes$Date,
 
     /**
      * Limit results to those visited before this date.
      */
-    endTime?: browser$extensionTypes.extensionTypes$Date,
+    endTime?: browser$extensionTypes$Date,
 
     /**
      * The maximum number of results to retrieve. Defaults to 100.
      */
     maxResults?: number
-  }): Promise<history$HistoryItem[]>;
+  }): Promise<browser$history$HistoryItem[]>;
 
   /**
    * Retrieves information about visits to a URL.
    */
-  declare function history$getVisits(details: {
+  declare function browser$history$getVisits(details: {
     /**
      * The URL for which to retrieve visit information. It must be in the format as returned from a call to
      * history.search.
      */
     url: string
-  }): Promise<history$VisitItem[]>;
+  }): Promise<browser$history$VisitItem[]>;
 
   /**
    * Adds a URL to the history with a default visitTime of the current time and a default transition type of "link".
    */
-  declare function history$addUrl(details: {
+  declare function browser$history$addUrl(details: {
     /**
      * The URL to add. Must be a valid URL that can be added to history.
      */
@@ -8008,18 +8332,18 @@ default extension icon as the panel icon.
     /**
      * The transition type for this visit from its referrer.
      */
-    transition?: history$TransitionType,
+    transition?: browser$history$TransitionType,
 
     /**
      * The date when this visit occurred.
      */
-    visitTime?: browser$extensionTypes.extensionTypes$Date
+    visitTime?: browser$extensionTypes$Date
   }): Promise<void>;
 
   /**
    * Removes all occurrences of the given URL from the history.
    */
-  declare function history$deleteUrl(details: {
+  declare function browser$history$deleteUrl(details: {
     /**
      * The URL to remove.
      */
@@ -8030,36 +8354,36 @@ default extension icon as the panel icon.
    * Removes all items within the specified date range from the history. Pages will not be removed from the history
    * unless all visits fall within the range.
    */
-  declare function history$deleteRange(range: {
+  declare function browser$history$deleteRange(range: {
     /**
      * Items added to history after this date.
      */
-    startTime: browser$extensionTypes.extensionTypes$Date,
+    startTime: browser$extensionTypes$Date,
 
     /**
      * Items added to history before this date.
      */
-    endTime: browser$extensionTypes.extensionTypes$Date
+    endTime: browser$extensionTypes$Date
   }): Promise<void>;
 
   /**
    * Deletes all items from the history.
    */
-  declare function history$deleteAll(): Promise<void>;
+  declare function browser$history$deleteAll(): Promise<void>;
 
   /**
    * Fired when a URL is visited, providing the HistoryItem data for that URL. This event fires before the page has
    * loaded.
    */
-  declare var history$onVisited: WebExtEvent<
-    (result: history$HistoryItem) => void
+  declare var browser$history$onVisited: WebExtEvent<
+    (result: browser$history$HistoryItem) => void
   >;
 
   /**
    * Fired when one or more URLs are removed from the history service. When all visits have been removed the URL is
    * purged from history.
    */
-  declare var history$onVisitRemoved: WebExtEvent<
+  declare var browser$history$onVisitRemoved: WebExtEvent<
     (removed: {
       /**
        * True if all history was removed. If true, then urls will be empty.
@@ -8072,7 +8396,7 @@ default extension icon as the panel icon.
   /**
    * Fired when the title of a URL is changed in the browser history.
    */
-  declare var history$onTitleChanged: WebExtEvent<
+  declare var browser$history$onTitleChanged: WebExtEvent<
     (changed: {
       /**
        * The URL for which the title has changed
@@ -8086,25 +8410,25 @@ default extension icon as the panel icon.
     }) => void
   >;
 
-  declare var npm$namespace$contextMenus: {
-    create: typeof contextMenus$create,
-    update: typeof contextMenus$update,
-    remove: typeof contextMenus$remove,
-    removeAll: typeof contextMenus$removeAll,
-    overrideContext: typeof contextMenus$overrideContext,
-    refresh: typeof contextMenus$refresh,
-    getTargetElement: typeof contextMenus$getTargetElement,
-    ACTION_MENU_TOP_LEVEL_LIMIT: typeof contextMenus$ACTION_MENU_TOP_LEVEL_LIMIT,
-    onClicked: typeof contextMenus$onClicked,
-    onShown: typeof contextMenus$onShown,
-    onHidden: typeof contextMenus$onHidden
+  declare var npm$namespace$browser$contextMenus: {
+    create: typeof browser$contextMenus$create,
+    update: typeof browser$contextMenus$update,
+    remove: typeof browser$contextMenus$remove,
+    removeAll: typeof browser$contextMenus$removeAll,
+    overrideContext: typeof browser$contextMenus$overrideContext,
+    refresh: typeof browser$contextMenus$refresh,
+    getTargetElement: typeof browser$contextMenus$getTargetElement,
+    ACTION_MENU_TOP_LEVEL_LIMIT: typeof browser$contextMenus$ACTION_MENU_TOP_LEVEL_LIMIT,
+    onClicked: typeof browser$contextMenus$onClicked,
+    onShown: typeof browser$contextMenus$onShown,
+    onHidden: typeof browser$contextMenus$onHidden
   };
 
   /**
    * The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other
    * contexts except for 'tab' and 'tools_menu'.
    */
-  declare type contextMenus$ContextType =
+  declare type browser$contextMenus$ContextType =
     | "all"
     | "page"
     | "frame"
@@ -8124,7 +8448,7 @@ default extension icon as the panel icon.
   /**
    * The type of menu item.
    */
-  declare type contextMenus$ItemType =
+  declare type browser$contextMenus$ItemType =
     | "normal"
     | "checkbox"
     | "radio"
@@ -8133,7 +8457,7 @@ default extension icon as the panel icon.
   /**
    * Information sent when a context menu item is clicked.
    */
-  declare interface contextMenus$OnClickData {
+  declare interface browser$contextMenus$OnClickData {
     /**
      * The ID of the menu item that was clicked.
      */
@@ -8147,99 +8471,7 @@ default extension icon as the panel icon.
     /**
      * The type of view where the menu is clicked. May be unset if the menu is not associated with a view.
      */
-    viewType?: browser$extension.extension$ViewType;
-
-    /**
-     * One of 'image', 'video', or 'audio' if the context menu was activated on one of these types of elements.
-     */
-    mediaType?: string;
-
-    /**
-     * If the element is a link, the text of that link.
-     */
-    linkText?: string;
-
-    /**
-     * If the element is a link, the URL it points to.
-     */
-    linkUrl?: string;
-
-    /**
-     * Will be present for elements with a 'src' URL.
-     */
-    srcUrl?: string;
-
-    /**
-     * The URL of the page where the menu item was clicked. This property is not set if the click occured in a
-     * context where there is no current page, such as in a launcher context menu.
-     */
-    pageUrl?: string;
-
-    /**
-     * The id of the frame of the element where the context menu was clicked.
-     */
-    frameId?: number;
-
-    /**
-     * The URL of the frame of the element where the context menu was clicked, if it was in a frame.
-     */
-    frameUrl?: string;
-
-    /**
-     * The text for the context selection, if any.
-     */
-    selectionText?: string;
-
-    /**
-     * A flag indicating whether the element is editable (text input, textarea, etc.).
-     */
-    editable: boolean;
-
-    /**
-     * A flag indicating the state of a checkbox or radio item before it was clicked.
-     */
-    wasChecked?: boolean;
-
-    /**
-     * A flag indicating the state of a checkbox or radio item after it is clicked.
-     */
-    checked?: boolean;
-
-    /**
-     * The id of the bookmark where the context menu was clicked, if it was on a bookmark.
-     */
-    bookmarkId: string;
-
-    /**
-     * An array of keyboard modifiers that were held while the menu item was clicked.
-     */
-    modifiers: menus$_OnClickDataModifiers[];
-
-    /**
-     * An integer value of button by which menu item was clicked.
-     */
-    button?: number;
-
-    /**
-     * An identifier of the clicked element, if any. Use menus.getTargetElement in the page to find the
-     * corresponding element.
-     */
-    targetElementId?: number;
-
-    /**
-     * The ID of the menu item that was clicked.
-     */
-    menuItemId: number | string;
-
-    /**
-     * The parent ID, if any, for the item clicked.
-     */
-    parentMenuItemId?: number | string;
-
-    /**
-     * The type of view where the menu is clicked. May be unset if the menu is not associated with a view.
-     */
-    viewType?: browser$extension.extension$ViewType;
+    viewType?: browser$extension$ViewType;
 
     /**
      * One of 'image', 'video', or 'audio' if the context menu was activated on one of these types of elements.
@@ -8319,7 +8551,7 @@ default extension icon as the panel icon.
     targetElementId?: number;
   }
 
-  declare type contextMenus$_OnClickDataModifiers =
+  declare type browser$contextMenus$_OnClickDataModifiers =
     | "Shift"
     | "Alt"
     | "Command"
@@ -8330,33 +8562,35 @@ default extension icon as the panel icon.
    * ContextType to override, to allow menu items from other extensions in the menu. Currently only 'bookmark' and
    * 'tab' are supported. showDefaults cannot be used with this option.
    */
-  declare type contextMenus$_OverrideContextContext = "bookmark" | "tab";
+  declare type browser$contextMenus$_OverrideContextContext =
+    | "bookmark"
+    | "tab";
 
   /**
    * The maximum number of top level extension items that can be added to an extension action context menu. Any items
    * beyond this limit will be ignored.
    */
-  declare var contextMenus$ACTION_MENU_TOP_LEVEL_LIMIT: number;
+  declare var browser$contextMenus$ACTION_MENU_TOP_LEVEL_LIMIT: number;
 
   /**
- * Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the
- * creation callback fires (the details will be in `runtime.lastError`).
- * @param callback Called when the item has been created in the browser. If there were any problems creating the
-item, details will be available in `runtime.lastError`.
- * @returns The ID of the newly created item.
- */
-  declare function contextMenus$create(
+   * Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the
+   * creation callback fires (the details will be in `runtime.lastError`).
+   * @param callback Called when the item has been created in the browser. If there were any problems creating the
+   * item, details will be available in `runtime.lastError`.
+   * @returns The ID of the newly created item.
+   */
+  declare function browser$contextMenus$create(
     createProperties: {
       /**
        * The type of menu item. Defaults to 'normal' if not specified.
        */
-      type?: contextMenus$ItemType,
+      type?: browser$contextMenus$ItemType,
 
       /**
        * The unique ID to assign to this item. Mandatory for event pages. Cannot be the same as another ID for this
        * extension.
        */
-      runtime$id?: string,
+      id?: string,
       icons?: {
         [key: number]: string
       },
@@ -8378,13 +8612,13 @@ item, details will be available in `runtime.lastError`.
       /**
        * List of contexts this menu item will appear in. Defaults to ['page'] if not specified.
        */
-      contexts?: contextMenus$ContextType[],
+      contexts?: browser$contextMenus$ContextType[],
 
       /**
        * List of view types where the menu item will be shown. Defaults to any view, including those without a
        * viewType.
        */
-      viewTypes?: browser$extension.extension$ViewType[],
+      viewTypes?: browser$extension$ViewType[],
 
       /**
        * Whether the item is visible in the menu.
@@ -8392,15 +8626,15 @@ item, details will be available in `runtime.lastError`.
       visible?: boolean,
 
       /**
- * A function that will be called back when the menu item is clicked. Event pages cannot use this; instead,
- * they should register a listener for `contextMenus.onClicked`.
- * @param info Information about the item clicked and the context where the click happened.
- * @param tab The details of the tab where the click took place. Note: this parameter only present for
-extensions.
- */
+       * A function that will be called back when the menu item is clicked. Event pages cannot use this; instead,
+       * they should register a listener for `contextMenus.onClicked`.
+       * @param info Information about the item clicked and the context where the click happened.
+       * @param tab The details of the tab where the click took place. Note: this parameter only present for
+       * extensions.
+       */
       onclick?: (
-        info: contextMenus$OnClickData,
-        tab: browser$tabs.tabs$Tab
+        info: browser$contextMenus$OnClickData,
+        tab: browser$tabs$Tab
       ) => void,
 
       /**
@@ -8439,17 +8673,17 @@ extensions.
    * @param id The ID of the item to update.
    * @param updateProperties The properties to update. Accepts the same values as the create function.
    */
-  declare function contextMenus$update(
-    runtime$id: number | string,
+  declare function browser$contextMenus$update(
+    id: number | string,
     updateProperties: {
-      type?: contextMenus$ItemType,
+      type?: browser$contextMenus$ItemType,
       icons?: {
         [key: number]: string
       },
       title?: string,
       checked?: boolean,
-      contexts?: contextMenus$ContextType[],
-      viewTypes?: browser$extension.extension$ViewType[],
+      contexts?: browser$contextMenus$ContextType[],
+      viewTypes?: browser$extension$ViewType[],
 
       /**
        * Whether the item is visible in the menu.
@@ -8457,12 +8691,12 @@ extensions.
       visible?: boolean,
 
       /**
- * @param tab The details of the tab where the click took place. Note: this parameter only present for
-extensions.
- */
+       * @param tab The details of the tab where the click took place. Note: this parameter only present for
+       * extensions.
+       */
       onclick?: (
-        info: contextMenus$OnClickData,
-        tab: browser$tabs.tabs$Tab
+        info: browser$contextMenus$OnClickData,
+        tab: browser$tabs$Tab
       ) => void,
 
       /**
@@ -8479,20 +8713,20 @@ extensions.
    * Removes a context menu item.
    * @param menuItemId The ID of the context menu item to remove.
    */
-  declare function contextMenus$remove(
+  declare function browser$contextMenus$remove(
     menuItemId: number | string
   ): Promise<void>;
 
   /**
    * Removes all context menu items added by this extension.
    */
-  declare function contextMenus$removeAll(): Promise<void>;
+  declare function browser$contextMenus$removeAll(): Promise<void>;
 
   /**
    * Show the matching menu items from this extension instead of the default menu. This should be called during a
    * 'contextmenu' DOM event handler, and only applies to the menu that opens after this event.
    */
-  declare function contextMenus$overrideContext(contextOptions: {
+  declare function browser$contextMenus$overrideContext(contextOptions: {
     /**
      * Whether to also include default menu items in the menu.
      */
@@ -8502,7 +8736,7 @@ extensions.
      * ContextType to override, to allow menu items from other extensions in the menu. Currently only 'bookmark'
      * and 'tab' are supported. showDefaults cannot be used with this option.
      */
-    context?: contextMenus$_OverrideContextContext,
+    context?: browser$contextMenus$_OverrideContextContext,
 
     /**
      * Required when context is 'bookmark'. Requires 'bookmark' permission.
@@ -8520,36 +8754,36 @@ extensions.
    * Has no effect if the menu is hidden. Rebuilding a shown menu is an expensive operation, only invoke this method
    * when necessary.
    */
-  declare function contextMenus$refresh(): Promise<any>;
+  declare function browser$contextMenus$refresh(): Promise<any>;
 
   /**
- * Retrieve the element that was associated with a recent contextmenu event.
- * @param targetElementId The identifier of the clicked element, available as info.targetElementId in the
-menus.onShown, onClicked or onclick event.
- */
-  declare function contextMenus$getTargetElement(
+   * Retrieve the element that was associated with a recent contextmenu event.
+   * @param targetElementId The identifier of the clicked element, available as info.targetElementId in the
+   * menus.onShown, onClicked or onclick event.
+   */
+  declare function browser$contextMenus$getTargetElement(
     targetElementId: number
   ): { [key: string]: any } | void;
 
   /**
- * Fired when a context menu item is clicked.
- * @param info Information about the item clicked and the context where the click happened.
- * @param tab The details of the tab where the click took place. If the click did not take place in a tab, this
-parameter will be missing.
- */
-  declare var contextMenus$onClicked: WebExtEvent<
-    (info: contextMenus$OnClickData, tab?: browser$tabs.tabs$Tab) => void
+   * Fired when a context menu item is clicked.
+   * @param info Information about the item clicked and the context where the click happened.
+   * @param tab The details of the tab where the click took place. If the click did not take place in a tab, this
+   * parameter will be missing.
+   */
+  declare var browser$contextMenus$onClicked: WebExtEvent<
+    (info: browser$contextMenus$OnClickData, tab?: browser$tabs$Tab) => void
   >;
 
   /**
- * Fired when a menu is shown. The extension can add, modify or remove menu items and call menus.refresh() to
- * update the menu.
- * @param info Information about the context of the menu action and the created menu items. For more information
-about each property, see OnClickData. The following properties are only set if the extension has host
-permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.
- * @param tab The details of the tab where the menu was opened.
- */
-  declare var contextMenus$onShown: WebExtEvent<
+   * Fired when a menu is shown. The extension can add, modify or remove menu items and call menus.refresh() to
+   * update the menu.
+   * @param info Information about the context of the menu action and the created menu items. For more information
+   * about each property, see OnClickData. The following properties are only set if the extension has host
+   * permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.
+   * @param tab The details of the tab where the menu was opened.
+   */
+  declare var browser$contextMenus$onShown: WebExtEvent<
     (
       info: {
         /**
@@ -8560,8 +8794,8 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
         /**
          * A list of all contexts that apply to the menu.
          */
-        contexts: contextMenus$ContextType[],
-        viewType?: browser$extension.extension$ViewType,
+        contexts: browser$contextMenus$ContextType[],
+        viewType?: browser$extension$ViewType,
         editable: boolean,
         mediaType?: string,
         linkUrl?: string,
@@ -8572,34 +8806,34 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
         selectionText?: string,
         targetElementId?: number
       },
-      tab: browser$tabs.tabs$Tab
+      tab: browser$tabs$Tab
     ) => void
   >;
 
   /**
    * Fired when a menu is hidden. This event is only fired if onShown has fired before.
    */
-  declare var contextMenus$onHidden: WebExtEvent<() => void>;
+  declare var browser$contextMenus$onHidden: WebExtEvent<() => void>;
 
-  declare var npm$namespace$menus: {
-    create: typeof menus$create,
-    update: typeof menus$update,
-    remove: typeof menus$remove,
-    removeAll: typeof menus$removeAll,
-    overrideContext: typeof menus$overrideContext,
-    refresh: typeof menus$refresh,
-    getTargetElement: typeof menus$getTargetElement,
-    ACTION_MENU_TOP_LEVEL_LIMIT: typeof menus$ACTION_MENU_TOP_LEVEL_LIMIT,
-    onClicked: typeof menus$onClicked,
-    onShown: typeof menus$onShown,
-    onHidden: typeof menus$onHidden
+  declare var npm$namespace$browser$menus: {
+    create: typeof browser$menus$create,
+    update: typeof browser$menus$update,
+    remove: typeof browser$menus$remove,
+    removeAll: typeof browser$menus$removeAll,
+    overrideContext: typeof browser$menus$overrideContext,
+    refresh: typeof browser$menus$refresh,
+    getTargetElement: typeof browser$menus$getTargetElement,
+    ACTION_MENU_TOP_LEVEL_LIMIT: typeof browser$menus$ACTION_MENU_TOP_LEVEL_LIMIT,
+    onClicked: typeof browser$menus$onClicked,
+    onShown: typeof browser$menus$onShown,
+    onHidden: typeof browser$menus$onHidden
   };
 
   /**
    * The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other
    * contexts except for 'tab' and 'tools_menu'.
    */
-  declare type menus$ContextType =
+  declare type browser$menus$ContextType =
     | "all"
     | "page"
     | "frame"
@@ -8614,17 +8848,22 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     | "bookmark"
     | "browser_action"
     | "page_action"
-    | "tab";
+    | "tab"
+    | "tools_menu";
 
   /**
    * The type of menu item.
    */
-  declare type menus$ItemType = "normal" | "checkbox" | "radio" | "separator";
+  declare type browser$menus$ItemType =
+    | "normal"
+    | "checkbox"
+    | "radio"
+    | "separator";
 
   /**
    * Information sent when a context menu item is clicked.
    */
-  declare interface menus$OnClickData {
+  declare interface browser$menus$OnClickData {
     /**
      * The ID of the menu item that was clicked.
      */
@@ -8638,7 +8877,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     /**
      * The type of view where the menu is clicked. May be unset if the menu is not associated with a view.
      */
-    viewType?: browser$extension.extension$ViewType;
+    viewType?: browser$extension$ViewType;
 
     /**
      * One of 'image', 'video', or 'audio' if the context menu was activated on one of these types of elements.
@@ -8704,99 +8943,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     /**
      * An array of keyboard modifiers that were held while the menu item was clicked.
      */
-    modifiers: contextMenus$_OnClickDataModifiers[];
-
-    /**
-     * An integer value of button by which menu item was clicked.
-     */
-    button?: number;
-
-    /**
-     * An identifier of the clicked element, if any. Use menus.getTargetElement in the page to find the
-     * corresponding element.
-     */
-    targetElementId?: number;
-
-    /**
-     * The ID of the menu item that was clicked.
-     */
-    menuItemId: number | string;
-
-    /**
-     * The parent ID, if any, for the item clicked.
-     */
-    parentMenuItemId?: number | string;
-
-    /**
-     * The type of view where the menu is clicked. May be unset if the menu is not associated with a view.
-     */
-    viewType?: browser$extension.extension$ViewType;
-
-    /**
-     * One of 'image', 'video', or 'audio' if the context menu was activated on one of these types of elements.
-     */
-    mediaType?: string;
-
-    /**
-     * If the element is a link, the text of that link.
-     */
-    linkText?: string;
-
-    /**
-     * If the element is a link, the URL it points to.
-     */
-    linkUrl?: string;
-
-    /**
-     * Will be present for elements with a 'src' URL.
-     */
-    srcUrl?: string;
-
-    /**
-     * The URL of the page where the menu item was clicked. This property is not set if the click occured in a
-     * context where there is no current page, such as in a launcher context menu.
-     */
-    pageUrl?: string;
-
-    /**
-     * The id of the frame of the element where the context menu was clicked.
-     */
-    frameId?: number;
-
-    /**
-     * The URL of the frame of the element where the context menu was clicked, if it was in a frame.
-     */
-    frameUrl?: string;
-
-    /**
-     * The text for the context selection, if any.
-     */
-    selectionText?: string;
-
-    /**
-     * A flag indicating whether the element is editable (text input, textarea, etc.).
-     */
-    editable: boolean;
-
-    /**
-     * A flag indicating the state of a checkbox or radio item before it was clicked.
-     */
-    wasChecked?: boolean;
-
-    /**
-     * A flag indicating the state of a checkbox or radio item after it is clicked.
-     */
-    checked?: boolean;
-
-    /**
-     * The id of the bookmark where the context menu was clicked, if it was on a bookmark.
-     */
-    bookmarkId: string;
-
-    /**
-     * An array of keyboard modifiers that were held while the menu item was clicked.
-     */
-    modifiers: contextMenus$_OnClickDataModifiers[];
+    modifiers: browser$contextMenus$_OnClickDataModifiers[];
 
     /**
      * An integer value of button by which menu item was clicked.
@@ -8810,7 +8957,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     targetElementId?: number;
   }
 
-  declare type menus$_OnClickDataModifiers =
+  declare type browser$menus$_OnClickDataModifiers =
     | "Shift"
     | "Alt"
     | "Command"
@@ -8821,33 +8968,33 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
    * ContextType to override, to allow menu items from other extensions in the menu. Currently only 'bookmark' and
    * 'tab' are supported. showDefaults cannot be used with this option.
    */
-  declare type menus$_OverrideContextContext = "bookmark" | "tab";
+  declare type browser$menus$_OverrideContextContext = "bookmark" | "tab";
 
   /**
    * The maximum number of top level extension items that can be added to an extension action context menu. Any items
    * beyond this limit will be ignored.
    */
-  declare var menus$ACTION_MENU_TOP_LEVEL_LIMIT: number;
+  declare var browser$menus$ACTION_MENU_TOP_LEVEL_LIMIT: number;
 
   /**
- * Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the
- * creation callback fires (the details will be in `runtime.lastError`).
- * @param callback Called when the item has been created in the browser. If there were any problems creating the
-item, details will be available in `runtime.lastError`.
- * @returns The ID of the newly created item.
- */
-  declare function menus$create(
+   * Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the
+   * creation callback fires (the details will be in `runtime.lastError`).
+   * @param callback Called when the item has been created in the browser. If there were any problems creating the
+   * item, details will be available in `runtime.lastError`.
+   * @returns The ID of the newly created item.
+   */
+  declare function browser$menus$create(
     createProperties: {
       /**
        * The type of menu item. Defaults to 'normal' if not specified.
        */
-      type?: menus$ItemType,
+      type?: browser$menus$ItemType,
 
       /**
        * The unique ID to assign to this item. Mandatory for event pages. Cannot be the same as another ID for this
        * extension.
        */
-      runtime$id?: string,
+      id?: string,
       icons?: {
         [key: number]: string
       },
@@ -8869,13 +9016,13 @@ item, details will be available in `runtime.lastError`.
       /**
        * List of contexts this menu item will appear in. Defaults to ['page'] if not specified.
        */
-      contexts?: menus$ContextType[],
+      contexts?: browser$menus$ContextType[],
 
       /**
        * List of view types where the menu item will be shown. Defaults to any view, including those without a
        * viewType.
        */
-      viewTypes?: browser$extension.extension$ViewType[],
+      viewTypes?: browser$extension$ViewType[],
 
       /**
        * Whether the item is visible in the menu.
@@ -8883,13 +9030,16 @@ item, details will be available in `runtime.lastError`.
       visible?: boolean,
 
       /**
- * A function that will be called back when the menu item is clicked. Event pages cannot use this; instead,
- * they should register a listener for `contextMenus.onClicked`.
- * @param info Information about the item clicked and the context where the click happened.
- * @param tab The details of the tab where the click took place. Note: this parameter only present for
-extensions.
- */
-      onclick?: (info: menus$OnClickData, tab: browser$tabs.tabs$Tab) => void,
+       * A function that will be called back when the menu item is clicked. Event pages cannot use this; instead,
+       * they should register a listener for `contextMenus.onClicked`.
+       * @param info Information about the item clicked and the context where the click happened.
+       * @param tab The details of the tab where the click took place. Note: this parameter only present for
+       * extensions.
+       */
+      onclick?: (
+        info: browser$menus$OnClickData,
+        tab: browser$tabs$Tab
+      ) => void,
 
       /**
        * The ID of a parent menu item; this makes the item a child of a previously added item.
@@ -8927,17 +9077,17 @@ extensions.
    * @param id The ID of the item to update.
    * @param updateProperties The properties to update. Accepts the same values as the create function.
    */
-  declare function menus$update(
-    runtime$id: number | string,
+  declare function browser$menus$update(
+    id: number | string,
     updateProperties: {
-      type?: menus$ItemType,
+      type?: browser$menus$ItemType,
       icons?: {
         [key: number]: string
       },
       title?: string,
       checked?: boolean,
-      contexts?: menus$ContextType[],
-      viewTypes?: browser$extension.extension$ViewType[],
+      contexts?: browser$menus$ContextType[],
+      viewTypes?: browser$extension$ViewType[],
 
       /**
        * Whether the item is visible in the menu.
@@ -8945,10 +9095,13 @@ extensions.
       visible?: boolean,
 
       /**
- * @param tab The details of the tab where the click took place. Note: this parameter only present for
-extensions.
- */
-      onclick?: (info: menus$OnClickData, tab: browser$tabs.tabs$Tab) => void,
+       * @param tab The details of the tab where the click took place. Note: this parameter only present for
+       * extensions.
+       */
+      onclick?: (
+        info: browser$menus$OnClickData,
+        tab: browser$tabs$Tab
+      ) => void,
 
       /**
        * Note: You cannot change an item to be a child of one of its own descendants.
@@ -8964,18 +9117,20 @@ extensions.
    * Removes a context menu item.
    * @param menuItemId The ID of the context menu item to remove.
    */
-  declare function menus$remove(menuItemId: number | string): Promise<void>;
+  declare function browser$menus$remove(
+    menuItemId: number | string
+  ): Promise<void>;
 
   /**
    * Removes all context menu items added by this extension.
    */
-  declare function menus$removeAll(): Promise<void>;
+  declare function browser$menus$removeAll(): Promise<void>;
 
   /**
    * Show the matching menu items from this extension instead of the default menu. This should be called during a
    * 'contextmenu' DOM event handler, and only applies to the menu that opens after this event.
    */
-  declare function menus$overrideContext(contextOptions: {
+  declare function browser$menus$overrideContext(contextOptions: {
     /**
      * Whether to also include default menu items in the menu.
      */
@@ -8985,7 +9140,7 @@ extensions.
      * ContextType to override, to allow menu items from other extensions in the menu. Currently only 'bookmark'
      * and 'tab' are supported. showDefaults cannot be used with this option.
      */
-    context?: menus$_OverrideContextContext,
+    context?: browser$menus$_OverrideContextContext,
 
     /**
      * Required when context is 'bookmark'. Requires 'bookmark' permission.
@@ -9003,36 +9158,36 @@ extensions.
    * Has no effect if the menu is hidden. Rebuilding a shown menu is an expensive operation, only invoke this method
    * when necessary.
    */
-  declare function menus$refresh(): Promise<any>;
+  declare function browser$menus$refresh(): Promise<any>;
 
   /**
- * Retrieve the element that was associated with a recent contextmenu event.
- * @param targetElementId The identifier of the clicked element, available as info.targetElementId in the
-menus.onShown, onClicked or onclick event.
- */
-  declare function menus$getTargetElement(
+   * Retrieve the element that was associated with a recent contextmenu event.
+   * @param targetElementId The identifier of the clicked element, available as info.targetElementId in the
+   * menus.onShown, onClicked or onclick event.
+   */
+  declare function browser$menus$getTargetElement(
     targetElementId: number
   ): { [key: string]: any } | void;
 
   /**
- * Fired when a context menu item is clicked.
- * @param info Information about the item clicked and the context where the click happened.
- * @param tab The details of the tab where the click took place. If the click did not take place in a tab, this
-parameter will be missing.
- */
-  declare var menus$onClicked: WebExtEvent<
-    (info: menus$OnClickData, tab?: browser$tabs.tabs$Tab) => void
+   * Fired when a context menu item is clicked.
+   * @param info Information about the item clicked and the context where the click happened.
+   * @param tab The details of the tab where the click took place. If the click did not take place in a tab, this
+   * parameter will be missing.
+   */
+  declare var browser$menus$onClicked: WebExtEvent<
+    (info: browser$menus$OnClickData, tab?: browser$tabs$Tab) => void
   >;
 
   /**
- * Fired when a menu is shown. The extension can add, modify or remove menu items and call menus.refresh() to
- * update the menu.
- * @param info Information about the context of the menu action and the created menu items. For more information
-about each property, see OnClickData. The following properties are only set if the extension has host
-permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.
- * @param tab The details of the tab where the menu was opened.
- */
-  declare var menus$onShown: WebExtEvent<
+   * Fired when a menu is shown. The extension can add, modify or remove menu items and call menus.refresh() to
+   * update the menu.
+   * @param info Information about the context of the menu action and the created menu items. For more information
+   * about each property, see OnClickData. The following properties are only set if the extension has host
+   * permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.
+   * @param tab The details of the tab where the menu was opened.
+   */
+  declare var browser$menus$onShown: WebExtEvent<
     (
       info: {
         /**
@@ -9043,8 +9198,8 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
         /**
          * A list of all contexts that apply to the menu.
          */
-        contexts: menus$ContextType[],
-        viewType?: browser$extension.extension$ViewType,
+        contexts: browser$menus$ContextType[],
+        viewType?: browser$extension$ViewType,
         editable: boolean,
         mediaType?: string,
         linkUrl?: string,
@@ -9055,34 +9210,34 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
         selectionText?: string,
         targetElementId?: number
       },
-      tab: browser$tabs.tabs$Tab
+      tab: browser$tabs$Tab
     ) => void
   >;
 
   /**
    * Fired when a menu is hidden. This event is only fired if onShown has fired before.
    */
-  declare var menus$onHidden: WebExtEvent<() => void>;
+  declare var browser$menus$onHidden: WebExtEvent<() => void>;
 
-  declare var npm$namespace$omnibox: {
-    setDefaultSuggestion: typeof omnibox$setDefaultSuggestion,
-    onInputStarted: typeof omnibox$onInputStarted,
-    onInputChanged: typeof omnibox$onInputChanged,
-    onInputEntered: typeof omnibox$onInputEntered,
-    onInputCancelled: typeof omnibox$onInputCancelled
+  declare var npm$namespace$browser$omnibox: {
+    setDefaultSuggestion: typeof browser$omnibox$setDefaultSuggestion,
+    onInputStarted: typeof browser$omnibox$onInputStarted,
+    onInputChanged: typeof browser$omnibox$onInputChanged,
+    onInputEntered: typeof browser$omnibox$onInputEntered,
+    onInputCancelled: typeof browser$omnibox$onInputCancelled
   };
 
   /**
    * The style type.
    */
-  declare type omnibox$DescriptionStyleType = "url" | "match" | "dim";
+  declare type browser$omnibox$DescriptionStyleType = "url" | "match" | "dim";
 
   /**
    * The window disposition for the omnibox query. This is the recommended context to display results. For example,
    * if the omnibox command is to navigate to a certain URL, a disposition of 'newForegroundTab' means the navigation
    * should take place in a new selected tab.
    */
-  declare type omnibox$OnInputEnteredDisposition =
+  declare type browser$omnibox$OnInputEnteredDisposition =
     | "currentTab"
     | "newForegroundTab"
     | "newBackgroundTab";
@@ -9090,7 +9245,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * A suggest result.
    */
-  declare interface omnibox$SuggestResult {
+  declare interface browser$omnibox$SuggestResult {
     /**
      * The text that is put into the URL bar, and that is sent to the extension when the user chooses this entry.
      */
@@ -9114,7 +9269,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
       /**
        * The style type
        */
-      type: omnibox$DescriptionStyleType,
+      type: browser$omnibox$DescriptionStyleType,
       length?: number
     }>;
 
@@ -9131,7 +9286,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * A suggest result.
    */
-  declare interface omnibox$DefaultSuggestResult {
+  declare interface browser$omnibox$DefaultSuggestResult {
     /**
      * The text that is displayed in the URL dropdown.
      */
@@ -9147,7 +9302,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
       /**
        * The style type
        */
-      type: omnibox$DescriptionStyleType,
+      type: browser$omnibox$DescriptionStyleType,
       length?: number
     }>;
 
@@ -9166,73 +9321,76 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
    * displayed in the first suggestion row underneath the URL bar.
    * @param suggestion A partial SuggestResult object, without the 'content' parameter.
    */
-  declare function omnibox$setDefaultSuggestion(
-    suggestion: omnibox$DefaultSuggestResult
+  declare function browser$omnibox$setDefaultSuggestion(
+    suggestion: browser$omnibox$DefaultSuggestResult
   ): void;
 
   /**
    * User has started a keyword input session by typing the extension's keyword. This is guaranteed to be sent
    * exactly once per input session, and before any onInputChanged events.
    */
-  declare var omnibox$onInputStarted: WebExtEvent<() => void>;
+  declare var browser$omnibox$onInputStarted: WebExtEvent<() => void>;
 
   /**
    * User has changed what is typed into the omnibox.
    * @param suggest A callback passed to the onInputChanged event used for sending suggestions back to the browser.
    */
-  declare var omnibox$onInputChanged: WebExtEvent<
+  declare var browser$omnibox$onInputChanged: WebExtEvent<
     (
       text: string,
-      suggest: (suggestResults: omnibox$SuggestResult[]) => void
+      suggest: (suggestResults: browser$omnibox$SuggestResult[]) => void
     ) => void
   >;
 
   /**
    * User has accepted what is typed into the omnibox.
    */
-  declare var omnibox$onInputEntered: WebExtEvent<
-    (text: string, disposition: omnibox$OnInputEnteredDisposition) => void
+  declare var browser$omnibox$onInputEntered: WebExtEvent<
+    (
+      text: string,
+      disposition: browser$omnibox$OnInputEnteredDisposition
+    ) => void
   >;
 
   /**
    * User has ended the keyword input session without accepting the input.
    */
-  declare var omnibox$onInputCancelled: WebExtEvent<() => void>;
+  declare var browser$omnibox$onInputCancelled: WebExtEvent<() => void>;
 
-  declare var npm$namespace$pageAction: {
-    show: typeof pageAction$show,
-    hide: typeof pageAction$hide,
-    isShown: typeof pageAction$isShown,
-    setTitle: typeof pageAction$setTitle,
-    getTitle: typeof pageAction$getTitle,
-    setIcon: typeof pageAction$setIcon,
-    setPopup: typeof pageAction$setPopup,
-    getPopup: typeof pageAction$getPopup,
-    openPopup: typeof pageAction$openPopup,
-    onClicked: typeof pageAction$onClicked
+  declare var npm$namespace$browser$pageAction: {
+    show: typeof browser$pageAction$show,
+    hide: typeof browser$pageAction$hide,
+    isShown: typeof browser$pageAction$isShown,
+    setTitle: typeof browser$pageAction$setTitle,
+    getTitle: typeof browser$pageAction$getTitle,
+    setIcon: typeof browser$pageAction$setIcon,
+    setPopup: typeof browser$pageAction$setPopup,
+    getPopup: typeof browser$pageAction$getPopup,
+    openPopup: typeof browser$pageAction$openPopup,
+    onClicked: typeof browser$pageAction$onClicked
   };
 
   /**
    * Pixel data for an image. Must be an ImageData object (for example, from a `canvas` element).
    */
-  declare type pageAction$ImageDataType = { [key: string]: any };
+  declare type browser$pageAction$ImageDataType = { [key: string]: any };
 
   /**
    * Shows the page action. The page action is shown whenever the tab is selected.
    * @param tabId The id of the tab for which you want to modify the page action.
    */
-  declare function pageAction$show(tabId: number): Promise<void>;
+  declare function browser$pageAction$show(tabId: number): Promise<void>;
 
   /**
    * Hides the page action.
    * @param tabId The id of the tab for which you want to modify the page action.
    */
-  declare function pageAction$hide(tabId: number): Promise<void>;
+  declare function browser$pageAction$hide(tabId: number): Promise<void>;
 
   /**
    * Checks whether the page action is shown.
    */
-  declare function pageAction$isShown(details: {
+  declare function browser$pageAction$isShown(details: {
     /**
      * Specify the tab to get the shownness from.
      */
@@ -9242,7 +9400,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Sets the title of the page action. This is displayed in a tooltip over the page action.
    */
-  declare function pageAction$setTitle(details: {
+  declare function browser$pageAction$setTitle(details: {
     /**
      * The id of the tab for which you want to modify the page action.
      */
@@ -9257,7 +9415,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Gets the title of the page action.
    */
-  declare function pageAction$getTitle(details: {
+  declare function browser$pageAction$getTitle(details: {
     /**
      * Specify the tab to get the title from.
      */
@@ -9269,7 +9427,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
    * data from a canvas element, or as dictionary of either one of those. Either the **path** or the **imageData**
    * property must be specified.
    */
-  declare function pageAction$setIcon(details: {
+  declare function browser$pageAction$setIcon(details: {
     /**
      * The id of the tab for which you want to modify the page action.
      */
@@ -9283,9 +9441,9 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
      * Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'
      */
     imageData?:
-      | pageAction$ImageDataType
+      | browser$pageAction$ImageDataType
       | {
-          [key: number]: pageAction$ImageDataType
+          [key: number]: browser$pageAction$ImageDataType
         },
 
     /**
@@ -9305,7 +9463,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Sets the html document to be opened as a popup when the user clicks on the page action's icon.
    */
-  declare function pageAction$setPopup(details: {
+  declare function browser$pageAction$setPopup(details: {
     /**
      * The id of the tab for which you want to modify the page action.
      */
@@ -9320,7 +9478,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Gets the html document set as the popup for this page action.
    */
-  declare function pageAction$getPopup(details: {
+  declare function browser$pageAction$getPopup(details: {
     /**
      * Specify the tab to get the popup from.
      */
@@ -9330,31 +9488,33 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Opens the extension page action in the active window.
    */
-  declare function pageAction$openPopup(): Promise<void>;
+  declare function browser$pageAction$openPopup(): Promise<void>;
 
   /**
    * Fired when a page action icon is clicked. This event will not fire if the page action has a popup.
    */
-  declare var pageAction$onClicked: WebExtEvent<
-    (tab: browser$tabs.tabs$Tab) => void
+  declare var browser$pageAction$onClicked: WebExtEvent<
+    (tab: browser$tabs$Tab) => void
   >;
 
-  declare var npm$namespace$pkcs11: {
-    isModuleInstalled: typeof pkcs11$isModuleInstalled,
-    installModule: typeof pkcs11$installModule,
-    uninstallModule: typeof pkcs11$uninstallModule,
-    getModuleSlots: typeof pkcs11$getModuleSlots
+  declare var npm$namespace$browser$pkcs11: {
+    isModuleInstalled: typeof browser$pkcs11$isModuleInstalled,
+    installModule: typeof browser$pkcs11$installModule,
+    uninstallModule: typeof browser$pkcs11$uninstallModule,
+    getModuleSlots: typeof browser$pkcs11$getModuleSlots
   };
 
   /**
    * checks whether a PKCS#11 module, given by name, is installed
    */
-  declare function pkcs11$isModuleInstalled(name: string): Promise<boolean>;
+  declare function browser$pkcs11$isModuleInstalled(
+    name: string
+  ): Promise<boolean>;
 
   /**
    * Install a PKCS#11 module with a given name
    */
-  declare function pkcs11$installModule(
+  declare function browser$pkcs11$installModule(
     name: string,
     flags?: number
   ): Promise<void>;
@@ -9362,12 +9522,12 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Remove an installed PKCS#11 module from firefox
    */
-  declare function pkcs11$uninstallModule(name: string): Promise<void>;
+  declare function browser$pkcs11$uninstallModule(name: string): Promise<void>;
 
   /**
    * Enumerate a module's slots, each with their name and whether a token is present
    */
-  declare function pkcs11$getModuleSlots(
+  declare function browser$pkcs11$getModuleSlots(
     name: string
   ): Promise<{
     name: string,
@@ -9381,15 +9541,15 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     }
   }>;
 
-  declare var npm$namespace$search: {
-    get: typeof search$get,
-    search: typeof search$search
+  declare var npm$namespace$browser$search: {
+    get: typeof browser$search$get,
+    search: typeof browser$search$search
   };
 
   /**
    * An object encapsulating a search engine
    */
-  declare interface search$SearchEngine {
+  declare interface browser$search$SearchEngine {
     name: string;
     isDefault: boolean;
     alias?: string;
@@ -9399,16 +9559,16 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
   /**
    * Gets a list of search engines.
    */
-  declare function search$get(): Promise<search$SearchEngine[]>;
+  declare function browser$search$get(): Promise<browser$search$SearchEngine[]>;
 
   /**
    * Perform a search.
    */
-  declare function search$search(searchProperties: {
+  declare function browser$search$search(searchProperties: {
     /**
      * Terms to search for.
      */
-    contextualIdentities$query: string,
+    query: string,
 
     /**
      * Search engine to use. Uses the default if not specified.
@@ -9421,22 +9581,22 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     tabId?: number
   }): Promise<any>;
 
-  declare var npm$namespace$sessions: {
-    forgetClosedTab: typeof sessions$forgetClosedTab,
-    forgetClosedWindow: typeof sessions$forgetClosedWindow,
-    getRecentlyClosed: typeof sessions$getRecentlyClosed,
-    getDevices: typeof sessions$getDevices,
-    restore: typeof sessions$restore,
-    setTabValue: typeof sessions$setTabValue,
-    getTabValue: typeof sessions$getTabValue,
-    removeTabValue: typeof sessions$removeTabValue,
-    setWindowValue: typeof sessions$setWindowValue,
-    getWindowValue: typeof sessions$getWindowValue,
-    removeWindowValue: typeof sessions$removeWindowValue,
-    MAX_SESSION_RESULTS: typeof sessions$MAX_SESSION_RESULTS,
-    onChanged: typeof sessions$onChanged
+  declare var npm$namespace$browser$sessions: {
+    forgetClosedTab: typeof browser$sessions$forgetClosedTab,
+    forgetClosedWindow: typeof browser$sessions$forgetClosedWindow,
+    getRecentlyClosed: typeof browser$sessions$getRecentlyClosed,
+    getDevices: typeof browser$sessions$getDevices,
+    restore: typeof browser$sessions$restore,
+    setTabValue: typeof browser$sessions$setTabValue,
+    getTabValue: typeof browser$sessions$getTabValue,
+    removeTabValue: typeof browser$sessions$removeTabValue,
+    setWindowValue: typeof browser$sessions$setWindowValue,
+    getWindowValue: typeof browser$sessions$getWindowValue,
+    removeWindowValue: typeof browser$sessions$removeWindowValue,
+    MAX_SESSION_RESULTS: typeof browser$sessions$MAX_SESSION_RESULTS,
+    onChanged: typeof browser$sessions$onChanged
   };
-  declare interface sessions$Filter {
+  declare interface browser$sessions$Filter {
     /**
      * The maximum number of entries to be fetched in the requested list. Omit this parameter to fetch the maximum
      * number of entries (`sessions.MAX_SESSION_RESULTS`).
@@ -9444,7 +9604,7 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     maxResults?: number;
   }
 
-  declare interface sessions$Session {
+  declare interface browser$sessions$Session {
     /**
      * The time when the window or tab was closed or modified, represented in milliseconds since the epoch.
      */
@@ -9453,15 +9613,15 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
     /**
      * The `tabs.Tab`, if this entry describes a tab. Either this or `sessions.Session.window` will be set.
      */
-    tab?: browser$tabs.tabs$Tab;
+    tab?: browser$tabs$Tab;
 
     /**
      * The `windows.Window`, if this entry describes a window. Either this or `sessions.Session.tab` will be set.
      */
-    window?: browser$windows.windows$Window;
+    window?: browser$windows$Window;
   }
 
-  declare interface sessions$Device {
+  declare interface browser$sessions$Device {
     info: string;
 
     /**
@@ -9473,20 +9633,20 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
      * A list of open window sessions for the foreign device, sorted from most recently to least recently modified
      * session.
      */
-    browser$sessions: sessions$Session[];
+    sessions: browser$sessions$Session[];
   }
 
   /**
    * The maximum number of `sessions.Session` that will be included in a requested list.
    */
-  declare var sessions$MAX_SESSION_RESULTS: number;
+  declare var browser$sessions$MAX_SESSION_RESULTS: number;
 
   /**
    * Forget a recently closed tab.
    * @param windowId The windowId of the window to which the recently closed tab to be forgotten belongs.
    * @param sessionId The sessionId (closedId) of the recently closed tab to be forgotten.
    */
-  declare function sessions$forgetClosedTab(
+  declare function browser$sessions$forgetClosedTab(
     windowId: number,
     sessionId: string
   ): Promise<void>;
@@ -9495,42 +9655,42 @@ permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl,
    * Forget a recently closed window.
    * @param sessionId The sessionId (closedId) of the recently closed window to be forgotten.
    */
-  declare function sessions$forgetClosedWindow(
+  declare function browser$sessions$forgetClosedWindow(
     sessionId: string
   ): Promise<void>;
 
   /**
    * Gets the list of recently closed tabs and/or windows.
    */
-  declare function sessions$getRecentlyClosed(
-    callback: (browser$sessions: sessions$Session[]) => void
-  ): Promise<sessions$Session[]>;
+  declare function browser$sessions$getRecentlyClosed(
+    callback: (sessions: browser$sessions$Session[]) => void
+  ): Promise<browser$sessions$Session[]>;
 
   /**
    * Gets the list of recently closed tabs and/or windows.
    */
-  declare function sessions$getRecentlyClosed(
-    filter: sessions$Filter,
-    callback: (browser$sessions: sessions$Session[]) => void
-  ): Promise<sessions$Session[]>;
+  declare function browser$sessions$getRecentlyClosed(
+    filter: browser$sessions$Filter,
+    callback: (sessions: browser$sessions$Session[]) => void
+  ): Promise<browser$sessions$Session[]>;
 
   /**
    * Retrieves all devices with synced sessions.
    * @deprecated Unsupported on Firefox at this time.
    */
-  declare function sessions$getDevices(
-    filter?: sessions$Filter
-  ): Promise<sessions$Device[]>;
+  declare function browser$sessions$getDevices(
+    filter?: browser$sessions$Filter
+  ): Promise<browser$sessions$Device[]>;
 
   /**
- * Reopens a `windows.Window` or `tabs.Tab`, with an optional callback to run when the entry has been restored.
- * @param sessionId The `windows.Window.sessionId`, or `tabs.Tab.sessionId` to restore. If this parameter is not
-specified, the most recently closed session is restored.
- */
-  declare function sessions$restore(
+   * Reopens a `windows.Window` or `tabs.Tab`, with an optional callback to run when the entry has been restored.
+   * @param sessionId The `windows.Window.sessionId`, or `tabs.Tab.sessionId` to restore. If this parameter is not
+   * specified, the most recently closed session is restored.
+   */
+  declare function browser$sessions$restore(
     sessionId?: string,
-    callback?: (restoredSession: sessions$Session) => void
-  ): Promise<sessions$Session>;
+    callback?: (restoredSession: browser$sessions$Session) => void
+  ): Promise<browser$sessions$Session>;
 
   /**
    * Set a key/value pair on a given tab.
@@ -9538,7 +9698,7 @@ specified, the most recently closed session is restored.
    * @param key The key which corresponds to the value being set.
    * @param value The value being set.
    */
-  declare function sessions$setTabValue(
+  declare function browser$sessions$setTabValue(
     tabId: number,
     key: string,
     value: any
@@ -9549,7 +9709,7 @@ specified, the most recently closed session is restored.
    * @param tabId The id of the tab whose value is being retrieved from.
    * @param key The key which corresponds to the value.
    */
-  declare function sessions$getTabValue(
+  declare function browser$sessions$getTabValue(
     tabId: number,
     key: string
   ): Promise<string | { [key: string]: any } | void>;
@@ -9559,7 +9719,7 @@ specified, the most recently closed session is restored.
    * @param tabId The id of the tab whose key/value pair is being removed.
    * @param key The key which corresponds to the value.
    */
-  declare function sessions$removeTabValue(
+  declare function browser$sessions$removeTabValue(
     tabId: number,
     key: string
   ): Promise<void>;
@@ -9570,7 +9730,7 @@ specified, the most recently closed session is restored.
    * @param key The key which corresponds to the value being set.
    * @param value The value being set.
    */
-  declare function sessions$setWindowValue(
+  declare function browser$sessions$setWindowValue(
     windowId: number,
     key: string,
     value: any
@@ -9581,7 +9741,7 @@ specified, the most recently closed session is restored.
    * @param windowId The id of the window whose value is being retrieved from.
    * @param key The key which corresponds to the value.
    */
-  declare function sessions$getWindowValue(
+  declare function browser$sessions$getWindowValue(
     windowId: number,
     key: string
   ): Promise<string | { [key: string]: any } | void>;
@@ -9591,7 +9751,7 @@ specified, the most recently closed session is restored.
    * @param windowId The id of the window whose key/value pair is being removed.
    * @param key The key which corresponds to the value.
    */
-  declare function sessions$removeWindowValue(
+  declare function browser$sessions$removeWindowValue(
     windowId: number,
     key: string
   ): Promise<void>;
@@ -9599,28 +9759,28 @@ specified, the most recently closed session is restored.
   /**
    * Fired when recently closed tabs and/or windows are changed. This event does not monitor synced sessions changes.
    */
-  declare var sessions$onChanged: WebExtEvent<() => void>;
+  declare var browser$sessions$onChanged: WebExtEvent<() => void>;
 
-  declare var npm$namespace$sidebarAction: {
-    setTitle: typeof sidebarAction$setTitle,
-    getTitle: typeof sidebarAction$getTitle,
-    setIcon: typeof sidebarAction$setIcon,
-    setPanel: typeof sidebarAction$setPanel,
-    getPanel: typeof sidebarAction$getPanel,
-    open: typeof sidebarAction$open,
-    close: typeof sidebarAction$close,
-    isOpen: typeof sidebarAction$isOpen
+  declare var npm$namespace$browser$sidebarAction: {
+    setTitle: typeof browser$sidebarAction$setTitle,
+    getTitle: typeof browser$sidebarAction$getTitle,
+    setIcon: typeof browser$sidebarAction$setIcon,
+    setPanel: typeof browser$sidebarAction$setPanel,
+    getPanel: typeof browser$sidebarAction$getPanel,
+    open: typeof browser$sidebarAction$open,
+    close: typeof browser$sidebarAction$close,
+    isOpen: typeof browser$sidebarAction$isOpen
   };
 
   /**
    * Pixel data for an image. Must be an ImageData object (for example, from a `canvas` element).
    */
-  declare type sidebarAction$ImageDataType = { [key: string]: any };
+  declare type browser$sidebarAction$ImageDataType = { [key: string]: any };
 
   /**
    * Sets the title of the sidebar action. This shows up in the tooltip.
    */
-  declare function sidebarAction$setTitle(details: {
+  declare function browser$sidebarAction$setTitle(details: {
     /**
      * The string the sidebar action should display when moused over.
      */
@@ -9640,7 +9800,7 @@ specified, the most recently closed session is restored.
   /**
    * Gets the title of the sidebar action.
    */
-  declare function sidebarAction$getTitle(details: {
+  declare function browser$sidebarAction$getTitle(details: {
     /**
      * Specify the tab to get the title from. If no tab nor window is specified, the global title is returned.
      */
@@ -9657,7 +9817,7 @@ specified, the most recently closed session is restored.
    * pixel data from a canvas element, or as dictionary of either one of those. Either the **path** or the
    * **imageData** property must be specified.
    */
-  declare function sidebarAction$setIcon(details: {
+  declare function browser$sidebarAction$setIcon(details: {
     /**
      * Either an ImageData object or a dictionary {size -> ImageData} representing icon to be set. If the icon is
      * specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the
@@ -9666,9 +9826,9 @@ specified, the most recently closed session is restored.
      * Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'
      */
     imageData?:
-      | sidebarAction$ImageDataType
+      | browser$sidebarAction$ImageDataType
       | {
-          [key: number]: sidebarAction$ImageDataType
+          [key: number]: browser$sidebarAction$ImageDataType
         },
 
     /**
@@ -9694,7 +9854,7 @@ specified, the most recently closed session is restored.
   /**
    * Sets the url to the html document to be opened in the sidebar when the user clicks on the sidebar action's icon.
    */
-  declare function sidebarAction$setPanel(details: {
+  declare function browser$sidebarAction$setPanel(details: {
     /**
      * Sets the sidebar url for the tab specified by tabId. Automatically resets when the tab is closed.
      */
@@ -9714,7 +9874,7 @@ specified, the most recently closed session is restored.
   /**
    * Gets the url to the html document set as the panel for this sidebar action.
    */
-  declare function sidebarAction$getPanel(details: {
+  declare function browser$sidebarAction$getPanel(details: {
     /**
      * Specify the tab to get the panel from. If no tab nor window is specified, the global panel is returned.
      */
@@ -9729,82 +9889,82 @@ specified, the most recently closed session is restored.
   /**
    * Opens the extension sidebar in the active window.
    */
-  declare function sidebarAction$open(): Promise<void>;
+  declare function browser$sidebarAction$open(): Promise<void>;
 
   /**
    * Closes the extension sidebar in the active window if the sidebar belongs to the extension.
    */
-  declare function sidebarAction$close(): Promise<void>;
+  declare function browser$sidebarAction$close(): Promise<void>;
 
   /**
    * Checks whether the sidebar action is open.
    */
-  declare function sidebarAction$isOpen(details: {
+  declare function browser$sidebarAction$isOpen(details: {
     /**
      * Specify the window to get the openness from.
      */
     windowId?: number
   }): Promise<boolean>;
 
-  declare var npm$namespace$tabs: {
-    get: typeof tabs$get,
-    getCurrent: typeof tabs$getCurrent,
-    connect: typeof tabs$connect,
-    sendRequest: typeof tabs$sendRequest,
-    sendMessage: typeof tabs$sendMessage,
-    getSelected: typeof tabs$getSelected,
-    getAllInWindow: typeof tabs$getAllInWindow,
-    create: typeof tabs$create,
-    duplicate: typeof tabs$duplicate,
-    query: typeof tabs$query,
-    highlight: typeof tabs$highlight,
-    update: typeof tabs$update,
-    move: typeof tabs$move,
-    reload: typeof tabs$reload,
-    remove: typeof tabs$remove,
-    discard: typeof tabs$discard,
-    detectLanguage: typeof tabs$detectLanguage,
-    toggleReaderMode: typeof tabs$toggleReaderMode,
-    captureTab: typeof tabs$captureTab,
-    captureVisibleTab: typeof tabs$captureVisibleTab,
-    executeScript: typeof tabs$executeScript,
-    insertCSS: typeof tabs$insertCSS,
-    removeCSS: typeof tabs$removeCSS,
-    setZoom: typeof tabs$setZoom,
-    getZoom: typeof tabs$getZoom,
-    setZoomSettings: typeof tabs$setZoomSettings,
-    getZoomSettings: typeof tabs$getZoomSettings,
-    print: typeof tabs$print,
-    printPreview: typeof tabs$printPreview,
-    saveAsPDF: typeof tabs$saveAsPDF,
-    show: typeof tabs$show,
-    hide: typeof tabs$hide,
-    moveInSuccession: typeof tabs$moveInSuccession,
-    TAB_ID_NONE: typeof tabs$TAB_ID_NONE,
-    onCreated: typeof tabs$onCreated,
-    onUpdated: typeof tabs$onUpdated,
-    onMoved: typeof tabs$onMoved,
-    onSelectionChanged: typeof tabs$onSelectionChanged,
-    onActiveChanged: typeof tabs$onActiveChanged,
-    onActivated: typeof tabs$onActivated,
-    onHighlightChanged: typeof tabs$onHighlightChanged,
-    onHighlighted: typeof tabs$onHighlighted,
-    onDetached: typeof tabs$onDetached,
-    onAttached: typeof tabs$onAttached,
-    onRemoved: typeof tabs$onRemoved,
-    onReplaced: typeof tabs$onReplaced,
-    onZoomChange: typeof tabs$onZoomChange
+  declare var npm$namespace$browser$tabs: {
+    get: typeof browser$tabs$get,
+    getCurrent: typeof browser$tabs$getCurrent,
+    connect: typeof browser$tabs$connect,
+    sendRequest: typeof browser$tabs$sendRequest,
+    sendMessage: typeof browser$tabs$sendMessage,
+    getSelected: typeof browser$tabs$getSelected,
+    getAllInWindow: typeof browser$tabs$getAllInWindow,
+    create: typeof browser$tabs$create,
+    duplicate: typeof browser$tabs$duplicate,
+    query: typeof browser$tabs$query,
+    highlight: typeof browser$tabs$highlight,
+    update: typeof browser$tabs$update,
+    move: typeof browser$tabs$move,
+    reload: typeof browser$tabs$reload,
+    remove: typeof browser$tabs$remove,
+    discard: typeof browser$tabs$discard,
+    detectLanguage: typeof browser$tabs$detectLanguage,
+    toggleReaderMode: typeof browser$tabs$toggleReaderMode,
+    captureTab: typeof browser$tabs$captureTab,
+    captureVisibleTab: typeof browser$tabs$captureVisibleTab,
+    executeScript: typeof browser$tabs$executeScript,
+    insertCSS: typeof browser$tabs$insertCSS,
+    removeCSS: typeof browser$tabs$removeCSS,
+    setZoom: typeof browser$tabs$setZoom,
+    getZoom: typeof browser$tabs$getZoom,
+    setZoomSettings: typeof browser$tabs$setZoomSettings,
+    getZoomSettings: typeof browser$tabs$getZoomSettings,
+    print: typeof browser$tabs$print,
+    printPreview: typeof browser$tabs$printPreview,
+    saveAsPDF: typeof browser$tabs$saveAsPDF,
+    show: typeof browser$tabs$show,
+    hide: typeof browser$tabs$hide,
+    moveInSuccession: typeof browser$tabs$moveInSuccession,
+    TAB_ID_NONE: typeof browser$tabs$TAB_ID_NONE,
+    onCreated: typeof browser$tabs$onCreated,
+    onUpdated: typeof browser$tabs$onUpdated,
+    onMoved: typeof browser$tabs$onMoved,
+    onSelectionChanged: typeof browser$tabs$onSelectionChanged,
+    onActiveChanged: typeof browser$tabs$onActiveChanged,
+    onActivated: typeof browser$tabs$onActivated,
+    onHighlightChanged: typeof browser$tabs$onHighlightChanged,
+    onHighlighted: typeof browser$tabs$onHighlighted,
+    onDetached: typeof browser$tabs$onDetached,
+    onAttached: typeof browser$tabs$onAttached,
+    onRemoved: typeof browser$tabs$onRemoved,
+    onReplaced: typeof browser$tabs$onReplaced,
+    onZoomChange: typeof browser$tabs$onZoomChange
   };
 
   /**
    * An event that caused a muted state change.
    */
-  declare type tabs$MutedInfoReason = "user" | "capture" | "extension";
+  declare type browser$tabs$MutedInfoReason = "user" | "capture" | "extension";
 
   /**
    * Tab muted state and the reason for the last state change.
    */
-  declare interface tabs$MutedInfo {
+  declare interface browser$tabs$MutedInfo {
     /**
      * Whether the tab is prevented from playing sound (but hasn't necessarily recently produced sound). Equivalent
      * to whether the muted audio indicator is showing.
@@ -9814,7 +9974,7 @@ specified, the most recently closed session is restored.
     /**
      * The reason the tab was muted or unmuted. Not set if the tab's mute state has never been changed.
      */
-    reason?: tabs$MutedInfoReason;
+    reason?: browser$tabs$MutedInfoReason;
 
     /**
      * The ID of the extension that changed the muted state. Not set if an extension was not the reason the muted
@@ -9826,7 +9986,7 @@ specified, the most recently closed session is restored.
   /**
    * Tab sharing state for screen, microphone and camera.
    */
-  declare interface tabs$SharingState {
+  declare interface browser$tabs$SharingState {
     /**
      * If the tab is sharing the screen the value will be one of "Screen", "Window", or "Application", or undefined
      * if not screen sharing.
@@ -9844,13 +10004,13 @@ specified, the most recently closed session is restored.
     microphone: boolean;
   }
 
-  declare interface tabs$Tab {
+  declare interface browser$tabs$Tab {
     /**
      * The ID of the tab. Tab IDs are unique within a browser session. Under some circumstances a Tab may not be
      * assigned an ID, for example when querying foreign tabs using the `sessions` API, in which case a session ID
      * may be present. Tab ID can also be set to `tabs.TAB_ID_NONE` for apps and devtools windows.
      */
-    runtime$id?: number;
+    id?: number;
 
     /**
      * The zero-based index of the tab within its window.
@@ -9902,7 +10062,7 @@ specified, the most recently closed session is restored.
     /**
      * Current tab muted state and the reason for the last state change.
      */
-    mutedInfo?: tabs$MutedInfo;
+    mutedInfo?: browser$tabs$MutedInfo;
 
     /**
      * The URL the tab is displaying. This property is only present if the extension's manifest includes the
@@ -9975,7 +10135,7 @@ specified, the most recently closed session is restored.
     /**
      * Current tab sharing state for screen, microphone and camera.
      */
-    sharingState?: tabs$SharingState;
+    sharingState?: browser$tabs$SharingState;
 
     /**
      * Whether the tab is drawing attention.
@@ -9992,29 +10152,32 @@ specified, the most recently closed session is restored.
    * Defines how zoom changes are handled, i.e. which entity is responsible for the actual scaling of the page;
    * defaults to `automatic`.
    */
-  declare type tabs$ZoomSettingsMode = "automatic" | "manual" | "disabled";
+  declare type browser$tabs$ZoomSettingsMode =
+    | "automatic"
+    | "manual"
+    | "disabled";
 
   /**
    * Defines whether zoom changes will persist for the page's origin, or only take effect in this tab; defaults to
    * `per-origin` when in `automatic` mode, and `per-tab` otherwise.
    */
-  declare type tabs$ZoomSettingsScope = "per-origin" | "per-tab";
+  declare type browser$tabs$ZoomSettingsScope = "per-origin" | "per-tab";
 
   /**
    * Defines how zoom changes in a tab are handled and at what scope.
    */
-  declare interface tabs$ZoomSettings {
+  declare interface browser$tabs$ZoomSettings {
     /**
      * Defines how zoom changes are handled, i.e. which entity is responsible for the actual scaling of the page;
      * defaults to `automatic`.
      */
-    mode?: tabs$ZoomSettingsMode;
+    mode?: browser$tabs$ZoomSettingsMode;
 
     /**
      * Defines whether zoom changes will persist for the page's origin, or only take effect in this tab; defaults
      * to `per-origin` when in `automatic` mode, and `per-tab` otherwise.
      */
-    scope?: tabs$ZoomSettingsScope;
+    scope?: browser$tabs$ZoomSettingsScope;
 
     /**
      * Used to return the default zoom level for the current tab in calls to tabs.getZoomSettings.
@@ -10025,7 +10188,7 @@ specified, the most recently closed session is restored.
   /**
    * The page settings including: orientation, scale, background, margins, headers, footers.
    */
-  declare interface tabs$PageSettings {
+  declare interface browser$tabs$PageSettings {
     /**
      * The page size unit: 0 = inches, 1 = millimeters. Default: 0.
      */
@@ -10140,12 +10303,12 @@ specified, the most recently closed session is restored.
   /**
    * Whether the tabs have completed loading.
    */
-  declare type tabs$TabStatus = "loading" | "complete";
+  declare type browser$tabs$TabStatus = "loading" | "complete";
 
   /**
    * The type of window.
    */
-  declare type tabs$WindowType =
+  declare type browser$tabs$WindowType =
     | "normal"
     | "popup"
     | "panel"
@@ -10155,7 +10318,7 @@ specified, the most recently closed session is restored.
   /**
    * Event names supported in onUpdated.
    */
-  declare type tabs$UpdatePropertyName =
+  declare type browser$tabs$UpdatePropertyName =
     | "attention"
     | "audible"
     | "discarded"
@@ -10172,7 +10335,7 @@ specified, the most recently closed session is restored.
   /**
    * An object describing filters to apply to tabs.onUpdated events.
    */
-  declare interface tabs$UpdateFilter {
+  declare interface browser$tabs$UpdateFilter {
     /**
      * A list of URLs or URL patterns. Events that cannot match any of the URLs will be filtered out. Filtering
      * with urls requires the `"tabs"` or `"activeTab"` permission.
@@ -10182,14 +10345,14 @@ specified, the most recently closed session is restored.
     /**
      * A list of property names. Events that do not match any of the names will be filtered out.
      */
-    properties?: tabs$UpdatePropertyName[];
+    properties?: browser$tabs$UpdatePropertyName[];
     tabId?: number;
     windowId?: number;
   }
 
-  declare type tabs$_QueryScreen = "Screen" | "Window" | "Application";
+  declare type browser$tabs$_QueryScreen = "Screen" | "Window" | "Application";
 
-  declare type tabs$_TabsOnUpdatedEvent<
+  declare type browser$tabs$_TabsOnUpdatedEvent<
     T = (
       tabId: number,
       changeInfo: {
@@ -10205,11 +10368,11 @@ specified, the most recently closed session is restored.
 
         isArticle?: boolean,
 
-        mutedInfo?: tabs$MutedInfo,
+        mutedInfo?: browser$tabs$MutedInfo,
 
         pinned?: boolean,
 
-        sharingState?: tabs$SharingState,
+        sharingState?: browser$tabs$SharingState,
 
         status?: string,
 
@@ -10217,7 +10380,7 @@ specified, the most recently closed session is restored.
 
         url?: string
       },
-      tab: tabs$Tab
+      tab: browser$tabs$Tab
     ) => void
 
     /**
@@ -10270,31 +10433,34 @@ specified, the most recently closed session is restored.
      * The tab's URL if it has changed. This property is only present if the extension's manifest includes the
      * `"tabs"` permission.
      */
-  > = WebExtEventBase<(callback: T, filter?: tabs$UpdateFilter) => void, T>;
+  > = WebExtEventBase<
+    (callback: T, filter?: browser$tabs$UpdateFilter) => void,
+    T
+  >;
 
   /**
    * An ID which represents the absence of a browser tab.
    */
-  declare var tabs$TAB_ID_NONE: number;
+  declare var browser$tabs$TAB_ID_NONE: number;
 
   /**
    * Retrieves details about the specified tab.
    */
-  declare function tabs$get(tabId: number): Promise<tabs$Tab>;
+  declare function browser$tabs$get(tabId: number): Promise<browser$tabs$Tab>;
 
   /**
    * Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for
    * example: a background page or popup view).
    */
-  declare function tabs$getCurrent(): Promise<tabs$Tab>;
+  declare function browser$tabs$getCurrent(): Promise<browser$tabs$Tab>;
 
   /**
- * Connects to the content script(s) in the specified tab. The `runtime.onConnect` event is fired in each content
- * script running in the specified tab for the current extension. For more details, see Content Script Messaging.
- * @returns A port that can be used to communicate with the content scripts running in the specified tab. The
-port's `runtime.Port` event is fired if the tab closes or does not exist.
- */
-  declare function tabs$connect(
+   * Connects to the content script(s) in the specified tab. The `runtime.onConnect` event is fired in each content
+   * script running in the specified tab for the current extension. For more details, see Content Script Messaging.
+   * @returns A port that can be used to communicate with the content scripts running in the specified tab. The
+   * port's `runtime.Port` event is fired if the tab closes or does not exist.
+   */
+  declare function browser$tabs$connect(
     tabId: number,
     connectInfo?: {
       /**
@@ -10307,7 +10473,7 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
        */
       frameId?: number
     }
-  ): browser$runtime.runtime$Port;
+  ): browser$runtime$Port;
 
   /**
    * Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a
@@ -10315,9 +10481,9 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * tab for the current extension.
    * @deprecated Please use `runtime.sendMessage`.
    */
-  declare function tabs$sendRequest(
+  declare function browser$tabs$sendRequest(
     tabId: number,
-    permissions$request: any,
+    request: any,
     responseCallback?: (response: any) => void
   ): void;
 
@@ -10326,7 +10492,7 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * response is sent back. The `runtime.onMessage` event is fired in each content script running in the specified
    * tab for the current extension.
    */
-  declare function tabs$sendMessage(
+  declare function browser$tabs$sendMessage(
     tabId: number,
     message: any,
     options?: {
@@ -10342,19 +10508,23 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * @param windowId Defaults to the current window.
    * @deprecated Please use `tabs.query` `{active: true}`.
    */
-  declare function tabs$getSelected(windowId?: number): Promise<tabs$Tab>;
+  declare function browser$tabs$getSelected(
+    windowId?: number
+  ): Promise<browser$tabs$Tab>;
 
   /**
    * Gets details about all tabs in the specified window.
    * @param windowId Defaults to the current window.
    * @deprecated Please use `tabs.query` `{windowId: windowId}`.
    */
-  declare function tabs$getAllInWindow(windowId?: number): Promise<tabs$Tab[]>;
+  declare function browser$tabs$getAllInWindow(
+    windowId?: number
+  ): Promise<browser$tabs$Tab[]>;
 
   /**
    * Creates a new tab.
    */
-  declare function tabs$create(createProperties: {
+  declare function browser$tabs$create(createProperties: {
     /**
      * The window to create the new tab in. Defaults to the current window.
      */
@@ -10415,18 +10585,20 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
      * The title used for display if the tab is created in discarded mode.
      */
     title?: string
-  }): Promise<tabs$Tab | void>;
+  }): Promise<browser$tabs$Tab | void>;
 
   /**
    * Duplicates a tab.
    * @param tabId The ID of the tab which is to be duplicated.
    */
-  declare function tabs$duplicate(tabId: number): Promise<tabs$Tab | void>;
+  declare function browser$tabs$duplicate(
+    tabId: number
+  ): Promise<browser$tabs$Tab | void>;
 
   /**
    * Gets all tabs that have the specified properties, or all tabs if no properties are specified.
    */
-  declare function tabs$query(queryInfo: {
+  declare function browser$tabs$query(queryInfo: {
     /**
      * Whether the tabs are active in their windows.
      */
@@ -10470,7 +10642,7 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
     /**
      * Whether the tabs have completed loading.
      */
-    status?: tabs$TabStatus,
+    status?: browser$tabs$TabStatus,
 
     /**
      * True while the tabs are not loaded with content.
@@ -10500,7 +10672,7 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
     /**
      * The type of window the tabs are in.
      */
-    windowType?: tabs$WindowType,
+    windowType?: browser$tabs$WindowType,
 
     /**
      * The position of the tabs within their windows.
@@ -10520,7 +10692,7 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
     /**
      * True for any screen sharing, or a string to specify type of screen sharing.
      */
-    screen?: boolean | tabs$_QueryScreen,
+    screen?: boolean | browser$tabs$_QueryScreen,
 
     /**
      * True if the tab is using the camera.
@@ -10531,12 +10703,12 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
      * True if the tab is using the microphone.
      */
     microphone?: boolean
-  }): Promise<tabs$Tab[]>;
+  }): Promise<browser$tabs$Tab[]>;
 
   /**
    * Highlights the given tabs.
    */
-  declare function tabs$highlight(highlightInfo: {
+  declare function browser$tabs$highlight(highlightInfo: {
     /**
      * The window that contains the tabs.
      */
@@ -10553,13 +10725,13 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
     /**
      * One or more tab indices to highlight.
      */
-    browser$tabs: number[] | number
-  }): Promise<browser$windows.windows$Window | void>;
+    tabs: number[] | number
+  }): Promise<browser$windows$Window | void>;
 
   /**
    * Modifies the properties of a tab. Properties that are not specified in `updateProperties` are not modified.
    */
-  declare function tabs$update(updateProperties: {
+  declare function browser$tabs$update(updateProperties: {
     /**
      * A URL to navigate the tab to.
      */
@@ -10605,13 +10777,13 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
      * The ID of this tab's successor. If specified, the successor tab must be in the same window as this tab.
      */
     successorTabId?: number
-  }): Promise<tabs$Tab | void>;
+  }): Promise<browser$tabs$Tab | void>;
 
   /**
    * Modifies the properties of a tab. Properties that are not specified in `updateProperties` are not modified.
    * @param tabId Defaults to the selected tab of the current window.
    */
-  declare function tabs$update(
+  declare function browser$tabs$update(
     tabId: number,
     updateProperties: {
       /**
@@ -10660,14 +10832,14 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
        */
       successorTabId?: number
     }
-  ): Promise<tabs$Tab | void>;
+  ): Promise<browser$tabs$Tab | void>;
 
   /**
    * Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved
    * to and from normal (window.type === "normal") windows.
    * @param tabIds The tab or list of tabs to move.
    */
-  declare function tabs$move(
+  declare function browser$tabs$move(
     tabIds: number | number[],
     moveProperties: {
       /**
@@ -10680,13 +10852,13 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
        */
       index: number
     }
-  ): Promise<tabs$Tab | tabs$Tab[] | void>;
+  ): Promise<browser$tabs$Tab | browser$tabs$Tab[] | void>;
 
   /**
    * Reload a tab.
    * @param tabId The ID of the tab to reload; defaults to the selected tab of the current window.
    */
-  declare function tabs$reload(
+  declare function browser$tabs$reload(
     tabId?: number,
     reloadProperties?: {
       /**
@@ -10700,33 +10872,37 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * Closes one or more tabs.
    * @param tabIds The tab or list of tabs to close.
    */
-  declare function tabs$remove(tabIds: number | number[]): Promise<void>;
+  declare function browser$tabs$remove(
+    tabIds: number | number[]
+  ): Promise<void>;
 
   /**
    * discards one or more tabs.
    * @param tabIds The tab or list of tabs to discard.
    */
-  declare function tabs$discard(tabIds: number | number[]): Promise<void>;
+  declare function browser$tabs$discard(
+    tabIds: number | number[]
+  ): Promise<void>;
 
   /**
    * Detects the primary language of the content in a tab.
    * @param tabId Defaults to the active tab of the current window.
    */
-  declare function tabs$detectLanguage(tabId?: number): Promise<string>;
+  declare function browser$tabs$detectLanguage(tabId?: number): Promise<string>;
 
   /**
    * Toggles reader mode for the document in the tab.
    * @param tabId Defaults to the active tab of the current window.
    */
-  declare function tabs$toggleReaderMode(tabId?: number): Promise<void>;
+  declare function browser$tabs$toggleReaderMode(tabId?: number): Promise<void>;
 
   /**
    * Captures the visible area of a specified tab. You must have <all_urls> permission to use this method.
    * @param tabId The tab to capture. Defaults to the active tab of the current window.
    */
-  declare function tabs$captureTab(
+  declare function browser$tabs$captureTab(
     tabId?: number,
-    options?: browser$extensionTypes.extensionTypes$ImageDetails
+    options?: browser$extensionTypes$ImageDetails
   ): Promise<string>;
 
   /**
@@ -10734,9 +10910,9 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * permission to use this method.
    * @param windowId The target window. Defaults to the current window.
    */
-  declare function tabs$captureVisibleTab(
+  declare function browser$tabs$captureVisibleTab(
     windowId?: number,
-    options?: browser$extensionTypes.extensionTypes$ImageDetails
+    options?: browser$extensionTypes$ImageDetails
   ): Promise<string>;
 
   /**
@@ -10744,8 +10920,8 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * doc.
    * @param details Details of the script to run.
    */
-  declare function tabs$executeScript(
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+  declare function browser$tabs$executeScript(
+    details: browser$extensionTypes$InjectDetails
   ): Promise<any[] | void>;
 
   /**
@@ -10754,17 +10930,17 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * @param tabId The ID of the tab in which to run the script; defaults to the active tab of the current window.
    * @param details Details of the script to run.
    */
-  declare function tabs$executeScript(
+  declare function browser$tabs$executeScript(
     tabId: number,
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+    details: browser$extensionTypes$InjectDetails
   ): Promise<any[] | void>;
 
   /**
    * Injects CSS into a page. For details, see the programmatic injection section of the content scripts doc.
    * @param details Details of the CSS text to insert.
    */
-  declare function tabs$insertCSS(
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+  declare function browser$tabs$insertCSS(
+    details: browser$extensionTypes$InjectDetails
   ): Promise<void>;
 
   /**
@@ -10772,128 +10948,130 @@ port's `runtime.Port` event is fired if the tab closes or does not exist.
    * @param tabId The ID of the tab in which to insert the CSS; defaults to the active tab of the current window.
    * @param details Details of the CSS text to insert.
    */
-  declare function tabs$insertCSS(
+  declare function browser$tabs$insertCSS(
     tabId: number,
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+    details: browser$extensionTypes$InjectDetails
   ): Promise<void>;
 
   /**
    * Removes injected CSS from a page. For details, see the programmatic injection section of the content scripts doc.
    * @param details Details of the CSS text to remove.
    */
-  declare function tabs$removeCSS(
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+  declare function browser$tabs$removeCSS(
+    details: browser$extensionTypes$InjectDetails
   ): Promise<void>;
 
   /**
- * Removes injected CSS from a page. For details, see the programmatic injection section of the content scripts
- * doc.
- * @param tabId The ID of the tab from which to remove the injected CSS; defaults to the active tab of the current
-window.
- * @param details Details of the CSS text to remove.
- */
-  declare function tabs$removeCSS(
+   * Removes injected CSS from a page. For details, see the programmatic injection section of the content scripts
+   * doc.
+   * @param tabId The ID of the tab from which to remove the injected CSS; defaults to the active tab of the current
+   * window.
+   * @param details Details of the CSS text to remove.
+   */
+  declare function browser$tabs$removeCSS(
     tabId: number,
-    details: browser$extensionTypes.extensionTypes$InjectDetails
+    details: browser$extensionTypes$InjectDetails
   ): Promise<void>;
 
   /**
- * Zooms a specified tab.
- * @param zoomFactor The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
-Values greater than zero specify a (possibly non-default) zoom factor for the tab.
- */
-  declare function tabs$setZoom(zoomFactor: number): Promise<void>;
+   * Zooms a specified tab.
+   * @param zoomFactor The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
+   * Values greater than zero specify a (possibly non-default) zoom factor for the tab.
+   */
+  declare function browser$tabs$setZoom(zoomFactor: number): Promise<void>;
 
   /**
- * Zooms a specified tab.
- * @param tabId The ID of the tab to zoom; defaults to the active tab of the current window.
- * @param zoomFactor The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
-Values greater than zero specify a (possibly non-default) zoom factor for the tab.
- */
-  declare function tabs$setZoom(
+   * Zooms a specified tab.
+   * @param tabId The ID of the tab to zoom; defaults to the active tab of the current window.
+   * @param zoomFactor The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor.
+   * Values greater than zero specify a (possibly non-default) zoom factor for the tab.
+   */
+  declare function browser$tabs$setZoom(
     tabId: number,
     zoomFactor: number
   ): Promise<void>;
 
   /**
- * Gets the current zoom factor of a specified tab.
- * @param tabId The ID of the tab to get the current zoom factor from; defaults to the active tab of the current
-window.
- */
-  declare function tabs$getZoom(tabId?: number): Promise<number>;
+   * Gets the current zoom factor of a specified tab.
+   * @param tabId The ID of the tab to get the current zoom factor from; defaults to the active tab of the current
+   * window.
+   */
+  declare function browser$tabs$getZoom(tabId?: number): Promise<number>;
 
   /**
    * Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset
    * to defaults upon navigating the tab.
    * @param zoomSettings Defines how zoom changes are handled and at what scope.
    */
-  declare function tabs$setZoomSettings(
-    zoomSettings: tabs$ZoomSettings
+  declare function browser$tabs$setZoomSettings(
+    zoomSettings: browser$tabs$ZoomSettings
   ): Promise<void>;
 
   /**
- * Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset
- * to defaults upon navigating the tab.
- * @param tabId The ID of the tab to change the zoom settings for; defaults to the active tab of the current
-window.
- * @param zoomSettings Defines how zoom changes are handled and at what scope.
- */
-  declare function tabs$setZoomSettings(
+   * Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset
+   * to defaults upon navigating the tab.
+   * @param tabId The ID of the tab to change the zoom settings for; defaults to the active tab of the current
+   * window.
+   * @param zoomSettings Defines how zoom changes are handled and at what scope.
+   */
+  declare function browser$tabs$setZoomSettings(
     tabId: number,
-    zoomSettings: tabs$ZoomSettings
+    zoomSettings: browser$tabs$ZoomSettings
   ): Promise<void>;
 
   /**
- * Gets the current zoom settings of a specified tab.
- * @param tabId The ID of the tab to get the current zoom settings from; defaults to the active tab of the
-current window.
- */
-  declare function tabs$getZoomSettings(
+   * Gets the current zoom settings of a specified tab.
+   * @param tabId The ID of the tab to get the current zoom settings from; defaults to the active tab of the
+   * current window.
+   */
+  declare function browser$tabs$getZoomSettings(
     tabId?: number
-  ): Promise<tabs$ZoomSettings>;
+  ): Promise<browser$tabs$ZoomSettings>;
 
   /**
    * Prints page in active tab.
    */
-  declare function tabs$print(): void;
+  declare function browser$tabs$print(): void;
 
   /**
    * Shows print preview for page in active tab.
    */
-  declare function tabs$printPreview(): Promise<void>;
+  declare function browser$tabs$printPreview(): Promise<void>;
 
   /**
    * Saves page in active tab as a PDF file.
    * @param pageSettings The page settings used to save the PDF file.
    */
-  declare function tabs$saveAsPDF(
-    pageSettings: tabs$PageSettings
+  declare function browser$tabs$saveAsPDF(
+    pageSettings: browser$tabs$PageSettings
   ): Promise<string | void>;
 
   /**
    * Shows one or more tabs.
    * @param tabIds The TAB ID or list of TAB IDs to show.
    */
-  declare function tabs$show(tabIds: number | number[]): Promise<void>;
+  declare function browser$tabs$show(tabIds: number | number[]): Promise<void>;
 
   /**
    * Hides one or more tabs. The `"tabHide"` permission is required to hide tabs. Not all tabs are hidable. Returns
    * an array of hidden tabs.
    * @param tabIds The TAB ID or list of TAB IDs to hide.
    */
-  declare function tabs$hide(tabIds: number | number[]): Promise<number[]>;
+  declare function browser$tabs$hide(
+    tabIds: number | number[]
+  ): Promise<number[]>;
 
   /**
- * Removes an array of tabs from their lines of succession and prepends or appends them in a chain to another tab.
- * @param tabIds An array of tab IDs to move in the line of succession. For each tab in the array, the tab's
-current predecessors will have their successor set to the tab's current successor, and each tab will then be
-set to be the successor of the previous tab in the array. Any tabs not in the same window as the tab
-indicated by the second argument (or the first tab in the array, if no second argument) will be skipped.
- * @param tabId The ID of a tab to set as the successor of the last tab in the array, or `tabs.TAB_ID_NONE` to
-leave the last tab without a successor. If options.append is true, then this tab is made the predecessor of
-the first tab in the array instead.
- */
-  declare function tabs$moveInSuccession(
+   * Removes an array of tabs from their lines of succession and prepends or appends them in a chain to another tab.
+   * @param tabIds An array of tab IDs to move in the line of succession. For each tab in the array, the tab's
+   * current predecessors will have their successor set to the tab's current successor, and each tab will then be
+   * set to be the successor of the previous tab in the array. Any tabs not in the same window as the tab
+   * indicated by the second argument (or the first tab in the array, if no second argument) will be skipped.
+   * @param tabId The ID of a tab to set as the successor of the last tab in the array, or `tabs.TAB_ID_NONE` to
+   * leave the last tab without a successor. If options.append is true, then this tab is made the predecessor of
+   * the first tab in the array instead.
+   */
+  declare function browser$tabs$moveInSuccession(
     tabIds: number[],
     tabId?: number,
     options?: {
@@ -10918,21 +11096,23 @@ the first tab in the array instead.
    * listen to onUpdated events to be notified when a URL is set.
    * @param tab Details of the tab that was created.
    */
-  declare var tabs$onCreated: WebExtEvent<(tab: tabs$Tab) => void>;
+  declare var browser$tabs$onCreated: WebExtEvent<
+    (tab: browser$tabs$Tab) => void
+  >;
 
   /**
    * Fired when a tab is updated.
    * @param changeInfo Lists the changes to the state of the tab that was updated.
    * @param tab Gives the state of the tab that was updated.
    */
-  declare var tabs$onUpdated: tabs$_TabsOnUpdatedEvent;
+  declare var browser$tabs$onUpdated: browser$tabs$_TabsOnUpdatedEvent;
 
   /**
    * Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly
    * moved. Move events are not fired for the other tabs that must move in response. This event is not fired when a
    * tab is moved between windows. For that, see `tabs.onDetached`.
    */
-  declare var tabs$onMoved: WebExtEvent<
+  declare var browser$tabs$onMoved: WebExtEvent<
     (
       tabId: number,
       moveInfo: {
@@ -10948,7 +11128,7 @@ the first tab in the array instead.
    * @param tabId The ID of the tab that has become active.
    * @deprecated Please use `tabs.onActivated`.
    */
-  declare var tabs$onSelectionChanged: WebExtEvent<
+  declare var browser$tabs$onSelectionChanged: WebExtEvent<
     (
       tabId: number,
       selectInfo: {
@@ -10966,7 +11146,7 @@ the first tab in the array instead.
    * @param tabId The ID of the tab that has become active.
    * @deprecated Please use `tabs.onActivated`.
    */
-  declare var tabs$onActiveChanged: WebExtEvent<
+  declare var browser$tabs$onActiveChanged: WebExtEvent<
     (
       tabId: number,
       selectInfo: {
@@ -10982,7 +11162,7 @@ the first tab in the array instead.
    * Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event
    * fired, but you can listen to onUpdated events to be notified when a URL is set.
    */
-  declare var tabs$onActivated: WebExtEvent<
+  declare var browser$tabs$onActivated: WebExtEvent<
     (activeInfo: {
       /**
        * The ID of the tab that has become active.
@@ -11005,7 +11185,7 @@ the first tab in the array instead.
    * Fired when the highlighted or selected tabs in a window changes.
    * @deprecated Please use `tabs.onHighlighted`.
    */
-  declare var tabs$onHighlightChanged: WebExtEvent<
+  declare var browser$tabs$onHighlightChanged: WebExtEvent<
     (selectInfo: {
       /**
        * The window whose tabs changed.
@@ -11022,7 +11202,7 @@ the first tab in the array instead.
   /**
    * Fired when the highlighted or selected tabs in a window changes.
    */
-  declare var tabs$onHighlighted: WebExtEvent<
+  declare var browser$tabs$onHighlighted: WebExtEvent<
     (highlightInfo: {
       /**
        * The window whose tabs changed.
@@ -11039,7 +11219,7 @@ the first tab in the array instead.
   /**
    * Fired when a tab is detached from a window, for example because it is being moved between windows.
    */
-  declare var tabs$onDetached: WebExtEvent<
+  declare var browser$tabs$onDetached: WebExtEvent<
     (
       tabId: number,
       detachInfo: {
@@ -11052,7 +11232,7 @@ the first tab in the array instead.
   /**
    * Fired when a tab is attached to a window, for example because it was moved between windows.
    */
-  declare var tabs$onAttached: WebExtEvent<
+  declare var browser$tabs$onAttached: WebExtEvent<
     (
       tabId: number,
       attachInfo: {
@@ -11065,7 +11245,7 @@ the first tab in the array instead.
   /**
    * Fired when a tab is closed.
    */
-  declare var tabs$onRemoved: WebExtEvent<
+  declare var browser$tabs$onRemoved: WebExtEvent<
     (
       tabId: number,
       removeInfo: {
@@ -11085,41 +11265,42 @@ the first tab in the array instead.
   /**
    * Fired when a tab is replaced with another tab due to prerendering or instant.
    */
-  declare var tabs$onReplaced: WebExtEvent<
+  declare var browser$tabs$onReplaced: WebExtEvent<
     (addedTabId: number, removedTabId: number) => void
   >;
 
   /**
    * Fired when a tab is zoomed.
    */
-  declare var tabs$onZoomChange: WebExtEvent<
+  declare var browser$tabs$onZoomChange: WebExtEvent<
     (ZoomChangeInfo: {
       tabId: number,
       oldZoomFactor: number,
       newZoomFactor: number,
-      zoomSettings: tabs$ZoomSettings
+      zoomSettings: browser$tabs$ZoomSettings
     }) => void
   >;
 
-  declare var npm$namespace$windows: {
-    get: typeof windows$get,
-    getCurrent: typeof windows$getCurrent,
-    getLastFocused: typeof windows$getLastFocused,
-    getAll: typeof windows$getAll,
-    create: typeof windows$create,
-    update: typeof windows$update,
-    remove: typeof windows$remove,
-    WINDOW_ID_NONE: typeof windows$WINDOW_ID_NONE,
-    WINDOW_ID_CURRENT: typeof windows$WINDOW_ID_CURRENT,
-    onCreated: typeof windows$onCreated,
-    onRemoved: typeof windows$onRemoved,
-    onFocusChanged: typeof windows$onFocusChanged
+  declare var npm$namespace$browser$windows: {
+    get: typeof browser$windows$get,
+    getCurrent: typeof browser$windows$getCurrent,
+    getLastFocused: typeof browser$windows$getLastFocused,
+    getAll: typeof browser$windows$getAll,
+    create: typeof browser$windows$create,
+    update: typeof browser$windows$update,
+    remove: typeof browser$windows$remove,
+    WINDOW_ID_NONE: typeof browser$windows$WINDOW_ID_NONE,
+    WINDOW_ID_CURRENT: typeof browser$windows$WINDOW_ID_CURRENT,
+    onCreated: typeof browser$windows$onCreated,
+    onRemoved: typeof browser$windows$onRemoved,
+    onFocusChanged: typeof browser$windows$onFocusChanged
   };
 
   /**
-   * The type of window.
+   * The type of browser window this is. Under some circumstances a Window may not be assigned type property, for
+   * example when querying closed windows from the `sessions` API.
    */
-  declare type windows$WindowType =
+  declare type browser$windows$WindowType =
     | "normal"
     | "popup"
     | "panel"
@@ -11130,20 +11311,20 @@ the first tab in the array instead.
    * The state of this browser window. Under some circumstances a Window may not be assigned state property, for
    * example when querying closed windows from the `sessions` API.
    */
-  declare type windows$WindowState =
+  declare type browser$windows$WindowState =
     | "normal"
     | "minimized"
     | "maximized"
     | "fullscreen"
     | "docked";
 
-  declare interface windows$Window {
+  declare interface browser$windows$Window {
     /**
      * The ID of the window. Window IDs are unique within a browser session. Under some circumstances a Window may
      * not be assigned an ID, for example when querying windows using the `sessions` API, in which case a session
      * ID may be present.
      */
-    runtime$id?: number;
+    id?: number;
 
     /**
      * Whether the window is currently the focused window.
@@ -11177,7 +11358,7 @@ the first tab in the array instead.
     /**
      * Array of `tabs.Tab` objects representing the current tabs in the window.
      */
-    browser$tabs?: browser$tabs.tabs$Tab[];
+    tabs?: browser$tabs$Tab[];
 
     /**
      * Whether the window is incognito.
@@ -11187,12 +11368,12 @@ the first tab in the array instead.
     /**
      * The type of browser window this is.
      */
-    type?: windows$WindowType;
+    type?: browser$windows$WindowType;
 
     /**
      * The state of this browser window.
      */
-    state?: windows$WindowState;
+    state?: browser$windows$WindowState;
 
     /**
      * Whether the window is set to be always on top.
@@ -11214,7 +11395,7 @@ the first tab in the array instead.
    * Specifies what type of browser window to create. The 'panel' and 'detached_panel' types create a popup unless
    * the '--enable-panels' flag is set.
    */
-  declare type windows$CreateType =
+  declare type browser$windows$CreateType =
     | "normal"
     | "popup"
     | "panel"
@@ -11223,7 +11404,7 @@ the first tab in the array instead.
   /**
    * Specifies whether the `windows.Window` returned should contain a list of the `tabs.Tab` objects.
    */
-  declare interface windows$GetInfo {
+  declare interface browser$windows$GetInfo {
     /**
      * If true, the `windows.Window` returned will have a `tabs` property that contains a list of the `tabs.Tab`
      * objects. The `Tab` objects only contain the `url`, `title` and `favIconUrl` properties if the extension's
@@ -11235,56 +11416,56 @@ the first tab in the array instead.
      * `windowTypes` is deprecated and ignored on Firefox.
      * @deprecated `windowTypes` is deprecated and ignored on Firefox.
      */
-    windowTypes?: windows$WindowType[];
+    windowTypes?: browser$windows$WindowType[];
   }
 
   /**
    * The windowId value that represents the absence of a browser window.
    */
-  declare var windows$WINDOW_ID_NONE: number;
+  declare var browser$windows$WINDOW_ID_NONE: number;
 
   /**
    * The windowId value that represents the current window.
    */
-  declare var windows$WINDOW_ID_CURRENT: number;
+  declare var browser$windows$WINDOW_ID_CURRENT: number;
 
   /**
    * Gets details about a window.
    */
-  declare function windows$get(
+  declare function browser$windows$get(
     windowId: number,
-    getInfo?: windows$GetInfo
-  ): Promise<windows$Window>;
+    getInfo?: browser$windows$GetInfo
+  ): Promise<browser$windows$Window>;
 
   /**
    * Gets the current window.
    */
-  declare function windows$getCurrent(
-    getInfo?: windows$GetInfo
-  ): Promise<windows$Window>;
+  declare function browser$windows$getCurrent(
+    getInfo?: browser$windows$GetInfo
+  ): Promise<browser$windows$Window>;
 
   /**
    * Gets the window that was most recently focused — typically the window 'on top'.
    */
-  declare function windows$getLastFocused(
-    getInfo?: windows$GetInfo
-  ): Promise<windows$Window>;
+  declare function browser$windows$getLastFocused(
+    getInfo?: browser$windows$GetInfo
+  ): Promise<browser$windows$Window>;
 
   /**
- * Gets all windows.
- * @param getInfo Specifies properties used to filter the `windows.Window` returned and to determine whether they
-should contain a list of the `tabs.Tab` objects.
- */
-  declare function windows$getAll(getInfo?: {
+   * Gets all windows.
+   * @param getInfo Specifies properties used to filter the `windows.Window` returned and to determine whether they
+   * should contain a list of the `tabs.Tab` objects.
+   */
+  declare function browser$windows$getAll(getInfo?: {
     /**
- * If set, the `windows.Window` returned will be filtered based on its type. If unset the default filter is set
- * to `['app', 'normal', 'panel', 'popup']`, with `'app'` and `'panel'` window types limited to the extension's
- * own windows.
- * @deprecated If set, the `windows.Window` returned will be filtered based on its type. If unset the default
-filter is set to `['app', 'normal', 'panel', 'popup']`, with `'app'` and `'panel'` window types limited
-to the extension's own windows.
- */
-    windowTypes?: windows$WindowType[],
+     * If set, the `windows.Window` returned will be filtered based on its type. If unset the default filter is set
+     * to `['app', 'normal', 'panel', 'popup']`, with `'app'` and `'panel'` window types limited to the extension's
+     * own windows.
+     * @deprecated If set, the `windows.Window` returned will be filtered based on its type. If unset the default
+     * filter is set to `['app', 'normal', 'panel', 'popup']`, with `'app'` and `'panel'` window types limited
+     * to the extension's own windows.
+     */
+    windowTypes?: browser$windows$WindowType[],
 
     /**
      * If true, the `windows.Window` returned will have a `tabs` property that contains a list of the `tabs.Tab`
@@ -11292,12 +11473,12 @@ to the extension's own windows.
      * manifest file includes the `"tabs"` permission.
      */
     populate?: boolean
-  }): Promise<windows$Window[]>;
+  }): Promise<browser$windows$Window[]>;
 
   /**
    * Creates (opens) a new browser with any optional sizing, position or default URL provided.
    */
-  declare function windows$create(createData?: {
+  declare function browser$windows$create(createData?: {
     /**
      * A URL or array of URLs to open as tabs in the window. Fully-qualified URLs must include a scheme (i.e.
      * 'http://www.google.com', not 'www.google.com'). Relative URLs will be relative to the current page within
@@ -11347,13 +11528,13 @@ to the extension's own windows.
      * Specifies what type of browser window to create. The 'panel' and 'detached_panel' types create a popup
      * unless the '--enable-panels' flag is set.
      */
-    type?: windows$CreateType,
+    type?: browser$windows$CreateType,
 
     /**
      * The initial state of the window. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined
      * with 'left', 'top', 'width' or 'height'.
      */
-    state?: windows$WindowState,
+    state?: browser$windows$WindowState,
 
     /**
      * Allow scripts to close the window.
@@ -11369,13 +11550,13 @@ to the extension's own windows.
      * A string to add to the beginning of the window title.
      */
     titlePreface?: string
-  }): Promise<windows$Window | void>;
+  }): Promise<browser$windows$Window | void>;
 
   /**
    * Updates the properties of a window. Specify only the properties that you want to change; unspecified properties
    * will be left unchanged.
    */
-  declare function windows$update(
+  declare function browser$windows$update(
     windowId: number,
     updateInfo: {
       /**
@@ -11416,31 +11597,35 @@ to the extension's own windows.
        * The new state of the window. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with
        * 'left', 'top', 'width' or 'height'.
        */
-      state?: windows$WindowState,
+      state?: browser$windows$WindowState,
 
       /**
        * A string to add to the beginning of the window title.
        */
       titlePreface?: string
     }
-  ): Promise<windows$Window | void>;
+  ): Promise<browser$windows$Window | void>;
 
   /**
    * Removes (closes) a window, and all the tabs inside it.
    */
-  declare function windows$remove(windowId: number): Promise<void>;
+  declare function browser$windows$remove(windowId: number): Promise<void>;
 
   /**
    * Fired when a window is created.
    * @param window Details of the window that was created.
    */
-  declare var windows$onCreated: WebExtEvent<(window: windows$Window) => void>;
+  declare var browser$windows$onCreated: WebExtEvent<
+    (window: browser$windows$Window) => void
+  >;
 
   /**
    * Fired when a window is removed (closed).
    * @param windowId ID of the removed window.
    */
-  declare var windows$onRemoved: WebExtEvent<(windowId: number) => void>;
+  declare var browser$windows$onRemoved: WebExtEvent<
+    (windowId: number) => void
+  >;
 
   /**
    * Fired when the currently focused window changes. Will be `windows.WINDOW_ID_NONE` if all browser windows have
@@ -11448,5 +11633,7 @@ to the extension's own windows.
    * switch from one browser window to another.
    * @param windowId ID of the newly focused window.
    */
-  declare var windows$onFocusChanged: WebExtEvent<(windowId: number) => void>;
+  declare var browser$windows$onFocusChanged: WebExtEvent<
+    (windowId: number) => void
+  >;
 }
