@@ -45,5 +45,5 @@ declare module "xmldom" {
     error?: (msg: any) => any;
     fatalError?: (msg: any) => any;
   }
-  declare module.exports: typeof xmldom;
+  declare export default typeof xmldom;
 }
