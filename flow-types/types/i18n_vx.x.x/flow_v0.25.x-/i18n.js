@@ -182,8 +182,8 @@ declare function i18n$configure(options: i18n$ConfigurationOptions): void;
  * @param next - Callback to continue process
  */
 declare function i18n$init(
-  request: Express$Express$Request,
-  response: Express$Express$Response,
+  request: Express$Request,
+  response: Express$Response,
   next?: () => void
 ): void;
 
@@ -277,7 +277,7 @@ declare function i18n$setLocale(locale: string): void;
  * @param inheritance - Disables inheritance if true
  */
 declare function i18n$setLocale(
-  requestOrResponse: Express$Express$Request | Express$Express$Response,
+  requestOrResponse: Express$Request | Express$Response,
   locale: string,
   inheritance?: boolean
 ): void;
@@ -299,7 +299,7 @@ declare function i18n$setLocale(
  * @param request - The request to get locale for
  * @returns The current locale in request
  */
-declare function i18n$getLocale(request?: Express$Express$Request): string;
+declare function i18n$getLocale(request?: Express$Request): string;
 
 /**
  * Get a list with all configured locales
@@ -326,7 +326,7 @@ declare function i18n$getCatalog(locale: string): i18n$LocaleCatalog;
  * @returns The current locale catalog for the specified request
  */
 declare function i18n$getCatalog(
-  request: Express$Express$Request,
+  request: Express$Request,
   locale?: string
 ): i18n$LocaleCatalog;
 
@@ -334,9 +334,7 @@ declare function i18n$getCatalog(
  * Override the current request locale by using the query param (?locale=en)
  * @param request - The request to override locale for
  */
-declare function i18n$overrideLocaleFromQuery(
-  request?: Express$Express$Request
-): void;
+declare function i18n$overrideLocaleFromQuery(request?: Express$Request): void;
 
 /**
  * Get current i18n-node version
@@ -350,8 +348,8 @@ declare interface i18nAPI {
    * @param phraseOrOptions - The phrase to translate or options for translation
    * @returns The translated phrase
    */
-  i18n$__(
-    phraseOrOptions: string | i18n$i18n$TranslateOptions,
+  __(
+    phraseOrOptions: string | i18n$TranslateOptions,
     ...replace: string[]
   ): string;
 
@@ -361,9 +359,9 @@ declare interface i18nAPI {
    * @param replacements - An object containing replacements
    * @returns The translated phrase
    */
-  i18n$__(
-    phraseOrOptions: string | i18n$i18n$TranslateOptions,
-    replacements: i18n$i18n$Replacements
+  __(
+    phraseOrOptions: string | i18n$TranslateOptions,
+    replacements: i18n$Replacements
   ): string;
 
   /**
@@ -372,7 +370,7 @@ declare interface i18nAPI {
    * @param count - The number which allow to select from plural to singular
    * @returns The translated phrase
    */
-  i18n$__n(options: i18n$i18n$PluralOptions, count?: number): string;
+  __n(options: i18n$PluralOptions, count?: number): string;
 
   /**
    * Translate with plural condition the given phrase and count using locale configuration
@@ -381,15 +379,15 @@ declare interface i18nAPI {
    * @param count - The number which allow to select from plural to singular
    * @returns The translated phrase
    */
-  i18n$__n(singular: string, plural: string, count: number | string): string;
+  __n(singular: string, plural: string, count: number | string): string;
 
   /**
    * Translate the given phrase using locale configuration and MessageFormat
    * @param phraseOrOptions - The phrase to translate or options for translation
    * @returns The translated phrase
    */
-  i18n$__mf(
-    phraseOrOptions: string | i18n$i18n$TranslateOptions,
+  __mf(
+    phraseOrOptions: string | i18n$TranslateOptions,
     ...replace: any[]
   ): string;
 
@@ -399,9 +397,9 @@ declare interface i18nAPI {
    * @param replacements - An object containing replacements
    * @returns The translated phrase
    */
-  i18n$__mf(
-    phraseOrOptions: string | i18n$i18n$TranslateOptions,
-    replacements: i18n$i18n$Replacements
+  __mf(
+    phraseOrOptions: string | i18n$TranslateOptions,
+    replacements: i18n$Replacements
   ): string;
 
   /**
@@ -409,42 +407,42 @@ declare interface i18nAPI {
    * @param phrase - The phrase to get translations in each language
    * @returns The phrase in each language
    */
-  i18n$__l(phrase: string): string[];
+  __l(phrase: string): string[];
 
   /**
    * Returns a hashed list of translations for a given phrase in each language.
    * @param phrase - The phrase to get translations in each language
    * @returns The phrase in each language
    */
-  i18n$__h(phrase: string): i18n$i18n$HashedList[];
+  __h(phrase: string): i18n$HashedList[];
 
   /**
    * Get the current active locale
    * @returns The current locale in request
    */
-  i18n$getLocale(): string;
+  getLocale(): string;
 
   /**
    * Change the current active locale
    * @param locale - The locale to set as default
    */
-  i18n$setLocale(locale: string): void;
+  setLocale(locale: string): void;
 
   /**
    * Get the current global catalog
    * @returns The current global catalog
    */
-  i18n$getCatalog(): i18n$i18n$GlobalCatalog;
+  getCatalog(): i18n$GlobalCatalog;
 
   /**
    * Get the catalog for the given locale
    * @param locale - The locale to get catalog for
    * @returns The specified locale catalog
    */
-  i18n$getCatalog(locale?: string): i18n$i18n$LocaleCatalog;
+  getCatalog(locale?: string): i18n$LocaleCatalog;
 }
 declare module "i18n" {
-  declare module.exports: typeof i18n;
+  declare export default typeof i18n;
 }
 declare type Express$Request = {
   languages: string[],
