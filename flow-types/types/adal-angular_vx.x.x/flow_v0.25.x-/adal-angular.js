@@ -1,247 +1,25 @@
 declare module "global" {
   declare interface Window {
-    Logging: AuthenticationContext$AuthenticationContext$LoggingConfig;
+    Logging: AuthenticationContext$LoggingConfig;
   }
 }
-
-declare var npm$namespace$AuthenticationContext: {
-  inject: typeof AuthenticationContext$inject
-};
-declare function AuthenticationContext$inject(
-  config: AuthenticationContext$Options
-): AuthenticationContext;
-
-declare type AuthenticationContext$LoggingLevel = 0 | 1 | 2 | 3;
-
-declare type AuthenticationContext$RequestType =
-  | "LOGIN"
-  | "RENEW_TOKEN"
-  | "UNKNOWN";
-
-declare type AuthenticationContext$ResponseType = "id_token token" | "token";
-
-declare interface AuthenticationContext$RequestInfo {
-  /**
-   * Object comprising of fields such as id_token/error, session_state, state, e.t.c.
-   */
-  parameters: any;
-
-  /**
-   * Request type.
-   */
-  requestType: AuthenticationContext$RequestType;
-
-  /**
-   * Whether state is valid.
-   */
-  stateMatch: boolean;
-
-  /**
-   * Unique guid used to match the response with the request.
-   */
-  stateResponse: string;
-
-  /**
-   * Whether `requestType` contains `id_token`, `access_token` or error.
-   */
-  valid: boolean;
-}
-
-declare interface AuthenticationContext$UserInfo {
-  /**
-   * Username assigned from UPN or email.
-   */
-  userName: string;
-
-  /**
-   * Properties parsed from `id_token`.
-   */
-  profile: any;
-}
-
-declare type AuthenticationContext$TokenCallback = (
-  errorDesc: string | null,
-  token: string | null,
-  error: any
-) => void;
-
-declare type AuthenticationContext$UserCallback = (
-  errorDesc: string | null,
-  user: AuthenticationContext$UserInfo | null
-) => void;
-
-/**
- * Configuration options for Authentication Context
- */
-declare interface AuthenticationContext$Options {
-  /**
-   * Client ID assigned to your app by Azure Active Directory.
-   */
-  clientId: string;
-
-  /**
-   * Endpoint at which you expect to receive tokens.Defaults to `window.location.href`.
-   */
-  redirectUri?: string;
-
-  /**
-   * Azure Active Directory instance. Defaults to `https://login.microsoftonline.com/`.
-   */
-  instance?: string;
-
-  /**
-   * Your target tenant. Defaults to `common`.
-   */
-  tenant?: string;
-
-  /**
-   * Query parameters to add to the authentication request.
-   */
-  extraQueryParameter?: string;
-
-  /**
-   * Unique identifier used to map the request with the response. Defaults to RFC4122 version 4 guid (128 bits).
-   */
-  correlationId?: string;
-
-  /**
-   * User defined function of handling the navigation to Azure AD authorization endpoint in case of login.
-   */
-  displayCall?: (url: string) => void;
-
-  /**
-   * Set this to true to enable login in a popup winodow instead of a full redirect. Defaults to `false`.
-   */
-  popUp?: boolean;
-
-  /**
-   * Set this to the resource to request on login. Defaults to `clientId`.
-   */
-  loginResource?: string;
-
-  /**
-   * Set this to redirect the user to a custom login page.
-   */
-  localLoginUrl?: string;
-
-  /**
-   * Redirects to start page after login. Defaults to `true`.
-   */
-  navigateToLoginRequestUrl?: boolean;
-
-  /**
-   * Set this to redirect the user to a custom logout page.
-   */
-  logOutUri?: string;
-
-  /**
-   * Redirects the user to postLogoutRedirectUri after logout. Defaults to `redirectUri`.
-   */
-  postLogoutRedirectUri?: string;
-
-  /**
-   * Sets browser storage to either 'localStorage' or sessionStorage'. Defaults to `sessionStorage`.
-   */
-  cacheLocation?: "localStorage" | "sessionStorage";
-
-  /**
-   * Array of keywords or URIs. Adal will attach a token to outgoing requests that have these keywords or URIs.
-   */
-  endpoints?: {
-    [resource: string]: string
-  };
-
-  /**
-   * Array of keywords or URIs. Adal will not attach a token to outgoing requests that have these keywords or URIs.
-   */
-  anonymousEndpoints?: string[];
-
-  /**
-   * If the cached token is about to be expired in the expireOffsetSeconds (in seconds), Adal will renew the token instead of using the cached token. Defaults to 300 seconds.
-   */
-  expireOffsetSeconds?: number;
-
-  /**
-   * The number of milliseconds of inactivity before a token renewal response from AAD should be considered timed out. Defaults to 6 seconds.
-   */
-  loadFrameTimeout?: number;
-
-  /**
-   * Callback to be invoked when a token is acquired.
-   */
-  callback?: AuthenticationContext$TokenCallback;
-}
-
-declare interface AuthenticationContext$LoggingConfig {
-  level: AuthenticationContext$LoggingLevel;
-  log: (message: string) => void;
-  piiLoggingEnabled: boolean;
-}
-
-/**
- * Enum for storage constants
- */
-declare interface AuthenticationContext$Constants {
-  ACCESS_TOKEN: "access_token";
-  EXPIRES_IN: "expires_in";
-  ID_TOKEN: "id_token";
-  ERROR_DESCRIPTION: "error_description";
-  SESSION_STATE: "session_state";
-  STORAGE: {
-    TOKEN_KEYS: "adal.token.keys",
-    ACCESS_TOKEN_KEY: "adal.access.token.key",
-    EXPIRATION_KEY: "adal.expiration.key",
-    STATE_LOGIN: "adal.state.login",
-    STATE_RENEW: "adal.state.renew",
-    NONCE_IDTOKEN: "adal.nonce.idtoken",
-    SESSION_STATE: "adal.session.state",
-    USERNAME: "adal.username",
-    IDTOKEN: "adal.idtoken",
-    ERROR: "adal.error",
-    ERROR_DESCRIPTION: "adal.error.description",
-    LOGIN_REQUEST: "adal.login.request",
-    LOGIN_ERROR: "adal.login.error",
-    RENEW_STATUS: "adal.token.renew.status"
-  };
-  RESOURCE_DELIMETER: "|";
-  LOADFRAME_TIMEOUT: "6000";
-  TOKEN_RENEW_STATUS_CANCELED: "Canceled";
-  TOKEN_RENEW_STATUS_COMPLETED: "Completed";
-  TOKEN_RENEW_STATUS_IN_PROGRESS: "In Progress";
-  LOGGING_LEVEL: {
-    ERROR: 0,
-    WARN: 1,
-    INFO: 2,
-    VERBOSE: 3
-  };
-  LEVEL_STRING_MAP: {
-    0: "ERROR:",
-    1: "WARNING:",
-    2: "INFO:",
-    3: "VERBOSE:"
-  };
-  POPUP_WIDTH: 483;
-  POPUP_HEIGHT: 600;
-}
 declare module "adal-angular" {
-  declare module.exports: typeof AuthenticationContext;
+  declare export default typeof AuthenticationContext;
 
   declare class AuthenticationContext {
     instance: string;
-    config: AuthenticationContext$AuthenticationContext$Options;
-    callback: AuthenticationContext$AuthenticationContext$TokenCallback;
+    config: AuthenticationContext$Options;
+    callback: AuthenticationContext$TokenCallback;
     popUp: boolean;
     isAngular: boolean;
 
     /**
      * Enum for request type
      */
-    REQUEST_TYPE: AuthenticationContext$AuthenticationContext$RequestType;
-    RESPONSE_TYPE: AuthenticationContext$AuthenticationContext$ResponseType;
-    CONSTANTS: AuthenticationContext$AuthenticationContext$Constants;
-    constructor(
-      options: AuthenticationContext$AuthenticationContext$Options
-    ): this;
+    REQUEST_TYPE: AuthenticationContext$RequestType;
+    RESPONSE_TYPE: AuthenticationContext$ResponseType;
+    CONSTANTS: AuthenticationContext$Constants;
+    constructor(options: AuthenticationContext$Options): this;
 
     /**
      * Initiates the login process by redirecting the user to Azure AD authorization endpoint.
@@ -262,7 +40,7 @@ declare module "adal-angular" {
     /**
      * If user object exists, returns it. Else creates a new user object by decoding `id_token` from the cache.
      */
-    getCachedUser(): AuthenticationContext$AuthenticationContext$UserInfo;
+    getCachedUser(): AuthenticationContext$UserInfo;
 
     /**
      * Adds the passed callback to the array of callbacks for the specified resource.
@@ -273,7 +51,7 @@ declare module "adal-angular" {
     registerCallback(
       expectedState: string,
       resource: string,
-      callback: AuthenticationContext$AuthenticationContext$TokenCallback
+      callback: AuthenticationContext$TokenCallback
     ): void;
 
     /**
@@ -283,7 +61,7 @@ declare module "adal-angular" {
      */
     acquireToken(
       resource: string,
-      callback: AuthenticationContext$AuthenticationContext$TokenCallback
+      callback: AuthenticationContext$TokenCallback
     ): void;
 
     /**
@@ -297,7 +75,7 @@ declare module "adal-angular" {
       resource: string,
       extraQueryParameters: string | null | void,
       claims: string | null | void,
-      callback: AuthenticationContext$AuthenticationContext$TokenCallback
+      callback: AuthenticationContext$TokenCallback
     ): void;
 
     /**
@@ -338,9 +116,7 @@ declare module "adal-angular" {
      * Calls the passed in callback with the user object or error message related to the user.
      * @param callback The callback provided by the caller. It will be called with user or error.
      */
-    getUser(
-      callback: AuthenticationContext$AuthenticationContext$UserCallback
-    ): void;
+    getUser(callback: AuthenticationContext$UserCallback): void;
 
     /**
      * Checks if the URL fragment contains access token, id token or error description.
@@ -356,16 +132,12 @@ declare module "adal-angular" {
     /**
      * Creates a request info object from the URL fragment and returns it.
      */
-    getRequestInfo(
-      hash: string
-    ): AuthenticationContext$AuthenticationContext$RequestInfo;
+    getRequestInfo(hash: string): AuthenticationContext$RequestInfo;
 
     /**
      * Saves token or error received in the response from AAD in the cache. In case of `id_token`, it also creates the user object.
      */
-    saveTokenFromHash(
-      requestInfo: AuthenticationContext$AuthenticationContext$RequestInfo
-    ): void;
+    saveTokenFromHash(requestInfo: AuthenticationContext$RequestInfo): void;
 
     /**
      * Gets resource for given endpoint if mapping is provided with config.
@@ -386,7 +158,7 @@ declare module "adal-angular" {
      * @param error Error to log.
      */
     log(
-      level: AuthenticationContext$AuthenticationContext$LoggingLevel,
+      level: AuthenticationContext$LoggingLevel,
       message: string,
       error: any
     ): void;
@@ -440,5 +212,225 @@ declare module "adal-angular" {
      * @param message Message to log.
      */
     verbosePii(message: string): void;
+  }
+
+  declare var npm$namespace$AuthenticationContext: {
+    inject: typeof AuthenticationContext$inject
+  };
+  declare function AuthenticationContext$inject(
+    config: AuthenticationContext$Options
+  ): AuthenticationContext;
+
+  declare type AuthenticationContext$LoggingLevel = 0 | 1 | 2 | 3;
+
+  declare type AuthenticationContext$RequestType =
+    | "LOGIN"
+    | "RENEW_TOKEN"
+    | "UNKNOWN";
+
+  declare type AuthenticationContext$ResponseType = "id_token token" | "token";
+
+  declare interface AuthenticationContext$RequestInfo {
+    /**
+     * Object comprising of fields such as id_token/error, session_state, state, e.t.c.
+     */
+    parameters: any;
+
+    /**
+     * Request type.
+     */
+    requestType: AuthenticationContext$RequestType;
+
+    /**
+     * Whether state is valid.
+     */
+    stateMatch: boolean;
+
+    /**
+     * Unique guid used to match the response with the request.
+     */
+    stateResponse: string;
+
+    /**
+     * Whether `requestType` contains `id_token`, `access_token` or error.
+     */
+    valid: boolean;
+  }
+
+  declare interface AuthenticationContext$UserInfo {
+    /**
+     * Username assigned from UPN or email.
+     */
+    userName: string;
+
+    /**
+     * Properties parsed from `id_token`.
+     */
+    profile: any;
+  }
+
+  declare type AuthenticationContext$TokenCallback = (
+    errorDesc: string | null,
+    token: string | null,
+    error: any
+  ) => void;
+
+  declare type AuthenticationContext$UserCallback = (
+    errorDesc: string | null,
+    user: AuthenticationContext$UserInfo | null
+  ) => void;
+
+  /**
+   * Configuration options for Authentication Context
+   */
+  declare interface AuthenticationContext$Options {
+    /**
+     * Client ID assigned to your app by Azure Active Directory.
+     */
+    clientId: string;
+
+    /**
+     * Endpoint at which you expect to receive tokens.Defaults to `window.location.href`.
+     */
+    redirectUri?: string;
+
+    /**
+     * Azure Active Directory instance. Defaults to `https://login.microsoftonline.com/`.
+     */
+    instance?: string;
+
+    /**
+     * Your target tenant. Defaults to `common`.
+     */
+    tenant?: string;
+
+    /**
+     * Query parameters to add to the authentication request.
+     */
+    extraQueryParameter?: string;
+
+    /**
+     * Unique identifier used to map the request with the response. Defaults to RFC4122 version 4 guid (128 bits).
+     */
+    correlationId?: string;
+
+    /**
+     * User defined function of handling the navigation to Azure AD authorization endpoint in case of login.
+     */
+    displayCall?: (url: string) => void;
+
+    /**
+     * Set this to true to enable login in a popup winodow instead of a full redirect. Defaults to `false`.
+     */
+    popUp?: boolean;
+
+    /**
+     * Set this to the resource to request on login. Defaults to `clientId`.
+     */
+    loginResource?: string;
+
+    /**
+     * Set this to redirect the user to a custom login page.
+     */
+    localLoginUrl?: string;
+
+    /**
+     * Redirects to start page after login. Defaults to `true`.
+     */
+    navigateToLoginRequestUrl?: boolean;
+
+    /**
+     * Set this to redirect the user to a custom logout page.
+     */
+    logOutUri?: string;
+
+    /**
+     * Redirects the user to postLogoutRedirectUri after logout. Defaults to `redirectUri`.
+     */
+    postLogoutRedirectUri?: string;
+
+    /**
+     * Sets browser storage to either 'localStorage' or sessionStorage'. Defaults to `sessionStorage`.
+     */
+    cacheLocation?: "localStorage" | "sessionStorage";
+
+    /**
+     * Array of keywords or URIs. Adal will attach a token to outgoing requests that have these keywords or URIs.
+     */
+    endpoints?: {
+      [resource: string]: string
+    };
+
+    /**
+     * Array of keywords or URIs. Adal will not attach a token to outgoing requests that have these keywords or URIs.
+     */
+    anonymousEndpoints?: string[];
+
+    /**
+     * If the cached token is about to be expired in the expireOffsetSeconds (in seconds), Adal will renew the token instead of using the cached token. Defaults to 300 seconds.
+     */
+    expireOffsetSeconds?: number;
+
+    /**
+     * The number of milliseconds of inactivity before a token renewal response from AAD should be considered timed out. Defaults to 6 seconds.
+     */
+    loadFrameTimeout?: number;
+
+    /**
+     * Callback to be invoked when a token is acquired.
+     */
+    callback?: AuthenticationContext$TokenCallback;
+  }
+
+  declare interface AuthenticationContext$LoggingConfig {
+    level: AuthenticationContext$LoggingLevel;
+    log: (message: string) => void;
+    piiLoggingEnabled: boolean;
+  }
+
+  /**
+   * Enum for storage constants
+   */
+  declare interface AuthenticationContext$Constants {
+    ACCESS_TOKEN: "access_token";
+    EXPIRES_IN: "expires_in";
+    ID_TOKEN: "id_token";
+    ERROR_DESCRIPTION: "error_description";
+    SESSION_STATE: "session_state";
+    STORAGE: {
+      TOKEN_KEYS: "adal.token.keys",
+      ACCESS_TOKEN_KEY: "adal.access.token.key",
+      EXPIRATION_KEY: "adal.expiration.key",
+      STATE_LOGIN: "adal.state.login",
+      STATE_RENEW: "adal.state.renew",
+      NONCE_IDTOKEN: "adal.nonce.idtoken",
+      SESSION_STATE: "adal.session.state",
+      USERNAME: "adal.username",
+      IDTOKEN: "adal.idtoken",
+      ERROR: "adal.error",
+      ERROR_DESCRIPTION: "adal.error.description",
+      LOGIN_REQUEST: "adal.login.request",
+      LOGIN_ERROR: "adal.login.error",
+      RENEW_STATUS: "adal.token.renew.status"
+    };
+    RESOURCE_DELIMETER: "|";
+    LOADFRAME_TIMEOUT: "6000";
+    TOKEN_RENEW_STATUS_CANCELED: "Canceled";
+    TOKEN_RENEW_STATUS_COMPLETED: "Completed";
+    TOKEN_RENEW_STATUS_IN_PROGRESS: "In Progress";
+    LOGGING_LEVEL: {
+      ERROR: 0,
+      WARN: 1,
+      INFO: 2,
+      VERBOSE: 3
+    };
+    LEVEL_STRING_MAP: {
+      0: "ERROR:",
+      1: "WARNING:",
+      2: "INFO:",
+      3: "VERBOSE:"
+    };
+    POPUP_WIDTH: 483;
+    POPUP_HEIGHT: 600;
   }
 }
