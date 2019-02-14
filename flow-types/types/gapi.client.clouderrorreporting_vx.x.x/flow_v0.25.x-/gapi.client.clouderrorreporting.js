@@ -1,26 +1,30 @@
 declare module "gapi.client.clouderrorreporting" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Stackdriver Error Reporting API v1beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouderrorreporting",
     version: "v1beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "clouderrorreporting",
     version: "v1beta1",
     callback: () => any
   ): void;
 
-  declare var client$projects: clouderrorreporting$clouderrorreporting$ProjectsResource;
+  declare var gapi$client$projects: clouderrorreporting$ProjectsResource;
 
-  declare interface clouderrorreporting$ErrorContext {
+  declare interface gapi$client$clouderrorreporting$ErrorContext {
     /**
      * The HTTP request which was processed when the error was
      * triggered.
@@ -55,11 +59,11 @@ declare module "gapi.client.clouderrorreporting" {
     user?: string;
   }
 
-  declare interface clouderrorreporting$ErrorEvent {
+  declare interface gapi$client$clouderrorreporting$ErrorEvent {
     /**
      * Data about the context in which the error occurred.
      */
-    context?: clouderrorreporting$ErrorContext;
+    context?: gapi$client$clouderrorreporting$ErrorContext;
 
     /**
      * Time when the event occurred as provided in the error report.
@@ -79,7 +83,7 @@ declare module "gapi.client.clouderrorreporting" {
     serviceContext?: clouderrorreporting$ServiceContext;
   }
 
-  declare interface clouderrorreporting$ErrorGroup {
+  declare interface gapi$client$clouderrorreporting$ErrorGroup {
     /**
      * Group IDs are unique for a given project. If the same kind of error
      * occurs in different service contexts, it will receive the same group ID.
@@ -98,7 +102,7 @@ declare module "gapi.client.clouderrorreporting" {
     trackingIssues?: clouderrorreporting$TrackingIssue[];
   }
 
-  declare interface clouderrorreporting$ErrorGroupStats {
+  declare interface gapi$client$clouderrorreporting$ErrorGroupStats {
     /**
      * Service contexts with a non-zero error count for the given filter
      * criteria. This list can be truncated if multiple services are affected.
@@ -138,7 +142,7 @@ declare module "gapi.client.clouderrorreporting" {
     /**
      * Group data that is independent of the filter criteria.
      */
-    group?: clouderrorreporting$ErrorGroup;
+    group?: gapi$client$clouderrorreporting$ErrorGroup;
 
     /**
      * Approximate last occurrence that was ever seen for this group and
@@ -160,7 +164,7 @@ declare module "gapi.client.clouderrorreporting" {
      * to each other such that showing an arbitrary representative provides
      * insight into the characteristics of the group as a whole.
      */
-    representative?: clouderrorreporting$ErrorEvent;
+    representative?: gapi$client$clouderrorreporting$ErrorEvent;
 
     /**
      * Approximate number of occurrences over time.
@@ -173,7 +177,7 @@ declare module "gapi.client.clouderrorreporting" {
     timedCounts?: clouderrorreporting$TimedCount[];
   }
 
-  declare interface clouderrorreporting$HttpRequestContext {
+  declare interface gapi$client$clouderrorreporting$HttpRequestContext {
     /**
      * The type of HTTP request, such as `GET`, `POST`, etc.
      */
@@ -208,11 +212,11 @@ declare module "gapi.client.clouderrorreporting" {
     userAgent?: string;
   }
 
-  declare interface clouderrorreporting$ListEventsResponse {
+  declare interface gapi$client$clouderrorreporting$ListEventsResponse {
     /**
      * The error events which match the given request.
      */
-    errorEvents?: clouderrorreporting$ErrorEvent[];
+    errorEvents?: gapi$client$clouderrorreporting$ErrorEvent[];
 
     /**
      * If non-empty, more results are available.
@@ -227,11 +231,11 @@ declare module "gapi.client.clouderrorreporting" {
     timeRangeBegin?: string;
   }
 
-  declare interface clouderrorreporting$ListGroupStatsResponse {
+  declare interface gapi$client$clouderrorreporting$ListGroupStatsResponse {
     /**
      * The error group stats which match the given request.
      */
-    errorGroupStats?: clouderrorreporting$ErrorGroupStats[];
+    errorGroupStats?: gapi$client$clouderrorreporting$ErrorGroupStats[];
 
     /**
      * If non-empty, more results are available.
@@ -249,11 +253,11 @@ declare module "gapi.client.clouderrorreporting" {
     timeRangeBegin?: string;
   }
 
-  declare interface clouderrorreporting$ReportedErrorEvent {
+  declare interface gapi$client$clouderrorreporting$ReportedErrorEvent {
     /**
      * [Optional] A description of the context in which the error occurred.
      */
-    context?: clouderrorreporting$ErrorContext;
+    context?: gapi$client$clouderrorreporting$ErrorContext;
 
     /**
      * [Optional] Time when the event occurred.
@@ -290,7 +294,7 @@ declare module "gapi.client.clouderrorreporting" {
     serviceContext?: clouderrorreporting$ServiceContext;
   }
 
-  declare interface clouderrorreporting$ServiceContext {
+  declare interface gapi$client$clouderrorreporting$ServiceContext {
     /**
      * Type of the MonitoredResource. List of possible values:
      * https://cloud.google.com/monitoring/api/resources
@@ -320,7 +324,7 @@ declare module "gapi.client.clouderrorreporting" {
     version?: string;
   }
 
-  declare interface clouderrorreporting$SourceLocation {
+  declare interface gapi$client$clouderrorreporting$SourceLocation {
     /**
      * The source code filename, which can include a truncated relative
      * path, or a full path from a production machine.
@@ -340,7 +344,7 @@ declare module "gapi.client.clouderrorreporting" {
     lineNumber?: number;
   }
 
-  declare interface clouderrorreporting$SourceReference {
+  declare interface gapi$client$clouderrorreporting$SourceReference {
     /**
      * Optional. A URI string identifying the repository.
      * Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
@@ -354,7 +358,7 @@ declare module "gapi.client.clouderrorreporting" {
     revisionId?: string;
   }
 
-  declare interface clouderrorreporting$TimedCount {
+  declare interface gapi$client$clouderrorreporting$TimedCount {
     /**
      * Approximate number of occurrences in the given time period.
      */
@@ -371,7 +375,7 @@ declare module "gapi.client.clouderrorreporting" {
     startTime?: string;
   }
 
-  declare interface clouderrorreporting$TrackingIssue {
+  declare interface gapi$client$clouderrorreporting$TrackingIssue {
     /**
      * A URL pointing to a related entry in an issue tracking system.
      * Example: https://github.com/user/project/issues/4
@@ -379,7 +383,7 @@ declare module "gapi.client.clouderrorreporting" {
     url?: string;
   }
 
-  declare interface clouderrorreporting$EventsResource {
+  declare interface gapi$client$clouderrorreporting$EventsResource {
     /**
      * Lists the specified events.
      */
@@ -495,7 +499,7 @@ declare module "gapi.client.clouderrorreporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouderrorreporting$ListEventsResponse>;
+    }): Request<gapi$client$clouderrorreporting$ListEventsResponse>;
 
     /**
      * Report an individual error event.
@@ -583,7 +587,7 @@ declare module "gapi.client.clouderrorreporting" {
     }): Request<{}>;
   }
 
-  declare interface clouderrorreporting$GroupStatsResource {
+  declare interface gapi$client$clouderrorreporting$GroupStatsResource {
     /**
      * Lists the specified groups.
      */
@@ -727,10 +731,10 @@ declare module "gapi.client.clouderrorreporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouderrorreporting$ListGroupStatsResponse>;
+    }): Request<gapi$client$clouderrorreporting$ListGroupStatsResponse>;
   }
 
-  declare interface clouderrorreporting$GroupsResource {
+  declare interface gapi$client$clouderrorreporting$GroupsResource {
     /**
      * Get the specified group.
      */
@@ -811,7 +815,7 @@ declare module "gapi.client.clouderrorreporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouderrorreporting$ErrorGroup>;
+    }): Request<gapi$client$clouderrorreporting$ErrorGroup>;
 
     /**
      * Replace the data for the specified group.
@@ -888,10 +892,10 @@ declare module "gapi.client.clouderrorreporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<clouderrorreporting$ErrorGroup>;
+    }): Request<gapi$client$clouderrorreporting$ErrorGroup>;
   }
 
-  declare interface clouderrorreporting$ProjectsResource {
+  declare interface gapi$client$clouderrorreporting$ProjectsResource {
     /**
      * Deletes all error events of a given project.
      */
@@ -970,8 +974,8 @@ declare module "gapi.client.clouderrorreporting" {
        */
       upload_protocol?: string
     }): Request<{}>;
-    events: clouderrorreporting$EventsResource;
-    groupStats: clouderrorreporting$GroupStatsResource;
-    groups: clouderrorreporting$GroupsResource;
+    events: gapi$client$clouderrorreporting$EventsResource;
+    groupStats: gapi$client$clouderrorreporting$GroupStatsResource;
+    groups: gapi$client$clouderrorreporting$GroupsResource;
   }
 }
