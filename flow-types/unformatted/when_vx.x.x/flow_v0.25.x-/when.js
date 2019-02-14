@@ -1,9 +1,8 @@
-declare function When(): When$When$Promise<void>
-declare function When<T>(
-promiseOrValue: T | When$When$Promise<T> | When$When$Thenable<T>): When$When$Promise<T>
+declare function When(): When$Promise<void>
+declare function When<T>(promiseOrValue: T | When$Promise<T> | When$Thenable<T>): When$Promise<T>
 declare function When<T, U>(
-promiseOrValue: T | When$When$Promise<T> | When$When$Thenable<T>,
-transform: (val: T) => U): When$When$Promise<U>
+promiseOrValue: T | When$Promise<T> | When$Thenable<T>,
+transform: (val: T) => U): When$Promise<U>
 
       declare var npm$namespace$When: {
         attempt: typeof When$attempt,
@@ -21,80 +20,99 @@ defer: typeof When$defer,
 join: typeof When$join,
 resolve: typeof When$resolve,
         
+        
+        
+        
       }
-declare module '_' {
-        declare interface Fn0<T> {
+declare interface When$_$Fn0<T> {
 (): T
 } 
-	declare interface Fn1<A1, T> {
+
+declare interface When$_$Fn1<A1, T> {
 (a1: A1): T
 } 
-	declare interface Fn2<A1, A2, T> {
+
+declare interface When$_$Fn2<A1, A2, T> {
 (a1: A1, a2: A2): T
 } 
-	declare interface Fn3<A1, A2, A3, T> {
+
+declare interface When$_$Fn3<A1, A2, A3, T> {
 (a1: A1, a2: A2, a3: A3): T
 } 
-	declare interface Fn4<A1, A2, A3, A4, T> {
+
+declare interface When$_$Fn4<A1, A2, A3, A4, T> {
 (a1: A1, a2: A2, a3: A3, a4: A4): T
 } 
-	declare interface Fn5<A1, A2, A3, A4, A5, T> {
+
+declare interface When$_$Fn5<A1, A2, A3, A4, A5, T> {
 (a1: A1, a2: A2, a3: A3, a4: A4, a5: A5): T
 } 
-	declare interface Fn6<A1, A2, A3, A4, A5, A6, T> {
+
+declare interface When$_$Fn6<A1, A2, A3, A4, A5, A6, T> {
 (a1: A1, a2: A2, a3: A3, a4: A4, a5: A5, a6: A6): T
 } 
-	declare type LiftedFn0<T> = {} & Fn0<When$Promise<T>>
 
-	declare type LiftedFn1<A1, T> = {} & Fn1<A1 | When$Promise<A1>, When$Promise<T>>
+declare type When$_$LiftedFn0<T> = {} & When$_$Fn0<When$Promise<T>>
 
-	declare type LiftedFn2<A1, A2, T> = {} & Fn2<A1 | When$Promise<A1>, A2 | When$Promise<A2>, When$Promise<T>>
 
-	declare type LiftedFn3<A1, A2, A3, T> = {} & Fn3<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, When$Promise<T>>
+declare type When$_$LiftedFn1<A1, T> = {} & When$_$Fn1<A1 | When$Promise<A1>, When$Promise<T>>
 
-	declare type LiftedFn4<A1, A2, A3, A4, T> = {} & Fn4<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, A4 | When$Promise<A4>, When$Promise<T>>
 
-	declare type LiftedFn5<A1, A2, A3, A4, A5, T> = {} & Fn5<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, A4 | When$Promise<A4>, A5 | When$Promise<A5>, When$Promise<T>>
+declare type When$_$LiftedFn2<A1, A2, T> = {} & When$_$Fn2<A1 | When$Promise<A1>, A2 | When$Promise<A2>, When$Promise<T>>
 
-	declare interface NodeCallback<T> {
+
+declare type When$_$LiftedFn3<A1, A2, A3, T> = {} & When$_$Fn3<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, When$Promise<T>>
+
+
+declare type When$_$LiftedFn4<A1, A2, A3, A4, T> = {} & When$_$Fn4<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, A4 | When$Promise<A4>, When$Promise<T>>
+
+
+declare type When$_$LiftedFn5<A1, A2, A3, A4, A5, T> = {} & When$_$Fn5<A1 | When$Promise<A1>, A2 | When$Promise<A2>, A3 | When$Promise<A3>, A4 | When$Promise<A4>, A5 | When$Promise<A5>, When$Promise<T>>
+
+
+declare interface When$_$NodeCallback<T> {
 (err: any, result: T): void
 } 
-	declare type NodeFn0<T> = {} & _.Fn1<NodeCallback<T>, void>
 
-	declare type NodeFn1<A1, T> = {} & _.Fn2<A1, NodeCallback<T>, void>
-
-	declare type NodeFn2<A1, A2, T> = {} & _.Fn3<A1, A2, NodeCallback<T>, void>
-
-	declare type NodeFn3<A1, A2, A3, T> = {} & _.Fn4<A1, A2, A3, NodeCallback<T>, void>
-
-	declare type NodeFn4<A1, A2, A3, A4, T> = {} & _.Fn5<A1, A2, A3, A4, NodeCallback<T>, void>
-
-	declare type NodeFn5<A1, A2, A3, A4, A5, T> = {} & _.Fn6<A1, A2, A3, A4, A5, NodeCallback<T>, void>
-
-    }
+declare type When$_$NodeFn0<T> = {} & When$_$Fn1<When$_$NodeCallback<T>, void>
 
 
-declare function When$attempt<T>(f: When$_.Fn0<T>): When$Promise<T>
+declare type When$_$NodeFn1<A1, T> = {} & When$_$Fn2<A1, When$_$NodeCallback<T>, void>
 
 
-declare function When$attempt<A1, T>(f: When$_.Fn1<A1, T>, arg1: A1 | When$Promise<A1>): When$Promise<T>
+declare type When$_$NodeFn2<A1, A2, T> = {} & When$_$Fn3<A1, A2, When$_$NodeCallback<T>, void>
+
+
+declare type When$_$NodeFn3<A1, A2, A3, T> = {} & When$_$Fn4<A1, A2, A3, When$_$NodeCallback<T>, void>
+
+
+declare type When$_$NodeFn4<A1, A2, A3, A4, T> = {} & When$_$Fn5<A1, A2, A3, A4, When$_$NodeCallback<T>, void>
+
+
+declare type When$_$NodeFn5<A1, A2, A3, A4, A5, T> = {} & When$_$Fn6<A1, A2, A3, A4, A5, When$_$NodeCallback<T>, void>
+
+
+declare function When$attempt<T>(f: When$_$Fn0<T>): When$Promise<T>
+
+
+declare function When$attempt<A1, T>(f: When$_$Fn1<A1, T>, arg1: A1 | When$Promise<A1>): When$Promise<T>
 
 
 declare function When$attempt<A1, A2, T>(
-f: When$_.Fn2<A1, A2, T>,
+f: When$_$Fn2<A1, A2, T>,
 arg1: A1 | When$Promise<A1>,
 arg2: A2 | When$Promise<A2>): When$Promise<T>
 
 
 declare function When$attempt<A1, A2, A3, T>(
-f: When$_.Fn3<A1, A2, A3, T>,
+f: When$_$Fn3<A1, A2, A3, T>,
 arg1: A1 | When$Promise<A1>,
 arg2: A2 | When$Promise<A2>,
 arg3: A3 | When$Promise<A3>): When$Promise<T>
 
 
 declare function When$attempt<A1, A2, A3, A4, T>(
-f: When$_.Fn4<A1, A2, A3, A4, T>,
+f: When$_$Fn4<A1, A2, A3, A4, T>,
 arg1: A1 | When$Promise<A1>,
 arg2: A2 | When$Promise<A2>,
 arg3: A3 | When$Promise<A3>,
@@ -102,7 +120,7 @@ arg4: A4 | When$Promise<A4>): When$Promise<T>
 
 
 declare function When$attempt<A1, A2, A3, A4, A5, T>(
-f: When$_.Fn5<A1, A2, A3, A4, A5, T>,
+f: When$_$Fn5<A1, A2, A3, A4, A5, T>,
 arg1: A1 | When$Promise<A1>,
 arg2: A2 | When$Promise<A2>,
 arg3: A3 | When$Promise<A3>,
@@ -110,28 +128,28 @@ arg4: A4 | When$Promise<A4>,
 arg5: A5 | When$Promise<A5>): When$Promise<T>
 
 
-declare function When$lift<T>(f: When$_.Fn0<T>): When$_.LiftedFn0<T>
+declare function When$lift<T>(f: When$_$Fn0<T>): When$_$LiftedFn0<T>
 
 
-declare function When$lift<A1, T>(f: When$_.Fn1<A1, T>): When$_.LiftedFn1<A1, T>
+declare function When$lift<A1, T>(f: When$_$Fn1<A1, T>): When$_$LiftedFn1<A1, T>
 
 
-declare function When$lift<A1, A2, T>(f: When$_.Fn2<A1, A2, T>): When$_.LiftedFn2<A1, A2, T>
+declare function When$lift<A1, A2, T>(f: When$_$Fn2<A1, A2, T>): When$_$LiftedFn2<A1, A2, T>
 
 
-declare function When$lift<A1, A2, A3, T>(f: When$_.Fn3<A1, A2, A3, T>): When$_.LiftedFn3<A1, A2, A3, T>
+declare function When$lift<A1, A2, A3, T>(f: When$_$Fn3<A1, A2, A3, T>): When$_$LiftedFn3<A1, A2, A3, T>
 
 
 declare function When$lift<A1, A2, A3, A4, T>(
-f: When$_.Fn4<A1, A2, A3, A4, T>): When$_.LiftedFn4<A1, A2, A3, A4, T>
+f: When$_$Fn4<A1, A2, A3, A4, T>): When$_$LiftedFn4<A1, A2, A3, A4, T>
 
 
 declare function When$lift<A1, A2, A3, A4, A5, T>(
-f: When$_.Fn5<A1, A2, A3, A4, A5, T>): When$_.LiftedFn5<A1, A2, A3, A4, A5, T>
+f: When$_$Fn5<A1, A2, A3, A4, A5, T>): When$_$LiftedFn5<A1, A2, A3, A4, A5, T>
 
 
 declare function When$promise<T>(
-resolver: (When$resolve: (value: T) => void, When$reject: (reason: any) => void) => void): When$Promise<T>
+resolver: (resolve: (value: T) => void, reject: (reason: any) => void) => void): When$Promise<T>
 
 
 declare function When$reject<T>(reason: any): When$Promise<T>
@@ -142,10 +160,8 @@ declare function When$reject<T>(reason: any): When$Promise<T>
  * Return a promise that will resolve only once all the supplied promisesOrValues
  * have resolved. The resolution value of the returned promise will be an array
  * containing the resolution values of each of the promisesOrValues.
- * @memberOf
- * when
- * @param promisesOrValues
- * array of anything, may contain a mix
+ * @memberOf when
+ * @param promisesOrValues array of anything, may contain a mix
  * of {@link Promise}s and values
  */
 declare function When$all<T>(promisesOrValues: any[]): When$Promise<T>
@@ -155,12 +171,9 @@ declare function When$all<T>(promisesOrValues: any[]): When$Promise<T>
 /**
  * Promise-aware array map function, similar to `Array.prototype.map()`,
  * but input array may contain promises or values.
- * @param promisesOrValues
- * array of anything, may contain a mix of {@link Promise}s and values
- * @param mapFunc
- * map function which may return a promise or value
- * @returns
- * a promise that will fulfill with an array of mapped values
+ * @param promisesOrValues array of anything, may contain a mix of {@link Promise}s and values
+ * @param mapFunc map function which may return a promise or value
+ * @returns a promise that will fulfill with an array of mapped values
  * or reject if any input promise rejects.
  */
 declare function When$map<T>(
@@ -174,13 +187,10 @@ mapFunc: (value: any, index: number) => any): When$Promise<T>
  * input may contain promises and/or values, and reduceFunc
  * may return either a value or a promise, *and* initialValue may
  * be a promise for the starting value.
- * @param promisesOrValues
- * array or promise for an array of anything,
+ * @param promisesOrValues array or promise for an array of anything,
  * may contain a mix of promises and values.
- * @param reduceFunc
- * function(accumulated:*, x:*, index:number):*} f reduce function
- * @returns
- * a promise that will resolve to the final reduced value
+ * @param reduceFunc function(accumulated:*, x:*, index:number):*} f reduce function
+ * @returns a promise that will resolve to the final reduced value
  */
 declare function When$reduce<T>(
 promisesOrValues: any[],
@@ -194,13 +204,10 @@ initialValue: T): When$Promise<T>
  * input may contain promises and/or values, and reduceFunc
  * may return either a value or a promise, *and* initialValue may
  * be a promise for the starting value.
- * @param promisesOrValues
- * array or promise for an array of anything,
+ * @param promisesOrValues array or promise for an array of anything,
  * may contain a mix of promises and values.
- * @param reduceFunc
- * function(accumulated:*, x:*, index:number):*} f reduce function
- * @returns
- * a promise that will resolve to the final reduced value
+ * @param reduceFunc function(accumulated:*, x:*, index:number):*} f reduce function
+ * @returns a promise that will resolve to the final reduced value
  */
 declare function When$reduceRight<T>(
 promisesOrValues: any[],
@@ -248,10 +255,8 @@ state: "pending"
  * The returned promise will only reject if array itself is a rejected promise. Otherwise,
  * it will always fulfill with an array of descriptors. This is in contrast to when.all,
  * which will reject if any element of array rejects.
- * @memberOf
- * when
- * @param promisesOrValues
- * array of anything, may contain a mix
+ * @memberOf when
+ * @param promisesOrValues array of anything, may contain a mix
  * of {@link Promise}s and values
  */
 declare function When$settle<T>(promisesOrValues: any[]): When$Promise<When$Descriptor<T>[]>
@@ -260,16 +265,11 @@ declare function When$settle<T>(promisesOrValues: any[]): When$Promise<When$Desc
 
 /**
  * Generates a potentially infinite stream of promises by repeatedly calling f until predicate becomes true.
- * @memberOf
- * when
- * @param f
- * function that, given a seed, returns the next value or a promise for it.
- * @param predicate
- * function that receives the current iteration value, and should return truthy when the iterating should stop
- * @param handler
- * function that receives each value as it is produced by f. It may return a promise to delay the next iteration.
- * @param seed
- * initial value provided to the handler, and first f invocation. May be a promise.
+ * @memberOf when
+ * @param f function that, given a seed, returns the next value or a promise for it.
+ * @param predicate function that receives the current iteration value, and should return truthy when the iterating should stop
+ * @param handler function that receives each value as it is produced by f. It may return a promise to delay the next iteration.
+ * @param seed initial value provided to the handler, and first f invocation. May be a promise.
  */
 declare function When$iterate<U>(
 f: (seed: U) => U | When$Promise<U>,
@@ -282,19 +282,14 @@ seed: U | When$Promise<U>): When$Promise<U>
 /**
  * Similar to when/iterate, when.unfold generates a potentially infinite stream of promises by repeatedly calling
  * unspool until predicate becomes true. when.unfold allows you to thread additional state information through the iteration.
- * @memberOf
- * when
- * @param unspool
- * function that, given a seed, returns a [valueToSendToHandler, newSeed] pair.
+ * @memberOf when
+ * @param unspool function that, given a seed, returns a [valueToSendToHandler, newSeed] pair.
  * May return an array, array of promises, promise for an array, or promise for an array of promises.
- * @param predicate
- * function that receives the current seed, and should return truthy when the unfold should stop
- * @param handler
- * function that receives the valueToSendToHandler of the current iteration.
+ * @param predicate function that receives the current seed, and should return truthy when the unfold should stop
+ * @param handler function that receives the valueToSendToHandler of the current iteration.
  * This function can process valueToSendToHandler in whatever way you need.
  * It may return a promise to delay the next iteration of the unfold.
- * @param seed
- * initial value provided to the first unspool invocation. May be a promise.
+ * @param seed initial value provided to the first unspool invocation. May be a promise.
  */
 declare function When$unfold<T, U>(
 unspool: (
@@ -317,8 +312,7 @@ declare function When$defer<T>(): When$Deferred<T>
 
 /**
  * Joins multiple promises into a single returned promise.
- * @return
- * a promise that will fulfill when *all* the input promises
+ * @return a promise that will fulfill when *all* the input promises
  * have fulfilled, or will reject when *any one* of the input promises rejects.
  */
 declare function When$join<T>(...promises: When$Promise<T>[]): When$Promise<T[]>
@@ -327,8 +321,7 @@ declare function When$join<T>(...promises: When$Promise<T>[]): When$Promise<T[]>
 
 /**
  * Joins multiple promises into a single returned promise.
- * @return
- * a promise that will fulfill when *all* the input promises
+ * @return a promise that will fulfill when *all* the input promises
  * have fulfilled, or will reject when *any one* of the input promises rejects.
  */
 declare function When$join<T>(...promises: any[]): When$Promise<T[]>
@@ -350,10 +343,10 @@ declare function When$resolve<T>(promiseOrValue: T | When$Promise<T> | When$Then
 
 declare interface When$Deferred<T> {
 notify(update: any): void,
-When$promise: When$Promise<T>,
-When$reject(reason: any): void,
-When$resolve(value?: T): void,
-When$resolve(value?: When$Promise<T>): void
+promise: When$Promise<T>,
+reject(reason: any): void,
+resolve(value?: T): void,
+resolve(value?: When$Promise<T>): void
 } 
 
 declare interface When$Promise<T> {
@@ -398,16 +391,16 @@ then(
 onFulfilled?: ((value: T) => T | When$Thenable<T>) | void | null,
 onRejected?: ((reason: any) => T | When$Thenable<T>) | void | null,
 onProgress?: (update: any) => void): When$Promise<T>,
-spread<T>(onFulfilled: When$_.Fn0<When$Promise<T> | T>): When$Promise<T>,
-spread<A1, T>(onFulfilled: When$_.Fn1<A1, When$Promise<T> | T>): When$Promise<T>,
+spread<T>(onFulfilled: When$_$Fn0<When$Promise<T> | T>): When$Promise<T>,
+spread<A1, T>(onFulfilled: When$_$Fn1<A1, When$Promise<T> | T>): When$Promise<T>,
 spread<A1, A2, T>(
-onFulfilled: When$_.Fn2<A1, A2, When$Promise<T> | T>): When$Promise<T>,
+onFulfilled: When$_$Fn2<A1, A2, When$Promise<T> | T>): When$Promise<T>,
 spread<A1, A2, A3, T>(
-onFulfilled: When$_.Fn3<A1, A2, A3, When$Promise<T> | T>): When$Promise<T>,
+onFulfilled: When$_$Fn3<A1, A2, A3, When$Promise<T> | T>): When$Promise<T>,
 spread<A1, A2, A3, A4, T>(
-onFulfilled: When$_.Fn4<A1, A2, A3, A4, When$Promise<T> | T>): When$Promise<T>,
+onFulfilled: When$_$Fn4<A1, A2, A3, A4, When$Promise<T> | T>): When$Promise<T>,
 spread<A1, A2, A3, A4, A5, T>(
-onFulfilled: When$_.Fn5<A1, A2, A3, A4, A5, When$Promise<T> | T>): When$Promise<T>,
+onFulfilled: When$_$Fn5<A1, A2, A3, A4, A5, When$Promise<T> | T>): When$Promise<T>,
 done<U>(onFulfilled?: (value: T) => void, onRejected?: (reason: any) => void): void,
 fold<U, V>(
 combine: (value1: T, value2: V) => U | When$Promise<U>,
@@ -423,72 +416,68 @@ onRejected?: (reason: any) => U): When$Thenable<U>
 
     }
 declare module 'when/node' {
-        declare function lift<T>(fn: When$_.NodeFn0<T>): When$_.LiftedFn0<T>
+        import typeof * as when from 'when';
 
-	declare function lift<A1, T>(fn: When$_.NodeFn1<A1, T>): When$_.LiftedFn1<A1, T>
+	declare var When$_: typeof when._;
+	declare function lift<T>(fn: _$NodeFn0<T>): _$LiftedFn0<T>
 
-	declare function lift<A1, A2, T>(fn: When$_.NodeFn2<A1, A2, T>): When$_.LiftedFn2<A1, A2, T>
+	declare function lift<A1, T>(fn: _$NodeFn1<A1, T>): _$LiftedFn1<A1, T>
 
-	declare function lift<A1, A2, A3, T>(
-fn: When$_.NodeFn3<A1, A2, A3, T>): When$_.LiftedFn3<A1, A2, A3, T>
+	declare function lift<A1, A2, T>(fn: _$NodeFn2<A1, A2, T>): _$LiftedFn2<A1, A2, T>
+
+	declare function lift<A1, A2, A3, T>(fn: _$NodeFn3<A1, A2, A3, T>): _$LiftedFn3<A1, A2, A3, T>
 
 	declare function lift<A1, A2, A3, A4, T>(
-fn: When$_.NodeFn4<A1, A2, A3, A4, T>): When$_.LiftedFn4<A1, A2, A3, A4, T>
+fn: _$NodeFn4<A1, A2, A3, A4, T>): _$LiftedFn4<A1, A2, A3, A4, T>
 
 	declare function lift<A1, A2, A3, A4, A5, T>(
-fn: When$_.NodeFn5<A1, A2, A3, A4, A5, T>): When$_.LiftedFn5<A1, A2, A3, A4, A5, T>
+fn: _$NodeFn5<A1, A2, A3, A4, A5, T>): _$LiftedFn5<A1, A2, A3, A4, A5, T>
 
-	declare function call<T>(fn: When$_.NodeFn0<T>): when.When$Promise<T>
+	declare function call<T>(fn: _$NodeFn0<T>): when.Promise<T>
 
-	declare function call<A1, T>(
-fn: When$_.NodeFn1<A1, T>,
-arg1: A1 | when.When$Promise<A1>): when.When$Promise<T>
+	declare function call<A1, T>(fn: _$NodeFn1<A1, T>, arg1: A1 | when.Promise<A1>): when.Promise<T>
 
 	declare function call<A1, A2, T>(
-fn: When$_.NodeFn2<A1, A2, T>,
-arg1: A1 | when.When$Promise<A1>,
-arg2: A2 | when.When$Promise<A2>): when.When$Promise<T>
+fn: _$NodeFn2<A1, A2, T>,
+arg1: A1 | when.Promise<A1>,
+arg2: A2 | when.Promise<A2>): when.Promise<T>
 
 	declare function call<A1, A2, A3, T>(
-fn: When$_.NodeFn3<A1, A2, A3, T>,
-arg1: A1 | when.When$Promise<A1>,
-arg2: A2 | when.When$Promise<A2>,
-arg3: A3 | when.When$Promise<A3>): when.When$Promise<T>
+fn: _$NodeFn3<A1, A2, A3, T>,
+arg1: A1 | when.Promise<A1>,
+arg2: A2 | when.Promise<A2>,
+arg3: A3 | when.Promise<A3>): when.Promise<T>
 
 	declare function call<A1, A2, A3, A4, T>(
-fn: When$_.NodeFn4<A1, A2, A3, A4, T>,
-arg1: A1 | when.When$Promise<A1>,
-arg2: A2 | when.When$Promise<A2>,
-arg3: A3 | when.When$Promise<A3>,
-arg4: A4 | when.When$Promise<A4>): when.When$Promise<T>
+fn: _$NodeFn4<A1, A2, A3, A4, T>,
+arg1: A1 | when.Promise<A1>,
+arg2: A2 | when.Promise<A2>,
+arg3: A3 | when.Promise<A3>,
+arg4: A4 | when.Promise<A4>): when.Promise<T>
 
 	declare function call<A1, A2, A3, A4, A5, T>(
-fn: When$_.NodeFn5<A1, A2, A3, A4, A5, T>,
-arg1: A1 | when.When$Promise<A1>,
-arg2: A2 | when.When$Promise<A2>,
-arg3: A3 | when.When$Promise<A3>,
-arg4: A4 | when.When$Promise<A4>,
-arg5: A5 | when.When$Promise<A5>): when.When$Promise<T>
+fn: _$NodeFn5<A1, A2, A3, A4, A5, T>,
+arg1: A1 | when.Promise<A1>,
+arg2: A2 | when.Promise<A2>,
+arg3: A3 | when.Promise<A3>,
+arg4: A4 | when.Promise<A4>,
+arg5: A5 | when.Promise<A5>): when.Promise<T>
 
-	declare function apply<T>(fn: When$_.NodeFn0<T>, args: any[] | IArguments): when.When$Promise<T>
+	declare function apply<T>(fn: _$NodeFn0<T>, args: any[] | IArguments): when.Promise<T>
 
-	declare function apply<T>(fn: When$_.NodeFn1<any, T>, args: any[] | IArguments): when.When$Promise<T>
+	declare function apply<T>(fn: _$NodeFn1<any, T>, args: any[] | IArguments): when.Promise<T>
 
-	declare function apply<T>(
-fn: When$_.NodeFn2<any, any, T>,
-args: any[] | IArguments): when.When$Promise<T>
+	declare function apply<T>(fn: _$NodeFn2<any, any, T>, args: any[] | IArguments): when.Promise<T>
 
-	declare function apply<T>(
-fn: When$_.NodeFn3<any, any, any, T>,
-args: any[] | IArguments): when.When$Promise<T>
+	declare function apply<T>(fn: _$NodeFn3<any, any, any, T>, args: any[] | IArguments): when.Promise<T>
 
 	declare function apply<T>(
-fn: When$_.NodeFn4<any, any, any, any, T>,
-args: any[] | IArguments): when.When$Promise<T>
+fn: _$NodeFn4<any, any, any, any, T>,
+args: any[] | IArguments): when.Promise<T>
 
 	declare function apply<T>(
-fn: When$_.NodeFn5<any, any, any, any, any, T>,
-args: any[] | IArguments): when.When$Promise<T>
+fn: _$NodeFn5<any, any, any, any, any, T>,
+args: any[] | IArguments): when.Promise<T>
 
 	declare function liftAll(
 srcApi: any,
@@ -496,15 +485,15 @@ transform?: (destApi: any, liftedFunc: Function, name: string) => any,
 destApi?: any): any
 
 	declare function liftCallback<TArg>(
-callback: (err: any, arg: TArg) => void): (value: when.When$Promise<TArg>) => when.When$Promise<TArg>
+callback: (err: any, arg: TArg) => void): (value: when.Promise<TArg>) => when.Promise<TArg>
 
 	declare function bindCallback<TArg>(
-arg: when.When$Promise<TArg>,
-callback: (err: any, arg: TArg) => void): when.When$Promise<TArg>
+arg: when.Promise<TArg>,
+callback: (err: any, arg: TArg) => void): when.Promise<TArg>
 
 	declare interface Resolver<T> {
-When$reject(reason: any): void,
-When$resolve(value?: T | when.When$Promise<T>): void
+reject(reason: any): void,
+resolve(value?: T | when.Promise<T>): void
 } 
 	declare function createCallback<TArg>(resolver: Resolver<TArg>): (err: any, arg: TArg) => void
 
