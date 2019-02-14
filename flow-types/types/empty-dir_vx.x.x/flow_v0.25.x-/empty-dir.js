@@ -1,5 +1,5 @@
 declare module "empty-dir" {
-  declare module.exports: typeof emptyDir;
+  declare export default typeof emptyDir;
 
   declare function emptyDir(
     dir: string,
