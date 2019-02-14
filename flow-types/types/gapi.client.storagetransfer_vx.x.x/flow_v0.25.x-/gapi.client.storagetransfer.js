@@ -1,32 +1,36 @@
 declare module "gapi.client.storagetransfer" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    googleServiceAccounts: typeof client$googleServiceAccounts,
-    transferJobs: typeof client$transferJobs,
-    transferOperations: typeof client$transferOperations
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    googleServiceAccounts: typeof gapi$client$googleServiceAccounts,
+    transferJobs: typeof gapi$client$transferJobs,
+    transferOperations: typeof gapi$client$transferOperations
   };
 
   /**
    * Load Google Storage Transfer API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "storagetransfer",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "storagetransfer",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$googleServiceAccounts: storagetransfer$storagetransfer$GoogleServiceAccountsResource;
+  declare var gapi$client$googleServiceAccounts: storagetransfer$GoogleServiceAccountsResource;
 
-  declare var client$transferJobs: storagetransfer$storagetransfer$TransferJobsResource;
+  declare var gapi$client$transferJobs: storagetransfer$TransferJobsResource;
 
-  declare var client$transferOperations: storagetransfer$storagetransfer$TransferOperationsResource;
+  declare var gapi$client$transferOperations: storagetransfer$TransferOperationsResource;
 
-  declare interface storagetransfer$AwsAccessKey {
+  declare interface gapi$client$storagetransfer$AwsAccessKey {
     /**
      * AWS access key ID.
      * Required.
@@ -40,14 +44,14 @@ declare module "gapi.client.storagetransfer" {
     secretAccessKey?: string;
   }
 
-  declare interface storagetransfer$AwsS3Data {
+  declare interface gapi$client$storagetransfer$AwsS3Data {
     /**
      * AWS access key used to sign the API requests to the AWS S3 bucket.
      * Permissions on the bucket must be granted to the access ID of the
      * AWS access key.
      * Required.
      */
-    awsAccessKey?: storagetransfer$AwsAccessKey;
+    awsAccessKey?: gapi$client$storagetransfer$AwsAccessKey;
 
     /**
      * S3 Bucket name (see
@@ -57,7 +61,7 @@ declare module "gapi.client.storagetransfer" {
     bucketName?: string;
   }
 
-  declare interface storagetransfer$Date {
+  declare interface gapi$client$storagetransfer$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -76,7 +80,7 @@ declare module "gapi.client.storagetransfer" {
     year?: number;
   }
 
-  declare interface storagetransfer$ErrorLogEntry {
+  declare interface gapi$client$storagetransfer$ErrorLogEntry {
     /**
      * A list of messages that carry the error details.
      */
@@ -90,7 +94,7 @@ declare module "gapi.client.storagetransfer" {
     url?: string;
   }
 
-  declare interface storagetransfer$ErrorSummary {
+  declare interface gapi$client$storagetransfer$ErrorSummary {
     /**
      * Required.
      */
@@ -105,10 +109,10 @@ declare module "gapi.client.storagetransfer" {
     /**
      * Error samples.
      */
-    errorLogEntries?: storagetransfer$ErrorLogEntry[];
+    errorLogEntries?: gapi$client$storagetransfer$ErrorLogEntry[];
   }
 
-  declare interface storagetransfer$GcsData {
+  declare interface gapi$client$storagetransfer$GcsData {
     /**
      * Google Cloud Storage bucket name (see
      * [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -117,14 +121,14 @@ declare module "gapi.client.storagetransfer" {
     bucketName?: string;
   }
 
-  declare interface storagetransfer$GoogleServiceAccount {
+  declare interface gapi$client$storagetransfer$GoogleServiceAccount {
     /**
      * Required.
      */
     accountEmail?: string;
   }
 
-  declare interface storagetransfer$HttpData {
+  declare interface gapi$client$storagetransfer$HttpData {
     /**
      * The URL that points to the file that stores the object list entries.
      * This file must allow public access.  Currently, only URLs with HTTP and
@@ -134,7 +138,7 @@ declare module "gapi.client.storagetransfer" {
     listUrl?: string;
   }
 
-  declare interface storagetransfer$ListOperationsResponse {
+  declare interface gapi$client$storagetransfer$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -146,7 +150,7 @@ declare module "gapi.client.storagetransfer" {
     operations?: storagetransfer$Operation[];
   }
 
-  declare interface storagetransfer$ListTransferJobsResponse {
+  declare interface gapi$client$storagetransfer$ListTransferJobsResponse {
     /**
      * The list next page token.
      */
@@ -155,10 +159,10 @@ declare module "gapi.client.storagetransfer" {
     /**
      * A list of transfer jobs.
      */
-    client$transferJobs?: storagetransfer$TransferJob[];
+    transferJobs?: storagetransfer$TransferJob[];
   }
 
-  declare interface storagetransfer$ObjectConditions {
+  declare interface gapi$client$storagetransfer$ObjectConditions {
     /**
      * `excludePrefixes` must follow the requirements described for
      * `includePrefixes`.
@@ -222,7 +226,7 @@ declare module "gapi.client.storagetransfer" {
     minTimeElapsedSinceLastModification?: string;
   }
 
-  declare interface storagetransfer$Operation {
+  declare interface gapi$client$storagetransfer$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -259,13 +263,13 @@ declare module "gapi.client.storagetransfer" {
     response?: Record<string, any>;
   }
 
-  declare interface storagetransfer$Schedule {
+  declare interface gapi$client$storagetransfer$Schedule {
     /**
      * The last day the recurring transfer will be run. If `scheduleEndDate`
      * is the same as `scheduleStartDate`, the transfer will be executed only
      * once.
      */
-    scheduleEndDate?: storagetransfer$Date;
+    scheduleEndDate?: gapi$client$storagetransfer$Date;
 
     /**
      * The first day the recurring transfer is scheduled to run. If
@@ -273,7 +277,7 @@ declare module "gapi.client.storagetransfer" {
      * time on the following day.
      * Required.
      */
-    scheduleStartDate?: storagetransfer$Date;
+    scheduleStartDate?: gapi$client$storagetransfer$Date;
 
     /**
      * The time in UTC at which the transfer will be scheduled to start in a day.
@@ -287,7 +291,7 @@ declare module "gapi.client.storagetransfer" {
     startTimeOfDay?: storagetransfer$TimeOfDay;
   }
 
-  declare interface storagetransfer$Status {
+  declare interface gapi$client$storagetransfer$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -307,7 +311,7 @@ declare module "gapi.client.storagetransfer" {
     message?: string;
   }
 
-  declare interface storagetransfer$TimeOfDay {
+  declare interface gapi$client$storagetransfer$TimeOfDay {
     /**
      * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
      * to allow the value "24:00:00" for scenarios like business closing time.
@@ -331,7 +335,7 @@ declare module "gapi.client.storagetransfer" {
     seconds?: number;
   }
 
-  declare interface storagetransfer$TransferCounters {
+  declare interface gapi$client$storagetransfer$TransferCounters {
     /**
      * Bytes that are copied to the data sink.
      */
@@ -419,7 +423,7 @@ declare module "gapi.client.storagetransfer" {
     objectsFromSourceSkippedBySync?: string;
   }
 
-  declare interface storagetransfer$TransferJob {
+  declare interface gapi$client$storagetransfer$TransferJob {
     /**
      * This field cannot be changed by user requests.
      */
@@ -457,7 +461,7 @@ declare module "gapi.client.storagetransfer" {
     /**
      * Schedule specification.
      */
-    schedule?: storagetransfer$Schedule;
+    schedule?: gapi$client$storagetransfer$Schedule;
 
     /**
      * Status of the job. This value MUST be specified for
@@ -476,11 +480,11 @@ declare module "gapi.client.storagetransfer" {
     transferSpec?: storagetransfer$TransferSpec;
   }
 
-  declare interface storagetransfer$TransferOperation {
+  declare interface gapi$client$storagetransfer$TransferOperation {
     /**
      * Information about the progress of the transfer operation.
      */
-    counters?: storagetransfer$TransferCounters;
+    counters?: gapi$client$storagetransfer$TransferCounters;
 
     /**
      * End time of this transfer execution.
@@ -490,7 +494,7 @@ declare module "gapi.client.storagetransfer" {
     /**
      * Summarizes errors encountered with sample error log entries.
      */
-    errorBreakdowns?: storagetransfer$ErrorSummary[];
+    errorBreakdowns?: gapi$client$storagetransfer$ErrorSummary[];
 
     /**
      * A globally unique ID assigned by the system.
@@ -525,7 +529,7 @@ declare module "gapi.client.storagetransfer" {
     transferSpec?: storagetransfer$TransferSpec;
   }
 
-  declare interface storagetransfer$TransferOptions {
+  declare interface gapi$client$storagetransfer$TransferOptions {
     /**
      * Whether objects should be deleted from the source after they are
      * transferred to the sink.  Note that this option and
@@ -546,43 +550,43 @@ declare module "gapi.client.storagetransfer" {
     overwriteObjectsAlreadyExistingInSink?: boolean;
   }
 
-  declare interface storagetransfer$TransferSpec {
+  declare interface gapi$client$storagetransfer$TransferSpec {
     /**
      * An AWS S3 data source.
      */
-    awsS3DataSource?: storagetransfer$AwsS3Data;
+    awsS3DataSource?: gapi$client$storagetransfer$AwsS3Data;
 
     /**
      * A Google Cloud Storage data sink.
      */
-    gcsDataSink?: storagetransfer$GcsData;
+    gcsDataSink?: gapi$client$storagetransfer$GcsData;
 
     /**
      * A Google Cloud Storage data source.
      */
-    gcsDataSource?: storagetransfer$GcsData;
+    gcsDataSource?: gapi$client$storagetransfer$GcsData;
 
     /**
      * An HTTP URL data source.
      */
-    httpDataSource?: storagetransfer$HttpData;
+    httpDataSource?: gapi$client$storagetransfer$HttpData;
 
     /**
      * Only objects that satisfy these object conditions are included in the set
      * of data source and data sink objects.  Object conditions based on
      * objects' `lastModificationTime` do not exclude objects in a data sink.
      */
-    objectConditions?: storagetransfer$ObjectConditions;
+    objectConditions?: gapi$client$storagetransfer$ObjectConditions;
 
     /**
      * If the option `deleteObjectsUniqueInSink` is `true`, object conditions
      * based on objects' `lastModificationTime` are ignored and do not exclude
      * objects in a data source or a data sink.
      */
-    transferOptions?: storagetransfer$TransferOptions;
+    transferOptions?: gapi$client$storagetransfer$TransferOptions;
   }
 
-  declare interface storagetransfer$UpdateTransferJobRequest {
+  declare interface gapi$client$storagetransfer$UpdateTransferJobRequest {
     /**
      * The ID of the Google Cloud Platform Console project that owns the job.
      * Required.
@@ -596,7 +600,7 @@ declare module "gapi.client.storagetransfer" {
      * `INVALID_ARGUMENT`.
      * Required.
      */
-    transferJob?: storagetransfer$TransferJob;
+    transferJob?: gapi$client$storagetransfer$TransferJob;
 
     /**
      * The field mask of the fields in `transferJob` that are to be updated in
@@ -609,7 +613,7 @@ declare module "gapi.client.storagetransfer" {
     updateTransferJobFieldMask?: string;
   }
 
-  declare interface storagetransfer$GoogleServiceAccountsResource {
+  declare interface gapi$client$storagetransfer$GoogleServiceAccountsResource {
     /**
      * Returns the Google service account that is used by Storage Transfer
      * Service to access buckets in the project where transfers
@@ -692,10 +696,10 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$GoogleServiceAccount>;
+    }): Request<gapi$client$storagetransfer$GoogleServiceAccount>;
   }
 
-  declare interface storagetransfer$TransferJobsResource {
+  declare interface gapi$client$storagetransfer$TransferJobsResource {
     /**
      * Creates a transfer job that runs periodically.
      */
@@ -764,7 +768,7 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$TransferJob>;
+    }): Request<gapi$client$storagetransfer$TransferJob>;
 
     /**
      * Gets a transfer job.
@@ -846,7 +850,7 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$TransferJob>;
+    }): Request<gapi$client$storagetransfer$TransferJob>;
 
     /**
      * Lists transfer jobs.
@@ -938,7 +942,7 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$ListTransferJobsResponse>;
+    }): Request<gapi$client$storagetransfer$ListTransferJobsResponse>;
 
     /**
      * Updates a transfer job. Updating a job's transfer spec does not affect
@@ -1016,10 +1020,10 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$TransferJob>;
+    }): Request<gapi$client$storagetransfer$TransferJob>;
   }
 
-  declare interface storagetransfer$TransferOperationsResource {
+  declare interface gapi$client$storagetransfer$TransferOperationsResource {
     /**
      * Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.
      */
@@ -1245,7 +1249,7 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$Operation>;
+    }): Request<gapi$client$storagetransfer$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -1347,7 +1351,7 @@ declare module "gapi.client.storagetransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<storagetransfer$ListOperationsResponse>;
+    }): Request<gapi$client$storagetransfer$ListOperationsResponse>;
 
     /**
      * Pauses a transfer operation.
