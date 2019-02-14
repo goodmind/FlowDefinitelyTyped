@@ -29,7 +29,7 @@ declare module "leaflet" {
    */
   declare function markerClusterGroup$layerSupport(
     options?: MarkerClusterGroupLayerSupportOptions
-  ): MarkerClusterGroup$MarkerClusterGroup$LayerSupport;
+  ): MarkerClusterGroup$LayerSupport;
 }
 declare module "leaflet.markercluster.layersupport" {
   import typeof * as L from "leaflet";
