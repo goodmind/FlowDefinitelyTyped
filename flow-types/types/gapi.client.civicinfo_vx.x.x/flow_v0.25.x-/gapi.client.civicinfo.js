@@ -1,32 +1,36 @@
 declare module "gapi.client.civicinfo" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    divisions: typeof client$divisions,
-    elections: typeof client$elections,
-    representatives: typeof client$representatives
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    divisions: typeof gapi$client$divisions,
+    elections: typeof gapi$client$elections,
+    representatives: typeof gapi$client$representatives
   };
 
   /**
    * Load Google Civic Information API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "civicinfo",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "civicinfo",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$divisions: civicinfo$civicinfo$DivisionsResource;
+  declare var gapi$client$divisions: civicinfo$DivisionsResource;
 
-  declare var client$elections: civicinfo$civicinfo$ElectionsResource;
+  declare var gapi$client$elections: civicinfo$ElectionsResource;
 
-  declare var client$representatives: civicinfo$civicinfo$RepresentativesResource;
+  declare var gapi$client$representatives: civicinfo$RepresentativesResource;
 
-  declare interface civicinfo$AdministrationRegion {
+  declare interface gapi$client$civicinfo$AdministrationRegion {
     /**
      * The election administration body for this area.
      */
@@ -41,7 +45,7 @@ declare module "gapi.client.civicinfo" {
     /**
      * The city or county that provides election information for this voter. This object can have the same elements as state.
      */
-    local_jurisdiction?: civicinfo$AdministrationRegion;
+    local_jurisdiction?: gapi$client$civicinfo$AdministrationRegion;
 
     /**
      * The name of the jurisdiction.
@@ -54,7 +58,7 @@ declare module "gapi.client.civicinfo" {
     sources?: civicinfo$Source[];
   }
 
-  declare interface civicinfo$AdministrativeBody {
+  declare interface gapi$client$civicinfo$AdministrativeBody {
     /**
      * A URL provided by this administrative body for information on absentee voting.
      */
@@ -122,7 +126,7 @@ declare module "gapi.client.civicinfo" {
     votingLocationFinderUrl?: string;
   }
 
-  declare interface civicinfo$Candidate {
+  declare interface gapi$client$civicinfo$Candidate {
     /**
      * The URL for the candidate's campaign web site.
      */
@@ -165,7 +169,7 @@ declare module "gapi.client.civicinfo" {
     photoUrl?: string;
   }
 
-  declare interface civicinfo$Channel {
+  declare interface gapi$client$civicinfo$Channel {
     /**
      * The unique public identifier for the candidate's channel.
      */
@@ -178,7 +182,7 @@ declare module "gapi.client.civicinfo" {
     type?: string;
   }
 
-  declare interface civicinfo$Contest {
+  declare interface gapi$client$civicinfo$Contest {
     /**
      * A number specifying the position of this contest on the voter's ballot.
      */
@@ -187,7 +191,7 @@ declare module "gapi.client.civicinfo" {
     /**
      * The candidate choices for this contest.
      */
-    candidates?: civicinfo$Candidate[];
+    candidates?: gapi$client$civicinfo$Candidate[];
 
     /**
      * Information about the electoral district that this contest is in.
@@ -308,19 +312,19 @@ declare module "gapi.client.civicinfo" {
     type?: string;
   }
 
-  declare interface civicinfo$ContextParams {
+  declare interface gapi$client$civicinfo$ContextParams {
     clientProfile?: string;
   }
 
-  declare interface civicinfo$DivisionRepresentativeInfoRequest {
-    contextParams?: civicinfo$ContextParams;
+  declare interface gapi$client$civicinfo$DivisionRepresentativeInfoRequest {
+    contextParams?: gapi$client$civicinfo$ContextParams;
   }
 
-  declare interface civicinfo$DivisionSearchRequest {
-    contextParams?: civicinfo$ContextParams;
+  declare interface gapi$client$civicinfo$DivisionSearchRequest {
+    contextParams?: gapi$client$civicinfo$ContextParams;
   }
 
-  declare interface civicinfo$DivisionSearchResponse {
+  declare interface gapi$client$civicinfo$DivisionSearchResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "civicinfo#divisionSearchResponse".
      */
@@ -328,7 +332,7 @@ declare module "gapi.client.civicinfo" {
     results?: civicinfo$DivisionSearchResult[];
   }
 
-  declare interface civicinfo$DivisionSearchResult {
+  declare interface gapi$client$civicinfo$DivisionSearchResult {
     /**
      * Other Open Civic Data identifiers that refer to the same division -- for example, those that refer to other political divisions whose boundaries are
      * defined to be coterminous with this one. For example, ocd-division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1,
@@ -347,7 +351,7 @@ declare module "gapi.client.civicinfo" {
     ocdId?: string;
   }
 
-  declare interface civicinfo$Election {
+  declare interface gapi$client$civicinfo$Election {
     /**
      * Day of the election in YYYY-MM-DD format.
      */
@@ -371,7 +375,7 @@ declare module "gapi.client.civicinfo" {
     ocdDivisionId?: string;
   }
 
-  declare interface civicinfo$ElectionOfficial {
+  declare interface gapi$client$civicinfo$ElectionOfficial {
     /**
      * The email address of the election official.
      */
@@ -398,15 +402,15 @@ declare module "gapi.client.civicinfo" {
     title?: string;
   }
 
-  declare interface civicinfo$ElectionsQueryRequest {
-    contextParams?: civicinfo$ContextParams;
+  declare interface gapi$client$civicinfo$ElectionsQueryRequest {
+    contextParams?: gapi$client$civicinfo$ContextParams;
   }
 
-  declare interface civicinfo$ElectionsQueryResponse {
+  declare interface gapi$client$civicinfo$ElectionsQueryResponse {
     /**
      * A list of available elections
      */
-    client$elections?: civicinfo$Election[];
+    elections?: gapi$client$civicinfo$Election[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "civicinfo#electionsQueryResponse".
@@ -414,7 +418,7 @@ declare module "gapi.client.civicinfo" {
     kind?: string;
   }
 
-  declare interface civicinfo$ElectoralDistrict {
+  declare interface gapi$client$civicinfo$ElectoralDistrict {
     /**
      * An identifier for this district, relative to its scope. For example, the 34th State Senate district would have id "34" and a scope of stateUpper.
      */
@@ -433,7 +437,7 @@ declare module "gapi.client.civicinfo" {
     scope?: string;
   }
 
-  declare interface civicinfo$GeographicDivision {
+  declare interface gapi$client$civicinfo$GeographicDivision {
     /**
      * Any other valid OCD IDs that refer to the same division.
      *
@@ -457,7 +461,7 @@ declare module "gapi.client.civicinfo" {
     officeIndices?: number[];
   }
 
-  declare interface civicinfo$Office {
+  declare interface gapi$client$civicinfo$Office {
     /**
      * The OCD ID of the division with which this office is associated.
      */
@@ -492,7 +496,7 @@ declare module "gapi.client.civicinfo" {
     sources?: civicinfo$Source[];
   }
 
-  declare interface civicinfo$Official {
+  declare interface gapi$client$civicinfo$Official {
     /**
      * Addresses at which to contact the official.
      */
@@ -501,7 +505,7 @@ declare module "gapi.client.civicinfo" {
     /**
      * A list of known (social) media channels for this official.
      */
-    channels?: civicinfo$Channel[];
+    channels?: gapi$client$civicinfo$Channel[];
 
     /**
      * The direct email addresses for the official.
@@ -534,7 +538,7 @@ declare module "gapi.client.civicinfo" {
     urls?: string[];
   }
 
-  declare interface civicinfo$PollingLocation {
+  declare interface gapi$client$civicinfo$PollingLocation {
     /**
      * The address of the location.
      */
@@ -582,7 +586,7 @@ declare module "gapi.client.civicinfo" {
     voterServices?: string;
   }
 
-  declare interface civicinfo$PostalAddress {
+  declare interface gapi$client$civicinfo$PostalAddress {
     addressLines?: string[];
     administrativeAreaName?: string;
     countryName?: string;
@@ -616,32 +620,32 @@ declare module "gapi.client.civicinfo" {
     thoroughfareTrailingType?: string;
   }
 
-  declare interface civicinfo$RepresentativeInfoData {
+  declare interface gapi$client$civicinfo$RepresentativeInfoData {
     /**
      * Political geographic divisions that contain the requested address.
      */
-    client$divisions?: Record<string, civicinfo$GeographicDivision>;
+    divisions?: Record<string, gapi$client$civicinfo$GeographicDivision>;
 
     /**
      * Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request.
      */
-    offices?: civicinfo$Office[];
+    offices?: gapi$client$civicinfo$Office[];
 
     /**
      * Officials holding the offices listed above. Will only be present if includeOffices was true in the request.
      */
-    officials?: civicinfo$Official[];
+    officials?: gapi$client$civicinfo$Official[];
   }
 
-  declare interface civicinfo$RepresentativeInfoRequest {
-    contextParams?: civicinfo$ContextParams;
+  declare interface gapi$client$civicinfo$RepresentativeInfoRequest {
+    contextParams?: gapi$client$civicinfo$ContextParams;
   }
 
-  declare interface civicinfo$RepresentativeInfoResponse {
+  declare interface gapi$client$civicinfo$RepresentativeInfoResponse {
     /**
      * Political geographic divisions that contain the requested address.
      */
-    client$divisions?: Record<string, civicinfo$GeographicDivision>;
+    divisions?: Record<string, gapi$client$civicinfo$GeographicDivision>;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "civicinfo#representativeInfoResponse".
@@ -656,15 +660,15 @@ declare module "gapi.client.civicinfo" {
     /**
      * Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request.
      */
-    offices?: civicinfo$Office[];
+    offices?: gapi$client$civicinfo$Office[];
 
     /**
      * Officials holding the offices listed above. Will only be present if includeOffices was true in the request.
      */
-    officials?: civicinfo$Official[];
+    officials?: gapi$client$civicinfo$Official[];
   }
 
-  declare interface civicinfo$SimpleAddressType {
+  declare interface gapi$client$civicinfo$SimpleAddressType {
     /**
      * The city or town for the address.
      */
@@ -701,7 +705,7 @@ declare module "gapi.client.civicinfo" {
     zip?: string;
   }
 
-  declare interface civicinfo$Source {
+  declare interface gapi$client$civicinfo$Source {
     /**
      * The name of the data source.
      */
@@ -713,33 +717,33 @@ declare module "gapi.client.civicinfo" {
     official?: boolean;
   }
 
-  declare interface civicinfo$VoterInfoRequest {
-    contextParams?: civicinfo$ContextParams;
+  declare interface gapi$client$civicinfo$VoterInfoRequest {
+    contextParams?: gapi$client$civicinfo$ContextParams;
     voterInfoSegmentResult?: civicinfo$VoterInfoSegmentResult;
   }
 
-  declare interface civicinfo$VoterInfoResponse {
+  declare interface gapi$client$civicinfo$VoterInfoResponse {
     /**
      * Contests that will appear on the voter's ballot.
      */
-    contests?: civicinfo$Contest[];
+    contests?: gapi$client$civicinfo$Contest[];
 
     /**
      * Locations where a voter is eligible to drop off a completed ballot. The voter must have received and completed a ballot prior to arriving at the
      * location. The location may not have ballots available on the premises. These locations could be open on or before election day as indicated in the
      * pollingHours field.
      */
-    dropOffLocations?: civicinfo$PollingLocation[];
+    dropOffLocations?: gapi$client$civicinfo$PollingLocation[];
 
     /**
      * Locations where the voter is eligible to vote early, prior to election day.
      */
-    earlyVoteSites?: civicinfo$PollingLocation[];
+    earlyVoteSites?: gapi$client$civicinfo$PollingLocation[];
 
     /**
      * The election that was queried.
      */
-    election?: civicinfo$Election;
+    election?: gapi$client$civicinfo$Election;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "civicinfo#voterInfoResponse".
@@ -754,34 +758,34 @@ declare module "gapi.client.civicinfo" {
     /**
      * The normalized version of the requested address
      */
-    normalizedInput?: civicinfo$SimpleAddressType;
+    normalizedInput?: gapi$client$civicinfo$SimpleAddressType;
 
     /**
      * If no election ID was specified in the query, and there was more than one election with data for the given voter, this will contain information about
      * the other elections that could apply.
      */
-    otherElections?: civicinfo$Election[];
+    otherElections?: gapi$client$civicinfo$Election[];
 
     /**
      * Locations where the voter is eligible to vote on election day.
      */
-    pollingLocations?: civicinfo$PollingLocation[];
+    pollingLocations?: gapi$client$civicinfo$PollingLocation[];
     precinctId?: string;
 
     /**
      * Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array.
      */
-    state?: civicinfo$AdministrationRegion[];
+    state?: gapi$client$civicinfo$AdministrationRegion[];
   }
 
-  declare interface civicinfo$VoterInfoSegmentResult {
+  declare interface gapi$client$civicinfo$VoterInfoSegmentResult {
     generatedMillis?: string;
-    postalAddress?: civicinfo$PostalAddress;
-    request?: civicinfo$VoterInfoRequest;
-    response?: civicinfo$VoterInfoResponse;
+    postalAddress?: gapi$client$civicinfo$PostalAddress;
+    request?: gapi$client$civicinfo$VoterInfoRequest;
+    response?: gapi$client$civicinfo$VoterInfoResponse;
   }
 
-  declare interface civicinfo$DivisionsResource {
+  declare interface gapi$client$civicinfo$DivisionsResource {
     /**
      * Searches for political divisions by their natural name or OCD ID.
      */
@@ -828,10 +832,10 @@ declare module "gapi.client.civicinfo" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<civicinfo$DivisionSearchResponse>;
+    }): Request<gapi$client$civicinfo$DivisionSearchResponse>;
   }
 
-  declare interface civicinfo$ElectionsResource {
+  declare interface gapi$client$civicinfo$ElectionsResource {
     /**
      * List of available elections to query.
      */
@@ -871,7 +875,7 @@ declare module "gapi.client.civicinfo" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<civicinfo$ElectionsQueryResponse>;
+    }): Request<gapi$client$civicinfo$ElectionsQueryResponse>;
 
     /**
      * Looks up information relevant to a voter based on the voter's registered address.
@@ -933,10 +937,10 @@ declare module "gapi.client.civicinfo" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<civicinfo$VoterInfoResponse>;
+    }): Request<gapi$client$civicinfo$VoterInfoResponse>;
   }
 
-  declare interface civicinfo$RepresentativesResource {
+  declare interface gapi$client$civicinfo$RepresentativesResource {
     /**
      * Looks up political geography and representative information for a single address.
      */
@@ -998,7 +1002,7 @@ declare module "gapi.client.civicinfo" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<civicinfo$RepresentativeInfoResponse>;
+    }): Request<gapi$client$civicinfo$RepresentativeInfoResponse>;
 
     /**
      * Looks up representative information for a single geographic division.
@@ -1062,6 +1066,6 @@ declare module "gapi.client.civicinfo" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<civicinfo$RepresentativeInfoData>;
+    }): Request<gapi$client$civicinfo$RepresentativeInfoData>;
   }
 }
