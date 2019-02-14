@@ -1,7 +1,7 @@
 declare module "zip-webpack-plugin" {
   import typeof * as webpack from "webpack";
 
-  declare module.exports: typeof ZipPlugin;
+  declare export default typeof ZipPlugin;
 
   /**
    * Webpack plugin to zip emitted files. Compresses all assets into a zip file.
@@ -11,7 +11,7 @@ declare module "zip-webpack-plugin" {
     /**
      * @param options Options for ZipPlugin.
      */
-    constructor(options?: ZipPlugin$ZipPlugin$Options): this;
+    constructor(options?: ZipPlugin$Options): this;
   }
   declare interface ZipPlugin$Options {
     /**
@@ -58,13 +58,13 @@ declare module "zip-webpack-plugin" {
      * File options passed to yazl `addFile`.
      * See https://github.com/thejoshwolfe/yazl#addfilerealpath-metadatapath-options
      */
-    ZipPlugin$fileOptions?: ZipPlugin$fileOptions;
+    fileOptions?: ZipPlugin$fileOptions;
 
     /**
      * File options passed to yazl `end`.
      * See https://github.com/thejoshwolfe/yazl#endoptions-finalsizecallback
      */
-    ZipPlugin$zipOptions?: ZipPlugin$zipOptions;
+    zipOptions?: ZipPlugin$zipOptions;
   }
 
   declare interface ZipPlugin$fileOptions {
