@@ -1,21 +1,16 @@
-declare interface Express$FlashOptions {
-  type?: string;
-  message?: string;
-  redirect?: boolean;
-  url?: string;
-}
-
-declare interface Express$Request {
-  flash(type: string, message?: string, redirect?: string | boolean): void;
-  flash(object: Express$FlashOptions): void;
-}
 declare module "global" {
-}
+  declare interface Express$FlashOptions {
+    type?: string;
+    message?: string;
+    redirect?: boolean;
+    url?: string;
+  }
 
-declare var npm$namespace$express_flash_notification: {
-  prototype: typeof express_flash_notification$prototype
-};
-declare var express_flash_notification$prototype: {};
+  declare interface Express$Request {
+    flash(type: string, message?: string, redirect?: string | boolean): void;
+    flash(object: Express$FlashOptions): void;
+  }
+}
 declare module "express-flash-notification" {
   declare interface efnOptions {
     sessionName?: string;
@@ -37,5 +32,9 @@ declare module "express-flash-notification" {
     ...args: any[]
   ): any;
 
-  declare module.exports: typeof express_flash_notification;
+  declare var npm$namespace$express_flash_notification: {
+    prototype: typeof express_flash_notification$prototype
+  };
+  declare var express_flash_notification$prototype: {};
+  declare export default typeof express_flash_notification;
 }
