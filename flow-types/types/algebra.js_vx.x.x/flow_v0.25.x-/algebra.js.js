@@ -1,23 +1,31 @@
 declare module "algebra.js" {
   declare class Term {
-    coefficients: algebra$js.js$Fraction[];
+    coefficients: algebra$jsFraction[];
     variables: Variable[];
-    coefficient(): algebra$js.js$Fraction;
+    coefficient(): algebra$jsFraction;
     toString(): string;
   }
   declare class Variable {
     variable: string;
     toString(): string;
   }
-  declare type Union = string | number | algebra$js.js$Fraction | Term;
+  declare type Union = string | number | algebra$jsFraction | Term;
 
-  declare var npm$namespace$js: {
-    parse: typeof js$parse,
-    toTex: typeof js$toTex
+  declare var npm$namespace$algebra: {
+    js: typeof npm$namespace$algebra$js
   };
-  declare function js$parse(input: string): js$Equation | js$Expression;
 
-  declare function js$toTex(
+  declare var npm$namespace$algebra$js: {
+    parse: typeof algebra$js$parse,
+    toTex: typeof algebra$js$toTex,
+
+    Equation: typeof algebra$js$Equation,
+    Expression: typeof algebra$js$Expression,
+    Fraction: typeof algebra$js$Fraction
+  };
+  declare function algebra$js$parse(input: string): js$Equation | js$Expression;
+
+  declare function algebra$js$toTex(
     input:
       | js$Fraction
       | js$Expression
@@ -26,7 +34,7 @@ declare module "algebra.js" {
       | Array<js$Fraction | { [key: string]: any }>
   ): string;
 
-  declare class js$Equation {
+  declare class algebra$js$Equation {
     lhs: js$Expression;
     rhs: js$Expression;
     constructor(
@@ -37,38 +45,62 @@ declare module "algebra.js" {
     toString(): string;
   }
 
-  declare class js$Expression {
+  declare class algebra$js$Expression {
     constants: js$Fraction[];
     terms: Term[];
     constructor(variable: Union | void): this;
-    add(other: Union | js$Expression, simplify?: boolean): js$Expression;
-    divide(other: js$Fraction | number, simplify?: boolean): js$Expression;
-    eval(p: { [key: string]: any }, simplify?: boolean): js$Expression;
-    multiply(other: Union | js$Expression, simplify?: boolean): js$Expression;
-    pow(p: number, simplify?: boolean): js$Expression;
+    add(
+      other: Union | algebra$js$Expression,
+      simplify?: boolean
+    ): algebra$js$Expression;
+    divide(
+      other: js$Fraction | number,
+      simplify?: boolean
+    ): algebra$js$Expression;
+    eval(p: { [key: string]: any }, simplify?: boolean): algebra$js$Expression;
+    multiply(
+      other: Union | algebra$js$Expression,
+      simplify?: boolean
+    ): algebra$js$Expression;
+    pow(p: number, simplify?: boolean): algebra$js$Expression;
     constant(): js$Fraction;
-    simplify(): js$Expression;
-    subtract(other: Union | js$Expression, simplify?: boolean): js$Expression;
+    simplify(): algebra$js$Expression;
+    subtract(
+      other: Union | algebra$js$Expression,
+      simplify?: boolean
+    ): algebra$js$Expression;
     summation(
       variable: string,
       lower: number,
       upper: number,
       simplify?: boolean
-    ): js$Expression;
+    ): algebra$js$Expression;
     toString(): string;
   }
 
-  declare class js$Fraction {
+  declare class algebra$js$Fraction {
     denom: number;
     numer: number;
     constructor(num: number, denom: number): this;
-    abs(): js$Fraction;
-    add(other: js$Fraction | number, simplify?: boolean): js$Fraction;
-    divide(other: js$Fraction | number, simplify?: boolean): js$Fraction;
-    multiply(other: js$Fraction | number, simplify?: boolean): js$Fraction;
-    subtract(other: js$Fraction | number, simplify?: boolean): js$Fraction;
+    abs(): algebra$js$Fraction;
+    add(
+      other: algebra$js$Fraction | number,
+      simplify?: boolean
+    ): algebra$js$Fraction;
+    divide(
+      other: algebra$js$Fraction | number,
+      simplify?: boolean
+    ): algebra$js$Fraction;
+    multiply(
+      other: algebra$js$Fraction | number,
+      simplify?: boolean
+    ): algebra$js$Fraction;
+    subtract(
+      other: algebra$js$Fraction | number,
+      simplify?: boolean
+    ): algebra$js$Fraction;
     toString(): string;
     valueOf(): number;
   }
-  declare module.exports: typeof algebra$js;
+  declare export default typeof algebra$js;
 }
