@@ -369,7 +369,7 @@ declare module "emscripten" {
   ): void;
 
   declare function FS$mount(
-    type: Emscripten$Emscripten$FileSystemType,
+    type: Emscripten$FileSystemType,
     opts: any,
     mountpoint: string
   ): any;
@@ -550,9 +550,9 @@ declare module "emscripten" {
     canOwn?: boolean
   ): void;
 
-  declare var MEMFS: Emscripten$Emscripten$FileSystemType;
-  declare var NODEFS: Emscripten$Emscripten$FileSystemType;
-  declare var IDBFS: Emscripten$Emscripten$FileSystemType;
+  declare var MEMFS: Emscripten$FileSystemType;
+  declare var NODEFS: Emscripten$FileSystemType;
+  declare var IDBFS: Emscripten$FileSystemType;
   declare interface Math {
     imul(a: number, b: number): number;
   }
