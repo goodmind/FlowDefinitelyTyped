@@ -12,49 +12,73 @@ declare module "mangopay2-nodejs-sdk" {
     DeepPartial
   } from "./types";
 
-  declare module.exports: typeof MangoPay;
+  declare export default typeof MangoPay;
 
   declare class MangoPay {
-    constructor(config: MangoPay$MangoPay$Config): this;
-    config: MangoPay$MangoPay$Config;
-    requestOptions: MangoPay$MangoPay$RequestOptions;
-    MangoPay$Users: MangoPay$MangoPay$Users;
-    MangoPay$BankAccounts: MangoPay$MangoPay$BankAccounts;
-    MangoPay$BankingAliases: MangoPay$MangoPay$BankingAliases;
-    MangoPay$DisputeDocuments: MangoPay$MangoPay$DisputeDocuments;
-    MangoPay$Wallets: MangoPay$MangoPay$Wallets;
-    MangoPay$KycDocuments: MangoPay$MangoPay$KycDocuments;
-    MangoPay$UboDeclarations: MangoPay$MangoPay$UboDeclarations;
-    MangoPay$Cards: MangoPay$MangoPay$Cards;
-    MangoPay$CardRegistrations: MangoPay$MangoPay$CardRegistrations;
-    MangoPay$CardPreAuthorizations: MangoPay$MangoPay$CardPreAuthorizations;
-    MangoPay$PayIns: MangoPay$MangoPay$PayIns;
-    MangoPay$Transfers: MangoPay$MangoPay$Transfers;
-    MangoPay$PayOuts: MangoPay$MangoPay$PayOuts;
-    MangoPay$Refunds: MangoPay$MangoPay$Refunds;
-    MangoPay$Clients: MangoPay$MangoPay$Clients;
-    MangoPay$Disputes: MangoPay$MangoPay$Disputes;
-    MangoPay$Repudiations: MangoPay$MangoPay$Repudiations;
-    MangoPay$Events: MangoPay$MangoPay$Events;
-    MangoPay$Responses: MangoPay$MangoPay$Responses;
-    MangoPay$Mandates: MangoPay$MangoPay$Mandates;
-    MangoPay$Hooks: MangoPay$MangoPay$Hooks;
-    MangoPay$Reports: MangoPay$MangoPay$Reports;
-    models: typeof undefined;
+    constructor(config: MangoPay$Config): this;
+    config: MangoPay$Config;
+    requestOptions: MangoPay$RequestOptions;
+    MangoPay$Users: MangoPay$Users;
+    MangoPay$BankAccounts: MangoPay$BankAccounts;
+    MangoPay$BankingAliases: MangoPay$BankingAliases;
+    MangoPay$DisputeDocuments: MangoPay$DisputeDocuments;
+    MangoPay$Wallets: MangoPay$Wallets;
+    MangoPay$KycDocuments: MangoPay$KycDocuments;
+    MangoPay$UboDeclarations: MangoPay$UboDeclarations;
+    MangoPay$Cards: MangoPay$Cards;
+    MangoPay$CardRegistrations: MangoPay$CardRegistrations;
+    MangoPay$CardPreAuthorizations: MangoPay$CardPreAuthorizations;
+    MangoPay$PayIns: MangoPay$PayIns;
+    MangoPay$Transfers: MangoPay$Transfers;
+    MangoPay$PayOuts: MangoPay$PayOuts;
+    MangoPay$Refunds: MangoPay$Refunds;
+    MangoPay$Clients: MangoPay$Clients;
+    MangoPay$Disputes: MangoPay$Disputes;
+    MangoPay$Repudiations: MangoPay$Repudiations;
+    MangoPay$Events: MangoPay$Events;
+    MangoPay$Responses: MangoPay$Responses;
+    MangoPay$Mandates: MangoPay$Mandates;
+    MangoPay$Hooks: MangoPay$Hooks;
+    MangoPay$Reports: MangoPay$Reports;
+    MangoPay$models: typeof MangoPay$models;
     Log(...args: any[]): void;
-    authorize(
-      callback: (data: MangoPay$MangoPay$AuthorizationData) => void
-    ): void;
-    authorize(): Promise<MangoPay$MangoPay$AuthorizationData>;
+    authorize(callback: (data: MangoPay$AuthorizationData) => void): void;
+    authorize(): Promise<MangoPay$AuthorizationData>;
     buildRequestData(entity: any): any;
     canReadSubRequestData(entity: any, propertyName: any): boolean;
     isExpired(): boolean;
     method(
       method: ApiMethod,
       callback: (...args: any[]) => void,
-      options: MangoPay$MangoPay$RequestOptions
+      options: MangoPay$RequestOptions
     ): any;
   }
+
+  declare var npm$namespace$MangoPay: {
+    Users: typeof MangoPay$Users,
+    KycDocuments: typeof MangoPay$KycDocuments,
+    UboDeclarations: typeof MangoPay$UboDeclarations,
+    BankAccounts: typeof MangoPay$BankAccounts,
+    Wallets: typeof MangoPay$Wallets,
+    Cards: typeof MangoPay$Cards,
+    CardRegistrations: typeof MangoPay$CardRegistrations,
+    CardPreAuthorizations: typeof MangoPay$CardPreAuthorizations,
+    PayIns: typeof MangoPay$PayIns,
+    Refunds: typeof MangoPay$Refunds,
+    Clients: typeof MangoPay$Clients,
+    PayOuts: typeof MangoPay$PayOuts,
+    Transfers: typeof MangoPay$Transfers,
+    BankingAliases: typeof MangoPay$BankingAliases,
+    DisputeDocuments: typeof MangoPay$DisputeDocuments,
+    Repudiations: typeof MangoPay$Repudiations,
+    Disputes: typeof MangoPay$Disputes,
+    Events: typeof MangoPay$Events,
+    Responses: typeof MangoPay$Responses,
+    Mandates: typeof MangoPay$Mandates,
+    Hooks: typeof MangoPay$Hooks,
+    Reports: typeof MangoPay$Reports,
+    models: typeof npm$namespace$MangoPay$models
+  };
   declare interface MangoPay$AuthorizationData {
     access_token: string;
     token_type: string;
@@ -99,14 +123,11 @@ declare module "mangopay2-nodejs-sdk" {
     | "FAILED";
 
   declare interface MangoPay$BillingData {
-    models$Address:
-      | models$models$Address
-      | address$address$AddressData
-      | string;
+    Address: models$Address | address$AddressData | string;
   }
 
   declare interface MangoPay$SecurityInfoData {
-    MangoPay$AVSResult: MangoPay$AVSResult;
+    AVSResult: MangoPay$AVSResult;
   }
 
   declare interface MangoPay$MoneyData {
@@ -334,16 +355,16 @@ declare module "mangopay2-nodejs-sdk" {
 
   declare type MangoPay$MethodOptionWithResponse = {
     resolveWithFullResponse: true
-  } & MangoPay$MethodOptions;
+  } & MethodOptions;
 
   declare type MangoPay$MethodOptionWithoutResponse = {
     resolveWithFullResponse?: false
-  } & MangoPay$MethodOptions;
+  } & MethodOptions;
 
   declare interface MangoPay$DependsObject {
     dependsPropertyName: string;
     propertyName: string;
-    propertyValueMapping: Record<string, models$models$Model>;
+    propertyValueMapping: Record<string, models$Model>;
   }
 
   declare interface MangoPay$ModelMethods<T: {}> {
@@ -366,61 +387,93 @@ declare module "mangopay2-nodejs-sdk" {
     parse(): void;
   }
 
-  declare var npm$namespace$models: {
-    PayInExecutionType: typeof models$PayInExecutionType,
-    PayInPaymentType: typeof models$PayInPaymentType,
-    MandateStatus: typeof models$MandateStatus,
-    LegalPersonType: typeof models$LegalPersonType,
-    PersonType: typeof models$PersonType,
-    BankAccountType: typeof models$BankAccountType,
-    DeclaredUboStatus: typeof models$DeclaredUboStatus,
-    KycDocumentStatus: typeof models$KycDocumentStatus,
-    KycDocumentType: typeof models$KycDocumentType,
-    PayOutPaymentType: typeof models$PayOutPaymentType,
-    PlatformType: typeof models$PlatformType,
-    UboDeclarationRefusedReasonType: typeof models$UboDeclarationRefusedReasonType,
-    UboDeclarationStatus: typeof models$UboDeclarationStatus,
-    UboRefusedReasonType: typeof models$UboRefusedReasonType,
-    UserNaturalCapacity: typeof models$UserNaturalCapacity
+  declare var npm$namespace$MangoPay$models: {
+    PayInExecutionType: typeof MangoPay$models$PayInExecutionType,
+    PayInPaymentType: typeof MangoPay$models$PayInPaymentType,
+    MandateStatus: typeof MangoPay$models$MandateStatus,
+    LegalPersonType: typeof MangoPay$models$LegalPersonType,
+    PersonType: typeof MangoPay$models$PersonType,
+    BankAccountType: typeof MangoPay$models$BankAccountType,
+    DeclaredUboStatus: typeof MangoPay$models$DeclaredUboStatus,
+    KycDocumentStatus: typeof MangoPay$models$KycDocumentStatus,
+    KycDocumentType: typeof MangoPay$models$KycDocumentType,
+    PayOutPaymentType: typeof MangoPay$models$PayOutPaymentType,
+    PlatformType: typeof MangoPay$models$PlatformType,
+    UboDeclarationRefusedReasonType: typeof MangoPay$models$UboDeclarationRefusedReasonType,
+    UboDeclarationStatus: typeof MangoPay$models$UboDeclarationStatus,
+    UboRefusedReasonType: typeof MangoPay$models$UboRefusedReasonType,
+    UserNaturalCapacity: typeof MangoPay$models$UserNaturalCapacity,
+
+    DeclaredUbo: typeof MangoPay$models$DeclaredUbo,
+    Model: typeof MangoPay$models$Model,
+    EntityBase: typeof MangoPay$models$EntityBase,
+    Money: typeof MangoPay$models$Money,
+    Billing: typeof MangoPay$models$Billing,
+    BankingAliasIBAN: typeof MangoPay$models$BankingAliasIBAN,
+    BankAccountDetails: typeof MangoPay$models$BankAccountDetails,
+    ClientWallet: typeof MangoPay$models$ClientWallet,
+    Wallet: typeof MangoPay$models$Wallet,
+    Document: typeof MangoPay$models$Document,
+    SecurityInfo: typeof MangoPay$models$SecurityInfo,
+    PayInPaymentDetails: typeof MangoPay$models$PayInPaymentDetails,
+    PayInExecutionDetails: typeof MangoPay$models$PayInExecutionDetails,
+    PayInExecutionDetailsDirect: typeof MangoPay$models$PayInExecutionDetailsDirect,
+    PayInExecutionDetailsWeb: typeof MangoPay$models$PayInExecutionDetailsWeb,
+    PayInPaymentDetailsBankWire: typeof MangoPay$models$PayInPaymentDetailsBankWire,
+    PayInPaymentDetailsBankingAlias: typeof MangoPay$models$PayInPaymentDetailsBankingAlias,
+    PayInPaymentDetailsCard: typeof MangoPay$models$PayInPaymentDetailsCard,
+    PayInPaymentDetailsCardDirect: typeof MangoPay$models$PayInPaymentDetailsCardDirect,
+    PayInPaymentDetailsCardWeb: typeof MangoPay$models$PayInPaymentDetailsCardWeb,
+    PayInPaymentDetailsDirectDebitDirect: typeof MangoPay$models$PayInPaymentDetailsDirectDebitDirect,
+    PayInPaymentDetailsDirectDebitWeb: typeof MangoPay$models$PayInPaymentDetailsDirectDebitWeb,
+    PayInPaymentDetailsPayPal: typeof MangoPay$models$PayInPaymentDetailsPayPal,
+    PayInPaymentDetailsPreAuthorized: typeof MangoPay$models$PayInPaymentDetailsPreAuthorized,
+    PayInTemplateURLOptions: typeof MangoPay$models$PayInTemplateURLOptions,
+    Refund: typeof MangoPay$models$Refund,
+    RefundReasonDetails: typeof MangoPay$models$RefundReasonDetails,
+    PlatformCategorization: typeof MangoPay$models$PlatformCategorization,
+    DisputeReason: typeof MangoPay$models$DisputeReason,
+    PayOut: typeof MangoPay$models$PayOut,
+    PayOutPaymentDetails: typeof MangoPay$models$PayOutPaymentDetails,
+    PayOutPaymentDetailsBankWire: typeof MangoPay$models$PayOutPaymentDetailsBankWire,
+    ReportFilter: typeof MangoPay$models$ReportFilter
   };
-  declare var models$PayInExecutionType: MangoPay$IPayInExecutionType;
+  declare var MangoPay$models$PayInExecutionType: MangoPay$IPayInExecutionType;
 
-  declare var models$PayInPaymentType: MangoPay$IPayInPaymentType;
+  declare var MangoPay$models$PayInPaymentType: MangoPay$IPayInPaymentType;
 
-  declare var models$MandateStatus: MangoPay$IMandateStatus;
+  declare var MangoPay$models$MandateStatus: MangoPay$IMandateStatus;
 
-  declare var models$LegalPersonType: MangoPay$ILegalPersonType;
+  declare var MangoPay$models$LegalPersonType: MangoPay$ILegalPersonType;
 
-  declare var models$PersonType: MangoPay$IPersonType;
+  declare var MangoPay$models$PersonType: MangoPay$IPersonType;
 
-  declare var models$BankAccountType: MangoPay$IBankAccountType;
+  declare var MangoPay$models$BankAccountType: MangoPay$IBankAccountType;
 
-  declare var models$DeclaredUboStatus: MangoPay$IDeclaredUboStatus;
+  declare var MangoPay$models$DeclaredUboStatus: MangoPay$IDeclaredUboStatus;
 
-  declare var models$KycDocumentStatus: MangoPay$IKycDocumentStatus;
+  declare var MangoPay$models$KycDocumentStatus: MangoPay$IKycDocumentStatus;
 
-  declare var models$KycDocumentType: MangoPay$IKycDocumentType;
+  declare var MangoPay$models$KycDocumentType: MangoPay$IKycDocumentType;
 
-  declare var models$PayOutPaymentType: MangoPay$IPayOutPaymentType;
+  declare var MangoPay$models$PayOutPaymentType: MangoPay$IPayOutPaymentType;
 
-  declare var models$PlatformType: MangoPay$IPlatformType;
+  declare var MangoPay$models$PlatformType: MangoPay$IPlatformType;
 
-  declare var models$UboDeclarationRefusedReasonType: MangoPay$IUboDeclarationRefusedReasonType;
+  declare var MangoPay$models$UboDeclarationRefusedReasonType: MangoPay$IUboDeclarationRefusedReasonType;
 
-  declare var models$UboDeclarationStatus: MangoPay$IUboDeclarationStatus;
+  declare var MangoPay$models$UboDeclarationStatus: MangoPay$IUboDeclarationStatus;
 
-  declare var models$UboRefusedReasonType: MangoPay$IUboRefusedReasonType;
+  declare var MangoPay$models$UboRefusedReasonType: MangoPay$IUboRefusedReasonType;
 
-  declare var models$UserNaturalCapacity: MangoPay$IUserNaturalCapacity;
+  declare var MangoPay$models$UserNaturalCapacity: MangoPay$IUserNaturalCapacity;
 
-  declare class models$DeclaredUbo
-    mixins models$Model<uboDeclaration$uboDeclaration$UboDeclarationData> {
-    constructor(
-      data: $Shape<uboDeclaration$uboDeclaration$UboDeclarationData>
-    ): this;
+  declare class MangoPay$models$DeclaredUbo
+    mixins Model<uboDeclaration$UboDeclarationData> {
+    constructor(data: $Shape<uboDeclaration$UboDeclarationData>): this;
   }
 
-  declare class models$Model<T = any> mixins MangoPay$ModelMethods<T> {
+  declare class MangoPay$models$Model<T = any> mixins ModelMethods<T> {
     initialize(): void;
     getData<K: $Keys<T>>(attribute: K): $ElementType<T, K>;
     setData<K: $Keys<T>>(attribute: K, value: $ElementType<T, K>): this;
@@ -432,7 +485,7 @@ declare module "mangopay2-nodejs-sdk" {
     constructor(data: T): this;
   }
 
-  declare class models$EntityBase<T = any> mixins models$Model<T> {
+  declare class MangoPay$models$EntityBase<T = any> mixins Model<T> {
     initialize(): void;
 
     /**
@@ -452,49 +505,47 @@ declare module "mangopay2-nodejs-sdk" {
     toJSON(): any;
   }
 
-  declare class models$Money mixins models$EntityBase<MangoPay$MoneyData> {
+  declare class MangoPay$models$Money mixins EntityBase<MangoPay$MoneyData> {
     constructor(data: MangoPay$MoneyData): this;
   }
 
-  declare class models$Billing mixins models$EntityBase<MangoPay$BillingData> {
+  declare class MangoPay$models$Billing
+    mixins EntityBase<MangoPay$BillingData> {
     constructor(data: MangoPay$BillingData): this;
   }
 
-  declare type models$Address = {} & address$address$AddressData;
+  declare type MangoPay$models$Address = {} & address$AddressData;
 
-  declare type models$BankingAlias = {} & bankingAlias$bankingAlias$IBANBankingAliasData;
+  declare type MangoPay$models$BankingAlias = {} & bankingAlias$IBANBankingAliasData;
 
-  declare class models$BankingAliasIBAN mixins models$BankingAlias {}
+  declare class MangoPay$models$BankingAliasIBAN mixins BankingAlias {}
 
-  declare type models$BankAccount = {} & bankAccount$bankAccount$DataIntersection;
+  declare type MangoPay$models$BankAccount = {} & bankAccount$DataIntersection;
 
-  declare class models$BankAccountDetails {
+  declare class MangoPay$models$BankAccountDetails {
     constructor(data: any): this;
   }
 
-  declare type models$BankAccountDetailsCA = {} & bankAccount$bankAccount$CADetails;
+  declare type MangoPay$models$BankAccountDetailsCA = {} & bankAccount$CADetails;
 
-  declare type models$BankAccountDetailsOther = {} & bankAccount$bankAccount$OtherDetails;
+  declare type MangoPay$models$BankAccountDetailsOther = {} & bankAccount$OtherDetails;
 
-  declare type models$BankAccountDetailsGB = {} & bankAccount$bankAccount$GBDetails;
+  declare type MangoPay$models$BankAccountDetailsGB = {} & bankAccount$GBDetails;
 
-  declare type models$BankAccountDetailsIBAN = {} & bankAccount$bankAccount$IBANDetails;
+  declare type MangoPay$models$BankAccountDetailsIBAN = {} & bankAccount$IBANDetails;
 
-  declare type models$BankAccountDetailsUS = {} & bankAccount$bankAccount$USDetails;
+  declare type MangoPay$models$BankAccountDetailsUS = {} & bankAccount$USDetails;
 
-  declare type models$Transaction = {} & transaction$transaction$TransactionData;
+  declare type MangoPay$models$Transaction = {} & transaction$TransactionData;
 
-  declare class models$ClientWallet
-    mixins models$EntityBase<wallet$wallet$WalletData> {}
+  declare class MangoPay$models$ClientWallet
+    mixins EntityBase<wallet$WalletData> {}
 
-  declare class models$Wallet
-    mixins models$EntityBase<wallet$wallet$WalletData> {
-    constructor(
-      data: wallet$wallet$CreateWallet | wallet$wallet$UpdateWallet
-    ): this;
+  declare class MangoPay$models$Wallet mixins EntityBase<wallet$WalletData> {
+    constructor(data: wallet$CreateWallet | wallet$UpdateWallet): this;
   }
 
-  declare type models$DocumentPageConsult = {
+  declare type MangoPay$models$DocumentPageConsult = {
     /**
      * URL where this document page can be viewed.
      */
@@ -504,164 +555,162 @@ declare module "mangopay2-nodejs-sdk" {
      * Time in millis when the page consult will expire.
      */
     ExpirationDate: MangoPay$Timestamp
-  } & disputeDocument$models$DocumentPageConsult;
+  } & disputeDocument$DocumentPageConsult;
 
-  declare class models$Document mixins models$EntityBase {
+  declare class MangoPay$models$Document mixins EntityBase {
     constructor(data: any): this;
   }
 
-  declare type models$DisputeDocument = {} & disputeDocument$disputeDocument$DisputeDocumentData;
+  declare type MangoPay$models$DisputeDocument = {} & disputeDocument$DisputeDocumentData;
 
-  declare type models$DisputeDocumentPage = {} & disputeDocument$disputeDocument$CreateDisputeDocumentPage;
+  declare type MangoPay$models$DisputeDocumentPage = {} & disputeDocument$CreateDisputeDocumentPage;
 
-  declare type models$KycDocument = {} & kycDocument$kycDocument$KycDocumentData;
+  declare type MangoPay$models$KycDocument = {} & kycDocument$KycDocumentData;
 
-  declare type models$KycPage = {} & kycDocument$kycDocument$CreateKycPage;
+  declare type MangoPay$models$KycPage = {} & kycDocument$CreateKycPage;
 
-  declare type models$EMoney = {} & eMoney$eMoney$EMoneyData;
+  declare type MangoPay$models$EMoney = {} & eMoney$EMoneyData;
 
-  declare type models$UboDeclaration = {} & uboDeclaration$uboDeclaration$UboDeclarationData;
+  declare type MangoPay$models$UboDeclaration = {} & uboDeclaration$UboDeclarationData;
 
-  declare type models$CardRegistration = {} & cardRegistration$cardRegistration$CardRegistrationData;
+  declare type MangoPay$models$CardRegistration = {} & cardRegistration$CardRegistrationData;
 
-  declare type models$Card = {} & card$card$CardData;
+  declare type MangoPay$models$Card = {} & card$CardData;
 
-  declare type models$CardPreAuthorization = {} & cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData;
+  declare type MangoPay$models$CardPreAuthorization = {} & cardPreAuthorization$CardPreAuthorizationData;
 
-  declare class models$SecurityInfo
-    mixins models$EntityBase<
-        models$SecurityInfo & entityBase$entityBase$EntityBaseData
+  declare class MangoPay$models$SecurityInfo
+    mixins EntityBase<
+        MangoPay$models$SecurityInfo & entityBase$EntityBaseData
       > {
-    constructor(data: models$SecurityInfo): this;
+    constructor(data: MangoPay$models$SecurityInfo): this;
   }
 
-  declare type models$UserLegal = {} & user$user$UserLegalData;
+  declare type MangoPay$models$UserLegal = {} & user$UserLegalData;
 
-  declare type models$UserNatural = {} & user$user$UserNaturalData;
+  declare type MangoPay$models$UserNatural = {} & user$UserNaturalData;
 
-  declare type models$User = {} & user$user$UserData;
+  declare type MangoPay$models$User = {} & user$UserData;
 
-  declare type models$PayIn = {} & payIn$payIn$BasePayInData;
+  declare type MangoPay$models$PayIn = {} & payIn$BasePayInData;
 
-  declare class models$PayInPaymentDetails mixins models$EntityBase {
+  declare class MangoPay$models$PayInPaymentDetails mixins EntityBase {
     constructor(data: any): this;
   }
 
-  declare class models$PayInExecutionDetails mixins models$EntityBase {
+  declare class MangoPay$models$PayInExecutionDetails mixins EntityBase {
     constructor(data: any): this;
   }
 
-  declare class models$PayInExecutionDetailsDirect
-    mixins models$PayInExecutionDetails {
+  declare class MangoPay$models$PayInExecutionDetailsDirect
+    mixins PayInExecutionDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInExecutionDetailsWeb
-    mixins models$PayInExecutionDetails {
+  declare class MangoPay$models$PayInExecutionDetailsWeb
+    mixins PayInExecutionDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsBankWire
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsBankWire
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsBankingAlias
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsBankingAlias
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsCard
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsCard
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsCardDirect
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsCardDirect
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsCardWeb
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsCardWeb
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsDirectDebitDirect
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsDirectDebitDirect
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsDirectDebitWeb
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsDirectDebitWeb
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsPayPal
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsPayPal
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInPaymentDetailsPreAuthorized
-    mixins models$PayInPaymentDetails {
+  declare class MangoPay$models$PayInPaymentDetailsPreAuthorized
+    mixins PayInPaymentDetails {
     constructor(data: any): this;
   }
 
-  declare class models$PayInTemplateURLOptions mixins models$EntityBase {
+  declare class MangoPay$models$PayInTemplateURLOptions mixins EntityBase {
     constructor(data: any): this;
   }
 
-  declare class models$Refund
-    mixins models$EntityBase<refund$refund$RefundData> {
+  declare class MangoPay$models$Refund mixins EntityBase<refund$RefundData> {
     constructor(
-      data: refund$refund$CreatePayInRefund | refund$refund$CreateTransferRefund
+      data: refund$CreatePayInRefund | refund$CreateTransferRefund
     ): this;
   }
 
-  declare class models$RefundReasonDetails mixins models$EntityBase {
+  declare class MangoPay$models$RefundReasonDetails mixins EntityBase {
     constructor(data: any): this;
   }
 
-  declare type models$Repudiation = {} & repudiation$repudiation$RepudiationData;
+  declare type MangoPay$models$Repudiation = {} & repudiation$RepudiationData;
 
-  declare type models$Client = {} & client$client$ClientData;
+  declare type MangoPay$models$Client = {} & client$ClientData;
 
-  declare class models$PlatformCategorization
-    mixins models$EntityBase<client$models$PlatformCategorization> {
-    constructor(data: client$models$PlatformCategorization): this;
+  declare class MangoPay$models$PlatformCategorization
+    mixins EntityBase<client$PlatformCategorization> {
+    constructor(data: client$PlatformCategorization): this;
   }
 
-  declare type models$Dispute = {} & dispute$dispute$DisputeData;
+  declare type MangoPay$models$Dispute = {} & dispute$DisputeData;
 
-  declare class models$DisputeReason mixins models$Model {
+  declare class MangoPay$models$DisputeReason mixins Model {
     constructor(data: any): this;
   }
 
-  declare type models$SettlementTransfer = {} & settlementTransfer$settlementTransfer$SettlementTransferData;
+  declare type MangoPay$models$SettlementTransfer = {} & settlementTransfer$SettlementTransferData;
 
-  declare type models$Transfer = {} & transfer$transfer$TransferData;
+  declare type MangoPay$models$Transfer = {} & transfer$TransferData;
 
-  declare class models$PayOut
-    mixins models$EntityBase<models$PayOut.PayOut$PayOutData> {
-    constructor(data: $Shape<models$PayOut.PayOut$CreatePayOut>): this;
+  declare class MangoPay$models$PayOut mixins EntityBase<PayOut$PayOutData> {
+    constructor(data: $Shape<PayOut$CreatePayOut>): this;
   }
 
-  declare class models$PayOutPaymentDetails mixins models$EntityBase {
+  declare class MangoPay$models$PayOutPaymentDetails mixins EntityBase {
     constructor(data?: any): this;
   }
 
-  declare class models$PayOutPaymentDetailsBankWire
-    mixins models$PayOutPaymentDetails {
+  declare class MangoPay$models$PayOutPaymentDetailsBankWire
+    mixins PayOutPaymentDetails {
     constructor(data?: any): this;
   }
 
-  declare type models$Mandate = {} & mandate$mandate$MandateData;
+  declare type MangoPay$models$Mandate = {} & mandate$MandateData;
 
-  declare type models$Hook = {} & hook$hook$HookData;
+  declare type MangoPay$models$Hook = {} & hook$HookData;
 
-  declare type models$Report = {} & report$report$ReportData;
+  declare type MangoPay$models$Report = {} & report$ReportData;
 
-  declare class models$ReportFilter mixins models$Model<report$report$Filters> {
-    constructor(data?: $Shape<report$report$Filters>): this;
+  declare class MangoPay$models$ReportFilter mixins Model<report$Filters> {
+    constructor(data?: $Shape<report$Filters>): this;
   }
 
   declare interface MangoPay$IPayInExecutionType {
@@ -671,7 +720,7 @@ declare module "mangopay2-nodejs-sdk" {
 
   declare interface MangoPay$IPayInPaymentType {
     BankWire: "BANK_WIRE";
-    models$Card: "CARD";
+    Card: "CARD";
     DirectDebit: "DIRECT_DEBIT";
     Preauthorized: "PREAUTHORIZED";
     PayPal: "PAYPAL";
@@ -807,13 +856,13 @@ declare module "mangopay2-nodejs-sdk" {
     Declarative: "DECLARATIVE";
   }
 
-  declare interface entityBase$EntityBaseData {
+  declare interface MangoPay$entityBase$EntityBaseData {
     Id: string;
     Tag: string;
     CreationDate: number;
   }
 
-  declare interface address$AddressData {
+  declare interface MangoPay$address$AddressData {
     AddressLine1: string;
     AddressLine2: string;
     City: string;
@@ -822,14 +871,14 @@ declare module "mangopay2-nodejs-sdk" {
     Country: string;
   }
 
-  declare type address$AddressType =
+  declare type MangoPay$address$AddressType =
     | string
-    | address$AddressData
-    | models$models$Address;
+    | MangoPay$address$AddressData
+    | models$Address;
 
-  declare type bankingAlias$BankingAliasType = "IBAN";
+  declare type MangoPay$bankingAlias$BankingAliasType = "IBAN";
 
-  declare type bankingAlias$BankingAliasData = {
+  declare type MangoPay$bankingAlias$BankingAliasData = {
     /**
      * The user ID who is credited (defaults to the owner of the wallet)
      */
@@ -848,7 +897,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of banking alias (note that only IBAN is available at present)
      */
-    Type: bankingAlias$BankingAliasType,
+    Type: MangoPay$bankingAlias$BankingAliasType,
 
     /**
      * The owner of the wallet/banking alias
@@ -859,9 +908,9 @@ declare module "mangopay2-nodejs-sdk" {
      * Whether the banking alias is active or not
      */
     Active: boolean
-  } & entityBase$entityBase$EntityBaseData;
+  } & entityBase$EntityBaseData;
 
-  declare type bankingAlias$IBANBankingAliasData = {
+  declare type MangoPay$bankingAlias$IBANBankingAliasData = {
     /**
      * The type of banking alias (note that only IBAN is available at present)
      */
@@ -876,24 +925,24 @@ declare module "mangopay2-nodejs-sdk" {
      * The BIC of the banking alias
      */
     BIC: string
-  } & bankingAlias$BankingAliasData;
+  } & BankingAliasData;
 
-  declare type bankingAlias$CreateIBANBankingAlias = {} & PickPartialRequired<
-    bankingAlias$IBANBankingAliasData,
+  declare type MangoPay$bankingAlias$CreateIBANBankingAlias = {} & PickPartialRequired<
+    MangoPay$bankingAlias$IBANBankingAliasData,
     "Tag" | "CreditedUserId",
     "OwnerName" | "Country"
   >;
 
-  declare type bankAccount$BankAccountType =
+  declare type MangoPay$bankAccount$BankAccountType =
     | "IBAN"
     | "GB"
     | "US"
     | "CA"
     | "OTHER";
 
-  declare type bankAccount$DepositAccountType = "CHECKING" | "SAVINGS";
+  declare type MangoPay$bankAccount$DepositAccountType = "CHECKING" | "SAVINGS";
 
-  declare type bankAccount$BaseData = {
+  declare type MangoPay$bankAccount$BaseData = {
     /**
      * The object owner's UserId
      */
@@ -902,7 +951,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of bank account
      */
-    Type: bankAccount$BankAccountType,
+    Type: MangoPay$bankAccount$BankAccountType,
 
     /**
      * The name of the owner of the bank account
@@ -912,26 +961,26 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType,
+    OwnerAddress: address$AddressType,
 
     /**
      * @deprecated
      */
-    Details?: models$models$BankAccountDetails,
+    Details?: models$BankAccountDetails,
 
     /**
      * Whether the bank account is active or not
      */
     Active: boolean
-  } & entityBase$entityBase$EntityBaseData;
+  } & entityBase$EntityBaseData;
 
-  declare interface bankAccount$IBANDetails {
+  declare interface MangoPay$bankAccount$IBANDetails {
     Type: "IBAN";
 
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType;
+    OwnerAddress: address$AddressType;
 
     /**
      * The name of the owner of the bank account
@@ -949,16 +998,16 @@ declare module "mangopay2-nodejs-sdk" {
     BIC?: string;
   }
 
-  declare type bankAccount$IBANData = bankAccount$BaseData &
-    bankAccount$IBANDetails;
+  declare type MangoPay$bankAccount$IBANData = MangoPay$bankAccount$BaseData &
+    MangoPay$bankAccount$IBANDetails;
 
-  declare interface bankAccount$USDetails {
+  declare interface MangoPay$bankAccount$USDetails {
     Type: "US";
 
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType;
+    OwnerAddress: address$AddressType;
 
     /**
      * The name of the owner of the bank account
@@ -978,19 +1027,19 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of account
      */
-    bankAccount$DepositAccountType?: bankAccount$DepositAccountType;
+    DepositAccountType?: MangoPay$bankAccount$DepositAccountType;
   }
 
-  declare type bankAccount$USData = bankAccount$BaseData &
-    bankAccount$USDetails;
+  declare type MangoPay$bankAccount$USData = MangoPay$bankAccount$BaseData &
+    MangoPay$bankAccount$USDetails;
 
-  declare interface bankAccount$CADetails {
+  declare interface MangoPay$bankAccount$CADetails {
     Type: "CA";
 
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType;
+    OwnerAddress: address$AddressType;
 
     /**
      * The name of the owner of the bank account
@@ -1018,16 +1067,16 @@ declare module "mangopay2-nodejs-sdk" {
     BankName: string;
   }
 
-  declare type bankAccount$CAData = bankAccount$BaseData &
-    bankAccount$CADetails;
+  declare type MangoPay$bankAccount$CAData = MangoPay$bankAccount$BaseData &
+    MangoPay$bankAccount$CADetails;
 
-  declare interface bankAccount$GBDetails {
+  declare interface MangoPay$bankAccount$GBDetails {
     Type: "GB";
 
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType;
+    OwnerAddress: address$AddressType;
 
     /**
      * The name of the owner of the bank account
@@ -1045,16 +1094,16 @@ declare module "mangopay2-nodejs-sdk" {
     AccountNumber: string;
   }
 
-  declare type bankAccount$GBData = bankAccount$BaseData &
-    bankAccount$GBDetails;
+  declare type MangoPay$bankAccount$GBData = MangoPay$bankAccount$BaseData &
+    MangoPay$bankAccount$GBDetails;
 
-  declare interface bankAccount$OtherDetails {
+  declare interface MangoPay$bankAccount$OtherDetails {
     Type: "OTHER";
 
     /**
      * The address of the owner of the bank account
      */
-    OwnerAddress: address$address$AddressType;
+    OwnerAddress: address$AddressType;
 
     /**
      * The name of the owner of the bank account
@@ -1077,43 +1126,1240 @@ declare module "mangopay2-nodejs-sdk" {
     AccountNumber: string;
   }
 
-  declare type bankAccount$OtherData = bankAccount$BaseData &
-    bankAccount$OtherDetails;
+  declare type MangoPay$bankAccount$OtherData = MangoPay$bankAccount$BaseData &
+    MangoPay$bankAccount$OtherDetails;
 
-  declare type bankAccount$Data =
-    | bankAccount$OtherData
-    | bankAccount$CAData
-    | bankAccount$GBData
-    | bankAccount$IBANData
-    | bankAccount$USData;
+  declare type MangoPay$bankAccount$Data =
+    | MangoPay$bankAccount$OtherData
+    | MangoPay$bankAccount$CAData
+    | MangoPay$bankAccount$GBData
+    | MangoPay$bankAccount$IBANData
+    | MangoPay$bankAccount$USData;
 
-  declare type bankAccount$DataIntersection = bankAccount$OtherData &
-    bankAccount$CAData &
-    bankAccount$GBData &
-    bankAccount$IBANData &
-    bankAccount$USData;
+  declare type MangoPay$bankAccount$DataIntersection = MangoPay$bankAccount$OtherData &
+    MangoPay$bankAccount$CAData &
+    MangoPay$bankAccount$GBData &
+    MangoPay$bankAccount$IBANData &
+    MangoPay$bankAccount$USData;
 
-  declare type bankAccount$CreationDetails =
-    | bankAccount$OtherDetails
-    | bankAccount$CADetails
-    | bankAccount$GBDetails
-    | bankAccount$IBANDetails
-    | bankAccount$USDetails;
+  declare type MangoPay$bankAccount$CreationDetails =
+    | MangoPay$bankAccount$OtherDetails
+    | MangoPay$bankAccount$CADetails
+    | MangoPay$bankAccount$GBDetails
+    | MangoPay$bankAccount$IBANDetails
+    | MangoPay$bankAccount$USDetails;
 
-  declare type transaction$TransactionNature =
+  declare type MangoPay$transaction$TransactionNature =
     | "REGULAR"
     | "REPUDIATION"
     | "REFUND"
     | "SETTLEMENT";
 
-  declare type transaction$TransactionType = "PAYIN" | "TRANSFER" | "PAYOUT";
+  declare type MangoPay$transaction$TransactionType =
+    | "PAYIN"
+    | "TRANSFER"
+    | "PAYOUT";
 
-  declare type transaction$TransactionStatus =
+  declare type MangoPay$transaction$TransactionStatus =
     | "CREATED"
     | "SUCCEEDED"
     | "FAILED";
 
-  declare type transaction$TransactionData = {
+  declare type MangoPay$transaction$TransactionData = {
+    /**
+     * Information about the funds that are being debited
+     */
+    DebitedFunds: MangoPay$MoneyData,
+
+    /**
+     * Details about the funds that are being credited (DebitedFunds – Fees = CreditedFunds)
+     */
+    CreditedFunds: MangoPay$MoneyData,
+
+    /**
+     * Information about the fees that were taken by the client for this transaction (and were hence transferred to the Client's platform wallet)
+     */
+    Fees: MangoPay$MoneyData,
+
+    /**
+     * The ID of the wallet that was debited
+     */
+    DebitedWalletId: string,
+
+    /**
+     * The ID of the wallet where money will be credited
+     */
+    CreditedWalletId: string,
+
+    /**
+     * A user's ID
+     */
+    AuthorId: string,
+
+    /**
+     * The user ID who is credited (defaults to the owner of the wallet)
+     */
+    CreditedUserId: string,
+
+    /**
+     * The nature of the transaction
+     */
+    Nature: MangoPay$transaction$TransactionNature,
+
+    /**
+     * The status of the transaction
+     */
+    Status: MangoPay$transaction$TransactionStatus,
+
+    /**
+     * When the transaction happened
+     */
+    ExecutionDate: MangoPay$Timestamp,
+
+    /**
+     * The result code
+     */
+    ResultCode: string,
+
+    /**
+     * A verbal explanation of the ResultCode
+     */
+    ResultMessage: string,
+
+    /**
+     * The type of the transaction
+     */
+    Type: MangoPay$transaction$TransactionType
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$wallet$ClientFundsType = "FEES" | "CREDIT";
+
+  declare type MangoPay$wallet$FundsType =
+    | "DEFAULT"
+    | MangoPay$wallet$ClientFundsType;
+
+  declare type MangoPay$wallet$WalletData = {
+    /**
+     * An array of userIDs of who own's the wallet. For now, you only can set up a unique owner.
+     */
+    Owners: [string],
+
+    /**
+     * The current balance of the wallet
+     */
+    Balance: MangoPay$MoneyData,
+
+    /**
+     * The type of funds in the wallet
+     */
+    FundsType: MangoPay$wallet$FundsType,
+
+    /**
+     * A desciption of the wallet
+     */
+    Description: string,
+
+    /**
+     * The currency - should be ISO_4217 format
+     */
+    Currency: CurrencyISO
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$wallet$ClientWalletData = {
+    FundsType: MangoPay$wallet$ClientFundsType
+  } & Omit<MangoPay$wallet$WalletData, "Owners" | "Description">;
+
+  declare type MangoPay$wallet$CreateWallet = wallet$UpdateWallet &
+    Pick<MangoPay$wallet$WalletData, "Owners" | "Currency" | "Description">;
+
+  declare type MangoPay$wallet$UpdateWallet = PickPartial<
+    MangoPay$wallet$WalletData,
+    "Tag" | "Description"
+  >;
+
+  declare type MangoPay$disputeDocument$DisputeDocumentType =
+    | "DELIVERY_PROOF"
+    | "INVOICE"
+    | "REFUND_PROOF"
+    | "USER_CORRESPONDANCE"
+    | "USER_ACCEPTANCE_PROOF"
+    | "PRODUCT_REPLACEMENT_PROOF"
+    | "OTHER";
+
+  declare type MangoPay$disputeDocument$DocumentStatus =
+    | "CREATED"
+    | "VALIDATION_ASKED"
+    | "VALIDATED"
+    | "REFUSED";
+
+  declare type MangoPay$disputeDocument$RefusedReasonType =
+    | "DOCUMENT_UNREADABLE"
+    | "DOCUMENT_NOT_ACCEPTED"
+    | "DOCUMENT_HAS_EXPIRED"
+    | "DOCUMENT_INCOMPLETE"
+    | "DOCUMENT_MISSING"
+    | "SPECIFIC_CASE"
+    | "DOCUMENT_FALSIFIED"
+    | "OTHER";
+
+  declare type MangoPay$disputeDocument$DisputeDocumentData = {
+    /**
+     * Gives the type of the KYC document
+     */
+    Type: MangoPay$disputeDocument$DisputeDocumentType,
+
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * The Id of a Dispute
+     */
+    DisputeId: string,
+
+    /**
+     * The status of this KYC/Dispute document
+     */
+    Status: MangoPay$disputeDocument$DocumentStatus,
+
+    /**
+     * The message accompanying a refusal
+     */
+    RefusedReasonMessage: string,
+
+    /**
+     * The type of reason for refusal
+     */
+    RefusedReasonType: MangoPay$disputeDocument$RefusedReasonType,
+
+    /**
+     * The date when the document was processed by MANGOPAY
+     */
+    ProcessedDate: MangoPay$Timestamp
+  } & entityBase$EntityBaseData;
+
+  declare interface MangoPay$disputeDocument$CreateDisputeDocument {
+    /**
+     * Gives the type of the KYC document
+     */
+    Type: MangoPay$disputeDocument$DisputeDocumentType;
+    Tag?: string;
+  }
+
+  declare interface MangoPay$disputeDocument$SubmitDisputeDocument {
+    /**
+     * The status of this KYC/Dispute document
+     */
+    Status: "VALIDATION_ASKED";
+    Tag?: string;
+  }
+
+  /**
+   * - Documents have to be in "CREATED" Status
+   * - You can create as many pages as needed
+   *
+   * Remember to change Status to "VALIDATION_ASKED" to submit KYC documents
+   * The maximum size per page is about 7Mb (or 10Mb when base64encoded). The following formats are accepted for the documents : .pdf, .jpeg, .jpg, .gif and .png. The minimum size is 1Kb.
+   */
+  declare interface MangoPay$disputeDocument$CreateDisputeDocumentPage {
+    /**
+     * The base64 encoded file which needs to be uploaded
+     *
+     * You need to fill in only the binary code. Do not send the first part that some converters add into the binary code which is
+     * `<img src=" data:image/png;base64..." />`
+     *
+     * e.g.
+     * ```json
+     *        * {
+     *        *   "File": "/9j/4AAQSkZJRgABAQEBLAEsAAD/.../wgARCAAyADIDAREAAhEBAxEB/8QAGwAAAgMBAQEA"
+     *        * }
+     *        * ```
+     */
+    File: string;
+  }
+
+  declare type MangoPay$disputeDocument$DocumentPageConsult = {
+    /**
+     * URL where this document page can be viewed.
+     */
+    Url: string,
+
+    /**
+     * Time in millis when the page consult will expire.
+     */
+    ExpirationDate: MangoPay$Timestamp
+  } & disputeDocument$DocumentPageConsult;
+
+  declare type MangoPay$kycDocument$KycDocumentType =
+    | "IDENTITY_PROOF"
+    | "REGISTRATION_PROOF"
+    | "ARTICLES_OF_ASSOCIATION"
+    | "SHAREHOLDER_DECLARATION"
+    | "ADDRESS_PROOF";
+
+  declare type MangoPay$kycDocument$DocumentStatus =
+    | "CREATED"
+    | "VALIDATION_ASKED"
+    | "VALIDATED"
+    | "REFUSED";
+
+  declare type MangoPay$kycDocument$KYCDocumentRefusedReasonType =
+    | "DOCUMENT_UNREADABLE"
+    | "DOCUMENT_NOT_ACCEPTED"
+    | "DOCUMENT_HAS_EXPIRED"
+    | "DOCUMENT_INCOMPLETE"
+    | "DOCUMENT_MISSING"
+    | "DOCUMENT_DO_NOT_MATCH_USER_DATA"
+    | "DOCUMENT_DO_NOT_MATCH_ACCOUNT_DATA"
+    | "SPECIFIC_CASE"
+    | "DOCUMENT_FALSIFIED"
+    | "UNDERAGE_PERSON"
+    | "SPECIFIC_CASE";
+
+  declare type MangoPay$kycDocument$KycDocumentData = {
+    /**
+     * Gives the type of the KYC document
+     */
+    Type: MangoPay$kycDocument$KycDocumentType,
+
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * The status of this KYC/Dispute document
+     */
+    Status: MangoPay$kycDocument$DocumentStatus,
+
+    /**
+     * The message accompanying a refusal
+     */
+    RefusedReasonMessage: string,
+
+    /**
+     * The type of reason for refusal
+     */
+    RefusedReasonType: MangoPay$kycDocument$KYCDocumentRefusedReasonType,
+
+    /**
+     * The date when the document was processed by MANGOPAY
+     */
+    ProcessedDate: MangoPay$Timestamp
+  } & entityBase$EntityBaseData;
+
+  declare interface MangoPay$kycDocument$CreateKycDocument {
+    /**
+     * Gives the type of the KYC document
+     */
+    Type: MangoPay$kycDocument$KycDocumentType;
+    Tag?: string;
+
+    /**
+     * Gives the type of the KYC document
+     */
+    Type: MangoPay$kycDocument$KycDocumentType;
+    Tag?: string;
+  }
+
+  declare interface MangoPay$kycDocument$SubmitKycDocument {
+    /**
+     * The status of this KYC/Dispute document
+     */
+    Status: "VALIDATION_ASKED";
+    Tag?: string;
+  }
+
+  /**
+   * - Documents have to be in "CREATED" Status
+   * - You can create as many pages as needed
+   *
+   * Remember to change Status to "VALIDATION_ASKED" to submit KYC documents
+   * The maximum size per page is about 7Mb (or 10Mb when base64encoded). The following formats are accepted for the documents : .pdf, .jpeg, .jpg, .gif and .png. The minimum size is 1Kb.
+   */
+  declare interface MangoPay$kycDocument$CreateKycPage {
+    /**
+     * The base64 encoded file which needs to be uploaded
+     *
+     * You need to fill in only the binary code. Do not send the first part that some converters add into the binary code which is
+     * `<img src=" data:image/png;base64..." />`
+     *
+     * e.g.
+     * ```json
+     *        * {
+     *        *   "File": "/9j/4AAQSkZJRgABAQEBLAEsAAD/.../wgARCAAyADIDAREAAhEBAxEB/8QAGwAAAgMBAQEA"
+     *        * }
+     *        * ```
+     */
+    File: string;
+  }
+
+  declare type MangoPay$eMoney$EMoneyData = {
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * The amount of money that has been credited to this user
+     */
+    CreditedEMoney: MangoPay$MoneyData,
+
+    /**
+     * The amount of money that has been debited from this user
+     */
+    DebitedEMoney: MangoPay$MoneyData
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$uboDeclaration$UboDeclarationData = {
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * Status of a UBO Declaration
+     */
+    Status: kycDocument$DocumentStatus,
+
+    /**
+     * Reason types for a UBO Declaration
+     */
+    RefusedReasonTypes: string[],
+
+    /**
+     * Refused Reason Message for a UBO Declaration
+     */
+    RefusedReasonMessage: string,
+
+    /**
+     * An array of UserIDs declared as Ultimate Beneficial Owners of a BUSINESS Legal User.
+     */
+    DeclaredUBOs: string[]
+  } & entityBase$EntityBaseData;
+
+  declare interface MangoPay$uboDeclaration$CreateUboDeclaration {
+    DeclaredUBOs?: string[];
+  }
+
+  declare interface MangoPay$uboDeclaration$UpdateUboDeclaration {
+    Id: string;
+    Tag?: string;
+    Status?: "VALIDATION_ASKED";
+
+    /**
+     * An array of UserIDs declared as Ultimate Beneficial Owners of a BUSINESS Legal User.
+     */
+    DeclaredUBOs?: string[];
+  }
+
+  declare type MangoPay$cardRegistration$CardRegistrationData = {
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * The currency - should be ISO_4217 format
+     */
+    Currency: CurrencyISO,
+
+    /**
+     * A special key to use when registering a card
+     */
+    AccessKey: string,
+
+    /**
+     * A specific value to pass to the CardRegistrationURL
+     */
+    PreregistrationData: string,
+
+    /**
+     * The URL to submit the card details form to
+     */
+    CardRegistrationURL: string,
+
+    /**
+     * Having registered a card, this confirmation hash needs to be updated to the card item
+     */
+    RegistrationData: string,
+
+    /**
+     * The type of card
+     */
+    CardType: card$CardType,
+
+    /**
+     * The ID of a card
+     */
+    CardId: string,
+
+    /**
+     * The result code
+     */
+    ResultCode: string,
+
+    /**
+     * A verbal explanation of the ResultCode
+     */
+    ResultMessage: string,
+
+    /**
+     * Status of the card registration
+     */
+    Status: card$CardStatus
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$cardRegistration$CreateCardRegistration = {} & PickPartialRequired<
+    MangoPay$cardRegistration$CardRegistrationData,
+    "CardType" | "Tag",
+    "UserId" | "Currency"
+  >;
+
+  declare type MangoPay$cardRegistration$UpdateCardRegistration = PickPartial<
+    MangoPay$cardRegistration$CardRegistrationData,
+    "Tag" | "RegistrationData"
+  >;
+
+  declare type MangoPay$card$CardType =
+    | "CB_VISA_MASTERCARD"
+    | "DINERS"
+    | "MASTERPASS"
+    | "MAESTRO"
+    | "P24"
+    | "IDEAL"
+    | "BCMC"
+    | "PAYLIB";
+
+  declare type MangoPay$card$CardStatus = "CREATED" | "VALIDATED" | "ERROR";
+
+  declare type MangoPay$card$CardValidity = "UNKNOWN" | "VALID" | "INVALID";
+
+  declare type MangoPay$card$CardData = {
+    /**
+     * The expiry date of the card - must be in format MMYY
+     */
+    ExpirationDate: string,
+
+    /**
+     * A partially obfuscated version of the credit card number
+     */
+    Alias: string,
+
+    /**
+     * The provider of the card
+     */
+    CardProvider: string,
+
+    /**
+     * The type of card
+     */
+    CardType: MangoPay$card$CardType,
+
+    /**
+     * The Country of the Address
+     */
+    Country: string,
+
+    /**
+     * The card product type - more info
+     */
+    Product: string,
+
+    /**
+     * The bank code
+     */
+    BankCode: string,
+
+    /**
+     * Whether the card is active or not
+     */
+    Active: boolean,
+
+    /**
+     * The currency - should be ISO_4217 format
+     */
+    Currency: CurrencyISO,
+
+    /**
+     * Whether the card is valid or not. Once they process (or attempt to process) a payment with the card we are able to indicate if it is "valid" or "invalid".
+     * If they didn’t process a payment yet the "Validity" stay at "unknown".
+     */
+    Validity: MangoPay$card$CardValidity,
+
+    /**
+     * A unique representation of a 16-digits card number
+     */
+    Fingerprint: string
+  } & entityBase$EntityBaseData;
+
+  declare interface MangoPay$card$UpdateCard {
+    Id: string;
+    Active?: false;
+  }
+
+  declare type MangoPay$cardPreAuthorization$CardPreAuthorizationData = {
+    /**
+     * A user's ID
+     */
+    AuthorId: string,
+
+    /**
+     * Information about the funds that are being debited
+     */
+    DebitedFunds: MangoPay$MoneyData,
+
+    /**
+     * Status of the PreAuthorization
+     */
+    Status: MangoPay$PreAuthorizationStatus,
+
+    /**
+     * The status of the payment after the PreAuthorization. You can pass the PaymentStatus from "WAITING" to "CANCELED" should you need/want to
+     */
+    PaymentStatus: MangoPay$PaymentStatus,
+
+    /**
+     * The result code
+     */
+    ResultCode: string,
+
+    /**
+     * A verbal explanation of the ResultCode
+     */
+    ResultMessage: string,
+
+    /**
+     * How the PreAuthorization has been executed
+     */
+    ExecutionType: MangoPay$PreAuthorizationExecutionType,
+
+    /**
+     * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually.
+     * The field lets you activate it automatically with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects there is a higher risk ),
+     * "FORCE" (if you wish to specifically force the secured mode).
+     */
+    SecureMode: MangoPay$SecureMode,
+
+    /**
+     * The ID of a card
+     */
+    CardId: string,
+
+    /**
+     * The value is 'true' if the SecureMode was used
+     */
+    SecureModeNeeded: boolean,
+
+    /**
+     * This is the URL where to redirect users to proceed to 3D secure validation
+     */
+    SecureModeRedirectUrl: string,
+
+    /**
+     * This is the URL where users are automatically redirected after 3D secure validation (if activated)
+     */
+    SecureModeReturnURL: string,
+
+    /**
+     * The date when the payment is to be processed by
+     */
+    ExpirationDate: MangoPay$Timestamp,
+
+    /**
+     * The Id of the associated PayIn
+     */
+    PayInId: string,
+
+    /**
+     * Contains useful information related to the user billing
+     */
+    Billing: MangoPay$BillingData,
+
+    /**
+     * Contains useful information related to security and fraud
+     */
+    SecurityInfo: MangoPay$SecurityInfoData
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$cardPreAuthorization$CreateCardPreAuthorization = PickPartialRequired<
+    MangoPay$cardPreAuthorization$CardPreAuthorizationData,
+    "Tag" | "Billing" | "SecureMode",
+    "AuthorId" | "DebitedFunds" | "CardId" | "SecureModeReturnURL"
+  >;
+
+  declare type MangoPay$cardPreAuthorization$UpdateCardPreAuthorization = PickPartialRequired<
+    MangoPay$cardPreAuthorization$CardPreAuthorizationData,
+    "Tag",
+    "PaymentStatus" | "Id"
+  >;
+
+  declare type MangoPay$hook$HookValidity = "UNKNOWN" | "VALID" | "INVALID";
+
+  declare type MangoPay$hook$HookStatus = "DISABLED" | "ENABLED";
+
+  declare type MangoPay$hook$HookData = {
+    /**
+     * This is the URL where your receive notification for each EventType
+     */
+    Url: string,
+
+    /**
+     * Whether the hook is enabled or not
+     */
+    Status: MangoPay$hook$HookStatus,
+
+    /**
+     * Whether the hook is valid or not
+     */
+    Validity: MangoPay$hook$HookValidity,
+
+    /**
+     * The event type
+     */
+    EventType: event$EventType
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$hook$CreateHook = {} & PickPartialRequired<
+    MangoPay$hook$HookData,
+    "Tag",
+    "EventType" | "Url"
+  >;
+
+  declare type MangoPay$hook$UpdateHook = {} & PickPartialRequired<
+    MangoPay$hook$HookData,
+    "EventType" | "Url" | "Tag",
+    "Id"
+  >;
+
+  declare interface MangoPay$report$Filters {
+    /**
+     * To return only resources that have CreationDate BEFORE this date
+     */
+    BeforeDate: MangoPay$Timestamp;
+
+    /**
+     * To return only resources that have CreationDate AFTER this date
+     */
+    AfterDate: MangoPay$Timestamp;
+
+    /**
+     * The type of the transaction
+     */
+    Type: transaction$TransactionType[];
+
+    /**
+     * The status of the transaction
+     */
+    Status: transaction$TransactionStatus[];
+
+    /**
+     * The nature of the transaction
+     */
+    Nature: transaction$TransactionNature[];
+
+    /**
+     * The minimum amount of DebitedFunds
+     */
+    MinDebitedFundsAmount: number;
+
+    /**
+     * The currency for the minimum amount of DebitedFunds
+     */
+    MinDebitedFundsCurrency: CurrencyISO;
+
+    /**
+     * The maximum amount of DebitedFunds
+     */
+    MaxDebitedFundsAmount: number;
+
+    /**
+     * The currency for the maximum amount of DebitedFunds
+     */
+    MaxDebitedFundsCurrency: CurrencyISO;
+
+    /**
+     * The minimum amount of Fees
+     */
+    MinFeesAmount: number;
+
+    /**
+     * The currency for the minimum amount of Fees
+     */
+    MinFeesCurrency: CurrencyISO;
+
+    /**
+     * The maximum amount of Fees
+     */
+    MaxFeesAmount: number;
+
+    /**
+     * The currency for the maximum amount of Fees
+     */
+    MaxFeesCurrency: CurrencyISO;
+
+    /**
+     * A user's ID
+     */
+    AuthorId: string;
+
+    /**
+     * The ID of a wallet
+     */
+    WalletId: string;
+  }
+
+  declare type MangoPay$report$Column =
+    | "Alias"
+    | "AuthorId"
+    | "BankAccountId"
+    | "BankWireRef"
+    | "CardId"
+    | "CardType"
+    | "Country"
+    | "CreationDate"
+    | "CreditedFundsAmount"
+    | "CreditedFundsCurrency"
+    | "CreditedUserId"
+    | "CreditedWalletId"
+    | "Culture"
+    | "DebitedFundsAmount"
+    | "DebitedFundsCurrency"
+    | "DebitedWalletId"
+    | "DeclaredDebitedFundsAmount"
+    | "DeclaredDebitedFundsCurrency"
+    | "DeclaredFeesAmount"
+    | "DeclaredFeesCurrency"
+    | "ExecutionDate"
+    | "ExecutionType"
+    | "ExpirationDate"
+    | "FeesAmount"
+    | "FeesCurrency"
+    | "Id"
+    | "Nature"
+    | "PaymentType"
+    | "PreauthorizationId"
+    | "ResultCode"
+    | "ResultMessage"
+    | "Status"
+    | "Tag"
+    | "Type"
+    | "WireReference";
+
+  declare type MangoPay$report$ReportData = {
+    /**
+     * The date when the report was executed
+     */
+    ReportDate: MangoPay$Timestamp,
+
+    /**
+     * The URL to download the report
+     */
+    DownloadURL: string,
+
+    /**
+     * A URL that we will ping when the report is ready to download(works in a similar way to the hooks)
+     */
+    CallbackURL: string,
+
+    /**
+     * The format of the report download
+     */
+    DownloadFormat: "CSV",
+
+    /**
+     * The type of report
+     */
+    ReportType: "TRANSACTIONS",
+
+    /**
+     * The column to sort against and direction seperate by a `:`
+     */
+    Sort: string,
+
+    /**
+     * Whether the report should be limited to the first 10 lines(and therefore quicker to execute)
+     */
+    Preview: boolean,
+
+    /**
+     * An object of various filters for the report
+     */
+    Filters: MangoPay$report$Filters,
+
+    /**
+     * A list of columns / infos to show in the report
+     */
+    Columns: MangoPay$report$Column[],
+
+    /**
+     * The result code
+     */
+    ResultCode: string,
+
+    /**
+     * A verbal explanation of the ResultCode
+     */
+    ResultMessage: string
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$report$CreateReport = {} & PickPartial<
+    MangoPay$report$ReportData,
+    | "Tag"
+    | "CallbackURL"
+    | "DownloadFormat"
+    | "Sort"
+    | "Preview"
+    | "Filters"
+    | "Columns"
+  >;
+
+  /**
+   * - "CREATED" - the mandate has been created
+   * - "SUBMITTED" - the mandate has been submitted to the banks and you can now do payments with this mandate
+   * - "ACTIVE" - the mandate is active and has been accepted by the banks and/or successfully used in a payment
+   * - "FAILED" - the mandate has failed for a variety of reasons and is no longer available for payments
+   */
+  declare type MangoPay$mandate$MandateStatus = ValueOf<MangoPay$IMandateStatus>;
+
+  declare type MangoPay$mandate$MandateScheme = "SEPA" | "BACS";
+
+  declare type MangoPay$mandate$MandateCultureCode =
+    | "EN"
+    | "FR"
+    | "NL"
+    | "DE"
+    | "ES"
+    | "IT"
+    | "PL";
+
+  declare type MangoPay$mandate$MandateExecutionType = "WEB";
+
+  declare type MangoPay$mandate$MandateType = "DIRECT_DEBIT";
+
+  declare type MangoPay$mandate$MandateData = {
+    /**
+     * An ID of a Bank Account
+     */
+    BankAccountId: string,
+
+    /**
+     * The object owner's UserId
+     */
+    UserId: string,
+
+    /**
+     * The URL to redirect to after payment (whether successful or not)
+     */
+    ReturnURL: string,
+
+    /**
+     * The URL to redirect to user to for them to proceed with the payment
+     */
+    RedirectURL: string,
+
+    /**
+     * The URL to download the mandate
+     */
+    DocumentURL: string,
+
+    /**
+     * The language to use for the mandate confirmation page - needs to be the ISO code of the language
+     */
+    Culture: MangoPay$mandate$MandateCultureCode,
+
+    /**
+     * The type of mandate, but will only be completed once the mandate has been submitted
+     */
+    Scheme: MangoPay$mandate$MandateScheme,
+
+    /**
+     * The status of the mandate:
+     */
+    Status: MangoPay$mandate$MandateStatus,
+
+    /**
+     * The result code
+     */
+    ResultCode: string,
+
+    /**
+     * A verbal explanation of the ResultCode
+     */
+    ResultMessage: string,
+
+    /**
+     * The execution type for creating the mandate
+     */
+    ExecutionType: MangoPay$mandate$MandateExecutionType,
+
+    /**
+     * The type of Mandate
+     */
+    MandateType: MangoPay$mandate$MandateType,
+
+    /**
+     * The banking reference for this mandate
+     */
+    BankReference: string
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$mandate$CreateMandate = {} & PickPartialRequired<
+    MangoPay$mandate$MandateData,
+    "Tag",
+    "BankAccountId" | "Culture" | "ReturnURL"
+  >;
+
+  /**
+   * Should be only one of these values:
+   * 1 - for incomes <18K€),
+   * 2 - for incomes between 18 and 30K€,
+   * 3 - for incomes between 30 and 50K€,
+   * 4 - for incomes between 50 and 80K€,
+   * 5 - for incomes between 80 and 120K€,
+   * 6 - for incomes >120K€
+   */
+  declare type MangoPay$user$IncomeRange = 1 | 2 | 3 | 4 | 5 | 6;
+
+  declare type MangoPay$user$PersonType = "NATURAL" | "LEGAL";
+
+  declare type MangoPay$user$KYCLevel = "LIGHT" | "REGULAR";
+
+  declare type MangoPay$user$LegalPersonType =
+    | "BUSINESS"
+    | "ORGANIZATION"
+    | "SOLETRADER";
+
+  declare type MangoPay$user$StaticKeys =
+    | "KYCLevel"
+    | "PersonType"
+    | "Id"
+    | "CreationDate"
+    | "ProofOfIdentity"
+    | "ProofOfAddress"
+    | "ProofOfRegistration"
+    | "LegalRepresentativeProofOfIdentity"
+    | "ShareholderDeclaration"
+    | "Statute";
+
+  declare type MangoPay$user$UserData = {
+    /**
+     * Type of user
+     */
+    PersonType: MangoPay$user$PersonType,
+
+    /**
+     * The person's email address (not more than 12 consecutive numbers) - must be a valid email
+     */
+    Email: string,
+
+    /**
+     * KYC Level (LIGHT or REGULAR)
+     */
+    KYCLevel: MangoPay$user$KYCLevel
+  } & entityBase$EntityBaseData;
+
+  declare type MangoPay$user$UserLegalData = {
+    PersonType: "LEGAL",
+
+    /**
+     * The name of the legal user
+     */
+    Name: string,
+
+    /**
+     * Type for legal user.
+     */
+    LegalPersonType: MangoPay$user$LegalPersonType,
+
+    /**
+     * The address of the company’s headquarters
+     */
+    HeadquartersAddress: address$AddressType,
+
+    /**
+     * The first name of the company’s Legal representative person
+     */
+    LegalRepresentativeFirstName: string,
+
+    /**
+     * The last name of the company’s Legal representative person
+     */
+    LegalRepresentativeLastName: string,
+
+    /**
+     * The address of the company’s Legal representative person
+     */
+    LegalRepresentativeAddress: address$AddressType,
+
+    /**
+     * The email of the company’s Legal representative person - must be valid
+     */
+    LegalRepresentativeEmail: string,
+
+    /**
+     * The date of birth of the company’s Legal representative person - be careful to set the right timezone (should be UTC) to avoid 00h becoming 23h (and hence interpreted as the day before)
+     */
+    LegalRepresentativeBirthday: MangoPay$Timestamp,
+
+    /**
+     * The nationality of the company’s Legal representative person
+     */
+    LegalRepresentativeNationality: CountryISO,
+
+    /**
+     * The country of residence of the company’s Legal representative person
+     */
+    LegalRepresentativeCountryOfResidence: CountryISO,
+    ProofOfIdentity: string | null,
+
+    /**
+     * The business statute of the company
+     */
+    Statute: string | null,
+
+    /**
+     * A MANGOPAY reference to the validated document of the proof of registration of the company
+     */
+    ProofOfRegistration: string | null,
+
+    /**
+     * The shareholder declaration of the company
+     */
+    ShareholderDeclaration: string | null,
+
+    /**
+     * The official registered number of the business
+     */
+    CompanyNumber: string
+  } & UserData;
+
+  declare type MangoPay$user$UserNaturalData = {
+    PersonType: "NATURAL",
+
+    /**
+     * The name of the user
+     */
+    FirstName: string,
+
+    /**
+     * The last name of the user
+     */
+    LastName: string,
+
+    /**
+     * The user address
+     */
+    Address: string | address$AddressData,
+
+    /**
+     * The date of birth of the user - be careful to set the right timezone (should be UTC) to avoid 00h becoming 23h (and hence interpreted as the day before)
+     */
+    Birthday: MangoPay$Timestamp,
+
+    /**
+     * The user’s nationality. ISO 3166-1 alpha-2 format is expected
+     */
+    Nationality: CountryISO,
+
+    /**
+     * The user’s country of residence. ISO 3166-1 alpha-2 format is expected
+     */
+    CountryOfResidence: CountryISO,
+
+    /**
+     * User’s occupation, ie. Work
+     */
+    Occupation: string,
+    IncomeRange: MangoPay$user$IncomeRange,
+
+    /**
+     * Maximum length is 255 characters
+     */
+    ProofOfIdentity: string | null,
+
+    /**
+     * Maximum length is 255 characters
+     */
+    ProofOfAddress: string | null,
+
+    /**
+     * The capacity of this user - for use with UBO declarations
+     */
+    Capacity: "NORMAL" | "DECLARATIVE"
+  } & UserData;
+
+  declare type MangoPay$user$RequiredUserLegalData =
+    | "LegalPersonType"
+    | "Name"
+    | "LegalRepresentativeBirthday"
+    | "LegalRepresentativeCountryOfResidence"
+    | "LegalRepresentativeNationality"
+    | "LegalRepresentativeFirstName"
+    | "LegalRepresentativeLastName"
+    | "Email";
+
+  declare type MangoPay$user$RequiredUserNaturalData =
+    | "FirstName"
+    | "LastName"
+    | "Birthday"
+    | "Nationality"
+    | "CountryOfResidence"
+    | "Email";
+
+  declare type MangoPay$user$BaseUserLegalData = {
+    PersonType: "LEGAL"
+  } & PickPartial<
+    MangoPay$user$UserLegalData,
+    | MangoPay$user$RequiredUserLegalData
+    | "CompanyNumber"
+    | "LegalRepresentativeEmail"
+    | "LegalRepresentativeAddress"
+    | "HeadquartersAddress"
+    | "Tag"
+  >;
+
+  declare type MangoPay$user$UpdateUserLegalData = {
+    Id: string
+  } & BaseUserLegalData;
+
+  declare type MangoPay$user$CreateUserLegalData = {} & MakeKeysRequired<
+    MangoPay$user$BaseUserLegalData,
+    MangoPay$user$RequiredUserLegalData | "PersonType"
+  >;
+
+  declare type MangoPay$user$BaseUserNaturalData = {
+    PersonType: "NATURAL"
+  } & PickPartial<
+    MangoPay$user$UserNaturalData,
+    | MangoPay$user$RequiredUserNaturalData
+    | "Address"
+    | "Occupation"
+    | "IncomeRange"
+    | "Tag"
+  >;
+
+  declare type MangoPay$user$UpdateUserNaturalData = {
+    Id: string
+  } & BaseUserNaturalData;
+
+  declare type MangoPay$user$CreateUserNaturalData = {} & MakeKeysRequired<
+    MangoPay$user$BaseUserNaturalData,
+    MangoPay$user$RequiredUserNaturalData | "PersonType"
+  >;
+
+  declare type MangoPay$payIn$PayInPaymentType = ValueOf<MangoPay$IPayInPaymentType>;
+
+  declare type MangoPay$payIn$PayInExecutionType =
+    | ValueOf<MangoPay$IPayInExecutionType>
+    | "EXTERNAL_INSTRUCTION";
+
+  declare interface MangoPay$payIn$TemplateURLOptions {
+    Payline: string;
+  }
+
+  declare type MangoPay$payIn$BasePayInData = {
     /**
      * Information about the funds that are being debited
      */
@@ -1177,1212 +2423,20 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of the transaction
      */
-    Type: transaction$TransactionType
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type wallet$ClientFundsType = "FEES" | "CREDIT";
-
-  declare type wallet$FundsType = "DEFAULT" | wallet$ClientFundsType;
-
-  declare type wallet$WalletData = {
-    /**
-     * An array of userIDs of who own's the wallet. For now, you only can set up a unique owner.
-     */
-    Owners: [string],
-
-    /**
-     * The current balance of the wallet
-     */
-    Balance: MangoPay$MoneyData,
-
-    /**
-     * The type of funds in the wallet
-     */
-    wallet$FundsType: wallet$FundsType,
-
-    /**
-     * A desciption of the wallet
-     */
-    Description: string,
-
-    /**
-     * The currency - should be ISO_4217 format
-     */
-    Currency: CurrencyISO
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type wallet$ClientWalletData = {
-    wallet$FundsType: wallet$ClientFundsType
-  } & Omit<wallet$WalletData, "Owners" | "Description">;
-
-  declare type wallet$CreateWallet = wallet$UpdateWallet &
-    Pick<wallet$WalletData, "Owners" | "Currency" | "Description">;
-
-  declare type wallet$UpdateWallet = PickPartial<
-    wallet$WalletData,
-    "Tag" | "Description"
-  >;
-
-  declare type disputeDocument$DisputeDocumentType =
-    | "DELIVERY_PROOF"
-    | "INVOICE"
-    | "REFUND_PROOF"
-    | "USER_CORRESPONDANCE"
-    | "USER_ACCEPTANCE_PROOF"
-    | "PRODUCT_REPLACEMENT_PROOF"
-    | "OTHER";
-
-  declare type disputeDocument$DocumentStatus =
-    | "CREATED"
-    | "VALIDATION_ASKED"
-    | "VALIDATED"
-    | "REFUSED";
-
-  declare type disputeDocument$RefusedReasonType =
-    | "DOCUMENT_UNREADABLE"
-    | "DOCUMENT_NOT_ACCEPTED"
-    | "DOCUMENT_HAS_EXPIRED"
-    | "DOCUMENT_INCOMPLETE"
-    | "DOCUMENT_MISSING"
-    | "SPECIFIC_CASE"
-    | "DOCUMENT_FALSIFIED"
-    | "OTHER";
-
-  declare type disputeDocument$DisputeDocumentData = {
-    /**
-     * Gives the type of the KYC document
-     */
-    Type: disputeDocument$DisputeDocumentType,
-
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * The Id of a Dispute
-     */
-    DisputeId: string,
-
-    /**
-     * The status of this KYC/Dispute document
-     */
-    Status: disputeDocument$DocumentStatus,
-
-    /**
-     * The message accompanying a refusal
-     */
-    RefusedReasonMessage: string,
-
-    /**
-     * The type of reason for refusal
-     */
-    disputeDocument$RefusedReasonType: disputeDocument$RefusedReasonType,
-
-    /**
-     * The date when the document was processed by MANGOPAY
-     */
-    ProcessedDate: MangoPay$Timestamp
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare interface disputeDocument$CreateDisputeDocument {
-    /**
-     * Gives the type of the KYC document
-     */
-    Type: disputeDocument$DisputeDocumentType;
-    Tag?: string;
-  }
-
-  declare interface disputeDocument$SubmitDisputeDocument {
-    /**
-     * The status of this KYC/Dispute document
-     */
-    Status: "VALIDATION_ASKED";
-    Tag?: string;
-  }
-
-  /**
-   * - Documents have to be in "CREATED" Status
-   * - You can create as many pages as needed
-   *
-   * Remember to change Status to "VALIDATION_ASKED" to submit KYC documents
-   * The maximum size per page is about 7Mb (or 10Mb when base64encoded). The following formats are accepted for the documents : .pdf, .jpeg, .jpg, .gif and .png. The minimum size is 1Kb.
-   */
-  declare interface disputeDocument$CreateDisputeDocumentPage {
-    /**
-     * The base64 encoded file which needs to be uploaded
-     *
-     * You need to fill in only the binary code. Do not send the first part that some converters add into the binary code which is
-     * `<img src=" data:image/png;base64..." />`
-     *
-     * e.g.
-     * ```json
-     *        * {
-     *        *   "File": "/9j/4AAQSkZJRgABAQEBLAEsAAD/.../wgARCAAyADIDAREAAhEBAxEB/8QAGwAAAgMBAQEA"
-     *        * }
-     *        * ```
-     */
-    File: string;
-  }
-
-  declare type disputeDocument$DocumentPageConsult = {
-    /**
-     * URL where this document page can be viewed.
-     */
-    Url: string,
-
-    /**
-     * Time in millis when the page consult will expire.
-     */
-    ExpirationDate: MangoPay$Timestamp
-  } & disputeDocument$disputeDocument$DocumentPageConsult;
-
-  declare type kycDocument$KycDocumentType =
-    | "IDENTITY_PROOF"
-    | "REGISTRATION_PROOF"
-    | "ARTICLES_OF_ASSOCIATION"
-    | "SHAREHOLDER_DECLARATION"
-    | "ADDRESS_PROOF";
-
-  declare type kycDocument$DocumentStatus =
-    | "CREATED"
-    | "VALIDATION_ASKED"
-    | "VALIDATED"
-    | "REFUSED";
-
-  declare type kycDocument$KYCDocumentRefusedReasonType =
-    | "DOCUMENT_UNREADABLE"
-    | "DOCUMENT_NOT_ACCEPTED"
-    | "DOCUMENT_HAS_EXPIRED"
-    | "DOCUMENT_INCOMPLETE"
-    | "DOCUMENT_MISSING"
-    | "DOCUMENT_DO_NOT_MATCH_USER_DATA"
-    | "DOCUMENT_DO_NOT_MATCH_ACCOUNT_DATA"
-    | "SPECIFIC_CASE"
-    | "DOCUMENT_FALSIFIED"
-    | "UNDERAGE_PERSON"
-    | "SPECIFIC_CASE";
-
-  declare type kycDocument$KycDocumentData = {
-    /**
-     * Gives the type of the KYC document
-     */
-    Type: kycDocument$KycDocumentType,
-
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * The status of this KYC/Dispute document
-     */
-    Status: kycDocument$DocumentStatus,
-
-    /**
-     * The message accompanying a refusal
-     */
-    RefusedReasonMessage: string,
-
-    /**
-     * The type of reason for refusal
-     */
-    disputeDocument$RefusedReasonType: kycDocument$KYCDocumentRefusedReasonType,
-
-    /**
-     * The date when the document was processed by MANGOPAY
-     */
-    ProcessedDate: MangoPay$Timestamp
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare interface kycDocument$CreateKycDocument {
-    /**
-     * Gives the type of the KYC document
-     */
-    Type: kycDocument$KycDocumentType;
-    Tag?: string;
-
-    /**
-     * Gives the type of the KYC document
-     */
-    Type: kycDocument$KycDocumentType;
-    Tag?: string;
-  }
-
-  declare interface kycDocument$SubmitKycDocument {
-    /**
-     * The status of this KYC/Dispute document
-     */
-    Status: "VALIDATION_ASKED";
-    Tag?: string;
-  }
-
-  /**
-   * - Documents have to be in "CREATED" Status
-   * - You can create as many pages as needed
-   *
-   * Remember to change Status to "VALIDATION_ASKED" to submit KYC documents
-   * The maximum size per page is about 7Mb (or 10Mb when base64encoded). The following formats are accepted for the documents : .pdf, .jpeg, .jpg, .gif and .png. The minimum size is 1Kb.
-   */
-  declare interface kycDocument$CreateKycPage {
-    /**
-     * The base64 encoded file which needs to be uploaded
-     *
-     * You need to fill in only the binary code. Do not send the first part that some converters add into the binary code which is
-     * `<img src=" data:image/png;base64..." />`
-     *
-     * e.g.
-     * ```json
-     *        * {
-     *        *   "File": "/9j/4AAQSkZJRgABAQEBLAEsAAD/.../wgARCAAyADIDAREAAhEBAxEB/8QAGwAAAgMBAQEA"
-     *        * }
-     *        * ```
-     */
-    File: string;
-  }
-
-  declare type eMoney$EMoneyData = {
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * The amount of money that has been credited to this user
-     */
-    CreditedEMoney: MangoPay$MoneyData,
-
-    /**
-     * The amount of money that has been debited from this user
-     */
-    DebitedEMoney: MangoPay$MoneyData
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type uboDeclaration$UboDeclarationData = {
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * Status of a UBO Declaration
-     */
-    Status: kycDocument$kycDocument$DocumentStatus,
-
-    /**
-     * Reason types for a UBO Declaration
-     */
-    RefusedReasonTypes: string[],
-
-    /**
-     * Refused Reason Message for a UBO Declaration
-     */
-    RefusedReasonMessage: string,
-
-    /**
-     * An array of UserIDs declared as Ultimate Beneficial Owners of a BUSINESS Legal User.
-     */
-    DeclaredUBOs: string[]
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare interface uboDeclaration$CreateUboDeclaration {
-    DeclaredUBOs?: string[];
-  }
-
-  declare interface uboDeclaration$UpdateUboDeclaration {
-    Id: string;
-    Tag?: string;
-    Status?: "VALIDATION_ASKED";
-
-    /**
-     * An array of UserIDs declared as Ultimate Beneficial Owners of a BUSINESS Legal User.
-     */
-    DeclaredUBOs?: string[];
-  }
-
-  declare type cardRegistration$CardRegistrationData = {
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * The currency - should be ISO_4217 format
-     */
-    Currency: CurrencyISO,
-
-    /**
-     * A special key to use when registering a card
-     */
-    AccessKey: string,
-
-    /**
-     * A specific value to pass to the CardRegistrationURL
-     */
-    PreregistrationData: string,
-
-    /**
-     * The URL to submit the card details form to
-     */
-    CardRegistrationURL: string,
-
-    /**
-     * Having registered a card, this confirmation hash needs to be updated to the card item
-     */
-    RegistrationData: string,
-
-    /**
-     * The type of card
-     */
-    card$CardType: card$card$CardType,
-
-    /**
-     * The ID of a card
-     */
-    CardId: string,
-
-    /**
-     * The result code
-     */
-    ResultCode: string,
-
-    /**
-     * A verbal explanation of the ResultCode
-     */
-    ResultMessage: string,
-
-    /**
-     * Status of the card registration
-     */
-    Status: card$card$CardStatus
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type cardRegistration$CreateCardRegistration = {} & PickPartialRequired<
-    cardRegistration$CardRegistrationData,
-    "CardType" | "Tag",
-    "UserId" | "Currency"
-  >;
-
-  declare type cardRegistration$UpdateCardRegistration = PickPartial<
-    cardRegistration$CardRegistrationData,
-    "Tag" | "RegistrationData"
-  >;
-
-  declare type card$CardType =
-    | "CB_VISA_MASTERCARD"
-    | "DINERS"
-    | "MASTERPASS"
-    | "MAESTRO"
-    | "P24"
-    | "IDEAL"
-    | "BCMC"
-    | "PAYLIB";
-
-  declare type card$CardStatus = "CREATED" | "VALIDATED" | "ERROR";
-
-  declare type card$CardValidity = "UNKNOWN" | "VALID" | "INVALID";
-
-  declare type card$CardData = {
-    /**
-     * The expiry date of the card - must be in format MMYY
-     */
-    ExpirationDate: string,
-
-    /**
-     * A partially obfuscated version of the credit card number
-     */
-    Alias: string,
-
-    /**
-     * The provider of the card
-     */
-    CardProvider: string,
-
-    /**
-     * The type of card
-     */
-    card$CardType: card$CardType,
-
-    /**
-     * The Country of the Address
-     */
-    Country: string,
-
-    /**
-     * The card product type - more info
-     */
-    Product: string,
-
-    /**
-     * The bank code
-     */
-    BankCode: string,
-
-    /**
-     * Whether the card is active or not
-     */
-    Active: boolean,
-
-    /**
-     * The currency - should be ISO_4217 format
-     */
-    Currency: CurrencyISO,
-
-    /**
-     * Whether the card is valid or not. Once they process (or attempt to process) a payment with the card we are able to indicate if it is "valid" or "invalid".
-     * If they didn’t process a payment yet the "Validity" stay at "unknown".
-     */
-    Validity: card$CardValidity,
-
-    /**
-     * A unique representation of a 16-digits card number
-     */
-    Fingerprint: string
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare interface card$UpdateCard {
-    Id: string;
-    Active?: false;
-  }
-
-  declare type cardPreAuthorization$CardPreAuthorizationData = {
-    /**
-     * A user's ID
-     */
-    AuthorId: string,
-
-    /**
-     * Information about the funds that are being debited
-     */
-    DebitedFunds: MangoPay$MoneyData,
-
-    /**
-     * Status of the PreAuthorization
-     */
-    Status: MangoPay$PreAuthorizationStatus,
-
-    /**
-     * The status of the payment after the PreAuthorization. You can pass the PaymentStatus from "WAITING" to "CANCELED" should you need/want to
-     */
-    MangoPay$PaymentStatus: MangoPay$PaymentStatus,
-
-    /**
-     * The result code
-     */
-    ResultCode: string,
-
-    /**
-     * A verbal explanation of the ResultCode
-     */
-    ResultMessage: string,
-
-    /**
-     * How the PreAuthorization has been executed
-     */
-    ExecutionType: MangoPay$PreAuthorizationExecutionType,
-
-    /**
-     * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually.
-     * The field lets you activate it automatically with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects there is a higher risk ),
-     * "FORCE" (if you wish to specifically force the secured mode).
-     */
-    MangoPay$SecureMode: MangoPay$SecureMode,
-
-    /**
-     * The ID of a card
-     */
-    CardId: string,
-
-    /**
-     * The value is 'true' if the SecureMode was used
-     */
-    SecureModeNeeded: boolean,
-
-    /**
-     * This is the URL where to redirect users to proceed to 3D secure validation
-     */
-    SecureModeRedirectUrl: string,
-
-    /**
-     * This is the URL where users are automatically redirected after 3D secure validation (if activated)
-     */
-    SecureModeReturnURL: string,
-
-    /**
-     * The date when the payment is to be processed by
-     */
-    ExpirationDate: MangoPay$Timestamp,
-
-    /**
-     * The Id of the associated PayIn
-     */
-    PayInId: string,
-
-    /**
-     * Contains useful information related to the user billing
-     */
-    models$Billing: MangoPay$BillingData,
-
-    /**
-     * Contains useful information related to security and fraud
-     */
-    models$SecurityInfo: MangoPay$SecurityInfoData
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type cardPreAuthorization$CreateCardPreAuthorization = PickPartialRequired<
-    cardPreAuthorization$CardPreAuthorizationData,
-    "Tag" | "Billing" | "SecureMode",
-    "AuthorId" | "DebitedFunds" | "CardId" | "SecureModeReturnURL"
-  >;
-
-  declare type cardPreAuthorization$UpdateCardPreAuthorization = PickPartialRequired<
-    cardPreAuthorization$CardPreAuthorizationData,
-    "Tag",
-    "PaymentStatus" | "Id"
-  >;
-
-  declare type hook$HookValidity = "UNKNOWN" | "VALID" | "INVALID";
-
-  declare type hook$HookStatus = "DISABLED" | "ENABLED";
-
-  declare type hook$HookData = {
-    /**
-     * This is the URL where your receive notification for each EventType
-     */
-    Url: string,
-
-    /**
-     * Whether the hook is enabled or not
-     */
-    Status: hook$HookStatus,
-
-    /**
-     * Whether the hook is valid or not
-     */
-    Validity: hook$HookValidity,
-
-    /**
-     * The event type
-     */
-    event$EventType: event$event$EventType
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type hook$CreateHook = {} & PickPartialRequired<
-    hook$HookData,
-    "Tag",
-    "EventType" | "Url"
-  >;
-
-  declare type hook$UpdateHook = {} & PickPartialRequired<
-    hook$HookData,
-    "EventType" | "Url" | "Tag",
-    "Id"
-  >;
-
-  declare interface report$Filters {
-    /**
-     * To return only resources that have CreationDate BEFORE this date
-     */
-    BeforeDate: MangoPay$Timestamp;
-
-    /**
-     * To return only resources that have CreationDate AFTER this date
-     */
-    AfterDate: MangoPay$Timestamp;
-
-    /**
-     * The type of the transaction
-     */
-    Type: transaction$transaction$TransactionType[];
-
-    /**
-     * The status of the transaction
-     */
-    Status: transaction$transaction$TransactionStatus[];
-
-    /**
-     * The nature of the transaction
-     */
-    Nature: transaction$transaction$TransactionNature[];
-
-    /**
-     * The minimum amount of DebitedFunds
-     */
-    MinDebitedFundsAmount: number;
-
-    /**
-     * The currency for the minimum amount of DebitedFunds
-     */
-    MinDebitedFundsCurrency: CurrencyISO;
-
-    /**
-     * The maximum amount of DebitedFunds
-     */
-    MaxDebitedFundsAmount: number;
-
-    /**
-     * The currency for the maximum amount of DebitedFunds
-     */
-    MaxDebitedFundsCurrency: CurrencyISO;
-
-    /**
-     * The minimum amount of Fees
-     */
-    MinFeesAmount: number;
-
-    /**
-     * The currency for the minimum amount of Fees
-     */
-    MinFeesCurrency: CurrencyISO;
-
-    /**
-     * The maximum amount of Fees
-     */
-    MaxFeesAmount: number;
-
-    /**
-     * The currency for the maximum amount of Fees
-     */
-    MaxFeesCurrency: CurrencyISO;
-
-    /**
-     * A user's ID
-     */
-    AuthorId: string;
-
-    /**
-     * The ID of a wallet
-     */
-    WalletId: string;
-  }
-
-  declare type report$Column =
-    | "Alias"
-    | "AuthorId"
-    | "BankAccountId"
-    | "BankWireRef"
-    | "CardId"
-    | "CardType"
-    | "Country"
-    | "CreationDate"
-    | "CreditedFundsAmount"
-    | "CreditedFundsCurrency"
-    | "CreditedUserId"
-    | "CreditedWalletId"
-    | "Culture"
-    | "DebitedFundsAmount"
-    | "DebitedFundsCurrency"
-    | "DebitedWalletId"
-    | "DeclaredDebitedFundsAmount"
-    | "DeclaredDebitedFundsCurrency"
-    | "DeclaredFeesAmount"
-    | "DeclaredFeesCurrency"
-    | "ExecutionDate"
-    | "ExecutionType"
-    | "ExpirationDate"
-    | "FeesAmount"
-    | "FeesCurrency"
-    | "Id"
-    | "Nature"
-    | "PaymentType"
-    | "PreauthorizationId"
-    | "ResultCode"
-    | "ResultMessage"
-    | "Status"
-    | "Tag"
-    | "Type"
-    | "WireReference";
-
-  declare type report$ReportData = {
-    /**
-     * The date when the report was executed
-     */
-    ReportDate: MangoPay$Timestamp,
-
-    /**
-     * The URL to download the report
-     */
-    DownloadURL: string,
-
-    /**
-     * A URL that we will ping when the report is ready to download(works in a similar way to the hooks)
-     */
-    CallbackURL: string,
-
-    /**
-     * The format of the report download
-     */
-    DownloadFormat: "CSV",
-
-    /**
-     * The type of report
-     */
-    ReportType: "TRANSACTIONS",
-
-    /**
-     * The column to sort against and direction seperate by a `:`
-     */
-    Sort: string,
-
-    /**
-     * Whether the report should be limited to the first 10 lines(and therefore quicker to execute)
-     */
-    Preview: boolean,
-
-    /**
-     * An object of various filters for the report
-     */
-    report$Filters: report$Filters,
-
-    /**
-     * A list of columns / infos to show in the report
-     */
-    Columns: report$Column[],
-
-    /**
-     * The result code
-     */
-    ResultCode: string,
-
-    /**
-     * A verbal explanation of the ResultCode
-     */
-    ResultMessage: string
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type report$CreateReport = {} & PickPartial<
-    report$ReportData,
-    | "Tag"
-    | "CallbackURL"
-    | "DownloadFormat"
-    | "Sort"
-    | "Preview"
-    | "Filters"
-    | "Columns"
-  >;
-
-  /**
-   * - "CREATED" - the mandate has been created
-   * - "SUBMITTED" - the mandate has been submitted to the banks and you can now do payments with this mandate
-   * - "ACTIVE" - the mandate is active and has been accepted by the banks and/or successfully used in a payment
-   * - "FAILED" - the mandate has failed for a variety of reasons and is no longer available for payments
-   */
-  declare type mandate$MandateStatus = ValueOf<MangoPay$IMandateStatus>;
-
-  declare type mandate$MandateScheme = "SEPA" | "BACS";
-
-  declare type mandate$MandateCultureCode =
-    | "EN"
-    | "FR"
-    | "NL"
-    | "DE"
-    | "ES"
-    | "IT"
-    | "PL";
-
-  declare type mandate$MandateExecutionType = "WEB";
-
-  declare type mandate$MandateType = "DIRECT_DEBIT";
-
-  declare type mandate$MandateData = {
-    /**
-     * An ID of a Bank Account
-     */
-    BankAccountId: string,
-
-    /**
-     * The object owner's UserId
-     */
-    UserId: string,
-
-    /**
-     * The URL to redirect to after payment (whether successful or not)
-     */
-    ReturnURL: string,
-
-    /**
-     * The URL to redirect to user to for them to proceed with the payment
-     */
-    RedirectURL: string,
-
-    /**
-     * The URL to download the mandate
-     */
-    DocumentURL: string,
-
-    /**
-     * The language to use for the mandate confirmation page - needs to be the ISO code of the language
-     */
-    Culture: mandate$MandateCultureCode,
-
-    /**
-     * The type of mandate, but will only be completed once the mandate has been submitted
-     */
-    Scheme: mandate$MandateScheme,
-
-    /**
-     * The status of the mandate:
-     */
-    Status: mandate$MandateStatus,
-
-    /**
-     * The result code
-     */
-    ResultCode: string,
-
-    /**
-     * A verbal explanation of the ResultCode
-     */
-    ResultMessage: string,
-
-    /**
-     * The execution type for creating the mandate
-     */
-    ExecutionType: mandate$MandateExecutionType,
-
-    /**
-     * The type of Mandate
-     */
-    mandate$MandateType: mandate$MandateType,
-
-    /**
-     * The banking reference for this mandate
-     */
-    BankReference: string
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type mandate$CreateMandate = {} & PickPartialRequired<
-    mandate$MandateData,
-    "Tag",
-    "BankAccountId" | "Culture" | "ReturnURL"
-  >;
-
-  /**
-   * Should be only one of these values:
-   * 1 - for incomes <18K€),
-   * 2 - for incomes between 18 and 30K€,
-   * 3 - for incomes between 30 and 50K€,
-   * 4 - for incomes between 50 and 80K€,
-   * 5 - for incomes between 80 and 120K€,
-   * 6 - for incomes >120K€
-   */
-  declare type user$IncomeRange = 1 | 2 | 3 | 4 | 5 | 6;
-
-  declare type user$PersonType = "NATURAL" | "LEGAL";
-
-  declare type user$KYCLevel = "LIGHT" | "REGULAR";
-
-  declare type user$LegalPersonType =
-    | "BUSINESS"
-    | "ORGANIZATION"
-    | "SOLETRADER";
-
-  declare type user$StaticKeys =
-    | "KYCLevel"
-    | "PersonType"
-    | "Id"
-    | "CreationDate"
-    | "ProofOfIdentity"
-    | "ProofOfAddress"
-    | "ProofOfRegistration"
-    | "LegalRepresentativeProofOfIdentity"
-    | "ShareholderDeclaration"
-    | "Statute";
-
-  declare type user$UserData = {
-    /**
-     * Type of user
-     */
-    user$PersonType: user$PersonType,
-
-    /**
-     * The person's email address (not more than 12 consecutive numbers) - must be a valid email
-     */
-    Email: string,
-
-    /**
-     * KYC Level (LIGHT or REGULAR)
-     */
-    user$KYCLevel: user$KYCLevel
-  } & entityBase$entityBase$EntityBaseData;
-
-  declare type user$UserLegalData = {
-    user$PersonType: "LEGAL",
-
-    /**
-     * The name of the legal user
-     */
-    Name: string,
-
-    /**
-     * Type for legal user.
-     */
-    user$LegalPersonType: user$LegalPersonType,
-
-    /**
-     * The address of the company’s headquarters
-     */
-    HeadquartersAddress: address$address$AddressType,
-
-    /**
-     * The first name of the company’s Legal representative person
-     */
-    LegalRepresentativeFirstName: string,
-
-    /**
-     * The last name of the company’s Legal representative person
-     */
-    LegalRepresentativeLastName: string,
-
-    /**
-     * The address of the company’s Legal representative person
-     */
-    LegalRepresentativeAddress: address$address$AddressType,
-
-    /**
-     * The email of the company’s Legal representative person - must be valid
-     */
-    LegalRepresentativeEmail: string,
-
-    /**
-     * The date of birth of the company’s Legal representative person - be careful to set the right timezone (should be UTC) to avoid 00h becoming 23h (and hence interpreted as the day before)
-     */
-    LegalRepresentativeBirthday: MangoPay$Timestamp,
-
-    /**
-     * The nationality of the company’s Legal representative person
-     */
-    LegalRepresentativeNationality: CountryISO,
-
-    /**
-     * The country of residence of the company’s Legal representative person
-     */
-    LegalRepresentativeCountryOfResidence: CountryISO,
-    ProofOfIdentity: string | null,
-
-    /**
-     * The business statute of the company
-     */
-    Statute: string | null,
-
-    /**
-     * A MANGOPAY reference to the validated document of the proof of registration of the company
-     */
-    ProofOfRegistration: string | null,
-
-    /**
-     * The shareholder declaration of the company
-     */
-    ShareholderDeclaration: string | null,
-
-    /**
-     * The official registered number of the business
-     */
-    CompanyNumber: string
-  } & user$UserData;
-
-  declare type user$UserNaturalData = {
-    user$PersonType: "NATURAL",
-
-    /**
-     * The name of the user
-     */
-    FirstName: string,
-
-    /**
-     * The last name of the user
-     */
-    LastName: string,
-
-    /**
-     * The user address
-     */
-    models$Address: string | address$address$AddressData,
-
-    /**
-     * The date of birth of the user - be careful to set the right timezone (should be UTC) to avoid 00h becoming 23h (and hence interpreted as the day before)
-     */
-    Birthday: MangoPay$Timestamp,
-
-    /**
-     * The user’s nationality. ISO 3166-1 alpha-2 format is expected
-     */
-    Nationality: CountryISO,
-
-    /**
-     * The user’s country of residence. ISO 3166-1 alpha-2 format is expected
-     */
-    CountryOfResidence: CountryISO,
-
-    /**
-     * User’s occupation, ie. Work
-     */
-    Occupation: string,
-    user$IncomeRange: user$IncomeRange,
-
-    /**
-     * Maximum length is 255 characters
-     */
-    ProofOfIdentity: string | null,
-
-    /**
-     * Maximum length is 255 characters
-     */
-    ProofOfAddress: string | null,
-
-    /**
-     * The capacity of this user - for use with UBO declarations
-     */
-    Capacity: "NORMAL" | "DECLARATIVE"
-  } & user$UserData;
-
-  declare type user$RequiredUserLegalData =
-    | "LegalPersonType"
-    | "Name"
-    | "LegalRepresentativeBirthday"
-    | "LegalRepresentativeCountryOfResidence"
-    | "LegalRepresentativeNationality"
-    | "LegalRepresentativeFirstName"
-    | "LegalRepresentativeLastName"
-    | "Email";
-
-  declare type user$RequiredUserNaturalData =
-    | "FirstName"
-    | "LastName"
-    | "Birthday"
-    | "Nationality"
-    | "CountryOfResidence"
-    | "Email";
-
-  declare type user$BaseUserLegalData = {
-    user$PersonType: "LEGAL"
-  } & PickPartial<
-    user$UserLegalData,
-    | user$RequiredUserLegalData
-    | "CompanyNumber"
-    | "LegalRepresentativeEmail"
-    | "LegalRepresentativeAddress"
-    | "HeadquartersAddress"
-    | "Tag"
-  >;
-
-  declare type user$UpdateUserLegalData = {
-    Id: string
-  } & user$BaseUserLegalData;
-
-  declare type user$CreateUserLegalData = {} & MakeKeysRequired<
-    user$BaseUserLegalData,
-    user$RequiredUserLegalData | "PersonType"
-  >;
-
-  declare type user$BaseUserNaturalData = {
-    user$PersonType: "NATURAL"
-  } & PickPartial<
-    user$UserNaturalData,
-    | user$RequiredUserNaturalData
-    | "Address"
-    | "Occupation"
-    | "IncomeRange"
-    | "Tag"
-  >;
-
-  declare type user$UpdateUserNaturalData = {
-    Id: string
-  } & user$BaseUserNaturalData;
-
-  declare type user$CreateUserNaturalData = {} & MakeKeysRequired<
-    user$BaseUserNaturalData,
-    user$RequiredUserNaturalData | "PersonType"
-  >;
-
-  declare type payIn$PayInPaymentType = ValueOf<MangoPay$IPayInPaymentType>;
-
-  declare type payIn$PayInExecutionType =
-    | ValueOf<MangoPay$IPayInExecutionType>
-    | "EXTERNAL_INSTRUCTION";
-
-  declare interface payIn$TemplateURLOptions {
-    Payline: string;
-  }
-
-  declare type payIn$BasePayInData = {
-    /**
-     * Information about the funds that are being debited
-     */
-    DebitedFunds: MangoPay$MoneyData,
-
-    /**
-     * Details about the funds that are being credited (DebitedFunds – Fees = CreditedFunds)
-     */
-    CreditedFunds: MangoPay$MoneyData,
-
-    /**
-     * Information about the fees that were taken by the client for this transaction (and were hence transferred to the Client's platform wallet)
-     */
-    Fees: MangoPay$MoneyData,
-
-    /**
-     * The ID of the wallet that was debited
-     */
-    DebitedWalletId: string,
-
-    /**
-     * The ID of the wallet where money will be credited
-     */
-    CreditedWalletId: string,
-
-    /**
-     * A user's ID
-     */
-    AuthorId: string,
-
-    /**
-     * The user ID who is credited (defaults to the owner of the wallet)
-     */
-    CreditedUserId: string,
-
-    /**
-     * The nature of the transaction
-     */
-    Nature: transaction$transaction$TransactionNature,
-
-    /**
-     * The status of the transaction
-     */
-    Status: transaction$transaction$TransactionStatus,
-
-    /**
-     * When the transaction happened
-     */
-    ExecutionDate: MangoPay$Timestamp,
-
-    /**
-     * The result code
-     */
-    ResultCode: string,
-
-    /**
-     * A verbal explanation of the ResultCode
-     */
-    ResultMessage: string,
-
-    /**
-     * The type of the transaction
-     */
-    Type: transaction$transaction$TransactionType,
+    Type: transaction$TransactionType,
 
     /**
      * The type of payin
      */
-    PaymentType: payIn$PayInPaymentType,
+    PaymentType: MangoPay$payIn$PayInPaymentType,
 
     /**
      * The type of execution for the payin
      */
-    ExecutionType: payIn$PayInExecutionType
-  } & entityBase$entityBase$EntityBaseData;
+    ExecutionType: MangoPay$payIn$PayInExecutionType
+  } & entityBase$EntityBaseData;
 
-  declare type payIn$CardWebPayInData = {
+  declare type MangoPay$payIn$CardWebPayInData = {
     ExecutionType: "WEB",
     PaymentType: "CARD",
 
@@ -2394,13 +2448,13 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of card
      */
-    card$CardType: card$card$CardType,
+    CardType: card$CardType,
 
     /**
      * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually. The field lets you activate it
      * automatically with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects there is a higher risk ), "FORCE" (if you wish to specifically force the secured mode).
      */
-    MangoPay$SecureMode: MangoPay$SecureMode,
+    SecureMode: MangoPay$SecureMode,
 
     /**
      * The language to use for the payment page - needs to be the ISO code of the language
@@ -2422,9 +2476,9 @@ declare module "mangopay2-nodejs-sdk" {
      * The URL to redirect to user to for them to proceed with the payment
      */
     RedirectURL: string
-  } & payIn$BasePayInData;
+  } & BasePayInData;
 
-  declare interface payIn$CreateCardWebPayIn {
+  declare interface MangoPay$payIn$CreateCardWebPayIn {
     ExecutionType: "WEB";
     PaymentType: "CARD";
 
@@ -2461,14 +2515,14 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of card
      */
-    card$CardType: card$card$CardType;
+    CardType: card$CardType;
 
     /**
      * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually.
      * The field lets you activate it automatically with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects
      * there is a higher risk ), "FORCE" (if you wish to specifically force the secured mode).
      */
-    MangoPay$SecureMode?: MangoPay$SecureMode;
+    SecureMode?: MangoPay$SecureMode;
 
     /**
      * The language to use for the payment page - needs to be the ISO code of the language
@@ -2479,7 +2533,7 @@ declare module "mangopay2-nodejs-sdk" {
      * A URL to an SSL page to allow you to customise the payment page. Must be in the format: array("PAYLINE"=>"https://...") and meet all the
      * specifications listed here. Note that only a template for Payline is currently available
      */
-    payIn$TemplateURLOptions?: payIn$TemplateURLOptions;
+    TemplateURLOptions?: MangoPay$payIn$TemplateURLOptions;
 
     /**
      * A custom description to appear on the user's bank statement. It can be up to 10 characters long, and
@@ -2488,7 +2542,7 @@ declare module "mangopay2-nodejs-sdk" {
     StatementDescriptor?: string;
   }
 
-  declare type payIn$CardDirectPayInData = {
+  declare type MangoPay$payIn$CardDirectPayInData = {
     ExecutionType: "DIRECT",
     PaymentType: "CARD",
 
@@ -2506,7 +2560,7 @@ declare module "mangopay2-nodejs-sdk" {
      * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually. The field lets you activate it
      * automatically with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects there is a higher risk ), "FORCE" (if you wish to specifically force the secured mode).
      */
-    MangoPay$SecureMode: MangoPay$SecureMode,
+    SecureMode: MangoPay$SecureMode,
 
     /**
      * A custom description to appear on the user's bank statement. It can be up to 10 characters long, and can only include alphanumeric
@@ -2517,12 +2571,12 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * Contains useful information related to the user billing
      */
-    models$Billing: MangoPay$BillingData,
+    Billing: MangoPay$BillingData,
 
     /**
      * Contains information related to security and fraud
      */
-    models$SecurityInfo: MangoPay$SecurityInfoData,
+    SecurityInfo: MangoPay$SecurityInfoData,
 
     /**
      * The value is 'true' if the SecureMode was used
@@ -2533,9 +2587,9 @@ declare module "mangopay2-nodejs-sdk" {
      * This is the URL where to redirect users to proceed to 3D secure validation
      */
     SecureModeRedirectUrl: string
-  } & payIn$BasePayInData;
+  } & BasePayInData;
 
-  declare interface payIn$CreateCardDirectPayIn {
+  declare interface MangoPay$payIn$CreateCardDirectPayIn {
     ExecutionType: "DIRECT";
     PaymentType: "CARD";
 
@@ -2578,12 +2632,12 @@ declare module "mangopay2-nodejs-sdk" {
      * The SecureMode corresponds to '3D secure' for CB Visa and MasterCard. This field lets you activate it manually. The field lets you activate it automatically
      *   with "DEFAULT" (Secured Mode will be activated from €50 or when MANGOPAY detects there is a higher risk ), "FORCE" (if you wish to specifically force the secured mode).
      */
-    MangoPay$SecureMode?: MangoPay$SecureMode;
+    SecureMode?: MangoPay$SecureMode;
 
     /**
      * Contains useful information related to the user billing
      */
-    models$Billing?: MangoPay$BillingData;
+    Billing?: MangoPay$BillingData;
 
     /**
      * A custom description to appear on the user's bank statement. It can be up to 10 characters long, and can only include alphanumeric characters or spaces.
@@ -2592,13 +2646,13 @@ declare module "mangopay2-nodejs-sdk" {
     StatementDescriptor?: string;
   }
 
-  declare type payIn$CardPreAuthorizedPayInData = {
+  declare type MangoPay$payIn$CardPreAuthorizedPayInData = {
     PreauthorizationId: string,
     ExecutionType: "DIRECT",
     PaymentType: "PREAUTHORIZED"
-  } & payIn$BasePayInData;
+  } & BasePayInData;
 
-  declare interface payIn$CreateCardPreAuthorizedPayIn {
+  declare interface MangoPay$payIn$CreateCardPreAuthorizedPayIn {
     ExecutionType: "DIRECT";
     PaymentType: "PREAUTHORIZED";
 
@@ -2638,7 +2692,7 @@ declare module "mangopay2-nodejs-sdk" {
     PreauthorizationId: string;
   }
 
-  declare interface payIn$BankAccountData {
+  declare interface MangoPay$payIn$BankAccountData {
     /**
      * The BIC of the bank account
      */
@@ -2665,7 +2719,7 @@ declare module "mangopay2-nodejs-sdk" {
     Type: ValueOf<MangoPay$IBankAccountType>;
   }
 
-  declare type payIn$BankWireDirectPayInData = {
+  declare type MangoPay$payIn$BankWireDirectPayInData = {
     ExecutionType: "DIRECT",
     PaymentType: "BANK_WIRE",
 
@@ -2687,14 +2741,14 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * Bank account details
      */
-    models$BankAccount: payIn$BankAccountData
-  } & payIn$BasePayInData;
+    BankAccount: MangoPay$payIn$BankAccountData
+  } & BasePayInData;
 
-  declare type payIn$CreateBankWireDirectPayIn = {
+  declare type MangoPay$payIn$CreateBankWireDirectPayIn = {
     ExecutionType: "DIRECT",
     PaymentType: "BANK_WIRE"
   } & PickPartialRequired<
-    payIn$BankWireDirectPayInData,
+    MangoPay$payIn$BankWireDirectPayInData,
     "Tag",
     | "AuthorId"
     | "CreditedUserId"
@@ -2703,13 +2757,13 @@ declare module "mangopay2-nodejs-sdk" {
     | "DeclaredFees"
   >;
 
-  declare type payIn$PayInData =
-    | payIn$CardDirectPayInData
-    | payIn$CardPreAuthorizedPayInData
-    | payIn$CardWebPayInData
-    | payIn$BankWireDirectPayInData;
+  declare type MangoPay$payIn$PayInData =
+    | MangoPay$payIn$CardDirectPayInData
+    | MangoPay$payIn$CardPreAuthorizedPayInData
+    | MangoPay$payIn$CardWebPayInData
+    | MangoPay$payIn$BankWireDirectPayInData;
 
-  declare type refund$RefundReasonType =
+  declare type MangoPay$refund$RefundReasonType =
     | "INITIALIZED_BY_CLIENT"
     | "BANKACCOUNT_INCORRECT"
     | "OWNER_DO_NOT_MATCH_BANKACCOUNT"
@@ -2717,11 +2771,11 @@ declare module "mangopay2-nodejs-sdk" {
     | "WITHDRAWAL_IMPOSSIBLE_ON_SAVINGS_ACCOUNTS"
     | "OTHER";
 
-  declare interface refund$RefundReason {
-    refund$RefundReasonType: refund$RefundReasonType;
+  declare interface MangoPay$refund$RefundReason {
+    RefundReasonType: MangoPay$refund$RefundReasonType;
   }
 
-  declare type refund$RefundData = {
+  declare type MangoPay$refund$RefundData = {
     /**
      * The nature of the transaction
      */
@@ -2735,27 +2789,27 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The initial transaction type
      */
-    InitialTransactionType: transaction$transaction$TransactionType,
+    InitialTransactionType: transaction$TransactionType,
 
     /**
      * Contains info about the reason for refund
      */
-    refund$RefundReason: refund$RefundReason
-  } & transaction$transaction$TransactionData;
+    RefundReason: MangoPay$refund$RefundReason
+  } & transaction$TransactionData;
 
-  declare interface refund$CreatePayInRefund {
+  declare interface MangoPay$refund$CreatePayInRefund {
     AuthorId: string;
     Tag?: string;
     DebitedFunds?: MangoPay$MoneyData;
     Fees?: MangoPay$MoneyData;
   }
 
-  declare interface refund$CreateTransferRefund {
+  declare interface MangoPay$refund$CreateTransferRefund {
     AuthorId: string;
     Tag?: string;
   }
 
-  declare type repudiation$RepudiationData = {
+  declare type MangoPay$repudiation$RepudiationData = {
     /**
      * The nature of the transaction
      */
@@ -2769,21 +2823,21 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The initial transaction type
      */
-    InitialTransactionType: transaction$transaction$TransactionType,
+    InitialTransactionType: transaction$TransactionType,
 
     /**
      * Contains info about the reason for refund
      */
-    refund$RefundReason: refund$refund$RefundReason
-  } & transaction$transaction$TransactionData;
+    RefundReason: refund$RefundReason
+  } & transaction$TransactionData;
 
-  declare type client$BusinessType =
+  declare type MangoPay$client$BusinessType =
     | "MARKETPLACE"
     | "CROWDFUNDING"
     | "FRANCHISE"
     | "OTHER";
 
-  declare type client$Sector =
+  declare type MangoPay$client$Sector =
     | "RENTALS"
     | "STORES_FASHION_ACCESSORIES_OBJECTS"
     | "BEAUTY_COSMETICS_HEALTH"
@@ -2795,14 +2849,14 @@ declare module "mangopay2-nodejs-sdk" {
     | "SPORT_RECREATION_ACTIVITIES"
     | "TICKETING";
 
-  declare type client$PlatformType = ValueOf<MangoPay$IPlatformType>;
+  declare type MangoPay$client$PlatformType = ValueOf<MangoPay$IPlatformType>;
 
-  declare interface client$PlatformCategorization {
-    client$Sector: client$Sector;
-    client$BusinessType: client$BusinessType;
+  declare interface MangoPay$client$PlatformCategorization {
+    Sector: MangoPay$client$Sector;
+    BusinessType: MangoPay$client$BusinessType;
   }
 
-  declare type client$ClientData = {
+  declare type MangoPay$client$ClientData = {
     /**
      * The pretty name for the client
      */
@@ -2856,7 +2910,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The Categorization of your platform, in terms of Business Type and Sector
      */
-    client$PlatformCategorization: client$PlatformCategorization,
+    PlatformCategorization: MangoPay$client$PlatformCategorization,
 
     /**
      * A description of what your platform does
@@ -2871,7 +2925,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The address of the company’s headquarters
      */
-    HeadquartersAddress: address$address$AddressType,
+    HeadquartersAddress: address$AddressType,
 
     /**
      * The tax (or VAT) number for your company
@@ -2882,9 +2936,9 @@ declare module "mangopay2-nodejs-sdk" {
      * Your unique MANGOPAY reference which you should use when contacting us
      */
     CompanyReference: string
-  } & entityBase$entityBase$EntityBaseData;
+  } & entityBase$EntityBaseData;
 
-  declare interface client$UpdateClient {
+  declare interface MangoPay$client$UpdateClient {
     /**
      * The primary branding colour to use for buttons for your merchant
      */
@@ -2918,7 +2972,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The address of the company’s headquarters
      */
-    HeadquartersAddress?: address$address$AddressType;
+    HeadquartersAddress?: address$AddressType;
 
     /**
      * The tax (or VAT) number for your company
@@ -2928,7 +2982,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of platform
      */
-    client$PlatformType?: client$PlatformType;
+    PlatformType?: MangoPay$client$PlatformType;
 
     /**
      * A description of what your platform does
@@ -2941,14 +2995,14 @@ declare module "mangopay2-nodejs-sdk" {
     PlatformURL?: string;
   }
 
-  declare interface client$UpdateClientLogo {
+  declare interface MangoPay$client$UpdateClientLogo {
     /**
      * The base64 encoded file which needs to be uploaded
      */
     File: string;
   }
 
-  declare type event$EventType =
+  declare type MangoPay$event$EventType =
     | "PAYIN_NORMAL_CREATED"
     | "PAYIN_NORMAL_SUCCEEDED"
     | "PAYIN_NORMAL_FAILED"
@@ -3000,7 +3054,7 @@ declare module "mangopay2-nodejs-sdk" {
     | "UBO_DECLARATION_REFUSED"
     | "UBO_DECLARATION_VALIDATED";
 
-  declare interface event$EventData {
+  declare interface MangoPay$event$EventData {
     /**
      * The ID of whatever the event is
      */
@@ -3014,10 +3068,10 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The event type
      */
-    event$EventType: event$EventType;
+    EventType: MangoPay$event$EventType;
   }
 
-  declare type dispute$DisputeReasonType =
+  declare type MangoPay$dispute$DisputeReasonType =
     | "DUPLICATE"
     | "FRAUD"
     | "PRODUCT_UNACCEPTABLE"
@@ -3035,7 +3089,7 @@ declare module "mangopay2-nodejs-sdk" {
     | "CANCELED_REOCCURING_TRANSACTION"
     | "REFUND_NOT_PROCESSED";
 
-  declare type dispute$DisputeStatus =
+  declare type MangoPay$dispute$DisputeStatus =
     | "CREATED"
     | "PENDING_CLIENT_ACTION"
     | "SUBMITTED"
@@ -3043,17 +3097,17 @@ declare module "mangopay2-nodejs-sdk" {
     | "REOPENED_PENDING_CLIENT_ACTION"
     | "CLOSED";
 
-  declare type dispute$DisputeType =
+  declare type MangoPay$dispute$DisputeType =
     | "CONTESTABLE"
     | "NOT_CONTESTABLE"
     | "RETRIEVAL";
 
-  declare interface dispute$DisputeReason {
-    dispute$DisputeReasonType: dispute$DisputeReasonType;
+  declare interface MangoPay$dispute$DisputeReason {
+    DisputeReasonType: MangoPay$dispute$DisputeReasonType;
     DisputeReasonMessage: string;
   }
 
-  declare type dispute$DisputeData = {
+  declare type MangoPay$dispute$DisputeData = {
     /**
      * The initial transaction ID
      */
@@ -3062,7 +3116,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The initial transaction type
      */
-    InitialTransactionType: transaction$transaction$TransactionType,
+    InitialTransactionType: transaction$TransactionType,
 
     /**
      * The result code
@@ -3077,12 +3131,12 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * Info about the reason for the dispute
      */
-    dispute$DisputeReason: dispute$DisputeReason,
+    DisputeReason: MangoPay$dispute$DisputeReason,
 
     /**
      * The status of the dispute
      */
-    Status: dispute$DisputeStatus,
+    Status: MangoPay$dispute$DisputeStatus,
 
     /**
      * Used to communicate information about the dispute status to you
@@ -3102,7 +3156,7 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The type of dispute
      */
-    dispute$DisputeType: dispute$DisputeType,
+    DisputeType: MangoPay$dispute$DisputeType,
 
     /**
      * The deadline by which you must contest the dispute (if you wish to contest it)
@@ -3113,24 +3167,24 @@ declare module "mangopay2-nodejs-sdk" {
      * The ID of the associated repudiation transaction
      */
     RepudiationId: string
-  } & entityBase$entityBase$EntityBaseData;
+  } & entityBase$EntityBaseData;
 
-  declare type dispute$SubmitDispute = {} & PickPartial<
-    dispute$DisputeData,
+  declare type MangoPay$dispute$SubmitDispute = {} & PickPartial<
+    MangoPay$dispute$DisputeData,
     "ContestedFunds"
   >;
 
-  declare type dispute$UpdateDispute = {} & PickPartial<
-    dispute$DisputeData,
+  declare type MangoPay$dispute$UpdateDispute = {} & PickPartial<
+    MangoPay$dispute$DisputeData,
     "Tag"
   >;
 
   declare interface MangoPay$DisputeReason {
-    dispute$DisputeReasonType: dispute$DisputeReasonType;
+    DisputeReasonType: MangoPay$dispute$DisputeReasonType;
     DisputeReasonMessage: string;
   }
 
-  declare type settlementTransfer$SettlementTransferData = {
+  declare type MangoPay$settlementTransfer$SettlementTransferData = {
     /**
      * The nature of the transaction
      */
@@ -3149,21 +3203,21 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The initial transaction type
      */
-    InitialTransactionType: transaction$transaction$TransactionType,
+    InitialTransactionType: transaction$TransactionType,
 
     /**
      * Contains info about the reason for refund
      */
-    refund$RefundReason: refund$refund$RefundReason
-  } & transaction$transaction$TransactionData;
+    RefundReason: refund$RefundReason
+  } & transaction$TransactionData;
 
-  declare type settlementTransfer$CreateSettlementTransfer = {} & PickPartialRequired<
-    settlementTransfer$SettlementTransferData,
+  declare type MangoPay$settlementTransfer$CreateSettlementTransfer = {} & PickPartialRequired<
+    MangoPay$settlementTransfer$SettlementTransferData,
     "Tag",
     "AuthorId" | "DebitedFunds" | "Fees"
   >;
 
-  declare type transfer$TransferData = {
+  declare type MangoPay$transfer$TransferData = {
     /**
      * Information about the funds that are being debited
      */
@@ -3202,12 +3256,12 @@ declare module "mangopay2-nodejs-sdk" {
     /**
      * The nature of the transaction
      */
-    Nature: transaction$transaction$TransactionNature,
+    Nature: transaction$TransactionNature,
 
     /**
      * The status of the transaction
      */
-    Status: transaction$transaction$TransactionStatus,
+    Status: transaction$TransactionStatus,
 
     /**
      * When the transaction happened
@@ -3228,9 +3282,9 @@ declare module "mangopay2-nodejs-sdk" {
      * The type of the transaction
      */
     Type: "TRANSFER"
-  } & entityBase$entityBase$EntityBaseData;
+  } & entityBase$EntityBaseData;
 
-  declare interface transfer$CreateTransfer {
+  declare interface MangoPay$transfer$CreateTransfer {
     /**
      * Custom data that you can add to this item
      */
@@ -3267,7 +3321,7 @@ declare module "mangopay2-nodejs-sdk" {
     CreditedWalletId: string;
   }
 
-  declare type PayOut$PayOutData = {
+  declare type MangoPay$PayOut$PayOutData = {
     /**
      * The type of the transaction
      */
@@ -3283,9 +3337,9 @@ declare module "mangopay2-nodejs-sdk" {
      * A custom reference you wish to appear on the user’s bank statement (your Client Name is already shown). This reference can contain max 12 characters
      */
     BankWireRef: string
-  } & Omit<transfer$transfer$TransferData, "Type">;
+  } & Omit<transfer$TransferData, "Type">;
 
-  declare interface PayOut$CreatePayOut {
+  declare interface MangoPay$PayOut$CreatePayOut {
     /**
      * A user's ID
      */
@@ -3324,13 +3378,10 @@ declare module "mangopay2-nodejs-sdk" {
      * @param user
      */
     create: MangoPay$MethodOverload<
-      user$user$CreateUserLegalData,
-      user$user$UserLegalData
+      user$CreateUserLegalData,
+      user$UserLegalData
     > &
-      MangoPay$MethodOverload<
-        user$user$CreateUserNaturalData,
-        user$user$UserNaturalData
-      >;
+      MangoPay$MethodOverload<user$CreateUserNaturalData, user$UserNaturalData>;
 
     /**
      * Update a user
@@ -3338,12 +3389,12 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     update: MangoPay$MethodOverload<
-      models$models$UserLegal | user$user$UpdateUserLegalData,
-      user$user$UserLegalData
+      models$UserLegal | user$UpdateUserLegalData,
+      user$UserLegalData
     > &
       MangoPay$MethodOverload<
-        models$models$UserNatural | user$user$UpdateUserNaturalData,
-        user$user$UserNaturalData
+        models$UserNatural | user$UpdateUserNaturalData,
+        user$UserNaturalData
       >;
 
     /**
@@ -3353,7 +3404,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     get: MangoPay$MethodOverload<
       string,
-      user$user$UserLegalData | user$user$UserNaturalData
+      user$UserLegalData | user$UserNaturalData
     >;
 
     /**
@@ -3361,20 +3412,20 @@ declare module "mangopay2-nodejs-sdk" {
      * @param userId
      * @param options
      */
-    getNatural: MangoPay$MethodOverload<string, user$user$UserNaturalData>;
+    getNatural: MangoPay$MethodOverload<string, user$UserNaturalData>;
 
     /**
      * Get legal user by ID
      * @param userId
      * @param options
      */
-    getLegal: MangoPay$MethodOverload<string, user$user$UserLegalData>;
+    getLegal: MangoPay$MethodOverload<string, user$UserLegalData>;
 
     /**
      * Get all users
      */
     getAll: MangoPay$NoArgMethodOverload<
-      Array<user$user$UserLegalData | user$user$UserNaturalData>
+      Array<user$UserLegalData | user$UserNaturalData>
     >;
 
     /**
@@ -3385,28 +3436,28 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createBankAccount: MangoPay$TwoArgsMethodOverload<
       string,
-      bankAccount$bankAccount$USDetails,
-      bankAccount$bankAccount$USData
+      bankAccount$USDetails,
+      bankAccount$USData
     > &
       MangoPay$TwoArgsMethodOverload<
         string,
-        bankAccount$bankAccount$OtherDetails,
-        bankAccount$bankAccount$OtherData
+        bankAccount$OtherDetails,
+        bankAccount$OtherData
       > &
       MangoPay$TwoArgsMethodOverload<
         string,
-        bankAccount$bankAccount$IBANDetails,
-        bankAccount$bankAccount$IBANData
+        bankAccount$IBANDetails,
+        bankAccount$IBANData
       > &
       MangoPay$TwoArgsMethodOverload<
         string,
-        bankAccount$bankAccount$GBDetails,
-        bankAccount$bankAccount$GBData
+        bankAccount$GBDetails,
+        bankAccount$GBData
       > &
       MangoPay$TwoArgsMethodOverload<
         string,
-        bankAccount$bankAccount$CADetails,
-        bankAccount$bankAccount$CAData
+        bankAccount$CADetails,
+        bankAccount$CAData
       >;
 
     /**
@@ -3424,10 +3475,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param userId
      * @param options
      */
-    getBankAccounts: MangoPay$MethodOverload<
-      string,
-      bankAccount$bankAccount$Data[]
-    >;
+    getBankAccounts: MangoPay$MethodOverload<string, bankAccount$Data[]>;
 
     /**
      * Get all bank accounts for user
@@ -3438,13 +3486,13 @@ declare module "mangopay2-nodejs-sdk" {
     getBankAccount: MangoPay$TwoArgsMethodOverload<
       string,
       string,
-      bankAccount$bankAccount$Data
+      bankAccount$Data
     >;
 
     /**
      * Get all wallets accounts for user
      */
-    getWallets: MangoPay$MethodOverload<string, wallet$wallet$WalletData[]>;
+    getWallets: MangoPay$MethodOverload<string, wallet$WalletData[]>;
 
     /**
      * Get all transactions for user
@@ -3453,7 +3501,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
 
     /**
@@ -3461,7 +3509,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param userId
      * @param options
      */
-    getCards: MangoPay$MethodOverload<string, card$card$CardData[]>;
+    getCards: MangoPay$MethodOverload<string, card$CardData[]>;
 
     /**
      * Create new KYC document
@@ -3471,8 +3519,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createKycDocument: MangoPay$TwoArgsMethodOverload<
       string,
-      kycDocument$kycDocument$CreateKycDocument,
-      kycDocument$kycDocument$KycDocumentData
+      kycDocument$CreateKycDocument,
+      kycDocument$KycDocumentData
     >;
 
     /**
@@ -3482,7 +3530,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getKycDocuments: MangoPay$MethodOverload<
       string,
-      kycDocument$kycDocument$KycDocumentData[]
+      kycDocument$KycDocumentData[]
     >;
 
     /**
@@ -3494,7 +3542,7 @@ declare module "mangopay2-nodejs-sdk" {
     getKycDocument: MangoPay$TwoArgsMethodOverload<
       string,
       string,
-      kycDocument$kycDocument$KycDocumentData
+      kycDocument$KycDocumentData
     >;
 
     /**
@@ -3505,8 +3553,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     updateKycDocument: MangoPay$TwoArgsMethodOverload<
       string,
-      kycDocument$kycDocument$SubmitKycDocument,
-      kycDocument$kycDocument$KycDocumentData
+      kycDocument$SubmitKycDocument,
+      kycDocument$KycDocumentData
     >;
 
     /**
@@ -3519,8 +3567,8 @@ declare module "mangopay2-nodejs-sdk" {
     createKycPage: MangoPay$ThreeArgsMethodOverload<
       string,
       string,
-      kycDocument$kycDocument$CreateKycPage,
-      kycDocument$kycDocument$KycDocumentData
+      kycDocument$CreateKycPage,
+      kycDocument$KycDocumentData
     >;
 
     /**
@@ -3534,7 +3582,7 @@ declare module "mangopay2-nodejs-sdk" {
       string,
       string,
       string,
-      kycDocument$kycDocument$KycDocumentData
+      kycDocument$KycDocumentData
     >;
 
     /**
@@ -3542,7 +3590,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param userId
      * @param options
      */
-    getEMoney: MangoPay$MethodOverload<string, eMoney$eMoney$EMoneyData>;
+    getEMoney: MangoPay$MethodOverload<string, eMoney$EMoneyData>;
 
     /**
      * Create an UboDeclaration for the user
@@ -3552,8 +3600,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createUboDeclaration: MangoPay$TwoArgsMethodOverload<
       string,
-      uboDeclaration$uboDeclaration$CreateUboDeclaration,
-      uboDeclaration$uboDeclaration$UboDeclarationData
+      uboDeclaration$CreateUboDeclaration,
+      uboDeclaration$UboDeclarationData
     >;
 
     /**
@@ -3563,7 +3611,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getPreAuthorizations: MangoPay$MethodOverload<
       string,
-      cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData[]
+      cardPreAuthorization$CardPreAuthorizationData[]
     >;
   }
 
@@ -3582,19 +3630,14 @@ declare module "mangopay2-nodejs-sdk" {
      * Get all KycDocuments
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<
-      kycDocument$kycDocument$KycDocumentData[]
-    >;
+    getAll: MangoPay$NoArgMethodOverload<kycDocument$KycDocumentData[]>;
 
     /**
      * Get KycDocument
      * @param kycDocumentId
      * @param options
      */
-    get: MangoPay$MethodOverload<
-      string,
-      kycDocument$kycDocument$KycDocumentData
-    >;
+    get: MangoPay$MethodOverload<string, kycDocument$KycDocumentData>;
 
     /**
      * Creates temporary URLs where each page of a KYC document can be viewed.
@@ -3621,10 +3664,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param id
      * @param options
      */
-    get: MangoPay$MethodOverload<
-      string,
-      uboDeclaration$uboDeclaration$UboDeclarationData
-    >;
+    get: MangoPay$MethodOverload<string, uboDeclaration$UboDeclarationData>;
 
     /**
      * Updates a UBO declaration entity.
@@ -3632,8 +3672,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     update: MangoPay$MethodOverload<
-      uboDeclaration$uboDeclaration$UpdateUboDeclaration,
-      uboDeclaration$uboDeclaration$UboDeclarationData
+      uboDeclaration$UpdateUboDeclaration,
+      uboDeclaration$UboDeclarationData
     >;
   }
 
@@ -3645,7 +3685,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
   }
 
@@ -3656,8 +3696,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      wallet$wallet$CreateWallet | models$models$Wallet,
-      wallet$wallet$WalletData
+      wallet$CreateWallet | models$Wallet,
+      wallet$WalletData
     >;
 
     /**
@@ -3666,15 +3706,15 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     update: MangoPay$MethodOverload<
-      wallet$wallet$UpdateWallet | models$models$Wallet,
-      wallet$wallet$WalletData
+      wallet$UpdateWallet | models$Wallet,
+      wallet$WalletData
     >;
 
     /**
      * Get a specific wallet
      * @param walletId
      */
-    get: MangoPay$MethodOverload<string, wallet$wallet$WalletData>;
+    get: MangoPay$MethodOverload<string, wallet$WalletData>;
 
     /**
      * Get transactions for the wallet
@@ -3683,7 +3723,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
   }
 
@@ -3693,21 +3733,21 @@ declare module "mangopay2-nodejs-sdk" {
      * @param cardId
      * @param ptions
      */
-    get: MangoPay$MethodOverload<string, card$card$CardData>;
+    get: MangoPay$MethodOverload<string, card$CardData>;
 
     /**
      * Gets a list of cards having the same fingerprint.
      * The fingerprint is a hash uniquely generated per 16-digit card number.
      * @param fingerprint The fingerprint hash
      */
-    getByFingerprint: MangoPay$MethodOverload<string, card$card$CardData[]>;
+    getByFingerprint: MangoPay$MethodOverload<string, card$CardData[]>;
 
     /**
      * Update card (currently only supports deactivation)
      * @param card
      * @param options
      */
-    update: MangoPay$MethodOverload<card$card$UpdateCard, card$card$CardData>;
+    update: MangoPay$MethodOverload<card$UpdateCard, card$CardData>;
 
     /**
      * Get list of Transactions of a Card
@@ -3716,7 +3756,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
 
     /**
@@ -3726,7 +3766,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getPreAuthorizations: MangoPay$MethodOverload<
       string,
-      cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData[]
+      cardPreAuthorization$CardPreAuthorizationData[]
     >;
   }
 
@@ -3749,8 +3789,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      cardRegistration$cardRegistration$CreateCardRegistration,
-      cardRegistration$cardRegistration$CardRegistrationData
+      cardRegistration$CreateCardRegistration,
+      cardRegistration$CardRegistrationData
     >;
 
     /**
@@ -3758,18 +3798,15 @@ declare module "mangopay2-nodejs-sdk" {
      * @param cardRegistrationId
      * @param options
      */
-    get: MangoPay$MethodOverload<
-      string,
-      cardRegistration$cardRegistration$CardRegistrationData
-    >;
+    get: MangoPay$MethodOverload<string, cardRegistration$CardRegistrationData>;
 
     /**
      * Update card registration
      * @param cardRegistration
      */
     update: MangoPay$MethodOverload<
-      cardRegistration$cardRegistration$UpdateCardRegistration,
-      cardRegistration$cardRegistration$CardRegistrationData
+      cardRegistration$UpdateCardRegistration,
+      cardRegistration$CardRegistrationData
     >;
   }
 
@@ -3793,8 +3830,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      cardPreAuthorization$cardPreAuthorization$CreateCardPreAuthorization,
-      cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData
+      cardPreAuthorization$CreateCardPreAuthorization,
+      cardPreAuthorization$CardPreAuthorizationData
     >;
 
     /**
@@ -3804,7 +3841,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     get: MangoPay$MethodOverload<
       string,
-      cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData
+      cardPreAuthorization$CardPreAuthorizationData
     >;
 
     /**
@@ -3812,8 +3849,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param cardPreAuthorization
      */
     update: MangoPay$MethodOverload<
-      cardPreAuthorization$cardPreAuthorization$UpdateCardPreAuthorization,
-      cardPreAuthorization$cardPreAuthorization$CardPreAuthorizationData
+      cardPreAuthorization$UpdateCardPreAuthorization,
+      cardPreAuthorization$CardPreAuthorizationData
     >;
   }
 
@@ -3824,20 +3861,20 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      payIn$payIn$CreateCardDirectPayIn,
-      payIn$payIn$CardDirectPayInData
+      payIn$CreateCardDirectPayIn,
+      payIn$CardDirectPayInData
     > &
       MangoPay$MethodOverload<
-        payIn$payIn$CreateCardPreAuthorizedPayIn,
-        payIn$payIn$CardPreAuthorizedPayInData
+        payIn$CreateCardPreAuthorizedPayIn,
+        payIn$CardPreAuthorizedPayInData
       > &
       MangoPay$MethodOverload<
-        payIn$payIn$CreateCardWebPayIn,
-        payIn$payIn$CardWebPayInData
+        payIn$CreateCardWebPayIn,
+        payIn$CardWebPayInData
       > &
       MangoPay$MethodOverload<
-        payIn$payIn$CreateBankWireDirectPayIn,
-        payIn$payIn$BankWireDirectPayInData
+        payIn$CreateBankWireDirectPayIn,
+        payIn$BankWireDirectPayInData
       >;
 
     /**
@@ -3845,7 +3882,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param payInId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, payIn$payIn$PayInData>;
+    get: MangoPay$MethodOverload<string, payIn$PayInData>;
 
     /**
      * Create refund for pay-in object
@@ -3855,8 +3892,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createRefund: MangoPay$TwoArgsMethodOverload<
       string,
-      refund$refund$CreatePayInRefund,
-      refund$refund$RefundData
+      refund$CreatePayInRefund,
+      refund$RefundData
     >;
 
     /**
@@ -3864,7 +3901,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param payInId
      * @param options
      */
-    getRefunds: MangoPay$MethodOverload<string, refund$refund$RefundData[]>;
+    getRefunds: MangoPay$MethodOverload<string, refund$RefundData[]>;
   }
 
   declare class MangoPay$Refunds {
@@ -3873,49 +3910,41 @@ declare module "mangopay2-nodejs-sdk" {
      * @param refundId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, refund$refund$RefundData>;
+    get: MangoPay$MethodOverload<string, refund$RefundData>;
   }
 
   declare class MangoPay$Clients {
     /**
      * Get the client
      */
-    get: MangoPay$NoArgMethodOverload<client$client$ClientData>;
+    get: MangoPay$NoArgMethodOverload<client$ClientData>;
 
     /**
      * Update the client
      * @param client
      * @param options
      */
-    update: MangoPay$MethodOverload<
-      client$client$UpdateClient,
-      client$client$ClientData
-    >;
+    update: MangoPay$MethodOverload<client$UpdateClient, client$ClientData>;
 
     /**
      * Upload client logo from base64 image string
      * @param base64Logo
      * @param options
      */
-    uploadLogo: MangoPay$MethodOverload<string, client$client$ClientData>;
+    uploadLogo: MangoPay$MethodOverload<string, client$ClientData>;
 
     /**
      * Upload client logo from file path
      * @param filePath
      * @param options
      */
-    uploadLogoFromFile: MangoPay$MethodOverload<
-      string,
-      client$client$ClientData
-    >;
+    uploadLogoFromFile: MangoPay$MethodOverload<string, client$ClientData>;
 
     /**
      * Get all client wallets
      * @param options
      */
-    getClientWallets: MangoPay$NoArgMethodOverload<
-      wallet$wallet$ClientWalletData[]
-    >;
+    getClientWallets: MangoPay$NoArgMethodOverload<wallet$ClientWalletData[]>;
 
     /**
      * Get a client wallet
@@ -3924,9 +3953,9 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     getClientWallet: MangoPay$TwoArgsMethodOverload<
-      wallet$wallet$ClientFundsType,
+      wallet$ClientFundsType,
       CurrencyISO,
-      wallet$wallet$ClientWalletData
+      wallet$ClientWalletData
     >;
 
     /**
@@ -3935,8 +3964,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     getClientWalletsByFundsType: MangoPay$MethodOverload<
-      wallet$wallet$ClientFundsType,
-      wallet$wallet$ClientWalletData[]
+      wallet$ClientFundsType,
+      wallet$ClientWalletData[]
     >;
 
     /**
@@ -3946,9 +3975,9 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     getClientWalletTransactions: MangoPay$TwoArgsMethodOverload<
-      wallet$wallet$ClientFundsType,
+      wallet$ClientFundsType,
       CurrencyISO,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
   }
 
@@ -3958,24 +3987,21 @@ declare module "mangopay2-nodejs-sdk" {
      * @param payOut
      * @param options
      */
-    create: MangoPay$MethodOverload<
-      models$PayOut.PayOut$CreatePayOut,
-      models$PayOut.PayOut$PayOutData
-    >;
+    create: MangoPay$MethodOverload<PayOut$CreatePayOut, PayOut$PayOutData>;
 
     /**
      * Get payout
      * @param payOutId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, models$PayOut.PayOut$PayOutData>;
+    get: MangoPay$MethodOverload<string, PayOut$PayOutData>;
 
     /**
      * Gets list of Refunds of a PayOut
      * @param payOutId
      * @param options
      */
-    getRefunds: MangoPay$MethodOverload<string, refund$refund$RefundData[]>;
+    getRefunds: MangoPay$MethodOverload<string, refund$RefundData[]>;
   }
 
   declare class MangoPay$Transfers {
@@ -3985,8 +4011,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      transfer$transfer$CreateTransfer,
-      transfer$transfer$TransferData
+      transfer$CreateTransfer,
+      transfer$TransferData
     >;
 
     /**
@@ -3994,7 +4020,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param transferId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, transfer$transfer$TransferData>;
+    get: MangoPay$MethodOverload<string, transfer$TransferData>;
 
     /**
      * Create refund for transfer object
@@ -4004,8 +4030,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createRefund: MangoPay$TwoArgsMethodOverload<
       string,
-      refund$refund$CreateTransferRefund,
-      refund$refund$RefundData
+      refund$CreateTransferRefund,
+      refund$RefundData
     >;
 
     /**
@@ -4013,7 +4039,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param transferId
      * @param options
      */
-    getRefunds: MangoPay$MethodOverload<string, refund$refund$RefundData[]>;
+    getRefunds: MangoPay$MethodOverload<string, refund$RefundData[]>;
   }
 
   declare class MangoPay$BankingAliases {
@@ -4023,8 +4049,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     create: MangoPay$MethodOverload<
-      bankingAlias$bankingAlias$CreateIBANBankingAlias,
-      bankingAlias$bankingAlias$IBANBankingAliasData
+      bankingAlias$CreateIBANBankingAlias,
+      bankingAlias$IBANBankingAliasData
     >;
 
     /**
@@ -4032,18 +4058,13 @@ declare module "mangopay2-nodejs-sdk" {
      * @param bankingAliasId
      * @param options
      */
-    get: MangoPay$MethodOverload<
-      string,
-      bankingAlias$bankingAlias$IBANBankingAliasData
-    >;
+    get: MangoPay$MethodOverload<string, bankingAlias$IBANBankingAliasData>;
 
     /**
      * Get all banking aliases
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<
-      bankingAlias$bankingAlias$IBANBankingAliasData[]
-    >;
+    getAll: MangoPay$NoArgMethodOverload<bankingAlias$IBANBankingAliasData[]>;
 
     /**
      * Update banking alias
@@ -4051,10 +4072,8 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     update: MangoPay$MethodOverload<
-      $Shape<
-        Omit<bankingAlias$bankingAlias$CreateIBANBankingAlias, "CreditedUserId">
-      >,
-      bankingAlias$bankingAlias$IBANBankingAliasData
+      $Shape<Omit<bankingAlias$CreateIBANBankingAlias, "CreditedUserId">>,
+      bankingAlias$IBANBankingAliasData
     >;
 
     /**
@@ -4064,7 +4083,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     deactivate: MangoPay$MethodOverload<
       string,
-      bankingAlias$bankingAlias$IBANBankingAliasData
+      bankingAlias$IBANBankingAliasData
     >;
 
     /**
@@ -4074,7 +4093,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     activate: MangoPay$MethodOverload<
       string,
-      bankingAlias$bankingAlias$IBANBankingAliasData
+      bankingAlias$IBANBankingAliasData
     >;
   }
 
@@ -4083,19 +4102,14 @@ declare module "mangopay2-nodejs-sdk" {
      * Get all KycDocuments
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<
-      disputeDocument$disputeDocument$DisputeDocumentData[]
-    >;
+    getAll: MangoPay$NoArgMethodOverload<disputeDocument$DisputeDocumentData[]>;
 
     /**
      * Get KycDocument
      * @param documentId
      * @param options
      */
-    get: MangoPay$MethodOverload<
-      string,
-      disputeDocument$disputeDocument$DisputeDocumentData
-    >;
+    get: MangoPay$MethodOverload<string, disputeDocument$DisputeDocumentData>;
 
     /**
      * Creates temporary URLs where each page of a KYC document can be viewed.
@@ -4110,7 +4124,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param repudiationId
      * @param options
      */
-    getRefunds: MangoPay$MethodOverload<string, refund$refund$RefundData[]>;
+    getRefunds: MangoPay$MethodOverload<string, refund$RefundData[]>;
   }
 
   declare class MangoPay$Disputes {
@@ -4119,23 +4133,20 @@ declare module "mangopay2-nodejs-sdk" {
      * @param disputeId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, dispute$dispute$DisputeData>;
+    get: MangoPay$MethodOverload<string, dispute$DisputeData>;
 
     /**
      * Get all disputes
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<dispute$dispute$DisputeData[]>;
+    getAll: MangoPay$NoArgMethodOverload<dispute$DisputeData[]>;
 
     /**
      * Update dispute's tag
      * @param dispute
      * @param options
      */
-    update: MangoPay$MethodOverload<
-      dispute$dispute$UpdateDispute,
-      dispute$dispute$DisputeData
-    >;
+    update: MangoPay$MethodOverload<dispute$UpdateDispute, dispute$DisputeData>;
 
     /**
      * Contest dispute
@@ -4146,7 +4157,7 @@ declare module "mangopay2-nodejs-sdk" {
     contestDispute: MangoPay$TwoArgsMethodOverload<
       string,
       MangoPay$MoneyData,
-      dispute$dispute$DisputeData
+      dispute$DisputeData
     >;
 
     /**
@@ -4154,17 +4165,14 @@ declare module "mangopay2-nodejs-sdk" {
      * @param disputeId
      * @param options
      */
-    resubmitDispute: MangoPay$MethodOverload<
-      string,
-      dispute$dispute$DisputeData
-    >;
+    resubmitDispute: MangoPay$MethodOverload<string, dispute$DisputeData>;
 
     /**
      * Close dispute
      * @param disputeId
      * @param options
      */
-    closeDispute: MangoPay$MethodOverload<string, dispute$dispute$DisputeData>;
+    closeDispute: MangoPay$MethodOverload<string, dispute$DisputeData>;
 
     /**
      * Gets dispute's transactions
@@ -4173,7 +4181,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
 
     /**
@@ -4183,7 +4191,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getDisputesForWallet: MangoPay$MethodOverload<
       string,
-      dispute$dispute$DisputeData[]
+      dispute$DisputeData[]
     >;
 
     /**
@@ -4191,10 +4199,7 @@ declare module "mangopay2-nodejs-sdk" {
      * @param userId
      * @param options
      */
-    getDisputesForUser: MangoPay$MethodOverload<
-      string,
-      dispute$dispute$DisputeData[]
-    >;
+    getDisputesForUser: MangoPay$MethodOverload<string, dispute$DisputeData[]>;
 
     /**
      * Gets repudiation
@@ -4203,7 +4208,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getRepudiation: MangoPay$MethodOverload<
       string,
-      repudiation$repudiation$RepudiationData[]
+      repudiation$RepudiationData[]
     >;
 
     /**
@@ -4213,9 +4218,9 @@ declare module "mangopay2-nodejs-sdk" {
      * @param options
      */
     createSettlementTransfer: MangoPay$TwoArgsMethodOverload<
-      settlementTransfer$settlementTransfer$CreateSettlementTransfer,
+      settlementTransfer$CreateSettlementTransfer,
       string,
-      settlementTransfer$settlementTransfer$SettlementTransferData
+      settlementTransfer$SettlementTransferData
     >;
 
     /**
@@ -4225,7 +4230,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getSettlementTransfer: MangoPay$MethodOverload<
       string,
-      settlementTransfer$settlementTransfer$SettlementTransferData
+      settlementTransfer$SettlementTransferData
     >;
 
     /**
@@ -4235,7 +4240,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getDocumentsForDispute: MangoPay$MethodOverload<
       string,
-      disputeDocument$disputeDocument$DisputeDocumentData[]
+      disputeDocument$DisputeDocumentData[]
     >;
 
     /**
@@ -4246,8 +4251,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     updateDisputeDocument: MangoPay$TwoArgsMethodOverload<
       string,
-      $Shape<disputeDocument$disputeDocument$DisputeDocumentData>,
-      disputeDocument$disputeDocument$DisputeDocumentData
+      $Shape<disputeDocument$DisputeDocumentData>,
+      disputeDocument$DisputeDocumentData
     >;
 
     /**
@@ -4258,8 +4263,8 @@ declare module "mangopay2-nodejs-sdk" {
      */
     createDisputeDocument: MangoPay$TwoArgsMethodOverload<
       string,
-      disputeDocument$disputeDocument$CreateDisputeDocument,
-      disputeDocument$disputeDocument$DisputeDocumentData
+      disputeDocument$CreateDisputeDocument,
+      disputeDocument$DisputeDocumentData
     >;
 
     /**
@@ -4272,8 +4277,8 @@ declare module "mangopay2-nodejs-sdk" {
     createDisputeDocumentPage: MangoPay$ThreeArgsMethodOverload<
       string,
       string,
-      disputeDocument$disputeDocument$CreateDisputeDocumentPage,
-      disputeDocument$disputeDocument$DisputeDocumentData
+      disputeDocument$CreateDisputeDocumentPage,
+      disputeDocument$DisputeDocumentData
     >;
 
     /**
@@ -4287,16 +4292,14 @@ declare module "mangopay2-nodejs-sdk" {
       string,
       string,
       string,
-      disputeDocument$disputeDocument$DisputeDocumentData
+      disputeDocument$DisputeDocumentData
     >;
 
     /**
      * Retrieve a list of Disputes pending settlement
      * @param options
      */
-    getPendingSettlement: MangoPay$NoArgMethodOverload<
-      dispute$dispute$DisputeData[]
-    >;
+    getPendingSettlement: MangoPay$NoArgMethodOverload<dispute$DisputeData[]>;
   }
 
   declare class MangoPay$Events {
@@ -4304,7 +4307,7 @@ declare module "mangopay2-nodejs-sdk" {
      * Get events
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<event$event$EventData[]>;
+    getAll: MangoPay$NoArgMethodOverload<event$EventData[]>;
   }
 
   declare class MangoPay$Responses {
@@ -4321,40 +4324,34 @@ declare module "mangopay2-nodejs-sdk" {
      * @param mandate
      * @param options
      */
-    create: MangoPay$MethodOverload<
-      mandate$mandate$CreateMandate,
-      mandate$mandate$MandateData
-    >;
+    create: MangoPay$MethodOverload<mandate$CreateMandate, mandate$MandateData>;
 
     /**
      * Get all mandates
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<mandate$mandate$MandateData[]>;
+    getAll: MangoPay$NoArgMethodOverload<mandate$MandateData[]>;
 
     /**
      * Get mandate by ID
      * @param mandateId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, mandate$mandate$MandateData>;
+    get: MangoPay$MethodOverload<string, mandate$MandateData>;
 
     /**
      * Cancel a mandate
      * @param mandateId
      * @param options
      */
-    cancel: MangoPay$MethodOverload<string, mandate$mandate$MandateData>;
+    cancel: MangoPay$MethodOverload<string, mandate$MandateData>;
 
     /**
      * Gets user's mandates
      * @param userId
      * @param options
      */
-    getMandatesForUser: MangoPay$MethodOverload<
-      string,
-      mandate$mandate$MandateData[]
-    >;
+    getMandatesForUser: MangoPay$MethodOverload<string, mandate$MandateData[]>;
 
     /**
      * Gets bank account mandates
@@ -4365,7 +4362,7 @@ declare module "mangopay2-nodejs-sdk" {
     getMandatesForBankAccount: MangoPay$TwoArgsMethodOverload<
       string,
       string,
-      mandate$mandate$MandateData[]
+      mandate$MandateData[]
     >;
 
     /**
@@ -4375,7 +4372,7 @@ declare module "mangopay2-nodejs-sdk" {
      */
     getTransactions: MangoPay$MethodOverload<
       string,
-      transaction$transaction$TransactionData[]
+      transaction$TransactionData[]
     >;
   }
 
@@ -4385,27 +4382,27 @@ declare module "mangopay2-nodejs-sdk" {
      * @param hook
      * @param options
      */
-    create: MangoPay$MethodOverload<hook$hook$CreateHook, hook$hook$HookData>;
+    create: MangoPay$MethodOverload<hook$CreateHook, hook$HookData>;
 
     /**
      * Get hook
      * @param hookId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, hook$hook$HookData>;
+    get: MangoPay$MethodOverload<string, hook$HookData>;
 
     /**
      * Save hook
      * @param hook
      * @param options
      */
-    update: MangoPay$MethodOverload<hook$hook$UpdateHook, hook$hook$HookData>;
+    update: MangoPay$MethodOverload<hook$UpdateHook, hook$HookData>;
 
     /**
      * Get all hooks
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<hook$hook$HookData[]>;
+    getAll: MangoPay$NoArgMethodOverload<hook$HookData[]>;
   }
 
   declare class MangoPay$Reports {
@@ -4414,22 +4411,19 @@ declare module "mangopay2-nodejs-sdk" {
      * @param report
      * @param options
      */
-    create: MangoPay$MethodOverload<
-      report$report$CreateReport,
-      report$report$ReportData
-    >;
+    create: MangoPay$MethodOverload<report$CreateReport, report$ReportData>;
 
     /**
      * Get a report
      * @param reportId
      * @param options
      */
-    get: MangoPay$MethodOverload<string, report$report$ReportData>;
+    get: MangoPay$MethodOverload<string, report$ReportData>;
 
     /**
      * Get all reports
      * @param options
      */
-    getAll: MangoPay$NoArgMethodOverload<report$report$ReportData[]>;
+    getAll: MangoPay$NoArgMethodOverload<report$ReportData[]>;
   }
 }
