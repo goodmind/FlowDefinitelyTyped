@@ -1,5 +1,5 @@
 declare module "npm-keyword" {
-  declare module.exports: typeof npmKeyword;
+  declare export default typeof npmKeyword;
 
   /**
    * Get a list of npm packages with a certain keyword.
@@ -8,8 +8,8 @@ declare module "npm-keyword" {
    */
   declare function npmKeyword(
     keyword: string | string[],
-    options?: npmKeyword$npmKeyword$Options
-  ): Promise<npmKeyword$npmKeyword$PackageDescriptor[]>;
+    options?: npmKeyword$Options
+  ): Promise<npmKeyword$PackageDescriptor[]>;
 
   declare var npm$namespace$npmKeyword: {
     names: typeof npmKeyword$names,
