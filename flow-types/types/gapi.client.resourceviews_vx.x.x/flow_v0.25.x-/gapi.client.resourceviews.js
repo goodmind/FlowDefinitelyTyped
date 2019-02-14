@@ -1,29 +1,33 @@
 declare module "gapi.client.resourceviews" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    zoneOperations: typeof client$zoneOperations,
-    zoneViews: typeof client$zoneViews
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    zoneOperations: typeof gapi$client$zoneOperations,
+    zoneViews: typeof gapi$client$zoneViews
   };
 
   /**
    * Load Google Compute Engine Instance Groups API v1beta2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "resourceviews",
     version: "v1beta2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "resourceviews",
     version: "v1beta2",
     callback: () => any
   ): void;
 
-  declare var client$zoneOperations: resourceviews$resourceviews$ZoneOperationsResource;
+  declare var gapi$client$zoneOperations: resourceviews$ZoneOperationsResource;
 
-  declare var client$zoneViews: resourceviews$resourceviews$ZoneViewsResource;
+  declare var gapi$client$zoneViews: resourceviews$ZoneViewsResource;
 
-  declare interface resourceviews$Label {
+  declare interface gapi$client$resourceviews$Label {
     /**
      * Key of the label.
      */
@@ -35,7 +39,7 @@ declare module "gapi.client.resourceviews" {
     value?: string;
   }
 
-  declare interface resourceviews$ListResourceResponseItem {
+  declare interface gapi$client$resourceviews$ListResourceResponseItem {
     /**
      * The list of service end points on the resource.
      */
@@ -47,7 +51,7 @@ declare module "gapi.client.resourceviews" {
     resource?: string;
   }
 
-  declare interface resourceviews$Operation {
+  declare interface gapi$client$resourceviews$Operation {
     /**
      * [Output only] An optional identifier specified by the client when the mutation was initiated. Must be unique for all operation resources in the
      * project.
@@ -207,7 +211,7 @@ declare module "gapi.client.resourceviews" {
     zone?: string;
   }
 
-  declare interface resourceviews$OperationList {
+  declare interface gapi$client$resourceviews$OperationList {
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */
@@ -216,7 +220,7 @@ declare module "gapi.client.resourceviews" {
     /**
      * The operation resources.
      */
-    items?: resourceviews$Operation[];
+    items?: gapi$client$resourceviews$Operation[];
 
     /**
      * Type of resource.
@@ -234,7 +238,7 @@ declare module "gapi.client.resourceviews" {
     selfLink?: string;
   }
 
-  declare interface resourceviews$ResourceView {
+  declare interface gapi$client$resourceviews$ResourceView {
     /**
      * The creation time of the resource view.
      */
@@ -268,7 +272,7 @@ declare module "gapi.client.resourceviews" {
     /**
      * The labels for events.
      */
-    labels?: resourceviews$Label[];
+    labels?: gapi$client$resourceviews$Label[];
 
     /**
      * The name of the resource view.
@@ -296,7 +300,7 @@ declare module "gapi.client.resourceviews" {
     size?: number;
   }
 
-  declare interface resourceviews$ServiceEndpoint {
+  declare interface gapi$client$resourceviews$ServiceEndpoint {
     /**
      * The name of the service endpoint.
      */
@@ -308,18 +312,18 @@ declare module "gapi.client.resourceviews" {
     port?: number;
   }
 
-  declare interface resourceviews$ZoneViewsAddResourcesRequest {
+  declare interface gapi$client$resourceviews$ZoneViewsAddResourcesRequest {
     /**
      * The list of resources to be added.
      */
     resources?: string[];
   }
 
-  declare interface resourceviews$ZoneViewsGetServiceResponse {
+  declare interface gapi$client$resourceviews$ZoneViewsGetServiceResponse {
     /**
      * The service information.
      */
-    endpoints?: resourceviews$ServiceEndpoint[];
+    endpoints?: gapi$client$resourceviews$ServiceEndpoint[];
 
     /**
      * The fingerprint of the service information.
@@ -327,11 +331,11 @@ declare module "gapi.client.resourceviews" {
     fingerprint?: string;
   }
 
-  declare interface resourceviews$ZoneViewsList {
+  declare interface gapi$client$resourceviews$ZoneViewsList {
     /**
      * The result that contains all resource views that meet the criteria.
      */
-    items?: resourceviews$ResourceView[];
+    items?: gapi$client$resourceviews$ResourceView[];
 
     /**
      * Type of resource.
@@ -349,11 +353,11 @@ declare module "gapi.client.resourceviews" {
     selfLink?: string;
   }
 
-  declare interface resourceviews$ZoneViewsListResourcesResponse {
+  declare interface gapi$client$resourceviews$ZoneViewsListResourcesResponse {
     /**
      * The formatted JSON that is requested by the user.
      */
-    items?: resourceviews$ListResourceResponseItem[];
+    items?: gapi$client$resourceviews$ListResourceResponseItem[];
 
     /**
      * The URL of a Compute Engine network to which the resources in the view belong.
@@ -366,18 +370,18 @@ declare module "gapi.client.resourceviews" {
     nextPageToken?: string;
   }
 
-  declare interface resourceviews$ZoneViewsRemoveResourcesRequest {
+  declare interface gapi$client$resourceviews$ZoneViewsRemoveResourcesRequest {
     /**
      * The list of resources to be removed.
      */
     resources?: string[];
   }
 
-  declare interface resourceviews$ZoneViewsSetServiceRequest {
+  declare interface gapi$client$resourceviews$ZoneViewsSetServiceRequest {
     /**
      * The service information to be updated.
      */
-    endpoints?: resourceviews$ServiceEndpoint[];
+    endpoints?: gapi$client$resourceviews$ServiceEndpoint[];
 
     /**
      * Fingerprint of the service information; a hash of the contents. This field is used for optimistic locking when updating the service entries.
@@ -390,7 +394,7 @@ declare module "gapi.client.resourceviews" {
     resourceName?: string;
   }
 
-  declare interface resourceviews$ZoneOperationsResource {
+  declare interface gapi$client$resourceviews$ZoneOperationsResource {
     /**
      * Retrieves the specified zone-specific operation resource.
      */
@@ -445,7 +449,7 @@ declare module "gapi.client.resourceviews" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
 
     /**
      * Retrieves the list of operation resources contained within the specified zone.
@@ -511,10 +515,10 @@ declare module "gapi.client.resourceviews" {
        * Name of the zone scoping this request.
        */
       zone: string
-    }): Request<resourceviews$OperationList>;
+    }): Request<gapi$client$resourceviews$OperationList>;
   }
 
-  declare interface resourceviews$ZoneViewsResource {
+  declare interface gapi$client$resourceviews$ZoneViewsResource {
     /**
      * Add resources to the view.
      */
@@ -569,7 +573,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
 
     /**
      * Delete a resource view.
@@ -625,7 +629,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
 
     /**
      * Get the information of a zonal resource view.
@@ -681,7 +685,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$ResourceView>;
+    }): Request<gapi$client$resourceviews$ResourceView>;
 
     /**
      * Get the service information of a resource view or a resource.
@@ -742,7 +746,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$ZoneViewsGetServiceResponse>;
+    }): Request<gapi$client$resourceviews$ZoneViewsGetServiceResponse>;
 
     /**
      * Create a resource view.
@@ -793,7 +797,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
 
     /**
      * List resource views.
@@ -854,7 +858,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$ZoneViewsList>;
+    }): Request<gapi$client$resourceviews$ZoneViewsList>;
 
     /**
      * List the resources of the resource view.
@@ -936,7 +940,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$ZoneViewsListResourcesResponse>;
+    }): Request<gapi$client$resourceviews$ZoneViewsListResourcesResponse>;
 
     /**
      * Remove resources from the view.
@@ -992,7 +996,7 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
 
     /**
      * Update the service information of a resource view or a resource.
@@ -1048,6 +1052,6 @@ declare module "gapi.client.resourceviews" {
        * The zone name of the resource view.
        */
       zone: string
-    }): Request<resourceviews$Operation>;
+    }): Request<gapi$client$resourceviews$Operation>;
   }
 }
