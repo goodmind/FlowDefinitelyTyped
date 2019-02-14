@@ -1,216 +1,3 @@
-declare var npm$namespace$ns: {
-  CALENDAR_SERVER: typeof ns$CALENDAR_SERVER,
-  CALDAV_APPLE: typeof ns$CALDAV_APPLE,
-  CALDAV: typeof ns$CALDAV,
-  CARDDAV: typeof ns$CARDDAV,
-  DAV: typeof ns$DAV
-};
-declare var ns$CALENDAR_SERVER: any; // "http://calendarserver.org/ns/";
-
-declare var ns$CALDAV_APPLE: any; // "http://apple.com/ns/ical/";
-
-declare var ns$CALDAV: any; // "urn:ietf:params:xml:ns:caldav";
-
-declare var ns$CARDDAV: any; // "urn:ietf:params:xml:ns:carddav";
-
-declare var ns$DAV: any; // "DAV:";
-declare var npm$namespace$debug: {
-  enabled: typeof debug$enabled
-};
-declare var debug$enabled: boolean;
-declare var npm$namespace$request: {
-  addressBookQuery: typeof request$addressBookQuery,
-  basic: typeof request$basic,
-  calendarQuery: typeof request$calendarQuery,
-  propfind: typeof request$propfind,
-  syncCollection: typeof request$syncCollection
-};
-
-/**
- * @param options
- * @returns
- */
-declare function request$addressBookQuery(
-  options: request$AddressBookQueryOptions
-): string;
-
-declare interface request$AddressBookQueryOptions {
-  /**
-   * value for Depth header.
-   */
-  depth?: string;
-
-  /**
-   * list of props to request.
-   */
-  props: { [key: string]: any }[];
-}
-
-/**
- * @param options
- * @returns
- */
-declare function request$basic(options: request$BasicOptions): Request;
-
-declare interface request$BasicOptions {
-  /**
-   * put request body.
-   */
-  data: string;
-
-  /**
-   * http method.
-   */
-  method: string;
-
-  /**
-   * cached calendar object etag.
-   */
-  etag: string;
-}
-
-/**
- * @param options
- * @returns
- */
-declare function request$calendarQuery(
-  options: request$CalendarQueryOptions
-): string;
-
-declare interface request$CalendarQueryOptions {
-  /**
-   * value for Depth header.
-   */
-  depth?: string;
-
-  /**
-   * list of filters to send with request.
-   */
-  filters: { [key: string]: any }[];
-
-  /**
-   * list of props to request.
-   */
-  props: { [key: string]: any }[];
-
-  /**
-   * VTIMEZONE calendar object.
-   */
-  timezone: string;
-}
-
-/**
- * @param options
- * @returns
- */
-declare function request$propfind(options: request$PropfindOptions): string;
-
-declare interface request$PropfindOptions {
-  /**
-   * value for Depth header.
-   */
-  depth?: string;
-
-  /**
-   * list of props to request.
-   */
-  props: { [key: string]: any }[];
-}
-
-/**
- * @param options
- * @returns
- */
-declare function request$syncCollection(
-  options: request$SyncCollectionOptions
-): string;
-
-declare interface request$SyncCollectionOptions {
-  /**
-   * option value for Depth header.
-   */
-  depth?: string;
-
-  /**
-   * list of props to request.
-   */
-  props: { [key: string]: any }[];
-
-  /**
-   * indicates scope of the sync report request.
-   */
-  syncLevel: number;
-
-  /**
-   * synchronization token provided by the server.
-   */
-  syncToken: string;
-}
-declare class transport$Transport {
-  /**
-   * @param credentials user authorization.
-   */
-  constructor(credentials: Credentials): this;
-  send(
-    request: Request,
-    url: string,
-    options?: transport$TransportOptions
-  ): Promise<any>;
-}
-
-declare interface transport$TransportOptions {
-  /**
-   * request sandbox.
-   */
-  sandbox?: Sandbox;
-  retry?: boolean;
-}
-
-declare class transport$Basic mixins transport$Transport {
-  /**
-   * Create a new Basic object. This sends dav requests using http basic authentication.
-   * @param credentials user authorization.
-   */
-  constructor(credentials: Credentials): this;
-
-  /**
- * @param request object with request info.
- * @param url
- * @param options
- * @return a promise that will be resolved with an xhr request after
-its readyState is 4 or the result of applying an optional request
-`transformResponse` function to the xhr object after its readyState
-is 4.
- */
-  send(
-    request: Request,
-    url: string,
-    options?: transport$TransportOptions
-  ): Promise<any>;
-}
-
-/**
- * Create a new OAuth2 object.This sends dav requests authorized via rfc 6749 oauth2.
- * @param credentials user authorization.
- */
-declare class transport$OAuth2 mixins transport$Transport {
-  constructor(credentials: Credentials): this;
-
-  /**
- * @param request object with request info.
- * @param url
- * @param options
- * @return a promise that will be resolved with an xhr request after
-its readyState is 4 or the result of applying an optional request
-`transformResponse` function to the xhr object after its readyState
-is 4.
- */
-  send(
-    request: Request,
-    url: string,
-    options?: transport$TransportOptions
-  ): Promise<any>;
-}
 declare module "dav" {
   declare export var version: string;
 
@@ -262,7 +49,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -295,7 +82,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -318,7 +105,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -341,7 +128,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -380,7 +167,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -419,7 +206,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -452,7 +239,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -475,7 +262,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -498,7 +285,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -527,7 +314,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -566,7 +353,7 @@ declare module "dav" {
     /**
      * request sender.
      */
-    xhr?: transport$transport$Transport;
+    xhr?: transport$Transport;
   }
 
   /**
@@ -588,6 +375,205 @@ declare module "dav" {
    */
   declare export function createSandbox(): Sandbox;
 
+  declare var npm$namespace$transport: {
+    Transport: typeof transport$Transport,
+    Basic: typeof transport$Basic,
+    OAuth2: typeof transport$OAuth2
+  };
+  declare class transport$Transport {
+    /**
+     * @param credentials user authorization.
+     */
+    constructor(credentials: Credentials): this;
+    send(
+      request: Request,
+      url: string,
+      options?: transport$TransportOptions
+    ): Promise<any>;
+  }
+
+  declare interface transport$TransportOptions {
+    /**
+     * request sandbox.
+     */
+    sandbox?: Sandbox;
+    retry?: boolean;
+  }
+
+  declare class transport$Basic mixins Transport {
+    /**
+     * Create a new Basic object. This sends dav requests using http basic authentication.
+     * @param credentials user authorization.
+     */
+    constructor(credentials: Credentials): this;
+
+    /**
+     * @param request object with request info.
+     * @param url
+     * @param options
+     * @return a promise that will be resolved with an xhr request after
+     * its readyState is 4 or the result of applying an optional request
+     * `transformResponse` function to the xhr object after its readyState
+     * is 4.
+     */
+    send(
+      request: Request,
+      url: string,
+      options?: transport$TransportOptions
+    ): Promise<any>;
+  }
+
+  /**
+   * Create a new OAuth2 object.This sends dav requests authorized via rfc 6749 oauth2.
+   * @param credentials user authorization.
+   */
+  declare class transport$OAuth2 mixins Transport {
+    constructor(credentials: Credentials): this;
+
+    /**
+     * @param request object with request info.
+     * @param url
+     * @param options
+     * @return a promise that will be resolved with an xhr request after
+     * its readyState is 4 or the result of applying an optional request
+     * `transformResponse` function to the xhr object after its readyState
+     * is 4.
+     */
+    send(
+      request: Request,
+      url: string,
+      options?: transport$TransportOptions
+    ): Promise<any>;
+  }
+
+  declare var npm$namespace$request: {
+    addressBookQuery: typeof request$addressBookQuery,
+    basic: typeof request$basic,
+    calendarQuery: typeof request$calendarQuery,
+    propfind: typeof request$propfind,
+    syncCollection: typeof request$syncCollection
+  };
+
+  /**
+   * @param options
+   * @returns
+   */
+  declare function request$addressBookQuery(
+    options: request$AddressBookQueryOptions
+  ): string;
+
+  declare interface request$AddressBookQueryOptions {
+    /**
+     * value for Depth header.
+     */
+    depth?: string;
+
+    /**
+     * list of props to request.
+     */
+    props: { [key: string]: any }[];
+  }
+
+  /**
+   * @param options
+   * @returns
+   */
+  declare function request$basic(options: request$BasicOptions): Request;
+
+  declare interface request$BasicOptions {
+    /**
+     * put request body.
+     */
+    data: string;
+
+    /**
+     * http method.
+     */
+    method: string;
+
+    /**
+     * cached calendar object etag.
+     */
+    etag: string;
+  }
+
+  /**
+   * @param options
+   * @returns
+   */
+  declare function request$calendarQuery(
+    options: request$CalendarQueryOptions
+  ): string;
+
+  declare interface request$CalendarQueryOptions {
+    /**
+     * value for Depth header.
+     */
+    depth?: string;
+
+    /**
+     * list of filters to send with request.
+     */
+    filters: { [key: string]: any }[];
+
+    /**
+     * list of props to request.
+     */
+    props: { [key: string]: any }[];
+
+    /**
+     * VTIMEZONE calendar object.
+     */
+    timezone: string;
+  }
+
+  /**
+   * @param options
+   * @returns
+   */
+  declare function request$propfind(options: request$PropfindOptions): string;
+
+  declare interface request$PropfindOptions {
+    /**
+     * value for Depth header.
+     */
+    depth?: string;
+
+    /**
+     * list of props to request.
+     */
+    props: { [key: string]: any }[];
+  }
+
+  /**
+   * @param options
+   * @returns
+   */
+  declare function request$syncCollection(
+    options: request$SyncCollectionOptions
+  ): string;
+
+  declare interface request$SyncCollectionOptions {
+    /**
+     * option value for Depth header.
+     */
+    depth?: string;
+
+    /**
+     * list of props to request.
+     */
+    props: { [key: string]: any }[];
+
+    /**
+     * indicates scope of the sync report request.
+     */
+    syncLevel: number;
+
+    /**
+     * synchronization token provided by the server.
+     */
+    syncToken: string;
+  }
   declare export class Client {
     /**
      * Create a new Client object. The client interface allows consumers to set
@@ -597,20 +583,17 @@ declare module "dav" {
      * @param xhr request sender.
      * @param options
      */
-    constructor(
-      xhr: transport$transport$Transport,
-      options?: ClientOptions
-    ): this;
+    constructor(xhr: transport$Transport, options?: ClientOptions): this;
 
     /**
- * Send a request using this client's transport (and perhaps baseUrl).
- * @param req dav request.
- * @param options
- * @return a promise that will be resolved with an xhr request after
-its readyState is 4 or the result of applying an optional request
-`transformResponse` function to the xhr object after its readyState
-is 4.
- */
+     * Send a request using this client's transport (and perhaps baseUrl).
+     * @param req dav request.
+     * @param options
+     * @return a promise that will be resolved with an xhr request after
+     * its readyState is 4 or the result of applying an optional request
+     * `transformResponse` function to the xhr object after its readyState
+     * is 4.
+     */
     send(req: Request, uri: string, options?: ClientSendOptions): Promise<any>;
 
     /**
@@ -859,4 +842,26 @@ is 4.
     onerror: (error: Error) => any;
   }
   declare export type RequestOptions = $Shape<Request>;
+
+  declare var npm$namespace$debug: {
+    enabled: typeof debug$enabled
+  };
+  declare var debug$enabled: boolean;
+
+  declare var npm$namespace$ns: {
+    CALENDAR_SERVER: typeof ns$CALENDAR_SERVER,
+    CALDAV_APPLE: typeof ns$CALDAV_APPLE,
+    CALDAV: typeof ns$CALDAV,
+    CARDDAV: typeof ns$CARDDAV,
+    DAV: typeof ns$DAV
+  };
+  declare var ns$CALENDAR_SERVER: any; // "http://calendarserver.org/ns/";
+
+  declare var ns$CALDAV_APPLE: any; // "http://apple.com/ns/ical/";
+
+  declare var ns$CALDAV: any; // "urn:ietf:params:xml:ns:caldav";
+
+  declare var ns$CARDDAV: any; // "urn:ietf:params:xml:ns:carddav";
+
+  declare var ns$DAV: any; // "DAV:";
 }
