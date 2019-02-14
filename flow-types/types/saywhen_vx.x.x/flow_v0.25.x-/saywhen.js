@@ -27,5 +27,5 @@ declare module "saywhen" {
     +latest: T;
     values(): T[];
   }
-  declare module.exports: typeof when;
+  declare export default typeof when;
 }
