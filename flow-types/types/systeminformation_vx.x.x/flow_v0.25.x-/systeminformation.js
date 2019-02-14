@@ -1,83 +1,83 @@
 declare module "systeminformation" {
   declare export function version(): string;
 
-  declare export function time(): Systeminformation$Systeminformation$TimeData;
+  declare export function time(): Systeminformation$TimeData;
 
   declare export function system(
-    cb?: (data: Systeminformation$Systeminformation$SystemData) => any
-  ): Promise<Systeminformation$Systeminformation$SystemData>;
+    cb?: (data: Systeminformation$SystemData) => any
+  ): Promise<Systeminformation$SystemData>;
 
   declare export function cpu(
-    cb?: (data: Systeminformation$Systeminformation$CpuData) => any
-  ): Promise<Systeminformation$Systeminformation$CpuData>;
+    cb?: (data: Systeminformation$CpuData) => any
+  ): Promise<Systeminformation$CpuData>;
 
   declare export function cpuFlags(cb?: (data: string) => any): Promise<string>;
 
   declare export function cpuCache(
-    cb?: (data: Systeminformation$Systeminformation$CpuCacheData) => any
-  ): Promise<Systeminformation$Systeminformation$CpuCacheData>;
+    cb?: (data: Systeminformation$CpuCacheData) => any
+  ): Promise<Systeminformation$CpuCacheData>;
 
   declare export function cpuCurrentspeed(
-    cb?: (data: Systeminformation$Systeminformation$CpuCurrentSpeedData) => any
-  ): Promise<Systeminformation$Systeminformation$CpuCurrentSpeedData>;
+    cb?: (data: Systeminformation$CpuCurrentSpeedData) => any
+  ): Promise<Systeminformation$CpuCurrentSpeedData>;
 
   declare export function cpuTemperature(
-    cb?: (data: Systeminformation$Systeminformation$CpuTemperatureData) => any
-  ): Promise<Systeminformation$Systeminformation$CpuTemperatureData>;
+    cb?: (data: Systeminformation$CpuTemperatureData) => any
+  ): Promise<Systeminformation$CpuTemperatureData>;
 
   declare export function mem(
-    cb?: (data: Systeminformation$Systeminformation$MemData) => any
-  ): Promise<Systeminformation$Systeminformation$MemData>;
+    cb?: (data: Systeminformation$MemData) => any
+  ): Promise<Systeminformation$MemData>;
 
   declare export function memLayout(
-    cb?: (data: Systeminformation$Systeminformation$MemLayoutData) => any
-  ): Promise<Systeminformation$Systeminformation$MemLayoutData>;
+    cb?: (data: Systeminformation$MemLayoutData) => any
+  ): Promise<Systeminformation$MemLayoutData>;
 
   declare export function diskLayout(
-    cb?: (data: Systeminformation$Systeminformation$DiskLayoutData) => any
-  ): Promise<Systeminformation$Systeminformation$DiskLayoutData>;
+    cb?: (data: Systeminformation$DiskLayoutData) => any
+  ): Promise<Systeminformation$DiskLayoutData>;
 
   declare export function battery(
-    cb?: (data: Systeminformation$Systeminformation$BatteryData) => any
-  ): Promise<Systeminformation$Systeminformation$BatteryData>;
+    cb?: (data: Systeminformation$BatteryData) => any
+  ): Promise<Systeminformation$BatteryData>;
 
   declare export function graphics(
-    cb?: (data: Systeminformation$Systeminformation$GraphicsData) => any
-  ): Promise<Systeminformation$Systeminformation$GraphicsData>;
+    cb?: (data: Systeminformation$GraphicsData) => any
+  ): Promise<Systeminformation$GraphicsData>;
 
   declare export function osInfo(
-    cb?: (data: Systeminformation$Systeminformation$OsData) => any
-  ): Promise<Systeminformation$Systeminformation$OsData>;
+    cb?: (data: Systeminformation$OsData) => any
+  ): Promise<Systeminformation$OsData>;
 
   declare export function versions(
-    cb?: (data: Systeminformation$Systeminformation$VersionData) => any
-  ): Promise<Systeminformation$Systeminformation$VersionData>;
+    cb?: (data: Systeminformation$VersionData) => any
+  ): Promise<Systeminformation$VersionData>;
 
   declare export function shell(cb?: (data: string) => any): Promise<string>;
 
   declare export function users(
-    cb?: (data: Systeminformation$Systeminformation$UserData[]) => any
-  ): Promise<Systeminformation$Systeminformation$UserData[]>;
+    cb?: (data: Systeminformation$UserData[]) => any
+  ): Promise<Systeminformation$UserData[]>;
 
   declare export function fsSize(
-    cb?: (data: Systeminformation$Systeminformation$FsSizeData[]) => any
-  ): Promise<Systeminformation$Systeminformation$FsSizeData[]>;
+    cb?: (data: Systeminformation$FsSizeData[]) => any
+  ): Promise<Systeminformation$FsSizeData[]>;
 
   declare export function blockDevices(
-    cb?: (data: Systeminformation$Systeminformation$BlockDevicesData[]) => any
-  ): Promise<Systeminformation$Systeminformation$BlockDevicesData[]>;
+    cb?: (data: Systeminformation$BlockDevicesData[]) => any
+  ): Promise<Systeminformation$BlockDevicesData[]>;
 
   declare export function fsStats(
-    cb?: (data: Systeminformation$Systeminformation$FsStatsData) => any
-  ): Promise<Systeminformation$Systeminformation$FsStatsData>;
+    cb?: (data: Systeminformation$FsStatsData) => any
+  ): Promise<Systeminformation$FsStatsData>;
 
   declare export function disksIO(
-    cb?: (data: Systeminformation$Systeminformation$DisksIoData) => any
-  ): Promise<Systeminformation$Systeminformation$DisksIoData>;
+    cb?: (data: Systeminformation$DisksIoData) => any
+  ): Promise<Systeminformation$DisksIoData>;
 
   declare export function networkInterfaces(
-    cb?: (data: Systeminformation$Systeminformation$NetInterfacesData[]) => any
-  ): Promise<Systeminformation$Systeminformation$NetInterfacesData[]>;
+    cb?: (data: Systeminformation$NetInterfacesData[]) => any
+  ): Promise<Systeminformation$NetInterfacesData[]>;
 
   declare export function networkInterfaceDefault(
     cb?: (data: string) => any
@@ -85,17 +85,17 @@ declare module "systeminformation" {
 
   declare export function networkStats(
     iface?: string,
-    cb?: (data: Systeminformation$Systeminformation$NetStatsData) => any
-  ): Promise<Systeminformation$Systeminformation$NetStatsData>;
+    cb?: (data: Systeminformation$NetStatsData) => any
+  ): Promise<Systeminformation$NetStatsData>;
 
   declare export function networkConnections(
-    cb?: (data: Systeminformation$Systeminformation$NetConnectionsData[]) => any
-  ): Promise<Systeminformation$Systeminformation$NetConnectionsData[]>;
+    cb?: (data: Systeminformation$NetConnectionsData[]) => any
+  ): Promise<Systeminformation$NetConnectionsData[]>;
 
   declare export function inetChecksite(
     url: string,
-    cb?: (data: Systeminformation$Systeminformation$NetChecksiteData) => any
-  ): Promise<Systeminformation$Systeminformation$NetChecksiteData>;
+    cb?: (data: Systeminformation$NetChecksiteData) => any
+  ): Promise<Systeminformation$NetChecksiteData>;
 
   declare export function inetLatency(
     host?: string,
@@ -103,33 +103,29 @@ declare module "systeminformation" {
   ): Promise<number>;
 
   declare export function currentLoad(
-    cb?: (data: Systeminformation$Systeminformation$CurrentLoadData) => any
-  ): Promise<Systeminformation$Systeminformation$CurrentLoadData>;
+    cb?: (data: Systeminformation$CurrentLoadData) => any
+  ): Promise<Systeminformation$CurrentLoadData>;
 
   declare export function fullLoad(cb?: (data: number) => any): Promise<number>;
 
   declare export function processes(
-    cb?: (data: Systeminformation$Systeminformation$ProcessesData) => any
-  ): Promise<Systeminformation$Systeminformation$ProcessesData>;
+    cb?: (data: Systeminformation$ProcessesData) => any
+  ): Promise<Systeminformation$ProcessesData>;
 
   declare export function processLoad(
     processName: string,
-    cb?: (
-      data: Systeminformation$Systeminformation$ProcessesProcessLoadData
-    ) => any
-  ): Promise<Systeminformation$Systeminformation$ProcessesProcessLoadData>;
+    cb?: (data: Systeminformation$ProcessesProcessLoadData) => any
+  ): Promise<Systeminformation$ProcessesProcessLoadData>;
 
   declare export function services(
     serviceName: string,
-    cb?: (data: Systeminformation$Systeminformation$ServicesData[]) => any
-  ): Promise<Systeminformation$Systeminformation$ServicesData[]>;
+    cb?: (data: Systeminformation$ServicesData[]) => any
+  ): Promise<Systeminformation$ServicesData[]>;
 
   declare export function dockerContainers(
     all?: boolean,
-    cb?: (
-      data: Systeminformation$Systeminformation$DockerContainerData[]
-    ) => any
-  ): Promise<Systeminformation$Systeminformation$DockerContainerData[]>;
+    cb?: (data: Systeminformation$DockerContainerData[]) => any
+  ): Promise<Systeminformation$DockerContainerData[]>;
 
   declare export function dockerContainerStats(
     id?: string,
@@ -144,8 +140,8 @@ declare module "systeminformation" {
   declare export function dockerAll(cb?: (data: any) => any): Promise<any>;
 
   declare export function getStaticData(
-    cb?: (data: Systeminformation$Systeminformation$StaticData) => any
-  ): Promise<Systeminformation$Systeminformation$StaticData>;
+    cb?: (data: Systeminformation$StaticData) => any
+  ): Promise<Systeminformation$StaticData>;
 
   declare export function getDynamicData(
     srv?: string,
@@ -564,8 +560,8 @@ declare module "systeminformation" {
   declare type Systeminformation$DockerContainerAllData = {
     pids: number,
     processes: Systeminformation$DockerContainerStatsProcessesData[]
-  } & Systeminformation$DockerContainerData &
-    Systeminformation$DockerContainerStatsData;
+  } & DockerContainerData &
+    DockerContainerStatsData;
 
   declare interface Systeminformation$DockerContainerStatsProcessesData {
     pid_host: string;
