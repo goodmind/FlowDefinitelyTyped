@@ -8,7 +8,7 @@ declare interface JQuery {
    */
   asEventStream(
     eventName: string
-  ): Bacon$Bacon$EventStream<ErrorEvent, JQueryEventObject>;
+  ): Bacon$EventStream<ErrorEvent, JQueryEventObject>;
 
   /**
    * @method
@@ -21,7 +21,7 @@ declare interface JQuery {
   asEventStream(
     eventName: string,
     selector: string
-  ): Bacon$Bacon$EventStream<ErrorEvent, JQueryEventObject>;
+  ): Bacon$EventStream<ErrorEvent, JQueryEventObject>;
 
   /**
    * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} JQuery #asEventStream1~f
@@ -35,7 +35,7 @@ declare interface JQuery {
   asEventStream<A>(
     eventName: string,
     f: (event: JQueryEventObject, args: any[]) => A
-  ): Bacon$Bacon$EventStream<ErrorEvent, A>;
+  ): Bacon$EventStream<ErrorEvent, A>;
 
   /**
    * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} JQuery #asEventStream2~f
@@ -44,14 +44,14 @@ declare interface JQuery {
    * @param {string} eventName
    * @param {string} selector
    * @param {JQuery} #asEventStream2~f} f
-   * @returns {Bacon$Bacon$EventStream<ErrorEvent, A>}
+   * @returns {Bacon$EventStream<ErrorEvent, A>}
    * @example $("#my-div").asEventStream("click", ".more-specific-selector", (event, args) => args[0]);
    */
   asEventStream<A>(
     eventName: string,
     selector: string,
     f: (event: JQueryEventObject, args: any[]) => A
-  ): Bacon$Bacon$EventStream<ErrorEvent, A>;
+  ): Bacon$EventStream<ErrorEvent, A>;
 }
 declare var npm$namespace$Bacon: {
   fromPromise: typeof Bacon$fromPromise,
@@ -82,7 +82,13 @@ declare var npm$namespace$Bacon: {
   more: typeof Bacon$more,
   noMore: typeof Bacon$noMore,
   EventStream: typeof Bacon$EventStream,
-  Bus: typeof Bacon$Bus
+  Bus: typeof Bacon$Bus,
+
+  Event: typeof Bacon$Event,
+  Error: typeof Bacon$Error,
+  End: typeof Bacon$End,
+  Initial: typeof Bacon$Initial,
+  Next: typeof Bacon$Next
 };
 
 /**
@@ -92,9 +98,9 @@ declare var npm$namespace$Bacon: {
  * @param {boolean} abort
  * @returns {Bacon$EventStream<E, A>}
  * @example Bacon.fromPromise($.ajax("https://baconjs.github.io/"));
-Bacon.fromPromise(Promise.resolve(1));
-Bacon.fromPromise($.ajax("https://baconjs.github.io/"), true);
-Bacon.fromPromise(Promise.resolve(1), false);
+ * Bacon.fromPromise(Promise.resolve(1));
+ * Bacon.fromPromise($.ajax("https://baconjs.github.io/"), true);
+ * Bacon.fromPromise(Promise.resolve(1), false);
  */
 declare function Bacon$fromPromise<E, A>(
   promise: PromiseLike<A> | JQueryXHR,
@@ -107,14 +113,14 @@ declare function Bacon$fromPromise<E, A>(
  * @description Creates an [EventStream]{@link Bacon.EventStream} from a `promise` Promise object such as JQuery Ajax. This stream will contain a single value or an error, followed immediately by stream end. You can use the `abort` flag (i.e. ´Bacon.fromPromise(p, true)´ to have the `abort` method of the given promise be called when all subscribers have been removed from the created stream, and also pass a function `eventTransformer` that transforms the promise value into Events. The default is to transform the value into `[new Bacon.Next(value), new Bacon.End()]`.
  * @param {PromiseLike<A> | JQueryXHR} promise
  * @param {boolean} abort
- * @param {Bacon$Bacon$fromPromise} ~eventTransformer} eventTransformer
+ * @param {Bacon$fromPromise} ~eventTransformer} eventTransformer
  * @returns {Bacon$EventStream<E, B>}
  * @example Bacon.fromPromise($.ajax("https://baconjs.github.io/"), true, (n:string) => {
-return [new Bacon.Next(n), new Bacon.Next(() => n), new Bacon.End()];
-});
-Bacon.fromPromise(Promise.resolve(1), false, n => {
-return [new Bacon.Next(n), new Bacon.Next(() => n), new Bacon.End()];
-});
+ * return [new Bacon.Next(n), new Bacon.Next(() => n), new Bacon.End()];
+ * });
+ * Bacon.fromPromise(Promise.resolve(1), false, n => {
+ * return [new Bacon.Next(n), new Bacon.Next(() => n), new Bacon.End()];
+ * });
  */
 declare function Bacon$fromPromise<E, A, B>(
   promise: PromiseLike<A> | JQueryXHR,
@@ -131,14 +137,14 @@ declare function Bacon$fromPromise<E, A, B>(
  * @param {string} eventName
  * @returns {Bacon$EventStream<E, A>}
  * @example Bacon.fromEvent(document.body, "click").onValue(() => {
-alert("Bacon!");
-});
-Bacon.fromEvent(process.stdin, "readable", () => {
-alert("Bacon!");
-});
-Bacon.fromEvent($("body"), "click").onValue(() => {
-alert("Bacon!");
-});
+ * alert("Bacon!");
+ * });
+ * Bacon.fromEvent(process.stdin, "readable", () => {
+ * alert("Bacon!");
+ * });
+ * Bacon.fromEvent($("body"), "click").onValue(() => {
+ * alert("Bacon!");
+ * });
  */
 declare function Bacon$fromEvent<E, A>(
   target: EventTarget | NodeJS.EventEmitter | JQuery,
@@ -151,11 +157,11 @@ declare function Bacon$fromEvent<E, A>(
  * @description Creates an [EventStream]{@link Bacon.EventStream} from events on a DOM EventTarget or Node.JS EventEmitter object, or an object that supports event listeners using `on`/`off` methods. You can pass a function `eventTransformer` that transforms the emitted events' parameters.
  * @param {EventTarget | NodeJS.EventEmitter | JQuery} target
  * @param {string} eventName
- * @param {Bacon$Bacon$fromEvent} ~eventTransformer} eventTransformer
+ * @param {Bacon$fromEvent} ~eventTransformer} eventTransformer
  * @returns {Bacon$EventStream<E, B>}
  * @example Bacon.fromEvent(document.body, "click", (event:MouseEvent) => event.clientX).onValue(clientX => {
-alert("Bacon!");
-});
+ * alert("Bacon!");
+ * });
  */
 declare function Bacon$fromEvent<E, A, B>(
   target: EventTarget | NodeJS.EventEmitter | JQuery,
@@ -171,11 +177,11 @@ declare function Bacon$fromEvent<E, A, B>(
  * @param {Bacon$fromCallback1} ~f} f
  * @returns {Bacon$EventStream<E, A>}
  * @example // This would create a stream that outputs a single value "Bacon!" and ends after that. The use of setTimeout causes the value to be delayed by 1 second.
-Bacon.fromCallback(callback => {
-setTimeout(() => {
-callback("Bacon!");
-}, 1000);
-});
+ * Bacon.fromCallback(callback => {
+ * setTimeout(() => {
+ * callback("Bacon!");
+ * }, 1000);
+ * });
  */
 declare function Bacon$fromCallback<E, A>(
   f: (callback: (...args: any[]) => void) => void
@@ -189,9 +195,9 @@ declare function Bacon$fromCallback<E, A>(
  * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} args
  * @returns {Bacon$EventStream<E, A>}
  * @example // You can also give any number of arguments to `fromCallback`, which will be passed to the function. These arguments can be simple variables, Bacon EventStreams or Properties. For example the following will output "Bacon rules":
-Bacon.fromCallback((a, b, callback) => {
-callback(a + " " + b);
-}, Bacon.constant("bacon"), "rules").log();
+ * Bacon.fromCallback((a, b, callback) => {
+ * callback(a + " " + b);
+ * }, Bacon.constant("bacon"), "rules").log();
  */
 declare function Bacon$fromCallback<E, A>(
   f: (...args: any[]) => void,
@@ -217,19 +223,19 @@ declare function Bacon$fromCallback<E, A>(
  * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} fromNodeCallback ~callback
  * @function Bacon.fromNodeCallback
  * @description Creates an [EventStream]{@link Bacon.EventStream} from a function `f` that accepts a Node.js `callback`: callback(error, data), where error is `null` if everything is fine. The function is supposed to call its callback just once.
- * @param {Bacon$Bacon$fromNodeCallback} ~f} f
+ * @param {Bacon$fromNodeCallback} ~f} f
  * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} args
  * @returns {Bacon$EventStream<E, A>}
  * @example {
-let fs = require("fs"),
-read = Bacon.fromNodeCallback(fs.readFile, "input.txt");
-read.onError(error => {
-console.log("Reading failed: " + error);
-});
-read.onValue(value => {
-console.log("Read contents: " + value);
-});
-}
+ * let fs = require("fs"),
+ * read = Bacon.fromNodeCallback(fs.readFile, "input.txt");
+ * read.onError(error => {
+ * console.log("Reading failed: " + error);
+ * });
+ * read.onValue(value => {
+ * console.log("Read contents: " + value);
+ * });
+ * }
  */
 declare function Bacon$fromNodeCallback<E, A>(
   f: (callback: (error: E, data: A) => void) => void,
@@ -255,11 +261,11 @@ declare function Bacon$fromNodeCallback<E, A>(
  * @function Bacon.fromPoll
  * @description Polls given function `f` with given `interval`. Function should return events: either [Next]{@link Bacon.Next} or [End]{@link Bacon.End}. Polling occurs only when there are subscribers to the stream. Polling ends permanently when `f` returns [End]{@link Bacon.End}.
  * @param {number} interval
- * @param {Bacon$Bacon$fromPoll} ~f} f
+ * @param {Bacon$fromPoll} ~f} f
  * @returns {Bacon$EventStream<E, A>}
  */
 declare function Bacon$fromPoll<E, A>(
-  Bacon$interval: number,
+  interval: number,
   f: () => Bacon$Next<A> | Bacon$End<A>
 ): Bacon$EventStream<E, A>;
 
@@ -293,7 +299,7 @@ declare function Bacon$fromArray<E, A>(
  * @returns {Bacon$EventStream<E, A>}
  */
 declare function Bacon$interval<E, A>(
-  Bacon$interval: number,
+  interval: number,
   value: A
 ): Bacon$EventStream<E, A>;
 
@@ -305,7 +311,7 @@ declare function Bacon$interval<E, A>(
  * @returns {Bacon$EventStream<E, A>}
  */
 declare function Bacon$sequentially<E, A>(
-  Bacon$interval: number,
+  interval: number,
   values: A[]
 ): Bacon$EventStream<E, A>;
 
@@ -316,10 +322,10 @@ declare function Bacon$sequentially<E, A>(
  * @param {A[]} values
  * @returns {Bacon$EventStream<E, A>}
  * @example // The following would lead to `1,2,3,1,2,3...` to be repeated indefinitely:
-Bacon.fromArray([1, new Bacon.Error("")]);
+ * Bacon.fromArray([1, new Bacon.Error("")]);
  */
 declare function Bacon$repeatedly<E, A>(
-  Bacon$interval: number,
+  interval: number,
   values: A[]
 ): Bacon$EventStream<E, A>;
 
@@ -327,16 +333,16 @@ declare function Bacon$repeatedly<E, A>(
  * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} repeat ~f
  * @function Bacon.repeat
  * @description Calls generator function `f` which is expected to return an [Observable]{@link Bacon.Observable}. The returned [EventStream]{@link Bacon.EventStream} contains values and errors from the spawned observable. When the spawned Observable ends, the generator `f` is called again to spawn a new Observable. This is repeated until the generator `f` returns a falsy value (such as `undefined` or `false`). The generator `f` is called with one argument — `iteration` number starting from `0`.
- * @param {Bacon$Bacon$repeat} ~f} f
+ * @param {Bacon$repeat} ~f} f
  * @returns {Bacon$EventStream<E, A>}
  * @example // The following will produce values `0,1,2`.
-Bacon.repeat(i => {
-if (i < 3) {
-return Bacon.once(i);
-} else {
-return false;
-}
-}).log();
+ * Bacon.repeat(i => {
+ * if (i < 3) {
+ * return Bacon.once(i);
+ * } else {
+ * return false;
+ * }
+ * }).log();
  */
 declare function Bacon$repeat<E, A>(
   f: (iteration: number) => boolean | Bacon$Observable<E, A>
@@ -375,21 +381,21 @@ declare function Bacon$constant<E, A>(x: A): Bacon$Property<E, A>;
  * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} fromBinder ~unsubscribe
  * @function Bacon.fromBinder
  * @description Creates an [EventStream]{@link Bacon.EventStream} with the given [subscribe]{@link Bacon.fromBinder~subscribe} function. The parameter `subscribe` is a function that accepts a [sink]{@link Bacon.fromBinder~sink} which is a function that your `subscribe` function can "push" events to. You can push: a plain value, like `"first value"`; an [Event]{@link Bacon.Event} object including [Error]{@link Bacon.Error} (wraps an error) and [End]{@link Bacon.End} (indicates stream end); an array of event objects at once. The `subscribe` function must return a function. Let's call that function [unsubscribe]{@link Bacon.fromBinder~unsubscribe}. The returned function can be used by the subscriber (directly or indirectly) to unsubscribe from the EventStream. It should release all resources that the `subscribe` function reserved. The `sink` function may return [noMore]{@link Bacon.noMore} (as well as [more]{@link Bacon.more} or any other value). If it returns `noMore`, no further events will be consumed by the subscriber. The `subscribe` function may choose to clean up all resources at this point (e.g., by calling `unsubscribe`). This is usually not necessary, because further calls to `sink` are ignored, but doing so can increase performance in rare cases. The EventStream will wrap your `subscribe` function so that it will only be called when the first stream listener is added, and the `unsubscribe` function is called only after the last listener has been removed. The subscribe-unsubscribe cycle may of course be repeated indefinitely, so prepare for multiple calls to the `subscribe` function.
- * @param {Bacon$Bacon$fromBinder} ~subscribe} subscribe
+ * @param {Bacon$fromBinder} ~subscribe} subscribe
  * @returns {Bacon$EventStream<E, A>}
  * @example let stream = Bacon.fromBinder(sink => {
-sink("first value");
-sink([new Bacon.Next("2nd"), new Bacon.Next("3rd")]);
-sink(new Bacon.Next(() => {
-return "This one will be evaluated lazily"
-}));
-sink(new Bacon.Error("oops, an error"));
-sink(new Bacon.End());
-return () => {
-// unsub functionality here, this one's a no-op
-};
-});
-stream.log();
+ * sink("first value");
+ * sink([new Bacon.Next("2nd"), new Bacon.Next("3rd")]);
+ * sink(new Bacon.Next(() => {
+ * return "This one will be evaluated lazily"
+ * }));
+ * sink(new Bacon.Error("oops, an error"));
+ * sink(new Bacon.End());
+ * return () => {
+ * // unsub functionality here, this one's a no-op
+ * };
+ * });
+ * stream.log();
  */
 declare function Bacon$fromBinder<E, A>(
   subscribe: (
@@ -497,16 +503,16 @@ declare interface Bacon$Observable<E, A> {
   bufferingThrottle(minimumInterval: number): Bacon$EventStream<E, A>;
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #flatMap~f
- * @method Observable#flatMap
- * @description For each element in the source [Observable]{@link Bacon.Observable}, spawn a new stream using the function `f`,  and collect events from each of the spawned streams into the result [EventStream]{@link Bacon.EventStream}. The return value of function `f` can be either an Observable (EventStream/[Property]{@link Bacon.Property}) or a constant value. The result of [flatMap]{@link Bacon.Observable#flatMap} is always an EventStream. The "Function Construction rules" apply here. `flatMap` can be used conveniently with [Bacon.once]{@link Bacon.once} and [Bacon.never]{@link Bacon.never} for converting and filtering at the same time, including only some of the results.
- * @param {Bacon$Observable} #flatMap~f} f
- * @returns {Bacon$EventStream<E, B>}
- * @example // Converting strings to integers, skipping empty values:
-Bacon.once("").flatMap(text => {
-return text != "" ? parseInt(text) : Bacon.never();
-});
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #flatMap~f
+   * @method Observable#flatMap
+   * @description For each element in the source [Observable]{@link Bacon.Observable}, spawn a new stream using the function `f`,  and collect events from each of the spawned streams into the result [EventStream]{@link Bacon.EventStream}. The return value of function `f` can be either an Observable (EventStream/[Property]{@link Bacon.Property}) or a constant value. The result of [flatMap]{@link Bacon.Observable#flatMap} is always an EventStream. The "Function Construction rules" apply here. `flatMap` can be used conveniently with [Bacon.once]{@link Bacon.once} and [Bacon.never]{@link Bacon.never} for converting and filtering at the same time, including only some of the results.
+   * @param {Bacon$Observable} #flatMap~f} f
+   * @returns {Bacon$EventStream<E, B>}
+   * @example // Converting strings to integers, skipping empty values:
+   * Bacon.once("").flatMap(text => {
+   * return text != "" ? parseInt(text) : Bacon.never();
+   * });
+   */
   flatMap<B>(
     f: (
       value: A
@@ -659,34 +665,34 @@ return text != "" ? parseInt(text) : Bacon.never();
   diff<B>(start: A, f: (a: A, b: A) => B): Bacon$Property<E, B>;
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #zip~f
- * @method Observable#zip
- * @description Returns an [EventStream]{@link Bacon.EventStream} with elements pair-wise lined up with events from this and the `other` EventStream. A zipped EventStream will publish only when it has a value from each EventStream and will only produce values up to when any single EventStream ends. The given function `f` is used to create the result value from value in the two source EventStream. If no function `f` is given, the values are zipped into an array. Be careful not to have too much "drift" between streams. If one stream produces many more values than some other excessive buffering will occur inside the zipped observable.
- * @param {Bacon$EventStream<E, B>} other
- * @param {Bacon$Observable} #zip~f} f
- * @returns {Bacon$EventStream<E, C>}
- * @example {
-let x = Bacon.fromArray([1, 2]),
-y = Bacon.fromArray([3, 4]);
-x.zip(y, (x, y) => x + y);
-}
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #zip~f
+   * @method Observable#zip
+   * @description Returns an [EventStream]{@link Bacon.EventStream} with elements pair-wise lined up with events from this and the `other` EventStream. A zipped EventStream will publish only when it has a value from each EventStream and will only produce values up to when any single EventStream ends. The given function `f` is used to create the result value from value in the two source EventStream. If no function `f` is given, the values are zipped into an array. Be careful not to have too much "drift" between streams. If one stream produces many more values than some other excessive buffering will occur inside the zipped observable.
+   * @param {Bacon$EventStream<E, B>} other
+   * @param {Bacon$Observable} #zip~f} f
+   * @returns {Bacon$EventStream<E, C>}
+   * @example {
+   * let x = Bacon.fromArray([1, 2]),
+   * y = Bacon.fromArray([3, 4]);
+   * x.zip(y, (x, y) => x + y);
+   * }
+   */
   zip<B, C>(
     other: Bacon$EventStream<E, B>,
     f: (a: A, b: B) => C
   ): Bacon$EventStream<E, C>;
 
   /**
- * @method
- * @description Returns a [Property]{@link Bacon.Property} that represents a "sliding window" into the history of the values of the [Observable]{@link Bacon.Observable}. The resulting Property will have a value that is an array containing the last `n` values of the original Observable, where `n` is at most the value of the `max` argument, and at least the value of the `min` argument. If the `min` argument is omitted, there's no lower limit of values.
- * @param {number} max
- * @param {number} min
- * @returns {Bacon$Property<E, A[]>}
- * @example // If you have a EventStream `s` with a value sequence `1,2,3,4,5`, the respective values in `s.slidingWindow(2)` would be `[],[1],[1,2],[2,3],[3,4],[4,5]`:
-Bacon.fromArray([1, 2, 3, 4, 5]).slidingWindow(2);
-// The values of `s.slidingWindow(2,2)`would be `[1,2],[2,3],[3,4],[4,5]`:
-Bacon.fromArray([1, 2, 3, 4, 5]).slidingWindow(2, 2);
- */
+   * @method
+   * @description Returns a [Property]{@link Bacon.Property} that represents a "sliding window" into the history of the values of the [Observable]{@link Bacon.Observable}. The resulting Property will have a value that is an array containing the last `n` values of the original Observable, where `n` is at most the value of the `max` argument, and at least the value of the `min` argument. If the `min` argument is omitted, there's no lower limit of values.
+   * @param {number} max
+   * @param {number} min
+   * @returns {Bacon$Property<E, A[]>}
+   * @example // If you have a EventStream `s` with a value sequence `1,2,3,4,5`, the respective values in `s.slidingWindow(2)` would be `[],[1],[1,2],[2,3],[3,4],[4,5]`:
+   * Bacon.fromArray([1, 2, 3, 4, 5]).slidingWindow(2);
+   * // The values of `s.slidingWindow(2,2)`would be `[1,2],[2,3],[3,4],[4,5]`:
+   * Bacon.fromArray([1, 2, 3, 4, 5]).slidingWindow(2, 2);
+   */
   slidingWindow(max: number, min?: number): Bacon$Property<E, A[]>;
 
   /**
@@ -703,24 +709,24 @@ Bacon.fromArray([1, 2, 3, 4, 5]).slidingWindow(2, 2);
   ): Bacon$Property<E, C>;
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #withStateMachine~f
- * @method Observable#withStateMachine
- * @description Lets you run a state machine on an [Observable]{@link Bacon.Observable}. Give it an initial state `initState` object and a state transformation function `f` that processes each incoming [Event]{@link Bacon.Event} and returns and array containing the next `state` and an array of output Event's.
- * @param {B} initState
- * @param {Bacon$Observable} #withStateMachine~f} f
- * @returns {Bacon$EventStream<E, C>}
- * @example // Calculate the total sum of all numbers in the stream and output the value on stream end:
-Bacon.fromArray([1, 2, 3]).withStateMachine(0, (sum, event) => {
-if (event.hasValue()) {
-// had to cast to `number` because event:Bacon.Next<number>|Bacon.Error<{}>
-return [sum + <number>event.value(), []];
-} else if (event.isEnd()) {
-return [undefined, [new Bacon.Next(sum), event]];
-} else {
-return [sum, [event]];
-}
-});
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Observable #withStateMachine~f
+   * @method Observable#withStateMachine
+   * @description Lets you run a state machine on an [Observable]{@link Bacon.Observable}. Give it an initial state `initState` object and a state transformation function `f` that processes each incoming [Event]{@link Bacon.Event} and returns and array containing the next `state` and an array of output Event's.
+   * @param {B} initState
+   * @param {Bacon$Observable} #withStateMachine~f} f
+   * @returns {Bacon$EventStream<E, C>}
+   * @example // Calculate the total sum of all numbers in the stream and output the value on stream end:
+   * Bacon.fromArray([1, 2, 3]).withStateMachine(0, (sum, event) => {
+   * if (event.hasValue()) {
+   * // had to cast to `number` because event:Bacon.Next<number>|Bacon.Error<{}>
+   * return [sum + <number>event.value(), []];
+   * } else if (event.isEnd()) {
+   * return [undefined, [new Bacon.Next(sum), event]];
+   * } else {
+   * return [sum, [event]];
+   * }
+   * });
+   */
   withStateMachine<B, C>(
     initState: B,
     f: (
@@ -733,33 +739,33 @@ return [sum, [event]];
   ): Bacon$EventStream<E, C>;
 
   /**
- * @method
- * @description Decodes input [Observable]{@link Bacon.Observable} using the given `mapping`. Is a bit like a switch-case or the decode function in Oracle SQL. The return value of `decode` is always a [Property]{@link Bacon.Property}.
- * @param {Object} mapping
- * @returns {Bacon$Property<E, B>}
- * @example {
-let property = Bacon.fromArray([1, 2, 3]).toProperty(),
-who = Bacon.fromArray(["A", "B", "C"]).toProperty();
-// The following would map the value 1 into the string "mike" and the value 2 into the value of the `who` property:
-property.decode({1: "mike", 2: who});
-// You can compose static and dynamic data quite freely, as in:
-property.decode({1: {type: "mike"}, 2: {type: "other", whoThen: who}});
-}
- */
+   * @method
+   * @description Decodes input [Observable]{@link Bacon.Observable} using the given `mapping`. Is a bit like a switch-case or the decode function in Oracle SQL. The return value of `decode` is always a [Property]{@link Bacon.Property}.
+   * @param {Object} mapping
+   * @returns {Bacon$Property<E, B>}
+   * @example {
+   * let property = Bacon.fromArray([1, 2, 3]).toProperty(),
+   * who = Bacon.fromArray(["A", "B", "C"]).toProperty();
+   * // The following would map the value 1 into the string "mike" and the value 2 into the value of the `who` property:
+   * property.decode({1: "mike", 2: who});
+   * // You can compose static and dynamic data quite freely, as in:
+   * property.decode({1: {type: "mike"}, 2: {type: "other", whoThen: who}});
+   * }
+   */
   decode<B>(mapping: Object): Bacon$Property<E, B>;
 
   /**
- * @method
- * @description Creates a [Property]{@link Bacon.Property} that indicates whether Observable is awaiting `otherObservable`, i.e. has produced a value after the latest value from `otherObservable`.
- * @param {Bacon$Observable<E, B>} otherObservable
- * @returns {Bacon$Property<E, boolean>}
- * @example {
-// This is handy for keeping track whether we are currently awaiting an AJAX response:
-let ajaxRequest = <Bacon.Observable<Error, JQueryXHR>>{},
-ajaxResponse = <Bacon.Observable<Error, JQueryXHR>>{},
-showAjaxIndicator = ajaxRequest.awaiting(ajaxResponse);
-}
- */
+   * @method
+   * @description Creates a [Property]{@link Bacon.Property} that indicates whether Observable is awaiting `otherObservable`, i.e. has produced a value after the latest value from `otherObservable`.
+   * @param {Bacon$Observable<E, B>} otherObservable
+   * @returns {Bacon$Property<E, boolean>}
+   * @example {
+   * // This is handy for keeping track whether we are currently awaiting an AJAX response:
+   * let ajaxRequest = <Bacon.Observable<Error, JQueryXHR>>{},
+   * ajaxResponse = <Bacon.Observable<Error, JQueryXHR>>{},
+   * showAjaxIndicator = ajaxRequest.awaiting(ajaxResponse);
+   * }
+   */
   awaiting<B>(
     otherObservable: Bacon$Observable<E, B>
   ): Bacon$Property<E, boolean>;
@@ -786,7 +792,7 @@ declare type Bacon$EventStream<E, A> = {
    * @param {B} constant
    * @returns {Bacon$EventStream<E, B>}
    */
-  map<B>(Bacon$constant: B): Bacon$EventStream<E, B>,
+  map<B>(constant: B): Bacon$EventStream<E, B>,
 
   /**
    * @method
@@ -918,12 +924,12 @@ declare type Bacon$EventStream<E, A> = {
   first(): Bacon$EventStream<E, A>,
 
   /**
- * @method
- * @description Takes the last element from the [EventStream]{@link Bacon.EventStream}. None, if EventStream is empty.
- * @returns {Bacon$EventStream<E, A>}
- * @example // This creates the stream which doesn't produce any events and never ends:
-Bacon.interval(1e1, 0).last();
- */
+   * @method
+   * @description Takes the last element from the [EventStream]{@link Bacon.EventStream}. None, if EventStream is empty.
+   * @returns {Bacon$EventStream<E, A>}
+   * @example // This creates the stream which doesn't produce any events and never ends:
+   * Bacon.interval(1e1, 0).last();
+   */
   last(): Bacon$EventStream<E, A>,
 
   /**
@@ -1032,21 +1038,21 @@ Bacon.interval(1e1, 0).last();
   endOnError(f: (error: E) => boolean): Bacon$EventStream<E, A>,
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #withHandler~f
- * @method EventStream#withHandler
- * @description Lets you do more custom event handling on [EventStream]{@link Bacon.EventStream}: you get all events to your function `f` and you can output any number of events and end the stream if you choose. Note that it's important to return the value from `this.push` so that the connection to the underlying stream will be closed when no more events are needed.
- * @param {Bacon$EventStream} #withHandler~f} f
- * @returns {Bacon$EventStream<E, A>}
- * @example // Send an error and end the stream in case a value is below zero:
-Bacon.fromArray([1, 2, -3, 3]).withHandler(function (event) {
-if (event.hasValue() && event.value() < 0) {
-this.push(new Bacon.Error("Value below zero"));
-return this.push(new Bacon.End());
-} else {
-return this.push(event);
-}
-});
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #withHandler~f
+   * @method EventStream#withHandler
+   * @description Lets you do more custom event handling on [EventStream]{@link Bacon.EventStream}: you get all events to your function `f` and you can output any number of events and end the stream if you choose. Note that it's important to return the value from `this.push` so that the connection to the underlying stream will be closed when no more events are needed.
+   * @param {Bacon$EventStream} #withHandler~f} f
+   * @returns {Bacon$EventStream<E, A>}
+   * @example // Send an error and end the stream in case a value is below zero:
+   * Bacon.fromArray([1, 2, -3, 3]).withHandler(function (event) {
+   * if (event.hasValue() && event.value() < 0) {
+   * this.push(new Bacon.Error("Value below zero"));
+   * return this.push(new Bacon.End());
+   * } else {
+   * return this.push(event);
+   * }
+   * });
+   */
   withHandler(
     f: (
       event: Bacon$Initial<A> | Bacon$Next<A> | Bacon$End<A> | Bacon$Error<E>
@@ -1062,21 +1068,21 @@ return this.push(event);
   name(newName: string): Bacon$EventStream<E, A>,
 
   /**
- * @method
- * @description Sets the structured description of the [EventStream]{@link Bacon.EventStream}. The `toString` and `inspect` methods use this data recursively to create a string representation for the `EventStream`. This method is probably useful for Bacon core/library/plugin development only.
- * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} param
- * @returns {Bacon$EventStream<E, A>}
- * @example {
-let src = Bacon.once(1),
-obs = src.map(x => -x);
-
-console.log(obs.toString());
-// Bacon.once(1).map(function)
-
-obs.withDescription(src, "times", -1);
-console.log(obs.toString());
-// Bacon.once(1).times(-1)
- */
+   * @method
+   * @description Sets the structured description of the [EventStream]{@link Bacon.EventStream}. The `toString` and `inspect` methods use this data recursively to create a string representation for the `EventStream`. This method is probably useful for Bacon core/library/plugin development only.
+   * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} param
+   * @returns {Bacon$EventStream<E, A>}
+   * @example {
+   * let src = Bacon.once(1),
+   * obs = src.map(x => -x);
+   *
+   * console.log(obs.toString());
+   * // Bacon.once(1).map(function)
+   *
+   * obs.withDescription(src, "times", -1);
+   * console.log(obs.toString());
+   * // Bacon.once(1).times(-1)
+   */
   withDescription(...param: any[]): Bacon$EventStream<E, A>,
 
   /**
@@ -1138,17 +1144,17 @@ console.log(obs.toString());
    * @param {Bacon$EventStream} #onValues~f} f
    * @returns {Bacon$EventStream} #onValues~unsubscribe}
    */
-  Bacon$onValues(f: (...args: any[]) => void): () => void,
+  onValues(f: (...args: any[]) => void): () => void,
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #skipDuplicates~isEqual
- * @method EventStream#skipDuplicates
- * @description Drops consecutive equal elements of the [EventStream]{@link Bacon.EventStream}. Uses the === operator for equality checking by default. If the `isEqual` argument is supplied, checks by calling [isEqual]{@link EventStream#skipDuplicates~isEqual}. For instance, to do a deep comparison, you can use the `isEqual` function from underscore.js like `stream.skipDuplicates(_.isEqual)`.
- * @param {Bacon$EventStream} #skipDuplicates~isEqual} [isEqual]
- * @returns {Bacon$EventStream<E, A>}
- * @example Bacon.fromArray([1, 2, 2, 1]).skipDuplicates().log();
-// > returns [1, 2, 1] in an order
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #skipDuplicates~isEqual
+   * @method EventStream#skipDuplicates
+   * @description Drops consecutive equal elements of the [EventStream]{@link Bacon.EventStream}. Uses the === operator for equality checking by default. If the `isEqual` argument is supplied, checks by calling [isEqual]{@link EventStream#skipDuplicates~isEqual}. For instance, to do a deep comparison, you can use the `isEqual` function from underscore.js like `stream.skipDuplicates(_.isEqual)`.
+   * @param {Bacon$EventStream} #skipDuplicates~isEqual} [isEqual]
+   * @returns {Bacon$EventStream<E, A>}
+   * @example Bacon.fromArray([1, 2, 2, 1]).skipDuplicates().log();
+   * // > returns [1, 2, 1] in an order
+   */
   skipDuplicates(
     isEqual?: (oldValue: A, newValue: A) => boolean
   ): Bacon$EventStream<E, A>,
@@ -1211,38 +1217,38 @@ console.log(obs.toString());
   skipUntil<B>(stream2: Bacon$EventStream<E, B>): Bacon$EventStream<E, A>,
 
   /**
- * @method
- * @description Buffers the [EventStream]{@link Bacon.EventStream} with given `delay` (in milliseconds). The buffer is flushed at most once in the given `delay`.
- * @param {number} delay
- * @returns {Bacon$EventStream<E, A[]>}
- * @example // You might get two events containing [1,2,3,4] and [5,6,7] respectively, given that the flush occurs between numbers 4 and 5:
-Bacon.fromArray([1, 2, 3, 4, 5, 6, 7]).bufferWithTime(0);
- */
+   * @method
+   * @description Buffers the [EventStream]{@link Bacon.EventStream} with given `delay` (in milliseconds). The buffer is flushed at most once in the given `delay`.
+   * @param {number} delay
+   * @returns {Bacon$EventStream<E, A[]>}
+   * @example // You might get two events containing [1,2,3,4] and [5,6,7] respectively, given that the flush occurs between numbers 4 and 5:
+   * Bacon.fromArray([1, 2, 3, 4, 5, 6, 7]).bufferWithTime(0);
+   */
   bufferWithTime(delay: number): Bacon$EventStream<E, A[]>,
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #bufferWithTime~f
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #bufferWithTime~defer
- * @method EventStream#bufferWithTime
- * @description Buffers the [EventStream]{@link Bacon.EventStream} with given "defer-function" `f`.
- * @param {Bacon$EventStream} #bufferWithTime~f} f
- * @returns {Bacon$EventStream<E, A[]>}
- * @example // Here's an equivalent to `stream.bufferWithTime(10)`:
-let stream = Bacon.fromArray([1, 2, 3, 4, 5, 6, 7]);
-stream.bufferWithTime(f => { setTimeout(f, 10); }); }
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #bufferWithTime~f
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} EventStream #bufferWithTime~defer
+   * @method EventStream#bufferWithTime
+   * @description Buffers the [EventStream]{@link Bacon.EventStream} with given "defer-function" `f`.
+   * @param {Bacon$EventStream} #bufferWithTime~f} f
+   * @returns {Bacon$EventStream<E, A[]>}
+   * @example // Here's an equivalent to `stream.bufferWithTime(10)`:
+   * let stream = Bacon.fromArray([1, 2, 3, 4, 5, 6, 7]);
+   * stream.bufferWithTime(f => { setTimeout(f, 10); }); }
+   */
   bufferWithTime(
     f: (defer: (...args: any[]) => void) => void
   ): Bacon$EventStream<E, A[]>,
 
   /**
- * @method
- * @description Buffers the [EventStream]{@link Bacon.EventStream} events with given `count`. The buffer is flushed when it contains the given `count` of elements.
- * @param {number} count
- * @returns {Bacon$EventStream<E, A[]>}
- * @example // You will get output events with values `[1, 2]`, `[3, 4]` and `[5]`.
-Bacon.fromArray([1, 2, 3, 4, 5]).bufferWithCount(2);
- */
+   * @method
+   * @description Buffers the [EventStream]{@link Bacon.EventStream} events with given `count`. The buffer is flushed when it contains the given `count` of elements.
+   * @param {number} count
+   * @returns {Bacon$EventStream<E, A[]>}
+   * @example // You will get output events with values `[1, 2]`, `[3, 4]` and `[5]`.
+   * Bacon.fromArray([1, 2, 3, 4, 5]).bufferWithCount(2);
+   */
   bufferWithCount(count: number): Bacon$EventStream<E, A[]>,
 
   /**
@@ -1264,7 +1270,7 @@ Bacon.fromArray([1, 2, 3, 4, 5]).bufferWithCount(2);
    * @returns {Bacon$Property<E, A>}
    */
   toProperty(initialValue?: A): Bacon$Property<E, A>
-} & Bacon$Observable<E, A>;
+} & Observable<E, A>;
 
 declare var Bacon$EventStream: {
   /**
@@ -1323,7 +1329,7 @@ declare type Bacon$Property<E, A> = {
    * @param {B} constant
    * @returns {Bacon$Property<E, B>}
    */
-  map<B>(Bacon$constant: B): Bacon$Property<E, B>,
+  map<B>(constant: B): Bacon$Property<E, B>,
 
   /**
    * @method
@@ -1447,12 +1453,12 @@ declare type Bacon$Property<E, A> = {
   first(): Bacon$Property<E, A>,
 
   /**
- * @method
- * @description Takes the last element from the [Property]{@link Bacon.Property}. None, if Property is empty.
- * @returns {Bacon$Property<E, A>}
- * @example // This creates the property which doesn't produce any events and never ends:
-Bacon.interval(1e1, 0).toProperty().last();
- */
+   * @method
+   * @description Takes the last element from the [Property]{@link Bacon.Property}. None, if Property is empty.
+   * @returns {Bacon$Property<E, A>}
+   * @example // This creates the property which doesn't produce any events and never ends:
+   * Bacon.interval(1e1, 0).toProperty().last();
+   */
   last(): Bacon$Property<E, A>,
 
   /**
@@ -1561,21 +1567,21 @@ Bacon.interval(1e1, 0).toProperty().last();
   endOnError(f: (error: E) => boolean): Bacon$Property<E, A>,
 
   /**
- * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Property #withHandler~f
- * @method Property#withHandler
- * @description Lets you do more custom event handling on the [Property]{@link Bacon.Property}: you get all events to your function `f` and you can output any number of [Event]{@link Bacon.Event}s and end the Property if you choose. Note that it's important to return the value from `this.push` so that the connection to the underlying stream will be closed when no more events are needed.
- * @param {Bacon$Property} #withHandler~f} f
- * @returns {Bacon$Property<E, A>}
- * @example // Send an error and end the stream in case a value is below zero:
-Bacon.fromArray([1, 2, -3, 3]).withHandler(function (event) {
-if (event.hasValue() && event.value() < 0) {
-this.push(new Bacon.Error("Value below zero"));
-return this.push(new Bacon.End());
-} else {
-return this.push(event);
-}
-});
- */
+   * @callback {"NO PRINT IMPLEMENTED: JSDocReturnTag"} Property #withHandler~f
+   * @method Property#withHandler
+   * @description Lets you do more custom event handling on the [Property]{@link Bacon.Property}: you get all events to your function `f` and you can output any number of [Event]{@link Bacon.Event}s and end the Property if you choose. Note that it's important to return the value from `this.push` so that the connection to the underlying stream will be closed when no more events are needed.
+   * @param {Bacon$Property} #withHandler~f} f
+   * @returns {Bacon$Property<E, A>}
+   * @example // Send an error and end the stream in case a value is below zero:
+   * Bacon.fromArray([1, 2, -3, 3]).withHandler(function (event) {
+   * if (event.hasValue() && event.value() < 0) {
+   * this.push(new Bacon.Error("Value below zero"));
+   * return this.push(new Bacon.End());
+   * } else {
+   * return this.push(event);
+   * }
+   * });
+   */
   withHandler(
     f: (
       event: Bacon$Initial<A> | Bacon$Next<A> | Bacon$End<A> | Bacon$Error<E>
@@ -1591,20 +1597,20 @@ return this.push(event);
   name(newName: string): Bacon$Property<E, A>,
 
   /**
- * @method
- * @description Sets the structured description of the [Property]{@link Bacon.Property}. The `toString` and `inspect` methods use this data recursively to create a string representation for the Property. This method is probably useful for Bacon core/library/plugin development only.
- * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} param
- * @returns {Bacon$Property<E, A>}
- * @example let src = Bacon.once(1),
-obs = src.map(x => -x);
-
-console.log(obs.toString());
-// Bacon.once(1).map(function)
-
-obs.withDescription(src, "times", -1);
-console.log(obs.toString());
-// Bacon.once(1).times(-1)
- */
+   * @method
+   * @description Sets the structured description of the [Property]{@link Bacon.Property}. The `toString` and `inspect` methods use this data recursively to create a string representation for the Property. This method is probably useful for Bacon core/library/plugin development only.
+   * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} param
+   * @returns {Bacon$Property<E, A>}
+   * @example let src = Bacon.once(1),
+   * obs = src.map(x => -x);
+   *
+   * console.log(obs.toString());
+   * // Bacon.once(1).map(function)
+   *
+   * obs.withDescription(src, "times", -1);
+   * console.log(obs.toString());
+   * // Bacon.once(1).times(-1)
+   */
   withDescription(...param: any[]): Bacon$Property<E, A>,
 
   /**
@@ -1642,21 +1648,21 @@ console.log(obs.toString());
    * @param {Bacon$Property} #onValues~f} f
    * @returns {Bacon$Property} #onValues~unsubscribe}
    */
-  Bacon$onValues(f: (...args: any[]) => void): () => void,
+  onValues(f: (...args: any[]) => void): () => void,
 
   /**
- * @method Property#assign
- * @description Calls the `method` of the given `object` with each value of this [Property]{@link Bacon.Property}. You can optionally supply `params` which will be used as the first arguments of the `method` call. Note that the [assign]{@link Bacon.Property#assign} method is actually just a synonym for [onValue]{@link Bacon.Property#onValue}.
- * @param {Object} obj
- * @param {string} method
- * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} params
- * @returns {void}
- * @example let property = Bacon.fromArray([1, 2, 3, 4, 5]).toProperty();
-// If you want to assign your Property to the "disabled" attribute of a JQuery object, you can do this:
-property.assign($("#my-button"), "attr", "disabled");
-// A simpler example would be to toggle the visibility of an element based on a Property:
-property.assign($("#my-button"), "toggle");
- */
+   * @method Property#assign
+   * @description Calls the `method` of the given `object` with each value of this [Property]{@link Bacon.Property}. You can optionally supply `params` which will be used as the first arguments of the `method` call. Note that the [assign]{@link Bacon.Property#assign} method is actually just a synonym for [onValue]{@link Bacon.Property#onValue}.
+   * @param {Object} obj
+   * @param {string} method
+   * @param {"NO PRINT IMPLEMENTED: JSDocVariadicType"} params
+   * @returns {void}
+   * @example let property = Bacon.fromArray([1, 2, 3, 4, 5]).toProperty();
+   * // If you want to assign your Property to the "disabled" attribute of a JQuery object, you can do this:
+   * property.assign($("#my-button"), "attr", "disabled");
+   * // A simpler example would be to toggle the visibility of an element based on a Property:
+   * property.assign($("#my-button"), "toggle");
+   */
   assign(obj: Object, method: string, ...params: any[]): void,
 
   /**
@@ -1665,7 +1671,7 @@ property.assign($("#my-button"), "toggle");
    * @param {number} interval
    * @returns {Bacon$EventStream<E, A>}
    */
-  sample(Bacon$interval: number): Bacon$EventStream<E, A>,
+  sample(interval: number): Bacon$EventStream<E, A>,
 
   /**
    * @method Property#sampledBy
@@ -1737,7 +1743,7 @@ property.assign($("#my-button"), "toggle");
    * @returns {Bacon$Property<E, A>}
    */
   startWith(value: A): Bacon$Property<E, A>
-} & Bacon$Observable<E, A>;
+} & Observable<E, A>;
 
 /**
  * @function Bacon.combineAsArray
@@ -1899,7 +1905,7 @@ declare type Bacon$Bus<E, A> = {
    * @returns {Bacon$Bus} #plug~unplug}
    */
   plug(stream: Bacon$EventStream<E, A>): () => void
-} & Bacon$EventStream<E, A>;
+} & EventStream<E, A>;
 
 declare var Bacon$Bus: {
   /**
@@ -1964,31 +1970,31 @@ declare class Bacon$Event<A> {
  * @augments
  * @description An error event. Call [Event.isError]{@link Bacon.Event#isError} to distinguish these events in your subscriber, or use [onError]{@link Bacon.Observable#onError} to react to error events only. [Error.error]{@link Bacon.Error#error} returns the associated error object (usually string). [Error]{@link Bacon.Error} events are always passed through all stream combinators. So, even if you filter all values out, the error events will pass through. If you use [Observable.flatMap]{@link Bacon.Observable#flatMap}, the result stream will contain Error events from the source as well as all the spawned stream. You can take action on errors by using the [Observable.onError]{@link Bacon.Observable#onError}. See documentation on [Observable.onError]{@link Bacon.Observable#onError}, [EventStream.mapError]{@link Bacon.EventStream#mapError}, [Property.mapError]{@link Bacon.Property#mapError}, [EventStream.errors]{@link Bacon.EventStream#errors}, [Property.errors]{@link Bacon.Property#errors}, [EventStream.skipErrors]{@link Bacon.EventStream#skipErrors}, [Property.skipErrors]{@link Bacon.Property#skipErrors}, [Bacon.retry]{@link Bacon.retry} and [Observable.flatMapError]{@link Bacon.Observable#flatMapError}. An Error does not terminate the stream. The methods [EventStream.endOnError]{@link Bacon.EventStream#endOnError} and [EventStream.endOnError]{@link Bacon.EventStream#endOnError}  returns a stream/property that ends immediately after first error. Bacon.js doesn't currently generate any Error events itself (except when converting errors using [Bacon.fromPromise]{@link Bacon.fromPromise}). Error events definitely would be generated by streams derived from IO sources such as AJAX calls.
  * @example // In case you want to convert (some) value events into Error events, you may use `flatMap` like this:
-Bacon.fromArray([1, 2, 3, 4]).flatMap<number>(x => {
-NOTE: had to explicitly specify the `<number>` typing for `flatMap`.
-return x > 2 ? new Bacon.Error("too big") : x;
-});
-
-// Conversely, if you want to convert some Error events into value events, you may use `flatMapError`:
-Bacon.fromArray([1, 2, 3, 4]).flatMapError(error => {
-let isNonCriticalError = error => Math.random() < .5,
-handleNonCriticalError = error => 42;
-return isNonCriticalError(error) ? handleNonCriticalError(error) : new Bacon.Error(error);
-});
-
-// Note also that Bacon.js combinators do not catch errors that are thrown. Especially `map` doesn't do so. If you want to map things and wrap caught errors into Error events, you can do the following:
-Bacon.fromArray([1, 2, 3, 4]).flatMap(x => {
-let dangerousFunction = x => {
-throw new Error("dangerous function!");
-};
-try {
-return dangerousFunction(x);
-} catch (e) {
-return new Bacon.Error(e);
-}
-});
+ * Bacon.fromArray([1, 2, 3, 4]).flatMap<number>(x => {
+ * NOTE: had to explicitly specify the `<number>` typing for `flatMap`.
+ * return x > 2 ? new Bacon.Error("too big") : x;
+ * });
+ *
+ * // Conversely, if you want to convert some Error events into value events, you may use `flatMapError`:
+ * Bacon.fromArray([1, 2, 3, 4]).flatMapError(error => {
+ * let isNonCriticalError = error => Math.random() < .5,
+ * handleNonCriticalError = error => 42;
+ * return isNonCriticalError(error) ? handleNonCriticalError(error) : new Bacon.Error(error);
+ * });
+ *
+ * // Note also that Bacon.js combinators do not catch errors that are thrown. Especially `map` doesn't do so. If you want to map things and wrap caught errors into Error events, you can do the following:
+ * Bacon.fromArray([1, 2, 3, 4]).flatMap(x => {
+ * let dangerousFunction = x => {
+ * throw new Error("dangerous function!");
+ * };
+ * try {
+ * return dangerousFunction(x);
+ * } catch (e) {
+ * return new Bacon.Error(e);
+ * }
+ * });
  */
-declare class Bacon$Error<E> mixins Bacon$Event<E> {
+declare class Bacon$Error<E> mixins Event<E> {
   /**
    * @constructor
    * @constructs Error
@@ -2009,7 +2015,7 @@ declare class Bacon$Error<E> mixins Bacon$Event<E> {
  * @augments
  * @description An end-of-stream event of [EventStream]{@link Bacon.EventStream} or [Property]{@link Bacon.Property}. Call [Event.isEnd]{@link Bacon.Event#isEnd} to distinguish an End from other events.
  */
-declare class Bacon$End<A> mixins Bacon$Event<A> {
+declare class Bacon$End<A> mixins Event<A> {
   /**
    * @constructor
    * @constructs Bacon.End
@@ -2022,7 +2028,7 @@ declare class Bacon$End<A> mixins Bacon$Event<A> {
  * @augments
  * @description The initial (current) value of a [Property]{@link Bacon.Property}. Call [Event.isInitial]{@link Bacon.Event#isInitial} to distinguish from other events. Only sent immediately after subscription to a Property.
  */
-declare class Bacon$Initial<A> mixins Bacon$Event<A> {
+declare class Bacon$Initial<A> mixins Event<A> {
   /**
    * @constructor
    * @constructs Bacon.Initial
@@ -2036,7 +2042,7 @@ declare class Bacon$Initial<A> mixins Bacon$Event<A> {
  * @augments
  * @description Next value in an [EventStream]{@link Bacon.EventStream} or a [Property]{@link Bacon.Property}. Call [Event.isNext]{@link Bacon.Event#isNext} to distinguish a Next event from other events.
  */
-declare class Bacon$Next<A> mixins Bacon$Event<A> {
+declare class Bacon$Next<A> mixins Event<A> {
   /**
    * @constructor
    * @constructs Bacon.Next
@@ -2126,98 +2132,98 @@ declare function Bacon$retry<E, A>(options: {
  * @param {Bacon$when1} ~f1} f1
  * @returns {Bacon$EventStream<E, B>}
  * @example {
-// Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
-let tick = Bacon.interval(1e2, 0),
-keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
-handleTick = _ => `timestamp: NONE`,
-handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
-Bacon.when(
-[tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
-[tick], handleTick
-);
-// Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
-}
-
-{
-// Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
-let a = Bacon.once("a"),
-b = Bacon.once("b"),
-c = Bacon.once("c"),
-f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
-Bacon.zipWith(f, a, b, c);
-Bacon.when([a, b, c], f);
-}
-
-{
-// Join patterns as a "chemical machine".
-// A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
-let oxygen = Bacon.interval(1e3, "O"),
-hydrogen = Bacon.interval(2e3, "H"),
-carbon = Bacon.interval(1.5e3, "C"),
-makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
-makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
-Bacon.when(
-[oxygen, hydrogen, hydrogen], makeWater,
-[oxygen, carbon], makeCarbonMonoxide
-);
-// Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
-}
-
-{
-// Join patterns and properties.
-// Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
-// -- updating `quantity` sets `total` to `price * quantity`;
-// -- updating `total` sets `price` to `total / quantity`.
-let random = (x:number) => Math.round(x * Math.random()),
-id = <A>(x:A):A => x;
-let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
-$price = Bacon.interval<Error, number>(2e3, 100).map(random),
-$total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
-let quantity = $quantity.toProperty(1),
-price = Bacon.when<Error, number, number, number>(
-[$price], id,
-[$total, quantity], (x, y) => x / y
-).toProperty(0),
-total = Bacon.when<Error, number, number, number, number>(
-[$total], id,
-[$price, quantity], (x, y) => x * y,
-[price, $quantity], (x, y) => x * y
-).toProperty(0);
-}
-
-{
-// Join patterns and `Bacon.Bus`.
-// The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
-// Availability of chopsticks are implemented using bus.
-let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// Hungry could be any type of observable, but we'll use bus here.
-hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
-eat = (i:number) => () => {
-setTimeout(() => {
-console.log("done!");
-chopsticks[i].push({});
-chopsticks[(i + 1) % 3].push({});
-}, 1e3);
-return `philosopher ${i} eating`;
-},
-// We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
-dining = Bacon.when(
-[hungry[0], chopsticks[0], chopsticks[1]], eat(0),
-[hungry[1], chopsticks[1], chopsticks[2]], eat(1),
-[hungry[2], chopsticks[2], chopsticks[0]], eat(2)
-).log("dining");
-// Make all chopsticks initially available.
-chopsticks[0].push({});
-chopsticks[1].push({});
-chopsticks[2].push({});
-// Make philosophers hungry in some way, in this case we just push to their bus.
-for (let i = 0; i < 3; i++) {
-hungry[0].push({});
-hungry[1].push({});
-hungry[2].push({});
-}
-}
+ * // Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
+ * let tick = Bacon.interval(1e2, 0),
+ * keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
+ * handleTick = _ => `timestamp: NONE`,
+ * handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
+ * Bacon.when(
+ * [tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
+ * [tick], handleTick
+ * );
+ * // Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
+ * }
+ *
+ * {
+ * // Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
+ * let a = Bacon.once("a"),
+ * b = Bacon.once("b"),
+ * c = Bacon.once("c"),
+ * f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
+ * Bacon.zipWith(f, a, b, c);
+ * Bacon.when([a, b, c], f);
+ * }
+ *
+ * {
+ * // Join patterns as a "chemical machine".
+ * // A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
+ * let oxygen = Bacon.interval(1e3, "O"),
+ * hydrogen = Bacon.interval(2e3, "H"),
+ * carbon = Bacon.interval(1.5e3, "C"),
+ * makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
+ * makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
+ * Bacon.when(
+ * [oxygen, hydrogen, hydrogen], makeWater,
+ * [oxygen, carbon], makeCarbonMonoxide
+ * );
+ * // Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
+ * }
+ *
+ * {
+ * // Join patterns and properties.
+ * // Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
+ * // -- updating `quantity` sets `total` to `price * quantity`;
+ * // -- updating `total` sets `price` to `total / quantity`.
+ * let random = (x:number) => Math.round(x * Math.random()),
+ * id = <A>(x:A):A => x;
+ * let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
+ * $price = Bacon.interval<Error, number>(2e3, 100).map(random),
+ * $total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
+ * let quantity = $quantity.toProperty(1),
+ * price = Bacon.when<Error, number, number, number>(
+ * [$price], id,
+ * [$total, quantity], (x, y) => x / y
+ * ).toProperty(0),
+ * total = Bacon.when<Error, number, number, number, number>(
+ * [$total], id,
+ * [$price, quantity], (x, y) => x * y,
+ * [price, $quantity], (x, y) => x * y
+ * ).toProperty(0);
+ * }
+ *
+ * {
+ * // Join patterns and `Bacon.Bus`.
+ * // The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
+ * // Availability of chopsticks are implemented using bus.
+ * let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // Hungry could be any type of observable, but we'll use bus here.
+ * hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
+ * eat = (i:number) => () => {
+ * setTimeout(() => {
+ * console.log("done!");
+ * chopsticks[i].push({});
+ * chopsticks[(i + 1) % 3].push({});
+ * }, 1e3);
+ * return `philosopher ${i} eating`;
+ * },
+ * // We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
+ * dining = Bacon.when(
+ * [hungry[0], chopsticks[0], chopsticks[1]], eat(0),
+ * [hungry[1], chopsticks[1], chopsticks[2]], eat(1),
+ * [hungry[2], chopsticks[2], chopsticks[0]], eat(2)
+ * ).log("dining");
+ * // Make all chopsticks initially available.
+ * chopsticks[0].push({});
+ * chopsticks[1].push({});
+ * chopsticks[2].push({});
+ * // Make philosophers hungry in some way, in this case we just push to their bus.
+ * for (let i = 0; i < 3; i++) {
+ * hungry[0].push({});
+ * hungry[1].push({});
+ * hungry[2].push({});
+ * }
+ * }
  */
 declare function Bacon$when<E, A1, B>(
   pattern1: Bacon$Observable<E, A1>[],
@@ -2235,98 +2241,98 @@ declare function Bacon$when<E, A1, B>(
  * @param {Bacon$when2} ~f2} f2
  * @returns {Bacon$EventStream<E, B>}
  * @example {
-// Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
-let tick = Bacon.interval(1e2, 0),
-keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
-handleTick = _ => `timestamp: NONE`,
-handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
-Bacon.when(
-[tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
-[tick], handleTick
-);
-// Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
-}
-
-{
-// Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
-let a = Bacon.once("a"),
-b = Bacon.once("b"),
-c = Bacon.once("c"),
-f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
-Bacon.zipWith(f, a, b, c);
-Bacon.when([a, b, c], f);
-}
-
-{
-// Join patterns as a "chemical machine".
-// A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
-let oxygen = Bacon.interval(1e3, "O"),
-hydrogen = Bacon.interval(2e3, "H"),
-carbon = Bacon.interval(1.5e3, "C"),
-makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
-makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
-Bacon.when(
-[oxygen, hydrogen, hydrogen], makeWater,
-[oxygen, carbon], makeCarbonMonoxide
-);
-// Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
-}
-
-{
-// Join patterns and properties.
-// Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
-// -- updating `quantity` sets `total` to `price * quantity`;
-// -- updating `total` sets `price` to `total / quantity`.
-let random = (x:number) => Math.round(x * Math.random()),
-id = <A>(x:A):A => x;
-let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
-$price = Bacon.interval<Error, number>(2e3, 100).map(random),
-$total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
-let quantity = $quantity.toProperty(1),
-price = Bacon.when<Error, number, number, number>(
-[$price], id,
-[$total, quantity], (x, y) => x / y
-).toProperty(0),
-total = Bacon.when<Error, number, number, number, number>(
-[$total], id,
-[$price, quantity], (x, y) => x * y,
-[price, $quantity], (x, y) => x * y
-).toProperty(0);
-}
-
-{
-// Join patterns and `Bacon.Bus`.
-// The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
-// Availability of chopsticks are implemented using bus.
-let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// Hungry could be any type of observable, but we'll use bus here.
-hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
-eat = (i:number) => () => {
-setTimeout(() => {
-console.log("done!");
-chopsticks[i].push({});
-chopsticks[(i + 1) % 3].push({});
-}, 1e3);
-return `philosopher ${i} eating`;
-},
-// We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
-dining = Bacon.when(
-[hungry[0], chopsticks[0], chopsticks[1]], eat(0),
-[hungry[1], chopsticks[1], chopsticks[2]], eat(1),
-[hungry[2], chopsticks[2], chopsticks[0]], eat(2)
-).log("dining");
-// Make all chopsticks initially available.
-chopsticks[0].push({});
-chopsticks[1].push({});
-chopsticks[2].push({});
-// Make philosophers hungry in some way, in this case we just push to their bus.
-for (let i = 0; i < 3; i++) {
-hungry[0].push({});
-hungry[1].push({});
-hungry[2].push({});
-}
-}
+ * // Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
+ * let tick = Bacon.interval(1e2, 0),
+ * keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
+ * handleTick = _ => `timestamp: NONE`,
+ * handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
+ * Bacon.when(
+ * [tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
+ * [tick], handleTick
+ * );
+ * // Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
+ * }
+ *
+ * {
+ * // Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
+ * let a = Bacon.once("a"),
+ * b = Bacon.once("b"),
+ * c = Bacon.once("c"),
+ * f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
+ * Bacon.zipWith(f, a, b, c);
+ * Bacon.when([a, b, c], f);
+ * }
+ *
+ * {
+ * // Join patterns as a "chemical machine".
+ * // A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
+ * let oxygen = Bacon.interval(1e3, "O"),
+ * hydrogen = Bacon.interval(2e3, "H"),
+ * carbon = Bacon.interval(1.5e3, "C"),
+ * makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
+ * makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
+ * Bacon.when(
+ * [oxygen, hydrogen, hydrogen], makeWater,
+ * [oxygen, carbon], makeCarbonMonoxide
+ * );
+ * // Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
+ * }
+ *
+ * {
+ * // Join patterns and properties.
+ * // Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
+ * // -- updating `quantity` sets `total` to `price * quantity`;
+ * // -- updating `total` sets `price` to `total / quantity`.
+ * let random = (x:number) => Math.round(x * Math.random()),
+ * id = <A>(x:A):A => x;
+ * let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
+ * $price = Bacon.interval<Error, number>(2e3, 100).map(random),
+ * $total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
+ * let quantity = $quantity.toProperty(1),
+ * price = Bacon.when<Error, number, number, number>(
+ * [$price], id,
+ * [$total, quantity], (x, y) => x / y
+ * ).toProperty(0),
+ * total = Bacon.when<Error, number, number, number, number>(
+ * [$total], id,
+ * [$price, quantity], (x, y) => x * y,
+ * [price, $quantity], (x, y) => x * y
+ * ).toProperty(0);
+ * }
+ *
+ * {
+ * // Join patterns and `Bacon.Bus`.
+ * // The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
+ * // Availability of chopsticks are implemented using bus.
+ * let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // Hungry could be any type of observable, but we'll use bus here.
+ * hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
+ * eat = (i:number) => () => {
+ * setTimeout(() => {
+ * console.log("done!");
+ * chopsticks[i].push({});
+ * chopsticks[(i + 1) % 3].push({});
+ * }, 1e3);
+ * return `philosopher ${i} eating`;
+ * },
+ * // We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
+ * dining = Bacon.when(
+ * [hungry[0], chopsticks[0], chopsticks[1]], eat(0),
+ * [hungry[1], chopsticks[1], chopsticks[2]], eat(1),
+ * [hungry[2], chopsticks[2], chopsticks[0]], eat(2)
+ * ).log("dining");
+ * // Make all chopsticks initially available.
+ * chopsticks[0].push({});
+ * chopsticks[1].push({});
+ * chopsticks[2].push({});
+ * // Make philosophers hungry in some way, in this case we just push to their bus.
+ * for (let i = 0; i < 3; i++) {
+ * hungry[0].push({});
+ * hungry[1].push({});
+ * hungry[2].push({});
+ * }
+ * }
  */
 declare function Bacon$when<E, A1, A2, B>(
   pattern1: Bacon$Observable<E, A1>[],
@@ -2349,98 +2355,98 @@ declare function Bacon$when<E, A1, A2, B>(
  * @param {Bacon$when3} ~f3} f3
  * @returns {Bacon$EventStream<E, B>}
  * @example {
-// Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
-let tick = Bacon.interval(1e2, 0),
-keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
-handleTick = _ => `timestamp: NONE`,
-handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
-Bacon.when(
-[tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
-[tick], handleTick
-);
-// Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
-}
-
-{
-// Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
-let a = Bacon.once("a"),
-b = Bacon.once("b"),
-c = Bacon.once("c"),
-f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
-Bacon.zipWith(f, a, b, c);
-Bacon.when([a, b, c], f);
-}
-
-{
-// Join patterns as a "chemical machine".
-// A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
-let oxygen = Bacon.interval(1e3, "O"),
-hydrogen = Bacon.interval(2e3, "H"),
-carbon = Bacon.interval(1.5e3, "C"),
-makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
-makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
-Bacon.when(
-[oxygen, hydrogen, hydrogen], makeWater,
-[oxygen, carbon], makeCarbonMonoxide
-);
-// Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
-}
-
-{
-// Join patterns and properties.
-// Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
-// -- updating `quantity` sets `total` to `price * quantity`;
-// -- updating `total` sets `price` to `total / quantity`.
-let random = (x:number) => Math.round(x * Math.random()),
-id = <A>(x:A):A => x;
-let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
-$price = Bacon.interval<Error, number>(2e3, 100).map(random),
-$total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
-let quantity = $quantity.toProperty(1),
-price = Bacon.when<Error, number, number, number>(
-[$price], id,
-[$total, quantity], (x, y) => x / y
-).toProperty(0),
-total = Bacon.when<Error, number, number, number, number>(
-[$total], id,
-[$price, quantity], (x, y) => x * y,
-[price, $quantity], (x, y) => x * y
-).toProperty(0);
-}
-
-{
-// Join patterns and `Bacon.Bus`.
-// The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
-// Availability of chopsticks are implemented using bus.
-let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// Hungry could be any type of observable, but we'll use bus here.
-hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
-eat = (i:number) => () => {
-setTimeout(() => {
-console.log("done!");
-chopsticks[i].push({});
-chopsticks[(i + 1) % 3].push({});
-}, 1e3);
-return `philosopher ${i} eating`;
-},
-// We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
-dining = Bacon.when(
-[hungry[0], chopsticks[0], chopsticks[1]], eat(0),
-[hungry[1], chopsticks[1], chopsticks[2]], eat(1),
-[hungry[2], chopsticks[2], chopsticks[0]], eat(2)
-).log("dining");
-// Make all chopsticks initially available.
-chopsticks[0].push({});
-chopsticks[1].push({});
-chopsticks[2].push({});
-// Make philosophers hungry in some way, in this case we just push to their bus.
-for (let i = 0; i < 3; i++) {
-hungry[0].push({});
-hungry[1].push({});
-hungry[2].push({});
-}
-}
+ * // Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
+ * let tick = Bacon.interval(1e2, 0),
+ * keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
+ * handleTick = _ => `timestamp: NONE`,
+ * handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
+ * Bacon.when(
+ * [tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
+ * [tick], handleTick
+ * );
+ * // Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
+ * }
+ *
+ * {
+ * // Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
+ * let a = Bacon.once("a"),
+ * b = Bacon.once("b"),
+ * c = Bacon.once("c"),
+ * f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
+ * Bacon.zipWith(f, a, b, c);
+ * Bacon.when([a, b, c], f);
+ * }
+ *
+ * {
+ * // Join patterns as a "chemical machine".
+ * // A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
+ * let oxygen = Bacon.interval(1e3, "O"),
+ * hydrogen = Bacon.interval(2e3, "H"),
+ * carbon = Bacon.interval(1.5e3, "C"),
+ * makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
+ * makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
+ * Bacon.when(
+ * [oxygen, hydrogen, hydrogen], makeWater,
+ * [oxygen, carbon], makeCarbonMonoxide
+ * );
+ * // Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
+ * }
+ *
+ * {
+ * // Join patterns and properties.
+ * // Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
+ * // -- updating `quantity` sets `total` to `price * quantity`;
+ * // -- updating `total` sets `price` to `total / quantity`.
+ * let random = (x:number) => Math.round(x * Math.random()),
+ * id = <A>(x:A):A => x;
+ * let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
+ * $price = Bacon.interval<Error, number>(2e3, 100).map(random),
+ * $total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
+ * let quantity = $quantity.toProperty(1),
+ * price = Bacon.when<Error, number, number, number>(
+ * [$price], id,
+ * [$total, quantity], (x, y) => x / y
+ * ).toProperty(0),
+ * total = Bacon.when<Error, number, number, number, number>(
+ * [$total], id,
+ * [$price, quantity], (x, y) => x * y,
+ * [price, $quantity], (x, y) => x * y
+ * ).toProperty(0);
+ * }
+ *
+ * {
+ * // Join patterns and `Bacon.Bus`.
+ * // The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
+ * // Availability of chopsticks are implemented using bus.
+ * let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // Hungry could be any type of observable, but we'll use bus here.
+ * hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
+ * eat = (i:number) => () => {
+ * setTimeout(() => {
+ * console.log("done!");
+ * chopsticks[i].push({});
+ * chopsticks[(i + 1) % 3].push({});
+ * }, 1e3);
+ * return `philosopher ${i} eating`;
+ * },
+ * // We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
+ * dining = Bacon.when(
+ * [hungry[0], chopsticks[0], chopsticks[1]], eat(0),
+ * [hungry[1], chopsticks[1], chopsticks[2]], eat(1),
+ * [hungry[2], chopsticks[2], chopsticks[0]], eat(2)
+ * ).log("dining");
+ * // Make all chopsticks initially available.
+ * chopsticks[0].push({});
+ * chopsticks[1].push({});
+ * chopsticks[2].push({});
+ * // Make philosophers hungry in some way, in this case we just push to their bus.
+ * for (let i = 0; i < 3; i++) {
+ * hungry[0].push({});
+ * hungry[1].push({});
+ * hungry[2].push({});
+ * }
+ * }
  */
 declare function Bacon$when<E, A1, A2, A3, B>(
   pattern1: Bacon$Observable<E, A1>[],
@@ -2468,98 +2474,98 @@ declare function Bacon$when<E, A1, A2, A3, B>(
  * @param {Bacon$when4} ~f4} f4
  * @returns {Bacon$EventStream<E, B>}
  * @example {
-// Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
-let tick = Bacon.interval(1e2, 0),
-keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
-handleTick = _ => `timestamp: NONE`,
-handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
-Bacon.when(
-[tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
-[tick], handleTick
-);
-// Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
-}
-
-{
-// Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
-let a = Bacon.once("a"),
-b = Bacon.once("b"),
-c = Bacon.once("c"),
-f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
-Bacon.zipWith(f, a, b, c);
-Bacon.when([a, b, c], f);
-}
-
-{
-// Join patterns as a "chemical machine".
-// A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
-let oxygen = Bacon.interval(1e3, "O"),
-hydrogen = Bacon.interval(2e3, "H"),
-carbon = Bacon.interval(1.5e3, "C"),
-makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
-makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
-Bacon.when(
-[oxygen, hydrogen, hydrogen], makeWater,
-[oxygen, carbon], makeCarbonMonoxide
-);
-// Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
-}
-
-{
-// Join patterns and properties.
-// Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
-// -- updating `quantity` sets `total` to `price * quantity`;
-// -- updating `total` sets `price` to `total / quantity`.
-let random = (x:number) => Math.round(x * Math.random()),
-id = <A>(x:A):A => x;
-let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
-$price = Bacon.interval<Error, number>(2e3, 100).map(random),
-$total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
-let quantity = $quantity.toProperty(1),
-price = Bacon.when<Error, number, number, number>(
-[$price], id,
-[$total, quantity], (x, y) => x / y
-).toProperty(0),
-total = Bacon.when<Error, number, number, number, number>(
-[$total], id,
-[$price, quantity], (x, y) => x * y,
-[price, $quantity], (x, y) => x * y
-).toProperty(0);
-}
-
-{
-// Join patterns and `Bacon.Bus`.
-// The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
-// Availability of chopsticks are implemented using bus.
-let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// Hungry could be any type of observable, but we'll use bus here.
-hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
-eat = (i:number) => () => {
-setTimeout(() => {
-console.log("done!");
-chopsticks[i].push({});
-chopsticks[(i + 1) % 3].push({});
-}, 1e3);
-return `philosopher ${i} eating`;
-},
-// We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
-dining = Bacon.when(
-[hungry[0], chopsticks[0], chopsticks[1]], eat(0),
-[hungry[1], chopsticks[1], chopsticks[2]], eat(1),
-[hungry[2], chopsticks[2], chopsticks[0]], eat(2)
-).log("dining");
-// Make all chopsticks initially available.
-chopsticks[0].push({});
-chopsticks[1].push({});
-chopsticks[2].push({});
-// Make philosophers hungry in some way, in this case we just push to their bus.
-for (let i = 0; i < 3; i++) {
-hungry[0].push({});
-hungry[1].push({});
-hungry[2].push({});
-}
-}
+ * // Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
+ * let tick = Bacon.interval(1e2, 0),
+ * keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
+ * handleTick = _ => `timestamp: NONE`,
+ * handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
+ * Bacon.when(
+ * [tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
+ * [tick], handleTick
+ * );
+ * // Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
+ * }
+ *
+ * {
+ * // Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
+ * let a = Bacon.once("a"),
+ * b = Bacon.once("b"),
+ * c = Bacon.once("c"),
+ * f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
+ * Bacon.zipWith(f, a, b, c);
+ * Bacon.when([a, b, c], f);
+ * }
+ *
+ * {
+ * // Join patterns as a "chemical machine".
+ * // A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
+ * let oxygen = Bacon.interval(1e3, "O"),
+ * hydrogen = Bacon.interval(2e3, "H"),
+ * carbon = Bacon.interval(1.5e3, "C"),
+ * makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
+ * makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
+ * Bacon.when(
+ * [oxygen, hydrogen, hydrogen], makeWater,
+ * [oxygen, carbon], makeCarbonMonoxide
+ * );
+ * // Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
+ * }
+ *
+ * {
+ * // Join patterns and properties.
+ * // Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
+ * // -- updating `quantity` sets `total` to `price * quantity`;
+ * // -- updating `total` sets `price` to `total / quantity`.
+ * let random = (x:number) => Math.round(x * Math.random()),
+ * id = <A>(x:A):A => x;
+ * let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
+ * $price = Bacon.interval<Error, number>(2e3, 100).map(random),
+ * $total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
+ * let quantity = $quantity.toProperty(1),
+ * price = Bacon.when<Error, number, number, number>(
+ * [$price], id,
+ * [$total, quantity], (x, y) => x / y
+ * ).toProperty(0),
+ * total = Bacon.when<Error, number, number, number, number>(
+ * [$total], id,
+ * [$price, quantity], (x, y) => x * y,
+ * [price, $quantity], (x, y) => x * y
+ * ).toProperty(0);
+ * }
+ *
+ * {
+ * // Join patterns and `Bacon.Bus`.
+ * // The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
+ * // Availability of chopsticks are implemented using bus.
+ * let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // Hungry could be any type of observable, but we'll use bus here.
+ * hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
+ * eat = (i:number) => () => {
+ * setTimeout(() => {
+ * console.log("done!");
+ * chopsticks[i].push({});
+ * chopsticks[(i + 1) % 3].push({});
+ * }, 1e3);
+ * return `philosopher ${i} eating`;
+ * },
+ * // We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
+ * dining = Bacon.when(
+ * [hungry[0], chopsticks[0], chopsticks[1]], eat(0),
+ * [hungry[1], chopsticks[1], chopsticks[2]], eat(1),
+ * [hungry[2], chopsticks[2], chopsticks[0]], eat(2)
+ * ).log("dining");
+ * // Make all chopsticks initially available.
+ * chopsticks[0].push({});
+ * chopsticks[1].push({});
+ * chopsticks[2].push({});
+ * // Make philosophers hungry in some way, in this case we just push to their bus.
+ * for (let i = 0; i < 3; i++) {
+ * hungry[0].push({});
+ * hungry[1].push({});
+ * hungry[2].push({});
+ * }
+ * }
  */
 declare function Bacon$when<E, A1, A2, A3, A4, B>(
   pattern1: Bacon$Observable<E, A1>[],
@@ -2592,98 +2598,98 @@ declare function Bacon$when<E, A1, A2, A3, A4, B>(
  * @param {Bacon$when5} ~f5} f5
  * @returns {Bacon$EventStream<E, B>}
  * @example {
-// Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
-let tick = Bacon.interval(1e2, 0),
-keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
-handleTick = _ => `timestamp: NONE`,
-handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
-Bacon.when(
-[tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
-[tick], handleTick
-);
-// Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
-}
-
-{
-// Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
-let a = Bacon.once("a"),
-b = Bacon.once("b"),
-c = Bacon.once("c"),
-f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
-Bacon.zipWith(f, a, b, c);
-Bacon.when([a, b, c], f);
-}
-
-{
-// Join patterns as a "chemical machine".
-// A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
-let oxygen = Bacon.interval(1e3, "O"),
-hydrogen = Bacon.interval(2e3, "H"),
-carbon = Bacon.interval(1.5e3, "C"),
-makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
-makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
-Bacon.when(
-[oxygen, hydrogen, hydrogen], makeWater,
-[oxygen, carbon], makeCarbonMonoxide
-);
-// Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
-}
-
-{
-// Join patterns and properties.
-// Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
-// -- updating `quantity` sets `total` to `price * quantity`;
-// -- updating `total` sets `price` to `total / quantity`.
-let random = (x:number) => Math.round(x * Math.random()),
-id = <A>(x:A):A => x;
-let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
-$price = Bacon.interval<Error, number>(2e3, 100).map(random),
-$total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
-let quantity = $quantity.toProperty(1),
-price = Bacon.when<Error, number, number, number>(
-[$price], id,
-[$total, quantity], (x, y) => x / y
-).toProperty(0),
-total = Bacon.when<Error, number, number, number, number>(
-[$total], id,
-[$price, quantity], (x, y) => x * y,
-[price, $quantity], (x, y) => x * y
-).toProperty(0);
-}
-
-{
-// Join patterns and `Bacon.Bus`.
-// The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
-// Availability of chopsticks are implemented using bus.
-let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// Hungry could be any type of observable, but we'll use bus here.
-hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
-// A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
-eat = (i:number) => () => {
-setTimeout(() => {
-console.log("done!");
-chopsticks[i].push({});
-chopsticks[(i + 1) % 3].push({});
-}, 1e3);
-return `philosopher ${i} eating`;
-},
-// We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
-dining = Bacon.when(
-[hungry[0], chopsticks[0], chopsticks[1]], eat(0),
-[hungry[1], chopsticks[1], chopsticks[2]], eat(1),
-[hungry[2], chopsticks[2], chopsticks[0]], eat(2)
-).log("dining");
-// Make all chopsticks initially available.
-chopsticks[0].push({});
-chopsticks[1].push({});
-chopsticks[2].push({});
-// Make philosophers hungry in some way, in this case we just push to their bus.
-for (let i = 0; i < 3; i++) {
-hungry[0].push({});
-hungry[1].push({});
-hungry[2].push({});
-}
-}
+ * // Consider implementing a game with discrete time ticks. We want to handle key-events synchronized on tick-events, with at most one key event handled per tick. If there are no key events, we want to just process a tick:
+ * let tick = Bacon.interval(1e2, 0),
+ * keyEvent = Bacon.fromEvent(document.body, "click", _ => Date.now()),
+ * handleTick = _ => `timestamp: NONE`,
+ * handleKeyEvent = timestamp => `timestamp: ${timestamp}`;
+ * Bacon.when(
+ * [tick, keyEvent], (_, timestamp) => handleKeyEvent(timestamp),
+ * [tick], handleTick
+ * );
+ * // Order is important here. If the [tick] patterns had been written first, this would have been tried first, and preferred at each tick.
+ * }
+ *
+ * {
+ * // Join patterns are indeed a generalization of `zip`, and `zip` is equivalent to a single-rule join pattern. The following `Observable`s have the same output:
+ * let a = Bacon.once("a"),
+ * b = Bacon.once("b"),
+ * c = Bacon.once("c"),
+ * f = (a, b, c) => `a = ${a}; b = ${b}; c = ${c}.`;
+ * Bacon.zipWith(f, a, b, c);
+ * Bacon.when([a, b, c], f);
+ * }
+ *
+ * {
+ * // Join patterns as a "chemical machine".
+ * // A quick way to get some intuition for join patterns is to understand them through an analogy in terms of atoms and molecules. A join pattern can here be regarded as a recipe for a chemical reaction. Lets say we have observables `oxygen`, `carbon` and `hydrogen`, where an event in these spawns an 'atom' of that type into a mixture. We can state reactions:
+ * let oxygen = Bacon.interval(1e3, "O"),
+ * hydrogen = Bacon.interval(2e3, "H"),
+ * carbon = Bacon.interval(1.5e3, "C"),
+ * makeWater = (oxygen:string, hydrogen1:string, hydrogen2:string) => `${hydrogen1}${[hydrogen1, hydrogen2].length}${oxygen}`,
+ * makeCarbonMonoxide = (oxygen:string, carbon:string) => `${carbon}${oxygen}`;
+ * Bacon.when(
+ * [oxygen, hydrogen, hydrogen], makeWater,
+ * [oxygen, carbon], makeCarbonMonoxide
+ * );
+ * // Now, every time a new 'atom' is spawned from one of the observables, this atom is added to the mixture. If at any time there are two hydrogen atoms, and an oxygen atom, the corresponding atoms are *consumed*, and output is produced via `makeWater`. The same semantics apply for the second rule to create carbon monoxide. The rules are tried at each point from top to bottom.
+ * }
+ *
+ * {
+ * // Join patterns and properties.
+ * // Properties are not part of the synchronization pattern, but are instead just sampled. The following example take three input streams `$price`, `$quantity` and `$total`, e.g. coming from input fields, and defines mutally recursive behaviours in properties `price`, `quantity` and `total` such that:
+ * // -- updating `quantity` sets `total` to `price * quantity`;
+ * // -- updating `total` sets `price` to `total / quantity`.
+ * let random = (x:number) => Math.round(x * Math.random()),
+ * id = <A>(x:A):A => x;
+ * let $quantity = Bacon.interval<Error, number>(1e3, 10).map(random),
+ * $price = Bacon.interval<Error, number>(2e3, 100).map(random),
+ * $total = Bacon.interval<Error, number>(1.5e3, 1000).map(random);
+ * let quantity = $quantity.toProperty(1),
+ * price = Bacon.when<Error, number, number, number>(
+ * [$price], id,
+ * [$total, quantity], (x, y) => x / y
+ * ).toProperty(0),
+ * total = Bacon.when<Error, number, number, number, number>(
+ * [$total], id,
+ * [$price, quantity], (x, y) => x * y,
+ * [price, $quantity], (x, y) => x * y
+ * ).toProperty(0);
+ * }
+ *
+ * {
+ * // Join patterns and `Bacon.Bus`.
+ * // The result functions of join patterns are allowed to push values onto a `Bus` that may in turn be in one of its patterns. For instance, an implementation of the dining philosophers problem can be written as follows:
+ * // Availability of chopsticks are implemented using bus.
+ * let chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // Hungry could be any type of observable, but we'll use bus here.
+ * hungry = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()],
+ * // A philosopher eats for one second, then makes the chopsticks available again by pushing values onto their bus.
+ * eat = (i:number) => () => {
+ * setTimeout(() => {
+ * console.log("done!");
+ * chopsticks[i].push({});
+ * chopsticks[(i + 1) % 3].push({});
+ * }, 1e3);
+ * return `philosopher ${i} eating`;
+ * },
+ * // We use Bacon.when to make sure a hungry philosopher can eat only when both his chopsticks are available.
+ * dining = Bacon.when(
+ * [hungry[0], chopsticks[0], chopsticks[1]], eat(0),
+ * [hungry[1], chopsticks[1], chopsticks[2]], eat(1),
+ * [hungry[2], chopsticks[2], chopsticks[0]], eat(2)
+ * ).log("dining");
+ * // Make all chopsticks initially available.
+ * chopsticks[0].push({});
+ * chopsticks[1].push({});
+ * chopsticks[2].push({});
+ * // Make philosophers hungry in some way, in this case we just push to their bus.
+ * for (let i = 0; i < 3; i++) {
+ * hungry[0].push({});
+ * hungry[1].push({});
+ * hungry[2].push({});
+ * }
+ * }
  */
 declare function Bacon$when<E, A1, A2, A3, A4, A5, B>(
   pattern1: Bacon$Observable<E, A1>[],
@@ -2707,30 +2713,30 @@ declare function Bacon$when<E, A1, A2, A3, A4, A5, B>(
  * @param {Bacon$update1} ~f1} f1
  * @returns {Bacon$Property<E, B>}
  * @example {
-// The inputs to `Bacon.update` are defined like this:
-let initial = 0,
-x = Bacon.interval(1e3, 1),
-y = Bacon.interval(2e3, 1),
-z = Bacon.interval(1.5e3, 1);
-// NOTE: had to explicitly specify the typing for `previous:number`
-Bacon.update(initial,
-[x, y, z], (previous:number, x, y, z) => previous + x + y + z,
-[x, y], (previous:number, x, y) => previous + x + y + z
-);
-// As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
-}
-
-{
-// Here's a simple gaming example:
-let scoreMultiplier = Bacon.constant(1),
-hitUfo = new Bacon.Bus(),
-hitMotherShip = new Bacon.Bus(),
-score = Bacon.update(0,
-[hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
-[hitMotherShip], (score, _) => score + 2000
-);
-// In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
-}
+ * // The inputs to `Bacon.update` are defined like this:
+ * let initial = 0,
+ * x = Bacon.interval(1e3, 1),
+ * y = Bacon.interval(2e3, 1),
+ * z = Bacon.interval(1.5e3, 1);
+ * // NOTE: had to explicitly specify the typing for `previous:number`
+ * Bacon.update(initial,
+ * [x, y, z], (previous:number, x, y, z) => previous + x + y + z,
+ * [x, y], (previous:number, x, y) => previous + x + y + z
+ * );
+ * // As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
+ * }
+ *
+ * {
+ * // Here's a simple gaming example:
+ * let scoreMultiplier = Bacon.constant(1),
+ * hitUfo = new Bacon.Bus(),
+ * hitMotherShip = new Bacon.Bus(),
+ * score = Bacon.update(0,
+ * [hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
+ * [hitMotherShip], (score, _) => score + 2000
+ * );
+ * // In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
+ * }
  */
 declare function Bacon$update<E, A1, B>(
   initial: B,
@@ -2750,30 +2756,30 @@ declare function Bacon$update<E, A1, B>(
  * @param {Bacon$update2} ~f2} f2
  * @returns {Bacon$Property<E, B>}
  * @example {
-// The inputs to `Bacon.update` are defined like this:
-let initial = 0,
-x = Bacon.interval(1e3, 1),
-y = Bacon.interval(2e3, 1),
-z = Bacon.interval(1.5e3, 1);
-// NOTE: had to explicitly specify the typing for `previous:number`
-Bacon.update(initial,
-[x, y, z], (previous:number, x, y, z) => previous + x + y + z,
-[x, y], (previous:number, x, y) => previous + x + y + z
-);
-// As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
-}
-
-{
-// Here's a simple gaming example:
-let scoreMultiplier = Bacon.constant(1),
-hitUfo = new Bacon.Bus(),
-hitMotherShip = new Bacon.Bus(),
-score = Bacon.update(0,
-[hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
-[hitMotherShip], (score, _) => score + 2000
-);
-// In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
-}
+ * // The inputs to `Bacon.update` are defined like this:
+ * let initial = 0,
+ * x = Bacon.interval(1e3, 1),
+ * y = Bacon.interval(2e3, 1),
+ * z = Bacon.interval(1.5e3, 1);
+ * // NOTE: had to explicitly specify the typing for `previous:number`
+ * Bacon.update(initial,
+ * [x, y, z], (previous:number, x, y, z) => previous + x + y + z,
+ * [x, y], (previous:number, x, y) => previous + x + y + z
+ * );
+ * // As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
+ * }
+ *
+ * {
+ * // Here's a simple gaming example:
+ * let scoreMultiplier = Bacon.constant(1),
+ * hitUfo = new Bacon.Bus(),
+ * hitMotherShip = new Bacon.Bus(),
+ * score = Bacon.update(0,
+ * [hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
+ * [hitMotherShip], (score, _) => score + 2000
+ * );
+ * // In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
+ * }
  */
 declare function Bacon$update<E, A1, A2, B>(
   initial: B,
@@ -2798,30 +2804,30 @@ declare function Bacon$update<E, A1, A2, B>(
  * @param {Bacon$update3} ~f3} f3
  * @returns {Bacon$Property<E, B>}
  * @example {
-// The inputs to `Bacon.update` are defined like this:
-let initial = 0,
-x = Bacon.interval(1e3, 1),
-y = Bacon.interval(2e3, 1),
-z = Bacon.interval(1.5e3, 1);
-// NOTE: had to explicitly specify the typing for `previous:number`
-Bacon.update(initial,
-[x, y, z], (previous:number, x, y, z) => previous + x + y + z,
-[x, y], (previous:number, x, y) => previous + x + y + z
-);
-// As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
-}
-
-{
-// Here's a simple gaming example:
-let scoreMultiplier = Bacon.constant(1),
-hitUfo = new Bacon.Bus(),
-hitMotherShip = new Bacon.Bus(),
-score = Bacon.update(0,
-[hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
-[hitMotherShip], (score, _) => score + 2000
-);
-// In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
-}
+ * // The inputs to `Bacon.update` are defined like this:
+ * let initial = 0,
+ * x = Bacon.interval(1e3, 1),
+ * y = Bacon.interval(2e3, 1),
+ * z = Bacon.interval(1.5e3, 1);
+ * // NOTE: had to explicitly specify the typing for `previous:number`
+ * Bacon.update(initial,
+ * [x, y, z], (previous:number, x, y, z) => previous + x + y + z,
+ * [x, y], (previous:number, x, y) => previous + x + y + z
+ * );
+ * // As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
+ * }
+ *
+ * {
+ * // Here's a simple gaming example:
+ * let scoreMultiplier = Bacon.constant(1),
+ * hitUfo = new Bacon.Bus(),
+ * hitMotherShip = new Bacon.Bus(),
+ * score = Bacon.update(0,
+ * [hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
+ * [hitMotherShip], (score, _) => score + 2000
+ * );
+ * // In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
+ * }
  */
 declare function Bacon$update<E, A1, A2, A3, B>(
   initial: B,
@@ -2851,30 +2857,30 @@ declare function Bacon$update<E, A1, A2, A3, B>(
  * @param {Bacon$update4} ~f4} f4
  * @returns {Bacon$Property<E, B>}
  * @example {
-// The inputs to `Bacon.update` are defined like this:
-let initial = 0,
-x = Bacon.interval(1e3, 1),
-y = Bacon.interval(2e3, 1),
-z = Bacon.interval(1.5e3, 1);
-// NOTE: had to explicitly specify the typing for `previous:number`
-Bacon.update(initial,
-[x, y, z], (previous:number, x, y, z) => previous + x + y + z,
-[x, y], (previous:number, x, y) => previous + x + y + z
-);
-// As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
-}
-
-{
-// Here's a simple gaming example:
-let scoreMultiplier = Bacon.constant(1),
-hitUfo = new Bacon.Bus(),
-hitMotherShip = new Bacon.Bus(),
-score = Bacon.update(0,
-[hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
-[hitMotherShip], (score, _) => score + 2000
-);
-// In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
-}
+ * // The inputs to `Bacon.update` are defined like this:
+ * let initial = 0,
+ * x = Bacon.interval(1e3, 1),
+ * y = Bacon.interval(2e3, 1),
+ * z = Bacon.interval(1.5e3, 1);
+ * // NOTE: had to explicitly specify the typing for `previous:number`
+ * Bacon.update(initial,
+ * [x, y, z], (previous:number, x, y, z) => previous + x + y + z,
+ * [x, y], (previous:number, x, y) => previous + x + y + z
+ * );
+ * // As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
+ * }
+ *
+ * {
+ * // Here's a simple gaming example:
+ * let scoreMultiplier = Bacon.constant(1),
+ * hitUfo = new Bacon.Bus(),
+ * hitMotherShip = new Bacon.Bus(),
+ * score = Bacon.update(0,
+ * [hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
+ * [hitMotherShip], (score, _) => score + 2000
+ * );
+ * // In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
+ * }
  */
 declare function Bacon$update<E, A1, A2, A3, A4, B>(
   initial: B,
@@ -2909,30 +2915,30 @@ declare function Bacon$update<E, A1, A2, A3, A4, B>(
  * @param {Bacon$update5} ~f5} f5
  * @returns {Bacon$Property<E, B>}
  * @example {
-// The inputs to `Bacon.update` are defined like this:
-let initial = 0,
-x = Bacon.interval(1e3, 1),
-y = Bacon.interval(2e3, 1),
-z = Bacon.interval(1.5e3, 1);
-// NOTE: had to explicitly specify the typing for `previous:number`
-Bacon.update(initial,
-[x, y, z], (previous:number, x, y, z) => previous + x + y + z,
-[x, y], (previous:number, x, y) => previous + x + y + z
-);
-// As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
-}
-
-{
-// Here's a simple gaming example:
-let scoreMultiplier = Bacon.constant(1),
-hitUfo = new Bacon.Bus(),
-hitMotherShip = new Bacon.Bus(),
-score = Bacon.update(0,
-[hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
-[hitMotherShip], (score, _) => score + 2000
-);
-// In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
-}
+ * // The inputs to `Bacon.update` are defined like this:
+ * let initial = 0,
+ * x = Bacon.interval(1e3, 1),
+ * y = Bacon.interval(2e3, 1),
+ * z = Bacon.interval(1.5e3, 1);
+ * // NOTE: had to explicitly specify the typing for `previous:number`
+ * Bacon.update(initial,
+ * [x, y, z], (previous:number, x, y, z) => previous + x + y + z,
+ * [x, y], (previous:number, x, y) => previous + x + y + z
+ * );
+ * // As input, each function above will get the previous value of the `result` Property, along with values from the listed Observables. The value returned by the function will be used as the next value of `result`. Just like in `Bacon.when`, only EventStreams will trigger an update, while Properties will be just sampled. So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.
+ * }
+ *
+ * {
+ * // Here's a simple gaming example:
+ * let scoreMultiplier = Bacon.constant(1),
+ * hitUfo = new Bacon.Bus(),
+ * hitMotherShip = new Bacon.Bus(),
+ * score = Bacon.update(0,
+ * [hitUfo, scoreMultiplier], (score, _, multiplier:number) => score + 100 * multiplier,
+ * [hitMotherShip], (score, _) => score + 2000
+ * );
+ * // In the example, the `score` property is updated when either `hitUfo` or `hitMotherShip` occur. The `scoreMultiplier` Property is sampled to take multiplier into account when `hitUfo` occurs.
+ * }
  */
 declare function Bacon$update<E, A1, A2, A3, A4, A5, B>(
   initial: B,
@@ -2948,5 +2954,5 @@ declare function Bacon$update<E, A1, A2, A3, A4, A5, B>(
   f5: (initial: B, ...args: A5[]) => B
 ): Bacon$Property<E, B>;
 declare module "baconjs" {
-  declare module.exports: typeof Bacon;
+  declare export default typeof Bacon;
 }
