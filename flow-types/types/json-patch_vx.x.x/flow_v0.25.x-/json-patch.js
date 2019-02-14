@@ -1,7 +1,13 @@
 declare module "json-patch" {
   declare var npm$namespace$jsonpatch: {
     apply: typeof jsonpatch$apply,
-    compile: typeof jsonpatch$compile
+    compile: typeof jsonpatch$compile,
+
+    JSONPatchError: typeof jsonpatch$JSONPatchError,
+    InvalidPointerError: typeof jsonpatch$InvalidPointerError,
+    InvalidPatchError: typeof jsonpatch$InvalidPatchError,
+    PatchConflictError: typeof jsonpatch$PatchConflictError,
+    PatchTestFailed: typeof jsonpatch$PatchTestFailed
   };
   declare type jsonpatch$OpPatch =
     | jsonpatch$AddPatch
@@ -18,31 +24,31 @@ declare module "json-patch" {
   declare type jsonpatch$AddPatch = {
     op: "add",
     value: any
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare type jsonpatch$RemovePatch = {
     op: "remove"
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare type jsonpatch$ReplacePatch = {
     op: "replace",
     value: any
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare type jsonpatch$MovePatch = {
     op: "move",
     from: string
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare type jsonpatch$CopyPatch = {
     op: "copy",
     from: string
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare type jsonpatch$TestPatch = {
     op: "test",
     value: any
-  } & jsonpatch$Patch;
+  } & Patch;
 
   declare function jsonpatch$apply(
     document: any,
@@ -57,10 +63,10 @@ declare module "json-patch" {
 
   declare class jsonpatch$InvalidPointerError mixins Error {}
 
-  declare class jsonpatch$InvalidPatchError mixins jsonpatch$JSONPatchError {}
+  declare class jsonpatch$InvalidPatchError mixins JSONPatchError {}
 
-  declare class jsonpatch$PatchConflictError mixins jsonpatch$JSONPatchError {}
+  declare class jsonpatch$PatchConflictError mixins JSONPatchError {}
 
   declare class jsonpatch$PatchTestFailed mixins Error {}
-  declare module.exports: typeof jsonpatch;
+  declare export default typeof jsonpatch;
 }
