@@ -13,7 +13,7 @@ declare module "n3" {
   declare export type Term =
     | NamedNode
     | BlankNode
-    | AST$Literal
+    | Literal
     | Variable
     | DefaultGraph;
   declare export type PrefixedToIri = (suffix: string) => RDF.NamedNode;
@@ -24,35 +24,35 @@ declare module "n3" {
     id: string;
     toJSON(): {};
     equals(other: RDF.Term): boolean;
-    static subclass(notification$type: any): void;
+    static subclass(type: any): void;
   }
   declare export class BlankNode mixins RDF.BlankNode {
     static nextId: number;
     termType: "BlankNode";
     value: string;
-    constructor(skin$name: string): this;
+    constructor(name: string): this;
     id: string;
     toJSON(): {};
     equals(other: RDF.Term): boolean;
-    static subclass(notification$type: any): void;
+    static subclass(type: any): void;
   }
   declare export class Variable mixins RDF.Variable {
     termType: "Variable";
     value: string;
-    constructor(skin$name: string): this;
+    constructor(name: string): this;
     id: string;
     toJSON(): {};
     equals(other: RDF.Term): boolean;
-    static subclass(notification$type: any): void;
+    static subclass(type: any): void;
   }
-  declare export class Literal mixins RDF.AST$Literal {
+  declare export class Literal mixins RDF.Literal {
     static langStringDatatype: NamedNode;
     termType: "Literal";
     value: string;
     id: string;
     toJSON(): {};
     equals(other: RDF.Term): boolean;
-    static subclass(notification$type: any): void;
+    static subclass(type: any): void;
     language: string;
     datatype: NamedNode;
     datatypeString: string;
@@ -65,15 +65,11 @@ declare module "n3" {
     id: string;
     toJSON(): {};
     equals(other: RDF.Term): boolean;
-    static subclass(notification$type: any): void;
+    static subclass(type: any): void;
   }
   declare export type Quad_Subject = NamedNode | BlankNode | Variable;
   declare export type Quad_Predicate = NamedNode | Variable;
-  declare export type Quad_Object =
-    | NamedNode
-    | AST$Literal
-    | BlankNode
-    | Variable;
+  declare export type Quad_Object = NamedNode | Literal | BlankNode | Variable;
   declare export type Quad_Graph =
     | DefaultGraph
     | NamedNode
@@ -125,7 +121,7 @@ declare module "n3" {
   declare function DataFactory$literal(
     value: string | number,
     languageOrDatatype?: string | RDF.NamedNode
-  ): AST$Literal;
+  ): Literal;
 
   declare function DataFactory$variable(value: string): Variable;
 
@@ -157,15 +153,10 @@ declare module "n3" {
     object: $ElementType<Q_In, "object">
   ): Q_Out;
 
-  declare export type ErrorCallback = (
-    err: EventType$Error,
-    result: any
-  ) => void;
-  declare export type QuadCallback<Q: BaseQuad = Quad> = (
-    result: Sdk$Q
-  ) => void;
+  declare export type ErrorCallback = (err: Error, result: any) => void;
+  declare export type QuadCallback<Q: BaseQuad = Quad> = (result: Q) => void;
   declare export type QuadPredicate<Q: BaseQuad = Quad> = (
-    result: Sdk$Q
+    result: Q
   ) => boolean;
   declare export type OTerm = RDF.Term | string | null;
   declare export type Logger = (
@@ -173,165 +164,140 @@ declare module "n3" {
     ...optionalParams: any[]
   ) => void;
   declare export interface BlankTriple<Q: RDF.BaseQuad = RDF.Quad> {
-    predicate: $ElementType<Sdk$Q, "predicate">;
-    object: $ElementType<Sdk$Q, "object">;
+    predicate: $ElementType<Q, "predicate">;
+    object: $ElementType<Q, "object">;
   }
   declare export interface ParserConstructor {
-    new<Q: BaseQuad>(notification$options?: ParserOptions): N3Parser<Sdk$Q>;
-    <Q: BaseQuad>(notification$options?: ParserOptions): N3Parser<Sdk$Q>;
+    new<Q: BaseQuad>(options?: ParserOptions): N3Parser<Q>;
+    <Q: BaseQuad>(options?: ParserOptions): N3Parser<Q>;
   }
-  declare export var convict$Parser: ParserConstructor;
+  declare export var Parser: ParserConstructor;
   declare export interface ParserOptions {
-    Util$format?: string;
-    Util$prefixes?: string[];
+    format?: string;
+    prefixes?: string[];
     factory?: RDF.DataFactory;
     baseIRI?: string;
   }
   declare export type ParseCallback<Q: BaseQuad = Quad> = (
-    log$error: EventType$Error,
-    DataFactory$quad: Sdk$Q,
-    Util$prefixes: Prefixes
+    error: Error,
+    quad: Q,
+    prefixes: Prefixes
   ) => void;
   declare export interface N3Parser<Q: BaseQuad = Quad> {
-    Handlebars$parse(input: string): Sdk$Q[];
-    Handlebars$parse(
-      input: string,
-      braintree$callback: ParseCallback<Sdk$Q>
-    ): void;
+    parse(input: string): Q[];
+    parse(input: string, callback: ParseCallback<Q>): void;
   }
   declare export interface StreamParserConstructor {
-    new<Q: BaseQuad>(
-      notification$options?: ParserOptions
-    ): N3StreamParser<Sdk$Q>;
-    <Q: BaseQuad>(notification$options?: ParserOptions): N3StreamParser<Sdk$Q>;
+    new<Q: BaseQuad>(options?: ParserOptions): N3StreamParser<Q>;
+    <Q: BaseQuad>(options?: ParserOptions): N3StreamParser<Q>;
   }
   declare export var StreamParser: StreamParserConstructor;
   declare export type N3StreamParser<Q: BaseQuad = Quad> = {
     readable: boolean,
     setEncoding(encoding: string | null): void,
-    keyboardjs$pause(): this,
-    keyboardjs$resume(): this,
+    pause(): this,
+    resume(): this,
     isPaused(): boolean,
-    Minilog$pipe<T: NodeJS$WritableStream | RDF.Stream<Sdk$Q>>(
+    pipe<T: NodeJS.WritableStream | RDF.Stream<Q>>(
       destination: T,
-      notification$options?: {
+      options?: {
         end?: boolean
       }
     ): T,
-    unpipe(destination?: NodeJS$WritableStream | RDF.Stream<Sdk$Q>): void,
+    unpipe(destination?: NodeJS.WritableStream | RDF.Stream<Q>): void,
     unshift(chunk: string | Buffer): void,
-    colors$wrap(
-      oldStream: NodeJS$ReadableStream | RDF.Stream<Sdk$Q>
-    ): NodeJS$ReadableStream
-  } & RDF.Stream<Sdk$Q> &
-    NodeJS$WritableStream &
-    RDF.Sink<Sdk$Q>;
+    wrap(
+      oldStream: NodeJS.ReadableStream | RDF.Stream<Q>
+    ): NodeJS.ReadableStream
+  } & RDF.Stream<Q> &
+    NodeJS.WritableStream &
+    RDF.Sink<Q>;
 
   declare export interface WriterOptions {
-    Util$format?: string;
-    Util$prefixes?: Prefixes<RDF.NamedNode | string>;
+    format?: string;
+    prefixes?: Prefixes<RDF.NamedNode | string>;
     end?: boolean;
   }
   declare export interface WriterConstructor {
-    new<Q: RDF.BaseQuad>(notification$options?: WriterOptions): N3Writer<Sdk$Q>;
-    new<Q: RDF.BaseQuad>(
-      fd: any,
-      notification$options?: WriterOptions
-    ): N3Writer<Sdk$Q>;
-    <Q: RDF.BaseQuad>(notification$options?: WriterOptions): N3Writer<Sdk$Q>;
-    <Q: RDF.BaseQuad>(
-      fd: any,
-      notification$options?: WriterOptions
-    ): N3Writer<Sdk$Q>;
+    new<Q: RDF.BaseQuad>(options?: WriterOptions): N3Writer<Q>;
+    new<Q: RDF.BaseQuad>(fd: any, options?: WriterOptions): N3Writer<Q>;
+    <Q: RDF.BaseQuad>(options?: WriterOptions): N3Writer<Q>;
+    <Q: RDF.BaseQuad>(fd: any, options?: WriterOptions): N3Writer<Q>;
   }
   declare export var Writer: WriterConstructor;
   declare export interface N3Writer<Q: RDF.BaseQuad = RDF.Quad> {
     quadToString(
-      subject: $ElementType<Sdk$Q, "subject">,
-      predicate: $ElementType<Sdk$Q, "predicate">,
-      object: $ElementType<Sdk$Q, "object">,
-      graph?: $ElementType<Sdk$Q, "graph">
+      subject: $ElementType<Q, "subject">,
+      predicate: $ElementType<Q, "predicate">,
+      object: $ElementType<Q, "object">,
+      graph?: $ElementType<Q, "graph">
     ): string;
     quadsToString(quads: RDF.Quad[]): string;
     addQuad(
-      subject: $ElementType<Sdk$Q, "subject">,
-      predicate: $ElementType<Sdk$Q, "predicate">,
-      object:
-        | $ElementType<Sdk$Q, "object">
-        | core$Array<$ElementType<Sdk$Q, "object">>,
-      graph?: $ElementType<Sdk$Q, "graph">,
+      subject: $ElementType<Q, "subject">,
+      predicate: $ElementType<Q, "predicate">,
+      object: $ElementType<Q, "object"> | Array<$ElementType<Q, "object">>,
+      graph?: $ElementType<Q, "graph">,
       done?: () => void
     ): void;
-    addQuad(DataFactory$quad: RDF.Quad): void;
+    addQuad(quad: RDF.Quad): void;
     addQuads(quads: RDF.Quad[]): void;
     addPrefix(
-      Util$prefix: string,
+      prefix: string,
       iri: RDF.NamedNode | string,
       done?: () => void
     ): void;
     addPrefixes(
-      Util$prefixes: Prefixes<RDF.NamedNode | string>,
+      prefixes: Prefixes<RDF.NamedNode | string>,
       done?: () => void
     ): void;
-    end(err?: ioBroker$ErrorCallback, result?: string): void;
+    end(err?: ErrorCallback, result?: string): void;
     blank(
-      predicate: $ElementType<Sdk$Q, "predicate">,
-      object: $ElementType<Sdk$Q, "object">
+      predicate: $ElementType<Q, "predicate">,
+      object: $ElementType<Q, "object">
     ): BlankNode;
     blank(
-      DataFactory$triple: BlankTriple | RDF.Quad | BlankTriple[] | RDF.Quad[]
+      triple: BlankTriple | RDF.Quad | BlankTriple[] | RDF.Quad[]
     ): BlankNode;
-    plugins$list(
-      DataFactory$triple: core$Array<$ElementType<Sdk$Q, "object">>
-    ): Quad_Object[];
+    list(triple: Array<$ElementType<Q, "object">>): Quad_Object[];
   }
   declare export interface StreamWriterConstructor {
-    new<Q: RDF.BaseQuad>(
-      notification$options?: WriterOptions
-    ): N3StreamWriter<Sdk$Q>;
-    new<Q: RDF.BaseQuad>(
-      fd: any,
-      notification$options?: WriterOptions
-    ): N3StreamWriter<Sdk$Q>;
-    <Q: RDF.BaseQuad>(
-      notification$options?: WriterOptions
-    ): N3StreamWriter<Sdk$Q>;
-    <Q: RDF.BaseQuad>(
-      fd: any,
-      notification$options?: WriterOptions
-    ): N3StreamWriter<Sdk$Q>;
+    new<Q: RDF.BaseQuad>(options?: WriterOptions): N3StreamWriter<Q>;
+    new<Q: RDF.BaseQuad>(fd: any, options?: WriterOptions): N3StreamWriter<Q>;
+    <Q: RDF.BaseQuad>(options?: WriterOptions): N3StreamWriter<Q>;
+    <Q: RDF.BaseQuad>(fd: any, options?: WriterOptions): N3StreamWriter<Q>;
   }
   declare export var StreamWriter: StreamWriterConstructor;
   declare export type N3StreamWriter<
     Q: RDF.BaseQuad = Quad
-  > = {} & NodeJS$ReadWriteStream & RDF.mapboxgl$Source;
+  > = {} & NodeJS.ReadWriteStream & RDF.Source;
 
   declare export type N3Store<
     Q_RDF: RDF.BaseQuad = RDF.Quad,
     Q_N3: BaseQuad = Quad
   > = {
-    +__esri$size: number,
+    +size: number,
     addQuad(
       subject: $ElementType<Q_RDF, "subject">,
       predicate: $ElementType<Q_RDF, "predicate">,
       object:
         | $ElementType<Q_RDF, "object">
-        | core$Array<$ElementType<Q_RDF, "object">>,
+        | Array<$ElementType<Q_RDF, "object">>,
       graph?: $ElementType<Q_RDF, "graph">,
       done?: () => void
     ): void,
-    addQuad(DataFactory$quad: Q_RDF): void,
+    addQuad(quad: Q_RDF): void,
     addQuads(quads: Q_RDF[]): void,
     removeQuad(
       subject: $ElementType<Q_RDF, "subject">,
       predicate: $ElementType<Q_RDF, "predicate">,
       object:
         | $ElementType<Q_RDF, "object">
-        | core$Array<$ElementType<Q_RDF, "object">>,
+        | Array<$ElementType<Q_RDF, "object">>,
       graph?: $ElementType<Q_RDF, "graph">,
       done?: () => void
     ): void,
-    removeQuad(DataFactory$quad: Q_RDF): void,
+    removeQuad(quad: Q_RDF): void,
     removeQuads(quads: Q_RDF[]): void,
     getQuads(
       subject: OTerm,
@@ -345,22 +311,22 @@ declare module "n3" {
       object: OTerm,
       graph: OTerm
     ): number,
-    array$forEach(
-      braintree$callback: QuadCallback<Q_N3>,
+    forEach(
+      callback: QuadCallback<Q_N3>,
       subject: OTerm,
       predicate: OTerm,
       object: OTerm,
       graph: OTerm
     ): void,
-    array$every(
-      braintree$callback: QuadPredicate<Q_N3>,
+    every(
+      callback: QuadPredicate<Q_N3>,
       subject: OTerm,
       predicate: OTerm,
       object: OTerm,
       graph: OTerm
     ): boolean,
     some(
-      braintree$callback: QuadPredicate<Q_N3>,
+      callback: QuadPredicate<Q_N3>,
       subject: OTerm,
       predicate: OTerm,
       object: OTerm,
@@ -370,9 +336,9 @@ declare module "n3" {
       predicate: OTerm,
       object: OTerm,
       graph: OTerm
-    ): core$Array<$ElementType<Q_N3, "subject">>,
+    ): Array<$ElementType<Q_N3, "subject">>,
     forSubjects(
-      braintree$callback: QuadCallback<Q_N3>,
+      callback: QuadCallback<Q_N3>,
       predicate: OTerm,
       object: OTerm,
       graph: OTerm
@@ -381,9 +347,9 @@ declare module "n3" {
       subject: OTerm,
       object: OTerm,
       graph: OTerm
-    ): core$Array<$ElementType<Q_N3, "predicate">>,
+    ): Array<$ElementType<Q_N3, "predicate">>,
     forPredicates(
-      braintree$callback: QuadCallback<Q_N3>,
+      callback: QuadCallback<Q_N3>,
       subject: OTerm,
       object: OTerm,
       graph: OTerm
@@ -392,9 +358,9 @@ declare module "n3" {
       subject: OTerm,
       predicate: OTerm,
       graph: OTerm
-    ): core$Array<$ElementType<Q_N3, "object">>,
+    ): Array<$ElementType<Q_N3, "object">>,
     forObjects(
-      braintree$callback: QuadCallback<Q_N3>,
+      callback: QuadCallback<Q_N3>,
       subject: OTerm,
       predicate: OTerm,
       graph: OTerm
@@ -403,28 +369,28 @@ declare module "n3" {
       subject: OTerm,
       predicate: OTerm,
       object: OTerm
-    ): core$Array<$ElementType<Q_N3, "graph">>,
+    ): Array<$ElementType<Q_N3, "graph">>,
     forGraphs(
-      braintree$callback: QuadCallback<Q_N3>,
+      callback: QuadCallback<Q_N3>,
       subject: OTerm,
       predicate: OTerm,
       object: OTerm
     ): void,
     createBlankNode(suggestedName?: string): BlankNode,
-    DomUtil$remove(stream: stream.Stream): EventEmitter
+    remove(stream: stream.Stream): EventEmitter
   } & RDF.Sink;
 
   declare export interface StoreConstructor {
     new<Q_RDF: RDF.BaseQuad, Q_N3: BaseQuad>(
       triples?: Q_RDF[],
-      notification$options?: Knockback$StoreOptions
+      options?: StoreOptions
     ): N3Store<Q_RDF, Q_N3>;
     <Q_RDF: RDF.BaseQuad, Q_N3: BaseQuad>(
       triples?: Q_RDF[],
-      notification$options?: Knockback$StoreOptions
+      options?: StoreOptions
     ): N3Store<Q_RDF, Q_N3>;
   }
-  declare export var Knockback$Store: StoreConstructor;
+  declare export var Store: StoreConstructor;
   declare export interface StoreOptions {
     factory?: RDF.DataFactory;
   }
@@ -459,5 +425,5 @@ declare module "n3" {
   declare function Util$prefixes(
     defaultPrefixes: Prefixes<RDF.NamedNode | string>,
     factory?: RDF.DataFactory
-  ): (Util$prefix: string) => PrefixedToIri;
+  ): (prefix: string) => PrefixedToIri;
 }
