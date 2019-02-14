@@ -1,13 +1,13 @@
 declare module "proxy-addr" {
   import type { IncomingMessage } from "http";
 
-  declare module.exports: typeof proxyAddr;
+  declare export default typeof proxyAddr;
 
   declare function proxyAddr(
     req: IncomingMessage,
     trust:
-      | proxyAddr$proxyAddr$Address
-      | proxyAddr$proxyAddr$Address[]
+      | proxyAddr$Address
+      | proxyAddr$Address[]
       | ((addr: string, i: number) => boolean)
   ): string;
 
