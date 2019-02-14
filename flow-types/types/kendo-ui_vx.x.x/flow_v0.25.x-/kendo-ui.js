@@ -35,7 +35,29 @@ declare module "kendo-ui" {
     keys: typeof kendo$keys,
     support: typeof kendo$support,
     version: typeof kendo$version,
-    history: typeof kendo$history
+    history: typeof kendo$history,
+
+    Class: typeof kendo$Class,
+    Observable: typeof kendo$Observable,
+    View: typeof kendo$View,
+    ViewContainer: typeof kendo$ViewContainer,
+    Layout: typeof kendo$Layout,
+    History: typeof kendo$History,
+    Route: typeof kendo$Route,
+    Router: typeof kendo$Router,
+    Color: typeof kendo$Color,
+    effects: typeof npm$namespace$kendo$effects,
+    data: typeof npm$namespace$kendo$data,
+    ui: typeof npm$namespace$kendo$ui,
+    mobile: typeof npm$namespace$kendo$mobile,
+    dataviz: typeof npm$namespace$kendo$dataviz,
+    drawing: typeof npm$namespace$kendo$drawing,
+    geometry: typeof npm$namespace$kendo$geometry,
+    date: typeof npm$namespace$kendo$date,
+    pdf: typeof npm$namespace$kendo$pdf,
+    timezone: typeof npm$namespace$kendo$timezone,
+    spreadsheet: typeof npm$namespace$kendo$spreadsheet,
+    ooxml: typeof npm$namespace$kendo$ooxml
   };
   declare function kendo$culture(): {
     name: string,
@@ -131,7 +153,7 @@ declare module "kendo-ui" {
   };
 
   declare var kendo$cultures: {
-    [kendo$culture: string]: {
+    [culture: string]: {
       name?: string,
       calendar?: {
         AM: string[],
@@ -225,15 +247,13 @@ declare module "kendo-ui" {
     }
   };
 
-  declare function kendo$format(kendo$format: string, ...values: any[]): string;
+  declare function kendo$format(format: string, ...values: any[]): string;
 
-  declare function kendo$fx(selector: string): kendo$effects.drawing$Element;
+  declare function kendo$fx(selector: string): effects$Element;
 
-  declare function kendo$fx(
-    element: drawing$Element
-  ): kendo$effects.drawing$Element;
+  declare function kendo$fx(element: drawing$Element): effects$Element;
 
-  declare function kendo$fx(element: JQuery): kendo$effects.drawing$Element;
+  declare function kendo$fx(element: JQuery): effects$Element;
 
   declare function kendo$init(selector: string, ...namespaces: any[]): void;
 
@@ -244,40 +264,38 @@ declare module "kendo-ui" {
     ...namespaces: any[]
   ): void;
 
-  declare function kendo$observable(
-    kendo$data: any
-  ): kendo$kendo$data.data$ObservableObject;
+  declare function kendo$observable(data: any): kendo$dataObservableObject;
 
   declare function kendo$observableHierarchy(
     array: any[]
-  ): kendo$kendo$data.data$ObservableArray;
+  ): kendo$dataObservableArray;
 
   declare function kendo$render(
-    kendo$template: (kendo$data: any) => string,
-    kendo$data: any[]
+    template: (data: any) => string,
+    data: any[]
   ): string;
 
   declare function kendo$template(
-    kendo$template: string,
+    template: string,
     options?: kendo$TemplateOptions
-  ): (kendo$data: any) => string;
+  ): (data: any) => string;
 
   declare function kendo$guid(): string;
 
   declare function kendo$widgetInstance(
     element: JQuery,
-    suite?: typeof undefined
-  ): kendo$kendo$ui.ui$Widget;
+    suite?: typeof kendo$ui
+  ): kendo$uiWidget;
 
   declare function kendo$widgetInstance(
     element: JQuery,
-    suite?: typeof undefined
-  ): kendo$kendo$ui.ui$Widget;
+    suite?: typeof kendo$mobileui
+  ): kendo$uiWidget;
 
   declare function kendo$widgetInstance(
     element: JQuery,
-    suite?: typeof undefined
-  ): kendo$kendo$ui.ui$Widget;
+    suite?: typeof kendo$datavizui
+  ): kendo$uiWidget;
 
   declare var kendo$ns: string;
 
@@ -347,7 +365,7 @@ declare module "kendo-ui" {
     static extend(prototype: Object): kendo$Class;
   }
 
-  declare class kendo$Observable mixins kendo$Class {
+  declare class kendo$Observable mixins Class {
     static fn: kendo$Observable;
     static extend(prototype: Object): kendo$Observable;
     init(...args: any[]): void;
@@ -381,10 +399,10 @@ declare module "kendo-ui" {
 
   declare interface kendo$ViewOptions {
     tagName?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
     model?: Object;
     evalTemplate?: boolean;
-    kendo$init?: (e: ui$ViewEvent) => void;
+    init?: (e: ui$ViewEvent) => void;
     show?: (e: ui$ViewEvent) => void;
     hide?: (e: ui$ViewEvent) => void;
     name?: string;
@@ -399,7 +417,7 @@ declare module "kendo-ui" {
     beforeHide?: (e: ui$ViewBeforeHideEvent) => void;
     beforeShow?: (e: ui$ViewBeforeShowEvent) => void;
     hide?: (e: ui$ViewHideEvent) => void;
-    kendo$init?: (e: ui$ViewInitEvent) => void;
+    init?: (e: ui$ViewInitEvent) => void;
     show?: (e: ui$ViewShowEvent) => void;
     transitionStart?: (e: ui$ViewTransitionStartEvent) => void;
     transitionEnd?: (e: ui$ViewTransitionEndEvent) => void;
@@ -414,7 +432,7 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$View mixins kendo$Observable {
+  declare class kendo$View mixins Observable {
     constructor(element: drawing$Element, options?: kendo$ViewOptions): this;
     constructor(element: string, options?: kendo$ViewOptions): this;
     element: JQuery;
@@ -427,18 +445,18 @@ declare module "kendo-ui" {
     destroy(): void;
   }
 
-  declare class kendo$ViewContainer mixins kendo$Observable {
+  declare class kendo$ViewContainer mixins Observable {
     view: kendo$View;
   }
 
-  declare class kendo$Layout mixins kendo$View {
+  declare class kendo$Layout mixins View {
     containers: {
       [selector: string]: kendo$ViewContainer
     };
     showIn(selector: string, view: kendo$View, transitionClass?: string): void;
   }
 
-  declare class kendo$History mixins kendo$Observable {
+  declare class kendo$History mixins Observable {
     current: string;
     root: string;
     start(options: Object): void;
@@ -450,7 +468,7 @@ declare module "kendo-ui" {
   declare var kendo$history: kendo$History;
 
   declare interface kendo$RouterOptions {
-    kendo$init?: (e: kendo$RouterEvent) => void;
+    init?: (e: kendo$RouterEvent) => void;
     pushState?: boolean;
     hashBang?: boolean;
     root?: string;
@@ -470,19 +488,19 @@ declare module "kendo-ui" {
   declare type kendo$RouterChangeEvent = {
     params: any,
     backButtonPressed: boolean
-  } & kendo$RouterEvent;
+  } & RouterEvent;
 
   declare type kendo$RouterRouteMissingEvent = {
     params: any
-  } & kendo$RouterEvent;
+  } & RouterEvent;
 
-  declare class kendo$Route mixins kendo$Class {
+  declare class kendo$Route mixins Class {
     route: RegExp;
     callback(url: string): void;
     worksWith(url: string): void;
   }
 
-  declare class kendo$Router mixins kendo$Observable {
+  declare class kendo$Router mixins Observable {
     constructor(options?: kendo$RouterOptions): this;
     routes: kendo$Route[];
     init(options?: kendo$RouterOptions): void;
@@ -493,67 +511,132 @@ declare module "kendo-ui" {
     replace(location: string, silent?: boolean): void;
   }
 
-  declare var npm$namespace$effects: {
-    box: typeof effects$box,
-    fillScale: typeof effects$fillScale,
-    fitScale: typeof effects$fitScale,
-    transformOrigin: typeof effects$transformOrigin
+  declare var npm$namespace$kendo$effects: {
+    box: typeof kendo$effects$box,
+    fillScale: typeof kendo$effects$fillScale,
+    fitScale: typeof kendo$effects$fitScale,
+    transformOrigin: typeof kendo$effects$transformOrigin
   };
-  declare function effects$box(element: HTMLElement): any;
+  declare function kendo$effects$box(element: HTMLElement): any;
 
-  declare function effects$fillScale(
+  declare function kendo$effects$fillScale(
     firstElement: HTMLElement,
     secondElement: HTMLElement
   ): number;
 
-  declare function effects$fitScale(
+  declare function kendo$effects$fitScale(
     firstElement: HTMLElement,
     secondElement: HTMLElement
   ): number;
 
-  declare function effects$transformOrigin(
+  declare function kendo$effects$transformOrigin(
     firstElement: HTMLElement,
     secondElement: HTMLElement
   ): any;
 
-  declare var npm$namespace$transports: {
-    odata: typeof transports$odata
+  declare var npm$namespace$kendo$data: {
+    transports: typeof npm$namespace$kendo$data$transports
   };
-  declare var transports$odata: data$DataSourceTransport;
 
-  declare class ui$Alert mixins undefined.ui$Dialog {
-    static fn: ui$Alert;
+  declare var npm$namespace$kendo$data$transports: {
+    odata: typeof kendo$data$transports$odata
+  };
+  declare var kendo$data$transports$odata: data$DataSourceTransport;
+
+  declare var npm$namespace$kendo$ui: {
+    Alert: typeof kendo$ui$Alert,
+    AutoComplete: typeof kendo$ui$AutoComplete,
+    Button: typeof kendo$ui$Button,
+    ButtonGroup: typeof kendo$ui$ButtonGroup,
+    Calendar: typeof kendo$ui$Calendar,
+    Chat: typeof kendo$ui$Chat,
+    ColorPalette: typeof kendo$ui$ColorPalette,
+    ColorPicker: typeof kendo$ui$ColorPicker,
+    ComboBox: typeof kendo$ui$ComboBox,
+    Confirm: typeof kendo$ui$Confirm,
+    ContextMenu: typeof kendo$ui$ContextMenu,
+    DateInput: typeof kendo$ui$DateInput,
+    DatePicker: typeof kendo$ui$DatePicker,
+    DateRangePicker: typeof kendo$ui$DateRangePicker,
+    DateTimePicker: typeof kendo$ui$DateTimePicker,
+    Dialog: typeof kendo$ui$Dialog,
+    DropDownList: typeof kendo$ui$DropDownList,
+    DropDownTree: typeof kendo$ui$DropDownTree,
+    Editor: typeof kendo$ui$Editor,
+    FilterMenu: typeof kendo$ui$FilterMenu,
+    FlatColorPicker: typeof kendo$ui$FlatColorPicker,
+    Gantt: typeof kendo$ui$Gantt,
+    Grid: typeof kendo$ui$Grid,
+    ListBox: typeof kendo$ui$ListBox,
+    ListView: typeof kendo$ui$ListView,
+    MaskedTextBox: typeof kendo$ui$MaskedTextBox,
+    MediaPlayer: typeof kendo$ui$MediaPlayer,
+    Menu: typeof kendo$ui$Menu,
+    MultiColumnComboBox: typeof kendo$ui$MultiColumnComboBox,
+    MultiSelect: typeof kendo$ui$MultiSelect,
+    MultiViewCalendar: typeof kendo$ui$MultiViewCalendar,
+    Notification: typeof kendo$ui$Notification,
+    NumericTextBox: typeof kendo$ui$NumericTextBox,
+    Pager: typeof kendo$ui$Pager,
+    PanelBar: typeof kendo$ui$PanelBar,
+    PivotConfigurator: typeof kendo$ui$PivotConfigurator,
+    PivotGrid: typeof kendo$ui$PivotGrid,
+    Popup: typeof kendo$ui$Popup,
+    ProgressBar: typeof kendo$ui$ProgressBar,
+    Prompt: typeof kendo$ui$Prompt,
+    RangeSlider: typeof kendo$ui$RangeSlider,
+    ResponsivePanel: typeof kendo$ui$ResponsivePanel,
+    Scheduler: typeof kendo$ui$Scheduler,
+    ScrollView: typeof kendo$ui$ScrollView,
+    Slider: typeof kendo$ui$Slider,
+    Sortable: typeof kendo$ui$Sortable,
+    Splitter: typeof kendo$ui$Splitter,
+    Spreadsheet: typeof kendo$ui$Spreadsheet,
+    Switch: typeof kendo$ui$Switch,
+    TabStrip: typeof kendo$ui$TabStrip,
+    TimePicker: typeof kendo$ui$TimePicker,
+    ToolBar: typeof kendo$ui$ToolBar,
+    Tooltip: typeof kendo$ui$Tooltip,
+    Touch: typeof kendo$ui$Touch,
+    TreeList: typeof kendo$ui$TreeList,
+    TreeView: typeof kendo$ui$TreeView,
+    Upload: typeof kendo$ui$Upload,
+    Validator: typeof kendo$ui$Validator,
+    Window: typeof kendo$ui$Window
+  };
+  declare class kendo$ui$Alert mixins undefined.Dialog {
+    static fn: kendo$ui$Alert;
     options: ui$AlertOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Alert;
+    static extend(proto: Object): kendo$ui$Alert;
     constructor(element: drawing$Element, options?: ui$AlertOptions): this;
   }
 
-  declare interface ui$AlertMessages {
+  declare interface kendo$ui$AlertMessages {
     okText?: string;
   }
 
-  declare interface ui$AlertOptions {
+  declare interface kendo$ui$AlertOptions {
     name?: string;
-    messages?: ui$AlertMessages;
+    messages?: kendo$ui$AlertMessages;
   }
 
-  declare interface ui$AlertEvent {
-    sender: ui$Alert;
+  declare interface kendo$ui$AlertEvent {
+    sender: kendo$ui$Alert;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$AutoComplete mixins undefined.ui$Widget {
-    static fn: ui$AutoComplete;
+  declare class kendo$ui$AutoComplete mixins undefined.Widget {
+    static fn: kendo$ui$AutoComplete;
     options: ui$AutoCompleteOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$AutoComplete;
+    static extend(proto: Object): kendo$ui$AutoComplete;
     constructor(
       element: drawing$Element,
       options?: ui$AutoCompleteOptions
@@ -563,7 +646,7 @@ declare module "kendo-ui" {
     dataItem(index: drawing$Element): any;
     dataItem(index: JQuery): any;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     focus(): void;
     items(): any;
     readonly(readonly: boolean): void;
@@ -572,42 +655,42 @@ declare module "kendo-ui" {
     select(item: string): void;
     select(item: drawing$Element): void;
     select(item: JQuery): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     suggest(value: string): void;
     value(): string;
     value(value: string): void;
   }
 
-  declare interface ui$AutoCompleteAnimationClose {
+  declare interface kendo$ui$AutoCompleteAnimationClose {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$AutoCompleteAnimationOpen {
+  declare interface kendo$ui$AutoCompleteAnimationOpen {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$AutoCompleteAnimation {
-    close?: ui$AutoCompleteAnimationClose;
-    open?: ui$AutoCompleteAnimationOpen;
+  declare interface kendo$ui$AutoCompleteAnimation {
+    close?: kendo$ui$AutoCompleteAnimationClose;
+    open?: kendo$ui$AutoCompleteAnimationOpen;
   }
 
-  declare interface ui$AutoCompleteVirtual {
+  declare interface kendo$ui$AutoCompleteVirtual {
     itemHeight?: number;
     mapValueTo?: string;
     valueMapper?: Function;
   }
 
-  declare interface ui$AutoCompleteOptions {
+  declare interface kendo$ui$AutoCompleteOptions {
     name?: string;
-    animation?: boolean | ui$AutoCompleteAnimation;
+    animation?: boolean | kendo$ui$AutoCompleteAnimation;
     autoWidth?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     clearButton?: boolean;
     dataTextField?: string;
     delay?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     fixedGroupTemplate?: string | Function;
@@ -623,10 +706,10 @@ declare module "kendo-ui" {
     separator?: string | any;
     suggest?: boolean;
     headerTemplate?: string | Function;
-    kendo$template?: string | Function;
+    template?: string | Function;
     value?: string;
     valuePrimitive?: boolean;
-    virtual?: boolean | ui$AutoCompleteVirtual;
+    virtual?: boolean | kendo$ui$AutoCompleteVirtual;
     change?: (e: ui$AutoCompleteChangeEvent) => void;
     close?: (e: ui$AutoCompleteCloseEvent) => void;
     dataBound?: (e: ui$AutoCompleteDataBoundEvent) => void;
@@ -635,42 +718,42 @@ declare module "kendo-ui" {
     select?: (e: ui$AutoCompleteSelectEvent) => void;
   }
 
-  declare interface ui$AutoCompleteEvent {
-    sender: ui$AutoComplete;
+  declare interface kendo$ui$AutoCompleteEvent {
+    sender: kendo$ui$AutoComplete;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$AutoCompleteChangeEvent = {} & ui$AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteChangeEvent = {} & AutoCompleteEvent;
 
-  declare type ui$AutoCompleteCloseEvent = {} & ui$AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteCloseEvent = {} & AutoCompleteEvent;
 
-  declare type ui$AutoCompleteDataBoundEvent = {} & ui$AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteDataBoundEvent = {} & AutoCompleteEvent;
 
-  declare type ui$AutoCompleteFilteringEvent = {
+  declare type kendo$ui$AutoCompleteFilteringEvent = {
     filter?: any
-  } & ui$AutoCompleteEvent;
+  } & AutoCompleteEvent;
 
-  declare type ui$AutoCompleteOpenEvent = {} & ui$AutoCompleteEvent;
+  declare type kendo$ui$AutoCompleteOpenEvent = {} & AutoCompleteEvent;
 
-  declare type ui$AutoCompleteSelectEvent = {
+  declare type kendo$ui$AutoCompleteSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$AutoCompleteEvent;
+  } & AutoCompleteEvent;
 
-  declare class ui$Button mixins undefined.ui$Widget {
-    static fn: ui$Button;
+  declare class kendo$ui$Button mixins undefined.Widget {
+    static fn: kendo$ui$Button;
     options: ui$ButtonOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Button;
+    static extend(proto: Object): kendo$ui$Button;
     constructor(element: drawing$Element, options?: ui$ButtonOptions): this;
     enable(toggle: boolean): void;
   }
 
-  declare interface ui$ButtonOptions {
+  declare interface kendo$ui$ButtonOptions {
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     icon?: string;
     iconClass?: string;
     imageUrl?: string;
@@ -679,32 +762,32 @@ declare module "kendo-ui" {
     name?: string;
     badge?: string;
     clickOn?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     icon?: string;
     click?: (e: ui$ButtonClickEvent) => void;
   }
 
-  declare interface ui$ButtonEvent {
-    sender: ui$Button;
+  declare interface kendo$ui$ButtonEvent {
+    sender: kendo$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Button;
+    sender: kendo$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ButtonClickEvent = {
+  declare type kendo$ui$ButtonClickEvent = {
     event?: any,
     target?: JQuery,
     button?: JQuery
-  } & ui$ButtonEvent;
+  } & ButtonEvent;
 
-  declare class ui$ButtonGroup mixins undefined.ui$Widget {
-    static fn: ui$ButtonGroup;
+  declare class kendo$ui$ButtonGroup mixins undefined.Widget {
+    static fn: kendo$ui$ButtonGroup;
     options: ui$ButtonGroupOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ButtonGroup;
+    static extend(proto: Object): kendo$ui$ButtonGroup;
     constructor(
       element: drawing$Element,
       options?: ui$ButtonGroupOptions
@@ -715,13 +798,13 @@ declare module "kendo-ui" {
     badge(button: number, value: boolean): string;
     current(): JQuery;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     select(li: JQuery): void;
     select(li: number): void;
     selectedIndices: Array<number>;
   }
 
-  declare interface ui$ButtonGroupItem {
+  declare interface kendo$ui$ButtonGroupItem {
     attributes?: any;
     badge?: string;
     enabled?: boolean;
@@ -733,40 +816,40 @@ declare module "kendo-ui" {
     encoded?: boolean;
   }
 
-  declare interface ui$ButtonGroupOptions {
+  declare interface kendo$ui$ButtonGroupOptions {
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     index?: number;
     selection?: string;
-    items?: ui$ButtonGroupItem[];
+    items?: kendo$ui$ButtonGroupItem[];
     select?: (e: ui$ButtonGroupSelectEvent) => void;
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     index?: number;
     selectOn?: string;
     select?: (e: ui$ButtonGroupSelectEvent) => void;
   }
 
-  declare interface ui$ButtonGroupEvent {
-    sender: ui$ButtonGroup;
+  declare interface kendo$ui$ButtonGroupEvent {
+    sender: kendo$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ButtonGroup;
+    sender: kendo$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ButtonGroupSelectEvent = {
+  declare type kendo$ui$ButtonGroupSelectEvent = {
     indices?: any,
     index?: number
-  } & ui$ButtonGroupEvent;
+  } & ButtonGroupEvent;
 
-  declare class ui$Calendar mixins undefined.ui$Widget {
-    static fn: ui$Calendar;
+  declare class kendo$ui$Calendar mixins undefined.Widget {
+    static fn: kendo$ui$Calendar;
     options: ui$CalendarOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Calendar;
+    static extend(proto: Object): kendo$ui$Calendar;
     constructor(element: drawing$Element, options?: ui$CalendarOptions): this;
     current(): Date;
     destroy(): void;
@@ -789,28 +872,28 @@ declare module "kendo-ui" {
     view(): any;
   }
 
-  declare interface ui$CalendarMessages {
+  declare interface kendo$ui$CalendarMessages {
     weekColumnHeader?: string;
   }
 
-  declare interface ui$CalendarMonth {
+  declare interface kendo$ui$CalendarMonth {
     content?: string;
     weekNumber?: string;
     empty?: string;
   }
 
-  declare interface ui$CalendarOptions {
+  declare interface kendo$ui$CalendarOptions {
     name?: string;
-    kendo$culture?: string;
+    culture?: string;
     dates?: any;
     depth?: string;
     disableDates?: any | Function;
     footer?: boolean | string | Function;
-    kendo$format?: string;
+    format?: string;
     max?: Date;
-    messages?: ui$CalendarMessages;
+    messages?: kendo$ui$CalendarMessages;
     min?: Date;
-    month?: ui$CalendarMonth;
+    month?: kendo$ui$CalendarMonth;
     selectable?: string;
     selectDates?: any;
     weekNumber?: boolean;
@@ -820,18 +903,18 @@ declare module "kendo-ui" {
     navigate?: (e: ui$CalendarEvent) => void;
   }
 
-  declare interface ui$CalendarEvent {
-    sender: ui$Calendar;
+  declare interface kendo$ui$CalendarEvent {
+    sender: kendo$ui$Calendar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$Chat mixins undefined.ui$Widget {
-    static fn: ui$Chat;
+  declare class kendo$ui$Chat mixins undefined.Widget {
+    static fn: kendo$ui$Chat;
     options: ui$ChatOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Chat;
+    static extend(proto: Object): kendo$ui$Chat;
     constructor(element: drawing$Element, options?: ui$ChatOptions): this;
     getUser(): any;
     postMessage(message: string): void;
@@ -840,51 +923,51 @@ declare module "kendo-ui" {
     renderSuggestedActions(suggestedActions: any): void;
   }
 
-  declare interface ui$ChatMessages {
+  declare interface kendo$ui$ChatMessages {
     placeholder?: string;
   }
 
-  declare interface ui$ChatUser {
+  declare interface kendo$ui$ChatUser {
     iconUrl?: string;
     name?: string;
   }
 
-  declare interface ui$ChatRenderAttachmentsOptionsAttachments {
+  declare interface kendo$ui$ChatRenderAttachmentsOptionsAttachments {
     content?: any;
     contentType?: string;
   }
 
-  declare interface ui$ChatRenderAttachmentsOptions {
-    attachments?: ui$ChatRenderAttachmentsOptionsAttachments;
+  declare interface kendo$ui$ChatRenderAttachmentsOptions {
+    attachments?: kendo$ui$ChatRenderAttachmentsOptionsAttachments;
     attachmentLayout?: string;
   }
 
-  declare interface ui$ChatRenderAttachmentsSender {
+  declare interface kendo$ui$ChatRenderAttachmentsSender {
     id?: any;
     name?: string;
     iconUrl?: string;
   }
 
-  declare interface ui$ChatRenderMessageMessage {
+  declare interface kendo$ui$ChatRenderMessageMessage {
     type?: string;
     text?: string;
   }
 
-  declare interface ui$ChatRenderMessageSender {
+  declare interface kendo$ui$ChatRenderMessageSender {
     id?: any;
     name?: string;
     iconUrl?: string;
   }
 
-  declare interface ui$ChatRenderSuggestedActionsSuggestedActions {
+  declare interface kendo$ui$ChatRenderSuggestedActionsSuggestedActions {
     title?: string;
     value?: string;
   }
 
-  declare interface ui$ChatOptions {
+  declare interface kendo$ui$ChatOptions {
     name?: string;
-    messages?: ui$ChatMessages;
-    user?: ui$ChatUser;
+    messages?: kendo$ui$ChatMessages;
+    user?: kendo$ui$ChatUser;
     actionClick?: (e: ui$ChatActionClickEvent) => void;
     post?: (e: ui$ChatPostEvent) => void;
     sendMessage?: (e: ui$ChatSendMessageEvent) => void;
@@ -892,73 +975,73 @@ declare module "kendo-ui" {
     typingStart?: (e: ui$ChatTypingStartEvent) => void;
   }
 
-  declare interface ui$ChatEvent {
-    sender: ui$Chat;
+  declare interface kendo$ui$ChatEvent {
+    sender: kendo$ui$Chat;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ChatActionClickEvent = {
+  declare type kendo$ui$ChatActionClickEvent = {
     text?: string
-  } & ui$ChatEvent;
+  } & ChatEvent;
 
-  declare type ui$ChatPostEvent = {
+  declare type kendo$ui$ChatPostEvent = {
     text?: string,
     timestamp?: Date,
     from?: any
-  } & ui$ChatEvent;
+  } & ChatEvent;
 
-  declare type ui$ChatSendMessageEvent = {
+  declare type kendo$ui$ChatSendMessageEvent = {
     text?: string
-  } & ui$ChatEvent;
+  } & ChatEvent;
 
-  declare type ui$ChatTypingEndEvent = {} & ui$ChatEvent;
+  declare type kendo$ui$ChatTypingEndEvent = {} & ChatEvent;
 
-  declare type ui$ChatTypingStartEvent = {} & ui$ChatEvent;
+  declare type kendo$ui$ChatTypingStartEvent = {} & ChatEvent;
 
-  declare class ui$ColorPalette mixins undefined.ui$Widget {
-    static fn: ui$ColorPalette;
+  declare class kendo$ui$ColorPalette mixins undefined.Widget {
+    static fn: kendo$ui$ColorPalette;
     options: ui$ColorPaletteOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ColorPalette;
+    static extend(proto: Object): kendo$ui$ColorPalette;
     constructor(
       element: drawing$Element,
       options?: ui$ColorPaletteOptions
     ): this;
     value(): string;
     value(color?: string): void;
-    color(): kendo$kendo$Color;
-    color(color?: kendo$kendo$Color): void;
-    enable(effects$enable?: boolean): void;
+    color(): kendo$Color;
+    color(color?: kendo$Color): void;
+    enable(enable?: boolean): void;
   }
 
-  declare interface ui$ColorPaletteTileSize {
+  declare interface kendo$ui$ColorPaletteTileSize {
     width?: number;
     height?: number;
   }
 
-  declare interface ui$ColorPaletteOptions {
+  declare interface kendo$ui$ColorPaletteOptions {
     name?: string;
     palette?: string | any;
     columns?: number;
-    tileSize?: ui$ColorPaletteTileSize;
+    tileSize?: kendo$ui$ColorPaletteTileSize;
     value?: string;
     change?: (e: ui$ColorPaletteEvent) => void;
   }
 
-  declare interface ui$ColorPaletteEvent {
-    sender: ui$ColorPalette;
+  declare interface kendo$ui$ColorPaletteEvent {
+    sender: kendo$ui$ColorPalette;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$ColorPicker mixins undefined.ui$Widget {
-    static fn: ui$ColorPicker;
+  declare class kendo$ui$ColorPicker mixins undefined.Widget {
+    static fn: kendo$ui$ColorPicker;
     options: ui$ColorPickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ColorPicker;
+    static extend(proto: Object): kendo$ui$ColorPicker;
     constructor(
       element: drawing$Element,
       options?: ui$ColorPickerOptions
@@ -968,29 +1051,29 @@ declare module "kendo-ui" {
     toggle(): void;
     value(): string;
     value(color?: string): void;
-    color(): kendo$kendo$Color;
-    color(color?: kendo$kendo$Color): void;
-    enable(effects$enable?: boolean): void;
+    color(): kendo$Color;
+    color(color?: kendo$Color): void;
+    enable(enable?: boolean): void;
   }
 
-  declare interface ui$ColorPickerMessages {
-    timezone$apply?: string;
+  declare interface kendo$ui$ColorPickerMessages {
+    apply?: string;
     cancel?: string;
     previewInput?: string;
   }
 
-  declare interface ui$ColorPickerTileSize {
+  declare interface kendo$ui$ColorPickerTileSize {
     width?: number;
     height?: number;
   }
 
-  declare interface ui$ColorPickerOptions {
+  declare interface kendo$ui$ColorPickerOptions {
     name?: string;
     buttons?: boolean;
     clearButton?: boolean;
     columns?: number;
-    tileSize?: ui$ColorPickerTileSize;
-    messages?: ui$ColorPickerMessages;
+    tileSize?: kendo$ui$ColorPickerTileSize;
+    messages?: kendo$ui$ColorPickerMessages;
     palette?: string | any;
     opacity?: boolean;
     preview?: boolean;
@@ -1002,35 +1085,35 @@ declare module "kendo-ui" {
     close?: (e: ui$ColorPickerEvent) => void;
   }
 
-  declare interface ui$ColorPickerEvent {
-    sender: ui$ColorPicker;
+  declare interface kendo$ui$ColorPickerEvent {
+    sender: kendo$ui$ColorPicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ColorPickerChangeEvent = {
+  declare type kendo$ui$ColorPickerChangeEvent = {
     value?: string
-  } & ui$ColorPickerEvent;
+  } & ColorPickerEvent;
 
-  declare type ui$ColorPickerSelectEvent = {
+  declare type kendo$ui$ColorPickerSelectEvent = {
     value?: string
-  } & ui$ColorPickerEvent;
+  } & ColorPickerEvent;
 
-  declare class ui$ComboBox mixins undefined.ui$Widget {
-    static fn: ui$ComboBox;
+  declare class kendo$ui$ComboBox mixins undefined.Widget {
+    static fn: kendo$ui$ComboBox;
     options: ui$ComboBoxOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ComboBox;
+    static extend(proto: Object): kendo$ui$ComboBox;
     constructor(element: drawing$Element, options?: ui$ComboBoxOptions): this;
     close(): void;
     dataItem(index?: number): any;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     focus(): void;
     items(): any;
     open(): void;
@@ -1041,7 +1124,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     suggest(value: string): void;
     text(): string;
     text(text: string): void;
@@ -1050,46 +1133,46 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$ComboBoxAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$ComboBoxAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$ComboBoxAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$ComboBoxAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$ComboBoxAnimation {
-    close?: ui$ComboBoxAnimationClose;
-    open?: ui$ComboBoxAnimationOpen;
+  declare interface kendo$ui$ComboBoxAnimation {
+    close?: kendo$ui$ComboBoxAnimationClose;
+    open?: kendo$ui$ComboBoxAnimationOpen;
   }
 
-  declare interface ui$ComboBoxPopup {
+  declare interface kendo$ui$ComboBoxPopup {
     appendTo?: string;
     origin?: string;
     position?: string;
   }
 
-  declare interface ui$ComboBoxVirtual {
+  declare interface kendo$ui$ComboBoxVirtual {
     itemHeight?: number;
     mapValueTo?: string;
     valueMapper?: Function;
   }
 
-  declare interface ui$ComboBoxOptions {
+  declare interface kendo$ui$ComboBoxOptions {
     name?: string;
-    animation?: ui$ComboBoxAnimation;
+    animation?: kendo$ui$ComboBoxAnimation;
     autoBind?: boolean;
     autoWidth?: boolean;
     cascadeFrom?: string;
     cascadeFromField?: string;
     clearButton?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     fixedGroupTemplate?: string | Function;
@@ -1102,15 +1185,15 @@ declare module "kendo-ui" {
     minLength?: number;
     noDataTemplate?: string | Function;
     placeholder?: string;
-    popup?: ui$ComboBoxPopup;
+    popup?: kendo$ui$ComboBoxPopup;
     suggest?: boolean;
     syncValueAndText?: boolean;
     headerTemplate?: string | Function;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
     value?: string;
     valuePrimitive?: boolean;
-    virtual?: boolean | ui$ComboBoxVirtual;
+    virtual?: boolean | kendo$ui$ComboBoxVirtual;
     change?: (e: ui$ComboBoxChangeEvent) => void;
     close?: (e: ui$ComboBoxCloseEvent) => void;
     dataBound?: (e: ui$ComboBoxDataBoundEvent) => void;
@@ -1120,135 +1203,111 @@ declare module "kendo-ui" {
     cascade?: (e: ui$ComboBoxCascadeEvent) => void;
   }
 
-  declare interface ui$ComboBoxEvent {
-    sender: ui$ComboBox;
+  declare interface kendo$ui$ComboBoxEvent {
+    sender: kendo$ui$ComboBox;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ComboBoxChangeEvent = {} & ui$ComboBoxEvent;
+  declare type kendo$ui$ComboBoxChangeEvent = {} & ComboBoxEvent;
 
-  declare type ui$ComboBoxCloseEvent = {} & ui$ComboBoxEvent;
+  declare type kendo$ui$ComboBoxCloseEvent = {} & ComboBoxEvent;
 
-  declare type ui$ComboBoxDataBoundEvent = {} & ui$ComboBoxEvent;
+  declare type kendo$ui$ComboBoxDataBoundEvent = {} & ComboBoxEvent;
 
-  declare type ui$ComboBoxFilteringEvent = {
+  declare type kendo$ui$ComboBoxFilteringEvent = {
     filter?: any
-  } & ui$ComboBoxEvent;
+  } & ComboBoxEvent;
 
-  declare type ui$ComboBoxOpenEvent = {} & ui$ComboBoxEvent;
+  declare type kendo$ui$ComboBoxOpenEvent = {} & ComboBoxEvent;
 
-  declare type ui$ComboBoxSelectEvent = {
+  declare type kendo$ui$ComboBoxSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$ComboBoxEvent;
+  } & ComboBoxEvent;
 
-  declare type ui$ComboBoxCascadeEvent = {} & ui$ComboBoxEvent;
+  declare type kendo$ui$ComboBoxCascadeEvent = {} & ComboBoxEvent;
 
-  declare class ui$Confirm mixins undefined.ui$Dialog {
-    static fn: ui$Confirm;
+  declare class kendo$ui$Confirm mixins undefined.Dialog {
+    static fn: kendo$ui$Confirm;
     options: ui$ConfirmOptions;
     result: JQueryPromise<any>;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Confirm;
+    static extend(proto: Object): kendo$ui$Confirm;
     constructor(element: drawing$Element, options?: ui$ConfirmOptions): this;
   }
 
-  declare interface ui$ConfirmMessages {
+  declare interface kendo$ui$ConfirmMessages {
     okText?: string;
     cancel?: string;
   }
 
-  declare interface ui$ConfirmOptions {
+  declare interface kendo$ui$ConfirmOptions {
     name?: string;
-    messages?: ui$ConfirmMessages;
+    messages?: kendo$ui$ConfirmMessages;
   }
 
-  declare interface ui$ConfirmEvent {
-    sender: ui$Confirm;
+  declare interface kendo$ui$ConfirmEvent {
+    sender: kendo$ui$Confirm;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$ContextMenu mixins undefined.ui$Widget {
-    static fn: ui$ContextMenu;
+  declare class kendo$ui$ContextMenu mixins undefined.Widget {
+    static fn: kendo$ui$ContextMenu;
     options: ui$ContextMenuOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ContextMenu;
+    static extend(proto: Object): kendo$ui$ContextMenu;
     constructor(
       element: drawing$Element,
       options?: ui$ContextMenuOptions
     ): this;
-    append(item: any, referenceItem?: string): kendo$kendo$ui.ui$ContextMenu;
-    append(item: any, referenceItem?: JQuery): kendo$kendo$ui.ui$ContextMenu;
-    close(element: drawing$Element): kendo$kendo$ui.ui$ContextMenu;
-    close(element: JQuery): kendo$kendo$ui.ui$ContextMenu;
+    append(item: any, referenceItem?: string): kendo$uiContextMenu;
+    append(item: any, referenceItem?: JQuery): kendo$uiContextMenu;
+    close(element: drawing$Element): kendo$uiContextMenu;
+    close(element: JQuery): kendo$uiContextMenu;
     destroy(): void;
-    enable(
-      element: string,
-      effects$enable: boolean
-    ): kendo$kendo$ui.ui$ContextMenu;
-    enable(
-      element: drawing$Element,
-      effects$enable: boolean
-    ): kendo$kendo$ui.ui$ContextMenu;
-    enable(
-      element: JQuery,
-      effects$enable: boolean
-    ): kendo$kendo$ui.ui$ContextMenu;
-    insertAfter(
-      item: any,
-      referenceItem: string
-    ): kendo$kendo$ui.ui$ContextMenu;
-    insertAfter(
-      item: any,
-      referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$ContextMenu;
-    insertAfter(
-      item: any,
-      referenceItem: JQuery
-    ): kendo$kendo$ui.ui$ContextMenu;
-    insertBefore(
-      item: any,
-      referenceItem: string
-    ): kendo$kendo$ui.ui$ContextMenu;
+    enable(element: string, enable: boolean): kendo$uiContextMenu;
+    enable(element: drawing$Element, enable: boolean): kendo$uiContextMenu;
+    enable(element: JQuery, enable: boolean): kendo$uiContextMenu;
+    insertAfter(item: any, referenceItem: string): kendo$uiContextMenu;
+    insertAfter(item: any, referenceItem: drawing$Element): kendo$uiContextMenu;
+    insertAfter(item: any, referenceItem: JQuery): kendo$uiContextMenu;
+    insertBefore(item: any, referenceItem: string): kendo$uiContextMenu;
     insertBefore(
       item: any,
       referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$ContextMenu;
-    insertBefore(
-      item: any,
-      referenceItem: JQuery
-    ): kendo$kendo$ui.ui$ContextMenu;
-    open(x: number, y?: number): kendo$kendo$ui.ui$ContextMenu;
-    open(x: drawing$Element, y?: number): kendo$kendo$ui.ui$ContextMenu;
-    open(x: JQuery, y?: number): kendo$kendo$ui.ui$ContextMenu;
-    remove(element: string): kendo$kendo$ui.ui$ContextMenu;
-    remove(element: drawing$Element): kendo$kendo$ui.ui$ContextMenu;
-    remove(element: JQuery): kendo$kendo$ui.ui$ContextMenu;
+    ): kendo$uiContextMenu;
+    insertBefore(item: any, referenceItem: JQuery): kendo$uiContextMenu;
+    open(x: number, y?: number): kendo$uiContextMenu;
+    open(x: drawing$Element, y?: number): kendo$uiContextMenu;
+    open(x: JQuery, y?: number): kendo$uiContextMenu;
+    remove(element: string): kendo$uiContextMenu;
+    remove(element: drawing$Element): kendo$uiContextMenu;
+    remove(element: JQuery): kendo$uiContextMenu;
   }
 
-  declare interface ui$ContextMenuAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$ContextMenuAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$ContextMenuAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$ContextMenuAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$ContextMenuAnimation {
-    close?: ui$ContextMenuAnimationClose;
-    open?: ui$ContextMenuAnimationOpen;
+  declare interface kendo$ui$ContextMenuAnimation {
+    close?: kendo$ui$ContextMenuAnimationClose;
+    open?: kendo$ui$ContextMenuAnimationOpen;
   }
 
-  declare interface ui$ContextMenuOptions {
+  declare interface kendo$ui$ContextMenuOptions {
     name?: string;
     alignToAnchor?: boolean;
-    animation?: boolean | ui$ContextMenuAnimation;
+    animation?: boolean | kendo$ui$ContextMenuAnimation;
     appendTo?: string | JQuery;
     closeOnClick?: boolean;
     copyAnchorStyles?: boolean;
@@ -1267,53 +1326,53 @@ declare module "kendo-ui" {
     select?: (e: ui$ContextMenuSelectEvent) => void;
   }
 
-  declare interface ui$ContextMenuEvent {
-    sender: ui$ContextMenu;
+  declare interface kendo$ui$ContextMenuEvent {
+    sender: kendo$ui$ContextMenu;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ContextMenuCloseEvent = {
+  declare type kendo$ui$ContextMenuCloseEvent = {
     item?: drawing$Element,
     type?: string,
     target?: drawing$Element,
     event?: JQueryEventObject
-  } & ui$ContextMenuEvent;
+  } & ContextMenuEvent;
 
-  declare type ui$ContextMenuOpenEvent = {
+  declare type kendo$ui$ContextMenuOpenEvent = {
     item?: drawing$Element,
     type?: string,
     target?: drawing$Element,
     event?: JQueryEventObject
-  } & ui$ContextMenuEvent;
+  } & ContextMenuEvent;
 
-  declare type ui$ContextMenuActivateEvent = {
+  declare type kendo$ui$ContextMenuActivateEvent = {
     item?: drawing$Element,
     type?: string,
     target?: drawing$Element
-  } & ui$ContextMenuEvent;
+  } & ContextMenuEvent;
 
-  declare type ui$ContextMenuDeactivateEvent = {
+  declare type kendo$ui$ContextMenuDeactivateEvent = {
     item?: drawing$Element,
     type?: string,
     target?: drawing$Element
-  } & ui$ContextMenuEvent;
+  } & ContextMenuEvent;
 
-  declare type ui$ContextMenuSelectEvent = {
+  declare type kendo$ui$ContextMenuSelectEvent = {
     item?: drawing$Element,
     type?: string,
     target?: drawing$Element
-  } & ui$ContextMenuEvent;
+  } & ContextMenuEvent;
 
-  declare class ui$DateInput mixins undefined.ui$Widget {
-    static fn: ui$DateInput;
+  declare class kendo$ui$DateInput mixins undefined.Widget {
+    static fn: kendo$ui$DateInput;
     options: ui$DateInputOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DateInput;
+    static extend(proto: Object): kendo$ui$DateInput;
     constructor(element: drawing$Element, options?: ui$DateInputOptions): this;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     max(): Date;
     max(value: Date): void;
@@ -1327,7 +1386,7 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$DateInputMessages {
+  declare interface kendo$ui$DateInputMessages {
     year?: string;
     month?: string;
     day?: string;
@@ -1338,34 +1397,34 @@ declare module "kendo-ui" {
     dayperiod?: string;
   }
 
-  declare interface ui$DateInputOptions {
+  declare interface kendo$ui$DateInputOptions {
     name?: string;
-    kendo$format?: string;
+    format?: string;
     max?: Date;
     min?: Date;
     value?: Date;
-    messages?: ui$DateInputMessages;
+    messages?: kendo$ui$DateInputMessages;
     change?: (e: ui$DateInputChangeEvent) => void;
   }
 
-  declare interface ui$DateInputEvent {
-    sender: ui$DateInput;
+  declare interface kendo$ui$DateInputEvent {
+    sender: kendo$ui$DateInput;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DateInputChangeEvent = {} & ui$DateInputEvent;
+  declare type kendo$ui$DateInputChangeEvent = {} & DateInputEvent;
 
-  declare class ui$DatePicker mixins undefined.ui$Widget {
-    static fn: ui$DatePicker;
+  declare class kendo$ui$DatePicker mixins undefined.Widget {
+    static fn: kendo$ui$DatePicker;
     options: ui$DatePickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DatePicker;
+    static extend(proto: Object): kendo$ui$DatePicker;
     constructor(element: drawing$Element, options?: ui$DatePickerOptions): this;
     close(): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     max(): Date;
     max(value: Date): void;
@@ -1380,41 +1439,41 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$DatePickerAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$DatePickerAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DatePickerAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$DatePickerAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DatePickerAnimation {
-    close?: ui$DatePickerAnimationClose;
-    open?: ui$DatePickerAnimationOpen;
+  declare interface kendo$ui$DatePickerAnimation {
+    close?: kendo$ui$DatePickerAnimationClose;
+    open?: kendo$ui$DatePickerAnimationOpen;
   }
 
-  declare interface ui$DatePickerMonth {
+  declare interface kendo$ui$DatePickerMonth {
     content?: string;
     weekNumber?: string;
     empty?: string;
   }
 
-  declare interface ui$DatePickerOptions {
+  declare interface kendo$ui$DatePickerOptions {
     name?: string;
-    animation?: boolean | ui$DatePickerAnimation;
+    animation?: boolean | kendo$ui$DatePickerAnimation;
     ARIATemplate?: string;
-    kendo$culture?: string;
+    culture?: string;
     dateInput?: boolean;
     dates?: any;
     depth?: string;
     disableDates?: any | Function;
     footer?: boolean | string | Function;
-    kendo$format?: string;
+    format?: string;
     max?: Date;
     min?: Date;
-    month?: ui$DatePickerMonth;
+    month?: kendo$ui$DatePickerMonth;
     weekNumber?: boolean;
     parseFormats?: any;
     start?: string;
@@ -1424,31 +1483,31 @@ declare module "kendo-ui" {
     open?: (e: ui$DatePickerOpenEvent) => void;
   }
 
-  declare interface ui$DatePickerEvent {
-    sender: ui$DatePicker;
+  declare interface kendo$ui$DatePickerEvent {
+    sender: kendo$ui$DatePicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DatePickerChangeEvent = {} & ui$DatePickerEvent;
+  declare type kendo$ui$DatePickerChangeEvent = {} & DatePickerEvent;
 
-  declare type ui$DatePickerCloseEvent = {} & ui$DatePickerEvent;
+  declare type kendo$ui$DatePickerCloseEvent = {} & DatePickerEvent;
 
-  declare type ui$DatePickerOpenEvent = {} & ui$DatePickerEvent;
+  declare type kendo$ui$DatePickerOpenEvent = {} & DatePickerEvent;
 
-  declare class ui$DateRangePicker mixins undefined.ui$Widget {
-    static fn: ui$DateRangePicker;
+  declare class kendo$ui$DateRangePicker mixins undefined.Widget {
+    static fn: kendo$ui$DateRangePicker;
     options: ui$DateRangePickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DateRangePicker;
+    static extend(proto: Object): kendo$ui$DateRangePicker;
     constructor(
       element: drawing$Element,
       options?: ui$DateRangePickerOptions
     ): this;
     close(): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     max(): Date;
     max(value: Date): void;
@@ -1462,69 +1521,69 @@ declare module "kendo-ui" {
     setOptions(options: any): void;
   }
 
-  declare interface ui$DateRangePickerMessages {
+  declare interface kendo$ui$DateRangePickerMessages {
     startLabel?: string;
     endLabel?: string;
   }
 
-  declare interface ui$DateRangePickerMonth {
+  declare interface kendo$ui$DateRangePickerMonth {
     content?: string;
     weekNumber?: string;
     empty?: string;
   }
 
-  declare interface ui$DateRangePickerRange {
+  declare interface kendo$ui$DateRangePickerRange {
     start?: Date;
     end?: Date;
   }
 
-  declare interface ui$DateRangePickerOptions {
+  declare interface kendo$ui$DateRangePickerOptions {
     name?: string;
     ARIATemplate?: string;
-    kendo$culture?: string;
+    culture?: string;
     dates?: any;
     depth?: string;
     disableDates?: any | Function;
     footer?: string | Function;
-    kendo$format?: string;
+    format?: string;
     max?: Date;
-    messages?: ui$DateRangePickerMessages;
+    messages?: kendo$ui$DateRangePickerMessages;
     min?: Date;
-    month?: ui$DateRangePickerMonth;
+    month?: kendo$ui$DateRangePickerMonth;
     labels?: boolean;
     weekNumber?: boolean;
-    range?: ui$DateRangePickerRange;
+    range?: kendo$ui$DateRangePickerRange;
     start?: string;
     change?: (e: ui$DateRangePickerChangeEvent) => void;
     close?: (e: ui$DateRangePickerCloseEvent) => void;
     open?: (e: ui$DateRangePickerOpenEvent) => void;
   }
 
-  declare interface ui$DateRangePickerEvent {
-    sender: ui$DateRangePicker;
+  declare interface kendo$ui$DateRangePickerEvent {
+    sender: kendo$ui$DateRangePicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DateRangePickerChangeEvent = {} & ui$DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerChangeEvent = {} & DateRangePickerEvent;
 
-  declare type ui$DateRangePickerCloseEvent = {} & ui$DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerCloseEvent = {} & DateRangePickerEvent;
 
-  declare type ui$DateRangePickerOpenEvent = {} & ui$DateRangePickerEvent;
+  declare type kendo$ui$DateRangePickerOpenEvent = {} & DateRangePickerEvent;
 
-  declare class ui$DateTimePicker mixins undefined.ui$Widget {
-    static fn: ui$DateTimePicker;
+  declare class kendo$ui$DateTimePicker mixins undefined.Widget {
+    static fn: kendo$ui$DateTimePicker;
     options: ui$DateTimePickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DateTimePicker;
+    static extend(proto: Object): kendo$ui$DateTimePicker;
     constructor(
       element: drawing$Element,
       options?: ui$DateTimePickerOptions
     ): this;
     close(view: string): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     max(): Date;
     max(value: Date): void;
@@ -1540,42 +1599,42 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$DateTimePickerAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$DateTimePickerAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DateTimePickerAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$DateTimePickerAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DateTimePickerAnimation {
-    close?: ui$DateTimePickerAnimationClose;
-    open?: ui$DateTimePickerAnimationOpen;
+  declare interface kendo$ui$DateTimePickerAnimation {
+    close?: kendo$ui$DateTimePickerAnimationClose;
+    open?: kendo$ui$DateTimePickerAnimationOpen;
   }
 
-  declare interface ui$DateTimePickerMonth {
+  declare interface kendo$ui$DateTimePickerMonth {
     content?: string;
     weekNumber?: string;
     empty?: string;
   }
 
-  declare interface ui$DateTimePickerOptions {
+  declare interface kendo$ui$DateTimePickerOptions {
     name?: string;
-    animation?: boolean | ui$DateTimePickerAnimation;
+    animation?: boolean | kendo$ui$DateTimePickerAnimation;
     ARIATemplate?: string;
-    kendo$culture?: string;
+    culture?: string;
     dateInput?: boolean;
     dates?: any;
     depth?: string;
     disableDates?: any | Function;
     footer?: boolean | string | Function;
-    kendo$format?: string;
+    format?: string;
     interval?: number;
     max?: Date;
     min?: Date;
-    month?: ui$DateTimePickerMonth;
+    month?: kendo$ui$DateTimePickerMonth;
     weekNumber?: boolean;
     parseFormats?: any;
     start?: string;
@@ -1586,84 +1645,84 @@ declare module "kendo-ui" {
     open?: (e: ui$DateTimePickerOpenEvent) => void;
   }
 
-  declare interface ui$DateTimePickerEvent {
-    sender: ui$DateTimePicker;
+  declare interface kendo$ui$DateTimePickerEvent {
+    sender: kendo$ui$DateTimePicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DateTimePickerChangeEvent = {} & ui$DateTimePickerEvent;
+  declare type kendo$ui$DateTimePickerChangeEvent = {} & DateTimePickerEvent;
 
-  declare type ui$DateTimePickerCloseEvent = {
+  declare type kendo$ui$DateTimePickerCloseEvent = {
     view?: string
-  } & ui$DateTimePickerEvent;
+  } & DateTimePickerEvent;
 
-  declare type ui$DateTimePickerOpenEvent = {
+  declare type kendo$ui$DateTimePickerOpenEvent = {
     view?: string
-  } & ui$DateTimePickerEvent;
+  } & DateTimePickerEvent;
 
-  declare class ui$Dialog mixins undefined.ui$Widget {
-    static fn: ui$Dialog;
+  declare class kendo$ui$Dialog mixins undefined.Widget {
+    static fn: kendo$ui$Dialog;
     options: any;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Dialog;
+    static extend(proto: Object): kendo$ui$Dialog;
     constructor(element: drawing$Element, options?: ui$DialogOptions): this;
-    close(): kendo$kendo$ui.ui$Dialog;
+    close(): kendo$uiDialog;
     content(): string;
-    content(content?: string): kendo$kendo$ui.ui$Dialog;
-    content(content?: JQuery): kendo$kendo$ui.ui$Dialog;
+    content(content?: string): kendo$uiDialog;
+    content(content?: JQuery): kendo$uiDialog;
     destroy(): void;
-    open(): kendo$kendo$ui.ui$Dialog;
+    open(): kendo$uiDialog;
     title(): string;
-    title(text?: string): kendo$kendo$ui.ui$Dialog;
-    toFront(): kendo$kendo$ui.ui$Dialog;
+    title(text?: string): kendo$uiDialog;
+    toFront(): kendo$uiDialog;
   }
 
-  declare interface ui$DialogAction {
+  declare interface kendo$ui$DialogAction {
     text?: string;
     action?: Function;
     primary?: boolean;
   }
 
-  declare interface ui$DialogAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$DialogAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DialogAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$DialogAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DialogAnimation {
-    close?: ui$DialogAnimationClose;
-    open?: ui$DialogAnimationOpen;
+  declare interface kendo$ui$DialogAnimation {
+    close?: kendo$ui$DialogAnimationClose;
+    open?: kendo$ui$DialogAnimationOpen;
   }
 
-  declare interface ui$DialogMessages {
+  declare interface kendo$ui$DialogMessages {
     close?: string;
     promptInput?: string;
   }
 
-  declare interface ui$DialogModal {
+  declare interface kendo$ui$DialogModal {
     preventScroll?: string;
   }
 
-  declare interface ui$DialogOptions {
+  declare interface kendo$ui$DialogOptions {
     name?: string;
-    actions?: ui$DialogAction[];
-    animation?: boolean | ui$DialogAnimation;
+    actions?: kendo$ui$DialogAction[];
+    animation?: boolean | kendo$ui$DialogAnimation;
     buttonLayout?: string;
     closable?: boolean;
     content?: string;
     height?: number | string;
     maxHeight?: number;
     maxWidth?: number;
-    messages?: ui$DialogMessages;
+    messages?: kendo$ui$DialogMessages;
     minHeight?: number;
     minWidth?: number;
-    modal?: boolean | ui$DialogModal;
+    modal?: boolean | kendo$ui$DialogModal;
     title?: string | boolean;
     visible?: boolean;
     width?: number | string;
@@ -1675,27 +1734,27 @@ declare module "kendo-ui" {
     show?: (e: ui$DialogEvent) => void;
   }
 
-  declare interface ui$DialogEvent {
-    sender: ui$Dialog;
+  declare interface kendo$ui$DialogEvent {
+    sender: kendo$ui$Dialog;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DialogCloseEvent = {
+  declare type kendo$ui$DialogCloseEvent = {
     userTriggered?: boolean
-  } & ui$DialogEvent;
+  } & DialogEvent;
 
-  declare class ui$DropDownList mixins undefined.ui$Widget {
-    static fn: ui$DropDownList;
+  declare class kendo$ui$DropDownList mixins undefined.Widget {
+    static fn: kendo$ui$DropDownList;
     options: ui$DropDownListOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     span: JQuery;
     filterInput: JQuery;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DropDownList;
+    static extend(proto: Object): kendo$ui$DropDownList;
     constructor(
       element: drawing$Element,
       options?: ui$DropDownListOptions
@@ -1706,7 +1765,7 @@ declare module "kendo-ui" {
     destroy(): void;
     focus(): void;
     items(): any;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     open(): void;
     readonly(readonly: boolean): void;
     refresh(): void;
@@ -1715,7 +1774,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     text(): string;
     text(text: string): void;
     toggle(toggle: boolean): void;
@@ -1723,45 +1782,45 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$DropDownListAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$DropDownListAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DropDownListAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$DropDownListAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DropDownListAnimation {
-    close?: ui$DropDownListAnimationClose;
-    open?: ui$DropDownListAnimationOpen;
+  declare interface kendo$ui$DropDownListAnimation {
+    close?: kendo$ui$DropDownListAnimationClose;
+    open?: kendo$ui$DropDownListAnimationOpen;
   }
 
-  declare interface ui$DropDownListPopup {
+  declare interface kendo$ui$DropDownListPopup {
     appendTo?: string;
     origin?: string;
     position?: string;
   }
 
-  declare interface ui$DropDownListVirtual {
+  declare interface kendo$ui$DropDownListVirtual {
     itemHeight?: number;
     mapValueTo?: string;
     valueMapper?: Function;
   }
 
-  declare interface ui$DropDownListOptions {
+  declare interface kendo$ui$DropDownListOptions {
     name?: string;
-    animation?: boolean | ui$DropDownListAnimation;
+    animation?: boolean | kendo$ui$DropDownListAnimation;
     autoBind?: boolean;
     autoWidth?: boolean;
     cascadeFrom?: string;
     cascadeFromField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     fixedGroupTemplate?: string | Function;
@@ -1772,16 +1831,16 @@ declare module "kendo-ui" {
     index?: number;
     minLength?: number;
     noDataTemplate?: string | Function;
-    popup?: ui$DropDownListPopup;
+    popup?: kendo$ui$DropDownListPopup;
     optionLabel?: string | any;
     optionLabelTemplate?: string | Function;
     headerTemplate?: string | Function;
-    kendo$template?: string | Function;
+    template?: string | Function;
     valueTemplate?: string | Function;
     text?: string;
     value?: string;
     valuePrimitive?: boolean;
-    virtual?: boolean | ui$DropDownListVirtual;
+    virtual?: boolean | kendo$ui$DropDownListVirtual;
     change?: (e: ui$DropDownListChangeEvent) => void;
     close?: (e: ui$DropDownListCloseEvent) => void;
     dataBound?: (e: ui$DropDownListDataBoundEvent) => void;
@@ -1791,129 +1850,127 @@ declare module "kendo-ui" {
     cascade?: (e: ui$DropDownListCascadeEvent) => void;
   }
 
-  declare interface ui$DropDownListEvent {
-    sender: ui$DropDownList;
+  declare interface kendo$ui$DropDownListEvent {
+    sender: kendo$ui$DropDownList;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DropDownListChangeEvent = {} & ui$DropDownListEvent;
+  declare type kendo$ui$DropDownListChangeEvent = {} & DropDownListEvent;
 
-  declare type ui$DropDownListCloseEvent = {} & ui$DropDownListEvent;
+  declare type kendo$ui$DropDownListCloseEvent = {} & DropDownListEvent;
 
-  declare type ui$DropDownListDataBoundEvent = {} & ui$DropDownListEvent;
+  declare type kendo$ui$DropDownListDataBoundEvent = {} & DropDownListEvent;
 
-  declare type ui$DropDownListFilteringEvent = {
+  declare type kendo$ui$DropDownListFilteringEvent = {
     filter?: any
-  } & ui$DropDownListEvent;
+  } & DropDownListEvent;
 
-  declare type ui$DropDownListOpenEvent = {} & ui$DropDownListEvent;
+  declare type kendo$ui$DropDownListOpenEvent = {} & DropDownListEvent;
 
-  declare type ui$DropDownListSelectEvent = {
+  declare type kendo$ui$DropDownListSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$DropDownListEvent;
+  } & DropDownListEvent;
 
-  declare type ui$DropDownListCascadeEvent = {} & ui$DropDownListEvent;
+  declare type kendo$ui$DropDownListCascadeEvent = {} & DropDownListEvent;
 
-  declare class ui$DropDownTree mixins undefined.ui$Widget {
-    static fn: ui$DropDownTree;
+  declare class kendo$ui$DropDownTree mixins undefined.Widget {
+    static fn: kendo$ui$DropDownTree;
     options: ui$DropDownTreeOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     tagList: JQuery;
     tree: JQuery;
-    treeview: kendo$kendo$ui.ui$TreeView;
+    treeview: kendo$uiTreeView;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DropDownTree;
+    static extend(proto: Object): kendo$ui$DropDownTree;
     constructor(
       element: drawing$Element,
       options?: ui$DropDownTreeOptions
     ): this;
     close(): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     focus(): void;
     items(): any;
     open(): void;
     readonly(readonly: boolean): void;
     refresh(): void;
     search(word: string): void;
-    setDataSource(
-      dataSource: kendo$kendo$data.data$HierarchicalDataSource
-    ): void;
+    setDataSource(dataSource: kendo$dataHierarchicalDataSource): void;
     toggle(toggle?: boolean): void;
     value(): any;
     value(value: any): void;
     value(value: string): void;
   }
 
-  declare interface ui$DropDownTreeAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$DropDownTreeAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DropDownTreeAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$DropDownTreeAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$DropDownTreeAnimation {
-    close?: ui$DropDownTreeAnimationClose;
-    open?: ui$DropDownTreeAnimationOpen;
+  declare interface kendo$ui$DropDownTreeAnimation {
+    close?: kendo$ui$DropDownTreeAnimationClose;
+    open?: kendo$ui$DropDownTreeAnimationOpen;
   }
 
-  declare interface ui$DropDownTreeCheckboxes {
+  declare interface kendo$ui$DropDownTreeCheckboxes {
     checkChildren?: boolean;
     name?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
   }
 
-  declare interface ui$DropDownTreeMessages {
+  declare interface kendo$ui$DropDownTreeMessages {
     clear?: string;
     deleteTag?: string;
     singleTag?: string;
   }
 
-  declare interface ui$DropDownTreePopup {
+  declare interface kendo$ui$DropDownTreePopup {
     appendTo?: string;
     origin?: string;
     position?: string;
   }
 
-  declare interface ui$DropDownTreeOptions {
+  declare interface kendo$ui$DropDownTreeOptions {
     name?: string;
-    animation?: boolean | ui$DropDownTreeAnimation;
+    animation?: boolean | kendo$ui$DropDownTreeAnimation;
     autoBind?: boolean;
     autoClose?: boolean;
     autoWidth?: boolean;
     checkAll?: boolean;
     checkAllTemplate?: string | Function;
-    checkboxes?: boolean | ui$DropDownTreeCheckboxes;
+    checkboxes?: boolean | kendo$ui$DropDownTreeCheckboxes;
     clearButton?: boolean;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$HierarchicalDataSource;
+    dataSource?: any | any | kendo$dataHierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
     dataValueField?: string | any;
     delay?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     footerTemplate?: string | Function;
     height?: string | number;
     ignoreCase?: boolean;
     loadOnDemand?: boolean;
-    messages?: ui$DropDownTreeMessages;
+    messages?: kendo$ui$DropDownTreeMessages;
     minLength?: number;
     noDataTemplate?: string | Function;
     placeholder?: string;
-    popup?: ui$DropDownTreePopup;
+    popup?: kendo$ui$DropDownTreePopup;
     headerTemplate?: string | Function;
     valueTemplate?: string | Function;
     tagMode?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
     value?: string | any;
     valuePrimitive?: boolean;
@@ -1925,36 +1982,36 @@ declare module "kendo-ui" {
     select?: (e: ui$DropDownTreeSelectEvent) => void;
   }
 
-  declare interface ui$DropDownTreeEvent {
-    sender: ui$DropDownTree;
+  declare interface kendo$ui$DropDownTreeEvent {
+    sender: kendo$ui$DropDownTree;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DropDownTreeChangeEvent = {} & ui$DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeChangeEvent = {} & DropDownTreeEvent;
 
-  declare type ui$DropDownTreeCloseEvent = {} & ui$DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeCloseEvent = {} & DropDownTreeEvent;
 
-  declare type ui$DropDownTreeDataBoundEvent = {} & ui$DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeDataBoundEvent = {} & DropDownTreeEvent;
 
-  declare type ui$DropDownTreeFilteringEvent = {
+  declare type kendo$ui$DropDownTreeFilteringEvent = {
     filter?: any
-  } & ui$DropDownTreeEvent;
+  } & DropDownTreeEvent;
 
-  declare type ui$DropDownTreeOpenEvent = {} & ui$DropDownTreeEvent;
+  declare type kendo$ui$DropDownTreeOpenEvent = {} & DropDownTreeEvent;
 
-  declare type ui$DropDownTreeSelectEvent = {
+  declare type kendo$ui$DropDownTreeSelectEvent = {
     node?: drawing$Element
-  } & ui$DropDownTreeEvent;
+  } & DropDownTreeEvent;
 
-  declare class ui$Editor mixins undefined.ui$Widget {
-    static fn: ui$Editor;
+  declare class kendo$ui$Editor mixins undefined.Widget {
+    static fn: kendo$ui$Editor;
     options: ui$EditorOptions;
     body: drawing$Element;
-    toolbar: kendo$kendo$ui.editor.editor$Toolbar;
+    toolbar: kendo$uieditorToolbar;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Editor;
+    static extend(proto: Object): kendo$ui$Editor;
     constructor(element: drawing$Element, options?: ui$EditorOptions): this;
     createRange(document?: Document): spreadsheet$Range;
     destroy(): void;
@@ -1974,11 +2031,11 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$EditorDeserialization {
+  declare interface kendo$ui$EditorDeserialization {
     custom?: Function;
   }
 
-  declare interface ui$EditorFileBrowserMessages {
+  declare interface kendo$ui$EditorFileBrowserMessages {
     uploadFile?: string;
     orderBy?: string;
     orderByName?: string;
@@ -1991,75 +2048,75 @@ declare module "kendo-ui" {
     search?: string;
   }
 
-  declare interface ui$EditorFileBrowserSchemaModelFieldsName {
+  declare interface kendo$ui$EditorFileBrowserSchemaModelFieldsName {
     field?: string;
     parse?: Function;
   }
 
-  declare interface ui$EditorFileBrowserSchemaModelFieldsSize {
+  declare interface kendo$ui$EditorFileBrowserSchemaModelFieldsSize {
     field?: string;
     parse?: Function;
   }
 
-  declare interface ui$EditorFileBrowserSchemaModelFieldsType {
+  declare interface kendo$ui$EditorFileBrowserSchemaModelFieldsType {
     parse?: Function;
     field?: string;
   }
 
-  declare interface ui$EditorFileBrowserSchemaModelFields {
-    name?: string | ui$EditorFileBrowserSchemaModelFieldsName;
-    type?: string | ui$EditorFileBrowserSchemaModelFieldsType;
-    size?: string | ui$EditorFileBrowserSchemaModelFieldsSize;
+  declare interface kendo$ui$EditorFileBrowserSchemaModelFields {
+    name?: string | kendo$ui$EditorFileBrowserSchemaModelFieldsName;
+    type?: string | kendo$ui$EditorFileBrowserSchemaModelFieldsType;
+    size?: string | kendo$ui$EditorFileBrowserSchemaModelFieldsSize;
   }
 
-  declare interface ui$EditorFileBrowserSchemaModel {
+  declare interface kendo$ui$EditorFileBrowserSchemaModel {
     id?: string;
-    fields?: ui$EditorFileBrowserSchemaModelFields;
+    fields?: kendo$ui$EditorFileBrowserSchemaModelFields;
   }
 
-  declare interface ui$EditorFileBrowserSchema {}
+  declare interface kendo$ui$EditorFileBrowserSchema {}
 
-  declare interface ui$EditorFileBrowserTransportCreate {
+  declare interface kendo$ui$EditorFileBrowserTransportCreate {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorFileBrowserTransportDestroy {
+  declare interface kendo$ui$EditorFileBrowserTransportDestroy {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorFileBrowserTransportRead {
+  declare interface kendo$ui$EditorFileBrowserTransportRead {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorFileBrowserTransport {
-    read?: string | Function | ui$EditorFileBrowserTransportRead;
+  declare interface kendo$ui$EditorFileBrowserTransport {
+    read?: string | Function | kendo$ui$EditorFileBrowserTransportRead;
     uploadUrl?: string;
     fileUrl?: string | Function;
-    kendo$destroy?: string | ui$EditorFileBrowserTransportDestroy;
-    create?: string | ui$EditorFileBrowserTransportCreate;
+    destroy?: string | kendo$ui$EditorFileBrowserTransportDestroy;
+    create?: string | kendo$ui$EditorFileBrowserTransportCreate;
   }
 
-  declare interface ui$EditorFileBrowser {
+  declare interface kendo$ui$EditorFileBrowser {
     fileTypes?: string;
     path?: string;
-    transport?: ui$EditorFileBrowserTransport;
-    schema?: ui$EditorFileBrowserSchema;
-    messages?: ui$EditorFileBrowserMessages;
+    transport?: kendo$ui$EditorFileBrowserTransport;
+    schema?: kendo$ui$EditorFileBrowserSchema;
+    messages?: kendo$ui$EditorFileBrowserMessages;
   }
 
-  declare interface ui$EditorImageBrowserMessages {
+  declare interface kendo$ui$EditorImageBrowserMessages {
     uploadFile?: string;
     orderBy?: string;
     orderByName?: string;
@@ -2072,81 +2129,81 @@ declare module "kendo-ui" {
     search?: string;
   }
 
-  declare interface ui$EditorImageBrowserSchemaModelFieldsName {
+  declare interface kendo$ui$EditorImageBrowserSchemaModelFieldsName {
     field?: string;
     parse?: Function;
   }
 
-  declare interface ui$EditorImageBrowserSchemaModelFieldsSize {
+  declare interface kendo$ui$EditorImageBrowserSchemaModelFieldsSize {
     field?: string;
     parse?: Function;
   }
 
-  declare interface ui$EditorImageBrowserSchemaModelFieldsType {
+  declare interface kendo$ui$EditorImageBrowserSchemaModelFieldsType {
     parse?: Function;
     field?: string;
   }
 
-  declare interface ui$EditorImageBrowserSchemaModelFields {
-    name?: string | ui$EditorImageBrowserSchemaModelFieldsName;
-    type?: string | ui$EditorImageBrowserSchemaModelFieldsType;
-    size?: string | ui$EditorImageBrowserSchemaModelFieldsSize;
+  declare interface kendo$ui$EditorImageBrowserSchemaModelFields {
+    name?: string | kendo$ui$EditorImageBrowserSchemaModelFieldsName;
+    type?: string | kendo$ui$EditorImageBrowserSchemaModelFieldsType;
+    size?: string | kendo$ui$EditorImageBrowserSchemaModelFieldsSize;
   }
 
-  declare interface ui$EditorImageBrowserSchemaModel {
+  declare interface kendo$ui$EditorImageBrowserSchemaModel {
     id?: string;
-    fields?: ui$EditorImageBrowserSchemaModelFields;
+    fields?: kendo$ui$EditorImageBrowserSchemaModelFields;
   }
 
-  declare interface ui$EditorImageBrowserSchema {}
+  declare interface kendo$ui$EditorImageBrowserSchema {}
 
-  declare interface ui$EditorImageBrowserTransportCreate {
+  declare interface kendo$ui$EditorImageBrowserTransportCreate {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorImageBrowserTransportDestroy {
+  declare interface kendo$ui$EditorImageBrowserTransportDestroy {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorImageBrowserTransportRead {
+  declare interface kendo$ui$EditorImageBrowserTransportRead {
     contentType?: string;
-    kendo$data?: any | string | Function;
+    data?: any | string | Function;
     dataType?: string;
     type?: string;
     url?: string | Function;
   }
 
-  declare interface ui$EditorImageBrowserTransport {
-    read?: string | Function | ui$EditorImageBrowserTransportRead;
+  declare interface kendo$ui$EditorImageBrowserTransport {
+    read?: string | Function | kendo$ui$EditorImageBrowserTransportRead;
     thumbnailUrl?: string | Function;
     uploadUrl?: string;
     imageUrl?: string | Function;
-    kendo$destroy?: string | ui$EditorImageBrowserTransportDestroy;
-    create?: string | ui$EditorImageBrowserTransportCreate;
+    destroy?: string | kendo$ui$EditorImageBrowserTransportDestroy;
+    create?: string | kendo$ui$EditorImageBrowserTransportCreate;
   }
 
-  declare interface ui$EditorImageBrowser {
+  declare interface kendo$ui$EditorImageBrowser {
     fileTypes?: string;
     path?: string;
-    transport?: ui$EditorImageBrowserTransport;
-    schema?: ui$EditorImageBrowserSchema;
-    messages?: ui$EditorImageBrowserMessages;
+    transport?: kendo$ui$EditorImageBrowserTransport;
+    schema?: kendo$ui$EditorImageBrowserSchema;
+    messages?: kendo$ui$EditorImageBrowserMessages;
   }
 
-  declare interface ui$EditorImmutables {
+  declare interface kendo$ui$EditorImmutables {
     deserialization?: Function;
     serialization?: string | Function;
   }
 
-  declare interface ui$EditorMessages {
+  declare interface kendo$ui$EditorMessages {
     accessibilityTab?: string;
     addColumnLeft?: string;
     addColumnRight?: string;
@@ -2240,7 +2297,7 @@ declare module "kendo-ui" {
     wrapText?: string;
   }
 
-  declare interface ui$EditorPasteCleanup {
+  declare interface kendo$ui$EditorPasteCleanup {
     all?: boolean;
     css?: boolean;
     custom?: Function;
@@ -2252,23 +2309,23 @@ declare module "kendo-ui" {
     span?: boolean;
   }
 
-  declare interface ui$EditorPdfMargin {
+  declare interface kendo$ui$EditorPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$EditorPdf {
+  declare interface kendo$ui$EditorPdf {
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$EditorPdfMargin;
+    margin?: kendo$ui$EditorPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -2276,60 +2333,60 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$EditorResizable {
+  declare interface kendo$ui$EditorResizable {
     content?: boolean;
     min?: number;
     max?: number;
     toolbar?: boolean;
   }
 
-  declare interface ui$EditorSerialization {
+  declare interface kendo$ui$EditorSerialization {
     custom?: Function;
     entities?: boolean;
     scripts?: boolean;
     semantic?: boolean;
   }
 
-  declare interface ui$EditorToolItem {
+  declare interface kendo$ui$EditorToolItem {
     text?: string;
     value?: string;
     context?: string;
   }
 
-  declare interface ui$EditorTool {
+  declare interface kendo$ui$EditorTool {
     name?: string;
     tooltip?: string;
     exec?: Function;
-    items?: ui$EditorToolItem[];
+    items?: kendo$ui$EditorToolItem[];
     palette?: string | any;
     columns?: number;
-    kendo$template?: string;
+    template?: string;
   }
 
-  declare interface ui$EditorExecParams {
+  declare interface kendo$ui$EditorExecParams {
     value?: any;
   }
 
-  declare interface ui$EditorPasteOptions {
+  declare interface kendo$ui$EditorPasteOptions {
     split?: boolean;
   }
 
-  declare interface ui$EditorOptions {
+  declare interface kendo$ui$EditorOptions {
     name?: string;
     placeholder?: string;
-    deserialization?: ui$EditorDeserialization;
+    deserialization?: kendo$ui$EditorDeserialization;
     domain?: string;
     encoded?: boolean;
-    immutables?: boolean | ui$EditorImmutables;
-    messages?: ui$EditorMessages;
-    pasteCleanup?: ui$EditorPasteCleanup;
-    kendo$pdf?: ui$EditorPdf;
-    resizable?: boolean | ui$EditorResizable;
-    serialization?: ui$EditorSerialization;
+    immutables?: boolean | kendo$ui$EditorImmutables;
+    messages?: kendo$ui$EditorMessages;
+    pasteCleanup?: kendo$ui$EditorPasteCleanup;
+    pdf?: kendo$ui$EditorPdf;
+    resizable?: boolean | kendo$ui$EditorResizable;
+    serialization?: kendo$ui$EditorSerialization;
     stylesheets?: any;
-    tools?: ui$EditorTool[];
-    imageBrowser?: ui$EditorImageBrowser;
-    fileBrowser?: ui$EditorFileBrowser;
+    tools?: kendo$ui$EditorTool[];
+    imageBrowser?: kendo$ui$EditorImageBrowser;
+    fileBrowser?: kendo$ui$EditorFileBrowser;
     change?: (e: ui$EditorEvent) => void;
     execute?: (e: ui$EditorExecuteEvent) => void;
     keydown?: (e: ui$EditorEvent) => void;
@@ -2339,37 +2396,37 @@ declare module "kendo-ui" {
     select?: (e: ui$EditorEvent) => void;
   }
 
-  declare interface ui$EditorEvent {
-    sender: ui$Editor;
+  declare interface kendo$ui$EditorEvent {
+    sender: kendo$ui$Editor;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$EditorExecuteEvent = {
+  declare type kendo$ui$EditorExecuteEvent = {
     name?: string,
     command?: any
-  } & ui$EditorEvent;
+  } & EditorEvent;
 
-  declare type ui$EditorPasteEvent = {
+  declare type kendo$ui$EditorPasteEvent = {
     html?: any
-  } & ui$EditorEvent;
+  } & EditorEvent;
 
-  declare type ui$EditorPdfExportEvent = {
+  declare type kendo$ui$EditorPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$EditorEvent;
+  } & EditorEvent;
 
-  declare class ui$FilterMenu mixins undefined.ui$Widget {
-    static fn: ui$FilterMenu;
+  declare class kendo$ui$FilterMenu mixins undefined.Widget {
+    static fn: kendo$ui$FilterMenu;
     options: ui$FilterMenuOptions;
     field: string;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$FilterMenu;
+    static extend(proto: Object): kendo$ui$FilterMenu;
     constructor(element: drawing$Element, options?: ui$FilterMenuOptions): this;
     clear(): void;
   }
 
-  declare interface ui$FilterMenuMessages {
+  declare interface kendo$ui$FilterMenuMessages {
     and?: string;
     clear?: string;
     filter?: string;
@@ -2384,7 +2441,7 @@ declare module "kendo-ui" {
     selectValue?: string;
   }
 
-  declare interface ui$FilterMenuOperatorsDate {
+  declare interface kendo$ui$FilterMenuOperatorsDate {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -2395,14 +2452,14 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$FilterMenuOperatorsEnums {
+  declare interface kendo$ui$FilterMenuOperatorsEnums {
     eq?: string;
     neq?: string;
     isnull?: string;
     isnotnull?: string;
   }
 
-  declare interface ui$FilterMenuOperatorsNumber {
+  declare interface kendo$ui$FilterMenuOperatorsNumber {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -2413,7 +2470,7 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$FilterMenuOperatorsString {
+  declare interface kendo$ui$FilterMenuOperatorsString {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -2428,34 +2485,34 @@ declare module "kendo-ui" {
     isnotnullorempty?: string;
   }
 
-  declare interface ui$FilterMenuOperators {
-    string?: ui$FilterMenuOperatorsString;
-    number?: ui$FilterMenuOperatorsNumber;
-    kendo$date?: ui$FilterMenuOperatorsDate;
-    enums?: ui$FilterMenuOperatorsEnums;
+  declare interface kendo$ui$FilterMenuOperators {
+    string?: kendo$ui$FilterMenuOperatorsString;
+    number?: kendo$ui$FilterMenuOperatorsNumber;
+    date?: kendo$ui$FilterMenuOperatorsDate;
+    enums?: kendo$ui$FilterMenuOperatorsEnums;
   }
 
-  declare interface ui$FilterMenuOptions {
+  declare interface kendo$ui$FilterMenuOptions {
     name?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     extra?: boolean;
     field?: string;
-    messages?: ui$FilterMenuMessages;
-    operators?: ui$FilterMenuOperators;
+    messages?: kendo$ui$FilterMenuMessages;
+    operators?: kendo$ui$FilterMenuOperators;
   }
 
-  declare interface ui$FilterMenuEvent {
-    sender: ui$FilterMenu;
+  declare interface kendo$ui$FilterMenuEvent {
+    sender: kendo$ui$FilterMenu;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$FlatColorPicker mixins undefined.ui$Widget {
-    static fn: ui$FlatColorPicker;
+  declare class kendo$ui$FlatColorPicker mixins undefined.Widget {
+    static fn: kendo$ui$FlatColorPicker;
     options: ui$FlatColorPickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$FlatColorPicker;
+    static extend(proto: Object): kendo$ui$FlatColorPicker;
     constructor(
       element: drawing$Element,
       options?: ui$FlatColorPickerOptions
@@ -2463,115 +2520,115 @@ declare module "kendo-ui" {
     focus(): void;
     value(): string;
     value(color?: string): void;
-    color(): kendo$kendo$Color;
-    color(color?: kendo$kendo$Color): void;
-    enable(effects$enable?: boolean): void;
+    color(): kendo$Color;
+    color(color?: kendo$Color): void;
+    enable(enable?: boolean): void;
   }
 
-  declare interface ui$FlatColorPickerMessages {
-    timezone$apply?: string;
+  declare interface kendo$ui$FlatColorPickerMessages {
+    apply?: string;
     cancel?: string;
   }
 
-  declare interface ui$FlatColorPickerOptions {
+  declare interface kendo$ui$FlatColorPickerOptions {
     name?: string;
     opacity?: boolean;
     buttons?: boolean;
     value?: string;
     preview?: boolean;
     autoupdate?: boolean;
-    messages?: ui$FlatColorPickerMessages;
+    messages?: kendo$ui$FlatColorPickerMessages;
     change?: (e: ui$FlatColorPickerChangeEvent) => void;
   }
 
-  declare interface ui$FlatColorPickerEvent {
-    sender: ui$FlatColorPicker;
+  declare interface kendo$ui$FlatColorPickerEvent {
+    sender: kendo$ui$FlatColorPicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$FlatColorPickerChangeEvent = {
+  declare type kendo$ui$FlatColorPickerChangeEvent = {
     value?: string
-  } & ui$FlatColorPickerEvent;
+  } & FlatColorPickerEvent;
 
-  declare class ui$Gantt mixins undefined.ui$Widget {
-    static fn: ui$Gantt;
+  declare class kendo$ui$Gantt mixins undefined.Widget {
+    static fn: kendo$ui$Gantt;
     options: ui$GanttOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
-    dependencies: kendo$kendo$data.data$GanttDependencyDataSource;
+    dataSource: kendo$dataDataSource;
+    dependencies: kendo$dataGanttDependencyDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Gantt;
+    static extend(proto: Object): kendo$ui$Gantt;
     constructor(element: drawing$Element, options?: ui$GanttOptions): this;
     clearSelection(): void;
-    dataItem(row: string): kendo$kendo$data.data$GanttTask;
-    dataItem(row: drawing$Element): kendo$kendo$data.data$GanttTask;
-    dataItem(row: JQuery): kendo$kendo$data.data$GanttTask;
-    date(kendo$date?: Date): Date;
+    dataItem(row: string): kendo$dataGanttTask;
+    dataItem(row: drawing$Element): kendo$dataGanttTask;
+    dataItem(row: JQuery): kendo$dataGanttTask;
+    date(date?: Date): Date;
     destroy(): void;
     range(range?: any): any;
     refresh(): void;
     refreshDependencies(): void;
     removeDependency(dependency: string): void;
-    removeDependency(dependency: kendo$kendo$data.data$GanttDependency): void;
+    removeDependency(dependency: kendo$dataGanttDependency): void;
     removeTask(task: string): void;
-    removeTask(task: kendo$kendo$data.data$GanttTask): void;
+    removeTask(task: kendo$dataGanttTask): void;
     saveAsPDF(): JQueryPromise<any>;
     select(): JQuery;
     select(row: string): void;
     select(row: drawing$Element): void;
     select(row: JQuery): void;
-    setDataSource(dataSource: kendo$kendo$data.data$GanttDataSource): void;
+    setDataSource(dataSource: kendo$dataGanttDataSource): void;
     setDependenciesDataSource(
-      dataSource: kendo$kendo$data.data$GanttDependencyDataSource
+      dataSource: kendo$dataGanttDependencyDataSource
     ): void;
-    view(): kendo$kendo$ui.ui$GanttView;
+    view(): kendo$uiGanttView;
     view(type?: string): void;
   }
 
-  declare interface ui$GanttAssignments {
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+  declare interface kendo$ui$GanttAssignments {
+    dataSource?: any | any | kendo$dataDataSource;
     dataResourceIdField?: string;
     dataTaskIdField?: string;
     dataValueField?: string;
   }
 
-  declare interface ui$GanttColumn {
+  declare interface kendo$ui$GanttColumn {
     field?: string;
     title?: string;
-    kendo$format?: string;
+    format?: string;
     width?: string | number;
     editable?: boolean;
     sortable?: boolean;
   }
 
-  declare interface ui$GanttCurrentTimeMarker {
+  declare interface kendo$ui$GanttCurrentTimeMarker {
     updateInterval?: number;
   }
 
-  declare interface ui$GanttEditable {
+  declare interface kendo$ui$GanttEditable {
     confirmation?: boolean;
     create?: boolean;
     dependencyCreate?: boolean;
     dependencyDestroy?: boolean;
     dragPercentComplete?: boolean;
-    kendo$destroy?: boolean;
+    destroy?: boolean;
     move?: boolean;
     reorder?: boolean;
-    kendo$resize?: boolean;
-    kendo$template?: string | Function;
+    resize?: boolean;
+    template?: string | Function;
     update?: boolean;
   }
 
-  declare interface ui$GanttMessagesActions {
+  declare interface kendo$ui$GanttMessagesActions {
     addChild?: string;
     append?: string;
     insertAfter?: string;
     insertBefore?: string;
-    kendo$pdf?: string;
+    pdf?: string;
   }
 
-  declare interface ui$GanttMessagesEditor {
+  declare interface kendo$ui$GanttMessagesEditor {
     assignButton?: string;
     editorTitle?: string;
     end?: string;
@@ -2584,7 +2641,7 @@ declare module "kendo-ui" {
     unitsHeader?: string;
   }
 
-  declare interface ui$GanttMessagesViews {
+  declare interface kendo$ui$GanttMessagesViews {
     day?: string;
     end?: string;
     month?: string;
@@ -2593,36 +2650,36 @@ declare module "kendo-ui" {
     year?: string;
   }
 
-  declare interface ui$GanttMessages {
-    actions?: ui$GanttMessagesActions;
+  declare interface kendo$ui$GanttMessages {
+    actions?: kendo$ui$GanttMessagesActions;
     cancel?: string;
     deleteDependencyConfirmation?: string;
     deleteDependencyWindowTitle?: string;
     deleteTaskConfirmation?: string;
     deleteTaskWindowTitle?: string;
-    kendo$destroy?: string;
-    editor?: ui$GanttMessagesEditor;
+    destroy?: string;
+    editor?: kendo$ui$GanttMessagesEditor;
     save?: string;
-    views?: ui$GanttMessagesViews;
+    views?: kendo$ui$GanttMessagesViews;
   }
 
-  declare interface ui$GanttPdfMargin {
+  declare interface kendo$ui$GanttPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$GanttPdf {
+  declare interface kendo$ui$GanttPdf {
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$GanttPdfMargin;
+    margin?: kendo$ui$GanttPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -2630,38 +2687,38 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$GanttRange {
+  declare interface kendo$ui$GanttRange {
     start?: Date;
     end?: Date;
   }
 
-  declare interface ui$GanttResources {
+  declare interface kendo$ui$GanttResources {
     dataFormatField?: string;
     dataColorField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     field?: string;
   }
 
-  declare interface ui$GanttToolbarItem {
+  declare interface kendo$ui$GanttToolbarItem {
     name?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
   }
 
-  declare interface ui$GanttTooltip {
-    kendo$template?: string | Function;
+  declare interface kendo$ui$GanttTooltip {
+    template?: string | Function;
     visible?: boolean;
   }
 
-  declare interface ui$GanttViewRange {
+  declare interface kendo$ui$GanttViewRange {
     start?: Date;
     end?: Date;
   }
 
-  declare interface ui$GanttView {
-    kendo$date?: Date;
-    range?: ui$GanttViewRange;
+  declare interface kendo$ui$GanttView {
+    date?: Date;
+    range?: kendo$ui$GanttViewRange;
     type?: string;
     selected?: boolean;
     slotSize?: number | string;
@@ -2673,17 +2730,17 @@ declare module "kendo-ui" {
     resizeTooltipFormat?: string;
   }
 
-  declare interface ui$GanttOptions {
+  declare interface kendo$ui$GanttOptions {
     name?: string;
-    assignments?: ui$GanttAssignments;
+    assignments?: kendo$ui$GanttAssignments;
     autoBind?: boolean;
     columnResizeHandleWidth?: number;
-    columns?: ui$GanttColumn[];
-    currentTimeMarker?: boolean | ui$GanttCurrentTimeMarker;
-    dataSource?: any | any | kendo$kendo$data.data$GanttDataSource;
-    kendo$date?: Date;
-    dependencies?: any | any | kendo$kendo$data.data$GanttDependencyDataSource;
-    editable?: boolean | ui$GanttEditable;
+    columns?: kendo$ui$GanttColumn[];
+    currentTimeMarker?: boolean | kendo$ui$GanttCurrentTimeMarker;
+    dataSource?: any | any | kendo$dataGanttDataSource;
+    date?: Date;
+    dependencies?: any | any | kendo$dataGanttDependencyDataSource;
+    editable?: boolean | kendo$ui$GanttEditable;
     navigatable?: boolean;
     workDayStart?: Date;
     workDayEnd?: Date;
@@ -2693,24 +2750,24 @@ declare module "kendo-ui" {
     snap?: boolean;
     height?: number | string;
     listWidth?: string | number;
-    messages?: ui$GanttMessages;
-    kendo$pdf?: ui$GanttPdf;
-    range?: ui$GanttRange;
+    messages?: kendo$ui$GanttMessages;
+    pdf?: kendo$ui$GanttPdf;
+    range?: kendo$ui$GanttRange;
     resizable?: boolean;
     selectable?: boolean;
     showWorkDays?: boolean;
     showWorkHours?: boolean;
     taskTemplate?: string | Function;
-    toolbar?: ui$GanttToolbarItem[];
-    tooltip?: ui$GanttTooltip;
-    views?: ui$GanttView[];
-    resources?: ui$GanttResources;
+    toolbar?: kendo$ui$GanttToolbarItem[];
+    tooltip?: kendo$ui$GanttTooltip;
+    views?: kendo$ui$GanttView[];
+    resources?: kendo$ui$GanttResources;
     rowHeight?: number | string;
     dataBinding?: (e: ui$GanttDataBindingEvent) => void;
     dataBound?: (e: ui$GanttDataBoundEvent) => void;
     add?: (e: ui$GanttAddEvent) => void;
     edit?: (e: ui$GanttEditEvent) => void;
-    timezone$remove?: (e: ui$GanttRemoveEvent) => void;
+    remove?: (e: ui$GanttRemoveEvent) => void;
     cancel?: (e: ui$GanttCancelEvent) => void;
     save?: (e: ui$GanttSaveEvent) => void;
     change?: (e: ui$GanttChangeEvent) => void;
@@ -2721,100 +2778,100 @@ declare module "kendo-ui" {
     moveEnd?: (e: ui$GanttMoveEndEvent) => void;
     pdfExport?: (e: ui$GanttPdfExportEvent) => void;
     resizeStart?: (e: ui$GanttResizeStartEvent) => void;
-    kendo$resize?: (e: ui$GanttResizeEvent) => void;
+    resize?: (e: ui$GanttResizeEvent) => void;
     resizeEnd?: (e: ui$GanttResizeEndEvent) => void;
   }
 
-  declare interface ui$GanttEvent {
-    sender: ui$Gantt;
+  declare interface kendo$ui$GanttEvent {
+    sender: kendo$ui$Gantt;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$GanttDataBindingEvent = {} & ui$GanttEvent;
+  declare type kendo$ui$GanttDataBindingEvent = {} & GanttEvent;
 
-  declare type ui$GanttDataBoundEvent = {} & ui$GanttEvent;
+  declare type kendo$ui$GanttDataBoundEvent = {} & GanttEvent;
 
-  declare type ui$GanttAddEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
-    dependency?: kendo$kendo$data.data$GanttDependency
-  } & ui$GanttEvent;
+  declare type kendo$ui$GanttAddEvent = {
+    task?: kendo$dataGanttTask,
+    dependency?: kendo$dataGanttDependency
+  } & GanttEvent;
 
-  declare type ui$GanttEditEvent = {
+  declare type kendo$ui$GanttEditEvent = {
     container?: JQuery,
-    task?: kendo$kendo$data.data$GanttTask
-  } & ui$GanttEvent;
+    task?: kendo$dataGanttTask
+  } & GanttEvent;
 
-  declare type ui$GanttRemoveEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttRemoveEvent = {
+    task?: kendo$dataGanttTask,
     dependencies?: any
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttCancelEvent = {
+  declare type kendo$ui$GanttCancelEvent = {
     container?: JQuery,
-    task?: kendo$kendo$data.data$GanttTask
-  } & ui$GanttEvent;
+    task?: kendo$dataGanttTask
+  } & GanttEvent;
 
-  declare type ui$GanttSaveEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttSaveEvent = {
+    task?: kendo$dataGanttTask,
     values?: any
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttChangeEvent = {} & ui$GanttEvent;
+  declare type kendo$ui$GanttChangeEvent = {} & GanttEvent;
 
-  declare type ui$GanttColumnResizeEvent = {
+  declare type kendo$ui$GanttColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttNavigateEvent = {
+  declare type kendo$ui$GanttNavigateEvent = {
     view?: string
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttMoveStartEvent = {
-    task?: kendo$kendo$data.data$GanttTask
-  } & ui$GanttEvent;
+  declare type kendo$ui$GanttMoveStartEvent = {
+    task?: kendo$dataGanttTask
+  } & GanttEvent;
 
-  declare type ui$GanttMoveEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttMoveEvent = {
+    task?: kendo$dataGanttTask,
     start?: Date,
     end?: Date
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttMoveEndEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttMoveEndEvent = {
+    task?: kendo$dataGanttTask,
     start?: Date,
     end?: Date
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttPdfExportEvent = {
+  declare type kendo$ui$GanttPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttResizeStartEvent = {
-    task?: kendo$kendo$data.data$GanttTask
-  } & ui$GanttEvent;
+  declare type kendo$ui$GanttResizeStartEvent = {
+    task?: kendo$dataGanttTask
+  } & GanttEvent;
 
-  declare type ui$GanttResizeEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttResizeEvent = {
+    task?: kendo$dataGanttTask,
     start?: Date,
     end?: Date
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare type ui$GanttResizeEndEvent = {
-    task?: kendo$kendo$data.data$GanttTask,
+  declare type kendo$ui$GanttResizeEndEvent = {
+    task?: kendo$dataGanttTask,
     start?: Date,
     end?: Date
-  } & ui$GanttEvent;
+  } & GanttEvent;
 
-  declare class ui$Grid mixins undefined.ui$Widget {
-    static fn: ui$Grid;
+  declare class kendo$ui$Grid mixins undefined.Widget {
+    static fn: kendo$ui$Grid;
     options: ui$GridOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     columns: ui$GridColumn[];
     footer: JQuery;
-    pager: kendo$kendo$ui.ui$Pager;
+    pager: kendo$uiPager;
     table: JQuery;
     tbody: JQuery;
     thead: JQuery;
@@ -2824,7 +2881,7 @@ declare module "kendo-ui" {
     lockedContent: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Grid;
+    static extend(proto: Object): kendo$ui$Grid;
     constructor(element: drawing$Element, options?: ui$GridOptions): this;
     addRow(): void;
     autoFitColumn(column: number): void;
@@ -2845,9 +2902,9 @@ declare module "kendo-ui" {
     collapseRow(row: JQuery): void;
     current(): JQuery;
     current(cell: JQuery): void;
-    dataItem(row: string): kendo$kendo$data.data$ObservableObject;
-    dataItem(row: drawing$Element): kendo$kendo$data.data$ObservableObject;
-    dataItem(row: JQuery): kendo$kendo$data.data$ObservableObject;
+    dataItem(row: string): kendo$dataObservableObject;
+    dataItem(row: drawing$Element): kendo$dataObservableObject;
+    dataItem(row: JQuery): kendo$dataObservableObject;
     destroy(): void;
     editCell(cell: JQuery): void;
     editRow(row: JQuery): void;
@@ -2879,7 +2936,7 @@ declare module "kendo-ui" {
     select(rows: drawing$Element): void;
     select(rows: JQuery): void;
     selectedKeyNames(): any;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     setOptions(options: any): void;
     showColumn(column: number): void;
     showColumn(column: string): void;
@@ -2888,11 +2945,11 @@ declare module "kendo-ui" {
     unlockColumn(column: string): void;
   }
 
-  declare interface ui$GridAllowCopy {
+  declare interface kendo$ui$GridAllowCopy {
     delimeter?: string | any;
   }
 
-  declare interface ui$GridColumnMenuMessages {
+  declare interface kendo$ui$GridColumnMenuMessages {
     columns?: string;
     filter?: string;
     sortAscending?: string;
@@ -2903,37 +2960,37 @@ declare module "kendo-ui" {
     unlock?: string;
   }
 
-  declare interface ui$GridColumnMenu {
+  declare interface kendo$ui$GridColumnMenu {
     columns?: boolean;
     filterable?: boolean;
     sortable?: boolean;
-    messages?: ui$GridColumnMenuMessages;
+    messages?: kendo$ui$GridColumnMenuMessages;
   }
 
-  declare interface ui$GridColumnCommandItemIconClass {
+  declare interface kendo$ui$GridColumnCommandItemIconClass {
     cancel?: string;
     edit?: string;
     update?: string;
   }
 
-  declare interface ui$GridColumnCommandItemText {
+  declare interface kendo$ui$GridColumnCommandItemText {
     edit?: string;
     cancel?: string;
     update?: string;
   }
 
-  declare interface ui$GridColumnCommandItem {
+  declare interface kendo$ui$GridColumnCommandItem {
     className?: string;
     click?: Function;
-    iconClass?: string | ui$GridColumnCommandItemIconClass;
+    iconClass?: string | kendo$ui$GridColumnCommandItemIconClass;
     name?: string;
-    kendo$template?: string;
-    text?: string | ui$GridColumnCommandItemText;
+    template?: string;
+    text?: string | kendo$ui$GridColumnCommandItemText;
     visible?: Function;
   }
 
-  declare interface ui$GridColumnFilterableCell {
-    dataSource?: any | kendo$kendo$data.data$DataSource;
+  declare interface kendo$ui$GridColumnFilterableCell {
+    dataSource?: any | kendo$dataDataSource;
     dataTextField?: string;
     delay?: number;
     inputWidth?: number;
@@ -2942,34 +2999,34 @@ declare module "kendo-ui" {
     enabled?: boolean;
     operator?: string;
     showOperators?: boolean;
-    kendo$template?: Function;
+    template?: Function;
   }
 
-  declare interface ui$GridColumnFilterable {
-    cell?: ui$GridColumnFilterableCell;
+  declare interface kendo$ui$GridColumnFilterable {
+    cell?: kendo$ui$GridColumnFilterableCell;
     extra?: boolean;
     multi?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     checkAll?: boolean;
     itemTemplate?: Function;
     operators?: any;
     search?: boolean;
     ignoreCase?: boolean;
-    kendo$ui?: string | Function;
+    ui?: string | Function;
   }
 
-  declare interface ui$GridColumnGroupable {
+  declare interface kendo$ui$GridColumnGroupable {
     compare?: Function;
     dir?: string;
   }
 
-  declare interface ui$GridColumnSortable {
+  declare interface kendo$ui$GridColumnSortable {
     allowUnsort?: boolean;
     compare?: Function;
     initialDirection?: string;
   }
 
-  declare interface ui$GridColumn {
+  declare interface kendo$ui$GridColumn {
     editor?: (container: JQuery, options: ui$GridColumnEditorOptions) => void;
     aggregates?: any;
     attributes?: any;
@@ -2977,16 +3034,16 @@ declare module "kendo-ui" {
     command?:
       | string
       | string[]
-      | ui$GridColumnCommandItem
-      | ui$GridColumnCommandItem[];
+      | kendo$ui$GridColumnCommandItem
+      | kendo$ui$GridColumnCommandItem[];
     editable?: Function;
     encoded?: boolean;
     field?: string;
-    filterable?: boolean | ui$GridColumnFilterable;
+    filterable?: boolean | kendo$ui$GridColumnFilterable;
     footerAttributes?: any;
     footerTemplate?: string | Function;
-    kendo$format?: string;
-    groupable?: boolean | ui$GridColumnGroupable;
+    format?: string;
+    groupable?: boolean | kendo$ui$GridColumnGroupable;
     groupHeaderColumnTemplate?: string | Function;
     groupHeaderTemplate?: string | Function;
     groupFooterTemplate?: string | Function;
@@ -2999,27 +3056,27 @@ declare module "kendo-ui" {
     minResizableWidth?: number;
     minScreenWidth?: number;
     selectable?: boolean;
-    sortable?: boolean | ui$GridColumnSortable;
-    kendo$template?: string | Function;
+    sortable?: boolean | kendo$ui$GridColumnSortable;
+    template?: string | Function;
     title?: string;
     width?: string | number;
     values?: any;
     menu?: boolean;
   }
 
-  declare interface ui$GridEditable {
+  declare interface kendo$ui$GridEditable {
     confirmation?: boolean | string | Function;
     cancelDelete?: string;
     confirmDelete?: string;
     createAt?: string;
-    kendo$destroy?: boolean;
+    destroy?: boolean;
     mode?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     update?: boolean;
     window?: any;
   }
 
-  declare interface ui$GridExcel {
+  declare interface kendo$ui$GridExcel {
     allPages?: boolean;
     fileName?: string;
     filterable?: boolean;
@@ -3027,7 +3084,7 @@ declare module "kendo-ui" {
     proxyURL?: string;
   }
 
-  declare interface ui$GridFilterableMessages {
+  declare interface kendo$ui$GridFilterableMessages {
     and?: string;
     clear?: string;
     filter?: string;
@@ -3045,7 +3102,7 @@ declare module "kendo-ui" {
     checkAll?: string;
   }
 
-  declare interface ui$GridFilterableOperatorsDate {
+  declare interface kendo$ui$GridFilterableOperatorsDate {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -3056,14 +3113,14 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$GridFilterableOperatorsEnums {
+  declare interface kendo$ui$GridFilterableOperatorsEnums {
     eq?: string;
     neq?: string;
     isnull?: string;
     isnotnull?: string;
   }
 
-  declare interface ui$GridFilterableOperatorsNumber {
+  declare interface kendo$ui$GridFilterableOperatorsNumber {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -3074,7 +3131,7 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$GridFilterableOperatorsString {
+  declare interface kendo$ui$GridFilterableOperatorsString {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -3087,54 +3144,54 @@ declare module "kendo-ui" {
     endswith?: string;
   }
 
-  declare interface ui$GridFilterableOperators {
-    string?: ui$GridFilterableOperatorsString;
-    number?: ui$GridFilterableOperatorsNumber;
-    kendo$date?: ui$GridFilterableOperatorsDate;
-    enums?: ui$GridFilterableOperatorsEnums;
+  declare interface kendo$ui$GridFilterableOperators {
+    string?: kendo$ui$GridFilterableOperatorsString;
+    number?: kendo$ui$GridFilterableOperatorsNumber;
+    date?: kendo$ui$GridFilterableOperatorsDate;
+    enums?: kendo$ui$GridFilterableOperatorsEnums;
   }
 
-  declare interface ui$GridFilterable {
+  declare interface kendo$ui$GridFilterable {
     extra?: boolean;
-    messages?: ui$GridFilterableMessages;
+    messages?: kendo$ui$GridFilterableMessages;
     mode?: string;
-    operators?: ui$GridFilterableOperators;
+    operators?: kendo$ui$GridFilterableOperators;
   }
 
-  declare interface ui$GridGroupableMessages {
+  declare interface kendo$ui$GridGroupableMessages {
     empty?: string;
   }
 
-  declare interface ui$GridGroupable {
+  declare interface kendo$ui$GridGroupable {
     enabled?: boolean;
     showFooter?: boolean;
-    messages?: ui$GridGroupableMessages;
+    messages?: kendo$ui$GridGroupableMessages;
     compare?: Function;
     dir?: string;
   }
 
-  declare interface ui$GridMessagesCommands {
+  declare interface kendo$ui$GridMessagesCommands {
     cancel?: string;
     canceledit?: string;
     create?: string;
-    kendo$destroy?: string;
+    destroy?: string;
     edit?: string;
     excel?: string;
     save?: string;
     update?: string;
   }
 
-  declare interface ui$GridMessages {
-    commands?: ui$GridMessagesCommands;
+  declare interface kendo$ui$GridMessages {
+    commands?: kendo$ui$GridMessagesCommands;
     noRecords?: string;
     expandCollapseColumnHeader?: string;
   }
 
-  declare interface ui$GridNoRecords {
-    kendo$template?: string | Function;
+  declare interface kendo$ui$GridNoRecords {
+    template?: string | Function;
   }
 
-  declare interface ui$GridPageableMessages {
+  declare interface kendo$ui$GridPageableMessages {
     display?: string;
     empty?: string;
     page?: string;
@@ -3148,7 +3205,7 @@ declare module "kendo-ui" {
     morePages?: string;
   }
 
-  declare interface ui$GridPageable {
+  declare interface kendo$ui$GridPageable {
     alwaysVisible?: boolean;
     pageSize?: number;
     previousNext?: boolean;
@@ -3158,29 +3215,29 @@ declare module "kendo-ui" {
     pageSizes?: boolean | any;
     refresh?: boolean;
     info?: boolean;
-    messages?: ui$GridPageableMessages;
+    messages?: kendo$ui$GridPageableMessages;
   }
 
-  declare interface ui$GridPdfMargin {
+  declare interface kendo$ui$GridPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$GridPdf {
+  declare interface kendo$ui$GridPdf {
     allPages?: boolean;
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$GridPdfMargin;
+    margin?: kendo$ui$GridPdfMargin;
     paperSize?: string | any;
-    kendo$template?: string;
+    template?: string;
     repeatHeaders?: boolean;
     scale?: number;
     proxyURL?: string;
@@ -3189,54 +3246,54 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$GridScrollable {
+  declare interface kendo$ui$GridScrollable {
     virtual?: boolean;
     endless?: boolean;
   }
 
-  declare interface ui$GridSortable {
+  declare interface kendo$ui$GridSortable {
     allowUnsort?: boolean;
     showIndexes?: boolean;
     initialDirection?: string;
     mode?: string;
   }
 
-  declare interface ui$GridToolbarItem {
+  declare interface kendo$ui$GridToolbarItem {
     iconClass?: string;
     name?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
   }
 
-  declare interface ui$GridOptions {
+  declare interface kendo$ui$GridOptions {
     name?: string;
-    allowCopy?: boolean | ui$GridAllowCopy;
+    allowCopy?: boolean | kendo$ui$GridAllowCopy;
     altRowTemplate?: string | Function;
     autoBind?: boolean;
     columnResizeHandleWidth?: number;
-    columns?: ui$GridColumn[];
-    columnMenu?: boolean | ui$GridColumnMenu;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    columns?: kendo$ui$GridColumn[];
+    columnMenu?: boolean | kendo$ui$GridColumnMenu;
+    dataSource?: any | any | kendo$dataDataSource;
     detailTemplate?: string | Function;
-    editable?: boolean | string | ui$GridEditable;
-    excel?: ui$GridExcel;
-    filterable?: boolean | ui$GridFilterable;
-    groupable?: boolean | ui$GridGroupable;
+    editable?: boolean | string | kendo$ui$GridEditable;
+    excel?: kendo$ui$GridExcel;
+    filterable?: boolean | kendo$ui$GridFilterable;
+    groupable?: boolean | kendo$ui$GridGroupable;
     height?: number | string;
-    messages?: ui$GridMessages;
-    kendo$mobile?: boolean | string;
+    messages?: kendo$ui$GridMessages;
+    mobile?: boolean | string;
     navigatable?: boolean;
-    noRecords?: boolean | ui$GridNoRecords;
-    pageable?: boolean | ui$GridPageable;
-    kendo$pdf?: ui$GridPdf;
+    noRecords?: boolean | kendo$ui$GridNoRecords;
+    pageable?: boolean | kendo$ui$GridPageable;
+    pdf?: kendo$ui$GridPdf;
     persistSelection?: boolean;
     reorderable?: boolean;
     resizable?: boolean;
     rowTemplate?: string | Function;
-    scrollable?: boolean | ui$GridScrollable;
+    scrollable?: boolean | kendo$ui$GridScrollable;
     selectable?: boolean | string;
-    sortable?: boolean | ui$GridSortable;
-    toolbar?: (string | ui$GridToolbarItem)[];
+    sortable?: boolean | kendo$ui$GridSortable;
+    toolbar?: (string | kendo$ui$GridToolbarItem)[];
     beforeEdit?: (e: ui$GridBeforeEditEvent) => void;
     cancel?: (e: ui$GridCancelEvent) => void;
     cellClose?: (e: ui$GridCellCloseEvent) => void;
@@ -3265,183 +3322,183 @@ declare module "kendo-ui" {
     navigate?: (e: ui$GridNavigateEvent) => void;
     page?: (e: ui$GridPageEvent) => void;
     pdfExport?: (e: ui$GridPdfExportEvent) => void;
-    timezone$remove?: (e: ui$GridRemoveEvent) => void;
+    remove?: (e: ui$GridRemoveEvent) => void;
     save?: (e: ui$GridSaveEvent) => void;
     saveChanges?: (e: ui$GridSaveChangesEvent) => void;
     sort?: (e: ui$GridSortEvent) => void;
   }
 
-  declare interface ui$GridEvent {
-    sender: ui$Grid;
+  declare interface kendo$ui$GridEvent {
+    sender: kendo$ui$Grid;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$GridBeforeEditEvent = {
-    model?: kendo$kendo$data.data$Model
-  } & ui$GridEvent;
+  declare type kendo$ui$GridBeforeEditEvent = {
+    model?: kendo$dataModel
+  } & GridEvent;
 
-  declare type ui$GridCancelEvent = {
+  declare type kendo$ui$GridCancelEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$Model
-  } & ui$GridEvent;
+    model?: kendo$dataModel
+  } & GridEvent;
 
-  declare type ui$GridCellCloseEvent = {
+  declare type kendo$ui$GridCellCloseEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$Model,
+    model?: kendo$dataModel,
     type?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridChangeEvent = {} & ui$GridEvent;
+  declare type kendo$ui$GridChangeEvent = {} & GridEvent;
 
-  declare type ui$GridColumnHideEvent = {
+  declare type kendo$ui$GridColumnHideEvent = {
     column?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnLockEvent = {
+  declare type kendo$ui$GridColumnLockEvent = {
     column?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnMenuInitEvent = {
+  declare type kendo$ui$GridColumnMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnMenuOpenEvent = {
+  declare type kendo$ui$GridColumnMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnReorderEvent = {
+  declare type kendo$ui$GridColumnReorderEvent = {
     column?: any,
     newIndex?: number,
     oldIndex?: number
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnResizeEvent = {
+  declare type kendo$ui$GridColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnShowEvent = {
+  declare type kendo$ui$GridColumnShowEvent = {
     column?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridColumnUnlockEvent = {
+  declare type kendo$ui$GridColumnUnlockEvent = {
     column?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridDataBindingEvent = {
+  declare type kendo$ui$GridDataBindingEvent = {
     action?: string,
     index?: number,
     items?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridDataBoundEvent = {} & ui$GridEvent;
+  declare type kendo$ui$GridDataBoundEvent = {} & GridEvent;
 
-  declare type ui$GridDetailCollapseEvent = {
+  declare type kendo$ui$GridDetailCollapseEvent = {
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridDetailExpandEvent = {
+  declare type kendo$ui$GridDetailExpandEvent = {
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridDetailInitEvent = {
-    kendo$data?: kendo$kendo$data.data$ObservableObject,
+  declare type kendo$ui$GridDetailInitEvent = {
+    data?: kendo$dataObservableObject,
     detailCell?: JQuery,
     detailRow?: JQuery,
     masterRow?: JQuery
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridEditEvent = {
+  declare type kendo$ui$GridEditEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$Model
-  } & ui$GridEvent;
+    model?: kendo$dataModel
+  } & GridEvent;
 
-  declare type ui$GridExcelExportEvent = {
-    kendo$data?: any,
-    workbook?: kendo$kendo$ooxml.ooxml$Workbook
-  } & ui$GridEvent;
+  declare type kendo$ui$GridExcelExportEvent = {
+    data?: any,
+    workbook?: kendo$ooxmlWorkbook
+  } & GridEvent;
 
-  declare type ui$GridFilterEvent = {
+  declare type kendo$ui$GridFilterEvent = {
     filter?: any,
     field?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridFilterMenuInitEvent = {
+  declare type kendo$ui$GridFilterMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridFilterMenuOpenEvent = {
+  declare type kendo$ui$GridFilterMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridGroupEvent = {
+  declare type kendo$ui$GridGroupEvent = {
     groups?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridGroupCollapseEvent = {
+  declare type kendo$ui$GridGroupCollapseEvent = {
     element?: JQuery,
     group?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridGroupExpandEvent = {
+  declare type kendo$ui$GridGroupExpandEvent = {
     element?: JQuery,
     group?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridNavigateEvent = {
+  declare type kendo$ui$GridNavigateEvent = {
     element?: JQuery
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridPageEvent = {
+  declare type kendo$ui$GridPageEvent = {
     page?: number
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridPdfExportEvent = {
+  declare type kendo$ui$GridPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridRemoveEvent = {
-    model?: kendo$kendo$data.data$Model,
+  declare type kendo$ui$GridRemoveEvent = {
+    model?: kendo$dataModel,
     row?: JQuery
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridSaveEvent = {
-    model?: kendo$kendo$data.data$Model,
+  declare type kendo$ui$GridSaveEvent = {
+    model?: kendo$dataModel,
     container?: JQuery,
     values?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare type ui$GridSaveChangesEvent = {} & ui$GridEvent;
+  declare type kendo$ui$GridSaveChangesEvent = {} & GridEvent;
 
-  declare type ui$GridSortEvent = {
+  declare type kendo$ui$GridSortEvent = {
     sort?: any
-  } & ui$GridEvent;
+  } & GridEvent;
 
-  declare class ui$ListBox mixins undefined.ui$Widget {
-    static fn: ui$ListBox;
+  declare class kendo$ui$ListBox mixins undefined.Widget {
+    static fn: kendo$ui$ListBox;
     options: ui$ListBoxOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ListBox;
+    static extend(proto: Object): kendo$ui$ListBox;
     constructor(element: drawing$Element, options?: ui$ListBoxOptions): this;
     clearSelection(): void;
-    dataItem(element: JQuery): kendo$kendo$data.data$ObservableObject;
-    dataItem(element: drawing$Element): kendo$kendo$data.data$ObservableObject;
-    dataItem(element: string): kendo$kendo$data.data$ObservableObject;
-    dataItems(): kendo$kendo$data.data$ObservableArray;
+    dataItem(element: JQuery): kendo$dataObservableObject;
+    dataItem(element: drawing$Element): kendo$dataObservableObject;
+    dataItem(element: string): kendo$dataObservableObject;
+    dataItems(): kendo$dataObservableArray;
     destroy(): void;
-    enable(element: JQuery, effects$enable?: boolean): void;
-    enable(element: drawing$Element, effects$enable?: boolean): void;
-    enable(element: string, effects$enable?: boolean): void;
+    enable(element: JQuery, enable?: boolean): void;
+    enable(element: drawing$Element, enable?: boolean): void;
+    enable(element: string, enable?: boolean): void;
     items(): any;
     refresh(): void;
     reorder(element: JQuery, index: number): void;
@@ -3454,48 +3511,48 @@ declare module "kendo-ui" {
     select(): JQuery;
     select(items: JQuery): void;
     select(items: any): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
   }
 
-  declare interface ui$ListBoxDraggable {
+  declare interface kendo$ui$ListBoxDraggable {
     enabled?: boolean;
     hint?: Function | string | JQuery;
     placeholder?: Function | string | JQuery;
   }
 
-  declare interface ui$ListBoxMessagesTools {
+  declare interface kendo$ui$ListBoxMessagesTools {
     moveDown?: string;
     moveUp?: string;
-    timezone$remove?: string;
+    remove?: string;
     transferAllFrom?: string;
     transferAllTo?: string;
     transferFrom?: string;
     transferTo?: string;
   }
 
-  declare interface ui$ListBoxMessages {
-    tools?: ui$ListBoxMessagesTools;
+  declare interface kendo$ui$ListBoxMessages {
+    tools?: kendo$ui$ListBoxMessagesTools;
   }
 
-  declare interface ui$ListBoxToolbar {
+  declare interface kendo$ui$ListBoxToolbar {
     position?: string;
     tools?: any;
   }
 
-  declare interface ui$ListBoxOptions {
+  declare interface kendo$ui$ListBoxOptions {
     name?: string;
     autoBind?: boolean;
     connectWith?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
-    draggable?: boolean | ui$ListBoxDraggable;
+    draggable?: boolean | kendo$ui$ListBoxDraggable;
     dropSources?: any;
     navigatable?: boolean;
-    messages?: ui$ListBoxMessages;
+    messages?: kendo$ui$ListBoxMessages;
     selectable?: string;
-    kendo$template?: string | Function;
-    toolbar?: ui$ListBoxToolbar;
+    template?: string | Function;
+    toolbar?: kendo$ui$ListBoxToolbar;
     add?: (e: ui$ListBoxAddEvent) => void;
     change?: (e: ui$ListBoxEvent) => void;
     dataBound?: (e: ui$ListBoxEvent) => void;
@@ -3503,69 +3560,69 @@ declare module "kendo-ui" {
     drag?: (e: ui$ListBoxDragEvent) => void;
     drop?: (e: ui$ListBoxDropEvent) => void;
     dragend?: (e: ui$ListBoxDragendEvent) => void;
-    timezone$remove?: (e: ui$ListBoxRemoveEvent) => void;
+    remove?: (e: ui$ListBoxRemoveEvent) => void;
     reorder?: (e: ui$ListBoxReorderEvent) => void;
   }
 
-  declare interface ui$ListBoxEvent {
-    sender: ui$ListBox;
+  declare interface kendo$ui$ListBoxEvent {
+    sender: kendo$ui$ListBox;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ListBoxAddEvent = {
+  declare type kendo$ui$ListBoxAddEvent = {
     items?: any,
     dataItems?: any
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxDragstartEvent = {
+  declare type kendo$ui$ListBoxDragstartEvent = {
     draggableEvent?: any,
     items?: JQuery
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxDragEvent = {
+  declare type kendo$ui$ListBoxDragEvent = {
     items?: JQuery,
     dataItems?: any,
     draggableEvent?: any
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxDropEvent = {
+  declare type kendo$ui$ListBoxDropEvent = {
     items?: any,
     dataItems?: any
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxDragendEvent = {
+  declare type kendo$ui$ListBoxDragendEvent = {
     items?: any,
     dataItems?: any,
     draggableEvent?: any
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxRemoveEvent = {
+  declare type kendo$ui$ListBoxRemoveEvent = {
     items?: any,
     dataItems?: any
-  } & ui$ListBoxEvent;
+  } & ListBoxEvent;
 
-  declare type ui$ListBoxReorderEvent = {
+  declare type kendo$ui$ListBoxReorderEvent = {
     items?: any,
     dataItems?: any,
-    timezone$offset?: number
-  } & ui$ListBoxEvent;
+    offset?: number
+  } & ListBoxEvent;
 
-  declare class ui$ListView mixins undefined.ui$Widget {
-    static fn: ui$ListView;
+  declare class kendo$ui$ListView mixins undefined.Widget {
+    static fn: kendo$ui$ListView;
     options: ui$ListViewOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ListView;
+    static extend(proto: Object): kendo$ui$ListView;
     constructor(element: drawing$Element, options?: ui$ListViewOptions): this;
     add(): void;
     cancel(): void;
     clearSelection(): void;
-    dataItem(row: string): kendo$kendo$data.data$ObservableObject;
-    dataItem(row: drawing$Element): kendo$kendo$data.data$ObservableObject;
-    dataItem(row: JQuery): kendo$kendo$data.data$ObservableObject;
-    dataItems(): kendo$kendo$data.data$ObservableArray;
+    dataItem(row: string): kendo$dataObservableObject;
+    dataItem(row: drawing$Element): kendo$dataObservableObject;
+    dataItem(row: JQuery): kendo$dataObservableObject;
+    dataItems(): kendo$dataObservableArray;
     destroy(): void;
     edit(item: JQuery): void;
     items(): any;
@@ -3575,29 +3632,29 @@ declare module "kendo-ui" {
     select(): JQuery;
     select(items: JQuery): void;
     select(items: any): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
   }
 
-  declare interface ui$ListViewOptions {
+  declare interface kendo$ui$ListViewOptions {
     name?: string;
     autoBind?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     editTemplate?: Function;
     navigatable?: boolean;
     selectable?: boolean | string;
-    kendo$template?: Function;
+    template?: Function;
     altTemplate?: Function;
     cancel?: (e: ui$ListViewCancelEvent) => void;
     change?: (e: ui$ListViewEvent) => void;
     dataBound?: (e: ui$ListViewEvent) => void;
     dataBinding?: (e: ui$ListViewEvent) => void;
     edit?: (e: ui$ListViewEditEvent) => void;
-    timezone$remove?: (e: ui$ListViewRemoveEvent) => void;
+    remove?: (e: ui$ListViewRemoveEvent) => void;
     save?: (e: ui$ListViewSaveEvent) => void;
     name?: string;
     appendOnRefresh?: boolean;
     autoBind?: boolean;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     endlessScroll?: boolean;
     fixedHeaders?: boolean;
     headerTemplate?: string | Function;
@@ -3606,7 +3663,7 @@ declare module "kendo-ui" {
     pullToRefresh?: boolean;
     pullParameters?: Function;
     style?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     type?: string;
     filterable?: boolean | ui$ListViewFilterable;
     virtualViewSize?: number;
@@ -3616,57 +3673,57 @@ declare module "kendo-ui" {
     itemChange?: (e: ui$ListViewEvent) => void;
   }
 
-  declare interface ui$ListViewEvent {
-    sender: ui$ListView;
+  declare interface kendo$ui$ListViewEvent {
+    sender: kendo$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ListView;
+    sender: kendo$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ListViewCancelEvent = {
+  declare type kendo$ui$ListViewCancelEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$Model
-  } & ui$ListViewEvent;
+    model?: kendo$dataModel
+  } & ListViewEvent;
 
-  declare type ui$ListViewEditEvent = {
+  declare type kendo$ui$ListViewEditEvent = {
     item?: JQuery,
-    model?: kendo$kendo$data.data$Model
-  } & ui$ListViewEvent;
+    model?: kendo$dataModel
+  } & ListViewEvent;
 
-  declare type ui$ListViewRemoveEvent = {
+  declare type kendo$ui$ListViewRemoveEvent = {
     item?: JQuery,
-    model?: kendo$kendo$data.data$Model
-  } & ui$ListViewEvent;
+    model?: kendo$dataModel
+  } & ListViewEvent;
 
-  declare type ui$ListViewSaveEvent = {
-    model?: kendo$kendo$data.data$Model,
+  declare type kendo$ui$ListViewSaveEvent = {
+    model?: kendo$dataModel,
     item?: JQuery
-  } & ui$ListViewEvent;
+  } & ListViewEvent;
 
-  declare class ui$MaskedTextBox mixins undefined.ui$Widget {
-    static fn: ui$MaskedTextBox;
+  declare class kendo$ui$MaskedTextBox mixins undefined.Widget {
+    static fn: kendo$ui$MaskedTextBox;
     options: ui$MaskedTextBoxOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$MaskedTextBox;
+    static extend(proto: Object): kendo$ui$MaskedTextBox;
     constructor(
       element: drawing$Element,
       options?: ui$MaskedTextBoxOptions
     ): this;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     raw(): string;
     value(): string;
     value(value: string): void;
   }
 
-  declare interface ui$MaskedTextBoxOptions {
+  declare interface kendo$ui$MaskedTextBoxOptions {
     name?: string;
     clearPromptChar?: boolean;
-    kendo$culture?: string;
+    culture?: string;
     mask?: string;
     promptChar?: string;
     rules?: any;
@@ -3675,20 +3732,20 @@ declare module "kendo-ui" {
     change?: (e: ui$MaskedTextBoxChangeEvent) => void;
   }
 
-  declare interface ui$MaskedTextBoxEvent {
-    sender: ui$MaskedTextBox;
+  declare interface kendo$ui$MaskedTextBoxEvent {
+    sender: kendo$ui$MaskedTextBox;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$MaskedTextBoxChangeEvent = {} & ui$MaskedTextBoxEvent;
+  declare type kendo$ui$MaskedTextBoxChangeEvent = {} & MaskedTextBoxEvent;
 
-  declare class ui$MediaPlayer mixins undefined.ui$Widget {
-    static fn: ui$MediaPlayer;
+  declare class kendo$ui$MediaPlayer mixins undefined.Widget {
+    static fn: kendo$ui$MediaPlayer;
     options: ui$MediaPlayerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$MediaPlayer;
+    static extend(proto: Object): kendo$ui$MediaPlayer;
     constructor(
       element: drawing$Element,
       options?: ui$MediaPlayerOptions
@@ -3708,15 +3765,15 @@ declare module "kendo-ui" {
     seek(milliseconds: number): number;
     stop(): void;
     titlebar(): JQuery;
-    toolbar(): kendo$kendo$ui.ui$ToolBar;
+    toolbar(): kendo$uiToolBar;
   }
 
-  declare interface ui$MediaPlayerMedia {
+  declare interface kendo$ui$MediaPlayerMedia {
     source?: string;
     title?: string;
   }
 
-  declare interface ui$MediaPlayerMessages {
+  declare interface kendo$ui$MediaPlayerMessages {
     pause?: string;
     play?: string;
     mute?: string;
@@ -3725,14 +3782,14 @@ declare module "kendo-ui" {
     fullscreen?: string;
   }
 
-  declare interface ui$MediaPlayerOptions {
+  declare interface kendo$ui$MediaPlayerOptions {
     name?: string;
     autoPlay?: boolean;
     autoRepeat?: boolean;
     forwardSeek?: boolean;
     fullScreen?: boolean;
-    media?: ui$MediaPlayerMedia;
-    messages?: ui$MediaPlayerMessages;
+    media?: kendo$ui$MediaPlayerMedia;
+    messages?: kendo$ui$MediaPlayerMessages;
     mute?: boolean;
     navigatable?: boolean;
     volume?: number;
@@ -3744,86 +3801,77 @@ declare module "kendo-ui" {
     volumeChange?: (e: ui$MediaPlayerEvent) => void;
   }
 
-  declare interface ui$MediaPlayerEvent {
-    sender: ui$MediaPlayer;
+  declare interface kendo$ui$MediaPlayerEvent {
+    sender: kendo$ui$MediaPlayer;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$Menu mixins undefined.ui$Widget {
-    static fn: ui$Menu;
+  declare class kendo$ui$Menu mixins undefined.Widget {
+    static fn: kendo$ui$Menu;
     options: ui$MenuOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Menu;
+    static extend(proto: Object): kendo$ui$Menu;
     constructor(element: drawing$Element, options?: ui$MenuOptions): this;
-    append(item: any, referenceItem?: string): kendo$kendo$ui.ui$Menu;
-    append(item: any, referenceItem?: JQuery): kendo$kendo$ui.ui$Menu;
-    close(element: string): kendo$kendo$ui.ui$Menu;
-    close(element: drawing$Element): kendo$kendo$ui.ui$Menu;
-    close(element: JQuery): kendo$kendo$ui.ui$Menu;
+    append(item: any, referenceItem?: string): kendo$uiMenu;
+    append(item: any, referenceItem?: JQuery): kendo$uiMenu;
+    close(element: string): kendo$uiMenu;
+    close(element: drawing$Element): kendo$uiMenu;
+    close(element: JQuery): kendo$uiMenu;
     destroy(): void;
-    enable(element: string, effects$enable: boolean): kendo$kendo$ui.ui$Menu;
-    enable(
-      element: drawing$Element,
-      effects$enable: boolean
-    ): kendo$kendo$ui.ui$Menu;
-    enable(element: JQuery, effects$enable: boolean): kendo$kendo$ui.ui$Menu;
-    insertAfter(item: any, referenceItem: string): kendo$kendo$ui.ui$Menu;
-    insertAfter(
-      item: any,
-      referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$Menu;
-    insertAfter(item: any, referenceItem: JQuery): kendo$kendo$ui.ui$Menu;
-    insertBefore(item: any, referenceItem: string): kendo$kendo$ui.ui$Menu;
-    insertBefore(
-      item: any,
-      referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$Menu;
-    insertBefore(item: any, referenceItem: JQuery): kendo$kendo$ui.ui$Menu;
-    open(element: string): kendo$kendo$ui.ui$Menu;
-    open(element: drawing$Element): kendo$kendo$ui.ui$Menu;
-    open(element: JQuery): kendo$kendo$ui.ui$Menu;
-    remove(element: string): kendo$kendo$ui.ui$Menu;
-    remove(element: drawing$Element): kendo$kendo$ui.ui$Menu;
-    remove(element: JQuery): kendo$kendo$ui.ui$Menu;
+    enable(element: string, enable: boolean): kendo$uiMenu;
+    enable(element: drawing$Element, enable: boolean): kendo$uiMenu;
+    enable(element: JQuery, enable: boolean): kendo$uiMenu;
+    insertAfter(item: any, referenceItem: string): kendo$uiMenu;
+    insertAfter(item: any, referenceItem: drawing$Element): kendo$uiMenu;
+    insertAfter(item: any, referenceItem: JQuery): kendo$uiMenu;
+    insertBefore(item: any, referenceItem: string): kendo$uiMenu;
+    insertBefore(item: any, referenceItem: drawing$Element): kendo$uiMenu;
+    insertBefore(item: any, referenceItem: JQuery): kendo$uiMenu;
+    open(element: string): kendo$uiMenu;
+    open(element: drawing$Element): kendo$uiMenu;
+    open(element: JQuery): kendo$uiMenu;
+    remove(element: string): kendo$uiMenu;
+    remove(element: drawing$Element): kendo$uiMenu;
+    remove(element: JQuery): kendo$uiMenu;
   }
 
-  declare interface ui$MenuAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$MenuAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MenuAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$MenuAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MenuAnimation {
-    close?: ui$MenuAnimationClose;
-    open?: ui$MenuAnimationOpen;
+  declare interface kendo$ui$MenuAnimation {
+    close?: kendo$ui$MenuAnimationClose;
+    open?: kendo$ui$MenuAnimationOpen;
   }
 
-  declare interface ui$MenuOpenOnClick {
+  declare interface kendo$ui$MenuOpenOnClick {
     rootMenuItems?: boolean;
     subMenuItems?: boolean;
   }
 
-  declare interface ui$MenuScrollable {
+  declare interface kendo$ui$MenuScrollable {
     distance?: number;
   }
 
-  declare interface ui$MenuOptions {
+  declare interface kendo$ui$MenuOptions {
     name?: string;
-    animation?: boolean | ui$MenuAnimation;
+    animation?: boolean | kendo$ui$MenuAnimation;
     closeOnClick?: boolean;
     dataSource?: any | any;
     direction?: string;
     hoverDelay?: number;
-    openOnClick?: boolean | ui$MenuOpenOnClick;
+    openOnClick?: boolean | kendo$ui$MenuOpenOnClick;
     orientation?: string;
     popupCollision?: string;
-    scrollable?: boolean | ui$MenuScrollable;
+    scrollable?: boolean | kendo$ui$MenuScrollable;
     close?: (e: ui$MenuCloseEvent) => void;
     open?: (e: ui$MenuOpenEvent) => void;
     activate?: (e: ui$MenuActivateEvent) => void;
@@ -3831,42 +3879,42 @@ declare module "kendo-ui" {
     select?: (e: ui$MenuSelectEvent) => void;
   }
 
-  declare interface ui$MenuEvent {
-    sender: ui$Menu;
+  declare interface kendo$ui$MenuEvent {
+    sender: kendo$ui$Menu;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$MenuCloseEvent = {
+  declare type kendo$ui$MenuCloseEvent = {
     item?: HTMLElement
-  } & ui$MenuEvent;
+  } & MenuEvent;
 
-  declare type ui$MenuOpenEvent = {
+  declare type kendo$ui$MenuOpenEvent = {
     item?: HTMLElement
-  } & ui$MenuEvent;
+  } & MenuEvent;
 
-  declare type ui$MenuActivateEvent = {
+  declare type kendo$ui$MenuActivateEvent = {
     item?: HTMLElement
-  } & ui$MenuEvent;
+  } & MenuEvent;
 
-  declare type ui$MenuDeactivateEvent = {
+  declare type kendo$ui$MenuDeactivateEvent = {
     item?: HTMLElement
-  } & ui$MenuEvent;
+  } & MenuEvent;
 
-  declare type ui$MenuSelectEvent = {
+  declare type kendo$ui$MenuSelectEvent = {
     item?: HTMLElement
-  } & ui$MenuEvent;
+  } & MenuEvent;
 
-  declare class ui$MultiColumnComboBox mixins undefined.ui$Widget {
-    static fn: ui$MultiColumnComboBox;
+  declare class kendo$ui$MultiColumnComboBox mixins undefined.Widget {
+    static fn: kendo$ui$MultiColumnComboBox;
     options: ui$MultiColumnComboBoxOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$MultiColumnComboBox;
+    static extend(proto: Object): kendo$ui$MultiColumnComboBox;
     constructor(
       element: drawing$Element,
       options?: ui$MultiColumnComboBoxOptions
@@ -3874,7 +3922,7 @@ declare module "kendo-ui" {
     close(): void;
     dataItem(index?: number): any;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     focus(): void;
     items(): any;
     open(): void;
@@ -3885,7 +3933,7 @@ declare module "kendo-ui" {
     select(li: JQuery): void;
     select(li: number): void;
     select(li: Function): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     suggest(value: string): void;
     text(): string;
     text(text: string): void;
@@ -3894,56 +3942,56 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$MultiColumnComboBoxAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$MultiColumnComboBoxAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MultiColumnComboBoxAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$MultiColumnComboBoxAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MultiColumnComboBoxAnimation {
-    close?: ui$MultiColumnComboBoxAnimationClose;
-    open?: ui$MultiColumnComboBoxAnimationOpen;
+  declare interface kendo$ui$MultiColumnComboBoxAnimation {
+    close?: kendo$ui$MultiColumnComboBoxAnimationClose;
+    open?: kendo$ui$MultiColumnComboBoxAnimationOpen;
   }
 
-  declare interface ui$MultiColumnComboBoxColumn {
+  declare interface kendo$ui$MultiColumnComboBoxColumn {
     field?: string;
     title?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     headerTemplate?: string | Function;
     width?: number | string;
   }
 
-  declare interface ui$MultiColumnComboBoxPopup {
+  declare interface kendo$ui$MultiColumnComboBoxPopup {
     appendTo?: string;
     origin?: string;
     position?: string;
   }
 
-  declare interface ui$MultiColumnComboBoxVirtual {
+  declare interface kendo$ui$MultiColumnComboBoxVirtual {
     itemHeight?: number;
     mapValueTo?: string;
     valueMapper?: Function;
   }
 
-  declare interface ui$MultiColumnComboBoxOptions {
+  declare interface kendo$ui$MultiColumnComboBoxOptions {
     name?: string;
-    animation?: ui$MultiColumnComboBoxAnimation;
+    animation?: kendo$ui$MultiColumnComboBoxAnimation;
     autoBind?: boolean;
     autoWidth?: boolean;
     cascadeFrom?: string;
     cascadeFromField?: string;
-    columns?: ui$MultiColumnComboBoxColumn[];
+    columns?: kendo$ui$MultiColumnComboBoxColumn[];
     clearButton?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
     dropDownWidth?: string | number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     filterFields?: any;
@@ -3957,15 +4005,15 @@ declare module "kendo-ui" {
     minLength?: number;
     noDataTemplate?: string | Function;
     placeholder?: string;
-    popup?: ui$MultiColumnComboBoxPopup;
+    popup?: kendo$ui$MultiColumnComboBoxPopup;
     suggest?: boolean;
     syncValueAndText?: boolean;
     headerTemplate?: string | Function;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
     value?: string;
     valuePrimitive?: boolean;
-    virtual?: boolean | ui$MultiColumnComboBoxVirtual;
+    virtual?: boolean | kendo$ui$MultiColumnComboBoxVirtual;
     change?: (e: ui$MultiColumnComboBoxChangeEvent) => void;
     close?: (e: ui$MultiColumnComboBoxCloseEvent) => void;
     dataBound?: (e: ui$MultiColumnComboBoxDataBoundEvent) => void;
@@ -3975,42 +4023,42 @@ declare module "kendo-ui" {
     cascade?: (e: ui$MultiColumnComboBoxCascadeEvent) => void;
   }
 
-  declare interface ui$MultiColumnComboBoxEvent {
-    sender: ui$MultiColumnComboBox;
+  declare interface kendo$ui$MultiColumnComboBoxEvent {
+    sender: kendo$ui$MultiColumnComboBox;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$MultiColumnComboBoxChangeEvent = {} & ui$MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxChangeEvent = {} & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxCloseEvent = {} & ui$MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxCloseEvent = {} & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxDataBoundEvent = {} & ui$MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxDataBoundEvent = {} & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxFilteringEvent = {
+  declare type kendo$ui$MultiColumnComboBoxFilteringEvent = {
     filter?: any
-  } & ui$MultiColumnComboBoxEvent;
+  } & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxOpenEvent = {} & ui$MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxOpenEvent = {} & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxSelectEvent = {
+  declare type kendo$ui$MultiColumnComboBoxSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$MultiColumnComboBoxEvent;
+  } & MultiColumnComboBoxEvent;
 
-  declare type ui$MultiColumnComboBoxCascadeEvent = {} & ui$MultiColumnComboBoxEvent;
+  declare type kendo$ui$MultiColumnComboBoxCascadeEvent = {} & MultiColumnComboBoxEvent;
 
-  declare class ui$MultiSelect mixins undefined.ui$Widget {
-    static fn: ui$MultiSelect;
+  declare class kendo$ui$MultiSelect mixins undefined.Widget {
+    static fn: kendo$ui$MultiSelect;
     options: ui$MultiSelectOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     input: JQuery;
     list: JQuery;
     ul: JQuery;
     tagList: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$MultiSelect;
+    static extend(proto: Object): kendo$ui$MultiSelect;
     constructor(
       element: drawing$Element,
       options?: ui$MultiSelectOptions
@@ -4018,59 +4066,59 @@ declare module "kendo-ui" {
     close(): void;
     dataItems(): any;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     focus(): void;
     items(): any;
     open(): void;
     readonly(readonly: boolean): void;
     refresh(): void;
     search(word: string): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     toggle(toggle?: boolean): void;
     value(): any;
     value(value: any): void;
     value(value: string): void;
   }
 
-  declare interface ui$MultiSelectAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$MultiSelectAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MultiSelectAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$MultiSelectAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$MultiSelectAnimation {
-    close?: ui$MultiSelectAnimationClose;
-    open?: ui$MultiSelectAnimationOpen;
+  declare interface kendo$ui$MultiSelectAnimation {
+    close?: kendo$ui$MultiSelectAnimationClose;
+    open?: kendo$ui$MultiSelectAnimationOpen;
   }
 
-  declare interface ui$MultiSelectPopup {
+  declare interface kendo$ui$MultiSelectPopup {
     appendTo?: string;
     origin?: string;
     position?: string;
   }
 
-  declare interface ui$MultiSelectVirtual {
+  declare interface kendo$ui$MultiSelectVirtual {
     itemHeight?: number;
     mapValueTo?: string;
     valueMapper?: Function;
   }
 
-  declare interface ui$MultiSelectOptions {
+  declare interface kendo$ui$MultiSelectOptions {
     name?: string;
-    animation?: boolean | ui$MultiSelectAnimation;
+    animation?: boolean | kendo$ui$MultiSelectAnimation;
     autoBind?: boolean;
     autoClose?: boolean;
     autoWidth?: boolean;
     clearButton?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
     delay?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     enforceMinLength?: boolean;
     filter?: string;
     fixedGroupTemplate?: string | Function;
@@ -4083,14 +4131,14 @@ declare module "kendo-ui" {
     maxSelectedItems?: number;
     noDataTemplate?: string | Function;
     placeholder?: string;
-    popup?: ui$MultiSelectPopup;
+    popup?: kendo$ui$MultiSelectPopup;
     headerTemplate?: string | Function;
     itemTemplate?: string | Function;
     tagTemplate?: string | Function;
     tagMode?: string;
     value?: any;
     valuePrimitive?: boolean;
-    virtual?: boolean | ui$MultiSelectVirtual;
+    virtual?: boolean | kendo$ui$MultiSelectVirtual;
     change?: (e: ui$MultiSelectChangeEvent) => void;
     close?: (e: ui$MultiSelectCloseEvent) => void;
     dataBound?: (e: ui$MultiSelectDataBoundEvent) => void;
@@ -4100,40 +4148,40 @@ declare module "kendo-ui" {
     deselect?: (e: ui$MultiSelectDeselectEvent) => void;
   }
 
-  declare interface ui$MultiSelectEvent {
-    sender: ui$MultiSelect;
+  declare interface kendo$ui$MultiSelectEvent {
+    sender: kendo$ui$MultiSelect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$MultiSelectChangeEvent = {} & ui$MultiSelectEvent;
+  declare type kendo$ui$MultiSelectChangeEvent = {} & MultiSelectEvent;
 
-  declare type ui$MultiSelectCloseEvent = {} & ui$MultiSelectEvent;
+  declare type kendo$ui$MultiSelectCloseEvent = {} & MultiSelectEvent;
 
-  declare type ui$MultiSelectDataBoundEvent = {} & ui$MultiSelectEvent;
+  declare type kendo$ui$MultiSelectDataBoundEvent = {} & MultiSelectEvent;
 
-  declare type ui$MultiSelectFilteringEvent = {
+  declare type kendo$ui$MultiSelectFilteringEvent = {
     filter?: any
-  } & ui$MultiSelectEvent;
+  } & MultiSelectEvent;
 
-  declare type ui$MultiSelectOpenEvent = {} & ui$MultiSelectEvent;
+  declare type kendo$ui$MultiSelectOpenEvent = {} & MultiSelectEvent;
 
-  declare type ui$MultiSelectSelectEvent = {
+  declare type kendo$ui$MultiSelectSelectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$MultiSelectEvent;
+  } & MultiSelectEvent;
 
-  declare type ui$MultiSelectDeselectEvent = {
+  declare type kendo$ui$MultiSelectDeselectEvent = {
     dataItem?: any,
     item?: JQuery
-  } & ui$MultiSelectEvent;
+  } & MultiSelectEvent;
 
-  declare class ui$MultiViewCalendar mixins undefined.ui$Widget {
-    static fn: ui$MultiViewCalendar;
+  declare class kendo$ui$MultiViewCalendar mixins undefined.Widget {
+    static fn: kendo$ui$MultiViewCalendar;
     options: ui$MultiViewCalendarOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$MultiViewCalendar;
+    static extend(proto: Object): kendo$ui$MultiViewCalendar;
     constructor(
       element: drawing$Element,
       options?: ui$MultiViewCalendarOptions
@@ -4161,35 +4209,35 @@ declare module "kendo-ui" {
     view(): any;
   }
 
-  declare interface ui$MultiViewCalendarMessages {
+  declare interface kendo$ui$MultiViewCalendarMessages {
     weekColumnHeader?: string;
   }
 
-  declare interface ui$MultiViewCalendarMonth {
+  declare interface kendo$ui$MultiViewCalendarMonth {
     content?: string;
     weekNumber?: string;
     empty?: string;
   }
 
-  declare interface ui$MultiViewCalendarRange {
+  declare interface kendo$ui$MultiViewCalendarRange {
     start?: Date;
     end?: Date;
   }
 
-  declare interface ui$MultiViewCalendarOptions {
+  declare interface kendo$ui$MultiViewCalendarOptions {
     name?: string;
-    kendo$culture?: string;
+    culture?: string;
     dates?: any;
     depth?: string;
     disableDates?: any | Function;
     footer?: string | Function;
-    kendo$format?: string;
+    format?: string;
     max?: Date;
-    messages?: ui$MultiViewCalendarMessages;
+    messages?: kendo$ui$MultiViewCalendarMessages;
     min?: Date;
-    month?: ui$MultiViewCalendarMonth;
+    month?: kendo$ui$MultiViewCalendarMonth;
     views?: number;
-    range?: ui$MultiViewCalendarRange;
+    range?: kendo$ui$MultiViewCalendarRange;
     selectable?: string;
     selectDates?: any;
     showViewHeader?: boolean;
@@ -4200,45 +4248,45 @@ declare module "kendo-ui" {
     navigate?: (e: ui$MultiViewCalendarEvent) => void;
   }
 
-  declare interface ui$MultiViewCalendarEvent {
-    sender: ui$MultiViewCalendar;
+  declare interface kendo$ui$MultiViewCalendarEvent {
+    sender: kendo$ui$MultiViewCalendar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$Notification mixins undefined.ui$Widget {
-    static fn: ui$Notification;
+  declare class kendo$ui$Notification mixins undefined.Widget {
+    static fn: kendo$ui$Notification;
     options: ui$NotificationOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Notification;
+    static extend(proto: Object): kendo$ui$Notification;
     constructor(
       element: drawing$Element,
       options?: ui$NotificationOptions
     ): this;
-    error(kendo$data: any): void;
-    error(kendo$data: string): void;
-    error(kendo$data: Function): void;
+    error(data: any): void;
+    error(data: string): void;
+    error(data: Function): void;
     getNotifications(): JQuery;
     hide(): void;
-    info(kendo$data: any): void;
-    info(kendo$data: string): void;
-    info(kendo$data: Function): void;
-    show(kendo$data: any, type: string): void;
-    show(kendo$data: string, type: string): void;
-    show(kendo$data: Function, type: string): void;
-    showText(kendo$data: any, type: string): void;
-    showText(kendo$data: string, type: string): void;
-    showText(kendo$data: Function, type: string): void;
-    success(kendo$data: any): void;
-    success(kendo$data: string): void;
-    success(kendo$data: Function): void;
-    warning(kendo$data: any): void;
-    warning(kendo$data: string): void;
-    warning(kendo$data: Function): void;
+    info(data: any): void;
+    info(data: string): void;
+    info(data: Function): void;
+    show(data: any, type: string): void;
+    show(data: string, type: string): void;
+    show(data: Function, type: string): void;
+    showText(data: any, type: string): void;
+    showText(data: string, type: string): void;
+    showText(data: Function, type: string): void;
+    success(data: any): void;
+    success(data: string): void;
+    success(data: Function): void;
+    warning(data: any): void;
+    warning(data: string): void;
+    warning(data: Function): void;
   }
 
-  declare interface ui$NotificationPosition {
+  declare interface kendo$ui$NotificationPosition {
     bottom?: number;
     left?: number;
     pinned?: boolean;
@@ -4246,12 +4294,12 @@ declare module "kendo-ui" {
     top?: number;
   }
 
-  declare interface ui$NotificationTemplate {
+  declare interface kendo$ui$NotificationTemplate {
     type?: string;
-    kendo$template?: string;
+    template?: string;
   }
 
-  declare interface ui$NotificationOptions {
+  declare interface kendo$ui$NotificationOptions {
     name?: string;
     allowHideAfter?: number;
     animation?: any | boolean;
@@ -4260,40 +4308,40 @@ declare module "kendo-ui" {
     button?: boolean;
     height?: number | string;
     hideOnClick?: boolean;
-    position?: ui$NotificationPosition;
+    position?: kendo$ui$NotificationPosition;
     stacking?: string;
-    templates?: ui$NotificationTemplate[];
+    templates?: kendo$ui$NotificationTemplate[];
     width?: number | string;
     hide?: (e: ui$NotificationHideEvent) => void;
     show?: (e: ui$NotificationShowEvent) => void;
   }
 
-  declare interface ui$NotificationEvent {
-    sender: ui$Notification;
+  declare interface kendo$ui$NotificationEvent {
+    sender: kendo$ui$Notification;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$NotificationHideEvent = {
+  declare type kendo$ui$NotificationHideEvent = {
     element?: JQuery
-  } & ui$NotificationEvent;
+  } & NotificationEvent;
 
-  declare type ui$NotificationShowEvent = {
+  declare type kendo$ui$NotificationShowEvent = {
     element?: JQuery
-  } & ui$NotificationEvent;
+  } & NotificationEvent;
 
-  declare class ui$NumericTextBox mixins undefined.ui$Widget {
-    static fn: ui$NumericTextBox;
+  declare class kendo$ui$NumericTextBox mixins undefined.Widget {
+    static fn: kendo$ui$NumericTextBox;
     options: ui$NumericTextBoxOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$NumericTextBox;
+    static extend(proto: Object): kendo$ui$NumericTextBox;
     constructor(
       element: drawing$Element,
       options?: ui$NumericTextBoxOptions
     ): this;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     focus(): void;
     max(): number;
@@ -4310,13 +4358,13 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$NumericTextBoxOptions {
+  declare interface kendo$ui$NumericTextBoxOptions {
     name?: string;
-    kendo$culture?: string;
+    culture?: string;
     decimals?: number;
     downArrowText?: string;
     factor?: number;
-    kendo$format?: string;
+    format?: string;
     max?: number;
     min?: number;
     placeholder?: string;
@@ -4330,23 +4378,23 @@ declare module "kendo-ui" {
     spin?: (e: ui$NumericTextBoxSpinEvent) => void;
   }
 
-  declare interface ui$NumericTextBoxEvent {
-    sender: ui$NumericTextBox;
+  declare interface kendo$ui$NumericTextBoxEvent {
+    sender: kendo$ui$NumericTextBox;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$NumericTextBoxChangeEvent = {} & ui$NumericTextBoxEvent;
+  declare type kendo$ui$NumericTextBoxChangeEvent = {} & NumericTextBoxEvent;
 
-  declare type ui$NumericTextBoxSpinEvent = {} & ui$NumericTextBoxEvent;
+  declare type kendo$ui$NumericTextBoxSpinEvent = {} & NumericTextBoxEvent;
 
-  declare class ui$Pager mixins undefined.ui$Widget {
-    static fn: ui$Pager;
+  declare class kendo$ui$Pager mixins undefined.Widget {
+    static fn: kendo$ui$Pager;
     options: ui$PagerOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Pager;
+    static extend(proto: Object): kendo$ui$Pager;
     constructor(element: drawing$Element, options?: ui$PagerOptions): this;
     totalPages(): number;
     pageSize(): number;
@@ -4356,7 +4404,7 @@ declare module "kendo-ui" {
     destroy(): void;
   }
 
-  declare interface ui$PagerMessages {
+  declare interface kendo$ui$PagerMessages {
     display?: string;
     empty?: string;
     allPages?: string;
@@ -4370,11 +4418,11 @@ declare module "kendo-ui" {
     refresh?: string;
   }
 
-  declare interface ui$PagerOptions {
+  declare interface kendo$ui$PagerOptions {
     name?: string;
     autoBind?: boolean;
     buttonCount?: number;
-    dataSource?: any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | kendo$dataDataSource;
     selectTemplate?: string;
     linkTemplate?: string;
     info?: boolean;
@@ -4383,78 +4431,51 @@ declare module "kendo-ui" {
     pageSizes?: boolean | any;
     previousNext?: boolean;
     refresh?: boolean;
-    messages?: ui$PagerMessages;
+    messages?: kendo$ui$PagerMessages;
     change?: (e: ui$PagerChangeEvent) => void;
   }
 
-  declare interface ui$PagerEvent {
-    sender: ui$Pager;
+  declare interface kendo$ui$PagerEvent {
+    sender: kendo$ui$Pager;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PagerChangeEvent = {} & ui$PagerEvent;
+  declare type kendo$ui$PagerChangeEvent = {} & PagerEvent;
 
-  declare class ui$PanelBar mixins undefined.ui$Widget {
-    static fn: ui$PanelBar;
+  declare class kendo$ui$PanelBar mixins undefined.Widget {
+    static fn: kendo$ui$PanelBar;
     options: ui$PanelBarOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$PanelBar;
+    static extend(proto: Object): kendo$ui$PanelBar;
     constructor(element: drawing$Element, options?: ui$PanelBarOptions): this;
-    append(item: string, referenceItem?: string): kendo$kendo$ui.ui$PanelBar;
-    append(
-      item: string,
-      referenceItem?: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    append(item: string, referenceItem?: JQuery): kendo$kendo$ui.ui$PanelBar;
-    append(
-      item: drawing$Element,
-      referenceItem?: string
-    ): kendo$kendo$ui.ui$PanelBar;
+    append(item: string, referenceItem?: string): kendo$uiPanelBar;
+    append(item: string, referenceItem?: drawing$Element): kendo$uiPanelBar;
+    append(item: string, referenceItem?: JQuery): kendo$uiPanelBar;
+    append(item: drawing$Element, referenceItem?: string): kendo$uiPanelBar;
     append(
       item: drawing$Element,
       referenceItem?: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    append(
-      item: drawing$Element,
-      referenceItem?: JQuery
-    ): kendo$kendo$ui.ui$PanelBar;
-    append(item: JQuery, referenceItem?: string): kendo$kendo$ui.ui$PanelBar;
-    append(
-      item: JQuery,
-      referenceItem?: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    append(item: JQuery, referenceItem?: JQuery): kendo$kendo$ui.ui$PanelBar;
-    append(item: any, referenceItem?: string): kendo$kendo$ui.ui$PanelBar;
-    append(
-      item: any,
-      referenceItem?: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    append(item: any, referenceItem?: JQuery): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
+    append(item: drawing$Element, referenceItem?: JQuery): kendo$uiPanelBar;
+    append(item: JQuery, referenceItem?: string): kendo$uiPanelBar;
+    append(item: JQuery, referenceItem?: drawing$Element): kendo$uiPanelBar;
+    append(item: JQuery, referenceItem?: JQuery): kendo$uiPanelBar;
+    append(item: any, referenceItem?: string): kendo$uiPanelBar;
+    append(item: any, referenceItem?: drawing$Element): kendo$uiPanelBar;
+    append(item: any, referenceItem?: JQuery): kendo$uiPanelBar;
     clearSelection(): void;
-    collapse(
-      element: string,
-      useAnimation: boolean
-    ): kendo$kendo$ui.ui$PanelBar;
-    collapse(
-      element: drawing$Element,
-      useAnimation: boolean
-    ): kendo$kendo$ui.ui$PanelBar;
-    collapse(
-      element: JQuery,
-      useAnimation: boolean
-    ): kendo$kendo$ui.ui$PanelBar;
+    collapse(element: string, useAnimation: boolean): kendo$uiPanelBar;
+    collapse(element: drawing$Element, useAnimation: boolean): kendo$uiPanelBar;
+    collapse(element: JQuery, useAnimation: boolean): kendo$uiPanelBar;
     destroy(): void;
-    enable(element: string, effects$enable: boolean): void;
-    enable(element: drawing$Element, effects$enable: boolean): void;
-    enable(element: JQuery, effects$enable: boolean): void;
-    expand(element: string, useAnimation: boolean): kendo$kendo$ui.ui$PanelBar;
-    expand(
-      element: drawing$Element,
-      useAnimation: boolean
-    ): kendo$kendo$ui.ui$PanelBar;
-    expand(element: JQuery, useAnimation: boolean): kendo$kendo$ui.ui$PanelBar;
+    enable(element: string, enable: boolean): void;
+    enable(element: drawing$Element, enable: boolean): void;
+    enable(element: JQuery, enable: boolean): void;
+    expand(element: string, useAnimation: boolean): kendo$uiPanelBar;
+    expand(element: drawing$Element, useAnimation: boolean): kendo$uiPanelBar;
+    expand(element: JQuery, useAnimation: boolean): kendo$uiPanelBar;
     insertAfter(item: string, referenceItem: string): void;
     insertAfter(item: string, referenceItem: drawing$Element): void;
     insertAfter(item: string, referenceItem: JQuery): void;
@@ -4467,48 +4488,33 @@ declare module "kendo-ui" {
     insertAfter(item: any, referenceItem: string): void;
     insertAfter(item: any, referenceItem: drawing$Element): void;
     insertAfter(item: any, referenceItem: JQuery): void;
-    insertBefore(
-      item: string,
-      referenceItem: string
-    ): kendo$kendo$ui.ui$PanelBar;
+    insertBefore(item: string, referenceItem: string): kendo$uiPanelBar;
     insertBefore(
       item: string,
       referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(
-      item: string,
-      referenceItem: JQuery
-    ): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
+    insertBefore(item: string, referenceItem: JQuery): kendo$uiPanelBar;
     insertBefore(
       item: drawing$Element,
       referenceItem: string
-    ): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
     insertBefore(
       item: drawing$Element,
       referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
     insertBefore(
       item: drawing$Element,
       referenceItem: JQuery
-    ): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(
-      item: JQuery,
-      referenceItem: string
-    ): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
+    insertBefore(item: JQuery, referenceItem: string): kendo$uiPanelBar;
     insertBefore(
       item: JQuery,
       referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(
-      item: JQuery,
-      referenceItem: JQuery
-    ): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(item: any, referenceItem: string): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(
-      item: any,
-      referenceItem: drawing$Element
-    ): kendo$kendo$ui.ui$PanelBar;
-    insertBefore(item: any, referenceItem: JQuery): kendo$kendo$ui.ui$PanelBar;
+    ): kendo$uiPanelBar;
+    insertBefore(item: JQuery, referenceItem: JQuery): kendo$uiPanelBar;
+    insertBefore(item: any, referenceItem: string): kendo$uiPanelBar;
+    insertBefore(item: any, referenceItem: drawing$Element): kendo$uiPanelBar;
+    insertBefore(item: any, referenceItem: JQuery): kendo$uiPanelBar;
     reload(element: string): void;
     reload(element: drawing$Element): void;
     reload(element: JQuery): void;
@@ -4521,41 +4527,41 @@ declare module "kendo-ui" {
     select(element?: JQuery): void;
   }
 
-  declare interface ui$PanelBarAnimationCollapse {
+  declare interface kendo$ui$PanelBarAnimationCollapse {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$PanelBarAnimationExpand {
+  declare interface kendo$ui$PanelBarAnimationExpand {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$PanelBarAnimation {
-    collapse?: ui$PanelBarAnimationCollapse;
-    expand?: ui$PanelBarAnimationExpand;
+  declare interface kendo$ui$PanelBarAnimation {
+    collapse?: kendo$ui$PanelBarAnimationCollapse;
+    expand?: kendo$ui$PanelBarAnimationExpand;
   }
 
-  declare interface ui$PanelBarMessages {
+  declare interface kendo$ui$PanelBarMessages {
     loading?: string;
     requestFailed?: string;
     retry?: string;
   }
 
-  declare interface ui$PanelBarOptions {
+  declare interface kendo$ui$PanelBarOptions {
     name?: string;
-    animation?: boolean | ui$PanelBarAnimation;
+    animation?: boolean | kendo$ui$PanelBarAnimation;
     autoBind?: boolean;
     contentUrls?: any;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$HierarchicalDataSource;
+    dataSource?: any | any | kendo$dataHierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
     expandMode?: string;
     loadOnDemand?: boolean;
-    messages?: ui$PanelBarMessages;
-    kendo$template?: string | Function;
+    messages?: kendo$ui$PanelBarMessages;
+    template?: string | Function;
     activate?: (e: ui$PanelBarActivateEvent) => void;
     collapse?: (e: ui$PanelBarCollapseEvent) => void;
     contentLoad?: (e: ui$PanelBarContentLoadEvent) => void;
@@ -4565,59 +4571,59 @@ declare module "kendo-ui" {
     select?: (e: ui$PanelBarSelectEvent) => void;
   }
 
-  declare interface ui$PanelBarEvent {
-    sender: ui$PanelBar;
+  declare interface kendo$ui$PanelBarEvent {
+    sender: kendo$ui$PanelBar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PanelBarActivateEvent = {
+  declare type kendo$ui$PanelBarActivateEvent = {
     item?: drawing$Element
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarCollapseEvent = {
+  declare type kendo$ui$PanelBarCollapseEvent = {
     item?: drawing$Element
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarContentLoadEvent = {
+  declare type kendo$ui$PanelBarContentLoadEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarDataBoundEvent = {
+  declare type kendo$ui$PanelBarDataBoundEvent = {
     node?: JQuery
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarErrorEvent = {
+  declare type kendo$ui$PanelBarErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarExpandEvent = {
+  declare type kendo$ui$PanelBarExpandEvent = {
     item?: drawing$Element
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare type ui$PanelBarSelectEvent = {
+  declare type kendo$ui$PanelBarSelectEvent = {
     item?: drawing$Element
-  } & ui$PanelBarEvent;
+  } & PanelBarEvent;
 
-  declare class ui$PivotConfigurator mixins undefined.ui$Widget {
-    static fn: ui$PivotConfigurator;
+  declare class kendo$ui$PivotConfigurator mixins undefined.Widget {
+    static fn: kendo$ui$PivotConfigurator;
     options: ui$PivotConfiguratorOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$PivotConfigurator;
+    static extend(proto: Object): kendo$ui$PivotConfigurator;
     constructor(
       element: drawing$Element,
       options?: ui$PivotConfiguratorOptions
     ): this;
     destroy(): void;
     refresh(): void;
-    setDataSource(dataSource: kendo$kendo$data.data$PivotDataSource): void;
+    setDataSource(dataSource: kendo$dataPivotDataSource): void;
   }
 
-  declare interface ui$PivotConfiguratorMessagesFieldMenuOperators {
+  declare interface kendo$ui$PivotConfiguratorMessagesFieldMenuOperators {
     contains?: string;
     doesnotcontain?: string;
     startswith?: string;
@@ -4626,7 +4632,7 @@ declare module "kendo-ui" {
     neq?: string;
   }
 
-  declare interface ui$PivotConfiguratorMessagesFieldMenu {
+  declare interface kendo$ui$PivotConfiguratorMessagesFieldMenu {
     info?: string;
     sortAscending?: string;
     sortDescending?: string;
@@ -4637,10 +4643,10 @@ declare module "kendo-ui" {
     clear?: string;
     ok?: string;
     cancel?: string;
-    operators?: ui$PivotConfiguratorMessagesFieldMenuOperators;
+    operators?: kendo$ui$PivotConfiguratorMessagesFieldMenuOperators;
   }
 
-  declare interface ui$PivotConfiguratorMessages {
+  declare interface kendo$ui$PivotConfiguratorMessages {
     measures?: string;
     columns?: string;
     rows?: string;
@@ -4648,35 +4654,35 @@ declare module "kendo-ui" {
     rowsLabel?: string;
     columnsLabel?: string;
     fieldsLabel?: string;
-    fieldMenu?: ui$PivotConfiguratorMessagesFieldMenu;
+    fieldMenu?: kendo$ui$PivotConfiguratorMessagesFieldMenu;
   }
 
-  declare interface ui$PivotConfiguratorSortable {
+  declare interface kendo$ui$PivotConfiguratorSortable {
     allowUnsort?: boolean;
   }
 
-  declare interface ui$PivotConfiguratorOptions {
+  declare interface kendo$ui$PivotConfiguratorOptions {
     name?: string;
-    dataSource?: any | kendo$kendo$data.data$PivotDataSource;
+    dataSource?: any | kendo$dataPivotDataSource;
     filterable?: boolean;
-    sortable?: boolean | ui$PivotConfiguratorSortable;
+    sortable?: boolean | kendo$ui$PivotConfiguratorSortable;
     height?: number | string;
-    messages?: ui$PivotConfiguratorMessages;
+    messages?: kendo$ui$PivotConfiguratorMessages;
   }
 
-  declare interface ui$PivotConfiguratorEvent {
-    sender: ui$PivotConfigurator;
+  declare interface kendo$ui$PivotConfiguratorEvent {
+    sender: kendo$ui$PivotConfigurator;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$PivotGrid mixins undefined.ui$Widget {
-    static fn: ui$PivotGrid;
+  declare class kendo$ui$PivotGrid mixins undefined.Widget {
+    static fn: kendo$ui$PivotGrid;
     options: ui$PivotGridOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$PivotGrid;
+    static extend(proto: Object): kendo$ui$PivotGrid;
     constructor(element: drawing$Element, options?: ui$PivotGridOptions): this;
     cellInfo(columnIndex: number, rowIndex: number): any;
     cellInfoByElement(cell: string): any;
@@ -4684,19 +4690,19 @@ declare module "kendo-ui" {
     cellInfoByElement(cell: JQuery): any;
     destroy(): void;
     refresh(): void;
-    setDataSource(dataSource: kendo$kendo$data.data$PivotDataSource): void;
+    setDataSource(dataSource: kendo$dataPivotDataSource): void;
     saveAsExcel(): void;
     saveAsPDF(): JQueryPromise<any>;
   }
 
-  declare interface ui$PivotGridExcel {
+  declare interface kendo$ui$PivotGridExcel {
     fileName?: string;
     filterable?: boolean;
     forceProxy?: boolean;
     proxyURL?: string;
   }
 
-  declare interface ui$PivotGridMessagesFieldMenuOperators {
+  declare interface kendo$ui$PivotGridMessagesFieldMenuOperators {
     contains?: string;
     doesnotcontain?: string;
     startswith?: string;
@@ -4705,7 +4711,7 @@ declare module "kendo-ui" {
     neq?: string;
   }
 
-  declare interface ui$PivotGridMessagesFieldMenu {
+  declare interface kendo$ui$PivotGridMessagesFieldMenu {
     info?: string;
     sortAscending?: string;
     sortDescending?: string;
@@ -4716,33 +4722,33 @@ declare module "kendo-ui" {
     clear?: string;
     ok?: string;
     cancel?: string;
-    operators?: ui$PivotGridMessagesFieldMenuOperators;
+    operators?: kendo$ui$PivotGridMessagesFieldMenuOperators;
   }
 
-  declare interface ui$PivotGridMessages {
+  declare interface kendo$ui$PivotGridMessages {
     measureFields?: string;
     columnFields?: string;
     rowFields?: string;
-    fieldMenu?: ui$PivotGridMessagesFieldMenu;
+    fieldMenu?: kendo$ui$PivotGridMessagesFieldMenu;
   }
 
-  declare interface ui$PivotGridPdfMargin {
+  declare interface kendo$ui$PivotGridPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$PivotGridPdf {
+  declare interface kendo$ui$PivotGridPdf {
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$PivotGridPdfMargin;
+    margin?: kendo$ui$PivotGridPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -4750,19 +4756,19 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$PivotGridSortable {
+  declare interface kendo$ui$PivotGridSortable {
     allowUnsort?: boolean;
   }
 
-  declare interface ui$PivotGridOptions {
+  declare interface kendo$ui$PivotGridOptions {
     name?: string;
-    dataSource?: any | kendo$kendo$data.data$PivotDataSource;
+    dataSource?: any | kendo$dataPivotDataSource;
     autoBind?: boolean;
     reorderable?: boolean;
-    excel?: ui$PivotGridExcel;
-    kendo$pdf?: ui$PivotGridPdf;
+    excel?: kendo$ui$PivotGridExcel;
+    pdf?: kendo$ui$PivotGridPdf;
     filterable?: boolean;
-    sortable?: boolean | ui$PivotGridSortable;
+    sortable?: boolean | kendo$ui$PivotGridSortable;
     columnWidth?: number;
     height?: number | string;
     columnHeaderTemplate?: string | Function;
@@ -4770,7 +4776,7 @@ declare module "kendo-ui" {
     kpiStatusTemplate?: string | Function;
     kpiTrendTemplate?: string | Function;
     rowHeaderTemplate?: string | Function;
-    messages?: ui$PivotGridMessages;
+    messages?: kendo$ui$PivotGridMessages;
     dataBinding?: (e: ui$PivotGridDataBindingEvent) => void;
     dataBound?: (e: ui$PivotGridDataBoundEvent) => void;
     expandMember?: (e: ui$PivotGridExpandMemberEvent) => void;
@@ -4779,41 +4785,41 @@ declare module "kendo-ui" {
     pdfExport?: (e: ui$PivotGridPdfExportEvent) => void;
   }
 
-  declare interface ui$PivotGridEvent {
-    sender: ui$PivotGrid;
+  declare interface kendo$ui$PivotGridEvent {
+    sender: kendo$ui$PivotGrid;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PivotGridDataBindingEvent = {} & ui$PivotGridEvent;
+  declare type kendo$ui$PivotGridDataBindingEvent = {} & PivotGridEvent;
 
-  declare type ui$PivotGridDataBoundEvent = {} & ui$PivotGridEvent;
+  declare type kendo$ui$PivotGridDataBoundEvent = {} & PivotGridEvent;
 
-  declare type ui$PivotGridExpandMemberEvent = {
+  declare type kendo$ui$PivotGridExpandMemberEvent = {
     axis?: string,
     path?: string[]
-  } & ui$PivotGridEvent;
+  } & PivotGridEvent;
 
-  declare type ui$PivotGridCollapseMemberEvent = {
+  declare type kendo$ui$PivotGridCollapseMemberEvent = {
     axis?: string,
     path?: string[]
-  } & ui$PivotGridEvent;
+  } & PivotGridEvent;
 
-  declare type ui$PivotGridExcelExportEvent = {
-    kendo$data?: any,
+  declare type kendo$ui$PivotGridExcelExportEvent = {
+    data?: any,
     workbook?: any
-  } & ui$PivotGridEvent;
+  } & PivotGridEvent;
 
-  declare type ui$PivotGridPdfExportEvent = {
+  declare type kendo$ui$PivotGridPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$PivotGridEvent;
+  } & PivotGridEvent;
 
-  declare class ui$Popup mixins undefined.ui$Widget {
-    static fn: ui$Popup;
+  declare class kendo$ui$Popup mixins undefined.Widget {
+    static fn: kendo$ui$Popup;
     options: ui$PopupOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Popup;
+    static extend(proto: Object): kendo$ui$Popup;
     constructor(element: drawing$Element, options?: ui$PopupOptions): this;
     close(): void;
     open(): void;
@@ -4822,25 +4828,25 @@ declare module "kendo-ui" {
     visible(): boolean;
   }
 
-  declare interface ui$PopupAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$PopupAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$PopupAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$PopupAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$PopupAnimation {
-    close?: ui$PopupAnimationClose;
-    open?: ui$PopupAnimationOpen;
+  declare interface kendo$ui$PopupAnimation {
+    close?: kendo$ui$PopupAnimationClose;
+    open?: kendo$ui$PopupAnimationOpen;
   }
 
-  declare interface ui$PopupOptions {
+  declare interface kendo$ui$PopupOptions {
     name?: string;
     adjustSize?: any;
-    animation?: boolean | ui$PopupAnimation;
+    animation?: boolean | kendo$ui$PopupAnimation;
     anchor?: string | JQuery;
     appendTo?: string | JQuery;
     collision?: string;
@@ -4852,46 +4858,46 @@ declare module "kendo-ui" {
     open?: (e: ui$PopupOpenEvent) => void;
   }
 
-  declare interface ui$PopupEvent {
-    sender: ui$Popup;
+  declare interface kendo$ui$PopupEvent {
+    sender: kendo$ui$Popup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PopupActivateEvent = {} & ui$PopupEvent;
+  declare type kendo$ui$PopupActivateEvent = {} & PopupEvent;
 
-  declare type ui$PopupCloseEvent = {} & ui$PopupEvent;
+  declare type kendo$ui$PopupCloseEvent = {} & PopupEvent;
 
-  declare type ui$PopupDeactivateEvent = {} & ui$PopupEvent;
+  declare type kendo$ui$PopupDeactivateEvent = {} & PopupEvent;
 
-  declare type ui$PopupOpenEvent = {} & ui$PopupEvent;
+  declare type kendo$ui$PopupOpenEvent = {} & PopupEvent;
 
-  declare class ui$ProgressBar mixins undefined.ui$Widget {
-    static fn: ui$ProgressBar;
+  declare class kendo$ui$ProgressBar mixins undefined.Widget {
+    static fn: kendo$ui$ProgressBar;
     options: ui$ProgressBarOptions;
     progressStatus: JQuery;
     progressWrapper: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ProgressBar;
+    static extend(proto: Object): kendo$ui$ProgressBar;
     constructor(
       element: drawing$Element,
       options?: ui$ProgressBarOptions
     ): this;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     value(): number;
     value(value: number): void;
   }
 
-  declare interface ui$ProgressBarAnimation {
+  declare interface kendo$ui$ProgressBarAnimation {
     duration?: number;
   }
 
-  declare interface ui$ProgressBarOptions {
+  declare interface kendo$ui$ProgressBarOptions {
     name?: string;
-    animation?: ui$ProgressBarAnimation;
+    animation?: kendo$ui$ProgressBarAnimation;
     chunkCount?: number;
-    effects$enable?: boolean;
+    enable?: boolean;
     max?: number;
     min?: number;
     orientation?: string;
@@ -4903,58 +4909,58 @@ declare module "kendo-ui" {
     complete?: (e: ui$ProgressBarCompleteEvent) => void;
   }
 
-  declare interface ui$ProgressBarEvent {
-    sender: ui$ProgressBar;
+  declare interface kendo$ui$ProgressBarEvent {
+    sender: kendo$ui$ProgressBar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ProgressBarChangeEvent = {
+  declare type kendo$ui$ProgressBarChangeEvent = {
     value?: number
-  } & ui$ProgressBarEvent;
+  } & ProgressBarEvent;
 
-  declare type ui$ProgressBarCompleteEvent = {
+  declare type kendo$ui$ProgressBarCompleteEvent = {
     value?: number
-  } & ui$ProgressBarEvent;
+  } & ProgressBarEvent;
 
-  declare class ui$Prompt mixins undefined.ui$Dialog {
-    static fn: ui$Prompt;
+  declare class kendo$ui$Prompt mixins undefined.Dialog {
+    static fn: kendo$ui$Prompt;
     options: ui$PromptOptions;
     result: JQueryPromise<any>;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Prompt;
+    static extend(proto: Object): kendo$ui$Prompt;
     constructor(element: drawing$Element, options?: ui$PromptOptions): this;
   }
 
-  declare interface ui$PromptMessages {
+  declare interface kendo$ui$PromptMessages {
     okText?: string;
     cancel?: string;
   }
 
-  declare interface ui$PromptOptions {
+  declare interface kendo$ui$PromptOptions {
     name?: string;
-    messages?: ui$PromptMessages;
+    messages?: kendo$ui$PromptMessages;
   }
 
-  declare interface ui$PromptEvent {
-    sender: ui$Prompt;
+  declare interface kendo$ui$PromptEvent {
+    sender: kendo$ui$Prompt;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$RangeSlider mixins undefined.ui$Widget {
-    static fn: ui$RangeSlider;
+  declare class kendo$ui$RangeSlider mixins undefined.Widget {
+    static fn: kendo$ui$RangeSlider;
     options: ui$RangeSliderOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$RangeSlider;
+    static extend(proto: Object): kendo$ui$RangeSlider;
     constructor(
       element: drawing$Element,
       options?: ui$RangeSliderOptions
     ): this;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     value(): any;
     value(startEndArray: any): void;
     values(): any;
@@ -4962,13 +4968,13 @@ declare module "kendo-ui" {
     resize(): void;
   }
 
-  declare interface ui$RangeSliderTooltip {
+  declare interface kendo$ui$RangeSliderTooltip {
     enabled?: boolean;
-    kendo$format?: string;
-    kendo$template?: string;
+    format?: string;
+    template?: string;
   }
 
-  declare interface ui$RangeSliderOptions {
+  declare interface kendo$ui$RangeSliderOptions {
     name?: string;
     largeStep?: number;
     leftDragHandleTitle?: string;
@@ -4980,31 +4986,31 @@ declare module "kendo-ui" {
     selectionStart?: number;
     smallStep?: number;
     tickPlacement?: string;
-    tooltip?: ui$RangeSliderTooltip;
+    tooltip?: kendo$ui$RangeSliderTooltip;
     change?: (e: ui$RangeSliderChangeEvent) => void;
     slide?: (e: ui$RangeSliderSlideEvent) => void;
   }
 
-  declare interface ui$RangeSliderEvent {
-    sender: ui$RangeSlider;
+  declare interface kendo$ui$RangeSliderEvent {
+    sender: kendo$ui$RangeSlider;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$RangeSliderChangeEvent = {
+  declare type kendo$ui$RangeSliderChangeEvent = {
     value?: any
-  } & ui$RangeSliderEvent;
+  } & RangeSliderEvent;
 
-  declare type ui$RangeSliderSlideEvent = {
+  declare type kendo$ui$RangeSliderSlideEvent = {
     value?: any
-  } & ui$RangeSliderEvent;
+  } & RangeSliderEvent;
 
-  declare class ui$ResponsivePanel mixins undefined.ui$Widget {
-    static fn: ui$ResponsivePanel;
+  declare class kendo$ui$ResponsivePanel mixins undefined.Widget {
+    static fn: kendo$ui$ResponsivePanel;
     options: ui$ResponsivePanelOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ResponsivePanel;
+    static extend(proto: Object): kendo$ui$ResponsivePanel;
     constructor(
       element: drawing$Element,
       options?: ui$ResponsivePanelOptions
@@ -5014,7 +5020,7 @@ declare module "kendo-ui" {
     open(): void;
   }
 
-  declare interface ui$ResponsivePanelOptions {
+  declare interface kendo$ui$ResponsivePanelOptions {
     name?: string;
     autoClose?: boolean;
     breakpoint?: number;
@@ -5024,82 +5030,82 @@ declare module "kendo-ui" {
     open?: (e: ui$ResponsivePanelEvent) => void;
   }
 
-  declare interface ui$ResponsivePanelEvent {
-    sender: ui$ResponsivePanel;
+  declare interface kendo$ui$ResponsivePanelEvent {
+    sender: kendo$ui$ResponsivePanel;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$Scheduler mixins undefined.ui$Widget {
-    static fn: ui$Scheduler;
+  declare class kendo$ui$Scheduler mixins undefined.Widget {
+    static fn: kendo$ui$Scheduler;
     options: ui$SchedulerOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     resources: any;
-    calendar: kendo$kendo$ui.ui$Calendar;
+    calendar: kendo$uiCalendar;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Scheduler;
+    static extend(proto: Object): kendo$ui$Scheduler;
     constructor(element: drawing$Element, options?: ui$SchedulerOptions): this;
-    addEvent(kendo$data: any): void;
+    addEvent(data: any): void;
     cancelEvent(): void;
     data(): void;
     date(): Date;
     date(value?: Date): void;
     destroy(): void;
     editEvent(event: string): void;
-    editEvent(event: kendo$kendo$data.ui$SchedulerEvent): void;
+    editEvent(event: kendo$dataSchedulerEvent): void;
     items(): any;
-    occurrenceByUid(uid: string): kendo$kendo$data.ui$SchedulerEvent;
+    occurrenceByUid(uid: string): kendo$dataSchedulerEvent;
     occurrencesInRange(start: Date, end: Date): any;
     refresh(): void;
     removeEvent(event: string): void;
-    removeEvent(event: kendo$kendo$data.ui$SchedulerEvent): void;
+    removeEvent(event: kendo$dataSchedulerEvent): void;
     resourcesBySlot(slot: any): any;
     saveAsPDF(): JQueryPromise<any>;
     saveEvent(): void;
     select(): void;
     select(events: any, options: any): void;
-    setDataSource(dataSource: kendo$kendo$data.data$SchedulerDataSource): void;
+    setDataSource(dataSource: kendo$dataSchedulerDataSource): void;
     slotByPosition(xPosition: number, yPosition: number): any;
     slotByElement(element: drawing$Element): any;
     slotByElement(element: JQuery): any;
-    view(): kendo$kendo$ui.ui$SchedulerView;
+    view(): kendo$uiSchedulerView;
     view(type?: string): void;
     viewName(): string;
   }
 
-  declare interface ui$SchedulerCurrentTimeMarker {
+  declare interface kendo$ui$SchedulerCurrentTimeMarker {
     updateInterval?: number;
     useLocalTimezone?: boolean;
   }
 
-  declare interface ui$SchedulerEditable {
+  declare interface kendo$ui$SchedulerEditable {
     confirmation?: boolean | string;
     create?: boolean;
-    kendo$destroy?: boolean;
+    destroy?: boolean;
     editRecurringMode?: string;
     move?: boolean;
-    kendo$resize?: boolean;
-    kendo$template?: string | Function;
+    resize?: boolean;
+    template?: string | Function;
     update?: boolean;
     window?: any;
   }
 
-  declare interface ui$SchedulerFooter {
+  declare interface kendo$ui$SchedulerFooter {
     command?: string | boolean;
   }
 
-  declare interface ui$SchedulerGroup {
-    kendo$date?: boolean;
+  declare interface kendo$ui$SchedulerGroup {
+    date?: boolean;
     resources?: any;
     orientation?: string;
   }
 
-  declare interface ui$SchedulerMessagesEditable {
+  declare interface kendo$ui$SchedulerMessagesEditable {
     confirmation?: string;
   }
 
-  declare interface ui$SchedulerMessagesEditor {
+  declare interface kendo$ui$SchedulerMessagesEditor {
     allDayEvent?: string;
     description?: string;
     editorTitle?: string;
@@ -5109,18 +5115,18 @@ declare module "kendo-ui" {
     separateTimezones?: string;
     start?: string;
     startTimezone?: string;
-    kendo$timezone?: string;
+    timezone?: string;
     timezoneEditorButton?: string;
     timezoneEditorTitle?: string;
     title?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorDaily {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorDaily {
     interval?: string;
     repeatEvery?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorEnd {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorEnd {
     after?: string;
     occurrence?: string;
     label?: string;
@@ -5129,7 +5135,7 @@ declare module "kendo-ui" {
     on?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorFrequencies {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorFrequencies {
     daily?: string;
     monthly?: string;
     never?: string;
@@ -5137,14 +5143,14 @@ declare module "kendo-ui" {
     yearly?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorMonthly {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorMonthly {
     day?: string;
     interval?: string;
     repeatEvery?: string;
     repeatOn?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorOffsetPositions {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorOffsetPositions {
     first?: string;
     second?: string;
     third?: string;
@@ -5152,38 +5158,38 @@ declare module "kendo-ui" {
     last?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorWeekdays {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorWeekdays {
     day?: string;
     weekday?: string;
     weekend?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorWeekly {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorWeekly {
     interval?: string;
     repeatEvery?: string;
     repeatOn?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditorYearly {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditorYearly {
     of?: string;
     repeatEvery?: string;
     repeatOn?: string;
     interval?: string;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceEditor {
-    daily?: ui$SchedulerMessagesRecurrenceEditorDaily;
-    end?: ui$SchedulerMessagesRecurrenceEditorEnd;
-    frequencies?: ui$SchedulerMessagesRecurrenceEditorFrequencies;
-    monthly?: ui$SchedulerMessagesRecurrenceEditorMonthly;
-    offsetPositions?: ui$SchedulerMessagesRecurrenceEditorOffsetPositions;
+  declare interface kendo$ui$SchedulerMessagesRecurrenceEditor {
+    daily?: kendo$ui$SchedulerMessagesRecurrenceEditorDaily;
+    end?: kendo$ui$SchedulerMessagesRecurrenceEditorEnd;
+    frequencies?: kendo$ui$SchedulerMessagesRecurrenceEditorFrequencies;
+    monthly?: kendo$ui$SchedulerMessagesRecurrenceEditorMonthly;
+    offsetPositions?: kendo$ui$SchedulerMessagesRecurrenceEditorOffsetPositions;
     recurrenceEditorTitle?: string;
-    weekly?: ui$SchedulerMessagesRecurrenceEditorWeekly;
-    weekdays?: ui$SchedulerMessagesRecurrenceEditorWeekdays;
-    yearly?: ui$SchedulerMessagesRecurrenceEditorYearly;
+    weekly?: kendo$ui$SchedulerMessagesRecurrenceEditorWeekly;
+    weekdays?: kendo$ui$SchedulerMessagesRecurrenceEditorWeekdays;
+    yearly?: kendo$ui$SchedulerMessagesRecurrenceEditorYearly;
   }
 
-  declare interface ui$SchedulerMessagesRecurrenceMessages {
+  declare interface kendo$ui$SchedulerMessagesRecurrenceMessages {
     deleteRecurring?: string;
     deleteWindowOccurrence?: string;
     deleteWindowSeries?: string;
@@ -5194,55 +5200,55 @@ declare module "kendo-ui" {
     editWindowTitle?: string;
   }
 
-  declare interface ui$SchedulerMessagesViews {
+  declare interface kendo$ui$SchedulerMessagesViews {
     day?: string;
     week?: string;
     month?: string;
     agenda?: string;
   }
 
-  declare interface ui$SchedulerMessages {
+  declare interface kendo$ui$SchedulerMessages {
     allDay?: string;
     ariaEventLabel?: string;
     ariaSlotLabel?: string;
     cancel?: string;
-    kendo$date?: string;
+    date?: string;
     deleteWindowTitle?: string;
-    kendo$destroy?: string;
+    destroy?: string;
     event?: string;
     defaultRowText?: string;
     next?: string;
-    kendo$pdf?: string;
+    pdf?: string;
     previous?: string;
     save?: string;
     showFullDay?: string;
     showWorkDay?: string;
     time?: string;
-    date$today?: string;
-    editable?: ui$SchedulerMessagesEditable;
-    editor?: ui$SchedulerMessagesEditor;
-    recurrenceEditor?: ui$SchedulerMessagesRecurrenceEditor;
-    recurrenceMessages?: ui$SchedulerMessagesRecurrenceMessages;
-    views?: ui$SchedulerMessagesViews;
+    today?: string;
+    editable?: kendo$ui$SchedulerMessagesEditable;
+    editor?: kendo$ui$SchedulerMessagesEditor;
+    recurrenceEditor?: kendo$ui$SchedulerMessagesRecurrenceEditor;
+    recurrenceMessages?: kendo$ui$SchedulerMessagesRecurrenceMessages;
+    views?: kendo$ui$SchedulerMessagesViews;
   }
 
-  declare interface ui$SchedulerPdfMargin {
+  declare interface kendo$ui$SchedulerPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$SchedulerPdf {
+  declare interface kendo$ui$SchedulerPdf {
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$SchedulerPdfMargin;
+    margin?: kendo$ui$SchedulerPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -5250,9 +5256,9 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$SchedulerResource {
+  declare interface kendo$ui$SchedulerResource {
     dataColorField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataTextField?: string;
     dataValueField?: string;
     field?: string;
@@ -5262,34 +5268,34 @@ declare module "kendo-ui" {
     valuePrimitive?: boolean;
   }
 
-  declare interface ui$SchedulerToolbarItem {
+  declare interface kendo$ui$SchedulerToolbarItem {
     name?: string;
   }
 
-  declare interface ui$SchedulerViewEditable {
+  declare interface kendo$ui$SchedulerViewEditable {
     create?: boolean;
-    kendo$destroy?: boolean;
+    destroy?: boolean;
     update?: boolean;
   }
 
-  declare interface ui$SchedulerViewGroup {
-    kendo$date?: boolean;
+  declare interface kendo$ui$SchedulerViewGroup {
+    date?: boolean;
     orientation?: string;
   }
 
-  declare interface ui$SchedulerView {
+  declare interface kendo$ui$SchedulerView {
     allDayEventTemplate?: string | Function;
     allDaySlot?: boolean;
     allDaySlotTemplate?: string | Function;
     columnWidth?: number;
     dateHeaderTemplate?: string | Function;
     dayTemplate?: string | Function;
-    editable?: boolean | ui$SchedulerViewEditable;
+    editable?: boolean | kendo$ui$SchedulerViewEditable;
     endTime?: Date;
     eventHeight?: number;
     eventTemplate?: string | Function;
     eventTimeTemplate?: string | Function;
-    group?: ui$SchedulerViewGroup;
+    group?: kendo$ui$SchedulerViewGroup;
     majorTick?: number;
     majorTimeHeaderTemplate?: string | Function;
     minorTickCount?: number;
@@ -5307,7 +5313,7 @@ declare module "kendo-ui" {
     workWeekEnd?: number;
   }
 
-  declare interface ui$SchedulerSelectOptions {
+  declare interface kendo$ui$SchedulerSelectOptions {
     events?: any;
     resources?: any;
     start?: Date;
@@ -5315,39 +5321,39 @@ declare module "kendo-ui" {
     isAllDay?: boolean;
   }
 
-  declare interface ui$SchedulerOptions {
+  declare interface kendo$ui$SchedulerOptions {
     name?: string;
     allDayEventTemplate?: string | Function;
     allDaySlot?: boolean;
     autoBind?: boolean;
-    currentTimeMarker?: boolean | ui$SchedulerCurrentTimeMarker;
-    dataSource?: any | any | kendo$kendo$data.data$SchedulerDataSource;
-    kendo$date?: Date;
+    currentTimeMarker?: boolean | kendo$ui$SchedulerCurrentTimeMarker;
+    dataSource?: any | any | kendo$dataSchedulerDataSource;
+    date?: Date;
     dateHeaderTemplate?: string | Function;
-    editable?: boolean | ui$SchedulerEditable;
+    editable?: boolean | kendo$ui$SchedulerEditable;
     endTime?: Date;
     eventTemplate?: string | Function;
-    footer?: boolean | ui$SchedulerFooter;
-    group?: ui$SchedulerGroup;
+    footer?: boolean | kendo$ui$SchedulerFooter;
+    group?: kendo$ui$SchedulerGroup;
     groupHeaderTemplate?: string | Function;
     height?: number | string;
     majorTick?: number;
     majorTimeHeaderTemplate?: string | Function;
     max?: Date;
-    messages?: ui$SchedulerMessages;
+    messages?: kendo$ui$SchedulerMessages;
     min?: Date;
     minorTickCount?: number;
     minorTimeHeaderTemplate?: string | Function;
-    kendo$mobile?: boolean | string;
-    kendo$pdf?: ui$SchedulerPdf;
-    resources?: ui$SchedulerResource[];
+    mobile?: boolean | string;
+    pdf?: kendo$ui$SchedulerPdf;
+    resources?: kendo$ui$SchedulerResource[];
     selectable?: boolean;
     showWorkHours?: boolean;
     snap?: boolean;
     startTime?: Date;
-    kendo$timezone?: string;
-    toolbar?: ui$SchedulerToolbarItem[];
-    views?: ui$SchedulerView[];
+    timezone?: string;
+    toolbar?: kendo$ui$SchedulerToolbarItem[];
+    views?: kendo$ui$SchedulerView[];
     width?: number | string;
     workDayStart?: Date;
     workDayEnd?: Date;
@@ -5364,104 +5370,104 @@ declare module "kendo-ui" {
     moveEnd?: (e: ui$SchedulerMoveEndEvent) => void;
     navigate?: (e: ui$SchedulerNavigateEvent) => void;
     pdfExport?: (e: ui$SchedulerPdfExportEvent) => void;
-    timezone$remove?: (e: ui$SchedulerRemoveEvent) => void;
+    remove?: (e: ui$SchedulerRemoveEvent) => void;
     resizeStart?: (e: ui$SchedulerResizeStartEvent) => void;
-    kendo$resize?: (e: ui$SchedulerResizeEvent) => void;
+    resize?: (e: ui$SchedulerResizeEvent) => void;
     resizeEnd?: (e: ui$SchedulerResizeEndEvent) => void;
     save?: (e: ui$SchedulerSaveEvent) => void;
   }
 
-  declare interface ui$SchedulerEvent {
-    sender: ui$Scheduler;
+  declare interface kendo$ui$SchedulerEvent {
+    sender: kendo$ui$Scheduler;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SchedulerAddEvent = {
+  declare type kendo$ui$SchedulerAddEvent = {
     event?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerCancelEvent = {
+  declare type kendo$ui$SchedulerCancelEvent = {
     container?: JQuery,
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerChangeEvent = {
+  declare type kendo$ui$SchedulerChangeEvent = {
     start?: Date,
     end?: Date,
     events?: any,
     slots?: any,
     resources?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerDataBindingEvent = {} & ui$SchedulerEvent;
+  declare type kendo$ui$SchedulerDataBindingEvent = {} & SchedulerEvent;
 
-  declare type ui$SchedulerDataBoundEvent = {} & ui$SchedulerEvent;
+  declare type kendo$ui$SchedulerDataBoundEvent = {} & SchedulerEvent;
 
-  declare type ui$SchedulerEditEvent = {
+  declare type kendo$ui$SchedulerEditEvent = {
     container?: JQuery,
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerMoveStartEvent = {
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+  declare type kendo$ui$SchedulerMoveStartEvent = {
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerMoveEvent = {
-    event?: kendo$kendo$data.ui$SchedulerEvent,
+  declare type kendo$ui$SchedulerMoveEvent = {
+    event?: kendo$dataSchedulerEvent,
     slot?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerMoveEndEvent = {
+  declare type kendo$ui$SchedulerMoveEndEvent = {
     start?: Date,
     end?: Date,
-    event?: kendo$kendo$data.ui$SchedulerEvent,
+    event?: kendo$dataSchedulerEvent,
     slot?: any,
     resources?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerNavigateEvent = {
+  declare type kendo$ui$SchedulerNavigateEvent = {
     action?: string,
-    kendo$date?: Date,
+    date?: Date,
     view?: string
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerPdfExportEvent = {
+  declare type kendo$ui$SchedulerPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerRemoveEvent = {
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+  declare type kendo$ui$SchedulerRemoveEvent = {
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerResizeStartEvent = {
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+  declare type kendo$ui$SchedulerResizeStartEvent = {
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerResizeEvent = {
-    event?: kendo$kendo$data.ui$SchedulerEvent,
+  declare type kendo$ui$SchedulerResizeEvent = {
+    event?: kendo$dataSchedulerEvent,
     slot?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerResizeEndEvent = {
+  declare type kendo$ui$SchedulerResizeEndEvent = {
     start?: Date,
     end?: Date,
-    event?: kendo$kendo$data.ui$SchedulerEvent,
+    event?: kendo$dataSchedulerEvent,
     slot?: any
-  } & ui$SchedulerEvent;
+  } & SchedulerEvent;
 
-  declare type ui$SchedulerSaveEvent = {
+  declare type kendo$ui$SchedulerSaveEvent = {
     container?: JQuery,
-    event?: kendo$kendo$data.ui$SchedulerEvent
-  } & ui$SchedulerEvent;
+    event?: kendo$dataSchedulerEvent
+  } & SchedulerEvent;
 
-  declare class ui$ScrollView mixins undefined.ui$Widget {
-    static fn: ui$ScrollView;
+  declare class kendo$ui$ScrollView mixins undefined.Widget {
+    static fn: kendo$ui$ScrollView;
     options: ui$ScrollViewOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ScrollView;
+    static extend(proto: Object): kendo$ui$ScrollView;
     constructor(element: drawing$Element, options?: ui$ScrollViewOptions): this;
     content(content: string): void;
     content(content: JQuery): void;
@@ -5470,20 +5476,20 @@ declare module "kendo-ui" {
     prev(): void;
     refresh(): void;
     scrollTo(page: number, instant: boolean): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
   }
 
-  declare interface ui$ScrollViewOptions {
+  declare interface kendo$ui$ScrollViewOptions {
     name?: string;
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
     page?: number;
-    kendo$template?: string;
+    template?: string;
     velocityThreshold?: number;
     change?: (e: ui$ScrollViewChangeEvent) => void;
     refresh?: (e: ui$ScrollViewRefreshEvent) => void;
@@ -5491,55 +5497,55 @@ declare module "kendo-ui" {
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
     itemsPerPage?: number;
     page?: number;
     pageSize?: number;
-    kendo$template?: string;
+    template?: string;
     velocityThreshold?: number;
     changing?: (e: ui$ScrollViewChangingEvent) => void;
     change?: (e: ui$ScrollViewChangeEvent) => void;
     refresh?: (e: ui$ScrollViewRefreshEvent) => void;
   }
 
-  declare interface ui$ScrollViewEvent {
-    sender: ui$ScrollView;
+  declare interface kendo$ui$ScrollViewEvent {
+    sender: kendo$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ScrollView;
+    sender: kendo$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ScrollViewChangeEvent = {
+  declare type kendo$ui$ScrollViewChangeEvent = {
     currentPage?: number,
     nextPage?: number,
     element?: JQuery,
-    kendo$data?: any,
+    data?: any,
     page?: number,
     element?: JQuery,
-    kendo$data?: any
-  } & ui$ScrollViewEvent;
+    data?: any
+  } & ScrollViewEvent;
 
-  declare type ui$ScrollViewRefreshEvent = {
+  declare type kendo$ui$ScrollViewRefreshEvent = {
     pageCount?: number,
     page?: number,
     pageCount?: number,
     page?: number
-  } & ui$ScrollViewEvent;
+  } & ScrollViewEvent;
 
-  declare class ui$Slider mixins undefined.ui$Widget {
-    static fn: ui$Slider;
+  declare class kendo$ui$Slider mixins undefined.Widget {
+    static fn: kendo$ui$Slider;
     options: ui$SliderOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Slider;
+    static extend(proto: Object): kendo$ui$Slider;
     constructor(element: drawing$Element, options?: ui$SliderOptions): this;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     max(): number;
     max(value: number): void;
     max(value: string): void;
@@ -5552,13 +5558,13 @@ declare module "kendo-ui" {
     resize(): void;
   }
 
-  declare interface ui$SliderTooltip {
+  declare interface kendo$ui$SliderTooltip {
     enabled?: boolean;
-    kendo$format?: string;
-    kendo$template?: string | Function;
+    format?: string;
+    template?: string | Function;
   }
 
-  declare interface ui$SliderOptions {
+  declare interface kendo$ui$SliderOptions {
     name?: string;
     decreaseButtonTitle?: string;
     dragHandleTitle?: string;
@@ -5570,50 +5576,50 @@ declare module "kendo-ui" {
     showButtons?: boolean;
     smallStep?: number;
     tickPlacement?: string;
-    tooltip?: ui$SliderTooltip;
+    tooltip?: kendo$ui$SliderTooltip;
     value?: number;
     change?: (e: ui$SliderChangeEvent) => void;
     slide?: (e: ui$SliderSlideEvent) => void;
   }
 
-  declare interface ui$SliderEvent {
-    sender: ui$Slider;
+  declare interface kendo$ui$SliderEvent {
+    sender: kendo$ui$Slider;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SliderChangeEvent = {
+  declare type kendo$ui$SliderChangeEvent = {
     value?: number
-  } & ui$SliderEvent;
+  } & SliderEvent;
 
-  declare type ui$SliderSlideEvent = {
+  declare type kendo$ui$SliderSlideEvent = {
     value?: number
-  } & ui$SliderEvent;
+  } & SliderEvent;
 
-  declare class ui$Sortable mixins undefined.ui$Widget {
-    static fn: ui$Sortable;
+  declare class kendo$ui$Sortable mixins undefined.Widget {
+    static fn: kendo$ui$Sortable;
     options: ui$SortableOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Sortable;
+    static extend(proto: Object): kendo$ui$Sortable;
     constructor(element: drawing$Element, options?: ui$SortableOptions): this;
     indexOf(element: JQuery): number;
     items(): JQuery;
   }
 
-  declare interface ui$SortableCursorOffset {
+  declare interface kendo$ui$SortableCursorOffset {
     left?: number;
     top?: number;
   }
 
-  declare interface ui$SortableOptions {
+  declare interface kendo$ui$SortableOptions {
     name?: string;
     axis?: string;
     autoScroll?: boolean;
     container?: string | JQuery;
     connectWith?: string;
     cursor?: string;
-    cursorOffset?: ui$SortableCursorOffset;
+    cursorOffset?: kendo$ui$SortableCursorOffset;
     disabled?: string;
     filter?: string;
     handler?: string;
@@ -5628,57 +5634,57 @@ declare module "kendo-ui" {
     cancel?: (e: ui$SortableCancelEvent) => void;
   }
 
-  declare interface ui$SortableEvent {
-    sender: ui$Sortable;
+  declare interface kendo$ui$SortableEvent {
+    sender: kendo$ui$Sortable;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SortableStartEvent = {
+  declare type kendo$ui$SortableStartEvent = {
     draggableEvent?: any,
     item?: JQuery
-  } & ui$SortableEvent;
+  } & SortableEvent;
 
-  declare type ui$SortableMoveEvent = {
+  declare type kendo$ui$SortableMoveEvent = {
     item?: JQuery,
     target?: JQuery,
-    list?: kendo$kendo$ui.ui$Sortable,
+    list?: kendo$uiSortable,
     draggableEvent?: any
-  } & ui$SortableEvent;
+  } & SortableEvent;
 
-  declare type ui$SortableEndEvent = {
+  declare type kendo$ui$SortableEndEvent = {
     action?: string,
     item?: JQuery,
     oldIndex?: number,
     newIndex?: number,
     draggableEvent?: any
-  } & ui$SortableEvent;
+  } & SortableEvent;
 
-  declare type ui$SortableChangeEvent = {
+  declare type kendo$ui$SortableChangeEvent = {
     action?: string,
     item?: JQuery,
     oldIndex?: number,
     newIndex?: number,
     draggableEvent?: any
-  } & ui$SortableEvent;
+  } & SortableEvent;
 
-  declare type ui$SortableCancelEvent = {
+  declare type kendo$ui$SortableCancelEvent = {
     item?: JQuery
-  } & ui$SortableEvent;
+  } & SortableEvent;
 
-  declare class ui$Splitter mixins undefined.ui$Widget {
-    static fn: ui$Splitter;
+  declare class kendo$ui$Splitter mixins undefined.Widget {
+    static fn: kendo$ui$Splitter;
     options: ui$SplitterOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Splitter;
+    static extend(proto: Object): kendo$ui$Splitter;
     constructor(element: drawing$Element, options?: ui$SplitterOptions): this;
-    ajaxRequest(pane: string, url: string, kendo$data: any): void;
-    ajaxRequest(pane: string, url: string, kendo$data: string): void;
-    ajaxRequest(pane: drawing$Element, url: string, kendo$data: any): void;
-    ajaxRequest(pane: drawing$Element, url: string, kendo$data: string): void;
-    ajaxRequest(pane: JQuery, url: string, kendo$data: any): void;
-    ajaxRequest(pane: JQuery, url: string, kendo$data: string): void;
+    ajaxRequest(pane: string, url: string, data: any): void;
+    ajaxRequest(pane: string, url: string, data: string): void;
+    ajaxRequest(pane: drawing$Element, url: string, data: any): void;
+    ajaxRequest(pane: drawing$Element, url: string, data: string): void;
+    ajaxRequest(pane: JQuery, url: string, data: any): void;
+    ajaxRequest(pane: JQuery, url: string, data: string): void;
     append(config?: any): JQuery;
     collapse(pane: string): void;
     collapse(pane: drawing$Element): void;
@@ -5713,7 +5719,7 @@ declare module "kendo-ui" {
     toggle(pane: JQuery, expand?: boolean): void;
   }
 
-  declare interface ui$SplitterPane {
+  declare interface kendo$ui$SplitterPane {
     collapsed?: boolean;
     collapsedSize?: string;
     collapsible?: boolean;
@@ -5725,82 +5731,79 @@ declare module "kendo-ui" {
     size?: string;
   }
 
-  declare interface ui$SplitterOptions {
+  declare interface kendo$ui$SplitterOptions {
     name?: string;
     orientation?: string;
-    panes?: ui$SplitterPane[];
+    panes?: kendo$ui$SplitterPane[];
     collapse?: (e: ui$SplitterCollapseEvent) => void;
     contentLoad?: (e: ui$SplitterContentLoadEvent) => void;
     error?: (e: ui$SplitterErrorEvent) => void;
     expand?: (e: ui$SplitterExpandEvent) => void;
     layoutChange?: (e: ui$SplitterEvent) => void;
-    kendo$resize?: (e: ui$SplitterEvent) => void;
+    resize?: (e: ui$SplitterEvent) => void;
   }
 
-  declare interface ui$SplitterEvent {
-    sender: ui$Splitter;
+  declare interface kendo$ui$SplitterEvent {
+    sender: kendo$ui$Splitter;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SplitterCollapseEvent = {
+  declare type kendo$ui$SplitterCollapseEvent = {
     pane?: drawing$Element
-  } & ui$SplitterEvent;
+  } & SplitterEvent;
 
-  declare type ui$SplitterContentLoadEvent = {
+  declare type kendo$ui$SplitterContentLoadEvent = {
     pane?: drawing$Element
-  } & ui$SplitterEvent;
+  } & SplitterEvent;
 
-  declare type ui$SplitterErrorEvent = {
+  declare type kendo$ui$SplitterErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & ui$SplitterEvent;
+  } & SplitterEvent;
 
-  declare type ui$SplitterExpandEvent = {
+  declare type kendo$ui$SplitterExpandEvent = {
     pane?: drawing$Element
-  } & ui$SplitterEvent;
+  } & SplitterEvent;
 
-  declare class ui$Spreadsheet mixins undefined.ui$Widget {
-    static fn: ui$Spreadsheet;
+  declare class kendo$ui$Spreadsheet mixins undefined.Widget {
+    static fn: kendo$ui$Spreadsheet;
     options: ui$SpreadsheetOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Spreadsheet;
+    static extend(proto: Object): kendo$ui$Spreadsheet;
     constructor(
       element: drawing$Element,
       options?: ui$SpreadsheetOptions
     ): this;
-    activeSheet(): kendo$kendo$spreadsheet.spreadsheet$Sheet;
-    activeSheet(sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet): void;
-    cellContextMenu(): kendo$kendo$ui.ui$ContextMenu;
-    rowHeaderContextMenu(): kendo$kendo$ui.ui$ContextMenu;
-    colHeaderContextMenu(): kendo$kendo$ui.ui$ContextMenu;
+    activeSheet(): kendo$spreadsheetSheet;
+    activeSheet(sheet?: kendo$spreadsheetSheet): void;
+    cellContextMenu(): kendo$uiContextMenu;
+    rowHeaderContextMenu(): kendo$uiContextMenu;
+    colHeaderContextMenu(): kendo$uiContextMenu;
     sheets(): any;
     fromFile(blob: Blob): JQueryPromise<any>;
     fromFile(blob: File): JQueryPromise<any>;
     saveAsExcel(): void;
     saveAsPDF(): JQueryPromise<any>;
-    sheetByName(name: string): kendo$kendo$spreadsheet.spreadsheet$Sheet;
-    sheetIndex(sheet: kendo$kendo$spreadsheet.spreadsheet$Sheet): number;
-    sheetByIndex(index: number): kendo$kendo$spreadsheet.spreadsheet$Sheet;
-    insertSheet(options: any): kendo$kendo$spreadsheet.spreadsheet$Sheet;
-    moveSheetToIndex(
-      sheet: kendo$kendo$spreadsheet.spreadsheet$Sheet,
-      index: number
-    ): void;
+    sheetByName(name: string): kendo$spreadsheetSheet;
+    sheetIndex(sheet: kendo$spreadsheetSheet): number;
+    sheetByIndex(index: number): kendo$spreadsheetSheet;
+    insertSheet(options: any): kendo$spreadsheetSheet;
+    moveSheetToIndex(sheet: kendo$spreadsheetSheet, index: number): void;
     refresh(): void;
-    removeSheet(sheet: kendo$kendo$spreadsheet.spreadsheet$Sheet): void;
+    removeSheet(sheet: kendo$spreadsheetSheet): void;
     renameSheet(
-      sheet: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+      sheet: kendo$spreadsheetSheet,
       newSheetName: string
-    ): kendo$kendo$spreadsheet.spreadsheet$Sheet;
+    ): kendo$spreadsheetSheet;
     toJSON(): any;
-    fromJSON(kendo$data: any): void;
+    fromJSON(data: any): void;
     defineName(name: string, value: string, hidden: boolean): void;
     undefineName(name: string): void;
   }
 
-  declare interface ui$SpreadsheetDefaultCellStyle {
+  declare interface kendo$ui$SpreadsheetDefaultCellStyle {
     background?: string;
     color?: string;
     fontFamily?: string;
@@ -5808,27 +5811,27 @@ declare module "kendo-ui" {
     Italic?: boolean;
     bold?: boolean;
     underline?: boolean;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
   }
 
-  declare interface ui$SpreadsheetExcel {
+  declare interface kendo$ui$SpreadsheetExcel {
     fileName?: string;
     forceProxy?: boolean;
     proxyURL?: string;
   }
 
-  declare interface ui$SpreadsheetPdfMargin {
+  declare interface kendo$ui$SpreadsheetPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$SpreadsheetPdf {
+  declare interface kendo$ui$SpreadsheetPdf {
     area?: string;
     author?: string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     fitWidth?: boolean;
     forceProxy?: boolean;
@@ -5836,7 +5839,7 @@ declare module "kendo-ui" {
     hCenter?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$SpreadsheetPdfMargin;
+    margin?: kendo$ui$SpreadsheetPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -5845,18 +5848,18 @@ declare module "kendo-ui" {
     vCenter?: boolean;
   }
 
-  declare interface ui$SpreadsheetSheetColumn {
+  declare interface kendo$ui$SpreadsheetSheetColumn {
     index?: number;
     width?: number;
   }
 
-  declare interface ui$SpreadsheetSheetFilterColumnCriteriaItem {
+  declare interface kendo$ui$SpreadsheetSheetFilterColumnCriteriaItem {
     operator?: string;
     value?: string;
   }
 
-  declare interface ui$SpreadsheetSheetFilterColumn {
-    criteria?: ui$SpreadsheetSheetFilterColumnCriteriaItem[];
+  declare interface kendo$ui$SpreadsheetSheetFilterColumn {
+    criteria?: kendo$ui$SpreadsheetSheetFilterColumnCriteriaItem[];
     filter?: string;
     index?: number;
     logic?: string;
@@ -5865,32 +5868,32 @@ declare module "kendo-ui" {
     values?: any;
   }
 
-  declare interface ui$SpreadsheetSheetFilter {
-    columns?: ui$SpreadsheetSheetFilterColumn[];
+  declare interface kendo$ui$SpreadsheetSheetFilter {
+    columns?: kendo$ui$SpreadsheetSheetFilterColumn[];
     ref?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCellBorderBottom {
+  declare interface kendo$ui$SpreadsheetSheetRowCellBorderBottom {
     color?: string;
     size?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCellBorderLeft {
+  declare interface kendo$ui$SpreadsheetSheetRowCellBorderLeft {
     color?: string;
     size?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCellBorderRight {
+  declare interface kendo$ui$SpreadsheetSheetRowCellBorderRight {
     color?: string;
     size?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCellBorderTop {
+  declare interface kendo$ui$SpreadsheetSheetRowCellBorderTop {
     color?: string;
     size?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCellValidation {
+  declare interface kendo$ui$SpreadsheetSheetRowCellValidation {
     type?: string;
     comparerType?: string;
     dataType?: string;
@@ -5902,94 +5905,94 @@ declare module "kendo-ui" {
     titleTemplate?: string;
   }
 
-  declare interface ui$SpreadsheetSheetRowCell {
+  declare interface kendo$ui$SpreadsheetSheetRowCell {
     background?: string;
-    borderBottom?: ui$SpreadsheetSheetRowCellBorderBottom;
-    borderLeft?: ui$SpreadsheetSheetRowCellBorderLeft;
-    borderTop?: ui$SpreadsheetSheetRowCellBorderTop;
-    borderRight?: ui$SpreadsheetSheetRowCellBorderRight;
+    borderBottom?: kendo$ui$SpreadsheetSheetRowCellBorderBottom;
+    borderLeft?: kendo$ui$SpreadsheetSheetRowCellBorderLeft;
+    borderTop?: kendo$ui$SpreadsheetSheetRowCellBorderTop;
+    borderRight?: kendo$ui$SpreadsheetSheetRowCellBorderRight;
     color?: string;
     fontFamily?: string;
     fontSize?: number;
     italic?: boolean;
     bold?: boolean;
-    effects$enable?: boolean;
-    kendo$format?: string;
+    enable?: boolean;
+    format?: string;
     formula?: string;
     index?: number;
     link?: string;
     textAlign?: string;
     underline?: boolean;
     value?: number | string | boolean | Date;
-    validation?: ui$SpreadsheetSheetRowCellValidation;
+    validation?: kendo$ui$SpreadsheetSheetRowCellValidation;
     verticalAlign?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
   }
 
-  declare interface ui$SpreadsheetSheetRow {
-    cells?: ui$SpreadsheetSheetRowCell[];
+  declare interface kendo$ui$SpreadsheetSheetRow {
+    cells?: kendo$ui$SpreadsheetSheetRowCell[];
     height?: number;
     index?: number;
     type?: string;
   }
 
-  declare interface ui$SpreadsheetSheetSortColumn {
+  declare interface kendo$ui$SpreadsheetSheetSortColumn {
     ascending?: boolean;
     index?: number;
   }
 
-  declare interface ui$SpreadsheetSheetSort {
-    columns?: ui$SpreadsheetSheetSortColumn[];
+  declare interface kendo$ui$SpreadsheetSheetSort {
+    columns?: kendo$ui$SpreadsheetSheetSortColumn[];
     ref?: string;
   }
 
-  declare interface ui$SpreadsheetSheet {
+  declare interface kendo$ui$SpreadsheetSheet {
     activeCell?: string;
     name?: string;
-    columns?: ui$SpreadsheetSheetColumn[];
-    dataSource?: kendo$kendo$data.data$DataSource;
-    filter?: ui$SpreadsheetSheetFilter;
+    columns?: kendo$ui$SpreadsheetSheetColumn[];
+    dataSource?: kendo$dataDataSource;
+    filter?: kendo$ui$SpreadsheetSheetFilter;
     frozenColumns?: number;
     frozenRows?: number;
     mergedCells?: any;
-    rows?: ui$SpreadsheetSheetRow[];
+    rows?: kendo$ui$SpreadsheetSheetRow[];
     selection?: string;
     showGridLines?: boolean;
-    sort?: ui$SpreadsheetSheetSort;
+    sort?: kendo$ui$SpreadsheetSheetSort;
   }
 
-  declare interface ui$SpreadsheetToolbar {
+  declare interface kendo$ui$SpreadsheetToolbar {
     home?: boolean | any;
     insert?: boolean | any;
-    kendo$data?: boolean | any;
+    data?: boolean | any;
   }
 
-  declare interface ui$SpreadsheetInsertSheetOptions {
+  declare interface kendo$ui$SpreadsheetInsertSheetOptions {
     rows?: number;
     columns?: number;
     rowHeight?: number;
     columnWidth?: number;
     headerHeight?: number;
     headerWidth?: number;
-    dataSource?: kendo$kendo$data.data$DataSource;
-    kendo$data?: any;
+    dataSource?: kendo$dataDataSource;
+    data?: any;
   }
 
-  declare interface ui$SpreadsheetOptions {
+  declare interface kendo$ui$SpreadsheetOptions {
     name?: string;
     activeSheet?: string;
     columnWidth?: number;
     columns?: number;
-    defaultCellStyle?: ui$SpreadsheetDefaultCellStyle;
+    defaultCellStyle?: kendo$ui$SpreadsheetDefaultCellStyle;
     headerHeight?: number;
     headerWidth?: number;
-    excel?: ui$SpreadsheetExcel;
-    kendo$pdf?: ui$SpreadsheetPdf;
+    excel?: kendo$ui$SpreadsheetExcel;
+    pdf?: kendo$ui$SpreadsheetPdf;
     rowHeight?: number;
     rows?: number;
-    sheets?: ui$SpreadsheetSheet[];
+    sheets?: kendo$ui$SpreadsheetSheet[];
     sheetsbar?: boolean;
-    toolbar?: boolean | ui$SpreadsheetToolbar;
+    toolbar?: boolean | kendo$ui$SpreadsheetToolbar;
     insertSheet?: (e: ui$SpreadsheetInsertSheetEvent) => void;
     removeSheet?: (e: ui$SpreadsheetRemoveSheetEvent) => void;
     renameSheet?: (e: ui$SpreadsheetRenameSheetEvent) => void;
@@ -6005,117 +6008,117 @@ declare module "kendo-ui" {
     select?: (e: ui$SpreadsheetSelectEvent) => void;
     changeFormat?: (e: ui$SpreadsheetChangeFormatEvent) => void;
     change?: (e: ui$SpreadsheetChangeEvent) => void;
-    kendo$render?: (e: ui$SpreadsheetRenderEvent) => void;
+    render?: (e: ui$SpreadsheetRenderEvent) => void;
     excelExport?: (e: ui$SpreadsheetExcelExportEvent) => void;
     excelImport?: (e: ui$SpreadsheetExcelImportEvent) => void;
     pdfExport?: (e: ui$SpreadsheetPdfExportEvent) => void;
   }
 
-  declare interface ui$SpreadsheetEvent {
-    sender: ui$Spreadsheet;
+  declare interface kendo$ui$SpreadsheetEvent {
+    sender: kendo$ui$Spreadsheet;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SpreadsheetInsertSheetEvent = {} & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetInsertSheetEvent = {} & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetRemoveSheetEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetRemoveSheetEvent = {
+    sheet?: kendo$spreadsheetSheet
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetRenameSheetEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetRenameSheetEvent = {
+    sheet?: kendo$spreadsheetSheet,
     newSheetName?: string
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetSelectSheetEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetSelectSheetEvent = {
+    sheet?: kendo$spreadsheetSheet
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetUnhideColumnEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetUnhideColumnEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetUnhideRowEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetUnhideRowEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetHideColumnEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetHideColumnEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetHideRowEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetHideRowEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetDeleteColumnEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetDeleteColumnEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetDeleteRowEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetDeleteRowEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetInsertColumnEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetInsertColumnEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetInsertRowEvent = {
-    sheet?: kendo$kendo$spreadsheet.spreadsheet$Sheet,
+  declare type kendo$ui$SpreadsheetInsertRowEvent = {
+    sheet?: kendo$spreadsheetSheet,
     index?: number
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetSelectEvent = {
-    range?: kendo$kendo$spreadsheet.spreadsheet$Range
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetSelectEvent = {
+    range?: kendo$spreadsheetRange
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetChangeFormatEvent = {
-    range?: kendo$kendo$spreadsheet.spreadsheet$Range
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetChangeFormatEvent = {
+    range?: kendo$spreadsheetRange
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetChangeEvent = {
-    range?: kendo$kendo$spreadsheet.spreadsheet$Range
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetChangeEvent = {
+    range?: kendo$spreadsheetRange
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetRenderEvent = {} & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetRenderEvent = {} & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetExcelExportEvent = {
-    kendo$data?: any,
-    workbook?: kendo$kendo$ooxml.ooxml$Workbook
-  } & ui$SpreadsheetEvent;
+  declare type kendo$ui$SpreadsheetExcelExportEvent = {
+    data?: any,
+    workbook?: kendo$ooxmlWorkbook
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetExcelImportEvent = {
+  declare type kendo$ui$SpreadsheetExcelImportEvent = {
     file?: Blob | File,
-    ui$progress?: JQueryPromise<any>
-  } & ui$SpreadsheetEvent;
+    progress?: JQueryPromise<any>
+  } & SpreadsheetEvent;
 
-  declare type ui$SpreadsheetPdfExportEvent = {
+  declare type kendo$ui$SpreadsheetPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$SpreadsheetEvent;
+  } & SpreadsheetEvent;
 
-  declare class ui$Switch mixins undefined.ui$Widget {
-    static fn: ui$Switch;
+  declare class kendo$ui$Switch mixins undefined.Widget {
+    static fn: kendo$ui$Switch;
     options: ui$SwitchOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Switch;
+    static extend(proto: Object): kendo$ui$Switch;
     constructor(element: drawing$Element, options?: ui$SwitchOptions): this;
     check(): boolean;
     check(check: boolean): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     toggle(): void;
     setOptions(options: any): void;
   }
 
-  declare interface ui$SwitchOptions {
+  declare interface kendo$ui$SwitchOptions {
     name?: string;
     checked?: boolean;
     enabled?: boolean;
@@ -6124,182 +6127,131 @@ declare module "kendo-ui" {
     change?: (e: ui$SwitchChangeEvent) => void;
     name?: string;
     checked?: boolean;
-    effects$enable?: boolean;
+    enable?: boolean;
     offLabel?: string;
     onLabel?: string;
     change?: (e: ui$SwitchChangeEvent) => void;
   }
 
-  declare interface ui$SwitchMessages {
+  declare interface kendo$ui$SwitchMessages {
     checked?: string;
     unchecked?: string;
   }
 
-  declare interface ui$SwitchEvent {
-    sender: ui$Switch;
+  declare interface kendo$ui$SwitchEvent {
+    sender: kendo$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Switch;
+    sender: kendo$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SwitchChangeEvent = {
+  declare type kendo$ui$SwitchChangeEvent = {
     checked?: any,
     checked?: any
-  } & ui$SwitchEvent;
+  } & SwitchEvent;
 
-  declare class ui$TabStrip mixins undefined.ui$Widget {
-    static fn: ui$TabStrip;
+  declare class kendo$ui$TabStrip mixins undefined.Widget {
+    static fn: kendo$ui$TabStrip;
     options: ui$TabStripOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     tabGroup: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$TabStrip;
+    static extend(proto: Object): kendo$ui$TabStrip;
     constructor(element: drawing$Element, options?: ui$TabStripOptions): this;
     activateTab(item: JQuery): void;
-    append(tab: any): kendo$kendo$ui.ui$TabStrip;
+    append(tab: any): kendo$uiTabStrip;
     contentElement(itemIndex: number): drawing$Element;
     contentHolder(itemIndex: number): drawing$Element;
     deactivateTab(item: JQuery): void;
     destroy(): void;
-    disable(element: string): kendo$kendo$ui.ui$TabStrip;
-    disable(element: drawing$Element): kendo$kendo$ui.ui$TabStrip;
-    disable(element: JQuery): kendo$kendo$ui.ui$TabStrip;
-    enable(
-      element: string,
-      effects$enable?: boolean
-    ): kendo$kendo$ui.ui$TabStrip;
-    enable(
-      element: drawing$Element,
-      effects$enable?: boolean
-    ): kendo$kendo$ui.ui$TabStrip;
-    enable(
-      element: JQuery,
-      effects$enable?: boolean
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: any, referenceTab: string): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(
-      item: any,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: any, referenceTab: JQuery): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: string, referenceTab: string): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(
-      item: string,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: string, referenceTab: JQuery): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(
-      item: drawing$Element,
-      referenceTab: string
-    ): kendo$kendo$ui.ui$TabStrip;
+    disable(element: string): kendo$uiTabStrip;
+    disable(element: drawing$Element): kendo$uiTabStrip;
+    disable(element: JQuery): kendo$uiTabStrip;
+    enable(element: string, enable?: boolean): kendo$uiTabStrip;
+    enable(element: drawing$Element, enable?: boolean): kendo$uiTabStrip;
+    enable(element: JQuery, enable?: boolean): kendo$uiTabStrip;
+    insertAfter(item: any, referenceTab: string): kendo$uiTabStrip;
+    insertAfter(item: any, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertAfter(item: any, referenceTab: JQuery): kendo$uiTabStrip;
+    insertAfter(item: string, referenceTab: string): kendo$uiTabStrip;
+    insertAfter(item: string, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertAfter(item: string, referenceTab: JQuery): kendo$uiTabStrip;
+    insertAfter(item: drawing$Element, referenceTab: string): kendo$uiTabStrip;
     insertAfter(
       item: drawing$Element,
       referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(
-      item: drawing$Element,
-      referenceTab: JQuery
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: JQuery, referenceTab: string): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(
-      item: JQuery,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertAfter(item: JQuery, referenceTab: JQuery): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(item: any, referenceTab: string): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: any,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(item: any, referenceTab: JQuery): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: string,
-      referenceTab: string
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: string,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: string,
-      referenceTab: JQuery
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: drawing$Element,
-      referenceTab: string
-    ): kendo$kendo$ui.ui$TabStrip;
+    ): kendo$uiTabStrip;
+    insertAfter(item: drawing$Element, referenceTab: JQuery): kendo$uiTabStrip;
+    insertAfter(item: JQuery, referenceTab: string): kendo$uiTabStrip;
+    insertAfter(item: JQuery, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertAfter(item: JQuery, referenceTab: JQuery): kendo$uiTabStrip;
+    insertBefore(item: any, referenceTab: string): kendo$uiTabStrip;
+    insertBefore(item: any, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertBefore(item: any, referenceTab: JQuery): kendo$uiTabStrip;
+    insertBefore(item: string, referenceTab: string): kendo$uiTabStrip;
+    insertBefore(item: string, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertBefore(item: string, referenceTab: JQuery): kendo$uiTabStrip;
+    insertBefore(item: drawing$Element, referenceTab: string): kendo$uiTabStrip;
     insertBefore(
       item: drawing$Element,
       referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: drawing$Element,
-      referenceTab: JQuery
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: JQuery,
-      referenceTab: string
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: JQuery,
-      referenceTab: drawing$Element
-    ): kendo$kendo$ui.ui$TabStrip;
-    insertBefore(
-      item: JQuery,
-      referenceTab: JQuery
-    ): kendo$kendo$ui.ui$TabStrip;
+    ): kendo$uiTabStrip;
+    insertBefore(item: drawing$Element, referenceTab: JQuery): kendo$uiTabStrip;
+    insertBefore(item: JQuery, referenceTab: string): kendo$uiTabStrip;
+    insertBefore(item: JQuery, referenceTab: drawing$Element): kendo$uiTabStrip;
+    insertBefore(item: JQuery, referenceTab: JQuery): kendo$uiTabStrip;
     items(): HTMLCollection;
-    reload(element: string): kendo$kendo$ui.ui$TabStrip;
-    reload(element: drawing$Element): kendo$kendo$ui.ui$TabStrip;
-    reload(element: JQuery): kendo$kendo$ui.ui$TabStrip;
-    remove(element: string): kendo$kendo$ui.ui$TabStrip;
-    remove(element: number): kendo$kendo$ui.ui$TabStrip;
-    remove(element: JQuery): kendo$kendo$ui.ui$TabStrip;
+    reload(element: string): kendo$uiTabStrip;
+    reload(element: drawing$Element): kendo$uiTabStrip;
+    reload(element: JQuery): kendo$uiTabStrip;
+    remove(element: string): kendo$uiTabStrip;
+    remove(element: number): kendo$uiTabStrip;
+    remove(element: JQuery): kendo$uiTabStrip;
     select(): JQuery;
     select(element: string): void;
     select(element: drawing$Element): void;
     select(element: JQuery): void;
     select(element: number): void;
     setDataSource(dataSource: any): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
   }
 
-  declare interface ui$TabStripAnimationClose {
+  declare interface kendo$ui$TabStripAnimationClose {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$TabStripAnimationOpen {
+  declare interface kendo$ui$TabStripAnimationOpen {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$TabStripAnimation {
-    close?: ui$TabStripAnimationClose;
-    open?: ui$TabStripAnimationOpen;
+  declare interface kendo$ui$TabStripAnimation {
+    close?: kendo$ui$TabStripAnimationClose;
+    open?: kendo$ui$TabStripAnimationOpen;
   }
 
-  declare interface ui$TabStripScrollable {
+  declare interface kendo$ui$TabStripScrollable {
     distance?: number;
   }
 
-  declare interface ui$TabStripOptions {
+  declare interface kendo$ui$TabStripOptions {
     name?: string;
-    animation?: boolean | ui$TabStripAnimation;
+    animation?: boolean | kendo$ui$TabStripAnimation;
     collapsible?: boolean;
     contentUrls?: any;
     dataContentField?: string;
     dataContentUrlField?: string;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataSpriteCssClass?: string;
     dataTextField?: string;
     dataUrlField?: string;
     navigatable?: boolean;
-    scrollable?: boolean | ui$TabStripScrollable;
+    scrollable?: boolean | kendo$ui$TabStripScrollable;
     tabPosition?: string;
     value?: string;
     activate?: (e: ui$TabStripActivateEvent) => void;
@@ -6312,51 +6264,51 @@ declare module "kendo-ui" {
     select?: (e: ui$TabStripSelectEvent) => void;
   }
 
-  declare interface ui$TabStripEvent {
-    sender: ui$TabStrip;
+  declare interface kendo$ui$TabStripEvent {
+    sender: kendo$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$TabStrip;
+    sender: kendo$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TabStripActivateEvent = {
+  declare type kendo$ui$TabStripActivateEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare type ui$TabStripContentLoadEvent = {
+  declare type kendo$ui$TabStripContentLoadEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare type ui$TabStripErrorEvent = {
+  declare type kendo$ui$TabStripErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare type ui$TabStripSelectEvent = {
+  declare type kendo$ui$TabStripSelectEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element,
     item?: JQuery
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare type ui$TabStripShowEvent = {
+  declare type kendo$ui$TabStripShowEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare class ui$TimePicker mixins undefined.ui$Widget {
-    static fn: ui$TimePicker;
+  declare class kendo$ui$TimePicker mixins undefined.Widget {
+    static fn: kendo$ui$TimePicker;
     options: ui$TimePickerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$TimePicker;
+    static extend(proto: Object): kendo$ui$TimePicker;
     constructor(element: drawing$Element, options?: ui$TimePickerOptions): this;
     close(): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     readonly(readonly: boolean): void;
     max(): Date;
     max(value: Date): void;
@@ -6371,28 +6323,28 @@ declare module "kendo-ui" {
     value(value: string): void;
   }
 
-  declare interface ui$TimePickerAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$TimePickerAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$TimePickerAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$TimePickerAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$TimePickerAnimation {
-    close?: ui$TimePickerAnimationClose;
-    open?: ui$TimePickerAnimationOpen;
+  declare interface kendo$ui$TimePickerAnimation {
+    close?: kendo$ui$TimePickerAnimationClose;
+    open?: kendo$ui$TimePickerAnimationOpen;
   }
 
-  declare interface ui$TimePickerOptions {
+  declare interface kendo$ui$TimePickerOptions {
     name?: string;
-    animation?: boolean | ui$TimePickerAnimation;
-    kendo$culture?: string;
+    animation?: boolean | kendo$ui$TimePickerAnimation;
+    culture?: string;
     dateInput?: boolean;
     dates?: any;
-    kendo$format?: string;
+    format?: string;
     interval?: number;
     max?: Date;
     min?: Date;
@@ -6403,31 +6355,31 @@ declare module "kendo-ui" {
     open?: (e: ui$TimePickerOpenEvent) => void;
   }
 
-  declare interface ui$TimePickerEvent {
-    sender: ui$TimePicker;
+  declare interface kendo$ui$TimePickerEvent {
+    sender: kendo$ui$TimePicker;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TimePickerChangeEvent = {} & ui$TimePickerEvent;
+  declare type kendo$ui$TimePickerChangeEvent = {} & TimePickerEvent;
 
-  declare type ui$TimePickerCloseEvent = {} & ui$TimePickerEvent;
+  declare type kendo$ui$TimePickerCloseEvent = {} & TimePickerEvent;
 
-  declare type ui$TimePickerOpenEvent = {} & ui$TimePickerEvent;
+  declare type kendo$ui$TimePickerOpenEvent = {} & TimePickerEvent;
 
-  declare class ui$ToolBar mixins undefined.ui$Widget {
-    static fn: ui$ToolBar;
+  declare class kendo$ui$ToolBar mixins undefined.Widget {
+    static fn: kendo$ui$ToolBar;
     options: ui$ToolBarOptions;
     element: JQuery;
     wrapper: JQuery;
-    popup: kendo$kendo$ui.ui$Popup;
-    static extend(proto: Object): ui$ToolBar;
+    popup: kendo$uiPopup;
+    static extend(proto: Object): kendo$ui$ToolBar;
     constructor(element: drawing$Element, options?: ui$ToolBarOptions): this;
     add(command: any): void;
     destroy(): void;
-    enable(command: string, effects$enable: boolean): void;
-    enable(command: drawing$Element, effects$enable: boolean): void;
-    enable(command: JQuery, effects$enable: boolean): void;
+    enable(command: string, enable: boolean): void;
+    enable(command: drawing$Element, enable: boolean): void;
+    enable(command: JQuery, enable: boolean): void;
     getSelectedFromGroup(groupName: string): void;
     hide(command: string): void;
     hide(command: drawing$Element): void;
@@ -6443,10 +6395,10 @@ declare module "kendo-ui" {
     toggle(command: JQuery, state: boolean): void;
   }
 
-  declare interface ui$ToolBarItemButton {
+  declare interface kendo$ui$ToolBarItemButton {
     attributes?: any;
     click?: Function;
-    effects$enable?: boolean;
+    enable?: boolean;
     group?: string;
     hidden?: boolean;
     icon?: string;
@@ -6462,9 +6414,9 @@ declare module "kendo-ui" {
     url?: string;
   }
 
-  declare interface ui$ToolBarItemMenuButton {
+  declare interface kendo$ui$ToolBarItemMenuButton {
     attributes?: any;
-    effects$enable?: boolean;
+    enable?: boolean;
     hidden?: boolean;
     icon?: string;
     id?: string;
@@ -6474,17 +6426,17 @@ declare module "kendo-ui" {
     url?: string;
   }
 
-  declare interface ui$ToolBarItem {
+  declare interface kendo$ui$ToolBarItem {
     attributes?: any;
-    buttons?: ui$ToolBarItemButton[];
+    buttons?: kendo$ui$ToolBarItemButton[];
     click?: Function;
-    effects$enable?: boolean;
+    enable?: boolean;
     group?: string;
     hidden?: boolean;
     icon?: string;
     id?: string;
     imageUrl?: string;
-    menuButtons?: ui$ToolBarItemMenuButton[];
+    menuButtons?: kendo$ui$ToolBarItemMenuButton[];
     overflow?: string;
     overflowTemplate?: string | Function;
     primary?: boolean;
@@ -6492,7 +6444,7 @@ declare module "kendo-ui" {
     showIcon?: string;
     showText?: string;
     spriteCssClass?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     text?: string;
     togglable?: boolean;
     toggle?: Function;
@@ -6500,10 +6452,10 @@ declare module "kendo-ui" {
     url?: string;
   }
 
-  declare interface ui$ToolBarOptions {
+  declare interface kendo$ui$ToolBarOptions {
     name?: string;
     resizable?: boolean;
-    items?: ui$ToolBarItem[];
+    items?: kendo$ui$ToolBarItem[];
     click?: (e: ui$ToolBarClickEvent) => void;
     close?: (e: ui$ToolBarCloseEvent) => void;
     open?: (e: ui$ToolBarOpenEvent) => void;
@@ -6512,42 +6464,42 @@ declare module "kendo-ui" {
     overflowOpen?: (e: ui$ToolBarOverflowOpenEvent) => void;
   }
 
-  declare interface ui$ToolBarEvent {
-    sender: ui$ToolBar;
+  declare interface kendo$ui$ToolBarEvent {
+    sender: kendo$ui$ToolBar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ToolBarClickEvent = {
+  declare type kendo$ui$ToolBarClickEvent = {
     target?: JQuery,
     id?: string
-  } & ui$ToolBarEvent;
+  } & ToolBarEvent;
 
-  declare type ui$ToolBarCloseEvent = {
+  declare type kendo$ui$ToolBarCloseEvent = {
     SplitButton?: JQuery
-  } & ui$ToolBarEvent;
+  } & ToolBarEvent;
 
-  declare type ui$ToolBarOpenEvent = {
+  declare type kendo$ui$ToolBarOpenEvent = {
     SplitButton?: JQuery
-  } & ui$ToolBarEvent;
+  } & ToolBarEvent;
 
-  declare type ui$ToolBarToggleEvent = {
+  declare type kendo$ui$ToolBarToggleEvent = {
     target?: JQuery,
     checked?: boolean,
     id?: string
-  } & ui$ToolBarEvent;
+  } & ToolBarEvent;
 
-  declare type ui$ToolBarOverflowCloseEvent = {} & ui$ToolBarEvent;
+  declare type kendo$ui$ToolBarOverflowCloseEvent = {} & ToolBarEvent;
 
-  declare type ui$ToolBarOverflowOpenEvent = {} & ui$ToolBarEvent;
+  declare type kendo$ui$ToolBarOverflowOpenEvent = {} & ToolBarEvent;
 
-  declare class ui$Tooltip mixins undefined.ui$Widget {
-    static fn: ui$Tooltip;
+  declare class kendo$ui$Tooltip mixins undefined.Widget {
+    static fn: kendo$ui$Tooltip;
     options: drawing$TooltipOptions;
-    popup: kendo$kendo$ui.ui$Popup;
+    popup: kendo$uiPopup;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Tooltip;
+    static extend(proto: Object): kendo$ui$Tooltip;
     constructor(
       element: drawing$Element,
       options?: drawing$TooltipOptions
@@ -6558,30 +6510,30 @@ declare module "kendo-ui" {
     target(): JQuery;
   }
 
-  declare interface ui$TooltipAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$TooltipAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$TooltipAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$TooltipAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$TooltipAnimation {
-    close?: ui$TooltipAnimationClose;
-    open?: ui$TooltipAnimationOpen;
+  declare interface kendo$ui$TooltipAnimation {
+    close?: kendo$ui$TooltipAnimationClose;
+    open?: kendo$ui$TooltipAnimationOpen;
   }
 
-  declare interface ui$TooltipContent {
+  declare interface kendo$ui$TooltipContent {
     url?: string;
   }
 
-  declare interface ui$TooltipOptions {
+  declare interface kendo$ui$TooltipOptions {
     name?: string;
     autoHide?: boolean;
-    animation?: boolean | ui$TooltipAnimation;
-    content?: string | Function | ui$TooltipContent;
+    animation?: boolean | kendo$ui$TooltipAnimation;
+    content?: string | Function | kendo$ui$TooltipContent;
     callout?: boolean;
     filter?: string;
     iframe?: boolean;
@@ -6600,7 +6552,7 @@ declare module "kendo-ui" {
     position?: string;
     height?: number | string;
     hideDelay?: number;
-    timezone$offset?: number;
+    offset?: number;
     shared?: boolean;
     showAfter?: number;
     showOn?: string;
@@ -6610,41 +6562,41 @@ declare module "kendo-ui" {
     position?: string;
     height?: number | string;
     hideDelay?: number;
-    timezone$offset?: number;
+    offset?: number;
     shared?: boolean;
     showAfter?: number;
     showOn?: string;
     width?: number | string;
   }
 
-  declare interface ui$TooltipEvent {
-    sender: ui$Tooltip;
+  declare interface kendo$ui$TooltipEvent {
+    sender: kendo$ui$Tooltip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TooltipRequestStartEvent = {
+  declare type kendo$ui$TooltipRequestStartEvent = {
     target?: JQuery,
     options?: any
-  } & ui$TooltipEvent;
+  } & TooltipEvent;
 
-  declare type ui$TooltipErrorEvent = {
+  declare type kendo$ui$TooltipErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & ui$TooltipEvent;
+  } & TooltipEvent;
 
-  declare class ui$Touch mixins undefined.ui$Widget {
-    static fn: ui$Touch;
+  declare class kendo$ui$Touch mixins undefined.Widget {
+    static fn: kendo$ui$Touch;
     options: ui$TouchOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Touch;
+    static extend(proto: Object): kendo$ui$Touch;
     constructor(element: drawing$Element, options?: ui$TouchOptions): this;
     cancel(): void;
     destroy(): void;
   }
 
-  declare interface ui$TouchOptions {
+  declare interface kendo$ui$TouchOptions {
     name?: string;
     filter?: string;
     surface?: JQuery;
@@ -6668,78 +6620,78 @@ declare module "kendo-ui" {
     gestureend?: (e: ui$TouchGestureendEvent) => void;
   }
 
-  declare interface ui$TouchEvent {
-    sender: ui$Touch;
+  declare interface kendo$ui$TouchEvent {
+    sender: kendo$ui$Touch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TouchTouchstartEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchTouchstartEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchDragstartEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchDragstartEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchDragEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchDragEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchDragendEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchDragendEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchTapEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchTapEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchDoubletapEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchDoubletapEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchHoldEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchHoldEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchSwipeEvent = {
-    touch?: kendo$kendo$mobile.kendo$ui.ui$TouchEventOptions,
+  declare type kendo$ui$TouchSwipeEvent = {
+    touch?: kendo$mobileuiTouchEventOptions,
     event?: JQueryEventObject,
     direction?: string
-  } & ui$TouchEvent;
+  } & TouchEvent;
 
-  declare type ui$TouchGesturestartEvent = {
+  declare type kendo$ui$TouchGesturestartEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$kendo$mobile.kendo$ui.geometry$Point
-  } & ui$TouchEvent;
+    center?: kendo$mobileuiPoint
+  } & TouchEvent;
 
-  declare type ui$TouchGesturechangeEvent = {
+  declare type kendo$ui$TouchGesturechangeEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$kendo$mobile.kendo$ui.geometry$Point
-  } & ui$TouchEvent;
+    center?: kendo$mobileuiPoint
+  } & TouchEvent;
 
-  declare type ui$TouchGestureendEvent = {
+  declare type kendo$ui$TouchGestureendEvent = {
     touches?: any,
     event?: JQueryEventObject,
     distance?: number,
-    center?: kendo$kendo$mobile.kendo$ui.geometry$Point
-  } & ui$TouchEvent;
+    center?: kendo$mobileuiPoint
+  } & TouchEvent;
 
-  declare class ui$TreeList mixins undefined.ui$Widget {
-    static fn: ui$TreeList;
+  declare class kendo$ui$TreeList mixins undefined.Widget {
+    static fn: kendo$ui$TreeList;
     options: ui$TreeListOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     columns: any;
     table: JQuery;
     tbody: JQuery;
@@ -6750,7 +6702,7 @@ declare module "kendo-ui" {
     lockedContent: JQuery;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$TreeList;
+    static extend(proto: Object): kendo$ui$TreeList;
     constructor(element: drawing$Element, options?: ui$TreeListOptions): this;
     addRow(parentRow: string): void;
     addRow(parentRow: drawing$Element): void;
@@ -6765,16 +6717,16 @@ declare module "kendo-ui" {
     collapse(row: string): JQueryPromise<any>;
     collapse(row: drawing$Element): JQueryPromise<any>;
     collapse(row: JQuery): JQueryPromise<any>;
-    dataItem(row: string): kendo$kendo$data.data$TreeListModel;
-    dataItem(row: drawing$Element): kendo$kendo$data.data$TreeListModel;
-    dataItem(row: JQuery): kendo$kendo$data.data$TreeListModel;
+    dataItem(row: string): kendo$dataTreeListModel;
+    dataItem(row: drawing$Element): kendo$dataTreeListModel;
+    dataItem(row: JQuery): kendo$dataTreeListModel;
     destroy(): void;
     editCell(cell: JQuery): void;
     editRow(row: JQuery): void;
     expand(row: string): JQueryPromise<any>;
     expand(row: drawing$Element): JQueryPromise<any>;
     expand(row: JQuery): JQueryPromise<any>;
-    itemFor(model: kendo$kendo$data.data$TreeListModel): JQuery;
+    itemFor(model: kendo$dataTreeListModel): JQuery;
     itemFor(model: any): JQuery;
     items(): any;
     refresh(): void;
@@ -6788,7 +6740,7 @@ declare module "kendo-ui" {
     select(): JQuery;
     select(rows: drawing$Element): void;
     select(rows: JQuery): void;
-    setDataSource(dataSource: kendo$kendo$data.data$TreeListDataSource): void;
+    setDataSource(dataSource: kendo$dataTreeListDataSource): void;
     showColumn(column: number): void;
     showColumn(column: string): void;
     hideColumn(column: number): void;
@@ -6800,7 +6752,7 @@ declare module "kendo-ui" {
     reorderColumn(destIndex: number, column: any): void;
   }
 
-  declare interface ui$TreeListColumnMenuMessages {
+  declare interface kendo$ui$TreeListColumnMenuMessages {
     columns?: string;
     filter?: string;
     sortAscending?: string;
@@ -6810,14 +6762,14 @@ declare module "kendo-ui" {
     unlock?: string;
   }
 
-  declare interface ui$TreeListColumnMenu {
+  declare interface kendo$ui$TreeListColumnMenu {
     columns?: boolean;
     filterable?: boolean;
     sortable?: boolean;
-    messages?: ui$TreeListColumnMenuMessages;
+    messages?: kendo$ui$TreeListColumnMenuMessages;
   }
 
-  declare interface ui$TreeListColumnCommandItem {
+  declare interface kendo$ui$TreeListColumnCommandItem {
     className?: string;
     imageClass?: string;
     click?: Function;
@@ -6825,31 +6777,31 @@ declare module "kendo-ui" {
     text?: string;
   }
 
-  declare interface ui$TreeListColumnFilterable {
-    kendo$ui?: string | Function;
+  declare interface kendo$ui$TreeListColumnFilterable {
+    ui?: string | Function;
   }
 
-  declare interface ui$TreeListColumnSortable {
+  declare interface kendo$ui$TreeListColumnSortable {
     compare?: Function;
   }
 
-  declare interface ui$TreeListColumn {
+  declare interface kendo$ui$TreeListColumn {
     editor?: (container: JQuery, options: ui$TreeListEditorOptions) => void;
     attributes?: any;
     columns?: any;
-    command?: ui$TreeListColumnCommandItem[];
+    command?: kendo$ui$TreeListColumnCommandItem[];
     editable?: Function;
     encoded?: boolean;
     expandable?: boolean;
     field?: string;
-    filterable?: boolean | ui$TreeListColumnFilterable;
+    filterable?: boolean | kendo$ui$TreeListColumnFilterable;
     footerTemplate?: string | Function;
-    kendo$format?: string;
+    format?: string;
     headerAttributes?: any;
     headerTemplate?: string | Function;
     minScreenWidth?: number;
-    sortable?: boolean | ui$TreeListColumnSortable;
-    kendo$template?: string | Function;
+    sortable?: boolean | kendo$ui$TreeListColumnSortable;
+    template?: string | Function;
     title?: string;
     width?: string | number;
     hidden?: boolean;
@@ -6858,21 +6810,21 @@ declare module "kendo-ui" {
     lockable?: boolean;
   }
 
-  declare interface ui$TreeListEditable {
+  declare interface kendo$ui$TreeListEditable {
     mode?: string;
     move?: boolean;
-    kendo$template?: string | Function;
+    template?: string | Function;
     window?: any;
   }
 
-  declare interface ui$TreeListExcel {
+  declare interface kendo$ui$TreeListExcel {
     fileName?: string;
     filterable?: boolean;
     forceProxy?: boolean;
     proxyURL?: string;
   }
 
-  declare interface ui$TreeListFilterableMessages {
+  declare interface kendo$ui$TreeListFilterableMessages {
     and?: string;
     clear?: string;
     filter?: string;
@@ -6883,7 +6835,7 @@ declare module "kendo-ui" {
     or?: string;
   }
 
-  declare interface ui$TreeListFilterableOperatorsDate {
+  declare interface kendo$ui$TreeListFilterableOperatorsDate {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -6894,7 +6846,7 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$TreeListFilterableOperatorsNumber {
+  declare interface kendo$ui$TreeListFilterableOperatorsNumber {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -6905,7 +6857,7 @@ declare module "kendo-ui" {
     lt?: string;
   }
 
-  declare interface ui$TreeListFilterableOperatorsString {
+  declare interface kendo$ui$TreeListFilterableOperatorsString {
     eq?: string;
     neq?: string;
     isnull?: string;
@@ -6918,40 +6870,40 @@ declare module "kendo-ui" {
     endswith?: string;
   }
 
-  declare interface ui$TreeListFilterableOperators {
-    string?: ui$TreeListFilterableOperatorsString;
-    number?: ui$TreeListFilterableOperatorsNumber;
-    kendo$date?: ui$TreeListFilterableOperatorsDate;
+  declare interface kendo$ui$TreeListFilterableOperators {
+    string?: kendo$ui$TreeListFilterableOperatorsString;
+    number?: kendo$ui$TreeListFilterableOperatorsNumber;
+    date?: kendo$ui$TreeListFilterableOperatorsDate;
   }
 
-  declare interface ui$TreeListFilterable {
+  declare interface kendo$ui$TreeListFilterable {
     extra?: boolean;
-    messages?: ui$TreeListFilterableMessages;
-    operators?: ui$TreeListFilterableOperators;
+    messages?: kendo$ui$TreeListFilterableMessages;
+    operators?: kendo$ui$TreeListFilterableOperators;
   }
 
-  declare interface ui$TreeListMessagesCommands {
+  declare interface kendo$ui$TreeListMessagesCommands {
     canceledit?: string;
     create?: string;
     createchild?: string;
-    kendo$destroy?: string;
+    destroy?: string;
     edit?: string;
     save?: string;
     cancel?: string;
     excel?: string;
-    kendo$pdf?: string;
+    pdf?: string;
     update?: string;
   }
 
-  declare interface ui$TreeListMessages {
-    commands?: ui$TreeListMessagesCommands;
+  declare interface kendo$ui$TreeListMessages {
+    commands?: kendo$ui$TreeListMessagesCommands;
     loading?: string;
     noRows?: string;
     requestFailed?: string;
     retry?: string;
   }
 
-  declare interface ui$TreeListPageableMessages {
+  declare interface kendo$ui$TreeListPageableMessages {
     display?: string;
     empty?: string;
     page?: string;
@@ -6965,7 +6917,7 @@ declare module "kendo-ui" {
     morePages?: string;
   }
 
-  declare interface ui$TreeListPageable {
+  declare interface kendo$ui$TreeListPageable {
     alwaysVisible?: boolean;
     pageSize?: number;
     previousNext?: boolean;
@@ -6975,26 +6927,26 @@ declare module "kendo-ui" {
     pageSizes?: boolean | any;
     refresh?: boolean;
     info?: boolean;
-    messages?: ui$TreeListPageableMessages;
+    messages?: kendo$ui$TreeListPageableMessages;
   }
 
-  declare interface ui$TreeListPdfMargin {
+  declare interface kendo$ui$TreeListPdfMargin {
     bottom?: number | string;
     left?: number | string;
     right?: number | string;
     top?: number | string;
   }
 
-  declare interface ui$TreeListPdf {
+  declare interface kendo$ui$TreeListPdf {
     author?: string;
     avoidLinks?: boolean | string;
     creator?: string;
-    kendo$date?: Date;
+    date?: Date;
     fileName?: string;
     forceProxy?: boolean;
     keywords?: string;
     landscape?: boolean;
-    margin?: ui$TreeListPdfMargin;
+    margin?: kendo$ui$TreeListPdfMargin;
     paperSize?: string | any;
     proxyURL?: string;
     proxyTarget?: string;
@@ -7002,38 +6954,38 @@ declare module "kendo-ui" {
     title?: string;
   }
 
-  declare interface ui$TreeListSortable {
+  declare interface kendo$ui$TreeListSortable {
     allowUnsort?: boolean;
     mode?: string;
   }
 
-  declare interface ui$TreeListToolbarItem {
+  declare interface kendo$ui$TreeListToolbarItem {
     click?: Function;
     imageClass?: string;
     name?: string;
     text?: string;
   }
 
-  declare interface ui$TreeListOptions {
+  declare interface kendo$ui$TreeListOptions {
     name?: string;
     autoBind?: boolean;
-    columns?: ui$TreeListColumn[];
+    columns?: kendo$ui$TreeListColumn[];
     resizable?: boolean;
     reorderable?: boolean;
-    columnMenu?: boolean | ui$TreeListColumnMenu;
-    dataSource?: any | any | kendo$kendo$data.data$TreeListDataSource;
-    editable?: boolean | ui$TreeListEditable;
-    excel?: ui$TreeListExcel;
-    filterable?: boolean | ui$TreeListFilterable;
+    columnMenu?: boolean | kendo$ui$TreeListColumnMenu;
+    dataSource?: any | any | kendo$dataTreeListDataSource;
+    editable?: boolean | kendo$ui$TreeListEditable;
+    excel?: kendo$ui$TreeListExcel;
+    filterable?: boolean | kendo$ui$TreeListFilterable;
     height?: number | string;
-    messages?: ui$TreeListMessages;
+    messages?: kendo$ui$TreeListMessages;
     navigatable?: boolean;
-    pageable?: boolean | ui$TreeListPageable;
-    kendo$pdf?: ui$TreeListPdf;
+    pageable?: boolean | kendo$ui$TreeListPageable;
+    pdf?: kendo$ui$TreeListPdf;
     scrollable?: boolean | any;
     selectable?: boolean | string;
-    sortable?: boolean | ui$TreeListSortable;
-    toolbar?: ui$TreeListToolbarItem[] | any;
+    sortable?: boolean | kendo$ui$TreeListSortable;
+    toolbar?: kendo$ui$TreeListToolbarItem[] | any;
     beforeEdit?: (e: ui$TreeListBeforeEditEvent) => void;
     cancel?: (e: ui$TreeListCancelEvent) => void;
     cellClose?: (e: ui$TreeListCellCloseEvent) => void;
@@ -7051,7 +7003,7 @@ declare module "kendo-ui" {
     filterMenuInit?: (e: ui$TreeListFilterMenuInitEvent) => void;
     filterMenuOpen?: (e: ui$TreeListFilterMenuOpenEvent) => void;
     pdfExport?: (e: ui$TreeListPdfExportEvent) => void;
-    timezone$remove?: (e: ui$TreeListRemoveEvent) => void;
+    remove?: (e: ui$TreeListRemoveEvent) => void;
     save?: (e: ui$TreeListSaveEvent) => void;
     saveChanges?: (e: ui$TreeListSaveChangesEvent) => void;
     columnShow?: (e: ui$TreeListColumnShowEvent) => void;
@@ -7064,166 +7016,166 @@ declare module "kendo-ui" {
     columnUnlock?: (e: ui$TreeListColumnUnlockEvent) => void;
   }
 
-  declare interface ui$TreeListEvent {
-    sender: ui$TreeList;
+  declare interface kendo$ui$TreeListEvent {
+    sender: kendo$ui$TreeList;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TreeListBeforeEditEvent = {
-    model?: kendo$kendo$data.data$Model
-  } & ui$TreeListEvent;
+  declare type kendo$ui$TreeListBeforeEditEvent = {
+    model?: kendo$dataModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListCancelEvent = {
+  declare type kendo$ui$TreeListCancelEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+    model?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListCellCloseEvent = {
+  declare type kendo$ui$TreeListCellCloseEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$Model,
+    model?: kendo$dataModel,
     type?: string
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListChangeEvent = {} & ui$TreeListEvent;
+  declare type kendo$ui$TreeListChangeEvent = {} & TreeListEvent;
 
-  declare type ui$TreeListCollapseEvent = {
-    model?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+  declare type kendo$ui$TreeListCollapseEvent = {
+    model?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListDataBindingEvent = {} & ui$TreeListEvent;
+  declare type kendo$ui$TreeListDataBindingEvent = {} & TreeListEvent;
 
-  declare type ui$TreeListDataBoundEvent = {} & ui$TreeListEvent;
+  declare type kendo$ui$TreeListDataBoundEvent = {} & TreeListEvent;
 
-  declare type ui$TreeListDragstartEvent = {
-    source?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+  declare type kendo$ui$TreeListDragstartEvent = {
+    source?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListDragEvent = {
-    source?: kendo$kendo$data.data$TreeListModel,
+  declare type kendo$ui$TreeListDragEvent = {
+    source?: kendo$dataTreeListModel,
     target?: JQuery
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListDragendEvent = {
-    source?: kendo$kendo$data.data$TreeListModel,
-    destination?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+  declare type kendo$ui$TreeListDragendEvent = {
+    source?: kendo$dataTreeListModel,
+    destination?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListDropEvent = {
-    source?: kendo$kendo$data.data$TreeListModel,
-    destination?: kendo$kendo$data.data$TreeListModel,
+  declare type kendo$ui$TreeListDropEvent = {
+    source?: kendo$dataTreeListModel,
+    destination?: kendo$dataTreeListModel,
     dropTarget?: drawing$Element,
     valid?: boolean,
     setValid?: boolean
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListEditEvent = {
+  declare type kendo$ui$TreeListEditEvent = {
     container?: JQuery,
-    model?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+    model?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListExcelExportEvent = {
-    kendo$data?: any,
+  declare type kendo$ui$TreeListExcelExportEvent = {
+    data?: any,
     workbook?: any
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListExpandEvent = {
-    model?: kendo$kendo$data.data$TreeListModel
-  } & ui$TreeListEvent;
+  declare type kendo$ui$TreeListExpandEvent = {
+    model?: kendo$dataTreeListModel
+  } & TreeListEvent;
 
-  declare type ui$TreeListFilterMenuInitEvent = {
+  declare type kendo$ui$TreeListFilterMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListFilterMenuOpenEvent = {
+  declare type kendo$ui$TreeListFilterMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListPdfExportEvent = {
+  declare type kendo$ui$TreeListPdfExportEvent = {
     promise?: JQueryPromise<any>
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListRemoveEvent = {
-    model?: kendo$kendo$data.data$TreeListModel,
+  declare type kendo$ui$TreeListRemoveEvent = {
+    model?: kendo$dataTreeListModel,
     row?: JQuery
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListSaveEvent = {
-    model?: kendo$kendo$data.data$TreeListModel,
+  declare type kendo$ui$TreeListSaveEvent = {
+    model?: kendo$dataTreeListModel,
     container?: JQuery
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListSaveChangesEvent = {} & ui$TreeListEvent;
+  declare type kendo$ui$TreeListSaveChangesEvent = {} & TreeListEvent;
 
-  declare type ui$TreeListColumnShowEvent = {
+  declare type kendo$ui$TreeListColumnShowEvent = {
     column?: any
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnHideEvent = {
+  declare type kendo$ui$TreeListColumnHideEvent = {
     column?: any
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnReorderEvent = {
+  declare type kendo$ui$TreeListColumnReorderEvent = {
     column?: any,
     newIndex?: number,
     oldIndex?: number
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnResizeEvent = {
+  declare type kendo$ui$TreeListColumnResizeEvent = {
     column?: any,
     newWidth?: number,
     oldWidth?: number
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnMenuInitEvent = {
+  declare type kendo$ui$TreeListColumnMenuInitEvent = {
     container?: JQuery,
     field?: string
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnMenuOpenEvent = {
+  declare type kendo$ui$TreeListColumnMenuOpenEvent = {
     container?: JQuery,
     field?: string
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnLockEvent = {
+  declare type kendo$ui$TreeListColumnLockEvent = {
     column?: any
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare type ui$TreeListColumnUnlockEvent = {
+  declare type kendo$ui$TreeListColumnUnlockEvent = {
     column?: any
-  } & ui$TreeListEvent;
+  } & TreeListEvent;
 
-  declare class ui$TreeView mixins undefined.ui$Widget {
-    static fn: ui$TreeView;
+  declare class kendo$ui$TreeView mixins undefined.Widget {
+    static fn: kendo$ui$TreeView;
     options: ui$TreeViewOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$TreeView;
+    static extend(proto: Object): kendo$ui$TreeView;
     constructor(element: drawing$Element, options?: ui$TreeViewOptions): this;
     append(nodeData: any, parentNode?: JQuery, success?: Function): JQuery;
     append(nodeData: JQuery, parentNode?: JQuery, success?: Function): JQuery;
     collapse(nodes: JQuery): void;
     collapse(nodes: drawing$Element): void;
     collapse(nodes: string): void;
-    dataItem(node: JQuery): kendo$kendo$data.data$Node;
-    dataItem(node: drawing$Element): kendo$kendo$data.data$Node;
-    dataItem(node: string): kendo$kendo$data.data$Node;
+    dataItem(node: JQuery): kendo$dataNode;
+    dataItem(node: drawing$Element): kendo$dataNode;
+    dataItem(node: string): kendo$dataNode;
     destroy(): void;
     detach(node: JQuery): JQuery;
     detach(node: drawing$Element): JQuery;
     detach(node: string): JQuery;
-    enable(nodes: JQuery, effects$enable?: boolean): void;
-    enable(nodes: drawing$Element, effects$enable?: boolean): void;
-    enable(nodes: string, effects$enable?: boolean): void;
-    enable(nodes: boolean, effects$enable?: boolean): void;
+    enable(nodes: JQuery, enable?: boolean): void;
+    enable(nodes: drawing$Element, enable?: boolean): void;
+    enable(nodes: string, enable?: boolean): void;
+    enable(nodes: boolean, enable?: boolean): void;
     expand(nodes: JQuery): void;
     expand(nodes: drawing$Element): void;
     expand(nodes: string): void;
     expandPath(path: any, complete: Function): void;
-    expandTo(targetNode: kendo$kendo$data.data$Node): void;
+    expandTo(targetNode: kendo$dataNode): void;
     expandTo(targetNode: any): void;
     findByText(text: string): JQuery;
     findByUid(uid: string): JQuery;
@@ -7241,9 +7193,7 @@ declare module "kendo-ui" {
     select(node?: JQuery): void;
     select(node?: drawing$Element): void;
     select(node?: string): void;
-    setDataSource(
-      dataSource: kendo$kendo$data.data$HierarchicalDataSource
-    ): void;
+    setDataSource(dataSource: kendo$dataHierarchicalDataSource): void;
     text(node: JQuery): string;
     text(node: drawing$Element): string;
     text(node: string): string;
@@ -7256,48 +7206,48 @@ declare module "kendo-ui" {
     updateIndeterminate(node: JQuery): void;
   }
 
-  declare interface ui$TreeViewAnimationCollapse {
+  declare interface kendo$ui$TreeViewAnimationCollapse {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$TreeViewAnimationExpand {
+  declare interface kendo$ui$TreeViewAnimationExpand {
     duration?: number;
-    kendo$effects?: string;
+    effects?: string;
   }
 
-  declare interface ui$TreeViewAnimation {
-    collapse?: boolean | ui$TreeViewAnimationCollapse;
-    expand?: boolean | ui$TreeViewAnimationExpand;
+  declare interface kendo$ui$TreeViewAnimation {
+    collapse?: boolean | kendo$ui$TreeViewAnimationCollapse;
+    expand?: boolean | kendo$ui$TreeViewAnimationExpand;
   }
 
-  declare interface ui$TreeViewCheckboxes {
+  declare interface kendo$ui$TreeViewCheckboxes {
     checkChildren?: boolean;
     name?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
   }
 
-  declare interface ui$TreeViewMessages {
+  declare interface kendo$ui$TreeViewMessages {
     loading?: string;
     requestFailed?: string;
     retry?: string;
   }
 
-  declare interface ui$TreeViewOptions {
+  declare interface kendo$ui$TreeViewOptions {
     name?: string;
-    animation?: boolean | ui$TreeViewAnimation;
+    animation?: boolean | kendo$ui$TreeViewAnimation;
     autoBind?: boolean;
     autoScroll?: boolean;
-    checkboxes?: boolean | ui$TreeViewCheckboxes;
+    checkboxes?: boolean | kendo$ui$TreeViewCheckboxes;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$HierarchicalDataSource;
+    dataSource?: any | any | kendo$dataHierarchicalDataSource;
     dataSpriteCssClassField?: string;
     dataTextField?: string | any;
     dataUrlField?: string;
     dragAndDrop?: boolean;
     loadOnDemand?: boolean;
-    messages?: ui$TreeViewMessages;
-    kendo$template?: string | Function;
+    messages?: kendo$ui$TreeViewMessages;
+    template?: string | Function;
     change?: (e: ui$TreeViewEvent) => void;
     check?: (e: ui$TreeViewCheckEvent) => void;
     collapse?: (e: ui$TreeViewCollapseEvent) => void;
@@ -7311,77 +7261,77 @@ declare module "kendo-ui" {
     select?: (e: ui$TreeViewSelectEvent) => void;
   }
 
-  declare interface ui$TreeViewEvent {
-    sender: ui$TreeView;
+  declare interface kendo$ui$TreeViewEvent {
+    sender: kendo$ui$TreeView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TreeViewCheckEvent = {
+  declare type kendo$ui$TreeViewCheckEvent = {
     node?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewCollapseEvent = {
+  declare type kendo$ui$TreeViewCollapseEvent = {
     node?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewDataBoundEvent = {
+  declare type kendo$ui$TreeViewDataBoundEvent = {
     node?: JQuery
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewDragEvent = {
+  declare type kendo$ui$TreeViewDragEvent = {
     sourceNode?: drawing$Element,
     dropTarget?: drawing$Element,
     pageX?: number,
     pageY?: number,
     statusClass?: string,
     setStatusClass?: Function
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewDragendEvent = {
+  declare type kendo$ui$TreeViewDragendEvent = {
     sourceNode?: drawing$Element,
     destinationNode?: drawing$Element,
     dropPosition?: string
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewDragstartEvent = {
+  declare type kendo$ui$TreeViewDragstartEvent = {
     sourceNode?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewDropEvent = {
+  declare type kendo$ui$TreeViewDropEvent = {
     sourceNode?: drawing$Element,
     destinationNode?: drawing$Element,
     valid?: boolean,
     setValid?: Function,
     dropTarget?: drawing$Element,
     dropPosition?: string
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewExpandEvent = {
+  declare type kendo$ui$TreeViewExpandEvent = {
     node?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewNavigateEvent = {
+  declare type kendo$ui$TreeViewNavigateEvent = {
     node?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare type ui$TreeViewSelectEvent = {
+  declare type kendo$ui$TreeViewSelectEvent = {
     node?: drawing$Element
-  } & ui$TreeViewEvent;
+  } & TreeViewEvent;
 
-  declare class ui$Upload mixins undefined.ui$Widget {
-    static fn: ui$Upload;
+  declare class kendo$ui$Upload mixins undefined.Widget {
+    static fn: kendo$ui$Upload;
     options: ui$UploadOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Upload;
+    static extend(proto: Object): kendo$ui$Upload;
     constructor(element: drawing$Element, options?: ui$UploadOptions): this;
     clearAllFiles(): void;
     clearFile(callback: Function): void;
     clearFileByUid(uid: string): void;
     destroy(): void;
     disable(): void;
-    enable(effects$enable?: boolean): void;
+    enable(enable?: boolean): void;
     focus(): void;
     getFiles(): any;
     pause(li: JQuery): void;
@@ -7389,11 +7339,11 @@ declare module "kendo-ui" {
     removeAllFiles(): void;
     removeFile(callback: Function): void;
     removeFileByUid(uid: string): void;
-    toggle(effects$enable: boolean): void;
+    toggle(enable: boolean): void;
     upload(): void;
   }
 
-  declare interface ui$UploadAsync {
+  declare interface kendo$ui$UploadAsync {
     autoUpload?: boolean;
     batch?: boolean;
     chunkSize?: number;
@@ -7409,13 +7359,13 @@ declare module "kendo-ui" {
     withCredentials?: boolean;
   }
 
-  declare interface ui$UploadFile {
+  declare interface kendo$ui$UploadFile {
     extension?: string;
     name?: string;
     size?: number;
   }
 
-  declare interface ui$UploadLocalization {
+  declare interface kendo$ui$UploadLocalization {
     cancel?: string;
     clearSelectedFiles?: string;
     dropFilesHere?: string;
@@ -7425,7 +7375,7 @@ declare module "kendo-ui" {
     invalidFiles?: string;
     invalidMaxFileSize?: string;
     invalidMinFileSize?: string;
-    timezone$remove?: string;
+    remove?: string;
     retry?: string;
     select?: string;
     statusFailed?: string;
@@ -7434,98 +7384,98 @@ declare module "kendo-ui" {
     uploadSelectedFiles?: string;
   }
 
-  declare interface ui$UploadValidation {
+  declare interface kendo$ui$UploadValidation {
     allowedExtensions?: any;
     maxFileSize?: number;
     minFileSize?: number;
   }
 
-  declare interface ui$UploadOptions {
+  declare interface kendo$ui$UploadOptions {
     name?: string;
-    async?: ui$UploadAsync;
+    async?: kendo$ui$UploadAsync;
     directory?: boolean;
     directoryDrop?: boolean;
     dropZone?: string;
     enabled?: boolean;
-    files?: ui$UploadFile[];
-    localization?: ui$UploadLocalization;
+    files?: kendo$ui$UploadFile[];
+    localization?: kendo$ui$UploadLocalization;
     multiple?: boolean;
     showFileList?: boolean;
-    kendo$template?: string | Function;
-    validation?: ui$UploadValidation;
+    template?: string | Function;
+    validation?: kendo$ui$UploadValidation;
     cancel?: (e: ui$UploadCancelEvent) => void;
     clear?: (e: ui$UploadClearEvent) => void;
     complete?: (e: ui$UploadEvent) => void;
     error?: (e: ui$UploadErrorEvent) => void;
     pause?: (e: ui$UploadPauseEvent) => void;
-    ui$progress?: (e: ui$UploadProgressEvent) => void;
+    progress?: (e: ui$UploadProgressEvent) => void;
     resume?: (e: ui$UploadEvent) => void;
-    timezone$remove?: (e: ui$UploadRemoveEvent) => void;
+    remove?: (e: ui$UploadRemoveEvent) => void;
     select?: (e: ui$UploadSelectEvent) => void;
     success?: (e: ui$UploadSuccessEvent) => void;
     upload?: (e: ui$UploadUploadEvent) => void;
   }
 
-  declare interface ui$UploadEvent {
-    sender: ui$Upload;
+  declare interface kendo$ui$UploadEvent {
+    sender: kendo$ui$Upload;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$UploadCancelEvent = {
+  declare type kendo$ui$UploadCancelEvent = {
     files?: any[]
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadClearEvent = {
+  declare type kendo$ui$UploadClearEvent = {
     e?: any
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadErrorEvent = {
+  declare type kendo$ui$UploadErrorEvent = {
     files?: any[],
     operation?: string,
     XMLHttpRequest?: any
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadPauseEvent = {
+  declare type kendo$ui$UploadPauseEvent = {
     e?: any
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadProgressEvent = {
+  declare type kendo$ui$UploadProgressEvent = {
     files?: any[],
     percentComplete?: number
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadRemoveEvent = {
+  declare type kendo$ui$UploadRemoveEvent = {
     files?: any[],
     headers?: any,
-    kendo$data?: any
-  } & ui$UploadEvent;
+    data?: any
+  } & UploadEvent;
 
-  declare type ui$UploadSelectEvent = {
+  declare type kendo$ui$UploadSelectEvent = {
     e?: any,
     files?: any[]
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadSuccessEvent = {
+  declare type kendo$ui$UploadSuccessEvent = {
     files?: any[],
     operation?: string,
     response?: any,
     XMLHttpRequest?: any
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare type ui$UploadUploadEvent = {
+  declare type kendo$ui$UploadUploadEvent = {
     files?: any[],
-    kendo$data?: any,
+    data?: any,
     formData?: any,
     XMLHttpRequest?: any
-  } & ui$UploadEvent;
+  } & UploadEvent;
 
-  declare class ui$Validator mixins undefined.ui$Widget {
-    static fn: ui$Validator;
+  declare class kendo$ui$Validator mixins undefined.Widget {
+    static fn: kendo$ui$Validator;
     options: ui$ValidatorOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Validator;
+    static extend(proto: Object): kendo$ui$Validator;
     constructor(element: drawing$Element, options?: ui$ValidatorOptions): this;
     errors(): any;
     hideMessages(): void;
@@ -7534,7 +7484,7 @@ declare module "kendo-ui" {
     validateInput(input: JQuery): boolean;
   }
 
-  declare interface ui$ValidatorOptions {
+  declare interface kendo$ui$ValidatorOptions {
     name?: string;
     errorTemplate?: string;
     messages?: any;
@@ -7544,110 +7494,110 @@ declare module "kendo-ui" {
     validateInput?: (e: ui$ValidatorValidateInputEvent) => void;
   }
 
-  declare interface ui$ValidatorEvent {
-    sender: ui$Validator;
+  declare interface kendo$ui$ValidatorEvent {
+    sender: kendo$ui$Validator;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ValidatorValidateEvent = {
+  declare type kendo$ui$ValidatorValidateEvent = {
     valid?: boolean
-  } & ui$ValidatorEvent;
+  } & ValidatorEvent;
 
-  declare type ui$ValidatorValidateInputEvent = {
+  declare type kendo$ui$ValidatorValidateInputEvent = {
     input?: JQuery,
     valid?: boolean
-  } & ui$ValidatorEvent;
+  } & ValidatorEvent;
 
-  declare class ui$Window mixins undefined.ui$Widget {
-    static fn: ui$Window;
+  declare class kendo$ui$Window mixins undefined.Widget {
+    static fn: kendo$ui$Window;
     options: ui$WindowOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Window;
+    static extend(proto: Object): kendo$ui$Window;
     constructor(element: drawing$Element, options?: ui$WindowOptions): this;
-    center(): kendo$kendo$ui.ui$Window;
-    close(): kendo$kendo$ui.ui$Window;
+    center(): kendo$uiWindow;
+    close(): kendo$uiWindow;
     content(): string;
-    content(content?: string): kendo$kendo$ui.ui$Window;
-    content(content?: JQuery): kendo$kendo$ui.ui$Window;
+    content(content?: string): kendo$uiWindow;
+    content(content?: JQuery): kendo$uiWindow;
     destroy(): void;
     isMaximized(): boolean;
     isMinimized(): boolean;
-    maximize(): kendo$kendo$ui.ui$Window;
-    minimize(): kendo$kendo$ui.ui$Window;
-    open(): kendo$kendo$ui.ui$Window;
+    maximize(): kendo$uiWindow;
+    minimize(): kendo$uiWindow;
+    open(): kendo$uiWindow;
     pin(): void;
-    refresh(options: any): kendo$kendo$ui.ui$Window;
-    restore(): kendo$kendo$ui.ui$Window;
+    refresh(options: any): kendo$uiWindow;
+    restore(): kendo$uiWindow;
     setOptions(options: any): void;
     title(): string;
-    title(text?: string): kendo$kendo$ui.ui$Window;
-    toFront(): kendo$kendo$ui.ui$Window;
-    toggleMaximization(): kendo$kendo$ui.ui$Window;
+    title(text?: string): kendo$uiWindow;
+    toFront(): kendo$uiWindow;
+    toggleMaximization(): kendo$uiWindow;
     unpin(): void;
   }
 
-  declare interface ui$WindowAnimationClose {
-    kendo$effects?: string;
+  declare interface kendo$ui$WindowAnimationClose {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$WindowAnimationOpen {
-    kendo$effects?: string;
+  declare interface kendo$ui$WindowAnimationOpen {
+    effects?: string;
     duration?: number;
   }
 
-  declare interface ui$WindowAnimation {
-    close?: ui$WindowAnimationClose;
-    open?: ui$WindowAnimationOpen;
+  declare interface kendo$ui$WindowAnimation {
+    close?: kendo$ui$WindowAnimationClose;
+    open?: kendo$ui$WindowAnimationOpen;
   }
 
-  declare interface ui$WindowContent {
-    kendo$template?: string;
+  declare interface kendo$ui$WindowContent {
+    template?: string;
   }
 
-  declare interface ui$WindowPosition {
+  declare interface kendo$ui$WindowPosition {
     top?: number | string;
     left?: number | string;
   }
 
-  declare interface ui$WindowModal {
+  declare interface kendo$ui$WindowModal {
     preventScroll?: boolean;
   }
 
-  declare interface ui$WindowRefreshOptions {
+  declare interface kendo$ui$WindowRefreshOptions {
     url?: string;
     cache?: boolean;
-    kendo$data?: any;
+    data?: any;
     type?: string;
-    kendo$template?: string;
+    template?: string;
     iframe?: boolean;
   }
 
-  declare interface ui$WindowDraggable {
+  declare interface kendo$ui$WindowDraggable {
     containment?: any | string;
     dragHandle?: any | string;
     axis?: string;
   }
 
-  declare interface ui$WindowOptions {
+  declare interface kendo$ui$WindowOptions {
     name?: string;
     actions?: any;
-    animation?: boolean | ui$WindowAnimation;
+    animation?: boolean | kendo$ui$WindowAnimation;
     appendTo?: any | string;
     autoFocus?: boolean;
-    content?: string | ui$WindowContent;
-    draggable?: boolean | ui$WindowDraggable;
+    content?: string | kendo$ui$WindowContent;
+    draggable?: boolean | kendo$ui$WindowDraggable;
     iframe?: boolean;
     height?: number | string;
     maxHeight?: number;
     maxWidth?: number;
     minHeight?: number;
     minWidth?: number;
-    modal?: boolean | ui$WindowModal;
+    modal?: boolean | kendo$ui$WindowModal;
     pinned?: boolean;
-    position?: ui$WindowPosition;
+    position?: kendo$ui$WindowPosition;
     resizable?: boolean;
     scrollable?: boolean;
     title?: string | boolean;
@@ -7664,30 +7614,56 @@ declare module "kendo-ui" {
     minimize?: (e: ui$WindowEvent) => void;
     open?: (e: ui$WindowEvent) => void;
     refresh?: (e: ui$WindowEvent) => void;
-    kendo$resize?: (e: ui$WindowEvent) => void;
+    resize?: (e: ui$WindowEvent) => void;
   }
 
-  declare interface ui$WindowEvent {
-    sender: ui$Window;
+  declare interface kendo$ui$WindowEvent {
+    sender: kendo$ui$Window;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$WindowCloseEvent = {
+  declare type kendo$ui$WindowCloseEvent = {
     userTriggered?: boolean
-  } & ui$WindowEvent;
+  } & WindowEvent;
 
-  declare type ui$WindowErrorEvent = {
+  declare type kendo$ui$WindowErrorEvent = {
     xhr?: JQueryXHR,
     status?: string
-  } & ui$WindowEvent;
+  } & WindowEvent;
 
-  declare class ui$ActionSheet mixins undefined.ui$Widget {
-    static fn: ui$ActionSheet;
+  declare var npm$namespace$kendo$mobile: {
+    ui: typeof npm$namespace$kendo$mobile$ui
+  };
+
+  declare var npm$namespace$kendo$mobile$ui: {
+    ActionSheet: typeof kendo$mobile$ui$ActionSheet,
+    BackButton: typeof kendo$mobile$ui$BackButton,
+    Button: typeof kendo$mobile$ui$Button,
+    ButtonGroup: typeof kendo$mobile$ui$ButtonGroup,
+    Collapsible: typeof kendo$mobile$ui$Collapsible,
+    DetailButton: typeof kendo$mobile$ui$DetailButton,
+    Drawer: typeof kendo$mobile$ui$Drawer,
+    Layout: typeof kendo$mobile$ui$Layout,
+    ListView: typeof kendo$mobile$ui$ListView,
+    Loader: typeof kendo$mobile$ui$Loader,
+    ModalView: typeof kendo$mobile$ui$ModalView,
+    NavBar: typeof kendo$mobile$ui$NavBar,
+    Pane: typeof kendo$mobile$ui$Pane,
+    PopOver: typeof kendo$mobile$ui$PopOver,
+    ScrollView: typeof kendo$mobile$ui$ScrollView,
+    Scroller: typeof kendo$mobile$ui$Scroller,
+    SplitView: typeof kendo$mobile$ui$SplitView,
+    Switch: typeof kendo$mobile$ui$Switch,
+    TabStrip: typeof kendo$mobile$ui$TabStrip,
+    View: typeof kendo$mobile$ui$View
+  };
+  declare class kendo$mobile$ui$ActionSheet mixins undefined.Widget {
+    static fn: kendo$mobile$ui$ActionSheet;
     options: ui$ActionSheetOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ActionSheet;
+    static extend(proto: Object): kendo$mobile$ui$ActionSheet;
     constructor(
       element: drawing$Element,
       options?: ui$ActionSheetOptions
@@ -7697,111 +7673,114 @@ declare module "kendo-ui" {
     open(target: JQuery, context: any): void;
   }
 
-  declare interface ui$ActionSheetPopup {
+  declare interface kendo$mobile$ui$ActionSheetPopup {
     direction?: number | string;
     height?: number | string;
     width?: number | string;
   }
 
-  declare interface ui$ActionSheetOptions {
+  declare interface kendo$mobile$ui$ActionSheetOptions {
     name?: string;
     cancel?: string;
-    popup?: ui$ActionSheetPopup;
+    popup?: kendo$mobile$ui$ActionSheetPopup;
     type?: string;
     close?: (e: ui$ActionSheetEvent) => void;
     open?: (e: ui$ActionSheetOpenEvent) => void;
   }
 
-  declare interface ui$ActionSheetEvent {
-    sender: ui$ActionSheet;
+  declare interface kendo$mobile$ui$ActionSheetEvent {
+    sender: kendo$mobile$ui$ActionSheet;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ActionSheetOpenEvent = {
+  declare type kendo$mobile$ui$ActionSheetOpenEvent = {
     target?: JQuery,
     context?: JQuery
-  } & ui$ActionSheetEvent;
+  } & ActionSheetEvent;
 
-  declare class ui$BackButton mixins undefined.ui$Widget {
-    static fn: ui$BackButton;
+  declare class kendo$mobile$ui$BackButton mixins undefined.Widget {
+    static fn: kendo$mobile$ui$BackButton;
     options: ui$BackButtonOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$BackButton;
+    static extend(proto: Object): kendo$mobile$ui$BackButton;
     constructor(element: drawing$Element, options?: ui$BackButtonOptions): this;
     destroy(): void;
   }
 
-  declare interface ui$BackButtonOptions {
+  declare interface kendo$mobile$ui$BackButtonOptions {
     name?: string;
     click?: (e: ui$BackButtonClickEvent) => void;
   }
 
-  declare interface ui$BackButtonEvent {
-    sender: ui$BackButton;
+  declare interface kendo$mobile$ui$BackButtonEvent {
+    sender: kendo$mobile$ui$BackButton;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$BackButtonClickEvent = {
+  declare type kendo$mobile$ui$BackButtonClickEvent = {
     target?: JQuery,
     button?: JQuery
-  } & ui$BackButtonEvent;
+  } & BackButtonEvent;
 
-  declare class ui$Button mixins undefined.ui$Widget {
-    static fn: ui$Button;
-    options: ui$ButtonOptions;
+  declare class kendo$mobile$ui$Button mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Button;
+    options: kendo$ui$ButtonOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Button;
-    constructor(element: drawing$Element, options?: ui$ButtonOptions): this;
+    static extend(proto: Object): kendo$mobile$ui$Button;
+    constructor(
+      element: drawing$Element,
+      options?: kendo$ui$ButtonOptions
+    ): this;
     badge(value: string): string;
     badge(value: boolean): string;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
   }
 
-  declare interface ui$ButtonOptions {
+  declare interface kendo$mobile$ui$ButtonOptions {
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     icon?: string;
     iconClass?: string;
     imageUrl?: string;
     spriteCssClass?: string;
-    click?: (e: ui$ButtonClickEvent) => void;
+    click?: (e: kendo$ui$ButtonClickEvent) => void;
     name?: string;
     badge?: string;
     clickOn?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     icon?: string;
-    click?: (e: ui$ButtonClickEvent) => void;
+    click?: (e: kendo$ui$ButtonClickEvent) => void;
   }
 
-  declare interface ui$ButtonEvent {
-    sender: ui$Button;
+  declare interface kendo$mobile$ui$ButtonEvent {
+    sender: kendo$mobile$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Button;
+    sender: kendo$mobile$ui$Button;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ButtonClickEvent = {
+  declare type kendo$mobile$ui$ButtonClickEvent = {
     event?: any,
     target?: JQuery,
     button?: JQuery
-  } & ui$ButtonEvent;
+  } & ButtonEvent;
 
-  declare class ui$ButtonGroup mixins undefined.ui$Widget {
-    static fn: ui$ButtonGroup;
-    options: ui$ButtonGroupOptions;
+  declare class kendo$mobile$ui$ButtonGroup mixins undefined.Widget {
+    static fn: kendo$mobile$ui$ButtonGroup;
+    options: kendo$ui$ButtonGroupOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ButtonGroup;
+    static extend(proto: Object): kendo$mobile$ui$ButtonGroup;
     constructor(
       element: drawing$Element,
-      options?: ui$ButtonGroupOptions
+      options?: kendo$ui$ButtonGroupOptions
     ): this;
     badge(button: string, value: string): string;
     badge(button: string, value: boolean): string;
@@ -7809,45 +7788,45 @@ declare module "kendo-ui" {
     badge(button: number, value: boolean): string;
     current(): JQuery;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     select(li: JQuery): void;
     select(li: number): void;
   }
 
-  declare interface ui$ButtonGroupOptions {
+  declare interface kendo$mobile$ui$ButtonGroupOptions {
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     index?: number;
     selection?: string;
-    items?: ui$ButtonGroupItem[];
-    select?: (e: ui$ButtonGroupSelectEvent) => void;
+    items?: kendo$ui$ButtonGroupItem[];
+    select?: (e: kendo$ui$ButtonGroupSelectEvent) => void;
     name?: string;
-    effects$enable?: boolean;
+    enable?: boolean;
     index?: number;
     selectOn?: string;
-    select?: (e: ui$ButtonGroupSelectEvent) => void;
+    select?: (e: kendo$ui$ButtonGroupSelectEvent) => void;
   }
 
-  declare interface ui$ButtonGroupEvent {
-    sender: ui$ButtonGroup;
+  declare interface kendo$mobile$ui$ButtonGroupEvent {
+    sender: kendo$mobile$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ButtonGroup;
+    sender: kendo$mobile$ui$ButtonGroup;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ButtonGroupSelectEvent = {
+  declare type kendo$mobile$ui$ButtonGroupSelectEvent = {
     indices?: any,
     index?: number
-  } & ui$ButtonGroupEvent;
+  } & ButtonGroupEvent;
 
-  declare class ui$Collapsible mixins undefined.ui$Widget {
-    static fn: ui$Collapsible;
+  declare class kendo$mobile$ui$Collapsible mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Collapsible;
     options: ui$CollapsibleOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Collapsible;
+    static extend(proto: Object): kendo$mobile$ui$Collapsible;
     constructor(
       element: drawing$Element,
       options?: ui$CollapsibleOptions
@@ -7859,7 +7838,7 @@ declare module "kendo-ui" {
     toggle(instant?: boolean): void;
   }
 
-  declare interface ui$CollapsibleOptions {
+  declare interface kendo$mobile$ui$CollapsibleOptions {
     name?: string;
     animation?: boolean;
     collapsed?: boolean;
@@ -7870,18 +7849,18 @@ declare module "kendo-ui" {
     expand?: (e: ui$CollapsibleEvent) => void;
   }
 
-  declare interface ui$CollapsibleEvent {
-    sender: ui$Collapsible;
+  declare interface kendo$mobile$ui$CollapsibleEvent {
+    sender: kendo$mobile$ui$Collapsible;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$DetailButton mixins undefined.ui$Widget {
-    static fn: ui$DetailButton;
+  declare class kendo$mobile$ui$DetailButton mixins undefined.Widget {
+    static fn: kendo$mobile$ui$DetailButton;
     options: ui$DetailButtonOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$DetailButton;
+    static extend(proto: Object): kendo$mobile$ui$DetailButton;
     constructor(
       element: drawing$Element,
       options?: ui$DetailButtonOptions
@@ -7889,35 +7868,35 @@ declare module "kendo-ui" {
     destroy(): void;
   }
 
-  declare interface ui$DetailButtonOptions {
+  declare interface kendo$mobile$ui$DetailButtonOptions {
     name?: string;
     click?: (e: ui$DetailButtonClickEvent) => void;
   }
 
-  declare interface ui$DetailButtonEvent {
-    sender: ui$DetailButton;
+  declare interface kendo$mobile$ui$DetailButtonEvent {
+    sender: kendo$mobile$ui$DetailButton;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DetailButtonClickEvent = {
+  declare type kendo$mobile$ui$DetailButtonClickEvent = {
     target?: JQuery,
     button?: JQuery
-  } & ui$DetailButtonEvent;
+  } & DetailButtonEvent;
 
-  declare class ui$Drawer mixins undefined.ui$Widget {
-    static fn: ui$Drawer;
+  declare class kendo$mobile$ui$Drawer mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Drawer;
     options: ui$DrawerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Drawer;
+    static extend(proto: Object): kendo$mobile$ui$Drawer;
     constructor(element: drawing$Element, options?: ui$DrawerOptions): this;
     destroy(): void;
     hide(): void;
     show(): void;
   }
 
-  declare interface ui$DrawerOptions {
+  declare interface kendo$mobile$ui$DrawerOptions {
     name?: string;
     container?: JQuery;
     position?: string;
@@ -7928,37 +7907,37 @@ declare module "kendo-ui" {
     afterHide?: (e: ui$DrawerAfterHideEvent) => void;
     beforeShow?: (e: ui$DrawerEvent) => void;
     hide?: (e: ui$DrawerHideEvent) => void;
-    kendo$init?: (e: ui$DrawerInitEvent) => void;
+    init?: (e: ui$DrawerInitEvent) => void;
     show?: (e: ui$DrawerShowEvent) => void;
   }
 
-  declare interface ui$DrawerEvent {
-    sender: ui$Drawer;
+  declare interface kendo$mobile$ui$DrawerEvent {
+    sender: kendo$mobile$ui$Drawer;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$DrawerAfterHideEvent = {} & ui$DrawerEvent;
+  declare type kendo$mobile$ui$DrawerAfterHideEvent = {} & DrawerEvent;
 
-  declare type ui$DrawerHideEvent = {} & ui$DrawerEvent;
+  declare type kendo$mobile$ui$DrawerHideEvent = {} & DrawerEvent;
 
-  declare type ui$DrawerInitEvent = {} & ui$DrawerEvent;
+  declare type kendo$mobile$ui$DrawerInitEvent = {} & DrawerEvent;
 
-  declare type ui$DrawerShowEvent = {} & ui$DrawerEvent;
+  declare type kendo$mobile$ui$DrawerShowEvent = {} & DrawerEvent;
 
-  declare class ui$Layout mixins undefined.ui$Widget {
-    static fn: ui$Layout;
+  declare class kendo$mobile$ui$Layout mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Layout;
     options: drawing$LayoutOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Layout;
+    static extend(proto: Object): kendo$mobile$ui$Layout;
     constructor(
       element: drawing$Element,
       options?: drawing$LayoutOptions
     ): this;
   }
 
-  declare interface ui$LayoutOptions {
+  declare interface kendo$mobile$ui$LayoutOptions {
     name?: string;
     alignContent?: string;
     alignItems?: string;
@@ -7966,7 +7945,7 @@ declare module "kendo-ui" {
     lineSpacing?: number;
     spacing?: number;
     orientation?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
     name?: string;
     alignContent?: string;
     alignItems?: string;
@@ -7974,12 +7953,12 @@ declare module "kendo-ui" {
     lineSpacing?: number;
     spacing?: number;
     orientation?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
     name?: string;
     id?: string;
     platform?: string;
     hide?: (e: ui$LayoutHideEvent) => void;
-    kendo$init?: (e: ui$LayoutInitEvent) => void;
+    init?: (e: ui$LayoutInitEvent) => void;
     show?: (e: ui$LayoutShowEvent) => void;
     name?: string;
     alignContent?: string;
@@ -7988,58 +7967,61 @@ declare module "kendo-ui" {
     lineSpacing?: number;
     spacing?: number;
     orientation?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
   }
 
-  declare interface ui$LayoutEvent {
-    sender: ui$Layout;
+  declare interface kendo$mobile$ui$LayoutEvent {
+    sender: kendo$mobile$ui$Layout;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Layout;
+    sender: kendo$mobile$ui$Layout;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Layout;
+    sender: kendo$mobile$ui$Layout;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Layout;
+    sender: kendo$mobile$ui$Layout;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$LayoutHideEvent = {
+  declare type kendo$mobile$ui$LayoutHideEvent = {
     layout?: JQuery,
     view?: JQuery
-  } & ui$LayoutEvent;
+  } & LayoutEvent;
 
-  declare type ui$LayoutInitEvent = {
+  declare type kendo$mobile$ui$LayoutInitEvent = {
     layout?: JQuery
-  } & ui$LayoutEvent;
+  } & LayoutEvent;
 
-  declare type ui$LayoutShowEvent = {
+  declare type kendo$mobile$ui$LayoutShowEvent = {
     layout?: JQuery,
     view?: JQuery
-  } & ui$LayoutEvent;
+  } & LayoutEvent;
 
-  declare class ui$ListView mixins undefined.ui$Widget {
-    static fn: ui$ListView;
-    options: ui$ListViewOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+  declare class kendo$mobile$ui$ListView mixins undefined.Widget {
+    static fn: kendo$mobile$ui$ListView;
+    options: kendo$ui$ListViewOptions;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ListView;
-    constructor(element: drawing$Element, options?: ui$ListViewOptions): this;
+    static extend(proto: Object): kendo$mobile$ui$ListView;
+    constructor(
+      element: drawing$Element,
+      options?: kendo$ui$ListViewOptions
+    ): this;
     append(dataItems: any): void;
     prepend(dataItems: any): void;
     replace(dataItems: any): void;
     remove(dataItems: any): void;
-    setDataItem(item: JQuery, dataItem: kendo$kendo$data.data$Model): void;
+    setDataItem(item: JQuery, dataItem: kendo$dataModel): void;
     destroy(): void;
     items(): JQuery;
     refresh(): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
   }
 
-  declare interface ui$ListViewFilterable {
+  declare interface kendo$mobile$ui$ListViewFilterable {
     placeholder?: string;
     autoFilter?: boolean;
     field?: string;
@@ -8047,166 +8029,166 @@ declare module "kendo-ui" {
     operator?: string;
   }
 
-  declare interface ui$ListViewMessages {
+  declare interface kendo$mobile$ui$ListViewMessages {
     loadMoreText?: string;
     pullTemplate?: string;
     refreshTemplate?: string;
     releaseTemplate?: string;
   }
 
-  declare interface ui$ListViewOptions {
+  declare interface kendo$mobile$ui$ListViewOptions {
     name?: string;
     autoBind?: boolean;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     editTemplate?: Function;
     navigatable?: boolean;
     selectable?: boolean | string;
-    kendo$template?: Function;
+    template?: Function;
     altTemplate?: Function;
-    cancel?: (e: ui$ListViewCancelEvent) => void;
-    change?: (e: ui$ListViewEvent) => void;
-    dataBound?: (e: ui$ListViewEvent) => void;
-    dataBinding?: (e: ui$ListViewEvent) => void;
-    edit?: (e: ui$ListViewEditEvent) => void;
-    timezone$remove?: (e: ui$ListViewRemoveEvent) => void;
-    save?: (e: ui$ListViewSaveEvent) => void;
+    cancel?: (e: kendo$ui$ListViewCancelEvent) => void;
+    change?: (e: kendo$ui$ListViewEvent) => void;
+    dataBound?: (e: kendo$ui$ListViewEvent) => void;
+    dataBinding?: (e: kendo$ui$ListViewEvent) => void;
+    edit?: (e: kendo$ui$ListViewEditEvent) => void;
+    remove?: (e: kendo$ui$ListViewRemoveEvent) => void;
+    save?: (e: kendo$ui$ListViewSaveEvent) => void;
     name?: string;
     appendOnRefresh?: boolean;
     autoBind?: boolean;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     endlessScroll?: boolean;
     fixedHeaders?: boolean;
     headerTemplate?: string | Function;
     loadMore?: boolean;
-    messages?: ui$ListViewMessages;
+    messages?: kendo$mobile$ui$ListViewMessages;
     pullToRefresh?: boolean;
     pullParameters?: Function;
     style?: string;
-    kendo$template?: string | Function;
+    template?: string | Function;
     type?: string;
-    filterable?: boolean | ui$ListViewFilterable;
+    filterable?: boolean | kendo$mobile$ui$ListViewFilterable;
     virtualViewSize?: number;
     click?: (e: ui$ListViewClickEvent) => void;
-    dataBound?: (e: ui$ListViewEvent) => void;
-    dataBinding?: (e: ui$ListViewEvent) => void;
-    itemChange?: (e: ui$ListViewEvent) => void;
+    dataBound?: (e: kendo$ui$ListViewEvent) => void;
+    dataBinding?: (e: kendo$ui$ListViewEvent) => void;
+    itemChange?: (e: kendo$ui$ListViewEvent) => void;
   }
 
-  declare interface ui$ListViewEvent {
-    sender: ui$ListView;
+  declare interface kendo$mobile$ui$ListViewEvent {
+    sender: kendo$mobile$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ListView;
+    sender: kendo$mobile$ui$ListView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ListViewClickEvent = {
+  declare type kendo$mobile$ui$ListViewClickEvent = {
     item?: JQuery,
     target?: JQuery,
     dataItem?: any,
-    button?: kendo$kendo$mobile.kendo$ui.ui$Button
-  } & ui$ListViewEvent;
+    button?: kendo$mobileuiButton
+  } & ListViewEvent;
 
-  declare class ui$Loader mixins undefined.ui$Widget {
-    static fn: ui$Loader;
+  declare class kendo$mobile$ui$Loader mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Loader;
     options: ui$LoaderOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Loader;
+    static extend(proto: Object): kendo$mobile$ui$Loader;
     constructor(element: drawing$Element, options?: ui$LoaderOptions): this;
     hide(): void;
     show(): void;
   }
 
-  declare interface ui$LoaderOptions {
+  declare interface kendo$mobile$ui$LoaderOptions {
     name?: string;
   }
 
-  declare interface ui$LoaderEvent {
-    sender: ui$Loader;
+  declare interface kendo$mobile$ui$LoaderEvent {
+    sender: kendo$mobile$ui$Loader;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$ModalView mixins undefined.ui$Widget {
-    static fn: ui$ModalView;
+  declare class kendo$mobile$ui$ModalView mixins undefined.Widget {
+    static fn: kendo$mobile$ui$ModalView;
     options: ui$ModalViewOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ModalView;
+    static extend(proto: Object): kendo$mobile$ui$ModalView;
     constructor(element: drawing$Element, options?: ui$ModalViewOptions): this;
     close(): void;
     destroy(): void;
     open(target?: JQuery): void;
   }
 
-  declare interface ui$ModalViewOptions {
+  declare interface kendo$mobile$ui$ModalViewOptions {
     name?: string;
     height?: number;
     modal?: boolean;
     width?: number;
     beforeOpen?: (e: ui$ModalViewBeforeOpenEvent) => void;
     close?: (e: ui$ModalViewCloseEvent) => void;
-    kendo$init?: (e: ui$ModalViewInitEvent) => void;
+    init?: (e: ui$ModalViewInitEvent) => void;
     open?: (e: ui$ModalViewOpenEvent) => void;
   }
 
-  declare interface ui$ModalViewEvent {
-    sender: ui$ModalView;
+  declare interface kendo$mobile$ui$ModalViewEvent {
+    sender: kendo$mobile$ui$ModalView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ModalViewBeforeOpenEvent = {
+  declare type kendo$mobile$ui$ModalViewBeforeOpenEvent = {
     target?: JQuery
-  } & ui$ModalViewEvent;
+  } & ModalViewEvent;
 
-  declare type ui$ModalViewCloseEvent = {} & ui$ModalViewEvent;
+  declare type kendo$mobile$ui$ModalViewCloseEvent = {} & ModalViewEvent;
 
-  declare type ui$ModalViewInitEvent = {} & ui$ModalViewEvent;
+  declare type kendo$mobile$ui$ModalViewInitEvent = {} & ModalViewEvent;
 
-  declare type ui$ModalViewOpenEvent = {
+  declare type kendo$mobile$ui$ModalViewOpenEvent = {
     target?: JQuery
-  } & ui$ModalViewEvent;
+  } & ModalViewEvent;
 
-  declare class ui$NavBar mixins undefined.ui$Widget {
-    static fn: ui$NavBar;
+  declare class kendo$mobile$ui$NavBar mixins undefined.Widget {
+    static fn: kendo$mobile$ui$NavBar;
     options: ui$NavBarOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$NavBar;
+    static extend(proto: Object): kendo$mobile$ui$NavBar;
     constructor(element: drawing$Element, options?: ui$NavBarOptions): this;
     destroy(): void;
     title(value: string): void;
   }
 
-  declare interface ui$NavBarOptions {
+  declare interface kendo$mobile$ui$NavBarOptions {
     name?: string;
   }
 
-  declare interface ui$NavBarEvent {
-    sender: ui$NavBar;
+  declare interface kendo$mobile$ui$NavBarEvent {
+    sender: kendo$mobile$ui$NavBar;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ui$Pane mixins undefined.ui$Widget {
-    static fn: ui$Pane;
+  declare class kendo$mobile$ui$Pane mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Pane;
     options: ui$PaneOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Pane;
+    static extend(proto: Object): kendo$mobile$ui$Pane;
     constructor(element: drawing$Element, options?: ui$PaneOptions): this;
     destroy(): void;
     hideLoading(): void;
     navigate(url: string, transition: string): void;
     replace(url: string, transition: string): void;
     showLoading(): void;
-    view(): kendo$kendo$mobile.kendo$ui.kendo$View;
+    view(): kendo$mobileuiView;
   }
 
-  declare interface ui$PaneOptions {
+  declare interface kendo$mobile$ui$PaneOptions {
     name?: string;
     collapsible?: boolean;
     initial?: string;
@@ -8218,72 +8200,75 @@ declare module "kendo-ui" {
     viewShow?: (e: ui$PaneViewShowEvent) => void;
   }
 
-  declare interface ui$PaneEvent {
-    sender: ui$Pane;
+  declare interface kendo$mobile$ui$PaneEvent {
+    sender: kendo$mobile$ui$Pane;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PaneNavigateEvent = {
+  declare type kendo$mobile$ui$PaneNavigateEvent = {
     url?: JQuery
-  } & ui$PaneEvent;
+  } & PaneEvent;
 
-  declare type ui$PaneViewShowEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.kendo$View
-  } & ui$PaneEvent;
+  declare type kendo$mobile$ui$PaneViewShowEvent = {
+    view?: kendo$mobileuiView
+  } & PaneEvent;
 
-  declare class ui$PopOver mixins undefined.ui$Widget {
-    static fn: ui$PopOver;
+  declare class kendo$mobile$ui$PopOver mixins undefined.Widget {
+    static fn: kendo$mobile$ui$PopOver;
     options: ui$PopOverOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$PopOver;
+    static extend(proto: Object): kendo$mobile$ui$PopOver;
     constructor(element: drawing$Element, options?: ui$PopOverOptions): this;
     close(): void;
     destroy(): void;
     open(target: JQuery): void;
   }
 
-  declare interface ui$PopOverPane {
+  declare interface kendo$mobile$ui$PopOverPane {
     initial?: string;
     layout?: string;
     loading?: string;
     transition?: string;
   }
 
-  declare interface ui$PopOverPopup {
+  declare interface kendo$mobile$ui$PopOverPopup {
     height?: number | string;
     width?: number | string;
   }
 
-  declare interface ui$PopOverOptions {
+  declare interface kendo$mobile$ui$PopOverOptions {
     name?: string;
-    pane?: ui$PopOverPane;
-    popup?: ui$PopOverPopup;
+    pane?: kendo$mobile$ui$PopOverPane;
+    popup?: kendo$mobile$ui$PopOverPopup;
     close?: (e: ui$PopOverCloseEvent) => void;
     open?: (e: ui$PopOverOpenEvent) => void;
   }
 
-  declare interface ui$PopOverEvent {
-    sender: ui$PopOver;
+  declare interface kendo$mobile$ui$PopOverEvent {
+    sender: kendo$mobile$ui$PopOver;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$PopOverCloseEvent = {} & ui$PopOverEvent;
+  declare type kendo$mobile$ui$PopOverCloseEvent = {} & PopOverEvent;
 
-  declare type ui$PopOverOpenEvent = {
+  declare type kendo$mobile$ui$PopOverOpenEvent = {
     target?: JQuery
-  } & ui$PopOverEvent;
+  } & PopOverEvent;
 
-  declare class ui$ScrollView mixins undefined.ui$Widget {
-    static fn: ui$ScrollView;
-    options: ui$ScrollViewOptions;
-    dataSource: kendo$kendo$data.data$DataSource;
+  declare class kendo$mobile$ui$ScrollView mixins undefined.Widget {
+    static fn: kendo$mobile$ui$ScrollView;
+    options: kendo$ui$ScrollViewOptions;
+    dataSource: kendo$dataDataSource;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$ScrollView;
-    constructor(element: drawing$Element, options?: ui$ScrollViewOptions): this;
+    static extend(proto: Object): kendo$mobile$ui$ScrollView;
+    constructor(
+      element: drawing$Element,
+      options?: kendo$ui$ScrollViewOptions
+    ): this;
     content(content: string): void;
     content(content: JQuery): void;
     destroy(): void;
@@ -8291,79 +8276,79 @@ declare module "kendo-ui" {
     prev(): void;
     refresh(): void;
     scrollTo(page: number, instant: boolean): void;
-    setDataSource(dataSource: kendo$kendo$data.data$DataSource): void;
+    setDataSource(dataSource: kendo$dataDataSource): void;
     value(dataItem: any): any;
   }
 
-  declare interface ui$ScrollViewOptions {
+  declare interface kendo$mobile$ui$ScrollViewOptions {
     name?: string;
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
     page?: number;
-    kendo$template?: string;
+    template?: string;
     velocityThreshold?: number;
-    change?: (e: ui$ScrollViewChangeEvent) => void;
-    refresh?: (e: ui$ScrollViewRefreshEvent) => void;
+    change?: (e: kendo$ui$ScrollViewChangeEvent) => void;
+    refresh?: (e: kendo$ui$ScrollViewRefreshEvent) => void;
     name?: string;
     autoBind?: boolean;
     bounceVelocityThreshold?: number;
     contentHeight?: number | string;
-    dataSource?: kendo$kendo$data.data$DataSource | any;
+    dataSource?: kendo$dataDataSource | any;
     duration?: number;
     emptyTemplate?: string;
     enablePager?: boolean;
     itemsPerPage?: number;
     page?: number;
     pageSize?: number;
-    kendo$template?: string;
+    template?: string;
     velocityThreshold?: number;
     changing?: (e: ui$ScrollViewChangingEvent) => void;
-    change?: (e: ui$ScrollViewChangeEvent) => void;
-    refresh?: (e: ui$ScrollViewRefreshEvent) => void;
+    change?: (e: kendo$ui$ScrollViewChangeEvent) => void;
+    refresh?: (e: kendo$ui$ScrollViewRefreshEvent) => void;
   }
 
-  declare interface ui$ScrollViewEvent {
-    sender: ui$ScrollView;
+  declare interface kendo$mobile$ui$ScrollViewEvent {
+    sender: kendo$mobile$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$ScrollView;
+    sender: kendo$mobile$ui$ScrollView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ScrollViewChangingEvent = {
+  declare type kendo$mobile$ui$ScrollViewChangingEvent = {
     currentPage?: number,
     nextPage?: number
-  } & ui$ScrollViewEvent;
+  } & ScrollViewEvent;
 
-  declare type ui$ScrollViewChangeEvent = {
+  declare type kendo$mobile$ui$ScrollViewChangeEvent = {
     currentPage?: number,
     nextPage?: number,
     element?: JQuery,
-    kendo$data?: any,
+    data?: any,
     page?: number,
     element?: JQuery,
-    kendo$data?: any
-  } & ui$ScrollViewEvent;
+    data?: any
+  } & ScrollViewEvent;
 
-  declare type ui$ScrollViewRefreshEvent = {
+  declare type kendo$mobile$ui$ScrollViewRefreshEvent = {
     pageCount?: number,
     page?: number,
     pageCount?: number,
     page?: number
-  } & ui$ScrollViewEvent;
+  } & ScrollViewEvent;
 
-  declare class ui$Scroller mixins undefined.ui$Widget {
-    static fn: ui$Scroller;
+  declare class kendo$mobile$ui$Scroller mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Scroller;
     options: ui$ScrollerOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Scroller;
+    static extend(proto: Object): kendo$mobile$ui$Scroller;
     constructor(element: drawing$Element, options?: ui$ScrollerOptions): this;
     animatedScrollTo(x: number, y: number): void;
     contentResized(): void;
@@ -8379,121 +8364,127 @@ declare module "kendo-ui" {
     zoomOut(): void;
   }
 
-  declare interface ui$ScrollerMessages {
+  declare interface kendo$mobile$ui$ScrollerMessages {
     pullTemplate?: string;
     refreshTemplate?: string;
     releaseTemplate?: string;
   }
 
-  declare interface ui$ScrollerOptions {
+  declare interface kendo$mobile$ui$ScrollerOptions {
     name?: string;
     elastic?: boolean;
-    messages?: ui$ScrollerMessages;
+    messages?: kendo$mobile$ui$ScrollerMessages;
     pullOffset?: number;
     pullToRefresh?: boolean;
     useNative?: boolean;
     visibleScrollHints?: boolean;
     zoom?: boolean;
     pull?: (e: ui$ScrollerEvent) => void;
-    kendo$resize?: (e: ui$ScrollerEvent) => void;
+    resize?: (e: ui$ScrollerEvent) => void;
     scroll?: (e: ui$ScrollerScrollEvent) => void;
   }
 
-  declare interface ui$ScrollerEvent {
-    sender: ui$Scroller;
+  declare interface kendo$mobile$ui$ScrollerEvent {
+    sender: kendo$mobile$ui$Scroller;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ScrollerScrollEvent = {
+  declare type kendo$mobile$ui$ScrollerScrollEvent = {
     scrollTop?: number,
     scrollLeft?: number
-  } & ui$ScrollerEvent;
+  } & ScrollerEvent;
 
-  declare class ui$SplitView mixins undefined.ui$Widget {
-    static fn: ui$SplitView;
+  declare class kendo$mobile$ui$SplitView mixins undefined.Widget {
+    static fn: kendo$mobile$ui$SplitView;
     options: ui$SplitViewOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$SplitView;
+    static extend(proto: Object): kendo$mobile$ui$SplitView;
     constructor(element: drawing$Element, options?: ui$SplitViewOptions): this;
     destroy(): void;
     expandPanes(): void;
     collapsePanes(): void;
   }
 
-  declare interface ui$SplitViewOptions {
+  declare interface kendo$mobile$ui$SplitViewOptions {
     name?: string;
     style?: string;
-    kendo$init?: (e: ui$SplitViewInitEvent) => void;
+    init?: (e: ui$SplitViewInitEvent) => void;
     show?: (e: ui$SplitViewShowEvent) => void;
   }
 
-  declare interface ui$SplitViewEvent {
-    sender: ui$SplitView;
+  declare interface kendo$mobile$ui$SplitViewEvent {
+    sender: kendo$mobile$ui$SplitView;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SplitViewInitEvent = {
+  declare type kendo$mobile$ui$SplitViewInitEvent = {
     view?: JQuery
-  } & ui$SplitViewEvent;
+  } & SplitViewEvent;
 
-  declare type ui$SplitViewShowEvent = {
+  declare type kendo$mobile$ui$SplitViewShowEvent = {
     view?: JQuery
-  } & ui$SplitViewEvent;
+  } & SplitViewEvent;
 
-  declare class ui$Switch mixins undefined.ui$Widget {
-    static fn: ui$Switch;
-    options: ui$SwitchOptions;
+  declare class kendo$mobile$ui$Switch mixins undefined.Widget {
+    static fn: kendo$mobile$ui$Switch;
+    options: kendo$ui$SwitchOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$Switch;
-    constructor(element: drawing$Element, options?: ui$SwitchOptions): this;
+    static extend(proto: Object): kendo$mobile$ui$Switch;
+    constructor(
+      element: drawing$Element,
+      options?: kendo$ui$SwitchOptions
+    ): this;
     check(): boolean;
     check(check: boolean): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
     refresh(): void;
     toggle(): void;
   }
 
-  declare interface ui$SwitchOptions {
+  declare interface kendo$mobile$ui$SwitchOptions {
     name?: string;
     checked?: boolean;
     enabled?: boolean;
     readonly?: boolean;
     width?: number | string;
-    change?: (e: ui$SwitchChangeEvent) => void;
+    change?: (e: kendo$ui$SwitchChangeEvent) => void;
     name?: string;
     checked?: boolean;
-    effects$enable?: boolean;
+    enable?: boolean;
     offLabel?: string;
     onLabel?: string;
-    change?: (e: ui$SwitchChangeEvent) => void;
+    change?: (e: kendo$ui$SwitchChangeEvent) => void;
   }
 
-  declare interface ui$SwitchEvent {
-    sender: ui$Switch;
+  declare interface kendo$mobile$ui$SwitchEvent {
+    sender: kendo$mobile$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$Switch;
+    sender: kendo$mobile$ui$Switch;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$SwitchChangeEvent = {
+  declare type kendo$mobile$ui$SwitchChangeEvent = {
     checked?: any,
     checked?: any
-  } & ui$SwitchEvent;
+  } & SwitchEvent;
 
-  declare class ui$TabStrip mixins undefined.ui$Widget {
-    static fn: ui$TabStrip;
-    options: ui$TabStripOptions;
+  declare class kendo$mobile$ui$TabStrip mixins undefined.Widget {
+    static fn: kendo$mobile$ui$TabStrip;
+    options: kendo$ui$TabStripOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$TabStrip;
-    constructor(element: drawing$Element, options?: ui$TabStripOptions): this;
+    static extend(proto: Object): kendo$mobile$ui$TabStrip;
+    constructor(
+      element: drawing$Element,
+      options?: kendo$ui$TabStripOptions
+    ): this;
     badge(tab: string, value: string): string;
     badge(tab: string, value: boolean): string;
     badge(tab: number, value: string): string;
@@ -8506,65 +8497,65 @@ declare module "kendo-ui" {
     clear(): void;
   }
 
-  declare interface ui$TabStripOptions {
+  declare interface kendo$mobile$ui$TabStripOptions {
     name?: string;
-    animation?: boolean | ui$TabStripAnimation;
+    animation?: boolean | kendo$ui$TabStripAnimation;
     collapsible?: boolean;
     contentUrls?: any;
     dataContentField?: string;
     dataContentUrlField?: string;
     dataImageUrlField?: string;
-    dataSource?: any | any | kendo$kendo$data.data$DataSource;
+    dataSource?: any | any | kendo$dataDataSource;
     dataSpriteCssClass?: string;
     dataTextField?: string;
     dataUrlField?: string;
     navigatable?: boolean;
-    scrollable?: boolean | ui$TabStripScrollable;
+    scrollable?: boolean | kendo$ui$TabStripScrollable;
     tabPosition?: string;
     value?: string;
-    activate?: (e: ui$TabStripActivateEvent) => void;
-    contentLoad?: (e: ui$TabStripContentLoadEvent) => void;
-    error?: (e: ui$TabStripErrorEvent) => void;
-    select?: (e: ui$TabStripSelectEvent) => void;
-    show?: (e: ui$TabStripShowEvent) => void;
+    activate?: (e: kendo$ui$TabStripActivateEvent) => void;
+    contentLoad?: (e: kendo$ui$TabStripContentLoadEvent) => void;
+    error?: (e: kendo$ui$TabStripErrorEvent) => void;
+    select?: (e: kendo$ui$TabStripSelectEvent) => void;
+    show?: (e: kendo$ui$TabStripShowEvent) => void;
     name?: string;
     selectedIndex?: number;
-    select?: (e: ui$TabStripSelectEvent) => void;
+    select?: (e: kendo$ui$TabStripSelectEvent) => void;
   }
 
-  declare interface ui$TabStripEvent {
-    sender: ui$TabStrip;
+  declare interface kendo$mobile$ui$TabStripEvent {
+    sender: kendo$mobile$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$TabStrip;
+    sender: kendo$mobile$ui$TabStrip;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$TabStripSelectEvent = {
+  declare type kendo$mobile$ui$TabStripSelectEvent = {
     item?: drawing$Element,
     contentElement?: drawing$Element,
     item?: JQuery
-  } & ui$TabStripEvent;
+  } & TabStripEvent;
 
-  declare class ui$View mixins undefined.ui$Widget {
-    static fn: ui$View;
+  declare class kendo$mobile$ui$View mixins undefined.Widget {
+    static fn: kendo$mobile$ui$View;
     options: kendo$ViewOptions;
     element: JQuery;
     wrapper: JQuery;
-    static extend(proto: Object): ui$View;
+    static extend(proto: Object): kendo$mobile$ui$View;
     constructor(element: drawing$Element, options?: kendo$ViewOptions): this;
     contentElement(): void;
     destroy(): void;
-    enable(effects$enable: boolean): void;
+    enable(enable: boolean): void;
   }
 
-  declare interface ui$ViewOptions {
+  declare interface kendo$mobile$ui$ViewOptions {
     tagName?: string;
-    drawing$wrap?: boolean;
+    wrap?: boolean;
     model?: Object;
     evalTemplate?: boolean;
-    kendo$init?: (e: kendo$ViewEvent) => void;
+    init?: (e: kendo$ViewEvent) => void;
     show?: (e: kendo$ViewEvent) => void;
     hide?: (e: kendo$ViewEvent) => void;
     name?: string;
@@ -8579,155 +8570,157 @@ declare module "kendo-ui" {
     beforeHide?: (e: ui$ViewBeforeHideEvent) => void;
     beforeShow?: (e: ui$ViewBeforeShowEvent) => void;
     hide?: (e: ui$ViewHideEvent) => void;
-    kendo$init?: (e: ui$ViewInitEvent) => void;
+    init?: (e: ui$ViewInitEvent) => void;
     show?: (e: ui$ViewShowEvent) => void;
     transitionStart?: (e: ui$ViewTransitionStartEvent) => void;
     transitionEnd?: (e: ui$ViewTransitionEndEvent) => void;
   }
 
-  declare interface ui$ViewEvent {
-    sender: ui$View;
+  declare interface kendo$mobile$ui$ViewEvent {
+    sender: kendo$mobile$ui$View;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: ui$View;
+    sender: kendo$mobile$ui$View;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type ui$ViewAfterShowEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewAfterShowEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewBeforeHideEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewBeforeHideEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewBeforeShowEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewBeforeShowEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewHideEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewHideEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewInitEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewInitEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewShowEvent = {
-    view?: kendo$kendo$mobile.kendo$ui.ui$View
-  } & ui$ViewEvent;
+  declare type kendo$mobile$ui$ViewShowEvent = {
+    view?: kendo$mobileuiView
+  } & ViewEvent;
 
-  declare type ui$ViewTransitionStartEvent = {
+  declare type kendo$mobile$ui$ViewTransitionStartEvent = {
     type?: string
-  } & ui$ViewEvent;
+  } & ViewEvent;
 
-  declare type ui$ViewTransitionEndEvent = {
+  declare type kendo$mobile$ui$ViewTransitionEndEvent = {
     type?: string
-  } & ui$ViewEvent;
+  } & ViewEvent;
 
-  declare class geometry$Arc mixins kendo$Observable {
+  declare var npm$namespace$kendo$dataviz: {
+    geometry: typeof npm$namespace$kendo$dataviz$geometry
+  };
+
+  declare var npm$namespace$kendo$dataviz$geometry: {
+    Arc: typeof kendo$dataviz$geometry$Arc,
+    Circle: typeof kendo$dataviz$geometry$Circle,
+    Matrix: typeof kendo$dataviz$geometry$Matrix,
+    Point: typeof kendo$dataviz$geometry$Point,
+    Rect: typeof kendo$dataviz$geometry$Rect,
+    Size: typeof kendo$dataviz$geometry$Size,
+    Transformation: typeof kendo$dataviz$geometry$Transformation
+  };
+  declare class kendo$dataviz$geometry$Arc mixins Observable {
     options: geometry$ArcOptions;
     anticlockwise: boolean;
-    center: kendo$kendo$geometry.geometry$Point;
+    center: kendo$geometryPoint;
     endAngle: number;
     radiusX: number;
     radiusY: number;
     startAngle: number;
     constructor(
-      center: any | kendo$kendo$geometry.geometry$Point,
+      center: any | kendo$geometryPoint,
       options?: geometry$ArcOptions
     ): this;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
     getAnticlockwise(): boolean;
-    getCenter(): kendo$kendo$geometry.geometry$Point;
+    getCenter(): kendo$geometryPoint;
     getEndAngle(): number;
     getRadiusX(): number;
     getRadiusY(): number;
     getStartAngle(): number;
-    pointAt(angle: number): kendo$kendo$geometry.geometry$Point;
-    setAnticlockwise(value: boolean): kendo$kendo$geometry.geometry$Arc;
-    setCenter(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Arc;
-    setEndAngle(value: number): kendo$kendo$geometry.geometry$Arc;
-    setRadiusX(value: number): kendo$kendo$geometry.geometry$Arc;
-    setRadiusY(value: number): kendo$kendo$geometry.geometry$Arc;
-    setStartAngle(value: number): kendo$kendo$geometry.geometry$Arc;
+    pointAt(angle: number): kendo$geometryPoint;
+    setAnticlockwise(value: boolean): kendo$geometryArc;
+    setCenter(value: kendo$geometryPoint): kendo$geometryArc;
+    setEndAngle(value: number): kendo$geometryArc;
+    setRadiusX(value: number): kendo$geometryArc;
+    setRadiusY(value: number): kendo$geometryArc;
+    setStartAngle(value: number): kendo$geometryArc;
   }
 
-  declare interface geometry$ArcOptions {
+  declare interface kendo$dataviz$geometry$ArcOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$ArcEvent {
-    sender: geometry$Arc;
+  declare interface kendo$dataviz$geometry$ArcEvent {
+    sender: kendo$dataviz$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$dataviz$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$dataviz$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$dataviz$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Circle mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Circle mixins Observable {
     options: geometry$CircleOptions;
-    center: kendo$kendo$geometry.geometry$Point;
+    center: kendo$geometryPoint;
     radius: number;
-    constructor(
-      center: any | kendo$kendo$geometry.geometry$Point,
-      radius: number
-    ): this;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
-    clone(): kendo$kendo$geometry.geometry$Circle;
-    equals(other: kendo$kendo$geometry.geometry$Circle): boolean;
-    getCenter(): kendo$kendo$geometry.geometry$Point;
+    constructor(center: any | kendo$geometryPoint, radius: number): this;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    clone(): kendo$geometryCircle;
+    equals(other: kendo$geometryCircle): boolean;
+    getCenter(): kendo$geometryPoint;
     getRadius(): number;
-    pointAt(angle: number): kendo$kendo$geometry.geometry$Point;
-    setCenter(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    setCenter(value: any): kendo$kendo$geometry.geometry$Point;
-    setRadius(value: number): kendo$kendo$geometry.geometry$Circle;
+    pointAt(angle: number): kendo$geometryPoint;
+    setCenter(value: kendo$geometryPoint): kendo$geometryPoint;
+    setCenter(value: any): kendo$geometryPoint;
+    setRadius(value: number): kendo$geometryCircle;
   }
 
-  declare interface geometry$CircleOptions {
+  declare interface kendo$dataviz$geometry$CircleOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
@@ -8736,36 +8729,36 @@ declare module "kendo-ui" {
     center?: any;
     radius?: number;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$CircleEvent {
-    sender: geometry$Circle;
+  declare interface kendo$dataviz$geometry$CircleEvent {
+    sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$dataviz$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Matrix mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Matrix mixins Observable {
     options: geometry$MatrixOptions;
     a: number;
     b: number;
@@ -8773,160 +8766,129 @@ declare module "kendo-ui" {
     d: number;
     e: number;
     f: number;
-    static rotate(
-      angle: number,
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static scale(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static translate(
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static unit(): kendo$kendo$geometry.geometry$Matrix;
-    clone(): kendo$kendo$geometry.geometry$Matrix;
-    equals(other: kendo$kendo$geometry.geometry$Matrix): boolean;
-    round(digits: number): kendo$kendo$geometry.geometry$Matrix;
-    multiplyCopy(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Matrix;
+    static rotate(angle: number, x: number, y: number): kendo$geometryMatrix;
+    static scale(scaleX: number, scaleY: number): kendo$geometryMatrix;
+    static translate(x: number, y: number): kendo$geometryMatrix;
+    static unit(): kendo$geometryMatrix;
+    clone(): kendo$geometryMatrix;
+    equals(other: kendo$geometryMatrix): boolean;
+    round(digits: number): kendo$geometryMatrix;
+    multiplyCopy(matrix: kendo$geometryMatrix): kendo$geometryMatrix;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
   }
 
-  declare interface geometry$MatrixOptions {
+  declare interface kendo$dataviz$geometry$MatrixOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$MatrixEvent {
-    sender: geometry$Matrix;
+  declare interface kendo$dataviz$geometry$MatrixEvent {
+    sender: kendo$dataviz$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Matrix;
+    sender: kendo$dataviz$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Point mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Point mixins Observable {
     options: geometry$PointOptions;
     x: number;
     y: number;
     constructor(x: number, y: number): this;
-    static create(x: number, y: number): kendo$kendo$geometry.geometry$Point;
-    static create(x: any, y: number): kendo$kendo$geometry.geometry$Point;
-    static create(
-      x: kendo$kendo$geometry.geometry$Point,
-      y: number
-    ): kendo$kendo$geometry.geometry$Point;
-    static min(): kendo$kendo$geometry.geometry$Point;
-    static max(): kendo$kendo$geometry.geometry$Point;
-    static minPoint(): kendo$kendo$geometry.geometry$Point;
-    static maxPoint(): kendo$kendo$geometry.geometry$Point;
-    clone(): kendo$kendo$geometry.geometry$Point;
-    distanceTo(point: kendo$kendo$geometry.geometry$Point): number;
-    equals(other: kendo$kendo$geometry.geometry$Point): boolean;
+    static create(x: number, y: number): kendo$geometryPoint;
+    static create(x: any, y: number): kendo$geometryPoint;
+    static create(x: kendo$geometryPoint, y: number): kendo$geometryPoint;
+    static min(): kendo$geometryPoint;
+    static max(): kendo$geometryPoint;
+    static minPoint(): kendo$geometryPoint;
+    static maxPoint(): kendo$geometryPoint;
+    clone(): kendo$geometryPoint;
+    distanceTo(point: kendo$geometryPoint): number;
+    equals(other: kendo$geometryPoint): boolean;
     getX(): number;
     getY(): number;
-    move(x: number, y: number): kendo$kendo$geometry.geometry$Point;
-    rotate(
-      angle: number,
-      center: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    rotate(angle: number, center: any): kendo$kendo$geometry.geometry$Point;
-    round(digits: number): kendo$kendo$geometry.geometry$Point;
-    scale(scaleX: number, scaleY: number): kendo$kendo$geometry.geometry$Point;
-    scaleCopy(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Point;
-    setX(value: number): kendo$kendo$geometry.geometry$Point;
-    setY(value: number): kendo$kendo$geometry.geometry$Point;
+    move(x: number, y: number): kendo$geometryPoint;
+    rotate(angle: number, center: kendo$geometryPoint): kendo$geometryPoint;
+    rotate(angle: number, center: any): kendo$geometryPoint;
+    round(digits: number): kendo$geometryPoint;
+    scale(scaleX: number, scaleY: number): kendo$geometryPoint;
+    scaleCopy(scaleX: number, scaleY: number): kendo$geometryPoint;
+    setX(value: number): kendo$geometryPoint;
+    setY(value: number): kendo$geometryPoint;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
-    transform(
-      tansformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Point;
+    transform(tansformation: kendo$geometryTransformation): kendo$geometryPoint;
     transformCopy(
-      tansformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Point;
-    translate(dx: number, dy: number): kendo$kendo$geometry.geometry$Point;
-    translateWith(
-      vector: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    translateWith(vector: any): kendo$kendo$geometry.geometry$Point;
+      tansformation: kendo$geometryTransformation
+    ): kendo$geometryPoint;
+    translate(dx: number, dy: number): kendo$geometryPoint;
+    translateWith(vector: kendo$geometryPoint): kendo$geometryPoint;
+    translateWith(vector: any): kendo$geometryPoint;
   }
 
-  declare interface geometry$PointOptions {
+  declare interface kendo$dataviz$geometry$PointOptions {
     name?: string;
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$PointEvent {
-    sender: geometry$Point;
+  declare interface kendo$dataviz$geometry$PointEvent {
+    sender: kendo$dataviz$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Point;
+    sender: kendo$dataviz$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Point;
+    sender: kendo$dataviz$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Rect mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Rect mixins Observable {
     options: geometry$RectOptions;
-    origin: kendo$kendo$geometry.geometry$Point;
-    size: kendo$kendo$geometry.geometry$Size;
+    origin: kendo$geometryPoint;
+    size: kendo$geometrySize;
     constructor(
-      origin: kendo$kendo$geometry.geometry$Point | any,
-      size: kendo$kendo$geometry.geometry$Size | any
+      origin: kendo$geometryPoint | any,
+      size: kendo$geometrySize | any
     ): this;
     static fromPoints(
-      pointA: kendo$kendo$geometry.geometry$Point,
-      pointB: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Rect;
+      pointA: kendo$geometryPoint,
+      pointB: kendo$geometryPoint
+    ): kendo$geometryRect;
     static union(
-      rectA: kendo$kendo$geometry.geometry$Rect,
-      rectB: kendo$kendo$geometry.geometry$Rect
-    ): kendo$kendo$geometry.geometry$Rect;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
-    bottomLeft(): kendo$kendo$geometry.geometry$Point;
-    bottomRight(): kendo$kendo$geometry.geometry$Point;
-    center(): kendo$kendo$geometry.geometry$Point;
-    clone(): kendo$kendo$geometry.geometry$Rect;
-    equals(other: kendo$kendo$geometry.geometry$Rect): boolean;
-    getOrigin(): kendo$kendo$geometry.geometry$Point;
-    getSize(): kendo$kendo$geometry.geometry$Size;
+      rectA: kendo$geometryRect,
+      rectB: kendo$geometryRect
+    ): kendo$geometryRect;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    bottomLeft(): kendo$geometryPoint;
+    bottomRight(): kendo$geometryPoint;
+    center(): kendo$geometryPoint;
+    clone(): kendo$geometryRect;
+    equals(other: kendo$geometryRect): boolean;
+    getOrigin(): kendo$geometryPoint;
+    getSize(): kendo$geometrySize;
     height(): number;
-    setOrigin(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Rect;
-    setOrigin(value: any): kendo$kendo$geometry.geometry$Rect;
-    setSize(
-      value: kendo$kendo$geometry.geometry$Size
-    ): kendo$kendo$geometry.geometry$Rect;
-    setSize(value: any): kendo$kendo$geometry.geometry$Rect;
-    topLeft(): kendo$kendo$geometry.geometry$Point;
-    topRight(): kendo$kendo$geometry.geometry$Point;
+    setOrigin(value: kendo$geometryPoint): kendo$geometryRect;
+    setOrigin(value: any): kendo$geometryRect;
+    setSize(value: kendo$geometrySize): kendo$geometryRect;
+    setSize(value: any): kendo$geometryRect;
+    topLeft(): kendo$geometryPoint;
+    topRight(): kendo$geometryPoint;
     width(): number;
   }
 
-  declare interface geometry$RectOptions {
+  declare interface kendo$dataviz$geometry$RectOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
@@ -8935,279 +8897,262 @@ declare module "kendo-ui" {
     x?: number;
     y?: number;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$RectEvent {
-    sender: geometry$Rect;
+  declare interface kendo$dataviz$geometry$RectEvent {
+    sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$dataviz$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Size mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Size mixins Observable {
     options: geometry$SizeOptions;
     width: number;
     height: number;
+    static create(width: number, height: number): kendo$geometrySize;
+    static create(width: any, height: number): kendo$geometrySize;
     static create(
-      width: number,
+      width: kendo$geometrySize,
       height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    static create(
-      width: any,
-      height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    static create(
-      width: kendo$kendo$geometry.geometry$Size,
-      height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    clone(): kendo$kendo$geometry.geometry$Size;
-    equals(other: kendo$kendo$geometry.geometry$Size): boolean;
+    ): kendo$geometrySize;
+    clone(): kendo$geometrySize;
+    equals(other: kendo$geometrySize): boolean;
     getWidth(): number;
     getHeight(): number;
-    setWidth(value: number): kendo$kendo$geometry.geometry$Size;
-    setHeight(value: number): kendo$kendo$geometry.geometry$Size;
+    setWidth(value: number): kendo$geometrySize;
+    setHeight(value: number): kendo$geometrySize;
   }
 
-  declare interface geometry$SizeOptions {
+  declare interface kendo$dataviz$geometry$SizeOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$SizeEvent {
-    sender: geometry$Size;
+  declare interface kendo$dataviz$geometry$SizeEvent {
+    sender: kendo$dataviz$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Size;
+    sender: kendo$dataviz$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Transformation mixins kendo$Observable {
+  declare class kendo$dataviz$geometry$Transformation mixins Observable {
     options: geometry$TransformationOptions;
-    clone(): kendo$kendo$geometry.geometry$Transformation;
-    equals(other: kendo$kendo$geometry.geometry$Transformation): boolean;
-    matrix(): kendo$kendo$geometry.geometry$Matrix;
+    clone(): kendo$geometryTransformation;
+    equals(other: kendo$geometryTransformation): boolean;
+    matrix(): kendo$geometryMatrix;
     multiply(
-      transformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Transformation;
+      transformation: kendo$geometryTransformation
+    ): kendo$geometryTransformation;
+    rotate(angle: number, center: any): kendo$geometryTransformation;
     rotate(
       angle: number,
-      center: any
-    ): kendo$kendo$geometry.geometry$Transformation;
-    rotate(
-      angle: number,
-      center: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Transformation;
-    scale(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Transformation;
-    translate(
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Transformation;
+      center: kendo$geometryPoint
+    ): kendo$geometryTransformation;
+    scale(scaleX: number, scaleY: number): kendo$geometryTransformation;
+    translate(x: number, y: number): kendo$geometryTransformation;
   }
 
-  declare interface geometry$TransformationOptions {
+  declare interface kendo$dataviz$geometry$TransformationOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$TransformationEvent {
-    sender: geometry$Transformation;
+  declare interface kendo$dataviz$geometry$TransformationEvent {
+    sender: kendo$dataviz$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Transformation;
+    sender: kendo$dataviz$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare var npm$namespace$drawing: {
-    align: typeof drawing$align,
-    drawDOM: typeof drawing$drawDOM,
-    exportImage: typeof drawing$exportImage,
-    exportPDF: typeof drawing$exportPDF,
-    exportSVG: typeof drawing$exportSVG,
-    fit: typeof drawing$fit,
-    stack: typeof drawing$stack,
-    vAlign: typeof drawing$vAlign,
-    vStack: typeof drawing$vStack,
-    vWrap: typeof drawing$vWrap,
-    wrap: typeof drawing$wrap
+  declare var npm$namespace$kendo$drawing: {
+    align: typeof kendo$drawing$align,
+    drawDOM: typeof kendo$drawing$drawDOM,
+    exportImage: typeof kendo$drawing$exportImage,
+    exportPDF: typeof kendo$drawing$exportPDF,
+    exportSVG: typeof kendo$drawing$exportSVG,
+    fit: typeof kendo$drawing$fit,
+    stack: typeof kendo$drawing$stack,
+    vAlign: typeof kendo$drawing$vAlign,
+    vStack: typeof kendo$drawing$vStack,
+    vWrap: typeof kendo$drawing$vWrap,
+    wrap: typeof kendo$drawing$wrap
   };
-  declare function drawing$align(
+  declare function kendo$drawing$align(
     elements: any,
-    rect: kendo$kendo$geometry.geometry$Rect,
+    rect: kendo$geometryRect,
     alignment: string
   ): void;
 
-  declare function drawing$drawDOM(
+  declare function kendo$drawing$drawDOM(
     element: JQuery,
     options: any
   ): JQueryPromise<any>;
 
-  declare function drawing$exportImage(
-    group: kendo$kendo$drawing.drawing$Group,
+  declare function kendo$drawing$exportImage(
+    group: kendo$drawingGroup,
     options: any
   ): JQueryPromise<any>;
 
-  declare function drawing$exportPDF(
-    group: kendo$kendo$drawing.drawing$Group,
-    options: kendo$kendo$drawing.drawing$PDFOptions
+  declare function kendo$drawing$exportPDF(
+    group: kendo$drawingGroup,
+    options: kendo$drawingPDFOptions
   ): JQueryPromise<any>;
 
-  declare function drawing$exportSVG(
-    group: kendo$kendo$drawing.drawing$Group,
+  declare function kendo$drawing$exportSVG(
+    group: kendo$drawingGroup,
     options: any
   ): JQueryPromise<any>;
 
-  declare function drawing$fit(
-    element: kendo$kendo$drawing.drawing$Element,
-    rect: kendo$kendo$geometry.geometry$Rect
+  declare function kendo$drawing$fit(
+    element: kendo$drawingElement,
+    rect: kendo$geometryRect
   ): void;
 
-  declare function drawing$stack(elements: any): void;
+  declare function kendo$drawing$stack(elements: any): void;
 
-  declare function drawing$vAlign(
+  declare function kendo$drawing$vAlign(
     elements: any,
-    rect: kendo$kendo$geometry.geometry$Rect,
+    rect: kendo$geometryRect,
     alignment: string
   ): void;
 
-  declare function drawing$vStack(elements: any): void;
+  declare function kendo$drawing$vStack(elements: any): void;
 
-  declare function drawing$vWrap(
+  declare function kendo$drawing$vWrap(
     elements: any,
-    rect: kendo$kendo$geometry.geometry$Rect
+    rect: kendo$geometryRect
   ): any;
 
-  declare function drawing$wrap(
+  declare function kendo$drawing$wrap(
     elements: any,
-    rect: kendo$kendo$geometry.geometry$Rect
+    rect: kendo$geometryRect
   ): any;
 
-  declare class geometry$Arc mixins kendo$Observable {
-    options: geometry$ArcOptions;
+  declare var npm$namespace$kendo$geometry: {
+    Arc: typeof kendo$geometry$Arc,
+    Circle: typeof kendo$geometry$Circle,
+    Matrix: typeof kendo$geometry$Matrix,
+    Point: typeof kendo$geometry$Point,
+    Rect: typeof kendo$geometry$Rect,
+    Size: typeof kendo$geometry$Size,
+    Transformation: typeof kendo$geometry$Transformation
+  };
+  declare class kendo$geometry$Arc mixins Observable {
+    options: kendo$dataviz$geometry$ArcOptions;
     anticlockwise: boolean;
-    center: kendo$kendo$geometry.geometry$Point;
+    center: kendo$geometryPoint;
     endAngle: number;
     radiusX: number;
     radiusY: number;
     startAngle: number;
     constructor(
-      center: any | kendo$kendo$geometry.geometry$Point,
-      options?: geometry$ArcOptions
+      center: any | kendo$geometryPoint,
+      options?: kendo$dataviz$geometry$ArcOptions
     ): this;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
     getAnticlockwise(): boolean;
-    getCenter(): kendo$kendo$geometry.geometry$Point;
+    getCenter(): kendo$geometryPoint;
     getEndAngle(): number;
     getRadiusX(): number;
     getRadiusY(): number;
     getStartAngle(): number;
-    pointAt(angle: number): kendo$kendo$geometry.geometry$Point;
-    setAnticlockwise(value: boolean): kendo$kendo$geometry.geometry$Arc;
-    setCenter(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Arc;
-    setEndAngle(value: number): kendo$kendo$geometry.geometry$Arc;
-    setRadiusX(value: number): kendo$kendo$geometry.geometry$Arc;
-    setRadiusY(value: number): kendo$kendo$geometry.geometry$Arc;
-    setStartAngle(value: number): kendo$kendo$geometry.geometry$Arc;
+    pointAt(angle: number): kendo$geometryPoint;
+    setAnticlockwise(value: boolean): kendo$geometryArc;
+    setCenter(value: kendo$geometryPoint): kendo$geometryArc;
+    setEndAngle(value: number): kendo$geometryArc;
+    setRadiusX(value: number): kendo$geometryArc;
+    setRadiusY(value: number): kendo$geometryArc;
+    setStartAngle(value: number): kendo$geometryArc;
   }
 
-  declare interface geometry$ArcOptions {
+  declare interface kendo$geometry$ArcOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$ArcEvent {
-    sender: geometry$Arc;
+  declare interface kendo$geometry$ArcEvent {
+    sender: kendo$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Arc;
+    sender: kendo$geometry$Arc;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Circle mixins kendo$Observable {
-    options: geometry$CircleOptions;
-    center: kendo$kendo$geometry.geometry$Point;
+  declare class kendo$geometry$Circle mixins Observable {
+    options: kendo$dataviz$geometry$CircleOptions;
+    center: kendo$geometryPoint;
     radius: number;
-    constructor(
-      center: any | kendo$kendo$geometry.geometry$Point,
-      radius: number
-    ): this;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
-    clone(): kendo$kendo$geometry.geometry$Circle;
-    equals(other: kendo$kendo$geometry.geometry$Circle): boolean;
-    getCenter(): kendo$kendo$geometry.geometry$Point;
+    constructor(center: any | kendo$geometryPoint, radius: number): this;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    clone(): kendo$geometryCircle;
+    equals(other: kendo$geometryCircle): boolean;
+    getCenter(): kendo$geometryPoint;
     getRadius(): number;
-    pointAt(angle: number): kendo$kendo$geometry.geometry$Point;
-    setCenter(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    setCenter(value: any): kendo$kendo$geometry.geometry$Point;
-    setRadius(value: number): kendo$kendo$geometry.geometry$Circle;
+    pointAt(angle: number): kendo$geometryPoint;
+    setCenter(value: kendo$geometryPoint): kendo$geometryPoint;
+    setCenter(value: any): kendo$geometryPoint;
+    setRadius(value: number): kendo$geometryCircle;
   }
 
-  declare interface geometry$CircleOptions {
+  declare interface kendo$geometry$CircleOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
@@ -9216,197 +9161,166 @@ declare module "kendo-ui" {
     center?: any;
     radius?: number;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$CircleEvent {
-    sender: geometry$Circle;
+  declare interface kendo$geometry$CircleEvent {
+    sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Circle;
+    sender: kendo$geometry$Circle;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Matrix mixins kendo$Observable {
-    options: geometry$MatrixOptions;
+  declare class kendo$geometry$Matrix mixins Observable {
+    options: kendo$dataviz$geometry$MatrixOptions;
     a: number;
     b: number;
     c: number;
     d: number;
     e: number;
     f: number;
-    static rotate(
-      angle: number,
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static scale(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static translate(
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Matrix;
-    static unit(): kendo$kendo$geometry.geometry$Matrix;
-    clone(): kendo$kendo$geometry.geometry$Matrix;
-    equals(other: kendo$kendo$geometry.geometry$Matrix): boolean;
-    round(digits: number): kendo$kendo$geometry.geometry$Matrix;
-    multiplyCopy(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Matrix;
+    static rotate(angle: number, x: number, y: number): kendo$geometryMatrix;
+    static scale(scaleX: number, scaleY: number): kendo$geometryMatrix;
+    static translate(x: number, y: number): kendo$geometryMatrix;
+    static unit(): kendo$geometryMatrix;
+    clone(): kendo$geometryMatrix;
+    equals(other: kendo$geometryMatrix): boolean;
+    round(digits: number): kendo$geometryMatrix;
+    multiplyCopy(matrix: kendo$geometryMatrix): kendo$geometryMatrix;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
   }
 
-  declare interface geometry$MatrixOptions {
+  declare interface kendo$geometry$MatrixOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$MatrixEvent {
-    sender: geometry$Matrix;
+  declare interface kendo$geometry$MatrixEvent {
+    sender: kendo$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Matrix;
+    sender: kendo$geometry$Matrix;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Point mixins kendo$Observable {
-    options: geometry$PointOptions;
+  declare class kendo$geometry$Point mixins Observable {
+    options: kendo$dataviz$geometry$PointOptions;
     x: number;
     y: number;
     constructor(x: number, y: number): this;
-    static create(x: number, y: number): kendo$kendo$geometry.geometry$Point;
-    static create(x: any, y: number): kendo$kendo$geometry.geometry$Point;
-    static create(
-      x: kendo$kendo$geometry.geometry$Point,
-      y: number
-    ): kendo$kendo$geometry.geometry$Point;
-    static min(): kendo$kendo$geometry.geometry$Point;
-    static max(): kendo$kendo$geometry.geometry$Point;
-    static minPoint(): kendo$kendo$geometry.geometry$Point;
-    static maxPoint(): kendo$kendo$geometry.geometry$Point;
-    clone(): kendo$kendo$geometry.geometry$Point;
-    distanceTo(point: kendo$kendo$geometry.geometry$Point): number;
-    equals(other: kendo$kendo$geometry.geometry$Point): boolean;
+    static create(x: number, y: number): kendo$geometryPoint;
+    static create(x: any, y: number): kendo$geometryPoint;
+    static create(x: kendo$geometryPoint, y: number): kendo$geometryPoint;
+    static min(): kendo$geometryPoint;
+    static max(): kendo$geometryPoint;
+    static minPoint(): kendo$geometryPoint;
+    static maxPoint(): kendo$geometryPoint;
+    clone(): kendo$geometryPoint;
+    distanceTo(point: kendo$geometryPoint): number;
+    equals(other: kendo$geometryPoint): boolean;
     getX(): number;
     getY(): number;
-    move(x: number, y: number): kendo$kendo$geometry.geometry$Point;
-    rotate(
-      angle: number,
-      center: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    rotate(angle: number, center: any): kendo$kendo$geometry.geometry$Point;
-    round(digits: number): kendo$kendo$geometry.geometry$Point;
-    scale(scaleX: number, scaleY: number): kendo$kendo$geometry.geometry$Point;
-    scaleCopy(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Point;
-    setX(value: number): kendo$kendo$geometry.geometry$Point;
-    setY(value: number): kendo$kendo$geometry.geometry$Point;
+    move(x: number, y: number): kendo$geometryPoint;
+    rotate(angle: number, center: kendo$geometryPoint): kendo$geometryPoint;
+    rotate(angle: number, center: any): kendo$geometryPoint;
+    round(digits: number): kendo$geometryPoint;
+    scale(scaleX: number, scaleY: number): kendo$geometryPoint;
+    scaleCopy(scaleX: number, scaleY: number): kendo$geometryPoint;
+    setX(value: number): kendo$geometryPoint;
+    setY(value: number): kendo$geometryPoint;
     toArray(digits: number): any;
     toString(digits: number, separator: string): string;
-    transform(
-      tansformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Point;
+    transform(tansformation: kendo$geometryTransformation): kendo$geometryPoint;
     transformCopy(
-      tansformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Point;
-    translate(dx: number, dy: number): kendo$kendo$geometry.geometry$Point;
-    translateWith(
-      vector: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Point;
-    translateWith(vector: any): kendo$kendo$geometry.geometry$Point;
+      tansformation: kendo$geometryTransformation
+    ): kendo$geometryPoint;
+    translate(dx: number, dy: number): kendo$geometryPoint;
+    translateWith(vector: kendo$geometryPoint): kendo$geometryPoint;
+    translateWith(vector: any): kendo$geometryPoint;
   }
 
-  declare interface geometry$PointOptions {
+  declare interface kendo$geometry$PointOptions {
     name?: string;
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$PointEvent {
-    sender: geometry$Point;
+  declare interface kendo$geometry$PointEvent {
+    sender: kendo$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Point;
+    sender: kendo$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Point;
+    sender: kendo$geometry$Point;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Rect mixins kendo$Observable {
-    options: geometry$RectOptions;
-    origin: kendo$kendo$geometry.geometry$Point;
-    size: kendo$kendo$geometry.geometry$Size;
+  declare class kendo$geometry$Rect mixins Observable {
+    options: kendo$dataviz$geometry$RectOptions;
+    origin: kendo$geometryPoint;
+    size: kendo$geometrySize;
     constructor(
-      origin: kendo$kendo$geometry.geometry$Point | any,
-      size: kendo$kendo$geometry.geometry$Size | any
+      origin: kendo$geometryPoint | any,
+      size: kendo$geometrySize | any
     ): this;
     static fromPoints(
-      pointA: kendo$kendo$geometry.geometry$Point,
-      pointB: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Rect;
+      pointA: kendo$geometryPoint,
+      pointB: kendo$geometryPoint
+    ): kendo$geometryRect;
     static union(
-      rectA: kendo$kendo$geometry.geometry$Rect,
-      rectB: kendo$kendo$geometry.geometry$Rect
-    ): kendo$kendo$geometry.geometry$Rect;
-    bbox(
-      matrix: kendo$kendo$geometry.geometry$Matrix
-    ): kendo$kendo$geometry.geometry$Rect;
-    bottomLeft(): kendo$kendo$geometry.geometry$Point;
-    bottomRight(): kendo$kendo$geometry.geometry$Point;
-    center(): kendo$kendo$geometry.geometry$Point;
-    clone(): kendo$kendo$geometry.geometry$Rect;
-    equals(other: kendo$kendo$geometry.geometry$Rect): boolean;
-    getOrigin(): kendo$kendo$geometry.geometry$Point;
-    getSize(): kendo$kendo$geometry.geometry$Size;
+      rectA: kendo$geometryRect,
+      rectB: kendo$geometryRect
+    ): kendo$geometryRect;
+    bbox(matrix: kendo$geometryMatrix): kendo$geometryRect;
+    bottomLeft(): kendo$geometryPoint;
+    bottomRight(): kendo$geometryPoint;
+    center(): kendo$geometryPoint;
+    clone(): kendo$geometryRect;
+    equals(other: kendo$geometryRect): boolean;
+    getOrigin(): kendo$geometryPoint;
+    getSize(): kendo$geometrySize;
     height(): number;
-    setOrigin(
-      value: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Rect;
-    setOrigin(value: any): kendo$kendo$geometry.geometry$Rect;
-    setSize(
-      value: kendo$kendo$geometry.geometry$Size
-    ): kendo$kendo$geometry.geometry$Rect;
-    setSize(value: any): kendo$kendo$geometry.geometry$Rect;
-    topLeft(): kendo$kendo$geometry.geometry$Point;
-    topRight(): kendo$kendo$geometry.geometry$Point;
+    setOrigin(value: kendo$geometryPoint): kendo$geometryRect;
+    setOrigin(value: any): kendo$geometryRect;
+    setSize(value: kendo$geometrySize): kendo$geometryRect;
+    setSize(value: any): kendo$geometryRect;
+    topLeft(): kendo$geometryPoint;
+    topRight(): kendo$geometryPoint;
     width(): number;
   }
 
-  declare interface geometry$RectOptions {
+  declare interface kendo$geometry$RectOptions {
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
     name?: string;
@@ -9415,114 +9329,99 @@ declare module "kendo-ui" {
     x?: number;
     y?: number;
     name?: string;
-    clip?: kendo$kendo$drawing.drawing$Path;
+    clip?: kendo$drawingPath;
     cursor?: string;
-    fill?: kendo$kendo$drawing.drawing$FillOptions;
+    fill?: kendo$drawingFillOptions;
     opacity?: number;
-    stroke?: kendo$kendo$drawing.drawing$StrokeOptions;
-    tooltip?: kendo$kendo$drawing.ui$TooltipOptions;
-    transform?: kendo$kendo$geometry.geometry$Transformation;
+    stroke?: kendo$drawingStrokeOptions;
+    tooltip?: kendo$drawingTooltipOptions;
+    transform?: kendo$geometryTransformation;
     visible?: boolean;
     name?: string;
   }
 
-  declare interface geometry$RectEvent {
-    sender: geometry$Rect;
+  declare interface kendo$geometry$RectEvent {
+    sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Rect;
+    sender: kendo$geometry$Rect;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Size mixins kendo$Observable {
-    options: geometry$SizeOptions;
+  declare class kendo$geometry$Size mixins Observable {
+    options: kendo$dataviz$geometry$SizeOptions;
     width: number;
     height: number;
+    static create(width: number, height: number): kendo$geometrySize;
+    static create(width: any, height: number): kendo$geometrySize;
     static create(
-      width: number,
+      width: kendo$geometrySize,
       height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    static create(
-      width: any,
-      height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    static create(
-      width: kendo$kendo$geometry.geometry$Size,
-      height: number
-    ): kendo$kendo$geometry.geometry$Size;
-    clone(): kendo$kendo$geometry.geometry$Size;
-    equals(other: kendo$kendo$geometry.geometry$Size): boolean;
+    ): kendo$geometrySize;
+    clone(): kendo$geometrySize;
+    equals(other: kendo$geometrySize): boolean;
     getWidth(): number;
     getHeight(): number;
-    setWidth(value: number): kendo$kendo$geometry.geometry$Size;
-    setHeight(value: number): kendo$kendo$geometry.geometry$Size;
+    setWidth(value: number): kendo$geometrySize;
+    setHeight(value: number): kendo$geometrySize;
   }
 
-  declare interface geometry$SizeOptions {
+  declare interface kendo$geometry$SizeOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$SizeEvent {
-    sender: geometry$Size;
+  declare interface kendo$geometry$SizeEvent {
+    sender: kendo$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Size;
+    sender: kendo$geometry$Size;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class geometry$Transformation mixins kendo$Observable {
-    options: geometry$TransformationOptions;
-    clone(): kendo$kendo$geometry.geometry$Transformation;
-    equals(other: kendo$kendo$geometry.geometry$Transformation): boolean;
-    matrix(): kendo$kendo$geometry.geometry$Matrix;
+  declare class kendo$geometry$Transformation mixins Observable {
+    options: kendo$dataviz$geometry$TransformationOptions;
+    clone(): kendo$geometryTransformation;
+    equals(other: kendo$geometryTransformation): boolean;
+    matrix(): kendo$geometryMatrix;
     multiply(
-      transformation: kendo$kendo$geometry.geometry$Transformation
-    ): kendo$kendo$geometry.geometry$Transformation;
+      transformation: kendo$geometryTransformation
+    ): kendo$geometryTransformation;
+    rotate(angle: number, center: any): kendo$geometryTransformation;
     rotate(
       angle: number,
-      center: any
-    ): kendo$kendo$geometry.geometry$Transformation;
-    rotate(
-      angle: number,
-      center: kendo$kendo$geometry.geometry$Point
-    ): kendo$kendo$geometry.geometry$Transformation;
-    scale(
-      scaleX: number,
-      scaleY: number
-    ): kendo$kendo$geometry.geometry$Transformation;
-    translate(
-      x: number,
-      y: number
-    ): kendo$kendo$geometry.geometry$Transformation;
+      center: kendo$geometryPoint
+    ): kendo$geometryTransformation;
+    scale(scaleX: number, scaleY: number): kendo$geometryTransformation;
+    translate(x: number, y: number): kendo$geometryTransformation;
   }
 
-  declare interface geometry$TransformationOptions {
+  declare interface kendo$geometry$TransformationOptions {
     name?: string;
     name?: string;
   }
 
-  declare interface geometry$TransformationEvent {
-    sender: geometry$Transformation;
+  declare interface kendo$geometry$TransformationEvent {
+    sender: kendo$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
-    sender: geometry$Transformation;
+    sender: kendo$geometry$Transformation;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class kendo$Color mixins kendo$Observable {
+  declare class kendo$Color mixins Observable {
     options: kendo$ColorOptions;
     diff(): number;
     equals(): boolean;
@@ -9545,96 +9444,99 @@ declare module "kendo-ui" {
     isDefaultPrevented(): boolean;
   }
 
-  declare var npm$namespace$date: {
-    setDayOfWeek: typeof date$setDayOfWeek,
-    dayOfWeek: typeof date$dayOfWeek,
-    weekInYear: typeof date$weekInYear,
-    getDate: typeof date$getDate,
-    isInDateRange: typeof date$isInDateRange,
-    isInTimeRange: typeof date$isInTimeRange,
-    isToday: typeof date$isToday,
-    nextDay: typeof date$nextDay,
-    previousDay: typeof date$previousDay,
-    toUtcTime: typeof date$toUtcTime,
-    setTime: typeof date$setTime,
-    setHours: typeof date$setHours,
-    addDays: typeof date$addDays,
-    today: typeof date$today,
-    toInvariantTime: typeof date$toInvariantTime,
-    firstDayOfMonth: typeof date$firstDayOfMonth,
-    lastDayOfMonth: typeof date$lastDayOfMonth,
-    getMilliseconds: typeof date$getMilliseconds,
-    MS_PER_DAY: typeof date$MS_PER_DAY,
-    MS_PER_HOUR: typeof date$MS_PER_HOUR,
-    MS_PER_MINUTE: typeof date$MS_PER_MINUTE
+  declare var npm$namespace$kendo$date: {
+    setDayOfWeek: typeof kendo$date$setDayOfWeek,
+    dayOfWeek: typeof kendo$date$dayOfWeek,
+    weekInYear: typeof kendo$date$weekInYear,
+    getDate: typeof kendo$date$getDate,
+    isInDateRange: typeof kendo$date$isInDateRange,
+    isInTimeRange: typeof kendo$date$isInTimeRange,
+    isToday: typeof kendo$date$isToday,
+    nextDay: typeof kendo$date$nextDay,
+    previousDay: typeof kendo$date$previousDay,
+    toUtcTime: typeof kendo$date$toUtcTime,
+    setTime: typeof kendo$date$setTime,
+    setHours: typeof kendo$date$setHours,
+    addDays: typeof kendo$date$addDays,
+    today: typeof kendo$date$today,
+    toInvariantTime: typeof kendo$date$toInvariantTime,
+    firstDayOfMonth: typeof kendo$date$firstDayOfMonth,
+    lastDayOfMonth: typeof kendo$date$lastDayOfMonth,
+    getMilliseconds: typeof kendo$date$getMilliseconds,
+    MS_PER_DAY: typeof kendo$date$MS_PER_DAY,
+    MS_PER_HOUR: typeof kendo$date$MS_PER_HOUR,
+    MS_PER_MINUTE: typeof kendo$date$MS_PER_MINUTE
   };
-  declare var date$MS_PER_DAY: number;
+  declare var kendo$date$MS_PER_DAY: number;
 
-  declare var date$MS_PER_HOUR: number;
+  declare var kendo$date$MS_PER_HOUR: number;
 
-  declare var date$MS_PER_MINUTE: number;
+  declare var kendo$date$MS_PER_MINUTE: number;
 
-  declare function date$setDayOfWeek(
+  declare function kendo$date$setDayOfWeek(
     targetDate: Date,
-    date$dayOfWeek: number,
+    dayOfWeek: number,
     direction: number
   ): void;
 
-  declare function date$dayOfWeek(
+  declare function kendo$date$dayOfWeek(
     targetDate: Date,
-    date$dayOfWeek: number,
+    dayOfWeek: number,
     direction: number
   ): Date;
 
-  declare function date$weekInYear(
-    kendo$date: Date,
+  declare function kendo$date$weekInYear(
+    date: Date,
     weekStart?: number
   ): number;
 
-  declare function date$getDate(kendo$date: Date): Date;
+  declare function kendo$date$getDate(date: Date): Date;
 
-  declare function date$isInDateRange(
+  declare function kendo$date$isInDateRange(
     targetDate: Date,
     lowerLimitDate: Date,
     upperLimitDate: Date
   ): boolean;
 
-  declare function date$isInTimeRange(
+  declare function kendo$date$isInTimeRange(
     targetDate: Date,
     lowerLimitDate: Date,
     upperLimitDate: Date
   ): boolean;
 
-  declare function date$isToday(targetDate: Date): boolean;
+  declare function kendo$date$isToday(targetDate: Date): boolean;
 
-  declare function date$nextDay(targetDate: Date): Date;
+  declare function kendo$date$nextDay(targetDate: Date): Date;
 
-  declare function date$previousDay(targetDate: Date): Date;
+  declare function kendo$date$previousDay(targetDate: Date): Date;
 
-  declare function date$toUtcTime(targetDate: Date): number;
+  declare function kendo$date$toUtcTime(targetDate: Date): number;
 
-  declare function date$setTime(
+  declare function kendo$date$setTime(
     targetDate: Date,
     millisecondsToAdd: number,
     ignoreDST: boolean
   ): void;
 
-  declare function date$setHours(targetDate: Date, sourceDate: number): Date;
+  declare function kendo$date$setHours(
+    targetDate: Date,
+    sourceDate: number
+  ): Date;
 
-  declare function date$addDays(
+  declare function kendo$date$addDays(
     targetDate: Date,
     numberOfDaysToAdd: number
   ): Date;
 
-  declare function date$today(): Date;
+  declare function kendo$date$today(): Date;
 
-  declare function date$toInvariantTime(targetDate: Date): Date;
+  declare function kendo$date$toInvariantTime(targetDate: Date): Date;
 
-  declare function date$firstDayOfMonth(targetDate: Date): Date;
+  declare function kendo$date$firstDayOfMonth(targetDate: Date): Date;
 
-  declare function date$lastDayOfMonth(targetDate: Date): Date;
+  declare function kendo$date$lastDayOfMonth(targetDate: Date): Date;
 
-  declare function date$getMilliseconds(targetDate: Date): number;
+  declare function kendo$date$getMilliseconds(targetDate: Date): number;
 
   declare function kendo$alert(text: string): void;
 
@@ -9648,7 +9550,7 @@ declare module "kendo-ui" {
 
   declare function kendo$bind(
     element: string,
-    viewModel: kendo$kendo$data.data$ObservableObject,
+    viewModel: kendo$dataObservableObject,
     namespace?: any
   ): void;
 
@@ -9660,7 +9562,7 @@ declare module "kendo-ui" {
 
   declare function kendo$bind(
     element: JQuery,
-    viewModel: kendo$kendo$data.data$ObservableObject,
+    viewModel: kendo$dataObservableObject,
     namespace?: any
   ): void;
 
@@ -9672,13 +9574,13 @@ declare module "kendo-ui" {
 
   declare function kendo$bind(
     element: drawing$Element,
-    viewModel: kendo$kendo$data.data$ObservableObject,
+    viewModel: kendo$dataObservableObject,
     namespace?: any
   ): void;
 
   declare function kendo$confirm(text: string): JQueryPromise<any>;
 
-  declare function kendo$culture(kendo$culture: string): void;
+  declare function kendo$culture(culture: string): void;
 
   declare function kendo$destroy(element: string): void;
 
@@ -9695,41 +9597,35 @@ declare module "kendo-ui" {
   declare function kendo$parseDate(
     value: string,
     formats?: string,
-    kendo$culture?: string
+    culture?: string
   ): Date;
 
   declare function kendo$parseDate(
     value: string,
     formats?: any,
-    kendo$culture?: string
+    culture?: string
   ): Date;
 
   declare function kendo$parseExactDate(
     value: string,
     formats?: string,
-    kendo$culture?: string
+    culture?: string
   ): Date;
 
   declare function kendo$parseExactDate(
     value: string,
     formats?: any,
-    kendo$culture?: string
+    culture?: string
   ): Date;
 
-  declare function kendo$parseFloat(
-    value: string,
-    kendo$culture?: string
-  ): number;
+  declare function kendo$parseFloat(value: string, culture?: string): number;
 
-  declare function kendo$parseInt(
-    value: string,
-    kendo$culture?: string
-  ): number;
+  declare function kendo$parseInt(value: string, culture?: string): number;
 
   declare function kendo$parseColor(
     color: string,
     noerror: boolean
-  ): kendo$kendo$Color;
+  ): kendo$Color;
 
   declare function kendo$prompt(
     text: string,
@@ -9738,9 +9634,7 @@ declare module "kendo-ui" {
 
   declare function kendo$proxyModelSetters(): void;
 
-  declare function kendo$proxyModelSetters(
-    kendo$data: kendo$kendo$data.data$Model
-  ): void;
+  declare function kendo$proxyModelSetters(data: kendo$dataModel): void;
 
   declare function kendo$resize(element: string, force: boolean): void;
 
@@ -9762,14 +9656,14 @@ declare module "kendo-ui" {
 
   declare function kendo$toString(
     value: Date,
-    kendo$format: string,
-    kendo$culture?: string
+    format: string,
+    culture?: string
   ): string;
 
   declare function kendo$toString(
     value: number,
-    kendo$format: string,
-    kendo$culture?: string
+    format: string,
+    culture?: string
   ): string;
 
   declare function kendo$unbind(element: string): void;
@@ -9778,113 +9672,115 @@ declare module "kendo-ui" {
 
   declare function kendo$unbind(element: drawing$Element): void;
 
-  declare var npm$namespace$pdf: {
-    defineFont: typeof pdf$defineFont
+  declare var npm$namespace$kendo$pdf: {
+    defineFont: typeof kendo$pdf$defineFont
   };
-  declare function pdf$defineFont(map: any): void;
+  declare function kendo$pdf$defineFont(map: any): void;
 
-  declare var npm$namespace$timezone: {
-    offset: typeof timezone$offset,
-    convert: typeof timezone$convert,
-    apply: typeof timezone$apply,
-    remove: typeof timezone$remove,
-    abbr: typeof timezone$abbr,
-    toLocalDate: typeof timezone$toLocalDate
+  declare var npm$namespace$kendo$timezone: {
+    offset: typeof kendo$timezone$offset,
+    convert: typeof kendo$timezone$convert,
+    apply: typeof kendo$timezone$apply,
+    remove: typeof kendo$timezone$remove,
+    abbr: typeof kendo$timezone$abbr,
+    toLocalDate: typeof kendo$timezone$toLocalDate
   };
-  declare function timezone$offset(
+  declare function kendo$timezone$offset(
     utcTime: Date,
-    kendo$timezone: string
+    timezone: string
   ): number;
 
-  declare function timezone$offset(
+  declare function kendo$timezone$offset(
     utcTime: number,
-    kendo$timezone: string
+    timezone: string
   ): number;
 
-  declare function timezone$convert(
+  declare function kendo$timezone$convert(
     targetDate: Date,
     fromOffset: number,
     toOffset: number
   ): Date;
 
-  declare function timezone$convert(
+  declare function kendo$timezone$convert(
     targetDate: Date,
     fromOffset: number,
     toOffset: string
   ): Date;
 
-  declare function timezone$convert(
+  declare function kendo$timezone$convert(
     targetDate: Date,
     fromOffset: string,
     toOffset: number
   ): Date;
 
-  declare function timezone$convert(
+  declare function kendo$timezone$convert(
     targetDate: Date,
     fromOffset: string,
     toOffset: string
   ): Date;
 
-  declare function timezone$apply(
+  declare function kendo$timezone$apply(targetDate: Date, offset: number): Date;
+
+  declare function kendo$timezone$apply(targetDate: Date, offset: string): Date;
+
+  declare function kendo$timezone$remove(
     targetDate: Date,
-    timezone$offset: number
+    offset: number
   ): Date;
 
-  declare function timezone$apply(
+  declare function kendo$timezone$remove(
     targetDate: Date,
-    timezone$offset: string
+    offset: string
   ): Date;
 
-  declare function timezone$remove(
+  declare function kendo$timezone$abbr(
     targetDate: Date,
-    timezone$offset: number
-  ): Date;
-
-  declare function timezone$remove(
-    targetDate: Date,
-    timezone$offset: string
-  ): Date;
-
-  declare function timezone$abbr(
-    targetDate: Date,
-    kendo$timezone: string
+    timezone: string
   ): string;
 
-  declare function timezone$toLocalDate(targetDate: Date): Date;
+  declare function kendo$timezone$toLocalDate(targetDate: Date): Date;
 
-  declare function timezone$toLocalDate(targetDate: number): Date;
+  declare function kendo$timezone$toLocalDate(targetDate: number): Date;
 
-  declare class spreadsheet$CustomFilter mixins kendo$Observable {
+  declare var npm$namespace$kendo$spreadsheet: {
+    CustomFilter: typeof kendo$spreadsheet$CustomFilter,
+    DynamicFilter: typeof kendo$spreadsheet$DynamicFilter,
+    Range: typeof kendo$spreadsheet$Range,
+    Sheet: typeof kendo$spreadsheet$Sheet,
+    TopFilter: typeof kendo$spreadsheet$TopFilter,
+    ValueFilter: typeof kendo$spreadsheet$ValueFilter
+  };
+  declare class kendo$spreadsheet$CustomFilter mixins Observable {
     options: spreadsheet$CustomFilterOptions;
     init(options: any): void;
   }
 
-  declare interface spreadsheet$CustomFilterOptions {
+  declare interface kendo$spreadsheet$CustomFilterOptions {
     name?: string;
   }
 
-  declare interface spreadsheet$CustomFilterEvent {
-    sender: spreadsheet$CustomFilter;
+  declare interface kendo$spreadsheet$CustomFilterEvent {
+    sender: kendo$spreadsheet$CustomFilter;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class spreadsheet$DynamicFilter mixins kendo$Observable {
+  declare class kendo$spreadsheet$DynamicFilter mixins Observable {
     options: spreadsheet$DynamicFilterOptions;
     init(options: any): void;
   }
 
-  declare interface spreadsheet$DynamicFilterOptions {
+  declare interface kendo$spreadsheet$DynamicFilterOptions {
     name?: string;
   }
 
-  declare interface spreadsheet$DynamicFilterEvent {
-    sender: spreadsheet$DynamicFilter;
+  declare interface kendo$spreadsheet$DynamicFilterEvent {
+    sender: kendo$spreadsheet$DynamicFilter;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class spreadsheet$Range mixins kendo$Observable {
+  declare class kendo$spreadsheet$Range mixins Observable {
     options: spreadsheet$RangeOptions;
     background(): string;
     background(value?: string): void;
@@ -9907,7 +9803,7 @@ declare module "kendo-ui" {
     editor(value?: string): void;
     enable(): boolean;
     enable(value?: boolean): void;
-    fillFrom(srcRange: spreadsheet$Range, direction?: number): void;
+    fillFrom(srcRange: kendo$spreadsheet$Range, direction?: number): void;
     fillFrom(srcRange: string, direction?: number): void;
     filter(filter: boolean): void;
     filter(filter: any): void;
@@ -9917,7 +9813,7 @@ declare module "kendo-ui" {
     fontSize(value?: number): void;
     forEachCell(callback: Function): void;
     format(): string;
-    format(kendo$format?: string): void;
+    format(format?: string): void;
     formula(): string;
     formula(formula?: string): void;
     hasFilter(): boolean;
@@ -9952,17 +9848,17 @@ declare module "kendo-ui" {
     wrap(value?: boolean): void;
   }
 
-  declare interface spreadsheet$RangeOptions {
+  declare interface kendo$spreadsheet$RangeOptions {
     name?: string;
   }
 
-  declare interface spreadsheet$RangeEvent {
-    sender: spreadsheet$Range;
+  declare interface kendo$spreadsheet$RangeEvent {
+    sender: kendo$spreadsheet$Range;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class spreadsheet$Sheet mixins kendo$Observable {
+  declare class kendo$spreadsheet$Sheet mixins Observable {
     options: spreadsheet$SheetOptions;
     clearFilter(indexes: number): void;
     clearFilter(indexes: any): void;
@@ -9971,7 +9867,7 @@ declare module "kendo-ui" {
     batch(callback: Function, changeEventArgs: any): void;
     deleteColumn(index: number): void;
     deleteRow(index: number): void;
-    fromJSON(kendo$data: any): void;
+    fromJSON(data: any): void;
     frozenColumns(): number;
     frozenColumns(count?: number): void;
     frozenRows(): number;
@@ -9980,20 +9876,17 @@ declare module "kendo-ui" {
     hideRow(index: number): void;
     insertColumn(index: number): void;
     insertRow(index: number): void;
-    range(ref: string): kendo$kendo$spreadsheet.spreadsheet$Range;
+    range(ref: string): kendo$spreadsheetRange;
     range(
       rowIndex: number,
       columnIndex: number,
       rowCount?: number,
       columnCount?: number
-    ): kendo$kendo$spreadsheet.spreadsheet$Range;
+    ): kendo$spreadsheetRange;
     rowHeight(): void;
     rowHeight(index: number, width?: number): void;
-    selection(): kendo$kendo$spreadsheet.spreadsheet$Range;
-    setDataSource(
-      dataSource: kendo$kendo$data.data$DataSource,
-      columns?: any
-    ): void;
+    selection(): kendo$spreadsheetRange;
+    setDataSource(dataSource: kendo$dataDataSource, columns?: any): void;
     showGridLines(): boolean;
     showGridLines(showGridLines?: boolean): void;
     toJSON(): void;
@@ -10001,50 +9894,53 @@ declare module "kendo-ui" {
     unhideRow(index: number): void;
   }
 
-  declare interface spreadsheet$SheetOptions {
+  declare interface kendo$spreadsheet$SheetOptions {
     name?: string;
     change?: (e: spreadsheet$SheetChangeEvent) => void;
   }
 
-  declare interface spreadsheet$SheetEvent {
-    sender: spreadsheet$Sheet;
+  declare interface kendo$spreadsheet$SheetEvent {
+    sender: kendo$spreadsheet$Sheet;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare type spreadsheet$SheetChangeEvent = {} & spreadsheet$SheetEvent;
+  declare type kendo$spreadsheet$SheetChangeEvent = {} & SheetEvent;
 
-  declare class spreadsheet$TopFilter mixins kendo$Observable {
+  declare class kendo$spreadsheet$TopFilter mixins Observable {
     options: spreadsheet$TopFilterOptions;
     init(options: any): void;
   }
 
-  declare interface spreadsheet$TopFilterOptions {
+  declare interface kendo$spreadsheet$TopFilterOptions {
     name?: string;
   }
 
-  declare interface spreadsheet$TopFilterEvent {
-    sender: spreadsheet$TopFilter;
+  declare interface kendo$spreadsheet$TopFilterEvent {
+    sender: kendo$spreadsheet$TopFilter;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class spreadsheet$ValueFilter mixins kendo$Observable {
+  declare class kendo$spreadsheet$ValueFilter mixins Observable {
     options: spreadsheet$ValueFilterOptions;
     init(options: any): void;
   }
 
-  declare interface spreadsheet$ValueFilterOptions {
+  declare interface kendo$spreadsheet$ValueFilterOptions {
     name?: string;
   }
 
-  declare interface spreadsheet$ValueFilterEvent {
-    sender: spreadsheet$ValueFilter;
+  declare interface kendo$spreadsheet$ValueFilterEvent {
+    sender: kendo$spreadsheet$ValueFilter;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
 
-  declare class ooxml$Workbook mixins kendo$Observable {
+  declare var npm$namespace$kendo$ooxml: {
+    Workbook: typeof kendo$ooxml$Workbook
+  };
+  declare class kendo$ooxml$Workbook mixins Observable {
     options: ooxml$WorkbookOptions;
     sheets: ooxml$WorkbookSheet[];
     constructor(options?: ooxml$WorkbookOptions): this;
@@ -10052,55 +9948,55 @@ declare module "kendo-ui" {
     toDataURLAsync(): JQueryPromise<any>;
   }
 
-  declare interface ooxml$WorkbookSheetColumn {
+  declare interface kendo$ooxml$WorkbookSheetColumn {
     autoWidth?: boolean;
     index?: number;
     width?: number;
   }
 
-  declare interface ooxml$WorkbookSheetFilter {
+  declare interface kendo$ooxml$WorkbookSheetFilter {
     from?: number;
     to?: number;
   }
 
-  declare interface ooxml$WorkbookSheetFreezePane {
+  declare interface kendo$ooxml$WorkbookSheetFreezePane {
     colSplit?: number;
     rowSplit?: number;
   }
 
-  declare interface ooxml$WorkbookSheetRowCellBorderBottom {
+  declare interface kendo$ooxml$WorkbookSheetRowCellBorderBottom {
     color?: string;
     size?: number;
   }
 
-  declare interface ooxml$WorkbookSheetRowCellBorderLeft {
+  declare interface kendo$ooxml$WorkbookSheetRowCellBorderLeft {
     color?: string;
     size?: number;
   }
 
-  declare interface ooxml$WorkbookSheetRowCellBorderRight {
+  declare interface kendo$ooxml$WorkbookSheetRowCellBorderRight {
     color?: string;
     size?: number;
   }
 
-  declare interface ooxml$WorkbookSheetRowCellBorderTop {
+  declare interface kendo$ooxml$WorkbookSheetRowCellBorderTop {
     color?: string;
     size?: number;
   }
 
-  declare interface ooxml$WorkbookSheetRowCell {
+  declare interface kendo$ooxml$WorkbookSheetRowCell {
     background?: string;
-    borderBottom?: ooxml$WorkbookSheetRowCellBorderBottom;
-    borderLeft?: ooxml$WorkbookSheetRowCellBorderLeft;
-    borderTop?: ooxml$WorkbookSheetRowCellBorderTop;
-    borderRight?: ooxml$WorkbookSheetRowCellBorderRight;
+    borderBottom?: kendo$ooxml$WorkbookSheetRowCellBorderBottom;
+    borderLeft?: kendo$ooxml$WorkbookSheetRowCellBorderLeft;
+    borderTop?: kendo$ooxml$WorkbookSheetRowCellBorderTop;
+    borderRight?: kendo$ooxml$WorkbookSheetRowCellBorderRight;
     bold?: boolean;
     color?: string;
     colSpan?: number;
     fontFamily?: string;
     fontName?: string;
     fontSize?: number;
-    kendo$format?: string;
+    format?: string;
     formula?: string;
     hAlign?: string;
     index?: any;
@@ -10108,442 +10004,332 @@ declare module "kendo-ui" {
     rowSpan?: number;
     textAlign?: string;
     underline?: boolean;
-    drawing$wrap?: boolean;
-    drawing$vAlign?: string;
+    wrap?: boolean;
+    vAlign?: string;
     verticalAlign?: string;
     value?: Date | number | string | boolean;
   }
 
-  declare interface ooxml$WorkbookSheetRow {
-    cells?: ooxml$WorkbookSheetRowCell[];
+  declare interface kendo$ooxml$WorkbookSheetRow {
+    cells?: kendo$ooxml$WorkbookSheetRowCell[];
     index?: number;
     height?: number;
   }
 
-  declare interface ooxml$WorkbookSheet {
-    columns?: ooxml$WorkbookSheetColumn[];
-    freezePane?: ooxml$WorkbookSheetFreezePane;
+  declare interface kendo$ooxml$WorkbookSheet {
+    columns?: kendo$ooxml$WorkbookSheetColumn[];
+    freezePane?: kendo$ooxml$WorkbookSheetFreezePane;
     frozenColumns?: number;
     frozenRows?: number;
-    filter?: ooxml$WorkbookSheetFilter;
+    filter?: kendo$ooxml$WorkbookSheetFilter;
     mergedCells?: any;
     name?: string;
-    rows?: ooxml$WorkbookSheetRow[];
+    rows?: kendo$ooxml$WorkbookSheetRow[];
     showGridLines?: boolean;
     title?: string;
   }
 
-  declare interface ooxml$WorkbookOptions {
+  declare interface kendo$ooxml$WorkbookOptions {
     name?: string;
     creator?: string;
-    kendo$date?: Date;
-    sheets?: ooxml$WorkbookSheet[];
+    date?: Date;
+    sheets?: kendo$ooxml$WorkbookSheet[];
   }
 
-  declare interface ooxml$WorkbookEvent {
-    sender: ooxml$Workbook;
+  declare interface kendo$ooxml$WorkbookEvent {
+    sender: kendo$ooxml$Workbook;
     preventDefault: Function;
     isDefaultPrevented(): boolean;
   }
   declare interface HTMLElement {
-    kendoBindingTarget: kendo$kendo$data.data$BindingTarget;
+    kendoBindingTarget: kendo$dataBindingTarget;
   }
   declare interface JQueryAjaxSettings {}
   declare interface JQueryXHR {}
   declare interface JQueryEventObject {}
   declare interface JQueryPromise<T> {}
   declare interface JQuery {
-    kendo$data(key: any): any;
+    data(key: any): any;
     kendoAlert(): JQuery;
-    kendoAlert(options: kendo$kendo$ui.ui$AlertOptions): JQuery;
-    kendo$data(key: "kendoAlert"): kendo$kendo$ui.ui$Alert;
+    kendoAlert(options: kendo$uiAlertOptions): JQuery;
+    data(key: "kendoAlert"): kendo$uiAlert;
     kendoArcGauge(): JQuery;
-    kendoArcGauge(
-      options: kendo$kendo$dataviz.kendo$ui.ui$ArcGaugeOptions
-    ): JQuery;
-    kendo$data(key: "kendoArcGauge"): kendo$kendo$dataviz.kendo$ui.ui$ArcGauge;
+    kendoArcGauge(options: kendo$datavizuiArcGaugeOptions): JQuery;
+    data(key: "kendoArcGauge"): kendo$datavizuiArcGauge;
     kendoAutoComplete(): JQuery;
-    kendoAutoComplete(options: kendo$kendo$ui.ui$AutoCompleteOptions): JQuery;
-    kendo$data(key: "kendoAutoComplete"): kendo$kendo$ui.ui$AutoComplete;
+    kendoAutoComplete(options: kendo$uiAutoCompleteOptions): JQuery;
+    data(key: "kendoAutoComplete"): kendo$uiAutoComplete;
     kendoBarcode(): JQuery;
-    kendoBarcode(
-      options: kendo$kendo$dataviz.kendo$ui.ui$BarcodeOptions
-    ): JQuery;
-    kendo$data(key: "kendoBarcode"): kendo$kendo$dataviz.kendo$ui.ui$Barcode;
+    kendoBarcode(options: kendo$datavizuiBarcodeOptions): JQuery;
+    data(key: "kendoBarcode"): kendo$datavizuiBarcode;
     kendoButton(): JQuery;
-    kendoButton(options: kendo$kendo$ui.ui$ButtonOptions): JQuery;
-    kendo$data(key: "kendoButton"): kendo$kendo$ui.ui$Button;
+    kendoButton(options: kendo$uiButtonOptions): JQuery;
+    data(key: "kendoButton"): kendo$uiButton;
     kendoButtonGroup(): JQuery;
-    kendoButtonGroup(options: kendo$kendo$ui.ui$ButtonGroupOptions): JQuery;
-    kendo$data(key: "kendoButtonGroup"): kendo$kendo$ui.ui$ButtonGroup;
+    kendoButtonGroup(options: kendo$uiButtonGroupOptions): JQuery;
+    data(key: "kendoButtonGroup"): kendo$uiButtonGroup;
     kendoCalendar(): JQuery;
-    kendoCalendar(options: kendo$kendo$ui.ui$CalendarOptions): JQuery;
-    kendo$data(key: "kendoCalendar"): kendo$kendo$ui.ui$Calendar;
+    kendoCalendar(options: kendo$uiCalendarOptions): JQuery;
+    data(key: "kendoCalendar"): kendo$uiCalendar;
     kendoChart(): JQuery;
-    kendoChart(options: kendo$kendo$dataviz.kendo$ui.ui$ChartOptions): JQuery;
-    kendo$data(key: "kendoChart"): kendo$kendo$dataviz.kendo$ui.ui$Chart;
+    kendoChart(options: kendo$datavizuiChartOptions): JQuery;
+    data(key: "kendoChart"): kendo$datavizuiChart;
     kendoChat(): JQuery;
-    kendoChat(options: kendo$kendo$ui.ui$ChatOptions): JQuery;
-    kendo$data(key: "kendoChat"): kendo$kendo$ui.ui$Chat;
+    kendoChat(options: kendo$uiChatOptions): JQuery;
+    data(key: "kendoChat"): kendo$uiChat;
     kendoColorPalette(): JQuery;
-    kendoColorPalette(options: kendo$kendo$ui.ui$ColorPaletteOptions): JQuery;
-    kendo$data(key: "kendoColorPalette"): kendo$kendo$ui.ui$ColorPalette;
+    kendoColorPalette(options: kendo$uiColorPaletteOptions): JQuery;
+    data(key: "kendoColorPalette"): kendo$uiColorPalette;
     kendoColorPicker(): JQuery;
-    kendoColorPicker(options: kendo$kendo$ui.ui$ColorPickerOptions): JQuery;
-    kendo$data(key: "kendoColorPicker"): kendo$kendo$ui.ui$ColorPicker;
+    kendoColorPicker(options: kendo$uiColorPickerOptions): JQuery;
+    data(key: "kendoColorPicker"): kendo$uiColorPicker;
     kendoComboBox(): JQuery;
-    kendoComboBox(options: kendo$kendo$ui.ui$ComboBoxOptions): JQuery;
-    kendo$data(key: "kendoComboBox"): kendo$kendo$ui.ui$ComboBox;
+    kendoComboBox(options: kendo$uiComboBoxOptions): JQuery;
+    data(key: "kendoComboBox"): kendo$uiComboBox;
     kendoConfirm(): JQuery;
-    kendoConfirm(options: kendo$kendo$ui.ui$ConfirmOptions): JQuery;
-    kendo$data(key: "kendoConfirm"): kendo$kendo$ui.ui$Confirm;
+    kendoConfirm(options: kendo$uiConfirmOptions): JQuery;
+    data(key: "kendoConfirm"): kendo$uiConfirm;
     kendoContextMenu(): JQuery;
-    kendoContextMenu(options: kendo$kendo$ui.ui$ContextMenuOptions): JQuery;
-    kendo$data(key: "kendoContextMenu"): kendo$kendo$ui.ui$ContextMenu;
+    kendoContextMenu(options: kendo$uiContextMenuOptions): JQuery;
+    data(key: "kendoContextMenu"): kendo$uiContextMenu;
     kendoDateInput(): JQuery;
-    kendoDateInput(options: kendo$kendo$ui.ui$DateInputOptions): JQuery;
-    kendo$data(key: "kendoDateInput"): kendo$kendo$ui.ui$DateInput;
+    kendoDateInput(options: kendo$uiDateInputOptions): JQuery;
+    data(key: "kendoDateInput"): kendo$uiDateInput;
     kendoDatePicker(): JQuery;
-    kendoDatePicker(options: kendo$kendo$ui.ui$DatePickerOptions): JQuery;
-    kendo$data(key: "kendoDatePicker"): kendo$kendo$ui.ui$DatePicker;
+    kendoDatePicker(options: kendo$uiDatePickerOptions): JQuery;
+    data(key: "kendoDatePicker"): kendo$uiDatePicker;
     kendoDateRangePicker(): JQuery;
-    kendoDateRangePicker(
-      options: kendo$kendo$ui.ui$DateRangePickerOptions
-    ): JQuery;
-    kendo$data(key: "kendoDateRangePicker"): kendo$kendo$ui.ui$DateRangePicker;
+    kendoDateRangePicker(options: kendo$uiDateRangePickerOptions): JQuery;
+    data(key: "kendoDateRangePicker"): kendo$uiDateRangePicker;
     kendoDateTimePicker(): JQuery;
-    kendoDateTimePicker(
-      options: kendo$kendo$ui.ui$DateTimePickerOptions
-    ): JQuery;
-    kendo$data(key: "kendoDateTimePicker"): kendo$kendo$ui.ui$DateTimePicker;
+    kendoDateTimePicker(options: kendo$uiDateTimePickerOptions): JQuery;
+    data(key: "kendoDateTimePicker"): kendo$uiDateTimePicker;
     kendoDiagram(): JQuery;
-    kendoDiagram(
-      options: kendo$kendo$dataviz.kendo$ui.ui$DiagramOptions
-    ): JQuery;
-    kendo$data(key: "kendoDiagram"): kendo$kendo$dataviz.kendo$ui.ui$Diagram;
+    kendoDiagram(options: kendo$datavizuiDiagramOptions): JQuery;
+    data(key: "kendoDiagram"): kendo$datavizuiDiagram;
     kendoDialog(): JQuery;
-    kendoDialog(options: kendo$kendo$ui.ui$DialogOptions): JQuery;
-    kendo$data(key: "kendoDialog"): kendo$kendo$ui.ui$Dialog;
+    kendoDialog(options: kendo$uiDialogOptions): JQuery;
+    data(key: "kendoDialog"): kendo$uiDialog;
     kendoDraggable(): JQuery;
-    kendoDraggable(options: kendo$kendo$ui.ui$DraggableOptions): JQuery;
-    kendo$data(key: "kendoDraggable"): kendo$kendo$ui.ui$Draggable;
+    kendoDraggable(options: kendo$uiDraggableOptions): JQuery;
+    data(key: "kendoDraggable"): kendo$uiDraggable;
     kendoDropDownList(): JQuery;
-    kendoDropDownList(options: kendo$kendo$ui.ui$DropDownListOptions): JQuery;
-    kendo$data(key: "kendoDropDownList"): kendo$kendo$ui.ui$DropDownList;
+    kendoDropDownList(options: kendo$uiDropDownListOptions): JQuery;
+    data(key: "kendoDropDownList"): kendo$uiDropDownList;
     kendoDropDownTree(): JQuery;
-    kendoDropDownTree(options: kendo$kendo$ui.ui$DropDownTreeOptions): JQuery;
-    kendo$data(key: "kendoDropDownTree"): kendo$kendo$ui.ui$DropDownTree;
+    kendoDropDownTree(options: kendo$uiDropDownTreeOptions): JQuery;
+    data(key: "kendoDropDownTree"): kendo$uiDropDownTree;
     kendoDropTarget(): JQuery;
-    kendoDropTarget(options: kendo$kendo$ui.ui$DropTargetOptions): JQuery;
-    kendo$data(key: "kendoDropTarget"): kendo$kendo$ui.ui$DropTarget;
+    kendoDropTarget(options: kendo$uiDropTargetOptions): JQuery;
+    data(key: "kendoDropTarget"): kendo$uiDropTarget;
     kendoDropTargetArea(): JQuery;
-    kendoDropTargetArea(
-      options: kendo$kendo$ui.ui$DropTargetAreaOptions
-    ): JQuery;
-    kendo$data(key: "kendoDropTargetArea"): kendo$kendo$ui.ui$DropTargetArea;
+    kendoDropTargetArea(options: kendo$uiDropTargetAreaOptions): JQuery;
+    data(key: "kendoDropTargetArea"): kendo$uiDropTargetArea;
     kendoEditor(): JQuery;
-    kendoEditor(options: kendo$kendo$ui.ui$EditorOptions): JQuery;
-    kendo$data(key: "kendoEditor"): kendo$kendo$ui.ui$Editor;
+    kendoEditor(options: kendo$uiEditorOptions): JQuery;
+    data(key: "kendoEditor"): kendo$uiEditor;
     kendoFilterMenu(): JQuery;
-    kendoFilterMenu(options: kendo$kendo$ui.ui$FilterMenuOptions): JQuery;
-    kendo$data(key: "kendoFilterMenu"): kendo$kendo$ui.ui$FilterMenu;
+    kendoFilterMenu(options: kendo$uiFilterMenuOptions): JQuery;
+    data(key: "kendoFilterMenu"): kendo$uiFilterMenu;
     kendoFlatColorPicker(): JQuery;
-    kendoFlatColorPicker(
-      options: kendo$kendo$ui.ui$FlatColorPickerOptions
-    ): JQuery;
-    kendo$data(key: "kendoFlatColorPicker"): kendo$kendo$ui.ui$FlatColorPicker;
+    kendoFlatColorPicker(options: kendo$uiFlatColorPickerOptions): JQuery;
+    data(key: "kendoFlatColorPicker"): kendo$uiFlatColorPicker;
     kendoGantt(): JQuery;
-    kendoGantt(options: kendo$kendo$ui.ui$GanttOptions): JQuery;
-    kendo$data(key: "kendoGantt"): kendo$kendo$ui.ui$Gantt;
+    kendoGantt(options: kendo$uiGanttOptions): JQuery;
+    data(key: "kendoGantt"): kendo$uiGantt;
     kendoGrid(): JQuery;
-    kendoGrid(options: kendo$kendo$ui.ui$GridOptions): JQuery;
-    kendo$data(key: "kendoGrid"): kendo$kendo$ui.ui$Grid;
+    kendoGrid(options: kendo$uiGridOptions): JQuery;
+    data(key: "kendoGrid"): kendo$uiGrid;
     kendoLinearGauge(): JQuery;
-    kendoLinearGauge(
-      options: kendo$kendo$dataviz.kendo$ui.ui$LinearGaugeOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoLinearGauge"
-    ): kendo$kendo$dataviz.kendo$ui.ui$LinearGauge;
+    kendoLinearGauge(options: kendo$datavizuiLinearGaugeOptions): JQuery;
+    data(key: "kendoLinearGauge"): kendo$datavizuiLinearGauge;
     kendoListBox(): JQuery;
-    kendoListBox(options: kendo$kendo$ui.ui$ListBoxOptions): JQuery;
-    kendo$data(key: "kendoListBox"): kendo$kendo$ui.ui$ListBox;
+    kendoListBox(options: kendo$uiListBoxOptions): JQuery;
+    data(key: "kendoListBox"): kendo$uiListBox;
     kendoListView(): JQuery;
-    kendoListView(options: kendo$kendo$ui.ui$ListViewOptions): JQuery;
-    kendo$data(key: "kendoListView"): kendo$kendo$ui.ui$ListView;
+    kendoListView(options: kendo$uiListViewOptions): JQuery;
+    data(key: "kendoListView"): kendo$uiListView;
     kendoMap(): JQuery;
-    kendoMap(options: kendo$kendo$dataviz.kendo$ui.ui$MapOptions): JQuery;
-    kendo$data(key: "kendoMap"): kendo$kendo$dataviz.kendo$ui.ui$Map;
+    kendoMap(options: kendo$datavizuiMapOptions): JQuery;
+    data(key: "kendoMap"): kendo$datavizuiMap;
     kendoMaskedTextBox(): JQuery;
-    kendoMaskedTextBox(options: kendo$kendo$ui.ui$MaskedTextBoxOptions): JQuery;
-    kendo$data(key: "kendoMaskedTextBox"): kendo$kendo$ui.ui$MaskedTextBox;
+    kendoMaskedTextBox(options: kendo$uiMaskedTextBoxOptions): JQuery;
+    data(key: "kendoMaskedTextBox"): kendo$uiMaskedTextBox;
     kendoMediaPlayer(): JQuery;
-    kendoMediaPlayer(options: kendo$kendo$ui.ui$MediaPlayerOptions): JQuery;
-    kendo$data(key: "kendoMediaPlayer"): kendo$kendo$ui.ui$MediaPlayer;
+    kendoMediaPlayer(options: kendo$uiMediaPlayerOptions): JQuery;
+    data(key: "kendoMediaPlayer"): kendo$uiMediaPlayer;
     kendoMenu(): JQuery;
-    kendoMenu(options: kendo$kendo$ui.ui$MenuOptions): JQuery;
-    kendo$data(key: "kendoMenu"): kendo$kendo$ui.ui$Menu;
+    kendoMenu(options: kendo$uiMenuOptions): JQuery;
+    data(key: "kendoMenu"): kendo$uiMenu;
     kendoMobileActionSheet(): JQuery;
-    kendoMobileActionSheet(
-      options: kendo$kendo$mobile.kendo$ui.ui$ActionSheetOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileActionSheet"
-    ): kendo$kendo$mobile.kendo$ui.ui$ActionSheet;
+    kendoMobileActionSheet(options: kendo$mobileuiActionSheetOptions): JQuery;
+    data(key: "kendoMobileActionSheet"): kendo$mobileuiActionSheet;
     kendoMobileBackButton(): JQuery;
-    kendoMobileBackButton(
-      options: kendo$kendo$mobile.kendo$ui.ui$BackButtonOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileBackButton"
-    ): kendo$kendo$mobile.kendo$ui.ui$BackButton;
+    kendoMobileBackButton(options: kendo$mobileuiBackButtonOptions): JQuery;
+    data(key: "kendoMobileBackButton"): kendo$mobileuiBackButton;
     kendoMobileButton(): JQuery;
-    kendoMobileButton(
-      options: kendo$kendo$mobile.kendo$ui.ui$ButtonOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileButton"): kendo$kendo$mobile.kendo$ui.ui$Button;
+    kendoMobileButton(options: kendo$mobileuiButtonOptions): JQuery;
+    data(key: "kendoMobileButton"): kendo$mobileuiButton;
     kendoMobileButtonGroup(): JQuery;
-    kendoMobileButtonGroup(
-      options: kendo$kendo$mobile.kendo$ui.ui$ButtonGroupOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileButtonGroup"
-    ): kendo$kendo$mobile.kendo$ui.ui$ButtonGroup;
+    kendoMobileButtonGroup(options: kendo$mobileuiButtonGroupOptions): JQuery;
+    data(key: "kendoMobileButtonGroup"): kendo$mobileuiButtonGroup;
     kendoMobileCollapsible(): JQuery;
-    kendoMobileCollapsible(
-      options: kendo$kendo$mobile.kendo$ui.ui$CollapsibleOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileCollapsible"
-    ): kendo$kendo$mobile.kendo$ui.ui$Collapsible;
+    kendoMobileCollapsible(options: kendo$mobileuiCollapsibleOptions): JQuery;
+    data(key: "kendoMobileCollapsible"): kendo$mobileuiCollapsible;
     kendoMobileDetailButton(): JQuery;
-    kendoMobileDetailButton(
-      options: kendo$kendo$mobile.kendo$ui.ui$DetailButtonOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileDetailButton"
-    ): kendo$kendo$mobile.kendo$ui.ui$DetailButton;
+    kendoMobileDetailButton(options: kendo$mobileuiDetailButtonOptions): JQuery;
+    data(key: "kendoMobileDetailButton"): kendo$mobileuiDetailButton;
     kendoMobileDrawer(): JQuery;
-    kendoMobileDrawer(
-      options: kendo$kendo$mobile.kendo$ui.ui$DrawerOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileDrawer"): kendo$kendo$mobile.kendo$ui.ui$Drawer;
+    kendoMobileDrawer(options: kendo$mobileuiDrawerOptions): JQuery;
+    data(key: "kendoMobileDrawer"): kendo$mobileuiDrawer;
     kendoMobileLayout(): JQuery;
-    kendoMobileLayout(
-      options: kendo$kendo$mobile.kendo$ui.ui$LayoutOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileLayout"): kendo$kendo$mobile.kendo$ui.ui$Layout;
+    kendoMobileLayout(options: kendo$mobileuiLayoutOptions): JQuery;
+    data(key: "kendoMobileLayout"): kendo$mobileuiLayout;
     kendoMobileListView(): JQuery;
-    kendoMobileListView(
-      options: kendo$kendo$mobile.kendo$ui.ui$ListViewOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileListView"
-    ): kendo$kendo$mobile.kendo$ui.ui$ListView;
+    kendoMobileListView(options: kendo$mobileuiListViewOptions): JQuery;
+    data(key: "kendoMobileListView"): kendo$mobileuiListView;
     kendoMobileLoader(): JQuery;
-    kendoMobileLoader(
-      options: kendo$kendo$mobile.kendo$ui.ui$LoaderOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileLoader"): kendo$kendo$mobile.kendo$ui.ui$Loader;
+    kendoMobileLoader(options: kendo$mobileuiLoaderOptions): JQuery;
+    data(key: "kendoMobileLoader"): kendo$mobileuiLoader;
     kendoMobileModalView(): JQuery;
-    kendoMobileModalView(
-      options: kendo$kendo$mobile.kendo$ui.ui$ModalViewOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileModalView"
-    ): kendo$kendo$mobile.kendo$ui.ui$ModalView;
+    kendoMobileModalView(options: kendo$mobileuiModalViewOptions): JQuery;
+    data(key: "kendoMobileModalView"): kendo$mobileuiModalView;
     kendoMobileNavBar(): JQuery;
-    kendoMobileNavBar(
-      options: kendo$kendo$mobile.kendo$ui.ui$NavBarOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileNavBar"): kendo$kendo$mobile.kendo$ui.ui$NavBar;
+    kendoMobileNavBar(options: kendo$mobileuiNavBarOptions): JQuery;
+    data(key: "kendoMobileNavBar"): kendo$mobileuiNavBar;
     kendoMobilePane(): JQuery;
-    kendoMobilePane(
-      options: kendo$kendo$mobile.kendo$ui.ui$PaneOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobilePane"): kendo$kendo$mobile.kendo$ui.ui$Pane;
+    kendoMobilePane(options: kendo$mobileuiPaneOptions): JQuery;
+    data(key: "kendoMobilePane"): kendo$mobileuiPane;
     kendoMobilePopOver(): JQuery;
-    kendoMobilePopOver(
-      options: kendo$kendo$mobile.kendo$ui.ui$PopOverOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobilePopOver"
-    ): kendo$kendo$mobile.kendo$ui.ui$PopOver;
+    kendoMobilePopOver(options: kendo$mobileuiPopOverOptions): JQuery;
+    data(key: "kendoMobilePopOver"): kendo$mobileuiPopOver;
     kendoMobileScrollView(): JQuery;
-    kendoMobileScrollView(
-      options: kendo$kendo$mobile.kendo$ui.ui$ScrollViewOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileScrollView"
-    ): kendo$kendo$mobile.kendo$ui.ui$ScrollView;
+    kendoMobileScrollView(options: kendo$mobileuiScrollViewOptions): JQuery;
+    data(key: "kendoMobileScrollView"): kendo$mobileuiScrollView;
     kendoMobileScroller(): JQuery;
-    kendoMobileScroller(
-      options: kendo$kendo$mobile.kendo$ui.ui$ScrollerOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileScroller"
-    ): kendo$kendo$mobile.kendo$ui.ui$Scroller;
+    kendoMobileScroller(options: kendo$mobileuiScrollerOptions): JQuery;
+    data(key: "kendoMobileScroller"): kendo$mobileuiScroller;
     kendoMobileSplitView(): JQuery;
-    kendoMobileSplitView(
-      options: kendo$kendo$mobile.kendo$ui.ui$SplitViewOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileSplitView"
-    ): kendo$kendo$mobile.kendo$ui.ui$SplitView;
+    kendoMobileSplitView(options: kendo$mobileuiSplitViewOptions): JQuery;
+    data(key: "kendoMobileSplitView"): kendo$mobileuiSplitView;
     kendoMobileSwitch(): JQuery;
-    kendoMobileSwitch(
-      options: kendo$kendo$mobile.kendo$ui.ui$SwitchOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileSwitch"): kendo$kendo$mobile.kendo$ui.ui$Switch;
+    kendoMobileSwitch(options: kendo$mobileuiSwitchOptions): JQuery;
+    data(key: "kendoMobileSwitch"): kendo$mobileuiSwitch;
     kendoMobileTabStrip(): JQuery;
-    kendoMobileTabStrip(
-      options: kendo$kendo$mobile.kendo$ui.ui$TabStripOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMobileTabStrip"
-    ): kendo$kendo$mobile.kendo$ui.ui$TabStrip;
+    kendoMobileTabStrip(options: kendo$mobileuiTabStripOptions): JQuery;
+    data(key: "kendoMobileTabStrip"): kendo$mobileuiTabStrip;
     kendoMobileView(): JQuery;
-    kendoMobileView(
-      options: kendo$kendo$mobile.kendo$ui.ui$ViewOptions
-    ): JQuery;
-    kendo$data(key: "kendoMobileView"): kendo$kendo$mobile.kendo$ui.ui$View;
+    kendoMobileView(options: kendo$mobileuiViewOptions): JQuery;
+    data(key: "kendoMobileView"): kendo$mobileuiView;
     kendoMultiColumnComboBox(): JQuery;
     kendoMultiColumnComboBox(
-      options: kendo$kendo$ui.ui$MultiColumnComboBoxOptions
+      options: kendo$uiMultiColumnComboBoxOptions
     ): JQuery;
-    kendo$data(
-      key: "kendoMultiColumnComboBox"
-    ): kendo$kendo$ui.ui$MultiColumnComboBox;
+    data(key: "kendoMultiColumnComboBox"): kendo$uiMultiColumnComboBox;
     kendoMultiSelect(): JQuery;
-    kendoMultiSelect(options: kendo$kendo$ui.ui$MultiSelectOptions): JQuery;
-    kendo$data(key: "kendoMultiSelect"): kendo$kendo$ui.ui$MultiSelect;
+    kendoMultiSelect(options: kendo$uiMultiSelectOptions): JQuery;
+    data(key: "kendoMultiSelect"): kendo$uiMultiSelect;
     kendoMultiViewCalendar(): JQuery;
-    kendoMultiViewCalendar(
-      options: kendo$kendo$ui.ui$MultiViewCalendarOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoMultiViewCalendar"
-    ): kendo$kendo$ui.ui$MultiViewCalendar;
+    kendoMultiViewCalendar(options: kendo$uiMultiViewCalendarOptions): JQuery;
+    data(key: "kendoMultiViewCalendar"): kendo$uiMultiViewCalendar;
     kendoNotification(): JQuery;
-    kendoNotification(options: kendo$kendo$ui.ui$NotificationOptions): JQuery;
-    kendo$data(key: "kendoNotification"): kendo$kendo$ui.ui$Notification;
+    kendoNotification(options: kendo$uiNotificationOptions): JQuery;
+    data(key: "kendoNotification"): kendo$uiNotification;
     kendoNumericTextBox(): JQuery;
-    kendoNumericTextBox(
-      options: kendo$kendo$ui.ui$NumericTextBoxOptions
-    ): JQuery;
-    kendo$data(key: "kendoNumericTextBox"): kendo$kendo$ui.ui$NumericTextBox;
+    kendoNumericTextBox(options: kendo$uiNumericTextBoxOptions): JQuery;
+    data(key: "kendoNumericTextBox"): kendo$uiNumericTextBox;
     kendoPager(): JQuery;
-    kendoPager(options: kendo$kendo$ui.ui$PagerOptions): JQuery;
-    kendo$data(key: "kendoPager"): kendo$kendo$ui.ui$Pager;
+    kendoPager(options: kendo$uiPagerOptions): JQuery;
+    data(key: "kendoPager"): kendo$uiPager;
     kendoPanelBar(): JQuery;
-    kendoPanelBar(options: kendo$kendo$ui.ui$PanelBarOptions): JQuery;
-    kendo$data(key: "kendoPanelBar"): kendo$kendo$ui.ui$PanelBar;
+    kendoPanelBar(options: kendo$uiPanelBarOptions): JQuery;
+    data(key: "kendoPanelBar"): kendo$uiPanelBar;
     kendoPivotConfigurator(): JQuery;
-    kendoPivotConfigurator(
-      options: kendo$kendo$ui.ui$PivotConfiguratorOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoPivotConfigurator"
-    ): kendo$kendo$ui.ui$PivotConfigurator;
+    kendoPivotConfigurator(options: kendo$uiPivotConfiguratorOptions): JQuery;
+    data(key: "kendoPivotConfigurator"): kendo$uiPivotConfigurator;
     kendoPivotGrid(): JQuery;
-    kendoPivotGrid(options: kendo$kendo$ui.ui$PivotGridOptions): JQuery;
-    kendo$data(key: "kendoPivotGrid"): kendo$kendo$ui.ui$PivotGrid;
+    kendoPivotGrid(options: kendo$uiPivotGridOptions): JQuery;
+    data(key: "kendoPivotGrid"): kendo$uiPivotGrid;
     kendoPopup(): JQuery;
-    kendoPopup(options: kendo$kendo$ui.ui$PopupOptions): JQuery;
-    kendo$data(key: "kendoPopup"): kendo$kendo$ui.ui$Popup;
+    kendoPopup(options: kendo$uiPopupOptions): JQuery;
+    data(key: "kendoPopup"): kendo$uiPopup;
     kendoProgressBar(): JQuery;
-    kendoProgressBar(options: kendo$kendo$ui.ui$ProgressBarOptions): JQuery;
-    kendo$data(key: "kendoProgressBar"): kendo$kendo$ui.ui$ProgressBar;
+    kendoProgressBar(options: kendo$uiProgressBarOptions): JQuery;
+    data(key: "kendoProgressBar"): kendo$uiProgressBar;
     kendoPrompt(): JQuery;
-    kendoPrompt(options: kendo$kendo$ui.ui$PromptOptions): JQuery;
-    kendo$data(key: "kendoPrompt"): kendo$kendo$ui.ui$Prompt;
+    kendoPrompt(options: kendo$uiPromptOptions): JQuery;
+    data(key: "kendoPrompt"): kendo$uiPrompt;
     kendoQRCode(): JQuery;
-    kendoQRCode(options: kendo$kendo$dataviz.kendo$ui.ui$QRCodeOptions): JQuery;
-    kendo$data(key: "kendoQRCode"): kendo$kendo$dataviz.kendo$ui.ui$QRCode;
+    kendoQRCode(options: kendo$datavizuiQRCodeOptions): JQuery;
+    data(key: "kendoQRCode"): kendo$datavizuiQRCode;
     kendoRadialGauge(): JQuery;
-    kendoRadialGauge(
-      options: kendo$kendo$dataviz.kendo$ui.ui$RadialGaugeOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoRadialGauge"
-    ): kendo$kendo$dataviz.kendo$ui.ui$RadialGauge;
+    kendoRadialGauge(options: kendo$datavizuiRadialGaugeOptions): JQuery;
+    data(key: "kendoRadialGauge"): kendo$datavizuiRadialGauge;
     kendoRangeSlider(): JQuery;
-    kendoRangeSlider(options: kendo$kendo$ui.ui$RangeSliderOptions): JQuery;
-    kendo$data(key: "kendoRangeSlider"): kendo$kendo$ui.ui$RangeSlider;
+    kendoRangeSlider(options: kendo$uiRangeSliderOptions): JQuery;
+    data(key: "kendoRangeSlider"): kendo$uiRangeSlider;
     kendoResponsivePanel(): JQuery;
-    kendoResponsivePanel(
-      options: kendo$kendo$ui.ui$ResponsivePanelOptions
-    ): JQuery;
-    kendo$data(key: "kendoResponsivePanel"): kendo$kendo$ui.ui$ResponsivePanel;
+    kendoResponsivePanel(options: kendo$uiResponsivePanelOptions): JQuery;
+    data(key: "kendoResponsivePanel"): kendo$uiResponsivePanel;
     kendoScheduler(): JQuery;
-    kendoScheduler(options: kendo$kendo$ui.ui$SchedulerOptions): JQuery;
-    kendo$data(key: "kendoScheduler"): kendo$kendo$ui.ui$Scheduler;
+    kendoScheduler(options: kendo$uiSchedulerOptions): JQuery;
+    data(key: "kendoScheduler"): kendo$uiScheduler;
     kendoScrollView(): JQuery;
-    kendoScrollView(options: kendo$kendo$ui.ui$ScrollViewOptions): JQuery;
-    kendo$data(key: "kendoScrollView"): kendo$kendo$ui.ui$ScrollView;
+    kendoScrollView(options: kendo$uiScrollViewOptions): JQuery;
+    data(key: "kendoScrollView"): kendo$uiScrollView;
     kendoSlider(): JQuery;
-    kendoSlider(options: kendo$kendo$ui.ui$SliderOptions): JQuery;
-    kendo$data(key: "kendoSlider"): kendo$kendo$ui.ui$Slider;
+    kendoSlider(options: kendo$uiSliderOptions): JQuery;
+    data(key: "kendoSlider"): kendo$uiSlider;
     kendoSortable(): JQuery;
-    kendoSortable(options: kendo$kendo$ui.ui$SortableOptions): JQuery;
-    kendo$data(key: "kendoSortable"): kendo$kendo$ui.ui$Sortable;
+    kendoSortable(options: kendo$uiSortableOptions): JQuery;
+    data(key: "kendoSortable"): kendo$uiSortable;
     kendoSparkline(): JQuery;
-    kendoSparkline(
-      options: kendo$kendo$dataviz.kendo$ui.ui$SparklineOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoSparkline"
-    ): kendo$kendo$dataviz.kendo$ui.ui$Sparkline;
+    kendoSparkline(options: kendo$datavizuiSparklineOptions): JQuery;
+    data(key: "kendoSparkline"): kendo$datavizuiSparkline;
     kendoSplitter(): JQuery;
-    kendoSplitter(options: kendo$kendo$ui.ui$SplitterOptions): JQuery;
-    kendo$data(key: "kendoSplitter"): kendo$kendo$ui.ui$Splitter;
+    kendoSplitter(options: kendo$uiSplitterOptions): JQuery;
+    data(key: "kendoSplitter"): kendo$uiSplitter;
     kendoSpreadsheet(): JQuery;
-    kendoSpreadsheet(options: kendo$kendo$ui.ui$SpreadsheetOptions): JQuery;
-    kendo$data(key: "kendoSpreadsheet"): kendo$kendo$ui.ui$Spreadsheet;
+    kendoSpreadsheet(options: kendo$uiSpreadsheetOptions): JQuery;
+    data(key: "kendoSpreadsheet"): kendo$uiSpreadsheet;
     kendoStockChart(): JQuery;
-    kendoStockChart(
-      options: kendo$kendo$dataviz.kendo$ui.ui$StockChartOptions
-    ): JQuery;
-    kendo$data(
-      key: "kendoStockChart"
-    ): kendo$kendo$dataviz.kendo$ui.ui$StockChart;
+    kendoStockChart(options: kendo$datavizuiStockChartOptions): JQuery;
+    data(key: "kendoStockChart"): kendo$datavizuiStockChart;
     kendoSwitch(): JQuery;
-    kendoSwitch(options: kendo$kendo$ui.ui$SwitchOptions): JQuery;
-    kendo$data(key: "kendoSwitch"): kendo$kendo$ui.ui$Switch;
+    kendoSwitch(options: kendo$uiSwitchOptions): JQuery;
+    data(key: "kendoSwitch"): kendo$uiSwitch;
     kendoTabStrip(): JQuery;
-    kendoTabStrip(options: kendo$kendo$ui.ui$TabStripOptions): JQuery;
-    kendo$data(key: "kendoTabStrip"): kendo$kendo$ui.ui$TabStrip;
+    kendoTabStrip(options: kendo$uiTabStripOptions): JQuery;
+    data(key: "kendoTabStrip"): kendo$uiTabStrip;
     kendoTimePicker(): JQuery;
-    kendoTimePicker(options: kendo$kendo$ui.ui$TimePickerOptions): JQuery;
-    kendo$data(key: "kendoTimePicker"): kendo$kendo$ui.ui$TimePicker;
+    kendoTimePicker(options: kendo$uiTimePickerOptions): JQuery;
+    data(key: "kendoTimePicker"): kendo$uiTimePicker;
     kendoToolBar(): JQuery;
-    kendoToolBar(options: kendo$kendo$ui.ui$ToolBarOptions): JQuery;
-    kendo$data(key: "kendoToolBar"): kendo$kendo$ui.ui$ToolBar;
+    kendoToolBar(options: kendo$uiToolBarOptions): JQuery;
+    data(key: "kendoToolBar"): kendo$uiToolBar;
     kendoTooltip(): JQuery;
-    kendoTooltip(options: kendo$kendo$ui.ui$TooltipOptions): JQuery;
-    kendo$data(key: "kendoTooltip"): kendo$kendo$ui.ui$Tooltip;
+    kendoTooltip(options: kendo$uiTooltipOptions): JQuery;
+    data(key: "kendoTooltip"): kendo$uiTooltip;
     kendoTouch(): JQuery;
-    kendoTouch(options: kendo$kendo$ui.ui$TouchOptions): JQuery;
-    kendo$data(key: "kendoTouch"): kendo$kendo$ui.ui$Touch;
+    kendoTouch(options: kendo$uiTouchOptions): JQuery;
+    data(key: "kendoTouch"): kendo$uiTouch;
     kendoTreeList(): JQuery;
-    kendoTreeList(options: kendo$kendo$ui.ui$TreeListOptions): JQuery;
-    kendo$data(key: "kendoTreeList"): kendo$kendo$ui.ui$TreeList;
+    kendoTreeList(options: kendo$uiTreeListOptions): JQuery;
+    data(key: "kendoTreeList"): kendo$uiTreeList;
     kendoTreeMap(): JQuery;
-    kendoTreeMap(
-      options: kendo$kendo$dataviz.kendo$ui.ui$TreeMapOptions
-    ): JQuery;
-    kendo$data(key: "kendoTreeMap"): kendo$kendo$dataviz.kendo$ui.ui$TreeMap;
+    kendoTreeMap(options: kendo$datavizuiTreeMapOptions): JQuery;
+    data(key: "kendoTreeMap"): kendo$datavizuiTreeMap;
     kendoTreeView(): JQuery;
-    kendoTreeView(options: kendo$kendo$ui.ui$TreeViewOptions): JQuery;
-    kendo$data(key: "kendoTreeView"): kendo$kendo$ui.ui$TreeView;
+    kendoTreeView(options: kendo$uiTreeViewOptions): JQuery;
+    data(key: "kendoTreeView"): kendo$uiTreeView;
     kendoUpload(): JQuery;
-    kendoUpload(options: kendo$kendo$ui.ui$UploadOptions): JQuery;
-    kendo$data(key: "kendoUpload"): kendo$kendo$ui.ui$Upload;
+    kendoUpload(options: kendo$uiUploadOptions): JQuery;
+    data(key: "kendoUpload"): kendo$uiUpload;
     kendoValidator(): JQuery;
-    kendoValidator(options: kendo$kendo$ui.ui$ValidatorOptions): JQuery;
-    kendo$data(key: "kendoValidator"): kendo$kendo$ui.ui$Validator;
+    kendoValidator(options: kendo$uiValidatorOptions): JQuery;
+    data(key: "kendoValidator"): kendo$uiValidator;
     kendoWindow(): JQuery;
-    kendoWindow(options: kendo$kendo$ui.ui$WindowOptions): JQuery;
-    kendo$data(key: "kendoWindow"): kendo$kendo$ui.ui$Window;
+    kendoWindow(options: kendo$uiWindowOptions): JQuery;
+    data(key: "kendoWindow"): kendo$uiWindow;
   }
 }
