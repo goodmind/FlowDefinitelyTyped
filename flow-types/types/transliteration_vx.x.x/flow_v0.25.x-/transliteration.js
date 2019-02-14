@@ -1,7 +1,7 @@
 declare module "transliteration" {
   declare export function transliterate(
     str: string,
-    options?: transliterate$slugify$Options
+    options?: transliterate$Options
   ): string;
 
   declare var npm$namespace$transliterate: {
@@ -66,7 +66,7 @@ declare module "transliteration" {
   }
   declare export function slugify(
     str: string,
-    options?: slugify$transliterate$Options
+    options?: slugify$Options
   ): string;
 
   declare var npm$namespace$slugify: {
