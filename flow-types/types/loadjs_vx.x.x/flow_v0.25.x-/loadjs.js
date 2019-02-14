@@ -1,15 +1,15 @@
 declare module "loadjs" {
-  declare module.exports: typeof loadjs;
+  declare export default typeof loadjs;
 
   declare function loadjs(
     files: string | string[],
-    bundleIdOrLoaded: string | loadjs$loadjs$LoadedFn
+    bundleIdOrLoaded: string | loadjs$LoadedFn
   ): void;
 
   declare function loadjs(
     files: string[],
     bundleId: string,
-    optionsOrCallback: loadjs$loadjs$LoadOptions | loadjs$loadjs$LoadedFn
+    optionsOrCallback: loadjs$LoadOptions | loadjs$LoadedFn
   ): void;
 
   declare var npm$namespace$loadjs: {
