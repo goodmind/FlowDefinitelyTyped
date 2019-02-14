@@ -1,26 +1,30 @@
 declare module "gapi.client.identitytoolkit" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    relyingparty: typeof client$relyingparty
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    relyingparty: typeof gapi$client$relyingparty
   };
 
   /**
    * Load Google Identity Toolkit API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "identitytoolkit",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "identitytoolkit",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$relyingparty: identitytoolkit$identitytoolkit$RelyingpartyResource;
+  declare var gapi$client$relyingparty: identitytoolkit$RelyingpartyResource;
 
-  declare interface identitytoolkit$CreateAuthUriResponse {
+  declare interface gapi$client$identitytoolkit$CreateAuthUriResponse {
     /**
      * all providers the user has once used to do federated login
      */
@@ -67,14 +71,14 @@ declare module "gapi.client.identitytoolkit" {
     signinMethods?: string[];
   }
 
-  declare interface identitytoolkit$DeleteAccountResponse {
+  declare interface gapi$client$identitytoolkit$DeleteAccountResponse {
     /**
      * The fixed string "identitytoolkit#DeleteAccountResponse".
      */
     kind?: string;
   }
 
-  declare interface identitytoolkit$DownloadAccountResponse {
+  declare interface gapi$client$identitytoolkit$DownloadAccountResponse {
     /**
      * The fixed string "identitytoolkit#DownloadAccountResponse".
      */
@@ -91,7 +95,7 @@ declare module "gapi.client.identitytoolkit" {
     users?: identitytoolkit$UserInfo[];
   }
 
-  declare interface identitytoolkit$EmailLinkSigninResponse {
+  declare interface gapi$client$identitytoolkit$EmailLinkSigninResponse {
     /**
      * The user's email.
      */
@@ -128,7 +132,7 @@ declare module "gapi.client.identitytoolkit" {
     refreshToken?: string;
   }
 
-  declare interface identitytoolkit$EmailTemplate {
+  declare interface gapi$client$identitytoolkit$EmailTemplate {
     /**
      * Email body.
      */
@@ -160,7 +164,7 @@ declare module "gapi.client.identitytoolkit" {
     subject?: string;
   }
 
-  declare interface identitytoolkit$GetAccountInfoResponse {
+  declare interface gapi$client$identitytoolkit$GetAccountInfoResponse {
     /**
      * The fixed string "identitytoolkit#GetAccountInfoResponse".
      */
@@ -172,7 +176,7 @@ declare module "gapi.client.identitytoolkit" {
     users?: identitytoolkit$UserInfo[];
   }
 
-  declare interface identitytoolkit$GetOobConfirmationCodeResponse {
+  declare interface gapi$client$identitytoolkit$GetOobConfirmationCodeResponse {
     /**
      * The email address that the email is sent to.
      */
@@ -189,7 +193,7 @@ declare module "gapi.client.identitytoolkit" {
     oobCode?: string;
   }
 
-  declare interface identitytoolkit$GetRecaptchaParamResponse {
+  declare interface gapi$client$identitytoolkit$GetRecaptchaParamResponse {
     /**
      * The fixed string "identitytoolkit#GetRecaptchaParamResponse".
      */
@@ -206,7 +210,7 @@ declare module "gapi.client.identitytoolkit" {
     recaptchaStoken?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyCreateAuthUriRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     /**
      * The app ID of the mobile app, base64(CERT_SHA1):PACKAGE_NAME for Android, BUNDLE_ID for iOS.
      */
@@ -280,7 +284,7 @@ declare module "gapi.client.identitytoolkit" {
     sessionId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyDeleteAccountRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyDeleteAccountRequest {
     /**
      * GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.
      */
@@ -297,7 +301,7 @@ declare module "gapi.client.identitytoolkit" {
     localId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyDownloadAccountRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyDownloadAccountRequest {
     /**
      * GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.
      */
@@ -319,7 +323,7 @@ declare module "gapi.client.identitytoolkit" {
     targetProjectId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
     /**
      * The email address of the user.
      */
@@ -336,7 +340,7 @@ declare module "gapi.client.identitytoolkit" {
     oobCode?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyGetAccountInfoRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     /**
      * GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.
      */
@@ -363,7 +367,7 @@ declare module "gapi.client.identitytoolkit" {
     phoneNumber?: string[];
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyGetProjectConfigResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     /**
      * Whether to allow password user sign in or sign up.
      */
@@ -382,7 +386,7 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Change email template.
      */
-    changeEmailTemplate?: identitytoolkit$EmailTemplate;
+    changeEmailTemplate?: gapi$client$identitytoolkit$EmailTemplate;
     dynamicLinksDomain?: string;
 
     /**
@@ -398,7 +402,7 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Legacy reset password email template.
      */
-    legacyResetPasswordTemplate?: identitytoolkit$EmailTemplate;
+    legacyResetPasswordTemplate?: gapi$client$identitytoolkit$EmailTemplate;
 
     /**
      * Project ID of the relying party.
@@ -408,7 +412,7 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Reset password email template.
      */
-    resetPasswordTemplate?: identitytoolkit$EmailTemplate;
+    resetPasswordTemplate?: gapi$client$identitytoolkit$EmailTemplate;
 
     /**
      * Whether to use email sending provided by Firebear.
@@ -418,14 +422,14 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Verify email template.
      */
-    verifyEmailTemplate?: identitytoolkit$EmailTemplate;
+    verifyEmailTemplate?: gapi$client$identitytoolkit$EmailTemplate;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyGetPublicKeysResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyGetPublicKeysResponse {
     [key: string]: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyResetPasswordRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyResetPasswordRequest {
     /**
      * The email address of the user.
      */
@@ -447,7 +451,7 @@ declare module "gapi.client.identitytoolkit" {
     oobCode?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeRequest {
     /**
      * Receipt of successful app token validation with APNS.
      */
@@ -469,14 +473,14 @@ declare module "gapi.client.identitytoolkit" {
     recaptchaToken?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeResponse {
     /**
      * Encrypted session information
      */
     sessionInfo?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySetAccountInfoRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySetAccountInfoRequest {
     /**
      * The captcha challenge.
      */
@@ -593,7 +597,7 @@ declare module "gapi.client.identitytoolkit" {
     validSince?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigRequest {
     /**
      * Whether to allow password user sign in or sign up.
      */
@@ -612,7 +616,7 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Change email template.
      */
-    changeEmailTemplate?: identitytoolkit$EmailTemplate;
+    changeEmailTemplate?: gapi$client$identitytoolkit$EmailTemplate;
 
     /**
      * GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.
@@ -632,12 +636,12 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Legacy reset password email template.
      */
-    legacyResetPasswordTemplate?: identitytoolkit$EmailTemplate;
+    legacyResetPasswordTemplate?: gapi$client$identitytoolkit$EmailTemplate;
 
     /**
      * Reset password email template.
      */
-    resetPasswordTemplate?: identitytoolkit$EmailTemplate;
+    resetPasswordTemplate?: gapi$client$identitytoolkit$EmailTemplate;
 
     /**
      * Whether to use email sending provided by Firebear.
@@ -647,17 +651,17 @@ declare module "gapi.client.identitytoolkit" {
     /**
      * Verify email template.
      */
-    verifyEmailTemplate?: identitytoolkit$EmailTemplate;
+    verifyEmailTemplate?: gapi$client$identitytoolkit$EmailTemplate;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigResponse {
     /**
      * Project ID of the relying party.
      */
     projectId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySignOutUserRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySignOutUserRequest {
     /**
      * Instance id token of the app.
      */
@@ -669,14 +673,14 @@ declare module "gapi.client.identitytoolkit" {
     localId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySignOutUserResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySignOutUserResponse {
     /**
      * The local ID of the user.
      */
     localId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartySignupNewUserRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySignupNewUserRequest {
     /**
      * The captcha challenge.
      */
@@ -738,7 +742,7 @@ declare module "gapi.client.identitytoolkit" {
     photoUrl?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyUploadAccountRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyUploadAccountRequest {
     /**
      * Whether allow overwrite existing account when user local_id exists.
      */
@@ -798,7 +802,7 @@ declare module "gapi.client.identitytoolkit" {
     users?: identitytoolkit$UserInfo[];
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyVerifyAssertionRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     /**
      * When it's true, automatically creates a new account if the user doesn't exist. When it's false, allows existing user to sign in normally and throws
      * exception if the user doesn't exist.
@@ -856,7 +860,7 @@ declare module "gapi.client.identitytoolkit" {
     sessionId?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     /**
      * GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.
      */
@@ -878,7 +882,7 @@ declare module "gapi.client.identitytoolkit" {
     token?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyVerifyPasswordRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     /**
      * The captcha challenge.
      */
@@ -925,7 +929,7 @@ declare module "gapi.client.identitytoolkit" {
     returnSecureToken?: boolean;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
     code?: string;
     idToken?: string;
     operation?: string;
@@ -939,7 +943,7 @@ declare module "gapi.client.identitytoolkit" {
     verificationProof?: string;
   }
 
-  declare interface identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
+  declare interface gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
     expiresIn?: string;
     idToken?: string;
     isNewUser?: boolean;
@@ -952,7 +956,7 @@ declare module "gapi.client.identitytoolkit" {
     verificationProofExpiresIn?: string;
   }
 
-  declare interface identitytoolkit$IdpConfig {
+  declare interface gapi$client$identitytoolkit$IdpConfig {
     /**
      * OAuth2 client ID.
      */
@@ -984,7 +988,7 @@ declare module "gapi.client.identitytoolkit" {
     whitelistedAudiences?: string[];
   }
 
-  declare interface identitytoolkit$Relyingparty {
+  declare interface gapi$client$identitytoolkit$Relyingparty {
     /**
      * whether or not to install the android app on the device where the link is opened
      */
@@ -1061,7 +1065,7 @@ declare module "gapi.client.identitytoolkit" {
     userIp?: string;
   }
 
-  declare interface identitytoolkit$ResetPasswordResponse {
+  declare interface gapi$client$identitytoolkit$ResetPasswordResponse {
     /**
      * The user's email. If the out-of-band code is for email recovery, the user's original email.
      */
@@ -1083,7 +1087,7 @@ declare module "gapi.client.identitytoolkit" {
     requestType?: string;
   }
 
-  declare interface identitytoolkit$SetAccountInfoResponse {
+  declare interface gapi$client$identitytoolkit$SetAccountInfoResponse {
     /**
      * The name of the user.
      */
@@ -1166,7 +1170,7 @@ declare module "gapi.client.identitytoolkit" {
     refreshToken?: string;
   }
 
-  declare interface identitytoolkit$SignupNewUserResponse {
+  declare interface gapi$client$identitytoolkit$SignupNewUserResponse {
     /**
      * The name of the user.
      */
@@ -1203,7 +1207,7 @@ declare module "gapi.client.identitytoolkit" {
     refreshToken?: string;
   }
 
-  declare interface identitytoolkit$UploadAccountResponse {
+  declare interface gapi$client$identitytoolkit$UploadAccountResponse {
     /**
      * The error encountered while processing the account info.
      */
@@ -1225,7 +1229,7 @@ declare module "gapi.client.identitytoolkit" {
     kind?: string;
   }
 
-  declare interface identitytoolkit$UserInfo {
+  declare interface gapi$client$identitytoolkit$UserInfo {
     /**
      * User creation timestamp.
      */
@@ -1363,7 +1367,7 @@ declare module "gapi.client.identitytoolkit" {
     version?: number;
   }
 
-  declare interface identitytoolkit$VerifyAssertionResponse {
+  declare interface gapi$client$identitytoolkit$VerifyAssertionResponse {
     /**
      * The action code.
      */
@@ -1563,7 +1567,7 @@ declare module "gapi.client.identitytoolkit" {
     verifiedProvider?: string[];
   }
 
-  declare interface identitytoolkit$VerifyCustomTokenResponse {
+  declare interface gapi$client$identitytoolkit$VerifyCustomTokenResponse {
     /**
      * If idToken is STS id token, then this field will be expiration time of STS id token in seconds.
      */
@@ -1590,7 +1594,7 @@ declare module "gapi.client.identitytoolkit" {
     refreshToken?: string;
   }
 
-  declare interface identitytoolkit$VerifyPasswordResponse {
+  declare interface gapi$client$identitytoolkit$VerifyPasswordResponse {
     /**
      * The name of the user.
      */
@@ -1652,7 +1656,7 @@ declare module "gapi.client.identitytoolkit" {
     registered?: boolean;
   }
 
-  declare interface identitytoolkit$RelyingpartyResource {
+  declare interface gapi$client$identitytoolkit$RelyingpartyResource {
     /**
      * Creates the URI used by the IdP to authenticate the user.
      */
@@ -1692,7 +1696,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$CreateAuthUriResponse>;
+    }): Request<gapi$client$identitytoolkit$CreateAuthUriResponse>;
 
     /**
      * Delete user account.
@@ -1733,7 +1737,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$DeleteAccountResponse>;
+    }): Request<gapi$client$identitytoolkit$DeleteAccountResponse>;
 
     /**
      * Batch download user accounts.
@@ -1774,7 +1778,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$DownloadAccountResponse>;
+    }): Request<gapi$client$identitytoolkit$DownloadAccountResponse>;
 
     /**
      * Reset password for a user.
@@ -1815,7 +1819,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$EmailLinkSigninResponse>;
+    }): Request<gapi$client$identitytoolkit$EmailLinkSigninResponse>;
 
     /**
      * Returns the account info.
@@ -1856,7 +1860,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$GetAccountInfoResponse>;
+    }): Request<gapi$client$identitytoolkit$GetAccountInfoResponse>;
 
     /**
      * Get a code for user action confirmation.
@@ -1897,7 +1901,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$GetOobConfirmationCodeResponse>;
+    }): Request<gapi$client$identitytoolkit$GetOobConfirmationCodeResponse>;
 
     /**
      * Get project configuration.
@@ -1948,7 +1952,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$IdentitytoolkitRelyingpartyGetProjectConfigResponse>;
+    }): Request<gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyGetProjectConfigResponse>;
 
     /**
      * Get token signing public key.
@@ -2030,7 +2034,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$GetRecaptchaParamResponse>;
+    }): Request<gapi$client$identitytoolkit$GetRecaptchaParamResponse>;
 
     /**
      * Reset password for a user.
@@ -2071,7 +2075,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$ResetPasswordResponse>;
+    }): Request<gapi$client$identitytoolkit$ResetPasswordResponse>;
 
     /**
      * Send SMS verification code.
@@ -2112,7 +2116,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeResponse>;
+    }): Request<gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySendVerificationCodeResponse>;
 
     /**
      * Set account info for a user.
@@ -2153,7 +2157,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$SetAccountInfoResponse>;
+    }): Request<gapi$client$identitytoolkit$SetAccountInfoResponse>;
 
     /**
      * Set project configuration.
@@ -2194,7 +2198,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigResponse>;
+    }): Request<gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySetProjectConfigResponse>;
 
     /**
      * Sign out user.
@@ -2235,7 +2239,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$IdentitytoolkitRelyingpartySignOutUserResponse>;
+    }): Request<gapi$client$identitytoolkit$IdentitytoolkitRelyingpartySignOutUserResponse>;
 
     /**
      * Signup new user.
@@ -2276,7 +2280,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$SignupNewUserResponse>;
+    }): Request<gapi$client$identitytoolkit$SignupNewUserResponse>;
 
     /**
      * Batch upload existing user accounts.
@@ -2317,7 +2321,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$UploadAccountResponse>;
+    }): Request<gapi$client$identitytoolkit$UploadAccountResponse>;
 
     /**
      * Verifies the assertion returned by the IdP.
@@ -2358,7 +2362,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$VerifyAssertionResponse>;
+    }): Request<gapi$client$identitytoolkit$VerifyAssertionResponse>;
 
     /**
      * Verifies the developer asserted ID token.
@@ -2399,7 +2403,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$VerifyCustomTokenResponse>;
+    }): Request<gapi$client$identitytoolkit$VerifyCustomTokenResponse>;
 
     /**
      * Verifies the user entered password.
@@ -2440,7 +2444,7 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$VerifyPasswordResponse>;
+    }): Request<gapi$client$identitytoolkit$VerifyPasswordResponse>;
 
     /**
      * Verifies ownership of a phone number and creates/updates the user account accordingly.
@@ -2481,6 +2485,6 @@ declare module "gapi.client.identitytoolkit" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>;
+    }): Request<gapi$client$identitytoolkit$IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>;
   }
 }
