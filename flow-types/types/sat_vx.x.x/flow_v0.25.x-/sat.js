@@ -4,7 +4,13 @@ declare var npm$namespace$SAT: {
   testCircleCircle: typeof SAT$testCircleCircle,
   testPolygonCircle: typeof SAT$testPolygonCircle,
   testCirclePolygon: typeof SAT$testCirclePolygon,
-  testPolygonPolygon: typeof SAT$testPolygonPolygon
+  testPolygonPolygon: typeof SAT$testPolygonPolygon,
+
+  Vector: typeof SAT$Vector,
+  Circle: typeof SAT$Circle,
+  Polygon: typeof SAT$Polygon,
+  Box: typeof SAT$Box,
+  Response: typeof SAT$Response
 };
 
 /**
@@ -108,7 +114,7 @@ declare export function SAT$pointInPolygon(
 
 /**
  * @function {testCicleCircle} tests a collision between two {Circle}s, {a} and {b}.
-if a {response} is to be calculated in the event of a collision, pass in a cleared {Response} object.
+ * if a {response} is to be calculated in the event of a collision, pass in a cleared {Response} object.
  * @param {SAT$Circle} a specified circle a to tests.
  * @param {SAT$Circle} b spacified circle b to tests.
  * @param {SAT$Response} response specified the result of a collision between two circle.
@@ -122,7 +128,7 @@ declare export function SAT$testCircleCircle(
 
 /**
  * @function {testPolygonCicle} tests a collision between a {Polygon} and a {Circle}. if a response is to
-be calculated in the event of a collision, pass in a cleared {Response} object.
+ * be calculated in the event of a collision, pass in a cleared {Response} object.
  * @param {SAT$Polygon} polygon specified a Polygon to tests a collision.
  * @param {SAT$Circle} circle specified a Circle to tests a collision.
  * @param {SAT$Response} response specified the result of a collision between a {Polygon} and a {Circle}.
@@ -136,7 +142,7 @@ declare export function SAT$testPolygonCircle(
 
 /**
  * @function {testCirclePolygon} tests a collision between a {Circle} and a {Polygon}. if a response is to
-be calculated in the event of a collision, pass in a cleared {Response} object.
+ * be calculated in the event of a collision, pass in a cleared {Response} object.
  * @param {SAT$Circle} circle specified a {Circle} to tests a collision.
  * @param {SAT$Polygon} polygon specified a {Polygon} to tests a collision.
  * @param {SAT$Response} response specified the result of a collision between a {Circle} and a {Polygon}.
@@ -150,7 +156,7 @@ declare export function SAT$testCirclePolygon(
 
 /**
  * @function {testPolygonPolygon} tests whether two polygons {a} and {b} collide.
-if a response is to be calculated in the event of a collision, pass in a cleared {Response} object.
+ * if a response is to be calculated in the event of a collision, pass in a cleared {Response} object.
  * @param {SAT$Polygon} a specified a {Polygon} {a} to test a collision.
  * @param {SAT$Polygon} b specified a {Polygon} {b} to test a collision.
  * @param {SAT$Response} response specified the result of a collision between two {Polygon}s.
@@ -162,5 +168,5 @@ declare export function SAT$testPolygonPolygon(
   response?: SAT$Response
 ): boolean;
 declare module "sat" {
-  declare module.exports: typeof SAT;
+  declare export default typeof SAT;
 }
