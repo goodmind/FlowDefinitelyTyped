@@ -1,8 +1,8 @@
 declare module "apostrophe" {
-  declare module.exports: typeof apostrophe;
+  declare export default typeof apostrophe;
 
   declare function apostrophe(
-    options: apostrophe$apostrophe$AposConstructor,
+    options: apostrophe$AposConstructor,
     ...args: any[]
   ): any;
 
@@ -281,8 +281,8 @@ declare module "apostrophe" {
   }
 
   declare interface apostrophe$AposModule {
-    apostrophe$emit(name: string): void;
-    apostrophe$on(name: string, methodName: any, fn: () => any): void;
+    emit(name: string): void;
+    on(name: string, methodName: any, fn: () => any): void;
   }
 
   declare type apostrophe$AposCoreModules =
