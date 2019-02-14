@@ -1,5 +1,5 @@
 declare module "temp-write" {
-  declare module.exports: typeof tempWrite;
+  declare export default typeof tempWrite;
 
   declare function tempWrite(
     input: string | Buffer | NodeJS.ReadableStream,
