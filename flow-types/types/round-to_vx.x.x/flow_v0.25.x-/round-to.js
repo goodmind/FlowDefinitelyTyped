@@ -25,5 +25,5 @@ declare module "round-to" {
    */
   declare function roundTo(input: number, precision: number): number;
 
-  declare module.exports: typeof roundTo;
+  declare export default typeof roundTo;
 }
