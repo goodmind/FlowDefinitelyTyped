@@ -2,9 +2,9 @@ declare module "gm" {
   declare function m(
     stream: NodeJS.ReadableStream | Buffer | string,
     image?: string
-  ): m$m$State;
+  ): m$State;
 
-  declare function m(width: number, height: number, color?: string): m$m$State;
+  declare function m(width: number, height: number, color?: string): m$State;
 
   declare var npm$namespace$m: {
     compare: typeof m$compare,
@@ -743,5 +743,5 @@ declare module "gm" {
     stderr: string,
     cmd: string
   ) => any;
-  declare module.exports: typeof m;
+  declare export default typeof m;
 }
