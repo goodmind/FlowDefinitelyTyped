@@ -1,7 +1,7 @@
 declare module "urlrouter" {
   declare function UrlRouterInternal(
-    handler: (app: UrlRouterInternal$UrlRouterInternal$App) => void
-  ): UrlRouterInternal$UrlRouterInternal$HttpHandler;
+    handler: (app: UrlRouterInternal$App) => void
+  ): UrlRouterInternal$HttpHandler;
 
   declare var npm$namespace$UrlRouterInternal: {
     _UrlRouterfunc: typeof UrlRouterInternal$_UrlRouterfunc
@@ -10,7 +10,7 @@ declare module "urlrouter" {
     params: any
   } & http.IncomingMessage;
 
-  declare type UrlRouterInternal$ServerResponse = {} & http.UrlRouterInternal$ServerResponse;
+  declare type UrlRouterInternal$ServerResponse = {} & http.ServerResponse;
 
   declare interface UrlRouterInternal$App {
     get(urlpattern: string, handler: UrlRouterInternal$HttpHandler): void;
@@ -75,5 +75,5 @@ declare module "urlrouter" {
       next?: () => void
     ): void;
   }
-  declare module.exports: typeof UrlRouterInternal;
+  declare export default typeof UrlRouterInternal;
 }
