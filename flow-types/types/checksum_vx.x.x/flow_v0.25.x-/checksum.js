@@ -44,8 +44,8 @@ declare module "checksum" {
    */
   declare function checksum(
     value: any,
-    options?: checksum$checksum$ChecksumOptions
+    options?: checksum$ChecksumOptions
   ): string;
 
-  declare module.exports: typeof checksum;
+  declare export default typeof checksum;
 }
