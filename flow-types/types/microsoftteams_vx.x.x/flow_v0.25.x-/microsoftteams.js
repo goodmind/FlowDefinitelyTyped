@@ -12,7 +12,12 @@ declare module "microsoftteams" {
     getTabInstances: typeof microsoftTeams$getTabInstances,
     getMruTabInstances: typeof microsoftTeams$getMruTabInstances,
     shareDeepLink: typeof microsoftTeams$shareDeepLink,
-    navigateToTab: typeof microsoftTeams$navigateToTab
+    navigateToTab: typeof microsoftTeams$navigateToTab,
+
+    TeamType: typeof microsoftTeams$TeamType,
+
+    settings: typeof npm$namespace$microsoftTeams$settings,
+    authentication: typeof npm$namespace$microsoftTeams$authentication
   };
   declare interface microsoftTeams$TabInformation {
     teamTabs: microsoftTeams$TabInstance[];
@@ -34,31 +39,13 @@ declare module "microsoftteams" {
     websiteUrl?: string;
   }
 
-  declare class microsoftTeams$TeamType {
-    constructor(...args: empty): mixed;
-    static +Standard: Class<microsoftTeams$TeamType__Standard> &
-      microsoftTeams$TeamType__Standard &
-      0; // 0
-    static +Edu: Class<microsoftTeams$TeamType__Edu> &
-      microsoftTeams$TeamType__Edu &
-      1; // 1
-    static +Class: Class<microsoftTeams$TeamType__Class> &
-      microsoftTeams$TeamType__Class &
-      2; // 2
-    static +Plc: Class<microsoftTeams$TeamType__Plc> &
-      microsoftTeams$TeamType__Plc &
-      3; // 3
-    static +Staff: Class<microsoftTeams$TeamType__Staff> &
-      microsoftTeams$TeamType__Staff &
-      4; // 4
-  }
-
-  declare class microsoftTeams$TeamType__Standard
-    mixins microsoftTeams$TeamType {}
-  declare class microsoftTeams$TeamType__Edu mixins microsoftTeams$TeamType {}
-  declare class microsoftTeams$TeamType__Class mixins microsoftTeams$TeamType {}
-  declare class microsoftTeams$TeamType__Plc mixins microsoftTeams$TeamType {}
-  declare class microsoftTeams$TeamType__Staff mixins microsoftTeams$TeamType {}
+  declare var microsoftTeams$TeamType: {|
+    +Standard: 0, // 0
+    +Edu: 1, // 1
+    +Class: 2, // 2
+    +Plc: 3, // 3
+    +Staff: 4 // 4
+  |};
 
   declare interface microsoftTeams$TabInstanceParameters {
     /**
@@ -151,12 +138,12 @@ declare module "microsoftteams" {
     tabInstance: microsoftTeams$TabInstance
   ): void;
 
-  declare var npm$namespace$settings: {
-    setValidityState: typeof settings$setValidityState,
-    getSettings: typeof settings$getSettings,
-    setSettings: typeof settings$setSettings,
-    registerOnSaveHandler: typeof settings$registerOnSaveHandler,
-    registerOnRemoveHandler: typeof settings$registerOnRemoveHandler
+  declare var npm$namespace$microsoftTeams$settings: {
+    setValidityState: typeof microsoftTeams$settings$setValidityState,
+    getSettings: typeof microsoftTeams$settings$getSettings,
+    setSettings: typeof microsoftTeams$settings$setSettings,
+    registerOnSaveHandler: typeof microsoftTeams$settings$registerOnSaveHandler,
+    registerOnRemoveHandler: typeof microsoftTeams$settings$registerOnRemoveHandler
   };
 
   /**
@@ -164,13 +151,15 @@ declare module "microsoftteams" {
    * The initial value is false, so the user cannot save the settings until this is called with true.
    * @param validityState Indicates whether the save or remove button is enabled for the user.
    */
-  declare function settings$setValidityState(validityState: boolean): void;
+  declare function microsoftTeams$settings$setValidityState(
+    validityState: boolean
+  ): void;
 
   /**
    * Gets the settings for the current instance.
    * @param callback The callback to invoke when the {@link Settings} object is retrieved.
    */
-  declare function settings$getSettings(
+  declare function microsoftTeams$settings$getSettings(
     callback: (settings: settings$Settings) => void
   ): void;
 
@@ -179,7 +168,9 @@ declare module "microsoftteams" {
    * This is an asynchronous operation; calls to getSettings are not guaranteed to reflect the changed state.
    * @param settings The desired settings for this instance.
    */
-  declare function settings$setSettings(settings: settings$Settings): void;
+  declare function microsoftTeams$settings$setSettings(
+    settings: settings$Settings
+  ): void;
 
   /**
    * Registers a handler for when the user attempts to save the settings. This handler should be used
@@ -188,7 +179,7 @@ declare module "microsoftteams" {
    * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
    * @param handler The handler to invoke when the user selects the save button.
    */
-  declare function settings$registerOnSaveHandler(
+  declare function microsoftTeams$settings$registerOnSaveHandler(
     handler: (evt: settings$SaveEvent) => void
   ): void;
 
@@ -199,11 +190,11 @@ declare module "microsoftteams" {
    * Only one handler may be registered at a time. Subsequent registrations will override the first.
    * @param handler The handler to invoke when the user selects the remove button.
    */
-  declare function settings$registerOnRemoveHandler(
+  declare function microsoftTeams$settings$registerOnRemoveHandler(
     handler: (evt: settings$RemoveEvent) => void
   ): void;
 
-  declare interface settings$Settings {
+  declare interface microsoftTeams$settings$Settings {
     /**
      * A suggested display name for the new content.
      * In the settings for an existing instance being updated, this call has no effect.
@@ -231,45 +222,45 @@ declare module "microsoftteams" {
     entityId: string;
   }
 
-  declare interface settings$SaveEvent {
+  declare interface microsoftTeams$settings$SaveEvent {
     /**
      * Indicates that the underlying resource has been created and the settings can be saved.
      */
-    authentication$notifySuccess(): void;
+    notifySuccess(): void;
 
     /**
      * Indicates that creation of the underlying resource failed and that the settings cannot be saved.
      * @param reason Specifies a reason for the failure. If provided, this string is displayed to the user; otherwise a generic error is displayed.
      */
-    authentication$notifyFailure(reason?: string): void;
+    notifyFailure(reason?: string): void;
   }
 
-  declare interface settings$RemoveEvent {
+  declare interface microsoftTeams$settings$RemoveEvent {
     /**
      * Indicates that the underlying resource has been removed and the content can be removed.
      */
-    authentication$notifySuccess(): void;
+    notifySuccess(): void;
 
     /**
      * Indicates that removal of the underlying resource failed and that the content cannot be removed.
      * @param reason Specifies a reason for the failure. If provided, this string is displayed to the user; otherwise a generic error is displayed.
      */
-    authentication$notifyFailure(reason?: string): void;
+    notifyFailure(reason?: string): void;
   }
 
-  declare var npm$namespace$authentication: {
-    authenticate: typeof authentication$authenticate,
-    getAuthToken: typeof authentication$getAuthToken,
-    getUser: typeof authentication$getUser,
-    notifySuccess: typeof authentication$notifySuccess,
-    notifyFailure: typeof authentication$notifyFailure
+  declare var npm$namespace$microsoftTeams$authentication: {
+    authenticate: typeof microsoftTeams$authentication$authenticate,
+    getAuthToken: typeof microsoftTeams$authentication$getAuthToken,
+    getUser: typeof microsoftTeams$authentication$getUser,
+    notifySuccess: typeof microsoftTeams$authentication$notifySuccess,
+    notifyFailure: typeof microsoftTeams$authentication$notifyFailure
   };
 
   /**
    * Initiates an authentication request, which opens a new window with the specified settings.
    * @param authenticateParameters A set of values that configure the authentication pop-up.
    */
-  declare function authentication$authenticate(
+  declare function microsoftTeams$authentication$authenticate(
     authenticateParameters: authentication$AuthenticateParameters
   ): void;
 
@@ -278,14 +269,14 @@ declare module "microsoftteams" {
    * if it is not expired. Otherwise a request is sent to Azure AD to obtain a new token.
    * @param authTokenRequest A set of values that configure the token request.
    */
-  declare function authentication$getAuthToken(
+  declare function microsoftTeams$authentication$getAuthToken(
     authTokenRequest: authentication$AuthTokenRequest
   ): void;
 
   /**
    * Requests the decoded Azure AD user identity on behalf of the app.
    */
-  declare function authentication$getUser(
+  declare function microsoftTeams$authentication$getUser(
     userRequest: authentication$UserRequest
   ): void;
 
@@ -295,7 +286,9 @@ declare module "microsoftteams" {
    * This call causes the authentication window to be closed.
    * @param result Specifies a result for the authentication. If specified, the frame that initiated the authentication pop-up receives this value in its callback.
    */
-  declare function authentication$notifySuccess(result?: string): void;
+  declare function microsoftTeams$authentication$notifySuccess(
+    result?: string
+  ): void;
 
   /**
    * Notifies the frame that initiated this authentication request that the request failed.
@@ -303,9 +296,11 @@ declare module "microsoftteams" {
    * This call causes the authentication window to be closed.
    * @param reason Specifies a reason for the authentication failure. If specified, the frame that initiated the authentication pop-up receives this value in its callback.
    */
-  declare function authentication$notifyFailure(reason?: string): void;
+  declare function microsoftTeams$authentication$notifyFailure(
+    reason?: string
+  ): void;
 
-  declare interface authentication$AuthenticateParameters {
+  declare interface microsoftTeams$authentication$AuthenticateParameters {
     /**
      * The URL for the authentication pop-up.
      */
@@ -332,7 +327,7 @@ declare module "microsoftteams" {
     failureCallback?: (reason?: string) => void;
   }
 
-  declare interface authentication$AuthTokenRequest {
+  declare interface microsoftTeams$authentication$AuthTokenRequest {
     /**
      * An array of resource URIs identifying the target resources for which the token should be requested.
      */
@@ -349,7 +344,7 @@ declare module "microsoftteams" {
     failureCallback?: (reason: string) => void;
   }
 
-  declare interface authentication$UserRequest {
+  declare interface microsoftTeams$authentication$UserRequest {
     /**
      * A function that is called if the token request succeeds, with the resulting token.
      */
@@ -361,7 +356,7 @@ declare module "microsoftteams" {
     failureCallback?: (reason: string) => void;
   }
 
-  declare interface authentication$UserProfile {
+  declare interface microsoftTeams$authentication$UserProfile {
     /**
      * The intended recipient of the token. The application that receives the token must verify that the audience
      * value is correct and reject any tokens intended for a different audience.
