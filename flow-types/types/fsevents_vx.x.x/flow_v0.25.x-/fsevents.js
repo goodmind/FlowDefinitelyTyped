@@ -1,13 +1,15 @@
 declare module "fsevents" {
   import type { EventEmitter } from "events";
 
-  declare module.exports: typeof fsevents;
+  declare export default typeof fsevents;
 
-  declare function fsevents(path: string): fsevents$fsevents$Watcher;
+  declare function fsevents(path: string): fsevents$Watcher;
 
   declare var npm$namespace$fsevents: {
     getInfo: typeof fsevents$getInfo,
-    Constants: typeof fsevents$Constants
+    Constants: typeof fsevents$Constants,
+
+    FSEvents: typeof fsevents$FSEvents
   };
   declare function fsevents$getInfo(
     path: string,
@@ -116,7 +118,7 @@ declare module "fsevents" {
 
   declare type fsevents$EventInfo = {
     id: number
-  } & fsevents$BaseEventInfo<fsevents$EventType>;
+  } & BaseEventInfo<fsevents$EventType>;
 
   declare type fsevents$BaseEventType =
     | "created"
