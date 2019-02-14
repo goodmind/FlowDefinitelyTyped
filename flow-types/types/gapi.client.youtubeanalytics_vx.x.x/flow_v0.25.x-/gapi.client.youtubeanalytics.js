@@ -1,32 +1,36 @@
 declare module "gapi.client.youtubeanalytics" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    groupItems: typeof client$groupItems,
-    groups: typeof client$groups,
-    reports: typeof client$reports
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    groupItems: typeof gapi$client$groupItems,
+    groups: typeof gapi$client$groups,
+    reports: typeof gapi$client$reports
   };
 
   /**
    * Load YouTube Analytics API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtubeanalytics",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtubeanalytics",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$groupItems: youtubeanalytics$youtubeanalytics$GroupItemsResource;
+  declare var gapi$client$groupItems: youtubeanalytics$GroupItemsResource;
 
-  declare var client$groups: youtubeanalytics$youtubeanalytics$GroupsResource;
+  declare var gapi$client$groups: youtubeanalytics$GroupsResource;
 
-  declare var client$reports: youtubeanalytics$youtubeanalytics$ReportsResource;
+  declare var gapi$client$reports: youtubeanalytics$ReportsResource;
 
-  declare interface youtubeanalytics$Group {
+  declare interface gapi$client$youtubeanalytics$Group {
     contentDetails?: {
       itemCount?: string,
       itemType?: string
@@ -40,7 +44,7 @@ declare module "gapi.client.youtubeanalytics" {
     };
   }
 
-  declare interface youtubeanalytics$GroupItem {
+  declare interface gapi$client$youtubeanalytics$GroupItem {
     etag?: string;
     groupId?: string;
     id?: string;
@@ -51,20 +55,20 @@ declare module "gapi.client.youtubeanalytics" {
     };
   }
 
-  declare interface youtubeanalytics$GroupItemListResponse {
+  declare interface gapi$client$youtubeanalytics$GroupItemListResponse {
     etag?: string;
-    items?: youtubeanalytics$GroupItem[];
+    items?: gapi$client$youtubeanalytics$GroupItem[];
     kind?: string;
   }
 
-  declare interface youtubeanalytics$GroupListResponse {
+  declare interface gapi$client$youtubeanalytics$GroupListResponse {
     etag?: string;
-    items?: youtubeanalytics$Group[];
+    items?: gapi$client$youtubeanalytics$Group[];
     kind?: string;
     nextPageToken?: string;
   }
 
-  declare interface youtubeanalytics$ResultTable {
+  declare interface gapi$client$youtubeanalytics$ResultTable {
     /**
      * This value specifies information about the data returned in the rows fields. Each item in the columnHeaders list identifies a field returned in the
      * rows value, which contains a list of comma-delimited data. The columnHeaders list will begin with the dimensions specified in the API request, which
@@ -103,7 +107,7 @@ declare module "gapi.client.youtubeanalytics" {
     rows?: any[][];
   }
 
-  declare interface youtubeanalytics$GroupItemsResource {
+  declare interface gapi$client$youtubeanalytics$GroupItemsResource {
     /**
      * Removes an item from a group.
      */
@@ -209,7 +213,7 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$GroupItem>;
+    }): Request<gapi$client$youtubeanalytics$GroupItem>;
 
     /**
      * Returns a collection of group items that match the API request parameters.
@@ -265,10 +269,10 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$GroupItemListResponse>;
+    }): Request<gapi$client$youtubeanalytics$GroupItemListResponse>;
   }
 
-  declare interface youtubeanalytics$GroupsResource {
+  declare interface gapi$client$youtubeanalytics$GroupsResource {
     /**
      * Deletes a group.
      */
@@ -374,7 +378,7 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$Group>;
+    }): Request<gapi$client$youtubeanalytics$Group>;
 
     /**
      * Returns a collection of groups that match the API request parameters. For example, you can retrieve all groups that the authenticated user owns, or you
@@ -443,7 +447,7 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$GroupListResponse>;
+    }): Request<gapi$client$youtubeanalytics$GroupListResponse>;
 
     /**
      * Modifies a group. For example, you could change a group's title.
@@ -494,10 +498,10 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$Group>;
+    }): Request<gapi$client$youtubeanalytics$Group>;
   }
 
-  declare interface youtubeanalytics$ReportsResource {
+  declare interface gapi$client$youtubeanalytics$ReportsResource {
     /**
      * Retrieve your YouTube Analytics reports.
      */
@@ -602,6 +606,6 @@ declare module "gapi.client.youtubeanalytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<youtubeanalytics$ResultTable>;
+    }): Request<gapi$client$youtubeanalytics$ResultTable>;
   }
 }
