@@ -1,31 +1,40 @@
 declare module "gapi.client.drive" {
-  declare var npm$namespace$client: {
-    load: typeof client$load
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+
+    drive: typeof npm$namespace$gapi$client$drive
   };
 
   /**
    * Load Drive API v3
    */
-  declare function client$load(name: "drive", version: "v3"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "drive",
+    version: "v3"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "drive",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var npm$namespace$drive: {
-    about: typeof drive$about,
-    changes: typeof drive$changes,
-    channels: typeof drive$channels,
-    comments: typeof drive$comments,
-    files: typeof drive$files,
-    permissions: typeof drive$permissions,
-    replies: typeof drive$replies,
-    revisions: typeof drive$revisions,
-    teamdrives: typeof drive$teamdrives
+  declare var npm$namespace$gapi$client$drive: {
+    about: typeof gapi$client$drive$about,
+    changes: typeof gapi$client$drive$changes,
+    channels: typeof gapi$client$drive$channels,
+    comments: typeof gapi$client$drive$comments,
+    files: typeof gapi$client$drive$files,
+    permissions: typeof gapi$client$drive$permissions,
+    replies: typeof gapi$client$drive$replies,
+    revisions: typeof gapi$client$drive$revisions,
+    teamdrives: typeof gapi$client$drive$teamdrives
   };
-  declare interface drive$About {
+  declare interface gapi$client$drive$About {
     /**
      * Whether the user has installed the requesting app.
      */
@@ -117,7 +126,7 @@ declare module "gapi.client.drive" {
     user?: drive$User;
   }
 
-  declare interface drive$Change {
+  declare interface gapi$client$drive$Change {
     /**
      * The updated state of the file. Present if the type is file and the file has not been removed from this list of changes.
      */
@@ -160,11 +169,11 @@ declare module "gapi.client.drive" {
     type?: string;
   }
 
-  declare interface drive$ChangeList {
+  declare interface gapi$client$drive$ChangeList {
     /**
      * The list of changes. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    changes?: drive$Change[];
+    changes?: gapi$client$drive$Change[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#changeList".
@@ -183,7 +192,7 @@ declare module "gapi.client.drive" {
     nextPageToken?: string;
   }
 
-  declare interface drive$Channel {
+  declare interface gapi$client$drive$Channel {
     /**
      * The address where notifications are delivered for this channel.
      */
@@ -235,7 +244,7 @@ declare module "gapi.client.drive" {
     type?: string;
   }
 
-  declare interface drive$Comment {
+  declare interface gapi$client$drive$Comment {
     /**
      * A region of the document represented as a JSON string. See anchor documentation for details on how to define and interpret anchor properties.
      */
@@ -308,11 +317,11 @@ declare module "gapi.client.drive" {
     resolved?: boolean;
   }
 
-  declare interface drive$CommentList {
+  declare interface gapi$client$drive$CommentList {
     /**
      * The list of comments. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    comments?: drive$Comment[];
+    comments?: gapi$client$drive$Comment[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#commentList".
@@ -326,7 +335,7 @@ declare module "gapi.client.drive" {
     nextPageToken?: string;
   }
 
-  declare interface drive$File {
+  declare interface gapi$client$drive$File {
     /**
      * A collection of arbitrary key-value pairs which are private to the requesting app.
      * Entries with null values are cleared in update and copy requests.
@@ -849,11 +858,11 @@ declare module "gapi.client.drive" {
     writersCanShare?: boolean;
   }
 
-  declare interface drive$FileList {
+  declare interface gapi$client$drive$FileList {
     /**
      * The list of files. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    files?: drive$File[];
+    files?: gapi$client$drive$File[];
 
     /**
      * Whether the search process was incomplete. If true, then some search results may be missing, since all documents were not searched. This may occur when
@@ -874,7 +883,7 @@ declare module "gapi.client.drive" {
     nextPageToken?: string;
   }
 
-  declare interface drive$GeneratedIds {
+  declare interface gapi$client$drive$GeneratedIds {
     /**
      * The IDs generated for the requesting user in the specified space.
      */
@@ -891,7 +900,7 @@ declare module "gapi.client.drive" {
     space?: string;
   }
 
-  declare interface drive$Permission {
+  declare interface gapi$client$drive$Permission {
     /**
      * Whether the permission allows the file to be discovered through search. This is only applicable for permissions of type domain or anyone.
      */
@@ -992,7 +1001,7 @@ declare module "gapi.client.drive" {
     type?: string;
   }
 
-  declare interface drive$PermissionList {
+  declare interface gapi$client$drive$PermissionList {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#permissionList".
      */
@@ -1007,10 +1016,10 @@ declare module "gapi.client.drive" {
     /**
      * The list of permissions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    permissions?: drive$Permission[];
+    permissions?: gapi$client$drive$Permission[];
   }
 
-  declare interface drive$Reply {
+  declare interface gapi$client$drive$Reply {
     /**
      * The action the reply performed to the parent comment. Valid values are:
      * - resolve
@@ -1060,7 +1069,7 @@ declare module "gapi.client.drive" {
     modifiedTime?: string;
   }
 
-  declare interface drive$ReplyList {
+  declare interface gapi$client$drive$ReplyList {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#replyList".
      */
@@ -1075,10 +1084,10 @@ declare module "gapi.client.drive" {
     /**
      * The list of replies. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    replies?: drive$Reply[];
+    replies?: gapi$client$drive$Reply[];
   }
 
-  declare interface drive$Revision {
+  declare interface gapi$client$drive$Revision {
     /**
      * The ID of the revision.
      */
@@ -1142,7 +1151,7 @@ declare module "gapi.client.drive" {
     size?: string;
   }
 
-  declare interface drive$RevisionList {
+  declare interface gapi$client$drive$RevisionList {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#revisionList".
      */
@@ -1157,10 +1166,10 @@ declare module "gapi.client.drive" {
     /**
      * The list of revisions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    revisions?: drive$Revision[];
+    revisions?: gapi$client$drive$Revision[];
   }
 
-  declare interface drive$StartPageToken {
+  declare interface gapi$client$drive$StartPageToken {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#startPageToken".
      */
@@ -1172,7 +1181,7 @@ declare module "gapi.client.drive" {
     startPageToken?: string;
   }
 
-  declare interface drive$TeamDrive {
+  declare interface gapi$client$drive$TeamDrive {
     /**
      * An image file and cropping parameters from which a background image for this Team Drive is set. This is a write only field; it can only be set on
      * drive.teamdrives.update requests that don't set themeId. When specified, all fields of the backgroundImageFile must be set.
@@ -1318,7 +1327,7 @@ declare module "gapi.client.drive" {
     themeId?: string;
   }
 
-  declare interface drive$TeamDriveList {
+  declare interface gapi$client$drive$TeamDriveList {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "drive#teamDriveList".
      */
@@ -1333,10 +1342,10 @@ declare module "gapi.client.drive" {
     /**
      * The list of Team Drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.
      */
-    teamDrives?: drive$TeamDrive[];
+    teamDrives?: gapi$client$drive$TeamDrive[];
   }
 
-  declare interface drive$User {
+  declare interface gapi$client$drive$User {
     /**
      * A plain text displayable name for this user.
      */
@@ -1368,7 +1377,7 @@ declare module "gapi.client.drive" {
     photoLink?: string;
   }
 
-  declare interface drive$AboutResource {
+  declare interface gapi$client$drive$AboutResource {
     /**
      * Gets information about the user, the user's Drive, and system capabilities.
      */
@@ -1408,10 +1417,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$About>;
+    }): Request<gapi$client$drive$About>;
   }
 
-  declare interface drive$ChangesResource {
+  declare interface gapi$client$drive$ChangesResource {
     /**
      * Gets the starting pageToken for listing future changes.
      */
@@ -1461,7 +1470,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$StartPageToken>;
+    }): Request<gapi$client$drive$StartPageToken>;
 
     /**
      * Lists the changes for a user or Team Drive.
@@ -1551,7 +1560,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$ChangeList>;
+    }): Request<gapi$client$drive$ChangeList>;
 
     /**
      * Subscribes to changes for a user.
@@ -1641,10 +1650,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Channel>;
+    }): Request<gapi$client$drive$Channel>;
   }
 
-  declare interface drive$ChannelsResource {
+  declare interface gapi$client$drive$ChannelsResource {
     /**
      * Stop watching resources through this channel
      */
@@ -1687,7 +1696,7 @@ declare module "gapi.client.drive" {
     }): Request<void>;
   }
 
-  declare interface drive$CommentsResource {
+  declare interface gapi$client$drive$CommentsResource {
     /**
      * Creates a new comment on a file.
      */
@@ -1732,7 +1741,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Comment>;
+    }): Request<gapi$client$drive$Comment>;
 
     /**
      * Deletes a comment.
@@ -1839,7 +1848,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Comment>;
+    }): Request<gapi$client$drive$Comment>;
 
     /**
      * Lists a file's comments.
@@ -1905,7 +1914,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$CommentList>;
+    }): Request<gapi$client$drive$CommentList>;
 
     /**
      * Updates a comment with patch semantics.
@@ -1956,10 +1965,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Comment>;
+    }): Request<gapi$client$drive$Comment>;
   }
 
-  declare interface drive$FilesResource {
+  declare interface gapi$client$drive$FilesResource {
     /**
      * Creates a copy of a file and applies any requested updates with patch semantics.
      */
@@ -2025,7 +2034,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$File>;
+    }): Request<gapi$client$drive$File>;
 
     /**
      * Creates a new file.
@@ -2097,7 +2106,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$File>;
+    }): Request<gapi$client$drive$File>;
 
     /**
      * Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a Team Drive the user must be an organizer on the
@@ -2292,7 +2301,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$GeneratedIds>;
+    }): Request<gapi$client$drive$GeneratedIds>;
 
     /**
      * Gets a file's metadata or content by ID.
@@ -2348,7 +2357,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$File>;
+    }): Request<gapi$client$drive$File>;
 
     /**
      * Lists or searches files.
@@ -2444,7 +2453,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$FileList>;
+    }): Request<gapi$client$drive$FileList>;
 
     /**
      * Updates a file's metadata and/or content with patch semantics.
@@ -2520,7 +2529,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$File>;
+    }): Request<gapi$client$drive$File>;
 
     /**
      * Subscribes to changes to a file
@@ -2576,10 +2585,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Channel>;
+    }): Request<gapi$client$drive$Channel>;
   }
 
-  declare interface drive$PermissionsResource {
+  declare interface gapi$client$drive$PermissionsResource {
     /**
      * Creates a permission for a file or Team Drive.
      */
@@ -2652,7 +2661,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Permission>;
+    }): Request<gapi$client$drive$Permission>;
 
     /**
      * Deletes a permission.
@@ -2776,7 +2785,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Permission>;
+    }): Request<gapi$client$drive$Permission>;
 
     /**
      * Lists a file's or Team Drive's permissions.
@@ -2844,7 +2853,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$PermissionList>;
+    }): Request<gapi$client$drive$PermissionList>;
 
     /**
      * Updates a permission with patch semantics.
@@ -2917,10 +2926,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Permission>;
+    }): Request<gapi$client$drive$Permission>;
   }
 
-  declare interface drive$RepliesResource {
+  declare interface gapi$client$drive$RepliesResource {
     /**
      * Creates a new reply to a comment.
      */
@@ -2970,7 +2979,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Reply>;
+    }): Request<gapi$client$drive$Reply>;
 
     /**
      * Deletes a reply.
@@ -3087,7 +3096,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Reply>;
+    }): Request<gapi$client$drive$Reply>;
 
     /**
      * Lists a comment's replies.
@@ -3153,7 +3162,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$ReplyList>;
+    }): Request<gapi$client$drive$ReplyList>;
 
     /**
      * Updates a reply with patch semantics.
@@ -3209,10 +3218,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Reply>;
+    }): Request<gapi$client$drive$Reply>;
   }
 
-  declare interface drive$RevisionsResource {
+  declare interface gapi$client$drive$RevisionsResource {
     /**
      * Permanently deletes a revision. This method is only applicable to files with binary content in Drive.
      */
@@ -3318,7 +3327,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Revision>;
+    }): Request<gapi$client$drive$Revision>;
 
     /**
      * Lists a file's revisions.
@@ -3374,7 +3383,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$RevisionList>;
+    }): Request<gapi$client$drive$RevisionList>;
 
     /**
      * Updates a revision with patch semantics.
@@ -3425,10 +3434,10 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$Revision>;
+    }): Request<gapi$client$drive$Revision>;
   }
 
-  declare interface drive$TeamdrivesResource {
+  declare interface gapi$client$drive$TeamdrivesResource {
     /**
      * Creates a new Team Drive.
      */
@@ -3475,7 +3484,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$TeamDrive>;
+    }): Request<gapi$client$drive$TeamDrive>;
 
     /**
      * Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain any untrashed items.
@@ -3573,7 +3582,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$TeamDrive>;
+    }): Request<gapi$client$drive$TeamDrive>;
 
     /**
      * Lists the user's Team Drives.
@@ -3635,7 +3644,7 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$TeamDriveList>;
+    }): Request<gapi$client$drive$TeamDriveList>;
 
     /**
      * Updates a Team Drive's metadata
@@ -3681,24 +3690,24 @@ declare module "gapi.client.drive" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<drive$TeamDrive>;
+    }): Request<gapi$client$drive$TeamDrive>;
   }
 
-  declare var drive$about: drive$AboutResource;
+  declare var gapi$client$drive$about: gapi$client$drive$AboutResource;
 
-  declare var drive$changes: drive$ChangesResource;
+  declare var gapi$client$drive$changes: gapi$client$drive$ChangesResource;
 
-  declare var drive$channels: drive$ChannelsResource;
+  declare var gapi$client$drive$channels: gapi$client$drive$ChannelsResource;
 
-  declare var drive$comments: drive$CommentsResource;
+  declare var gapi$client$drive$comments: gapi$client$drive$CommentsResource;
 
-  declare var drive$files: drive$FilesResource;
+  declare var gapi$client$drive$files: gapi$client$drive$FilesResource;
 
-  declare var drive$permissions: drive$PermissionsResource;
+  declare var gapi$client$drive$permissions: gapi$client$drive$PermissionsResource;
 
-  declare var drive$replies: drive$RepliesResource;
+  declare var gapi$client$drive$replies: gapi$client$drive$RepliesResource;
 
-  declare var drive$revisions: drive$RevisionsResource;
+  declare var gapi$client$drive$revisions: gapi$client$drive$RevisionsResource;
 
-  declare var drive$teamdrives: drive$TeamdrivesResource;
+  declare var gapi$client$drive$teamdrives: gapi$client$drive$TeamdrivesResource;
 }
