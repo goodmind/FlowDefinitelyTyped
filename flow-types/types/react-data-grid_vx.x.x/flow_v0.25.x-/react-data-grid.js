@@ -1,155 +1,7 @@
-declare module "global" {
-  declare interface Window {
-    ReactDataGridPlugins: {
-      Editors: typeof Editors,
-      Filters: typeof Filters,
-      Formatters: typeof Formatters,
-      AdazzleReactDataGridPlugins$Toolbar: typeof Toolbar,
-      Menu: typeof Menu,
-      Data: typeof Data,
-      DraggableHeader: typeof DraggableHeader
-    };
-  }
-}
-declare module "react-data-grid-addons" {
-  declare export {
-    Editors,
-    Filters,
-    Formatters,
-    AdazzleReactDataGridPlugins$Toolbar,
-    Menu,
-    Data,
-    DraggableHeader
-  };
-}
-declare module "react-data-grid" {
-  declare module.exports: typeof AdazzleReactDataGrid$ReactDataGrid;
-}
-
-declare var npm$namespace$Menu: {
-  connect: typeof Menu$connect,
-  ContextMenuLayer: typeof Menu$ContextMenuLayer,
-  monitor: typeof Menu$monitor
+declare var npm$namespace$AdazzleReactDataGrid: {
+  ReactDataGrid: typeof AdazzleReactDataGrid$ReactDataGrid,
+  ReactDataGrid: typeof npm$namespace$AdazzleReactDataGrid$ReactDataGrid
 };
-declare export class Menu$ContextMenu mixins React.Component<any> {}
-
-declare export class Menu$MenuHeader mixins React.Component<any> {}
-
-declare export class Menu$MenuItem mixins React.Component<any> {}
-
-declare export class Menu$SubMenu mixins React.Component<any> {}
-
-declare export var Menu$monitor: {
-  getItem(): any,
-  getPosition(): any,
-  hideMenu(): void
-};
-
-declare export function Menu$connect(Menu: any): any;
-
-declare export function Menu$ContextMenuLayer(
-  identifier: any,
-  configure?: (props: any) => any
-): (Component: any) => any;
-
-declare var npm$namespace$Data: {
-  Selectors: typeof Data$Selectors
-};
-declare export var Data$Selectors: {
-  getRows: (state: { [key: string]: any }) => { [key: string]: any }[],
-  getSelectedRowsByKey: (state: { [key: string]: any }) => {
-    [key: string]: any
-  }[]
-};
-declare export class DraggableHeader$DraggableContainer
-  mixins React.Component<any> {}
-declare export class Formatters$ImageFormatter mixins React.Component<any> {}
-
-declare export class Formatters$DropDownFormatter mixins React.Component<any> {}
-declare export class Filters$NumericFilter mixins React.Component<any> {}
-
-declare export class Filters$AutoCompleteFilter mixins React.Component<any> {}
-
-declare export class Filters$MultiSelectFilter mixins React.Component<any> {}
-
-declare export class Filters$SingleSelectFilter mixins React.Component<any> {}
-declare export class Editors$AutoComplete
-  mixins React.Component<AdazzleReactDataGridPlugins$AutoCompleteEditorProps> {}
-
-declare export class Editors$AutoCompleteTokensEditor
-  mixins React.Component<AdazzleReactDataGridPlugins$AutoCompleteTokensEditorProps> {}
-
-declare export class Editors$DropDownEditor
-  mixins React.Component<AdazzleReactDataGridPlugins$DropDownEditorProps> {}
-
-declare export class Editors$SimpleTextEditor mixins React.Component<any> {}
-
-declare export class Editors$CheckboxEditor mixins React.Component<any> {}
-declare interface AdazzleReactDataGridPlugins$AutoCompleteEditorProps {
-  onCommit?: () => void;
-  options?: Array<{
-    id: any,
-    title: string
-  }>;
-  label?: any;
-  value?: any;
-  height?: number;
-  valueParams?: string[];
-  column?: AdazzleReactDataGrid$AdazzleReactDataGrid$ExcelColumn;
-  resultIdentifier?: string;
-  search?: string;
-  onKeyDown?: () => void;
-  onFocus?: () => void;
-  editorDisplayValue?: (
-    column: AdazzleReactDataGrid$AdazzleReactDataGrid$ExcelColumn,
-    value: any
-  ) => string;
-}
-
-declare interface AdazzleReactDataGridPlugins$AutoCompleteTokensEditorProps {
-  options: Array<
-    | string
-    | {
-        id: number,
-        caption: string
-      }
-  >;
-  column?: AdazzleReactDataGrid$AdazzleReactDataGrid$ExcelColumn;
-  value?: any[];
-}
-
-declare interface AdazzleReactDataGridPlugins$DropDownEditorProps {
-  options: Array<
-    | string
-    | {
-        id: string,
-        title: string,
-        value: string,
-        text: string
-      }
-  >;
-}
-
-declare export class AdazzleReactDataGridPlugins$Toolbar
-  mixins React.Component<any> {}
-declare class editors$EditorBase<P = {}, S = {}>
-  mixins React.Component<P & AdazzleReactDataGrid$EditorBaseProps, S> {
-  getStyle(): {
-    width: string
-  };
-  getValue(): any;
-  getInputNode(): Element | null | Text;
-  inheritContainerStyles(): boolean;
-}
-/**
- * A react component that renders a row of the grid
- */
-declare export class ReactDataGrid$Row mixins React.Component<any> {}
-
-/**
- * A react coponent that renders a cell of the grid
- */
-declare export class ReactDataGrid$Cell mixins React.Component<any> {}
 declare interface AdazzleReactDataGrid$ExcelColumn {
   editable: boolean;
   name: any;
@@ -232,27 +84,27 @@ declare interface AdazzleReactDataGrid$GridProps<T> {
    * A toolbar to display above the grid.
    * Consider using the toolbar included in "react-data-grid/addons".
    */
-  toolbar?: React.ReactElement<any>;
+  toolbar?: React$ReactElement<any>;
 
   /**
    * A context menu to disiplay when the user right-clicks a cell.
    * Consider using "react-contextmenu", included in "react-data-grid/addons".
    */
-  contextMenu?: React.ReactElement<any>;
+  contextMenu?: React$ReactElement<any>;
 
   /**
    * A react component to customize how rows are rendered.
    * If you want to define your own, consider extending ReactDataGrid.Row.
    */
   rowRenderer?:
-    | React.ReactElement<any>
-    | React.ComponentClass<any>
-    | React.StatelessComponent<any>;
+    | React$ReactElement<any>
+    | React$ComponentClass<any>
+    | React$StatelessComponent<any>;
 
   /**
    * A component to display when there are no rows to render.
    */
-  emptyRowsView?: React.ComponentClass<any> | React.StatelessComponent<any>;
+  emptyRowsView?: React$ComponentClass<any> | React$StatelessComponent<any>;
 
   /**
    * The minimum width of the entire grid in pixels.
@@ -422,13 +274,13 @@ declare interface AdazzleReactDataGrid$GridProps<T> {
    * A custom formatter for the select all checkbox cell
    * @default react-data-grid/src/formatters/SelectAll.js
    */
-  selectAllRenderer?: React.ComponentClass<any> | React.StatelessComponent<any>;
+  selectAllRenderer?: React$ComponentClass<any> | React$StatelessComponent<any>;
 
   /**
    * A custom formatter for select row column
    * @default AdazzleReactDataGridPlugins.Editors.CheckboxEditor
    */
-  rowActionsCell?: React.ComponentClass<any> | React.StatelessComponent<any>;
+  rowActionsCell?: React$ComponentClass<any> | React$StatelessComponent<any>;
 
   /**
    * An event function called when a row is clicked.
@@ -526,34 +378,34 @@ declare interface AdazzleReactDataGrid$Column<T> {
    * A custom formatter for this column's filter.
    */
   filterRenderer?:
-    | React.ReactElement<any>
-    | React.ComponentClass<any>
-    | React.StatelessComponent<any>;
+    | React$ReactElement<any>
+    | React$ComponentClass<any>
+    | React$StatelessComponent<any>;
 
   /**
    * The editor for this column. Several editors are available in "react-data-grid/addons".
    * @default A simple text editor
    */
   editor?:
-    | React.ReactElement<AdazzleReactDataGrid$EditorBaseProps>
-    | React.ComponentClass<AdazzleReactDataGrid$EditorBaseProps>
-    | React.StatelessComponent<AdazzleReactDataGrid$EditorBaseProps>;
+    | React$ReactElement<AdazzleReactDataGrid$EditorBaseProps>
+    | React$ComponentClass<AdazzleReactDataGrid$EditorBaseProps>
+    | React$StatelessComponent<AdazzleReactDataGrid$EditorBaseProps>;
 
   /**
    * A custom read-only formatter for this column. An image formatter is available in "react-data-grid/addons".
    */
   formatter?:
-    | React.ReactElement<any>
-    | React.ComponentClass<any>
-    | React.StatelessComponent<any>;
+    | React$ReactElement<any>
+    | React$ComponentClass<any>
+    | React$StatelessComponent<any>;
 
   /**
    * A custom formatter for this column's header.
    */
   headerRenderer?:
-    | React.ReactElement<any>
-    | React.ComponentClass<any>
-    | React.StatelessComponent<any>;
+    | React$ReactElement<any>
+    | React$ComponentClass<any>
+    | React$StatelessComponent<any>;
 
   /**
    * Events to be bound to the cells in this specific column.
@@ -588,7 +440,7 @@ declare interface AdazzleReactDataGrid$ColumnEventCallback {
    * @param args The row and column coordinates of the cell, and the name of the event.
    */
   (
-    ev: React.SyntheticEvent<any>,
+    ev: React$SyntheticEvent<any>,
     args: {
       rowIdx: number,
       idx: number,
@@ -671,7 +523,7 @@ declare interface AdazzleReactDataGrid$DragHandleDoubleClickEvent<T = any> {
   /**
    * The double click event.
    */
-  e: React.SyntheticEvent<any>;
+  e: React$SyntheticEvent<any>;
 }
 
 /**
@@ -776,9 +628,262 @@ declare interface AdazzleReactDataGrid$Filter {
  * http://adazzle.github.io/react-data-grid/
  */
 declare export class AdazzleReactDataGrid$ReactDataGrid<T>
-  mixins React.Component<AdazzleReactDataGrid$GridProps<T>> {
+  mixins React$Component<AdazzleReactDataGrid$GridProps<T>> {
   /**
    * Opens the editor for the cell (idx) in the given row (rowIdx). If the column is not editable then nothing will happen.
    */
   openCellEditor(rowIdx: number, idx: number): void;
+}
+
+declare var npm$namespace$AdazzleReactDataGrid$ReactDataGrid: {
+  Column: typeof AdazzleReactDataGrid$ReactDataGrid$Column,
+  Filter: typeof AdazzleReactDataGrid$ReactDataGrid$Filter,
+  RowUpdateEvent: typeof AdazzleReactDataGrid$ReactDataGrid$RowUpdateEvent,
+  SelectionParams: typeof AdazzleReactDataGrid$ReactDataGrid$SelectionParams,
+  CellDragEvent: typeof AdazzleReactDataGrid$ReactDataGrid$CellDragEvent,
+  DragHandleDoubleClickEvent: typeof AdazzleReactDataGrid$ReactDataGrid$DragHandleDoubleClickEvent,
+  CellCopyPasteEvent: typeof AdazzleReactDataGrid$ReactDataGrid$CellCopyPasteEvent,
+  GridRowsUpdatedEvent: typeof AdazzleReactDataGrid$ReactDataGrid$GridRowsUpdatedEvent,
+  OnRowExpandToggle: typeof AdazzleReactDataGrid$ReactDataGrid$OnRowExpandToggle,
+
+  Row: typeof AdazzleReactDataGrid$ReactDataGrid$Row,
+  Cell: typeof AdazzleReactDataGrid$ReactDataGrid$Cell,
+  editors: typeof npm$namespace$AdazzleReactDataGrid$ReactDataGrid$editors
+};
+declare export var AdazzleReactDataGrid$ReactDataGrid$Column: typeof AdazzleReactDataGrid$Column;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$Filter: typeof AdazzleReactDataGrid$Filter;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$RowUpdateEvent: typeof AdazzleReactDataGrid$RowUpdateEvent;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$SelectionParams: typeof AdazzleReactDataGrid$SelectionParams;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$CellDragEvent: typeof AdazzleReactDataGrid$CellDragEvent;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$DragHandleDoubleClickEvent: typeof AdazzleReactDataGrid$DragHandleDoubleClickEvent;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$CellCopyPasteEvent: typeof AdazzleReactDataGrid$CellCopyPasteEvent;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$GridRowsUpdatedEvent: typeof AdazzleReactDataGrid$GridRowsUpdatedEvent;
+
+declare export var AdazzleReactDataGrid$ReactDataGrid$OnRowExpandToggle: typeof AdazzleReactDataGrid$OnRowExpandToggle;
+
+declare var npm$namespace$AdazzleReactDataGrid$ReactDataGrid$editors: {
+  EditorBase: typeof AdazzleReactDataGrid$ReactDataGrid$editors$EditorBase
+};
+declare class AdazzleReactDataGrid$ReactDataGrid$editors$EditorBase<
+  P = {},
+  S = {}
+> mixins React$Component<P & AdazzleReactDataGrid$EditorBaseProps, S> {
+  getStyle(): {
+    width: string
+  };
+  getValue(): any;
+  getInputNode(): Element | null | Text;
+  inheritContainerStyles(): boolean;
+}
+
+/**
+ * A react component that renders a row of the grid
+ */
+declare export class AdazzleReactDataGrid$ReactDataGrid$Row
+  mixins React$Component<any> {}
+
+/**
+ * A react coponent that renders a cell of the grid
+ */
+declare export class AdazzleReactDataGrid$ReactDataGrid$Cell
+  mixins React$Component<any> {}
+declare var npm$namespace$AdazzleReactDataGridPlugins: {
+  Toolbar: typeof AdazzleReactDataGridPlugins$Toolbar,
+  Editors: typeof npm$namespace$AdazzleReactDataGridPlugins$Editors,
+  Filters: typeof npm$namespace$AdazzleReactDataGridPlugins$Filters,
+  Formatters: typeof npm$namespace$AdazzleReactDataGridPlugins$Formatters,
+  DraggableHeader: typeof npm$namespace$AdazzleReactDataGridPlugins$DraggableHeader,
+  Data: typeof npm$namespace$AdazzleReactDataGridPlugins$Data,
+  Menu: typeof npm$namespace$AdazzleReactDataGridPlugins$Menu
+};
+declare interface AdazzleReactDataGridPlugins$AutoCompleteEditorProps {
+  onCommit?: () => void;
+  options?: Array<{
+    id: any,
+    title: string
+  }>;
+  label?: any;
+  value?: any;
+  height?: number;
+  valueParams?: string[];
+  column?: AdazzleReactDataGrid$ExcelColumn;
+  resultIdentifier?: string;
+  search?: string;
+  onKeyDown?: () => void;
+  onFocus?: () => void;
+  editorDisplayValue?: (
+    column: AdazzleReactDataGrid$ExcelColumn,
+    value: any
+  ) => string;
+}
+
+declare interface AdazzleReactDataGridPlugins$AutoCompleteTokensEditorProps {
+  options: Array<
+    | string
+    | {
+        id: number,
+        caption: string
+      }
+  >;
+  column?: AdazzleReactDataGrid$ExcelColumn;
+  value?: any[];
+}
+
+declare interface AdazzleReactDataGridPlugins$DropDownEditorProps {
+  options: Array<
+    | string
+    | {
+        id: string,
+        title: string,
+        value: string,
+        text: string
+      }
+  >;
+}
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$Editors: {
+  AutoComplete: typeof AdazzleReactDataGridPlugins$Editors$AutoComplete,
+  AutoCompleteTokensEditor: typeof AdazzleReactDataGridPlugins$Editors$AutoCompleteTokensEditor,
+  DropDownEditor: typeof AdazzleReactDataGridPlugins$Editors$DropDownEditor,
+  SimpleTextEditor: typeof AdazzleReactDataGridPlugins$Editors$SimpleTextEditor,
+  CheckboxEditor: typeof AdazzleReactDataGridPlugins$Editors$CheckboxEditor
+};
+declare export class AdazzleReactDataGridPlugins$Editors$AutoComplete
+  mixins React$Component<AdazzleReactDataGridPlugins$AutoCompleteEditorProps> {}
+
+declare export class AdazzleReactDataGridPlugins$Editors$AutoCompleteTokensEditor
+  mixins React$Component<AdazzleReactDataGridPlugins$AutoCompleteTokensEditorProps> {}
+
+declare export class AdazzleReactDataGridPlugins$Editors$DropDownEditor
+  mixins React$Component<AdazzleReactDataGridPlugins$DropDownEditorProps> {}
+
+declare export class AdazzleReactDataGridPlugins$Editors$SimpleTextEditor
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Editors$CheckboxEditor
+  mixins React$Component<any> {}
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$Filters: {
+  NumericFilter: typeof AdazzleReactDataGridPlugins$Filters$NumericFilter,
+  AutoCompleteFilter: typeof AdazzleReactDataGridPlugins$Filters$AutoCompleteFilter,
+  MultiSelectFilter: typeof AdazzleReactDataGridPlugins$Filters$MultiSelectFilter,
+  SingleSelectFilter: typeof AdazzleReactDataGridPlugins$Filters$SingleSelectFilter
+};
+declare export class AdazzleReactDataGridPlugins$Filters$NumericFilter
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Filters$AutoCompleteFilter
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Filters$MultiSelectFilter
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Filters$SingleSelectFilter
+  mixins React$Component<any> {}
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$Formatters: {
+  ImageFormatter: typeof AdazzleReactDataGridPlugins$Formatters$ImageFormatter,
+  DropDownFormatter: typeof AdazzleReactDataGridPlugins$Formatters$DropDownFormatter
+};
+declare export class AdazzleReactDataGridPlugins$Formatters$ImageFormatter
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Formatters$DropDownFormatter
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Toolbar
+  mixins React$Component<any> {}
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$DraggableHeader: {
+  DraggableContainer: typeof AdazzleReactDataGridPlugins$DraggableHeader$DraggableContainer
+};
+declare export class AdazzleReactDataGridPlugins$DraggableHeader$DraggableContainer
+  mixins React$Component<any> {}
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$Data: {
+  Selectors: typeof AdazzleReactDataGridPlugins$Data$Selectors
+};
+declare export var AdazzleReactDataGridPlugins$Data$Selectors: {
+  getRows: (state: { [key: string]: any }) => { [key: string]: any }[],
+  getSelectedRowsByKey: (state: { [key: string]: any }) => {
+    [key: string]: any
+  }[]
+};
+
+declare var npm$namespace$AdazzleReactDataGridPlugins$Menu: {
+  connect: typeof AdazzleReactDataGridPlugins$Menu$connect,
+  ContextMenuLayer: typeof AdazzleReactDataGridPlugins$Menu$ContextMenuLayer,
+  monitor: typeof AdazzleReactDataGridPlugins$Menu$monitor,
+
+  ContextMenu: typeof AdazzleReactDataGridPlugins$Menu$ContextMenu,
+  MenuHeader: typeof AdazzleReactDataGridPlugins$Menu$MenuHeader,
+  MenuItem: typeof AdazzleReactDataGridPlugins$Menu$MenuItem,
+  SubMenu: typeof AdazzleReactDataGridPlugins$Menu$SubMenu
+};
+declare export class AdazzleReactDataGridPlugins$Menu$ContextMenu
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Menu$MenuHeader
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Menu$MenuItem
+  mixins React$Component<any> {}
+
+declare export class AdazzleReactDataGridPlugins$Menu$SubMenu
+  mixins React$Component<any> {}
+
+declare export var AdazzleReactDataGridPlugins$Menu$monitor: {
+  getItem(): any,
+  getPosition(): any,
+  hideMenu(): void
+};
+
+declare export function AdazzleReactDataGridPlugins$Menu$connect(
+  Menu: any
+): any;
+
+declare export function AdazzleReactDataGridPlugins$Menu$ContextMenuLayer(
+  identifier: any,
+  configure?: (props: any) => any
+): (Component: any) => any;
+declare module "react-data-grid" {
+  declare var AdazzleReactDataGrid$ReactDataGrid: typeof AdazzleReactDataGrid$ReactDataGrid;
+  declare export default typeof ReactDataGrid;
+}
+declare module "react-data-grid-addons" {
+  declare var AdazzleReactDataGridPlugins$Editors: typeof AdazzleReactDataGridPlugins$Editors;
+  declare var AdazzleReactDataGridPlugins$Filters: typeof AdazzleReactDataGridPlugins$Filters;
+  declare var AdazzleReactDataGridPlugins$Formatters: typeof AdazzleReactDataGridPlugins$Formatters;
+  declare var AdazzleReactDataGridPlugins$Toolbar: typeof AdazzleReactDataGridPlugins$Toolbar;
+  declare var AdazzleReactDataGridPlugins$Menu: typeof AdazzleReactDataGridPlugins$Menu;
+  declare var AdazzleReactDataGridPlugins$Data: typeof AdazzleReactDataGridPlugins$Data;
+  declare var AdazzleReactDataGridPlugins$DraggableHeader: typeof AdazzleReactDataGridPlugins$DraggableHeader;
+  declare export {
+    Editors,
+    Filters,
+    Formatters,
+    Toolbar,
+    Menu,
+    Data,
+    DraggableHeader
+  };
+
+  declare interface global$Window {
+    ReactDataGridPlugins: {
+      Editors: typeof Editors,
+      Filters: typeof Filters,
+      Formatters: typeof Formatters,
+      Toolbar: typeof Toolbar,
+      Menu: typeof Menu,
+      Data: typeof Data,
+      DraggableHeader: typeof DraggableHeader
+    };
+  }
 }
