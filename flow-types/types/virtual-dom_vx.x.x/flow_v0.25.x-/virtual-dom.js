@@ -100,7 +100,7 @@ declare type VirtualDOM$VTree =
 
 declare interface VirtualDOM$VPatch {
   vNode: VirtualDOM$VNode;
-  VirtualDOM$patch: any;
+  patch: any;
   version: string;
 
   /**
@@ -117,13 +117,13 @@ declare type VirtualDOM$PatchFn<T: Element> = (
 ) => T;
 
 declare interface VirtualDOM$VPatchOptions<T: Element> {
-  VirtualDOM$patch?: VirtualDOM$PatchFn<T>;
+  patch?: VirtualDOM$PatchFn<T>;
 }
 
 declare type VirtualDOM$createProperties = {
   key?: string,
   namespace?: string
-} & VirtualDOM$VProperties;
+} & VProperties;
 
 declare type VirtualDOM$VChild =
   | VirtualDOM$VTree[]
@@ -185,37 +185,37 @@ declare function VirtualDOM$isWidget(vTree: VirtualDOM$VTree): boolean;
 
 declare function VirtualDOM$isThunk(vTree: VirtualDOM$VTree): boolean;
 declare module "virtual-dom/h" {
-  declare module.exports: typeof VirtualDOM$h;
+  declare export default typeof h;
 }
 declare module "virtual-dom/create-element" {
-  declare module.exports: typeof VirtualDOM$create;
+  declare export default typeof create;
 }
 declare module "virtual-dom/diff" {
-  declare module.exports: typeof VirtualDOM$diff;
+  declare export default typeof diff;
 }
 declare module "virtual-dom/patch" {
-  declare module.exports: typeof VirtualDOM$patch;
+  declare export default typeof patch;
 }
 declare module "virtual-dom" {
-  declare module.exports: typeof VirtualDOM;
+  declare export default typeof VirtualDOM;
 }
 declare module "virtual-dom/vnode/vnode" {
   declare var VirtualDOM$VNode: VirtualDOM$VNodeConstructor;
-  declare module.exports: typeof VirtualDOM$VNode;
+  declare export default typeof VNode;
 }
 declare module "virtual-dom/vnode/vtext" {
   declare var VirtualDOM$VText: VirtualDOM$VTextConstructor;
-  declare module.exports: typeof VirtualDOM$VText;
+  declare export default typeof VText;
 }
 declare module "virtual-dom/vnode/is-vnode" {
-  declare module.exports: typeof VirtualDOM$isVNode;
+  declare export default typeof isVNode;
 }
 declare module "virtual-dom/vnode/is-vtext" {
-  declare module.exports: typeof VirtualDOM$isVText;
+  declare export default typeof isVText;
 }
 declare module "virtual-dom/vnode/is-widget" {
-  declare module.exports: typeof VirtualDOM$isWidget;
+  declare export default typeof isWidget;
 }
 declare module "virtual-dom/vnode/is-thunk" {
-  declare module.exports: typeof VirtualDOM$isThunk;
+  declare export default typeof isThunk;
 }
