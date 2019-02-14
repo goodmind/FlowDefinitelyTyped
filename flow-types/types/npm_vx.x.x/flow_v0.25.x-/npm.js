@@ -1,6 +1,6 @@
 declare module "npm" {
-  declare var npm: NPM$NPM$Static;
-  declare module.exports: typeof npm;
+  declare var npm: NPM$Static;
+  declare export default typeof npm;
 
   declare export type NPM$Static = {
     config: NPM$Config,
@@ -208,7 +208,7 @@ declare module "npm" {
     link?: boolean;
     "local-address"?: string;
     loglevel?: string;
-    logstream?: NodeJS.ReadWriteStream;
+    logstream?: NodeJS$ReadWriteStream;
     long?: boolean;
     message?: string;
     "node-version"?: string;
