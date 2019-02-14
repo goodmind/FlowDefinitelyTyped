@@ -1,12 +1,12 @@
 declare module "resemblejs" {
-  declare module.exports: typeof Resemble;
+  declare export default typeof Resemble;
 
   /**
    * Retrieve basic analysis for a single image (add compareTo to compare with another).
    */
   declare function Resemble(
     image: string | ImageData
-  ): Resemble$Resemble$ResembleAnalysis;
+  ): Resemble$ResembleAnalysis;
 
   declare var npm$namespace$Resemble: {
     outputSettings: typeof Resemble$outputSettings
