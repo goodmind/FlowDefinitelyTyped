@@ -1,4 +1,4 @@
-declare var flightplan: FlightplanInterfaces$FlightplanInterfaces$Flightplan;
+declare var flightplan: FlightplanInterfaces$Flightplan;
 declare interface FlightplanInterfaces$CommandOptions {
   silent?: boolean;
   failsafe?: boolean;
@@ -6,7 +6,7 @@ declare interface FlightplanInterfaces$CommandOptions {
 
 declare type FlightplanInterfaces$SudoOptions = {
   user?: string
-} & FlightplanInterfaces$CommandOptions;
+} & CommandOptions;
 
 declare interface FlightplanInterfaces$PromptOptions {
   hidden?: boolean;
@@ -484,5 +484,5 @@ declare interface FlightplanInterfaces$Flightplan {
   abort(message?: string): void;
 }
 declare module "flightplan" {
-  declare module.exports: typeof flightplan;
+  declare export default typeof flightplan;
 }
