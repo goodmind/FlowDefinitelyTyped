@@ -5,7 +5,10 @@ declare module "polymer-ts" {
     createDomModule: typeof polymer$createDomModule,
     createElement: typeof polymer$createElement,
     createClass: typeof polymer$createClass,
-    isRegistered: typeof polymer$isRegistered
+    isRegistered: typeof polymer$isRegistered,
+
+    PolymerBase: typeof polymer$PolymerBase,
+    Base: typeof polymer$Base
   };
   declare class polymer$PolymerBase mixins HTMLElement {
     $: any;
@@ -97,12 +100,12 @@ declare module "polymer-ts" {
 
   declare interface polymer$dom {
     (node: HTMLElement): HTMLElement;
-    (node: polymer$polymer$Base): HTMLElement;
+    (node: polymer$Base): HTMLElement;
     flush(): any;
   }
 
   declare interface polymer$FireOptions {
-    node?: HTMLElement | polymer$polymer$Base;
+    node?: HTMLElement | polymer$Base;
     bubbles?: boolean;
     cancelable?: boolean;
   }
@@ -139,8 +142,8 @@ declare module "polymer-ts" {
     observer?: string;
   }
 
-  declare class polymer$Base mixins polymer$polymer$PolymerBase {
-    static create<T: polymer$polymer$Base>(...args: any[]): T;
+  declare class polymer$Base mixins polymer$PolymerBase {
+    static create<T: polymer$Base>(...args: any[]): T;
     static register(): void;
     is: string;
   }
@@ -149,33 +152,29 @@ declare module "polymer-ts" {
 
   declare function polymer$prepareForRegistration(
     elementClass: Function
-  ): polymer$polymer$Element;
+  ): polymer$Element;
 
-  declare function polymer$createDomModule(
-    definition: polymer$polymer$Element
-  ): void;
+  declare function polymer$createDomModule(definition: polymer$Element): void;
 
-  declare function polymer$createElement<T: polymer$polymer$Base>(
+  declare function polymer$createElement<T: polymer$Base>(
     element: (...args: any[]) => T
   ): (...args: any[]) => T;
 
-  declare function polymer$createClass<T: polymer$polymer$Base>(
+  declare function polymer$createClass<T: polymer$Base>(
     element: (...args: any[]) => T
   ): (...args: any[]) => T;
 
-  declare function polymer$isRegistered(
-    element: polymer$polymer$Element
-  ): boolean;
+  declare function polymer$isRegistered(element: polymer$Element): boolean;
 
   declare var Polymer: {
-    (prototype: polymer$polymer$Element): FunctionConstructor,
-    Class(prototype: polymer$polymer$Element): Function,
-    polymer$dom: polymer$polymer$dom,
+    (prototype: polymer$Element): FunctionConstructor,
+    Class(prototype: polymer$Element): Function,
+    dom: polymer$dom,
     appendChild(node: HTMLElement): HTMLElement,
     insertBefore(node: HTMLElement, beforeNode: HTMLElement): HTMLElement,
     removeChild(node: HTMLElement): HTMLElement,
     updateStyles(): void,
-    polymer$Base: any
+    Base: any
   };
   declare function component(
     tagname: string,
@@ -193,20 +192,20 @@ declare module "polymer-ts" {
   ): (target: Function) => void;
 
   declare function property(
-    ob?: polymer$polymer$Property
-  ): (target: polymer$polymer$Element, propertyKey: string) => void;
+    ob?: polymer$Property
+  ): (target: polymer$Element, propertyKey: string) => void;
 
   declare function computed(
-    ob?: polymer$polymer$Property
-  ): (target: polymer$polymer$Element, computedFuncName: string) => void;
+    ob?: polymer$Property
+  ): (target: polymer$Element, computedFuncName: string) => void;
 
   declare function listen(
     eventName: string
-  ): (target: polymer$polymer$Element, propertyKey: string) => void;
+  ): (target: polymer$Element, propertyKey: string) => void;
 
   declare function behavior(behaviorObject: any): any;
 
   declare function observe(
     observedProps: string
-  ): (target: polymer$polymer$Element, observerFuncName: string) => void;
+  ): (target: polymer$Element, observerFuncName: string) => void;
 }
