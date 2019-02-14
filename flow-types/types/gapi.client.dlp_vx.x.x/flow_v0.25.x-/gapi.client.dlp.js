@@ -1,38 +1,42 @@
 declare module "gapi.client.dlp" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    content: typeof client$content,
-    dataSource: typeof client$dataSource,
-    inspect: typeof client$inspect,
-    riskAnalysis: typeof client$riskAnalysis,
-    rootCategories: typeof client$rootCategories
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    content: typeof gapi$client$content,
+    dataSource: typeof gapi$client$dataSource,
+    inspect: typeof gapi$client$inspect,
+    riskAnalysis: typeof gapi$client$riskAnalysis,
+    rootCategories: typeof gapi$client$rootCategories
   };
 
   /**
    * Load DLP API v2beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dlp",
     version: "v2beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dlp",
     version: "v2beta1",
     callback: () => any
   ): void;
 
-  declare var client$content: dlp$dlp$ContentResource;
+  declare var gapi$client$content: dlp$ContentResource;
 
-  declare var client$dataSource: dlp$dlp$DataSourceResource;
+  declare var gapi$client$dataSource: dlp$DataSourceResource;
 
-  declare var client$inspect: dlp$dlp$InspectResource;
+  declare var gapi$client$inspect: dlp$InspectResource;
 
-  declare var client$riskAnalysis: dlp$dlp$RiskAnalysisResource;
+  declare var gapi$client$riskAnalysis: dlp$RiskAnalysisResource;
 
-  declare var client$rootCategories: dlp$dlp$RootCategoriesResource;
+  declare var gapi$client$rootCategories: dlp$RootCategoriesResource;
 
-  declare interface dlp$GoogleLongrunningListOperationsResponse {
+  declare interface gapi$client$dlp$GoogleLongrunningListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -44,7 +48,7 @@ declare module "gapi.client.dlp" {
     operations?: dlp$GoogleLongrunningOperation[];
   }
 
-  declare interface dlp$GoogleLongrunningOperation {
+  declare interface gapi$client$dlp$GoogleLongrunningOperation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -75,7 +79,7 @@ declare module "gapi.client.dlp" {
     response?: Record<string, any>;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest {
     /**
      * Privacy metric to compute.
      */
@@ -87,7 +91,7 @@ declare module "gapi.client.dlp" {
     sourceTable?: dlp$GooglePrivacyDlpV2beta1BigQueryTable;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1BigQueryOptions {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1BigQueryOptions {
     /**
      * References to fields uniquely identifying rows within the table.
      * Nested fields in the format, like `person.birthdate.year`, are allowed.
@@ -100,7 +104,7 @@ declare module "gapi.client.dlp" {
     tableReference?: dlp$GooglePrivacyDlpV2beta1BigQueryTable;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1BigQueryTable {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1BigQueryTable {
     /**
      * Dataset ID of the table.
      */
@@ -118,7 +122,7 @@ declare module "gapi.client.dlp" {
     tableId?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Bucket {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Bucket {
     /**
      * Upper bound of the range, exclusive; type must match min.
      */
@@ -137,11 +141,11 @@ declare module "gapi.client.dlp" {
     replacementValue?: dlp$GooglePrivacyDlpV2beta1Value;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1BucketingConfig {
-    buckets?: dlp$GooglePrivacyDlpV2beta1Bucket[];
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1BucketingConfig {
+    buckets?: gapi$client$dlp$GooglePrivacyDlpV2beta1Bucket[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CategoricalStatsConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsConfig {
     /**
      * Field to compute categorical stats on. All column types are
      * supported except for arrays and structs. However, it may be more
@@ -151,7 +155,7 @@ declare module "gapi.client.dlp" {
     field?: dlp$GooglePrivacyDlpV2beta1FieldId;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket {
     /**
      * Total number of records in this bucket.
      */
@@ -174,14 +178,14 @@ declare module "gapi.client.dlp" {
     valueFrequencyUpperBound?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CategoricalStatsResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsResult {
     /**
      * Histogram of value frequencies in the column.
      */
-    valueFrequencyHistogramBuckets?: dlp$GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket[];
+    valueFrequencyHistogramBuckets?: gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CategoryDescription {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CategoryDescription {
     /**
      * Human readable form of the category name.
      */
@@ -193,7 +197,7 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CharacterMaskConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CharacterMaskConfig {
     /**
      * When masking a string, items in this list will be skipped when replacing.
      * For example, if your string is 555-555-5555 and you ask us to skip `-` and
@@ -225,12 +229,12 @@ declare module "gapi.client.dlp" {
     reverseOrder?: boolean;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CharsToIgnore {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CharsToIgnore {
     charactersToSkip?: string;
     commonCharactersToIgnore?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CloudStorageKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStorageKey {
     /**
      * Path to the file.
      */
@@ -242,18 +246,18 @@ declare module "gapi.client.dlp" {
     startOffset?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CloudStorageOptions {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStorageOptions {
     fileSet?: dlp$GooglePrivacyDlpV2beta1FileSet;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CloudStoragePath {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStoragePath {
     /**
      * The url, in the format of `gs://bucket/<path>`.
      */
     path?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Color {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Color {
     /**
      * The amount of blue in the color as a value in the interval [0, 1].
      */
@@ -270,7 +274,7 @@ declare module "gapi.client.dlp" {
     red?: number;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Condition {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Condition {
     /**
      * Field within the record this condition is evaluated against. [required]
      */
@@ -287,11 +291,11 @@ declare module "gapi.client.dlp" {
     value?: dlp$GooglePrivacyDlpV2beta1Value;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Conditions {
-    conditions?: dlp$GooglePrivacyDlpV2beta1Condition[];
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Conditions {
+    conditions?: gapi$client$dlp$GooglePrivacyDlpV2beta1Condition[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ContentItem {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem {
     /**
      * Content data to inspect or redact.
      */
@@ -315,7 +319,7 @@ declare module "gapi.client.dlp" {
     value?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
     /**
      * Configuration for the inspector.
      */
@@ -337,20 +341,20 @@ declare module "gapi.client.dlp" {
     storageConfig?: dlp$GooglePrivacyDlpV2beta1StorageConfig;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CryptoHashConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoHashConfig {
     /**
      * The key used by the hash function.
      */
     cryptoKey?: dlp$GooglePrivacyDlpV2beta1CryptoKey;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CryptoKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoKey {
     kmsWrapped?: dlp$GooglePrivacyDlpV2beta1KmsWrappedCryptoKey;
     transient?: dlp$GooglePrivacyDlpV2beta1TransientCryptoKey;
     unwrapped?: dlp$GooglePrivacyDlpV2beta1UnwrappedCryptoKey;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
     commonAlphabet?: string;
 
     /**
@@ -386,7 +390,7 @@ declare module "gapi.client.dlp" {
     /**
      * The key used by the encryption algorithm. [required]
      */
-    cryptoKey?: dlp$GooglePrivacyDlpV2beta1CryptoKey;
+    cryptoKey?: gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoKey;
 
     /**
      * This is supported by mapping these to the alphanumeric characters
@@ -405,14 +409,14 @@ declare module "gapi.client.dlp" {
     radix?: number;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DatastoreKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DatastoreKey {
     /**
      * Datastore entity key.
      */
     entityKey?: dlp$GooglePrivacyDlpV2beta1Key;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DatastoreOptions {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DatastoreOptions {
     /**
      * The kind to process.
      */
@@ -431,7 +435,7 @@ declare module "gapi.client.dlp" {
     projection?: dlp$GooglePrivacyDlpV2beta1Projection[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DeidentificationSummary {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentificationSummary {
     /**
      * Transformations applied to the dataset.
      */
@@ -443,7 +447,7 @@ declare module "gapi.client.dlp" {
     transformedBytes?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DeidentifyConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentifyConfig {
     /**
      * Treat the dataset as free-form text and apply the same free text
      * transformation everywhere.
@@ -458,11 +462,11 @@ declare module "gapi.client.dlp" {
     recordTransformations?: dlp$GooglePrivacyDlpV2beta1RecordTransformations;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DeidentifyContentRequest {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentifyContentRequest {
     /**
      * Configuration for the de-identification of the list of content items.
      */
-    deidentifyConfig?: dlp$GooglePrivacyDlpV2beta1DeidentifyConfig;
+    deidentifyConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentifyConfig;
 
     /**
      * Configuration for the inspector.
@@ -473,27 +477,27 @@ declare module "gapi.client.dlp" {
      * The list of items to inspect. Up to 100 are allowed per request.
      * All items will be treated as text/&#42;.
      */
-    items?: dlp$GooglePrivacyDlpV2beta1ContentItem[];
+    items?: gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1DeidentifyContentResponse {
-    items?: dlp$GooglePrivacyDlpV2beta1ContentItem[];
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentifyContentResponse {
+    items?: gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem[];
 
     /**
      * A review of the transformations that took place for each item.
      */
-    summaries?: dlp$GooglePrivacyDlpV2beta1DeidentificationSummary[];
+    summaries?: gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentificationSummary[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1EntityId {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1EntityId {
     /**
      * Composite key indicating which field contains the entity identifier.
      */
     field?: dlp$GooglePrivacyDlpV2beta1FieldId;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Expressions {
-    conditions?: dlp$GooglePrivacyDlpV2beta1Conditions;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Expressions {
+    conditions?: gapi$client$dlp$GooglePrivacyDlpV2beta1Conditions;
 
     /**
      * The operator to apply to the result of conditions. Default and currently
@@ -502,14 +506,14 @@ declare module "gapi.client.dlp" {
     logicalOperator?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1FieldId {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId {
     /**
      * Name describing the field.
      */
     columnName?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1FieldTransformation {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1FieldTransformation {
     /**
      * Only apply the transformation if the condition evaluates to true for the
      * given `RecordCondition`. The conditions are allowed to reference fields
@@ -526,7 +530,7 @@ declare module "gapi.client.dlp" {
     /**
      * Input field(s) to apply the transformation to. [required]
      */
-    fields?: dlp$GooglePrivacyDlpV2beta1FieldId[];
+    fields?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId[];
 
     /**
      * Treat the contents of the field as free text, and selectively
@@ -540,7 +544,7 @@ declare module "gapi.client.dlp" {
     primitiveTransformation?: dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1FileSet {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1FileSet {
     /**
      * The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the
      * path is allowed.
@@ -548,7 +552,7 @@ declare module "gapi.client.dlp" {
     url?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Finding {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Finding {
     /**
      * Timestamp when finding was detected.
      */
@@ -575,7 +579,7 @@ declare module "gapi.client.dlp" {
     quote?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1FixedSizeBucketingConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1FixedSizeBucketingConfig {
     /**
      * Size of each bucket (except for minimum and maximum buckets). So if
      * `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
@@ -600,7 +604,7 @@ declare module "gapi.client.dlp" {
     upperBound?: dlp$GooglePrivacyDlpV2beta1Value;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ImageLocation {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ImageLocation {
     /**
      * Height of the bounding box in pixels.
      */
@@ -622,7 +626,7 @@ declare module "gapi.client.dlp" {
     width?: number;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ImageRedactionConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ImageRedactionConfig {
     /**
      * Only one per info_type should be provided per request. If not
      * specified, and redact_all_text is false, the DLP API will redact all
@@ -641,21 +645,21 @@ declare module "gapi.client.dlp" {
      * The color to use when redacting content from an image. If not specified,
      * the default is black.
      */
-    redactionColor?: dlp$GooglePrivacyDlpV2beta1Color;
+    redactionColor?: gapi$client$dlp$GooglePrivacyDlpV2beta1Color;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoType {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType {
     /**
      * Name of the information type.
      */
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoTypeDescription {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeDescription {
     /**
      * List of categories this infoType belongs to.
      */
-    categories?: dlp$GooglePrivacyDlpV2beta1CategoryDescription[];
+    categories?: gapi$client$dlp$GooglePrivacyDlpV2beta1CategoryDescription[];
 
     /**
      * Human readable form of the infoType name.
@@ -668,14 +672,14 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoTypeLimit {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeLimit {
     /**
      * Type of information the findings limit applies to. Only one limit per
      * info_type should be provided. If InfoTypeLimit does not have an
      * info_type, the DLP API applies the limit against all info_types that are
      * found but not specified in another InfoTypeLimit.
      */
-    infoType?: dlp$GooglePrivacyDlpV2beta1InfoType;
+    infoType?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType;
 
     /**
      * Max findings limit for the given infoType.
@@ -683,7 +687,7 @@ declare module "gapi.client.dlp" {
     maxFindings?: number;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoTypeStatistics {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeStatistics {
     /**
      * Number of findings for this info type.
      */
@@ -692,15 +696,15 @@ declare module "gapi.client.dlp" {
     /**
      * The type of finding this stat is for.
      */
-    infoType?: dlp$GooglePrivacyDlpV2beta1InfoType;
+    infoType?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoTypeTransformation {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeTransformation {
     /**
      * Info types to apply the transformation to. Empty list will match all
      * available info types for this transformation.
      */
-    infoTypes?: dlp$GooglePrivacyDlpV2beta1InfoType[];
+    infoTypes?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType[];
 
     /**
      * Primitive transformation to apply to the info type. [required]
@@ -708,15 +712,15 @@ declare module "gapi.client.dlp" {
     primitiveTransformation?: dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InfoTypeTransformations {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeTransformations {
     /**
      * Transformation for each info type. Cannot specify more than one
      * for a given info type. [required]
      */
-    transformations?: dlp$GooglePrivacyDlpV2beta1InfoTypeTransformation[];
+    transformations?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeTransformation[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectConfig {
     /**
      * When true, excludes type information of the findings.
      */
@@ -731,14 +735,14 @@ declare module "gapi.client.dlp" {
     /**
      * Configuration of findings limit given for specified info types.
      */
-    infoTypeLimits?: dlp$GooglePrivacyDlpV2beta1InfoTypeLimit[];
+    infoTypeLimits?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeLimit[];
 
     /**
      * Restricts what info_types to look for. The values must correspond to
      * InfoType values returned by ListInfoTypes or found in documentation.
      * Empty info_types runs all enabled detectors.
      */
-    infoTypes?: dlp$GooglePrivacyDlpV2beta1InfoType[];
+    infoTypes?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType[];
 
     /**
      * Limits the number of findings per content item or long running operation.
@@ -751,21 +755,21 @@ declare module "gapi.client.dlp" {
     minLikelihood?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectContentRequest {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectContentRequest {
     /**
      * Configuration for the inspector.
      */
-    inspectConfig?: dlp$GooglePrivacyDlpV2beta1InspectConfig;
+    inspectConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1InspectConfig;
 
     /**
      * The list of items to inspect. Items in a single request are
      * considered "related" unless inspect_config.independent_inputs is true.
      * Up to 100 are allowed per request.
      */
-    items?: dlp$GooglePrivacyDlpV2beta1ContentItem[];
+    items?: gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectContentResponse {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectContentResponse {
     /**
      * Each content_item from the request has a result in this list, in the
      * same order as the request.
@@ -773,12 +777,12 @@ declare module "gapi.client.dlp" {
     results?: dlp$GooglePrivacyDlpV2beta1InspectResult[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectOperationMetadata {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectOperationMetadata {
     /**
      * The time which this request was started.
      */
     createTime?: string;
-    infoTypeStats?: dlp$GooglePrivacyDlpV2beta1InfoTypeStatistics[];
+    infoTypeStats?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeStatistics[];
 
     /**
      * Total size in bytes that were processed.
@@ -788,7 +792,7 @@ declare module "gapi.client.dlp" {
     /**
      * The inspect config used to create the Operation.
      */
-    requestInspectConfig?: dlp$GooglePrivacyDlpV2beta1InspectConfig;
+    requestInspectConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1InspectConfig;
 
     /**
      * Optional location to store findings.
@@ -806,7 +810,7 @@ declare module "gapi.client.dlp" {
     totalEstimatedBytes?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectOperationResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectOperationResult {
     /**
      * The server-assigned name, which is only unique within the same service that
      * originally returns it. If you use the default HTTP mapping, the
@@ -815,11 +819,11 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1InspectResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1InspectResult {
     /**
      * List of findings for an item.
      */
-    findings?: dlp$GooglePrivacyDlpV2beta1Finding[];
+    findings?: gapi$client$dlp$GooglePrivacyDlpV2beta1Finding[];
 
     /**
      * If true, then this item might have more findings than were returned,
@@ -832,12 +836,12 @@ declare module "gapi.client.dlp" {
     findingsTruncated?: boolean;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KAnonymityConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityConfig {
     /**
      * Optional message indicating that each distinct `EntityId` should not
      * contribute to the k-anonymity count more than once per equivalence class.
      */
-    entityId?: dlp$GooglePrivacyDlpV2beta1EntityId;
+    entityId?: gapi$client$dlp$GooglePrivacyDlpV2beta1EntityId;
 
     /**
      * Set of fields to compute k-anonymity over. When multiple fields are
@@ -846,10 +850,10 @@ declare module "gapi.client.dlp" {
      * supported so long as they are not structs themselves or nested within
      * a repeated field.
      */
-    quasiIds?: dlp$GooglePrivacyDlpV2beta1FieldId[];
+    quasiIds?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass {
     /**
      * Size of the equivalence class, for example number of rows with the
      * above set of values.
@@ -864,7 +868,7 @@ declare module "gapi.client.dlp" {
     quasiIdsValues?: dlp$GooglePrivacyDlpV2beta1Value[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KAnonymityHistogramBucket {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityHistogramBucket {
     /**
      * Total number of records in this bucket.
      */
@@ -874,7 +878,7 @@ declare module "gapi.client.dlp" {
      * Sample of equivalence classes in this bucket. The total number of
      * classes returned per bucket is capped at 20.
      */
-    bucketValues?: dlp$GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass[];
+    bucketValues?: gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass[];
 
     /**
      * Lower bound on the size of the equivalence classes in this bucket.
@@ -887,14 +891,14 @@ declare module "gapi.client.dlp" {
     equivalenceClassSizeUpperBound?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KAnonymityResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityResult {
     /**
      * Histogram of k-anonymity equivalence classes.
      */
-    equivalenceClassHistogramBuckets?: dlp$GooglePrivacyDlpV2beta1KAnonymityHistogramBucket[];
+    equivalenceClassHistogramBuckets?: gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityHistogramBucket[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Key {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Key {
     /**
      * Entities are partitioned into subsets, currently identified by a project
      * ID and namespace ID.
@@ -916,14 +920,14 @@ declare module "gapi.client.dlp" {
     path?: dlp$GooglePrivacyDlpV2beta1PathElement[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KindExpression {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KindExpression {
     /**
      * The name of the kind.
      */
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1KmsWrappedCryptoKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1KmsWrappedCryptoKey {
     /**
      * The resource name of the KMS CryptoKey to use for unwrapping. [required]
      */
@@ -935,21 +939,21 @@ declare module "gapi.client.dlp" {
     wrappedKey?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1LDiversityConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityConfig {
     /**
      * Set of quasi-identifiers indicating how equivalence classes are
      * defined for the l-diversity computation. When multiple fields are
      * specified, they are considered a single composite key.
      */
-    quasiIds?: dlp$GooglePrivacyDlpV2beta1FieldId[];
+    quasiIds?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId[];
 
     /**
      * Sensitive field for computing the l-value.
      */
-    sensitiveAttribute?: dlp$GooglePrivacyDlpV2beta1FieldId;
+    sensitiveAttribute?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1LDiversityEquivalenceClass {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityEquivalenceClass {
     /**
      * Size of the k-anonymity equivalence class.
      */
@@ -972,7 +976,7 @@ declare module "gapi.client.dlp" {
     topSensitiveValues?: dlp$GooglePrivacyDlpV2beta1ValueFrequency[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1LDiversityHistogramBucket {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityHistogramBucket {
     /**
      * Total number of records in this bucket.
      */
@@ -982,7 +986,7 @@ declare module "gapi.client.dlp" {
      * Sample of equivalence classes in this bucket. The total number of
      * classes returned per bucket is capped at 20.
      */
-    bucketValues?: dlp$GooglePrivacyDlpV2beta1LDiversityEquivalenceClass[];
+    bucketValues?: gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityEquivalenceClass[];
 
     /**
      * Lower bound on the sensitive value frequencies of the equivalence
@@ -997,21 +1001,21 @@ declare module "gapi.client.dlp" {
     sensitiveValueFrequencyUpperBound?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1LDiversityResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityResult {
     /**
      * Histogram of l-diversity equivalence class sensitive value frequencies.
      */
-    sensitiveValueFrequencyHistogramBuckets?: dlp$GooglePrivacyDlpV2beta1LDiversityHistogramBucket[];
+    sensitiveValueFrequencyHistogramBuckets?: gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityHistogramBucket[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ListInfoTypesResponse {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ListInfoTypesResponse {
     /**
      * Set of sensitive info types belonging to a category.
      */
-    infoTypes?: dlp$GooglePrivacyDlpV2beta1InfoTypeDescription[];
+    infoTypes?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoTypeDescription[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ListInspectFindingsResponse {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ListInspectFindingsResponse {
     /**
      * If not empty, indicates that there may be more results that match the
      * request; this value should be passed in a new `ListInspectFindingsRequest`.
@@ -1021,17 +1025,17 @@ declare module "gapi.client.dlp" {
     /**
      * The results.
      */
-    result?: dlp$GooglePrivacyDlpV2beta1InspectResult;
+    result?: gapi$client$dlp$GooglePrivacyDlpV2beta1InspectResult;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ListRootCategoriesResponse {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ListRootCategoriesResponse {
     /**
      * List of all into type categories supported by the API.
      */
-    categories?: dlp$GooglePrivacyDlpV2beta1CategoryDescription[];
+    categories?: gapi$client$dlp$GooglePrivacyDlpV2beta1CategoryDescription[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Location {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Location {
     /**
      * Zero-based byte offsets within a content item.
      */
@@ -1046,12 +1050,12 @@ declare module "gapi.client.dlp" {
     /**
      * Field id of the field containing the finding.
      */
-    fieldId?: dlp$GooglePrivacyDlpV2beta1FieldId;
+    fieldId?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId;
 
     /**
      * Location within an image's pixels.
      */
-    imageBoxes?: dlp$GooglePrivacyDlpV2beta1ImageLocation[];
+    imageBoxes?: gapi$client$dlp$GooglePrivacyDlpV2beta1ImageLocation[];
 
     /**
      * Key of the finding.
@@ -1064,15 +1068,15 @@ declare module "gapi.client.dlp" {
     tableLocation?: dlp$GooglePrivacyDlpV2beta1TableLocation;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1NumericalStatsConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1NumericalStatsConfig {
     /**
      * Field to compute numerical stats on. Supported types are
      * integer, float, date, datetime, timestamp, time.
      */
-    field?: dlp$GooglePrivacyDlpV2beta1FieldId;
+    field?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1NumericalStatsResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1NumericalStatsResult {
     /**
      * Maximum value appearing in the column.
      */
@@ -1090,14 +1094,14 @@ declare module "gapi.client.dlp" {
     quantileValues?: dlp$GooglePrivacyDlpV2beta1Value[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1OperationConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1OperationConfig {
     /**
      * Max number of findings per file, Datastore entity, or database row.
      */
     maxItemFindings?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1OutputStorageConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1OutputStorageConfig {
     /**
      * The path to a Google Cloud Storage location to store output.
      * The bucket must already exist and
@@ -1138,15 +1142,15 @@ declare module "gapi.client.dlp" {
      * - dataset_id
      * - table_id
      */
-    storagePath?: dlp$GooglePrivacyDlpV2beta1CloudStoragePath;
+    storagePath?: gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStoragePath;
 
     /**
      * Store findings in a new table in the dataset.
      */
-    table?: dlp$GooglePrivacyDlpV2beta1BigQueryTable;
+    table?: gapi$client$dlp$GooglePrivacyDlpV2beta1BigQueryTable;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1PartitionId {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1PartitionId {
     /**
      * If not empty, the ID of the namespace to which the entities belong.
      */
@@ -1158,7 +1162,7 @@ declare module "gapi.client.dlp" {
     projectId?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1PathElement {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1PathElement {
     /**
      * The auto-allocated ID of the entity.
      * Never equal to zero. Values less than zero are discouraged and may not
@@ -1183,33 +1187,33 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation {
-    bucketingConfig?: dlp$GooglePrivacyDlpV2beta1BucketingConfig;
-    characterMaskConfig?: dlp$GooglePrivacyDlpV2beta1CharacterMaskConfig;
-    cryptoHashConfig?: dlp$GooglePrivacyDlpV2beta1CryptoHashConfig;
-    cryptoReplaceFfxFpeConfig?: dlp$GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig;
-    fixedSizeBucketingConfig?: dlp$GooglePrivacyDlpV2beta1FixedSizeBucketingConfig;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation {
+    bucketingConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1BucketingConfig;
+    characterMaskConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1CharacterMaskConfig;
+    cryptoHashConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoHashConfig;
+    cryptoReplaceFfxFpeConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig;
+    fixedSizeBucketingConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1FixedSizeBucketingConfig;
     redactConfig?: any;
     replaceConfig?: dlp$GooglePrivacyDlpV2beta1ReplaceValueConfig;
     replaceWithInfoTypeConfig?: any;
     timePartConfig?: dlp$GooglePrivacyDlpV2beta1TimePartConfig;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1PrivacyMetric {
-    categoricalStatsConfig?: dlp$GooglePrivacyDlpV2beta1CategoricalStatsConfig;
-    kAnonymityConfig?: dlp$GooglePrivacyDlpV2beta1KAnonymityConfig;
-    lDiversityConfig?: dlp$GooglePrivacyDlpV2beta1LDiversityConfig;
-    numericalStatsConfig?: dlp$GooglePrivacyDlpV2beta1NumericalStatsConfig;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1PrivacyMetric {
+    categoricalStatsConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsConfig;
+    kAnonymityConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityConfig;
+    lDiversityConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityConfig;
+    numericalStatsConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1NumericalStatsConfig;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Projection {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Projection {
     /**
      * The property to project.
      */
     property?: dlp$GooglePrivacyDlpV2beta1PropertyReference;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1PropertyReference {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1PropertyReference {
     /**
      * The name of the property.
      * If name includes "."s, it may be interpreted as a property name path.
@@ -1217,7 +1221,7 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Range {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Range {
     /**
      * Index of the last character of the range (exclusive).
      */
@@ -1229,47 +1233,47 @@ declare module "gapi.client.dlp" {
     start?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RecordCondition {
-    expressions?: dlp$GooglePrivacyDlpV2beta1Expressions;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RecordCondition {
+    expressions?: gapi$client$dlp$GooglePrivacyDlpV2beta1Expressions;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RecordKey {
-    cloudStorageKey?: dlp$GooglePrivacyDlpV2beta1CloudStorageKey;
-    datastoreKey?: dlp$GooglePrivacyDlpV2beta1DatastoreKey;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RecordKey {
+    cloudStorageKey?: gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStorageKey;
+    datastoreKey?: gapi$client$dlp$GooglePrivacyDlpV2beta1DatastoreKey;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RecordSuppression {
-    condition?: dlp$GooglePrivacyDlpV2beta1RecordCondition;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RecordSuppression {
+    condition?: gapi$client$dlp$GooglePrivacyDlpV2beta1RecordCondition;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RecordTransformations {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RecordTransformations {
     /**
      * Transform the record by applying various field transformations.
      */
-    fieldTransformations?: dlp$GooglePrivacyDlpV2beta1FieldTransformation[];
+    fieldTransformations?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldTransformation[];
 
     /**
      * Configuration defining which records get suppressed entirely. Records that
      * match any suppression rule are omitted from the output [optional].
      */
-    recordSuppressions?: dlp$GooglePrivacyDlpV2beta1RecordSuppression[];
+    recordSuppressions?: gapi$client$dlp$GooglePrivacyDlpV2beta1RecordSuppression[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RedactContentRequest {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RedactContentRequest {
     /**
      * The configuration for specifying what content to redact from images.
      */
-    imageRedactionConfigs?: dlp$GooglePrivacyDlpV2beta1ImageRedactionConfig[];
+    imageRedactionConfigs?: gapi$client$dlp$GooglePrivacyDlpV2beta1ImageRedactionConfig[];
 
     /**
      * Configuration for the inspector.
      */
-    inspectConfig?: dlp$GooglePrivacyDlpV2beta1InspectConfig;
+    inspectConfig?: gapi$client$dlp$GooglePrivacyDlpV2beta1InspectConfig;
 
     /**
      * The list of items to inspect. Up to 100 are allowed per request.
      */
-    items?: dlp$GooglePrivacyDlpV2beta1ContentItem[];
+    items?: gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem[];
 
     /**
      * The strings to replace findings text findings with. Must specify at least
@@ -1278,21 +1282,21 @@ declare module "gapi.client.dlp" {
     replaceConfigs?: dlp$GooglePrivacyDlpV2beta1ReplaceConfig[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RedactContentResponse {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RedactContentResponse {
     /**
      * The redacted content.
      */
-    items?: dlp$GooglePrivacyDlpV2beta1ContentItem[];
+    items?: gapi$client$dlp$GooglePrivacyDlpV2beta1ContentItem[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ReplaceConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ReplaceConfig {
     /**
      * Type of information to replace. Only one ReplaceConfig per info_type
      * should be provided. If ReplaceConfig does not have an info_type, the DLP
      * API matches it against all info_types that are found but not specified in
      * another ReplaceConfig.
      */
-    infoType?: dlp$GooglePrivacyDlpV2beta1InfoType;
+    infoType?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType;
 
     /**
      * Content replacing sensitive information of given type. Max 256 chars.
@@ -1300,14 +1304,14 @@ declare module "gapi.client.dlp" {
     replaceWith?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ReplaceValueConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ReplaceValueConfig {
     /**
      * Value to replace it with.
      */
     newValue?: dlp$GooglePrivacyDlpV2beta1Value;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata {
     /**
      * The time which this request was started.
      */
@@ -1316,43 +1320,43 @@ declare module "gapi.client.dlp" {
     /**
      * Privacy metric to compute.
      */
-    requestedPrivacyMetric?: dlp$GooglePrivacyDlpV2beta1PrivacyMetric;
+    requestedPrivacyMetric?: gapi$client$dlp$GooglePrivacyDlpV2beta1PrivacyMetric;
 
     /**
      * Input dataset to compute metrics over.
      */
-    requestedSourceTable?: dlp$GooglePrivacyDlpV2beta1BigQueryTable;
+    requestedSourceTable?: gapi$client$dlp$GooglePrivacyDlpV2beta1BigQueryTable;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
-    categoricalStatsResult?: dlp$GooglePrivacyDlpV2beta1CategoricalStatsResult;
-    kAnonymityResult?: dlp$GooglePrivacyDlpV2beta1KAnonymityResult;
-    lDiversityResult?: dlp$GooglePrivacyDlpV2beta1LDiversityResult;
-    numericalStatsResult?: dlp$GooglePrivacyDlpV2beta1NumericalStatsResult;
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
+    categoricalStatsResult?: gapi$client$dlp$GooglePrivacyDlpV2beta1CategoricalStatsResult;
+    kAnonymityResult?: gapi$client$dlp$GooglePrivacyDlpV2beta1KAnonymityResult;
+    lDiversityResult?: gapi$client$dlp$GooglePrivacyDlpV2beta1LDiversityResult;
+    numericalStatsResult?: gapi$client$dlp$GooglePrivacyDlpV2beta1NumericalStatsResult;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Row {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Row {
     values?: dlp$GooglePrivacyDlpV2beta1Value[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1StorageConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1StorageConfig {
     /**
      * BigQuery options specification.
      */
-    bigQueryOptions?: dlp$GooglePrivacyDlpV2beta1BigQueryOptions;
+    bigQueryOptions?: gapi$client$dlp$GooglePrivacyDlpV2beta1BigQueryOptions;
 
     /**
      * Google Cloud Storage options specification.
      */
-    cloudStorageOptions?: dlp$GooglePrivacyDlpV2beta1CloudStorageOptions;
+    cloudStorageOptions?: gapi$client$dlp$GooglePrivacyDlpV2beta1CloudStorageOptions;
 
     /**
      * Google Cloud Datastore options specification.
      */
-    datastoreOptions?: dlp$GooglePrivacyDlpV2beta1DatastoreOptions;
+    datastoreOptions?: gapi$client$dlp$GooglePrivacyDlpV2beta1DatastoreOptions;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1SummaryResult {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1SummaryResult {
     code?: string;
     count?: string;
 
@@ -1363,52 +1367,52 @@ declare module "gapi.client.dlp" {
     details?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Table {
-    headers?: dlp$GooglePrivacyDlpV2beta1FieldId[];
-    rows?: dlp$GooglePrivacyDlpV2beta1Row[];
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Table {
+    headers?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId[];
+    rows?: gapi$client$dlp$GooglePrivacyDlpV2beta1Row[];
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1TableLocation {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1TableLocation {
     /**
      * The zero-based index of the row where the finding is located.
      */
     rowIndex?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1TimePartConfig {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1TimePartConfig {
     partToExtract?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1TransformationSummary {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1TransformationSummary {
     /**
      * Set if the transformation was limited to a specific FieldId.
      */
-    field?: dlp$GooglePrivacyDlpV2beta1FieldId;
+    field?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldId;
 
     /**
      * The field transformation that was applied. This list will contain
      * multiple only in the case of errors.
      */
-    fieldTransformations?: dlp$GooglePrivacyDlpV2beta1FieldTransformation[];
+    fieldTransformations?: gapi$client$dlp$GooglePrivacyDlpV2beta1FieldTransformation[];
 
     /**
      * Set if the transformation was limited to a specific info_type.
      */
-    infoType?: dlp$GooglePrivacyDlpV2beta1InfoType;
+    infoType?: gapi$client$dlp$GooglePrivacyDlpV2beta1InfoType;
 
     /**
      * The specific suppression option these stats apply to.
      */
-    recordSuppress?: dlp$GooglePrivacyDlpV2beta1RecordSuppression;
-    results?: dlp$GooglePrivacyDlpV2beta1SummaryResult[];
+    recordSuppress?: gapi$client$dlp$GooglePrivacyDlpV2beta1RecordSuppression;
+    results?: gapi$client$dlp$GooglePrivacyDlpV2beta1SummaryResult[];
 
     /**
      * The specific transformation these stats apply to.
      */
-    transformation?: dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation;
+    transformation?: gapi$client$dlp$GooglePrivacyDlpV2beta1PrimitiveTransformation;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1TransientCryptoKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1TransientCryptoKey {
     /**
      * Name of the key. [required]
      * This is an arbitrary string used to differentiate different keys.
@@ -1420,14 +1424,14 @@ declare module "gapi.client.dlp" {
     name?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1UnwrappedCryptoKey {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1UnwrappedCryptoKey {
     /**
      * The AES 128/192/256 bit key. [required]
      */
     key?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1Value {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1Value {
     booleanValue?: boolean;
     dateValue?: dlp$GoogleTypeDate;
     floatValue?: number;
@@ -1437,7 +1441,7 @@ declare module "gapi.client.dlp" {
     timestampValue?: string;
   }
 
-  declare interface dlp$GooglePrivacyDlpV2beta1ValueFrequency {
+  declare interface gapi$client$dlp$GooglePrivacyDlpV2beta1ValueFrequency {
     /**
      * How many times the value is contained in the field.
      */
@@ -1446,10 +1450,10 @@ declare module "gapi.client.dlp" {
     /**
      * A value contained in the field in question.
      */
-    value?: dlp$GooglePrivacyDlpV2beta1Value;
+    value?: gapi$client$dlp$GooglePrivacyDlpV2beta1Value;
   }
 
-  declare interface dlp$GoogleRpcStatus {
+  declare interface gapi$client$dlp$GoogleRpcStatus {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1469,7 +1473,7 @@ declare module "gapi.client.dlp" {
     message?: string;
   }
 
-  declare interface dlp$GoogleTypeDate {
+  declare interface gapi$client$dlp$GoogleTypeDate {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -1488,7 +1492,7 @@ declare module "gapi.client.dlp" {
     year?: number;
   }
 
-  declare interface dlp$GoogleTypeTimeOfDay {
+  declare interface gapi$client$dlp$GoogleTypeTimeOfDay {
     /**
      * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
      * to allow the value "24:00:00" for scenarios like business closing time.
@@ -1512,7 +1516,7 @@ declare module "gapi.client.dlp" {
     seconds?: number;
   }
 
-  declare interface dlp$ContentResource {
+  declare interface gapi$client$dlp$ContentResource {
     /**
      * De-identifies potentially sensitive info from a list of strings.
      * This method has limits on input size and output size.
@@ -1582,13 +1586,13 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1DeidentifyContentResponse>;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1DeidentifyContentResponse>;
 
     /**
      * Finds potentially sensitive info in a list of strings.
      * This method has limits on input size, processing time, and output size.
      */
-    client$inspect(request: {
+    inspect(request: {
       /**
        * V1 error format.
        */
@@ -1653,7 +1657,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1InspectContentResponse>;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1InspectContentResponse>;
 
     /**
      * Redacts potentially sensitive info from a list of strings.
@@ -1724,10 +1728,10 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1RedactContentResponse>;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1RedactContentResponse>;
   }
 
-  declare interface dlp$DataSourceResource {
+  declare interface gapi$client$dlp$DataSourceResource {
     /**
      * Schedules a job to compute risk analysis metrics over content in a Google
      * Cloud Platform repository.
@@ -1797,10 +1801,10 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningOperation>;
+    }): Request<gapi$client$dlp$GoogleLongrunningOperation>;
   }
 
-  declare interface dlp$OperationsResource {
+  declare interface gapi$client$dlp$OperationsResource {
     /**
      * Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation succeeded or the operation completed despite cancellation.
      */
@@ -1945,7 +1949,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningOperation>;
+    }): Request<gapi$client$dlp$GoogleLongrunningOperation>;
 
     /**
      * This method is not supported and the server returns `UNIMPLEMENTED`.
@@ -2097,7 +2101,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningOperation>;
+    }): Request<gapi$client$dlp$GoogleLongrunningOperation>;
 
     /**
      * Fetches the list of long running operations.
@@ -2187,7 +2191,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningListOperationsResponse>;
+    }): Request<gapi$client$dlp$GoogleLongrunningListOperationsResponse>;
 
     /**
      * Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation succeeded or the operation completed despite cancellation.
@@ -2414,7 +2418,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningOperation>;
+    }): Request<gapi$client$dlp$GoogleLongrunningOperation>;
 
     /**
      * Fetches the list of long running operations.
@@ -2504,10 +2508,10 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GoogleLongrunningListOperationsResponse>;
+    }): Request<gapi$client$dlp$GoogleLongrunningListOperationsResponse>;
   }
 
-  declare interface dlp$FindingsResource {
+  declare interface gapi$client$dlp$FindingsResource {
     /**
      * Returns list of results for given inspect operation result set id.
      */
@@ -2609,23 +2613,23 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1ListInspectFindingsResponse>;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1ListInspectFindingsResponse>;
   }
 
-  declare interface dlp$ResultsResource {
-    findings: dlp$FindingsResource;
+  declare interface gapi$client$dlp$ResultsResource {
+    findings: gapi$client$dlp$FindingsResource;
   }
 
-  declare interface dlp$InspectResource {
-    operations: dlp$OperationsResource;
-    results: dlp$ResultsResource;
+  declare interface gapi$client$dlp$InspectResource {
+    operations: gapi$client$dlp$OperationsResource;
+    results: gapi$client$dlp$ResultsResource;
   }
 
-  declare interface dlp$RiskAnalysisResource {
-    operations: dlp$OperationsResource;
+  declare interface gapi$client$dlp$RiskAnalysisResource {
+    operations: gapi$client$dlp$OperationsResource;
   }
 
-  declare interface dlp$InfoTypesResource {
+  declare interface gapi$client$dlp$InfoTypesResource {
     /**
      * Returns sensitive information types for given category.
      */
@@ -2706,10 +2710,10 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1ListInfoTypesResponse>;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1ListInfoTypesResponse>;
   }
 
-  declare interface dlp$RootCategoriesResource {
+  declare interface gapi$client$dlp$RootCategoriesResource {
     /**
      * Returns the list of root categories of sensitive information.
      */
@@ -2785,7 +2789,7 @@ declare module "gapi.client.dlp" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dlp$GooglePrivacyDlpV2beta1ListRootCategoriesResponse>;
-    infoTypes: dlp$InfoTypesResource;
+    }): Request<gapi$client$dlp$GooglePrivacyDlpV2beta1ListRootCategoriesResponse>;
+    infoTypes: gapi$client$dlp$InfoTypesResource;
   }
 }
