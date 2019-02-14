@@ -19,5 +19,5 @@ declare module "gravatar" {
     forceProtocol?: boolean
   ): string;
 
-  declare module.exports: typeof GravatarModule;
+  declare export default typeof GravatarModule;
 }
