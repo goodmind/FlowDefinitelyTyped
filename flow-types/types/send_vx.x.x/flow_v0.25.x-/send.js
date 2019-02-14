@@ -10,8 +10,8 @@ declare module "send" {
   declare function send(
     req: stream.Readable,
     path: string,
-    options?: send$send$SendOptions
-  ): send$send$SendStream;
+    options?: send$SendOptions
+  ): send$SendStream;
 
   import typeof * as m from "mime";
 
@@ -95,39 +95,39 @@ declare module "send" {
 
   declare type send$SendStream = {
     /**
- * @deprecated pass etag as option
-Enable or disable etag generation.
- */
+     * @deprecated pass etag as option
+     * Enable or disable etag generation.
+     */
     etag(val: boolean): send$SendStream,
 
     /**
- * @deprecated use dotfiles option
-Enable or disable "hidden" (dot) files.
- */
+     * @deprecated use dotfiles option
+     * Enable or disable "hidden" (dot) files.
+     */
     hidden(val: boolean): send$SendStream,
 
     /**
- * @deprecated pass index as option
-Set index `paths`, set to a falsy value to disable index support.
- */
+     * @deprecated pass index as option
+     * Set index `paths`, set to a falsy value to disable index support.
+     */
     index(paths: string[] | string): send$SendStream,
 
     /**
- * @deprecated pass root as option
-Set root `path`.
- */
+     * @deprecated pass root as option
+     * Set root `path`.
+     */
     root(paths: string): send$SendStream,
 
     /**
- * @deprecated pass root as option
-Set root `path`.
- */
+     * @deprecated pass root as option
+     * Set root `path`.
+     */
     from(paths: string): send$SendStream,
 
     /**
- * @deprecated pass maxAge as option
-Set max-age to `maxAge`.
- */
+     * @deprecated pass maxAge as option
+     * Set max-age to `maxAge`.
+     */
     maxage(maxAge: string | number): send$SendStream,
 
     /**
@@ -237,5 +237,5 @@ Set max-age to `maxAge`.
     setHeader(path: string, stat: fs.Stats): void
   } & stream.Stream;
 
-  declare module.exports: typeof send;
+  declare export default typeof send;
 }
