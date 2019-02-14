@@ -256,8 +256,8 @@ declare module "paypal-rest-sdk" {
     sale?: SaleResource;
     authorization?: AuthorizationResource;
     order?: any;
-    order$capture?: CaptureResource;
-    sale$refund?: RefundResource;
+    capture?: CaptureResource;
+    refund?: RefundResource;
   }
 
   declare var npm$namespace$payment: {
@@ -322,6 +322,11 @@ declare module "paypal-rest-sdk" {
     cb?: CallbackFunction<PaymentResponse>
   ): void;
 
+  declare var npm$namespace$notification: {
+    webhook: typeof npm$namespace$notification$webhook,
+    webhookEvent: typeof npm$namespace$notification$webhookEvent,
+    webhookEventType: typeof npm$namespace$notification$webhookEventType
+  };
   declare interface notification$NotificationEventType {
     +description?: string;
     name: string;
@@ -332,62 +337,70 @@ declare module "paypal-rest-sdk" {
     +event_types: notification$NotificationEventType[]
   } & Response;
 
-  declare var npm$namespace$webhook: {
-    list: typeof webhook$list,
-    create: typeof webhook$create,
-    replace: typeof webhook$replace,
-    del: typeof webhook$del,
-    get: typeof webhook$get,
-    eventTypes: typeof webhook$eventTypes
+  declare var npm$namespace$notification$webhook: {
+    list: typeof notification$webhook$list,
+    create: typeof notification$webhook$create,
+    replace: typeof notification$webhook$replace,
+    del: typeof notification$webhook$del,
+    get: typeof notification$webhook$get,
+    eventTypes: typeof notification$webhook$eventTypes
   };
-  declare interface webhook$Webhook {
+  declare interface notification$webhook$Webhook {
     event_types: notification$NotificationEventType[];
     +id?: string;
     +links?: Link[];
     url: string;
   }
 
-  declare type webhook$WebhookListResponse = {
-    +webhooks: webhook$Webhook[]
+  declare type notification$webhook$WebhookListResponse = {
+    +webhooks: notification$webhook$Webhook[]
   } & Response;
 
-  declare function webhook$list(
+  declare function notification$webhook$list(
     data:
       | QueryParameters
       | http.RequestOptions
-      | CallbackFunction<webhook$WebhookListResponse>,
+      | CallbackFunction<notification$webhook$WebhookListResponse>,
     config?:
       | http.RequestOptions
-      | CallbackFunction<webhook$WebhookListResponse>,
-    cb?: CallbackFunction<webhook$WebhookListResponse>
+      | CallbackFunction<notification$webhook$WebhookListResponse>,
+    cb?: CallbackFunction<notification$webhook$WebhookListResponse>
   ): void;
 
-  declare function webhook$create(
-    data: webhook$Webhook,
-    config: http.RequestOptions | CallbackFunction<webhook$Webhook>,
-    cb?: CallbackFunction<webhook$Webhook>
+  declare function notification$webhook$create(
+    data: notification$webhook$Webhook,
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhook$Webhook>,
+    cb?: CallbackFunction<notification$webhook$Webhook>
   ): void;
 
-  declare function webhook$replace(
+  declare function notification$webhook$replace(
     id: string,
     data: UpdateRequest[],
-    config: http.RequestOptions | CallbackFunction<webhook$Webhook>,
-    cb?: CallbackFunction<webhook$Webhook>
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhook$Webhook>,
+    cb?: CallbackFunction<notification$webhook$Webhook>
   ): void;
 
-  declare function webhook$del(
+  declare function notification$webhook$del(
     id: string,
-    config: http.RequestOptions | CallbackFunction<webhook$Webhook>,
-    cb?: CallbackFunction<webhook$Webhook>
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhook$Webhook>,
+    cb?: CallbackFunction<notification$webhook$Webhook>
   ): void;
 
-  declare function webhook$get(
+  declare function notification$webhook$get(
     id: string,
-    config: http.RequestOptions | CallbackFunction<webhook$Webhook>,
-    cb?: CallbackFunction<webhook$Webhook>
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhook$Webhook>,
+    cb?: CallbackFunction<notification$webhook$Webhook>
   ): void;
 
-  declare function webhook$eventTypes(
+  declare function notification$webhook$eventTypes(
     id: string,
     config:
       | http.RequestOptions
@@ -395,14 +408,14 @@ declare module "paypal-rest-sdk" {
     cb?: CallbackFunction<notification$EventTypesResponse>
   ): void;
 
-  declare var npm$namespace$webhookEvent: {
-    get: typeof webhookEvent$get,
-    getAndVerify: typeof webhookEvent$getAndVerify,
-    list: typeof webhookEvent$list,
-    resend: typeof webhookEvent$resend,
-    verify: typeof webhookEvent$verify
+  declare var npm$namespace$notification$webhookEvent: {
+    get: typeof notification$webhookEvent$get,
+    getAndVerify: typeof notification$webhookEvent$getAndVerify,
+    list: typeof notification$webhookEvent$list,
+    resend: typeof notification$webhookEvent$resend,
+    verify: typeof notification$webhookEvent$verify
   };
-  declare interface webhookEvent$WebhookEvent {
+  declare interface notification$webhookEvent$WebhookEvent {
     +id?: string;
     +create_time?: string;
     +resource_type?: string;
@@ -412,53 +425,57 @@ declare module "paypal-rest-sdk" {
     +resource?: any;
   }
 
-  declare type webhookEvent$WebhookEventListResponse = {
-    events: webhookEvent$WebhookEvent[]
+  declare type notification$webhookEvent$WebhookEventListResponse = {
+    events: notification$webhookEvent$WebhookEvent[]
   } & Response;
 
-  declare interface webhookEvent$WebhookVerifyResponse {
+  declare interface notification$webhookEvent$WebhookVerifyResponse {
     verification_status: string;
   }
 
-  declare function webhookEvent$get(
+  declare function notification$webhookEvent$get(
     id: string,
-    config: http.RequestOptions | CallbackFunction<webhookEvent$WebhookEvent>,
-    cb?: CallbackFunction<webhookEvent$WebhookEvent>
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhookEvent$WebhookEvent>,
+    cb?: CallbackFunction<notification$webhookEvent$WebhookEvent>
   ): void;
 
-  declare function webhookEvent$getAndVerify(
-    body: webhookEvent$WebhookEvent,
-    cb: CallbackFunction<webhookEvent$WebhookEvent>
+  declare function notification$webhookEvent$getAndVerify(
+    body: notification$webhookEvent$WebhookEvent,
+    cb: CallbackFunction<notification$webhookEvent$WebhookEvent>
   ): void;
 
-  declare function webhookEvent$list(
+  declare function notification$webhookEvent$list(
     data:
       | QueryParameters
       | http.RequestOptions
-      | CallbackFunction<webhookEvent$WebhookEventListResponse>,
+      | CallbackFunction<notification$webhookEvent$WebhookEventListResponse>,
     config?:
       | http.RequestOptions
-      | CallbackFunction<webhookEvent$WebhookEventListResponse>,
-    cb?: CallbackFunction<webhookEvent$WebhookEventListResponse>
+      | CallbackFunction<notification$webhookEvent$WebhookEventListResponse>,
+    cb?: CallbackFunction<notification$webhookEvent$WebhookEventListResponse>
   ): void;
 
-  declare function webhookEvent$resend(
+  declare function notification$webhookEvent$resend(
     id: string,
-    config: http.RequestOptions | CallbackFunction<webhookEvent$WebhookEvent>,
-    cb?: CallbackFunction<webhookEvent$WebhookEvent>
+    config:
+      | http.RequestOptions
+      | CallbackFunction<notification$webhookEvent$WebhookEvent>,
+    cb?: CallbackFunction<notification$webhookEvent$WebhookEvent>
   ): void;
 
-  declare function webhookEvent$verify(
+  declare function notification$webhookEvent$verify(
     headers: any,
-    body: webhookEvent$WebhookEvent,
+    body: notification$webhookEvent$WebhookEvent,
     id: string,
-    cb: CallbackFunction<webhookEvent$WebhookVerifyResponse>
+    cb: CallbackFunction<notification$webhookEvent$WebhookVerifyResponse>
   ): void;
 
-  declare var npm$namespace$webhookEventType: {
-    list: typeof webhookEventType$list
+  declare var npm$namespace$notification$webhookEventType: {
+    list: typeof notification$webhookEventType$list
   };
-  declare function webhookEventType$list(
+  declare function notification$webhookEventType$list(
     data:
       | QueryParameters
       | http.RequestOptions
@@ -614,7 +631,7 @@ declare module "paypal-rest-sdk" {
     +links?: Link[];
   }
 
-  declare type invoice$InvoiceResponse = {} & invoice$Invoice & Response;
+  declare type invoice$InvoiceResponse = {} & Invoice & Response;
 
   declare interface invoice$FileAttachment {
     name: string;
@@ -626,7 +643,7 @@ declare module "paypal-rest-sdk" {
     language?: string,
     notification_channel?: string,
     additional_info?: string
-  } & invoice$Person;
+  } & Person;
 
   declare interface invoice$InvoiceItem {
     name: string;
@@ -652,7 +669,7 @@ declare module "paypal-rest-sdk" {
   declare type invoice$Tax = {
     id?: string,
     name?: string
-  } & invoice$Cost;
+  } & Cost;
 
   declare interface invoice$Cost {
     percent?: number;
@@ -679,13 +696,13 @@ declare module "paypal-rest-sdk" {
     fax?: Phone,
     additional_info_label?: string,
     additional_info?: string
-  } & invoice$Person;
+  } & Person;
 
   declare type invoice$Participant = {
     email: string,
     fax?: Phone,
     additional_info?: string
-  } & invoice$Person;
+  } & Person;
 
   declare interface invoice$Detail {
     type: string;
@@ -698,7 +715,7 @@ declare module "paypal-rest-sdk" {
   declare type invoice$PaymentDetail = {
     transaction_type: string,
     method: string
-  } & invoice$Detail;
+  } & Detail;
 
   declare interface invoice$NumberResponse {
     number: string;
