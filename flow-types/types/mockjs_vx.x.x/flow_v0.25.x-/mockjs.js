@@ -162,16 +162,16 @@ declare module "mockjs" {
     increment(step?: mockjs$N): mockjs$N;
   }
 
-  declare type mockjs$MockjsRandom = {} & mockjs$MockjsRandomBasic &
-    mockjs$MockjsRandomDate &
-    mockjs$MockjsRandomImage &
-    mockjs$MockjsRandomColor &
-    mockjs$MockjsRandomAddress &
-    mockjs$MockjsRandomHelper &
-    mockjs$MockjsRandomMiscellaneous &
-    mockjs$MockjsRandomName &
-    mockjs$MockjsRandomText &
-    mockjs$MockjsRandomWeb;
+  declare type mockjs$MockjsRandom = {} & MockjsRandomBasic &
+    MockjsRandomDate &
+    MockjsRandomImage &
+    MockjsRandomColor &
+    MockjsRandomAddress &
+    MockjsRandomHelper &
+    MockjsRandomMiscellaneous &
+    MockjsRandomName &
+    MockjsRandomText &
+    MockjsRandomWeb;
 
   declare interface mockjs$MockjsValidRsItem {
     action: mockjs$S;
@@ -212,5 +212,5 @@ declare module "mockjs" {
   declare var mockjs$toJSONSchema: mockjs$MockjsToJSONSchema;
 
   declare var mockjs$version: number;
-  declare module.exports: typeof mockjs;
+  declare export default typeof mockjs;
 }
