@@ -1,23 +1,23 @@
 declare module "gulp-imagemin" {
   import type { Plugin } from "imagemin";
 
-  import type { imagemin$Options as GifsicleOptions } from "imagemin-gifsicle";
+  import type { Options as GifsicleOptions } from "imagemin-gifsicle";
 
-  import type { imagemin$Options as JpegtranOptions } from "imagemin-jpegtran";
+  import type { Options as JpegtranOptions } from "imagemin-jpegtran";
 
-  import type { imagemin$Options as OptipngOptions } from "imagemin-optipng";
+  import type { Options as OptipngOptions } from "imagemin-optipng";
 
-  import type { imagemin$Options as SvgoOptions } from "imagemin-svgo";
+  import type { Options as SvgoOptions } from "imagemin-svgo";
 
   import type { Transform } from "stream";
 
   declare function imagemin(
-    pluginsOrOptions?: $ReadOnlyArray<Plugin> | imagemin$imagemin$Options
+    pluginsOrOptions?: $ReadOnlyArray<Plugin> | imagemin$Options
   ): Transform;
 
   declare function imagemin(
     plugins?: $ReadOnlyArray<Plugin>,
-    options?: imagemin$imagemin$Options
+    options?: imagemin$Options
   ): Transform;
 
   declare var npm$namespace$imagemin: {
@@ -39,5 +39,5 @@ declare module "gulp-imagemin" {
   declare var imagemin$optipng: imagemin$PluginFactory<OptipngOptions>;
 
   declare var imagemin$svgo: imagemin$PluginFactory<SvgoOptions>;
-  declare module.exports: typeof imagemin;
+  declare export default typeof imagemin;
 }
