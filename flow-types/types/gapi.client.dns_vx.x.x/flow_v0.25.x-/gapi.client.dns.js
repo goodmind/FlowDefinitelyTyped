@@ -1,32 +1,39 @@
 declare module "gapi.client.dns" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    changes: typeof client$changes,
-    managedZones: typeof client$managedZones,
-    projects: typeof client$projects,
-    resourceRecordSets: typeof client$resourceRecordSets
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    changes: typeof gapi$client$changes,
+    managedZones: typeof gapi$client$managedZones,
+    projects: typeof gapi$client$projects,
+    resourceRecordSets: typeof gapi$client$resourceRecordSets
   };
 
   /**
    * Load Google Cloud DNS API v1
    */
-  declare function client$load(name: "dns", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "dns",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dns",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$changes: dns$dns$ChangesResource;
+  declare var gapi$client$changes: dns$ChangesResource;
 
-  declare var client$managedZones: dns$dns$ManagedZonesResource;
+  declare var gapi$client$managedZones: dns$ManagedZonesResource;
 
-  declare var client$projects: dns$dns$ProjectsResource;
+  declare var gapi$client$projects: dns$ProjectsResource;
 
-  declare var client$resourceRecordSets: dns$dns$ResourceRecordSetsResource;
+  declare var gapi$client$resourceRecordSets: dns$ResourceRecordSetsResource;
 
-  declare interface dns$Change {
+  declare interface gapi$client$dns$Change {
     /**
      * Which ResourceRecordSets to add?
      */
@@ -58,11 +65,11 @@ declare module "gapi.client.dns" {
     status?: string;
   }
 
-  declare interface dns$ChangesListResponse {
+  declare interface gapi$client$dns$ChangesListResponse {
     /**
      * The requested changes.
      */
-    client$changes?: dns$Change[];
+    changes?: gapi$client$dns$Change[];
 
     /**
      * Type of resource.
@@ -80,7 +87,7 @@ declare module "gapi.client.dns" {
     nextPageToken?: string;
   }
 
-  declare interface dns$ManagedZone {
+  declare interface gapi$client$dns$ManagedZone {
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */
@@ -124,7 +131,7 @@ declare module "gapi.client.dns" {
     nameServers?: string[];
   }
 
-  declare interface dns$ManagedZonesListResponse {
+  declare interface gapi$client$dns$ManagedZonesListResponse {
     /**
      * Type of resource.
      */
@@ -133,7 +140,7 @@ declare module "gapi.client.dns" {
     /**
      * The managed zone resources.
      */
-    client$managedZones?: dns$ManagedZone[];
+    managedZones?: gapi$client$dns$ManagedZone[];
 
     /**
      * The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another
@@ -146,7 +153,7 @@ declare module "gapi.client.dns" {
     nextPageToken?: string;
   }
 
-  declare interface dns$Project {
+  declare interface gapi$client$dns$Project {
     /**
      * User assigned unique identifier for the resource (output only).
      */
@@ -168,7 +175,7 @@ declare module "gapi.client.dns" {
     quota?: dns$Quota;
   }
 
-  declare interface dns$Quota {
+  declare interface gapi$client$dns$Quota {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dns#quota".
      */
@@ -177,7 +184,7 @@ declare module "gapi.client.dns" {
     /**
      * Maximum allowed number of managed zones in the project.
      */
-    client$managedZones?: number;
+    managedZones?: number;
 
     /**
      * Maximum allowed number of ResourceRecords per ResourceRecordSet.
@@ -205,7 +212,7 @@ declare module "gapi.client.dns" {
     totalRrdataSizePerChange?: number;
   }
 
-  declare interface dns$ResourceRecordSet {
+  declare interface gapi$client$dns$ResourceRecordSet {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dns#resourceRecordSet".
      */
@@ -232,7 +239,7 @@ declare module "gapi.client.dns" {
     type?: string;
   }
 
-  declare interface dns$ResourceRecordSetsListResponse {
+  declare interface gapi$client$dns$ResourceRecordSetsListResponse {
     /**
      * Type of resource.
      */
@@ -251,10 +258,10 @@ declare module "gapi.client.dns" {
     /**
      * The resource record set resources.
      */
-    rrsets?: dns$ResourceRecordSet[];
+    rrsets?: gapi$client$dns$ResourceRecordSet[];
   }
 
-  declare interface dns$ChangesResource {
+  declare interface gapi$client$dns$ChangesResource {
     /**
      * Atomically update the ResourceRecordSet collection.
      */
@@ -304,7 +311,7 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$Change>;
+    }): Request<gapi$client$dns$Change>;
 
     /**
      * Fetch the representation of an existing Change.
@@ -360,7 +367,7 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$Change>;
+    }): Request<gapi$client$dns$Change>;
 
     /**
      * Enumerate Changes to a ResourceRecordSet collection.
@@ -431,10 +438,10 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$ChangesListResponse>;
+    }): Request<gapi$client$dns$ChangesListResponse>;
   }
 
-  declare interface dns$ManagedZonesResource {
+  declare interface gapi$client$dns$ManagedZonesResource {
     /**
      * Create a new ManagedZone.
      */
@@ -479,7 +486,7 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$ManagedZone>;
+    }): Request<gapi$client$dns$ManagedZone>;
 
     /**
      * Delete a previously created ManagedZone.
@@ -581,7 +588,7 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$ManagedZone>;
+    }): Request<gapi$client$dns$ManagedZone>;
 
     /**
      * Enumerate ManagedZones that have been created but not yet deleted.
@@ -642,10 +649,10 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$ManagedZonesListResponse>;
+    }): Request<gapi$client$dns$ManagedZonesListResponse>;
   }
 
-  declare interface dns$ProjectsResource {
+  declare interface gapi$client$dns$ProjectsResource {
     /**
      * Fetch the representation of an existing Project.
      */
@@ -690,10 +697,10 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$Project>;
+    }): Request<gapi$client$dns$Project>;
   }
 
-  declare interface dns$ResourceRecordSetsResource {
+  declare interface gapi$client$dns$ResourceRecordSetsResource {
     /**
      * Enumerate ResourceRecordSets that have been created but not yet deleted.
      */
@@ -763,6 +770,6 @@ declare module "gapi.client.dns" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dns$ResourceRecordSetsListResponse>;
+    }): Request<gapi$client$dns$ResourceRecordSetsListResponse>;
   }
 }
