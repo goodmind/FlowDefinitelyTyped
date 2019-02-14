@@ -1,46 +1,50 @@
 declare module "gapi.client.cloudmonitoring" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    metricDescriptors: typeof client$metricDescriptors,
-    timeseries: typeof client$timeseries,
-    timeseriesDescriptors: typeof client$timeseriesDescriptors
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    metricDescriptors: typeof gapi$client$metricDescriptors,
+    timeseries: typeof gapi$client$timeseries,
+    timeseriesDescriptors: typeof gapi$client$timeseriesDescriptors
   };
 
   /**
    * Load Cloud Monitoring API v2beta2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudmonitoring",
     version: "v2beta2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudmonitoring",
     version: "v2beta2",
     callback: () => any
   ): void;
 
-  declare var client$metricDescriptors: cloudmonitoring$cloudmonitoring$MetricDescriptorsResource;
+  declare var gapi$client$metricDescriptors: cloudmonitoring$MetricDescriptorsResource;
 
-  declare var client$timeseries: cloudmonitoring$cloudmonitoring$TimeseriesResource;
+  declare var gapi$client$timeseries: cloudmonitoring$TimeseriesResource;
 
-  declare var client$timeseriesDescriptors: cloudmonitoring$cloudmonitoring$TimeseriesDescriptorsResource;
+  declare var gapi$client$timeseriesDescriptors: cloudmonitoring$TimeseriesDescriptorsResource;
 
-  declare interface cloudmonitoring$DeleteMetricDescriptorResponse {
+  declare interface gapi$client$cloudmonitoring$DeleteMetricDescriptorResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#deleteMetricDescriptorResponse".
      */
     kind?: string;
   }
 
-  declare interface cloudmonitoring$ListMetricDescriptorsRequest {
+  declare interface gapi$client$cloudmonitoring$ListMetricDescriptorsRequest {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listMetricDescriptorsRequest".
      */
     kind?: string;
   }
 
-  declare interface cloudmonitoring$ListMetricDescriptorsResponse {
+  declare interface gapi$client$cloudmonitoring$ListMetricDescriptorsResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listMetricDescriptorsResponse".
      */
@@ -58,14 +62,14 @@ declare module "gapi.client.cloudmonitoring" {
     nextPageToken?: string;
   }
 
-  declare interface cloudmonitoring$ListTimeseriesDescriptorsRequest {
+  declare interface gapi$client$cloudmonitoring$ListTimeseriesDescriptorsRequest {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listTimeseriesDescriptorsRequest".
      */
     kind?: string;
   }
 
-  declare interface cloudmonitoring$ListTimeseriesDescriptorsResponse {
+  declare interface gapi$client$cloudmonitoring$ListTimeseriesDescriptorsResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listTimeseriesDescriptorsResponse".
      */
@@ -85,7 +89,7 @@ declare module "gapi.client.cloudmonitoring" {
     /**
      * The returned time series descriptors.
      */
-    client$timeseries?: cloudmonitoring$TimeseriesDescriptor[];
+    timeseries?: cloudmonitoring$TimeseriesDescriptor[];
 
     /**
      * The youngest timestamp of the interval of this query, as an RFC 3339 string.
@@ -93,14 +97,14 @@ declare module "gapi.client.cloudmonitoring" {
     youngest?: string;
   }
 
-  declare interface cloudmonitoring$ListTimeseriesRequest {
+  declare interface gapi$client$cloudmonitoring$ListTimeseriesRequest {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listTimeseriesRequest".
      */
     kind?: string;
   }
 
-  declare interface cloudmonitoring$ListTimeseriesResponse {
+  declare interface gapi$client$cloudmonitoring$ListTimeseriesResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#listTimeseriesResponse".
      */
@@ -120,7 +124,7 @@ declare module "gapi.client.cloudmonitoring" {
     /**
      * The returned time series.
      */
-    client$timeseries?: cloudmonitoring$Timeseries[];
+    timeseries?: cloudmonitoring$Timeseries[];
 
     /**
      * The youngest timestamp of the interval of this query as an RFC 3339 string.
@@ -128,7 +132,7 @@ declare module "gapi.client.cloudmonitoring" {
     youngest?: string;
   }
 
-  declare interface cloudmonitoring$MetricDescriptor {
+  declare interface gapi$client$cloudmonitoring$MetricDescriptor {
     /**
      * Description of this metric.
      */
@@ -155,7 +159,7 @@ declare module "gapi.client.cloudmonitoring" {
     typeDescriptor?: cloudmonitoring$MetricDescriptorTypeDescriptor;
   }
 
-  declare interface cloudmonitoring$MetricDescriptorLabelDescriptor {
+  declare interface gapi$client$cloudmonitoring$MetricDescriptorLabelDescriptor {
     /**
      * Label description.
      */
@@ -167,7 +171,7 @@ declare module "gapi.client.cloudmonitoring" {
     key?: string;
   }
 
-  declare interface cloudmonitoring$MetricDescriptorTypeDescriptor {
+  declare interface gapi$client$cloudmonitoring$MetricDescriptorTypeDescriptor {
     /**
      * The method of collecting data for the metric. See Metric types.
      */
@@ -179,7 +183,7 @@ declare module "gapi.client.cloudmonitoring" {
     valueType?: string;
   }
 
-  declare interface cloudmonitoring$Point {
+  declare interface gapi$client$cloudmonitoring$Point {
     /**
      * The value of this data point. Either "true" or "false".
      */
@@ -221,7 +225,7 @@ declare module "gapi.client.cloudmonitoring" {
     stringValue?: string;
   }
 
-  declare interface cloudmonitoring$PointDistribution {
+  declare interface gapi$client$cloudmonitoring$PointDistribution {
     /**
      * The finite buckets.
      */
@@ -238,7 +242,7 @@ declare module "gapi.client.cloudmonitoring" {
     underflowBucket?: cloudmonitoring$PointDistributionUnderflowBucket;
   }
 
-  declare interface cloudmonitoring$PointDistributionBucket {
+  declare interface gapi$client$cloudmonitoring$PointDistributionBucket {
     /**
      * The number of events whose values are in the interval defined by this bucket.
      */
@@ -255,7 +259,7 @@ declare module "gapi.client.cloudmonitoring" {
     upperBound?: number;
   }
 
-  declare interface cloudmonitoring$PointDistributionOverflowBucket {
+  declare interface gapi$client$cloudmonitoring$PointDistributionOverflowBucket {
     /**
      * The number of events whose values are in the interval defined by this bucket.
      */
@@ -267,7 +271,7 @@ declare module "gapi.client.cloudmonitoring" {
     lowerBound?: number;
   }
 
-  declare interface cloudmonitoring$PointDistributionUnderflowBucket {
+  declare interface gapi$client$cloudmonitoring$PointDistributionUnderflowBucket {
     /**
      * The number of events whose values are in the interval defined by this bucket.
      */
@@ -279,11 +283,11 @@ declare module "gapi.client.cloudmonitoring" {
     upperBound?: number;
   }
 
-  declare interface cloudmonitoring$Timeseries {
+  declare interface gapi$client$cloudmonitoring$Timeseries {
     /**
      * The data points of this time series. The points are listed in order of their end timestamp, from younger to older.
      */
-    points?: cloudmonitoring$Point[];
+    points?: gapi$client$cloudmonitoring$Point[];
 
     /**
      * The descriptor of this time series.
@@ -291,7 +295,7 @@ declare module "gapi.client.cloudmonitoring" {
     timeseriesDesc?: cloudmonitoring$TimeseriesDescriptor;
   }
 
-  declare interface cloudmonitoring$TimeseriesDescriptor {
+  declare interface gapi$client$cloudmonitoring$TimeseriesDescriptor {
     /**
      * The label's name.
      */
@@ -308,7 +312,7 @@ declare module "gapi.client.cloudmonitoring" {
     project?: string;
   }
 
-  declare interface cloudmonitoring$TimeseriesDescriptorLabel {
+  declare interface gapi$client$cloudmonitoring$TimeseriesDescriptorLabel {
     /**
      * The label's name.
      */
@@ -320,19 +324,19 @@ declare module "gapi.client.cloudmonitoring" {
     value?: string;
   }
 
-  declare interface cloudmonitoring$TimeseriesPoint {
+  declare interface gapi$client$cloudmonitoring$TimeseriesPoint {
     /**
      * The data point in this time series snapshot.
      */
-    point?: cloudmonitoring$Point;
+    point?: gapi$client$cloudmonitoring$Point;
 
     /**
      * The descriptor of this time series.
      */
-    timeseriesDesc?: cloudmonitoring$TimeseriesDescriptor;
+    timeseriesDesc?: gapi$client$cloudmonitoring$TimeseriesDescriptor;
   }
 
-  declare interface cloudmonitoring$WriteTimeseriesRequest {
+  declare interface gapi$client$cloudmonitoring$WriteTimeseriesRequest {
     /**
      * The label's name.
      */
@@ -342,17 +346,17 @@ declare module "gapi.client.cloudmonitoring" {
      * Provide time series specific labels and the data points for each time series. The labels in timeseries and the common_labels should form a complete
      * list of labels that required by the metric.
      */
-    client$timeseries?: cloudmonitoring$TimeseriesPoint[];
+    timeseries?: gapi$client$cloudmonitoring$TimeseriesPoint[];
   }
 
-  declare interface cloudmonitoring$WriteTimeseriesResponse {
+  declare interface gapi$client$cloudmonitoring$WriteTimeseriesResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "cloudmonitoring#writeTimeseriesResponse".
      */
     kind?: string;
   }
 
-  declare interface cloudmonitoring$MetricDescriptorsResource {
+  declare interface gapi$client$cloudmonitoring$MetricDescriptorsResource {
     /**
      * Create a new metric.
      */
@@ -397,7 +401,7 @@ declare module "gapi.client.cloudmonitoring" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<cloudmonitoring$MetricDescriptor>;
+    }): Request<gapi$client$cloudmonitoring$MetricDescriptor>;
 
     /**
      * Delete an existing metric.
@@ -448,7 +452,7 @@ declare module "gapi.client.cloudmonitoring" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<cloudmonitoring$DeleteMetricDescriptorResponse>;
+    }): Request<gapi$client$cloudmonitoring$DeleteMetricDescriptorResponse>;
 
     /**
      * List metric descriptors that match the query. If the query is not set, then all of the metric descriptors will be returned. Large responses will be
@@ -514,10 +518,10 @@ declare module "gapi.client.cloudmonitoring" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<cloudmonitoring$ListMetricDescriptorsResponse>;
+    }): Request<gapi$client$cloudmonitoring$ListMetricDescriptorsResponse>;
   }
 
-  declare interface cloudmonitoring$TimeseriesResource {
+  declare interface gapi$client$cloudmonitoring$TimeseriesResource {
     /**
      * List the data points of the time series that match the metric and labels values and that have data points in the interval. Large responses are
      * paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value
@@ -631,7 +635,7 @@ declare module "gapi.client.cloudmonitoring" {
        * End of the time interval (inclusive), which is expressed as an RFC 3339 timestamp.
        */
       youngest: string
-    }): Request<cloudmonitoring$ListTimeseriesResponse>;
+    }): Request<gapi$client$cloudmonitoring$ListTimeseriesResponse>;
 
     /**
      * Put data points to one or more time series for one or more metrics. If a time series does not exist, a new time series will be created. It is not
@@ -680,10 +684,10 @@ declare module "gapi.client.cloudmonitoring" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<cloudmonitoring$WriteTimeseriesResponse>;
+    }): Request<gapi$client$cloudmonitoring$WriteTimeseriesResponse>;
   }
 
-  declare interface cloudmonitoring$TimeseriesDescriptorsResource {
+  declare interface gapi$client$cloudmonitoring$TimeseriesDescriptorsResource {
     /**
      * List the descriptors of the time series that match the metric and labels values and that have data points in the interval. Large responses are
      * paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value
@@ -797,6 +801,6 @@ declare module "gapi.client.cloudmonitoring" {
        * End of the time interval (inclusive), which is expressed as an RFC 3339 timestamp.
        */
       youngest: string
-    }): Request<cloudmonitoring$ListTimeseriesDescriptorsResponse>;
+    }): Request<gapi$client$cloudmonitoring$ListTimeseriesDescriptorsResponse>;
   }
 }
