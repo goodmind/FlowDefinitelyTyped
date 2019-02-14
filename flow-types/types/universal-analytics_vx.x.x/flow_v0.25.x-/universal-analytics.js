@@ -1,7 +1,9 @@
 declare module "universal-analytics" {
   declare var npm$namespace$ua: {
     createFromSession: typeof ua$createFromSession,
-    middleware: typeof ua$middleware
+    middleware: typeof ua$middleware,
+
+    Visitor: typeof ua$Visitor
   };
   declare type ua$Callback = (error: Error | null, count: number) => void;
 
@@ -26,7 +28,7 @@ declare module "universal-analytics" {
 
   declare type ua$MiddlewareOptions = {
     cookieName?: string
-  } & ua$VisitorOptions;
+  } & VisitorOptions;
 
   declare interface ua$PageviewParams {
     dp?: string;
@@ -432,18 +434,18 @@ declare module "universal-analytics" {
     options?: ua$MiddlewareOptions
   ): (req: any, res: any, next: (err: any) => void) => void;
 
-  declare function ua(accountID: ua$ua$VisitorOptions | string): ua$ua$Visitor;
+  declare function ua(accountID: ua$VisitorOptions | string): ua$Visitor;
 
   declare function ua(
     accountID: string,
-    uuid: ua$ua$VisitorOptions | string
-  ): ua$ua$Visitor;
+    uuid: ua$VisitorOptions | string
+  ): ua$Visitor;
 
   declare function ua(
     accountID: string,
     uuid: string,
-    options: ua$ua$VisitorOptions
-  ): ua$ua$Visitor;
+    options: ua$VisitorOptions
+  ): ua$Visitor;
 
-  declare module.exports: typeof ua;
+  declare export default typeof ua;
 }
