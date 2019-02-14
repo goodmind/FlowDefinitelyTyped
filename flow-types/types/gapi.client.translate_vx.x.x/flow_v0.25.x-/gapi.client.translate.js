@@ -1,32 +1,36 @@
 declare module "gapi.client.translate" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    detections: typeof client$detections,
-    languages: typeof client$languages,
-    translations: typeof client$translations
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    detections: typeof gapi$client$detections,
+    languages: typeof gapi$client$languages,
+    translations: typeof gapi$client$translations
   };
 
   /**
    * Load Google Cloud Translation API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "translate",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "translate",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$detections: translate$translate$DetectionsResource;
+  declare var gapi$client$detections: translate$DetectionsResource;
 
-  declare var client$languages: translate$translate$LanguagesResource;
+  declare var gapi$client$languages: translate$LanguagesResource;
 
-  declare var client$translations: translate$translate$TranslationsResource;
+  declare var gapi$client$translations: translate$TranslationsResource;
 
-  declare interface translate$DetectLanguageRequest {
+  declare interface gapi$client$translate$DetectLanguageRequest {
     /**
      * The input text upon which to perform language detection. Repeat this
      * parameter to perform language detection on multiple text inputs.
@@ -34,14 +38,14 @@ declare module "gapi.client.translate" {
     q?: string[];
   }
 
-  declare interface translate$DetectionsListResponse {
+  declare interface gapi$client$translate$DetectionsListResponse {
     /**
      * A detections contains detection results of several text
      */
-    client$detections?: any[];
+    detections?: any[];
   }
 
-  declare interface translate$GetSupportedLanguagesRequest {
+  declare interface gapi$client$translate$GetSupportedLanguagesRequest {
     /**
      * The language to use to return localized, human readable names of supported
      * languages.
@@ -49,15 +53,15 @@ declare module "gapi.client.translate" {
     target?: string;
   }
 
-  declare interface translate$LanguagesListResponse {
+  declare interface gapi$client$translate$LanguagesListResponse {
     /**
      * List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order
      * of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language.
      */
-    client$languages?: translate$LanguagesResource[];
+    languages?: translate$LanguagesResource[];
   }
 
-  declare interface translate$LanguagesResource {
+  declare interface gapi$client$translate$LanguagesResource {
     /**
      * Supported language code, generally consisting of its ISO 639-1
      * identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including
@@ -150,10 +154,10 @@ declare module "gapi.client.translate" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<translate$LanguagesListResponse>;
+    }): Request<gapi$client$translate$LanguagesListResponse>;
   }
 
-  declare interface translate$TranslateTextRequest {
+  declare interface gapi$client$translate$TranslateTextRequest {
     /**
      * The format of the source text, in either HTML (default) or plain-text. A
      * value of "html" indicates HTML and a value of "text" indicates plain-text.
@@ -187,14 +191,14 @@ declare module "gapi.client.translate" {
     target?: string;
   }
 
-  declare interface translate$TranslationsListResponse {
+  declare interface gapi$client$translate$TranslationsListResponse {
     /**
      * Translations contains list of translation results of given text
      */
-    client$translations?: translate$TranslationsResource[];
+    translations?: translate$TranslationsResource[];
   }
 
-  declare interface translate$TranslationsResource {
+  declare interface gapi$client$translate$TranslationsResource {
     /**
      * The source language of the initial request, detected automatically, if
      * no source language was passed within the initial request. If the
@@ -321,7 +325,7 @@ declare module "gapi.client.translate" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<translate$TranslationsListResponse>;
+    }): Request<gapi$client$translate$TranslationsListResponse>;
 
     /**
      * Translates input text, returning translated text.
@@ -392,10 +396,10 @@ declare module "gapi.client.translate" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<translate$TranslationsListResponse>;
+    }): Request<gapi$client$translate$TranslationsListResponse>;
   }
 
-  declare interface translate$DetectionsResource {
+  declare interface gapi$client$translate$DetectionsResource {
     /**
      * Detects the language of text within a request.
      */
@@ -465,7 +469,7 @@ declare module "gapi.client.translate" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<translate$DetectionsListResponse>;
+    }): Request<gapi$client$translate$DetectionsListResponse>;
 
     /**
      * Detects the language of text within a request.
@@ -542,6 +546,6 @@ declare module "gapi.client.translate" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<translate$DetectionsListResponse>;
+    }): Request<gapi$client$translate$DetectionsListResponse>;
   }
 }
