@@ -1,26 +1,30 @@
 declare module "gapi.client.firebaserules" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Firebase Rules API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebaserules",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebaserules",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: firebaserules$firebaserules$ProjectsResource;
+  declare var gapi$client$projects: firebaserules$ProjectsResource;
 
-  declare interface firebaserules$Arg {
+  declare interface gapi$client$firebaserules$Arg {
     /**
      * Argument matches any value provided.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.firebaserules" {
     exactValue?: any;
   }
 
-  declare interface firebaserules$File {
+  declare interface gapi$client$firebaserules$File {
     /**
      * Textual Content.
      */
@@ -49,7 +53,7 @@ declare module "gapi.client.firebaserules" {
     name?: string;
   }
 
-  declare interface firebaserules$FunctionCall {
+  declare interface gapi$client$firebaserules$FunctionCall {
     /**
      * The arguments that were provided to the function.
      */
@@ -61,13 +65,13 @@ declare module "gapi.client.firebaserules" {
     function?: string;
   }
 
-  declare interface firebaserules$FunctionMock {
+  declare interface gapi$client$firebaserules$FunctionMock {
     /**
      * The list of `Arg` values to match. The order in which the arguments are
      * provided is the order in which they must appear in the function
      * invocation.
      */
-    args?: firebaserules$Arg[];
+    args?: gapi$client$firebaserules$Arg[];
 
     /**
      * The name of the function.
@@ -82,7 +86,7 @@ declare module "gapi.client.firebaserules" {
     result?: firebaserules$Result;
   }
 
-  declare interface firebaserules$GetReleaseExecutableResponse {
+  declare interface gapi$client$firebaserules$GetReleaseExecutableResponse {
     /**
      * Executable view of the `Ruleset` referenced by the `Release`.
      */
@@ -109,7 +113,7 @@ declare module "gapi.client.firebaserules" {
     updateTime?: string;
   }
 
-  declare interface firebaserules$Issue {
+  declare interface gapi$client$firebaserules$Issue {
     /**
      * Short error description.
      */
@@ -126,7 +130,7 @@ declare module "gapi.client.firebaserules" {
     sourcePosition?: firebaserules$SourcePosition;
   }
 
-  declare interface firebaserules$ListReleasesResponse {
+  declare interface gapi$client$firebaserules$ListReleasesResponse {
     /**
      * The pagination token to retrieve the next page of results. If the value is
      * empty, no further results remain.
@@ -139,7 +143,7 @@ declare module "gapi.client.firebaserules" {
     releases?: firebaserules$Release[];
   }
 
-  declare interface firebaserules$ListRulesetsResponse {
+  declare interface gapi$client$firebaserules$ListRulesetsResponse {
     /**
      * The pagination token to retrieve the next page of results. If the value is
      * empty, no further results remain.
@@ -152,7 +156,7 @@ declare module "gapi.client.firebaserules" {
     rulesets?: firebaserules$Ruleset[];
   }
 
-  declare interface firebaserules$Release {
+  declare interface gapi$client$firebaserules$Release {
     /**
      * Time the release was created.
      * Output only.
@@ -200,7 +204,7 @@ declare module "gapi.client.firebaserules" {
     updateTime?: string;
   }
 
-  declare interface firebaserules$Result {
+  declare interface gapi$client$firebaserules$Result {
     /**
      * The result is undefined, meaning the result could not be computed.
      */
@@ -213,7 +217,7 @@ declare module "gapi.client.firebaserules" {
     value?: any;
   }
 
-  declare interface firebaserules$Ruleset {
+  declare interface gapi$client$firebaserules$Ruleset {
     /**
      * Time the `Ruleset` was created.
      * Output only.
@@ -233,14 +237,14 @@ declare module "gapi.client.firebaserules" {
     source?: firebaserules$Source;
   }
 
-  declare interface firebaserules$Source {
+  declare interface gapi$client$firebaserules$Source {
     /**
      * `File` set constituting the `Source` bundle.
      */
-    files?: firebaserules$File[];
+    files?: gapi$client$firebaserules$File[];
   }
 
-  declare interface firebaserules$SourcePosition {
+  declare interface gapi$client$firebaserules$SourcePosition {
     /**
      * First column on the source line associated with the source fragment.
      */
@@ -257,7 +261,7 @@ declare module "gapi.client.firebaserules" {
     line?: number;
   }
 
-  declare interface firebaserules$TestCase {
+  declare interface gapi$client$firebaserules$TestCase {
     /**
      * Test expectation.
      */
@@ -268,7 +272,7 @@ declare module "gapi.client.firebaserules" {
      * service defined function is expected to return an error, which may or may
      * not influence the test outcome.
      */
-    functionMocks?: firebaserules$FunctionMock[];
+    functionMocks?: gapi$client$firebaserules$FunctionMock[];
 
     /**
      * Request context.
@@ -302,7 +306,7 @@ declare module "gapi.client.firebaserules" {
     resource?: any;
   }
 
-  declare interface firebaserules$TestResult {
+  declare interface gapi$client$firebaserules$TestResult {
     /**
      * Debug messages related to test execution issues encountered during
      * evaluation.
@@ -324,7 +328,7 @@ declare module "gapi.client.firebaserules" {
      *
      * E.g. `error_position { line: 19 column: 37 }`
      */
-    errorPosition?: firebaserules$SourcePosition;
+    errorPosition?: gapi$client$firebaserules$SourcePosition;
 
     /**
      * The set of function calls made to service-defined methods.
@@ -333,7 +337,7 @@ declare module "gapi.client.firebaserules" {
      * during evaluation, are provided for both mocked and unmocked functions,
      * and included on the response regardless of the test `state`.
      */
-    functionCalls?: firebaserules$FunctionCall[];
+    functionCalls?: gapi$client$firebaserules$FunctionCall[];
 
     /**
      * State of the test.
@@ -341,13 +345,13 @@ declare module "gapi.client.firebaserules" {
     state?: string;
   }
 
-  declare interface firebaserules$TestRulesetRequest {
+  declare interface gapi$client$firebaserules$TestRulesetRequest {
     /**
      * Optional `Source` to be checked for correctness.
      *
      * This field must not be set when the resource name refers to a `Ruleset`.
      */
-    source?: firebaserules$Source;
+    source?: gapi$client$firebaserules$Source;
 
     /**
      * Inline `TestSuite` to run.
@@ -355,29 +359,29 @@ declare module "gapi.client.firebaserules" {
     testSuite?: firebaserules$TestSuite;
   }
 
-  declare interface firebaserules$TestRulesetResponse {
+  declare interface gapi$client$firebaserules$TestRulesetResponse {
     /**
      * Syntactic and semantic `Source` issues of varying severity. Issues of
      * `ERROR` severity will prevent tests from executing.
      */
-    issues?: firebaserules$Issue[];
+    issues?: gapi$client$firebaserules$Issue[];
 
     /**
      * The set of test results given the test cases in the `TestSuite`.
      * The results will appear in the same order as the test cases appear in the
      * `TestSuite`.
      */
-    testResults?: firebaserules$TestResult[];
+    testResults?: gapi$client$firebaserules$TestResult[];
   }
 
-  declare interface firebaserules$TestSuite {
+  declare interface gapi$client$firebaserules$TestSuite {
     /**
      * Collection of test cases associated with the `TestSuite`.
      */
-    testCases?: firebaserules$TestCase[];
+    testCases?: gapi$client$firebaserules$TestCase[];
   }
 
-  declare interface firebaserules$ReleasesResource {
+  declare interface gapi$client$firebaserules$ReleasesResource {
     /**
      * Create a `Release`.
      *
@@ -474,7 +478,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$Release>;
+    }): Request<gapi$client$firebaserules$Release>;
 
     /**
      * Delete a `Release` by resource name.
@@ -628,7 +632,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$Release>;
+    }): Request<gapi$client$firebaserules$Release>;
 
     /**
      * Get the `Release` executable to use when enforcing rules.
@@ -711,7 +715,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$GetReleaseExecutableResponse>;
+    }): Request<gapi$client$firebaserules$GetReleaseExecutableResponse>;
 
     /**
      * List the `Release` values for a project. This list may optionally be
@@ -832,7 +836,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$ListReleasesResponse>;
+    }): Request<gapi$client$firebaserules$ListReleasesResponse>;
 
     /**
      * Update a `Release`.
@@ -934,10 +938,10 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$Release>;
+    }): Request<gapi$client$firebaserules$Release>;
   }
 
-  declare interface firebaserules$RulesetsResource {
+  declare interface gapi$client$firebaserules$RulesetsResource {
     /**
      * Create a `Ruleset` from `Source`.
      *
@@ -1018,7 +1022,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$Ruleset>;
+    }): Request<gapi$client$firebaserules$Ruleset>;
 
     /**
      * Delete a `Ruleset` by resource name.
@@ -1174,7 +1178,7 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$Ruleset>;
+    }): Request<gapi$client$firebaserules$Ruleset>;
 
     /**
      * List `Ruleset` metadata only and optionally filter the results by `Ruleset`
@@ -1279,10 +1283,10 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$ListRulesetsResponse>;
+    }): Request<gapi$client$firebaserules$ListRulesetsResponse>;
   }
 
-  declare interface firebaserules$ProjectsResource {
+  declare interface gapi$client$firebaserules$ProjectsResource {
     /**
      * Test `Source` for syntactic and semantic correctness. Issues present, if
      * any, will be returned to the caller with a description, severity, and
@@ -1383,8 +1387,8 @@ declare module "gapi.client.firebaserules" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaserules$TestRulesetResponse>;
-    releases: firebaserules$ReleasesResource;
-    rulesets: firebaserules$RulesetsResource;
+    }): Request<gapi$client$firebaserules$TestRulesetResponse>;
+    releases: gapi$client$firebaserules$ReleasesResource;
+    rulesets: gapi$client$firebaserules$RulesetsResource;
   }
 }
