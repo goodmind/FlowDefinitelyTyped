@@ -1,8 +1,16 @@
 declare module "gapi.auth2" {
-  declare var npm$namespace$auth2: {
-    init: typeof auth2$init,
-    getAuthInstance: typeof auth2$getAuthInstance,
-    authorize: typeof auth2$authorize
+  declare var npm$namespace$gapi: {
+    auth2: typeof npm$namespace$gapi$auth2,
+    signin2: typeof npm$namespace$gapi$signin2
+  };
+
+  declare var npm$namespace$gapi$auth2: {
+    init: typeof gapi$auth2$init,
+    getAuthInstance: typeof gapi$auth2$getAuthInstance,
+    authorize: typeof gapi$auth2$authorize,
+
+    GoogleAuth: typeof gapi$auth2$GoogleAuth,
+    SigninOptionsBuilder: typeof gapi$auth2$SigninOptionsBuilder
   };
 
   /**
@@ -10,7 +18,7 @@ declare module "gapi.auth2" {
    * get the user's current sign-in status, get specific data from the user's Google profile,
    * request additional scopes, and sign out from the current account.
    */
-  declare class auth2$GoogleAuth {
+  declare class gapi$auth2$GoogleAuth {
     isSignedIn: auth2$IsSignedIn;
     currentUser: auth2$CurrentUser;
 
@@ -19,7 +27,7 @@ declare module "gapi.auth2" {
      * initialization fails.
      */
     then(
-      onInit: (googleAuth: auth2$GoogleAuth) => any,
+      onInit: (googleAuth: gapi$auth2$GoogleAuth) => any,
       onFailure?: (reason: {
         error: string,
         details: string
@@ -64,7 +72,7 @@ declare module "gapi.auth2" {
     ): any;
   }
 
-  declare interface auth2$IsSignedIn {
+  declare interface gapi$auth2$IsSignedIn {
     /**
      * Returns whether the current user is currently signed in.
      */
@@ -76,7 +84,7 @@ declare module "gapi.auth2" {
     listen(listener: (signedIn: boolean) => any): void;
   }
 
-  declare interface auth2$CurrentUser {
+  declare interface gapi$auth2$CurrentUser {
     /**
      * Returns a GoogleUser object that represents the current user. Note that in a newly-initialized
      * GoogleAuth instance, the current user has not been set. Use the currentUser.listen() method or the
@@ -90,7 +98,7 @@ declare module "gapi.auth2" {
     listen(listener: (user: auth2$GoogleUser) => any): void;
   }
 
-  declare interface auth2$SigninOptions {
+  declare interface gapi$auth2$SigninOptions {
     /**
      * The package name of the Android app to install over the air.
      * See Android app installs from your web site:
@@ -136,7 +144,7 @@ declare module "gapi.auth2" {
    * Interface that represents the different configuration parameters for the GoogleAuth.grantOfflineAccess(options) method.
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2offlineaccessoptions
    */
-  declare interface auth2$OfflineAccessOptions {
+  declare interface gapi$auth2$OfflineAccessOptions {
     scope?: string;
     prompt?: "select_account" | "consent";
     app_package_name?: string;
@@ -146,7 +154,7 @@ declare module "gapi.auth2" {
    * Interface that represents the different configuration parameters for the gapi.auth2.init method.
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
    */
-  declare interface auth2$ClientConfig {
+  declare interface gapi$auth2$ClientConfig {
     /**
      * The app's client ID, found and created in the Google Developers Console.
      */
@@ -194,14 +202,14 @@ declare module "gapi.auth2" {
     redirect_uri?: string;
   }
 
-  declare class auth2$SigninOptionsBuilder {
+  declare class gapi$auth2$SigninOptionsBuilder {
     setAppPackageName(name: string): any;
     setFetchBasicProfile(fetch: boolean): any;
     setPrompt(prompt: string): any;
     setScope(scope: string): any;
   }
 
-  declare interface auth2$BasicProfile {
+  declare interface gapi$auth2$BasicProfile {
     getId(): string;
     getName(): string;
     getGivenName(): string;
@@ -213,7 +221,7 @@ declare module "gapi.auth2" {
   /**
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2authresponse
    */
-  declare interface auth2$AuthResponse {
+  declare interface gapi$auth2$AuthResponse {
     access_token: string;
     id_token: string;
     login_hint: string;
@@ -226,7 +234,7 @@ declare module "gapi.auth2" {
   /**
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2authorizeconfig
    */
-  declare interface auth2$AuthorizeConfig {
+  declare interface gapi$auth2$AuthorizeConfig {
     client_id: string;
     scope: string;
     response_type?: string;
@@ -242,7 +250,7 @@ declare module "gapi.auth2" {
   /**
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2authorizeresponse
    */
-  declare interface auth2$AuthorizeResponse {
+  declare interface gapi$auth2$AuthorizeResponse {
     access_token: string;
     id_token: string;
     code: string;
@@ -257,7 +265,7 @@ declare module "gapi.auth2" {
   /**
    * A GoogleUser object represents one user account.
    */
-  declare interface auth2$GoogleUser {
+  declare interface gapi$auth2$GoogleUser {
     /**
      * Get the user's unique ID string.
      */
@@ -281,17 +289,19 @@ declare module "gapi.auth2" {
     /**
      * Get the user's basic profile information.
      */
-    getBasicProfile(): auth2$BasicProfile;
+    getBasicProfile(): gapi$auth2$BasicProfile;
 
     /**
      * Get the response object from the user's auth session.
      */
-    getAuthResponse(includeAuthorizationData?: boolean): auth2$AuthResponse;
+    getAuthResponse(
+      includeAuthorizationData?: boolean
+    ): gapi$auth2$AuthResponse;
 
     /**
      * Forces a refresh of the access token, and then returns a Promise for the new AuthResponse.
      */
-    reloadAuthResponse(): Promise<auth2$AuthResponse>;
+    reloadAuthResponse(): Promise<gapi$auth2$AuthResponse>;
 
     /**
      * Returns true if the user granted the specified scopes.
@@ -304,12 +314,16 @@ declare module "gapi.auth2" {
      * When you use GoogleUser.signIn(), the sign-in flow skips the account chooser step.
      * See GoogleAuth.signIn().
      */
-    signIn(options?: auth2$SigninOptions | auth2$SigninOptionsBuilder): any;
+    signIn(
+      options?: gapi$auth2$SigninOptions | gapi$auth2$SigninOptionsBuilder
+    ): any;
 
     /**
      * See GoogleUser.signIn()
      */
-    grant(options?: auth2$SigninOptions | auth2$SigninOptionsBuilder): any;
+    grant(
+      options?: gapi$auth2$SigninOptions | gapi$auth2$SigninOptionsBuilder
+    ): any;
 
     /**
      * Get permission from the user to access the specified scopes offline.
@@ -328,26 +342,28 @@ declare module "gapi.auth2" {
    * Initializes the GoogleAuth object.
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2initparams
    */
-  declare function auth2$init(params: auth2$ClientConfig): auth2$GoogleAuth;
+  declare function gapi$auth2$init(
+    params: gapi$auth2$ClientConfig
+  ): gapi$auth2$GoogleAuth;
 
   /**
    * Returns the GoogleAuth object. You must initialize the GoogleAuth object with gapi.auth2.init() before calling this method.
    */
-  declare function auth2$getAuthInstance(): auth2$GoogleAuth;
+  declare function gapi$auth2$getAuthInstance(): gapi$auth2$GoogleAuth;
 
   /**
    * Performs a one time OAuth 2.0 authorization.
    * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2authorizeparams-callback
    */
-  declare function auth2$authorize(
-    params: auth2$AuthorizeConfig,
-    callback: (response: auth2$AuthorizeResponse) => void
+  declare function gapi$auth2$authorize(
+    params: gapi$auth2$AuthorizeConfig,
+    callback: (response: gapi$auth2$AuthorizeResponse) => void
   ): void;
 
-  declare var npm$namespace$signin2: {
-    render: typeof signin2$render
+  declare var npm$namespace$gapi$signin2: {
+    render: typeof gapi$signin2$render
   };
-  declare function signin2$render(
+  declare function gapi$signin2$render(
     id: any,
     options: {
       /**
@@ -378,7 +394,7 @@ declare module "gapi.auth2" {
       /**
        * The callback function to call when a user successfully signs in (default: none).
        */
-      onsuccess?: (user: auth2$auth2$GoogleUser) => void,
+      onsuccess?: (user: auth2$GoogleUser) => void,
 
       /**
        * The callback function to call when sign-in fails (default: none).
