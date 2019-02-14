@@ -1,5 +1,5 @@
 declare module "element-resize-event" {
-  declare module.exports: typeof element_resize_event;
+  declare export default typeof element_resize_event;
 
   declare function element_resize_event(
     omNode: Element,
