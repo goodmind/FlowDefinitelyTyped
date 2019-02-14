@@ -1,28 +1,40 @@
 declare module "gapi.plus" {
-  declare var npm$namespace$people: {
-    get: typeof people$get,
-    search: typeof people$search
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
   };
-  declare interface people$GetParameters {
+
+  declare var npm$namespace$gapi$client: {
+    plus: typeof npm$namespace$gapi$client$plus
+  };
+
+  declare var npm$namespace$gapi$client$plus: {
+    people: typeof npm$namespace$gapi$client$plus$people
+  };
+
+  declare var npm$namespace$gapi$client$plus$people: {
+    get: typeof gapi$client$plus$people$get,
+    search: typeof gapi$client$plus$people$search
+  };
+  declare interface gapi$client$plus$people$GetParameters {
     userId: string;
   }
 
-  declare function people$get(
-    parameters: people$GetParameters
+  declare function gapi$client$plus$people$get(
+    parameters: gapi$client$plus$people$GetParameters
   ): HttpRequest<people$Person>;
 
-  declare interface people$SearchParameters {
+  declare interface gapi$client$plus$people$SearchParameters {
     query: string;
     language?: string;
     maxResults?: number;
     pageToken?: string;
   }
 
-  declare function people$search(
-    parameters: people$SearchParameters
+  declare function gapi$client$plus$people$search(
+    parameters: gapi$client$plus$people$SearchParameters
   ): HttpRequest<people$PeopleFeed>;
 
-  declare interface people$PeopleFeed {
+  declare interface gapi$client$plus$people$PeopleFeed {
     kind: "plus#peopleFeed";
     etag: string;
     selfLink: string;
@@ -32,7 +44,7 @@ declare module "gapi.plus" {
     items: people$Person[];
   }
 
-  declare interface people$Person {
+  declare interface gapi$client$plus$people$Person {
     kind: "plus#person";
     etag: string;
     nickname: string;
