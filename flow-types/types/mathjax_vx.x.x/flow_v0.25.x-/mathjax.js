@@ -32,14 +32,14 @@ declare module "mathjax" {
     (obj: any): MathJax$CallbackObject;
     (code: string): MathJax$CallbackObject;
     Delay(time: number, callback: any): MathJax$CallbackObject;
-    MathJax$Queue(...args: any[]): MathJax$Queue;
-    MathJax$Signal(name: string): MathJax$Signal;
+    Queue(...args: any[]): MathJax$Queue;
+    Signal(name: string): MathJax$Signal;
     ExecuteHooks(
       hooks: any[],
       data: any[],
       reset: boolean
     ): MathJax$CallbackObject;
-    MathJax$Hooks(reset: boolean): MathJax$Hooks;
+    Hooks(reset: boolean): MathJax$Hooks;
   }
 
   declare export interface MathJax$Hooks {
@@ -103,10 +103,10 @@ declare module "mathjax" {
     Browser?: MathJax$BrowserInfo;
     inputJax?: any;
     outputJax?: any;
-    MathJax$Register?: MathJax$Register;
-    MathJax$Config(config: MathJax$Config): void;
+    Register?: MathJax$Register;
+    Config(config: MathJax$Config): void;
     Configured(): void;
-    MathJax$Queue(callBack: any): any;
+    Queue(callBack: any): any;
     Typeset(element: any, callBack: any): any;
     PreProcess(element: any, callBack: any): any;
     Process(element: any, callBack: any): any;
@@ -147,7 +147,7 @@ declare module "mathjax" {
 
   declare export interface MathJax$Ajax {
     timeout?: number;
-    MathJax$STATUS: MathJax$STATUS;
+    STATUS: MathJax$STATUS;
     loaded: any;
     loading: boolean;
     loadHooks: any;
@@ -177,7 +177,7 @@ declare module "mathjax" {
   }
 
   declare export interface MathJax$HTML {
-    MathJax$Cookie?: MathJax$Cookie;
+    Cookie?: MathJax$Cookie;
     Element(type: string, attributes: any, contents: any): any;
     addElement(parent: any, type: string, attributes: any, content: any): any;
     TextNode(text: string): any;
@@ -213,12 +213,12 @@ declare module "mathjax" {
   }
 
   declare export interface MathJax$Config {
-    MathJax$MathZoom?: MathJax$MathZoom;
-    MathJax$MathMenu?: MathJax$MathMenu;
-    MathJax$MathEvents?: MathJax$MathEvents;
-    MathJax$FontWarnings?: MathJax$FontWarnings;
-    MathJax$Safe?: MathJax$Safe;
-    MathJax$MatchWebFonts?: MathJax$MatchWebFonts;
+    MathZoom?: MathJax$MathZoom;
+    MathMenu?: MathJax$MathMenu;
+    MathEvents?: MathJax$MathEvents;
+    FontWarnings?: MathJax$FontWarnings;
+    Safe?: MathJax$Safe;
+    MatchWebFonts?: MathJax$MatchWebFonts;
     SVG?: MathJax$SVGOutputProcessor;
     MMLorHTML?: MathJax$MMLorHTMLConfiguration;
     NativeMML?: MathJax$NativeMMLOutputProcessor;
@@ -278,8 +278,8 @@ declare module "mathjax" {
 
   declare export interface MathJax$FontWarnings {
     messageStyle?: any;
-    MathJax$Message?: MathJax$HTMLMessages;
-    MathJax$HTML?: MathJax$HTMLSnippets;
+    Message?: MathJax$HTMLMessages;
+    HTML?: MathJax$HTMLSnippets;
     removeAfter?: number;
     fadeoutSteps?: number;
     fadeoutTime?: number;
@@ -354,7 +354,7 @@ declare module "mathjax" {
     color?: boolean;
     enclose?: boolean;
     extpfeil?: boolean;
-    MathJax$HTML?: boolean;
+    HTML?: boolean;
     mathchoice?: boolean;
     mhchem?: boolean;
     newcommand?: boolean;
@@ -537,7 +537,7 @@ declare module "mathjax" {
     elementJax: string;
     Process(script: any, state: any): any;
     Translate(script: any, state: any): MathJax$ElementJax;
-    MathJax$Register(mimetype: string): void;
+    Register(mimetype: string): void;
     needsUpdate(element: any): boolean;
   }
 
@@ -551,7 +551,7 @@ declare module "mathjax" {
     preTranslate(state: any): void;
     Translate(script: any, state: any): MathJax$ElementJax;
     postTranslate(state: any): void;
-    MathJax$Register(mimetype: string): void;
+    Register(mimetype: string): void;
     Remove(jax: any): void;
     getJaxFromMath(math: any): MathJax$ElementJax;
     Zoom(
