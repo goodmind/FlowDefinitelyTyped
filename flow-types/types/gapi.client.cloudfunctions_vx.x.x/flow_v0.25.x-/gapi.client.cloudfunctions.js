@@ -1,29 +1,33 @@
 declare module "gapi.client.cloudfunctions" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Functions API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudfunctions",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudfunctions",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: cloudfunctions$cloudfunctions$OperationsResource;
+  declare var gapi$client$operations: cloudfunctions$OperationsResource;
 
-  declare var client$projects: cloudfunctions$cloudfunctions$ProjectsResource;
+  declare var gapi$client$projects: cloudfunctions$ProjectsResource;
 
-  declare interface cloudfunctions$ListLocationsResponse {
+  declare interface gapi$client$cloudfunctions$ListLocationsResponse {
     /**
      * A list of locations that matches the specified filter in the request.
      */
@@ -35,7 +39,7 @@ declare module "gapi.client.cloudfunctions" {
     nextPageToken?: string;
   }
 
-  declare interface cloudfunctions$ListOperationsResponse {
+  declare interface gapi$client$cloudfunctions$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -44,10 +48,10 @@ declare module "gapi.client.cloudfunctions" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: cloudfunctions$Operation[];
+    operations?: cloudfunctions$Operation[];
   }
 
-  declare interface cloudfunctions$Location {
+  declare interface gapi$client$cloudfunctions$Location {
     /**
      * Cross-service attributes for the location. For example
      *
@@ -73,7 +77,7 @@ declare module "gapi.client.cloudfunctions" {
     name?: string;
   }
 
-  declare interface cloudfunctions$Operation {
+  declare interface gapi$client$cloudfunctions$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -114,7 +118,7 @@ declare module "gapi.client.cloudfunctions" {
     response?: Record<string, any>;
   }
 
-  declare interface cloudfunctions$OperationMetadataV1Beta2 {
+  declare interface gapi$client$cloudfunctions$OperationMetadataV1Beta2 {
     /**
      * The original request that started the operation.
      */
@@ -138,7 +142,7 @@ declare module "gapi.client.cloudfunctions" {
     versionId?: string;
   }
 
-  declare interface cloudfunctions$Status {
+  declare interface gapi$client$cloudfunctions$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -158,7 +162,7 @@ declare module "gapi.client.cloudfunctions" {
     message?: string;
   }
 
-  declare interface cloudfunctions$OperationsResource {
+  declare interface gapi$client$cloudfunctions$OperationsResource {
     /**
      * Gets the latest state of a long-running operation.  Clients can use this
      * method to poll the operation result at intervals as recommended by the API
@@ -234,7 +238,7 @@ declare module "gapi.client.cloudfunctions" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudfunctions$Operation>;
+    }): Request<gapi$client$cloudfunctions$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -333,10 +337,10 @@ declare module "gapi.client.cloudfunctions" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudfunctions$ListOperationsResponse>;
+    }): Request<gapi$client$cloudfunctions$ListOperationsResponse>;
   }
 
-  declare interface cloudfunctions$LocationsResource {
+  declare interface gapi$client$cloudfunctions$LocationsResource {
     /**
      * Lists information about the supported locations for this service.
      */
@@ -425,10 +429,10 @@ declare module "gapi.client.cloudfunctions" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudfunctions$ListLocationsResponse>;
+    }): Request<gapi$client$cloudfunctions$ListLocationsResponse>;
   }
 
-  declare interface cloudfunctions$ProjectsResource {
-    locations: cloudfunctions$LocationsResource;
+  declare interface gapi$client$cloudfunctions$ProjectsResource {
+    locations: gapi$client$cloudfunctions$LocationsResource;
   }
 }
