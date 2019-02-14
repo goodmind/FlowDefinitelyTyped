@@ -32,8 +32,8 @@ declare module "pkg-conf" {
 
   declare function pkgConf(
     namespace: string,
-    options?: pkgConf$pkgConf$Options
-  ): Promise<pkgConf$pkgConf$JsonMap>;
+    options?: pkgConf$Options
+  ): Promise<pkgConf$JsonMap>;
 
-  declare module.exports: typeof pkgConf;
+  declare export default typeof pkgConf;
 }
