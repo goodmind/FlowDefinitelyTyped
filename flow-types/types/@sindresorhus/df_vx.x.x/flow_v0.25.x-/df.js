@@ -1,5 +1,5 @@
 declare module "@sindresorhus/df" {
-  declare function df(): Promise<df$df$SpaceInfo[]>;
+  declare function df(): Promise<df$SpaceInfo[]>;
 
   declare var npm$namespace$df: {
     fs: typeof df$fs,
@@ -7,7 +7,7 @@ declare module "@sindresorhus/df" {
   };
   declare function df$fs(filesystem: string): Promise<df$SpaceInfo>;
 
-  declare function df$file(df$file: string): Promise<df$SpaceInfo>;
+  declare function df$file(file: string): Promise<df$SpaceInfo>;
 
   declare interface df$SpaceInfo {
     filesystem: string;
@@ -17,5 +17,5 @@ declare module "@sindresorhus/df" {
     capacity: number;
     mountpoint: string;
   }
-  declare module.exports: typeof df;
+  declare export default typeof df;
 }
