@@ -1,6 +1,4 @@
-declare interface AnonymousMechanism$Credentials {
-trace?: string
-} declare module 'sasl-anonymous' {
+declare module 'sasl-anonymous' {
         import type {
           Mechanism
         } from 'saslmechanisms';
@@ -15,7 +13,10 @@ clientFirst: true
 };
 name: "ANONYMOUS";
 clientFirst: true;
-response(cred: AnonymousMechanism$AnonymousMechanism$Credentials): string;
+response(cred: AnonymousMechanism$Credentials): string;
 challenge(chal: string): void
 }
+	declare interface AnonymousMechanism$Credentials {
+trace?: string
+} 
     }
