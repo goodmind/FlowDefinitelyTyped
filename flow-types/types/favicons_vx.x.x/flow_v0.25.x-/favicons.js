@@ -163,19 +163,19 @@ declare module "favicons" {
    */
   declare function favicons(
     source: string | Buffer | string[],
-    configuration?: $Shape<favicons$favicons$Configuration>
-  ): Promise<favicons$favicons$FavIconResponse>;
+    configuration?: $Shape<favicons$Configuration>
+  ): Promise<favicons$FavIconResponse>;
 
   declare function favicons(
     source: string | Buffer | string[],
-    callback?: favicons$favicons$Callback
+    callback?: favicons$Callback
   ): void;
 
   declare function favicons(
     source: string | Buffer | string[],
-    configuration?: $Shape<favicons$favicons$Configuration>,
-    callback?: favicons$favicons$Callback
+    configuration?: $Shape<favicons$Configuration>,
+    callback?: favicons$Callback
   ): void;
 
-  declare module.exports: typeof favicons;
+  declare export default typeof favicons;
 }
