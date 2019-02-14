@@ -1,294 +1,102 @@
 declare module "voximplant-websdk" {
-  declare module.exports: typeof VoxImplant;
+  declare export default typeof VoxImplant;
 
   declare var npm$namespace$VoxImplant: {
     getInstance: typeof VoxImplant$getInstance,
-    version: typeof VoxImplant$version
+    version: typeof VoxImplant$version,
+
+    Events: typeof VoxImplant$Events,
+    IMEvents: typeof VoxImplant$IMEvents,
+    CallEvents: typeof VoxImplant$CallEvents,
+    ChatStateType: typeof VoxImplant$ChatStateType,
+    IMErrorType: typeof VoxImplant$IMErrorType,
+    MessageEventType: typeof VoxImplant$MessageEventType,
+    OperatorACDStatuses: typeof VoxImplant$OperatorACDStatuses,
+    RosterItemEvent: typeof VoxImplant$RosterItemEvent,
+    SubscriptionRequestType: typeof VoxImplant$SubscriptionRequestType,
+    UserStatuses: typeof VoxImplant$UserStatuses,
+    ChatRoomOperationType: typeof VoxImplant$ChatRoomOperationType
   };
 
   /**
    * VoxImplant.Client general events
    */
-  declare class VoxImplant$Events {
-    constructor(...args: empty): mixed;
-    static +AuthResult: Class<VoxImplant$Events__AuthResult> &
-      VoxImplant$Events__AuthResult &
-      0; // 0
-    static +ConnectionClosed: Class<VoxImplant$Events__ConnectionClosed> &
-      VoxImplant$Events__ConnectionClosed &
-      1; // 1
-    static +ConnectionEstablished: Class<VoxImplant$Events__ConnectionEstablished> &
-      VoxImplant$Events__ConnectionEstablished &
-      2; // 2
-    static +ConnectionFailed: Class<VoxImplant$Events__ConnectionFailed> &
-      VoxImplant$Events__ConnectionFailed &
-      3; // 3
-    static +IncomingCall: Class<VoxImplant$Events__IncomingCall> &
-      VoxImplant$Events__IncomingCall &
-      4; // 4
-    static +MicAccessResult: Class<VoxImplant$Events__MicAccessResult> &
-      VoxImplant$Events__MicAccessResult &
-      5; // 5
-    static +NetStatsReceived: Class<VoxImplant$Events__NetStatsReceived> &
-      VoxImplant$Events__NetStatsReceived &
-      6; // 6
-    static +PlaybackFinished: Class<VoxImplant$Events__PlaybackFinished> &
-      VoxImplant$Events__PlaybackFinished &
-      7; // 7
-    static +SDKReady: Class<VoxImplant$Events__SDKReady> &
-      VoxImplant$Events__SDKReady &
-      8; // 8
-    static +SourcesInfoUpdated: Class<VoxImplant$Events__SourcesInfoUpdated> &
-      VoxImplant$Events__SourcesInfoUpdated &
-      9; // 9
-  }
 
-  declare class VoxImplant$Events__AuthResult mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__ConnectionClosed mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__ConnectionEstablished
-    mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__ConnectionFailed mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__IncomingCall mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__MicAccessResult mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__NetStatsReceived mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__PlaybackFinished mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__SDKReady mixins VoxImplant$Events {}
-  declare class VoxImplant$Events__SourcesInfoUpdated
-    mixins VoxImplant$Events {}
+  declare var VoxImplant$Events: {|
+    +AuthResult: 0, // 0
+    +ConnectionClosed: 1, // 1
+    +ConnectionEstablished: 2, // 2
+    +ConnectionFailed: 3, // 3
+    +IncomingCall: 4, // 4
+    +MicAccessResult: 5, // 5
+    +NetStatsReceived: 6, // 6
+    +PlaybackFinished: 7, // 7
+    +SDKReady: 8, // 8
+    +SourcesInfoUpdated: 9 // 9
+  |};
 
   /**
    * VoxImplant.Client Instant Messaging and Presence events
    */
-  declare class VoxImplant$IMEvents {
-    constructor(...args: empty): mixed;
-    static +ChatHistoryReceived: Class<VoxImplant$IMEvents__ChatHistoryReceived> &
-      VoxImplant$IMEvents__ChatHistoryReceived &
-      0; // 0
-    static +ChatRoomBanList: Class<VoxImplant$IMEvents__ChatRoomBanList> &
-      VoxImplant$IMEvents__ChatRoomBanList &
-      1; // 1
-    static +ChatRoomCreated: Class<VoxImplant$IMEvents__ChatRoomCreated> &
-      VoxImplant$IMEvents__ChatRoomCreated &
-      2; // 2
-    static +ChatRoomError: Class<VoxImplant$IMEvents__ChatRoomError> &
-      VoxImplant$IMEvents__ChatRoomError &
-      3; // 3
-    static +ChatRoomHistoryReceived: Class<VoxImplant$IMEvents__ChatRoomHistoryReceived> &
-      VoxImplant$IMEvents__ChatRoomHistoryReceived &
-      4; // 4
-    static +ChatRoomInfo: Class<VoxImplant$IMEvents__ChatRoomInfo> &
-      VoxImplant$IMEvents__ChatRoomInfo &
-      5; // 5
-    static +ChatRoomInvitation: Class<VoxImplant$IMEvents__ChatRoomInvitation> &
-      VoxImplant$IMEvents__ChatRoomInvitation &
-      6; // 6
-    static +ChatRoomInviteDeclined: Class<VoxImplant$IMEvents__ChatRoomInviteDeclined> &
-      VoxImplant$IMEvents__ChatRoomInviteDeclined &
-      7; // 7
-    static +ChatRoomMessageModified: Class<VoxImplant$IMEvents__ChatRoomMessageModified> &
-      VoxImplant$IMEvents__ChatRoomMessageModified &
-      8; // 8
-    static +ChatRoomMessageNotModified: Class<VoxImplant$IMEvents__ChatRoomMessageNotModified> &
-      VoxImplant$IMEvents__ChatRoomMessageNotModified &
-      9; // 9
-    static +ChatRoomMessageReceived: Class<VoxImplant$IMEvents__ChatRoomMessageReceived> &
-      VoxImplant$IMEvents__ChatRoomMessageReceived &
-      10; // 10
-    static +ChatRoomMessageRemoved: Class<VoxImplant$IMEvents__ChatRoomMessageRemoved> &
-      VoxImplant$IMEvents__ChatRoomMessageRemoved &
-      11; // 11
-    static +ChatRoomNewParticipant: Class<VoxImplant$IMEvents__ChatRoomNewParticipant> &
-      VoxImplant$IMEvents__ChatRoomNewParticipant &
-      12; // 12
-    static +ChatRoomOperation: Class<VoxImplant$IMEvents__ChatRoomOperation> &
-      VoxImplant$IMEvents__ChatRoomOperation &
-      13; // 13
-    static +ChatRoomParticipantExit: Class<VoxImplant$IMEvents__ChatRoomParticipantExit> &
-      VoxImplant$IMEvents__ChatRoomParticipantExit &
-      14; // 14
-    static +ChatRoomParticipants: Class<VoxImplant$IMEvents__ChatRoomParticipants> &
-      VoxImplant$IMEvents__ChatRoomParticipants &
-      15; // 15
-    static +ChatRoomPresenceUpdate: Class<VoxImplant$IMEvents__ChatRoomPresenceUpdate> &
-      VoxImplant$IMEvents__ChatRoomPresenceUpdate &
-      16; // 16
-    static +ChatRoomStateUpdate: Class<VoxImplant$IMEvents__ChatRoomStateUpdate> &
-      VoxImplant$IMEvents__ChatRoomStateUpdate &
-      17; // 17
-    static +ChatRoomSubjectChange: Class<VoxImplant$IMEvents__ChatRoomSubjectChange> &
-      VoxImplant$IMEvents__ChatRoomSubjectChange &
-      18; // 18
-    static +ChatRoomsDataReceived: Class<VoxImplant$IMEvents__ChatRoomsDataReceived> &
-      VoxImplant$IMEvents__ChatRoomsDataReceived &
-      19; // 19
-    static +ChatStateUpdate: Class<VoxImplant$IMEvents__ChatStateUpdate> &
-      VoxImplant$IMEvents__ChatStateUpdate &
-      20; // 20
-    static +MessageModified: Class<VoxImplant$IMEvents__MessageModified> &
-      VoxImplant$IMEvents__MessageModified &
-      21; // 21
-    static +MessageNotModified: Class<VoxImplant$IMEvents__MessageNotModified> &
-      VoxImplant$IMEvents__MessageNotModified &
-      22; // 22
-    static +MessageReceived: Class<VoxImplant$IMEvents__MessageReceived> &
-      VoxImplant$IMEvents__MessageReceived &
-      23; // 23
-    static +MessageRemoved: Class<VoxImplant$IMEvents__MessageRemoved> &
-      VoxImplant$IMEvents__MessageRemoved &
-      24; // 24
-    static +MessageStatus: Class<VoxImplant$IMEvents__MessageStatus> &
-      VoxImplant$IMEvents__MessageStatus &
-      25; // 25
-    static +PresenceUpdate: Class<VoxImplant$IMEvents__PresenceUpdate> &
-      VoxImplant$IMEvents__PresenceUpdate &
-      26; // 26
-    static +RosterItemChange: Class<VoxImplant$IMEvents__RosterItemChange> &
-      VoxImplant$IMEvents__RosterItemChange &
-      27; // 27
-    static +RosterPresenceUpdate: Class<VoxImplant$IMEvents__RosterPresenceUpdate> &
-      VoxImplant$IMEvents__RosterPresenceUpdate &
-      28; // 28
-    static +RosterReceived: Class<VoxImplant$IMEvents__RosterReceived> &
-      VoxImplant$IMEvents__RosterReceived &
-      29; // 29
-    static +SubscriptionRequest: Class<VoxImplant$IMEvents__SubscriptionRequest> &
-      VoxImplant$IMEvents__SubscriptionRequest &
-      30; // 30
-    static +SystemError: Class<VoxImplant$IMEvents__SystemError> &
-      VoxImplant$IMEvents__SystemError &
-      31; // 31
-    static +UCConnected: Class<VoxImplant$IMEvents__UCConnected> &
-      VoxImplant$IMEvents__UCConnected &
-      32; // 32
-    static +UCDisconnected: Class<VoxImplant$IMEvents__UCDisconnected> &
-      VoxImplant$IMEvents__UCDisconnected &
-      33; // 33
-  }
 
-  declare class VoxImplant$IMEvents__ChatHistoryReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomBanList
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomCreated
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomError mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomHistoryReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomInfo mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomInvitation
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomInviteDeclined
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomMessageModified
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomMessageNotModified
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomMessageReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomMessageRemoved
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomNewParticipant
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomOperation
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomParticipantExit
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomParticipants
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomPresenceUpdate
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomStateUpdate
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomSubjectChange
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatRoomsDataReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__ChatStateUpdate
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__MessageModified
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__MessageNotModified
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__MessageReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__MessageRemoved
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__MessageStatus mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__PresenceUpdate
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__RosterItemChange
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__RosterPresenceUpdate
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__RosterReceived
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__SubscriptionRequest
-    mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__SystemError mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__UCConnected mixins VoxImplant$IMEvents {}
-  declare class VoxImplant$IMEvents__UCDisconnected
-    mixins VoxImplant$IMEvents {}
+  declare var VoxImplant$IMEvents: {|
+    +ChatHistoryReceived: 0, // 0
+    +ChatRoomBanList: 1, // 1
+    +ChatRoomCreated: 2, // 2
+    +ChatRoomError: 3, // 3
+    +ChatRoomHistoryReceived: 4, // 4
+    +ChatRoomInfo: 5, // 5
+    +ChatRoomInvitation: 6, // 6
+    +ChatRoomInviteDeclined: 7, // 7
+    +ChatRoomMessageModified: 8, // 8
+    +ChatRoomMessageNotModified: 9, // 9
+    +ChatRoomMessageReceived: 10, // 10
+    +ChatRoomMessageRemoved: 11, // 11
+    +ChatRoomNewParticipant: 12, // 12
+    +ChatRoomOperation: 13, // 13
+    +ChatRoomParticipantExit: 14, // 14
+    +ChatRoomParticipants: 15, // 15
+    +ChatRoomPresenceUpdate: 16, // 16
+    +ChatRoomStateUpdate: 17, // 17
+    +ChatRoomSubjectChange: 18, // 18
+    +ChatRoomsDataReceived: 19, // 19
+    +ChatStateUpdate: 20, // 20
+    +MessageModified: 21, // 21
+    +MessageNotModified: 22, // 22
+    +MessageReceived: 23, // 23
+    +MessageRemoved: 24, // 24
+    +MessageStatus: 25, // 25
+    +PresenceUpdate: 26, // 26
+    +RosterItemChange: 27, // 27
+    +RosterPresenceUpdate: 28, // 28
+    +RosterReceived: 29, // 29
+    +SubscriptionRequest: 30, // 30
+    +SystemError: 31, // 31
+    +UCConnected: 32, // 32
+    +UCDisconnected: 33 // 33
+  |};
 
   /**
    * VoxImplant.Call events
    */
-  declare class VoxImplant$CallEvents {
-    constructor(...args: empty): mixed;
-    static +Connected: Class<VoxImplant$CallEvents__Connected> &
-      VoxImplant$CallEvents__Connected &
-      0; // 0
-    static +Disconnected: Class<VoxImplant$CallEvents__Disconnected> &
-      VoxImplant$CallEvents__Disconnected &
-      1; // 1
-    static +Failed: Class<VoxImplant$CallEvents__Failed> &
-      VoxImplant$CallEvents__Failed &
-      2; // 2
-    static +ICETimeout: Class<VoxImplant$CallEvents__ICETimeout> &
-      VoxImplant$CallEvents__ICETimeout &
-      3; // 3
-    static +InfoReceived: Class<VoxImplant$CallEvents__InfoReceived> &
-      VoxImplant$CallEvents__InfoReceived &
-      4; // 4
-    static +MessageReceived: Class<VoxImplant$CallEvents__MessageReceived> &
-      VoxImplant$CallEvents__MessageReceived &
-      5; // 5
-    static +ProgressToneStart: Class<VoxImplant$CallEvents__ProgressToneStart> &
-      VoxImplant$CallEvents__ProgressToneStart &
-      6; // 6
-    static +ProgressToneStop: Class<VoxImplant$CallEvents__ProgressToneStop> &
-      VoxImplant$CallEvents__ProgressToneStop &
-      7; // 7
-    static +TransferComplete: Class<VoxImplant$CallEvents__TransferComplete> &
-      VoxImplant$CallEvents__TransferComplete &
-      8; // 8
-    static +TransferFailed: Class<VoxImplant$CallEvents__TransferFailed> &
-      VoxImplant$CallEvents__TransferFailed &
-      9; // 9
-  }
 
-  declare class VoxImplant$CallEvents__Connected mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__Disconnected
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__Failed mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__ICETimeout
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__InfoReceived
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__MessageReceived
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__ProgressToneStart
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__ProgressToneStop
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__TransferComplete
-    mixins VoxImplant$CallEvents {}
-  declare class VoxImplant$CallEvents__TransferFailed
-    mixins VoxImplant$CallEvents {}
+  declare var VoxImplant$CallEvents: {|
+    +Connected: 0, // 0
+    +Disconnected: 1, // 1
+    +Failed: 2, // 2
+    +ICETimeout: 3, // 3
+    +InfoReceived: 4, // 4
+    +MessageReceived: 5, // 5
+    +ProgressToneStart: 6, // 6
+    +ProgressToneStop: 7, // 7
+    +TransferComplete: 8, // 8
+    +TransferFailed: 9 // 9
+  |};
 
   /**
    * Event dispatched after login , loginWithOneTimeKey, requestOneTimeLoginKey or loginWithCode function call
    */
-  declare interface EventTypes$AuthResult {
+  declare interface VoxImplant$EventTypes$AuthResult {
     /**
      * Auth error code, possible values are: 301 - code for 'code' auth type was sent, 302 - key for 'onetimekey' auth type received, 401 - invalid password, 404 - invalid username, 403 - user account is frozen, 500 - internal error
      */
@@ -318,17 +126,17 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if connection to VoxImplant Cloud was closed because of network problems. See connect function
    */
-  declare interface EventTypes$ConnectionClosed {}
+  declare interface VoxImplant$EventTypes$ConnectionClosed {}
 
   /**
    * Event dispatched after connection to VoxImplant Cloud was established successfully. See connect function
    */
-  declare interface EventTypes$ConnectionEstablished {}
+  declare interface VoxImplant$EventTypes$ConnectionEstablished {}
 
   /**
    * Event dispatched if connection to VoxImplant Cloud couldn't be established. See connect function
    */
-  declare interface EventTypes$ConnectionFailed {
+  declare interface VoxImplant$EventTypes$ConnectionFailed {
     /**
      * Failure reason description
      */
@@ -338,7 +146,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when there is a new incoming call to current user
    */
-  declare interface EventTypes$IncomingCall {
+  declare interface VoxImplant$EventTypes$IncomingCall {
     /**
      * Incoming call instance. See VoxImplant.Call for details
      */
@@ -353,7 +161,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched after user interaction with the mic access dialog.
    */
-  declare interface EventTypes$MicAccessResult {
+  declare interface VoxImplant$EventTypes$MicAccessResult {
     /**
      * True is access was allowed, false - otherwise
      */
@@ -363,7 +171,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when packet loss data received from VoxImplant servers
    */
-  declare interface EventTypes$NetStatsReceived {
+  declare interface VoxImplant$EventTypes$NetStatsReceived {
     /**
      * Network info object
      */
@@ -373,27 +181,27 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched after sound playback was stopped. See playToneScript and stopPlayback functions
    */
-  declare interface EventTypes$PlaybackFinished {}
+  declare interface VoxImplant$EventTypes$PlaybackFinished {}
 
   /**
    * Event dispatched after SDK was successfully initialized after init function call
    */
-  declare interface EventTypes$SDKReady {
+  declare interface VoxImplant$EventTypes$SDKReady {
     /**
      * SDK version
      */
-    VoxImplant$version: string;
+    version: string;
   }
 
   /**
    * Event dispatched when audio and video sources information was updated. See audioSources and videoSources for details
    */
-  declare interface EventTypes$SourcesInfoUpdated {}
+  declare interface VoxImplant$EventTypes$SourcesInfoUpdated {}
 
   /**
    * Event dispatched after call was connected
    */
-  declare interface CallEventTypes$Connected {
+  declare interface VoxImplant$CallEventTypes$Connected {
     /**
      * Call that dispatched the event
      */
@@ -408,7 +216,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched after call was disconnected
    */
-  declare interface CallEventTypes$Disconnected {
+  declare interface VoxImplant$CallEventTypes$Disconnected {
     /**
      * Call that dispatched the event
      */
@@ -423,7 +231,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched after if call failed
    */
-  declare interface CallEventTypes$Failed {
+  declare interface VoxImplant$CallEventTypes$Failed {
     /**
      * Call that dispatched the event
      */
@@ -448,7 +256,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched in case of network connection problem between 2 peers
    */
-  declare interface CallEventTypes$ICETimeout {
+  declare interface VoxImplant$CallEventTypes$ICETimeout {
     /**
      * Call that dispatched the event
      */
@@ -458,7 +266,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when INFO message is received
    */
-  declare interface CallEventTypes$InfoReceived {
+  declare interface VoxImplant$CallEventTypes$InfoReceived {
     /**
      * Content of the message
      */
@@ -483,7 +291,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when text message is received
    */
-  declare interface CallEventTypes$MessageReceived {
+  declare interface VoxImplant$CallEventTypes$MessageReceived {
     /**
      * Call that dispatched the event
      */
@@ -523,7 +331,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when progress tone playback starts
    */
-  declare interface CallEventTypes$ProgressToneStart {
+  declare interface VoxImplant$CallEventTypes$ProgressToneStart {
     /**
      * Call that dispatched the event
      */
@@ -533,7 +341,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when progress tone playback stops
    */
-  declare interface CallEventTypes$ProgressToneStop {
+  declare interface VoxImplant$CallEventTypes$ProgressToneStop {
     /**
      * Call that dispatched the event
      */
@@ -543,7 +351,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when call has been transferred successfully
    */
-  declare interface CallEventTypes$TransferComplete {
+  declare interface VoxImplant$CallEventTypes$TransferComplete {
     /**
      * Call that dispatched the event
      */
@@ -553,7 +361,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when call transfer failed
    */
-  declare interface CallEventTypes$TransferFailed {
+  declare interface VoxImplant$CallEventTypes$TransferFailed {
     /**
      * Call that dispatched the event
      */
@@ -563,7 +371,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat history received
    */
-  declare interface IMEventTypes$ChatHistoryReceived {
+  declare interface VoxImplant$IMEventTypes$ChatHistoryReceived {
     /**
      * User id
      */
@@ -583,7 +391,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when info about banned chat room participants received
    */
-  declare interface IMEventTypes$ChatRoomBanList {
+  declare interface VoxImplant$IMEventTypes$ChatRoomBanList {
     /**
      * Participants list
      */
@@ -598,7 +406,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if chat room was created successfully
    */
-  declare interface IMEventTypes$ChatRoomCreated {
+  declare interface VoxImplant$IMEventTypes$ChatRoomCreated {
     /**
      * Room id
      */
@@ -608,7 +416,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched in case of error while chat room operation
    */
-  declare interface IMEventTypes$ChatRoomError {
+  declare interface VoxImplant$IMEventTypes$ChatRoomError {
     /**
      * Error code
      */
@@ -633,7 +441,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat room history received
    */
-  declare interface IMEventTypes$ChatRoomHistoryReceived {
+  declare interface VoxImplant$IMEventTypes$ChatRoomHistoryReceived {
     /**
      * Message id specified in getInstantMessagingHistory method
      */
@@ -642,7 +450,7 @@ declare module "voximplant-websdk" {
     /**
      * List of messages
      */
-    messages: VoxImplant$VoxImplant$IMHistoryMessage[];
+    messages: VoxImplant$IMHistoryMessage[];
 
     /**
      * Room id
@@ -653,7 +461,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when user joins chat room
    */
-  declare interface IMEventTypes$ChatRoomInfo {
+  declare interface VoxImplant$IMEventTypes$ChatRoomInfo {
     /**
      * Room features
      */
@@ -662,7 +470,7 @@ declare module "voximplant-websdk" {
     /**
      * Room info object
      */
-    info: IMEventTypes$ChatRoomInfo;
+    info: VoxImplant$IMEventTypes$ChatRoomInfo;
 
     /**
      * Room id
@@ -698,7 +506,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when invitation to chat room received
    */
-  declare interface IMEventTypes$ChatRoomInvitation {
+  declare interface VoxImplant$IMEventTypes$ChatRoomInvitation {
     /**
      * The body of the message
      */
@@ -728,7 +536,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if an invitation to chat room was declined by the invitee
    */
-  declare interface IMEventTypes$ChatRoomInviteDeclined {
+  declare interface VoxImplant$IMEventTypes$ChatRoomInviteDeclined {
     /**
      * User id (invitee)
      */
@@ -748,7 +556,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat room message modified
    */
-  declare interface IMEventTypes$ChatRoomMessageModified {
+  declare interface VoxImplant$IMEventTypes$ChatRoomMessageModified {
     /**
      * New message content
      */
@@ -788,7 +596,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched in case of error during chat room message modification
    */
-  declare interface IMEventTypes$ChatRoomMessageNotModified {
+  declare interface VoxImplant$IMEventTypes$ChatRoomMessageNotModified {
     /**
      * Error code
      */
@@ -813,7 +621,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when instant message was sent to chat room
    */
-  declare interface IMEventTypes$ChatRoomMessageReceived {
+  declare interface VoxImplant$IMEventTypes$ChatRoomMessageReceived {
     /**
      * Message content
      */
@@ -853,7 +661,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat room message removed
    */
-  declare interface IMEventTypes$ChatRoomMessageRemoved {
+  declare interface VoxImplant$IMEventTypes$ChatRoomMessageRemoved {
     /**
      * User id
      */
@@ -888,7 +696,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when new participant joined the chat room
    */
-  declare interface IMEventTypes$ChatRoomNewParticipant {
+  declare interface VoxImplant$IMEventTypes$ChatRoomNewParticipant {
     /**
      * User display name
      */
@@ -908,7 +716,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat room participant was banned/unbanned
    */
-  declare interface IMEventTypes$ChatRoomOperation {
+  declare interface VoxImplant$IMEventTypes$ChatRoomOperation {
     /**
      * Room id
      */
@@ -928,7 +736,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when participant left the chat room
    */
-  declare interface IMEventTypes$ChatRoomParticipantExit {
+  declare interface VoxImplant$IMEventTypes$ChatRoomParticipantExit {
     /**
      * User id
      */
@@ -943,7 +751,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when info about chat room participants received
    */
-  declare interface IMEventTypes$ChatRoomParticipants {
+  declare interface VoxImplant$IMEventTypes$ChatRoomParticipants {
     /**
      * Participants list
      */
@@ -958,7 +766,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if chat room participant presence status was updated
    */
-  declare interface IMEventTypes$ChatRoomPresenceUpdate {
+  declare interface VoxImplant$IMEventTypes$ChatRoomPresenceUpdate {
     /**
      * Optional presence message
      */
@@ -983,7 +791,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat session state updated
    */
-  declare interface IMEventTypes$ChatRoomStateUpdate {
+  declare interface VoxImplant$IMEventTypes$ChatRoomStateUpdate {
     /**
      * User id
      */
@@ -1008,7 +816,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if chat room subject was changed
    */
-  declare interface IMEventTypes$ChatRoomSubjectChange {
+  declare interface VoxImplant$IMEventTypes$ChatRoomSubjectChange {
     /**
      * User id who changed the subject
      */
@@ -1033,7 +841,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when information about chat rooms where user participates received
    */
-  declare interface IMEventTypes$ChatRoomsDataReceived {
+  declare interface VoxImplant$IMEventTypes$ChatRoomsDataReceived {
     /**
      * Rooms list
      */
@@ -1043,7 +851,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when chat session state updated
    */
-  declare interface IMEventTypes$ChatStateUpdate {
+  declare interface VoxImplant$IMEventTypes$ChatStateUpdate {
     /**
      * User id
      */
@@ -1063,7 +871,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when instant message was modified by user
    */
-  declare interface IMEventTypes$MessageModified {
+  declare interface VoxImplant$IMEventTypes$MessageModified {
     /**
      * Message new content
      */
@@ -1088,7 +896,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched if error happened during instant message modification
    */
-  declare interface IMEventTypes$MessageNotModified {
+  declare interface VoxImplant$IMEventTypes$MessageNotModified {
     /**
      * Message new content
      */
@@ -1108,7 +916,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when text message is received
    */
-  declare interface IMEventTypes$MessageReceived {
+  declare interface VoxImplant$IMEventTypes$MessageReceived {
     /**
      * Call that dispatched the event
      */
@@ -1148,7 +956,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when instant message was removed by user
    */
-  declare interface IMEventTypes$MessageRemoved {
+  declare interface VoxImplant$IMEventTypes$MessageRemoved {
     /**
      * User id (of the user who sent the message)
      */
@@ -1168,7 +976,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when sent message status changed
    */
-  declare interface IMEventTypes$MessageStatus {
+  declare interface VoxImplant$IMEventTypes$MessageStatus {
     /**
      * User id
      */
@@ -1193,7 +1001,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when self presence updated
    */
-  declare interface IMEventTypes$PresenceUpdate {
+  declare interface VoxImplant$IMEventTypes$PresenceUpdate {
     /**
      * User id
      */
@@ -1218,7 +1026,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when roster item changed
    */
-  declare interface IMEventTypes$RosterItemChange {
+  declare interface VoxImplant$IMEventTypes$RosterItemChange {
     /**
      * User display name
      */
@@ -1248,7 +1056,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when roster item presence update happened
    */
-  declare interface IMEventTypes$RosterPresenceUpdate {
+  declare interface VoxImplant$IMEventTypes$RosterPresenceUpdate {
     /**
      * User id
      */
@@ -1273,7 +1081,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when roster data received
    */
-  declare interface IMEventTypes$RosterReceived {
+  declare interface VoxImplant$IMEventTypes$RosterReceived {
     /**
      * User id
      */
@@ -1288,7 +1096,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when some user tries to add current user into his roster. Current user can confirm or reject the subscription, then VoxImplant.IMEvents.RosterItemChange will be dispatched on for user that made the request
    */
-  declare interface IMEventTypes$SubscriptionRequest {
+  declare interface VoxImplant$IMEventTypes$SubscriptionRequest {
     /**
      * User id
      */
@@ -1313,7 +1121,7 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched in case of instant messaging subsystem error
    */
-  declare interface IMEventTypes$SystemError {
+  declare interface VoxImplant$IMEventTypes$SystemError {
     /**
      * Error data object, contains the error details
      */
@@ -1328,71 +1136,71 @@ declare module "voximplant-websdk" {
   /**
    * Event dispatched when instant messaging and presence subsystems (UC) are online
    */
-  declare interface IMEventTypes$UCConnected {}
+  declare interface VoxImplant$IMEventTypes$UCConnected {}
 
   /**
    * Event dispatched when instant messaging and presence subsystems (UC) are offline
    */
-  declare interface IMEventTypes$UCDisconnected {}
+  declare interface VoxImplant$IMEventTypes$UCDisconnected {}
 
   declare type VoxImplant$VoxImplantEvent =
-    | EventTypes$EventTypes$AuthResult
-    | EventTypes$EventTypes$ConnectionClosed
-    | EventTypes$EventTypes$ConnectionEstablished
-    | EventTypes$EventTypes$ConnectionFailed
-    | EventTypes$EventTypes$IncomingCall
-    | EventTypes$EventTypes$MicAccessResult
-    | EventTypes$EventTypes$NetStatsReceived
-    | EventTypes$EventTypes$PlaybackFinished
-    | EventTypes$EventTypes$SDKReady
-    | EventTypes$EventTypes$SourcesInfoUpdated;
+    | EventTypes$AuthResult
+    | EventTypes$ConnectionClosed
+    | EventTypes$ConnectionEstablished
+    | EventTypes$ConnectionFailed
+    | EventTypes$IncomingCall
+    | EventTypes$MicAccessResult
+    | EventTypes$NetStatsReceived
+    | EventTypes$PlaybackFinished
+    | EventTypes$SDKReady
+    | EventTypes$SourcesInfoUpdated;
 
   declare type VoxImplant$VoxImplantCallEvent =
-    | CallEventTypes$CallEventTypes$Connected
-    | CallEventTypes$CallEventTypes$Disconnected
-    | CallEventTypes$CallEventTypes$Failed
-    | CallEventTypes$CallEventTypes$InfoReceived
-    | CallEventTypes$IMEventTypes$MessageReceived
-    | CallEventTypes$CallEventTypes$ProgressToneStart
-    | CallEventTypes$CallEventTypes$ProgressToneStop
-    | CallEventTypes$CallEventTypes$TransferComplete
-    | CallEventTypes$CallEventTypes$TransferFailed;
+    | CallEventTypes$Connected
+    | CallEventTypes$Disconnected
+    | CallEventTypes$Failed
+    | CallEventTypes$InfoReceived
+    | CallEventTypes$MessageReceived
+    | CallEventTypes$ProgressToneStart
+    | CallEventTypes$ProgressToneStop
+    | CallEventTypes$TransferComplete
+    | CallEventTypes$TransferFailed;
 
   declare type VoxImplant$VoxImplantIMEvent =
-    | IMEventTypes$IMEventTypes$ChatHistoryReceived
-    | IMEventTypes$IMEventTypes$ChatRoomBanList
-    | IMEventTypes$IMEventTypes$ChatRoomCreated
-    | IMEventTypes$IMEventTypes$ChatRoomError
-    | IMEventTypes$IMEventTypes$ChatRoomHistoryReceived
-    | IMEventTypes$IMEventTypes$ChatRoomInfo
-    | IMEventTypes$IMEventTypes$ChatRoomInvitation
-    | IMEventTypes$IMEventTypes$ChatRoomInviteDeclined
-    | IMEventTypes$IMEventTypes$ChatRoomMessageModified
-    | IMEventTypes$IMEventTypes$ChatRoomMessageNotModified
-    | IMEventTypes$IMEventTypes$ChatRoomMessageReceived
-    | IMEventTypes$IMEventTypes$ChatRoomMessageRemoved
-    | IMEventTypes$IMEventTypes$ChatRoomNewParticipant
-    | IMEventTypes$IMEventTypes$ChatRoomOperation
-    | IMEventTypes$IMEventTypes$ChatRoomParticipantExit
-    | IMEventTypes$IMEventTypes$ChatRoomParticipants
-    | IMEventTypes$IMEventTypes$ChatRoomPresenceUpdate
-    | IMEventTypes$IMEventTypes$ChatRoomStateUpdate
-    | IMEventTypes$IMEventTypes$ChatRoomSubjectChange
-    | IMEventTypes$IMEventTypes$ChatRoomsDataReceived
-    | IMEventTypes$IMEventTypes$ChatStateUpdate
-    | IMEventTypes$IMEventTypes$MessageModified
-    | IMEventTypes$IMEventTypes$MessageNotModified
-    | IMEventTypes$IMEventTypes$MessageReceived
-    | IMEventTypes$IMEventTypes$MessageRemoved
-    | IMEventTypes$IMEventTypes$MessageStatus
-    | IMEventTypes$IMEventTypes$PresenceUpdate
-    | IMEventTypes$IMEventTypes$RosterItemChange
-    | IMEventTypes$IMEventTypes$RosterPresenceUpdate
-    | IMEventTypes$IMEventTypes$RosterReceived
-    | IMEventTypes$IMEventTypes$SubscriptionRequest
-    | IMEventTypes$IMEventTypes$SystemError
-    | IMEventTypes$IMEventTypes$UCConnected
-    | IMEventTypes$IMEventTypes$UCDisconnected;
+    | IMEventTypes$ChatHistoryReceived
+    | IMEventTypes$ChatRoomBanList
+    | IMEventTypes$ChatRoomCreated
+    | IMEventTypes$ChatRoomError
+    | IMEventTypes$ChatRoomHistoryReceived
+    | IMEventTypes$ChatRoomInfo
+    | IMEventTypes$ChatRoomInvitation
+    | IMEventTypes$ChatRoomInviteDeclined
+    | IMEventTypes$ChatRoomMessageModified
+    | IMEventTypes$ChatRoomMessageNotModified
+    | IMEventTypes$ChatRoomMessageReceived
+    | IMEventTypes$ChatRoomMessageRemoved
+    | IMEventTypes$ChatRoomNewParticipant
+    | IMEventTypes$ChatRoomOperation
+    | IMEventTypes$ChatRoomParticipantExit
+    | IMEventTypes$ChatRoomParticipants
+    | IMEventTypes$ChatRoomPresenceUpdate
+    | IMEventTypes$ChatRoomStateUpdate
+    | IMEventTypes$ChatRoomSubjectChange
+    | IMEventTypes$ChatRoomsDataReceived
+    | IMEventTypes$ChatStateUpdate
+    | IMEventTypes$MessageModified
+    | IMEventTypes$MessageNotModified
+    | IMEventTypes$MessageReceived
+    | IMEventTypes$MessageRemoved
+    | IMEventTypes$MessageStatus
+    | IMEventTypes$PresenceUpdate
+    | IMEventTypes$RosterItemChange
+    | IMEventTypes$RosterPresenceUpdate
+    | IMEventTypes$RosterReceived
+    | IMEventTypes$SubscriptionRequest
+    | IMEventTypes$SystemError
+    | IMEventTypes$UCConnected
+    | IMEventTypes$UCDisconnected;
 
   /**
    * VoxImplant SDK Configuration
@@ -1514,225 +1322,66 @@ declare module "voximplant-websdk" {
     name: string;
   }
 
-  declare class VoxImplant$ChatStateType {
-    constructor(...args: empty): mixed;
-    static +Active: Class<VoxImplant$ChatStateType__Active> &
-      VoxImplant$ChatStateType__Active &
-      0; // 0
-    static +Composing: Class<VoxImplant$ChatStateType__Composing> &
-      VoxImplant$ChatStateType__Composing &
-      1; // 1
-    static +Gone: Class<VoxImplant$ChatStateType__Gone> &
-      VoxImplant$ChatStateType__Gone &
-      2; // 2
-    static +Inactive: Class<VoxImplant$ChatStateType__Inactive> &
-      VoxImplant$ChatStateType__Inactive &
-      3; // 3
-    static +Invalid: Class<VoxImplant$ChatStateType__Invalid> &
-      VoxImplant$ChatStateType__Invalid &
-      4; // 4
-    static +Paused: Class<VoxImplant$ChatStateType__Paused> &
-      VoxImplant$ChatStateType__Paused &
-      5; // 5
-  }
+  declare var VoxImplant$ChatStateType: {|
+    +Active: 0, // 0
+    +Composing: 1, // 1
+    +Gone: 2, // 2
+    +Inactive: 3, // 3
+    +Invalid: 4, // 4
+    +Paused: 5 // 5
+  |};
 
-  declare class VoxImplant$ChatStateType__Active
-    mixins VoxImplant$ChatStateType {}
-  declare class VoxImplant$ChatStateType__Composing
-    mixins VoxImplant$ChatStateType {}
-  declare class VoxImplant$ChatStateType__Gone
-    mixins VoxImplant$ChatStateType {}
-  declare class VoxImplant$ChatStateType__Inactive
-    mixins VoxImplant$ChatStateType {}
-  declare class VoxImplant$ChatStateType__Invalid
-    mixins VoxImplant$ChatStateType {}
-  declare class VoxImplant$ChatStateType__Paused
-    mixins VoxImplant$ChatStateType {}
+  declare var VoxImplant$IMErrorType: {|
+    +RemoteFunctionError: 0, // 0
+    +Error: 1, // 1
+    +RosterError: 2 // 2
+  |};
 
-  declare class VoxImplant$IMErrorType {
-    constructor(...args: empty): mixed;
-    static +RemoteFunctionError: Class<VoxImplant$IMErrorType__RemoteFunctionError> &
-      VoxImplant$IMErrorType__RemoteFunctionError &
-      0; // 0
-    static +Error: Class<VoxImplant$IMErrorType__Error> &
-      VoxImplant$IMErrorType__Error &
-      1; // 1
-    static +RosterError: Class<VoxImplant$IMErrorType__RosterError> &
-      VoxImplant$IMErrorType__RosterError &
-      2; // 2
-  }
+  declare var VoxImplant$MessageEventType: {|
+    +Cancel: 0, // 0
+    +Composing: 1, // 1
+    +Delivered: 2, // 2
+    +Displayed: 3, // 3
+    +Invalid: 4, // 4
+    +Offline: 5 // 5
+  |};
 
-  declare class VoxImplant$IMErrorType__RemoteFunctionError
-    mixins VoxImplant$IMErrorType {}
-  declare class VoxImplant$IMErrorType__Error mixins VoxImplant$IMErrorType {}
-  declare class VoxImplant$IMErrorType__RosterError
-    mixins VoxImplant$IMErrorType {}
+  declare var VoxImplant$OperatorACDStatuses: {|
+    +AfterService: 0, // 0
+    +DND: 1, // 1
+    +InService: 2, // 2
+    +Offline: 3, // 3
+    +Online: 4, // 4
+    +Ready: 5, // 5
+    +Timeout: 6 // 6
+  |};
 
-  declare class VoxImplant$MessageEventType {
-    constructor(...args: empty): mixed;
-    static +Cancel: Class<VoxImplant$MessageEventType__Cancel> &
-      VoxImplant$MessageEventType__Cancel &
-      0; // 0
-    static +Composing: Class<VoxImplant$MessageEventType__Composing> &
-      VoxImplant$MessageEventType__Composing &
-      1; // 1
-    static +Delivered: Class<VoxImplant$MessageEventType__Delivered> &
-      VoxImplant$MessageEventType__Delivered &
-      2; // 2
-    static +Displayed: Class<VoxImplant$MessageEventType__Displayed> &
-      VoxImplant$MessageEventType__Displayed &
-      3; // 3
-    static +Invalid: Class<VoxImplant$MessageEventType__Invalid> &
-      VoxImplant$MessageEventType__Invalid &
-      4; // 4
-    static +Offline: Class<VoxImplant$MessageEventType__Offline> &
-      VoxImplant$MessageEventType__Offline &
-      5; // 5
-  }
+  declare var VoxImplant$RosterItemEvent: {|
+    +Added: 0, // 0
+    +Removed: 1, // 1
+    +Subscribed: 2, // 2
+    +Unsubscribed: 3, // 3
+    +Updated: 4 // 4
+  |};
 
-  declare class VoxImplant$MessageEventType__Cancel
-    mixins VoxImplant$MessageEventType {}
-  declare class VoxImplant$MessageEventType__Composing
-    mixins VoxImplant$MessageEventType {}
-  declare class VoxImplant$MessageEventType__Delivered
-    mixins VoxImplant$MessageEventType {}
-  declare class VoxImplant$MessageEventType__Displayed
-    mixins VoxImplant$MessageEventType {}
-  declare class VoxImplant$MessageEventType__Invalid
-    mixins VoxImplant$MessageEventType {}
-  declare class VoxImplant$MessageEventType__Offline
-    mixins VoxImplant$MessageEventType {}
+  declare var VoxImplant$SubscriptionRequestType: {|
+    +Subscribe: 0, // 0
+    +Unsubscribe: 1 // 1
+  |};
 
-  declare class VoxImplant$OperatorACDStatuses {
-    constructor(...args: empty): mixed;
-    static +AfterService: Class<VoxImplant$OperatorACDStatuses__AfterService> &
-      VoxImplant$OperatorACDStatuses__AfterService &
-      0; // 0
-    static +DND: Class<VoxImplant$OperatorACDStatuses__DND> &
-      VoxImplant$OperatorACDStatuses__DND &
-      1; // 1
-    static +InService: Class<VoxImplant$OperatorACDStatuses__InService> &
-      VoxImplant$OperatorACDStatuses__InService &
-      2; // 2
-    static +Offline: Class<VoxImplant$OperatorACDStatuses__Offline> &
-      VoxImplant$OperatorACDStatuses__Offline &
-      3; // 3
-    static +Online: Class<VoxImplant$OperatorACDStatuses__Online> &
-      VoxImplant$OperatorACDStatuses__Online &
-      4; // 4
-    static +Ready: Class<VoxImplant$OperatorACDStatuses__Ready> &
-      VoxImplant$OperatorACDStatuses__Ready &
-      5; // 5
-    static +Timeout: Class<VoxImplant$OperatorACDStatuses__Timeout> &
-      VoxImplant$OperatorACDStatuses__Timeout &
-      6; // 6
-  }
+  declare var VoxImplant$UserStatuses: {|
+    +Away: 0, // 0
+    +Chat: 1, // 1
+    +DND: 2, // 2
+    +Offline: 3, // 3
+    +Online: 4, // 4
+    +XA: 5 // 5
+  |};
 
-  declare class VoxImplant$OperatorACDStatuses__AfterService
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__DND
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__InService
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__Offline
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__Online
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__Ready
-    mixins VoxImplant$OperatorACDStatuses {}
-  declare class VoxImplant$OperatorACDStatuses__Timeout
-    mixins VoxImplant$OperatorACDStatuses {}
-
-  declare class VoxImplant$RosterItemEvent {
-    constructor(...args: empty): mixed;
-    static +Added: Class<VoxImplant$RosterItemEvent__Added> &
-      VoxImplant$RosterItemEvent__Added &
-      0; // 0
-    static +Removed: Class<VoxImplant$RosterItemEvent__Removed> &
-      VoxImplant$RosterItemEvent__Removed &
-      1; // 1
-    static +Subscribed: Class<VoxImplant$RosterItemEvent__Subscribed> &
-      VoxImplant$RosterItemEvent__Subscribed &
-      2; // 2
-    static +Unsubscribed: Class<VoxImplant$RosterItemEvent__Unsubscribed> &
-      VoxImplant$RosterItemEvent__Unsubscribed &
-      3; // 3
-    static +Updated: Class<VoxImplant$RosterItemEvent__Updated> &
-      VoxImplant$RosterItemEvent__Updated &
-      4; // 4
-  }
-
-  declare class VoxImplant$RosterItemEvent__Added
-    mixins VoxImplant$RosterItemEvent {}
-  declare class VoxImplant$RosterItemEvent__Removed
-    mixins VoxImplant$RosterItemEvent {}
-  declare class VoxImplant$RosterItemEvent__Subscribed
-    mixins VoxImplant$RosterItemEvent {}
-  declare class VoxImplant$RosterItemEvent__Unsubscribed
-    mixins VoxImplant$RosterItemEvent {}
-  declare class VoxImplant$RosterItemEvent__Updated
-    mixins VoxImplant$RosterItemEvent {}
-
-  declare class VoxImplant$SubscriptionRequestType {
-    constructor(...args: empty): mixed;
-    static +Subscribe: Class<VoxImplant$SubscriptionRequestType__Subscribe> &
-      VoxImplant$SubscriptionRequestType__Subscribe &
-      0; // 0
-    static +Unsubscribe: Class<VoxImplant$SubscriptionRequestType__Unsubscribe> &
-      VoxImplant$SubscriptionRequestType__Unsubscribe &
-      1; // 1
-  }
-
-  declare class VoxImplant$SubscriptionRequestType__Subscribe
-    mixins VoxImplant$SubscriptionRequestType {}
-  declare class VoxImplant$SubscriptionRequestType__Unsubscribe
-    mixins VoxImplant$SubscriptionRequestType {}
-
-  declare class VoxImplant$UserStatuses {
-    constructor(...args: empty): mixed;
-    static +Away: Class<VoxImplant$UserStatuses__Away> &
-      VoxImplant$UserStatuses__Away &
-      0; // 0
-    static +Chat: Class<VoxImplant$UserStatuses__Chat> &
-      VoxImplant$UserStatuses__Chat &
-      1; // 1
-    static +DND: Class<VoxImplant$UserStatuses__DND> &
-      VoxImplant$UserStatuses__DND &
-      2; // 2
-    static +Offline: Class<VoxImplant$UserStatuses__Offline> &
-      VoxImplant$UserStatuses__Offline &
-      3; // 3
-    static +Online: Class<VoxImplant$UserStatuses__Online> &
-      VoxImplant$UserStatuses__Online &
-      4; // 4
-    static +XA: Class<VoxImplant$UserStatuses__XA> &
-      VoxImplant$UserStatuses__XA &
-      5; // 5
-  }
-
-  declare class VoxImplant$UserStatuses__Away mixins VoxImplant$UserStatuses {}
-  declare class VoxImplant$UserStatuses__Chat mixins VoxImplant$UserStatuses {}
-  declare class VoxImplant$UserStatuses__DND mixins VoxImplant$UserStatuses {}
-  declare class VoxImplant$UserStatuses__Offline
-    mixins VoxImplant$UserStatuses {}
-  declare class VoxImplant$UserStatuses__Online
-    mixins VoxImplant$UserStatuses {}
-  declare class VoxImplant$UserStatuses__XA mixins VoxImplant$UserStatuses {}
-
-  declare class VoxImplant$ChatRoomOperationType {
-    constructor(...args: empty): mixed;
-    static +Ban: Class<VoxImplant$ChatRoomOperationType__Ban> &
-      VoxImplant$ChatRoomOperationType__Ban &
-      0; // 0
-    static +Unban: Class<VoxImplant$ChatRoomOperationType__Unban> &
-      VoxImplant$ChatRoomOperationType__Unban &
-      1; // 1
-  }
-
-  declare class VoxImplant$ChatRoomOperationType__Ban
-    mixins VoxImplant$ChatRoomOperationType {}
-  declare class VoxImplant$ChatRoomOperationType__Unban
-    mixins VoxImplant$ChatRoomOperationType {}
+  declare var VoxImplant$ChatRoomOperationType: {|
+    +Ban: 0, // 0
+    +Unban: 1 // 1
+  |};
 
   /**
    * Chat room
@@ -1884,7 +1533,7 @@ declare module "voximplant-websdk" {
      * @param eventHandler Handler function. A single parameter is passed - object with the event information
      */
     addEventListener(
-      eventName: VoxImplant$VoxImplant$Events | VoxImplant$VoxImplant$IMEvents,
+      eventName: VoxImplant$Events | VoxImplant$IMEvents,
       eventHandler: (
         eventObject: VoxImplant$VoxImplantEvent | VoxImplant$VoxImplantIMEvent
       ) => any
@@ -2140,7 +1789,7 @@ declare module "voximplant-websdk" {
      * @param eventHandler Handler function
      */
     removeEventListener(
-      eventName: VoxImplant$VoxImplant$Events | VoxImplant$VoxImplant$IMEvents,
+      eventName: VoxImplant$Events | VoxImplant$IMEvents,
       eventHandler: () => any
     ): void;
 
@@ -2362,7 +2011,7 @@ declare module "voximplant-websdk" {
      * @param eventHandler Handler function. A single parameter is passed - object with the event information
      */
     addEventListener(
-      eventName: VoxImplant$VoxImplant$CallEvents,
+      eventName: VoxImplant$CallEvents,
       eventHandler: (eventObject: VoxImplant$VoxImplantCallEvent) => any
     ): void;
 
@@ -2432,7 +2081,7 @@ declare module "voximplant-websdk" {
      * @param eventHandler Handler function
      */
     removeEventListener(
-      eventName: VoxImplant$VoxImplant$CallEvents,
+      eventName: VoxImplant$CallEvents,
       eventHandler: () => any
     ): void;
 
