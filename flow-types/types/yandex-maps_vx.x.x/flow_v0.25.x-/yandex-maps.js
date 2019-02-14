@@ -1,6 +1,41 @@
 declare module "yandex-maps" {
   declare var npm$namespace$ymaps: {
-    ready: typeof ymaps$ready
+    ready: typeof ymaps$ready,
+
+    Balloon: typeof ymaps$Balloon,
+    Circle: typeof ymaps$Circle,
+    Clusterer: typeof ymaps$Clusterer,
+    ClusterPlacemark: typeof ymaps$ClusterPlacemark,
+    Collection: typeof ymaps$Collection,
+    Event: typeof ymaps$Event,
+    GeoObject: typeof ymaps$GeoObject,
+    GeoObjectCollection: typeof ymaps$GeoObjectCollection,
+    Layer: typeof ymaps$Layer,
+    Map: typeof ymaps$Map,
+    MapType: typeof ymaps$MapType,
+    Placemark: typeof ymaps$Placemark,
+    Polygon: typeof ymaps$Polygon,
+    Polyline: typeof ymaps$Polyline,
+    Popup: typeof ymaps$Popup,
+    Monitor: typeof ymaps$Monitor,
+    behavior: typeof npm$namespace$ymaps$behavior,
+    clusterer: typeof npm$namespace$ymaps$clusterer,
+    collection: typeof npm$namespace$ymaps$collection,
+    control: typeof npm$namespace$ymaps$control,
+    data: typeof npm$namespace$ymaps$data,
+    event: typeof npm$namespace$ymaps$event,
+    geometry: typeof npm$namespace$ymaps$geometry,
+    geometryEditor: typeof npm$namespace$ymaps$geometryEditor,
+    geoObject: typeof npm$namespace$ymaps$geoObject,
+    layout: typeof npm$namespace$ymaps$layout,
+    map: typeof npm$namespace$ymaps$map,
+    multiRouter: typeof npm$namespace$ymaps$multiRouter,
+    option: typeof npm$namespace$ymaps$option,
+    panorama: typeof npm$namespace$ymaps$panorama,
+    router: typeof npm$namespace$ymaps$router,
+    templateLayoutFactory: typeof npm$namespace$ymaps$templateLayoutFactory,
+    util: typeof npm$namespace$ymaps$util,
+    vow: typeof npm$namespace$ymaps$vow
   };
   declare interface ymaps$IClassConstructor<T> {
     new(): T;
@@ -58,10 +93,19 @@ declare module "yandex-maps" {
 
   declare type ymaps$PresetKey = string;
 
-  declare var npm$namespace$behavior: {
-    storage: typeof behavior$storage
+  declare var npm$namespace$ymaps$behavior: {
+    storage: typeof ymaps$behavior$storage,
+
+    DblClickZoom: typeof ymaps$behavior$DblClickZoom,
+    Drag: typeof ymaps$behavior$Drag,
+    LeftMouseButtonMagnifier: typeof ymaps$behavior$LeftMouseButtonMagnifier,
+    MultiTouch: typeof ymaps$behavior$MultiTouch,
+    RightMouseButtonMagnifier: typeof ymaps$behavior$RightMouseButtonMagnifier,
+    RouteEditor: typeof ymaps$behavior$RouteEditor,
+    Ruler: typeof ymaps$behavior$Ruler,
+    ScrollZoom: typeof ymaps$behavior$ScrollZoom
   };
-  declare class behavior$DblClickZoom mixins ymaps$IBehavior {
+  declare class ymaps$behavior$DblClickZoom mixins IBehavior {
     constructor(options?: behavior$IDblClickZoomOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -72,12 +116,12 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare type behavior$IDblClickZoomOptions = {
+  declare type ymaps$behavior$IDblClickZoomOptions = {
     centering?: boolean,
     duration?: number
-  } & ymaps$IMapMarginOptions;
+  } & IMapMarginOptions;
 
-  declare class behavior$Drag mixins ymaps$IBehavior {
+  declare class ymaps$behavior$Drag mixins IBehavior {
     constructor(options?: behavior$IDragOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -88,7 +132,7 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface behavior$IDragOptions {
+  declare interface ymaps$behavior$IDragOptions {
     actionCursor?: string;
     cursor?: string;
     inertia?: boolean;
@@ -96,7 +140,7 @@ declare module "yandex-maps" {
     tremor?: number;
   }
 
-  declare class behavior$LeftMouseButtonMagnifier mixins ymaps$IBehavior {
+  declare class ymaps$behavior$LeftMouseButtonMagnifier mixins IBehavior {
     constructor(options?: behavior$ILeftMouseButtonMagnifierOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -107,13 +151,13 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface behavior$ILeftMouseButtonMagnifierOptions {
+  declare interface ymaps$behavior$ILeftMouseButtonMagnifierOptions {
     actionCursor?: string;
     cursor?: string;
     duration?: number;
   }
 
-  declare class behavior$MultiTouch mixins ymaps$IBehavior {
+  declare class ymaps$behavior$MultiTouch mixins IBehavior {
     constructor(options?: behavior$IMultiTouchOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -124,11 +168,11 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface behavior$IMultiTouchOptions {
+  declare interface ymaps$behavior$IMultiTouchOptions {
     tremor?: number;
   }
 
-  declare class behavior$RightMouseButtonMagnifier mixins ymaps$IBehavior {
+  declare class ymaps$behavior$RightMouseButtonMagnifier mixins IBehavior {
     constructor(options?: behavior$IRightMouseButtonMagnifierOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -139,12 +183,12 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface behavior$IRightMouseButtonMagnifierOptions {
+  declare interface ymaps$behavior$IRightMouseButtonMagnifierOptions {
     actionCursor?: string;
     duration?: number;
   }
 
-  declare class behavior$RouteEditor mixins ymaps$IBehavior {
+  declare class ymaps$behavior$RouteEditor mixins IBehavior {
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
     disable(): void;
@@ -152,12 +196,12 @@ declare module "yandex-maps" {
     isEnabled(): boolean;
     getParent(): null | ymaps$IControlParent;
     setParent(parent: ymaps$IControlParent): this;
-    getRoute(): router$router$Route;
+    getRoute(): router$Route;
     getState(): string;
     setState(state: string | null): void;
   }
 
-  declare class behavior$Ruler mixins ymaps$IBehavior {
+  declare class ymaps$behavior$Ruler mixins IBehavior {
     constructor(options?: behavior$IRulerOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -171,11 +215,11 @@ declare module "yandex-maps" {
     setState(state: string | null): void;
   }
 
-  declare interface behavior$IRulerOptions {
+  declare interface ymaps$behavior$IRulerOptions {
     balloonAutoPan?: boolean;
   }
 
-  declare class behavior$ScrollZoom mixins ymaps$IBehavior {
+  declare class ymaps$behavior$ScrollZoom mixins IBehavior {
     constructor(options?: behavior$IScrollZoomOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -186,15 +230,19 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface behavior$IScrollZoomOptions {
+  declare interface ymaps$behavior$IScrollZoomOptions {
     maximumDelta?: number;
     speed?: number;
   }
 
-  declare var behavior$storage: util$util$Storage;
+  declare var ymaps$behavior$storage: util$Storage;
 
-  declare class clusterer$Balloon
-    mixins ymaps$IBalloonManager<ymaps$Clusterer> {
+  declare var npm$namespace$ymaps$clusterer: {
+    Balloon: typeof ymaps$clusterer$Balloon,
+    Hint: typeof ymaps$clusterer$Hint
+  };
+  declare class ymaps$clusterer$Balloon
+    mixins IBalloonManager<ymaps$Clusterer> {
     constructor(clusterer: ymaps$Clusterer): this;
     events: ymaps$IEventManager;
     autoPan(): vow$Promise<ymaps$Clusterer>;
@@ -218,7 +266,7 @@ declare module "yandex-maps" {
     setPosition(position: number[]): vow$Promise<ymaps$Clusterer>;
   }
 
-  declare class clusterer$Hint mixins ymaps$IHintManager<ymaps$Clusterer> {
+  declare class ymaps$clusterer$Hint mixins IHintManager<ymaps$Clusterer> {
     constructor(clusterer: ymaps$Clusterer): this;
     events: ymaps$IEventManager;
     close(force?: boolean): vow$Promise<ymaps$Clusterer>;
@@ -241,11 +289,11 @@ declare module "yandex-maps" {
     setPosition(position: number[]): vow$Promise<ymaps$Clusterer>;
   }
 
-  declare class collection$Item
-    mixins ymaps$IChildOnMap,
-      ymaps$ICustomizable,
-      ymaps$IEventEmitter,
-      ymaps$IParentOnMap {
+  declare var npm$namespace$ymaps$collection: {
+    Item: typeof ymaps$collection$Item
+  };
+  declare class ymaps$collection$Item
+    mixins IChildOnMap, ICustomizable, IEventEmitter, IParentOnMap {
     constructor(options?: { [key: string]: any }): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -256,13 +304,24 @@ declare module "yandex-maps" {
     onRemoveFromMap(oldMap: ymaps$Map): void;
   }
 
-  declare class control$Button
-    mixins ymaps$ICustomizable, ymaps$ISelectableControl {
+  declare var npm$namespace$ymaps$control: {
+    Button: typeof ymaps$control$Button,
+    FullscreenControl: typeof ymaps$control$FullscreenControl,
+    GeolocationControl: typeof ymaps$control$GeolocationControl,
+    ListBox: typeof ymaps$control$ListBox,
+    ListBoxItem: typeof ymaps$control$ListBoxItem,
+    Manager: typeof ymaps$control$Manager,
+    RouteButton: typeof ymaps$control$RouteButton,
+    RouteEditor: typeof ymaps$control$RouteEditor,
+    RulerControl: typeof ymaps$control$RulerControl,
+    SearchControl: typeof ymaps$control$SearchControl
+  };
+  declare class ymaps$control$Button mixins ICustomizable, ISelectableControl {
     constructor(parameters?: control$IButtonParameters | string): this;
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
-    data: data$cursor$Manager;
-    state: data$cursor$Manager;
+    ymaps$data: data$Manager;
+    state: data$Manager;
     deselect(): void;
     disable(): void;
     enable(): void;
@@ -273,7 +332,7 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface control$IBaseButtonParametersOptions {
+  declare interface ymaps$control$IBaseButtonParametersOptions {
     adjustMapMargin?: boolean;
     float?: "none" | "left" | "right";
     floatIndex?: number;
@@ -288,13 +347,13 @@ declare module "yandex-maps" {
     visible?: boolean;
   }
 
-  declare interface control$IButtonParameters {
+  declare interface ymaps$control$IButtonParameters {
     data?: {
       content?: string,
       image?: string,
       title?: string
     };
-    options?: control$IBaseButtonParametersOptions & {
+    options?: ymaps$control$IBaseButtonParametersOptions & {
       selectOnClick?: boolean,
       size?: "auto" | "small" | "medium" | "large"
     };
@@ -304,17 +363,17 @@ declare module "yandex-maps" {
     };
   }
 
-  declare class control$FullscreenControl mixins control$Button {
+  declare class ymaps$control$FullscreenControl mixins Button {
     constructor(parameters?: control$IFullscreenControlParameters): this;
     enterFullscreen(): void;
     exitFullscreen(): void;
   }
 
-  declare interface control$IFullscreenControlParameters {
+  declare interface ymaps$control$IFullscreenControlParameters {
     data?: {
       title?: string
     };
-    options?: control$IBaseButtonParametersOptions & {
+    options?: ymaps$control$IBaseButtonParametersOptions & {
       collapseOnBlur?: boolean,
       expandOnClick?: boolean,
       popupFloat?: "left" | "right"
@@ -324,25 +383,25 @@ declare module "yandex-maps" {
     };
   }
 
-  declare class control$GeolocationControl mixins control$Button {
+  declare class ymaps$control$GeolocationControl mixins Button {
     constructor(parameters?: control$IGeolocationControlParameters): this;
   }
 
-  declare type control$IGeolocationControlParameters = {
+  declare type ymaps$control$IGeolocationControlParameters = {
     data?: {
       image?: string,
       title?: string
     },
-    options?: control$IBaseButtonParametersOptions
-  } & control$IButtonParameters;
+    options?: ymaps$control$IBaseButtonParametersOptions
+  } & IButtonParameters;
 
-  declare class control$ListBox
-    mixins ymaps$ICollection, ymaps$IControl, ymaps$ICustomizable {
+  declare class ymaps$control$ListBox
+    mixins ICollection, IControl, ICustomizable {
     constructor(parameters?: control$IListBoxParameters): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    data: data$cursor$Manager;
-    state: data$cursor$Manager;
+    ymaps$data: data$Manager;
+    state: data$Manager;
     add(object: { [key: string]: any }): this;
     getIterator(): ymaps$IIterator;
     remove(object: { [key: string]: any }): this;
@@ -350,19 +409,19 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare type control$IListBoxParameters = {
-    options?: control$IBaseButtonParametersOptions & {
+  declare type ymaps$control$IListBoxParameters = {
+    options?: ymaps$control$IBaseButtonParametersOptions & {
       noPlacemark?: boolean
     }
-  } & control$IButtonParameters;
+  } & IButtonParameters;
 
-  declare class control$ListBoxItem
-    mixins ymaps$ICustomizable, ymaps$ISelectableControl {
+  declare class ymaps$control$ListBoxItem
+    mixins ICustomizable, ISelectableControl {
     constructor(parameters?: control$IListBoxItemParameters): this;
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
-    data: data$cursor$Manager;
-    state: data$cursor$Manager;
+    ymaps$data: data$Manager;
+    state: data$Manager;
     deselect(): void;
     disable(): void;
     enable(): void;
@@ -374,7 +433,7 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare interface control$IListBoxItemParameters {
+  declare interface ymaps$control$IListBoxItemParameters {
     data?: {
       content?: string
     };
@@ -395,15 +454,15 @@ declare module "yandex-maps" {
     };
   }
 
-  declare class control$Manager {
+  declare class ymaps$control$Manager {
     constructor(
       map: ymaps$Map,
       controls?: Array<string | ymaps$IControl>,
       options?: control$IManagerOptions
     ): this;
-    events: event$control$Manager;
-    options: option$control$Manager;
-    state: data$control$Manager;
+    events: event$Manager;
+    options: option$Manager;
+    state: data$Manager;
     add(
       control: ymaps$IControl | ymaps$ControlKey,
       options?: control$IManagerControlOptions
@@ -420,13 +479,13 @@ declare module "yandex-maps" {
     remove(control: ymaps$IControl | string): this;
   }
 
-  declare interface control$IManagerOptions {
+  declare interface ymaps$control$IManagerOptions {
     margin?: number;
     pane?: ymaps$IPane;
     states?: string[];
   }
 
-  declare interface control$IManagerControlOptions {
+  declare interface ymaps$control$IManagerControlOptions {
     float?: "none" | "left" | "right";
     floatIndex?: number;
     position?: {
@@ -437,7 +496,7 @@ declare module "yandex-maps" {
     };
   }
 
-  declare class control$RouteButton mixins ymaps$IControl, ymaps$ICustomizable {
+  declare class ymaps$control$RouteButton mixins IControl, ICustomizable {
     constructor(parameters?: control$IRouteButtonParameters): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -446,7 +505,7 @@ declare module "yandex-maps" {
     setParent(parent: ymaps$IControlParent): this;
   }
 
-  declare interface control$IRouteButtonParameters {
+  declare interface ymaps$control$IRouteButtonParameters {
     options?: {
       adjustMapMargin?: boolean,
       collapseOnBlur?: boolean,
@@ -469,25 +528,25 @@ declare module "yandex-maps" {
     };
   }
 
-  declare class control$RouteEditor mixins control$Button {
+  declare class ymaps$control$RouteEditor mixins Button {
     constructor(parameters?: control$IRouteEditorParameters): this;
-    getRoute(): router$router$Route;
+    getRoute(): router$Route;
   }
 
-  declare interface control$IRouteEditorParameters {
+  declare interface ymaps$control$IRouteEditorParameters {
     data?: {
       image?: string,
       title?: string
     };
-    options?: control$IBaseButtonParametersOptions;
+    options?: ymaps$control$IBaseButtonParametersOptions;
     state?: {};
   }
 
-  declare class control$RulerControl mixins control$Button {
+  declare class ymaps$control$RulerControl mixins Button {
     constructor(parameters?: control$IRulerControlParameters): this;
   }
 
-  declare interface control$IRulerControlParameters {
+  declare interface ymaps$control$IRulerControlParameters {
     data?: {};
     options?: {
       adjustMapMargin?: boolean,
@@ -503,12 +562,11 @@ declare module "yandex-maps" {
     state?: {};
   }
 
-  declare class control$SearchControl
-    mixins ymaps$IControl, ymaps$ICustomizable {
+  declare class ymaps$control$SearchControl mixins IControl, ICustomizable {
     constructor(parameters?: control$ISearchControlParameters): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    state: data$control$Manager;
+    state: data$Manager;
     getParent(): null | ymaps$IControlParent;
     setParent(parent: ymaps$IControlParent): this;
     clear(): void;
@@ -524,7 +582,7 @@ declare module "yandex-maps" {
     showResult(index: number): this;
   }
 
-  declare interface control$ISearchControlParameters {
+  declare interface ymaps$control$ISearchControlParameters {
     data?: {};
     options?: {
       adjustMapMargin?: boolean,
@@ -562,7 +620,10 @@ declare module "yandex-maps" {
     state?: {};
   }
 
-  declare class data$Manager mixins ymaps$IDataManager, ymaps$IFreezable {
+  declare var npm$namespace$ymaps$data: {
+    Manager: typeof ymaps$data$Manager
+  };
+  declare class ymaps$data$Manager mixins IDataManager, IFreezable {
     constructor(data?: { [key: string]: any }): this;
     events: ymaps$IEventManager;
     get(
@@ -601,7 +662,10 @@ declare module "yandex-maps" {
     ): this;
   }
 
-  declare class event$Manager mixins ymaps$IEventManager {
+  declare var npm$namespace$ymaps$event: {
+    Manager: typeof ymaps$event$Manager
+  };
+  declare class ymaps$event$Manager mixins IEventManager {
     constructor(params?: {
       context?: { [key: string]: any },
       controllers?: ymaps$IEventWorkflowController[],
@@ -639,12 +703,24 @@ declare module "yandex-maps" {
     ): this;
   }
 
-  declare class base$LineString mixins ymaps$IBaseLineStringGeometry {
+  declare var npm$namespace$ymaps$geometry: {
+    LineString: typeof ymaps$geometry$LineString,
+    Point: typeof ymaps$geometry$Point,
+    Polygon: typeof ymaps$geometry$Polygon,
+    base: typeof npm$namespace$ymaps$geometry$base
+  };
+
+  declare var npm$namespace$ymaps$geometry$base: {
+    LineString: typeof ymaps$geometry$base$LineString,
+    Point: typeof ymaps$geometry$base$Point,
+    Polygon: typeof ymaps$geometry$base$Polygon
+  };
+  declare class ymaps$geometry$base$LineString mixins IBaseLineStringGeometry {
     events: ymaps$IEventManager;
     static fromEncodedCoordinates(
       encodedCoordinates: string
-    ): geometry$base$LineString;
-    static toEncodedCoordinates(geometry: geometry$base$LineString): string;
+    ): geometry$LineString;
+    static toEncodedCoordinates(geometry: geometry$LineString): string;
     getBounds(): number[][] | null;
     getType(): string;
     get(index: number): number[];
@@ -684,7 +760,7 @@ declare module "yandex-maps" {
     ): this;
   }
 
-  declare class base$Point mixins ymaps$IBasePointGeometry {
+  declare class ymaps$geometry$base$Point mixins IBasePointGeometry {
     events: ymaps$IEventManager;
     getBounds(): number[][] | null;
     getType(): string;
@@ -692,14 +768,16 @@ declare module "yandex-maps" {
     setCoordinates(coordinates: number[] | null): this;
   }
 
-  declare class base$Polygon mixins ymaps$IBasePointGeometry {
+  declare class ymaps$geometry$base$Polygon mixins IBasePointGeometry {
     constructor(
       coordinates?: number[][][],
       fillRule?: "evenOdd" | "nonZero"
     ): this;
     events: ymaps$IEventManager;
-    static fromEncodedCoordinates(encodedCoordinates: string): base$Polygon;
-    static toEncodedCoordinates(geometry: base$Polygon): string;
+    static fromEncodedCoordinates(
+      encodedCoordinates: string
+    ): ymaps$geometry$base$Polygon;
+    static toEncodedCoordinates(geometry: ymaps$geometry$base$Polygon): string;
     contains(position: number[]): boolean;
     freeze(): ymaps$IFreezable;
     get(index: number): number[][];
@@ -720,7 +798,7 @@ declare module "yandex-maps" {
     unfreeze(): ymaps$IFreezable;
   }
 
-  declare class geometry$LineString mixins ymaps$ILineStringGeometry {
+  declare class ymaps$geometry$LineString mixins ILineStringGeometry {
     constructor(
       coordinates?: number[][],
       options?: {
@@ -735,8 +813,8 @@ declare module "yandex-maps" {
     options: ymaps$IOptionManager;
     static fromEncodedCoordinates(
       encodedCoordinates: string
-    ): geometry$LineString;
-    static toEncodedCoordinates(geometry: geometry$LineString): string;
+    ): ymaps$geometry$LineString;
+    static toEncodedCoordinates(geometry: ymaps$geometry$LineString): string;
     getMap(): ymaps$Map | null;
     getPixelGeometry(options?: { [key: string]: any }): ymaps$IPixelGeometry;
     setMap(map: ymaps$Map): void;
@@ -779,7 +857,7 @@ declare module "yandex-maps" {
     ): this;
   }
 
-  declare class geometry$Point mixins ymaps$IPointGeometry {
+  declare class ymaps$geometry$Point mixins IPointGeometry {
     constructor(coordinates?: number[] | null): this;
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
@@ -792,7 +870,7 @@ declare module "yandex-maps" {
     setCoordinates(coordinates: number[] | null): this;
   }
 
-  declare class geometry$Polygon mixins ymaps$IPolygonGeometry {
+  declare class ymaps$geometry$Polygon mixins IPolygonGeometry {
     constructor(
       coordinates?: number[][][],
       fillRule?: "evenOdd" | "nonZero",
@@ -800,8 +878,10 @@ declare module "yandex-maps" {
     ): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    static fromEncodedCoordinates(encodedCoordinates: string): geometry$Polygon;
-    static toEncodedCoordinates(geometry: geometry$Polygon): string;
+    static fromEncodedCoordinates(
+      encodedCoordinates: string
+    ): ymaps$geometry$Polygon;
+    static toEncodedCoordinates(geometry: ymaps$geometry$Polygon): string;
     add(
       types: string[][] | string[] | string,
       callback: (event: { [key: string]: any } | ymaps$IEvent) => void,
@@ -838,48 +918,67 @@ declare module "yandex-maps" {
     unfreeze(): ymaps$IFreezable;
   }
 
-  declare class geometryEditor$Circle mixins ymaps$IGeometryEditor {
+  declare var npm$namespace$ymaps$geometryEditor: {
+    Circle: typeof ymaps$geometryEditor$Circle,
+    LineString: typeof ymaps$geometryEditor$LineString,
+    Point: typeof ymaps$geometryEditor$Point,
+    Polygon: typeof ymaps$geometryEditor$Polygon,
+    model: typeof npm$namespace$ymaps$geometryEditor$model,
+    view: typeof npm$namespace$ymaps$geometryEditor$view
+  };
+  declare class ymaps$geometryEditor$Circle mixins IGeometryEditor {
     constructor(
       geometry: ymaps$ICircleGeometry,
       options?: { [key: string]: any }
     ): this;
     events: ymaps$IEventManager;
-    geometry: ymaps$IGeometry;
+    ymaps$geometry: ymaps$IGeometry;
     options: ymaps$IOptionManager;
     state: ymaps$IDataManager;
-    startDrawing(): vow$vow$Promise;
+    startDrawing(): vow$Promise;
     startEditing(): void;
-    stopDrawing(): vow$vow$Promise;
+    stopDrawing(): vow$Promise;
     stopEditing(): void;
   }
 
-  declare class geometryEditor$LineString mixins ymaps$IGeometryEditor {
+  declare class ymaps$geometryEditor$LineString mixins IGeometryEditor {
     constructor(
       geometry: ymaps$ILineStringGeometry,
       options?: { [key: string]: any }
     ): this;
     events: ymaps$IEventManager;
-    geometry: ymaps$IGeometry;
+    ymaps$geometry: ymaps$IGeometry;
     options: ymaps$IOptionManager;
     state: ymaps$IDataManager;
-    getModel(): vow$vow$Promise;
-    getModelSync(): model$model$RootLineString | null;
-    getView(): vow$vow$Promise;
-    getViewSync(): view$masstransit$Path | null;
-    startDrawing(): vow$vow$Promise;
-    startEditing(): vow$vow$Promise;
-    startFraming(): vow$vow$Promise;
+    getModel(): vow$Promise;
+    getModelSync(): model$RootLineString | null;
+    getView(): vow$Promise;
+    getViewSync(): view$Path | null;
+    startDrawing(): vow$Promise;
+    startEditing(): vow$Promise;
+    startFraming(): vow$Promise;
     stopDrawing(): void;
     stopEditing(): void;
     stopFraming(): void;
   }
 
-  declare class model$ChildLinearRing mixins model$ChildLineString {}
+  declare var npm$namespace$ymaps$geometryEditor$model: {
+    ChildLinearRing: typeof ymaps$geometryEditor$model$ChildLinearRing,
+    ChildLineString: typeof ymaps$geometryEditor$model$ChildLineString,
+    ChildVertex: typeof ymaps$geometryEditor$model$ChildVertex,
+    Edge: typeof ymaps$geometryEditor$model$Edge,
+    EdgeGeometry: typeof ymaps$geometryEditor$model$EdgeGeometry,
+    RootLineString: typeof ymaps$geometryEditor$model$RootLineString,
+    RootPolygon: typeof ymaps$geometryEditor$model$RootPolygon
+  };
+  declare class ymaps$geometryEditor$model$ChildLinearRing
+    mixins ChildLineString {}
 
-  declare class model$ChildLineString mixins ymaps$IGeometryEditorChildModel {
+  declare class ymaps$geometryEditor$model$ChildLineString
+    mixins IGeometryEditorChildModel {
     editor: ymaps$IGeometryEditor;
     events: ymaps$IEventManager;
-    geometry: ymaps$IBaseGeometry;
+    ymaps$geometry: ymaps$IBaseGeometry;
     destroy(): void;
     getAllVerticesNumber(): number;
     getEdgeModels(): view$Edge[];
@@ -892,35 +991,37 @@ declare module "yandex-maps" {
     spliceVertices(start: number, deleteCount: number): number[][];
   }
 
-  declare class model$ChildVertex mixins ymaps$IGeometryEditorChildModel {
+  declare class ymaps$geometryEditor$model$ChildVertex
+    mixins IGeometryEditorChildModel {
     editor: ymaps$IGeometryEditor;
     events: ymaps$IEventManager;
-    geometry: ymaps$IBaseGeometry;
+    ymaps$geometry: ymaps$IBaseGeometry;
     destroy(): void;
     getAllVerticesNumber(): number;
     getIndex(): number;
-    getNextVertex(): model$ChildVertex | null;
+    getNextVertex(): ymaps$geometryEditor$model$ChildVertex | null;
     getParent(): ymaps$IGeometryEditorModel;
     getPixels(): number[];
-    getPrevVertex(): model$ChildVertex | null;
+    getPrevVertex(): ymaps$geometryEditor$model$ChildVertex | null;
     setGlobalPixels(pixels: number[]): void;
     setIndex(index: number): void;
-    setNextVertex(nextVertex: model$ChildVertex): void;
+    setNextVertex(nextVertex: ymaps$geometryEditor$model$ChildVertex): void;
     setPixels(pixels: number[]): void;
-    setPrevVertex(prevVertex: model$ChildVertex): void;
+    setPrevVertex(prevVertex: ymaps$geometryEditor$model$ChildVertex): void;
   }
 
-  declare class model$Edge mixins ymaps$IGeometryEditorRootModel {
+  declare class ymaps$geometryEditor$model$Edge
+    mixins IGeometryEditorRootModel {
     events: ymaps$IEventManager;
     destroy(): void;
-    getNextVertex(): model$ChildVertex | null;
+    getNextVertex(): ymaps$geometryEditor$model$ChildVertex | null;
     getPixels(): number[];
-    getPrevVertex(): model$ChildVertex | null;
-    setNextVertex(nextVertex: model$ChildVertex): void;
-    setPrevVertex(prevVertex: model$ChildVertex): void;
+    getPrevVertex(): ymaps$geometryEditor$model$ChildVertex | null;
+    setNextVertex(nextVertex: ymaps$geometryEditor$model$ChildVertex): void;
+    setPrevVertex(prevVertex: ymaps$geometryEditor$model$ChildVertex): void;
   }
 
-  declare class model$EdgeGeometry mixins ymaps$IGeometry {
+  declare class ymaps$geometryEditor$model$EdgeGeometry mixins IGeometry {
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
     getBounds(): number[][] | null;
@@ -930,79 +1031,92 @@ declare module "yandex-maps" {
     setMap(map: ymaps$Map): void;
   }
 
-  declare class model$RootLineString mixins ymaps$IGeometryEditorRootModel {
+  declare class ymaps$geometryEditor$model$RootLineString
+    mixins IGeometryEditorRootModel {
     events: ymaps$IEventManager;
     destroy(): void;
     getAllVerticesNumber(): number;
     getPixels(): number[];
-    getVertexModels(): model$ChildVertex[];
+    getVertexModels(): ymaps$geometryEditor$model$ChildVertex[];
     spliceVertices(start: number, deleteCount: number): number[][];
   }
 
-  declare class model$RootPolygon mixins ymaps$IGeometryEditorRootModel {
+  declare class ymaps$geometryEditor$model$RootPolygon
+    mixins IGeometryEditorRootModel {
     events: ymaps$IEventManager;
     destroy(): void;
     getAllVerticesNumber(): number;
-    getPathModels(): model$ChildLinearRing[];
+    getPathModels(): ymaps$geometryEditor$model$ChildLinearRing[];
     getPixels(): number[];
     splicePaths(start: number, deleteCount: number): number[][];
   }
 
-  declare class geometryEditor$Point mixins ymaps$IGeometryEditor {
+  declare class ymaps$geometryEditor$Point mixins IGeometryEditor {
     events: ymaps$IEventManager;
-    geometry: ymaps$IGeometry;
+    ymaps$geometry: ymaps$IGeometry;
     options: ymaps$IOptionManager;
     state: ymaps$IDataManager;
-    startDrawing(): vow$vow$Promise;
+    startDrawing(): vow$Promise;
     startEditing(): void;
-    stopDrawing(): vow$vow$Promise;
+    stopDrawing(): vow$Promise;
     stopEditing(): void;
   }
 
-  declare class geometryEditor$Polygon mixins ymaps$IGeometryEditor {
+  declare class ymaps$geometryEditor$Polygon mixins IGeometryEditor {
     constructor(
       geometry: ymaps$IPolygonGeometry,
       options: { [key: string]: any }
     ): this;
     events: ymaps$IEventManager;
-    geometry: ymaps$IGeometry;
+    ymaps$geometry: ymaps$IGeometry;
     options: ymaps$IOptionManager;
     state: ymaps$IDataManager;
-    getModel(): vow$vow$Promise;
-    getModelSync(): model$model$RootPolygon | null;
-    getView(): vow$vow$Promise;
-    getViewSync(): view$view$MultiPath | null;
-    startDrawing(): vow$vow$Promise;
-    startEditing(): vow$vow$Promise;
-    startFraming(): vow$vow$Promise;
+    getModel(): vow$Promise;
+    getModelSync(): model$RootPolygon | null;
+    getView(): vow$Promise;
+    getViewSync(): view$MultiPath | null;
+    startDrawing(): vow$Promise;
+    startEditing(): vow$Promise;
+    startFraming(): vow$Promise;
     stopDrawing(): void;
     stopEditing(): void;
     stopFraming(): void;
   }
 
-  declare class view$Edge {
+  declare var npm$namespace$ymaps$geometryEditor$view: {
+    Edge: typeof ymaps$geometryEditor$view$Edge,
+    MultiPath: typeof ymaps$geometryEditor$view$MultiPath,
+    Path: typeof ymaps$geometryEditor$view$Path,
+    Vertex: typeof ymaps$geometryEditor$view$Vertex
+  };
+  declare class ymaps$geometryEditor$view$Edge {
     getPlacemark(): ymaps$GeoObject;
   }
 
-  declare class view$MultiPath {
+  declare class ymaps$geometryEditor$view$MultiPath {
     getEdgePlacemarks(): ymaps$GeoObjectCollection;
     getPathViews(): masstransit$Path[];
     getVertexPlacemarks(): ymaps$GeoObjectCollection;
   }
 
-  declare class view$Path {
+  declare class ymaps$geometryEditor$view$Path {
     getEdgePlacemarks(): ymaps$GeoObjectCollection;
-    getEdgeViews(): view$Edge[];
+    getEdgeViews(): ymaps$geometryEditor$view$Edge[];
     getVertexPlacemarks(): ymaps$GeoObjectCollection;
     getVertexViews(): view$Vertex[];
   }
 
-  declare class view$Vertex {
+  declare class ymaps$geometryEditor$view$Vertex {
     getPlacemark(): ymaps$GeoObject;
   }
 
-  declare class geoObject$Balloon
-    mixins ymaps$IBalloonManager<ymaps$GeoObject> {
+  declare var npm$namespace$ymaps$geoObject: {
+    Balloon: typeof ymaps$geoObject$Balloon,
+    Hint: typeof ymaps$geoObject$Hint,
+    Sequence: typeof ymaps$geoObject$Sequence
+  };
+  declare class ymaps$geoObject$Balloon
+    mixins IBalloonManager<ymaps$GeoObject> {
     constructor(geoObject: ymaps$GeoObject): this;
     events: ymaps$IEventManager;
     autoPan(): vow$Promise<ymaps$GeoObject>;
@@ -1026,7 +1140,7 @@ declare module "yandex-maps" {
     setPosition(position: number[]): vow$Promise<ymaps$GeoObject>;
   }
 
-  declare class geoObject$Hint mixins ymaps$IHintManager<ymaps$GeoObject> {
+  declare class ymaps$geoObject$Hint mixins IHintManager<ymaps$GeoObject> {
     constructor(geoObject: ymaps$GeoObject): this;
     events: ymaps$IEventManager;
     close(force?: boolean): vow$Promise<ymaps$GeoObject>;
@@ -1049,10 +1163,9 @@ declare module "yandex-maps" {
     setPosition(position: number[]): vow$Promise<ymaps$GeoObject>;
   }
 
-  declare class geoObject$Sequence
-    mixins ymaps$IGeoObject, ymaps$IGeoObjectSequence {
+  declare class ymaps$geoObject$Sequence mixins IGeoObject, IGeoObjectSequence {
     constructor(geoObject: ymaps$GeoObject): this;
-    geometry: ymaps$IGeometry | null;
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
@@ -1074,7 +1187,14 @@ declare module "yandex-maps" {
     indexOf(geoObject: ymaps$IGeoObject): number;
   }
 
-  declare class templateBased$Base mixins ymaps$ILayout {
+  declare var npm$namespace$ymaps$layout: {
+    templateBased: typeof npm$namespace$ymaps$layout$templateBased
+  };
+
+  declare var npm$namespace$ymaps$layout$templateBased: {
+    Base: typeof ymaps$layout$templateBased$Base
+  };
+  declare class ymaps$layout$templateBased$Base mixins ILayout {
     constructor(data: { [key: string]: any }): this;
     events: ymaps$IEventManager;
     destroy(): void;
@@ -1093,7 +1213,25 @@ declare module "yandex-maps" {
     rebuild(): void;
   }
 
-  declare class action$Manager mixins ymaps$IEventEmitter {
+  declare var npm$namespace$ymaps$map: {
+    Balloon: typeof ymaps$map$Balloon,
+    Container: typeof ymaps$map$Container,
+    Converter: typeof ymaps$map$Converter,
+    Copyrights: typeof ymaps$map$Copyrights,
+    GeoObjects: typeof ymaps$map$GeoObjects,
+    Hint: typeof ymaps$map$Hint,
+    ZoomRange: typeof ymaps$map$ZoomRange,
+    action: typeof npm$namespace$ymaps$map$action,
+    behavior: typeof npm$namespace$ymaps$map$behavior,
+    layer: typeof npm$namespace$ymaps$map$layer,
+    margin: typeof npm$namespace$ymaps$map$margin,
+    pane: typeof npm$namespace$ymaps$map$pane
+  };
+
+  declare var npm$namespace$ymaps$map$action: {
+    Manager: typeof ymaps$map$action$Manager
+  };
+  declare class ymaps$map$action$Manager mixins IEventEmitter {
     constructor(map: ymaps$Map): this;
     events: ymaps$IEventManager;
     breakTick(): void;
@@ -1104,8 +1242,11 @@ declare module "yandex-maps" {
     stop(): void;
   }
 
-  declare class behavior$Manager
-    mixins ymaps$ICustomizable, ymaps$IEventEmitter, ymaps$IParentOnMap {
+  declare var npm$namespace$ymaps$map$behavior: {
+    Manager: typeof ymaps$map$behavior$Manager
+  };
+  declare class ymaps$map$behavior$Manager
+    mixins ICustomizable, IEventEmitter, IParentOnMap {
     constructor(
       map: ymaps$Map,
       behaviors?: string[][] | string[],
@@ -1120,7 +1261,10 @@ declare module "yandex-maps" {
     isEnabled(behaviorName: string): boolean;
   }
 
-  declare class layer$Manager mixins ymaps$ILayer, ymaps$IMapObjectCollection {
+  declare var npm$namespace$ymaps$map$layer: {
+    Manager: typeof ymaps$map$layer$Manager
+  };
+  declare class ymaps$map$layer$Manager mixins ILayer, IMapObjectCollection {
     constructor(
       map: ymaps$Map,
       options?: {
@@ -1139,23 +1283,30 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class margin$Accessor {
+  declare var npm$namespace$ymaps$map$margin: {
+    Accessor: typeof ymaps$map$margin$Accessor,
+    Manager: typeof ymaps$map$margin$Manager
+  };
+  declare class ymaps$map$margin$Accessor {
     constructor(screenArea: { [key: string]: any }): this;
     getArea(): { [key: string]: any };
     remove(): this;
     setArea(screenArea: { [key: string]: any }): this;
   }
 
-  declare class margin$Manager {
+  declare class ymaps$map$margin$Manager {
     constructor(map: ymaps$Map): this;
-    addArea(screenArea: { [key: string]: any }): margin$Accessor;
+    addArea(screenArea: { [key: string]: any }): ymaps$map$margin$Accessor;
     destroy(): this;
     getMargin(): number[];
     getOffset(): number[];
     setDefaultMargin(margin: number[][] | number[] | number): void;
   }
 
-  declare class pane$Manager {
+  declare var npm$namespace$ymaps$map$pane: {
+    Manager: typeof ymaps$map$pane$Manager
+  };
+  declare class ymaps$map$pane$Manager {
     constructor(map: ymaps$Map): this;
     append(key: string, pane: ymaps$IPane): void;
     destroy(): void;
@@ -1166,11 +1317,11 @@ declare module "yandex-maps" {
     remove(pane: ymaps$IPane): void;
   }
 
-  declare class map$Balloon mixins ymaps$IBalloonManager<map$Balloon> {
+  declare class ymaps$map$Balloon mixins IBalloonManager<ymaps$map$Balloon> {
     constructor(map: ymaps$Map): this;
     events: ymaps$IEventManager;
-    autoPan(): vow$Promise<map$Balloon>;
-    close(force?: boolean): vow$Promise<map$Balloon>;
+    autoPan(): vow$Promise<ymaps$map$Balloon>;
+    close(force?: boolean): vow$Promise<ymaps$map$Balloon>;
     destroy(): void;
     getData(): { [key: string]: any } | null;
     getOptions(): ymaps$IOptionManager | null;
@@ -1182,15 +1333,15 @@ declare module "yandex-maps" {
       position?: number[],
       data?: { [key: string]: any } | string | HTMLElement,
       options?: { [key: string]: any }
-    ): vow$Promise<map$Balloon>;
+    ): vow$Promise<ymaps$map$Balloon>;
     setData(
       data: { [key: string]: any } | string | HTMLElement
-    ): vow$Promise<map$Balloon>;
-    setOptions(options: { [key: string]: any }): vow$Promise<map$Balloon>;
-    setPosition(position: number[]): vow$Promise<map$Balloon>;
+    ): vow$Promise<ymaps$map$Balloon>;
+    setOptions(options: { [key: string]: any }): vow$Promise<ymaps$map$Balloon>;
+    setPosition(position: number[]): vow$Promise<ymaps$map$Balloon>;
   }
 
-  declare class map$Container mixins ymaps$IDomEventEmitter {
+  declare class ymaps$map$Container mixins IDomEventEmitter {
     constructor(parentElement: string | HTMLElement): this;
     events: ymaps$IEventManager;
     enterFullscreen(): void;
@@ -1203,13 +1354,13 @@ declare module "yandex-maps" {
     isFullscreen(): boolean;
   }
 
-  declare class map$Converter {
+  declare class ymaps$map$Converter {
     constructor(map: ymaps$Map): this;
     globalToPage(globalPixelPoint: number[]): number[];
     pageToGlobal(pagePixelPoint: number[]): number[];
   }
 
-  declare class map$Copyrights {
+  declare class ymaps$map$Copyrights {
     constructor(map: ymaps$Map): this;
     add(
       customCopyrights: string | HTMLElement | Array<string | HTMLElement>
@@ -1223,7 +1374,7 @@ declare module "yandex-maps" {
     removeProvider(provider: ymaps$ICopyrightsProvider): this;
   }
 
-  declare class map$GeoObjects mixins ymaps$IGeoObjectCollection {
+  declare class ymaps$map$GeoObjects mixins IGeoObjectCollection {
     constructor(map: ymaps$Map, options?: { [key: string]: any }): this;
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
@@ -1245,10 +1396,10 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class map$Hint mixins ymaps$IHintManager<map$Hint> {
+  declare class ymaps$map$Hint mixins IHintManager<ymaps$map$Hint> {
     constructor(map: ymaps$Map): this;
     events: ymaps$IEventManager;
-    close(force?: boolean): vow$Promise<map$Hint>;
+    close(force?: boolean): vow$Promise<ymaps$map$Hint>;
     destroy(): void;
     getData(): { [key: string]: any } | null;
     getOptions(): ymaps$IOptionManager | null;
@@ -1260,26 +1411,46 @@ declare module "yandex-maps" {
       position?: number[],
       data?: { [key: string]: any } | string | HTMLElement,
       options?: { [key: string]: any }
-    ): vow$Promise<map$Hint>;
+    ): vow$Promise<ymaps$map$Hint>;
     setData(
       data: { [key: string]: any } | string | HTMLElement
-    ): vow$Promise<map$Hint>;
-    setOptions(options: { [key: string]: any }): vow$Promise<map$Hint>;
-    setPosition(position: number[]): vow$Promise<map$Hint>;
+    ): vow$Promise<ymaps$map$Hint>;
+    setOptions(options: { [key: string]: any }): vow$Promise<ymaps$map$Hint>;
+    setPosition(position: number[]): vow$Promise<ymaps$map$Hint>;
   }
 
-  declare class map$ZoomRange mixins ymaps$IEventEmitter {
+  declare class ymaps$map$ZoomRange mixins IEventEmitter {
     constructor(map: ymaps$Map, constraints: number[]): this;
     events: ymaps$IEventManager;
     get(coords?: number[]): vow$Promise<number[]>;
     getCurrent(): number[];
   }
 
-  declare class driving$Path mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare var npm$namespace$ymaps$multiRouter: {
+    EditorAddon: typeof ymaps$multiRouter$EditorAddon,
+    MultiRoute: typeof ymaps$multiRouter$MultiRoute,
+    MultiRouteModel: typeof ymaps$multiRouter$MultiRouteModel,
+    ViaPoint: typeof ymaps$multiRouter$ViaPoint,
+    ViaPointModel: typeof ymaps$multiRouter$ViaPointModel,
+    WayPoint: typeof ymaps$multiRouter$WayPoint,
+    WayPointModel: typeof ymaps$multiRouter$WayPointModel,
+    driving: typeof npm$namespace$ymaps$multiRouter$driving,
+    masstransit: typeof npm$namespace$ymaps$multiRouter$masstransit
+  };
+
+  declare var npm$namespace$ymaps$multiRouter$driving: {
+    Path: typeof ymaps$multiRouter$driving$Path,
+    PathModel: typeof ymaps$multiRouter$driving$PathModel,
+    Route: typeof ymaps$multiRouter$driving$Route,
+    RouteModel: typeof ymaps$multiRouter$driving$RouteModel,
+    Segment: typeof ymaps$multiRouter$driving$Segment,
+    SegmentModel: typeof ymaps$multiRouter$driving$SegmentModel
+  };
+  declare class ymaps$multiRouter$driving$Path mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
-    model: masstransit$PathModel;
+    geometryEditor$model: masstransit$PathModel;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
@@ -1290,9 +1461,9 @@ declare module "yandex-maps" {
     getSegments(): ymaps$GeoObjectCollection;
   }
 
-  declare class driving$PathModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$driving$PathModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    properties: data$pane$Manager;
+    properties: data$Manager;
     route: masstransit$RouteModel;
     destroy(): void;
     getSegments(): driving$SegmentModel[];
@@ -1300,8 +1471,8 @@ declare module "yandex-maps" {
     update(pathJson: { [key: string]: any }): void;
   }
 
-  declare class driving$Route mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
+  declare class ymaps$multiRouter$driving$Route mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
@@ -1314,19 +1485,19 @@ declare module "yandex-maps" {
     getPaths(): ymaps$GeoObjectCollection;
   }
 
-  declare class driving$RouteModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$driving$RouteModel mixins IEventEmitter {
     events: ymaps$IEventManager;
     multiRoute: multiRouter$MultiRouteModel;
-    properties: data$pane$Manager;
+    properties: data$Manager;
     destroy(): void;
-    getPaths(): driving$PathModel[];
+    getPaths(): ymaps$multiRouter$driving$PathModel[];
     update(routeJson: { [key: string]: any }): void;
     getType(): string;
   }
 
-  declare class driving$Segment mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$driving$Segment mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -1337,23 +1508,36 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class driving$SegmentModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$driving$SegmentModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$LineString;
-    path: driving$PathModel;
+    ymaps$geometry: geometry$baseLineString;
+    path: ymaps$multiRouter$driving$PathModel;
     destroy(): void;
     getType(): string;
     getViaPoints(): multiRouter$ViaPointModel[];
     update(segmentJson: { [key: string]: any }): void;
   }
 
-  declare class masstransit$Path mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare var npm$namespace$ymaps$multiRouter$masstransit: {
+    Path: typeof ymaps$multiRouter$masstransit$Path,
+    PathModel: typeof ymaps$multiRouter$masstransit$PathModel,
+    Route: typeof ymaps$multiRouter$masstransit$Route,
+    RouteModel: typeof ymaps$multiRouter$masstransit$RouteModel,
+    StopModel: typeof ymaps$multiRouter$masstransit$StopModel,
+    TransferSegment: typeof ymaps$multiRouter$masstransit$TransferSegment,
+    TransferSegmentModel: typeof ymaps$multiRouter$masstransit$TransferSegmentModel,
+    TransportSegment: typeof ymaps$multiRouter$masstransit$TransportSegment,
+    TransportSegmentModel: typeof ymaps$multiRouter$masstransit$TransportSegmentModel,
+    WalkSegment: typeof ymaps$multiRouter$masstransit$WalkSegment,
+    WalkSegmentModel: typeof ymaps$multiRouter$masstransit$WalkSegmentModel
+  };
+  declare class ymaps$multiRouter$masstransit$Path mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    model: driving$PathModel;
+    geometryEditor$model: ymaps$multiRouter$driving$PathModel;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): { [key: string]: any } | null;
@@ -1363,10 +1547,10 @@ declare module "yandex-maps" {
     getSegments(): ymaps$GeoObjectCollection;
   }
 
-  declare class masstransit$PathModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$PathModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    properties: data$pane$Manager;
-    route: driving$RouteModel;
+    properties: data$Manager;
+    route: ymaps$multiRouter$driving$RouteModel;
     destroy(): void;
     getSegments(): Array<
       | masstransit$TransferSegmentModel
@@ -1377,10 +1561,10 @@ declare module "yandex-maps" {
     update(pathJson: { [key: string]: any }): void;
   }
 
-  declare class masstransit$Route mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
-    model: driving$RouteModel;
+  declare class ymaps$multiRouter$masstransit$Route mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
+    geometryEditor$model: ymaps$multiRouter$driving$RouteModel;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -1392,31 +1576,32 @@ declare module "yandex-maps" {
     getPaths(): ymaps$GeoObjectCollection;
   }
 
-  declare class masstransit$RouteModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$RouteModel mixins IEventEmitter {
     events: ymaps$IEventManager;
     multiRoute: multiRouter$MultiRouteModel;
-    properties: data$pane$Manager;
+    properties: data$Manager;
     destroy(): void;
-    getPaths(): masstransit$PathModel[];
+    getPaths(): ymaps$multiRouter$masstransit$PathModel[];
     getType(): string;
     update(routeJson: { [key: string]: any }): void;
   }
 
-  declare class masstransit$StopModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$StopModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$Point;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$basePoint;
+    properties: data$Manager;
     segment: masstransit$TransportSegmentModel;
     update(stopJson: { [key: string]: any }): void;
   }
 
-  declare class masstransit$TransferSegment mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$masstransit$TransferSegment
+    mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    model: masstransit$TransferSegmentModel;
+    geometryEditor$model: masstransit$TransferSegmentModel;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): { [key: string]: any } | null;
@@ -1424,22 +1609,24 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class masstransit$TransferSegmentModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$TransferSegmentModel
+    mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$LineString;
-    path: masstransit$PathModel;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$baseLineString;
+    path: ymaps$multiRouter$masstransit$PathModel;
+    properties: data$Manager;
     destroy(segmentJson: { [key: string]: any }): void;
     getType(): string;
   }
 
-  declare class masstransit$TransportSegment mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$masstransit$TransportSegment
+    mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    model: masstransit$TransportSegmentModel;
+    geometryEditor$model: masstransit$TransportSegmentModel;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): { [key: string]: any } | null;
@@ -1447,24 +1634,25 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class masstransit$TransportSegmentModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$TransportSegmentModel
+    mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$LineString;
-    path: masstransit$PathModel;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$baseLineString;
+    path: ymaps$multiRouter$masstransit$PathModel;
+    properties: data$Manager;
     destroy(): void;
-    getStops(): masstransit$StopModel[];
+    getStops(): ymaps$multiRouter$masstransit$StopModel[];
     getType(): string;
     update(segmentJson: { [key: string]: any }): void;
   }
 
-  declare class masstransit$WalkSegment mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$masstransit$WalkSegment mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    model: masstransit$WalkSegmentModel;
+    geometryEditor$model: masstransit$WalkSegmentModel;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): { [key: string]: any } | null;
@@ -1472,26 +1660,27 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class masstransit$WalkSegmentModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$masstransit$WalkSegmentModel
+    mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$LineString;
-    path: masstransit$PathModel;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$baseLineString;
+    path: ymaps$multiRouter$masstransit$PathModel;
+    properties: data$Manager;
     destroy(): void;
     getType(): string;
   }
 
-  declare class multiRouter$EditorAddon
-    mixins ymaps$ICustomizable, ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$EditorAddon
+    mixins ICustomizable, IEventEmitter {
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
-    state: data$pane$Manager;
+    state: data$Manager;
     isActive(): boolean;
     start(state: { [key: string]: any }): void;
     stop(): void;
   }
 
-  declare class multiRouter$MultiRoute mixins ymaps$IGeoObject {
+  declare class ymaps$multiRouter$MultiRoute mixins IGeoObject {
     constructor(
       model: multiRouter$MultiRouteModel | ymaps$IMultiRouteModelJson,
       options?: {
@@ -1504,9 +1693,9 @@ declare module "yandex-maps" {
         [index: string]: any
       }
     ): this;
-    editor: multiRouter$EditorAddon;
-    model: multiRouter$MultiRouteModel;
-    geometry: ymaps$IGeometry | null;
+    editor: ymaps$multiRouter$EditorAddon;
+    geometryEditor$model: multiRouter$MultiRouteModel;
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
@@ -1516,27 +1705,22 @@ declare module "yandex-maps" {
     getParent(): { [key: string]: any } | null;
     setParent(parent: { [key: string]: any }): this;
     getMap(): ymaps$Map;
-    getActiveRoute():
-      | driving$masstransit$Route
-      | masstransit$masstransit$Route
-      | null;
+    getActiveRoute(): driving$Route | masstransit$Route | null;
     getBounds(): number[][] | null;
     getPixelBounds(): number[][] | null;
     getRoutes(): ymaps$GeoObjectCollection;
     getViaPoints(): ymaps$GeoObjectCollection;
     getWayPoints(): ymaps$GeoObjectCollection;
-    setActiveRoute(
-      route: driving$masstransit$Route | masstransit$masstransit$Route | null
-    ): void;
+    setActiveRoute(route: driving$Route | masstransit$Route | null): void;
   }
 
-  declare class multiRouter$MultiRouteModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$MultiRouteModel mixins IEventEmitter {
     constructor(
       referencePoints: ymaps$IMultiRouteReferencePoint[],
       params?: ymaps$IMultiRouteParams
     ): this;
     events: ymaps$IEventManager;
-    properties: data$pane$Manager;
+    properties: data$Manager;
     destroy(): void;
     getAllPoints(): Array<
       multiRouter$WayPointModel | multiRouter$ViaPointModel
@@ -1546,9 +1730,7 @@ declare module "yandex-maps" {
     getPoints(): Array<multiRouter$WayPointModel | multiRouter$ViaPointModel>;
     getReferencePointIndexes(): { [key: string]: any };
     getReferencePoints(): ymaps$IMultiRouteReferencePoint[];
-    getRoutes():
-      | driving$masstransit$RouteModel[]
-      | masstransit$masstransit$RouteModel[];
+    getRoutes(): driving$RouteModel[] | masstransit$RouteModel[];
     getViaPoints(): multiRouter$ViaPointModel[];
     getWayPoints(): multiRouter$WayPointModel[];
     setParams(
@@ -1563,9 +1745,9 @@ declare module "yandex-maps" {
     ): void;
   }
 
-  declare class multiRouter$ViaPoint mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$ViaPoint mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -1576,11 +1758,11 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class multiRouter$ViaPointModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$ViaPointModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$Point;
-    multiRoute: multiRouter$MultiRouteModel;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$basePoint;
+    multiRoute: ymaps$multiRouter$MultiRouteModel;
+    properties: data$Manager;
     destroy(): void;
     getReferencePoint(): { [key: string]: any };
     getReferencePointIndex(): number;
@@ -1588,13 +1770,13 @@ declare module "yandex-maps" {
     update(viaPointJson: { [key: string]: any }): void;
   }
 
-  declare class multiRouter$WayPoint mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
-    properties: data$pane$Manager;
+  declare class ymaps$multiRouter$WayPoint mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
+    properties: data$Manager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    model: multiRouter$WayPointModel;
+    geometryEditor$model: multiRouter$WayPointModel;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): { [key: string]: any } | null;
@@ -1602,11 +1784,11 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class multiRouter$WayPointModel mixins ymaps$IEventEmitter {
+  declare class ymaps$multiRouter$WayPointModel mixins IEventEmitter {
     events: ymaps$IEventManager;
-    geometry: geometry$base.geometryEditor$Point;
-    multiRoute: multiRouter$MultiRouteModel;
-    properties: data$pane$Manager;
+    ymaps$geometry: geometry$basePoint;
+    multiRoute: ymaps$multiRouter$MultiRouteModel;
+    properties: data$Manager;
     destroy(): void;
     getReferencePoint(): { [key: string]: any };
     getReferencePointIndex(): number;
@@ -1614,7 +1796,10 @@ declare module "yandex-maps" {
     update(wayPointJson: { [key: string]: any }): void;
   }
 
-  declare class option$Manager mixins ymaps$IOptionManager {
+  declare var npm$namespace$ymaps$option: {
+    Manager: typeof ymaps$option$Manager
+  };
+  declare class ymaps$option$Manager mixins IOptionManager {
     constructor(
       options?: { [key: string]: any },
       parent?: ymaps$IOptionManager,
@@ -1660,7 +1845,11 @@ declare module "yandex-maps" {
     ): this;
   }
 
-  declare class panorama$Manager mixins ymaps$IEventEmitter {
+  declare var npm$namespace$ymaps$panorama: {
+    Manager: typeof ymaps$panorama$Manager,
+    Player: typeof ymaps$panorama$Player
+  };
+  declare class ymaps$panorama$Manager mixins IEventEmitter {
     events: ymaps$IEventManager;
     closePlayer(): void;
     disableLookup(): void;
@@ -1670,7 +1859,7 @@ declare module "yandex-maps" {
     openPlayer(panorama: ymaps$IPanorama[] | number): vow$Promise<void>;
   }
 
-  declare class panorama$Player mixins ymaps$IEventEmitter {
+  declare class ymaps$panorama$Player mixins IEventEmitter {
     constructor(
       element: HTMLElement | string,
       panorama: ymaps$IPanorama,
@@ -1704,7 +1893,11 @@ declare module "yandex-maps" {
     setSpan(span: number[] | string): this;
   }
 
-  declare class router$Editor mixins ymaps$ICustomizable, ymaps$IEventEmitter {
+  declare var npm$namespace$ymaps$router: {
+    Editor: typeof ymaps$router$Editor,
+    Route: typeof ymaps$router$Route
+  };
+  declare class ymaps$router$Editor mixins ICustomizable, IEventEmitter {
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
     start(options?: {
@@ -1718,13 +1911,13 @@ declare module "yandex-maps" {
     stop(): void;
   }
 
-  declare class router$Route mixins ymaps$IGeoObject {
-    geometry: ymaps$IGeometry | null;
+  declare class ymaps$router$Route mixins IGeoObject {
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    editor: router$Editor;
+    editor: ymaps$router$Editor;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): null | ymaps$IControlParent;
@@ -1742,7 +1935,7 @@ declare module "yandex-maps" {
   }
 
   declare class ymaps$Balloon
-    mixins ymaps$Popup<ymaps$Balloon>, ymaps$IBaloon<ymaps$Balloon> {
+    mixins Popup<ymaps$Balloon>, IBaloon<ymaps$Balloon> {
     constructor(map: ymaps$Map, options?: ymaps$IBalloonOptions): this;
     getData(): { [key: string]: any };
     close(force?: boolean): vow$Promise<ymaps$Balloon>;
@@ -1794,7 +1987,7 @@ declare module "yandex-maps" {
     shadowOffset?: number[];
   }
 
-  declare class ymaps$Circle mixins ymaps$GeoObject {
+  declare class ymaps$Circle mixins GeoObject {
     constructor(
       geometry:
         | ymaps$ICircleGeometry[][][][]
@@ -1803,14 +1996,14 @@ declare module "yandex-maps" {
       properties?: { [key: string]: any } | ymaps$IDataManager,
       options?: ymaps$ICircleOptions
     ): this;
-    balloon: geoObject$ymaps$Balloon;
+    balloon: geoObject$Balloon;
     editor: ymaps$IGeometryEditor;
-    hint: geoObject$map$Hint;
-    events: event$panorama$Manager;
-    options: option$panorama$Manager;
-    properties: data$panorama$Manager;
-    state: data$panorama$Manager;
-    geometry: ymaps$IGeometry | null;
+    hint: geoObject$Hint;
+    events: event$Manager;
+    options: option$Manager;
+    properties: data$Manager;
+    state: data$Manager;
+    ymaps$geometry: ymaps$IGeometry | null;
     indices: ArrayBuffer;
     vertices: ArrayBuffer;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
@@ -1867,15 +2060,12 @@ declare module "yandex-maps" {
   }
 
   declare class ymaps$Clusterer
-    mixins ymaps$IChildOnMap,
-      ymaps$ICustomizable,
-      ymaps$IEventEmitter,
-      ymaps$IParentOnMap {
+    mixins IChildOnMap, ICustomizable, IEventEmitter, IParentOnMap {
     constructor(options?: ymaps$IClustererOptions): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    balloon: clusterer$ymaps$Balloon;
-    hint: clusterer$map$Hint;
+    balloon: clusterer$Balloon;
+    hint: clusterer$Hint;
     getParent(): null | ymaps$IControlParent;
     setParent(parent: ymaps$IControlParent): this;
     getMap(): ymaps$Map;
@@ -1896,18 +2086,17 @@ declare module "yandex-maps" {
     zoomMargin?: number[][] | number[] | number;
   }
 
-  declare class ymaps$ClusterPlacemark
-    mixins ymaps$IGeoObject, collection$collection$Item {
+  declare class ymaps$ClusterPlacemark mixins IGeoObject, collection$Item {
     constructor(
       geometry: number[] | { [key: string]: any } | ymaps$IPointGeometry,
       properties: ymaps$IClusterPlacemarkProperties,
       options?: ymaps$IClusterPlacemarkOptions
     ): this;
-    geometry: ymaps$IGeometry | null;
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
-    state: data$panorama$Manager;
+    state: data$Manager;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): null | ymaps$IControlParent;
@@ -1921,7 +2110,7 @@ declare module "yandex-maps" {
 
   declare type ymaps$IClusterPlacemarkProperties = {
     geoObjects: ymaps$IGeoObject[]
-  } & ymaps$IDataManager;
+  } & IDataManager;
 
   declare interface ymaps$IClusterPlacemarkOptions {
     balloonContentLayout?:
@@ -1955,8 +2144,7 @@ declare module "yandex-maps" {
     zIndexHover?: number;
   }
 
-  declare class ymaps$Collection
-    mixins ymaps$ICollection, collection$collection$Item {
+  declare class ymaps$Collection mixins ICollection, collection$Item {
     constructor(options?: { [key: string]: any }): this;
     events: ymaps$IEventManager;
     options: ymaps$IOptionManager;
@@ -1978,7 +2166,7 @@ declare module "yandex-maps" {
     removeAll(): this;
   }
 
-  declare class ymaps$Event mixins ymaps$IEvent {
+  declare class ymaps$Event mixins IEvent {
     constructor(
       originalEvent: { [key: string]: any },
       sourceEvent: ymaps$IEvent
@@ -1996,19 +2184,19 @@ declare module "yandex-maps" {
     stopPropagation(): boolean;
   }
 
-  declare class ymaps$GeoObject mixins ymaps$IGeoObject {
+  declare class ymaps$GeoObject mixins IGeoObject {
     constructor(
       feature?: ymaps$IGeoObjectFeature,
       options?: ymaps$IGeoObjectOptions
     ): this;
-    geometry: ymaps$IGeometry | null;
-    balloon: geoObject$ymaps$Balloon;
+    ymaps$geometry: ymaps$IGeometry | null;
+    balloon: geoObject$Balloon;
     editor: ymaps$IGeometryEditor;
-    hint: geoObject$map$Hint;
-    events: event$panorama$Manager;
-    options: option$panorama$Manager;
-    properties: data$panorama$Manager;
-    state: data$panorama$Manager;
+    hint: geoObject$Hint;
+    events: event$Manager;
+    options: option$Manager;
+    properties: data$Manager;
+    state: data$Manager;
     getOverlay(): vow$Promise<ymaps$IOverlay | null>;
     getOverlaySync(): ymaps$IOverlay | null;
     getParent(): null | ymaps$IControlParent;
@@ -2050,10 +2238,10 @@ declare module "yandex-maps" {
     preset?: string,
     rectangleOverlay?: ymaps$OverlayKey,
     setMapCursorInDragging?: boolean
-  } & ymaps$ICircleOptions;
+  } & ICircleOptions;
 
   declare class ymaps$GeoObjectCollection
-    mixins ymaps$IGeoObject, ymaps$IGeoObjectCollection {
+    mixins IGeoObject, IGeoObjectCollection {
     constructor(
       feature?: {
         children?: ymaps$IGeoObject[],
@@ -2062,7 +2250,7 @@ declare module "yandex-maps" {
       },
       options?: { [key: string]: any }
     ): this;
-    geometry: ymaps$IGeometry | null;
+    ymaps$geometry: ymaps$IGeometry | null;
     properties: ymaps$IDataManager;
     state: ymaps$IDataManager;
     events: ymaps$IEventManager;
@@ -2090,8 +2278,7 @@ declare module "yandex-maps" {
     toArray(): ymaps$IGeoObject[];
   }
 
-  declare class ymaps$Layer
-    mixins ymaps$ILayer, ymaps$IParentOnMap, ymaps$IPositioningContext {
+  declare class ymaps$Layer mixins ILayer, IParentOnMap, IPositioningContext {
     constructor(
       tileUrlTemplate:
         | string
@@ -2107,33 +2294,33 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map;
   }
 
-  declare class ymaps$Map mixins ymaps$IDomEventEmitter {
+  declare class ymaps$Map mixins IDomEventEmitter {
     constructor(
       parentElement: HTMLElement | string,
       state: ymaps$IMapState,
       options?: ymaps$IMapOptions
     ): this;
-    action: map$action.panorama$Manager;
-    balloon: map$ymaps$Balloon;
-    behaviors: map$behavior.panorama$Manager;
-    container: map$map$Container;
-    controls: control$panorama$Manager;
-    converter: map$map$Converter;
-    copyrights: map$map$Copyrights;
-    cursors: util$cursor.panorama$Manager;
-    events: event$panorama$Manager;
-    geoObjects: map$map$GeoObjects;
-    hint: map$map$Hint;
-    layers: map$layer.panorama$Manager;
-    margin: map$margin.panorama$Manager;
-    options: option$panorama$Manager;
-    panes: map$pane.panorama$Manager;
-    zoomRange: map$map$ZoomRange;
+    map$action: map$actionManager;
+    balloon: map$Balloon;
+    behaviors: map$behaviorManager;
+    container: map$Container;
+    controls: control$Manager;
+    converter: map$Converter;
+    copyrights: map$Copyrights;
+    cursors: util$cursorManager;
+    events: event$Manager;
+    geoObjects: map$GeoObjects;
+    hint: map$Hint;
+    layers: map$layerManager;
+    map$margin: map$marginManager;
+    options: option$Manager;
+    panes: map$paneManager;
+    zoomRange: map$ZoomRange;
     destroy(): void;
     getBounds(options?: ymaps$IMapMarginOptions): number[][];
     getCenter(options?: ymaps$IMapMarginOptions): number[];
     getGlobalPixelCenter(options?: ymaps$IMapMarginOptions): number[];
-    getPanoramaManager(): vow$Promise<panorama$panorama$Manager>;
+    getPanoramaManager(): vow$Promise<panorama$Manager>;
     getType(): string | ymaps$MapType;
     getZoom(): number;
     panTo(
@@ -2171,23 +2358,23 @@ declare module "yandex-maps" {
 
   declare type ymaps$IMapZoomOptions = {
     duration?: number
-  } & ymaps$IMapMarginOptions &
-    ymaps$IMapCheckZoomRangeOptions;
+  } & IMapMarginOptions &
+    IMapCheckZoomRangeOptions;
 
   declare type ymaps$IMapPositionOptions = {
     timingFunction?: string
-  } & ymaps$IMapZoomOptions;
+  } & IMapZoomOptions;
 
   declare type ymaps$IMapBoundsOptions = {
     preciseZoom?: boolean,
     zoomMargin?: number[][] | number[]
-  } & ymaps$IMapPositionOptions;
+  } & IMapPositionOptions;
 
   declare type ymaps$IMapPanOptions = {
     delay?: number,
     flying?: boolean,
     safe?: boolean
-  } & ymaps$IMapPositionOptions;
+  } & IMapPositionOptions;
 
   declare class ymaps$MapType {
     constructor(
@@ -2224,7 +2411,7 @@ declare module "yandex-maps" {
     yandexMapDisablePoiInteractivity?: boolean;
   }
 
-  declare class ymaps$Placemark mixins ymaps$GeoObject {
+  declare class ymaps$Placemark mixins GeoObject {
     constructor(
       geometry: number[] | { [key: string]: any } | ymaps$IPointGeometry,
       properties: { [key: string]: any } | ymaps$IDataManager,
@@ -2257,7 +2444,7 @@ declare module "yandex-maps" {
     zIndexHover?: number;
   }
 
-  declare class ymaps$Polygon mixins ymaps$GeoObject {
+  declare class ymaps$Polygon mixins GeoObject {
     constructor(
       geometry: number[][][] | { [key: string]: any } | ymaps$IPolygonGeometry,
       properties?: { [key: string]: any } | ymaps$IDataManager,
@@ -2302,7 +2489,7 @@ declare module "yandex-maps" {
     zIndexHover?: number;
   }
 
-  declare class ymaps$Polyline mixins ymaps$GeoObject {
+  declare class ymaps$Polyline mixins GeoObject {
     constructor(
       geometry: number[][] | { [key: string]: any } | ymaps$ILineStringGeometry,
       properties?: { [key: string]: any } | ymaps$IDataManager,
@@ -2341,7 +2528,7 @@ declare module "yandex-maps" {
     zIndexHover?: number;
   }
 
-  declare class ymaps$Popup<T> mixins ymaps$IPopup<T> {
+  declare class ymaps$Popup<T> mixins IPopup<T> {
     constructor(map: ymaps$Map, options?: ymaps$IPopupOptions): this;
     options: ymaps$IOptionManager;
     events: ymaps$IEventManager;
@@ -2383,40 +2570,53 @@ declare module "yandex-maps" {
     errorCallback?: () => void;
   }
 
-  declare var npm$namespace$templateLayoutFactory: {
-    createClass: typeof templateLayoutFactory$createClass
+  declare var npm$namespace$ymaps$templateLayoutFactory: {
+    createClass: typeof ymaps$templateLayoutFactory$createClass
   };
-  declare function templateLayoutFactory$createClass(
+  declare function ymaps$templateLayoutFactory$createClass(
     template: string,
     overrides?: { [key: string]: any },
     staticMethods?: { [key: string]: any }
-  ): ymaps$IClassConstructor<layout$templateBased.templateBased$Base>;
+  ): ymaps$IClassConstructor<layout$templateBasedBase>;
 
-  declare class cursor$Accessor {
+  declare var npm$namespace$ymaps$util: {
+    Storage: typeof ymaps$util$Storage,
+    cursor: typeof npm$namespace$ymaps$util$cursor
+  };
+
+  declare var npm$namespace$ymaps$util$cursor: {
+    Accessor: typeof ymaps$util$cursor$Accessor,
+    Manager: typeof ymaps$util$cursor$Manager
+  };
+  declare class ymaps$util$cursor$Accessor {
     constructor(key: string): this;
     getKey(): string;
     remove(): void;
     setKey(): void;
   }
 
-  declare class cursor$Manager {
+  declare class ymaps$util$cursor$Manager {
     constructor(element: HTMLElement): this;
-    push(key: string): cursor$Accessor;
+    push(key: string): ymaps$util$cursor$Accessor;
   }
 
-  declare class util$Storage {
+  declare class ymaps$util$Storage {
     add(key: string, object: { [key: string]: any }): this;
     get(key: string | { [key: string]: any }): { [key: string]: any } | string;
     remove(key: string): { [key: string]: any };
   }
 
-  declare class vow$Deferred {
+  declare var npm$namespace$ymaps$vow: {
+    Deferred: typeof ymaps$vow$Deferred,
+    Promise: typeof ymaps$vow$Promise
+  };
+  declare class ymaps$vow$Deferred {
     promise(): vow$Promise;
     reject(reason: { [key: string]: any }): void;
     resolve(value: { [key: string]: any }): void;
   }
 
-  declare class vow$Promise {
+  declare class ymaps$vow$Promise {
     constructor(resolver?: () => void): this;
     done(
       onFulfilled?: () => void,
@@ -2428,57 +2628,56 @@ declare module "yandex-maps" {
       onFulfilled?: () => void,
       onRejected?: () => void,
       ctx?: { [key: string]: any }
-    ): vow$Promise;
+    ): ymaps$vow$Promise;
     then(
       onFulfilled?: () => void,
       onRejected?: () => void,
       onProgress?: () => void,
       ctx?: { [key: string]: any }
-    ): vow$Promise;
+    ): ymaps$vow$Promise;
     valueOf(): { [key: string]: any };
   }
 
   declare type ymaps$IBaloon<T> = {
-    autoPan(): vow$Promise<T>
-  } & ymaps$IPopup<T> &
-    ymaps$ICustomizable &
-    ymaps$IChild<T> &
-    ymaps$IFreezable;
+    autoPan(): ymaps$vow$Promise<T>
+  } & IPopup<T> &
+    ICustomizable &
+    IChild<T> &
+    IFreezable;
 
   declare type ymaps$IBalloonManager<T> = {
-    autoPan(): vow$Promise<T>
-  } & ymaps$IPopupManager<T>;
+    autoPan(): ymaps$vow$Promise<T>
+  } & IPopupManager<T>;
 
   declare type ymaps$IBaseGeometry = {
     getBounds(): number[][] | null,
     getType(): string
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IBaseLineStringGeometry = {} & ymaps$IBaseGeometry &
-    ymaps$ILineStringGeometryAccess;
+  declare type ymaps$IBaseLineStringGeometry = {} & IBaseGeometry &
+    ILineStringGeometryAccess;
 
-  declare type ymaps$IBasePointGeometry = {} & ymaps$IBaseGeometry &
-    ymaps$IPointGeometryAccess;
+  declare type ymaps$IBasePointGeometry = {} & IBaseGeometry &
+    IPointGeometryAccess;
 
-  declare type ymaps$IBasePolygonGeometry = {} & ymaps$IBaseGeometry &
-    ymaps$IPolygonGeometryAccess;
+  declare type ymaps$IBasePolygonGeometry = {} & IBaseGeometry &
+    IPolygonGeometryAccess;
 
   declare type ymaps$IBehavior = {
     disable(): void,
     enable(): void,
     isEnabled(): boolean
-  } & ymaps$IChildOnMap &
-    ymaps$ICustomizable;
+  } & IChildOnMap &
+    ICustomizable;
 
   declare type ymaps$IChild<T> = {
     getParent(): { [key: string]: any } | null,
     setParent(parent: { [key: string]: any } | null): this
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IChildOnMap = {} & ymaps$IChild<ymaps$IControlParent>;
+  declare type ymaps$IChildOnMap = {} & IChild<ymaps$IControlParent>;
 
-  declare type ymaps$ICircleGeometry = {} & ymaps$ICircleGeometryAccess &
-    ymaps$IGeometry;
+  declare type ymaps$ICircleGeometry = {} & ICircleGeometryAccess & IGeometry;
 
   declare type ymaps$ICircleGeometryAccess = {
     contains(position: number[]): boolean,
@@ -2487,19 +2686,19 @@ declare module "yandex-maps" {
     getRadius(): number,
     setCoordinates(coordinates: number[] | null): this,
     setRadius(radius: number): this
-  } & ymaps$IFreezable;
+  } & IFreezable;
 
   declare type ymaps$ICollection = {
     add(object: { [key: string]: any }): this,
     getIterator(): ymaps$IIterator,
     remove(object: { [key: string]: any }): this
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IControl = {} & ymaps$IChildOnMap;
+  declare type ymaps$IControl = {} & IChildOnMap;
 
   declare type ymaps$IControlParent = {
-    getChildElement(child: ymaps$IControl): vow$Promise<HTMLElement>
-  } & ymaps$IParentOnMap;
+    getChildElement(child: ymaps$IControl): ymaps$vow$Promise<HTMLElement>
+  } & IParentOnMap;
 
   declare interface ymaps$ICoordSystem {
     getDistance(point1: number[], point2: number[]): number;
@@ -2515,31 +2714,31 @@ declare module "yandex-maps" {
     ): { [key: string]: any };
   }
 
-  declare type ymaps$ICopyrightsAccessor = {} & ymaps$ICopyrightsProvider;
+  declare type ymaps$ICopyrightsAccessor = {} & ICopyrightsProvider;
 
   declare type ymaps$ICopyrightsProvider = {
     getCopyrights(
       coords: number[],
       zoom: number
-    ): vow$Promise<Array<string | HTMLElement>>,
+    ): ymaps$vow$Promise<Array<string | HTMLElement>>,
     remove(): void,
     setCopyrights(
       copyrights: string | HTMLElement | Array<string | HTMLElement>
     ): void
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
   declare type ymaps$ICustomizable = {
     options: ymaps$IOptionManager
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
   declare type ymaps$IDataManager = {
     get(
       path: string,
       defaultValue: { [key: string]: any }
     ): { [key: string]: any }
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IDomEventEmitter = {} & ymaps$IEventEmitter;
+  declare type ymaps$IDomEventEmitter = {} & IEventEmitter;
 
   declare interface ymaps$IEvent {
     allowMapEvent(): void;
@@ -2590,7 +2789,7 @@ declare module "yandex-maps" {
     getParent(): { [key: string]: any } | null,
     group(): ymaps$IEventGroup,
     setParent(parent: { [key: string]: any } | null): this
-  } & ymaps$IEventTrigger;
+  } & IEventTrigger;
 
   declare interface ymaps$IEventTrigger {
     fire(
@@ -2610,15 +2809,15 @@ declare module "yandex-maps" {
       type: string,
       event?: ymaps$IEvent
     ) => void
-  } & ymaps$IEventController;
+  } & IEventController;
 
-  declare type ymaps$IExpandableControlLayout = {} & ymaps$ILayout;
+  declare type ymaps$IExpandableControlLayout = {} & ILayout;
 
   declare type ymaps$IFreezable = {
     freeze(): ymaps$IFreezable,
     isFrozen(): boolean,
     unfreeze(): ymaps$IFreezable
-  } & ymaps$IEventManager;
+  } & IEventManager;
 
   declare interface ymaps$IGeocodeProvider {
     geocode(
@@ -2629,7 +2828,7 @@ declare module "yandex-maps" {
         skip?: number,
         strictBounds?: boolean
       }
-    ): vow$Promise<{ [key: string]: any }>;
+    ): ymaps$vow$Promise<{ [key: string]: any }>;
     suggest(
       request: string,
       options?: {
@@ -2637,37 +2836,37 @@ declare module "yandex-maps" {
         results?: number,
         strictBounds?: boolean
       }
-    ): vow$Promise<{ [key: string]: any }>;
+    ): ymaps$vow$Promise<{ [key: string]: any }>;
   }
 
   declare type ymaps$IGeometry = {
     getMap(): ymaps$Map | null,
     getPixelGeometry(options?: { [key: string]: any }): ymaps$IPixelGeometry,
     setMap(map: ymaps$Map): void
-  } & ymaps$IBaseGeometry &
-    ymaps$ICustomizable;
+  } & IBaseGeometry &
+    ICustomizable;
 
   declare type ymaps$IGeometryEditor = {
     geometry: ymaps$IGeometry,
     state: ymaps$IDataManager,
     startEditing(): void,
     stopEditing(): void
-  } & ymaps$ICustomizable &
-    ymaps$IEventEmitter;
+  } & ICustomizable &
+    IEventEmitter;
 
   declare type ymaps$IGeometryEditorChildModel = {
     editor: ymaps$IGeometryEditor,
     geometry: ymaps$IBaseGeometry,
     getParent(): ymaps$IGeometryEditorModel,
     setPixels(pixels: number[]): void
-  } & ymaps$IGeometryEditorModel;
+  } & IGeometryEditorModel;
 
   declare type ymaps$IGeometryEditorModel = {
     destroy(): void,
     getPixels(): number[]
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IGeometryEditorRootModel = {} & ymaps$IGeometryEditorModel;
+  declare type ymaps$IGeometryEditorRootModel = {} & IGeometryEditorModel;
 
   declare interface ymaps$IGeometryJson {
     type: string;
@@ -2677,12 +2876,12 @@ declare module "yandex-maps" {
     geometry: ymaps$IGeometry | null,
     properties: ymaps$IDataManager,
     state: ymaps$IDataManager,
-    getOverlay(): vow$Promise<ymaps$IOverlay | null>,
+    getOverlay(): ymaps$vow$Promise<ymaps$IOverlay | null>,
     getOverlaySync(): ymaps$IOverlay | null
-  } & ymaps$IChildOnMap &
-    ymaps$ICustomizable &
-    ymaps$IDomEventEmitter &
-    ymaps$IParentOnMap;
+  } & IChildOnMap &
+    ICustomizable &
+    IDomEventEmitter &
+    IParentOnMap;
 
   declare type ymaps$IGeoObjectCollection = {
     add(child: ymaps$IGeoObject, index?: number): this,
@@ -2700,9 +2899,9 @@ declare module "yandex-maps" {
     removeAll(): this,
     set(index: number, child: ymaps$IGeoObject): this,
     splice(index: number, length: number): this
-  } & ymaps$ICustomizable &
-    ymaps$IEventEmitter &
-    ymaps$IParentOnMap;
+  } & ICustomizable &
+    IEventEmitter &
+    IParentOnMap;
 
   declare type ymaps$IGeoObjectSequence = {
     each(
@@ -2715,11 +2914,11 @@ declare module "yandex-maps" {
     getLength(): number,
     getPixelBounds(): number[][] | null,
     indexOf(geoObject: ymaps$IGeoObject): number
-  } & ymaps$ICustomizable &
-    ymaps$IEventEmitter &
-    ymaps$IParentOnMap;
+  } & ICustomizable &
+    IEventEmitter &
+    IParentOnMap;
 
-  declare type ymaps$IHintManager<T> = {} & ymaps$IPopupManager<T>;
+  declare type ymaps$IHintManager<T> = {} & IPopupManager<T>;
 
   declare interface ymaps$IIterator {
     getNext(): { [key: string]: any } | null;
@@ -2730,11 +2929,11 @@ declare module "yandex-maps" {
     getCopyrights?: (
       coords: number[],
       zoom: number
-    ) => vow$Promise<Array<string | HTMLElement>>,
-    getZoomRange?: (point: number[]) => vow$Promise<number[]>
-  } & ymaps$IChildOnMap &
-    ymaps$ICustomizable &
-    ymaps$IEventEmitter;
+    ) => ymaps$vow$Promise<Array<string | HTMLElement>>,
+    getZoomRange?: (point: number[]) => ymaps$vow$Promise<number[]>
+  } & IChildOnMap &
+    ICustomizable &
+    IEventEmitter;
 
   declare type ymaps$ILayout = {
     destroy(): void,
@@ -2744,7 +2943,7 @@ declare module "yandex-maps" {
     isEmpty(): boolean,
     setData(data: { [key: string]: any }): void,
     setParentElement(parent: HTMLElement | null): void
-  } & ymaps$IDomEventEmitter;
+  } & IDomEventEmitter;
 
   declare type ymaps$ILinearRingGeometryAccess = {
     contain(position: number): boolean,
@@ -2766,10 +2965,10 @@ declare module "yandex-maps" {
     setFillRule(fillRule: string): ymaps$ILinearRingGeometryAccess,
     splice(index: number, number: number): number[][],
     unfreeze(): ymaps$IFreezable
-  } & ymaps$IFreezable;
+  } & IFreezable;
 
-  declare type ymaps$ILineStringGeometry = {} & ymaps$IGeometry &
-    ymaps$ILineStringGeometryAccess;
+  declare type ymaps$ILineStringGeometry = {} & IGeometry &
+    ILineStringGeometryAccess;
 
   declare type ymaps$ILineStringGeometryAccess = {
     get(index: number): number[],
@@ -2785,16 +2984,16 @@ declare module "yandex-maps" {
     set(index: number, coordinates: number[]): ymaps$ILineStringGeometryAccess,
     setCoordinates(coordinates: number[]): ymaps$ILineStringGeometryAccess,
     splice(index: number, length: number): number[][]
-  } & ymaps$IFreezable;
+  } & IFreezable;
 
   declare type ymaps$IMapAction = {
-    begin(mapActionManager: map$action.cursor$Manager): void,
+    begin(mapActionManager: map$actionManager): void,
     end(): void
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
-  declare type ymaps$IMapObjectCollection = {} & ymaps$ICollection &
-    ymaps$ICustomizable &
-    ymaps$IParentOnMap;
+  declare type ymaps$IMapObjectCollection = {} & ICollection &
+    ICustomizable &
+    IParentOnMap;
 
   declare interface ymaps$IMultiRouteModelJson {
     params: ymaps$IMultiRouteParams;
@@ -2816,7 +3015,7 @@ declare module "yandex-maps" {
   declare type ymaps$IMultiRouteReferencePoint =
     | string
     | number[]
-    | geometry$geometryEditor$Point;
+    | geometry$Point;
 
   declare type ymaps$IOptionManager = {
     get(
@@ -2828,9 +3027,9 @@ declare module "yandex-maps" {
     getNative(key: string): { [key: string]: any },
     resolve(key: string, name?: string): { [key: string]: any },
     setName(name: string): void
-  } & ymaps$IChild<ymaps$IOptionManager> &
-    ymaps$IEventEmitter &
-    ymaps$IFreezable;
+  } & IChild<ymaps$IOptionManager> &
+    IEventEmitter &
+    IFreezable;
 
   declare type ymaps$IOverlay = {
     getData(): { [key: string]: any },
@@ -2841,8 +3040,8 @@ declare module "yandex-maps" {
     setData(data: { [key: string]: any }): void,
     setGeometry(geometry: ymaps$IPixelGeometry): void,
     setMap(map: ymaps$Map | null): void
-  } & ymaps$ICustomizable &
-    ymaps$IDomEventEmitter;
+  } & ICustomizable &
+    IDomEventEmitter;
 
   declare type ymaps$IPane = {
     destroy(): void,
@@ -2850,7 +3049,7 @@ declare module "yandex-maps" {
     getMap(): ymaps$Map,
     getOverflow(): "visible" | "hidden",
     getZIndex(): number
-  } & ymaps$IEventEmitter;
+  } & IEventEmitter;
 
   declare interface ymaps$IPanorama {
     getAngularBBox(): number[];
@@ -2868,17 +3067,17 @@ declare module "yandex-maps" {
   }
 
   declare interface ymaps$IPanoramaConnection {
-    getConnectedPanorama(): vow$Promise<ymaps$IPanorama>;
+    getConnectedPanorama(): ymaps$vow$Promise<ymaps$IPanorama>;
   }
 
   declare type ymaps$IPanoramaConnectionArrow = {
-    properties: data$cursor$Manager,
+    properties: data$Manager,
     getDirection(): number[],
     getPanorama(): ymaps$IPanorama
-  } & ymaps$IPanoramaConnection;
+  } & IPanoramaConnection;
 
-  declare type ymaps$IPanoramaConnectionMarker = {} & ymaps$IPanoramaConnection &
-    ymaps$IPanoramaMarker;
+  declare type ymaps$IPanoramaConnectionMarker = {} & IPanoramaConnection &
+    IPanoramaMarker;
 
   declare interface ymaps$IPanoramaGraph {
     getEdges(): ymaps$IPanoramaGraphEdge[];
@@ -2891,12 +3090,12 @@ declare module "yandex-maps" {
   }
 
   declare interface ymaps$IPanoramaGraphNode {
-    getConnectedPanorama(): vow$Promise<ymaps$IPanorama>;
+    getConnectedPanorama(): ymaps$vow$Promise<ymaps$IPanorama>;
   }
 
   declare interface ymaps$IPanoramaMarker {
-    properties: data$cursor$Manager;
-    getIconSet(): vow$Promise<ymaps$IPanoramaMarkerIconSet>;
+    properties: data$Manager;
+    getIconSet(): ymaps$vow$Promise<ymaps$IPanoramaMarkerIconSet>;
     getPanorama(): ymaps$IPanorama;
     getPosition(): number[];
   }
@@ -2925,31 +3124,29 @@ declare module "yandex-maps" {
   declare type ymaps$IPixelCircleGeometry = {
     getCoordinates(): number[],
     getRadius(): number
-  } & ymaps$IPixelGeometry;
+  } & IPixelGeometry;
 
   declare type ymaps$IPixelLineStringGeometry = {
     getClosest(anchorPosition: number[]): { [key: string]: any },
     getCoordinates(): number[][],
     getLength(): number
-  } & ymaps$IPixelGeometry;
+  } & IPixelGeometry;
 
   declare type ymaps$IPixelGeometry = {
     equals(geometry: ymaps$IPixelGeometry): boolean,
     getMetaData(): { [key: string]: any },
     scale(factor: number): ymaps$IPixelGeometry,
     shift(offset: number[]): ymaps$IPixelGeometry
-  } & ymaps$IBaseGeometry;
+  } & IBaseGeometry;
 
-  declare type ymaps$IPointGeometry = {} & ymaps$IGeometry &
-    ymaps$IPointGeometryAccess;
+  declare type ymaps$IPointGeometry = {} & IGeometry & IPointGeometryAccess;
 
   declare interface ymaps$IPointGeometryAccess {
     getCoordinates(): number[] | null;
     setCoordinates(coordinates: number[] | null): this;
   }
 
-  declare type ymaps$IPolygonGeometry = {} & ymaps$IGeometry &
-    ymaps$IPolygonGeometryAccess;
+  declare type ymaps$IPolygonGeometry = {} & IGeometry & IPolygonGeometryAccess;
 
   declare type ymaps$IPolygonGeometryAccess = {
     contains(position: number[]): boolean,
@@ -2965,32 +3162,32 @@ declare module "yandex-maps" {
     setCoordinates(coordinates: number[][][]): ymaps$IPolygonGeometryAccess,
     setFillRule(fillRule: string): ymaps$IPolygonGeometryAccess,
     splice(index: number, number: number): ymaps$ILinearRingGeometryAccess[]
-  } & ymaps$IFreezable;
+  } & IFreezable;
 
   declare type ymaps$IPopup<T> = {
-    close(force?: boolean): vow$Promise<T>,
+    close(force?: boolean): ymaps$vow$Promise<T>,
     getData(): { [key: string]: any },
-    getOverlay(): vow$Promise<ymaps$IOverlay>,
+    getOverlay(): ymaps$vow$Promise<ymaps$IOverlay>,
     getOverlaySync(): ymaps$IOverlay,
     getPosition(): number[],
     isOpen(): boolean,
     open(
       position: number[],
       data: { [key: string]: any } | string | HTMLElement
-    ): vow$Promise<T>,
+    ): ymaps$vow$Promise<T>,
     setData(
       data: { [key: string]: any } | string | HTMLElement
-    ): vow$Promise<T>,
-    setPosition(position: number[]): vow$Promise<T>
-  } & ymaps$ICustomizable &
-    ymaps$IEventEmitter;
+    ): ymaps$vow$Promise<T>,
+    setPosition(position: number[]): ymaps$vow$Promise<T>
+  } & ICustomizable &
+    IEventEmitter;
 
   declare type ymaps$IPopupManager<T> = {
-    close(force?: boolean): vow$Promise<T>,
+    close(force?: boolean): ymaps$vow$Promise<T>,
     destroy(): void,
     getData(): { [key: string]: any } | null,
     getOptions(): ymaps$IOptionManager | null,
-    getOverlay(): vow$Promise<ymaps$IOverlay | null>,
+    getOverlay(): ymaps$vow$Promise<ymaps$IOverlay | null>,
     getOverlaySync(): ymaps$IOverlay | null,
     getPosition(): number[] | null,
     isOpen(): boolean,
@@ -2998,13 +3195,13 @@ declare module "yandex-maps" {
       position?: number[],
       data?: { [key: string]: any } | string | HTMLElement,
       options?: { [key: string]: any }
-    ): vow$Promise<T>,
+    ): ymaps$vow$Promise<T>,
     setData(
       data: { [key: string]: any } | string | HTMLElement
-    ): vow$Promise<T>,
-    setOptions(options: { [key: string]: any }): vow$Promise<T>,
-    setPosition(position: number[]): vow$Promise<T>
-  } & ymaps$IEventEmitter;
+    ): ymaps$vow$Promise<T>,
+    setOptions(options: { [key: string]: any }): ymaps$vow$Promise<T>,
+    setPosition(position: number[]): ymaps$vow$Promise<T>
+  } & IEventEmitter;
 
   declare interface ymaps$IPositioningContext {
     fromClientPixels(clientPixelPoint: number[]): number[];
@@ -3022,11 +3219,11 @@ declare module "yandex-maps" {
   declare interface ymaps$IRoutePanel {
     options: ymaps$IOptionManager;
     state: ymaps$IDataManager;
-    getRoute(): multiRouter$multiRouter$MultiRoute;
+    getRoute(): multiRouter$MultiRoute;
     switchPoints(): void;
   }
 
-  declare type ymaps$ISearchControlLayout = {} & ymaps$IExpandableControlLayout;
+  declare type ymaps$ISearchControlLayout = {} & IExpandableControlLayout;
 
   declare type ymaps$ISelectableControl = {
     deselect(): void,
@@ -3035,9 +3232,9 @@ declare module "yandex-maps" {
     isEnabled(): boolean,
     isSelected(): boolean,
     select(): void
-  } & ymaps$IControl;
+  } & IControl;
 
-  declare type ymaps$ISelectableControlLayout = {} & ymaps$ILayout;
+  declare type ymaps$ISelectableControlLayout = {} & ILayout;
 
   declare interface ymaps$IShape {
     contains(position: number[]): boolean;
