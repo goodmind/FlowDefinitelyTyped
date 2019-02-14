@@ -97,15 +97,57 @@ declare module "sencha_touch" {
     enumerables: typeof Ext$enumerables,
     frameStartTime: typeof Ext$frameStartTime,
     isSecure: typeof Ext$isSecure,
-    version: typeof Ext$version
+    version: typeof Ext$version,
+
+    Ajax: typeof Ext$Ajax,
+    Anim: typeof Ext$Anim,
+    AnimationQueue: typeof Ext$AnimationQueue,
+    Anims: typeof Ext$Anims,
+    Array: typeof Ext$Array,
+    Base: typeof Ext$Base,
+    Browser: typeof Ext$Browser,
+    ClassManager: typeof Ext$ClassManager,
+    ComponentManager: typeof Ext$ComponentManager,
+    ComponentMgr: typeof Ext$ComponentMgr,
+    ComponentQuery: typeof Ext$ComponentQuery,
+    ModelMgr: typeof Ext$ModelMgr,
+    ModelManager: typeof Ext$ModelManager,
+    StoreMgr: typeof Ext$StoreMgr,
+    StoreManager: typeof Ext$StoreManager,
+    Date: typeof Ext$Date,
+    DateExtras: typeof Ext$DateExtras,
+    Direct: typeof Ext$Direct,
+    Element: typeof Ext$Element,
+    DomQuery: typeof Ext$DomQuery,
+    EventManager: typeof Ext$EventManager,
+    Feature: typeof Ext$Feature,
+    Function: typeof Ext$Function,
+    JSON: typeof Ext$JSON,
+    Loader: typeof Ext$Loader,
+    Logger: typeof Ext$Logger,
+    Msg: typeof Ext$Msg,
+    Number: typeof Ext$Number,
+    Object: typeof Ext$Object,
+    Os: typeof Ext$Os,
+    Router: typeof Ext$Router,
+    String: typeof Ext$String,
+    TaskQueue: typeof Ext$TaskQueue,
+    Template: typeof Ext$Template,
+    Version: typeof Ext$Version,
+    Viewport: typeof Ext$Viewport,
+    XTemplate: typeof Ext$XTemplate,
+    device: typeof npm$namespace$Ext$device,
+    core: typeof npm$namespace$Ext$core,
+    draw: typeof npm$namespace$Ext$draw,
+    layout: typeof npm$namespace$Ext$layout
   };
-  declare export type Ext$IAbstractComponent = {} & Ext$Ext$IEvented;
+  declare export type Ext$IAbstractComponent = {} & Ext$IEvented;
 
   declare export type Ext$IAbstractManager = {
     /**
      * [Property] (Ext.util.HashMap)
      */
-    all?: Ext$Ext$util.util$IHashMap,
+    all?: util$IHashMap,
 
     /**
      * [Method] Creates and returns an instance of whatever this manager manages based on the supplied type and config object
@@ -113,21 +155,21 @@ declare module "sencha_touch" {
      * @param defaultType String If no type is discovered in the config object, we fall back to this type.
      * @returns Object The instance of whatever this manager is managing.
      */
-    Ext$create?: (config?: any, defaultType?: string) => any,
+    create?: (config?: any, defaultType?: string) => any,
 
     /**
      * [Method] Executes the specified function once for each item in the collection
      * @param fn Function The function to execute.
      * @param scope Object The scope to execute in.
      */
-    Ext$each?: (fn?: any, scope?: any) => void,
+    each?: (fn?: any, scope?: any) => void,
 
     /**
      * [Method] Returns an item by id
      * @param id String The id of the item.
      * @returns Object The item, undefined if not found.
      */
-    Ext$get?: (Ext$id?: string) => any,
+    get?: (id?: string) => any,
 
     /**
      * [Method] Gets the number of items in the collection
@@ -140,7 +182,7 @@ declare module "sencha_touch" {
      * @param type String The mnemonic string by which the class may be looked up.
      * @returns Boolean Whether the type is registered.
      */
-    isRegistered?: (Ext$type?: string) => boolean,
+    isRegistered?: (type?: string) => boolean,
 
     /**
      * [Method] Registers a function that will be called when an item with the specified id is added to the manager
@@ -148,7 +190,7 @@ declare module "sencha_touch" {
      * @param fn Function The callback function. Called with a single parameter, the item.
      * @param scope Object The scope (this reference) in which the callback is executed. Defaults to the item.
      */
-    onAvailable?: (Ext$id?: string, fn?: any, scope?: any) => void,
+    onAvailable?: (id?: string, fn?: any, scope?: any) => void,
 
     /**
      * [Method] Registers an item to be managed
@@ -161,16 +203,16 @@ declare module "sencha_touch" {
      * @param type String The mnemonic string by which the class may be looked up.
      * @param cls Function The new instance class.
      */
-    registerType?: (Ext$type?: string, cls?: any) => void,
+    registerType?: (type?: string, cls?: any) => void,
 
     /**
      * [Method] Unregisters an item by removing it from this manager
      * @param item Object The item to unregister.
      */
     unregister?: (item?: any) => void
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 
-  declare export type Ext$IAbstractPlugin = {} & Ext$Ext$IBase;
+  declare export type Ext$IAbstractPlugin = {} & Ext$IBase;
 
   declare export type Ext$IActionSheet = {
     /**
@@ -274,119 +316,9 @@ declare module "sencha_touch" {
      * @param right Number The new value.
      */
     setRight?: (right?: number) => void
-  } & Ext$Ext$ISheet;
+  } & Ext$ISheet;
 
-  declare export type Ext$IAjax = {
-    /**
-     * [Config Option] (Object)
-     */
-    headers?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    password?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useDefaultXhrHeader?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    username?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    withCredentials?: boolean,
-
-    /**
-     * [Property] (Object)
-     */
-    actionMethods?: any,
-
-    /**
-     * [Method] Performs Ajax request
-     * @param operation Ext.data.Operation
-     * @param callback Function
-     * @param scope Object
-     * @returns Object
-     */
-    doRequest?: (
-      operation?: Ext$Ext$data.data$IOperation,
-      Ext$callback?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Returns the value of headers
-     * @returns Object
-     */
-    getHeaders?: () => any,
-
-    /**
-     * [Method] Returns the HTTP method name for a given request
-     * @param request Ext.data.Request The request object.
-     * @returns String The HTTP method to use (should be one of 'GET', 'POST', 'PUT' or 'DELETE').
-     */
-    getMethod?: (request?: Ext$Ext$data.data$IRequest) => string,
-
-    /**
-     * [Method] Returns the value of password
-     * @returns String
-     */
-    getPassword?: () => string,
-
-    /**
-     * [Method] Returns the value of useDefaultXhrHeader
-     * @returns Boolean
-     */
-    getUseDefaultXhrHeader?: () => boolean,
-
-    /**
-     * [Method] Returns the value of username
-     * @returns String
-     */
-    getUsername?: () => string,
-
-    /**
-     * [Method] Returns the value of withCredentials
-     * @returns Boolean
-     */
-    getWithCredentials?: () => boolean,
-
-    /**
-     * [Method] Sets the value of headers
-     * @param headers Object The new value.
-     */
-    setHeaders?: (headers?: any) => void,
-
-    /**
-     * [Method] Sets the value of password
-     * @param password String The new value.
-     */
-    setPassword?: (password?: string) => void,
-
-    /**
-     * [Method] Sets the value of useDefaultXhrHeader
-     * @param useDefaultXhrHeader Boolean The new value.
-     */
-    setUseDefaultXhrHeader?: (useDefaultXhrHeader?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of username
-     * @param username String The new value.
-     */
-    setUsername?: (username?: string) => void,
-
-    /**
-     * [Method] Sets the value of withCredentials
-     * @param withCredentials Boolean The new value.
-     */
-    setWithCredentials?: (withCredentials?: boolean) => void
-  } & undefined.device$IConnection;
+  declare export type Ext$IAjax = {} & undefined.IConnection;
 
   declare export class Ext$Ajax {
     /**
@@ -397,7 +329,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Aborts any outstanding request
@@ -750,10 +682,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    static relayEvents(
-      object?: any,
-      events?: any
-    ): Ext$Ext$mixin.util$IObservable;
+    static relayEvents(object?: any, events?: any): Ext$mixin$IObservable;
 
     /**
      * [Method] Removes a before event handler
@@ -940,7 +869,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Suspends the firing of all events
@@ -994,14 +923,14 @@ declare module "sencha_touch" {
      * @param options Object The initial options.
      */
     static upload(
-      Ext$form?: any,
+      form?: any,
       url?: string,
       params?: string,
       options?: any
     ): void;
   }
 
-  declare export type Ext$IAnim = {} & Ext$Ext$IBase;
+  declare export type Ext$IAnim = {} & Ext$IBase;
 
   declare export class Ext$Anim {
     /**
@@ -1042,7 +971,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (String)
      */
-    static easing: string;
+    static fx$easing: string;
 
     /**
      * [Config Option] (Object)
@@ -1072,7 +1001,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -1127,16 +1056,16 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
-  declare export type Ext$IAnimationQueue = {} & Ext$Ext$IBase;
+  declare export type Ext$IAnimationQueue = {} & Ext$IBase;
 
   declare export class Ext$AnimationQueue {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -1190,7 +1119,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method]
@@ -1235,7 +1164,7 @@ declare module "sencha_touch" {
     static wipe: any;
   }
 
-  declare export type app$IRouter = {
+  declare export type Ext$app$IRouter = {
     /**
      * [Config Option] (Object)
      */
@@ -1257,7 +1186,7 @@ declare module "sencha_touch" {
      * [Method] Convenience method which just calls the supplied function with the Router instance
      * @param fn Function The fn to call
      */
-    Ext$draw?: (fn?: any) => void,
+    draw?: (fn?: any) => void,
 
     /**
      * [Method] Returns the value of defaults
@@ -1289,43 +1218,9 @@ declare module "sencha_touch" {
      * @param routes Array The new value.
      */
     setRoutes?: (routes?: any[]) => void
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 
-  declare export interface Ext$IArray {
-    /**
-     * [Config Option] (String)
-     */
-    successProperty?: string;
-
-    /**
-     * [Config Option] (String)
-     */
-    totalProperty?: string;
-
-    /**
-     * [Method] Returns the value of successProperty
-     * @returns Object
-     */
-    getSuccessProperty?: () => any;
-
-    /**
-     * [Method] Returns the value of totalProperty
-     * @returns Object
-     */
-    getTotalProperty?: () => any;
-
-    /**
-     * [Method] Sets the value of successProperty
-     * @param successProperty Object The new value.
-     */
-    setSuccessProperty?: (successProperty?: any) => void;
-
-    /**
-     * [Method] Sets the value of totalProperty
-     * @param totalProperty Object The new value.
-     */
-    setTotalProperty?: (totalProperty?: any) => void;
-  }
+  declare export interface Ext$IArray {}
 
   declare export class Ext$Array {
     /**
@@ -1631,13 +1526,13 @@ declare module "sencha_touch" {
      * @param url String The new value.
      */
     setUrl?: (url?: string) => void
-  } & Ext$Ext$IMedia;
+  } & Ext$IMedia;
 
   declare export type Ext$IBase = {
     /**
      * [Property] (Ext.Class)
      */
-    self?: Ext$Ext$IClass,
+    self?: Ext$IClass,
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -1663,7 +1558,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the initial configuration passed to constructor
@@ -1678,7 +1573,7 @@ declare module "sencha_touch" {
      * @returns Object mixins The mixin prototypes as key - value pairs
      */
     initConfig?: (instanceConfig?: any) => any
-  } & Ext$Ext$IClass;
+  } & Ext$IClass;
 
   declare export class Ext$Base {
     /**
@@ -1692,7 +1587,7 @@ declare module "sencha_touch" {
      * @param members Object
      * @returns Ext.Base this
      */
-    static addStatics(members?: any): Ext$Ext$IBase;
+    static addStatics(members?: any): Ext$IBase;
 
     /**
      * [Method]
@@ -1724,54 +1619,12 @@ declare module "sencha_touch" {
      * @param members Object The properties to add to this class. This should be specified as an object literal containing one or more properties.
      * @returns Ext.Base this class
      */
-    static override(members?: any): Ext$Ext$IBase;
+    static override(members?: any): Ext$IBase;
   }
 
-  declare export type behavior$ITranslatable = {} & undefined.behavior$IBehavior;
+  declare export type Ext$behavior$ITranslatable = {} & undefined.IBehavior;
 
-  declare export type Ext$IBrowser = {
-    /**
-     * [Property] (String)
-     */
-    engineName?: string,
-
-    /**
-     * [Property] (Ext.Version)
-     */
-    engineVersion?: Ext$Ext$IVersion,
-
-    /**
-     * [Property] (Boolean)
-     */
-    isSecure?: boolean,
-
-    /**
-     * [Property] (Boolean)
-     */
-    isStrict?: boolean,
-
-    /**
-     * [Property] (String)
-     */
-    name?: string,
-
-    /**
-     * [Property] (String)
-     */
-    userAgent?: string,
-
-    /**
-     * [Property] (Ext.Version)
-     */
-    version?: Ext$Ext$IVersion,
-
-    /**
-     * [Method] A hybrid property can be either accessed as a method call for example  if Ext browser is IE
-     * @param value String The OS name to check.
-     * @returns Boolean
-     */
-    is?: (value?: string) => boolean
-  } & undefined.Ext$IBrowser;
+  declare export type Ext$IBrowser = {} & undefined.IBrowser;
 
   declare export class Ext$Browser {
     /**
@@ -1782,7 +1635,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Version)
      */
-    static engineVersion: Ext$Ext$IVersion;
+    static engineVersion: Ext$IVersion;
 
     /**
      * [Property] (Boolean)
@@ -1802,7 +1655,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Property] (String)
@@ -1812,7 +1665,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Version)
      */
-    static version: Ext$Ext$IVersion;
+    static version: Ext$IVersion;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -1865,7 +1718,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
   declare export type Ext$IButton = {
@@ -2133,9 +1986,9 @@ declare module "sencha_touch" {
      * @param ui String The new value.
      */
     setUi?: (ui?: string) => void
-  } & Ext$draw$IComponent;
+  } & Ext$IComponent;
 
-  declare export type carousel$IItem = {
+  declare export type Ext$carousel$IItem = {
     /**
      * [Config Option] (String)
      */
@@ -2181,7 +2034,7 @@ declare module "sencha_touch" {
      * @param translatable Boolean The new value.
      */
     setTranslatable?: (translatable?: boolean) => void
-  } & Ext$Ext$IDecorator;
+  } & Ext$IDecorator;
 
   declare export type Ext$ICarousel = {
     /**
@@ -2207,7 +2060,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the index of the currently active card
@@ -2285,188 +2138,19 @@ declare module "sencha_touch" {
      * [Method] Switches to the next card
      * @returns Ext.carousel.Carousel this
      */
-    next?: () => Ext$Ext$carousel.Ext$ICarousel,
+    next?: () => Ext$carousel$ICarousel,
 
     /**
      * [Method] Switches to the previous card
      * @returns Ext.carousel.Carousel this
      */
-    prev?: () => Ext$Ext$carousel.Ext$ICarousel,
+    prev?: () => Ext$carousel$ICarousel,
 
     /**
      * [Method] Switches to the previous card
      * @returns Ext.carousel.Carousel this
      */
-    previous?: () => Ext$Ext$carousel.Ext$ICarousel,
-
-    /**
-     * [Method] Sets the value of animation
-     * @param animation Object The new value.
-     */
-    setAnimation?: (animation?: any) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of bufferSize
-     * @param bufferSize Number The new value.
-     */
-    setBufferSize?: (bufferSize?: number) => void,
-
-    /**
-     * [Method] Sets the value of direction
-     * @param direction String The new value.
-     */
-    setDirection?: (direction?: string) => void,
-
-    /**
-     * [Method] Sets the value of directionLock
-     * @param directionLock Boolean The new value.
-     */
-    setDirectionLock?: (directionLock?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of indicator
-     * @param indicator Boolean The new value.
-     */
-    setIndicator?: (indicator?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of itemConfig
-     * @param itemConfig Object The new value.
-     */
-    setItemConfig?: (itemConfig?: any) => void,
-
-    /**
-     * [Method] Sets the value of itemLength
-     * @param itemLength Object The new value.
-     */
-    setItemLength?: (itemLength?: any) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    direction?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    indicator?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the index of the currently active card
-     * @returns Number The index of the currently active card.
-     */
-    getActiveIndex?: () => number,
-
-    /**
-     * [Method] Returns the value of animation
-     * @returns Object
-     */
-    getAnimation?: () => any,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of bufferSize
-     * @returns Number
-     */
-    getBufferSize?: () => number,
-
-    /**
-     * [Method] Returns the value of direction
-     * @returns String
-     */
-    getDirection?: () => string,
-
-    /**
-     * [Method] Returns the value of directionLock
-     * @returns Boolean
-     */
-    getDirectionLock?: () => boolean,
-
-    /**
-     * [Method] Returns the value of indicator
-     * @returns any
-     */
-    getIndicator?: () => any,
-
-    /**
-     * [Method] Returns the value of itemConfig
-     * @returns Object
-     */
-    getItemConfig?: () => any,
-
-    /**
-     * [Method] Returns the value of itemLength
-     * @returns Object
-     */
-    getItemLength?: () => any,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns true when direction is horizontal
-     * @returns Boolean
-     */
-    isHorizontal?: () => boolean,
-
-    /**
-     * [Method] Returns true when direction is vertical
-     * @returns Boolean
-     */
-    isVertical?: () => boolean,
-
-    /**
-     * [Method] Switches to the next card
-     * @returns Ext.carousel.Carousel this
-     */
-    next?: () => Ext$Ext$carousel.Ext$ICarousel,
-
-    /**
-     * [Method] Switches to the previous card
-     * @returns Ext.carousel.Carousel this
-     */
-    prev?: () => Ext$Ext$carousel.Ext$ICarousel,
-
-    /**
-     * [Method] Switches to the previous card
-     * @returns Ext.carousel.Carousel this
-     */
-    previous?: () => Ext$Ext$carousel.Ext$ICarousel,
+    previous?: () => Ext$carousel$ICarousel,
 
     /**
      * [Method] Sets the value of animation
@@ -2521,14 +2205,14 @@ declare module "sencha_touch" {
      * @param ui String The new value.
      */
     setUi?: (ui?: string) => void
-  } & Ext$element$IContainer;
+  } & Ext$IContainer;
 
-  declare export type chart$ISpaceFillingChart = {
+  declare export type Ext$chart$ISpaceFillingChart = {
     /**
      * [Method] Redraw the chart
      */
     redraw?: () => void
-  } & undefined.chart$IAbstractChart;
+  } & undefined.IAbstractChart;
 
   declare export interface Ext$IClass {
     /**
@@ -2549,7 +2233,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (String)
      */
-    Ext$extend?: string;
+    extend?: string;
 
     /**
      * [Config Option] (Object)
@@ -2590,21 +2274,21 @@ declare module "sencha_touch" {
      * @param aliases Object The set of mappings of the form className : [values...]
      * @returns Ext.ClassManager this
      */
-    static addNameAliasMappings(aliases?: any): Ext$Ext$IClassManager;
+    static addNameAliasMappings(aliases?: any): Ext$IClassManager;
 
     /**
      * [Method]
      * @param alternates Object The set of mappings of the form className : [values...]
      * @returns Ext.ClassManager this
      */
-    static addNameAlternateMappings(alternates?: any): Ext$Ext$IClassManager;
+    static addNameAlternateMappings(alternates?: any): Ext$IClassManager;
 
     /**
      * [Method] Retrieve a class by its name
      * @param name String
      * @returns Ext.Class class
      */
-    static get(name?: string): Ext$Ext$IClass;
+    static get(name?: string): Ext$IClass;
 
     /**
      * [Method] Get the aliases of a class by the class name
@@ -2618,14 +2302,14 @@ declare module "sencha_touch" {
      * @param alias String
      * @returns Ext.Class class
      */
-    static getByAlias(alias?: string): Ext$Ext$IClass;
+    static getByAlias(alias?: string): Ext$IClass;
 
     /**
      * [Method] Get the class of the provided object returns null if it s not an instance of any class created with Ext define
      * @param object Object
      * @returns Ext.Class class
      */
-    static getClass(object?: any): Ext$Ext$IClass;
+    static getClass(object?: any): Ext$IClass;
 
     /**
      * [Method] Get the name of the class by its reference or its instance usually invoked by the shorthand Ext getClassName Ext Cl
@@ -2684,7 +2368,7 @@ declare module "sencha_touch" {
      * @param value Object
      * @returns Ext.ClassManager this
      */
-    static set(name?: string, value?: any): Ext$Ext$IClassManager;
+    static set(name?: string, value?: any): Ext$IClassManager;
 
     /**
      * [Method] Register the alias for a class
@@ -2692,7 +2376,7 @@ declare module "sencha_touch" {
      * @param alias String Alias to use when referring to this class.
      * @returns Ext.ClassManager this
      */
-    static setAlias(cls?: any, alias?: string): Ext$Ext$IClassManager;
+    static setAlias(cls?: any, alias?: string): Ext$IClassManager;
 
     /**
      * [Method] Creates a namespace and assign the value to the created object
@@ -2741,7 +2425,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object)
      */
-    Ext$data?: any,
+    data?: any,
 
     /**
      * [Config Option] (Boolean)
@@ -2826,7 +2510,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (String)
      */
-    Ext$id?: string,
+    id?: string,
 
     /**
      * [Config Option] (String)
@@ -2891,12 +2575,12 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.data.Model)
      */
-    record?: Ext$Ext$data.data$IModel,
+    record?: data$IModel,
 
     /**
      * [Config Option] (Ext.Element)
      */
-    renderTo?: Ext$Ext$IElement,
+    renderTo?: Ext$IElement,
 
     /**
      * [Config Option] (Number/String)
@@ -2906,7 +2590,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Boolean/String/Object)
      */
-    Ext$scroll?: any,
+    scroll?: any,
 
     /**
      * [Config Option] (String/Mixed)
@@ -2979,7 +2663,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Destroys this Component
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Disables this Component
@@ -3062,7 +2746,7 @@ declare module "sencha_touch" {
      * [Method] Retrieves the top level element representing this component
      * @returns Ext.dom.Element
      */
-    getEl?: () => Ext$Ext$dom.Ext$IElement,
+    getEl?: () => dom$IElement,
 
     /**
      * [Method] Returns the value of enterAnimation
@@ -3170,7 +2854,7 @@ declare module "sencha_touch" {
      * [Method] Returns the parent of this component if it has one
      * @returns Ext.Component The parent of this component.
      */
-    getParent?: () => Ext$Ext$IComponent,
+    getParent?: () => Ext$IComponent,
 
     /**
      * [Method] Returns the value of plugins
@@ -3182,13 +2866,13 @@ declare module "sencha_touch" {
      * [Method] Returns the value of record
      * @returns Ext.data.Model
      */
-    getRecord?: () => Ext$Ext$data.data$IModel,
+    getRecord?: () => data$IModel,
 
     /**
      * [Method] Returns the value of renderTo
      * @returns Ext.Element
      */
-    getRenderTo?: () => Ext$Ext$IElement,
+    getRenderTo?: () => Ext$IElement,
 
     /**
      * [Method] Returns the value of right
@@ -3279,7 +2963,7 @@ declare module "sencha_touch" {
      * @param animation Object/Boolean You can specify an animation here or a bool to use the hideAnimation config.
      * @returns Ext.Component
      */
-    hide?: (animation?: any) => Ext$Ext$IComponent,
+    hide?: (animation?: any) => Ext$IComponent,
 
     /**
      * [Method] Allows addition of behavior to the rendering phase
@@ -3373,7 +3057,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of data
      * @param data Object The new value.
      */
-    setData?: (Ext$data?: any) => void,
+    setData?: (data?: any) => void,
 
     /**
      * [Method] Sets the value of disabled
@@ -3517,13 +3201,13 @@ declare module "sencha_touch" {
      * [Method] Sets the value of record
      * @param record Ext.data.Model The new value.
      */
-    setRecord?: (record?: Ext$Ext$data.data$IModel) => void,
+    setRecord?: (record?: data$IModel) => void,
 
     /**
      * [Method] Sets the value of renderTo
      * @param renderTo Ext.Element The new value.
      */
-    setRenderTo?: (renderTo?: Ext$Ext$IElement) => void,
+    setRenderTo?: (renderTo?: Ext$IElement) => void,
 
     /**
      * [Method] Sets the value of right
@@ -3608,21 +3292,21 @@ declare module "sencha_touch" {
      * @param animation Object/Boolean You can specify an animation here or a bool to use the showAnimation config.
      * @returns Ext.Component
      */
-    show?: (animation?: any) => Ext$Ext$IComponent,
+    show?: (animation?: any) => Ext$IComponent,
 
     /**
      * [Method] Shows this component by another component
      * @param component Ext.Component The target component to show this component by.
      * @param alignment String The specific alignment.
      */
-    showBy?: (component?: Ext$Ext$IComponent, alignment?: string) => void,
+    showBy?: (component?: Ext$IComponent, alignment?: string) => void,
 
     /**
      * [Method] Walks up the ownerCt axis looking for an ancestor Container which matches the passed simple selector
      * @param selector String The simple selector to test.
      * @returns Ext.Container The matching ancestor Container (or undefined if no match was found).
      */
-    up?: (selector?: string) => Ext$element$IContainer,
+    up?: (selector?: string) => Ext$IContainer,
 
     /**
      * [Method] Updates the HTML content of the Component
@@ -3634,1443 +3318,11 @@ declare module "sencha_touch" {
      * @param newHtmlCls Object
      * @param oldHtmlCls Object
      */
-    updateStyleHtmlCls?: (newHtmlCls?: any, oldHtmlCls?: any) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    border?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    bottom?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    centered?: boolean,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    cls?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    componentCls?: string,
-
-    /**
-     * [Config Option] (Ext.Element/HTMLElement/String)
-     */
-    contentEl?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    Ext$data?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    disabled?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    disabledCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    dock?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    docked?: string,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    enterAnimation?: any,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    exitAnimation?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    flex?: number,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    floating?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    floatingCls?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    fullscreen?: boolean,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    height?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    hidden?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    hiddenCls?: string,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    hideAnimation?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    hideOnMaskTap?: boolean,
-
-    /**
-     * [Config Option] (String/Ext.Element/HTMLElement)
-     */
-    html?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    Ext$id?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    itemId?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    layoutOnOrientationChange?: boolean,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    left?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    margin?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    maxHeight?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    maxWidth?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    minHeight?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    minWidth?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    modal?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    monitorOrientation?: boolean,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    padding?: any,
-
-    /**
-     * [Config Option] (Object/Array)
-     */
-    plugins?: any,
-
-    /**
-     * [Config Option] (Ext.data.Model)
-     */
-    record?: Ext$Ext$data.data$IModel,
-
-    /**
-     * [Config Option] (Ext.Element)
-     */
-    renderTo?: Ext$Ext$IElement,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    right?: any,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    Ext$scroll?: any,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    showAnimation?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    stopMaskTapEvent?: boolean,
-
-    /**
-     * [Config Option] (String/Object)
-     */
-    style?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    styleHtmlCls?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    styleHtmlContent?: boolean,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    top?: any,
-
-    /**
-     * [Config Option] (String/String[]/Ext.Template/Ext.XTemplate[])
-     */
-    tpl?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    tplWriteMode?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    width?: any,
-
-    /**
-     * [Config Option] (String[])
-     */
-    xtype?: string,
-
-    /**
-     * [Config Option] (Number)
-     */
-    zIndex?: number,
-
-    /**
-     * [Method] Adds a CSS class or classes to this Component s rendered element
-     * @param cls String The CSS class to add.
-     * @param prefix String Optional prefix to add to each class.
-     * @param suffix String Optional suffix to add to each class.
-     */
-    addCls?: (cls?: string, prefix?: string, suffix?: string) => void,
-
-    /**
-     * [Method] Destroys this Component
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Disables this Component
-     */
-    disable?: () => void,
-
-    /**
-     * [Method] Enables this Component
-     */
-    enable?: () => void,
-
-    /**
-     * [Method] Prepares information on aligning this to component using alignment
-     * @param component Object
-     * @param alignment Object
-     */
-    getAlignmentInfo?: (component?: any, alignment?: any) => void,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of border
-     * @returns Number/String
-     */
-    getBorder?: () => any,
-
-    /**
-     * [Method] Returns the value of bottom
-     * @returns any
-     */
-    getBottom?: () => any,
-
-    /**
-     * [Method] Returns the value of centered
-     * @returns Boolean
-     */
-    getCentered?: () => boolean,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns any
-     */
-    getCls?: () => any,
-
-    /**
-     * [Method] Returns the value of contentEl
-     * @returns Ext.Element/HTMLElement/String
-     */
-    getContentEl?: () => any,
-
-    /**
-     * [Method] Returns the value of data
-     * @returns Object
-     */
-    getData?: () => any,
-
-    /**
-     * [Method] Returns the value of disabled
-     * @returns Boolean
-     */
-    getDisabled?: () => boolean,
-
-    /**
-     * [Method] Returns the value of disabledCls
-     * @returns String
-     */
-    getDisabledCls?: () => string,
-
-    /**
-     * [Method] Returns the value of docked
-     * @returns String
-     */
-    getDocked?: () => string,
-
-    /**
-     * [Method] Retrieves the top level element representing this component
-     * @returns Ext.dom.Element
-     */
-    getEl?: () => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Returns the value of enterAnimation
-     * @returns String/Mixed
-     */
-    getEnterAnimation?: () => any,
-
-    /**
-     * [Method] Returns the value of exitAnimation
-     * @returns String/Mixed
-     */
-    getExitAnimation?: () => any,
-
-    /**
-     * [Method] Returns the value of flex
-     * @returns Number
-     */
-    getFlex?: () => number,
-
-    /**
-     * [Method] Returns the value of floatingCls
-     * @returns String
-     */
-    getFloatingCls?: () => string,
-
-    /**
-     * [Method] Returns the value of height
-     * @returns Number/String
-     */
-    getHeight?: () => any,
-
-    /**
-     * [Method] Returns the value of hidden
-     * @returns Boolean
-     */
-    getHidden?: () => boolean,
-
-    /**
-     * [Method] Returns the value of hiddenCls
-     * @returns String
-     */
-    getHiddenCls?: () => string,
-
-    /**
-     * [Method] Returns the value of hideAnimation
-     * @returns String/Mixed
-     */
-    getHideAnimation?: () => any,
-
-    /**
-     * [Method] Returns the value of html
-     * @returns String/Ext.Element/HTMLElement
-     */
-    getHtml?: () => any,
-
-    /**
-     * [Method] Returns the value of itemId
-     * @returns String
-     */
-    getItemId?: () => string,
-
-    /**
-     * [Method] Returns the value of left
-     * @returns Number/String
-     */
-    getLeft?: () => any,
-
-    /**
-     * [Method] Returns the value of margin
-     * @returns Number/String
-     */
-    getMargin?: () => any,
-
-    /**
-     * [Method] Returns the value of maxHeight
-     * @returns Number/String
-     */
-    getMaxHeight?: () => any,
-
-    /**
-     * [Method] Returns the value of maxWidth
-     * @returns Number/String
-     */
-    getMaxWidth?: () => any,
-
-    /**
-     * [Method] Returns the value of minHeight
-     * @returns Number/String
-     */
-    getMinHeight?: () => any,
-
-    /**
-     * [Method] Returns the value of minWidth
-     * @returns Number/String
-     */
-    getMinWidth?: () => any,
-
-    /**
-     * [Method] Returns the value of padding
-     * @returns Number/String
-     */
-    getPadding?: () => any,
-
-    /**
-     * [Method] Returns the parent of this component if it has one
-     * @returns Ext.Component The parent of this component.
-     */
-    getParent?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of plugins
-     * @returns Object/Array
-     */
-    getPlugins?: () => any,
-
-    /**
-     * [Method] Returns the value of record
-     * @returns Ext.data.Model
-     */
-    getRecord?: () => Ext$Ext$data.data$IModel,
-
-    /**
-     * [Method] Returns the value of renderTo
-     * @returns Ext.Element
-     */
-    getRenderTo?: () => Ext$Ext$IElement,
-
-    /**
-     * [Method] Returns the value of right
-     * @returns Number/String
-     */
-    getRight?: () => any,
-
-    /**
-     * [Method] Returns the value of showAnimation
-     * @returns String/Mixed
-     */
-    getShowAnimation?: () => any,
-
-    /**
-     * [Method] Returns the height and width of the Component
-     * @returns Object The current height and width of the Component.
-     */
-    getSize?: () => any,
-
-    /**
-     * [Method] Returns the value of style
-     * @returns String/Object
-     */
-    getStyle?: () => any,
-
-    /**
-     * [Method] Returns the value of styleHtmlCls
-     * @returns String
-     */
-    getStyleHtmlCls?: () => string,
-
-    /**
-     * [Method] Returns the value of styleHtmlContent
-     * @returns Boolean
-     */
-    getStyleHtmlContent?: () => boolean,
-
-    /**
-     * [Method] Returns the value of top
-     * @returns Number/String
-     */
-    getTop?: () => any,
-
-    /**
-     * [Method] Returns the value of tpl
-     * @returns String/String[]/Ext.Template/Ext.XTemplate[]
-     */
-    getTpl?: () => any,
-
-    /**
-     * [Method] Returns the value of tplWriteMode
-     * @returns String
-     */
-    getTplWriteMode?: () => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the value of width
-     * @returns Number/String
-     */
-    getWidth?: () => any,
-
-    /**
-     * [Method] Returns this Component s xtype hierarchy as a slash delimited string
-     * @returns String The xtype hierarchy string.
-     */
-    getXTypes?: () => string,
-
-    /**
-     * [Method] Returns the value of zIndex
-     * @returns Number
-     */
-    getZIndex?: () => number,
-
-    /**
-     * [Method] Returns true if this component has a parent
-     * @returns Boolean true if this component has a parent.
-     */
-    hasParent?: () => boolean,
-
-    /**
-     * [Method] Hides this Component optionally using an animation
-     * @param animation Object/Boolean You can specify an animation here or a bool to use the hideAnimation config.
-     * @returns Ext.Component
-     */
-    hide?: (animation?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Returns true if this Component is currently disabled
-     * @returns Boolean true if currently disabled.
-     */
-    isDisabled?: () => boolean,
-
-    /**
-     * [Method] Returns true if this Component is currently hidden
-     * @returns Boolean true if currently hidden.
-     */
-    isHidden?: () => boolean,
-
-    /**
-     * [Method] Tests whether or not this Component is of a specific xtype
-     * @param xtype String The xtype to check for this Component.
-     * @param shallow Boolean false to check whether this Component is descended from the xtype (this is the default), or true to check whether this Component is directly of the specified xtype.
-     * @returns Boolean true if this component descends from the specified xtype, false otherwise.
-     */
-    isXType?: (xtype?: string, shallow?: boolean) => boolean,
-
-    /**
-     * [Method] Removes the given CSS class es from this Component s rendered element
-     * @param cls String The class(es) to remove.
-     * @param prefix String Optional prefix to prepend before each class.
-     * @param suffix String Optional suffix to append to each class.
-     */
-    removeCls?: (cls?: string, prefix?: string, suffix?: string) => void,
-
-    /**
-     * [Method] Replaces specified classes with the newly specified classes
-     * @param oldCls String The class(es) to remove.
-     * @param newCls String The class(es) to add.
-     * @param prefix String Optional prefix to prepend before each class.
-     * @param suffix String Optional suffix to append to each class.
-     */
-    replaceCls?: (
-      oldCls?: string,
-      newCls?: string,
-      prefix?: string,
-      suffix?: string
-    ) => void,
-
-    /**
-     * [Method] Resets top right bottom and left configurations to null which will un float this component
-     */
-    resetFloating?: () => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of border
-     * @param border Number/String The new value.
-     */
-    setBorder?: (border?: any) => void,
-
-    /**
-     * [Method] Sets the value of bottom
-     * @param bottom Number/String The new value.
-     */
-    setBottom?: (bottom?: any) => void,
-
-    /**
-     * [Method] Sets the value of centered
-     * @param centered Boolean The new value.
-     */
-    setCentered?: (centered?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String/String[] The new value.
-     */
-    setCls?: (cls?: any) => void,
-
-    /**
-     * [Method] Sets the value of contentEl
-     * @param contentEl Ext.Element/HTMLElement/String The new value.
-     */
-    setContentEl?: (contentEl?: any) => void,
-
-    /**
-     * [Method] Sets the value of data
-     * @param data Object The new value.
-     */
-    setData?: (Ext$data?: any) => void,
-
-    /**
-     * [Method] Sets the value of disabled
-     * @param disabled Boolean The new value.
-     */
-    setDisabled?: (disabled?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of disabledCls
-     * @param disabledCls String The new value.
-     */
-    setDisabledCls?: (disabledCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of docked
-     * @param docked String The new value.
-     */
-    setDocked?: (docked?: string) => void,
-
-    /**
-     * [Method] Sets the value of draggable
-     * @param draggable Object The new value.
-     */
-    setDraggable?: (draggable?: any) => void,
-
-    /**
-     * [Method] Sets the value of enterAnimation
-     * @param enterAnimation String/Mixed The new value.
-     */
-    setEnterAnimation?: (enterAnimation?: any) => void,
-
-    /**
-     * [Method] Sets the value of exitAnimation
-     * @param exitAnimation String/Mixed The new value.
-     */
-    setExitAnimation?: (exitAnimation?: any) => void,
-
-    /**
-     * [Method] Sets the value of flex
-     * @param flex Number The new value.
-     */
-    setFlex?: (flex?: number) => void,
-
-    /**
-     * [Method] Used to update the floating state of this component
-     * @param floating Boolean true if you want to float this component.
-     */
-    setFloating?: (floating?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of floatingCls
-     * @param floatingCls String The new value.
-     */
-    setFloatingCls?: (floatingCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of height
-     * @param height Number/String The new value.
-     */
-    setHeight?: (height?: any) => void,
-
-    /**
-     * [Method] Sets the value of hidden
-     * @param hidden Boolean The new value.
-     */
-    setHidden?: (hidden?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of hiddenCls
-     * @param hiddenCls String The new value.
-     */
-    setHiddenCls?: (hiddenCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of hideAnimation
-     * @param hideAnimation String/Mixed The new value.
-     */
-    setHideAnimation?: (hideAnimation?: any) => void,
-
-    /**
-     * [Method] Sets the value of html
-     * @param html String/Ext.Element/HTMLElement The new value.
-     */
-    setHtml?: (html?: any) => void,
-
-    /**
-     * [Method] Sets the value of itemId
-     * @param itemId String The new value.
-     */
-    setItemId?: (itemId?: string) => void,
-
-    /**
-     * [Method] Sets the value of left
-     * @param left Number/String The new value.
-     */
-    setLeft?: (left?: any) => void,
-
-    /**
-     * [Method] Sets the value of margin
-     * @param margin Number/String The new value.
-     */
-    setMargin?: (margin?: any) => void,
-
-    /**
-     * [Method] Sets the value of maxHeight
-     * @param maxHeight Number/String The new value.
-     */
-    setMaxHeight?: (maxHeight?: any) => void,
-
-    /**
-     * [Method] Sets the value of maxWidth
-     * @param maxWidth Number/String The new value.
-     */
-    setMaxWidth?: (maxWidth?: any) => void,
-
-    /**
-     * [Method] Sets the value of minHeight
-     * @param minHeight Number/String The new value.
-     */
-    setMinHeight?: (minHeight?: any) => void,
-
-    /**
-     * [Method] Sets the value of minWidth
-     * @param minWidth Number/String The new value.
-     */
-    setMinWidth?: (minWidth?: any) => void,
-
-    /**
-     * [Method] Sets the value of padding
-     * @param padding Number/String The new value.
-     */
-    setPadding?: (padding?: any) => void,
-
-    /**
-     * [Method] Sets the value of plugins
-     * @param plugins Object/Array The new value.
-     */
-    setPlugins?: (plugins?: any) => void,
-
-    /**
-     * [Method] Sets the value of record
-     * @param record Ext.data.Model The new value.
-     */
-    setRecord?: (record?: Ext$Ext$data.data$IModel) => void,
-
-    /**
-     * [Method] Sets the value of renderTo
-     * @param renderTo Ext.Element The new value.
-     */
-    setRenderTo?: (renderTo?: Ext$Ext$IElement) => void,
-
-    /**
-     * [Method] Sets the value of right
-     * @param right Number/String The new value.
-     */
-    setRight?: (right?: any) => void,
-
-    /**
-     * [Method] This method has moved to Ext Container
-     */
-    setScrollable?: () => void,
-
-    /**
-     * [Method] Sets the value of showAnimation
-     * @param showAnimation String/Mixed The new value.
-     */
-    setShowAnimation?: (showAnimation?: any) => void,
-
-    /**
-     * [Method] Sets the size of the Component
-     * @param width Number The new width for the Component.
-     * @param height Number The new height for the Component.
-     */
-    setSize?: (width?: number, height?: number) => void,
-
-    /**
-     * [Method] Sets the value of style
-     * @param style String/Object The new value.
-     */
-    setStyle?: (style?: any) => void,
-
-    /**
-     * [Method] Sets the value of styleHtmlCls
-     * @param styleHtmlCls String The new value.
-     */
-    setStyleHtmlCls?: (styleHtmlCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of styleHtmlContent
-     * @param styleHtmlContent Boolean The new value.
-     */
-    setStyleHtmlContent?: (styleHtmlContent?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of top
-     * @param top Number/String The new value.
-     */
-    setTop?: (top?: any) => void,
-
-    /**
-     * [Method] Sets the value of tpl
-     * @param tpl String/String[]/Ext.Template/Ext.XTemplate[] The new value.
-     */
-    setTpl?: (tpl?: any) => void,
-
-    /**
-     * [Method] Sets the value of tplWriteMode
-     * @param tplWriteMode String The new value.
-     */
-    setTplWriteMode?: (tplWriteMode?: string) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Sets the value of width
-     * @param width Number/String The new value.
-     */
-    setWidth?: (width?: any) => void,
-
-    /**
-     * [Method] Sets the value of zIndex
-     * @param zIndex Number The new value.
-     */
-    setZIndex?: (zIndex?: number) => void,
-
-    /**
-     * [Method] Shows this component optionally using an animation
-     * @param animation Object/Boolean You can specify an animation here or a bool to use the showAnimation config.
-     * @returns Ext.Component
-     */
-    show?: (animation?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Shows this component by another component
-     * @param component Ext.Component The target component to show this component by.
-     * @param alignment String The specific alignment.
-     */
-    showBy?: (component?: Ext$Ext$IComponent, alignment?: string) => void,
-
-    /**
-     * [Method] Walks up the ownerCt axis looking for an ancestor Container which matches the passed simple selector
-     * @param selector String The simple selector to test.
-     * @returns Ext.Container The matching ancestor Container (or undefined if no match was found).
-     */
-    up?: (selector?: string) => Ext$element$IContainer,
-
-    /**
-     * [Method] Updates the HTML content of the Component
-     */
-    update?: () => void,
-
-    /**
-     * [Method] Updates the styleHtmlCls configuration
-     * @param newHtmlCls Object
-     * @param oldHtmlCls Object
-     */
-    updateStyleHtmlCls?: (newHtmlCls?: any, oldHtmlCls?: any) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    autoSize?: boolean,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    cls?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    defaultType?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    fitSurface?: boolean,
-
-    /**
-     * [Config Option] (Object[])
-     */
-    gradients?: any[],
-
-    /**
-     * [Config Option] (Function)
-     */
-    resizeHandler?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    viewBox?: boolean,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of autoSize
-     * @returns Boolean
-     */
-    getAutoSize?: () => boolean,
-
-    /**
-     * [Method] Returns the value of background
-     * @returns Object
-     */
-    getBackground?: () => any,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of fitSurface
-     * @returns Boolean
-     */
-    getFitSurface?: () => boolean,
-
-    /**
-     * [Method] Returns the value of gradients
-     * @returns Object[]
-     */
-    getGradients?: () => any[],
-
-    /**
-     * [Method] Returns the value of resizeHandler
-     * @returns Function
-     */
-    getResizeHandler?: () => any,
-
-    /**
-     * [Method] Returns the value of sprites
-     * @returns Object
-     */
-    getSprites?: () => any,
-
-    /**
-     * [Method] Get a surface by the given id or create one if it doesn t exist
-     * @param id String
-     * @returns Ext.draw.Surface
-     */
-    getSurface?: (Ext$id?: string) => Ext$Ext$draw.draw$ISurface,
-
-    /**
-     * [Method] Returns the value of viewBox
-     * @returns Boolean
-     */
-    getViewBox?: () => boolean,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Place water mark after resize
-     */
-    onPlaceWatermark?: () => void,
-
-    /**
-     * [Method] Render all the surfaces in the component
-     */
-    renderFrame?: () => void,
-
-    /**
-     * [Method] Sets the value of autoSize
-     * @param autoSize Boolean The new value.
-     */
-    setAutoSize?: (autoSize?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of background
-     * @param background Object The new value.
-     */
-    setBackground?: (background?: any) => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of fitSurface
-     * @param fitSurface Boolean The new value.
-     */
-    setFitSurface?: (fitSurface?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of gradients
-     * @param gradients Object[] The new value.
-     */
-    setGradients?: (gradients?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of resizeHandler
-     * @param resizeHandler Function The new value.
-     */
-    setResizeHandler?: (resizeHandler?: any) => void,
-
-    /**
-     * [Method] Sets the value of sprites
-     * @param sprites Object The new value.
-     */
-    setSprites?: (sprites?: any) => void,
-
-    /**
-     * [Method] Sets the value of viewBox
-     * @param viewBox Boolean The new value.
-     */
-    setViewBox?: (viewBox?: boolean) => void
-  } & Ext$Ext$IAbstractComponent &
-    undefined.mixin$ITraversable;
-
-  declare export type lib$IPanel = {
-    /**
-     * [Config Option] (Object)
-     */
-    api?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Object)
-     */
-    baseParams?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    enableSubmissionForm?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    enctype?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    method?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    multipartDetection?: boolean,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    paramOrder?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    paramsAsHash?: boolean,
-
-    /**
-     * [Config Option] (Ext.data.Model)
-     */
-    record?: Ext$Ext$data.data$IModel,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    scrollable?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    standardSubmit?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    submitOnAction?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    timeout?: number,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    trackResetOnLoad?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    url?: string,
-
-    /**
-     * [Config Option] (Ext.dom.Element)
-     */
-    waitMsgTarget?: Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Config Option] (Ext.XTemplate/String/String[])
-     */
-    waitTpl?: any,
-
-    /**
-     * [Method] A convenient method to disable all fields in this form
-     * @param newDisabled Object
-     * @returns Ext.form.Panel This form.
-     */
-    doSetDisabled?: (newDisabled?: any) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Returns the value of api
-     * @returns Object
-     */
-    getApi?: () => any,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of baseParams
-     * @returns Object
-     */
-    getBaseParams?: () => any,
-
-    /**
-     * [Method] Returns the value of enableSubmissionForm
-     * @returns Boolean
-     */
-    getEnableSubmissionForm?: () => boolean,
-
-    /**
-     * [Method] Returns the value of enctype
-     * @returns Object
-     */
-    getEnctype?: () => any,
-
-    /**
-     * [Method] Returns the value of method
-     * @returns String
-     */
-    getMethod?: () => string,
-
-    /**
-     * [Method] Returns the value of multipartDetection
-     * @returns Boolean
-     */
-    getMultipartDetection?: () => boolean,
-
-    /**
-     * [Method] Returns the value of paramOrder
-     * @returns String/String[]
-     */
-    getParamOrder?: () => any,
-
-    /**
-     * [Method] Returns the value of paramsAsHash
-     * @returns Boolean
-     */
-    getParamsAsHash?: () => boolean,
-
-    /**
-     * [Method] Returns the value of record
-     * @returns Ext.data.Model
-     */
-    getRecord?: () => Ext$Ext$data.data$IModel,
-
-    /**
-     * [Method] Returns the value of standardSubmit
-     * @returns Boolean
-     */
-    getStandardSubmit?: () => boolean,
-
-    /**
-     * [Method] Returns the value of submitOnAction
-     * @returns Object
-     */
-    getSubmitOnAction?: () => any,
-
-    /**
-     * [Method] Returns the value of timeout
-     * @returns Number
-     */
-    getTimeout?: () => number,
-
-    /**
-     * [Method] Returns the value of trackResetOnLoad
-     * @returns Boolean
-     */
-    getTrackResetOnLoad?: () => boolean,
-
-    /**
-     * [Method] Returns the value of url
-     * @returns String
-     */
-    getUrl?: () => string,
-
-    /**
-     * [Method] Returns an object containing the value of each field in the form keyed to the field s name
-     * @param enabled Boolean true to return only enabled fields.
-     * @param all Boolean true to return all fields even if they don't have a name configured.
-     * @returns Object Object mapping field name to its value.
-     */
-    getValues?: (enabled?: boolean, all?: boolean) => any,
-
-    /**
-     * [Method] Hides a previously shown wait mask See showMask
-     * @returns Ext.form.Panel this
-     */
-    hideMask?: () => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Performs an Ajax or Ext Direct call to load values for this form
-     * @param options Object The configuration when loading this form. The following are the configurations when loading via Ajax only:
-     * @returns Ext.data.Connection The request object.
-     */
-    load?: (options?: any) => Ext$Ext$data.device$IConnection,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    loadModel?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    loadRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Resets all fields in the form back to their original values
-     * @returns Ext.form.Panel This form.
-     */
-    reset?: () => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Sets the value of api
-     * @param api Object The new value.
-     */
-    setApi?: (api?: any) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseParams
-     * @param baseParams Object The new value.
-     */
-    setBaseParams?: (baseParams?: any) => void,
-
-    /**
-     * [Method] Sets the value of enableSubmissionForm
-     * @param enableSubmissionForm Boolean The new value.
-     */
-    setEnableSubmissionForm?: (enableSubmissionForm?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of enctype
-     * @param enctype Object The new value.
-     */
-    setEnctype?: (enctype?: any) => void,
-
-    /**
-     * [Method] Sets the value of method
-     * @param method String The new value.
-     */
-    setMethod?: (method?: string) => void,
-
-    /**
-     * [Method] Sets the value of multipartDetection
-     * @param multipartDetection Boolean The new value.
-     */
-    setMultipartDetection?: (multipartDetection?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of paramOrder
-     * @param paramOrder String/String[] The new value.
-     */
-    setParamOrder?: (paramOrder?: any) => void,
-
-    /**
-     * [Method] Sets the value of paramsAsHash
-     * @param paramsAsHash Boolean The new value.
-     */
-    setParamsAsHash?: (paramsAsHash?: boolean) => void,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    setRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Sets the value of standardSubmit
-     * @param standardSubmit Boolean The new value.
-     */
-    setStandardSubmit?: (standardSubmit?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of submitOnAction
-     * @param submitOnAction Object The new value.
-     */
-    setSubmitOnAction?: (submitOnAction?: any) => void,
-
-    /**
-     * [Method] Sets the value of timeout
-     * @param timeout Number The new value.
-     */
-    setTimeout?: (timeout?: number) => void,
-
-    /**
-     * [Method] Sets the value of trackResetOnLoad
-     * @param trackResetOnLoad Boolean The new value.
-     */
-    setTrackResetOnLoad?: (trackResetOnLoad?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of url
-     * @param url String The new value.
-     */
-    setUrl?: (url?: string) => void,
-
-    /**
-     * [Method] Sets the values of form fields in bulk
-     * @param values Object field name => value mapping object.
-     * @returns Ext.form.Panel This form.
-     */
-    setValues?: (values?: any) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Shows a generic custom mask over a designated Element
-     * @param cfg String/Object Either a string message or a configuration object supporting the following options: {  message : 'Please Wait',  cls : 'form-mask' }
-     * @param target Object
-     * @returns Ext.form.Panel This form
-     */
-    showMask?: (cfg?: any, target?: any) => Ext$Ext$form.lib$IPanel,
-
-    /**
-     * [Method] Performs a Ajax based submission of form values if standardSubmit is false or otherwise executes a standard HTML Fo
-     * @param options Object The configuration when submitting this form. The following are the configurations when submitting via Ajax only:
-     * @returns Ext.data.Connection The request object if the standardSubmit config is false. If the standardSubmit config is true, then the return value is undefined.
-     */
-    submit?: (options?: any) => Ext$Ext$data.device$IConnection,
-
+    updateStyleHtmlCls?: (newHtmlCls?: any, oldHtmlCls?: any) => void
+  } & Ext$IAbstractComponent &
+    undefined.ITraversable;
+
+  declare export type Ext$lib$IPanel = {
     /**
      * [Config Option] (String)
      */
@@ -5137,194 +3389,16 @@ declare module "sencha_touch" {
      * [Method] Sets the value of bodyPadding
      * @param bodyPadding Number/Boolean/String The new value.
      */
-    setBodyPadding?: (bodyPadding?: any) => void,
+    setBodyPadding?: (bodyPadding?: any) => void
+  } & Ext$IContainer;
 
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyBorder?: any,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyMargin?: any,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyPadding?: any,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of bodyBorder
-     * @returns Number/Boolean/String
-     */
-    getBodyBorder?: () => any,
-
-    /**
-     * [Method] Returns the value of bodyMargin
-     * @returns Number/Boolean/String
-     */
-    getBodyMargin?: () => any,
-
-    /**
-     * [Method] Returns the value of bodyPadding
-     * @returns Number/Boolean/String
-     */
-    getBodyPadding?: () => any,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of bodyBorder
-     * @param bodyBorder Number/Boolean/String The new value.
-     */
-    setBodyBorder?: (bodyBorder?: any) => void,
-
-    /**
-     * [Method] Sets the value of bodyMargin
-     * @param bodyMargin Number/Boolean/String The new value.
-     */
-    setBodyMargin?: (bodyMargin?: any) => void,
-
-    /**
-     * [Method] Sets the value of bodyPadding
-     * @param bodyPadding Number/Boolean/String The new value.
-     */
-    setBodyPadding?: (bodyPadding?: any) => void,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    cls?: any,
-
-    /**
-     * [Config Option] (Object/String)
-     */
-    Ext$layout?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    tabBar?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    tabBarDock?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    tabBarPosition?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Updates this container with the new active item
-     * @param tabBar Object
-     * @param newTab Object
-     * @returns Boolean
-     */
-    doTabChange?: (tabBar?: any, newTab?: any) => boolean,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of layout
-     * @returns Object
-     */
-    getLayout?: () => any,
-
-    /**
-     * [Method] Returns the value of tabBar
-     * @returns Object
-     */
-    getTabBar?: () => any,
-
-    /**
-     * [Method] Returns the value of tabBarPosition
-     * @returns String
-     */
-    getTabBarPosition?: () => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of tabBar
-     * @param tabBar Object The new value.
-     */
-    setTabBar?: (tabBar?: any) => void,
-
-    /**
-     * [Method] Sets the value of tabBarPosition
-     * @param tabBarPosition String The new value.
-     */
-    setTabBarPosition?: (tabBarPosition?: string) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Updates the Ui for this component and the tabBar
-     * @param newUi Object
-     * @param oldUi Object
-     */
-    updateUi?: (newUi?: any, oldUi?: any) => void
-  } & Ext$lib$IPanel;
-
-  declare export type Ext$IComponentManager = {} & Ext$Ext$IBase;
+  declare export type Ext$IComponentManager = {} & Ext$IBase;
 
   declare export class Ext$ComponentManager {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -5353,7 +3427,7 @@ declare module "sencha_touch" {
      * @param defaultType Function The constructor to provide the default Component type if the config object does not contain a xtype. (Optional if the config contains an xtype).
      * @returns Ext.Component The newly instantiated Component.
      */
-    static create(component?: any, defaultType?: any): Ext$Ext$IComponent;
+    static create(component?: any, defaultType?: any): Ext$IComponent;
 
     /**
      * [Method]
@@ -5365,7 +3439,7 @@ declare module "sencha_touch" {
      * @param id String The id of the item.
      * @returns Object The item, or undefined if not found.
      */
-    static get(Ext$id?: string): any;
+    static get(id?: string): any;
 
     /**
      * [Method] Returns the initial configuration passed to constructor
@@ -5398,7 +3472,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters an item by removing it from this manager
@@ -5407,13 +3481,13 @@ declare module "sencha_touch" {
     static unregister(component?: any): void;
   }
 
-  declare export type Ext$IComponentMgr = {} & Ext$Ext$IBase;
+  declare export type Ext$IComponentMgr = {} & Ext$IBase;
 
   declare export class Ext$ComponentMgr {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -5442,7 +3516,7 @@ declare module "sencha_touch" {
      * @param defaultType Function The constructor to provide the default Component type if the config object does not contain a xtype. (Optional if the config contains an xtype).
      * @returns Ext.Component The newly instantiated Component.
      */
-    static create(component?: any, defaultType?: any): Ext$Ext$IComponent;
+    static create(component?: any, defaultType?: any): Ext$IComponent;
 
     /**
      * [Method]
@@ -5454,7 +3528,7 @@ declare module "sencha_touch" {
      * @param id String The id of the item.
      * @returns Object The item, or undefined if not found.
      */
-    static get(Ext$id?: string): any;
+    static get(id?: string): any;
 
     /**
      * [Method] Returns the initial configuration passed to constructor
@@ -5487,7 +3561,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters an item by removing it from this manager
@@ -5505,7 +3579,7 @@ declare module "sencha_touch" {
      * @param selector String The selector string to test against.
      * @returns Boolean true if the Component matches the selector.
      */
-    static is(component?: Ext$Ext$IComponent, selector?: string): boolean;
+    static is(component?: Ext$IComponent, selector?: string): boolean;
 
     /**
      * [Method] Returns an array of matched Components from within the passed root object
@@ -5513,10 +3587,7 @@ declare module "sencha_touch" {
      * @param root Ext.Container The Container within which to perform the query. If omitted, all Components within the document are included in the search. This parameter may also be an array of Components to filter according to the selector.
      * @returns Ext.Component[] The matched Components.
      */
-    static query(
-      selector?: string,
-      root?: Ext$element$IContainer
-    ): Ext$Ext$IComponent[];
+    static query(selector?: string, root?: Ext$IContainer): Ext$IComponent[];
   }
 
   declare export type Ext$IContainer = {
@@ -5563,7 +3634,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Boolean/Object/Ext.Mask/Ext.LoadMask)
@@ -5578,7 +3649,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Boolean/String/Object)
      */
-    Ext$scroll?: any,
+    scroll?: any,
 
     /**
      * [Config Option] (Boolean/String/Object)
@@ -5590,7 +3661,7 @@ declare module "sencha_touch" {
      * @param newItems Object/Object[]/Ext.Component/Ext.Component[] The new items to add to the Container.
      * @returns Ext.Component The last item added to the Container from the newItems array.
      */
-    add?: (newItems?: any) => Ext$Ext$IComponent,
+    add?: (newItems?: any) => Ext$IComponent,
 
     /**
      * [Method] Adds an array of Components to this Container
@@ -5618,19 +3689,19 @@ declare module "sencha_touch" {
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    child?: (selector?: string) => Ext$Ext$IComponent,
+    child?: (selector?: string) => Ext$IComponent,
 
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Retrieves the first descendant of this container which matches the passed selector
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    down?: (selector?: string) => Ext$Ext$IComponent,
+    down?: (selector?: string) => Ext$IComponent,
 
     /**
      * [Method] Returns the value of activeItem
@@ -5643,7 +3714,7 @@ declare module "sencha_touch" {
      * @param index Number The index of the Component to return.
      * @returns Ext.Component The item at the specified index, if found.
      */
-    getAt?: (index?: number) => Ext$Ext$IComponent,
+    getAt?: (index?: number) => Ext$IComponent,
 
     /**
      * [Method] Returns the value of autoDestroy
@@ -5656,7 +3727,7 @@ declare module "sencha_touch" {
      * @param component String/Number This parameter may be any of the following:  {String} : representing the itemId or id of the child component. {Number} : representing the position of the child component within the items property. For additional information see Ext.util.MixedCollection.get.
      * @returns Ext.Component The component (if found).
      */
-    getComponent?: (component?: any) => Ext$Ext$IComponent,
+    getComponent?: (component?: any) => Ext$IComponent,
 
     /**
      * [Method] Returns the value of control
@@ -5723,13 +3794,13 @@ declare module "sencha_touch" {
      * [Method] Returns an the scrollable instance for this container which is a Ext scroll View class
      * @returns Ext.scroll.View The scroll view.
      */
-    getScrollable?: () => Ext$Ext$scroll.scroll$IView,
+    getScrollable?: () => Ext$scroll$IView,
 
     /**
      * [Method] Hides this Component optionally using an animation
      * @returns Ext.Component
      */
-    hide?: () => Ext$Ext$IComponent,
+    hide?: () => Ext$IComponent,
 
     /**
      * [Method] Adds a child Component at the given index
@@ -5749,7 +3820,7 @@ declare module "sencha_touch" {
      * @param selector String Selector complying to an Ext.ComponentQuery selector.
      * @returns Array Ext.Component's which matched the selector.
      */
-    Ext$query?: (selector?: string) => any[],
+    query?: (selector?: string) => any[],
 
     /**
      * [Method] Removes an item from this Container optionally destroying it
@@ -5757,7 +3828,7 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    remove?: (item?: any, Ext$destroy?: boolean) => Ext$Ext$IComponent,
+    remove?: (item?: any, destroy?: boolean) => Ext$IComponent,
 
     /**
      * [Method] Removes all items currently in the Container optionally destroying them all
@@ -5765,17 +3836,14 @@ declare module "sencha_touch" {
      * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
      * @returns Ext.Component this
      */
-    removeAll?: (
-      Ext$destroy?: boolean,
-      everything?: boolean
-    ) => Ext$Ext$IComponent,
+    removeAll?: (destroy?: boolean, everything?: boolean) => Ext$IComponent,
 
     /**
      * [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    removeAt?: (index?: number) => Ext$Ext$IContainer,
+    removeAt?: (index?: number) => Ext$IContainer,
 
     /**
      * [Method] Removes a docked item from this Container
@@ -5783,14 +3851,14 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    removeDocked?: (item?: any, Ext$destroy?: boolean) => Ext$Ext$IComponent,
+    removeDocked?: (item?: any, destroy?: boolean) => Ext$IComponent,
 
     /**
      * [Method] Removes an inner Component at the specified index  myContainer removeInnerAt 0 removes the first item of the in
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    removeInnerAt?: (index?: number) => Ext$Ext$IContainer,
+    removeInnerAt?: (index?: number) => Ext$IContainer,
 
     /**
      * [Method] Sets the value of activeItem
@@ -5838,7 +3906,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object/String The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of masked
@@ -5857,381 +3925,21 @@ declare module "sencha_touch" {
      * @param scrollable Boolean/String/Object The new value.
      * @returns Ext.scroll.View The scroll view.
      */
-    setScrollable?: (scrollable?: any) => Ext$Ext$scroll.scroll$IView,
+    setScrollable?: (scrollable?: any) => Ext$scroll$IView,
 
     /**
      * [Method] Shows this component optionally using an animation
      * @returns Ext.Component
      */
-    show?: () => Ext$Ext$IComponent,
+    show?: () => Ext$IComponent,
 
     /**
      * [Method] Convenience method which calls setMasked with a value of false to hide the mask
      */
-    unmask?: () => void,
+    unmask?: () => void
+  } & Ext$IComponent;
 
-    /**
-     * [Config Option] (Object/String/Number)
-     */
-    activeItem?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    autoDestroy?: boolean,
-
-    /**
-     * [Config Option] (String/Object/Boolean)
-     */
-    cardSwitchAnimation?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    control?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    defaultType?: string,
-
-    /**
-     * [Config Option] (Object)
-     */
-    defaults?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    hideOnMaskTap?: boolean,
-
-    /**
-     * [Config Option] (Array/Object)
-     */
-    items?: any,
-
-    /**
-     * [Config Option] (Object/String)
-     */
-    Ext$layout?: any,
-
-    /**
-     * [Config Option] (Boolean/Object/Ext.Mask/Ext.LoadMask)
-     */
-    masked?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    modal?: boolean,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    Ext$scroll?: any,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    scrollable?: any,
-
-    /**
-     * [Method] Adds one or more Components to this Container
-     * @param newItems Object/Object[]/Ext.Component/Ext.Component[] The new items to add to the Container.
-     * @returns Ext.Component The last item added to the Container from the newItems array.
-     */
-    add?: (newItems?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Adds an array of Components to this Container
-     * @param items Array The array of items to add to this container.
-     * @returns Array The array of items after they have been added.
-     */
-    addAll?: (items?: any[]) => any[],
-
-    /**
-     * [Method] Animates to the supplied activeItem with a specified animation
-     * @param activeItem Object/Number The item or item index to make active.
-     * @param animation Object/Ext.fx.layout.Card Card animation configuration or instance.
-     */
-    animateActiveItem?: (activeItem?: any, animation?: any) => void,
-
-    /**
-     * [Method] Changes the masked configuration when its setter is called which will convert the value into a proper object instanc
-     * @param masked Boolean/Object/Ext.Mask/Ext.LoadMask
-     * @returns Object
-     */
-    applyMasked?: (masked?: any) => any,
-
-    /**
-     * [Method] Retrieves the first direct child of this container which matches the passed selector
-     * @param selector String An Ext.ComponentQuery selector.
-     * @returns Ext.Component
-     */
-    child?: (selector?: string) => Ext$Ext$IComponent,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Retrieves the first descendant of this container which matches the passed selector
-     * @param selector String An Ext.ComponentQuery selector.
-     * @returns Ext.Component
-     */
-    down?: (selector?: string) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of activeItem
-     * @returns Object/String/Number
-     */
-    getActiveItem?: () => any,
-
-    /**
-     * [Method] Returns the Component for a given index in the Container s items
-     * @param index Number The index of the Component to return.
-     * @returns Ext.Component The item at the specified index, if found.
-     */
-    getAt?: (index?: number) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of autoDestroy
-     * @returns Boolean
-     */
-    getAutoDestroy?: () => boolean,
-
-    /**
-     * [Method] Examines this container s items property and gets a direct child component of this container
-     * @param component String/Number This parameter may be any of the following:  {String} : representing the itemId or id of the child component. {Number} : representing the position of the child component within the items property. For additional information see Ext.util.MixedCollection.get.
-     * @returns Ext.Component The component (if found).
-     */
-    getComponent?: (component?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of control
-     * @returns Object
-     */
-    getControl?: () => any,
-
-    /**
-     * [Method] Returns the value of defaultType
-     * @returns String
-     */
-    getDefaultType?: () => string,
-
-    /**
-     * [Method] Returns the value of defaults
-     * @returns Object
-     */
-    getDefaults?: () => any,
-
-    /**
-     * [Method] Finds a docked item of this container using a reference idor an index of its location in getDockedItems
-     * @param component String/Number The id or index of the component to find.
-     * @returns Ext.Component/Boolean The docked component, if found.
-     */
-    getDockedComponent?: (component?: any) => any,
-
-    /**
-     * [Method] Returns all the Ext Component docked items in this container
-     * @returns Array The docked items of this container.
-     */
-    getDockedItems?: () => any[],
-
-    /**
-     * [Method] Returns the value of hideOnMaskTap
-     * @returns Boolean
-     */
-    getHideOnMaskTap?: () => boolean,
-
-    /**
-     * [Method] Returns all inner items of this container
-     * @returns Array The inner items of this container.
-     */
-    getInnerItems?: () => any[],
-
-    /**
-     * [Method] Returns the value of items
-     * @returns Array/Object
-     */
-    getItems?: () => any,
-
-    /**
-     * [Method] Returns the value of masked
-     * @returns Boolean/Object/Ext.Mask/Ext.LoadMask
-     */
-    getMasked?: () => any,
-
-    /**
-     * [Method] Returns the value of modal
-     * @returns Boolean
-     */
-    getModal?: () => boolean,
-
-    /**
-     * [Method] Returns an the scrollable instance for this container which is a Ext scroll View class
-     * @returns Ext.scroll.View The scroll view.
-     */
-    getScrollable?: () => Ext$Ext$scroll.scroll$IView,
-
-    /**
-     * [Method] Hides this Component optionally using an animation
-     * @returns Ext.Component
-     */
-    hide?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Adds a child Component at the given index
-     * @param index Number The index to insert the Component at.
-     * @param item Object The Component to insert.
-     */
-    insert?: (index?: number, item?: any) => void,
-
-    /**
-     * [Method] Convenience method which calls setMasked with a value of true to show the mask
-     * @param mask Object
-     */
-    mask?: (mask?: any) => void,
-
-    /**
-     * [Method] Retrieves all descendant components which match the passed selector
-     * @param selector String Selector complying to an Ext.ComponentQuery selector.
-     * @returns Array Ext.Component's which matched the selector.
-     */
-    Ext$query?: (selector?: string) => any[],
-
-    /**
-     * [Method] Removes an item from this Container optionally destroying it
-     * @param item Object The item to remove.
-     * @param destroy Boolean Calls the Component's destroy method if true.
-     * @returns Ext.Component this
-     */
-    remove?: (item?: any, Ext$destroy?: boolean) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Removes all items currently in the Container optionally destroying them all
-     * @param destroy Boolean If true, destroys each removed Component.
-     * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
-     * @returns Ext.Component this
-     */
-    removeAll?: (
-      Ext$destroy?: boolean,
-      everything?: boolean
-    ) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
-     * @param index Number The index of the Component to remove.
-     * @returns Ext.Container this
-     */
-    removeAt?: (index?: number) => Ext$Ext$IContainer,
-
-    /**
-     * [Method] Removes a docked item from this Container
-     * @param item Object The item to remove.
-     * @param destroy Boolean Calls the Component's destroy method if true.
-     * @returns Ext.Component this
-     */
-    removeDocked?: (item?: any, Ext$destroy?: boolean) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Removes an inner Component at the specified index  myContainer removeInnerAt 0 removes the first item of the in
-     * @param index Number The index of the Component to remove.
-     * @returns Ext.Container this
-     */
-    removeInnerAt?: (index?: number) => Ext$Ext$IContainer,
-
-    /**
-     * [Method] Sets the value of activeItem
-     * @param activeItem Object/String/Number The new value.
-     */
-    setActiveItem?: (activeItem?: any) => void,
-
-    /**
-     * [Method] Sets the value of autoDestroy
-     * @param autoDestroy Boolean The new value.
-     */
-    setAutoDestroy?: (autoDestroy?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of control
-     * @param control Object The new value.
-     */
-    setControl?: (control?: any) => void,
-
-    /**
-     * [Method] Sets the value of defaultType
-     * @param defaultType String The new value.
-     */
-    setDefaultType?: (defaultType?: string) => void,
-
-    /**
-     * [Method] Sets the value of defaults
-     * @param defaults Object The new value.
-     */
-    setDefaults?: (defaults?: any) => void,
-
-    /**
-     * [Method] Sets the value of hideOnMaskTap
-     * @param hideOnMaskTap Boolean The new value.
-     */
-    setHideOnMaskTap?: (hideOnMaskTap?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of items
-     * @param items Array/Object The new value.
-     */
-    setItems?: (items?: any) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object/String The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of masked
-     * @param masked Boolean/Object/Ext.Mask/Ext.LoadMask The new value.
-     */
-    setMasked?: (masked?: any) => void,
-
-    /**
-     * [Method] Sets the value of modal
-     * @param modal Boolean The new value.
-     */
-    setModal?: (modal?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of scrollable
-     * @param scrollable Boolean/String/Object The new value.
-     * @returns Ext.scroll.View The scroll view.
-     */
-    setScrollable?: (scrollable?: any) => Ext$Ext$scroll.scroll$IView,
-
-    /**
-     * [Method] Shows this component optionally using an animation
-     * @returns Ext.Component
-     */
-    show?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Convenience method which calls setMasked with a value of false to hide the mask
-     */
-    unmask?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Destroys this Component
-     */
-    Ext$destroy?: () => void
-  } & Ext$Ext$IComponent;
-
-  declare export type data$IXmlWriter = {
+  declare export type Ext$data$IXmlWriter = {
     /**
      * [Config Option] (String)
      */
@@ -6306,24 +4014,24 @@ declare module "sencha_touch" {
      * @param data Array
      * @returns Object
      */
-    writeRecords?: (request?: any, Ext$data?: any[]) => any
-  } & undefined.data$IWriter;
+    writeRecords?: (request?: any, data?: any[]) => any
+  } & undefined.IWriter;
 
-  declare export type util$IWrapper = {
+  declare export type Ext$util$IWrapper = {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void
-  } & Ext$Ext$IBase &
-    undefined.mixin$IBindable;
+    destroy?: () => void
+  } & Ext$IBase &
+    undefined.IBindable;
 
-  declare export type Ext$IModelMgr = {} & Ext$Ext$IAbstractManager;
+  declare export type Ext$IModelMgr = {} & Ext$IAbstractManager;
 
   declare export class Ext$ModelMgr {
     /**
      * [Property] (Ext.util.HashMap)
      */
-    static all: Ext$Ext$util.util$IHashMap;
+    static all: util$IHashMap;
 
     /**
      * [Property] (Object)
@@ -6338,7 +4046,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -6368,7 +4076,7 @@ declare module "sencha_touch" {
      * @param id Number Unique id of the Model instance (see Ext.data.Model).
      * @returns Object
      */
-    static create(Ext$data?: any, name?: string, Ext$id?: number): any;
+    static create(data?: any, name?: string, id?: number): any;
 
     /**
      * [Method]
@@ -6387,7 +4095,7 @@ declare module "sencha_touch" {
      * @param id String The id of the item.
      * @returns Object The item, undefined if not found.
      */
-    static get(Ext$id?: string): any;
+    static get(id?: string): any;
 
     /**
      * [Method] Gets the number of items in the collection
@@ -6407,7 +4115,7 @@ declare module "sencha_touch" {
      * @param id String/Object The id of the model or the model instance.
      * @returns Ext.data.Model A model class.
      */
-    static getModel(Ext$id?: any): Ext$Ext$data.data$IModel;
+    static getModel(id?: any): data$IModel;
 
     /**
      * [Method] Initialize configuration for this class
@@ -6421,7 +4129,7 @@ declare module "sencha_touch" {
      * @param type String The mnemonic string by which the class may be looked up.
      * @returns Boolean Whether the type is registered.
      */
-    static isRegistered(Ext$type?: string): boolean;
+    static isRegistered(type?: string): boolean;
 
     /**
      * [Method] Registers a function that will be called when an item with the specified id is added to the manager
@@ -6429,7 +4137,7 @@ declare module "sencha_touch" {
      * @param fn Function The callback function. Called with a single parameter, the item.
      * @param scope Object The scope (this reference) in which the callback is executed. Defaults to the item.
      */
-    static onAvailable(Ext$id?: string, fn?: any, scope?: any): void;
+    static onAvailable(id?: string, fn?: any, scope?: any): void;
 
     /**
      * [Method] Registers an item to be managed
@@ -6449,7 +4157,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters an item by removing it from this manager
@@ -6458,13 +4166,13 @@ declare module "sencha_touch" {
     static unregister(item?: any): void;
   }
 
-  declare export type Ext$IModelManager = {} & Ext$Ext$IAbstractManager;
+  declare export type Ext$IModelManager = {} & Ext$IAbstractManager;
 
   declare export class Ext$ModelManager {
     /**
      * [Property] (Ext.util.HashMap)
      */
-    static all: Ext$Ext$util.util$IHashMap;
+    static all: util$IHashMap;
 
     /**
      * [Property] (Object)
@@ -6479,7 +4187,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -6509,7 +4217,7 @@ declare module "sencha_touch" {
      * @param id Number Unique id of the Model instance (see Ext.data.Model).
      * @returns Object
      */
-    static create(Ext$data?: any, name?: string, Ext$id?: number): any;
+    static create(data?: any, name?: string, id?: number): any;
 
     /**
      * [Method]
@@ -6528,7 +4236,7 @@ declare module "sencha_touch" {
      * @param id String The id of the item.
      * @returns Object The item, undefined if not found.
      */
-    static get(Ext$id?: string): any;
+    static get(id?: string): any;
 
     /**
      * [Method] Gets the number of items in the collection
@@ -6548,7 +4256,7 @@ declare module "sencha_touch" {
      * @param id String/Object The id of the model or the model instance.
      * @returns Ext.data.Model A model class.
      */
-    static getModel(Ext$id?: any): Ext$Ext$data.data$IModel;
+    static getModel(id?: any): data$IModel;
 
     /**
      * [Method] Initialize configuration for this class
@@ -6562,7 +4270,7 @@ declare module "sencha_touch" {
      * @param type String The mnemonic string by which the class may be looked up.
      * @returns Boolean Whether the type is registered.
      */
-    static isRegistered(Ext$type?: string): boolean;
+    static isRegistered(type?: string): boolean;
 
     /**
      * [Method] Registers a function that will be called when an item with the specified id is added to the manager
@@ -6570,7 +4278,7 @@ declare module "sencha_touch" {
      * @param fn Function The callback function. Called with a single parameter, the item.
      * @param scope Object The scope (this reference) in which the callback is executed. Defaults to the item.
      */
-    static onAvailable(Ext$id?: string, fn?: any, scope?: any): void;
+    static onAvailable(id?: string, fn?: any, scope?: any): void;
 
     /**
      * [Method] Registers an item to be managed
@@ -6590,7 +4298,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters an item by removing it from this manager
@@ -6599,14 +4307,14 @@ declare module "sencha_touch" {
     static unregister(item?: any): void;
   }
 
-  declare export type proxy$IClientProxy = {
+  declare export type Ext$proxy$IClientProxy = {
     /**
      * [Method] Abstract function that must be implemented by each ClientProxy subclass
      */
     clear?: () => void
-  } & undefined.data$IProxy;
+  } & undefined.IProxy;
 
-  declare export type Ext$IStoreMgr = {} & undefined.util$ICollection;
+  declare export type Ext$IStoreMgr = {} & undefined.ICollection;
 
   declare export class Ext$StoreMgr {
     /**
@@ -6662,7 +4370,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Property] (Boolean)
@@ -6740,7 +4448,7 @@ declare module "sencha_touch" {
      * [Method] Creates a shallow copy of this collection
      * @returns Ext.util.MixedCollection
      */
-    static clone(): Ext$Ext$util.util$IMixedCollection;
+    static clone(): util$IMixedCollection;
 
     /**
      * [Method] Returns true if the collection contains the passed Object as an item
@@ -6796,7 +4504,7 @@ declare module "sencha_touch" {
      * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
      * @returns Ext.util.MixedCollection The new filtered collection
      */
-    static filterBy(fn?: any, scope?: any): Ext$Ext$util.util$IMixedCollection;
+    static filterBy(fn?: any, scope?: any): util$IMixedCollection;
 
     /**
      * [Method] Returns the first item in the collection which elicits a true return value from the passed selection function
@@ -6994,7 +4702,7 @@ declare module "sencha_touch" {
      * [Method] This method inserts all the sorters in the passed array at the given index
      * @returns Ext.util.Collection this
      */
-    static insertSorters(): Ext$Ext$util.util$ICollection;
+    static insertSorters(): util$ICollection;
 
     /**
      * [Method] Returns the last item in the collection
@@ -7007,13 +4715,13 @@ declare module "sencha_touch" {
      * @param store String/Object The id of the Store, or a Store instance, or a store configuration.
      * @returns Ext.data.Store
      */
-    static lookup(store?: any): Ext$Ext$data.data$IStore;
+    static lookup(store?: any): data$IStore;
 
     /**
      * [Method] Registers one or more Stores with the StoreManager
      * @param stores Ext.data.Store... Any number of Store instances.
      */
-    static register(stores: Ext$Ext$data.data$IStore): void;
+    static register(stores: data$IStore): void;
 
     /**
      * [Method] Remove an item from the collection
@@ -7027,7 +4735,7 @@ declare module "sencha_touch" {
      * @param items Array An array of items to be removed.
      * @returns Ext.util.MixedCollection this object
      */
-    static removeAll(items?: any[]): Ext$Ext$util.util$IMixedCollection;
+    static removeAll(items?: any[]): util$IMixedCollection;
 
     /**
      * [Method] Remove an item from a specified index in the collection
@@ -7048,7 +4756,7 @@ declare module "sencha_touch" {
      * @param filters Object
      * @returns Ext.util.Collection this
      */
-    static removeFilters(filters?: any): Ext$Ext$util.util$ICollection;
+    static removeFilters(filters?: any): util$ICollection;
 
     /**
      * [Method] This method removes a sorter
@@ -7061,7 +4769,7 @@ declare module "sencha_touch" {
      * @param sorters Object
      * @returns Ext.util.Collection this
      */
-    static removeSorters(sorters?: any): Ext$Ext$util.util$ICollection;
+    static removeSorters(sorters?: any): util$ICollection;
 
     /**
      * [Method] Replaces an item in the collection
@@ -7125,7 +4833,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters one or more Stores with the StoreManager
@@ -7134,7 +4842,7 @@ declare module "sencha_touch" {
     static unregister(stores?: any): void;
   }
 
-  declare export type Ext$IStoreManager = {} & undefined.util$ICollection;
+  declare export type Ext$IStoreManager = {} & undefined.ICollection;
 
   declare export class Ext$StoreManager {
     /**
@@ -7190,7 +4898,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Property] (Boolean)
@@ -7268,7 +4976,7 @@ declare module "sencha_touch" {
      * [Method] Creates a shallow copy of this collection
      * @returns Ext.util.MixedCollection
      */
-    static clone(): Ext$Ext$util.util$IMixedCollection;
+    static clone(): util$IMixedCollection;
 
     /**
      * [Method] Returns true if the collection contains the passed Object as an item
@@ -7324,7 +5032,7 @@ declare module "sencha_touch" {
      * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
      * @returns Ext.util.MixedCollection The new filtered collection
      */
-    static filterBy(fn?: any, scope?: any): Ext$Ext$util.util$IMixedCollection;
+    static filterBy(fn?: any, scope?: any): util$IMixedCollection;
 
     /**
      * [Method] Returns the first item in the collection which elicits a true return value from the passed selection function
@@ -7522,7 +5230,7 @@ declare module "sencha_touch" {
      * [Method] This method inserts all the sorters in the passed array at the given index
      * @returns Ext.util.Collection this
      */
-    static insertSorters(): Ext$Ext$util.util$ICollection;
+    static insertSorters(): util$ICollection;
 
     /**
      * [Method] Returns the last item in the collection
@@ -7535,13 +5243,13 @@ declare module "sencha_touch" {
      * @param store String/Object The id of the Store, or a Store instance, or a store configuration.
      * @returns Ext.data.Store
      */
-    static lookup(store?: any): Ext$Ext$data.data$IStore;
+    static lookup(store?: any): data$IStore;
 
     /**
      * [Method] Registers one or more Stores with the StoreManager
      * @param stores Ext.data.Store... Any number of Store instances.
      */
-    static register(stores: Ext$Ext$data.data$IStore): void;
+    static register(stores: data$IStore): void;
 
     /**
      * [Method] Remove an item from the collection
@@ -7555,7 +5263,7 @@ declare module "sencha_touch" {
      * @param items Array An array of items to be removed.
      * @returns Ext.util.MixedCollection this object
      */
-    static removeAll(items?: any[]): Ext$Ext$util.util$IMixedCollection;
+    static removeAll(items?: any[]): util$IMixedCollection;
 
     /**
      * [Method] Remove an item from a specified index in the collection
@@ -7576,7 +5284,7 @@ declare module "sencha_touch" {
      * @param filters Object
      * @returns Ext.util.Collection this
      */
-    static removeFilters(filters?: any): Ext$Ext$util.util$ICollection;
+    static removeFilters(filters?: any): util$ICollection;
 
     /**
      * [Method] This method removes a sorter
@@ -7589,7 +5297,7 @@ declare module "sencha_touch" {
      * @param sorters Object
      * @returns Ext.util.Collection this
      */
-    static removeSorters(sorters?: any): Ext$Ext$util.util$ICollection;
+    static removeSorters(sorters?: any): util$ICollection;
 
     /**
      * [Method] Replaces an item in the collection
@@ -7653,7 +5361,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Unregisters one or more Stores with the StoreManager
@@ -7662,7 +5370,7 @@ declare module "sencha_touch" {
     static unregister(stores?: any): void;
   }
 
-  declare export type dataview$INestedList = {
+  declare export type Ext$dataview$INestedList = {
     /**
      * [Config Option] (Boolean)
      */
@@ -7696,12 +5404,12 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.Component)
      */
-    detailCard?: Ext$Ext$IComponent,
+    detailCard?: Ext$IComponent,
 
     /**
      * [Config Option] (Ext.Container)
      */
-    detailContainer?: Ext$Ext$IContainer,
+    detailContainer?: Ext$IContainer,
 
     /**
      * [Config Option] (String)
@@ -7812,13 +5520,13 @@ declare module "sencha_touch" {
      * [Method] Returns the value of detailCard
      * @returns Ext.Component
      */
-    getDetailCard?: () => Ext$Ext$IComponent,
+    getDetailCard?: () => Ext$IComponent,
 
     /**
      * [Method] Returns the value of detailContainer
      * @returns Ext.Container
      */
-    getDetailContainer?: () => Ext$Ext$IContainer,
+    getDetailContainer?: () => Ext$IContainer,
 
     /**
      * [Method] Returns the value of displayField
@@ -7843,7 +5551,7 @@ declare module "sencha_touch" {
      * @param node Ext.data.Record
      * @returns String
      */
-    getItemTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
+    getItemTextTpl?: (node?: data$IRecord) => string,
 
     /**
      * [Method] Returns the value of listConfig
@@ -7867,7 +5575,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of store
      * @returns Ext.data.TreeStore/String
      */
-    Ext$getStore?: () => any,
+    getStore?: () => any,
 
     /**
      * [Method] Returns the subList for a specified node
@@ -7885,7 +5593,7 @@ declare module "sencha_touch" {
      * @param node Ext.data.Record
      * @returns String
      */
-    getTitleTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
+    getTitleTextTpl?: (node?: data$IRecord) => string,
 
     /**
      * [Method] Returns the value of toolbar
@@ -7927,13 +5635,13 @@ declare module "sencha_touch" {
      * [Method] The leaf you want to navigate to
      * @param node Ext.data.NodeInterface The specified node to navigate to.
      */
-    goToLeaf?: (node?: Ext$Ext$data.data$INodeInterface) => void,
+    goToLeaf?: (node?: data$INodeInterface) => void,
 
     /**
      * [Method] Method to handle going to a specific node within this nested list
      * @param node Ext.data.NodeInterface The specified node to navigate to.
      */
-    goToNode?: (node?: Ext$Ext$data.data$INodeInterface) => void,
+    goToNode?: (node?: data$INodeInterface) => void,
 
     /**
      * [Method] Called when the backButton has been tapped
@@ -7949,11 +5657,11 @@ declare module "sencha_touch" {
      * @param e Ext.event.Event The event.
      */
     onItemTap?: (
-      list?: Ext$Ext$IList,
+      list?: Ext$IList,
       index?: number,
-      target?: Ext$Ext$IElement,
-      record?: Ext$Ext$data.data$IRecord,
-      e?: Ext$Ext$event.event$IEvent
+      target?: Ext$IElement,
+      record?: data$IRecord,
+      e?: Ext$event$IEvent
     ) => void,
 
     /**
@@ -7992,440 +5700,13 @@ declare module "sencha_touch" {
      * [Method] Sets the value of detailCard
      * @param detailCard Ext.Component The new value.
      */
-    setDetailCard?: (detailCard?: Ext$Ext$IComponent) => void,
+    setDetailCard?: (detailCard?: Ext$IComponent) => void,
 
     /**
      * [Method] Sets the value of detailContainer
      * @param detailContainer Ext.Container The new value.
      */
-    setDetailContainer?: (detailContainer?: Ext$Ext$IContainer) => void,
-
-    /**
-     * [Method] Sets the value of displayField
-     * @param displayField String The new value.
-     */
-    setDisplayField?: (displayField?: string) => void,
-
-    /**
-     * [Method] Sets the value of emptyText
-     * @param emptyText String The new value.
-     */
-    setEmptyText?: (emptyText?: string) => void,
-
-    /**
-     * [Method] Sets the value of itemHeight
-     * @param itemHeight Number The new value.
-     */
-    setItemHeight?: (itemHeight?: number) => void,
-
-    /**
-     * [Method] Sets the value of listConfig
-     * @param listConfig Object The new value.
-     */
-    setListConfig?: (listConfig?: any) => void,
-
-    /**
-     * [Method] Sets the value of loadingText
-     * @param loadingText String The new value.
-     */
-    setLoadingText?: (loadingText?: string) => void,
-
-    /**
-     * [Method] Sets the value of onItemDisclosure
-     * @param onItemDisclosure Boolean/Function The new value.
-     */
-    setOnItemDisclosure?: (onItemDisclosure?: any) => void,
-
-    /**
-     * [Method] Sets the value of store
-     * @param store Ext.data.TreeStore/String The new value.
-     */
-    setStore?: (store?: any) => void,
-
-    /**
-     * [Method] Sets the value of title
-     * @param title String The new value.
-     */
-    setTitle?: (title?: string) => void,
-
-    /**
-     * [Method] Sets the value of toolbar
-     * @param toolbar Ext.Toolbar/Object/Boolean The new value.
-     */
-    setToolbar?: (toolbar?: any) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui Object The new value.
-     */
-    setUi?: (ui?: any) => void,
-
-    /**
-     * [Method] Sets the value of updateTitleText
-     * @param updateTitleText Boolean The new value.
-     */
-    setUpdateTitleText?: (updateTitleText?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useSimpleItems
-     * @param useSimpleItems Boolean The new value.
-     */
-    setUseSimpleItems?: (useSimpleItems?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useTitleAsBackText
-     * @param useTitleAsBackText Boolean The new value.
-     */
-    setUseTitleAsBackText?: (useTitleAsBackText?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useToolbar
-     * @param useToolbar Boolean The new value.
-     */
-    setUseToolbar?: (useToolbar?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of variableHeights
-     * @param variableHeights Boolean The new value.
-     */
-    setVariableHeights?: (variableHeights?: boolean) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    allowDeselect?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    backButton?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    backText?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String/Object/Boolean)
-     */
-    cardSwitchAnimation?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    clearSelectionDelay?: number,
-
-    /**
-     * [Config Option] (Ext.Component)
-     */
-    detailCard?: Ext$Ext$IComponent,
-
-    /**
-     * [Config Option] (Ext.Container)
-     */
-    detailContainer?: Ext$Ext$IContainer,
-
-    /**
-     * [Config Option] (String)
-     */
-    displayField?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    emptyText?: string,
-
-    /**
-     * [Config Option] (Number)
-     */
-    itemHeight?: number,
-
-    /**
-     * [Config Option] (Object)
-     */
-    listConfig?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    loadingText?: string,
-
-    /**
-     * [Config Option] (Boolean/Function)
-     */
-    onItemDisclosure?: any,
-
-    /**
-     * [Config Option] (Ext.data.TreeStore/String)
-     */
-    store?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    title?: string,
-
-    /**
-     * [Config Option] (Ext.Toolbar/Object/Boolean)
-     */
-    toolbar?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    updateTitleText?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useSimpleItems?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useTitleAsBackText?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useToolbar?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    variableHeights?: boolean,
-
-    /**
-     * [Method] Returns the value of allowDeselect
-     * @returns Boolean
-     */
-    getAllowDeselect?: () => boolean,
-
-    /**
-     * [Method] Returns the value of backButton
-     * @returns Object
-     */
-    getBackButton?: () => any,
-
-    /**
-     * [Method] Returns the value of backText
-     * @returns String
-     */
-    getBackText?: () => string,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of clearSelectionOnListChange
-     * @returns Boolean
-     */
-    getClearSelectionOnListChange?: () => boolean,
-
-    /**
-     * [Method] Returns the value of detailCard
-     * @returns Ext.Component
-     */
-    getDetailCard?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of detailContainer
-     * @returns Ext.Container
-     */
-    getDetailContainer?: () => Ext$Ext$IContainer,
-
-    /**
-     * [Method] Returns the value of displayField
-     * @returns String
-     */
-    getDisplayField?: () => string,
-
-    /**
-     * [Method] Returns the value of emptyText
-     * @returns String
-     */
-    getEmptyText?: () => string,
-
-    /**
-     * [Method] Returns the value of itemHeight
-     * @returns Number
-     */
-    getItemHeight?: () => number,
-
-    /**
-     * [Method] Override this method to provide custom template rendering of individual nodes
-     * @param node Ext.data.Record
-     * @returns String
-     */
-    getItemTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
-
-    /**
-     * [Method] Returns the value of listConfig
-     * @returns Object
-     */
-    getListConfig?: () => any,
-
-    /**
-     * [Method] Returns the value of loadingText
-     * @returns String
-     */
-    getLoadingText?: () => string,
-
-    /**
-     * [Method] Returns the value of onItemDisclosure
-     * @returns Boolean/Function
-     */
-    getOnItemDisclosure?: () => any,
-
-    /**
-     * [Method] Returns the value of store
-     * @returns Ext.data.TreeStore/String
-     */
-    Ext$getStore?: () => any,
-
-    /**
-     * [Method] Returns the subList for a specified node
-     */
-    getSubList?: () => void,
-
-    /**
-     * [Method] Returns the value of title
-     * @returns String
-     */
-    getTitle?: () => string,
-
-    /**
-     * [Method] Override this method to provide custom template rendering of titles back buttons when useTitleAsBackText is enabled
-     * @param node Ext.data.Record
-     * @returns String
-     */
-    getTitleTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
-
-    /**
-     * [Method] Returns the value of toolbar
-     * @returns Ext.Toolbar/Object/Boolean
-     */
-    getToolbar?: () => any,
-
-    /**
-     * [Method] Returns the value of updateTitleText
-     * @returns Boolean
-     */
-    getUpdateTitleText?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useSimpleItems
-     * @returns Boolean
-     */
-    getUseSimpleItems?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useTitleAsBackText
-     * @returns Boolean
-     */
-    getUseTitleAsBackText?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useToolbar
-     * @returns Boolean
-     */
-    getUseToolbar?: () => boolean,
-
-    /**
-     * [Method] Returns the value of variableHeights
-     * @returns Boolean
-     */
-    getVariableHeights?: () => boolean,
-
-    /**
-     * [Method] The leaf you want to navigate to
-     * @param node Ext.data.NodeInterface The specified node to navigate to.
-     */
-    goToLeaf?: (node?: Ext$Ext$data.data$INodeInterface) => void,
-
-    /**
-     * [Method] Method to handle going to a specific node within this nested list
-     * @param node Ext.data.NodeInterface The specified node to navigate to.
-     */
-    goToNode?: (node?: Ext$Ext$data.data$INodeInterface) => void,
-
-    /**
-     * [Method] Called when the backButton has been tapped
-     */
-    onBackTap?: () => void,
-
-    /**
-     * [Method] Called when an list item has been tapped
-     * @param list Ext.List The subList the item is on.
-     * @param index Number The id of the item tapped.
-     * @param target Ext.Element The list item tapped.
-     * @param record Ext.data.Record The record which as tapped.
-     * @param e Ext.event.Event The event.
-     */
-    onItemTap?: (
-      list?: Ext$Ext$IList,
-      index?: number,
-      target?: Ext$Ext$IElement,
-      record?: Ext$Ext$data.data$IRecord,
-      e?: Ext$Ext$event.event$IEvent
-    ) => void,
-
-    /**
-     * [Method] Sets the value of allowDeselect
-     * @param allowDeselect Boolean The new value.
-     */
-    setAllowDeselect?: (allowDeselect?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of backButton
-     * @param backButton Object The new value.
-     */
-    setBackButton?: (backButton?: any) => void,
-
-    /**
-     * [Method] Sets the value of backText
-     * @param backText String The new value.
-     */
-    setBackText?: (backText?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of clearSelectionOnListChange
-     * @param clearSelectionOnListChange Boolean The new value.
-     */
-    setClearSelectionOnListChange?: (
-      clearSelectionOnListChange?: boolean
-    ) => void,
-
-    /**
-     * [Method] Sets the value of detailCard
-     * @param detailCard Ext.Component The new value.
-     */
-    setDetailCard?: (detailCard?: Ext$Ext$IComponent) => void,
-
-    /**
-     * [Method] Sets the value of detailContainer
-     * @param detailContainer Ext.Container The new value.
-     */
-    setDetailContainer?: (detailContainer?: Ext$Ext$IContainer) => void,
+    setDetailContainer?: (detailContainer?: Ext$IContainer) => void,
 
     /**
      * [Method] Sets the value of displayField
@@ -8516,7 +5797,7 @@ declare module "sencha_touch" {
      * @param variableHeights Boolean The new value.
      */
     setVariableHeights?: (variableHeights?: boolean) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
   declare export type Ext$IDataView = {
     /**
@@ -8532,7 +5813,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object[])
      */
-    Ext$data?: any[],
+    data?: any[],
 
     /**
      * [Config Option] (String)
@@ -8695,672 +5976,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Deselects a record instance by record instance or index
-     * @param records Ext.data.Model/Number An array of records or an index.
-     * @param suppressEvent Boolean Set to false to not fire a deselect event.
-     */
-    doDeselect?: (records?: any, suppressEvent?: boolean) => void,
-
-    /**
-     * [Method] Selects a record instance by record instance or index
-     * @param records Ext.data.Model/Number An array of records or an index.
-     * @param keepExisting Boolean
-     * @param suppressEvent Boolean Set to false to not fire a select event.
-     */
-    doSelect?: (
-      records?: any,
-      keepExisting?: boolean,
-      suppressEvent?: boolean
-    ) => void,
-
-    /**
-     * [Method] Returns the template node the passed child belongs to or null if it doesn t belong to one
-     */
-    findItemByChild?: () => void,
-
-    /**
-     * [Method] Returns the template node by the Ext EventObject or null if it is not found
-     */
-    findTargetByEvent?: () => void,
-
-    /**
-     * [Method] Returns the value of allowDeselect
-     * @returns Boolean
-     */
-    getAllowDeselect?: () => boolean,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the number of selections
-     * @returns Number
-     */
-    getCount?: () => number,
-
-    /**
-     * [Method] Returns the value of data
-     * @returns Object[]
-     */
-    getData?: () => any[],
-
-    /**
-     * [Method] Returns the value of defaultType
-     * @returns String
-     */
-    getDefaultType?: () => string,
-
-    /**
-     * [Method] Returns the value of deferEmptyText
-     * @returns Boolean
-     */
-    getDeferEmptyText?: () => boolean,
-
-    /**
-     * [Method] Returns the value of deselectOnContainerClick
-     * @returns Boolean
-     */
-    getDeselectOnContainerClick?: () => boolean,
-
-    /**
-     * [Method] Returns the value of disableSelection
-     * @returns Boolean
-     */
-    getDisableSelection?: () => boolean,
-
-    /**
-     * [Method] Returns the value of emptyText
-     * @returns String
-     */
-    getEmptyText?: () => string,
-
-    /**
-     * [Method] Returns the value of inline
-     * @returns Boolean/Object
-     */
-    getInline?: () => any,
-
-    /**
-     * [Method] Returns an item at the specified index
-     * @param index Number Index of the item.
-     * @returns Ext.dom.Element/Ext.dataview.component.DataItem item Item at the specified index.
-     */
-    getItemAt?: (index?: number) => any,
-
-    /**
-     * [Method] Returns the value of itemCls
-     * @returns String
-     */
-    getItemCls?: () => string,
-
-    /**
-     * [Method] Returns the value of itemConfig
-     * @returns Object
-     */
-    getItemConfig?: () => any,
-
-    /**
-     * [Method] Returns an index for the specified item
-     * @param item Number The item to locate.
-     * @returns Number Index for the specified item.
-     */
-    getItemIndex?: (item?: number) => number,
-
-    /**
-     * [Method] Returns the value of itemTpl
-     * @returns String/String[]/Ext.XTemplate
-     */
-    getItemTpl?: () => any,
-
-    /**
-     * [Method] Returns the array of previously selected items
-     * @returns Array The previous selection.
-     */
-    getLastSelected?: () => any[],
-
-    /**
-     * [Method] Returns the value of loadingText
-     * @returns String/Boolean
-     */
-    getLoadingText?: () => any,
-
-    /**
-     * [Method] Returns the value of maxItemCache
-     * @returns Number
-     */
-    getMaxItemCache?: () => number,
-
-    /**
-     * [Method] Returns the value of mode
-     * @returns String
-     */
-    getMode?: () => string,
-
-    /**
-     * [Method] Gets a template node
-     */
-    getNode?: () => void,
-
-    /**
-     * [Method] Gets a range nodes
-     */
-    getNodes?: () => void,
-
-    /**
-     * [Method] Returns the value of pressedCls
-     * @returns String
-     */
-    getPressedCls?: () => string,
-
-    /**
-     * [Method] Returns the value of pressedDelay
-     * @returns Number
-     */
-    getPressedDelay?: () => number,
-
-    /**
-     * [Method] Gets an array of the records from an array of nodes
-     */
-    getRecords?: () => void,
-
-    /**
-     * [Method] Returns the value of scrollToTopOnRefresh
-     * @returns Boolean
-     */
-    getScrollToTopOnRefresh?: () => boolean,
-
-    /**
-     * [Method] Returns the value of scrollable
-     */
-    getScrollable?: () => Ext$Ext$scroll.scroll$IView,
-
-    /**
-     * [Method] Returns the value of selectedCls
-     * @returns String
-     */
-    getSelectedCls?: () => string,
-
-    /**
-     * [Method] Gets the currently selected nodes
-     */
-    getSelectedNodes?: () => void,
-
-    /**
-     * [Method] Gets an array of the selected records
-     */
-    getSelectedRecords?: () => void,
-
-    /**
-     * [Method] Returns an array of the currently selected records
-     * @returns Array An array of selected records.
-     */
-    getSelection?: () => any[],
-
-    /**
-     * [Method] Returns the number of selections
-     * @returns Number
-     */
-    getSelectionCount?: () => number,
-
-    /**
-     * [Method] Returns the selection mode currently used by this Selectable
-     * @returns String The current mode.
-     */
-    getSelectionMode?: () => string,
-
-    /**
-     * [Method] Returns the value of store
-     * @returns Ext.data.Store/Object
-     */
-    Ext$getStore?: () => any,
-
-    /**
-     * [Method] Returns the value of triggerCtEvent
-     * @returns String
-     */
-    getTriggerCtEvent?: () => string,
-
-    /**
-     * [Method] Returns the value of triggerEvent
-     * @returns String
-     */
-    getTriggerEvent?: () => string,
-
-    /**
-     * [Method] Returns the value of useComponents
-     * @returns Boolean
-     */
-    getUseComponents?: () => boolean,
-
-    /**
-     * [Method] Returns an array of the current items in the DataView
-     * @returns Ext.dom.Element[]/Ext.dataview.component.DataItem[] Array of Items.
-     */
-    getViewItems?: () => any,
-
-    /**
-     * [Method] Method called when the Store s Reader throws an exception
-     */
-    handleException?: () => void,
-
-    /**
-     * [Method] Returns true if there is a selected record
-     * @returns Boolean
-     */
-    hasSelection?: () => boolean,
-
-    /**
-     * [Method] Finds the index of the passed node
-     */
-    indexOf?: () => void,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Returns true if the Selectable is currently locked
-     * @returns Boolean True if currently locked
-     */
-    isLocked?: () => boolean,
-
-    /**
-     * [Method] Returns true if the specified row is selected
-     * @param record Ext.data.Model/Number The record or index of the record to check.
-     * @returns Boolean
-     */
-    isSelected?: (record?: any) => boolean,
-
-    /**
-     * [Method] Function which can be overridden to provide custom formatting for each Record that is used by this DataView s templat
-     * @param data Object/Object[] The raw data object that was used to create the Record.
-     * @param index Number the index number of the Record being prepared for rendering.
-     * @param record Ext.data.Model The Record being prepared for rendering.
-     * @returns Array/Object The formatted data in a format expected by the internal template's overwrite() method. (either an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'}))
-     */
-    prepareData?: (
-      Ext$data?: any,
-      index?: number,
-      record?: Ext$Ext$data.data$IModel
-    ) => any,
-
-    /**
-     * [Method] Refreshes the view by reloading the data from the store and re rendering the template
-     */
-    refresh?: () => void,
-
-    /**
-     * [Method] Refreshes an individual node s data from the store
-     */
-    refreshNode?: () => void,
-
-    /**
-     * [Method] Adds the given records to the currently selected set
-     * @param records Ext.data.Model/Array/Number The records to select.
-     * @param keepExisting Boolean If true, the existing selection will be added to (if not, the old selection is replaced).
-     * @param suppressEvent Boolean If true, the select event will not be fired.
-     */
-    Ext$select?: (
-      records?: any,
-      keepExisting?: boolean,
-      suppressEvent?: boolean
-    ) => void,
-
-    /**
-     * [Method] Selects all records
-     * @param silent Boolean true to suppress all select events.
-     */
-    selectAll?: (silent?: boolean) => void,
-
-    /**
-     * [Method] Selects a range of rows if the selection model getDisableSelection is not locked
-     * @param startRecord Number The index of the first row in the range.
-     * @param endRecord Number The index of the last row in the range.
-     * @param keepExisting Boolean true to retain existing selections.
-     */
-    selectRange?: (
-      startRecord?: number,
-      endRecord?: number,
-      keepExisting?: boolean
-    ) => void,
-
-    /**
-     * [Method] Sets the value of allowDeselect
-     * @param allowDeselect Boolean The new value.
-     */
-    setAllowDeselect?: (allowDeselect?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of data
-     * @param data Object[] The new value.
-     */
-    setData?: (Ext$data?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of defaultType
-     * @param defaultType String The new value.
-     */
-    setDefaultType?: (defaultType?: string) => void,
-
-    /**
-     * [Method] Sets the value of deferEmptyText
-     * @param deferEmptyText Boolean The new value.
-     */
-    setDeferEmptyText?: (deferEmptyText?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of deselectOnContainerClick
-     * @param deselectOnContainerClick Boolean The new value.
-     */
-    setDeselectOnContainerClick?: (deselectOnContainerClick?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of disableSelection
-     * @param disableSelection Boolean The new value.
-     */
-    setDisableSelection?: (disableSelection?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of emptyText
-     * @param emptyText String The new value.
-     */
-    setEmptyText?: (emptyText?: string) => void,
-
-    /**
-     * [Method] Sets the value of inline
-     * @param inline Boolean/Object The new value.
-     */
-    setInline?: (inline?: any) => void,
-
-    /**
-     * [Method] Sets the value of itemCls
-     * @param itemCls String The new value.
-     */
-    setItemCls?: (itemCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of itemConfig
-     * @param itemConfig Object The new value.
-     */
-    setItemConfig?: (itemConfig?: any) => void,
-
-    /**
-     * [Method] Sets the value of itemTpl
-     * @param itemTpl String/String[]/Ext.XTemplate The new value.
-     */
-    setItemTpl?: (itemTpl?: any) => void,
-
-    /**
-     * [Method] This was an internal function accidentally exposed in 1 x and now deprecated
-     */
-    setLastFocused?: () => void,
-
-    /**
-     * [Method] Sets the value of loadingText
-     * @param loadingText String/Boolean The new value.
-     */
-    setLoadingText?: (loadingText?: any) => void,
-
-    /**
-     * [Method] Sets the value of maxItemCache
-     * @param maxItemCache Number The new value.
-     */
-    setMaxItemCache?: (maxItemCache?: number) => void,
-
-    /**
-     * [Method] Sets the value of mode
-     * @param mode String The new value.
-     */
-    setMode?: (mode?: string) => void,
-
-    /**
-     * [Method] Sets the value of pressedCls
-     * @param pressedCls String The new value.
-     */
-    setPressedCls?: (pressedCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of pressedDelay
-     * @param pressedDelay Number The new value.
-     */
-    setPressedDelay?: (pressedDelay?: number) => void,
-
-    /**
-     * [Method] Sets the value of scrollToTopOnRefresh
-     * @param scrollToTopOnRefresh Boolean The new value.
-     */
-    setScrollToTopOnRefresh?: (scrollToTopOnRefresh?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of selectedCls
-     * @param selectedCls String The new value.
-     */
-    setSelectedCls?: (selectedCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of store
-     * @param store Ext.data.Store/Object The new value.
-     */
-    setStore?: (store?: any) => void,
-
-    /**
-     * [Method] Sets the value of triggerCtEvent
-     * @param triggerCtEvent String The new value.
-     */
-    setTriggerCtEvent?: (triggerCtEvent?: string) => void,
-
-    /**
-     * [Method] Sets the value of triggerEvent
-     * @param triggerEvent String The new value.
-     */
-    setTriggerEvent?: (triggerEvent?: string) => void,
-
-    /**
-     * [Method] Sets the value of useComponents
-     * @param useComponents Boolean The new value.
-     */
-    setUseComponents?: (useComponents?: boolean) => void,
-
-    /**
-     * [Method] Sets a record as the last focused record
-     * @param newRecord Ext.data.Record
-     * @param oldRecord Ext.data.Record
-     */
-    updateLastFocused?: (
-      newRecord?: Ext$Ext$data.data$IRecord,
-      oldRecord?: Ext$Ext$data.data$IRecord
-    ) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    blockRefresh?: boolean,
-
-    /**
-     * [Config Option] (Object[])
-     */
-    Ext$data?: any[],
-
-    /**
-     * [Config Option] (String)
-     */
-    defaultType?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    deferEmptyText?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    deselectOnContainerClick?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    emptyText?: string,
-
-    /**
-     * [Config Option] (Boolean/Object)
-     */
-    inline?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    itemCls?: string,
-
-    /**
-     * [Config Option] (Object)
-     */
-    itemConfig?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    itemSelector?: boolean,
-
-    /**
-     * [Config Option] (String/String[]/Ext.XTemplate)
-     */
-    itemTpl?: any,
-
-    /**
-     * [Config Option] (String/Boolean)
-     */
-    loadingText?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    maxItemCache?: number,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    multiSelect?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    overItemCls?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    pressedCls?: string,
-
-    /**
-     * [Config Option] (Number)
-     */
-    pressedDelay?: number,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    scrollToTopOnRefresh?: boolean,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    scrollable?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    selectedCls?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    selectedItemCls?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    simpleSelect?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    singleSelect?: boolean,
-
-    /**
-     * [Config Option] (Ext.data.Store/Object)
-     */
-    store?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    trackOver?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    triggerCtEvent?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    triggerEvent?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useComponents?: boolean,
-
-    /**
-     * [Method] Binds a new Store to this DataView
-     */
-    bindStore?: () => void,
-
-    /**
-     * [Method] Deselects any currently selected records and clears all stored selections
-     */
-    clearSelections?: () => void,
-
-    /**
-     * [Method] Function which can be overridden which returns the data object passed to this DataView s template to render the whole
-     */
-    collectData?: () => void,
-
-    /**
-     * [Method] Deselects the given record s
-     * @param records Number/Array/Ext.data.Model The record(s) to deselect. Can also be a number to reference by index.
-     * @param suppressEvent Boolean If true the deselect event will not be fired.
-     */
-    deselect?: (records?: any, suppressEvent?: boolean) => void,
-
-    /**
-     * [Method] Deselects all records
-     * @param supress Object
-     */
-    deselectAll?: (supress?: any) => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Deselects a record instance by record instance or index
@@ -9544,7 +6160,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of scrollable
      * @returns Boolean
      */
-    getScrollable?: () => Ext$Ext$scroll.scroll$IView,
+    getScrollable?: () => Ext$scroll$IView,
 
     /**
      * [Method] Returns the value of selectedCls
@@ -9584,7 +6200,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of store
      * @returns Ext.data.Store/Object
      */
-    Ext$getStore?: () => any,
+    getStore?: () => any,
 
     /**
      * [Method] Returns the value of triggerCtEvent
@@ -9651,11 +6267,7 @@ declare module "sencha_touch" {
      * @param record Ext.data.Model The Record being prepared for rendering.
      * @returns Array/Object The formatted data in a format expected by the internal template's overwrite() method. (either an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'}))
      */
-    prepareData?: (
-      Ext$data?: any,
-      index?: number,
-      record?: Ext$Ext$data.data$IModel
-    ) => any,
+    prepareData?: (data?: any, index?: number, record?: data$IModel) => any,
 
     /**
      * [Method] Refreshes the view by reloading the data from the store and re rendering the template
@@ -9673,7 +6285,7 @@ declare module "sencha_touch" {
      * @param keepExisting Boolean If true, the existing selection will be added to (if not, the old selection is replaced).
      * @param suppressEvent Boolean If true, the select event will not be fired.
      */
-    Ext$select?: (
+    select?: (
       records?: any,
       keepExisting?: boolean,
       suppressEvent?: boolean
@@ -9713,7 +6325,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of data
      * @param data Object[] The new value.
      */
-    setData?: (Ext$data?: any[]) => void,
+    setData?: (data?: any[]) => void,
 
     /**
      * [Method] Sets the value of defaultType
@@ -9846,11 +6458,11 @@ declare module "sencha_touch" {
      * @param oldRecord Ext.data.Record
      */
     updateLastFocused?: (
-      newRecord?: Ext$Ext$data.data$IRecord,
-      oldRecord?: Ext$Ext$data.data$IRecord
+      newRecord?: data$IRecord,
+      oldRecord?: data$IRecord
     ) => void
-  } & Ext$Ext$IContainer &
-    undefined.mixin$ISelectable;
+  } & Ext$IContainer &
+    undefined.ISelectable;
 
   declare export type Ext$IIndexBar = {
     /**
@@ -9896,127 +6508,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Destroys this Component
      */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of direction
-     * @returns String
-     */
-    getDirection?: () => string,
-
-    /**
-     * [Method] Returns the value of letters
-     * @returns Array
-     */
-    getLetters?: () => any[],
-
-    /**
-     * [Method] Returns the value of listPrefix
-     * @returns String
-     */
-    getListPrefix?: () => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns true when direction is horizontal
-     */
-    isHorizontal?: () => void,
-
-    /**
-     * [Method] Returns true when direction is vertical
-     */
-    isVertical?: () => void,
-
-    /**
-     * [Method] Refreshes the view by reloading the data from the store and re rendering the template
-     */
-    refresh?: () => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of direction
-     * @param direction String The new value.
-     */
-    setDirection?: (direction?: string) => void,
-
-    /**
-     * [Method] Sets the value of letters
-     * @param letters Array The new value.
-     */
-    setLetters?: (letters?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of listPrefix
-     * @param listPrefix String The new value.
-     */
-    setListPrefix?: (listPrefix?: string) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    alphabet?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    direction?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    itemSelector?: boolean,
-
-    /**
-     * [Config Option] (Array)
-     */
-    letters?: any[],
-
-    /**
-     * [Config Option] (String)
-     */
-    listPrefix?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    store?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Destroys this Component
-     */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of baseCls
@@ -10092,15 +6584,10 @@ declare module "sencha_touch" {
      * @param ui String The new value.
      */
     setUi?: (ui?: string) => void
-  } & Ext$Ext$IComponent;
+  } & Ext$IComponent;
 
   declare export type Ext$IList = {
     /**
-     * [Method] Destroys this Component
-     */
-    Ext$destroy?: () => void,
-
-    /**
      * [Config Option] (String)
      */
     baseCls?: string,
@@ -10183,349 +6670,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of defaultType
-     * @returns String
-     */
-    getDefaultType?: () => string,
-
-    /**
-     * [Method] Returns the value of disclosureProperty
-     * @returns String
-     */
-    getDisclosureProperty?: () => string,
-
-    /**
-     * [Method] Returns the value of grouped
-     * @returns Boolean
-     */
-    getGrouped?: () => boolean,
-
-    /**
-     * [Method] Returns the value of icon
-     * @returns Object
-     */
-    getIcon?: () => any,
-
-    /**
-     * [Method] Returns the value of indexBar
-     * @returns Boolean/Object
-     */
-    getIndexBar?: () => any,
-
-    /**
-     * [Method] Returns the value of infinite
-     * @returns Boolean
-     */
-    getInfinite?: () => boolean,
-
-    /**
-     * [Method] Returns an item at the specified index
-     * @param index Number Index of the item.
-     * @returns Ext.dom.Element/Ext.dataview.component.DataItem item Item at the specified index.
-     */
-    getItemAt?: (index?: number) => any,
-
-    /**
-     * [Method] Returns the value of itemHeight
-     * @returns Number
-     */
-    getItemHeight?: () => number,
-
-    /**
-     * [Method] Returns an index for the specified item
-     * @param item Number The item to locate.
-     * @returns Number Index for the specified item.
-     */
-    getItemIndex?: (item?: number) => number,
-
-    /**
-     * [Method] Returns the value of minimumBufferDistance
-     * @returns Number
-     */
-    getMinimumBufferDistance?: () => number,
-
-    /**
-     * [Method] Returns the value of onItemDisclosure
-     * @returns Boolean/Function/Object
-     */
-    getOnItemDisclosure?: () => any,
-
-    /**
-     * [Method] Returns the value of pinHeaders
-     * @returns Boolean
-     */
-    getPinHeaders?: () => boolean,
-
-    /**
-     * [Method] Returns the value of preventSelectionOnDisclose
-     * @returns Boolean
-     */
-    getPreventSelectionOnDisclose?: () => boolean,
-
-    /**
-     * [Method] Returns the value of refreshHeightOnUpdate
-     * @returns Boolean
-     */
-    getRefreshHeightOnUpdate?: () => boolean,
-
-    /**
-     * [Method] Returns all the items that are docked in the scroller in this list
-     * @returns Array An array of the scrollDock items
-     */
-    getScrollDockedItems?: () => any[],
-
-    /**
-     * [Method] Returns the value of striped
-     * @returns Boolean
-     */
-    getStriped?: () => boolean,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the value of useHeaders
-     * @returns Boolean
-     */
-    getUseHeaders?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useSimpleItems
-     * @returns Boolean
-     */
-    getUseSimpleItems?: () => boolean,
-
-    /**
-     * [Method] Returns the value of variableHeights
-     * @returns Boolean
-     */
-    getVariableHeights?: () => boolean,
-
-    /**
-     * [Method] Returns an array of the current items in the DataView
-     * @returns Ext.dom.Element[]/Ext.dataview.component.DataItem[] Array of Items.
-     */
-    getViewItems?: () => any,
-
-    /**
-     * [Method] We override DataView s initialize method with an empty function
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Scrolls the list so that the specified record is at the top
-     * @param record Object {Ext.data.Model} Record in the lists store to scroll to
-     * @param animate Object {Boolean} Determines if scrolling is animated to a cut
-     * @param overscroll Object {Boolean} Determines if list can be overscrolled
-     */
-    scrollToRecord?: (record?: any, animate?: any, overscroll?: any) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of defaultType
-     * @param defaultType String The new value.
-     */
-    setDefaultType?: (defaultType?: string) => void,
-
-    /**
-     * [Method] Sets the value of disclosureProperty
-     * @param disclosureProperty String The new value.
-     */
-    setDisclosureProperty?: (disclosureProperty?: string) => void,
-
-    /**
-     * [Method] Sets the value of grouped
-     * @param grouped Boolean The new value.
-     */
-    setGrouped?: (grouped?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of icon
-     * @param icon Object The new value.
-     */
-    setIcon?: (icon?: any) => void,
-
-    /**
-     * [Method] Sets the value of indexBar
-     * @param indexBar Boolean/Object The new value.
-     */
-    setIndexBar?: (indexBar?: any) => void,
-
-    /**
-     * [Method] Sets the value of infinite
-     * @param infinite Boolean The new value.
-     */
-    setInfinite?: (infinite?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of itemHeight
-     * @param itemHeight Number The new value.
-     */
-    setItemHeight?: (itemHeight?: number) => void,
-
-    /**
-     * [Method] Sets the value of minimumBufferDistance
-     * @param minimumBufferDistance Number The new value.
-     */
-    setMinimumBufferDistance?: (minimumBufferDistance?: number) => void,
-
-    /**
-     * [Method] Sets the value of onItemDisclosure
-     * @param onItemDisclosure Boolean/Function/Object The new value.
-     */
-    setOnItemDisclosure?: (onItemDisclosure?: any) => void,
-
-    /**
-     * [Method] Sets the value of pinHeaders
-     * @param pinHeaders Boolean The new value.
-     */
-    setPinHeaders?: (pinHeaders?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of preventSelectionOnDisclose
-     * @param preventSelectionOnDisclose Boolean The new value.
-     */
-    setPreventSelectionOnDisclose?: (
-      preventSelectionOnDisclose?: boolean
-    ) => void,
-
-    /**
-     * [Method] Sets the value of refreshHeightOnUpdate
-     * @param refreshHeightOnUpdate Boolean The new value.
-     */
-    setRefreshHeightOnUpdate?: (refreshHeightOnUpdate?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of striped
-     * @param striped Boolean The new value.
-     */
-    setStriped?: (striped?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Sets the value of useHeaders
-     * @param useHeaders Boolean The new value.
-     */
-    setUseHeaders?: (useHeaders?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useSimpleItems
-     * @param useSimpleItems Boolean The new value.
-     */
-    setUseSimpleItems?: (useSimpleItems?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of variableHeights
-     * @param variableHeights Boolean The new value.
-     */
-    setVariableHeights?: (variableHeights?: boolean) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    defaultType?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    disclosureProperty?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    grouped?: boolean,
-
-    /**
-     * [Config Option] (Boolean/Object)
-     */
-    indexBar?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    infinite?: boolean,
-
-    /**
-     * [Config Option] (Number)
-     */
-    itemHeight?: number,
-
-    /**
-     * [Config Option] (Boolean/Function/Object)
-     */
-    onItemDisclosure?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    pinHeaders?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    preventSelectionOnDisclose?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    refreshHeightOnUpdate?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    striped?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useSimpleItems?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    variableHeights?: boolean,
-
-    /**
-     * [Property] (Number)
-     */
-    bufferSize?: number,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of baseCls
@@ -10783,7 +6928,8 @@ declare module "sencha_touch" {
      * @param variableHeights Boolean The new value.
      */
     setVariableHeights?: (variableHeights?: boolean) => void
-  } & undefined.Ext$IContainer;
+  } & undefined.IDataView &
+    undefined.IBindable;
 
   declare export type Ext$INestedList = {
     /**
@@ -10819,12 +6965,12 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.Component)
      */
-    detailCard?: Ext$Ext$IComponent,
+    detailCard?: Ext$IComponent,
 
     /**
      * [Config Option] (Ext.Container)
      */
-    detailContainer?: Ext$Ext$IContainer,
+    detailContainer?: Ext$IContainer,
 
     /**
      * [Config Option] (String)
@@ -10935,13 +7081,13 @@ declare module "sencha_touch" {
      * [Method] Returns the value of detailCard
      * @returns Ext.Component
      */
-    getDetailCard?: () => Ext$Ext$IComponent,
+    getDetailCard?: () => Ext$IComponent,
 
     /**
      * [Method] Returns the value of detailContainer
      * @returns Ext.Container
      */
-    getDetailContainer?: () => Ext$Ext$IContainer,
+    getDetailContainer?: () => Ext$IContainer,
 
     /**
      * [Method] Returns the value of displayField
@@ -10966,7 +7112,7 @@ declare module "sencha_touch" {
      * @param node Ext.data.Record
      * @returns String
      */
-    getItemTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
+    getItemTextTpl?: (node?: data$IRecord) => string,
 
     /**
      * [Method] Returns the value of listConfig
@@ -10990,7 +7136,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of store
      * @returns Ext.data.TreeStore/String
      */
-    Ext$getStore?: () => any,
+    getStore?: () => any,
 
     /**
      * [Method] Returns the subList for a specified node
@@ -11008,7 +7154,7 @@ declare module "sencha_touch" {
      * @param node Ext.data.Record
      * @returns String
      */
-    getTitleTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
+    getTitleTextTpl?: (node?: data$IRecord) => string,
 
     /**
      * [Method] Returns the value of toolbar
@@ -11050,13 +7196,13 @@ declare module "sencha_touch" {
      * [Method] The leaf you want to navigate to
      * @param node Ext.data.NodeInterface The specified node to navigate to.
      */
-    goToLeaf?: (node?: Ext$Ext$data.data$INodeInterface) => void,
+    goToLeaf?: (node?: data$INodeInterface) => void,
 
     /**
      * [Method] Method to handle going to a specific node within this nested list
      * @param node Ext.data.NodeInterface The specified node to navigate to.
      */
-    goToNode?: (node?: Ext$Ext$data.data$INodeInterface) => void,
+    goToNode?: (node?: data$INodeInterface) => void,
 
     /**
      * [Method] Called when the backButton has been tapped
@@ -11072,11 +7218,11 @@ declare module "sencha_touch" {
      * @param e Ext.event.Event The event.
      */
     onItemTap?: (
-      list?: Ext$Ext$IList,
+      list?: Ext$IList,
       index?: number,
-      target?: Ext$Ext$IElement,
-      record?: Ext$Ext$data.data$IRecord,
-      e?: Ext$Ext$event.event$IEvent
+      target?: Ext$IElement,
+      record?: data$IRecord,
+      e?: Ext$event$IEvent
     ) => void,
 
     /**
@@ -11115,440 +7261,13 @@ declare module "sencha_touch" {
      * [Method] Sets the value of detailCard
      * @param detailCard Ext.Component The new value.
      */
-    setDetailCard?: (detailCard?: Ext$Ext$IComponent) => void,
+    setDetailCard?: (detailCard?: Ext$IComponent) => void,
 
     /**
      * [Method] Sets the value of detailContainer
      * @param detailContainer Ext.Container The new value.
      */
-    setDetailContainer?: (detailContainer?: Ext$Ext$IContainer) => void,
-
-    /**
-     * [Method] Sets the value of displayField
-     * @param displayField String The new value.
-     */
-    setDisplayField?: (displayField?: string) => void,
-
-    /**
-     * [Method] Sets the value of emptyText
-     * @param emptyText String The new value.
-     */
-    setEmptyText?: (emptyText?: string) => void,
-
-    /**
-     * [Method] Sets the value of itemHeight
-     * @param itemHeight Number The new value.
-     */
-    setItemHeight?: (itemHeight?: number) => void,
-
-    /**
-     * [Method] Sets the value of listConfig
-     * @param listConfig Object The new value.
-     */
-    setListConfig?: (listConfig?: any) => void,
-
-    /**
-     * [Method] Sets the value of loadingText
-     * @param loadingText String The new value.
-     */
-    setLoadingText?: (loadingText?: string) => void,
-
-    /**
-     * [Method] Sets the value of onItemDisclosure
-     * @param onItemDisclosure Boolean/Function The new value.
-     */
-    setOnItemDisclosure?: (onItemDisclosure?: any) => void,
-
-    /**
-     * [Method] Sets the value of store
-     * @param store Ext.data.TreeStore/String The new value.
-     */
-    setStore?: (store?: any) => void,
-
-    /**
-     * [Method] Sets the value of title
-     * @param title String The new value.
-     */
-    setTitle?: (title?: string) => void,
-
-    /**
-     * [Method] Sets the value of toolbar
-     * @param toolbar Ext.Toolbar/Object/Boolean The new value.
-     */
-    setToolbar?: (toolbar?: any) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui Object The new value.
-     */
-    setUi?: (ui?: any) => void,
-
-    /**
-     * [Method] Sets the value of updateTitleText
-     * @param updateTitleText Boolean The new value.
-     */
-    setUpdateTitleText?: (updateTitleText?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useSimpleItems
-     * @param useSimpleItems Boolean The new value.
-     */
-    setUseSimpleItems?: (useSimpleItems?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useTitleAsBackText
-     * @param useTitleAsBackText Boolean The new value.
-     */
-    setUseTitleAsBackText?: (useTitleAsBackText?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of useToolbar
-     * @param useToolbar Boolean The new value.
-     */
-    setUseToolbar?: (useToolbar?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of variableHeights
-     * @param variableHeights Boolean The new value.
-     */
-    setVariableHeights?: (variableHeights?: boolean) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    allowDeselect?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    backButton?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    backText?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String/Object/Boolean)
-     */
-    cardSwitchAnimation?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    clearSelectionDelay?: number,
-
-    /**
-     * [Config Option] (Ext.Component)
-     */
-    detailCard?: Ext$Ext$IComponent,
-
-    /**
-     * [Config Option] (Ext.Container)
-     */
-    detailContainer?: Ext$Ext$IContainer,
-
-    /**
-     * [Config Option] (String)
-     */
-    displayField?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    emptyText?: string,
-
-    /**
-     * [Config Option] (Number)
-     */
-    itemHeight?: number,
-
-    /**
-     * [Config Option] (Object)
-     */
-    listConfig?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    loadingText?: string,
-
-    /**
-     * [Config Option] (Boolean/Function)
-     */
-    onItemDisclosure?: any,
-
-    /**
-     * [Config Option] (Ext.data.TreeStore/String)
-     */
-    store?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    title?: string,
-
-    /**
-     * [Config Option] (Ext.Toolbar/Object/Boolean)
-     */
-    toolbar?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    updateTitleText?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useSimpleItems?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useTitleAsBackText?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useToolbar?: boolean,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    variableHeights?: boolean,
-
-    /**
-     * [Method] Returns the value of allowDeselect
-     * @returns Boolean
-     */
-    getAllowDeselect?: () => boolean,
-
-    /**
-     * [Method] Returns the value of backButton
-     * @returns Object
-     */
-    getBackButton?: () => any,
-
-    /**
-     * [Method] Returns the value of backText
-     * @returns String
-     */
-    getBackText?: () => string,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of clearSelectionOnListChange
-     * @returns Boolean
-     */
-    getClearSelectionOnListChange?: () => boolean,
-
-    /**
-     * [Method] Returns the value of detailCard
-     * @returns Ext.Component
-     */
-    getDetailCard?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Returns the value of detailContainer
-     * @returns Ext.Container
-     */
-    getDetailContainer?: () => Ext$Ext$IContainer,
-
-    /**
-     * [Method] Returns the value of displayField
-     * @returns String
-     */
-    getDisplayField?: () => string,
-
-    /**
-     * [Method] Returns the value of emptyText
-     * @returns String
-     */
-    getEmptyText?: () => string,
-
-    /**
-     * [Method] Returns the value of itemHeight
-     * @returns Number
-     */
-    getItemHeight?: () => number,
-
-    /**
-     * [Method] Override this method to provide custom template rendering of individual nodes
-     * @param node Ext.data.Record
-     * @returns String
-     */
-    getItemTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
-
-    /**
-     * [Method] Returns the value of listConfig
-     * @returns Object
-     */
-    getListConfig?: () => any,
-
-    /**
-     * [Method] Returns the value of loadingText
-     * @returns String
-     */
-    getLoadingText?: () => string,
-
-    /**
-     * [Method] Returns the value of onItemDisclosure
-     * @returns Boolean/Function
-     */
-    getOnItemDisclosure?: () => any,
-
-    /**
-     * [Method] Returns the value of store
-     * @returns Ext.data.TreeStore/String
-     */
-    Ext$getStore?: () => any,
-
-    /**
-     * [Method] Returns the subList for a specified node
-     */
-    getSubList?: () => void,
-
-    /**
-     * [Method] Returns the value of title
-     * @returns String
-     */
-    getTitle?: () => string,
-
-    /**
-     * [Method] Override this method to provide custom template rendering of titles back buttons when useTitleAsBackText is enabled
-     * @param node Ext.data.Record
-     * @returns String
-     */
-    getTitleTextTpl?: (node?: Ext$Ext$data.data$IRecord) => string,
-
-    /**
-     * [Method] Returns the value of toolbar
-     * @returns Ext.Toolbar/Object/Boolean
-     */
-    getToolbar?: () => any,
-
-    /**
-     * [Method] Returns the value of updateTitleText
-     * @returns Boolean
-     */
-    getUpdateTitleText?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useSimpleItems
-     * @returns Boolean
-     */
-    getUseSimpleItems?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useTitleAsBackText
-     * @returns Boolean
-     */
-    getUseTitleAsBackText?: () => boolean,
-
-    /**
-     * [Method] Returns the value of useToolbar
-     * @returns Boolean
-     */
-    getUseToolbar?: () => boolean,
-
-    /**
-     * [Method] Returns the value of variableHeights
-     * @returns Boolean
-     */
-    getVariableHeights?: () => boolean,
-
-    /**
-     * [Method] The leaf you want to navigate to
-     * @param node Ext.data.NodeInterface The specified node to navigate to.
-     */
-    goToLeaf?: (node?: Ext$Ext$data.data$INodeInterface) => void,
-
-    /**
-     * [Method] Method to handle going to a specific node within this nested list
-     * @param node Ext.data.NodeInterface The specified node to navigate to.
-     */
-    goToNode?: (node?: Ext$Ext$data.data$INodeInterface) => void,
-
-    /**
-     * [Method] Called when the backButton has been tapped
-     */
-    onBackTap?: () => void,
-
-    /**
-     * [Method] Called when an list item has been tapped
-     * @param list Ext.List The subList the item is on.
-     * @param index Number The id of the item tapped.
-     * @param target Ext.Element The list item tapped.
-     * @param record Ext.data.Record The record which as tapped.
-     * @param e Ext.event.Event The event.
-     */
-    onItemTap?: (
-      list?: Ext$Ext$IList,
-      index?: number,
-      target?: Ext$Ext$IElement,
-      record?: Ext$Ext$data.data$IRecord,
-      e?: Ext$Ext$event.event$IEvent
-    ) => void,
-
-    /**
-     * [Method] Sets the value of allowDeselect
-     * @param allowDeselect Boolean The new value.
-     */
-    setAllowDeselect?: (allowDeselect?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of backButton
-     * @param backButton Object The new value.
-     */
-    setBackButton?: (backButton?: any) => void,
-
-    /**
-     * [Method] Sets the value of backText
-     * @param backText String The new value.
-     */
-    setBackText?: (backText?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of clearSelectionOnListChange
-     * @param clearSelectionOnListChange Boolean The new value.
-     */
-    setClearSelectionOnListChange?: (
-      clearSelectionOnListChange?: boolean
-    ) => void,
-
-    /**
-     * [Method] Sets the value of detailCard
-     * @param detailCard Ext.Component The new value.
-     */
-    setDetailCard?: (detailCard?: Ext$Ext$IComponent) => void,
-
-    /**
-     * [Method] Sets the value of detailContainer
-     * @param detailContainer Ext.Container The new value.
-     */
-    setDetailContainer?: (detailContainer?: Ext$Ext$IContainer) => void,
+    setDetailContainer?: (detailContainer?: Ext$IContainer) => void,
 
     /**
      * [Method] Sets the value of displayField
@@ -11639,183 +7358,9 @@ declare module "sencha_touch" {
      * @param variableHeights Boolean The new value.
      */
     setVariableHeights?: (variableHeights?: boolean) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
-  declare export type Ext$IDate = {
-    /**
-     * [Config Option] (String)
-     */
-    dayText?: string,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    doneButton?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    monthText?: string,
-
-    /**
-     * [Config Option] (Array)
-     */
-    slotOrder?: any[],
-
-    /**
-     * [Config Option] (Object/Date)
-     */
-    value?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    yearFrom?: number,
-
-    /**
-     * [Config Option] (String)
-     */
-    yearText?: string,
-
-    /**
-     * [Config Option] (Number)
-     */
-    yearTo?: number,
-
-    /**
-     * [Method] Returns the value of dayText
-     * @returns String
-     */
-    getDayText?: () => string,
-
-    /**
-     * [Method] Returns the value of doneButton
-     * @returns String/Mixed
-     */
-    getDoneButton?: () => any,
-
-    /**
-     * [Method] Returns the value of monthText
-     * @returns String
-     */
-    getMonthText?: () => string,
-
-    /**
-     * [Method] Returns the value of slotOrder
-     * @returns Array
-     */
-    getSlotOrder?: () => any[],
-
-    /**
-     * [Method] Returns the values of each of the pickers slots
-     * @param useDom Object
-     * @returns Object The values of the pickers slots
-     */
-    getValue?: (useDom?: any) => any,
-
-    /**
-     * [Method] Returns the value of yearFrom
-     * @returns Number
-     */
-    getYearFrom?: () => number,
-
-    /**
-     * [Method] Returns the value of yearText
-     * @returns String
-     */
-    getYearText?: () => string,
-
-    /**
-     * [Method] Returns the value of yearTo
-     * @returns Number
-     */
-    getYearTo?: () => number,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Sets the value of dayText
-     * @param dayText String The new value.
-     */
-    setDayText?: (dayText?: string) => void,
-
-    /**
-     * [Method] Sets the value of doneButton
-     * @param doneButton String/Mixed The new value.
-     */
-    setDoneButton?: (doneButton?: any) => void,
-
-    /**
-     * [Method] Sets the value of monthText
-     * @param monthText String The new value.
-     */
-    setMonthText?: (monthText?: string) => void,
-
-    /**
-     * [Method] Sets the value of slotOrder
-     * @param slotOrder Array The new value.
-     */
-    setSlotOrder?: (slotOrder?: any[]) => void,
-
-    /**
-     * [Method] Sets the values of the pickers slots
-     * @param value Object
-     * @param animated Object
-     * @returns Ext.Picker this This picker.
-     */
-    setValue?: (value?: any, animated?: any) => Ext$Ext$IPicker,
-
-    /**
-     * [Method] Sets the value of yearFrom
-     * @param yearFrom Number The new value.
-     */
-    setYearFrom?: (yearFrom?: number) => void,
-
-    /**
-     * [Method] Sets the value of yearText
-     * @param yearText String The new value.
-     */
-    setYearText?: (yearText?: string) => void,
-
-    /**
-     * [Method] Sets the value of yearTo
-     * @param yearTo Number The new value.
-     */
-    setYearTo?: (yearTo?: number) => void,
-
-    /**
-     * [Method] Updates the dayText configuration
-     * @param newDayText Object
-     * @param oldDayText Object
-     */
-    updateDayText?: (newDayText?: any, oldDayText?: any) => void,
-
-    /**
-     * [Method] Updates the monthText configuration
-     * @param newMonthText Object
-     * @param oldMonthText Object
-     */
-    updateMonthText?: (newMonthText?: any, oldMonthText?: any) => void,
-
-    /**
-     * [Method] Updates the yearFrom configuration
-     */
-    updateYearFrom?: () => void,
-
-    /**
-     * [Method] Updates the yearText configuration
-     * @param yearText Object
-     */
-    updateYearText?: (yearText?: any) => void,
-
-    /**
-     * [Method] Updates the yearTo configuration
-     */
-    updateYearTo?: () => void
-  } & Ext$Ext$IDateExtras;
+  declare export type Ext$IDate = {} & Ext$IDateExtras;
 
   declare export class Ext$Date {
     /**
@@ -11930,7 +7475,7 @@ declare module "sencha_touch" {
      * @param clone Boolean true to create a clone of this date, clear the time and return it.
      * @returns Date this or the clone.
      */
-    static clearTime(date?: any, Ext$clone?: boolean): any;
+    static clearTime(date?: any, clone?: boolean): any;
 
     /**
      * [Method] Creates and returns a new Date instance with the exact same date value as the called instance
@@ -11946,7 +7491,7 @@ declare module "sencha_touch" {
      * @param unit String The unit. This unit is compatible with the date interval constants.
      * @returns Number The maximum number n of units that min + n * unit &lt;= max.
      */
-    static diff(Ext$min?: any, Ext$max?: any, unit?: string): number;
+    static diff(min?: any, max?: any, unit?: string): number;
 
     /**
      * [Method] Formats a date given the supplied format string
@@ -12222,7 +7767,7 @@ declare module "sencha_touch" {
      * @param clone Boolean true to create a clone of this date, clear the time and return it.
      * @returns Date this or the clone.
      */
-    static clearTime(date?: any, Ext$clone?: boolean): any;
+    static clearTime(date?: any, clone?: boolean): any;
 
     /**
      * [Method] Creates and returns a new Date instance with the exact same date value as the called instance
@@ -12238,7 +7783,7 @@ declare module "sencha_touch" {
      * @param unit String The unit. This unit is compatible with the date interval constants.
      * @returns Number The maximum number n of units that min + n * unit &lt;= max.
      */
-    static diff(Ext$min?: any, Ext$max?: any, unit?: string): number;
+    static diff(min?: any, max?: any, unit?: string): number;
 
     /**
      * [Method] Formats a date given the supplied format string
@@ -12408,7 +7953,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Destroys this Component
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of component
@@ -12421,2778 +7966,34 @@ declare module "sencha_touch" {
      * @param component Object The new value.
      */
     setComponent?: (component?: any) => void
-  } & Ext$Ext$IComponent;
+  } & Ext$IComponent;
 
-  declare export type tunnel$IAbstract = {
-    /**
-     * [Config Option] (Ext.chart.AbstractChart)
-     */
-    Ext$chart?: Ext$Ext$chart.chart$IAbstractChart,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    enabled?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    gesture?: string,
-
-    /**
-     * [Property] (Number)
-     */
-    throttleGap?: number,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of chart
-     * @returns Ext.chart.AbstractChart
-     */
-    getChart?: () => Ext$Ext$chart.chart$IAbstractChart,
-
-    /**
-     * [Method] Returns the value of enabled
-     * @returns Boolean
-     */
-    getEnabled?: () => boolean,
-
-    /**
-     * [Method] Returns the value of gesture
-     * @returns String
-     */
-    getGesture?: () => string,
-
-    /**
-     * [Method] Find and return a single series item corresponding to the given event or null if no matching item is found
-     * @param e Event
-     * @returns Object the item object or null if none found.
-     */
-    getItemForEvent?: (e?: Event) => any,
-
-    /**
-     * [Method] Find and return all series items corresponding to the given event
-     * @param e Event
-     * @returns Array array of matching item objects
-     */
-    getItemsForEvent?: (e?: Event) => any[],
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] A method to be implemented by subclasses where all event attachment should occur
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Placeholder method
-     */
-    onGesture?: () => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of chart
-     * @param chart Ext.chart.AbstractChart The new value.
-     */
-    setChart?: (Ext$chart?: Ext$Ext$chart.chart$IAbstractChart) => void,
-
-    /**
-     * [Method] Sets the value of enabled
-     * @param enabled Boolean The new value.
-     */
-    setEnabled?: (enabled?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of gesture
-     * @param gesture String The new value.
-     */
-    setGesture?: (gesture?: string) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Config Option] (Number)
-     */
-    frequency?: number,
-
-    /**
-     * [Method] Returns the value of frequency
-     * @returns Number
-     */
-    getFrequency?: () => number,
-
-    /**
-     * [Method] Sets the value of frequency
-     * @param frequency Number The new value.
-     */
-    setFrequency?: (frequency?: number) => void,
-
-    /**
-     * [Method] Used to close the browser if one is opened
-     */
-    close?: () => void,
-
-    /**
-     * [Method] Used to open a new browser window
-     * @param options Object The options to use when opening a new browser window.
-     */
-    open?: (options?: any) => void,
-
-    /**
-     * [Method] Allows you to capture a photo
-     * @param options Object The options to use when taking a photo.
-     * @param scope Object The scope in which to call the success and failure functions, if specified.
-     * @param destination String The destination of the image which is returned. Available options are:  data - returns a base64 encoded string file - returns the file's URI
-     * @param encoding String The encoding of the returned image. Available options are:  jpg png
-     * @param width Number The width of the image to return
-     * @param height Number The height of the image to return
-     */
-    capture?: (
-      options?: any,
-      scope?: any,
-      destination?: string,
-      encoding?: string,
-      width?: number,
-      height?: number
-    ) => void,
-
-    /**
-     * [Method] Start the audio recorder application and return information about captured audio clip file s
-     * @param config Object The configuration object to be passed:
-     */
-    captureAudio?: (config?: any) => void,
-
-    /**
-     * [Method] Start the video recorder application and return information about captured video clip file s
-     * @param config Object The configuration object to be passed:
-     */
-    captureVideo?: (config?: any) => void,
-
-    /**
-     * [Config Option] (Number)
-     */
-    frequency?: number,
-
-    /**
-     * [Method] Returns the value of frequency
-     * @returns Number
-     */
-    getFrequency?: () => number,
-
-    /**
-     * [Method] Sets the value of frequency
-     * @param frequency Number The new value.
-     */
-    setFrequency?: (frequency?: number) => void,
-
-    /**
-     * [Property] (String)
-     */
-    CELL_2G?: string,
-
-    /**
-     * [Property] (String)
-     */
-    CELL_3G?: string,
-
-    /**
-     * [Property] (String)
-     */
-    CELL_4G?: string,
-
-    /**
-     * [Property] (String)
-     */
-    ETHERNET?: string,
-
-    /**
-     * [Property] (String)
-     */
-    NONE?: string,
-
-    /**
-     * [Property] (String)
-     */
-    UNKNOWN?: string,
-
-    /**
-     * [Property] (String)
-     */
-    WIFI?: string,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Returns the value of online
-     * @returns Boolean
-     */
-    getOnline?: () => boolean,
-
-    /**
-     * [Method] Returns the current connection type
-     * @returns String type
-     */
-    getType?: () => string,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] True if the device is currently online
-     * @returns Boolean online
-     */
-    isOnline?: () => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Sets the value of online
-     * @param online Boolean The new value.
-     */
-    setOnline?: (online?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of type
-     * @param type Object The new value.
-     */
-    setType?: (Ext$type?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    includeImages?: boolean,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns an Array of contact objects
-     * @param config Object
-     * @returns Object[] An array of contact objects.
-     */
-    getContacts?: (config?: any) => any[],
-
-    /**
-     * [Method] Returns the value of includeImages
-     * @returns Boolean
-     */
-    getIncludeImages?: () => boolean,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Returns localized user readable label for a contact field i e
-     * @param config Object
-     * @returns String user readable string
-     */
-    getLocalizedLabel?: (config?: any) => string,
-
-    /**
-     * [Method] Returns base64 encoded image thumbnail for a contact specified in config id This method is for Sencha Native Packager
-     * @param config Object
-     * @returns String base64 string
-     */
-    getThumbnail?: (config?: any) => string,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of includeImages
-     * @param includeImages Boolean The new value.
-     */
-    setIncludeImages?: (includeImages?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Property] (String)
-     */
-    name?: string,
-
-    /**
-     * [Property] (String)
-     */
-    platform?: string,
-
-    /**
-     * [Property] (Object/Boolean)
-     */
-    scheme?: any,
-
-    /**
-     * [Property] (String)
-     */
-    uuid?: string,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Opens a specified URL
-     * @param url String The URL to open
-     */
-    openURL?: (url?: string) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Returns the value of fileSystemSize
-     * @returns Number
-     */
-    getFileSystemSize?: () => number,
-
-    /**
-     * [Method] Returns the value of fileSystemType
-     * @returns Number
-     */
-    getFileSystemType?: () => number,
-
-    /**
-     * [Method] Returns the value of readerType
-     * @returns String
-     */
-    getReaderType?: () => string,
-
-    /**
-     * [Method] Returns the value of stringEncoding
-     * @returns String
-     */
-    getStringEncoding?: () => string,
-
-    /**
-     * [Method] Sets the value of fileSystemSize
-     * @param fileSystemSize Number The new value.
-     */
-    setFileSystemSize?: (fileSystemSize?: number) => void,
-
-    /**
-     * [Method] Sets the value of fileSystemType
-     * @param fileSystemType Number The new value.
-     */
-    setFileSystemType?: (fileSystemType?: number) => void,
-
-    /**
-     * [Method] Sets the value of readerType
-     * @param readerType String The new value.
-     */
-    setReaderType?: (readerType?: string) => void,
-
-    /**
-     * [Method] Sets the value of stringEncoding
-     * @param stringEncoding String The new value.
-     */
-    setStringEncoding?: (stringEncoding?: string) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    allowHighAccuracy?: boolean,
-
-    /**
-     * [Config Option] (Number)
-     */
-    frequency?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    maximumAge?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    timeout?: number,
-
-    /**
-     * [Method] If you are currently watching for the current position this will stop that task
-     */
-    clearWatch?: () => void,
-
-    /**
-     * [Method] Returns the value of allowHighAccuracy
-     * @returns Boolean
-     */
-    getAllowHighAccuracy?: () => boolean,
-
-    /**
-     * [Method] Attempts to get the current position of this device
-     * @param config Object An object which contains the following config options:
-     */
-    getCurrentPosition?: (config?: any) => void,
-
-    /**
-     * [Method] Returns the value of frequency
-     * @returns Number
-     */
-    getFrequency?: () => number,
-
-    /**
-     * [Method] Returns the value of maximumAge
-     * @returns Number
-     */
-    getMaximumAge?: () => number,
-
-    /**
-     * [Method] Returns the value of timeout
-     * @returns Number
-     */
-    getTimeout?: () => number,
-
-    /**
-     * [Method] Sets the value of allowHighAccuracy
-     * @param allowHighAccuracy Boolean The new value.
-     */
-    setAllowHighAccuracy?: (allowHighAccuracy?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of frequency
-     * @param frequency Number The new value.
-     */
-    setFrequency?: (frequency?: number) => void,
-
-    /**
-     * [Method] Sets the value of maximumAge
-     * @param maximumAge Number The new value.
-     */
-    setMaximumAge?: (maximumAge?: number) => void,
-
-    /**
-     * [Method] Sets the value of timeout
-     * @param timeout Number The new value.
-     */
-    setTimeout?: (timeout?: number) => void,
-
-    /**
-     * [Method] Watches for the current position and calls the callback when successful depending on the specified frequency
-     * @param config Object An object which contains the following config options:
-     */
-    watchPosition?: (config?: any) => void,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of currencyCode
-     * @returns String
-     */
-    getCurrencyCode?: () => string,
-
-    /**
-     * [Method] Returns the value of dateType
-     * @returns String
-     */
-    getDateType?: () => string,
-
-    /**
-     * [Method] Returns the value of formatLength
-     * @returns String
-     */
-    getFormatLength?: () => string,
-
-    /**
-     * [Method] Returns the value of items
-     * @returns String
-     */
-    getItems?: () => string,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Returns the value of numberType
-     * @returns String
-     */
-    getNumberType?: () => string,
-
-    /**
-     * [Method] Returns the value of selector
-     * @returns String
-     */
-    getSelector?: () => string,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of currencyCode
-     * @param currencyCode String The new value.
-     */
-    setCurrencyCode?: (currencyCode?: string) => void,
-
-    /**
-     * [Method] Sets the value of dateType
-     * @param dateType String The new value.
-     */
-    setDateType?: (dateType?: string) => void,
-
-    /**
-     * [Method] Sets the value of formatLength
-     * @param formatLength String The new value.
-     */
-    setFormatLength?: (formatLength?: string) => void,
-
-    /**
-     * [Method] Sets the value of items
-     * @param items String The new value.
-     */
-    setItems?: (items?: string) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Sets the value of numberType
-     * @param numberType String The new value.
-     */
-    setNumberType?: (numberType?: string) => void,
-
-    /**
-     * [Method] Sets the value of selector
-     * @param selector String The new value.
-     */
-    setSelector?: (selector?: string) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Returns the value of src
-     * @returns Object
-     */
-    getSrc?: () => any,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Sets the value of src
-     * @param src Object The new value.
-     */
-    setSrc?: (src?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] A simple way to show a notification
-     * @param config Object An object which contains the following config options:
-     */
-    show?: (config?: any) => void,
-
-    /**
-     * [Method] Vibrates the device
-     */
-    vibrate?: () => void,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Property] (Number)
-     */
-    ALERT?: number,
-
-    /**
-     * [Property] (Number)
-     */
-    BADGE?: number,
-
-    /**
-     * [Property] (Number)
-     */
-    SOUND?: number,
-
-    /**
-     * [Method] Registers a push notification
-     * @param config Object The configuration for to pass when registering this push notification service.
-     */
-    register?: (config?: any) => void,
-
-    /**
-     * [Method] Returns the value of databaseDisplayName
-     * @returns String
-     */
-    getDatabaseDisplayName?: () => string,
-
-    /**
-     * [Method] Returns the value of databaseName
-     * @returns String
-     */
-    getDatabaseName?: () => string,
-
-    /**
-     * [Method] Returns the value of databaseSize
-     * @returns Object
-     */
-    getDatabaseSize?: () => any,
-
-    /**
-     * [Method] Returns the value of databaseVersion
-     * @returns String
-     */
-    getDatabaseVersion?: () => string,
-
-    /**
-     * [Method] Sets the value of databaseDisplayName
-     * @param databaseDisplayName String The new value.
-     */
-    setDatabaseDisplayName?: (databaseDisplayName?: string) => void,
-
-    /**
-     * [Method] Sets the value of databaseName
-     * @param databaseName String The new value.
-     */
-    setDatabaseName?: (databaseName?: string) => void,
-
-    /**
-     * [Method] Sets the value of databaseSize
-     * @param databaseSize Object The new value.
-     */
-    setDatabaseSize?: (databaseSize?: any) => void,
-
-    /**
-     * [Method] Sets the value of databaseVersion
-     * @param databaseVersion String The new value.
-     */
-    setDatabaseVersion?: (databaseVersion?: string) => void,
-
+  declare export type Ext$device$tunnel$IAbstract = {
     /**
      * [Method] Broadcast a message intent to look for receivers who can respond to it
      * @param message String
      * @returns Ext.Promise A promise which provides an array of objects upon fulfilled. Each object contains information about a receiver, with 'id', 'name' and 'icon' keys.
      */
-    broadcast?: (message?: string) => Ext$Ext$IPromise,
+    broadcast?: (message?: string) => Ext$IPromise,
 
     /**
      * [Method] Create a connection to another application with the given id
      * @param receiverId String The id of the application to connect to. Get this id from broadcast
      * @returns Ext.Promise
      */
-    connect?: (receiverId?: string) => Ext$Ext$IPromise,
+    connect?: (receiverId?: string) => Ext$IPromise,
 
     /**
      * [Method] Assign the callback to handle new connection
      * @param callback Function
      */
-    onConnect?: (Ext$callback?: any) => void,
+    onConnect?: (callback?: any) => void,
 
     /**
      * [Method] Assign the callback to handling incoming messages
      * @param callback Function
      */
-    onMessage?: (Ext$callback?: any) => void,
+    onMessage?: (callback?: any) => void,
 
     /**
      * [Method] Send a message
@@ -15205,975 +8006,10 @@ declare module "sencha_touch" {
       receiverId?: string,
       message?: any,
       foreground?: boolean
-    ) => Ext$Ext$IPromise,
+    ) => Ext$IPromise
+  } & Ext$IBase;
 
-    /**
-     * [Config Option] (Object)
-     */
-    before?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    easing?: string,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of after
-     * @returns Object
-     */
-    getAfter?: () => any,
-
-    /**
-     * [Method] Returns the value of before
-     * @returns Object
-     */
-    getBefore?: () => any,
-
-    /**
-     * [Method] Returns the value of delay
-     * @returns Number
-     */
-    getDelay?: () => number,
-
-    /**
-     * [Method] Returns the value of direction
-     * @returns String
-     */
-    getDirection?: () => string,
-
-    /**
-     * [Method] Returns the value of duration
-     * @returns Number
-     */
-    getDuration?: () => number,
-
-    /**
-     * [Method] Returns the value of easing
-     * @returns String
-     */
-    getEasing?: () => string,
-
-    /**
-     * [Method] Returns the value of element
-     * @returns Object
-     */
-    getElement?: () => any,
-
-    /**
-     * [Method] Returns the value of iteration
-     * @returns Number
-     */
-    getIteration?: () => number,
-
-    /**
-     * [Method] Returns the value of name
-     * @returns String
-     */
-    getName?: () => string,
-
-    /**
-     * [Method] Returns the value of onBeforeEnd
-     * @returns Object
-     */
-    getOnBeforeEnd?: () => any,
-
-    /**
-     * [Method] Returns the value of onBeforeStart
-     * @returns Object
-     */
-    getOnBeforeStart?: () => any,
-
-    /**
-     * [Method] Returns the value of onEnd
-     * @returns Object
-     */
-    getOnEnd?: () => any,
-
-    /**
-     * [Method] Returns the value of preserveEndState
-     * @returns Boolean
-     */
-    getPreserveEndState?: () => boolean,
-
-    /**
-     * [Method] Returns the value of replacePrevious
-     * @returns Boolean
-     */
-    getReplacePrevious?: () => boolean,
-
-    /**
-     * [Method] Returns the value of reverse
-     * @returns Object
-     */
-    getReverse?: () => any,
-
-    /**
-     * [Method] Returns the value of scope
-     * @returns Object
-     */
-    getScope?: () => any,
-
-    /**
-     * [Method] Sets the value of after
-     * @param after Object The new value.
-     */
-    setAfter?: (after?: any) => void,
-
-    /**
-     * [Method] Sets the value of before
-     * @param before Object The new value.
-     */
-    setBefore?: (before?: any) => void,
-
-    /**
-     * [Method] Sets the value of delay
-     * @param delay Number The new value.
-     */
-    setDelay?: (delay?: number) => void,
-
-    /**
-     * [Method] Sets the value of direction
-     * @param direction String The new value.
-     */
-    setDirection?: (direction?: string) => void,
-
-    /**
-     * [Method] Sets the value of duration
-     * @param duration Number The new value.
-     */
-    setDuration?: (duration?: number) => void,
-
-    /**
-     * [Method] Sets the value of easing
-     * @param easing String The new value.
-     */
-    setEasing?: (easing?: string) => void,
-
-    /**
-     * [Method] Sets the value of element
-     * @param element Object The new value.
-     */
-    setElement?: (element?: any) => void,
-
-    /**
-     * [Method] Sets the value of iteration
-     * @param iteration Number The new value.
-     */
-    setIteration?: (iteration?: number) => void,
-
-    /**
-     * [Method] Sets the value of name
-     * @param name String The new value.
-     */
-    setName?: (name?: string) => void,
-
-    /**
-     * [Method] Sets the value of onBeforeEnd
-     * @param onBeforeEnd Object The new value.
-     */
-    setOnBeforeEnd?: (onBeforeEnd?: any) => void,
-
-    /**
-     * [Method] Sets the value of onBeforeStart
-     * @param onBeforeStart Object The new value.
-     */
-    setOnBeforeStart?: (onBeforeStart?: any) => void,
-
-    /**
-     * [Method] Sets the value of onEnd
-     * @param onEnd Object The new value.
-     */
-    setOnEnd?: (onEnd?: any) => void,
-
-    /**
-     * [Method] Sets the value of preserveEndState
-     * @param preserveEndState Boolean The new value.
-     */
-    setPreserveEndState?: (preserveEndState?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of replacePrevious
-     * @param replacePrevious Boolean The new value.
-     */
-    setReplacePrevious?: (replacePrevious?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of reverse
-     * @param reverse Object The new value.
-     */
-    setReverse?: (reverse?: any) => void,
-
-    /**
-     * [Method] Sets the value of scope
-     * @param scope Object The new value.
-     */
-    setScope?: (scope?: any) => void,
-
-    /**
-     * [Method] Returns the value of startTime
-     * @returns Number
-     */
-    getStartTime?: () => number,
-
-    /**
-     * [Method] Returns the value of startValue
-     * @returns Number
-     */
-    getStartValue?: () => number,
-
-    /**
-     * [Method] Sets the value of startTime
-     * @param startTime Number The new value.
-     */
-    setStartTime?: (startTime?: number) => void,
-
-    /**
-     * [Method] Sets the value of startValue
-     * @param startValue Number The new value.
-     */
-    setStartValue?: (startValue?: number) => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of direction
-     * @returns String
-     */
-    getDirection?: () => string,
-
-    /**
-     * [Method] Returns the value of duration
-     * @returns Object
-     */
-    getDuration?: () => any,
-
-    /**
-     * [Method] Returns the value of layout
-     * @returns Object
-     */
-    getLayout?: () => any,
-
-    /**
-     * [Method] Returns the value of reverse
-     * @returns Object
-     */
-    getReverse?: () => any,
-
-    /**
-     * [Method] Sets the value of direction
-     * @param direction String The new value.
-     */
-    setDirection?: (direction?: string) => void,
-
-    /**
-     * [Method] Sets the value of duration
-     * @param duration Object The new value.
-     */
-    setDuration?: (duration?: any) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of reverse
-     * @param reverse Object The new value.
-     */
-    setReverse?: (reverse?: any) => void,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    autoHide?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    hidden?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Returns the value of active
-     * @returns Boolean
-     */
-    getActive?: () => boolean,
-
-    /**
-     * [Method] Returns the value of autoHide
-     * @returns Boolean
-     */
-    getAutoHide?: () => boolean,
-
-    /**
-     * [Method] Returns the value of axis
-     * @returns String
-     */
-    getAxis?: () => string,
-
-    /**
-     * [Method] Returns the value of barCls
-     * @returns String
-     */
-    getBarCls?: () => string,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of hidden
-     * @returns Boolean
-     */
-    getHidden?: () => boolean,
-
-    /**
-     * [Method] Returns the value of length
-     * @returns Object
-     */
-    getLength?: () => any,
-
-    /**
-     * [Method] Returns the value of minLength
-     * @returns Number
-     */
-    getMinLength?: () => number,
-
-    /**
-     * [Method] Returns the value of ratio
-     * @returns Number
-     */
-    getRatio?: () => number,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the value of value
-     * @returns Object
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Sets the value of active
-     * @param active Boolean The new value.
-     */
-    setActive?: (active?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of autoHide
-     * @param autoHide Boolean The new value.
-     */
-    setAutoHide?: (autoHide?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of axis
-     * @param axis String The new value.
-     */
-    setAxis?: (axis?: string) => void,
-
-    /**
-     * [Method] Sets the value of barCls
-     * @param barCls String The new value.
-     */
-    setBarCls?: (barCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of hidden
-     * @param hidden Boolean The new value.
-     */
-    setHidden?: (hidden?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of length
-     * @param length Object The new value.
-     */
-    setLength?: (length?: any) => void,
-
-    /**
-     * [Method] Sets the value of minLength
-     * @param minLength Number The new value.
-     */
-    setMinLength?: (minLength?: number) => void,
-
-    /**
-     * [Method] Sets the value of ratio
-     * @param ratio Number The new value.
-     */
-    setRatio?: (ratio?: number) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Sets the value of value
-     * @param value Object The new value.
-     */
-    setValue?: (value?: any) => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of args
-     * @returns Array
-     */
-    getArgs?: () => any[],
-
-    /**
-     * [Method] Returns the value of callback
-     * @returns Object
-     */
-    getCallback?: () => any,
-
-    /**
-     * [Method] Returns the value of element
-     * @returns Object
-     */
-    getElement?: () => any,
-
-    /**
-     * [Method] Returns the value of scope
-     * @returns Object
-     */
-    getScope?: () => any,
-
-    /**
-     * [Method] Sets the value of args
-     * @param args Array The new value.
-     */
-    setArgs?: (args?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of callback
-     * @param callback Object The new value.
-     */
-    setCallback?: (Ext$callback?: any) => void,
-
-    /**
-     * [Method] Sets the value of element
-     * @param element Object The new value.
-     */
-    setElement?: (element?: any) => void,
-
-    /**
-     * [Method] Sets the value of scope
-     * @param scope Object The new value.
-     */
-    setScope?: (scope?: any) => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of args
-     * @returns Array
-     */
-    getArgs?: () => any[],
-
-    /**
-     * [Method] Returns the value of callback
-     * @returns Object
-     */
-    getCallback?: () => any,
-
-    /**
-     * [Method] Returns the value of element
-     * @returns Object
-     */
-    getElement?: () => any,
-
-    /**
-     * [Method] Returns the value of scope
-     * @returns Object
-     */
-    getScope?: () => any,
-
-    /**
-     * [Method] Sets the value of args
-     * @param args Array The new value.
-     */
-    setArgs?: (args?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of callback
-     * @param callback Object The new value.
-     */
-    setCallback?: (Ext$callback?: any) => void,
-
-    /**
-     * [Method] Sets the value of element
-     * @param element Object The new value.
-     */
-    setElement?: (element?: any) => void,
-
-    /**
-     * [Method] Sets the value of scope
-     * @param scope Object The new value.
-     */
-    setScope?: (scope?: any) => void,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of easing
-     * @returns Object
-     */
-    getEasing?: () => any,
-
-    /**
-     * [Method] Returns the value of easingX
-     * @returns Object
-     */
-    getEasingX?: () => any,
-
-    /**
-     * [Method] Returns the value of easingY
-     * @returns Object
-     */
-    getEasingY?: () => any,
-
-    /**
-     * [Method] Returns the value of useWrapper
-     * @returns Object
-     */
-    getUseWrapper?: () => any,
-
-    /**
-     * [Method] Sets the value of easing
-     * @param easing Object The new value.
-     */
-    setEasing?: (easing?: any) => void,
-
-    /**
-     * [Method] Sets the value of easingX
-     * @param easingX Object The new value.
-     */
-    setEasingX?: (easingX?: any) => void,
-
-    /**
-     * [Method] Sets the value of easingY
-     * @param easingY Object The new value.
-     */
-    setEasingY?: (easingY?: any) => void,
-
-    /**
-     * [Method] Sets the value of useWrapper
-     * @param useWrapper Object The new value.
-     */
-    setUseWrapper?: (useWrapper?: any) => void,
-
-    /**
-     * [Method] Returns the value of accountID
-     * @returns Object
-     */
-    getAccountID?: () => any,
-
-    /**
-     * [Method] Registers yur Google Analytics account
-     * @param accountID String Your Google Analytics account ID
-     */
-    registerAccount?: (accountID?: string) => void,
-
-    /**
-     * [Method] Sets the value of accountID
-     * @param accountID Object The new value.
-     */
-    setAccountID?: (accountID?: any) => void,
-
-    /**
-     * [Method] Track an event in your application
-     * @param config Object
-     */
-    trackEvent?: (config?: any) => void,
-
-    /**
-     * [Method] Track an pageview in your application
-     * @param config String The page you want to track (must start with a slash).
-     */
-    trackPageview?: (config?: string) => void,
-
-    /**
-     * [Method] Pops up a Twitter compose sheet view with your specified tweet
-     * @param config Object An object which contains the following config options:
-     */
-    compose?: (config?: any) => void,
-
-    /**
-     * [Method] Gets Tweets from Twitter Mentions
-     * @param config Object An object which contains the following config options:
-     */
-    getMentions?: (config?: any) => void,
-
-    /**
-     * [Method] Gets Tweets from Twitter Timeline
-     * @param config Object An object which contains the following config options:
-     */
-    getPublicTimeline?: (config?: any) => void,
-
-    /**
-     * [Method] Gets a specific Twitter user info
-     * @param config Object An object which contains the following config options:
-     */
-    getTwitterRequest?: (config?: any) => void,
-
-    /**
-     * [Method] Gets a specific Twitter user info
-     * @param config Object An object which contains the following config options:
-     */
-    getTwitterUsername?: (config?: any) => void
-  } & Ext$Ext$IBase &
-    undefined.util$IObservable;
-
-  declare export type direct$ITransaction = {
+  declare export type Ext$direct$ITransaction = {
     /**
      * [Method] Returns the value of action
      * @returns Object
@@ -16244,25 +8080,25 @@ declare module "sencha_touch" {
      * [Method] Sets the value of callback
      * @param callback Object The new value.
      */
-    setCallback?: (Ext$callback?: any) => void,
+    setCallback?: (callback?: any) => void,
 
     /**
      * [Method] Sets the value of data
      * @param data Object The new value.
      */
-    setData?: (Ext$data?: any) => void,
+    setData?: (data?: any) => void,
 
     /**
      * [Method] Sets the value of form
      * @param form Object The new value.
      */
-    setForm?: (Ext$form?: any) => void,
+    setForm?: (form?: any) => void,
 
     /**
      * [Method] Sets the value of id
      * @param id Object The new value.
      */
-    setId?: (Ext$id?: any) => void,
+    setId?: (id?: any) => void,
 
     /**
      * [Method] Sets the value of method
@@ -16281,114 +8117,15 @@ declare module "sencha_touch" {
      * @param retryCount Number The new value.
      */
     setRetryCount?: (retryCount?: number) => void
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 
-  declare export type Ext$IDirect = {
-    /**
-     * [Config Option] (Object)
-     */
-    api?: any,
-
-    /**
-     * [Config Option] (Function/String)
-     */
-    directFn?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    extraParams?: any,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    paramOrder?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    paramsAsHash?: boolean,
-
-    /**
-     * [Method] Generates a url based on a given Ext data Request object
-     * @returns String The url
-     */
-    buildUrl?: () => string,
-
-    /**
-     * [Method] In ServerProxy subclasses the create read update and destroy methods all pass through to doRequest
-     * @param operation Object
-     * @param callback Object
-     * @param scope Object
-     */
-    doRequest?: (operation?: any, Ext$callback?: any, scope?: any) => void,
-
-    /**
-     * [Method] Returns the value of api
-     * @returns Object
-     */
-    getApi?: () => any,
-
-    /**
-     * [Method] Returns the value of directFn
-     * @returns Function/String
-     */
-    getDirectFn?: () => any,
-
-    /**
-     * [Method] Returns the value of extraParams
-     * @returns Object
-     */
-    getExtraParams?: () => any,
-
-    /**
-     * [Method] Returns the value of paramOrder
-     * @returns String/String[]
-     */
-    getParamOrder?: () => any,
-
-    /**
-     * [Method] Returns the value of paramsAsHash
-     * @returns Boolean
-     */
-    getParamsAsHash?: () => boolean,
-
-    /**
-     * [Method] Sets the value of api
-     * @param api Object The new value.
-     */
-    setApi?: (api?: any) => void,
-
-    /**
-     * [Method] Sets the value of directFn
-     * @param directFn Function/String The new value.
-     */
-    setDirectFn?: (directFn?: any) => void,
-
-    /**
-     * [Method] Sets the value of extraParams
-     * @param extraParams Object The new value.
-     */
-    setExtraParams?: (extraParams?: any) => void,
-
-    /**
-     * [Method] Sets the value of paramOrder
-     * @param paramOrder String/String[] The new value.
-     */
-    setParamOrder?: (paramOrder?: any) => void,
-
-    /**
-     * [Method] Sets the value of paramsAsHash
-     * @param paramsAsHash Boolean The new value.
-     */
-    setParamsAsHash?: (paramsAsHash?: boolean) => void
-  } & undefined.proxy$IServer;
+  declare export type Ext$IDirect = {} & Ext$IBase & undefined.IObservable;
 
   declare export class Ext$Direct {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Appends an after event handler
@@ -16553,7 +8290,7 @@ declare module "sencha_touch" {
      * @param id String/Ext.direct.Provider The id of the provider, or the provider instance.
      * @returns Object
      */
-    static getProvider(Ext$id?: any): any;
+    static getProvider(id?: any): any;
 
     /**
      * [Method] Checks to see if this object has any listeners for a specified event
@@ -16646,10 +8383,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    static relayEvents(
-      object?: any,
-      events?: any
-    ): Ext$Ext$mixin.util$IObservable;
+    static relayEvents(object?: any, events?: any): Ext$mixin$IObservable;
 
     /**
      * [Method] Removes a before event handler
@@ -16738,7 +8472,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Suspends the firing of all events
@@ -16785,7 +8519,7 @@ declare module "sencha_touch" {
     ): void;
   }
 
-  declare export interface dom$IHelper {
+  declare export interface Ext$dom$IHelper {
     /**
      * [Method] Creates new DOM element s and appends them to el
      * @param el String/HTMLElement/Ext.Element The context element
@@ -16807,7 +8541,7 @@ declare module "sencha_touch" {
      * @param o Object The DOM object spec (and children)
      * @returns Ext.Template The new template
      */
-    createTemplate?: (o?: any) => Ext$Ext$ITemplate;
+    createTemplate?: (o?: any) => Ext$ITemplate;
 
     /**
      * [Method] Converts the styles from the given object to text
@@ -16882,7 +8616,7 @@ declare module "sencha_touch" {
      * @param root HTMLElement/String The root element of the query or id of the root.
      * @returns Ext.dom.CompositeElementLite This Composite object.
      */
-    add?: (els?: any, root?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    add?: (els?: any, root?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Adds the given CSS class es to this Element
@@ -16891,11 +8625,7 @@ declare module "sencha_touch" {
      * @param suffix String Suffix to append to each class.
      * @returns Ext.dom.Element this
      */
-    addCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    addCls?: (names?: string, prefix?: string, suffix?: string) => dom$IElement,
 
     /**
      * [Method] fixes scope with flyweight
@@ -16910,28 +8640,28 @@ declare module "sencha_touch" {
       handler?: any,
       scope?: any,
       opt?: any
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Appends the passed element s to this element
      * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendChild?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    appendChild?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Appends this element to the passed element
      * @param el String/HTMLElement/Ext.dom.Element The new parent element. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendTo?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    appendTo?: (el?: any) => dom$IElement,
 
     /**
      * [Method] More flexible version of setStyle for setting style properties
      * @param styles String/Object/Function A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or a function which returns such a specification.
      * @returns Ext.dom.Element this
      */
-    applyStyles?: (styles?: any) => Ext$Ext$dom.Ext$IElement,
+    applyStyles?: (styles?: any) => dom$IElement,
 
     /**
      * [Method] Selects a single direct child based on the passed CSS selector the selector should not contain an id
@@ -16964,7 +8694,7 @@ declare module "sencha_touch" {
       config?: any,
       insertBefore?: HTMLElement,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Translates an element using CSS 3 in 2D
@@ -16974,7 +8704,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Removes this element s DOM reference
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
@@ -16990,21 +8720,21 @@ declare module "sencha_touch" {
      * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Element.
      * @returns Ext.dom.CompositeElementLite this
      */
-    Ext$each?: (fn?: any, scope?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    each?: (fn?: any, scope?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Clears this Composite and adds the elements passed
      * @param els HTMLElement[]/Ext.dom.CompositeElementLite Either an array of DOM elements, or another Composite from which to fill this Composite.
      * @returns Ext.dom.CompositeElementLite this
      */
-    fill?: (els?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    fill?: (els?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Filters this composite to only elements that match the passed selector
      * @param selector String/Function A string CSS selector or a comparison function. The comparison function will be called with the following arguments:
      * @returns Ext.dom.CompositeElementLite this
      */
-    filter?: (selector?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    filter?: (selector?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Looks at this node and then at parent nodes for a match of the passed simple selector e g
@@ -17056,7 +8786,7 @@ declare module "sencha_touch" {
      * @param namespace String The namespace in which to look for the attribute.
      * @returns String The attribute value.
      */
-    getAttribute?: (name?: string, Ext$namespace?: string) => string,
+    getAttribute?: (name?: string, namespace?: string) => string,
 
     /**
      * [Method] Gets the width of the border s for the specified side s
@@ -17241,21 +8971,21 @@ declare module "sencha_touch" {
      * @param el String/HTMLElement/Ext.dom.Element The element to insert after. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertAfter?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertAfter?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts this element before the passed element in the DOM
      * @param el String/HTMLElement/Ext.dom.Element The element before which this element will be inserted. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertBefore?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertBefore?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an element as the first child of this element
      * @param element String/HTMLElement/Ext.dom.Element The id or element to insert.
      * @returns Ext.dom.Element this
      */
-    insertFirst?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    insertFirst?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an HTML fragment into this element
@@ -17277,7 +9007,7 @@ declare module "sencha_touch" {
       el?: any,
       where?: string,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Returns true if this element matches the passed simple selector e g
@@ -17311,7 +9041,7 @@ declare module "sencha_touch" {
      * @param index Number
      * @returns Ext.dom.Element
      */
-    item?: (index?: number) => Ext$Ext$dom.Ext$IElement,
+    item?: (index?: number) => dom$IElement,
 
     /**
      * [Method] Puts a mask over this element to disable user interaction
@@ -17352,14 +9082,14 @@ declare module "sencha_touch" {
      * @param selector String The CSS selector.
      * @returns HTMLElement[] An array of the matched nodes.
      */
-    Ext$query?: (selector?: string) => HTMLElement[],
+    query?: (selector?: string) => HTMLElement[],
 
     /**
      * [Method] Adds one or more CSS classes to this element and removes the same class es from all siblings
      * @param className String/String[] The CSS class to add, or an array of classes.
      * @returns Ext.dom.Element this
      */
-    radioCls?: (className?: any) => Ext$Ext$dom.Ext$IElement,
+    radioCls?: (className?: any) => dom$IElement,
 
     /**
      * [Method] Removes this element s DOM reference
@@ -17382,7 +9112,7 @@ declare module "sencha_touch" {
       names?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Removes the specified element s
@@ -17393,20 +9123,20 @@ declare module "sencha_touch" {
     removeElement?: (
       el?: any,
       removeDom?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Forces the browser to repaint this element
      * @returns Ext.dom.Element this
      */
-    Ext$repaint?: () => Ext$Ext$dom.Ext$IElement,
+    repaint?: () => dom$IElement,
 
     /**
      * [Method] Replaces the passed element with this element
      * @param element String/HTMLElement/Ext.dom.Element The element to replace. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    replace?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    replace?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Replaces a CSS class on the element with another
@@ -17421,7 +9151,7 @@ declare module "sencha_touch" {
       newName?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Replaces the specified element with the passed element
@@ -17434,14 +9164,14 @@ declare module "sencha_touch" {
       el?: any,
       replacement?: any,
       domReplace?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Replaces this element with the passed element
      * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
      * @returns Ext.dom.Element This element.
      */
-    replaceWith?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    replaceWith?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Selects elements based on the passed CSS selector to enable Element methods to be applied to many related elements in
@@ -17449,17 +9179,14 @@ declare module "sencha_touch" {
      * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
      * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
      */
-    Ext$select?: (
-      selector?: any,
-      composite?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    select?: (selector?: any, composite?: boolean) => dom$ICompositeElementLite,
 
     /**
      * [Method] Serializes a DOM form into a url encoded string
      * @param form Object The form
      * @returns String The url encoded form
      */
-    serializeForm?: (Ext$form?: any) => string,
+    serializeForm?: (form?: any) => string,
 
     /**
      * [Method] Sets the passed attributes as attributes of this element a style attribute can be a string object or function
@@ -17467,21 +9194,21 @@ declare module "sencha_touch" {
      * @param useSet Boolean false to override the default setAttribute to use expandos.
      * @returns Ext.dom.Element this
      */
-    set?: (attributes?: any, useSet?: boolean) => Ext$Ext$dom.Ext$IElement,
+    set?: (attributes?: any, useSet?: boolean) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS bottom style
      * @param bottom String The bottom CSS property value.
      * @returns Ext.dom.Element this
      */
-    setBottom?: (bottom?: string) => Ext$Ext$dom.Ext$IElement,
+    setBottom?: (bottom?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s box
      * @param box Object The box to fill, for example: {  left: ...,  top: ...,  width: ...,  height: ... }
      * @returns Ext.dom.Element this
      */
-    setBox?: (box?: any) => Ext$Ext$dom.Ext$IElement,
+    setBox?: (box?: any) => dom$IElement,
 
     /**
      * [Method] Sets the specified CSS class on this element s DOM node
@@ -17500,7 +9227,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height.
      * @returns Ext.dom.Element this
      */
-    setHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Sets the innerHTML of this element
@@ -17513,42 +9240,42 @@ declare module "sencha_touch" {
      * @param left String The left CSS property value.
      * @returns Ext.dom.Element this
      */
-    setLeft?: (left?: string) => Ext$Ext$dom.Ext$IElement,
+    setLeft?: (left?: string) => dom$IElement,
 
     /**
      * [Method] Set the maximum height of this Element
      * @param height Number/String The new maximum height.
      * @returns Ext.dom.Element this
      */
-    setMaxHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the maximum width of this Element
      * @param width Number/String The new maximum width.
      * @returns Ext.dom.Element this
      */
-    setMaxWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum height of this Element
      * @param height Number/String The new minimum height.
      * @returns Ext.dom.Element this
      */
-    setMinHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum width of this Element
      * @param width Number/String The new minimum width.
      * @returns Ext.dom.Element this
      */
-    setMinWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS right style
      * @param right String The right CSS property value.
      * @returns Ext.dom.Element this
      */
-    setRight?: (right?: string) => Ext$Ext$dom.Ext$IElement,
+    setRight?: (right?: string) => dom$IElement,
 
     /**
      * [Method] Set the size of this Element
@@ -17556,7 +9283,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height. This may be one of:  A Number specifying the new height in this Element's defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used.
      * @returns Ext.dom.Element this
      */
-    setSize?: (width?: any, height?: any) => Ext$Ext$dom.Ext$IElement,
+    setSize?: (width?: any, height?: any) => dom$IElement,
 
     /**
      * [Method] Wrapper for setting style properties also takes single object parameter of multiple styles
@@ -17564,14 +9291,14 @@ declare module "sencha_touch" {
      * @param value String The value to apply to the given property, or null if an object was passed.
      * @returns Ext.dom.Element this
      */
-    setStyle?: (property?: any, value?: string) => Ext$Ext$dom.Ext$IElement,
+    setStyle?: (property?: any, value?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top position directly using CSS style instead of setY
      * @param top String The top CSS property value.
      * @returns Ext.dom.Element this
      */
-    setTop?: (top?: string) => Ext$Ext$dom.Ext$IElement,
+    setTop?: (top?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top and left positions directly using CSS style
@@ -17583,42 +9310,42 @@ declare module "sencha_touch" {
      * @param mode Object
      * @returns Ext.dom.Element this
      */
-    setVisibilityMode?: (mode?: any) => Ext$Ext$dom.Ext$IElement,
+    setVisibilityMode?: (mode?: any) => dom$IElement,
 
     /**
      * [Method] Sets the visibility of the element see details
      * @param visible Boolean Whether the element is visible.
      * @returns Ext.Element this
      */
-    setVisible?: (visible?: boolean) => Ext$Ext$IElement,
+    setVisible?: (visible?: boolean) => Ext$IElement,
 
     /**
      * [Method] Set the width of this Element
      * @param width Number/String The new width.
      * @returns Ext.dom.Element this
      */
-    setWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the X position of the element based on page coordinates
      * @param x Number The X position of the element
      * @returns Ext.dom.Element this
      */
-    setX?: (x?: number) => Ext$Ext$dom.Ext$IElement,
+    setX?: (x?: number) => dom$IElement,
 
     /**
      * [Method] Sets the position of the element in page coordinates regardless of how the element is positioned
      * @param pos Number[] Contains X &amp; Y [x, y] values for new position (coordinates are page-based).
      * @returns Ext.dom.Element this
      */
-    setXY?: (pos?: number[]) => Ext$Ext$dom.Ext$IElement,
+    setXY?: (pos?: number[]) => dom$IElement,
 
     /**
      * [Method] Sets the Y position of the element based on page coordinates
      * @param y Number The Y position of the element.
      * @returns Ext.dom.Element this
      */
-    setY?: (y?: number) => Ext$Ext$dom.Ext$IElement,
+    setY?: (y?: number) => dom$IElement,
 
     /**
      * [Method] Shows this element
@@ -17630,7 +9357,7 @@ declare module "sencha_touch" {
      * @param className String The CSS class to toggle.
      * @returns Ext.dom.Element this
      */
-    toggleCls?: (className?: string) => Ext$Ext$dom.Ext$IElement,
+    toggleCls?: (className?: string) => dom$IElement,
 
     /**
      * [Method] Translates the passed page coordinates into left top CSS values for this element
@@ -17666,7 +9393,7 @@ declare module "sencha_touch" {
      * @returns HTMLElement/Ext.dom.Element The newly created wrapper element.
      */
     wrap?: (config?: any, domNode?: boolean) => any
-  } & undefined.Ext$ICompositeElementLite;
+  } & undefined.ICompositeElementLite;
 
   declare export type Ext$ICompositeElementLite = {
     /**
@@ -17680,7 +9407,7 @@ declare module "sencha_touch" {
      * @param root HTMLElement/String The root element of the query or id of the root.
      * @returns Ext.dom.CompositeElementLite This Composite object.
      */
-    add?: (els?: any, root?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    add?: (els?: any, root?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Adds the given CSS class es to this Element
@@ -17689,11 +9416,7 @@ declare module "sencha_touch" {
      * @param suffix String Suffix to append to each class.
      * @returns Ext.dom.Element this
      */
-    addCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    addCls?: (names?: string, prefix?: string, suffix?: string) => dom$IElement,
 
     /**
      * [Method] fixes scope with flyweight
@@ -17708,28 +9431,28 @@ declare module "sencha_touch" {
       handler?: any,
       scope?: any,
       opt?: any
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Appends the passed element s to this element
      * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendChild?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    appendChild?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Appends this element to the passed element
      * @param el String/HTMLElement/Ext.dom.Element The new parent element. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendTo?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    appendTo?: (el?: any) => dom$IElement,
 
     /**
      * [Method] More flexible version of setStyle for setting style properties
      * @param styles String/Object/Function A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or a function which returns such a specification.
      * @returns Ext.dom.Element this
      */
-    applyStyles?: (styles?: any) => Ext$Ext$dom.Ext$IElement,
+    applyStyles?: (styles?: any) => dom$IElement,
 
     /**
      * [Method] Selects a single direct child based on the passed CSS selector the selector should not contain an id
@@ -17762,7 +9485,7 @@ declare module "sencha_touch" {
       config?: any,
       insertBefore?: HTMLElement,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Translates an element using CSS 3 in 2D
@@ -17772,7 +9495,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Removes this element s DOM reference
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
@@ -17788,21 +9511,21 @@ declare module "sencha_touch" {
      * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Element.
      * @returns Ext.dom.CompositeElementLite this
      */
-    Ext$each?: (fn?: any, scope?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    each?: (fn?: any, scope?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Clears this Composite and adds the elements passed
      * @param els HTMLElement[]/Ext.dom.CompositeElementLite Either an array of DOM elements, or another Composite from which to fill this Composite.
      * @returns Ext.dom.CompositeElementLite this
      */
-    fill?: (els?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    fill?: (els?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Filters this composite to only elements that match the passed selector
      * @param selector String/Function A string CSS selector or a comparison function. The comparison function will be called with the following arguments:
      * @returns Ext.dom.CompositeElementLite this
      */
-    filter?: (selector?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    filter?: (selector?: any) => dom$ICompositeElementLite,
 
     /**
      * [Method] Looks at this node and then at parent nodes for a match of the passed simple selector e g
@@ -17854,7 +9577,7 @@ declare module "sencha_touch" {
      * @param namespace String The namespace in which to look for the attribute.
      * @returns String The attribute value.
      */
-    getAttribute?: (name?: string, Ext$namespace?: string) => string,
+    getAttribute?: (name?: string, namespace?: string) => string,
 
     /**
      * [Method] Gets the width of the border s for the specified side s
@@ -18039,21 +9762,21 @@ declare module "sencha_touch" {
      * @param el String/HTMLElement/Ext.dom.Element The element to insert after. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertAfter?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertAfter?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts this element before the passed element in the DOM
      * @param el String/HTMLElement/Ext.dom.Element The element before which this element will be inserted. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertBefore?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertBefore?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an element as the first child of this element
      * @param element String/HTMLElement/Ext.dom.Element The id or element to insert.
      * @returns Ext.dom.Element this
      */
-    insertFirst?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    insertFirst?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an HTML fragment into this element
@@ -18075,7 +9798,7 @@ declare module "sencha_touch" {
       el?: any,
       where?: string,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Returns true if this element matches the passed simple selector e g
@@ -18109,7 +9832,7 @@ declare module "sencha_touch" {
      * @param index Number
      * @returns Ext.dom.Element
      */
-    item?: (index?: number) => Ext$Ext$dom.Ext$IElement,
+    item?: (index?: number) => dom$IElement,
 
     /**
      * [Method] Puts a mask over this element to disable user interaction
@@ -18150,14 +9873,14 @@ declare module "sencha_touch" {
      * @param selector String The CSS selector.
      * @returns HTMLElement[] An array of the matched nodes.
      */
-    Ext$query?: (selector?: string) => HTMLElement[],
+    query?: (selector?: string) => HTMLElement[],
 
     /**
      * [Method] Adds one or more CSS classes to this element and removes the same class es from all siblings
      * @param className String/String[] The CSS class to add, or an array of classes.
      * @returns Ext.dom.Element this
      */
-    radioCls?: (className?: any) => Ext$Ext$dom.Ext$IElement,
+    radioCls?: (className?: any) => dom$IElement,
 
     /**
      * [Method] Removes this element s DOM reference
@@ -18180,7 +9903,7 @@ declare module "sencha_touch" {
       names?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Removes the specified element s
@@ -18191,20 +9914,20 @@ declare module "sencha_touch" {
     removeElement?: (
       el?: any,
       removeDom?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Forces the browser to repaint this element
      * @returns Ext.dom.Element this
      */
-    Ext$repaint?: () => Ext$Ext$dom.Ext$IElement,
+    repaint?: () => dom$IElement,
 
     /**
      * [Method] Replaces the passed element with this element
      * @param element String/HTMLElement/Ext.dom.Element The element to replace. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    replace?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    replace?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Replaces a CSS class on the element with another
@@ -18219,7 +9942,7 @@ declare module "sencha_touch" {
       newName?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Replaces the specified element with the passed element
@@ -18232,14 +9955,14 @@ declare module "sencha_touch" {
       el?: any,
       replacement?: any,
       domReplace?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    ) => dom$ICompositeElementLite,
 
     /**
      * [Method] Replaces this element with the passed element
      * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
      * @returns Ext.dom.Element This element.
      */
-    replaceWith?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    replaceWith?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Selects elements based on the passed CSS selector to enable Element methods to be applied to many related elements in
@@ -18247,17 +9970,14 @@ declare module "sencha_touch" {
      * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
      * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
      */
-    Ext$select?: (
-      selector?: any,
-      composite?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
+    select?: (selector?: any, composite?: boolean) => dom$ICompositeElementLite,
 
     /**
      * [Method] Serializes a DOM form into a url encoded string
      * @param form Object The form
      * @returns String The url encoded form
      */
-    serializeForm?: (Ext$form?: any) => string,
+    serializeForm?: (form?: any) => string,
 
     /**
      * [Method] Sets the passed attributes as attributes of this element a style attribute can be a string object or function
@@ -18265,21 +9985,21 @@ declare module "sencha_touch" {
      * @param useSet Boolean false to override the default setAttribute to use expandos.
      * @returns Ext.dom.Element this
      */
-    set?: (attributes?: any, useSet?: boolean) => Ext$Ext$dom.Ext$IElement,
+    set?: (attributes?: any, useSet?: boolean) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS bottom style
      * @param bottom String The bottom CSS property value.
      * @returns Ext.dom.Element this
      */
-    setBottom?: (bottom?: string) => Ext$Ext$dom.Ext$IElement,
+    setBottom?: (bottom?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s box
      * @param box Object The box to fill, for example: {  left: ...,  top: ...,  width: ...,  height: ... }
      * @returns Ext.dom.Element this
      */
-    setBox?: (box?: any) => Ext$Ext$dom.Ext$IElement,
+    setBox?: (box?: any) => dom$IElement,
 
     /**
      * [Method] Sets the specified CSS class on this element s DOM node
@@ -18298,7 +10018,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height.
      * @returns Ext.dom.Element this
      */
-    setHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Sets the innerHTML of this element
@@ -18311,42 +10031,42 @@ declare module "sencha_touch" {
      * @param left String The left CSS property value.
      * @returns Ext.dom.Element this
      */
-    setLeft?: (left?: string) => Ext$Ext$dom.Ext$IElement,
+    setLeft?: (left?: string) => dom$IElement,
 
     /**
      * [Method] Set the maximum height of this Element
      * @param height Number/String The new maximum height.
      * @returns Ext.dom.Element this
      */
-    setMaxHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the maximum width of this Element
      * @param width Number/String The new maximum width.
      * @returns Ext.dom.Element this
      */
-    setMaxWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum height of this Element
      * @param height Number/String The new minimum height.
      * @returns Ext.dom.Element this
      */
-    setMinHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum width of this Element
      * @param width Number/String The new minimum width.
      * @returns Ext.dom.Element this
      */
-    setMinWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS right style
      * @param right String The right CSS property value.
      * @returns Ext.dom.Element this
      */
-    setRight?: (right?: string) => Ext$Ext$dom.Ext$IElement,
+    setRight?: (right?: string) => dom$IElement,
 
     /**
      * [Method] Set the size of this Element
@@ -18354,7 +10074,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height. This may be one of:  A Number specifying the new height in this Element's defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used.
      * @returns Ext.dom.Element this
      */
-    setSize?: (width?: any, height?: any) => Ext$Ext$dom.Ext$IElement,
+    setSize?: (width?: any, height?: any) => dom$IElement,
 
     /**
      * [Method] Wrapper for setting style properties also takes single object parameter of multiple styles
@@ -18362,14 +10082,14 @@ declare module "sencha_touch" {
      * @param value String The value to apply to the given property, or null if an object was passed.
      * @returns Ext.dom.Element this
      */
-    setStyle?: (property?: any, value?: string) => Ext$Ext$dom.Ext$IElement,
+    setStyle?: (property?: any, value?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top position directly using CSS style instead of setY
      * @param top String The top CSS property value.
      * @returns Ext.dom.Element this
      */
-    setTop?: (top?: string) => Ext$Ext$dom.Ext$IElement,
+    setTop?: (top?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top and left positions directly using CSS style
@@ -18381,42 +10101,42 @@ declare module "sencha_touch" {
      * @param mode Object
      * @returns Ext.dom.Element this
      */
-    setVisibilityMode?: (mode?: any) => Ext$Ext$dom.Ext$IElement,
+    setVisibilityMode?: (mode?: any) => dom$IElement,
 
     /**
      * [Method] Sets the visibility of the element see details
      * @param visible Boolean Whether the element is visible.
      * @returns Ext.Element this
      */
-    setVisible?: (visible?: boolean) => Ext$Ext$IElement,
+    setVisible?: (visible?: boolean) => Ext$IElement,
 
     /**
      * [Method] Set the width of this Element
      * @param width Number/String The new width.
      * @returns Ext.dom.Element this
      */
-    setWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the X position of the element based on page coordinates
      * @param x Number The X position of the element
      * @returns Ext.dom.Element this
      */
-    setX?: (x?: number) => Ext$Ext$dom.Ext$IElement,
+    setX?: (x?: number) => dom$IElement,
 
     /**
      * [Method] Sets the position of the element in page coordinates regardless of how the element is positioned
      * @param pos Number[] Contains X &amp; Y [x, y] values for new position (coordinates are page-based).
      * @returns Ext.dom.Element this
      */
-    setXY?: (pos?: number[]) => Ext$Ext$dom.Ext$IElement,
+    setXY?: (pos?: number[]) => dom$IElement,
 
     /**
      * [Method] Sets the Y position of the element based on page coordinates
      * @param y Number The Y position of the element.
      * @returns Ext.dom.Element this
      */
-    setY?: (y?: number) => Ext$Ext$dom.Ext$IElement,
+    setY?: (y?: number) => dom$IElement,
 
     /**
      * [Method] Shows this element
@@ -18428,803 +10148,7 @@ declare module "sencha_touch" {
      * @param className String The CSS class to toggle.
      * @returns Ext.dom.Element this
      */
-    toggleCls?: (className?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Translates the passed page coordinates into left top CSS values for this element
-     * @param x Number/Array The page x or an array containing [x, y].
-     * @param y Number The page y, required if x is not an array.
-     * @returns Object An object with left and top properties. e.g. {left: (value), top: (value)}.
-     */
-    translatePoints?: (x?: any, y?: number) => any,
-
-    /**
-     * [Method] Removes a previously applied mask
-     */
-    unmask?: () => void,
-
-    /**
-     * [Method] Walks up the dom looking for a parent node that matches the passed simple selector e g
-     * @param simpleSelector String The simple selector to test
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
-     * @returns Ext.dom.Element/null The matching DOM node (or null if no match was found).
-     */
-    up?: (simpleSelector?: string, maxDepth?: any) => any,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    update?: (html?: string) => void,
-
-    /**
-     * [Method] Creates and wraps this element with another element
-     * @param config Object DomHelper element config object for the wrapper element or null for an empty div
-     * @param domNode Boolean true to return the raw DOM element instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The newly created wrapper element.
-     */
-    wrap?: (config?: any, domNode?: boolean) => any,
-
-    /**
-     * [Property] (HTMLElement[])
-     */
-    elements?: HTMLElement[],
-
-    /**
-     * [Method] Adds elements to this Composite object
-     * @param els HTMLElement[]/Ext.dom.CompositeElementLite Either an Array of DOM elements to add, or another Composite object who's elements should be added.
-     * @param root HTMLElement/String The root element of the query or id of the root.
-     * @returns Ext.dom.CompositeElementLite This Composite object.
-     */
-    add?: (els?: any, root?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Adds the given CSS class es to this Element
-     * @param names String The CSS class(es) to add to this element.
-     * @param prefix String Prefix to prepend to each class.
-     * @param suffix String Suffix to append to each class.
-     * @returns Ext.dom.Element this
-     */
-    addCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] fixes scope with flyweight
-     * @param eventName Object
-     * @param handler Object
-     * @param scope Object
-     * @param opt Object
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    addListener?: (
-      eventName?: any,
-      handler?: any,
-      scope?: any,
-      opt?: any
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Appends the passed element s to this element
-     * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    appendChild?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Appends this element to the passed element
-     * @param el String/HTMLElement/Ext.dom.Element The new parent element. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    appendTo?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] More flexible version of setStyle for setting style properties
-     * @param styles String/Object/Function A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or a function which returns such a specification.
-     * @returns Ext.dom.Element this
-     */
-    applyStyles?: (styles?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Selects a single direct child based on the passed CSS selector the selector should not contain an id
-     * @param selector String The CSS selector.
-     * @param returnDom Boolean true to return the DOM node instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The child Ext.dom.Element (or DOM node if returnDom is true)
-     */
-    child?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Removes all elements
-     */
-    clear?: () => void,
-
-    /**
-     * [Method] Returns true if this composite contains the passed element
-     * @param el String/HTMLElement/Ext.Element/Number The id of an element, or an Ext.Element, or an HtmlElement to find within the composite collection.
-     * @returns Boolean
-     */
-    contains?: (el?: any) => boolean,
-
-    /**
-     * [Method] Creates the passed DomHelper config and appends it to this element or optionally inserts it before the passed child e
-     * @param config Object DomHelper element config object. If no tag is specified (e.g., {tag:'input'}) then a div will be automatically generated with the specified attributes.
-     * @param insertBefore HTMLElement a child element of this element.
-     * @param returnDom Boolean true to return the dom node instead of creating an Element.
-     * @returns Ext.dom.Element The new child element.
-     */
-    createChild?: (
-      config?: any,
-      insertBefore?: HTMLElement,
-      returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Translates an element using CSS 3 in 2D
-     */
-    cssTranslate?: () => void,
-
-    /**
-     * [Method] Removes this element s DOM reference
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
-     * @param selector String The CSS selector.
-     * @param returnDom Boolean true to return the DOM node instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The child Ext.dom.Element (or DOM node if returnDom is true).
-     */
-    down?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Calls the passed function for each element in this composite
-     * @param fn Function The function to call.
-     * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Element.
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    Ext$each?: (fn?: any, scope?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Clears this Composite and adds the elements passed
-     * @param els HTMLElement[]/Ext.dom.CompositeElementLite Either an array of DOM elements, or another Composite from which to fill this Composite.
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    fill?: (els?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Filters this composite to only elements that match the passed selector
-     * @param selector String/Function A string CSS selector or a comparison function. The comparison function will be called with the following arguments:
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    filter?: (selector?: any) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Looks at this node and then at parent nodes for a match of the passed simple selector e g
-     * @param simpleSelector String The simple selector to test.
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 50 || document.body)
-     * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
-     * @returns HTMLElement/null The matching DOM node (or null if no match was found).
-     */
-    findParent?: (
-      simpleSelector?: string,
-      maxDepth?: any,
-      returnEl?: boolean
-    ) => any,
-
-    /**
-     * [Method] Looks at parent nodes for a match of the passed simple selector e g
-     * @param simpleSelector String The simple selector to test.
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
-     * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
-     * @returns HTMLElement/null The matching DOM node (or null if no match was found).
-     */
-    findParentNode?: (
-      simpleSelector?: string,
-      maxDepth?: any,
-      returnEl?: boolean
-    ) => any,
-
-    /**
-     * [Method] Gets the x y coordinates to align this element with another element
-     * @param element Mixed The element to align to.
-     * @param position String The position to align to.
-     * @param offsets Array Offset the positioning by [x, y].
-     * @returns Array [x, y]
-     */
-    getAlignToXY?: (element?: any, position?: string, offsets?: any[]) => any[],
-
-    /**
-     * [Method] Gets the x y coordinates specified by the anchor position on the element
-     * @param anchor String The specified anchor position.
-     * @param local Boolean true to get the local (element top/left-relative) anchor position instead of page coordinates.
-     * @param size Object An object containing the size to use for calculating anchor position. {width: (target width), height: (target height)} (defaults to the element's current size)
-     * @returns Array [x, y] An array containing the element's x and y coordinates.
-     */
-    getAnchorXY?: (anchor?: string, local?: boolean, size?: any) => any[],
-
-    /**
-     * [Method] Returns the value of an attribute from the element s underlying DOM node
-     * @param name String The attribute name.
-     * @param namespace String The namespace in which to look for the attribute.
-     * @returns String The attribute value.
-     */
-    getAttribute?: (name?: string, Ext$namespace?: string) => string,
-
-    /**
-     * [Method] Gets the width of the border s for the specified side s
-     * @param side String Can be t, l, r, b or any combination of those to add multiple values. For example, passing 'lr' would get the border left width + the border right width.
-     * @returns Number The width of the sides passed added together
-     */
-    getBorderWidth?: (side?: string) => number,
-
-    /**
-     * [Method] Gets the bottom Y coordinate of the element element Y position  element height
-     * @returns Number
-     */
-    getBottom?: () => number,
-
-    /**
-     * [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
-     * @param contentBox Boolean If true a box for the content of the element is returned.
-     * @param local Boolean If true the element's left and top are returned instead of page x/y.
-     * @returns Object An object in the format
-     */
-    getBox?: (contentBox?: boolean, local?: boolean) => any,
-
-    /**
-     * [Method] Returns the number of elements in this Composite
-     * @returns Number
-     */
-    getCount?: () => number,
-
-    /**
-     * [Method] Returns the innerHTML of an element
-     * @returns String
-     */
-    getHTML?: () => string,
-
-    /**
-     * [Method] Returns the offset height of the element
-     * @param contentHeight Boolean true to get the height minus borders and padding.
-     * @returns Number The element's height.
-     */
-    getHeight?: (contentHeight?: boolean) => number,
-
-    /**
-     * [Method] Returns the innerHTML of an element
-     * @returns String
-     */
-    getHtml?: () => string,
-
-    /**
-     * [Method] Gets the left X coordinate
-     * @returns Number
-     */
-    getLeft?: () => number,
-
-    /**
-     * [Method] Returns an object with properties top left right and bottom representing the margins of this element unless sides i
-     * @param sides String Any combination of 'l', 'r', 't', 'b' to get the sum of those sides.
-     * @returns Object/Number
-     */
-    getMargin?: (sides?: string) => any,
-
-    /**
-     * [Method] Returns the offsets of this element from the passed element
-     * @param element Mixed The element to get the offsets from.
-     * @returns Array The XY page offsets (e.g. [100, -200])
-     */
-    getOffsetsTo?: (element?: any) => any[],
-
-    /**
-     * [Method] Retrieves the height of the element account for the top and bottom margins
-     */
-    getOuterHeight?: () => void,
-
-    /**
-     * [Method] Retrieves the width of the element accounting for the left and right margins
-     */
-    getOuterWidth?: () => void,
-
-    /**
-     * [Method] Gets the width of the padding s for the specified side s
-     * @param side String Can be t, l, r, b or any combination of those to add multiple values. For example, passing 'lr' would get the padding left + the padding right.
-     * @returns Number The padding of the sides passed added together.
-     */
-    getPadding?: (side?: string) => number,
-
-    /**
-     * [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
-     * @param asRegion Boolean If true an Ext.util.Region will be returned.
-     * @returns Object box An object in the format: {  x: &lt;Element's X position&gt;,  y: &lt;Element's Y position&gt;,  width: &lt;Element's width&gt;,  height: &lt;Element's height&gt;,  bottom: &lt;Element's lower bound&gt;,  right: &lt;Element's rightmost bound&gt; }  The returned object may also be addressed as an Array where index 0 contains the X position and index 1 contains the Y position. So the result may also be used for setXY.
-     */
-    getPageBox?: (asRegion?: boolean) => any,
-
-    /**
-     * [Method] Gets the right X coordinate of the element element X position  element width
-     * @returns Number
-     */
-    getRight?: () => number,
-
-    /**
-     * [Method] Gets the Scroller instance of the first parent that has one
-     */
-    getScrollParent?: () => void,
-
-    /**
-     * [Method] Returns the size of the element
-     * @param contentSize Boolean true to get the width/size minus borders and padding.
-     * @returns Object An object containing the element's size:
-     */
-    getSize?: (contentSize?: boolean) => any,
-
-    /**
-     * [Method] Normalizes currentStyle and computedStyle
-     * @param prop String The style property whose value is returned.
-     * @returns String The current value of the style property for this element.
-     */
-    getStyle?: (prop?: string) => string,
-
-    /**
-     * [Method] Gets the top Y coordinate
-     * @returns Number
-     */
-    getTop?: () => number,
-
-    /**
-     * [Method] Returns the value of the value attribute
-     * @param asNumber Boolean true to parse the value as a number.
-     * @returns String/Number
-     */
-    getValue?: (asNumber?: boolean) => any,
-
-    /**
-     * [Method] Returns the dimensions of the element available to lay content out in
-     * @returns Object Object describing width and height:
-     */
-    getViewSize?: () => any,
-
-    /**
-     * [Method] Returns the offset width of the element
-     * @param contentWidth Boolean true to get the width minus borders and padding.
-     * @returns Number The element's width.
-     */
-    getWidth?: (contentWidth?: boolean) => number,
-
-    /**
-     * [Method] Gets the current X position of the element based on page coordinates
-     * @returns Number The X position of the element
-     */
-    getX?: () => number,
-
-    /**
-     * [Method] Gets the current position of the element based on page coordinates
-     * @returns Array The XY position of the element
-     */
-    getXY?: () => any[],
-
-    /**
-     * [Method] Gets the current Y position of the element based on page coordinates
-     * @returns Number The Y position of the element
-     */
-    getY?: () => number,
-
-    /**
-     * [Method] Checks if the specified CSS class exists on this element s DOM node
-     * @param name String The CSS class to check for.
-     * @returns Boolean true if the class exists, else false.
-     */
-    hasCls?: (name?: string) => boolean,
-
-    /**
-     * [Method] Hides this element
-     */
-    hide?: () => void,
-
-    /**
-     * [Method] Find the index of the passed element within the composite collection
-     * @param el String/HTMLElement/Ext.Element/Number The id of an element, or an Ext.dom.Element, or an HtmlElement to find within the composite collection.
-     * @returns Number The index of the passed Ext.dom.Element in the composite collection, or -1 if not found.
-     */
-    indexOf?: (el?: any) => number,
-
-    /**
-     * [Method] Inserts this element after the passed element in the DOM
-     * @param el String/HTMLElement/Ext.dom.Element The element to insert after. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    insertAfter?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts this element before the passed element in the DOM
-     * @param el String/HTMLElement/Ext.dom.Element The element before which this element will be inserted. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    insertBefore?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts an element as the first child of this element
-     * @param element String/HTMLElement/Ext.dom.Element The id or element to insert.
-     * @returns Ext.dom.Element this
-     */
-    insertFirst?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts an HTML fragment into this element
-     * @param where String Where to insert the HTML in relation to this element - 'beforeBegin', 'afterBegin', 'beforeEnd', 'afterEnd'. See Ext.DomHelper.insertHtml for details.
-     * @param html String The HTML fragment
-     * @param returnEl Boolean true to return an Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The inserted node (or nearest related if more than 1 inserted).
-     */
-    insertHtml?: (where?: string, html?: string, returnEl?: boolean) => any,
-
-    /**
-     * [Method] Inserts or creates the passed element or DomHelper config as a sibling of this element
-     * @param el String/HTMLElement/Ext.dom.Element/Object/Array The id, element to insert or a DomHelper config to create and insert or an array of any of those.
-     * @param where String 'before' or 'after'.
-     * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
-     * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
-     */
-    insertSibling?: (
-      el?: any,
-      where?: string,
-      returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Returns true if this element matches the passed simple selector e g
-     * @param selector String The simple selector to test.
-     * @returns Boolean true if this element matches the selector, else false.
-     */
-    is?: (selector?: string) => boolean,
-
-    /**
-     * [Method] Determines if this element is a descendant of the passed in Element
-     */
-    isDescendent?: () => void,
-
-    /**
-     * [Method] Checks if the current value of a style is equal to a given value
-     * @param style String property whose value is returned.
-     * @param value String to check against.
-     * @returns Boolean true for when the current value equals the given value.
-     */
-    isStyle?: (style?: string, value?: string) => boolean,
-
-    /**
-     * [Method] Returns true if the value of the given property is visually transparent
-     * @param prop String The style property whose value is to be tested.
-     * @returns Boolean true if the style property is visually transparent.
-     */
-    isTransparent?: (prop?: string) => boolean,
-
-    /**
-     * [Method] Returns a flyweight Element of the dom element object at the specified index
-     * @param index Number
-     * @returns Ext.dom.Element
-     */
-    item?: (index?: number) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Puts a mask over this element to disable user interaction
-     */
-    mask?: () => void,
-
-    /**
-     * [Method] Gets the next sibling skipping text nodes
-     * @param selector String Find the next sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw dom node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The next sibling or null.
-     */
-    next?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Gets the parent node for this element optionally chaining up trying to match a selector
-     * @param selector String Find a parent node that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The parent node or null.
-     */
-    parent?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Gets the previous sibling skipping text nodes
-     * @param selector String Find the previous sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element
-     * @returns Ext.dom.Element/HTMLElement/null The previous sibling or null.
-     */
-    prev?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    purgeAllListeners?: () => void,
-
-    /**
-     * [Method] Selects child nodes based on the passed CSS selector the selector should not contain an id
-     * @param selector String The CSS selector.
-     * @returns HTMLElement[] An array of the matched nodes.
-     */
-    Ext$query?: (selector?: string) => HTMLElement[],
-
-    /**
-     * [Method] Adds one or more CSS classes to this element and removes the same class es from all siblings
-     * @param className String/String[] The CSS class to add, or an array of classes.
-     * @returns Ext.dom.Element this
-     */
-    radioCls?: (className?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Removes this element s DOM reference
-     */
-    remove?: () => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    removeAllListeners?: () => void,
-
-    /**
-     * [Method] Removes the given CSS class es from this Element
-     * @param names String The CSS class(es) to remove from this element.
-     * @param prefix String Prefix to prepend to each class to be removed.
-     * @param suffix String Suffix to append to each class to be removed.
-     * @returns Ext.dom.Element this
-     */
-    removeCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Removes the specified element s
-     * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite or an array of any of those.
-     * @param removeDom Boolean true to also remove the element from the document
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    removeElement?: (
-      el?: any,
-      removeDom?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Forces the browser to repaint this element
-     * @returns Ext.dom.Element this
-     */
-    Ext$repaint?: () => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces the passed element with this element
-     * @param element String/HTMLElement/Ext.dom.Element The element to replace. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    replace?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces a CSS class on the element with another
-     * @param oldName String The CSS class to replace.
-     * @param newName String The replacement CSS class.
-     * @param prefix String Prefix to prepend to each class to be replaced.
-     * @param suffix String Suffix to append to each class to be replaced.
-     * @returns Ext.dom.Element this
-     */
-    replaceCls?: (
-      oldName?: string,
-      newName?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces the specified element with the passed element
-     * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
-     * @param replacement String/Ext.Element The id of an element or the Element itself.
-     * @param domReplace Boolean true to remove and replace the element in the document too.
-     * @returns Ext.dom.CompositeElementLite this
-     */
-    replaceElement?: (
-      el?: any,
-      replacement?: any,
-      domReplace?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Replaces this element with the passed element
-     * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
-     * @returns Ext.dom.Element This element.
-     */
-    replaceWith?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Selects elements based on the passed CSS selector to enable Element methods to be applied to many related elements in
-     * @param selector String/HTMLElement[] The CSS selector or an array of elements
-     * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
-     * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
-     */
-    Ext$select?: (
-      selector?: any,
-      composite?: boolean
-    ) => Ext$Ext$dom.Ext$ICompositeElementLite,
-
-    /**
-     * [Method] Serializes a DOM form into a url encoded string
-     * @param form Object The form
-     * @returns String The url encoded form
-     */
-    serializeForm?: (Ext$form?: any) => string,
-
-    /**
-     * [Method] Sets the passed attributes as attributes of this element a style attribute can be a string object or function
-     * @param attributes Object The object with the attributes.
-     * @param useSet Boolean false to override the default setAttribute to use expandos.
-     * @returns Ext.dom.Element this
-     */
-    set?: (attributes?: any, useSet?: boolean) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s CSS bottom style
-     * @param bottom String The bottom CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setBottom?: (bottom?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s box
-     * @param box Object The box to fill, for example: {  left: ...,  top: ...,  width: ...,  height: ... }
-     * @returns Ext.dom.Element this
-     */
-    setBox?: (box?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the specified CSS class on this element s DOM node
-     * @param className String/Array The CSS class to set on this element.
-     */
-    setCls?: (className?: any) => void,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    setHTML?: (html?: string) => void,
-
-    /**
-     * [Method] Set the height of this Element
-     * @param height Number/String The new height.
-     * @returns Ext.dom.Element this
-     */
-    setHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    setHtml?: (html?: string) => void,
-
-    /**
-     * [Method] Sets the element s left position directly using CSS style instead of setX
-     * @param left String The left CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setLeft?: (left?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the maximum height of this Element
-     * @param height Number/String The new maximum height.
-     * @returns Ext.dom.Element this
-     */
-    setMaxHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the maximum width of this Element
-     * @param width Number/String The new maximum width.
-     * @returns Ext.dom.Element this
-     */
-    setMaxWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the minimum height of this Element
-     * @param height Number/String The new minimum height.
-     * @returns Ext.dom.Element this
-     */
-    setMinHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the minimum width of this Element
-     * @param width Number/String The new minimum width.
-     * @returns Ext.dom.Element this
-     */
-    setMinWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s CSS right style
-     * @param right String The right CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setRight?: (right?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the size of this Element
-     * @param width Number/String The new width. This may be one of:  A Number specifying the new width in this Element's defaultUnits (by default, pixels). A String used to set the CSS width style. Animation may not be used. A size object in the format {width: widthValue, height: heightValue}.
-     * @param height Number/String The new height. This may be one of:  A Number specifying the new height in this Element's defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used.
-     * @returns Ext.dom.Element this
-     */
-    setSize?: (width?: any, height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Wrapper for setting style properties also takes single object parameter of multiple styles
-     * @param property String/Object The style property to be set, or an object of multiple styles.
-     * @param value String The value to apply to the given property, or null if an object was passed.
-     * @returns Ext.dom.Element this
-     */
-    setStyle?: (property?: any, value?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s top position directly using CSS style instead of setY
-     * @param top String The top CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setTop?: (top?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s top and left positions directly using CSS style
-     */
-    setTopLeft?: () => void,
-
-    /**
-     * [Method] Use this to change the visibility mode between VISIBILITY DISPLAY or OFFSETS
-     * @param mode Object
-     * @returns Ext.dom.Element this
-     */
-    setVisibilityMode?: (mode?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the visibility of the element see details
-     * @param visible Boolean Whether the element is visible.
-     * @returns Ext.Element this
-     */
-    setVisible?: (visible?: boolean) => Ext$Ext$IElement,
-
-    /**
-     * [Method] Set the width of this Element
-     * @param width Number/String The new width.
-     * @returns Ext.dom.Element this
-     */
-    setWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the X position of the element based on page coordinates
-     * @param x Number The X position of the element
-     * @returns Ext.dom.Element this
-     */
-    setX?: (x?: number) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the position of the element in page coordinates regardless of how the element is positioned
-     * @param pos Number[] Contains X &amp; Y [x, y] values for new position (coordinates are page-based).
-     * @returns Ext.dom.Element this
-     */
-    setXY?: (pos?: number[]) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the Y position of the element based on page coordinates
-     * @param y Number The Y position of the element.
-     * @returns Ext.dom.Element this
-     */
-    setY?: (y?: number) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Shows this element
-     */
-    show?: () => void,
-
-    /**
-     * [Method] Toggles the specified CSS class on this element removes it if it already exists otherwise adds it
-     * @param className String The CSS class to toggle.
-     * @returns Ext.dom.Element this
-     */
-    toggleCls?: (className?: string) => Ext$Ext$dom.Ext$IElement,
+    toggleCls?: (className?: string) => dom$IElement,
 
     /**
      * [Method] Translates the passed page coordinates into left top CSS values for this element
@@ -19260,8 +10184,8 @@ declare module "sencha_touch" {
      * @returns HTMLElement/Ext.dom.Element The newly created wrapper element.
      */
     wrap?: (config?: any, domNode?: boolean) => any
-  } & Ext$Ext$IBase &
-    undefined.Ext$IElement;
+  } & Ext$IBase &
+    undefined.IElement;
 
   declare export type Ext$IElement = {
     /**
@@ -19287,12 +10211,12 @@ declare module "sencha_touch" {
     /**
      * [Property] (HTMLElement)
      */
-    Ext$dom?: HTMLElement,
+    dom?: HTMLElement,
 
     /**
      * [Property] (String)
      */
-    Ext$id?: string,
+    id?: string,
 
     /**
      * [Method] Appends an after event handler
@@ -19329,11 +10253,7 @@ declare module "sencha_touch" {
      * @param suffix String Suffix to append to each class.
      * @returns Ext.dom.Element this
      */
-    addCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    addCls?: (names?: string, prefix?: string, suffix?: string) => dom$IElement,
 
     /**
      * [Method] Adds the specified events to the list of events which this Observable may fire
@@ -19378,21 +10298,21 @@ declare module "sencha_touch" {
      * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendChild?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    appendChild?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Appends this element to the passed element
      * @param el String/HTMLElement/Ext.dom.Element The new parent element. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    appendTo?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    appendTo?: (el?: any) => dom$IElement,
 
     /**
      * [Method] More flexible version of setStyle for setting style properties
      * @param styles String/Object/Function A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or a function which returns such a specification.
      * @returns Ext.dom.Element this
      */
-    applyStyles?: (styles?: any) => Ext$Ext$dom.Ext$IElement,
+    applyStyles?: (styles?: any) => dom$IElement,
 
     /**
      * [Method] Selects a single direct child based on the passed CSS selector the selector should not contain an id
@@ -19425,7 +10345,7 @@ declare module "sencha_touch" {
       config?: any,
       insertBefore?: HTMLElement,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Translates an element using CSS 3 in 2D
@@ -19435,7 +10355,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Removes this element s DOM reference
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
@@ -19532,7 +10452,7 @@ declare module "sencha_touch" {
      * @param namespace String The namespace in which to look for the attribute.
      * @returns String The attribute value.
      */
-    getAttribute?: (name?: string, Ext$namespace?: string) => string,
+    getAttribute?: (name?: string, namespace?: string) => string,
 
     /**
      * [Method] Gets the width of the border s for the specified side s
@@ -19723,21 +10643,21 @@ declare module "sencha_touch" {
      * @param el String/HTMLElement/Ext.dom.Element The element to insert after. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertAfter?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertAfter?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts this element before the passed element in the DOM
      * @param el String/HTMLElement/Ext.dom.Element The element before which this element will be inserted. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    insertBefore?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    insertBefore?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an element as the first child of this element
      * @param element String/HTMLElement/Ext.dom.Element The id or element to insert.
      * @returns Ext.dom.Element this
      */
-    insertFirst?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    insertFirst?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Inserts an HTML fragment into this element
@@ -19759,7 +10679,7 @@ declare module "sencha_touch" {
       el?: any,
       where?: string,
       returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Returns true if this element matches the passed simple selector e g
@@ -19894,14 +10814,14 @@ declare module "sencha_touch" {
      * @param selector String The CSS selector.
      * @returns HTMLElement[] An array of the matched nodes.
      */
-    Ext$query?: (selector?: string) => HTMLElement[],
+    query?: (selector?: string) => HTMLElement[],
 
     /**
      * [Method] Adds one or more CSS classes to this element and removes the same class es from all siblings
      * @param className String/String[] The CSS class to add, or an array of classes.
      * @returns Ext.dom.Element this
      */
-    radioCls?: (className?: any) => Ext$Ext$dom.Ext$IElement,
+    radioCls?: (className?: any) => dom$IElement,
 
     /**
      * [Method] Relays selected events from the specified Observable as if the events were fired by this
@@ -19909,10 +10829,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
+    relayEvents?: (object?: any, events?: any) => Ext$mixin$IObservable,
 
     /**
      * [Method] Removes this element s DOM reference
@@ -19963,7 +10880,7 @@ declare module "sencha_touch" {
       names?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Removes an event handler
@@ -19999,14 +10916,14 @@ declare module "sencha_touch" {
      * [Method] Forces the browser to repaint this element
      * @returns Ext.dom.Element this
      */
-    Ext$repaint?: () => Ext$Ext$dom.Ext$IElement,
+    repaint?: () => dom$IElement,
 
     /**
      * [Method] Replaces the passed element with this element
      * @param element String/HTMLElement/Ext.dom.Element The element to replace. The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element This element.
      */
-    replace?: (element?: any) => Ext$Ext$dom.Ext$IElement,
+    replace?: (element?: any) => dom$IElement,
 
     /**
      * [Method] Replaces a CSS class on the element with another
@@ -20021,14 +10938,14 @@ declare module "sencha_touch" {
       newName?: string,
       prefix?: string,
       suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
+    ) => dom$IElement,
 
     /**
      * [Method] Replaces this element with the passed element
      * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
      * @returns Ext.dom.Element This element.
      */
-    replaceWith?: (el?: any) => Ext$Ext$dom.Ext$IElement,
+    replaceWith?: (el?: any) => dom$IElement,
 
     /**
      * [Method] Resumes firing events see suspendEvents
@@ -20041,7 +10958,7 @@ declare module "sencha_touch" {
      * @param form Object The form
      * @returns String The url encoded form
      */
-    serializeForm?: (Ext$form?: any) => string,
+    serializeForm?: (form?: any) => string,
 
     /**
      * [Method] Sets the passed attributes as attributes of this element a style attribute can be a string object or function
@@ -20049,21 +10966,21 @@ declare module "sencha_touch" {
      * @param useSet Boolean false to override the default setAttribute to use expandos.
      * @returns Ext.dom.Element this
      */
-    set?: (attributes?: any, useSet?: boolean) => Ext$Ext$dom.Ext$IElement,
+    set?: (attributes?: any, useSet?: boolean) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS bottom style
      * @param bottom String The bottom CSS property value.
      * @returns Ext.dom.Element this
      */
-    setBottom?: (bottom?: string) => Ext$Ext$dom.Ext$IElement,
+    setBottom?: (bottom?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s box
      * @param box Object The box to fill, for example: {  left: ...,  top: ...,  width: ...,  height: ... }
      * @returns Ext.dom.Element this
      */
-    setBox?: (box?: any) => Ext$Ext$dom.Ext$IElement,
+    setBox?: (box?: any) => dom$IElement,
 
     /**
      * [Method] Sets the value of bubbleEvents
@@ -20088,7 +11005,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height.
      * @returns Ext.dom.Element this
      */
-    setHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Sets the innerHTML of this element
@@ -20101,7 +11018,7 @@ declare module "sencha_touch" {
      * @param left String The left CSS property value.
      * @returns Ext.dom.Element this
      */
-    setLeft?: (left?: string) => Ext$Ext$dom.Ext$IElement,
+    setLeft?: (left?: string) => dom$IElement,
 
     /**
      * [Method] Sets the value of listeners
@@ -20114,35 +11031,35 @@ declare module "sencha_touch" {
      * @param height Number/String The new maximum height.
      * @returns Ext.dom.Element this
      */
-    setMaxHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the maximum width of this Element
      * @param width Number/String The new maximum width.
      * @returns Ext.dom.Element this
      */
-    setMaxWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMaxWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum height of this Element
      * @param height Number/String The new minimum height.
      * @returns Ext.dom.Element this
      */
-    setMinHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinHeight?: (height?: any) => dom$IElement,
 
     /**
      * [Method] Set the minimum width of this Element
      * @param width Number/String The new minimum width.
      * @returns Ext.dom.Element this
      */
-    setMinWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setMinWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the element s CSS right style
      * @param right String The right CSS property value.
      * @returns Ext.dom.Element this
      */
-    setRight?: (right?: string) => Ext$Ext$dom.Ext$IElement,
+    setRight?: (right?: string) => dom$IElement,
 
     /**
      * [Method] Set the size of this Element
@@ -20150,7 +11067,7 @@ declare module "sencha_touch" {
      * @param height Number/String The new height. This may be one of:  A Number specifying the new height in this Element's defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used.
      * @returns Ext.dom.Element this
      */
-    setSize?: (width?: any, height?: any) => Ext$Ext$dom.Ext$IElement,
+    setSize?: (width?: any, height?: any) => dom$IElement,
 
     /**
      * [Method] Wrapper for setting style properties also takes single object parameter of multiple styles
@@ -20158,14 +11075,14 @@ declare module "sencha_touch" {
      * @param value String The value to apply to the given property, or null if an object was passed.
      * @returns Ext.dom.Element this
      */
-    setStyle?: (property?: any, value?: string) => Ext$Ext$dom.Ext$IElement,
+    setStyle?: (property?: any, value?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top position directly using CSS style instead of setY
      * @param top String The top CSS property value.
      * @returns Ext.dom.Element this
      */
-    setTop?: (top?: string) => Ext$Ext$dom.Ext$IElement,
+    setTop?: (top?: string) => dom$IElement,
 
     /**
      * [Method] Sets the element s top and left positions directly using CSS style
@@ -20177,42 +11094,42 @@ declare module "sencha_touch" {
      * @param mode Object
      * @returns Ext.dom.Element this
      */
-    setVisibilityMode?: (mode?: any) => Ext$Ext$dom.Ext$IElement,
+    setVisibilityMode?: (mode?: any) => dom$IElement,
 
     /**
      * [Method] Sets the visibility of the element see details
      * @param visible Boolean Whether the element is visible.
      * @returns Ext.Element this
      */
-    setVisible?: (visible?: boolean) => Ext$Ext$IElement,
+    setVisible?: (visible?: boolean) => Ext$IElement,
 
     /**
      * [Method] Set the width of this Element
      * @param width Number/String The new width.
      * @returns Ext.dom.Element this
      */
-    setWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
+    setWidth?: (width?: any) => dom$IElement,
 
     /**
      * [Method] Sets the X position of the element based on page coordinates
      * @param x Number The X position of the element
      * @returns Ext.dom.Element this
      */
-    setX?: (x?: number) => Ext$Ext$dom.Ext$IElement,
+    setX?: (x?: number) => dom$IElement,
 
     /**
      * [Method] Sets the position of the element in page coordinates regardless of how the element is positioned
      * @param pos Number[] Contains X &amp; Y [x, y] values for new position (coordinates are page-based).
      * @returns Ext.dom.Element this
      */
-    setXY?: (pos?: number[]) => Ext$Ext$dom.Ext$IElement,
+    setXY?: (pos?: number[]) => dom$IElement,
 
     /**
      * [Method] Sets the Y position of the element based on page coordinates
      * @param y Number The Y position of the element.
      * @returns Ext.dom.Element this
      */
-    setY?: (y?: number) => Ext$Ext$dom.Ext$IElement,
+    setY?: (y?: number) => dom$IElement,
 
     /**
      * [Method] Shows this element
@@ -20229,1043 +11146,7 @@ declare module "sencha_touch" {
      * @param className String The CSS class to toggle.
      * @returns Ext.dom.Element this
      */
-    toggleCls?: (className?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Translates the passed page coordinates into left top CSS values for this element
-     * @param x Number/Array The page x or an array containing [x, y].
-     * @param y Number The page y, required if x is not an array.
-     * @returns Object An object with left and top properties. e.g. {left: (value), top: (value)}.
-     */
-    translatePoints?: (x?: any, y?: number) => any,
-
-    /**
-     * [Method] Alias for removeListener
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    un?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for removeAfterListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for removeBeforeListener
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Removes a previously applied mask
-     */
-    unmask?: () => void,
-
-    /**
-     * [Method] Walks up the dom looking for a parent node that matches the passed simple selector e g
-     * @param simpleSelector String The simple selector to test
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
-     * @returns Ext.dom.Element/null The matching DOM node (or null if no match was found).
-     */
-    up?: (simpleSelector?: string, maxDepth?: any) => any,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    update?: (html?: string) => void,
-
-    /**
-     * [Method] Creates and wraps this element with another element
-     * @param config Object DomHelper element config object for the wrapper element or null for an empty div
-     * @param domNode Boolean true to return the raw DOM element instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The newly created wrapper element.
-     */
-    wrap?: (config?: any, domNode?: boolean) => any,
-
-    /**
-     * [Property] (Number)
-     */
-    DISPLAY?: number,
-
-    /**
-     * [Property] (Number)
-     */
-    OFFSETS?: number,
-
-    /**
-     * [Property] (Number)
-     */
-    VISIBILITY?: number,
-
-    /**
-     * [Property] (String)
-     */
-    defaultUnit?: string,
-
-    /**
-     * [Property] (HTMLElement)
-     */
-    Ext$dom?: HTMLElement,
-
-    /**
-     * [Property] (String)
-     */
-    Ext$id?: string,
-
-    /**
-     * [Method] Appends an after event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends a before event handler
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    addBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Adds the given CSS class es to this Element
-     * @param names String The CSS class(es) to add to this element.
-     * @param prefix String Prefix to prepend to each class.
-     * @param suffix String Suffix to append to each class.
-     * @returns Ext.dom.Element this
-     */
-    addCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Adds the specified events to the list of events which this Observable may fire
-     * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
-     */
-    addEvents?: (eventNames?: any) => void,
-
-    /**
-     * [Method] Appends an event handler to this object
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    addListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    addManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Appends the passed element s to this element
-     * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    appendChild?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Appends this element to the passed element
-     * @param el String/HTMLElement/Ext.dom.Element The new parent element. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    appendTo?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] More flexible version of setStyle for setting style properties
-     * @param styles String/Object/Function A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or a function which returns such a specification.
-     * @returns Ext.dom.Element this
-     */
-    applyStyles?: (styles?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Selects a single direct child based on the passed CSS selector the selector should not contain an id
-     * @param selector String The CSS selector.
-     * @param returnDom Boolean true to return the DOM node instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The child Ext.dom.Element (or DOM node if returnDom is true)
-     */
-    child?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    clearListeners?: () => void,
-
-    /**
-     * [Method] Returns true if this element is an ancestor of the passed element
-     * @param element HTMLElement/String The element to check.
-     * @returns Boolean true if this element is an ancestor of el, else false.
-     */
-    contains?: (element?: any) => boolean,
-
-    /**
-     * [Method] Creates the passed DomHelper config and appends it to this element or optionally inserts it before the passed child e
-     * @param config Object DomHelper element config object. If no tag is specified (e.g., {tag:'input'}) then a div will be automatically generated with the specified attributes.
-     * @param insertBefore HTMLElement a child element of this element.
-     * @param returnDom Boolean true to return the dom node instead of creating an Element.
-     * @returns Ext.dom.Element The new child element.
-     */
-    createChild?: (
-      config?: any,
-      insertBefore?: HTMLElement,
-      returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Translates an element using CSS 3 in 2D
-     */
-    cssTranslate?: () => void,
-
-    /**
-     * [Method] Removes this element s DOM reference
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
-     * @param selector String The CSS selector.
-     * @param returnDom Boolean true to return the DOM node instead of Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The child Ext.dom.Element (or DOM node if returnDom is true).
-     */
-    down?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
-     * @param events String/String[] The event name to bubble, or an Array of event names.
-     */
-    enableBubble?: (events?: any) => void,
-
-    /**
-     * [Method] Looks at this node and then at parent nodes for a match of the passed simple selector e g
-     * @param simpleSelector String The simple selector to test.
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 50 || document.body)
-     * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
-     * @returns HTMLElement/null The matching DOM node (or null if no match was found).
-     */
-    findParent?: (
-      simpleSelector?: string,
-      maxDepth?: any,
-      returnEl?: boolean
-    ) => any,
-
-    /**
-     * [Method] Looks at parent nodes for a match of the passed simple selector e g
-     * @param simpleSelector String The simple selector to test.
-     * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
-     * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
-     * @returns HTMLElement/null The matching DOM node (or null if no match was found).
-     */
-    findParentNode?: (
-      simpleSelector?: string,
-      maxDepth?: any,
-      returnEl?: boolean
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
-     * @param eventName String The name of the event to fire.
-     * @param args Array Arguments to pass to handers.
-     * @param fn Function Action.
-     * @param scope Object Scope of fn.
-     * @returns Object
-     */
-    fireAction?: (
-      eventName?: string,
-      args?: any[],
-      fn?: any,
-      scope?: any
-    ) => any,
-
-    /**
-     * [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
-     * @param eventName String The name of the event to fire.
-     * @param args Object... Variable number of parameters are passed to handlers.
-     * @returns Boolean Returns false if any of the handlers return false.
-     */
-    fireEvent?: (eventName: string, ...args: any[]) => boolean,
-
-    /**
-     * [Method] Gets the first child skipping text nodes
-     * @param selector String Find the next sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The first child or null.
-     */
-    first?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Gets the x y coordinates to align this element with another element
-     * @param element Mixed The element to align to.
-     * @param position String The position to align to.
-     * @param offsets Array Offset the positioning by [x, y].
-     * @returns Array [x, y]
-     */
-    getAlignToXY?: (element?: any, position?: string, offsets?: any[]) => any[],
-
-    /**
-     * [Method] Gets the x y coordinates specified by the anchor position on the element
-     * @param anchor String The specified anchor position.
-     * @param local Boolean true to get the local (element top/left-relative) anchor position instead of page coordinates.
-     * @param size Object An object containing the size to use for calculating anchor position. {width: (target width), height: (target height)} (defaults to the element's current size)
-     * @returns Array [x, y] An array containing the element's x and y coordinates.
-     */
-    getAnchorXY?: (anchor?: string, local?: boolean, size?: any) => any[],
-
-    /**
-     * [Method] Returns the value of an attribute from the element s underlying DOM node
-     * @param name String The attribute name.
-     * @param namespace String The namespace in which to look for the attribute.
-     * @returns String The attribute value.
-     */
-    getAttribute?: (name?: string, Ext$namespace?: string) => string,
-
-    /**
-     * [Method] Gets the width of the border s for the specified side s
-     * @param side String Can be t, l, r, b or any combination of those to add multiple values. For example, passing 'lr' would get the border left width + the border right width.
-     * @returns Number The width of the sides passed added together
-     */
-    getBorderWidth?: (side?: string) => number,
-
-    /**
-     * [Method] Gets the bottom Y coordinate of the element element Y position  element height
-     * @returns Number
-     */
-    getBottom?: () => number,
-
-    /**
-     * [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
-     * @param contentBox Boolean If true a box for the content of the element is returned.
-     * @param local Boolean If true the element's left and top are returned instead of page x/y.
-     * @returns Object An object in the format
-     */
-    getBox?: (contentBox?: boolean, local?: boolean) => any,
-
-    /**
-     * [Method] Returns the value of bubbleEvents
-     * @returns String/String[]
-     */
-    getBubbleEvents?: () => any,
-
-    /**
-     * [Method] Returns the innerHTML of an element
-     * @returns String
-     */
-    getHTML?: () => string,
-
-    /**
-     * [Method] Returns the offset height of the element
-     * @param contentHeight Boolean true to get the height minus borders and padding.
-     * @returns Number The element's height.
-     */
-    getHeight?: (contentHeight?: boolean) => number,
-
-    /**
-     * [Method] Returns the innerHTML of an element
-     * @returns String
-     */
-    getHtml?: () => string,
-
-    /**
-     * [Method] Gets the left X coordinate
-     * @returns Number
-     */
-    getLeft?: () => number,
-
-    /**
-     * [Method] Returns the value of listeners
-     * @returns Object
-     */
-    getListeners?: () => any,
-
-    /**
-     * [Method] Returns an object with properties top left right and bottom representing the margins of this element unless sides i
-     * @param sides String Any combination of 'l', 'r', 't', 'b' to get the sum of those sides.
-     * @returns Object/Number
-     */
-    getMargin?: (sides?: string) => any,
-
-    /**
-     * [Method] Returns the offsets of this element from the passed element
-     * @param element Mixed The element to get the offsets from.
-     * @returns Array The XY page offsets (e.g. [100, -200])
-     */
-    getOffsetsTo?: (element?: any) => any[],
-
-    /**
-     * [Method] Retrieves the height of the element account for the top and bottom margins
-     */
-    getOuterHeight?: () => void,
-
-    /**
-     * [Method] Retrieves the width of the element accounting for the left and right margins
-     */
-    getOuterWidth?: () => void,
-
-    /**
-     * [Method] Gets the width of the padding s for the specified side s
-     * @param side String Can be t, l, r, b or any combination of those to add multiple values. For example, passing 'lr' would get the padding left + the padding right.
-     * @returns Number The padding of the sides passed added together.
-     */
-    getPadding?: (side?: string) => number,
-
-    /**
-     * [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
-     * @param asRegion Boolean If true an Ext.util.Region will be returned.
-     * @returns Object box An object in the format: {  x: &lt;Element's X position&gt;,  y: &lt;Element's Y position&gt;,  width: &lt;Element's width&gt;,  height: &lt;Element's height&gt;,  bottom: &lt;Element's lower bound&gt;,  right: &lt;Element's rightmost bound&gt; }  The returned object may also be addressed as an Array where index 0 contains the X position and index 1 contains the Y position. So the result may also be used for setXY.
-     */
-    getPageBox?: (asRegion?: boolean) => any,
-
-    /**
-     * [Method] Gets the right X coordinate of the element element X position  element width
-     * @returns Number
-     */
-    getRight?: () => number,
-
-    /**
-     * [Method] Gets the Scroller instance of the first parent that has one
-     */
-    getScrollParent?: () => void,
-
-    /**
-     * [Method] Returns the size of the element
-     * @param contentSize Boolean true to get the width/size minus borders and padding.
-     * @returns Object An object containing the element's size:
-     */
-    getSize?: (contentSize?: boolean) => any,
-
-    /**
-     * [Method] Normalizes currentStyle and computedStyle
-     * @param prop String The style property whose value is returned.
-     * @returns String The current value of the style property for this element.
-     */
-    getStyle?: (prop?: string) => string,
-
-    /**
-     * [Method] Gets the top Y coordinate
-     * @returns Number
-     */
-    getTop?: () => number,
-
-    /**
-     * [Method] Returns the value of the value attribute
-     * @param asNumber Boolean true to parse the value as a number.
-     * @returns String/Number
-     */
-    getValue?: (asNumber?: boolean) => any,
-
-    /**
-     * [Method] Returns the dimensions of the element available to lay content out in
-     * @returns Object Object describing width and height:
-     */
-    getViewSize?: () => any,
-
-    /**
-     * [Method] Returns the offset width of the element
-     * @param contentWidth Boolean true to get the width minus borders and padding.
-     * @returns Number The element's width.
-     */
-    getWidth?: (contentWidth?: boolean) => number,
-
-    /**
-     * [Method] Gets the current X position of the element based on page coordinates
-     * @returns Number The X position of the element
-     */
-    getX?: () => number,
-
-    /**
-     * [Method] Gets the current position of the element based on page coordinates
-     * @returns Array The XY position of the element
-     */
-    getXY?: () => any[],
-
-    /**
-     * [Method] Gets the current Y position of the element based on page coordinates
-     * @returns Number The Y position of the element
-     */
-    getY?: () => number,
-
-    /**
-     * [Method] Checks if the specified CSS class exists on this element s DOM node
-     * @param name String The CSS class to check for.
-     * @returns Boolean true if the class exists, else false.
-     */
-    hasCls?: (name?: string) => boolean,
-
-    /**
-     * [Method] Checks to see if this object has any listeners for a specified event
-     * @param eventName String The name of the event to check for
-     * @returns Boolean True if the event is being listened for, else false
-     */
-    hasListener?: (eventName?: string) => boolean,
-
-    /**
-     * [Method] Hides this element
-     */
-    hide?: () => void,
-
-    /**
-     * [Method] Inserts this element after the passed element in the DOM
-     * @param el String/HTMLElement/Ext.dom.Element The element to insert after. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    insertAfter?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts this element before the passed element in the DOM
-     * @param el String/HTMLElement/Ext.dom.Element The element before which this element will be inserted. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    insertBefore?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts an element as the first child of this element
-     * @param element String/HTMLElement/Ext.dom.Element The id or element to insert.
-     * @returns Ext.dom.Element this
-     */
-    insertFirst?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Inserts an HTML fragment into this element
-     * @param where String Where to insert the HTML in relation to this element - 'beforeBegin', 'afterBegin', 'beforeEnd', 'afterEnd'. See Ext.DomHelper.insertHtml for details.
-     * @param html String The HTML fragment
-     * @param returnEl Boolean true to return an Ext.dom.Element.
-     * @returns HTMLElement/Ext.dom.Element The inserted node (or nearest related if more than 1 inserted).
-     */
-    insertHtml?: (where?: string, html?: string, returnEl?: boolean) => any,
-
-    /**
-     * [Method] Inserts or creates the passed element or DomHelper config as a sibling of this element
-     * @param el String/HTMLElement/Ext.dom.Element/Object/Array The id, element to insert or a DomHelper config to create and insert or an array of any of those.
-     * @param where String 'before' or 'after'.
-     * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
-     * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
-     */
-    insertSibling?: (
-      el?: any,
-      where?: string,
-      returnDom?: boolean
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Returns true if this element matches the passed simple selector e g
-     * @param selector String The simple selector to test.
-     * @returns Boolean true if this element matches the selector, else false.
-     */
-    is?: (selector?: string) => boolean,
-
-    /**
-     * [Method] Determines if this element is a descendant of the passed in Element
-     */
-    isDescendent?: () => void,
-
-    /**
-     * [Method] Checks if the current value of a style is equal to a given value
-     * @param style String property whose value is returned.
-     * @param value String to check against.
-     * @returns Boolean true for when the current value equals the given value.
-     */
-    isStyle?: (style?: string, value?: string) => boolean,
-
-    /**
-     * [Method] Returns true if the value of the given property is visually transparent
-     * @param prop String The style property whose value is to be tested.
-     * @returns Boolean true if the style property is visually transparent.
-     */
-    isTransparent?: (prop?: string) => boolean,
-
-    /**
-     * [Method] Gets the last child skipping text nodes
-     * @param selector String Find the previous sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The last child or null.
-     */
-    last?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Puts a mask over this element to disable user interaction
-     */
-    mask?: () => void,
-
-    /**
-     * [Method] Alias for addManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     * @param options Object If the eventName parameter was an event name, this is the addListener options.
-     */
-    mon?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Alias for removeManagedListener
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    mun?: (object?: any, eventName?: any, fn?: any, scope?: any) => void,
-
-    /**
-     * [Method] Gets the next sibling skipping text nodes
-     * @param selector String Find the next sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw dom node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The next sibling or null.
-     */
-    next?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Alias for addListener
-     * @param eventName String/String[]/Object The name of the event to listen for. May also be an object who's property names are event names.
-     * @param fn Function/String The method the event invokes. Will be called with arguments given to fireEvent plus the options parameter described below.
-     * @param scope Object The scope (this reference) in which the handler function is executed. If omitted, defaults to the object which fired the event.
-     * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
-     * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
-     */
-    on?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Alias for addAfterListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onAfter?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Alias for addBeforeListener
-     * @param eventName String/String[]/Object The name of the event to listen for.
-     * @param fn Function/String The method the event invokes.
-     * @param scope Object The scope for fn.
-     * @param options Object An object containing handler configuration.
-     */
-    onBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void,
-
-    /**
-     * [Method] Gets the parent node for this element optionally chaining up trying to match a selector
-     * @param selector String Find a parent node that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element.
-     * @returns Ext.dom.Element/HTMLElement/null The parent node or null.
-     */
-    parent?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Gets the previous sibling skipping text nodes
-     * @param selector String Find the previous sibling that matches the passed simple selector.
-     * @param returnDom Boolean true to return a raw DOM node instead of an Ext.dom.Element
-     * @returns Ext.dom.Element/HTMLElement/null The previous sibling or null.
-     */
-    prev?: (selector?: string, returnDom?: boolean) => any,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    purgeAllListeners?: () => void,
-
-    /**
-     * [Method] Selects child nodes based on the passed CSS selector the selector should not contain an id
-     * @param selector String The CSS selector.
-     * @returns HTMLElement[] An array of the matched nodes.
-     */
-    Ext$query?: (selector?: string) => HTMLElement[],
-
-    /**
-     * [Method] Adds one or more CSS classes to this element and removes the same class es from all siblings
-     * @param className String/String[] The CSS class to add, or an array of classes.
-     * @returns Ext.dom.Element this
-     */
-    radioCls?: (className?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Relays selected events from the specified Observable as if the events were fired by this
-     * @param object Object The Observable whose events this object is to relay.
-     * @param events String/Array/Object Array of event names to relay.
-     * @returns Ext.mixin.Observable this
-     */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
-
-    /**
-     * [Method] Removes this element s DOM reference
-     */
-    remove?: () => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeAfterListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes all listeners for this object
-     */
-    removeAllListeners?: () => void,
-
-    /**
-     * [Method] Removes a before event handler
-     * @param eventName String/String[]/Object The name of the event the handler was associated with.
-     * @param fn Function/String The handler to remove.
-     * @param scope Object The scope originally specified for fn.
-     * @param options Object Extra options object.
-     */
-    removeBeforeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any
-    ) => void,
-
-    /**
-     * [Method] Removes the given CSS class es from this Element
-     * @param names String The CSS class(es) to remove from this element.
-     * @param prefix String Prefix to prepend to each class to be removed.
-     * @param suffix String Suffix to append to each class to be removed.
-     * @returns Ext.dom.Element this
-     */
-    removeCls?: (
-      names?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Removes an event handler
-     * @param eventName String/String[]/Object The type of event the handler was associated with.
-     * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
-     * @param scope Object The scope originally specified for the handler. It must be the same as the scope argument specified in the original call to addListener or the listener will not be removed.
-     * @param options Object Extra options object. See addListener for details.
-     * @param order String The order of the listener to remove. Possible values are before, current and after.
-     */
-    removeListener?: (
-      eventName?: any,
-      fn?: any,
-      scope?: any,
-      options?: any,
-      order?: string
-    ) => void,
-
-    /**
-     * [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
-     * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
-     * @param eventName Object/String The event name, or an object containing event name properties.
-     * @param fn Function If the eventName parameter was an event name, this is the handler function.
-     * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
-     */
-    removeManagedListener?: (
-      object?: any,
-      eventName?: any,
-      fn?: any,
-      scope?: any
-    ) => void,
-
-    /**
-     * [Method] Forces the browser to repaint this element
-     * @returns Ext.dom.Element this
-     */
-    Ext$repaint?: () => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces the passed element with this element
-     * @param element String/HTMLElement/Ext.dom.Element The element to replace. The id of the node, a DOM Node or an existing Element.
-     * @returns Ext.dom.Element This element.
-     */
-    replace?: (element?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces a CSS class on the element with another
-     * @param oldName String The CSS class to replace.
-     * @param newName String The replacement CSS class.
-     * @param prefix String Prefix to prepend to each class to be replaced.
-     * @param suffix String Suffix to append to each class to be replaced.
-     * @returns Ext.dom.Element this
-     */
-    replaceCls?: (
-      oldName?: string,
-      newName?: string,
-      prefix?: string,
-      suffix?: string
-    ) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Replaces this element with the passed element
-     * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
-     * @returns Ext.dom.Element This element.
-     */
-    replaceWith?: (el?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Resumes firing events see suspendEvents
-     * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
-     */
-    resumeEvents?: (discardQueuedEvents?: boolean) => void,
-
-    /**
-     * [Method] Serializes a DOM form into a url encoded string
-     * @param form Object The form
-     * @returns String The url encoded form
-     */
-    serializeForm?: (Ext$form?: any) => string,
-
-    /**
-     * [Method] Sets the passed attributes as attributes of this element a style attribute can be a string object or function
-     * @param attributes Object The object with the attributes.
-     * @param useSet Boolean false to override the default setAttribute to use expandos.
-     * @returns Ext.dom.Element this
-     */
-    set?: (attributes?: any, useSet?: boolean) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s CSS bottom style
-     * @param bottom String The bottom CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setBottom?: (bottom?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s box
-     * @param box Object The box to fill, for example: {  left: ...,  top: ...,  width: ...,  height: ... }
-     * @returns Ext.dom.Element this
-     */
-    setBox?: (box?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the value of bubbleEvents
-     * @param bubbleEvents String/String[] The new value.
-     */
-    setBubbleEvents?: (bubbleEvents?: any) => void,
-
-    /**
-     * [Method] Sets the specified CSS class on this element s DOM node
-     * @param className String/Array The CSS class to set on this element.
-     */
-    setCls?: (className?: any) => void,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    setHTML?: (html?: string) => void,
-
-    /**
-     * [Method] Set the height of this Element
-     * @param height Number/String The new height.
-     * @returns Ext.dom.Element this
-     */
-    setHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the innerHTML of this element
-     * @param html String The new HTML.
-     */
-    setHtml?: (html?: string) => void,
-
-    /**
-     * [Method] Sets the element s left position directly using CSS style instead of setX
-     * @param left String The left CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setLeft?: (left?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the value of listeners
-     * @param listeners Object The new value.
-     */
-    setListeners?: (listeners?: any) => void,
-
-    /**
-     * [Method] Set the maximum height of this Element
-     * @param height Number/String The new maximum height.
-     * @returns Ext.dom.Element this
-     */
-    setMaxHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the maximum width of this Element
-     * @param width Number/String The new maximum width.
-     * @returns Ext.dom.Element this
-     */
-    setMaxWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the minimum height of this Element
-     * @param height Number/String The new minimum height.
-     * @returns Ext.dom.Element this
-     */
-    setMinHeight?: (height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the minimum width of this Element
-     * @param width Number/String The new minimum width.
-     * @returns Ext.dom.Element this
-     */
-    setMinWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s CSS right style
-     * @param right String The right CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setRight?: (right?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Set the size of this Element
-     * @param width Number/String The new width. This may be one of:  A Number specifying the new width in this Element's defaultUnits (by default, pixels). A String used to set the CSS width style. Animation may not be used. A size object in the format {width: widthValue, height: heightValue}.
-     * @param height Number/String The new height. This may be one of:  A Number specifying the new height in this Element's defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used.
-     * @returns Ext.dom.Element this
-     */
-    setSize?: (width?: any, height?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Wrapper for setting style properties also takes single object parameter of multiple styles
-     * @param property String/Object The style property to be set, or an object of multiple styles.
-     * @param value String The value to apply to the given property, or null if an object was passed.
-     * @returns Ext.dom.Element this
-     */
-    setStyle?: (property?: any, value?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s top position directly using CSS style instead of setY
-     * @param top String The top CSS property value.
-     * @returns Ext.dom.Element this
-     */
-    setTop?: (top?: string) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the element s top and left positions directly using CSS style
-     */
-    setTopLeft?: () => void,
-
-    /**
-     * [Method] Use this to change the visibility mode between VISIBILITY DISPLAY or OFFSETS
-     * @param mode Object
-     * @returns Ext.dom.Element this
-     */
-    setVisibilityMode?: (mode?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the visibility of the element see details
-     * @param visible Boolean Whether the element is visible.
-     * @returns Ext.Element this
-     */
-    setVisible?: (visible?: boolean) => Ext$Ext$IElement,
-
-    /**
-     * [Method] Set the width of this Element
-     * @param width Number/String The new width.
-     * @returns Ext.dom.Element this
-     */
-    setWidth?: (width?: any) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the X position of the element based on page coordinates
-     * @param x Number The X position of the element
-     * @returns Ext.dom.Element this
-     */
-    setX?: (x?: number) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the position of the element in page coordinates regardless of how the element is positioned
-     * @param pos Number[] Contains X &amp; Y [x, y] values for new position (coordinates are page-based).
-     * @returns Ext.dom.Element this
-     */
-    setXY?: (pos?: number[]) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Sets the Y position of the element based on page coordinates
-     * @param y Number The Y position of the element.
-     * @returns Ext.dom.Element this
-     */
-    setY?: (y?: number) => Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Method] Shows this element
-     */
-    show?: () => void,
-
-    /**
-     * [Method] Suspends the firing of all events
-     */
-    suspendEvents?: () => void,
-
-    /**
-     * [Method] Toggles the specified CSS class on this element removes it if it already exists otherwise adds it
-     * @param className String The CSS class to toggle.
-     * @returns Ext.dom.Element this
-     */
-    toggleCls?: (className?: string) => Ext$Ext$dom.Ext$IElement,
+    toggleCls?: (className?: string) => dom$IElement,
 
     /**
      * [Method] Translates the passed page coordinates into left top CSS values for this element
@@ -21335,8 +11216,8 @@ declare module "sencha_touch" {
      * @returns HTMLElement/Ext.dom.Element The newly created wrapper element.
      */
     wrap?: (config?: any, domNode?: boolean) => any
-  } & Ext$Ext$IBase &
-    undefined.util$IObservable;
+  } & Ext$IBase &
+    undefined.IObservable;
 
   declare export class Ext$Element {
     /**
@@ -21350,7 +11231,7 @@ declare module "sencha_touch" {
      * @param members Object
      * @returns Ext.Base this
      */
-    static addStatics(members?: any): Ext$Ext$IBase;
+    static addStatics(members?: any): Ext$IBase;
 
     /**
      * [Method]
@@ -21371,7 +11252,7 @@ declare module "sencha_touch" {
      * @param named String Allows for creation of named reusable flyweights to prevent conflicts (e.g. internally Ext uses "_global").
      * @returns Ext.dom.Element The shared Element object (or null if no matching element was found).
      */
-    static fly(element?: any, named?: string): Ext$Ext$dom.Ext$IElement;
+    static fly(element?: any, named?: string): dom$IElement;
 
     /**
      * [Method] Returns the top Element that is located at the passed coordinates
@@ -21386,7 +11267,7 @@ declare module "sencha_touch" {
      * @param element String/HTMLElement/Ext.Element The id of the node, a DOM Node or an existing Element.
      * @returns Ext.dom.Element The Element object (or null if no matching element was found).
      */
-    static get(element?: any): Ext$Ext$dom.Ext$IElement;
+    static get(element?: any): dom$IElement;
 
     /**
      * [Method] Retrieves the document height
@@ -21442,7 +11323,7 @@ declare module "sencha_touch" {
      * @param members Object The properties to add to this class. This should be specified as an object literal containing one or more properties.
      * @returns Ext.Base this class
      */
-    static override(members?: any): Ext$Ext$IBase;
+    static override(members?: any): Ext$IBase;
 
     /**
      * [Method] Parses a number or string representing margin sizes into an object
@@ -21469,14 +11350,14 @@ declare module "sencha_touch" {
       selector?: any,
       composite?: boolean,
       root?: any
-    ): Ext$Ext$dom.Ext$ICompositeElementLite;
+    ): dom$ICompositeElementLite;
 
     /**
      * [Method] Serializes a DOM form into a url encoded string
      * @param form Object The form
      * @returns String The url encoded form
      */
-    static serializeForm(Ext$form?: any): string;
+    static serializeForm(form?: any): string;
 
     /**
      * [Method] Serializes a DOM element and its children recursively into a string
@@ -21516,7 +11397,7 @@ declare module "sencha_touch" {
      * @param o Object The DOM object spec (and children)
      * @returns Ext.Template The new template
      */
-    createTemplate?: (o?: any) => Ext$Ext$ITemplate;
+    createTemplate?: (o?: any) => Ext$ITemplate;
 
     /**
      * [Method] Converts the styles from the given object to text
@@ -21579,13 +11460,13 @@ declare module "sencha_touch" {
     overwrite?: (el?: any, o?: any, returnElement?: boolean) => any;
   }
 
-  declare export type Ext$IDomQuery = {} & undefined.dom$IQuery;
+  declare export type Ext$IDomQuery = {} & undefined.IQuery;
 
   declare export class Ext$DomQuery {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -21655,16 +11536,19 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
-  declare export type core$IDomQuery = {} & undefined.dom$IQuery;
+  declare var npm$namespace$Ext$core: {
+    DomQuery: typeof Ext$core$DomQuery
+  };
+  declare export type Ext$core$IDomQuery = {} & undefined.IQuery;
 
-  declare export class core$DomQuery {
+  declare export class Ext$core$DomQuery {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -21734,16 +11618,19 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
-  declare export type draw$ITimingFunctions = {} & Ext$Ext$IBase;
+  declare var npm$namespace$Ext$draw: {
+    TimingFunctions: typeof Ext$draw$TimingFunctions
+  };
+  declare export type Ext$draw$ITimingFunctions = {} & Ext$IBase;
 
-  declare export class draw$TimingFunctions {
+  declare export class Ext$draw$TimingFunctions {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -21789,10 +11676,10 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
-  declare export type env$IOS = {
+  declare export type Ext$env$IOS = {
     /**
      * [Property] (String)
      */
@@ -21801,7 +11688,7 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Version)
      */
-    version?: Ext$Ext$IVersion,
+    version?: Ext$IVersion,
 
     /**
      * [Method] A hybrid property can be either accessed as a method call i e  if Ext os is Android
@@ -21809,9 +11696,9 @@ declare module "sencha_touch" {
      * @returns Boolean
      */
     is?: (value?: string) => boolean
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 
-  declare export type event$ITouch = {} & undefined.recognizer$IRecognizer;
+  declare export type Ext$event$ITouch = {} & undefined.IDom;
 
   declare export type Ext$IEventObject = {
     /**
@@ -21843,15 +11730,15 @@ declare module "sencha_touch" {
      * [Method] Stop the event preventDefault and stopPropagation
      * @returns Ext.event.Event this
      */
-    stopEvent?: () => Ext$Ext$event.event$IEvent,
+    stopEvent?: () => Ext$event$IEvent,
 
     /**
      * [Method] Cancels bubbling of the event
      * @returns Ext.event.Event this
      */
-    stopPropagation?: () => Ext$Ext$event.event$IEvent
-  } & Ext$Ext$IBase &
-    undefined.event$ITouch;
+    stopPropagation?: () => Ext$event$IEvent
+  } & Ext$IBase &
+    undefined.ITouch;
 
   declare export type Ext$IEvented = {
     /**
@@ -21928,7 +11815,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
@@ -22043,10 +11930,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
+    relayEvents?: (object?: any, events?: any) => Ext$mixin$IObservable,
 
     /**
      * [Method] Removes a before event handler
@@ -22162,8 +12046,8 @@ declare module "sencha_touch" {
      * @param options Object Extra options object.
      */
     unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void
-  } & Ext$Ext$IBase &
-    undefined.util$IObservable;
+  } & Ext$IBase &
+    undefined.IObservable;
 
   declare export type Ext$IEventedBase = {
     /**
@@ -22240,7 +12124,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
@@ -22355,10 +12239,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    relayEvents?: (
-      object?: any,
-      events?: any
-    ) => Ext$Ext$mixin.util$IObservable,
+    relayEvents?: (object?: any, events?: any) => Ext$mixin$IObservable,
 
     /**
      * [Method] Removes a before event handler
@@ -22474,8 +12355,8 @@ declare module "sencha_touch" {
      * @param options Object Extra options object.
      */
     unBefore?: (eventName?: any, fn?: any, scope?: any, options?: any) => void
-  } & Ext$Ext$IBase &
-    undefined.util$IObservable;
+  } & Ext$IBase &
+    undefined.IObservable;
 
   declare export interface Ext$IEventManager {}
 
@@ -22555,13 +12436,13 @@ declare module "sencha_touch" {
     static un(el?: any, eventName?: string, fn?: any, scope?: any): void;
   }
 
-  declare export type Ext$IFeature = {} & Ext$Ext$IBase;
+  declare export type Ext$IFeature = {} & undefined.IFeature;
 
   declare export class Ext$Feature {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -22614,44 +12495,10 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
-  declare export type field$IUrl = {
-    /**
-     * [Config Option] (Boolean)
-     */
-    autoCapitalize?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    component?: any,
-
-    /**
-     * [Method] Returns the value of autoCapitalize
-     * @returns Boolean
-     */
-    getAutoCapitalize?: () => boolean,
-
-    /**
-     * [Method] Returns the value of component
-     * @returns Object
-     */
-    getComponent?: () => any,
-
-    /**
-     * [Method] Sets the value of autoCapitalize
-     * @param autoCapitalize Boolean The new value.
-     */
-    setAutoCapitalize?: (autoCapitalize?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of component
-     * @param component Object The new value.
-     */
-    setComponent?: (component?: any) => void,
-
+  declare export type Ext$field$IUrl = {
     /**
      * [Config Option] (Boolean)
      */
@@ -22685,9 +12532,9 @@ declare module "sencha_touch" {
      * @param component Object The new value.
      */
     setComponent?: (component?: any) => void
-  } & undefined.form$IText;
+  } & undefined.IText;
 
-  declare export type form$IFormPanel = {
+  declare export type Ext$form$IFormPanel = {
     /**
      * [Config Option] (Object)
      */
@@ -22736,7 +12583,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.data.Model)
      */
-    record?: Ext$Ext$data.data$IModel,
+    record?: data$IModel,
 
     /**
      * [Config Option] (Boolean/String/Object)
@@ -22771,7 +12618,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.dom.Element)
      */
-    waitMsgTarget?: Ext$Ext$dom.Ext$IElement,
+    waitMsgTarget?: dom$IElement,
 
     /**
      * [Config Option] (Ext.XTemplate/String/String[])
@@ -22783,7 +12630,7 @@ declare module "sencha_touch" {
      * @param newDisabled Object
      * @returns Ext.form.Panel This form.
      */
-    doSetDisabled?: (newDisabled?: any) => Ext$Ext$form.lib$IPanel,
+    doSetDisabled?: (newDisabled?: any) => Ext$form$IPanel,
 
     /**
      * [Method] Returns the value of api
@@ -22843,7 +12690,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of record
      * @returns Ext.data.Model
      */
-    getRecord?: () => Ext$Ext$data.data$IModel,
+    getRecord?: () => data$IModel,
 
     /**
      * [Method] Returns the value of standardSubmit
@@ -22887,34 +12734,34 @@ declare module "sencha_touch" {
      * [Method] Hides a previously shown wait mask See showMask
      * @returns Ext.form.Panel this
      */
-    hideMask?: () => Ext$Ext$form.lib$IPanel,
+    hideMask?: () => Ext$form$IPanel,
 
     /**
      * [Method] Performs an Ajax or Ext Direct call to load values for this form
      * @param options Object The configuration when loading this form. The following are the configurations when loading via Ajax only:
      * @returns Ext.data.Connection The request object.
      */
-    load?: (options?: any) => Ext$Ext$data.device$IConnection,
+    load?: (options?: any) => data$IConnection,
 
     /**
      * [Method] Loads matching fields from a model instance into this form
      * @param record Ext.data.Model The model instance.
      * @returns Ext.form.Panel This form.
      */
-    loadModel?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
+    loadModel?: (record?: data$IModel) => Ext$form$IPanel,
 
     /**
      * [Method] Loads matching fields from a model instance into this form
      * @param record Ext.data.Model The model instance.
      * @returns Ext.form.Panel This form.
      */
-    loadRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
+    loadRecord?: (record?: data$IModel) => Ext$form$IPanel,
 
     /**
      * [Method] Resets all fields in the form back to their original values
      * @returns Ext.form.Panel This form.
      */
-    reset?: () => Ext$Ext$form.lib$IPanel,
+    reset?: () => Ext$form$IPanel,
 
     /**
      * [Method] Sets the value of api
@@ -22975,7 +12822,7 @@ declare module "sencha_touch" {
      * @param record Ext.data.Model The model instance.
      * @returns Ext.form.Panel This form.
      */
-    setRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.lib$IPanel,
+    setRecord?: (record?: data$IModel) => Ext$form$IPanel,
 
     /**
      * [Method] Sets the value of standardSubmit
@@ -23012,7 +12859,7 @@ declare module "sencha_touch" {
      * @param values Object field name => value mapping object.
      * @returns Ext.form.Panel This form.
      */
-    setValues?: (values?: any) => Ext$Ext$form.lib$IPanel,
+    setValues?: (values?: any) => Ext$form$IPanel,
 
     /**
      * [Method] Shows a generic custom mask over a designated Element
@@ -23020,15 +12867,15 @@ declare module "sencha_touch" {
      * @param target Object
      * @returns Ext.form.Panel This form
      */
-    showMask?: (cfg?: any, target?: any) => Ext$Ext$form.lib$IPanel,
+    showMask?: (cfg?: any, target?: any) => Ext$form$IPanel,
 
     /**
      * [Method] Performs a Ajax based submission of form values if standardSubmit is false or otherwise executes a standard HTML Fo
      * @param options Object The configuration when submitting this form. The following are the configurations when submitting via Ajax only:
      * @returns Ext.data.Connection The request object if the standardSubmit config is false. If the standardSubmit config is true, then the return value is undefined.
      */
-    submit?: (options?: any) => Ext$Ext$data.device$IConnection
-  } & Ext$lib$IPanel;
+    submit?: (options?: any) => data$IConnection
+  } & Ext$IPanel;
 
   declare export interface Ext$IFunction {}
 
@@ -23202,7 +13049,7 @@ declare module "sencha_touch" {
     static pass(fn?: any, args?: any[], scope?: any): any;
   }
 
-  declare export type fx$IState = {} & Ext$Ext$IBase;
+  declare export type Ext$fx$IState = {} & Ext$IBase;
 
   declare export type Ext$IImg = {
     /**
@@ -23233,7 +13080,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Destroys this Component
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of backgroundCls
@@ -23269,7 +13116,7 @@ declare module "sencha_touch" {
      * [Method] Hides this Component optionally using an animation
      * @returns Ext.Component
      */
-    hide?: () => Ext$Ext$IComponent,
+    hide?: () => Ext$IComponent,
 
     /**
      * [Method] Allows addition of behavior to the rendering phase
@@ -23310,8 +13157,8 @@ declare module "sencha_touch" {
      * [Method] Shows this component optionally using an animation
      * @returns Ext.Component
      */
-    show?: () => Ext$Ext$IComponent
-  } & Ext$Ext$IComponent;
+    show?: () => Ext$IComponent
+  } & Ext$IComponent;
 
   declare export interface Ext$IIs {}
 
@@ -23322,7 +13169,7 @@ declare module "sencha_touch" {
      * @returns Object The key for the passed item.
      */
     getKey?: (item?: any) => any
-  } & undefined.util$IMixedCollection;
+  } & undefined.IMixedCollection;
 
   /**
    * [Property] (Boolean)
@@ -23414,7 +13261,7 @@ declare module "sencha_touch" {
    * @param delay Number Pass a number to delay the call by a number of milliseconds.
    */
   declare export function Ext$callback(
-    Ext$callback?: any,
+    callback?: any,
     scope?: any,
     args?: any[],
     delay?: number
@@ -23519,9 +13366,9 @@ declare module "sencha_touch" {
    */
   declare export function Ext$define(
     className?: string,
-    Ext$data?: any,
+    data?: any,
     createdFn?: any
-  ): Ext$Ext$IBase;
+  ): Ext$IBase;
 
   /**
    * [Method] Attempts to destroy any objects passed to it by removing all event listeners removing them from the DOM if applicab
@@ -23598,23 +13445,20 @@ declare module "sencha_touch" {
    * @param named String Allows for creation of named reusable flyweights to prevent conflicts (e.g. internally Ext uses "_global").
    * @returns Ext.dom.Element The shared Element object (or null if no matching element was found).
    */
-  declare export function Ext$fly(
-    element?: any,
-    named?: string
-  ): Ext$Ext$dom.Ext$IElement;
+  declare export function Ext$fly(element?: any, named?: string): dom$IElement;
 
   /**
    * [Method] Retrieves Ext dom Element objects
    * @param element String/HTMLElement/Ext.Element The id of the node, a DOM Node or an existing Element.
    * @returns Ext.dom.Element The Element object (or null if no matching element was found).
    */
-  declare export function Ext$get(element?: any): Ext$Ext$dom.Ext$IElement;
+  declare export function Ext$get(element?: any): dom$IElement;
 
   /**
    * [Method] Returns the current document body as an Ext Element
    * @returns Ext.Element The document body.
    */
-  declare export function Ext$getBody(): Ext$Ext$IElement;
+  declare export function Ext$getBody(): Ext$IElement;
 
   /**
    * [Method] Convenient shorthand see Ext ClassManager getClass
@@ -23633,7 +13477,7 @@ declare module "sencha_touch" {
    * @param id String The component id
    * @returns Ext.Component The Component, undefined if not found, or null if a Class was found.
    */
-  declare export function Ext$getCmp(Ext$id?: string): Ext$Ext$IComponent;
+  declare export function Ext$getCmp(id?: string): Ext$IComponent;
 
   /**
    * [Method] Returns the display name for object
@@ -23646,7 +13490,7 @@ declare module "sencha_touch" {
    * [Method] Returns the current HTML document object as an Ext Element
    * @returns Ext.Element The document.
    */
-  declare export function Ext$getDoc(): Ext$Ext$IElement;
+  declare export function Ext$getDoc(): Ext$IElement;
 
   /**
    * [Method] Return the dom node for the passed String id  dom node or Ext Element
@@ -23659,7 +13503,7 @@ declare module "sencha_touch" {
    * [Method] Returns the current document head as an Ext Element
    * @returns Ext.Element The document head.
    */
-  declare export function Ext$getHead(): Ext$Ext$IElement;
+  declare export function Ext$getHead(): Ext$IElement;
 
   /**
    * [Method] Returns the current orientation of the mobile device
@@ -23671,7 +13515,7 @@ declare module "sencha_touch" {
    * @param store String/Object The id of the Store, or a Store instance, or a store configuration.
    * @returns Ext.data.Store
    */
-  declare export function Ext$getStore(store?: any): Ext$Ext$data.data$IStore;
+  declare export function Ext$getStore(store?: any): data$IStore;
 
   /**
    * [Method] Old alias to Ext String htmlDecode
@@ -23953,14 +13797,14 @@ declare module "sencha_touch" {
   declare export function Ext$regModel(
     name?: string,
     config?: any
-  ): Ext$Ext$data.data$IModel;
+  ): data$IModel;
 
   /**
    * [Method] Creates a new store for the given id and config then registers it with the Store Manager
    * @param id String The id to set on the new store.
    * @param config Object The store config.
    */
-  declare export function Ext$regStore(Ext$id?: string, config?: any): void;
+  declare export function Ext$regStore(id?: string, config?: any): void;
 
   /**
    * [Method] Removes this element from the document removes all DOM event listeners and deletes the cache reference
@@ -23996,7 +13840,7 @@ declare module "sencha_touch" {
   declare export function Ext$select(
     selector?: any,
     composite?: boolean
-  ): Ext$Ext$dom.Ext$ICompositeElementLite;
+  ): dom$ICompositeElementLite;
 
   /**
    * [Method] Ext setup  is the entry point to initialize a Sencha Touch application
@@ -24125,44 +13969,6 @@ declare module "sencha_touch" {
 
   declare export type Ext$ILabel = {
     /**
-     * [Config Option] (Object)
-     */
-    Ext$fx?: any,
-
-    /**
-     * [Method] Returns the value of field
-     * @returns Object
-     */
-    getField?: () => any,
-
-    /**
-     * [Method] Returns the value of fx
-     * @returns Object
-     */
-    getFx?: () => any,
-
-    /**
-     * [Method] Render method
-     * @param surface Object
-     * @param ctx Object
-     * @param clipRegion Object
-     * @returns returns false to stop rendering in this frame. All the sprite haven't been rendered will have their dirty flag untouched.
-     */
-    render?: (surface?: any, ctx?: any, clipRegion?: any) => any,
-
-    /**
-     * [Method] Sets the value of field
-     * @param field Object The new value.
-     */
-    setField?: (Ext$field?: any) => void,
-
-    /**
-     * [Method] Sets the value of fx
-     * @param fx Object The new value.
-     */
-    setFx?: (Ext$fx?: any) => void,
-
-    /**
      * [Config Option] (String)
      */
     baseCls?: string,
@@ -24183,9 +13989,9 @@ declare module "sencha_touch" {
      * @param baseCls String The new value.
      */
     setBaseCls?: (baseCls?: string) => void
-  } & undefined.form$IText;
+  } & Ext$IComponent;
 
-  declare export type wrapper$IInner = {
+  declare export type Ext$layout$wrapper$IInner = {
     /**
      * [Method] Returns the value of container
      * @returns Object
@@ -24209,7 +14015,7 @@ declare module "sencha_touch" {
      * @param sizeState Object The new value.
      */
     setSizeState?: (sizeState?: any) => void
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 
   declare export interface Ext$ILoader {}
 
@@ -24244,7 +14050,7 @@ declare module "sencha_touch" {
      * @param paths Object a set of className: path mappings
      * @returns Ext.Loader this
      */
-    static addClassPathMappings(paths?: Ext$Object): Ext$Ext$ILoader;
+    static addClassPathMappings(paths?: Ext$Object): Ext$ILoader;
 
     /**
      * [Method] Explicitly exclude files from being loaded
@@ -24295,7 +14101,7 @@ declare module "sencha_touch" {
      * @param value Mixed The value for the config setting.
      * @returns Ext.Loader this
      */
-    static setConfig(name?: any, value?: any): Ext$Ext$ILoader;
+    static setConfig(name?: any, value?: any): Ext$ILoader;
 
     /**
      * [Method] Sets the path of a namespace
@@ -24303,7 +14109,7 @@ declare module "sencha_touch" {
      * @param path String See flexSetter
      * @returns Ext.Loader this
      */
-    static setPath(name?: any, path?: string): Ext$Ext$ILoader;
+    static setPath(name?: any, path?: string): Ext$ILoader;
 
     /**
      * [Method] Synchronously loads all classes by the given names and all their direct dependencies optionally executes the given c
@@ -24354,13 +14160,13 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.data.Store)
      */
-    store?: Ext$Ext$data.data$IStore,
+    store?: data$IStore,
 
     /**
      * [Method] Changes the data store bound to this LoadMask
      * @param store Ext.data.Store The store to bind to this LoadMask
      */
-    bindStore?: (store?: Ext$Ext$data.data$IStore) => void,
+    bindStore?: (store?: data$IStore) => void,
 
     /**
      * [Method] Returns the value of cls
@@ -24409,7 +14215,7 @@ declare module "sencha_touch" {
      * @param messageCls String The new value.
      */
     setMessageCls?: (messageCls?: string) => void
-  } & Ext$Ext$IMask;
+  } & Ext$IMask;
 
   declare export interface Ext$ILogger {}
 
@@ -24435,7 +14241,7 @@ declare module "sencha_touch" {
      * @param priority Number Priority of the log message.
      * @returns Ext.Logger this
      */
-    static log(message?: string, priority?: number): Ext$Ext$ILogger;
+    static log(message?: string, priority?: number): Ext$ILogger;
 
     /**
      * [Method] Convenience method for log with priority verbose
@@ -24457,7 +14263,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.util.Geolocation)
      */
-    geo?: Ext$Ext$util.util$IGeolocation,
+    geo?: util$IGeolocation,
 
     /**
      * [Config Option] (google.maps.Map)
@@ -24499,7 +14305,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of geo
      * @returns Ext.util.Geolocation
      */
-    getGeo?: () => Ext$Ext$util.util$IGeolocation,
+    getGeo?: () => util$IGeolocation,
 
     /**
      * [Method] Returns the value of map
@@ -24540,7 +14346,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of geo
      * @param geo Ext.util.Geolocation The new value.
      */
-    setGeo?: (geo?: Ext$Ext$util.util$IGeolocation) => void,
+    setGeo?: (geo?: util$IGeolocation) => void,
 
     /**
      * [Method] Sets the value of map
@@ -24577,7 +14383,7 @@ declare module "sencha_touch" {
      * @param coordinates Object/google.maps.LatLng Object representing the desired Latitude and longitude upon which to center the map.
      */
     update?: (coordinates?: any) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
   declare export type Ext$IMask = {
     /**
@@ -24613,7 +14419,7 @@ declare module "sencha_touch" {
      * @param transparent Boolean The new value.
      */
     setTransparent?: (transparent?: boolean) => void
-  } & Ext$Ext$IComponent;
+  } & Ext$IComponent;
 
   declare export type Ext$IMedia = {
     /**
@@ -24639,7 +14445,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Ext.Element)
      */
-    media?: Ext$Ext$IElement,
+    media?: Ext$IElement,
 
     /**
      * [Config Option] (Boolean)
@@ -24664,7 +14470,7 @@ declare module "sencha_touch" {
     /**
      * [Method] Destroys this Component
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of autoPause
@@ -24706,7 +14512,7 @@ declare module "sencha_touch" {
      * [Method] Returns the value of media
      * @returns Ext.Element
      */
-    getMedia?: () => Ext$Ext$IElement,
+    getMedia?: () => Ext$IElement,
 
     /**
      * [Method] Returns the value of muted
@@ -24781,7 +14587,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of media
      * @param media Ext.Element The new value.
      */
-    setMedia?: (media?: Ext$Ext$IElement) => void,
+    setMedia?: (media?: Ext$IElement) => void,
 
     /**
      * [Method] Sets the value of muted
@@ -24834,8 +14640,7 @@ declare module "sencha_touch" {
      * @param newUrl Object
      */
     updateUrl?: (newUrl?: any) => void
-  } & Ext$Ext$IBase &
-    undefined.tunnel$IAbstract;
+  } & Ext$IComponent;
 
   declare export type Ext$IMenu = {
     /**
@@ -24961,7 +14766,7 @@ declare module "sencha_touch" {
      * @param width String The new value.
      */
     setWidth?: (width?: string) => void
-  } & Ext$Ext$ISheet;
+  } & Ext$ISheet;
 
   declare export type Ext$IMessageBox = {
     /**
@@ -24997,7 +14802,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (String)
@@ -25047,7 +14852,7 @@ declare module "sencha_touch" {
       message?: string,
       fn?: any,
       scope?: any
-    ) => Ext$Ext$IMessageBox,
+    ) => Ext$IMessageBox,
 
     /**
      * [Method] Displays a confirmation message box with Yes and No buttons comparable to JavaScript s confirm
@@ -25062,7 +14867,7 @@ declare module "sencha_touch" {
       message?: string,
       fn?: any,
       scope?: any
-    ) => Ext$Ext$IMessageBox,
+    ) => Ext$IMessageBox,
 
     /**
      * [Method] Returns the value of baseCls
@@ -25141,7 +14946,7 @@ declare module "sencha_touch" {
      * @param iconCls String A CSS class name or empty string to clear the icon.
      * @returns Ext.MessageBox this
      */
-    setIcon?: (iconCls?: string) => Ext$Ext$IMessageBox,
+    setIcon?: (iconCls?: string) => Ext$IMessageBox,
 
     /**
      * [Method] Sets the value of iconCls
@@ -25153,7 +14958,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of message
@@ -25196,37 +15001,37 @@ declare module "sencha_touch" {
      * @param config Object An object with the following config options:
      * @returns Ext.MessageBox this
      */
-    show?: (config?: any) => Ext$Ext$IMessageBox,
+    show?: (config?: any) => Ext$IMessageBox,
 
     /**
      * [Method] Sets the value of message
      * @param message String The new value.
      * @returns Ext.MessageBox this
      */
-    updateText?: (message?: string) => Ext$Ext$IMessageBox
-  } & Ext$Ext$ISheet;
+    updateText?: (message?: string) => Ext$IMessageBox
+  } & Ext$ISheet;
 
-  declare export type mixin$ITraversable = {} & undefined.mixin$IMixin;
+  declare export type Ext$mixin$ITraversable = {} & undefined.IMixin;
 
-  declare export type Ext$IMsg = {} & Ext$Ext$IMessageBox;
+  declare export type Ext$IMsg = {} & Ext$IMessageBox;
 
   declare export class Ext$Msg {
     /**
      * [Property] (Ext.util.MixedCollection)
      */
-    static items: Ext$Ext$util.util$IMixedCollection;
+    static items: util$IMixedCollection;
 
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Adds one or more Components to this Container
      * @param newItems Object/Object[]/Ext.Component/Ext.Component[] The new items to add to the Container.
      * @returns Ext.Component The last item added to the Container from the newItems array.
      */
-    static add(newItems?: any): Ext$Ext$IComponent;
+    static add(newItems?: any): Ext$IComponent;
 
     /**
      * [Method] Appends an after event handler
@@ -25322,7 +15127,7 @@ declare module "sencha_touch" {
       message?: string,
       fn?: any,
       scope?: any
-    ): Ext$Ext$IMessageBox;
+    ): Ext$IMessageBox;
 
     /**
      * [Method] Animates to the supplied activeItem with a specified animation
@@ -25364,7 +15169,7 @@ declare module "sencha_touch" {
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    static child(selector?: string): Ext$Ext$IComponent;
+    static child(selector?: string): Ext$IComponent;
 
     /**
      * [Method] Removes all listeners for this object
@@ -25384,7 +15189,7 @@ declare module "sencha_touch" {
       message?: string,
       fn?: any,
       scope?: any
-    ): Ext$Ext$IMessageBox;
+    ): Ext$IMessageBox;
 
     /**
      * [Method]
@@ -25401,7 +15206,7 @@ declare module "sencha_touch" {
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    static down(selector?: string): Ext$Ext$IComponent;
+    static down(selector?: string): Ext$IComponent;
 
     /**
      * [Method] Enables this Component
@@ -25455,7 +15260,7 @@ declare module "sencha_touch" {
      * @param index Number The index of the Component to return.
      * @returns Ext.Component The item at the specified index, if found.
      */
-    static getAt(index?: number): Ext$Ext$IComponent;
+    static getAt(index?: number): Ext$IComponent;
 
     /**
      * [Method] Returns the value of autoDestroy
@@ -25528,7 +15333,7 @@ declare module "sencha_touch" {
      * @param component String/Number This parameter may be any of the following:  {String} : representing the itemId or id of the child component. {Number} : representing the position of the child component within the items property. For additional information see Ext.util.MixedCollection.get.
      * @returns Ext.Component The component (if found).
      */
-    static getComponent(component?: any): Ext$Ext$IComponent;
+    static getComponent(component?: any): Ext$IComponent;
 
     /**
      * [Method] Returns the value of contentEl
@@ -25601,7 +15406,7 @@ declare module "sencha_touch" {
      * [Method] Retrieves the top level element representing this component
      * @returns Ext.dom.Element
      */
-    static getEl(): Ext$Ext$dom.Ext$IElement;
+    static getEl(): dom$IElement;
 
     /**
      * [Method] Returns the value of enter
@@ -25770,7 +15575,7 @@ declare module "sencha_touch" {
      * [Method] Returns the parent of this component if it has one
      * @returns Ext.Component The parent of this component.
      */
-    static getParent(): Ext$Ext$IComponent;
+    static getParent(): Ext$IComponent;
 
     /**
      * [Method] Returns the value of plugins
@@ -25788,13 +15593,13 @@ declare module "sencha_touch" {
      * [Method] Returns the value of record
      * @returns Ext.data.Model
      */
-    static getRecord(): Ext$Ext$data.data$IModel;
+    static getRecord(): data$IModel;
 
     /**
      * [Method] Returns the value of renderTo
      * @returns Ext.Element
      */
-    static getRenderTo(): Ext$Ext$IElement;
+    static getRenderTo(): Ext$IElement;
 
     /**
      * [Method] Returns the value of right
@@ -25806,7 +15611,7 @@ declare module "sencha_touch" {
      * [Method] Returns an the scrollable instance for this container which is a Ext scroll View class
      * @returns Ext.scroll.View The scroll view.
      */
-    static getScrollable(): Ext$Ext$scroll.scroll$IView;
+    static getScrollable(): Ext$scroll$IView;
 
     /**
      * [Method] Returns the value of showAnimation
@@ -25915,7 +15720,7 @@ declare module "sencha_touch" {
      * [Method] Hides this Component optionally using an animation
      * @returns Ext.Component
      */
-    static hide(): Ext$Ext$IComponent;
+    static hide(): Ext$IComponent;
 
     /**
      * [Method] Initialize configuration for this class
@@ -26045,7 +15850,7 @@ declare module "sencha_touch" {
       multiLine?: any,
       value?: string,
       prompt?: any
-    ): Ext$Ext$IMessageBox;
+    ): Ext$IMessageBox;
 
     /**
      * [Method] Retrieves all descendant components which match the passed selector
@@ -26060,10 +15865,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    static relayEvents(
-      object?: any,
-      events?: any
-    ): Ext$Ext$mixin.util$IObservable;
+    static relayEvents(object?: any, events?: any): Ext$mixin$IObservable;
 
     /**
      * [Method] Removes an item from this Container optionally destroying it
@@ -26071,7 +15873,7 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    static remove(item?: any, Ext$destroy?: boolean): Ext$Ext$IComponent;
+    static remove(item?: any, destroy?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes a before event handler
@@ -26093,17 +15895,14 @@ declare module "sencha_touch" {
      * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
      * @returns Ext.Component this
      */
-    static removeAll(
-      Ext$destroy?: boolean,
-      everything?: boolean
-    ): Ext$Ext$IComponent;
+    static removeAll(destroy?: boolean, everything?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    static removeAt(index?: number): Ext$Ext$IContainer;
+    static removeAt(index?: number): Ext$IContainer;
 
     /**
      * [Method] Removes a before event handler
@@ -26133,14 +15932,14 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    static removeDocked(item?: any, Ext$destroy?: boolean): Ext$Ext$IComponent;
+    static removeDocked(item?: any, destroy?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes an inner Component at the specified index  myContainer removeInnerAt 0 removes the first item of the in
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    static removeInnerAt(index?: number): Ext$Ext$IContainer;
+    static removeInnerAt(index?: number): Ext$IContainer;
 
     /**
      * [Method] Removes an event handler
@@ -26285,7 +16084,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of data
      * @param data Object The new value.
      */
-    static setData(Ext$data?: any): void;
+    static setData(data?: any): void;
 
     /**
      * [Method] Sets the value of defaultTextHeight
@@ -26412,7 +16211,7 @@ declare module "sencha_touch" {
      * @param iconCls String A CSS class name or empty string to clear the icon.
      * @returns Ext.MessageBox this
      */
-    static setIcon(iconCls?: string): Ext$Ext$IMessageBox;
+    static setIcon(iconCls?: string): Ext$IMessageBox;
 
     /**
      * [Method] Sets the value of iconCls
@@ -26436,7 +16235,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    static setLayout(Ext$layout?: any): void;
+    static setLayout(layout?: any): void;
 
     /**
      * [Method] Sets the value of left
@@ -26514,13 +16313,13 @@ declare module "sencha_touch" {
      * [Method] Sets the value of record
      * @param record Ext.data.Model The new value.
      */
-    static setRecord(record?: Ext$Ext$data.data$IModel): void;
+    static setRecord(record?: data$IModel): void;
 
     /**
      * [Method] Sets the value of renderTo
      * @param renderTo Ext.Element The new value.
      */
-    static setRenderTo(renderTo?: Ext$Ext$IElement): void;
+    static setRenderTo(renderTo?: Ext$IElement): void;
 
     /**
      * [Method] Sets the value of right
@@ -26533,7 +16332,7 @@ declare module "sencha_touch" {
      * @param scrollable Boolean/String/Object The new value.
      * @returns Ext.scroll.View The scroll view.
      */
-    static setScrollable(scrollable?: any): Ext$Ext$scroll.scroll$IView;
+    static setScrollable(scrollable?: any): Ext$scroll$IView;
 
     /**
      * [Method] Sets the value of showAnimation
@@ -26625,20 +16424,20 @@ declare module "sencha_touch" {
      * @param config Object An object with the following config options:
      * @returns Ext.MessageBox this
      */
-    static show(config?: any): Ext$Ext$IMessageBox;
+    static show(config?: any): Ext$IMessageBox;
 
     /**
      * [Method] Shows this component by another component
      * @param component Ext.Component The target component to show this component by.
      * @param alignment String The specific alignment.
      */
-    static showBy(component?: Ext$Ext$IComponent, alignment?: string): void;
+    static showBy(component?: Ext$IComponent, alignment?: string): void;
 
     /**
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Suspends the firing of all events
@@ -26694,7 +16493,7 @@ declare module "sencha_touch" {
      * @param selector String The simple selector to test.
      * @returns Ext.Container The matching ancestor Container (or undefined if no match was found).
      */
-    static up(selector?: string): Ext$Ext$IContainer;
+    static up(selector?: string): Ext$IContainer;
 
     /**
      * [Method] Updates the HTML content of the Component
@@ -26713,10 +16512,10 @@ declare module "sencha_touch" {
      * @param message String The new value.
      * @returns Ext.MessageBox this
      */
-    static updateText(message?: string): Ext$Ext$IMessageBox;
+    static updateText(message?: string): Ext$IMessageBox;
   }
 
-  declare export type navigation$IView = {
+  declare export type Ext$navigation$IView = {
     /**
      * [Config Option] (String)
      */
@@ -26735,7 +16534,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Boolean/Object)
@@ -26794,20 +16593,20 @@ declare module "sencha_touch" {
      * @param count Number/String/Object If a Number, the number of views you want to pop. If a String, the pops to a matching component query. If an Object, the pops to a matching view instance.
      * @returns Ext.Component The new active item
      */
-    pop?: (count?: any) => Ext$Ext$IComponent,
+    pop?: (count?: any) => Ext$IComponent,
 
     /**
      * [Method] Pushes a new view into this navigation view using the default animation that this view has
      * @param view Object The view to push.
      * @returns Ext.Component The new item you just pushed.
      */
-    push?: (view?: any) => Ext$Ext$IComponent,
+    push?: (view?: any) => Ext$IComponent,
 
     /**
      * [Method] Resets the view by removing all items between the first and last item
      * @returns Ext.Component The view that is now active
      */
-    reset?: () => Ext$Ext$IComponent,
+    reset?: () => Ext$IComponent,
 
     /**
      * [Method] Sets the value of baseCls
@@ -26831,7 +16630,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of navigationBar
@@ -26843,92 +16642,8 @@ declare module "sencha_touch" {
      * [Method] Sets the value of useTitleForBackButtonText
      * @param useTitleForBackButtonText Boolean The new value.
      */
-    setUseTitleForBackButtonText?: (
-      useTitleForBackButtonText?: boolean
-    ) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    indicatorsUi?: string,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of element
-     * @returns Object
-     */
-    getElement?: () => any,
-
-    /**
-     * [Method] Returns the value of indicators
-     * @returns Object
-     */
-    getIndicators?: () => any,
-
-    /**
-     * [Method] Returns the value of indicatorsHidingDelay
-     * @returns Number
-     */
-    getIndicatorsHidingDelay?: () => number,
-
-    /**
-     * [Method] Returns the value of indicatorsUi
-     * @returns String
-     */
-    getIndicatorsUi?: () => string,
-
-    /**
-     * [Method] Returns the scroller instance in this view
-     * @returns Ext.scroll.View The scroller
-     */
-    getScroller?: () => Ext$Ext$scroll.navigation$IView,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of element
-     * @param element Object The new value.
-     */
-    setElement?: (element?: any) => void,
-
-    /**
-     * [Method] Sets the value of indicators
-     * @param indicators Object The new value.
-     */
-    setIndicators?: (indicators?: any) => void,
-
-    /**
-     * [Method] Sets the value of indicatorsHidingDelay
-     * @param indicatorsHidingDelay Number The new value.
-     */
-    setIndicatorsHidingDelay?: (indicatorsHidingDelay?: number) => void,
-
-    /**
-     * [Method] Sets the value of indicatorsUi
-     * @param indicatorsUi String The new value.
-     */
-    setIndicatorsUi?: (indicatorsUi?: string) => void,
-
-    /**
-     * [Method] Sets the value of scroller
-     * @param scroller Object The new value.
-     */
-    setScroller?: (scroller?: any) => void
-  } & Ext$Ext$IContainer;
+    setUseTitleForBackButtonText?: (useTitleForBackButtonText?: boolean) => void
+  } & Ext$IContainer;
 
   declare export type Ext$INavigationView = {
     /**
@@ -26949,7 +16664,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Boolean/Object)
@@ -27008,20 +16723,20 @@ declare module "sencha_touch" {
      * @param count Number/String/Object If a Number, the number of views you want to pop. If a String, the pops to a matching component query. If an Object, the pops to a matching view instance.
      * @returns Ext.Component The new active item
      */
-    pop?: (count?: any) => Ext$Ext$IComponent,
+    pop?: (count?: any) => Ext$IComponent,
 
     /**
      * [Method] Pushes a new view into this navigation view using the default animation that this view has
      * @param view Object The view to push.
      * @returns Ext.Component The new item you just pushed.
      */
-    push?: (view?: any) => Ext$Ext$IComponent,
+    push?: (view?: any) => Ext$IComponent,
 
     /**
      * [Method] Resets the view by removing all items between the first and last item
      * @returns Ext.Component The view that is now active
      */
-    reset?: () => Ext$Ext$IComponent,
+    reset?: () => Ext$IComponent,
 
     /**
      * [Method] Sets the value of baseCls
@@ -27045,7 +16760,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of navigationBar
@@ -27058,191 +16773,9 @@ declare module "sencha_touch" {
      * @param useTitleForBackButtonText Boolean The new value.
      */
     setUseTitleForBackButtonText?: (useTitleForBackButtonText?: boolean) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
-  declare export type Ext$INumber = {
-    /**
-     * [Config Option] (Object)
-     */
-    component?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    maxValue?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    minValue?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    stepValue?: number,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Returns the value of component
-     * @returns Object
-     */
-    getComponent?: () => any,
-
-    /**
-     * [Method] Returns the value of maxValue
-     * @returns Number
-     */
-    getMaxValue?: () => number,
-
-    /**
-     * [Method] Returns the value of minValue
-     * @returns Number
-     */
-    getMinValue?: () => number,
-
-    /**
-     * [Method] Returns the value of stepValue
-     * @returns Number
-     */
-    getStepValue?: () => number,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the value of value
-     * @returns Mixed
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Sets the value of component
-     * @param component Object The new value.
-     */
-    setComponent?: (component?: any) => void,
-
-    /**
-     * [Method] Sets the value of maxValue
-     * @param maxValue Number The new value.
-     */
-    setMaxValue?: (maxValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of minValue
-     * @param minValue Number The new value.
-     */
-    setMinValue?: (minValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of stepValue
-     * @param stepValue Number The new value.
-     */
-    setStepValue?: (stepValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Config Option] (Object)
-     */
-    component?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    maxValue?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    minValue?: number,
-
-    /**
-     * [Config Option] (Number)
-     */
-    stepValue?: number,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Returns the value of component
-     * @returns Object
-     */
-    getComponent?: () => any,
-
-    /**
-     * [Method] Returns the value of maxValue
-     * @returns Number
-     */
-    getMaxValue?: () => number,
-
-    /**
-     * [Method] Returns the value of minValue
-     * @returns Number
-     */
-    getMinValue?: () => number,
-
-    /**
-     * [Method] Returns the value of stepValue
-     * @returns Number
-     */
-    getStepValue?: () => number,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the value of value
-     * @returns Mixed
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Sets the value of component
-     * @param component Object The new value.
-     */
-    setComponent?: (component?: any) => void,
-
-    /**
-     * [Method] Sets the value of maxValue
-     * @param maxValue Number The new value.
-     */
-    setMaxValue?: (maxValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of minValue
-     * @param minValue Number The new value.
-     */
-    setMinValue?: (minValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of stepValue
-     * @param stepValue Number The new value.
-     */
-    setStepValue?: (stepValue?: number) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void
-  } & undefined.form$IText;
+  declare export interface Ext$INumber {}
 
   declare export class Ext$Number {
     /**
@@ -27252,11 +16785,7 @@ declare module "sencha_touch" {
      * @param max Number The maximum number in the range
      * @returns Number The constrained value if outside the range, otherwise the current value
      */
-    static constrain(
-      number?: number,
-      Ext$min?: number,
-      Ext$max?: number
-    ): number;
+    static constrain(number?: number, min?: number, max?: number): number;
 
     /**
      * [Method] Validate that a value is numeric and convert it to a number if necessary
@@ -27378,7 +16907,7 @@ declare module "sencha_touch" {
     static toQueryString(object?: any, recursive?: boolean): string;
   }
 
-  declare export type Ext$IOs = {} & undefined.env$IOS;
+  declare export type Ext$IOs = {} & undefined.IOS;
 
   declare export class Ext$Os {
     /**
@@ -27394,12 +16923,12 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Property] (Ext.Version)
      */
-    static Ext$version: Ext$Ext$IVersion;
+    static Ext$version: Ext$IVersion;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -27452,352 +16981,11 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
   declare export type Ext$IPanel = {
     /**
-     * [Config Option] (Object)
-     */
-    api?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Object)
-     */
-    baseParams?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    enableSubmissionForm?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    enctype?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    method?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    multipartDetection?: boolean,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    paramOrder?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    paramsAsHash?: boolean,
-
-    /**
-     * [Config Option] (Ext.data.Model)
-     */
-    record?: Ext$Ext$data.data$IModel,
-
-    /**
-     * [Config Option] (Boolean/String/Object)
-     */
-    scrollable?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    standardSubmit?: boolean,
-
-    /**
-     * [Config Option] (Object)
-     */
-    submitOnAction?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    timeout?: number,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    trackResetOnLoad?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    url?: string,
-
-    /**
-     * [Config Option] (Ext.dom.Element)
-     */
-    waitMsgTarget?: Ext$Ext$dom.Ext$IElement,
-
-    /**
-     * [Config Option] (Ext.XTemplate/String/String[])
-     */
-    waitTpl?: any,
-
-    /**
-     * [Method] A convenient method to disable all fields in this form
-     * @param newDisabled Object
-     * @returns Ext.form.Panel This form.
-     */
-    doSetDisabled?: (newDisabled?: any) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Returns the value of api
-     * @returns Object
-     */
-    getApi?: () => any,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of baseParams
-     * @returns Object
-     */
-    getBaseParams?: () => any,
-
-    /**
-     * [Method] Returns the value of enableSubmissionForm
-     * @returns Boolean
-     */
-    getEnableSubmissionForm?: () => boolean,
-
-    /**
-     * [Method] Returns the value of enctype
-     * @returns Object
-     */
-    getEnctype?: () => any,
-
-    /**
-     * [Method] Returns the value of method
-     * @returns String
-     */
-    getMethod?: () => string,
-
-    /**
-     * [Method] Returns the value of multipartDetection
-     * @returns Boolean
-     */
-    getMultipartDetection?: () => boolean,
-
-    /**
-     * [Method] Returns the value of paramOrder
-     * @returns String/String[]
-     */
-    getParamOrder?: () => any,
-
-    /**
-     * [Method] Returns the value of paramsAsHash
-     * @returns Boolean
-     */
-    getParamsAsHash?: () => boolean,
-
-    /**
-     * [Method] Returns the value of record
-     * @returns Ext.data.Model
-     */
-    getRecord?: () => Ext$Ext$data.data$IModel,
-
-    /**
-     * [Method] Returns the value of standardSubmit
-     * @returns Boolean
-     */
-    getStandardSubmit?: () => boolean,
-
-    /**
-     * [Method] Returns the value of submitOnAction
-     * @returns Object
-     */
-    getSubmitOnAction?: () => any,
-
-    /**
-     * [Method] Returns the value of timeout
-     * @returns Number
-     */
-    getTimeout?: () => number,
-
-    /**
-     * [Method] Returns the value of trackResetOnLoad
-     * @returns Boolean
-     */
-    getTrackResetOnLoad?: () => boolean,
-
-    /**
-     * [Method] Returns the value of url
-     * @returns String
-     */
-    getUrl?: () => string,
-
-    /**
-     * [Method] Returns an object containing the value of each field in the form keyed to the field s name
-     * @param enabled Boolean true to return only enabled fields.
-     * @param all Boolean true to return all fields even if they don't have a name configured.
-     * @returns Object Object mapping field name to its value.
-     */
-    getValues?: (enabled?: boolean, all?: boolean) => any,
-
-    /**
-     * [Method] Hides a previously shown wait mask See showMask
-     * @returns Ext.form.Panel this
-     */
-    hideMask?: () => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Performs an Ajax or Ext Direct call to load values for this form
-     * @param options Object The configuration when loading this form. The following are the configurations when loading via Ajax only:
-     * @returns Ext.data.Connection The request object.
-     */
-    load?: (options?: any) => Ext$Ext$data.device$IConnection,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    loadModel?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    loadRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Resets all fields in the form back to their original values
-     * @returns Ext.form.Panel This form.
-     */
-    reset?: () => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Sets the value of api
-     * @param api Object The new value.
-     */
-    setApi?: (api?: any) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseParams
-     * @param baseParams Object The new value.
-     */
-    setBaseParams?: (baseParams?: any) => void,
-
-    /**
-     * [Method] Sets the value of enableSubmissionForm
-     * @param enableSubmissionForm Boolean The new value.
-     */
-    setEnableSubmissionForm?: (enableSubmissionForm?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of enctype
-     * @param enctype Object The new value.
-     */
-    setEnctype?: (enctype?: any) => void,
-
-    /**
-     * [Method] Sets the value of method
-     * @param method String The new value.
-     */
-    setMethod?: (method?: string) => void,
-
-    /**
-     * [Method] Sets the value of multipartDetection
-     * @param multipartDetection Boolean The new value.
-     */
-    setMultipartDetection?: (multipartDetection?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of paramOrder
-     * @param paramOrder String/String[] The new value.
-     */
-    setParamOrder?: (paramOrder?: any) => void,
-
-    /**
-     * [Method] Sets the value of paramsAsHash
-     * @param paramsAsHash Boolean The new value.
-     */
-    setParamsAsHash?: (paramsAsHash?: boolean) => void,
-
-    /**
-     * [Method] Loads matching fields from a model instance into this form
-     * @param record Ext.data.Model The model instance.
-     * @returns Ext.form.Panel This form.
-     */
-    setRecord?: (record?: Ext$Ext$data.data$IModel) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Sets the value of standardSubmit
-     * @param standardSubmit Boolean The new value.
-     */
-    setStandardSubmit?: (standardSubmit?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of submitOnAction
-     * @param submitOnAction Object The new value.
-     */
-    setSubmitOnAction?: (submitOnAction?: any) => void,
-
-    /**
-     * [Method] Sets the value of timeout
-     * @param timeout Number The new value.
-     */
-    setTimeout?: (timeout?: number) => void,
-
-    /**
-     * [Method] Sets the value of trackResetOnLoad
-     * @param trackResetOnLoad Boolean The new value.
-     */
-    setTrackResetOnLoad?: (trackResetOnLoad?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of url
-     * @param url String The new value.
-     */
-    setUrl?: (url?: string) => void,
-
-    /**
-     * [Method] Sets the values of form fields in bulk
-     * @param values Object field name => value mapping object.
-     * @returns Ext.form.Panel This form.
-     */
-    setValues?: (values?: any) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Shows a generic custom mask over a designated Element
-     * @param cfg String/Object Either a string message or a configuration object supporting the following options: {  message : 'Please Wait',  cls : 'form-mask' }
-     * @param target Object
-     * @returns Ext.form.Panel This form
-     */
-    showMask?: (cfg?: any, target?: any) => Ext$Ext$form.Ext$IPanel,
-
-    /**
-     * [Method] Performs a Ajax based submission of form values if standardSubmit is false or otherwise executes a standard HTML Fo
-     * @param options Object The configuration when submitting this form. The following are the configurations when submitting via Ajax only:
-     * @returns Ext.data.Connection The request object if the standardSubmit config is false. If the standardSubmit config is true, then the return value is undefined.
-     */
-    submit?: (options?: any) => Ext$Ext$data.device$IConnection,
-
-    /**
      * [Config Option] (String)
      */
     baseCls?: string,
@@ -27863,188 +17051,10 @@ declare module "sencha_touch" {
      * [Method] Sets the value of bodyPadding
      * @param bodyPadding Number/Boolean/String The new value.
      */
-    setBodyPadding?: (bodyPadding?: any) => void,
+    setBodyPadding?: (bodyPadding?: any) => void
+  } & Ext$IContainer;
 
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyBorder?: any,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyMargin?: any,
-
-    /**
-     * [Config Option] (Number/Boolean/String)
-     */
-    bodyPadding?: any,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of bodyBorder
-     * @returns Number/Boolean/String
-     */
-    getBodyBorder?: () => any,
-
-    /**
-     * [Method] Returns the value of bodyMargin
-     * @returns Number/Boolean/String
-     */
-    getBodyMargin?: () => any,
-
-    /**
-     * [Method] Returns the value of bodyPadding
-     * @returns Number/Boolean/String
-     */
-    getBodyPadding?: () => any,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of bodyBorder
-     * @param bodyBorder Number/Boolean/String The new value.
-     */
-    setBodyBorder?: (bodyBorder?: any) => void,
-
-    /**
-     * [Method] Sets the value of bodyMargin
-     * @param bodyMargin Number/Boolean/String The new value.
-     */
-    setBodyMargin?: (bodyMargin?: any) => void,
-
-    /**
-     * [Method] Sets the value of bodyPadding
-     * @param bodyPadding Number/Boolean/String The new value.
-     */
-    setBodyPadding?: (bodyPadding?: any) => void,
-
-    /**
-     * [Config Option] (String/String[])
-     */
-    cls?: any,
-
-    /**
-     * [Config Option] (Object/String)
-     */
-    Ext$layout?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    tabBar?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    tabBarDock?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    tabBarPosition?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Method] Updates this container with the new active item
-     * @param tabBar Object
-     * @param newTab Object
-     * @returns Boolean
-     */
-    doTabChange?: (tabBar?: any, newTab?: any) => boolean,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of layout
-     * @returns Object
-     */
-    getLayout?: () => any,
-
-    /**
-     * [Method] Returns the value of tabBar
-     * @returns Object
-     */
-    getTabBar?: () => any,
-
-    /**
-     * [Method] Returns the value of tabBarPosition
-     * @returns String
-     */
-    getTabBarPosition?: () => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of tabBar
-     * @param tabBar Object The new value.
-     */
-    setTabBar?: (tabBar?: any) => void,
-
-    /**
-     * [Method] Sets the value of tabBarPosition
-     * @param tabBarPosition String The new value.
-     */
-    setTabBarPosition?: (tabBarPosition?: string) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Updates the Ui for this component and the tabBar
-     * @param newUi Object
-     * @param oldUi Object
-     */
-    updateUi?: (newUi?: any, oldUi?: any) => void
-  } & Ext$Ext$IPanel;
-
-  declare export type picker$ISlot = {
+  declare export type Ext$picker$ISlot = {
     /**
      * [Config Option] (String)
      */
@@ -28085,7 +17095,7 @@ declare module "sencha_touch" {
      * @param data Object
      * @returns Object
      */
-    applyData?: (Ext$data?: any) => any,
+    applyData?: (data?: any) => any,
 
     /**
      * [Method] Sets the title for this dataview by creating element
@@ -28166,213 +17176,9 @@ declare module "sencha_touch" {
      * @param oldAlign Object
      */
     updateAlign?: (newAlign?: any, oldAlign?: any) => void
-  } & undefined.Ext$IDataView;
+  } & undefined.IDataView;
 
   declare export type Ext$IDatePicker = {
-    /**
-     * [Config Option] (String)
-     */
-    dateFormat?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    destroyPickerOnHide?: boolean,
-
-    /**
-     * [Config Option] (Object/Ext.picker.Date)
-     */
-    Ext$picker?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Object/Date)
-     */
-    value?: any,
-
-    /**
-     * [Method] Returns the value of dateFormat
-     * @returns String
-     */
-    getDateFormat?: () => string,
-
-    /**
-     * [Method]
-     */
-    getDatePicker?: () => void,
-
-    /**
-     * [Method] Returns the value of destroyPickerOnHide
-     * @returns Boolean
-     */
-    getDestroyPickerOnHide?: () => boolean,
-
-    /**
-     * [Method] Returns the value of the field formatted using the specified format
-     * @param format String The format to be returned.
-     * @returns String The formatted date.
-     */
-    getFormattedValue?: (format?: string) => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the Date value of this field
-     * @returns Date The date selected
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Override this or change event will be fired twice
-     */
-    onChange?: () => void,
-
-    /**
-     * [Method] Resets the Select field to the value of the first record in the store
-     * @returns Ext.field.Select this
-     */
-    reset?: () => Ext$Ext$field.form$ISelect,
-
-    /**
-     * [Method] Sets the value of dateFormat
-     * @param dateFormat String The new value.
-     */
-    setDateFormat?: (dateFormat?: string) => void,
-
-    /**
-     * [Method] Sets the value of destroyPickerOnHide
-     * @param destroyPickerOnHide Boolean The new value.
-     */
-    setDestroyPickerOnHide?: (destroyPickerOnHide?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of picker
-     * @param picker Object/Ext.picker.Date The new value.
-     */
-    setPicker?: (Ext$picker?: any) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Sets the value of value
-     * @param value Object/Date The new value.
-     */
-    setValue?: (value?: any) => void,
-
-    /**
-     * [Config Option] (String)
-     */
-    dateFormat?: string,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    destroyPickerOnHide?: boolean,
-
-    /**
-     * [Config Option] (Object/Ext.picker.Date)
-     */
-    Ext$picker?: any,
-
-    /**
-     * [Config Option] (String)
-     */
-    ui?: string,
-
-    /**
-     * [Config Option] (Object/Date)
-     */
-    value?: any,
-
-    /**
-     * [Method] Returns the value of dateFormat
-     * @returns String
-     */
-    getDateFormat?: () => string,
-
-    /**
-     * [Method]
-     */
-    getDatePicker?: () => void,
-
-    /**
-     * [Method] Returns the value of destroyPickerOnHide
-     * @returns Boolean
-     */
-    getDestroyPickerOnHide?: () => boolean,
-
-    /**
-     * [Method] Returns the value of the field formatted using the specified format
-     * @param format String The format to be returned.
-     * @returns String The formatted date.
-     */
-    getFormattedValue?: (format?: string) => string,
-
-    /**
-     * [Method] Returns the value of ui
-     * @returns String
-     */
-    getUi?: () => string,
-
-    /**
-     * [Method] Returns the Date value of this field
-     * @returns Date The date selected
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Override this or change event will be fired twice
-     */
-    onChange?: () => void,
-
-    /**
-     * [Method] Resets the Select field to the value of the first record in the store
-     * @returns Ext.field.Select this
-     */
-    reset?: () => Ext$Ext$field.form$ISelect,
-
-    /**
-     * [Method] Sets the value of dateFormat
-     * @param dateFormat String The new value.
-     */
-    setDateFormat?: (dateFormat?: string) => void,
-
-    /**
-     * [Method] Sets the value of destroyPickerOnHide
-     * @param destroyPickerOnHide Boolean The new value.
-     */
-    setDestroyPickerOnHide?: (destroyPickerOnHide?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of picker
-     * @param picker Object/Ext.picker.Date The new value.
-     */
-    setPicker?: (Ext$picker?: any) => void,
-
-    /**
-     * [Method] Sets the value of ui
-     * @param ui String The new value.
-     */
-    setUi?: (ui?: string) => void,
-
-    /**
-     * [Method] Sets the value of value
-     * @param value Object/Date The new value.
-     */
-    setValue?: (value?: any) => void,
-
     /**
      * [Config Option] (String)
      */
@@ -28497,7 +17303,7 @@ declare module "sencha_touch" {
      * @param animated Object
      * @returns Ext.Picker this This picker.
      */
-    setValue?: (value?: any, animated?: any) => Ext$Ext$IPicker,
+    setValue?: (value?: any, animated?: any) => Ext$IPicker,
 
     /**
      * [Method] Sets the value of yearFrom
@@ -28546,7 +17352,7 @@ declare module "sencha_touch" {
      * [Method] Updates the yearTo configuration
      */
     updateYearTo?: () => void
-  } & undefined.form$ISelect;
+  } & undefined.IPicker;
 
   declare export type Ext$IPicker = {
     /**
@@ -28582,7 +17388,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Number/String)
@@ -28631,7 +17437,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of baseCls
@@ -28751,7 +17557,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of left
@@ -28795,270 +17601,16 @@ declare module "sencha_touch" {
      * @param animated Boolean true to animate setting the values.
      * @returns Ext.Picker this This picker.
      */
-    setValue?: (values?: any, animated?: boolean) => Ext$Ext$IPicker,
+    setValue?: (values?: any, animated?: boolean) => Ext$IPicker,
 
     /**
      * [Method] Shows this component optionally using an animation
      * @returns Ext.Component
      */
-    show?: () => Ext$Ext$IComponent,
+    show?: () => Ext$IComponent
+  } & Ext$ISheet;
 
-    /**
-     * [Config Option] (String)
-     */
-    activeCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    bottom?: any,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    cancelButton?: any,
-
-    /**
-     * [Config Option] (String/Mixed)
-     */
-    doneButton?: any,
-
-    /**
-     * [Config Option] (Number)
-     */
-    height?: number,
-
-    /**
-     * [Config Option] (Object/String)
-     */
-    Ext$layout?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    left?: any,
-
-    /**
-     * [Config Option] (Number/String)
-     */
-    right?: any,
-
-    /**
-     * [Config Option] (Array)
-     */
-    slots?: any[],
-
-    /**
-     * [Config Option] (Ext.TitleBar/Ext.Toolbar/Object)
-     */
-    toolbar?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useTitles?: boolean,
-
-    /**
-     * [Config Option] (String/Number)
-     */
-    value?: any,
-
-    /**
-     * [Method] Updates the cancelButton configuration
-     * @param config Object
-     * @returns Object
-     */
-    applyCancelButton?: (config?: any) => any,
-
-    /**
-     * [Method] Updates the doneButton configuration
-     * @param config Object
-     * @returns Object
-     */
-    applyDoneButton?: (config?: any) => any,
-
-    /**
-     * [Method]
-     */
-    Ext$destroy?: () => void,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of bottom
-     * @returns Number
-     */
-    getBottom?: () => number,
-
-    /**
-     * [Method] Returns the value of cancelButton
-     * @returns String/Mixed
-     */
-    getCancelButton?: () => any,
-
-    /**
-     * [Method] Returns the value of activeItem
-     * @returns Object/String/Number
-     */
-    getCard?: () => any,
-
-    /**
-     * [Method] Returns the value of doneButton
-     * @returns String/Mixed
-     */
-    getDoneButton?: () => any,
-
-    /**
-     * [Method] Returns the value of layout
-     * @returns Object
-     */
-    getLayout?: () => any,
-
-    /**
-     * [Method] Returns the value of slots
-     * @returns Array
-     */
-    getSlots?: () => any[],
-
-    /**
-     * [Method] Returns the value of toolbar
-     * @returns Ext.TitleBar/Ext.Toolbar/Object
-     */
-    getToolbar?: () => any,
-
-    /**
-     * [Method] Returns the value of toolbarPosition
-     * @returns String
-     */
-    getToolbarPosition?: () => string,
-
-    /**
-     * [Method] Returns the value of useTitles
-     * @returns Boolean
-     */
-    getUseTitles?: () => boolean,
-
-    /**
-     * [Method] Returns the values of each of the pickers slots
-     * @param useDom Object
-     * @returns Object The values of the pickers slots
-     */
-    getValue?: (useDom?: any) => any,
-
-    /**
-     * [Method] Returns the values of each of the pickers slots
-     * @returns Object The values of the pickers slots.
-     */
-    getValues?: () => any,
-
-    /**
-     * [Method] Allows addition of behavior to the rendering phase
-     */
-    initialize?: () => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of bottom
-     * @param bottom Number The new value.
-     */
-    setBottom?: (bottom?: number) => void,
-
-    /**
-     * [Method] Sets the value of cancelButton
-     * @param cancelButton String/Mixed The new value.
-     */
-    setCancelButton?: (cancelButton?: any) => void,
-
-    /**
-     * [Method] Sets the value of activeItem
-     * @param activeItem Object/String/Number The new value.
-     */
-    setCard?: (activeItem?: any) => void,
-
-    /**
-     * [Method] Sets the value of doneButton
-     * @param doneButton String/Mixed The new value.
-     */
-    setDoneButton?: (doneButton?: any) => void,
-
-    /**
-     * [Method] Sets the value of height
-     * @param height Number The new value.
-     */
-    setHeight?: (height?: number) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of left
-     * @param left Number The new value.
-     */
-    setLeft?: (left?: number) => void,
-
-    /**
-     * [Method] Sets the value of right
-     * @param right Number The new value.
-     */
-    setRight?: (right?: number) => void,
-
-    /**
-     * [Method] Sets the value of slots
-     * @param slots Array The new value.
-     */
-    setSlots?: (slots?: any[]) => void,
-
-    /**
-     * [Method] Sets the value of toolbar
-     * @param toolbar Ext.TitleBar/Ext.Toolbar/Object The new value.
-     */
-    setToolbar?: (toolbar?: any) => void,
-
-    /**
-     * [Method] Sets the value of toolbarPosition
-     * @param toolbarPosition String The new value.
-     */
-    setToolbarPosition?: (toolbarPosition?: string) => void,
-
-    /**
-     * [Method] Sets the value of useTitles
-     * @param useTitles Boolean The new value.
-     */
-    setUseTitles?: (useTitles?: boolean) => void,
-
-    /**
-     * [Method] Sets the values of the pickers slots
-     * @param values Object The values in a {name:'value'} format.
-     * @param animated Boolean true to animate setting the values.
-     * @returns Ext.Picker this This picker.
-     */
-    setValue?: (values?: any, animated?: boolean) => Ext$Ext$IPicker,
-
-    /**
-     * [Method] Shows this component optionally using an animation
-     * @returns Ext.Component
-     */
-    show?: () => Ext$Ext$IComponent
-  } & Ext$Ext$ISheet;
-
-  declare export type plugin$ISortableList = {
+  declare export type Ext$plugin$ISortableList = {
     /**
      * [Method] Returns the value of handleSelector
      * @returns String
@@ -29082,8 +17634,8 @@ declare module "sencha_touch" {
      * @param list Object The new value.
      */
     setList?: (list?: any) => void
-  } & Ext$Ext$IComponent &
-    undefined.mixin$IBindable;
+  } & Ext$IComponent &
+    undefined.IBindable;
 
   declare export type Ext$IProgressIndicator = {
     /**
@@ -29262,206 +17814,22 @@ declare module "sencha_touch" {
      * @param showAnimation Object The new value.
      */
     setShowAnimation?: (showAnimation?: any) => void
-  } & Ext$Ext$IContainer &
-    undefined.mixin$IProgressable;
+  } & Ext$IContainer &
+    undefined.IProgressable;
 
-  declare export type Ext$IPromise = {} & Ext$Ext$IBase;
+  declare export type Ext$IPromise = {} & Ext$IBase;
 
-  declare export type Ext$IRouter = {
-    /**
-     * [Config Option] (Object)
-     */
-    defaults?: any,
-
-    /**
-     * [Config Option] (Array)
-     */
-    routes?: any[],
-
-    /**
-     * [Method] Connects a url based route to a controller action pair plus additional params
-     * @param url String The url to recognize.
-     * @param params Object Additional parameters.
-     */
-    connect?: (url?: string, params?: any) => void,
-
-    /**
-     * [Method] Convenience method which just calls the supplied function with the Router instance
-     * @param fn Function The fn to call
-     */
-    Ext$draw?: (fn?: any) => void,
-
-    /**
-     * [Method] Returns the value of defaults
-     * @returns Object
-     */
-    getDefaults?: () => any,
-
-    /**
-     * [Method] Returns the value of routes
-     * @returns Array
-     */
-    getRoutes?: () => any[],
-
-    /**
-     * [Method] Recognizes a url string connected to the Router return the controller action pair plus any additional config associa
-     * @param url String The url to recognize.
-     * @returns Object/undefined If the url was recognized, the controller and action to call, else undefined.
-     */
-    recognize?: (url?: string) => any,
-
-    /**
-     * [Method] Sets the value of defaults
-     * @param defaults Object The new value.
-     */
-    setDefaults?: (defaults?: any) => void,
-
-    /**
-     * [Method] Sets the value of routes
-     * @param routes Array The new value.
-     */
-    setRoutes?: (routes?: any[]) => void
-  } & Ext$Ext$IBase;
+  declare export interface Ext$IRouter {}
 
   declare export class Ext$Router {
     /**
      * [Method] Application s onDependenciesLoaded has a deprecated wrapped line that calls this
      * @param app Object
      */
-    static setAppInstance(Ext$app?: any): void;
+    static setAppInstance(app?: any): void;
   }
 
-  declare export type scroll$IView = {
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    defaultBackButtonText?: string,
-
-    /**
-     * [Config Option] (Array/Object)
-     */
-    items?: any,
-
-    /**
-     * [Config Option] (Object)
-     */
-    Ext$layout?: any,
-
-    /**
-     * [Config Option] (Boolean/Object)
-     */
-    navigationBar?: any,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    useTitleForBackButtonText?: boolean,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of defaultBackButtonText
-     * @returns String
-     */
-    getDefaultBackButtonText?: () => string,
-
-    /**
-     * [Method] Returns the value of items
-     * @returns Array/Object
-     */
-    getItems?: () => any,
-
-    /**
-     * [Method] Returns the value of layout
-     * @returns Object
-     */
-    getLayout?: () => any,
-
-    /**
-     * [Method] Returns the value of navigationBar
-     * @returns Boolean/Object
-     */
-    getNavigationBar?: () => any,
-
-    /**
-     * [Method] Returns the previous item if one exists
-     * @returns Mixed The previous view
-     */
-    getPreviousItem?: () => any,
-
-    /**
-     * [Method] Returns the value of useTitleForBackButtonText
-     * @returns Boolean
-     */
-    getUseTitleForBackButtonText?: () => boolean,
-
-    /**
-     * [Method] Removes the current active view from the stack and sets the previous view using the default animation of this view
-     * @param count Number/String/Object If a Number, the number of views you want to pop. If a String, the pops to a matching component query. If an Object, the pops to a matching view instance.
-     * @returns Ext.Component The new active item
-     */
-    pop?: (count?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Pushes a new view into this navigation view using the default animation that this view has
-     * @param view Object The view to push.
-     * @returns Ext.Component The new item you just pushed.
-     */
-    push?: (view?: any) => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Resets the view by removing all items between the first and last item
-     * @returns Ext.Component The view that is now active
-     */
-    reset?: () => Ext$Ext$IComponent,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of defaultBackButtonText
-     * @param defaultBackButtonText String The new value.
-     */
-    setDefaultBackButtonText?: (defaultBackButtonText?: string) => void,
-
-    /**
-     * [Method] Sets the value of items
-     * @param items Array/Object The new value.
-     */
-    setItems?: (items?: any) => void,
-
-    /**
-     * [Method] Sets the value of layout
-     * @param layout Object The new value.
-     */
-    setLayout?: (Ext$layout?: any) => void,
-
-    /**
-     * [Method] Sets the value of navigationBar
-     * @param navigationBar Boolean/Object The new value.
-     */
-    setNavigationBar?: (navigationBar?: any) => void,
-
-    /**
-     * [Method] Sets the value of useTitleForBackButtonText
-     * @param useTitleForBackButtonText Boolean The new value.
-     */
-    setUseTitleForBackButtonText?: (
-      useTitleForBackButtonText?: boolean
-    ) => void,
-
+  declare export type Ext$scroll$IView = {
     /**
      * [Config Option] (String)
      */
@@ -29470,7 +17838,7 @@ declare module "sencha_touch" {
     /**
      * [Method]
      */
-    Ext$destroy?: () => void,
+    destroy?: () => void,
 
     /**
      * [Method] Returns the value of cls
@@ -29506,7 +17874,7 @@ declare module "sencha_touch" {
      * [Method] Returns the scroller instance in this view
      * @returns Ext.scroll.View The scroller
      */
-    getScroller?: () => Ext$Ext$scroll.scroll$IView,
+    getScroller?: () => Ext$scroll$IView,
 
     /**
      * [Method] Sets the value of cls
@@ -29543,7 +17911,7 @@ declare module "sencha_touch" {
      * @param scroller Object The new value.
      */
     setScroller?: (scroller?: any) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IEvented;
 
   declare export type Ext$ISegmentedButton = {
     /**
@@ -29574,7 +17942,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Array)
@@ -29649,7 +18017,7 @@ declare module "sencha_touch" {
      * @param button Ext.Button The button to check if pressed.
      * @returns Boolean pressed
      */
-    isPressed?: (button?: Ext$Ext$IButton) => boolean,
+    isPressed?: (button?: Ext$IButton) => boolean,
 
     /**
      * [Method] Sets the value of allowDepress
@@ -29685,7 +18053,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Activates a button
@@ -29710,7 +18078,7 @@ declare module "sencha_touch" {
      * @param pressedCls String The new value.
      */
     setPressedCls?: (pressedCls?: string) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
   declare export type Ext$ISheet = {
     /**
@@ -29853,251 +18221,9 @@ declare module "sencha_touch" {
      * @param stretchY Boolean The new value.
      */
     setStretchY?: (stretchY?: boolean) => void
-  } & Ext$Ext$IPanel;
+  } & Ext$IPanel;
 
-  declare export type slider$IToggle = {
-    /**
-     * [Config Option] (String)
-     */
-    activeLabel?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    cls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    inactiveLabel?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    labelAlign?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    maxValueCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    minValueCls?: string,
-
-    /**
-     * [Method] Returns the value of activeLabel
-     * @returns String
-     */
-    getActiveLabel?: () => string,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of inactiveLabel
-     * @returns String
-     */
-    getInactiveLabel?: () => string,
-
-    /**
-     * [Method] Returns the value of labelAlign
-     * @returns String
-     */
-    getLabelAlign?: () => string,
-
-    /**
-     * [Method] Returns the value of maxValueCls
-     * @returns String
-     */
-    getMaxValueCls?: () => string,
-
-    /**
-     * [Method] Returns the value of minValueCls
-     * @returns String
-     */
-    getMinValueCls?: () => string,
-
-    /**
-     * [Method] Returns the value of value
-     * @returns Number/Number[]
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Sets the value of activeLabel
-     * @param activeLabel String The new value.
-     */
-    setActiveLabel?: (activeLabel?: string) => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of inactiveLabel
-     * @param inactiveLabel String The new value.
-     */
-    setInactiveLabel?: (inactiveLabel?: string) => void,
-
-    /**
-     * [Method] Sets the value of labelAlign
-     * @param labelAlign String The new value.
-     */
-    setLabelAlign?: (labelAlign?: string) => void,
-
-    /**
-     * [Method] Sets the value of maxValueCls
-     * @param maxValueCls String The new value.
-     */
-    setMaxValueCls?: (maxValueCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of minValueCls
-     * @param minValueCls String The new value.
-     */
-    setMinValueCls?: (minValueCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of the toggle
-     * @param newValue Number 1 for toggled, 0 for untoggled.
-     * @returns Object this
-     */
-    setValue?: (newValue?: number) => any,
-
-    /**
-     * [Method] Toggles the value of this toggle field
-     * @returns Object this
-     */
-    toggle?: () => any,
-
-    /**
-     * [Config Option] (String)
-     */
-    activeLabel?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    cls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    inactiveLabel?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    labelAlign?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    maxValueCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    minValueCls?: string,
-
-    /**
-     * [Method] Returns the value of activeLabel
-     * @returns String
-     */
-    getActiveLabel?: () => string,
-
-    /**
-     * [Method] Returns the value of cls
-     * @returns String
-     */
-    getCls?: () => string,
-
-    /**
-     * [Method] Returns the value of inactiveLabel
-     * @returns String
-     */
-    getInactiveLabel?: () => string,
-
-    /**
-     * [Method] Returns the value of labelAlign
-     * @returns String
-     */
-    getLabelAlign?: () => string,
-
-    /**
-     * [Method] Returns the value of maxValueCls
-     * @returns String
-     */
-    getMaxValueCls?: () => string,
-
-    /**
-     * [Method] Returns the value of minValueCls
-     * @returns String
-     */
-    getMinValueCls?: () => string,
-
-    /**
-     * [Method] Returns the value of value
-     * @returns Number/Number[]
-     */
-    getValue?: () => any,
-
-    /**
-     * [Method] Sets the value of activeLabel
-     * @param activeLabel String The new value.
-     */
-    setActiveLabel?: (activeLabel?: string) => void,
-
-    /**
-     * [Method] Sets the value of cls
-     * @param cls String The new value.
-     */
-    setCls?: (cls?: string) => void,
-
-    /**
-     * [Method] Sets the value of inactiveLabel
-     * @param inactiveLabel String The new value.
-     */
-    setInactiveLabel?: (inactiveLabel?: string) => void,
-
-    /**
-     * [Method] Sets the value of labelAlign
-     * @param labelAlign String The new value.
-     */
-    setLabelAlign?: (labelAlign?: string) => void,
-
-    /**
-     * [Method] Sets the value of maxValueCls
-     * @param maxValueCls String The new value.
-     */
-    setMaxValueCls?: (maxValueCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of minValueCls
-     * @param minValueCls String The new value.
-     */
-    setMinValueCls?: (minValueCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of the toggle
-     * @param newValue Number 1 for toggled, 0 for untoggled.
-     * @returns Object this
-     */
-    setValue?: (newValue?: number) => any,
-
-    /**
-     * [Method] Toggles the value of this toggle field
-     * @returns Object this
-     */
-    toggle?: () => any,
-
+  declare export type Ext$slider$IToggle = {
     /**
      * [Config Option] (String)
      */
@@ -30161,7 +18287,7 @@ declare module "sencha_touch" {
      * @param oldValue Object
      */
     setValue?: (newValue?: any, oldValue?: any) => void
-  } & undefined.slider$ISlider;
+  } & undefined.ISlider;
 
   declare export type Ext$ISpacer = {
     /**
@@ -30191,7 +18317,7 @@ declare module "sencha_touch" {
      * @param width Number The new value.
      */
     setWidth?: (width?: number) => void
-  } & Ext$Ext$IComponent;
+  } & Ext$IComponent;
 
   declare export interface Ext$IString {}
 
@@ -30317,92 +18443,7 @@ declare module "sencha_touch" {
     VML?: any;
   }
 
-  declare export type tab$ITab = {
-    /**
-     * [Config Option] (Boolean)
-     */
-    active?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    activeCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    pressedCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    title?: string,
-
-    /**
-     * [Method] Returns the value of active
-     * @returns Boolean
-     */
-    getActive?: () => boolean,
-
-    /**
-     * [Method] Returns the value of activeCls
-     * @returns String
-     */
-    getActiveCls?: () => string,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of pressedCls
-     * @returns String
-     */
-    getPressedCls?: () => string,
-
-    /**
-     * [Method] Returns the value of title
-     * @returns String
-     */
-    getTitle?: () => string,
-
-    /**
-     * [Method] Sets the value of active
-     * @param active Boolean The new value.
-     */
-    setActive?: (active?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of activeCls
-     * @param activeCls String The new value.
-     */
-    setActiveCls?: (activeCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of pressedCls
-     * @param pressedCls String The new value.
-     */
-    setPressedCls?: (pressedCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of title
-     * @param title String The new value.
-     */
-    setTitle?: (title?: string) => void,
-
+  declare export type Ext$tab$ITab = {
     /**
      * [Config Option] (Boolean)
      */
@@ -30487,7 +18528,7 @@ declare module "sencha_touch" {
      * @param title String The new value.
      */
     setTitle?: (title?: string) => void
-  } & Ext$Ext$IButton;
+  } & Ext$IButton;
 
   declare export type Ext$ITabBar = {
     /**
@@ -30528,7 +18569,7 @@ declare module "sencha_touch" {
      * @param baseCls String The new value.
      */
     setBaseCls?: (baseCls?: string) => void
-  } & Ext$Ext$IToolbar;
+  } & Ext$IToolbar;
 
   declare export type Ext$ITabPanel = {
     /**
@@ -30539,7 +18580,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (Object)
@@ -30614,7 +18655,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of tabBar
@@ -30640,7 +18681,7 @@ declare module "sencha_touch" {
      * @param oldUi Object
      */
     updateUi?: (newUi?: any, oldUi?: any) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
   declare export type Ext$ITab = {
     /**
@@ -30726,101 +18767,16 @@ declare module "sencha_touch" {
      * [Method] Sets the value of title
      * @param title String The new value.
      */
-    setTitle?: (title?: string) => void,
-
-    /**
-     * [Config Option] (Boolean)
-     */
-    active?: boolean,
-
-    /**
-     * [Config Option] (String)
-     */
-    activeCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    baseCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    pressedCls?: string,
-
-    /**
-     * [Config Option] (String)
-     */
-    title?: string,
-
-    /**
-     * [Method] Returns the value of active
-     * @returns Boolean
-     */
-    getActive?: () => boolean,
-
-    /**
-     * [Method] Returns the value of activeCls
-     * @returns String
-     */
-    getActiveCls?: () => string,
-
-    /**
-     * [Method] Returns the value of baseCls
-     * @returns String
-     */
-    getBaseCls?: () => string,
-
-    /**
-     * [Method] Returns the value of pressedCls
-     * @returns String
-     */
-    getPressedCls?: () => string,
-
-    /**
-     * [Method] Returns the value of title
-     * @returns String
-     */
-    getTitle?: () => string,
-
-    /**
-     * [Method] Sets the value of active
-     * @param active Boolean The new value.
-     */
-    setActive?: (active?: boolean) => void,
-
-    /**
-     * [Method] Sets the value of activeCls
-     * @param activeCls String The new value.
-     */
-    setActiveCls?: (activeCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of baseCls
-     * @param baseCls String The new value.
-     */
-    setBaseCls?: (baseCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of pressedCls
-     * @param pressedCls String The new value.
-     */
-    setPressedCls?: (pressedCls?: string) => void,
-
-    /**
-     * [Method] Sets the value of title
-     * @param title String The new value.
-     */
     setTitle?: (title?: string) => void
-  } & Ext$Ext$IButton;
+  } & Ext$IButton;
 
-  declare export type Ext$ITaskQueue = {} & Ext$Ext$IBase;
+  declare export type Ext$ITaskQueue = {} & Ext$IBase;
 
   declare export class Ext$TaskQueue {
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
@@ -30866,7 +18822,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
   }
 
   declare export type Ext$ITemplate = {
@@ -30899,7 +18855,7 @@ declare module "sencha_touch" {
      * @param values Object/Array The template values. Can be an array if your params are numeric:  var tpl = new Ext.Template('Name: {0}, Age: {1}'); tpl.apply(['John', 25]); or an object:  var tpl = new Ext.Template('Name: {name}, Age: {age}'); tpl.apply({name: 'John', age: 25});
      * @returns String The HTML fragment.
      */
-    Ext$apply?: (values?: any) => string,
+    apply?: (values?: any) => string,
 
     /**
      * [Method] Appends the result of this template to the provided output array
@@ -30920,7 +18876,7 @@ declare module "sencha_touch" {
      * [Method] Compiles the template into an internal function eliminating the RegEx overhead
      * @returns Ext.Template this
      */
-    compile?: () => Ext$Ext$ITemplate,
+    compile?: () => Ext$ITemplate,
 
     /**
      * [Method] Applies the supplied values to the template and inserts the new node s after el
@@ -30964,8 +18920,8 @@ declare module "sencha_touch" {
      * @param compile Boolean true to compile the template.
      * @returns Ext.Template this
      */
-    set?: (html?: string, compile?: boolean) => Ext$Ext$ITemplate
-  } & Ext$Ext$IBase;
+    set?: (html?: string, compile?: boolean) => Ext$ITemplate
+  } & Ext$IBase;
 
   declare export class Ext$Template {
     /**
@@ -30979,7 +18935,7 @@ declare module "sencha_touch" {
      * @param members Object
      * @returns Ext.Base this
      */
-    static addStatics(members?: any): Ext$Ext$IBase;
+    static addStatics(members?: any): Ext$IBase;
 
     /**
      * [Method]
@@ -31006,7 +18962,7 @@ declare module "sencha_touch" {
      * @param config Object Config object.
      * @returns Ext.Template The created template.
      */
-    static from(el?: any, config?: any): Ext$Ext$ITemplate;
+    static from(el?: any, config?: any): Ext$ITemplate;
 
     /**
      * [Method] Get the current class name in string format
@@ -31019,7 +18975,7 @@ declare module "sencha_touch" {
      * @param members Object The properties to add to this class. This should be specified as an object literal containing one or more properties.
      * @returns Ext.Base this class
      */
-    static override(members?: any): Ext$Ext$IBase;
+    static override(members?: any): Ext$IBase;
   }
 
   declare export type Ext$ITitle = {
@@ -31056,7 +19012,7 @@ declare module "sencha_touch" {
      * @param title String The new value.
      */
     setTitle?: (title?: string) => void
-  } & Ext$Ext$IComponent;
+  } & Ext$IComponent;
 
   declare export type Ext$ITitleBar = {
     /**
@@ -31210,7 +19166,7 @@ declare module "sencha_touch" {
      * @param ui String The new value.
      */
     setUi?: (ui?: string) => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
   declare export type Ext$IToolbar = {
     /**
@@ -31231,7 +19187,7 @@ declare module "sencha_touch" {
     /**
      * [Config Option] (Object/String)
      */
-    Ext$layout?: any,
+    layout?: any,
 
     /**
      * [Config Option] (String)
@@ -31281,7 +19237,7 @@ declare module "sencha_touch" {
      * [Method] Returns an Ext Title component
      * @returns Ext.Title
      */
-    getTitle?: () => Ext$Ext$ITitle,
+    getTitle?: () => Ext$ITitle,
 
     /**
      * [Method] Returns the value of ui
@@ -31316,7 +19272,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object/String The new value.
      */
-    setLayout?: (Ext$layout?: any) => void,
+    setLayout?: (layout?: any) => void,
 
     /**
      * [Method] Sets the value of minHeight
@@ -31340,14 +19296,14 @@ declare module "sencha_touch" {
      * [Method] Shows the title if it exists
      */
     showTitle?: () => void
-  } & Ext$Ext$IContainer;
+  } & Ext$IContainer;
 
-  declare export type ux$ITabMenuButton = {
+  declare export type Ext$ux$ITabMenuButton = {
     /**
      * [Property] ()
      */
     menuItems?: any
-  } & undefined.ux$IMenuButton;
+  } & undefined.IMenuButton;
 
   declare export interface Ext$IVersion {
     /**
@@ -31412,7 +19368,7 @@ declare module "sencha_touch" {
      * @param packageName String The package name, for example: 'core', 'touch', 'extjs'.
      * @returns Ext.Version The version.
      */
-    getVersion?: (packageName?: string) => Ext$Ext$IVersion;
+    getVersion?: (packageName?: string) => Ext$IVersion;
 
     /**
      * [Method] Convenient alias to isGreaterThan
@@ -31483,13 +19439,13 @@ declare module "sencha_touch" {
      * @param version String/Ext.Version The version, for example: '1.2.3alpha', '2.4.0-dev'.
      * @returns any
      */
-    setVersion?: (packageName?: string, Ext$version?: any) => any;
+    setVersion?: (packageName?: string, version?: any) => any;
 
     /**
      * [Method] Returns this format  major minor patch build release
      * @returns Number[]
      */
-    Ext$toArray?: () => number[];
+    toArray?: () => number[];
 
     /**
      * [Method]
@@ -31579,9 +19535,9 @@ declare module "sencha_touch" {
      * @param newUrl Object
      */
     updateUrl?: (newUrl?: any) => void
-  } & Ext$Ext$IMedia;
+  } & Ext$IMedia;
 
-  declare export type viewport$IWP = {
+  declare export type Ext$viewport$IWP = {
     /**
      * [Method] Returns the value of translatable
      * @returns Object
@@ -31598,9 +19554,9 @@ declare module "sencha_touch" {
      * @param translatable Object The new value.
      */
     setTranslatable?: (translatable?: any) => void
-  } & undefined.viewport$IDefault;
+  } & undefined.IDefault;
 
-  declare export type Ext$IViewport = {} & undefined.viewport$IDefault;
+  declare export type Ext$IViewport = {} & undefined.IDefault;
 
   declare export class Ext$Viewport {
     /**
@@ -31611,19 +19567,19 @@ declare module "sencha_touch" {
     /**
      * [Property] (Ext.util.MixedCollection)
      */
-    static items: Ext$Ext$util.util$IMixedCollection;
+    static items: util$IMixedCollection;
 
     /**
      * [Property] (Ext.Class)
      */
-    static self: Ext$Ext$IClass;
+    static self: Ext$IClass;
 
     /**
      * [Method] Adds one or more Components to this Container
      * @param newItems Object/Object[]/Ext.Component/Ext.Component[] The new items to add to the Container.
      * @returns Ext.Component The last item added to the Container from the newItems array.
      */
-    static add(newItems?: any): Ext$Ext$IComponent;
+    static add(newItems?: any): Ext$IComponent;
 
     /**
      * [Method] Appends an after event handler
@@ -31746,7 +19702,7 @@ declare module "sencha_touch" {
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    static child(selector?: string): Ext$Ext$IComponent;
+    static child(selector?: string): Ext$IComponent;
 
     /**
      * [Method] Removes all listeners for this object
@@ -31768,7 +19724,7 @@ declare module "sencha_touch" {
      * @param selector String An Ext.ComponentQuery selector.
      * @returns Ext.Component
      */
-    static down(selector?: string): Ext$Ext$IComponent;
+    static down(selector?: string): Ext$IComponent;
 
     /**
      * [Method] Enables this Component
@@ -31822,7 +19778,7 @@ declare module "sencha_touch" {
      * @param index Number The index of the Component to return.
      * @returns Ext.Component The item at the specified index, if found.
      */
-    static getAt(index?: number): Ext$Ext$IComponent;
+    static getAt(index?: number): Ext$IComponent;
 
     /**
      * [Method] Returns the value of autoDestroy
@@ -31877,7 +19833,7 @@ declare module "sencha_touch" {
      * @param component String/Number This parameter may be any of the following:  {String} : representing the itemId or id of the child component. {Number} : representing the position of the child component within the items property. For additional information see Ext.util.MixedCollection.get.
      * @returns Ext.Component The component (if found).
      */
-    static getComponent(component?: any): Ext$Ext$IComponent;
+    static getComponent(component?: any): Ext$IComponent;
 
     /**
      * [Method] Returns the value of contentEl
@@ -31944,7 +19900,7 @@ declare module "sencha_touch" {
      * [Method] Retrieves the top level element representing this component
      * @returns Ext.dom.Element
      */
-    static getEl(): Ext$Ext$dom.Ext$IElement;
+    static getEl(): dom$IElement;
 
     /**
      * [Method] Returns the value of enterAnimation
@@ -32107,7 +20063,7 @@ declare module "sencha_touch" {
      * [Method] Returns the parent of this component if it has one
      * @returns Ext.Component The parent of this component.
      */
-    static getParent(): Ext$Ext$IComponent;
+    static getParent(): Ext$IComponent;
 
     /**
      * [Method] Returns the value of plugins
@@ -32131,13 +20087,13 @@ declare module "sencha_touch" {
      * [Method] Returns the value of record
      * @returns Ext.data.Model
      */
-    static getRecord(): Ext$Ext$data.data$IModel;
+    static getRecord(): data$IModel;
 
     /**
      * [Method] Returns the value of renderTo
      * @returns Ext.Element
      */
-    static getRenderTo(): Ext$Ext$IElement;
+    static getRenderTo(): Ext$IElement;
 
     /**
      * [Method] Returns the value of right
@@ -32149,7 +20105,7 @@ declare module "sencha_touch" {
      * [Method] Returns an the scrollable instance for this container which is a Ext scroll View class
      * @returns Ext.scroll.View The scroll view.
      */
-    static getScrollable(): Ext$Ext$scroll.scroll$IView;
+    static getScrollable(): Ext$scroll$IView;
 
     /**
      * [Method] Returns the value of showAnimation
@@ -32252,7 +20208,7 @@ declare module "sencha_touch" {
      * [Method] Hides this Component optionally using an animation
      * @returns Ext.Component
      */
-    static hide(): Ext$Ext$IComponent;
+    static hide(): Ext$IComponent;
 
     /**
      * [Method] Hides all visible menus
@@ -32395,10 +20351,7 @@ declare module "sencha_touch" {
      * @param events String/Array/Object Array of event names to relay.
      * @returns Ext.mixin.Observable this
      */
-    static relayEvents(
-      object?: any,
-      events?: any
-    ): Ext$Ext$mixin.util$IObservable;
+    static relayEvents(object?: any, events?: any): Ext$mixin$IObservable;
 
     /**
      * [Method] Removes an item from this Container optionally destroying it
@@ -32406,7 +20359,7 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    static remove(item?: any, Ext$destroy?: boolean): Ext$Ext$IComponent;
+    static remove(item?: any, destroy?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes a before event handler
@@ -32428,17 +20381,14 @@ declare module "sencha_touch" {
      * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
      * @returns Ext.Component this
      */
-    static removeAll(
-      Ext$destroy?: boolean,
-      everything?: boolean
-    ): Ext$Ext$IComponent;
+    static removeAll(destroy?: boolean, everything?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    static removeAt(index?: number): Ext$Ext$IContainer;
+    static removeAt(index?: number): Ext$IContainer;
 
     /**
      * [Method] Removes a before event handler
@@ -32468,14 +20418,14 @@ declare module "sencha_touch" {
      * @param destroy Boolean Calls the Component's destroy method if true.
      * @returns Ext.Component this
      */
-    static removeDocked(item?: any, Ext$destroy?: boolean): Ext$Ext$IComponent;
+    static removeDocked(item?: any, destroy?: boolean): Ext$IComponent;
 
     /**
      * [Method] Removes an inner Component at the specified index  myContainer removeInnerAt 0 removes the first item of the in
      * @param index Number The index of the Component to remove.
      * @returns Ext.Container this
      */
-    static removeInnerAt(index?: number): Ext$Ext$IContainer;
+    static removeInnerAt(index?: number): Ext$IContainer;
 
     /**
      * [Method] Removes an event handler
@@ -32608,7 +20558,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of data
      * @param data Object The new value.
      */
-    static setData(Ext$data?: any): void;
+    static setData(data?: any): void;
 
     /**
      * [Method] Sets the value of defaultType
@@ -32722,7 +20672,7 @@ declare module "sencha_touch" {
      * [Method] Sets the value of layout
      * @param layout Object/String The new value.
      */
-    static setLayout(Ext$layout?: any): void;
+    static setLayout(layout?: any): void;
 
     /**
      * [Method] Sets the value of left
@@ -32765,7 +20715,7 @@ declare module "sencha_touch" {
      * @param menu Ext.Menu The menu to assign to the viewport
      * @param config Object The configuration for the menu.
      */
-    static setMenu(menu?: Ext$Ext$IMenu, config?: any): void;
+    static setMenu(menu?: Ext$IMenu, config?: any): void;
 
     /**
      * [Method] Sets the value of minHeight
@@ -32813,13 +20763,13 @@ declare module "sencha_touch" {
      * [Method] Sets the value of record
      * @param record Ext.data.Model The new value.
      */
-    static setRecord(record?: Ext$Ext$data.data$IModel): void;
+    static setRecord(record?: data$IModel): void;
 
     /**
      * [Method] Sets the value of renderTo
      * @param renderTo Ext.Element The new value.
      */
-    static setRenderTo(renderTo?: Ext$Ext$IElement): void;
+    static setRenderTo(renderTo?: Ext$IElement): void;
 
     /**
      * [Method] Sets the value of right
@@ -32832,7 +20782,7 @@ declare module "sencha_touch" {
      * @param scrollable Boolean/String/Object The new value.
      * @returns Ext.scroll.View The scroll view.
      */
-    static setScrollable(scrollable?: any): Ext$Ext$scroll.scroll$IView;
+    static setScrollable(scrollable?: any): Ext$scroll$IView;
 
     /**
      * [Method] Sets the value of showAnimation
@@ -32905,14 +20855,14 @@ declare module "sencha_touch" {
      * [Method] Shows this component optionally using an animation
      * @returns Ext.Component
      */
-    static show(): Ext$Ext$IComponent;
+    static show(): Ext$IComponent;
 
     /**
      * [Method] Shows this component by another component
      * @param component Ext.Component The target component to show this component by.
      * @param alignment String The specific alignment.
      */
-    static showBy(component?: Ext$Ext$IComponent, alignment?: string): void;
+    static showBy(component?: Ext$IComponent, alignment?: string): void;
 
     /**
      * [Method] Shows a menu specified by the menu s side
@@ -32924,7 +20874,7 @@ declare module "sencha_touch" {
      * [Method] Get the reference to the class from which this object was instantiated
      * @returns Ext.Class
      */
-    static statics(): Ext$Ext$IClass;
+    static statics(): Ext$IClass;
 
     /**
      * [Method] Suspends the firing of all events
@@ -32986,7 +20936,7 @@ declare module "sencha_touch" {
      * @param selector String The simple selector to test.
      * @returns Ext.Container The matching ancestor Container (or undefined if no match was found).
      */
-    static up(selector?: string): Ext$Ext$IContainer;
+    static up(selector?: string): Ext$IContainer;
 
     /**
      * [Method] Updates the HTML content of the Component
@@ -33010,7 +20960,7 @@ declare module "sencha_touch" {
      * @returns Array The given out array.
      */
     applyOut?: (values?: any, out?: any[], parent?: any) => any[]
-  } & Ext$Ext$ITemplate;
+  } & Ext$ITemplate;
 
   declare export class Ext$XTemplate {
     /**
@@ -33024,7 +20974,7 @@ declare module "sencha_touch" {
      * @param members Object
      * @returns Ext.Base this
      */
-    static addStatics(members?: any): Ext$Ext$IBase;
+    static addStatics(members?: any): Ext$IBase;
 
     /**
      * [Method]
@@ -33051,7 +21001,7 @@ declare module "sencha_touch" {
      * @param config Object Config object.
      * @returns Ext.Template The created template.
      */
-    static from(el?: any, config?: any): Ext$Ext$ITemplate;
+    static from(el?: any, config?: any): Ext$ITemplate;
 
     /**
      * [Method] Get the current class name in string format
@@ -33065,14 +21015,14 @@ declare module "sencha_touch" {
      * @param name String The name of the property by which to get the XTemplate.
      * @returns Ext.XTemplate The XTemplate instance or null if not found.
      */
-    static getTpl(instance?: any, name?: string): Ext$Ext$IXTemplate;
+    static getTpl(instance?: any, name?: string): Ext$IXTemplate;
 
     /**
      * [Method] Override members of this class
      * @param members Object The properties to add to this class. This should be specified as an object literal containing one or more properties.
      * @returns Ext.Base this class
      */
-    static override(members?: any): Ext$Ext$IBase;
+    static override(members?: any): Ext$IBase;
   }
 
   declare export type Ext$IXTemplateCompiler = {
@@ -33104,7 +21054,7 @@ declare module "sencha_touch" {
      * @param type Object
      * @param actions Object
      */
-    doEnd?: (Ext$type?: any, actions?: any) => void,
+    doEnd?: (type?: any, actions?: any) => void,
 
     /**
      * [Method] This method is called to process text
@@ -33156,7 +21106,7 @@ declare module "sencha_touch" {
      * @param text Object
      */
     doText?: (text?: any) => void
-  } & Ext$Ext$IXTemplateParser;
+  } & Ext$IXTemplateParser;
 
   declare export type Ext$IXTemplateParser = {
     /**
@@ -33193,7 +21143,7 @@ declare module "sencha_touch" {
      * @param type String The type of action that is being ended.
      * @param actions Object The other actions keyed by the attribute name (such as 'exec').
      */
-    doEnd?: (Ext$type?: string, actions?: any) => void,
+    doEnd?: (type?: string, actions?: any) => void,
 
     /**
      * [Method] This method is called to process text
@@ -33251,5 +21201,5 @@ declare module "sencha_touch" {
      * [Method] This method is called to process an empty lt tpl gt
      */
     doTpl?: () => void
-  } & Ext$Ext$IBase;
+  } & Ext$IBase;
 }
