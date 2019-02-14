@@ -80,23 +80,20 @@ declare module "i18next-xhr-backend" {
   declare class I18NextXhrBackend {
     constructor(
       services?: any,
-      options?: I18NextXhrBackend$I18NextXhrBackend$BackendOptions
+      options?: I18NextXhrBackend$BackendOptions
     ): this;
-    init(options?: I18NextXhrBackend$I18NextXhrBackend$BackendOptions): void;
+    init(options?: I18NextXhrBackend$BackendOptions): void;
     readMulti(
       languages: string[],
       namespaces: string[],
-      callback: I18NextXhrBackend$I18NextXhrBackend$LoadCallback
+      callback: I18NextXhrBackend$LoadCallback
     ): void;
     read(
       language: string,
       namespace: string,
-      callback: I18NextXhrBackend$I18NextXhrBackend$LoadCallback
+      callback: I18NextXhrBackend$LoadCallback
     ): void;
-    loadUrl(
-      url: string,
-      callback: I18NextXhrBackend$I18NextXhrBackend$LoadCallback
-    ): void;
+    loadUrl(url: string, callback: I18NextXhrBackend$LoadCallback): void;
     create(
       languages: string | string[],
       namespace: string,
@@ -105,7 +102,7 @@ declare module "i18next-xhr-backend" {
     ): void;
     type: "backend";
     services: any;
-    options: I18NextXhrBackend$I18NextXhrBackend$BackendOptions;
+    options: I18NextXhrBackend$BackendOptions;
   }
-  declare module.exports: typeof I18NextXhrBackend;
+  declare export default typeof I18NextXhrBackend;
 }
