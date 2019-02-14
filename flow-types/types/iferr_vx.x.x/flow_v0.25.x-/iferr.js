@@ -27,5 +27,5 @@ declare module "iferr" {
 
   declare function iferr$printerr(): nodeCallback<any>;
 
-  declare module.exports: typeof iferr$iferr;
+  declare export default typeof iferr;
 }
