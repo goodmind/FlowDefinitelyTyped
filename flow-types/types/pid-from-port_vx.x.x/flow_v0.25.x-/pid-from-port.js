@@ -1,5 +1,5 @@
 declare module "pid-from-port" {
-  declare module.exports: typeof pidFromPort;
+  declare export default typeof pidFromPort;
 
   /**
    * Get PID from a port
