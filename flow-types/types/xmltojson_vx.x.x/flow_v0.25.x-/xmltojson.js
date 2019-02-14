@@ -1,5 +1,5 @@
 declare module "xmltojson" {
-  declare module.exports: typeof xmltojson;
+  declare export default typeof xmltojson;
 
   declare var npm$namespace$xmltojson: {
     grokType: typeof xmltojson$grokType,
