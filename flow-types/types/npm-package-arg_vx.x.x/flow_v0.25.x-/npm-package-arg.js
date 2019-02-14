@@ -1,29 +1,31 @@
 declare module "npm-package-arg" {
   /**
- * Throws if the package name is invalid, a dist-tag is invalid or a URL's protocol is not supported.
- * @param arg a string that you might pass to npm install, like:
-foo
- * @ 1.2,
- * @bar /foo
- * @ 1.2, foo
- * @user /foo, http://x.com/foo.tgz, git+https://github.com/user/foo, bitbucket:user/foo, foo.tar.gz, ../foo/bar/ or bar.
-If the arg you provide doesn't have a specifier part, eg foo then the specifier will default to latest.
- * @param where Optionally the path to resolve file paths relative to. Defaults to process.cwd()
- */
-  declare function npa(arg: string, where?: string): npa$npa$Result;
+   * Throws if the package name is invalid, a dist-tag is invalid or a URL's protocol is not supported.
+   * @param arg a string that you might pass to npm install, like:
+   * foo
+   * @ 1.2,
+   * @bar /foo
+   * @ 1.2, foo
+   * @user /foo, http://x.com/foo.tgz, git+https://github.com/user/foo, bitbucket:user/foo, foo.tar.gz, ../foo/bar/ or bar.
+   * If the arg you provide doesn't have a specifier part, eg foo then the specifier will default to latest.
+   * @param where Optionally the path to resolve file paths relative to. Defaults to process.cwd()
+   */
+  declare function npa(arg: string, where?: string): npa$Result;
 
   declare var npm$namespace$npa: {
-    resolve: typeof npa$resolve
+    resolve: typeof npa$resolve,
+
+    Result: typeof npa$Result
   };
 
   /**
- * Throws if the package name is invalid, a dist-tag is invalid or a URL's protocol is not supported.
- * @param name The name of the module you want to install. For example: foo or
- * @bar /foo.
- * @param spec The specifier indicating where and how you can get this module.
-Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/foo, bitbucket:user/foo, file:foo.tar.gz or file:../foo/bar/. If not included then the default is latest.
- * @param where Optionally the path to resolve file paths relative to. Defaults to process.cwd()
- */
+   * Throws if the package name is invalid, a dist-tag is invalid or a URL's protocol is not supported.
+   * @param name The name of the module you want to install. For example: foo or
+   * @bar /foo.
+   * @param spec The specifier indicating where and how you can get this module.
+   * Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/foo, bitbucket:user/foo, file:foo.tar.gz or file:../foo/bar/. If not included then the default is latest.
+   * @param where Optionally the path to resolve file paths relative to. Defaults to process.cwd()
+   */
   declare function npa$resolve(
     name: string,
     spec: string,
@@ -117,7 +119,7 @@ Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/
     where: string,
     saveSpec: string,
     fetchSpec: null | string
-  } & npa$Result;
+  } & Result;
 
   declare type npa$HostedGitResult = {
     type: "git",
@@ -126,7 +128,7 @@ Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/
     fetchSpec: null | string,
     gitRange: void | string,
     gitCommittish: void | string
-  } & npa$Result;
+  } & Result;
 
   declare type npa$URLResult = {
     saveSpec: string,
@@ -134,7 +136,7 @@ Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/
     fetchSpec: string,
     gitCommittish: string | void,
     gitRange: string | void
-  } & npa$Result;
+  } & Result;
 
   declare type npa$AliasResult = {
     subSpec: npa$Result,
@@ -142,14 +144,14 @@ Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/
     type: "alias",
     saveSpec: null,
     fetchSpec: null
-  } & npa$Result;
+  } & Result;
 
   declare type npa$RegistryResult = {
     registry: true,
     type: "version" | "range" | "tag",
     saveSpec: null,
     fetchSpec: string
-  } & npa$Result;
+  } & Result;
 
   declare interface npa$HostedGit {
     type: string;
@@ -157,5 +159,5 @@ Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/
     user: string;
     project: string;
   }
-  declare module.exports: typeof npa;
+  declare export default typeof npa;
 }
