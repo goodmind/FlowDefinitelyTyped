@@ -1,13 +1,13 @@
 declare module "through2" {
   declare function through2(
-    transform?: through2$through2$TransformFunction,
-    flush?: through2$through2$FlushCallback
+    transform?: through2$TransformFunction,
+    flush?: through2$FlushCallback
   ): stream.Transform;
 
   declare function through2(
     opts?: stream.DuplexOptions,
-    transform?: through2$through2$TransformFunction,
-    flush?: through2$through2$FlushCallback
+    transform?: through2$TransformFunction,
+    flush?: through2$FlushCallback
   ): stream.Transform;
 
   declare var npm$namespace$through2: {
@@ -52,5 +52,5 @@ declare module "through2" {
     flush?: through2$FlushCallback
   ): through2$Through2Constructor;
 
-  declare module.exports: typeof through2;
+  declare export default typeof through2;
 }
