@@ -2,12 +2,31 @@ declare module "physijs" {
   declare var npm$namespace$Physijs: {
     noConflict: typeof Physijs$noConflict,
     createMaterial: typeof Physijs$createMaterial,
-    scripts: typeof Physijs$scripts
+    scripts: typeof Physijs$scripts,
+
+    PointConstraint: typeof Physijs$PointConstraint,
+    HingeConstraint: typeof Physijs$HingeConstraint,
+    SliderConstraint: typeof Physijs$SliderConstraint,
+    ConeTwistConstraint: typeof Physijs$ConeTwistConstraint,
+    DOFConstraint: typeof Physijs$DOFConstraint,
+    Scene: typeof Physijs$Scene,
+    Mesh: typeof Physijs$Mesh,
+    PlaneMesh: typeof Physijs$PlaneMesh,
+    HeightfieldMesh: typeof Physijs$HeightfieldMesh,
+    BoxMesh: typeof Physijs$BoxMesh,
+    SphereMesh: typeof Physijs$SphereMesh,
+    CylinderMesh: typeof Physijs$CylinderMesh,
+    CapsuleMesh: typeof Physijs$CapsuleMesh,
+    ConeMesh: typeof Physijs$ConeMesh,
+    ConcaveMesh: typeof Physijs$ConcaveMesh,
+    ConvexMesh: typeof Physijs$ConvexMesh,
+    Vehicle: typeof Physijs$Vehicle,
+    VehicleTuning: typeof Physijs$VehicleTuning
   };
   declare export function Physijs$noConflict(): Object;
 
   declare export function Physijs$createMaterial(
-    material: THREE.Physijs$Material,
+    material: THREE.Material,
     friction?: number,
     restitution?: number
   ): Physijs$Material;
@@ -18,7 +37,7 @@ declare module "physijs" {
       friction: number,
       restriction: number
     }
-  } & THREE.Physijs$Material;
+  } & THREE.Material;
 
   declare export interface Physijs$Constraint {
     getDefinition(): any;
@@ -33,7 +52,7 @@ declare module "physijs" {
     positionb: THREE.Vector3;
   }
 
-  declare export class Physijs$PointConstraint mixins Physijs$Constraint {
+  declare export class Physijs$PointConstraint mixins Constraint {
     constructor(
       objecta: THREE.Object3D,
       objectb: THREE.Object3D,
@@ -52,7 +71,7 @@ declare module "physijs" {
     axis: THREE.Vector3;
   }
 
-  declare export class Physijs$HingeConstraint mixins Physijs$Constraint {
+  declare export class Physijs$HingeConstraint mixins Constraint {
     constructor(
       objecta: THREE.Object3D,
       objectb: THREE.Object3D,
@@ -80,7 +99,7 @@ declare module "physijs" {
     axis: THREE.Vector3;
   }
 
-  declare export class Physijs$SliderConstraint mixins Physijs$Constraint {
+  declare export class Physijs$SliderConstraint mixins Constraint {
     constructor(
       objecta: THREE.Object3D,
       objectb: THREE.Object3D,
@@ -112,7 +131,7 @@ declare module "physijs" {
     axisb: THREE.Vector3;
   }
 
-  declare export class Physijs$ConeTwistConstraint mixins Physijs$Constraint {
+  declare export class Physijs$ConeTwistConstraint mixins Constraint {
     constructor(
       objecta: THREE.Object3D,
       objectb: THREE.Object3D,
@@ -139,7 +158,7 @@ declare module "physijs" {
     axisb: THREE.Vector3;
   }
 
-  declare export class Physijs$DOFConstraint mixins Physijs$Constraint {
+  declare export class Physijs$DOFConstraint mixins Constraint {
     constructor(
       objecta: THREE.Object3D,
       objectb: THREE.Object3D,
@@ -172,7 +191,7 @@ declare module "physijs" {
     rateLimit?: boolean;
   }
 
-  declare export class Physijs$Scene mixins THREE.Physijs$Scene {
+  declare export class Physijs$Scene mixins THREE.Scene {
     constructor(param?: Physijs$SceneParameters): this;
     addConstraint(constraint: Physijs$Constraint, show_marker?: boolean): void;
     onSimulationResume(): void;
@@ -195,10 +214,10 @@ declare module "physijs" {
     }): void;
   }
 
-  declare export class Physijs$Mesh mixins THREE.Physijs$Mesh {
+  declare export class Physijs$Mesh mixins THREE.Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material?: THREE.Physijs$Material,
+      material?: THREE.Material,
       mass?: number
     ): this;
     applyCentralImpulse(force: THREE.Vector3): void;
@@ -226,87 +245,87 @@ declare module "physijs" {
     }): void;
   }
 
-  declare export class Physijs$PlaneMesh mixins Physijs$Mesh {
+  declare export class Physijs$PlaneMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$HeightfieldMesh mixins Physijs$Mesh {
+  declare export class Physijs$HeightfieldMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number,
       xdiv?: number,
       ydiv?: number
     ): this;
   }
 
-  declare export class Physijs$BoxMesh mixins Physijs$Mesh {
+  declare export class Physijs$BoxMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$SphereMesh mixins Physijs$Mesh {
+  declare export class Physijs$SphereMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$CylinderMesh mixins Physijs$Mesh {
+  declare export class Physijs$CylinderMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$CapsuleMesh mixins Physijs$Mesh {
+  declare export class Physijs$CapsuleMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$ConeMesh mixins Physijs$Mesh {
+  declare export class Physijs$ConeMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$ConcaveMesh mixins Physijs$Mesh {
+  declare export class Physijs$ConcaveMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
-  declare export class Physijs$ConvexMesh mixins Physijs$Mesh {
+  declare export class Physijs$ConvexMesh mixins Mesh {
     constructor(
       geometry: THREE.Geometry,
-      material: THREE.Physijs$Material,
+      material: THREE.Material,
       mass?: number
     ): this;
   }
 
   declare export class Physijs$Vehicle {
     constructor(mesh: Physijs$Mesh, tuning?: Physijs$VehicleTuning): this;
-    mesh: THREE.Physijs$Mesh;
-    wheels: THREE.Physijs$Mesh[];
+    mesh: THREE.Mesh;
+    wheels: THREE.Mesh[];
     addWheel(
       wheel_geometry: THREE.Geometry,
-      wheel_material: THREE.Physijs$Material,
+      wheel_material: THREE.Material,
       connection_point: THREE.Vector3,
       wheel_direction: THREE.Vector3,
       wheel_axle: THREE.Vector3,
@@ -315,9 +334,9 @@ declare module "physijs" {
       is_front_wheel: boolean,
       tuning?: Physijs$VehicleTuning
     ): void;
-    setSteering(amount: number, wheel?: THREE.Physijs$Mesh): void;
-    setBrake(amount: number, wheel?: THREE.Physijs$Mesh): void;
-    applyEngineForce(amount: number, wheel?: THREE.Physijs$Mesh): void;
+    setSteering(amount: number, wheel?: THREE.Mesh): void;
+    setBrake(amount: number, wheel?: THREE.Mesh): void;
+    applyEngineForce(amount: number, wheel?: THREE.Mesh): void;
   }
 
   declare export class Physijs$VehicleTuning {
