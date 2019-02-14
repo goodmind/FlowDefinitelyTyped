@@ -11,7 +11,7 @@ declare module "gapi" {
     /**
      * Details about the error. Only present in error responses
      */
-    log$error: string;
+    error: string;
 
     /**
      * The duration, in seconds, the token is valid for. Only present in successful responses
@@ -21,19 +21,22 @@ declare module "gapi" {
     /**
      * The Google API scopes related to this token
      */
-    copyformatting$state: string;
+    state: string;
   }
 
   declare var npm$namespace$gapi: {
-    load: typeof gapi$load
+    load: typeof gapi$load,
+
+    auth: typeof npm$namespace$gapi$auth,
+    client: typeof npm$namespace$gapi$client
   };
   declare type gapi$LoadCallback = (...args: any[]) => void;
 
   declare type gapi$LoadConfig = {
-    braintree$callback: gapi$LoadCallback,
-    onerror?: core$Function,
+    callback: gapi$LoadCallback,
+    onerror?: Function,
     timeout?: number,
-    ontimeout?: core$Function
+    ontimeout?: Function
   };
 
   declare type gapi$CallbackOrConfig = gapi$LoadConfig | gapi$LoadCallback;
@@ -44,16 +47,16 @@ declare module "gapi" {
    */
   declare export function gapi$load(
     apiName: string,
-    braintree$callback: gapi$CallbackOrConfig
+    callback: gapi$CallbackOrConfig
   ): void;
 
-  declare var npm$namespace$auth: {
-    authorize: typeof auth$authorize,
-    init: typeof auth$init,
-    getToken: typeof auth$getToken,
-    setToken: typeof auth$setToken,
-    signIn: typeof auth$signIn,
-    signOut: typeof auth$signOut
+  declare var npm$namespace$gapi$auth: {
+    authorize: typeof gapi$auth$authorize,
+    init: typeof gapi$auth$init,
+    getToken: typeof gapi$auth$getToken,
+    setToken: typeof gapi$auth$setToken,
+    signIn: typeof gapi$auth$signIn,
+    signOut: typeof gapi$auth$signOut
   };
 
   /**
@@ -61,7 +64,7 @@ declare module "gapi" {
    * @param params A key/value map of parameters for the request. If the key is not one of the expected OAuth 2.0 parameters, it is added to the URI as a query parameter.
    * @param callback The function to call once the login process is complete. The function takes an OAuth 2.0 token object as its only parameter.
    */
-  declare export function auth$authorize(
+  declare export function gapi$auth$authorize(
     params: {
       /**
        * The application's client ID.
@@ -88,26 +91,26 @@ declare module "gapi" {
        */
       authuser?: number
     },
-    braintree$callback: (token: GoogleApiOAuth2TokenObject) => any
+    callback: (token: GoogleApiOAuth2TokenObject) => any
   ): void;
 
   /**
    * Initializes the authorization feature. Call this when the client loads to prevent popup blockers from blocking the auth window on gapi.auth.authorize calls.
    * @param callback A callback to execute when the auth feature is ready to make authorization calls.
    */
-  declare export function auth$init(braintree$callback: () => any): void;
+  declare export function gapi$auth$init(callback: () => any): void;
 
   /**
    * Retrieves the OAuth 2.0 token for the application.
    * @return The OAuth 2.0 token.
    */
-  declare export function auth$getToken(): GoogleApiOAuth2TokenObject;
+  declare export function gapi$auth$getToken(): GoogleApiOAuth2TokenObject;
 
   /**
    * Sets the OAuth 2.0 token for the application.
    * @param token The token to set.
    */
-  declare export function auth$setToken(
+  declare export function gapi$auth$setToken(
     token: GoogleApiOAuth2TokenObject
   ): void;
 
@@ -116,7 +119,7 @@ declare module "gapi" {
    * When the method is called, the OAuth 2.0 authorization dialog is displayed to the user and when they accept, the callback function is called.
    * @param params
    */
-  declare export function auth$signIn(params: {
+  declare export function gapi$auth$signIn(params: {
     /**
      * Your OAuth 2.0 client ID that you obtained from the Google Developers Console.
      */
@@ -130,7 +133,7 @@ declare module "gapi" {
     /**
      * A function in the global namespace, which is called when the sign-in button is rendered and also called after a sign-in flow completes.
      */
-    braintree$callback?: () => void,
+    callback?: () => void,
 
     /**
      * If true, all previously granted scopes remain granted in each incremental request, for incremental authorization. The default value true is correct for most use cases; use false only if employing delegated auth, where you pass the bearer token to a less-trusted component with lower programmatic authority.
@@ -156,15 +159,20 @@ declare module "gapi" {
   /**
    * Signs a user out of your app without logging the user out of Google. This method will only work when the user is signed in with Google+ Sign-In.
    */
-  declare export function auth$signOut(): void;
+  declare export function gapi$auth$signOut(): void;
 
-  declare var npm$namespace$client: {
-    init: typeof client$init,
-    load: typeof client$load,
-    request: typeof client$request,
-    rpcRequest: typeof client$rpcRequest,
-    setApiKey: typeof client$setApiKey,
-    setToken: typeof client$setToken
+  declare var npm$namespace$gapi$client: {
+    init: typeof gapi$client$init,
+    load: typeof gapi$client$load,
+    request: typeof gapi$client$request,
+    rpcRequest: typeof gapi$client$rpcRequest,
+    setApiKey: typeof gapi$client$setApiKey,
+    setToken: typeof gapi$client$setToken,
+
+    HttpRequestPromise: typeof gapi$client$HttpRequestPromise,
+    HttpRequest: typeof gapi$client$HttpRequest,
+    HttpBatch: typeof gapi$client$HttpBatch,
+    RpcRequest: typeof gapi$client$RpcRequest
   };
 
   /**
@@ -172,7 +180,7 @@ declare module "gapi" {
    * If OAuth client ID and scope are provided, this function will load the gapi.auth2 module to perform OAuth.
    * The gapi.client.init function can be run multiple times, such as to set up more APIs, to change API key, or initialize OAuth lazily.
    */
-  declare export function client$init(args: {
+  declare export function gapi$client$init(args: {
     /**
      * The API Key to use.
      */
@@ -193,13 +201,13 @@ declare module "gapi" {
      */
     scope?: string,
     hosted_domain?: string
-  }): promise$Promise<void>;
+  }): Promise<void>;
 
-  declare interface client$RequestOptions {
+  declare interface gapi$client$RequestOptions {
     /**
      * The URL to handle the request
      */
-    skin$path: string;
+    path: string;
 
     /**
      * The HTTP request method to use. Default is GET
@@ -224,10 +232,10 @@ declare module "gapi" {
     /**
      * If supplied, the request is executed immediately and no gapi.client.HttpRequest object is returned
      */
-    braintree$callback?: () => any;
+    callback?: () => any;
   }
 
-  declare interface client$TokenObject {
+  declare interface gapi$client$TokenObject {
     /**
      * The access token to use in requests.
      */
@@ -240,10 +248,10 @@ declare module "gapi" {
    * @param version The version of the API to load.
    * @return promise The promise that get's resolved after the request is finished.
    */
-  declare export function client$load(
-    skin$name: string,
-    FixedDataTable$version: string
-  ): promise$Promise<void>;
+  declare export function gapi$client$load(
+    name: string,
+    version: string
+  ): Promise<void>;
 
   /**
    * Loads the client library interface to a particular API. The new API interface will be in the form gapi.client.api.collection.method.
@@ -252,10 +260,10 @@ declare module "gapi" {
    * @param callback the function that is called once the API interface is loaded
    * @param url optional, the url of your app - if using Google's APIs, don't set it
    */
-  declare export function client$load(
-    skin$name: string,
-    FixedDataTable$version: string,
-    braintree$callback: () => any,
+  declare export function gapi$client$load(
+    name: string,
+    version: string,
+    callback: () => any,
     url?: string
   ): void;
 
@@ -263,8 +271,8 @@ declare module "gapi" {
    * Creates a HTTP request for making RESTful requests.
    * An object encapsulating the various arguments for this method.
    */
-  declare export function client$request(
-    args: client$RequestOptions
+  declare export function gapi$client$request(
+    args: gapi$client$RequestOptions
   ): client$HttpRequest<any>;
 
   /**
@@ -273,9 +281,9 @@ declare module "gapi" {
    * @param version The version of the API which defines the method to be executed. Defaults to v1
    * @param rpcParams A key-value pair of the params to supply to this RPC
    */
-  declare export function client$rpcRequest(
+  declare export function gapi$client$rpcRequest(
     method: string,
-    FixedDataTable$version?: string,
+    version?: string,
     rpcParams?: any
   ): client$RpcRequest;
 
@@ -283,31 +291,31 @@ declare module "gapi" {
    * Sets the API key for the application.
    * @param apiKey The API key to set
    */
-  declare export function client$setApiKey(apiKey: string): void;
+  declare export function gapi$client$setApiKey(apiKey: string): void;
 
   /**
- * Sets the authentication token to use in requests.
- * @param token The token to set.
-
-Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiclientsettokentokenobject
- */
-  declare export function client$setToken(
-    token: client$TokenObject | null
+   * Sets the authentication token to use in requests.
+   * @param token The token to set.
+   *
+   * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiclientsettokentokenobject
+   */
+  declare export function gapi$client$setToken(
+    token: gapi$client$TokenObject | null
   ): void;
 
-  declare interface client$HttpRequestFulfilled<T> {
+  declare interface gapi$client$HttpRequestFulfilled<T> {
     result: T;
     body: string;
     headers?: any[];
-    CKEDITOR$status?: number;
+    status?: number;
     statusText?: string;
   }
 
-  declare interface client$HttpRequestRejected {
+  declare interface gapi$client$HttpRequestRejected {
     result: any | boolean;
     body: string;
     headers?: any[];
-    CKEDITOR$status?: number;
+    status?: number;
     statusText?: string;
   }
 
@@ -315,40 +323,39 @@ Reference: https://developers.google.com/api-client-library/javascript/reference
    * HttpRequest supports promises.
    * See Google API Client JavaScript Using Promises https://developers.google.com/api-client-library/javascript/features/promises
    */
-  declare class client$HttpRequestPromise<T> {
+  declare class gapi$client$HttpRequestPromise<T> {
     then<TResult1, TResult2>(
       onfulfilled?:
         | ((
-            response: client$HttpRequestFulfilled<T>
+            response: gapi$client$HttpRequestFulfilled<T>
           ) => TResult1 | PromiseLike<TResult1>)
         | void
         | null,
       onrejected?:
         | ((
-            reason: client$HttpRequestRejected
+            reason: gapi$client$HttpRequestRejected
           ) => TResult2 | PromiseLike<TResult2>)
         | void
         | null,
       opt_context?: any
-    ): promise$Promise<TResult1 | TResult2>;
+    ): Promise<TResult1 | TResult2>;
   }
 
   /**
    * An object encapsulating an HTTP request. This object is not instantiated directly, rather it is returned by gapi.client.request.
    */
-  declare export class client$HttpRequest<T>
-    mixins client$HttpRequestPromise<T> {
+  declare export class gapi$client$HttpRequest<T> mixins HttpRequestPromise<T> {
     /**
      * Executes the request and runs the supplied callback on response.
      * @param callback The callback function which executes when the request succeeds or fails.
      */
     execute(
-      braintree$callback: (
+      callback: (
         jsonResp: T,
         rawResp: {
           body: string,
           headers: any[],
-          CKEDITOR$status: number,
+          status: number,
           statusText: string
         }
       ) => any
@@ -358,23 +365,20 @@ Reference: https://developers.google.com/api-client-library/javascript/reference
   /**
    * Represents an HTTP Batch operation. Individual HTTP requests are added with the add method and the batch is executed using execute.
    */
-  declare export class client$HttpBatch {
+  declare export class gapi$client$HttpBatch {
     /**
      * Adds a gapi.client.HttpRequest to the batch.
      * @param httpRequest The HTTP request to add to this batch.
      * @param opt_params extra parameters for this batch entry.
      */
     add(
-      httpRequest: client$HttpRequest<any>,
+      httpRequest: gapi$client$HttpRequest<any>,
       opt_params?: {
         /**
          * Identifies the response for this request in the map of batch responses. If one is not provided, the system generates a random ID.
          */
         id: string,
-        braintree$callback: (
-          individualResponse: any,
-          rawBatchResponse: any
-        ) => any
+        callback: (individualResponse: any, rawBatchResponse: any) => any
       }
     ): void;
 
@@ -383,20 +387,18 @@ Reference: https://developers.google.com/api-client-library/javascript/reference
      * @param callback The callback to execute when the batch returns.
      */
     execute(
-      braintree$callback: (responseMap: any, rawBatchResponse: string) => any
+      callback: (responseMap: any, rawBatchResponse: string) => any
     ): void;
   }
 
   /**
    * Similar to gapi.client.HttpRequest except this object encapsulates requests generated by registered methods.
    */
-  declare export class client$RpcRequest {
+  declare export class gapi$client$RpcRequest {
     /**
      * Executes the request and runs the supplied callback with the response.
      * @param callback The callback function which executes when the request succeeds or fails.
      */
-    callback(
-      braintree$callback: (jsonResp: any, rawResp: string) => void
-    ): void;
+    callback(callback: (jsonResp: any, rawResp: string) => void): void;
   }
 }
