@@ -1,5 +1,5 @@
 declare module "nextgen-events" {
-  declare module.exports: typeof NextGenEvents;
+  declare export default typeof NextGenEvents;
 
   declare class NextGenEvents {
     static CONTEXT_ENABLED: 0;
@@ -9,32 +9,28 @@ declare module "nextgen-events" {
     addListener(
       eventName: string,
       fn?: any,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      options?: NextGenEvents$AddListenerOptions
     ): this;
     on(
       eventName: string,
       fn?: any,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      options?: NextGenEvents$AddListenerOptions
     ): this;
     once(
       eventName: string,
       fn?: any,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      options?: NextGenEvents$AddListenerOptions
     ): this;
     waitFor(eventName: string): Promise<this>;
     waitForAll(eventName: string): Promise<this>;
     removeListener(eventName: string, id: any): this;
     off(eventName: string, id: any): this;
     removeAllListeners(eventName: string): this;
-    emit(
-      nice: number,
-      name: string,
-      ...args: any[]
-    ): NextGenEvents$NextGenEvents$Event;
-    emit(name: string, ...args: any[]): NextGenEvents$NextGenEvents$Event;
+    emit(nice: number, name: string, ...args: any[]): NextGenEvents$Event;
+    emit(name: string, ...args: any[]): NextGenEvents$Event;
     waitForEmit(nice: number, name: string, ...args: any[]): Promise<any>;
     waitForEmit(name: string, ...args: any[]): Promise<any>;
-    listeners(eventName: string): NextGenEvents$NextGenEvents$Func[];
+    listeners(eventName: string): NextGenEvents$Func[];
     listenerCount(eventName: string): number;
     setNice(nice: number): void;
     desyncUseNextTick(useNextTick: boolean): void;
@@ -43,10 +39,10 @@ declare module "nextgen-events" {
     setMaxListeners(n: number): this;
     defineStates(...states: any[]): void;
     hasState(state: string): boolean;
-    getAllStates(): NextGenEvents$NextGenEvents$States;
+    getAllStates(): NextGenEvents$States;
     addListenerContext(
       contextName: string,
-      options: NextGenEvents$NextGenEvents$ContextOptions
+      options: NextGenEvents$ContextOptions
     ): this;
     disableListenerContext(contextName: string): this;
     enableListenerContext(contextName: string): this;
@@ -54,14 +50,10 @@ declare module "nextgen-events" {
     serializeListenerContext(contextName: string, value?: boolean): this;
     setListenerContextNice(contextName: string, nice: number): this;
     destroyListenerContext(contextName: string): this;
-    static emitEvent(
-      event: NextGenEvents$NextGenEvents$Event
-    ): NextGenEvents$NextGenEvents$Event;
+    static emitEvent(event: NextGenEvents$Event): NextGenEvents$Event;
     static init(): void;
     static initFrom(from: NextGenEvents): void;
-    static mergeListeners(
-      foreigners: NextGenEvents$NextGenEvents$Listeners
-    ): void;
+    static mergeListeners(foreigners: NextGenEvents$Listeners): void;
     static filterOutCallback(what: any, currentElement: any): boolean;
     static listenerWrapper(
       listener: any,
@@ -70,11 +62,11 @@ declare module "nextgen-events" {
       serial: any
     ): void;
     static emitToOneListener(
-      event: NextGenEvents$NextGenEvents$Event,
+      event: NextGenEvents$Event,
       listener: any,
       removedListeners: any
     ): void;
-    static emitCallback(event: NextGenEvents$NextGenEvents$Event): void;
+    static emitCallback(event: NextGenEvents$Event): void;
     static listenerCount(emitter: NextGenEvents, eventName: string): number;
     static share(source: NextGenEvents, target: NextGenEvents): void;
     static reset(emitter: NextGenEvents): void;
@@ -82,20 +74,20 @@ declare module "nextgen-events" {
     static groupAddListener(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): any;
     static groupOn(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): any;
     static groupOnce(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): void;
     static groupWaitFor(
       emitters: NextGenEvents[],
@@ -108,14 +100,14 @@ declare module "nextgen-events" {
     static groupOnceFirst(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): void;
     static groupGlobalOnce(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): void;
     static groupWaitForFirst(
       emitters: NextGenEvents[],
@@ -128,14 +120,14 @@ declare module "nextgen-events" {
     static groupOnceLast(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): void;
     static groupGlobalOnceAll(
       emitters: NextGenEvents[],
       eventName: string,
-      fn?: NextGenEvents$NextGenEvents$Func,
-      options?: NextGenEvents$NextGenEvents$AddListenerOptions
+      fn?: NextGenEvents$Func,
+      options?: NextGenEvents$AddListenerOptions
     ): void;
     static groupWaitForLast(
       emitters: NextGenEvents[],
@@ -166,12 +158,12 @@ declare module "nextgen-events" {
     ): Promise<void>;
     static groupDefineStates(emitters: NextGenEvents[], ...args: any[]): void;
     static getContextScope(
-      context: NextGenEvents$NextGenEvents$Context,
+      context: NextGenEvents$Context,
       scopeName: string
-    ): NextGenEvents$NextGenEvents$Scope;
+    ): NextGenEvents$Scope;
     static processScopeQueue(
       self: NextGenEvents,
-      contextScope: NextGenEvents$NextGenEvents$Scope,
+      contextScope: NextGenEvents$Scope,
       serial: boolean,
       isCompletionCallback: boolean
     ): void;
@@ -180,7 +172,10 @@ declare module "nextgen-events" {
   declare var npm$namespace$NextGenEvents: {
     SYNC: typeof NextGenEvents$SYNC,
     DESYNC: typeof NextGenEvents$DESYNC,
-    defaultMaxListeners: typeof NextGenEvents$defaultMaxListeners
+    defaultMaxListeners: typeof NextGenEvents$defaultMaxListeners,
+
+    Internal: typeof NextGenEvents$Internal,
+    Proxy: typeof NextGenEvents$Proxy
   };
   declare interface NextGenEvents$Event {
     emitter: NextGenEvents;
