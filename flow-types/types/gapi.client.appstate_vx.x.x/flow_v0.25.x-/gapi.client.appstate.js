@@ -1,26 +1,30 @@
 declare module "gapi.client.appstate" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    states: typeof client$states
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    states: typeof gapi$client$states
   };
 
   /**
    * Load Google App State API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appstate",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appstate",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$states: appstate$appstate$StatesResource;
+  declare var gapi$client$states: appstate$StatesResource;
 
-  declare interface appstate$GetResponse {
+  declare interface gapi$client$appstate$GetResponse {
     /**
      * The current app state version.
      */
@@ -42,11 +46,11 @@ declare module "gapi.client.appstate" {
     stateKey?: number;
   }
 
-  declare interface appstate$ListResponse {
+  declare interface gapi$client$appstate$ListResponse {
     /**
      * The app state data.
      */
-    items?: appstate$GetResponse[];
+    items?: gapi$client$appstate$GetResponse[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string appstate#listResponse.
@@ -59,7 +63,7 @@ declare module "gapi.client.appstate" {
     maximumKeyCount?: number;
   }
 
-  declare interface appstate$UpdateRequest {
+  declare interface gapi$client$appstate$UpdateRequest {
     /**
      * The new app state data that your application is trying to update with.
      */
@@ -71,7 +75,7 @@ declare module "gapi.client.appstate" {
     kind?: string;
   }
 
-  declare interface appstate$WriteResult {
+  declare interface gapi$client$appstate$WriteResult {
     /**
      * The version of the data for this key on the server.
      */
@@ -88,7 +92,7 @@ declare module "gapi.client.appstate" {
     stateKey?: number;
   }
 
-  declare interface appstate$StatesResource {
+  declare interface gapi$client$appstate$StatesResource {
     /**
      * Clears (sets to empty) the data for the passed key if and only if the passed version matches the currently stored version. This method results in a
      * conflict error on version mismatch.
@@ -139,7 +143,7 @@ declare module "gapi.client.appstate" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<appstate$WriteResult>;
+    }): Request<gapi$client$appstate$WriteResult>;
 
     /**
      * Deletes a key and the data associated with it. The key is removed and no longer counts against the key quota. Note that since this method is not safe
@@ -233,7 +237,7 @@ declare module "gapi.client.appstate" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<appstate$GetResponse>;
+    }): Request<gapi$client$appstate$GetResponse>;
 
     /**
      * Lists all the states keys, and optionally the state data.
@@ -279,7 +283,7 @@ declare module "gapi.client.appstate" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<appstate$ListResponse>;
+    }): Request<gapi$client$appstate$ListResponse>;
 
     /**
      * Update the data associated with the input key if and only if the passed version matches the currently stored version. This method is safe in the face
@@ -332,6 +336,6 @@ declare module "gapi.client.appstate" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<appstate$WriteResult>;
+    }): Request<gapi$client$appstate$WriteResult>;
   }
 }
