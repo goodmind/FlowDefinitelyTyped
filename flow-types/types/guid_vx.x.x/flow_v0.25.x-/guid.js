@@ -1,5 +1,5 @@
 declare module "guid" {
-  declare module.exports: typeof guid;
+  declare export default typeof guid;
 
   declare function guid(guid: { [key: string]: any }): { [key: string]: any };
 
