@@ -1,10 +1,10 @@
 declare module "mri" {
-  declare module.exports: typeof mri;
+  declare export default typeof mri;
 
   declare function mri(
     args: $ReadOnlyArray<string>,
-    options?: mri$mri$Options
-  ): mri$mri$Argv;
+    options?: mri$Options
+  ): mri$Argv;
 
   declare var npm$namespace$mri: {
     prototype: typeof mri$prototype
@@ -47,5 +47,5 @@ declare module "mri" {
      * anything after `--` or between options
      */
     _: $ReadOnlyArray<string>
-  } & mri$DictionaryObject;
+  } & DictionaryObject;
 }
