@@ -70,14 +70,14 @@ declare module "roads" {
     ): any;
 
     /**
- * Locate and execute the resource method associated with the request parameters
- * @param method The request HTTP method
- * @param url The request Url
- * @param body the request body
- * @param headers The request headers
- * @see <a href="https://github.com/Dashron/roads#roadrequeststring-method-string-url-dynamic-body-object-headers"
-target="_blank">Road.request(string method, string url, dynamic body, Object headers)</a>
- */
+     * Locate and execute the resource method associated with the request parameters
+     * @param method The request HTTP method
+     * @param url The request Url
+     * @param body the request body
+     * @param headers The request headers
+     * @see <a href="https://github.com/Dashron/roads#roadrequeststring-method-string-url-dynamic-body-object-headers"
+     * target="_blank">Road.request(string method, string url, dynamic body, Object headers)</a>
+     */
     request(method: string, url: string, body?: any, headers?: Headers): any;
   }
 
@@ -132,7 +132,9 @@ target="_blank">Road.request(string method, string url, dynamic body, Object hea
     cors: typeof middleware$cors,
     parseBody: typeof middleware$parseBody,
     setTitle: typeof middleware$setTitle,
-    reroute: typeof middleware$reroute
+    reroute: typeof middleware$reroute,
+
+    SimpleRouter: typeof middleware$SimpleRouter
   };
 
   /**
