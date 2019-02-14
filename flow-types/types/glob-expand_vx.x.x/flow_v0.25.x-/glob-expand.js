@@ -28,5 +28,5 @@ declare module "glob-expand" {
 
   declare function expand(...patterns: (string | RegExp)[]): string[];
 
-  declare module.exports: typeof expand;
+  declare export default typeof expand;
 }
