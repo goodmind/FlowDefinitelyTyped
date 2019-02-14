@@ -10,9 +10,9 @@ declare module "video.js" {
    */
   declare function videojs(
     id: any,
-    options?: videojs$videojs$PlayerOptions,
+    options?: videojs$PlayerOptions,
     ready?: () => void
-  ): videojs$videojs$Player;
+  ): videojs$Player;
 
   declare export default typeof videojs;
 
@@ -104,7 +104,8 @@ declare module "video.js" {
     VolumeBar: typeof videojs$VolumeBar,
     VolumeControl: typeof videojs$VolumeControl,
     VolumeLevel: typeof videojs$VolumeLevel,
-    VolumePanel: typeof videojs$VolumePanel
+    VolumePanel: typeof videojs$VolumePanel,
+    ReadyState: typeof videojs$ReadyState
   };
 
   /**
@@ -160,29 +161,29 @@ declare module "video.js" {
   declare function videojs$formatTime(seconds: number, guide: number): string;
 
   /**
- * Returns an array of all current players.
- * @return An array of all players. The array will be in the order that
-`Object.keys` provides, which could potentially vary between
-JavaScript engines.
- */
+   * Returns an array of all current players.
+   * @return An array of all players. The array will be in the order that
+   * `Object.keys` provides, which could potentially vary between
+   * JavaScript engines.
+   */
   declare function videojs$getAllPlayers(): videojs$Player[];
 
   /**
    * Get a component class object by name
    * @borrows Component.getComponent as getComponent
    */
-  declare var videojs$getComponent: typeof undefined;
+  declare var videojs$getComponent: typeof Component$getComponent;
 
   /**
- * Get a single player based on an ID or DOM element.
- * 
- * This is useful if you want to check if an element or ID has an associated
- * Video.js player, but not create one if it doesn't.
- * @param id An HTML element - `<video>`, `<audio>`, or `<video-js>` -
-or a string matching the `id` of such an element.
- * @return A player instance or `undefined` if there is no player instance
-matching the argument.
- */
+   * Get a single player based on an ID or DOM element.
+   *
+   * This is useful if you want to check if an element or ID has an associated
+   * Video.js player, but not create one if it doesn't.
+   * @param id An HTML element - `<video>`, `<audio>`, or `<video-js>` -
+   * or a string matching the `id` of such an element.
+   * @return A player instance or `undefined` if there is no player instance
+   * matching the argument.
+   */
   declare function videojs$getPlayer(id: string): videojs$Player;
 
   /**
@@ -198,29 +199,29 @@ matching the argument.
    * @param name The name of a plugin.
    * @return The plugin (or `undefined`).
    */
-  declare var videojs$getPlugin: typeof undefined;
+  declare var videojs$getPlugin: typeof Plugin$getPlugin;
 
   /**
- * Gets an object containing multiple Video.js plugins.
- * @param names If provided, should be an array of plugin names. Defaults to _all_
-plugin names.
- * @return An object containing plugin(s) associated with their name(s) or
-`undefined` if no matching plugins exist).
- */
-  declare var videojs$getPlugins: typeof undefined;
+   * Gets an object containing multiple Video.js plugins.
+   * @param names If provided, should be an array of plugin names. Defaults to _all_
+   * plugin names.
+   * @return An object containing plugin(s) associated with their name(s) or
+   * `undefined` if no matching plugins exist).
+   */
+  declare var videojs$getPlugins: typeof Plugin$getPlugins;
 
   /**
    * Gets a plugin's version, if available
    * @param name The name of a plugin.
    * @return The plugin's version or an empty string.
    */
-  declare var videojs$getPluginVersion: typeof undefined;
+  declare var videojs$getPluginVersion: typeof Plugin$getPluginVersion;
 
   /**
    * Get a Tech class object by name
    * @borrows Tech.getTech as getTech
    */
-  declare var videojs$getTech: typeof undefined;
+  declare var videojs$getTech: typeof Tech$getTech;
 
   /**
    * Add a function hook to a specific videojs lifecycle.
@@ -229,12 +230,12 @@ plugin names.
    */
   declare function videojs$hook(
     type: "setup",
-    fn: Hook$Hook$Setup | Hook$Hook$Setup[]
+    fn: Hook$Setup | Hook$Setup[]
   ): void;
 
   declare function videojs$hook(
     type: "beforesetup",
-    fn: Hook$Hook$BeforeSetup | Hook$Hook$BeforeSetup[]
+    fn: Hook$BeforeSetup | Hook$BeforeSetup[]
   ): void;
 
   /**
@@ -299,7 +300,7 @@ plugin names.
    * @param url The url to parse
    * @return An object of url details
    */
-  declare function videojs$parseUrl(url: string): url$url$URLObject;
+  declare function videojs$parseUrl(url: string): url$URLObject;
 
   /**
    * An object that can be returned by a middleware to signify
@@ -310,16 +311,16 @@ plugin names.
   };
 
   /**
- * Removes event listeners from an element
- * @param elem Object to remove listeners from.
- * @param type Type of listener to remove. Don't include to remove all events from element.
- * @param fn Specific listener to remove. Don't include to remove listeners for an event
-type.
- */
+   * Removes event listeners from an element
+   * @param elem Object to remove listeners from.
+   * @param type Type of listener to remove. Don't include to remove all events from element.
+   * @param fn Specific listener to remove. Don't include to remove listeners for an event
+   * type.
+   */
   declare function videojs$off(
     elem: Element,
     type: string | string,
-    fn: videojs$EventTarget.EventTarget$EventListener
+    fn: EventTarget$EventListener
   ): void;
 
   /**
@@ -334,7 +335,7 @@ type.
   declare function videojs$on(
     elem: Element,
     type: string | string[],
-    fn: videojs$EventTarget.EventTarget$EventListener
+    fn: EventTarget$EventListener
   ): void;
 
   /**
@@ -346,7 +347,7 @@ type.
   declare function videojs$one(
     elem: Element,
     type: string | string[],
-    fn: videojs$EventTarget.EventTarget$EventListener
+    fn: EventTarget$EventListener
   ): void;
 
   /**
@@ -361,39 +362,39 @@ type.
    * @param name The plugin name
    * @param plugin The plugin sub-class or function
    */
-  declare var videojs$plugin: typeof undefined;
+  declare var videojs$plugin: typeof Plugin$registerPlugin;
 
   /**
- * Register a component so it can referred to by name. Used when adding to other
- * components, either through addChild `component.addChild('myComponent')` or through
- * @default children options  `{ children: ['myComponent'] }`.
-
-> NOTE: You could also just initialize the component before adding.
-`component.addChild(new MyComponent());`
- * @param name The class name of the component
- * @param comp The component class
- * @return The newly registered component
- */
-  declare var videojs$registerComponent: typeof undefined;
+   * Register a component so it can referred to by name. Used when adding to other
+   * components, either through addChild `component.addChild('myComponent')` or through
+   * @default children options  `{ children: ['myComponent'] }`.
+   *
+   * > NOTE: You could also just initialize the component before adding.
+   * `component.addChild(new MyComponent());`
+   * @param name The class name of the component
+   * @param comp The component class
+   * @return The newly registered component
+   */
+  declare var videojs$registerComponent: typeof Component$registerComponent;
 
   /**
- * Register a Video.js plugin.
- * @borrows plugin:registerPlugin as registerPlugin
- * @param name The name of the plugin to be registered. Must be a string and
-must not match an existing plugin or a method on the `Player`
-prototype.
- * @param plugin A sub-class of `Plugin` or a function for basic plugins.
- * @return For advanced plugins, a factory function for that plugin. For
-basic plugins, a wrapper function that initializes the plugin.
- */
-  declare var videojs$registerPlugin: typeof undefined;
+   * Register a Video.js plugin.
+   * @borrows plugin:registerPlugin as registerPlugin
+   * @param name The name of the plugin to be registered. Must be a string and
+   * must not match an existing plugin or a method on the `Player`
+   * prototype.
+   * @param plugin A sub-class of `Plugin` or a function for basic plugins.
+   * @return For advanced plugins, a factory function for that plugin. For
+   * basic plugins, a wrapper function that initializes the plugin.
+   */
+  declare var videojs$registerPlugin: typeof Plugin$registerPlugin;
 
   /**
    * Register a Tech so it can referred to by name.
    * This is used in the tech order for the player.
    * @borrows Tech.registerTech as registerTech
    */
-  declare var videojs$registerTech: typeof undefined;
+  declare var videojs$registerTech: typeof Tech$registerTech;
 
   /**
    * Resets formatTime to the default implementation.
@@ -401,10 +402,10 @@ basic plugins, a wrapper function that initializes the plugin.
   declare function videojs$resetFormatTime(): void;
 
   /**
- * Replaces the default formatTime implementation with a custom implementation.
- * @param customImplementation A function which will be used in place of the default formatTime implementation.
-Will receive the current time in seconds and the guide (in seconds) as arguments.
- */
+   * Replaces the default formatTime implementation with a custom implementation.
+   * @param customImplementation A function which will be used in place of the default formatTime implementation.
+   * Will receive the current time in seconds and the guide (in seconds) as arguments.
+   */
   declare function videojs$setFormatTime(
     customImplementation: (seconds: number, guide: number) => string
   ): void;
@@ -418,16 +419,16 @@ Will receive the current time in seconds and the guide (in seconds) as arguments
   declare function videojs$removeHook(type: string, fn: () => any): boolean;
 
   /**
- * Trigger an event for an element
- * @param elem Element to trigger an event on
- * @param event A string (the type) or an event object with a type attribute
- * @param hash data hash to pass along with the event
- * @return - Returns the opposite of `defaultPrevented` if default was prevented
-- Otherwise returns undefined
- */
+   * Trigger an event for an element
+   * @param elem Element to trigger an event on
+   * @param event A string (the type) or an event object with a type attribute
+   * @param hash data hash to pass along with the event
+   * @return - Returns the opposite of `defaultPrevented` if default was prevented
+   * - Otherwise returns undefined
+   */
   declare function videojs$trigger(
     elem: Element,
-    event: videojs$EventTarget.EventTarget$Event | string,
+    event: EventTarget$Event | string,
     hash?: any
   ): boolean | void;
 
@@ -446,7 +447,7 @@ Will receive the current time in seconds and the guide (in seconds) as arguments
    */
   declare function videojs$use(
     type: string,
-    videojs$middleware: (player: videojs$Player) => videojs$Middleware
+    middleware: (player: videojs$Player) => videojs$Middleware
   ): void;
 
   /**
@@ -462,12 +463,12 @@ Will receive the current time in seconds and the guide (in seconds) as arguments
    */
   declare var videojs$xhr: videojs$XhrObject;
 
-  declare type Hook$BeforeSetup = (
+  declare type videojs$Hook$BeforeSetup = (
     element: HTMLVideoElement,
-    videojs$options: any
+    options: any
   ) => any;
 
-  declare type Hook$Setup = (player: videojs$Player) => void;
+  declare type videojs$Hook$Setup = (player: videojs$Player) => void;
 
   /**
    * A representation of a single `AudioTrack`. If it is part of an {@link AudioTrackList}
@@ -478,29 +479,29 @@ Will receive the current time in seconds and the guide (in seconds) as arguments
     prototype: videojs$Track,
 
     /**
- * Create an instance of this class.
- * @param options Object of option names and values
- * @param A valid audio track kind
- * @param A unique id for this AudioTrack.
- * @param The menu label for this track.
- * @param A valid two character language code.
- * @param If this track is the one that is currently playing. If this track is part of
-an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
- */
-    new(videojs$options?: videojs$AudioTrackOptions): videojs$Track
+     * Create an instance of this class.
+     * @param options Object of option names and values
+     * @param A valid audio track kind
+     * @param A unique id for this AudioTrack.
+     * @param The menu label for this track.
+     * @param A valid two character language code.
+     * @param If this track is the one that is currently playing. If this track is part of
+     * an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
+     */
+    new(options?: videojs$AudioTrackOptions): videojs$Track
   };
 
   /**
- * Object of option names and values
- * @param A valid audio track kind
- * @param A unique id for this AudioTrack.
- * @param The menu label for this track.
- * @param A valid two character language code.
- * @param If this track is the one that is currently playing. If this track is part of
-an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
- */
+   * Object of option names and values
+   * @param A valid audio track kind
+   * @param A unique id for this AudioTrack.
+   * @param The menu label for this track.
+   * @param A valid two character language code.
+   * @param If this track is the one that is currently playing. If this track is part of
+   * an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
+   */
   declare interface videojs$AudioTrackOptions {
-    kind?: videojs$AudioTrack.TextTrack$Kind;
+    kind?: AudioTrack$Kind;
     id?: string;
     label?: string;
     language?: string;
@@ -511,7 +512,7 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
    * All possible `AudioTrackKind`s
    * @see https://html.spec.whatwg.org/multipage/embedded-content.html#dom-audiotrack-kind
    */
-  declare type AudioTrack$Kind =
+  declare type videojs$AudioTrack$Kind =
     | "alternative"
     | "descriptions"
     | "main"
@@ -543,7 +544,7 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
     createItems(
       items?: videojs$AudioTrackMenuItem[]
     ): videojs$AudioTrackMenuItem[]
-  } & videojs$MenuButton;
+  } & MenuButton;
 
   declare var videojs$AudioTrackButton: {
     prototype: videojs$AudioTrackButton,
@@ -555,7 +556,7 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions
+      options?: videojs$TrackButtonOptions
     ): videojs$AudioTrackButton
   };
 
@@ -568,8 +569,8 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
      * @param event The {@link AudioTrackList#change} event that caused this to run.
      * @listens AudioTrackList#change
      */
-    handleTracksChange(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$MenuItem;
+    handleTracksChange(event: EventTarget$Event): void
+  } & MenuItem;
 
   declare var videojs$AudioTrackMenuItem: {
     prototype: videojs$AudioTrackMenuItem,
@@ -581,13 +582,13 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$AudioTrackMenuItemOptions
+      options?: videojs$AudioTrackMenuItemOptions
     ): videojs$AudioTrackMenuItem
   };
 
   declare type videojs$AudioTrackMenuItemOptions = {
     track?: videojs$AudioTrack
-  } & videojs$MenuItemOptions;
+  } & MenuItemOptions;
 
   /**
    * The initial play button that shows before the video has played. The hiding of the
@@ -601,14 +602,14 @@ an {@link AudioTrackList}, only one {@link AudioTrack} will be enabled.
     buildCSSClass(): string,
 
     /**
- * This gets called when a `BigPlayButton` "clicked". See {@link ClickableComponent}
- * for more detailed information on what a click can be.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * This gets called when a `BigPlayButton` "clicked". See {@link ClickableComponent}
+     * for more detailed information on what a click can be.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * Called when this BigPlayButton has focus and a key gets pressed down. By
@@ -616,15 +617,15 @@ called.
      * @param event The `keydown` event that caused this function to be called.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(event: EventTarget$Event): void,
 
     /**
      * Called when this BigPlayButton gets mouse pressed down
      * @param event The `keydown` event that caused this function to be called.
      * @listens mousedown
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Button;
+    handleMouseDown(event: EventTarget$Event): void
+  } & Button;
 
   declare var videojs$BigPlayButton: {
     prototype: videojs$BigPlayButton,
@@ -636,7 +637,7 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$BigPlayButton
   };
 
@@ -655,7 +656,7 @@ called.
     IS_SAFARI: boolean;
     IE_VERSION: number;
     IOS_VERSION: number | null;
-    videojs$TOUCH_ENABLED: boolean;
+    TOUCH_ENABLED: boolean;
   }
 
   /**
@@ -665,31 +666,31 @@ called.
     options_: videojs$ComponentOptions,
 
     /**
- * Create the `Button`s DOM element.
- * @param tag The element's node type. This argument is IGNORED: no matter what
-is passed, it will always create a `button` element.
- * @param props An object of properties that should be set on the element.
- * @param attributes An object of attributes that should be set on the element.
- * @return The element that gets created.
- */
+     * Create the `Button`s DOM element.
+     * @param tag The element's node type. This argument is IGNORED: no matter what
+     * is passed, it will always create a `button` element.
+     * @param props An object of properties that should be set on the element.
+     * @param attributes An object of attributes that should be set on the element.
+     * @return The element that gets created.
+     */
     createEl(tag: string, props?: any, attributes?: any): HTMLButtonElement,
 
     /**
- * Add a child `Component` inside of this `Button`.
- * @param child The name or instance of a child to add.
- * @param options The key/value store of options that will get passed to children of
-the child.
- * @return The `Component` that gets added as a child. When using a string the
-`Component` will get created by this process.
- * @deprecated since version 5
- */
+     * Add a child `Component` inside of this `Button`.
+     * @param child The name or instance of a child to add.
+     * @param options The key/value store of options that will get passed to children of
+     * the child.
+     * @return The `Component` that gets added as a child. When using a string the
+     * `Component` will get created by this process.
+     * @deprecated since version 5
+     */
     addChild(
       component: string,
       optionsopt?: any,
       indexopt?: number
     ): videojs$Component,
     addChild(component: Element, optionsopt?: any, indexopt?: number): Element,
-    addChild<T: videojs$Component>(child: string | T, videojs$options?: any): T,
+    addChild<T: videojs$Component>(child: string | T, options?: any): T,
 
     /**
      * Enable the `Button` element so that it can be activated or clicked. Use this with
@@ -709,8 +710,8 @@ the child.
      * @param event The event that caused this function to get called.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$ClickableComponent;
+    handleKeyPress(event: EventTarget$Event): void
+  } & ClickableComponent;
 
   declare var videojs$Button: {
     prototype: videojs$Button,
@@ -722,7 +723,7 @@ the child.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$Button
   };
 
@@ -747,7 +748,7 @@ the child.
      * @return The array of current menu items.
      */
     createItems(): videojs$CaptionSettingsMenuItem[]
-  } & videojs$TextTrackButton;
+  } & TextTrackButton;
 
   declare var videojs$CaptionsButton: {
     prototype: videojs$CaptionsButton,
@@ -760,8 +761,8 @@ the child.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$TrackButtonOptions,
+      ready?: Component$ReadyCallback
     ): videojs$CaptionsButton
   };
 
@@ -770,15 +771,15 @@ the child.
    */
   declare type videojs$CaptionSettingsMenuItem = {
     /**
- * This gets called when an `CaptionSettingsMenuItem` is "clicked". See
- * {@link ClickableComponent} for more detailed information on what a click can be.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$TextTrackMenuItem;
+     * This gets called when an `CaptionSettingsMenuItem` is "clicked". See
+     * {@link ClickableComponent} for more detailed information on what a click can be.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void
+  } & TextTrackMenuItem;
 
   declare var videojs$CaptionsSettingsMenuItem: {
     prototype: videojs$CaptionSettingsMenuItem,
@@ -790,13 +791,13 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$CaptionSettingsMenuItemOptions
+      options?: videojs$CaptionSettingsMenuItemOptions
     ): videojs$CaptionSettingsMenuItem
   };
 
   declare type videojs$CaptionSettingsMenuItemOptions = {
-    kind: videojs$TextTrack.AudioTrack$Kind
-  } & videojs$TextTrackMenuItemOptions;
+    kind: TextTrack$Kind
+  } & TextTrackMenuItemOptions;
 
   /**
    * The button component for toggling and selecting chapters
@@ -842,10 +843,10 @@ called.
     getMenuCaption(): string,
 
     /**
- * Set the currently selected track for the chapters button.
- * @param track The new track to select. Nothing will change if this is the currently selected
-track.
- */
+     * Set the currently selected track for the chapters button.
+     * @param track The new track to select. Nothing will change if this is the currently selected
+     * track.
+     */
     setTrack(track: videojs$TextTrack): void,
 
     /**
@@ -855,8 +856,8 @@ track.
      * @listens TextTrackList#removetrack
      * @listens TextTrackList#change
      */
-    update(event?: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$TextTrackButton;
+    update(event?: EventTarget$Event): void
+  } & TextTrackButton;
 
   declare var videojs$ChaptersButton: {
     prototype: videojs$ChaptersButton,
@@ -869,8 +870,8 @@ track.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$TrackButtonOptions,
+      ready?: Component$ReadyCallback
     ): videojs$ChaptersButton
   };
 
@@ -879,25 +880,25 @@ track.
    */
   declare type videojs$ChaptersTrackMenuItem = {
     track: videojs$TextTrack,
-    cue: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue,
+    cue: TextTrackCueList$TextTrackCue,
 
     /**
- * This gets called when an `ChaptersTrackMenuItem` is "clicked". See
- * {@link ClickableComponent} for more detailed information on what a click can be.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * This gets called when an `ChaptersTrackMenuItem` is "clicked". See
+     * {@link ClickableComponent} for more detailed information on what a click can be.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * Update chapter menu item
      * @param event The `cuechange` event that caused this function to run.
      * @listens TextTrack#cuechange
      */
-    update(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$MenuItem;
+    update(event: EventTarget$Event): void
+  } & MenuItem;
 
   declare var videojs$ChaptersTrackMenuItem: {
     prototype: videojs$ChaptersTrackMenuItem,
@@ -909,14 +910,14 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ChaptersTrackMenuItemOptions
+      options?: videojs$ChaptersTrackMenuItemOptions
     ): videojs$ChaptersTrackMenuItem
   };
 
   declare type videojs$ChaptersTrackMenuItemOptions = {
     track: videojs$TextTrack,
-    cue: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue
-  } & videojs$MenuItemOptions;
+    cue: TextTrackCueList$TextTrackCue
+  } & MenuItemOptions;
 
   declare type videojs$Child =
     | string
@@ -978,24 +979,24 @@ called.
     enable(): void,
 
     /**
- * This gets called when a `ClickableComponent` gets:
- * - Clicked (via the `click` event, listening starts in the constructor)
- * - Tapped (via the `tap` event, listening starts in the constructor)
- * - The following things happen in order:
- *    1. {@link ClickableComponent#handleFocus} is called via a `focus` event on the
- *       `ClickableComponent`.
- *    2. {@link ClickableComponent#handleFocus} adds a listener for `keydown` on using
- *       {@link ClickableComponent#handleKeyPress}.
- *    3. `ClickableComponent` has not had a `blur` event (`blur` means that focus was lost). The user presses
- *       the space or enter key.
- *    4. {@link ClickableComponent#handleKeyPress} calls this function with the `keydown`
- *       event as a parameter.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * This gets called when a `ClickableComponent` gets:
+     * - Clicked (via the `click` event, listening starts in the constructor)
+     * - Tapped (via the `tap` event, listening starts in the constructor)
+     * - The following things happen in order:
+     *    1. {@link ClickableComponent#handleFocus} is called via a `focus` event on the
+     *       `ClickableComponent`.
+     *    2. {@link ClickableComponent#handleFocus} adds a listener for `keydown` on using
+     *       {@link ClickableComponent#handleKeyPress}.
+     *    3. `ClickableComponent` has not had a `blur` event (`blur` means that focus was lost). The user presses
+     *       the space or enter key.
+     *    4. {@link ClickableComponent#handleKeyPress} calls this function with the `keydown`
+     *       event as a parameter.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * This gets called when a `ClickableComponent` gains focus via a `focus` event.
@@ -1004,7 +1005,7 @@ called.
      * @param event The `focus` event that caused this function to be called.
      * @listens focus
      */
-    handleFocus(event: videojs$EventTarget.EventTarget$Event): void,
+    handleFocus(event: EventTarget$Event): void,
 
     /**
      * Called when this ClickableComponent has focus and a key gets pressed down. By
@@ -1012,7 +1013,7 @@ called.
      * @param event The `keydown` event that caused this function to be called.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(event: EventTarget$Event): void,
 
     /**
      * Called when a `ClickableComponent` loses focus. Turns off the listener for
@@ -1020,8 +1021,8 @@ called.
      * @param event The `blur` event that caused this function to be called.
      * @listens blur
      */
-    handleBlur(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Component;
+    handleBlur(event: EventTarget$Event): void
+  } & Component;
 
   declare var videojs$ClickableComponent: {
     prototype: videojs$ClickableComponent,
@@ -1033,7 +1034,7 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$ClickableComponent
   };
 
@@ -1051,17 +1052,17 @@ called.
     buildCSSClass(): string,
 
     /**
- * This gets called when a `CloseButton` gets clicked. See
- * {@link ClickableComponent#handleClick} for more information on when this will be
- * triggered
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- * @fires CloseButton#close
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Button;
+     * This gets called when a `CloseButton` gets clicked. See
+     * {@link ClickableComponent#handleClick} for more information on when this will be
+     * triggered
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     * @fires CloseButton#close
+     */
+    handleClick(event: EventTarget$Event): void
+  } & Button;
 
   declare var videojs$CloseButton: {
     prototype: videojs$CloseButton,
@@ -1073,13 +1074,13 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$CloseButtonOptions
+      options?: videojs$CloseButtonOptions
     ): videojs$CloseButton
   };
 
   declare type videojs$CloseButtonOptions = {
     controlText?: string
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * Base class for all UI Components.
@@ -1095,40 +1096,40 @@ called.
     children_: videojs$Component[],
 
     /**
- * Find a single DOM element matching a `selector`. This can be within the `Component`s
- * `contentEl()` or another custom context.
- * @param selector A valid CSS selector, which will be passed to `querySelector`.
- * @param context A DOM element within which to query. Can also be a selector string in
-which case the first matching element will get used as context. If
-missing `this.contentEl()` gets used. If  `this.contentEl()` returns
-nothing it falls back to `document`.
- * @return the dom element that was found, or null
- * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
- */
+     * Find a single DOM element matching a `selector`. This can be within the `Component`s
+     * `contentEl()` or another custom context.
+     * @param selector A valid CSS selector, which will be passed to `querySelector`.
+     * @param context A DOM element within which to query. Can also be a selector string in
+     * which case the first matching element will get used as context. If
+     * missing `this.contentEl()` gets used. If  `this.contentEl()` returns
+     * nothing it falls back to `document`.
+     * @return the dom element that was found, or null
+     * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
+     */
     $(selector: string, context?: string | Element): Element,
 
     /**
- * Finds all DOM element matching a `selector`. This can be within the `Component`s
- * `contentEl()` or another custom context.
- * @param selector A valid CSS selector, which will be passed to `querySelectorAll`.
- * @param context A DOM element within which to query. Can also be a selector string in
-which case the first matching element will get used as context. If
-missing `this.contentEl()` gets used. If  `this.contentEl()` returns
-nothing it falls back to `document`.
- * @return a list of dom elements that were found
- * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
- */
+     * Finds all DOM element matching a `selector`. This can be within the `Component`s
+     * `contentEl()` or another custom context.
+     * @param selector A valid CSS selector, which will be passed to `querySelectorAll`.
+     * @param context A DOM element within which to query. Can also be a selector string in
+     * which case the first matching element will get used as context. If
+     * missing `this.contentEl()` gets used. If  `this.contentEl()` returns
+     * nothing it falls back to `document`.
+     * @return a list of dom elements that were found
+     * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
+     */
     $$(selector: string, context?: string | Element): NodeList,
 
     /**
- * Add a child `Component` inside the current `Component`.
- * @param child The name or instance of a child to add.
- * @param options The key/value store of options that will get passed to children of
-the child.
- * @param index The index to attempt to add a child into.
- * @return The `Component` that gets added as a child. When using a string the
-`Component` will get created by this process.
- */
+     * Add a child `Component` inside the current `Component`.
+     * @param child The name or instance of a child to add.
+     * @param options The key/value store of options that will get passed to children of
+     * the child.
+     * @param index The index to attempt to add a child into.
+     * @return The `Component` that gets added as a child. When using a string the
+     * `Component` will get created by this process.
+     */
     addChild(
       component: string,
       optionsopt?: any,
@@ -1137,7 +1138,7 @@ the child.
     addChild(component: Element, optionsopt?: any, indexopt?: number): Element,
     addChild<T: videojs$Component>(
       child: string | T,
-      videojs$options?: any,
+      options?: any,
       index?: number
     ): T,
 
@@ -1178,27 +1179,27 @@ the child.
     children(): videojs$Component[],
 
     /**
- * Clears an interval that gets created via `window.setInterval` or
- * {@link Component#setInterval}. If you set an inteval via {@link Component#setInterval}
- * use this function instead of `window.clearInterval`. If you don't your dispose
- * listener will not get cleaned up until {@link Component#dispose}!
- * @param intervalId The id of the interval to clear. The return value of
-{@link Component#setInterval} or `window.setInterval`.
- * @return Returns the interval id that was cleared.
- * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval}
- */
+     * Clears an interval that gets created via `window.setInterval` or
+     * {@link Component#setInterval}. If you set an inteval via {@link Component#setInterval}
+     * use this function instead of `window.clearInterval`. If you don't your dispose
+     * listener will not get cleaned up until {@link Component#dispose}!
+     * @param intervalId The id of the interval to clear. The return value of
+     * {@link Component#setInterval} or `window.setInterval`.
+     * @return Returns the interval id that was cleared.
+     * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval}
+     */
     clearInterval(intervalId: number): number,
 
     /**
- * Clears a timeout that gets created via `window.setTimeout` or
- * {@link Component#setTimeout}. If you set a timeout via {@link Component#setTimeout}
- * use this function instead of `window.clearTimout`. If you don't your dispose
- * listener will not get cleaned up until {@link Component#dispose}!
- * @param timeoutId The id of the timeout to clear. The return value of
-{@link Component#setTimeout} or `window.setTimeout`.
- * @return Returns the timeout id that was cleared.
- * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout}
- */
+     * Clears a timeout that gets created via `window.setTimeout` or
+     * {@link Component#setTimeout}. If you set a timeout via {@link Component#setTimeout}
+     * use this function instead of `window.clearTimout`. If you don't your dispose
+     * listener will not get cleaned up until {@link Component#dispose}!
+     * @param timeoutId The id of the timeout to clear. The return value of
+     * {@link Component#setTimeout} or `window.setTimeout`.
+     * @return Returns the timeout id that was cleared.
+     * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout}
+     */
     clearTimeout(timeoutId: number): number,
 
     /**
@@ -1219,12 +1220,12 @@ the child.
     createEl(tagName?: string, properties?: any, attributes?: any): Element,
 
     /**
- * Get the width or the height of the `Component` elements computed style. Uses
- * `window.getComputedStyle`.
- * @param widthOrHeight A string containing 'width' or 'height'. Whichever one you want to get.
- * @return The dimension that gets asked for or 0 if nothing was set
-for that dimension.
- */
+     * Get the width or the height of the `Component` elements computed style. Uses
+     * `window.getComputedStyle`.
+     * @param widthOrHeight A string containing 'width' or 'height'. Whichever one you want to get.
+     * @return The dimension that gets asked for or 0 if nothing was set
+     * for that dimension.
+     */
     currentDimension(widthOrHeight: "width" | "height"): number,
 
     /**
@@ -1232,20 +1233,20 @@ for that dimension.
      * computed style.
      * @return The dimensions of the components element
      */
-    currentDimensions(): videojs$Component.Component$DimensionObject,
+    currentDimensions(): Component$DimensionObject,
 
     /**
- * Get the height of the `Component`s computed style. Uses `window.getComputedStyle`.
- * @return height
-   The height of the `Component`s computed style.
- */
+     * Get the height of the `Component`s computed style. Uses `window.getComputedStyle`.
+     * @return height
+     *    The height of the `Component`s computed style.
+     */
     currentHeight(): number,
 
     /**
- * Get the width of the `Component`s computed style. Uses `window.getComputedStyle`.
- * @return width
-   The width of the `Component`s computed style.
- */
+     * Get the width of the `Component`s computed style. Uses `window.getComputedStyle`.
+     * @return width
+     *    The width of the `Component`s computed style.
+     */
     currentWidth(): number,
 
     /**
@@ -1336,15 +1337,15 @@ for that dimension.
     focus(): void,
 
     /**
- * Get the value of an attribute on the `Component`s element.
- * @param attribute Name of the attribute to get the value from.
- * @return - The value of the attribute that was asked for.
-- Can be an empty string on some browsers if the attribute does not exist
-  or has no value
-- Most browsers will return null if the attibute does not exist or has
-  no value.
- * @see [DOM API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute}
- */
+     * Get the value of an attribute on the `Component`s element.
+     * @param attribute Name of the attribute to get the value from.
+     * @return - The value of the attribute that was asked for.
+     * - Can be an empty string on some browsers if the attribute does not exist
+     *   or has no value
+     * - Most browsers will return null if the attibute does not exist or has
+     *   no value.
+     * @see [DOM API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute}
+     */
     getAttribute(attribute: string): string | null,
 
     /**
@@ -1362,22 +1363,22 @@ for that dimension.
     getChildById(id: string): videojs$Component | void,
 
     /**
- * Check if a component's element has a CSS class name.
- * @param classToCheck CSS class name to check.
- * @return - True if the `Component` has the class.
-- False if the `Component` does not have the class`
-		 *
- */
+     * Check if a component's element has a CSS class name.
+     * @param classToCheck CSS class name to check.
+     * @return - True if the `Component` has the class.
+     * - False if the `Component` does not have the class`
+     * 		 *
+     */
     hasClass(classToCheck: string): boolean,
 
     /**
- * Get or set the height of the component based upon the CSS styles.
- * See {@link Component#dimension} for more detailed information.
- * @param num The height that you want to set postfixed with '%', 'px' or nothing.
- * @param skipListeners Skip the componentresize event trigger
- * @return The width when getting, zero if there is no width. Can be a string
-postpixed with '%' or 'px'.
- */
+     * Get or set the height of the component based upon the CSS styles.
+     * See {@link Component#dimension} for more detailed information.
+     * @param num The height that you want to set postfixed with '%', 'px' or nothing.
+     * @param skipListeners Skip the componentresize event trigger
+     * @return The width when getting, zero if there is no width. Can be a string
+     * postpixed with '%' or 'px'.
+     */
     height(num: number | string, skipListeners?: boolean): void,
     height(): number | string,
 
@@ -1400,36 +1401,36 @@ postpixed with '%' or 'px'.
     initChildren(): void,
 
     /**
- * Localize a string given the string in english.
- * 
- * If tokens are provided, it'll try and run a simple token replacement on the provided string.
- * The tokens it looks for look like `{1}` with the index being 1-indexed into the tokens array.
- * 
- * If a `defaultValue` is provided, it'll use that over `string`,
- * if a value isn't found in provided language files.
- * This is useful if you want to have a descriptive key for token replacement
- * but have a succinct localized string and not require `en.json` to be included.
- * 
- * Currently, it is used for the progress bar timing.
- * ```js
- * 		 * {
- * 		 *   "progress bar timing: currentTime={1} duration={2}": "{1} of {2}"
- * 		 * }
- * 		 * ```
- * It is then used like so:
- * ```js
- * 		 * this.localize('progress bar timing: currentTime={1} duration{2}',
- * 		 *               [this.player_.currentTime(), this.player_.duration()],
- * 		 *               '{1} of {2}');
- * 		 * ```
- * 
- * Which outputs something like: `01:23 of 24:56`.
- * @param string The string to localize and the key to lookup in the language files.
- * @param tokens If the current item has token replacements, provide the tokens here.
- * @param defaultValue Defaults to `string`. Can be a default value to use for token replacement
-if the lookup key is needed to be separate.
- * @return The localized string or if no localization exists the english string.
- */
+     * Localize a string given the string in english.
+     *
+     * If tokens are provided, it'll try and run a simple token replacement on the provided string.
+     * The tokens it looks for look like `{1}` with the index being 1-indexed into the tokens array.
+     *
+     * If a `defaultValue` is provided, it'll use that over `string`,
+     * if a value isn't found in provided language files.
+     * This is useful if you want to have a descriptive key for token replacement
+     * but have a succinct localized string and not require `en.json` to be included.
+     *
+     * Currently, it is used for the progress bar timing.
+     * ```js
+     * 		 * {
+     * 		 *   "progress bar timing: currentTime={1} duration={2}": "{1} of {2}"
+     * 		 * }
+     * 		 * ```
+     * It is then used like so:
+     * ```js
+     * 		 * this.localize('progress bar timing: currentTime={1} duration{2}',
+     * 		 *               [this.player_.currentTime(), this.player_.duration()],
+     * 		 *               '{1} of {2}');
+     * 		 * ```
+     *
+     * Which outputs something like: `01:23 of 24:56`.
+     * @param string The string to localize and the key to lookup in the language files.
+     * @param tokens If the current item has token replacements, provide the tokens here.
+     * @param defaultValue Defaults to `string`. Can be a default value to use for token replacement
+     * if the lookup key is needed to be separate.
+     * @return The localized string or if no localization exists the english string.
+     */
     localize(string: string, tokens?: string[], defaultValue?: string): string,
 
     /**
@@ -1453,7 +1454,7 @@ if the lookup key is needed to be separate.
      * @return A new object of `this.options_` and `obj` merged together.
      * @deprecated since version 5
      */
-    videojs$options(obj: any): any,
+    options(obj: any): any,
     played(): TimeRanges,
 
     /**
@@ -1491,28 +1492,26 @@ if the lookup key is needed to be separate.
     removeClass(classToRemove: string): void,
 
     /**
- * Queues up a callback to be passed to requestAnimationFrame (rAF), but
- * with a few extra bonuses:
- * 
- * - Supports browsers that do not support rAF by falling back to
- *    {@link Component#setTimeout}.
- * 
- * - The callback is turned into a {@link Component~GenericCallback} (i.e.
- *    bound to the component).
- * 
- * - Automatic cancellation of the rAF callback is handled if the component
- *    is disposed before it is called.
- * @param fn A function that will be bound to this component and executed just
-before the browser's next repaint.
- * @return Returns an rAF ID that gets used to identify the timeout. It can
-also be used in {@link Component#cancelAnimationFrame} to cancel
-the animation frame callback.
- * @listens Component#dispose
- * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame}
- */
-    requestAnimationFrame(
-      fn: videojs$Component.Component$GenericCallback
-    ): number,
+     * Queues up a callback to be passed to requestAnimationFrame (rAF), but
+     * with a few extra bonuses:
+     *
+     * - Supports browsers that do not support rAF by falling back to
+     *    {@link Component#setTimeout}.
+     *
+     * - The callback is turned into a {@link Component~GenericCallback} (i.e.
+     *    bound to the component).
+     *
+     * - Automatic cancellation of the rAF callback is handled if the component
+     *    is disposed before it is called.
+     * @param fn A function that will be bound to this component and executed just
+     * before the browser's next repaint.
+     * @return Returns an rAF ID that gets used to identify the timeout. It can
+     * also be used in {@link Component#cancelAnimationFrame} to cancel
+     * the animation frame callback.
+     * @listens Component#dispose
+     * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame}
+     */
+    requestAnimationFrame(fn: Component$GenericCallback): number,
 
     /**
      * Set the value of an attribute on the `Component`'s element
@@ -1523,46 +1522,40 @@ the animation frame callback.
     setAttribute(attribute: string, value: string): void,
 
     /**
- * Creates a function that gets run every `x` milliseconds. This function is a wrapper
- * around `window.setInterval`. There are a few reasons to use this one instead though.
- * 1. It gets cleared via  {@link Component#clearInterval} when
- *     {@link Component#dispose} gets called.
- * 2. The function callback will be a {@link Component~GenericCallback}
- * @param fn The function to run every `x` seconds.
- * @param interval Execute the specified function every `x` milliseconds.
- * @return Returns an id that can be used to identify the interval. It can also be be used in
-{@link Component#clearInterval} to clear the interval.
- * @listens Component#dispose
- * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval}
- */
-    setInterval(
-      fn: videojs$Component.Component$GenericCallback,
-      interval: number
-    ): number,
+     * Creates a function that gets run every `x` milliseconds. This function is a wrapper
+     * around `window.setInterval`. There are a few reasons to use this one instead though.
+     * 1. It gets cleared via  {@link Component#clearInterval} when
+     *     {@link Component#dispose} gets called.
+     * 2. The function callback will be a {@link Component~GenericCallback}
+     * @param fn The function to run every `x` seconds.
+     * @param interval Execute the specified function every `x` milliseconds.
+     * @return Returns an id that can be used to identify the interval. It can also be be used in
+     * {@link Component#clearInterval} to clear the interval.
+     * @listens Component#dispose
+     * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval}
+     */
+    setInterval(fn: Component$GenericCallback, interval: number): number,
 
     /**
- * Creates a function that runs after an `x` millisecond timeout. This function is a
- * wrapper around `window.setTimeout`. There are a few reasons to use this one
- * instead though:
- * 1. It gets cleared via  {@link Component#clearTimeout} when
- *     {@link Component#dispose} gets called.
- * 2. The function callback will gets turned into a {@link Component~GenericCallback}
- * 
- * > Note: You can't use `window.clearTimeout` on the id returned by this function. This
- *          will cause its dispose listener not to get cleaned up! Please use
- *          {@link Component#clearTimeout} or {@link Component#dispose} instead.
- * @param fn The function that will be run after `timeout`.
- * @param timeout Timeout in milliseconds to delay before executing the specified function.
- * @return Returns a timeout ID that gets used to identify the timeout. It can also
-get used in {@link Component#clearTimeout} to clear the timeout that
-was set.
- * @listens Component#dispose
- * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout}
- */
-    setTimeout(
-      fn: videojs$Component.Component$GenericCallback,
-      timeout: number
-    ): number,
+     * Creates a function that runs after an `x` millisecond timeout. This function is a
+     * wrapper around `window.setTimeout`. There are a few reasons to use this one
+     * instead though:
+     * 1. It gets cleared via  {@link Component#clearTimeout} when
+     *     {@link Component#dispose} gets called.
+     * 2. The function callback will gets turned into a {@link Component~GenericCallback}
+     *
+     * > Note: You can't use `window.clearTimeout` on the id returned by this function. This
+     *          will cause its dispose listener not to get cleaned up! Please use
+     *          {@link Component#clearTimeout} or {@link Component#dispose} instead.
+     * @param fn The function that will be run after `timeout`.
+     * @param timeout Timeout in milliseconds to delay before executing the specified function.
+     * @return Returns a timeout ID that gets used to identify the timeout. It can also
+     * get used in {@link Component#clearTimeout} to clear the timeout that
+     * was set.
+     * @listens Component#dispose
+     * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout}
+     */
+    setTimeout(fn: Component$GenericCallback, timeout: number): number,
 
     /**
      * Show the `Component`s element if it is hidden by removing the
@@ -1580,7 +1573,7 @@ was set.
      */
     toggleClass(
       classToToggle: string,
-      predicate?: boolean | videojs$Dom.Dom$Predicate
+      predicate?: boolean | Dom$Predicate
     ): void,
 
     /**
@@ -1596,65 +1589,59 @@ was set.
     unlockShowing(): void,
 
     /**
- * Get or set the width of the component based upon the CSS styles.
- * See {@link Component#dimension} for more detailed information.
- * @param num The width that you want to set postfixed with '%', 'px' or nothing.
- * @param skipListeners Skip the componentresize event trigger
- * @return The width when getting, zero if there is no width. Can be a string
-postpixed with '%' or 'px'.
- */
+     * Get or set the width of the component based upon the CSS styles.
+     * See {@link Component#dimension} for more detailed information.
+     * @param num The width that you want to set postfixed with '%', 'px' or nothing.
+     * @param skipListeners Skip the componentresize event trigger
+     * @return The width when getting, zero if there is no width. Can be a string
+     * postpixed with '%' or 'px'.
+     */
     width(num: number, skipListeners?: number): void,
     width(): string | number
-  } & videojs$EventedMixin;
+  } & EventedMixin;
 
   declare var videojs$Component: {
     prototype: videojs$Component,
 
     /**
- * Creates an instance of this class.
- * @param player The `Player` that this class should be attached to.
- * @param options The key/value store of player options.
- * @param An array of children objects to intialize this component with. Children objects have
-a name property that will be used if more than one component of the same type needs to be
-added.
- * @param ready Function that gets called when the `Component` is ready.
- */
+     * Creates an instance of this class.
+     * @param player The `Player` that this class should be attached to.
+     * @param options The key/value store of player options.
+     * @param An array of children objects to intialize this component with. Children objects have
+     * a name property that will be used if more than one component of the same type needs to be
+     * added.
+     * @param ready Function that gets called when the `Component` is ready.
+     */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$ComponentOptions,
+      ready?: Component$ReadyCallback
     ): videojs$Component,
 
     /**
- * Get a `Component` based on the name it was registered with.
- * @param name The Name of the component to get.
- * @return The `Component` that got registered under the given name.
- * @deprecated In `videojs` 6 this will not return `Component`s that were not
-registered using {@link Component.registerComponent}. Currently we
-check the global `videojs` object for a `Component` name and
-return that if it exists.
- */
-    videojs$getComponent(name: "Button" | "button"): typeof Button,
-    videojs$getComponent(
+     * Get a `Component` based on the name it was registered with.
+     * @param name The Name of the component to get.
+     * @return The `Component` that got registered under the given name.
+     * @deprecated In `videojs` 6 this will not return `Component`s that were not
+     * registered using {@link Component.registerComponent}. Currently we
+     * check the global `videojs` object for a `Component` name and
+     * return that if it exists.
+     */
+    getComponent(name: "Button" | "button"): typeof Button,
+    getComponent(
       name: "ClickableComponent" | "clickablecomponent"
     ): typeof ClickableComponent,
-    videojs$getComponent(
-      name: "ModalDialog" | "modaldialog"
-    ): typeof ModalDialog,
-    videojs$getComponent(name: "Menu" | "menu"): typeof Menu,
-    videojs$getComponent(name: "MenuButton" | "menubutton"): typeof MenuButton,
-    videojs$getComponent(name: "MenuItem" | "menuitem"): typeof MenuItem,
-    videojs$getComponent(
+    getComponent(name: "ModalDialog" | "modaldialog"): typeof ModalDialog,
+    getComponent(name: "Menu" | "menu"): typeof Menu,
+    getComponent(name: "MenuButton" | "menubutton"): typeof MenuButton,
+    getComponent(name: "MenuItem" | "menuitem"): typeof MenuItem,
+    getComponent(
       name: "MouseTimeDisplay" | "mouseTimeDisplay"
     ): typeof MouseTimeDisplay,
-    videojs$getComponent(name: "Spacer" | "spacer"): typeof Spacer,
-    videojs$getComponent(name: "Player" | "player"): typeof Player,
-    videojs$getComponent(
-      name: "timeTooltip" | "TimeTooltip"
-    ): typeof TimeToolTip,
-    videojs$getComponent(
-      name: "Component" | "component" | string
-    ): typeof Component,
+    getComponent(name: "Spacer" | "spacer"): typeof Spacer,
+    getComponent(name: "Player" | "player"): typeof Player,
+    getComponent(name: "timeTooltip" | "TimeTooltip"): typeof TimeToolTip,
+    getComponent(name: "Component" | "component" | string): typeof Component,
 
     /**
      * Register a `Component` with `videojs` given the name and the component.
@@ -1669,7 +1656,7 @@ return that if it exists.
      * @param ComponentToRegister The `Component` class to register.
      * @return The `Component` that was registered.
      */
-    videojs$registerComponent(name: string, ComponentToRegister: any): any
+    registerComponent(name: string, ComponentToRegister: any): any
   };
 
   declare interface videojs$ComponentOptions {
@@ -1680,18 +1667,18 @@ return that if it exists.
    * A callback that is called when a component is ready. Does not have any
    * parameters and any callback value will be ignored.
    */
-  declare type Component$ReadyCallback = () => void;
+  declare type videojs$Component$ReadyCallback = () => void;
 
   /**
    * A callback that has no parameters and is bound into `Component`s context.
    */
-  declare type Component$GenericCallback = () => void;
+  declare type videojs$Component$GenericCallback = () => void;
 
   /**
    * An object that contains width and height values of the `Component`s
    * computed style. Uses `window.getComputedStyle`.
    */
-  declare interface Component$DimensionObject {
+  declare interface videojs$Component$DimensionObject {
     width: number;
     height: number;
   }
@@ -1713,7 +1700,7 @@ return that if it exists.
      * @return The element that was created.
      */
     createEl(): HTMLDivElement
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$ControlBar: {
     prototype: videojs$ControlBar,
@@ -1725,13 +1712,13 @@ return that if it exists.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ControlBarOptions
+      options?: videojs$ControlBarOptions
     ): videojs$ControlBar
   };
 
   declare type videojs$ControlBarOptions = {
     volumePanel?: videojs$VolumePanelOptions
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * Displays the current time
@@ -1748,7 +1735,7 @@ return that if it exists.
      * @param event The `timeupdate` event that caused this function to run.
      * @listens Player#timeupdate
      */
-    updateContent(event: videojs$EventTarget.EventTarget$Event): void,
+    updateContent(event: EventTarget$Event): void,
 
     /**
      * When the player fires ended there should be no time left. Sadly
@@ -1757,8 +1744,8 @@ return that if it exists.
      * @param event The `ended` event that caused this to run.
      * @listens Player#ended
      */
-    handleEnded(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$TimeDisplay;
+    handleEnded(event: EventTarget$Event): void
+  } & TimeDisplay;
 
   declare var videojs$CurrentTimeDisplay: {
     prototype: videojs$CurrentTimeDisplay,
@@ -1770,7 +1757,7 @@ return that if it exists.
      */
     new(
       player: videojs$Player,
-      videojs$options: videojs$ComponentOptions
+      options: videojs$ComponentOptions
     ): videojs$CurrentTimeDisplay
   };
 
@@ -1789,7 +1776,7 @@ return that if it exists.
      * @return The element that was created.
      */
     createEl(): HTMLDivElement
-  } & videojs$Spacer;
+  } & Spacer;
 
   declare var videojs$CustomControlSpacer: {
     prototype: videojs$CustomControlSpacer,
@@ -1802,8 +1789,8 @@ return that if it exists.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$ComponentOptions,
+      ready?: Component$ReadyCallback
     ): videojs$CustomControlSpacer
   };
 
@@ -1816,7 +1803,7 @@ return that if it exists.
      * @param event The event that caused this function to run
      * @listens TextTrackList#change
      */
-    handleTracksChange(event: videojs$EventTarget.EventTarget$Event): void,
+    handleTracksChange(event: EventTarget$Event): void,
 
     /**
      * Builds the default DOM `className`.
@@ -1829,7 +1816,7 @@ return that if it exists.
      * @return The constructed wrapper DOM `className`
      */
     buildWrapperCSSClass(): string
-  } & videojs$TextTrackButton;
+  } & TextTrackButton;
 
   declare var videojs$DescriptionsButton: {
     prototype: videojs$DescriptionsButton,
@@ -1842,8 +1829,8 @@ return that if it exists.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$TrackButtonOptions,
+      ready?: Component$ReadyCallback
     ): videojs$DescriptionsButton
   };
 
@@ -1858,15 +1845,15 @@ return that if it exists.
     buildCSSClass(): string,
 
     /**
- * Update duration time display.
- * @param event The `durationchange`, `timeupdate`, or `loadedmetadata` event that caused
-this function to be called.
- * @listens Player#durationchange
- * @listens Player#timeupdate
- * @listens Player#loadedmetadata
- */
-    updateContent(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$TimeDisplay;
+     * Update duration time display.
+     * @param event The `durationchange`, `timeupdate`, or `loadedmetadata` event that caused
+     * this function to be called.
+     * @listens Player#durationchange
+     * @listens Player#timeupdate
+     * @listens Player#loadedmetadata
+     */
+    updateContent(event: EventTarget$Event): void
+  } & TimeDisplay;
 
   declare var videojs$DurationDisplay: {
     prototype: videojs$DurationDisplay,
@@ -1878,7 +1865,7 @@ this function to be called.
      */
     new(
       player: videojs$Player,
-      videojs$options: videojs$ComponentOptions
+      options: videojs$ComponentOptions
     ): videojs$DurationDisplay
   };
 
@@ -1899,7 +1886,7 @@ this function to be called.
      * @return The `Player`s error message localized or an empty string.
      */
     content(): string
-  } & videojs$ModalDialog;
+  } & ModalDialog;
 
   declare var videojs$ErrorDisplay: {
     prototype: videojs$ErrorDisplay,
@@ -1911,33 +1898,33 @@ this function to be called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ModalDialogOptions
+      options?: videojs$ModalDialogOptions
     ): videojs$ErrorDisplay
   };
 
   declare interface videojs$Dom {
     /**
- * Finds a single DOM element matching `selector` within the optional
- * `context` of another DOM element (defaulting to `document`).
- * @param selector A valid CSS selector, which will be passed to `querySelector`.
- * @param context A DOM element within which to query. Can also be a selector
-string in which case the first matching element will be used
-as context. If missing (or no element matches selector), falls
-back to `document`.
- * @return The element that was found or null.
- */
+     * Finds a single DOM element matching `selector` within the optional
+     * `context` of another DOM element (defaulting to `document`).
+     * @param selector A valid CSS selector, which will be passed to `querySelector`.
+     * @param context A DOM element within which to query. Can also be a selector
+     * string in which case the first matching element will be used
+     * as context. If missing (or no element matches selector), falls
+     * back to `document`.
+     * @return The element that was found or null.
+     */
     $(selector: string, context?: string | Element): Element;
 
     /**
- * Finds a all DOM elements matching `selector` within the optional
- * `context` of another DOM element (defaulting to `document`).
- * @param selector A valid CSS selector, which will be passed to `querySelectorAll`.
- * @param context A DOM element within which to query. Can also be a selector
-string in which case the first matching element will be used
-as context. If missing (or no element matches selector), falls
-back to `document`.
- * @return A element list of elements that were found. Will be empty if none were found.
- */
+     * Finds a all DOM elements matching `selector` within the optional
+     * `context` of another DOM element (defaulting to `document`).
+     * @param selector A valid CSS selector, which will be passed to `querySelectorAll`.
+     * @param context A DOM element within which to query. Can also be a selector
+     * string in which case the first matching element will be used
+     * as context. If missing (or no element matches selector), falls
+     * back to `document`.
+     * @return A element list of elements that were found. Will be empty if none were found.
+     */
     $$(selector: string, context?: string | Element): NodeList;
 
     /**
@@ -2081,20 +2068,17 @@ back to `document`.
      * @param event Event object
      * @return A Coordinates object corresponding to the mouse position.
      */
-    getPointerPosition(
-      el: Element,
-      event: EventTarget$Event
-    ): videojs$Dom.Dom$Coordinates;
+    getPointerPosition(el: Element, event: EventTarget$Event): Dom$Coordinates;
 
     /**
- * Check if an element has a CSS class
- * @param element Element to check
- * @param classToCheck Class name to check for
- * @return - True if the element had the class
-- False otherwise.
- * @throws {Error}
-Throws an error if `classToCheck` has white space.
- */
+     * Check if an element has a CSS class
+     * @param element Element to check
+     * @param classToCheck Class name to check for
+     * @return - True if the element had the class
+     * - False otherwise.
+     * @throws {Error}
+     * Throws an error if `classToCheck` has white space.
+     */
     hasClass(element: Element, classToCheck: string): boolean;
 
     /**
@@ -2110,11 +2094,11 @@ Throws an error if `classToCheck` has white space.
     ): Element;
 
     /**
- * Determines, via duck typing, whether or not a value is a DOM element.
- * @param value The thing to check
- * @return - True if it is a DOM element
-- False otherwise
- */
+     * Determines, via duck typing, whether or not a value is a DOM element.
+     * @param value The thing to check
+     * @return - True if it is a DOM element
+     * - False otherwise
+     */
     isEl(value: any): boolean;
 
     /**
@@ -2130,38 +2114,38 @@ Throws an error if `classToCheck` has white space.
     isReal(): boolean;
 
     /**
- * Check if event was a single left click
- * @param event Event object
- * @return - True if a left click
-- False if not a left click
- */
-    isSingleLeftClick(event: videojs$EventTarget.EventTarget$Event): boolean;
+     * Check if event was a single left click
+     * @param event Event object
+     * @return - True if a left click
+     * - False if not a left click
+     */
+    isSingleLeftClick(event: EventTarget$Event): boolean;
 
     /**
- * Determines, via duck typing, whether or not a value is a text node.
- * @param value Check if this value is a text node.
- * @return - True if it is a text node
-- False otherwise
- */
+     * Determines, via duck typing, whether or not a value is a text node.
+     * @param value Check if this value is a text node.
+     * @return - True if it is a text node
+     * - False otherwise
+     */
     isTextNode(value: any): boolean;
 
     /**
- * Normalizes content for eventual insertion into the DOM.
- * 
- * This allows a wide range of content definition methods, but protects
- * from falling into the trap of simply writing to `innerHTML`, which is
- * an XSS concern.
- * 
- * The content for an element can be passed in multiple types and
- * combinations, whose behavior is as follows:
- * @param content - String: Normalized into a text node.
-- Element/TextNode: Passed through.
-- Array: A one-dimensional array of strings, elements, nodes, or functions
-(which return single strings, elements, or nodes).
-- Function: If the sole argument, is expected to produce a string, element,
-node, or array as defined above.
- * @return All of the content that was passed in normalized.
- */
+     * Normalizes content for eventual insertion into the DOM.
+     *
+     * This allows a wide range of content definition methods, but protects
+     * from falling into the trap of simply writing to `innerHTML`, which is
+     * an XSS concern.
+     *
+     * The content for an element can be passed in multiple types and
+     * combinations, whose behavior is as follows:
+     * @param content - String: Normalized into a text node.
+     * - Element/TextNode: Passed through.
+     * - Array: A one-dimensional array of strings, elements, nodes, or functions
+     * (which return single strings, elements, or nodes).
+     * - Function: If the sole argument, is expected to produce a string, element,
+     * node, or array as defined above.
+     * @return All of the content that was passed in normalized.
+     */
     normalizeContent(
       content: videojs$Content | videojs$Content[]
     ): videojs$Content[];
@@ -2222,7 +2206,7 @@ node, or array as defined above.
     toggleClass(
       element: Element,
       classToToggle: string,
-      predicate: videojs$Dom.Dom$Predicate
+      predicate: Dom$Predicate
     ): Element;
 
     /**
@@ -2234,7 +2218,7 @@ node, or array as defined above.
   /**
    * x and y coordinates for a dom element or mouse pointer
    */
-  declare interface Dom$Coordinates {
+  declare interface videojs$Dom$Coordinates {
     /**
      * x coordinate in pixels
      */
@@ -2247,14 +2231,14 @@ node, or array as defined above.
   }
 
   /**
- * The callback definition for toggleElClass.
- * @param element The DOM element of the Component.
- * @param classToToggle The `className` that wants to be toggled
- * @return - If true the `classToToggle` will get added to `element`.
-- If false the `classToToggle` will get removed from `element`.
-- If undefined this callback will be ignored
- */
-  declare type Dom$Predicate = (
+   * The callback definition for toggleElClass.
+   * @param element The DOM element of the Component.
+   * @param classToToggle The `className` that wants to be toggled
+   * @return - If true the `classToToggle` will get added to `element`.
+   * - If false the `classToToggle` will get removed from `element`.
+   * - If undefined this callback will be ignored
+   */
+  declare type videojs$Dom$Predicate = (
     element: Element,
     classToToggle: string
   ) => boolean;
@@ -2262,7 +2246,7 @@ node, or array as defined above.
   /**
    * The postion of a DOM element on the page.
    */
-  declare interface Dom$Position {
+  declare interface videojs$Dom$Position {
     /**
      * Pixels on top
      */
@@ -2280,81 +2264,72 @@ node, or array as defined above.
    */
   declare interface videojs$EventedMixin {
     /**
- * Removes listener(s) from event(s) on an evented object.
- * @param targetOrType If this is a string or array, it represents the event type(s).
-
-Another evented object can be passed here instead, in which case
-ALL 3 arguments are _required_.
- * @param typeOrListener If the first argument was a string or array, this may be the
-listener function. Otherwise, this is a string or array of event
-type(s).
- * @param listener If the first argument was another evented object, this will be
-the listener function; otherwise, _all_ listeners bound to the
-event type(s) will be removed.
- */
-    videojs$off(
+     * Removes listener(s) from event(s) on an evented object.
+     * @param targetOrType If this is a string or array, it represents the event type(s).
+     *
+     * Another evented object can be passed here instead, in which case
+     * ALL 3 arguments are _required_.
+     * @param typeOrListener If the first argument was a string or array, this may be the
+     * listener function. Otherwise, this is a string or array of event
+     * type(s).
+     * @param listener If the first argument was another evented object, this will be
+     * the listener function; otherwise, _all_ listeners bound to the
+     * event type(s) will be removed.
+     */
+    off(
       target?: videojs$Component | Element,
       type?: string | string[],
       listener?: (...args: any[]) => void
     ): void;
-    videojs$off(
-      type?: string | string[],
-      listener?: (...args: any[]) => void
-    ): void;
+    off(type?: string | string[], listener?: (...args: any[]) => void): void;
 
     /**
- * Add a listener to an event (or events) on this object or another evented
- * object.
- * @param targetOrType If this is a string or array, it represents the event type(s)
-that will trigger the listener.
-
-Another evented object can be passed here instead, which will
-cause the listener to listen for events on _that_ object.
-
-In either case, the listener's `this` value will be bound to
-this object.
- * @param typeOrListener If the first argument was a string or array, this should be the
-listener function. Otherwise, this is a string or array of event
-type(s).
- * @param listener If the first argument was another evented object, this will be
-the listener function.
- */
-    videojs$on(
+     * Add a listener to an event (or events) on this object or another evented
+     * object.
+     * @param targetOrType If this is a string or array, it represents the event type(s)
+     * that will trigger the listener.
+     *
+     * Another evented object can be passed here instead, which will
+     * cause the listener to listen for events on _that_ object.
+     *
+     * In either case, the listener's `this` value will be bound to
+     * this object.
+     * @param typeOrListener If the first argument was a string or array, this should be the
+     * listener function. Otherwise, this is a string or array of event
+     * type(s).
+     * @param listener If the first argument was another evented object, this will be
+     * the listener function.
+     */
+    on(
       target?: videojs$Component | Element,
       type?: string | string[],
       listener?: (...args: any[]) => void
     ): void;
-    videojs$on(
-      type?: string | string[],
-      listener?: (...args: any[]) => void
-    ): void;
+    on(type?: string | string[], listener?: (...args: any[]) => void): void;
 
     /**
- * Add a listener to an event (or events) on this object or another evented
- * object. The listener will only be called once and then removed.
- * @param targetOrType If this is a string or array, it represents the event type(s)
-that will trigger the listener.
-
-Another evented object can be passed here instead, which will
-cause the listener to listen for events on _that_ object.
-
-In either case, the listener's `this` value will be bound to
-this object.
- * @param typeOrListener If the first argument was a string or array, this should be the
-listener function. Otherwise, this is a string or array of event
-type(s).
- * @param listener If the first argument was another evented object, this will be
-the listener function.
- */
-    videojs$one(
+     * Add a listener to an event (or events) on this object or another evented
+     * object. The listener will only be called once and then removed.
+     * @param targetOrType If this is a string or array, it represents the event type(s)
+     * that will trigger the listener.
+     *
+     * Another evented object can be passed here instead, which will
+     * cause the listener to listen for events on _that_ object.
+     *
+     * In either case, the listener's `this` value will be bound to
+     * this object.
+     * @param typeOrListener If the first argument was a string or array, this should be the
+     * listener function. Otherwise, this is a string or array of event
+     * type(s).
+     * @param listener If the first argument was another evented object, this will be
+     * the listener function.
+     */
+    one(
       target?: videojs$Component | Element,
       type?: string | string[],
       listener?: (...args: any[]) => void
     ): void;
-    videojs$one(
-      type?: string | string[],
-      listener?: (...args: any[]) => void
-    ): void;
+    one(type?: string | string[], listener?: (...args: any[]) => void): void;
 
     /**
      * Fire an event on this evented object, causing its listeners to be called.
@@ -2362,7 +2337,7 @@ the listener function.
      * @param hash An additional object to pass along to listeners.
      * @return Whether or not the default behavior was prevented.
      */
-    videojs$trigger(event: any, hash?: any): boolean;
+    trigger(event: any, hash?: any): boolean;
   }
 
   /**
@@ -2381,16 +2356,16 @@ the listener function.
      */
     addEventListener(
       type: string | string[],
-      fn: videojs$EventTarget.EventTarget$EventListener
+      fn: EventTarget$EventListener
     ): void;
 
     /**
- * An alias of {@link EventTarget#trigger}. Allows `EventTarget` to mimic
- * the standard DOM API.
- * @param event The name of the event, an `Event`, or an object with a key of type set to
-an event name.
- * @see {@link EventTarget#trigger}
- */
+     * An alias of {@link EventTarget#trigger}. Allows `EventTarget` to mimic
+     * the standard DOM API.
+     * @param event The name of the event, an `Event`, or an object with a key of type set to
+     * an event name.
+     * @see {@link EventTarget#trigger}
+     */
     dispatchEvent(event: string | EventTarget$Event): void;
 
     /**
@@ -2400,10 +2375,7 @@ an event name.
      * @param type An event name or an array of event names.
      * @param fn The function to remove.
      */
-    videojs$off(
-      type: string | string[],
-      fn: videojs$EventTarget.EventTarget$EventListener
-    ): void;
+    off(type: string | string[], fn: EventTarget$EventListener): void;
 
     /**
      * Adds an `event listener` to an instance of an `EventTarget`. An `event listener` is a
@@ -2411,10 +2383,7 @@ an event name.
      * @param type An event name or an array of event names.
      * @param fn The function to call with `EventTarget`s
      */
-    videojs$on(
-      type: string | string[],
-      fn: videojs$EventTarget.EventTarget$EventListener
-    ): void;
+    on(type: string | string[], fn: EventTarget$EventListener): void;
 
     /**
      * This function will add an `event listener` that gets triggered only once. After the
@@ -2423,10 +2392,7 @@ an event name.
      * @param type An event name or an array of event names.
      * @param fn The function to be called once for each event name.
      */
-    videojs$one(
-      type: string | string[],
-      fn: videojs$EventTarget.EventTarget$EventListener
-    ): void;
+    one(type: string | string[], fn: EventTarget$EventListener): void;
 
     /**
      * An alias of {@link EventTarget#off}. Allows `EventTarget` to mimic
@@ -2437,26 +2403,24 @@ an event name.
      */
     removeEventListener(
       type: string | string[],
-      fn: videojs$EventTarget.EventTarget$EventListener
+      fn: EventTarget$EventListener
     ): void;
 
     /**
- * This function causes an event to happen. This will then cause any `event listeners`
- * that are waiting for that event, to get called. If there are no `event listeners`
- * for an event then nothing will happen.
- * 
- * If the name of the `Event` that is being triggered is in `EventTarget.allowedEvents_`.
- * Trigger will also call the `on` + `uppercaseEventName` function.
- * 
- * Example:
- * 'click' is in `EventTarget.allowedEvents_`, so, trigger will attempt to call
- * `onClick` if it exists.
- * @param event The name of the event, an `Event`, or an object with a key of type set to
-an event name.
- */
-    videojs$trigger(
-      event: string | videojs$EventTarget.EventTarget$Event
-    ): void;
+     * This function causes an event to happen. This will then cause any `event listeners`
+     * that are waiting for that event, to get called. If there are no `event listeners`
+     * for an event then nothing will happen.
+     *
+     * If the name of the `Event` that is being triggered is in `EventTarget.allowedEvents_`.
+     * Trigger will also call the `on` + `uppercaseEventName` function.
+     *
+     * Example:
+     * 'click' is in `EventTarget.allowedEvents_`, so, trigger will attempt to call
+     * `onClick` if it exists.
+     * @param event The name of the event, an `Event`, or an object with a key of type set to
+     * an event name.
+     */
+    trigger(event: string | EventTarget$Event): void;
   }
 
   declare var videojs$EventTarget: {
@@ -2468,7 +2432,7 @@ an event name.
    * A Custom DOM event.
    * @see [Properties]{@link https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent}
    */
-  declare type EventTarget$Event = {
+  declare type videojs$EventTarget$Event = {
     [key: string]: any
   } & CustomEvent;
 
@@ -2477,8 +2441,8 @@ an event name.
    * @param event the event that triggered this function
    * @param hash hash of data sent during the event
    */
-  declare type EventTarget$EventListener = (
-    e: EventTarget$Event,
+  declare type videojs$EventTarget$EventListener = (
+    e: videojs$EventTarget$Event,
     data?: any
   ) => void;
 
@@ -2493,23 +2457,23 @@ an event name.
     buildCSSClass(): string,
 
     /**
- * Handles fullscreenchange on the player and change control text accordingly.
- * @param event The {@link Player#fullscreenchange} event that caused this function to be
-called.
- * @listens Player#fullscreenchange
- */
-    handleFullscreenChange(event: videojs$EventTarget.EventTarget$Event): void,
+     * Handles fullscreenchange on the player and change control text accordingly.
+     * @param event The {@link Player#fullscreenchange} event that caused this function to be
+     * called.
+     * @listens Player#fullscreenchange
+     */
+    handleFullscreenChange(event: EventTarget$Event): void,
 
     /**
- * This gets called when an `FullscreenToggle` is "clicked". See
- * {@link ClickableComponent} for more detailed information on what a click can be.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Button;
+     * This gets called when an `FullscreenToggle` is "clicked". See
+     * {@link ClickableComponent} for more detailed information on what a click can be.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void
+  } & Button;
 
   declare var videojs$FullscreenToggle: {
     prototype: videojs$FullscreenToggle,
@@ -2521,7 +2485,7 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$FullscreenToggle
   };
 
@@ -2629,7 +2593,7 @@ called.
      */
     levels: {
       all: string,
-      videojs$off: string,
+      off: string,
       debug: string,
       info: string,
       warn: string,
@@ -2711,15 +2675,15 @@ called.
     prototype: videojs$MediaError,
 
     /**
- * Create an instance of this class.
- * @param value This can be of multiple types:
-- number: should be a standard error code
-- string: an error message (the code will be 0)
-- Object: arbitrary properties
-- `MediaError` (native): used to populate a video.js `MediaError` object
-- `MediaError` (video.js): will return itself if it's already a
-video.js `MediaError` object.
- */
+     * Create an instance of this class.
+     * @param value This can be of multiple types:
+     * - number: should be a standard error code
+     * - string: an error message (the code will be 0)
+     * - Object: arbitrary properties
+     * - `MediaError` (native): used to populate a video.js `MediaError` object
+     * - `MediaError` (video.js): will return itself if it's already a
+     * video.js `MediaError` object.
+     */
     new(
       value:
         | number
@@ -2817,7 +2781,7 @@ video.js `MediaError` object.
      * @param event A `keydown` event that happened on the menu.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(event: EventTarget$Event): void,
 
     /**
      * Move to previous (higher) menu item for keyboard users.
@@ -2828,7 +2792,7 @@ video.js `MediaError` object.
      * Move to next (lower) menu item for keyboard users.
      */
     stepForward(): void
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$Menu: {
     prototype: videojs$Menu,
@@ -2838,15 +2802,12 @@ video.js `MediaError` object.
      * @param player the player that this component should attach to
      * @param options Object of option names and values
      */
-    new(
-      player: videojs$Player,
-      videojs$options?: videojs$MenuOptions
-    ): videojs$Menu
+    new(player: videojs$Player, options?: videojs$MenuOptions): videojs$Menu
   };
 
   declare type videojs$MenuOptions = {
     menuButton: videojs$MenuButton
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * A `MenuButton` class for any popup {@link Menu}.
@@ -2921,17 +2882,17 @@ video.js `MediaError` object.
      * @param event The `blur` event that caused this function to be called.
      * @listens blur
      */
-    handleBlur(event: videojs$EventTarget.EventTarget$Event): void,
+    handleBlur(event: EventTarget$Event): void,
 
     /**
- * Handle a click on a `MenuButton`.
- * See {@link ClickableComponent#handleClick} for instances where this is called.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * Handle a click on a `MenuButton`.
+     * See {@link ClickableComponent#handleClick} for instances where this is called.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * This gets called when a `MenuButton` gains focus via a `focus` event.
@@ -2940,7 +2901,7 @@ called.
      * @param event The `focus` event that caused this function to be called.
      * @listens focus
      */
-    handleFocus(event: videojs$EventTarget.EventTarget$Event): void,
+    handleFocus(event: EventTarget$Event): void,
 
     /**
      * Handle tab, escape, down arrow, and up arrow keys for `MenuButton`. See
@@ -2948,7 +2909,7 @@ called.
      * @param event The `keydown` event that caused this function to be called.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(event: EventTarget$Event): void,
 
     /**
      * Handle a `keydown` event on a sub-menu. The listener for this is added in
@@ -2956,7 +2917,7 @@ called.
      * @param event Key press event
      * @listens keydown
      */
-    handleSubmenuKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleSubmenuKeyPress(event: EventTarget$Event): void,
 
     /**
      * Put the current `MenuButton` into a pressed state.
@@ -2972,7 +2933,7 @@ called.
      * Update the menu based on the current state of its items.
      */
     update(): void
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$MenuButton: {
     prototype: videojs$MenuButton,
@@ -2984,14 +2945,14 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$MenuButtonOptions
+      options?: videojs$MenuButtonOptions
     ): videojs$MenuButton
   };
 
   declare type videojs$MenuButtonOptions = {
     title?: string,
     iniChildren?: boolean
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * The component for a menu item. `<li>`
@@ -3017,21 +2978,21 @@ called.
     createEl(type: string, props?: any, attrs?: any): HTMLLIElement,
 
     /**
- * Any click on a `MenuItem` puts it into the selected state.
- * See {@link ClickableComponent#handleClick} for instances where this is called.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * Any click on a `MenuItem` puts it into the selected state.
+     * See {@link ClickableComponent#handleClick} for instances where this is called.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * Set the state for this menu item as selected or not.
      * @param selected if the menu item is selected or not
      */
     selected(selected: boolean): void
-  } & videojs$ClickableComponent;
+  } & ClickableComponent;
 
   declare var videojs$MenuItem: {
     prototype: videojs$MenuItem,
@@ -3043,7 +3004,7 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$MenuItemOptions
+      options?: videojs$MenuItemOptions
     ): videojs$MenuItem
   };
 
@@ -3052,7 +3013,7 @@ called.
     multiSelectable?: boolean,
     selectable?: boolean,
     selected?: boolean
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   declare interface videojs$Middleware {
     /**
@@ -3060,11 +3021,8 @@ called.
      * @param next
      */
     setSource: (
-      src: videojs$Tech.Tech$SourceObject,
-      next: (
-        err: any,
-        next: (src: videojs$Tech.Tech$SourceObject) => void
-      ) => void
+      src: Tech$SourceObject,
+      next: (err: any, next: (src: Tech$SourceObject) => void) => void
     ) => void;
   }
 
@@ -3101,16 +3059,16 @@ called.
     closeable(value: boolean): boolean,
 
     /**
- * Gets or sets the modal content, which gets normalized before being
- * rendered into the DOM.
- * 
- * This does not update the DOM or fill the modal, but it is called during
- * that process.
- * @param value If defined, sets the internal content value to be used on the
-next call(s) to `fill`. This value is normalized before being
-inserted. To "clear" the internal content value, pass `null`.
- * @return The current content of the modal dialog
- */
+     * Gets or sets the modal content, which gets normalized before being
+     * rendered into the DOM.
+     *
+     * This does not update the DOM or fill the modal, but it is called during
+     * that process.
+     * @param value If defined, sets the internal content value to be used on the
+     * next call(s) to `fill`. This value is normalized before being
+     * inserted. To "clear" the internal content value, pass `null`.
+     * @return The current content of the modal dialog
+     */
     content(value?: videojs$Content): any,
 
     /**
@@ -3161,7 +3119,7 @@ inserted. To "clear" the internal content value, pass `null`.
      * @param e The keypress that triggered this event.
      * @listens keydown
      */
-    handleKeyPress(e: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(e: EventTarget$Event): void,
 
     /**
      * Returns the label string for this modal. Primarily used for accessibility.
@@ -3182,7 +3140,7 @@ inserted. To "clear" the internal content value, pass `null`.
      * @return the current open state of the modaldialog
      */
     opened(value?: boolean): boolean
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$ModalDialog: {
     prototype: videojs$ModalDialog,
@@ -3194,24 +3152,24 @@ inserted. To "clear" the internal content value, pass `null`.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ModalDialogOptions
+      options?: videojs$ModalDialogOptions
     ): videojs$ModalDialog
   };
 
   /**
- * Options for this class
- * @param content Provide customized content for this modal.
- * @param description A text description for the modal, primarily for accessibility.
- * @param fillAlways Normally, modals are automatically filled only the first time
-they open. This tells the modal to refresh its content
-every time it opens.
- * @param label A text label for the modal, primarily for accessibility.
- * @param temporary If `true`, the modal can only be opened once; it will be
-disposed as soon as it's closed.
- * @param uncloseable If `true`, the user will not be able to close the modal
-through the UI in the normal ways. Programmatic closing is
-still possible.
- */
+   * Options for this class
+   * @param content Provide customized content for this modal.
+   * @param description A text description for the modal, primarily for accessibility.
+   * @param fillAlways Normally, modals are automatically filled only the first time
+   * they open. This tells the modal to refresh its content
+   * every time it opens.
+   * @param label A text label for the modal, primarily for accessibility.
+   * @param temporary If `true`, the modal can only be opened once; it will be
+   * disposed as soon as it's closed.
+   * @param uncloseable If `true`, the user will not be able to close the modal
+   * through the UI in the normal ways. Programmatic closing is
+   * still possible.
+   */
   declare type videojs$ModalDialogOptions = {
     content?: any,
     description?: string,
@@ -3219,7 +3177,7 @@ still possible.
     label?: string,
     temporary?: boolean,
     uncloseable?: boolean
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * The {@link MouseTimeDisplay} component tracks mouse movement over the
@@ -3235,14 +3193,14 @@ still possible.
     createEl(): HTMLDivElement,
 
     /**
- * Enqueues updates to its own DOM as well as the DOM of its
- * {@link TimeTooltip} child.
- * @param seekBarRect The `ClientRect` for the {@link SeekBar} element.
- * @param seekBarPoint A number from 0 to 1, representing a horizontal reference point
-from the left edge of the {@link SeekBar}
- */
+     * Enqueues updates to its own DOM as well as the DOM of its
+     * {@link TimeTooltip} child.
+     * @param seekBarRect The `ClientRect` for the {@link SeekBar} element.
+     * @param seekBarPoint A number from 0 to 1, representing a horizontal reference point
+     * from the left edge of the {@link SeekBar}
+     */
     update(seekBarRect: ClientRect, seekBarPoint: number): void
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$MouseTimeDisplay: {
     prototype: videojs$MouseTimeDisplay,
@@ -3254,9 +3212,17 @@ from the left edge of the {@link SeekBar}
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$MouseTimeDisplay
   };
+
+  declare var videojs$ReadyState: {|
+    +HaveNothing: 0, // 0
+    +HaveMetadata: 1, // 1
+    +HaveCurrentData: 2, // 2
+    +HaveFutureData: 3, // 3
+    +HaveEnoughData: 4 // 4
+  |};
 
   /**
    * An instance of the `Player` class is created when any of the Video.js setup methods
@@ -3278,26 +3244,26 @@ from the left edge of the {@link SeekBar}
     /**
      * A getter/setter for the `Player`'s aspect ratio.
      * @param ratio The value to set the `Player's aspect ratio to.
-     *
-     * @return - The current aspect ratio of the `Player` when getting.
-     *         - undefined when setting
-     *
+     * 		 *
+     * 		 * @return - The current aspect ratio of the `Player` when getting.
+     * 		 *         - undefined when setting
+     * 		 *
      */
     aspectRatio(ratio: string): void,
     aspectRatio(): string,
 
     /**
- * Get or set the autoplay option. When this is a boolean it will
- * modify the attribute on the tech. When this is a string the attribute on
- * the tech will be removed and `Player` will handle autoplay on loadstarts.
- * @param value - true: autoplay using the browser behavior
-- false: do not autoplay
-- 'play': call play() on every loadstart
-- 'muted': call muted() then play() on every loadstart
-- 'any': call play() on every loadstart. if that fails call muted() then play().
-- *: values other than those listed here will be set `autoplay` to true
- * @return The current value of autoplay when getting
- */
+     * Get or set the autoplay option. When this is a boolean it will
+     * modify the attribute on the tech. When this is a string the attribute on
+     * the tech will be removed and `Player` will handle autoplay on loadstarts.
+     * @param value - true: autoplay using the browser behavior
+     * - false: do not autoplay
+     * - 'play': call play() on every loadstart
+     * - 'muted': call muted() then play() on every loadstart
+     * - 'any': call play() on every loadstart. if that fails call muted() then play().
+     * - *: values other than those listed here will be set `autoplay` to true
+     * @return The current value of autoplay when getting
+     */
     autoplay(value?: boolean | string): void,
     autoplay(): boolean | string,
 
@@ -3314,33 +3280,33 @@ from the left edge of the {@link SeekBar}
     remoteTextTracks(): videojs$TextTrackList,
 
     /**
- * Create a remote {@link TextTrack} and an {@link HTMLTrackElement}. It will
- * automatically removed from the video element whenever the source changes, unless
- * manualCleanup is set to false.
- * @param options Options to pass to {@link HTMLTrackElement} during creation. See
-{@link HTMLTrackElement} for object properties that you should use.
- * @param manualCleanup if set to false, the TextTrack will be
- * @return the HTMLTrackElement that was created and added
-to the HtmlTrackElementList and the remote
-TextTrackList
- */
+     * Create a remote {@link TextTrack} and an {@link HTMLTrackElement}. It will
+     * automatically removed from the video element whenever the source changes, unless
+     * manualCleanup is set to false.
+     * @param options Options to pass to {@link HTMLTrackElement} during creation. See
+     * {@link HTMLTrackElement} for object properties that you should use.
+     * @param manualCleanup if set to false, the TextTrack will be
+     * @return the HTMLTrackElement that was created and added
+     * to the HtmlTrackElementList and the remote
+     * TextTrackList
+     */
     addRemoteTextTrack(
-      videojs$options: videojs$TextTrackOptions,
+      options: videojs$TextTrackOptions,
       manualCleanup: boolean
     ): HTMLTrackElement,
 
     /**
- * A helper method for adding a {@link TextTrack} to our
- * {@link TextTrackList}.
- * 
- * In addition to the W3C settings we allow adding additional info through options.
- * @see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-addtexttrack
- * @param kind the kind of TextTrack you are adding
- * @param label the label to give the TextTrack label
- * @param language the language to set on the TextTrack
- * @return the TextTrack that was added or undefined
-if there is no tech
- */
+     * A helper method for adding a {@link TextTrack} to our
+     * {@link TextTrackList}.
+     *
+     * In addition to the W3C settings we allow adding additional info through options.
+     * @see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-addtexttrack
+     * @param kind the kind of TextTrack you are adding
+     * @param label the label to give the TextTrack label
+     * @param language the language to set on the TextTrack
+     * @return the TextTrack that was added or undefined
+     * if there is no tech
+     */
     addTextTrack(kind?: string, label?: string, language?: string): void,
 
     /**
@@ -3360,11 +3326,11 @@ if there is no tech
     bufferedEnd(): number,
 
     /**
- * Get the percent (as a decimal) of the video that's been downloaded.
- * This method is not a part of the native HTML video API.
- * @return A decimal between 0 and 1 representing the percent
-that is buffered 0 being 0% and 1 being 100%
- */
+     * Get the percent (as a decimal) of the video that's been downloaded.
+     * This method is not a part of the native HTML video API.
+     * @return A decimal between 0 and 1 representing the percent
+     * that is buffered 0 being 0% and 1 being 100%
+     */
     bufferedPercent(): number,
 
     /**
@@ -3377,12 +3343,12 @@ that is buffered 0 being 0% and 1 being 100%
     cancelFullScreen(): videojs$Player,
 
     /**
- * Get or set whether or not the controls are showing.
- * @fires Player#controlsenabled
- * @param bool - true to turn controls on
-- false to turn controls off
- * @return The current value of controls when getting
- */
+     * Get or set whether or not the controls are showing.
+     * @fires Player#controlsenabled
+     * @param bool - true to turn controls on
+     * - false to turn controls off
+     * @return The current value of controls when getting
+     */
     controls(bool?: boolean): void,
     controls(): boolean,
 
@@ -3393,32 +3359,32 @@ that is buffered 0 being 0% and 1 being 100%
     createEl(): Element,
 
     /**
- * Creates a simple modal dialog (an instance of the {@link ModalDialog}
- * component) that immediately overlays the player with arbitrary
- * content and removes itself when closed.
- * @param content Same as {@link ModalDialog#content}'s param of the same name.
-The most straight-forward usage is to provide a string or DOM
-element.
- * @param options Extra options which will be passed on to the {@link ModalDialog}.
- * @check
- * @return the {@link ModalDialog} that was created
- */
+     * Creates a simple modal dialog (an instance of the {@link ModalDialog}
+     * component) that immediately overlays the player with arbitrary
+     * content and removes itself when closed.
+     * @param content Same as {@link ModalDialog#content}'s param of the same name.
+     * The most straight-forward usage is to provide a string or DOM
+     * element.
+     * @param options Extra options which will be passed on to the {@link ModalDialog}.
+     * @check
+     * @return the {@link ModalDialog} that was created
+     */
     createModal(
       content: string | (() => any) | Element | any[],
-      videojs$options: any
+      options: any
     ): videojs$ModalDialog,
 
     /**
      * Returns the current source object.
      * @return The current source object
      */
-    currentSource(): videojs$Tech.Tech$SourceObject,
+    currentSource(): Tech$SourceObject,
 
     /**
      * Returns all of the current source objects.
      * @return The current source objects
      */
-    currentSources(): videojs$Tech.Tech$SourceObject[],
+    currentSources(): Tech$SourceObject[],
 
     /**
      * Returns the fully qualified URL of the current source value e.g. http://mysite.com/video.mp4
@@ -3444,51 +3410,51 @@ element.
     currentType(): string,
 
     /**
- * Get the current defaultMuted state, or turn defaultMuted on or off. defaultMuted
- * indicates the state of muted on initial playback.
- * 
- * ```js
- * 		 *   var myPlayer = videojs('some-player-id');
- * 		 *
- * 		 *   myPlayer.src("http://www.example.com/path/to/video.mp4");
- * 		 *
- * 		 *   // get, should be false
- * 		 *   console.log(myPlayer.defaultMuted());
- * 		 *   // set to true
- * 		 *   myPlayer.defaultMuted(true);
- * 		 *   // get should be true
- * 		 *   console.log(myPlayer.defaultMuted());
- * 		 * ```
- * @param defaultMuted - true to mute
-- false to unmute
- * @return - true if defaultMuted is on and getting
-- false if defaultMuted is off and getting
-- A reference to the current player when setting
- */
+     * Get the current defaultMuted state, or turn defaultMuted on or off. defaultMuted
+     * indicates the state of muted on initial playback.
+     *
+     * ```js
+     * 		 *   var myPlayer = videojs('some-player-id');
+     * 		 *
+     * 		 *   myPlayer.src("http://www.example.com/path/to/video.mp4");
+     * 		 *
+     * 		 *   // get, should be false
+     * 		 *   console.log(myPlayer.defaultMuted());
+     * 		 *   // set to true
+     * 		 *   myPlayer.defaultMuted(true);
+     * 		 *   // get should be true
+     * 		 *   console.log(myPlayer.defaultMuted());
+     * 		 * ```
+     * @param defaultMuted - true to mute
+     * - false to unmute
+     * @return - true if defaultMuted is on and getting
+     * - false if defaultMuted is off and getting
+     * - A reference to the current player when setting
+     */
     defaultMuted(defaultMuted: boolean): void,
     defaultMuted(): boolean,
 
     /**
- * Gets or sets the current default playback rate. A default playback rate of
- * 1.0 represents normal speed and 0.5 would indicate half-speed playback, for instance.
- * defaultPlaybackRate will only represent what the initial playbackRate of a video was, not
- * not the current playbackRate.
- * @see https://html.spec.whatwg.org/multipage/embedded-content.html#dom-media-defaultplaybackrate
- * @param rate New default playback rate to set.
- * @return - The default playback rate when getting or 1.0
-- the player when setting
- */
+     * Gets or sets the current default playback rate. A default playback rate of
+     * 1.0 represents normal speed and 0.5 would indicate half-speed playback, for instance.
+     * defaultPlaybackRate will only represent what the initial playbackRate of a video was, not
+     * not the current playbackRate.
+     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#dom-media-defaultplaybackrate
+     * @param rate New default playback rate to set.
+     * @return - The default playback rate when getting or 1.0
+     * - the player when setting
+     */
     defaultPlaybackRate(rate: number): videojs$Player,
     defaultPlaybackRate(): boolean,
 
     /**
- * A getter/setter for the `Player`'s width & height.
- * @param dimension This string can be:
-- 'width'
-- 'height'
- * @param value Value for dimension specified in the first argument.
- * @return The dimension arguments value when getting (width/height).
- */
+     * A getter/setter for the `Player`'s width & height.
+     * @param dimension This string can be:
+     * - 'width'
+     * - 'height'
+     * @param value Value for dimension specified in the first argument.
+     * @return The dimension arguments value when getting (width/height).
+     */
     dimension(dimension: "width" | "height", value: number): void,
     dimension(dimension: "width" | "height"): number,
 
@@ -3517,13 +3483,13 @@ element.
     duration(): number,
 
     /**
- * A getter/setter/toggler for the vjs-fluid `className` on the `Player`.
- * @param bool - A value of true adds the class.
-- A value of false removes the class.
-- No value will toggle the fluid class.
- * @return - The value of fluid when getting.
-- `undefined` when setting.
- */
+     * A getter/setter/toggler for the vjs-fluid `className` on the `Player`.
+     * @param bool - A value of true adds the class.
+     * - A value of false removes the class.
+     * - No value will toggle the fluid class.
+     * @return - The value of fluid when getting.
+     * - `undefined` when setting.
+     */
     fluid(bool: boolean): void,
     fluid(): boolean,
 
@@ -3534,22 +3500,22 @@ element.
     getCache(): any,
 
     /**
- * Gets available media playback quality metrics as specified by the W3C's Media
- * Playback Quality API.
- * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
- * @return An object with supported media playback quality metrics or undefined if there
-is no tech or the tech does not support it.
- */
+     * Gets available media playback quality metrics as specified by the W3C's Media
+     * Playback Quality API.
+     * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+     * @return An object with supported media playback quality metrics or undefined if there
+     * is no tech or the tech does not support it.
+     */
     getVideoPlaybackQuality(): any,
 
     /**
- * Get the value of `ended` from the media element. `ended` indicates whether
- * the media has reached the end or not.
- * @return - The value of `ended` from the media element.
-- True indicates that the media has ended.
-- False indicates that the media has not ended.
- * @see [Spec]{@link https://www.w3.org/TR/html5/embedded-content-0.html#dom-media-ended}
- */
+     * Get the value of `ended` from the media element. `ended` indicates whether
+     * the media has reached the end or not.
+     * @return - The value of `ended` from the media element.
+     * - True indicates that the media has ended.
+     * - False indicates that the media has not ended.
+     * @see [Spec]{@link https://www.w3.org/TR/html5/embedded-content-0.html#dom-media-ended}
+     */
     ended(): boolean,
 
     /**
@@ -3560,12 +3526,12 @@ is no tech or the tech does not support it.
     enterFullWindow(): void,
 
     /**
- * Set or get the current MediaError
- * @fires Player#error
- * @param err A MediaError or a string/number to be turned
-into a MediaError
- * @return The current MediaError when getting (or null)
- */
+     * Set or get the current MediaError
+     * @fires Player#error
+     * @param err A MediaError or a string/number to be turned
+     * into a MediaError
+     * @return The current MediaError when getting (or null)
+     */
     error(err: videojs$MediaError | string | number | null): void,
     error(): videojs$MediaError | null,
 
@@ -3592,12 +3558,12 @@ into a MediaError
     hasPlugin(name: string): boolean,
 
     /**
- * Add/remove the vjs-has-started class
- * @fires Player#firstplay
- * @param request - true: adds the class
-- false: remove the class
- * @return the boolean value of hasStarted_
- */
+     * Add/remove the vjs-has-started class
+     * @fires Player#firstplay
+     * @param request - true: adds the class
+     * - false: remove the class
+     * @return the boolean value of hasStarted_
+     */
     hasStarted(request: boolean): void,
     hasStarted(): boolean,
 
@@ -3611,25 +3577,25 @@ into a MediaError
     height(): number,
 
     /**
- * Gets or sets the audio flag
- * @param bool - true signals that this is an audio player
-- false signals that this is not an audio player
- * @return The current value of isAudio when getting
- */
+     * Gets or sets the audio flag
+     * @param bool - true signals that this is an audio player
+     * - false signals that this is not an audio player
+     * @return The current value of isAudio when getting
+     */
     isAudio(bool: boolean): void,
     isAudio(): boolean,
 
     /**
- * Check if the player is in fullscreen mode or tell the player that it
- * is or is not in fullscreen mode.
- * 
- * > NOTE: As of the latest HTML5 spec, isFullscreen is no longer an official
- * property and instead document.fullscreenElement is used. But isFullscreen is
- * still a valuable property for internal player workings.
- * @param isFS Set the players current fullscreen state
- * @return - true if fullscreen is on and getting
-- false if fullscreen is off and getting
- */
+     * Check if the player is in fullscreen mode or tell the player that it
+     * is or is not in fullscreen mode.
+     *
+     * > NOTE: As of the latest HTML5 spec, isFullscreen is no longer an official
+     * property and instead document.fullscreenElement is used. But isFullscreen is
+     * still a valuable property for internal player workings.
+     * @param isFS Set the players current fullscreen state
+     * @return - true if fullscreen is on and getting
+     * - false if fullscreen is off and getting
+     */
     isFullscreen(isFS: boolean): void,
     isFullscreen(): boolean,
 
@@ -3651,7 +3617,7 @@ into a MediaError
      * @return An array of of supported languages
      */
     languages(): string[],
-    languageSwitch(videojs$options: any): void,
+    languageSwitch(options: any): void,
 
     /**
      * Begin loading the src data.
@@ -3659,21 +3625,21 @@ into a MediaError
     load(): void,
 
     /**
- * Get or set the loop attribute on the video element.
- * @param value - true means that we should loop the video
-- false means that we should not loop the video
- * @return The current value of loop when getting
- */
+     * Get or set the loop attribute on the video element.
+     * @param value - true means that we should loop the video
+     * - false means that we should not loop the video
+     * @return The current value of loop when getting
+     */
     loop(value?: boolean): void,
     loop(): string,
 
     /**
- * Get the current muted state, or turn mute on or off
- * @param muted - true to mute
-- false to unmute
- * @return - true if mute is on and getting
-- false if mute is off and getting
- */
+     * Get the current muted state, or turn mute on or off
+     * @param muted - true to mute
+     * - false to unmute
+     * @return - true if mute is on and getting
+     * - false if mute is off and getting
+     */
     muted(muted: boolean): void,
     muted(): boolean,
 
@@ -3685,19 +3651,19 @@ into a MediaError
     pause(): videojs$Player,
 
     /**
- * Check if the player is paused or has yet to play
- * @return - false: if the media is currently playing
-- true: if media is not currently playing
- */
+     * Check if the player is paused or has yet to play
+     * @return - false: if the media is currently playing
+     * - true: if media is not currently playing
+     */
     paused(): boolean,
 
     /**
- * Attempt to begin playback at the first opportunity.
- * @check
- * @return Returns a `Promise` only if the browser returns one and the player
-is ready to begin playback. For some browsers and all non-ready
-situations, this will return `undefined`.
- */
+     * Attempt to begin playback at the first opportunity.
+     * @check
+     * @return Returns a `Promise` only if the browser returns one and the player
+     * is ready to begin playback. For some browsers and all non-ready
+     * situations, this will return `undefined`.
+     */
     play(): Promise<void> | void,
 
     /**
@@ -3712,25 +3678,25 @@ situations, this will return `undefined`.
     playbackRate(): number,
 
     /**
- * Get a TimeRange object representing the current ranges of time that the user
- * has played.
- * @check
- * @return A time range object that represents all the increments of time that have
-been played.
- */
+     * Get a TimeRange object representing the current ranges of time that the user
+     * has played.
+     * @check
+     * @return A time range object that represents all the increments of time that have
+     * been played.
+     */
     played(): any,
 
     /**
- * Set or unset the playsinline attribute.
- * Playsinline tells the browser that non-fullscreen playback is preferred.
- * @param value - true means that we should try to play inline by default
-- false means that we should use the browser's default playback mode,
-which in most cases is inline. iOS Safari is a notable exception
-and plays fullscreen by default.
- * @return - the current value of playsinline
-- the player when setting
- * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
- */
+     * Set or unset the playsinline attribute.
+     * Playsinline tells the browser that non-fullscreen playback is preferred.
+     * @param value - true means that we should try to play inline by default
+     * - false means that we should use the browser's default playback mode,
+     * which in most cases is inline. iOS Safari is a notable exception
+     * and plays fullscreen by default.
+     * @return - the current value of playsinline
+     * - the player when setting
+     * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+     */
     playsinline(value: boolean): videojs$Player,
     playsinline(): string,
 
@@ -3744,12 +3710,18 @@ and plays fullscreen by default.
     poster(): string,
 
     /**
- * Get or set the preload attribute
- * @param value - true means that we should preload
-- false means that we should not preload
- * @return The preload attribute value when getting
- */
+     * Get or set the preload attribute
+     * @param value - true means that we should preload
+     * - false means that we should not preload
+     * @return The preload attribute value when getting
+     */
     preload(value?: boolean): string,
+
+    /**
+     * Returns a value that expresses the current state of the element
+     * with respect to rendering the current playback position.
+     */
+    readyState(): videojs$ReadyState,
 
     /**
      * Calculates how much time is left in the video. Not part
@@ -3830,22 +3802,17 @@ and plays fullscreen by default.
     scrubbing(): boolean,
 
     /**
- * Get or set the video source.
- * @param source A SourceObject, an array of SourceObjects, or a string referencing
-a URL to a media source. It is _highly recommended_ that an object
-or array of objects is used here, so that source selection
-algorithms can take the `type` into account.
-
-If not provided, this method acts as a getter.
- * @return If the `source` argument is missing, returns the current source
-URL. Otherwise, returns nothing/undefined.
- */
-    src(
-      source:
-        | string
-        | videojs$Tech.Tech$SourceObject
-        | videojs$Tech.Tech$SourceObject[]
-    ): void,
+     * Get or set the video source.
+     * @param source A SourceObject, an array of SourceObjects, or a string referencing
+     * a URL to a media source. It is _highly recommended_ that an object
+     * or array of objects is used here, so that source selection
+     * algorithms can take the `type` into account.
+     *
+     * If not provided, this method acts as a getter.
+     * @return If the `source` argument is missing, returns the current source
+     * URL. Otherwise, returns nothing/undefined.
+     */
+    src(source: string | Tech$SourceObject | Tech$SourceObject[]): void,
     src(): string,
 
     /**
@@ -3872,28 +3839,28 @@ URL. Otherwise, returns nothing/undefined.
     toJSON(): any,
 
     /**
- * Get/set if user is active
- * @fires Player#useractive
- * @fires Player#userinactive
- * @param bool - true if the user is active
-- false if the user is inactive
- * @return The current value of userActive when getting
- */
+     * Get/set if user is active
+     * @fires Player#useractive
+     * @fires Player#userinactive
+     * @param bool - true if the user is active
+     * - false if the user is inactive
+     * @return The current value of userActive when getting
+     */
     userActive(bool: boolean): void,
     userActive(): boolean,
 
     /**
- * Toggle native controls on/off. Native controls are the controls built into
- * devices (e.g. default iPhone controls), Flash, or other techs
- * (e.g. Vimeo Controls)
- * **This should only be set by the current tech, because only the tech knows
- * if it can support native controls**
- * @fires Player#usingnativecontrols
- * @fires Player#usingcustomcontrols
- * @param bool - true to turn native controls on
-- false to turn native controls off
- * @return The current value of native controls when getting
- */
+     * Toggle native controls on/off. Native controls are the controls built into
+     * devices (e.g. default iPhone controls), Flash, or other techs
+     * (e.g. Vimeo Controls)
+     * **This should only be set by the current tech, because only the tech knows
+     * if it can support native controls**
+     * @fires Player#usingnativecontrols
+     * @fires Player#usingcustomcontrols
+     * @param bool - true to turn native controls on
+     * - false to turn native controls off
+     * @return The current value of native controls when getting
+     */
     usingNativeControls(bool: boolean): void,
     usingNativeControls(): boolean,
 
@@ -3920,13 +3887,13 @@ URL. Otherwise, returns nothing/undefined.
     videoWidth(): number,
 
     /**
- * Get or set the current volume of the media
- * @param percentAsDecimal The new volume as a decimal percent:
-- 0 is muted/0%/off
-- 1.0 is 100%/full
-- 0.5 is half volume or 50%
- * @return The current volume as a percent when getting
- */
+     * Get or set the current volume of the media
+     * @param percentAsDecimal The new volume as a decimal percent:
+     * - 0 is muted/0%/off
+     * - 1.0 is 100%/full
+     * - 0.5 is half volume or 50%
+     * @return The current volume as a percent when getting
+     */
     volume(percentAsDecimal: number): videojs$TimeRange,
     volume(): number,
 
@@ -3938,7 +3905,7 @@ URL. Otherwise, returns nothing/undefined.
      */
     width(value: number): void,
     width(): number
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$Player: {
     prototype: videojs$Player,
@@ -3953,16 +3920,16 @@ URL. Otherwise, returns nothing/undefined.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$PlayerOptions
+      options?: videojs$PlayerOptions
     ): videojs$Player,
 
     /**
- * Gets tag settings
- * @param tag The player tag
- * @check
- * @return An object containing all of the settings
-for a player tag
- */
+     * Gets tag settings
+     * @param tag The player tag
+     * @check
+     * @return An object containing all of the settings
+     * for a player tag
+     */
     getTagSettings(tag: Element): any
   };
 
@@ -3976,6 +3943,7 @@ for a player tag
     fluid?: boolean,
     height?: number,
     html5?: any,
+    inactivityTimeout?: number,
     language?: string,
     languages?: {
       [code: string]: videojs$LanguageTranslations
@@ -3989,24 +3957,24 @@ for a player tag
     poster?: string,
     preload?: string,
     sourceOrder?: boolean,
-    sources?: videojs$Tech.Tech$SourceObject[],
+    sources?: Tech$SourceObject[],
     src?: string,
     techOrder?: string[],
     tracks?: videojs$TextTrackOptions[],
     width?: number
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
- * Parent class for all advanced plugins.
- * @fires Player#beforepluginsetup
- * @fires Player#beforepluginsetup:$name
- * @fires Player#pluginsetup
- * @fires Player#pluginsetup:$name
- * @listens Player#dispose
- * @throws {Error}
-If attempting to instantiate the base {@link Plugin} class
-directly instead of via a sub-class.
- */
+   * Parent class for all advanced plugins.
+   * @fires Player#beforepluginsetup
+   * @fires Player#beforepluginsetup:$name
+   * @fires Player#pluginsetup
+   * @fires Player#pluginsetup:$name
+   * @listens Player#dispose
+   * @throws {Error}
+   * If attempting to instantiate the base {@link Plugin} class
+   * directly instead of via a sub-class.
+   */
   declare type videojs$Plugin = {
     player: videojs$Player,
 
@@ -4027,16 +3995,16 @@ directly instead of via a sub-class.
      * @param hash An object to be used as event an event hash.
      * @return An event hash object with provided properties mixed-in.
      */
-    getEventHash(hash?: any): videojs$Plugin.Plugin$PluginEventHash,
+    getEventHash(hash?: any): Plugin$PluginEventHash,
 
     /**
- * Handles "statechanged" events on the plugin. No-op by default, override by
- * subclassing.
- * @param e An event object provided by a "statechanged" event.
- * @param An object describing changes that occurred with the "statechanged"
-event.
- */
-    handleStateChanged(e: EventTarget$Event): void,
+     * Handles "statechanged" events on the plugin. No-op by default, override by
+     * subclassing.
+     * @param e An event object provided by a "statechanged" event.
+     * @param An object describing changes that occurred with the "statechanged"
+     * event.
+     */
+    handleStateChanged(e: videojs$EventTarget$Event): void,
 
     /**
      * Get the version of the plugin that was set on <pluginName>.VERSION
@@ -4044,15 +4012,15 @@ event.
     version(): string,
 
     /**
- * Triggers an event on the plugin object and overrides
- * {@link module:evented~EventedMixin.trigger|EventedMixin.trigger}.
- * @param event An event type or an object with a type property.
- * @param hash Additional data hash to merge with a
-{@link Plugin~PluginEventHash|PluginEventHash}.
- * @return Whether or not default was prevented.
- */
-    videojs$trigger(event: any, hash?: any): boolean
-  } & videojs$EventedMixin;
+     * Triggers an event on the plugin object and overrides
+     * {@link module:evented~EventedMixin.trigger|EventedMixin.trigger}.
+     * @param event An event type or an object with a type property.
+     * @param hash Additional data hash to merge with a
+     * {@link Plugin~PluginEventHash|PluginEventHash}.
+     * @return Whether or not default was prevented.
+     */
+    trigger(event: any, hash?: any): boolean
+  } & EventedMixin;
 
   declare var videojs$Plugin: {
     prototype: videojs$Plugin,
@@ -4081,57 +4049,54 @@ event.
      * @param name The name of a plugin.
      * @return The plugin (or `undefined`).
      */
-    videojs$getPlugin(name: string): typeof Plugin,
+    getPlugin(name: string): typeof Plugin,
 
     /**
      * Gets a plugin's version, if available
      * @param name The name of a plugin.
      * @return The plugin's version or an empty string.
      */
-    videojs$getPluginVersion(name: string): string,
+    getPluginVersion(name: string): string,
 
     /**
- * Gets an object containing multiple Video.js plugins.
- * @param names If provided, should be an array of plugin names. Defaults to _all_
-plugin names.
- * @return An object containing plugin(s) associated with their name(s) or
-`undefined` if no matching plugins exist).
- * @check returning type
- */
-    videojs$getPlugins(
+     * Gets an object containing multiple Video.js plugins.
+     * @param names If provided, should be an array of plugin names. Defaults to _all_
+     * plugin names.
+     * @return An object containing plugin(s) associated with their name(s) or
+     * `undefined` if no matching plugins exist).
+     * @check returning type
+     */
+    getPlugins(
       names?: string[]
     ): {
       [name: string]: videojs$Plugin
     },
 
     /**
- * Determines if a plugin is a basic plugin (i.e. not a sub-class of `Plugin`).
- * @param plugin If a string, matches the name of a plugin. If a function, will be
-tested directly.
- * @return Whether or not a plugin is a basic plugin.
- */
-    isBasic(videojs$plugin: string | (() => any)): boolean,
+     * Determines if a plugin is a basic plugin (i.e. not a sub-class of `Plugin`).
+     * @param plugin If a string, matches the name of a plugin. If a function, will be
+     * tested directly.
+     * @return Whether or not a plugin is a basic plugin.
+     */
+    isBasic(plugin: string | (() => any)): boolean,
 
     /**
- * Register a Video.js plugin.
- * @param name The name of the plugin to be registered. Must be a string and
-must not match an existing plugin or a method on the `Player`
-prototype.
- * @param plugin A sub-class of `Plugin` or a function for basic plugins.
- * @return For advanced plugins, a factory function for that plugin. For
-basic plugins, a wrapper function that initializes the plugin.
- */
-    videojs$registerPlugin<T, K>(
+     * Register a Video.js plugin.
+     * @param name The name of the plugin to be registered. Must be a string and
+     * must not match an existing plugin or a method on the `Player`
+     * prototype.
+     * @param plugin A sub-class of `Plugin` or a function for basic plugins.
+     * @return For advanced plugins, a factory function for that plugin. For
+     * basic plugins, a wrapper function that initializes the plugin.
+     */
+    registerPlugin<T, K>(
       name: string,
-      videojs$plugin: (...videojs$options: K[]) => T
-    ): (...videojs$options: K[]) => T,
-    videojs$registerPlugin<T: typeof Plugin>(
-      name: string,
-      videojs$plugin: T
-    ): () => T
+      plugin: (...options: K[]) => T
+    ): (...options: K[]) => T,
+    registerPlugin<T: typeof Plugin>(name: string, plugin: T): () => T
   };
 
-  declare interface Plugin$PluginEventHash {
+  declare interface videojs$Plugin$PluginEventHash {
     /**
      * For basic plugins, the return value of the plugin function. For
      * advanced plugins, the plugin instance on which the event is fired.
@@ -4147,7 +4112,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * For basic plugins, the plugin function. For advanced plugins, the
      * plugin class/constructor.
      */
-    videojs$plugin: string;
+    plugin: string;
   }
 
   declare type videojs$ProgressControl = {
@@ -4179,7 +4144,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * @listens mousedown
      * @listens touchstart
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseDown(event: EventTarget$Event): void,
 
     /**
      * When the mouse moves over the `ProgressControl`, the pointer position
@@ -4187,7 +4152,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * @param event The `mousemove` event that caused this function to run.
      * @listen mousemove
      */
-    handleMouseMove(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseMove(event: EventTarget$Event): void,
 
     /**
      * Handle `mousemove` or `touchmove` events on the `ProgressControl`.
@@ -4195,7 +4160,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * @listens mousemove
      * @listens touchmove
      */
-    handleMouseSeek(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseSeek(event: EventTarget$Event): void,
 
     /**
      * Handle `mouseup` or `touchend` events on the `ProgressControl`.
@@ -4203,8 +4168,8 @@ basic plugins, a wrapper function that initializes the plugin.
      * @listens touchend
      * @listens mouseup
      */
-    handleMouseUp(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Component;
+    handleMouseUp(event: EventTarget$Event): void
+  } & Component;
 
   declare var videojs$ProgressControl: {
     prototype: videojs$ProgressControl,
@@ -4216,7 +4181,7 @@ basic plugins, a wrapper function that initializes the plugin.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$ProgressControl
   };
 
@@ -4255,7 +4220,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * This gets called when enter or space is used on the seekbar
      * @param event The `keydown` event that caused this function to be called
      */
-    handleAction(event: videojs$EventTarget.EventTarget$Event): void,
+    handleAction(event: EventTarget$Event): void,
 
     /**
      * We want the seek bar to be full on ended
@@ -4263,7 +4228,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * @param event The `timeupdate` or `ended` event that caused this to run.
      * @listens Player#ended
      */
-    handleEnded(event: videojs$EventTarget.EventTarget$Event): void,
+    handleEnded(event: EventTarget$Event): void,
 
     /**
      * Called when this SeekBar has focus and a key gets pressed down. By
@@ -4271,28 +4236,28 @@ basic plugins, a wrapper function that initializes the plugin.
      * @param event The `keydown` event that caused this function to be called.
      * @listens keydown
      */
-    handleKeyPress(event: videojs$EventTarget.EventTarget$Event): void,
+    handleKeyPress(event: EventTarget$Event): void,
 
     /**
      * Handle mouse down on seek bar
      * @param event The `mousedown` event that caused this to run.
      * @listens mousedown
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseDown(event: EventTarget$Event): void,
 
     /**
      * Handle mouse move on seek bar
      * @param event The `mousemove` event that caused this to run.
      * @listens mousemove
      */
-    handleMouseMove(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseMove(event: EventTarget$Event): void,
 
     /**
      * Handle mouse up on seek bar
      * @param event The `mouseup` event that caused this to run.
      * @listens mouseup
      */
-    handleMouseUp(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseUp(event: EventTarget$Event): void,
 
     /**
      * Get the percentage of media played so far.
@@ -4316,7 +4281,7 @@ basic plugins, a wrapper function that initializes the plugin.
      * @return The current percent at a number from 0-1
      */
     update(): number
-  } & videojs$Slider;
+  } & Slider;
 
   declare var videojs$SeekBar: {
     prototype: videojs$SeekBar,
@@ -4328,7 +4293,7 @@ basic plugins, a wrapper function that initializes the plugin.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$SliderOptions
+      options?: videojs$SliderOptions
     ): videojs$SeekBar
   };
 
@@ -4371,19 +4336,19 @@ basic plugins, a wrapper function that initializes the plugin.
      * @listens touchstart
      * @fires Slider#slideractive
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseDown(event: EventTarget$Event): void,
 
     /**
- * Handle the `mousemove`, `touchmove`, and `mousedown` events on this `Slider`.
- * The `mousemove` and `touchmove` events will only only trigger this function during
- * `mousedown` and `touchstart`. This is due to {@link Slider#handleMouseDown} and
- * {@link Slider#handleMouseUp}.
- * @param event `mousedown`, `mousemove`, `touchstart`, or `touchmove` event that triggered
-this function
- * @listens mousemove
- * @listens touchmove
- */
-    handleMouseMove(event: videojs$EventTarget.EventTarget$Event): void,
+     * Handle the `mousemove`, `touchmove`, and `mousedown` events on this `Slider`.
+     * The `mousemove` and `touchmove` events will only only trigger this function during
+     * `mousedown` and `touchstart`. This is due to {@link Slider#handleMouseDown} and
+     * {@link Slider#handleMouseUp}.
+     * @param event `mousedown`, `mousemove`, `touchstart`, or `touchmove` event that triggered
+     * this function
+     * @listens mousemove
+     * @listens touchmove
+     */
+    handleMouseMove(event: EventTarget$Event): void,
 
     /**
      * Handle `mouseup` or `touchend` events on the `Slider`.
@@ -4392,23 +4357,23 @@ this function
      * @listens mouseup
      * @fires Slider#sliderinactive
      */
-    handleMouseUp(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseUp(event: EventTarget$Event): void,
 
     /**
- * Update the progress bar of the `Slider`.
- * @return The percentage of progress the progress bar represents as a
-  number from 0 to 1.
- */
+     * Update the progress bar of the `Slider`.
+     * @return The percentage of progress the progress bar represents as a
+     *   number from 0 to 1.
+     */
     update(): number,
 
     /**
- * Calculate distance for slider
- * @param event The event that caused this function to run.
- * @return The current position of the Slider.
-- position.x for vertical `Slider`s
-- position.y for horizontal `Slider`s
- */
-    calculateDistance(event: videojs$EventTarget.EventTarget$Event): number,
+     * Calculate distance for slider
+     * @param event The event that caused this function to run.
+     * @return The current position of the Slider.
+     * - position.x for vertical `Slider`s
+     * - position.y for horizontal `Slider`s
+     */
+    calculateDistance(event: EventTarget$Event): number,
 
     /**
      * Handle a `focus` event on this `Slider`.
@@ -4433,18 +4398,18 @@ this function
      *    from bubbling up to parent elements like button menus.
      * @param event Event that caused this object to run
      */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+    handleClick(event: EventTarget$Event): void,
 
     /**
- * Get/set if slider is horizontal for vertical
- * @param bool - true if slider is vertical,
-- false is horizontal
- * @return - true if slider is vertical, and getting
-- false if the slider is horizontal, and getting
- */
+     * Get/set if slider is horizontal for vertical
+     * @param bool - true if slider is vertical,
+     * - false is horizontal
+     * @return - true if slider is vertical, and getting
+     * - false if the slider is horizontal, and getting
+     */
     vertical(bool: boolean): void,
     vertical(): boolean
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$Slider: {
     prototype: videojs$Slider,
@@ -4454,10 +4419,7 @@ this function
      * @param player The `Player` that this class should be attached to.
      * @param options The key/value store of player options.
      */
-    new(
-      player: videojs$Player,
-      videojs$options?: videojs$SliderOptions
-    ): videojs$Slider
+    new(player: videojs$Player, options?: videojs$SliderOptions): videojs$Slider
   };
 
   declare type videojs$SliderOptions = {
@@ -4470,7 +4432,7 @@ this function
      * Set a horizontal or vertical class on the slider depending on the slider type
      */
     vertical?: boolean
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * Just an empty spacer element that can be used as an append point for plugins, etc.
@@ -4488,7 +4450,7 @@ this function
      * @return The element that was created.
      */
     createEl(): HTMLDivElement
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$Spacer: {
     prototype: videojs$Spacer,
@@ -4501,8 +4463,8 @@ this function
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$ComponentOptions,
+      ready?: Component$ReadyCallback
     ): videojs$Spacer
   };
 
@@ -4569,20 +4531,20 @@ this function
     featuresVolumeControl: boolean,
 
     /**
- * Creates a remote text track object and returns an html track element.
- * 
- * > Note: This can be an emulated {@link HTMLTrackElement} or a native one.
- * @param options See {@link Tech#createRemoteTextTrack} for more detailed properties.
- * @param manualCleanup - When false: the TextTrack will be automatically removed from the video
-element whenever the source changes
-- When True: The TextTrack will have to be cleaned up manually
- * @return An Html Track Element.
- * @deprecated The default functionality for this function will be equivalent
-to "manualCleanup=false" in the future. The manualCleanup parameter will
-also be removed.
- */
+     * Creates a remote text track object and returns an html track element.
+     *
+     * > Note: This can be an emulated {@link HTMLTrackElement} or a native one.
+     * @param options See {@link Tech#createRemoteTextTrack} for more detailed properties.
+     * @param manualCleanup - When false: the TextTrack will be automatically removed from the video
+     * element whenever the source changes
+     * - When True: The TextTrack will have to be cleaned up manually
+     * @return An Html Track Element.
+     * @deprecated The default functionality for this function will be equivalent
+     * to "manualCleanup=false" in the future. The manualCleanup parameter will
+     * also be removed.
+     */
     addRemoteTextTrack(
-      videojs$options: videojs$TextTrackOptions,
+      options: videojs$TextTrackOptions,
       manualCleanup: true
     ): HTMLTrackElement,
 
@@ -4619,10 +4581,10 @@ also be removed.
     buffered(): any,
 
     /**
- * Get the percentage of the current video that is currently buffered.
- * @return A number from 0 to 1 that represents the decimal percentage of the
-video that is buffered.
- */
+     * Get the percentage of the current video that is currently buffered.
+     * @return A number from 0 to 1 that represents the decimal percentage of the
+     * video that is buffered.
+     */
     bufferedPercent(): number,
 
     /**
@@ -4643,29 +4605,29 @@ video that is buffered.
     cleanupAutoTextTracks(): void,
 
     /**
- * Clear out a single `TrackList` or an array of `TrackLists` given their names.
- * 
- * > Note: Techs without source handlers should call this between sources for `video`
- *          & `audio` tracks. You don't want to use them between tracks!
- * @param types TrackList names to clear, valid names are `video`, `audio`, and
-`text`.
- */
+     * Clear out a single `TrackList` or an array of `TrackLists` given their names.
+     *
+     * > Note: Techs without source handlers should call this between sources for `video`
+     *          & `audio` tracks. You don't want to use them between tracks!
+     * @param types TrackList names to clear, valid names are `video`, `audio`, and
+     * `text`.
+     */
     clearTracks(types: string | string[]): void,
 
     /**
- * Create an emulated TextTrack for use by addRemoteTextTrack
- * 
- * This is intended to be overridden by classes that inherit from
- * Tech in order to create native or custom TextTracks.
- * @param options The object should contain the options to initialize the TextTrack with.
- * @param `TextTrack` kind (subtitles, captions, descriptions, chapters, or metadata).
- * @param .
-Label to identify the text track
- * @param Two letter language abbreviation.
- * @return The track element that gets created.
- */
+     * Create an emulated TextTrack for use by addRemoteTextTrack
+     *
+     * This is intended to be overridden by classes that inherit from
+     * Tech in order to create native or custom TextTracks.
+     * @param options The object should contain the options to initialize the TextTrack with.
+     * @param `TextTrack` kind (subtitles, captions, descriptions, chapters, or metadata).
+     * @param .
+     * Label to identify the text track
+     * @param Two letter language abbreviation.
+     * @return The track element that gets created.
+     */
     createRemoteTextTrack(
-      videojs$options: videojs$TextTrackOptions
+      options: videojs$TextTrackOptions
     ): HTMLTextAreaElement,
 
     /**
@@ -4731,30 +4693,30 @@ Label to identify the text track
      * @param event The `durationchange` event that caused this to run.
      * @listens Tech#durationchange
      */
-    onDurationChange(event: EventTarget$Event): void,
+    onDurationChange(event: videojs$EventTarget$Event): void,
 
     /**
- * Attempt to force override of native audio tracks.
- * @param override - If set to true native audio will be overridden,
-otherwise native audio will potentially be used.
- */
+     * Attempt to force override of native audio tracks.
+     * @param override - If set to true native audio will be overridden,
+     * otherwise native audio will potentially be used.
+     */
     overrideNativeAudioTracks(override: boolean): void,
 
     /**
- * Attempt to force override of native video tracks.
- * @param override - If set to true native video will be overridden,
-otherwise native video will potentially be used.
- */
+     * Attempt to force override of native video tracks.
+     * @param override - If set to true native video will be overridden,
+     * otherwise native video will potentially be used.
+     */
     overrideNativeVideoTracks(override: boolean): void,
 
     /**
- * Returns the `TimeRange`s that have been played through for the current source.
- * 
- * > NOTE: This implementation is incomplete. It does not track the played `TimeRange`.
- *          It only checks whether the source has played at all or not.
- * @return - A single time range if this video has played
-- An empty set of ranges if not.
- */
+     * Returns the `TimeRange`s that have been played through for the current source.
+     *
+     * > NOTE: This implementation is incomplete. It does not track the played `TimeRange`.
+     *          It only checks whether the source has played at all or not.
+     * @return - A single time range if this video has played
+     * - An empty set of ranges if not.
+     */
     played(): any,
 
     /**
@@ -4838,7 +4800,7 @@ otherwise native video will potentially be used.
      * @listens Tech#ready
      * @fires Tech#progress
      */
-    trackProgress(event: videojs$EventTarget.EventTarget$Event): void,
+    trackProgress(event: EventTarget$Event): void,
 
     /**
      * A special function to trigger source set in a way that will allow player
@@ -4852,7 +4814,7 @@ otherwise native video will potentially be used.
      * Get the {@link VideoTrackList}
      */
     videoTracks(): videojs$TrackList
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$Tech: {
     prototype: videojs$Tech,
@@ -4862,10 +4824,7 @@ otherwise native video will potentially be used.
      * @param options The key/value store of player options.
      * @param ready Callback function to call when the `HTML5` Tech is ready.
      */
-    new(
-      videojs$options?: any,
-      ready?: videojs$Component.Component$ReadyCallback
-    ): videojs$Tech,
+    new(options?: any, ready?: Component$ReadyCallback): videojs$Tech,
 
     /**
      * Check if the tech can support the given source
@@ -4873,10 +4832,7 @@ otherwise native video will potentially be used.
      * @param options The options passed to the tech
      * @return 'probably', 'maybe', or '' (empty string)
      */
-    canPlaySource(
-      srcObj: any,
-      videojs$options: any
-    ): "problably" | "maybe" | "",
+    canPlaySource(srcObj: any, options: any): "problably" | "maybe" | "",
 
     /**
      * Check if the type is supported by this tech.
@@ -4893,16 +4849,16 @@ otherwise native video will potentially be used.
      * @param name `camelCase` or `TitleCase` name of the Tech to get
      * @return The `Tech` or undefined if there was no tech with the name requested.
      */
-    videojs$getTech(name: string): videojs$Tech | void,
+    getTech(name: string): videojs$Tech | void,
 
     /**
- * Return whether the argument is a Tech or not.
- * Can be passed either a Class like `Html5` or a instance like `player.tech_`
- * @param component The item to check
- * @return Whether it is a tech or not
-- True if it is a tech
-- False if it is not
- */
+     * Return whether the argument is a Tech or not.
+     * Can be passed either a Class like `Html5` or a instance like `player.tech_`
+     * @param component The item to check
+     * @return Whether it is a tech or not
+     * - True if it is a tech
+     * - False if it is not
+     */
     isTech(component: any): boolean,
 
     /**
@@ -4910,7 +4866,7 @@ otherwise native video will potentially be used.
      * @param name Name of the `Tech` to register.
      * @param tech The `Tech` class to register.
      */
-    videojs$registerTech(name: string, tech: any): void,
+    registerTech(name: string, tech: any): void,
 
     /**
      * A functional mixin for techs that want to use the Source Handler pattern.
@@ -4929,7 +4885,7 @@ otherwise native video will potentially be used.
    * `var SourceObject = {src: 'http://ex.com/video.mp4', type: 'video/mp4'};`
    * `var SourceString = 'http://example.com/some-video.mp4';`
    */
-  declare interface Tech$SourceObject {
+  declare interface videojs$Tech$SourceObject {
     /**
      * The url to the source
      */
@@ -4955,7 +4911,7 @@ otherwise native video will potentially be used.
       items?: videojs$TextTrackMenuItem[],
       TrackMenuItem?: typeof TextTrackMenuItem
     ): videojs$TextTrackMenuItem[]
-  } & videojs$MenuButton;
+  } & MenuButton;
 
   declare var videojs$TextTrackButton: {
     prototype: videojs$TextTrackButton,
@@ -4967,7 +4923,7 @@ otherwise native video will potentially be used.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions
+      options?: videojs$TrackButtonOptions
     ): videojs$TextTrackButton
   };
 
@@ -4980,7 +4936,7 @@ otherwise native video will potentially be used.
      * Index getters for the cues.
      * @param index
      */
-    [index: number]: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue;
+    [index: number]: TextTrackCueList$TextTrackCue;
 
     /**
      * The current number of `TextTrackCue`s in the TextTrackCueList.
@@ -4992,9 +4948,7 @@ otherwise native video will potentially be used.
      * @param id The id of the cue that should be searched for.
      * @return A single cue or null if none was found.
      */
-    getCueById(
-      id: string
-    ): videojs$TextTrackCueList.TextTrackCueList$TextTrackCue;
+    getCueById(id: string): TextTrackCueList$TextTrackCue;
   }
 
   declare var videojs$TextTrackCueList: {
@@ -5004,15 +4958,13 @@ otherwise native video will potentially be used.
      * Create an instance of this class..
      * @param cues A list of cues to be initialized with
      */
-    new(
-      cues: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue[]
-    ): videojs$TextTrackCueList
+    new(cues: TextTrackCueList$TextTrackCue[]): videojs$TextTrackCueList
   };
 
   /**
    * @see [Spec]{@link https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcue}
    */
-  declare interface TextTrackCueList$TextTrackCue {
+  declare interface videojs$TextTrackCueList$TextTrackCue {
     /**
      * The unique id for this text track cue
      */
@@ -5044,30 +4996,28 @@ otherwise native video will potentially be used.
    */
   declare type videojs$TextTrackMenuItem = {
     /**
- * This gets called when an `TextTrackMenuItem` is "clicked". See
- * {@link ClickableComponent} for more detailed information on what a click can be.
- * @param event The `keydown`, `tap`, or `click` event that caused this function to be
-called.
- * @listens tap
- * @listens click
- */
-    handleClick(event: videojs$EventTarget.EventTarget$Event): void,
+     * This gets called when an `TextTrackMenuItem` is "clicked". See
+     * {@link ClickableComponent} for more detailed information on what a click can be.
+     * @param event The `keydown`, `tap`, or `click` event that caused this function to be
+     * called.
+     * @listens tap
+     * @listens click
+     */
+    handleClick(event: EventTarget$Event): void,
 
     /**
      * Handle text track list change
      * @param event The `change` event that caused this function to be called.
      * @listens TextTrackList#change
      */
-    handleTracksChange(event: videojs$EventTarget.EventTarget$Event): void,
+    handleTracksChange(event: EventTarget$Event): void,
 
     /**
      * Handle selected language change
      * @param event The `change` event that caused this function to be called.
      */
-    handleSelectedLanguageChange(
-      event: videojs$EventTarget.EventTarget$Event
-    ): void
-  } & videojs$MenuItem;
+    handleSelectedLanguageChange(event: EventTarget$Event): void
+  } & MenuItem;
 
   declare var videojs$TextTrackMenuItem: {
     prototype: videojs$TextTrackMenuItem,
@@ -5079,13 +5029,13 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TextTrackMenuItemOptions
+      options?: videojs$TextTrackMenuItemOptions
     ): videojs$TextTrackMenuItem
   };
 
   declare type videojs$TextTrackMenuItemOptions = {
     track: videojs$TextTrack
-  } & videojs$MenuItemOptions;
+  } & MenuItemOptions;
 
   /**
    * Manipulate Text Tracks settings.
@@ -5151,7 +5101,7 @@ called.
      * Update display of text track settings
      */
     updateDisplay(): void
-  } & videojs$ModalDialog;
+  } & ModalDialog;
 
   declare var videojs$TextTrackSettings: {
     prototype: videojs$TextTrackSettings,
@@ -5163,29 +5113,29 @@ called.
      */
     new(
       player: videojs$Player,
-      videojs$options: videojs$TextTrackSettingsOptions
+      options: videojs$TextTrackSettingsOptions
     ): videojs$TextTrackSettings
   };
 
   declare type videojs$TextTrackSettingsOptions = {
     persistTextTrackSettings?: boolean
-  } & videojs$ModalDialogOptions;
+  } & ModalDialogOptions;
 
   /**
- * Create an instance of this class.
- * @param options ={}
-Object of option names and values
- * @param A reference to the tech that owns this TextTrack.
- * @param A valid text track kind.
- * @param A valid text track mode.
- * @param A unique id for this TextTrack.
- * @param The menu label for this track.
- * @param A valid two character language code.
- * @param A valid two character language code. An alternative, but deprioritized
-version of `options.language`
- * @param A url to TextTrack cues.
- * @param If this track should default to on or off.
- */
+   * Create an instance of this class.
+   * @param options ={}
+   * Object of option names and values
+   * @param A reference to the tech that owns this TextTrack.
+   * @param A valid text track kind.
+   * @param A valid text track mode.
+   * @param A unique id for this TextTrack.
+   * @param The menu label for this track.
+   * @param A valid two character language code.
+   * @param A valid two character language code. An alternative, but deprioritized
+   * version of `options.language`
+   * @param A url to TextTrack cues.
+   * @param If this track should default to on or off.
+   */
   declare type videojs$TextTrack = {
     /**
      * The list text track cues that are currently active for this TextTrack.
@@ -5207,56 +5157,56 @@ version of `options.language`
      * not be set if setting to an invalid mode.
      * @fires TextTrack#modechange
      */
-    mode: videojs$TextTrack.TextTrack$Mode,
+    mode: TextTrack$Mode,
 
     /**
      * Add a cue to the internal list of cues.
      * @param cue The cue to add to our internal list
      */
-    addCue(cue: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue): void,
+    addCue(cue: TextTrackCueList$TextTrackCue): void,
 
     /**
      * Remove a cue from our internal list
      * @param cue The cue to remove from our internal list
      */
-    removeCue(cue: videojs$TextTrackCueList.TextTrackCueList$TextTrackCue): void
-  } & videojs$Track;
+    removeCue(cue: TextTrackCueList$TextTrackCue): void
+  } & Track;
 
   declare var videojs$TextTrack: {
     prototype: videojs$TextTrack,
 
     /**
- * Create an instance of this class.
- * @param options ={}
-Object of option names and values
- * @param A reference to the tech that owns this TextTrack.
- * @param A valid text track kind.
- * @param A valid text track mode.
- * @param A unique id for this TextTrack.
- * @param The menu label for this track.
- * @param A valid two character language code.
- * @param A valid two character language code. An alternative, but deprioritized
-version of `options.language`
- * @param A url to TextTrack cues.
- * @param If this track should default to on or off.
- */
-    new(videojs$options: videojs$TextTrackOptions): videojs$TextTrack
+     * Create an instance of this class.
+     * @param options ={}
+     * Object of option names and values
+     * @param A reference to the tech that owns this TextTrack.
+     * @param A valid text track kind.
+     * @param A valid text track mode.
+     * @param A unique id for this TextTrack.
+     * @param The menu label for this track.
+     * @param A valid two character language code.
+     * @param A valid two character language code. An alternative, but deprioritized
+     * version of `options.language`
+     * @param A url to TextTrack cues.
+     * @param If this track should default to on or off.
+     */
+    new(options: videojs$TextTrackOptions): videojs$TextTrack
   };
 
   declare type videojs$TextTrackOptions = {
     tech?: videojs$Tech,
-    kind?: videojs$TextTrack.AudioTrack$Kind,
-    mode?: videojs$TextTrack.TextTrack$Mode,
+    kind?: TextTrack$Kind,
+    mode?: TextTrack$Mode,
     srclang?: string,
     src?: string,
     default?: boolean
-  } & videojs$TrackOptions;
+  } & TrackOptions;
 
   /**
    * All possible `AudioTrackKind`s
    * @see https://html.spec.whatwg.org/multipage/embedded-content.html#dom-audiotrack-kind
    */
-  declare type TextTrack$Kind =
+  declare type videojs$TextTrack$Kind =
     | "alternative"
     | "descriptions"
     | "main"
@@ -5264,7 +5214,7 @@ version of `options.language`
     | "translation"
     | "commentary";
 
-  declare type TextTrack$Mode = "disabled" | "hidden" | "showing";
+  declare type videojs$TextTrack$Mode = "disabled" | "hidden" | "showing";
 
   /**
    * The current list of {@link TextTrack} for a media file.
@@ -5279,7 +5229,7 @@ version of `options.language`
      * @fires TrackList#addtrack
      */
     addTrack(track: videojs$TextTrack): void
-  } & videojs$TrackList;
+  } & TrackList;
 
   declare var videojs$TextTrackList: {
     prototype: videojs$TextTrackList,
@@ -5338,8 +5288,8 @@ version of `options.language`
      * @param event The `timeupdate`  event that caused this to run.
      * @listens Player#timeupdate
      */
-    updateContent(event?: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Component;
+    updateContent(event?: EventTarget$Event): void
+  } & Component;
 
   declare var videojs$TimeDisplay: {
     prototype: videojs$TimeDisplay,
@@ -5351,7 +5301,7 @@ version of `options.language`
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$TimeDisplay
   };
 
@@ -5366,14 +5316,14 @@ version of `options.language`
     createEl(): HTMLDivElement,
 
     /**
- * Updates the position of the time tooltip relative to the `SeekBar`.
- * @param seekBarRect The `ClientRect` for the {@link SeekBar} element.
- * @param seekBarPoint A number from 0 to 1, representing a horizontal reference point
-from the left edge of the {@link SeekBar}
- * @param content
- */
+     * Updates the position of the time tooltip relative to the `SeekBar`.
+     * @param seekBarRect The `ClientRect` for the {@link SeekBar} element.
+     * @param seekBarPoint A number from 0 to 1, representing a horizontal reference point
+     * from the left edge of the {@link SeekBar}
+     * @param content
+     */
     update(seekBarRect: ClientRect, seekBarPoint: number, content: string): void
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$TimeToolTip: {
     prototype: videojs$TimeToolTip,
@@ -5385,7 +5335,7 @@ from the left edge of the {@link SeekBar}
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions
+      options?: videojs$ComponentOptions
     ): videojs$TimeToolTip
   };
 
@@ -5416,7 +5366,7 @@ from the left edge of the {@link SeekBar}
      * The two letter language code for this track. Cannot be changed after creation.
      */
     +language: string
-  } & videojs$EventTarget;
+  } & EventTarget;
 
   declare var videojs$Track: {
     prototype: videojs$Track,
@@ -5429,7 +5379,7 @@ from the left edge of the {@link SeekBar}
      * @param The menu label for this track.
      * @param A valid two character language code.
      */
-    new(videojs$options?: videojs$TrackOptions): videojs$Track
+    new(options?: videojs$TrackOptions): videojs$Track
   };
 
   declare interface videojs$TrackOptions {
@@ -5452,13 +5402,13 @@ from the left edge of the {@link SeekBar}
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$TrackButtonOptions
+      options?: videojs$TrackButtonOptions
     ): videojs$MenuButton
   };
 
   declare type videojs$TrackButtonOptions = {
     track: videojs$Track[]
-  } & videojs$MenuButtonOptions;
+  } & MenuButtonOptions;
 
   /**
    * Common functionaliy between {@link TextTrackList}, {@link AudioTrackList}, and
@@ -5485,7 +5435,7 @@ from the left edge of the {@link SeekBar}
      * @fires TrackList#removetrack
      */
     removeTrack(track: videojs$Track): void
-  } & videojs$EventTarget;
+  } & EventTarget;
 
   declare var videojs$TrackList: {
     prototype: videojs$TrackList,
@@ -5517,7 +5467,7 @@ from the left edge of the {@link SeekBar}
      * @param event The `mousedown` event that caused this to run.
      * @listens mousedown
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseDown(event: EventTarget$Event): void,
 
     /**
      * Get percent of volume level
@@ -5540,8 +5490,8 @@ from the left edge of the {@link SeekBar}
      * @param event The `volumechange` event that caused this function to run.
      * @listens Player#volumechange
      */
-    updateARIAAttributes(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Slider;
+    updateARIAAttributes(event: EventTarget$Event): void
+  } & Slider;
 
   declare var videojs$VolumeBar: {
     prototype: videojs$VolumeBar,
@@ -5553,7 +5503,7 @@ from the left edge of the {@link SeekBar}
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$SliderOptions
+      options?: videojs$SliderOptions
     ): videojs$VolumeBar
   };
 
@@ -5573,7 +5523,7 @@ from the left edge of the {@link SeekBar}
      * @listens mousedown
      * @listens touchstart
      */
-    handleMouseDown(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseDown(event: EventTarget$Event): void,
 
     /**
      * Handle `mouseup` or `touchend` events on the `VolumeControl`.
@@ -5581,7 +5531,7 @@ from the left edge of the {@link SeekBar}
      * @listens touchend
      * @listens mouseup
      */
-    handleMouseUp(event: videojs$EventTarget.EventTarget$Event): void,
+    handleMouseUp(event: EventTarget$Event): void,
 
     /**
      * Handle `mousedown` or `touchstart` events on the `VolumeControl`.
@@ -5589,8 +5539,8 @@ from the left edge of the {@link SeekBar}
      * @listens mousedown
      * @listens touchstart
      */
-    handleMouseMove(event: videojs$EventTarget.EventTarget$Event): void
-  } & videojs$Component;
+    handleMouseMove(event: EventTarget$Event): void
+  } & Component;
 
   declare var videojs$VolumeControl: {
     prototype: videojs$VolumeControl,
@@ -5602,14 +5552,14 @@ from the left edge of the {@link SeekBar}
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$VolumeControlOptions
+      options?: videojs$VolumeControlOptions
     ): videojs$VolumeControl
   };
 
   declare type videojs$VolumeControlOptions = {
     volumeBar?: videojs$VolumeBar,
     vertical?: boolean
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
   /**
    * Shows volume level
@@ -5620,24 +5570,24 @@ from the left edge of the {@link SeekBar}
      * @return The element that was created.
      */
     createEl(): HTMLDivElement
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$VolumeLevel: {
     prototype: videojs$VolumeLevel,
 
     /**
- * Creates an instance of this class.
- * @param player The `Player` that this class should be attached to.
- * @param options The key/value store of player options.
- * @param An array of children objects to intialize this component with. Children objects have
-a name property that will be used if more than one component of the same type needs to be
-added.
- * @param ready Function that gets called when the `Component` is ready.
- */
+     * Creates an instance of this class.
+     * @param player The `Player` that this class should be attached to.
+     * @param options The key/value store of player options.
+     * @param An array of children objects to intialize this component with. Children objects have
+     * a name property that will be used if more than one component of the same type needs to be
+     * added.
+     * @param ready Function that gets called when the `Component` is ready.
+     */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$ComponentOptions,
-      ready?: videojs$Component.Component$ReadyCallback
+      options?: videojs$ComponentOptions,
+      ready?: Component$ReadyCallback
     ): videojs$VolumeLevel
   };
 
@@ -5651,7 +5601,7 @@ added.
      * @return The element that was created.
      */
     createEl(): HTMLDivElement
-  } & videojs$Component;
+  } & Component;
 
   declare var videojs$VolumePanel: {
     prototype: videojs$VolumePanel,
@@ -5663,16 +5613,16 @@ added.
      */
     new(
       player: videojs$Player,
-      videojs$options?: videojs$VolumePanel
+      options?: videojs$VolumePanel
     ): videojs$VolumePanel
   };
 
   declare type videojs$VolumePanelOptions = {
     inline?: boolean,
     volumeControl?: videojs$VolumeControlOptions
-  } & videojs$ComponentOptions;
+  } & ComponentOptions;
 
-  declare interface url$URLObject {
+  declare interface videojs$url$URLObject {
     /**
      * The protocol of the url that was parsed.
      */
@@ -5716,7 +5666,7 @@ added.
     patch: videojs$Xhr,
     post: videojs$Xhr,
     put: videojs$Xhr
-  } & videojs$Xhr;
+  } & Xhr;
 
   declare type videojs$XhrCallback = (
     error?: Error,
@@ -5728,7 +5678,7 @@ added.
     (url: string | videojs$XhrOptions, callback: videojs$XhrCallback): any;
     (
       url: string,
-      videojs$options: videojs$XhrOptions,
+      options: videojs$XhrOptions,
       callback: videojs$XhrCallback
     ): any;
   }
@@ -5747,7 +5697,7 @@ added.
     url?: string;
     username?: string;
     useXDR?: boolean;
-    videojs$xhr?: XMLHttpRequest;
+    xhr?: XMLHttpRequest;
     withCredentials?: boolean;
   }
 
