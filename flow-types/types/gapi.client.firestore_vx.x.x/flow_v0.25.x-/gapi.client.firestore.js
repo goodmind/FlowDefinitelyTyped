@@ -1,33 +1,37 @@
 declare module "gapi.client.firestore" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Firestore API v1beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firestore",
     version: "v1beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firestore",
     version: "v1beta1",
     callback: () => any
   ): void;
 
-  declare var client$projects: firestore$firestore$ProjectsResource;
+  declare var gapi$client$projects: firestore$ProjectsResource;
 
-  declare interface firestore$ArrayValue {
+  declare interface gapi$client$firestore$ArrayValue {
     /**
      * Values in the array.
      */
     values?: firestore$Value[];
   }
 
-  declare interface firestore$BatchGetDocumentsRequest {
+  declare interface gapi$client$firestore$BatchGetDocumentsRequest {
     /**
      * The names of the documents to retrieve. In the format:
      * `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
@@ -64,7 +68,7 @@ declare module "gapi.client.firestore" {
     transaction?: string;
   }
 
-  declare interface firestore$BatchGetDocumentsResponse {
+  declare interface gapi$client$firestore$BatchGetDocumentsResponse {
     /**
      * A document that was requested.
      */
@@ -92,7 +96,7 @@ declare module "gapi.client.firestore" {
     transaction?: string;
   }
 
-  declare interface firestore$BeginTransactionRequest {
+  declare interface gapi$client$firestore$BeginTransactionRequest {
     /**
      * The options for the transaction.
      * Defaults to a read-write transaction.
@@ -100,14 +104,14 @@ declare module "gapi.client.firestore" {
     options?: firestore$TransactionOptions;
   }
 
-  declare interface firestore$BeginTransactionResponse {
+  declare interface gapi$client$firestore$BeginTransactionResponse {
     /**
      * The transaction that was started.
      */
     transaction?: string;
   }
 
-  declare interface firestore$CollectionSelector {
+  declare interface gapi$client$firestore$CollectionSelector {
     /**
      * When false, selects only collections that are immediate children of
      * the `parent` specified in the containing `RunQueryRequest`.
@@ -122,7 +126,7 @@ declare module "gapi.client.firestore" {
     collectionId?: string;
   }
 
-  declare interface firestore$CommitRequest {
+  declare interface gapi$client$firestore$CommitRequest {
     /**
      * If non-empty, applies all writes in this transaction, and commits it.
      * Otherwise, applies the writes as if they were in their own transaction.
@@ -137,7 +141,7 @@ declare module "gapi.client.firestore" {
     writes?: firestore$Write[];
   }
 
-  declare interface firestore$CommitResponse {
+  declare interface gapi$client$firestore$CommitResponse {
     /**
      * The time at which the commit occurred.
      */
@@ -152,7 +156,7 @@ declare module "gapi.client.firestore" {
     writeResults?: firestore$WriteResult[];
   }
 
-  declare interface firestore$CompositeFilter {
+  declare interface gapi$client$firestore$CompositeFilter {
     /**
      * The list of filters to combine.
      * Must contain at least one filter.
@@ -165,7 +169,7 @@ declare module "gapi.client.firestore" {
     op?: string;
   }
 
-  declare interface firestore$Cursor {
+  declare interface gapi$client$firestore$Cursor {
     /**
      * If the position is just before or just after the given values, relative
      * to the sort order defined by the query.
@@ -181,7 +185,7 @@ declare module "gapi.client.firestore" {
     values?: firestore$Value[];
   }
 
-  declare interface firestore$Document {
+  declare interface gapi$client$firestore$Document {
     /**
      * Output only. The time at which the document was created.
      *
@@ -235,13 +239,13 @@ declare module "gapi.client.firestore" {
     updateTime?: string;
   }
 
-  declare interface firestore$DocumentChange {
+  declare interface gapi$client$firestore$DocumentChange {
     /**
      * The new state of the Document.
      *
      * If `mask` is set, contains only fields that were updated or added.
      */
-    document?: firestore$Document;
+    document?: gapi$client$firestore$Document;
 
     /**
      * A set of target IDs for targets that no longer match this document.
@@ -254,7 +258,7 @@ declare module "gapi.client.firestore" {
     targetIds?: number[];
   }
 
-  declare interface firestore$DocumentDelete {
+  declare interface gapi$client$firestore$DocumentDelete {
     /**
      * The resource name of the Document that was deleted.
      */
@@ -273,7 +277,7 @@ declare module "gapi.client.firestore" {
     removedTargetIds?: number[];
   }
 
-  declare interface firestore$DocumentMask {
+  declare interface gapi$client$firestore$DocumentMask {
     /**
      * The list of field paths in the mask. See Document.fields for a field
      * path syntax reference.
@@ -281,7 +285,7 @@ declare module "gapi.client.firestore" {
     fieldPaths?: string[];
   }
 
-  declare interface firestore$DocumentRemove {
+  declare interface gapi$client$firestore$DocumentRemove {
     /**
      * The resource name of the Document that has gone out of view.
      */
@@ -300,7 +304,7 @@ declare module "gapi.client.firestore" {
     removedTargetIds?: number[];
   }
 
-  declare interface firestore$DocumentTransform {
+  declare interface gapi$client$firestore$DocumentTransform {
     /**
      * The name of the document to transform.
      */
@@ -313,7 +317,7 @@ declare module "gapi.client.firestore" {
     fieldTransforms?: firestore$FieldTransform[];
   }
 
-  declare interface firestore$DocumentsTarget {
+  declare interface gapi$client$firestore$DocumentsTarget {
     /**
      * The names of the documents to retrieve. In the format:
      * `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
@@ -323,7 +327,7 @@ declare module "gapi.client.firestore" {
     documents?: string[];
   }
 
-  declare interface firestore$ExistenceFilter {
+  declare interface gapi$client$firestore$ExistenceFilter {
     /**
      * The total count of documents that match target_id.
      *
@@ -338,7 +342,7 @@ declare module "gapi.client.firestore" {
     targetId?: number;
   }
 
-  declare interface firestore$FieldFilter {
+  declare interface gapi$client$firestore$FieldFilter {
     /**
      * The field to filter by.
      */
@@ -355,11 +359,11 @@ declare module "gapi.client.firestore" {
     value?: firestore$Value;
   }
 
-  declare interface firestore$FieldReference {
+  declare interface gapi$client$firestore$FieldReference {
     fieldPath?: string;
   }
 
-  declare interface firestore$FieldTransform {
+  declare interface gapi$client$firestore$FieldTransform {
     /**
      * The path of the field. See Document.fields for the field path syntax
      * reference.
@@ -372,16 +376,16 @@ declare module "gapi.client.firestore" {
     setToServerValue?: string;
   }
 
-  declare interface firestore$Filter {
+  declare interface gapi$client$firestore$Filter {
     /**
      * A composite filter.
      */
-    compositeFilter?: firestore$CompositeFilter;
+    compositeFilter?: gapi$client$firestore$CompositeFilter;
 
     /**
      * A filter on a document field.
      */
-    fieldFilter?: firestore$FieldFilter;
+    fieldFilter?: gapi$client$firestore$FieldFilter;
 
     /**
      * A filter that takes exactly one argument.
@@ -389,7 +393,7 @@ declare module "gapi.client.firestore" {
     unaryFilter?: firestore$UnaryFilter;
   }
 
-  declare interface firestore$Index {
+  declare interface gapi$client$firestore$Index {
     /**
      * The collection ID to which this index applies. Required.
      */
@@ -413,7 +417,7 @@ declare module "gapi.client.firestore" {
     state?: string;
   }
 
-  declare interface firestore$IndexField {
+  declare interface gapi$client$firestore$IndexField {
     /**
      * The path of the field. Must match the field path specification described
      * by google.firestore.v1beta1.Document.fields.
@@ -428,7 +432,7 @@ declare module "gapi.client.firestore" {
     mode?: string;
   }
 
-  declare interface firestore$IndexOperationMetadata {
+  declare interface gapi$client$firestore$IndexOperationMetadata {
     /**
      * True if the [google.longrunning.Operation] was cancelled. If the
      * cancellation is in progress, cancelled will be true but
@@ -464,7 +468,7 @@ declare module "gapi.client.firestore" {
     startTime?: string;
   }
 
-  declare interface firestore$LatLng {
+  declare interface gapi$client$firestore$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -476,7 +480,7 @@ declare module "gapi.client.firestore" {
     longitude?: number;
   }
 
-  declare interface firestore$ListCollectionIdsResponse {
+  declare interface gapi$client$firestore$ListCollectionIdsResponse {
     /**
      * The collection ids.
      */
@@ -488,11 +492,11 @@ declare module "gapi.client.firestore" {
     nextPageToken?: string;
   }
 
-  declare interface firestore$ListDocumentsResponse {
+  declare interface gapi$client$firestore$ListDocumentsResponse {
     /**
      * The Documents found.
      */
-    documents?: firestore$Document[];
+    documents?: gapi$client$firestore$Document[];
 
     /**
      * The next page token.
@@ -500,11 +504,11 @@ declare module "gapi.client.firestore" {
     nextPageToken?: string;
   }
 
-  declare interface firestore$ListIndexesResponse {
+  declare interface gapi$client$firestore$ListIndexesResponse {
     /**
      * The indexes.
      */
-    indexes?: firestore$Index[];
+    indexes?: gapi$client$firestore$Index[];
 
     /**
      * The standard List next-page token.
@@ -512,7 +516,7 @@ declare module "gapi.client.firestore" {
     nextPageToken?: string;
   }
 
-  declare interface firestore$ListenRequest {
+  declare interface gapi$client$firestore$ListenRequest {
     /**
      * A target to add to this stream.
      */
@@ -529,22 +533,22 @@ declare module "gapi.client.firestore" {
     removeTarget?: number;
   }
 
-  declare interface firestore$ListenResponse {
+  declare interface gapi$client$firestore$ListenResponse {
     /**
      * A Document has changed.
      */
-    documentChange?: firestore$DocumentChange;
+    documentChange?: gapi$client$firestore$DocumentChange;
 
     /**
      * A Document has been deleted.
      */
-    documentDelete?: firestore$DocumentDelete;
+    documentDelete?: gapi$client$firestore$DocumentDelete;
 
     /**
      * A Document has been removed from a target (because it is no longer
      * relevant to that target).
      */
-    documentRemove?: firestore$DocumentRemove;
+    documentRemove?: gapi$client$firestore$DocumentRemove;
 
     /**
      * A filter to apply to the set of documents previously returned for the
@@ -553,7 +557,7 @@ declare module "gapi.client.firestore" {
      * Returned when documents may have been removed from the given target, but
      * the exact documents are unknown.
      */
-    filter?: firestore$ExistenceFilter;
+    filter?: gapi$client$firestore$ExistenceFilter;
 
     /**
      * Targets have changed.
@@ -561,7 +565,7 @@ declare module "gapi.client.firestore" {
     targetChange?: firestore$TargetChange;
   }
 
-  declare interface firestore$MapValue {
+  declare interface gapi$client$firestore$MapValue {
     /**
      * The map's fields.
      *
@@ -573,7 +577,7 @@ declare module "gapi.client.firestore" {
     fields?: Record<string, firestore$Value>;
   }
 
-  declare interface firestore$Operation {
+  declare interface gapi$client$firestore$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -614,7 +618,7 @@ declare module "gapi.client.firestore" {
     response?: Record<string, any>;
   }
 
-  declare interface firestore$Order {
+  declare interface gapi$client$firestore$Order {
     /**
      * The direction to order by. Defaults to `ASCENDING`.
      */
@@ -623,10 +627,10 @@ declare module "gapi.client.firestore" {
     /**
      * The field to order by.
      */
-    field?: firestore$FieldReference;
+    field?: gapi$client$firestore$FieldReference;
   }
 
-  declare interface firestore$Precondition {
+  declare interface gapi$client$firestore$Precondition {
     /**
      * When set to `true`, the target document must exist.
      * When set to `false`, the target document must not exist.
@@ -640,7 +644,7 @@ declare module "gapi.client.firestore" {
     updateTime?: string;
   }
 
-  declare interface firestore$Progress {
+  declare interface gapi$client$firestore$Progress {
     /**
      * An estimate of how much work has been completed. Note that this may be
      * greater than `work_estimated`.
@@ -654,17 +658,17 @@ declare module "gapi.client.firestore" {
     workEstimated?: string;
   }
 
-  declare interface firestore$Projection {
+  declare interface gapi$client$firestore$Projection {
     /**
      * The fields to return.
      *
      * If empty, all fields are returned. To only return the name
      * of the document, use `['__name__']`.
      */
-    fields?: firestore$FieldReference[];
+    fields?: gapi$client$firestore$FieldReference[];
   }
 
-  declare interface firestore$QueryTarget {
+  declare interface gapi$client$firestore$QueryTarget {
     /**
      * The parent resource name. In the format:
      * `projects/{project_id}/databases/{database_id}/documents` or
@@ -681,7 +685,7 @@ declare module "gapi.client.firestore" {
     structuredQuery?: firestore$StructuredQuery;
   }
 
-  declare interface firestore$ReadOnly {
+  declare interface gapi$client$firestore$ReadOnly {
     /**
      * Reads documents at the given time.
      * This may not be older than 60 seconds.
@@ -689,21 +693,21 @@ declare module "gapi.client.firestore" {
     readTime?: string;
   }
 
-  declare interface firestore$ReadWrite {
+  declare interface gapi$client$firestore$ReadWrite {
     /**
      * An optional transaction to retry.
      */
     retryTransaction?: string;
   }
 
-  declare interface firestore$RollbackRequest {
+  declare interface gapi$client$firestore$RollbackRequest {
     /**
      * The transaction to roll back.
      */
     transaction?: string;
   }
 
-  declare interface firestore$RunQueryRequest {
+  declare interface gapi$client$firestore$RunQueryRequest {
     /**
      * Starts a new transaction and reads the documents.
      * Defaults to a read-only transaction.
@@ -729,12 +733,12 @@ declare module "gapi.client.firestore" {
     transaction?: string;
   }
 
-  declare interface firestore$RunQueryResponse {
+  declare interface gapi$client$firestore$RunQueryResponse {
     /**
      * A query result.
      * Not set when reporting partial progress.
      */
-    document?: firestore$Document;
+    document?: gapi$client$firestore$Document;
 
     /**
      * The time at which the document was read. This may be monotonically
@@ -762,7 +766,7 @@ declare module "gapi.client.firestore" {
     transaction?: string;
   }
 
-  declare interface firestore$Status {
+  declare interface gapi$client$firestore$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -782,16 +786,16 @@ declare module "gapi.client.firestore" {
     message?: string;
   }
 
-  declare interface firestore$StructuredQuery {
+  declare interface gapi$client$firestore$StructuredQuery {
     /**
      * A end point for the query results.
      */
-    endAt?: firestore$Cursor;
+    endAt?: gapi$client$firestore$Cursor;
 
     /**
      * The collections to query.
      */
-    from?: firestore$CollectionSelector[];
+    from?: gapi$client$firestore$CollectionSelector[];
 
     /**
      * The maximum number of results to return.
@@ -829,29 +833,29 @@ declare module "gapi.client.firestore" {
      * &#42; `SELECT &#42; FROM Foo WHERE A > 1` becomes
      * `SELECT &#42; FROM Foo WHERE A > 1 ORDER BY A, __name__`
      */
-    orderBy?: firestore$Order[];
+    orderBy?: gapi$client$firestore$Order[];
 
     /**
      * The projection to return.
      */
-    select?: firestore$Projection;
+    select?: gapi$client$firestore$Projection;
 
     /**
      * A starting point for the query results.
      */
-    startAt?: firestore$Cursor;
+    startAt?: gapi$client$firestore$Cursor;
 
     /**
      * The filter to apply.
      */
-    where?: firestore$Filter;
+    where?: gapi$client$firestore$Filter;
   }
 
-  declare interface firestore$Target {
+  declare interface gapi$client$firestore$Target {
     /**
      * A target specified by a set of document names.
      */
-    documents?: firestore$DocumentsTarget;
+    documents?: gapi$client$firestore$DocumentsTarget;
 
     /**
      * If the target should be removed once it is current and consistent.
@@ -861,7 +865,7 @@ declare module "gapi.client.firestore" {
     /**
      * A target specified by a query.
      */
-    query?: firestore$QueryTarget;
+    query?: gapi$client$firestore$QueryTarget;
 
     /**
      * Start listening after a specific `read_time`.
@@ -890,11 +894,11 @@ declare module "gapi.client.firestore" {
     targetId?: number;
   }
 
-  declare interface firestore$TargetChange {
+  declare interface gapi$client$firestore$TargetChange {
     /**
      * The error that resulted in this change, if applicable.
      */
-    cause?: firestore$Status;
+    cause?: gapi$client$firestore$Status;
 
     /**
      * The consistent `read_time` for the given `target_ids` (omitted when the
@@ -937,23 +941,23 @@ declare module "gapi.client.firestore" {
     targetIds?: number[];
   }
 
-  declare interface firestore$TransactionOptions {
+  declare interface gapi$client$firestore$TransactionOptions {
     /**
      * The transaction can only be used for read operations.
      */
-    readOnly?: firestore$ReadOnly;
+    readOnly?: gapi$client$firestore$ReadOnly;
 
     /**
      * The transaction can be used for both read and write operations.
      */
-    readWrite?: firestore$ReadWrite;
+    readWrite?: gapi$client$firestore$ReadWrite;
   }
 
-  declare interface firestore$UnaryFilter {
+  declare interface gapi$client$firestore$UnaryFilter {
     /**
      * The field to which to apply the operator.
      */
-    field?: firestore$FieldReference;
+    field?: gapi$client$firestore$FieldReference;
 
     /**
      * The unary operator to apply.
@@ -961,13 +965,13 @@ declare module "gapi.client.firestore" {
     op?: string;
   }
 
-  declare interface firestore$Value {
+  declare interface gapi$client$firestore$Value {
     /**
      * An array value.
      *
      * Cannot contain another array value.
      */
-    arrayValue?: firestore$ArrayValue;
+    arrayValue?: gapi$client$firestore$ArrayValue;
 
     /**
      * A boolean value.
@@ -990,7 +994,7 @@ declare module "gapi.client.firestore" {
     /**
      * A geo point value representing a point on the surface of Earth.
      */
-    geoPointValue?: firestore$LatLng;
+    geoPointValue?: gapi$client$firestore$LatLng;
 
     /**
      * An integer value.
@@ -1000,7 +1004,7 @@ declare module "gapi.client.firestore" {
     /**
      * A map value.
      */
-    mapValue?: firestore$MapValue;
+    mapValue?: gapi$client$firestore$MapValue;
 
     /**
      * A null value.
@@ -1031,13 +1035,13 @@ declare module "gapi.client.firestore" {
     timestampValue?: string;
   }
 
-  declare interface firestore$Write {
+  declare interface gapi$client$firestore$Write {
     /**
      * An optional precondition on the document.
      *
      * The write will fail if this is set and not met by the target document.
      */
-    currentDocument?: firestore$Precondition;
+    currentDocument?: gapi$client$firestore$Precondition;
 
     /**
      * A document name to delete. In the format:
@@ -1051,12 +1055,12 @@ declare module "gapi.client.firestore" {
      * An `update` cannot follow a `transform` on the same document in a given
      * request.
      */
-    transform?: firestore$DocumentTransform;
+    transform?: gapi$client$firestore$DocumentTransform;
 
     /**
      * A document to write.
      */
-    update?: firestore$Document;
+    update?: gapi$client$firestore$Document;
 
     /**
      * The fields to update in this write.
@@ -1069,10 +1073,10 @@ declare module "gapi.client.firestore" {
      * deleted from the document on the server.
      * The field paths in this mask must not contain a reserved field name.
      */
-    updateMask?: firestore$DocumentMask;
+    updateMask?: gapi$client$firestore$DocumentMask;
   }
 
-  declare interface firestore$WriteRequest {
+  declare interface gapi$client$firestore$WriteRequest {
     /**
      * Labels associated with this write request.
      */
@@ -1111,10 +1115,10 @@ declare module "gapi.client.firestore" {
      * This may be empty on the last request.
      * This must not be empty on all other requests.
      */
-    writes?: firestore$Write[];
+    writes?: gapi$client$firestore$Write[];
   }
 
-  declare interface firestore$WriteResponse {
+  declare interface gapi$client$firestore$WriteResponse {
     /**
      * The time at which the commit occurred.
      */
@@ -1143,12 +1147,12 @@ declare module "gapi.client.firestore" {
     writeResults?: firestore$WriteResult[];
   }
 
-  declare interface firestore$WriteResult {
+  declare interface gapi$client$firestore$WriteResult {
     /**
      * The results of applying each DocumentTransform.FieldTransform, in the
      * same order.
      */
-    transformResults?: firestore$Value[];
+    transformResults?: gapi$client$firestore$Value[];
 
     /**
      * The last update time of the document after applying the write. Not set
@@ -1160,7 +1164,7 @@ declare module "gapi.client.firestore" {
     updateTime?: string;
   }
 
-  declare interface firestore$DocumentsResource {
+  declare interface gapi$client$firestore$DocumentsResource {
     /**
      * Gets multiple documents.
      *
@@ -1238,7 +1242,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$BatchGetDocumentsResponse>;
+    }): Request<gapi$client$firestore$BatchGetDocumentsResponse>;
 
     /**
      * Starts a new transaction.
@@ -1314,7 +1318,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$BeginTransactionResponse>;
+    }): Request<gapi$client$firestore$BeginTransactionResponse>;
 
     /**
      * Commits a transaction, while optionally updating documents.
@@ -1390,7 +1394,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$CommitResponse>;
+    }): Request<gapi$client$firestore$CommitResponse>;
 
     /**
      * Creates a new document.
@@ -1485,7 +1489,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$Document>;
+    }): Request<gapi$client$firestore$Document>;
 
     /**
      * Deletes a document.
@@ -1666,7 +1670,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$Document>;
+    }): Request<gapi$client$firestore$Document>;
 
     /**
      * Lists documents.
@@ -1795,7 +1799,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$ListDocumentsResponse>;
+    }): Request<gapi$client$firestore$ListDocumentsResponse>;
 
     /**
      * Lists all the collection IDs underneath a document.
@@ -1884,7 +1888,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$ListCollectionIdsResponse>;
+    }): Request<gapi$client$firestore$ListCollectionIdsResponse>;
 
     /**
      * Listens to changes.
@@ -1960,7 +1964,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$ListenResponse>;
+    }): Request<gapi$client$firestore$ListenResponse>;
 
     /**
      * Updates or inserts a document.
@@ -2060,7 +2064,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$Document>;
+    }): Request<gapi$client$firestore$Document>;
 
     /**
      * Rolls back a transaction.
@@ -2216,7 +2220,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$RunQueryResponse>;
+    }): Request<gapi$client$firestore$RunQueryResponse>;
 
     /**
      * Streams batches of document updates and deletes, in order.
@@ -2293,10 +2297,10 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$WriteResponse>;
+    }): Request<gapi$client$firestore$WriteResponse>;
   }
 
-  declare interface firestore$IndexesResource {
+  declare interface gapi$client$firestore$IndexesResource {
     /**
      * Creates the specified index.
      * A newly created index's initial state is `CREATING`. On completion of the
@@ -2383,7 +2387,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$Operation>;
+    }): Request<gapi$client$firestore$Operation>;
 
     /**
      * Deletes an index.
@@ -2535,7 +2539,7 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$Index>;
+    }): Request<gapi$client$firestore$Index>;
 
     /**
      * Lists the indexes that match the specified filters.
@@ -2622,15 +2626,15 @@ declare module "gapi.client.firestore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firestore$ListIndexesResponse>;
+    }): Request<gapi$client$firestore$ListIndexesResponse>;
   }
 
-  declare interface firestore$DatabasesResource {
-    documents: firestore$DocumentsResource;
-    indexes: firestore$IndexesResource;
+  declare interface gapi$client$firestore$DatabasesResource {
+    documents: gapi$client$firestore$DocumentsResource;
+    indexes: gapi$client$firestore$IndexesResource;
   }
 
-  declare interface firestore$ProjectsResource {
-    databases: firestore$DatabasesResource;
+  declare interface gapi$client$firestore$ProjectsResource {
+    databases: gapi$client$firestore$DatabasesResource;
   }
 }
