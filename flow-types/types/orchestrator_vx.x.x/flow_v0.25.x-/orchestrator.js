@@ -13,88 +13,77 @@ declare module "orchestrator" {
     isRunning: boolean;
     seq: any[];
     tasks: {
-      [name: string]: Orchestrator$Orchestrator$Task
+      [name: string]: Orchestrator$Task
     };
     reset(): Orchestrator;
 
     /**
- * Define a task
- * @param name The name of the task.
- * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
-- Take in a callback
-- Return a stream or a promise
- */
-    add(name: string, fn?: Orchestrator$Orchestrator$TaskFunc): Orchestrator;
+     * Define a task
+     * @param name The name of the task.
+     * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
+     * - Take in a callback
+     * - Return a stream or a promise
+     */
+    add(name: string, fn?: Orchestrator$TaskFunc): Orchestrator;
 
     /**
- * Define a task
- * @param name The name of the task.
- * @param deps An array of task names to be executed and completed before your task will run.
- * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
-- Take in a callback
-- Return a stream or a promise
- */
+     * Define a task
+     * @param name The name of the task.
+     * @param deps An array of task names to be executed and completed before your task will run.
+     * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
+     * - Take in a callback
+     * - Return a stream or a promise
+     */
     add(
       name: string,
       deps?: string[],
-      fn?: Orchestrator$Orchestrator$TaskFunc
+      fn?: Orchestrator$TaskFunc
     ): Orchestrator;
-    task(name: string): Orchestrator$Orchestrator$Task;
-    task(name: string, fn: Orchestrator$Orchestrator$TaskFunc): void;
-    task(
-      name: string,
-      dep: string[],
-      fn: Orchestrator$Orchestrator$TaskFunc
-    ): void;
+    task(name: string): Orchestrator$Task;
+    task(name: string, fn: Orchestrator$TaskFunc): void;
+    task(name: string, dep: string[], fn: Orchestrator$TaskFunc): void;
 
     /**
      * Have you defined a task with this name?
      * @param name The task name to query
      */
     hasTask(name: string): boolean;
-    start: Orchestrator$Orchestrator$StartMethod;
+    start: Orchestrator$StartMethod;
     stop(err?: any, successfulFinish?: boolean): void;
-    sequence: Orchestrator$Orchestrator$Sequencify;
+    sequence: Orchestrator$Sequencify;
     allDone(): boolean;
 
     /**
- * Listen to orchestrator internals
- * @param event Event name to listen to:
-- start: from start() method, shows you the task sequence
-- stop: from stop() method, the queue finished successfully
-- err: from stop() method, the queue was aborted due to a task error
-- task_start: from _runTask() method, task was started
-- task_stop: from _runTask() method, task completed successfully
-- task_err: from _runTask() method, task errored
-- task_not_found: from start() method, you're trying to start a task that doesn't exist
-- task_recursion: from start() method, there are recursive dependencies in your task list
- * @param cb Passes single argument: e: event details
- */
+     * Listen to orchestrator internals
+     * @param event Event name to listen to:
+     * - start: from start() method, shows you the task sequence
+     * - stop: from stop() method, the queue finished successfully
+     * - err: from stop() method, the queue was aborted due to a task error
+     * - task_start: from _runTask() method, task was started
+     * - task_stop: from _runTask() method, task completed successfully
+     * - task_err: from _runTask() method, task errored
+     * - task_not_found: from start() method, you're trying to start a task that doesn't exist
+     * - task_recursion: from start() method, there are recursive dependencies in your task list
+     * @param cb Passes single argument: e: event details
+     */
     on(
-      event: Orchestrator$Orchestrator$EventNames,
-      cb: (e: Orchestrator$Orchestrator$OnCallbackEvent) => any
+      event: Orchestrator$EventNames,
+      cb: (e: Orchestrator$OnCallbackEvent) => any
     ): this;
 
     /**
      * Listen to all orchestrator events from one callback
      * @param cb Passes single argument: e: event details
      */
-    onAll(cb: (e: Orchestrator$Orchestrator$OnAllCallbackEvent) => any): void;
-    _resetTask(task: Orchestrator$Orchestrator$Task): void;
+    onAll(cb: (e: Orchestrator$OnAllCallbackEvent) => any): void;
+    _resetTask(task: Orchestrator$Task): void;
     _resetAllTasks(): void;
     _resetSpecificTasks(names: string[]): void;
     _runStep(): void;
-    _readyToRunTask(task: Orchestrator$Orchestrator$Task): boolean;
-    _stopTask(
-      task: Orchestrator$Orchestrator$Task,
-      meta: Orchestrator$Orchestrator$Meta
-    ): void;
-    _emitTaskDone(
-      task: Orchestrator$Orchestrator$Task,
-      message: string,
-      err?: any
-    ): void;
-    _runTask(task: Orchestrator$Orchestrator$Task): void;
+    _readyToRunTask(task: Orchestrator$Task): boolean;
+    _stopTask(task: Orchestrator$Task, meta: Orchestrator$Meta): void;
+    _emitTaskDone(task: Orchestrator$Task, message: string, err?: any): void;
+    _runTask(task: Orchestrator$Task): void;
   }
   declare type Orchestrator$Strings = string | string[];
 
@@ -102,8 +91,8 @@ declare module "orchestrator" {
    * The method export generated by orchestrator/lib/runTask.js
    */
   declare type Orchestrator$RunTask = (
-    task: Orchestrator$Orchestrator$TaskFunc,
-    done: (err: any, meta: Orchestrator$Orchestrator$Meta) => void
+    task: Orchestrator$TaskFunc,
+    done: (err: any, meta: Orchestrator$Meta) => void
   ) => void;
 
   /**
@@ -129,22 +118,22 @@ declare module "orchestrator" {
 
   declare interface Orchestrator$AddMethod {
     /**
- * Define a task
- * @param name The name of the task.
- * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
-- Take in a callback
-- Return a stream or a promise
- */
+     * Define a task
+     * @param name The name of the task.
+     * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
+     * - Take in a callback
+     * - Return a stream or a promise
+     */
     (name: string, fn?: Orchestrator$TaskFunc): Orchestrator;
 
     /**
- * Define a task
- * @param name The name of the task.
- * @param deps An array of task names to be executed and completed before your task will run.
- * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
-- Take in a callback
-- Return a stream or a promise
- */
+     * Define a task
+     * @param name The name of the task.
+     * @param deps An array of task names to be executed and completed before your task will run.
+     * @param fn The function that performs the task's operations. For asynchronous tasks, you need to provide a hint when the task is complete:
+     * - Take in a callback
+     * - Return a stream or a promise
+     */
     (name: string, deps?: string[], fn?: Orchestrator$TaskFunc): Orchestrator;
   }
 
@@ -211,7 +200,7 @@ declare module "orchestrator" {
 
   declare type Orchestrator$OnAllCallbackEvent = {
     src: string
-  } & Orchestrator$OnCallbackEvent;
+  } & OnCallbackEvent;
 
   declare interface Orchestrator$Task {
     fn: Orchestrator$TaskFunc;
@@ -238,5 +227,5 @@ declare module "orchestrator" {
     | "task_err"
     | "task_not_found"
     | "task_recursion";
-  declare module.exports: typeof Orchestrator;
+  declare export default typeof Orchestrator;
 }
