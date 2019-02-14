@@ -140,82 +140,82 @@ declare module "uikit" {
 
   declare interface UIkit$ModalOptions {
     /**
- * Allows controls from keyboard (ESC to close)
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Allows controls from keyboard (ESC to close)
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     keyboard?: boolean;
 
     /**
- * Allow modal to close automatically when clicking on the modal overlay
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Allow modal to close automatically when clicking on the modal overlay
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     bgclose?: boolean;
 
     /**
- * Set the height for overflow container to start scrolling
- * @default 150
-<h2>Possible value</h2>
-integer
- */
+     * Set the height for overflow container to start scrolling
+     * @default 150
+     * <h2>Possible value</h2>
+     * integer
+     */
     minScrollHeight?: number;
 
     /**
- * Vertically center the modal
- * @default false
-<h2>Possible value</h2>
-boolean
- */
+     * Vertically center the modal
+     * @default false
+     * <h2>Possible value</h2>
+     * boolean
+     */
     center?: boolean;
 
     /**
- * Close currently opened modals on opening modal
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Close currently opened modals on opening modal
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     modal?: boolean;
   }
 
   /**
- * Create modal dialogs with different styles and transitions
- * Documentation: {@link http://getuikit.org/docs/modal.html}
- * 
- * <h2>Events</h2>
- * 
- * <table>
- * <tr>
- * <th>Name</th>
- * <th>Parameter</th>
- * <th>Description</th>
- * </tr>
- * 
- * <tr>
- * <td><code>show.uk.modal</code></td>
- * <td>event</td>
- * <td>On modal show</td>
- * </tr>
- * <tr>
- * <td><code>hide.uk.modal</code></td>
- * <td>event</td>
- * <td>On modal hide</td>
- * </tr>
- * </table>
- * @example <pre><code>
-$('.modalSelector').on({
-'show.uk.modal': function(){
-console.log("Modal is visible.");
-},
-
-'hide.uk.modal': function(){
-console.log("Element is not visible.");
-}
-});
-</code></pre>
- */
+   * Create modal dialogs with different styles and transitions
+   * Documentation: {@link http://getuikit.org/docs/modal.html}
+   *
+   * <h2>Events</h2>
+   *
+   * <table>
+   * <tr>
+   * <th>Name</th>
+   * <th>Parameter</th>
+   * <th>Description</th>
+   * </tr>
+   *
+   * <tr>
+   * <td><code>show.uk.modal</code></td>
+   * <td>event</td>
+   * <td>On modal show</td>
+   * </tr>
+   * <tr>
+   * <td><code>hide.uk.modal</code></td>
+   * <td>event</td>
+   * <td>On modal hide</td>
+   * </tr>
+   * </table>
+   * @example <pre><code>
+   * $('.modalSelector').on({
+   * 'show.uk.modal': function(){
+   * console.log("Modal is visible.");
+   * },
+   *
+   * 'hide.uk.modal': function(){
+   * console.log("Element is not visible.");
+   * }
+   * });
+   * </code></pre>
+   */
   declare interface UIkit$Modal {
     /**
      * Create a alert dialog
@@ -278,17 +278,17 @@ console.log("Element is not visible.");
     blockUI(content: string, options?: UIkit$ModalOptions): UIkit$ModalElement;
 
     /**
- * Select a modal element on page and return it.
- * @example <pre><code>
-var modal = UIkit.modal(".modalSelector");
-
-if ( modal.isActive() ) {
-modal.hide();
-} else {
-modal.show();
-}
-</code></pre>
- */
+     * Select a modal element on page and return it.
+     * @example <pre><code>
+     * var modal = UIkit.modal(".modalSelector");
+     *
+     * if ( modal.isActive() ) {
+     * modal.hide();
+     * } else {
+     * modal.show();
+     * }
+     * </code></pre>
+     */
     (
       selector: string | JQuery,
       options?: UIkit$ModalOptions
@@ -861,11 +861,11 @@ modal.show();
     viewport?: number;
 
     /**
- * Condition for the active status with a width as integer (e.g. 640) or a css media query
- * @default false
-<h2>Possible Value</h2>
-integer / string
- */
+     * Condition for the active status with a width as integer (e.g. 640) or a css media query
+     * @default false
+     * <h2>Possible Value</h2>
+     * integer / string
+     */
     media?: number | string;
   }
 
@@ -880,67 +880,67 @@ integer / string
 
   declare interface UIkit$AccordionOptions {
     /**
- * Show first item on init
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Show first item on init
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     showfirst?: boolean;
 
     /**
- * Allow multiple open items
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Allow multiple open items
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     collapse?: boolean;
 
     /**
- * Animate toggle
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Animate toggle
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     animate?: boolean;
 
     /**
- * Animation function
- * @default swing
-<h2>Possible value</h2>
-string
- */
+     * Animation function
+     * @default swing
+     * <h2>Possible value</h2>
+     * string
+     */
     easing?: string;
 
     /**
- * Animation duration
- * @default 300
-<h2>Possible value</h2>
-integer
- */
+     * Animation duration
+     * @default 300
+     * <h2>Possible value</h2>
+     * integer
+     */
     duration?: number;
 
     /**
- * Css selector for toggles
- * @default .uk-accordion-title
-<h2>Possible value</h2>
-string
- */
+     * Css selector for toggles
+     * @default .uk-accordion-title
+     * <h2>Possible value</h2>
+     * string
+     */
     toggle?: string;
 
     /**
- * Css selector for content containers
- * @default .uk-accordion-content
-<h2>Possible value</h2>
-string
- */
+     * Css selector for content containers
+     * @default .uk-accordion-content
+     * <h2>Possible value</h2>
+     * string
+     */
     containers?: string;
 
     /**
- * Class to add when an item is active
- * @default uk-active
-<h2>Possible value</h2>
-string
- */
+     * Class to add when an item is active
+     * @default uk-active
+     * <h2>Possible value</h2>
+     * string
+     */
     clsactive?: string;
   }
 
@@ -989,12 +989,12 @@ string
     timeout?: number;
 
     /**
- * Adjust the notification's position to different corners.
- * @default 'top-center'
-<h2>Possible values</h2>
-top-center, top-left, top-right, bottom-center, bottom-left, bottom-right
-If you want to create one value set its style with the CSS uk-notify-yourPosition
- */
+     * Adjust the notification's position to different corners.
+     * @default 'top-center'
+     * <h2>Possible values</h2>
+     * top-center, top-left, top-right, bottom-center, bottom-left, bottom-right
+     * If you want to create one value set its style with the CSS uk-notify-yourPosition
+     */
     pos?: string;
   }
 
@@ -1019,35 +1019,35 @@ If you want to create one value set its style with the CSS uk-notify-yourPositio
 
   declare interface UIkit$SearchOptions {
     /**
- * Data source url
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Data source url
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     source?: string;
 
     /**
- * Min. input length before triggering autocomplete
- * @default 3
-<h2>Possible value</h2>
-integer
- */
+     * Min. input length before triggering autocomplete
+     * @default 3
+     * <h2>Possible value</h2>
+     * integer
+     */
     minLength?: number;
 
     /**
- * Query name when sending ajax request
- * @default search
-<h2>Possible value</h2>
-string
- */
+     * Query name when sending ajax request
+     * @default search
+     * <h2>Possible value</h2>
+     * string
+     */
     param?: string;
 
     /**
- * Delay time after stop typing
- * @default 300
-<h2>Possible value</h2>
-integer
- */
+     * Delay time after stop typing
+     * @default 300
+     * <h2>Possible value</h2>
+     * integer
+     */
     delay?: number;
   }
 
@@ -1062,132 +1062,132 @@ integer
 
   declare interface UIkit$NestableOptions {
     /**
- * List group
- * @default false
-<h2>Possible value</h2>
-string
- */
+     * List group
+     * @default false
+     * <h2>Possible value</h2>
+     * string
+     */
     group?: string;
 
     /**
- * Max nesting level
- * @default 10
-<h2>Possible value</h2>
-integer
- */
+     * Max nesting level
+     * @default 10
+     * <h2>Possible value</h2>
+     * integer
+     */
     maxDepth?: number;
 
     /**
- * Pixel threshold before starting to drag
- * @default 20
-<h2>Possible value</h2>
-integer
- */
+     * Pixel threshold before starting to drag
+     * @default 20
+     * <h2>Possible value</h2>
+     * integer
+     */
     threshold?: number;
 
     /**
- * List node name
- * @default ul
-<h2>Possible value</h2>
-string
- */
+     * List node name
+     * @default ul
+     * <h2>Possible value</h2>
+     * string
+     */
     listNodeName?: string;
 
     /**
- * Item node name
- * @default li
-<h2>Possible value</h2>
-string
- */
+     * Item node name
+     * @default li
+     * <h2>Possible value</h2>
+     * string
+     */
     itemNodeName?: string;
 
     /**
- * List base class
- * @default uk-nestable
-<h2>Possible value</h2>
-string
- */
+     * List base class
+     * @default uk-nestable
+     * <h2>Possible value</h2>
+     * string
+     */
     listBaseClass?: string;
 
     /**
- * List class
- * @default uk-nestable-list
-<h2>Possible value</h2>
-string
- */
+     * List class
+     * @default uk-nestable-list
+     * <h2>Possible value</h2>
+     * string
+     */
     listClass?: string;
 
     /**
- * List item class
- * @default uk-nestable-list-item
-<h2>Possible value</h2>
-string
- */
+     * List item class
+     * @default uk-nestable-list-item
+     * <h2>Possible value</h2>
+     * string
+     */
     listitemClass?: string;
 
     /**
- * Item class
- * @default uk-nestable-item
-<h2>Possible value</h2>
-string
- */
+     * Item class
+     * @default uk-nestable-item
+     * <h2>Possible value</h2>
+     * string
+     */
     itemClass?: string;
 
     /**
- * Class added to dragged list
- * @default uk-nestable-list-dragged
-<h2>Possible value</h2>
-string
- */
+     * Class added to dragged list
+     * @default uk-nestable-list-dragged
+     * <h2>Possible value</h2>
+     * string
+     */
     dragClass?: string;
 
     /**
- * Class added to <code>&lt;html&gt;</code> when moving
- * @default uk-nestable-moving
-<h2>Possible value</h2>
-string
- */
+     * Class added to <code>&lt;html&gt;</code> when moving
+     * @default uk-nestable-moving
+     * <h2>Possible value</h2>
+     * string
+     */
     movingClass?: string;
 
     /**
- * Class for drag handle
- * @default uk-nestable-handle
-<h2>Possible value</h2>
-string
- */
+     * Class for drag handle
+     * @default uk-nestable-handle
+     * <h2>Possible value</h2>
+     * string
+     */
     handleClass?: string;
 
     /**
- * Class for collapsed items
- * @default uk-nestable-collapsed
-<h2>Possible value</h2>
-string
- */
+     * Class for collapsed items
+     * @default uk-nestable-collapsed
+     * <h2>Possible value</h2>
+     * string
+     */
     collapsedClass?: string;
 
     /**
- * Class for placeholder of currently dragged element
- * @default uk-nestable-placeholder
-<h2>Possible value</h2>
-string
- */
+     * Class for placeholder of currently dragged element
+     * @default uk-nestable-placeholder
+     * <h2>Possible value</h2>
+     * string
+     */
     placeClass?: string;
 
     /**
- * Elements with this class will not trigger dragging. Useful when having the complete item draggable and not
- * just the handle.
- * @default uk-nestable-nodrag
-<h2>Possible value</h2>
-string
- */
+     * Elements with this class will not trigger dragging. Useful when having the complete item draggable and not
+     * just the handle.
+     * @default uk-nestable-nodrag
+     * <h2>Possible value</h2>
+     * string
+     */
     noDragClass?: string;
 
     /**
- * Class for empty lists
- * @default uk-nestable-empty
-<h2>Possible value</h2>
-string
- */
+     * Class for empty lists
+     * @default uk-nestable-empty
+     * <h2>Possible value</h2>
+     * string
+     */
     emptyClass?: string;
   }
 
@@ -1230,43 +1230,43 @@ string
 
   declare interface UIkit$SortableOptions {
     /**
- * List group
- * @default false
-<h2>Possible value</h2>
-string
- */
+     * List group
+     * @default false
+     * <h2>Possible value</h2>
+     * string
+     */
     group?: string;
 
     /**
- * Animation speed in ms
- * @default 150
-<h2>Possible value</h2>
-integer
- */
+     * Animation speed in ms
+     * @default 150
+     * <h2>Possible value</h2>
+     * integer
+     */
     animation?: string;
 
     /**
- * Mouse movement threshold in pixel until trigger element dragging
- * @default 10
-<h2>Possible value</h2>
-integer
- */
+     * Mouse movement threshold in pixel until trigger element dragging
+     * @default 10
+     * <h2>Possible value</h2>
+     * integer
+     */
     threshold?: string;
 
     /**
- * Custom class to define elements which can trigger sorting
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Custom class to define elements which can trigger sorting
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     handleClass?: string;
 
     /**
- * Custom class added to the dragged element
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Custom class added to the dragged element
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     dragCustomClass?: string;
   }
 
@@ -1309,83 +1309,83 @@ string
 
   declare interface UIkit$StickyOptions {
     /**
- * Top offset whent sticky should be triggered
- * @default 0
-<h2>Possible value</h2>
-integer
- */
+     * Top offset whent sticky should be triggered
+     * @default 0
+     * <h2>Possible value</h2>
+     * integer
+     */
     top?: number;
 
     /**
- * UIkit animation class
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * UIkit animation class
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     animation?: string;
 
     /**
- * Init class when the element is sticky for the first time
- * @default uk-sticky-init
-<h2>Possible value</h2>
-string
- */
+     * Init class when the element is sticky for the first time
+     * @default uk-sticky-init
+     * <h2>Possible value</h2>
+     * string
+     */
     clsinit?: string;
 
     /**
- * Active class to add, when element is sticky
- * @default uk-active
-<h2>Possible value</h2>
-string
- */
+     * Active class to add, when element is sticky
+     * @default uk-active
+     * <h2>Possible value</h2>
+     * string
+     */
     clsactive?: string;
 
     /**
- * Class to add, when element is not sticky
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Class to add, when element is not sticky
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     clsinactive?: string;
 
     /**
- * Css selector where to get the width from in sticky mode. By default it takes the width from the created wrapper element.
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Css selector where to get the width from in sticky mode. By default it takes the width from the created wrapper element.
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     getWidthFrom?: string;
 
     /**
- * Condition for the active status with a width as integer (e.g. 640) or a css media query
- * @default false
-<h2>Possible value</h2>
-integer / string
- */
+     * Condition for the active status with a width as integer (e.g. 640) or a css media query
+     * @default false
+     * <h2>Possible value</h2>
+     * integer / string
+     */
     media?: number | string;
 
     /**
- * Make sure that a sticky element is not over a targeted element via location hash on dom-ready.
- * @default false
-<h2>Possible value</h2>
-boolean
- */
+     * Make sure that a sticky element is not over a targeted element via location hash on dom-ready.
+     * @default false
+     * <h2>Possible value</h2>
+     * boolean
+     */
     target?: boolean;
 
     /**
- * Show sticky element only when scrolling up.
- * @default false
-<h2>Possible value</h2>
-boolean
- */
+     * Show sticky element only when scrolling up.
+     * @default false
+     * <h2>Possible value</h2>
+     * boolean
+     */
     showup?: boolean;
 
     /**
- * Set to <code>true</code> to bind sticky to the parent or a Css selector to bind sticky to a specific element.
- * @default false
-<h2>Possible value</h2>
-mixed
- */
+     * Set to <code>true</code> to bind sticky to the parent or a Css selector to bind sticky to a specific element.
+     * @default false
+     * <h2>Possible value</h2>
+     * mixed
+     */
     boundary?: boolean | string;
   }
 
@@ -1418,27 +1418,27 @@ mixed
 
   declare interface UIkit$TimepickerOptions {
     /**
- * Defines the preferred time notation
- * @default '24h'
-<h2>Possible value</h2>
-'24h' or '12h'
- */
+     * Defines the preferred time notation
+     * @default '24h'
+     * <h2>Possible value</h2>
+     * '24h' or '12h'
+     */
     format?: string;
 
     /**
- * Start time
- * @default 0
-<h2>Possible value</h2>
-Integer between 0 and 24
- */
+     * Start time
+     * @default 0
+     * <h2>Possible value</h2>
+     * Integer between 0 and 24
+     */
     start?: number;
 
     /**
- * End time
- * @default 24
-<h2>Possible value</h2>
-Integer between 0 and 24
- */
+     * End time
+     * @default 24
+     * <h2>Possible value</h2>
+     * Integer between 0 and 24
+     */
     end?: number;
   }
 
@@ -1453,51 +1453,51 @@ Integer between 0 and 24
 
   declare interface UIkit$TooltipOptions {
     /**
- * Offset to the source element
- * @default 5
-<h2>Possible value</h2>
-integer
- */
+     * Offset to the source element
+     * @default 5
+     * <h2>Possible value</h2>
+     * integer
+     */
     offset?: number;
 
     /**
- * Tooltip position
- * @default 'top'
-<h2>Possible value</h2>
-string
- */
+     * Tooltip position
+     * @default 'top'
+     * <h2>Possible value</h2>
+     * string
+     */
     pos?: string;
 
     /**
- * Fade in tooltip
- * @default false
-<h2>Possible value</h2>
-boolean
- */
+     * Fade in tooltip
+     * @default false
+     * <h2>Possible value</h2>
+     * boolean
+     */
     animation?: boolean;
 
     /**
- * Delay tooltip show in ms
- * @default 0
-<h2>Possible value</h2>
-integer
- */
+     * Delay tooltip show in ms
+     * @default 0
+     * <h2>Possible value</h2>
+     * integer
+     */
     delay?: number;
 
     /**
- * Custom class to add on show
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Custom class to add on show
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     cls?: string;
 
     /**
- * Toggled active class
- * @default 'uk-active'
-<h2>Possible value</h2>
-string
- */
+     * Toggled active class
+     * @default 'uk-active'
+     * <h2>Possible value</h2>
+     * string
+     */
     activeClass?: string;
   }
 
@@ -1512,59 +1512,59 @@ string
 
   declare interface UIkit$UploadOptions {
     /**
- * Target url for the upload
- * @default ''
-<h2>Possible value</h2>
-string
- */
+     * Target url for the upload
+     * @default ''
+     * <h2>Possible value</h2>
+     * string
+     */
     action?: string;
 
     /**
- * Send each file one by one
- * @default true
-<h2>Possible value</h2>
-boolean
- */
+     * Send each file one by one
+     * @default true
+     * <h2>Possible value</h2>
+     * boolean
+     */
     single?: boolean;
 
     /**
- * Post query name
- * @default files[]
-<h2>Possible value</h2>
-string
- */
+     * Post query name
+     * @default files[]
+     * <h2>Possible value</h2>
+     * string
+     */
     param?: string;
 
     /**
- * Additional request parameters
- * @default {}
-<h2>Possible value</h2>
-JSON Object
- */
+     * Additional request parameters
+     * @default {}
+     * <h2>Possible value</h2>
+     * JSON Object
+     */
     params?: {};
 
     /**
- * File filter
- * @default .*
-<h2>Possible value</h2>
-string
- */
+     * File filter
+     * @default .*
+     * <h2>Possible value</h2>
+     * string
+     */
     allow?: string;
 
     /**
- * Limit the number of files to upload
- * @default false
-<h2>Possible value</h2>
-integer
- */
+     * Limit the number of files to upload
+     * @default false
+     * <h2>Possible value</h2>
+     * integer
+     */
     filelimit?: number;
 
     /**
- * Response type from server
- * @default text
-<h2>Possible Value</h2>
-(text|json)
- */
+     * Response type from server
+     * @default text
+     * <h2>Possible Value</h2>
+     * (text|json)
+     */
     type?: string;
     before?: (settings: UIkit$UploadOptions, files: string | string[]) => any;
     beforeAll?: (files: string | string[]) => any;
