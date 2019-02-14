@@ -1,6 +1,6 @@
 declare module "plugins/router" {
   declare var theModule: DurandalRootRouter;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "plugins/widget" {
   declare interface WidgetSettings {
@@ -210,57 +210,57 @@ declare module "plugins/serializer" {
    */
   declare export function clone<T>(obj: T, settings?: Object): T;
 }
-
-declare var npm$namespace$observable: {
-  convertObject: typeof observable$convertObject,
-  convertProperty: typeof observable$convertProperty,
-  defineProperty: typeof observable$defineProperty,
-  install: typeof observable$install
-};
-
-/**
- * Converts an entire object into an observable object by re-writing its attributes using ES5 getters and setters. Attributes beginning with '_' or '$' are ignored.
- * @param {{[key: string]: any}} obj The target object to convert.
- */
-declare export function observable$convertObject(obj: any): void;
-
-/**
- * Converts a normal property into an observable property using ES5 getters and setters.
- * @param {{[key: string]: any}} obj The target object on which the property to convert lives.
- * @param {string} propertyName The name of the property to convert.
- * @param {{[key: string]: any}} original The original value of the property. If not specified, it will be retrieved from the object.
- * @returns {KnockoutObservable} The underlying observable.
- */
-declare export function observable$convertProperty(
-  obj: any,
-  propertyName: string,
-  original?: any
-): KnockoutObservable<any>;
-
-/**
- * Defines a computed property using ES5 getters and setters.
- * @param {{[key: string]: any}} obj The target object on which to create the property.
- * @param {string} propertyName The name of the property to define.
- * @param {function | {[key: string]: any}} evaluatorOrOptions The Knockout computed function or computed options object.
- * @returns {KnockoutComputed} The underlying computed observable.
- */
-declare export function observable$defineProperty<T>(
-  obj: any,
-  propertyName: string,
-  evaluatorOrOptions?: KnockoutComputedDefine<T>
-): KnockoutComputed<T>;
-
-/**
- * Installs the plugin into the view model binder's `beforeBind` hook so that objects are automatically converted before being bound.
- */
-declare export function observable$install(config: Object): void;
 declare module "plugins/observable" {
   declare function observable(
     obj: any,
     property: string
   ): KnockoutObservable<any>;
 
-  declare module.exports: typeof observable;
+  declare var npm$namespace$observable: {
+    convertObject: typeof observable$convertObject,
+    convertProperty: typeof observable$convertProperty,
+    defineProperty: typeof observable$defineProperty,
+    install: typeof observable$install
+  };
+
+  /**
+   * Converts an entire object into an observable object by re-writing its attributes using ES5 getters and setters. Attributes beginning with '_' or '$' are ignored.
+   * @param {{[key: string]: any}} obj The target object to convert.
+   */
+  declare export function observable$convertObject(obj: any): void;
+
+  /**
+   * Converts a normal property into an observable property using ES5 getters and setters.
+   * @param {{[key: string]: any}} obj The target object on which the property to convert lives.
+   * @param {string} propertyName The name of the property to convert.
+   * @param {{[key: string]: any}} original The original value of the property. If not specified, it will be retrieved from the object.
+   * @returns {KnockoutObservable} The underlying observable.
+   */
+  declare export function observable$convertProperty(
+    obj: any,
+    propertyName: string,
+    original?: any
+  ): KnockoutObservable<any>;
+
+  /**
+   * Defines a computed property using ES5 getters and setters.
+   * @param {{[key: string]: any}} obj The target object on which to create the property.
+   * @param {string} propertyName The name of the property to define.
+   * @param {function | {[key: string]: any}} evaluatorOrOptions The Knockout computed function or computed options object.
+   * @returns {KnockoutComputed} The underlying computed observable.
+   */
+  declare export function observable$defineProperty<T>(
+    obj: any,
+    propertyName: string,
+    evaluatorOrOptions?: KnockoutComputedDefine<T>
+  ): KnockoutComputed<T>;
+
+  /**
+   * Installs the plugin into the view model binder's `beforeBind` hook so that objects are automatically converted before being bound.
+   */
+  declare export function observable$install(config: Object): void;
+
+  declare export default typeof observable;
 }
 declare module "plugins/http" {
   /**
@@ -642,7 +642,7 @@ declare module "plugins/dialog" {
 }
 declare module "durandal/app" {
   declare var theModule: DurandalAppModule;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "durandal/composition" {
   declare interface CompositionTransation {
@@ -759,7 +759,7 @@ declare module "durandal/composition" {
 }
 declare module "durandal/viewLocator" {
   declare var theModule: DurandalViewLocatorModule;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "durandal/activator" {
   /**
@@ -855,15 +855,15 @@ declare module "durandal/binder" {
 }
 declare module "durandal/events" {
   declare var theModule: DurandalEventModule;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "durandal/viewEngine" {
   declare var theModule: DurandalViewEngineModule;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "durandal/system" {
   declare var theModule: DurandalSystemModule;
-  declare module.exports: typeof theModule;
+  declare export default typeof theModule;
 }
 declare module "durandal" {
   /**
@@ -1862,6 +1862,6 @@ declare module "durandal" {
     /**
      * Installs the router's custom ko binding handler.
      */
-    observable$install(): void
+    install(): void
   } & DurandalRouterBase<DurandalRootRouter>;
 }
