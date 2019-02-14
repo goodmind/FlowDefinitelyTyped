@@ -1,47 +1,51 @@
 declare module "gapi.client.sqladmin" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    backupRuns: typeof client$backupRuns,
-    databases: typeof client$databases,
-    flags: typeof client$flags,
-    instances: typeof client$instances,
-    operations: typeof client$operations,
-    sslCerts: typeof client$sslCerts,
-    tiers: typeof client$tiers,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    backupRuns: typeof gapi$client$backupRuns,
+    databases: typeof gapi$client$databases,
+    flags: typeof gapi$client$flags,
+    instances: typeof gapi$client$instances,
+    operations: typeof gapi$client$operations,
+    sslCerts: typeof gapi$client$sslCerts,
+    tiers: typeof gapi$client$tiers,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Cloud SQL Administration API v1beta4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sqladmin",
     version: "v1beta4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sqladmin",
     version: "v1beta4",
     callback: () => any
   ): void;
 
-  declare var client$backupRuns: sqladmin$sqladmin$BackupRunsResource;
+  declare var gapi$client$backupRuns: sqladmin$BackupRunsResource;
 
-  declare var client$databases: sqladmin$sqladmin$DatabasesResource;
+  declare var gapi$client$databases: sqladmin$DatabasesResource;
 
-  declare var client$flags: sqladmin$sqladmin$FlagsResource;
+  declare var gapi$client$flags: sqladmin$FlagsResource;
 
-  declare var client$instances: sqladmin$sqladmin$InstancesResource;
+  declare var gapi$client$instances: sqladmin$InstancesResource;
 
-  declare var client$operations: sqladmin$sqladmin$OperationsResource;
+  declare var gapi$client$operations: sqladmin$OperationsResource;
 
-  declare var client$sslCerts: sqladmin$sqladmin$SslCertsResource;
+  declare var gapi$client$sslCerts: sqladmin$SslCertsResource;
 
-  declare var client$tiers: sqladmin$sqladmin$TiersResource;
+  declare var gapi$client$tiers: sqladmin$TiersResource;
 
-  declare var client$users: sqladmin$sqladmin$UsersResource;
+  declare var gapi$client$users: sqladmin$UsersResource;
 
-  declare interface sqladmin$AclEntry {
+  declare interface gapi$client$sqladmin$AclEntry {
     /**
      * The time when this access control entry expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
      */
@@ -63,7 +67,7 @@ declare module "gapi.client.sqladmin" {
     value?: string;
   }
 
-  declare interface sqladmin$BackupConfiguration {
+  declare interface gapi$client$sqladmin$BackupConfiguration {
     /**
      * Whether binary log is enabled. If backup configuration is disabled, binary log must be disabled as well.
      */
@@ -85,7 +89,7 @@ declare module "gapi.client.sqladmin" {
     startTime?: string;
   }
 
-  declare interface sqladmin$BackupRun {
+  declare interface gapi$client$sqladmin$BackupRun {
     /**
      * The description of this run, only applicable to on-demand backups.
      */
@@ -147,11 +151,11 @@ declare module "gapi.client.sqladmin" {
     windowStartTime?: string;
   }
 
-  declare interface sqladmin$BackupRunsListResponse {
+  declare interface gapi$client$sqladmin$BackupRunsListResponse {
     /**
      * A list of backup runs in reverse chronological order of the enqueued time.
      */
-    items?: sqladmin$BackupRun[];
+    items?: gapi$client$sqladmin$BackupRun[];
 
     /**
      * This is always sql#backupRunsList.
@@ -164,7 +168,7 @@ declare module "gapi.client.sqladmin" {
     nextPageToken?: string;
   }
 
-  declare interface sqladmin$BinLogCoordinates {
+  declare interface gapi$client$sqladmin$BinLogCoordinates {
     /**
      * Name of the binary log file for a Cloud SQL instance.
      */
@@ -181,12 +185,12 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$CloneContext {
+  declare interface gapi$client$sqladmin$CloneContext {
     /**
      * Binary log coordinates, if specified, indentify the the position up to which the source instance should be cloned. If not specified, the source
      * instance is cloned up to the most recent binary log coordintes.
      */
-    binLogCoordinates?: sqladmin$BinLogCoordinates;
+    binLogCoordinates?: gapi$client$sqladmin$BinLogCoordinates;
 
     /**
      * Name of the Cloud SQL instance to be created as a clone.
@@ -199,7 +203,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$Database {
+  declare interface gapi$client$sqladmin$Database {
     /**
      * The MySQL charset value.
      */
@@ -241,7 +245,7 @@ declare module "gapi.client.sqladmin" {
     selfLink?: string;
   }
 
-  declare interface sqladmin$DatabaseFlags {
+  declare interface gapi$client$sqladmin$DatabaseFlags {
     /**
      * The name of the flag. These flags are passed at instance startup, so include both MySQL server options and MySQL system variables. Flags should be
      * specified with underscores, not hyphens. For more information, see Configuring MySQL Flags in the Google Cloud SQL documentation, as well as the
@@ -255,7 +259,7 @@ declare module "gapi.client.sqladmin" {
     value?: string;
   }
 
-  declare interface sqladmin$DatabaseInstance {
+  declare interface gapi$client$sqladmin$DatabaseInstance {
     /**
      * FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container.
      * SECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.
@@ -411,11 +415,11 @@ declare module "gapi.client.sqladmin" {
     suspensionReason?: string[];
   }
 
-  declare interface sqladmin$DatabasesListResponse {
+  declare interface gapi$client$sqladmin$DatabasesListResponse {
     /**
      * List of database resources in the instance.
      */
-    items?: sqladmin$Database[];
+    items?: gapi$client$sqladmin$Database[];
 
     /**
      * This is always sql#databasesList.
@@ -423,7 +427,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$ExportContext {
+  declare interface gapi$client$sqladmin$ExportContext {
     /**
      * Options for exporting data as CSV.
      */
@@ -439,7 +443,7 @@ declare module "gapi.client.sqladmin" {
      * fileType is CSV, you can optionally specify at most one database to export. If csvExportOptions.selectQuery also specifies the database, this field
      * will be ignored.
      */
-    client$databases?: string[];
+    databases?: string[];
 
     /**
      * The file type for the specified uri.
@@ -475,7 +479,7 @@ declare module "gapi.client.sqladmin" {
     uri?: string;
   }
 
-  declare interface sqladmin$FailoverContext {
+  declare interface gapi$client$sqladmin$FailoverContext {
     /**
      * This is always sql#failoverContext.
      */
@@ -487,7 +491,7 @@ declare module "gapi.client.sqladmin" {
     settingsVersion?: string;
   }
 
-  declare interface sqladmin$Flag {
+  declare interface gapi$client$sqladmin$Flag {
     /**
      * For STRING flags, a list of strings that the value can be set to.
      */
@@ -530,11 +534,11 @@ declare module "gapi.client.sqladmin" {
     type?: string;
   }
 
-  declare interface sqladmin$FlagsListResponse {
+  declare interface gapi$client$sqladmin$FlagsListResponse {
     /**
      * List of flags.
      */
-    items?: sqladmin$Flag[];
+    items?: gapi$client$sqladmin$Flag[];
 
     /**
      * This is always sql#flagsList.
@@ -542,7 +546,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$ImportContext {
+  declare interface gapi$client$sqladmin$ImportContext {
     /**
      * Options for importing data as CSV.
      */
@@ -588,39 +592,39 @@ declare module "gapi.client.sqladmin" {
     uri?: string;
   }
 
-  declare interface sqladmin$InstancesCloneRequest {
+  declare interface gapi$client$sqladmin$InstancesCloneRequest {
     /**
      * Contains details about the clone operation.
      */
-    cloneContext?: sqladmin$CloneContext;
+    cloneContext?: gapi$client$sqladmin$CloneContext;
   }
 
-  declare interface sqladmin$InstancesExportRequest {
+  declare interface gapi$client$sqladmin$InstancesExportRequest {
     /**
      * Contains details about the export operation.
      */
-    exportContext?: sqladmin$ExportContext;
+    exportContext?: gapi$client$sqladmin$ExportContext;
   }
 
-  declare interface sqladmin$InstancesFailoverRequest {
+  declare interface gapi$client$sqladmin$InstancesFailoverRequest {
     /**
      * Failover Context.
      */
-    failoverContext?: sqladmin$FailoverContext;
+    failoverContext?: gapi$client$sqladmin$FailoverContext;
   }
 
-  declare interface sqladmin$InstancesImportRequest {
+  declare interface gapi$client$sqladmin$InstancesImportRequest {
     /**
      * Contains details about the import operation.
      */
-    importContext?: sqladmin$ImportContext;
+    importContext?: gapi$client$sqladmin$ImportContext;
   }
 
-  declare interface sqladmin$InstancesListResponse {
+  declare interface gapi$client$sqladmin$InstancesListResponse {
     /**
      * List of database instance resources.
      */
-    items?: sqladmin$DatabaseInstance[];
+    items?: gapi$client$sqladmin$DatabaseInstance[];
 
     /**
      * This is always sql#instancesList.
@@ -633,26 +637,26 @@ declare module "gapi.client.sqladmin" {
     nextPageToken?: string;
   }
 
-  declare interface sqladmin$InstancesRestoreBackupRequest {
+  declare interface gapi$client$sqladmin$InstancesRestoreBackupRequest {
     /**
      * Parameters required to perform the restore backup operation.
      */
     restoreBackupContext?: sqladmin$RestoreBackupContext;
   }
 
-  declare interface sqladmin$InstancesTruncateLogRequest {
+  declare interface gapi$client$sqladmin$InstancesTruncateLogRequest {
     /**
      * Contains details about the truncate log operation.
      */
     truncateLogContext?: sqladmin$TruncateLogContext;
   }
 
-  declare interface sqladmin$IpConfiguration {
+  declare interface gapi$client$sqladmin$IpConfiguration {
     /**
      * The list of external networks that are allowed to connect to the instance using the IP. In CIDR notation, also known as 'slash' notation (e.g.
      * 192.168.100.0/24).
      */
-    authorizedNetworks?: sqladmin$AclEntry[];
+    authorizedNetworks?: gapi$client$sqladmin$AclEntry[];
 
     /**
      * Whether the instance should be assigned an IP address or not.
@@ -665,7 +669,7 @@ declare module "gapi.client.sqladmin" {
     requireSsl?: boolean;
   }
 
-  declare interface sqladmin$IpMapping {
+  declare interface gapi$client$sqladmin$IpMapping {
     /**
      * The IP address assigned.
      */
@@ -684,7 +688,7 @@ declare module "gapi.client.sqladmin" {
     type?: string;
   }
 
-  declare interface sqladmin$LocationPreference {
+  declare interface gapi$client$sqladmin$LocationPreference {
     /**
      * The AppEngine application to follow, it must be in the same region as the Cloud SQL instance.
      */
@@ -701,7 +705,7 @@ declare module "gapi.client.sqladmin" {
     zone?: string;
   }
 
-  declare interface sqladmin$MaintenanceWindow {
+  declare interface gapi$client$sqladmin$MaintenanceWindow {
     /**
      * day of week (1-7), starting on Monday.
      */
@@ -719,7 +723,7 @@ declare module "gapi.client.sqladmin" {
     updateTrack?: string;
   }
 
-  declare interface sqladmin$MySqlReplicaConfiguration {
+  declare interface gapi$client$sqladmin$MySqlReplicaConfiguration {
     /**
      * PEM representation of the trusted CA's x509 certificate.
      */
@@ -778,7 +782,7 @@ declare module "gapi.client.sqladmin" {
     verifyServerCertificate?: boolean;
   }
 
-  declare interface sqladmin$OnPremisesConfiguration {
+  declare interface gapi$client$sqladmin$OnPremisesConfiguration {
     /**
      * The host and port of the on-premises instance in host:port format
      */
@@ -790,7 +794,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$Operation {
+  declare interface gapi$client$sqladmin$Operation {
     /**
      * The time this operation finished in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
      */
@@ -804,12 +808,12 @@ declare module "gapi.client.sqladmin" {
     /**
      * The context for export operation, if applicable.
      */
-    exportContext?: sqladmin$ExportContext;
+    exportContext?: gapi$client$sqladmin$ExportContext;
 
     /**
      * The context for import operation, if applicable.
      */
-    importContext?: sqladmin$ImportContext;
+    importContext?: gapi$client$sqladmin$ImportContext;
 
     /**
      * The time this operation was enqueued in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
@@ -865,7 +869,7 @@ declare module "gapi.client.sqladmin" {
     user?: string;
   }
 
-  declare interface sqladmin$OperationError {
+  declare interface gapi$client$sqladmin$OperationError {
     /**
      * Identifies the specific error that occurred.
      */
@@ -882,11 +886,11 @@ declare module "gapi.client.sqladmin" {
     message?: string;
   }
 
-  declare interface sqladmin$OperationErrors {
+  declare interface gapi$client$sqladmin$OperationErrors {
     /**
      * The list of errors encountered while processing this operation.
      */
-    errors?: sqladmin$OperationError[];
+    errors?: gapi$client$sqladmin$OperationError[];
 
     /**
      * This is always sql#operationErrors.
@@ -894,11 +898,11 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$OperationsListResponse {
+  declare interface gapi$client$sqladmin$OperationsListResponse {
     /**
      * List of operation resources.
      */
-    items?: sqladmin$Operation[];
+    items?: gapi$client$sqladmin$Operation[];
 
     /**
      * This is always sql#operationsList.
@@ -911,7 +915,7 @@ declare module "gapi.client.sqladmin" {
     nextPageToken?: string;
   }
 
-  declare interface sqladmin$ReplicaConfiguration {
+  declare interface gapi$client$sqladmin$ReplicaConfiguration {
     /**
      * Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. In case the master
      * instance fails, the replica instance will be promoted as the new master instance.
@@ -929,10 +933,10 @@ declare module "gapi.client.sqladmin" {
      * certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is
      * stored by MySQL in a file named master.info in the data directory.
      */
-    mysqlReplicaConfiguration?: sqladmin$MySqlReplicaConfiguration;
+    mysqlReplicaConfiguration?: gapi$client$sqladmin$MySqlReplicaConfiguration;
   }
 
-  declare interface sqladmin$RestoreBackupContext {
+  declare interface gapi$client$sqladmin$RestoreBackupContext {
     /**
      * The ID of the backup run to restore from.
      */
@@ -949,7 +953,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$Settings {
+  declare interface gapi$client$sqladmin$Settings {
     /**
      * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. The activation policy cannot
      * be updated together with other settings for Second Generation instances. Valid values:
@@ -973,7 +977,7 @@ declare module "gapi.client.sqladmin" {
     /**
      * The daily backup configuration for the instance.
      */
-    backupConfiguration?: sqladmin$BackupConfiguration;
+    backupConfiguration?: gapi$client$sqladmin$BackupConfiguration;
 
     /**
      * Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property is only
@@ -994,7 +998,7 @@ declare module "gapi.client.sqladmin" {
     /**
      * The database flags passed to the instance at startup.
      */
-    databaseFlags?: sqladmin$DatabaseFlags[];
+    databaseFlags?: gapi$client$sqladmin$DatabaseFlags[];
 
     /**
      * Configuration specific to read replica instances. Indicates whether replication is enabled or not.
@@ -1005,7 +1009,7 @@ declare module "gapi.client.sqladmin" {
      * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The
      * IPv4 address cannot be disabled for Second Generation instances.
      */
-    ipConfiguration?: sqladmin$IpConfiguration;
+    ipConfiguration?: gapi$client$sqladmin$IpConfiguration;
 
     /**
      * This is always sql#settings.
@@ -1016,13 +1020,13 @@ declare module "gapi.client.sqladmin" {
      * The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or GCE zone for better
      * performance. App Engine co-location is only applicable to First Generation instances.
      */
-    locationPreference?: sqladmin$LocationPreference;
+    locationPreference?: gapi$client$sqladmin$LocationPreference;
 
     /**
      * The maintenance window for this instance. This specifies when the instance may be restarted for maintenance purposes. Applies only to Second Generation
      * instances.
      */
-    maintenanceWindow?: sqladmin$MaintenanceWindow;
+    maintenanceWindow?: gapi$client$sqladmin$MaintenanceWindow;
 
     /**
      * The pricing plan for this instance. This can be either PER_USE or PACKAGE. Only PER_USE is supported for Second Generation instances.
@@ -1063,7 +1067,7 @@ declare module "gapi.client.sqladmin" {
     userLabels?: Record<string, string>;
   }
 
-  declare interface sqladmin$SslCert {
+  declare interface gapi$client$sqladmin$SslCert {
     /**
      * PEM representation.
      */
@@ -1110,11 +1114,11 @@ declare module "gapi.client.sqladmin" {
     sha1Fingerprint?: string;
   }
 
-  declare interface sqladmin$SslCertDetail {
+  declare interface gapi$client$sqladmin$SslCertDetail {
     /**
      * The public information about the cert.
      */
-    certInfo?: sqladmin$SslCert;
+    certInfo?: gapi$client$sqladmin$SslCert;
 
     /**
      * The private key for the client cert, in pem format. Keep private in order to protect your security.
@@ -1122,14 +1126,14 @@ declare module "gapi.client.sqladmin" {
     certPrivateKey?: string;
   }
 
-  declare interface sqladmin$SslCertsCreateEphemeralRequest {
+  declare interface gapi$client$sqladmin$SslCertsCreateEphemeralRequest {
     /**
      * PEM encoded public key to include in the signed certificate.
      */
     public_key?: string;
   }
 
-  declare interface sqladmin$SslCertsInsertRequest {
+  declare interface gapi$client$sqladmin$SslCertsInsertRequest {
     /**
      * User supplied name. Must be a distinct name from the other certificates for this instance. New certificates will not be usable until the instance is
      * restarted.
@@ -1137,11 +1141,11 @@ declare module "gapi.client.sqladmin" {
     commonName?: string;
   }
 
-  declare interface sqladmin$SslCertsInsertResponse {
+  declare interface gapi$client$sqladmin$SslCertsInsertResponse {
     /**
      * The new client certificate and private key. The new certificate will not work until the instance is restarted for First Generation instances.
      */
-    clientCert?: sqladmin$SslCertDetail;
+    clientCert?: gapi$client$sqladmin$SslCertDetail;
 
     /**
      * This is always sql#sslCertsInsert.
@@ -1151,20 +1155,20 @@ declare module "gapi.client.sqladmin" {
     /**
      * The operation to track the ssl certs insert request.
      */
-    operation?: sqladmin$Operation;
+    operation?: gapi$client$sqladmin$Operation;
 
     /**
      * The server Certificate Authority's certificate. If this is missing you can force a new one to be generated by calling resetSslConfig method on
      * instances resource.
      */
-    serverCaCert?: sqladmin$SslCert;
+    serverCaCert?: gapi$client$sqladmin$SslCert;
   }
 
-  declare interface sqladmin$SslCertsListResponse {
+  declare interface gapi$client$sqladmin$SslCertsListResponse {
     /**
      * List of client certificates for the instance.
      */
-    items?: sqladmin$SslCert[];
+    items?: gapi$client$sqladmin$SslCert[];
 
     /**
      * This is always sql#sslCertsList.
@@ -1172,7 +1176,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$Tier {
+  declare interface gapi$client$sqladmin$Tier {
     /**
      * The maximum disk size of this tier in bytes.
      */
@@ -1199,11 +1203,11 @@ declare module "gapi.client.sqladmin" {
     tier?: string;
   }
 
-  declare interface sqladmin$TiersListResponse {
+  declare interface gapi$client$sqladmin$TiersListResponse {
     /**
      * List of tiers.
      */
-    items?: sqladmin$Tier[];
+    items?: gapi$client$sqladmin$Tier[];
 
     /**
      * This is always sql#tiersList.
@@ -1211,7 +1215,7 @@ declare module "gapi.client.sqladmin" {
     kind?: string;
   }
 
-  declare interface sqladmin$TruncateLogContext {
+  declare interface gapi$client$sqladmin$TruncateLogContext {
     /**
      * This is always sql#truncateLogContext.
      */
@@ -1223,7 +1227,7 @@ declare module "gapi.client.sqladmin" {
     logType?: string;
   }
 
-  declare interface sqladmin$User {
+  declare interface gapi$client$sqladmin$User {
     /**
      * HTTP 1.1 Entity tag for the resource.
      */
@@ -1262,11 +1266,11 @@ declare module "gapi.client.sqladmin" {
     project?: string;
   }
 
-  declare interface sqladmin$UsersListResponse {
+  declare interface gapi$client$sqladmin$UsersListResponse {
     /**
      * List of user resources in the instance.
      */
-    items?: sqladmin$User[];
+    items?: gapi$client$sqladmin$User[];
 
     /**
      * This is always sql#usersList.
@@ -1280,7 +1284,7 @@ declare module "gapi.client.sqladmin" {
     nextPageToken?: string;
   }
 
-  declare interface sqladmin$BackupRunsResource {
+  declare interface gapi$client$sqladmin$BackupRunsResource {
     /**
      * Deletes the backup taken by a backup run.
      */
@@ -1335,7 +1339,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Retrieves a resource containing information about a backup run.
@@ -1391,7 +1395,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$BackupRun>;
+    }): Request<gapi$client$sqladmin$BackupRun>;
 
     /**
      * Creates a new backup run on demand. This method is applicable only to Second Generation instances.
@@ -1442,7 +1446,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the enqueued time.
@@ -1503,10 +1507,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$BackupRunsListResponse>;
+    }): Request<gapi$client$sqladmin$BackupRunsListResponse>;
   }
 
-  declare interface sqladmin$DatabasesResource {
+  declare interface gapi$client$sqladmin$DatabasesResource {
     /**
      * Deletes a database from a Cloud SQL instance.
      */
@@ -1561,7 +1565,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Retrieves a resource containing information about a database inside a Cloud SQL instance.
@@ -1617,7 +1621,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Database>;
+    }): Request<gapi$client$sqladmin$Database>;
 
     /**
      * Inserts a resource containing information about a database inside a Cloud SQL instance.
@@ -1668,7 +1672,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Lists databases in the specified Cloud SQL instance.
@@ -1719,7 +1723,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$DatabasesListResponse>;
+    }): Request<gapi$client$sqladmin$DatabasesListResponse>;
 
     /**
      * Updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.
@@ -1775,7 +1779,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Updates a resource containing information about a database inside a Cloud SQL instance.
@@ -1831,10 +1835,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
   }
 
-  declare interface sqladmin$FlagsResource {
+  declare interface gapi$client$sqladmin$FlagsResource {
     /**
      * List all available database flags for Google Cloud SQL instances.
      */
@@ -1879,10 +1883,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$FlagsListResponse>;
+    }): Request<gapi$client$sqladmin$FlagsListResponse>;
   }
 
-  declare interface sqladmin$InstancesResource {
+  declare interface gapi$client$sqladmin$InstancesResource {
     /**
      * Creates a Cloud SQL instance as a clone of the source instance. The API is not ready for Second Generation instances yet.
      */
@@ -1932,7 +1936,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Deletes a Cloud SQL instance.
@@ -1983,7 +1987,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a MySQL dump file.
@@ -2034,7 +2038,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Failover the instance to its failover replica instance.
@@ -2085,7 +2089,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Retrieves a resource containing information about a Cloud SQL instance.
@@ -2136,7 +2140,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$DatabaseInstance>;
+    }): Request<gapi$client$sqladmin$DatabaseInstance>;
 
     /**
      * Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud Storage.
@@ -2187,7 +2191,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Creates a new Cloud SQL instance.
@@ -2233,7 +2237,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Lists instances under a given project in the alphabetical order of the instance name.
@@ -2294,7 +2298,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$InstancesListResponse>;
+    }): Request<gapi$client$sqladmin$InstancesListResponse>;
 
     /**
      * Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to
@@ -2346,7 +2350,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Promotes the read replica instance to be a stand-alone Cloud SQL instance.
@@ -2397,7 +2401,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Deletes all client certificates and generates a new server SSL certificate for the instance. The changes will not take effect until the instance is
@@ -2449,7 +2453,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Restarts a Cloud SQL instance.
@@ -2500,7 +2504,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Restores a backup of a Cloud SQL instance.
@@ -2551,7 +2555,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Starts the replication in the read replica instance.
@@ -2602,7 +2606,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Stops the replication in the read replica instance.
@@ -2653,7 +2657,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Truncate MySQL general and slow query log tables
@@ -2704,7 +2708,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to
@@ -2756,10 +2760,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
   }
 
-  declare interface sqladmin$OperationsResource {
+  declare interface gapi$client$sqladmin$OperationsResource {
     /**
      * Retrieves an instance operation that has been performed on an instance.
      */
@@ -2809,7 +2813,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.
@@ -2870,10 +2874,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$OperationsListResponse>;
+    }): Request<gapi$client$sqladmin$OperationsListResponse>;
   }
 
-  declare interface sqladmin$SslCertsResource {
+  declare interface gapi$client$sqladmin$SslCertsResource {
     /**
      * Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use
      * the certificate to authenticate as themselves when connecting to the database.
@@ -2924,7 +2928,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$SslCert>;
+    }): Request<gapi$client$sqladmin$SslCert>;
 
     /**
      * Deletes the SSL certificate. The change will not take effect until the instance is restarted.
@@ -2980,7 +2984,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to
@@ -3037,7 +3041,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$SslCert>;
+    }): Request<gapi$client$sqladmin$SslCert>;
 
     /**
      * Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the
@@ -3089,7 +3093,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$SslCertsInsertResponse>;
+    }): Request<gapi$client$sqladmin$SslCertsInsertResponse>;
 
     /**
      * Lists all of the current SSL certificates for the instance.
@@ -3140,10 +3144,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$SslCertsListResponse>;
+    }): Request<gapi$client$sqladmin$SslCertsListResponse>;
   }
 
-  declare interface sqladmin$TiersResource {
+  declare interface gapi$client$sqladmin$TiersResource {
     /**
      * Lists all available service tiers for Google Cloud SQL, for example D1, D2. For related information, see Pricing.
      */
@@ -3188,10 +3192,10 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$TiersListResponse>;
+    }): Request<gapi$client$sqladmin$TiersListResponse>;
   }
 
-  declare interface sqladmin$UsersResource {
+  declare interface gapi$client$sqladmin$UsersResource {
     /**
      * Deletes a user from a Cloud SQL instance.
      */
@@ -3251,7 +3255,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Creates a new user in a Cloud SQL instance.
@@ -3302,7 +3306,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
 
     /**
      * Lists users in the specified Cloud SQL instance.
@@ -3353,7 +3357,7 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$UsersListResponse>;
+    }): Request<gapi$client$sqladmin$UsersListResponse>;
 
     /**
      * Updates an existing user in a Cloud SQL instance.
@@ -3414,6 +3418,6 @@ declare module "gapi.client.sqladmin" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<sqladmin$Operation>;
+    }): Request<gapi$client$sqladmin$Operation>;
   }
 }
