@@ -44,9 +44,9 @@ export type StepProps = StepObject &
  * This can be used to add names, descriptions, or other metadata to each step.
  * To use this feature globally in your project you need to augment the StepObject
  * @example declare module "react-albus" {
-interface StepObject {
-propName: string;
-}
-}
+ * interface StepObject {
+ * propName: string;
+ * }
+ * }
  */
 declare export var Step: React.ComponentType<StepProps>;
