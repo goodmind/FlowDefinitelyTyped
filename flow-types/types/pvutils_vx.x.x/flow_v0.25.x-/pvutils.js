@@ -1,5 +1,5 @@
 declare module "pvutils" {
-  declare module.exports: typeof PvUtils;
+  declare export default typeof PvUtils;
 
   declare var npm$namespace$PvUtils: {
     getUTCDate: typeof PvUtils$getUTCDate,
