@@ -1,26 +1,30 @@
 declare module "gapi.client.playcustomapp" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Google Play Custom App Publishing API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "playcustomapp",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "playcustomapp",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: playcustomapp$playcustomapp$AccountsResource;
+  declare var gapi$client$accounts: playcustomapp$AccountsResource;
 
-  declare interface playcustomapp$CustomApp {
+  declare interface gapi$client$playcustomapp$CustomApp {
     /**
      * Default listing language in BCP 47 format.
      */
@@ -32,7 +36,7 @@ declare module "gapi.client.playcustomapp" {
     title?: string;
   }
 
-  declare interface playcustomapp$CustomAppsResource {
+  declare interface gapi$client$playcustomapp$CustomAppsResource {
     /**
      * Create and publish a new custom app.
      */
@@ -77,10 +81,10 @@ declare module "gapi.client.playcustomapp" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<playcustomapp$CustomApp>;
+    }): Request<gapi$client$playcustomapp$CustomApp>;
   }
 
-  declare interface playcustomapp$AccountsResource {
-    customApps: playcustomapp$CustomAppsResource;
+  declare interface gapi$client$playcustomapp$AccountsResource {
+    customApps: gapi$client$playcustomapp$CustomAppsResource;
   }
 }
