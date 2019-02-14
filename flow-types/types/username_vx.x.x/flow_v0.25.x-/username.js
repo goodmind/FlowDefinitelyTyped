@@ -18,5 +18,5 @@ declare module "username" {
    */
   declare function username$sync(): string;
 
-  declare module.exports: typeof username;
+  declare export default typeof username;
 }
