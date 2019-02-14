@@ -1,26 +1,30 @@
 declare module "gapi.client.groupssettings" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    groups: typeof client$groups
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    groups: typeof gapi$client$groups
   };
 
   /**
    * Load Groups Settings API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "groupssettings",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "groupssettings",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$groups: groupssettings$groupssettings$GroupsResource;
+  declare var gapi$client$groups: groupssettings$GroupsResource;
 
-  declare interface groupssettings$Groups {
+  declare interface gapi$client$groupssettings$Groups {
     /**
      * Are external members allowed to join the group.
      */
@@ -180,7 +184,7 @@ declare module "gapi.client.groupssettings" {
     whoCanViewMembership?: string;
   }
 
-  declare interface groupssettings$GroupsResource {
+  declare interface gapi$client$groupssettings$GroupsResource {
     /**
      * Gets one resource by id.
      */
@@ -225,7 +229,7 @@ declare module "gapi.client.groupssettings" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<groupssettings$Groups>;
+    }): Request<gapi$client$groupssettings$Groups>;
 
     /**
      * Updates an existing resource. This method supports patch semantics.
@@ -271,7 +275,7 @@ declare module "gapi.client.groupssettings" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<groupssettings$Groups>;
+    }): Request<gapi$client$groupssettings$Groups>;
 
     /**
      * Updates an existing resource.
@@ -317,6 +321,6 @@ declare module "gapi.client.groupssettings" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<groupssettings$Groups>;
+    }): Request<gapi$client$groupssettings$Groups>;
   }
 }
