@@ -20,7 +20,7 @@ declare module "create-subscription" {
     subscribe: (source: S, callback: (newValue: T) => void) => Unsubscribe;
   }
   declare export interface SubscriptionProps<S, T> {
-    children: (value: T) => React.ReactNode;
+    children: (value: T) => React.Node;
     source: S;
   }
   declare export type Subscription<S, T> = {} & React.ComponentClass<
