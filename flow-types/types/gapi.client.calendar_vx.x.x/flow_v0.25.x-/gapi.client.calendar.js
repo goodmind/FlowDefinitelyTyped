@@ -1,47 +1,51 @@
 declare module "gapi.client.calendar" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    acl: typeof client$acl,
-    calendarList: typeof client$calendarList,
-    calendars: typeof client$calendars,
-    channels: typeof client$channels,
-    colors: typeof client$colors,
-    events: typeof client$events,
-    freebusy: typeof client$freebusy,
-    settings: typeof client$settings
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    acl: typeof gapi$client$acl,
+    calendarList: typeof gapi$client$calendarList,
+    calendars: typeof gapi$client$calendars,
+    channels: typeof gapi$client$channels,
+    colors: typeof gapi$client$colors,
+    events: typeof gapi$client$events,
+    freebusy: typeof gapi$client$freebusy,
+    settings: typeof gapi$client$settings
   };
 
   /**
    * Load Calendar API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "calendar",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "calendar",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$acl: calendar$calendar$AclResource;
+  declare var gapi$client$acl: calendar$AclResource;
 
-  declare var client$calendarList: calendar$calendar$CalendarListResource;
+  declare var gapi$client$calendarList: calendar$CalendarListResource;
 
-  declare var client$calendars: calendar$calendar$CalendarsResource;
+  declare var gapi$client$calendars: calendar$CalendarsResource;
 
-  declare var client$channels: calendar$calendar$ChannelsResource;
+  declare var gapi$client$channels: calendar$ChannelsResource;
 
-  declare var client$colors: calendar$calendar$ColorsResource;
+  declare var gapi$client$colors: calendar$ColorsResource;
 
-  declare var client$events: calendar$calendar$EventsResource;
+  declare var gapi$client$events: calendar$EventsResource;
 
-  declare var client$freebusy: calendar$calendar$FreebusyResource;
+  declare var gapi$client$freebusy: calendar$FreebusyResource;
 
-  declare var client$settings: calendar$calendar$SettingsResource;
+  declare var gapi$client$settings: calendar$SettingsResource;
 
-  declare interface calendar$Acl {
+  declare interface gapi$client$calendar$Acl {
     /**
      * ETag of the collection.
      */
@@ -69,7 +73,7 @@ declare module "gapi.client.calendar" {
     nextSyncToken?: string;
   }
 
-  declare interface calendar$AclRule {
+  declare interface gapi$client$calendar$AclRule {
     /**
      * ETag of the resource.
      */
@@ -117,7 +121,7 @@ declare module "gapi.client.calendar" {
     };
   }
 
-  declare interface calendar$Calendar {
+  declare interface gapi$client$calendar$Calendar {
     /**
      * Description of the calendar. Optional.
      */
@@ -154,7 +158,7 @@ declare module "gapi.client.calendar" {
     timeZone?: string;
   }
 
-  declare interface calendar$CalendarList {
+  declare interface gapi$client$calendar$CalendarList {
     /**
      * ETag of the collection.
      */
@@ -182,7 +186,7 @@ declare module "gapi.client.calendar" {
     nextSyncToken?: string;
   }
 
-  declare interface calendar$CalendarListEntry {
+  declare interface gapi$client$calendar$CalendarListEntry {
     /**
      * The effective access role that the authenticated user has on the calendar. Read-only. Possible values are:
      * - "freeBusyReader" - Provides read access to free/busy information.
@@ -288,7 +292,7 @@ declare module "gapi.client.calendar" {
     timeZone?: string;
   }
 
-  declare interface calendar$CalendarNotification {
+  declare interface gapi$client$calendar$CalendarNotification {
     /**
      * The method used to deliver the notification. Possible values are:
      * - "email" - Reminders are sent via email.
@@ -308,7 +312,7 @@ declare module "gapi.client.calendar" {
     type?: string;
   }
 
-  declare interface calendar$Channel {
+  declare interface gapi$client$calendar$Channel {
     /**
      * The address where notifications are delivered for this channel.
      */
@@ -360,7 +364,7 @@ declare module "gapi.client.calendar" {
     type?: string;
   }
 
-  declare interface calendar$ColorDefinition {
+  declare interface gapi$client$calendar$ColorDefinition {
     /**
      * The background color associated with this color definition.
      */
@@ -372,18 +376,18 @@ declare module "gapi.client.calendar" {
     foreground?: string;
   }
 
-  declare interface calendar$Colors {
+  declare interface gapi$client$calendar$Colors {
     /**
      * A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its
      * color field. Read-only.
      */
-    calendar?: Record<string, calendar$ColorDefinition>;
+    calendar?: Record<string, gapi$client$calendar$ColorDefinition>;
 
     /**
      * A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color
      * field. Read-only.
      */
-    event?: Record<string, calendar$ColorDefinition>;
+    event?: Record<string, gapi$client$calendar$ColorDefinition>;
 
     /**
      * Type of the resource ("calendar#colors").
@@ -396,7 +400,7 @@ declare module "gapi.client.calendar" {
     updated?: string;
   }
 
-  declare interface calendar$Error {
+  declare interface gapi$client$calendar$Error {
     /**
      * Domain, or broad category, of the error.
      */
@@ -413,7 +417,7 @@ declare module "gapi.client.calendar" {
     reason?: string;
   }
 
-  declare interface calendar$Event {
+  declare interface gapi$client$calendar$Event {
     /**
      * Whether anyone can invite themselves to the event (currently works for Google+ events only). Optional. The default is False.
      */
@@ -741,7 +745,7 @@ declare module "gapi.client.calendar" {
     visibility?: string;
   }
 
-  declare interface calendar$EventAttachment {
+  declare interface gapi$client$calendar$EventAttachment {
     /**
      * ID of the attached file. Read-only.
      * For Google Drive files, this is the ID of the corresponding Files resource entry in the Drive API.
@@ -770,7 +774,7 @@ declare module "gapi.client.calendar" {
     title?: string;
   }
 
-  declare interface calendar$EventAttendee {
+  declare interface gapi$client$calendar$EventAttendee {
     /**
      * Number of additional guests. Optional. The default is 0.
      */
@@ -826,7 +830,7 @@ declare module "gapi.client.calendar" {
     self?: boolean;
   }
 
-  declare interface calendar$EventDateTime {
+  declare interface gapi$client$calendar$EventDateTime {
     /**
      * The date, in the format "yyyy-mm-dd", if this is an all-day event.
      */
@@ -846,7 +850,7 @@ declare module "gapi.client.calendar" {
     timeZone?: string;
   }
 
-  declare interface calendar$EventReminder {
+  declare interface gapi$client$calendar$EventReminder {
     /**
      * The method used by this reminder. Possible values are:
      * - "email" - Reminders are sent via email.
@@ -862,7 +866,7 @@ declare module "gapi.client.calendar" {
     minutes?: number;
   }
 
-  declare interface calendar$Events {
+  declare interface gapi$client$calendar$Events {
     /**
      * The user's access role for this calendar. Read-only. Possible values are:
      * - "none" - The user has no access.
@@ -879,7 +883,7 @@ declare module "gapi.client.calendar" {
      * The default reminders on the calendar for the authenticated user. These reminders apply to all events on this calendar that do not explicitly override
      * them (i.e. do not have reminders.useDefault set to True).
      */
-    defaultReminders?: calendar$EventReminder[];
+    defaultReminders?: gapi$client$calendar$EventReminder[];
 
     /**
      * Description of the calendar. Read-only.
@@ -894,7 +898,7 @@ declare module "gapi.client.calendar" {
     /**
      * List of events on the calendar.
      */
-    items?: calendar$Event[];
+    items?: gapi$client$calendar$Event[];
 
     /**
      * Type of the collection ("calendar#events").
@@ -928,7 +932,7 @@ declare module "gapi.client.calendar" {
     updated?: string;
   }
 
-  declare interface calendar$FreeBusyCalendar {
+  declare interface gapi$client$calendar$FreeBusyCalendar {
     /**
      * List of time ranges during which this calendar should be regarded as busy.
      */
@@ -937,22 +941,22 @@ declare module "gapi.client.calendar" {
     /**
      * Optional error(s) (if computation for the calendar failed).
      */
-    errors?: calendar$Error[];
+    errors?: gapi$client$calendar$Error[];
   }
 
-  declare interface calendar$FreeBusyGroup {
+  declare interface gapi$client$calendar$FreeBusyGroup {
     /**
      * List of calendars' identifiers within a group.
      */
-    client$calendars?: string[];
+    calendars?: string[];
 
     /**
      * Optional error(s) (if computation for the group failed).
      */
-    errors?: calendar$Error[];
+    errors?: gapi$client$calendar$Error[];
   }
 
-  declare interface calendar$FreeBusyRequest {
+  declare interface gapi$client$calendar$FreeBusyRequest {
     /**
      * Maximal number of calendars for which FreeBusy information is to be provided. Optional.
      */
@@ -985,23 +989,23 @@ declare module "gapi.client.calendar" {
     timeZone?: string;
   }
 
-  declare interface calendar$FreeBusyRequestItem {
+  declare interface gapi$client$calendar$FreeBusyRequestItem {
     /**
      * The identifier of a calendar or a group.
      */
     id?: string;
   }
 
-  declare interface calendar$FreeBusyResponse {
+  declare interface gapi$client$calendar$FreeBusyResponse {
     /**
      * List of free/busy information for calendars.
      */
-    client$calendars?: Record<string, calendar$FreeBusyCalendar>;
+    calendars?: Record<string, gapi$client$calendar$FreeBusyCalendar>;
 
     /**
      * Expansion of groups.
      */
-    groups?: Record<string, calendar$FreeBusyGroup>;
+    groups?: Record<string, gapi$client$calendar$FreeBusyGroup>;
 
     /**
      * Type of the resource ("calendar#freeBusy").
@@ -1019,7 +1023,7 @@ declare module "gapi.client.calendar" {
     timeMin?: string;
   }
 
-  declare interface calendar$Setting {
+  declare interface gapi$client$calendar$Setting {
     /**
      * ETag of the resource.
      */
@@ -1041,7 +1045,7 @@ declare module "gapi.client.calendar" {
     value?: string;
   }
 
-  declare interface calendar$Settings {
+  declare interface gapi$client$calendar$Settings {
     /**
      * Etag of the collection.
      */
@@ -1050,7 +1054,7 @@ declare module "gapi.client.calendar" {
     /**
      * List of user settings.
      */
-    items?: calendar$Setting[];
+    items?: gapi$client$calendar$Setting[];
 
     /**
      * Type of the collection ("calendar#settings").
@@ -1069,7 +1073,7 @@ declare module "gapi.client.calendar" {
     nextSyncToken?: string;
   }
 
-  declare interface calendar$TimePeriod {
+  declare interface gapi$client$calendar$TimePeriod {
     /**
      * The (exclusive) end of the time period.
      */
@@ -1081,7 +1085,7 @@ declare module "gapi.client.calendar" {
     start?: string;
   }
 
-  declare interface calendar$AclResource {
+  declare interface gapi$client$calendar$AclResource {
     /**
      * Deletes an access control rule.
      */
@@ -1184,7 +1188,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$AclRule>;
+    }): Request<gapi$client$calendar$AclRule>;
 
     /**
      * Creates an access control rule.
@@ -1231,7 +1235,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$AclRule>;
+    }): Request<gapi$client$calendar$AclRule>;
 
     /**
      * Returns the rules in the access control list for the calendar.
@@ -1306,7 +1310,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Acl>;
+    }): Request<gapi$client$calendar$Acl>;
 
     /**
      * Updates an access control rule. This method supports patch semantics.
@@ -1358,7 +1362,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$AclRule>;
+    }): Request<gapi$client$calendar$AclRule>;
 
     /**
      * Updates an access control rule.
@@ -1410,7 +1414,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$AclRule>;
+    }): Request<gapi$client$calendar$AclRule>;
 
     /**
      * Watch for changes to ACL resources.
@@ -1485,10 +1489,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Channel>;
+    }): Request<gapi$client$calendar$Channel>;
   }
 
-  declare interface calendar$CalendarListResource {
+  declare interface gapi$client$calendar$CalendarListResource {
     /**
      * Deletes an entry on the user's calendar list.
      */
@@ -1581,7 +1585,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$CalendarListEntry>;
+    }): Request<gapi$client$calendar$CalendarListEntry>;
 
     /**
      * Adds an entry to the user's calendar list.
@@ -1628,7 +1632,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$CalendarListEntry>;
+    }): Request<gapi$client$calendar$CalendarListEntry>;
 
     /**
      * Returns entries on the user's calendar list.
@@ -1708,7 +1712,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$CalendarList>;
+    }): Request<gapi$client$calendar$CalendarList>;
 
     /**
      * Updates an entry on the user's calendar list. This method supports patch semantics.
@@ -1761,7 +1765,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$CalendarListEntry>;
+    }): Request<gapi$client$calendar$CalendarListEntry>;
 
     /**
      * Updates an entry on the user's calendar list.
@@ -1814,7 +1818,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$CalendarListEntry>;
+    }): Request<gapi$client$calendar$CalendarListEntry>;
 
     /**
      * Watch for changes to CalendarList resources.
@@ -1894,10 +1898,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Channel>;
+    }): Request<gapi$client$calendar$Channel>;
   }
 
-  declare interface calendar$CalendarsResource {
+  declare interface gapi$client$calendar$CalendarsResource {
     /**
      * Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account.
      */
@@ -2037,7 +2041,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Calendar>;
+    }): Request<gapi$client$calendar$Calendar>;
 
     /**
      * Creates a secondary calendar.
@@ -2078,7 +2082,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Calendar>;
+    }): Request<gapi$client$calendar$Calendar>;
 
     /**
      * Updates metadata for a calendar. This method supports patch semantics.
@@ -2125,7 +2129,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Calendar>;
+    }): Request<gapi$client$calendar$Calendar>;
 
     /**
      * Updates metadata for a calendar.
@@ -2172,10 +2176,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Calendar>;
+    }): Request<gapi$client$calendar$Calendar>;
   }
 
-  declare interface calendar$ChannelsResource {
+  declare interface gapi$client$calendar$ChannelsResource {
     /**
      * Stop watching resources through this channel
      */
@@ -2218,7 +2222,7 @@ declare module "gapi.client.calendar" {
     }): Request<void>;
   }
 
-  declare interface calendar$ColorsResource {
+  declare interface gapi$client$calendar$ColorsResource {
     /**
      * Returns the color definitions for calendars and events.
      */
@@ -2258,10 +2262,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Colors>;
+    }): Request<gapi$client$calendar$Colors>;
   }
 
-  declare interface calendar$EventsResource {
+  declare interface gapi$client$calendar$EventsResource {
     /**
      * Deletes an event.
      */
@@ -2387,7 +2391,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Imports an event. This operation is used to add a private copy of an existing event to a calendar.
@@ -2439,7 +2443,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Creates an event.
@@ -2502,7 +2506,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Returns instances of the specified recurring event.
@@ -2605,7 +2609,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Events>;
+    }): Request<gapi$client$calendar$Events>;
 
     /**
      * Returns events on the specified calendar.
@@ -2768,7 +2772,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Events>;
+    }): Request<gapi$client$calendar$Events>;
 
     /**
      * Moves an event to another calendar, i.e. changes an event's organizer.
@@ -2829,7 +2833,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Updates an event. This method supports patch semantics.
@@ -2904,7 +2908,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Creates an event based on a simple text string.
@@ -2961,7 +2965,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Updates an event.
@@ -3036,7 +3040,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Event>;
+    }): Request<gapi$client$calendar$Event>;
 
     /**
      * Watch for changes to Events resources.
@@ -3199,10 +3203,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Channel>;
+    }): Request<gapi$client$calendar$Channel>;
   }
 
-  declare interface calendar$FreebusyResource {
+  declare interface gapi$client$calendar$FreebusyResource {
     /**
      * Returns free/busy information for a set of calendars.
      */
@@ -3242,10 +3246,10 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$FreeBusyResponse>;
+    }): Request<gapi$client$calendar$FreeBusyResponse>;
   }
 
-  declare interface calendar$SettingsResource {
+  declare interface gapi$client$calendar$SettingsResource {
     /**
      * Returns a single user setting.
      */
@@ -3290,7 +3294,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Setting>;
+    }): Request<gapi$client$calendar$Setting>;
 
     /**
      * Returns all user settings for the authenticated user.
@@ -3352,7 +3356,7 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Settings>;
+    }): Request<gapi$client$calendar$Settings>;
 
     /**
      * Watch for changes to Settings resources.
@@ -3414,6 +3418,6 @@ declare module "gapi.client.calendar" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<calendar$Channel>;
+    }): Request<gapi$client$calendar$Channel>;
   }
 }
