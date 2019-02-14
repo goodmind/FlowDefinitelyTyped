@@ -2,14 +2,14 @@ declare module "ultra-strftime" {
   declare function strftime(
     fmt: string,
     d?: Date,
-    locale?: strftime$strftime.strftime$Locale,
-    options?: strftime$strftime.strftime$Options
+    locale?: strftime$Locale,
+    options?: strftime$Options
   ): string;
 
   declare function strftime(
     fmt: string,
-    locale?: strftime$strftime.strftime$Locale,
-    options?: strftime$strftime.strftime$Options
+    locale?: strftime$Locale,
+    options?: strftime$Options
   ): string;
 
   declare var npm$namespace$strftime: {
@@ -124,5 +124,5 @@ declare module "ultra-strftime" {
     options?: strftime$Options
   ): string;
 
-  declare module.exports: typeof strftime$strftime;
+  declare export default typeof strftime;
 }
