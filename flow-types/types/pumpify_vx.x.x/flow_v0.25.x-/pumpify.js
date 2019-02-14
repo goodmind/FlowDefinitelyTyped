@@ -26,5 +26,5 @@ declare module "pumpify" {
 
   declare function Pumpify$ctor(opts: PumpifyFactoryOptions): typeof Pumpify;
 
-  declare module.exports: typeof Pumpify;
+  declare export default typeof Pumpify;
 }
