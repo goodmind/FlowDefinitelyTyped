@@ -1,32 +1,36 @@
 declare module "gapi.client.youtubereporting" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    jobs: typeof client$jobs,
-    media: typeof client$media,
-    reportTypes: typeof client$reportTypes
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    jobs: typeof gapi$client$jobs,
+    media: typeof gapi$client$media,
+    reportTypes: typeof gapi$client$reportTypes
   };
 
   /**
    * Load YouTube Reporting API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtubereporting",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "youtubereporting",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$jobs: youtubereporting$youtubereporting$JobsResource;
+  declare var gapi$client$jobs: youtubereporting$JobsResource;
 
-  declare var client$media: youtubereporting$youtubereporting$MediaResource;
+  declare var gapi$client$media: youtubereporting$MediaResource;
 
-  declare var client$reportTypes: youtubereporting$youtubereporting$ReportTypesResource;
+  declare var gapi$client$reportTypes: youtubereporting$ReportTypesResource;
 
-  declare interface youtubereporting$Job {
+  declare interface gapi$client$youtubereporting$Job {
     /**
      * The creation date/time of the job.
      */
@@ -61,11 +65,11 @@ declare module "gapi.client.youtubereporting" {
     systemManaged?: boolean;
   }
 
-  declare interface youtubereporting$ListJobsResponse {
+  declare interface gapi$client$youtubereporting$ListJobsResponse {
     /**
      * The list of jobs.
      */
-    client$jobs?: youtubereporting$Job[];
+    jobs?: gapi$client$youtubereporting$Job[];
 
     /**
      * A token to retrieve next page of results.
@@ -77,7 +81,7 @@ declare module "gapi.client.youtubereporting" {
     nextPageToken?: string;
   }
 
-  declare interface youtubereporting$ListReportTypesResponse {
+  declare interface gapi$client$youtubereporting$ListReportTypesResponse {
     /**
      * A token to retrieve next page of results.
      * Pass this value in the
@@ -90,10 +94,10 @@ declare module "gapi.client.youtubereporting" {
     /**
      * The list of report types.
      */
-    client$reportTypes?: youtubereporting$ReportType[];
+    reportTypes?: youtubereporting$ReportType[];
   }
 
-  declare interface youtubereporting$ListReportsResponse {
+  declare interface gapi$client$youtubereporting$ListReportsResponse {
     /**
      * A token to retrieve next page of results.
      * Pass this value in the
@@ -109,14 +113,14 @@ declare module "gapi.client.youtubereporting" {
     reports?: youtubereporting$Report[];
   }
 
-  declare interface youtubereporting$Media {
+  declare interface gapi$client$youtubereporting$Media {
     /**
      * Name of the media resource.
      */
     resourceName?: string;
   }
 
-  declare interface youtubereporting$Report {
+  declare interface gapi$client$youtubereporting$Report {
     /**
      * The date/time when this report was created.
      */
@@ -155,7 +159,7 @@ declare module "gapi.client.youtubereporting" {
     startTime?: string;
   }
 
-  declare interface youtubereporting$ReportType {
+  declare interface gapi$client$youtubereporting$ReportType {
     /**
      * The date/time when this report type was/will be deprecated.
      */
@@ -179,7 +183,7 @@ declare module "gapi.client.youtubereporting" {
     systemManaged?: boolean;
   }
 
-  declare interface youtubereporting$ReportsResource {
+  declare interface gapi$client$youtubereporting$ReportsResource {
     /**
      * Gets the metadata of a specific report.
      */
@@ -264,7 +268,7 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$Report>;
+    }): Request<gapi$client$youtubereporting$Report>;
 
     /**
      * Lists reports created by a specific job.
@@ -377,10 +381,10 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$ListReportsResponse>;
+    }): Request<gapi$client$youtubereporting$ListReportsResponse>;
   }
 
-  declare interface youtubereporting$JobsResource {
+  declare interface gapi$client$youtubereporting$JobsResource {
     /**
      * Creates a job and returns it.
      */
@@ -455,7 +459,7 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$Job>;
+    }): Request<gapi$client$youtubereporting$Job>;
 
     /**
      * Deletes a job.
@@ -617,7 +621,7 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$Job>;
+    }): Request<gapi$client$youtubereporting$Job>;
 
     /**
      * Lists jobs.
@@ -714,11 +718,11 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$ListJobsResponse>;
-    reports: youtubereporting$ReportsResource;
+    }): Request<gapi$client$youtubereporting$ListJobsResponse>;
+    reports: gapi$client$youtubereporting$ReportsResource;
   }
 
-  declare interface youtubereporting$MediaResource {
+  declare interface gapi$client$youtubereporting$MediaResource {
     /**
      * Method for media download. Download is supported
      * on the URI `/v1/media/{+name}?alt=media`.
@@ -794,10 +798,10 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$Media>;
+    }): Request<gapi$client$youtubereporting$Media>;
   }
 
-  declare interface youtubereporting$ReportTypesResource {
+  declare interface gapi$client$youtubereporting$ReportTypesResource {
     /**
      * Lists report types.
      */
@@ -893,6 +897,6 @@ declare module "gapi.client.youtubereporting" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<youtubereporting$ListReportTypesResponse>;
+    }): Request<gapi$client$youtubereporting$ListReportTypesResponse>;
   }
 }
