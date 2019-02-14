@@ -55,16 +55,16 @@ declare module "gradient-string" {
 
   declare var gradient$pastel: gradient$Gradient;
   declare function gradient(
-    colors: tinycolor.ColorInput[] | gradient$gradient$PositionedColorInput[]
-  ): gradient$gradient$Gradient;
+    colors: tinycolor.ColorInput[] | gradient$PositionedColorInput[]
+  ): gradient$Gradient;
 
   declare function gradient(
     ...colors: tinycolor.ColorInput[]
-  ): gradient$gradient$Gradient;
+  ): gradient$Gradient;
 
   declare function gradient(
-    ...colors: gradient$gradient$PositionedColorInput[]
-  ): gradient$gradient$Gradient;
+    ...colors: gradient$PositionedColorInput[]
+  ): gradient$Gradient;
 
-  declare module.exports: typeof gradient;
+  declare export default typeof gradient;
 }
