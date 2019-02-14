@@ -123,7 +123,7 @@ declare module "react-native-tab-view" {
     children?: ReactNode
   };
   declare export type DefaultTransitionSpec = {
-    timing: typeof undefined,
+    timing: typeof Animated.spring,
     tension: 300,
     friction: 35
   };
