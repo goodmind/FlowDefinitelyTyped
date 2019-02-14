@@ -160,5 +160,5 @@ declare module "looks-same" {
     }
   ): void;
 
-  declare module.exports: typeof looksSame;
+  declare export default typeof looksSame;
 }
