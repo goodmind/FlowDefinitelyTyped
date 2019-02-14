@@ -3,12 +3,9 @@ declare module "sane" {
 
   import type { Stats } from "fs";
 
-  declare module.exports: typeof sane;
+  declare export default typeof sane;
 
-  declare function sane(
-    dir: string,
-    options?: sane$sane$Options
-  ): sane$sane$Watcher;
+  declare function sane(dir: string, options?: sane$Options): sane$Watcher;
 
   declare var npm$namespace$sane: {
     FSEventsWatcher: typeof sane$FSEventsWatcher,
@@ -43,10 +40,10 @@ declare module "sane" {
   declare class SaneWatcher mixins EventEmitter {
     globs: string[];
     dot: boolean;
-    ignored: sane$sane$AnymatchMatcher | sane$sane$AnymatchMatcher[];
+    ignored: sane$AnymatchMatcher | sane$AnymatchMatcher[];
     hasIgnore: boolean;
     root: string;
-    constructor(dir: string, options?: sane$sane$Options): this;
+    constructor(dir: string, options?: sane$Options): this;
     close(callback?: () => void): void;
     addListener(event: "ready", listener: () => void): this;
     addListener(event: "error", listener: (error: Error) => void): this;
