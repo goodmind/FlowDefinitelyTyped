@@ -1,88 +1,35 @@
 declare module "exceljs" {
   import type { Writable, Stream } from "stream";
 
-  declare export class RelationshipType {
-    constructor(...args: empty): mixed;
-    static +None: Class<RelationshipType__None> & RelationshipType__None & 0; // 0
-    static +OfficeDocument: Class<RelationshipType__OfficeDocument> &
-      RelationshipType__OfficeDocument &
-      1; // 1
-    static +Worksheet: Class<RelationshipType__Worksheet> &
-      RelationshipType__Worksheet &
-      2; // 2
-    static +CalcChain: Class<RelationshipType__CalcChain> &
-      RelationshipType__CalcChain &
-      3; // 3
-    static +SharedStrings: Class<RelationshipType__SharedStrings> &
-      RelationshipType__SharedStrings &
-      4; // 4
-    static +Styles: Class<RelationshipType__Styles> &
-      RelationshipType__Styles &
-      5; // 5
-    static +Theme: Class<RelationshipType__Theme> & RelationshipType__Theme & 6; // 6
-    static +Hyperlink: Class<RelationshipType__Hyperlink> &
-      RelationshipType__Hyperlink &
-      7; // 7
-  }
+  declare export var RelationshipType: {|
+    +None: 0, // 0
+    +OfficeDocument: 1, // 1
+    +Worksheet: 2, // 2
+    +CalcChain: 3, // 3
+    +SharedStrings: 4, // 4
+    +Styles: 5, // 5
+    +Theme: 6, // 6
+    +Hyperlink: 7 // 7
+  |};
 
-  declare class RelationshipType__None mixins RelationshipType {}
-  declare class RelationshipType__OfficeDocument mixins RelationshipType {}
-  declare class RelationshipType__Worksheet mixins RelationshipType {}
-  declare class RelationshipType__CalcChain mixins RelationshipType {}
-  declare class RelationshipType__SharedStrings mixins RelationshipType {}
-  declare class RelationshipType__Styles mixins RelationshipType {}
-  declare class RelationshipType__Theme mixins RelationshipType {}
-  declare class RelationshipType__Hyperlink mixins RelationshipType {}
+  declare export var DocumentType: {|
+    +Xlsx: 1 // 1
+  |};
 
-  declare export class DocumentType {
-    constructor(...args: empty): mixed;
-    static +Xlsx: Class<DocumentType__Xlsx> & DocumentType__Xlsx & 1; // 1
-  }
-
-  declare class DocumentType__Xlsx mixins DocumentType {}
-
-  declare export class PaperSize {
-    constructor(...args: empty): mixed;
-    static +Legal: Class<PaperSize__Legal> & PaperSize__Legal & 5; // 5
-    static +Executive: Class<PaperSize__Executive> & PaperSize__Executive & 7; // 7
-    static +A4: Class<PaperSize__A4> & PaperSize__A4 & 9; // 9
-    static +A5: Class<PaperSize__A5> & PaperSize__A5 & 11; // 11
-    static +B5: Class<PaperSize__B5> & PaperSize__B5 & 13; // 13
-    static +Envelope_10: Class<PaperSize__Envelope_10> &
-      PaperSize__Envelope_10 &
-      20; // 20
-    static +Envelope_DL: Class<PaperSize__Envelope_DL> &
-      PaperSize__Envelope_DL &
-      27; // 27
-    static +Envelope_C5: Class<PaperSize__Envelope_C5> &
-      PaperSize__Envelope_C5 &
-      28; // 28
-    static +Envelope_B5: Class<PaperSize__Envelope_B5> &
-      PaperSize__Envelope_B5 &
-      34; // 34
-    static +Envelope_Monarch: Class<PaperSize__Envelope_Monarch> &
-      PaperSize__Envelope_Monarch &
-      37; // 37
-    static +Double_Japan_Postcard_Rotated: Class<PaperSize__Double_Japan_Postcard_Rotated> &
-      PaperSize__Double_Japan_Postcard_Rotated &
-      82; // 82
-    static +K16_197x273_mm: Class<PaperSize__K16_197x273_mm> &
-      PaperSize__K16_197x273_mm &
-      119; // 119
-  }
-
-  declare class PaperSize__Legal mixins PaperSize {}
-  declare class PaperSize__Executive mixins PaperSize {}
-  declare class PaperSize__A4 mixins PaperSize {}
-  declare class PaperSize__A5 mixins PaperSize {}
-  declare class PaperSize__B5 mixins PaperSize {}
-  declare class PaperSize__Envelope_10 mixins PaperSize {}
-  declare class PaperSize__Envelope_DL mixins PaperSize {}
-  declare class PaperSize__Envelope_C5 mixins PaperSize {}
-  declare class PaperSize__Envelope_B5 mixins PaperSize {}
-  declare class PaperSize__Envelope_Monarch mixins PaperSize {}
-  declare class PaperSize__Double_Japan_Postcard_Rotated mixins PaperSize {}
-  declare class PaperSize__K16_197x273_mm mixins PaperSize {}
+  declare export var PaperSize: {|
+    +Legal: 5, // 5
+    +Executive: 7, // 7
+    +A4: 9, // 9
+    +A5: 11, // 11
+    +B5: 13, // 13
+    +Envelope_10: 20, // 20
+    +Envelope_DL: 27, // 27
+    +Envelope_C5: 28, // 28
+    +Envelope_B5: 34, // 34
+    +Envelope_Monarch: 37, // 37
+    +Double_Japan_Postcard_Rotated: 82, // 82
+    +K16_197x273_mm: 119 // 119
+  |};
 
   declare export interface WorksheetViewCommon {
     /**
@@ -340,18 +287,11 @@ declare module "exceljs" {
     header?: number;
     footer?: number;
   }
-  declare export class ReadingOrder {
-    constructor(...args: empty): mixed;
-    static +LeftToRight: Class<ReadingOrder__LeftToRight> &
-      ReadingOrder__LeftToRight &
-      1; // 1
-    static +RightToLeft: Class<ReadingOrder__RightToLeft> &
-      ReadingOrder__RightToLeft &
-      2; // 2
-  }
 
-  declare class ReadingOrder__LeftToRight mixins ReadingOrder {}
-  declare class ReadingOrder__RightToLeft mixins ReadingOrder {}
+  declare export var ReadingOrder: {|
+    +LeftToRight: 1, // 1
+    +RightToLeft: 2 // 2
+  |};
 
   declare export interface Alignment {
     horizontal?:
@@ -427,45 +367,26 @@ declare module "exceljs" {
     +formula?: string;
     result: number | string | Date;
   }
-  declare export class ValueType {
-    constructor(...args: empty): mixed;
-    static +Null: Class<ValueType__Null> & ValueType__Null & 0; // 0
-    static +Merge: Class<ValueType__Merge> & ValueType__Merge & 1; // 1
-    static +Number: Class<ValueType__Number> & ValueType__Number & 2; // 2
-    static +String: Class<ValueType__String> & ValueType__String & 3; // 3
-    static +Date: Class<ValueType__Date> & ValueType__Date & 4; // 4
-    static +Hyperlink: Class<ValueType__Hyperlink> & ValueType__Hyperlink & 5; // 5
-    static +Formula: Class<ValueType__Formula> & ValueType__Formula & 6; // 6
-    static +SharedString: Class<ValueType__SharedString> &
-      ValueType__SharedString &
-      7; // 7
-    static +RichText: Class<ValueType__RichText> & ValueType__RichText & 8; // 8
-    static +Boolean: Class<ValueType__Boolean> & ValueType__Boolean & 9; // 9
-    static +Error: Class<ValueType__Error> & ValueType__Error & 10; // 10
-  }
 
-  declare class ValueType__Null mixins ValueType {}
-  declare class ValueType__Merge mixins ValueType {}
-  declare class ValueType__Number mixins ValueType {}
-  declare class ValueType__String mixins ValueType {}
-  declare class ValueType__Date mixins ValueType {}
-  declare class ValueType__Hyperlink mixins ValueType {}
-  declare class ValueType__Formula mixins ValueType {}
-  declare class ValueType__SharedString mixins ValueType {}
-  declare class ValueType__RichText mixins ValueType {}
-  declare class ValueType__Boolean mixins ValueType {}
-  declare class ValueType__Error mixins ValueType {}
+  declare export var ValueType: {|
+    +Null: 0, // 0
+    +Merge: 1, // 1
+    +Number: 2, // 2
+    +String: 3, // 3
+    +Date: 4, // 4
+    +Hyperlink: 5, // 5
+    +Formula: 6, // 6
+    +SharedString: 7, // 7
+    +RichText: 8, // 8
+    +Boolean: 9, // 9
+    +Error: 10 // 10
+  |};
 
-  declare export class FormulaType {
-    constructor(...args: empty): mixed;
-    static +None: Class<FormulaType__None> & FormulaType__None & 0; // 0
-    static +Master: Class<FormulaType__Master> & FormulaType__Master & 1; // 1
-    static +Shared: Class<FormulaType__Shared> & FormulaType__Shared & 2; // 2
-  }
-
-  declare class FormulaType__None mixins FormulaType {}
-  declare class FormulaType__Master mixins FormulaType {}
-  declare class FormulaType__Shared mixins FormulaType {}
+  declare export var FormulaType: {|
+    +None: 0, // 0
+    +Master: 1, // 1
+    +Shared: 2 // 2
+  |};
 
   declare export type CellValue =
     | null
@@ -1092,7 +1013,7 @@ declare module "exceljs" {
     /**
      * xlsx file format operations
      */
-    xlsx: Xlsx;
+    stream$xlsx: Xlsx;
 
     /**
      * csv file format operations
@@ -1142,7 +1063,14 @@ declare module "exceljs" {
   };
   declare function config$setValue(key: "promise", promise: any): void;
 
-  declare interface xlsx$WorkbookWriterOptions {
+  declare var npm$namespace$stream: {
+    xlsx: typeof npm$namespace$stream$xlsx
+  };
+
+  declare var npm$namespace$stream$xlsx: {
+    WorkbookWriter: typeof stream$xlsx$WorkbookWriter
+  };
+  declare interface stream$xlsx$WorkbookWriterOptions {
     /**
      * Specifies a writable stream to write the XLSX workbook to.
      */
@@ -1165,7 +1093,7 @@ declare module "exceljs" {
     useStyles?: boolean;
   }
 
-  declare class xlsx$WorkbookWriter mixins Workbook {
-    constructor(options: xlsx$WorkbookWriterOptions): this;
+  declare class stream$xlsx$WorkbookWriter mixins Workbook {
+    constructor(options: stream$xlsx$WorkbookWriterOptions): this;
   }
 }
