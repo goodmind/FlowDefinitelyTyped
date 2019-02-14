@@ -1,6 +1,9 @@
 declare module "postmark" {
   declare var npm$namespace$Postmark: {
-    defaults: typeof Postmark$defaults
+    defaults: typeof Postmark$defaults,
+
+    Client: typeof Postmark$Client,
+    AdminClient: typeof Postmark$AdminClient
   };
   declare var Postmark$defaults: Postmark$Options;
 
@@ -104,7 +107,7 @@ declare module "postmark" {
       content?: Postmark$PostmarkMessage,
       callback?: Postmark$PostmarkCallback
     ) => any
-  } & Postmark$SimpleOptions;
+  } & SimpleOptions;
 
   declare class Postmark$Client {
     constructor(serverKey: string, options?: $Shape<Postmark$Options>): this;
@@ -267,7 +270,7 @@ declare module "postmark" {
 
   declare type Postmark$CreateSignature = {
     FromEmail: string
-  } & Postmark$UpdateSignature;
+  } & UpdateSignature;
 
   declare interface Postmark$CreateServer {
     Name: string;
@@ -423,9 +426,9 @@ declare module "postmark" {
 
   declare interface Postmark$Postmark {
     (apiKey: string, options: $Shape<Postmark$Options>): Postmark$Client;
-    Postmark$defaults: Postmark$Options;
-    Postmark$Client: Postmark$ClientClass;
-    Postmark$AdminClient: Postmark$AdminClientClass;
+    defaults: Postmark$Options;
+    Client: Postmark$ClientClass;
+    AdminClient: Postmark$AdminClientClass;
   }
 
   declare type Postmark$Server = {
@@ -433,7 +436,7 @@ declare module "postmark" {
     ApiTokens: string[],
     ServerLink: string,
     Name: string
-  } & Postmark$Sender;
+  } & Sender;
 
   declare interface Postmark$SendStatus {
     To: string;
@@ -466,31 +469,31 @@ declare module "postmark" {
     HtmlBody: string,
     TextBody: string,
     AssociatedServerId: number
-  } & Postmark$TemplateBase;
+  } & TemplateBase;
 
   declare type Postmark$BaseFilter = {
     tag?: string,
     todate?: string,
     fromdate?: string
-  } & Postmark$Filter;
+  } & Filter;
 
   declare type Postmark$BounceFilter = {
     type?: string,
     inactive?: boolean,
     emailFilter?: string,
     messageID?: string
-  } & Postmark$BaseFilter;
+  } & BaseFilter;
 
   declare type Postmark$OutboundMessageFilter = {
     recipient?: string,
     fromemail?: string,
     status?: string
-  } & Postmark$BaseFilter;
+  } & BaseFilter;
 
   declare type Postmark$InboundMessageFilter = {
     mailboxhash?: string,
     subject?: string
-  } & Postmark$OutboundMessageFilter;
+  } & OutboundMessageFilter;
 
   declare type Postmark$OpenMessageFilter = {
     client_name?: string,
@@ -502,11 +505,11 @@ declare module "postmark" {
     platform?: string,
     region?: string,
     city?: string
-  } & Postmark$BaseFilter;
+  } & BaseFilter;
 
   declare type Postmark$ServerFilter = {
     name?: string
-  } & Postmark$Filter;
+  } & Filter;
 
   declare interface Postmark$Bounce {
     ID: number;
@@ -562,7 +565,7 @@ declare module "postmark" {
 
   declare interface Postmark$MessageOpens {
     FirstOpen: boolean;
-    Postmark$Client: Postmark$VendorTrackingInfo;
+    Client: Postmark$VendorTrackingInfo;
     OS: Postmark$VendorTrackingInfo;
     Platform: string;
     UserAgent: string;
@@ -612,14 +615,14 @@ declare module "postmark" {
     ReceivedAt: string,
     TrackOpens: boolean,
     TrackLinks: string
-  } & Postmark$MessageBase;
+  } & MessageBase;
 
   declare type Postmark$OutboundMessage = {
     TextBody: string,
     HtmlBody: string,
     Body: string,
-    Postmark$MessageEvents: Postmark$MessageEvents[]
-  } & Postmark$OutboundMessageBase;
+    MessageEvents: Postmark$MessageEvents[]
+  } & OutboundMessageBase;
 
   declare type Postmark$InboundMessageBase = {
     FromName: string,
@@ -631,15 +634,15 @@ declare module "postmark" {
     OriginalRecipient: string,
     Date: string,
     MailboxHash: string
-  } & Postmark$MessageBase;
+  } & MessageBase;
 
   declare type Postmark$InboundMessage = {
     TextBody: string,
     HtmlBody: string,
     Headers: Postmark$PostmarkMessageHeader[],
     BlockedReason?: string,
-    Postmark$MessageEvents: Postmark$MessageEvents[]
-  } & Postmark$InboundMessageBase;
+    MessageEvents: Postmark$MessageEvents[]
+  } & InboundMessageBase;
 
   declare interface Postmark$GenericResult {
     Message: string;
@@ -651,28 +654,28 @@ declare module "postmark" {
   }
 
   declare type Postmark$ActivatedBounceResult = {
-    Postmark$Bounce: Postmark$Bounce
-  } & Postmark$GenericResult;
+    Bounce: Postmark$Bounce
+  } & GenericResult;
 
   declare type Postmark$BouncesResult = {
     Bounces: Postmark$Bounce[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$TemplatesResult = {
     Templates: Postmark$TemplateBase[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$MessageOpensResult = {
     Opens: Postmark$MessageOpens[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$OutboundMessagesResult = {
     Messages: Postmark$OutboundMessageBase[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$InboundMessagesResult = {
     InboundMessages: Postmark$InboundMessageBase[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare interface Postmark$TemplateValidationResult<
     T: { [key: string]: any } = any
@@ -686,18 +689,18 @@ declare module "postmark" {
 
   declare type Postmark$SenderSignaturesResults = {
     SenderSignatures: Postmark$SenderSignatureBase[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$ServersResult = {
     Servers: Postmark$Server[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare type Postmark$DomainsResult = {
     Domains: Postmark$DomainBase[]
-  } & Postmark$PaginatedResult;
+  } & PaginatedResult;
 
   declare interface Postmark$SenderSignatureBase {
-    Postmark$Domain: string;
+    Domain: string;
     EmailAddress: string;
     Name: string;
     ReplyToEmailAddress: string;
@@ -727,13 +730,13 @@ declare module "postmark" {
   declare type Postmark$VerificationDetails = {
     ReturnPathDomain: string,
     ReturnPathDomainCNAMEValue: string
-  } & Postmark$SPFRecord &
-    Postmark$DKIMKey;
+  } & SPFRecord &
+    DKIMKey;
 
   declare type Postmark$SenderSignature = {
     ReturnPathDomainVerified: boolean
-  } & Postmark$SenderSignatureBase &
-    Postmark$VerificationDetails;
+  } & SenderSignatureBase &
+    VerificationDetails;
 
   declare interface Postmark$UpdateSignature {
     Name: string;
@@ -750,13 +753,12 @@ declare module "postmark" {
     ReturnPathDomainVerified: boolean;
   }
 
-  declare type Postmark$Domain = {} & Postmark$DomainBase &
-    Postmark$VerificationDetails;
+  declare type Postmark$Domain = {} & DomainBase & VerificationDetails;
 
   declare type Postmark$RotateDKIMResult = {
     Name: string,
     ID: string
-  } & Postmark$DKIMKey;
+  } & DKIMKey;
 
   declare interface Postmark$OutboundOverview {
     Sent: number;
@@ -779,8 +781,8 @@ declare module "postmark" {
   }
   declare function Postmark(
     apiKey: string,
-    options: $Shape<Postmark$Postmark.Postmark$Options>
-  ): Postmark$Postmark.Postmark$Client;
+    options: $Shape<Postmark$Options>
+  ): Postmark$Client;
 
-  declare module.exports: typeof Postmark$Postmark;
+  declare export default typeof Postmark;
 }
