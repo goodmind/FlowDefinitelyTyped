@@ -1,10 +1,10 @@
 declare module "terminal-link" {
-  declare module.exports: typeof terminalLink;
+  declare export default typeof terminalLink;
 
   declare function terminalLink(
     text: string,
     url: string,
-    options?: terminalLink$terminalLink$Options
+    options?: terminalLink$Options
   ): string;
 
   declare var npm$namespace$terminalLink: {
