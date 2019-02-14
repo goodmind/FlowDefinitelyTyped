@@ -1,5 +1,5 @@
 declare module "resolve-global" {
-  declare module.exports: typeof resolveGlobal;
+  declare export default typeof resolveGlobal;
 
   declare function resolveGlobal(moduleId: string): string;
 
