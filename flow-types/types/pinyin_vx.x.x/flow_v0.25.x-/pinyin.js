@@ -1,14 +1,11 @@
 declare module "pinyin" {
-  declare module.exports: typeof pinyin;
+  declare export default typeof pinyin;
 
   /**
    * 转换中文字符为拼音。可以设定拼音风格，可以打开多音字选项，也可以打开分词。
    * @example pinyin("中心") // returns [ [ 'zhōng' ], [ 'xīn' ] ]
    */
-  declare function pinyin(
-    words: string,
-    options?: pinyin$pinyin$Options
-  ): string[][];
+  declare function pinyin(words: string, options?: pinyin$Options): string[][];
 
   declare var npm$namespace$pinyin: {
     compare: typeof pinyin$compare,
