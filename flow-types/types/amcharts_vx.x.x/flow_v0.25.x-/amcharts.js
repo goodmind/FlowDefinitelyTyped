@@ -62,7 +62,34 @@ declare module "amcharts" {
     shortMonthNames: typeof AmCharts$shortMonthNames,
     useUTC: typeof AmCharts$useUTC,
     theme: typeof AmCharts$theme,
-    themes: typeof AmCharts$themes
+    themes: typeof AmCharts$themes,
+
+    AmAngularGauge: typeof AmCharts$AmAngularGauge,
+    AmBalloon: typeof AmCharts$AmBalloon,
+    AmChart: typeof AmCharts$AmChart,
+    AmCoordinateChart: typeof AmCharts$AmCoordinateChart,
+    AmGraph: typeof AmCharts$AmGraph,
+    AmLegend: typeof AmCharts$AmLegend,
+    AmPieChart: typeof AmCharts$AmPieChart,
+    AmRadarChart: typeof AmCharts$AmRadarChart,
+    AmRectangularChart: typeof AmCharts$AmRectangularChart,
+    AmSerialChart: typeof AmCharts$AmSerialChart,
+    AmXYChart: typeof AmCharts$AmXYChart,
+    AxisBase: typeof AmCharts$AxisBase,
+    CategoryAxis: typeof AmCharts$CategoryAxis,
+    ChartCursor: typeof AmCharts$ChartCursor,
+    ChartScrollbar: typeof AmCharts$ChartScrollbar,
+    GaugeArrow: typeof AmCharts$GaugeArrow,
+    GaugeAxis: typeof AmCharts$GaugeAxis,
+    GaugeBand: typeof AmCharts$GaugeBand,
+    GraphDataItem: typeof AmCharts$GraphDataItem,
+    Guide: typeof AmCharts$Guide,
+    Label: typeof AmCharts$Label,
+    SerialDataItem: typeof AmCharts$SerialDataItem,
+    Slice: typeof AmCharts$Slice,
+    Title: typeof AmCharts$Title,
+    TrendLine: typeof AmCharts$TrendLine,
+    ValueAxis: typeof AmCharts$ValueAxis
   };
 
   /**
@@ -128,14 +155,14 @@ declare module "amcharts" {
   ): AmCharts$AmChart;
 
   /**
- * Set a method to be called before initializing the chart.
- * When the method is called, the chart instance is passed as an attribute.
- * You can use this feature to preprocess chart data or do some other things you need
- * before initializing the chart.
- * @param handler - The method to be called.
- * @param types - Which chart types should call this method. Defaults to all
-if none is passed.
- */
+   * Set a method to be called before initializing the chart.
+   * When the method is called, the chart instance is passed as an attribute.
+   * You can use this feature to preprocess chart data or do some other things you need
+   * before initializing the chart.
+   * @param handler - The method to be called.
+   * @param types - Which chart types should call this method. Defaults to all
+   * if none is passed.
+   */
   declare function AmCharts$addInitHandler(
     handler: () => {},
     types?: string[]
