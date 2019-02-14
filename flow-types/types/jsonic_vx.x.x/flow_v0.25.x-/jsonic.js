@@ -14,5 +14,5 @@ declare module "jsonic" {
 
   declare function jsonic$stringify(val: any, opts?: jsonic$Options): string;
 
-  declare module.exports: typeof jsonic;
+  declare export default typeof jsonic;
 }
