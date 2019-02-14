@@ -3,6 +3,14 @@ declare module 'angular-signalr-hub' {
 	declare export default typeof _
 
     }
+
+      declare var npm$namespace$ngSignalr: {
+        
+        
+        
+        Hub: typeof ngSignalr$Hub,
+        
+      }
 declare interface ngSignalr$HubFactory {
 
 /**
@@ -14,7 +22,7 @@ new (hubName: string, options: ngSignalr$HubOptions): ngSignalr$Hub
 declare class ngSignalr$Hub  {
 hubName: string;
 connection: SignalR.Connection;
-proxy: SignalR.ngSignalr$Hub.Proxy;
+proxy: SignalR.Hub.Proxy;
 on(event: string, fn: (...args: any[]) => void): void;
 invoke(method: string, ...args: any[]): JQueryDeferred<any>;
 disconnect(): void;
