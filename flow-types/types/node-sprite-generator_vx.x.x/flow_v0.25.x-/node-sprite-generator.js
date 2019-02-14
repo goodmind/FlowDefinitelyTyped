@@ -1,10 +1,10 @@
 declare module "node-sprite-generator" {
   import typeof * as e from "express";
 
-  declare module.exports: typeof NodeSpriteGenerator;
+  declare export default typeof NodeSpriteGenerator;
 
   declare function NodeSpriteGenerator(
-    option: NodeSpriteGenerator$NodeSpriteGenerator$Option,
+    option: NodeSpriteGenerator$Option,
     callback?: (err: Error) => void
   ): void;
 
