@@ -2,13 +2,16 @@ declare module "kss" {
   /**
    * Builds a styleguide given the proper options.
    */
-  declare function kss(
-    options?: kss$kss$KssOptions
-  ): Promise<kss$kss$KssStyleguide>;
+  declare function kss(options?: kss$KssOptions): Promise<kss$KssStyleguide>;
 
   declare var npm$namespace$kss: {
     parse: typeof kss$parse,
-    traverse: typeof kss$traverse
+    traverse: typeof kss$traverse,
+
+    KssStyleguide: typeof kss$KssStyleguide,
+    KssSection: typeof kss$KssSection,
+    KssModifier: typeof kss$KssModifier,
+    KssParameter: typeof kss$KssParameter
   };
   declare interface kss$File {
     /**
@@ -76,7 +79,7 @@ declare module "kss" {
     mask?: string | RegExp,
     source: string[],
     verbose?: boolean
-  } & kss$Options;
+  } & Options;
 
   declare type kss$CallbackFn = (
     error: Error | null,
@@ -182,5 +185,5 @@ declare module "kss" {
     options: kss$Options
   ): Promise<kss$KssStyleguide>;
 
-  declare module.exports: typeof kss;
+  declare export default typeof kss;
 }
