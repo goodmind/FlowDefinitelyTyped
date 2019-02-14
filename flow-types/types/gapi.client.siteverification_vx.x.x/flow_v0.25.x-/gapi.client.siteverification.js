@@ -1,26 +1,30 @@
 declare module "gapi.client.siteverification" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    webResource: typeof client$webResource
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    webResource: typeof gapi$client$webResource
   };
 
   /**
    * Load Google Site Verification API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "siteverification",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "siteverification",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$webResource: siteverification$siteverification$WebResourceResource;
+  declare var gapi$client$webResource: siteverification$WebResourceResource;
 
-  declare interface siteverification$SiteVerificationWebResourceGettokenRequest {
+  declare interface gapi$client$siteverification$SiteVerificationWebResourceGettokenRequest {
     /**
      * The site for which a verification token will be generated.
      */
@@ -42,7 +46,7 @@ declare module "gapi.client.siteverification" {
     verificationMethod?: string;
   }
 
-  declare interface siteverification$SiteVerificationWebResourceGettokenResponse {
+  declare interface gapi$client$siteverification$SiteVerificationWebResourceGettokenResponse {
     /**
      * The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored
      * inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the
@@ -56,14 +60,14 @@ declare module "gapi.client.siteverification" {
     token?: string;
   }
 
-  declare interface siteverification$SiteVerificationWebResourceListResponse {
+  declare interface gapi$client$siteverification$SiteVerificationWebResourceListResponse {
     /**
      * The list of sites that are owned by the authenticated user.
      */
     items?: siteverification$SiteVerificationWebResourceResource[];
   }
 
-  declare interface siteverification$SiteVerificationWebResourceResource {
+  declare interface gapi$client$siteverification$SiteVerificationWebResourceResource {
     /**
      * The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations.
      */
@@ -90,7 +94,7 @@ declare module "gapi.client.siteverification" {
     };
   }
 
-  declare interface siteverification$WebResourceResource {
+  declare interface gapi$client$siteverification$WebResourceResource {
     /**
      * Relinquish ownership of a website or domain.
      */
@@ -181,7 +185,7 @@ declare module "gapi.client.siteverification" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<siteverification$SiteVerificationWebResourceResource>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceResource>;
 
     /**
      * Get a verification token for placing on a website or domain.
@@ -222,7 +226,7 @@ declare module "gapi.client.siteverification" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<siteverification$SiteVerificationWebResourceGettokenResponse>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceGettokenResponse>;
 
     /**
      * Attempt verification of a website or domain.
@@ -268,7 +272,7 @@ declare module "gapi.client.siteverification" {
        * The method to use for verifying a site or domain.
        */
       verificationMethod: string
-    }): Request<siteverification$SiteVerificationWebResourceResource>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceResource>;
 
     /**
      * Get the list of your verified websites and domains.
@@ -309,7 +313,7 @@ declare module "gapi.client.siteverification" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<siteverification$SiteVerificationWebResourceListResponse>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceListResponse>;
 
     /**
      * Modify the list of owners for your website or domain. This method supports patch semantics.
@@ -355,7 +359,7 @@ declare module "gapi.client.siteverification" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<siteverification$SiteVerificationWebResourceResource>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceResource>;
 
     /**
      * Modify the list of owners for your website or domain.
@@ -401,6 +405,6 @@ declare module "gapi.client.siteverification" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<siteverification$SiteVerificationWebResourceResource>;
+    }): Request<gapi$client$siteverification$SiteVerificationWebResourceResource>;
   }
 }
