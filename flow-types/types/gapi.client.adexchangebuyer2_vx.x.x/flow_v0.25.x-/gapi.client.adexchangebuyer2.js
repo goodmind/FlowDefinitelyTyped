@@ -1,26 +1,30 @@
 declare module "gapi.client.adexchangebuyer2" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Ad Exchange Buyer API II v2beta1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangebuyer2",
     version: "v2beta1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adexchangebuyer2",
     version: "v2beta1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: adexchangebuyer2$adexchangebuyer2$AccountsResource;
+  declare var gapi$client$accounts: adexchangebuyer2$AccountsResource;
 
-  declare interface adexchangebuyer2$AbsoluteDateRange {
+  declare interface gapi$client$adexchangebuyer2$AbsoluteDateRange {
     /**
      * The end date of the range (inclusive).
      * Must be within the 30 days leading up to current date, and must be equal to
@@ -36,28 +40,28 @@ declare module "gapi.client.adexchangebuyer2" {
     startDate?: adexchangebuyer2$Date;
   }
 
-  declare interface adexchangebuyer2$AddDealAssociationRequest {
+  declare interface gapi$client$adexchangebuyer2$AddDealAssociationRequest {
     /**
      * The association between a creative and a deal that should be added.
      */
     association?: adexchangebuyer2$CreativeDealAssociation;
   }
 
-  declare interface adexchangebuyer2$AppContext {
+  declare interface gapi$client$adexchangebuyer2$AppContext {
     /**
      * The app types this restriction applies to.
      */
     appTypes?: string[];
   }
 
-  declare interface adexchangebuyer2$AuctionContext {
+  declare interface gapi$client$adexchangebuyer2$AuctionContext {
     /**
      * The auction types this restriction applies to.
      */
     auctionTypes?: string[];
   }
 
-  declare interface adexchangebuyer2$BidMetricsRow {
+  declare interface gapi$client$adexchangebuyer2$BidMetricsRow {
     /**
      * The number of bids that Ad Exchange received from the buyer.
      */
@@ -96,7 +100,7 @@ declare module "gapi.client.adexchangebuyer2" {
     viewableImpressions?: adexchangebuyer2$MetricValue;
   }
 
-  declare interface adexchangebuyer2$BidResponseWithoutBidsStatusRow {
+  declare interface gapi$client$adexchangebuyer2$BidResponseWithoutBidsStatusRow {
     /**
      * The number of impressions for which there was a bid response with the
      * specified status.
@@ -115,7 +119,7 @@ declare module "gapi.client.adexchangebuyer2" {
     status?: string;
   }
 
-  declare interface adexchangebuyer2$CalloutStatusRow {
+  declare interface gapi$client$adexchangebuyer2$CalloutStatusRow {
     /**
      * The ID of the callout status.
      * See [callout-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/callout-status-codes).
@@ -134,7 +138,7 @@ declare module "gapi.client.adexchangebuyer2" {
     rowDimensions?: adexchangebuyer2$RowDimensions;
   }
 
-  declare interface adexchangebuyer2$Client {
+  declare interface gapi$client$adexchangebuyer2$Client {
     /**
      * The globally-unique numerical ID of the client.
      * The value of this field is ignored in create and update operations.
@@ -199,7 +203,7 @@ declare module "gapi.client.adexchangebuyer2" {
     visibleToSeller?: boolean;
   }
 
-  declare interface adexchangebuyer2$ClientUser {
+  declare interface gapi$client$adexchangebuyer2$ClientUser {
     /**
      * Numerical account ID of the client buyer
      * with which the user is associated; the
@@ -227,7 +231,7 @@ declare module "gapi.client.adexchangebuyer2" {
     userId?: string;
   }
 
-  declare interface adexchangebuyer2$ClientUserInvitation {
+  declare interface gapi$client$adexchangebuyer2$ClientUserInvitation {
     /**
      * Numerical account ID of the client buyer
      * that the invited user is associated with.
@@ -249,7 +253,7 @@ declare module "gapi.client.adexchangebuyer2" {
     invitationId?: string;
   }
 
-  declare interface adexchangebuyer2$Correction {
+  declare interface gapi$client$adexchangebuyer2$Correction {
     /**
      * The contexts for the correction.
      */
@@ -266,7 +270,7 @@ declare module "gapi.client.adexchangebuyer2" {
     type?: string;
   }
 
-  declare interface adexchangebuyer2$Creative {
+  declare interface gapi$client$adexchangebuyer2$Creative {
     /**
      * The account that this creative belongs to.
      * Can be used to filter the response of the
@@ -311,7 +315,7 @@ declare module "gapi.client.adexchangebuyer2" {
     /**
      * @OutputOnly Shows any corrections that were applied to this creative.
      */
-    corrections?: adexchangebuyer2$Correction[];
+    corrections?: gapi$client$adexchangebuyer2$Correction[];
 
     /**
      * The buyer-defined creative ID of this creative.
@@ -322,15 +326,15 @@ declare module "gapi.client.adexchangebuyer2" {
     creativeId?: string;
 
     /**
- * @OutputOnly The top-level deals status of this creative.
-If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
-serving_restrictions will also exist. Note
-that this may be nuanced with other contextual restrictions, in which case,
-it may be preferable to read from serving_restrictions directly.
-Can be used to filter the response of the
-creatives.list
-method.
- */
+     * @OutputOnly The top-level deals status of this creative.
+     * If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
+     * serving_restrictions will also exist. Note
+     * that this may be nuanced with other contextual restrictions, in which case,
+     * it may be preferable to read from serving_restrictions directly.
+     * Can be used to filter the response of the
+     * creatives.list
+     * method.
+     */
     dealsStatus?: string;
 
     /**
@@ -344,25 +348,25 @@ method.
     detectedDomains?: string[];
 
     /**
- * @OutputOnly The detected languages for this creative. The order is arbitrary. The codes
-are 2 or 5 characters and are documented at
-https://developers.google.com/adwords/api/docs/appendix/languagecodes.
- */
+     * @OutputOnly The detected languages for this creative. The order is arbitrary. The codes
+     * are 2 or 5 characters and are documented at
+     * https://developers.google.com/adwords/api/docs/appendix/languagecodes.
+     */
     detectedLanguages?: string[];
 
     /**
- * @OutputOnly Detected product categories, if any.
-See the ad-product-categories.txt file in the technical documentation
-for a list of IDs.
- */
+     * @OutputOnly Detected product categories, if any.
+     * See the ad-product-categories.txt file in the technical documentation
+     * for a list of IDs.
+     */
     detectedProductCategories?: number[];
 
     /**
- * @OutputOnly Detected sensitive categories, if any.
-See the ad-sensitive-categories.txt file in the technical documentation for
-a list of IDs. You should use these IDs along with the
-excluded-sensitive-category field in the bid request to filter your bids.
- */
+     * @OutputOnly Detected sensitive categories, if any.
+     * See the ad-sensitive-categories.txt file in the technical documentation for
+     * a list of IDs. You should use these IDs along with the
+     * excluded-sensitive-category field in the bid request to filter your bids.
+     */
     detectedSensitiveCategories?: number[];
 
     /**
@@ -386,15 +390,15 @@ excluded-sensitive-category field in the bid request to filter your bids.
     native?: adexchangebuyer2$NativeContent;
 
     /**
- * @OutputOnly The top-level open auction status of this creative.
-If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
-serving_restrictions will also exist. Note
-that this may be nuanced with other contextual restrictions, in which case,
-it may be preferable to read from serving_restrictions directly.
-Can be used to filter the response of the
-creatives.list
-method.
- */
+     * @OutputOnly The top-level open auction status of this creative.
+     * If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
+     * serving_restrictions will also exist. Note
+     * that this may be nuanced with other contextual restrictions, in which case,
+     * it may be preferable to read from serving_restrictions directly.
+     * Can be used to filter the response of the
+     * creatives.list
+     * method.
+     */
     openAuctionStatus?: string;
 
     /**
@@ -403,11 +407,11 @@ method.
     restrictedCategories?: string[];
 
     /**
- * @OutputOnly The granular status of this ad in specific contexts.
-A context here relates to where something ultimately serves (for example,
-a physical location, a platform, an HTTPS vs HTTP request, or the type
-of auction).
- */
+     * @OutputOnly The granular status of this ad in specific contexts.
+     * A context here relates to where something ultimately serves (for example,
+     * a physical location, a platform, an HTTPS vs HTTP request, or the type
+     * of auction).
+     */
     servingRestrictions?: adexchangebuyer2$ServingRestriction[];
 
     /**
@@ -428,7 +432,7 @@ of auction).
     video?: adexchangebuyer2$VideoContent;
   }
 
-  declare interface adexchangebuyer2$CreativeDealAssociation {
+  declare interface gapi$client$adexchangebuyer2$CreativeDealAssociation {
     /**
      * The account the creative belongs to.
      */
@@ -445,7 +449,7 @@ of auction).
     dealsId?: string;
   }
 
-  declare interface adexchangebuyer2$CreativeStatusRow {
+  declare interface gapi$client$adexchangebuyer2$CreativeStatusRow {
     /**
      * The number of bids with the specified status.
      */
@@ -463,7 +467,7 @@ of auction).
     rowDimensions?: adexchangebuyer2$RowDimensions;
   }
 
-  declare interface adexchangebuyer2$Date {
+  declare interface gapi$client$adexchangebuyer2$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -482,7 +486,7 @@ of auction).
     year?: number;
   }
 
-  declare interface adexchangebuyer2$Disapproval {
+  declare interface gapi$client$adexchangebuyer2$Disapproval {
     /**
      * Additional details about the reason for disapproval.
      */
@@ -494,12 +498,12 @@ of auction).
     reason?: string;
   }
 
-  declare interface adexchangebuyer2$FilterSet {
+  declare interface gapi$client$adexchangebuyer2$FilterSet {
     /**
      * An absolute date range, defined by a start date and an end date.
      * Interpreted relative to Pacific time zone.
      */
-    absoluteDateRange?: adexchangebuyer2$AbsoluteDateRange;
+    absoluteDateRange?: gapi$client$adexchangebuyer2$AbsoluteDateRange;
 
     /**
      * The ID of the buyer account on which to filter; optional.
@@ -575,7 +579,7 @@ of auction).
     timeSeriesGranularity?: string;
   }
 
-  declare interface adexchangebuyer2$FilteredBidCreativeRow {
+  declare interface gapi$client$adexchangebuyer2$FilteredBidCreativeRow {
     /**
      * The number of bids with the specified creative.
      */
@@ -592,7 +596,7 @@ of auction).
     rowDimensions?: adexchangebuyer2$RowDimensions;
   }
 
-  declare interface adexchangebuyer2$FilteredBidDetailRow {
+  declare interface gapi$client$adexchangebuyer2$FilteredBidDetailRow {
     /**
      * The number of bids with the specified detail.
      */
@@ -610,14 +614,14 @@ of auction).
     rowDimensions?: adexchangebuyer2$RowDimensions;
   }
 
-  declare interface adexchangebuyer2$FilteringStats {
+  declare interface gapi$client$adexchangebuyer2$FilteringStats {
     /**
      * The day during which the data was collected.
      * The data is collected from 00:00:00 to 23:59:59 PT.
      * During switches from PST to PDT and back, the day may
      * contain 23 or 25 hours of data instead of the usual 24.
      */
-    date?: adexchangebuyer2$Date;
+    date?: gapi$client$adexchangebuyer2$Date;
 
     /**
      * The set of filtering reasons for this date.
@@ -625,7 +629,7 @@ of auction).
     reasons?: adexchangebuyer2$Reason[];
   }
 
-  declare interface adexchangebuyer2$HtmlContent {
+  declare interface gapi$client$adexchangebuyer2$HtmlContent {
     /**
      * The height of the HTML snippet in pixels.
      */
@@ -642,7 +646,7 @@ of auction).
     width?: number;
   }
 
-  declare interface adexchangebuyer2$Image {
+  declare interface gapi$client$adexchangebuyer2$Image {
     /**
      * Image height in pixels.
      */
@@ -659,7 +663,7 @@ of auction).
     width?: number;
   }
 
-  declare interface adexchangebuyer2$ImpressionMetricsRow {
+  declare interface gapi$client$adexchangebuyer2$ImpressionMetricsRow {
     /**
      * The number of impressions available to the buyer on Ad Exchange.
      * In some cases this value may be unavailable.
@@ -695,11 +699,11 @@ of auction).
     successfulResponses?: adexchangebuyer2$MetricValue;
   }
 
-  declare interface adexchangebuyer2$ListBidMetricsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListBidMetricsResponse {
     /**
      * List of rows, each containing a set of bid metrics.
      */
-    bidMetricsRows?: adexchangebuyer2$BidMetricsRow[];
+    bidMetricsRows?: gapi$client$adexchangebuyer2$BidMetricsRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -712,11 +716,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListBidResponseErrorsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListBidResponseErrorsResponse {
     /**
      * List of rows, with counts of bid responses aggregated by callout status.
      */
-    calloutStatusRows?: adexchangebuyer2$CalloutStatusRow[];
+    calloutStatusRows?: gapi$client$adexchangebuyer2$CalloutStatusRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -729,12 +733,12 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListBidResponsesWithoutBidsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListBidResponsesWithoutBidsResponse {
     /**
      * List of rows, with counts of bid responses without bids aggregated by
      * status.
      */
-    bidResponseWithoutBidsStatusRows?: adexchangebuyer2$BidResponseWithoutBidsStatusRow[];
+    bidResponseWithoutBidsStatusRows?: gapi$client$adexchangebuyer2$BidResponseWithoutBidsStatusRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -747,11 +751,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListClientUserInvitationsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListClientUserInvitationsResponse {
     /**
      * The returned list of client users.
      */
-    invitations?: adexchangebuyer2$ClientUserInvitation[];
+    invitations?: gapi$client$adexchangebuyer2$ClientUserInvitation[];
 
     /**
      * A token to retrieve the next page of results.
@@ -765,7 +769,7 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListClientUsersResponse {
+  declare interface gapi$client$adexchangebuyer2$ListClientUsersResponse {
     /**
      * A token to retrieve the next page of results.
      * Pass this value in the
@@ -780,14 +784,14 @@ of auction).
     /**
      * The returned list of client users.
      */
-    users?: adexchangebuyer2$ClientUser[];
+    users?: gapi$client$adexchangebuyer2$ClientUser[];
   }
 
-  declare interface adexchangebuyer2$ListClientsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListClientsResponse {
     /**
      * The returned list of clients.
      */
-    clients?: adexchangebuyer2$Client[];
+    clients?: gapi$client$adexchangebuyer2$Client[];
 
     /**
      * A token to retrieve the next page of results.
@@ -800,12 +804,12 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListCreativeStatusBreakdownByCreativeResponse {
+  declare interface gapi$client$adexchangebuyer2$ListCreativeStatusBreakdownByCreativeResponse {
     /**
      * List of rows, with counts of bids with a given creative status aggregated
      * by creative.
      */
-    filteredBidCreativeRows?: adexchangebuyer2$FilteredBidCreativeRow[];
+    filteredBidCreativeRows?: gapi$client$adexchangebuyer2$FilteredBidCreativeRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -818,7 +822,7 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListCreativeStatusBreakdownByDetailResponse {
+  declare interface gapi$client$adexchangebuyer2$ListCreativeStatusBreakdownByDetailResponse {
     /**
      * The type of detail that the detail IDs represent.
      */
@@ -828,7 +832,7 @@ of auction).
      * List of rows, with counts of bids with a given creative status aggregated
      * by detail.
      */
-    filteredBidDetailRows?: adexchangebuyer2$FilteredBidDetailRow[];
+    filteredBidDetailRows?: gapi$client$adexchangebuyer2$FilteredBidDetailRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -841,11 +845,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListCreativesResponse {
+  declare interface gapi$client$adexchangebuyer2$ListCreativesResponse {
     /**
      * The list of creatives.
      */
-    creatives?: adexchangebuyer2$Creative[];
+    creatives?: gapi$client$adexchangebuyer2$Creative[];
 
     /**
      * A token to retrieve the next page of results.
@@ -857,11 +861,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListDealAssociationsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListDealAssociationsResponse {
     /**
      * The list of associations.
      */
-    associations?: adexchangebuyer2$CreativeDealAssociation[];
+    associations?: gapi$client$adexchangebuyer2$CreativeDealAssociation[];
 
     /**
      * A token to retrieve the next page of results.
@@ -873,11 +877,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListFilterSetsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListFilterSetsResponse {
     /**
      * The filter sets belonging to the buyer.
      */
-    filterSets?: adexchangebuyer2$FilterSet[];
+    filterSets?: gapi$client$adexchangebuyer2$FilterSet[];
 
     /**
      * A token to retrieve the next page of results.
@@ -890,12 +894,12 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListFilteredBidRequestsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListFilteredBidRequestsResponse {
     /**
      * List of rows, with counts of filtered bid requests aggregated by callout
      * status.
      */
-    calloutStatusRows?: adexchangebuyer2$CalloutStatusRow[];
+    calloutStatusRows?: gapi$client$adexchangebuyer2$CalloutStatusRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -908,12 +912,12 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListFilteredBidsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListFilteredBidsResponse {
     /**
      * List of rows, with counts of filtered bids aggregated by filtering reason
      * (i.e. creative status).
      */
-    creativeStatusRows?: adexchangebuyer2$CreativeStatusRow[];
+    creativeStatusRows?: gapi$client$adexchangebuyer2$CreativeStatusRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -926,11 +930,11 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListImpressionMetricsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListImpressionMetricsResponse {
     /**
      * List of rows, each containing a set of impression metrics.
      */
-    impressionMetricsRows?: adexchangebuyer2$ImpressionMetricsRow[];
+    impressionMetricsRows?: gapi$client$adexchangebuyer2$ImpressionMetricsRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -943,12 +947,12 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListLosingBidsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListLosingBidsResponse {
     /**
      * List of rows, with counts of losing bids aggregated by loss reason (i.e.
      * creative status).
      */
-    creativeStatusRows?: adexchangebuyer2$CreativeStatusRow[];
+    creativeStatusRows?: gapi$client$adexchangebuyer2$CreativeStatusRow[];
 
     /**
      * A token to retrieve the next page of results.
@@ -961,7 +965,7 @@ of auction).
     nextPageToken?: string;
   }
 
-  declare interface adexchangebuyer2$ListNonBillableWinningBidsResponse {
+  declare interface gapi$client$adexchangebuyer2$ListNonBillableWinningBidsResponse {
     /**
      * A token to retrieve the next page of results.
      * Pass this value in the
@@ -978,7 +982,7 @@ of auction).
     nonBillableWinningBidStatusRows?: adexchangebuyer2$NonBillableWinningBidStatusRow[];
   }
 
-  declare interface adexchangebuyer2$LocationContext {
+  declare interface gapi$client$adexchangebuyer2$LocationContext {
     /**
      * IDs representing the geo location for this context.
      * Please refer to the
@@ -988,7 +992,7 @@ of auction).
     geoCriteriaIds?: number[];
   }
 
-  declare interface adexchangebuyer2$MetricValue {
+  declare interface gapi$client$adexchangebuyer2$MetricValue {
     /**
      * The expected value of the metric.
      */
@@ -1007,7 +1011,7 @@ of auction).
     variance?: string;
   }
 
-  declare interface adexchangebuyer2$NativeContent {
+  declare interface gapi$client$adexchangebuyer2$NativeContent {
     /**
      * The name of the advertiser or sponsor, to be displayed in the ad creative.
      */
@@ -1016,7 +1020,7 @@ of auction).
     /**
      * The app icon, for app download ads.
      */
-    appIcon?: adexchangebuyer2$Image;
+    appIcon?: gapi$client$adexchangebuyer2$Image;
 
     /**
      * A long description of the ad.
@@ -1046,12 +1050,12 @@ of auction).
     /**
      * A large image.
      */
-    image?: adexchangebuyer2$Image;
+    image?: gapi$client$adexchangebuyer2$Image;
 
     /**
      * A smaller image, for the advertiser's logo.
      */
-    logo?: adexchangebuyer2$Image;
+    logo?: gapi$client$adexchangebuyer2$Image;
 
     /**
      * The price of the promoted app including currency info.
@@ -1074,11 +1078,11 @@ of auction).
     videoUrl?: string;
   }
 
-  declare interface adexchangebuyer2$NonBillableWinningBidStatusRow {
+  declare interface gapi$client$adexchangebuyer2$NonBillableWinningBidStatusRow {
     /**
      * The number of bids with the specified status.
      */
-    bidCount?: adexchangebuyer2$MetricValue;
+    bidCount?: gapi$client$adexchangebuyer2$MetricValue;
 
     /**
      * The values of all dimensions associated with metric values in this row.
@@ -1091,21 +1095,21 @@ of auction).
     status?: string;
   }
 
-  declare interface adexchangebuyer2$PlatformContext {
+  declare interface gapi$client$adexchangebuyer2$PlatformContext {
     /**
      * The platforms this restriction applies to.
      */
     platforms?: string[];
   }
 
-  declare interface adexchangebuyer2$RealtimeTimeRange {
+  declare interface gapi$client$adexchangebuyer2$RealtimeTimeRange {
     /**
      * The start timestamp of the real-time RTB metrics aggregation.
      */
     startTimestamp?: string;
   }
 
-  declare interface adexchangebuyer2$Reason {
+  declare interface gapi$client$adexchangebuyer2$Reason {
     /**
      * The number of times the creative was filtered for the status. The
      * count is aggregated across all publishers on the exchange.
@@ -1120,7 +1124,7 @@ of auction).
     status?: number;
   }
 
-  declare interface adexchangebuyer2$RelativeDateRange {
+  declare interface gapi$client$adexchangebuyer2$RelativeDateRange {
     /**
      * The number of days in the requested date range. E.g. for a range spanning
      * today, 1. For a range spanning the last 7 days, 7.
@@ -1134,28 +1138,28 @@ of auction).
     offsetDays?: number;
   }
 
-  declare interface adexchangebuyer2$RemoveDealAssociationRequest {
+  declare interface gapi$client$adexchangebuyer2$RemoveDealAssociationRequest {
     /**
      * The association between a creative and a deal that should be removed.
      */
-    association?: adexchangebuyer2$CreativeDealAssociation;
+    association?: gapi$client$adexchangebuyer2$CreativeDealAssociation;
   }
 
-  declare interface adexchangebuyer2$RowDimensions {
+  declare interface gapi$client$adexchangebuyer2$RowDimensions {
     /**
      * The time interval that this row represents.
      */
     timeInterval?: adexchangebuyer2$TimeInterval;
   }
 
-  declare interface adexchangebuyer2$SecurityContext {
+  declare interface gapi$client$adexchangebuyer2$SecurityContext {
     /**
      * The security types in this context.
      */
     securities?: string[];
   }
 
-  declare interface adexchangebuyer2$ServingContext {
+  declare interface gapi$client$adexchangebuyer2$ServingContext {
     /**
      * Matches all contexts.
      */
@@ -1164,35 +1168,35 @@ of auction).
     /**
      * Matches impressions for a particular app type.
      */
-    appType?: adexchangebuyer2$AppContext;
+    appType?: gapi$client$adexchangebuyer2$AppContext;
 
     /**
      * Matches impressions for a particular auction type.
      */
-    auctionType?: adexchangebuyer2$AuctionContext;
+    auctionType?: gapi$client$adexchangebuyer2$AuctionContext;
 
     /**
      * Matches impressions coming from users &#42;or&#42; publishers in a specific
      * location.
      */
-    location?: adexchangebuyer2$LocationContext;
+    location?: gapi$client$adexchangebuyer2$LocationContext;
 
     /**
      * Matches impressions coming from a particular platform.
      */
-    platform?: adexchangebuyer2$PlatformContext;
+    platform?: gapi$client$adexchangebuyer2$PlatformContext;
 
     /**
      * Matches impressions for a particular security type.
      */
-    securityType?: adexchangebuyer2$SecurityContext;
+    securityType?: gapi$client$adexchangebuyer2$SecurityContext;
   }
 
-  declare interface adexchangebuyer2$ServingRestriction {
+  declare interface gapi$client$adexchangebuyer2$ServingRestriction {
     /**
      * The contexts for the restriction.
      */
-    contexts?: adexchangebuyer2$ServingContext[];
+    contexts?: gapi$client$adexchangebuyer2$ServingContext[];
 
     /**
      * Any disapprovals bound to this restriction.
@@ -1201,7 +1205,7 @@ of auction).
      * creatives.list
      * method.
      */
-    disapprovalReasons?: adexchangebuyer2$Disapproval[];
+    disapprovalReasons?: gapi$client$adexchangebuyer2$Disapproval[];
 
     /**
      * The status of the creative in this context (for example, it has been
@@ -1210,7 +1214,7 @@ of auction).
     status?: string;
   }
 
-  declare interface adexchangebuyer2$TimeInterval {
+  declare interface gapi$client$adexchangebuyer2$TimeInterval {
     /**
      * The timestamp marking the end of the range (exclusive) for which data is
      * included.
@@ -1224,14 +1228,14 @@ of auction).
     startTime?: string;
   }
 
-  declare interface adexchangebuyer2$VideoContent {
+  declare interface gapi$client$adexchangebuyer2$VideoContent {
     /**
      * The URL to fetch a video ad.
      */
     videoUrl?: string;
   }
 
-  declare interface adexchangebuyer2$WatchCreativeRequest {
+  declare interface gapi$client$adexchangebuyer2$WatchCreativeRequest {
     /**
      * The Pub/Sub topic to publish notifications to.
      * This topic must already exist and must give permission to
@@ -1242,7 +1246,7 @@ of auction).
     topic?: string;
   }
 
-  declare interface adexchangebuyer2$InvitationsResource {
+  declare interface gapi$client$adexchangebuyer2$InvitationsResource {
     /**
      * Creates and sends out an email invitation to access
      * an Ad Exchange client buyer account.
@@ -1323,7 +1327,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ClientUserInvitation>;
+    }): Request<gapi$client$adexchangebuyer2$ClientUserInvitation>;
 
     /**
      * Retrieves an existing client user invitation.
@@ -1409,7 +1413,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ClientUserInvitation>;
+    }): Request<gapi$client$adexchangebuyer2$ClientUserInvitation>;
 
     /**
      * Lists all the client users invitations for a client
@@ -1511,10 +1515,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListClientUserInvitationsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListClientUserInvitationsResponse>;
   }
 
-  declare interface adexchangebuyer2$UsersResource {
+  declare interface gapi$client$adexchangebuyer2$UsersResource {
     /**
      * Retrieves an existing client user.
      */
@@ -1599,7 +1603,7 @@ of auction).
        * Numerical identifier of the user to retrieve. (required)
        */
       userId: string
-    }): Request<adexchangebuyer2$ClientUser>;
+    }): Request<gapi$client$adexchangebuyer2$ClientUser>;
 
     /**
      * Lists all the known client users for a specified
@@ -1700,7 +1704,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListClientUsersResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListClientUsersResponse>;
 
     /**
      * Updates an existing client user.
@@ -1787,10 +1791,10 @@ of auction).
        * Numerical identifier of the user to retrieve. (required)
        */
       userId: string
-    }): Request<adexchangebuyer2$ClientUser>;
+    }): Request<gapi$client$adexchangebuyer2$ClientUser>;
   }
 
-  declare interface adexchangebuyer2$ClientsResource {
+  declare interface gapi$client$adexchangebuyer2$ClientsResource {
     /**
      * Creates a new client buyer.
      */
@@ -1865,7 +1869,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Client>;
+    }): Request<gapi$client$adexchangebuyer2$Client>;
 
     /**
      * Gets a client buyer with a given client account ID.
@@ -1945,7 +1949,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Client>;
+    }): Request<gapi$client$adexchangebuyer2$Client>;
 
     /**
      * Lists all the clients for the current sponsor buyer.
@@ -2035,7 +2039,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListClientsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListClientsResponse>;
 
     /**
      * Updates an existing client buyer.
@@ -2116,12 +2120,12 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Client>;
-    invitations: adexchangebuyer2$InvitationsResource;
-    users: adexchangebuyer2$UsersResource;
+    }): Request<gapi$client$adexchangebuyer2$Client>;
+    invitations: gapi$client$adexchangebuyer2$InvitationsResource;
+    users: gapi$client$adexchangebuyer2$UsersResource;
   }
 
-  declare interface adexchangebuyer2$DealAssociationsResource {
+  declare interface gapi$client$adexchangebuyer2$DealAssociationsResource {
     /**
      * Associate an existing deal with a creative.
      */
@@ -2313,7 +2317,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListDealAssociationsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListDealAssociationsResponse>;
 
     /**
      * Remove the association between a deal and a creative.
@@ -2396,7 +2400,7 @@ of auction).
     }): Request<{}>;
   }
 
-  declare interface adexchangebuyer2$CreativesResource {
+  declare interface gapi$client$adexchangebuyer2$CreativesResource {
     /**
      * Creates a creative.
      */
@@ -2479,7 +2483,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Creative>;
+    }): Request<gapi$client$adexchangebuyer2$Creative>;
 
     /**
      * Gets a creative.
@@ -2559,7 +2563,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Creative>;
+    }): Request<gapi$client$adexchangebuyer2$Creative>;
 
     /**
      * Lists creatives.
@@ -2671,7 +2675,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListCreativesResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListCreativesResponse>;
 
     /**
      * Stops watching a creative. Will stop push notifications being sent to the
@@ -2839,7 +2843,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$Creative>;
+    }): Request<gapi$client$adexchangebuyer2$Creative>;
 
     /**
      * Watches a creative. Will result in push notifications being sent to the
@@ -2925,7 +2929,7 @@ of auction).
        */
       upload_protocol?: string
     }): Request<{}>;
-    dealAssociations: adexchangebuyer2$DealAssociationsResource;
+    dealAssociations: gapi$client$adexchangebuyer2$DealAssociationsResource;
 
     /**
      * List all creatives associated with a specific reason for which bids were
@@ -3030,10 +3034,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListCreativeStatusBreakdownByCreativeResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListCreativeStatusBreakdownByCreativeResponse>;
   }
 
-  declare interface adexchangebuyer2$BidMetricsResource {
+  declare interface gapi$client$adexchangebuyer2$BidMetricsResource {
     /**
      * Lists all metrics that are measured in terms of number of bids.
      */
@@ -3128,10 +3132,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListBidMetricsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListBidMetricsResponse>;
   }
 
-  declare interface adexchangebuyer2$BidResponseErrorsResource {
+  declare interface gapi$client$adexchangebuyer2$BidResponseErrorsResource {
     /**
      * List all errors that occurred in bid responses, with the number of bid
      * responses affected for each reason.
@@ -3227,10 +3231,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListBidResponseErrorsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListBidResponseErrorsResponse>;
   }
 
-  declare interface adexchangebuyer2$BidResponsesWithoutBidsResource {
+  declare interface gapi$client$adexchangebuyer2$BidResponsesWithoutBidsResource {
     /**
      * List all reasons for which bid responses were considered to have no
      * applicable bids, with the number of bid responses affected for each reason.
@@ -3326,10 +3330,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListBidResponsesWithoutBidsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListBidResponsesWithoutBidsResponse>;
   }
 
-  declare interface adexchangebuyer2$FilteredBidRequestsResource {
+  declare interface gapi$client$adexchangebuyer2$FilteredBidRequestsResource {
     /**
      * List all reasons that caused a bid request not to be sent for an
      * impression, with the number of bid requests not sent for each reason.
@@ -3425,10 +3429,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListFilteredBidRequestsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListFilteredBidRequestsResponse>;
   }
 
-  declare interface adexchangebuyer2$DetailsResource {
+  declare interface gapi$client$adexchangebuyer2$DetailsResource {
     /**
      * List all details associated with a specific reason for which bids were
      * filtered, with the number of bids filtered for each detail.
@@ -3532,10 +3536,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListCreativeStatusBreakdownByDetailResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListCreativeStatusBreakdownByDetailResponse>;
   }
 
-  declare interface adexchangebuyer2$FilteredBidsResource {
+  declare interface gapi$client$adexchangebuyer2$FilteredBidsResource {
     /**
      * List all reasons for which bids were filtered, with the number of bids
      * filtered for each reason.
@@ -3631,12 +3635,12 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListFilteredBidsResponse>;
-    creatives: adexchangebuyer2$CreativesResource;
-    details: adexchangebuyer2$DetailsResource;
+    }): Request<gapi$client$adexchangebuyer2$ListFilteredBidsResponse>;
+    creatives: gapi$client$adexchangebuyer2$CreativesResource;
+    details: gapi$client$adexchangebuyer2$DetailsResource;
   }
 
-  declare interface adexchangebuyer2$ImpressionMetricsResource {
+  declare interface gapi$client$adexchangebuyer2$ImpressionMetricsResource {
     /**
      * Lists all metrics that are measured in terms of number of impressions.
      */
@@ -3731,10 +3735,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListImpressionMetricsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListImpressionMetricsResponse>;
   }
 
-  declare interface adexchangebuyer2$LosingBidsResource {
+  declare interface gapi$client$adexchangebuyer2$LosingBidsResource {
     /**
      * List all reasons for which bids lost in the auction, with the number of
      * bids that lost for each reason.
@@ -3830,10 +3834,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListLosingBidsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListLosingBidsResponse>;
   }
 
-  declare interface adexchangebuyer2$NonBillableWinningBidsResource {
+  declare interface gapi$client$adexchangebuyer2$NonBillableWinningBidsResource {
     /**
      * List all reasons for which winning bids were not billable, with the number
      * of bids not billed for each reason.
@@ -3929,10 +3933,10 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListNonBillableWinningBidsResponse>;
+    }): Request<gapi$client$adexchangebuyer2$ListNonBillableWinningBidsResponse>;
   }
 
-  declare interface adexchangebuyer2$FilterSetsResource {
+  declare interface gapi$client$adexchangebuyer2$FilterSetsResource {
     /**
      * Creates the specified filter set for the account with the given account ID.
      */
@@ -4013,7 +4017,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$FilterSet>;
+    }): Request<gapi$client$adexchangebuyer2$FilterSet>;
 
     /**
      * Deletes the requested filter set from the account with the given account
@@ -4175,7 +4179,7 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$FilterSet>;
+    }): Request<gapi$client$adexchangebuyer2$FilterSet>;
 
     /**
      * Lists all filter sets for the account with the given account ID.
@@ -4266,20 +4270,20 @@ of auction).
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<adexchangebuyer2$ListFilterSetsResponse>;
-    bidMetrics: adexchangebuyer2$BidMetricsResource;
-    bidResponseErrors: adexchangebuyer2$BidResponseErrorsResource;
-    bidResponsesWithoutBids: adexchangebuyer2$BidResponsesWithoutBidsResource;
-    filteredBidRequests: adexchangebuyer2$FilteredBidRequestsResource;
-    filteredBids: adexchangebuyer2$FilteredBidsResource;
-    impressionMetrics: adexchangebuyer2$ImpressionMetricsResource;
-    losingBids: adexchangebuyer2$LosingBidsResource;
-    nonBillableWinningBids: adexchangebuyer2$NonBillableWinningBidsResource;
+    }): Request<gapi$client$adexchangebuyer2$ListFilterSetsResponse>;
+    bidMetrics: gapi$client$adexchangebuyer2$BidMetricsResource;
+    bidResponseErrors: gapi$client$adexchangebuyer2$BidResponseErrorsResource;
+    bidResponsesWithoutBids: gapi$client$adexchangebuyer2$BidResponsesWithoutBidsResource;
+    filteredBidRequests: gapi$client$adexchangebuyer2$FilteredBidRequestsResource;
+    filteredBids: gapi$client$adexchangebuyer2$FilteredBidsResource;
+    impressionMetrics: gapi$client$adexchangebuyer2$ImpressionMetricsResource;
+    losingBids: gapi$client$adexchangebuyer2$LosingBidsResource;
+    nonBillableWinningBids: gapi$client$adexchangebuyer2$NonBillableWinningBidsResource;
   }
 
-  declare interface adexchangebuyer2$AccountsResource {
-    clients: adexchangebuyer2$ClientsResource;
-    creatives: adexchangebuyer2$CreativesResource;
-    filterSets: adexchangebuyer2$FilterSetsResource;
+  declare interface gapi$client$adexchangebuyer2$AccountsResource {
+    clients: gapi$client$adexchangebuyer2$ClientsResource;
+    creatives: gapi$client$adexchangebuyer2$CreativesResource;
+    filterSets: gapi$client$adexchangebuyer2$FilterSetsResource;
   }
 }
