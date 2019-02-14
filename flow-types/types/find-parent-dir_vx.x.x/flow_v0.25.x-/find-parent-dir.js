@@ -16,5 +16,5 @@ declare module "find-parent-dir" {
     clue: string
   ): string | null;
 
-  declare module.exports: typeof findParentDir;
+  declare export default typeof findParentDir;
 }
