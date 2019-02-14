@@ -1,120 +1,3 @@
-declare var npm$namespace$WebSocket: {
-  createServer: typeof WebSocket$createServer,
-  connect: typeof WebSocket$connect,
-  createConnection: typeof WebSocket$createConnection,
-  http: typeof WebSocket$http
-};
-declare type WebSocket$VerifyClientCallbackSync = (info: {
-  origin: string,
-  secure: boolean,
-  req: http.IncomingMessage
-}) => boolean;
-
-declare type WebSocket$VerifyClientCallbackAsync = (
-  info: {
-    origin: string,
-    secure: boolean,
-    req: http.IncomingMessage
-  },
-  callback: (res: boolean) => void
-) => void;
-
-export interface WebSocket$IClientOptions {
-  protocol?: string;
-  agent?: http.Agent;
-  headers?: {
-    [key: string]: string
-  };
-  protocolVersion?: any;
-  host?: string;
-  origin?: string;
-  pfx?: any;
-  key?: any;
-  passphrase?: string;
-  cert?: any;
-  ca?: any[];
-  ciphers?: string;
-  rejectUnauthorized?: boolean;
-}
-
-export interface WebSocket$IPerMessageDeflateOptions {
-  serverNoContextTakeover?: boolean;
-  clientNoContextTakeover?: boolean;
-  serverMaxWindowBits?: number;
-  clientMaxWindowBits?: number;
-  memLevel?: number;
-  serverNoContextTakeover?: boolean;
-  clientNoContextTakeover?: boolean;
-  serverMaxWindowBits?: number;
-  clientMaxWindowBits?: number;
-  memLevel?: number;
-}
-
-export interface WebSocket$IServerOptions {
-  host?: string;
-  port?: number;
-  server?: http.WebSocket$Server | https.WebSocket$Server;
-  verifyClient?:
-    | WebSocket$VerifyClientCallbackAsync
-    | WebSocket$VerifyClientCallbackSync;
-  handleProtocols?: any;
-  path?: string;
-  noServer?: boolean;
-  disableHixie?: boolean;
-  clientTracking?: boolean;
-  perMessageDeflate?: boolean | WebSocket$IPerMessageDeflateOptions;
-}
-
-declare export class WebSocket$Server mixins events.EventEmitter {
-  options: WebSocket$IServerOptions;
-  path: string;
-  clients: WebSocket[];
-  constructor(options?: WebSocket$IServerOptions, callback?: Function): this;
-  close(cb?: (err?: any) => void): void;
-  handleUpgrade(
-    request: http.IncomingMessage,
-    socket: net.Socket,
-    upgradeHead: ArrayBuffer,
-    callback: (client: WebSocket) => void
-  ): void;
-  on(event: "error", cb: (err: Error) => void): this;
-  on(event: "headers", cb: (headers: string[]) => void): this;
-  on(event: "connection", cb: (client: WebSocket) => void): this;
-  on(event: string, listener: (...args: any[]) => void): this;
-  addListener(event: "error", cb: (err: Error) => void): this;
-  addListener(event: "headers", cb: (headers: string[]) => void): this;
-  addListener(event: "connection", cb: (client: WebSocket) => void): this;
-  addListener(event: string, listener: (...args: any[]) => void): this;
-}
-
-export interface WebSocket$UwsHttp {
-  WebSocket$createServer(
-    requestListener?: (
-      request: http.IncomingMessage,
-      response: http.ServerResponse
-    ) => void
-  ): http.WebSocket$Server;
-  getExpressApp(express: any): any;
-  getResponsePrototype(): http.ServerResponse;
-  getRequestPrototype(): http.IncomingMessage;
-}
-
-declare export var WebSocket$http: WebSocket$UwsHttp;
-
-declare export function WebSocket$createServer(
-  options?: WebSocket$IServerOptions,
-  connectionListener?: (client: WebSocket) => void
-): WebSocket$Server;
-
-declare export function WebSocket$connect(
-  address: string,
-  openListener?: Function
-): void;
-
-declare export function WebSocket$createConnection(
-  address: string,
-  openListener?: Function
-): void;
 declare module "uws" {
   import typeof * as events from "events";
 
@@ -134,7 +17,7 @@ declare module "uws" {
     protocolVersion: string;
     url: string;
     supports: any;
-    upgradeReq: WebSocket$http.IncomingMessage;
+    upgradeReq: http.IncomingMessage;
     protocol: string;
     CONNECTING: number;
     OPEN: number;
@@ -155,14 +38,11 @@ declare module "uws" {
       type: string,
       target: WebSocket
     }) => void;
-    constructor(
-      address: string,
-      options?: WebSocket$WebSocket$IClientOptions
-    ): this;
+    constructor(address: string, options?: WebSocket$IClientOptions): this;
     constructor(
       address: string,
       protocols?: string | string[],
-      options?: WebSocket$WebSocket$IClientOptions
+      options?: WebSocket$IClientOptions
     ): this;
     close(code?: number, data?: any): void;
     pause(): void;
@@ -292,5 +172,126 @@ declare module "uws" {
     addListener(event: "open", cb: () => void): this;
     addListener(event: string, listener: (...args: any[]) => void): this;
   }
+
+  declare var npm$namespace$WebSocket: {
+    createServer: typeof WebSocket$createServer,
+    connect: typeof WebSocket$connect,
+    createConnection: typeof WebSocket$createConnection,
+    http: typeof WebSocket$http,
+
+    Server: typeof WebSocket$Server
+  };
+  declare type WebSocket$VerifyClientCallbackSync = (info: {
+    origin: string,
+    secure: boolean,
+    req: http.IncomingMessage
+  }) => boolean;
+
+  declare type WebSocket$VerifyClientCallbackAsync = (
+    info: {
+      origin: string,
+      secure: boolean,
+      req: http.IncomingMessage
+    },
+    callback: (res: boolean) => void
+  ) => void;
+
+  declare export interface WebSocket$IClientOptions {
+    protocol?: string;
+    agent?: http.Agent;
+    headers?: {
+      [key: string]: string
+    };
+    protocolVersion?: any;
+    host?: string;
+    origin?: string;
+    pfx?: any;
+    key?: any;
+    passphrase?: string;
+    cert?: any;
+    ca?: any[];
+    ciphers?: string;
+    rejectUnauthorized?: boolean;
+  }
+
+  declare export interface WebSocket$IPerMessageDeflateOptions {
+    serverNoContextTakeover?: boolean;
+    clientNoContextTakeover?: boolean;
+    serverMaxWindowBits?: number;
+    clientMaxWindowBits?: number;
+    memLevel?: number;
+    serverNoContextTakeover?: boolean;
+    clientNoContextTakeover?: boolean;
+    serverMaxWindowBits?: number;
+    clientMaxWindowBits?: number;
+    memLevel?: number;
+  }
+
+  declare export interface WebSocket$IServerOptions {
+    host?: string;
+    port?: number;
+    server?: http.Server | https.Server;
+    verifyClient?:
+      | WebSocket$VerifyClientCallbackAsync
+      | WebSocket$VerifyClientCallbackSync;
+    handleProtocols?: any;
+    path?: string;
+    noServer?: boolean;
+    disableHixie?: boolean;
+    clientTracking?: boolean;
+    perMessageDeflate?: boolean | WebSocket$IPerMessageDeflateOptions;
+  }
+
+  declare export class WebSocket$Server mixins events.EventEmitter {
+    options: WebSocket$IServerOptions;
+    path: string;
+    clients: WebSocket[];
+    constructor(options?: WebSocket$IServerOptions, callback?: Function): this;
+    close(cb?: (err?: any) => void): void;
+    handleUpgrade(
+      request: http.IncomingMessage,
+      socket: net.Socket,
+      upgradeHead: ArrayBuffer,
+      callback: (client: WebSocket) => void
+    ): void;
+    on(event: "error", cb: (err: Error) => void): this;
+    on(event: "headers", cb: (headers: string[]) => void): this;
+    on(event: "connection", cb: (client: WebSocket) => void): this;
+    on(event: string, listener: (...args: any[]) => void): this;
+    addListener(event: "error", cb: (err: Error) => void): this;
+    addListener(event: "headers", cb: (headers: string[]) => void): this;
+    addListener(event: "connection", cb: (client: WebSocket) => void): this;
+    addListener(event: string, listener: (...args: any[]) => void): this;
+  }
+
+  declare export interface WebSocket$UwsHttp {
+    createServer(
+      requestListener?: (
+        request: http.IncomingMessage,
+        response: http.ServerResponse
+      ) => void
+    ): http.Server;
+    getExpressApp(express: any): any;
+    getResponsePrototype(): http.ServerResponse;
+    getRequestPrototype(): http.IncomingMessage;
+  }
+
+  declare export var WebSocket$http: WebSocket$UwsHttp;
+
+  declare export function WebSocket$createServer(
+    options?: WebSocket$IServerOptions,
+    connectionListener?: (client: WebSocket) => void
+  ): WebSocket$Server;
+
+  declare export function WebSocket$connect(
+    address: string,
+    openListener?: Function
+  ): void;
+
+  declare export function WebSocket$createConnection(
+    address: string,
+    openListener?: Function
+  ): void;
+
   declare export default typeof WebSocket;
 }
