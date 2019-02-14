@@ -15,13 +15,13 @@ declare module "react-collapse" {
       content: string
     },
     style?: React.CSSProperties,
-    onRender?: (currentfromto: {
+    onRender?: (x: {
       current: number,
       from: number,
       to: number
     }) => void,
     onRest?: () => void,
-    onMeasure?: (widthheight: {
+    onMeasure?: (x: {
       width: number,
       height: number
     }) => void
