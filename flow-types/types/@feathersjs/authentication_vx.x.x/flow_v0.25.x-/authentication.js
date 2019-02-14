@@ -13,7 +13,7 @@ declare module "@feathersjs/authentication" {
     typeof self;
   declare export default typeof feathersAuthentication;
 
-  declare export var hooks: AuthHooks$AuthHooks$Hooks;
+  declare export var hooks: AuthHooks$Hooks;
   declare export interface FeathersAuthenticationOptions {
     path?: string;
     header?: string;
@@ -88,6 +88,9 @@ declare module "@feathersjs/authentication" {
     options: FeathersAuthenticationOptions
   ): (app?: Application) => void;
 
+  declare var npm$namespace$service: {
+    Service: typeof service$Service
+  };
   declare class service$Service<T = any> {
     constructor(app: Application): this;
     create(
@@ -113,7 +116,7 @@ declare module "@feathersjs/authentication" {
   }
 
   declare interface AuthHooks$Hooks {
-    express$authenticate(strategies: string[] | string): Hook;
+    authenticate(strategies: string[] | string): Hook;
 
     /**
      * The `verifyToken` hook will attempt to verify a token.
