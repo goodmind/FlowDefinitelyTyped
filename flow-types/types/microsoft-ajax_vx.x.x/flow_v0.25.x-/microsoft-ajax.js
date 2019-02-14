@@ -519,7 +519,7 @@ declare module "microsoft-ajax" {
     events?: any,
     references?: any,
     element?: HTMLElement
-  ): Sys$Sys$Component;
+  ): Sys$Component;
 
   /**
    * Returns the specified Component object. This member is static and can be invoked without creating an instance of the class.
@@ -528,10 +528,7 @@ declare module "microsoft-ajax" {
    * @param parent (Optional) The component or element that contains the component to find.
    * @return A Component object that contains the component requested by ID, if found; otherwise, null.
    */
-  declare function $find(
-    id: string,
-    parent?: Sys$Sys$Component
-  ): Sys$Sys$Component;
+  declare function $find(id: string, parent?: Sys$Component): Sys$Component;
 
   /**
    * Returns the specified Component object. This member is static and can be invoked without creating an instance of the class.
@@ -540,12 +537,12 @@ declare module "microsoft-ajax" {
    * @param parent (Optional) The component or element that contains the component to find.
    * @return A Component object that contains the component requested by ID, if found; otherwise, null.
    */
-  declare function $find(id: string, parent?: HTMLElement): Sys$Sys$Component;
+  declare function $find(id: string, parent?: HTMLElement): Sys$Component;
 
   declare function $addHandler(
     element: HTMLElement,
     eventName: string,
-    handler: (e: Sys$UI.UI$DomEvent) => void,
+    handler: (e: Sys$UIDomEvent) => void,
     autoRemove?: boolean
   ): void;
 
@@ -560,7 +557,7 @@ declare module "microsoft-ajax" {
   declare function $addHandlers(
     element: HTMLElement,
     events: {
-      [event: string]: (e: Sys$UI.UI$DomEvent) => void
+      [event: string]: (e: Sys$UIDomEvent) => void
     },
     handlerOwner?: any,
     autoRemove?: boolean
@@ -593,12 +590,32 @@ declare module "microsoft-ajax" {
   declare function $removeHandler(
     element: HTMLElement,
     eventName: string,
-    handler: (e: Sys$UI.UI$DomEvent) => void
+    handler: (e: Sys$UIDomEvent) => void
   ): void;
 
   declare var npm$namespace$Sys: {
     Browser: typeof Sys$Browser,
-    Application: typeof Sys$Application
+    Application: typeof Sys$Application,
+    NotifyCollectionChangedAction: typeof Sys$NotifyCollectionChangedAction,
+    Component: typeof Sys$Component,
+    CultureInfo: typeof Sys$CultureInfo,
+    Debug: typeof Sys$Debug,
+    CollectionChange: typeof Sys$CollectionChange,
+    Observer: typeof Sys$Observer,
+    Res: typeof Sys$Res,
+    StringBuilder: typeof Sys$StringBuilder,
+    ApplicationLoadEventArgs: typeof Sys$ApplicationLoadEventArgs,
+    EventArgs: typeof Sys$EventArgs,
+    CommandEventArgs: typeof Sys$CommandEventArgs,
+    CancelEventArgs: typeof Sys$CancelEventArgs,
+    HistoryEventArgs: typeof Sys$HistoryEventArgs,
+    NotifyCollectionChangedEventArgs: typeof Sys$NotifyCollectionChangedEventArgs,
+    PropertyChangedEventArgs: typeof Sys$PropertyChangedEventArgs,
+    Net: typeof npm$namespace$Sys$Net,
+    Serialization: typeof npm$namespace$Sys$Serialization,
+    Services: typeof npm$namespace$Sys$Services,
+    UI: typeof npm$namespace$Sys$UI,
+    WebForms: typeof npm$namespace$Sys$WebForms
   };
 
   /**
@@ -720,18 +737,18 @@ declare module "microsoft-ajax" {
      * Returns the specified Component object. This member is static and can be invoked without creating an instance of the class.
      * @return A Component object that contains the component requested by ID, if found; otherwise, null.
      */
-    findComponent(id: string, parent?: Sys$Sys$Component): Sys$Sys$Component,
+    findComponent(id: string, parent?: Sys$Component): Sys$Component,
 
     /**
      * Returns the specified Component object. This member is static and can be invoked without creating an instance of the class.
      * @return A Component object that contains the component requested by ID, if found; otherwise, null.
      */
-    findComponent(id: string, parent?: HTMLElement): Sys$Sys$Component,
+    findComponent(id: string, parent?: HTMLElement): Sys$Component,
 
     /**
      * Returns an array of all components that have been registered with the application by using the addComponent method. This member is static and can be invoked without creating an instance of the class.
      */
-    getComponents(): Sys$Sys$Component[],
+    getComponents(): Sys$Component[],
 
     /**
      * This function supports the client-script infrastructure and is not intended to be used directly from your code.
@@ -793,8 +810,8 @@ declare module "microsoft-ajax" {
      * Gets a value that indicates whether the application is in the process of disposing its resources. This member is static and can be invoked without creating an instance of the class.
      */
     get_isDisposing(): boolean
-  } & Sys$Component &
-    Sys$IContainer;
+  } & Component &
+    IContainer;
 
   declare var Sys$Application: Sys$Application;
 
@@ -824,7 +841,7 @@ declare module "microsoft-ajax" {
     version: number;
   }
 
-  declare export function Sys$Browser(): Sys$Sys$Browser;
+  declare export function Sys$Browser(): Sys$Browser;
 
   /**
    * Provides the base class for the Control and Behavior classes, and for any other object whose lifetime should be managed by the ASP.NET AJAX client library.
@@ -876,7 +893,7 @@ declare module "microsoft-ajax" {
       events?: any,
       references?: any,
       element?: HTMLElement
-    ): Sys$Sys$Component;
+    ): Sys$Component;
 
     /**
      * Called by the create method to indicate that the process of setting properties of a component instance has finished.
@@ -1183,7 +1200,7 @@ declare module "microsoft-ajax" {
      */
     static raiseCollectionChanged(
       target: any[],
-      changes: Sys$Sys$CollectionChange
+      changes: Sys$CollectionChange
     ): void;
 
     /**
@@ -1195,7 +1212,7 @@ declare module "microsoft-ajax" {
     static raiseEvent(
       target: any,
       eventName: string,
-      eventArgs: Sys$Sys$EventArgs
+      eventArgs: Sys$EventArgs
     ): void;
 
     /**
@@ -1252,10 +1269,10 @@ declare module "microsoft-ajax" {
   }
 
   /**
- * Provides static, culture-neutral exception messages that are used by the Microsoft Ajax Library framework.
- * @see {@link http://msdn.microsoft.com/en-us/library/bb397705(v=vs.100).aspx}
-This type supports the .NET Framework infrastructure and is not intended to be used directly from your code.
- */
+   * Provides static, culture-neutral exception messages that are used by the Microsoft Ajax Library framework.
+   * @see {@link http://msdn.microsoft.com/en-us/library/bb397705(v=vs.100).aspx}
+   * This type supports the .NET Framework infrastructure and is not intended to be used directly from your code.
+   */
   declare class Sys$Res {
     /**
      * @return "Actual value was {0}."
@@ -1505,25 +1522,12 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Describes how a collection has changed.
    * @see {@link http://msdn.microsoft.com/en-us/library/dd393774(v=vs.100).aspx}
    */
-  declare class Sys$NotifyCollectionChangedAction {
-    constructor(...args: empty): mixed;
-    static +add: Class<Sys$NotifyCollectionChangedAction__add> &
-      Sys$NotifyCollectionChangedAction__add &
-      0; // 0
-    static +remove: Class<Sys$NotifyCollectionChangedAction__remove> &
-      Sys$NotifyCollectionChangedAction__remove &
-      1; // 1
-    static +reset: Class<Sys$NotifyCollectionChangedAction__reset> &
-      Sys$NotifyCollectionChangedAction__reset &
-      2; // 2
-  }
 
-  declare class Sys$NotifyCollectionChangedAction__add
-    mixins Sys$NotifyCollectionChangedAction {}
-  declare class Sys$NotifyCollectionChangedAction__remove
-    mixins Sys$NotifyCollectionChangedAction {}
-  declare class Sys$NotifyCollectionChangedAction__reset
-    mixins Sys$NotifyCollectionChangedAction {}
+  declare var Sys$NotifyCollectionChangedAction: {|
+    +add: 0, // 0
+    +remove: 1, // 1
+    +reset: 2 // 2
+  |};
 
   /**
    * Provides a common interface for all components that can contain other components.
@@ -1654,7 +1658,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Event handlers can use the cancel property to cancel the operation in progress. The semantics of canceling an event depend on the event source.
    * @see {@link http://msdn.microsoft.com/en-us/library/dd393715(v=vs.100).aspx
    */
-  declare class Sys$CommandEventArgs mixins Sys$EventArgs {
+  declare class Sys$CommandEventArgs mixins EventArgs {
     constructor(
       commandName: string,
       commandArgument: any,
@@ -1681,7 +1685,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Provides the base class for events that can be canceled.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb311009(v=vs.100).aspx}
    */
-  declare class Sys$CancelEventArgs mixins Sys$EventArgs {
+  declare class Sys$CancelEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the CancelEventArgs class.
      */
@@ -1698,7 +1702,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * This class is used by the Sys.Application Class to hold event arguments for the navigate event.
    * @see {@link http://msdn.microsoft.com/en-us/library/cc488008(v=vs.100).aspx}
    */
-  declare class Sys$HistoryEventArgs mixins Sys$EventArgs {
+  declare class Sys$HistoryEventArgs mixins EventArgs {
     /**
      * For a live code example that demonstrates this event in action, and for a view of how this event is used in code, see Managing Browser History Using Client Script.
      * @param state Object. A collection of key/value pairs that represent the state data. This data will be added to the main state to form the global state of the new history point.
@@ -1717,7 +1721,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Describes how the collection was changed.
    * @see {@link http://msdn.microsoft.com/en-us/library/dd393665(v=vs.100).aspx}
    */
-  declare class Sys$NotifyCollectionChangedEventArgs mixins Sys$EventArgs {
+  declare class Sys$NotifyCollectionChangedEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the CancelEventArgs class.
      * @param changes A CollectionChange object that contains an array of changes that were performed on the collection since the last event.
@@ -1735,7 +1739,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Used by the propertyChanged event to indicate which property has changed.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310957(v=vs.100).aspx}
    */
-  declare class Sys$PropertyChangedEventArgs mixins Sys$EventArgs {
+  declare class Sys$PropertyChangedEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the PropertyChangedEventArgs class.
      * @param propertyName The name of the property that changed.
@@ -1750,8 +1754,15 @@ This type supports the .NET Framework infrastructure and is not intended to be u
     propertyName(): string;
   }
 
-  declare var npm$namespace$Net: {
-    WebRequestManager: typeof Net$WebRequestManager
+  declare var npm$namespace$Sys$Net: {
+    WebRequestManager: typeof Sys$Net$WebRequestManager,
+
+    WebServiceProxy: typeof Sys$Net$WebServiceProxy,
+    WebServiceError: typeof Sys$Net$WebServiceError,
+    NetworkRequestEventArgs: typeof Sys$Net$NetworkRequestEventArgs,
+    WebRequest: typeof Sys$Net$WebRequest,
+    WebRequestExecutor: typeof Sys$Net$WebRequestExecutor,
+    IWebRequestManager: typeof Sys$Net$IWebRequestManager
   };
 
   /**
@@ -1759,7 +1770,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Enables your application to call Web services asynchronously by using ECMAScript (JavaScript).
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310823(v=vs.100).aspx}
    */
-  declare class Net$WebServiceProxy {
+  declare class Sys$Net$WebServiceProxy {
     static invoke(
       servicePath: string,
       methodName: string,
@@ -1774,7 +1785,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
     ): Net$WebRequest;
   }
 
-  declare class Net$WebServiceError {
+  declare class Sys$Net$WebServiceError {
     get_errorObject(): any;
     get_exceptionType(): any;
     get_message(): string;
@@ -1789,7 +1800,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * The callback function is called before the Web request is routed to the current instance of the WebRequestExecutor class.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397488(v=vs.100).aspx}
    */
-  declare class Net$NetworkRequestEventArgs {
+  declare class Sys$Net$NetworkRequestEventArgs {
     /**
      * Initializes a new instance of the Sys.Net.NetworkRequestEventArgs. class.
      * @param value The current WebRequest instance.
@@ -1810,7 +1821,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
    * Provides the script API to make a Web request.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310979(v=vs.100).aspx}
    */
-  declare class Net$WebRequest {
+  declare class Sys$Net$WebRequest {
     /**
      * Initializes a new instance of the Sys.Net.WebRequest class.
      */
@@ -1836,7 +1847,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * @see {@link http://msdn.microsoft.com/en-us/library/bb310841(v=vs.100).aspx}
      */
     add_completed(
-      handler: (reference: any, eventArgs: Sys$Sys$EventArgs) => void
+      handler: (reference: any, eventArgs: Sys$EventArgs) => void
     ): void;
 
     /**
@@ -1844,7 +1855,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * @see {@link http://msdn.microsoft.com/en-us/library/bb397454(v=vs.100).aspx}
      */
     remove_completed(
-      handler: (reference: any, eventArgs: Sys$Sys$EventArgs) => void
+      handler: (reference: any, eventArgs: Sys$EventArgs) => void
     ): void;
 
     /**
@@ -1862,14 +1873,14 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * Raises the completed event for the associated Sys.Net.WebRequest instance.
      * @param eventArgs The value to pass to the Web request completed event handler.
      */
-    completed(eventArgs: Sys$Sys$EventArgs): void;
+    completed(eventArgs: Sys$EventArgs): void;
   }
 
   /**
    * Provides the abstract base class from which network executors derive.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397434(v=vs.100).aspx}
    */
-  declare class Net$WebRequestExecutor {
+  declare class Sys$Net$WebRequestExecutor {
     /**
      * Initializes a Sys.Net.WebRequestExecutor instance when implemented in a derived class.
      */
@@ -1971,14 +1982,14 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * Gets the WebRequest object associated with the executor.
      * @return The WebRequest object associated with the current executor instance.
      */
-    get_webRequest(): Sys$Net.Net$WebRequest;
+    get_webRequest(): Sys$NetWebRequest;
   }
 
   /**
    * Manages the flow of the Web requests issued by the Sys.Net.WebRequest object to the associated executor object.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397435(v=vs.100).aspx}
    */
-  declare class Net$IWebRequestManager {
+  declare class Sys$Net$IWebRequestManager {
     /**
      * Initializes a new instance of the Sys.Net.WebRequestManager class when implemented in a derived class.
      */
@@ -1990,7 +2001,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      */
     add_completedRequest(
       handler: (
-        sender: Net$WebRequestExecutor,
+        sender: Sys$Net$WebRequestExecutor,
         eventArgs: Sys$EventArgs
       ) => void
     ): void;
@@ -2001,8 +2012,8 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      */
     add_invokingRequest(
       handler: (
-        sender: Net$WebRequestExecutor,
-        networkRequestEventArgs: Net$NetworkRequestEventArgs
+        sender: Sys$Net$WebRequestExecutor,
+        networkRequestEventArgs: Sys$Net$NetworkRequestEventArgs
       ) => void
     ): void;
 
@@ -2011,7 +2022,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * This member supports the client-script infrastructure and is not intended to be used directly from your code.
      * @param WebRequest An instance of the Sys.Net.WebRequest class.
      */
-    executeRequest(Net$WebRequest: Sys$Net.Net$WebRequest): void;
+    executeRequest(WebRequest: Sys$NetWebRequest): void;
 
     /**
      * Removes the event handler set by the add_completedRequest method.
@@ -2020,7 +2031,7 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      */
     remove_completedRequest(
       handler: (
-        sender: Net$WebRequestExecutor,
+        sender: Sys$Net$WebRequestExecutor,
         eventArgs: Sys$EventArgs
       ) => void
     ): void;
@@ -2032,8 +2043,8 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      */
     remove_invokingRequest(
       handler: (
-        sender: Net$WebRequestExecutor,
-        networkRequestEventArgs: Net$NetworkRequestEventArgs
+        sender: Sys$Net$WebRequestExecutor,
+        networkRequestEventArgs: Sys$Net$NetworkRequestEventArgs
       ) => void
     ): void;
 
@@ -2041,13 +2052,13 @@ This type supports the .NET Framework infrastructure and is not intended to be u
      * Gets or sets the default network executor type that is used to make network requests.
      * @return The object that represents the default Web request executor.
      */
-    get_defaultExecutorType(): Sys$Net.Net$WebRequestExecutor;
+    get_defaultExecutorType(): Sys$NetWebRequestExecutor;
 
     /**
      * Gets or sets the default network executor type that is used to make network requests.
      * @param value A reference to an implementation of the WebRequestExecutor class.
      */
-    set_defaultExecutorType(value: Sys$Net.Net$WebRequestExecutor): void;
+    set_defaultExecutorType(value: Sys$NetWebRequestExecutor): void;
 
     /**
      * Gets or sets the time-out for the default network executor.
@@ -2063,26 +2074,30 @@ This type supports the .NET Framework infrastructure and is not intended to be u
     set_defaultTimeout(value: number): void;
   }
 
-  declare export var Net$WebRequestManager: Net$IWebRequestManager;
+  declare export var Sys$Net$WebRequestManager: Sys$Net$IWebRequestManager;
+
+  declare var npm$namespace$Sys$Serialization: {
+    JavaScriptSerializer: typeof Sys$Serialization$JavaScriptSerializer
+  };
 
   /**
    * Serializes JavaScript types into JSON-formatted data and deserializes JSON-formatted data into JavaScript types
    * The JavaScriptSerializer class contains only static methods.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310857(v=vs.100).aspx}
    */
-  declare class Serialization$JavaScriptSerializer {
+  declare class Sys$Serialization$JavaScriptSerializer {
     /**
      * Initializes a new instance of the Sys.Serialization.JavaScriptSerializer class.
      */
     constructor(): this;
 
     /**
- * Converts an ECMAScript (JavaScript) object graph into a JSON string. This member is static and can be invoked without creating an instance of the class.
- * @static
- * @param value The JavaScript object graph to serialize.
- * @exception Sys.ArgumentException
-value contains a value that cannot be serialized.
- */
+     * Converts an ECMAScript (JavaScript) object graph into a JSON string. This member is static and can be invoked without creating an instance of the class.
+     * @static
+     * @param value The JavaScript object graph to serialize.
+     * @exception Sys.ArgumentException
+     * value contains a value that cannot be serialized.
+     */
     static serialize(value: any): string;
 
     /**
@@ -2093,6 +2108,13 @@ value contains a value that cannot be serialized.
     static deserialize(value: string): any;
   }
 
+  declare var npm$namespace$Sys$Services: {
+    AuthenticationService: typeof Sys$Services$AuthenticationService,
+    ProfileGroup: typeof Sys$Services$ProfileGroup,
+    RoleService: typeof Sys$Services$RoleService,
+    ProfileService: typeof Sys$Services$ProfileService
+  };
+
   /**
    * Provides the client proxy class for the authentication service.
    * The AuthenticationService class is a singleton; it has only one instance with a global point of access.
@@ -2101,7 +2123,7 @@ value contains a value that cannot be serialized.
    * It calls methods of the authentication service through the same infrastructure used to call any other Web service method.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310861(v=vs.100).aspx}
    */
-  declare class Services$AuthenticationService {
+  declare class Sys$Services$AuthenticationService {
     /**
      * Initializes a new instance of the Sys.Services.AuthenticationService class.
      */
@@ -2233,7 +2255,7 @@ value contains a value that cannot be serialized.
    * Profile group properties are accessed as subproperties of the related group, as shown in the following ECMAScript (JavaScript) example:
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310801(v=vs.100).aspx}
    */
-  declare class Services$ProfileGroup {
+  declare class Sys$Services$ProfileGroup {
     constructor(): this;
 
     /**
@@ -2247,14 +2269,14 @@ value contains a value that cannot be serialized.
    * Provides the client proxy class for the role service.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb513880(v=vs.100).aspx}
    */
-  declare class Services$RoleService {}
+  declare class Sys$Services$RoleService {}
 
   /**
    * Provides the client proxy class for the profile service.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb383800(v=vs.100).aspx}
    */
-  declare class Services$ProfileService {
-    new(): Services$ProfileService;
+  declare class Sys$Services$ProfileService {
+    new(): Sys$Services$ProfileService;
 
     /**
      * Specifies the path of the default profile service.
@@ -2364,20 +2386,31 @@ value contains a value that cannot be serialized.
     static get_timeout(): number;
   }
 
-  declare var npm$namespace$UI: {
-    DomElement: typeof UI$DomElement
+  declare var npm$namespace$Sys$UI: {
+    DomElement: typeof Sys$UI$DomElement,
+    Key: typeof Sys$UI$Key,
+    MouseButton: typeof Sys$UI$MouseButton,
+    VisibilityMode: typeof Sys$UI$VisibilityMode,
+    Behavior: typeof Sys$UI$Behavior,
+    Bounds: typeof Sys$UI$Bounds,
+    Control: typeof Sys$UI$Control,
+    DomEvent: typeof Sys$UI$DomEvent,
+    Point: typeof Sys$UI$Point
   };
 
   /**
    * Provides a base class for all ASP.NET AJAX client behaviors.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb311020(v=vs.100).aspx}
    */
-  declare class UI$Behavior mixins Sys$Sys$Component {
+  declare class Sys$UI$Behavior mixins Sys$Component {
     /**
      * Gets a Sys.UI.Behavior instance with the specified name property from the specified HTML Document Object Model (DOM) element. This member a static member and can be invoked without creating an instance of the class.
      * @return The specified Behavior object, if found; otherwise, null.
      */
-    static getBehaviorByName(element: HTMLElement, name: string): UI$Behavior;
+    static getBehaviorByName(
+      element: HTMLElement,
+      name: string
+    ): Sys$UI$Behavior;
 
     /**
      * Gets an array of Sys.UI.Behavior objects that are of the specified type from the specified HTML Document Object Model (DOM) element. This method is static and can be invoked without creating an instance of the class.
@@ -2385,15 +2418,15 @@ value contains a value that cannot be serialized.
      */
     static getBehaviorsByType(
       element: HTMLElement,
-      type: Sys$UI.UI$Behavior
-    ): UI$Behavior[];
+      type: Sys$UIBehavior
+    ): Sys$UI$Behavior[];
 
     /**
      * Gets the Sys.UI.Behavior objects that are associated with the specified HTML Document Object Model (DOM) element. This member is static and can be invoked without creating an instance of the class.
      * @param element The HTMLElement object to search.
      * @return An array of references to Behavior objects, or null if no references exist.
      */
-    static getBehaviors(element: UI$DomElement): UI$Behavior[];
+    static getBehaviors(element: UI$DomElement): Sys$UI$Behavior[];
 
     /**
      * Removes the current Behavior object from the application.
@@ -2430,7 +2463,7 @@ value contains a value that cannot be serialized.
    * Creates an object that contains a set of integer coordinates representing position, width, and height.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397698(v=vs.100).aspx}
    */
-  declare class UI$Bounds {
+  declare class Sys$UI$Bounds {
     /**
      * Initializes a new instance of the Sys.UI.Bounds class.
      */
@@ -2464,7 +2497,7 @@ value contains a value that cannot be serialized.
   /**
    * Provides the base class for all all ASP.NET AJAX client controls.
    */
-  declare class UI$Control mixins Sys$Sys$Component {
+  declare class Sys$UI$Control mixins Sys$Component {
     /**
      * When called from a derived class, initializes a new instance of that class.
      * The Control constructor is a complete constructor function. However, because the Control class is an abstract base class, the constructor should be called only from derived classes.
@@ -2552,7 +2585,7 @@ value contains a value that cannot be serialized.
    * Defines static methods and properties that provide helper APIs for manipulating and inspecting DOM elements.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb383788(v=vs.100).aspx}
    */
-  declare interface UI$DomElement {
+  declare interface Sys$UI$DomElement {
     /**
      * Adds a CSS class to a DOM element if the class is not already part of the DOM element. This member is static and can be invoked without creating an instance of the class.
      * If the element does not support a CSS class, no change is made to the element.
@@ -2597,8 +2630,8 @@ value contains a value that cannot be serialized.
      * @param element The target element.             *
      * @return An object of the JavaScript type Object that contains the x-coordinate and y-coordinate of the element in pixels.
      */
-    getLocation(element: HTMLElement): Sys$UI.UI$Point;
-    getVisibilityMode(element: HTMLElement): Sys$UI.UI$VisibilityMode;
+    getLocation(element: HTMLElement): Sys$UIPoint;
+    getVisibilityMode(element: HTMLElement): Sys$UIVisibilityMode;
 
     /**
      * Gets a value that indicates whether a DOM element is currently visible on the Web page. This member is static and can be invoked without creating an instance of the class.
@@ -2661,10 +2694,7 @@ value contains a value that cannot be serialized.
      * @param element The target DOM element.
      * @param value A Sys.UI.VisibilityMode enumeration value.
      */
-    setVisibilityMode(
-      element: HTMLElement,
-      value: Sys$UI.UI$VisibilityMode
-    ): void;
+    setVisibilityMode(element: HTMLElement, value: Sys$UIVisibilityMode): void;
 
     /**
      * Sets a DOM element to be visible or hidden. This member is static and can be invoked without creating an instance of the class.
@@ -2687,13 +2717,13 @@ value contains a value that cannot be serialized.
     toggleCssClass(element: HTMLElement, className: string): void;
   }
 
-  declare var UI$DomElement: UI$DomElement;
+  declare var Sys$UI$DomElement: Sys$UI$DomElement;
 
   /**
    * Provides cross-browser access to DOM event properties and helper APIs that are used to attach handlers to DOM element events.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310935(v=vs.100).aspx}
    */
-  declare class UI$DomEvent {
+  declare class Sys$UI$DomEvent {
     /**
      * Initializes a new instance of the Sys.UI.DomEvent class and associates it with the specified HTMLElement object.
      * @param domElement The HTMLElement object to associate with the event.
@@ -2712,7 +2742,7 @@ value contains a value that cannot be serialized.
     static addHandler(
       element: HTMLElement,
       eventName: string,
-      handler: (e: UI$DomEvent) => void,
+      handler: (e: Sys$UI$DomEvent) => void,
       autoRemove?: boolean
     ): void;
 
@@ -2733,7 +2763,7 @@ value contains a value that cannot be serialized.
     static addHandlers(
       element: HTMLElement,
       events: {
-        [event: string]: (e: UI$DomEvent) => void
+        [event: string]: (e: Sys$UI$DomEvent) => void
       },
       handlerOwner?: any,
       autoRemove?: boolean
@@ -2756,7 +2786,7 @@ value contains a value that cannot be serialized.
     static removeHandler(
       element: HTMLElement,
       eventName: string,
-      handler: (e: UI$DomEvent) => void
+      handler: (e: Sys$UI$DomEvent) => void
     ): void;
 
     /**
@@ -2786,7 +2816,7 @@ value contains a value that cannot be serialized.
      * Use the button field to determine which mouse button was pressed when the related event occurred.
      * @return A MouseButton value
      */
-    button: Sys$UI.UI$MouseButton;
+    button: Sys$UIMouseButton;
 
     /**
      * Gets the character code of the key that raised the associated keyPress event.
@@ -2868,64 +2898,39 @@ value contains a value that cannot be serialized.
    * Describes key codes.
    * The values correspond to values in the Document Object Model (DOM).
    */
-  declare class UI$Key {
-    constructor(...args: empty): mixed;
-    static +backspace: Class<UI$Key__backspace> & UI$Key__backspace & 0; // 0
-    static +tab: Class<UI$Key__tab> & UI$Key__tab & 1; // 1
-    static +enter: Class<UI$Key__enter> & UI$Key__enter & 2; // 2
-    static +esc: Class<UI$Key__esc> & UI$Key__esc & 3; // 3
-    static +space: Class<UI$Key__space> & UI$Key__space & 4; // 4
-    static +pageUp: Class<UI$Key__pageUp> & UI$Key__pageUp & 5; // 5
-    static +pageDown: Class<UI$Key__pageDown> & UI$Key__pageDown & 6; // 6
-    static +end: Class<UI$Key__end> & UI$Key__end & 7; // 7
-    static +home: Class<UI$Key__home> & UI$Key__home & 8; // 8
-    static +left: Class<UI$Key__left> & UI$Key__left & 9; // 9
-    static +up: Class<UI$Key__up> & UI$Key__up & 10; // 10
-    static +right: Class<UI$Key__right> & UI$Key__right & 11; // 11
-    static +down: Class<UI$Key__down> & UI$Key__down & 12; // 12
-    static +del: Class<UI$Key__del> & UI$Key__del & 13; // 13
-  }
 
-  declare class UI$Key__backspace mixins UI$Key {}
-  declare class UI$Key__tab mixins UI$Key {}
-  declare class UI$Key__enter mixins UI$Key {}
-  declare class UI$Key__esc mixins UI$Key {}
-  declare class UI$Key__space mixins UI$Key {}
-  declare class UI$Key__pageUp mixins UI$Key {}
-  declare class UI$Key__pageDown mixins UI$Key {}
-  declare class UI$Key__end mixins UI$Key {}
-  declare class UI$Key__home mixins UI$Key {}
-  declare class UI$Key__left mixins UI$Key {}
-  declare class UI$Key__up mixins UI$Key {}
-  declare class UI$Key__right mixins UI$Key {}
-  declare class UI$Key__down mixins UI$Key {}
-  declare class UI$Key__del mixins UI$Key {}
+  declare var Sys$UI$Key: {|
+    +backspace: 0, // 0
+    +tab: 1, // 1
+    +enter: 2, // 2
+    +esc: 3, // 3
+    +space: 4, // 4
+    +pageUp: 5, // 5
+    +pageDown: 6, // 6
+    +end: 7, // 7
+    +home: 8, // 8
+    +left: 9, // 9
+    +up: 10, // 10
+    +right: 11, // 11
+    +down: 12, // 12
+    +del: 13 // 13
+  |};
 
   /**
    * Describes mouse button locations.
    */
-  declare class UI$MouseButton {
-    constructor(...args: empty): mixed;
-    static +leftButton: Class<UI$MouseButton__leftButton> &
-      UI$MouseButton__leftButton &
-      0; // 0
-    static +middleButton: Class<UI$MouseButton__middleButton> &
-      UI$MouseButton__middleButton &
-      1; // 1
-    static +rightButton: Class<UI$MouseButton__rightButton> &
-      UI$MouseButton__rightButton &
-      2; // 2
-  }
 
-  declare class UI$MouseButton__leftButton mixins UI$MouseButton {}
-  declare class UI$MouseButton__middleButton mixins UI$MouseButton {}
-  declare class UI$MouseButton__rightButton mixins UI$MouseButton {}
+  declare var Sys$UI$MouseButton: {|
+    +leftButton: 0, // 0
+    +middleButton: 1, // 1
+    +rightButton: 2 // 2
+  |};
 
   /**
    * Creates an object that contains a set of integer coordinates that represent a position. The getLocation method of the HTMLElement class returns a Point object.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb383992(v=vs.100).aspx}        *
    */
-  declare class UI$Point {
+  declare class Sys$UI$Point {
     /**
      * Creates an object that contains a set of integer coordinates that represent a position.
      * @param x The number of pixels between the location and the left edge of the parent frame.
@@ -2950,22 +2955,29 @@ value contains a value that cannot be serialized.
    * Describes the layout of a DOM element in the page when the element's visible property is set to false.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397498(v=vs.100).aspx}
    */
-  declare class UI$VisibilityMode {
-    constructor(...args: empty): mixed;
-    static +hide: Class<UI$VisibilityMode__hide> & UI$VisibilityMode__hide & 0; // 0
-    static +collapse: Class<UI$VisibilityMode__collapse> &
-      UI$VisibilityMode__collapse &
-      1; // 1
-  }
 
-  declare class UI$VisibilityMode__hide mixins UI$VisibilityMode {}
-  declare class UI$VisibilityMode__collapse mixins UI$VisibilityMode {}
+  declare var Sys$UI$VisibilityMode: {|
+    +hide: 0, // 0
+    +collapse: 1 // 1
+  |};
+
+  declare var npm$namespace$Sys$WebForms: {
+    BeginRequestEventArgs: typeof Sys$WebForms$BeginRequestEventArgs,
+    EndRequestEventArgs: typeof Sys$WebForms$EndRequestEventArgs,
+    InitializeRequestEventArgs: typeof Sys$WebForms$InitializeRequestEventArgs,
+    PageLoadedEventArgs: typeof Sys$WebForms$PageLoadedEventArgs,
+    PageLoadingEventArgs: typeof Sys$WebForms$PageLoadingEventArgs,
+    PageRequestManager: typeof Sys$WebForms$PageRequestManager,
+    PageRequestManagerParserErrorException: typeof Sys$WebForms$PageRequestManagerParserErrorException,
+    PageRequestManagerServerErrorException: typeof Sys$WebForms$PageRequestManagerServerErrorException,
+    PageRequestManagerTimeoutException: typeof Sys$WebForms$PageRequestManagerTimeoutException
+  };
 
   /**
    * Used by the beginRequest event of the PageRequestManager class to pass argument information to event handlers.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb384003(v=vs.100).aspx}
    */
-  declare class WebForms$BeginRequestEventArgs mixins Sys$EventArgs {
+  declare class Sys$WebForms$BeginRequestEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the BeginRequestEventArgs class.
      * @param request A Sys.Net.WebRequest representing the web request for the EventArgs.
@@ -2973,7 +2985,7 @@ value contains a value that cannot be serialized.
      * @param updatePanelsToUpdate (Optional) A list of UniqueIDs for UpdatePanel controls that are requested to update their rendering by the client. Server-side processing may update additional UpdatePanels.
      */
     constructor(
-      request: Sys$Net.Net$WebRequest,
+      request: Sys$NetWebRequest,
       postBackElement: any,
       updatePanelsToUpdate: string[]
     ): this;
@@ -2989,7 +3001,7 @@ value contains a value that cannot be serialized.
      * Gets the request object that represents the current postback.
      * @return An instance of the Sys.Net.WebRequest class.
      */
-    get_request(): Sys$Net.Net$WebRequest;
+    get_request(): Sys$NetWebRequest;
 
     /**
      * Gets a list of UniqueID values for UpdatePanel controls that should re-render their content, as requested by the client.
@@ -3003,7 +3015,7 @@ value contains a value that cannot be serialized.
    * Used by the endRequest event of the PageRequestManager class to pass argument information to event handlers.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397499.aspx}
    */
-  declare class WebForms$EndRequestEventArgs mixins Sys$EventArgs {
+  declare class Sys$WebForms$EndRequestEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the EndRequestEventArgs class.
      * @param error An error object.
@@ -3013,7 +3025,7 @@ value contains a value that cannot be serialized.
     constructor(
       error: Error,
       dataItems: any,
-      response: Sys$Net.Net$WebRequestExecutor
+      response: Sys$NetWebRequestExecutor
     ): this;
 
     /**
@@ -3047,7 +3059,7 @@ value contains a value that cannot be serialized.
      * Gets a response object that is represented by the Sys.Net.WebRequestExecutor class.
      * @return A response object that is represented by the WebRequestExecutor class.
      */
-    get_response(): Sys$Net.Net$WebRequestExecutor;
+    get_response(): Sys$NetWebRequestExecutor;
   }
 
   /**
@@ -3055,7 +3067,7 @@ value contains a value that cannot be serialized.
    * This class contains private members that support the client-script infrastructure and are not intended to be used directly from your code. Names of private members begin with an underscore ( _ ).
    * @see {@link http://msdn.microsoft.com/en-us/library/bb311030(v=vs.100).aspx}
    */
-  declare class WebForms$InitializeRequestEventArgs mixins Sys$EventArgs {
+  declare class Sys$WebForms$InitializeRequestEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the EndRequestEventArgs class.
      * @param request A Sys.Net.WebRequest object that represents the Web request for the EventArgs object.
@@ -3063,7 +3075,7 @@ value contains a value that cannot be serialized.
      * @param updatePanelsToUpdate (Optional) A list of UniqueID values for UpdatePanel controls that are being requested to update their rendering by the client. Server-side processing might update additional UpdatePanel controls.
      */
     constructor(
-      request: Sys$Net.Net$WebRequest,
+      request: Sys$NetWebRequest,
       postBackElement: any,
       updatePanelsToUpdate: string[]
     ): this;
@@ -3078,7 +3090,7 @@ value contains a value that cannot be serialized.
      * Gets the request object that represents the current postback.
      * @return A request object that is represented by the Sys.Net.WebRequestExecutor class.
      */
-    get_request(): Sys$Net.Net$WebRequestExecutor;
+    get_request(): Sys$NetWebRequestExecutor;
 
     /**
      * Gets or sets a list of UniqueID values for UpdatePanel controls that should re-render their content, as requested by the client.
@@ -3092,7 +3104,7 @@ value contains a value that cannot be serialized.
    * Used by the pageLoaded event of the PageRequestManager class to send event data that represents the UpdatePanel controls that were updated and created in the most recent postback.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397476(v=vs.100).aspx}
    */
-  declare class WebForms$PageLoadedEventArgs mixins Sys$EventArgs {
+  declare class Sys$WebForms$PageLoadedEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the PageLoadedEventArgs class.
      */
@@ -3128,7 +3140,7 @@ value contains a value that cannot be serialized.
    * Used by the pageLoading event of the PageRequestManager class to send event data that represents the UpdatePanel controls that are being updated and deleted as a result of the most recent postback.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb310960(v=vs.100).aspx}
    */
-  declare class WebForms$PageLoadingEventArgs mixins Sys$EventArgs {
+  declare class Sys$WebForms$PageLoadingEventArgs mixins EventArgs {
     /**
      * Initializes a new instance of the PageLoadingEventArgs class.
      */
@@ -3165,7 +3177,7 @@ value contains a value that cannot be serialized.
    * Manages client partial-page updates of server UpdatePanel controls. In addition, defines properties, events, and methods that can be used to customize a Web page with client script.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb311028(v=vs.100).aspx}
    */
-  declare class WebForms$PageRequestManager {
+  declare class Sys$WebForms$PageRequestManager {
     /**
      * Initializes a new instance of the Sys.WebForms.PageRequestManager Class.
      */
@@ -3178,7 +3190,7 @@ value contains a value that cannot be serialized.
     add_beginRequest(
       beginRequestHandler: (
         sender: any,
-        args: WebForms$BeginRequestEventArgs
+        args: Sys$WebForms$BeginRequestEventArgs
       ) => void
     ): void;
 
@@ -3195,7 +3207,7 @@ value contains a value that cannot be serialized.
     add_endRequest(
       endRequestHandler: (
         sender: any,
-        args: Sys$WebForms.WebForms$EndRequestEventArgs
+        args: Sys$WebFormsEndRequestEventArgs
       ) => void
     ): void;
 
@@ -3206,7 +3218,7 @@ value contains a value that cannot be serialized.
     remove_endRequest(
       endRequestHandler: (
         sender: any,
-        args: Sys$WebForms.WebForms$EndRequestEventArgs
+        args: Sys$WebFormsEndRequestEventArgs
       ) => void
     ): void;
 
@@ -3217,7 +3229,7 @@ value contains a value that cannot be serialized.
     add_initializeRequest(
       initializeRequestHandler: (
         sender: any,
-        args: WebForms$InitializeRequestEventArgs
+        args: Sys$WebForms$InitializeRequestEventArgs
       ) => void
     ): void;
 
@@ -3228,7 +3240,7 @@ value contains a value that cannot be serialized.
     remove_initializeRequest(
       initializeRequestHandler: (
         sender: any,
-        args: WebForms$InitializeRequestEventArgs
+        args: Sys$WebForms$InitializeRequestEventArgs
       ) => void
     ): void;
 
@@ -3239,7 +3251,7 @@ value contains a value that cannot be serialized.
     add_pageLoaded(
       pageLoadedHandler: (
         sender: any,
-        args: WebForms$PageLoadedEventArgs
+        args: Sys$WebForms$PageLoadedEventArgs
       ) => void
     ): void;
 
@@ -3250,7 +3262,7 @@ value contains a value that cannot be serialized.
     remove_pageLoaded(
       pageLoadedHandler: (
         sender: any,
-        args: WebForms$PageLoadedEventArgs
+        args: Sys$WebForms$PageLoadedEventArgs
       ) => void
     ): void;
 
@@ -3261,7 +3273,7 @@ value contains a value that cannot be serialized.
     add_pageLoading(
       pageLoadingHandler: (
         sender: any,
-        args: WebForms$PageLoadingEventArgs
+        args: Sys$WebForms$PageLoadingEventArgs
       ) => void
     ): void;
 
@@ -3272,7 +3284,7 @@ value contains a value that cannot be serialized.
     remove_pageLoading(
       pageLoadingHandler: (
         sender: any,
-        args: WebForms$PageLoadingEventArgs
+        args: Sys$WebForms$PageLoadingEventArgs
       ) => void
     ): void;
 
@@ -3280,7 +3292,7 @@ value contains a value that cannot be serialized.
      * Returns the instance of the PageRequestManager class for the page.
      * @return The current instance of the PageRequestManager class. You do not create a new instance of the PageRequestManager class directly. Instead, an instance is available when partial-page rendering is enabled.
      */
-    static getInstance(): WebForms$PageRequestManager;
+    static getInstance(): Sys$WebForms$PageRequestManager;
 
     /**
      * Stops all updates that would occur as a result of an asynchronous postback.
@@ -3319,7 +3331,7 @@ value contains a value that cannot be serialized.
    * For information about how to handle this error condition, see Debugging and Tracing Ajax Applications Overview.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397466(v=vs.100).aspx}
    */
-  declare class WebForms$PageRequestManagerParserErrorException {}
+  declare class Sys$WebForms$PageRequestManagerParserErrorException {}
 
   /**
    * Raised when an error occurs on the server.
@@ -3328,7 +3340,7 @@ value contains a value that cannot be serialized.
    * For an example of how to provide custom error handling during partial-page updates, see Customizing Error Handling for ASP.NET UpdatePanel Controls.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397466(v=vs.100).aspx}        *
    */
-  declare class WebForms$PageRequestManagerServerErrorException {}
+  declare class Sys$WebForms$PageRequestManagerServerErrorException {}
 
   /**
    * Raised when the request times out.
@@ -3337,5 +3349,5 @@ value contains a value that cannot be serialized.
    * To change the interval that elapses before asynchronous postbacks time out, set the AsyncPostBackTimeout property of the ScriptManager control.
    * @see {@link http://msdn.microsoft.com/en-us/library/bb397466(v=vs.100).aspx}
    */
-  declare class WebForms$PageRequestManagerTimeoutException {}
+  declare class Sys$WebForms$PageRequestManagerTimeoutException {}
 }
