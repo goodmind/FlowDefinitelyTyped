@@ -1,41 +1,45 @@
 declare module "gapi.client.fusiontables" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    column: typeof client$column,
-    query: typeof client$query,
-    style: typeof client$style,
-    table: typeof client$table,
-    task: typeof client$task,
-    template: typeof client$template
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    column: typeof gapi$client$column,
+    query: typeof gapi$client$query,
+    style: typeof gapi$client$style,
+    table: typeof gapi$client$table,
+    task: typeof gapi$client$task,
+    template: typeof gapi$client$template
   };
 
   /**
    * Load Fusion Tables API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "fusiontables",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "fusiontables",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$column: fusiontables$fusiontables$ColumnResource;
+  declare var gapi$client$column: fusiontables$ColumnResource;
 
-  declare var client$query: fusiontables$fusiontables$QueryResource;
+  declare var gapi$client$query: fusiontables$QueryResource;
 
-  declare var client$style: fusiontables$fusiontables$StyleResource;
+  declare var gapi$client$style: fusiontables$StyleResource;
 
-  declare var client$table: fusiontables$fusiontables$TableResource;
+  declare var gapi$client$table: fusiontables$TableResource;
 
-  declare var client$task: fusiontables$fusiontables$TaskResource;
+  declare var gapi$client$task: fusiontables$TaskResource;
 
-  declare var client$template: fusiontables$fusiontables$TemplateResource;
+  declare var gapi$client$template: fusiontables$TemplateResource;
 
-  declare interface fusiontables$Bucket {
+  declare interface gapi$client$fusiontables$Bucket {
     /**
      * Color of line or the interior of a polygon in #RRGGBB format.
      */
@@ -67,7 +71,7 @@ declare module "gapi.client.fusiontables" {
     weight?: number;
   }
 
-  declare interface fusiontables$Column {
+  declare interface gapi$client$fusiontables$Column {
     /**
      * Identifier of the base column. If present, this column is derived from the specified base column.
      */
@@ -152,11 +156,11 @@ declare module "gapi.client.fusiontables" {
     validateData?: boolean;
   }
 
-  declare interface fusiontables$ColumnList {
+  declare interface gapi$client$fusiontables$ColumnList {
     /**
      * List of all requested columns.
      */
-    items?: fusiontables$Column[];
+    items?: gapi$client$fusiontables$Column[];
 
     /**
      * The kind of item this is. For a column list, this is always fusiontables#columnList.
@@ -174,7 +178,7 @@ declare module "gapi.client.fusiontables" {
     totalItems?: number;
   }
 
-  declare interface fusiontables$Geometry {
+  declare interface gapi$client$fusiontables$Geometry {
     /**
      * The list of geometries in this geometry collection.
      */
@@ -187,7 +191,7 @@ declare module "gapi.client.fusiontables" {
     type?: string;
   }
 
-  declare interface fusiontables$Import {
+  declare interface gapi$client$fusiontables$Import {
     /**
      * The kind of item this is. For an import, this is always fusiontables#import.
      */
@@ -199,7 +203,7 @@ declare module "gapi.client.fusiontables" {
     numRowsReceived?: string;
   }
 
-  declare interface fusiontables$Line {
+  declare interface gapi$client$fusiontables$Line {
     /**
      * The coordinates that define the line.
      */
@@ -211,7 +215,7 @@ declare module "gapi.client.fusiontables" {
     type?: string;
   }
 
-  declare interface fusiontables$LineStyle {
+  declare interface gapi$client$fusiontables$LineStyle {
     /**
      * Color of the line in #RRGGBB format.
      */
@@ -238,7 +242,7 @@ declare module "gapi.client.fusiontables" {
     strokeWeightStyler?: fusiontables$StyleFunction;
   }
 
-  declare interface fusiontables$Point {
+  declare interface gapi$client$fusiontables$Point {
     /**
      * The coordinates that define the point.
      */
@@ -250,7 +254,7 @@ declare module "gapi.client.fusiontables" {
     type?: string;
   }
 
-  declare interface fusiontables$PointStyle {
+  declare interface gapi$client$fusiontables$PointStyle {
     /**
      * Name of the icon. Use values defined in http://www.google.com/fusiontables/DataSource?dsrcid=308519
      */
@@ -262,7 +266,7 @@ declare module "gapi.client.fusiontables" {
     iconStyler?: fusiontables$StyleFunction;
   }
 
-  declare interface fusiontables$Polygon {
+  declare interface gapi$client$fusiontables$Polygon {
     /**
      * The coordinates that define the polygon.
      */
@@ -274,7 +278,7 @@ declare module "gapi.client.fusiontables" {
     type?: string;
   }
 
-  declare interface fusiontables$PolygonStyle {
+  declare interface gapi$client$fusiontables$PolygonStyle {
     /**
      * Color of the interior of the polygon in #RRGGBB format.
      */
@@ -316,7 +320,7 @@ declare module "gapi.client.fusiontables" {
     strokeWeightStyler?: fusiontables$StyleFunction;
   }
 
-  declare interface fusiontables$Sqlresponse {
+  declare interface gapi$client$fusiontables$Sqlresponse {
     /**
      * Columns in the table.
      */
@@ -334,11 +338,11 @@ declare module "gapi.client.fusiontables" {
     rows?: any[][];
   }
 
-  declare interface fusiontables$StyleFunction {
+  declare interface gapi$client$fusiontables$StyleFunction {
     /**
      * Bucket function that assigns a style based on the range a column value falls into.
      */
-    buckets?: fusiontables$Bucket[];
+    buckets?: gapi$client$fusiontables$Bucket[];
 
     /**
      * Name of the column whose value is used in the style.
@@ -383,7 +387,7 @@ declare module "gapi.client.fusiontables" {
     kind?: string;
   }
 
-  declare interface fusiontables$StyleSetting {
+  declare interface gapi$client$fusiontables$StyleSetting {
     /**
      * The kind of item this is. A StyleSetting contains the style definitions for points, lines, and polygons in a table. Since a table can have any one or
      * all of them, a style definition can have point, line and polygon style definitions.
@@ -393,7 +397,7 @@ declare module "gapi.client.fusiontables" {
     /**
      * Style definition for points in the table.
      */
-    markerOptions?: fusiontables$PointStyle;
+    markerOptions?: gapi$client$fusiontables$PointStyle;
 
     /**
      * Optional name for the style setting.
@@ -403,12 +407,12 @@ declare module "gapi.client.fusiontables" {
     /**
      * Style definition for polygons in the table.
      */
-    polygonOptions?: fusiontables$PolygonStyle;
+    polygonOptions?: gapi$client$fusiontables$PolygonStyle;
 
     /**
      * Style definition for lines in the table.
      */
-    polylineOptions?: fusiontables$LineStyle;
+    polylineOptions?: gapi$client$fusiontables$LineStyle;
 
     /**
      * Identifier for the style setting (unique only within tables).
@@ -421,11 +425,11 @@ declare module "gapi.client.fusiontables" {
     tableId?: string;
   }
 
-  declare interface fusiontables$StyleSettingList {
+  declare interface gapi$client$fusiontables$StyleSettingList {
     /**
      * All requested style settings.
      */
-    items?: fusiontables$StyleSetting[];
+    items?: gapi$client$fusiontables$StyleSetting[];
 
     /**
      * The kind of item this is. For a style list, this is always fusiontables#styleSettingList .
@@ -443,7 +447,7 @@ declare module "gapi.client.fusiontables" {
     totalItems?: number;
   }
 
-  declare interface fusiontables$Table {
+  declare interface gapi$client$fusiontables$Table {
     /**
      * Attribution assigned to the table.
      */
@@ -467,7 +471,7 @@ declare module "gapi.client.fusiontables" {
     /**
      * Columns in the table.
      */
-    columns?: fusiontables$Column[];
+    columns?: gapi$client$fusiontables$Column[];
 
     /**
      * Description assigned to the table.
@@ -510,11 +514,11 @@ declare module "gapi.client.fusiontables" {
     tablePropertiesJsonSchema?: string;
   }
 
-  declare interface fusiontables$TableList {
+  declare interface gapi$client$fusiontables$TableList {
     /**
      * List of all requested tables.
      */
-    items?: fusiontables$Table[];
+    items?: gapi$client$fusiontables$Table[];
 
     /**
      * The kind of item this is. For table list, this is always fusiontables#tableList.
@@ -527,7 +531,7 @@ declare module "gapi.client.fusiontables" {
     nextPageToken?: string;
   }
 
-  declare interface fusiontables$Task {
+  declare interface gapi$client$fusiontables$Task {
     /**
      * Type of the resource. This is always "fusiontables#task".
      */
@@ -554,11 +558,11 @@ declare module "gapi.client.fusiontables" {
     type?: string;
   }
 
-  declare interface fusiontables$TaskList {
+  declare interface gapi$client$fusiontables$TaskList {
     /**
      * List of all requested tasks.
      */
-    items?: fusiontables$Task[];
+    items?: gapi$client$fusiontables$Task[];
 
     /**
      * Type of the resource. This is always "fusiontables#taskList".
@@ -576,7 +580,7 @@ declare module "gapi.client.fusiontables" {
     totalItems?: number;
   }
 
-  declare interface fusiontables$Template {
+  declare interface gapi$client$fusiontables$Template {
     /**
      * List of columns from which the template is to be automatically constructed. Only one of body or automaticColumns can be specified.
      */
@@ -609,11 +613,11 @@ declare module "gapi.client.fusiontables" {
     templateId?: number;
   }
 
-  declare interface fusiontables$TemplateList {
+  declare interface gapi$client$fusiontables$TemplateList {
     /**
      * List of all requested templates.
      */
-    items?: fusiontables$Template[];
+    items?: gapi$client$fusiontables$Template[];
 
     /**
      * The kind of item this is. For a template list, this is always fusiontables#templateList .
@@ -631,7 +635,7 @@ declare module "gapi.client.fusiontables" {
     totalItems?: number;
   }
 
-  declare interface fusiontables$ColumnResource {
+  declare interface gapi$client$fusiontables$ColumnResource {
     /**
      * Deletes the specified column.
      */
@@ -732,7 +736,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Column>;
+    }): Request<gapi$client$fusiontables$Column>;
 
     /**
      * Adds a new column to the table.
@@ -778,7 +782,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Column>;
+    }): Request<gapi$client$fusiontables$Column>;
 
     /**
      * Retrieves a list of columns.
@@ -834,7 +838,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$ColumnList>;
+    }): Request<gapi$client$fusiontables$ColumnList>;
 
     /**
      * Updates the name or type of an existing column. This method supports patch semantics.
@@ -885,7 +889,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Column>;
+    }): Request<gapi$client$fusiontables$Column>;
 
     /**
      * Updates the name or type of an existing column.
@@ -936,10 +940,10 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Column>;
+    }): Request<gapi$client$fusiontables$Column>;
   }
 
-  declare interface fusiontables$QueryResource {
+  declare interface gapi$client$fusiontables$QueryResource {
     /**
      * Executes a Fusion Tables SQL statement, which can be any of
      * - SELECT
@@ -1008,7 +1012,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Sqlresponse>;
+    }): Request<gapi$client$fusiontables$Sqlresponse>;
 
     /**
      * Executes a SQL statement which can be any of
@@ -1070,10 +1074,10 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Sqlresponse>;
+    }): Request<gapi$client$fusiontables$Sqlresponse>;
   }
 
-  declare interface fusiontables$StyleResource {
+  declare interface gapi$client$fusiontables$StyleResource {
     /**
      * Deletes a style.
      */
@@ -1174,7 +1178,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$StyleSetting>;
+    }): Request<gapi$client$fusiontables$StyleSetting>;
 
     /**
      * Adds a new style for the table.
@@ -1220,7 +1224,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$StyleSetting>;
+    }): Request<gapi$client$fusiontables$StyleSetting>;
 
     /**
      * Retrieves a list of styles.
@@ -1276,7 +1280,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$StyleSettingList>;
+    }): Request<gapi$client$fusiontables$StyleSettingList>;
 
     /**
      * Updates an existing style. This method supports patch semantics.
@@ -1327,7 +1331,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$StyleSetting>;
+    }): Request<gapi$client$fusiontables$StyleSetting>;
 
     /**
      * Updates an existing style.
@@ -1378,10 +1382,10 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$StyleSetting>;
+    }): Request<gapi$client$fusiontables$StyleSetting>;
   }
 
-  declare interface fusiontables$TableResource {
+  declare interface gapi$client$fusiontables$TableResource {
     /**
      * Copies a table.
      */
@@ -1431,7 +1435,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
 
     /**
      * Deletes a table.
@@ -1523,7 +1527,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
 
     /**
      * Imports more rows into a table.
@@ -1596,7 +1600,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Import>;
+    }): Request<gapi$client$fusiontables$Import>;
 
     /**
      * Imports a new table.
@@ -1652,7 +1656,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
 
     /**
      * Creates a new table.
@@ -1693,7 +1697,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
 
     /**
      * Retrieves a list of tables a user owns.
@@ -1744,7 +1748,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$TableList>;
+    }): Request<gapi$client$fusiontables$TableList>;
 
     /**
      * Updates an existing table. Unless explicitly requested, only the name, description, and attribution will be updated. This method supports patch
@@ -1796,7 +1800,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
 
     /**
      * Replaces rows of an existing table. Current rows remain visible until all replacement rows are ready.
@@ -1869,7 +1873,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Task>;
+    }): Request<gapi$client$fusiontables$Task>;
 
     /**
      * Updates an existing table. Unless explicitly requested, only the name, description, and attribution will be updated.
@@ -1920,10 +1924,10 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Table>;
+    }): Request<gapi$client$fusiontables$Table>;
   }
 
-  declare interface fusiontables$TaskResource {
+  declare interface gapi$client$fusiontables$TaskResource {
     /**
      * Deletes a specific task by its ID, unless that task has already started running.
      */
@@ -2024,7 +2028,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Task>;
+    }): Request<gapi$client$fusiontables$Task>;
 
     /**
      * Retrieves a list of tasks.
@@ -2085,10 +2089,10 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$TaskList>;
+    }): Request<gapi$client$fusiontables$TaskList>;
   }
 
-  declare interface fusiontables$TemplateResource {
+  declare interface gapi$client$fusiontables$TemplateResource {
     /**
      * Deletes a template
      */
@@ -2189,7 +2193,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Template>;
+    }): Request<gapi$client$fusiontables$Template>;
 
     /**
      * Creates a new template for the table.
@@ -2235,7 +2239,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Template>;
+    }): Request<gapi$client$fusiontables$Template>;
 
     /**
      * Retrieves a list of templates.
@@ -2291,7 +2295,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$TemplateList>;
+    }): Request<gapi$client$fusiontables$TemplateList>;
 
     /**
      * Updates an existing template. This method supports patch semantics.
@@ -2342,7 +2346,7 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Template>;
+    }): Request<gapi$client$fusiontables$Template>;
 
     /**
      * Updates an existing template
@@ -2393,6 +2397,6 @@ declare module "gapi.client.fusiontables" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<fusiontables$Template>;
+    }): Request<gapi$client$fusiontables$Template>;
   }
 }
