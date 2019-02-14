@@ -129,7 +129,7 @@ declare module "jweixin" {
     timestamp: number,
     nonceStr: string,
     signature: string,
-    wx$jsApiList: wx$jsApiList
+    jsApiList: wx$jsApiList
   }): void;
 
   declare interface wx$Resouce {
@@ -159,14 +159,14 @@ declare module "jweixin" {
   ): void;
 
   declare type wx$IcheckJsApi = {
-    wx$jsApiList: wx$jsApiList,
+    jsApiList: wx$jsApiList,
     success(res: {
       checkResult: {
         [api: string]: boolean
       },
       errMsg: string
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 判断当前客户端版本是否支持指定JS接口
@@ -180,7 +180,7 @@ declare module "jweixin" {
     imgUrl: string,
     success(): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
@@ -198,7 +198,7 @@ declare module "jweixin" {
     dataUrl?: string,
     success(): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取“分享给朋友”按钮点击状态及自定义分享内容接口
@@ -214,7 +214,7 @@ declare module "jweixin" {
     imgUrl: string,
     success(): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取“分享到QQ”按钮点击状态及自定义分享内容接口
@@ -228,7 +228,7 @@ declare module "jweixin" {
     imgUrl: string,
     success(): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
@@ -242,7 +242,7 @@ declare module "jweixin" {
     imgUrl: string,
     success(): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
@@ -274,7 +274,7 @@ declare module "jweixin" {
       errMsg: string
     }): void,
     cancel(): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 从本地相册选择图片或使用相机拍照。
@@ -284,7 +284,7 @@ declare module "jweixin" {
   declare type wx$IpreviewImage = {
     current: string,
     urls: string[]
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 预览图片接口
@@ -297,7 +297,7 @@ declare module "jweixin" {
     success(res: {
       serverId: string
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 上传图片接口
@@ -308,7 +308,7 @@ declare module "jweixin" {
     serverId: string,
     isShowProgressTips: number,
     success(res: wx$Resouce): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 下载图片接口
@@ -320,7 +320,7 @@ declare module "jweixin" {
     success(res: {
       localData: string
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取本地图片接口
@@ -334,7 +334,7 @@ declare module "jweixin" {
 
   declare type wx$IstopRecord = {
     success(res: wx$Resouce): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 停止录音接口
@@ -343,7 +343,7 @@ declare module "jweixin" {
 
   declare type wx$IonVoiceRecordEnd = {
     complete(res: wx$Resouce): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 监听录音自动停止接口
@@ -352,7 +352,7 @@ declare module "jweixin" {
 
   declare type wx$IplaypausestopVoice = {
     localId: string
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 播放语音接口
@@ -371,7 +371,7 @@ declare module "jweixin" {
 
   declare type wx$IonVoicePlayEnd = {
     success(res: wx$Resouce): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 监听语音播放完毕接口
@@ -382,7 +382,7 @@ declare module "jweixin" {
     localId: string,
     isShowProgressTips: number,
     success(res: wx$Resouce): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 上传语音接口
@@ -407,7 +407,7 @@ declare module "jweixin" {
     success(res: {
       translateResult: string
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 识别音频并返回识别结果接口
@@ -418,9 +418,9 @@ declare module "jweixin" {
 
   declare type wx$IgetNetworkType = {
     success(res: {
-      wx$networkType: wx$networkType
+      networkType: wx$networkType
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取网络状态接口
@@ -434,7 +434,7 @@ declare module "jweixin" {
     address: string,
     scale: number,
     infoUrl: string
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 使用微信内置地图查看位置接口
@@ -449,7 +449,7 @@ declare module "jweixin" {
       speed: number,
       accuracy: number
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 获取地理位置接口
@@ -459,7 +459,7 @@ declare module "jweixin" {
   declare type wx$IstartSearchBeacons = {
     ticket: string,
     complete(argv: any): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 开启查找周边ibeacon设备接口
@@ -469,7 +469,7 @@ declare module "jweixin" {
 
   declare type wx$IstopSearchBeacons = {
     complete(res: any): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 关闭查找周边ibeacon设备接口
@@ -478,7 +478,7 @@ declare module "jweixin" {
 
   declare type wx$IonSearchBeacons = {
     complete(argv: any): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 监听周边ibeacon设备接口
@@ -501,8 +501,8 @@ declare module "jweixin" {
   declare function wx$closeWindow(): void;
 
   declare type wx$IhideMenuItems = {
-    wx$menuList: Array<wx$menuProtected | wx$menuShare>
-  } & wx$BaseParams;
+    menuList: Array<wx$menuProtected | wx$menuShare>
+  } & BaseParams;
 
   /**
    * 批量隐藏功能按钮接口
@@ -510,8 +510,8 @@ declare module "jweixin" {
   declare function wx$hideMenuItems(): void;
 
   declare type wx$IshowMenuItems = {
-    wx$menuList: wx$menuList
-  } & wx$BaseParams;
+    menuList: wx$menuList
+  } & BaseParams;
 
   /**
    * 批量显示功能按钮接口
@@ -533,11 +533,11 @@ declare module "jweixin" {
 
   declare type wx$IscanQRCode = {
     needResult: 0 | 1,
-    wx$scanType: wx$scanType[],
+    scanType: wx$scanType[],
     success(res: {
       resultStr: string
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 调起微信扫一扫接口
@@ -547,7 +547,7 @@ declare module "jweixin" {
   declare type wx$IopenProductSpecificView = {
     productId: string,
     viewType: "0" | "1" | "2"
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 跳转微信商品页接口
@@ -567,7 +567,7 @@ declare module "jweixin" {
     success(res: {
       cardList: string[]
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 拉取适用卡券列表并获取用户选择信息
@@ -582,7 +582,7 @@ declare module "jweixin" {
     success(res: {
       cardList: string[]
     }): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 批量添加卡券接口
@@ -594,7 +594,7 @@ declare module "jweixin" {
       cardId: string,
       code: string
     }>
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 查看微信卡包中的卡券接口
@@ -604,7 +604,7 @@ declare module "jweixin" {
   declare type wx$IconsumeAndShareCard = {
     cardId: string,
     code: string
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 核销后再次赠送卡券接口
@@ -620,7 +620,7 @@ declare module "jweixin" {
     signType: string,
     paySign: string,
     success(res: any): void
-  } & wx$BaseParams;
+  } & BaseParams;
 
   /**
    * 发起一个微信支付请求
@@ -629,5 +629,5 @@ declare module "jweixin" {
 
   declare function wx(): void;
 
-  declare module.exports: typeof wx;
+  declare export default typeof wx;
 }
