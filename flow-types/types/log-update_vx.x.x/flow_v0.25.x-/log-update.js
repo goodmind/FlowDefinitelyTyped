@@ -1,5 +1,5 @@
 declare module "log-update" {
-  declare module.exports: typeof logUpdate;
+  declare export default typeof logUpdate;
 
   declare function logUpdate(...text: string[]): void;
 
