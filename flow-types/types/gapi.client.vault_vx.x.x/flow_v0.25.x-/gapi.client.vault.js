@@ -1,23 +1,30 @@
 declare module "gapi.client.vault" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    matters: typeof client$matters
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    matters: typeof gapi$client$matters
   };
 
   /**
    * Load Google Vault API v1
    */
-  declare function client$load(name: "vault", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "vault",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "vault",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$matters: vault$vault$MattersResource;
+  declare var gapi$client$matters: vault$MattersResource;
 
-  declare interface vault$AddMatterPermissionsRequest {
+  declare interface gapi$client$vault$AddMatterPermissionsRequest {
     /**
      * Only relevant if send_emails is true.
      * True to CC requestor in the email message.
@@ -37,14 +44,14 @@ declare module "gapi.client.vault" {
     sendEmails?: boolean;
   }
 
-  declare interface vault$CloseMatterResponse {
+  declare interface gapi$client$vault$CloseMatterResponse {
     /**
      * The updated matter, with state CLOSED.
      */
     matter?: vault$Matter;
   }
 
-  declare interface vault$CorpusQuery {
+  declare interface gapi$client$vault$CorpusQuery {
     /**
      * Details pertaining to Drive holds. If set, corpus must be Drive.
      */
@@ -61,7 +68,7 @@ declare module "gapi.client.vault" {
     mailQuery?: vault$HeldMailQuery;
   }
 
-  declare interface vault$HeldAccount {
+  declare interface gapi$client$vault$HeldAccount {
     /**
      * The account's ID as provided by the
      * <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
@@ -74,14 +81,14 @@ declare module "gapi.client.vault" {
     holdTime?: string;
   }
 
-  declare interface vault$HeldDriveQuery {
+  declare interface gapi$client$vault$HeldDriveQuery {
     /**
      * If true, include files in Team Drives in the hold.
      */
     includeTeamDriveFiles?: boolean;
   }
 
-  declare interface vault$HeldGroupsQuery {
+  declare interface gapi$client$vault$HeldGroupsQuery {
     /**
      * The end date range for the search query. These timestamps are in GMT and
      * rounded down to the start of the given date.
@@ -100,7 +107,7 @@ declare module "gapi.client.vault" {
     terms?: string;
   }
 
-  declare interface vault$HeldMailQuery {
+  declare interface gapi$client$vault$HeldMailQuery {
     /**
      * The end date range for the search query. These timestamps are in GMT and
      * rounded down to the start of the given date.
@@ -119,7 +126,7 @@ declare module "gapi.client.vault" {
     terms?: string;
   }
 
-  declare interface vault$HeldOrgUnit {
+  declare interface gapi$client$vault$HeldOrgUnit {
     /**
      * When the org unit was put on hold. This property is immutable.
      */
@@ -131,12 +138,12 @@ declare module "gapi.client.vault" {
     orgUnitId?: string;
   }
 
-  declare interface vault$Hold {
+  declare interface gapi$client$vault$Hold {
     /**
      * If set, the hold applies to the enumerated accounts and org_unit must be
      * empty.
      */
-    accounts?: vault$HeldAccount[];
+    accounts?: gapi$client$vault$HeldAccount[];
 
     /**
      * The corpus to be searched.
@@ -158,13 +165,13 @@ declare module "gapi.client.vault" {
      * accounts must be empty. This property is mutable. For groups holds,
      * set the accounts field.
      */
-    orgUnit?: vault$HeldOrgUnit;
+    orgUnit?: gapi$client$vault$HeldOrgUnit;
 
     /**
      * The corpus-specific query. If set, the corpusQuery must match corpus
      * type.
      */
-    query?: vault$CorpusQuery;
+    query?: gapi$client$vault$CorpusQuery;
 
     /**
      * The last time this hold was modified.
@@ -172,18 +179,18 @@ declare module "gapi.client.vault" {
     updateTime?: string;
   }
 
-  declare interface vault$ListHeldAccountsResponse {
+  declare interface gapi$client$vault$ListHeldAccountsResponse {
     /**
      * The held accounts on a hold.
      */
-    accounts?: vault$HeldAccount[];
+    accounts?: gapi$client$vault$HeldAccount[];
   }
 
-  declare interface vault$ListHoldsResponse {
+  declare interface gapi$client$vault$ListHoldsResponse {
     /**
      * The list of holds.
      */
-    holds?: vault$Hold[];
+    holds?: gapi$client$vault$Hold[];
 
     /**
      * Page token to retrieve the next page of results in the list.
@@ -192,11 +199,11 @@ declare module "gapi.client.vault" {
     nextPageToken?: string;
   }
 
-  declare interface vault$ListMattersResponse {
+  declare interface gapi$client$vault$ListMattersResponse {
     /**
      * List of matters.
      */
-    client$matters?: vault$Matter[];
+    matters?: vault$Matter[];
 
     /**
      * Page token to retrieve the next page of results in the list.
@@ -204,7 +211,7 @@ declare module "gapi.client.vault" {
     nextPageToken?: string;
   }
 
-  declare interface vault$Matter {
+  declare interface gapi$client$vault$Matter {
     /**
      * The description of the matter.
      */
@@ -233,7 +240,7 @@ declare module "gapi.client.vault" {
     state?: string;
   }
 
-  declare interface vault$MatterPermission {
+  declare interface gapi$client$vault$MatterPermission {
     /**
      * The account id, as provided by <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
      */
@@ -245,21 +252,21 @@ declare module "gapi.client.vault" {
     role?: string;
   }
 
-  declare interface vault$RemoveMatterPermissionsRequest {
+  declare interface gapi$client$vault$RemoveMatterPermissionsRequest {
     /**
      * The account ID.
      */
     accountId?: string;
   }
 
-  declare interface vault$ReopenMatterResponse {
+  declare interface gapi$client$vault$ReopenMatterResponse {
     /**
      * The updated matter, with state OPEN.
      */
-    matter?: vault$Matter;
+    matter?: gapi$client$vault$Matter;
   }
 
-  declare interface vault$AccountsResource {
+  declare interface gapi$client$vault$AccountsResource {
     /**
      * Adds a HeldAccount to a hold. Accounts can only be added to a hold that
      * has no held_org_unit set. Attempting to add an account to an OU-based
@@ -340,7 +347,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$HeldAccount>;
+    }): Request<gapi$client$vault$HeldAccount>;
 
     /**
      * Removes a HeldAccount from a hold. If this request leaves the hold with
@@ -509,10 +516,10 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$ListHeldAccountsResponse>;
+    }): Request<gapi$client$vault$ListHeldAccountsResponse>;
   }
 
-  declare interface vault$HoldsResource {
+  declare interface gapi$client$vault$HoldsResource {
     /**
      * Creates a hold in the given matter.
      */
@@ -586,7 +593,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Hold>;
+    }): Request<gapi$client$vault$Hold>;
 
     /**
      * Removes a hold by ID. This will release any HeldAccounts on this Hold.
@@ -746,7 +753,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Hold>;
+    }): Request<gapi$client$vault$Hold>;
 
     /**
      * Lists holds within a matter. An empty page token in ListHoldsResponse
@@ -834,7 +841,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$ListHoldsResponse>;
+    }): Request<gapi$client$vault$ListHoldsResponse>;
 
     /**
      * Updates the OU and/or query parameters of a hold. You cannot add accounts
@@ -916,11 +923,11 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Hold>;
-    accounts: vault$AccountsResource;
+    }): Request<gapi$client$vault$Hold>;
+    accounts: gapi$client$vault$AccountsResource;
   }
 
-  declare interface vault$MattersResource {
+  declare interface gapi$client$vault$MattersResource {
     /**
      * Adds an account as a matter collaborator.
      */
@@ -994,7 +1001,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$MatterPermission>;
+    }): Request<gapi$client$vault$MatterPermission>;
 
     /**
      * Closes the specified matter. Returns matter with updated state.
@@ -1069,7 +1076,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$CloseMatterResponse>;
+    }): Request<gapi$client$vault$CloseMatterResponse>;
 
     /**
      * Creates a new matter with the given name and description. The initial state
@@ -1141,7 +1148,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Matter>;
+    }): Request<gapi$client$vault$Matter>;
 
     /**
      * Deletes the specified matter. Returns matter with updated state.
@@ -1216,7 +1223,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Matter>;
+    }): Request<gapi$client$vault$Matter>;
 
     /**
      * Gets the specified matter.
@@ -1296,7 +1303,7 @@ declare module "gapi.client.vault" {
        * Specifies which parts of the Matter to return in the response.
        */
       view?: string
-    }): Request<vault$Matter>;
+    }): Request<gapi$client$vault$Matter>;
 
     /**
      * Lists matters the user has access to.
@@ -1388,7 +1395,7 @@ declare module "gapi.client.vault" {
        * Specifies which parts of the matter to return in response.
        */
       view?: string
-    }): Request<vault$ListMattersResponse>;
+    }): Request<gapi$client$vault$ListMattersResponse>;
 
     /**
      * Removes an account as a matter collaborator.
@@ -1538,7 +1545,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$ReopenMatterResponse>;
+    }): Request<gapi$client$vault$ReopenMatterResponse>;
 
     /**
      * Undeletes the specified matter. Returns matter with updated state.
@@ -1613,7 +1620,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Matter>;
+    }): Request<gapi$client$vault$Matter>;
 
     /**
      * Updates the specified matter.
@@ -1691,7 +1698,7 @@ declare module "gapi.client.vault" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<vault$Matter>;
-    holds: vault$HoldsResource;
+    }): Request<gapi$client$vault$Matter>;
+    holds: gapi$client$vault$HoldsResource;
   }
 }
