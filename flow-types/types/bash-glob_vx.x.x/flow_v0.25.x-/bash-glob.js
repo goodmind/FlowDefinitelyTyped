@@ -5,7 +5,7 @@ declare module "bash-glob" {
 
   declare function bashGlob(
     pattern: Patterns,
-    options: bashGlob$bashGlob$Options,
+    options: bashGlob$Options,
     callback: Callback
   ): void;
 
@@ -55,5 +55,5 @@ declare module "bash-glob" {
     options?: bashGlob$Options
   ): string[];
 
-  declare module.exports: typeof bashGlob;
+  declare export default typeof bashGlob;
 }
