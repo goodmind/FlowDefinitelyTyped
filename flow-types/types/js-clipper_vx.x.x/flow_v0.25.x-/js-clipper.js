@@ -14,7 +14,31 @@ declare module "js-clipper" {
     biginteger_used: typeof ClipperLib$biginteger_used,
     MaxSteps: typeof ClipperLib$MaxSteps,
     PI: typeof ClipperLib$PI,
-    PI2: typeof ClipperLib$PI2
+    PI2: typeof ClipperLib$PI2,
+    ClipType: typeof ClipperLib$ClipType,
+    PolyType: typeof ClipperLib$PolyType,
+    PolyFillType: typeof ClipperLib$PolyFillType,
+    JoinType: typeof ClipperLib$JoinType,
+    EdgeSide: typeof ClipperLib$EdgeSide,
+    Protects: typeof ClipperLib$Protects,
+    Direction: typeof ClipperLib$Direction,
+    IntPoint: typeof ClipperLib$IntPoint,
+    IntRect: typeof ClipperLib$IntRect,
+    Polygon: typeof ClipperLib$Polygon,
+    Polygons: typeof ClipperLib$Polygons,
+    ExPolygon: typeof ClipperLib$ExPolygon,
+    TEdge: typeof ClipperLib$TEdge,
+    IntersectNode: typeof ClipperLib$IntersectNode,
+    LocalMinima: typeof ClipperLib$LocalMinima,
+    Scanbeam: typeof ClipperLib$Scanbeam,
+    OutRec: typeof ClipperLib$OutRec,
+    OutPt: typeof ClipperLib$OutPt,
+    JoinRec: typeof ClipperLib$JoinRec,
+    HorzJoinRec: typeof ClipperLib$HorzJoinRec,
+    ClipperBase: typeof ClipperLib$ClipperBase,
+    Clipper: typeof ClipperLib$Clipper,
+    DoublePoint: typeof ClipperLib$DoublePoint,
+    PolyOffsetBuilder: typeof ClipperLib$PolyOffsetBuilder
   };
   declare export var ClipperLib$biginteger_used: boolean;
 
@@ -73,131 +97,47 @@ declare module "js-clipper" {
     holes: ArrayLike<ArrayLike<ClipperLib$IntPoint>>;
   }
 
-  declare export class ClipperLib$ClipType {
-    constructor(...args: empty): mixed;
-    static +ctIntersection: Class<ClipperLib$ClipType__ctIntersection> &
-      ClipperLib$ClipType__ctIntersection &
-      0; // 0
-    static +ctUnion: Class<ClipperLib$ClipType__ctUnion> &
-      ClipperLib$ClipType__ctUnion &
-      1; // 1
-    static +ctDifference: Class<ClipperLib$ClipType__ctDifference> &
-      ClipperLib$ClipType__ctDifference &
-      2; // 2
-    static +ctXor: Class<ClipperLib$ClipType__ctXor> &
-      ClipperLib$ClipType__ctXor &
-      3; // 3
-  }
+  declare export var ClipperLib$ClipType: {|
+    +ctIntersection: 0, // 0
+    +ctUnion: 1, // 1
+    +ctDifference: 2, // 2
+    +ctXor: 3 // 3
+  |};
 
-  declare class ClipperLib$ClipType__ctIntersection
-    mixins ClipperLib$ClipType {}
-  declare class ClipperLib$ClipType__ctUnion mixins ClipperLib$ClipType {}
-  declare class ClipperLib$ClipType__ctDifference mixins ClipperLib$ClipType {}
-  declare class ClipperLib$ClipType__ctXor mixins ClipperLib$ClipType {}
+  declare export var ClipperLib$PolyType: {|
+    +ptSubject: 0, // 0
+    +ptClip: 1 // 1
+  |};
 
-  declare export class ClipperLib$PolyType {
-    constructor(...args: empty): mixed;
-    static +ptSubject: Class<ClipperLib$PolyType__ptSubject> &
-      ClipperLib$PolyType__ptSubject &
-      0; // 0
-    static +ptClip: Class<ClipperLib$PolyType__ptClip> &
-      ClipperLib$PolyType__ptClip &
-      1; // 1
-  }
+  declare export var ClipperLib$PolyFillType: {|
+    +pftEvenOdd: 0, // 0
+    +pftNonZero: 1, // 1
+    +pftPositive: 2, // 2
+    +pftNegative: 3 // 3
+  |};
 
-  declare class ClipperLib$PolyType__ptSubject mixins ClipperLib$PolyType {}
-  declare class ClipperLib$PolyType__ptClip mixins ClipperLib$PolyType {}
+  declare export var ClipperLib$JoinType: {|
+    +jtSquare: 0, // 0
+    +jtRound: 1, // 1
+    +jtMiter: 2 // 2
+  |};
 
-  declare export class ClipperLib$PolyFillType {
-    constructor(...args: empty): mixed;
-    static +pftEvenOdd: Class<ClipperLib$PolyFillType__pftEvenOdd> &
-      ClipperLib$PolyFillType__pftEvenOdd &
-      0; // 0
-    static +pftNonZero: Class<ClipperLib$PolyFillType__pftNonZero> &
-      ClipperLib$PolyFillType__pftNonZero &
-      1; // 1
-    static +pftPositive: Class<ClipperLib$PolyFillType__pftPositive> &
-      ClipperLib$PolyFillType__pftPositive &
-      2; // 2
-    static +pftNegative: Class<ClipperLib$PolyFillType__pftNegative> &
-      ClipperLib$PolyFillType__pftNegative &
-      3; // 3
-  }
+  declare export var ClipperLib$EdgeSide: {|
+    +esLeft: 0, // 0
+    +esRight: 1 // 1
+  |};
 
-  declare class ClipperLib$PolyFillType__pftEvenOdd
-    mixins ClipperLib$PolyFillType {}
-  declare class ClipperLib$PolyFillType__pftNonZero
-    mixins ClipperLib$PolyFillType {}
-  declare class ClipperLib$PolyFillType__pftPositive
-    mixins ClipperLib$PolyFillType {}
-  declare class ClipperLib$PolyFillType__pftNegative
-    mixins ClipperLib$PolyFillType {}
+  declare export var ClipperLib$Protects: {|
+    +ipNone: 0, // 0
+    +ipLeft: 1, // 1
+    +ipRight: 2, // 2
+    +ipBoth: 3 // 3
+  |};
 
-  declare export class ClipperLib$JoinType {
-    constructor(...args: empty): mixed;
-    static +jtSquare: Class<ClipperLib$JoinType__jtSquare> &
-      ClipperLib$JoinType__jtSquare &
-      0; // 0
-    static +jtRound: Class<ClipperLib$JoinType__jtRound> &
-      ClipperLib$JoinType__jtRound &
-      1; // 1
-    static +jtMiter: Class<ClipperLib$JoinType__jtMiter> &
-      ClipperLib$JoinType__jtMiter &
-      2; // 2
-  }
-
-  declare class ClipperLib$JoinType__jtSquare mixins ClipperLib$JoinType {}
-  declare class ClipperLib$JoinType__jtRound mixins ClipperLib$JoinType {}
-  declare class ClipperLib$JoinType__jtMiter mixins ClipperLib$JoinType {}
-
-  declare export class ClipperLib$EdgeSide {
-    constructor(...args: empty): mixed;
-    static +esLeft: Class<ClipperLib$EdgeSide__esLeft> &
-      ClipperLib$EdgeSide__esLeft &
-      0; // 0
-    static +esRight: Class<ClipperLib$EdgeSide__esRight> &
-      ClipperLib$EdgeSide__esRight &
-      1; // 1
-  }
-
-  declare class ClipperLib$EdgeSide__esLeft mixins ClipperLib$EdgeSide {}
-  declare class ClipperLib$EdgeSide__esRight mixins ClipperLib$EdgeSide {}
-
-  declare export class ClipperLib$Protects {
-    constructor(...args: empty): mixed;
-    static +ipNone: Class<ClipperLib$Protects__ipNone> &
-      ClipperLib$Protects__ipNone &
-      0; // 0
-    static +ipLeft: Class<ClipperLib$Protects__ipLeft> &
-      ClipperLib$Protects__ipLeft &
-      1; // 1
-    static +ipRight: Class<ClipperLib$Protects__ipRight> &
-      ClipperLib$Protects__ipRight &
-      2; // 2
-    static +ipBoth: Class<ClipperLib$Protects__ipBoth> &
-      ClipperLib$Protects__ipBoth &
-      3; // 3
-  }
-
-  declare class ClipperLib$Protects__ipNone mixins ClipperLib$Protects {}
-  declare class ClipperLib$Protects__ipLeft mixins ClipperLib$Protects {}
-  declare class ClipperLib$Protects__ipRight mixins ClipperLib$Protects {}
-  declare class ClipperLib$Protects__ipBoth mixins ClipperLib$Protects {}
-
-  declare export class ClipperLib$Direction {
-    constructor(...args: empty): mixed;
-    static +dRightToLeft: Class<ClipperLib$Direction__dRightToLeft> &
-      ClipperLib$Direction__dRightToLeft &
-      0; // 0
-    static +dLeftToRight: Class<ClipperLib$Direction__dLeftToRight> &
-      ClipperLib$Direction__dLeftToRight &
-      1; // 1
-  }
-
-  declare class ClipperLib$Direction__dRightToLeft
-    mixins ClipperLib$Direction {}
-  declare class ClipperLib$Direction__dLeftToRight
-    mixins ClipperLib$Direction {}
+  declare export var ClipperLib$Direction: {|
+    +dRightToLeft: 0, // 0
+    +dLeftToRight: 1 // 1
+  |};
 
   declare export class ClipperLib$TEdge {
     xbot: number;
@@ -334,7 +274,7 @@ declare module "js-clipper" {
     GetBounds(): ClipperLib$IntRect;
   }
 
-  declare export class ClipperLib$Clipper mixins ClipperLib$ClipperBase {
+  declare export class ClipperLib$Clipper mixins ClipperBase {
     m_PolyOuts: ClipperLib$TEdge | ArrayLike<ClipperLib$TEdge>;
     m_ClipType: ClipperLib$ClipType;
     m_Scanbeam: ClipperLib$Scanbeam;
@@ -473,7 +413,7 @@ declare module "js-clipper" {
     IsTopHorz(horzEdge: ClipperLib$TEdge, XPos: ClipperLib$IntPoint): boolean;
     GetNextInAEL(
       e: ClipperLib$TEdge,
-      ClipperLib$Direction: ClipperLib$TEdge
+      Direction: ClipperLib$TEdge
     ): ClipperLib$TEdge;
     IsMinima(e: ClipperLib$TEdge): boolean;
     IsMaxima(e: ClipperLib$TEdge, Y: number): boolean;
