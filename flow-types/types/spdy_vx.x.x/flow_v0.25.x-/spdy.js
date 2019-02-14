@@ -4,11 +4,14 @@ declare module "spdy" {
   import typeof * as https from "https";
 
   declare var npm$namespace$agent: {
-    create: typeof agent$create
-  };
-  declare class agent$Agent mixins https.agent$Agent {}
+    create: typeof agent$create,
 
-  declare class agent$PlainAgent mixins http.agent$Agent {}
+    Agent: typeof agent$Agent,
+    PlainAgent: typeof agent$PlainAgent
+  };
+  declare class agent$Agent mixins https.Agent {}
+
+  declare class agent$PlainAgent mixins http.Agent {}
 
   declare function agent$create(
     base: any,
@@ -24,10 +27,10 @@ declare module "spdy" {
       protocol?: string,
       protocols?: string[]
     }
-  } & https.agent$AgentOptions;
+  } & https.AgentOptions;
 
   declare export interface Handle {
-    agent$create(
+    create(
       options: { [key: string]: any },
       stream: any,
       socket: socket$Socket
@@ -70,37 +73,37 @@ declare module "spdy" {
   declare var npm$namespace$server: {
     create: typeof server$create
   };
-  declare type server$Server = https.server$Server;
+  declare type server$Server = https.Server;
 
-  declare type server$PlainServer = http.server$Server;
+  declare type server$PlainServer = http.Server;
 
-  declare type server$IncomingMessage = http.server$IncomingMessage;
+  declare type server$IncomingMessage = http.IncomingMessage;
 
   declare type server$ServerResponse = {
     push(filename: string, options: server$PushOptions): any
-  } & http.server$ServerResponse;
+  } & http.ServerResponse;
 
   declare function server$create(
     base: any,
-    options: https.server$ServerOptions,
+    options: https.ServerOptions,
     handler: (
       request: server$IncomingMessage,
-      response: server$ServerResponse | http.server$ServerResponse
+      response: server$ServerResponse | http.ServerResponse
     ) => void
   ): server$Server;
 
   declare function server$create(
-    options: https.server$ServerOptions,
+    options: https.ServerOptions,
     handler: (
       request: server$IncomingMessage,
-      response: http.server$ServerResponse
+      response: http.ServerResponse
     ) => void
   ): server$Server;
 
   declare function server$create(
     handler: (
       request: server$IncomingMessage,
-      response: server$ServerResponse | http.server$ServerResponse
+      response: server$ServerResponse | http.ServerResponse
     ) => void
   ): server$Server;
 
@@ -129,19 +132,19 @@ declare module "spdy" {
         autoSpdy31?: boolean
       }
     }
-  } & https.server$ServerOptions;
+  } & https.ServerOptions;
 
   declare interface socket$Socket {}
-  declare export type Agent = agent$agent$Agent;
-  declare export type PlainAgent = agent$agent$PlainAgent;
-  declare export type AgentOptions = agent$agent$AgentOptions;
-  declare export type Socket = socket$socket$Socket;
-  declare export type Server = server$server$Server;
-  declare export type IncomingMessage = server$server$IncomingMessage;
-  declare export type ServerRequest = server$server$IncomingMessage;
-  declare export type ServerResponse = server$server$ServerResponse;
-  declare export type PlainServer = server$server$PlainServer;
-  declare export type ServerOptions = server$server$ServerOptions;
+  declare export type Agent = agent$Agent;
+  declare export type PlainAgent = agent$PlainAgent;
+  declare export type AgentOptions = agent$AgentOptions;
+  declare export type Socket = socket$Socket;
+  declare export type Server = server$Server;
+  declare export type IncomingMessage = server$IncomingMessage;
+  declare export type ServerRequest = server$IncomingMessage;
+  declare export type ServerResponse = server$ServerResponse;
+  declare export type PlainServer = server$PlainServer;
+  declare export type ServerOptions = server$ServerOptions;
   declare export function createAgent(
     base: any,
     options: agent$AgentOptions
@@ -156,7 +159,7 @@ declare module "spdy" {
     options: server$ServerOptions,
     handler: (
       request: server$IncomingMessage,
-      response: http.server$ServerResponse
+      response: http.ServerResponse
     ) => void
   ): server$Server;
 
@@ -164,14 +167,14 @@ declare module "spdy" {
     options: server$ServerOptions,
     handler: (
       request: server$IncomingMessage,
-      response: http.server$ServerResponse
+      response: http.ServerResponse
     ) => void
   ): server$Server;
 
   declare export function createServer(
     handler: (
       request: server$IncomingMessage,
-      response: http.server$ServerResponse
+      response: http.ServerResponse
     ) => void
   ): server$Server;
 }
