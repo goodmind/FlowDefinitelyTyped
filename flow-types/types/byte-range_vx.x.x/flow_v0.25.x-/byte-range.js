@@ -1,5 +1,5 @@
 declare module "byte-range" {
-  declare module.exports: typeof byteRange;
+  declare export default typeof byteRange;
 
   /**
    * Calculates integer ranges for a given number of bytes.
@@ -7,8 +7,8 @@ declare module "byte-range" {
    */
   declare function byteRange(
     bytes: number,
-    options?: byteRange$byteRange$Options
-  ): byteRange$byteRange$ByteRange;
+    options?: byteRange$Options
+  ): byteRange$ByteRange;
 
   declare var npm$namespace$byteRange: {
     uint8: typeof byteRange$uint8,
