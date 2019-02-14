@@ -43,7 +43,9 @@ declare module "yog-log" {
   ): (req: Request, resp: Response, next: NextFunction) => any;
 
   declare var npm$namespace$yog_log: {
-    getLogger: typeof yog_log$getLogger
+    getLogger: typeof yog_log$getLogger,
+
+    Logger: typeof yog_log$Logger
   };
   declare class yog_log$Logger {
     constructor(opts: LogConfig, req: Request): this;
@@ -77,5 +79,5 @@ declare module "yog-log" {
 
   declare function yog_log$getLogger(config?: LogConfig): yog_log$Logger;
 
-  declare module.exports: typeof yog_log;
+  declare export default typeof yog_log;
 }
