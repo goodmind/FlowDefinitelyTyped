@@ -3,7 +3,7 @@ import generate from "@babel/generator";
 import * as t from "@babel/types";
 
 const code = "class Example {}";
-declare const ast: t.Node;
+declare var ast: t.Node;
 
 ast.type;
 ast.loc!.start;

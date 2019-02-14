@@ -6,8 +6,8 @@ const options: babel.TransformOptions = {
 };
 
 babel.transform("code();", options, (err, result) => {
-    const { code, map, ast } = result!;
-    const { body } = ast!.program;
+    const { code, map, ast } = result;
+    const { body } = ast.program;
 });
 
 const transformSyncResult = babel.transformSync("code();", options);

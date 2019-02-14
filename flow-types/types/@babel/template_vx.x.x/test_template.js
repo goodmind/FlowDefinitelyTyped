@@ -7,8 +7,8 @@ const buildRequire = template.statement(`
 `);
 
 const ast1 = buildRequire({
-    IMPORT_NAME: t.identifier("myModule"),
-    SOURCE: t.stringLiteral("my-module")
+  IMPORT_NAME: t.identifier("myModule"),
+  SOURCE: t.stringLiteral("my-module")
 });
 
 console.log(generate(ast1).code);
@@ -22,12 +22,12 @@ const fn = template.statement`
 `;
 
 const ast3 = fn({
-    IMPORT_NAME: t.identifier("myModule")
+  IMPORT_NAME: t.identifier("myModule")
 });
 
 console.log(generate(ast3).code);
 
-declare const mod: string;
+declare var mod: string;
 
 const ast4 = template.ast`
   var ${mod} = require("${name}");
