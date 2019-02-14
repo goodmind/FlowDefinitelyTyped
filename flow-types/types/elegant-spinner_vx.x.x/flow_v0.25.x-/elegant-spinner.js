@@ -1,5 +1,5 @@
 declare module "elegant-spinner" {
-  declare module.exports: typeof elegantSpinner;
+  declare export default typeof elegantSpinner;
 
   declare function elegantSpinner(): () => string;
 
