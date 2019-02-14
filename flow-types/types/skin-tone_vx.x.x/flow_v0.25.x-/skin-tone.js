@@ -1,5 +1,5 @@
 declare module "skin-tone" {
-  declare module.exports: typeof skinTone;
+  declare export default typeof skinTone;
 
   declare function skinTone(emoji: string, type: 0 | 1 | 2 | 3 | 4 | 5): string;
 
