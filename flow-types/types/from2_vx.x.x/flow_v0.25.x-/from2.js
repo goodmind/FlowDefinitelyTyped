@@ -1,18 +1,18 @@
 declare module "from2" {
   import typeof * as stream from "stream";
 
-  declare module.exports: typeof from2;
+  declare export default typeof from2;
 
-  declare function from2(read: from2$from2$ReadInput): NodeJS.ReadableStream;
+  declare function from2(read: from2$ReadInput): NodeJS.ReadableStream;
 
   declare function from2(
-    opts: from2$from2$ObjectModeOptions,
-    read: from2$from2$ReadObjectInput
+    opts: from2$ObjectModeOptions,
+    read: from2$ReadObjectInput
   ): NodeJS.ReadableStream;
 
   declare function from2(
-    opts: from2$from2$Options,
-    read: from2$from2$ReadInput
+    opts: from2$Options,
+    read: from2$ReadInput
   ): NodeJS.ReadableStream;
 
   declare var npm$namespace$from2: {
