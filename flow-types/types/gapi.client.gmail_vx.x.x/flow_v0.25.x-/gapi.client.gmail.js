@@ -1,23 +1,30 @@
 declare module "gapi.client.gmail" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Gmail API v1
    */
-  declare function client$load(name: "gmail", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "gmail",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "gmail",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$users: gmail$gmail$UsersResource;
+  declare var gapi$client$users: gmail$UsersResource;
 
-  declare interface gmail$AutoForwarding {
+  declare interface gapi$client$gmail$AutoForwarding {
     /**
      * The state that a message should be left in after it has been forwarded.
      */
@@ -34,14 +41,14 @@ declare module "gapi.client.gmail" {
     enabled?: boolean;
   }
 
-  declare interface gmail$BatchDeleteMessagesRequest {
+  declare interface gapi$client$gmail$BatchDeleteMessagesRequest {
     /**
      * The IDs of the messages to delete.
      */
     ids?: string[];
   }
 
-  declare interface gmail$BatchModifyMessagesRequest {
+  declare interface gapi$client$gmail$BatchModifyMessagesRequest {
     /**
      * A list of label IDs to add to messages.
      */
@@ -58,7 +65,7 @@ declare module "gapi.client.gmail" {
     removeLabelIds?: string[];
   }
 
-  declare interface gmail$Draft {
+  declare interface gapi$client$gmail$Draft {
     /**
      * The immutable ID of the draft.
      */
@@ -70,7 +77,7 @@ declare module "gapi.client.gmail" {
     message?: gmail$Message;
   }
 
-  declare interface gmail$Filter {
+  declare interface gapi$client$gmail$Filter {
     /**
      * Action that the filter performs.
      */
@@ -87,7 +94,7 @@ declare module "gapi.client.gmail" {
     id?: string;
   }
 
-  declare interface gmail$FilterAction {
+  declare interface gapi$client$gmail$FilterAction {
     /**
      * List of labels to add to the message.
      */
@@ -104,7 +111,7 @@ declare module "gapi.client.gmail" {
     removeLabelIds?: string[];
   }
 
-  declare interface gmail$FilterCriteria {
+  declare interface gapi$client$gmail$FilterCriteria {
     /**
      * Whether the response should exclude chats.
      */
@@ -154,7 +161,7 @@ declare module "gapi.client.gmail" {
     to?: string;
   }
 
-  declare interface gmail$ForwardingAddress {
+  declare interface gapi$client$gmail$ForwardingAddress {
     /**
      * An email address to which messages can be forwarded.
      */
@@ -166,7 +173,7 @@ declare module "gapi.client.gmail" {
     verificationStatus?: string;
   }
 
-  declare interface gmail$History {
+  declare interface gapi$client$gmail$History {
     /**
      * The mailbox sequence ID.
      */
@@ -199,7 +206,7 @@ declare module "gapi.client.gmail" {
     messagesDeleted?: gmail$HistoryMessageDeleted[];
   }
 
-  declare interface gmail$HistoryLabelAdded {
+  declare interface gapi$client$gmail$HistoryLabelAdded {
     /**
      * Label IDs added to the message.
      */
@@ -207,7 +214,7 @@ declare module "gapi.client.gmail" {
     message?: gmail$Message;
   }
 
-  declare interface gmail$HistoryLabelRemoved {
+  declare interface gapi$client$gmail$HistoryLabelRemoved {
     /**
      * Label IDs removed from the message.
      */
@@ -215,15 +222,15 @@ declare module "gapi.client.gmail" {
     message?: gmail$Message;
   }
 
-  declare interface gmail$HistoryMessageAdded {
+  declare interface gapi$client$gmail$HistoryMessageAdded {
     message?: gmail$Message;
   }
 
-  declare interface gmail$HistoryMessageDeleted {
+  declare interface gapi$client$gmail$HistoryMessageDeleted {
     message?: gmail$Message;
   }
 
-  declare interface gmail$ImapSettings {
+  declare interface gapi$client$gmail$ImapSettings {
     /**
      * If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the
      * client before expunging messages marked as deleted.
@@ -247,7 +254,7 @@ declare module "gapi.client.gmail" {
     maxFolderSize?: number;
   }
 
-  declare interface gmail$Label {
+  declare interface gapi$client$gmail$Label {
     /**
      * The immutable ID of the label.
      */
@@ -297,11 +304,11 @@ declare module "gapi.client.gmail" {
     type?: string;
   }
 
-  declare interface gmail$ListDraftsResponse {
+  declare interface gapi$client$gmail$ListDraftsResponse {
     /**
      * List of drafts.
      */
-    drafts?: gmail$Draft[];
+    drafts?: gapi$client$gmail$Draft[];
 
     /**
      * Token to retrieve the next page of results in the list.
@@ -314,25 +321,25 @@ declare module "gapi.client.gmail" {
     resultSizeEstimate?: number;
   }
 
-  declare interface gmail$ListFiltersResponse {
+  declare interface gapi$client$gmail$ListFiltersResponse {
     /**
      * List of a user's filters.
      */
-    filter?: gmail$Filter[];
+    filter?: gapi$client$gmail$Filter[];
   }
 
-  declare interface gmail$ListForwardingAddressesResponse {
+  declare interface gapi$client$gmail$ListForwardingAddressesResponse {
     /**
      * List of addresses that may be used for forwarding.
      */
-    forwardingAddresses?: gmail$ForwardingAddress[];
+    forwardingAddresses?: gapi$client$gmail$ForwardingAddress[];
   }
 
-  declare interface gmail$ListHistoryResponse {
+  declare interface gapi$client$gmail$ListHistoryResponse {
     /**
      * List of history records. Any messages contained in the response will typically only have id and threadId fields populated.
      */
-    history?: gmail$History[];
+    history?: gapi$client$gmail$History[];
 
     /**
      * The ID of the mailbox's current history record.
@@ -345,14 +352,14 @@ declare module "gapi.client.gmail" {
     nextPageToken?: string;
   }
 
-  declare interface gmail$ListLabelsResponse {
+  declare interface gapi$client$gmail$ListLabelsResponse {
     /**
      * List of labels.
      */
-    labels?: gmail$Label[];
+    labels?: gapi$client$gmail$Label[];
   }
 
-  declare interface gmail$ListMessagesResponse {
+  declare interface gapi$client$gmail$ListMessagesResponse {
     /**
      * List of messages.
      */
@@ -369,21 +376,21 @@ declare module "gapi.client.gmail" {
     resultSizeEstimate?: number;
   }
 
-  declare interface gmail$ListSendAsResponse {
+  declare interface gapi$client$gmail$ListSendAsResponse {
     /**
      * List of send-as aliases.
      */
     sendAs?: gmail$SendAs[];
   }
 
-  declare interface gmail$ListSmimeInfoResponse {
+  declare interface gapi$client$gmail$ListSmimeInfoResponse {
     /**
      * List of SmimeInfo.
      */
     smimeInfo?: gmail$SmimeInfo[];
   }
 
-  declare interface gmail$ListThreadsResponse {
+  declare interface gapi$client$gmail$ListThreadsResponse {
     /**
      * Page token to retrieve the next page of results in the list.
      */
@@ -400,7 +407,7 @@ declare module "gapi.client.gmail" {
     threads?: gmail$Thread[];
   }
 
-  declare interface gmail$Message {
+  declare interface gapi$client$gmail$Message {
     /**
      * The ID of the last history record that modified this message.
      */
@@ -453,7 +460,7 @@ declare module "gapi.client.gmail" {
     threadId?: string;
   }
 
-  declare interface gmail$MessagePart {
+  declare interface gapi$client$gmail$MessagePart {
     /**
      * The message part body for this part, which may be empty for container MIME message parts.
      */
@@ -484,10 +491,10 @@ declare module "gapi.client.gmail" {
      * The child MIME message parts of this part. This only applies to container MIME message parts, for example multipart/&#42;. For non- container MIME message
      * part types, such as text/plain, this field is empty. For more information, see RFC 1521.
      */
-    parts?: gmail$MessagePart[];
+    parts?: gapi$client$gmail$MessagePart[];
   }
 
-  declare interface gmail$MessagePartBody {
+  declare interface gapi$client$gmail$MessagePartBody {
     /**
      * When present, contains the ID of an external attachment that can be retrieved in a separate messages.attachments.get request. When not present, the
      * entire content of the message part body is contained in the data field.
@@ -506,7 +513,7 @@ declare module "gapi.client.gmail" {
     size?: number;
   }
 
-  declare interface gmail$MessagePartHeader {
+  declare interface gapi$client$gmail$MessagePartHeader {
     /**
      * The name of the header before the : separator. For example, To.
      */
@@ -518,7 +525,7 @@ declare module "gapi.client.gmail" {
     value?: string;
   }
 
-  declare interface gmail$ModifyMessageRequest {
+  declare interface gapi$client$gmail$ModifyMessageRequest {
     /**
      * A list of IDs of labels to add to this message.
      */
@@ -530,7 +537,7 @@ declare module "gapi.client.gmail" {
     removeLabelIds?: string[];
   }
 
-  declare interface gmail$ModifyThreadRequest {
+  declare interface gapi$client$gmail$ModifyThreadRequest {
     /**
      * A list of IDs of labels to add to this thread.
      */
@@ -542,7 +549,7 @@ declare module "gapi.client.gmail" {
     removeLabelIds?: string[];
   }
 
-  declare interface gmail$PopSettings {
+  declare interface gapi$client$gmail$PopSettings {
     /**
      * The range of messages which are accessible via POP.
      */
@@ -554,7 +561,7 @@ declare module "gapi.client.gmail" {
     disposition?: string;
   }
 
-  declare interface gmail$Profile {
+  declare interface gapi$client$gmail$Profile {
     /**
      * The user's email address.
      */
@@ -576,7 +583,7 @@ declare module "gapi.client.gmail" {
     threadsTotal?: number;
   }
 
-  declare interface gmail$SendAs {
+  declare interface gapi$client$gmail$SendAs {
     /**
      * A name that appears in the "From:" header for mail sent using this alias. For custom "from" addresses, when this is empty, Gmail will populate the
      * "From:" header with the name that is used for the primary address associated with the account.
@@ -629,7 +636,7 @@ declare module "gapi.client.gmail" {
     verificationStatus?: string;
   }
 
-  declare interface gmail$SmimeInfo {
+  declare interface gapi$client$gmail$SmimeInfo {
     /**
      * Encrypted key password, when key is encrypted.
      */
@@ -669,7 +676,7 @@ declare module "gapi.client.gmail" {
     pkcs12?: string;
   }
 
-  declare interface gmail$SmtpMsa {
+  declare interface gapi$client$gmail$SmtpMsa {
     /**
      * The hostname of the SMTP service. Required.
      */
@@ -698,7 +705,7 @@ declare module "gapi.client.gmail" {
     username?: string;
   }
 
-  declare interface gmail$Thread {
+  declare interface gapi$client$gmail$Thread {
     /**
      * The ID of the last history record that modified this thread.
      */
@@ -712,7 +719,7 @@ declare module "gapi.client.gmail" {
     /**
      * The list of messages in the thread.
      */
-    messages?: gmail$Message[];
+    messages?: gapi$client$gmail$Message[];
 
     /**
      * A short part of the message text.
@@ -720,7 +727,7 @@ declare module "gapi.client.gmail" {
     snippet?: string;
   }
 
-  declare interface gmail$VacationSettings {
+  declare interface gapi$client$gmail$VacationSettings {
     /**
      * Flag that controls whether Gmail automatically replies to messages.
      */
@@ -765,7 +772,7 @@ declare module "gapi.client.gmail" {
     startTime?: string;
   }
 
-  declare interface gmail$WatchRequest {
+  declare interface gapi$client$gmail$WatchRequest {
     /**
      * Filtering behavior of labelIds list specified.
      */
@@ -787,7 +794,7 @@ declare module "gapi.client.gmail" {
     topicName?: string;
   }
 
-  declare interface gmail$WatchResponse {
+  declare interface gapi$client$gmail$WatchResponse {
     /**
      * When Gmail will stop sending notifications for mailbox updates (epoch millis). Call watch again before this time to renew the watch.
      */
@@ -799,7 +806,7 @@ declare module "gapi.client.gmail" {
     historyId?: string;
   }
 
-  declare interface gmail$DraftsResource {
+  declare interface gapi$client$gmail$DraftsResource {
     /**
      * Creates a new draft with the DRAFT label.
      */
@@ -844,7 +851,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Draft>;
+    }): Request<gapi$client$gmail$Draft>;
 
     /**
      * Immediately and permanently deletes the specified draft. Does not simply trash it.
@@ -951,7 +958,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Draft>;
+    }): Request<gapi$client$gmail$Draft>;
 
     /**
      * Lists the drafts in the user's mailbox.
@@ -1018,7 +1025,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListDraftsResponse>;
+    }): Request<gapi$client$gmail$ListDraftsResponse>;
 
     /**
      * Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.
@@ -1064,7 +1071,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Replaces a draft's content.
@@ -1115,10 +1122,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Draft>;
+    }): Request<gapi$client$gmail$Draft>;
   }
 
-  declare interface gmail$HistoryResource {
+  declare interface gapi$client$gmail$HistoryResource {
     /**
      * Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing historyId).
      */
@@ -1192,10 +1199,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListHistoryResponse>;
+    }): Request<gapi$client$gmail$ListHistoryResponse>;
   }
 
-  declare interface gmail$LabelsResource {
+  declare interface gapi$client$gmail$LabelsResource {
     /**
      * Creates a new label.
      */
@@ -1240,7 +1247,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Label>;
+    }): Request<gapi$client$gmail$Label>;
 
     /**
      * Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.
@@ -1342,7 +1349,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Label>;
+    }): Request<gapi$client$gmail$Label>;
 
     /**
      * Lists all labels in the user's mailbox.
@@ -1388,7 +1395,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListLabelsResponse>;
+    }): Request<gapi$client$gmail$ListLabelsResponse>;
 
     /**
      * Updates the specified label. This method supports patch semantics.
@@ -1439,7 +1446,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Label>;
+    }): Request<gapi$client$gmail$Label>;
 
     /**
      * Updates the specified label.
@@ -1490,10 +1497,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Label>;
+    }): Request<gapi$client$gmail$Label>;
   }
 
-  declare interface gmail$AttachmentsResource {
+  declare interface gapi$client$gmail$AttachmentsResource {
     /**
      * Gets the specified message attachment.
      */
@@ -1548,10 +1555,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$MessagePartBody>;
+    }): Request<gapi$client$gmail$MessagePartBody>;
   }
 
-  declare interface gmail$MessagesResource {
+  declare interface gapi$client$gmail$MessagesResource {
     /**
      * Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.
      */
@@ -1754,7 +1761,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. Does not send
@@ -1821,7 +1828,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Directly inserts a message into only this user's mailbox similar to IMAP APPEND, bypassing most scanning and classification. Does not send a message.
@@ -1877,7 +1884,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Lists the messages in the user's mailbox.
@@ -1949,7 +1956,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListMessagesResponse>;
+    }): Request<gapi$client$gmail$ListMessagesResponse>;
 
     /**
      * Modifies the labels on the specified message.
@@ -2000,7 +2007,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Sends the specified message to the recipients in the To, Cc, and Bcc headers.
@@ -2046,7 +2053,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Moves the specified message to the trash.
@@ -2097,7 +2104,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
+    }): Request<gapi$client$gmail$Message>;
 
     /**
      * Removes the specified message from the trash.
@@ -2148,11 +2155,11 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Message>;
-    attachments: gmail$AttachmentsResource;
+    }): Request<gapi$client$gmail$Message>;
+    attachments: gapi$client$gmail$AttachmentsResource;
   }
 
-  declare interface gmail$FiltersResource {
+  declare interface gapi$client$gmail$FiltersResource {
     /**
      * Creates a filter.
      */
@@ -2197,7 +2204,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Filter>;
+    }): Request<gapi$client$gmail$Filter>;
 
     /**
      * Deletes a filter.
@@ -2299,7 +2306,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Filter>;
+    }): Request<gapi$client$gmail$Filter>;
 
     /**
      * Lists the message filters of a Gmail user.
@@ -2345,10 +2352,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListFiltersResponse>;
+    }): Request<gapi$client$gmail$ListFiltersResponse>;
   }
 
-  declare interface gmail$ForwardingAddressesResource {
+  declare interface gapi$client$gmail$ForwardingAddressesResource {
     /**
      * Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status
      * will be set to pending; otherwise, the resource will be created with verification status set to accepted.
@@ -2396,7 +2403,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ForwardingAddress>;
+    }): Request<gapi$client$gmail$ForwardingAddress>;
 
     /**
      * Deletes the specified forwarding address and revokes any verification that may have been required.
@@ -2500,7 +2507,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ForwardingAddress>;
+    }): Request<gapi$client$gmail$ForwardingAddress>;
 
     /**
      * Lists the forwarding addresses for the specified account.
@@ -2546,10 +2553,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListForwardingAddressesResponse>;
+    }): Request<gapi$client$gmail$ListForwardingAddressesResponse>;
   }
 
-  declare interface gmail$SmimeInfoResource {
+  declare interface gapi$client$gmail$SmimeInfoResource {
     /**
      * Deletes the specified S/MIME config for the specified send-as alias.
      */
@@ -2660,7 +2667,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SmimeInfo>;
+    }): Request<gapi$client$gmail$SmimeInfo>;
 
     /**
      * Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.
@@ -2711,7 +2718,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SmimeInfo>;
+    }): Request<gapi$client$gmail$SmimeInfo>;
 
     /**
      * Lists S/MIME configs for the specified send-as alias.
@@ -2762,7 +2769,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListSmimeInfoResponse>;
+    }): Request<gapi$client$gmail$ListSmimeInfoResponse>;
 
     /**
      * Sets the default S/MIME config for the specified send-as alias.
@@ -2821,7 +2828,7 @@ declare module "gapi.client.gmail" {
     }): Request<void>;
   }
 
-  declare interface gmail$SendAsResource {
+  declare interface gapi$client$gmail$SendAsResource {
     /**
      * Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration
      * before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's
@@ -2871,7 +2878,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SendAs>;
+    }): Request<gapi$client$gmail$SendAs>;
 
     /**
      * Deletes the specified send-as alias. Revokes any verification that may have been required for using it.
@@ -2975,7 +2982,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SendAs>;
+    }): Request<gapi$client$gmail$SendAs>;
 
     /**
      * Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom
@@ -3022,7 +3029,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListSendAsResponse>;
+    }): Request<gapi$client$gmail$ListSendAsResponse>;
 
     /**
      * Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias.
@@ -3076,7 +3083,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SendAs>;
+    }): Request<gapi$client$gmail$SendAs>;
 
     /**
      * Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias.
@@ -3129,7 +3136,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$SendAs>;
+    }): Request<gapi$client$gmail$SendAs>;
 
     /**
      * Sends a verification email to the specified send-as alias address. The verification status must be pending.
@@ -3183,10 +3190,10 @@ declare module "gapi.client.gmail" {
        */
       userIp?: string
     }): Request<void>;
-    smimeInfo: gmail$SmimeInfoResource;
+    smimeInfo: gapi$client$gmail$SmimeInfoResource;
   }
 
-  declare interface gmail$SettingsResource {
+  declare interface gapi$client$gmail$SettingsResource {
     /**
      * Gets the auto-forwarding setting for the specified account.
      */
@@ -3231,7 +3238,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$AutoForwarding>;
+    }): Request<gapi$client$gmail$AutoForwarding>;
 
     /**
      * Gets IMAP settings.
@@ -3277,7 +3284,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ImapSettings>;
+    }): Request<gapi$client$gmail$ImapSettings>;
 
     /**
      * Gets POP settings.
@@ -3323,7 +3330,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$PopSettings>;
+    }): Request<gapi$client$gmail$PopSettings>;
 
     /**
      * Gets vacation responder settings.
@@ -3369,7 +3376,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$VacationSettings>;
+    }): Request<gapi$client$gmail$VacationSettings>;
 
     /**
      * Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled.
@@ -3417,7 +3424,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$AutoForwarding>;
+    }): Request<gapi$client$gmail$AutoForwarding>;
 
     /**
      * Updates IMAP settings.
@@ -3463,7 +3470,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ImapSettings>;
+    }): Request<gapi$client$gmail$ImapSettings>;
 
     /**
      * Updates POP settings.
@@ -3509,7 +3516,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$PopSettings>;
+    }): Request<gapi$client$gmail$PopSettings>;
 
     /**
      * Updates vacation responder settings.
@@ -3555,13 +3562,13 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$VacationSettings>;
-    filters: gmail$FiltersResource;
-    forwardingAddresses: gmail$ForwardingAddressesResource;
-    sendAs: gmail$SendAsResource;
+    }): Request<gapi$client$gmail$VacationSettings>;
+    filters: gapi$client$gmail$FiltersResource;
+    forwardingAddresses: gapi$client$gmail$ForwardingAddressesResource;
+    sendAs: gapi$client$gmail$SendAsResource;
   }
 
-  declare interface gmail$ThreadsResource {
+  declare interface gapi$client$gmail$ThreadsResource {
     /**
      * Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer threads.trash instead.
      */
@@ -3672,7 +3679,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Thread>;
+    }): Request<gapi$client$gmail$Thread>;
 
     /**
      * Lists the threads in the user's mailbox.
@@ -3744,7 +3751,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$ListThreadsResponse>;
+    }): Request<gapi$client$gmail$ListThreadsResponse>;
 
     /**
      * Modifies the labels applied to the thread. This applies to all messages in the thread.
@@ -3795,7 +3802,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Thread>;
+    }): Request<gapi$client$gmail$Thread>;
 
     /**
      * Moves the specified thread to the trash.
@@ -3846,7 +3853,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Thread>;
+    }): Request<gapi$client$gmail$Thread>;
 
     /**
      * Removes the specified thread from the trash.
@@ -3897,10 +3904,10 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Thread>;
+    }): Request<gapi$client$gmail$Thread>;
   }
 
-  declare interface gmail$UsersResource {
+  declare interface gapi$client$gmail$UsersResource {
     /**
      * Gets the current user's Gmail profile.
      */
@@ -3945,7 +3952,7 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$Profile>;
+    }): Request<gapi$client$gmail$Profile>;
 
     /**
      * Stop receiving push notifications for the given user mailbox.
@@ -4037,12 +4044,12 @@ declare module "gapi.client.gmail" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gmail$WatchResponse>;
-    drafts: gmail$DraftsResource;
-    history: gmail$HistoryResource;
-    labels: gmail$LabelsResource;
-    messages: gmail$MessagesResource;
-    settings: gmail$SettingsResource;
-    threads: gmail$ThreadsResource;
+    }): Request<gapi$client$gmail$WatchResponse>;
+    drafts: gapi$client$gmail$DraftsResource;
+    history: gapi$client$gmail$HistoryResource;
+    labels: gapi$client$gmail$LabelsResource;
+    messages: gapi$client$gmail$MessagesResource;
+    settings: gapi$client$gmail$SettingsResource;
+    threads: gapi$client$gmail$ThreadsResource;
   }
 }
