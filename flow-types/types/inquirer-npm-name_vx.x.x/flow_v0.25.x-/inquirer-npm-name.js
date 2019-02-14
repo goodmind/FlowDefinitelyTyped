@@ -8,5 +8,5 @@ declare module "inquirer-npm-name" {
     [key: string]: string
   }>;
 
-  declare module.exports: typeof askName;
+  declare export default typeof askName;
 }
