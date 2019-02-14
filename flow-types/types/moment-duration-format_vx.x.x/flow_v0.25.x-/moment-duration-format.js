@@ -1,8 +1,8 @@
-declare var npm$namespace$duration: {
-  fn: typeof duration$fn
-};
-declare var duration$fn: Duration;
 declare module "moment" {
+  declare var npm$namespace$duration: {
+    fn: typeof duration$fn
+  };
+  declare var duration$fn: Duration;
   declare interface Duration {
     format: Format;
   }
@@ -110,5 +110,5 @@ declare module "moment-duration-format" {
 
   declare function momentDurationFormatSetup(_moment: typeof moment): void;
 
-  declare module.exports: typeof momentDurationFormatSetup;
+  declare export default typeof momentDurationFormatSetup;
 }
