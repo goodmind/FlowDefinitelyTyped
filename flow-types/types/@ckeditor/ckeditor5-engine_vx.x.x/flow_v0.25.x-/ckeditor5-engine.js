@@ -1,34 +1,38 @@
 declare module "@ckeditor/ckeditor5-engine" {
   import typeof * as ckutils from "ckeditor__ckeditor5-utils";
 
+  declare var npm$namespace$controller: {
+    DataController: typeof controller$DataController,
+    EditingController: typeof controller$EditingController
+  };
   declare class controller$DataController
     mixins ckutils.Emitter, ckutils.Observable {
-    downcastDispatcher: conversion$conversion$DowncastDispatcher;
-    mapper: conversion$conversion$Mapper;
-    model: model$model$Model;
-    processor: dataprocessor$dataprocessor$DataProcessor;
-    upcastDispatcher: conversion$conversion$UpcastDispatcher;
+    downcastDispatcher: conversion$DowncastDispatcher;
+    mapper: conversion$Mapper;
+    model: model$Model;
+    processor: dataprocessor$DataProcessor;
+    upcastDispatcher: conversion$UpcastDispatcher;
     constructor(
-      model: model$model$Model,
-      dataProcessor?: dataprocessor$dataprocessor$DataProcessor
+      model: model$Model,
+      dataProcessor?: dataprocessor$DataProcessor
     ): this;
     destroy(): void;
     get(rootName?: string): string;
     init(data: string, rootName?: string): Promise<any>;
     parse(
       data: string,
-      context?: model$model$SchemaContextDefinition
-    ): model$view$DocumentFragment;
+      context?: model$SchemaContextDefinition
+    ): model$DocumentFragment;
     stringify(
-      modelElementOrFragment: view$Element | model$view$DocumentFragment
+      modelElementOrFragment: view$Element | model$DocumentFragment
     ): string;
     toModel(
-      viewElementOrFragment: view$Element | model$view$DocumentFragment,
-      context?: model$model$SchemaContextDefinition
-    ): model$view$DocumentFragment;
+      viewElementOrFragment: view$Element | model$DocumentFragment,
+      context?: model$SchemaContextDefinition
+    ): model$DocumentFragment;
     toView(
-      modelElementOrFragment: view$Element | model$view$DocumentFragment
-    ): model$view$DocumentFragment;
+      modelElementOrFragment: view$Element | model$DocumentFragment
+    ): model$DocumentFragment;
     delegate(...events: string[]): ckutils.EmitterMixinDelegateChain;
     fire(
       eventOrInfo: string | ckutils.EventInfo<ckutils.Emitter>,
@@ -72,11 +76,11 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class controller$EditingController
     mixins ckutils.Emitter, ckutils.Observable {
-    downcastDispatcher: conversion$conversion$DowncastDispatcher;
-    mapper: conversion$conversion$Mapper;
-    model: model$model$Model;
-    view: view$view$View;
-    constructor(model: model$model$Model): this;
+    downcastDispatcher: conversion$DowncastDispatcher;
+    mapper: conversion$Mapper;
+    model: model$Model;
+    view: view$View;
+    constructor(model: model$Model): this;
     destroy(): void;
     delegate(...events: string[]): ckutils.EmitterMixinDelegateChain;
     fire(
@@ -129,14 +133,21 @@ declare module "@ckeditor/ckeditor5-engine" {
     upcastElementToAttribute: typeof conversion$upcastElementToAttribute,
     upcastElementToElement: typeof conversion$upcastElementToElement,
     upcastElementToMarker: typeof conversion$upcastElementToMarker,
-    convertSelectionChange: typeof conversion$convertSelectionChange
+    convertSelectionChange: typeof conversion$convertSelectionChange,
+
+    Conversion: typeof conversion$Conversion,
+    DowncastDispatcher: typeof conversion$DowncastDispatcher,
+    Mapper: typeof conversion$Mapper,
+    ModelConsumable: typeof conversion$ModelConsumable,
+    UpcastDispatcher: typeof conversion$UpcastDispatcher,
+    ViewConsumable: typeof conversion$ViewConsumable
   };
   declare class conversion$Conversion {
     constructor(): this;
     attributeToAttribute(definition?: {
       model: string | Object,
       view?: string | Object,
-      upcastAlso?: view$view$MatcherPattern | view$view$MatcherPattern[]
+      upcastAlso?: view$MatcherPattern | view$MatcherPattern[]
     }): void;
     attributeToElement(definition: conversion$ConverterDefinition): void;
     elementToElement(definition: conversion$ConverterDefinition): void;
@@ -156,8 +167,8 @@ declare module "@ckeditor/ckeditor5-engine" {
   declare interface conversion$ConverterDefinition {
     converterPriority: ckutils.PriorityString;
     model: any;
-    upcastAlso: view$view$MatcherPattern | view$view$MatcherPattern[];
-    view: view$view$ElementDefinition | Object;
+    upcastAlso: view$MatcherPattern | view$MatcherPattern[];
+    view: view$ElementDefinition | Object;
   }
 
   declare interface conversion$HighlightDescriptor {
@@ -177,50 +188,44 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class conversion$Mapper {
     constructor(): this;
-    bindElementToMarker(element: view$view$Element, name: string): void;
-    bindElements(
-      modelElement: model$view$Element,
-      viewElement: view$view$Element
-    ): void;
+    bindElementToMarker(element: view$Element, name: string): void;
+    bindElements(modelElement: model$Element, viewElement: view$Element): void;
     clearBindings(): void;
-    getModelLength(viewNode: view$view$Element): number;
-    markerNameToElements(name: string): Set<view$view$Element> | null;
+    getModelLength(viewNode: view$Element): number;
+    markerNameToElements(name: string): Set<view$Element> | null;
     registerViewToModelLength(
       viewElementName: string,
       lengthCallback: Function
     ): void;
-    toModelElement(viewElement: view$view$Element): model$view$Element | void;
-    toModelPosition(viewPosition: view$view$Position): model$view$Position;
-    toModelRange(viewRange: view$view$Range): model$view$Range;
-    toViewElement(modelElement: model$view$Element): view$view$Element | void;
+    toModelElement(viewElement: view$Element): model$Element | void;
+    toModelPosition(viewPosition: view$Position): model$Position;
+    toModelRange(viewRange: view$Range): model$Range;
+    toViewElement(modelElement: model$Element): view$Element | void;
     toViewPosition(
-      modelPosition: model$view$Position,
+      modelPosition: model$Position,
       options?: {
         isPhantom: boolean
       }
-    ): view$view$Position;
-    toViewRange(modelRange: model$view$Range): view$view$Range;
+    ): view$Position;
+    toViewRange(modelRange: model$Range): view$Range;
     unbindElementsFromMarkerName(name: string): void;
-    unbindModelElement(modelElement: model$view$Element): void;
-    unbindViewElement(viewElement: view$view$Element): void;
+    unbindModelElement(modelElement: model$Element): void;
+    unbindViewElement(viewElement: view$Element): void;
   }
 
   declare class conversion$ModelConsumable {
     constructor(): this;
-    add(
-      item: model$view$Item | model$view$Selection | model$view$Range,
-      type: string
-    ): void;
+    add(item: model$Item | model$Selection | model$Range, type: string): void;
     consume(
-      item: model$view$Item | model$view$Selection | model$view$Range,
+      item: model$Item | model$Selection | model$Range,
       type: string
     ): boolean;
     revert(
-      item: model$view$Item | model$view$Selection | model$view$Range,
+      item: model$Item | model$Selection | model$Range,
       type: string
     ): null | boolean;
     test(
-      item: model$view$Item | model$view$Selection | model$view$Range,
+      item: model$Item | model$Selection | model$Range,
       type: string
     ): null | boolean;
   }
@@ -247,7 +252,7 @@ declare module "@ckeditor/ckeditor5-engine" {
   }): Function;
 
   declare function conversion$upcastElementToAttribute(config: {
-    view: view$view$MatcherPattern,
+    view: view$MatcherPattern,
     model:
       | string
       | {
@@ -258,19 +263,19 @@ declare module "@ckeditor/ckeditor5-engine" {
   }): Function;
 
   declare function conversion$upcastElementToElement(config: {
-    view: view$view$MatcherPattern,
+    view: view$MatcherPattern,
     model: string | view$Element | Function,
     converterPriority?: ckutils.PriorityString
   }): Function;
 
   declare function conversion$upcastElementToMarker(config: {
-    view: view$view$MatcherPattern,
+    view: view$MatcherPattern,
     model: string | Function,
     converterPriority?: ckutils.PriorityString
   }): Function;
 
   declare function conversion$convertSelectionChange(
-    model: model$model$Model,
+    model: model$Model,
     mapper: conversion$Mapper
   ): Function;
 
@@ -279,21 +284,25 @@ declare module "@ckeditor/ckeditor5-engine" {
   declare interface conversion$ViewConversionApi {}
 
   declare class conversion$ViewConsumable {}
-  declare class dataprocessor$BasicHtmlWriter mixins dataprocessor$HtmlWriter {
-    getHtml(fragment: model$view$DocumentFragment): string;
+
+  declare var npm$namespace$dataprocessor: {
+    BasicHtmlWriter: typeof dataprocessor$BasicHtmlWriter,
+    HtmlDataProcessor: typeof dataprocessor$HtmlDataProcessor,
+    XmlDataProcessor: typeof dataprocessor$XmlDataProcessor
+  };
+  declare class dataprocessor$BasicHtmlWriter mixins HtmlWriter {
+    getHtml(fragment: model$DocumentFragment): string;
   }
 
   declare interface dataprocessor$DataProcessor {}
 
-  declare class dataprocessor$HtmlDataProcessor
-    mixins dataprocessor$DataProcessor {}
+  declare class dataprocessor$HtmlDataProcessor mixins DataProcessor {}
 
   declare interface dataprocessor$HtmlWriter {
-    getHtml(fragment: model$view$DocumentFragment): string;
+    getHtml(fragment: model$DocumentFragment): string;
   }
 
-  declare class dataprocessor$XmlDataProcessor
-    mixins dataprocessor$DataProcessor {}
+  declare class dataprocessor$XmlDataProcessor mixins DataProcessor {}
 
   declare var npm$namespace$devUtils: {
     disableEngineDebug: typeof devUtils$disableEngineDebug,
@@ -301,7 +310,11 @@ declare module "@ckeditor/ckeditor5-engine" {
     getData: typeof devUtils$getData,
     parse: typeof devUtils$parse,
     setData: typeof devUtils$setData,
-    stringify: typeof devUtils$stringify
+    stringify: typeof devUtils$stringify,
+
+    DebugPlugin: typeof devUtils$DebugPlugin,
+    OperationReplayer: typeof devUtils$OperationReplayer,
+    devmodel: typeof npm$namespace$devUtils$devmodel
   };
   declare class devUtils$DebugPlugin {}
 
@@ -312,14 +325,14 @@ declare module "@ckeditor/ckeditor5-engine" {
     error: (...arg: any[]) => string
   }): devUtils$DebugPlugin;
 
-  declare var npm$namespace$devmodel: {
-    getData: typeof devmodel$getData,
-    parse: typeof devmodel$parse,
-    setData: typeof devmodel$setData,
-    stringify: typeof devmodel$stringify
+  declare var npm$namespace$devUtils$devmodel: {
+    getData: typeof devUtils$devmodel$getData,
+    parse: typeof devUtils$devmodel$parse,
+    setData: typeof devUtils$devmodel$setData,
+    stringify: typeof devUtils$devmodel$stringify
   };
-  declare function devmodel$getData(
-    model: model$model$Model,
+  declare function devUtils$devmodel$getData(
+    model: model$Model,
     options?: {
       withoutSelection?: boolean,
       rootName?: string,
@@ -327,22 +340,18 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): string;
 
-  declare function devmodel$parse(
+  declare function devUtils$devmodel$parse(
     data: string,
-    schema: model$model$Schema,
-    batch: model$model$Batch,
+    schema: model$Schema,
+    batch: model$Batch,
     options?: {
       selectionAttributes?: Object[],
       lastRangeBackward?: boolean,
-      context?: model$model$SchemaContextDefinition
+      context?: model$SchemaContextDefinition
     }
-  ):
-    | model$view$Element
-    | model$view$Text
-    | model$view$DocumentFragment
-    | Object;
+  ): model$Element | model$Text | model$DocumentFragment | Object;
 
-  declare function devmodel$setData(
+  declare function devUtils$devmodel$setData(
     model: string,
     data: Object,
     options: {
@@ -353,23 +362,20 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): void;
 
-  declare function devmodel$stringify(
+  declare function devUtils$devmodel$stringify(
     node:
-      | model$model$RootElement
-      | model$view$Element
-      | model$view$Text
-      | model$view$DocumentFragment,
-    selectionOrPositionOrRange:
-      | model$view$Selection
-      | model$view$Position
-      | model$view$Range,
-    markers: Iterable<model$model$Marker> | null
+      | model$RootElement
+      | model$Element
+      | model$Text
+      | model$DocumentFragment,
+    selectionOrPositionOrRange: model$Selection | model$Position | model$Range,
+    markers: Iterable<model$Marker> | null
   ): string;
 
   declare class devUtils$OperationReplayer {}
 
   declare function devUtils$getData(
-    view: view$view$View,
+    view: view$View,
     options?: {
       withoutSelection?: boolean,
       rootName?: boolean,
@@ -385,13 +391,13 @@ declare module "@ckeditor/ckeditor5-engine" {
     options: {
       order?: number[],
       lastRangeBackward?: boolean,
-      rootElement?: view$view$Element | view$view$DocumentFragment,
+      rootElement?: view$Element | view$DocumentFragment,
       sameSelectionCharacters?: boolean
     }
-  ): view$view$Text | view$view$Element | view$view$DocumentFragment | Object;
+  ): view$Text | view$Element | view$DocumentFragment | Object;
 
   declare function devUtils$setData(
-    view: view$view$View,
+    view: view$View,
     data: string,
     options: {
       rootName?: string
@@ -399,11 +405,11 @@ declare module "@ckeditor/ckeditor5-engine" {
   ): void;
 
   declare function devUtils$stringify(
-    node: view$view$Text | view$view$Element | view$view$DocumentFragment,
+    node: view$Text | view$Element | view$DocumentFragment,
     selectionOrPositionOrRange?:
-      | view$view$DocumentSelection
-      | view$view$Position
-      | view$view$Range,
+      | view$DocumentSelection
+      | view$Position
+      | view$Range,
     options?: {
       showType?: boolean,
       showPriority?: boolean,
@@ -415,48 +421,89 @@ declare module "@ckeditor/ckeditor5-engine" {
   ): string;
 
   declare var npm$namespace$model: {
-    getItems: typeof model$getItems
+    getItems: typeof model$getItems,
+
+    Batch: typeof model$Batch,
+    Differ: typeof model$Differ,
+    Document: typeof model$Document,
+    DocumentFragment: typeof model$DocumentFragment,
+    DocumentSelection: typeof model$DocumentSelection,
+    Element: typeof model$Element,
+    History: typeof model$History,
+    LivePosition: typeof model$LivePosition,
+    LiveRange: typeof model$LiveRange,
+    Marker: typeof model$Marker,
+    MarkerCollection: typeof model$MarkerCollection,
+    Model: typeof model$Model,
+    Node: typeof model$Node,
+    NodeList: typeof model$NodeList,
+    Position: typeof model$Position,
+    Range: typeof model$Range,
+    RootElement: typeof model$RootElement,
+    Schema: typeof model$Schema,
+    SchemaContext: typeof model$SchemaContext,
+    Selection: typeof model$Selection,
+    Text: typeof model$Text,
+    TextProxy: typeof model$TextProxy,
+    TreeWalker: typeof model$TreeWalker,
+    Writer: typeof model$Writer,
+    operation: typeof npm$namespace$model$operation,
+    utils: typeof npm$namespace$model$utils
   };
 
-  declare var npm$namespace$operation: {
-    transform: typeof operation$transform,
-    transformSets: typeof operation$transformSets
+  declare var npm$namespace$model$operation: {
+    transform: typeof model$operation$transform,
+    transformSets: typeof model$operation$transformSets,
+
+    AttributeOperation: typeof model$operation$AttributeOperation,
+    DetachOperation: typeof model$operation$DetachOperation,
+    InsertOperation: typeof model$operation$InsertOperation,
+    MarkerOperation: typeof model$operation$MarkerOperation,
+    MergeOperation: typeof model$operation$MergeOperation,
+    MoveOperation: typeof model$operation$MoveOperation,
+    NoOperation: typeof model$operation$NoOperation,
+    Operation: typeof model$operation$Operation,
+    OperationFactory: typeof model$operation$OperationFactory,
+    RenameOperation: typeof model$operation$RenameOperation,
+    RootAttributeOperation: typeof model$operation$RootAttributeOperation,
+    SplitOperation: typeof model$operation$SplitOperation,
+    TransformationContext: typeof model$operation$TransformationContext
   };
-  declare class operation$AttributeOperation {}
+  declare class model$operation$AttributeOperation {}
 
-  declare class operation$DetachOperation {}
+  declare class model$operation$DetachOperation {}
 
-  declare class operation$InsertOperation {}
+  declare class model$operation$InsertOperation {}
 
-  declare class operation$MarkerOperation {}
+  declare class model$operation$MarkerOperation {}
 
-  declare class operation$MergeOperation {}
+  declare class model$operation$MergeOperation {}
 
-  declare class operation$MoveOperation {}
+  declare class model$operation$MoveOperation {}
 
-  declare class operation$NoOperation {}
+  declare class model$operation$NoOperation {}
 
-  declare class operation$Operation {}
+  declare class model$operation$Operation {}
 
-  declare class operation$OperationFactory {}
+  declare class model$operation$OperationFactory {}
 
-  declare class operation$RenameOperation {}
+  declare class model$operation$RenameOperation {}
 
-  declare class operation$RootAttributeOperation {}
+  declare class model$operation$RootAttributeOperation {}
 
-  declare class operation$SplitOperation {}
+  declare class model$operation$SplitOperation {}
 
-  declare class operation$TransformationContext {}
+  declare class model$operation$TransformationContext {}
 
-  declare function operation$transform(
-    a: operation$Operation,
-    b: operation$Operation,
-    context: operation$TransformationContext
-  ): operation$Operation[];
+  declare function model$operation$transform(
+    a: model$operation$Operation,
+    b: model$operation$Operation,
+    context: model$operation$TransformationContext
+  ): model$operation$Operation[];
 
-  declare function operation$transformSets(
-    operationsA: operation$Operation[],
-    operationsB: operation$Operation[],
+  declare function model$operation$transformSets(
+    operationsA: model$operation$Operation[],
+    operationsB: model$operation$Operation[],
     options: {
       document: view$Document | null,
       useRelations: boolean,
@@ -464,14 +511,14 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): { [key: string]: any };
 
-  declare var npm$namespace$utils: {
-    deleteContent: typeof utils$deleteContent,
-    getSelectedContent: typeof utils$getSelectedContent,
-    insertContent: typeof utils$insertContent,
-    modifySelection: typeof utils$modifySelection,
-    injectSelectionPostFixer: typeof utils$injectSelectionPostFixer
+  declare var npm$namespace$model$utils: {
+    deleteContent: typeof model$utils$deleteContent,
+    getSelectedContent: typeof model$utils$getSelectedContent,
+    insertContent: typeof model$utils$insertContent,
+    modifySelection: typeof model$utils$modifySelection,
+    injectSelectionPostFixer: typeof model$utils$injectSelectionPostFixer
   };
-  declare function utils$deleteContent(
+  declare function model$utils$deleteContent(
     model: model$Model,
     selection: view$Selection | view$DocumentSelection,
     batch: model$Batch,
@@ -481,12 +528,12 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): void;
 
-  declare function utils$getSelectedContent(
+  declare function model$utils$getSelectedContent(
     model: model$Model,
     selection: view$Selection | view$DocumentSelection
   ): view$DocumentFragment;
 
-  declare function utils$insertContent(
+  declare function model$utils$insertContent(
     model: model$Model,
     content: view$DocumentFragment | view$Item,
     selectable?:
@@ -499,7 +546,7 @@ declare module "@ckeditor/ckeditor5-engine" {
       | null
   ): void;
 
-  declare function utils$modifySelection(
+  declare function model$utils$modifySelection(
     model: model$Model,
     selection: view$Selection | view$DocumentSelection,
     options?: {
@@ -508,7 +555,9 @@ declare module "@ckeditor/ckeditor5-engine" {
     }
   ): void;
 
-  declare function utils$injectSelectionPostFixer(model: model$Model): void;
+  declare function model$utils$injectSelectionPostFixer(
+    model: model$Model
+  ): void;
 
   declare class model$Batch {}
 
@@ -524,7 +573,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     parent: null;
     root: model$DocumentFragment;
     constructor(children?: view$Node | Iterable<view$Node>): this;
-    undefined(): Iterator<view$Node>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$Node>;
     getChild(index: number): view$Node | null;
     getChildIndex(node: view$Node): number | null;
     getChildStartOffset(node: view$Node): number | null;
@@ -542,7 +591,7 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class model$DocumentSelection {}
 
-  declare class model$Element mixins view$Node {
+  declare class model$Element mixins Node {
     childCount: number;
     isEmpty: boolean;
     maxOffset: number;
@@ -583,7 +632,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     document: model$Document;
     markers: model$MarkerCollection;
     schema: model$Schema;
-    applyOperation(operation: operation$operation$Operation): void;
+    applyOperation(operation: operation$Operation): void;
     change(callback: Function): any;
     deleteContent(
       selection: view$Selection | model$DocumentSelection,
@@ -709,7 +758,7 @@ declare module "@ckeditor/ckeditor5-engine" {
   declare class model$NodeList mixins Iterable<model$Node> {
     length: number;
     maxOffset: number;
-    undefined(): Iterator<model$Node>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$Node>;
     getNode(index: number): model$Node | null;
     getNodeIndex(node: model$Node): number | null;
     getNodeStartOffset(node: model$Node): number | null;
@@ -747,9 +796,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     ): model$Position;
     getParentPath(): number[];
     getShiftedBy(shift: number): model$Position;
-    getTransformedByOperation(
-      operation: operation$operation$Operation
-    ): model$Position;
+    getTransformedByOperation(operation: operation$Operation): model$Position;
     hasSameParentAs(position: model$Position): boolean;
     isAfter(otherPosition: model$Position): boolean;
     isBefore(otherPosition: model$Position): boolean;
@@ -784,7 +831,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     root: model$Element | model$DocumentFragment;
     start: model$Position;
     constructor(start: model$Position, end?: model$Position): this;
-    undefined(): Iterator<model$Node>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$Node>;
     containsItem(item: model$Item): void;
     containsPosition(position: model$Position): boolean;
     containsRange(otherRange: model$Range, loose?: boolean): boolean;
@@ -793,11 +840,9 @@ declare module "@ckeditor/ckeditor5-engine" {
     getIntersection(otherRange: model$Range): model$Range | null;
     getMinimalFlatRanges(): model$Range[];
     getPositions(options: { [key: string]: any }): Iterable<model$Position>;
-    getTransformedByOperation(
-      operation: operation$operation$Operation
-    ): model$Range[];
+    getTransformedByOperation(operation: operation$Operation): model$Range[];
     getTransformedByOperations(
-      operations: Iterable<operation$operation$Operation>
+      operations: Iterable<operation$Operation>
     ): model$Range[];
     getWalker(options: {
       startPosition: model$Position,
@@ -814,7 +859,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     [key: string]: any
   }): Iterable<model$Item>;
 
-  declare class model$RootElement mixins model$Element {
+  declare class model$RootElement mixins Element {
     document: model$Document | null;
     rootName: string;
     constructor(doc: model$Document, name: string, rootName: string): this;
@@ -896,7 +941,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     ): void;
   }
 
-  declare class model$Text mixins model$Node {
+  declare class model$Text mixins Node {
     data: string;
     _data: string;
     constructor(
@@ -952,7 +997,7 @@ declare module "@ckeditor/ckeditor5-engine" {
       shallow?: boolean,
       ignoreElementEnd?: boolean
     }): this;
-    undefined(): Iterator<view$TreeWalkerValue>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<view$TreeWalkerValue>;
     next(): view$TreeWalkerValue;
     skip(skip: (t: view$TreeWalkerValue) => boolean): void;
   }
@@ -982,8 +1027,8 @@ declare module "@ckeditor/ckeditor5-engine" {
     bindTwoStepCaretToAttribute: typeof utils$bindTwoStepCaretToAttribute
   };
   declare function utils$bindTwoStepCaretToAttribute(
-    view: view$view$View,
-    model: model$model$Model,
+    view: view$View,
+    model: model$Model,
     emitter: ckutils.Emitter,
     attribute: string
   ): void;
@@ -999,31 +1044,71 @@ declare module "@ckeditor/ckeditor5-engine" {
     attachPlaceholder: typeof view$attachPlaceholder,
     detachPlaceholder: typeof view$detachPlaceholder,
     INLINE_FILLER_LENGTH: typeof view$INLINE_FILLER_LENGTH,
-    INLINE_FILLER: typeof view$INLINE_FILLER
+    INLINE_FILLER: typeof view$INLINE_FILLER,
+
+    AttributeElement: typeof view$AttributeElement,
+    ContainerElement: typeof view$ContainerElement,
+    Document: typeof view$Document,
+    DocumentFragment: typeof view$DocumentFragment,
+    DocumentSelection: typeof view$DocumentSelection,
+    DomConverter: typeof view$DomConverter,
+    DowncastWriter: typeof view$DowncastWriter,
+    EditableElement: typeof view$EditableElement,
+    Element: typeof view$Element,
+    EmptyElement: typeof view$EmptyElement,
+    Matcher: typeof view$Matcher,
+    Node: typeof view$Node,
+    Position: typeof view$Position,
+    Range: typeof view$Range,
+    Renderer: typeof view$Renderer,
+    RootEditableElement: typeof view$RootEditableElement,
+    Selection: typeof view$Selection,
+    Text: typeof view$Text,
+    TextProxy: typeof view$TextProxy,
+    TreeWalker: typeof view$TreeWalker,
+    UIElement: typeof view$UIElement,
+    UpcastWriter: typeof view$UpcastWriter,
+    View: typeof view$View,
+    observer: typeof npm$namespace$view$observer
   };
-  declare class observer$ClickObserver mixins observer$DomEventObserver {}
 
-  declare class observer$CompositionObserver mixins observer$DomEventObserver {}
+  declare var npm$namespace$view$observer: {
+    ClickObserver: typeof view$observer$ClickObserver,
+    CompositionObserver: typeof view$observer$CompositionObserver,
+    DomEventData: typeof view$observer$DomEventData,
+    DomEventObserver: typeof view$observer$DomEventObserver,
+    FakeSelectionObserver: typeof view$observer$FakeSelectionObserver,
+    FocusObserver: typeof view$observer$FocusObserver,
+    KeyEventData: typeof view$observer$KeyEventData,
+    KeyObserver: typeof view$observer$KeyObserver,
+    MouseObserver: typeof view$observer$MouseObserver,
+    MutationObserver: typeof view$observer$MutationObserver,
+    Observer: typeof view$observer$Observer,
+    SelectionObserver: typeof view$observer$SelectionObserver
+  };
+  declare class view$observer$ClickObserver mixins DomEventObserver {}
 
-  declare class observer$DomEventData {}
+  declare class view$observer$CompositionObserver mixins DomEventObserver {}
 
-  declare class observer$DomEventObserver mixins observer$Observer {
+  declare class view$observer$DomEventData {}
+
+  declare class view$observer$DomEventObserver mixins Observer {
     domEventType: string | string[];
     useCapture: boolean;
     fire(eventType: string, domEvent: Event, additionalData?: Object): void;
     onDomEvent(): void;
   }
 
-  declare class observer$FakeSelectionObserver mixins observer$Observer {
+  declare class view$observer$FakeSelectionObserver mixins Observer {
     constructor(view: view$View): this;
     destroy(): void;
     observe(): void;
   }
 
-  declare class observer$FocusObserver mixins observer$DomEventObserver {}
+  declare class view$observer$FocusObserver mixins DomEventObserver {}
 
-  declare class observer$KeyEventData
-    mixins observer$DomEventData, ckutils.KeystrokeInfo {
+  declare class view$observer$KeyEventData
+    mixins DomEventData, ckutils.KeystrokeInfo {
     altKey: boolean;
     ctrlKey: boolean;
     keyCode: number;
@@ -1031,30 +1116,30 @@ declare module "@ckeditor/ckeditor5-engine" {
     shiftKey: boolean;
   }
 
-  declare class observer$KeyObserver mixins observer$DomEventObserver {}
+  declare class view$observer$KeyObserver mixins DomEventObserver {}
 
-  declare class observer$MouseObserver mixins observer$DomEventObserver {}
+  declare class view$observer$MouseObserver mixins DomEventObserver {}
 
-  declare class observer$MutationObserver mixins observer$Observer {
+  declare class view$observer$MutationObserver mixins Observer {
     domConverter: view$DomConverter;
     renderer: view$Renderer;
   }
 
-  declare interface observer$MutatedChildren {
+  declare interface view$observer$MutatedChildren {
     newChildren: model$Node[];
     node: model$Element;
     oldChildren: model$Node[];
     type: string;
   }
 
-  declare interface observer$MutatedText {
+  declare interface view$observer$MutatedText {
     newText: string;
     node: model$Text;
     oldText: string;
     type: string;
   }
 
-  declare class observer$Observer {
+  declare class view$observer$Observer {
     document: model$Document;
     isEnabled: boolean;
     view: view$View;
@@ -1065,13 +1150,13 @@ declare module "@ckeditor/ckeditor5-engine" {
     observe(domElement: HTMLElement, name: string): void;
   }
 
-  declare class observer$SelectionObserver mixins observer$Observer {
+  declare class view$observer$SelectionObserver mixins Observer {
     domConverter: view$DomConverter;
-    mutationObserver: observer$MutationObserver;
+    mutationObserver: view$observer$MutationObserver;
     selection: model$DocumentSelection;
   }
 
-  declare class view$AttributeElement mixins model$Element {
+  declare class view$AttributeElement mixins Element {
     id: string | number;
     priority: number;
     _clonesGroup: Set<view$AttributeElement> | null;
@@ -1092,7 +1177,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     _clone(deep: boolean): view$AttributeElement;
   }
 
-  declare class view$ContainerElement mixins model$Element {
+  declare class view$ContainerElement mixins Element {
     constructor(
       name: string,
       attrs?:
@@ -1166,7 +1251,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     root: view$DocumentFragment;
     _children: model$Element[];
     constructor(children?: model$Node | Iterable<model$Node>): this;
-    undefined(): Iterator<model$Node>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$Node>;
     _appendChild(items: model$Item | Iterable<model$Item>): number;
     _insertChild(
       index: number,
@@ -1185,9 +1270,9 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class view$DowncastWriter {}
 
-  declare class view$EditableElement mixins view$ContainerElement {}
+  declare class view$EditableElement mixins ContainerElement {}
 
-  declare class view$Element mixins model$Node {
+  declare class view$Element mixins Node {
     childCount: number;
     isEmpty: boolean;
     name: string;
@@ -1263,7 +1348,7 @@ declare module "@ckeditor/ckeditor5-engine" {
         }
       };
 
-  declare class view$EmptyElement mixins view$Element {
+  declare class view$EmptyElement mixins Element {
     constructor(
       name: string,
       attrs?:
@@ -1377,11 +1462,11 @@ declare module "@ckeditor/ckeditor5-engine" {
 
   declare class view$Renderer {}
 
-  declare class view$RootEditableElement mixins view$EditableElement {}
+  declare class view$RootEditableElement mixins EditableElement {}
 
   declare class view$Selection {}
 
-  declare class view$Text mixins view$Node {
+  declare class view$Text mixins Node {
     data: string;
     _data: string;
     _textData: string;
@@ -1427,7 +1512,7 @@ declare module "@ckeditor/ckeditor5-engine" {
       shallow?: boolean,
       ignoreElementEnd?: boolean
     }): this;
-    undefined(): Iterator<model$TreeWalkerValue>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<model$TreeWalkerValue>;
     next(): model$TreeWalkerValue;
     skip(skip: (treeWalkerValue: model$TreeWalkerValue) => boolean): void;
   }
@@ -1453,7 +1538,7 @@ declare module "@ckeditor/ckeditor5-engine" {
     | "character"
     | "text";
 
-  declare class view$UIElement mixins view$Element {
+  declare class view$UIElement mixins Element {
     constructor(
       name: string,
       attrs?:
