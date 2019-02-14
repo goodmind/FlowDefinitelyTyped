@@ -1,5 +1,5 @@
 declare module "deasync" {
-  declare module.exports: typeof deasync;
+  declare export default typeof deasync;
 
   declare function deasync(
     fn: (...args: any[]) => void
