@@ -1,5 +1,5 @@
 declare module "cesium" {
-  declare module.exports: typeof Cesium;
+  declare export default typeof Cesium;
 
   declare var npm$namespace$Cesium: {
     barycentricCoordinates: typeof Cesium$barycentricCoordinates,
@@ -40,7 +40,348 @@ declare module "cesium" {
     createTileMapServiceImageryProvider: typeof Cesium$createTileMapServiceImageryProvider,
     createWorldImagery: typeof Cesium$createWorldImagery,
     createWorldTerrain: typeof Cesium$createWorldTerrain,
-    defined: typeof Cesium$defined
+    defined: typeof Cesium$defined,
+
+    ClockRange: typeof Cesium$ClockRange,
+    ClockStep: typeof Cesium$ClockStep,
+    ComponentDatatype: typeof Cesium$ComponentDatatype,
+    CornerType: typeof Cesium$CornerType,
+    ExtrapolationType: typeof Cesium$ExtrapolationType,
+    Fullscreen: typeof Cesium$Fullscreen,
+    HeightmapTessellator: typeof Cesium$HeightmapTessellator,
+    HeightReference: typeof Cesium$HeightReference,
+    IndexDatatype: typeof Cesium$IndexDatatype,
+    Intersect: typeof Cesium$Intersect,
+    Iso8601: typeof Cesium$Iso8601,
+    KeyboardEventModifier: typeof Cesium$KeyboardEventModifier,
+    MapMode2D: typeof Cesium$MapMode2D,
+    Math: typeof Cesium$Math,
+    PackableForInterpolation: typeof Cesium$PackableForInterpolation,
+    PixelFormat: typeof Cesium$PixelFormat,
+    PrimitiveType: typeof Cesium$PrimitiveType,
+    ReferenceFrame: typeof Cesium$ReferenceFrame,
+    ScreenSpaceEventType: typeof Cesium$ScreenSpaceEventType,
+    ShadowMode: typeof Cesium$ShadowMode,
+    TimeStandard: typeof Cesium$TimeStandard,
+    Visibility: typeof Cesium$Visibility,
+    WindingOrder: typeof Cesium$WindingOrder,
+    StripeOrientation: typeof Cesium$StripeOrientation,
+    BingMapsStyle: typeof Cesium$BingMapsStyle,
+    BlendEquation: typeof Cesium$BlendEquation,
+    BlendFunction: typeof Cesium$BlendFunction,
+    BlendingState: typeof Cesium$BlendingState,
+    BlendOption: typeof Cesium$BlendOption,
+    CameraEventType: typeof Cesium$CameraEventType,
+    CullFace: typeof Cesium$CullFace,
+    DepthFunction: typeof Cesium$DepthFunction,
+    HorizontalOrigin: typeof Cesium$HorizontalOrigin,
+    LabelStyle: typeof Cesium$LabelStyle,
+    ModelAnimationLoop: typeof Cesium$ModelAnimationLoop,
+    SceneMode: typeof Cesium$SceneMode,
+    StencilFunction: typeof Cesium$StencilFunction,
+    StencilOperation: typeof Cesium$StencilOperation,
+    VerticalOrigin: typeof Cesium$VerticalOrigin,
+    ArcGisImageServerTerrainProvider: typeof Cesium$ArcGisImageServerTerrainProvider,
+    AssociativeArray: typeof Cesium$AssociativeArray,
+    AxisAlignedBoundingBox: typeof Cesium$AxisAlignedBoundingBox,
+    BoundingRectangle: typeof Cesium$BoundingRectangle,
+    BoundingSphere: typeof Cesium$BoundingSphere,
+    BoxGeometry: typeof Cesium$BoxGeometry,
+    BoxOutlineGeometry: typeof Cesium$BoxOutlineGeometry,
+    Cartesian2: typeof Cesium$Cartesian2,
+    Cartesian3: typeof Cesium$Cartesian3,
+    Cartesian4: typeof Cesium$Cartesian4,
+    Cartographic: typeof Cesium$Cartographic,
+    CatmullRomSpline: typeof Cesium$CatmullRomSpline,
+    CesiumTerrainProvider: typeof Cesium$CesiumTerrainProvider,
+    CircleGeometry: typeof Cesium$CircleGeometry,
+    CircleOutlineGeometry: typeof Cesium$CircleOutlineGeometry,
+    Clock: typeof Cesium$Clock,
+    Color: typeof Cesium$Color,
+    ColorGeometryInstanceAttribute: typeof Cesium$ColorGeometryInstanceAttribute,
+    CorridorGeometry: typeof Cesium$CorridorGeometry,
+    CorridorOutlineGeometry: typeof Cesium$CorridorOutlineGeometry,
+    Credit: typeof Cesium$Credit,
+    CylinderGeometry: typeof Cesium$CylinderGeometry,
+    CylinderOutlineGeometry: typeof Cesium$CylinderOutlineGeometry,
+    DefaultProxy: typeof Cesium$DefaultProxy,
+    DeveloperError: typeof Cesium$DeveloperError,
+    EllipseGeometry: typeof Cesium$EllipseGeometry,
+    EllipseOutlineGeometry: typeof Cesium$EllipseOutlineGeometry,
+    Ellipsoid: typeof Cesium$Ellipsoid,
+    EllipsoidGeodesic: typeof Cesium$EllipsoidGeodesic,
+    EllipsoidGeometry: typeof Cesium$EllipsoidGeometry,
+    EllipsoidOutlineGeometry: typeof Cesium$EllipsoidOutlineGeometry,
+    EllipsoidTangentPlane: typeof Cesium$EllipsoidTangentPlane,
+    EllipsoidTerrainProvider: typeof Cesium$EllipsoidTerrainProvider,
+    Event: typeof Cesium$Event,
+    EventHelper: typeof Cesium$EventHelper,
+    GeographicProjection: typeof Cesium$GeographicProjection,
+    GeographicTilingScheme: typeof Cesium$GeographicTilingScheme,
+    Geometry: typeof Cesium$Geometry,
+    GeometryAttribute: typeof Cesium$GeometryAttribute,
+    GeometryAttributes: typeof Cesium$GeometryAttributes,
+    GeometryInstance: typeof Cesium$GeometryInstance,
+    GeometryInstanceAttribute: typeof Cesium$GeometryInstanceAttribute,
+    GregorianDate: typeof Cesium$GregorianDate,
+    HeadingPitchRoll: typeof Cesium$HeadingPitchRoll,
+    HeightmapTerrainData: typeof Cesium$HeightmapTerrainData,
+    HermiteSpline: typeof Cesium$HermiteSpline,
+    IonImageryProvider: typeof Cesium$IonImageryProvider,
+    Interval: typeof Cesium$Interval,
+    JulianDate: typeof Cesium$JulianDate,
+    LeapSecond: typeof Cesium$LeapSecond,
+    LinearSpline: typeof Cesium$LinearSpline,
+    MapProjection: typeof Cesium$MapProjection,
+    Matrix2: typeof Cesium$Matrix2,
+    Matrix3: typeof Cesium$Matrix3,
+    Matrix4: typeof Cesium$Matrix4,
+    NearFarScalar: typeof Cesium$NearFarScalar,
+    ObjectOrientedBoundingBox: typeof Cesium$ObjectOrientedBoundingBox,
+    Occluder: typeof Cesium$Occluder,
+    PinBuilder: typeof Cesium$PinBuilder,
+    Plane: typeof Cesium$Plane,
+    PolygonGeometry: typeof Cesium$PolygonGeometry,
+    PolygonHierarchy: typeof Cesium$PolygonHierarchy,
+    PolygonOutlineGeometry: typeof Cesium$PolygonOutlineGeometry,
+    PolylineGeometry: typeof Cesium$PolylineGeometry,
+    PolylineVolumeGeometry: typeof Cesium$PolylineVolumeGeometry,
+    PolylineVolumeOutlineGeometry: typeof Cesium$PolylineVolumeOutlineGeometry,
+    QuantizedMeshTerrainData: typeof Cesium$QuantizedMeshTerrainData,
+    Quaternion: typeof Cesium$Quaternion,
+    QuaternionSpline: typeof Cesium$QuaternionSpline,
+    Queue: typeof Cesium$Queue,
+    Ray: typeof Cesium$Ray,
+    Rectangle: typeof Cesium$Rectangle,
+    RectangleGeometry: typeof Cesium$RectangleGeometry,
+    RectangleOutlineGeometry: typeof Cesium$RectangleOutlineGeometry,
+    RequestErrorEvent: typeof Cesium$RequestErrorEvent,
+    RuntimeError: typeof Cesium$RuntimeError,
+    ScreenSpaceEventHandler: typeof Cesium$ScreenSpaceEventHandler,
+    ShowGeometryInstanceAttribute: typeof Cesium$ShowGeometryInstanceAttribute,
+    SimplePolylineGeometry: typeof Cesium$SimplePolylineGeometry,
+    SphereGeometry: typeof Cesium$SphereGeometry,
+    SphereOutlineGeometry: typeof Cesium$SphereOutlineGeometry,
+    Spherical: typeof Cesium$Spherical,
+    Spline: typeof Cesium$Spline,
+    TaskProcessor: typeof Cesium$TaskProcessor,
+    TerrainData: typeof Cesium$TerrainData,
+    TerrainMesh: typeof Cesium$TerrainMesh,
+    TerrainProvider: typeof Cesium$TerrainProvider,
+    TileAvailability: typeof Cesium$TileAvailability,
+    TileProviderError: typeof Cesium$TileProviderError,
+    TilingScheme: typeof Cesium$TilingScheme,
+    TimeInterval: typeof Cesium$TimeInterval,
+    TimeIntervalCollection: typeof Cesium$TimeIntervalCollection,
+    VRTheWorldTerrainProvider: typeof Cesium$VRTheWorldTerrainProvider,
+    VertexFormat: typeof Cesium$VertexFormat,
+    WallGeometry: typeof Cesium$WallGeometry,
+    WallOutlineGeometry: typeof Cesium$WallOutlineGeometry,
+    WebMercatorProjection: typeof Cesium$WebMercatorProjection,
+    WebMercatorTilingScheme: typeof Cesium$WebMercatorTilingScheme,
+    BillboardGraphics: typeof Cesium$BillboardGraphics,
+    BillboardVisualizer: typeof Cesium$BillboardVisualizer,
+    BoxGeometryUpdater: typeof Cesium$BoxGeometryUpdater,
+    BoxGraphics: typeof Cesium$BoxGraphics,
+    CallbackProperty: typeof Cesium$CallbackProperty,
+    CheckerboardMaterialProperty: typeof Cesium$CheckerboardMaterialProperty,
+    ColorMaterialProperty: typeof Cesium$ColorMaterialProperty,
+    CompositeEntityCollection: typeof Cesium$CompositeEntityCollection,
+    CompositeMaterialProperty: typeof Cesium$CompositeMaterialProperty,
+    CompositePositionProperty: typeof Cesium$CompositePositionProperty,
+    CompositeProperty: typeof Cesium$CompositeProperty,
+    ConstantPositionProperty: typeof Cesium$ConstantPositionProperty,
+    ConstantProperty: typeof Cesium$ConstantProperty,
+    CorridorGeometryUpdater: typeof Cesium$CorridorGeometryUpdater,
+    CorridorGraphics: typeof Cesium$CorridorGraphics,
+    CustomDataSource: typeof Cesium$CustomDataSource,
+    CylinderGeometryUpdater: typeof Cesium$CylinderGeometryUpdater,
+    CylinderGraphics: typeof Cesium$CylinderGraphics,
+    CzmlDataSource: typeof Cesium$CzmlDataSource,
+    DataSource: typeof Cesium$DataSource,
+    DataSourceClock: typeof Cesium$DataSourceClock,
+    DataSourceCollection: typeof Cesium$DataSourceCollection,
+    DataSourceDisplay: typeof Cesium$DataSourceDisplay,
+    DynamicGeometryUpdater: typeof Cesium$DynamicGeometryUpdater,
+    EllipseGeometryUpdater: typeof Cesium$EllipseGeometryUpdater,
+    EllipseGraphics: typeof Cesium$EllipseGraphics,
+    EllipsoidGeometryUpdater: typeof Cesium$EllipsoidGeometryUpdater,
+    EllipsoidGraphics: typeof Cesium$EllipsoidGraphics,
+    Entity: typeof Cesium$Entity,
+    EntityCluster: typeof Cesium$EntityCluster,
+    EntityCollection: typeof Cesium$EntityCollection,
+    EntityView: typeof Cesium$EntityView,
+    GeoJsonDataSource: typeof Cesium$GeoJsonDataSource,
+    GeometryUpdater: typeof Cesium$GeometryUpdater,
+    GeometryVisualizer: typeof Cesium$GeometryVisualizer,
+    GridMaterialProperty: typeof Cesium$GridMaterialProperty,
+    ImageMaterialProperty: typeof Cesium$ImageMaterialProperty,
+    KmlDataSource: typeof Cesium$KmlDataSource,
+    KmlFeatureData: typeof Cesium$KmlFeatureData,
+    LabelGraphics: typeof Cesium$LabelGraphics,
+    LabelVisualizer: typeof Cesium$LabelVisualizer,
+    MaterialProperty: typeof Cesium$MaterialProperty,
+    ModelGraphics: typeof Cesium$ModelGraphics,
+    ModelVisualizer: typeof Cesium$ModelVisualizer,
+    PathGraphics: typeof Cesium$PathGraphics,
+    PathVisualizer: typeof Cesium$PathVisualizer,
+    PointGraphics: typeof Cesium$PointGraphics,
+    PointVisualizer: typeof Cesium$PointVisualizer,
+    PolygonGeometryUpdater: typeof Cesium$PolygonGeometryUpdater,
+    PolygonGraphics: typeof Cesium$PolygonGraphics,
+    PolylineArrowMaterialProperty: typeof Cesium$PolylineArrowMaterialProperty,
+    PolylineGeometryUpdater: typeof Cesium$PolylineGeometryUpdater,
+    PolylineGlowMaterialProperty: typeof Cesium$PolylineGlowMaterialProperty,
+    PolylineGraphics: typeof Cesium$PolylineGraphics,
+    PolylineOutlineMaterialProperty: typeof Cesium$PolylineOutlineMaterialProperty,
+    PolylineVolumeGeometryUpdater: typeof Cesium$PolylineVolumeGeometryUpdater,
+    PolylineVolumeGraphics: typeof Cesium$PolylineVolumeGraphics,
+    PositionProperty: typeof Cesium$PositionProperty,
+    PositionPropertyArray: typeof Cesium$PositionPropertyArray,
+    Property: typeof Cesium$Property,
+    PropertyArray: typeof Cesium$PropertyArray,
+    RectangleGeometryUpdater: typeof Cesium$RectangleGeometryUpdater,
+    RectangleGraphics: typeof Cesium$RectangleGraphics,
+    ReferenceProperty: typeof Cesium$ReferenceProperty,
+    SampledPositionProperty: typeof Cesium$SampledPositionProperty,
+    SampledProperty: typeof Cesium$SampledProperty,
+    StripeMaterialProperty: typeof Cesium$StripeMaterialProperty,
+    TimeIntervalCollectionPositionProperty: typeof Cesium$TimeIntervalCollectionPositionProperty,
+    TimeIntervalCollectionProperty: typeof Cesium$TimeIntervalCollectionProperty,
+    VelocityOrientationProperty: typeof Cesium$VelocityOrientationProperty,
+    Visualizer: typeof Cesium$Visualizer,
+    WallGeometryUpdater: typeof Cesium$WallGeometryUpdater,
+    WallGraphics: typeof Cesium$WallGraphics,
+    Appearance: typeof Cesium$Appearance,
+    ArcGisMapServerImageryProvider: typeof Cesium$ArcGisMapServerImageryProvider,
+    DistanceDisplayCondition: typeof Cesium$DistanceDisplayCondition,
+    Billboard: typeof Cesium$Billboard,
+    BillboardCollection: typeof Cesium$BillboardCollection,
+    BingMapsImageryProvider: typeof Cesium$BingMapsImageryProvider,
+    EasingFunction: typeof Cesium$EasingFunction,
+    Camera: typeof Cesium$Camera,
+    CameraEventAggregator: typeof Cesium$CameraEventAggregator,
+    CreditDisplay: typeof Cesium$CreditDisplay,
+    CullingVolume: typeof Cesium$CullingVolume,
+    DebugAppearance: typeof Cesium$DebugAppearance,
+    DebugModelMatrixPrimitive: typeof Cesium$DebugModelMatrixPrimitive,
+    DiscardMissingTileImagePolicy: typeof Cesium$DiscardMissingTileImagePolicy,
+    EllipsoidPrimitive: typeof Cesium$EllipsoidPrimitive,
+    EllipsoidSurfaceAppearance: typeof Cesium$EllipsoidSurfaceAppearance,
+    FrameRateMonitor: typeof Cesium$FrameRateMonitor,
+    GetFeatureInfoFormat: typeof Cesium$GetFeatureInfoFormat,
+    Globe: typeof Cesium$Globe,
+    GoogleEarthEnterpriseMetadata: typeof Cesium$GoogleEarthEnterpriseMetadata,
+    GoogleEarthEnterpriseImageryProvider: typeof Cesium$GoogleEarthEnterpriseImageryProvider,
+    GoogleEarthEnterpriseMapsProvider: typeof Cesium$GoogleEarthEnterpriseMapsProvider,
+    GoogleEarthEnterpriseTerrainData: typeof Cesium$GoogleEarthEnterpriseTerrainData,
+    GoogleEarthEnterpriseTerrainProvider: typeof Cesium$GoogleEarthEnterpriseTerrainProvider,
+    GridImageryProvider: typeof Cesium$GridImageryProvider,
+    HeadingPitchRange: typeof Cesium$HeadingPitchRange,
+    ImageryLayer: typeof Cesium$ImageryLayer,
+    ImageryLayerCollection: typeof Cesium$ImageryLayerCollection,
+    ImageryLayerFeatureInfo: typeof Cesium$ImageryLayerFeatureInfo,
+    ImageryProvider: typeof Cesium$ImageryProvider,
+    Label: typeof Cesium$Label,
+    LabelCollection: typeof Cesium$LabelCollection,
+    Material: typeof Cesium$Material,
+    MaterialAppearance: typeof Cesium$MaterialAppearance,
+    Model: typeof Cesium$Model,
+    ModelAnimation: typeof Cesium$ModelAnimation,
+    ModelAnimationCollection: typeof Cesium$ModelAnimationCollection,
+    ModelMaterial: typeof Cesium$ModelMaterial,
+    ModelMesh: typeof Cesium$ModelMesh,
+    ModelNode: typeof Cesium$ModelNode,
+    Moon: typeof Cesium$Moon,
+    NeverTileDiscardPolicy: typeof Cesium$NeverTileDiscardPolicy,
+    PerInstanceColorAppearance: typeof Cesium$PerInstanceColorAppearance,
+    Frustum: typeof Cesium$Frustum,
+    OrthographicFrustum: typeof Cesium$OrthographicFrustum,
+    PerspectiveFrustum: typeof Cesium$PerspectiveFrustum,
+    PerspectiveOffCenterFrustum: typeof Cesium$PerspectiveOffCenterFrustum,
+    PointPrimitive: typeof Cesium$PointPrimitive,
+    PointPrimitiveCollection: typeof Cesium$PointPrimitiveCollection,
+    Polyline: typeof Cesium$Polyline,
+    PolylineCollection: typeof Cesium$PolylineCollection,
+    PolylineColorAppearance: typeof Cesium$PolylineColorAppearance,
+    PolylineMaterialAppearance: typeof Cesium$PolylineMaterialAppearance,
+    Primitive: typeof Cesium$Primitive,
+    PrimitiveCollection: typeof Cesium$PrimitiveCollection,
+    RectanglePrimitive: typeof Cesium$RectanglePrimitive,
+    Scene: typeof Cesium$Scene,
+    ScreenSpaceCameraController: typeof Cesium$ScreenSpaceCameraController,
+    SingleTileImageryProvider: typeof Cesium$SingleTileImageryProvider,
+    SkyAtmosphere: typeof Cesium$SkyAtmosphere,
+    SkyBox: typeof Cesium$SkyBox,
+    Sun: typeof Cesium$Sun,
+    Fog: typeof Cesium$Fog,
+    TileCoordinatesImageryProvider: typeof Cesium$TileCoordinatesImageryProvider,
+    TileDiscardPolicy: typeof Cesium$TileDiscardPolicy,
+    TileMapServiceImageryProvider: typeof Cesium$TileMapServiceImageryProvider,
+    ViewportQuad: typeof Cesium$ViewportQuad,
+    WebMapServiceImageryProvider: typeof Cesium$WebMapServiceImageryProvider,
+    WebMapTileServiceImageryProvider: typeof Cesium$WebMapTileServiceImageryProvider,
+    Animation: typeof Cesium$Animation,
+    AnimationViewModel: typeof Cesium$AnimationViewModel,
+    BaseLayerPicker: typeof Cesium$BaseLayerPicker,
+    BaseLayerPickerViewModel: typeof Cesium$BaseLayerPickerViewModel,
+    ProviderViewModel: typeof Cesium$ProviderViewModel,
+    CesiumInspector: typeof Cesium$CesiumInspector,
+    CesiumInspectorViewModel: typeof Cesium$CesiumInspectorViewModel,
+    CesiumWidget: typeof Cesium$CesiumWidget,
+    ClockViewModel: typeof Cesium$ClockViewModel,
+    Command: typeof Cesium$Command,
+    FullscreenButton: typeof Cesium$FullscreenButton,
+    FullscreenButtonViewModel: typeof Cesium$FullscreenButtonViewModel,
+    Geocoder: typeof Cesium$Geocoder,
+    GeocoderViewModel: typeof Cesium$GeocoderViewModel,
+    HomeButton: typeof Cesium$HomeButton,
+    HomeButtonViewModel: typeof Cesium$HomeButtonViewModel,
+    VRButton: typeof Cesium$VRButton,
+    VRButtonViewModel: typeof Cesium$VRButtonViewModel,
+    InfoBox: typeof Cesium$InfoBox,
+    InfoBoxViewModel: typeof Cesium$InfoBoxViewModel,
+    NavigationHelpButton: typeof Cesium$NavigationHelpButton,
+    NavigationHelpButtonViewModel: typeof Cesium$NavigationHelpButtonViewModel,
+    PerformanceWatchdog: typeof Cesium$PerformanceWatchdog,
+    PerformanceWatchdogViewModel: typeof Cesium$PerformanceWatchdogViewModel,
+    ProjectionPicker: typeof Cesium$ProjectionPicker,
+    ProjectionPickerViewModel: typeof Cesium$ProjectionPickerViewModel,
+    SceneModePicker: typeof Cesium$SceneModePicker,
+    SceneModePickerViewModel: typeof Cesium$SceneModePickerViewModel,
+    SelectionIndicator: typeof Cesium$SelectionIndicator,
+    SelectionIndicatorViewModel: typeof Cesium$SelectionIndicatorViewModel,
+    Timeline: typeof Cesium$Timeline,
+    ToggleButtonViewModel: typeof Cesium$ToggleButtonViewModel,
+    Viewer: typeof Cesium$Viewer,
+    HermitePolynomialApproximation: typeof Cesium$HermitePolynomialApproximation,
+    InterpolationAlgorithm: typeof Cesium$InterpolationAlgorithm,
+    LagrangePolynomialApproximation: typeof Cesium$LagrangePolynomialApproximation,
+    LinearApproximation: typeof Cesium$LinearApproximation,
+    Packable: typeof Cesium$Packable,
+    ShadowMap: typeof Cesium$ShadowMap,
+    UrlTemplateImageryProvider: typeof Cesium$UrlTemplateImageryProvider,
+    Resource: typeof Cesium$Resource,
+    MaterialAppearance: typeof npm$namespace$Cesium$MaterialAppearance,
+    ComponentDatatype: typeof npm$namespace$Cesium$ComponentDatatype,
+    CubicRealPolynomial: typeof npm$namespace$Cesium$CubicRealPolynomial,
+    FeatureDetection: typeof npm$namespace$Cesium$FeatureDetection,
+    Fullscreen: typeof npm$namespace$Cesium$Fullscreen,
+    GeometryPipeline: typeof npm$namespace$Cesium$GeometryPipeline,
+    HeightmapTessellator: typeof npm$namespace$Cesium$HeightmapTessellator,
+    IndexDatatype: typeof npm$namespace$Cesium$IndexDatatype,
+    IntersectionTests: typeof npm$namespace$Cesium$IntersectionTests,
+    Intersections2D: typeof npm$namespace$Cesium$Intersections2D,
+    Math: typeof npm$namespace$Cesium$Math,
+    PackableForInterpolation: typeof npm$namespace$Cesium$PackableForInterpolation,
+    QuadraticRealPolynomial: typeof npm$namespace$Cesium$QuadraticRealPolynomial,
+    QuarticRealPolynomial: typeof npm$namespace$Cesium$QuarticRealPolynomial,
+    Simon1994PlanetaryPositions: typeof npm$namespace$Cesium$Simon1994PlanetaryPositions,
+    Transforms: typeof npm$namespace$Cesium$Transforms,
+    TridiagonalSystemSolver: typeof npm$namespace$Cesium$TridiagonalSystemSolver,
+    SceneMode: typeof npm$namespace$Cesium$SceneMode,
+    SceneTransforms: typeof npm$namespace$Cesium$SceneTransforms,
+    buildModuleUrl: typeof npm$namespace$Cesium$buildModuleUrl
   };
   declare type Cesium$RenderState = any;
 
@@ -48,8 +389,7 @@ declare module "cesium" {
     getURL(resource: string): string;
   }
 
-  declare class Cesium$ArcGisImageServerTerrainProvider
-    mixins Cesium$TerrainProvider {
+  declare class Cesium$ArcGisImageServerTerrainProvider mixins TerrainProvider {
     constructor(options: {
       url: string,
       token?: string,
@@ -144,7 +484,7 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare class Cesium$BoundingSphere mixins Cesium$Packable {
+  declare class Cesium$BoundingSphere mixins Packable {
     center: Cesium$Cartesian3;
     radius: number;
     constructor(center?: Cesium$Cartesian3, radius?: number): this;
@@ -251,7 +591,7 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare class Cesium$BoxGeometry mixins Cesium$Packable {
+  declare class Cesium$BoxGeometry mixins Packable {
     constructor(options: {
       minimumCorner: Cesium$Cartesian3,
       maximumCorner: Cesium$Cartesian3,
@@ -266,7 +606,7 @@ declare module "cesium" {
     static createGeometry(boxGeometry: Cesium$BoxGeometry): Cesium$Geometry;
   }
 
-  declare class Cesium$BoxOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$BoxOutlineGeometry mixins Packable {
     constructor(): this;
     static fromDimensions(): void;
     static unpack(
@@ -279,7 +619,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$Cartesian2 mixins Cesium$Packable {
+  declare class Cesium$Cartesian2 mixins Packable {
     x: number;
     y: number;
     static ZERO: Cesium$Cartesian2;
@@ -406,8 +746,7 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare class Cesium$Cartesian3
-    mixins Cesium$Packable, Cesium$PositionProperty {
+  declare class Cesium$Cartesian3 mixins Packable, PositionProperty {
     x: number;
     y: number;
     z: number;
@@ -588,7 +927,7 @@ declare module "cesium" {
     ): Cesium$Cartesian3;
   }
 
-  declare class Cesium$Cartesian4 mixins Cesium$Packable {
+  declare class Cesium$Cartesian4 mixins Packable {
     x: number;
     y: number;
     z: number;
@@ -765,7 +1104,7 @@ declare module "cesium" {
     evaluate(time: number, result?: Cesium$Cartesian3): Cesium$Cartesian3;
   }
 
-  declare class Cesium$CesiumTerrainProvider mixins Cesium$TerrainProvider {
+  declare class Cesium$CesiumTerrainProvider mixins TerrainProvider {
     requestVertexNormals: boolean;
     requestWaterMask: boolean;
     constructor(options: {
@@ -778,7 +1117,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$CircleGeometry mixins Cesium$Packable {
+  declare class Cesium$CircleGeometry mixins Packable {
     constructor(options: {
       center: Cesium$Cartesian3,
       radius: number,
@@ -799,7 +1138,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$CircleOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$CircleOutlineGeometry mixins Packable {
     constructor(options: {
       center: Cesium$Cartesian3,
       radius: number,
@@ -842,7 +1181,7 @@ declare module "cesium" {
     tick(): Cesium$JulianDate;
   }
 
-  declare class Cesium$Color mixins Cesium$Packable {
+  declare class Cesium$Color mixins Packable {
     red: number;
     green: number;
     blue: number;
@@ -1119,7 +1458,7 @@ declare module "cesium" {
     static toValue(color: Cesium$Color, result?: Uint8Array): Uint8Array;
   }
 
-  declare class Cesium$CorridorGeometry mixins Cesium$Packable {
+  declare class Cesium$CorridorGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       width: number,
@@ -1140,7 +1479,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$CorridorOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$CorridorOutlineGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       width: number,
@@ -1174,7 +1513,7 @@ declare module "cesium" {
     hasLink(): boolean;
   }
 
-  declare class Cesium$CylinderGeometry mixins Cesium$Packable {
+  declare class Cesium$CylinderGeometry mixins Packable {
     constructor(options: {
       length: number,
       topRadius: number,
@@ -1192,7 +1531,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$CylinderOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$CylinderOutlineGeometry mixins Packable {
     constructor(options: {
       length: number,
       topRadius: number,
@@ -1222,7 +1561,7 @@ declare module "cesium" {
     constructor(message?: string): this;
   }
 
-  declare class Cesium$EllipseGeometry mixins Cesium$Packable {
+  declare class Cesium$EllipseGeometry mixins Packable {
     constructor(options: {
       center: Cesium$Cartesian3,
       semiMajorAxis: number,
@@ -1245,7 +1584,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$EllipseOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$EllipseOutlineGeometry mixins Packable {
     constructor(options: {
       center: Cesium$Cartesian3,
       semiMajorAxis: number,
@@ -1267,7 +1606,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$Ellipsoid mixins Cesium$Packable {
+  declare class Cesium$Ellipsoid mixins Packable {
     radii: Cesium$Cartesian3;
     radiiSquared: Cesium$Cartesian3;
     radiiToTheFourth: Cesium$Cartesian3;
@@ -1354,7 +1693,7 @@ declare module "cesium" {
     interpolateUsingSurfaceDistance(distance: number): Cesium$Cartographic;
   }
 
-  declare class Cesium$EllipsoidGeometry mixins Cesium$Packable {
+  declare class Cesium$EllipsoidGeometry mixins Packable {
     constructor(options?: {
       radii?: Cesium$Cartesian3,
       stackPartitions?: number,
@@ -1371,7 +1710,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$EllipsoidOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$EllipsoidOutlineGeometry mixins Packable {
     constructor(options?: {
       radii?: Cesium$Cartesian3,
       stackPartitions?: number,
@@ -1410,7 +1749,7 @@ declare module "cesium" {
     ): Cesium$EllipsoidTangentPlane;
   }
 
-  declare class Cesium$EllipsoidTerrainProvider mixins Cesium$TerrainProvider {
+  declare class Cesium$EllipsoidTerrainProvider mixins TerrainProvider {
     constructor(options?: {
       tilingScheme?: Cesium$TilingScheme,
       ellipsoid?: Cesium$Ellipsoid
@@ -1419,26 +1758,23 @@ declare module "cesium" {
 
   declare class Cesium$Event {
     numberOfListeners: number;
-    addEventListener(
-      listener: () => void,
-      scope?: any
-    ): Cesium$Event.EventHelper$RemoveCallback;
+    addEventListener(listener: () => void, scope?: any): Event$RemoveCallback;
     removeEventListener(listener: () => void, scope?: any): boolean;
     raiseEvent(...args: any[]): void;
   }
 
-  declare type Event$RemoveCallback = () => void;
+  declare type Cesium$Event$RemoveCallback = () => void;
 
   declare class Cesium$EventHelper {
     add(
       event: Cesium$Event,
       listener: () => void,
       scope?: any
-    ): Cesium$EventHelper.Event$RemoveCallback;
+    ): EventHelper$RemoveCallback;
     removeAll(): void;
   }
 
-  declare type EventHelper$RemoveCallback = () => void;
+  declare type Cesium$EventHelper$RemoveCallback = () => void;
 
   declare class Cesium$GeographicProjection {
     ellipsoid: Cesium$Ellipsoid;
@@ -1669,7 +2005,7 @@ declare module "cesium" {
     static createClampedCubic(): Cesium$HermiteSpline | Cesium$LinearSpline;
   }
 
-  declare class Cesium$IonImageryProvider mixins Cesium$ImageryProvider {
+  declare class Cesium$IonImageryProvider mixins ImageryProvider {
     constructor(options: {
       assetId: number,
       accessToken?: string,
@@ -1790,7 +2126,7 @@ declare module "cesium" {
     ): Cesium$Cartographic;
   }
 
-  declare class Cesium$Matrix2 mixins Cesium$Packable {
+  declare class Cesium$Matrix2 mixins Packable {
     static IDENTITY: Cesium$Matrix2;
     static COLUMN0ROW0: number;
     static COLUMN0ROW1: number;
@@ -1913,7 +2249,7 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare class Cesium$Matrix3 mixins Cesium$Packable {
+  declare class Cesium$Matrix3 mixins Packable {
     static IDENTITY: Cesium$Matrix3;
     static COLUMN0ROW0: number;
     static COLUMN0ROW1: number;
@@ -2072,7 +2408,7 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare class Cesium$Matrix4 mixins Cesium$Packable {
+  declare class Cesium$Matrix4 mixins Packable {
     static IDENTITY: Cesium$Matrix4;
     static COLUMN0ROW0: number;
     static COLUMN0ROW1: number;
@@ -2328,7 +2664,7 @@ declare module "cesium" {
     ): Cesium$Matrix4;
   }
 
-  declare class Cesium$NearFarScalar mixins Cesium$Packable {
+  declare class Cesium$NearFarScalar mixins Packable {
     near: number;
     nearValue: number;
     far: number;
@@ -2457,7 +2793,7 @@ declare module "cesium" {
     ): number;
   }
 
-  declare class Cesium$PolygonGeometry mixins Cesium$Packable {
+  declare class Cesium$PolygonGeometry mixins Packable {
     constructor(options: {
       polygonHierarchy: Cesium$PolygonHierarchy,
       height?: number,
@@ -2490,7 +2826,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$PolygonHierarchy mixins Cesium$Property {
+  declare class Cesium$PolygonHierarchy mixins Property {
     positions: Cesium$Cartesian3[];
     holes: Cesium$PolygonHierarchy[];
     constructor(
@@ -2499,7 +2835,7 @@ declare module "cesium" {
     ): this;
   }
 
-  declare class Cesium$PolygonOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$PolygonOutlineGeometry mixins Packable {
     constructor(options: {
       polygonHierarchy: any,
       height?: number,
@@ -2527,7 +2863,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$PolylineGeometry mixins Cesium$Packable {
+  declare class Cesium$PolylineGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       width?: number,
@@ -2547,7 +2883,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$PolylineVolumeGeometry mixins Cesium$Packable {
+  declare class Cesium$PolylineVolumeGeometry mixins Packable {
     constructor(options: {
       polylinePositions: Cesium$Cartesian3[],
       shapePositions: Cesium$Cartesian2[],
@@ -2566,7 +2902,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$PolylineVolumeOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$PolylineVolumeOutlineGeometry mixins Packable {
     constructor(options: {
       polylinePositions: Cesium$Cartesian3[],
       shapePositions: number,
@@ -2635,7 +2971,7 @@ declare module "cesium" {
     wasCreatedByUpsampling(): boolean;
   }
 
-  declare class Cesium$Quaternion mixins Cesium$Packable {
+  declare class Cesium$Quaternion mixins Packable {
     x: number;
     y: number;
     z: number;
@@ -2814,10 +3150,10 @@ declare module "cesium" {
     contains(item: any): boolean;
     clear(): void;
     peek(): any;
-    sort(compareFunction: Cesium$Queue.mergeSort$Comparator): void;
+    sort(compareFunction: Queue$Comparator): void;
   }
 
-  declare type Queue$Comparator = (a: any, b: any) => number;
+  declare type Cesium$Queue$Comparator = (a: any, b: any) => number;
 
   declare class Cesium$Ray {
     origin: Cesium$Cartesian3;
@@ -2829,7 +3165,7 @@ declare module "cesium" {
     static getPoint(t: number, result?: Cesium$Cartesian3): Cesium$Cartesian3;
   }
 
-  declare class Cesium$Rectangle mixins Cesium$Packable {
+  declare class Cesium$Rectangle mixins Packable {
     west: number;
     south: number;
     east: number;
@@ -2912,7 +3248,7 @@ declare module "cesium" {
     ): Cesium$Cartesian3[];
   }
 
-  declare class Cesium$RectangleGeometry mixins Cesium$Packable {
+  declare class Cesium$RectangleGeometry mixins Packable {
     constructor(options: {
       rectangle: Cesium$Rectangle,
       vertexFormat?: Cesium$VertexFormat,
@@ -2938,7 +3274,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$RectangleOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$RectangleOutlineGeometry mixins Packable {
     constructor(options: {
       rectangle: Cesium$Rectangle,
       ellipsoid?: Cesium$Ellipsoid,
@@ -2999,7 +3335,7 @@ declare module "cesium" {
     static toValue(show: boolean, result?: Uint8Array): Uint8Array;
   }
 
-  declare class Cesium$SimplePolylineGeometry mixins Cesium$Packable {
+  declare class Cesium$SimplePolylineGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       colors?: Cesium$Color[],
@@ -3018,7 +3354,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$SphereGeometry mixins Cesium$Packable {
+  declare class Cesium$SphereGeometry mixins Packable {
     constructor(options?: {
       radius?: number,
       stackPartitions?: number,
@@ -3035,7 +3371,7 @@ declare module "cesium" {
     ): Cesium$Geometry;
   }
 
-  declare class Cesium$SphereOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$SphereOutlineGeometry mixins Packable {
     constructor(options?: {
       radius?: number,
       stackPartitions?: number,
@@ -3209,13 +3545,13 @@ declare module "cesium" {
       x: number,
       y: number,
       level: number,
-      retryFunction: Cesium$TileProviderError.TileProviderError$RetryFunction,
+      retryFunction: TileProviderError$RetryFunction,
       errorDetails?: Error
     ): Cesium$TileProviderError;
     static handleSuccess(previousError: Cesium$TileProviderError): void;
   }
 
-  declare type TileProviderError$RetryFunction = () => void;
+  declare type Cesium$TileProviderError$RetryFunction = () => void;
 
   declare class Cesium$TilingScheme {
     ellipsoid: Cesium$Ellipsoid;
@@ -3264,12 +3600,12 @@ declare module "cesium" {
     clone(result?: Cesium$TimeInterval): Cesium$TimeInterval;
     equals(
       right?: Cesium$TimeInterval,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): boolean;
     equalsEpsilon(
       right: Cesium$TimeInterval,
       epsilon: number,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): boolean;
     toString(): string;
     static fromIso8601(
@@ -3292,19 +3628,19 @@ declare module "cesium" {
     static equals(
       left?: Cesium$TimeInterval,
       right?: Cesium$TimeInterval,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): boolean;
     static equalsEpsilon(
       left: Cesium$TimeInterval,
       right: Cesium$TimeInterval,
       epsilon: number,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): boolean;
     static intersect(
       left: Cesium$TimeInterval,
       right: Cesium$TimeInterval,
       result: Cesium$TimeInterval,
-      mergeCallback?: Cesium$TimeInterval.TimeInterval$MergeCallback
+      mergeCallback?: TimeInterval$MergeCallback
     ): Cesium$TimeInterval;
     static contains(
       timeInterval: Cesium$TimeInterval,
@@ -3312,12 +3648,12 @@ declare module "cesium" {
     ): boolean;
   }
 
-  declare type TimeInterval$MergeCallback = (
+  declare type Cesium$TimeInterval$MergeCallback = (
     leftData: any,
     rightData: any
   ) => any;
 
-  declare type TimeInterval$DataComparer = (
+  declare type Cesium$TimeInterval$DataComparer = (
     leftData: any,
     rightData: any
   ) => boolean;
@@ -3333,7 +3669,7 @@ declare module "cesium" {
     constructor(intervals?: Cesium$TimeInterval[]): this;
     equals(
       right?: Cesium$TimeIntervalCollection,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): boolean;
     get(index: number): Cesium$TimeInterval;
     removeAll(): void;
@@ -3351,17 +3687,17 @@ declare module "cesium" {
     }): Cesium$TimeInterval;
     addInterval(
       interval: Cesium$TimeInterval,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer
+      dataComparer?: TimeInterval$DataComparer
     ): void;
     removeInterval(interval: Cesium$TimeInterval): void;
     intersect(
       other: Cesium$TimeIntervalCollection,
-      dataComparer?: Cesium$TimeInterval.TimeInterval$DataComparer,
-      mergeCallback?: Cesium$TimeInterval.TimeInterval$MergeCallback
+      dataComparer?: TimeInterval$DataComparer,
+      mergeCallback?: TimeInterval$MergeCallback
     ): Cesium$TimeIntervalCollection;
   }
 
-  declare class Cesium$VRTheWorldTerrainProvider mixins Cesium$TerrainProvider {
+  declare class Cesium$VRTheWorldTerrainProvider mixins TerrainProvider {
     constructor(options: {
       url: string,
       proxy?: any,
@@ -3370,7 +3706,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$VertexFormat mixins Cesium$Packable {
+  declare class Cesium$VertexFormat mixins Packable {
     position: boolean;
     normal: boolean;
     st: boolean;
@@ -3396,7 +3732,7 @@ declare module "cesium" {
     ): Cesium$VertexFormat;
   }
 
-  declare class Cesium$WallGeometry mixins Cesium$Packable {
+  declare class Cesium$WallGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       granularity?: number,
@@ -3419,7 +3755,7 @@ declare module "cesium" {
     static createGeometry(wallGeometry: Cesium$WallGeometry): Cesium$Geometry;
   }
 
-  declare class Cesium$WallOutlineGeometry mixins Cesium$Packable {
+  declare class Cesium$WallOutlineGeometry mixins Packable {
     constructor(options: {
       positions: Cesium$Cartesian3[],
       granularity?: number,
@@ -3535,14 +3871,14 @@ declare module "cesium" {
     merge(source: Cesium$BillboardGraphics): Cesium$BillboardGraphics;
   }
 
-  declare class Cesium$BillboardVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$BillboardVisualizer mixins Visualizer {
     constructor(
       entityCluster: Cesium$EntityCluster,
       entityCollection: Cesium$EntityCollection
     ): this;
   }
 
-  declare class Cesium$BoxGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$BoxGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -3568,24 +3904,17 @@ declare module "cesium" {
     merge(source: Cesium$BoxGraphics): Cesium$BoxGraphics;
   }
 
-  declare class Cesium$CallbackProperty mixins Cesium$Property {
-    constructor(
-      callback: Cesium$CallbackProperty.requestAnimationFrame$Callback,
-      isConstant: boolean
-    ): this;
-    setCallback(
-      callback: Cesium$CallbackProperty.requestAnimationFrame$Callback,
-      isConstant: boolean
-    ): void;
+  declare class Cesium$CallbackProperty mixins Property {
+    constructor(callback: CallbackProperty$Callback, isConstant: boolean): this;
+    setCallback(callback: CallbackProperty$Callback, isConstant: boolean): void;
   }
 
-  declare type CallbackProperty$Callback = (
+  declare type Cesium$CallbackProperty$Callback = (
     time?: Cesium$JulianDate,
     result?: any
   ) => any;
 
-  declare class Cesium$CheckerboardMaterialProperty
-    mixins Cesium$MaterialProperty {
+  declare class Cesium$CheckerboardMaterialProperty mixins MaterialProperty {
     evenColor: Cesium$Color;
     oddColor: Cesium$Color;
     repeat: Cesium$Property;
@@ -3596,7 +3925,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$ColorMaterialProperty mixins Cesium$MaterialProperty {
+  declare class Cesium$ColorMaterialProperty mixins MaterialProperty {
     color: Cesium$Color;
     constructor(color?: Cesium$Color): this;
   }
@@ -3624,8 +3953,7 @@ declare module "cesium" {
     getById(id: any): Cesium$Entity;
   }
 
-  declare class Cesium$CompositeMaterialProperty
-    mixins Cesium$MaterialProperty {
+  declare class Cesium$CompositeMaterialProperty mixins MaterialProperty {
     intervals: Cesium$TimeIntervalCollection;
   }
 
@@ -3643,7 +3971,7 @@ declare module "cesium" {
     equals(other?: Cesium$Property): boolean;
   }
 
-  declare class Cesium$CompositeProperty mixins Cesium$Property {
+  declare class Cesium$CompositeProperty mixins Property {
     intervals: Cesium$TimeIntervalCollection;
   }
 
@@ -3668,12 +3996,12 @@ declare module "cesium" {
     equals(other?: Cesium$Property): boolean;
   }
 
-  declare class Cesium$ConstantProperty mixins Cesium$Property {
+  declare class Cesium$ConstantProperty mixins Property {
     constructor(value?: any): this;
     setValue(value: any): void;
   }
 
-  declare class Cesium$CorridorGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$CorridorGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -3709,11 +4037,11 @@ declare module "cesium" {
     merge(source: Cesium$CorridorGraphics): Cesium$CorridorGraphics;
   }
 
-  declare class Cesium$CustomDataSource mixins Cesium$DataSource {
+  declare class Cesium$CustomDataSource mixins DataSource {
     constructor(name?: string): this;
   }
 
-  declare class Cesium$CylinderGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$CylinderGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -3747,7 +4075,7 @@ declare module "cesium" {
     merge(source: Cesium$CylinderGraphics): Cesium$CylinderGraphics;
   }
 
-  declare class Cesium$CzmlDataSource mixins Cesium$DataSource {
+  declare class Cesium$CzmlDataSource mixins DataSource {
     static updaters: any[];
     static load(
       czml: Cesium$Resource | string | { [key: string]: any },
@@ -3842,18 +4170,18 @@ declare module "cesium" {
     scene: Cesium$Scene;
     dataSources: Cesium$DataSourceCollection;
     defaultDataSource: Cesium$CustomDataSource;
-    static defaultVisualizersCallback: Cesium$DataSourceDisplay.DataSourceDisplay$VisualizersCallback;
+    static defaultVisualizersCallback: DataSourceDisplay$VisualizersCallback;
     constructor(options: {
       scene: Cesium$Scene,
       dataSourceCollection: Cesium$DataSourceCollection,
-      visualizersCallback?: Cesium$DataSourceDisplay.DataSourceDisplay$VisualizersCallback
+      visualizersCallback?: DataSourceDisplay$VisualizersCallback
     }): this;
     isDestroyed(): boolean;
     destroy(): void;
     update(time: Cesium$JulianDate): boolean;
   }
 
-  declare type DataSourceDisplay$VisualizersCallback = (
+  declare type Cesium$DataSourceDisplay$VisualizersCallback = (
     scene: Cesium$Scene,
     dataSource: Cesium$DataSource
   ) => Cesium$Visualizer[];
@@ -3864,7 +4192,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$EllipseGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$EllipseGeometryUpdater mixins GeometryUpdater {
     onTerrain: boolean;
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
@@ -3905,7 +4233,7 @@ declare module "cesium" {
     merge(source: Cesium$EllipseGraphics): Cesium$EllipseGraphics;
   }
 
-  declare class Cesium$EllipsoidGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$EllipsoidGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
     createFillGeometryInstance(
       time: Cesium$JulianDate,
@@ -4076,7 +4404,7 @@ declare module "cesium" {
     update(time: Cesium$JulianDate): void;
   }
 
-  declare class Cesium$GeoJsonDataSource mixins Cesium$DataSource {
+  declare class Cesium$GeoJsonDataSource mixins DataSource {
     static clampToGround: boolean;
     static crsLinkHrefs: any;
     static crsLinkTypes: any;
@@ -4155,7 +4483,7 @@ declare module "cesium" {
     ): Cesium$GeometryInstance;
   }
 
-  declare class Cesium$GeometryVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$GeometryVisualizer mixins Visualizer {
     constructor(
       scene: Cesium$Scene,
       entityCollection: Cesium$EntityCollection,
@@ -4164,7 +4492,7 @@ declare module "cesium" {
     ): this;
   }
 
-  declare class Cesium$GridMaterialProperty mixins Cesium$MaterialProperty {
+  declare class Cesium$GridMaterialProperty mixins MaterialProperty {
     color: Cesium$Color;
     cellAlpha: Cesium$Property;
     lineCount: Cesium$Property;
@@ -4179,7 +4507,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$ImageMaterialProperty mixins Cesium$MaterialProperty {
+  declare class Cesium$ImageMaterialProperty mixins MaterialProperty {
     image: Cesium$Property;
     repeat: Cesium$Property;
     constructor(options?: {
@@ -4188,7 +4516,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$KmlDataSource mixins Cesium$DataSource {
+  declare class Cesium$KmlDataSource mixins DataSource {
     refreshEvent: Cesium$Event;
     unsupportedNodeEvent: Cesium$Event;
     constructor(options?: {
@@ -4272,14 +4600,14 @@ declare module "cesium" {
     merge(source: Cesium$LabelGraphics): Cesium$LabelGraphics;
   }
 
-  declare class Cesium$LabelVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$LabelVisualizer mixins Visualizer {
     constructor(
       entityCluster: Cesium$EntityCluster,
       entityCollection: Cesium$EntityCollection
     ): this;
   }
 
-  declare class Cesium$MaterialProperty mixins Cesium$Property {
+  declare class Cesium$MaterialProperty mixins Property {
     getType(time: Cesium$JulianDate): string;
   }
 
@@ -4328,7 +4656,7 @@ declare module "cesium" {
     merge(source: Cesium$ModelGraphics): Cesium$ModelGraphics;
   }
 
-  declare class Cesium$ModelVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$ModelVisualizer mixins Visualizer {
     constructor(
       scene: Cesium$Scene,
       entityCollection: Cesium$EntityCollection
@@ -4357,7 +4685,7 @@ declare module "cesium" {
     merge(source: Cesium$PathGraphics): Cesium$PathGraphics;
   }
 
-  declare class Cesium$PathVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$PathVisualizer mixins Visualizer {
     constructor(
       scene: Cesium$Scene,
       entityCollection: Cesium$EntityCollection
@@ -4392,14 +4720,14 @@ declare module "cesium" {
     merge(source: Cesium$PointGraphics): Cesium$PointGraphics;
   }
 
-  declare class Cesium$PointVisualizer mixins Cesium$Visualizer {
+  declare class Cesium$PointVisualizer mixins Visualizer {
     constructor(
       entityCluster: Cesium$EntityCluster,
       entityCollection: Cesium$EntityCollection
     ): this;
   }
 
-  declare class Cesium$PolygonGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$PolygonGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -4436,20 +4764,18 @@ declare module "cesium" {
     merge(source: Cesium$PolygonGraphics): Cesium$PolygonGraphics;
   }
 
-  declare class Cesium$PolylineArrowMaterialProperty
-    mixins Cesium$MaterialProperty {
+  declare class Cesium$PolylineArrowMaterialProperty mixins MaterialProperty {
     color: Cesium$Property;
     constructor(color?: Cesium$Property): this;
   }
 
-  declare class Cesium$PolylineGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$PolylineGeometryUpdater mixins GeometryUpdater {
     depthFailMaterialProperty: Cesium$MaterialProperty;
     distanceDisplayConditionProperty: Cesium$Property;
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
-  declare class Cesium$PolylineGlowMaterialProperty
-    mixins Cesium$MaterialProperty {
+  declare class Cesium$PolylineGlowMaterialProperty mixins MaterialProperty {
     color: Cesium$Color;
     glowPower: Cesium$Property;
     constructor(options?: {
@@ -4478,8 +4804,7 @@ declare module "cesium" {
     merge(source: Cesium$PolylineGraphics): Cesium$PolylineGraphics;
   }
 
-  declare class Cesium$PolylineOutlineMaterialProperty
-    mixins Cesium$MaterialProperty {
+  declare class Cesium$PolylineOutlineMaterialProperty mixins MaterialProperty {
     color: Cesium$Color;
     outlineColor: Cesium$Color;
     outlineWidth: Cesium$Property;
@@ -4490,8 +4815,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$PolylineVolumeGeometryUpdater
-    mixins Cesium$GeometryUpdater {
+  declare class Cesium$PolylineVolumeGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -4525,7 +4849,7 @@ declare module "cesium" {
     merge(source: Cesium$PolylineVolumeGraphics): Cesium$PolylineVolumeGraphics;
   }
 
-  declare class Cesium$PositionProperty mixins Cesium$Property {
+  declare class Cesium$PositionProperty mixins Property {
     referenceFrame: Cesium$ReferenceFrame;
     getValueInReferenceFrame(
       time: Cesium$JulianDate,
@@ -4534,7 +4858,7 @@ declare module "cesium" {
     ): Cesium$Cartesian3;
   }
 
-  declare class Cesium$PositionPropertyArray mixins Cesium$PositionProperty {
+  declare class Cesium$PositionPropertyArray mixins PositionProperty {
     constructor(value?: Cesium$Property[]): this;
     getValue(
       time?: Cesium$JulianDate,
@@ -4550,13 +4874,13 @@ declare module "cesium" {
     equals(other?: Cesium$Property): boolean;
   }
 
-  declare class Cesium$PropertyArray mixins Cesium$Property {
+  declare class Cesium$PropertyArray mixins Property {
     constructor(value?: Cesium$Property[]): this;
     getValue(time?: Cesium$JulianDate, result?: any[]): any[];
     setValue(value: Cesium$Property[]): void;
   }
 
-  declare class Cesium$RectangleGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$RectangleGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -4596,7 +4920,7 @@ declare module "cesium" {
     merge(source: Cesium$RectangleGraphics): Cesium$RectangleGraphics;
   }
 
-  declare class Cesium$ReferenceProperty mixins Cesium$Property {
+  declare class Cesium$ReferenceProperty mixins Property {
     referenceFrame: Cesium$ReferenceFrame;
     targetId: string;
     targetCollection: Cesium$EntityCollection;
@@ -4619,7 +4943,7 @@ declare module "cesium" {
     ): Cesium$ReferenceProperty;
   }
 
-  declare class Cesium$SampledPositionProperty mixins Cesium$SampledProperty {
+  declare class Cesium$SampledPositionProperty mixins SampledProperty {
     numberOfDerivatives: boolean;
     constructor(
       referenceFrame?: Cesium$ReferenceFrame,
@@ -4641,7 +4965,7 @@ declare module "cesium" {
     ): void;
   }
 
-  declare class Cesium$SampledProperty mixins Cesium$PositionProperty {
+  declare class Cesium$SampledProperty mixins PositionProperty {
     type: any;
     derivativeTypes: Cesium$Packable[];
     interpolationDegree: number;
@@ -4674,7 +4998,7 @@ declare module "cesium" {
     ): void;
   }
 
-  declare class Cesium$StripeMaterialProperty mixins Cesium$MaterialProperty {
+  declare class Cesium$StripeMaterialProperty mixins MaterialProperty {
     orientation: Cesium$Property;
     evenColor: Cesium$Color;
     oddColor: Cesium$Color;
@@ -4690,16 +5014,16 @@ declare module "cesium" {
   }
 
   declare class Cesium$TimeIntervalCollectionPositionProperty
-    mixins Cesium$PositionProperty {
+    mixins PositionProperty {
     intervals: Cesium$TimeIntervalCollection;
     constructor(referenceFrame?: Cesium$ReferenceFrame): this;
   }
 
-  declare class Cesium$TimeIntervalCollectionProperty mixins Cesium$Property {
+  declare class Cesium$TimeIntervalCollectionProperty mixins Property {
     intervals: Cesium$TimeIntervalCollection;
   }
 
-  declare class Cesium$VelocityOrientationProperty mixins Cesium$Property {
+  declare class Cesium$VelocityOrientationProperty mixins Property {
     position: Cesium$Property;
     ellipsoid: Cesium$Property;
     constructor(position?: Cesium$Property, ellipsoid?: Cesium$Ellipsoid): this;
@@ -4715,7 +5039,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$WallGeometryUpdater mixins Cesium$GeometryUpdater {
+  declare class Cesium$WallGeometryUpdater mixins GeometryUpdater {
     constructor(entity: Cesium$Entity, scene: Cesium$Scene): this;
   }
 
@@ -4767,8 +5091,7 @@ declare module "cesium" {
     getRenderState(): any;
   }
 
-  declare class Cesium$ArcGisMapServerImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$ArcGisMapServerImageryProvider mixins ImageryProvider {
     url: string;
     usingPrecachedTiles: boolean;
     constructor(
@@ -4789,7 +5112,7 @@ declare module "cesium" {
     ): this;
   }
 
-  declare class Cesium$DistanceDisplayCondition mixins Cesium$Packable {
+  declare class Cesium$DistanceDisplayCondition mixins Packable {
     far: number;
     near: number;
     constructor(near: number, far: number): this;
@@ -4851,12 +5174,12 @@ declare module "cesium" {
         | HTMLImageElement
         | HTMLCanvasElement
         | string
-        | Cesium$Billboard.Billboard$CreateImageCallback
+        | Billboard$CreateImageCallback
     ): void;
     setImageSubRegion(id: string, subRegion: Cesium$BoundingRectangle): void;
   }
 
-  declare type Billboard$CreateImageCallback = (
+  declare type Cesium$Billboard$CreateImageCallback = (
     id: string
   ) =>
     | HTMLImageElement
@@ -4884,7 +5207,7 @@ declare module "cesium" {
     update(): void;
   }
 
-  declare class Cesium$BingMapsImageryProvider mixins Cesium$ImageryProvider {
+  declare class Cesium$BingMapsImageryProvider mixins ImageryProvider {
     url: string;
     key: string;
     mapStyle: Cesium$BingMapsStyle;
@@ -4910,40 +5233,40 @@ declare module "cesium" {
   }
 
   declare class Cesium$EasingFunction {
-    static BACK_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static BACK_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static BACK_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static BOUNCE_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static BOUNCE_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static BOUNCE_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CIRCULAR_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CIRCULAR_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CIRCULAR_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CUBIC_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CUBIC_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static CUBIR_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static ELASTIC_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static ELASTIC_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static ELASTIC_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static EXPONENTIAL_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static EXPONENTIAL_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static EXPONENTIAL_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static LINEAR_NONE: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUADRATIC_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUADRATIC_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUADRATIC_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUARTIC_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUARTIC_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUARTIC_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUINTIC_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUINTIC_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static QUINTIC_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static SINUSOIDAL_IN: Cesium$EasingFunction.CallbackProperty$Callback;
-    static SINUSOIDAL_IN_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
-    static SINUSOIDAL_OUT: Cesium$EasingFunction.CallbackProperty$Callback;
+    static BACK_IN: EasingFunction$Callback;
+    static BACK_IN_OUT: EasingFunction$Callback;
+    static BACK_OUT: EasingFunction$Callback;
+    static BOUNCE_IN: EasingFunction$Callback;
+    static BOUNCE_IN_OUT: EasingFunction$Callback;
+    static BOUNCE_OUT: EasingFunction$Callback;
+    static CIRCULAR_IN: EasingFunction$Callback;
+    static CIRCULAR_IN_OUT: EasingFunction$Callback;
+    static CIRCULAR_OUT: EasingFunction$Callback;
+    static CUBIC_IN: EasingFunction$Callback;
+    static CUBIC_IN_OUT: EasingFunction$Callback;
+    static CUBIR_OUT: EasingFunction$Callback;
+    static ELASTIC_IN: EasingFunction$Callback;
+    static ELASTIC_IN_OUT: EasingFunction$Callback;
+    static ELASTIC_OUT: EasingFunction$Callback;
+    static EXPONENTIAL_IN: EasingFunction$Callback;
+    static EXPONENTIAL_IN_OUT: EasingFunction$Callback;
+    static EXPONENTIAL_OUT: EasingFunction$Callback;
+    static LINEAR_NONE: EasingFunction$Callback;
+    static QUADRATIC_IN: EasingFunction$Callback;
+    static QUADRATIC_IN_OUT: EasingFunction$Callback;
+    static QUADRATIC_OUT: EasingFunction$Callback;
+    static QUARTIC_IN: EasingFunction$Callback;
+    static QUARTIC_IN_OUT: EasingFunction$Callback;
+    static QUARTIC_OUT: EasingFunction$Callback;
+    static QUINTIC_IN: EasingFunction$Callback;
+    static QUINTIC_IN_OUT: EasingFunction$Callback;
+    static QUINTIC_OUT: EasingFunction$Callback;
+    static SINUSOIDAL_IN: EasingFunction$Callback;
+    static SINUSOIDAL_IN_OUT: EasingFunction$Callback;
+    static SINUSOIDAL_OUT: EasingFunction$Callback;
   }
 
-  declare type EasingFunction$Callback = (
+  declare type Cesium$EasingFunction$Callback = (
     time?: Cesium$JulianDate,
     result?: any
   ) => any;
@@ -5004,8 +5327,8 @@ declare module "cesium" {
       destination: Cesium$Cartesian3 | Cesium$Rectangle,
       orientation?: any,
       duration?: number,
-      complete?: Cesium$Camera.Camera$FlightCompleteCallback,
-      cancel?: Cesium$Camera.Camera$FlightCancelledCallback,
+      complete?: Camera$FlightCompleteCallback,
+      cancel?: Camera$FlightCancelledCallback,
       endTransform?: Cesium$Matrix4,
       maximumHeight?: number,
       pitchAdjustHeight?: number,
@@ -5018,8 +5341,8 @@ declare module "cesium" {
       options?: {
         duration?: number,
         offset?: Cesium$HeadingPitchRange,
-        complete?: Cesium$Camera.Camera$FlightCompleteCallback,
-        cancel?: Cesium$Camera.Camera$FlightCancelledCallback,
+        complete?: Camera$FlightCompleteCallback,
+        cancel?: Camera$FlightCancelledCallback,
         endTransform?: Cesium$Matrix4,
         maximumHeight?: number,
         pitchAdjustHeight?: number,
@@ -5101,9 +5424,9 @@ declare module "cesium" {
     zoomOut(amount?: number): void;
   }
 
-  declare type Camera$FlightCancelledCallback = () => void;
+  declare type Cesium$Camera$FlightCancelledCallback = () => void;
 
-  declare type Camera$FlightCompleteCallback = () => void;
+  declare type Cesium$Camera$FlightCompleteCallback = () => void;
 
   declare class Cesium$CameraEventAggregator {
     currentMousePosition: Cesium$Cartesian2;
@@ -5166,7 +5489,7 @@ declare module "cesium" {
     computeVisibility(boundingVolume: any): Cesium$Intersect;
   }
 
-  declare class Cesium$DebugAppearance mixins Cesium$Appearance {
+  declare class Cesium$DebugAppearance mixins Appearance {
     attributeName: string;
     glslDatatype: string;
     constructor(options: {
@@ -5227,7 +5550,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$EllipsoidSurfaceAppearance mixins Cesium$Appearance {
+  declare class Cesium$EllipsoidSurfaceAppearance mixins Appearance {
     vertexFormat: Cesium$VertexFormat;
     flat: boolean;
     faceForward: boolean;
@@ -5329,7 +5652,7 @@ declare module "cesium" {
   }
 
   declare class Cesium$GoogleEarthEnterpriseImageryProvider
-    mixins Cesium$ImageryProvider {
+    mixins ImageryProvider {
     url: string;
     constructor(options: {
       url: Cesium$Resource | string,
@@ -5341,7 +5664,7 @@ declare module "cesium" {
   }
 
   declare class Cesium$GoogleEarthEnterpriseMapsProvider
-    mixins Cesium$ImageryProvider {
+    mixins ImageryProvider {
     channel: number;
     path: string;
     requestType: string;
@@ -5358,8 +5681,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$GoogleEarthEnterpriseTerrainData
-    mixins Cesium$TerrainData {
+  declare class Cesium$GoogleEarthEnterpriseTerrainData mixins TerrainData {
     constructor(options: {
       buffer: ArrayBuffer,
       negativeAltitudeExponentBias: number,
@@ -5402,7 +5724,7 @@ declare module "cesium" {
     ): Promise<Cesium$TerrainData>;
   }
 
-  declare class Cesium$GridImageryProvider mixins Cesium$ImageryProvider {
+  declare class Cesium$GridImageryProvider mixins ImageryProvider {
     constructor(
       options?: {
         tilingScheme?: Cesium$TilingScheme,
@@ -5449,12 +5771,12 @@ declare module "cesium" {
       imageryProvider: Cesium$ImageryProvider,
       options?: {
         rectangle?: Cesium$Rectangle,
-        alpha?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
-        brightness?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
-        contrast?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
-        hue?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
-        saturation?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
-        gamma?: number | Cesium$ImageryLayer.ImageryLayer$ValueFunc,
+        alpha?: number | ImageryLayer$ValueFunc,
+        brightness?: number | ImageryLayer$ValueFunc,
+        contrast?: number | ImageryLayer$ValueFunc,
+        hue?: number | ImageryLayer$ValueFunc,
+        saturation?: number | ImageryLayer$ValueFunc,
+        gamma?: number | ImageryLayer$ValueFunc,
         show?: boolean,
         maximumAnisotropy?: number,
         minimumTerrainLevel?: number,
@@ -5466,7 +5788,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare type ImageryLayer$ValueFunc = (
+  declare type Cesium$ImageryLayer$ValueFunc = (
     frameState: any,
     layer: Cesium$ImageryLayer,
     x: number,
@@ -5630,8 +5952,8 @@ declare module "cesium" {
     static fromType(type: string, uniforms?: any): Cesium$Material;
   }
 
-  declare class Cesium$MaterialAppearance mixins Cesium$Appearance {
-    materialSupport: Cesium$MaterialAppearance.MaterialAppearance$MaterialSupport;
+  declare class Cesium$MaterialAppearance mixins Appearance {
+    materialSupport: MaterialAppearance$MaterialSupport;
     vertexFormat: Cesium$VertexFormat;
     flat: boolean;
     faceForward: boolean;
@@ -5640,7 +5962,7 @@ declare module "cesium" {
       faceForward?: boolean,
       translucent?: boolean,
       closed?: boolean,
-      materialSupport?: Cesium$MaterialAppearance.MaterialAppearance$MaterialSupport,
+      materialSupport?: MaterialAppearance$MaterialSupport,
       material?: Cesium$Material,
       vertexShaderSource?: string,
       fragmentShaderSource?: string,
@@ -5648,25 +5970,15 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class MaterialAppearance$MaterialSupport {
-    constructor(...args: empty): mixed;
-    static +BASIC: Class<MaterialAppearance$MaterialSupport__BASIC> &
-      MaterialAppearance$MaterialSupport__BASIC &
-      0; // 0
-    static +TEXTURED: Class<MaterialAppearance$MaterialSupport__TEXTURED> &
-      MaterialAppearance$MaterialSupport__TEXTURED &
-      1; // 1
-    static +ALL: Class<MaterialAppearance$MaterialSupport__ALL> &
-      MaterialAppearance$MaterialSupport__ALL &
-      2; // 2
-  }
+  declare var npm$namespace$Cesium$MaterialAppearance: {
+    MaterialSupport: typeof Cesium$MaterialAppearance$MaterialSupport
+  };
 
-  declare class MaterialAppearance$MaterialSupport__BASIC
-    mixins MaterialAppearance$MaterialSupport {}
-  declare class MaterialAppearance$MaterialSupport__TEXTURED
-    mixins MaterialAppearance$MaterialSupport {}
-  declare class MaterialAppearance$MaterialSupport__ALL
-    mixins MaterialAppearance$MaterialSupport {}
+  declare var Cesium$MaterialAppearance$MaterialSupport: {|
+    +BASIC: 0, // 0
+    +TEXTURED: 1, // 1
+    +ALL: 2 // 2
+  |};
 
   declare class Cesium$Model {
     show: boolean;
@@ -5802,7 +6114,7 @@ declare module "cesium" {
     ): Promise<boolean>;
   }
 
-  declare class Cesium$PerInstanceColorAppearance mixins Cesium$Appearance {
+  declare class Cesium$PerInstanceColorAppearance mixins Appearance {
     vertexFormat: Cesium$VertexFormat;
     flat: boolean;
     faceForward: boolean;
@@ -5836,7 +6148,7 @@ declare module "cesium" {
     ): Cesium$Cartesian2;
   }
 
-  declare class Cesium$OrthographicFrustum mixins Cesium$Frustum {
+  declare class Cesium$OrthographicFrustum mixins Frustum {
     aspectRatio: number;
     width: number;
     static packedLength: number;
@@ -5860,7 +6172,7 @@ declare module "cesium" {
     equals(other?: Cesium$OrthographicFrustum): boolean;
   }
 
-  declare class Cesium$PerspectiveFrustum mixins Cesium$Frustum {
+  declare class Cesium$PerspectiveFrustum mixins Frustum {
     fov: number;
     aspectRatio: number;
     xOffset: number;
@@ -5890,7 +6202,7 @@ declare module "cesium" {
     equals(other?: Cesium$PerspectiveFrustum): boolean;
   }
 
-  declare class Cesium$PerspectiveOffCenterFrustum mixins Cesium$Frustum {
+  declare class Cesium$PerspectiveOffCenterFrustum mixins Frustum {
     left: number;
     right: number;
     top: number;
@@ -5982,7 +6294,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$PolylineColorAppearance mixins Cesium$Appearance {
+  declare class Cesium$PolylineColorAppearance mixins Appearance {
     vertexFormat: Cesium$VertexFormat;
     static VERTEX_FORMAT: Cesium$VertexFormat;
     constructor(options?: {
@@ -5993,7 +6305,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$PolylineMaterialAppearance mixins Cesium$Appearance {
+  declare class Cesium$PolylineMaterialAppearance mixins Appearance {
     vertexFormat: Cesium$VertexFormat;
     static VERTEX_FORMAT: Cesium$VertexFormat;
     constructor(options?: {
@@ -6029,7 +6341,7 @@ declare module "cesium" {
       modelMatrix?: Cesium$Matrix4,
       vertexCacheOptimize?: boolean,
       interleave?: boolean,
-      GeometryPipeline$compressVertices?: boolean,
+      compressVertices?: boolean,
       releaseGeometryInstances?: boolean,
       allowPicking?: boolean,
       cull?: boolean,
@@ -6222,7 +6534,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$SingleTileImageryProvider mixins Cesium$ImageryProvider {
+  declare class Cesium$SingleTileImageryProvider mixins ImageryProvider {
     url: string;
     constructor(options: {
       url: string,
@@ -6267,8 +6579,7 @@ declare module "cesium" {
     screenSpaceErrorFactor: number;
   }
 
-  declare class Cesium$TileCoordinatesImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$TileCoordinatesImageryProvider mixins ImageryProvider {
     constructor(options?: {
       tilingScheme?: Cesium$TilingScheme,
       ellipsoid?: Cesium$Ellipsoid,
@@ -6285,8 +6596,7 @@ declare module "cesium" {
     ): Promise<boolean>;
   }
 
-  declare class Cesium$TileMapServiceImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$TileMapServiceImageryProvider mixins ImageryProvider {
     url: string;
     constructor(options?: {
       url?: string,
@@ -6316,8 +6626,7 @@ declare module "cesium" {
     destroy(): void;
   }
 
-  declare class Cesium$WebMapServiceImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$WebMapServiceImageryProvider mixins ImageryProvider {
     url: string;
     static DefaultParameters: {
       service: string,
@@ -6352,8 +6661,7 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$WebMapTileServiceImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$WebMapTileServiceImageryProvider mixins ImageryProvider {
     clock: Cesium$Clock;
     dimensions: any;
     format: string;
@@ -6408,22 +6716,22 @@ declare module "cesium" {
     playReverseViewModel: Cesium$ToggleButtonViewModel;
     playForwardViewModel: Cesium$ToggleButtonViewModel;
     playRealtimeViewModel: Cesium$ToggleButtonViewModel;
-    dateFormatter: Cesium$AnimationViewModel.AnimationViewModel$DateFormatter;
-    timeFormatter: Cesium$AnimationViewModel.AnimationViewModel$TimeFormatter;
-    static defaultDateFormatter: Cesium$AnimationViewModel.AnimationViewModel$DateFormatter;
+    dateFormatter: AnimationViewModel$DateFormatter;
+    timeFormatter: AnimationViewModel$TimeFormatter;
+    static defaultDateFormatter: AnimationViewModel$DateFormatter;
     static defaultTicks: number[];
-    static defaultTimeFormatter: Cesium$AnimationViewModel.AnimationViewModel$TimeFormatter;
+    static defaultTimeFormatter: AnimationViewModel$TimeFormatter;
     constructor(clockViewModel: Cesium$ClockViewModel): this;
     getShuttleRingTicks(): number[];
     setShuttleRingTicks(positiveTicks: number[]): void;
   }
 
-  declare type AnimationViewModel$DateFormatter = (
+  declare type Cesium$AnimationViewModel$DateFormatter = (
     date: Cesium$JulianDate,
     viewModel: Cesium$AnimationViewModel
   ) => string;
 
-  declare type AnimationViewModel$TimeFormatter = (
+  declare type Cesium$AnimationViewModel$TimeFormatter = (
     date: Cesium$JulianDate,
     viewModel: Cesium$AnimationViewModel
   ) => string;
@@ -6473,13 +6781,11 @@ declare module "cesium" {
       name: string,
       tooltip: string,
       iconUrl: string,
-      creationFunction:
-        | Cesium$ProviderViewModel.ProviderViewModel$CreationFunction
-        | Cesium$Command
+      creationFunction: ProviderViewModel$CreationFunction | Cesium$Command
     }): this;
   }
 
-  declare type ProviderViewModel$CreationFunction = () =>
+  declare type Cesium$ProviderViewModel$CreationFunction = () =>
     | Cesium$ImageryProvider
     | Cesium$TerrainProvider
     | Cesium$ImageryProvider[]
@@ -6846,7 +7152,7 @@ declare module "cesium" {
     position: Cesium$Cartesian3;
     showSelection: boolean;
     isVisible: boolean;
-    computeScreenSpacePosition: Cesium$SelectionIndicatorViewModel.SelectionIndicatorViewModel$ComputeScreenSpacePosition;
+    computeScreenSpacePosition: SelectionIndicatorViewModel$ComputeScreenSpacePosition;
     container: Element;
     selectionIndicatorElement: Element;
     scene: Cesium$Scene;
@@ -6860,7 +7166,7 @@ declare module "cesium" {
     animateDepart(): void;
   }
 
-  declare type SelectionIndicatorViewModel$ComputeScreenSpacePosition = (
+  declare type Cesium$SelectionIndicatorViewModel$ComputeScreenSpacePosition = (
     position: Cesium$Cartesian3,
     result: Cesium$Cartesian2
   ) => Cesium$Cartesian2;
@@ -6974,7 +7280,7 @@ declare module "cesium" {
         maximumRenderTimeChange?: number
       }
     ): this;
-    extend(mixin: Cesium$Viewer.Viewer$ViewerMixin, options: any): void;
+    extend(mixin: Viewer$ViewerMixin, options: any): void;
     resize(): void;
     forceResize(): void;
     render(): void;
@@ -7014,7 +7320,7 @@ declare module "cesium" {
     ): Promise<boolean>;
   }
 
-  declare type Viewer$ViewerMixin = (
+  declare type Cesium$Viewer$ViewerMixin = (
     viewer: Cesium$Viewer,
     options: any
   ) => void;
@@ -7030,10 +7336,10 @@ declare module "cesium" {
   declare function Cesium$binarySearch(
     array: any[],
     itemToFind: any,
-    comparator: Cesium$binarySearch.Queue$Comparator
+    comparator: binarySearch$Comparator
   ): number;
 
-  declare type binarySearch$Comparator = (a: any, b: any) => number;
+  declare type Cesium$binarySearch$Comparator = (a: any, b: any) => number;
 
   declare function Cesium$cancelAnimationFrame(requestID: number): void;
 
@@ -7111,11 +7417,11 @@ declare module "cesium" {
 
   declare function Cesium$mergeSort(
     array: any[],
-    comparator: Cesium$mergeSort.binarySearch$Comparator,
+    comparator: mergeSort$Comparator,
     userDefinedObject?: any
   ): void;
 
-  declare type mergeSort$Comparator = (a: any, b: any) => number;
+  declare type Cesium$mergeSort$Comparator = (a: any, b: any) => number;
 
   declare function Cesium$objectToQuery(obj: any): string;
 
@@ -7129,10 +7435,10 @@ declare module "cesium" {
   declare function Cesium$queryToObject(queryString: string): any;
 
   declare function Cesium$requestAnimationFrame(
-    callback: Cesium$requestAnimationFrame.EasingFunction$Callback
+    callback: requestAnimationFrame$Callback
   ): number;
 
-  declare type requestAnimationFrame$Callback = (
+  declare type Cesium$requestAnimationFrame$Callback = (
     time?: Cesium$JulianDate,
     result?: any
   ) => any;
@@ -7150,10 +7456,10 @@ declare module "cesium" {
 
   declare function Cesium$throttleRequestByServer(
     url: string,
-    requestFunction: Cesium$throttleRequestByServer.throttleRequestByServer$RequestFunction
+    requestFunction: throttleRequestByServer$RequestFunction
   ): Promise<any>;
 
-  declare type throttleRequestByServer$RequestFunction = (
+  declare type Cesium$throttleRequestByServer$RequestFunction = (
     url: string
   ) => Promise<any>;
 
@@ -7188,100 +7494,51 @@ declare module "cesium" {
   ): Cesium$Command;
 
   declare function Cesium$createTaskProcessorWorker(
-    workerFunction: Cesium$createTaskProcessorWorker.createTaskProcessorWorker$WorkerFunction
-  ): Cesium$createTaskProcessorWorker.createTaskProcessorWorker$TaskProcessorWorkerFunction;
+    workerFunction: createTaskProcessorWorker$WorkerFunction
+  ): createTaskProcessorWorker$TaskProcessorWorkerFunction;
 
-  declare type createTaskProcessorWorker$WorkerFunction = (
+  declare type Cesium$createTaskProcessorWorker$WorkerFunction = (
     parameters: any,
     transferableObjects: any[]
   ) => any;
 
-  declare type createTaskProcessorWorker$TaskProcessorWorkerFunction = (
+  declare type Cesium$createTaskProcessorWorker$TaskProcessorWorkerFunction = (
     event: any
   ) => void;
 
-  declare class Cesium$ClockRange {
-    constructor(...args: empty): mixed;
-    static +UNBOUNDED: Class<Cesium$ClockRange__UNBOUNDED> &
-      Cesium$ClockRange__UNBOUNDED &
-      0; // 0
-    static +CLAMPED: Class<Cesium$ClockRange__CLAMPED> &
-      Cesium$ClockRange__CLAMPED &
-      1; // 1
-    static +LOOP_STOP: Class<Cesium$ClockRange__LOOP_STOP> &
-      Cesium$ClockRange__LOOP_STOP &
-      2; // 2
-  }
+  declare var Cesium$ClockRange: {|
+    +UNBOUNDED: 0, // 0
+    +CLAMPED: 1, // 1
+    +LOOP_STOP: 2 // 2
+  |};
 
-  declare class Cesium$ClockRange__UNBOUNDED mixins Cesium$ClockRange {}
-  declare class Cesium$ClockRange__CLAMPED mixins Cesium$ClockRange {}
-  declare class Cesium$ClockRange__LOOP_STOP mixins Cesium$ClockRange {}
+  declare var Cesium$ClockStep: {|
+    +TICK_DEPENDENT: 0, // 0
+    +SYSTEM_CLOCK_MULTIPLIER: 1, // 1
+    +SYSTEM_CLOCK: 2 // 2
+  |};
 
-  declare class Cesium$ClockStep {
-    constructor(...args: empty): mixed;
-    static +TICK_DEPENDENT: Class<Cesium$ClockStep__TICK_DEPENDENT> &
-      Cesium$ClockStep__TICK_DEPENDENT &
-      0; // 0
-    static +SYSTEM_CLOCK_MULTIPLIER: Class<Cesium$ClockStep__SYSTEM_CLOCK_MULTIPLIER> &
-      Cesium$ClockStep__SYSTEM_CLOCK_MULTIPLIER &
-      1; // 1
-    static +SYSTEM_CLOCK: Class<Cesium$ClockStep__SYSTEM_CLOCK> &
-      Cesium$ClockStep__SYSTEM_CLOCK &
-      2; // 2
-  }
+  declare var Cesium$ComponentDatatype: {|
+    +BYTE: 0, // 0
+    +UNSIGNED_BYTE: 1, // 1
+    +SHORT: 2, // 2
+    +UNSIGNED_SHORT: 3, // 3
+    +FLOAT: 4, // 4
+    +DOUBLE: 5 // 5
+  |};
 
-  declare class Cesium$ClockStep__TICK_DEPENDENT mixins Cesium$ClockStep {}
-  declare class Cesium$ClockStep__SYSTEM_CLOCK_MULTIPLIER
-    mixins Cesium$ClockStep {}
-  declare class Cesium$ClockStep__SYSTEM_CLOCK mixins Cesium$ClockStep {}
-
-  declare class Cesium$ComponentDatatype {
-    constructor(...args: empty): mixed;
-    static +BYTE: Class<Cesium$ComponentDatatype__BYTE> &
-      Cesium$ComponentDatatype__BYTE &
-      0; // 0
-    static +UNSIGNED_BYTE: Class<Cesium$ComponentDatatype__UNSIGNED_BYTE> &
-      Cesium$ComponentDatatype__UNSIGNED_BYTE &
-      1; // 1
-    static +SHORT: Class<Cesium$ComponentDatatype__SHORT> &
-      Cesium$ComponentDatatype__SHORT &
-      2; // 2
-    static +UNSIGNED_SHORT: Class<Cesium$ComponentDatatype__UNSIGNED_SHORT> &
-      Cesium$ComponentDatatype__UNSIGNED_SHORT &
-      3; // 3
-    static +FLOAT: Class<Cesium$ComponentDatatype__FLOAT> &
-      Cesium$ComponentDatatype__FLOAT &
-      4; // 4
-    static +DOUBLE: Class<Cesium$ComponentDatatype__DOUBLE> &
-      Cesium$ComponentDatatype__DOUBLE &
-      5; // 5
-  }
-
-  declare class Cesium$ComponentDatatype__BYTE
-    mixins Cesium$ComponentDatatype {}
-  declare class Cesium$ComponentDatatype__UNSIGNED_BYTE
-    mixins Cesium$ComponentDatatype {}
-  declare class Cesium$ComponentDatatype__SHORT
-    mixins Cesium$ComponentDatatype {}
-  declare class Cesium$ComponentDatatype__UNSIGNED_SHORT
-    mixins Cesium$ComponentDatatype {}
-  declare class Cesium$ComponentDatatype__FLOAT
-    mixins Cesium$ComponentDatatype {}
-  declare class Cesium$ComponentDatatype__DOUBLE
-    mixins Cesium$ComponentDatatype {}
-
-  declare var npm$namespace$ComponentDatatype: {
-    getSizeInBytes: typeof ComponentDatatype$getSizeInBytes,
-    fromTypedArray: typeof ComponentDatatype$fromTypedArray,
-    validate: typeof ComponentDatatype$validate,
-    createTypedArray: typeof ComponentDatatype$createTypedArray,
-    createArrayBufferView: typeof ComponentDatatype$createArrayBufferView
+  declare var npm$namespace$Cesium$ComponentDatatype: {
+    getSizeInBytes: typeof Cesium$ComponentDatatype$getSizeInBytes,
+    fromTypedArray: typeof Cesium$ComponentDatatype$fromTypedArray,
+    validate: typeof Cesium$ComponentDatatype$validate,
+    createTypedArray: typeof Cesium$ComponentDatatype$createTypedArray,
+    createArrayBufferView: typeof Cesium$ComponentDatatype$createArrayBufferView
   };
-  declare function ComponentDatatype$getSizeInBytes(
+  declare function Cesium$ComponentDatatype$getSizeInBytes(
     componentDatatype: Cesium$ComponentDatatype
   ): number;
 
-  declare function ComponentDatatype$fromTypedArray(
+  declare function Cesium$ComponentDatatype$fromTypedArray(
     array:
       | Int8Array
       | Uint8Array
@@ -7291,11 +7548,11 @@ declare module "cesium" {
       | Float64Array
   ): Cesium$ComponentDatatype;
 
-  declare function ComponentDatatype$validate(
+  declare function Cesium$ComponentDatatype$validate(
     componentDatatype: Cesium$ComponentDatatype
   ): boolean;
 
-  declare function ComponentDatatype$createTypedArray(
+  declare function Cesium$ComponentDatatype$createTypedArray(
     componentDatatype: Cesium$ComponentDatatype,
     valuesOrLength: number | any[]
   ):
@@ -7306,7 +7563,7 @@ declare module "cesium" {
     | Float32Array
     | Float64Array;
 
-  declare function ComponentDatatype$createArrayBufferView(
+  declare function Cesium$ComponentDatatype$createArrayBufferView(
     componentDatatype: Cesium$ComponentDatatype,
     buffer: ArrayBuffer,
     byteOffset?: number,
@@ -7319,153 +7576,111 @@ declare module "cesium" {
     | Float32Array
     | Float64Array;
 
-  declare class Cesium$CornerType {
-    constructor(...args: empty): mixed;
-    static +ROUNDED: Class<Cesium$CornerType__ROUNDED> &
-      Cesium$CornerType__ROUNDED &
-      0; // 0
-    static +MITERED: Class<Cesium$CornerType__MITERED> &
-      Cesium$CornerType__MITERED &
-      1; // 1
-    static +BEVELED: Class<Cesium$CornerType__BEVELED> &
-      Cesium$CornerType__BEVELED &
-      2; // 2
-  }
+  declare var Cesium$CornerType: {|
+    +ROUNDED: 0, // 0
+    +MITERED: 1, // 1
+    +BEVELED: 2 // 2
+  |};
 
-  declare class Cesium$CornerType__ROUNDED mixins Cesium$CornerType {}
-  declare class Cesium$CornerType__MITERED mixins Cesium$CornerType {}
-  declare class Cesium$CornerType__BEVELED mixins Cesium$CornerType {}
-
-  declare var npm$namespace$CubicRealPolynomial: {
-    computeDiscriminant: typeof CubicRealPolynomial$computeDiscriminant,
-    computeRealRoots: typeof CubicRealPolynomial$computeRealRoots
+  declare var npm$namespace$Cesium$CubicRealPolynomial: {
+    computeDiscriminant: typeof Cesium$CubicRealPolynomial$computeDiscriminant,
+    computeRealRoots: typeof Cesium$CubicRealPolynomial$computeRealRoots
   };
-  declare function CubicRealPolynomial$computeDiscriminant(
+  declare function Cesium$CubicRealPolynomial$computeDiscriminant(
     a: number,
     b: number,
     c: number,
     d: number
   ): number;
 
-  declare function CubicRealPolynomial$computeRealRoots(
+  declare function Cesium$CubicRealPolynomial$computeRealRoots(
     a: number,
     b: number,
     c: number,
     d: number
   ): number[];
 
-  declare class Cesium$ExtrapolationType {
-    constructor(...args: empty): mixed;
-    static +NONE: Class<Cesium$ExtrapolationType__NONE> &
-      Cesium$ExtrapolationType__NONE &
-      0; // 0
-    static +HOLD: Class<Cesium$ExtrapolationType__HOLD> &
-      Cesium$ExtrapolationType__HOLD &
-      1; // 1
-    static +EXTRAPOLATE: Class<Cesium$ExtrapolationType__EXTRAPOLATE> &
-      Cesium$ExtrapolationType__EXTRAPOLATE &
-      2; // 2
-  }
+  declare var Cesium$ExtrapolationType: {|
+    +NONE: 0, // 0
+    +HOLD: 1, // 1
+    +EXTRAPOLATE: 2 // 2
+  |};
 
-  declare class Cesium$ExtrapolationType__NONE
-    mixins Cesium$ExtrapolationType {}
-  declare class Cesium$ExtrapolationType__HOLD
-    mixins Cesium$ExtrapolationType {}
-  declare class Cesium$ExtrapolationType__EXTRAPOLATE
-    mixins Cesium$ExtrapolationType {}
-
-  declare var npm$namespace$FeatureDetection: {
-    supportsFullscreen: typeof FeatureDetection$supportsFullscreen,
-    supportsTypedArrays: typeof FeatureDetection$supportsTypedArrays,
-    supportsWebAssembly: typeof FeatureDetection$supportsWebAssembly,
-    supportsWebWorkers: typeof FeatureDetection$supportsWebWorkers
+  declare var npm$namespace$Cesium$FeatureDetection: {
+    supportsFullscreen: typeof Cesium$FeatureDetection$supportsFullscreen,
+    supportsTypedArrays: typeof Cesium$FeatureDetection$supportsTypedArrays,
+    supportsWebAssembly: typeof Cesium$FeatureDetection$supportsWebAssembly,
+    supportsWebWorkers: typeof Cesium$FeatureDetection$supportsWebWorkers
   };
-  declare function FeatureDetection$supportsFullscreen(): boolean;
+  declare function Cesium$FeatureDetection$supportsFullscreen(): boolean;
 
-  declare function FeatureDetection$supportsTypedArrays(): boolean;
+  declare function Cesium$FeatureDetection$supportsTypedArrays(): boolean;
 
-  declare function FeatureDetection$supportsWebAssembly(): boolean;
+  declare function Cesium$FeatureDetection$supportsWebAssembly(): boolean;
 
-  declare function FeatureDetection$supportsWebWorkers(): boolean;
+  declare function Cesium$FeatureDetection$supportsWebWorkers(): boolean;
 
-  declare class Cesium$Fullscreen {
-    constructor(...args: empty): mixed;
-    static +element: Class<Cesium$Fullscreen__element> &
-      Cesium$Fullscreen__element &
-      0; // 0
-    static +changeEventName: Class<Cesium$Fullscreen__changeEventName> &
-      Cesium$Fullscreen__changeEventName &
-      1; // 1
-    static +errorEventName: Class<Cesium$Fullscreen__errorEventName> &
-      Cesium$Fullscreen__errorEventName &
-      2; // 2
-    static +enabled: Class<Cesium$Fullscreen__enabled> &
-      Cesium$Fullscreen__enabled &
-      3; // 3
-    static +fullscreen: Class<Cesium$Fullscreen__fullscreen> &
-      Cesium$Fullscreen__fullscreen &
-      4; // 4
-  }
+  declare var Cesium$Fullscreen: {|
+    +element: 0, // 0
+    +changeEventName: 1, // 1
+    +errorEventName: 2, // 2
+    +enabled: 3, // 3
+    +fullscreen: 4 // 4
+  |};
 
-  declare class Cesium$Fullscreen__element mixins Cesium$Fullscreen {}
-  declare class Cesium$Fullscreen__changeEventName mixins Cesium$Fullscreen {}
-  declare class Cesium$Fullscreen__errorEventName mixins Cesium$Fullscreen {}
-  declare class Cesium$Fullscreen__enabled mixins Cesium$Fullscreen {}
-  declare class Cesium$Fullscreen__fullscreen mixins Cesium$Fullscreen {}
-
-  declare var npm$namespace$Fullscreen: {
-    supportsFullscreen: typeof Fullscreen$supportsFullscreen,
-    requestFullscreen: typeof Fullscreen$requestFullscreen,
-    exitFullscreen: typeof Fullscreen$exitFullscreen
+  declare var npm$namespace$Cesium$Fullscreen: {
+    supportsFullscreen: typeof Cesium$Fullscreen$supportsFullscreen,
+    requestFullscreen: typeof Cesium$Fullscreen$requestFullscreen,
+    exitFullscreen: typeof Cesium$Fullscreen$exitFullscreen
   };
-  declare function Fullscreen$supportsFullscreen(): boolean;
+  declare function Cesium$Fullscreen$supportsFullscreen(): boolean;
 
-  declare function Fullscreen$requestFullscreen(element: any): void;
+  declare function Cesium$Fullscreen$requestFullscreen(element: any): void;
 
-  declare function Fullscreen$exitFullscreen(): void;
+  declare function Cesium$Fullscreen$exitFullscreen(): void;
 
-  declare var npm$namespace$GeometryPipeline: {
-    toWireframe: typeof GeometryPipeline$toWireframe,
-    createLineSegmentsForVectors: typeof GeometryPipeline$createLineSegmentsForVectors,
-    createAttributeLocations: typeof GeometryPipeline$createAttributeLocations,
-    reorderForPreVertexCache: typeof GeometryPipeline$reorderForPreVertexCache,
-    reorderForPostVertexCache: typeof GeometryPipeline$reorderForPostVertexCache,
-    fitToUnsignedShortIndices: typeof GeometryPipeline$fitToUnsignedShortIndices,
-    projectTo2D: typeof GeometryPipeline$projectTo2D,
-    encodeAttribute: typeof GeometryPipeline$encodeAttribute,
-    transformToWorldCoordinates: typeof GeometryPipeline$transformToWorldCoordinates,
-    computeNormal: typeof GeometryPipeline$computeNormal,
-    computeBinormalAndTangent: typeof GeometryPipeline$computeBinormalAndTangent,
-    compressVertices: typeof GeometryPipeline$compressVertices
+  declare var npm$namespace$Cesium$GeometryPipeline: {
+    toWireframe: typeof Cesium$GeometryPipeline$toWireframe,
+    createLineSegmentsForVectors: typeof Cesium$GeometryPipeline$createLineSegmentsForVectors,
+    createAttributeLocations: typeof Cesium$GeometryPipeline$createAttributeLocations,
+    reorderForPreVertexCache: typeof Cesium$GeometryPipeline$reorderForPreVertexCache,
+    reorderForPostVertexCache: typeof Cesium$GeometryPipeline$reorderForPostVertexCache,
+    fitToUnsignedShortIndices: typeof Cesium$GeometryPipeline$fitToUnsignedShortIndices,
+    projectTo2D: typeof Cesium$GeometryPipeline$projectTo2D,
+    encodeAttribute: typeof Cesium$GeometryPipeline$encodeAttribute,
+    transformToWorldCoordinates: typeof Cesium$GeometryPipeline$transformToWorldCoordinates,
+    computeNormal: typeof Cesium$GeometryPipeline$computeNormal,
+    computeBinormalAndTangent: typeof Cesium$GeometryPipeline$computeBinormalAndTangent,
+    compressVertices: typeof Cesium$GeometryPipeline$compressVertices
   };
-  declare function GeometryPipeline$toWireframe(
+  declare function Cesium$GeometryPipeline$toWireframe(
     geometry: Cesium$Geometry
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$createLineSegmentsForVectors(
+  declare function Cesium$GeometryPipeline$createLineSegmentsForVectors(
     geometry: Cesium$Geometry,
     attributeName?: string,
     length?: number
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$createAttributeLocations(
+  declare function Cesium$GeometryPipeline$createAttributeLocations(
     geometry: Cesium$Geometry
   ): any;
 
-  declare function GeometryPipeline$reorderForPreVertexCache(
+  declare function Cesium$GeometryPipeline$reorderForPreVertexCache(
     geometry: Cesium$Geometry
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$reorderForPostVertexCache(
+  declare function Cesium$GeometryPipeline$reorderForPostVertexCache(
     geometry: Cesium$Geometry,
     cacheCapacity?: number
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$fitToUnsignedShortIndices(
+  declare function Cesium$GeometryPipeline$fitToUnsignedShortIndices(
     geometry: Cesium$Geometry
   ): Cesium$Geometry[];
 
-  declare function GeometryPipeline$projectTo2D(
+  declare function Cesium$GeometryPipeline$projectTo2D(
     geometry: Cesium$Geometry,
     attributeName: string,
     attributeName3D: string,
@@ -7473,43 +7688,37 @@ declare module "cesium" {
     projection?: any
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$encodeAttribute(
+  declare function Cesium$GeometryPipeline$encodeAttribute(
     geometry: Cesium$Geometry,
     attributeName: string,
     attributeHighName: string,
     attributeLowName: string
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$transformToWorldCoordinates(
+  declare function Cesium$GeometryPipeline$transformToWorldCoordinates(
     instance: Cesium$GeometryInstance
   ): Cesium$GeometryInstance;
 
-  declare function GeometryPipeline$computeNormal(
+  declare function Cesium$GeometryPipeline$computeNormal(
     geometry: Cesium$Geometry
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$computeBinormalAndTangent(
+  declare function Cesium$GeometryPipeline$computeBinormalAndTangent(
     geometry: Cesium$Geometry
   ): Cesium$Geometry;
 
-  declare function GeometryPipeline$compressVertices(
+  declare function Cesium$GeometryPipeline$compressVertices(
     geometry: Cesium$Geometry
   ): Cesium$Geometry;
 
-  declare class Cesium$HeightmapTessellator {
-    constructor(...args: empty): mixed;
-    static +DEFAULT_STRUCTURE: Class<Cesium$HeightmapTessellator__DEFAULT_STRUCTURE> &
-      Cesium$HeightmapTessellator__DEFAULT_STRUCTURE &
-      0; // 0
-  }
+  declare var Cesium$HeightmapTessellator: {|
+    +DEFAULT_STRUCTURE: 0 // 0
+  |};
 
-  declare class Cesium$HeightmapTessellator__DEFAULT_STRUCTURE
-    mixins Cesium$HeightmapTessellator {}
-
-  declare var npm$namespace$HeightmapTessellator: {
-    computeVertices: typeof HeightmapTessellator$computeVertices
+  declare var npm$namespace$Cesium$HeightmapTessellator: {
+    computeVertices: typeof Cesium$HeightmapTessellator$computeVertices
   };
-  declare function HeightmapTessellator$computeVertices(options: {
+  declare function Cesium$HeightmapTessellator$computeVertices(options: {
     vertices: any[] | Float32Array,
     heightmap:
       | Int8Array
@@ -7535,70 +7744,43 @@ declare module "cesium" {
     structureisBigEndian?: boolean
   }): void;
 
-  declare class Cesium$HeightReference {
-    constructor(...args: empty): mixed;
-    static +CLAMP_TO_GROUND: Class<Cesium$HeightReference__CLAMP_TO_GROUND> &
-      Cesium$HeightReference__CLAMP_TO_GROUND &
-      0; // 0
-    static +NONE: Class<Cesium$HeightReference__NONE> &
-      Cesium$HeightReference__NONE &
-      1; // 1
-    static +RELATIVE_TO_GROUND: Class<Cesium$HeightReference__RELATIVE_TO_GROUND> &
-      Cesium$HeightReference__RELATIVE_TO_GROUND &
-      2; // 2
-  }
-
-  declare class Cesium$HeightReference__CLAMP_TO_GROUND
-    mixins Cesium$HeightReference {}
-  declare class Cesium$HeightReference__NONE mixins Cesium$HeightReference {}
-  declare class Cesium$HeightReference__RELATIVE_TO_GROUND
-    mixins Cesium$HeightReference {}
+  declare var Cesium$HeightReference: {|
+    +CLAMP_TO_GROUND: 0, // 0
+    +NONE: 1, // 1
+    +RELATIVE_TO_GROUND: 2 // 2
+  |};
 
   declare class Cesium$HermitePolynomialApproximation
-    mixins Cesium$InterpolationAlgorithm {
+    mixins InterpolationAlgorithm {
     static getRequiredDataPoints(degree: number, inputOrder?: number): number;
   }
 
-  declare class Cesium$IndexDatatype {
-    constructor(...args: empty): mixed;
-    static +UNSIGNED_BYTE: Class<Cesium$IndexDatatype__UNSIGNED_BYTE> &
-      Cesium$IndexDatatype__UNSIGNED_BYTE &
-      0; // 0
-    static +UNSIGNED_SHORT: Class<Cesium$IndexDatatype__UNSIGNED_SHORT> &
-      Cesium$IndexDatatype__UNSIGNED_SHORT &
-      1; // 1
-    static +UNSIGNED_INT: Class<Cesium$IndexDatatype__UNSIGNED_INT> &
-      Cesium$IndexDatatype__UNSIGNED_INT &
-      2; // 2
-  }
+  declare var Cesium$IndexDatatype: {|
+    +UNSIGNED_BYTE: 0, // 0
+    +UNSIGNED_SHORT: 1, // 1
+    +UNSIGNED_INT: 2 // 2
+  |};
 
-  declare class Cesium$IndexDatatype__UNSIGNED_BYTE
-    mixins Cesium$IndexDatatype {}
-  declare class Cesium$IndexDatatype__UNSIGNED_SHORT
-    mixins Cesium$IndexDatatype {}
-  declare class Cesium$IndexDatatype__UNSIGNED_INT
-    mixins Cesium$IndexDatatype {}
-
-  declare var npm$namespace$IndexDatatype: {
-    getSizeInBytes: typeof IndexDatatype$getSizeInBytes,
-    validate: typeof IndexDatatype$validate,
-    createTypedArray: typeof IndexDatatype$createTypedArray,
-    createTypedArrayFromArrayBuffer: typeof IndexDatatype$createTypedArrayFromArrayBuffer
+  declare var npm$namespace$Cesium$IndexDatatype: {
+    getSizeInBytes: typeof Cesium$IndexDatatype$getSizeInBytes,
+    validate: typeof Cesium$IndexDatatype$validate,
+    createTypedArray: typeof Cesium$IndexDatatype$createTypedArray,
+    createTypedArrayFromArrayBuffer: typeof Cesium$IndexDatatype$createTypedArrayFromArrayBuffer
   };
-  declare function IndexDatatype$getSizeInBytes(
+  declare function Cesium$IndexDatatype$getSizeInBytes(
     indexDatatype: Cesium$IndexDatatype
   ): number;
 
-  declare function IndexDatatype$validate(
+  declare function Cesium$IndexDatatype$validate(
     indexDatatype: Cesium$IndexDatatype
   ): boolean;
 
-  declare function IndexDatatype$createTypedArray(
+  declare function Cesium$IndexDatatype$createTypedArray(
     numberOfVertices: number,
     indicesLengthOrArray: any
   ): Uint16Array | Uint32Array;
 
-  declare function IndexDatatype$createTypedArrayFromArrayBuffer(
+  declare function Cesium$IndexDatatype$createTypedArrayFromArrayBuffer(
     numberOfVertices: number,
     sourceArray: ArrayBuffer,
     byteOffset: number,
@@ -7626,41 +7808,30 @@ declare module "cesium" {
     ): number[];
   }
 
-  declare class Cesium$Intersect {
-    constructor(...args: empty): mixed;
-    static +OUTSIDE: Class<Cesium$Intersect__OUTSIDE> &
-      Cesium$Intersect__OUTSIDE &
-      0; // 0
-    static +INTERSECTING: Class<Cesium$Intersect__INTERSECTING> &
-      Cesium$Intersect__INTERSECTING &
-      1; // 1
-    static +INSIDE: Class<Cesium$Intersect__INSIDE> &
-      Cesium$Intersect__INSIDE &
-      2; // 2
-  }
+  declare var Cesium$Intersect: {|
+    +OUTSIDE: 0, // 0
+    +INTERSECTING: 1, // 1
+    +INSIDE: 2 // 2
+  |};
 
-  declare class Cesium$Intersect__OUTSIDE mixins Cesium$Intersect {}
-  declare class Cesium$Intersect__INTERSECTING mixins Cesium$Intersect {}
-  declare class Cesium$Intersect__INSIDE mixins Cesium$Intersect {}
-
-  declare var npm$namespace$IntersectionTests: {
-    rayPlane: typeof IntersectionTests$rayPlane,
-    rayTriangle: typeof IntersectionTests$rayTriangle,
-    lineSegmentTriangle: typeof IntersectionTests$lineSegmentTriangle,
-    raySphere: typeof IntersectionTests$raySphere,
-    lineSegmentSphere: typeof IntersectionTests$lineSegmentSphere,
-    rayEllipsoid: typeof IntersectionTests$rayEllipsoid,
-    grazingAltitudeLocation: typeof IntersectionTests$grazingAltitudeLocation,
-    lineSegmentPlane: typeof IntersectionTests$lineSegmentPlane,
-    trianglePlaneIntersection: typeof IntersectionTests$trianglePlaneIntersection
+  declare var npm$namespace$Cesium$IntersectionTests: {
+    rayPlane: typeof Cesium$IntersectionTests$rayPlane,
+    rayTriangle: typeof Cesium$IntersectionTests$rayTriangle,
+    lineSegmentTriangle: typeof Cesium$IntersectionTests$lineSegmentTriangle,
+    raySphere: typeof Cesium$IntersectionTests$raySphere,
+    lineSegmentSphere: typeof Cesium$IntersectionTests$lineSegmentSphere,
+    rayEllipsoid: typeof Cesium$IntersectionTests$rayEllipsoid,
+    grazingAltitudeLocation: typeof Cesium$IntersectionTests$grazingAltitudeLocation,
+    lineSegmentPlane: typeof Cesium$IntersectionTests$lineSegmentPlane,
+    trianglePlaneIntersection: typeof Cesium$IntersectionTests$trianglePlaneIntersection
   };
-  declare function IntersectionTests$rayPlane(
+  declare function Cesium$IntersectionTests$rayPlane(
     ray: Cesium$Ray,
     plane: Cesium$Plane,
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare function IntersectionTests$rayTriangle(
+  declare function Cesium$IntersectionTests$rayTriangle(
     ray: Cesium$Ray,
     p0: Cesium$Cartesian3,
     p1: Cesium$Cartesian3,
@@ -7669,7 +7840,7 @@ declare module "cesium" {
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare function IntersectionTests$lineSegmentTriangle(
+  declare function Cesium$IntersectionTests$lineSegmentTriangle(
     v0: Cesium$Cartesian3,
     v1: Cesium$Cartesian3,
     p0: Cesium$Cartesian3,
@@ -7679,48 +7850,48 @@ declare module "cesium" {
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare function IntersectionTests$raySphere(
+  declare function Cesium$IntersectionTests$raySphere(
     ray: Cesium$Ray,
     sphere: Cesium$BoundingSphere,
     result?: any
   ): any;
 
-  declare function IntersectionTests$lineSegmentSphere(
+  declare function Cesium$IntersectionTests$lineSegmentSphere(
     p0: Cesium$Cartesian3,
     p1: Cesium$Cartesian3,
     sphere: Cesium$BoundingSphere,
     result?: any
   ): any;
 
-  declare function IntersectionTests$rayEllipsoid(
+  declare function Cesium$IntersectionTests$rayEllipsoid(
     ray: Cesium$Ray,
     ellipsoid: Cesium$Ellipsoid
   ): any;
 
-  declare function IntersectionTests$grazingAltitudeLocation(
+  declare function Cesium$IntersectionTests$grazingAltitudeLocation(
     ray: Cesium$Ray,
     ellipsoid: Cesium$Ellipsoid
   ): Cesium$Cartesian3;
 
-  declare function IntersectionTests$lineSegmentPlane(
+  declare function Cesium$IntersectionTests$lineSegmentPlane(
     endPoint0: Cesium$Cartesian3,
     endPoint1: Cesium$Cartesian3,
     plane: Cesium$Plane,
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare function IntersectionTests$trianglePlaneIntersection(
+  declare function Cesium$IntersectionTests$trianglePlaneIntersection(
     p0: Cesium$Cartesian3,
     p1: Cesium$Cartesian3,
     p2: Cesium$Cartesian3,
     plane: Cesium$Plane
   ): any;
 
-  declare var npm$namespace$Intersections2D: {
-    clipTriangleAtAxisAlignedThreshold: typeof Intersections2D$clipTriangleAtAxisAlignedThreshold,
-    computeBarycentricCoordinates: typeof Intersections2D$computeBarycentricCoordinates
+  declare var npm$namespace$Cesium$Intersections2D: {
+    clipTriangleAtAxisAlignedThreshold: typeof Cesium$Intersections2D$clipTriangleAtAxisAlignedThreshold,
+    computeBarycentricCoordinates: typeof Cesium$Intersections2D$computeBarycentricCoordinates
   };
-  declare function Intersections2D$clipTriangleAtAxisAlignedThreshold(
+  declare function Cesium$Intersections2D$clipTriangleAtAxisAlignedThreshold(
     threshold: number,
     keepAbove: boolean,
     u0: number,
@@ -7729,7 +7900,7 @@ declare module "cesium" {
     result?: number[]
   ): number[];
 
-  declare function Intersections2D$computeBarycentricCoordinates(
+  declare function Cesium$Intersections2D$computeBarycentricCoordinates(
     x: number,
     y: number,
     x1: number,
@@ -7741,271 +7912,156 @@ declare module "cesium" {
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare class Cesium$Iso8601 {
-    constructor(...args: empty): mixed;
-    static +MINIMUM_VALUE: Class<Cesium$Iso8601__MINIMUM_VALUE> &
-      Cesium$Iso8601__MINIMUM_VALUE &
-      0; // 0
-    static +MAXIMUM_VALUE: Class<Cesium$Iso8601__MAXIMUM_VALUE> &
-      Cesium$Iso8601__MAXIMUM_VALUE &
-      1; // 1
-    static +MAXIMUM_INTERVAL: Class<Cesium$Iso8601__MAXIMUM_INTERVAL> &
-      Cesium$Iso8601__MAXIMUM_INTERVAL &
-      2; // 2
-  }
+  declare var Cesium$Iso8601: {|
+    +MINIMUM_VALUE: 0, // 0
+    +MAXIMUM_VALUE: 1, // 1
+    +MAXIMUM_INTERVAL: 2 // 2
+  |};
 
-  declare class Cesium$Iso8601__MINIMUM_VALUE mixins Cesium$Iso8601 {}
-  declare class Cesium$Iso8601__MAXIMUM_VALUE mixins Cesium$Iso8601 {}
-  declare class Cesium$Iso8601__MAXIMUM_INTERVAL mixins Cesium$Iso8601 {}
-
-  declare class Cesium$KeyboardEventModifier {
-    constructor(...args: empty): mixed;
-    static +SHIFT: Class<Cesium$KeyboardEventModifier__SHIFT> &
-      Cesium$KeyboardEventModifier__SHIFT &
-      0; // 0
-    static +CTRL: Class<Cesium$KeyboardEventModifier__CTRL> &
-      Cesium$KeyboardEventModifier__CTRL &
-      1; // 1
-    static +ALT: Class<Cesium$KeyboardEventModifier__ALT> &
-      Cesium$KeyboardEventModifier__ALT &
-      2; // 2
-  }
-
-  declare class Cesium$KeyboardEventModifier__SHIFT
-    mixins Cesium$KeyboardEventModifier {}
-  declare class Cesium$KeyboardEventModifier__CTRL
-    mixins Cesium$KeyboardEventModifier {}
-  declare class Cesium$KeyboardEventModifier__ALT
-    mixins Cesium$KeyboardEventModifier {}
+  declare var Cesium$KeyboardEventModifier: {|
+    +SHIFT: 0, // 0
+    +CTRL: 1, // 1
+    +ALT: 2 // 2
+  |};
 
   declare class Cesium$LagrangePolynomialApproximation
-    mixins Cesium$InterpolationAlgorithm {}
+    mixins InterpolationAlgorithm {}
 
-  declare class Cesium$LinearApproximation
-    mixins Cesium$InterpolationAlgorithm {}
+  declare class Cesium$LinearApproximation mixins InterpolationAlgorithm {}
 
-  declare class Cesium$MapMode2D {
-    constructor(...args: empty): mixed;
-    static +INFINITE_SCROLL: Class<Cesium$MapMode2D__INFINITE_SCROLL> &
-      Cesium$MapMode2D__INFINITE_SCROLL &
-      0; // 0
-    static +ROTATE: Class<Cesium$MapMode2D__ROTATE> &
-      Cesium$MapMode2D__ROTATE &
-      1; // 1
-  }
+  declare var Cesium$MapMode2D: {|
+    +INFINITE_SCROLL: 0, // 0
+    +ROTATE: 1 // 1
+  |};
 
-  declare class Cesium$MapMode2D__INFINITE_SCROLL mixins Cesium$MapMode2D {}
-  declare class Cesium$MapMode2D__ROTATE mixins Cesium$MapMode2D {}
+  declare var Cesium$Math: {|
+    +EPSILON1: 0, // 0
+    +EPSILON2: 1, // 1
+    +EPSILON3: 2, // 2
+    +EPSILON4: 3, // 3
+    +EPSILON5: 4, // 4
+    +EPSILON6: 5, // 5
+    +EPSILON7: 6, // 6
+    +EPSILON8: 7, // 7
+    +EPSILON9: 8, // 8
+    +EPSILON10: 9, // 9
+    +EPSILON11: 10, // 10
+    +EPSILON12: 11, // 11
+    +EPSILON13: 12, // 12
+    +EPSILON14: 13, // 13
+    +EPSILON15: 14, // 14
+    +EPSILON16: 15, // 15
+    +EPSILON17: 16, // 16
+    +EPSILON18: 17, // 17
+    +EPSILON19: 18, // 18
+    +EPSILON20: 19, // 19
+    +GRAVITATIONALPARAMETER: 20, // 20
+    +SOLAR_RADIUS: 21, // 21
+    +LUNAR_RADIUS: 22, // 22
+    +SIXTY_FOUR_KILOBYTES: 23, // 23
+    +PI: 24, // 24
+    +ONE_OVER_PI: 25, // 25
+    +PI_OVER_TWO: 26, // 26
+    +PI_OVER_THREE: 27, // 27
+    +PI_OVER_FOUR: 28, // 28
+    +PI_OVER_SIX: 29, // 29
+    +THREE_PI_OVER_TWO: 30, // 30
+    +TWO_PI: 31, // 31
+    +ONE_OVER_TWO_PI: 32, // 32
+    +RADIANS_PER_DEGREE: 33, // 33
+    +DEGREES_PER_RADIAN: 34, // 34
+    +RADIANS_PER_ARCSECOND: 35 // 35
+  |};
 
-  declare class Cesium$Math {
-    constructor(...args: empty): mixed;
-    static +EPSILON1: Class<Cesium$Math__EPSILON1> & Cesium$Math__EPSILON1 & 0; // 0
-    static +EPSILON2: Class<Cesium$Math__EPSILON2> & Cesium$Math__EPSILON2 & 1; // 1
-    static +EPSILON3: Class<Cesium$Math__EPSILON3> & Cesium$Math__EPSILON3 & 2; // 2
-    static +EPSILON4: Class<Cesium$Math__EPSILON4> & Cesium$Math__EPSILON4 & 3; // 3
-    static +EPSILON5: Class<Cesium$Math__EPSILON5> & Cesium$Math__EPSILON5 & 4; // 4
-    static +EPSILON6: Class<Cesium$Math__EPSILON6> & Cesium$Math__EPSILON6 & 5; // 5
-    static +EPSILON7: Class<Cesium$Math__EPSILON7> & Cesium$Math__EPSILON7 & 6; // 6
-    static +EPSILON8: Class<Cesium$Math__EPSILON8> & Cesium$Math__EPSILON8 & 7; // 7
-    static +EPSILON9: Class<Cesium$Math__EPSILON9> & Cesium$Math__EPSILON9 & 8; // 8
-    static +EPSILON10: Class<Cesium$Math__EPSILON10> &
-      Cesium$Math__EPSILON10 &
-      9; // 9
-    static +EPSILON11: Class<Cesium$Math__EPSILON11> &
-      Cesium$Math__EPSILON11 &
-      10; // 10
-    static +EPSILON12: Class<Cesium$Math__EPSILON12> &
-      Cesium$Math__EPSILON12 &
-      11; // 11
-    static +EPSILON13: Class<Cesium$Math__EPSILON13> &
-      Cesium$Math__EPSILON13 &
-      12; // 12
-    static +EPSILON14: Class<Cesium$Math__EPSILON14> &
-      Cesium$Math__EPSILON14 &
-      13; // 13
-    static +EPSILON15: Class<Cesium$Math__EPSILON15> &
-      Cesium$Math__EPSILON15 &
-      14; // 14
-    static +EPSILON16: Class<Cesium$Math__EPSILON16> &
-      Cesium$Math__EPSILON16 &
-      15; // 15
-    static +EPSILON17: Class<Cesium$Math__EPSILON17> &
-      Cesium$Math__EPSILON17 &
-      16; // 16
-    static +EPSILON18: Class<Cesium$Math__EPSILON18> &
-      Cesium$Math__EPSILON18 &
-      17; // 17
-    static +EPSILON19: Class<Cesium$Math__EPSILON19> &
-      Cesium$Math__EPSILON19 &
-      18; // 18
-    static +EPSILON20: Class<Cesium$Math__EPSILON20> &
-      Cesium$Math__EPSILON20 &
-      19; // 19
-    static +GRAVITATIONALPARAMETER: Class<Cesium$Math__GRAVITATIONALPARAMETER> &
-      Cesium$Math__GRAVITATIONALPARAMETER &
-      20; // 20
-    static +SOLAR_RADIUS: Class<Cesium$Math__SOLAR_RADIUS> &
-      Cesium$Math__SOLAR_RADIUS &
-      21; // 21
-    static +LUNAR_RADIUS: Class<Cesium$Math__LUNAR_RADIUS> &
-      Cesium$Math__LUNAR_RADIUS &
-      22; // 22
-    static +SIXTY_FOUR_KILOBYTES: Class<Cesium$Math__SIXTY_FOUR_KILOBYTES> &
-      Cesium$Math__SIXTY_FOUR_KILOBYTES &
-      23; // 23
-    static +PI: Class<Cesium$Math__PI> & Cesium$Math__PI & 24; // 24
-    static +ONE_OVER_PI: Class<Cesium$Math__ONE_OVER_PI> &
-      Cesium$Math__ONE_OVER_PI &
-      25; // 25
-    static +PI_OVER_TWO: Class<Cesium$Math__PI_OVER_TWO> &
-      Cesium$Math__PI_OVER_TWO &
-      26; // 26
-    static +PI_OVER_THREE: Class<Cesium$Math__PI_OVER_THREE> &
-      Cesium$Math__PI_OVER_THREE &
-      27; // 27
-    static +PI_OVER_FOUR: Class<Cesium$Math__PI_OVER_FOUR> &
-      Cesium$Math__PI_OVER_FOUR &
-      28; // 28
-    static +PI_OVER_SIX: Class<Cesium$Math__PI_OVER_SIX> &
-      Cesium$Math__PI_OVER_SIX &
-      29; // 29
-    static +THREE_PI_OVER_TWO: Class<Cesium$Math__THREE_PI_OVER_TWO> &
-      Cesium$Math__THREE_PI_OVER_TWO &
-      30; // 30
-    static +TWO_PI: Class<Cesium$Math__TWO_PI> & Cesium$Math__TWO_PI & 31; // 31
-    static +ONE_OVER_TWO_PI: Class<Cesium$Math__ONE_OVER_TWO_PI> &
-      Cesium$Math__ONE_OVER_TWO_PI &
-      32; // 32
-    static +RADIANS_PER_DEGREE: Class<Cesium$Math__RADIANS_PER_DEGREE> &
-      Cesium$Math__RADIANS_PER_DEGREE &
-      33; // 33
-    static +DEGREES_PER_RADIAN: Class<Cesium$Math__DEGREES_PER_RADIAN> &
-      Cesium$Math__DEGREES_PER_RADIAN &
-      34; // 34
-    static +RADIANS_PER_ARCSECOND: Class<Cesium$Math__RADIANS_PER_ARCSECOND> &
-      Cesium$Math__RADIANS_PER_ARCSECOND &
-      35; // 35
-  }
-
-  declare class Cesium$Math__EPSILON1 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON2 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON3 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON4 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON5 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON6 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON7 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON8 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON9 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON10 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON11 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON12 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON13 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON14 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON15 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON16 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON17 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON18 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON19 mixins Cesium$Math {}
-  declare class Cesium$Math__EPSILON20 mixins Cesium$Math {}
-  declare class Cesium$Math__GRAVITATIONALPARAMETER mixins Cesium$Math {}
-  declare class Cesium$Math__SOLAR_RADIUS mixins Cesium$Math {}
-  declare class Cesium$Math__LUNAR_RADIUS mixins Cesium$Math {}
-  declare class Cesium$Math__SIXTY_FOUR_KILOBYTES mixins Cesium$Math {}
-  declare class Cesium$Math__PI mixins Cesium$Math {}
-  declare class Cesium$Math__ONE_OVER_PI mixins Cesium$Math {}
-  declare class Cesium$Math__PI_OVER_TWO mixins Cesium$Math {}
-  declare class Cesium$Math__PI_OVER_THREE mixins Cesium$Math {}
-  declare class Cesium$Math__PI_OVER_FOUR mixins Cesium$Math {}
-  declare class Cesium$Math__PI_OVER_SIX mixins Cesium$Math {}
-  declare class Cesium$Math__THREE_PI_OVER_TWO mixins Cesium$Math {}
-  declare class Cesium$Math__TWO_PI mixins Cesium$Math {}
-  declare class Cesium$Math__ONE_OVER_TWO_PI mixins Cesium$Math {}
-  declare class Cesium$Math__RADIANS_PER_DEGREE mixins Cesium$Math {}
-  declare class Cesium$Math__DEGREES_PER_RADIAN mixins Cesium$Math {}
-  declare class Cesium$Math__RADIANS_PER_ARCSECOND mixins Cesium$Math {}
-
-  declare var npm$namespace$Math: {
-    sign: typeof Math$sign,
-    signNotZero: typeof Math$signNotZero,
-    toSNorm: typeof Math$toSNorm,
-    fromSNorm: typeof Math$fromSNorm,
-    sinh: typeof Math$sinh,
-    cosh: typeof Math$cosh,
-    lerp: typeof Math$lerp,
-    toRadians: typeof Math$toRadians,
-    toDegrees: typeof Math$toDegrees,
-    convertLongitudeRange: typeof Math$convertLongitudeRange,
-    negativePiToPi: typeof Math$negativePiToPi,
-    zeroToTwoPi: typeof Math$zeroToTwoPi,
-    mod: typeof Math$mod,
-    equalsEpsilon: typeof Math$equalsEpsilon,
-    factorial: typeof Math$factorial,
-    incrementWrap: typeof Math$incrementWrap,
-    isPowerOfTwo: typeof Math$isPowerOfTwo,
-    nextPowerOfTwo: typeof Math$nextPowerOfTwo,
-    clamp: typeof Math$clamp,
-    setRandomNumberSeed: typeof Math$setRandomNumberSeed,
-    nextRandomNumber: typeof Math$nextRandomNumber,
-    acosClamped: typeof Math$acosClamped,
-    asinClamped: typeof Math$asinClamped,
-    chordLength: typeof Math$chordLength
+  declare var npm$namespace$Cesium$Math: {
+    sign: typeof Cesium$Math$sign,
+    signNotZero: typeof Cesium$Math$signNotZero,
+    toSNorm: typeof Cesium$Math$toSNorm,
+    fromSNorm: typeof Cesium$Math$fromSNorm,
+    sinh: typeof Cesium$Math$sinh,
+    cosh: typeof Cesium$Math$cosh,
+    lerp: typeof Cesium$Math$lerp,
+    toRadians: typeof Cesium$Math$toRadians,
+    toDegrees: typeof Cesium$Math$toDegrees,
+    convertLongitudeRange: typeof Cesium$Math$convertLongitudeRange,
+    negativePiToPi: typeof Cesium$Math$negativePiToPi,
+    zeroToTwoPi: typeof Cesium$Math$zeroToTwoPi,
+    mod: typeof Cesium$Math$mod,
+    equalsEpsilon: typeof Cesium$Math$equalsEpsilon,
+    factorial: typeof Cesium$Math$factorial,
+    incrementWrap: typeof Cesium$Math$incrementWrap,
+    isPowerOfTwo: typeof Cesium$Math$isPowerOfTwo,
+    nextPowerOfTwo: typeof Cesium$Math$nextPowerOfTwo,
+    clamp: typeof Cesium$Math$clamp,
+    setRandomNumberSeed: typeof Cesium$Math$setRandomNumberSeed,
+    nextRandomNumber: typeof Cesium$Math$nextRandomNumber,
+    acosClamped: typeof Cesium$Math$acosClamped,
+    asinClamped: typeof Cesium$Math$asinClamped,
+    chordLength: typeof Cesium$Math$chordLength
   };
-  declare function Math$sign(value: number): number;
+  declare function Cesium$Math$sign(value: number): number;
 
-  declare function Math$signNotZero(value: number): number;
+  declare function Cesium$Math$signNotZero(value: number): number;
 
-  declare function Math$toSNorm(value: number): number;
+  declare function Cesium$Math$toSNorm(value: number): number;
 
-  declare function Math$fromSNorm(value: number): number;
+  declare function Cesium$Math$fromSNorm(value: number): number;
 
-  declare function Math$sinh(value: number): number;
+  declare function Cesium$Math$sinh(value: number): number;
 
-  declare function Math$cosh(value: number): number;
+  declare function Cesium$Math$cosh(value: number): number;
 
-  declare function Math$lerp(p: number, q: number, time: number): number;
+  declare function Cesium$Math$lerp(p: number, q: number, time: number): number;
 
-  declare function Math$toRadians(degrees: number): number;
+  declare function Cesium$Math$toRadians(degrees: number): number;
 
-  declare function Math$toDegrees(radians: number): number;
+  declare function Cesium$Math$toDegrees(radians: number): number;
 
-  declare function Math$convertLongitudeRange(angle: number): number;
+  declare function Cesium$Math$convertLongitudeRange(angle: number): number;
 
-  declare function Math$negativePiToPi(angle: number): number;
+  declare function Cesium$Math$negativePiToPi(angle: number): number;
 
-  declare function Math$zeroToTwoPi(angle: number): number;
+  declare function Cesium$Math$zeroToTwoPi(angle: number): number;
 
-  declare function Math$mod(m: number, n: number): number;
+  declare function Cesium$Math$mod(m: number, n: number): number;
 
-  declare function Math$equalsEpsilon(
+  declare function Cesium$Math$equalsEpsilon(
     left: number,
     right: number,
     relativeEpsilon: number,
     absoluteEpsilon?: number
   ): boolean;
 
-  declare function Math$factorial(n: number): number;
+  declare function Cesium$Math$factorial(n: number): number;
 
-  declare function Math$incrementWrap(
+  declare function Cesium$Math$incrementWrap(
     n?: number,
     maximumValue?: number,
     minimumValue?: number
   ): number;
 
-  declare function Math$isPowerOfTwo(n: number): boolean;
+  declare function Cesium$Math$isPowerOfTwo(n: number): boolean;
 
-  declare function Math$nextPowerOfTwo(n: number): number;
+  declare function Cesium$Math$nextPowerOfTwo(n: number): number;
 
-  declare function Math$clamp(value: number, min: number, max: number): number;
+  declare function Cesium$Math$clamp(
+    value: number,
+    min: number,
+    max: number
+  ): number;
 
-  declare function Math$setRandomNumberSeed(seed: number): void;
+  declare function Cesium$Math$setRandomNumberSeed(seed: number): void;
 
-  declare function Math$nextRandomNumber(): number;
+  declare function Cesium$Math$nextRandomNumber(): number;
 
-  declare function Math$acosClamped(value: number): number;
+  declare function Cesium$Math$acosClamped(value: number): number;
 
-  declare function Math$asinClamped(value: number): number;
+  declare function Cesium$Math$asinClamped(value: number): number;
 
-  declare function Math$chordLength(angle: number, radius: number): number;
+  declare function Cesium$Math$chordLength(
+    angle: number,
+    radius: number
+  ): number;
 
   declare class Cesium$Packable {
     static packedLength: number;
@@ -8017,28 +8073,22 @@ declare module "cesium" {
     ): Cesium$Packable;
   }
 
-  declare class Cesium$PackableForInterpolation {
-    constructor(...args: empty): mixed;
-    static +packedInterpolationLength: Class<Cesium$PackableForInterpolation__packedInterpolationLength> &
-      Cesium$PackableForInterpolation__packedInterpolationLength &
-      0; // 0
-  }
+  declare var Cesium$PackableForInterpolation: {|
+    +packedInterpolationLength: 0 // 0
+  |};
 
-  declare class Cesium$PackableForInterpolation__packedInterpolationLength
-    mixins Cesium$PackableForInterpolation {}
-
-  declare var npm$namespace$PackableForInterpolation: {
-    convertPackedArrayForInterpolation: typeof PackableForInterpolation$convertPackedArrayForInterpolation,
-    unpackInterpolationResult: typeof PackableForInterpolation$unpackInterpolationResult
+  declare var npm$namespace$Cesium$PackableForInterpolation: {
+    convertPackedArrayForInterpolation: typeof Cesium$PackableForInterpolation$convertPackedArrayForInterpolation,
+    unpackInterpolationResult: typeof Cesium$PackableForInterpolation$unpackInterpolationResult
   };
-  declare function PackableForInterpolation$convertPackedArrayForInterpolation(
+  declare function Cesium$PackableForInterpolation$convertPackedArrayForInterpolation(
     packedArray: number[],
     startingIndex?: number,
     lastIndex?: number,
     result?: number[]
   ): number[];
 
-  declare function PackableForInterpolation$unpackInterpolationResult(
+  declare function Cesium$PackableForInterpolation$unpackInterpolationResult(
     array: number[],
     sourceArray: number[],
     startingIndex?: number,
@@ -8046,93 +8096,47 @@ declare module "cesium" {
     result?: any
   ): any;
 
-  declare class Cesium$PixelFormat {
-    constructor(...args: empty): mixed;
-    static +DEPTH_COMPONENT: Class<Cesium$PixelFormat__DEPTH_COMPONENT> &
-      Cesium$PixelFormat__DEPTH_COMPONENT &
-      0; // 0
-    static +DEPTH_STENCIL: Class<Cesium$PixelFormat__DEPTH_STENCIL> &
-      Cesium$PixelFormat__DEPTH_STENCIL &
-      1; // 1
-    static +ALPHA: Class<Cesium$PixelFormat__ALPHA> &
-      Cesium$PixelFormat__ALPHA &
-      2; // 2
-    static +RGB: Class<Cesium$PixelFormat__RGB> & Cesium$PixelFormat__RGB & 3; // 3
-    static +RGBA: Class<Cesium$PixelFormat__RGBA> &
-      Cesium$PixelFormat__RGBA &
-      4; // 4
-    static +LUMINANCE: Class<Cesium$PixelFormat__LUMINANCE> &
-      Cesium$PixelFormat__LUMINANCE &
-      5; // 5
-    static +LUMINANCE_ALPHA: Class<Cesium$PixelFormat__LUMINANCE_ALPHA> &
-      Cesium$PixelFormat__LUMINANCE_ALPHA &
-      6; // 6
-  }
+  declare var Cesium$PixelFormat: {|
+    +DEPTH_COMPONENT: 0, // 0
+    +DEPTH_STENCIL: 1, // 1
+    +ALPHA: 2, // 2
+    +RGB: 3, // 3
+    +RGBA: 4, // 4
+    +LUMINANCE: 5, // 5
+    +LUMINANCE_ALPHA: 6 // 6
+  |};
 
-  declare class Cesium$PixelFormat__DEPTH_COMPONENT mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__DEPTH_STENCIL mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__ALPHA mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__RGB mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__RGBA mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__LUMINANCE mixins Cesium$PixelFormat {}
-  declare class Cesium$PixelFormat__LUMINANCE_ALPHA mixins Cesium$PixelFormat {}
+  declare var Cesium$PrimitiveType: {|
+    +POINTS: 0, // 0
+    +LINES: 1, // 1
+    +LINE_LOOP: 2, // 2
+    +LINE_STRIP: 3, // 3
+    +TRIANGLES: 4, // 4
+    +TRIANGLE_STRIP: 5, // 5
+    +TRIANGLE_FAN: 6 // 6
+  |};
 
-  declare class Cesium$PrimitiveType {
-    constructor(...args: empty): mixed;
-    static +POINTS: Class<Cesium$PrimitiveType__POINTS> &
-      Cesium$PrimitiveType__POINTS &
-      0; // 0
-    static +LINES: Class<Cesium$PrimitiveType__LINES> &
-      Cesium$PrimitiveType__LINES &
-      1; // 1
-    static +LINE_LOOP: Class<Cesium$PrimitiveType__LINE_LOOP> &
-      Cesium$PrimitiveType__LINE_LOOP &
-      2; // 2
-    static +LINE_STRIP: Class<Cesium$PrimitiveType__LINE_STRIP> &
-      Cesium$PrimitiveType__LINE_STRIP &
-      3; // 3
-    static +TRIANGLES: Class<Cesium$PrimitiveType__TRIANGLES> &
-      Cesium$PrimitiveType__TRIANGLES &
-      4; // 4
-    static +TRIANGLE_STRIP: Class<Cesium$PrimitiveType__TRIANGLE_STRIP> &
-      Cesium$PrimitiveType__TRIANGLE_STRIP &
-      5; // 5
-    static +TRIANGLE_FAN: Class<Cesium$PrimitiveType__TRIANGLE_FAN> &
-      Cesium$PrimitiveType__TRIANGLE_FAN &
-      6; // 6
-  }
-
-  declare class Cesium$PrimitiveType__POINTS mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__LINES mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__LINE_LOOP mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__LINE_STRIP mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__TRIANGLES mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__TRIANGLE_STRIP
-    mixins Cesium$PrimitiveType {}
-  declare class Cesium$PrimitiveType__TRIANGLE_FAN
-    mixins Cesium$PrimitiveType {}
-
-  declare var npm$namespace$QuadraticRealPolynomial: {
-    computeDiscriminant: typeof QuadraticRealPolynomial$computeDiscriminant,
-    computeRealRoots: typeof QuadraticRealPolynomial$computeRealRoots
+  declare var npm$namespace$Cesium$QuadraticRealPolynomial: {
+    computeDiscriminant: typeof Cesium$QuadraticRealPolynomial$computeDiscriminant,
+    computeRealRoots: typeof Cesium$QuadraticRealPolynomial$computeRealRoots
   };
-  declare function QuadraticRealPolynomial$computeDiscriminant(
+  declare function Cesium$QuadraticRealPolynomial$computeDiscriminant(
     a: number,
     b: number,
     c: number
   ): number;
 
-  declare function QuadraticRealPolynomial$computeRealRoots(
+  declare function Cesium$QuadraticRealPolynomial$computeRealRoots(
     a: number,
     b: number,
     c: number
   ): number[];
 
-  declare var npm$namespace$QuarticRealPolynomial: {
-    computeDiscriminant: typeof QuarticRealPolynomial$computeDiscriminant,
-    computeRealRoots: typeof QuarticRealPolynomial$computeRealRoots
+  declare var npm$namespace$Cesium$QuarticRealPolynomial: {
+    computeDiscriminant: typeof Cesium$QuarticRealPolynomial$computeDiscriminant,
+    computeRealRoots: typeof Cesium$QuarticRealPolynomial$computeRealRoots
   };
-  declare function QuarticRealPolynomial$computeDiscriminant(
+  declare function Cesium$QuarticRealPolynomial$computeDiscriminant(
     a: number,
     b: number,
     c: number,
@@ -8140,7 +8144,7 @@ declare module "cesium" {
     e: number
   ): number;
 
-  declare function QuarticRealPolynomial$computeRealRoots(
+  declare function Cesium$QuarticRealPolynomial$computeRealRoots(
     a: number,
     b: number,
     c: number,
@@ -8148,119 +8152,41 @@ declare module "cesium" {
     e: number
   ): number[];
 
-  declare class Cesium$ReferenceFrame {
-    constructor(...args: empty): mixed;
-    static +FIXED: Class<Cesium$ReferenceFrame__FIXED> &
-      Cesium$ReferenceFrame__FIXED &
-      0; // 0
-    static +INERTIAL: Class<Cesium$ReferenceFrame__INERTIAL> &
-      Cesium$ReferenceFrame__INERTIAL &
-      1; // 1
-  }
+  declare var Cesium$ReferenceFrame: {|
+    +FIXED: 0, // 0
+    +INERTIAL: 1 // 1
+  |};
 
-  declare class Cesium$ReferenceFrame__FIXED mixins Cesium$ReferenceFrame {}
-  declare class Cesium$ReferenceFrame__INERTIAL mixins Cesium$ReferenceFrame {}
+  declare var Cesium$ScreenSpaceEventType: {|
+    +LEFT_DOWN: 0, // 0
+    +LEFT_UP: 1, // 1
+    +LEFT_CLICK: 2, // 2
+    +LEFT_DOUBLE_CLICK: 3, // 3
+    +RIGHT_DOWN: 4, // 4
+    +RIGHT_UP: 5, // 5
+    +RIGHT_CLICK: 6, // 6
+    +RIGHT_DOUBLE_CLICK: 7, // 7
+    +MIDDLE_DOWN: 8, // 8
+    +MIDDLE_UP: 9, // 9
+    +MIDDLE_CLICK: 10, // 10
+    +MIDDLE_DOUBLE_CLICK: 11, // 11
+    +MOUSE_MOVE: 12, // 12
+    +WHEEL: 13, // 13
+    +PINCH_START: 14, // 14
+    +PINCH_END: 15, // 15
+    +PINCH_MOVE: 16 // 16
+  |};
 
-  declare class Cesium$ScreenSpaceEventType {
-    constructor(...args: empty): mixed;
-    static +LEFT_DOWN: Class<Cesium$ScreenSpaceEventType__LEFT_DOWN> &
-      Cesium$ScreenSpaceEventType__LEFT_DOWN &
-      0; // 0
-    static +LEFT_UP: Class<Cesium$ScreenSpaceEventType__LEFT_UP> &
-      Cesium$ScreenSpaceEventType__LEFT_UP &
-      1; // 1
-    static +LEFT_CLICK: Class<Cesium$ScreenSpaceEventType__LEFT_CLICK> &
-      Cesium$ScreenSpaceEventType__LEFT_CLICK &
-      2; // 2
-    static +LEFT_DOUBLE_CLICK: Class<Cesium$ScreenSpaceEventType__LEFT_DOUBLE_CLICK> &
-      Cesium$ScreenSpaceEventType__LEFT_DOUBLE_CLICK &
-      3; // 3
-    static +RIGHT_DOWN: Class<Cesium$ScreenSpaceEventType__RIGHT_DOWN> &
-      Cesium$ScreenSpaceEventType__RIGHT_DOWN &
-      4; // 4
-    static +RIGHT_UP: Class<Cesium$ScreenSpaceEventType__RIGHT_UP> &
-      Cesium$ScreenSpaceEventType__RIGHT_UP &
-      5; // 5
-    static +RIGHT_CLICK: Class<Cesium$ScreenSpaceEventType__RIGHT_CLICK> &
-      Cesium$ScreenSpaceEventType__RIGHT_CLICK &
-      6; // 6
-    static +RIGHT_DOUBLE_CLICK: Class<Cesium$ScreenSpaceEventType__RIGHT_DOUBLE_CLICK> &
-      Cesium$ScreenSpaceEventType__RIGHT_DOUBLE_CLICK &
-      7; // 7
-    static +MIDDLE_DOWN: Class<Cesium$ScreenSpaceEventType__MIDDLE_DOWN> &
-      Cesium$ScreenSpaceEventType__MIDDLE_DOWN &
-      8; // 8
-    static +MIDDLE_UP: Class<Cesium$ScreenSpaceEventType__MIDDLE_UP> &
-      Cesium$ScreenSpaceEventType__MIDDLE_UP &
-      9; // 9
-    static +MIDDLE_CLICK: Class<Cesium$ScreenSpaceEventType__MIDDLE_CLICK> &
-      Cesium$ScreenSpaceEventType__MIDDLE_CLICK &
-      10; // 10
-    static +MIDDLE_DOUBLE_CLICK: Class<Cesium$ScreenSpaceEventType__MIDDLE_DOUBLE_CLICK> &
-      Cesium$ScreenSpaceEventType__MIDDLE_DOUBLE_CLICK &
-      11; // 11
-    static +MOUSE_MOVE: Class<Cesium$ScreenSpaceEventType__MOUSE_MOVE> &
-      Cesium$ScreenSpaceEventType__MOUSE_MOVE &
-      12; // 12
-    static +WHEEL: Class<Cesium$ScreenSpaceEventType__WHEEL> &
-      Cesium$ScreenSpaceEventType__WHEEL &
-      13; // 13
-    static +PINCH_START: Class<Cesium$ScreenSpaceEventType__PINCH_START> &
-      Cesium$ScreenSpaceEventType__PINCH_START &
-      14; // 14
-    static +PINCH_END: Class<Cesium$ScreenSpaceEventType__PINCH_END> &
-      Cesium$ScreenSpaceEventType__PINCH_END &
-      15; // 15
-    static +PINCH_MOVE: Class<Cesium$ScreenSpaceEventType__PINCH_MOVE> &
-      Cesium$ScreenSpaceEventType__PINCH_MOVE &
-      16; // 16
-  }
-
-  declare class Cesium$ScreenSpaceEventType__LEFT_DOWN
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__LEFT_UP
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__LEFT_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__LEFT_DOUBLE_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__RIGHT_DOWN
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__RIGHT_UP
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__RIGHT_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__RIGHT_DOUBLE_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__MIDDLE_DOWN
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__MIDDLE_UP
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__MIDDLE_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__MIDDLE_DOUBLE_CLICK
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__MOUSE_MOVE
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__WHEEL
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__PINCH_START
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__PINCH_END
-    mixins Cesium$ScreenSpaceEventType {}
-  declare class Cesium$ScreenSpaceEventType__PINCH_MOVE
-    mixins Cesium$ScreenSpaceEventType {}
-
-  declare var npm$namespace$Simon1994PlanetaryPositions: {
-    computeSunPositionInEarthInertialFrame: typeof Simon1994PlanetaryPositions$computeSunPositionInEarthInertialFrame,
-    computeMoonPositionInEarthInertialFrame: typeof Simon1994PlanetaryPositions$computeMoonPositionInEarthInertialFrame
+  declare var npm$namespace$Cesium$Simon1994PlanetaryPositions: {
+    computeSunPositionInEarthInertialFrame: typeof Cesium$Simon1994PlanetaryPositions$computeSunPositionInEarthInertialFrame,
+    computeMoonPositionInEarthInertialFrame: typeof Cesium$Simon1994PlanetaryPositions$computeMoonPositionInEarthInertialFrame
   };
-  declare function Simon1994PlanetaryPositions$computeSunPositionInEarthInertialFrame(
+  declare function Cesium$Simon1994PlanetaryPositions$computeSunPositionInEarthInertialFrame(
     julianDate?: Cesium$JulianDate,
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
 
-  declare function Simon1994PlanetaryPositions$computeMoonPositionInEarthInertialFrame(
+  declare function Cesium$Simon1994PlanetaryPositions$computeMoonPositionInEarthInertialFrame(
     julianDate?: Cesium$JulianDate,
     result?: Cesium$Cartesian3
   ): Cesium$Cartesian3;
@@ -8287,67 +8213,49 @@ declare module "cesium" {
     }): this;
   }
 
-  declare class Cesium$ShadowMode {
-    constructor(...args: empty): mixed;
-    static +CAST_ONLY: Class<Cesium$ShadowMode__CAST_ONLY> &
-      Cesium$ShadowMode__CAST_ONLY &
-      0; // 0
-    static +DISABLED: Class<Cesium$ShadowMode__DISABLED> &
-      Cesium$ShadowMode__DISABLED &
-      1; // 1
-    static +ENABLED: Class<Cesium$ShadowMode__ENABLED> &
-      Cesium$ShadowMode__ENABLED &
-      2; // 2
-    static +RECEIVE_ONLY: Class<Cesium$ShadowMode__RECEIVE_ONLY> &
-      Cesium$ShadowMode__RECEIVE_ONLY &
-      3; // 3
-  }
+  declare var Cesium$ShadowMode: {|
+    +CAST_ONLY: 0, // 0
+    +DISABLED: 1, // 1
+    +ENABLED: 2, // 2
+    +RECEIVE_ONLY: 3 // 3
+  |};
 
-  declare class Cesium$ShadowMode__CAST_ONLY mixins Cesium$ShadowMode {}
-  declare class Cesium$ShadowMode__DISABLED mixins Cesium$ShadowMode {}
-  declare class Cesium$ShadowMode__ENABLED mixins Cesium$ShadowMode {}
-  declare class Cesium$ShadowMode__RECEIVE_ONLY mixins Cesium$ShadowMode {}
+  declare var Cesium$TimeStandard: {|
+    +UTC: 0, // 0
+    +TAI: 1 // 1
+  |};
 
-  declare class Cesium$TimeStandard {
-    constructor(...args: empty): mixed;
-    static +UTC: Class<Cesium$TimeStandard__UTC> & Cesium$TimeStandard__UTC & 0; // 0
-    static +TAI: Class<Cesium$TimeStandard__TAI> & Cesium$TimeStandard__TAI & 1; // 1
-  }
-
-  declare class Cesium$TimeStandard__UTC mixins Cesium$TimeStandard {}
-  declare class Cesium$TimeStandard__TAI mixins Cesium$TimeStandard {}
-
-  declare var npm$namespace$Transforms: {
-    eastNorthUpToFixedFrame: typeof Transforms$eastNorthUpToFixedFrame,
-    northEastDownToFixedFrame: typeof Transforms$northEastDownToFixedFrame,
-    northUpEastToFixedFrame: typeof Transforms$northUpEastToFixedFrame,
-    headingPitchRollToFixedFrame: typeof Transforms$headingPitchRollToFixedFrame,
-    headingPitchRollQuaternion: typeof Transforms$headingPitchRollQuaternion,
-    computeTemeToPseudoFixedMatrix: typeof Transforms$computeTemeToPseudoFixedMatrix,
-    preloadIcrfFixed: typeof Transforms$preloadIcrfFixed,
-    computeIcrfToFixedMatrix: typeof Transforms$computeIcrfToFixedMatrix,
-    computeFixedToIcrfMatrix: typeof Transforms$computeFixedToIcrfMatrix,
-    pointToWindowCoordinates: typeof Transforms$pointToWindowCoordinates
+  declare var npm$namespace$Cesium$Transforms: {
+    eastNorthUpToFixedFrame: typeof Cesium$Transforms$eastNorthUpToFixedFrame,
+    northEastDownToFixedFrame: typeof Cesium$Transforms$northEastDownToFixedFrame,
+    northUpEastToFixedFrame: typeof Cesium$Transforms$northUpEastToFixedFrame,
+    headingPitchRollToFixedFrame: typeof Cesium$Transforms$headingPitchRollToFixedFrame,
+    headingPitchRollQuaternion: typeof Cesium$Transforms$headingPitchRollQuaternion,
+    computeTemeToPseudoFixedMatrix: typeof Cesium$Transforms$computeTemeToPseudoFixedMatrix,
+    preloadIcrfFixed: typeof Cesium$Transforms$preloadIcrfFixed,
+    computeIcrfToFixedMatrix: typeof Cesium$Transforms$computeIcrfToFixedMatrix,
+    computeFixedToIcrfMatrix: typeof Cesium$Transforms$computeFixedToIcrfMatrix,
+    pointToWindowCoordinates: typeof Cesium$Transforms$pointToWindowCoordinates
   };
-  declare function Transforms$eastNorthUpToFixedFrame(
+  declare function Cesium$Transforms$eastNorthUpToFixedFrame(
     origin: Cesium$Cartesian3,
     ellipsoid?: Cesium$Ellipsoid,
     result?: Cesium$Matrix4
   ): Cesium$Matrix4;
 
-  declare function Transforms$northEastDownToFixedFrame(
+  declare function Cesium$Transforms$northEastDownToFixedFrame(
     origin: Cesium$Cartesian3,
     ellipsoid?: Cesium$Ellipsoid,
     result?: Cesium$Matrix4
   ): Cesium$Matrix4;
 
-  declare function Transforms$northUpEastToFixedFrame(
+  declare function Cesium$Transforms$northUpEastToFixedFrame(
     origin: Cesium$Cartesian3,
     ellipsoid?: Cesium$Ellipsoid,
     result?: Cesium$Matrix4
   ): Cesium$Matrix4;
 
-  declare function Transforms$headingPitchRollToFixedFrame(
+  declare function Cesium$Transforms$headingPitchRollToFixedFrame(
     origin: Cesium$Cartesian3,
     headingPitchRoll: Cesium$HeadingPitchRoll,
     ellipsoid?: Cesium$Ellipsoid,
@@ -8355,7 +8263,7 @@ declare module "cesium" {
     result?: Cesium$Matrix4
   ): Cesium$Matrix4;
 
-  declare function Transforms$headingPitchRollQuaternion(
+  declare function Cesium$Transforms$headingPitchRollQuaternion(
     origin: Cesium$Cartesian3,
     headingPitchRoll: Cesium$HeadingPitchRoll,
     ellipsoid?: Cesium$Ellipsoid,
@@ -8363,529 +8271,209 @@ declare module "cesium" {
     result?: Cesium$Quaternion
   ): Cesium$Quaternion;
 
-  declare function Transforms$computeTemeToPseudoFixedMatrix(
+  declare function Cesium$Transforms$computeTemeToPseudoFixedMatrix(
     date: Cesium$JulianDate,
     result?: Cesium$Matrix3
   ): Cesium$Matrix3;
 
-  declare function Transforms$preloadIcrfFixed(
+  declare function Cesium$Transforms$preloadIcrfFixed(
     timeInterval: Cesium$TimeInterval
   ): Promise<void>;
 
-  declare function Transforms$computeIcrfToFixedMatrix(
+  declare function Cesium$Transforms$computeIcrfToFixedMatrix(
     date: Cesium$JulianDate,
     result?: Cesium$Matrix3
   ): Cesium$Matrix3;
 
-  declare function Transforms$computeFixedToIcrfMatrix(
+  declare function Cesium$Transforms$computeFixedToIcrfMatrix(
     date: Cesium$JulianDate,
     result?: Cesium$Matrix3
   ): Cesium$Matrix3;
 
-  declare function Transforms$pointToWindowCoordinates(
+  declare function Cesium$Transforms$pointToWindowCoordinates(
     modelViewProjectionMatrix: Cesium$Matrix4,
     viewportTransformation: Cesium$Matrix4,
     point: Cesium$Cartesian3,
     result?: Cesium$Cartesian2
   ): Cesium$Cartesian2;
 
-  declare type Transforms$LocalFrameToFixedFrame = (
+  declare type Cesium$Transforms$LocalFrameToFixedFrame = (
     origin: Cesium$Cartesian3,
     ellipsoid?: Cesium$Ellipsoid,
     result?: Cesium$Matrix4
   ) => Cesium$Matrix4;
 
-  declare var npm$namespace$TridiagonalSystemSolver: {
-    solve: typeof TridiagonalSystemSolver$solve
+  declare var npm$namespace$Cesium$TridiagonalSystemSolver: {
+    solve: typeof Cesium$TridiagonalSystemSolver$solve
   };
-  declare function TridiagonalSystemSolver$solve(
+  declare function Cesium$TridiagonalSystemSolver$solve(
     diagonal: number[],
     lower: number[],
     upper: number[],
     right: Cesium$Cartesian3[]
   ): Cesium$Cartesian3[];
 
-  declare class Cesium$Visibility {
-    constructor(...args: empty): mixed;
-    static +NONE: Class<Cesium$Visibility__NONE> & Cesium$Visibility__NONE & 0; // 0
-    static +PARTIAL: Class<Cesium$Visibility__PARTIAL> &
-      Cesium$Visibility__PARTIAL &
-      1; // 1
-    static +FULL: Class<Cesium$Visibility__FULL> & Cesium$Visibility__FULL & 2; // 2
-  }
+  declare var Cesium$Visibility: {|
+    +NONE: 0, // 0
+    +PARTIAL: 1, // 1
+    +FULL: 2 // 2
+  |};
 
-  declare class Cesium$Visibility__NONE mixins Cesium$Visibility {}
-  declare class Cesium$Visibility__PARTIAL mixins Cesium$Visibility {}
-  declare class Cesium$Visibility__FULL mixins Cesium$Visibility {}
+  declare var Cesium$WindingOrder: {|
+    +CLOCKWISE: 0, // 0
+    +COUNTER_CLOCKWISE: 1 // 1
+  |};
 
-  declare class Cesium$WindingOrder {
-    constructor(...args: empty): mixed;
-    static +CLOCKWISE: Class<Cesium$WindingOrder__CLOCKWISE> &
-      Cesium$WindingOrder__CLOCKWISE &
-      0; // 0
-    static +COUNTER_CLOCKWISE: Class<Cesium$WindingOrder__COUNTER_CLOCKWISE> &
-      Cesium$WindingOrder__COUNTER_CLOCKWISE &
-      1; // 1
-  }
+  declare var Cesium$StripeOrientation: {|
+    +HORIZONTAL: 0, // 0
+    +VERTICAL: 1 // 1
+  |};
 
-  declare class Cesium$WindingOrder__CLOCKWISE mixins Cesium$WindingOrder {}
-  declare class Cesium$WindingOrder__COUNTER_CLOCKWISE
-    mixins Cesium$WindingOrder {}
+  declare var Cesium$BingMapsStyle: {|
+    +AERIAL: 0, // 0
+    +AERIAL_WITH_LABELS: 1, // 1
+    +ROAD: 2, // 2
+    +ORDNANCE_SURVEY: 3, // 3
+    +COLLINS_BART: 4 // 4
+  |};
 
-  declare class Cesium$StripeOrientation {
-    constructor(...args: empty): mixed;
-    static +HORIZONTAL: Class<Cesium$StripeOrientation__HORIZONTAL> &
-      Cesium$StripeOrientation__HORIZONTAL &
-      0; // 0
-    static +VERTICAL: Class<Cesium$StripeOrientation__VERTICAL> &
-      Cesium$StripeOrientation__VERTICAL &
-      1; // 1
-  }
+  declare var Cesium$BlendEquation: {|
+    +ADD: 0, // 0
+    +SUBTRACT: 1, // 1
+    +REVERSE_SUBTRACT: 2 // 2
+  |};
 
-  declare class Cesium$StripeOrientation__HORIZONTAL
-    mixins Cesium$StripeOrientation {}
-  declare class Cesium$StripeOrientation__VERTICAL
-    mixins Cesium$StripeOrientation {}
+  declare var Cesium$BlendFunction: {|
+    +ZERO: 0, // 0
+    +ONE: 1, // 1
+    +SOURCE_COLOR: 2, // 2
+    +ONE_MINUS_SOURCE_COLOR: 3, // 3
+    +DESTINATION_COLOR: 4, // 4
+    +ONE_MINUS_DESTINATION_COLOR: 5, // 5
+    +SOURCE_ALPHA: 6, // 6
+    +ONE_MINUS_SOURCE_ALPHA: 7, // 7
+    +DESTINATION_ALPHA: 8, // 8
+    +ONE_MINUS_DESTINATION_ALPHA: 9, // 9
+    +CONSTANT_COLOR: 10, // 10
+    +ONE_MINUS_CONSTANT_COLOR: 11, // 11
+    +CONSTANT_ALPHA: 12, // 12
+    +ONE_MINUS_CONSTANT_ALPHA: 13, // 13
+    +SOURCE_ALPHA_SATURATE: 14 // 14
+  |};
 
-  declare class Cesium$BingMapsStyle {
-    constructor(...args: empty): mixed;
-    static +AERIAL: Class<Cesium$BingMapsStyle__AERIAL> &
-      Cesium$BingMapsStyle__AERIAL &
-      0; // 0
-    static +AERIAL_WITH_LABELS: Class<Cesium$BingMapsStyle__AERIAL_WITH_LABELS> &
-      Cesium$BingMapsStyle__AERIAL_WITH_LABELS &
-      1; // 1
-    static +ROAD: Class<Cesium$BingMapsStyle__ROAD> &
-      Cesium$BingMapsStyle__ROAD &
-      2; // 2
-    static +ORDNANCE_SURVEY: Class<Cesium$BingMapsStyle__ORDNANCE_SURVEY> &
-      Cesium$BingMapsStyle__ORDNANCE_SURVEY &
-      3; // 3
-    static +COLLINS_BART: Class<Cesium$BingMapsStyle__COLLINS_BART> &
-      Cesium$BingMapsStyle__COLLINS_BART &
-      4; // 4
-  }
+  declare var Cesium$BlendingState: {|
+    +DISABLED: 0, // 0
+    +ALPHA_BLEND: 1, // 1
+    +PRE_MULTIPLIED_ALPHA_BLEND: 2, // 2
+    +ADDITIVE_BLEND: 3 // 3
+  |};
 
-  declare class Cesium$BingMapsStyle__AERIAL mixins Cesium$BingMapsStyle {}
-  declare class Cesium$BingMapsStyle__AERIAL_WITH_LABELS
-    mixins Cesium$BingMapsStyle {}
-  declare class Cesium$BingMapsStyle__ROAD mixins Cesium$BingMapsStyle {}
-  declare class Cesium$BingMapsStyle__ORDNANCE_SURVEY
-    mixins Cesium$BingMapsStyle {}
-  declare class Cesium$BingMapsStyle__COLLINS_BART
-    mixins Cesium$BingMapsStyle {}
+  declare var Cesium$BlendOption: {|
+    +OPAQUE: 0, // 0
+    +OPAQUE_AND_TRANSLUCENT: 1, // 1
+    +TRANSLUCENT: 2 // 2
+  |};
 
-  declare class Cesium$BlendEquation {
-    constructor(...args: empty): mixed;
-    static +ADD: Class<Cesium$BlendEquation__ADD> &
-      Cesium$BlendEquation__ADD &
-      0; // 0
-    static +SUBTRACT: Class<Cesium$BlendEquation__SUBTRACT> &
-      Cesium$BlendEquation__SUBTRACT &
-      1; // 1
-    static +REVERSE_SUBTRACT: Class<Cesium$BlendEquation__REVERSE_SUBTRACT> &
-      Cesium$BlendEquation__REVERSE_SUBTRACT &
-      2; // 2
-  }
+  declare var Cesium$CameraEventType: {|
+    +LEFT_DRAG: 0, // 0
+    +RIGHT_DRAG: 1, // 1
+    +MIDDLE_DRAG: 2, // 2
+    +WHEEL: 3, // 3
+    +PINCH: 4 // 4
+  |};
 
-  declare class Cesium$BlendEquation__ADD mixins Cesium$BlendEquation {}
-  declare class Cesium$BlendEquation__SUBTRACT mixins Cesium$BlendEquation {}
-  declare class Cesium$BlendEquation__REVERSE_SUBTRACT
-    mixins Cesium$BlendEquation {}
+  declare var Cesium$CullFace: {|
+    +FRONT: 0, // 0
+    +BACK: 1, // 1
+    +FRONT_AND_BACK: 2 // 2
+  |};
 
-  declare class Cesium$BlendFunction {
-    constructor(...args: empty): mixed;
-    static +ZERO: Class<Cesium$BlendFunction__ZERO> &
-      Cesium$BlendFunction__ZERO &
-      0; // 0
-    static +ONE: Class<Cesium$BlendFunction__ONE> &
-      Cesium$BlendFunction__ONE &
-      1; // 1
-    static +SOURCE_COLOR: Class<Cesium$BlendFunction__SOURCE_COLOR> &
-      Cesium$BlendFunction__SOURCE_COLOR &
-      2; // 2
-    static +ONE_MINUS_SOURCE_COLOR: Class<Cesium$BlendFunction__ONE_MINUS_SOURCE_COLOR> &
-      Cesium$BlendFunction__ONE_MINUS_SOURCE_COLOR &
-      3; // 3
-    static +DESTINATION_COLOR: Class<Cesium$BlendFunction__DESTINATION_COLOR> &
-      Cesium$BlendFunction__DESTINATION_COLOR &
-      4; // 4
-    static +ONE_MINUS_DESTINATION_COLOR: Class<Cesium$BlendFunction__ONE_MINUS_DESTINATION_COLOR> &
-      Cesium$BlendFunction__ONE_MINUS_DESTINATION_COLOR &
-      5; // 5
-    static +SOURCE_ALPHA: Class<Cesium$BlendFunction__SOURCE_ALPHA> &
-      Cesium$BlendFunction__SOURCE_ALPHA &
-      6; // 6
-    static +ONE_MINUS_SOURCE_ALPHA: Class<Cesium$BlendFunction__ONE_MINUS_SOURCE_ALPHA> &
-      Cesium$BlendFunction__ONE_MINUS_SOURCE_ALPHA &
-      7; // 7
-    static +DESTINATION_ALPHA: Class<Cesium$BlendFunction__DESTINATION_ALPHA> &
-      Cesium$BlendFunction__DESTINATION_ALPHA &
-      8; // 8
-    static +ONE_MINUS_DESTINATION_ALPHA: Class<Cesium$BlendFunction__ONE_MINUS_DESTINATION_ALPHA> &
-      Cesium$BlendFunction__ONE_MINUS_DESTINATION_ALPHA &
-      9; // 9
-    static +CONSTANT_COLOR: Class<Cesium$BlendFunction__CONSTANT_COLOR> &
-      Cesium$BlendFunction__CONSTANT_COLOR &
-      10; // 10
-    static +ONE_MINUS_CONSTANT_COLOR: Class<Cesium$BlendFunction__ONE_MINUS_CONSTANT_COLOR> &
-      Cesium$BlendFunction__ONE_MINUS_CONSTANT_COLOR &
-      11; // 11
-    static +CONSTANT_ALPHA: Class<Cesium$BlendFunction__CONSTANT_ALPHA> &
-      Cesium$BlendFunction__CONSTANT_ALPHA &
-      12; // 12
-    static +ONE_MINUS_CONSTANT_ALPHA: Class<Cesium$BlendFunction__ONE_MINUS_CONSTANT_ALPHA> &
-      Cesium$BlendFunction__ONE_MINUS_CONSTANT_ALPHA &
-      13; // 13
-    static +SOURCE_ALPHA_SATURATE: Class<Cesium$BlendFunction__SOURCE_ALPHA_SATURATE> &
-      Cesium$BlendFunction__SOURCE_ALPHA_SATURATE &
-      14; // 14
-  }
+  declare var Cesium$DepthFunction: {|
+    +NEVER: 0, // 0
+    +LESS: 1, // 1
+    +EQUAL: 2, // 2
+    +LESS_OR_EQUAL: 3, // 3
+    +GREATER: 4, // 4
+    +NOT_EQUAL: 5, // 5
+    +GREATER_OR_EQUAL: 6, // 6
+    +ALWAYS: 7 // 7
+  |};
 
-  declare class Cesium$BlendFunction__ZERO mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__SOURCE_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_SOURCE_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__DESTINATION_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_DESTINATION_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__SOURCE_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_SOURCE_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__DESTINATION_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_DESTINATION_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__CONSTANT_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_CONSTANT_COLOR
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__CONSTANT_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__ONE_MINUS_CONSTANT_ALPHA
-    mixins Cesium$BlendFunction {}
-  declare class Cesium$BlendFunction__SOURCE_ALPHA_SATURATE
-    mixins Cesium$BlendFunction {}
+  declare var Cesium$HorizontalOrigin: {|
+    +CENTER: 0, // 0
+    +LEFT: 1, // 1
+    +RIGHT: 2 // 2
+  |};
 
-  declare class Cesium$BlendingState {
-    constructor(...args: empty): mixed;
-    static +DISABLED: Class<Cesium$BlendingState__DISABLED> &
-      Cesium$BlendingState__DISABLED &
-      0; // 0
-    static +ALPHA_BLEND: Class<Cesium$BlendingState__ALPHA_BLEND> &
-      Cesium$BlendingState__ALPHA_BLEND &
-      1; // 1
-    static +PRE_MULTIPLIED_ALPHA_BLEND: Class<Cesium$BlendingState__PRE_MULTIPLIED_ALPHA_BLEND> &
-      Cesium$BlendingState__PRE_MULTIPLIED_ALPHA_BLEND &
-      2; // 2
-    static +ADDITIVE_BLEND: Class<Cesium$BlendingState__ADDITIVE_BLEND> &
-      Cesium$BlendingState__ADDITIVE_BLEND &
-      3; // 3
-  }
+  declare var Cesium$LabelStyle: {|
+    +FILL: 0, // 0
+    +OUTLINE: 1, // 1
+    +FILL_AND_OUTLINE: 2 // 2
+  |};
 
-  declare class Cesium$BlendingState__DISABLED mixins Cesium$BlendingState {}
-  declare class Cesium$BlendingState__ALPHA_BLEND mixins Cesium$BlendingState {}
-  declare class Cesium$BlendingState__PRE_MULTIPLIED_ALPHA_BLEND
-    mixins Cesium$BlendingState {}
-  declare class Cesium$BlendingState__ADDITIVE_BLEND
-    mixins Cesium$BlendingState {}
+  declare var Cesium$ModelAnimationLoop: {|
+    +NONE: 0, // 0
+    +REPEAT: 1, // 1
+    +MIRRORED_REPEAT: 2 // 2
+  |};
 
-  declare class Cesium$BlendOption {
-    constructor(...args: empty): mixed;
-    static +OPAQUE: Class<Cesium$BlendOption__OPAQUE> &
-      Cesium$BlendOption__OPAQUE &
-      0; // 0
-    static +OPAQUE_AND_TRANSLUCENT: Class<Cesium$BlendOption__OPAQUE_AND_TRANSLUCENT> &
-      Cesium$BlendOption__OPAQUE_AND_TRANSLUCENT &
-      1; // 1
-    static +TRANSLUCENT: Class<Cesium$BlendOption__TRANSLUCENT> &
-      Cesium$BlendOption__TRANSLUCENT &
-      2; // 2
-  }
+  declare var Cesium$SceneMode: {|
+    +MORPHING: 0, // 0
+    +COLUMBUS_VIEW: 1, // 1
+    +SCENE2D: 2, // 2
+    +SCENE3D: 3 // 3
+  |};
 
-  declare class Cesium$BlendOption__OPAQUE mixins Cesium$BlendOption {}
-  declare class Cesium$BlendOption__OPAQUE_AND_TRANSLUCENT
-    mixins Cesium$BlendOption {}
-  declare class Cesium$BlendOption__TRANSLUCENT mixins Cesium$BlendOption {}
-
-  declare class Cesium$CameraEventType {
-    constructor(...args: empty): mixed;
-    static +LEFT_DRAG: Class<Cesium$CameraEventType__LEFT_DRAG> &
-      Cesium$CameraEventType__LEFT_DRAG &
-      0; // 0
-    static +RIGHT_DRAG: Class<Cesium$CameraEventType__RIGHT_DRAG> &
-      Cesium$CameraEventType__RIGHT_DRAG &
-      1; // 1
-    static +MIDDLE_DRAG: Class<Cesium$CameraEventType__MIDDLE_DRAG> &
-      Cesium$CameraEventType__MIDDLE_DRAG &
-      2; // 2
-    static +WHEEL: Class<Cesium$CameraEventType__WHEEL> &
-      Cesium$CameraEventType__WHEEL &
-      3; // 3
-    static +PINCH: Class<Cesium$CameraEventType__PINCH> &
-      Cesium$CameraEventType__PINCH &
-      4; // 4
-  }
-
-  declare class Cesium$CameraEventType__LEFT_DRAG
-    mixins Cesium$CameraEventType {}
-  declare class Cesium$CameraEventType__RIGHT_DRAG
-    mixins Cesium$CameraEventType {}
-  declare class Cesium$CameraEventType__MIDDLE_DRAG
-    mixins Cesium$CameraEventType {}
-  declare class Cesium$CameraEventType__WHEEL mixins Cesium$CameraEventType {}
-  declare class Cesium$CameraEventType__PINCH mixins Cesium$CameraEventType {}
-
-  declare class Cesium$CullFace {
-    constructor(...args: empty): mixed;
-    static +FRONT: Class<Cesium$CullFace__FRONT> & Cesium$CullFace__FRONT & 0; // 0
-    static +BACK: Class<Cesium$CullFace__BACK> & Cesium$CullFace__BACK & 1; // 1
-    static +FRONT_AND_BACK: Class<Cesium$CullFace__FRONT_AND_BACK> &
-      Cesium$CullFace__FRONT_AND_BACK &
-      2; // 2
-  }
-
-  declare class Cesium$CullFace__FRONT mixins Cesium$CullFace {}
-  declare class Cesium$CullFace__BACK mixins Cesium$CullFace {}
-  declare class Cesium$CullFace__FRONT_AND_BACK mixins Cesium$CullFace {}
-
-  declare class Cesium$DepthFunction {
-    constructor(...args: empty): mixed;
-    static +NEVER: Class<Cesium$DepthFunction__NEVER> &
-      Cesium$DepthFunction__NEVER &
-      0; // 0
-    static +LESS: Class<Cesium$DepthFunction__LESS> &
-      Cesium$DepthFunction__LESS &
-      1; // 1
-    static +EQUAL: Class<Cesium$DepthFunction__EQUAL> &
-      Cesium$DepthFunction__EQUAL &
-      2; // 2
-    static +LESS_OR_EQUAL: Class<Cesium$DepthFunction__LESS_OR_EQUAL> &
-      Cesium$DepthFunction__LESS_OR_EQUAL &
-      3; // 3
-    static +GREATER: Class<Cesium$DepthFunction__GREATER> &
-      Cesium$DepthFunction__GREATER &
-      4; // 4
-    static +NOT_EQUAL: Class<Cesium$DepthFunction__NOT_EQUAL> &
-      Cesium$DepthFunction__NOT_EQUAL &
-      5; // 5
-    static +GREATER_OR_EQUAL: Class<Cesium$DepthFunction__GREATER_OR_EQUAL> &
-      Cesium$DepthFunction__GREATER_OR_EQUAL &
-      6; // 6
-    static +ALWAYS: Class<Cesium$DepthFunction__ALWAYS> &
-      Cesium$DepthFunction__ALWAYS &
-      7; // 7
-  }
-
-  declare class Cesium$DepthFunction__NEVER mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__LESS mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__EQUAL mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__LESS_OR_EQUAL
-    mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__GREATER mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__NOT_EQUAL mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__GREATER_OR_EQUAL
-    mixins Cesium$DepthFunction {}
-  declare class Cesium$DepthFunction__ALWAYS mixins Cesium$DepthFunction {}
-
-  declare class Cesium$HorizontalOrigin {
-    constructor(...args: empty): mixed;
-    static +CENTER: Class<Cesium$HorizontalOrigin__CENTER> &
-      Cesium$HorizontalOrigin__CENTER &
-      0; // 0
-    static +LEFT: Class<Cesium$HorizontalOrigin__LEFT> &
-      Cesium$HorizontalOrigin__LEFT &
-      1; // 1
-    static +RIGHT: Class<Cesium$HorizontalOrigin__RIGHT> &
-      Cesium$HorizontalOrigin__RIGHT &
-      2; // 2
-  }
-
-  declare class Cesium$HorizontalOrigin__CENTER
-    mixins Cesium$HorizontalOrigin {}
-  declare class Cesium$HorizontalOrigin__LEFT mixins Cesium$HorizontalOrigin {}
-  declare class Cesium$HorizontalOrigin__RIGHT mixins Cesium$HorizontalOrigin {}
-
-  declare class Cesium$LabelStyle {
-    constructor(...args: empty): mixed;
-    static +FILL: Class<Cesium$LabelStyle__FILL> & Cesium$LabelStyle__FILL & 0; // 0
-    static +OUTLINE: Class<Cesium$LabelStyle__OUTLINE> &
-      Cesium$LabelStyle__OUTLINE &
-      1; // 1
-    static +FILL_AND_OUTLINE: Class<Cesium$LabelStyle__FILL_AND_OUTLINE> &
-      Cesium$LabelStyle__FILL_AND_OUTLINE &
-      2; // 2
-  }
-
-  declare class Cesium$LabelStyle__FILL mixins Cesium$LabelStyle {}
-  declare class Cesium$LabelStyle__OUTLINE mixins Cesium$LabelStyle {}
-  declare class Cesium$LabelStyle__FILL_AND_OUTLINE mixins Cesium$LabelStyle {}
-
-  declare class Cesium$ModelAnimationLoop {
-    constructor(...args: empty): mixed;
-    static +NONE: Class<Cesium$ModelAnimationLoop__NONE> &
-      Cesium$ModelAnimationLoop__NONE &
-      0; // 0
-    static +REPEAT: Class<Cesium$ModelAnimationLoop__REPEAT> &
-      Cesium$ModelAnimationLoop__REPEAT &
-      1; // 1
-    static +MIRRORED_REPEAT: Class<Cesium$ModelAnimationLoop__MIRRORED_REPEAT> &
-      Cesium$ModelAnimationLoop__MIRRORED_REPEAT &
-      2; // 2
-  }
-
-  declare class Cesium$ModelAnimationLoop__NONE
-    mixins Cesium$ModelAnimationLoop {}
-  declare class Cesium$ModelAnimationLoop__REPEAT
-    mixins Cesium$ModelAnimationLoop {}
-  declare class Cesium$ModelAnimationLoop__MIRRORED_REPEAT
-    mixins Cesium$ModelAnimationLoop {}
-
-  declare class Cesium$SceneMode {
-    constructor(...args: empty): mixed;
-    static +MORPHING: Class<Cesium$SceneMode__MORPHING> &
-      Cesium$SceneMode__MORPHING &
-      0; // 0
-    static +COLUMBUS_VIEW: Class<Cesium$SceneMode__COLUMBUS_VIEW> &
-      Cesium$SceneMode__COLUMBUS_VIEW &
-      1; // 1
-    static +SCENE2D: Class<Cesium$SceneMode__SCENE2D> &
-      Cesium$SceneMode__SCENE2D &
-      2; // 2
-    static +SCENE3D: Class<Cesium$SceneMode__SCENE3D> &
-      Cesium$SceneMode__SCENE3D &
-      3; // 3
-  }
-
-  declare class Cesium$SceneMode__MORPHING mixins Cesium$SceneMode {}
-  declare class Cesium$SceneMode__COLUMBUS_VIEW mixins Cesium$SceneMode {}
-  declare class Cesium$SceneMode__SCENE2D mixins Cesium$SceneMode {}
-  declare class Cesium$SceneMode__SCENE3D mixins Cesium$SceneMode {}
-
-  declare var npm$namespace$SceneMode: {
-    getMorphTime: typeof SceneMode$getMorphTime
+  declare var npm$namespace$Cesium$SceneMode: {
+    getMorphTime: typeof Cesium$SceneMode$getMorphTime
   };
-  declare function SceneMode$getMorphTime(value: Cesium$SceneMode): number;
+  declare function Cesium$SceneMode$getMorphTime(
+    value: Cesium$SceneMode
+  ): number;
 
-  declare var npm$namespace$SceneTransforms: {
-    wgs84ToWindowCoordinates: typeof SceneTransforms$wgs84ToWindowCoordinates,
-    wgs84ToDrawingBufferCoordinates: typeof SceneTransforms$wgs84ToDrawingBufferCoordinates
+  declare var npm$namespace$Cesium$SceneTransforms: {
+    wgs84ToWindowCoordinates: typeof Cesium$SceneTransforms$wgs84ToWindowCoordinates,
+    wgs84ToDrawingBufferCoordinates: typeof Cesium$SceneTransforms$wgs84ToDrawingBufferCoordinates
   };
-  declare function SceneTransforms$wgs84ToWindowCoordinates(
+  declare function Cesium$SceneTransforms$wgs84ToWindowCoordinates(
     scene: Cesium$Scene,
     position: Cesium$Cartesian3,
     result?: Cesium$Cartesian2
   ): Cesium$Cartesian2;
 
-  declare function SceneTransforms$wgs84ToDrawingBufferCoordinates(
+  declare function Cesium$SceneTransforms$wgs84ToDrawingBufferCoordinates(
     scene: Cesium$Scene,
     position: Cesium$Cartesian3,
     result?: Cesium$Cartesian2
   ): Cesium$Cartesian2;
 
-  declare class Cesium$StencilFunction {
-    constructor(...args: empty): mixed;
-    static +NEVER: Class<Cesium$StencilFunction__NEVER> &
-      Cesium$StencilFunction__NEVER &
-      0; // 0
-    static +LESS: Class<Cesium$StencilFunction__LESS> &
-      Cesium$StencilFunction__LESS &
-      1; // 1
-    static +EQUAL: Class<Cesium$StencilFunction__EQUAL> &
-      Cesium$StencilFunction__EQUAL &
-      2; // 2
-    static +LESS_OR_EQUAL: Class<Cesium$StencilFunction__LESS_OR_EQUAL> &
-      Cesium$StencilFunction__LESS_OR_EQUAL &
-      3; // 3
-    static +GREATER: Class<Cesium$StencilFunction__GREATER> &
-      Cesium$StencilFunction__GREATER &
-      4; // 4
-    static +NOT_EQUAL: Class<Cesium$StencilFunction__NOT_EQUAL> &
-      Cesium$StencilFunction__NOT_EQUAL &
-      5; // 5
-    static +GREATER_OR_EQUAL: Class<Cesium$StencilFunction__GREATER_OR_EQUAL> &
-      Cesium$StencilFunction__GREATER_OR_EQUAL &
-      6; // 6
-    static +ALWAYS: Class<Cesium$StencilFunction__ALWAYS> &
-      Cesium$StencilFunction__ALWAYS &
-      7; // 7
-  }
+  declare var Cesium$StencilFunction: {|
+    +NEVER: 0, // 0
+    +LESS: 1, // 1
+    +EQUAL: 2, // 2
+    +LESS_OR_EQUAL: 3, // 3
+    +GREATER: 4, // 4
+    +NOT_EQUAL: 5, // 5
+    +GREATER_OR_EQUAL: 6, // 6
+    +ALWAYS: 7 // 7
+  |};
 
-  declare class Cesium$StencilFunction__NEVER mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__LESS mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__EQUAL mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__LESS_OR_EQUAL
-    mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__GREATER mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__NOT_EQUAL
-    mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__GREATER_OR_EQUAL
-    mixins Cesium$StencilFunction {}
-  declare class Cesium$StencilFunction__ALWAYS mixins Cesium$StencilFunction {}
+  declare var Cesium$StencilOperation: {|
+    +ZERO: 0, // 0
+    +KEEP: 1, // 1
+    +REPLACE: 2, // 2
+    +INCREMENT: 3, // 3
+    +DECREMENT: 4, // 4
+    +INVERT: 5, // 5
+    +INCREMENT_WRAP: 6, // 6
+    +DECREMENT_WRAP: 7 // 7
+  |};
 
-  declare class Cesium$StencilOperation {
-    constructor(...args: empty): mixed;
-    static +ZERO: Class<Cesium$StencilOperation__ZERO> &
-      Cesium$StencilOperation__ZERO &
-      0; // 0
-    static +KEEP: Class<Cesium$StencilOperation__KEEP> &
-      Cesium$StencilOperation__KEEP &
-      1; // 1
-    static +REPLACE: Class<Cesium$StencilOperation__REPLACE> &
-      Cesium$StencilOperation__REPLACE &
-      2; // 2
-    static +INCREMENT: Class<Cesium$StencilOperation__INCREMENT> &
-      Cesium$StencilOperation__INCREMENT &
-      3; // 3
-    static +DECREMENT: Class<Cesium$StencilOperation__DECREMENT> &
-      Cesium$StencilOperation__DECREMENT &
-      4; // 4
-    static +INVERT: Class<Cesium$StencilOperation__INVERT> &
-      Cesium$StencilOperation__INVERT &
-      5; // 5
-    static +INCREMENT_WRAP: Class<Cesium$StencilOperation__INCREMENT_WRAP> &
-      Cesium$StencilOperation__INCREMENT_WRAP &
-      6; // 6
-    static +DECREMENT_WRAP: Class<Cesium$StencilOperation__DECREMENT_WRAP> &
-      Cesium$StencilOperation__DECREMENT_WRAP &
-      7; // 7
-  }
-
-  declare class Cesium$StencilOperation__ZERO mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__KEEP mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__REPLACE
-    mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__INCREMENT
-    mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__DECREMENT
-    mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__INVERT
-    mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__INCREMENT_WRAP
-    mixins Cesium$StencilOperation {}
-  declare class Cesium$StencilOperation__DECREMENT_WRAP
-    mixins Cesium$StencilOperation {}
-
-  declare class Cesium$VerticalOrigin {
-    constructor(...args: empty): mixed;
-    static +CENTER: Class<Cesium$VerticalOrigin__CENTER> &
-      Cesium$VerticalOrigin__CENTER &
-      0; // 0
-    static +BOTTOM: Class<Cesium$VerticalOrigin__BOTTOM> &
-      Cesium$VerticalOrigin__BOTTOM &
-      1; // 1
-    static +TOP: Class<Cesium$VerticalOrigin__TOP> &
-      Cesium$VerticalOrigin__TOP &
-      2; // 2
-  }
-
-  declare class Cesium$VerticalOrigin__CENTER mixins Cesium$VerticalOrigin {}
-  declare class Cesium$VerticalOrigin__BOTTOM mixins Cesium$VerticalOrigin {}
-  declare class Cesium$VerticalOrigin__TOP mixins Cesium$VerticalOrigin {}
+  declare var Cesium$VerticalOrigin: {|
+    +CENTER: 0, // 0
+    +BOTTOM: 1, // 1
+    +TOP: 2 // 2
+  |};
 
   declare function Cesium$createOpenStreetMapImageryProvider(options: {
     url?: string,
@@ -8920,8 +8508,7 @@ declare module "cesium" {
     requestWaterMask?: boolean
   }): Cesium$CesiumTerrainProvider;
 
-  declare class Cesium$UrlTemplateImageryProvider
-    mixins Cesium$ImageryProvider {
+  declare class Cesium$UrlTemplateImageryProvider mixins ImageryProvider {
     url: string;
     pickFeaturesUrl: string;
     urlSchemeZeroPadding: {};
@@ -8975,7 +8562,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -8987,7 +8574,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -8999,7 +8586,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): Promise<ArrayBuffer> | void;
@@ -9009,7 +8596,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): Promise<Blob> | void;
@@ -9019,7 +8606,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       preferBlob?: boolean
@@ -9030,7 +8617,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): Promise<any> | void;
@@ -9040,7 +8627,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       callbackParameterName?: string
@@ -9051,7 +8638,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): Promise<string> | void;
@@ -9061,7 +8648,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): Promise<XMLDocument> | void;
@@ -9071,7 +8658,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -9083,7 +8670,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -9096,7 +8683,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -9109,7 +8696,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -9122,7 +8709,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       responseType?: string,
@@ -9134,7 +8721,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request
     }): this;
@@ -9167,7 +8754,7 @@ declare module "cesium" {
       templateValues?: any,
       headers?: any,
       proxy?: Cesium$DefaultProxy,
-      retryCallback?: Cesium$Resource.Resource$RetryCallback,
+      retryCallback?: Resource$RetryCallback,
       retryAttempts?: number,
       request?: Request,
       preserveQueryParameters?: boolean
@@ -9212,15 +8799,15 @@ declare module "cesium" {
     setTemplateValues(template: any, useAsDefault: boolean): void;
   }
 
-  declare type Resource$RetryCallback = (
+  declare type Cesium$Resource$RetryCallback = (
     resource: Cesium$Resource,
     error: Error
   ) => void;
 
   declare function Cesium$defined(value: any): boolean;
 
-  declare var npm$namespace$buildModuleUrl: {
-    setBaseUrl: typeof buildModuleUrl$setBaseUrl
+  declare var npm$namespace$Cesium$buildModuleUrl: {
+    setBaseUrl: typeof Cesium$buildModuleUrl$setBaseUrl
   };
-  declare function buildModuleUrl$setBaseUrl(value: string): void;
+  declare function Cesium$buildModuleUrl$setBaseUrl(value: string): void;
 }
