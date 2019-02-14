@@ -8,5 +8,5 @@ declare module "title" {
   };
   declare function Title$reset(): void;
 
-  declare module.exports: typeof Title;
+  declare export default typeof Title;
 }
