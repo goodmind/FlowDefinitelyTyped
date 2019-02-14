@@ -14,7 +14,7 @@ declare module "init-package-json" {
   declare function init_package_json(
     dir: string,
     input: string,
-    config: init_package_json$init_package_json$Config | {},
+    config: init_package_json$Config | {},
     cb: (err: any, data: any) => void
   ): void;
 
@@ -24,5 +24,5 @@ declare module "init-package-json" {
     cb: (err: any, data: any) => void
   ): void;
 
-  declare module.exports: typeof init_package_json;
+  declare export default typeof init_package_json;
 }
