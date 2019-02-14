@@ -1,13 +1,15 @@
 declare module "react-grid-layout" {
   import typeof * as React from "react";
 
-  declare module.exports: typeof ReactGridLayout;
+  declare export default typeof ReactGridLayout;
 
   declare class ReactGridLayout
-    mixins React.Component<ReactGridLayout$ReactGridLayout$ReactGridLayoutProps> {}
+    mixins React.Component<ReactGridLayout$ReactGridLayoutProps> {}
 
   declare var npm$namespace$ReactGridLayout: {
-    WidthProvider: typeof ReactGridLayout$WidthProvider
+    WidthProvider: typeof ReactGridLayout$WidthProvider,
+
+    Responsive: typeof ReactGridLayout$Responsive
   };
   declare interface ReactGridLayout$Layout {
     /**
@@ -247,7 +249,7 @@ declare module "react-grid-layout" {
      * Calls back with (currentLayout) after every drag or resize stop.
      */
     onLayoutChange?: (layout: ReactGridLayout$Layout[]) => void
-  } & ReactGridLayout$CoreProps;
+  } & CoreProps;
 
   declare type ReactGridLayout$ResponsiveProps = {
     /**
@@ -295,7 +297,7 @@ declare module "react-grid-layout" {
       cols: number,
       containerPadding: [number, number]
     ) => void
-  } & ReactGridLayout$CoreProps;
+  } & CoreProps;
 
   declare class ReactGridLayout$Responsive
     mixins React.Component<ReactGridLayout$ResponsiveProps> {}
