@@ -2,7 +2,7 @@ declare module "cassandra-driver" {
   declare export type Callback = Function;
   declare export type ResultCallback = (
     err: Error,
-    result: types$types$ResultSet
+    result: types$ResultSet
   ) => void;
   import typeof * as events from "events";
 
@@ -10,40 +10,49 @@ declare module "cassandra-driver" {
 
   import typeof * as tls from "tls";
 
-  declare var npm$namespace$addressResolution: {
-    EC2MultiRegionTranslator: typeof addressResolution$EC2MultiRegionTranslator
+  declare var npm$namespace$policies: {
+    addressResolution: typeof npm$namespace$policies$addressResolution,
+    loadBalancing: typeof npm$namespace$policies$loadBalancing,
+    reconnection: typeof npm$namespace$policies$reconnection,
+    retry: typeof npm$namespace$policies$retry,
+    speculativeExecution: typeof npm$namespace$policies$speculativeExecution,
+    timestampGeneration: typeof npm$namespace$policies$timestampGeneration
   };
-  declare var addressResolution$EC2MultiRegionTranslator: addressResolution$EC2MultiRegionTranslatorStatic;
 
-  declare interface addressResolution$AddressTranslator {
+  declare var npm$namespace$policies$addressResolution: {
+    EC2MultiRegionTranslator: typeof policies$addressResolution$EC2MultiRegionTranslator
+  };
+  declare var policies$addressResolution$EC2MultiRegionTranslator: addressResolution$EC2MultiRegionTranslatorStatic;
+
+  declare interface policies$addressResolution$AddressTranslator {
     translate(address: string, port: number, callback: Callback): void;
   }
 
-  declare interface addressResolution$EC2MultiRegionTranslatorStatic {
-    new(): addressResolution$EC2MultiRegionTranslator;
+  declare interface policies$addressResolution$EC2MultiRegionTranslatorStatic {
+    new(): policies$addressResolution$EC2MultiRegionTranslator;
   }
 
-  declare type addressResolution$EC2MultiRegionTranslator = {
+  declare type policies$addressResolution$EC2MultiRegionTranslator = {
     logError(address: string, err: Error): void
-  } & addressResolution$AddressTranslator;
+  } & AddressTranslator;
 
-  declare var npm$namespace$loadBalancing: {
-    DCAwareRoundRobinPolicy: typeof loadBalancing$DCAwareRoundRobinPolicy,
-    RoundRobinPolicy: typeof loadBalancing$RoundRobinPolicy,
-    TokenAwarePolicy: typeof loadBalancing$TokenAwarePolicy,
-    WhiteListPolicy: typeof loadBalancing$WhiteListPolicy
+  declare var npm$namespace$policies$loadBalancing: {
+    DCAwareRoundRobinPolicy: typeof policies$loadBalancing$DCAwareRoundRobinPolicy,
+    RoundRobinPolicy: typeof policies$loadBalancing$RoundRobinPolicy,
+    TokenAwarePolicy: typeof policies$loadBalancing$TokenAwarePolicy,
+    WhiteListPolicy: typeof policies$loadBalancing$WhiteListPolicy
   };
-  declare var loadBalancing$DCAwareRoundRobinPolicy: loadBalancing$DCAwareRoundRobinPolicyStatic;
+  declare var policies$loadBalancing$DCAwareRoundRobinPolicy: loadBalancing$DCAwareRoundRobinPolicyStatic;
 
-  declare var loadBalancing$RoundRobinPolicy: loadBalancing$RoundRobinPolicyStatic;
+  declare var policies$loadBalancing$RoundRobinPolicy: loadBalancing$RoundRobinPolicyStatic;
 
-  declare var loadBalancing$TokenAwarePolicy: loadBalancing$TokenAwarePolicyStatic;
+  declare var policies$loadBalancing$TokenAwarePolicy: loadBalancing$TokenAwarePolicyStatic;
 
-  declare var loadBalancing$WhiteListPolicy: loadBalancing$WhiteListPolicyStatic;
+  declare var policies$loadBalancing$WhiteListPolicy: loadBalancing$WhiteListPolicyStatic;
 
-  declare interface loadBalancing$LoadBalancingPolicy {
+  declare interface policies$loadBalancing$LoadBalancingPolicy {
     init(client: Client, hosts: HostMap, callback: Callback): void;
-    getDistance(host: Host): types$types$distance;
+    getDistance(host: Host): types$distance;
     newQueryPlan(
       keyspace: string,
       queryOptions: ExecutionOptions | null,
@@ -51,47 +60,47 @@ declare module "cassandra-driver" {
     ): void;
   }
 
-  declare interface loadBalancing$DCAwareRoundRobinPolicyStatic {
-    new(localDc?: string): loadBalancing$DCAwareRoundRobinPolicy;
+  declare interface policies$loadBalancing$DCAwareRoundRobinPolicyStatic {
+    new(localDc?: string): policies$loadBalancing$DCAwareRoundRobinPolicy;
   }
 
-  declare type loadBalancing$DCAwareRoundRobinPolicy = {
+  declare type policies$loadBalancing$DCAwareRoundRobinPolicy = {
     localHostsArray: Host[],
     remoteHostsArray: Host[]
-  } & loadBalancing$LoadBalancingPolicy;
+  } & LoadBalancingPolicy;
 
-  declare interface loadBalancing$RoundRobinPolicyStatic {
-    new(): loadBalancing$RoundRobinPolicy;
+  declare interface policies$loadBalancing$RoundRobinPolicyStatic {
+    new(): policies$loadBalancing$RoundRobinPolicy;
   }
 
-  declare type loadBalancing$RoundRobinPolicy = {} & loadBalancing$LoadBalancingPolicy;
+  declare type policies$loadBalancing$RoundRobinPolicy = {} & LoadBalancingPolicy;
 
-  declare interface loadBalancing$TokenAwarePolicyStatic {
+  declare interface policies$loadBalancing$TokenAwarePolicyStatic {
     new(
-      childPolicy: loadBalancing$LoadBalancingPolicy
-    ): loadBalancing$TokenAwarePolicy;
+      childPolicy: policies$loadBalancing$LoadBalancingPolicy
+    ): policies$loadBalancing$TokenAwarePolicy;
   }
 
-  declare type loadBalancing$TokenAwarePolicy = {} & loadBalancing$LoadBalancingPolicy;
+  declare type policies$loadBalancing$TokenAwarePolicy = {} & LoadBalancingPolicy;
 
-  declare interface loadBalancing$WhiteListPolicyStatic {
+  declare interface policies$loadBalancing$WhiteListPolicyStatic {
     new(
-      childPolicy: loadBalancing$LoadBalancingPolicy,
+      childPolicy: policies$loadBalancing$LoadBalancingPolicy,
       whiteList: string[]
-    ): loadBalancing$WhiteListPolicy;
+    ): policies$loadBalancing$WhiteListPolicy;
   }
 
-  declare type loadBalancing$WhiteListPolicy = {} & loadBalancing$LoadBalancingPolicy;
+  declare type policies$loadBalancing$WhiteListPolicy = {} & LoadBalancingPolicy;
 
-  declare var npm$namespace$reconnection: {
-    ConstantReconnectionPolicy: typeof reconnection$ConstantReconnectionPolicy,
-    ExponentialReconnectionPolicy: typeof reconnection$ExponentialReconnectionPolicy
+  declare var npm$namespace$policies$reconnection: {
+    ConstantReconnectionPolicy: typeof policies$reconnection$ConstantReconnectionPolicy,
+    ExponentialReconnectionPolicy: typeof policies$reconnection$ExponentialReconnectionPolicy
   };
-  declare var reconnection$ConstantReconnectionPolicy: reconnection$ConstantReconnectionPolicyStatic;
+  declare var policies$reconnection$ConstantReconnectionPolicy: reconnection$ConstantReconnectionPolicyStatic;
 
-  declare var reconnection$ExponentialReconnectionPolicy: reconnection$ExponentialReconnectionPolicyStatic;
+  declare var policies$reconnection$ExponentialReconnectionPolicy: reconnection$ExponentialReconnectionPolicyStatic;
 
-  declare interface reconnection$ReconnectionPolicy {
+  declare interface policies$reconnection$ReconnectionPolicy {
     newSchedule(): {
       next(): {
         delay: number,
@@ -100,100 +109,90 @@ declare module "cassandra-driver" {
     };
   }
 
-  declare interface reconnection$ConstantReconnectionPolicyStatic {
-    new(delay: number): reconnection$ConstantReconnectionPolicy;
+  declare interface policies$reconnection$ConstantReconnectionPolicyStatic {
+    new(delay: number): policies$reconnection$ConstantReconnectionPolicy;
   }
 
-  declare type reconnection$ConstantReconnectionPolicy = {} & reconnection$ReconnectionPolicy;
+  declare type policies$reconnection$ConstantReconnectionPolicy = {} & ReconnectionPolicy;
 
-  declare interface reconnection$ExponentialReconnectionPolicyStatic {
+  declare interface policies$reconnection$ExponentialReconnectionPolicyStatic {
     new(
       baseDelay: number,
       maxDelay: number,
       startWithNoDelay: boolean
-    ): reconnection$ExponentialReconnectionPolicy;
+    ): policies$reconnection$ExponentialReconnectionPolicy;
   }
 
-  declare type reconnection$ExponentialReconnectionPolicy = {} & reconnection$ReconnectionPolicy;
+  declare type policies$reconnection$ExponentialReconnectionPolicy = {} & ReconnectionPolicy;
 
-  declare var npm$namespace$retry: {
-    RetryPolicy: typeof retry$RetryPolicy
+  declare var npm$namespace$policies$retry: {
+    RetryPolicy: typeof policies$retry$RetryPolicy,
+    retryDecision: typeof policies$retry$retryDecision
   };
-  declare var retry$RetryPolicy: retry$RetryPolicyStatic;
+  declare var policies$retry$RetryPolicy: retry$RetryPolicyStatic;
 
-  declare interface retry$DecisionInfo {
+  declare interface policies$retry$DecisionInfo {
     decision: number;
     consistency: number;
   }
 
-  declare interface retry$RequestInfo {
+  declare interface policies$retry$RequestInfo {
     request: any;
     nbRetry: number;
   }
 
-  declare class retry$retryDecision {
-    constructor(...args: empty): mixed;
-    static +rethrow: Class<retry$retryDecision__rethrow> &
-      retry$retryDecision__rethrow &
-      0; // 0
-    static +retry: Class<retry$retryDecision__retry> &
-      retry$retryDecision__retry &
-      1; // 1
-    static +ignore: Class<retry$retryDecision__ignore> &
-      retry$retryDecision__ignore &
-      2; // 2
-  }
+  declare var policies$retry$retryDecision: {|
+    +rethrow: 0, // 0
+    +retry: 1, // 1
+    +ignore: 2 // 2
+  |};
 
-  declare class retry$retryDecision__rethrow mixins retry$retryDecision {}
-  declare class retry$retryDecision__retry mixins retry$retryDecision {}
-  declare class retry$retryDecision__ignore mixins retry$retryDecision {}
-
-  declare interface retry$RetryPolicyStatic {
-    new(): retry$RetryPolicy;
-    retry$retryDecision: {
+  declare interface policies$retry$RetryPolicyStatic {
+    new(): policies$retry$RetryPolicy;
+    retryDecision: {
       rethrow: number,
       retry: number,
       ignore: number
     };
   }
 
-  declare interface retry$RetryPolicy {
+  declare interface policies$retry$RetryPolicy {
     onReadTimeout(
-      requestInfo: retry$RequestInfo,
-      consistency: types$types$consistencies,
+      requestInfo: policies$retry$RequestInfo,
+      consistency: types$consistencies,
       received: number,
       blockFor: number,
       isDataPresent: boolean
-    ): retry$DecisionInfo;
+    ): policies$retry$DecisionInfo;
     onUnavailable(
-      requestInfo: retry$RequestInfo,
-      consistency: types$types$consistencies,
+      requestInfo: policies$retry$RequestInfo,
+      consistency: types$consistencies,
       required: number,
       alive: number
-    ): retry$DecisionInfo;
+    ): policies$retry$DecisionInfo;
     onWriteTimeout(
-      requestInfo: retry$RequestInfo,
-      consistency: types$types$consistencies,
+      requestInfo: policies$retry$RequestInfo,
+      consistency: types$consistencies,
       received: number,
       blockFor: number,
       writeType: string
-    ): retry$DecisionInfo;
+    ): policies$retry$DecisionInfo;
     rethrowResult(): {
-      decision: retry$retryDecision
+      decision: policies$retry$retryDecision
     };
     retryResult(): {
-      decision: retry$retryDecision,
-      consistency: types$types$consistencies,
+      decision: policies$retry$retryDecision,
+      consistency: types$consistencies,
       useCurrentHost: boolean
     };
   }
 
-  declare var npm$namespace$speculativeExecution: {
-    NoSpeculativeExecutionPolicy: typeof speculativeExecution$NoSpeculativeExecutionPolicy
+  declare var npm$namespace$policies$speculativeExecution: {
+    NoSpeculativeExecutionPolicy: typeof policies$speculativeExecution$NoSpeculativeExecutionPolicy
   };
-  declare var speculativeExecution$NoSpeculativeExecutionPolicy: speculativeExecution$NoSpeculativeExecutionPolicyStatic;
+  declare var policies$speculativeExecution$NoSpeculativeExecutionPolicy: speculativeExecution$NoSpeculativeExecutionPolicyStatic;
 
-  declare interface speculativeExecution$SpeculativeExecutionPolicy {
+  declare interface policies$speculativeExecution$SpeculativeExecutionPolicy {
     init(client: Client): void;
     newPlan(
       keyspace: string,
@@ -203,40 +202,40 @@ declare module "cassandra-driver" {
     };
   }
 
-  declare interface speculativeExecution$NoSpeculativeExecutionPolicyStatic {
-    new(): speculativeExecution$NoSpeculativeExecutionPolicy;
+  declare interface policies$speculativeExecution$NoSpeculativeExecutionPolicyStatic {
+    new(): policies$speculativeExecution$NoSpeculativeExecutionPolicy;
   }
 
-  declare type speculativeExecution$NoSpeculativeExecutionPolicy = {} & speculativeExecution$SpeculativeExecutionPolicy;
+  declare type policies$speculativeExecution$NoSpeculativeExecutionPolicy = {} & SpeculativeExecutionPolicy;
 
-  declare interface speculativeExecution$ConstantSpeculativeExecutionPolicyStatic {
+  declare interface policies$speculativeExecution$ConstantSpeculativeExecutionPolicyStatic {
     new(
       delay: number,
       maxSpeculativeExecutions: number
     ): speculativeExecution$ConstantSpeculativeExecutionPolicy;
   }
 
-  declare type speculativeExecution$ConstantSpeculativeExecutionPolicy = {} & speculativeExecution$SpeculativeExecutionPolicy;
+  declare type policies$speculativeExecution$ConstantSpeculativeExecutionPolicy = {} & SpeculativeExecutionPolicy;
 
-  declare var npm$namespace$timestampGeneration: {
-    MonotonicTimestampGenerator: typeof timestampGeneration$MonotonicTimestampGenerator
+  declare var npm$namespace$policies$timestampGeneration: {
+    MonotonicTimestampGenerator: typeof policies$timestampGeneration$MonotonicTimestampGenerator
   };
-  declare var timestampGeneration$MonotonicTimestampGenerator: timestampGeneration$MonotonicTimestampGeneratorStatic;
+  declare var policies$timestampGeneration$MonotonicTimestampGenerator: timestampGeneration$MonotonicTimestampGeneratorStatic;
 
-  declare interface timestampGeneration$TimestampGenerator {
+  declare interface policies$timestampGeneration$TimestampGenerator {
     next(client: Client): null | number | _Long;
   }
 
-  declare interface timestampGeneration$MonotonicTimestampGeneratorStatic {
+  declare interface policies$timestampGeneration$MonotonicTimestampGeneratorStatic {
     new(
       warningThreshold?: number,
       minLogInterval?: number
-    ): timestampGeneration$MonotonicTimestampGeneratorStatic;
+    ): policies$timestampGeneration$MonotonicTimestampGeneratorStatic;
   }
 
-  declare type timestampGeneration$MonotonicTimestampGenerator = {
+  declare type policies$timestampGeneration$MonotonicTimestampGenerator = {
     getDate(): number
-  } & timestampGeneration$TimestampGenerator;
+  } & TimestampGenerator;
 
   declare var npm$namespace$types: {
     generateTimestamp: typeof types$generateTimestamp,
@@ -252,7 +251,10 @@ declare module "cassandra-driver" {
     Row: typeof types$Row,
     TimeUuid: typeof types$TimeUuid,
     Tuple: typeof types$Tuple,
-    Uuid: typeof types$Uuid
+    Uuid: typeof types$Uuid,
+    consistencies: typeof types$consistencies,
+    dataTypes: typeof types$dataTypes,
+    distance: typeof types$distance
   };
   declare var types$BigDecimal: types$BigDecimalStatic;
 
@@ -278,147 +280,61 @@ declare module "cassandra-driver" {
 
   declare var types$Uuid: types$UuidStatic;
 
-  declare class types$consistencies {
-    constructor(...args: empty): mixed;
-    static +any: Class<types$consistencies__any> & types$consistencies__any & 0; // 0
-    static +one: Class<types$consistencies__one> & types$consistencies__one & 1; // 1
-    static +two: Class<types$consistencies__two> & types$consistencies__two & 2; // 2
-    static +three: Class<types$consistencies__three> &
-      types$consistencies__three &
-      3; // 3
-    static +quorum: Class<types$consistencies__quorum> &
-      types$consistencies__quorum &
-      4; // 4
-    static +all: Class<types$consistencies__all> & types$consistencies__all & 5; // 5
-    static +localQuorum: Class<types$consistencies__localQuorum> &
-      types$consistencies__localQuorum &
-      6; // 6
-    static +eachQuorum: Class<types$consistencies__eachQuorum> &
-      types$consistencies__eachQuorum &
-      7; // 7
-    static +serial: Class<types$consistencies__serial> &
-      types$consistencies__serial &
-      8; // 8
-    static +localSerial: Class<types$consistencies__localSerial> &
-      types$consistencies__localSerial &
-      9; // 9
-    static +localOne: Class<types$consistencies__localOne> &
-      types$consistencies__localOne &
-      10; // 10
-  }
+  declare var types$consistencies: {|
+    +any: 0, // 0
+    +one: 1, // 1
+    +two: 2, // 2
+    +three: 3, // 3
+    +quorum: 4, // 4
+    +all: 5, // 5
+    +localQuorum: 6, // 6
+    +eachQuorum: 7, // 7
+    +serial: 8, // 8
+    +localSerial: 9, // 9
+    +localOne: 10 // 10
+  |};
 
-  declare class types$consistencies__any mixins types$consistencies {}
-  declare class types$consistencies__one mixins types$consistencies {}
-  declare class types$consistencies__two mixins types$consistencies {}
-  declare class types$consistencies__three mixins types$consistencies {}
-  declare class types$consistencies__quorum mixins types$consistencies {}
-  declare class types$consistencies__all mixins types$consistencies {}
-  declare class types$consistencies__localQuorum mixins types$consistencies {}
-  declare class types$consistencies__eachQuorum mixins types$consistencies {}
-  declare class types$consistencies__serial mixins types$consistencies {}
-  declare class types$consistencies__localSerial mixins types$consistencies {}
-  declare class types$consistencies__localOne mixins types$consistencies {}
+  declare var types$dataTypes: {|
+    +custom: 0, // 0
+    +ascii: 1, // 1
+    +bigint: 2, // 2
+    +blob: 3, // 3
+    +boolean: 4, // 4
+    +counter: 5, // 5
+    +decimal: 6, // 6
+    +double: 7, // 7
+    +float: 8, // 8
+    +int: 9, // 9
+    +text: 10, // 10
+    +timestamp: 11, // 11
+    +uuid: 12, // 12
+    +varchar: 13, // 13
+    +varint: 14, // 14
+    +timeuuid: 15, // 15
+    +inet: 16, // 16
+    +date: 17, // 17
+    +time: 18, // 18
+    +smallint: 19, // 19
+    +tinyint: 20, // 20
+    +list: 21, // 21
+    +map: 22, // 22
+    +set: 23, // 23
+    +udt: 24, // 24
+    +tuple: 25 // 25
+  |};
 
-  declare class types$dataTypes {
-    constructor(...args: empty): mixed;
-    static +custom: Class<types$dataTypes__custom> &
-      types$dataTypes__custom &
-      0; // 0
-    static +ascii: Class<types$dataTypes__ascii> & types$dataTypes__ascii & 1; // 1
-    static +bigint: Class<types$dataTypes__bigint> &
-      types$dataTypes__bigint &
-      2; // 2
-    static +blob: Class<types$dataTypes__blob> & types$dataTypes__blob & 3; // 3
-    static +boolean: Class<types$dataTypes__boolean> &
-      types$dataTypes__boolean &
-      4; // 4
-    static +counter: Class<types$dataTypes__counter> &
-      types$dataTypes__counter &
-      5; // 5
-    static +decimal: Class<types$dataTypes__decimal> &
-      types$dataTypes__decimal &
-      6; // 6
-    static +double: Class<types$dataTypes__double> &
-      types$dataTypes__double &
-      7; // 7
-    static +float: Class<types$dataTypes__float> & types$dataTypes__float & 8; // 8
-    static +int: Class<types$dataTypes__int> & types$dataTypes__int & 9; // 9
-    static +text: Class<types$dataTypes__text> & types$dataTypes__text & 10; // 10
-    static +timestamp: Class<types$dataTypes__timestamp> &
-      types$dataTypes__timestamp &
-      11; // 11
-    static +uuid: Class<types$dataTypes__uuid> & types$dataTypes__uuid & 12; // 12
-    static +varchar: Class<types$dataTypes__varchar> &
-      types$dataTypes__varchar &
-      13; // 13
-    static +varint: Class<types$dataTypes__varint> &
-      types$dataTypes__varint &
-      14; // 14
-    static +timeuuid: Class<types$dataTypes__timeuuid> &
-      types$dataTypes__timeuuid &
-      15; // 15
-    static +inet: Class<types$dataTypes__inet> & types$dataTypes__inet & 16; // 16
-    static +date: Class<types$dataTypes__date> & types$dataTypes__date & 17; // 17
-    static +time: Class<types$dataTypes__time> & types$dataTypes__time & 18; // 18
-    static +smallint: Class<types$dataTypes__smallint> &
-      types$dataTypes__smallint &
-      19; // 19
-    static +tinyint: Class<types$dataTypes__tinyint> &
-      types$dataTypes__tinyint &
-      20; // 20
-    static +list: Class<types$dataTypes__list> & types$dataTypes__list & 21; // 21
-    static +map: Class<types$dataTypes__map> & types$dataTypes__map & 22; // 22
-    static +set: Class<types$dataTypes__set> & types$dataTypes__set & 23; // 23
-    static +udt: Class<types$dataTypes__udt> & types$dataTypes__udt & 24; // 24
-    static +tuple: Class<types$dataTypes__tuple> & types$dataTypes__tuple & 25; // 25
-  }
-
-  declare class types$dataTypes__custom mixins types$dataTypes {}
-  declare class types$dataTypes__ascii mixins types$dataTypes {}
-  declare class types$dataTypes__bigint mixins types$dataTypes {}
-  declare class types$dataTypes__blob mixins types$dataTypes {}
-  declare class types$dataTypes__boolean mixins types$dataTypes {}
-  declare class types$dataTypes__counter mixins types$dataTypes {}
-  declare class types$dataTypes__decimal mixins types$dataTypes {}
-  declare class types$dataTypes__double mixins types$dataTypes {}
-  declare class types$dataTypes__float mixins types$dataTypes {}
-  declare class types$dataTypes__int mixins types$dataTypes {}
-  declare class types$dataTypes__text mixins types$dataTypes {}
-  declare class types$dataTypes__timestamp mixins types$dataTypes {}
-  declare class types$dataTypes__uuid mixins types$dataTypes {}
-  declare class types$dataTypes__varchar mixins types$dataTypes {}
-  declare class types$dataTypes__varint mixins types$dataTypes {}
-  declare class types$dataTypes__timeuuid mixins types$dataTypes {}
-  declare class types$dataTypes__inet mixins types$dataTypes {}
-  declare class types$dataTypes__date mixins types$dataTypes {}
-  declare class types$dataTypes__time mixins types$dataTypes {}
-  declare class types$dataTypes__smallint mixins types$dataTypes {}
-  declare class types$dataTypes__tinyint mixins types$dataTypes {}
-  declare class types$dataTypes__list mixins types$dataTypes {}
-  declare class types$dataTypes__map mixins types$dataTypes {}
-  declare class types$dataTypes__set mixins types$dataTypes {}
-  declare class types$dataTypes__udt mixins types$dataTypes {}
-  declare class types$dataTypes__tuple mixins types$dataTypes {}
-
-  declare class types$distance {
-    constructor(...args: empty): mixed;
-    static +local: Class<types$distance__local> & types$distance__local & 0; // 0
-    static +remote: Class<types$distance__remote> & types$distance__remote & 1; // 1
-    static +ignored: Class<types$distance__ignored> &
-      types$distance__ignored &
-      2; // 2
-  }
-
-  declare class types$distance__local mixins types$distance {}
-  declare class types$distance__remote mixins types$distance {}
-  declare class types$distance__ignored mixins types$distance {}
+  declare var types$distance: {|
+    +local: 0, // 0
+    +remote: 1, // 1
+    +ignored: 2 // 2
+  |};
 
   declare interface types$responseErrorCodes {
     [key: string]: number;
   }
 
   declare interface types$unset {
-    types$unset: boolean;
+    unset: boolean;
   }
 
   declare function types$generateTimestamp(
@@ -685,7 +601,7 @@ declare module "cassandra-driver" {
     getDate(): Date,
     getNodeId(): Buffer,
     getNodeIdString(): string
-  } & types$Uuid;
+  } & Uuid;
 
   declare interface types$TupleStatic {
     new(...args: any[]): types$Tuple;
@@ -710,7 +626,7 @@ declare module "cassandra-driver" {
   declare interface types$Uuid {
     buffer: Buffer;
     getBuffer(): Buffer;
-    equals(other: types$types$Uuid): boolean;
+    equals(other: types$Uuid): boolean;
     toString(): string;
     inspect(): string;
     toJSON(): string;
@@ -729,12 +645,12 @@ declare module "cassandra-driver" {
     rePrepareOnUp?: boolean;
     maxPrepared?: number;
     policies?: {
-      loadBalancing?: policies$loadBalancing.loadBalancing$LoadBalancingPolicy,
-      retry?: policies$retry.retry$RetryPolicy,
-      reconnection?: policies$reconnection.reconnection$ReconnectionPolicy,
-      addressResolution?: policies$addressResolution.addressResolution$AddressTranslator,
-      speculativeExecution?: policies$speculativeExecution.speculativeExecution$SpeculativeExecutionPolicy,
-      timestampGeneration?: policies$timestampGeneration.timestampGeneration$TimestampGenerator
+      loadBalancing?: policies$loadBalancingLoadBalancingPolicy,
+      retry?: policies$retryRetryPolicy,
+      reconnection?: policies$reconnectionReconnectionPolicy,
+      addressResolution?: policies$addressResolutionAddressTranslator,
+      speculativeExecution?: policies$speculativeExecutionSpeculativeExecutionPolicy,
+      timestampGeneration?: policies$timestampGenerationTimestampGenerator
     };
     queryOptions?: QueryOptions;
     pooling?: {
@@ -760,8 +676,8 @@ declare module "cassandra-driver" {
       tcpNoDelay?: boolean,
       coalescingThreshold?: number
     };
-    authProvider?: auth$auth$AuthProvider;
-    requestTracker?: tracker$tracker$RequestTracker;
+    authProvider?: auth$AuthProvider;
+    requestTracker?: tracker$RequestTracker;
     sslOptions?: tls.ConnectionOptions;
     encoding?: {
       map?: typeof Map | ((...args: any[]) => any),
@@ -775,7 +691,7 @@ declare module "cassandra-driver" {
     promiseFactory?: (
       handler: (callback: (err?: any, result?: any) => void) => void
     ) => Promise<any>;
-    metrics?: metrics$metrics$ClientMetrics;
+    metrics?: metrics$ClientMetrics;
   }
   declare export interface QueryOptions {
     autoPage?: boolean;
@@ -792,7 +708,7 @@ declare module "cassandra-driver" {
     pageState?: Buffer | string;
     prepare?: boolean;
     readTimeout?: number;
-    retry?: policies$retry.retry$RetryPolicy;
+    retry?: policies$retryRetryPolicy;
     routingIndexes?: number[];
     routingKey?: Buffer | Buffer[];
     routingNames?: string[];
@@ -807,8 +723,8 @@ declare module "cassandra-driver" {
   declare export type Client = {
     hosts: HostMap,
     keyspace: string,
-    metadata: metadata$metadata$Metadata,
-    metrics: metrics$metrics$ClientMetrics,
+    metadata: metadata$Metadata,
+    metrics: metrics$ClientMetrics,
     batch(
       queries:
         | string[]
@@ -836,7 +752,7 @@ declare module "cassandra-driver" {
             params?: any
           }>,
       options?: QueryOptions
-    ): Promise<types$types$ResultSet>,
+    ): Promise<types$ResultSet>,
     connect(callback: Callback): void,
     connect(): Promise<void>,
     eachRow(
@@ -858,9 +774,9 @@ declare module "cassandra-driver" {
       query: string,
       params?: any,
       options?: QueryOptions
-    ): Promise<types$types$ResultSet>,
+    ): Promise<types$ResultSet>,
     getReplicas(keyspace: string, token: Buffer): any[],
-    getState(): metadata$metadata$ClientState,
+    getState(): metadata$ClientState,
     shutdown(callback?: Callback): void,
     shutdown(): Promise<void>,
     stream(
@@ -924,10 +840,10 @@ declare module "cassandra-driver" {
   }
   declare export interface ExecutionProfileOptions {
     consistency: number;
-    loadBalancing: policies$loadBalancing.loadBalancing$LoadBalancingPolicy;
+    loadBalancing: policies$loadBalancingLoadBalancingPolicy;
     name: string;
     readTimeout: number;
-    retry: policies$retry.retry$RetryPolicy;
+    retry: policies$retryRetryPolicy;
     serialConsistency: number;
   }
   declare export interface ExecutionProfileStatic {
@@ -963,45 +879,56 @@ declare module "cassandra-driver" {
 
   declare type auth$PlainTextAuthProvider = {
     newAuthenticator(endpoint: string, name: string): void
-  } & auth$AuthProvider;
+  } & AuthProvider;
 
+  declare var npm$namespace$errors: {
+    DriverError: typeof errors$DriverError,
+    ArgumentError: typeof errors$ArgumentError,
+    AuthenticationError: typeof errors$AuthenticationError,
+    DriverInternalError: typeof errors$DriverInternalError,
+    NoHostAvailableError: typeof errors$NoHostAvailableError,
+    NotSupportedError: typeof errors$NotSupportedError,
+    OperationTimedOutError: typeof errors$OperationTimedOutError,
+    ResponseError: typeof errors$ResponseError,
+    BusyConnectionError: typeof errors$BusyConnectionError
+  };
   declare class errors$DriverError mixins Error {
     constructor(message: string, constructor?: any): this;
     info: string;
   }
 
-  declare class errors$ArgumentError mixins errors$DriverError {
+  declare class errors$ArgumentError mixins DriverError {
     constructor(message: string): this;
   }
 
-  declare class errors$AuthenticationError mixins errors$DriverError {
+  declare class errors$AuthenticationError mixins DriverError {
     constructor(message: string): this;
   }
 
-  declare class errors$DriverInternalError mixins errors$DriverError {
+  declare class errors$DriverInternalError mixins DriverError {
     constructor(message: string): this;
   }
 
-  declare class errors$NoHostAvailableError mixins errors$DriverError {
+  declare class errors$NoHostAvailableError mixins DriverError {
     constructor(innerErrors: any, message?: string): this;
     innerErrors: any;
   }
 
-  declare class errors$NotSupportedError mixins errors$DriverError {
+  declare class errors$NotSupportedError mixins DriverError {
     constructor(message: string): this;
   }
 
-  declare class errors$OperationTimedOutError mixins errors$DriverError {
+  declare class errors$OperationTimedOutError mixins DriverError {
     constructor(message: string, host?: string): this;
     host: string;
   }
 
-  declare class errors$ResponseError mixins errors$DriverError {
+  declare class errors$ResponseError mixins DriverError {
     constructor(code: number, message: string): this;
     code: number;
   }
 
-  declare class errors$BusyConnectionError mixins errors$DriverError {
+  declare class errors$BusyConnectionError mixins DriverError {
     constructor(
       address: string,
       maxRequestsPerConnection: number,
@@ -1015,7 +942,8 @@ declare module "cassandra-driver" {
     MaterializedView: typeof metadata$MaterializedView,
     Metadata: typeof metadata$Metadata,
     SchemaFunction: typeof metadata$SchemaFunction,
-    TableMetadata: typeof metadata$TableMetadata
+    TableMetadata: typeof metadata$TableMetadata,
+    IndexType: typeof metadata$IndexType
   };
   declare var metadata$Aggregate: metadata$AggregateStatic;
 
@@ -1076,7 +1004,7 @@ declare module "cassandra-driver" {
 
   declare interface metadata$DataCollection {
     bloomFilterFalsePositiveChance: number;
-    metadata$caching: metadata$caching;
+    caching: metadata$caching;
     clusterKeys: Array<{
       c: metadata$ColumnInfo,
       index: number,
@@ -1108,22 +1036,11 @@ declare module "cassandra-driver" {
     speculateRetry: string;
   }
 
-  declare class metadata$IndexType {
-    constructor(...args: empty): mixed;
-    static +custom: Class<metadata$IndexType__custom> &
-      metadata$IndexType__custom &
-      0; // 0
-    static +keys: Class<metadata$IndexType__keys> &
-      metadata$IndexType__keys &
-      1; // 1
-    static +composites: Class<metadata$IndexType__composites> &
-      metadata$IndexType__composites &
-      2; // 2
-  }
-
-  declare class metadata$IndexType__custom mixins metadata$IndexType {}
-  declare class metadata$IndexType__keys mixins metadata$IndexType {}
-  declare class metadata$IndexType__composites mixins metadata$IndexType {}
+  declare var metadata$IndexType: {|
+    +custom: 0, // 0
+    +keys: 1, // 1
+    +composites: 2 // 2
+  |};
 
   declare interface metadata$IndexStatic {
     new(
@@ -1132,9 +1049,9 @@ declare module "cassandra-driver" {
       kind: string | metadata$IndexType,
       options: { [key: string]: any }
     ): metadata$Index;
-    fromRows(indexRows: types$types$Row[]): metadata$Index[];
+    fromRows(indexRows: types$Row[]): metadata$Index[];
     fromColumnRows(
-      columnRows: types$types$Row[],
+      columnRows: types$Row[],
       columnsByName: {
         [key: string]: metadata$ColumnInfo
       }
@@ -1155,7 +1072,7 @@ declare module "cassandra-driver" {
     new(name: string): metadata$MaterializedView;
   }
 
-  declare type metadata$MaterializedView = {} & metadata$DataCollection;
+  declare type metadata$MaterializedView = {} & DataCollection;
 
   declare interface metadata$MetadataStatic {
     new(options: ClientOptions, controlConnection: any): metadata$Metadata;
@@ -1194,7 +1111,7 @@ declare module "cassandra-driver" {
     ): void;
     getReplicas(keyspaceName: string, tokenBuffer: Buffer): any[];
     getTable(keyspaceName: string, name: string, callback: Callback): void;
-    getTrace(traceId: types$types$Uuid, callback: Callback): void;
+    getTrace(traceId: types$Uuid, callback: Callback): void;
     getUdt(keyspaceName: string, name: string, callback: Callback): void;
     refreshKeyspace(name: string, callback?: Callback): void;
     refreshKeyspaces(callback?: Callback): void;
@@ -1231,14 +1148,14 @@ declare module "cassandra-driver" {
     replicateOnWrite: boolean,
     cdc?: boolean,
     virtual: boolean
-  } & metadata$DataCollection;
+  } & DataCollection;
 
   declare export interface ExecutionOptionsStatic {
     new(): ExecutionOptions;
   }
   declare export interface ExecutionOptions {
     getCaptureStackTrace(): boolean;
-    getConsistency(): types$types$consistencies;
+    getConsistency(): types$consistencies;
     getCustomPayload(): {
       [key: string]: any
     };
@@ -1252,13 +1169,13 @@ declare module "cassandra-driver" {
     isPrepared(): boolean;
     isQueryTracing(): boolean;
     getKeyspace(): string;
-    getLoadBalancingPolicy(): policies$loadBalancing.loadBalancing$LoadBalancingPolicy;
+    getLoadBalancingPolicy(): policies$loadBalancingLoadBalancingPolicy;
     getPageState(): Buffer;
     getRawQueryOptions(): QueryOptions;
     getReadTimeout(): number;
-    getRetryPolicy(): policies$retry.retry$RetryPolicy;
+    getRetryPolicy(): policies$retryRetryPolicy;
     getRoutingKey(): Buffer | Buffer[];
-    getSerialConsistency(): types$types$consistencies;
+    getSerialConsistency(): types$consistencies;
     getTimestamp(): number | types$Long | void | null;
     setHints(hints: string[]): void;
   }
@@ -1485,10 +1402,10 @@ declare module "cassandra-driver" {
 
   declare interface mapping$ResultStatic {
     new(
-      rs: types$types$ResultSet,
+      rs: types$ResultSet,
       info: mapping$ModelMappingInfo,
       rowAdapter: (
-        row: types$types$Row,
+        row: types$Row,
         info: mapping$ModelMappingInfo
       ) => {
         [key: string]: any
@@ -1530,13 +1447,13 @@ declare module "cassandra-driver" {
     new(): mapping$DefaultTableMappings;
   }
 
-  declare type mapping$DefaultTableMappings = {} & mapping$TableMappings;
+  declare type mapping$DefaultTableMappings = {} & TableMappings;
 
   declare interface mapping$UnderscoreCqlToCamelCaseMappingsStatic {
     new(): mapping$UnderscoreCqlToCamelCaseMappings;
   }
 
-  declare type mapping$UnderscoreCqlToCamelCaseMappings = {} & mapping$TableMappings;
+  declare type mapping$UnderscoreCqlToCamelCaseMappings = {} & TableMappings;
 
   declare var npm$namespace$tracker: {
     RequestLogger: typeof tracker$RequestLogger
@@ -1598,7 +1515,7 @@ declare module "cassandra-driver" {
     new(options: tracker$RequestLoggerOptions): tracker$RequestLogger;
   }
 
-  declare type tracker$RequestLogger = {} & tracker$RequestTracker;
+  declare type tracker$RequestLogger = {} & RequestTracker;
 
   declare var npm$namespace$metrics: {
     DefaultMetrics: typeof metrics$DefaultMetrics
@@ -1606,21 +1523,21 @@ declare module "cassandra-driver" {
   declare var metrics$DefaultMetrics: metrics$DefaultMetricsStatic;
 
   declare interface metrics$ClientMetrics {
-    onAuthenticationError(e: Error | errors$errors$AuthenticationError): void;
-    onClientTimeoutError(e: errors$errors$OperationTimedOutError): void;
+    onAuthenticationError(e: Error | errors$AuthenticationError): void;
+    onClientTimeoutError(e: errors$OperationTimedOutError): void;
     onClientTimeoutRetry(e: Error): void;
     onConnectionError(e: Error): void;
     onIgnoreError(e: Error): void;
     onOtherError(e: Error): void;
     onOtherErrorRetry(e: Error): void;
-    onReadTimeoutError(e: errors$errors$ResponseError): void;
+    onReadTimeoutError(e: errors$ResponseError): void;
     onReadTimeoutRetry(e: Error): void;
     onResponse(latency: number[]): void;
     onSpeculativeExecution(): void;
     onSuccessfulResponse(latency: number[]): void;
-    onUnavailableError(e: errors$errors$ResponseError): void;
+    onUnavailableError(e: errors$ResponseError): void;
     onUnavailableRetry(e: Error): void;
-    onWriteTimeoutError(e: errors$errors$ResponseError): void;
+    onWriteTimeoutError(e: errors$ResponseError): void;
     onWriteTimeoutRetry(e: Error): void;
   }
 
@@ -1628,5 +1545,5 @@ declare module "cassandra-driver" {
     new(): metrics$DefaultMetrics;
   }
 
-  declare type metrics$DefaultMetrics = {} & metrics$ClientMetrics;
+  declare type metrics$DefaultMetrics = {} & ClientMetrics;
 }
