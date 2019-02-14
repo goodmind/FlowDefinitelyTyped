@@ -13,5 +13,5 @@ declare module "req-cwd" {
    */
   declare function reqCwd$silent(moduleId: string): any;
 
-  declare module.exports: typeof reqCwd;
+  declare export default typeof reqCwd;
 }
