@@ -1,19 +1,21 @@
 declare module "servicenow" {
-  declare var email: servicenow$servicenow$GlideEmailOutbound;
-  declare var g_processor: servicenow$servicenow$GlideScriptedProcessor;
-  declare var g_request: servicenow$servicenow$GlideServletRequest;
-  declare var g_response: servicenow$servicenow$GlideServletResponse;
-  declare var gs: servicenow$servicenow$GlideSystem;
-  declare var GlideRecordSecure: servicenow$servicenow$GlideRecord;
-  declare var servicenow$GlideRecord: servicenow$servicenow$GlideRecord;
+  declare var email: servicenow$GlideEmailOutbound;
+  declare var g_processor: servicenow$GlideScriptedProcessor;
+  declare var g_request: servicenow$GlideServletRequest;
+  declare var g_response: servicenow$GlideServletResponse;
+  declare var gs: servicenow$GlideSystem;
+  declare var GlideRecordSecure: servicenow$GlideRecord;
+  declare var servicenow$GlideRecord: servicenow$GlideRecord;
+
+  declare var npm$namespace$sn_ws: {
+    RESTMessageV2: typeof sn_ws$RESTMessageV2,
+    SOAPMessageV2: typeof sn_ws$SOAPMessageV2
+  };
   declare class sn_ws$RESTMessageV2 {
     constructor(): this;
-    constructor(
-      name: string,
-      methodName: servicenow$servicenow$RestHTTPMethods
-    ): this;
-    execute(): servicenow$servicenow$RESTResponseV2;
-    executeAsync(): servicenow$servicenow$RESTResponseV2;
+    constructor(name: string, methodName: servicenow$RestHTTPMethods): this;
+    execute(): servicenow$RESTResponseV2;
+    executeAsync(): servicenow$RESTResponseV2;
     getEndpoint(): string;
     getRequestBody(): string;
     getRequestHeader(headerName: string): string;
@@ -29,7 +31,7 @@ declare module "servicenow" {
     setEccCorrelator(correlator: string): void;
     setEccParameter(name: string, value: string): void;
     setEndpoint(endpoint: string): void;
-    setHttpMethod(method: servicenow$servicenow$RestHTTPMethods): void;
+    setHttpMethod(method: servicenow$RestHTTPMethods): void;
     setHttpTimeout(timeoutMs: number): void;
     setLogLevel(level: "basic" | "elevated" | "all"): void;
     setMIDServer(midServer: string): void;
@@ -47,8 +49,8 @@ declare module "servicenow" {
   declare class sn_ws$SOAPMessageV2 {
     constructor(): this;
     constructor(soapMessage: string, soapFunction: string): this;
-    execute(): servicenow$servicenow$SOAPResponseV2;
-    executeAsync(): servicenow$servicenow$SOAPResponseV2;
+    execute(): servicenow$SOAPResponseV2;
+    executeAsync(): servicenow$SOAPResponseV2;
     setHttpMethod(method: string): void;
     setHttpTimeout(timeoutMs: number): void;
     setBasicAuth(userName: string, userPass: string): void;
@@ -75,7 +77,9 @@ declare module "servicenow" {
 
   declare var npm$namespace$global: {
     GlideStringUtil: typeof global$GlideStringUtil,
-    Class: typeof global$Class
+    Class: typeof global$Class,
+
+    Workflow: typeof global$Workflow
   };
   declare var global$GlideStringUtil: {
     base64Decode(value: string): string,
@@ -91,55 +95,48 @@ declare module "servicenow" {
   declare class global$Workflow {
     constructor(): this;
     broadcastEvent(contextId: string, eventName: string): void;
-    cancel(record: servicenow$servicenow$GlideRecord): void;
-    cancelContext(context: servicenow$servicenow$GlideRecord): void;
-    deleteWorkflow(current: servicenow$servicenow$GlideRecord): void;
-    fireEvent(
-      eventRecord: servicenow$servicenow$GlideRecord,
-      eventName: string
-    ): void;
+    cancel(record: servicenow$GlideRecord): void;
+    cancelContext(context: servicenow$GlideRecord): void;
+    deleteWorkflow(current: servicenow$GlideRecord): void;
+    fireEvent(eventRecord: servicenow$GlideRecord, eventName: string): void;
     fireEventById(eventRecordId: string, eventName: string): void;
-    getContexts(
-      record: servicenow$servicenow$GlideRecord
-    ): servicenow$servicenow$GlideRecord;
+    getContexts(record: servicenow$GlideRecord): servicenow$GlideRecord;
     getEstimatedDeliveryTime(workflowId: string): string;
     getEstimatedDeliveryTimeFromWFVersion(
-      wfVersion: servicenow$servicenow$GlideRecord
+      wfVersion: servicenow$GlideRecord
     ): string;
     getReturnValue(workflowID: string, amount: number, result: boolean): {};
-    getRunningFlows(
-      record: servicenow$servicenow$GlideRecord
-    ): servicenow$servicenow$GlideRecord;
+    getRunningFlows(record: servicenow$GlideRecord): servicenow$GlideRecord;
     getVersion(workflowId: string): void;
     getVersionFromName(workflowName: string): void;
     getWorkflowFromName(workflowName: string): void;
-    hasWorkflow(record: servicenow$servicenow$GlideRecord): boolean;
+    hasWorkflow(record: servicenow$GlideRecord): boolean;
     restartWorkflow(
-      record: servicenow$servicenow$GlideRecord,
+      record: servicenow$GlideRecord,
       maintainStateFlag: boolean
     ): void;
     runFlows(
-      record: servicenow$servicenow$GlideRecord,
-      operation: servicenow$servicenow$GlideRecordOperation
+      record: servicenow$GlideRecord,
+      operation: servicenow$GlideRecordOperation
     ): void;
     startFlow(
       workflowId: string,
-      current: servicenow$servicenow$GlideRecord | null,
-      operation: servicenow$servicenow$GlideRecordOperation,
+      current: servicenow$GlideRecord | null,
+      operation: servicenow$GlideRecordOperation,
       vars?: { [key: string]: any }
     ): string;
     startFlowFromContextInsert(
-      context: servicenow$servicenow$GlideRecord,
-      operation: servicenow$servicenow$GlideRecordOperation
+      context: servicenow$GlideRecord,
+      operation: servicenow$GlideRecordOperation
     ): void;
     startFlowRetroactive(
       workflowID: string,
       retroactiveMSecs: number,
-      current: servicenow$servicenow$GlideRecord,
-      operation: servicenow$servicenow$GlideRecordOperation,
+      current: servicenow$GlideRecord,
+      operation: servicenow$GlideRecordOperation,
       vars?: { [key: string]: any },
       withSchedule?: any
-    ): servicenow$servicenow$GlideRecord;
+    ): servicenow$GlideRecord;
   }
   declare class GlideTime {
     constructor(milliseconds: number): this;
@@ -218,18 +215,15 @@ declare module "servicenow" {
   };
   declare class XMLDocument2 {
     constructor(): this;
-    createElement(name: string): servicenow$servicenow$XMLNode;
-    createElementWithTextValue(
-      name: string,
-      value: string
-    ): servicenow$servicenow$XMLNode;
-    getDocumentElement(): servicenow$servicenow$XMLNode;
-    getFirstNode(xpath: string): servicenow$servicenow$XMLNode;
-    getNextNode(prev: { [key: string]: any }): servicenow$servicenow$XMLNode;
-    getNode(xpath: string): servicenow$servicenow$XMLNode;
+    createElement(name: string): servicenow$XMLNode;
+    createElementWithTextValue(name: string, value: string): servicenow$XMLNode;
+    getDocumentElement(): servicenow$XMLNode;
+    getFirstNode(xpath: string): servicenow$XMLNode;
+    getNextNode(prev: { [key: string]: any }): servicenow$XMLNode;
+    getNode(xpath: string): servicenow$XMLNode;
     getNodeText(xpath: string): string;
     parseXML(xmlDoc: string): void;
-    setCurrentElement(element: servicenow$servicenow$XMLNode): void;
+    setCurrentElement(element: servicenow$XMLNode): void;
     toString(): string;
   }
   declare class GlideDuration {
@@ -248,7 +242,7 @@ declare module "servicenow" {
   }
   declare var GlideFilter: {
     checkRecord(
-      gr: servicenow$servicenow$GlideRecord,
+      gr: servicenow$GlideRecord,
       filter: string,
       matchAll?: { [key: string]: any }
     ): boolean
@@ -279,7 +273,7 @@ declare module "servicenow" {
   declare class GlideEvaluator {
     constructor(): this;
     evaluateScript(
-      grObj: servicenow$servicenow$GlideRecord,
+      grObj: servicenow$GlideRecord,
       scriptField?: string,
       variables?: { [key: string]: any }
     ): { [key: string]: any };
@@ -301,23 +295,23 @@ declare module "servicenow" {
       destinationSysId: string
     ): void;
     deleteAttachment(sysId: string): void;
-    getContent(record: servicenow$servicenow$GlideRecord): any;
-    getContentBase64(record: servicenow$servicenow$GlideRecord): string;
+    getContent(record: servicenow$GlideRecord): any;
+    getContentBase64(record: servicenow$GlideRecord): string;
     getContentStream(sysId: string): { [key: string]: any };
     write(
-      record: servicenow$servicenow$GlideRecord,
+      record: servicenow$GlideRecord,
       fileName: string,
       contentType: string,
       data: any
     ): string;
     writeBase64(
-      record: servicenow$servicenow$GlideRecord,
+      record: servicenow$GlideRecord,
       fileName: string,
       contentType: string,
       base64Content: string
     ): string;
     writeContentStream(
-      record: servicenow$servicenow$GlideRecord,
+      record: servicenow$GlideRecord,
       fileName: string,
       contentType: string,
       inputStream: { [key: string]: any }
