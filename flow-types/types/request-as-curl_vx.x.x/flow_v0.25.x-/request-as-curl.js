@@ -6,7 +6,7 @@ declare module "request-as-curl" {
     RequiredUriUrl
   } from "request";
 
-  declare module.exports: typeof request_as_curl;
+  declare export default typeof request_as_curl;
 
   declare function request_as_curl(
     request: RequestAPI<Request, CoreOptions, RequiredUriUrl>,
