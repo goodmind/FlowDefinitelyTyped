@@ -1,5 +1,5 @@
 declare module "tableify" {
-  declare module.exports: typeof tableify;
+  declare export default typeof tableify;
 
   declare function tableify<T: Record<string, any>>(
     obj: T | $ReadOnlyArray<T>,
