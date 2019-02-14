@@ -1,4 +1,7 @@
 declare module "leaflet" {
+  declare var npm$namespace$Control: {
+    Fullscreen: typeof Control$Fullscreen
+  };
   declare class Control$Fullscreen mixins Control {
     constructor(options?: Control$FullscreenOptions): this;
     options: Control$FullscreenOptions;
@@ -22,8 +25,8 @@ declare module "leaflet" {
    * Creates a fullscreen control.
    */
   declare function control$fullscreen(
-    options?: Control$Control$FullscreenOptions
-  ): Control$Control$Fullscreen;
+    options?: Control$FullscreenOptions
+  ): Control$Fullscreen;
 }
 declare module "leaflet.fullscreen" {
   import typeof * as L from "leaflet";
