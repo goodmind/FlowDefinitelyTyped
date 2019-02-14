@@ -15,5 +15,5 @@ declare module "jsesc" {
     indent?: string;
     json?: boolean;
   }
-  declare module.exports: typeof jsesc;
+  declare export default typeof jsesc;
 }
