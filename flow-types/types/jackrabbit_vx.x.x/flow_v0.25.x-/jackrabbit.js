@@ -2,7 +2,9 @@ declare module "jackrabbit" {
   import type { Connection, Options, Message } from "amqplib";
 
   declare var npm$namespace$jackrabbit: {
-    jackrabbit: typeof jackrabbit$jackrabbit
+    jackrabbit: typeof jackrabbit$jackrabbit,
+
+    exchangeType: typeof jackrabbit$exchangeType
   };
   declare function jackrabbit$jackrabbit(url: string): jackrabbit$JackRabbit;
 
@@ -18,24 +20,11 @@ declare module "jackrabbit" {
     }
   } & NodeJS.EventEmitter;
 
-  declare class jackrabbit$exchangeType {
-    constructor(...args: empty): mixed;
-    static +direct: Class<jackrabbit$exchangeType__direct> &
-      jackrabbit$exchangeType__direct &
-      "direct"; // "direct"
-    static +fanout: Class<jackrabbit$exchangeType__fanout> &
-      jackrabbit$exchangeType__fanout &
-      "fanout"; // "fanout"
-    static +topic: Class<jackrabbit$exchangeType__topic> &
-      jackrabbit$exchangeType__topic &
-      "topic"; // "topic"
-  }
-
-  declare class jackrabbit$exchangeType__direct
-    mixins jackrabbit$exchangeType {}
-  declare class jackrabbit$exchangeType__fanout
-    mixins jackrabbit$exchangeType {}
-  declare class jackrabbit$exchangeType__topic mixins jackrabbit$exchangeType {}
+  declare var jackrabbit$exchangeType: {|
+    +direct: "direct", // "direct"
+    +fanout: "fanout", // "fanout"
+    +topic: "topic" // "topic"
+  |};
 
   declare type jackrabbit$Exchange = {
     name: string,
@@ -80,5 +69,5 @@ declare module "jackrabbit" {
     purge(done: any): void
   } & NodeJS.EventEmitter;
 
-  declare export default typeof jackrabbit$jackrabbit$jackrabbit;
+  declare export default typeof jackrabbit$jackrabbit;
 }
