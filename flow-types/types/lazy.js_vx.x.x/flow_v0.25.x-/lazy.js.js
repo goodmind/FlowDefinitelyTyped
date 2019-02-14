@@ -1,3 +1,9 @@
+declare var npm$namespace$LazyJS: {
+  Sequence: typeof npm$namespace$LazyJS$Sequence,
+  ArrayLikeSequence: typeof npm$namespace$LazyJS$ArrayLikeSequence,
+  ObjectLikeSequence: typeof npm$namespace$LazyJS$ObjectLikeSequence,
+  StringLikeSequence: typeof npm$namespace$LazyJS$StringLikeSequence
+};
 declare interface LazyJS$LazyStatic {
   (value: string): LazyJS$StringLikeSequence;
   <T>(value: T[]): LazyJS$ArrayLikeSequence<T>;
@@ -82,11 +88,11 @@ declare type LazyJS$GeneratedSequence<T> = {
     length: number
   ): LazyJS$GeneratedSequence<T>,
   length(): number
-} & LazyJS$Sequence<T>;
+} & Sequence<T>;
 
 declare type LazyJS$AsyncSequence<T> = {
   each(callback: LazyJS$ValueCallback<T>): LazyJS$AsyncHandle<T>
-} & LazyJS$SequenceBase<T>;
+} & SequenceBase<T>;
 
 declare interface LazyJS$AsyncHandle<T> {
   cancel(): void;
@@ -94,17 +100,17 @@ declare interface LazyJS$AsyncHandle<T> {
   onError(callback: LazyJS$ErrorCallback): void;
 }
 
-declare var npm$namespace$Sequence: {
-  define: typeof Sequence$define
+declare var npm$namespace$LazyJS$Sequence: {
+  define: typeof LazyJS$Sequence$define
 };
-declare function Sequence$define(
+declare function LazyJS$Sequence$define(
   methodName: string[],
   overrides: any
 ): Function;
 
 declare type LazyJS$Sequence<T> = {
   each(eachFn: LazyJS$ValueCallback<T>): LazyJS$Sequence<T>
-} & LazyJS$SequenceBase<T>;
+} & SequenceBase<T>;
 
 declare type LazyJS$SequenceBase<T> = {
   first(): any,
@@ -114,7 +120,7 @@ declare type LazyJS$SequenceBase<T> = {
   last(count: number): LazyJS$Sequence<T>,
   lastIndexOf(value: any): number,
   reverse(): LazyJS$Sequence<T>
-} & LazyJS$SequenceBaser<T>;
+} & SequenceBaser<T>;
 
 declare interface LazyJS$SequenceBaser<T> {
   async(interval: number): LazyJS$AsyncSequence<T>;
@@ -179,10 +185,10 @@ declare interface LazyJS$SequenceBaser<T> {
   zip(var_args: T[]): LazyJS$Sequence<T>;
 }
 
-declare var npm$namespace$ArrayLikeSequence: {
-  define: typeof ArrayLikeSequence$define
+declare var npm$namespace$LazyJS$ArrayLikeSequence: {
+  define: typeof LazyJS$ArrayLikeSequence$define
 };
-declare function ArrayLikeSequence$define(
+declare function LazyJS$ArrayLikeSequence$define(
   methodName: string[],
   overrides: any
 ): Function;
@@ -209,12 +215,12 @@ declare type LazyJS$ArrayLikeSequence<T> = {
   reject(predicateFn: LazyJS$TestCallback<T, number>): LazyJS$Sequence<T>,
   some(predicateFn?: LazyJS$TestCallback<T, number>): boolean,
   takeWhile(predicateFn: LazyJS$TestCallback<T, number>): LazyJS$Sequence<T>
-} & LazyJS$Sequence<T>;
+} & Sequence<T>;
 
-declare var npm$namespace$ObjectLikeSequence: {
-  define: typeof ObjectLikeSequence$define
+declare var npm$namespace$LazyJS$ObjectLikeSequence: {
+  define: typeof LazyJS$ObjectLikeSequence$define
 };
-declare function ObjectLikeSequence$define(
+declare function LazyJS$ObjectLikeSequence$define(
   methodName: string[],
   overrides: any
 ): Function;
@@ -250,12 +256,12 @@ declare type LazyJS$ObjectLikeSequence<T> = {
   reject(predicateFn: LazyJS$TestCallback<T, string>): LazyJS$Sequence<T>,
   some(predicateFn?: LazyJS$TestCallback<T, string>): boolean,
   takeWhile(predicateFn: LazyJS$TestCallback<T, string>): LazyJS$Sequence<T>
-} & LazyJS$Sequence<T>;
+} & Sequence<T>;
 
-declare var npm$namespace$StringLikeSequence: {
-  define: typeof StringLikeSequence$define
+declare var npm$namespace$LazyJS$StringLikeSequence: {
+  define: typeof LazyJS$StringLikeSequence$define
 };
-declare function StringLikeSequence$define(
+declare function LazyJS$StringLikeSequence$define(
   methodName: string[],
   overrides: any
 ): Function;
@@ -296,8 +302,8 @@ declare type LazyJS$StringLikeSequence = {
   takeWhile(
     predicateFn: LazyJS$TestCallback<string, number>
   ): LazyJS$Sequence<string>
-} & LazyJS$SequenceBaser<string>;
-declare var Lazy: LazyJS$LazyJS$LazyStatic;
+} & SequenceBaser<string>;
+declare var Lazy: LazyJS$LazyStatic;
 declare module "lazy.js" {
-  declare module.exports: typeof Lazy;
+  declare export default typeof Lazy;
 }
