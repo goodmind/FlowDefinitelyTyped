@@ -1,35 +1,39 @@
 declare module "gapi.client.analytics" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    data: typeof client$data,
-    management: typeof client$management,
-    metadata: typeof client$metadata,
-    provisioning: typeof client$provisioning
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    data: typeof gapi$client$data,
+    management: typeof gapi$client$management,
+    metadata: typeof gapi$client$metadata,
+    provisioning: typeof gapi$client$provisioning
   };
 
   /**
    * Load Google Analytics API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "analytics",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "analytics",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$data: analytics$analytics$DataResource;
+  declare var gapi$client$data: analytics$DataResource;
 
-  declare var client$management: analytics$analytics$ManagementResource;
+  declare var gapi$client$management: analytics$ManagementResource;
 
-  declare var client$metadata: analytics$analytics$MetadataResource;
+  declare var gapi$client$metadata: analytics$MetadataResource;
 
-  declare var client$provisioning: analytics$analytics$ProvisioningResource;
+  declare var gapi$client$provisioning: analytics$ProvisioningResource;
 
-  declare interface analytics$Account {
+  declare interface gapi$client$analytics$Account {
     /**
      * Child link for an account entry. Points to the list of web properties for this account.
      */
@@ -91,7 +95,7 @@ declare module "gapi.client.analytics" {
     updated?: string;
   }
 
-  declare interface analytics$AccountRef {
+  declare interface gapi$client$analytics$AccountRef {
     /**
      * Link for this account.
      */
@@ -113,7 +117,7 @@ declare module "gapi.client.analytics" {
     name?: string;
   }
 
-  declare interface analytics$AccountSummaries {
+  declare interface gapi$client$analytics$AccountSummaries {
     /**
      * A list of AccountSummaries.
      */
@@ -156,7 +160,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$AccountSummary {
+  declare interface gapi$client$analytics$AccountSummary {
     /**
      * Account ID.
      */
@@ -183,11 +187,11 @@ declare module "gapi.client.analytics" {
     webProperties?: analytics$WebPropertySummary[];
   }
 
-  declare interface analytics$AccountTicket {
+  declare interface gapi$client$analytics$AccountTicket {
     /**
      * Account for this ticket.
      */
-    account?: analytics$Account;
+    account?: gapi$client$analytics$Account;
 
     /**
      * Account ticket ID used to access the account ticket.
@@ -215,11 +219,11 @@ declare module "gapi.client.analytics" {
     webproperty?: analytics$Webproperty;
   }
 
-  declare interface analytics$Accounts {
+  declare interface gapi$client$analytics$Accounts {
     /**
      * A list of accounts.
      */
-    items?: analytics$Account[];
+    items?: gapi$client$analytics$Account[];
 
     /**
      * The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -258,7 +262,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$AdWordsAccount {
+  declare interface gapi$client$analytics$AdWordsAccount {
     /**
      * True if auto-tagging is enabled on the AdWords account. Read-only after the insert operation.
      */
@@ -275,14 +279,14 @@ declare module "gapi.client.analytics" {
     kind?: string;
   }
 
-  declare interface analytics$AnalyticsDataimportDeleteUploadDataRequest {
+  declare interface gapi$client$analytics$AnalyticsDataimportDeleteUploadDataRequest {
     /**
      * A list of upload UIDs.
      */
     customDataImportUids?: string[];
   }
 
-  declare interface analytics$Column {
+  declare interface gapi$client$analytics$Column {
     /**
      * Map of attribute name and value for this column.
      */
@@ -299,7 +303,7 @@ declare module "gapi.client.analytics" {
     kind?: string;
   }
 
-  declare interface analytics$Columns {
+  declare interface gapi$client$analytics$Columns {
     /**
      * List of attributes names returned by columns.
      */
@@ -313,7 +317,7 @@ declare module "gapi.client.analytics" {
     /**
      * List of columns for a report type.
      */
-    items?: analytics$Column[];
+    items?: gapi$client$analytics$Column[];
 
     /**
      * Collection type.
@@ -326,7 +330,7 @@ declare module "gapi.client.analytics" {
     totalResults?: number;
   }
 
-  declare interface analytics$CustomDataSource {
+  declare interface gapi$client$analytics$CustomDataSource {
     /**
      * Account ID to which this custom data source belongs.
      */
@@ -420,11 +424,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$CustomDataSources {
+  declare interface gapi$client$analytics$CustomDataSources {
     /**
      * Collection of custom data sources.
      */
-    items?: analytics$CustomDataSource[];
+    items?: gapi$client$analytics$CustomDataSource[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -463,7 +467,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$CustomDimension {
+  declare interface gapi$client$analytics$CustomDimension {
     /**
      * Account ID.
      */
@@ -535,11 +539,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$CustomDimensions {
+  declare interface gapi$client$analytics$CustomDimensions {
     /**
      * Collection of custom dimensions.
      */
-    items?: analytics$CustomDimension[];
+    items?: gapi$client$analytics$CustomDimension[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -578,7 +582,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$CustomMetric {
+  declare interface gapi$client$analytics$CustomMetric {
     /**
      * Account ID.
      */
@@ -665,11 +669,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$CustomMetrics {
+  declare interface gapi$client$analytics$CustomMetrics {
     /**
      * Collection of custom metrics.
      */
-    items?: analytics$CustomMetric[];
+    items?: gapi$client$analytics$CustomMetric[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -708,11 +712,11 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$EntityAdWordsLink {
+  declare interface gapi$client$analytics$EntityAdWordsLink {
     /**
      * A list of AdWords client accounts. These cannot be MCC accounts. This field is required when creating an AdWords link. It cannot be empty.
      */
-    adWordsAccounts?: analytics$AdWordsAccount[];
+    adWordsAccounts?: gapi$client$analytics$AdWordsAccount[];
 
     /**
      * Web property being linked.
@@ -747,11 +751,11 @@ declare module "gapi.client.analytics" {
     selfLink?: string;
   }
 
-  declare interface analytics$EntityAdWordsLinks {
+  declare interface gapi$client$analytics$EntityAdWordsLinks {
     /**
      * A list of entity AdWords links.
      */
-    items?: analytics$EntityAdWordsLink[];
+    items?: gapi$client$analytics$EntityAdWordsLink[];
 
     /**
      * The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -785,7 +789,7 @@ declare module "gapi.client.analytics" {
     totalResults?: number;
   }
 
-  declare interface analytics$EntityUserLink {
+  declare interface gapi$client$analytics$EntityUserLink {
     /**
      * Entity for this link. It can be an account, a web property, or a view (profile).
      */
@@ -793,7 +797,7 @@ declare module "gapi.client.analytics" {
       /**
        * Account for this link.
        */
-      accountRef?: analytics$AccountRef,
+      accountRef?: gapi$client$analytics$AccountRef,
 
       /**
        * View (Profile) for this link.
@@ -843,11 +847,11 @@ declare module "gapi.client.analytics" {
     userRef?: analytics$UserRef;
   }
 
-  declare interface analytics$EntityUserLinks {
+  declare interface gapi$client$analytics$EntityUserLinks {
     /**
      * A list of entity user links.
      */
-    items?: analytics$EntityUserLink[];
+    items?: gapi$client$analytics$EntityUserLink[];
 
     /**
      * The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -881,7 +885,7 @@ declare module "gapi.client.analytics" {
     totalResults?: number;
   }
 
-  declare interface analytics$Experiment {
+  declare interface gapi$client$analytics$Experiment {
     /**
      * Account ID to which this experiment belongs. This field is read-only.
      */
@@ -1079,11 +1083,11 @@ declare module "gapi.client.analytics" {
     winnerFound?: boolean;
   }
 
-  declare interface analytics$Experiments {
+  declare interface gapi$client$analytics$Experiments {
     /**
      * A list of experiments.
      */
-    items?: analytics$Experiment[];
+    items?: gapi$client$analytics$Experiment[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -1122,7 +1126,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$Filter {
+  declare interface gapi$client$analytics$Filter {
     /**
      * Account ID to which this filter belongs.
      */
@@ -1319,7 +1323,7 @@ declare module "gapi.client.analytics" {
     };
   }
 
-  declare interface analytics$FilterExpression {
+  declare interface gapi$client$analytics$FilterExpression {
     /**
      * Determines if the filter is case sensitive.
      */
@@ -1438,7 +1442,7 @@ declare module "gapi.client.analytics" {
     matchType?: string;
   }
 
-  declare interface analytics$FilterRef {
+  declare interface gapi$client$analytics$FilterRef {
     /**
      * Account ID to which this filter belongs.
      */
@@ -1465,11 +1469,11 @@ declare module "gapi.client.analytics" {
     name?: string;
   }
 
-  declare interface analytics$Filters {
+  declare interface gapi$client$analytics$Filters {
     /**
      * A list of filters.
      */
-    items?: analytics$Filter[];
+    items?: gapi$client$analytics$Filter[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with
@@ -1508,7 +1512,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$GaData {
+  declare interface gapi$client$analytics$GaData {
     /**
      * Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
      */
@@ -1706,7 +1710,7 @@ declare module "gapi.client.analytics" {
     totalsForAllResults?: Record<string, string>;
   }
 
-  declare interface analytics$Goal {
+  declare interface gapi$client$analytics$Goal {
     /**
      * Account ID to which this goal belongs.
      */
@@ -1903,11 +1907,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$Goals {
+  declare interface gapi$client$analytics$Goals {
     /**
      * A list of goals.
      */
-    items?: analytics$Goal[];
+    items?: gapi$client$analytics$Goal[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -1946,7 +1950,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$IncludeConditions {
+  declare interface gapi$client$analytics$IncludeConditions {
     /**
      * The look-back window lets you specify a time frame for evaluating the behavior that qualifies users for your audience. For example, if your filters
      * include users from Central Asia, and Transactions Greater than 2, and you set the look-back window to 14 days, then any user from Central Asia whose
@@ -1975,7 +1979,7 @@ declare module "gapi.client.analytics" {
     segment?: string;
   }
 
-  declare interface analytics$LinkedForeignAccount {
+  declare interface gapi$client$analytics$LinkedForeignAccount {
     /**
      * Account ID to which this linked foreign account belongs.
      */
@@ -2027,7 +2031,7 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$McfData {
+  declare interface gapi$client$analytics$McfData {
     /**
      * Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
      */
@@ -2229,7 +2233,7 @@ declare module "gapi.client.analytics" {
     totalsForAllResults?: Record<string, string>;
   }
 
-  declare interface analytics$Profile {
+  declare interface gapi$client$analytics$Profile {
     /**
      * Account ID to which this view (profile) belongs.
      */
@@ -2389,11 +2393,11 @@ declare module "gapi.client.analytics" {
     websiteUrl?: string;
   }
 
-  declare interface analytics$ProfileFilterLink {
+  declare interface gapi$client$analytics$ProfileFilterLink {
     /**
      * Filter for this link.
      */
-    filterRef?: analytics$FilterRef;
+    filterRef?: gapi$client$analytics$FilterRef;
 
     /**
      * Profile filter link ID.
@@ -2426,11 +2430,11 @@ declare module "gapi.client.analytics" {
     selfLink?: string;
   }
 
-  declare interface analytics$ProfileFilterLinks {
+  declare interface gapi$client$analytics$ProfileFilterLinks {
     /**
      * A list of profile filter links.
      */
-    items?: analytics$ProfileFilterLink[];
+    items?: gapi$client$analytics$ProfileFilterLink[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with
@@ -2469,7 +2473,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$ProfileRef {
+  declare interface gapi$client$analytics$ProfileRef {
     /**
      * Account ID to which this view (profile) belongs.
      */
@@ -2506,7 +2510,7 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$ProfileSummary {
+  declare interface gapi$client$analytics$ProfileSummary {
     /**
      * View (profile) ID.
      */
@@ -2533,11 +2537,11 @@ declare module "gapi.client.analytics" {
     type?: string;
   }
 
-  declare interface analytics$Profiles {
+  declare interface gapi$client$analytics$Profiles {
     /**
      * A list of views (profiles).
      */
-    items?: analytics$Profile[];
+    items?: gapi$client$analytics$Profile[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -2576,7 +2580,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$RealtimeData {
+  declare interface gapi$client$analytics$RealtimeData {
     /**
      * Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.
      */
@@ -2701,7 +2705,7 @@ declare module "gapi.client.analytics" {
     totalsForAllResults?: Record<string, string>;
   }
 
-  declare interface analytics$RemarketingAudience {
+  declare interface gapi$client$analytics$RemarketingAudience {
     /**
      * Account ID to which this remarketing audience belongs.
      */
@@ -2714,7 +2718,7 @@ declare module "gapi.client.analytics" {
       /**
        * Defines the conditions to include users to the audience.
        */
-      includeConditions?: analytics$IncludeConditions
+      includeConditions?: gapi$client$analytics$IncludeConditions
     };
 
     /**
@@ -2750,7 +2754,7 @@ declare module "gapi.client.analytics" {
     /**
      * The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently.
      */
-    linkedAdAccounts?: analytics$LinkedForeignAccount[];
+    linkedAdAccounts?: gapi$client$analytics$LinkedForeignAccount[];
 
     /**
      * The views (profiles) that this remarketing audience is linked to.
@@ -2784,7 +2788,7 @@ declare module "gapi.client.analytics" {
       /**
        * Defines the conditions to include users to the audience.
        */
-      includeConditions?: analytics$IncludeConditions
+      includeConditions?: gapi$client$analytics$IncludeConditions
     };
 
     /**
@@ -2798,11 +2802,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$RemarketingAudiences {
+  declare interface gapi$client$analytics$RemarketingAudiences {
     /**
      * A list of remarketing audiences.
      */
-    items?: analytics$RemarketingAudience[];
+    items?: gapi$client$analytics$RemarketingAudience[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -2841,7 +2845,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$Segment {
+  declare interface gapi$client$analytics$Segment {
     /**
      * Time the segment was created.
      */
@@ -2888,11 +2892,11 @@ declare module "gapi.client.analytics" {
     updated?: string;
   }
 
-  declare interface analytics$Segments {
+  declare interface gapi$client$analytics$Segments {
     /**
      * A list of segments.
      */
-    items?: analytics$Segment[];
+    items?: gapi$client$analytics$Segment[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -2931,7 +2935,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$UnsampledReport {
+  declare interface gapi$client$analytics$UnsampledReport {
     /**
      * Account ID to which this unsampled report belongs.
      */
@@ -3044,11 +3048,11 @@ declare module "gapi.client.analytics" {
     webPropertyId?: string;
   }
 
-  declare interface analytics$UnsampledReports {
+  declare interface gapi$client$analytics$UnsampledReports {
     /**
      * A list of unsampled reports.
      */
-    items?: analytics$UnsampledReport[];
+    items?: gapi$client$analytics$UnsampledReport[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -3087,7 +3091,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$Upload {
+  declare interface gapi$client$analytics$Upload {
     /**
      * Account Id to which this upload belongs.
      */
@@ -3124,11 +3128,11 @@ declare module "gapi.client.analytics" {
     uploadTime?: string;
   }
 
-  declare interface analytics$Uploads {
+  declare interface gapi$client$analytics$Uploads {
     /**
      * A list of uploads.
      */
-    items?: analytics$Upload[];
+    items?: gapi$client$analytics$Upload[];
 
     /**
      * The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -3162,7 +3166,7 @@ declare module "gapi.client.analytics" {
     totalResults?: number;
   }
 
-  declare interface analytics$UserRef {
+  declare interface gapi$client$analytics$UserRef {
     /**
      * Email ID of this user.
      */
@@ -3175,7 +3179,7 @@ declare module "gapi.client.analytics" {
     kind?: string;
   }
 
-  declare interface analytics$WebPropertyRef {
+  declare interface gapi$client$analytics$WebPropertyRef {
     /**
      * Account ID to which this web property belongs.
      */
@@ -3207,7 +3211,7 @@ declare module "gapi.client.analytics" {
     name?: string;
   }
 
-  declare interface analytics$WebPropertySummary {
+  declare interface gapi$client$analytics$WebPropertySummary {
     /**
      * Web property ID of the form UA-XXXXX-YY.
      */
@@ -3236,7 +3240,7 @@ declare module "gapi.client.analytics" {
     /**
      * List of profiles under this web property.
      */
-    profiles?: analytics$ProfileSummary[];
+    profiles?: gapi$client$analytics$ProfileSummary[];
 
     /**
      * Indicates whether this web property is starred or not.
@@ -3249,7 +3253,7 @@ declare module "gapi.client.analytics" {
     websiteUrl?: string;
   }
 
-  declare interface analytics$Webproperties {
+  declare interface gapi$client$analytics$Webproperties {
     /**
      * A list of web properties.
      */
@@ -3292,7 +3296,7 @@ declare module "gapi.client.analytics" {
     username?: string;
   }
 
-  declare interface analytics$Webproperty {
+  declare interface gapi$client$analytics$Webproperty {
     /**
      * Account ID to which this web property belongs.
      */
@@ -3405,7 +3409,7 @@ declare module "gapi.client.analytics" {
     websiteUrl?: string;
   }
 
-  declare interface analytics$GaResource {
+  declare interface gapi$client$analytics$GaResource {
     /**
      * Returns Analytics data for a view (profile).
      */
@@ -3512,10 +3516,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$GaData>;
+    }): Request<gapi$client$analytics$GaData>;
   }
 
-  declare interface analytics$McfResource {
+  declare interface gapi$client$analytics$McfResource {
     /**
      * Returns Analytics Multi-Channel Funnels data for a view (profile).
      */
@@ -3607,10 +3611,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$McfData>;
+    }): Request<gapi$client$analytics$McfData>;
   }
 
-  declare interface analytics$RealtimeResource {
+  declare interface gapi$client$analytics$RealtimeResource {
     /**
      * Returns real time data for a view (profile).
      */
@@ -3680,16 +3684,16 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$RealtimeData>;
+    }): Request<gapi$client$analytics$RealtimeData>;
   }
 
-  declare interface analytics$DataResource {
-    ga: analytics$GaResource;
-    mcf: analytics$McfResource;
-    realtime: analytics$RealtimeResource;
+  declare interface gapi$client$analytics$DataResource {
+    ga: gapi$client$analytics$GaResource;
+    mcf: gapi$client$analytics$McfResource;
+    realtime: gapi$client$analytics$RealtimeResource;
   }
 
-  declare interface analytics$AccountSummariesResource {
+  declare interface gapi$client$analytics$AccountSummariesResource {
     /**
      * Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user has access.
      */
@@ -3739,10 +3743,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$AccountSummaries>;
+    }): Request<gapi$client$analytics$AccountSummaries>;
   }
 
-  declare interface analytics$AccountUserLinksResource {
+  declare interface gapi$client$analytics$AccountUserLinksResource {
     /**
      * Removes a user from the given account.
      */
@@ -3838,7 +3842,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
 
     /**
      * Lists account-user links for a given account.
@@ -3894,7 +3898,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$EntityUserLinks>;
+    }): Request<gapi$client$analytics$EntityUserLinks>;
 
     /**
      * Updates permissions for an existing user on the given account.
@@ -3945,10 +3949,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
   }
 
-  declare interface analytics$AccountsResource {
+  declare interface gapi$client$analytics$AccountsResource {
     /**
      * Lists all accounts to which the user has access.
      */
@@ -3998,10 +4002,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Accounts>;
+    }): Request<gapi$client$analytics$Accounts>;
   }
 
-  declare interface analytics$CustomDataSourcesResource {
+  declare interface gapi$client$analytics$CustomDataSourcesResource {
     /**
      * List custom data sources to which the user has access.
      */
@@ -4061,10 +4065,10 @@ declare module "gapi.client.analytics" {
        * Web property Id for the custom data sources to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDataSources>;
+    }): Request<gapi$client$analytics$CustomDataSources>;
   }
 
-  declare interface analytics$CustomDimensionsResource {
+  declare interface gapi$client$analytics$CustomDimensionsResource {
     /**
      * Get a custom dimension to which the user has access.
      */
@@ -4119,7 +4123,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimension to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDimension>;
+    }): Request<gapi$client$analytics$CustomDimension>;
 
     /**
      * Create a new custom dimension.
@@ -4170,7 +4174,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimension to create.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDimension>;
+    }): Request<gapi$client$analytics$CustomDimension>;
 
     /**
      * Lists custom dimensions to which the user has access.
@@ -4231,7 +4235,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimensions to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDimensions>;
+    }): Request<gapi$client$analytics$CustomDimensions>;
 
     /**
      * Updates an existing custom dimension. This method supports patch semantics.
@@ -4292,7 +4296,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimension to update.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDimension>;
+    }): Request<gapi$client$analytics$CustomDimension>;
 
     /**
      * Updates an existing custom dimension.
@@ -4353,10 +4357,10 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimension to update.
        */
       webPropertyId: string
-    }): Request<analytics$CustomDimension>;
+    }): Request<gapi$client$analytics$CustomDimension>;
   }
 
-  declare interface analytics$CustomMetricsResource {
+  declare interface gapi$client$analytics$CustomMetricsResource {
     /**
      * Get a custom metric to which the user has access.
      */
@@ -4411,7 +4415,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom metric to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$CustomMetric>;
+    }): Request<gapi$client$analytics$CustomMetric>;
 
     /**
      * Create a new custom metric.
@@ -4462,7 +4466,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom dimension to create.
        */
       webPropertyId: string
-    }): Request<analytics$CustomMetric>;
+    }): Request<gapi$client$analytics$CustomMetric>;
 
     /**
      * Lists custom metrics to which the user has access.
@@ -4523,7 +4527,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom metrics to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$CustomMetrics>;
+    }): Request<gapi$client$analytics$CustomMetrics>;
 
     /**
      * Updates an existing custom metric. This method supports patch semantics.
@@ -4584,7 +4588,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom metric to update.
        */
       webPropertyId: string
-    }): Request<analytics$CustomMetric>;
+    }): Request<gapi$client$analytics$CustomMetric>;
 
     /**
      * Updates an existing custom metric.
@@ -4645,10 +4649,10 @@ declare module "gapi.client.analytics" {
        * Web property ID for the custom metric to update.
        */
       webPropertyId: string
-    }): Request<analytics$CustomMetric>;
+    }): Request<gapi$client$analytics$CustomMetric>;
   }
 
-  declare interface analytics$ExperimentsResource {
+  declare interface gapi$client$analytics$ExperimentsResource {
     /**
      * Delete an experiment.
      */
@@ -4769,7 +4773,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the experiment for.
        */
       webPropertyId: string
-    }): Request<analytics$Experiment>;
+    }): Request<gapi$client$analytics$Experiment>;
 
     /**
      * Create a new experiment.
@@ -4825,7 +4829,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to create the experiment for.
        */
       webPropertyId: string
-    }): Request<analytics$Experiment>;
+    }): Request<gapi$client$analytics$Experiment>;
 
     /**
      * Lists experiments to which the user has access.
@@ -4891,7 +4895,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve experiments for.
        */
       webPropertyId: string
-    }): Request<analytics$Experiments>;
+    }): Request<gapi$client$analytics$Experiments>;
 
     /**
      * Update an existing experiment. This method supports patch semantics.
@@ -4952,7 +4956,7 @@ declare module "gapi.client.analytics" {
        * Web property ID of the experiment to update.
        */
       webPropertyId: string
-    }): Request<analytics$Experiment>;
+    }): Request<gapi$client$analytics$Experiment>;
 
     /**
      * Update an existing experiment.
@@ -5013,10 +5017,10 @@ declare module "gapi.client.analytics" {
        * Web property ID of the experiment to update.
        */
       webPropertyId: string
-    }): Request<analytics$Experiment>;
+    }): Request<gapi$client$analytics$Experiment>;
   }
 
-  declare interface analytics$FiltersResource {
+  declare interface gapi$client$analytics$FiltersResource {
     /**
      * Delete a filter.
      */
@@ -5066,7 +5070,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filter>;
+    }): Request<gapi$client$analytics$Filter>;
 
     /**
      * Returns a filters to which the user has access.
@@ -5117,7 +5121,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filter>;
+    }): Request<gapi$client$analytics$Filter>;
 
     /**
      * Create a new filter.
@@ -5163,7 +5167,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filter>;
+    }): Request<gapi$client$analytics$Filter>;
 
     /**
      * Lists all filters for an account
@@ -5219,7 +5223,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filters>;
+    }): Request<gapi$client$analytics$Filters>;
 
     /**
      * Updates an existing filter. This method supports patch semantics.
@@ -5270,7 +5274,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filter>;
+    }): Request<gapi$client$analytics$Filter>;
 
     /**
      * Updates an existing filter.
@@ -5321,10 +5325,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Filter>;
+    }): Request<gapi$client$analytics$Filter>;
   }
 
-  declare interface analytics$GoalsResource {
+  declare interface gapi$client$analytics$GoalsResource {
     /**
      * Gets a goal to which the user has access.
      */
@@ -5384,7 +5388,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the goal for.
        */
       webPropertyId: string
-    }): Request<analytics$Goal>;
+    }): Request<gapi$client$analytics$Goal>;
 
     /**
      * Create a new goal.
@@ -5440,7 +5444,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to create the goal for.
        */
       webPropertyId: string
-    }): Request<analytics$Goal>;
+    }): Request<gapi$client$analytics$Goal>;
 
     /**
      * Lists goals to which the user has access.
@@ -5508,7 +5512,7 @@ declare module "gapi.client.analytics" {
        * to.
        */
       webPropertyId: string
-    }): Request<analytics$Goals>;
+    }): Request<gapi$client$analytics$Goals>;
 
     /**
      * Updates an existing goal. This method supports patch semantics.
@@ -5569,7 +5573,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to update the goal.
        */
       webPropertyId: string
-    }): Request<analytics$Goal>;
+    }): Request<gapi$client$analytics$Goal>;
 
     /**
      * Updates an existing goal.
@@ -5630,10 +5634,10 @@ declare module "gapi.client.analytics" {
        * Web property ID to update the goal.
        */
       webPropertyId: string
-    }): Request<analytics$Goal>;
+    }): Request<gapi$client$analytics$Goal>;
   }
 
-  declare interface analytics$ProfileFilterLinksResource {
+  declare interface gapi$client$analytics$ProfileFilterLinksResource {
     /**
      * Delete a profile filter link.
      */
@@ -5754,7 +5758,7 @@ declare module "gapi.client.analytics" {
        * Web property Id to retrieve profile filter link for.
        */
       webPropertyId: string
-    }): Request<analytics$ProfileFilterLink>;
+    }): Request<gapi$client$analytics$ProfileFilterLink>;
 
     /**
      * Create a new profile filter link.
@@ -5810,7 +5814,7 @@ declare module "gapi.client.analytics" {
        * Web property Id to create profile filter link for.
        */
       webPropertyId: string
-    }): Request<analytics$ProfileFilterLink>;
+    }): Request<gapi$client$analytics$ProfileFilterLink>;
 
     /**
      * Lists all profile filter links for a profile.
@@ -5877,7 +5881,7 @@ declare module "gapi.client.analytics" {
        * access to.
        */
       webPropertyId: string
-    }): Request<analytics$ProfileFilterLinks>;
+    }): Request<gapi$client$analytics$ProfileFilterLinks>;
 
     /**
      * Update an existing profile filter link. This method supports patch semantics.
@@ -5938,7 +5942,7 @@ declare module "gapi.client.analytics" {
        * Web property Id to which profile filter link belongs
        */
       webPropertyId: string
-    }): Request<analytics$ProfileFilterLink>;
+    }): Request<gapi$client$analytics$ProfileFilterLink>;
 
     /**
      * Update an existing profile filter link.
@@ -5999,10 +6003,10 @@ declare module "gapi.client.analytics" {
        * Web property Id to which profile filter link belongs
        */
       webPropertyId: string
-    }): Request<analytics$ProfileFilterLink>;
+    }): Request<gapi$client$analytics$ProfileFilterLink>;
   }
 
-  declare interface analytics$ProfileUserLinksResource {
+  declare interface gapi$client$analytics$ProfileUserLinksResource {
     /**
      * Removes a user from the given view (profile).
      */
@@ -6118,7 +6122,7 @@ declare module "gapi.client.analytics" {
        * Web Property ID to create the user link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
 
     /**
      * Lists profile-user links for a given view (profile).
@@ -6186,7 +6190,7 @@ declare module "gapi.client.analytics" {
        * that user has access to.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLinks>;
+    }): Request<gapi$client$analytics$EntityUserLinks>;
 
     /**
      * Updates permissions for an existing user on the given view (profile).
@@ -6247,10 +6251,10 @@ declare module "gapi.client.analytics" {
        * Web Property ID to update the user link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
   }
 
-  declare interface analytics$ProfilesResource {
+  declare interface gapi$client$analytics$ProfilesResource {
     /**
      * Deletes a view (profile).
      */
@@ -6361,7 +6365,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the view (profile) for.
        */
       webPropertyId: string
-    }): Request<analytics$Profile>;
+    }): Request<gapi$client$analytics$Profile>;
 
     /**
      * Create a new view (profile).
@@ -6412,7 +6416,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to create the view (profile) for.
        */
       webPropertyId: string
-    }): Request<analytics$Profile>;
+    }): Request<gapi$client$analytics$Profile>;
 
     /**
      * Lists views (profiles) to which the user has access.
@@ -6475,7 +6479,7 @@ declare module "gapi.client.analytics" {
        * which the user has access.
        */
       webPropertyId: string
-    }): Request<analytics$Profiles>;
+    }): Request<gapi$client$analytics$Profiles>;
 
     /**
      * Updates an existing view (profile). This method supports patch semantics.
@@ -6531,7 +6535,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to which the view (profile) belongs
        */
       webPropertyId: string
-    }): Request<analytics$Profile>;
+    }): Request<gapi$client$analytics$Profile>;
 
     /**
      * Updates an existing view (profile).
@@ -6587,10 +6591,10 @@ declare module "gapi.client.analytics" {
        * Web property ID to which the view (profile) belongs
        */
       webPropertyId: string
-    }): Request<analytics$Profile>;
+    }): Request<gapi$client$analytics$Profile>;
   }
 
-  declare interface analytics$RemarketingAudienceResource {
+  declare interface gapi$client$analytics$RemarketingAudienceResource {
     /**
      * Delete a remarketing audience.
      */
@@ -6701,7 +6705,7 @@ declare module "gapi.client.analytics" {
        * The web property ID of the remarketing audience to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$RemarketingAudience>;
+    }): Request<gapi$client$analytics$RemarketingAudience>;
 
     /**
      * Creates a new remarketing audience.
@@ -6752,7 +6756,7 @@ declare module "gapi.client.analytics" {
        * Web property ID for which to create the remarketing audience.
        */
       webPropertyId: string
-    }): Request<analytics$RemarketingAudience>;
+    }): Request<gapi$client$analytics$RemarketingAudience>;
 
     /**
      * Lists remarketing audiences to which the user has access.
@@ -6814,7 +6818,7 @@ declare module "gapi.client.analytics" {
        * The web property ID of the remarketing audiences to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$RemarketingAudiences>;
+    }): Request<gapi$client$analytics$RemarketingAudiences>;
 
     /**
      * Updates an existing remarketing audience. This method supports patch semantics.
@@ -6870,7 +6874,7 @@ declare module "gapi.client.analytics" {
        * The web property ID of the remarketing audience to update.
        */
       webPropertyId: string
-    }): Request<analytics$RemarketingAudience>;
+    }): Request<gapi$client$analytics$RemarketingAudience>;
 
     /**
      * Updates an existing remarketing audience.
@@ -6926,10 +6930,10 @@ declare module "gapi.client.analytics" {
        * The web property ID of the remarketing audience to update.
        */
       webPropertyId: string
-    }): Request<analytics$RemarketingAudience>;
+    }): Request<gapi$client$analytics$RemarketingAudience>;
   }
 
-  declare interface analytics$SegmentsResource {
+  declare interface gapi$client$analytics$SegmentsResource {
     /**
      * Lists segments to which the user has access.
      */
@@ -6979,10 +6983,10 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Segments>;
+    }): Request<gapi$client$analytics$Segments>;
   }
 
-  declare interface analytics$UnsampledReportsResource {
+  declare interface gapi$client$analytics$UnsampledReportsResource {
     /**
      * Deletes an unsampled report.
      */
@@ -7103,7 +7107,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve unsampled reports for.
        */
       webPropertyId: string
-    }): Request<analytics$UnsampledReport>;
+    }): Request<gapi$client$analytics$UnsampledReport>;
 
     /**
      * Create a new unsampled report.
@@ -7159,7 +7163,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to create the unsampled report for.
        */
       webPropertyId: string
-    }): Request<analytics$UnsampledReport>;
+    }): Request<gapi$client$analytics$UnsampledReport>;
 
     /**
      * Lists unsampled reports to which the user has access.
@@ -7225,10 +7229,10 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported.
        */
       webPropertyId: string
-    }): Request<analytics$UnsampledReports>;
+    }): Request<gapi$client$analytics$UnsampledReports>;
   }
 
-  declare interface analytics$UploadsResource {
+  declare interface gapi$client$analytics$UploadsResource {
     /**
      * Delete data associated with a previous upload.
      */
@@ -7344,7 +7348,7 @@ declare module "gapi.client.analytics" {
        * Web property Id for the upload to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$Upload>;
+    }): Request<gapi$client$analytics$Upload>;
 
     /**
      * List uploads to which the user has access.
@@ -7410,7 +7414,7 @@ declare module "gapi.client.analytics" {
        * Web property Id for the uploads to retrieve.
        */
       webPropertyId: string
-    }): Request<analytics$Uploads>;
+    }): Request<gapi$client$analytics$Uploads>;
 
     /**
      * Upload data for a custom data source.
@@ -7466,10 +7470,10 @@ declare module "gapi.client.analytics" {
        * Web property UA-string associated with the upload.
        */
       webPropertyId: string
-    }): Request<analytics$Upload>;
+    }): Request<gapi$client$analytics$Upload>;
   }
 
-  declare interface analytics$WebPropertyAdWordsLinksResource {
+  declare interface gapi$client$analytics$WebPropertyAdWordsLinksResource {
     /**
      * Deletes a web property-AdWords link.
      */
@@ -7580,7 +7584,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the AdWords link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityAdWordsLink>;
+    }): Request<gapi$client$analytics$EntityAdWordsLink>;
 
     /**
      * Creates a webProperty-AdWords link.
@@ -7631,7 +7635,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to create the link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityAdWordsLink>;
+    }): Request<gapi$client$analytics$EntityAdWordsLink>;
 
     /**
      * Lists webProperty-AdWords links for a given web property.
@@ -7692,7 +7696,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the AdWords links for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityAdWordsLinks>;
+    }): Request<gapi$client$analytics$EntityAdWordsLinks>;
 
     /**
      * Updates an existing webProperty-AdWords link. This method supports patch semantics.
@@ -7748,7 +7752,7 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the AdWords link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityAdWordsLink>;
+    }): Request<gapi$client$analytics$EntityAdWordsLink>;
 
     /**
      * Updates an existing webProperty-AdWords link.
@@ -7804,10 +7808,10 @@ declare module "gapi.client.analytics" {
        * Web property ID to retrieve the AdWords link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityAdWordsLink>;
+    }): Request<gapi$client$analytics$EntityAdWordsLink>;
   }
 
-  declare interface analytics$WebpropertiesResource {
+  declare interface gapi$client$analytics$WebpropertiesResource {
     /**
      * Gets a web property to which the user has access.
      */
@@ -7857,7 +7861,7 @@ declare module "gapi.client.analytics" {
        * ID to retrieve the web property for.
        */
       webPropertyId: string
-    }): Request<analytics$Webproperty>;
+    }): Request<gapi$client$analytics$Webproperty>;
 
     /**
      * Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at
@@ -7904,7 +7908,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Webproperty>;
+    }): Request<gapi$client$analytics$Webproperty>;
 
     /**
      * Lists web properties to which the user has access.
@@ -7960,7 +7964,7 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Webproperties>;
+    }): Request<gapi$client$analytics$Webproperties>;
 
     /**
      * Updates an existing web property. This method supports patch semantics.
@@ -8011,7 +8015,7 @@ declare module "gapi.client.analytics" {
        * Web property ID
        */
       webPropertyId: string
-    }): Request<analytics$Webproperty>;
+    }): Request<gapi$client$analytics$Webproperty>;
 
     /**
      * Updates an existing web property.
@@ -8062,10 +8066,10 @@ declare module "gapi.client.analytics" {
        * Web property ID
        */
       webPropertyId: string
-    }): Request<analytics$Webproperty>;
+    }): Request<gapi$client$analytics$Webproperty>;
   }
 
-  declare interface analytics$WebpropertyUserLinksResource {
+  declare interface gapi$client$analytics$WebpropertyUserLinksResource {
     /**
      * Removes a user from the given web property.
      */
@@ -8171,7 +8175,7 @@ declare module "gapi.client.analytics" {
        * Web Property ID to create the user link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
 
     /**
      * Lists webProperty-user links for a given web property.
@@ -8233,7 +8237,7 @@ declare module "gapi.client.analytics" {
        * that user has access to.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLinks>;
+    }): Request<gapi$client$analytics$EntityUserLinks>;
 
     /**
      * Updates permissions for an existing user on the given web property.
@@ -8289,32 +8293,32 @@ declare module "gapi.client.analytics" {
        * Web property ID to update the account-user link for.
        */
       webPropertyId: string
-    }): Request<analytics$EntityUserLink>;
+    }): Request<gapi$client$analytics$EntityUserLink>;
   }
 
-  declare interface analytics$ManagementResource {
-    accountSummaries: analytics$AccountSummariesResource;
-    accountUserLinks: analytics$AccountUserLinksResource;
-    accounts: analytics$AccountsResource;
-    customDataSources: analytics$CustomDataSourcesResource;
-    customDimensions: analytics$CustomDimensionsResource;
-    customMetrics: analytics$CustomMetricsResource;
-    experiments: analytics$ExperimentsResource;
-    filters: analytics$FiltersResource;
-    goals: analytics$GoalsResource;
-    profileFilterLinks: analytics$ProfileFilterLinksResource;
-    profileUserLinks: analytics$ProfileUserLinksResource;
-    profiles: analytics$ProfilesResource;
-    remarketingAudience: analytics$RemarketingAudienceResource;
-    segments: analytics$SegmentsResource;
-    unsampledReports: analytics$UnsampledReportsResource;
-    uploads: analytics$UploadsResource;
-    webPropertyAdWordsLinks: analytics$WebPropertyAdWordsLinksResource;
-    webproperties: analytics$WebpropertiesResource;
-    webpropertyUserLinks: analytics$WebpropertyUserLinksResource;
+  declare interface gapi$client$analytics$ManagementResource {
+    accountSummaries: gapi$client$analytics$AccountSummariesResource;
+    accountUserLinks: gapi$client$analytics$AccountUserLinksResource;
+    accounts: gapi$client$analytics$AccountsResource;
+    customDataSources: gapi$client$analytics$CustomDataSourcesResource;
+    customDimensions: gapi$client$analytics$CustomDimensionsResource;
+    customMetrics: gapi$client$analytics$CustomMetricsResource;
+    experiments: gapi$client$analytics$ExperimentsResource;
+    filters: gapi$client$analytics$FiltersResource;
+    goals: gapi$client$analytics$GoalsResource;
+    profileFilterLinks: gapi$client$analytics$ProfileFilterLinksResource;
+    profileUserLinks: gapi$client$analytics$ProfileUserLinksResource;
+    profiles: gapi$client$analytics$ProfilesResource;
+    remarketingAudience: gapi$client$analytics$RemarketingAudienceResource;
+    segments: gapi$client$analytics$SegmentsResource;
+    unsampledReports: gapi$client$analytics$UnsampledReportsResource;
+    uploads: gapi$client$analytics$UploadsResource;
+    webPropertyAdWordsLinks: gapi$client$analytics$WebPropertyAdWordsLinksResource;
+    webproperties: gapi$client$analytics$WebpropertiesResource;
+    webpropertyUserLinks: gapi$client$analytics$WebpropertyUserLinksResource;
   }
 
-  declare interface analytics$ColumnsResource {
+  declare interface gapi$client$analytics$ColumnsResource {
     /**
      * Lists all columns for a report type
      */
@@ -8359,14 +8363,14 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$Columns>;
+    }): Request<gapi$client$analytics$Columns>;
   }
 
-  declare interface analytics$MetadataResource {
-    columns: analytics$ColumnsResource;
+  declare interface gapi$client$analytics$MetadataResource {
+    columns: gapi$client$analytics$ColumnsResource;
   }
 
-  declare interface analytics$ProvisioningResource {
+  declare interface gapi$client$analytics$ProvisioningResource {
     /**
      * Creates an account ticket.
      */
@@ -8406,6 +8410,6 @@ declare module "gapi.client.analytics" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<analytics$AccountTicket>;
+    }): Request<gapi$client$analytics$AccountTicket>;
   }
 }
