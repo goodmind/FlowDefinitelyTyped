@@ -12,5 +12,5 @@ declare module "mkpath" {
     callback?: (err?: any) => void
   ): void;
 
-  declare module.exports: typeof mkpath;
+  declare export default typeof mkpath;
 }
