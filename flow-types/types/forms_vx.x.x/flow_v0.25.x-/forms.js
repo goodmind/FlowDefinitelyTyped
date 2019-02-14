@@ -10,12 +10,12 @@ declare module "forms" {
     /**
      * Optional label text which overrides the default.
      */
-    widgets$label?: string;
+    label?: string;
 
     /**
      * Boolean describing whether the field is mandatory.
      */
-    validators$required?: boolean | ValidatorFunction;
+    required?: boolean | ValidatorFunction;
 
     /**
      * An array of functions which validate the field data.
@@ -42,7 +42,7 @@ declare module "forms" {
      */
     cssClasses?: {
       field?: string[],
-      widgets$label?: string[]
+      label?: string[]
     };
 
     /**
@@ -195,7 +195,7 @@ declare module "forms" {
     handle: (
       req: {
         method: string,
-        validators$url: string,
+        url: string,
         body: string
       },
       callbacks: {
@@ -342,19 +342,19 @@ declare module "forms" {
   ): ValidatorFunction;
 
   declare function validators$range(
-    validators$min: number,
-    validators$max: number,
+    min: number,
+    max: number,
     errorMessage?: string
   ): ValidatorFunction;
 
   declare function validators$rangelength(
-    validators$min: number,
-    validators$max: number,
+    min: number,
+    max: number,
     errorMessage?: string
   ): ValidatorFunction;
 
   declare function validators$regexp(
-    validators$regexp: RegExp,
+    regexp: RegExp,
     errorMessage?: string
   ): ValidatorFunction;
 
