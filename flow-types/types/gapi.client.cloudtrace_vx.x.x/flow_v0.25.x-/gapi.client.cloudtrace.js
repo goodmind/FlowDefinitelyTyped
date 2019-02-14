@@ -1,26 +1,30 @@
 declare module "gapi.client.cloudtrace" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Stackdriver Trace API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudtrace",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudtrace",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$projects: cloudtrace$cloudtrace$ProjectsResource;
+  declare var gapi$client$projects: cloudtrace$ProjectsResource;
 
-  declare interface cloudtrace$Annotation {
+  declare interface gapi$client$cloudtrace$Annotation {
     /**
      * A set of attributes on the annotation. There is a limit of 4 attributes
      * per Annotation.
@@ -34,7 +38,7 @@ declare module "gapi.client.cloudtrace" {
     description?: cloudtrace$TruncatableString;
   }
 
-  declare interface cloudtrace$AttributeValue {
+  declare interface gapi$client$cloudtrace$AttributeValue {
     /**
      * A Boolean value represented by `true` or `false`.
      */
@@ -51,7 +55,7 @@ declare module "gapi.client.cloudtrace" {
     stringValue?: cloudtrace$TruncatableString;
   }
 
-  declare interface cloudtrace$Attributes {
+  declare interface gapi$client$cloudtrace$Attributes {
     /**
      * The set of attributes. Each attribute's key can be up to 128 bytes
      * long. The value can be a string up to 256 bytes, an integer, or the
@@ -62,7 +66,7 @@ declare module "gapi.client.cloudtrace" {
      * "/http/request_bytes": 300
      * "abc.com/myattribute": true
      */
-    attributeMap?: Record<string, cloudtrace$AttributeValue>;
+    attributeMap?: Record<string, gapi$client$cloudtrace$AttributeValue>;
 
     /**
      * The number of attributes that were discarded. Attributes can be discarded
@@ -72,19 +76,19 @@ declare module "gapi.client.cloudtrace" {
     droppedAttributesCount?: number;
   }
 
-  declare interface cloudtrace$BatchWriteSpansRequest {
+  declare interface gapi$client$cloudtrace$BatchWriteSpansRequest {
     /**
      * A collection of spans.
      */
     spans?: cloudtrace$Span[];
   }
 
-  declare interface cloudtrace$Link {
+  declare interface gapi$client$cloudtrace$Link {
     /**
      * A set of attributes on the link. There is a limit of 32 attributes per
      * link.
      */
-    attributes?: cloudtrace$Attributes;
+    attributes?: gapi$client$cloudtrace$Attributes;
 
     /**
      * `SPAN_ID` identifies a span within a trace.
@@ -102,7 +106,7 @@ declare module "gapi.client.cloudtrace" {
     type?: string;
   }
 
-  declare interface cloudtrace$Links {
+  declare interface gapi$client$cloudtrace$Links {
     /**
      * The number of dropped links after the maximum size was enforced. If
      * this value is 0, then no links were dropped.
@@ -112,10 +116,10 @@ declare module "gapi.client.cloudtrace" {
     /**
      * A collection of links.
      */
-    link?: cloudtrace$Link[];
+    link?: gapi$client$cloudtrace$Link[];
   }
 
-  declare interface cloudtrace$Module {
+  declare interface gapi$client$cloudtrace$Module {
     /**
      * A unique identifier for the module, usually a hash of its
      * contents (up to 128 bytes).
@@ -129,7 +133,7 @@ declare module "gapi.client.cloudtrace" {
     module?: cloudtrace$TruncatableString;
   }
 
-  declare interface cloudtrace$NetworkEvent {
+  declare interface gapi$client$cloudtrace$NetworkEvent {
     /**
      * The number of compressed bytes sent or received.
      */
@@ -159,12 +163,12 @@ declare module "gapi.client.cloudtrace" {
     uncompressedMessageSize?: string;
   }
 
-  declare interface cloudtrace$Span {
+  declare interface gapi$client$cloudtrace$Span {
     /**
      * A set of attributes on the span. There is a limit of 32 attributes per
      * span.
      */
-    attributes?: cloudtrace$Attributes;
+    attributes?: gapi$client$cloudtrace$Attributes;
 
     /**
      * An optional number of child spans that were generated while this span
@@ -193,7 +197,7 @@ declare module "gapi.client.cloudtrace" {
     /**
      * A maximum of 128 links are allowed per Span.
      */
-    links?: cloudtrace$Links;
+    links?: gapi$client$cloudtrace$Links;
 
     /**
      * The resource name of the span in the following format:
@@ -246,7 +250,7 @@ declare module "gapi.client.cloudtrace" {
     timeEvents?: cloudtrace$TimeEvents;
   }
 
-  declare interface cloudtrace$StackFrame {
+  declare interface gapi$client$cloudtrace$StackFrame {
     /**
      * The column number where the function call appears, if available.
      * This is important in JavaScript because of its anonymous functions.
@@ -273,7 +277,7 @@ declare module "gapi.client.cloudtrace" {
     /**
      * The binary module from where the code was loaded.
      */
-    loadModule?: cloudtrace$Module;
+    loadModule?: gapi$client$cloudtrace$Module;
 
     /**
      * An un-mangled function name, if `function_name` is
@@ -288,7 +292,7 @@ declare module "gapi.client.cloudtrace" {
     sourceVersion?: cloudtrace$TruncatableString;
   }
 
-  declare interface cloudtrace$StackFrames {
+  declare interface gapi$client$cloudtrace$StackFrames {
     /**
      * The number of stack frames that were dropped because there
      * were too many stack frames.
@@ -299,14 +303,14 @@ declare module "gapi.client.cloudtrace" {
     /**
      * Stack frames in this call stack.
      */
-    frame?: cloudtrace$StackFrame[];
+    frame?: gapi$client$cloudtrace$StackFrame[];
   }
 
-  declare interface cloudtrace$StackTrace {
+  declare interface gapi$client$cloudtrace$StackTrace {
     /**
      * Stack frames in this stack trace. A maximum of 128 frames are allowed.
      */
-    stackFrames?: cloudtrace$StackFrames;
+    stackFrames?: gapi$client$cloudtrace$StackFrames;
 
     /**
      * The hash ID is used to conserve network bandwidth for duplicate
@@ -322,7 +326,7 @@ declare module "gapi.client.cloudtrace" {
     stackTraceHashId?: string;
   }
 
-  declare interface cloudtrace$Status {
+  declare interface gapi$client$cloudtrace$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -342,16 +346,16 @@ declare module "gapi.client.cloudtrace" {
     message?: string;
   }
 
-  declare interface cloudtrace$TimeEvent {
+  declare interface gapi$client$cloudtrace$TimeEvent {
     /**
      * Text annotation with a set of attributes.
      */
-    annotation?: cloudtrace$Annotation;
+    annotation?: gapi$client$cloudtrace$Annotation;
 
     /**
      * An event describing an RPC message sent/received on the network.
      */
-    networkEvent?: cloudtrace$NetworkEvent;
+    networkEvent?: gapi$client$cloudtrace$NetworkEvent;
 
     /**
      * The timestamp indicating the time the event occurred.
@@ -359,7 +363,7 @@ declare module "gapi.client.cloudtrace" {
     time?: string;
   }
 
-  declare interface cloudtrace$TimeEvents {
+  declare interface gapi$client$cloudtrace$TimeEvents {
     /**
      * The number of dropped annotations in all the included time events.
      * If the value is 0, then no annotations were dropped.
@@ -375,10 +379,10 @@ declare module "gapi.client.cloudtrace" {
     /**
      * A collection of `TimeEvent`s.
      */
-    timeEvent?: cloudtrace$TimeEvent[];
+    timeEvent?: gapi$client$cloudtrace$TimeEvent[];
   }
 
-  declare interface cloudtrace$TruncatableString {
+  declare interface gapi$client$cloudtrace$TruncatableString {
     /**
      * The number of bytes removed from the original string. If this
      * value is 0, then the string was not shortened.
@@ -396,7 +400,7 @@ declare module "gapi.client.cloudtrace" {
     value?: string;
   }
 
-  declare interface cloudtrace$SpansResource {
+  declare interface gapi$client$cloudtrace$SpansResource {
     /**
      * Creates a new Span.
      */
@@ -474,10 +478,10 @@ declare module "gapi.client.cloudtrace" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudtrace$Span>;
+    }): Request<gapi$client$cloudtrace$Span>;
   }
 
-  declare interface cloudtrace$TracesResource {
+  declare interface gapi$client$cloudtrace$TracesResource {
     /**
      * Sends new spans to Stackdriver Trace or updates existing traces. If the
      * name of a trace that you send matches that of an existing trace, new spans
@@ -557,10 +561,10 @@ declare module "gapi.client.cloudtrace" {
        */
       upload_protocol?: string
     }): Request<{}>;
-    spans: cloudtrace$SpansResource;
+    spans: gapi$client$cloudtrace$SpansResource;
   }
 
-  declare interface cloudtrace$ProjectsResource {
-    traces: cloudtrace$TracesResource;
+  declare interface gapi$client$cloudtrace$ProjectsResource {
+    traces: gapi$client$cloudtrace$TracesResource;
   }
 }
