@@ -1,41 +1,45 @@
 declare module "gapi.client.safebrowsing" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    encodedFullHashes: typeof client$encodedFullHashes,
-    encodedUpdates: typeof client$encodedUpdates,
-    fullHashes: typeof client$fullHashes,
-    threatListUpdates: typeof client$threatListUpdates,
-    threatLists: typeof client$threatLists,
-    threatMatches: typeof client$threatMatches
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    encodedFullHashes: typeof gapi$client$encodedFullHashes,
+    encodedUpdates: typeof gapi$client$encodedUpdates,
+    fullHashes: typeof gapi$client$fullHashes,
+    threatListUpdates: typeof gapi$client$threatListUpdates,
+    threatLists: typeof gapi$client$threatLists,
+    threatMatches: typeof gapi$client$threatMatches
   };
 
   /**
    * Load Google Safe Browsing API v4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "safebrowsing",
     version: "v4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "safebrowsing",
     version: "v4",
     callback: () => any
   ): void;
 
-  declare var client$encodedFullHashes: safebrowsing$safebrowsing$EncodedFullHashesResource;
+  declare var gapi$client$encodedFullHashes: safebrowsing$EncodedFullHashesResource;
 
-  declare var client$encodedUpdates: safebrowsing$safebrowsing$EncodedUpdatesResource;
+  declare var gapi$client$encodedUpdates: safebrowsing$EncodedUpdatesResource;
 
-  declare var client$fullHashes: safebrowsing$safebrowsing$FullHashesResource;
+  declare var gapi$client$fullHashes: safebrowsing$FullHashesResource;
 
-  declare var client$threatListUpdates: safebrowsing$safebrowsing$ThreatListUpdatesResource;
+  declare var gapi$client$threatListUpdates: safebrowsing$ThreatListUpdatesResource;
 
-  declare var client$threatLists: safebrowsing$safebrowsing$ThreatListsResource;
+  declare var gapi$client$threatLists: safebrowsing$ThreatListsResource;
 
-  declare var client$threatMatches: safebrowsing$safebrowsing$ThreatMatchesResource;
+  declare var gapi$client$threatMatches: safebrowsing$ThreatMatchesResource;
 
-  declare interface safebrowsing$Checksum {
+  declare interface gapi$client$safebrowsing$Checksum {
     /**
      * The SHA256 hash of the client state; that is, of the sorted list of all
      * hashes present in the database.
@@ -43,7 +47,7 @@ declare module "gapi.client.safebrowsing" {
     sha256?: string;
   }
 
-  declare interface safebrowsing$ClientInfo {
+  declare interface gapi$client$safebrowsing$ClientInfo {
     /**
      * A client ID that (hopefully) uniquely identifies the client implementation
      * of the Safe Browsing API.
@@ -56,7 +60,7 @@ declare module "gapi.client.safebrowsing" {
     clientVersion?: string;
   }
 
-  declare interface safebrowsing$Constraints {
+  declare interface gapi$client$safebrowsing$Constraints {
     /**
      * Sets the maximum number of entries that the client is willing to have
      * in the local database. This should be a power of 2 between 2&#42;&#42;10 and
@@ -84,11 +88,11 @@ declare module "gapi.client.safebrowsing" {
     supportedCompressions?: string[];
   }
 
-  declare interface safebrowsing$FetchThreatListUpdatesRequest {
+  declare interface gapi$client$safebrowsing$FetchThreatListUpdatesRequest {
     /**
      * The client metadata.
      */
-    client?: safebrowsing$ClientInfo;
+    client?: gapi$client$safebrowsing$ClientInfo;
 
     /**
      * The requested threat list updates.
@@ -96,7 +100,7 @@ declare module "gapi.client.safebrowsing" {
     listUpdateRequests?: safebrowsing$ListUpdateRequest[];
   }
 
-  declare interface safebrowsing$FetchThreatListUpdatesResponse {
+  declare interface gapi$client$safebrowsing$FetchThreatListUpdatesResponse {
     /**
      * The list updates requested by the clients.
      */
@@ -109,17 +113,17 @@ declare module "gapi.client.safebrowsing" {
     minimumWaitDuration?: string;
   }
 
-  declare interface safebrowsing$FindFullHashesRequest {
+  declare interface gapi$client$safebrowsing$FindFullHashesRequest {
     /**
      * Client metadata associated with callers of higher-level APIs built on top
      * of the client's implementation.
      */
-    apiClient?: safebrowsing$ClientInfo;
+    apiClient?: gapi$client$safebrowsing$ClientInfo;
 
     /**
      * The client metadata.
      */
-    client?: safebrowsing$ClientInfo;
+    client?: gapi$client$safebrowsing$ClientInfo;
 
     /**
      * The current client states for each of the client's local threat lists.
@@ -132,7 +136,7 @@ declare module "gapi.client.safebrowsing" {
     threatInfo?: safebrowsing$ThreatInfo;
   }
 
-  declare interface safebrowsing$FindFullHashesResponse {
+  declare interface gapi$client$safebrowsing$FindFullHashesResponse {
     /**
      * The full hashes that matched the requested prefixes.
      */
@@ -152,11 +156,11 @@ declare module "gapi.client.safebrowsing" {
     negativeCacheDuration?: string;
   }
 
-  declare interface safebrowsing$FindThreatMatchesRequest {
+  declare interface gapi$client$safebrowsing$FindThreatMatchesRequest {
     /**
      * The client metadata.
      */
-    client?: safebrowsing$ClientInfo;
+    client?: gapi$client$safebrowsing$ClientInfo;
 
     /**
      * The lists and entries to be checked for matches.
@@ -164,25 +168,25 @@ declare module "gapi.client.safebrowsing" {
     threatInfo?: safebrowsing$ThreatInfo;
   }
 
-  declare interface safebrowsing$FindThreatMatchesResponse {
+  declare interface gapi$client$safebrowsing$FindThreatMatchesResponse {
     /**
      * The threat list matches.
      */
     matches?: safebrowsing$ThreatMatch[];
   }
 
-  declare interface safebrowsing$ListThreatListsResponse {
+  declare interface gapi$client$safebrowsing$ListThreatListsResponse {
     /**
      * The lists available for download by the client.
      */
-    client$threatLists?: safebrowsing$ThreatListDescriptor[];
+    threatLists?: safebrowsing$ThreatListDescriptor[];
   }
 
-  declare interface safebrowsing$ListUpdateRequest {
+  declare interface gapi$client$safebrowsing$ListUpdateRequest {
     /**
      * The constraints associated with this request.
      */
-    constraints?: safebrowsing$Constraints;
+    constraints?: gapi$client$safebrowsing$Constraints;
 
     /**
      * The type of platform at risk by entries present in the list.
@@ -206,7 +210,7 @@ declare module "gapi.client.safebrowsing" {
     threatType?: string;
   }
 
-  declare interface safebrowsing$ListUpdateResponse {
+  declare interface gapi$client$safebrowsing$ListUpdateResponse {
     /**
      * A set of entries to add to a local threat type's list. Repeated to allow
      * for a combination of compressed and raw data to be sent in a single
@@ -220,7 +224,7 @@ declare module "gapi.client.safebrowsing" {
      * If the client state doesn't match the expected state, the client must
      * disregard this update and retry later.
      */
-    checksum?: safebrowsing$Checksum;
+    checksum?: gapi$client$safebrowsing$Checksum;
 
     /**
      * The new client state, in encrypted format. Opaque to clients.
@@ -255,7 +259,7 @@ declare module "gapi.client.safebrowsing" {
     threatType?: string;
   }
 
-  declare interface safebrowsing$MetadataEntry {
+  declare interface gapi$client$safebrowsing$MetadataEntry {
     /**
      * The metadata entry key. For JSON requests, the key is base64-encoded.
      */
@@ -267,7 +271,7 @@ declare module "gapi.client.safebrowsing" {
     value?: string;
   }
 
-  declare interface safebrowsing$RawHashes {
+  declare interface gapi$client$safebrowsing$RawHashes {
     /**
      * The number of bytes for each prefix encoded below.  This field can be
      * anywhere from 4 (shortest prefix) to 32 (full SHA256 hash).
@@ -282,14 +286,14 @@ declare module "gapi.client.safebrowsing" {
     rawHashes?: string;
   }
 
-  declare interface safebrowsing$RawIndices {
+  declare interface gapi$client$safebrowsing$RawIndices {
     /**
      * The indices to remove from a lexicographically-sorted local list.
      */
     indices?: number[];
   }
 
-  declare interface safebrowsing$RiceDeltaEncoding {
+  declare interface gapi$client$safebrowsing$RiceDeltaEncoding {
     /**
      * The encoded deltas that are encoded using the Golomb-Rice coder.
      */
@@ -315,7 +319,7 @@ declare module "gapi.client.safebrowsing" {
     riceParameter?: number;
   }
 
-  declare interface safebrowsing$ThreatEntry {
+  declare interface gapi$client$safebrowsing$ThreatEntry {
     /**
      * The digest of an executable in SHA256 format. The API supports both
      * binary and hex digests. For JSON requests, digests are base64-encoded.
@@ -335,14 +339,14 @@ declare module "gapi.client.safebrowsing" {
     url?: string;
   }
 
-  declare interface safebrowsing$ThreatEntryMetadata {
+  declare interface gapi$client$safebrowsing$ThreatEntryMetadata {
     /**
      * The metadata entries.
      */
-    entries?: safebrowsing$MetadataEntry[];
+    entries?: gapi$client$safebrowsing$MetadataEntry[];
   }
 
-  declare interface safebrowsing$ThreatEntrySet {
+  declare interface gapi$client$safebrowsing$ThreatEntrySet {
     /**
      * The compression type for the entries in this set.
      */
@@ -351,19 +355,19 @@ declare module "gapi.client.safebrowsing" {
     /**
      * The raw SHA256-formatted entries.
      */
-    rawHashes?: safebrowsing$RawHashes;
+    rawHashes?: gapi$client$safebrowsing$RawHashes;
 
     /**
      * The raw removal indices for a local list.
      */
-    rawIndices?: safebrowsing$RawIndices;
+    rawIndices?: gapi$client$safebrowsing$RawIndices;
 
     /**
      * The encoded 4-byte prefixes of SHA256-formatted entries, using a
      * Golomb-Rice encoding. The hashes are converted to uint32, sorted in
      * ascending order, then delta encoded and stored as encoded_data.
      */
-    riceHashes?: safebrowsing$RiceDeltaEncoding;
+    riceHashes?: gapi$client$safebrowsing$RiceDeltaEncoding;
 
     /**
      * The encoded local, lexicographically-sorted list indices, using a
@@ -371,10 +375,10 @@ declare module "gapi.client.safebrowsing" {
      * removal indices (uint32) are sorted in ascending order, then delta encoded
      * and stored as encoded_data.
      */
-    riceIndices?: safebrowsing$RiceDeltaEncoding;
+    riceIndices?: gapi$client$safebrowsing$RiceDeltaEncoding;
   }
 
-  declare interface safebrowsing$ThreatInfo {
+  declare interface gapi$client$safebrowsing$ThreatInfo {
     /**
      * The platform types to be checked.
      */
@@ -383,7 +387,7 @@ declare module "gapi.client.safebrowsing" {
     /**
      * The threat entries to be checked.
      */
-    threatEntries?: safebrowsing$ThreatEntry[];
+    threatEntries?: gapi$client$safebrowsing$ThreatEntry[];
 
     /**
      * The entry types to be checked.
@@ -396,7 +400,7 @@ declare module "gapi.client.safebrowsing" {
     threatTypes?: string[];
   }
 
-  declare interface safebrowsing$ThreatListDescriptor {
+  declare interface gapi$client$safebrowsing$ThreatListDescriptor {
     /**
      * The platform type targeted by the list's entries.
      */
@@ -413,7 +417,7 @@ declare module "gapi.client.safebrowsing" {
     threatType?: string;
   }
 
-  declare interface safebrowsing$ThreatMatch {
+  declare interface gapi$client$safebrowsing$ThreatMatch {
     /**
      * The cache lifetime for the returned match. Clients must not cache this
      * response for more than this duration to avoid false positives.
@@ -428,12 +432,12 @@ declare module "gapi.client.safebrowsing" {
     /**
      * The threat matching this threat.
      */
-    threat?: safebrowsing$ThreatEntry;
+    threat?: gapi$client$safebrowsing$ThreatEntry;
 
     /**
      * Optional metadata associated with this threat.
      */
-    threatEntryMetadata?: safebrowsing$ThreatEntryMetadata;
+    threatEntryMetadata?: gapi$client$safebrowsing$ThreatEntryMetadata;
 
     /**
      * The threat entry type matching this threat.
@@ -446,7 +450,7 @@ declare module "gapi.client.safebrowsing" {
     threatType?: string;
   }
 
-  declare interface safebrowsing$EncodedFullHashesResource {
+  declare interface gapi$client$safebrowsing$EncodedFullHashesResource {
     get(request: {
       /**
        * V1 error format.
@@ -528,10 +532,10 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$FindFullHashesResponse>;
+    }): Request<gapi$client$safebrowsing$FindFullHashesResponse>;
   }
 
-  declare interface safebrowsing$EncodedUpdatesResource {
+  declare interface gapi$client$safebrowsing$EncodedUpdatesResource {
     get(request: {
       /**
        * V1 error format.
@@ -613,10 +617,10 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$FetchThreatListUpdatesResponse>;
+    }): Request<gapi$client$safebrowsing$FetchThreatListUpdatesResponse>;
   }
 
-  declare interface safebrowsing$FullHashesResource {
+  declare interface gapi$client$safebrowsing$FullHashesResource {
     /**
      * Finds the full hashes that match the requested hash prefixes.
      */
@@ -685,10 +689,10 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$FindFullHashesResponse>;
+    }): Request<gapi$client$safebrowsing$FindFullHashesResponse>;
   }
 
-  declare interface safebrowsing$ThreatListUpdatesResource {
+  declare interface gapi$client$safebrowsing$ThreatListUpdatesResource {
     /**
      * Fetches the most recent threat list updates. A client can request updates
      * for multiple lists at once.
@@ -758,10 +762,10 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$FetchThreatListUpdatesResponse>;
+    }): Request<gapi$client$safebrowsing$FetchThreatListUpdatesResponse>;
   }
 
-  declare interface safebrowsing$ThreatListsResource {
+  declare interface gapi$client$safebrowsing$ThreatListsResource {
     /**
      * Lists the Safe Browsing threat lists available for download.
      */
@@ -830,10 +834,10 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$ListThreatListsResponse>;
+    }): Request<gapi$client$safebrowsing$ListThreatListsResponse>;
   }
 
-  declare interface safebrowsing$ThreatMatchesResource {
+  declare interface gapi$client$safebrowsing$ThreatMatchesResource {
     /**
      * Finds the threat entries that match the Safe Browsing lists.
      */
@@ -902,6 +906,6 @@ declare module "gapi.client.safebrowsing" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<safebrowsing$FindThreatMatchesResponse>;
+    }): Request<gapi$client$safebrowsing$FindThreatMatchesResponse>;
   }
 }
