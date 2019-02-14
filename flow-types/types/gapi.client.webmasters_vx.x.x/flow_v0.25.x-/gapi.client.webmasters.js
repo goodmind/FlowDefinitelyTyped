@@ -1,38 +1,42 @@
 declare module "gapi.client.webmasters" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    searchanalytics: typeof client$searchanalytics,
-    sitemaps: typeof client$sitemaps,
-    sites: typeof client$sites,
-    urlcrawlerrorscounts: typeof client$urlcrawlerrorscounts,
-    urlcrawlerrorssamples: typeof client$urlcrawlerrorssamples
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    searchanalytics: typeof gapi$client$searchanalytics,
+    sitemaps: typeof gapi$client$sitemaps,
+    sites: typeof gapi$client$sites,
+    urlcrawlerrorscounts: typeof gapi$client$urlcrawlerrorscounts,
+    urlcrawlerrorssamples: typeof gapi$client$urlcrawlerrorssamples
   };
 
   /**
    * Load Search Console API v3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "webmasters",
     version: "v3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "webmasters",
     version: "v3",
     callback: () => any
   ): void;
 
-  declare var client$searchanalytics: webmasters$webmasters$SearchanalyticsResource;
+  declare var gapi$client$searchanalytics: webmasters$SearchanalyticsResource;
 
-  declare var client$sitemaps: webmasters$webmasters$SitemapsResource;
+  declare var gapi$client$sitemaps: webmasters$SitemapsResource;
 
-  declare var client$sites: webmasters$webmasters$SitesResource;
+  declare var gapi$client$sites: webmasters$SitesResource;
 
-  declare var client$urlcrawlerrorscounts: webmasters$webmasters$UrlcrawlerrorscountsResource;
+  declare var gapi$client$urlcrawlerrorscounts: webmasters$UrlcrawlerrorscountsResource;
 
-  declare var client$urlcrawlerrorssamples: webmasters$webmasters$UrlcrawlerrorssamplesResource;
+  declare var gapi$client$urlcrawlerrorssamples: webmasters$UrlcrawlerrorssamplesResource;
 
-  declare interface webmasters$ApiDataRow {
+  declare interface gapi$client$webmasters$ApiDataRow {
     clicks?: number;
     ctr?: number;
     impressions?: number;
@@ -40,18 +44,18 @@ declare module "gapi.client.webmasters" {
     position?: number;
   }
 
-  declare interface webmasters$ApiDimensionFilter {
+  declare interface gapi$client$webmasters$ApiDimensionFilter {
     dimension?: string;
     expression?: string;
     operator?: string;
   }
 
-  declare interface webmasters$ApiDimensionFilterGroup {
-    filters?: webmasters$ApiDimensionFilter[];
+  declare interface gapi$client$webmasters$ApiDimensionFilterGroup {
+    filters?: gapi$client$webmasters$ApiDimensionFilter[];
     groupType?: string;
   }
 
-  declare interface webmasters$SearchAnalyticsQueryRequest {
+  declare interface gapi$client$webmasters$SearchAnalyticsQueryRequest {
     /**
      * [Optional; Default is "auto"] How data is aggregated. If aggregated by property, all data for the same property is aggregated; if aggregated by page,
      * all data is aggregated by canonical URI. If you filter or group by page, choose AUTO; otherwise you can aggregate either by property or by page,
@@ -68,7 +72,7 @@ declare module "gapi.client.webmasters" {
      * [Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query contains "buy"' to see only data where the query string
      * contains the substring "buy" (not case-sensitive). You can filter by a dimension without grouping by it.
      */
-    dimensionFilterGroups?: webmasters$ApiDimensionFilterGroup[];
+    dimensionFilterGroups?: gapi$client$webmasters$ApiDimensionFilterGroup[];
 
     /**
      * [Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to
@@ -104,7 +108,7 @@ declare module "gapi.client.webmasters" {
     startRow?: number;
   }
 
-  declare interface webmasters$SearchAnalyticsQueryResponse {
+  declare interface gapi$client$webmasters$SearchAnalyticsQueryResponse {
     /**
      * How the results were aggregated.
      */
@@ -113,24 +117,24 @@ declare module "gapi.client.webmasters" {
     /**
      * A list of rows grouped by the key values in the order given in the query.
      */
-    rows?: webmasters$ApiDataRow[];
+    rows?: gapi$client$webmasters$ApiDataRow[];
   }
 
-  declare interface webmasters$SitemapsListResponse {
+  declare interface gapi$client$webmasters$SitemapsListResponse {
     /**
      * Contains detailed information about a specific URL submitted as a sitemap.
      */
     sitemap?: webmasters$WmxSitemap[];
   }
 
-  declare interface webmasters$SitesListResponse {
+  declare interface gapi$client$webmasters$SitesListResponse {
     /**
      * Contains permission level information about a Search Console site. For more information, see Permissions in Search Console.
      */
     siteEntry?: webmasters$WmxSite[];
   }
 
-  declare interface webmasters$UrlCrawlErrorCount {
+  declare interface gapi$client$webmasters$UrlCrawlErrorCount {
     /**
      * The error count at the given timestamp.
      */
@@ -142,7 +146,7 @@ declare module "gapi.client.webmasters" {
     timestamp?: string;
   }
 
-  declare interface webmasters$UrlCrawlErrorCountsPerType {
+  declare interface gapi$client$webmasters$UrlCrawlErrorCountsPerType {
     /**
      * The crawl error type.
      */
@@ -151,7 +155,7 @@ declare module "gapi.client.webmasters" {
     /**
      * The error count entries time series.
      */
-    entries?: webmasters$UrlCrawlErrorCount[];
+    entries?: gapi$client$webmasters$UrlCrawlErrorCount[];
 
     /**
      * The general type of Googlebot that made the request (see list of Googlebot user-agents for the user-agents used).
@@ -159,14 +163,14 @@ declare module "gapi.client.webmasters" {
     platform?: string;
   }
 
-  declare interface webmasters$UrlCrawlErrorsCountsQueryResponse {
+  declare interface gapi$client$webmasters$UrlCrawlErrorsCountsQueryResponse {
     /**
      * The time series of the number of URL crawl errors per error category and platform.
      */
-    countPerTypes?: webmasters$UrlCrawlErrorCountsPerType[];
+    countPerTypes?: gapi$client$webmasters$UrlCrawlErrorCountsPerType[];
   }
 
-  declare interface webmasters$UrlCrawlErrorsSample {
+  declare interface gapi$client$webmasters$UrlCrawlErrorsSample {
     /**
      * The time the error was first detected, in RFC 3339 format.
      */
@@ -193,14 +197,14 @@ declare module "gapi.client.webmasters" {
     urlDetails?: webmasters$UrlSampleDetails;
   }
 
-  declare interface webmasters$UrlCrawlErrorsSamplesListResponse {
+  declare interface gapi$client$webmasters$UrlCrawlErrorsSamplesListResponse {
     /**
      * Information about the sample URL and its crawl error.
      */
-    urlCrawlErrorSample?: webmasters$UrlCrawlErrorsSample[];
+    urlCrawlErrorSample?: gapi$client$webmasters$UrlCrawlErrorsSample[];
   }
 
-  declare interface webmasters$UrlSampleDetails {
+  declare interface gapi$client$webmasters$UrlSampleDetails {
     /**
      * List of sitemaps pointing at this URL.
      */
@@ -212,7 +216,7 @@ declare module "gapi.client.webmasters" {
     linkedFromUrls?: string[];
   }
 
-  declare interface webmasters$WmxSite {
+  declare interface gapi$client$webmasters$WmxSite {
     /**
      * The user's permission level for the site.
      */
@@ -224,7 +228,7 @@ declare module "gapi.client.webmasters" {
     siteUrl?: string;
   }
 
-  declare interface webmasters$WmxSitemap {
+  declare interface gapi$client$webmasters$WmxSitemap {
     /**
      * The various content types in the sitemap.
      */
@@ -271,7 +275,7 @@ declare module "gapi.client.webmasters" {
     warnings?: string;
   }
 
-  declare interface webmasters$WmxSitemapContent {
+  declare interface gapi$client$webmasters$WmxSitemapContent {
     /**
      * The number of URLs from the sitemap that were indexed (of the content type).
      */
@@ -288,7 +292,7 @@ declare module "gapi.client.webmasters" {
     type?: string;
   }
 
-  declare interface webmasters$SearchanalyticsResource {
+  declare interface gapi$client$webmasters$SearchanalyticsResource {
     /**
      * Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date
      * range of one or more days.
@@ -337,10 +341,10 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$SearchAnalyticsQueryResponse>;
+    }): Request<gapi$client$webmasters$SearchAnalyticsQueryResponse>;
   }
 
-  declare interface webmasters$SitemapsResource {
+  declare interface gapi$client$webmasters$SitemapsResource {
     /**
      * Deletes a sitemap from this site.
      */
@@ -441,7 +445,7 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$WmxSitemap>;
+    }): Request<gapi$client$webmasters$WmxSitemap>;
 
     /**
      * Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex is specified in the request).
@@ -492,7 +496,7 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$SitemapsListResponse>;
+    }): Request<gapi$client$webmasters$SitemapsListResponse>;
 
     /**
      * Submits a sitemap for a site.
@@ -546,7 +550,7 @@ declare module "gapi.client.webmasters" {
     }): Request<void>;
   }
 
-  declare interface webmasters$SitesResource {
+  declare interface gapi$client$webmasters$SitesResource {
     /**
      * Adds a site to the set of the user's sites in Search Console.
      */
@@ -683,7 +687,7 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$WmxSite>;
+    }): Request<gapi$client$webmasters$WmxSite>;
 
     /**
      * Lists the user's Search Console sites.
@@ -724,10 +728,10 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$SitesListResponse>;
+    }): Request<gapi$client$webmasters$SitesListResponse>;
   }
 
-  declare interface webmasters$UrlcrawlerrorscountsResource {
+  declare interface gapi$client$webmasters$UrlcrawlerrorscountsResource {
     /**
      * Retrieves a time series of the number of URL crawl errors per error category and platform.
      */
@@ -787,10 +791,10 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$UrlCrawlErrorsCountsQueryResponse>;
+    }): Request<gapi$client$webmasters$UrlCrawlErrorsCountsQueryResponse>;
   }
 
-  declare interface webmasters$UrlcrawlerrorssamplesResource {
+  declare interface gapi$client$webmasters$UrlcrawlerrorssamplesResource {
     /**
      * Retrieves details about crawl errors for a site's sample URL.
      */
@@ -851,7 +855,7 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$UrlCrawlErrorsSample>;
+    }): Request<gapi$client$webmasters$UrlCrawlErrorsSample>;
 
     /**
      * Lists a site's sample URLs for the specified crawl error category and platform.
@@ -907,7 +911,7 @@ declare module "gapi.client.webmasters" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webmasters$UrlCrawlErrorsSamplesListResponse>;
+    }): Request<gapi$client$webmasters$UrlCrawlErrorsSamplesListResponse>;
 
     /**
      * Marks the provided site's sample URL as fixed, and removes it from the samples list.
