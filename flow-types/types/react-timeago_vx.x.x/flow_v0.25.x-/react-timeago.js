@@ -30,6 +30,6 @@ declare module "react-timeago" {
     +date: string | number | Date;
     +now?: () => number;
   }
-  declare var ReactTimeago: React.ComponentClass<ReactTimeago$ReactTimeago$ReactTimeagoProps>;
-  declare module.exports: typeof ReactTimeago;
+  declare var ReactTimeago: React.ComponentClass<ReactTimeago$ReactTimeagoProps>;
+  declare export default typeof ReactTimeago;
 }
