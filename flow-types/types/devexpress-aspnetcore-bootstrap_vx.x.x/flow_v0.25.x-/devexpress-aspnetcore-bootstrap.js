@@ -1,252 +1,150 @@
 declare module "devexpress-aspnetcore-bootstrap" {
-  declare var npm$namespace$AspNetCore: {
-    Utils: typeof AspNetCore$Utils
+  declare var npm$namespace$DevExpress: {
+    AspNetCore: typeof npm$namespace$DevExpress$AspNetCore
   };
-  declare class AspNetCore$BootstrapSchedulerGroupType {
-    constructor(...args: empty): mixed;
-    static +Date: Class<AspNetCore$BootstrapSchedulerGroupType__Date> &
-      AspNetCore$BootstrapSchedulerGroupType__Date &
-      "Date"; // "Date"
-    static +None: Class<AspNetCore$BootstrapSchedulerGroupType__None> &
-      AspNetCore$BootstrapSchedulerGroupType__None &
-      "None"; // "None"
-    static +Resource: Class<AspNetCore$BootstrapSchedulerGroupType__Resource> &
-      AspNetCore$BootstrapSchedulerGroupType__Resource &
-      "Resource"; // "Resource"
-  }
 
-  declare class AspNetCore$BootstrapSchedulerGroupType__Date
-    mixins AspNetCore$BootstrapSchedulerGroupType {}
-  declare class AspNetCore$BootstrapSchedulerGroupType__None
-    mixins AspNetCore$BootstrapSchedulerGroupType {}
-  declare class AspNetCore$BootstrapSchedulerGroupType__Resource
-    mixins AspNetCore$BootstrapSchedulerGroupType {}
+  declare var npm$namespace$DevExpress$AspNetCore: {
+    Utils: typeof DevExpress$AspNetCore$Utils,
+    BootstrapSchedulerGroupType: typeof DevExpress$AspNetCore$BootstrapSchedulerGroupType,
+    BootstrapSchedulerViewType: typeof DevExpress$AspNetCore$BootstrapSchedulerViewType,
+    BootstrapSchedulerAppointmentType: typeof DevExpress$AspNetCore$BootstrapSchedulerAppointmentType,
+    BootstrapSchedulerRecurrenceRange: typeof DevExpress$AspNetCore$BootstrapSchedulerRecurrenceRange,
+    BootstrapSchedulerRecurrenceType: typeof DevExpress$AspNetCore$BootstrapSchedulerRecurrenceType,
+    WeekDays: typeof DevExpress$AspNetCore$WeekDays,
+    WeekOfMonth: typeof DevExpress$AspNetCore$WeekOfMonth,
+    BootstrapPopupControlCloseReason: typeof DevExpress$AspNetCore$BootstrapPopupControlCloseReason,
+    Control: typeof DevExpress$AspNetCore$Control,
+    BootstrapClientEdit: typeof DevExpress$AspNetCore$BootstrapClientEdit,
+    BootstrapAccordion: typeof DevExpress$AspNetCore$BootstrapAccordion,
+    BootstrapAccordionGroup: typeof DevExpress$AspNetCore$BootstrapAccordionGroup,
+    BootstrapAccordionItem: typeof DevExpress$AspNetCore$BootstrapAccordionItem,
+    BootstrapBinaryImage: typeof DevExpress$AspNetCore$BootstrapBinaryImage,
+    BootstrapButton: typeof DevExpress$AspNetCore$BootstrapButton,
+    BootstrapCalendar: typeof DevExpress$AspNetCore$BootstrapCalendar,
+    BootstrapGridBase: typeof DevExpress$AspNetCore$BootstrapGridBase,
+    BootstrapCardView: typeof DevExpress$AspNetCore$BootstrapCardView,
+    BootstrapCardViewBatchEditApi: typeof DevExpress$AspNetCore$BootstrapCardViewBatchEditApi,
+    BootstrapCardViewColumn: typeof DevExpress$AspNetCore$BootstrapCardViewColumn,
+    BootstrapCardViewCellInfo: typeof DevExpress$AspNetCore$BootstrapCardViewCellInfo,
+    BootstrapChart: typeof DevExpress$AspNetCore$BootstrapChart,
+    BootstrapPolarChart: typeof DevExpress$AspNetCore$BootstrapPolarChart,
+    BootstrapPieChart: typeof DevExpress$AspNetCore$BootstrapPieChart,
+    BootstrapCheckBox: typeof DevExpress$AspNetCore$BootstrapCheckBox,
+    BootstrapRadioButton: typeof DevExpress$AspNetCore$BootstrapRadioButton,
+    BootstrapComboBox: typeof DevExpress$AspNetCore$BootstrapComboBox,
+    BootstrapDateEdit: typeof DevExpress$AspNetCore$BootstrapDateEdit,
+    BootstrapDropDownEdit: typeof DevExpress$AspNetCore$BootstrapDropDownEdit,
+    BootstrapFormLayout: typeof DevExpress$AspNetCore$BootstrapFormLayout,
+    BootstrapFormLayoutItem: typeof DevExpress$AspNetCore$BootstrapFormLayoutItem,
+    BootstrapGridView: typeof DevExpress$AspNetCore$BootstrapGridView,
+    BootstrapGridViewBatchEditApi: typeof DevExpress$AspNetCore$BootstrapGridViewBatchEditApi,
+    BootstrapGridViewColumn: typeof DevExpress$AspNetCore$BootstrapGridViewColumn,
+    BootstrapGridViewCellInfo: typeof DevExpress$AspNetCore$BootstrapGridViewCellInfo,
+    BootstrapHyperLink: typeof DevExpress$AspNetCore$BootstrapHyperLink,
+    BootstrapListBox: typeof DevExpress$AspNetCore$BootstrapListBox,
+    BootstrapListBoxItem: typeof DevExpress$AspNetCore$BootstrapListBoxItem,
+    BootstrapCheckBoxList: typeof DevExpress$AspNetCore$BootstrapCheckBoxList,
+    BootstrapRadioButtonList: typeof DevExpress$AspNetCore$BootstrapRadioButtonList,
+    BootstrapMenu: typeof DevExpress$AspNetCore$BootstrapMenu,
+    BootstrapMenuItem: typeof DevExpress$AspNetCore$BootstrapMenuItem,
+    BootstrapPopupControl: typeof DevExpress$AspNetCore$BootstrapPopupControl,
+    BootstrapPopupWindow: typeof DevExpress$AspNetCore$BootstrapPopupWindow,
+    BootstrapPopupMenu: typeof DevExpress$AspNetCore$BootstrapPopupMenu,
+    BootstrapProgressBar: typeof DevExpress$AspNetCore$BootstrapProgressBar,
+    BootstrapScheduler: typeof DevExpress$AspNetCore$BootstrapScheduler,
+    BootstrapTimeInterval: typeof DevExpress$AspNetCore$BootstrapTimeInterval,
+    BootstrapSchedulerAppointment: typeof DevExpress$AspNetCore$BootstrapSchedulerAppointment,
+    BootstrapSchedulerAppointmentDragInfo: typeof DevExpress$AspNetCore$BootstrapSchedulerAppointmentDragInfo,
+    BootstrapSchedulerAppointmentOperation: typeof DevExpress$AspNetCore$BootstrapSchedulerAppointmentOperation,
+    BootstrapSchedulerRecurrenceInfo: typeof DevExpress$AspNetCore$BootstrapSchedulerRecurrenceInfo,
+    BootstrapSparkline: typeof DevExpress$AspNetCore$BootstrapSparkline,
+    BootstrapTimeEdit: typeof DevExpress$AspNetCore$BootstrapTimeEdit,
+    BootstrapSpinEdit: typeof DevExpress$AspNetCore$BootstrapSpinEdit,
+    BootstrapTabControl: typeof DevExpress$AspNetCore$BootstrapTabControl,
+    BootstrapTab: typeof DevExpress$AspNetCore$BootstrapTab,
+    BootstrapPageControl: typeof DevExpress$AspNetCore$BootstrapPageControl,
+    BootstrapTagBox: typeof DevExpress$AspNetCore$BootstrapTagBox,
+    BootstrapButtonEdit: typeof DevExpress$AspNetCore$BootstrapButtonEdit,
+    BootstrapMemo: typeof DevExpress$AspNetCore$BootstrapMemo,
+    BootstrapTextBox: typeof DevExpress$AspNetCore$BootstrapTextBox,
+    BootstrapToolbar: typeof DevExpress$AspNetCore$BootstrapToolbar,
+    BootstrapTreeView: typeof DevExpress$AspNetCore$BootstrapTreeView,
+    BootstrapTreeViewNode: typeof DevExpress$AspNetCore$BootstrapTreeViewNode,
+    BootstrapUploadControl: typeof DevExpress$AspNetCore$BootstrapUploadControl,
+    BootstrapUploadControlFile: typeof DevExpress$AspNetCore$BootstrapUploadControlFile,
+    BootstrapUploadControlInvalidFileInfo: typeof DevExpress$AspNetCore$BootstrapUploadControlInvalidFileInfo,
+    BootstrapUploadControlValidationSettings: typeof DevExpress$AspNetCore$BootstrapUploadControlValidationSettings
+  };
 
-  declare class AspNetCore$BootstrapSchedulerViewType {
-    constructor(...args: empty): mixed;
-    static +Day: Class<AspNetCore$BootstrapSchedulerViewType__Day> &
-      AspNetCore$BootstrapSchedulerViewType__Day &
-      "Day"; // "Day"
-    static +WorkWeek: Class<AspNetCore$BootstrapSchedulerViewType__WorkWeek> &
-      AspNetCore$BootstrapSchedulerViewType__WorkWeek &
-      "WorkWeek"; // "WorkWeek"
-    static +Week: Class<AspNetCore$BootstrapSchedulerViewType__Week> &
-      AspNetCore$BootstrapSchedulerViewType__Week &
-      "Week"; // "Week"
-    static +Month: Class<AspNetCore$BootstrapSchedulerViewType__Month> &
-      AspNetCore$BootstrapSchedulerViewType__Month &
-      "Month"; // "Month"
-    static +Timeline: Class<AspNetCore$BootstrapSchedulerViewType__Timeline> &
-      AspNetCore$BootstrapSchedulerViewType__Timeline &
-      "Timeline"; // "Timeline"
-    static +FullWeek: Class<AspNetCore$BootstrapSchedulerViewType__FullWeek> &
-      AspNetCore$BootstrapSchedulerViewType__FullWeek &
-      "FullWeek"; // "FullWeek"
-    static +Agenda: Class<AspNetCore$BootstrapSchedulerViewType__Agenda> &
-      AspNetCore$BootstrapSchedulerViewType__Agenda &
-      "Agenda"; // "Agenda"
-  }
+  declare var DevExpress$AspNetCore$BootstrapSchedulerGroupType: {|
+    +Date: "Date", // "Date"
+    +None: "None", // "None"
+    +Resource: "Resource" // "Resource"
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerViewType__Day
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__WorkWeek
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__Week
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__Month
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__Timeline
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__FullWeek
-    mixins AspNetCore$BootstrapSchedulerViewType {}
-  declare class AspNetCore$BootstrapSchedulerViewType__Agenda
-    mixins AspNetCore$BootstrapSchedulerViewType {}
+  declare var DevExpress$AspNetCore$BootstrapSchedulerViewType: {|
+    +Day: "Day", // "Day"
+    +WorkWeek: "WorkWeek", // "WorkWeek"
+    +Week: "Week", // "Week"
+    +Month: "Month", // "Month"
+    +Timeline: "Timeline", // "Timeline"
+    +FullWeek: "FullWeek", // "FullWeek"
+    +Agenda: "Agenda" // "Agenda"
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerAppointmentType {
-    constructor(...args: empty): mixed;
-    static +Normal: Class<AspNetCore$BootstrapSchedulerAppointmentType__Normal> &
-      AspNetCore$BootstrapSchedulerAppointmentType__Normal &
-      "Normal"; // "Normal"
-    static +Pattern: Class<AspNetCore$BootstrapSchedulerAppointmentType__Pattern> &
-      AspNetCore$BootstrapSchedulerAppointmentType__Pattern &
-      "Pattern"; // "Pattern"
-    static +Occurrence: Class<AspNetCore$BootstrapSchedulerAppointmentType__Occurrence> &
-      AspNetCore$BootstrapSchedulerAppointmentType__Occurrence &
-      "Occurrence"; // "Occurrence"
-    static +ChangedOccurrence: Class<AspNetCore$BootstrapSchedulerAppointmentType__ChangedOccurrence> &
-      AspNetCore$BootstrapSchedulerAppointmentType__ChangedOccurrence &
-      "ChangedOccurrence"; // "ChangedOccurrence"
-    static +DeletedOccurrence: Class<AspNetCore$BootstrapSchedulerAppointmentType__DeletedOccurrence> &
-      AspNetCore$BootstrapSchedulerAppointmentType__DeletedOccurrence &
-      "DeletedOccurrence"; // "DeletedOccurrence"
-  }
+  declare var DevExpress$AspNetCore$BootstrapSchedulerAppointmentType: {|
+    +Normal: "Normal", // "Normal"
+    +Pattern: "Pattern", // "Pattern"
+    +Occurrence: "Occurrence", // "Occurrence"
+    +ChangedOccurrence: "ChangedOccurrence", // "ChangedOccurrence"
+    +DeletedOccurrence: "DeletedOccurrence" // "DeletedOccurrence"
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerAppointmentType__Normal
-    mixins AspNetCore$BootstrapSchedulerAppointmentType {}
-  declare class AspNetCore$BootstrapSchedulerAppointmentType__Pattern
-    mixins AspNetCore$BootstrapSchedulerAppointmentType {}
-  declare class AspNetCore$BootstrapSchedulerAppointmentType__Occurrence
-    mixins AspNetCore$BootstrapSchedulerAppointmentType {}
-  declare class AspNetCore$BootstrapSchedulerAppointmentType__ChangedOccurrence
-    mixins AspNetCore$BootstrapSchedulerAppointmentType {}
-  declare class AspNetCore$BootstrapSchedulerAppointmentType__DeletedOccurrence
-    mixins AspNetCore$BootstrapSchedulerAppointmentType {}
+  declare var DevExpress$AspNetCore$BootstrapSchedulerRecurrenceRange: {|
+    +NoEndDate: "NoEndDate", // "NoEndDate"
+    +OccurrenceCount: "OccurrenceCount", // "OccurrenceCount"
+    +EndByDate: "EndByDate" // "EndByDate"
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerRecurrenceRange {
-    constructor(...args: empty): mixed;
-    static +NoEndDate: Class<AspNetCore$BootstrapSchedulerRecurrenceRange__NoEndDate> &
-      AspNetCore$BootstrapSchedulerRecurrenceRange__NoEndDate &
-      "NoEndDate"; // "NoEndDate"
-    static +OccurrenceCount: Class<AspNetCore$BootstrapSchedulerRecurrenceRange__OccurrenceCount> &
-      AspNetCore$BootstrapSchedulerRecurrenceRange__OccurrenceCount &
-      "OccurrenceCount"; // "OccurrenceCount"
-    static +EndByDate: Class<AspNetCore$BootstrapSchedulerRecurrenceRange__EndByDate> &
-      AspNetCore$BootstrapSchedulerRecurrenceRange__EndByDate &
-      "EndByDate"; // "EndByDate"
-  }
+  declare var DevExpress$AspNetCore$BootstrapSchedulerRecurrenceType: {|
+    +Daily: "Daily", // "Daily"
+    +Weekly: "Weekly", // "Weekly"
+    +Monthly: "Monthly", // "Monthly"
+    +Yearly: "Yearly", // "Yearly"
+    +Hourly: "Hourly" // "Hourly"
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerRecurrenceRange__NoEndDate
-    mixins AspNetCore$BootstrapSchedulerRecurrenceRange {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceRange__OccurrenceCount
-    mixins AspNetCore$BootstrapSchedulerRecurrenceRange {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceRange__EndByDate
-    mixins AspNetCore$BootstrapSchedulerRecurrenceRange {}
+  declare var DevExpress$AspNetCore$WeekDays: {|
+    +Sunday: 1, // 1
+    +Monday: 2, // 2
+    +Tuesday: 4, // 4
+    +Wednesday: 8, // 8
+    +Thursday: 16, // 16
+    +Friday: 32, // 32
+    +Saturday: 64, // 64
+    +WeekendDays: 65, // 65
+    +WorkDays: 62, // 62
+    +EveryDay: 127 // 127
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType {
-    constructor(...args: empty): mixed;
-    static +Daily: Class<AspNetCore$BootstrapSchedulerRecurrenceType__Daily> &
-      AspNetCore$BootstrapSchedulerRecurrenceType__Daily &
-      "Daily"; // "Daily"
-    static +Weekly: Class<AspNetCore$BootstrapSchedulerRecurrenceType__Weekly> &
-      AspNetCore$BootstrapSchedulerRecurrenceType__Weekly &
-      "Weekly"; // "Weekly"
-    static +Monthly: Class<AspNetCore$BootstrapSchedulerRecurrenceType__Monthly> &
-      AspNetCore$BootstrapSchedulerRecurrenceType__Monthly &
-      "Monthly"; // "Monthly"
-    static +Yearly: Class<AspNetCore$BootstrapSchedulerRecurrenceType__Yearly> &
-      AspNetCore$BootstrapSchedulerRecurrenceType__Yearly &
-      "Yearly"; // "Yearly"
-    static +Hourly: Class<AspNetCore$BootstrapSchedulerRecurrenceType__Hourly> &
-      AspNetCore$BootstrapSchedulerRecurrenceType__Hourly &
-      "Hourly"; // "Hourly"
-  }
+  declare var DevExpress$AspNetCore$WeekOfMonth: {|
+    +None: 0, // 0
+    +First: 1, // 1
+    +Second: 2, // 2
+    +Third: 3, // 3
+    +Fourth: 4, // 4
+    +Last: 5 // 5
+  |};
 
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType__Daily
-    mixins AspNetCore$BootstrapSchedulerRecurrenceType {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType__Weekly
-    mixins AspNetCore$BootstrapSchedulerRecurrenceType {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType__Monthly
-    mixins AspNetCore$BootstrapSchedulerRecurrenceType {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType__Yearly
-    mixins AspNetCore$BootstrapSchedulerRecurrenceType {}
-  declare class AspNetCore$BootstrapSchedulerRecurrenceType__Hourly
-    mixins AspNetCore$BootstrapSchedulerRecurrenceType {}
+  declare var DevExpress$AspNetCore$BootstrapPopupControlCloseReason: {|
+    +API: "API", // "API"
+    +CloseButton: "CloseButton", // "CloseButton"
+    +OuterMouseClick: "OuterMouseClick", // "OuterMouseClick"
+    +MouseOut: "MouseOut", // "MouseOut"
+    +Escape: "Escape" // "Escape"
+  |};
 
-  declare class AspNetCore$WeekDays {
-    constructor(...args: empty): mixed;
-    static +Sunday: Class<AspNetCore$WeekDays__Sunday> &
-      AspNetCore$WeekDays__Sunday &
-      1; // 1
-    static +Monday: Class<AspNetCore$WeekDays__Monday> &
-      AspNetCore$WeekDays__Monday &
-      2; // 2
-    static +Tuesday: Class<AspNetCore$WeekDays__Tuesday> &
-      AspNetCore$WeekDays__Tuesday &
-      4; // 4
-    static +Wednesday: Class<AspNetCore$WeekDays__Wednesday> &
-      AspNetCore$WeekDays__Wednesday &
-      8; // 8
-    static +Thursday: Class<AspNetCore$WeekDays__Thursday> &
-      AspNetCore$WeekDays__Thursday &
-      16; // 16
-    static +Friday: Class<AspNetCore$WeekDays__Friday> &
-      AspNetCore$WeekDays__Friday &
-      32; // 32
-    static +Saturday: Class<AspNetCore$WeekDays__Saturday> &
-      AspNetCore$WeekDays__Saturday &
-      64; // 64
-    static +WeekendDays: Class<AspNetCore$WeekDays__WeekendDays> &
-      AspNetCore$WeekDays__WeekendDays &
-      65; // 65
-    static +WorkDays: Class<AspNetCore$WeekDays__WorkDays> &
-      AspNetCore$WeekDays__WorkDays &
-      62; // 62
-    static +EveryDay: Class<AspNetCore$WeekDays__EveryDay> &
-      AspNetCore$WeekDays__EveryDay &
-      127; // 127
-  }
-
-  declare class AspNetCore$WeekDays__Sunday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Monday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Tuesday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Wednesday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Thursday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Friday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__Saturday mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__WeekendDays mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__WorkDays mixins AspNetCore$WeekDays {}
-  declare class AspNetCore$WeekDays__EveryDay mixins AspNetCore$WeekDays {}
-
-  declare class AspNetCore$WeekOfMonth {
-    constructor(...args: empty): mixed;
-    static +None: Class<AspNetCore$WeekOfMonth__None> &
-      AspNetCore$WeekOfMonth__None &
-      0; // 0
-    static +First: Class<AspNetCore$WeekOfMonth__First> &
-      AspNetCore$WeekOfMonth__First &
-      1; // 1
-    static +Second: Class<AspNetCore$WeekOfMonth__Second> &
-      AspNetCore$WeekOfMonth__Second &
-      2; // 2
-    static +Third: Class<AspNetCore$WeekOfMonth__Third> &
-      AspNetCore$WeekOfMonth__Third &
-      3; // 3
-    static +Fourth: Class<AspNetCore$WeekOfMonth__Fourth> &
-      AspNetCore$WeekOfMonth__Fourth &
-      4; // 4
-    static +Last: Class<AspNetCore$WeekOfMonth__Last> &
-      AspNetCore$WeekOfMonth__Last &
-      5; // 5
-  }
-
-  declare class AspNetCore$WeekOfMonth__None mixins AspNetCore$WeekOfMonth {}
-  declare class AspNetCore$WeekOfMonth__First mixins AspNetCore$WeekOfMonth {}
-  declare class AspNetCore$WeekOfMonth__Second mixins AspNetCore$WeekOfMonth {}
-  declare class AspNetCore$WeekOfMonth__Third mixins AspNetCore$WeekOfMonth {}
-  declare class AspNetCore$WeekOfMonth__Fourth mixins AspNetCore$WeekOfMonth {}
-  declare class AspNetCore$WeekOfMonth__Last mixins AspNetCore$WeekOfMonth {}
-
-  declare class AspNetCore$BootstrapPopupControlCloseReason {
-    constructor(...args: empty): mixed;
-    static +API: Class<AspNetCore$BootstrapPopupControlCloseReason__API> &
-      AspNetCore$BootstrapPopupControlCloseReason__API &
-      "API"; // "API"
-    static +CloseButton: Class<AspNetCore$BootstrapPopupControlCloseReason__CloseButton> &
-      AspNetCore$BootstrapPopupControlCloseReason__CloseButton &
-      "CloseButton"; // "CloseButton"
-    static +OuterMouseClick: Class<AspNetCore$BootstrapPopupControlCloseReason__OuterMouseClick> &
-      AspNetCore$BootstrapPopupControlCloseReason__OuterMouseClick &
-      "OuterMouseClick"; // "OuterMouseClick"
-    static +MouseOut: Class<AspNetCore$BootstrapPopupControlCloseReason__MouseOut> &
-      AspNetCore$BootstrapPopupControlCloseReason__MouseOut &
-      "MouseOut"; // "MouseOut"
-    static +Escape: Class<AspNetCore$BootstrapPopupControlCloseReason__Escape> &
-      AspNetCore$BootstrapPopupControlCloseReason__Escape &
-      "Escape"; // "Escape"
-  }
-
-  declare class AspNetCore$BootstrapPopupControlCloseReason__API
-    mixins AspNetCore$BootstrapPopupControlCloseReason {}
-  declare class AspNetCore$BootstrapPopupControlCloseReason__CloseButton
-    mixins AspNetCore$BootstrapPopupControlCloseReason {}
-  declare class AspNetCore$BootstrapPopupControlCloseReason__OuterMouseClick
-    mixins AspNetCore$BootstrapPopupControlCloseReason {}
-  declare class AspNetCore$BootstrapPopupControlCloseReason__MouseOut
-    mixins AspNetCore$BootstrapPopupControlCloseReason {}
-  declare class AspNetCore$BootstrapPopupControlCloseReason__Escape
-    mixins AspNetCore$BootstrapPopupControlCloseReason {}
-
-  declare var AspNetCore$Utils: {
+  declare var DevExpress$AspNetCore$Utils: {
     getControls: () => AspNetCore$Control[],
     getSerializedEditorValuesInContainer: (
       containerOrId: string | HTMLElement,
@@ -258,74 +156,74 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ) => any
   };
 
-  declare interface AspNetCore$EventArgs {
+  declare interface DevExpress$AspNetCore$EventArgs {
     +sender: AspNetCore$Control;
   }
 
-  declare type AspNetCore$CancelEventArgs = {
+  declare type DevExpress$AspNetCore$CancelEventArgs = {
     cancel: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$BeginCallbackEventArgs = {
+  declare type DevExpress$AspNetCore$BeginCallbackEventArgs = {
     +command: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$ProcessingModeEventArgs = {
+  declare type DevExpress$AspNetCore$ProcessingModeEventArgs = {
     processOnServer: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$ProcessingModeCancelEventArgs = {
+  declare type DevExpress$AspNetCore$ProcessingModeCancelEventArgs = {
     cancel: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GlobalBeginCallbackEventArgs = {
+  declare type DevExpress$AspNetCore$GlobalBeginCallbackEventArgs = {
     +control: AspNetCore$Control
-  } & AspNetCore$BeginCallbackEventArgs;
+  } & BeginCallbackEventArgs;
 
-  declare type AspNetCore$EndCallbackEventArgs = {} & AspNetCore$EventArgs;
+  declare type DevExpress$AspNetCore$EndCallbackEventArgs = {} & EventArgs;
 
-  declare type AspNetCore$GlobalEndCallbackEventArgs = {
+  declare type DevExpress$AspNetCore$GlobalEndCallbackEventArgs = {
     +control: AspNetCore$Control
-  } & AspNetCore$EndCallbackEventArgs;
+  } & EndCallbackEventArgs;
 
-  declare type AspNetCore$CustomDataCallbackEventArgs = {
+  declare type DevExpress$AspNetCore$CustomDataCallbackEventArgs = {
     result: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$CallbackErrorEventArgs = {
+  declare type DevExpress$AspNetCore$CallbackErrorEventArgs = {
     handled: boolean,
     message: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$GlobalCallbackErrorEventArgs = {
+  declare type DevExpress$AspNetCore$GlobalCallbackErrorEventArgs = {
     +control: AspNetCore$Control
-  } & AspNetCore$CallbackErrorEventArgs;
+  } & CallbackErrorEventArgs;
 
-  declare type AspNetCore$EditValidationEventArgs = {
+  declare type DevExpress$AspNetCore$EditValidationEventArgs = {
     errorText: string,
     isValid: boolean,
     value: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$ValidationCompletedEventArgs = {
+  declare type DevExpress$AspNetCore$ValidationCompletedEventArgs = {
     +container: any,
     +firstInvalidControl: AspNetCore$Control,
     +firstVisibleInvalidControl: AspNetCore$Control,
     +invisibleControlsValidated: boolean,
     isValid: boolean,
     +validationGroup: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$EditClickEventArgs = {
+  declare type DevExpress$AspNetCore$EditClickEventArgs = {
     +htmlElement: any,
     +htmlEvent: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$EditKeyEventArgs = {
+  declare type DevExpress$AspNetCore$EditKeyEventArgs = {
     +htmlEvent: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$Control {
+  declare class DevExpress$AspNetCore$Control {
     instance: any;
     constructor(instance: any): this;
     name: string;
@@ -356,11 +254,11 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare interface AspNetCore$ControlEventMap {
-    init: AspNetCore$EventArgs;
+  declare interface DevExpress$AspNetCore$ControlEventMap {
+    init: DevExpress$AspNetCore$EventArgs;
   }
 
-  declare class AspNetCore$BootstrapClientEdit mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapClientEdit mixins Control {
     focus(): void;
     getCaption(): string;
     getEnabled(): boolean;
@@ -396,33 +294,33 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapClientEditEventMap = {
-    gotFocus: AspNetCore$EventArgs,
-    lostFocus: AspNetCore$EventArgs,
-    validation: AspNetCore$EditValidationEventArgs,
-    valueChanged: AspNetCore$ProcessingModeEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapClientEditEventMap = {
+    gotFocus: DevExpress$AspNetCore$EventArgs,
+    lostFocus: DevExpress$AspNetCore$EventArgs,
+    validation: DevExpress$AspNetCore$EditValidationEventArgs,
+    valueChanged: DevExpress$AspNetCore$ProcessingModeEventArgs
+  } & ControlEventMap;
 
-  declare type AspNetCore$AccordionItemEventArgs = {
+  declare type DevExpress$AspNetCore$AccordionItemEventArgs = {
     +htmlElement: { [key: string]: any },
     +htmlEvent: { [key: string]: any },
     +item: AspNetCore$BootstrapAccordionItem
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$AccordionGroupEventArgs = {
+  declare type DevExpress$AspNetCore$AccordionGroupEventArgs = {
     +group: AspNetCore$BootstrapAccordionGroup
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AccordionGroupCancelEventArgs = {
+  declare type DevExpress$AspNetCore$AccordionGroupCancelEventArgs = {
     +group: AspNetCore$BootstrapAccordionGroup
-  } & AspNetCore$ProcessingModeCancelEventArgs;
+  } & ProcessingModeCancelEventArgs;
 
-  declare type AspNetCore$AccordionGroupClickEventArgs = {
+  declare type DevExpress$AspNetCore$AccordionGroupClickEventArgs = {
     +htmlElement: { [key: string]: any },
     +htmlEvent: { [key: string]: any }
-  } & AspNetCore$AccordionGroupCancelEventArgs;
+  } & AccordionGroupCancelEventArgs;
 
-  declare class AspNetCore$BootstrapAccordion mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapAccordion mixins Control {
     collapseAll(): void;
     expandAll(): void;
     getActiveGroup(): AspNetCore$BootstrapAccordionGroup | null;
@@ -453,22 +351,22 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapAccordionEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    expandedChanged: AspNetCore$AccordionGroupEventArgs,
-    expandedChanging: AspNetCore$AccordionGroupCancelEventArgs,
-    headerClick: AspNetCore$AccordionGroupClickEventArgs,
-    itemClick: AspNetCore$AccordionItemEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapAccordionEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    expandedChanged: DevExpress$AspNetCore$AccordionGroupEventArgs,
+    expandedChanging: DevExpress$AspNetCore$AccordionGroupCancelEventArgs,
+    headerClick: DevExpress$AspNetCore$AccordionGroupClickEventArgs,
+    itemClick: DevExpress$AspNetCore$AccordionItemEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapAccordionGroup {
+  declare class DevExpress$AspNetCore$BootstrapAccordionGroup {
     instance: any;
     constructor(instance: any): this;
     index: number;
     name: string;
-    navBar: AspNetCore$BootstrapAccordion | null;
+    navBar: DevExpress$AspNetCore$BootstrapAccordion | null;
     getEnabled(): boolean;
     getExpanded(): boolean;
     getHeaderBadgeIconCssClass(): string;
@@ -485,13 +383,13 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setVisible(value: boolean): void;
   }
 
-  declare class AspNetCore$BootstrapAccordionItem {
+  declare class DevExpress$AspNetCore$BootstrapAccordionItem {
     instance: any;
     constructor(instance: any): this;
-    group: AspNetCore$BootstrapAccordionGroup | null;
+    group: DevExpress$AspNetCore$BootstrapAccordionGroup | null;
     index: number;
     name: string;
-    navBar: AspNetCore$BootstrapAccordion | null;
+    navBar: DevExpress$AspNetCore$BootstrapAccordion | null;
     getBadgeIconCssClass(): string;
     getBadgeText(): string;
     getEnabled(): boolean;
@@ -510,8 +408,8 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setVisible(value: boolean): void;
   }
 
-  declare class AspNetCore$BootstrapBinaryImage
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapBinaryImage
+    mixins BootstrapClientEdit {
     clear(): void;
     getUploadedFileName(): string;
     getValue(): any;
@@ -539,18 +437,18 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapBinaryImageEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    click: AspNetCore$EditClickEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapBinaryImageEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    click: DevExpress$AspNetCore$EditClickEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare type AspNetCore$ButtonClickEventArgs = {
+  declare type DevExpress$AspNetCore$ButtonClickEventArgs = {
     +cancelEventAndBubble: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare class AspNetCore$BootstrapButton mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapButton mixins Control {
     doClick(): void;
     focus(): void;
     getBadgeIconCssClass(): string;
@@ -585,20 +483,20 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapButtonEventMap = {
-    checkedChanged: AspNetCore$ProcessingModeEventArgs,
-    click: AspNetCore$ButtonClickEventArgs,
-    gotFocus: AspNetCore$EventArgs,
-    lostFocus: AspNetCore$EventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapButtonEventMap = {
+    checkedChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    click: DevExpress$AspNetCore$ButtonClickEventArgs,
+    gotFocus: DevExpress$AspNetCore$EventArgs,
+    lostFocus: DevExpress$AspNetCore$EventArgs
+  } & ControlEventMap;
 
-  declare type AspNetCore$CalendarCustomDisabledDateEventArgs = {
+  declare type DevExpress$AspNetCore$CalendarCustomDisabledDateEventArgs = {
     +date: Date,
     isDisabled: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$BootstrapCalendar
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapCalendar
+    mixins BootstrapClientEdit {
     clearSelection(): void;
     deselectDate(date: Date): void;
     deselectRange(start: Date, end: Date): void;
@@ -636,26 +534,26 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapCalendarEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    customDisabledDate: AspNetCore$CalendarCustomDisabledDateEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    selectionChanged: AspNetCore$ProcessingModeEventArgs,
-    visibleMonthChanged: AspNetCore$ProcessingModeEventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapCalendarEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    customDisabledDate: DevExpress$AspNetCore$CalendarCustomDisabledDateEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    selectionChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    visibleMonthChanged: DevExpress$AspNetCore$ProcessingModeEventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare type AspNetCore$GridToolbarItemClickEventArgs = {
+  declare type DevExpress$AspNetCore$GridToolbarItemClickEventArgs = {
     +item: AspNetCore$BootstrapMenuItem,
     +toolbarIndex: number,
     +toolbarName: string,
     usePostBack: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare class AspNetCore$BootstrapGridBase mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapGridBase mixins Control {
     getToolbar(index: number): AspNetCore$BootstrapMenu | null;
     getToolbarByName(name: string): AspNetCore$BootstrapMenu | null;
     on<K: $Keys<AspNetCore$BootstrapGridBaseEventMap>>(
@@ -678,92 +576,92 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapGridBaseEventMap = {
-    toolbarItemClick: AspNetCore$GridToolbarItemClickEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapGridBaseEventMap = {
+    toolbarItemClick: DevExpress$AspNetCore$GridToolbarItemClickEventArgs
+  } & ControlEventMap;
 
-  declare type AspNetCore$CardViewColumnCancelEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewColumnCancelEventArgs = {
     +column: AspNetCore$BootstrapCardViewColumn
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewCardFocusingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewCardFocusingEventArgs = {
     +htmlEvent: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewCardClickEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewCardClickEventArgs = {
     +htmlEvent: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewCustomButtonEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewCustomButtonEventArgs = {
     +buttonID: string,
     +visibleIndex: number
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$CardViewSelectionEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewSelectionEventArgs = {
     +isAllRecordsOnPage: boolean,
     +isChangedOnServer: boolean,
     +isSelected: boolean,
     +visibleIndex: number
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$CardViewFocusEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewFocusEventArgs = {
     +isChangedOnServer: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditStartEditingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditStartEditingEventArgs = {
     +cardValues: any,
     focusedColumn: AspNetCore$BootstrapCardViewColumn,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditEndEditingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditEndEditingEventArgs = {
     +cardValues: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditCardValidatingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditCardValidatingEventArgs = {
     +validationInfo: any,
     +visibleIndex: number
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$CardViewBatchEditConfirmShowingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditConfirmShowingEventArgs = {
     +requestTriggerID: string
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditTemplateCellFocusedEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditTemplateCellFocusedEventArgs = {
     +column: AspNetCore$BootstrapCardViewColumn,
     handled: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$CardViewBatchEditChangesSavingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditChangesSavingEventArgs = {
     +deletedValues: any,
     +insertedValues: any,
     +updatedValues: any
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditChangesCancelingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditChangesCancelingEventArgs = {
     +deletedValues: any,
     +insertedValues: any,
     +updatedValues: any
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditCardInsertingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditCardInsertingEventArgs = {
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewBatchEditCardDeletingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewBatchEditCardDeletingEventArgs = {
     +cardValues: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$CardViewFocusedCellChangingEventArgs = {
+  declare type DevExpress$AspNetCore$CardViewFocusedCellChangingEventArgs = {
     +cellInfo: AspNetCore$BootstrapCardViewCellInfo
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare class AspNetCore$BootstrapCardView
-    mixins AspNetCore$BootstrapGridBase {
+  declare class DevExpress$AspNetCore$BootstrapCardView
+    mixins BootstrapGridBase {
     batchEditApi: AspNetCore$BootstrapCardViewBatchEditApi | null;
     addNewCard(): void;
     applyFilter(filterExpression: string): void;
@@ -789,9 +687,11 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getEditValue(columnFieldNameOrId: string): string;
     getEditor(
       column: AspNetCore$BootstrapCardViewColumn
-    ): AspNetCore$BootstrapClientEdit;
-    getEditor(columnIndex: number): AspNetCore$BootstrapClientEdit;
-    getEditor(columnFieldNameOrId: string): AspNetCore$BootstrapClientEdit;
+    ): DevExpress$AspNetCore$BootstrapClientEdit;
+    getEditor(columnIndex: number): DevExpress$AspNetCore$BootstrapClientEdit;
+    getEditor(
+      columnFieldNameOrId: string
+    ): DevExpress$AspNetCore$BootstrapClientEdit;
     getFocusedCardIndex(): number;
     getFocusedCell(): AspNetCore$BootstrapCardViewCellInfo | null;
     getPageCount(): number;
@@ -857,7 +757,9 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setFilterEnabled(isFilterEnabled: boolean): void;
     setFocusedCardIndex(visibleIndex: number): void;
     setFocusedCell(cardVisibleIndex: number, columnIndex: number): void;
-    setSearchPanelCustomEditor(editor: AspNetCore$BootstrapClientEdit): void;
+    setSearchPanelCustomEditor(
+      editor: DevExpress$AspNetCore$BootstrapClientEdit
+    ): void;
     setVerticalScrollPosition(position: number): void;
     showCustomizationWindow(): void;
     showFilterControl(): void;
@@ -925,31 +827,31 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapCardViewEventMap = {
-    batchEditCardDeleting: AspNetCore$CardViewBatchEditCardDeletingEventArgs,
-    batchEditCardInserting: AspNetCore$CardViewBatchEditCardInsertingEventArgs,
-    batchEditCardValidating: AspNetCore$CardViewBatchEditCardValidatingEventArgs,
-    batchEditChangesCanceling: AspNetCore$CardViewBatchEditChangesCancelingEventArgs,
-    batchEditChangesSaving: AspNetCore$CardViewBatchEditChangesSavingEventArgs,
-    batchEditConfirmShowing: AspNetCore$CardViewBatchEditConfirmShowingEventArgs,
-    batchEditEndEditing: AspNetCore$CardViewBatchEditEndEditingEventArgs,
-    batchEditStartEditing: AspNetCore$CardViewBatchEditStartEditingEventArgs,
-    batchEditTemplateCellFocused: AspNetCore$CardViewBatchEditTemplateCellFocusedEventArgs,
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    cardClick: AspNetCore$CardViewCardClickEventArgs,
-    cardDblClick: AspNetCore$CardViewCardClickEventArgs,
-    cardFocusing: AspNetCore$CardViewCardFocusingEventArgs,
-    columnSorting: AspNetCore$CardViewColumnCancelEventArgs,
-    customButtonClick: AspNetCore$CardViewCustomButtonEventArgs,
-    customizationWindowCloseUp: AspNetCore$EventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    focusedCardChanged: AspNetCore$CardViewFocusEventArgs,
-    focusedCellChanging: AspNetCore$CardViewFocusedCellChangingEventArgs,
-    selectionChanged: AspNetCore$CardViewSelectionEventArgs
-  } & AspNetCore$BootstrapGridBaseEventMap;
+  declare type DevExpress$AspNetCore$BootstrapCardViewEventMap = {
+    batchEditCardDeleting: DevExpress$AspNetCore$CardViewBatchEditCardDeletingEventArgs,
+    batchEditCardInserting: DevExpress$AspNetCore$CardViewBatchEditCardInsertingEventArgs,
+    batchEditCardValidating: DevExpress$AspNetCore$CardViewBatchEditCardValidatingEventArgs,
+    batchEditChangesCanceling: DevExpress$AspNetCore$CardViewBatchEditChangesCancelingEventArgs,
+    batchEditChangesSaving: DevExpress$AspNetCore$CardViewBatchEditChangesSavingEventArgs,
+    batchEditConfirmShowing: DevExpress$AspNetCore$CardViewBatchEditConfirmShowingEventArgs,
+    batchEditEndEditing: DevExpress$AspNetCore$CardViewBatchEditEndEditingEventArgs,
+    batchEditStartEditing: DevExpress$AspNetCore$CardViewBatchEditStartEditingEventArgs,
+    batchEditTemplateCellFocused: DevExpress$AspNetCore$CardViewBatchEditTemplateCellFocusedEventArgs,
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    cardClick: DevExpress$AspNetCore$CardViewCardClickEventArgs,
+    cardDblClick: DevExpress$AspNetCore$CardViewCardClickEventArgs,
+    cardFocusing: DevExpress$AspNetCore$CardViewCardFocusingEventArgs,
+    columnSorting: DevExpress$AspNetCore$CardViewColumnCancelEventArgs,
+    customButtonClick: DevExpress$AspNetCore$CardViewCustomButtonEventArgs,
+    customizationWindowCloseUp: DevExpress$AspNetCore$EventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    focusedCardChanged: DevExpress$AspNetCore$CardViewFocusEventArgs,
+    focusedCellChanging: DevExpress$AspNetCore$CardViewFocusedCellChangingEventArgs,
+    selectionChanged: DevExpress$AspNetCore$CardViewSelectionEventArgs
+  } & BootstrapGridBaseEventMap;
 
-  declare class AspNetCore$BootstrapCardViewBatchEditApi {
+  declare class DevExpress$AspNetCore$BootstrapCardViewBatchEditApi {
     instance: any;
     constructor(instance: any): this;
     addNewCard(): void;
@@ -966,12 +868,12 @@ declare module "devexpress-aspnetcore-bootstrap" {
     validateCards(validateOnlyModified: boolean): boolean;
   }
 
-  declare class AspNetCore$BootstrapCardViewColumn {
+  declare class DevExpress$AspNetCore$BootstrapCardViewColumn {
     instance: any;
     constructor(instance: any): this;
   }
 
-  declare class AspNetCore$BootstrapCardViewCellInfo {
+  declare class DevExpress$AspNetCore$BootstrapCardViewCellInfo {
     instance: any;
     constructor(instance: any): this;
     cardVisibleIndex: number;
@@ -986,7 +888,7 @@ declare module "devexpress-aspnetcore-bootstrap" {
       initial: boolean
     ): any;
     getColumnDisplayText(columnFieldNameOrId: string, value: any): string;
-    getEditCellInfo(): AspNetCore$BootstrapCardViewCellInfo | null;
+    getEditCellInfo(): DevExpress$AspNetCore$BootstrapCardViewCellInfo | null;
     hasChanges(): boolean;
     moveFocusBackward(): boolean;
     moveFocusForward(): boolean;
@@ -1007,43 +909,43 @@ declare module "devexpress-aspnetcore-bootstrap" {
     startEdit(visibleIndex: number, columnIndex: number): void;
   }
 
-  declare type AspNetCore$BootstrapChartEventArgsBase = {
+  declare type DevExpress$AspNetCore$BootstrapChartEventArgsBase = {
     +component: any,
     +element: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$BootstrapChartErrorEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartErrorEventArgs = {
     +target: any
-  } & AspNetCore$BootstrapChartEventArgsBase;
+  } & BootstrapChartEventArgsBase;
 
-  declare type AspNetCore$BootstrapChartElementActionEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartElementActionEventArgs = {
     +target: any
-  } & AspNetCore$BootstrapChartEventArgsBase;
+  } & BootstrapChartEventArgsBase;
 
-  declare type AspNetCore$BootstrapChartElementClickEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartElementClickEventArgs = {
     +jQueryEvent: any
-  } & AspNetCore$BootstrapChartElementActionEventArgs;
+  } & BootstrapChartElementActionEventArgs;
 
-  declare type AspNetCore$BootstrapChartExportEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartExportEventArgs = {
     cancel: boolean,
     +data: any,
     +fileName: string,
     +format: string
-  } & AspNetCore$BootstrapChartEventArgsBase;
+  } & BootstrapChartEventArgsBase;
 
-  declare type AspNetCore$BootstrapChartOptionChangedEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartOptionChangedEventArgs = {
     +fullName: string,
     +name: string,
     +previousValue: any,
     +value: any
-  } & AspNetCore$BootstrapChartEventArgsBase;
+  } & BootstrapChartEventArgsBase;
 
-  declare type AspNetCore$BootstrapChartZoomEndEventArgs = {
+  declare type DevExpress$AspNetCore$BootstrapChartZoomEndEventArgs = {
     +rangeEnd: any,
     +rangeStart: any
-  } & AspNetCore$BootstrapChartEventArgsBase;
+  } & BootstrapChartEventArgsBase;
 
-  declare class AspNetCore$BootstrapChart mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapChart mixins Control {
     exportTo(format: string, fileName: string): void;
     getDataSource(): any;
     getInstance(): any;
@@ -1070,31 +972,31 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapChartEventMap = {
-    argumentAxisClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    disposing: AspNetCore$BootstrapChartEventArgsBase,
-    done: AspNetCore$BootstrapChartEventArgsBase,
-    drawn: AspNetCore$BootstrapChartEventArgsBase,
-    exported: AspNetCore$BootstrapChartEventArgsBase,
-    exporting: AspNetCore$BootstrapChartExportEventArgs,
-    fileSaving: AspNetCore$BootstrapChartExportEventArgs,
-    incidentOccurred: AspNetCore$BootstrapChartErrorEventArgs,
-    init: AspNetCore$BootstrapChartEventArgsBase,
-    legendClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    optionChanged: AspNetCore$BootstrapChartOptionChangedEventArgs,
-    pointClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    pointHoverChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    pointSelectionChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    seriesClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    seriesHoverChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    seriesSelectionChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipHidden: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipShown: AspNetCore$BootstrapChartElementActionEventArgs,
-    zoomEnd: AspNetCore$BootstrapChartZoomEndEventArgs,
-    zoomStart: AspNetCore$BootstrapChartEventArgsBase
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapChartEventMap = {
+    argumentAxisClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    disposing: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    done: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    drawn: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exported: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exporting: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    fileSaving: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    incidentOccurred: DevExpress$AspNetCore$BootstrapChartErrorEventArgs,
+    init: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    legendClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    optionChanged: DevExpress$AspNetCore$BootstrapChartOptionChangedEventArgs,
+    pointClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    pointHoverChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    pointSelectionChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    seriesClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    seriesHoverChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    seriesSelectionChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipHidden: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipShown: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    zoomEnd: DevExpress$AspNetCore$BootstrapChartZoomEndEventArgs,
+    zoomStart: DevExpress$AspNetCore$BootstrapChartEventArgsBase
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapPolarChart mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapPolarChart mixins Control {
     exportTo(format: string, fileName: string): void;
     getDataSource(): any;
     getInstance(): any;
@@ -1121,29 +1023,29 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapPolarChartEventMap = {
-    argumentAxisClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    disposing: AspNetCore$BootstrapChartEventArgsBase,
-    done: AspNetCore$BootstrapChartEventArgsBase,
-    drawn: AspNetCore$BootstrapChartEventArgsBase,
-    exported: AspNetCore$BootstrapChartEventArgsBase,
-    exporting: AspNetCore$BootstrapChartExportEventArgs,
-    fileSaving: AspNetCore$BootstrapChartExportEventArgs,
-    incidentOccurred: AspNetCore$BootstrapChartErrorEventArgs,
-    init: AspNetCore$BootstrapChartEventArgsBase,
-    legendClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    optionChanged: AspNetCore$BootstrapChartOptionChangedEventArgs,
-    pointClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    pointHoverChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    pointSelectionChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    seriesClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    seriesHoverChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    seriesSelectionChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipHidden: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipShown: AspNetCore$BootstrapChartElementActionEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapPolarChartEventMap = {
+    argumentAxisClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    disposing: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    done: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    drawn: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exported: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exporting: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    fileSaving: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    incidentOccurred: DevExpress$AspNetCore$BootstrapChartErrorEventArgs,
+    init: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    legendClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    optionChanged: DevExpress$AspNetCore$BootstrapChartOptionChangedEventArgs,
+    pointClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    pointHoverChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    pointSelectionChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    seriesClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    seriesHoverChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    seriesSelectionChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipHidden: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipShown: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapPieChart mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapPieChart mixins Control {
     exportTo(format: string, fileName: string): void;
     getDataSource(): any;
     getInstance(): any;
@@ -1170,26 +1072,26 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapPieChartEventMap = {
-    disposing: AspNetCore$BootstrapChartEventArgsBase,
-    done: AspNetCore$BootstrapChartEventArgsBase,
-    drawn: AspNetCore$BootstrapChartEventArgsBase,
-    exported: AspNetCore$BootstrapChartEventArgsBase,
-    exporting: AspNetCore$BootstrapChartExportEventArgs,
-    fileSaving: AspNetCore$BootstrapChartExportEventArgs,
-    incidentOccurred: AspNetCore$BootstrapChartErrorEventArgs,
-    init: AspNetCore$BootstrapChartEventArgsBase,
-    legendClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    optionChanged: AspNetCore$BootstrapChartOptionChangedEventArgs,
-    pointClick: AspNetCore$BootstrapChartElementClickEventArgs,
-    pointHoverChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    pointSelectionChanged: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipHidden: AspNetCore$BootstrapChartElementActionEventArgs,
-    tooltipShown: AspNetCore$BootstrapChartElementActionEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapPieChartEventMap = {
+    disposing: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    done: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    drawn: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exported: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exporting: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    fileSaving: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    incidentOccurred: DevExpress$AspNetCore$BootstrapChartErrorEventArgs,
+    init: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    legendClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    optionChanged: DevExpress$AspNetCore$BootstrapChartOptionChangedEventArgs,
+    pointClick: DevExpress$AspNetCore$BootstrapChartElementClickEventArgs,
+    pointHoverChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    pointSelectionChanged: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipHidden: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs,
+    tooltipShown: DevExpress$AspNetCore$BootstrapChartElementActionEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapCheckBox
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapCheckBox
+    mixins BootstrapClientEdit {
     getCheckState(): string;
     getChecked(): boolean;
     getText(): string;
@@ -1216,12 +1118,12 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapCheckBoxEventMap = {
-    checkedChanged: AspNetCore$ProcessingModeEventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapCheckBoxEventMap = {
+    checkedChanged: DevExpress$AspNetCore$ProcessingModeEventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapRadioButton
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapRadioButton
+    mixins BootstrapClientEdit {
     getCheckState(): string;
     getChecked(): boolean;
     getText(): string;
@@ -1248,12 +1150,12 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapRadioButtonEventMap = {
-    checkedChanged: AspNetCore$ProcessingModeEventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapRadioButtonEventMap = {
+    checkedChanged: DevExpress$AspNetCore$ProcessingModeEventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapComboBox
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapComboBox
+    mixins BootstrapClientEdit {
     addItem(texts: string[]): number;
     addItem(text: string): number;
     addItem(texts: string[], value: any): number;
@@ -1355,35 +1257,35 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapComboBoxEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
+  declare type DevExpress$AspNetCore$BootstrapComboBoxEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    closeUp: AspNetCore$EventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    closeUp: DevExpress$AspNetCore$EventArgs,
     customHighlighting: AspNetCore$ListEditCustomHighlightingEventArgs,
-    dropDown: AspNetCore$EventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
+    dropDown: DevExpress$AspNetCore$EventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
     itemFiltering: AspNetCore$ListEditItemFilteringEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    queryCloseUp: AspNetCore$CancelEventArgs,
-    selectedIndexChanged: AspNetCore$ProcessingModeEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    queryCloseUp: DevExpress$AspNetCore$CancelEventArgs,
+    selectedIndexChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare type AspNetCore$ParseDateEventArgs = {
+  declare type DevExpress$AspNetCore$ParseDateEventArgs = {
     +date: Date,
     +handled: boolean,
     +value: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$BootstrapDateEdit
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapDateEdit
+    mixins BootstrapClientEdit {
     adjustDropDownWindow(): void;
     getButtonVisible(number: number): boolean;
-    getCalendar(): AspNetCore$BootstrapCalendar | null;
+    getCalendar(): DevExpress$AspNetCore$BootstrapCalendar | null;
     getCaretPosition(): number;
     getDate(): Date;
     getMaxDate(): Date;
@@ -1425,23 +1327,23 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapDateEditEventMap = {
+  declare type DevExpress$AspNetCore$BootstrapDateEditEventMap = {
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    calendarCustomDisabledDate: AspNetCore$CalendarCustomDisabledDateEventArgs,
-    closeUp: AspNetCore$EventArgs,
-    dateChanged: AspNetCore$ProcessingModeEventArgs,
-    dropDown: AspNetCore$EventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    parseDate: AspNetCore$ParseDateEventArgs,
-    queryCloseUp: AspNetCore$CancelEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    calendarCustomDisabledDate: DevExpress$AspNetCore$CalendarCustomDisabledDateEventArgs,
+    closeUp: DevExpress$AspNetCore$EventArgs,
+    dateChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    dropDown: DevExpress$AspNetCore$EventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    parseDate: DevExpress$AspNetCore$ParseDateEventArgs,
+    queryCloseUp: DevExpress$AspNetCore$CancelEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapDropDownEdit
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapDropDownEdit
+    mixins BootstrapClientEdit {
     adjustDropDownWindow(): void;
     getButtonVisible(number: number): boolean;
     getCaretPosition(): number;
@@ -1479,19 +1381,19 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapDropDownEditEventMap = {
+  declare type DevExpress$AspNetCore$BootstrapDropDownEditEventMap = {
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    closeUp: AspNetCore$EventArgs,
-    dropDown: AspNetCore$EventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    queryCloseUp: AspNetCore$CancelEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    closeUp: DevExpress$AspNetCore$EventArgs,
+    dropDown: DevExpress$AspNetCore$EventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    queryCloseUp: DevExpress$AspNetCore$CancelEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapFormLayout mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapFormLayout mixins Control {
     getItemByName(name: string): AspNetCore$BootstrapFormLayoutItem | null;
     on<K: $Keys<AspNetCore$BootstrapFormLayoutEventMap>>(
       eventName: K,
@@ -1513,133 +1415,135 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapFormLayoutEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapFormLayoutEventMap = {} & ControlEventMap;
 
-  declare class AspNetCore$BootstrapFormLayoutItem {
+  declare class DevExpress$AspNetCore$BootstrapFormLayoutItem {
     instance: any;
     constructor(instance: any): this;
-    formLayout: AspNetCore$BootstrapFormLayout | null;
+    formLayout: DevExpress$AspNetCore$BootstrapFormLayout | null;
     name: string;
-    parent: AspNetCore$BootstrapFormLayoutItem | null;
+    parent: DevExpress$AspNetCore$BootstrapFormLayoutItem | null;
     getCaption(): string;
-    getItemByName(name: string): AspNetCore$BootstrapFormLayoutItem | null;
+    getItemByName(
+      name: string
+    ): DevExpress$AspNetCore$BootstrapFormLayoutItem | null;
     getVisible(): boolean;
     setCaption(caption: string): void;
     setVisible(value: boolean): void;
   }
 
-  declare type AspNetCore$GridViewColumnCancelEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewColumnCancelEventArgs = {
     +column: AspNetCore$BootstrapGridViewColumn
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewColumnProcessingModeEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewColumnProcessingModeEventArgs = {
     +column: AspNetCore$BootstrapGridViewColumn
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GridViewRowCancelEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewRowCancelEventArgs = {
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewSelectionEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewSelectionEventArgs = {
     +isAllRecordsOnPage: boolean,
     +isChangedOnServer: boolean,
     +isSelected: boolean,
     +visibleIndex: number
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GridViewFocusEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewFocusEventArgs = {
     +isChangedOnServer: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GridViewRowFocusingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewRowFocusingEventArgs = {
     +htmlEvent: any
-  } & AspNetCore$GridViewRowCancelEventArgs;
+  } & GridViewRowCancelEventArgs;
 
-  declare type AspNetCore$GridViewRowClickEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewRowClickEventArgs = {
     +htmlEvent: any
-  } & AspNetCore$GridViewRowCancelEventArgs;
+  } & GridViewRowCancelEventArgs;
 
-  declare type AspNetCore$GridViewContextMenuEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewContextMenuEventArgs = {
     +htmlEvent: any,
     +index: number,
     +menu: any,
     +objectType: string,
     showBrowserMenu: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$GridViewContextMenuItemClickEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewContextMenuItemClickEventArgs = {
     +elementIndex: number,
     handled: boolean,
     +item: AspNetCore$BootstrapMenuItem,
     +objectType: string,
     usePostBack: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GridViewCustomButtonEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewCustomButtonEventArgs = {
     +buttonID: string,
     +visibleIndex: number
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$GridViewColumnMovingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewColumnMovingEventArgs = {
     allow: boolean,
     +destinationColumn: AspNetCore$BootstrapGridViewColumn,
     +isDropBefore: boolean,
     +isGroupPanel: boolean,
     +sourceColumn: AspNetCore$BootstrapGridViewColumn
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$GridViewBatchEditConfirmShowingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditConfirmShowingEventArgs = {
     +requestTriggerID: string
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditStartEditingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditStartEditingEventArgs = {
     focusedColumn: AspNetCore$BootstrapGridViewColumn,
     +rowValues: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditEndEditingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditEndEditingEventArgs = {
     +rowValues: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditRowValidatingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditRowValidatingEventArgs = {
     +validationInfo: any,
     +visibleIndex: number
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$GridViewBatchEditTemplateCellFocusedEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditTemplateCellFocusedEventArgs = {
     +column: AspNetCore$BootstrapGridViewColumn,
     handled: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$GridViewBatchEditChangesSavingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditChangesSavingEventArgs = {
     +deletedValues: any,
     +insertedValues: any,
     +updatedValues: any
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditChangesCancelingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditChangesCancelingEventArgs = {
     +deletedValues: any,
     +insertedValues: any,
     +updatedValues: any
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditRowInsertingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditRowInsertingEventArgs = {
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewBatchEditRowDeletingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewBatchEditRowDeletingEventArgs = {
     +rowValues: any,
     +visibleIndex: number
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$GridViewFocusedCellChangingEventArgs = {
+  declare type DevExpress$AspNetCore$GridViewFocusedCellChangingEventArgs = {
     +cellInfo: AspNetCore$BootstrapGridViewCellInfo
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare class AspNetCore$BootstrapGridView
-    mixins AspNetCore$BootstrapGridBase {
+  declare class DevExpress$AspNetCore$BootstrapGridView
+    mixins BootstrapGridBase {
     batchEditApi: AspNetCore$BootstrapGridViewBatchEditApi | null;
     addNewRow(): void;
     applyFilter(filterExpression: string): void;
@@ -1685,9 +1589,11 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getEditValue(columnFieldNameOrId: string): string;
     getEditor(
       column: AspNetCore$BootstrapGridViewColumn
-    ): AspNetCore$BootstrapClientEdit;
-    getEditor(columnIndex: number): AspNetCore$BootstrapClientEdit;
-    getEditor(columnFieldNameOrId: string): AspNetCore$BootstrapClientEdit;
+    ): DevExpress$AspNetCore$BootstrapClientEdit;
+    getEditor(columnIndex: number): DevExpress$AspNetCore$BootstrapClientEdit;
+    getEditor(
+      columnFieldNameOrId: string
+    ): DevExpress$AspNetCore$BootstrapClientEdit;
     getFocusedCell(): AspNetCore$BootstrapGridViewCellInfo | null;
     getFocusedRowIndex(): number;
     getHorizontalScrollPosition(): number;
@@ -1756,7 +1662,9 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setFocusedCell(rowVisibleIndex: number, columnIndex: number): void;
     setFocusedRowIndex(visibleIndex: number): void;
     setHorizontalScrollPosition(position: number): void;
-    setSearchPanelCustomEditor(editor: AspNetCore$BootstrapClientEdit): void;
+    setSearchPanelCustomEditor(
+      editor: DevExpress$AspNetCore$BootstrapClientEdit
+    ): void;
     setVerticalScrollPosition(position: number): void;
     showCustomizationDialog(): void;
     showCustomizationWindow(): void;
@@ -1828,42 +1736,42 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapGridViewEventMap = {
-    batchEditChangesCanceling: AspNetCore$GridViewBatchEditChangesCancelingEventArgs,
-    batchEditChangesSaving: AspNetCore$GridViewBatchEditChangesSavingEventArgs,
-    batchEditConfirmShowing: AspNetCore$GridViewBatchEditConfirmShowingEventArgs,
-    batchEditEndEditing: AspNetCore$GridViewBatchEditEndEditingEventArgs,
-    batchEditRowDeleting: AspNetCore$GridViewBatchEditRowDeletingEventArgs,
-    batchEditRowInserting: AspNetCore$GridViewBatchEditRowInsertingEventArgs,
-    batchEditRowValidating: AspNetCore$GridViewBatchEditRowValidatingEventArgs,
-    batchEditStartEditing: AspNetCore$GridViewBatchEditStartEditingEventArgs,
-    batchEditTemplateCellFocused: AspNetCore$GridViewBatchEditTemplateCellFocusedEventArgs,
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    columnGrouping: AspNetCore$GridViewColumnCancelEventArgs,
-    columnMoving: AspNetCore$GridViewColumnMovingEventArgs,
-    columnResized: AspNetCore$GridViewColumnProcessingModeEventArgs,
-    columnResizing: AspNetCore$GridViewColumnCancelEventArgs,
-    columnSorting: AspNetCore$GridViewColumnCancelEventArgs,
-    columnStartDragging: AspNetCore$GridViewColumnCancelEventArgs,
-    contextMenu: AspNetCore$GridViewContextMenuEventArgs,
-    contextMenuItemClick: AspNetCore$GridViewContextMenuItemClickEventArgs,
-    customButtonClick: AspNetCore$GridViewCustomButtonEventArgs,
-    customizationWindowCloseUp: AspNetCore$EventArgs,
-    detailRowCollapsing: AspNetCore$GridViewRowCancelEventArgs,
-    detailRowExpanding: AspNetCore$GridViewRowCancelEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    focusedCellChanging: AspNetCore$GridViewFocusedCellChangingEventArgs,
-    focusedRowChanged: AspNetCore$GridViewFocusEventArgs,
-    rowClick: AspNetCore$GridViewRowClickEventArgs,
-    rowCollapsing: AspNetCore$GridViewRowCancelEventArgs,
-    rowDblClick: AspNetCore$GridViewRowClickEventArgs,
-    rowExpanding: AspNetCore$GridViewRowCancelEventArgs,
-    rowFocusing: AspNetCore$GridViewRowFocusingEventArgs,
-    selectionChanged: AspNetCore$GridViewSelectionEventArgs
-  } & AspNetCore$BootstrapGridBaseEventMap;
+  declare type DevExpress$AspNetCore$BootstrapGridViewEventMap = {
+    batchEditChangesCanceling: DevExpress$AspNetCore$GridViewBatchEditChangesCancelingEventArgs,
+    batchEditChangesSaving: DevExpress$AspNetCore$GridViewBatchEditChangesSavingEventArgs,
+    batchEditConfirmShowing: DevExpress$AspNetCore$GridViewBatchEditConfirmShowingEventArgs,
+    batchEditEndEditing: DevExpress$AspNetCore$GridViewBatchEditEndEditingEventArgs,
+    batchEditRowDeleting: DevExpress$AspNetCore$GridViewBatchEditRowDeletingEventArgs,
+    batchEditRowInserting: DevExpress$AspNetCore$GridViewBatchEditRowInsertingEventArgs,
+    batchEditRowValidating: DevExpress$AspNetCore$GridViewBatchEditRowValidatingEventArgs,
+    batchEditStartEditing: DevExpress$AspNetCore$GridViewBatchEditStartEditingEventArgs,
+    batchEditTemplateCellFocused: DevExpress$AspNetCore$GridViewBatchEditTemplateCellFocusedEventArgs,
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    columnGrouping: DevExpress$AspNetCore$GridViewColumnCancelEventArgs,
+    columnMoving: DevExpress$AspNetCore$GridViewColumnMovingEventArgs,
+    columnResized: DevExpress$AspNetCore$GridViewColumnProcessingModeEventArgs,
+    columnResizing: DevExpress$AspNetCore$GridViewColumnCancelEventArgs,
+    columnSorting: DevExpress$AspNetCore$GridViewColumnCancelEventArgs,
+    columnStartDragging: DevExpress$AspNetCore$GridViewColumnCancelEventArgs,
+    contextMenu: DevExpress$AspNetCore$GridViewContextMenuEventArgs,
+    contextMenuItemClick: DevExpress$AspNetCore$GridViewContextMenuItemClickEventArgs,
+    customButtonClick: DevExpress$AspNetCore$GridViewCustomButtonEventArgs,
+    customizationWindowCloseUp: DevExpress$AspNetCore$EventArgs,
+    detailRowCollapsing: DevExpress$AspNetCore$GridViewRowCancelEventArgs,
+    detailRowExpanding: DevExpress$AspNetCore$GridViewRowCancelEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    focusedCellChanging: DevExpress$AspNetCore$GridViewFocusedCellChangingEventArgs,
+    focusedRowChanged: DevExpress$AspNetCore$GridViewFocusEventArgs,
+    rowClick: DevExpress$AspNetCore$GridViewRowClickEventArgs,
+    rowCollapsing: DevExpress$AspNetCore$GridViewRowCancelEventArgs,
+    rowDblClick: DevExpress$AspNetCore$GridViewRowClickEventArgs,
+    rowExpanding: DevExpress$AspNetCore$GridViewRowCancelEventArgs,
+    rowFocusing: DevExpress$AspNetCore$GridViewRowFocusingEventArgs,
+    selectionChanged: DevExpress$AspNetCore$GridViewSelectionEventArgs
+  } & BootstrapGridBaseEventMap;
 
-  declare class AspNetCore$BootstrapGridViewBatchEditApi {
+  declare class DevExpress$AspNetCore$BootstrapGridViewBatchEditApi {
     instance: any;
     constructor(instance: any): this;
     addNewRow(): void;
@@ -1910,7 +1818,7 @@ declare module "devexpress-aspnetcore-bootstrap" {
     validateRows(validateOnlyModified: boolean): boolean;
   }
 
-  declare class AspNetCore$BootstrapGridViewColumn {
+  declare class DevExpress$AspNetCore$BootstrapGridViewColumn {
     instance: any;
     constructor(instance: any): this;
     fieldName: string;
@@ -1919,13 +1827,13 @@ declare module "devexpress-aspnetcore-bootstrap" {
     visible: boolean;
   }
 
-  declare class AspNetCore$BootstrapGridViewCellInfo {
+  declare class DevExpress$AspNetCore$BootstrapGridViewCellInfo {
     instance: any;
     constructor(instance: any): this;
     rowVisibleIndex: number;
   }
 
-  declare class AspNetCore$BootstrapHyperLink mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapHyperLink mixins Control {
     getBadgeIconCssClass(): string;
     getBadgeText(): string;
     getCaption(): string;
@@ -1960,28 +1868,28 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapHyperLinkEventMap = {
-    click: AspNetCore$EditClickEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapHyperLinkEventMap = {
+    click: DevExpress$AspNetCore$EditClickEventArgs
+  } & ControlEventMap;
 
-  declare type AspNetCore$ListEditItemSelectedChangedEventArgs = {
+  declare type DevExpress$AspNetCore$ListEditItemSelectedChangedEventArgs = {
     +index: number,
     +isSelected: boolean
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$ListEditCustomHighlightingEventArgs = {
+  declare type DevExpress$AspNetCore$ListEditCustomHighlightingEventArgs = {
     +filter: string,
     highlighting: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$ListEditItemFilteringEventArgs = {
+  declare type DevExpress$AspNetCore$ListEditItemFilteringEventArgs = {
     +filter: string,
     isFit: boolean,
     +item: AspNetCore$BootstrapListBoxItem
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$BootstrapListBox
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapListBox
+    mixins BootstrapClientEdit {
     addItem(texts: string[]): number;
     addItem(text: string): number;
     addItem(texts: string[], value: any): number;
@@ -2078,26 +1986,26 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapListBoxEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    customHighlighting: AspNetCore$ListEditCustomHighlightingEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    itemDoubleClick: AspNetCore$EventArgs,
-    itemFiltering: AspNetCore$ListEditItemFilteringEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    selectedIndexChanged: AspNetCore$ProcessingModeEventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapListBoxEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    customHighlighting: DevExpress$AspNetCore$ListEditCustomHighlightingEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    itemDoubleClick: DevExpress$AspNetCore$EventArgs,
+    itemFiltering: DevExpress$AspNetCore$ListEditItemFilteringEventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    selectedIndexChanged: DevExpress$AspNetCore$ProcessingModeEventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapListBoxItem {
+  declare class DevExpress$AspNetCore$BootstrapListBoxItem {
     instance: any;
     constructor(instance: any): this;
     iconCssClass: string;
     imageUrl: string;
     index: number;
-    listEditBase: AspNetCore$BootstrapListBox | null;
+    listEditBase: DevExpress$AspNetCore$BootstrapListBox | null;
     text: string;
     value: any;
     getColumnText(columnIndex: number): string;
@@ -2106,20 +2014,20 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getFieldText(fieldName: string): string;
   }
 
-  declare class AspNetCore$BootstrapCheckBoxList
-    mixins AspNetCore$BootstrapListBox {
-    getItem(index: number): AspNetCore$BootstrapListBoxItem | null;
+  declare class DevExpress$AspNetCore$BootstrapCheckBoxList
+    mixins BootstrapListBox {
+    getItem(index: number): DevExpress$AspNetCore$BootstrapListBoxItem | null;
     getItemCount(): number;
     getSelectedIndices(): number[];
-    getSelectedItems(): AspNetCore$BootstrapListBoxItem[];
+    getSelectedItems(): DevExpress$AspNetCore$BootstrapListBoxItem[];
     getSelectedValues(): any[];
     selectAll(): void;
     selectIndices(indices: number[]): void;
-    selectItems(items: AspNetCore$BootstrapListBoxItem[]): void;
+    selectItems(items: DevExpress$AspNetCore$BootstrapListBoxItem[]): void;
     selectValues(values: any[]): void;
     unselectAll(): void;
     unselectIndices(indices: number[]): void;
-    unselectItems(items: AspNetCore$BootstrapListBoxItem[]): void;
+    unselectItems(items: DevExpress$AspNetCore$BootstrapListBoxItem[]): void;
     unselectValues(values: any[]): void;
     on<K: $Keys<AspNetCore$BootstrapCheckBoxListEventMap>>(
       eventName: K,
@@ -2141,11 +2049,11 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapCheckBoxListEventMap = {} & AspNetCore$BootstrapListBoxEventMap;
+  declare type DevExpress$AspNetCore$BootstrapCheckBoxListEventMap = {} & BootstrapListBoxEventMap;
 
-  declare class AspNetCore$BootstrapRadioButtonList
-    mixins AspNetCore$BootstrapListBox {
-    getItem(index: number): AspNetCore$BootstrapListBoxItem | null;
+  declare class DevExpress$AspNetCore$BootstrapRadioButtonList
+    mixins BootstrapListBox {
+    getItem(index: number): DevExpress$AspNetCore$BootstrapListBoxItem | null;
     getItemCount(): number;
     on<K: $Keys<AspNetCore$BootstrapRadioButtonListEventMap>>(
       eventName: K,
@@ -2167,21 +2075,21 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapRadioButtonListEventMap = {} & AspNetCore$BootstrapListBoxEventMap;
+  declare type DevExpress$AspNetCore$BootstrapRadioButtonListEventMap = {} & BootstrapListBoxEventMap;
 
-  declare type AspNetCore$MenuItemEventArgs = {
+  declare type DevExpress$AspNetCore$MenuItemEventArgs = {
     +item: AspNetCore$BootstrapMenuItem
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$MenuItemMouseEventArgs = {} & AspNetCore$MenuItemEventArgs;
+  declare type DevExpress$AspNetCore$MenuItemMouseEventArgs = {} & MenuItemEventArgs;
 
-  declare type AspNetCore$MenuItemClickEventArgs = {
+  declare type DevExpress$AspNetCore$MenuItemClickEventArgs = {
     +htmlElement: { [key: string]: any },
     +htmlEvent: { [key: string]: any },
     +item: AspNetCore$BootstrapMenuItem
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare class AspNetCore$BootstrapMenu mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapMenu mixins Control {
     getItem(index: number): AspNetCore$BootstrapMenuItem | null;
     getItemByName(name: string): AspNetCore$BootstrapMenuItem | null;
     getItemCount(): number;
@@ -2210,30 +2118,30 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapMenuEventMap = {
-    closeUp: AspNetCore$MenuItemEventArgs,
-    itemClick: AspNetCore$MenuItemClickEventArgs,
-    itemMouseOut: AspNetCore$MenuItemMouseEventArgs,
-    itemMouseOver: AspNetCore$MenuItemMouseEventArgs,
-    popUp: AspNetCore$MenuItemEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapMenuEventMap = {
+    closeUp: DevExpress$AspNetCore$MenuItemEventArgs,
+    itemClick: DevExpress$AspNetCore$MenuItemClickEventArgs,
+    itemMouseOut: DevExpress$AspNetCore$MenuItemMouseEventArgs,
+    itemMouseOver: DevExpress$AspNetCore$MenuItemMouseEventArgs,
+    popUp: DevExpress$AspNetCore$MenuItemEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapMenuItem {
+  declare class DevExpress$AspNetCore$BootstrapMenuItem {
     instance: any;
     constructor(instance: any): this;
     index: number;
     indexPath: string;
-    menu: AspNetCore$BootstrapMenu | null;
+    menu: DevExpress$AspNetCore$BootstrapMenu | null;
     name: string;
-    parent: AspNetCore$BootstrapMenuItem | null;
+    parent: DevExpress$AspNetCore$BootstrapMenuItem | null;
     getBadgeIconCssClass(): string;
     getBadgeText(): string;
     getChecked(): boolean;
     getEnabled(): boolean;
     getIconCssClass(): string;
     getImageUrl(): string;
-    getItem(index: number): AspNetCore$BootstrapMenuItem | null;
-    getItemByName(name: string): AspNetCore$BootstrapMenuItem | null;
+    getItem(index: number): DevExpress$AspNetCore$BootstrapMenuItem | null;
+    getItemByName(name: string): DevExpress$AspNetCore$BootstrapMenuItem | null;
     getItemCount(): number;
     getNavigateUrl(): string;
     getText(): string;
@@ -2249,28 +2157,28 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setVisible(value: boolean): void;
   }
 
-  declare type AspNetCore$PopupWindowEventArgs = {
+  declare type DevExpress$AspNetCore$PopupWindowEventArgs = {
     +window: AspNetCore$BootstrapPopupWindow
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$PopupWindowCloseUpEventArgs = {
-    +closeReason: AspNetCore$BootstrapPopupControlCloseReason
-  } & AspNetCore$PopupWindowEventArgs;
+  declare type DevExpress$AspNetCore$PopupWindowCloseUpEventArgs = {
+    +closeReason: DevExpress$AspNetCore$BootstrapPopupControlCloseReason
+  } & PopupWindowEventArgs;
 
-  declare type AspNetCore$PopupWindowCancelEventArgs = {
-    +closeReason: AspNetCore$BootstrapPopupControlCloseReason,
+  declare type DevExpress$AspNetCore$PopupWindowCancelEventArgs = {
+    +closeReason: DevExpress$AspNetCore$BootstrapPopupControlCloseReason,
     +window: AspNetCore$BootstrapPopupWindow
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$PopupWindowPinnedChangedEventArgs = {
+  declare type DevExpress$AspNetCore$PopupWindowPinnedChangedEventArgs = {
     +pinned: boolean
-  } & AspNetCore$PopupWindowEventArgs;
+  } & PopupWindowEventArgs;
 
-  declare type AspNetCore$PopupWindowResizeEventArgs = {
+  declare type DevExpress$AspNetCore$PopupWindowResizeEventArgs = {
     +resizeState: number
-  } & AspNetCore$PopupWindowEventArgs;
+  } & PopupWindowEventArgs;
 
-  declare class AspNetCore$BootstrapPopupControl mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapPopupControl mixins Control {
     adjustSize(): void;
     bringToFront(): void;
     bringWindowToFront(window: AspNetCore$BootstrapPopupWindow): void;
@@ -2456,26 +2364,26 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapPopupControlEventMap = {
-    afterResizing: AspNetCore$PopupWindowEventArgs,
-    beforeResizing: AspNetCore$PopupWindowEventArgs,
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    closeUp: AspNetCore$PopupWindowCloseUpEventArgs,
-    closing: AspNetCore$PopupWindowCancelEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    pinnedChanged: AspNetCore$PopupWindowPinnedChangedEventArgs,
-    popUp: AspNetCore$PopupWindowEventArgs,
-    resize: AspNetCore$PopupWindowResizeEventArgs,
-    shown: AspNetCore$PopupWindowEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapPopupControlEventMap = {
+    afterResizing: DevExpress$AspNetCore$PopupWindowEventArgs,
+    beforeResizing: DevExpress$AspNetCore$PopupWindowEventArgs,
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    closeUp: DevExpress$AspNetCore$PopupWindowCloseUpEventArgs,
+    closing: DevExpress$AspNetCore$PopupWindowCancelEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    pinnedChanged: DevExpress$AspNetCore$PopupWindowPinnedChangedEventArgs,
+    popUp: DevExpress$AspNetCore$PopupWindowEventArgs,
+    resize: DevExpress$AspNetCore$PopupWindowResizeEventArgs,
+    shown: DevExpress$AspNetCore$PopupWindowEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapPopupWindow {
+  declare class DevExpress$AspNetCore$BootstrapPopupWindow {
     instance: any;
     constructor(instance: any): this;
     index: number;
     name: string;
-    popupControl: AspNetCore$BootstrapPopupControl | null;
+    popupControl: DevExpress$AspNetCore$BootstrapPopupControl | null;
     getFooterImageUrl(): string;
     getFooterNavigateUrl(): string;
     getFooterText(): string;
@@ -2490,18 +2398,18 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setHeaderText(value: string): void;
   }
 
-  declare class AspNetCore$BootstrapPopupMenu mixins AspNetCore$BootstrapMenu {
+  declare class DevExpress$AspNetCore$BootstrapPopupMenu mixins BootstrapMenu {
     getCurrentPopupElement(): any;
     getCurrentPopupElementIndex(): number;
-    getItem(index: number): AspNetCore$BootstrapMenuItem | null;
-    getItemByName(name: string): AspNetCore$BootstrapMenuItem | null;
-    getRootItem(): AspNetCore$BootstrapMenuItem | null;
-    getSelectedItem(): AspNetCore$BootstrapMenuItem | null;
+    getItem(index: number): DevExpress$AspNetCore$BootstrapMenuItem | null;
+    getItemByName(name: string): DevExpress$AspNetCore$BootstrapMenuItem | null;
+    getRootItem(): DevExpress$AspNetCore$BootstrapMenuItem | null;
+    getSelectedItem(): DevExpress$AspNetCore$BootstrapMenuItem | null;
     hide(): void;
     refreshPopupElementConnection(): void;
     setPopupElementCssSelector(selector: string): void;
     setPopupElementID(popupElementId: string): void;
-    setSelectedItem(item: AspNetCore$BootstrapMenuItem): void;
+    setSelectedItem(item: DevExpress$AspNetCore$BootstrapMenuItem): void;
     show(): void;
     showAtElement(htmlElement: any): void;
     showAtElementByID(id: string): void;
@@ -2526,9 +2434,9 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapPopupMenuEventMap = {} & AspNetCore$BootstrapMenuEventMap;
+  declare type DevExpress$AspNetCore$BootstrapPopupMenuEventMap = {} & BootstrapMenuEventMap;
 
-  declare class AspNetCore$BootstrapProgressBar mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapProgressBar mixins Control {
     getCaption(): string;
     getDisplayText(): string;
     getEnabled(): boolean;
@@ -2565,85 +2473,85 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapProgressBarEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapProgressBarEventMap = {} & ControlEventMap;
 
-  declare type AspNetCore$ActiveViewChangingEventArgs = {
+  declare type DevExpress$AspNetCore$ActiveViewChangingEventArgs = {
     cancel: boolean,
-    +newView: AspNetCore$BootstrapSchedulerViewType,
-    +oldView: AspNetCore$BootstrapSchedulerViewType
-  } & AspNetCore$EventArgs;
+    +newView: DevExpress$AspNetCore$BootstrapSchedulerViewType,
+    +oldView: DevExpress$AspNetCore$BootstrapSchedulerViewType
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentClickEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentClickEventArgs = {
     +appointmentId: string,
     +handled: boolean,
     +htmlElement: { [key: string]: any }
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentDeletingEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentDeletingEventArgs = {
     +appointmentIds: { [key: string]: any }[]
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$AppointmentDragEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentDragEventArgs = {
     allow: boolean,
     +dragInformation: AspNetCore$BootstrapSchedulerAppointmentDragInfo[],
     +mouseEvent: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentDropEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentDropEventArgs = {
     +dragInformation: AspNetCore$BootstrapSchedulerAppointmentDragInfo[],
     handled: boolean,
     +operation: AspNetCore$BootstrapSchedulerAppointmentOperation
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentResizeEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentResizeEventArgs = {
     +appointmentId: string,
     handled: boolean,
     +newInterval: AspNetCore$BootstrapTimeInterval,
     +oldInterval: AspNetCore$BootstrapTimeInterval,
     +operation: AspNetCore$BootstrapSchedulerAppointmentOperation
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentResizingEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentResizingEventArgs = {
     allow: boolean,
     +appointmentId: string,
     +mouseEvent: any,
     +newInterval: AspNetCore$BootstrapTimeInterval,
     +oldInterval: AspNetCore$BootstrapTimeInterval
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$AppointmentToolTipShowingEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentToolTipShowingEventArgs = {
     +appointment: AspNetCore$BootstrapSchedulerAppointment
-  } & AspNetCore$CancelEventArgs;
+  } & CancelEventArgs;
 
-  declare type AspNetCore$AppointmentsSelectionEventArgs = {
+  declare type DevExpress$AspNetCore$AppointmentsSelectionEventArgs = {
     +appointmentIds: string[]
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$CellClickEventArgs = {
+  declare type DevExpress$AspNetCore$CellClickEventArgs = {
     +htmlElement: { [key: string]: any },
     +interval: AspNetCore$BootstrapTimeInterval,
     +resource: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$MenuItemClickedEventArgs = {
+  declare type DevExpress$AspNetCore$MenuItemClickedEventArgs = {
     handled: boolean,
     +itemName: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$MoreButtonClickedEventArgs = {
+  declare type DevExpress$AspNetCore$MoreButtonClickedEventArgs = {
     handled: boolean,
     +interval: AspNetCore$BootstrapTimeInterval,
     +resource: string,
     +targetDateTime: Date
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$ShortcutEventArgs = {
+  declare type DevExpress$AspNetCore$ShortcutEventArgs = {
     +commandName: string,
     +handled: boolean,
     +htmlEvent: { [key: string]: any }
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$BootstrapScheduler mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapScheduler mixins Control {
     appointmentFormCancel(): void;
     appointmentFormDelete(): void;
     appointmentFormSave(): void;
@@ -2653,7 +2561,7 @@ declare module "devexpress-aspnetcore-bootstrap" {
     changeToolTipContainer(container: any): void;
     deleteAppointment(apt: AspNetCore$BootstrapSchedulerAppointment): void;
     deselectAppointmentById(aptId: any): void;
-    getActiveViewType(): AspNetCore$BootstrapSchedulerViewType;
+    getActiveViewType(): DevExpress$AspNetCore$BootstrapSchedulerViewType;
     getAllDayAreaHeight(): number;
     getAppointmentById(
       id: any
@@ -2663,14 +2571,16 @@ declare module "devexpress-aspnetcore-bootstrap" {
       propertyNames: string[],
       onCallBack: any
     ): string[];
-    getGroupType(): AspNetCore$BootstrapSchedulerGroupType;
+    getGroupType(): DevExpress$AspNetCore$BootstrapSchedulerGroupType;
     getResourceNavigatorVisible(): boolean;
     getScrollAreaHeight(): number;
     getSelectedAppointmentIds(): string[];
     getSelectedInterval(): AspNetCore$BootstrapTimeInterval | null;
     getSelectedResource(): string;
     getToolbarVisible(): boolean;
-    getTopRowTime(viewType: AspNetCore$BootstrapSchedulerViewType): number;
+    getTopRowTime(
+      viewType: DevExpress$AspNetCore$BootstrapSchedulerViewType
+    ): number;
     getVisibleAppointments(): AspNetCore$BootstrapSchedulerAppointment[];
     getVisibleIntervals(): AspNetCore$BootstrapTimeInterval[];
     goToDateFormApply(): void;
@@ -2697,9 +2607,13 @@ declare module "devexpress-aspnetcore-bootstrap" {
     reminderFormSnooze(): void;
     selectAppointmentById(aptId: any): void;
     selectAppointmentById(aptId: any, scrollToSelection: boolean): void;
-    setActiveViewType(value: AspNetCore$BootstrapSchedulerViewType): void;
+    setActiveViewType(
+      value: DevExpress$AspNetCore$BootstrapSchedulerViewType
+    ): void;
     setAllDayAreaHeight(height: number): void;
-    setGroupType(value: AspNetCore$BootstrapSchedulerGroupType): void;
+    setGroupType(
+      value: DevExpress$AspNetCore$BootstrapSchedulerGroupType
+    ): void;
     setHeight(height: number): void;
     setResourceNavigatorVisible(visible: boolean): void;
     setSelection(interval: AspNetCore$BootstrapTimeInterval): void;
@@ -2716,7 +2630,7 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setTopRowTime(duration: number): void;
     setTopRowTime(
       duration: number,
-      viewType: AspNetCore$BootstrapSchedulerViewType
+      viewType: DevExpress$AspNetCore$BootstrapSchedulerViewType
     ): void;
     setVisibleResources(resourceIds: string[]): void;
     showAppointmentFormByClientId(aptClientId: string): void;
@@ -2746,43 +2660,45 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapSchedulerEventMap = {
-    activeViewChanged: AspNetCore$EventArgs,
-    activeViewChanging: AspNetCore$ActiveViewChangingEventArgs,
-    appointmentClick: AspNetCore$AppointmentClickEventArgs,
-    appointmentDeleting: AspNetCore$AppointmentDeletingEventArgs,
-    appointmentDoubleClick: AspNetCore$AppointmentClickEventArgs,
-    appointmentDrag: AspNetCore$AppointmentDragEventArgs,
-    appointmentDrop: AspNetCore$AppointmentDropEventArgs,
-    appointmentResize: AspNetCore$AppointmentResizeEventArgs,
-    appointmentResizing: AspNetCore$AppointmentResizingEventArgs,
-    appointmentToolTipShowing: AspNetCore$AppointmentToolTipShowingEventArgs,
-    appointmentsSelectionChanged: AspNetCore$AppointmentsSelectionEventArgs,
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    cellClick: AspNetCore$CellClickEventArgs,
-    cellDoubleClick: AspNetCore$CellClickEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    menuItemClicked: AspNetCore$MenuItemClickedEventArgs,
-    moreButtonClicked: AspNetCore$MoreButtonClickedEventArgs,
-    selectionChanged: AspNetCore$EventArgs,
-    selectionChanging: AspNetCore$EventArgs,
-    shortcut: AspNetCore$ShortcutEventArgs,
-    visibleIntervalChanged: AspNetCore$EventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapSchedulerEventMap = {
+    activeViewChanged: DevExpress$AspNetCore$EventArgs,
+    activeViewChanging: DevExpress$AspNetCore$ActiveViewChangingEventArgs,
+    appointmentClick: DevExpress$AspNetCore$AppointmentClickEventArgs,
+    appointmentDeleting: DevExpress$AspNetCore$AppointmentDeletingEventArgs,
+    appointmentDoubleClick: DevExpress$AspNetCore$AppointmentClickEventArgs,
+    appointmentDrag: DevExpress$AspNetCore$AppointmentDragEventArgs,
+    appointmentDrop: DevExpress$AspNetCore$AppointmentDropEventArgs,
+    appointmentResize: DevExpress$AspNetCore$AppointmentResizeEventArgs,
+    appointmentResizing: DevExpress$AspNetCore$AppointmentResizingEventArgs,
+    appointmentToolTipShowing: DevExpress$AspNetCore$AppointmentToolTipShowingEventArgs,
+    appointmentsSelectionChanged: DevExpress$AspNetCore$AppointmentsSelectionEventArgs,
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    cellClick: DevExpress$AspNetCore$CellClickEventArgs,
+    cellDoubleClick: DevExpress$AspNetCore$CellClickEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    menuItemClicked: DevExpress$AspNetCore$MenuItemClickedEventArgs,
+    moreButtonClicked: DevExpress$AspNetCore$MoreButtonClickedEventArgs,
+    selectionChanged: DevExpress$AspNetCore$EventArgs,
+    selectionChanging: DevExpress$AspNetCore$EventArgs,
+    shortcut: DevExpress$AspNetCore$ShortcutEventArgs,
+    visibleIntervalChanged: DevExpress$AspNetCore$EventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapTimeInterval {
+  declare class DevExpress$AspNetCore$BootstrapTimeInterval {
     instance: any;
     constructor(instance: any): this;
-    contains(interval: AspNetCore$BootstrapTimeInterval): boolean;
-    equals(interval: AspNetCore$BootstrapTimeInterval): boolean;
+    contains(interval: DevExpress$AspNetCore$BootstrapTimeInterval): boolean;
+    equals(interval: DevExpress$AspNetCore$BootstrapTimeInterval): boolean;
     getAllDay(): boolean;
     getDuration(): number;
     getEnd(): Date;
     getStart(): Date;
-    intersectsWith(interval: AspNetCore$BootstrapTimeInterval): boolean;
+    intersectsWith(
+      interval: DevExpress$AspNetCore$BootstrapTimeInterval
+    ): boolean;
     intersectsWithExcludingBounds(
-      interval: AspNetCore$BootstrapTimeInterval
+      interval: DevExpress$AspNetCore$BootstrapTimeInterval
     ): boolean;
     setAllDay(allDayValue: boolean): void;
     setDuration(value: number): void;
@@ -2790,18 +2706,18 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setStart(value: Date): void;
   }
 
-  declare class AspNetCore$BootstrapSchedulerAppointment {
+  declare class DevExpress$AspNetCore$BootstrapSchedulerAppointment {
     instance: any;
     constructor(instance: any): this;
     appointmentId: string;
-    appointmentType: AspNetCore$BootstrapSchedulerAppointmentType;
-    interval: AspNetCore$BootstrapTimeInterval | null;
+    appointmentType: DevExpress$AspNetCore$BootstrapSchedulerAppointmentType;
+    interval: DevExpress$AspNetCore$BootstrapTimeInterval | null;
     labelIndex: number;
     resources: string[];
     statusIndex: number;
     addResource(resourceId: { [key: string]: any }): void;
     getAllDay(): boolean;
-    getAppointmentType(): AspNetCore$BootstrapSchedulerAppointmentType;
+    getAppointmentType(): DevExpress$AspNetCore$BootstrapSchedulerAppointmentType;
     getDescription(): string;
     getDuration(): number;
     getEnd(): Date;
@@ -2809,14 +2725,14 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getLabelId(): number;
     getLocation(): string;
     getRecurrenceInfo(): AspNetCore$BootstrapSchedulerRecurrenceInfo | null;
-    getRecurrencePattern(): AspNetCore$BootstrapSchedulerAppointment | null;
+    getRecurrencePattern(): DevExpress$AspNetCore$BootstrapSchedulerAppointment | null;
     getResource(index: number): any;
     getStart(): Date;
     getStatusId(): number;
     getSubject(): string;
     setAllDay(allDay: boolean): void;
     setAppointmentType(
-      type: AspNetCore$BootstrapSchedulerAppointmentType
+      type: DevExpress$AspNetCore$BootstrapSchedulerAppointmentType
     ): void;
     setDescription(description: string): void;
     setDuration(duration: number): void;
@@ -2832,22 +2748,22 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setSubject(subject: string): void;
   }
 
-  declare class AspNetCore$BootstrapSchedulerAppointmentDragInfo {
+  declare class DevExpress$AspNetCore$BootstrapSchedulerAppointmentDragInfo {
     instance: any;
     constructor(instance: any): this;
     appointmentId: string;
-    newInterval: AspNetCore$BootstrapTimeInterval | null;
-    oldInterval: AspNetCore$BootstrapTimeInterval | null;
+    newInterval: DevExpress$AspNetCore$BootstrapTimeInterval | null;
+    oldInterval: DevExpress$AspNetCore$BootstrapTimeInterval | null;
   }
 
-  declare class AspNetCore$BootstrapSchedulerAppointmentOperation {
+  declare class DevExpress$AspNetCore$BootstrapSchedulerAppointmentOperation {
     instance: any;
     constructor(instance: any): this;
     apply(): void;
     cancel(): void;
   }
 
-  declare class AspNetCore$BootstrapSchedulerRecurrenceInfo {
+  declare class DevExpress$AspNetCore$BootstrapSchedulerRecurrenceInfo {
     instance: any;
     constructor(instance: any): this;
     getDayNumber(): number;
@@ -2856,25 +2772,29 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getMonth(): number;
     getOccurrenceCount(): number;
     getPeriodicity(): number;
-    getRange(): AspNetCore$BootstrapSchedulerRecurrenceRange;
-    getRecurrenceType(): AspNetCore$BootstrapSchedulerRecurrenceType;
+    getRange(): DevExpress$AspNetCore$BootstrapSchedulerRecurrenceRange;
+    getRecurrenceType(): DevExpress$AspNetCore$BootstrapSchedulerRecurrenceType;
     getStart(): Date;
-    getWeekDays(): AspNetCore$WeekDays;
-    getWeekOfMonth(): AspNetCore$WeekOfMonth;
+    getWeekDays(): DevExpress$AspNetCore$WeekDays;
+    getWeekOfMonth(): DevExpress$AspNetCore$WeekOfMonth;
     setDayNumber(dayNumber: number): void;
     setDuration(duration: number): void;
     setEnd(end: Date): void;
     setMonth(month: number): void;
     setOccurrenceCount(occurrenceCount: number): void;
     setPeriodicity(periodicity: number): void;
-    setRange(range: AspNetCore$BootstrapSchedulerRecurrenceRange): void;
-    setRecurrenceType(type: AspNetCore$BootstrapSchedulerRecurrenceType): void;
+    setRange(
+      range: DevExpress$AspNetCore$BootstrapSchedulerRecurrenceRange
+    ): void;
+    setRecurrenceType(
+      type: DevExpress$AspNetCore$BootstrapSchedulerRecurrenceType
+    ): void;
     setStart(start: Date): void;
-    setWeekDays(weekDays: AspNetCore$WeekDays): void;
-    setWeekOfMonth(weekOfMonth: AspNetCore$WeekOfMonth): void;
+    setWeekDays(weekDays: DevExpress$AspNetCore$WeekDays): void;
+    setWeekOfMonth(weekOfMonth: DevExpress$AspNetCore$WeekOfMonth): void;
   }
 
-  declare class AspNetCore$BootstrapSparkline mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapSparkline mixins Control {
     exportTo(fileName: string, format: string): void;
     getDataSource(): any;
     getInstance(): any;
@@ -2901,21 +2821,21 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapSparklineEventMap = {
-    disposing: AspNetCore$BootstrapChartEventArgsBase,
-    drawn: AspNetCore$BootstrapChartEventArgsBase,
-    exported: AspNetCore$BootstrapChartEventArgsBase,
-    exporting: AspNetCore$BootstrapChartExportEventArgs,
-    fileSaving: AspNetCore$BootstrapChartExportEventArgs,
-    incidentOccurred: AspNetCore$BootstrapChartErrorEventArgs,
-    init: AspNetCore$BootstrapChartEventArgsBase,
-    optionChanged: AspNetCore$BootstrapChartOptionChangedEventArgs,
-    tooltipHidden: AspNetCore$BootstrapChartEventArgsBase,
-    tooltipShown: AspNetCore$BootstrapChartEventArgsBase
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapSparklineEventMap = {
+    disposing: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    drawn: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exported: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    exporting: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    fileSaving: DevExpress$AspNetCore$BootstrapChartExportEventArgs,
+    incidentOccurred: DevExpress$AspNetCore$BootstrapChartErrorEventArgs,
+    init: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    optionChanged: DevExpress$AspNetCore$BootstrapChartOptionChangedEventArgs,
+    tooltipHidden: DevExpress$AspNetCore$BootstrapChartEventArgsBase,
+    tooltipShown: DevExpress$AspNetCore$BootstrapChartEventArgsBase
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapTimeEdit
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapTimeEdit
+    mixins BootstrapClientEdit {
     getButtonVisible(number: number): boolean;
     getCaretPosition(): number;
     getDate(): Date;
@@ -2950,18 +2870,18 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTimeEditEventMap = {
+  declare type DevExpress$AspNetCore$BootstrapTimeEditEventMap = {
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    dateChanged: AspNetCore$ProcessingModeEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    dateChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapSpinEdit
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapSpinEdit
+    mixins BootstrapClientEdit {
     getButtonVisible(number: number): boolean;
     getCaretPosition(): number;
     getMaxValue(): number;
@@ -3001,31 +2921,31 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapSpinEditEventMap = {
+  declare type DevExpress$AspNetCore$BootstrapSpinEditEventMap = {
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    numberChanged: AspNetCore$ProcessingModeEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    numberChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare type AspNetCore$TabControlTabEventArgs = {
+  declare type DevExpress$AspNetCore$TabControlTabEventArgs = {
     +tab: AspNetCore$BootstrapTab
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$TabControlTabCancelEventArgs = {
+  declare type DevExpress$AspNetCore$TabControlTabCancelEventArgs = {
     reloadContentOnCallback: boolean,
     +tab: AspNetCore$BootstrapTab
-  } & AspNetCore$ProcessingModeCancelEventArgs;
+  } & ProcessingModeCancelEventArgs;
 
-  declare type AspNetCore$TabControlTabClickEventArgs = {
+  declare type DevExpress$AspNetCore$TabControlTabClickEventArgs = {
     +htmlElement: { [key: string]: any },
     +htmlEvent: { [key: string]: any }
-  } & AspNetCore$TabControlTabCancelEventArgs;
+  } & TabControlTabCancelEventArgs;
 
-  declare class AspNetCore$BootstrapTabControl mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapTabControl mixins Control {
     adjustSize(): void;
     getActiveTab(): AspNetCore$BootstrapTab | null;
     getActiveTabIndex(): number;
@@ -3054,21 +2974,21 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTabControlEventMap = {
-    activeTabChanged: AspNetCore$TabControlTabEventArgs,
-    activeTabChanging: AspNetCore$TabControlTabCancelEventArgs,
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    tabClick: AspNetCore$TabControlTabClickEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapTabControlEventMap = {
+    activeTabChanged: DevExpress$AspNetCore$TabControlTabEventArgs,
+    activeTabChanging: DevExpress$AspNetCore$TabControlTabCancelEventArgs,
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    tabClick: DevExpress$AspNetCore$TabControlTabClickEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapTab {
+  declare class DevExpress$AspNetCore$BootstrapTab {
     instance: any;
     constructor(instance: any): this;
     index: number;
     name: string;
-    tabControl: AspNetCore$BootstrapTabControl | null;
+    tabControl: DevExpress$AspNetCore$BootstrapTabControl | null;
     getActiveIconCssClass(): string;
     getActiveImageUrl(): string;
     getBadgeIconCssClass(): string;
@@ -3091,16 +3011,19 @@ declare module "devexpress-aspnetcore-bootstrap" {
     setVisible(value: boolean): void;
   }
 
-  declare class AspNetCore$BootstrapPageControl
-    mixins AspNetCore$BootstrapTabControl {
-    getActiveTab(): AspNetCore$BootstrapTab | null;
-    getTab(index: number): AspNetCore$BootstrapTab | null;
-    getTabByName(name: string): AspNetCore$BootstrapTab | null;
-    getTabContentHTML(tab: AspNetCore$BootstrapTab): string;
+  declare class DevExpress$AspNetCore$BootstrapPageControl
+    mixins BootstrapTabControl {
+    getActiveTab(): DevExpress$AspNetCore$BootstrapTab | null;
+    getTab(index: number): DevExpress$AspNetCore$BootstrapTab | null;
+    getTabByName(name: string): DevExpress$AspNetCore$BootstrapTab | null;
+    getTabContentHTML(tab: DevExpress$AspNetCore$BootstrapTab): string;
     performCallback(data: any): Promise<void>;
     performCallback(data: any, onSuccess: () => void): void;
-    setActiveTab(tab: AspNetCore$BootstrapTab): void;
-    setTabContentHTML(tab: AspNetCore$BootstrapTab, html: string): void;
+    setActiveTab(tab: DevExpress$AspNetCore$BootstrapTab): void;
+    setTabContentHTML(
+      tab: DevExpress$AspNetCore$BootstrapTab,
+      html: string
+    ): void;
     on<K: $Keys<AspNetCore$BootstrapPageControlEventMap>>(
       eventName: K,
       callback: (
@@ -3121,10 +3044,10 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapPageControlEventMap = {} & AspNetCore$BootstrapTabControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapPageControlEventMap = {} & BootstrapTabControlEventMap;
 
-  declare class AspNetCore$BootstrapTagBox
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapTagBox
+    mixins BootstrapClientEdit {
     addItem(texts: string[]): number;
     addItem(text: string): number;
     addItem(texts: string[], value: any): number;
@@ -3144,16 +3067,20 @@ declare module "devexpress-aspnetcore-bootstrap" {
     clearTagCollection(): void;
     endUpdate(): void;
     ensureDropDownLoaded(callbackFunction: any): void;
-    findItemByText(text: string): AspNetCore$BootstrapListBoxItem | null;
-    findItemByValue(value: any): AspNetCore$BootstrapListBoxItem | null;
+    findItemByText(
+      text: string
+    ): DevExpress$AspNetCore$BootstrapListBoxItem | null;
+    findItemByValue(
+      value: any
+    ): DevExpress$AspNetCore$BootstrapListBoxItem | null;
     getButtonVisible(number: number): boolean;
     getCaretPosition(): number;
-    getItem(index: number): AspNetCore$BootstrapListBoxItem | null;
+    getItem(index: number): DevExpress$AspNetCore$BootstrapListBoxItem | null;
     getItemBadgeIconCssClass(index: number): string;
     getItemBadgeText(index: number): string;
     getItemCount(): number;
     getSelectedIndex(): number;
-    getSelectedItem(): AspNetCore$BootstrapListBoxItem | null;
+    getSelectedItem(): DevExpress$AspNetCore$BootstrapListBoxItem | null;
     getTagCollection(): string[];
     getTagHtmlElement(index: number): any;
     getTagIndexByText(text: string): number;
@@ -3209,7 +3136,7 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): void;
     setItemTooltip(index: number, tooltip: string): void;
     setSelectedIndex(index: number): void;
-    setSelectedItem(item: AspNetCore$BootstrapListBoxItem): void;
+    setSelectedItem(item: DevExpress$AspNetCore$BootstrapListBoxItem): void;
     setSelection(
       startPos: number,
       endPos: number,
@@ -3239,31 +3166,31 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTagBoxEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
+  declare type DevExpress$AspNetCore$BootstrapTagBoxEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
     buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    closeUp: AspNetCore$EventArgs,
-    customHighlighting: AspNetCore$ListEditCustomHighlightingEventArgs,
-    dropDown: AspNetCore$EventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    itemFiltering: AspNetCore$ListEditItemFilteringEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    queryCloseUp: AspNetCore$CancelEventArgs,
-    selectedIndexChanged: AspNetCore$ProcessingModeEventArgs,
-    tagsChanged: AspNetCore$EventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    closeUp: DevExpress$AspNetCore$EventArgs,
+    customHighlighting: DevExpress$AspNetCore$ListEditCustomHighlightingEventArgs,
+    dropDown: DevExpress$AspNetCore$EventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    itemFiltering: DevExpress$AspNetCore$ListEditItemFilteringEventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    queryCloseUp: DevExpress$AspNetCore$CancelEventArgs,
+    selectedIndexChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    tagsChanged: DevExpress$AspNetCore$EventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare type AspNetCore$ButtonEditClickEventArgs = {
+  declare type DevExpress$AspNetCore$ButtonEditClickEventArgs = {
     +buttonIndex: number
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare class AspNetCore$BootstrapButtonEdit
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapButtonEdit
+    mixins BootstrapClientEdit {
     getButtonVisible(number: number): boolean;
     getCaretPosition(): number;
     getText(): string;
@@ -3296,16 +3223,16 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapButtonEditEventMap = {
-    buttonClick: AspNetCore$ButtonEditClickEventArgs,
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapButtonEditEventMap = {
+    buttonClick: DevExpress$AspNetCore$ButtonEditClickEventArgs,
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapMemo mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapMemo mixins BootstrapClientEdit {
     getCaretPosition(): number;
     getText(): string;
     selectAll(): void;
@@ -3336,16 +3263,16 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapMemoEventMap = {
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapMemoEventMap = {
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapTextBox
-    mixins AspNetCore$BootstrapClientEdit {
+  declare class DevExpress$AspNetCore$BootstrapTextBox
+    mixins BootstrapClientEdit {
     getCaretPosition(): number;
     getText(): string;
     selectAll(): void;
@@ -3376,15 +3303,15 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTextBoxEventMap = {
-    keyDown: AspNetCore$EditKeyEventArgs,
-    keyPress: AspNetCore$EditKeyEventArgs,
-    keyUp: AspNetCore$EditKeyEventArgs,
-    textChanged: AspNetCore$ProcessingModeEventArgs,
-    userInput: AspNetCore$EventArgs
-  } & AspNetCore$BootstrapClientEditEventMap;
+  declare type DevExpress$AspNetCore$BootstrapTextBoxEventMap = {
+    keyDown: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyPress: DevExpress$AspNetCore$EditKeyEventArgs,
+    keyUp: DevExpress$AspNetCore$EditKeyEventArgs,
+    textChanged: DevExpress$AspNetCore$ProcessingModeEventArgs,
+    userInput: DevExpress$AspNetCore$EventArgs
+  } & BootstrapClientEditEventMap;
 
-  declare class AspNetCore$BootstrapToolbar mixins AspNetCore$BootstrapMenu {
+  declare class DevExpress$AspNetCore$BootstrapToolbar mixins BootstrapMenu {
     on<K: $Keys<AspNetCore$BootstrapToolbarEventMap>>(
       eventName: K,
       callback: (
@@ -3405,26 +3332,26 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapToolbarEventMap = {} & AspNetCore$BootstrapMenuEventMap;
+  declare type DevExpress$AspNetCore$BootstrapToolbarEventMap = {} & BootstrapMenuEventMap;
 
-  declare type AspNetCore$TreeViewNodeProcessingModeEventArgs = {
+  declare type DevExpress$AspNetCore$TreeViewNodeProcessingModeEventArgs = {
     +node: AspNetCore$BootstrapTreeViewNode
-  } & AspNetCore$ProcessingModeEventArgs;
+  } & ProcessingModeEventArgs;
 
-  declare type AspNetCore$TreeViewNodeClickEventArgs = {
+  declare type DevExpress$AspNetCore$TreeViewNodeClickEventArgs = {
     +htmlElement: any,
     +htmlEvent: any
-  } & AspNetCore$TreeViewNodeProcessingModeEventArgs;
+  } & TreeViewNodeProcessingModeEventArgs;
 
-  declare type AspNetCore$TreeViewNodeEventArgs = {
+  declare type DevExpress$AspNetCore$TreeViewNodeEventArgs = {
     +node: AspNetCore$BootstrapTreeViewNode
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$TreeViewNodeCancelEventArgs = {
+  declare type DevExpress$AspNetCore$TreeViewNodeCancelEventArgs = {
     +node: AspNetCore$BootstrapTreeViewNode
-  } & AspNetCore$ProcessingModeCancelEventArgs;
+  } & ProcessingModeCancelEventArgs;
 
-  declare class AspNetCore$BootstrapTreeView mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapTreeView mixins Control {
     collapseAll(): void;
     expandAll(): void;
     getNode(index: number): AspNetCore$BootstrapTreeViewNode | null;
@@ -3454,21 +3381,21 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTreeViewEventMap = {
-    beginCallback: AspNetCore$BeginCallbackEventArgs,
-    callbackError: AspNetCore$CallbackErrorEventArgs,
-    checkedChanged: AspNetCore$TreeViewNodeProcessingModeEventArgs,
-    endCallback: AspNetCore$EndCallbackEventArgs,
-    expandedChanged: AspNetCore$TreeViewNodeEventArgs,
-    expandedChanging: AspNetCore$TreeViewNodeCancelEventArgs,
-    nodeClick: AspNetCore$TreeViewNodeClickEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapTreeViewEventMap = {
+    beginCallback: DevExpress$AspNetCore$BeginCallbackEventArgs,
+    callbackError: DevExpress$AspNetCore$CallbackErrorEventArgs,
+    checkedChanged: DevExpress$AspNetCore$TreeViewNodeProcessingModeEventArgs,
+    endCallback: DevExpress$AspNetCore$EndCallbackEventArgs,
+    expandedChanged: DevExpress$AspNetCore$TreeViewNodeEventArgs,
+    expandedChanging: DevExpress$AspNetCore$TreeViewNodeCancelEventArgs,
+    nodeClick: DevExpress$AspNetCore$TreeViewNodeClickEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapTreeViewNode mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapTreeViewNode mixins Control {
     index: number;
     name: string;
-    parent: AspNetCore$BootstrapTreeViewNode | null;
-    treeView: AspNetCore$BootstrapTreeView | null;
+    parent: DevExpress$AspNetCore$BootstrapTreeViewNode | null;
+    treeView: DevExpress$AspNetCore$BootstrapTreeView | null;
     getBadgeIconCssClass(): string;
     getBadgeText(): string;
     getCheckState(): string;
@@ -3479,9 +3406,13 @@ declare module "devexpress-aspnetcore-bootstrap" {
     getIconCssClass(): string;
     getImageUrl(): string;
     getNavigateUrl(): string;
-    getNode(index: number): AspNetCore$BootstrapTreeViewNode | null;
-    getNodeByName(name: string): AspNetCore$BootstrapTreeViewNode | null;
-    getNodeByText(text: string): AspNetCore$BootstrapTreeViewNode | null;
+    getNode(index: number): DevExpress$AspNetCore$BootstrapTreeViewNode | null;
+    getNodeByName(
+      name: string
+    ): DevExpress$AspNetCore$BootstrapTreeViewNode | null;
+    getNodeByText(
+      text: string
+    ): DevExpress$AspNetCore$BootstrapTreeViewNode | null;
     getNodeCount(): number;
     getText(): string;
     getVisible(): boolean;
@@ -3515,29 +3446,29 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapTreeViewNodeEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapTreeViewNodeEventMap = {} & ControlEventMap;
 
-  declare type AspNetCore$UploadControlFilesUploadStartEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlFilesUploadStartEventArgs = {
     +cancel: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlFileUploadCompleteEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlFileUploadCompleteEventArgs = {
     +callbackData: string,
     +errorText: string,
     +inputIndex: number,
     +isValid: boolean
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlFilesUploadCompleteEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlFilesUploadCompleteEventArgs = {
     +callbackData: string,
     +errorText: string
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlTextChangedEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlTextChangedEventArgs = {
     +inputIndex: number
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlUploadingProgressChangedEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlUploadingProgressChangedEventArgs = {
     +currentFileContentLength: number,
     +currentFileName: string,
     +currentFileProgress: number,
@@ -3546,24 +3477,24 @@ declare module "devexpress-aspnetcore-bootstrap" {
     +progress: number,
     +totalContentLength: number,
     +uploadedContentLength: number
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlValidationErrorOccurredEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlValidationErrorOccurredEventArgs = {
     errorText: string,
     +invalidFiles: AspNetCore$BootstrapUploadControlInvalidFileInfo[],
     showAlert: boolean,
     +validationSettings: AspNetCore$BootstrapUploadControlValidationSettings
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlDropZoneEnterEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlDropZoneEnterEventArgs = {
     +dropZone: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare type AspNetCore$UploadControlDropZoneLeaveEventArgs = {
+  declare type DevExpress$AspNetCore$UploadControlDropZoneLeaveEventArgs = {
     +dropZone: any
-  } & AspNetCore$EventArgs;
+  } & EventArgs;
 
-  declare class AspNetCore$BootstrapUploadControl mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapUploadControl mixins Control {
     addFileInput(): void;
     cancel(): void;
     clearText(): void;
@@ -3604,20 +3535,20 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapUploadControlEventMap = {
-    dropZoneEnter: AspNetCore$UploadControlDropZoneEnterEventArgs,
-    dropZoneLeave: AspNetCore$UploadControlDropZoneLeaveEventArgs,
-    fileInputCountChanged: AspNetCore$EventArgs,
-    fileUploadComplete: AspNetCore$UploadControlFileUploadCompleteEventArgs,
-    filesUploadComplete: AspNetCore$UploadControlFilesUploadCompleteEventArgs,
-    filesUploadStart: AspNetCore$UploadControlFilesUploadStartEventArgs,
-    textChanged: AspNetCore$UploadControlTextChangedEventArgs,
-    uploadingProgressChanged: AspNetCore$UploadControlUploadingProgressChangedEventArgs,
-    validationErrorOccurred: AspNetCore$UploadControlValidationErrorOccurredEventArgs
-  } & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapUploadControlEventMap = {
+    dropZoneEnter: DevExpress$AspNetCore$UploadControlDropZoneEnterEventArgs,
+    dropZoneLeave: DevExpress$AspNetCore$UploadControlDropZoneLeaveEventArgs,
+    fileInputCountChanged: DevExpress$AspNetCore$EventArgs,
+    fileUploadComplete: DevExpress$AspNetCore$UploadControlFileUploadCompleteEventArgs,
+    filesUploadComplete: DevExpress$AspNetCore$UploadControlFilesUploadCompleteEventArgs,
+    filesUploadStart: DevExpress$AspNetCore$UploadControlFilesUploadStartEventArgs,
+    textChanged: DevExpress$AspNetCore$UploadControlTextChangedEventArgs,
+    uploadingProgressChanged: DevExpress$AspNetCore$UploadControlUploadingProgressChangedEventArgs,
+    validationErrorOccurred: DevExpress$AspNetCore$UploadControlValidationErrorOccurredEventArgs
+  } & ControlEventMap;
 
-  declare class AspNetCore$BootstrapUploadControlFile
-    mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapUploadControlFile
+    mixins Control {
     name: string;
     size: number;
     sourceFileObject: any;
@@ -3641,10 +3572,10 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapUploadControlFileEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapUploadControlFileEventMap = {} & ControlEventMap;
 
-  declare class AspNetCore$BootstrapUploadControlInvalidFileInfo
-    mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapUploadControlInvalidFileInfo
+    mixins Control {
     fileName: string;
     fileSize: number;
     on<K: $Keys<AspNetCore$BootstrapUploadControlInvalidFileInfoEventMap>>(
@@ -3676,10 +3607,10 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapUploadControlInvalidFileInfoEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapUploadControlInvalidFileInfoEventMap = {} & ControlEventMap;
 
-  declare class AspNetCore$BootstrapUploadControlValidationSettings
-    mixins AspNetCore$Control {
+  declare class DevExpress$AspNetCore$BootstrapUploadControlValidationSettings
+    mixins Control {
     allowedFileExtensions: string[];
     invalidFileNameCharacters: string[];
     maxFileCount: number;
@@ -3713,5 +3644,5 @@ declare module "devexpress-aspnetcore-bootstrap" {
     ): this;
   }
 
-  declare type AspNetCore$BootstrapUploadControlValidationSettingsEventMap = {} & AspNetCore$ControlEventMap;
+  declare type DevExpress$AspNetCore$BootstrapUploadControlValidationSettingsEventMap = {} & ControlEventMap;
 }
