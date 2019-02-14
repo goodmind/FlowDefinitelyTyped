@@ -33,7 +33,7 @@ declare module "timelinejs3" {
     setZoom: (level: number) => void,
     current_id: string,
     _getSlideIndex(id: string | number): number
-  } & TL$ITimelineEvents;
+  } & ITimelineEvents;
 
   declare export interface TL$ITimelineEvents {
     addEventListener(
