@@ -1,26 +1,30 @@
 declare module "gapi.client.webfonts" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    webfonts: typeof client$webfonts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    webfonts: typeof gapi$client$webfonts
   };
 
   /**
    * Load Google Fonts Developer API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "webfonts",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "webfonts",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$webfonts: client$webfonts.webfonts$WebfontsResource;
+  declare var gapi$client$webfonts: webfonts$WebfontsResource;
 
-  declare interface webfonts$Webfont {
+  declare interface gapi$client$webfonts$Webfont {
     /**
      * The category of the font.
      */
@@ -62,11 +66,11 @@ declare module "gapi.client.webfonts" {
     version?: string;
   }
 
-  declare interface webfonts$WebfontList {
+  declare interface gapi$client$webfonts$WebfontList {
     /**
      * The list of fonts currently served by the Google Fonts API.
      */
-    items?: webfonts$Webfont[];
+    items?: gapi$client$webfonts$Webfont[];
 
     /**
      * This kind represents a list of webfont objects in the webfonts service.
@@ -74,7 +78,7 @@ declare module "gapi.client.webfonts" {
     kind?: string;
   }
 
-  declare interface webfonts$WebfontsResource {
+  declare interface gapi$client$webfonts$WebfontsResource {
     /**
      * Retrieves the list of fonts currently served by the Google Fonts Developer API
      */
@@ -119,6 +123,6 @@ declare module "gapi.client.webfonts" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<webfonts$WebfontList>;
+    }): Request<gapi$client$webfonts$WebfontList>;
   }
 }
