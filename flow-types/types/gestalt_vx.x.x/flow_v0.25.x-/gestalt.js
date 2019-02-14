@@ -74,7 +74,7 @@ declare module "gestalt" {
     mdColumn?: UnsignedUpTo12;
     lgColumn?: UnsignedUpTo12;
     dangerouslySetInlineStyle?: {
-      __style: {
+      ___style: {
         [key: string]: any
       }
     };
@@ -348,7 +348,7 @@ declare module "gestalt" {
       | "watermelon"
       | "white";
     dangerouslySetSvgPath?: {
-      __path: string
+      ___path: string
     };
     inline?: boolean;
     size?: number | string;
@@ -503,7 +503,7 @@ declare module "gestalt" {
     bottom?: number | string;
     children?: React.ReactNode;
     dangerouslySetZIndex?: {
-      __zIndex: string
+      ___zIndex: string
     };
     left?: number | string;
     right?: number | string;
