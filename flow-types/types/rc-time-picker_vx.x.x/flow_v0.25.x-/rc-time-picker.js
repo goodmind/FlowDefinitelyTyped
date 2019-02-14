@@ -48,5 +48,5 @@ declare module "rc-time-picker" {
     close(): void;
     isAM(): boolean;
   }
-  declare module.exports: typeof TimePicker;
+  declare export default typeof TimePicker;
 }
