@@ -1,33 +1,37 @@
 declare module "gapi.client.oslogin" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Google Cloud OS Login API v1alpha
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "oslogin",
     version: "v1alpha"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "oslogin",
     version: "v1alpha",
     callback: () => any
   ): void;
 
-  declare var client$users: oslogin$oslogin$UsersResource;
+  declare var gapi$client$users: oslogin$UsersResource;
 
-  declare interface oslogin$ImportSshPublicKeyResponse {
+  declare interface gapi$client$oslogin$ImportSshPublicKeyResponse {
     /**
      * The login profile information for the user.
      */
     loginProfile?: oslogin$LoginProfile;
   }
 
-  declare interface oslogin$LoginProfile {
+  declare interface gapi$client$oslogin$LoginProfile {
     /**
      * A unique user ID for identifying the user.
      */
@@ -49,7 +53,7 @@ declare module "gapi.client.oslogin" {
     suspended?: boolean;
   }
 
-  declare interface oslogin$PosixAccount {
+  declare interface gapi$client$oslogin$PosixAccount {
     /**
      * The GECOS (user information) entry for this account.
      */
@@ -92,7 +96,7 @@ declare module "gapi.client.oslogin" {
     username?: string;
   }
 
-  declare interface oslogin$SshPublicKey {
+  declare interface gapi$client$oslogin$SshPublicKey {
     /**
      * An expiration time in microseconds since epoch.
      */
@@ -112,7 +116,7 @@ declare module "gapi.client.oslogin" {
     key?: string;
   }
 
-  declare interface oslogin$SshPublicKeysResource {
+  declare interface gapi$client$oslogin$SshPublicKeysResource {
     /**
      * Deletes an SSH public key.
      */
@@ -265,7 +269,7 @@ declare module "gapi.client.oslogin" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<oslogin$SshPublicKey>;
+    }): Request<gapi$client$oslogin$SshPublicKey>;
 
     /**
      * Updates an SSH public key and returns the profile information. This method
@@ -348,10 +352,10 @@ declare module "gapi.client.oslogin" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<oslogin$SshPublicKey>;
+    }): Request<gapi$client$oslogin$SshPublicKey>;
   }
 
-  declare interface oslogin$UsersResource {
+  declare interface gapi$client$oslogin$UsersResource {
     /**
      * Retrieves the profile information used for logging in to a virtual machine
      * on Google Compute Engine.
@@ -426,7 +430,7 @@ declare module "gapi.client.oslogin" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<oslogin$LoginProfile>;
+    }): Request<gapi$client$oslogin$LoginProfile>;
 
     /**
      * Adds an SSH public key and returns the profile information. Default POSIX
@@ -503,7 +507,7 @@ declare module "gapi.client.oslogin" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<oslogin$ImportSshPublicKeyResponse>;
-    sshPublicKeys: oslogin$SshPublicKeysResource;
+    }): Request<gapi$client$oslogin$ImportSshPublicKeyResponse>;
+    sshPublicKeys: gapi$client$oslogin$SshPublicKeysResource;
   }
 }
