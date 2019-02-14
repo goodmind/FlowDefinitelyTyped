@@ -87,17 +87,21 @@ declare interface minimatch$IMinimatchOptions {
    */
   flipNegate?: boolean;
 }
+declare var npm$namespace$grunt: {
+  fail: typeof npm$namespace$grunt$fail
+};
+
 /**
  * {@link http://gruntjs.com/sample-gruntfile}
  */
-declare interface config$IProjectConfig {
+declare interface grunt$config$IProjectConfig {
   [plugin: string]: any;
 }
 
 /**
  * {@link http://gruntjs.com/api/grunt.config}
  */
-declare interface config$ConfigModule {
+declare interface grunt$config$ConfigModule {
   /**
    * Get or set a value from the project's Grunt configuration.
    * This method serves as an alias to other methods;
@@ -112,7 +116,7 @@ declare interface config$ConfigModule {
    * The specified configObject is used by tasks and can be accessed using the grunt.config method.
    * Nearly every project's Gruntfile will call this method.
    */
-  init(config: config$IProjectConfig): void;
+  init(config: grunt$config$IProjectConfig): void;
 
   /**
    * Get a value from the project's Grunt configuration.
@@ -122,7 +126,7 @@ declare interface config$ConfigModule {
    * @note Although this accepts a generic type, you may still get the wrong typed value.
    */
   get<T>(prop: string): T;
-  get(): config$ConfigModule;
+  get(): grunt$config$ConfigModule;
 
   /**
    * Process a value, recursively expanding <% %> templates (via the grunt.template.process method)
@@ -171,28 +175,28 @@ declare interface config$ConfigModule {
 /**
  * {@link https://github.com/hij1nx/EventEmitter2}
  */
-declare interface event$EventModule {
+declare interface grunt$event$EventModule {
   /**
    * Adds a listener to the end of the listeners array for the specified event.
    */
-  addListener(event: string, listener: Function): event$EventModule;
-  on(event: string, listener: Function): event$EventModule;
+  addListener(event: string, listener: Function): grunt$event$EventModule;
+  on(event: string, listener: Function): grunt$event$EventModule;
 
   /**
    * Adds a listener that will be fired when any event is emitted.
    */
-  onAny(listener: Function): event$EventModule;
+  onAny(listener: Function): grunt$event$EventModule;
 
   /**
    * Removes the listener that will be fired when any event is emitted.
    */
-  offAny(listener: Function): event$EventModule;
+  offAny(listener: Function): grunt$event$EventModule;
 
   /**
    * Adds a one time listener for the event.
    * The listener is invoked only the first time the event is fired, after which it is removed.
    */
-  once(event: string, listener: Function): event$EventModule;
+  once(event: string, listener: Function): grunt$event$EventModule;
 
   /**
    * Adds a listener that will execute n times for the event before being removed.
@@ -202,19 +206,19 @@ declare interface event$EventModule {
     event: string,
     timesToListen: number,
     listener: Function
-  ): event$EventModule;
+  ): grunt$event$EventModule;
 
   /**
    * Remove a listener from the listener array for the specified event.
    * Caution: changes array indices in the listener array behind the listener.
    */
-  removeListener(event: string, listener: Function): event$EventModule;
-  off(event: string, listener: Function): event$EventModule;
+  removeListener(event: string, listener: Function): grunt$event$EventModule;
+  off(event: string, listener: Function): grunt$event$EventModule;
 
   /**
    * Removes all listeners, or those of the specified event.
    */
-  removeAllListeners(event: string): event$EventModule;
+  removeAllListeners(event: string): grunt$event$EventModule;
 
   /**
    * By default EventEmitters will print a warning if more than 10 listeners are added to it.
@@ -244,50 +248,39 @@ declare interface event$EventModule {
   emit(event: string, ...args: any[]): any;
 }
 
-declare class fail$ErrorCode {
-  constructor(...args: empty): mixed;
-  static +NoError: Class<fail$ErrorCode__NoError> & fail$ErrorCode__NoError & 0; // 0
-  static +Fatal: Class<fail$ErrorCode__Fatal> & fail$ErrorCode__Fatal & 1; // 1
-  static +MissingGruntfile: Class<fail$ErrorCode__MissingGruntfile> &
-    fail$ErrorCode__MissingGruntfile &
-    2; // 2
-  static +Task: Class<fail$ErrorCode__Task> & fail$ErrorCode__Task & 3; // 3
-  static +Template: Class<fail$ErrorCode__Template> &
-    fail$ErrorCode__Template &
-    4; // 4
-  static +Autocomplete: Class<fail$ErrorCode__Autocomplete> &
-    fail$ErrorCode__Autocomplete &
-    5; // 5
-  static +Warning: Class<fail$ErrorCode__Warning> & fail$ErrorCode__Warning & 6; // 6
-}
+declare var npm$namespace$grunt$fail: {
+  ErrorCode: typeof grunt$fail$ErrorCode
+};
 
-declare class fail$ErrorCode__NoError mixins fail$ErrorCode {}
-declare class fail$ErrorCode__Fatal mixins fail$ErrorCode {}
-declare class fail$ErrorCode__MissingGruntfile mixins fail$ErrorCode {}
-declare class fail$ErrorCode__Task mixins fail$ErrorCode {}
-declare class fail$ErrorCode__Template mixins fail$ErrorCode {}
-declare class fail$ErrorCode__Autocomplete mixins fail$ErrorCode {}
-declare class fail$ErrorCode__Warning mixins fail$ErrorCode {}
+declare var grunt$fail$ErrorCode: {|
+  +NoError: 0, // 0
+  +Fatal: 1, // 1
+  +MissingGruntfile: 2, // 2
+  +Task: 3, // 3
+  +Template: 4, // 4
+  +Autocomplete: 5, // 5
+  +Warning: 6 // 6
+|};
 
-declare interface fail$FailModule {
+declare interface grunt$fail$FailModule {
   /**
    * Display a warning and abort Grunt immediately.
    * Grunt will continue processing tasks if the --force command-line option was specified.
    */
-  warn(error: string, errorCode?: fail$ErrorCode): void;
-  warn(error: Error, errorCode?: fail$ErrorCode): void;
+  warn(error: string, errorCode?: grunt$fail$ErrorCode): void;
+  warn(error: Error, errorCode?: grunt$fail$ErrorCode): void;
 
   /**
    * Display a warning and abort Grunt immediately.
    */
-  fatal(error: string, errorCode?: fail$ErrorCode): void;
-  fatal(error: Error, errorCode?: fail$ErrorCode): void;
+  fatal(error: string, errorCode?: grunt$fail$ErrorCode): void;
+  fatal(error: Error, errorCode?: grunt$fail$ErrorCode): void;
 }
 
 /**
  * {@link http://gruntjs.com/api/grunt.file#grunt.file.defaultencoding}
  */
-declare interface file$IFileEncodedOption {
+declare interface grunt$file$IFileEncodedOption {
   encoding: string;
 }
 
@@ -296,7 +289,7 @@ declare interface file$IFileEncodedOption {
  * @see IFileWriteBufferOption
  * @see IFileWriteStringOption
  */
-declare interface file$IFileWriteOptions {
+declare interface grunt$file$IFileWriteOptions {
   /**
    * These optional globbing patterns will be matched against the filepath
    * (not the filename) using grunt.file.isMatch. If any specified globbing
@@ -309,31 +302,31 @@ declare interface file$IFileWriteOptions {
 /**
  * @see IFileWriteOptions
  */
-declare type file$IFileWriteBufferOption = {
+declare type grunt$file$IFileWriteBufferOption = {
   /**
    * The source file contents and file path are passed into this function,
    * whose return value will be used as the destination file's contents. If
    * this function returns `false`, the file copy will be aborted.
    */
   process?: (buffer: Buffer) => boolean
-} & undefined.file$IFileWriteOptions;
+} & undefined.IFileWriteOptions;
 
 /**
  * @see IFileWriteOptions
  */
-declare type file$IFileWriteStringOption = {
+declare type grunt$file$IFileWriteStringOption = {
   /**
    * The source file contents and file path are passed into this function,
    * whose return value will be used as the destination file's contents. If
    * this function returns `false`, the file copy will be aborted.
    */
   process?: (file: string) => boolean
-} & undefined.file$IFileWriteOptions;
+} & undefined.IFileWriteOptions;
 
 /**
  * {@link http://gruntjs.com/api/grunt.file}
  */
-declare interface file$FileModule {
+declare interface grunt$file$FileModule {
   /**
    * Set this property to change the default encoding used by all grunt.file methods.
    * Defaults to 'utf8'.
@@ -348,21 +341,21 @@ declare interface file$FileModule {
    * Returns a string, unless options.encoding is null in which case it returns a Buffer.
    */
   read(filepath: string): string;
-  read(filepath: string, options: file$IFileEncodedOption): Buffer;
+  read(filepath: string, options: grunt$file$IFileEncodedOption): Buffer;
 
   /**
    * Read a file's contents, parsing the data as JSON and returning the result.
    * @see FileModule.read for a list of supported options.
    */
   readJSON(filepath: string): any;
-  readJSON(filepath: string, options: file$IFileEncodedOption): Buffer;
+  readJSON(filepath: string, options: grunt$file$IFileEncodedOption): Buffer;
 
   /**
    * Read a file's contents, parsing the data as YAML and returning the result.
    * @see FileModule.read for a list of supported options.
    */
   readYAML(filepath: string): any;
-  readYAML(filepath: string, options: file$IFileEncodedOption): Buffer;
+  readYAML(filepath: string, options: grunt$file$IFileEncodedOption): Buffer;
 
   /**
    * Write the specified contents to a file, creating intermediate directories if necessary.
@@ -373,7 +366,7 @@ declare interface file$FileModule {
   write(
     filepath: string,
     contents: string,
-    options?: file$IFileEncodedOption
+    options?: grunt$file$IFileEncodedOption
   ): void;
   write(filepath: string, contents: Buffer): void;
 
@@ -384,12 +377,12 @@ declare interface file$FileModule {
   copy(
     srcpath: string,
     destpath: string,
-    options: file$IFileWriteStringOption
+    options: grunt$file$IFileWriteStringOption
   ): void;
   copy(
     srcpath: string,
     destpath: string,
-    options: file$IFileWriteBufferOption
+    options: grunt$file$IFileWriteBufferOption
   ): void;
 
   /**
@@ -442,12 +435,12 @@ declare interface file$FileModule {
   expand(options: file$IFilesConfig, patterns: string | string[]): string[];
 
   /**
- * Returns an array of src-dest file mapping objects.
- * For each source file matched by a specified pattern, join that file path to the specified dest.
- * This file path may be flattened or renamed, depending on the options specified.
- * @see FileModule.expand method documentation for an explanation of how the patterns
-and options arguments may be specified.
- */
+   * Returns an array of src-dest file mapping objects.
+   * For each source file matched by a specified pattern, join that file path to the specified dest.
+   * This file path may be flattened or renamed, depending on the options specified.
+   * @see FileModule.expand method documentation for an explanation of how the patterns
+   * and options arguments may be specified.
+   */
   expandMapping(
     patterns: string[],
     dest: string,
@@ -466,22 +459,22 @@ and options arguments may be specified.
   match(patterns: string[], filepath: string): string[];
   match(patterns: string[], filepaths: string[]): string[];
   match(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     pattern: string,
     filepath: string
   ): string[];
   match(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     pattern: string,
     filepaths: string[]
   ): string[];
   match(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     patterns: string[],
     filepath: string
   ): string[];
   match(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     patterns: string[],
     filepaths: string[]
   ): string[];
@@ -496,22 +489,22 @@ and options arguments may be specified.
   isMatch(patterns: string[], filepath: string): boolean;
   isMatch(patterns: string[], filepaths: string[]): boolean;
   isMatch(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     pattern: string,
     filepath: string
   ): boolean;
   isMatch(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     pattern: string,
     filepaths: string[]
   ): boolean;
   isMatch(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     patterns: string[],
     filepath: string
   ): boolean;
   isMatch(
-    options: minimatch$minimatch$IMinimatchOptions,
+    options: minimatch$IMinimatchOptions,
     patterns: string[],
     filepaths: string[]
   ): boolean;
@@ -572,12 +565,12 @@ and options arguments may be specified.
  *
  * {@link http://gruntjs.com/configuring-tasks#files}
  */
-declare type file$IFilesArray = {} & Array<file$IFilesConfig>;
+declare type grunt$file$IFilesArray = {} & Array<file$IFilesConfig>;
 
 /**
  * {@link http://gruntjs.com/configuring-tasks#files}
  */
-declare type file$IFilesConfig = {
+declare type grunt$file$IFilesConfig = {
   /**
    * Pattern(s) to match, relative to the {@link IExpandedFilesConfig.cwd}.
    */
@@ -616,12 +609,12 @@ declare type file$IFilesConfig = {
    * also be relative to this path.
    */
   cwd?: string
-} & minimatch$minimatch$IMinimatchOptions;
+} & minimatch$IMinimatchOptions;
 
 /**
  * These are valid for compact-format
  */
-declare type file$IExpandedFilesConfig = {
+declare type grunt$file$IExpandedFilesConfig = {
   /**
    * Enables the following options
    */
@@ -649,12 +642,12 @@ declare type file$IExpandedFilesConfig = {
    * If the same dest is returned more than once, each src which used it will be added to an array of sources for it.
    */
   rename?: Function
-} & file$IFilesConfig;
+} & IFilesConfig;
 
 /**
  * @see {@link http://gruntjs.com/configuring-tasks#files-array-format}
  */
-declare interface file$IFileMap {
+declare interface grunt$file$IFileMap {
   /**
    * source filenames.
    */
@@ -671,7 +664,7 @@ declare interface file$IFileMap {
  * As such, there is a plethora of logging methods, and a few useful patterns.
  * All of the methods that actually log something are chainable.
  */
-declare interface log$CommonLogging<T> {
+declare interface grunt$log$CommonLogging<T> {
   /**
    * Log the specified msg string, with no trailing newline.
    */
@@ -721,32 +714,32 @@ declare interface log$CommonLogging<T> {
 
 /**
  * @note all methods available under grunt.verbose work exactly like grunt.log methods,
-but only log if the --verbose command-line option was specified.
+ * but only log if the --verbose command-line option was specified.
  */
-declare type log$VerboseLogModule = {
+declare type grunt$log$VerboseLogModule = {
   or: log$NotVerboseLogModule
-} & log$CommonLogging<log$VerboseLogModule>;
+} & CommonLogging<grunt$log$VerboseLogModule>;
 
 /**
  * @note all methods available under grunt.verbose work exactly like grunt.log methods,
-but only log if the --verbose command-line option was not specified.
+ * but only log if the --verbose command-line option was not specified.
  */
-declare type log$NotVerboseLogModule = {
-  or: log$VerboseLogModule
-} & log$CommonLogging<log$NotVerboseLogModule>;
+declare type grunt$log$NotVerboseLogModule = {
+  or: grunt$log$VerboseLogModule
+} & CommonLogging<grunt$log$NotVerboseLogModule>;
 
 /**
  * {@link http://gruntjs.com/api/grunt.log}
  */
-declare type log$LogModule = {
-  verbose: log$VerboseLogModule,
-  notverbose: log$NotVerboseLogModule
-} & log$CommonLogging<log$LogModule>;
+declare type grunt$log$LogModule = {
+  verbose: grunt$log$VerboseLogModule,
+  notverbose: grunt$log$NotVerboseLogModule
+} & CommonLogging<grunt$log$LogModule>;
 
 /**
  * {@link http://gruntjs.com/api/grunt.option}
  */
-declare interface option$OptionModule {
+declare interface grunt$option$OptionModule {
   /**
    * Gets or sets an option.
    * Boolean options can be negated by prepending no- onto the key. For example:
@@ -768,13 +761,13 @@ declare interface option$OptionModule {
   /**
    * Returns the options as an array of command line parameters.
    */
-  flags: grunt$grunt$IFlag[];
+  flags: grunt$IFlag[];
 }
 
 /**
  * {@link http://gruntjs.com/api/grunt.task}
  */
-declare interface task$CommonTaskModule {
+declare interface grunt$task$CommonTaskModule {
   /**
    * If a task list is specified, the new task will be an alias for one or more other tasks.
    * Whenever this "alias task" is run, every specified task in taskList will be run, in the order specified.
@@ -836,7 +829,7 @@ declare interface task$CommonTaskModule {
 /**
  * {@link http://gruntjs.com/api/grunt.task#queueing-tasks}
  */
-declare type task$TaskModule = {
+declare type grunt$task$TaskModule = {
   /**
    * Enqueue one or more tasks.
    * Every specified task in taskList will be run immediately after the current task completes,
@@ -855,18 +848,18 @@ declare type task$TaskModule = {
    * This method is used internally by the multi task system this.files / grunt.task.current.files property.
    */
   normalizeMultiTaskFiles(
-    data: grunt$config.config$IProjectConfig,
+    data: grunt$configIProjectConfig,
     targetname?: string
-  ): Array<grunt$file.file$IFileMap>,
+  ): Array<grunt$fileIFileMap>,
 
   /**
    * The currently running task or multitask.
    * @see http://gruntjs.com/api/inside-tasks
    */
-  current: grunt$task.task$IMultiTask<any>
-} & task$CommonTaskModule;
+  current: grunt$taskIMultiTask<any>
+} & CommonTaskModule;
 
-declare interface task$AsyncResultCatcher {
+declare interface grunt$task$AsyncResultCatcher {
   /**
    * Either false or an Error object may be passed to the done function
    * to instruct Grunt that the task has failed.
@@ -879,10 +872,10 @@ declare interface task$AsyncResultCatcher {
 
 /**
  * @link http://gruntjs.com/inside-tasks
-
-Grunt version 0.4.x
+ *
+ * Grunt version 0.4.x
  */
-declare interface task$ITask {
+declare interface grunt$task$ITask {
   /**
    * If a task is asynchronous, this method must be invoked to instruct Grunt to wait.
    * It returns a handle to a "done" function that should be called when the task has completed.
@@ -897,16 +890,16 @@ declare interface task$ITask {
    *      done(success);
    *    }, 1000);
    */
-  async(): task$AsyncResultCatcher;
+  async(): grunt$task$AsyncResultCatcher;
 
   /**
- * If one task depends on the successful completion of another task (or tasks),
- * this method can be used to force Grunt to abort if the other task didn't run,
- * or if the other task failed.
- * @param tasks an array of task names or individual task names, as arguments.
- * @note that this won't actually run the specified task(s),
-it will just fail the current task if they haven't already run successfully.
- */
+   * If one task depends on the successful completion of another task (or tasks),
+   * this method can be used to force Grunt to abort if the other task didn't run,
+   * or if the other task failed.
+   * @param tasks an array of task names or individual task names, as arguments.
+   * @note that this won't actually run the specified task(s),
+   * it will just fail the current task if they haven't already run successfully.
+   */
   requires(tasks: string[]): void;
   requires(tasks: string, ...otherTasks: string[]): void;
   requires(tasks: string[], ...otherTasks: string[][]): void;
@@ -944,7 +937,7 @@ it will just fail the current task if they haven't already run successfully.
    * For example, if a "sample" task was run as grunt sample:foo:bar,
    * inside the task function, this.flags would be {foo: true, bar: true}.
    */
-  flags: grunt$grunt$IFlag[];
+  flags: grunt$IFlag[];
 
   /**
    * The number of grunt.log.error calls that occurred during this task.
@@ -965,7 +958,7 @@ it will just fail the current task if they haven't already run successfully.
 /**
  * {@link http://gruntjs.com/inside-tasks#inside-multi-tasks}
  */
-declare type task$IMultiTask<T> = {
+declare type grunt$task$IMultiTask<T> = {
   /**
    * In a multi task, this property contains the name of the target currently being iterated over.
    * For example, if a "sample" multi task was run as grunt sample:foo with the config data
@@ -974,23 +967,23 @@ declare type task$IMultiTask<T> = {
   target: string,
 
   /**
- * In a multi task, all files specified using any Grunt-supported file formats and options,
- * globbing patterns or dynamic mappings will automatically be normalized into a single format:
- * the Files Array file format.
- * 
- * What this means is that tasks don't need to contain a ton of boilerplate for explicitly
- * handling custom file formats, globbing patterns, mapping source files to destination files
- * or filtering out files or directories. A task user can just specify files per the Configuring
- * tasks guide, and Grunt will handle all the details.
- * 
- * Your task should iterate over the this.files array, utilizing the src and dest properties of
- * each object in that array. The this.files property will always be an array.
- * The src property will also always be an array, in case your task cares about multiple source
- * files per destination file.
- * @note it's possible that nonexistent files might be included in src values,
-so you may want to explicitly test that source files exist before using them.
- */
-  files: grunt$file.file$IFilesArray,
+   * In a multi task, all files specified using any Grunt-supported file formats and options,
+   * globbing patterns or dynamic mappings will automatically be normalized into a single format:
+   * the Files Array file format.
+   *
+   * What this means is that tasks don't need to contain a ton of boilerplate for explicitly
+   * handling custom file formats, globbing patterns, mapping source files to destination files
+   * or filtering out files or directories. A task user can just specify files per the Configuring
+   * tasks guide, and Grunt will handle all the details.
+   *
+   * Your task should iterate over the this.files array, utilizing the src and dest properties of
+   * each object in that array. The this.files property will always be an array.
+   * The src property will also always be an array, in case your task cares about multiple source
+   * files per destination file.
+   * @note it's possible that nonexistent files might be included in src values,
+   * so you may want to explicitly test that source files exist before using them.
+   */
+  files: grunt$fileIFilesArray,
 
   /**
    * In a multi task, all src files files specified via any file format are reduced to a single array.
@@ -1000,14 +993,14 @@ so you may want to explicitly test that source files exist before using them.
   filesSrc: string[],
 
   /**
- * In a multi task, this is the actual data stored in the Grunt config object for the given target.
- * For example, if a "sample" multi task was run as grunt sample:foo with the config data
- * {sample: {foo: "bar"}}, inside the task function, this.data would be "bar".
- * @note It is recommended that this.options this.files and this.filesSrc are used instead of this.data,
-as their values are normalized.
- */
+   * In a multi task, this is the actual data stored in the Grunt config object for the given target.
+   * For example, if a "sample" multi task was run as grunt sample:foo with the config data
+   * {sample: {foo: "bar"}}, inside the task function, this.data would be "bar".
+   * @note It is recommended that this.options this.files and this.filesSrc are used instead of this.data,
+   * as their values are normalized.
+   */
   data: T
-} & task$ITask;
+} & ITask;
 
 /**
  * {@link http://gruntjs.com/configuring-tasks}
@@ -1015,7 +1008,7 @@ as their values are normalized.
  * A TaskConfig can be either be a full config or a compacted files config.
  * @see ITaskCompactOptions
  */
-declare interface task$ITaskOptions {
+declare interface grunt$task$ITaskOptions {
   options?: any;
   files?: any;
 }
@@ -1023,10 +1016,10 @@ declare interface task$ITaskOptions {
 /**
  * @see ITaskOptions
  */
-declare type task$ITaskCompactOptions = {} & undefined.task$ITaskOptions &
-  undefined.file$IFilesConfig;
+declare type grunt$task$ITaskCompactOptions = {} & undefined.ITaskOptions &
+  undefined.IFilesConfig;
 
-declare interface template$TemplateModule {
+declare interface grunt$template$TemplateModule {
   /**
    * Process a Lo-Dash template string.
    *
@@ -1079,7 +1072,7 @@ declare interface template$TemplateModule {
 /**
  * {@link http://gruntjs.com/api/grunt.util}
  */
-declare interface util$UtilModule {
+declare interface grunt$util$UtilModule {
   /**
    * Return the "kind" of a value. Like typeof but returns the internal [Class](Class/) value.
    * Possible results are "number", "string", "boolean", "function", "regexp", "array", "date",
@@ -1131,15 +1124,15 @@ declare interface util$UtilModule {
   pluralize(n: number, str: string, separator?: string): string;
 
   /**
- * Spawn a child process, keeping track of its stdout, stderr and exit code.
- * The method returns a reference to the spawned child.
- * When the child exits, the done function is called.
- * @param done a function with arguments:
-error  - If the exit code was non-zero and a fallback wasn't specified,
-     an Error object, otherwise null.
-result - The result object is an
-code   - The numeric exit code.
- */
+   * Spawn a child process, keeping track of its stdout, stderr and exit code.
+   * The method returns a reference to the spawned child.
+   * When the child exits, the done function is called.
+   * @param done a function with arguments:
+   * error  - If the exit code was non-zero and a fallback wasn't specified,
+   *      an Error object, otherwise null.
+   * result - The result object is an
+   * code   - The numeric exit code.
+   */
   spawn(
     options: util$ISpawnOptions,
     done: (error: Error, result: util$ISpawnResult, code: number) => void
@@ -1180,7 +1173,7 @@ code   - The numeric exit code.
 /**
  * {@link http://gruntjs.com/api/grunt.util#grunt.util.spawn}
  */
-declare interface util$ISpawnOptions {
+declare interface grunt$util$ISpawnOptions {
   /**
    * The command to execute. It should be in the system path.
    */
@@ -1218,11 +1211,11 @@ declare interface util$ISpawnOptions {
 
 /**
  * @note When result is coerced to a string, the value is stdout if the exit code
-was zero, the fallback if the exit code was non-zero and a fallback was
-specified, or stderr if the exit code was non-zero and a fallback was
-not specified.
+ * was zero, the fallback if the exit code was non-zero and a fallback was
+ * specified, or stderr if the exit code was non-zero and a fallback was
+ * not specified.
  */
-declare interface util$ISpawnResult {
+declare interface grunt$util$ISpawnResult {
   stdout: string;
   stderr: string;
   code: number;
@@ -1231,7 +1224,7 @@ declare interface util$ISpawnResult {
 /**
  * {@link https://github.com/snbartell/node-spawn}
  */
-declare interface util$ISpawnedChild {
+declare interface grunt$util$ISpawnedChild {
   /**
    * Start the cmd with the options provided.
    */
@@ -1264,8 +1257,8 @@ declare type grunt$IConfigComponents = {
    * An alias
    * @see grunt.config.ConfigModule.init
    */
-  initConfig(config: grunt$config.config$IProjectConfig): void
-} & undefined.config$ConfigModule;
+  initConfig(config: grunt$configIProjectConfig): void
+} & undefined.ConfigModule;
 
 declare type grunt$ITaskComponents = {
   /**
@@ -1281,7 +1274,7 @@ declare type grunt$ITaskComponents = {
    * Grunt plugins can be created by using the grunt-init gruntplugin template: grunt init:gruntplugin.
    */
   loadNpmTasks(pluginName: string): void
-} & undefined.task$CommonTaskModule;
+} & undefined.CommonTaskModule;
 
 /**
  * The main Grunt module.
@@ -1289,29 +1282,29 @@ declare type grunt$ITaskComponents = {
  * {@link http://gruntjs.com/api/grunt}
  */
 declare type IGrunt = {
-  config: grunt$config.config$ConfigModule,
-  event: grunt$event.event$EventModule,
-  fail: grunt$fail.fail$FailModule,
-  file: grunt$file.file$FileModule,
-  log: grunt$log.log$LogModule,
-  option: grunt$option.option$OptionModule,
-  task: grunt$task.task$TaskModule,
-  template: grunt$template.template$TemplateModule,
-  util: grunt$util.util$UtilModule,
+  config: grunt$configConfigModule,
+  event: grunt$eventEventModule,
+  fail: grunt$failFailModule,
+  file: grunt$fileFileModule,
+  log: grunt$logLogModule,
+  option: grunt$optionOptionModule,
+  task: grunt$taskTaskModule,
+  template: grunt$templateTemplateModule,
+  util: grunt$utilUtilModule,
 
   /**
    * The current Grunt package.json metadata, as an object.
    */
-  package: node$node$NodePackage,
+  package: node$NodePackage,
 
   /**
    * The current Grunt version, as a string. This is just a shortcut to the grunt.package.version property.
    */
   version: string
-} & grunt$grunt$IConfigComponents &
-  undefined.fail$FailModule &
-  grunt$grunt$ITaskComponents;
+} & grunt$IConfigComponents &
+  undefined.FailModule &
+  grunt$ITaskComponents;
 declare module "grunt" {
   declare var grunt: IGrunt;
-  declare module.exports: typeof grunt;
+  declare export default typeof grunt;
 }
