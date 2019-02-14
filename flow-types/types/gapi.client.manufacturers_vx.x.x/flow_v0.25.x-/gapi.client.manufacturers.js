@@ -1,26 +1,30 @@
 declare module "gapi.client.manufacturers" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts
   };
 
   /**
    * Load Manufacturer Center API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "manufacturers",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "manufacturers",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: manufacturers$manufacturers$AccountsResource;
+  declare var gapi$client$accounts: manufacturers$AccountsResource;
 
-  declare interface manufacturers$Attributes {
+  declare interface gapi$client$manufacturers$Attributes {
     /**
      * The additional images of the product. For more information, see
      * https://support.google.com/manufacturers/answer/6124116#addlimage.
@@ -221,7 +225,7 @@ declare module "gapi.client.manufacturers" {
     videoLink?: string[];
   }
 
-  declare interface manufacturers$Capacity {
+  declare interface gapi$client$manufacturers$Capacity {
     /**
      * The unit of the capacity, i.e., MB, GB, or TB.
      */
@@ -233,7 +237,7 @@ declare module "gapi.client.manufacturers" {
     value?: string;
   }
 
-  declare interface manufacturers$Count {
+  declare interface gapi$client$manufacturers$Count {
     /**
      * The unit in which these products are counted.
      */
@@ -245,7 +249,7 @@ declare module "gapi.client.manufacturers" {
     value?: string;
   }
 
-  declare interface manufacturers$FeatureDescription {
+  declare interface gapi$client$manufacturers$FeatureDescription {
     /**
      * A short description of the feature.
      */
@@ -262,7 +266,7 @@ declare module "gapi.client.manufacturers" {
     text?: string;
   }
 
-  declare interface manufacturers$Image {
+  declare interface gapi$client$manufacturers$Image {
     /**
      * The URL of the image. For crawled images, this is the provided URL. For
      * uploaded images, this is a serving URL from Google if the image has been
@@ -283,7 +287,7 @@ declare module "gapi.client.manufacturers" {
     type?: string;
   }
 
-  declare interface manufacturers$Issue {
+  declare interface gapi$client$manufacturers$Issue {
     /**
      * If present, the attribute that triggered the issue. For more information
      * about attributes, see
@@ -313,7 +317,7 @@ declare module "gapi.client.manufacturers" {
     type?: string;
   }
 
-  declare interface manufacturers$ListProductsResponse {
+  declare interface gapi$client$manufacturers$ListProductsResponse {
     /**
      * The token for the retrieval of the next page of product statuses.
      */
@@ -325,7 +329,7 @@ declare module "gapi.client.manufacturers" {
     products?: manufacturers$Product[];
   }
 
-  declare interface manufacturers$Price {
+  declare interface gapi$client$manufacturers$Price {
     /**
      * The numeric value of the price.
      */
@@ -337,7 +341,7 @@ declare module "gapi.client.manufacturers" {
     currency?: string;
   }
 
-  declare interface manufacturers$Product {
+  declare interface gapi$client$manufacturers$Product {
     /**
      * The content language of the product as a two-letter ISO 639-1 language code
      * (for example, en).
@@ -352,13 +356,13 @@ declare module "gapi.client.manufacturers" {
      * attributes.
      * @OutputOnly
      */
-    finalAttributes?: manufacturers$Attributes;
+    finalAttributes?: gapi$client$manufacturers$Attributes;
 
     /**
      * A server-generated list of issues associated with the product.
      * @OutputOnly
      */
-    issues?: manufacturers$Issue[];
+    issues?: gapi$client$manufacturers$Issue[];
 
     /**
      * Names of the attributes of the product deleted manually via the
@@ -371,7 +375,7 @@ declare module "gapi.client.manufacturers" {
      * Attributes of the product provided manually via the Manufacturer Center UI.
      * @OutputOnly
      */
-    manuallyProvidedAttributes?: manufacturers$Attributes;
+    manuallyProvidedAttributes?: gapi$client$manufacturers$Attributes;
 
     /**
      * Name in the format `{target_country}:{content_language}:{product_id}`.
@@ -414,10 +418,10 @@ declare module "gapi.client.manufacturers" {
      * Attributes of the product uploaded via the Manufacturer Center API or via
      * feeds.
      */
-    uploadedAttributes?: manufacturers$Attributes;
+    uploadedAttributes?: gapi$client$manufacturers$Attributes;
   }
 
-  declare interface manufacturers$ProductDetail {
+  declare interface gapi$client$manufacturers$ProductDetail {
     /**
      * The name of the attribute.
      */
@@ -434,7 +438,7 @@ declare module "gapi.client.manufacturers" {
     sectionName?: string;
   }
 
-  declare interface manufacturers$ProductsResource {
+  declare interface gapi$client$manufacturers$ProductsResource {
     /**
      * Deletes the product from a Manufacturer Center account.
      */
@@ -621,7 +625,7 @@ declare module "gapi.client.manufacturers" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<manufacturers$Product>;
+    }): Request<gapi$client$manufacturers$Product>;
 
     /**
      * Lists all the products in a Manufacturer Center account.
@@ -709,7 +713,7 @@ declare module "gapi.client.manufacturers" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<manufacturers$ListProductsResponse>;
+    }): Request<gapi$client$manufacturers$ListProductsResponse>;
 
     /**
      * Inserts or updates the product in a Manufacturer Center account.
@@ -811,10 +815,10 @@ declare module "gapi.client.manufacturers" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<manufacturers$Product>;
+    }): Request<gapi$client$manufacturers$Product>;
   }
 
-  declare interface manufacturers$AccountsResource {
-    products: manufacturers$ProductsResource;
+  declare interface gapi$client$manufacturers$AccountsResource {
+    products: gapi$client$manufacturers$ProductsResource;
   }
 }
