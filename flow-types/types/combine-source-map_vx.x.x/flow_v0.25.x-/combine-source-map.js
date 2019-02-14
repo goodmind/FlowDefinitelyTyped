@@ -19,7 +19,7 @@ declare module "combine-source-map" {
         sourceFile: string,
         source: string
       },
-      offset?: Combiner$Combiner$Offset
+      offset?: Combiner$Offset
     ): Combiner;
 
     /**
@@ -36,13 +36,13 @@ declare module "combine-source-map" {
     _addGeneratedMap(
       sourceFile: string,
       source: string,
-      offset?: Combiner$Combiner$Offset
+      offset?: Combiner$Offset
     ): Combiner;
     _addExistingMap(
       sourceFile: string,
       source: string,
       existingMap: any,
-      offset?: Combiner$Combiner$Offset
+      offset?: Combiner$Offset
     ): Combiner;
   }
 
@@ -75,5 +75,5 @@ declare module "combine-source-map" {
    */
   declare function Combiner$removeComments(src: string): string;
 
-  declare module.exports: typeof Combiner;
+  declare export default typeof Combiner;
 }
