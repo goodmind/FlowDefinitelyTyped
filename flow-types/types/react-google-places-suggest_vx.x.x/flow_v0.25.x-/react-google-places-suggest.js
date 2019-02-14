@@ -4,7 +4,7 @@ declare module "react-google-places-suggest" {
   declare export default typeof ReactGooglePlacesSuggest;
 
   declare class ReactGooglePlacesSuggest
-    mixins Component<ReactGooglePlacesSuggest$ReactGooglePlacesSuggest$Props> {}
+    mixins Component<ReactGooglePlacesSuggest$Props> {}
   declare type ReactGooglePlacesSuggest$Prediction = google.maps.places.AutocompletePrediction;
 
   declare type ReactGooglePlacesSuggest$GeocodedPrediction = google.maps.GeocoderResult;
@@ -18,7 +18,7 @@ declare module "react-google-places-suggest" {
     customContainerRender?: (
       predictions: $ReadOnlyArray<ReactGooglePlacesSuggest$Prediction>
     ) => JSX.Element | string;
-    googleMaps: typeof undefined;
+    googleMaps: typeof google.maps;
     onSelectSuggest?: (
       geocodedPrediction: ReactGooglePlacesSuggest$GeocodedPrediction,
       originalPrediction: ReactGooglePlacesSuggest$Prediction
