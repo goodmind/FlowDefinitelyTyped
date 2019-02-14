@@ -52,17 +52,17 @@ declare module "registry-auth-token" {
   }
 
   /**
- * @param registryUrl - Either the registry url used
-for matching or a configuration object describing the contents of the .npmrc file
- * @param options - a configuration object describing the
-contents of the .npmrc file.  If an `npmrc` config object was passed in as the
-first parameter, this parameter is ignored.
- * @returns The `NpmCredentials` object or undefined if no match found.
- */
+   * @param registryUrl - Either the registry url used
+   * for matching or a configuration object describing the contents of the .npmrc file
+   * @param options - a configuration object describing the
+   * contents of the .npmrc file.  If an `npmrc` config object was passed in as the
+   * first parameter, this parameter is ignored.
+   * @returns The `NpmCredentials` object or undefined if no match found.
+   */
   declare function auth(
-    registryUrl: string | auth$auth$AuthOptions,
-    options?: auth$auth$AuthOptions
-  ): auth$auth$NpmCredentials;
+    registryUrl: string | auth$AuthOptions,
+    options?: auth$AuthOptions
+  ): auth$NpmCredentials;
 
-  declare module.exports: typeof auth;
+  declare export default typeof auth;
 }
