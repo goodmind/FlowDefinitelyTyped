@@ -154,20 +154,13 @@ declare module "qiniu-js" {
     putExtra: $Shape<Extra>
   ): string;
 
-  declare export class Region {
-    constructor(...args: empty): mixed;
-    static +z0: Class<Region__z0> & Region__z0 & 0; // 0
-    static +z1: Class<Region__z1> & Region__z1 & 1; // 1
-    static +z2: Class<Region__z2> & Region__z2 & 2; // 2
-    static +na0: Class<Region__na0> & Region__na0 & 3; // 3
-    static +as0: Class<Region__as0> & Region__as0 & 4; // 4
-  }
-
-  declare class Region__z0 mixins Region {}
-  declare class Region__z1 mixins Region {}
-  declare class Region__z2 mixins Region {}
-  declare class Region__na0 mixins Region {}
-  declare class Region__as0 mixins Region {}
+  declare export var Region: {|
+    +z0: 0, // 0
+    +z1: 1, // 1
+    +z2: 2, // 2
+    +na0: 3, // 3
+    +as0: 4 // 4
+  |};
 
   declare var npm$namespace$region: {
     z0: typeof region$z0,
@@ -283,14 +276,14 @@ declare module "qiniu-js" {
   }
 
   /**
- * 水印
- * @param options 包含的具体水印参数解释见水印（[watermark](https://developer.qiniu.com/dora/manual/1316/image-watermarking-processing-watermark)）
- * @param key 文件资源名
- * @param domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取，前端可以通过接口请求后端得到
- * @returns 返回添加水印后的图片地址,可以赋值给 html 的 img 元素的 src 属性, 若未指定key，可以通过以下方式获得完整的 imgLink
-`imgLink  =  '<domain>/<key>?' +  imgLink`
-<domain> 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
- */
+   * 水印
+   * @param options 包含的具体水印参数解释见水印（[watermark](https://developer.qiniu.com/dora/manual/1316/image-watermarking-processing-watermark)）
+   * @param key 文件资源名
+   * @param domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取，前端可以通过接口请求后端得到
+   * @returns 返回添加水印后的图片地址,可以赋值给 html 的 img 元素的 src 属性, 若未指定key，可以通过以下方式获得完整的 imgLink
+   * `imgLink  =  '<domain>/<key>?' +  imgLink`
+   * <domain> 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
+   */
   declare export function watermark(
     options: WaterMarkOptions1 | WaterMarkOptions2,
     key?: string,
