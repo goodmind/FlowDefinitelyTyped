@@ -5,7 +5,7 @@ declare module "grasp" {
 
   import type { Node } from "estree";
 
-  declare module.exports: typeof grasp;
+  declare export default typeof grasp;
 
   declare function grasp(options: {
     args: string[] | Record<string, any> | string,
@@ -16,7 +16,7 @@ declare module "grasp" {
     fs?: typeof fs,
     console?: typeof console,
     textFormat?: typeof cliColor,
-    stdin?: typeof undefined
+    stdin?: typeof process.stdin
   }): void;
 
   declare var npm$namespace$grasp: {
