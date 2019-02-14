@@ -1,9 +1,7 @@
 declare module "express-bunyan-logger" {
-  declare module.exports: typeof Factory;
+  declare export default typeof Factory;
 
-  declare function Factory(
-    options?: Factory$Factory$Options
-  ): express.RequestHandler;
+  declare function Factory(options?: Factory$Options): express.RequestHandler;
 
   declare var npm$namespace$Factory: {
     errorLogger: typeof Factory$errorLogger
