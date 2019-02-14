@@ -1,9 +1,9 @@
 declare module "find-up" {
-  declare module.exports: typeof findUp;
+  declare export default typeof findUp;
 
   declare function findUp(
     filename: string | string[],
-    options?: findUp$findUp$Options
+    options?: findUp$Options
   ): Promise<string | null>;
 
   declare var npm$namespace$findUp: {
