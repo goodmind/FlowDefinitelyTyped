@@ -1,8 +1,5 @@
 declare module "supertest-as-promised" {
-  import type {
-    supertestAsPromised$SuperTest,
-    supertestAsPromised$Response
-  } from "supertest";
+  import type { SuperTest, Response } from "supertest";
 
   import typeof * as superagent from "superagent";
 
@@ -10,20 +7,20 @@ declare module "supertest-as-promised" {
 
   declare function supertestAsPromised(
     app: any
-  ): supertestAsPromised$SuperTest<supertestAsPromised$supertestAsPromised$Test>;
+  ): supertestAsPromised$SuperTest<supertestAsPromised$Test>;
 
   declare var npm$namespace$supertestAsPromised: {
     agent: typeof supertestAsPromised$agent
   };
-  declare type supertestAsPromised$Request = {} & supertest.supertestAsPromised$Request;
+  declare type supertestAsPromised$Request = {} & supertest.Request;
 
-  declare type supertestAsPromised$Response = {} & supertest.supertestAsPromised$Response;
+  declare type supertestAsPromised$Response = {} & supertest.Response;
 
   declare type supertestAsPromised$Test = {
     toPromise(): PromiseBluebird<supertestAsPromised$Response>,
     timeout(): Promise<supertestAsPromised$Response> & this
-  } & supertest.supertestAsPromised$Test &
-    superagent.supertestAsPromised$Request;
+  } & supertest.Test &
+    superagent.Request;
 
   declare function supertestAsPromised$agent(
     app?: any
@@ -31,7 +28,7 @@ declare module "supertest-as-promised" {
 
   declare type supertestAsPromised$SuperTest<
     T: supertestAsPromised$Request
-  > = {} & supertest.supertestAsPromised$SuperTest<T>;
+  > = {} & supertest.SuperTest<T>;
 
-  declare module.exports: typeof supertestAsPromised;
+  declare export default typeof supertestAsPromised;
 }
