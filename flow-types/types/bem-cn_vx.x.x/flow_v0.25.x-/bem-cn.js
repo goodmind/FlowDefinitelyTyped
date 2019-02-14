@@ -1,8 +1,8 @@
 declare module "bem-cn" {
   declare type StateFn = (states: {
     [key: string]: boolean
-  }) => BemCn$BemCn$Inner;
-  declare function BemCn(name: string): BemCn$BemCn$Inner;
+  }) => BemCn$Inner;
+  declare function BemCn(name: string): BemCn$Inner;
 
   declare var npm$namespace$BemCn: {
     reset: typeof BemCn$reset,
@@ -38,5 +38,5 @@ declare module "bem-cn" {
       [className: string]: string
     } | null;
   }
-  declare module.exports: typeof BemCn;
+  declare export default typeof BemCn;
 }
