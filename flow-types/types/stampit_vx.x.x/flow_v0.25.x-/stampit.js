@@ -7,8 +7,8 @@ declare module "stampit" {
   /**
    * Composer function
    */
-  declare type Composer = (stampcomposables: {
-    stamp: stampit$stampit$Stamp,
+  declare type Composer = (x: {
+    stamp: stampit$Stamp,
     composables: Composable[]
   }) => any;
 
@@ -19,64 +19,64 @@ declare module "stampit" {
     /**
      * Create a new stamp based on this descriptor
      */
-    (...composables: Composable[]): stampit$stampit$Stamp;
+    (...composables: Composable[]): stampit$Stamp;
 
     /**
      * A hash containing methods (functions) of any future created instance.
      */
-    stampit$methods?: {};
+    methods?: {};
 
     /**
      * Initialization function(s) which will be called per each newly created
      * instance.
      */
-    stampit$initializers?: Init[];
+    initializers?: Init[];
 
     /**
      * Properties which will shallowly copied into any future created instance.
      */
-    stampit$properties?: {};
+    properties?: {};
 
     /**
      * Properties which will be mixed to the new and any other stamp which this stamp will be composed with.
      */
-    stampit$staticProperties?: {};
+    staticProperties?: {};
 
     /**
      * Deeply merged properties of object instances
      */
-    stampit$deepProperties?: {};
+    deepProperties?: {};
 
     /**
      * ES5 Property Descriptors applied to object instances
      */
-    stampit$propertyDescriptors?: {};
+    propertyDescriptors?: {};
 
     /**
      * Deeply merged properties of Stamps
      */
-    stampit$staticDeepProperties?: {};
+    staticDeepProperties?: {};
 
     /**
      * ES5 Property Descriptors applied to Stamps
      */
-    stampit$staticPropertyDescriptors?: {};
+    staticPropertyDescriptors?: {};
 
     /**
      * A configuration object to be shallowly assigned to Stamps
      */
-    stampit$configuration?: {};
+    configuration?: {};
 
     /**
      * A configuration object to be deeply merged to Stamps
      */
-    stampit$deepConfiguration?: {};
+    deepConfiguration?: {};
   }
 
   /**
    * Any composable object (stamp or descriptor)
    */
-  declare type Composable = stampit$stampit$Stamp | Descriptor;
+  declare type Composable = stampit$Stamp | Descriptor;
 
   /**
    * The .init() function argument.
@@ -90,7 +90,7 @@ declare module "stampit" {
     /**
      * The stamp the object has been instantiated with.
      */
-    stamp: stampit$stampit$Stamp;
+    stamp: stampit$Stamp;
 
     /**
      * The arguments list passed to the stamp.
@@ -101,96 +101,96 @@ declare module "stampit" {
     /**
      * A hash containing methods (functions) of any future created instance.
      */
-    stampit$methods?: {};
+    methods?: {};
 
     /**
      * Initialization function(s) which will be called per each newly created
      * instance.
      */
-    stampit$init?: Init | Init[];
+    init?: Init | Init[];
 
     /**
      * Initialization function(s) which will be called per each newly created
      * instance.
      */
-    stampit$initializers?: Init | Init[];
+    initializers?: Init | Init[];
 
     /**
      * Properties which will shallowly copied into any future created instance.
      */
-    stampit$props?: {};
+    props?: {};
 
     /**
      * Properties which will shallowly copied into any future created instance.
      */
-    stampit$properties?: {};
+    properties?: {};
 
     /**
      * A hash containing references to the object. This hash will be shallow mixed into any future created instance.
      */
-    stampit$refs?: {};
+    refs?: {};
 
     /**
      * Properties which will be mixed to the new and any other stamp which this
      * stamp will be composed with.
      */
-    stampit$staticProperties?: {};
+    staticProperties?: {};
 
     /**
      * Properties which will be mixed to the new and any other stamp which this
      * stamp will be composed with.
      */
-    stampit$statics?: {};
+    statics?: {};
 
     /**
      * Deeply merged properties of object instances
      */
-    stampit$deepProperties?: {};
+    deepProperties?: {};
 
     /**
      * Deeply merged properties of object instances
      */
-    stampit$deepProps?: {};
+    deepProps?: {};
 
     /**
      * ES5 Property Descriptors applied to object instances
      */
-    stampit$propertyDescriptors?: {};
+    propertyDescriptors?: {};
 
     /**
      * Deeply merged properties of Stamps
      */
-    stampit$staticDeepProperties?: {};
+    staticDeepProperties?: {};
 
     /**
      * Deeply merged properties of Stamps
      */
-    stampit$deepStatics?: {};
+    deepStatics?: {};
 
     /**
      * ES5 Property Descriptors applied to Stamps
      */
-    stampit$staticPropertyDescriptors?: {};
+    staticPropertyDescriptors?: {};
 
     /**
      * A configuration object to be shallowly assigned to Stamps
      */
-    stampit$configuration?: {};
+    configuration?: {};
 
     /**
      * A configuration object to be shallowly assigned to Stamps
      */
-    stampit$conf?: {};
+    conf?: {};
 
     /**
      * A configuration object to be deeply merged to Stamps
      */
-    stampit$deepConfiguration?: {};
+    deepConfiguration?: {};
 
     /**
      * A configuration object to be deeply merged to Stamps
      */
-    stampit$deepConf?: {};
+    deepConf?: {};
 
     /**
      * Callback functions to execute each time a composition occurs
@@ -201,17 +201,15 @@ declare module "stampit" {
   /**
    * Stampit Composable for main stampit() function
    */
-  declare type StampitComposable = stampit$stampit$Stamp | Descriptor | Options;
+  declare type StampitComposable = stampit$Stamp | Descriptor | Options;
 
   /**
- * Return a factory (aka Stamp) function that will produce new objects using the
- * prototypes that are passed in or composed.
- * @param options Stampit options object containing refs, methods,
-init, props, statics, configurations, and property descriptors.
- */
-  declare function stampit(
-    ...composables: StampitComposable[]
-  ): stampit$stampit$Stamp;
+   * Return a factory (aka Stamp) function that will produce new objects using the
+   * prototypes that are passed in or composed.
+   * @param options Stampit options object containing refs, methods,
+   * init, props, statics, configurations, and property descriptors.
+   */
+  declare function stampit(...composables: StampitComposable[]): stampit$Stamp;
 
   declare var npm$namespace$stampit: {
     methods: typeof stampit$methods,
@@ -241,47 +239,47 @@ init, props, statics, configurations, and property descriptors.
    */
   declare interface stampit$Stamp {
     /**
- * Invokes the stamp and returns a new object instance.
- * @param state Properties you wish to set on the new objects.
- * @param encloseArgs The remaining arguments are passed to all .enclose() functions.
-WARNING Avoid using two different .enclose() functions that expect different arguments.
-.enclose() functions that take arguments should not be considered safe to compose
-with other .enclose() functions that also take arguments. Taking arguments with
-an .enclose() function is an anti-pattern that should be avoided, when possible.
- * @return A new object composed of the Stamps and prototypes provided.
- */
+     * Invokes the stamp and returns a new object instance.
+     * @param state Properties you wish to set on the new objects.
+     * @param encloseArgs The remaining arguments are passed to all .enclose() functions.
+     * WARNING Avoid using two different .enclose() functions that expect different arguments.
+     * .enclose() functions that take arguments should not be considered safe to compose
+     * with other .enclose() functions that also take arguments. Taking arguments with
+     * an .enclose() function is an anti-pattern that should be avoided, when possible.
+     * @return A new object composed of the Stamps and prototypes provided.
+     */
     (state?: {}, ...encloseArgs: any[]): any;
 
     /**
- * Just like calling stamp(), stamp.create() invokes the stamp and returns a new instance.
- * @param state Properties you wish to set on the new objects.
- * @param encloseArgs The remaining arguments are passed to all .enclose() functions.
-WARNING Avoid using two different .enclose() functions that expect different arguments.
-.enclose() functions that take arguments should not be considered safe to compose
-with other .enclose() functions that also take arguments. Taking arguments with
-an .enclose() function is an anti-pattern that should be avoided, when possible.
- * @return A new object composed of the Stamps and prototypes provided.
- */
+     * Just like calling stamp(), stamp.create() invokes the stamp and returns a new instance.
+     * @param state Properties you wish to set on the new objects.
+     * @param encloseArgs The remaining arguments are passed to all .enclose() functions.
+     * WARNING Avoid using two different .enclose() functions that expect different arguments.
+     * .enclose() functions that take arguments should not be considered safe to compose
+     * with other .enclose() functions that also take arguments. Taking arguments with
+     * an .enclose() function is an anti-pattern that should be avoided, when possible.
+     * @return A new object composed of the Stamps and prototypes provided.
+     */
     create(state?: {}, ...encloseArgs: any[]): any;
 
     /**
      * Stamp metadata/composer function
      */
-    stampit$compose: Descriptor;
+    compose: Descriptor;
 
     /**
      * Add methods to the methods prototype.  Creates and returns new Stamp. Chainable.
      * @param methods Object(s) containing map of method names and bodies for delegation.
      * @return A new Stamp.
      */
-    stampit$methods(...stampit$methods: Array<{}>): stampit$Stamp;
+    methods(...methods: Array<{}>): stampit$Stamp;
 
     /**
      * Take n objects and add them to the state prototype. Creates and returns new Stamp. Chainable.
      * @param states Object(s) containing map of property names and values to clone for each new object.
      * @return A new Stamp.
      */
-    stampit$refs(...states: Array<{}>): stampit$Stamp;
+    refs(...states: Array<{}>): stampit$Stamp;
 
     /**
      * Take a variable number of objects and shallow assign them to any future
@@ -289,7 +287,7 @@ an .enclose() function is an anti-pattern that should be avoided, when possible.
      * @param objects Object(s) to shallow assign for each new object.
      * @return A new Stamp.
      */
-    stampit$props(...objects: Array<{}>): stampit$Stamp;
+    props(...objects: Array<{}>): stampit$Stamp;
 
     /**
      * Take a variable number of objects and shallow assign them to any future
@@ -297,7 +295,7 @@ an .enclose() function is an anti-pattern that should be avoided, when possible.
      * @param objects Object(s) to shallow assign for each new object.
      * @return A new Stamp.
      */
-    stampit$properties(...objects: Array<{}>): stampit$Stamp;
+    properties(...objects: Array<{}>): stampit$Stamp;
 
     /**
      * Take a variable number of objects and deeply merge them to any future
@@ -306,7 +304,7 @@ an .enclose() function is an anti-pattern that should be avoided, when possible.
      * @param deepObjects The object(s) to deeply merge for each new object
      * @returns A new Stamp
      */
-    stampit$deepProps(...deepObjects: Array<{}>): stampit$Stamp;
+    deepProps(...deepObjects: Array<{}>): stampit$Stamp;
 
     /**
      * Take a variable number of objects and deeply merge them to any future
@@ -315,7 +313,7 @@ an .enclose() function is an anti-pattern that should be avoided, when possible.
      * @param deepObjects The object(s) to deeply merge for each new object
      * @returns A new Stamp
      */
-    stampit$deepProperties(...deepObjects: Array<{}>): stampit$Stamp;
+    deepProperties(...deepObjects: Array<{}>): stampit$Stamp;
 
     /**
      * @deprecated Use .init() instead.
@@ -328,40 +326,40 @@ an .enclose() function is an anti-pattern that should be avoided, when possible.
     enclose(...functions: Array<{}>): stampit$Stamp;
 
     /**
- * Take in a variable number of functions and add them to the enclose
- * prototype as initializers.
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
-    stampit$init(...functions: Init[]): stampit$Stamp;
+     * Take in a variable number of functions and add them to the enclose
+     * prototype as initializers.
+     * @param functions Initializer functions used to create private data and
+     * privileged methods
+     * @returns A new stamp
+     */
+    init(...functions: Init[]): stampit$Stamp;
 
     /**
- * Take in a variable number of functions and add them to the enclose
- * prototype as initializers.
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
-    stampit$init(functions: Init[]): stampit$Stamp;
+     * Take in a variable number of functions and add them to the enclose
+     * prototype as initializers.
+     * @param functions Initializer functions used to create private data and
+     * privileged methods
+     * @returns A new stamp
+     */
+    init(functions: Init[]): stampit$Stamp;
 
     /**
- * Take in a variable number of functions and add them to the enclose
- * prototype as initializers.
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
-    stampit$initializers(...functions: Init[]): stampit$Stamp;
+     * Take in a variable number of functions and add them to the enclose
+     * prototype as initializers.
+     * @param functions Initializer functions used to create private data and
+     * privileged methods
+     * @returns A new stamp
+     */
+    initializers(...functions: Init[]): stampit$Stamp;
 
     /**
- * Take in a variable number of functions and add them to the enclose
- * prototype as initializers.
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
-    stampit$initializers(functions: Init[]): stampit$Stamp;
+     * Take in a variable number of functions and add them to the enclose
+     * prototype as initializers.
+     * @param functions Initializer functions used to create private data and
+     * privileged methods
+     * @returns A new stamp
+     */
+    initializers(functions: Init[]): stampit$Stamp;
 
     /**
      * Take n objects and add them to a new stamp and any future stamp it composes with.
@@ -369,7 +367,7 @@ privileged methods
      * @param statics Object(s) containing map of property names and values to mixin into each new stamp.
      * @return A new Stamp.
      */
-    stampit$statics(...stampit$statics: Array<{}>): stampit$Stamp;
+    statics(...statics: Array<{}>): stampit$Stamp;
 
     /**
      * Take n objects and add them to a new stamp and any future stamp it composes with.
@@ -377,27 +375,25 @@ privileged methods
      * @param statics Object(s) containing map of property names and values to mixin into each new stamp.
      * @return A new Stamp.
      */
-    stampit$staticProperties(...stampit$statics: Array<{}>): stampit$Stamp;
+    staticProperties(...statics: Array<{}>): stampit$Stamp;
 
     /**
- * Deeply merge a variable number of objects and add them to a new stamp and
- * any future stamp it composes. Creates and returns a new Stamp. Chainable.
- * @param deepStatics The object(s) containing static properties to be
-merged
- * @returns A new stamp
- */
-    stampit$deepStatics(...stampit$deepStatics: Array<{}>): stampit$Stamp;
+     * Deeply merge a variable number of objects and add them to a new stamp and
+     * any future stamp it composes. Creates and returns a new Stamp. Chainable.
+     * @param deepStatics The object(s) containing static properties to be
+     * merged
+     * @returns A new stamp
+     */
+    deepStatics(...deepStatics: Array<{}>): stampit$Stamp;
 
     /**
- * Deeply merge a variable number of objects and add them to a new stamp and
- * any future stamp it composes. Creates and returns a new Stamp. Chainable.
- * @param deepStatics The object(s) containing static properties to be
-merged
- * @returns A new stamp
- */
-    stampit$staticDeepProperties(
-      ...stampit$deepStatics: Array<{}>
-    ): stampit$Stamp;
+     * Deeply merge a variable number of objects and add them to a new stamp and
+     * any future stamp it composes. Creates and returns a new Stamp. Chainable.
+     * @param deepStatics The object(s) containing static properties to be
+     * merged
+     * @returns A new stamp
+     */
+    staticDeepProperties(...deepStatics: Array<{}>): stampit$Stamp;
 
     /**
      * Shallowly assign properties of Stamp arbitrary metadata and add them to
@@ -406,7 +402,7 @@ merged
      * @param confs The object(s) containing metadata properties
      * @returns A new Stamp
      */
-    stampit$conf(...confs: Array<{}>): stampit$Stamp;
+    conf(...confs: Array<{}>): stampit$Stamp;
 
     /**
      * Shallowly assign properties of Stamp arbitrary metadata and add them to
@@ -415,7 +411,7 @@ merged
      * @param confs The object(s) containing metadata properties
      * @returns A new Stamp
      */
-    stampit$configuration(...confs: Array<{}>): stampit$Stamp;
+    configuration(...confs: Array<{}>): stampit$Stamp;
 
     /**
      * Deeply merge properties of Stamp arbitrary metadata and add them to a new
@@ -424,7 +420,7 @@ merged
      * @param deepConfs The object(s) containing metadata properties
      * @returns A new Stamp
      */
-    stampit$deepConf(...deepConfs: Array<{}>): stampit$Stamp;
+    deepConf(...deepConfs: Array<{}>): stampit$Stamp;
 
     /**
      * Deeply merge properties of Stamp arbitrary metadata and add them to a new
@@ -433,7 +429,7 @@ merged
      * @param deepConfs The object(s) containing metadata properties
      * @returns A new Stamp
      */
-    stampit$deepConfiguration(...deepConfs: Array<{}>): stampit$Stamp;
+    deepConfiguration(...deepConfs: Array<{}>): stampit$Stamp;
 
     /**
      * Apply ES5 property descriptors to object instances created by the new
@@ -442,7 +438,7 @@ merged
      * @param descriptors
      * @returns A new Stamp
      */
-    stampit$propertyDescriptors(...descriptors: Array<{}>): stampit$Stamp;
+    propertyDescriptors(...descriptors: Array<{}>): stampit$Stamp;
 
     /**
      * Apply ES5 property descriptors to a Stamp and any future Stamp it
@@ -450,7 +446,7 @@ merged
      * @param descriptors
      * @returns A new Stamp
      */
-    stampit$staticPropertyDescriptors(...descriptors: Array<{}>): stampit$Stamp;
+    staticPropertyDescriptors(...descriptors: Array<{}>): stampit$Stamp;
   }
 
   /**
@@ -458,9 +454,7 @@ merged
    * @param methods Object(s) containing map of method names and bodies for delegation.
    * @return A new Stamp.
    */
-  declare function stampit$methods(
-    ...stampit$methods: Array<{}>
-  ): stampit$Stamp;
+  declare function stampit$methods(...methods: Array<{}>): stampit$Stamp;
 
   /**
    * A shortcut methods for stampit().refs()
@@ -500,35 +494,35 @@ merged
   ): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().init()
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
+   * A shortcut method for stampit().init()
+   * @param functions Initializer functions used to create private data and
+   * privileged methods
+   * @returns A new stamp
+   */
   declare function stampit$init(...functions: Init[]): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().init()
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
+   * A shortcut method for stampit().init()
+   * @param functions Initializer functions used to create private data and
+   * privileged methods
+   * @returns A new stamp
+   */
   declare function stampit$init(functions: Init[]): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().initializers()
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
+   * A shortcut method for stampit().initializers()
+   * @param functions Initializer functions used to create private data and
+   * privileged methods
+   * @returns A new stamp
+   */
   declare function stampit$initializers(...functions: Init[]): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().initializers()
- * @param functions Initializer functions used to create private data and
-privileged methods
- * @returns A new stamp
- */
+   * A shortcut method for stampit().initializers()
+   * @param functions Initializer functions used to create private data and
+   * privileged methods
+   * @returns A new stamp
+   */
   declare function stampit$initializers(functions: Init[]): stampit$Stamp;
 
   /**
@@ -536,9 +530,7 @@ privileged methods
    * @param statics Object(s) containing map of property names and values to mixin into each new stamp.
    * @return A new Stamp.
    */
-  declare function stampit$statics(
-    ...stampit$statics: Array<{}>
-  ): stampit$Stamp;
+  declare function stampit$statics(...statics: Array<{}>): stampit$Stamp;
 
   /**
    * A shortcut method for stampit().staticProperties()
@@ -546,27 +538,27 @@ privileged methods
    * @return A new Stamp.
    */
   declare function stampit$staticProperties(
-    ...stampit$statics: Array<{}>
+    ...statics: Array<{}>
   ): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().deepStatics()
- * @param deepStatics The object(s) containing static properties to be
-merged
- * @returns A new stamp
- */
+   * A shortcut method for stampit().deepStatics()
+   * @param deepStatics The object(s) containing static properties to be
+   * merged
+   * @returns A new stamp
+   */
   declare function stampit$deepStatics(
-    ...stampit$deepStatics: Array<{}>
+    ...deepStatics: Array<{}>
   ): stampit$Stamp;
 
   /**
- * A shortcut method for stampit().staticDeepProperties()
- * @param deepStatics The object(s) containing static properties to be
-merged
- * @returns A new stamp
- */
+   * A shortcut method for stampit().staticDeepProperties()
+   * @param deepStatics The object(s) containing static properties to be
+   * merged
+   * @returns A new stamp
+   */
   declare function stampit$staticDeepProperties(
-    ...stampit$deepStatics: Array<{}>
+    ...deepStatics: Array<{}>
   ): stampit$Stamp;
 
   /**
@@ -625,5 +617,5 @@ merged
    */
   declare function stampit$compose(...composables: Composable[]): stampit$Stamp;
 
-  declare module.exports: typeof stampit;
+  declare export default typeof stampit;
 }
