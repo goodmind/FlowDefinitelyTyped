@@ -10,6 +10,6 @@ declare module "cross-spawn" {
   declare var npm$namespace$spawn: {
     sync: typeof spawn$sync
   };
-  declare var spawn$sync: typeof undefined;
-  declare module.exports: typeof spawn;
+  declare var spawn$sync: typeof child_process.spawnSync;
+  declare export default typeof spawn;
 }
