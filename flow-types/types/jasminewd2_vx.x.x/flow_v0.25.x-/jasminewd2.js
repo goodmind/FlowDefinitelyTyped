@@ -99,18 +99,18 @@ declare module "jasminewd2" {
     ): Promise<void>,
     toContain(expected: T, expectationFailOutput?: any): Promise<void>,
     not: jasmine$ArrayLikeMatchers<T>
-  } & jasmine$Matchers<ArrayLike<T>>;
+  } & Matchers<ArrayLike<T>>;
 
   declare function jasmine$addMatchers(
     matchers: jasmine$AsyncCustomMatcherFactories
   ): void;
 
   declare interface jasmine$Env {
-    jasmine$addMatchers(matchers: jasmine$AsyncCustomMatcherFactories): void;
+    addMatchers(matchers: jasmine$AsyncCustomMatcherFactories): void;
   }
 
   declare interface jasmine$Spec {
-    jasmine$addMatchers(matchers: jasmine$AsyncCustomMatcherFactories): void;
+    addMatchers(matchers: jasmine$AsyncCustomMatcherFactories): void;
   }
 
   declare interface jasmine$AsyncCustomMatcherFactories {
