@@ -37,7 +37,7 @@ declare module "globby" {
     /**
      * Respect ignore patterns in `.gitignore` files that apply to the globbed files.
      */
-    globby$gitignore?: boolean
+    gitignore?: boolean
   } & FastGlobOptions;
 
   /**
@@ -52,7 +52,9 @@ declare module "globby" {
     sync: typeof globby$sync,
     generateGlobTasks: typeof globby$generateGlobTasks,
     hasMagic: typeof globby$hasMagic,
-    gitignore: typeof globby$gitignore
+    gitignore: typeof globby$gitignore,
+
+    gitignore: typeof npm$namespace$globby$gitignore
   };
 
   /**
@@ -114,8 +116,8 @@ declare module "globby" {
     ignore?: string[]
   }): Promise<(path: string) => boolean>;
 
-  declare var npm$namespace$gitignore: {
-    sync: typeof gitignore$sync
+  declare var npm$namespace$globby$gitignore: {
+    sync: typeof globby$gitignore$sync
   };
 
   /**
@@ -123,10 +125,10 @@ declare module "globby" {
    *
    * Takes the same options as `globby.gitignore`.
    */
-  declare function gitignore$sync(options?: {
+  declare function globby$gitignore$sync(options?: {
     cwd?: string,
     ignore?: string[]
   }): (path: string) => boolean;
 
-  declare module.exports: typeof globby;
+  declare export default typeof globby;
 }
