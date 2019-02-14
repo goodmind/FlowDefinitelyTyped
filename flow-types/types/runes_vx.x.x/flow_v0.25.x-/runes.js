@@ -6,5 +6,5 @@ declare module "runes" {
   };
   declare function runes$substr(text: string, index: number): string;
 
-  declare module.exports: typeof runes;
+  declare export default typeof runes;
 }
