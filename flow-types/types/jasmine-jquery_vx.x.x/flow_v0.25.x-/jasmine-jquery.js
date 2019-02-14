@@ -23,16 +23,14 @@ declare module "jasmine-jquery" {
 
   declare function appendSetStyleFixtures(html: string): void;
 
-  declare function loadJSONFixtures(
-    ...uls: string[]
-  ): jasmine$jasmine$JSONFixtures;
+  declare function loadJSONFixtures(...uls: string[]): jasmine$JSONFixtures;
 
   declare function getJSONFixture(url: string): any;
 
   declare function spyOnEvent(
     selector: string,
     eventName: string
-  ): jasmine$jasmine$JQueryEventSpy;
+  ): jasmine$JQueryEventSpy;
 
   declare var npm$namespace$jasmine: {
     spiedEventsKey: typeof jasmine$spiedEventsKey,
@@ -101,21 +99,21 @@ declare module "jasmine-jquery" {
 
   declare interface jasmine$Matchers<T> {
     /**
- * Check if DOM element has class.
- * @param className Name of the class to check.
- * @example // returns true
-expect($('<div class="some-class"></div>')).toHaveClass("some-class")
- */
+     * Check if DOM element has class.
+     * @param className Name of the class to check.
+     * @example // returns true
+     * expect($('<div class="some-class"></div>')).toHaveClass("some-class")
+     */
     toHaveClass(className: string): boolean;
 
     /**
- * Check if DOM element has the given CSS properties.
- * @param css Object containing the properties (and values) to check.
- * @example // returns true
-expect($('<div style="display: none; margin: 10px;"></div>')).toHaveCss({display: "none", margin: "10px"})
- * @example // returns true
-expect($('<div style="display: none; margin: 10px;"></div>')).toHaveCss({margin: "10px"})
- */
+     * Check if DOM element has the given CSS properties.
+     * @param css Object containing the properties (and values) to check.
+     * @example // returns true
+     * expect($('<div style="display: none; margin: 10px;"></div>')).toHaveCss({display: "none", margin: "10px"})
+     * @example // returns true
+     * expect($('<div style="display: none; margin: 10px;"></div>')).toHaveCss({margin: "10px"})
+     */
     toHaveCss(css: any): boolean;
 
     /**
@@ -135,17 +133,17 @@ expect($('<div style="display: none; margin: 10px;"></div>')).toHaveCss({margin:
     toBeHidden(): boolean;
 
     /**
- * Only for tags that have checked attribute
- * @example // returns true
-expect($('<option selected="selected"></option>')).toBeSelected()
- */
+     * Only for tags that have checked attribute
+     * @example // returns true
+     * expect($('<option selected="selected"></option>')).toBeSelected()
+     */
     toBeSelected(): boolean;
 
     /**
- * Only for tags that have checked attribute
- * @example // returns true
-expect($('<input type="checkbox" checked="checked"/>')).toBeChecked()
- */
+     * Only for tags that have checked attribute
+     * @example // returns true
+     * expect($('<input type="checkbox" checked="checked"/>')).toBeChecked()
+     */
     toBeChecked(): boolean;
 
     /**
@@ -185,40 +183,40 @@ expect($('<input type="checkbox" checked="checked"/>')).toBeChecked()
     toHaveId(id: string): boolean;
 
     /**
- * Check if DOM element has the specified HTML.
- * @example // returns true
-expect($('<div><span></span></div>')).toHaveHtml('<span></span>')
- */
+     * Check if DOM element has the specified HTML.
+     * @example // returns true
+     * expect($('<div><span></span></div>')).toHaveHtml('<span></span>')
+     */
     toHaveHtml(html: string): boolean;
 
     /**
- * Check if DOM element contains the specified HTML.
- * @example // returns true
-expect($('<div><ul></ul><h1>header</h1></div>')).toContainHtml('<ul></ul>')
- */
+     * Check if DOM element contains the specified HTML.
+     * @example // returns true
+     * expect($('<div><ul></ul><h1>header</h1></div>')).toContainHtml('<ul></ul>')
+     */
     toContainHtml(html: string): boolean;
 
     /**
- * Check if DOM element has the given Text.
- * @param text Accepts a string or regular expression
- * @example // returns true
-expect($('<div>some text</div>')).toHaveText('some text')
- */
+     * Check if DOM element has the given Text.
+     * @param text Accepts a string or regular expression
+     * @example // returns true
+     * expect($('<div>some text</div>')).toHaveText('some text')
+     */
     toHaveText(text: string): boolean;
 
     /**
- * Check if DOM element contains the specified text.
- * @example // returns true
-expect($('<div><ul></ul><h1>header</h1></div>')).toContainText('header')
- */
+     * Check if DOM element contains the specified text.
+     * @example // returns true
+     * expect($('<div><ul></ul><h1>header</h1></div>')).toContainText('header')
+     */
     toContainText(text: string): boolean;
 
     /**
- * Check if DOM element has the given value.
- * This can only be applied for element on with jQuery val() can be called.
- * @example // returns true
-expect($('<input type="text" value="some text"/>')).toHaveValue('some text')
- */
+     * Check if DOM element has the given value.
+     * This can only be applied for element on with jQuery val() can be called.
+     * @example // returns true
+     * expect($('<input type="text" value="some text"/>')).toHaveValue('some text')
+     */
     toHaveValue(value: string): boolean;
 
     /**
@@ -229,17 +227,17 @@ expect($('<input type="text" value="some text"/>')).toHaveValue('some text')
     toBe(selector: T): boolean;
 
     /**
- * Check if DOM element is matched by the given selector.
- * @example // returns true
-expect($('<div><span class="some-class"></span></div>')).toContain('some-class')
- */
+     * Check if DOM element is matched by the given selector.
+     * @example // returns true
+     * expect($('<div><span class="some-class"></span></div>')).toContain('some-class')
+     */
     toContain(selector: any): boolean;
 
     /**
- * Check if DOM element exists inside the given parent element.
- * @example // returns true
-expect($('<div><span class="some-class"></span></div>')).toContainElement('span.some-class')
- */
+     * Check if DOM element exists inside the given parent element.
+     * @example // returns true
+     * expect($('<div><span class="some-class"></span></div>')).toContainElement('span.some-class')
+     */
     toContainElement(selector: string): boolean;
 
     /**
@@ -250,24 +248,24 @@ expect($('<div><span class="some-class"></span></div>')).toContainElement('span.
     toBeMatchedBy(selector: string): boolean;
 
     /**
- * Only for tags that have disabled attribute
- * @example // returns true
-expect('<input type="submit" disabled="disabled"/>').toBeDisabled()
- */
+     * Only for tags that have disabled attribute
+     * @example // returns true
+     * expect('<input type="submit" disabled="disabled"/>').toBeDisabled()
+     */
     toBeDisabled(): boolean;
 
     /**
- * Check if DOM element is focused
- * @example // returns true
-expect($('<input type="text" />').focus()).toBeFocused()
- */
+     * Check if DOM element is focused
+     * @example // returns true
+     * expect($('<input type="text" />').focus()).toBeFocused()
+     */
     toBeFocused(): boolean;
 
     /**
- * Checks if DOM element handles event.
- * @example // returns true
-expect($form).toHandle("submit")
- */
+     * Checks if DOM element handles event.
+     * @example // returns true
+     * expect($form).toHandle("submit")
+     */
     toHandle(eventName: string): boolean;
 
     /**
@@ -308,23 +306,23 @@ expect($form).toHandle("submit")
     toHaveBeenPreventedOn(selector: string): boolean;
 
     /**
- * Checks if event propagation has been stopped.
- * @example // returns true
-var spyEvent = spyOnEvent('#some_element', 'click')
-$('#some_element').click(function (event){event.stopPropagation();})
-$('#some_element').click()
-expect(spyEvent).toHaveBeenStopped()
- */
+     * Checks if event propagation has been stopped.
+     * @example // returns true
+     * var spyEvent = spyOnEvent('#some_element', 'click')
+     * $('#some_element').click(function (event){event.stopPropagation();})
+     * $('#some_element').click()
+     * expect(spyEvent).toHaveBeenStopped()
+     */
     toHaveBeenStopped(): boolean;
 
     /**
- * Checks if event propagation has been stopped by an element with the given selector.
- * @param selector Selector of the element that should have stopped the event propagation.
- * @example // returns true
-$('#some_element').click(function (event){event.stopPropagation();})
-$('#some_element').click()
-expect('click').toHaveBeenStoppedOn('#some_element')
- */
+     * Checks if event propagation has been stopped by an element with the given selector.
+     * @param selector Selector of the element that should have stopped the event propagation.
+     * @example // returns true
+     * $('#some_element').click(function (event){event.stopPropagation();})
+     * $('#some_element').click()
+     * expect('click').toHaveBeenStoppedOn('#some_element')
+     */
     toHaveBeenStoppedOn(selector: string): boolean;
 
     /**
