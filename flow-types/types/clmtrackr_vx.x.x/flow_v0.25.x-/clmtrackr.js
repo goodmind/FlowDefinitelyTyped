@@ -39,7 +39,9 @@ declare module "clmtrackr" {
   declare type Model = any;
 
   declare var npm$namespace$_default: {
-    version: typeof _default$version
+    version: typeof _default$version,
+
+    tracker: typeof _default$tracker
   };
   declare class _default$tracker {
     constructor(params?: TrackerParams): this;
