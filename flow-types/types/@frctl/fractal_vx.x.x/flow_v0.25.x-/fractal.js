@@ -1,121 +1,140 @@
 declare module "@frctl/fractal" {
   import type { EventEmitter } from "events";
 
-  import type { Benchmark$Stats as FileStats } from "fs";
+  import type { Stats as FileStats } from "fs";
 
-  import type { web$Server as HttpServer } from "http";
+  import type { Server as HttpServer } from "http";
 
   import type { Readable as ReadableStream } from "stream";
 
   import typeof * as VinylFile from "vinyl";
 
   declare var npm$namespace$fractal: {
-    Fractal: typeof fractal$Fractal
+    Fractal: typeof fractal$Fractal,
+
+    core: typeof npm$namespace$fractal$core,
+    api: typeof npm$namespace$fractal$api,
+    cli: typeof npm$namespace$fractal$cli,
+    web: typeof npm$namespace$fractal$web
   };
-  declare interface core$StatusInfo {
+
+  declare var npm$namespace$fractal$core: {
+    entities: typeof npm$namespace$fractal$core$entities,
+    mixins: typeof npm$namespace$fractal$core$mixins
+  };
+  declare interface fractal$core$StatusInfo {
     label: string;
     description?: string;
-    __esri$color?: string;
+    color?: string;
   }
 
-  declare class entities$Entity mixins mixins$entities$Entity {
+  declare var npm$namespace$fractal$core$entities: {
+    Entity: typeof fractal$core$entities$Entity
+  };
+  declare class fractal$core$entities$Entity mixins mixins$Entity {
     isComponent: true;
     isCollection: true;
     isDoc: true;
     isVariant: true;
-    CKEDITOR$status: core$StatusInfo;
+    status: fractal$core$StatusInfo;
     getResolvedContext(): any;
-    hasContext(): promise$Promise<boolean>;
-    setContext(main$data: any): void;
+    hasContext(): Promise<boolean>;
+    setContext(data: any): void;
     getContext(): any;
     toJSON(): {};
   }
 
-  declare type entities$EntitySource<T: entities$Entity, TConfig = any> = {
+  declare type fractal$core$entities$EntitySource<
+    T: fractal$core$entities$Entity,
+    TConfig = any
+  > = {
     entities(): T[],
     engine<TEngine>(
       adapterFactory?:
         | string
         | {
             register(
-              source: entities$EntitySource<T>,
+              source: fractal$core$entities$EntitySource<T>,
               app: any
-            ): DS$Adapter<TEngine>
+            ): Adapter<TEngine>
           }
         | (() => {
             register(
-              source: entities$EntitySource<T>,
+              source: fractal$core$entities$EntitySource<T>,
               app: any
-            ): DS$Adapter<TEngine>
+            ): Adapter<TEngine>
           })
-    ): DS$Adapter<TEngine>,
+    ): Adapter<TEngine>,
     getProp(key: string): string | {},
-    statusInfo(handle: string): core$StatusInfo | null,
-    utils$toJSON(): {}
-  } & mixins$mixins$Source<T, TConfig>;
+    statusInfo(handle: string): fractal$core$StatusInfo | null,
+    toJSON(): {}
+  } & mixins$Source<T, TConfig>;
 
-  declare type entities$EntityCollection<T: entities$Entity> = {
+  declare type fractal$core$entities$EntityCollection<
+    T: fractal$core$entities$Entity
+  > = {
     +entities: this,
-    utils$toJSON(): {}
-  } & mixins$entities$Entity &
-    mixins$mixins$Collection<T>;
+    toJSON(): {}
+  } & mixins$Entity &
+    mixins$Collection<T>;
 
-  declare class mixins$Configurable<T = any> {
+  declare var npm$namespace$fractal$core$mixins: {
+    Configurable: typeof fractal$core$mixins$Configurable,
+    Entity: typeof fractal$core$mixins$Entity
+  };
+  declare class fractal$core$mixins$Configurable<T = any> {
     config(): T;
-    config(main$config: T): this;
-    set<K: $Keys<T>>(skin$path: K, value: $ElementType<T, K> | null): this;
+    config(config: T): this;
+    set<K: $Keys<T>>(path: K, value: $ElementType<T, K> | null): this;
     get<K: $Keys<T>, V>(
-      skin$path: K,
+      path: K,
       defaultValue?: V
     ): $ElementType<T, K> | V | null | void;
   }
 
-  declare type mixins$ConfigurableEmitter<
+  declare type fractal$core$mixins$ConfigurableEmitter<
     T = any
-  > = {} & mixins$Configurable<T>;
+  > = {} & Configurable<T>;
 
-  declare interface mixins$Collection<T = any> {
+  declare interface fractal$core$mixins$Collection<T = any> {
     +isAsset: void;
     +isComponent: void;
     +isCollection: true;
     +isDoc: void;
     +isFile: void;
     +isVariant: void;
-    +__esri$size: number;
+    +size: number;
     +items: T[];
     toArray(): T[];
     setItems(items: T[]): this;
     pushItem(item: T): this;
     removeItem(item: T): this;
-    utils$toJSON(): {};
+    toJSON(): {};
     toStream(): ReadableStream;
     each(fn: (item: T) => void): this;
-    array$forEach(fn: (item: T) => void): this;
-    array$map(fn: (item: T) => T): this;
-    promise$first(): T | void;
+    forEach(fn: (item: T) => void): this;
+    map(fn: (item: T) => T): this;
+    first(): T | void;
     last(): T | void;
-    BigNum$eq(pos: number): T | void;
+    eq(pos: number): T | void;
     collections(): this;
     orderBy(): this;
-    esri$find(handle: string): T;
-    esri$find<TKey: $Keys<T>>(skin$name: TKey, value: $ElementType<T, TKey>): T;
-    findCollection(handle: string): mixins$Collection<T>;
+    find(handle: string): T;
+    find<TKey: $Keys<T>>(name: TKey, value: $ElementType<T, TKey>): T;
+    findCollection(handle: string): fractal$core$mixins$Collection<T>;
     findCollection<TKey: $Keys<T>>(
-      skin$name: TKey,
+      name: TKey,
       value: $ElementType<T, TKey>
-    ): mixins$Collection<T>;
+    ): fractal$core$mixins$Collection<T>;
     flatten(): this;
     flattenDeep(): this;
     squash(): this;
-    util$filter(handle: string): T[];
-    util$filter<TKey: $Keys<T>>(
-      skin$name: TKey,
-      value: $ElementType<T, TKey>
-    ): T[];
+    filter(handle: string): T[];
+    filter<TKey: $Keys<T>>(name: TKey, value: $ElementType<T, TKey>): T[];
     filterItems(items: T[], handle: string): T[];
     filterItems<TKey: $Keys<T>>(
       items: T[],
-      skin$name: TKey,
+      name: TKey,
       value: $ElementType<T, TKey>
     ): T[];
     flattenItems(items: T[], deep?: boolean): T[];
@@ -124,27 +143,27 @@ declare module "@frctl/fractal" {
     "NO PRINT IMPLEMENTED: ComputedPropertyName"(): IterableIterator<T>;
   }
 
-  declare class mixins$Entity {
+  declare class fractal$core$mixins$Entity {
     initEntity(
-      skin$name: string,
-      main$config: any,
-      parent: mixins$Entity
+      name: string,
+      config: any,
+      parent: fractal$core$mixins$Entity
     ): void;
-    skin$name: string;
+    name: string;
     handle: string;
     label: string;
     title: string;
     order: number;
     id: string;
-    main$config: any;
-    Segment$alias: string | null;
-    source: entities$entities$EntitySource<entities$mixins$Entity>;
-    parent: mixins$Entity;
+    config: any;
+    alias: string | null;
+    source: entities$EntitySource<entities$Entity>;
+    parent: fractal$core$mixins$Entity;
     isHidden: boolean;
     toJSON(): {};
   }
 
-  declare type mixins$Source<T = any, TConfig = any> = {
+  declare type fractal$core$mixins$Source<T = any, TConfig = any> = {
     +label: string,
     +title: string,
     +source: this,
@@ -153,15 +172,25 @@ declare module "@frctl/fractal" {
     +relPath: string,
     toStream(): ReadableStream,
     exists(): boolean,
-    scriptLoader$load(force?: boolean): promise$Promise<this>,
-    refresh(): promise$Promise<this>,
-    request$watch(): void,
+    load(force?: boolean): Promise<this>,
+    refresh(): Promise<this>,
+    watch(): void,
     unwatch(): void,
-    isConfig(dialog$file: string): boolean
-  } & mixins$ConfigurableEmitter<TConfig> &
-    mixins$Collection<T>;
+    isConfig(file: string): boolean
+  } & ConfigurableEmitter<TConfig> &
+    Collection<T>;
 
-  declare class assets$Asset mixins undefined.mixins$Entity {
+  declare var npm$namespace$fractal$api: {
+    assets: typeof npm$namespace$fractal$api$assets,
+    components: typeof npm$namespace$fractal$api$components,
+    docs: typeof npm$namespace$fractal$api$docs,
+    variants: typeof npm$namespace$fractal$api$variants
+  };
+
+  declare var npm$namespace$fractal$api$assets: {
+    Asset: typeof fractal$api$assets$Asset
+  };
+  declare class fractal$api$assets$Asset mixins undefined.Entity {
     isAsset: true;
     isComponent: void;
     isCollection: void;
@@ -171,40 +200,43 @@ declare module "@frctl/fractal" {
     toVinyl(): VinylFile;
   }
 
-  declare type assets$AssetCollection = {
+  declare type fractal$api$assets$AssetCollection = {
     assets(): this,
     toVinylArray(): VinylFile[]
-  } & undefined.entities$EntityCollection<assets$Asset>;
+  } & undefined.EntityCollection<fractal$api$assets$Asset>;
 
-  declare type assets$AssetSource = {
+  declare type fractal$api$assets$AssetSource = {
     assets(): VinylFile[],
     toVinylArray(): VinylFile[],
     toVinylStream(): ReadableStream,
     gulpify(): ReadableStream
-  } & undefined.mixins$Source<VinylFile>;
+  } & undefined.Source<VinylFile>;
 
-  declare type assets$AssetSourceCollection = {
+  declare type fractal$api$assets$AssetSourceCollection = {
     +label: string,
     +title: string,
-    plugins$add(skin$name: string, main$config: any): assets$AssetSource,
-    remove(skin$name: string): this,
-    esri$find(skin$name: string): assets$AssetSource | void,
-    sources(): assets$AssetSource[],
-    toArray(): assets$AssetSource[],
-    visible(): assets$AssetSource[],
-    request$watch(): this,
+    add(name: string, config: any): fractal$api$assets$AssetSource,
+    remove(name: string): this,
+    find(name: string): fractal$api$assets$AssetSource | void,
+    sources(): fractal$api$assets$AssetSource[],
+    toArray(): fractal$api$assets$AssetSource[],
+    visible(): fractal$api$assets$AssetSource[],
+    watch(): this,
     unwatch(): this,
-    scriptLoader$load(): promise$Promise<void>,
-    utils$toJSON(): {},
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): IterableIterator<assets$AssetSource>
-  } & undefined.mixins$ConfigurableEmitter;
+    load(): Promise<void>,
+    toJSON(): {},
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): IterableIterator<fractal$api$assets$AssetSource>
+  } & undefined.ConfigurableEmitter;
 
-  declare class components$Component mixins undefined.mixins$Entity {
+  declare var npm$namespace$fractal$api$components: {
+    Component: typeof fractal$api$components$Component
+  };
+  declare class fractal$api$components$Component mixins undefined.Entity {
     constructor(
-      main$config: {},
-      files: files$files$FileCollection,
-      resources: assets$assets$AssetCollection,
-      parent: core$entities.mixins$Entity
+      config: {},
+      files: files$FileCollection,
+      resources: assets$AssetCollection,
+      parent: core$entitiesEntity
     ): this;
     isAsset: void;
     isComponent: true;
@@ -221,69 +253,65 @@ declare module "@frctl/fractal" {
     configData: string;
     relViewPath: string;
     isCollated(): boolean;
-    definition$content: string;
+    content: string;
     references: any[];
     referencedBy: any[];
     baseHandle: string;
     notes: string;
-    render(
-      balloontoolbar$context: any,
-      Private$env: any,
-      opts: any
-    ): promise$Promise<string>;
-    getPreviewContext(): promise$Promise<any>;
-    getPreviewContent(): promise$Promise<string>;
-    setVariants(variantCollection: variants$variants$VariantCollection): void;
+    render(context: any, env: any, opts: any): Promise<string>;
+    getPreviewContext(): Promise<any>;
+    getPreviewContent(): Promise<string>;
+    setVariants(variantCollection: variants$VariantCollection): void;
     hasTag(tag: string): boolean;
-    resources(): assets$assets$AssetCollection;
+    resources(): assets$AssetCollection;
     resourcesJSON(): {};
-    flatten(): variants$variants$VariantCollection;
+    flatten(): variants$VariantCollection;
     component(): this;
-    variants(): variants$variants$VariantCollection;
+    variants(): variants$VariantCollection;
     static create(
-      main$config: {},
-      files: files$files$FileCollection,
-      resources: assets$assets$AssetCollection,
-      parent: core$entities.mixins$Entity
+      config: {},
+      files: files$FileCollection,
+      resources: assets$AssetCollection,
+      parent: core$entitiesEntity
     ): IterableIterator<
-      {} | variants$variants$VariantCollection | components$Component
+      {} | variants$VariantCollection | fractal$api$components$Component
     >;
   }
 
-  declare type components$ComponentCollection = {
-    AFRAME$components(): this,
+  declare type fractal$api$components$ComponentCollection = {
+    components(): this,
     variants(): this
-  } & undefined.entities$EntityCollection<components$Component>;
+  } & undefined.EntityCollection<fractal$api$components$Component>;
 
-  declare type components$Collator = (
+  declare type fractal$api$components$Collator = (
     markup: string,
     item: {
       handle: string
     }
   ) => string;
 
-  declare interface components$ComponentDefaultConfig {
+  declare interface fractal$api$components$ComponentDefaultConfig {
     collated?: boolean;
-    collator?: components$Collator;
-    balloontoolbar$context?: any;
+    collator?: fractal$api$components$Collator;
+    context?: any;
     display?: any;
     prefix?: string;
     preview?: string;
-    CKEDITOR$status?: string;
+    status?: string;
   }
 
-  declare interface components$ComponentConfig {
-    skin$path?: string;
+  declare interface fractal$api$components$ComponentConfig {
+    path?: string;
     ext?: string;
-    default?: components$ComponentDefaultConfig;
+    default?: fractal$api$components$ComponentDefaultConfig;
     label?: string;
     statuses?: {
-      [CKEDITOR$status: string]: core$core$StatusInfo
+      [status: string]: core$StatusInfo
     };
     title?: string;
-    fibers$yield?: string;
+    yield?: string;
     "default.collated"?: boolean;
-    "default.collator"?: components$Collator;
+    "default.collator"?: fractal$api$components$Collator;
     "default.context"?: any;
     "default.display"?: any;
     "default.prefix"?: string;
@@ -291,44 +319,43 @@ declare module "@frctl/fractal" {
     "default.status"?: string;
   }
 
-  declare type components$ComponentSource = {
-    resources(): files$files$FileCollection,
-    AFRAME$components(): components$Component[],
+  declare type fractal$api$components$ComponentSource = {
+    resources(): files$FileCollection,
+    components(): fractal$api$components$Component[],
     getReferencesOf(target: {
       id: string,
       handle: string,
-      Segment$alias: string
+      alias: string
     }): any[],
     variants(): this,
-    esri$find(): any,
-    findFile(filePath: string): files$files$File | void,
-    resolve(balloontoolbar$context: any): any,
-    renderString(
-      str: string,
-      balloontoolbar$context: any,
-      Private$env: any
-    ): promise$Promise<string>,
+    find(): any,
+    findFile(filePath: string): files$File | void,
+    resolve(context: any): any,
+    renderString(str: string, context: any, env: any): Promise<string>,
     renderPreview(
-      entity: string | core$entities.mixins$Entity,
+      entity: string | core$entitiesEntity,
       preview?: boolean,
-      Private$env?: any
-    ): promise$Promise<string>,
+      env?: any
+    ): Promise<string>,
     render(
-      entity: string | core$entities.mixins$Entity,
-      balloontoolbar$context: any,
-      Private$env?: any,
+      entity: string | core$entitiesEntity,
+      context: any,
+      env?: any,
       opts?: {}
-    ): promise$Promise<string>
-  } & undefined.entities$EntitySource<
-    components$Component,
-    components$ComponentConfig
+    ): Promise<string>
+  } & undefined.EntitySource<
+    fractal$api$components$Component,
+    fractal$api$components$ComponentConfig
   >;
 
-  declare class docs$Doc mixins undefined.mixins$Entity {
+  declare var npm$namespace$fractal$api$docs: {
+    Doc: typeof fractal$api$docs$Doc
+  };
+  declare class fractal$api$docs$Doc mixins undefined.Entity {
     constructor(
-      main$config: any,
-      definition$content: string,
-      parent: core$entities.mixins$Entity
+      config: any,
+      content: string,
+      parent: core$entitiesEntity
     ): this;
     isAsset: void;
     isComponent: void;
@@ -337,32 +364,28 @@ declare module "@frctl/fractal" {
     isFile: void;
     isVariant: void;
     isIndex: boolean;
-    getContent(): promise$Promise<string>;
+    getContent(): Promise<string>;
     getContentSync(): string;
-    render(
-      balloontoolbar$context: any,
-      Private$env?: any,
-      opts?: any
-    ): promise$Promise<string>;
-    toc(maxDepth?: number): promise$Promise<string>;
+    render(context: any, env?: any, opts?: any): Promise<string>;
+    toc(maxDepth?: number): Promise<string>;
     static create(
-      main$config: any,
-      definition$content: string,
-      parent: core$entities.mixins$Entity
-    ): docs$Doc;
+      config: any,
+      content: string,
+      parent: core$entitiesEntity
+    ): fractal$api$docs$Doc;
   }
 
-  declare type docs$DocCollection = {
+  declare type fractal$api$docs$DocCollection = {
     pages(): this
-  } & undefined.entities$EntityCollection<docs$Doc>;
+  } & undefined.EntityCollection<fractal$api$docs$Doc>;
 
-  declare interface docs$DocDefaultConfig {
-    balloontoolbar$context?: any;
+  declare interface fractal$api$docs$DocDefaultConfig {
+    context?: any;
     prefix?: string;
-    CKEDITOR$status?: string;
+    status?: string;
   }
 
-  declare interface docs$DocMarkdownConfig {
+  declare interface fractal$api$docs$DocMarkdownConfig {
     gfm?: boolean;
     tables?: boolean;
     breaks?: boolean;
@@ -372,15 +395,15 @@ declare module "@frctl/fractal" {
     smartypants?: boolean;
   }
 
-  declare interface docs$DocConfig {
-    default?: docs$DocDefaultConfig;
+  declare interface fractal$api$docs$DocConfig {
+    default?: fractal$api$docs$DocDefaultConfig;
     ext?: string;
     indexLabel?: string;
     label?: string;
-    markdown?: boolean | docs$DocMarkdownConfig;
-    skin$path?: string;
+    markdown?: boolean | fractal$api$docs$DocMarkdownConfig;
+    path?: string;
     statuses?: {
-      [CKEDITOR$status: string]: core$core$StatusInfo
+      [status: string]: core$StatusInfo
     };
     title?: string;
     "default.context"?: any;
@@ -395,39 +418,35 @@ declare module "@frctl/fractal" {
     "markdown.smartypants"?: boolean;
   }
 
-  declare type docs$DocSource = {
+  declare type fractal$api$docs$DocSource = {
     pages(): this,
     docs(): this,
-    resolve(balloontoolbar$context: any): any,
-    toc(page: files$files$File, maxDepth?: number): promise$Promise<string>,
+    resolve(context: any): any,
+    toc(page: files$File, maxDepth?: number): Promise<string>,
     render(
-      page: string | files$files$File,
-      balloontoolbar$context?: any,
-      Private$env?: any,
+      page: string | files$File,
+      context?: any,
+      env?: any,
       opts?: {}
-    ): promise$Promise<string>,
-    renderString(
-      str: string,
-      balloontoolbar$context: any,
-      Private$env?: any
-    ): promise$Promise<string>,
-    isPage(dialog$file: string): boolean,
-    isTemplate(dialog$file: string): boolean
-  } & undefined.entities$EntitySource<docs$Doc, docs$DocConfig>;
+    ): Promise<string>,
+    renderString(str: string, context: any, env?: any): Promise<string>,
+    isPage(file: string): boolean,
+    isTemplate(file: string): boolean
+  } & undefined.EntitySource<fractal$api$docs$Doc, fractal$api$docs$DocConfig>;
 
-  declare type files$FileCollection = {
+  declare type fractal$api$files$FileCollection = {
     files(): this,
-    match(test: string | core$RegExp | core$Array<string | core$RegExp>): this,
+    match(test: string | RegExp | Array<string | RegExp>): this,
     matchItems(
-      items: core$mixins.mixins$Collection<files$File>,
-      test: string | core$RegExp | core$Array<string | core$RegExp>
+      items: core$mixinsCollection<files$File>,
+      test: string | RegExp | Array<string | RegExp>
     ): files$File,
     toVinylArray(): VinylFile[],
     toVinylStream(): ReadableStream,
     gulpify(): ReadableStream
-  } & undefined.mixins$Collection<files$File>;
+  } & undefined.Collection<files$File>;
 
-  declare interface files$File {
+  declare interface fractal$api$files$File {
     +isAsset: void;
     +isComponent: void;
     +isCollection: void;
@@ -435,16 +454,16 @@ declare module "@frctl/fractal" {
     +isFile: true;
     +isVariant: void;
     id: string;
-    skin$path: string;
+    path: string;
     cwd: string;
     relPath: string;
     base: string;
     dir: string;
     handle: string;
-    skin$name: string;
+    name: string;
     ext: string;
     stat: FileStats | null;
-    utils$lang: string;
+    lang: string;
     editorMode: string;
     editorScope: string;
     githubColor: string;
@@ -453,19 +472,22 @@ declare module "@frctl/fractal" {
     getContext(): any;
     +contents: Buffer;
     +isImage: boolean;
-    getContent(): promise$Promise<string>;
+    getContent(): Promise<string>;
     getContentSync(): string;
-    Flash$read(): promise$Promise<string>;
+    read(): Promise<string>;
     readSync(): string;
     toVinyl(): VinylFile;
   }
 
-  declare class variants$Variant mixins undefined.mixins$Entity {
+  declare var npm$namespace$fractal$api$variants: {
+    Variant: typeof fractal$api$variants$Variant
+  };
+  declare class fractal$api$variants$Variant mixins undefined.Entity {
     constructor(
-      main$config: {},
+      config: {},
       view: any,
-      resources: assets$assets$AssetCollection,
-      parent: AFRAME$components.components$Component
+      resources: assets$AssetCollection,
+      parent: components$Component
     ): this;
     isAsset: void;
     isComponent: void;
@@ -482,91 +504,92 @@ declare module "@frctl/fractal" {
     editorMode: string;
     editorScope: string;
     notes: string;
-    Segment$alias: string | null;
+    alias: string | null;
     siblings: variants$VariantCollection;
-    definition$content: string;
+    content: string;
     baseHandle: string;
     references: any[];
     referencedBy: any[];
-    render(
-      balloontoolbar$context: any,
-      Private$env?: any,
-      opts?: any
-    ): promise$Promise<string>;
-    getPreviewContext(): promise$Promise<any>;
-    getPreviewContent(): promise$Promise<string>;
-    component(): AFRAME$components.components$Component;
+    render(context: any, env?: any, opts?: any): Promise<string>;
+    getPreviewContext(): Promise<any>;
+    getPreviewContent(): Promise<string>;
+    component(): components$Component;
     variant(): this;
     defaultVariant(): this;
-    resources(): assets$assets$AssetCollection;
+    resources(): assets$AssetCollection;
     resourcesJSON(): {};
-    getContent(): promise$Promise<string>;
+    getContent(): Promise<string>;
     getContentSync(): string;
     static create(
-      main$config: {},
+      config: {},
       view: any,
-      resources: assets$assets$AssetCollection,
-      parent: AFRAME$components.components$Component
-    ): variants$Variant;
+      resources: assets$AssetCollection,
+      parent: components$Component
+    ): fractal$api$variants$Variant;
   }
 
-  declare type variants$VariantCollection = {
-    default(): variants$Variant,
-    getCollatedContent(): promise$Promise<string>,
+  declare type fractal$api$variants$VariantCollection = {
+    default(): fractal$api$variants$Variant,
+    getCollatedContent(): Promise<string>,
     getCollatedContentSync(): string,
-    getCOllatedContext(): promise$Promise<any>,
+    getCOllatedContext(): Promise<any>,
     +references: any[],
     +referencedBy: any[]
-  } & undefined.entities$EntityCollection<variants$Variant>;
+  } & undefined.EntityCollection<fractal$api$variants$Variant>;
 
-  declare class cli$Cli {
+  declare var npm$namespace$fractal$cli: {
+    Cli: typeof fractal$cli$Cli,
+    Console: typeof fractal$cli$Console,
+    Notifier: typeof fractal$cli$Notifier
+  };
+  declare class fractal$cli$Cli {
     console: cli$Console;
-    ElectronNotifications$notify: cli$Notifier;
-    has(CKEDITOR$command: string): boolean;
-    get(CKEDITOR$command: string): any;
+    notify: cli$Notifier;
+    has(command: string): boolean;
+    get(command: string): any;
     isInteractive(): boolean;
     command(
       commandString: string,
-      braintree$callback: (args: any, done: () => void) => void,
+      callback: (args: any, done: () => void) => void,
       opts?:
         | string
         | {
             description?: string,
-            notification$options?: string[][]
+            options?: string[][]
           }
     ): void;
-    exec(CKEDITOR$command: string): void;
+    exec(command: string): void;
     log(message: string): void;
     error(message: string): void;
   }
 
-  declare class cli$Console {
+  declare class fractal$cli$Console {
     theme: CliTheme;
     br(): this;
-    log(dojo$text: string): this;
-    debug(dojo$text: string, main$data?: any): this;
-    success(dojo$text: string): this;
-    warn(dojo$text: string): this;
-    update(dojo$text: string, notification$type?: string): this;
+    log(text: string): this;
+    debug(text: string, data?: any): this;
+    success(text: string): this;
+    warn(text: string): this;
+    update(text: string, type?: string): this;
     clear(): this;
     persist(): this;
-    error(err: EventType$Error): this;
-    error(err: string, main$data: EventType$Error): this;
-    dump(main$data: any): void;
+    error(err: Error): this;
+    error(err: string, data: Error): this;
+    dump(data: any): void;
     box(header?: string, body?: string[], footer?: string): this;
-    write(str: string, notification$type?: string): void;
-    columns(main$data: any, notification$options?: any): this;
+    write(str: string, type?: string): void;
+    columns(data: any, options?: any): this;
     slog(): this;
     unslog(): this;
     isSlogging(): boolean;
-    debugMode(CKEDITOR$status: boolean): void;
+    debugMode(status: boolean): void;
   }
 
-  declare class cli$Notifier {
+  declare class fractal$cli$Notifier {
     updateAvailable(details: {
-      fibers$current: string,
+      current: string,
       latest: string,
-      skin$name: string
+      name: string
     }): void;
     versionMismatch(details: {
       cli: string,
@@ -574,84 +597,89 @@ declare module "@frctl/fractal" {
     }): void;
   }
 
-  declare class web$Builder mixins EventEmitter {
+  declare var npm$namespace$fractal$web: {
+    Builder: typeof fractal$web$Builder,
+    Server: typeof fractal$web$Server,
+    Web: typeof fractal$web$Web
+  };
+  declare class fractal$web$Builder mixins EventEmitter {
     /**
      * @deprecated Use start() instead.
      */
-    build(): promise$Promise<{
+    build(): Promise<{
       errorCount: number
     }>;
-    start(): promise$Promise<{
+    start(): Promise<{
       errorCount: number
     }>;
     stop(): void;
     use(): void;
   }
 
-  declare class web$Server mixins EventEmitter {
+  declare class fractal$web$Server mixins EventEmitter {
     isSynced: boolean;
-    url$port: number;
+    port: number;
     ports: {
-      browserResolve$sync?: number,
+      sync?: number,
       server?: number
     };
     url: string;
     urls: {
-      browserResolve$sync?: {
+      sync?: {
         local?: string,
         external?: string,
-        CKEDITOR$ui?: string
+        ui?: string
       },
       server?: string
     };
-    start(browserResolve$sync?: boolean): promise$Promise<HttpServer>;
+    start(sync?: boolean): Promise<HttpServer>;
     stop(): void;
     use(mount: string, middleware: any): void;
   }
 
-  declare interface web$WebServerSyncOptions {
+  declare interface fractal$web$WebServerSyncOptions {
     open?: boolean;
     browser?: string[];
-    ElectronNotifications$notify?: boolean;
+    notify?: boolean;
   }
 
-  declare interface web$WebServerConfig {
-    browserResolve$sync?: boolean;
-    syncOptions?: web$WebServerSyncOptions;
-    url$port?: number;
-    request$watch?: boolean;
+  declare interface fractal$web$WebServerConfig {
+    sync?: boolean;
+    syncOptions?: fractal$web$WebServerSyncOptions;
+    port?: number;
+    watch?: boolean;
     theme?: WebTheme | string;
   }
 
-  declare interface web$WebBuilderUrls {
+  declare interface fractal$web$WebBuilderUrls {
     ext?: string;
   }
 
-  declare interface web$WebBuilderConfig {
+  declare interface fractal$web$WebBuilderConfig {
     concurrency?: number;
     dest?: string;
     ext?: string;
-    urls?: web$WebBuilderUrls;
+    urls?: fractal$web$WebBuilderUrls;
     theme?: WebTheme | string;
   }
 
-  declare interface web$WebStaticConfig {
-    skin$path?: string;
+  declare interface fractal$web$WebStaticConfig {
+    path?: string;
     mount?: string;
   }
 
-  declare interface web$WebConfig {
-    builder?: web$WebBuilderConfig;
-    server?: web$WebServerConfig;
-    static?: web$WebStaticConfig;
+  declare interface fractal$web$WebConfig {
+    builder?: fractal$web$WebBuilderConfig;
+    server?: fractal$web$WebServerConfig;
+    static?: fractal$web$WebStaticConfig;
     "builder.concurrency"?: number;
     "builder.dest"?: string;
     "builder.ext"?: string;
-    "builder.urls"?: web$WebBuilderUrls;
+    "builder.urls"?: fractal$web$WebBuilderUrls;
     "builder.urls.ext"?: string;
     "builder.theme"?: WebTheme | string;
     "server.sync"?: boolean;
-    "server.syncOptions"?: web$WebServerSyncOptions;
+    "server.syncOptions"?: fractal$web$WebServerSyncOptions;
     "server.syncOptions.open"?: boolean;
     "server.syncOptions.browser"?: string[];
     "server.syncOptions.notify"?: boolean;
@@ -662,11 +690,11 @@ declare module "@frctl/fractal" {
     "static.mount"?: string;
   }
 
-  declare class web$Web
-    mixins undefined.mixins$ConfigurableEmitter<web$WebConfig> {
-    server(main$config?: web$WebServerConfig): web$Server;
-    builder(main$config?: web$WebBuilderConfig): web$Builder;
-    theme(skin$name: string, instance?: WebTheme): this;
+  declare class fractal$web$Web
+    mixins undefined.ConfigurableEmitter<fractal$web$WebConfig> {
+    server(config?: fractal$web$WebServerConfig): fractal$web$Server;
+    builder(config?: fractal$web$WebBuilderConfig): fractal$web$Builder;
+    theme(name: string, instance?: WebTheme): this;
     defaultTheme(): WebTheme;
     defaultTheme(instance: WebTheme): this;
   }
@@ -677,72 +705,69 @@ declare module "@frctl/fractal" {
   declare export interface FractalConfig {
     project?: {
       title?: string,
-      FixedDataTable$version?: string,
+      version?: string,
       author?: string
     };
     "project.title"?: string;
     "project.version"?: string;
     "project.author"?: string;
   }
-  declare export function create(main$config?: FractalConfig): fractal$Fractal;
+  declare export function create(config?: FractalConfig): fractal$Fractal;
 
   declare export class Fractal
-    mixins undefined.mixins$ConfigurableEmitter<FractalConfig> {
-    constructor(main$config?: FractalConfig): this;
-    AFRAME$components: fractal$api.AFRAME$components.components$ComponentSource;
-    docs: fractal$api.docs.docs$DocSource;
-    assets: fractal$api.assets.assets$AssetSourceCollection;
-    cli: fractal$cli.cli$Cli;
-    web: fractal$web.web$Web;
-    FixedDataTable$version: string;
+    mixins undefined.ConfigurableEmitter<FractalConfig> {
+    constructor(config?: FractalConfig): this;
+    api$components: fractal$apicomponentsComponentSource;
+    api$docs: fractal$apidocsDocSource;
+    api$assets: fractal$apiassetsAssetSourceCollection;
+    fractal$cli: fractal$cliCli;
+    fractal$web: fractal$webWeb;
+    version: string;
     debug: boolean;
     extend(plugin: string | ((core: any) => void)): this;
     watch(): this;
     unwatch(): this;
-    load(): promise$Promise<void>;
+    load(): Promise<void>;
   }
   declare export interface CliThemeConfig {
     delimiter?: {
-      dojo$text?: string,
+      text?: string,
       format?: (str: string) => string
     };
-    pastefromword$styles?: {
+    styles?: {
       [key: string]: any
     };
     "delimiter.text"?: string;
     "delimiter.format"?: (str: string) => string;
   }
   declare export class CliTheme
-    mixins undefined.mixins$ConfigurableEmitter<CliThemeConfig> {
-    constructor(main$config?: CliThemeConfig): this;
-    setDelimiter(dojo$text: string, formatter: (str: string) => string): void;
+    mixins undefined.ConfigurableEmitter<CliThemeConfig> {
+    constructor(config?: CliThemeConfig): this;
+    setDelimiter(text: string, formatter: (str: string) => string): void;
     delimiter(): string;
-    setStyle(skin$name: string, opts: any): void;
-    style(skin$name: string): any;
-    format(str: string, CKEDITOR$style?: string, strip?: boolean): string;
+    setStyle(name: string, opts: any): void;
+    style(name: string): any;
+    format(str: string, style?: string, strip?: boolean): string;
   }
   declare export interface WebThemeOptions {
     skin?: string;
     panels?: string[];
-    lang$rtl: boolean;
-    utils$lang?: string;
-    pastefromword$styles?: string[];
-    loader$scripts?: string[];
+    rtl: boolean;
+    lang?: string;
+    styles?: string[];
+    scripts?: string[];
     format?: string;
     static?: {
       mount?: string
     };
-    FixedDataTable$version?: string;
+    version?: string;
     favicon?: string;
     nav?: string[];
     "static.mount": string;
   }
   declare export class WebTheme
-    mixins undefined.mixins$ConfigurableEmitter<WebThemeOptions> {
-    constructor(
-      viewPaths: string[],
-      notification$options?: WebThemeOptions
-    ): this;
+    mixins undefined.ConfigurableEmitter<WebThemeOptions> {
+    constructor(viewPaths: string[], options?: WebThemeOptions): this;
     options(): WebThemeOptions;
     options(value: WebThemeOptions): this;
     setOption<K: $Keys<WebThemeOptions>>(
@@ -752,19 +777,19 @@ declare module "@frctl/fractal" {
     getOption<K: $Keys<WebThemeOptions>>(
       key: K
     ): $ElementType<WebThemeOptions, K>;
-    addLoadPath(skin$path: string): this;
+    addLoadPath(path: string): this;
     loadPaths(): string[];
     setErrorView(view: string): void;
     errorView(): string;
     setRedirectView(view: string): void;
     redirectView(): string;
-    addStatic(skin$path: string, mount: string): void;
-    static (): core$Array<{
-      skin$path: string,
+    addStatic(path: string, mount: string): void;
+    static (): Array<{
+      path: string,
       mount: string
     }>;
     addRoute(
-      skin$path: string,
+      path: string,
       opts: {
         handle?: string
       },
@@ -777,7 +802,7 @@ declare module "@frctl/fractal" {
       urlPath: string
     ):
       | {
-          Foxx$route: {
+          route: {
             handle: string,
             view: string
           },
@@ -793,26 +818,21 @@ declare module "@frctl/fractal" {
   declare export class Adapter<TEngine> mixins EventEmitter {
     constructor(
       engine: TEngine,
-      source: fractal$core.entities.entities$EntitySource<any>
+      source: fractal$coreentitiesEntitySource<any>
     ): this;
-    _source: fractal$core.entities.entities$EntitySource<any>;
+    _source: fractal$coreentitiesEntitySource<any>;
     engine: TEngine;
-    views: core$Array<{
+    views: Array<{
       handle: string,
-      skin$path: string,
-      definition$content: string
+      path: string,
+      content: string
     }>;
     setHandlePrefix(prefix: string): this;
     load(): void;
     getReferencesForView(handle: string): any[];
     getView(handle: string): any;
-    _resolve<T>(value: PromiseLike<T> | T): promise$Promise<T>;
-    render(
-      skin$path: string,
-      str: string,
-      balloontoolbar$context: any,
-      meta: any
-    ): promise$Promise<string>;
+    _resolve<T>(value: PromiseLike<T> | T): Promise<T>;
+    render(path: string, str: string, context: any, meta: any): Promise<string>;
   }
 
   declare var npm$namespace$utils: {
@@ -833,10 +853,10 @@ declare module "@frctl/fractal" {
   declare function utils$lang(
     filePath: string
   ): {
-    skin$name: string,
+    name: string,
     mode: string,
     scope: string | null,
-    __esri$color: string | null
+    color: string | null
   };
 
   declare function utils$titlize(str: string): string;
@@ -848,14 +868,14 @@ declare module "@frctl/fractal" {
   declare function utils$escapeForRegexp(str: string): string;
 
   declare function utils$parseArgv(): {
-    CKEDITOR$command: string,
+    command: string,
     args: string[],
     opts: any
   };
 
-  declare function utils$stringify(main$data: any, indent?: number): string;
+  declare function utils$stringify(data: any, indent?: number): string;
 
-  declare function utils$fileExistsSync(skin$path: string): boolean;
+  declare function utils$fileExistsSync(path: string): boolean;
 
   declare function utils$isPromise<T>(value: T | PromiseLike<T>): boolean;
 
@@ -878,15 +898,15 @@ declare module "@frctl/fractal" {
     Variant: typeof core$Variant,
     Doc: typeof core$Doc
   };
-  declare type core$Component = fractal$api.AFRAME$components.core$Component;
+  declare type core$Component = fractal$apicomponentsComponent;
 
-  declare var core$Component: typeof undefined;
+  declare var core$Component: typeof fractal$apicomponentsComponent;
 
-  declare type core$Variant = fractal$api.variants.core$Variant;
+  declare type core$Variant = fractal$apivariantsVariant;
 
-  declare var core$Variant: typeof undefined;
+  declare var core$Variant: typeof fractal$apivariantsVariant;
 
-  declare type core$Doc = fractal$api.docs.core$Doc;
+  declare type core$Doc = fractal$apidocsDoc;
 
-  declare var core$Doc: typeof undefined;
+  declare var core$Doc: typeof fractal$apidocsDoc;
 }
