@@ -139,11 +139,51 @@ declare var npm$namespace$Ember: {
   VERSION: typeof Ember$VERSION,
   $: typeof Ember$$,
   testing: typeof Ember$testing,
-  expandProperties: typeof Ember$expandProperties
-};
-declare var Ember$A: typeof undefined;
+  expandProperties: typeof Ember$expandProperties,
 
-declare var Ember$isArray: typeof undefined;
+  ArrayProxy: typeof Ember$ArrayProxy,
+  Router: typeof Ember$Router,
+  Route: typeof Ember$Route,
+  Controller: typeof Ember$Controller,
+  Component: typeof Ember$Component,
+  TextArea: typeof Ember$TextArea,
+  TextField: typeof Ember$TextField,
+  Checkbox: typeof Ember$Checkbox,
+  Helper: typeof Ember$Helper,
+  HashLocation: typeof Ember$HashLocation,
+  NoneLocation: typeof Ember$NoneLocation,
+  HistoryLocation: typeof Ember$HistoryLocation,
+  LinkComponent: typeof Ember$LinkComponent,
+  DefaultResolver: typeof Ember$DefaultResolver,
+  Resolver: typeof Ember$Resolver,
+  EventDispatcher: typeof Ember$EventDispatcher,
+  Registry: typeof Ember$Registry,
+  ComputedProperty: typeof Ember$ComputedProperty,
+  Container: typeof Ember$Container,
+  ContainerDebugAdapter: typeof Ember$ContainerDebugAdapter,
+  Object: typeof Ember$Object,
+  ObjectProxy: typeof Ember$ObjectProxy,
+  CoreObject: typeof Ember$CoreObject,
+  DataAdapter: typeof Ember$DataAdapter,
+  EngineInstance: typeof Ember$EngineInstance,
+  Engine: typeof Ember$Engine,
+  Map: typeof Ember$Map,
+  MapWithDefault: typeof Ember$MapWithDefault,
+  Mixin: typeof Ember$Mixin,
+  Namespace: typeof Ember$Namespace,
+  OrderedSet: typeof Ember$OrderedSet,
+  Service: typeof Ember$Service,
+  Application: typeof Ember$Application,
+  ApplicationInstance: typeof Ember$ApplicationInstance,
+  Test: typeof npm$namespace$Ember$Test,
+  inject: typeof npm$namespace$Ember$inject,
+  ENV: typeof npm$namespace$Ember$ENV,
+  Handlebars: typeof npm$namespace$Ember$Handlebars,
+  String: typeof npm$namespace$Ember$String
+};
+declare var Ember$A: typeof EmberArrayNs.A;
+
+declare var Ember$isArray: typeof EmberArrayNs.isArray;
 
 declare type Ember$Enumerable<T> = EmberEnumerable<T>;
 
@@ -153,7 +193,7 @@ declare class Ember$ArrayProxy<T> mixins EmberArrayProxy<T> {}
 
 declare type Ember$Array<T> = EmberArray<T>;
 
-declare var Ember$Array: typeof undefined;
+declare var Ember$Array: typeof EmberArrayNs.default;
 
 declare type Ember$MutableArray<T> = EmberMutableArray<T>;
 
@@ -193,13 +233,13 @@ declare class Ember$HistoryLocation mixins EmberRoutingHistoryLocation {}
 
 declare class Ember$LinkComponent mixins EmberRoutingLinkComponent {}
 
-declare var Ember$deprecateFunc: typeof undefined;
+declare var Ember$deprecateFunc: typeof EmberApplicationDeprecateNs.deprecateFunc;
 
-declare var Ember$deprecate: typeof undefined;
+declare var Ember$deprecate: typeof EmberApplicationDeprecateNs.deprecate;
 
-declare var Ember$getOwner: typeof undefined;
+declare var Ember$getOwner: typeof EmberApplicationNs.getOwner;
 
-declare var Ember$setOwner: typeof undefined;
+declare var Ember$setOwner: typeof EmberApplicationNs.setOwner;
 
 declare class Ember$DefaultResolver mixins EmberDefaultResolver {}
 
@@ -281,15 +321,15 @@ declare class Ember$ObjectProxy mixins EmberObjectProxyNs.default {}
 
 declare var Ember$Observable: typeof EmberObservable;
 
-declare var Ember$PromiseProxyMixin: typeof undefined;
+declare var Ember$PromiseProxyMixin: typeof EmberObjectPromiseProxyNs.default;
 
 declare class Ember$CoreObject mixins EmberCoreObject {}
 
 declare class Ember$DataAdapter mixins EmberDataAdapter {}
 
 declare var Ember$Debug: {
-  registerDeprecationHandler: typeof undefined,
-  registerWarnHandler: typeof undefined
+  registerDeprecationHandler: typeof EmberDebugNs.registerDeprecationHandler,
+  registerWarnHandler: typeof EmberDebugNs.registerWarnHandler
 };
 
 declare class Ember$EngineInstance mixins EmberEngineInstanceNs.default {}
@@ -301,7 +341,7 @@ declare class Ember$Engine mixins EmberEngineNs.default {}
  */
 declare var Ember$Error: typeof EmberError;
 
-declare var Ember$Evented: typeof undefined;
+declare var Ember$Evented: typeof EmberObjectEventedNs.default;
 
 /**
  * Inside Ember-Metal, simply uses the methods from `imports.console`.
@@ -331,7 +371,7 @@ declare var Ember$Logger: {
   /**
    * Logs the arguments to the console.
    */
-  Handlebars$log(...args: any[]): void,
+  log(...args: any[]): void,
 
   /**
    * Prints the arguments to the console with a warning icon.
@@ -358,7 +398,7 @@ declare class Ember$Map {
 /**
  * @deprecated
  */
-declare class Ember$MapWithDefault mixins Ember$Map {
+declare class Ember$MapWithDefault mixins Map {
   copy(): Ember$MapWithDefault;
   static create(): Ember$MapWithDefault;
 }
@@ -371,7 +411,7 @@ declare class Ember$Mixin<T, Base = EmberObjectNs.default>
  * such as an application or framework. Create a namespace anytime you want
  * to define one of these new containers.
  */
-declare class Ember$Namespace mixins Ember$Object {}
+declare class Ember$Namespace mixins Object {}
 
 /**
  * This class is used internally by Ember and Ember Data.
@@ -390,7 +430,7 @@ declare class Ember$OrderedSet {
   toArray(): any[];
 }
 
-declare class Ember$Service mixins Ember$Object {}
+declare class Ember$Service mixins Object {}
 
 declare interface Ember$ViewTargetActionSupport {
   target: any;
@@ -405,42 +445,46 @@ declare var Ember$ViewUtils: {
 
 declare var Ember$RSVP: typeof Rsvp;
 
-declare type RSVP$Promise<T> = Rsvp.RSVP$Promise<T>;
+declare type Ember$RSVP$Promise<T> = Rsvp.Promise<T>;
 
 declare class Ember$Application mixins EmberApplicationNs.default {}
 
 declare class Ember$ApplicationInstance
   mixins EmberApplicationInstanceNs.default {}
 
-declare var npm$namespace$Test: {
-  onInjectHelpers: typeof Test$onInjectHelpers,
-  promise: typeof Test$promise,
-  resolve: typeof Test$resolve,
-  checkWaiters: typeof Test$checkWaiters,
-  registerHelper: typeof Test$registerHelper,
-  unregisterHelper: typeof Test$unregisterHelper,
-  registerWaiter: typeof Test$registerWaiter,
-  unregisterWaiter: typeof Test$unregisterWaiter,
-  registerAsyncHelper: typeof Test$registerAsyncHelper,
-  adapter: typeof Test$adapter
+declare var npm$namespace$Ember$Test: {
+  onInjectHelpers: typeof Ember$Test$onInjectHelpers,
+  promise: typeof Ember$Test$promise,
+  resolve: typeof Ember$Test$resolve,
+  checkWaiters: typeof Ember$Test$checkWaiters,
+  registerHelper: typeof Ember$Test$registerHelper,
+  unregisterHelper: typeof Ember$Test$unregisterHelper,
+  registerWaiter: typeof Ember$Test$registerWaiter,
+  unregisterWaiter: typeof Ember$Test$unregisterWaiter,
+  registerAsyncHelper: typeof Ember$Test$registerAsyncHelper,
+  adapter: typeof Ember$Test$adapter,
+
+  Adapter: typeof Ember$Test$Adapter,
+  QUnitAdapter: typeof Ember$Test$QUnitAdapter,
+  Promise: typeof Ember$Test$Promise
 };
-declare class Test$Adapter mixins EmberTestAdapter {}
+declare class Ember$Test$Adapter mixins EmberTestAdapter {}
 
-declare var Test$registerHelper: typeof undefined;
+declare var Ember$Test$registerHelper: typeof EmberTestNs.registerHelper;
 
-declare var Test$unregisterHelper: typeof undefined;
+declare var Ember$Test$unregisterHelper: typeof EmberTestNs.unregisterHelper;
 
-declare var Test$registerWaiter: typeof undefined;
+declare var Ember$Test$registerWaiter: typeof EmberTestNs.registerWaiter;
 
-declare var Test$unregisterWaiter: typeof undefined;
+declare var Ember$Test$unregisterWaiter: typeof EmberTestNs.unregisterWaiter;
 
-declare var Test$registerAsyncHelper: typeof undefined;
+declare var Ember$Test$registerAsyncHelper: typeof EmberTestNs.registerAsyncHelper;
 
 /**
  * Used to register callbacks to be fired whenever `App.injectTestHelpers`
  * is called.
  */
-declare function Test$onInjectHelpers(
+declare function Ember$Test$onInjectHelpers(
   callback: (app: Ember$Application) => void
 ): void;
 
@@ -449,177 +493,185 @@ declare function Test$onInjectHelpers(
  * `onSuccess` callbacks and invokes the `Ember.Test.adapter.exception`
  * callback in the last chained then.
  */
-declare function Test$promise<T>(
+declare function Ember$Test$promise<T>(
   resolver: (
-    Test$resolve: (value?: T | PromiseLike<T>) => void,
+    resolve: (value?: T | PromiseLike<T>) => void,
     reject: (reason?: any) => void
   ) => void,
   label?: string
-): RSVP$Promise<T>;
+): Ember$RSVP$Promise<T>;
 
 /**
  * Replacement for `Ember.RSVP.resolve`
  * The only difference is this uses
  * an instance of `Ember.Test.Promise`
  */
-declare function Test$resolve<T>(
+declare function Ember$Test$resolve<T>(
   value?: T | PromiseLike<T>,
   label?: string
-): RSVP$Promise<T>;
+): Ember$RSVP$Promise<T>;
 
 /**
  * Iterates through each registered test waiter, and invokes
  * its callback. If any waiter returns false, this method will return
  * true indicating that the waiters have not settled yet.
  */
-declare function Test$checkWaiters(): boolean;
+declare function Ember$Test$checkWaiters(): boolean;
 
 /**
  * Used to allow ember-testing to communicate with a specific testing
  * framework.
  */
-declare var Test$adapter: EmberTestAdapter;
+declare var Ember$Test$adapter: EmberTestAdapter;
 
 /**
  * This class implements the methods defined by Ember.Test.Adapter for the
  * QUnit testing framework.
  */
-declare class Test$QUnitAdapter mixins EmberTestAdapter {}
+declare class Ember$Test$QUnitAdapter mixins EmberTestAdapter {}
 
-declare class Test$Promise<T> mixins Rsvp.Test$Promise<T> {
+declare class Ember$Test$Promise<T> mixins Rsvp.Promise<T> {
   constructor(
     executor: (
-      Test$resolve: (value?: T | PromiseLike<T>) => void,
+      resolve: (value?: T | PromiseLike<T>) => void,
       reject: (reason?: any) => void
     ) => void
   ): this;
 }
 
-declare var npm$namespace$inject: {
-  controller: typeof inject$controller,
-  service: typeof inject$service
+declare var npm$namespace$Ember$inject: {
+  controller: typeof Ember$inject$controller,
+  service: typeof Ember$inject$service
 };
 
 /**
  * Creates a property that lazily looks up another controller in the container.
  * Can only be used when defining another controller.
  */
-declare function inject$controller(): Ember$ComputedProperty<Ember$Controller>;
+declare function Ember$inject$controller(): Ember$ComputedProperty<Ember$Controller>;
 
-declare function inject$controller<K: $Keys<ControllerRegistry>>(
+declare function Ember$inject$controller<K: $Keys<ControllerRegistry>>(
   name: Handlebars$K
 ): Ember$ComputedProperty<$ElementType<ControllerRegistry, Handlebars$K>>;
 
-declare var inject$service: typeof undefined;
+declare var Ember$inject$service: typeof EmberServiceNs.inject;
 
-declare var npm$namespace$ENV: {
-  EXTEND_PROTOTYPES: typeof ENV$EXTEND_PROTOTYPES,
-  LOG_BINDINGS: typeof ENV$LOG_BINDINGS,
-  LOG_STACKTRACE_ON_DEPRECATION: typeof ENV$LOG_STACKTRACE_ON_DEPRECATION,
-  LOG_VERSION: typeof ENV$LOG_VERSION,
-  MODEL_FACTORY_INJECTIONS: typeof ENV$MODEL_FACTORY_INJECTIONS,
-  RAISE_ON_DEPRECATION: typeof ENV$RAISE_ON_DEPRECATION
+declare var npm$namespace$Ember$ENV: {
+  EXTEND_PROTOTYPES: typeof Ember$ENV$EXTEND_PROTOTYPES,
+  LOG_BINDINGS: typeof Ember$ENV$LOG_BINDINGS,
+  LOG_STACKTRACE_ON_DEPRECATION: typeof Ember$ENV$LOG_STACKTRACE_ON_DEPRECATION,
+  LOG_VERSION: typeof Ember$ENV$LOG_VERSION,
+  MODEL_FACTORY_INJECTIONS: typeof Ember$ENV$MODEL_FACTORY_INJECTIONS,
+  RAISE_ON_DEPRECATION: typeof Ember$ENV$RAISE_ON_DEPRECATION
 };
-declare var ENV$EXTEND_PROTOTYPES: {
-  Ember$Array: boolean,
+declare var Ember$ENV$EXTEND_PROTOTYPES: {
+  Array: boolean,
   Function: boolean,
   String: boolean
 };
 
-declare var ENV$LOG_BINDINGS: boolean;
+declare var Ember$ENV$LOG_BINDINGS: boolean;
 
-declare var ENV$LOG_STACKTRACE_ON_DEPRECATION: boolean;
+declare var Ember$ENV$LOG_STACKTRACE_ON_DEPRECATION: boolean;
 
-declare var ENV$LOG_VERSION: boolean;
+declare var Ember$ENV$LOG_VERSION: boolean;
 
-declare var ENV$MODEL_FACTORY_INJECTIONS: boolean;
+declare var Ember$ENV$MODEL_FACTORY_INJECTIONS: boolean;
 
-declare var ENV$RAISE_ON_DEPRECATION: boolean;
+declare var Ember$ENV$RAISE_ON_DEPRECATION: boolean;
 
-declare var npm$namespace$Handlebars: {
-  compile: typeof Handlebars$compile,
-  precompile: typeof Handlebars$precompile,
-  registerPartial: typeof Handlebars$registerPartial,
-  K: typeof Handlebars$K,
-  createFrame: typeof Handlebars$createFrame,
-  Exception: typeof Handlebars$Exception,
-  parse: typeof Handlebars$parse,
-  print: typeof Handlebars$print,
-  log: typeof Handlebars$log,
-  SafeString: typeof Handlebars$SafeString,
-  logger: typeof Handlebars$logger
+declare var npm$namespace$Ember$Handlebars: {
+  compile: typeof Ember$Handlebars$compile,
+  precompile: typeof Ember$Handlebars$precompile,
+  registerPartial: typeof Ember$Handlebars$registerPartial,
+  K: typeof Ember$Handlebars$K,
+  createFrame: typeof Ember$Handlebars$createFrame,
+  Exception: typeof Ember$Handlebars$Exception,
+  parse: typeof Ember$Handlebars$parse,
+  print: typeof Ember$Handlebars$print,
+  log: typeof Ember$Handlebars$log,
+  SafeString: typeof Ember$Handlebars$SafeString,
+  logger: typeof Ember$Handlebars$logger,
+
+  Compiler: typeof Ember$Handlebars$Compiler,
+  JavaScriptCompiler: typeof Ember$Handlebars$JavaScriptCompiler
 };
-declare function Handlebars$compile(string: string): (...args: any[]) => any;
+declare function Ember$Handlebars$compile(
+  string: string
+): (...args: any[]) => any;
 
-declare function Handlebars$compile(
+declare function Ember$Handlebars$compile(
   environment: any,
   options?: any,
   context?: any,
   asObject?: any
 ): any;
 
-declare function Handlebars$precompile(string: string, options: any): void;
+declare function Ember$Handlebars$precompile(
+  string: string,
+  options: any
+): void;
 
-declare class Handlebars$Compiler {}
+declare class Ember$Handlebars$Compiler {}
 
-declare class Handlebars$JavaScriptCompiler {}
+declare class Ember$Handlebars$JavaScriptCompiler {}
 
-declare function Handlebars$registerPartial(name: string, str: any): void;
+declare function Ember$Handlebars$registerPartial(name: string, str: any): void;
 
-declare function Handlebars$K(): any;
+declare function Ember$Handlebars$K(): any;
 
-declare function Handlebars$createFrame(objec: any): any;
+declare function Ember$Handlebars$createFrame(objec: any): any;
 
-declare function Handlebars$Exception(message: string): void;
+declare function Ember$Handlebars$Exception(message: string): void;
 
-declare var Handlebars$SafeString: typeof undefined;
+declare var Ember$Handlebars$SafeString: typeof HandlebarsNamespace.SafeString;
 
-declare function Handlebars$parse(string: string): any;
+declare function Ember$Handlebars$parse(string: string): any;
 
-declare function Handlebars$print(ast: any): void;
+declare function Ember$Handlebars$print(ast: any): void;
 
-declare var Handlebars$logger: typeof Logger;
+declare var Ember$Handlebars$logger: typeof Logger;
 
-declare function Handlebars$log(level: string, str: string): void;
+declare function Ember$Handlebars$log(level: string, str: string): void;
 
-declare var npm$namespace$String: {
-  fmt: typeof String$fmt,
-  camelize: typeof String$camelize,
-  capitalize: typeof String$capitalize,
-  classify: typeof String$classify,
-  dasherize: typeof String$dasherize,
-  decamelize: typeof String$decamelize,
-  htmlSafe: typeof String$htmlSafe,
-  isHTMLSafe: typeof String$isHTMLSafe,
-  loc: typeof String$loc,
-  underscore: typeof String$underscore,
-  w: typeof String$w
+declare var npm$namespace$Ember$String: {
+  fmt: typeof Ember$String$fmt,
+  camelize: typeof Ember$String$camelize,
+  capitalize: typeof Ember$String$capitalize,
+  classify: typeof Ember$String$classify,
+  dasherize: typeof Ember$String$dasherize,
+  decamelize: typeof Ember$String$decamelize,
+  htmlSafe: typeof Ember$String$htmlSafe,
+  isHTMLSafe: typeof Ember$String$isHTMLSafe,
+  loc: typeof Ember$String$loc,
+  underscore: typeof Ember$String$underscore,
+  w: typeof Ember$String$w
 };
-declare var String$camelize: typeof undefined;
+declare var Ember$String$camelize: typeof EmberStringNs.camelize;
 
-declare var String$capitalize: typeof undefined;
+declare var Ember$String$capitalize: typeof EmberStringNs.capitalize;
 
-declare var String$classify: typeof undefined;
+declare var Ember$String$classify: typeof EmberStringNs.classify;
 
-declare var String$dasherize: typeof undefined;
+declare var Ember$String$dasherize: typeof EmberStringNs.dasherize;
 
-declare var String$decamelize: typeof undefined;
+declare var Ember$String$decamelize: typeof EmberStringNs.decamelize;
 
-declare function String$fmt(...args: string[]): string;
+declare function Ember$String$fmt(...args: string[]): string;
 
-declare var String$htmlSafe: typeof undefined;
+declare var Ember$String$htmlSafe: typeof EmberStringNs.htmlSafe;
 
-declare var String$isHTMLSafe: typeof undefined;
+declare var Ember$String$isHTMLSafe: typeof EmberStringNs.isHTMLSafe;
 
-declare var String$loc: typeof undefined;
+declare var Ember$String$loc: typeof EmberStringNs.loc;
 
-declare var String$underscore: typeof undefined;
+declare var Ember$String$underscore: typeof EmberStringNs.underscore;
 
-declare var String$w: typeof undefined;
+declare var Ember$String$w: typeof EmberStringNs.w;
 
-declare var Ember$computed: typeof undefined;
+declare var Ember$computed: typeof EmberObjectNs.computed;
 
-declare var Ember$run: typeof undefined;
+declare var Ember$run: typeof EmberRunloopNs.run;
 
 declare var Ember$platform: {
   defineProperty: boolean,
@@ -633,75 +685,75 @@ declare function Ember$getEngineParent(
   engine: Ember$EngineInstance
 ): Ember$EngineInstance;
 
-declare var Ember$assert: typeof undefined;
+declare var Ember$assert: typeof EmberDebugNs.assert;
 
-declare var Ember$debug: typeof undefined;
+declare var Ember$debug: typeof EmberDebugNs.debug;
 
-declare var Ember$defineProperty: typeof undefined;
+declare var Ember$defineProperty: typeof EmberObjectNs.defineProperty;
 
-declare var Ember$runInDebug: typeof undefined;
+declare var Ember$runInDebug: typeof EmberDebugNs.runInDebug;
 
-declare var Ember$warn: typeof undefined;
+declare var Ember$warn: typeof EmberDebugNs.warn;
 
-declare var Ember$cacheFor: typeof undefined;
+declare var Ember$cacheFor: typeof EmberObjectInternalsNs.cacheFor;
 
-declare var Ember$addListener: typeof undefined;
+declare var Ember$addListener: typeof EmberObjectEventsNs.addListener;
 
-declare var Ember$removeListener: typeof undefined;
+declare var Ember$removeListener: typeof EmberObjectEventsNs.removeListener;
 
-declare var Ember$sendEvent: typeof undefined;
+declare var Ember$sendEvent: typeof EmberObjectEventsNs.sendEvent;
 
-declare var Ember$on: typeof undefined;
+declare var Ember$on: typeof EmberObjectEventedNs.on;
 
-declare var Ember$isBlank: typeof undefined;
+declare var Ember$isBlank: typeof EmberUtilsNs.isBlank;
 
-declare var Ember$isEmpty: typeof undefined;
+declare var Ember$isEmpty: typeof EmberUtilsNs.isEmpty;
 
-declare var Ember$isNone: typeof undefined;
+declare var Ember$isNone: typeof EmberUtilsNs.isNone;
 
-declare var Ember$isPresent: typeof undefined;
+declare var Ember$isPresent: typeof EmberUtilsNs.isPresent;
 
-declare var Ember$merge: typeof undefined;
+declare var Ember$merge: typeof EmberPolyfillsNs.merge;
 
-declare var Ember$aliasMethod: typeof undefined;
+declare var Ember$aliasMethod: typeof EmberObjectNs.aliasMethod;
 
-declare var Ember$observer: typeof undefined;
+declare var Ember$observer: typeof EmberObjectNs.observer;
 
-declare var Ember$addObserver: typeof undefined;
+declare var Ember$addObserver: typeof EmberObjectObserversNs.addObserver;
 
-declare var Ember$removeObserver: typeof undefined;
+declare var Ember$removeObserver: typeof EmberObjectObserversNs.removeObserver;
 
-declare var Ember$get: typeof undefined;
+declare var Ember$get: typeof EmberObjectNs.get;
 
-declare var Ember$notifyPropertyChange: typeof undefined;
+declare var Ember$notifyPropertyChange: typeof EmberObjectNs.notifyPropertyChange;
 
-declare var Ember$getWithDefault: typeof undefined;
+declare var Ember$getWithDefault: typeof EmberObjectNs.getWithDefault;
 
-declare var Ember$getProperties: typeof undefined;
+declare var Ember$getProperties: typeof EmberObjectNs.getProperties;
 
-declare var Ember$setProperties: typeof undefined;
+declare var Ember$setProperties: typeof EmberObjectNs.setProperties;
 
-declare var Ember$set: typeof undefined;
+declare var Ember$set: typeof EmberObjectNs.set;
 
-declare var Ember$trySet: typeof undefined;
+declare var Ember$trySet: typeof EmberObjectNs.trySet;
 
-declare var Ember$compare: typeof undefined;
+declare var Ember$compare: typeof EmberUtilsNs.compare;
 
 /**
  * Creates a shallow copy of the passed object. A deep copy of the object is
  * returned if the optional `deep` argument is `true`.
  */
-declare var Ember$copy: typeof undefined;
+declare var Ember$copy: typeof EmberObjectInternalsNs.copy;
 
-declare var Ember$isEqual: typeof undefined;
+declare var Ember$isEqual: typeof EmberUtilsNs.isEqual;
 
-declare var Ember$typeOf: typeof undefined;
+declare var Ember$typeOf: typeof EmberUtilsNs.typeOf;
 
 /**
  * Copy properties from a source object to a target object.
  * @deprecated Use Object.assign
  */
-declare var Ember$assign: typeof undefined;
+declare var Ember$assign: typeof EmberPolyfillsNs.assign;
 
 /**
  * Polyfill for Object.keys
@@ -709,11 +761,11 @@ declare var Ember$assign: typeof undefined;
  */
 declare function Ember$keys(o: any): string[];
 
-declare var Ember$guidFor: typeof undefined;
+declare var Ember$guidFor: typeof EmberObjectInternalsNs.guidFor;
 
-declare var Ember$inspect: typeof undefined;
+declare var Ember$inspect: typeof EmberDebugNs.inspect;
 
-declare var Ember$tryInvoke: typeof undefined;
+declare var Ember$tryInvoke: typeof EmberUtilsNs.tryInvoke;
 
 /**
  * A function may be assigned to `Ember.onerror` to be called when Ember
@@ -739,7 +791,7 @@ declare var Ember$$: JQueryStatic;
  */
 declare var Ember$testing: boolean;
 
-declare var Ember$expandProperties: typeof undefined;
+declare var Ember$expandProperties: typeof EmberObjectComputedNs.expandProperties;
 declare export default typeof Ember;
 declare module "htmlbars-inline-precompile" {
   declare interface TemplateFactory {
