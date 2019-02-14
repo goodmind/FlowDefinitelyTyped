@@ -1,5 +1,5 @@
 declare module "uuidv4" {
-  declare module.exports: typeof uuidv4;
+  declare export default typeof uuidv4;
 
   declare function uuidv4(): string;
 
