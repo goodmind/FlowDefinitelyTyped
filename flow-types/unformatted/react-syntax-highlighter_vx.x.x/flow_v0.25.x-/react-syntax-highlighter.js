@@ -1,9 +1,9 @@
-declare type lineTagPropsFunction = (lineNumber: number) => React.DOMAttributes<HTMLElement>;declare interface SyntaxHighlighterProps {
+declare type lineTagPropsFunction = (lineNumber: number) => React$DOMAttributes<HTMLElement>;declare interface SyntaxHighlighterProps {
 language?: string,
 style?: any,
 customStyle?: any,
-lineProps?: lineTagPropsFunction | React.DOMAttributes<HTMLElement>,
-codeTagProps?: React.DOMAttributes<HTMLElement>,
+lineProps?: lineTagPropsFunction | React$DOMAttributes<HTMLElement>,
+codeTagProps?: React$DOMAttributes<HTMLElement>,
 useInlineStyles?: boolean,
 showLineNumbers?: boolean,
 startingLineNumber?: number,
