@@ -405,6 +405,12 @@ declare module "react-leaflet" {
     P: LayersControlProps = LayersControlProps,
     E: Leaflet.Control.Layers = Leaflet.Control.Layers
   > mixins MapControl<P, E> {}
+
+  declare var npm$namespace$LayersControl: {
+    ControlledLayer: typeof LayersControl$ControlledLayer,
+    BaseLayer: typeof LayersControl$BaseLayer,
+    Overlay: typeof LayersControl$Overlay
+  };
   declare interface LayersControl$BaseControlledLayerProps {
     checked?: boolean;
     children?: Children;
@@ -420,7 +426,7 @@ declare module "react-leaflet" {
     ) => void,
     addOverlay?: (layer: Leaflet.Layer, name: string, checked: boolean) => void,
     name: string
-  } & LayersControl$BaseControlledLayerProps;
+  } & BaseControlledLayerProps;
 
   declare class LayersControl$ControlledLayer<
     P: LayersControl$BaseControlledLayerProps = LayersControl$BaseControlledLayerProps
@@ -435,11 +441,11 @@ declare module "react-leaflet" {
 
   declare class LayersControl$BaseLayer<
     P: LayersControl$ControlledLayerProps = LayersControl$ControlledLayerProps
-  > mixins LayersControl$ControlledLayer<P> {}
+  > mixins ControlledLayer<P> {}
 
   declare class LayersControl$Overlay<
     P: LayersControl$ControlledLayerProps = LayersControl$ControlledLayerProps
-  > mixins LayersControl$ControlledLayer<P> {}
+  > mixins ControlledLayer<P> {}
   declare export type ScaleControlProps = Leaflet.Control.ScaleOptions;
   declare export class ScaleControl<
     P: ScaleControlProps = ScaleControlProps,
