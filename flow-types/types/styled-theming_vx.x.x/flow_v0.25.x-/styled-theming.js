@@ -1,8 +1,5 @@
 declare module "styled-theming" {
-  declare function theme(
-    name: string,
-    values: theme$theme$ThemeMap
-  ): theme$theme$ThemeSet;
+  declare function theme(name: string, values: theme$ThemeMap): theme$ThemeSet;
 
   declare var npm$namespace$theme: {
     variants: typeof theme$variants
@@ -29,5 +26,5 @@ declare module "styled-theming" {
     values: theme$VariantMap
   ): theme$VariantSet;
 
-  declare module.exports: typeof theme;
+  declare export default typeof theme;
 }
