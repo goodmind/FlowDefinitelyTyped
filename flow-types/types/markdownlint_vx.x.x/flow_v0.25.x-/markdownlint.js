@@ -1,9 +1,9 @@
 declare module "markdownlint" {
   declare function markdownlint(
-    options: markdownlint$markdownlint$MarkdownlintOptions,
+    options: markdownlint$MarkdownlintOptions,
     callback: (
       err: Error | null,
-      result: markdownlint$markdownlint$MarkdownlintResults
+      result: markdownlint$MarkdownlintResults
     ) => any
   ): void;
 
@@ -63,5 +63,5 @@ declare module "markdownlint" {
       | ((useAlias?: boolean) => string);
     toString(useAlias?: boolean): string;
   }
-  declare module.exports: typeof markdownlint;
+  declare export default typeof markdownlint;
 }
