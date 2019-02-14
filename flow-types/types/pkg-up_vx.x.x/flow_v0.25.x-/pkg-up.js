@@ -1,5 +1,5 @@
 declare module "pkg-up" {
-  declare module.exports: typeof pkgUp;
+  declare export default typeof pkgUp;
 
   declare function pkgUp(cwd?: string): Promise<string>;
 
