@@ -1592,14 +1592,14 @@ declare module "ssh2-streams" {
     status(reqID: number, statusCode: number, message?: string): boolean;
 
     /**
- * (Server-only)
- * Sends a handle response for the request identified by `id`.
- * @param handle A handle must be less than 256 bytes and is an opaque value that could
-merely contain the value of a backing file descriptor or some other unique,
-custom value.
-
-Returns `false` if you should wait for the `continue` event before sending any more traffic.
- */
+     * (Server-only)
+     * Sends a handle response for the request identified by `id`.
+     * @param handle A handle must be less than 256 bytes and is an opaque value that could
+     * merely contain the value of a backing file descriptor or some other unique,
+     * custom value.
+     *
+     * Returns `false` if you should wait for the `continue` event before sending any more traffic.
+     */
     handle(reqID: number, handle: Buffer): boolean;
 
     /**
@@ -1874,87 +1874,39 @@ Returns `false` if you should wait for the `continue` event before sending any m
     on(event: string | Symbol, listener: Function): this;
   }
 
+  declare var npm$namespace$SFTPStream: {
+    STATUS_CODE: typeof SFTPStream$STATUS_CODE,
+    OPEN_MODE: typeof SFTPStream$OPEN_MODE
+  };
+
   /**
    * Contains the various status codes (for use especially with SFTPStream#status())
    */
-  declare export class SFTPStream$STATUS_CODE {
-    constructor(...args: empty): mixed;
-    static +OK: Class<SFTPStream$STATUS_CODE__OK> &
-      SFTPStream$STATUS_CODE__OK &
-      0; // 0
-    static +EOF: Class<SFTPStream$STATUS_CODE__EOF> &
-      SFTPStream$STATUS_CODE__EOF &
-      1; // 1
-    static +NO_SUCH_FILE: Class<SFTPStream$STATUS_CODE__NO_SUCH_FILE> &
-      SFTPStream$STATUS_CODE__NO_SUCH_FILE &
-      2; // 2
-    static +PERMISSION_DENIED: Class<SFTPStream$STATUS_CODE__PERMISSION_DENIED> &
-      SFTPStream$STATUS_CODE__PERMISSION_DENIED &
-      3; // 3
-    static +FAILURE: Class<SFTPStream$STATUS_CODE__FAILURE> &
-      SFTPStream$STATUS_CODE__FAILURE &
-      4; // 4
-    static +BAD_MESSAGE: Class<SFTPStream$STATUS_CODE__BAD_MESSAGE> &
-      SFTPStream$STATUS_CODE__BAD_MESSAGE &
-      5; // 5
-    static +NO_CONNECTION: Class<SFTPStream$STATUS_CODE__NO_CONNECTION> &
-      SFTPStream$STATUS_CODE__NO_CONNECTION &
-      6; // 6
-    static +CONNECTION_LOST: Class<SFTPStream$STATUS_CODE__CONNECTION_LOST> &
-      SFTPStream$STATUS_CODE__CONNECTION_LOST &
-      7; // 7
-    static +OP_UNSUPPORTED: Class<SFTPStream$STATUS_CODE__OP_UNSUPPORTED> &
-      SFTPStream$STATUS_CODE__OP_UNSUPPORTED &
-      8; // 8
-  }
 
-  declare class SFTPStream$STATUS_CODE__OK mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__EOF mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__NO_SUCH_FILE
-    mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__PERMISSION_DENIED
-    mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__FAILURE mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__BAD_MESSAGE
-    mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__NO_CONNECTION
-    mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__CONNECTION_LOST
-    mixins SFTPStream$STATUS_CODE {}
-  declare class SFTPStream$STATUS_CODE__OP_UNSUPPORTED
-    mixins SFTPStream$STATUS_CODE {}
+  declare export var SFTPStream$STATUS_CODE: {|
+    +OK: 0, // 0
+    +EOF: 1, // 1
+    +NO_SUCH_FILE: 2, // 2
+    +PERMISSION_DENIED: 3, // 3
+    +FAILURE: 4, // 4
+    +BAD_MESSAGE: 5, // 5
+    +NO_CONNECTION: 6, // 6
+    +CONNECTION_LOST: 7, // 7
+    +OP_UNSUPPORTED: 8 // 8
+  |};
 
   /**
    * Contains the various open file flags
    */
-  declare export class SFTPStream$OPEN_MODE {
-    constructor(...args: empty): mixed;
-    static +READ: Class<SFTPStream$OPEN_MODE__READ> &
-      SFTPStream$OPEN_MODE__READ &
-      1; // 1
-    static +WRITE: Class<SFTPStream$OPEN_MODE__WRITE> &
-      SFTPStream$OPEN_MODE__WRITE &
-      2; // 2
-    static +APPEND: Class<SFTPStream$OPEN_MODE__APPEND> &
-      SFTPStream$OPEN_MODE__APPEND &
-      4; // 4
-    static +CREAT: Class<SFTPStream$OPEN_MODE__CREAT> &
-      SFTPStream$OPEN_MODE__CREAT &
-      8; // 8
-    static +TRUNC: Class<SFTPStream$OPEN_MODE__TRUNC> &
-      SFTPStream$OPEN_MODE__TRUNC &
-      16; // 16
-    static +EXCL: Class<SFTPStream$OPEN_MODE__EXCL> &
-      SFTPStream$OPEN_MODE__EXCL &
-      32; // 32
-  }
 
-  declare class SFTPStream$OPEN_MODE__READ mixins SFTPStream$OPEN_MODE {}
-  declare class SFTPStream$OPEN_MODE__WRITE mixins SFTPStream$OPEN_MODE {}
-  declare class SFTPStream$OPEN_MODE__APPEND mixins SFTPStream$OPEN_MODE {}
-  declare class SFTPStream$OPEN_MODE__CREAT mixins SFTPStream$OPEN_MODE {}
-  declare class SFTPStream$OPEN_MODE__TRUNC mixins SFTPStream$OPEN_MODE {}
-  declare class SFTPStream$OPEN_MODE__EXCL mixins SFTPStream$OPEN_MODE {}
+  declare export var SFTPStream$OPEN_MODE: {|
+    +READ: 1, // 1
+    +WRITE: 2, // 2
+    +APPEND: 4, // 4
+    +CREAT: 8, // 8
+    +TRUNC: 16, // 16
+    +EXCL: 32 // 32
+  |};
 
   declare export interface SFTPStreamConfig {
     /**
