@@ -16,7 +16,7 @@ declare module "global" {
   }
 }
 declare module "abbrev" {
-  declare module.exports: typeof abbrev;
+  declare export default typeof abbrev;
 
   declare function abbrev(
     words: string[]
