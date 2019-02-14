@@ -78,5 +78,5 @@ declare module "weak" {
    */
   declare function weak$callbacks(ref: WeakRef<any>): Array<() => void>;
 
-  declare module.exports: typeof weak;
+  declare export default typeof weak;
 }
