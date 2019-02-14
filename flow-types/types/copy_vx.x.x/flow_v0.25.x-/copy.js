@@ -86,15 +86,15 @@ declare module "copy" {
   declare function copy(
     patterns: string | File | string[] | File[],
     dir: string,
-    options: copy$copy$Options,
-    callback: copy$copy$Callback
+    options: copy$Options,
+    callback: copy$Callback
   ): void;
 
   declare function copy(
     patterns: string | File | string[] | File[],
     dir: string,
-    callback: copy$copy$Callback
+    callback: copy$Callback
   ): void;
 
-  declare module.exports: typeof copy;
+  declare export default typeof copy;
 }
