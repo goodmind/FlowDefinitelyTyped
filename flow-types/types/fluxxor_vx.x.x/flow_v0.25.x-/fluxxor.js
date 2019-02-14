@@ -8,7 +8,10 @@ declare module "fluxxor" {
     FluxChildMixin: typeof Fluxxor$FluxChildMixin,
     StoreWatchMixin: typeof Fluxxor$StoreWatchMixin,
     createStore: typeof Fluxxor$createStore,
-    version: typeof Fluxxor$version
+    version: typeof Fluxxor$version,
+
+    Dispatcher: typeof Fluxxor$Dispatcher,
+    Flux: typeof Fluxxor$Flux
   };
   declare class Fluxxor$Dispatcher {
     constructor(stores: any): this;
@@ -76,5 +79,5 @@ declare module "fluxxor" {
   ): Fluxxor$StoreClass;
 
   declare var Fluxxor$version: string;
-  declare module.exports: typeof Fluxxor;
+  declare export default typeof Fluxxor;
 }
