@@ -11,10 +11,10 @@ declare interface FormSerializer$FormSerializerPatterns {
 
 declare export var FormSerializer$patterns: FormSerializer$FormSerializerPatterns;
 declare module "jquery-serialize-object" {
-  declare module.exports: typeof FormSerializer;
+  declare export default typeof FormSerializer;
 }
 declare module "form-serializer" {
-  declare module.exports: typeof FormSerializer;
+  declare export default typeof FormSerializer;
 }
 declare interface JQuery {
   /**
