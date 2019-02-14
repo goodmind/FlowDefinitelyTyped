@@ -1,5 +1,5 @@
 declare module "npm-user-packages" {
-  declare module.exports: typeof npmUserPackages;
+  declare export default typeof npmUserPackages;
 
   /**
    * Get packages by a npm user.
@@ -7,7 +7,7 @@ declare module "npm-user-packages" {
    */
   declare function npmUserPackages(
     username: string
-  ): Promise<npmUserPackages$npmUserPackages$PackageData[]>;
+  ): Promise<npmUserPackages$PackageData[]>;
 
   declare interface npmUserPackages$PackageData {
     author: {
