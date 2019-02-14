@@ -8,12 +8,12 @@ declare module "sharp" {
    * @throws {Error} Invalid parameters
    * @returns A sharp instance that can be used to chain operations
    */
-  declare function sharp(options?: sharp$sharp$SharpOptions): sharp$sharp$Sharp;
+  declare function sharp(options?: sharp$SharpOptions): sharp$Sharp;
 
   declare function sharp(
     input?: string | Buffer,
-    options?: sharp$sharp$SharpOptions
-  ): sharp$sharp$Sharp;
+    options?: sharp$SharpOptions
+  ): sharp$Sharp;
 
   declare var npm$namespace$sharp: {
     cache: typeof sharp$cache,
@@ -88,7 +88,7 @@ declare module "sharp" {
    * @param concurrency The new concurrency value.
    * @returns The current concurrency value.
    */
-  declare function sharp$concurrency(sharp$concurrency?: number): number;
+  declare function sharp$concurrency(concurrency?: number): number;
 
   /**
    * Provides access to internal task counters.
@@ -385,7 +385,7 @@ declare module "sharp" {
      * @throws {Error} Invalid parameters
      * @returns A sharp instance that can be used to chain operations
      */
-    convolve(sharp$kernel: sharp$Kernel): sharp$Sharp,
+    convolve(kernel: sharp$Kernel): sharp$Sharp,
 
     /**
      * Any pixel value greather than or equal to the threshold value will be set to 255, otherwise it will be set to 0.
@@ -539,7 +539,7 @@ declare module "sharp" {
      * @returns A sharp instance that can be used to chain operations
      */
     toFormat(
-      sharp$format: string | sharp$AvailableFormatInfo,
+      format: string | sharp$AvailableFormatInfo,
       options?:
         | sharp$OutputOptions
         | sharp$JpegOptions
@@ -679,7 +679,7 @@ declare module "sharp" {
     /**
      * The number of tasks this module has queued waiting for libuv to provide a worker thread from its pool.
      */
-    sharp$queue: number;
+    queue: number;
 
     /**
      * The number of resize tasks currently being processed.
@@ -726,7 +726,7 @@ declare module "sharp" {
     /**
      * Name of decoder used to decompress image data e.g. jpeg, png, webp, gif, svg
      */
-    sharp$format?: string,
+    format?: string,
 
     /**
      * Total size of image in bytes, for Stream and Buffer input only
@@ -802,7 +802,7 @@ declare module "sharp" {
      * Buffer containing raw XMP data, if present
      */
     xmp?: Buffer
-  } & sharp$WriteableMetadata;
+  } & WriteableMetadata;
 
   declare interface sharp$Stats {
     /**
@@ -935,7 +935,7 @@ declare module "sharp" {
      * Alternative spelling of quantisationTable (optional, default 0)
      */
     quantizationTable?: number
-  } & sharp$OutputOptions;
+  } & OutputOptions;
 
   declare type sharp$WebpOptions = {
     /**
@@ -952,7 +952,7 @@ declare module "sharp" {
      * Use near_lossless compression mode (optional, default false)
      */
     nearLossless?: boolean
-  } & sharp$OutputOptions;
+  } & OutputOptions;
 
   declare type sharp$TiffOptions = {
     /**
@@ -979,7 +979,7 @@ declare module "sharp" {
      * Squash 8-bit images down to 1 bit (optional, default false)
      */
     squash?: boolean
-  } & sharp$OutputOptions;
+  } & OutputOptions;
 
   declare interface sharp$PngOptions {
     /**
@@ -1056,7 +1056,7 @@ declare module "sharp" {
     /**
      * How the image should be resized to fit both provided dimensions, one of cover, contain, fill, inside or outside. (optional, default 'cover')
      */
-    sharp$fit?: $Keys<sharp$FitEnum>;
+    fit?: $Keys<sharp$FitEnum>;
 
     /**
      * Position, gravity or strategy to use when fit is cover or contain. (optional, default 'centre')
@@ -1071,7 +1071,7 @@ declare module "sharp" {
     /**
      * The kernel to use for image reduction. (optional, default 'lanczos3')
      */
-    sharp$kernel?: $Keys<sharp$KernelEnum>;
+    kernel?: $Keys<sharp$KernelEnum>;
 
     /**
      * Do not enlarge if the width or height are already less than the specified dimensions, equivalent to GraphicsMagick's > geometry option. (optional, default false)
@@ -1146,7 +1146,7 @@ declare module "sharp" {
     /**
      * Array of length width*height containing the kernel values.
      */
-    sharp$kernel: ArrayLike<number>;
+    kernel: ArrayLike<number>;
 
     /**
      * the scale of the kernel in pixels. (optional, default sum)
@@ -1175,7 +1175,7 @@ declare module "sharp" {
     /**
      * gravity at which to place the overlay. (optional, default 'centre')
      */
-    sharp$gravity?: sharp$Gravity;
+    gravity?: sharp$Gravity;
 
     /**
      * the pixel offset from the top edge.
@@ -1246,7 +1246,7 @@ declare module "sharp" {
   }
 
   declare interface sharp$OutputInfo {
-    sharp$format: string;
+    format: string;
     size: number;
     width: number;
     height: number;
@@ -1364,5 +1364,5 @@ declare module "sharp" {
       max: number
     };
   }
-  declare module.exports: typeof sharp;
+  declare export default typeof sharp;
 }
