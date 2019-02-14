@@ -1,5 +1,5 @@
 declare module "d" {
-  declare module.exports: typeof d;
+  declare export default typeof d;
 
   declare function d(
     value: any,
@@ -7,7 +7,7 @@ declare module "d" {
   ): PropertyDescriptor;
 
   declare function d(
-    flags: d$d$Flags,
+    flags: d$Flags,
     value: any,
     options?: PropertyDescriptor
   ): PropertyDescriptor;
