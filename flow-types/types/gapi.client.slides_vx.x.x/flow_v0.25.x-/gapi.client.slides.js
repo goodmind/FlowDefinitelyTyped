@@ -1,26 +1,30 @@
 declare module "gapi.client.slides" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    presentations: typeof client$presentations
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    presentations: typeof gapi$client$presentations
   };
 
   /**
    * Load Google Slides API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "slides",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "slides",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$presentations: slides$slides$PresentationsResource;
+  declare var gapi$client$presentations: slides$PresentationsResource;
 
-  declare interface slides$AffineTransform {
+  declare interface gapi$client$slides$AffineTransform {
     /**
      * The X coordinate scaling element.
      */
@@ -57,7 +61,7 @@ declare module "gapi.client.slides" {
     unit?: string;
   }
 
-  declare interface slides$AutoText {
+  declare interface gapi$client$slides$AutoText {
     /**
      * The rendered content of this auto text, if available.
      */
@@ -74,7 +78,7 @@ declare module "gapi.client.slides" {
     type?: string;
   }
 
-  declare interface slides$BatchUpdatePresentationRequest {
+  declare interface gapi$client$slides$BatchUpdatePresentationRequest {
     /**
      * A list of updates to apply to the presentation.
      */
@@ -86,7 +90,7 @@ declare module "gapi.client.slides" {
     writeControl?: slides$WriteControl;
   }
 
-  declare interface slides$BatchUpdatePresentationResponse {
+  declare interface gapi$client$slides$BatchUpdatePresentationResponse {
     /**
      * The presentation the updates were applied to.
      */
@@ -99,7 +103,7 @@ declare module "gapi.client.slides" {
     replies?: slides$Response[];
   }
 
-  declare interface slides$Bullet {
+  declare interface gapi$client$slides$Bullet {
     /**
      * The paragraph specific text style applied to this bullet.
      */
@@ -121,14 +125,14 @@ declare module "gapi.client.slides" {
     nestingLevel?: number;
   }
 
-  declare interface slides$ColorScheme {
+  declare interface gapi$client$slides$ColorScheme {
     /**
      * The ThemeColorType and corresponding concrete color pairs.
      */
     colors?: slides$ThemeColorPair[];
   }
 
-  declare interface slides$ColorStop {
+  declare interface gapi$client$slides$ColorStop {
     /**
      * The alpha value of this color in the gradient band. Defaults to 1.0,
      * fully opaque.
@@ -147,7 +151,7 @@ declare module "gapi.client.slides" {
     position?: number;
   }
 
-  declare interface slides$CreateImageRequest {
+  declare interface gapi$client$slides$CreateImageRequest {
     /**
      * The element properties for the image.
      *
@@ -185,14 +189,14 @@ declare module "gapi.client.slides" {
     url?: string;
   }
 
-  declare interface slides$CreateImageResponse {
+  declare interface gapi$client$slides$CreateImageResponse {
     /**
      * The object ID of the created image.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateLineRequest {
+  declare interface gapi$client$slides$CreateLineRequest {
     /**
      * The element properties for the line.
      */
@@ -218,14 +222,14 @@ declare module "gapi.client.slides" {
     objectId?: string;
   }
 
-  declare interface slides$CreateLineResponse {
+  declare interface gapi$client$slides$CreateLineResponse {
     /**
      * The object ID of the created line.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateParagraphBulletsRequest {
+  declare interface gapi$client$slides$CreateParagraphBulletsRequest {
     /**
      * The kinds of bullet glyphs to be used. Defaults to the
      * `BULLET_DISC_CIRCLE_SQUARE` preset.
@@ -249,7 +253,7 @@ declare module "gapi.client.slides" {
     textRange?: slides$Range;
   }
 
-  declare interface slides$CreateShapeRequest {
+  declare interface gapi$client$slides$CreateShapeRequest {
     /**
      * The element properties for the shape.
      */
@@ -274,14 +278,14 @@ declare module "gapi.client.slides" {
     shapeType?: string;
   }
 
-  declare interface slides$CreateShapeResponse {
+  declare interface gapi$client$slides$CreateShapeResponse {
     /**
      * The object ID of the created shape.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateSheetsChartRequest {
+  declare interface gapi$client$slides$CreateSheetsChartRequest {
     /**
      * The ID of the specific chart in the Google Sheets spreadsheet.
      */
@@ -320,14 +324,14 @@ declare module "gapi.client.slides" {
     spreadsheetId?: string;
   }
 
-  declare interface slides$CreateSheetsChartResponse {
+  declare interface gapi$client$slides$CreateSheetsChartResponse {
     /**
      * The object ID of the created chart.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateSlideRequest {
+  declare interface gapi$client$slides$CreateSlideRequest {
     /**
      * The optional zero-based index indicating where to insert the slides.
      *
@@ -373,14 +377,14 @@ declare module "gapi.client.slides" {
     slideLayoutReference?: slides$LayoutReference;
   }
 
-  declare interface slides$CreateSlideResponse {
+  declare interface gapi$client$slides$CreateSlideResponse {
     /**
      * The object ID of the created slide.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateTableRequest {
+  declare interface gapi$client$slides$CreateTableRequest {
     /**
      * Number of columns in the table.
      */
@@ -417,14 +421,14 @@ declare module "gapi.client.slides" {
     rows?: number;
   }
 
-  declare interface slides$CreateTableResponse {
+  declare interface gapi$client$slides$CreateTableResponse {
     /**
      * The object ID of the created table.
      */
     objectId?: string;
   }
 
-  declare interface slides$CreateVideoRequest {
+  declare interface gapi$client$slides$CreateVideoRequest {
     /**
      * The element properties for the video.
      */
@@ -458,14 +462,14 @@ declare module "gapi.client.slides" {
     source?: string;
   }
 
-  declare interface slides$CreateVideoResponse {
+  declare interface gapi$client$slides$CreateVideoResponse {
     /**
      * The object ID of the created video.
      */
     objectId?: string;
   }
 
-  declare interface slides$CropProperties {
+  declare interface gapi$client$slides$CropProperties {
     /**
      * The rotation angle of the crop window around its center, in radians.
      * Rotation angle is applied after the offset.
@@ -501,7 +505,7 @@ declare module "gapi.client.slides" {
     topOffset?: number;
   }
 
-  declare interface slides$DeleteObjectRequest {
+  declare interface gapi$client$slides$DeleteObjectRequest {
     /**
      * The object ID of the page or page element to delete.
      *
@@ -514,7 +518,7 @@ declare module "gapi.client.slides" {
     objectId?: string;
   }
 
-  declare interface slides$DeleteParagraphBulletsRequest {
+  declare interface gapi$client$slides$DeleteParagraphBulletsRequest {
     /**
      * The optional table cell location if the text to be modified is in a table
      * cell. If present, the object_id must refer to a table.
@@ -533,7 +537,7 @@ declare module "gapi.client.slides" {
     textRange?: slides$Range;
   }
 
-  declare interface slides$DeleteTableColumnRequest {
+  declare interface gapi$client$slides$DeleteTableColumnRequest {
     /**
      * The reference table cell location from which a column will be deleted.
      *
@@ -549,7 +553,7 @@ declare module "gapi.client.slides" {
     tableObjectId?: string;
   }
 
-  declare interface slides$DeleteTableRowRequest {
+  declare interface gapi$client$slides$DeleteTableRowRequest {
     /**
      * The reference table cell location from which a row will be deleted.
      *
@@ -565,7 +569,7 @@ declare module "gapi.client.slides" {
     tableObjectId?: string;
   }
 
-  declare interface slides$DeleteTextRequest {
+  declare interface gapi$client$slides$DeleteTextRequest {
     /**
      * The optional table cell location if the text is to be deleted from a table
      * cell. If present, the object_id must refer to a table.
@@ -596,7 +600,7 @@ declare module "gapi.client.slides" {
     textRange?: slides$Range;
   }
 
-  declare interface slides$Dimension {
+  declare interface gapi$client$slides$Dimension {
     /**
      * The magnitude.
      */
@@ -608,7 +612,7 @@ declare module "gapi.client.slides" {
     unit?: string;
   }
 
-  declare interface slides$DuplicateObjectRequest {
+  declare interface gapi$client$slides$DuplicateObjectRequest {
     /**
      * The ID of the object to duplicate.
      */
@@ -637,21 +641,21 @@ declare module "gapi.client.slides" {
     objectIds?: Record<string, string>;
   }
 
-  declare interface slides$DuplicateObjectResponse {
+  declare interface gapi$client$slides$DuplicateObjectResponse {
     /**
      * The ID of the new duplicate object.
      */
     objectId?: string;
   }
 
-  declare interface slides$Group {
+  declare interface gapi$client$slides$Group {
     /**
      * The collection of elements in the group. The minimum size of a group is 2.
      */
     children?: slides$PageElement[];
   }
 
-  declare interface slides$Image {
+  declare interface gapi$client$slides$Image {
     /**
      * An URL to an image with a default lifetime of 30 minutes.
      * This URL is tagged with the account of the requester. Anyone with the URL
@@ -666,7 +670,7 @@ declare module "gapi.client.slides" {
     imageProperties?: slides$ImageProperties;
   }
 
-  declare interface slides$ImageProperties {
+  declare interface gapi$client$slides$ImageProperties {
     /**
      * The brightness effect of the image. The value should be in the interval
      * [-1.0, 1.0], where 0 means no effect. This property is read-only.
@@ -683,7 +687,7 @@ declare module "gapi.client.slides" {
      * The crop properties of the image. If not set, the image is not cropped.
      * This property is read-only.
      */
-    cropProperties?: slides$CropProperties;
+    cropProperties?: gapi$client$slides$CropProperties;
 
     /**
      * The hyperlink destination of the image. If unset, there is no link.
@@ -715,7 +719,7 @@ declare module "gapi.client.slides" {
     transparency?: number;
   }
 
-  declare interface slides$InsertTableColumnsRequest {
+  declare interface gapi$client$slides$InsertTableColumnsRequest {
     /**
      * The reference table cell location from which columns will be inserted.
      *
@@ -744,7 +748,7 @@ declare module "gapi.client.slides" {
     tableObjectId?: string;
   }
 
-  declare interface slides$InsertTableRowsRequest {
+  declare interface gapi$client$slides$InsertTableRowsRequest {
     /**
      * The reference table cell location from which rows will be inserted.
      *
@@ -773,7 +777,7 @@ declare module "gapi.client.slides" {
     tableObjectId?: string;
   }
 
-  declare interface slides$InsertTextRequest {
+  declare interface gapi$client$slides$InsertTextRequest {
     /**
      * The optional table cell location if the text is to be inserted into a table
      * cell. If present, the object_id must refer to a table.
@@ -816,7 +820,7 @@ declare module "gapi.client.slides" {
     text?: string;
   }
 
-  declare interface slides$LayoutPlaceholderIdMapping {
+  declare interface gapi$client$slides$LayoutPlaceholderIdMapping {
     /**
      * The placeholder on a layout that will be applied to a slide. Only type and index are needed. For example, a
      * predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder
@@ -846,7 +850,7 @@ declare module "gapi.client.slides" {
     objectId?: string;
   }
 
-  declare interface slides$LayoutProperties {
+  declare interface gapi$client$slides$LayoutProperties {
     /**
      * The human-readable name of the layout.
      */
@@ -863,7 +867,7 @@ declare module "gapi.client.slides" {
     name?: string;
   }
 
-  declare interface slides$LayoutReference {
+  declare interface gapi$client$slides$LayoutReference {
     /**
      * Layout ID: the object ID of one of the layouts in the presentation.
      */
@@ -875,7 +879,7 @@ declare module "gapi.client.slides" {
     predefinedLayout?: string;
   }
 
-  declare interface slides$Line {
+  declare interface gapi$client$slides$Line {
     /**
      * The properties of the line.
      */
@@ -887,14 +891,14 @@ declare module "gapi.client.slides" {
     lineType?: string;
   }
 
-  declare interface slides$LineFill {
+  declare interface gapi$client$slides$LineFill {
     /**
      * Solid color fill.
      */
     solidFill?: slides$SolidFill;
   }
 
-  declare interface slides$LineProperties {
+  declare interface gapi$client$slides$LineProperties {
     /**
      * The dash style of the line.
      */
@@ -909,7 +913,7 @@ declare module "gapi.client.slides" {
      * The fill of the line. The default line fill matches the defaults for new
      * lines created in the Slides editor.
      */
-    lineFill?: slides$LineFill;
+    lineFill?: gapi$client$slides$LineFill;
 
     /**
      * The hyperlink destination of the line. If unset, there is no link.
@@ -924,10 +928,10 @@ declare module "gapi.client.slides" {
     /**
      * The thickness of the line.
      */
-    weight?: slides$Dimension;
+    weight?: gapi$client$slides$Dimension;
   }
 
-  declare interface slides$Link {
+  declare interface gapi$client$slides$Link {
     /**
      * If set, indicates this is a link to the specific page in this
      * presentation with this ID. A page with this ID may not exist.
@@ -952,7 +956,7 @@ declare module "gapi.client.slides" {
     url?: string;
   }
 
-  declare interface slides$List {
+  declare interface gapi$client$slides$List {
     /**
      * The ID of the list.
      */
@@ -966,21 +970,21 @@ declare module "gapi.client.slides" {
     nestingLevel?: Record<string, slides$NestingLevel>;
   }
 
-  declare interface slides$MasterProperties {
+  declare interface gapi$client$slides$MasterProperties {
     /**
      * The human-readable name of the master.
      */
     displayName?: string;
   }
 
-  declare interface slides$NestingLevel {
+  declare interface gapi$client$slides$NestingLevel {
     /**
      * The style of a bullet at this level of nesting.
      */
     bulletStyle?: slides$TextStyle;
   }
 
-  declare interface slides$NotesProperties {
+  declare interface gapi$client$slides$NotesProperties {
     /**
      * The object ID of the shape on this notes page that contains the speaker
      * notes for the corresponding slide.
@@ -992,7 +996,7 @@ declare module "gapi.client.slides" {
     speakerNotesObjectId?: string;
   }
 
-  declare interface slides$OpaqueColor {
+  declare interface gapi$client$slides$OpaqueColor {
     /**
      * An opaque RGB color.
      */
@@ -1004,15 +1008,15 @@ declare module "gapi.client.slides" {
     themeColor?: string;
   }
 
-  declare interface slides$OptionalColor {
+  declare interface gapi$client$slides$OptionalColor {
     /**
      * If set, this will be used as an opaque color. If unset, this represents
      * a transparent color.
      */
-    opaqueColor?: slides$OpaqueColor;
+    opaqueColor?: gapi$client$slides$OpaqueColor;
   }
 
-  declare interface slides$Outline {
+  declare interface gapi$client$slides$Outline {
     /**
      * The dash style of the outline.
      */
@@ -1037,31 +1041,31 @@ declare module "gapi.client.slides" {
     /**
      * The thickness of the outline.
      */
-    weight?: slides$Dimension;
+    weight?: gapi$client$slides$Dimension;
   }
 
-  declare interface slides$OutlineFill {
+  declare interface gapi$client$slides$OutlineFill {
     /**
      * Solid color fill.
      */
     solidFill?: slides$SolidFill;
   }
 
-  declare interface slides$Page {
+  declare interface gapi$client$slides$Page {
     /**
      * Layout specific properties. Only set if page_type = LAYOUT.
      */
-    layoutProperties?: slides$LayoutProperties;
+    layoutProperties?: gapi$client$slides$LayoutProperties;
 
     /**
      * Master specific properties. Only set if page_type = MASTER.
      */
-    masterProperties?: slides$MasterProperties;
+    masterProperties?: gapi$client$slides$MasterProperties;
 
     /**
      * Notes specific properties. Only set if page_type = NOTES.
      */
-    notesProperties?: slides$NotesProperties;
+    notesProperties?: gapi$client$slides$NotesProperties;
 
     /**
      * The object ID for this page. Object IDs used by
@@ -1107,7 +1111,7 @@ declare module "gapi.client.slides" {
     slideProperties?: slides$SlideProperties;
   }
 
-  declare interface slides$PageBackgroundFill {
+  declare interface gapi$client$slides$PageBackgroundFill {
     /**
      * The background fill property state.
      *
@@ -1129,7 +1133,7 @@ declare module "gapi.client.slides" {
     stretchedPictureFill?: slides$StretchedPictureFill;
   }
 
-  declare interface slides$PageElement {
+  declare interface gapi$client$slides$PageElement {
     /**
      * The description of the page element. Combined with title to display alt
      * text.
@@ -1139,17 +1143,17 @@ declare module "gapi.client.slides" {
     /**
      * A collection of page elements joined as a single unit.
      */
-    elementGroup?: slides$Group;
+    elementGroup?: gapi$client$slides$Group;
 
     /**
      * An image page element.
      */
-    image?: slides$Image;
+    image?: gapi$client$slides$Image;
 
     /**
      * A line page element.
      */
-    line?: slides$Line;
+    line?: gapi$client$slides$Line;
 
     /**
      * The object ID for this page element. Object IDs used by
@@ -1196,7 +1200,7 @@ declare module "gapi.client.slides" {
      *
      * The initial transform for the newly created Group is always the identity transform.
      */
-    transform?: slides$AffineTransform;
+    transform?: gapi$client$slides$AffineTransform;
 
     /**
      * A video page element.
@@ -1209,7 +1213,7 @@ declare module "gapi.client.slides" {
     wordArt?: slides$WordArt;
   }
 
-  declare interface slides$PageElementProperties {
+  declare interface gapi$client$slides$PageElementProperties {
     /**
      * The object ID of the page where the element is located.
      */
@@ -1223,31 +1227,31 @@ declare module "gapi.client.slides" {
     /**
      * The transform for the element.
      */
-    transform?: slides$AffineTransform;
+    transform?: gapi$client$slides$AffineTransform;
   }
 
-  declare interface slides$PageProperties {
+  declare interface gapi$client$slides$PageProperties {
     /**
      * The color scheme of the page. If unset, the color scheme is inherited from
      * a parent page. If the page has no parent, the color scheme uses a default
      * Slides color scheme. This field is read-only.
      */
-    colorScheme?: slides$ColorScheme;
+    colorScheme?: gapi$client$slides$ColorScheme;
 
     /**
      * The background fill of the page. If unset, the background fill is inherited
      * from a parent page if it exists. If the page has no parent, then the
      * background fill defaults to the corresponding fill in the Slides editor.
      */
-    pageBackgroundFill?: slides$PageBackgroundFill;
+    pageBackgroundFill?: gapi$client$slides$PageBackgroundFill;
   }
 
-  declare interface slides$ParagraphMarker {
+  declare interface gapi$client$slides$ParagraphMarker {
     /**
      * The bullet for this paragraph. If not present, the paragraph does not
      * belong to a list.
      */
-    bullet?: slides$Bullet;
+    bullet?: gapi$client$slides$Bullet;
 
     /**
      * The paragraph's style
@@ -1255,7 +1259,7 @@ declare module "gapi.client.slides" {
     style?: slides$ParagraphStyle;
   }
 
-  declare interface slides$ParagraphStyle {
+  declare interface gapi$client$slides$ParagraphStyle {
     /**
      * The text alignment for this paragraph.
      */
@@ -1273,20 +1277,20 @@ declare module "gapi.client.slides" {
      * the end of the text, based on the current text direction. If unset, the
      * value is inherited from the parent.
      */
-    indentEnd?: slides$Dimension;
+    indentEnd?: gapi$client$slides$Dimension;
 
     /**
      * The amount of indentation for the start of the first line of the paragraph.
      * If unset, the value is inherited from the parent.
      */
-    indentFirstLine?: slides$Dimension;
+    indentFirstLine?: gapi$client$slides$Dimension;
 
     /**
      * The amount indentation for the paragraph on the side that corresponds to
      * the start of the text, based on the current text direction. If unset, the
      * value is inherited from the parent.
      */
-    indentStart?: slides$Dimension;
+    indentStart?: gapi$client$slides$Dimension;
 
     /**
      * The amount of space between lines, as a percentage of normal, where normal
@@ -1298,13 +1302,13 @@ declare module "gapi.client.slides" {
      * The amount of extra space above the paragraph. If unset, the value is
      * inherited from the parent.
      */
-    spaceAbove?: slides$Dimension;
+    spaceAbove?: gapi$client$slides$Dimension;
 
     /**
      * The amount of extra space above the paragraph. If unset, the value is
      * inherited from the parent.
      */
-    spaceBelow?: slides$Dimension;
+    spaceBelow?: gapi$client$slides$Dimension;
 
     /**
      * The spacing mode for the paragraph.
@@ -1312,7 +1316,7 @@ declare module "gapi.client.slides" {
     spacingMode?: string;
   }
 
-  declare interface slides$Placeholder {
+  declare interface gapi$client$slides$Placeholder {
     /**
      * The index of the placeholder. If the same placeholder types are present in
      * the same page, they would have different index values.
@@ -1332,13 +1336,13 @@ declare module "gapi.client.slides" {
     type?: string;
   }
 
-  declare interface slides$Presentation {
+  declare interface gapi$client$slides$Presentation {
     /**
      * The layouts in the presentation. A layout is a template that determines
      * how content is arranged and styled on the slides that inherit from that
      * layout.
      */
-    layouts?: slides$Page[];
+    layouts?: gapi$client$slides$Page[];
 
     /**
      * The locale of the presentation, as an IETF BCP 47 language tag.
@@ -1357,7 +1361,7 @@ declare module "gapi.client.slides" {
      * - Any other shapes on the master slide will appear on all slides using that
      * master, regardless of their layout.
      */
-    masters?: slides$Page[];
+    masters?: gapi$client$slides$Page[];
 
     /**
      * The notes master in the presentation. It serves three purposes:
@@ -1372,7 +1376,7 @@ declare module "gapi.client.slides" {
      *
      * The notes master is read-only.
      */
-    notesMaster?: slides$Page;
+    notesMaster?: gapi$client$slides$Page;
 
     /**
      * The size of pages in the presentation.
@@ -1404,7 +1408,7 @@ declare module "gapi.client.slides" {
      * The slides in the presentation.
      * A slide inherits properties from a slide layout.
      */
-    slides?: slides$Page[];
+    slides?: gapi$client$slides$Page[];
 
     /**
      * The title of the presentation.
@@ -1412,7 +1416,7 @@ declare module "gapi.client.slides" {
     title?: string;
   }
 
-  declare interface slides$Range {
+  declare interface gapi$client$slides$Range {
     /**
      * The optional zero-based index of the end of the collection.
      * Required for `FIXED_RANGE` ranges.
@@ -1431,7 +1435,7 @@ declare module "gapi.client.slides" {
     type?: string;
   }
 
-  declare interface slides$Recolor {
+  declare interface gapi$client$slides$Recolor {
     /**
      * The name of the recolor effect.
      *
@@ -1449,17 +1453,17 @@ declare module "gapi.client.slides" {
      * the same position in the color palette and apply to the image. This
      * property is read-only.
      */
-    recolorStops?: slides$ColorStop[];
+    recolorStops?: gapi$client$slides$ColorStop[];
   }
 
-  declare interface slides$RefreshSheetsChartRequest {
+  declare interface gapi$client$slides$RefreshSheetsChartRequest {
     /**
      * The object ID of the chart to refresh.
      */
     objectId?: string;
   }
 
-  declare interface slides$ReplaceAllShapesWithImageRequest {
+  declare interface gapi$client$slides$ReplaceAllShapesWithImageRequest {
     /**
      * If set, this request will replace all of the shapes that contain the
      * given text.
@@ -1494,14 +1498,14 @@ declare module "gapi.client.slides" {
     replaceMethod?: string;
   }
 
-  declare interface slides$ReplaceAllShapesWithImageResponse {
+  declare interface gapi$client$slides$ReplaceAllShapesWithImageResponse {
     /**
      * The number of shapes replaced with images.
      */
     occurrencesChanged?: number;
   }
 
-  declare interface slides$ReplaceAllShapesWithSheetsChartRequest {
+  declare interface gapi$client$slides$ReplaceAllShapesWithSheetsChartRequest {
     /**
      * The ID of the specific chart in the Google Sheets spreadsheet.
      */
@@ -1535,14 +1539,14 @@ declare module "gapi.client.slides" {
     spreadsheetId?: string;
   }
 
-  declare interface slides$ReplaceAllShapesWithSheetsChartResponse {
+  declare interface gapi$client$slides$ReplaceAllShapesWithSheetsChartResponse {
     /**
      * The number of shapes replaced with charts.
      */
     occurrencesChanged?: number;
   }
 
-  declare interface slides$ReplaceAllTextRequest {
+  declare interface gapi$client$slides$ReplaceAllTextRequest {
     /**
      * Finds text in a shape matching this substring.
      */
@@ -1563,118 +1567,118 @@ declare module "gapi.client.slides" {
     replaceText?: string;
   }
 
-  declare interface slides$ReplaceAllTextResponse {
+  declare interface gapi$client$slides$ReplaceAllTextResponse {
     /**
      * The number of occurrences changed by replacing all text.
      */
     occurrencesChanged?: number;
   }
 
-  declare interface slides$Request {
+  declare interface gapi$client$slides$Request {
     /**
      * Creates an image.
      */
-    createImage?: slides$CreateImageRequest;
+    createImage?: gapi$client$slides$CreateImageRequest;
 
     /**
      * Creates a line.
      */
-    createLine?: slides$CreateLineRequest;
+    createLine?: gapi$client$slides$CreateLineRequest;
 
     /**
      * Creates bullets for paragraphs.
      */
-    createParagraphBullets?: slides$CreateParagraphBulletsRequest;
+    createParagraphBullets?: gapi$client$slides$CreateParagraphBulletsRequest;
 
     /**
      * Creates a new shape.
      */
-    createShape?: slides$CreateShapeRequest;
+    createShape?: gapi$client$slides$CreateShapeRequest;
 
     /**
      * Creates an embedded Google Sheets chart.
      */
-    createSheetsChart?: slides$CreateSheetsChartRequest;
+    createSheetsChart?: gapi$client$slides$CreateSheetsChartRequest;
 
     /**
      * Creates a new slide.
      */
-    createSlide?: slides$CreateSlideRequest;
+    createSlide?: gapi$client$slides$CreateSlideRequest;
 
     /**
      * Creates a new table.
      */
-    createTable?: slides$CreateTableRequest;
+    createTable?: gapi$client$slides$CreateTableRequest;
 
     /**
      * Creates a video.
      */
-    createVideo?: slides$CreateVideoRequest;
+    createVideo?: gapi$client$slides$CreateVideoRequest;
 
     /**
      * Deletes a page or page element from the presentation.
      */
-    deleteObject?: slides$DeleteObjectRequest;
+    deleteObject?: gapi$client$slides$DeleteObjectRequest;
 
     /**
      * Deletes bullets from paragraphs.
      */
-    deleteParagraphBullets?: slides$DeleteParagraphBulletsRequest;
+    deleteParagraphBullets?: gapi$client$slides$DeleteParagraphBulletsRequest;
 
     /**
      * Deletes a column from a table.
      */
-    deleteTableColumn?: slides$DeleteTableColumnRequest;
+    deleteTableColumn?: gapi$client$slides$DeleteTableColumnRequest;
 
     /**
      * Deletes a row from a table.
      */
-    deleteTableRow?: slides$DeleteTableRowRequest;
+    deleteTableRow?: gapi$client$slides$DeleteTableRowRequest;
 
     /**
      * Deletes text from a shape or a table cell.
      */
-    deleteText?: slides$DeleteTextRequest;
+    deleteText?: gapi$client$slides$DeleteTextRequest;
 
     /**
      * Duplicates a slide or page element.
      */
-    duplicateObject?: slides$DuplicateObjectRequest;
+    duplicateObject?: gapi$client$slides$DuplicateObjectRequest;
 
     /**
      * Inserts columns into a table.
      */
-    insertTableColumns?: slides$InsertTableColumnsRequest;
+    insertTableColumns?: gapi$client$slides$InsertTableColumnsRequest;
 
     /**
      * Inserts rows into a table.
      */
-    insertTableRows?: slides$InsertTableRowsRequest;
+    insertTableRows?: gapi$client$slides$InsertTableRowsRequest;
 
     /**
      * Inserts text into a shape or table cell.
      */
-    insertText?: slides$InsertTextRequest;
+    insertText?: gapi$client$slides$InsertTextRequest;
 
     /**
      * Refreshes a Google Sheets chart.
      */
-    refreshSheetsChart?: slides$RefreshSheetsChartRequest;
+    refreshSheetsChart?: gapi$client$slides$RefreshSheetsChartRequest;
 
     /**
      * Replaces all shapes matching some criteria with an image.
      */
-    replaceAllShapesWithImage?: slides$ReplaceAllShapesWithImageRequest;
+    replaceAllShapesWithImage?: gapi$client$slides$ReplaceAllShapesWithImageRequest;
 
     /**
      * Replaces all shapes matching some criteria with a Google Sheets chart.
      */
-    replaceAllShapesWithSheetsChart?: slides$ReplaceAllShapesWithSheetsChartRequest;
+    replaceAllShapesWithSheetsChart?: gapi$client$slides$ReplaceAllShapesWithSheetsChartRequest;
 
     /**
      * Replaces all instances of specified text.
      */
-    replaceAllText?: slides$ReplaceAllTextRequest;
+    replaceAllText?: gapi$client$slides$ReplaceAllTextRequest;
 
     /**
      * Updates the properties of an Image.
@@ -1727,66 +1731,66 @@ declare module "gapi.client.slides" {
     updateVideoProperties?: slides$UpdateVideoPropertiesRequest;
   }
 
-  declare interface slides$Response {
+  declare interface gapi$client$slides$Response {
     /**
      * The result of creating an image.
      */
-    createImage?: slides$CreateImageResponse;
+    createImage?: gapi$client$slides$CreateImageResponse;
 
     /**
      * The result of creating a line.
      */
-    createLine?: slides$CreateLineResponse;
+    createLine?: gapi$client$slides$CreateLineResponse;
 
     /**
      * The result of creating a shape.
      */
-    createShape?: slides$CreateShapeResponse;
+    createShape?: gapi$client$slides$CreateShapeResponse;
 
     /**
      * The result of creating a Google Sheets chart.
      */
-    createSheetsChart?: slides$CreateSheetsChartResponse;
+    createSheetsChart?: gapi$client$slides$CreateSheetsChartResponse;
 
     /**
      * The result of creating a slide.
      */
-    createSlide?: slides$CreateSlideResponse;
+    createSlide?: gapi$client$slides$CreateSlideResponse;
 
     /**
      * The result of creating a table.
      */
-    createTable?: slides$CreateTableResponse;
+    createTable?: gapi$client$slides$CreateTableResponse;
 
     /**
      * The result of creating a video.
      */
-    createVideo?: slides$CreateVideoResponse;
+    createVideo?: gapi$client$slides$CreateVideoResponse;
 
     /**
      * The result of duplicating an object.
      */
-    duplicateObject?: slides$DuplicateObjectResponse;
+    duplicateObject?: gapi$client$slides$DuplicateObjectResponse;
 
     /**
      * The result of replacing all shapes matching some criteria with an
      * image.
      */
-    replaceAllShapesWithImage?: slides$ReplaceAllShapesWithImageResponse;
+    replaceAllShapesWithImage?: gapi$client$slides$ReplaceAllShapesWithImageResponse;
 
     /**
      * The result of replacing all shapes matching some criteria with a Google
      * Sheets chart.
      */
-    replaceAllShapesWithSheetsChart?: slides$ReplaceAllShapesWithSheetsChartResponse;
+    replaceAllShapesWithSheetsChart?: gapi$client$slides$ReplaceAllShapesWithSheetsChartResponse;
 
     /**
      * The result of replacing text.
      */
-    replaceAllText?: slides$ReplaceAllTextResponse;
+    replaceAllText?: gapi$client$slides$ReplaceAllTextResponse;
   }
 
-  declare interface slides$RgbColor {
+  declare interface gapi$client$slides$RgbColor {
     /**
      * The blue component of the color, from 0.0 to 1.0.
      */
@@ -1803,7 +1807,7 @@ declare module "gapi.client.slides" {
     red?: number;
   }
 
-  declare interface slides$Shadow {
+  declare interface gapi$client$slides$Shadow {
     /**
      * The alignment point of the shadow, that sets the origin for translate,
      * scale and skew of the shadow.
@@ -1819,12 +1823,12 @@ declare module "gapi.client.slides" {
      * The radius of the shadow blur. The larger the radius, the more diffuse the
      * shadow becomes.
      */
-    blurRadius?: slides$Dimension;
+    blurRadius?: gapi$client$slides$Dimension;
 
     /**
      * The shadow color value.
      */
-    color?: slides$OpaqueColor;
+    color?: gapi$client$slides$OpaqueColor;
 
     /**
      * The shadow property state.
@@ -1845,7 +1849,7 @@ declare module "gapi.client.slides" {
      * Transform that encodes the translate, scale, and skew of the shadow,
      * relative to the alignment position.
      */
-    transform?: slides$AffineTransform;
+    transform?: gapi$client$slides$AffineTransform;
 
     /**
      * The type of the shadow.
@@ -1853,7 +1857,7 @@ declare module "gapi.client.slides" {
     type?: string;
   }
 
-  declare interface slides$Shape {
+  declare interface gapi$client$slides$Shape {
     /**
      * Placeholders are shapes that are inherit from corresponding placeholders on
      * layouts and masters.
@@ -1862,7 +1866,7 @@ declare module "gapi.client.slides" {
      * can be resolved by looking at the parent placeholder identified by the
      * Placeholder.parent_object_id field.
      */
-    placeholder?: slides$Placeholder;
+    placeholder?: gapi$client$slides$Placeholder;
 
     /**
      * The properties of the shape.
@@ -1880,7 +1884,7 @@ declare module "gapi.client.slides" {
     text?: slides$TextContent;
   }
 
-  declare interface slides$ShapeBackgroundFill {
+  declare interface gapi$client$slides$ShapeBackgroundFill {
     /**
      * The background fill property state.
      *
@@ -1897,12 +1901,12 @@ declare module "gapi.client.slides" {
     solidFill?: slides$SolidFill;
   }
 
-  declare interface slides$ShapeProperties {
+  declare interface gapi$client$slides$ShapeProperties {
     /**
      * The hyperlink destination of the shape. If unset, there is no link. Links
      * are not inherited from parent placeholders.
      */
-    link?: slides$Link;
+    link?: gapi$client$slides$Link;
 
     /**
      * The outline of the shape. If unset, the outline is inherited from a
@@ -1910,7 +1914,7 @@ declare module "gapi.client.slides" {
      * default outline depends on the shape type, matching the defaults for
      * new shapes created in the Slides editor.
      */
-    outline?: slides$Outline;
+    outline?: gapi$client$slides$Outline;
 
     /**
      * The shadow properties of the shape. If unset, the shadow is inherited from
@@ -1918,7 +1922,7 @@ declare module "gapi.client.slides" {
      * default shadow matches the defaults for new shapes created in the Slides
      * editor. This property is read-only.
      */
-    shadow?: slides$Shadow;
+    shadow?: gapi$client$slides$Shadow;
 
     /**
      * The background fill of the shape. If unset, the background fill is
@@ -1926,10 +1930,10 @@ declare module "gapi.client.slides" {
      * parent, then the default background fill depends on the shape type,
      * matching the defaults for new shapes created in the Slides editor.
      */
-    shapeBackgroundFill?: slides$ShapeBackgroundFill;
+    shapeBackgroundFill?: gapi$client$slides$ShapeBackgroundFill;
   }
 
-  declare interface slides$SheetsChart {
+  declare interface gapi$client$slides$SheetsChart {
     /**
      * The ID of the specific chart in the Google Sheets spreadsheet that is
      * embedded.
@@ -1955,26 +1959,26 @@ declare module "gapi.client.slides" {
     spreadsheetId?: string;
   }
 
-  declare interface slides$SheetsChartProperties {
+  declare interface gapi$client$slides$SheetsChartProperties {
     /**
      * The properties of the embedded chart image.
      */
-    chartImageProperties?: slides$ImageProperties;
+    chartImageProperties?: gapi$client$slides$ImageProperties;
   }
 
-  declare interface slides$Size {
+  declare interface gapi$client$slides$Size {
     /**
      * The height of the object.
      */
-    height?: slides$Dimension;
+    height?: gapi$client$slides$Dimension;
 
     /**
      * The width of the object.
      */
-    width?: slides$Dimension;
+    width?: gapi$client$slides$Dimension;
   }
 
-  declare interface slides$SlideProperties {
+  declare interface gapi$client$slides$SlideProperties {
     /**
      * The object ID of the layout that this slide is based on.
      */
@@ -1996,10 +2000,10 @@ declare module "gapi.client.slides" {
      * The notes page is read-only except for the text content and styles of the
      * speaker notes shape.
      */
-    notesPage?: slides$Page;
+    notesPage?: gapi$client$slides$Page;
   }
 
-  declare interface slides$SolidFill {
+  declare interface gapi$client$slides$SolidFill {
     /**
      * The fraction of this `color` that should be applied to the pixel.
      * That is, the final pixel color is defined by the equation:
@@ -2014,10 +2018,10 @@ declare module "gapi.client.slides" {
     /**
      * The color value of the solid fill.
      */
-    color?: slides$OpaqueColor;
+    color?: gapi$client$slides$OpaqueColor;
   }
 
-  declare interface slides$StretchedPictureFill {
+  declare interface gapi$client$slides$StretchedPictureFill {
     /**
      * Reading the content_url:
      *
@@ -2040,10 +2044,10 @@ declare module "gapi.client.slides" {
     /**
      * The original size of the picture fill. This field is read-only.
      */
-    size?: slides$Size;
+    size?: gapi$client$slides$Size;
   }
 
-  declare interface slides$SubstringMatchCriteria {
+  declare interface gapi$client$slides$SubstringMatchCriteria {
     /**
      * Indicates whether the search should respect case:
      *
@@ -2058,7 +2062,7 @@ declare module "gapi.client.slides" {
     text?: string;
   }
 
-  declare interface slides$Table {
+  declare interface gapi$client$slides$Table {
     /**
      * Number of columns in the table.
      */
@@ -2084,7 +2088,7 @@ declare module "gapi.client.slides" {
     tableRows?: slides$TableRow[];
   }
 
-  declare interface slides$TableCell {
+  declare interface gapi$client$slides$TableCell {
     /**
      * Column span of the cell.
      */
@@ -2111,7 +2115,7 @@ declare module "gapi.client.slides" {
     text?: slides$TextContent;
   }
 
-  declare interface slides$TableCellBackgroundFill {
+  declare interface gapi$client$slides$TableCellBackgroundFill {
     /**
      * The background fill property state.
      *
@@ -2125,10 +2129,10 @@ declare module "gapi.client.slides" {
     /**
      * Solid color fill.
      */
-    solidFill?: slides$SolidFill;
+    solidFill?: gapi$client$slides$SolidFill;
   }
 
-  declare interface slides$TableCellLocation {
+  declare interface gapi$client$slides$TableCellLocation {
     /**
      * The 0-based column index.
      */
@@ -2140,22 +2144,22 @@ declare module "gapi.client.slides" {
     rowIndex?: number;
   }
 
-  declare interface slides$TableCellProperties {
+  declare interface gapi$client$slides$TableCellProperties {
     /**
      * The background fill of the table cell. The default fill matches the fill
      * for newly created table cells in the Slides editor.
      */
-    tableCellBackgroundFill?: slides$TableCellBackgroundFill;
+    tableCellBackgroundFill?: gapi$client$slides$TableCellBackgroundFill;
   }
 
-  declare interface slides$TableColumnProperties {
+  declare interface gapi$client$slides$TableColumnProperties {
     /**
      * Width of a column.
      */
-    columnWidth?: slides$Dimension;
+    columnWidth?: gapi$client$slides$Dimension;
   }
 
-  declare interface slides$TableRange {
+  declare interface gapi$client$slides$TableRange {
     /**
      * The column span of the table range.
      */
@@ -2164,7 +2168,7 @@ declare module "gapi.client.slides" {
     /**
      * The starting location of the table range.
      */
-    location?: slides$TableCellLocation;
+    location?: gapi$client$slides$TableCellLocation;
 
     /**
      * The row span of the table range.
@@ -2172,11 +2176,11 @@ declare module "gapi.client.slides" {
     rowSpan?: number;
   }
 
-  declare interface slides$TableRow {
+  declare interface gapi$client$slides$TableRow {
     /**
      * Height of a row.
      */
-    rowHeight?: slides$Dimension;
+    rowHeight?: gapi$client$slides$Dimension;
 
     /**
      * Properties and contents of each cell.
@@ -2186,14 +2190,14 @@ declare module "gapi.client.slides" {
      * than 1. As a result, the length of this collection does not always match
      * the number of columns of the entire table.
      */
-    tableCells?: slides$TableCell[];
+    tableCells?: gapi$client$slides$TableCell[];
   }
 
-  declare interface slides$TextContent {
+  declare interface gapi$client$slides$TextContent {
     /**
      * The bulleted lists contained in this text, keyed by list ID.
      */
-    lists?: Record<string, slides$List>;
+    lists?: Record<string, gapi$client$slides$List>;
 
     /**
      * The text contents broken down into its component parts, including styling
@@ -2202,12 +2206,12 @@ declare module "gapi.client.slides" {
     textElements?: slides$TextElement[];
   }
 
-  declare interface slides$TextElement {
+  declare interface gapi$client$slides$TextElement {
     /**
      * A TextElement representing a spot in the text that is dynamically
      * replaced with content that can change over time.
      */
-    autoText?: slides$AutoText;
+    autoText?: gapi$client$slides$AutoText;
 
     /**
      * The zero-based end index of this text element, exclusive, in Unicode code
@@ -2224,7 +2228,7 @@ declare module "gapi.client.slides" {
      * paragraph. The range of indices of two separate paragraphs will never
      * overlap.
      */
-    paragraphMarker?: slides$ParagraphMarker;
+    paragraphMarker?: gapi$client$slides$ParagraphMarker;
 
     /**
      * The zero-based start index of this text element, in Unicode code units.
@@ -2242,7 +2246,7 @@ declare module "gapi.client.slides" {
     textRun?: slides$TextRun;
   }
 
-  declare interface slides$TextRun {
+  declare interface gapi$client$slides$TextRun {
     /**
      * The text of this run.
      */
@@ -2254,12 +2258,12 @@ declare module "gapi.client.slides" {
     style?: slides$TextStyle;
   }
 
-  declare interface slides$TextStyle {
+  declare interface gapi$client$slides$TextStyle {
     /**
      * The background color of the text. If set, the color is either opaque or
      * transparent, depending on if the `opaque_color` field in it is set.
      */
-    backgroundColor?: slides$OptionalColor;
+    backgroundColor?: gapi$client$slides$OptionalColor;
 
     /**
      * The text's vertical offset from its normal position.
@@ -2292,13 +2296,13 @@ declare module "gapi.client.slides" {
      * The size of the text's font. When read, the `font_size` will specified in
      * points.
      */
-    fontSize?: slides$Dimension;
+    fontSize?: gapi$client$slides$Dimension;
 
     /**
      * The color of the text itself. If set, the color is either opaque or
      * transparent, depending on if the `opaque_color` field in it is set.
      */
-    foregroundColor?: slides$OptionalColor;
+    foregroundColor?: gapi$client$slides$OptionalColor;
 
     /**
      * Whether or not the text is italicized.
@@ -2327,7 +2331,7 @@ declare module "gapi.client.slides" {
      * text is another link) unless different styles are being set in the same
      * request.
      */
-    link?: slides$Link;
+    link?: gapi$client$slides$Link;
 
     /**
      * Whether or not the text is in small capital letters.
@@ -2378,11 +2382,11 @@ declare module "gapi.client.slides" {
     weightedFontFamily?: slides$WeightedFontFamily;
   }
 
-  declare interface slides$ThemeColorPair {
+  declare interface gapi$client$slides$ThemeColorPair {
     /**
      * The concrete color corresponding to the theme color type above.
      */
-    color?: slides$RgbColor;
+    color?: gapi$client$slides$RgbColor;
 
     /**
      * The type of the theme color.
@@ -2390,7 +2394,7 @@ declare module "gapi.client.slides" {
     type?: string;
   }
 
-  declare interface slides$Thumbnail {
+  declare interface gapi$client$slides$Thumbnail {
     /**
      * The content URL of the thumbnail image.
      *
@@ -2414,7 +2418,7 @@ declare module "gapi.client.slides" {
     width?: number;
   }
 
-  declare interface slides$UpdateImagePropertiesRequest {
+  declare interface gapi$client$slides$UpdateImagePropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2433,7 +2437,7 @@ declare module "gapi.client.slides" {
     /**
      * The image properties to update.
      */
-    imageProperties?: slides$ImageProperties;
+    imageProperties?: gapi$client$slides$ImageProperties;
 
     /**
      * The object ID of the image the updates are applied to.
@@ -2441,7 +2445,7 @@ declare module "gapi.client.slides" {
     objectId?: string;
   }
 
-  declare interface slides$UpdateLinePropertiesRequest {
+  declare interface gapi$client$slides$UpdateLinePropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2460,7 +2464,7 @@ declare module "gapi.client.slides" {
     /**
      * The line properties to update.
      */
-    lineProperties?: slides$LineProperties;
+    lineProperties?: gapi$client$slides$LineProperties;
 
     /**
      * The object ID of the line the update is applied to.
@@ -2468,7 +2472,7 @@ declare module "gapi.client.slides" {
     objectId?: string;
   }
 
-  declare interface slides$UpdatePageElementTransformRequest {
+  declare interface gapi$client$slides$UpdatePageElementTransformRequest {
     /**
      * The apply mode of the transform update.
      */
@@ -2482,10 +2486,10 @@ declare module "gapi.client.slides" {
     /**
      * The input transform matrix used to update the page element.
      */
-    transform?: slides$AffineTransform;
+    transform?: gapi$client$slides$AffineTransform;
   }
 
-  declare interface slides$UpdatePagePropertiesRequest {
+  declare interface gapi$client$slides$UpdatePagePropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2509,16 +2513,16 @@ declare module "gapi.client.slides" {
     /**
      * The page properties to update.
      */
-    pageProperties?: slides$PageProperties;
+    pageProperties?: gapi$client$slides$PageProperties;
   }
 
-  declare interface slides$UpdateParagraphStyleRequest {
+  declare interface gapi$client$slides$UpdateParagraphStyleRequest {
     /**
      * The location of the cell in the table containing the paragraph(s) to
      * style. If `object_id` refers to a table, `cell_location` must have a value.
      * Otherwise, it must not.
      */
-    cellLocation?: slides$TableCellLocation;
+    cellLocation?: gapi$client$slides$TableCellLocation;
 
     /**
      * The fields that should be updated.
@@ -2543,15 +2547,15 @@ declare module "gapi.client.slides" {
     /**
      * The paragraph's style.
      */
-    style?: slides$ParagraphStyle;
+    style?: gapi$client$slides$ParagraphStyle;
 
     /**
      * The range of text containing the paragraph(s) to style.
      */
-    textRange?: slides$Range;
+    textRange?: gapi$client$slides$Range;
   }
 
-  declare interface slides$UpdateShapePropertiesRequest {
+  declare interface gapi$client$slides$UpdateShapePropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2575,10 +2579,10 @@ declare module "gapi.client.slides" {
     /**
      * The shape properties to update.
      */
-    shapeProperties?: slides$ShapeProperties;
+    shapeProperties?: gapi$client$slides$ShapeProperties;
   }
 
-  declare interface slides$UpdateSlidesPositionRequest {
+  declare interface gapi$client$slides$UpdateSlidesPositionRequest {
     /**
      * The index where the slides should be inserted, based on the slide
      * arrangement before the move takes place. Must be between zero and the
@@ -2594,7 +2598,7 @@ declare module "gapi.client.slides" {
     slideObjectIds?: string[];
   }
 
-  declare interface slides$UpdateTableCellPropertiesRequest {
+  declare interface gapi$client$slides$UpdateTableCellPropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2618,23 +2622,23 @@ declare module "gapi.client.slides" {
     /**
      * The table cell properties to update.
      */
-    tableCellProperties?: slides$TableCellProperties;
+    tableCellProperties?: gapi$client$slides$TableCellProperties;
 
     /**
      * The table range representing the subset of the table to which the updates
      * are applied. If a table range is not specified, the updates will apply to
      * the entire table.
      */
-    tableRange?: slides$TableRange;
+    tableRange?: gapi$client$slides$TableRange;
   }
 
-  declare interface slides$UpdateTextStyleRequest {
+  declare interface gapi$client$slides$UpdateTextStyleRequest {
     /**
      * The location of the cell in the table containing the text to style. If
      * `object_id` refers to a table, `cell_location` must have a value.
      * Otherwise, it must not.
      */
-    cellLocation?: slides$TableCellLocation;
+    cellLocation?: gapi$client$slides$TableCellLocation;
 
     /**
      * The fields that should be updated.
@@ -2665,7 +2669,7 @@ declare module "gapi.client.slides" {
      * behavior of the Slides editor. See the documentation of
      * TextStyle for more information.
      */
-    style?: slides$TextStyle;
+    style?: gapi$client$slides$TextStyle;
 
     /**
      * The range of text to style.
@@ -2675,10 +2679,10 @@ declare module "gapi.client.slides" {
      * If the range fully contains a paragraph belonging to a list, the
      * paragraph's bullet is also updated with the matching text style.
      */
-    textRange?: slides$Range;
+    textRange?: gapi$client$slides$Range;
   }
 
-  declare interface slides$UpdateVideoPropertiesRequest {
+  declare interface gapi$client$slides$UpdateVideoPropertiesRequest {
     /**
      * The fields that should be updated.
      *
@@ -2705,7 +2709,7 @@ declare module "gapi.client.slides" {
     videoProperties?: slides$VideoProperties;
   }
 
-  declare interface slides$Video {
+  declare interface gapi$client$slides$Video {
     /**
      * The video source's unique identifier for this video.
      */
@@ -2728,15 +2732,15 @@ declare module "gapi.client.slides" {
     videoProperties?: slides$VideoProperties;
   }
 
-  declare interface slides$VideoProperties {
+  declare interface gapi$client$slides$VideoProperties {
     /**
      * The outline of the video. The default outline matches the defaults for new
      * videos created in the Slides editor.
      */
-    outline?: slides$Outline;
+    outline?: gapi$client$slides$Outline;
   }
 
-  declare interface slides$WeightedFontFamily {
+  declare interface gapi$client$slides$WeightedFontFamily {
     /**
      * The font family of the text.
      *
@@ -2758,14 +2762,14 @@ declare module "gapi.client.slides" {
     weight?: number;
   }
 
-  declare interface slides$WordArt {
+  declare interface gapi$client$slides$WordArt {
     /**
      * The text rendered as word art.
      */
     renderedText?: string;
   }
 
-  declare interface slides$WriteControl {
+  declare interface gapi$client$slides$WriteControl {
     /**
      * The revision ID of the presentation required for the write request. If
      * specified and the `required_revision_id` doesn't exactly match the
@@ -2775,7 +2779,7 @@ declare module "gapi.client.slides" {
     requiredRevisionId?: string;
   }
 
-  declare interface slides$PagesResource {
+  declare interface gapi$client$slides$PagesResource {
     /**
      * Gets the latest version of the specified page in the presentation.
      */
@@ -2854,7 +2858,7 @@ declare module "gapi.client.slides" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$slides$Request<slides$Page>;
+    }): client$Request<gapi$client$slides$Page>;
 
     /**
      * Generates a thumbnail of the latest version of the specified page in the
@@ -2950,10 +2954,10 @@ declare module "gapi.client.slides" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$slides$Request<slides$Thumbnail>;
+    }): client$Request<gapi$client$slides$Thumbnail>;
   }
 
-  declare interface slides$PresentationsResource {
+  declare interface gapi$client$slides$PresentationsResource {
     /**
      * Applies one or more updates to the presentation.
      *
@@ -3047,7 +3051,7 @@ declare module "gapi.client.slides" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$slides$Request<slides$BatchUpdatePresentationResponse>;
+    }): client$Request<gapi$client$slides$BatchUpdatePresentationResponse>;
 
     /**
      * Creates a new presentation using the title given in the request. Other
@@ -3119,7 +3123,7 @@ declare module "gapi.client.slides" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$slides$Request<slides$Presentation>;
+    }): client$Request<gapi$client$slides$Presentation>;
 
     /**
      * Gets the latest version of the specified presentation.
@@ -3194,7 +3198,7 @@ declare module "gapi.client.slides" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$slides$Request<slides$Presentation>;
-    pages: slides$PagesResource;
+    }): client$Request<gapi$client$slides$Presentation>;
+    pages: gapi$client$slides$PagesResource;
   }
 }
