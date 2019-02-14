@@ -1,7 +1,7 @@
 declare module "npm-user" {
-  declare module.exports: typeof npmUser;
+  declare export default typeof npmUser;
 
-  declare function npmUser(name: string): Promise<npmUser$npmUser$UserData>;
+  declare function npmUser(name: string): Promise<npmUser$UserData>;
 
   declare interface npmUser$UserData {
     name: string | null;
