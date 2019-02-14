@@ -1,26 +1,30 @@
 declare module "gapi.client.firebaseremoteconfig" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Firebase Remote Config API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebaseremoteconfig",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "firebaseremoteconfig",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: firebaseremoteconfig$firebaseremoteconfig$ProjectsResource;
+  declare var gapi$client$projects: firebaseremoteconfig$ProjectsResource;
 
-  declare interface firebaseremoteconfig$RemoteConfig {
+  declare interface gapi$client$firebaseremoteconfig$RemoteConfig {
     /**
      * The list of named conditions. The order &#42;does&#42; affect the semantics.
      * The condition_name values of these entries must be unique.
@@ -52,7 +56,7 @@ declare module "gapi.client.firebaseremoteconfig" {
     parameters?: Record<string, firebaseremoteconfig$RemoteConfigParameter>;
   }
 
-  declare interface firebaseremoteconfig$RemoteConfigCondition {
+  declare interface gapi$client$firebaseremoteconfig$RemoteConfigCondition {
     /**
      * Required.
      */
@@ -79,7 +83,7 @@ declare module "gapi.client.firebaseremoteconfig" {
     tagColor?: string;
   }
 
-  declare interface firebaseremoteconfig$RemoteConfigParameter {
+  declare interface gapi$client$firebaseremoteconfig$RemoteConfigParameter {
     /**
      * Optional - a map of (condition_name, value). The condition_name of the
      * highest priority (the one listed first in the conditions array) determines
@@ -97,7 +101,7 @@ declare module "gapi.client.firebaseremoteconfig" {
     defaultValue?: firebaseremoteconfig$RemoteConfigParameterValue;
   }
 
-  declare interface firebaseremoteconfig$RemoteConfigParameterValue {
+  declare interface gapi$client$firebaseremoteconfig$RemoteConfigParameterValue {
     /**
      * if true, omit the parameter from the map of fetched parameter values
      */
@@ -109,7 +113,7 @@ declare module "gapi.client.firebaseremoteconfig" {
     value?: string;
   }
 
-  declare interface firebaseremoteconfig$ProjectsResource {
+  declare interface gapi$client$firebaseremoteconfig$ProjectsResource {
     /**
      * Get the latest version Remote Configuration for a project.
      * Returns the RemoteConfig as the payload, and also the eTag as a
@@ -186,7 +190,7 @@ declare module "gapi.client.firebaseremoteconfig" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<firebaseremoteconfig$RemoteConfig>;
+    }): Request<gapi$client$firebaseremoteconfig$RemoteConfig>;
 
     /**
      * Update a RemoteConfig. We treat this as an always-existing
@@ -290,6 +294,6 @@ declare module "gapi.client.firebaseremoteconfig" {
        * "200 OK" when calling with <code>true</code>.
        */
       validateOnly?: boolean
-    }): Request<firebaseremoteconfig$RemoteConfig>;
+    }): Request<gapi$client$firebaseremoteconfig$RemoteConfig>;
   }
 }
