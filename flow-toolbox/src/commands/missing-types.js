@@ -28,7 +28,7 @@ async function missingTypes(argv) {
       p =>
         p
           .replace(path.join(baseDir, `flow-types/unformatted/`), "")
-          .split("_")[0]
+          .split("_vx.x.x")[0]
     )
   ];
   const b = tsTypes.map(type => originalName(type));

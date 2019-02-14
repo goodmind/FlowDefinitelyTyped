@@ -35,33 +35,52 @@ async function convertTyping(name) {
     getCurrentDirectory: () => "",
     getDefaultLibFileName: () => require.resolve("typescript/lib/lib.d.ts"),
     getNewLine: () => "\n",
-    getSourceFile: type => {
+    getSourceFile: (type, languageVersion) => {
       type = type.slice(0, -3);
       console.log(label(chalk.bgRed, type), "loading source file...");
-      const code = fs
-        .readFileSync(`${baseDir}/types/${type}/index.d.ts`)
-        .toString();
-      return convertSourceFile(code, name);
+      try {
+        const code = fs
+          .readFileSync(`${baseDir}/types/${type}/index.d.ts`)
+          .toString();
+        return convertSourceFile(code, name);
+      } catch {
+        const code = ts.sys.readFile(`${baseDir}/types/${type}`);
+        return ts.createSourceFile(type, code, languageVersion, true);
+      }
     },
     readFile: () => null,
     useCaseSensitiveFileNames: () => true,
     writeFile: () => null
   };
+  const typescriptFile = `${baseDir}/types/${type}/index.d.ts`;
+  const customCompilerHost = ts.createCompilerHost({}, true);
+  const oldGetSourceFile = customCompilerHost.getSourceFile.bind(
+    customCompilerHost
+  );
+  customCompilerHost.getSourceFile = (file, version) => {
+    if (file === typescriptFile) {
+      const code = ts.sys.readFile(file);
+      const sourceFile = convertSourceFile(code, name);
+      return sourceFile;
+    }
+    return oldGetSourceFile(file, version);
+  };
   const program = ts.createProgram(
-    [`${type}.ts`],
+    [typescriptFile],
     {
-      noResolve: true,
+      //noResolve: true,
       noLib: true,
       target: ts.ScriptTarget.Latest
     },
-    compilerHost
+    //compilerHost
+    customCompilerHost
   );
+  flowgen.compiler.setChecker(program.getTypeChecker());
   // if (flowTypedExists[0]) {
   //     console.log(`skip: ${name}, flow-typed exists`);
   //     await fs.remove(`../flow-types/types/${name}_vx.x.x`);
   //     return;
   // }
-  const typescriptFile = `${baseDir}/types/${type}/index.d.ts`;
   if (!infojson[name]) infojson[name] = {};
   const previousCommitHash = infojson[name].typescriptCommitHash;
   const commitHash = JSON.parse(
@@ -105,7 +124,7 @@ async function convertTyping(name) {
 
   console.log(label(chalk.bgWhite, name), `converting...`);
   //console.log(label(chalk.bgWhite, name), `has header?`, hasHeader);
-  const sourceFile = program.getSourceFile(`${type}.ts`);
+  const sourceFile = program.getSourceFile(typescriptFile);
   if (isTypescriptUpdated) {
     if (!infojson[name]) infojson[name] = {};
     infojson[name].typescriptCommitHash = commitHash;

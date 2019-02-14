@@ -3,6 +3,7 @@
 const { convertTyping } = require("./commands/convert-typing");
 const { listErrors } = require("./commands/list-errors");
 const { listTypes, listTypescriptTypes } = require("./commands/list-types");
+const { commitTypes } = require("./commands/commit");
 const { missingTypes } = require("./commands/missing-types");
 const { main } = require("./commands/convert");
 const { unplug } = require("./commands/unplug");
@@ -15,16 +16,18 @@ require("yargs") // eslint-disable-line
     type: "boolean"
   })
   .command(
-    "convert [name]",
+    "convert [names..]",
     "convert types",
     () => {},
-    argv => {
-      if (argv.name) {
-        convertTyping(argv.name).catch(err => {
-          console.error(err.stack);
-        });
+    async argv => {
+      if (argv.names) {
+        for (const name of argv.names) {
+          await convertTyping(name).catch(err => {
+            console.error(err.stack);
+          });
+        }
       } else {
-        main(argv).catch(console.error);
+        await main(argv).catch(console.error);
       }
     }
   )
@@ -44,6 +47,11 @@ require("yargs") // eslint-disable-line
         alias: "open",
         type: "boolean"
       });
+      yargs.option("c", {
+        alias: "convert",
+        type: "boolean"
+      });
+      yargs.conflicts("open", ["convert"]);
     },
     argv => {
       listErrors(argv).catch(console.error);
@@ -83,4 +91,7 @@ require("yargs") // eslint-disable-line
       missingTypes(argv);
     }
   )
+  .command("commit", "commit types", (yargs = {}), () => {
+    commitTypes();
+  })
   .demandCommand(1, "You need at least one command before moving on").argv;

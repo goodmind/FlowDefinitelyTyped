@@ -61,15 +61,35 @@ async function main(argv) {
     useCaseSensitiveFileNames: () => true,
     writeFile: () => null
   };
+  const customCompilerHost = ts.createCompilerHost({}, true);
+  const oldGetSourceFile = customCompilerHost.getSourceFile.bind(
+    customCompilerHost
+  );
+  customCompilerHost.getSourceFile = (file, version) => {
+    if (file.startsWith(`${baseDir}/types`)) {
+      const type = file.split(`${baseDir}/types/`)[1].split("/")[0];
+
+      const name = originalName(type);
+      console.log(label(chalk.bgRed, name), "loading source file...");
+      const code = ts.sys.readFile(file);
+      const sourceFile = convertSourceFile(code, name);
+      //console.log(sourceFile);
+      return sourceFile;
+    }
+    return oldGetSourceFile(file, version);
+  };
   const program = ts.createProgram(
-    types.filter(name => !skipList.includes(name)).map(type => `${type}.ts`),
+    types
+      .filter(name => !skipList.includes(name))
+      .map(type => `${baseDir}/types/${type}/index.d.ts`),
     {
-      noResolve: true,
+      //noResolve: true,
       noLib: true,
       target: ts.ScriptTarget.Latest
     },
-    compilerHost
+    customCompilerHost
   );
+  flowgen.compiler.setChecker(program.getTypeChecker());
 
   for (const type of types) {
     const name = originalName(type);
@@ -135,7 +155,7 @@ async function main(argv) {
     }
 
     if (argv.verbose) console.log(label(chalk.bgWhite, name), `converting...`);
-    const sourceFile = program.getSourceFile(`${type}.ts`);
+    const sourceFile = program.getSourceFile(typescriptFile);
     // if (argv.verbose)
     //   console.log(label(chalk.bgWhite, name), `has header?`, hasHeader);
     if (isTypescriptUpdated) {

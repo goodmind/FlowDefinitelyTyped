@@ -5,6 +5,8 @@ const execa = require("execa");
 const path = require("path");
 const _ = require("lodash");
 
+const { convertTyping } = require("./convert-typing");
+
 const baseDir = path.join(__dirname, "../../../");
 
 async function listErrors(argv) {
@@ -16,6 +18,9 @@ async function listErrors(argv) {
       );
       if (argv.open)
         await execa("code", [`${baseDir}/flow-types/logs/${type}/err.log`]);
+      if (argv.convert) {
+        await convertTyping(type).catch(console.error);
+      }
       console.log(type);
     } catch (err) {}
   }

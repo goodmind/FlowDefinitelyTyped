@@ -17,7 +17,7 @@ async function listTypes(argv) {
   for (const library of libraries) {
     const name = library
       .replace(path.join(baseDir, `flow-types/${dir}/`), "")
-      .split("_")[0];
+      .split("_vx.x.x")[0];
     if (!argv.count) console.log(name);
     count += 1;
   }

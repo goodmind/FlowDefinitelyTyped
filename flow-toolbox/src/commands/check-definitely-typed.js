@@ -21,7 +21,9 @@ async function main() {
   const packages = _.uniq(
     list.map(
       type =>
-        type.replace("../../../flow-typed/definitions/npm/", "").split("_")[0]
+        type
+          .replace("../../../flow-typed/definitions/npm/", "")
+          .split("_vx.x.x")[0]
     )
   );
   for (const type of packages) {

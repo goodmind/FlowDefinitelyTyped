@@ -33,61 +33,80 @@ function fileName(inputName) {
 }
 
 function convertSourceFile(code, name) {
-  const hasHeader =
-    code.includes(`declare module '${name}'`) ||
-    code.includes(`declare module "${name}"`) ||
-    code.includes(`declare module ${name}`);
-  const template = hasHeader
-    ? code
-    : `
+  try {
+    const hasHeader =
+      code.includes(`declare module '${name}'`) ||
+      code.includes(`declare module "${name}"`) ||
+      code.includes(`declare module ${name}`);
+    const template = hasHeader
+      ? code
+      : `
 declare module '${name}' {
   ${code}
 };
 `;
-  const sourceFile = ts.createSourceFile(
-    name,
-    template,
-    ts.ScriptTarget.Latest,
-    false
-  );
-  // function traverseNode(node) {
-  //   switch (node.kind) {
-  //     case ts.SyntaxKind.ModuleDeclaration:
-  //       if (node.name.escapedText !== name) {
-  //         const thisNode = node;
-  //         if (node && node.parent && node.parent.statements) {
-  //           node.parent.statements = node.parent.statements.filter(
-  //             el => el !== thisNode
-  //           );
-  //           sourceFile.statements.unshift(thisNode);
-  //         }
-  //       }
-  //     default:
-  //     //console.log("unknown node", ts.SyntaxKind[node.kind]);
-  //   }
-  //
-  // }
-  // console.log(sourceFile.statements);
-  // traverseNode(sourceFile);
-  if (
-    sourceFile.statements[0].body &&
-    sourceFile.statements[0].body.statements
-  ) {
-    for (const node of sourceFile.statements[0].body.statements) {
-      if (
-        node.kind === ts.SyntaxKind.ModuleDeclaration &&
-        node.name.escapedText !== name
-      ) {
-        if (sourceFile.statements[0].body.statements) {
-          sourceFile.statements[0].body.statements = sourceFile.statements[0].body.statements.filter(
-            el => el !== node
-          );
-          sourceFile.statements.unshift(node);
-        }
+    const { transformed } = ts.transform(
+      ts.createSourceFile(name, template, ts.ScriptTarget.Latest, false),
+      flowgen.compiler.getTransformers()
+    );
+    const sourceFile = transformed[0];
+    // function traverseNode(node) {
+    //   switch (node.kind) {
+    //     case ts.SyntaxKind.ModuleDeclaration:
+    //       if (node.name.escapedText !== name) {
+    //         const thisNode = node;
+    //         if (node && node.parent && node.parent.statements) {
+    //           node.parent.statements = node.parent.statements.filter(
+    //             el => el !== thisNode
+    //           );
+    //           sourceFile.statements.unshift(thisNode);
+    //         }
+    //       }
+    //     default:
+    //     //console.log("unknown node", ts.SyntaxKind[node.kind]);
+    //   }
+    //
+    // }
+    // console.log(sourceFile.statements);
+    // traverseNode(sourceFile);
+    const nodes = [];
+    if (
+      sourceFile.statements[0].body &&
+      sourceFile.statements[0].body.statements
+    ) {
+      function getName(node) {
+        return node.name.text || node.name.escapedText;
       }
+      const body = ts.getMutableClone(sourceFile.statements[0].body);
+      body.statements = body.statements.filter(node => {
+        if (
+          node.kind === ts.SyntaxKind.ModuleDeclaration &&
+          (node.flags & ts.NodeFlags.Namespace) === 0 &&
+          getName(node) !== name
+        ) {
+          if (body.statements) {
+            nodes.push(node);
+            return false;
+          }
+        }
+        return true;
+      });
+      sourceFile.statements[0].body = body;
     }
+    const modifiedFile = ts.getMutableClone(sourceFile);
+    nodes.forEach(node => modifiedFile.statements.unshift(node));
+    return modifiedFile;
+  } catch (err) {
+    console.log(label(chalk.bgWhite, name), label(chalk.bgRed, "ERR"), err);
+    async function sendErrors() {
+      await fs.ensureFile(`${baseDir}/flow-types/logs/${name}/err.log`);
+      await fs.writeFile(
+        `${baseDir}/flow-types/logs/${name}/err.log`,
+        err.toString()
+      );
+    }
+    sendErrors();
   }
-  return sourceFile;
 }
 
 async function runFlowGen(name, sourceFile, infojson) {
@@ -103,7 +122,7 @@ async function runFlowGen(name, sourceFile, infojson) {
     fs.ensureFileSync(`${baseDir}/flow-types/logs/${name}/stdout.log`);
     fs.appendFileSync(
       `${baseDir}/flow-types/logs/${name}/stdout.log`,
-      data.map(v => JSON.stringify(v)).join("\n"),
+      data.join("\n"),
       {
         encoding: "utf8"
       }
@@ -113,7 +132,7 @@ async function runFlowGen(name, sourceFile, infojson) {
   let newAst = { imports: [] };
   try {
     flowgen.compiler.reset({
-      noModuleExports: true
+      moduleExports: false
     });
     const code = flowgen.compiler.compile(sourceFile);
     unformatted = code;
@@ -149,24 +168,48 @@ async function runFlowGen(name, sourceFile, infojson) {
     );
     if (unformatted) await exportForFlowTyped(name, unformatted, "unformatted");
   }
+  let deps = new Map();
   for (const dep of newAst.imports) {
-    const moduleExists = builtInModules.includes(dep.text);
+    const split = dep.text.split("/");
+    let pkg = split[0];
+    if (pkg.startsWith("@")) {
+      pkg += `/${split[1]}`;
+    }
+    if (pkg === name) continue;
+    const moduleExists = builtInModules.includes(pkg);
     const packageExists = await fs.exists(
-      `${baseDir}/types/${definitelyTypedName(dep.text)}`
+      `${baseDir}/types/${definitelyTypedName(pkg)}`
     );
     const flowTypedExists = !!(await glob(
-      `${baseDir}/flow-typed/definitions/npm/${dep.text}_v*`
+      `${baseDir}/flow-typed/definitions/npm/${pkg}_v*`
     ))[0];
+    deps.set(pkg, {
+      pkg,
+      packageExists,
+      flowTypedExists,
+      moduleExists
+    });
+  }
+  console.log(label(chalk.bgWhite, name), label(chalk.bgGreen, "DEPS"));
+  for (const [, dep] of deps) {
     console.log(
       label(chalk.bgWhite, name),
-      label(chalk.bgGreen, dep.text),
+      label(chalk.bgGreen, dep.pkg),
       "package?",
-      packageExists,
+      dep.packageExists,
       "flow-typed?",
-      flowTypedExists,
+      dep.flowTypedExists,
       "node?",
-      moduleExists
+      dep.moduleExists
     );
+    if (!dep.packageExists && !dep.flowTypedExists && !dep.moduleExists) {
+      console.log(
+        label(chalk.bgWhite, name),
+        "TODO: Check ",
+        label(chalk.bgGreen, dep.pkg),
+        " with unpkg.com"
+      );
+    }
   }
   const stdoutExists = await fs.exists(
     `${baseDir}/flow-types/logs/${name}/stdout.log`
