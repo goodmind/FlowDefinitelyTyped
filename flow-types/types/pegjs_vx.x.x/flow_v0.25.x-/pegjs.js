@@ -1,6 +1,8 @@
 declare module "pegjs" {
   declare var npm$namespace$PEG: {
-    parse: typeof PEG$parse
+    parse: typeof PEG$parse,
+
+    SyntaxError: typeof PEG$SyntaxError
   };
   declare function PEG$parse(input: string): any;
 
@@ -25,8 +27,8 @@ declare module "pegjs" {
     name: string;
     message: string;
   }
-  declare export type Location = PEG$PEG$Location;
-  declare export type LocationRange = PEG$PEG$LocationRange;
+  declare export type Location = PEG$Location;
+  declare export type LocationRange = PEG$LocationRange;
   declare export interface ExpectedItem {
     type: string;
     value?: string;
@@ -49,8 +51,8 @@ declare module "pegjs" {
     [key: string]: any;
   }
   declare export interface Parser {
-    PEG$parse(input: string, options?: ParserOptions): any;
-    PEG$SyntaxError: any;
+    parse(input: string, options?: ParserOptions): any;
+    SyntaxError: any;
   }
   declare export interface BuildOptionsBase {
     /**
