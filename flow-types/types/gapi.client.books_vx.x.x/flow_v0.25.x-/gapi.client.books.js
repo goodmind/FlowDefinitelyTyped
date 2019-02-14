@@ -1,56 +1,63 @@
 declare module "gapi.client.books" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    bookshelves: typeof client$bookshelves,
-    cloudloading: typeof client$cloudloading,
-    dictionary: typeof client$dictionary,
-    layers: typeof client$layers,
-    myconfig: typeof client$myconfig,
-    mylibrary: typeof client$mylibrary,
-    notification: typeof client$notification,
-    onboarding: typeof client$onboarding,
-    personalizedstream: typeof client$personalizedstream,
-    promooffer: typeof client$promooffer,
-    series: typeof client$series,
-    volumes: typeof client$volumes
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    bookshelves: typeof gapi$client$bookshelves,
+    cloudloading: typeof gapi$client$cloudloading,
+    dictionary: typeof gapi$client$dictionary,
+    layers: typeof gapi$client$layers,
+    myconfig: typeof gapi$client$myconfig,
+    mylibrary: typeof gapi$client$mylibrary,
+    notification: typeof gapi$client$notification,
+    onboarding: typeof gapi$client$onboarding,
+    personalizedstream: typeof gapi$client$personalizedstream,
+    promooffer: typeof gapi$client$promooffer,
+    series: typeof gapi$client$series,
+    volumes: typeof gapi$client$volumes
   };
 
   /**
    * Load Books API v1
    */
-  declare function client$load(name: "books", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "books",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "books",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$bookshelves: books$books$BookshelvesResource;
+  declare var gapi$client$bookshelves: books$BookshelvesResource;
 
-  declare var client$cloudloading: books$books$CloudloadingResource;
+  declare var gapi$client$cloudloading: books$CloudloadingResource;
 
-  declare var client$dictionary: books$books$DictionaryResource;
+  declare var gapi$client$dictionary: books$DictionaryResource;
 
-  declare var client$layers: books$books$LayersResource;
+  declare var gapi$client$layers: books$LayersResource;
 
-  declare var client$myconfig: books$books$MyconfigResource;
+  declare var gapi$client$myconfig: books$MyconfigResource;
 
-  declare var client$mylibrary: books$books$MylibraryResource;
+  declare var gapi$client$mylibrary: books$MylibraryResource;
 
-  declare var client$notification: books$books$NotificationResource;
+  declare var gapi$client$notification: books$NotificationResource;
 
-  declare var client$onboarding: books$books$OnboardingResource;
+  declare var gapi$client$onboarding: books$OnboardingResource;
 
-  declare var client$personalizedstream: books$books$PersonalizedstreamResource;
+  declare var gapi$client$personalizedstream: books$PersonalizedstreamResource;
 
-  declare var client$promooffer: books$books$PromoofferResource;
+  declare var gapi$client$promooffer: books$PromoofferResource;
 
-  declare var client$series: books$books$SeriesResource;
+  declare var gapi$client$series: books$SeriesResource;
 
-  declare var client$volumes: books$books$VolumesResource;
+  declare var gapi$client$volumes: books$VolumesResource;
 
-  declare interface books$Annotation {
+  declare interface gapi$client$books$Annotation {
     /**
      * Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty.
      */
@@ -198,7 +205,7 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Annotationdata {
+  declare interface gapi$client$books$Annotationdata {
     /**
      * The type of annotation this data is for.
      */
@@ -241,11 +248,11 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Annotations {
+  declare interface gapi$client$books$Annotations {
     /**
      * A list of annotations.
      */
-    items?: books$Annotation[];
+    items?: gapi$client$books$Annotation[];
 
     /**
      * Resource type.
@@ -263,9 +270,9 @@ declare module "gapi.client.books" {
     totalItems?: number;
   }
 
-  declare interface books$AnnotationsSummary {
+  declare interface gapi$client$books$AnnotationsSummary {
     kind?: string;
-    client$layers?: Array<{
+    layers?: Array<{
       allowedCharacterCount?: number,
       layerId?: string,
       limitType?: string,
@@ -274,11 +281,11 @@ declare module "gapi.client.books" {
     }>;
   }
 
-  declare interface books$Annotationsdata {
+  declare interface gapi$client$books$Annotationsdata {
     /**
      * A list of Annotation Data.
      */
-    items?: books$Annotationdata[];
+    items?: gapi$client$books$Annotationdata[];
 
     /**
      * Resource type
@@ -296,7 +303,7 @@ declare module "gapi.client.books" {
     totalItems?: number;
   }
 
-  declare interface books$BooksAnnotationsRange {
+  declare interface gapi$client$books$BooksAnnotationsRange {
     /**
      * The offset from the ending position.
      */
@@ -318,18 +325,18 @@ declare module "gapi.client.books" {
     startPosition?: string;
   }
 
-  declare interface books$BooksCloudloadingResource {
+  declare interface gapi$client$books$BooksCloudloadingResource {
     author?: string;
     processingState?: string;
     title?: string;
     volumeId?: string;
   }
 
-  declare interface books$BooksVolumesRecommendedRateResponse {
+  declare interface gapi$client$books$BooksVolumesRecommendedRateResponse {
     consistency_token?: string;
   }
 
-  declare interface books$Bookshelf {
+  declare interface gapi$client$books$Bookshelf {
     /**
      * Whether this bookshelf is PUBLIC or PRIVATE.
      */
@@ -381,11 +388,11 @@ declare module "gapi.client.books" {
     volumesLastUpdated?: string;
   }
 
-  declare interface books$Bookshelves {
+  declare interface gapi$client$books$Bookshelves {
     /**
      * A list of bookshelves.
      */
-    items?: books$Bookshelf[];
+    items?: gapi$client$books$Bookshelf[];
 
     /**
      * Resource type.
@@ -393,7 +400,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Category {
+  declare interface gapi$client$books$Category {
     /**
      * A list of onboarding categories.
      */
@@ -409,7 +416,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$ConcurrentAccessRestriction {
+  declare interface gapi$client$books$ConcurrentAccessRestriction {
     /**
      * Whether access is granted for this (user, device, volume).
      */
@@ -466,7 +473,7 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Dictlayerdata {
+  declare interface gapi$client$books$Dictlayerdata {
     common?: {
       /**
        * The display title and localized canonical name to use when searching for this entity on Google search.
@@ -540,7 +547,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Discoveryclusters {
+  declare interface gapi$client$books$Discoveryclusters {
     clusters?: Array<{
       banner_with_content_container?: {
         fillColorArgb?: string,
@@ -554,7 +561,7 @@ declare module "gapi.client.books" {
       title?: string,
       totalVolumes?: number,
       uid?: string,
-      client$volumes?: books$Volume[]
+      volumes?: books$Volume[]
     }>;
 
     /**
@@ -564,7 +571,7 @@ declare module "gapi.client.books" {
     totalClusters?: number;
   }
 
-  declare interface books$DownloadAccessRestriction {
+  declare interface gapi$client$books$DownloadAccessRestriction {
     /**
      * If restricted, whether access is granted for this (user, device, volume).
      */
@@ -627,11 +634,11 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$DownloadAccesses {
+  declare interface gapi$client$books$DownloadAccesses {
     /**
      * A list of download access responses.
      */
-    downloadAccessList?: books$DownloadAccessRestriction[];
+    downloadAccessList?: gapi$client$books$DownloadAccessRestriction[];
 
     /**
      * Resource type.
@@ -639,7 +646,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Geolayerdata {
+  declare interface gapi$client$books$Geolayerdata {
     common?: {
       /**
        * The language of the information url and description.
@@ -725,7 +732,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Layersummaries {
+  declare interface gapi$client$books$Layersummaries {
     /**
      * A list of layer summary items.
      */
@@ -742,7 +749,7 @@ declare module "gapi.client.books" {
     totalItems?: number;
   }
 
-  declare interface books$Layersummary {
+  declare interface gapi$client$books$Layersummary {
     /**
      * The number of annotations for this layer.
      */
@@ -810,7 +817,7 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Metadata {
+  declare interface gapi$client$books$Metadata {
     /**
      * A list of offline dictionary metadata.
      */
@@ -828,7 +835,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Notification {
+  declare interface gapi$client$books$Notification {
     body?: string;
 
     /**
@@ -853,7 +860,7 @@ declare module "gapi.client.books" {
     title?: string;
   }
 
-  declare interface books$Offers {
+  declare interface gapi$client$books$Offers {
     /**
      * A list of offers.
      */
@@ -877,7 +884,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$ReadingPosition {
+  declare interface gapi$client$books$ReadingPosition {
     /**
      * Position in an EPUB as a CFI.
      */
@@ -914,16 +921,16 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$RequestAccess {
+  declare interface gapi$client$books$RequestAccess {
     /**
      * A concurrent access response.
      */
-    concurrentAccess?: books$ConcurrentAccessRestriction;
+    concurrentAccess?: gapi$client$books$ConcurrentAccessRestriction;
 
     /**
      * A download access response.
      */
-    downloadAccess?: books$DownloadAccessRestriction;
+    downloadAccess?: gapi$client$books$DownloadAccessRestriction;
 
     /**
      * Resource type.
@@ -931,7 +938,7 @@ declare module "gapi.client.books" {
     kind?: string;
   }
 
-  declare interface books$Review {
+  declare interface gapi$client$books$Review {
     /**
      * Author of this review.
      */
@@ -1003,12 +1010,12 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Series {
+  declare interface gapi$client$books$Series {
     /**
      * Resource type.
      */
     kind?: string;
-    client$series?: Array<{
+    series?: Array<{
       bannerImageUrl?: string,
       imageUrl?: string,
       seriesId?: string,
@@ -1017,7 +1024,7 @@ declare module "gapi.client.books" {
     }>;
   }
 
-  declare interface books$Seriesmembership {
+  declare interface gapi$client$books$Seriesmembership {
     /**
      * Resorce type.
      */
@@ -1026,7 +1033,7 @@ declare module "gapi.client.books" {
     nextPageToken?: string;
   }
 
-  declare interface books$Usersettings {
+  declare interface gapi$client$books$Usersettings {
     /**
      * Resource type.
      */
@@ -1039,7 +1046,7 @@ declare module "gapi.client.books" {
       folderName?: string,
       isEnabled?: boolean
     };
-    client$notification?: {
+    notification?: {
       moreFromAuthors?: {
         opted_state?: string
       },
@@ -1052,7 +1059,7 @@ declare module "gapi.client.books" {
     };
   }
 
-  declare interface books$Volume {
+  declare interface gapi$client$books$Volume {
     /**
      * Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in
      * one country but not in another, e.g.).
@@ -1072,7 +1079,7 @@ declare module "gapi.client.books" {
       /**
        * Information about a volume's download license access restrictions.
        */
-      downloadAccess?: books$DownloadAccessRestriction,
+      downloadAccess?: gapi$client$books$DownloadAccessRestriction,
 
       /**
        * URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive.
@@ -1185,7 +1192,7 @@ declare module "gapi.client.books" {
       /**
        * A layer should appear here if and only if the layer exists for this book.
        */
-      client$layers?: Array<{
+      layers?: Array<{
         /**
          * The layer id of this layer (e.g. "geo").
          */
@@ -1420,7 +1427,7 @@ declare module "gapi.client.books" {
       /**
        * The user's current reading position in the volume, if one is available. (In LITE projection.)
        */
-      readingPosition?: books$ReadingPosition,
+      readingPosition?: gapi$client$books$ReadingPosition,
 
       /**
        * Period during this book is/was a valid rental.
@@ -1438,7 +1445,7 @@ declare module "gapi.client.books" {
       /**
        * This user's review of this volume, if one exists.
        */
-      review?: books$Review,
+      review?: gapi$client$books$Review,
 
       /**
        * Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC
@@ -1644,11 +1651,11 @@ declare module "gapi.client.books" {
     };
   }
 
-  declare interface books$Volume2 {
+  declare interface gapi$client$books$Volume2 {
     /**
      * A list of volumes.
      */
-    items?: books$Volume[];
+    items?: gapi$client$books$Volume[];
 
     /**
      * Resource type.
@@ -1657,7 +1664,7 @@ declare module "gapi.client.books" {
     nextPageToken?: string;
   }
 
-  declare interface books$Volumeannotation {
+  declare interface gapi$client$books$Volumeannotation {
     /**
      * The annotation data id for this volume annotation.
      */
@@ -1680,7 +1687,7 @@ declare module "gapi.client.books" {
       /**
        * Range in CFI format for this annotation for version above.
        */
-      cfiRange?: books$BooksAnnotationsRange,
+      cfiRange?: gapi$client$books$BooksAnnotationsRange,
 
       /**
        * Content version applicable to ranges below.
@@ -1690,12 +1697,12 @@ declare module "gapi.client.books" {
       /**
        * Range in GB image format for this annotation for version above.
        */
-      gbImageRange?: books$BooksAnnotationsRange,
+      gbImageRange?: gapi$client$books$BooksAnnotationsRange,
 
       /**
        * Range in GB text format for this annotation for version above.
        */
-      gbTextRange?: books$BooksAnnotationsRange
+      gbTextRange?: gapi$client$books$BooksAnnotationsRange
     };
 
     /**
@@ -1749,11 +1756,11 @@ declare module "gapi.client.books" {
     volumeId?: string;
   }
 
-  declare interface books$Volumeannotations {
+  declare interface gapi$client$books$Volumeannotations {
     /**
      * A list of volume annotations.
      */
-    items?: books$Volumeannotation[];
+    items?: gapi$client$books$Volumeannotation[];
 
     /**
      * Resource type
@@ -1777,11 +1784,11 @@ declare module "gapi.client.books" {
     version?: string;
   }
 
-  declare interface books$Volumes {
+  declare interface gapi$client$books$Volumes {
     /**
      * A list of volumes.
      */
-    items?: books$Volume[];
+    items?: gapi$client$books$Volume[];
 
     /**
      * Resource type.
@@ -1794,7 +1801,7 @@ declare module "gapi.client.books" {
     totalItems?: number;
   }
 
-  declare interface books$Volumeseriesinfo {
+  declare interface gapi$client$books$Volumeseriesinfo {
     /**
      * The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber.
      */
@@ -1835,7 +1842,7 @@ declare module "gapi.client.books" {
     }>;
   }
 
-  declare interface books$VolumesResource {
+  declare interface gapi$client$books$VolumesResource {
     /**
      * Retrieves volumes in a specific bookshelf for the specified user.
      */
@@ -1905,7 +1912,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
 
     /**
      * Gets volume information for volumes on a bookshelf.
@@ -1986,7 +1993,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
 
     /**
      * Gets volume information for a single volume.
@@ -2058,7 +2065,7 @@ declare module "gapi.client.books" {
        * ID of volume to retrieve.
        */
       volumeId: string
-    }): Request<books$Volume>;
+    }): Request<gapi$client$books$Volume>;
 
     /**
      * Performs a book search.
@@ -2169,14 +2176,14 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
     associated: books$AssociatedResource;
     mybooks: books$MybooksResource;
     recommended: books$RecommendedResource;
     useruploaded: books$UseruploadedResource;
   }
 
-  declare interface books$BookshelvesResource {
+  declare interface gapi$client$books$BookshelvesResource {
     /**
      * Retrieves metadata for a specific bookshelf for the specified user.
      */
@@ -2231,7 +2238,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Bookshelf>;
+    }): Request<gapi$client$books$Bookshelf>;
 
     /**
      * Retrieves a list of public bookshelves for the specified user.
@@ -2282,8 +2289,8 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Bookshelves>;
-    client$volumes: books$VolumesResource;
+    }): Request<gapi$client$books$Bookshelves>;
+    volumes: gapi$client$books$VolumesResource;
 
     /**
      * Adds a volume to a bookshelf.
@@ -2446,7 +2453,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Bookshelf>;
+    }): Request<gapi$client$books$Bookshelf>;
 
     /**
      * Retrieves a list of bookshelves belonging to the authenticated user.
@@ -2492,7 +2499,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Bookshelves>;
+    }): Request<gapi$client$books$Bookshelves>;
 
     /**
      * Moves a volume within a bookshelf.
@@ -2615,10 +2622,10 @@ declare module "gapi.client.books" {
        */
       volumeId: string
     }): Request<void>;
-    client$volumes: books$VolumesResource;
+    volumes: gapi$client$books$VolumesResource;
   }
 
-  declare interface books$CloudloadingResource {
+  declare interface gapi$client$books$CloudloadingResource {
     addBook(request: {
       /**
        * Data format for the response.
@@ -2671,7 +2678,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$BooksCloudloadingResource>;
+    }): Request<gapi$client$books$BooksCloudloadingResource>;
 
     /**
      * Remove the book and its contents
@@ -2754,10 +2761,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$BooksCloudloadingResource>;
+    }): Request<gapi$client$books$BooksCloudloadingResource>;
   }
 
-  declare interface books$DictionaryResource {
+  declare interface gapi$client$books$DictionaryResource {
     /**
      * Returns a list of offline dictionary metadata available
      */
@@ -2802,10 +2809,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Metadata>;
+    }): Request<gapi$client$books$Metadata>;
   }
 
-  declare interface books$AnnotationDataResource {
+  declare interface gapi$client$books$AnnotationDataResource {
     /**
      * Gets the annotation data.
      */
@@ -2895,7 +2902,7 @@ declare module "gapi.client.books" {
        * The requested pixel width for any images. If width is provided height must also be provided.
        */
       w?: number
-    }): Request<books$Annotationdata>;
+    }): Request<gapi$client$books$Annotationdata>;
 
     /**
      * Gets the annotation data for a volume and layer.
@@ -3001,10 +3008,10 @@ declare module "gapi.client.books" {
        * The requested pixel width for any images. If width is provided height must also be provided.
        */
       w?: number
-    }): Request<books$Annotationsdata>;
+    }): Request<gapi$client$books$Annotationsdata>;
   }
 
-  declare interface books$VolumeAnnotationsResource {
+  declare interface gapi$client$books$VolumeAnnotationsResource {
     /**
      * Gets the volume annotation.
      */
@@ -3069,7 +3076,7 @@ declare module "gapi.client.books" {
        * The volume to retrieve annotations for.
        */
       volumeId: string
-    }): Request<books$Volumeannotation>;
+    }): Request<gapi$client$books$Volumeannotation>;
 
     /**
      * Gets the volume annotations for a volume and layer.
@@ -3185,10 +3192,10 @@ declare module "gapi.client.books" {
        * The volume to retrieve annotations for.
        */
       volumeId: string
-    }): Request<books$Volumeannotations>;
+    }): Request<gapi$client$books$Volumeannotations>;
   }
 
-  declare interface books$LayersResource {
+  declare interface gapi$client$books$LayersResource {
     /**
      * Gets the layer summary for a volume.
      */
@@ -3248,7 +3255,7 @@ declare module "gapi.client.books" {
        * The volume to retrieve layers for.
        */
       volumeId: string
-    }): Request<books$Layersummary>;
+    }): Request<gapi$client$books$Layersummary>;
 
     /**
      * List the layer summaries for a volume.
@@ -3314,12 +3321,12 @@ declare module "gapi.client.books" {
        * The volume to retrieve layers for.
        */
       volumeId: string
-    }): Request<books$Layersummaries>;
-    annotationData: books$AnnotationDataResource;
-    volumeAnnotations: books$VolumeAnnotationsResource;
+    }): Request<gapi$client$books$Layersummaries>;
+    annotationData: gapi$client$books$AnnotationDataResource;
+    volumeAnnotations: gapi$client$books$VolumeAnnotationsResource;
   }
 
-  declare interface books$MyconfigResource {
+  declare interface gapi$client$books$MyconfigResource {
     /**
      * Gets the current settings for the user.
      */
@@ -3359,7 +3366,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Usersettings>;
+    }): Request<gapi$client$books$Usersettings>;
 
     /**
      * Release downloaded content access restriction.
@@ -3420,7 +3427,7 @@ declare module "gapi.client.books" {
        * The volume(s) to release restrictions for.
        */
       volumeIds: string
-    }): Request<books$DownloadAccesses>;
+    }): Request<gapi$client$books$DownloadAccesses>;
 
     /**
      * Request concurrent and download access restrictions.
@@ -3491,7 +3498,7 @@ declare module "gapi.client.books" {
        * The volume to request concurrent/download restrictions for.
        */
       volumeId: string
-    }): Request<books$RequestAccess>;
+    }): Request<gapi$client$books$RequestAccess>;
 
     /**
      * Request downloaded content access for specified volumes on the My eBooks shelf.
@@ -3572,7 +3579,7 @@ declare module "gapi.client.books" {
        * The volume(s) to request download restrictions for.
        */
       volumeIds?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
 
     /**
      * Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects
@@ -3614,10 +3621,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Usersettings>;
+    }): Request<gapi$client$books$Usersettings>;
   }
 
-  declare interface books$AnnotationsResource {
+  declare interface gapi$client$books$AnnotationsResource {
     /**
      * Deletes an annotation.
      */
@@ -3728,7 +3735,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Annotation>;
+    }): Request<gapi$client$books$Annotation>;
 
     /**
      * Retrieves a list of annotations, possibly filtered.
@@ -3819,7 +3826,7 @@ declare module "gapi.client.books" {
        * The volume to restrict annotations to.
        */
       volumeId?: string
-    }): Request<books$Annotations>;
+    }): Request<gapi$client$books$Annotations>;
 
     /**
      * Gets the summary of specified layers.
@@ -3870,7 +3877,7 @@ declare module "gapi.client.books" {
        * Volume id to get the summary for.
        */
       volumeId: string
-    }): Request<books$AnnotationsSummary>;
+    }): Request<gapi$client$books$AnnotationsSummary>;
 
     /**
      * Updates an existing annotation.
@@ -3921,10 +3928,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Annotation>;
+    }): Request<gapi$client$books$Annotation>;
   }
 
-  declare interface books$ReadingpositionsResource {
+  declare interface gapi$client$books$ReadingpositionsResource {
     /**
      * Retrieves my reading position information for a volume.
      */
@@ -3979,7 +3986,7 @@ declare module "gapi.client.books" {
        * ID of volume for which to retrieve a reading position.
        */
       volumeId: string
-    }): Request<books$ReadingPosition>;
+    }): Request<gapi$client$books$ReadingPosition>;
 
     /**
      * Sets my reading position information for a volume.
@@ -4058,13 +4065,13 @@ declare module "gapi.client.books" {
     }): Request<void>;
   }
 
-  declare interface books$MylibraryResource {
-    annotations: books$AnnotationsResource;
-    client$bookshelves: books$BookshelvesResource;
-    readingpositions: books$ReadingpositionsResource;
+  declare interface gapi$client$books$MylibraryResource {
+    annotations: gapi$client$books$AnnotationsResource;
+    bookshelves: gapi$client$books$BookshelvesResource;
+    readingpositions: gapi$client$books$ReadingpositionsResource;
   }
 
-  declare interface books$NotificationResource {
+  declare interface gapi$client$books$NotificationResource {
     /**
      * Returns notification details for a given notification id.
      */
@@ -4119,10 +4126,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Notification>;
+    }): Request<gapi$client$books$Notification>;
   }
 
-  declare interface books$OnboardingResource {
+  declare interface gapi$client$books$OnboardingResource {
     /**
      * List categories for onboarding experience.
      */
@@ -4167,7 +4174,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Category>;
+    }): Request<gapi$client$books$Category>;
 
     /**
      * List available volumes under categories for onboarding experience.
@@ -4233,10 +4240,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volume2>;
+    }): Request<gapi$client$books$Volume2>;
   }
 
-  declare interface books$PersonalizedstreamResource {
+  declare interface gapi$client$books$PersonalizedstreamResource {
     /**
      * Returns a stream of personalized book clusters
      */
@@ -4291,10 +4298,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Discoveryclusters>;
+    }): Request<gapi$client$books$Discoveryclusters>;
   }
 
-  declare interface books$PromoofferResource {
+  declare interface gapi$client$books$PromoofferResource {
     accept(request: {
       /**
        * Data format for the response.
@@ -4510,10 +4517,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Offers>;
+    }): Request<gapi$client$books$Offers>;
   }
 
-  declare interface books$MembershipResource {
+  declare interface gapi$client$books$MembershipResource {
     /**
      * Returns Series membership data given the series id.
      */
@@ -4568,10 +4575,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Seriesmembership>;
+    }): Request<gapi$client$books$Seriesmembership>;
   }
 
-  declare interface books$SeriesResource {
+  declare interface gapi$client$books$SeriesResource {
     /**
      * Returns Series metadata for the given series ids.
      */
@@ -4616,11 +4623,11 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Series>;
-    membership: books$MembershipResource;
+    }): Request<gapi$client$books$Series>;
+    membership: gapi$client$books$MembershipResource;
   }
 
-  declare interface books$AssociatedResource {
+  declare interface gapi$client$books$AssociatedResource {
     /**
      * Return a list of associated books.
      */
@@ -4685,10 +4692,10 @@ declare module "gapi.client.books" {
        * ID of the source volume.
        */
       volumeId: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
   }
 
-  declare interface books$MybooksResource {
+  declare interface gapi$client$books$MybooksResource {
     /**
      * Return a list of books in My Library.
      */
@@ -4763,10 +4770,10 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
   }
 
-  declare interface books$RecommendedResource {
+  declare interface gapi$client$books$RecommendedResource {
     /**
      * Return a list of recommended books for the current user.
      */
@@ -4821,7 +4828,7 @@ declare module "gapi.client.books" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
 
     /**
      * Rate a recommended book for the current user.
@@ -4882,10 +4889,10 @@ declare module "gapi.client.books" {
        * ID of the source volume.
        */
       volumeId: string
-    }): Request<books$BooksVolumesRecommendedRateResponse>;
+    }): Request<gapi$client$books$BooksVolumesRecommendedRateResponse>;
   }
 
-  declare interface books$UseruploadedResource {
+  declare interface gapi$client$books$UseruploadedResource {
     /**
      * Return a list of books uploaded by the current user.
      */
@@ -4955,6 +4962,6 @@ declare module "gapi.client.books" {
        * The ids of the volumes to be returned. If not specified all that match the processingState are returned.
        */
       volumeId?: string
-    }): Request<books$Volumes>;
+    }): Request<gapi$client$books$Volumes>;
   }
 }
