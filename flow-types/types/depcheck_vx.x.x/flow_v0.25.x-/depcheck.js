@@ -1,13 +1,13 @@
 declare module "depcheck" {
   declare function depcheck(
     rootDir: string,
-    options: depcheck$depcheck$Options
-  ): Promise<depcheck$depcheck$Results>;
+    options: depcheck$Options
+  ): Promise<depcheck$Results>;
 
   declare function depcheck<T>(
     rootDir: string,
-    options: depcheck$depcheck$Options,
-    callback: (results: depcheck$depcheck$Results) => T
+    options: depcheck$Options,
+    callback: (results: depcheck$Results) => T
   ): Promise<T>;
 
   declare var npm$namespace$depcheck: {
@@ -78,5 +78,5 @@ declare module "depcheck" {
     mocha: depcheck$Parser,
     webpack: depcheck$Parser
   };
-  declare module.exports: typeof depcheck;
+  declare export default typeof depcheck;
 }
