@@ -1,9 +1,7 @@
 declare module "os-locale" {
-  declare module.exports: typeof osLocale;
+  declare export default typeof osLocale;
 
-  declare function osLocale(
-    options?: osLocale$osLocale$Options
-  ): Promise<string>;
+  declare function osLocale(options?: osLocale$Options): Promise<string>;
 
   declare var npm$namespace$osLocale: {
     sync: typeof osLocale$sync
