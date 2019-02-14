@@ -20,6 +20,6 @@ declare module "markdown-it-container" {
     opts: markdownItContainer$ContainerOpts
   ): void;
 
-  declare var MarkdownItContainer: typeof undefined;
-  declare module.exports: typeof MarkdownItContainer;
+  declare var MarkdownItContainer: typeof markdownItContainer$container_plugin;
+  declare export default typeof MarkdownItContainer;
 }
