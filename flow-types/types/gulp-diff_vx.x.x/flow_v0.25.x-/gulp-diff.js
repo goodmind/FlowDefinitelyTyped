@@ -26,5 +26,5 @@ declare module "gulp-diff" {
      */
     fail?: boolean;
   }
-  declare module.exports: typeof gulp_diff;
+  declare export default typeof gulp_diff;
 }
