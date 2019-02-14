@@ -1,10 +1,15 @@
 declare module "deku" {
-  declare module.exports: typeof deku;
+  declare export default typeof deku;
 
   declare var npm$namespace$deku: {
     createApp: typeof deku$createApp,
     element: typeof deku$element,
-    h: typeof deku$h
+    h: typeof deku$h,
+
+    dom: typeof npm$namespace$deku$dom,
+    string: typeof npm$namespace$deku$string,
+    diff: typeof npm$namespace$deku$diff,
+    vnode: typeof npm$namespace$deku$vnode
   };
   declare interface deku$VirtualElement {
     type: string;
@@ -17,9 +22,9 @@ declare module "deku" {
    */
   declare function deku$createApp(el: HTMLElement, dispatch?: Dispatch): Render;
 
-  declare var npm$namespace$dom: {
-    create: typeof dom$create,
-    update: typeof dom$update
+  declare var npm$namespace$deku$dom: {
+    create: typeof deku$dom$create,
+    update: typeof deku$dom$update
   };
 
   /**
@@ -27,7 +32,7 @@ declare module "deku" {
    * When it finds custom elements it will render them, cache them, and keep going,
    * so they are treated like any other native element.
    */
-  declare function dom$create<C>(
+  declare function deku$dom$create<C>(
     vnode: deku$VirtualElement,
     path: string,
     dispatch: Dispatch,
@@ -37,21 +42,21 @@ declare module "deku" {
   /**
    * Modify a DOM element given an array of actions.
    */
-  declare function dom$update<C, A>(
+  declare function deku$dom$update<C, A>(
     dispatch: Dispatch,
     context: C
   ): (DOMElement: HTMLElement, action: A) => HTMLElement;
 
-  declare var npm$namespace$string: {
-    render: typeof string$render
+  declare var npm$namespace$deku$string: {
+    render: typeof deku$string$render
   };
 
   /**
    * Render a virtual element to a string. You can pass in an option state context object that will be given to all components.
    */
-  declare function string$render(vnode: deku$VirtualElement): string;
+  declare function deku$string$render(vnode: deku$VirtualElement): string;
 
-  declare function string$render<C>(
+  declare function deku$string$render<C>(
     vnode: deku$VirtualElement,
     context: C
   ): string;
@@ -78,55 +83,59 @@ declare module "deku" {
 
   declare var deku$h: typeof element;
 
-  declare var npm$namespace$diff: {
-    diffNode: typeof diff$diffNode
+  declare var npm$namespace$deku$diff: {
+    diffNode: typeof deku$diff$diffNode,
+
+    Actions: typeof deku$diff$Actions
   };
 
   /**
    * Compare two virtual nodes and return an array of changes to turn the left into the right.
    */
-  declare function diff$diffNode(
+  declare function deku$diff$diffNode(
     prevNode: deku$VirtualElement,
     nextNode: deku$VirtualElement
   ): any[];
 
-  declare class diff$Actions {
-    static setAttribute(a: string, b: any, c: any): diff$Actions;
-    static removeAttribute(a: string, b: any): diff$Actions;
-    static insertChild(a: any, b: number, c: string): diff$Actions;
-    static removeChild(a: number): diff$Actions;
-    static updateChild(a: number, b: any[]): diff$Actions;
-    static updateChildren(a: any[]): diff$Actions;
-    static insertBefore(a: number): diff$Actions;
-    static replaceNode(a: any, b: any, c: string): diff$Actions;
-    static removeNode(a: any): diff$Actions;
-    static sameNode(): diff$Actions;
-    static updateThunk(a: any, b: any, c: string): diff$Actions;
-    static case(pat: any, action: diff$Actions): any;
+  declare class deku$diff$Actions {
+    static setAttribute(a: string, b: any, c: any): deku$diff$Actions;
+    static removeAttribute(a: string, b: any): deku$diff$Actions;
+    static insertChild(a: any, b: number, c: string): deku$diff$Actions;
+    static removeChild(a: number): deku$diff$Actions;
+    static updateChild(a: number, b: any[]): deku$diff$Actions;
+    static updateChildren(a: any[]): deku$diff$Actions;
+    static insertBefore(a: number): deku$diff$Actions;
+    static replaceNode(a: any, b: any, c: string): deku$diff$Actions;
+    static removeNode(a: any): deku$diff$Actions;
+    static sameNode(): deku$diff$Actions;
+    static updateThunk(a: any, b: any, c: string): deku$diff$Actions;
+    static case(pat: any, action: deku$diff$Actions): any;
   }
 
-  declare var npm$namespace$vnode: {
-    createTextElement: typeof vnode$createTextElement,
-    createThunkElement: typeof vnode$createThunkElement,
-    createEmptyElement: typeof vnode$createEmptyElement,
-    isThunk: typeof vnode$isThunk,
-    isText: typeof vnode$isText,
-    isEmpty: typeof vnode$isEmpty,
-    isSameThunk: typeof vnode$isSameThunk,
-    createPath: typeof vnode$createPath,
-    create: typeof vnode$create
+  declare var npm$namespace$deku$vnode: {
+    createTextElement: typeof deku$vnode$createTextElement,
+    createThunkElement: typeof deku$vnode$createThunkElement,
+    createEmptyElement: typeof deku$vnode$createEmptyElement,
+    isThunk: typeof deku$vnode$isThunk,
+    isText: typeof deku$vnode$isText,
+    isEmpty: typeof deku$vnode$isEmpty,
+    isSameThunk: typeof deku$vnode$isSameThunk,
+    createPath: typeof deku$vnode$createPath,
+    create: typeof deku$vnode$create
   };
-  declare var vnode$create: typeof element;
+  declare var deku$vnode$create: typeof element;
 
   /**
    * Text nodes are stored as objects to keep things simple
    */
-  declare function vnode$createTextElement(text: string): deku$VirtualElement;
+  declare function deku$vnode$createTextElement(
+    text: string
+  ): deku$VirtualElement;
 
   /**
    * Lazily-rendered virtual nodes
    */
-  declare function vnode$createThunkElement<P, T, O>(
+  declare function deku$vnode$createThunkElement<P, T, O>(
     fn: (model: Model) => deku$VirtualElement,
     key: string,
     props: P,
@@ -134,15 +143,15 @@ declare module "deku" {
     options: O
   ): deku$VirtualElement;
 
-  declare function vnode$createEmptyElement(): deku$VirtualElement;
+  declare function deku$vnode$createEmptyElement(): deku$VirtualElement;
 
-  declare function vnode$isThunk(vnode: deku$VirtualElement): boolean;
+  declare function deku$vnode$isThunk(vnode: deku$VirtualElement): boolean;
 
-  declare function vnode$isText(vnode: deku$VirtualElement): boolean;
+  declare function deku$vnode$isText(vnode: deku$VirtualElement): boolean;
 
-  declare function vnode$isEmpty(vnode: deku$VirtualElement): boolean;
+  declare function deku$vnode$isEmpty(vnode: deku$VirtualElement): boolean;
 
-  declare function vnode$isSameThunk(
+  declare function deku$vnode$isSameThunk(
     prevNode: deku$VirtualElement,
     nextNode: deku$VirtualElement
   ): boolean;
@@ -150,7 +159,7 @@ declare module "deku" {
   /**
    * Create a node path, eg. (23,5,2,4) => '23.5.2.4'
    */
-  declare function vnode$createPath(...paths: (number | string)[]): string;
+  declare function deku$vnode$createPath(...paths: (number | string)[]): string;
 
   declare interface Model {
     props?: any;
@@ -160,7 +169,7 @@ declare module "deku" {
     context?: any;
   }
   declare interface Component {
-    string$render: (model: Model) => deku$deku$VirtualElement;
+    render: (model: Model) => deku$VirtualElement;
     onCreate?: (model: Model) => any;
     onUpdate?: (model: Model) => any;
     onRemove?: (model: Model) => any;
@@ -169,10 +178,7 @@ declare module "deku" {
   /**
    * Thunk object passed to `element`
    */
-  declare type Thunk = Component | ((model: Model) => deku$deku$VirtualElement);
-  declare type Render = (
-    vnode: deku$deku$VirtualElement,
-    context?: any
-  ) => void;
+  declare type Thunk = Component | ((model: Model) => deku$VirtualElement);
+  declare type Render = (vnode: deku$VirtualElement, context?: any) => void;
   declare type Dispatch = (action: any) => any;
 }
