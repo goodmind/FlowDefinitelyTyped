@@ -4,7 +4,7 @@ declare module "pretty-format" {
    */
   declare function prettyFormat(
     value: any,
-    options?: prettyFormat$prettyFormat$Options
+    options?: prettyFormat$Options
   ): string;
 
   declare var npm$namespace$prettyFormat: {
@@ -113,5 +113,5 @@ declare module "pretty-format" {
     tag?: string;
     value?: string;
   }
-  declare module.exports: typeof prettyFormat;
+  declare export default typeof prettyFormat;
 }
