@@ -33,8 +33,8 @@ declare module "parsimmon" {
    *  * ```
    */
   declare function Parsimmon<T>(
-    duration$fn: (input: string, i: number) => Parsimmon$Parsimmon$Reply<T>
-  ): Parsimmon$Parsimmon$Parser<T>;
+    fn: (input: string, i: number) => Parsimmon$Reply<T>
+  ): Parsimmon$Parser<T>;
 
   declare var npm$namespace$Parsimmon: {
     Parser: typeof Parsimmon$Parser,
@@ -95,7 +95,7 @@ declare module "parsimmon" {
     /**
      * one-based line offset
      */
-    routing$line: number;
+    line: number;
 
     /**
      * one-based column offset
@@ -110,18 +110,18 @@ declare module "parsimmon" {
   }
 
   declare type Parsimmon$Node<Name: string, T> = {
-    skin$name: Fields$Name
-  } & Parsimmon$Mark<T>;
+    name: Name
+  } & Mark<T>;
 
   declare type Parsimmon$Result<T> = Parsimmon$Success<T> | Parsimmon$Failure;
 
   declare interface Parsimmon$Success<T> {
-    l$status: true;
+    status: true;
     value: T;
   }
 
   declare interface Parsimmon$Failure {
-    l$status: false;
+    status: false;
     expected: string[];
     index: Parsimmon$Index;
   }
@@ -152,7 +152,7 @@ declare module "parsimmon" {
     /**
      * parse the string
      */
-    Handlebars$parse(input: string): Parsimmon$Result<T>;
+    parse(input: string): Parsimmon$Result<T>;
 
     /**
      * Like parser.parse(input) but either returns the parsed value or throws
@@ -164,7 +164,7 @@ declare module "parsimmon" {
     /**
      * returns a new parser which tries parser, and if it fails uses otherParser.
      */
-    BigNum$or<U>(otherParser: Parsimmon$Parser<U>): Parsimmon$Parser<T | U>;
+    or<U>(otherParser: Parsimmon$Parser<U>): Parsimmon$Parser<T | U>;
 
     /**
      * returns a new parser which tries parser, and on success calls the given function
@@ -188,7 +188,7 @@ declare module "parsimmon" {
     /**
      * Transforms the input of parser with the given function.
      */
-    contramap<U>(duration$fn: (input: T) => U): Parsimmon$Parser<U>;
+    contramap<U>(fn: (input: T) => U): Parsimmon$Parser<U>;
 
     /**
      * Transforms the input and output of parser with the given function.
@@ -209,12 +209,12 @@ declare module "parsimmon" {
     /**
      * expects anotherParser before and after parser, yielding the result of parser
      */
-    Util$trim<U>(anotherParser: Parsimmon$Parser<U>): Parsimmon$Parser<T>;
+    trim<U>(anotherParser: Parsimmon$Parser<U>): Parsimmon$Parser<T>;
 
     /**
      * transforms the output of parser with the given function.
      */
-    mapbox$map<U>(call: (result: T) => U): Parsimmon$Parser<U>;
+    map<U>(call: (result: T) => U): Parsimmon$Parser<U>;
 
     /**
      * returns a new parser with the same behavior, but which yields aResult.
@@ -234,7 +234,7 @@ declare module "parsimmon" {
     /**
      * Expects the parser before before parser and after after parser.
      */
-    colors$wrap(
+    wrap(
       before: Parsimmon$Parser<any>,
       after: Parsimmon$Parser<any>
     ): Parsimmon$Parser<T>;
@@ -244,17 +244,15 @@ declare module "parsimmon" {
      * parse, and does not consume it. Yields the same result as parser. Equivalent to
      * parser.skip(Parsimmon.notFollowedBy(anotherParser)).
      */
-    Parsimmon$notFollowedBy(
-      anotherParser: Parsimmon$Parser<any>
-    ): Parsimmon$Parser<T>;
+    notFollowedBy(anotherParser: Parsimmon$Parser<any>): Parsimmon$Parser<T>;
 
     /**
      * Returns a parser that looks for whatever arg wants to parse, but does not
      * consume it. Yields the same result as parser. Equivalent to
      * parser.skip(Parsimmon.lookahead(anotherParser)).
      */
-    Parsimmon$lookahead(
-      arg: Parsimmon$Parser<any> | string | core$RegExp
+    lookahead(
+      arg: Parsimmon$Parser<any> | string | RegExp
     ): Parsimmon$Parser<T>;
 
     /**
@@ -305,9 +303,7 @@ declare module "parsimmon" {
     /**
      * Like `mark()`, but yields an object with an additional `name` key to use as an AST.
      */
-    data$node<Name: string>(
-      skin$name: Fields$Name
-    ): Parsimmon$Parser<Parsimmon$Node<Fields$Name, T>>;
+    node<Name: string>(name: Name): Parsimmon$Parser<Parsimmon$Node<Name, T>>;
 
     /**
      * Returns a new parser whose failure message is description.
@@ -318,7 +314,7 @@ declare module "parsimmon" {
     /**
      * Returns Parsimmon.fail("fantasy-land/empty").
      */
-    Parsimmon$empty(): Parsimmon$Parser<empty>;
+    empty(): Parsimmon$Parser<empty>;
 
     /**
      * Takes parser which returns a function and applies it to the parsed value of otherParser.
@@ -330,26 +326,26 @@ declare module "parsimmon" {
      *
      * Expects zero or more matches for parser, separated by the parser separator, yielding an array.
      */
-    Parsimmon$sepBy<U>(separator: Parsimmon$Parser<U>): Parsimmon$Parser<T[]>;
+    sepBy<U>(separator: Parsimmon$Parser<U>): Parsimmon$Parser<T[]>;
 
     /**
      * Equivalent to Parsimmon.sepBy(parser, separator).
      *
      * Expects one or more matches for parser, separated by the parser separator, yielding an array.
      */
-    Parsimmon$sepBy1<U>(separator: Parsimmon$Parser<U>): Parsimmon$Parser<T[]>;
+    sepBy1<U>(separator: Parsimmon$Parser<U>): Parsimmon$Parser<T[]>;
 
     /**
      * Equivalent to Parsimmon.of(result).
      */
-    Parsimmon$of<U>(result: U): Parsimmon$Parser<U>;
+    of<U>(result: U): Parsimmon$Parser<U>;
   }
 
   /**
    * Alias of `Parsimmon(fn)` for backwards compatibility.
    */
   declare function Parsimmon$Parser<T>(
-    duration$fn: (input: string, i: number) => Parsimmon$Parsimmon$Reply<T>
+    fn: (input: string, i: number) => Parsimmon$Reply<T>
   ): Parsimmon$Parser<T>;
 
   /**
@@ -397,11 +393,11 @@ declare module "parsimmon" {
    * on the resulting language do actually exist.
    */
   declare function Parsimmon$createLanguage(
-    CanvasGauges$rules: Parsimmon$Rule
+    rules: Parsimmon$Rule
   ): Parsimmon$Language;
 
   declare function Parsimmon$createLanguage<TLanguageSpec>(
-    CanvasGauges$rules: Parsimmon$TypedRule<TLanguageSpec>
+    rules: Parsimmon$TypedRule<TLanguageSpec>
   ): Parsimmon$TypedLanguage<TLanguageSpec>;
 
   /**
@@ -432,23 +428,17 @@ declare module "parsimmon" {
   /**
    * is a parser that expects to find "my-string", and will yield the same.
    */
-  declare function Parsimmon$string(
-    Parsimmon$string: string
-  ): Parsimmon$Parser<string>;
+  declare function Parsimmon$string(string: string): Parsimmon$Parser<string>;
 
   /**
    * Returns a parser that looks for exactly one character from string, and yields that character.
    */
-  declare function Parsimmon$oneOf(
-    Parsimmon$string: string
-  ): Parsimmon$Parser<string>;
+  declare function Parsimmon$oneOf(string: string): Parsimmon$Parser<string>;
 
   /**
    * Returns a parser that looks for exactly one character NOT from string, and yields that character.
    */
-  declare function Parsimmon$noneOf(
-    Parsimmon$string: string
-  ): Parsimmon$Parser<string>;
+  declare function Parsimmon$noneOf(string: string): Parsimmon$Parser<string>;
 
   /**
    * Parsers a single character in from begin to end, inclusive.
@@ -465,7 +455,7 @@ declare module "parsimmon" {
    * result in an error being thrown.
    */
   declare function Parsimmon$regexp(
-    myregex: core$RegExp,
+    myregex: RegExp,
     group?: number
   ): Parsimmon$Parser<string>;
 
@@ -473,7 +463,7 @@ declare module "parsimmon" {
    * This was the original name for Parsimmon.regexp, but now it is just an alias.
    */
   declare function Parsimmon$regex(
-    myregex: core$RegExp,
+    myregex: RegExp,
     group?: number
   ): Parsimmon$Parser<string>;
 
@@ -482,14 +472,14 @@ declare module "parsimmon" {
    * does not match the input. Otherwise it fails.
    */
   declare function Parsimmon$notFollowedBy(
-    dojo$parser: Parsimmon$Parser<any>
+    parser: Parsimmon$Parser<any>
   ): Parsimmon$Parser<null>;
 
   /**
    * Parses using arg, but does not consume what it parses. Yields an empty string.
    */
   declare function Parsimmon$lookahead(
-    arg: Parsimmon$Parser<any> | string | core$RegExp
+    arg: Parsimmon$Parser<any> | string | RegExp
   ): Parsimmon$Parser<"">;
 
   /**
@@ -555,11 +545,11 @@ declare module "parsimmon" {
   ): Parsimmon$Parser<[T, U, V, W, X, Y, Z]>;
 
   declare function Parsimmon$seq<T>(
-    ...parsers: core$Array<Parsimmon$Parser<T>>
+    ...parsers: Array<Parsimmon$Parser<T>>
   ): Parsimmon$Parser<T[]>;
 
   declare function Parsimmon$seq(
-    ...parsers: core$Array<Parsimmon$Parser<any>>
+    ...parsers: Array<Parsimmon$Parser<any>>
   ): Parsimmon$Parser<any[]>;
 
   /**
@@ -568,8 +558,8 @@ declare module "parsimmon" {
    * Note that there are certainly better ways to format errors, so feel free to write your own.
    */
   declare function Parsimmon$formatError<T>(
-    Parsimmon$string: string,
-    log$error: Parsimmon$Result<T>
+    string: string,
+    error: Parsimmon$Result<T>
   ): string;
 
   /**
@@ -645,19 +635,15 @@ declare module "parsimmon" {
   ): Parsimmon$Parser<B>;
 
   declare function Parsimmon$seqObj<T, Key: $Keys<T>>(
-    ...args: core$Array<
-      | [ed25519$Key, Parsimmon$Parser<$ElementType<T, ed25519$Key>>]
-      | Parsimmon$Parser<any>
+    ...args: Array<
+      [Key, Parsimmon$Parser<$ElementType<T, Key>>] | Parsimmon$Parser<any>
     >
   ): Parsimmon$Parser<
-    $ObjMapi<
-      { [k: ed25519$Key]: any },
-      <Handlebars$K>(Handlebars$K) => $ElementType<T, Handlebars$K>
-    >
+    $ObjMapi<{ [k: Key]: any }, <K>(K) => $ElementType<T, K>>
   >;
 
   declare interface Parsimmon$SuccessReply<T> {
-    l$status: true;
+    status: true;
     index: number;
     value: T;
     furthest: -1;
@@ -665,7 +651,7 @@ declare module "parsimmon" {
   }
 
   declare interface Parsimmon$FailureReply {
-    l$status: false;
+    status: false;
     index: -1;
     value: null;
     furthest: number;
@@ -706,18 +692,18 @@ declare module "parsimmon" {
    * backtracking in between.
    */
   declare function Parsimmon$alt<U>(
-    ...parsers: core$Array<Parsimmon$Parser<U>>
+    ...parsers: Array<Parsimmon$Parser<U>>
   ): Parsimmon$Parser<U>;
 
   declare function Parsimmon$alt(
-    ...parsers: core$Array<Parsimmon$Parser<any>>
+    ...parsers: Array<Parsimmon$Parser<any>>
   ): Parsimmon$Parser<any>;
 
   /**
    * Accepts two parsers, and expects zero or more matches for content, separated by separator, yielding an array.
    */
   declare function Parsimmon$sepBy<T, U>(
-    definition$content: Parsimmon$Parser<T>,
+    content: Parsimmon$Parser<T>,
     separator: Parsimmon$Parser<U>
   ): Parsimmon$Parser<T[]>;
 
@@ -725,7 +711,7 @@ declare module "parsimmon" {
    * This is the same as Parsimmon.sepBy, but matches the content parser at least once.
    */
   declare function Parsimmon$sepBy1<T, U>(
-    definition$content: Parsimmon$Parser<T>,
+    content: Parsimmon$Parser<T>,
     separator: Parsimmon$Parser<U>
   ): Parsimmon$Parser<T[]>;
 
@@ -863,7 +849,7 @@ declare module "parsimmon" {
    * Returns a parser that yields a byte (as a number) that matches the given input;
    * similar to Parsimmon.digit and Parsimmon.letter.
    */
-  declare function Parsimmon$byte(getenv$int: number): Parsimmon$Parser<number>;
+  declare function Parsimmon$byte(int: number): Parsimmon$Parser<number>;
 
   /**
    * Returns a parser that yields a byte (as a number) that matches the given input;
@@ -880,10 +866,8 @@ declare module "parsimmon" {
    * it will be parsed but discarded from the returned value.
    */
   declare function Parsimmon$bitSeqObj<Key: string>(
-    namedAlignments: core$Array<[ed25519$Key, number] | number>
-  ): Parsimmon$Parser<
-    $ObjMapi<{ [k: ed25519$Key]: any }, <Handlebars$K>(Handlebars$K) => number>
-  >;
+    namedAlignments: Array<[Key, number] | number>
+  ): Parsimmon$Parser<$ObjMapi<{ [k: Key]: any }, <K>(K) => number>>;
 
-  declare module.exports: typeof Parsimmon;
+  declare export default typeof Parsimmon;
 }
