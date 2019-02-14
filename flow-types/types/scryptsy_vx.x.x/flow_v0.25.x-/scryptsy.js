@@ -1,5 +1,5 @@
 declare module "scryptsy" {
-  declare module.exports: typeof scryptsy;
+  declare export default typeof scryptsy;
 
   declare function scryptsy(
     key: Buffer | string,
