@@ -16,20 +16,20 @@ declare module "fibers/future" {
     static wait(future_list: Future[]): any;
     static wrap(fn: Function): Future;
   }
-  declare module.exports: typeof Future;
+  declare export default typeof Future;
 }
-
-declare var npm$namespace$Fiber: {
-  yield: typeof Fiber$yield,
-  current: typeof Fiber$current
-};
-declare export var Fiber$current: Fiber;
-
-declare export function Fiber$yield(value?: any): any;
 declare module "fibers" {
   declare function Fiber(fn: Function): Fiber;
 
-  declare module.exports: typeof Fiber;
+  declare var npm$namespace$Fiber: {
+    yield: typeof Fiber$yield,
+    current: typeof Fiber$current
+  };
+  declare export var Fiber$current: Fiber;
+
+  declare export function Fiber$yield(value?: any): any;
+
+  declare export default typeof Fiber;
 }
 declare module "node-fibers" {
   declare interface Fiber {
