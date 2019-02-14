@@ -23,51 +23,51 @@ declare module "custom-functions-runtime" {
    */
   declare interface CustomFunctions$Invocation {
     /**
- * @beta The cell address where the function is being called, if requested, otherwise undefined.
-
-To request the address for the function, in the metadata JSON file, the function options should specify:
-`{ "requiresAddress": true }`
-
-If the metadata JSON file is being generated from JSDoc comments, include the tag `@requiresAddress`.
- */
+     * @beta The cell address where the function is being called, if requested, otherwise undefined.
+     *
+     * To request the address for the function, in the metadata JSON file, the function options should specify:
+     * `{ "requiresAddress": true }`
+     *
+     * If the metadata JSON file is being generated from JSDoc comments, include the tag `@requiresAddress`.
+     */
     address?: string;
   }
 
   /**
- * @beta Provides information about the invocation of a cancelable custom function.
-A cancelable custom function can provide a handler for the onCanceled event.
-
-To indicate that a function is cancelable, in the metadata JSON file, the function options should specify:
-`{ "cancelable": true }`
-
-If the metadata JSON file is being generated from JSDoc comments, include the tag `@cancelable`.
- */
+   * @beta Provides information about the invocation of a cancelable custom function.
+   * A cancelable custom function can provide a handler for the onCanceled event.
+   *
+   * To indicate that a function is cancelable, in the metadata JSON file, the function options should specify:
+   * `{ "cancelable": true }`
+   *
+   * If the metadata JSON file is being generated from JSDoc comments, include the tag `@cancelable`.
+   */
   declare type CustomFunctions$CancelableInvocation = {
     /**
      * @beta Event handler called when the custom function is canceled.
      */
     onCanceled: () => void
-  } & CustomFunctions$Invocation;
+  } & Invocation;
 
   /**
    * @beta
    * @deprecated Use `CancelableInvocation` instead.
    */
-  declare type CustomFunctions$CancelableHandler = {} & CustomFunctions$CancelableInvocation;
+  declare type CustomFunctions$CancelableHandler = {} & CancelableInvocation;
 
   /**
- * @beta Provides information about the invocation of a streaming custom function.
-A streaming custom function can provide results which can change over time.
-
-Call `setResult()` one or more times to provide the result instead of returning
-a result from the function.
- */
+   * @beta Provides information about the invocation of a streaming custom function.
+   * A streaming custom function can provide results which can change over time.
+   *
+   * Call `setResult()` one or more times to provide the result instead of returning
+   * a result from the function.
+   */
   declare type CustomFunctions$StreamingInvocation<ResultType> = {
     /**
      * @beta Set the result for the custom function. May be called more than once.
      */
     setResult: (value: ResultType | Error) => void
-  } & CustomFunctions$CancelableInvocation;
+  } & CancelableInvocation;
 
   /**
    * @beta
@@ -75,5 +75,5 @@ a result from the function.
    */
   declare type CustomFunctions$StreamingHandler<
     ResultType
-  > = {} & CustomFunctions$StreamingInvocation<ResultType>;
+  > = {} & StreamingInvocation<ResultType>;
 }
