@@ -1,12 +1,12 @@
 declare module "to-markdown" {
-  declare module.exports: typeof toMarkdown;
+  declare export default typeof toMarkdown;
 
   /**
    * Converts HTML to markdown.
    */
   declare function toMarkdown(
     input: string,
-    options?: toMarkdown$toMarkdown$Options
+    options?: toMarkdown$Options
   ): string;
 
   declare var npm$namespace$toMarkdown: {
