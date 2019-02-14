@@ -12,26 +12,26 @@ declare module "thrift" {
   declare export { Q };
 
   declare export interface TMap {
-    ktype: Thrift$Thrift$Type;
-    vtype: Thrift$Thrift$Type;
+    ktype: Thrift$Type;
+    vtype: Thrift$Type;
     size: number;
   }
   declare export interface TMessage {
     fname: string;
-    mtype: Thrift$Thrift$MessageType;
+    mtype: Thrift$MessageType;
     rseqid: number;
   }
   declare export interface TField {
     fname: string;
-    ftype: Thrift$Thrift$Type;
+    ftype: Thrift$Type;
     fid: number;
   }
   declare export interface TList {
-    etype: Thrift$Thrift$Type;
+    etype: Thrift$Type;
     size: number;
   }
   declare export interface TSet {
-    etype: Thrift$Thrift$Type;
+    etype: Thrift$Type;
     size: number;
   }
   declare export interface TStruct {
@@ -62,24 +62,20 @@ declare module "thrift" {
     flush(): void;
     writeMessageBegin(
       name: string,
-      type: Thrift$Thrift$MessageType,
+      type: Thrift$MessageType,
       seqid: number
     ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
-    writeFieldBegin(name: string, type: Thrift$Thrift$Type, id: number): void;
+    writeFieldBegin(name: string, type: Thrift$Type, id: number): void;
     writeFieldEnd(): void;
     writeFieldStop(): void;
-    writeMapBegin(
-      ktype: Thrift$Thrift$Type,
-      vtype: Thrift$Thrift$Type,
-      size: number
-    ): void;
+    writeMapBegin(ktype: Thrift$Type, vtype: Thrift$Type, size: number): void;
     writeMapEnd(): void;
-    writeListBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeListBegin(etype: Thrift$Type, size: number): void;
     writeListEnd(): void;
-    writeSetBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeSetBegin(etype: Thrift$Type, size: number): void;
     writeSetEnd(): void;
     writeBool(bool: boolean): void;
     writeByte(b: number): void;
@@ -110,7 +106,7 @@ declare module "thrift" {
     readBinary(): Buffer;
     readString(): string;
     getTransport(): TTransport;
-    skip(type: Thrift$Thrift$Type): void;
+    skip(type: Thrift$Type): void;
   }
   declare export interface HttpHeaders {
     [name: string]: number | string | string[] | void;
@@ -404,24 +400,20 @@ declare module "thrift" {
     flush(): void;
     writeMessageBegin(
       name: string,
-      type: Thrift$Thrift$MessageType,
+      type: Thrift$MessageType,
       seqid: number
     ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
-    writeFieldBegin(name: string, type: Thrift$Thrift$Type, id: number): void;
+    writeFieldBegin(name: string, type: Thrift$Type, id: number): void;
     writeFieldEnd(): void;
     writeFieldStop(): void;
-    writeMapBegin(
-      ktype: Thrift$Thrift$Type,
-      vtype: Thrift$Thrift$Type,
-      size: number
-    ): void;
+    writeMapBegin(ktype: Thrift$Type, vtype: Thrift$Type, size: number): void;
     writeMapEnd(): void;
-    writeListBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeListBegin(etype: Thrift$Type, size: number): void;
     writeListEnd(): void;
-    writeSetBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeSetBegin(etype: Thrift$Type, size: number): void;
     writeSetEnd(): void;
     writeBool(bool: boolean): void;
     writeByte(b: number): void;
@@ -452,31 +444,27 @@ declare module "thrift" {
     readBinary(): Buffer;
     readString(): string;
     getTransport(): TTransport;
-    skip(type: Thrift$Thrift$Type): void;
+    skip(type: Thrift$Type): void;
   }
   declare export class TJSONProtocol mixins TProtocol {
     constructor(trans: TTransport): this;
     flush(): void;
     writeMessageBegin(
       name: string,
-      type: Thrift$Thrift$MessageType,
+      type: Thrift$MessageType,
       seqid: number
     ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
-    writeFieldBegin(name: string, type: Thrift$Thrift$Type, id: number): void;
+    writeFieldBegin(name: string, type: Thrift$Type, id: number): void;
     writeFieldEnd(): void;
     writeFieldStop(): void;
-    writeMapBegin(
-      ktype: Thrift$Thrift$Type,
-      vtype: Thrift$Thrift$Type,
-      size: number
-    ): void;
+    writeMapBegin(ktype: Thrift$Type, vtype: Thrift$Type, size: number): void;
     writeMapEnd(): void;
-    writeListBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeListBegin(etype: Thrift$Type, size: number): void;
     writeListEnd(): void;
-    writeSetBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeSetBegin(etype: Thrift$Type, size: number): void;
     writeSetEnd(): void;
     writeBool(bool: boolean): void;
     writeByte(b: number): void;
@@ -507,31 +495,27 @@ declare module "thrift" {
     readBinary(): Buffer;
     readString(): string;
     getTransport(): TTransport;
-    skip(type: Thrift$Thrift$Type): void;
+    skip(type: Thrift$Type): void;
   }
   declare export class TCompactProtocol mixins TProtocol {
     constructor(trans: TTransport): this;
     flush(): void;
     writeMessageBegin(
       name: string,
-      type: Thrift$Thrift$MessageType,
+      type: Thrift$MessageType,
       seqid: number
     ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
-    writeFieldBegin(name: string, type: Thrift$Thrift$Type, id: number): void;
+    writeFieldBegin(name: string, type: Thrift$Type, id: number): void;
     writeFieldEnd(): void;
     writeFieldStop(): void;
-    writeMapBegin(
-      ktype: Thrift$Thrift$Type,
-      vtype: Thrift$Thrift$Type,
-      size: number
-    ): void;
+    writeMapBegin(ktype: Thrift$Type, vtype: Thrift$Type, size: number): void;
     writeMapEnd(): void;
-    writeListBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeListBegin(etype: Thrift$Type, size: number): void;
     writeListEnd(): void;
-    writeSetBegin(etype: Thrift$Thrift$Type, size: number): void;
+    writeSetBegin(etype: Thrift$Type, size: number): void;
     writeSetEnd(): void;
     writeBool(bool: boolean): void;
     writeByte(b: number): void;
@@ -562,7 +546,7 @@ declare module "thrift" {
     readBinary(): Buffer;
     readString(): string;
     getTransport(): TTransport;
-    skip(type: Thrift$Thrift$Type): void;
+    skip(type: Thrift$Type): void;
   }
   declare export interface TProtocolConstructor {
     new(
@@ -573,67 +557,43 @@ declare module "thrift" {
   }
 
   declare var npm$namespace$Thrift: {
-    objectLength: typeof Thrift$objectLength
+    objectLength: typeof Thrift$objectLength,
+
+    Type: typeof Thrift$Type,
+    MessageType: typeof Thrift$MessageType,
+    TApplicationExceptionType: typeof Thrift$TApplicationExceptionType,
+    TProtocolExceptionType: typeof Thrift$TProtocolExceptionType,
+    TException: typeof Thrift$TException,
+    TApplicationException: typeof Thrift$TApplicationException,
+    TProtocolException: typeof Thrift$TProtocolException
   };
-  declare class Thrift$Type {
-    constructor(...args: empty): mixed;
-    static +STOP: Class<Thrift$Type__STOP> & Thrift$Type__STOP & 0; // 0
-    static +VOID: Class<Thrift$Type__VOID> & Thrift$Type__VOID & 1; // 1
-    static +BOOL: Class<Thrift$Type__BOOL> & Thrift$Type__BOOL & 2; // 2
-    static +BYTE: Class<Thrift$Type__BYTE> & Thrift$Type__BYTE & 3; // 3
-    static +I08: Class<Thrift$Type__I08> & Thrift$Type__I08 & 3; // 3
-    static +DOUBLE: Class<Thrift$Type__DOUBLE> & Thrift$Type__DOUBLE & 4; // 4
-    static +I16: Class<Thrift$Type__I16> & Thrift$Type__I16 & 6; // 6
-    static +I32: Class<Thrift$Type__I32> & Thrift$Type__I32 & 8; // 8
-    static +I64: Class<Thrift$Type__I64> & Thrift$Type__I64 & 10; // 10
-    static +STRING: Class<Thrift$Type__STRING> & Thrift$Type__STRING & 11; // 11
-    static +UTF7: Class<Thrift$Type__UTF7> & Thrift$Type__UTF7 & 11; // 11
-    static +STRUCT: Class<Thrift$Type__STRUCT> & Thrift$Type__STRUCT & 12; // 12
-    static +MAP: Class<Thrift$Type__MAP> & Thrift$Type__MAP & 13; // 13
-    static +SET: Class<Thrift$Type__SET> & Thrift$Type__SET & 14; // 14
-    static +LIST: Class<Thrift$Type__LIST> & Thrift$Type__LIST & 15; // 15
-    static +UTF8: Class<Thrift$Type__UTF8> & Thrift$Type__UTF8 & 16; // 16
-    static +UTF16: Class<Thrift$Type__UTF16> & Thrift$Type__UTF16 & 17; // 17
-  }
 
-  declare class Thrift$Type__STOP mixins Thrift$Type {}
-  declare class Thrift$Type__VOID mixins Thrift$Type {}
-  declare class Thrift$Type__BOOL mixins Thrift$Type {}
-  declare class Thrift$Type__BYTE mixins Thrift$Type {}
-  declare class Thrift$Type__I08 mixins Thrift$Type {}
-  declare class Thrift$Type__DOUBLE mixins Thrift$Type {}
-  declare class Thrift$Type__I16 mixins Thrift$Type {}
-  declare class Thrift$Type__I32 mixins Thrift$Type {}
-  declare class Thrift$Type__I64 mixins Thrift$Type {}
-  declare class Thrift$Type__STRING mixins Thrift$Type {}
-  declare class Thrift$Type__UTF7 mixins Thrift$Type {}
-  declare class Thrift$Type__STRUCT mixins Thrift$Type {}
-  declare class Thrift$Type__MAP mixins Thrift$Type {}
-  declare class Thrift$Type__SET mixins Thrift$Type {}
-  declare class Thrift$Type__LIST mixins Thrift$Type {}
-  declare class Thrift$Type__UTF8 mixins Thrift$Type {}
-  declare class Thrift$Type__UTF16 mixins Thrift$Type {}
+  declare var Thrift$Type: {|
+    +STOP: 0, // 0
+    +VOID: 1, // 1
+    +BOOL: 2, // 2
+    +BYTE: 3, // 3
+    +I08: 3, // 3
+    +DOUBLE: 4, // 4
+    +I16: 6, // 6
+    +I32: 8, // 8
+    +I64: 10, // 10
+    +STRING: 11, // 11
+    +UTF7: 11, // 11
+    +STRUCT: 12, // 12
+    +MAP: 13, // 13
+    +SET: 14, // 14
+    +LIST: 15, // 15
+    +UTF8: 16, // 16
+    +UTF16: 17 // 17
+  |};
 
-  declare class Thrift$MessageType {
-    constructor(...args: empty): mixed;
-    static +CALL: Class<Thrift$MessageType__CALL> &
-      Thrift$MessageType__CALL &
-      1; // 1
-    static +REPLY: Class<Thrift$MessageType__REPLY> &
-      Thrift$MessageType__REPLY &
-      2; // 2
-    static +EXCEPTION: Class<Thrift$MessageType__EXCEPTION> &
-      Thrift$MessageType__EXCEPTION &
-      3; // 3
-    static +ONEWAY: Class<Thrift$MessageType__ONEWAY> &
-      Thrift$MessageType__ONEWAY &
-      4; // 4
-  }
-
-  declare class Thrift$MessageType__CALL mixins Thrift$MessageType {}
-  declare class Thrift$MessageType__REPLY mixins Thrift$MessageType {}
-  declare class Thrift$MessageType__EXCEPTION mixins Thrift$MessageType {}
-  declare class Thrift$MessageType__ONEWAY mixins Thrift$MessageType {}
+  declare var Thrift$MessageType: {|
+    +CALL: 1, // 1
+    +REPLY: 2, // 2
+    +EXCEPTION: 3, // 3
+    +ONEWAY: 4 // 4
+  |};
 
   declare class Thrift$TException mixins Error {
     name: string;
@@ -642,67 +602,21 @@ declare module "thrift" {
     getMessage(): string;
   }
 
-  declare class Thrift$TApplicationExceptionType {
-    constructor(...args: empty): mixed;
-    static +UNKNOWN: Class<Thrift$TApplicationExceptionType__UNKNOWN> &
-      Thrift$TApplicationExceptionType__UNKNOWN &
-      0; // 0
-    static +UNKNOWN_METHOD: Class<Thrift$TApplicationExceptionType__UNKNOWN_METHOD> &
-      Thrift$TApplicationExceptionType__UNKNOWN_METHOD &
-      1; // 1
-    static +INVALID_MESSAGE_TYPE: Class<Thrift$TApplicationExceptionType__INVALID_MESSAGE_TYPE> &
-      Thrift$TApplicationExceptionType__INVALID_MESSAGE_TYPE &
-      2; // 2
-    static +WRONG_METHOD_NAME: Class<Thrift$TApplicationExceptionType__WRONG_METHOD_NAME> &
-      Thrift$TApplicationExceptionType__WRONG_METHOD_NAME &
-      3; // 3
-    static +BAD_SEQUENCE_ID: Class<Thrift$TApplicationExceptionType__BAD_SEQUENCE_ID> &
-      Thrift$TApplicationExceptionType__BAD_SEQUENCE_ID &
-      4; // 4
-    static +MISSING_RESULT: Class<Thrift$TApplicationExceptionType__MISSING_RESULT> &
-      Thrift$TApplicationExceptionType__MISSING_RESULT &
-      5; // 5
-    static +INTERNAL_ERROR: Class<Thrift$TApplicationExceptionType__INTERNAL_ERROR> &
-      Thrift$TApplicationExceptionType__INTERNAL_ERROR &
-      6; // 6
-    static +PROTOCOL_ERROR: Class<Thrift$TApplicationExceptionType__PROTOCOL_ERROR> &
-      Thrift$TApplicationExceptionType__PROTOCOL_ERROR &
-      7; // 7
-    static +INVALID_TRANSFORM: Class<Thrift$TApplicationExceptionType__INVALID_TRANSFORM> &
-      Thrift$TApplicationExceptionType__INVALID_TRANSFORM &
-      8; // 8
-    static +INVALID_PROTOCOL: Class<Thrift$TApplicationExceptionType__INVALID_PROTOCOL> &
-      Thrift$TApplicationExceptionType__INVALID_PROTOCOL &
-      9; // 9
-    static +UNSUPPORTED_CLIENT_TYPE: Class<Thrift$TApplicationExceptionType__UNSUPPORTED_CLIENT_TYPE> &
-      Thrift$TApplicationExceptionType__UNSUPPORTED_CLIENT_TYPE &
-      10; // 10
-  }
+  declare var Thrift$TApplicationExceptionType: {|
+    +UNKNOWN: 0, // 0
+    +UNKNOWN_METHOD: 1, // 1
+    +INVALID_MESSAGE_TYPE: 2, // 2
+    +WRONG_METHOD_NAME: 3, // 3
+    +BAD_SEQUENCE_ID: 4, // 4
+    +MISSING_RESULT: 5, // 5
+    +INTERNAL_ERROR: 6, // 6
+    +PROTOCOL_ERROR: 7, // 7
+    +INVALID_TRANSFORM: 8, // 8
+    +INVALID_PROTOCOL: 9, // 9
+    +UNSUPPORTED_CLIENT_TYPE: 10 // 10
+  |};
 
-  declare class Thrift$TApplicationExceptionType__UNKNOWN
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__UNKNOWN_METHOD
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__INVALID_MESSAGE_TYPE
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__WRONG_METHOD_NAME
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__BAD_SEQUENCE_ID
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__MISSING_RESULT
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__INTERNAL_ERROR
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__PROTOCOL_ERROR
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__INVALID_TRANSFORM
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__INVALID_PROTOCOL
-    mixins Thrift$TApplicationExceptionType {}
-  declare class Thrift$TApplicationExceptionType__UNSUPPORTED_CLIENT_TYPE
-    mixins Thrift$TApplicationExceptionType {}
-
-  declare class Thrift$TApplicationException mixins Thrift$TException {
+  declare class Thrift$TApplicationException mixins TException {
     message: string;
     code: number;
     constructor(
@@ -714,45 +628,15 @@ declare module "thrift" {
     getCode(): number;
   }
 
-  declare class Thrift$TProtocolExceptionType {
-    constructor(...args: empty): mixed;
-    static +UNKNOWN: Class<Thrift$TProtocolExceptionType__UNKNOWN> &
-      Thrift$TProtocolExceptionType__UNKNOWN &
-      0; // 0
-    static +INVALID_DATA: Class<Thrift$TProtocolExceptionType__INVALID_DATA> &
-      Thrift$TProtocolExceptionType__INVALID_DATA &
-      1; // 1
-    static +NEGATIVE_SIZE: Class<Thrift$TProtocolExceptionType__NEGATIVE_SIZE> &
-      Thrift$TProtocolExceptionType__NEGATIVE_SIZE &
-      2; // 2
-    static +SIZE_LIMIT: Class<Thrift$TProtocolExceptionType__SIZE_LIMIT> &
-      Thrift$TProtocolExceptionType__SIZE_LIMIT &
-      3; // 3
-    static +BAD_VERSION: Class<Thrift$TProtocolExceptionType__BAD_VERSION> &
-      Thrift$TProtocolExceptionType__BAD_VERSION &
-      4; // 4
-    static +NOT_IMPLEMENTED: Class<Thrift$TProtocolExceptionType__NOT_IMPLEMENTED> &
-      Thrift$TProtocolExceptionType__NOT_IMPLEMENTED &
-      5; // 5
-    static +DEPTH_LIMIT: Class<Thrift$TProtocolExceptionType__DEPTH_LIMIT> &
-      Thrift$TProtocolExceptionType__DEPTH_LIMIT &
-      6; // 6
-  }
-
-  declare class Thrift$TProtocolExceptionType__UNKNOWN
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__INVALID_DATA
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__NEGATIVE_SIZE
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__SIZE_LIMIT
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__BAD_VERSION
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__NOT_IMPLEMENTED
-    mixins Thrift$TProtocolExceptionType {}
-  declare class Thrift$TProtocolExceptionType__DEPTH_LIMIT
-    mixins Thrift$TProtocolExceptionType {}
+  declare var Thrift$TProtocolExceptionType: {|
+    +UNKNOWN: 0, // 0
+    +INVALID_DATA: 1, // 1
+    +NEGATIVE_SIZE: 2, // 2
+    +SIZE_LIMIT: 3, // 3
+    +BAD_VERSION: 4, // 4
+    +NOT_IMPLEMENTED: 5, // 5
+    +DEPTH_LIMIT: 6 // 6
+  |};
 
   declare class Thrift$TProtocolException mixins Error {
     name: string;
