@@ -1,29 +1,33 @@
 declare module "gapi.client.taskqueue" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    taskqueues: typeof client$taskqueues,
-    tasks: typeof client$tasks
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    taskqueues: typeof gapi$client$taskqueues,
+    tasks: typeof gapi$client$tasks
   };
 
   /**
    * Load TaskQueue API v1beta2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "taskqueue",
     version: "v1beta2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "taskqueue",
     version: "v1beta2",
     callback: () => any
   ): void;
 
-  declare var client$taskqueues: taskqueue$taskqueue$TaskqueuesResource;
+  declare var gapi$client$taskqueues: taskqueue$TaskqueuesResource;
 
-  declare var client$tasks: taskqueue$taskqueue$TasksResource;
+  declare var gapi$client$tasks: taskqueue$TasksResource;
 
-  declare interface taskqueue$Task {
+  declare interface gapi$client$taskqueue$Task {
     /**
      * Time (in seconds since the epoch) at which the task was enqueued.
      */
@@ -65,7 +69,7 @@ declare module "gapi.client.taskqueue" {
     tag?: string;
   }
 
-  declare interface taskqueue$TaskQueue {
+  declare interface gapi$client$taskqueue$TaskQueue {
     /**
      * ACLs that are applicable to this TaskQueue object.
      */
@@ -127,11 +131,11 @@ declare module "gapi.client.taskqueue" {
     };
   }
 
-  declare interface taskqueue$Tasks {
+  declare interface gapi$client$taskqueue$Tasks {
     /**
      * The actual list of tasks returned as a result of the lease operation.
      */
-    items?: taskqueue$Task[];
+    items?: gapi$client$taskqueue$Task[];
 
     /**
      * The kind of object returned, a list of tasks.
@@ -139,11 +143,11 @@ declare module "gapi.client.taskqueue" {
     kind?: string;
   }
 
-  declare interface taskqueue$Tasks2 {
+  declare interface gapi$client$taskqueue$Tasks2 {
     /**
      * The actual list of tasks currently active in the TaskQueue.
      */
-    items?: taskqueue$Task[];
+    items?: gapi$client$taskqueue$Task[];
 
     /**
      * The kind of object returned, a list of tasks.
@@ -151,7 +155,7 @@ declare module "gapi.client.taskqueue" {
     kind?: string;
   }
 
-  declare interface taskqueue$TaskqueuesResource {
+  declare interface gapi$client$taskqueue$TaskqueuesResource {
     /**
      * Get detailed information about a TaskQueue.
      */
@@ -206,10 +210,10 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$TaskQueue>;
+    }): Request<gapi$client$taskqueue$TaskQueue>;
   }
 
-  declare interface taskqueue$TasksResource {
+  declare interface gapi$client$taskqueue$TasksResource {
     /**
      * Delete a task from a TaskQueue.
      */
@@ -320,7 +324,7 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Task>;
+    }): Request<gapi$client$taskqueue$Task>;
 
     /**
      * Insert a new task in a TaskQueue
@@ -371,7 +375,7 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Task>;
+    }): Request<gapi$client$taskqueue$Task>;
 
     /**
      * Lease 1 or more tasks from a TaskQueue.
@@ -443,7 +447,7 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Tasks>;
+    }): Request<gapi$client$taskqueue$Tasks>;
 
     /**
      * List Tasks in a TaskQueue
@@ -494,7 +498,7 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Tasks2>;
+    }): Request<gapi$client$taskqueue$Tasks2>;
 
     /**
      * Update tasks that are leased out of a TaskQueue. This method supports patch semantics.
@@ -547,7 +551,7 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Task>;
+    }): Request<gapi$client$taskqueue$Task>;
 
     /**
      * Update tasks that are leased out of a TaskQueue.
@@ -600,6 +604,6 @@ declare module "gapi.client.taskqueue" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<taskqueue$Task>;
+    }): Request<gapi$client$taskqueue$Task>;
   }
 }
