@@ -1,23 +1,30 @@
 declare module "gapi.client.ml" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Machine Learning Engine v1
    */
-  declare function client$load(name: "ml", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "ml",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "ml",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: ml$ml$ProjectsResource;
+  declare var gapi$client$projects: ml$ProjectsResource;
 
-  declare interface ml$GoogleApi__HttpBody {
+  declare interface gapi$client$ml$GoogleApi__HttpBody {
     /**
      * The HTTP Content-Type string representing the content type of the body.
      */
@@ -35,7 +42,7 @@ declare module "gapi.client.ml" {
     extensions?: Array<Record<string, any>>;
   }
 
-  declare interface ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
+  declare interface gapi$client$ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
     /**
      * The objective value at this training step.
      */
@@ -47,7 +54,7 @@ declare module "gapi.client.ml" {
     trainingStep?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__AutoScaling {
+  declare interface gapi$client$ml$GoogleCloudMlV1__AutoScaling {
     /**
      * Optional. The minimum number of nodes to allocate for this model. These
      * nodes are always up, starting from the time the model is deployed, so the
@@ -71,7 +78,7 @@ declare module "gapi.client.ml" {
     minNodes?: number;
   }
 
-  declare interface ml$GoogleCloudMlV1__GetConfigResponse {
+  declare interface gapi$client$ml$GoogleCloudMlV1__GetConfigResponse {
     /**
      * The service account Cloud ML uses to access resources in the project.
      */
@@ -83,17 +90,17 @@ declare module "gapi.client.ml" {
     serviceAccountProject?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__HyperparameterOutput {
+  declare interface gapi$client$ml$GoogleCloudMlV1__HyperparameterOutput {
     /**
      * All recorded object metrics for this trial. This field is not currently
      * populated.
      */
-    allMetrics?: ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric[];
+    allMetrics?: gapi$client$ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric[];
 
     /**
      * The final objective metric seen for this trial.
      */
-    finalMetric?: ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric;
+    finalMetric?: gapi$client$ml$GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric;
 
     /**
      * The hyperparameters given to this trial.
@@ -106,7 +113,7 @@ declare module "gapi.client.ml" {
     trialId?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__HyperparameterSpec {
+  declare interface gapi$client$ml$GoogleCloudMlV1__HyperparameterSpec {
     /**
      * Required. The type of goal to use for tuning. Available types are
      * `MAXIMIZE` and `MINIMIZE`.
@@ -152,7 +159,7 @@ declare module "gapi.client.ml" {
     params?: ml$GoogleCloudMlV1__ParameterSpec[];
   }
 
-  declare interface ml$GoogleCloudMlV1__Job {
+  declare interface gapi$client$ml$GoogleCloudMlV1__Job {
     /**
      * Output only. When the job was created.
      */
@@ -204,11 +211,11 @@ declare module "gapi.client.ml" {
     trainingOutput?: ml$GoogleCloudMlV1__TrainingOutput;
   }
 
-  declare interface ml$GoogleCloudMlV1__ListJobsResponse {
+  declare interface gapi$client$ml$GoogleCloudMlV1__ListJobsResponse {
     /**
      * The list of jobs.
      */
-    jobs?: ml$GoogleCloudMlV1__Job[];
+    jobs?: gapi$client$ml$GoogleCloudMlV1__Job[];
 
     /**
      * Optional. Pass this token as the `page_token` field of the request for a
@@ -217,7 +224,7 @@ declare module "gapi.client.ml" {
     nextPageToken?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__ListModelsResponse {
+  declare interface gapi$client$ml$GoogleCloudMlV1__ListModelsResponse {
     /**
      * The list of models.
      */
@@ -230,7 +237,7 @@ declare module "gapi.client.ml" {
     nextPageToken?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__ListVersionsResponse {
+  declare interface gapi$client$ml$GoogleCloudMlV1__ListVersionsResponse {
     /**
      * Optional. Pass this token as the `page_token` field of the request for a
      * subsequent call.
@@ -243,7 +250,7 @@ declare module "gapi.client.ml" {
     versions?: ml$GoogleCloudMlV1__Version[];
   }
 
-  declare interface ml$GoogleCloudMlV1__ManualScaling {
+  declare interface gapi$client$ml$GoogleCloudMlV1__ManualScaling {
     /**
      * The number of nodes to allocate for this model. These nodes are always up,
      * starting from the time the model is deployed, so the cost of operating
@@ -253,7 +260,7 @@ declare module "gapi.client.ml" {
     nodes?: number;
   }
 
-  declare interface ml$GoogleCloudMlV1__Model {
+  declare interface gapi$client$ml$GoogleCloudMlV1__Model {
     /**
      * Output only. The default version of the model. This version will be used to
      * handle prediction requests that do not specify a version.
@@ -295,7 +302,7 @@ declare module "gapi.client.ml" {
     regions?: string[];
   }
 
-  declare interface ml$GoogleCloudMlV1__OperationMetadata {
+  declare interface gapi$client$ml$GoogleCloudMlV1__OperationMetadata {
     /**
      * The time the operation was submitted.
      */
@@ -332,7 +339,7 @@ declare module "gapi.client.ml" {
     version?: ml$GoogleCloudMlV1__Version;
   }
 
-  declare interface ml$GoogleCloudMlV1__ParameterSpec {
+  declare interface gapi$client$ml$GoogleCloudMlV1__ParameterSpec {
     /**
      * Required if type is `CATEGORICAL`. The list of possible categories.
      */
@@ -381,14 +388,14 @@ declare module "gapi.client.ml" {
     type?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__PredictRequest {
+  declare interface gapi$client$ml$GoogleCloudMlV1__PredictRequest {
     /**
      * Required. The prediction request body.
      */
-    httpBody?: ml$GoogleApi__HttpBody;
+    httpBody?: gapi$client$ml$GoogleApi__HttpBody;
   }
 
-  declare interface ml$GoogleCloudMlV1__PredictionInput {
+  declare interface gapi$client$ml$GoogleCloudMlV1__PredictionInput {
     /**
      * Optional. Number of records per batch, defaults to 64.
      * The service will buffer batch_size number of records in memory before
@@ -457,7 +464,7 @@ declare module "gapi.client.ml" {
     versionName?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__PredictionOutput {
+  declare interface gapi$client$ml$GoogleCloudMlV1__PredictionOutput {
     /**
      * The number of data instances which resulted in errors.
      */
@@ -479,7 +486,7 @@ declare module "gapi.client.ml" {
     predictionCount?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__TrainingInput {
+  declare interface gapi$client$ml$GoogleCloudMlV1__TrainingInput {
     /**
      * Optional. Command line arguments to pass to the program.
      */
@@ -488,7 +495,7 @@ declare module "gapi.client.ml" {
     /**
      * Optional. The set of Hyperparameters to tune.
      */
-    hyperparameters?: ml$GoogleCloudMlV1__HyperparameterSpec;
+    hyperparameters?: gapi$client$ml$GoogleCloudMlV1__HyperparameterSpec;
 
     /**
      * Optional. A Google Cloud Storage path in which to store training outputs
@@ -624,7 +631,7 @@ declare module "gapi.client.ml" {
     workerType?: string;
   }
 
-  declare interface ml$GoogleCloudMlV1__TrainingOutput {
+  declare interface gapi$client$ml$GoogleCloudMlV1__TrainingOutput {
     /**
      * The number of hyperparameter tuning trials that completed successfully.
      * Only set for hyperparameter tuning jobs.
@@ -645,17 +652,17 @@ declare module "gapi.client.ml" {
      * Results for individual Hyperparameter trials.
      * Only set for hyperparameter tuning jobs.
      */
-    trials?: ml$GoogleCloudMlV1__HyperparameterOutput[];
+    trials?: gapi$client$ml$GoogleCloudMlV1__HyperparameterOutput[];
   }
 
-  declare interface ml$GoogleCloudMlV1__Version {
+  declare interface gapi$client$ml$GoogleCloudMlV1__Version {
     /**
      * Automatically scale the number of nodes used to serve the model in
      * response to increases and decreases in traffic. Care should be
      * taken to ramp up traffic according to the model's ability to scale
      * or you will start seeing increases in latency and 429 response codes.
      */
-    autoScaling?: ml$GoogleCloudMlV1__AutoScaling;
+    autoScaling?: gapi$client$ml$GoogleCloudMlV1__AutoScaling;
 
     /**
      * Output only. The time the version was created.
@@ -710,7 +717,7 @@ declare module "gapi.client.ml" {
      * if the traffic exceeds that capability of the system to serve it based
      * on the selected number of nodes.
      */
-    manualScaling?: ml$GoogleCloudMlV1__ManualScaling;
+    manualScaling?: gapi$client$ml$GoogleCloudMlV1__ManualScaling;
 
     /**
      * Required.The name specified for the version when it was created.
@@ -731,7 +738,7 @@ declare module "gapi.client.ml" {
     state?: string;
   }
 
-  declare interface ml$GoogleIamV1__AuditConfig {
+  declare interface gapi$client$ml$GoogleIamV1__AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -747,7 +754,7 @@ declare module "gapi.client.ml" {
     service?: string;
   }
 
-  declare interface ml$GoogleIamV1__AuditLogConfig {
+  declare interface gapi$client$ml$GoogleIamV1__AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -761,7 +768,7 @@ declare module "gapi.client.ml" {
     logType?: string;
   }
 
-  declare interface ml$GoogleIamV1__Binding {
+  declare interface gapi$client$ml$GoogleIamV1__Binding {
     /**
      * The condition that is associated with this binding.
      * NOTE: an unsatisfied condition will not allow user access via current
@@ -805,17 +812,17 @@ declare module "gapi.client.ml" {
     role?: string;
   }
 
-  declare interface ml$GoogleIamV1__Policy {
+  declare interface gapi$client$ml$GoogleIamV1__Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: ml$GoogleIamV1__AuditConfig[];
+    auditConfigs?: gapi$client$ml$GoogleIamV1__AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: ml$GoogleIamV1__Binding[];
+    bindings?: gapi$client$ml$GoogleIamV1__Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -838,14 +845,14 @@ declare module "gapi.client.ml" {
     version?: number;
   }
 
-  declare interface ml$GoogleIamV1__SetIamPolicyRequest {
+  declare interface gapi$client$ml$GoogleIamV1__SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: ml$GoogleIamV1__Policy;
+    policy?: gapi$client$ml$GoogleIamV1__Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -857,7 +864,7 @@ declare module "gapi.client.ml" {
     updateMask?: string;
   }
 
-  declare interface ml$GoogleIamV1__TestIamPermissionsRequest {
+  declare interface gapi$client$ml$GoogleIamV1__TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -867,7 +874,7 @@ declare module "gapi.client.ml" {
     permissions?: string[];
   }
 
-  declare interface ml$GoogleIamV1__TestIamPermissionsResponse {
+  declare interface gapi$client$ml$GoogleIamV1__TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -875,7 +882,7 @@ declare module "gapi.client.ml" {
     permissions?: string[];
   }
 
-  declare interface ml$GoogleLongrunning__ListOperationsResponse {
+  declare interface gapi$client$ml$GoogleLongrunning__ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -887,7 +894,7 @@ declare module "gapi.client.ml" {
     operations?: ml$GoogleLongrunning__Operation[];
   }
 
-  declare interface ml$GoogleLongrunning__Operation {
+  declare interface gapi$client$ml$GoogleLongrunning__Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -928,7 +935,7 @@ declare module "gapi.client.ml" {
     response?: Record<string, any>;
   }
 
-  declare interface ml$GoogleRpc__Status {
+  declare interface gapi$client$ml$GoogleRpc__Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -948,7 +955,7 @@ declare module "gapi.client.ml" {
     message?: string;
   }
 
-  declare interface ml$GoogleType__Expr {
+  declare interface gapi$client$ml$GoogleType__Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -978,7 +985,7 @@ declare module "gapi.client.ml" {
     title?: string;
   }
 
-  declare interface ml$JobsResource {
+  declare interface gapi$client$ml$JobsResource {
     /**
      * Cancels a running job.
      */
@@ -1127,7 +1134,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Job>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Job>;
 
     /**
      * Describes a job.
@@ -1202,7 +1209,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Job>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Job>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1280,7 +1287,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__Policy>;
+    }): Request<gapi$client$ml$GoogleIamV1__Policy>;
 
     /**
      * Lists the jobs in the project.
@@ -1377,7 +1384,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__ListJobsResponse>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__ListJobsResponse>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -1454,7 +1461,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__Policy>;
+    }): Request<gapi$client$ml$GoogleIamV1__Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1536,10 +1543,10 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__TestIamPermissionsResponse>;
+    }): Request<gapi$client$ml$GoogleIamV1__TestIamPermissionsResponse>;
   }
 
-  declare interface ml$VersionsResource {
+  declare interface gapi$client$ml$VersionsResource {
     /**
      * Creates a new version of a model from a trained TensorFlow model.
      *
@@ -1620,7 +1627,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Deletes a model version.
@@ -1703,7 +1710,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Gets information about a model version.
@@ -1783,7 +1790,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Version>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Version>;
 
     /**
      * Gets basic information about all the versions of a model.
@@ -1879,7 +1886,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__ListVersionsResponse>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__ListVersionsResponse>;
 
     /**
      * Updates the specified Version resource.
@@ -1976,7 +1983,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Designates a version to be the default for the model.
@@ -2060,10 +2067,10 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Version>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Version>;
   }
 
-  declare interface ml$ModelsResource {
+  declare interface gapi$client$ml$ModelsResource {
     /**
      * Creates a model which will later contain one or more versions.
      *
@@ -2141,7 +2148,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Model>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Model>;
 
     /**
      * Deletes a model.
@@ -2220,7 +2227,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Gets information about a model, including its name, the description (if
@@ -2297,7 +2304,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__Model>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__Model>;
 
     /**
      * Gets the access control policy for a resource.
@@ -2375,7 +2382,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__Policy>;
+    }): Request<gapi$client$ml$GoogleIamV1__Policy>;
 
     /**
      * Lists the models in a project.
@@ -2470,7 +2477,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__ListModelsResponse>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__ListModelsResponse>;
 
     /**
      * Updates a specific model resource.
@@ -2571,7 +2578,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -2648,7 +2655,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__Policy>;
+    }): Request<gapi$client$ml$GoogleIamV1__Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -2730,11 +2737,11 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleIamV1__TestIamPermissionsResponse>;
-    versions: ml$VersionsResource;
+    }): Request<gapi$client$ml$GoogleIamV1__TestIamPermissionsResponse>;
+    versions: gapi$client$ml$VersionsResource;
   }
 
-  declare interface ml$OperationsResource {
+  declare interface gapi$client$ml$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -2972,7 +2979,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__Operation>;
+    }): Request<gapi$client$ml$GoogleLongrunning__Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -3071,10 +3078,10 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleLongrunning__ListOperationsResponse>;
+    }): Request<gapi$client$ml$GoogleLongrunning__ListOperationsResponse>;
   }
 
-  declare interface ml$ProjectsResource {
+  declare interface gapi$client$ml$ProjectsResource {
     /**
      * Get the service account information associated with your project. You need
      * this information in order to grant the service account persmissions for
@@ -3151,7 +3158,7 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleCloudMlV1__GetConfigResponse>;
+    }): Request<gapi$client$ml$GoogleCloudMlV1__GetConfigResponse>;
 
     /**
      * Performs prediction on the data in the request.
@@ -3230,9 +3237,9 @@ declare module "gapi.client.ml" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<ml$GoogleApi__HttpBody>;
-    jobs: ml$JobsResource;
-    models: ml$ModelsResource;
-    operations: ml$OperationsResource;
+    }): Request<gapi$client$ml$GoogleApi__HttpBody>;
+    jobs: gapi$client$ml$JobsResource;
+    models: gapi$client$ml$ModelsResource;
+    operations: gapi$client$ml$OperationsResource;
   }
 }
