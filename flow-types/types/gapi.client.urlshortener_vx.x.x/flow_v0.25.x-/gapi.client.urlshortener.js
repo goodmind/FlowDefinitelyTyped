@@ -1,26 +1,30 @@
 declare module "gapi.client.urlshortener" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    url: typeof client$url
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    url: typeof gapi$client$url
   };
 
   /**
    * Load URL Shortener API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "urlshortener",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "urlshortener",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$url: urlshortener$urlshortener$UrlResource;
+  declare var gapi$client$url: urlshortener$UrlResource;
 
-  declare interface urlshortener$AnalyticsSnapshot {
+  declare interface gapi$client$urlshortener$AnalyticsSnapshot {
     /**
      * Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only present if this data is available.
      */
@@ -52,34 +56,34 @@ declare module "gapi.client.urlshortener" {
     shortUrlClicks?: string;
   }
 
-  declare interface urlshortener$AnalyticsSummary {
+  declare interface gapi$client$urlshortener$AnalyticsSummary {
     /**
      * Click analytics over all time.
      */
-    allTime?: urlshortener$AnalyticsSnapshot;
+    allTime?: gapi$client$urlshortener$AnalyticsSnapshot;
 
     /**
      * Click analytics over the last day.
      */
-    day?: urlshortener$AnalyticsSnapshot;
+    day?: gapi$client$urlshortener$AnalyticsSnapshot;
 
     /**
      * Click analytics over the last month.
      */
-    month?: urlshortener$AnalyticsSnapshot;
+    month?: gapi$client$urlshortener$AnalyticsSnapshot;
 
     /**
      * Click analytics over the last two hours.
      */
-    twoHours?: urlshortener$AnalyticsSnapshot;
+    twoHours?: gapi$client$urlshortener$AnalyticsSnapshot;
 
     /**
      * Click analytics over the last week.
      */
-    week?: urlshortener$AnalyticsSnapshot;
+    week?: gapi$client$urlshortener$AnalyticsSnapshot;
   }
 
-  declare interface urlshortener$StringCount {
+  declare interface gapi$client$urlshortener$StringCount {
     /**
      * Number of clicks for this top entry, e.g. for this particular country or browser.
      */
@@ -91,11 +95,11 @@ declare module "gapi.client.urlshortener" {
     id?: string;
   }
 
-  declare interface urlshortener$Url {
+  declare interface gapi$client$urlshortener$Url {
     /**
      * A summary of the click analytics for the short and long URL. Might not be present if not requested or currently unavailable.
      */
-    analytics?: urlshortener$AnalyticsSummary;
+    analytics?: gapi$client$urlshortener$AnalyticsSummary;
 
     /**
      * Time the short URL was created; ISO 8601 representation using the yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
@@ -124,11 +128,11 @@ declare module "gapi.client.urlshortener" {
     status?: string;
   }
 
-  declare interface urlshortener$UrlHistory {
+  declare interface gapi$client$urlshortener$UrlHistory {
     /**
      * A list of URL resources.
      */
-    items?: urlshortener$Url[];
+    items?: gapi$client$urlshortener$Url[];
 
     /**
      * Number of items returned with each full "page" of results. Note that the last page could have fewer items than the "itemsPerPage" value.
@@ -151,7 +155,7 @@ declare module "gapi.client.urlshortener" {
     totalItems?: number;
   }
 
-  declare interface urlshortener$UrlResource {
+  declare interface gapi$client$urlshortener$UrlResource {
     /**
      * Expands a short URL or gets creation time and analytics.
      */
@@ -201,7 +205,7 @@ declare module "gapi.client.urlshortener" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<urlshortener$Url>;
+    }): Request<gapi$client$urlshortener$Url>;
 
     /**
      * Creates a new short URL.
@@ -242,7 +246,7 @@ declare module "gapi.client.urlshortener" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<urlshortener$Url>;
+    }): Request<gapi$client$urlshortener$Url>;
 
     /**
      * Retrieves a list of URLs shortened by a user.
@@ -293,6 +297,6 @@ declare module "gapi.client.urlshortener" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<urlshortener$UrlHistory>;
+    }): Request<gapi$client$urlshortener$UrlHistory>;
   }
 }
