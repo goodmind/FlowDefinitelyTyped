@@ -1,5 +1,5 @@
 declare module "buffer-crc32" {
-  declare module.exports: typeof crc32;
+  declare export default typeof crc32;
 
   declare function crc32(input: string | Buffer, partialCrc?: Buffer): Buffer;
 
