@@ -1,5 +1,5 @@
 declare module "shorten-repo-url" {
-  declare module.exports: typeof shortenRepoUrl;
+  declare export default typeof shortenRepoUrl;
 
   declare function shortenRepoUrl(url: string, currentUrl?: string): string;
 
