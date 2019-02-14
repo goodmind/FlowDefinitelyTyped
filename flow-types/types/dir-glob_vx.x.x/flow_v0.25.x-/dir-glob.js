@@ -1,9 +1,9 @@
 declare module "dir-glob" {
-  declare module.exports: typeof dirGlob;
+  declare export default typeof dirGlob;
 
   declare function dirGlob(
     input: string | string[],
-    options?: dirGlob$dirGlob$Options
+    options?: dirGlob$Options
   ): Promise<string[]>;
 
   declare var npm$namespace$dirGlob: {
