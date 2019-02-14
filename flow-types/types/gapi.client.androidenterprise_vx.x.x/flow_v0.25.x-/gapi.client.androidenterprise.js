@@ -1,72 +1,76 @@
 declare module "gapi.client.androidenterprise" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    devices: typeof client$devices,
-    enterprises: typeof client$enterprises,
-    entitlements: typeof client$entitlements,
-    grouplicenses: typeof client$grouplicenses,
-    grouplicenseusers: typeof client$grouplicenseusers,
-    installs: typeof client$installs,
-    managedconfigurationsfordevice: typeof client$managedconfigurationsfordevice,
-    managedconfigurationsforuser: typeof client$managedconfigurationsforuser,
-    permissions: typeof client$permissions,
-    products: typeof client$products,
-    serviceaccountkeys: typeof client$serviceaccountkeys,
-    storelayoutclusters: typeof client$storelayoutclusters,
-    storelayoutpages: typeof client$storelayoutpages,
-    users: typeof client$users
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    devices: typeof gapi$client$devices,
+    enterprises: typeof gapi$client$enterprises,
+    entitlements: typeof gapi$client$entitlements,
+    grouplicenses: typeof gapi$client$grouplicenses,
+    grouplicenseusers: typeof gapi$client$grouplicenseusers,
+    installs: typeof gapi$client$installs,
+    managedconfigurationsfordevice: typeof gapi$client$managedconfigurationsfordevice,
+    managedconfigurationsforuser: typeof gapi$client$managedconfigurationsforuser,
+    permissions: typeof gapi$client$permissions,
+    products: typeof gapi$client$products,
+    serviceaccountkeys: typeof gapi$client$serviceaccountkeys,
+    storelayoutclusters: typeof gapi$client$storelayoutclusters,
+    storelayoutpages: typeof gapi$client$storelayoutpages,
+    users: typeof gapi$client$users
   };
 
   /**
    * Load Google Play EMM API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androidenterprise",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androidenterprise",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$devices: androidenterprise$androidenterprise$DevicesResource;
+  declare var gapi$client$devices: androidenterprise$DevicesResource;
 
-  declare var client$enterprises: androidenterprise$androidenterprise$EnterprisesResource;
+  declare var gapi$client$enterprises: androidenterprise$EnterprisesResource;
 
-  declare var client$entitlements: androidenterprise$androidenterprise$EntitlementsResource;
+  declare var gapi$client$entitlements: androidenterprise$EntitlementsResource;
 
-  declare var client$grouplicenses: androidenterprise$androidenterprise$GrouplicensesResource;
+  declare var gapi$client$grouplicenses: androidenterprise$GrouplicensesResource;
 
-  declare var client$grouplicenseusers: androidenterprise$androidenterprise$GrouplicenseusersResource;
+  declare var gapi$client$grouplicenseusers: androidenterprise$GrouplicenseusersResource;
 
-  declare var client$installs: androidenterprise$androidenterprise$InstallsResource;
+  declare var gapi$client$installs: androidenterprise$InstallsResource;
 
-  declare var client$managedconfigurationsfordevice: androidenterprise$androidenterprise$ManagedconfigurationsfordeviceResource;
+  declare var gapi$client$managedconfigurationsfordevice: androidenterprise$ManagedconfigurationsfordeviceResource;
 
-  declare var client$managedconfigurationsforuser: androidenterprise$androidenterprise$ManagedconfigurationsforuserResource;
+  declare var gapi$client$managedconfigurationsforuser: androidenterprise$ManagedconfigurationsforuserResource;
 
-  declare var client$permissions: androidenterprise$androidenterprise$PermissionsResource;
+  declare var gapi$client$permissions: androidenterprise$PermissionsResource;
 
-  declare var client$products: androidenterprise$androidenterprise$ProductsResource;
+  declare var gapi$client$products: androidenterprise$ProductsResource;
 
-  declare var client$serviceaccountkeys: androidenterprise$androidenterprise$ServiceaccountkeysResource;
+  declare var gapi$client$serviceaccountkeys: androidenterprise$ServiceaccountkeysResource;
 
-  declare var client$storelayoutclusters: androidenterprise$androidenterprise$StorelayoutclustersResource;
+  declare var gapi$client$storelayoutclusters: androidenterprise$StorelayoutclustersResource;
 
-  declare var client$storelayoutpages: androidenterprise$androidenterprise$StorelayoutpagesResource;
+  declare var gapi$client$storelayoutpages: androidenterprise$StorelayoutpagesResource;
 
-  declare var client$users: androidenterprise$androidenterprise$UsersResource;
+  declare var gapi$client$users: androidenterprise$UsersResource;
 
-  declare interface androidenterprise$Administrator {
+  declare interface gapi$client$androidenterprise$Administrator {
     /**
      * The admin's email address.
      */
     email?: string;
   }
 
-  declare interface androidenterprise$AdministratorWebToken {
+  declare interface gapi$client$androidenterprise$AdministratorWebToken {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#administratorWebToken".
      */
@@ -78,7 +82,7 @@ declare module "gapi.client.androidenterprise" {
     token?: string;
   }
 
-  declare interface androidenterprise$AdministratorWebTokenSpec {
+  declare interface gapi$client$androidenterprise$AdministratorWebTokenSpec {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#administratorWebTokenSpec".
      */
@@ -96,7 +100,7 @@ declare module "gapi.client.androidenterprise" {
     permission?: string[];
   }
 
-  declare interface androidenterprise$AndroidDevicePolicyConfig {
+  declare interface gapi$client$androidenterprise$AndroidDevicePolicyConfig {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#androidDevicePolicyConfig".
      */
@@ -109,7 +113,7 @@ declare module "gapi.client.androidenterprise" {
     state?: string;
   }
 
-  declare interface androidenterprise$AppRestrictionsSchema {
+  declare interface gapi$client$androidenterprise$AppRestrictionsSchema {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#appRestrictionsSchema".
      */
@@ -121,14 +125,14 @@ declare module "gapi.client.androidenterprise" {
     restrictions?: androidenterprise$AppRestrictionsSchemaRestriction[];
   }
 
-  declare interface androidenterprise$AppRestrictionsSchemaChangeEvent {
+  declare interface gapi$client$androidenterprise$AppRestrictionsSchemaChangeEvent {
     /**
      * The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema changed. This field will always be present.
      */
     productId?: string;
   }
 
-  declare interface androidenterprise$AppRestrictionsSchemaRestriction {
+  declare interface gapi$client$androidenterprise$AppRestrictionsSchemaRestriction {
     /**
      * The default value of the restriction. bundle and bundleArray restrictions never have a default value.
      */
@@ -159,7 +163,7 @@ declare module "gapi.client.androidenterprise" {
      * For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is always nested within a bundleArray restriction, and a
      * bundleArray restriction is at most two levels deep.
      */
-    nestedRestriction?: androidenterprise$AppRestrictionsSchemaRestriction[];
+    nestedRestriction?: gapi$client$androidenterprise$AppRestrictionsSchemaRestriction[];
 
     /**
      * The type of the restriction.
@@ -172,7 +176,7 @@ declare module "gapi.client.androidenterprise" {
     title?: string;
   }
 
-  declare interface androidenterprise$AppRestrictionsSchemaRestrictionRestrictionValue {
+  declare interface gapi$client$androidenterprise$AppRestrictionsSchemaRestrictionRestrictionValue {
     /**
      * The type of the value being provided.
      */
@@ -199,14 +203,14 @@ declare module "gapi.client.androidenterprise" {
     valueString?: string;
   }
 
-  declare interface androidenterprise$AppUpdateEvent {
+  declare interface gapi$client$androidenterprise$AppUpdateEvent {
     /**
      * The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always be present.
      */
     productId?: string;
   }
 
-  declare interface androidenterprise$AppVersion {
+  declare interface gapi$client$androidenterprise$AppVersion {
     /**
      * The track that this app was published in. For example if track is "alpha", this is an alpha version of the app.
      */
@@ -224,7 +228,7 @@ declare module "gapi.client.androidenterprise" {
     versionString?: string;
   }
 
-  declare interface androidenterprise$ApprovalUrlInfo {
+  declare interface gapi$client$androidenterprise$ApprovalUrlInfo {
     /**
      * A URL that displays a product's permissions and that can also be used to approve the product with the Products.approve call.
      */
@@ -236,7 +240,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$AuthenticationToken {
+  declare interface gapi$client$androidenterprise$AuthenticationToken {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#authenticationToken".
      */
@@ -249,7 +253,7 @@ declare module "gapi.client.androidenterprise" {
     token?: string;
   }
 
-  declare interface androidenterprise$Device {
+  declare interface gapi$client$androidenterprise$Device {
     /**
      * The Google Play Services Android ID for the device encoded as a lowercase hex string. For example, "123456789abcdef0".
      */
@@ -274,7 +278,7 @@ declare module "gapi.client.androidenterprise" {
     managementType?: string;
   }
 
-  declare interface androidenterprise$DeviceState {
+  declare interface gapi$client$androidenterprise$DeviceState {
     /**
      * The state of the Google account on the device. "enabled" indicates that the Google account on the device can be used to access Google services
      * (including Google Play), while "disabled" means that it cannot. A new device is initially in the "disabled" state.
@@ -287,11 +291,11 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$DevicesListResponse {
+  declare interface gapi$client$androidenterprise$DevicesListResponse {
     /**
      * A managed device.
      */
-    device?: androidenterprise$Device[];
+    device?: gapi$client$androidenterprise$Device[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#devicesListResponse".
@@ -299,11 +303,11 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$Enterprise {
+  declare interface gapi$client$androidenterprise$Enterprise {
     /**
      * Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow.
      */
-    administrator?: androidenterprise$Administrator[];
+    administrator?: gapi$client$androidenterprise$Administrator[];
 
     /**
      * The unique ID for the enterprise.
@@ -326,7 +330,7 @@ declare module "gapi.client.androidenterprise" {
     primaryDomain?: string;
   }
 
-  declare interface androidenterprise$EnterpriseAccount {
+  declare interface gapi$client$androidenterprise$EnterpriseAccount {
     /**
      * The email address of the service account.
      */
@@ -338,11 +342,11 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$EnterprisesListResponse {
+  declare interface gapi$client$androidenterprise$EnterprisesListResponse {
     /**
      * An enterprise.
      */
-    enterprise?: androidenterprise$Enterprise[];
+    enterprise?: gapi$client$androidenterprise$Enterprise[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#enterprisesListResponse".
@@ -350,7 +354,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$EnterprisesSendTestPushNotificationResponse {
+  declare interface gapi$client$androidenterprise$EnterprisesSendTestPushNotificationResponse {
     /**
      * The message ID of the test push notification that was sent.
      */
@@ -362,7 +366,7 @@ declare module "gapi.client.androidenterprise" {
     topicName?: string;
   }
 
-  declare interface androidenterprise$Entitlement {
+  declare interface gapi$client$androidenterprise$Entitlement {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#entitlement".
      */
@@ -380,12 +384,12 @@ declare module "gapi.client.androidenterprise" {
     reason?: string;
   }
 
-  declare interface androidenterprise$EntitlementsListResponse {
+  declare interface gapi$client$androidenterprise$EntitlementsListResponse {
     /**
      * An entitlement of a user to a product (e.g. an app). For example, a free app that they have installed, or a paid app that they have been allocated a
      * license to.
      */
-    entitlement?: androidenterprise$Entitlement[];
+    entitlement?: gapi$client$androidenterprise$Entitlement[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#entitlementsListResponse".
@@ -393,7 +397,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$GroupLicense {
+  declare interface gapi$client$androidenterprise$GroupLicense {
     /**
      * How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was created because the enterprise purchased licenses for
      * this product; otherwise, the value is "free" (for free products).
@@ -431,7 +435,7 @@ declare module "gapi.client.androidenterprise" {
      * - "allCurrentAndFutureApproved", the current permissions are approved and any future permission updates will be automatically approved without
      * administrator review.
      */
-    client$permissions?: string;
+    permissions?: string;
 
     /**
      * The ID of the product that the license is for. For example, "app:com.google.android.gm".
@@ -439,7 +443,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string;
   }
 
-  declare interface androidenterprise$GroupLicenseUsersListResponse {
+  declare interface gapi$client$androidenterprise$GroupLicenseUsersListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#groupLicenseUsersListResponse".
      */
@@ -451,11 +455,11 @@ declare module "gapi.client.androidenterprise" {
     user?: androidenterprise$User[];
   }
 
-  declare interface androidenterprise$GroupLicensesListResponse {
+  declare interface gapi$client$androidenterprise$GroupLicensesListResponse {
     /**
      * A group license for a product approved for use in the enterprise.
      */
-    groupLicense?: androidenterprise$GroupLicense[];
+    groupLicense?: gapi$client$androidenterprise$GroupLicense[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#groupLicensesListResponse".
@@ -463,7 +467,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$Install {
+  declare interface gapi$client$androidenterprise$Install {
     /**
      * Install state. The state "installPending" means that an install request has recently been made and download to the device is in progress. The state
      * "installed" means that the app has been installed. This field is read-only.
@@ -486,7 +490,7 @@ declare module "gapi.client.androidenterprise" {
     versionCode?: number;
   }
 
-  declare interface androidenterprise$InstallFailureEvent {
+  declare interface gapi$client$androidenterprise$InstallFailureEvent {
     /**
      * The Android ID of the device. This field will always be present.
      */
@@ -513,11 +517,11 @@ declare module "gapi.client.androidenterprise" {
     userId?: string;
   }
 
-  declare interface androidenterprise$InstallsListResponse {
+  declare interface gapi$client$androidenterprise$InstallsListResponse {
     /**
      * An installation of an app for a user on a specific device. The existence of an install implies that the user must have an entitlement to the app.
      */
-    install?: androidenterprise$Install[];
+    install?: gapi$client$androidenterprise$Install[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#installsListResponse".
@@ -525,7 +529,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$LocalizedText {
+  declare interface gapi$client$androidenterprise$LocalizedText {
     /**
      * The BCP47 tag for a locale. (e.g. "en-US", "de").
      */
@@ -537,7 +541,7 @@ declare module "gapi.client.androidenterprise" {
     text?: string;
   }
 
-  declare interface androidenterprise$ManagedConfiguration {
+  declare interface gapi$client$androidenterprise$ManagedConfiguration {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#managedConfiguration".
      */
@@ -554,7 +558,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string;
   }
 
-  declare interface androidenterprise$ManagedConfigurationsForDeviceListResponse {
+  declare interface gapi$client$androidenterprise$ManagedConfigurationsForDeviceListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#managedConfigurationsForDeviceListResponse".
      */
@@ -563,10 +567,10 @@ declare module "gapi.client.androidenterprise" {
     /**
      * A managed configuration for an app on a specific device.
      */
-    managedConfigurationForDevice?: androidenterprise$ManagedConfiguration[];
+    managedConfigurationForDevice?: gapi$client$androidenterprise$ManagedConfiguration[];
   }
 
-  declare interface androidenterprise$ManagedConfigurationsForUserListResponse {
+  declare interface gapi$client$androidenterprise$ManagedConfigurationsForUserListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#managedConfigurationsForUserListResponse".
      */
@@ -575,10 +579,10 @@ declare module "gapi.client.androidenterprise" {
     /**
      * A managed configuration for an app for a specific user.
      */
-    managedConfigurationForUser?: androidenterprise$ManagedConfiguration[];
+    managedConfigurationForUser?: gapi$client$androidenterprise$ManagedConfiguration[];
   }
 
-  declare interface androidenterprise$ManagedProperty {
+  declare interface gapi$client$androidenterprise$ManagedProperty {
     /**
      * The unique key that identifies the property.
      */
@@ -615,14 +619,14 @@ declare module "gapi.client.androidenterprise" {
     valueStringArray?: string[];
   }
 
-  declare interface androidenterprise$ManagedPropertyBundle {
+  declare interface gapi$client$androidenterprise$ManagedPropertyBundle {
     /**
      * The list of managed properties.
      */
-    managedProperty?: androidenterprise$ManagedProperty[];
+    managedProperty?: gapi$client$androidenterprise$ManagedProperty[];
   }
 
-  declare interface androidenterprise$NewDeviceEvent {
+  declare interface gapi$client$androidenterprise$NewDeviceEvent {
     /**
      * The Android ID of the device. This field will always be present.
      */
@@ -643,7 +647,7 @@ declare module "gapi.client.androidenterprise" {
     userId?: string;
   }
 
-  declare interface androidenterprise$NewPermissionsEvent {
+  declare interface gapi$client$androidenterprise$NewPermissionsEvent {
     /**
      * The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details
      * about these permissions.
@@ -661,16 +665,16 @@ declare module "gapi.client.androidenterprise" {
     requestedPermissions?: string[];
   }
 
-  declare interface androidenterprise$Notification {
+  declare interface gapi$client$androidenterprise$Notification {
     /**
      * Notifications about new app restrictions schema changes.
      */
-    appRestrictionsSchemaChangeEvent?: androidenterprise$AppRestrictionsSchemaChangeEvent;
+    appRestrictionsSchemaChangeEvent?: gapi$client$androidenterprise$AppRestrictionsSchemaChangeEvent;
 
     /**
      * Notifications about app updates.
      */
-    appUpdateEvent?: androidenterprise$AppUpdateEvent;
+    appUpdateEvent?: gapi$client$androidenterprise$AppUpdateEvent;
 
     /**
      * The ID of the enterprise for which the notification is sent. This will always be present.
@@ -680,17 +684,17 @@ declare module "gapi.client.androidenterprise" {
     /**
      * Notifications about an app installation failure.
      */
-    installFailureEvent?: androidenterprise$InstallFailureEvent;
+    installFailureEvent?: gapi$client$androidenterprise$InstallFailureEvent;
 
     /**
      * Notifications about new devices.
      */
-    newDeviceEvent?: androidenterprise$NewDeviceEvent;
+    newDeviceEvent?: gapi$client$androidenterprise$NewDeviceEvent;
 
     /**
      * Notifications about new app permissions.
      */
-    newPermissionsEvent?: androidenterprise$NewPermissionsEvent;
+    newPermissionsEvent?: gapi$client$androidenterprise$NewPermissionsEvent;
 
     /**
      * Type of the notification.
@@ -713,7 +717,7 @@ declare module "gapi.client.androidenterprise" {
     timestampMillis?: string;
   }
 
-  declare interface androidenterprise$NotificationSet {
+  declare interface gapi$client$androidenterprise$NotificationSet {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#notificationSet".
      */
@@ -722,7 +726,7 @@ declare module "gapi.client.androidenterprise" {
     /**
      * The notifications received, or empty if no notifications are present.
      */
-    notification?: androidenterprise$Notification[];
+    notification?: gapi$client$androidenterprise$Notification[];
 
     /**
      * The notification set ID, required to mark the notification as received with the Enterprises.AcknowledgeNotification API. This will be omitted if no
@@ -731,13 +735,13 @@ declare module "gapi.client.androidenterprise" {
     notificationSetId?: string;
   }
 
-  declare interface androidenterprise$PageInfo {
+  declare interface gapi$client$androidenterprise$PageInfo {
     resultPerPage?: number;
     startIndex?: number;
     totalResults?: number;
   }
 
-  declare interface androidenterprise$Permission {
+  declare interface gapi$client$androidenterprise$Permission {
     /**
      * A longer description of the Permissions resource, giving more details of what it affects.
      */
@@ -759,11 +763,11 @@ declare module "gapi.client.androidenterprise" {
     permissionId?: string;
   }
 
-  declare interface androidenterprise$Product {
+  declare interface gapi$client$androidenterprise$Product {
     /**
      * App versions currently available for this product.
      */
-    appVersion?: androidenterprise$AppVersion[];
+    appVersion?: gapi$client$androidenterprise$AppVersion[];
 
     /**
      * The name of the author of the product (for example, the app developer).
@@ -834,7 +838,7 @@ declare module "gapi.client.androidenterprise" {
     workDetailsUrl?: string;
   }
 
-  declare interface androidenterprise$ProductApprovalEvent {
+  declare interface gapi$client$androidenterprise$ProductApprovalEvent {
     /**
      * Whether the product was approved or unapproved. This field will always be present.
      */
@@ -846,7 +850,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string;
   }
 
-  declare interface androidenterprise$ProductAvailabilityChangeEvent {
+  declare interface gapi$client$androidenterprise$ProductAvailabilityChangeEvent {
     /**
      * The new state of the product. This field will always be present.
      */
@@ -858,7 +862,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string;
   }
 
-  declare interface androidenterprise$ProductPermission {
+  declare interface gapi$client$androidenterprise$ProductPermission {
     /**
      * An opaque string uniquely identifying the permission.
      */
@@ -870,7 +874,7 @@ declare module "gapi.client.androidenterprise" {
     state?: string;
   }
 
-  declare interface androidenterprise$ProductPermissions {
+  declare interface gapi$client$androidenterprise$ProductPermissions {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#productPermissions".
      */
@@ -879,7 +883,7 @@ declare module "gapi.client.androidenterprise" {
     /**
      * The permissions required by the app.
      */
-    permission?: androidenterprise$ProductPermission[];
+    permission?: gapi$client$androidenterprise$ProductPermission[];
 
     /**
      * The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm".
@@ -887,7 +891,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string;
   }
 
-  declare interface androidenterprise$ProductSet {
+  declare interface gapi$client$androidenterprise$ProductSet {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#productSet".
      */
@@ -916,7 +920,7 @@ declare module "gapi.client.androidenterprise" {
     productVisibility?: androidenterprise$ProductVisibility[];
   }
 
-  declare interface androidenterprise$ProductSigningCertificate {
+  declare interface gapi$client$androidenterprise$ProductSigningCertificate {
     /**
      * The base64 urlsafe encoded SHA1 hash of the certificate. (This field is deprecated in favor of SHA2-256. It should not be used and may be removed at
      * any time.)
@@ -929,7 +933,7 @@ declare module "gapi.client.androidenterprise" {
     certificateHashSha256?: string;
   }
 
-  declare interface androidenterprise$ProductVisibility {
+  declare interface gapi$client$androidenterprise$ProductVisibility {
     /**
      * The product ID that should be made visible to the user. This is required.
      */
@@ -949,13 +953,13 @@ declare module "gapi.client.androidenterprise" {
     tracks?: string[];
   }
 
-  declare interface androidenterprise$ProductsApproveRequest {
+  declare interface gapi$client$androidenterprise$ProductsApproveRequest {
     /**
      * The approval URL that was shown to the user. Only the permissions shown to the user with that URL will be accepted, which may not be the product's
      * entire set of permissions. For example, the URL may only display new permissions from an update after the product was approved, or not include new
      * permissions if the product was updated since the URL was generated.
      */
-    approvalUrlInfo?: androidenterprise$ApprovalUrlInfo;
+    approvalUrlInfo?: gapi$client$androidenterprise$ApprovalUrlInfo;
 
     /**
      * Sets how new permission requests for the product are handled. "allPermissions" automatically approves all current and future permissions for the
@@ -965,7 +969,7 @@ declare module "gapi.client.androidenterprise" {
     approvedPermissions?: string;
   }
 
-  declare interface androidenterprise$ProductsGenerateApprovalUrlResponse {
+  declare interface gapi$client$androidenterprise$ProductsGenerateApprovalUrlResponse {
     /**
      * A URL that can be rendered in an iframe to display the permissions (if any) of a product. This URL can be used to approve the product only once and
      * only within 24 hours of being generated, using the Products.approve call. If the product is currently unapproved and has no permissions, this URL will
@@ -975,7 +979,7 @@ declare module "gapi.client.androidenterprise" {
     url?: string;
   }
 
-  declare interface androidenterprise$ProductsListResponse {
+  declare interface gapi$client$androidenterprise$ProductsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#productsListResponse".
      */
@@ -984,12 +988,12 @@ declare module "gapi.client.androidenterprise" {
     /**
      * General pagination information.
      */
-    pageInfo?: androidenterprise$PageInfo;
+    pageInfo?: gapi$client$androidenterprise$PageInfo;
 
     /**
      * Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin.
      */
-    product?: androidenterprise$Product[];
+    product?: gapi$client$androidenterprise$Product[];
 
     /**
      * Pagination information for token pagination.
@@ -997,7 +1001,7 @@ declare module "gapi.client.androidenterprise" {
     tokenPagination?: androidenterprise$TokenPagination;
   }
 
-  declare interface androidenterprise$ServiceAccount {
+  declare interface gapi$client$androidenterprise$ServiceAccount {
     /**
      * Credentials that can be used to authenticate as this ServiceAccount.
      */
@@ -1014,7 +1018,7 @@ declare module "gapi.client.androidenterprise" {
     name?: string;
   }
 
-  declare interface androidenterprise$ServiceAccountKey {
+  declare interface gapi$client$androidenterprise$ServiceAccountKey {
     /**
      * The body of the private key credentials file, in string format. This is only populated when the ServiceAccountKey is created, and is not stored by
      * Google.
@@ -1043,14 +1047,14 @@ declare module "gapi.client.androidenterprise" {
     type?: string;
   }
 
-  declare interface androidenterprise$ServiceAccountKeysListResponse {
+  declare interface gapi$client$androidenterprise$ServiceAccountKeysListResponse {
     /**
      * The service account credentials.
      */
-    serviceAccountKey?: androidenterprise$ServiceAccountKey[];
+    serviceAccountKey?: gapi$client$androidenterprise$ServiceAccountKey[];
   }
 
-  declare interface androidenterprise$SignupInfo {
+  declare interface gapi$client$androidenterprise$SignupInfo {
     /**
      * An opaque token that will be required, along with the Enterprise Token, for obtaining the enterprise resource from CompleteSignup.
      */
@@ -1067,7 +1071,7 @@ declare module "gapi.client.androidenterprise" {
     url?: string;
   }
 
-  declare interface androidenterprise$StoreCluster {
+  declare interface gapi$client$androidenterprise$StoreCluster {
     /**
      * Unique ID of this cluster. Assigned by the server. Immutable once assigned.
      */
@@ -1082,7 +1086,7 @@ declare module "gapi.client.androidenterprise" {
      * Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if
      * there is no good match. There needs to be at least one entry.
      */
-    name?: androidenterprise$LocalizedText[];
+    name?: gapi$client$androidenterprise$LocalizedText[];
 
     /**
      * String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of
@@ -1098,7 +1102,7 @@ declare module "gapi.client.androidenterprise" {
     productId?: string[];
   }
 
-  declare interface androidenterprise$StoreLayout {
+  declare interface gapi$client$androidenterprise$StoreLayout {
     /**
      * The ID of the store page to be used as the homepage. The homepage is the first page shown in the managed Google Play Store.
      *
@@ -1118,11 +1122,11 @@ declare module "gapi.client.androidenterprise" {
     storeLayoutType?: string;
   }
 
-  declare interface androidenterprise$StoreLayoutClustersListResponse {
+  declare interface gapi$client$androidenterprise$StoreLayoutClustersListResponse {
     /**
      * A store cluster of an enterprise.
      */
-    cluster?: androidenterprise$StoreCluster[];
+    cluster?: gapi$client$androidenterprise$StoreCluster[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#storeLayoutClustersListResponse".
@@ -1130,7 +1134,7 @@ declare module "gapi.client.androidenterprise" {
     kind?: string;
   }
 
-  declare interface androidenterprise$StoreLayoutPagesListResponse {
+  declare interface gapi$client$androidenterprise$StoreLayoutPagesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#storeLayoutPagesListResponse".
      */
@@ -1142,7 +1146,7 @@ declare module "gapi.client.androidenterprise" {
     page?: androidenterprise$StorePage[];
   }
 
-  declare interface androidenterprise$StorePage {
+  declare interface gapi$client$androidenterprise$StorePage {
     /**
      * Unique ID of this page. Assigned by the server. Immutable once assigned.
      */
@@ -1166,15 +1170,15 @@ declare module "gapi.client.androidenterprise" {
      * Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if
      * there is no good match. There needs to be at least one entry.
      */
-    name?: androidenterprise$LocalizedText[];
+    name?: gapi$client$androidenterprise$LocalizedText[];
   }
 
-  declare interface androidenterprise$TokenPagination {
+  declare interface gapi$client$androidenterprise$TokenPagination {
     nextPageToken?: string;
     previousPageToken?: string;
   }
 
-  declare interface androidenterprise$User {
+  declare interface gapi$client$androidenterprise$User {
     /**
      * A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use personally identifiable information (PII) for this
      * property. Must always be set for EMM-managed users. Not set for Google-managed users.
@@ -1215,7 +1219,7 @@ declare module "gapi.client.androidenterprise" {
     primaryEmail?: string;
   }
 
-  declare interface androidenterprise$UserToken {
+  declare interface gapi$client$androidenterprise$UserToken {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#userToken".
      */
@@ -1232,7 +1236,7 @@ declare module "gapi.client.androidenterprise" {
     userId?: string;
   }
 
-  declare interface androidenterprise$UsersListResponse {
+  declare interface gapi$client$androidenterprise$UsersListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidenterprise#usersListResponse".
      */
@@ -1241,10 +1245,10 @@ declare module "gapi.client.androidenterprise" {
     /**
      * A user of an enterprise.
      */
-    user?: androidenterprise$User[];
+    user?: gapi$client$androidenterprise$User[];
   }
 
-  declare interface androidenterprise$DevicesResource {
+  declare interface gapi$client$androidenterprise$DevicesResource {
     /**
      * Retrieves the details of a device.
      */
@@ -1299,7 +1303,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Device>;
+    }): Request<gapi$client$androidenterprise$Device>;
 
     /**
      * Retrieves whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android
@@ -1357,7 +1361,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$DeviceState>;
+    }): Request<gapi$client$androidenterprise$DeviceState>;
 
     /**
      * Retrieves the IDs of all of a user's devices.
@@ -1408,7 +1412,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$DevicesListResponse>;
+    }): Request<gapi$client$androidenterprise$DevicesListResponse>;
 
     /**
      * Sets whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android
@@ -1466,10 +1470,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$DeviceState>;
+    }): Request<gapi$client$androidenterprise$DeviceState>;
   }
 
-  declare interface androidenterprise$EnterprisesResource {
+  declare interface gapi$client$androidenterprise$EnterprisesResource {
     /**
      * Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications.
      */
@@ -1566,7 +1570,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Enterprise>;
+    }): Request<gapi$client$androidenterprise$Enterprise>;
 
     /**
      * Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the managed Google Play javascript API. Each
@@ -1613,7 +1617,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$AdministratorWebToken>;
+    }): Request<gapi$client$androidenterprise$AdministratorWebToken>;
 
     /**
      * Deletes the binding between the EMM and enterprise. This is now deprecated. Use this method only to unenroll customers that were previously enrolled
@@ -1706,7 +1710,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Enterprise>;
+    }): Request<gapi$client$androidenterprise$Enterprise>;
 
     /**
      * Generates a sign-up URL.
@@ -1755,7 +1759,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$SignupInfo>;
+    }): Request<gapi$client$androidenterprise$SignupInfo>;
 
     /**
      * Retrieves the name and domain of an enterprise.
@@ -1801,7 +1805,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Enterprise>;
+    }): Request<gapi$client$androidenterprise$Enterprise>;
 
     /**
      * Returns the Android Device Policy config resource.
@@ -1847,7 +1851,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$AndroidDevicePolicyConfig>;
+    }): Request<gapi$client$androidenterprise$AndroidDevicePolicyConfig>;
 
     /**
      * Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to
@@ -1906,7 +1910,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ServiceAccount>;
+    }): Request<gapi$client$androidenterprise$ServiceAccount>;
 
     /**
      * Returns the store layout for the enterprise. If the store layout has not been set, returns "basic" as the store layout type and no homepage.
@@ -1952,7 +1956,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreLayout>;
+    }): Request<gapi$client$androidenterprise$StoreLayout>;
 
     /**
      * Establishes the binding between the EMM and an enterprise. This is now deprecated; use enroll instead.
@@ -1998,7 +2002,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Enterprise>;
+    }): Request<gapi$client$androidenterprise$Enterprise>;
 
     /**
      * Looks up an enterprise by domain name. This is only supported for enterprises created via the Google-initiated creation flow. Lookup of the id is not
@@ -2046,7 +2050,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$EnterprisesListResponse>;
+    }): Request<gapi$client$androidenterprise$EnterprisesListResponse>;
 
     /**
      * Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be
@@ -2104,7 +2108,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$NotificationSet>;
+    }): Request<gapi$client$androidenterprise$NotificationSet>;
 
     /**
      * Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for this enterprise.
@@ -2150,7 +2154,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$EnterprisesSendTestPushNotificationResponse>;
+    }): Request<gapi$client$androidenterprise$EnterprisesSendTestPushNotificationResponse>;
 
     /**
      * Sets the account that will be used to authenticate to the API as the enterprise.
@@ -2196,7 +2200,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$EnterpriseAccount>;
+    }): Request<gapi$client$androidenterprise$EnterpriseAccount>;
 
     /**
      * Sets the Android Device Policy config resource. EMM may use this method to enable or disable Android Device Policy support for the specified
@@ -2243,7 +2247,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$AndroidDevicePolicyConfig>;
+    }): Request<gapi$client$androidenterprise$AndroidDevicePolicyConfig>;
 
     /**
      * Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the basic store layout is enabled. The basic layout only
@@ -2292,7 +2296,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreLayout>;
+    }): Request<gapi$client$androidenterprise$StoreLayout>;
 
     /**
      * Unenrolls an enterprise from the calling EMM.
@@ -2341,7 +2345,7 @@ declare module "gapi.client.androidenterprise" {
     }): Request<void>;
   }
 
-  declare interface androidenterprise$EntitlementsResource {
+  declare interface gapi$client$androidenterprise$EntitlementsResource {
     /**
      * Removes an entitlement to an app for a user.
      */
@@ -2452,7 +2456,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Entitlement>;
+    }): Request<gapi$client$androidenterprise$Entitlement>;
 
     /**
      * Lists all entitlements for the specified user. Only the ID is set.
@@ -2503,7 +2507,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$EntitlementsListResponse>;
+    }): Request<gapi$client$androidenterprise$EntitlementsListResponse>;
 
     /**
      * Adds or updates an entitlement to an app for a user. This method supports patch semantics.
@@ -2565,7 +2569,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Entitlement>;
+    }): Request<gapi$client$androidenterprise$Entitlement>;
 
     /**
      * Adds or updates an entitlement to an app for a user.
@@ -2627,10 +2631,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Entitlement>;
+    }): Request<gapi$client$androidenterprise$Entitlement>;
   }
 
-  declare interface androidenterprise$GrouplicensesResource {
+  declare interface gapi$client$androidenterprise$GrouplicensesResource {
     /**
      * Retrieves details of an enterprise's group license for a product.
      */
@@ -2680,7 +2684,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$GroupLicense>;
+    }): Request<gapi$client$androidenterprise$GroupLicense>;
 
     /**
      * Retrieves IDs of all products for which the enterprise has a group license.
@@ -2726,10 +2730,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$GroupLicensesListResponse>;
+    }): Request<gapi$client$androidenterprise$GroupLicensesListResponse>;
   }
 
-  declare interface androidenterprise$GrouplicenseusersResource {
+  declare interface gapi$client$androidenterprise$GrouplicenseusersResource {
     /**
      * Retrieves the IDs of the users who have been granted entitlements under the license.
      */
@@ -2779,10 +2783,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$GroupLicenseUsersListResponse>;
+    }): Request<gapi$client$androidenterprise$GroupLicenseUsersListResponse>;
   }
 
-  declare interface androidenterprise$InstallsResource {
+  declare interface gapi$client$androidenterprise$InstallsResource {
     /**
      * Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed.
      */
@@ -2903,7 +2907,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Install>;
+    }): Request<gapi$client$androidenterprise$Install>;
 
     /**
      * Retrieves the details of all apps installed on the specified device.
@@ -2959,7 +2963,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$InstallsListResponse>;
+    }): Request<gapi$client$androidenterprise$InstallsListResponse>;
 
     /**
      * Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary.
@@ -3021,7 +3025,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Install>;
+    }): Request<gapi$client$androidenterprise$Install>;
 
     /**
      * Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary.
@@ -3082,10 +3086,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Install>;
+    }): Request<gapi$client$androidenterprise$Install>;
   }
 
-  declare interface androidenterprise$ManagedconfigurationsfordeviceResource {
+  declare interface gapi$client$androidenterprise$ManagedconfigurationsfordeviceResource {
     /**
      * Removes a per-device managed configuration for an app for the specified device.
      */
@@ -3206,7 +3210,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
 
     /**
      * Lists all the per-device managed configurations for the specified device. Only the ID is set.
@@ -3262,7 +3266,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfigurationsForDeviceListResponse>;
+    }): Request<gapi$client$androidenterprise$ManagedConfigurationsForDeviceListResponse>;
 
     /**
      * Adds or updates a per-device managed configuration for an app for the specified device. This method supports patch semantics.
@@ -3323,7 +3327,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
 
     /**
      * Adds or updates a per-device managed configuration for an app for the specified device.
@@ -3384,10 +3388,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
   }
 
-  declare interface androidenterprise$ManagedconfigurationsforuserResource {
+  declare interface gapi$client$androidenterprise$ManagedconfigurationsforuserResource {
     /**
      * Removes a per-user managed configuration for an app for the specified user.
      */
@@ -3498,7 +3502,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
 
     /**
      * Lists all the per-user managed configurations for the specified user. Only the ID is set.
@@ -3549,7 +3553,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfigurationsForUserListResponse>;
+    }): Request<gapi$client$androidenterprise$ManagedConfigurationsForUserListResponse>;
 
     /**
      * Adds or updates a per-user managed configuration for an app for the specified user. This method supports patch semantics.
@@ -3605,7 +3609,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
 
     /**
      * Adds or updates a per-user managed configuration for an app for the specified user.
@@ -3661,10 +3665,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ManagedConfiguration>;
+    }): Request<gapi$client$androidenterprise$ManagedConfiguration>;
   }
 
-  declare interface androidenterprise$PermissionsResource {
+  declare interface gapi$client$androidenterprise$PermissionsResource {
     /**
      * Retrieves details of an Android app permission for display to an enterprise admin.
      */
@@ -3714,10 +3718,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Permission>;
+    }): Request<gapi$client$androidenterprise$Permission>;
   }
 
-  declare interface androidenterprise$ProductsResource {
+  declare interface gapi$client$androidenterprise$ProductsResource {
     /**
      * Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is
      * 1,000.
@@ -3831,7 +3835,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ProductsGenerateApprovalUrlResponse>;
+    }): Request<gapi$client$androidenterprise$ProductsGenerateApprovalUrlResponse>;
 
     /**
      * Retrieves details of a product for display to an enterprise admin.
@@ -3887,7 +3891,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$Product>;
+    }): Request<gapi$client$androidenterprise$Product>;
 
     /**
      * Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed
@@ -3945,7 +3949,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$AppRestrictionsSchema>;
+    }): Request<gapi$client$androidenterprise$AppRestrictionsSchema>;
 
     /**
      * Retrieves the Android app permissions required by this app.
@@ -3996,7 +4000,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ProductPermissions>;
+    }): Request<gapi$client$androidenterprise$ProductPermissions>;
 
     /**
      * Finds approved products that match a query, or all approved products if there is no query.
@@ -4071,7 +4075,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ProductsListResponse>;
+    }): Request<gapi$client$androidenterprise$ProductsListResponse>;
 
     /**
      * Unapproves the specified product (and the relevant app permissions, if any)
@@ -4125,7 +4129,7 @@ declare module "gapi.client.androidenterprise" {
     }): Request<void>;
   }
 
-  declare interface androidenterprise$ServiceaccountkeysResource {
+  declare interface gapi$client$androidenterprise$ServiceaccountkeysResource {
     /**
      * Removes and invalidates the specified credentials for the service account associated with this enterprise. The calling service account must have been
      * retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount.
@@ -4225,7 +4229,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ServiceAccountKey>;
+    }): Request<gapi$client$androidenterprise$ServiceAccountKey>;
 
     /**
      * Lists all active credentials for the service account associated with this enterprise. Only the ID and key type are returned. The calling service
@@ -4273,10 +4277,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ServiceAccountKeysListResponse>;
+    }): Request<gapi$client$androidenterprise$ServiceAccountKeysListResponse>;
   }
 
-  declare interface androidenterprise$StorelayoutclustersResource {
+  declare interface gapi$client$androidenterprise$StorelayoutclustersResource {
     /**
      * Deletes a cluster.
      */
@@ -4387,7 +4391,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreCluster>;
+    }): Request<gapi$client$androidenterprise$StoreCluster>;
 
     /**
      * Inserts a new cluster in a page.
@@ -4438,7 +4442,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreCluster>;
+    }): Request<gapi$client$androidenterprise$StoreCluster>;
 
     /**
      * Retrieves the details of all clusters on the specified page.
@@ -4489,7 +4493,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreLayoutClustersListResponse>;
+    }): Request<gapi$client$androidenterprise$StoreLayoutClustersListResponse>;
 
     /**
      * Updates a cluster. This method supports patch semantics.
@@ -4545,7 +4549,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreCluster>;
+    }): Request<gapi$client$androidenterprise$StoreCluster>;
 
     /**
      * Updates a cluster.
@@ -4601,10 +4605,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreCluster>;
+    }): Request<gapi$client$androidenterprise$StoreCluster>;
   }
 
-  declare interface androidenterprise$StorelayoutpagesResource {
+  declare interface gapi$client$androidenterprise$StorelayoutpagesResource {
     /**
      * Deletes a store page.
      */
@@ -4705,7 +4709,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StorePage>;
+    }): Request<gapi$client$androidenterprise$StorePage>;
 
     /**
      * Inserts a new store page.
@@ -4751,7 +4755,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StorePage>;
+    }): Request<gapi$client$androidenterprise$StorePage>;
 
     /**
      * Retrieves the details of all pages in the store.
@@ -4797,7 +4801,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StoreLayoutPagesListResponse>;
+    }): Request<gapi$client$androidenterprise$StoreLayoutPagesListResponse>;
 
     /**
      * Updates the content of a store page. This method supports patch semantics.
@@ -4848,7 +4852,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StorePage>;
+    }): Request<gapi$client$androidenterprise$StorePage>;
 
     /**
      * Updates the content of a store page.
@@ -4899,10 +4903,10 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$StorePage>;
+    }): Request<gapi$client$androidenterprise$StorePage>;
   }
 
-  declare interface androidenterprise$UsersResource {
+  declare interface gapi$client$androidenterprise$UsersResource {
     /**
      * Deleted an EMM-managed user.
      */
@@ -5006,7 +5010,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$AuthenticationToken>;
+    }): Request<gapi$client$androidenterprise$AuthenticationToken>;
 
     /**
      * Generates a token (activation code) to allow this user to configure their managed account in the Android Setup Wizard. Revokes any previously generated
@@ -5060,7 +5064,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$UserToken>;
+    }): Request<gapi$client$androidenterprise$UserToken>;
 
     /**
      * Retrieves a user's details.
@@ -5111,7 +5115,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$User>;
+    }): Request<gapi$client$androidenterprise$User>;
 
     /**
      * Retrieves the set of products a user is entitled to access.
@@ -5162,7 +5166,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ProductSet>;
+    }): Request<gapi$client$androidenterprise$ProductSet>;
 
     /**
      * Creates a new EMM-managed user.
@@ -5212,7 +5216,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$User>;
+    }): Request<gapi$client$androidenterprise$User>;
 
     /**
      * Looks up a user by primary email address. This is only supported for Google-managed users. Lookup of the id is not needed for EMM-managed users because
@@ -5264,7 +5268,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$UsersListResponse>;
+    }): Request<gapi$client$androidenterprise$UsersListResponse>;
 
     /**
      * Updates the details of an EMM-managed user.
@@ -5318,7 +5322,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$User>;
+    }): Request<gapi$client$androidenterprise$User>;
 
     /**
      * Revokes a previously generated token (activation code) for the user.
@@ -5421,7 +5425,7 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$ProductSet>;
+    }): Request<gapi$client$androidenterprise$ProductSet>;
 
     /**
      * Updates the details of an EMM-managed user.
@@ -5475,6 +5479,6 @@ declare module "gapi.client.androidenterprise" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidenterprise$User>;
+    }): Request<gapi$client$androidenterprise$User>;
   }
 }
