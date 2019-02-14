@@ -1,23 +1,36 @@
 declare var npm$namespace$Rx: {
   Scheduler: typeof Rx$Scheduler,
   Observer: typeof Rx$Observer,
-  Observable: typeof Rx$Observable
+  Observable: typeof Rx$Observable,
+
+  CompositeDisposable: typeof Rx$CompositeDisposable,
+  Disposable: typeof Rx$Disposable,
+  SingleAssignmentDisposable: typeof Rx$SingleAssignmentDisposable,
+  SerialDisposable: typeof Rx$SerialDisposable,
+  RefCountDisposable: typeof Rx$RefCountDisposable,
+  Notification: typeof Rx$Notification,
+  internals: typeof npm$namespace$Rx$internals,
+  config: typeof npm$namespace$Rx$config,
+  helpers: typeof npm$namespace$Rx$helpers
 };
 
-declare var npm$namespace$internals: {
-  isEqual: typeof internals$isEqual,
-  addRef: typeof internals$addRef
-};
-declare function internals$isEqual(left: any, right: any): boolean;
+declare var npm$namespace$Rx$internals: {
+  isEqual: typeof Rx$internals$isEqual,
+  addRef: typeof Rx$internals$addRef,
 
-declare function internals$addRef<T>(
+  PriorityQueue: typeof Rx$internals$PriorityQueue,
+  ScheduledItem: typeof Rx$internals$ScheduledItem
+};
+declare function Rx$internals$isEqual(left: any, right: any): boolean;
+
+declare function Rx$internals$addRef<T>(
   xs: Rx$Observable<T>,
   r: {
     getDisposable(): IDisposable
   }
 ): Rx$Observable<T>;
 
-declare class internals$PriorityQueue<TTime> {
+declare class Rx$internals$PriorityQueue<TTime> {
   constructor(capacity: number): this;
   length: number;
   isHigherPriority(left: number, right: number): boolean;
@@ -31,7 +44,7 @@ declare class internals$PriorityQueue<TTime> {
   static count: number;
 }
 
-declare class internals$ScheduledItem<TTime> {
+declare class Rx$internals$ScheduledItem<TTime> {
   constructor(
     scheduler: Rx$IScheduler,
     state: any,
@@ -46,57 +59,57 @@ declare class internals$ScheduledItem<TTime> {
   comparer: (x: TTime, y: TTime) => number;
   disposable: Rx$SingleAssignmentDisposable;
   invoke(): void;
-  compareTo(other: internals$ScheduledItem<TTime>): number;
+  compareTo(other: Rx$internals$ScheduledItem<TTime>): number;
   isCancelled(): boolean;
   invokeCore(): IDisposable;
 }
 
-declare var npm$namespace$config: {
-  useNativeEvents: typeof config$useNativeEvents
+declare var npm$namespace$Rx$config: {
+  useNativeEvents: typeof Rx$config$useNativeEvents
 };
 
 /**
  * Configuration option to determine whether to use native events only
  */
-declare var config$useNativeEvents: boolean;
+declare var Rx$config$useNativeEvents: boolean;
 
-declare var npm$namespace$helpers: {
-  noop: typeof helpers$noop,
-  notDefined: typeof helpers$notDefined,
-  identity: typeof helpers$identity,
-  defaultNow: typeof helpers$defaultNow,
-  defaultComparer: typeof helpers$defaultComparer,
-  defaultSubComparer: typeof helpers$defaultSubComparer,
-  defaultKeySerializer: typeof helpers$defaultKeySerializer,
-  defaultError: typeof helpers$defaultError,
-  isPromise: typeof helpers$isPromise,
-  asArray: typeof helpers$asArray,
-  not: typeof helpers$not,
-  isFunction: typeof helpers$isFunction
+declare var npm$namespace$Rx$helpers: {
+  noop: typeof Rx$helpers$noop,
+  notDefined: typeof Rx$helpers$notDefined,
+  identity: typeof Rx$helpers$identity,
+  defaultNow: typeof Rx$helpers$defaultNow,
+  defaultComparer: typeof Rx$helpers$defaultComparer,
+  defaultSubComparer: typeof Rx$helpers$defaultSubComparer,
+  defaultKeySerializer: typeof Rx$helpers$defaultKeySerializer,
+  defaultError: typeof Rx$helpers$defaultError,
+  isPromise: typeof Rx$helpers$isPromise,
+  asArray: typeof Rx$helpers$asArray,
+  not: typeof Rx$helpers$not,
+  isFunction: typeof Rx$helpers$isFunction
 };
-declare function helpers$noop(): void;
+declare function Rx$helpers$noop(): void;
 
-declare function helpers$notDefined(value: any): boolean;
+declare function Rx$helpers$notDefined(value: any): boolean;
 
-declare function helpers$identity<T>(value: T): T;
+declare function Rx$helpers$identity<T>(value: T): T;
 
-declare function helpers$defaultNow(): number;
+declare function Rx$helpers$defaultNow(): number;
 
-declare function helpers$defaultComparer(left: any, right: any): boolean;
+declare function Rx$helpers$defaultComparer(left: any, right: any): boolean;
 
-declare function helpers$defaultSubComparer(left: any, right: any): number;
+declare function Rx$helpers$defaultSubComparer(left: any, right: any): number;
 
-declare function helpers$defaultKeySerializer(key: any): string;
+declare function Rx$helpers$defaultKeySerializer(key: any): string;
 
-declare function helpers$defaultError(err: any): void;
+declare function Rx$helpers$defaultError(err: any): void;
 
-declare function helpers$isPromise(p: any): boolean;
+declare function Rx$helpers$isPromise(p: any): boolean;
 
-declare function helpers$asArray<T>(...args: T[]): T[];
+declare function Rx$helpers$asArray<T>(...args: T[]): T[];
 
-declare function helpers$not(value: any): boolean;
+declare function Rx$helpers$not(value: any): boolean;
 
-declare function helpers$isFunction(value: any): boolean;
+declare function Rx$helpers$isFunction(value: any): boolean;
 
 declare class Rx$CompositeDisposable mixins IDisposable {
   constructor(...disposables: IDisposable[]): this;
@@ -125,7 +138,7 @@ declare class Rx$SingleAssignmentDisposable mixins IDisposable {
   setDisposable(value: IDisposable): void;
 }
 
-declare class Rx$SerialDisposable mixins Rx$SingleAssignmentDisposable {
+declare class Rx$SerialDisposable mixins SingleAssignmentDisposable {
   constructor(): this;
 }
 
@@ -193,7 +206,7 @@ declare interface Rx$IScheduler {
   ): IDisposable;
 }
 
-declare type Rx$Scheduler = {} & Rx$IScheduler;
+declare type Rx$Scheduler = {} & IScheduler;
 
 declare interface Rx$SchedulerStatic {
   new(
@@ -224,7 +237,7 @@ declare var Rx$Scheduler: Rx$SchedulerStatic;
 
 declare type Rx$ICurrentThreadScheduler = {
   scheduleRequired(): boolean
-} & Rx$IScheduler;
+} & IScheduler;
 
 declare class Rx$Notification<T> {
   accept(observer: Rx$IObserver<T>): void;
@@ -253,7 +266,7 @@ declare interface Rx$IObserver<T> {
 declare type Rx$Observer<T> = {
   toNotifier(): (notification: Rx$Notification<T>) => void,
   asObserver(): Rx$Observer<T>
-} & Rx$IObserver<T>;
+} & IObserver<T>;
 
 declare interface Rx$ObserverStatic {
   create<T>(
@@ -508,14 +521,14 @@ declare type Rx$Observable<T> = {
   ): Rx$Observable<T>,
 
   /**
- * Applies an accumulator function over an observable sequence and returns each intermediate result. The optional seed value is used as the initial accumulator value.
- * For aggregation behavior with no intermediate results, see Observable.aggregate.
- * @example var res = source.scan(function (acc, x) { return acc + x; });
-var res = source.scan(function (acc, x) { return acc + x; }, 0);
- * @param accumulator An accumulator function to be invoked on each element.
- * @param seed The initial accumulator value.
- * @returns An observable sequence containing the accumulated values.
- */
+   * Applies an accumulator function over an observable sequence and returns each intermediate result. The optional seed value is used as the initial accumulator value.
+   * For aggregation behavior with no intermediate results, see Observable.aggregate.
+   * @example var res = source.scan(function (acc, x) { return acc + x; });
+   * var res = source.scan(function (acc, x) { return acc + x; }, 0);
+   * @param accumulator An accumulator function to be invoked on each element.
+   * @param seed The initial accumulator value.
+   * @returns An observable sequence containing the accumulated values.
+   */
   scan<TAcc>(
     accumulator: (
       acc: TAcc,
@@ -630,13 +643,13 @@ var res = source.scan(function (acc, x) { return acc + x; }, 0);
   selectConcat<R>(sequence: Rx$Observable<R>): Rx$Observable<R>,
 
   /**
- * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
- * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
- * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
- * @param thisArg Object to use as this when executing callback.
- * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
-and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
- */
+   * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
+   * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
+   * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
+   * @param thisArg Object to use as this when executing callback.
+   * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
+   * and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
+   */
   selectSwitch<TResult>(
     selector: (
       value: T,
@@ -647,13 +660,13 @@ and that at any point in time produces the elements of the most recent inner obs
   ): Rx$Observable<TResult>,
 
   /**
- * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
- * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
- * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
- * @param thisArg Object to use as this when executing callback.
- * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
-and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
- */
+   * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
+   * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
+   * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
+   * @param thisArg Object to use as this when executing callback.
+   * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
+   * and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
+   */
   flatMapLatest<TResult>(
     selector: (
       value: T,
@@ -664,14 +677,14 @@ and that at any point in time produces the elements of the most recent inner obs
   ): Rx$Observable<TResult>,
 
   /**
- * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
- * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
- * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
- * @param thisArg Object to use as this when executing callback.
- * @since 2.2.28
- * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
-and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
- */
+   * Projects each element of an observable sequence into a new sequence of observable sequences by incorporating the element's index and then
+   * transforms an observable sequence of observable sequences into an observable sequence producing values only from the most recent observable sequence.
+   * @param selector A transform function to apply to each source element; the second parameter of the function represents the index of the source element.
+   * @param thisArg Object to use as this when executing callback.
+   * @since 2.2.28
+   * @returns An observable sequence whose elements are the result of invoking the transform function on each element of source producing an Observable of Observable sequences
+   * and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
+   */
   switchMap<TResult>(
     selector: (value: T, index: number, source: Rx$Observable<T>) => TResult,
     thisArg?: any
@@ -711,15 +724,15 @@ and that at any point in time produces the elements of the most recent inner obs
   }): TPromise,
 
   /**
- * Converts an existing observable sequence to an ES6 Compatible Promise
- * @example var promise = Rx.Observable.return(42).toPromise(RSVP.Promise);
-
-// With config
-Rx.config.Promise = RSVP.Promise;
-var promise = Rx.Observable.return(42).toPromise();
- * @param promiseCtor The constructor of the promise. If not provided, it looks for it in Rx.config.Promise.
- * @returns An ES6 compatible promise with the last value from the observable sequence.
- */
+   * Converts an existing observable sequence to an ES6 Compatible Promise
+   * @example var promise = Rx.Observable.return(42).toPromise(RSVP.Promise);
+   *
+   * // With config
+   * Rx.config.Promise = RSVP.Promise;
+   * var promise = Rx.Observable.return(42).toPromise();
+   * @param promiseCtor The constructor of the promise. If not provided, it looks for it in Rx.config.Promise.
+   * @returns An ES6 compatible promise with the last value from the observable sequence.
+   */
   toPromise(promiseCtor?: {
     new(
       resolver: (
@@ -781,11 +794,11 @@ var promise = Rx.Observable.return(42).toPromise();
     other?: Rx$Observable<T>,
     scheduler?: Rx$IScheduler
   ): Rx$Observable<T>
-} & Rx$IObservable<T>;
+} & IObservable<T>;
 
 declare type Rx$ConnectableObservable<T> = {
   connect(): Rx$Disposable
-} & Rx$Observable<T>;
+} & Observable<T>;
 
 declare interface Rx$ObservableStatic {
   create<T>(
@@ -1347,5 +1360,5 @@ declare interface Rx$Timestamp<T> {
   timestamp: number;
 }
 declare module "rx-lite" {
-  declare module.exports: typeof Rx;
+  declare export default typeof Rx;
 }
