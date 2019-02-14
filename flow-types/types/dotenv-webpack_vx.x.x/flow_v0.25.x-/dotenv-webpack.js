@@ -2,9 +2,7 @@ declare module "dotenv-webpack" {
   import typeof * as webpack from "webpack";
 
   declare class DotenvWebpackPlugin mixins webpack.Plugin {
-    constructor(
-      options?: DotenvWebpackPlugin$DotenvWebpackPlugin$Options
-    ): this;
+    constructor(options?: DotenvWebpackPlugin$Options): this;
   }
   declare interface DotenvWebpackPlugin$Options {
     /**
@@ -38,5 +36,5 @@ declare module "dotenv-webpack" {
      */
     defaults?: boolean | string;
   }
-  declare module.exports: typeof DotenvWebpackPlugin;
+  declare export default typeof DotenvWebpackPlugin;
 }
