@@ -9,7 +9,7 @@ declare module "fhir-js-client" {
    * This exposes all the methods implemented by jqFhir.js adapter of fhir.js client library
    * https://github.com/FHIR/fhir.js
    */
-  declare interface SMART$Api {
+  declare interface FHIR$SMART$Api {
     /**
      * GET BASEURL/metadata
      * @param input : An override to the base config object or just an empty object {}
@@ -23,10 +23,10 @@ declare module "fhir-js-client" {
     create(entry: SMART$Entry): Promise<SMART$Response>;
 
     /**
- * DELETE BASEURL/{resourceType} BODY {entry with id}
- * @param entry : A valid FHIR entry object containing the resource object
-or an object containing the id property(id of the resource to be deleted)
- */
+     * DELETE BASEURL/{resourceType} BODY {entry with id}
+     * @param entry : A valid FHIR entry object containing the resource object
+     * or an object containing the id property(id of the resource to be deleted)
+     */
     delete(entry: SMART$Entry): Promise<SMART$Response>;
 
     /**
@@ -52,25 +52,25 @@ or an object containing the id property(id of the resource to be deleted)
     ): void;
 
     /**
- * GET BASEURL/{resourceType}?searchParams
- * Fetch all the resources of a particular resource type and that meets the search filter.
- * @param params Search Parameter, same as parameter of the Search method
-Returns a promise
-Resolve: (entries:any[]) => { console.log(entries); }
-Reject: (error:any) => { console.log(error); }
- */
+     * GET BASEURL/{resourceType}?searchParams
+     * Fetch all the resources of a particular resource type and that meets the search filter.
+     * @param params Search Parameter, same as parameter of the Search method
+     * Returns a promise
+     * Resolve: (entries:any[]) => { console.log(entries); }
+     * Reject: (error:any) => { console.log(error); }
+     */
     fetchAll(params: SMART$SearchParams): Promise<SMART$Entry[]>;
 
     /**
- * GET BASEURL/{resourceType}?searchParams
- * GET BASEURL/{referencedType} referencedType based on the resolveParams
- * @param params Search Parameter, same as parameter of the Search method
- * @param resolveParams Resolve Parameter, an array of string containing the each parameter in the format TargetResourceType.TargetElement
-eg. ['Observation.subject',Observation.context']
-Returns a promise.
-Resolve: (entries:Entry[],resolvedReferences:[index: string]: Resource) => { console.log(entries); console.log(resolvedReferences);}
-Reject: (error:any) => { console.log(error); }
- */
+     * GET BASEURL/{resourceType}?searchParams
+     * GET BASEURL/{referencedType} referencedType based on the resolveParams
+     * @param params Search Parameter, same as parameter of the Search method
+     * @param resolveParams Resolve Parameter, an array of string containing the each parameter in the format TargetResourceType.TargetElement
+     * eg. ['Observation.subject',Observation.context']
+     * Returns a promise.
+     * Resolve: (entries:Entry[],resolvedReferences:[index: string]: Resource) => { console.log(entries); console.log(resolvedReferences);}
+     * Reject: (error:any) => { console.log(error); }
+     */
     fetchAllWithReferences(
       params: SMART$SearchParams,
       resolveParams: string[]
@@ -165,26 +165,26 @@ Reject: (error:any) => { console.log(error); }
   /**
    * Reference within a resource
    */
-  declare interface SMART$Reference {
+  declare interface FHIR$SMART$Reference {
     reference: string;
   }
 
   /**
    * Funtion type returned by the fetchAllWithReferences method
    */
-  declare type SMART$ResolveFn = (
+  declare type FHIR$SMART$ResolveFn = (
     resource: SMART$Resource,
-    reference: SMART$Reference
+    reference: FHIR$SMART$Reference
   ) => SMART$Resource;
 
   /**
    * Represents the parameter to be passed to the resolve api method
    */
-  declare interface SMART$ResolveParams {
+  declare interface FHIR$SMART$ResolveParams {
     /**
      * Represents a reference within a resource. It can be a contained one(within the resource or a bundle) or a remote resource(eg {ResourceType}/{id})
      */
-    reference: SMART$Reference;
+    reference: FHIR$SMART$Reference;
 
     /**
      * The resource in which the reference will be resolved if the reference is a contained one.
@@ -197,7 +197,7 @@ Reject: (error:any) => { console.log(error); }
     bundle?: SMART$Resource;
   }
 
-  declare interface SMART$CommonQueryFilters {
+  declare interface FHIR$SMART$CommonQueryFilters {
     /**
      * Number of return records requested. The server is not bound to return the number requested, but cannot return more
      */
@@ -240,7 +240,7 @@ Reject: (error:any) => { console.log(error); }
     };
   }
 
-  declare type SMART$HistoryParams = {
+  declare type FHIR$SMART$HistoryParams = {
     /**
      * Resource ID,  if the history to be fetched is resource specific.
      */
@@ -250,12 +250,12 @@ Reject: (error:any) => { console.log(error); }
      * Type of the resource,  if the history to be fetched is resource specific.
      */
     type?: string
-  } & SMART$CommonQueryFilters;
+  } & CommonQueryFilters;
 
   /**
    * FHIR Search parameter : The parameter used to by the FHIR api methods to perform search on a particular resource.
    */
-  declare type SMART$SearchParams = {
+  declare type FHIR$SMART$SearchParams = {
     /**
      * The name of the resource type on which the query is performed
      */
@@ -292,19 +292,19 @@ Reject: (error:any) => { console.log(error); }
      * The patient id. If provided, will make the search query patient specific by adding the patien query parameter
      */
     patient?: string
-  } & SMART$CommonQueryFilters;
+  } & CommonQueryFilters;
 
   /**
    * Used to specify the type of Resource which needs to be considered for the API call
    */
-  declare interface SMART$ResourceType {
+  declare interface FHIR$SMART$ResourceType {
     type: string;
   }
 
   /**
    * Represents a FHIR entry
    */
-  declare interface SMART$Entry {
+  declare interface FHIR$SMART$Entry {
     /**
      * Version Stamp of resource
      */
@@ -329,7 +329,7 @@ Reject: (error:any) => { console.log(error); }
   /**
    * Represents a FHIR resource
    */
-  declare interface SMART$Resource {
+  declare interface FHIR$SMART$Resource {
     /**
      * The type of resource. All FHIR resources must have a resource type.
      */
@@ -344,17 +344,17 @@ Reject: (error:any) => { console.log(error); }
   /**
    * Represents a FHIR bundle
    */
-  declare interface SMART$Bundle {
+  declare interface FHIR$SMART$Bundle {
     /**
      * The actual FHIR bundle, which is a FHIR resource itself with resourceType: 'Bundle'
      */
-    bundle: SMART$Resource;
+    bundle: FHIR$SMART$Resource;
   }
 
   /**
    * Parameter to be passed to the read API method
    */
-  declare interface SMART$ReadParams {
+  declare interface FHIR$SMART$ReadParams {
     /**
      * Type of the FHIR resource
      */
@@ -369,17 +369,17 @@ Reject: (error:any) => { console.log(error); }
   /**
    * Parameter to be passed to the vread API method
    */
-  declare type SMART$VersionReadParams = {
+  declare type FHIR$SMART$VersionReadParams = {
     /**
      * Version ID of the resource to be fetched
      */
     versionId: string
-  } & SMART$ReadParams;
+  } & ReadParams;
 
   /**
    * Structure of the response from the FHIR server
    */
-  declare interface SMART$Response {
+  declare interface FHIR$SMART$Response {
     /**
      * Data returned from the FHIR server
      */
@@ -409,7 +409,7 @@ Reject: (error:any) => { console.log(error); }
   /**
    * The Patient in context
    */
-  declare interface SMART$Patient {
+  declare interface FHIR$SMART$Patient {
     /**
      * Patient ID
      */
@@ -419,19 +419,19 @@ Reject: (error:any) => { console.log(error); }
      * Patient scoped fhir.js FHIR API interface. This will ensure that the 'patient' query parameter is passed
      * along with all the API calls which needs a patient context.
      */
-    api: SMART$Api;
+    api: FHIR$SMART$Api;
 
     /**
      * Get the Patient resource in context
      * GET BASEURL/Patient/{id}
      */
-    read(): Promise<SMART$Response>;
+    read(): Promise<FHIR$SMART$Response>;
   }
 
   /**
    * Authorization Context which needs to be passed to create a SMART client directly
    */
-  declare interface SMART$AuthContext {
+  declare interface FHIR$SMART$AuthContext {
     /**
      * Type of Authorization 'none' | 'basic' | 'bearer'
      */
@@ -456,7 +456,7 @@ Reject: (error:any) => { console.log(error); }
   /**
    * Context passed to create a SMART client directly without completing the SMART on FHIR OAuth2 authorization workflow
    */
-  declare interface SMART$Context {
+  declare interface FHIR$SMART$Context {
     /**
      * FHIR service base url
      */
@@ -465,7 +465,7 @@ Reject: (error:any) => { console.log(error); }
     /**
      * Authorization context
      */
-    auth?: SMART$AuthContext;
+    auth?: FHIR$SMART$AuthContext;
 
     /**
      * Patient in context
@@ -482,7 +482,7 @@ Reject: (error:any) => { console.log(error); }
    * Represents a Resource type with ID
    * Used by the get method
    */
-  declare interface SMART$ResourceParameter {
+  declare interface FHIR$SMART$ResourceParameter {
     /**
      * Name of the resource type
      */
@@ -497,14 +497,14 @@ Reject: (error:any) => { console.log(error); }
   /**
    * User in context
    */
-  declare interface SMART$User {
+  declare interface FHIR$SMART$User {
     /**
      * Fetch the current user information from server. The library expects the userId to be of the format "ResourceType/Id"
      */
-    read(): Promise<SMART$Response>;
+    read(): Promise<FHIR$SMART$Response>;
   }
 
-  declare type SMART$SMARTClient = {
+  declare type FHIR$SMART$SMARTClient = {
     /**
      * Method to add the authorization headers based on the type of authorization Basic or Authorization
      * @param input Returns: The object populated with Authorization header
@@ -520,13 +520,13 @@ Reject: (error:any) => { console.log(error); }
      * OAuth2 Access Token response
      */
     tokenResponse?: any
-  } & SMART$Client;
+  } & Client;
 
-  declare interface SMART$Client {
+  declare interface FHIR$SMART$Client {
     /**
      * fhir.js FHIR API interface
      */
-    api: SMART$Api;
+    api: FHIR$SMART$Api;
 
     /**
      * Fetch a resource as Binary/Blob
@@ -538,7 +538,7 @@ Reject: (error:any) => { console.log(error); }
      * Get the resources based on the resource type and id
      * @param params Resource type and id
      */
-    get(params: SMART$ResourceParameter): Promise<SMART$Response>;
+    get(params: FHIR$SMART$ResourceParameter): Promise<FHIR$SMART$Response>;
 
     /**
      * Fetch a resource as Binary/Blob (Same as fetchBinary)
@@ -549,12 +549,12 @@ Reject: (error:any) => { console.log(error); }
     /**
      * Current server, user and patient in context
      */
-    server: SMART$Context;
+    server: FHIR$SMART$Context;
 
     /**
      * Patient in context and interface to perform FHIR API calls within its context
      */
-    patient?: SMART$Patient;
+    patient?: FHIR$SMART$Patient;
 
     /**
      * Id of the user in context
@@ -564,27 +564,27 @@ Reject: (error:any) => { console.log(error); }
     /**
      * User in context and exposes a method 'read' to get information.
      */
-    user: SMART$User;
+    user: FHIR$SMART$User;
 
     /**
- * Split a set of observations based on codable concept properties. eg. code
- * @param observations Observation resources
- * @param property The name of the property which is a codable concept
-Returns a function to which you can pass code values and get a filtered array of observations.
- */
+     * Split a set of observations based on codable concept properties. eg. code
+     * @param observations Observation resources
+     * @param property The name of the property which is a codable concept
+     * Returns a function to which you can pass code values and get a filtered array of observations.
+     */
     byCodes(
-      observations: SMART$Resource | SMART$Resource[],
+      observations: FHIR$SMART$Resource | FHIR$SMART$Resource[],
       ...property: string[]
-    ): (...codes: string[]) => SMART$Resource[];
+    ): (...codes: string[]) => FHIR$SMART$Resource[];
 
     /**
- * Split a set of observations based on codable concept properties. eg. code
- * @param observations Observation resources
- * @param property The name of the property which is a codable concept
-Returns an object with code values as index and array of observations as values
- */
+     * Split a set of observations based on codable concept properties. eg. code
+     * @param observations Observation resources
+     * @param property The name of the property which is a codable concept
+     * Returns an object with code values as index and array of observations as values
+     */
     byCode(
-      observations: SMART$Resource | SMART$Resource[],
+      observations: FHIR$SMART$Resource | FHIR$SMART$Resource[],
       property: string
     ): SMART$ObservationsByCode;
 
@@ -612,14 +612,14 @@ Returns an object with code values as index and array of observations as values
   /**
    * Indexable type used to represent Observation FHIR resources indexed based on codes.
    */
-  declare interface SMART$ObservationsByCode {
-    [index: string]: SMART$Resource[];
+  declare interface FHIR$SMART$ObservationsByCode {
+    [index: string]: FHIR$SMART$Resource[];
   }
 
   /**
    * SMART client settings for browser behaviour
    */
-  declare interface SMART$Settings {
+  declare interface FHIR$SMART$Settings {
     /**
      * Replaces the browser's current URL using window.history.replaceState API.
      * Default to true
@@ -640,7 +640,7 @@ Returns an object with code values as index and array of observations as values
   /**
    * Client or application specific settings provided on the FHIR server during the client/application registration.
    */
-  declare interface SMART$OAuth2ClientSettings {
+  declare interface FHIR$SMART$OAuth2ClientSettings {
     /**
      * Unique ID representing the client or application
      */
@@ -670,7 +670,7 @@ Returns an object with code values as index and array of observations as values
   /**
    * The OAuth2 endpoints (Registration URI, Authorize URI, Token URI)
    */
-  declare interface SMART$OAuth2Endpoints {
+  declare interface FHIR$SMART$OAuth2Endpoints {
     /**
      * OAuth2 Registration URI
      */
@@ -690,7 +690,7 @@ Returns an object with code values as index and array of observations as values
   /**
    * OAuth2 Provider information. If provided during the Authorize call, the library skips the conformance statement introspection
    */
-  declare interface SMART$OAuth2Provider {
+  declare interface FHIR$SMART$OAuth2Provider {
     /**
      * FHIR Service URL
      */
@@ -709,13 +709,13 @@ Returns an object with code values as index and array of observations as values
     /**
      * The OAuth2 endpoints (Registration URI, Authorize URI, Token URI)
      */
-    oauth2?: SMART$OAuth2Endpoints;
+    oauth2?: FHIR$SMART$OAuth2Endpoints;
   }
 
   /**
    * OAuth2 Configuration of the SMART on FHIR Server
    */
-  declare interface SMART$OAuth2Configuration {
+  declare interface FHIR$SMART$OAuth2Configuration {
     /**
      * Set the response type based on the Authorization Grant eg. code(Authorization Code Grant), token(Implicit Grant)
      */
@@ -724,7 +724,7 @@ Returns an object with code values as index and array of observations as values
     /**
      * Client or application specific settings provided on the FHIR server during the client/application registration.
      */
-    FHIR$client?: SMART$OAuth2ClientSettings;
+    client?: FHIR$SMART$OAuth2ClientSettings;
 
     /**
      * FHIR Service URL
@@ -739,17 +739,17 @@ Returns an object with code values as index and array of observations as values
     /**
      * OAuth2 Provider information. If provided during the Authorize call, the library skips the conformance statement introspection
      */
-    provider?: SMART$OAuth2Provider;
+    provider?: FHIR$SMART$OAuth2Provider;
   }
 
   /**
    * SMART on FHIR OAuth2 authorization helper methods and settings
    */
-  declare interface SMART$OAuth2 {
+  declare interface FHIR$SMART$OAuth2 {
     /**
      * Settings to drive the JS client browser behaviour
      */
-    settings: SMART$Settings;
+    settings: FHIR$SMART$Settings;
 
     /**
      * Handles the OAuth2 redirect
@@ -758,7 +758,7 @@ Returns an object with code values as index and array of observations as values
      * @param errback Called when either the OAuth2 workflow has not been started on an error occured during the OAuth2 workflow.
      */
     ready(
-      callback?: (smart: SMART$SMARTClient) => void,
+      callback?: (smart: FHIR$SMART$SMARTClient) => void,
       errback?: (...args: any[]) => void
     ): void;
 
@@ -768,7 +768,7 @@ Returns an object with code values as index and array of observations as values
      * @param errback Method which is triggered when an error occurs during the OAuth2 authorization workflow
      */
     authorize(
-      params: SMART$OAuth2Configuration,
+      params: FHIR$SMART$OAuth2Configuration,
       errback?: (...args: any[]) => void
     ): void;
 
@@ -789,12 +789,10 @@ Returns an object with code values as index and array of observations as values
    * Construct the SMART client directly without using the Oauth2 workflow
    * @param context Context required to construct the client.
    */
-  declare function FHIR$client(
-    context: SMART$SMART$Context
-  ): SMART$SMART$Client;
+  declare function FHIR$client(context: SMART$Context): SMART$Client;
 
   /**
    * Property which exposes the OAUth2 specific workflow helpers
    */
-  declare var FHIR$oauth2: SMART$SMART$OAuth2;
+  declare var FHIR$oauth2: SMART$OAuth2;
 }
