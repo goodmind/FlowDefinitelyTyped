@@ -20,5 +20,5 @@ declare module "sheetify" {
     }
   ): void;
 
-  declare module.exports: typeof sheetify;
+  declare export default typeof sheetify;
 }
