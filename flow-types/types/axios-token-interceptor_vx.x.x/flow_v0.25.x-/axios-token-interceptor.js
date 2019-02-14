@@ -2,8 +2,8 @@ declare module "axios-token-interceptor" {
   import type { AxiosRequestConfig } from "axios";
 
   declare function AxiosTokenProvider(
-    Options: AxiosTokenProvider$AxiosTokenProvider$InterceptorOptions
-  ): AxiosTokenProvider$AxiosTokenProvider$TokenProvider;
+    Options: AxiosTokenProvider$InterceptorOptions
+  ): AxiosTokenProvider$TokenProvider;
 
   declare var npm$namespace$AxiosTokenProvider: {
     tokenCache: typeof AxiosTokenProvider$tokenCache
@@ -32,5 +32,5 @@ declare module "axios-token-interceptor" {
   declare interface AxiosTokenProvider$TokenCache {
     reset(): void;
   }
-  declare module.exports: typeof AxiosTokenProvider;
+  declare export default typeof AxiosTokenProvider;
 }
