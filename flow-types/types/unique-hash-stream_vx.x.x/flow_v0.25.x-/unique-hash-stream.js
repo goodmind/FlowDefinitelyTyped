@@ -1,7 +1,7 @@
 declare module "unique-hash-stream" {
   import type { Transform } from "stream";
 
-  declare module.exports: typeof UniqueFactory;
+  declare export default typeof UniqueFactory;
 
   declare function UniqueFactory(hashingFn?: (doc: any) => string): Transform;
 
