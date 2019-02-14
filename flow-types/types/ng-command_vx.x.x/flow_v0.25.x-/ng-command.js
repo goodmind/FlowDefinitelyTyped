@@ -1,6 +1,8 @@
 declare module "ng-command" {
   declare var npm$namespace$ngCommand: {
-    ModuleName: typeof ngCommand$ModuleName
+    ModuleName: typeof ngCommand$ModuleName,
+
+    Command: typeof ngCommand$Command
   };
   declare var ngCommand$ModuleName: string;
 
@@ -24,7 +26,7 @@ declare module "ng-command" {
     execute: () => angular.IPromise<any>;
   }
 
-  declare class ngCommand$Command mixins ngCommand$ICommand {
+  declare class ngCommand$Command mixins ICommand {
     static id: string;
     isExecuting: boolean;
     canExecute: boolean;
