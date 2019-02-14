@@ -1,35 +1,39 @@
 declare module "gapi.client.classroom" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    courses: typeof client$courses,
-    invitations: typeof client$invitations,
-    registrations: typeof client$registrations,
-    userProfiles: typeof client$userProfiles
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    courses: typeof gapi$client$courses,
+    invitations: typeof gapi$client$invitations,
+    registrations: typeof gapi$client$registrations,
+    userProfiles: typeof gapi$client$userProfiles
   };
 
   /**
    * Load Google Classroom API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "classroom",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "classroom",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$courses: classroom$classroom$CoursesResource;
+  declare var gapi$client$courses: classroom$CoursesResource;
 
-  declare var client$invitations: classroom$classroom$InvitationsResource;
+  declare var gapi$client$invitations: classroom$InvitationsResource;
 
-  declare var client$registrations: classroom$classroom$RegistrationsResource;
+  declare var gapi$client$registrations: classroom$RegistrationsResource;
 
-  declare var client$userProfiles: classroom$classroom$UserProfilesResource;
+  declare var gapi$client$userProfiles: classroom$UserProfilesResource;
 
-  declare interface classroom$Announcement {
+  declare interface gapi$client$classroom$Announcement {
     /**
      * Absolute link to this announcement in the Classroom web UI.
      * This is only populated if `state` is `PUBLISHED`.
@@ -113,7 +117,7 @@ declare module "gapi.client.classroom" {
     updateTime?: string;
   }
 
-  declare interface classroom$Assignment {
+  declare interface gapi$client$classroom$Assignment {
     /**
      * Drive folder where attachments from student submissions are placed.
      * This is only populated for course teachers and administrators.
@@ -121,7 +125,7 @@ declare module "gapi.client.classroom" {
     studentWorkFolder?: classroom$DriveFolder;
   }
 
-  declare interface classroom$AssignmentSubmission {
+  declare interface gapi$client$classroom$AssignmentSubmission {
     /**
      * Attachments added by the student.
      * Drive files that correspond to materials with a share mode of
@@ -135,7 +139,7 @@ declare module "gapi.client.classroom" {
     attachments?: classroom$Attachment[];
   }
 
-  declare interface classroom$Attachment {
+  declare interface gapi$client$classroom$Attachment {
     /**
      * Google Drive file attachment.
      */
@@ -157,7 +161,7 @@ declare module "gapi.client.classroom" {
     youTubeVideo?: classroom$YouTubeVideo;
   }
 
-  declare interface classroom$CloudPubsubTopic {
+  declare interface gapi$client$classroom$CloudPubsubTopic {
     /**
      * The `name` field of a Cloud Pub/Sub
      * [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
@@ -165,7 +169,7 @@ declare module "gapi.client.classroom" {
     topicName?: string;
   }
 
-  declare interface classroom$Course {
+  declare interface gapi$client$classroom$Course {
     /**
      * Absolute link to this course in the Classroom web UI.
      *
@@ -326,7 +330,7 @@ declare module "gapi.client.classroom" {
     updateTime?: string;
   }
 
-  declare interface classroom$CourseAlias {
+  declare interface gapi$client$classroom$CourseAlias {
     /**
      * Alias string. The format of the string indicates the desired alias scoping.
      *
@@ -340,7 +344,7 @@ declare module "gapi.client.classroom" {
     alias?: string;
   }
 
-  declare interface classroom$CourseMaterial {
+  declare interface gapi$client$classroom$CourseMaterial {
     /**
      * Google Drive file attachment.
      */
@@ -362,11 +366,11 @@ declare module "gapi.client.classroom" {
     youTubeVideo?: classroom$YouTubeVideo;
   }
 
-  declare interface classroom$CourseMaterialSet {
+  declare interface gapi$client$classroom$CourseMaterialSet {
     /**
      * Materials attached to this set.
      */
-    materials?: classroom$CourseMaterial[];
+    materials?: gapi$client$classroom$CourseMaterial[];
 
     /**
      * Title for this set.
@@ -374,14 +378,14 @@ declare module "gapi.client.classroom" {
     title?: string;
   }
 
-  declare interface classroom$CourseRosterChangesInfo {
+  declare interface gapi$client$classroom$CourseRosterChangesInfo {
     /**
      * The `course_id` of the course to subscribe to roster changes for.
      */
     courseId?: string;
   }
 
-  declare interface classroom$CourseWork {
+  declare interface gapi$client$classroom$CourseWork {
     /**
      * Absolute link to this course work in the Classroom web UI.
      * This is only populated if `state` is `PUBLISHED`.
@@ -402,7 +406,7 @@ declare module "gapi.client.classroom" {
      *
      * Read-only.
      */
-    assignment?: classroom$Assignment;
+    assignment?: gapi$client$classroom$Assignment;
 
     /**
      * Whether this course work item is associated with the Developer Console
@@ -534,7 +538,7 @@ declare module "gapi.client.classroom" {
     workType?: string;
   }
 
-  declare interface classroom$Date {
+  declare interface gapi$client$classroom$Date {
     /**
      * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
      * if specifying a year/month where the day is not significant.
@@ -553,7 +557,7 @@ declare module "gapi.client.classroom" {
     year?: number;
   }
 
-  declare interface classroom$DriveFile {
+  declare interface gapi$client$classroom$DriveFile {
     /**
      * URL that can be used to access the Drive item.
      *
@@ -581,7 +585,7 @@ declare module "gapi.client.classroom" {
     title?: string;
   }
 
-  declare interface classroom$DriveFolder {
+  declare interface gapi$client$classroom$DriveFolder {
     /**
      * URL that can be used to access the Drive folder.
      *
@@ -602,12 +606,12 @@ declare module "gapi.client.classroom" {
     title?: string;
   }
 
-  declare interface classroom$Feed {
+  declare interface gapi$client$classroom$Feed {
     /**
      * Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
      * This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`.
      */
-    courseRosterChangesInfo?: classroom$CourseRosterChangesInfo;
+    courseRosterChangesInfo?: gapi$client$classroom$CourseRosterChangesInfo;
 
     /**
      * The type of feed.
@@ -615,7 +619,7 @@ declare module "gapi.client.classroom" {
     feedType?: string;
   }
 
-  declare interface classroom$Form {
+  declare interface gapi$client$classroom$Form {
     /**
      * URL of the form.
      */
@@ -645,14 +649,14 @@ declare module "gapi.client.classroom" {
     title?: string;
   }
 
-  declare interface classroom$GlobalPermission {
+  declare interface gapi$client$classroom$GlobalPermission {
     /**
      * Permission value.
      */
     permission?: string;
   }
 
-  declare interface classroom$GradeHistory {
+  declare interface gapi$client$classroom$GradeHistory {
     /**
      * The teacher who made the grade change.
      */
@@ -680,7 +684,7 @@ declare module "gapi.client.classroom" {
     pointsEarned?: number;
   }
 
-  declare interface classroom$Guardian {
+  declare interface gapi$client$classroom$Guardian {
     /**
      * Identifier for the guardian.
      */
@@ -703,7 +707,7 @@ declare module "gapi.client.classroom" {
     studentId?: string;
   }
 
-  declare interface classroom$GuardianInvitation {
+  declare interface gapi$client$classroom$GuardianInvitation {
     /**
      * The time that this invitation was created.
      *
@@ -735,7 +739,7 @@ declare module "gapi.client.classroom" {
     studentId?: string;
   }
 
-  declare interface classroom$IndividualStudentsOptions {
+  declare interface gapi$client$classroom$IndividualStudentsOptions {
     /**
      * Identifiers for the students that have access to the
      * coursework/announcement.
@@ -743,7 +747,7 @@ declare module "gapi.client.classroom" {
     studentIds?: string[];
   }
 
-  declare interface classroom$Invitation {
+  declare interface gapi$client$classroom$Invitation {
     /**
      * Identifier of the course to invite the user to.
      */
@@ -775,7 +779,7 @@ declare module "gapi.client.classroom" {
     userId?: string;
   }
 
-  declare interface classroom$Link {
+  declare interface gapi$client$classroom$Link {
     /**
      * URL of a thumbnail image of the target URL.
      *
@@ -797,11 +801,11 @@ declare module "gapi.client.classroom" {
     url?: string;
   }
 
-  declare interface classroom$ListAnnouncementsResponse {
+  declare interface gapi$client$classroom$ListAnnouncementsResponse {
     /**
      * Announcement items that match the request.
      */
-    announcements?: classroom$Announcement[];
+    announcements?: gapi$client$classroom$Announcement[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -810,11 +814,11 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListCourseAliasesResponse {
+  declare interface gapi$client$classroom$ListCourseAliasesResponse {
     /**
      * The course aliases.
      */
-    aliases?: classroom$CourseAlias[];
+    aliases?: gapi$client$classroom$CourseAlias[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -823,11 +827,11 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListCourseWorkResponse {
+  declare interface gapi$client$classroom$ListCourseWorkResponse {
     /**
      * Course work items that match the request.
      */
-    courseWork?: classroom$CourseWork[];
+    courseWork?: gapi$client$classroom$CourseWork[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -836,11 +840,11 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListCoursesResponse {
+  declare interface gapi$client$classroom$ListCoursesResponse {
     /**
      * Courses that match the list request.
      */
-    client$courses?: classroom$Course[];
+    courses?: gapi$client$classroom$Course[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -849,11 +853,11 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListGuardianInvitationsResponse {
+  declare interface gapi$client$classroom$ListGuardianInvitationsResponse {
     /**
      * Guardian invitations that matched the list request.
      */
-    guardianInvitations?: classroom$GuardianInvitation[];
+    guardianInvitations?: gapi$client$classroom$GuardianInvitation[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -862,12 +866,12 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListGuardiansResponse {
+  declare interface gapi$client$classroom$ListGuardiansResponse {
     /**
      * Guardians on this page of results that met the criteria specified in
      * the request.
      */
-    guardians?: classroom$Guardian[];
+    guardians?: gapi$client$classroom$Guardian[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -876,11 +880,11 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListInvitationsResponse {
+  declare interface gapi$client$classroom$ListInvitationsResponse {
     /**
      * Invitations that match the list request.
      */
-    client$invitations?: classroom$Invitation[];
+    invitations?: gapi$client$classroom$Invitation[];
 
     /**
      * Token identifying the next page of results to return. If empty, no further
@@ -889,7 +893,7 @@ declare module "gapi.client.classroom" {
     nextPageToken?: string;
   }
 
-  declare interface classroom$ListStudentSubmissionsResponse {
+  declare interface gapi$client$classroom$ListStudentSubmissionsResponse {
     /**
      * Token identifying the next page of results to return. If empty, no further
      * results are available.
@@ -902,7 +906,7 @@ declare module "gapi.client.classroom" {
     studentSubmissions?: classroom$StudentSubmission[];
   }
 
-  declare interface classroom$ListStudentsResponse {
+  declare interface gapi$client$classroom$ListStudentsResponse {
     /**
      * Token identifying the next page of results to return. If empty, no further
      * results are available.
@@ -915,7 +919,7 @@ declare module "gapi.client.classroom" {
     students?: classroom$Student[];
   }
 
-  declare interface classroom$ListTeachersResponse {
+  declare interface gapi$client$classroom$ListTeachersResponse {
     /**
      * Token identifying the next page of results to return. If empty, no further
      * results are available.
@@ -928,7 +932,7 @@ declare module "gapi.client.classroom" {
     teachers?: classroom$Teacher[];
   }
 
-  declare interface classroom$Material {
+  declare interface gapi$client$classroom$Material {
     /**
      * Google Drive file material.
      */
@@ -937,13 +941,13 @@ declare module "gapi.client.classroom" {
     /**
      * Google Forms material.
      */
-    form?: classroom$Form;
+    form?: gapi$client$classroom$Form;
 
     /**
      * Link material. On creation, will be upgraded to a more appropriate type
      * if possible, and this will be reflected in the response.
      */
-    link?: classroom$Link;
+    link?: gapi$client$classroom$Link;
 
     /**
      * YouTube video material.
@@ -951,7 +955,7 @@ declare module "gapi.client.classroom" {
     youtubeVideo?: classroom$YouTubeVideo;
   }
 
-  declare interface classroom$ModifyAnnouncementAssigneesRequest {
+  declare interface gapi$client$classroom$ModifyAnnouncementAssigneesRequest {
     /**
      * Mode of the announcement describing whether it will be accessible by all
      * students or specified individual students.
@@ -965,17 +969,17 @@ declare module "gapi.client.classroom" {
     modifyIndividualStudentsOptions?: classroom$ModifyIndividualStudentsOptions;
   }
 
-  declare interface classroom$ModifyAttachmentsRequest {
+  declare interface gapi$client$classroom$ModifyAttachmentsRequest {
     /**
      * Attachments to add.
      * A student submission may not have more than 20 attachments.
      *
      * Form attachments are not supported.
      */
-    addAttachments?: classroom$Attachment[];
+    addAttachments?: gapi$client$classroom$Attachment[];
   }
 
-  declare interface classroom$ModifyCourseWorkAssigneesRequest {
+  declare interface gapi$client$classroom$ModifyCourseWorkAssigneesRequest {
     /**
      * Mode of the coursework describing whether it will be assigned to all
      * students or specified individual students.
@@ -989,7 +993,7 @@ declare module "gapi.client.classroom" {
     modifyIndividualStudentsOptions?: classroom$ModifyIndividualStudentsOptions;
   }
 
-  declare interface classroom$ModifyIndividualStudentsOptions {
+  declare interface gapi$client$classroom$ModifyIndividualStudentsOptions {
     /**
      * Ids of students to be added as having access to this
      * coursework/announcement.
@@ -1003,21 +1007,21 @@ declare module "gapi.client.classroom" {
     removeStudentIds?: string[];
   }
 
-  declare interface classroom$MultipleChoiceQuestion {
+  declare interface gapi$client$classroom$MultipleChoiceQuestion {
     /**
      * Possible choices.
      */
     choices?: string[];
   }
 
-  declare interface classroom$MultipleChoiceSubmission {
+  declare interface gapi$client$classroom$MultipleChoiceSubmission {
     /**
      * Student's select choice.
      */
     answer?: string;
   }
 
-  declare interface classroom$Name {
+  declare interface gapi$client$classroom$Name {
     /**
      * The user's last name.
      *
@@ -1041,11 +1045,11 @@ declare module "gapi.client.classroom" {
     givenName?: string;
   }
 
-  declare interface classroom$Registration {
+  declare interface gapi$client$classroom$Registration {
     /**
      * The Cloud Pub/Sub topic that notifications are to be sent to.
      */
-    cloudPubsubTopic?: classroom$CloudPubsubTopic;
+    cloudPubsubTopic?: gapi$client$classroom$CloudPubsubTopic;
 
     /**
      * The time until which the `Registration` is effective.
@@ -1058,7 +1062,7 @@ declare module "gapi.client.classroom" {
      * Specification for the class of notifications that Classroom should deliver
      * to the `destination`.
      */
-    feed?: classroom$Feed;
+    feed?: gapi$client$classroom$Feed;
 
     /**
      * A server-generated unique identifier for this `Registration`.
@@ -1068,11 +1072,11 @@ declare module "gapi.client.classroom" {
     registrationId?: string;
   }
 
-  declare interface classroom$SharedDriveFile {
+  declare interface gapi$client$classroom$SharedDriveFile {
     /**
      * Drive file details.
      */
-    driveFile?: classroom$DriveFile;
+    driveFile?: gapi$client$classroom$DriveFile;
 
     /**
      * Mechanism by which students access the Drive item.
@@ -1080,14 +1084,14 @@ declare module "gapi.client.classroom" {
     shareMode?: string;
   }
 
-  declare interface classroom$ShortAnswerSubmission {
+  declare interface gapi$client$classroom$ShortAnswerSubmission {
     /**
      * Student response to a short-answer question.
      */
     answer?: string;
   }
 
-  declare interface classroom$StateHistory {
+  declare interface gapi$client$classroom$StateHistory {
     /**
      * The teacher or student who made the change
      */
@@ -1104,7 +1108,7 @@ declare module "gapi.client.classroom" {
     stateTimestamp?: string;
   }
 
-  declare interface classroom$Student {
+  declare interface gapi$client$classroom$Student {
     /**
      * Identifier of the course.
      *
@@ -1125,7 +1129,7 @@ declare module "gapi.client.classroom" {
      *
      * Read-only.
      */
-    studentWorkFolder?: classroom$DriveFolder;
+    studentWorkFolder?: gapi$client$classroom$DriveFolder;
 
     /**
      * Identifier of the user.
@@ -1140,7 +1144,7 @@ declare module "gapi.client.classroom" {
     userId?: string;
   }
 
-  declare interface classroom$StudentSubmission {
+  declare interface gapi$client$classroom$StudentSubmission {
     /**
      * Absolute link to the submission in the Classroom web UI.
      *
@@ -1163,7 +1167,7 @@ declare module "gapi.client.classroom" {
      * Students can modify this content using
      * google.classroom.Work.ModifyAttachments.
      */
-    assignmentSubmission?: classroom$AssignmentSubmission;
+    assignmentSubmission?: gapi$client$classroom$AssignmentSubmission;
 
     /**
      * Whether this student submission is associated with the Developer Console
@@ -1232,12 +1236,12 @@ declare module "gapi.client.classroom" {
     /**
      * Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION.
      */
-    multipleChoiceSubmission?: classroom$MultipleChoiceSubmission;
+    multipleChoiceSubmission?: gapi$client$classroom$MultipleChoiceSubmission;
 
     /**
      * Submission content when course_work_type is SHORT_ANSWER_QUESTION.
      */
-    shortAnswerSubmission?: classroom$ShortAnswerSubmission;
+    shortAnswerSubmission?: gapi$client$classroom$ShortAnswerSubmission;
 
     /**
      * State of this submission.
@@ -1269,19 +1273,19 @@ declare module "gapi.client.classroom" {
     userId?: string;
   }
 
-  declare interface classroom$SubmissionHistory {
+  declare interface gapi$client$classroom$SubmissionHistory {
     /**
      * The grade history information of the submission, if present.
      */
-    gradeHistory?: classroom$GradeHistory;
+    gradeHistory?: gapi$client$classroom$GradeHistory;
 
     /**
      * The state history information of the submission, if present.
      */
-    stateHistory?: classroom$StateHistory;
+    stateHistory?: gapi$client$classroom$StateHistory;
   }
 
-  declare interface classroom$Teacher {
+  declare interface gapi$client$classroom$Teacher {
     /**
      * Identifier of the course.
      *
@@ -1309,7 +1313,7 @@ declare module "gapi.client.classroom" {
     userId?: string;
   }
 
-  declare interface classroom$TimeOfDay {
+  declare interface gapi$client$classroom$TimeOfDay {
     /**
      * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
      * to allow the value "24:00:00" for scenarios like business closing time.
@@ -1333,7 +1337,7 @@ declare module "gapi.client.classroom" {
     seconds?: number;
   }
 
-  declare interface classroom$UserProfile {
+  declare interface gapi$client$classroom$UserProfile {
     /**
      * Email address of the user.
      *
@@ -1353,14 +1357,14 @@ declare module "gapi.client.classroom" {
      *
      * Read-only.
      */
-    name?: classroom$Name;
+    name?: gapi$client$classroom$Name;
 
     /**
      * Global permissions of the user.
      *
      * Read-only.
      */
-    permissions?: classroom$GlobalPermission[];
+    permissions?: gapi$client$classroom$GlobalPermission[];
 
     /**
      * URL of user's profile photo.
@@ -1379,7 +1383,7 @@ declare module "gapi.client.classroom" {
     verifiedTeacher?: boolean;
   }
 
-  declare interface classroom$YouTubeVideo {
+  declare interface gapi$client$classroom$YouTubeVideo {
     /**
      * URL that can be used to view the YouTube video.
      *
@@ -1407,7 +1411,7 @@ declare module "gapi.client.classroom" {
     title?: string;
   }
 
-  declare interface classroom$AliasesResource {
+  declare interface gapi$client$classroom$AliasesResource {
     /**
      * Creates an alias for a course.
      *
@@ -1493,7 +1497,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$CourseAlias>;
+    }): Request<gapi$client$classroom$CourseAlias>;
 
     /**
      * Deletes an alias of a course.
@@ -1687,10 +1691,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListCourseAliasesResponse>;
+    }): Request<gapi$client$classroom$ListCourseAliasesResponse>;
   }
 
-  declare interface classroom$AnnouncementsResource {
+  declare interface gapi$client$classroom$AnnouncementsResource {
     /**
      * Creates an announcement.
      *
@@ -1776,7 +1780,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Announcement>;
+    }): Request<gapi$client$classroom$Announcement>;
 
     /**
      * Deletes an announcement.
@@ -1961,7 +1965,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Announcement>;
+    }): Request<gapi$client$classroom$Announcement>;
 
     /**
      * Returns a list of announcements that the requester is permitted to view.
@@ -2082,7 +2086,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListAnnouncementsResponse>;
+    }): Request<gapi$client$classroom$ListAnnouncementsResponse>;
 
     /**
      * Modifies assignee mode and options of an announcement.
@@ -2174,7 +2178,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Announcement>;
+    }): Request<gapi$client$classroom$Announcement>;
 
     /**
      * Updates one or more fields of an announcement.
@@ -2282,10 +2286,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Announcement>;
+    }): Request<gapi$client$classroom$Announcement>;
   }
 
-  declare interface classroom$StudentSubmissionsResource {
+  declare interface gapi$client$classroom$StudentSubmissionsResource {
     /**
      * Returns a student submission.
      *
@@ -2378,7 +2382,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$StudentSubmission>;
+    }): Request<gapi$client$classroom$StudentSubmission>;
 
     /**
      * Returns a list of student submissions that the requester is permitted to
@@ -2518,7 +2522,7 @@ declare module "gapi.client.classroom" {
        * &#42; the string literal `"me"`, indicating the requesting user
        */
       userId?: string
-    }): Request<classroom$ListStudentSubmissionsResponse>;
+    }): Request<gapi$client$classroom$ListStudentSubmissionsResponse>;
 
     /**
      * Modifies attachments of student submission.
@@ -2622,7 +2626,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$StudentSubmission>;
+    }): Request<gapi$client$classroom$StudentSubmission>;
 
     /**
      * Updates one or more fields of a student submission.
@@ -2738,7 +2742,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$StudentSubmission>;
+    }): Request<gapi$client$classroom$StudentSubmission>;
 
     /**
      * Reclaims a student submission on behalf of the student that owns it.
@@ -3062,7 +3066,7 @@ declare module "gapi.client.classroom" {
     }): Request<{}>;
   }
 
-  declare interface classroom$CourseWorkResource {
+  declare interface gapi$client$classroom$CourseWorkResource {
     /**
      * Creates course work.
      *
@@ -3155,7 +3159,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$CourseWork>;
+    }): Request<gapi$client$classroom$CourseWork>;
 
     /**
      * Deletes a course work.
@@ -3340,7 +3344,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$CourseWork>;
+    }): Request<gapi$client$classroom$CourseWork>;
 
     /**
      * Returns a list of course work that the requester is permitted to view.
@@ -3462,7 +3466,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListCourseWorkResponse>;
+    }): Request<gapi$client$classroom$ListCourseWorkResponse>;
 
     /**
      * Modifies assignee mode and options of a coursework.
@@ -3554,7 +3558,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$CourseWork>;
+    }): Request<gapi$client$classroom$CourseWork>;
 
     /**
      * Updates one or more fields of a course work.
@@ -3677,11 +3681,11 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$CourseWork>;
-    studentSubmissions: classroom$StudentSubmissionsResource;
+    }): Request<gapi$client$classroom$CourseWork>;
+    studentSubmissions: gapi$client$classroom$StudentSubmissionsResource;
   }
 
-  declare interface classroom$StudentsResource {
+  declare interface gapi$client$classroom$StudentsResource {
     /**
      * Adds a user as a student of a course.
      *
@@ -3778,7 +3782,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Student>;
+    }): Request<gapi$client$classroom$Student>;
 
     /**
      * Deletes a student of a course.
@@ -3966,7 +3970,7 @@ declare module "gapi.client.classroom" {
        * &#42; the string literal `"me"`, indicating the requesting user
        */
       userId: string
-    }): Request<classroom$Student>;
+    }): Request<gapi$client$classroom$Student>;
 
     /**
      * Returns a list of students of this course that the requester
@@ -4067,10 +4071,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListStudentsResponse>;
+    }): Request<gapi$client$classroom$ListStudentsResponse>;
   }
 
-  declare interface classroom$TeachersResource {
+  declare interface gapi$client$classroom$TeachersResource {
     /**
      * Creates a teacher of a course.
      *
@@ -4160,7 +4164,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Teacher>;
+    }): Request<gapi$client$classroom$Teacher>;
 
     /**
      * Deletes a teacher of a course.
@@ -4350,7 +4354,7 @@ declare module "gapi.client.classroom" {
        * &#42; the string literal `"me"`, indicating the requesting user
        */
       userId: string
-    }): Request<classroom$Teacher>;
+    }): Request<gapi$client$classroom$Teacher>;
 
     /**
      * Returns a list of teachers of this course that the requester
@@ -4451,10 +4455,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListTeachersResponse>;
+    }): Request<gapi$client$classroom$ListTeachersResponse>;
   }
 
-  declare interface classroom$CoursesResource {
+  declare interface gapi$client$classroom$CoursesResource {
     /**
      * Creates a course.
      *
@@ -4537,7 +4541,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Course>;
+    }): Request<gapi$client$classroom$Course>;
 
     /**
      * Deletes a course.
@@ -4703,7 +4707,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Course>;
+    }): Request<gapi$client$classroom$Course>;
 
     /**
      * Returns a list of courses that the requesting user is permitted to view,
@@ -4826,7 +4830,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListCoursesResponse>;
+    }): Request<gapi$client$classroom$ListCoursesResponse>;
 
     /**
      * Updates one or more fields in a course.
@@ -4936,7 +4940,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Course>;
+    }): Request<gapi$client$classroom$Course>;
 
     /**
      * Updates a course.
@@ -5021,15 +5025,15 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Course>;
-    aliases: classroom$AliasesResource;
-    announcements: classroom$AnnouncementsResource;
-    courseWork: classroom$CourseWorkResource;
-    students: classroom$StudentsResource;
-    teachers: classroom$TeachersResource;
+    }): Request<gapi$client$classroom$Course>;
+    aliases: gapi$client$classroom$AliasesResource;
+    announcements: gapi$client$classroom$AnnouncementsResource;
+    courseWork: gapi$client$classroom$CourseWorkResource;
+    students: gapi$client$classroom$StudentsResource;
+    teachers: gapi$client$classroom$TeachersResource;
   }
 
-  declare interface classroom$InvitationsResource {
+  declare interface gapi$client$classroom$InvitationsResource {
     /**
      * Accepts an invitation, removing it and adding the invited user to the
      * teachers or students (as appropriate) of the specified course. Only the
@@ -5197,7 +5201,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Invitation>;
+    }): Request<gapi$client$classroom$Invitation>;
 
     /**
      * Deletes an invitation.
@@ -5359,7 +5363,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Invitation>;
+    }): Request<gapi$client$classroom$Invitation>;
 
     /**
      * Returns a list of invitations that the requesting user is permitted to
@@ -5471,10 +5475,10 @@ declare module "gapi.client.classroom" {
        * &#42; the string literal `"me"`, indicating the requesting user
        */
       userId?: string
-    }): Request<classroom$ListInvitationsResponse>;
+    }): Request<gapi$client$classroom$ListInvitationsResponse>;
   }
 
-  declare interface classroom$RegistrationsResource {
+  declare interface gapi$client$classroom$RegistrationsResource {
     /**
      * Creates a `Registration`, causing Classroom to start sending notifications
      * from the provided `feed` to the provided `destination`.
@@ -5573,7 +5577,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Registration>;
+    }): Request<gapi$client$classroom$Registration>;
 
     /**
      * Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -5652,7 +5656,7 @@ declare module "gapi.client.classroom" {
     }): Request<{}>;
   }
 
-  declare interface classroom$GuardianInvitationsResource {
+  declare interface gapi$client$classroom$GuardianInvitationsResource {
     /**
      * Creates a guardian invitation, and sends an email to the guardian asking
      * them to confirm that they are the student's guardian.
@@ -5755,7 +5759,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$GuardianInvitation>;
+    }): Request<gapi$client$classroom$GuardianInvitation>;
 
     /**
      * Returns a specific guardian invitation.
@@ -5848,7 +5852,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$GuardianInvitation>;
+    }): Request<gapi$client$classroom$GuardianInvitation>;
 
     /**
      * Returns a list of guardian invitations that the requesting user is
@@ -5977,7 +5981,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListGuardianInvitationsResponse>;
+    }): Request<gapi$client$classroom$ListGuardianInvitationsResponse>;
 
     /**
      * Modifies a guardian invitation.
@@ -6087,10 +6091,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$GuardianInvitation>;
+    }): Request<gapi$client$classroom$GuardianInvitation>;
   }
 
-  declare interface classroom$GuardiansResource {
+  declare interface gapi$client$classroom$GuardiansResource {
     /**
      * Deletes a guardian.
      *
@@ -6288,7 +6292,7 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$Guardian>;
+    }): Request<gapi$client$classroom$Guardian>;
 
     /**
      * Returns a list of guardians that the requesting user is permitted to
@@ -6415,10 +6419,10 @@ declare module "gapi.client.classroom" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<classroom$ListGuardiansResponse>;
+    }): Request<gapi$client$classroom$ListGuardiansResponse>;
   }
 
-  declare interface classroom$UserProfilesResource {
+  declare interface gapi$client$classroom$UserProfilesResource {
     /**
      * Returns a user profile.
      *
@@ -6503,8 +6507,8 @@ declare module "gapi.client.classroom" {
        * &#42; the string literal `"me"`, indicating the requesting user
        */
       userId: string
-    }): Request<classroom$UserProfile>;
-    guardianInvitations: classroom$GuardianInvitationsResource;
-    guardians: classroom$GuardiansResource;
+    }): Request<gapi$client$classroom$UserProfile>;
+    guardianInvitations: gapi$client$classroom$GuardianInvitationsResource;
+    guardians: gapi$client$classroom$GuardiansResource;
   }
 }
