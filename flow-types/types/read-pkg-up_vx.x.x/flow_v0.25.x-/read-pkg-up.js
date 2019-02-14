@@ -34,9 +34,9 @@ declare module "read-pkg-up" {
     normalize?: boolean;
   }
 
-  declare type ReadPkgUp$Package = normalize.ReadPkgUp$Package;
+  declare type ReadPkgUp$Package = normalize.Package;
   declare function ReadPkgUp(
-    options: ReadPkgUp$ReadPkgUp$Options & {
+    options: ReadPkgUp$Options & {
       normalize: false
     }
   ): Promise<{
@@ -47,11 +47,11 @@ declare module "read-pkg-up" {
   }>;
 
   declare function ReadPkgUp(
-    options?: ReadPkgUp$ReadPkgUp$Options
+    options?: ReadPkgUp$Options
   ): Promise<{
     path: string,
-    pkg: normalize.ReadPkgUp$Package
+    pkg: normalize.Package
   }>;
 
-  declare module.exports: typeof ReadPkgUp;
+  declare export default typeof ReadPkgUp;
 }
