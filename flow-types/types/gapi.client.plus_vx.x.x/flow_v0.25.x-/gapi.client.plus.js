@@ -1,29 +1,36 @@
 declare module "gapi.client.plus" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    activities: typeof client$activities,
-    comments: typeof client$comments,
-    people: typeof client$people
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    activities: typeof gapi$client$activities,
+    comments: typeof gapi$client$comments,
+    people: typeof gapi$client$people
   };
 
   /**
    * Load Google+ API v1
    */
-  declare function client$load(name: "plus", version: "v1"): PromiseLike<void>;
+  declare function gapi$client$load(
+    name: "plus",
+    version: "v1"
+  ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "plus",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$activities: plus$plus$ActivitiesResource;
+  declare var gapi$client$activities: plus$ActivitiesResource;
 
-  declare var client$comments: plus$plus$CommentsResource;
+  declare var gapi$client$comments: plus$CommentsResource;
 
-  declare var client$people: plus$plus$PeopleResource;
+  declare var gapi$client$people: plus$PeopleResource;
 
-  declare interface plus$Acl {
+  declare interface gapi$client$plus$Acl {
     /**
      * Description of the access granted, suitable for display.
      */
@@ -40,11 +47,11 @@ declare module "gapi.client.plus" {
     kind?: string;
   }
 
-  declare interface plus$Activity {
+  declare interface gapi$client$plus$Activity {
     /**
      * Identifies who has access to see this activity.
      */
-    access?: plus$Acl;
+    access?: gapi$client$plus$Acl;
 
     /**
      * The person who performed this activity.
@@ -483,7 +490,7 @@ declare module "gapi.client.plus" {
     verb?: string;
   }
 
-  declare interface plus$ActivityFeed {
+  declare interface gapi$client$plus$ActivityFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -497,7 +504,7 @@ declare module "gapi.client.plus" {
     /**
      * The activities in this page of results.
      */
-    items?: plus$Activity[];
+    items?: gapi$client$plus$Activity[];
 
     /**
      * Identifies this resource as a collection of activities. Value: "plus#activityFeed".
@@ -530,7 +537,7 @@ declare module "gapi.client.plus" {
     updated?: string;
   }
 
-  declare interface plus$Comment {
+  declare interface gapi$client$plus$Comment {
     /**
      * The person who posted this comment.
      */
@@ -671,7 +678,7 @@ declare module "gapi.client.plus" {
     verb?: string;
   }
 
-  declare interface plus$CommentFeed {
+  declare interface gapi$client$plus$CommentFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -685,7 +692,7 @@ declare module "gapi.client.plus" {
     /**
      * The comments in this page of results.
      */
-    items?: plus$Comment[];
+    items?: gapi$client$plus$Comment[];
 
     /**
      * Identifies this resource as a collection of comments. Value: "plus#commentFeed".
@@ -713,7 +720,7 @@ declare module "gapi.client.plus" {
     updated?: string;
   }
 
-  declare interface plus$PeopleFeed {
+  declare interface gapi$client$plus$PeopleFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -752,7 +759,7 @@ declare module "gapi.client.plus" {
     totalItems?: number;
   }
 
-  declare interface plus$Person {
+  declare interface gapi$client$plus$Person {
     /**
      * A short biography for this person.
      */
@@ -1108,7 +1115,7 @@ declare module "gapi.client.plus" {
     verified?: boolean;
   }
 
-  declare interface plus$Place {
+  declare interface gapi$client$plus$Place {
     /**
      * The physical address of the place.
      */
@@ -1150,7 +1157,7 @@ declare module "gapi.client.plus" {
     };
   }
 
-  declare interface plus$PlusAclentryResource {
+  declare interface gapi$client$plus$PlusAclentryResource {
     /**
      * A descriptive name for this entry. Suitable for display.
      */
@@ -1173,7 +1180,7 @@ declare module "gapi.client.plus" {
     type?: string;
   }
 
-  declare interface plus$ActivitiesResource {
+  declare interface gapi$client$plus$ActivitiesResource {
     /**
      * Get an activity.
      */
@@ -1218,7 +1225,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$Activity>;
+    }): Request<gapi$client$plus$Activity>;
 
     /**
      * List all of the activities in the specified collection for a particular user.
@@ -1281,7 +1288,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$ActivityFeed>;
+    }): Request<gapi$client$plus$ActivityFeed>;
 
     /**
      * Search public activities.
@@ -1349,10 +1356,10 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$ActivityFeed>;
+    }): Request<gapi$client$plus$ActivityFeed>;
   }
 
-  declare interface plus$CommentsResource {
+  declare interface gapi$client$plus$CommentsResource {
     /**
      * Get a comment.
      */
@@ -1397,7 +1404,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$Comment>;
+    }): Request<gapi$client$plus$Comment>;
 
     /**
      * List all of the comments for an activity.
@@ -1460,10 +1467,10 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$CommentFeed>;
+    }): Request<gapi$client$plus$CommentFeed>;
   }
 
-  declare interface plus$PeopleResource {
+  declare interface gapi$client$plus$PeopleResource {
     /**
      * Get a person's profile. If your app uses scope https://www.googleapis.com/auth/plus.login, this method is guaranteed to return ageRange and language.
      */
@@ -1508,7 +1515,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$Person>;
+    }): Request<gapi$client$plus$Person>;
 
     /**
      * List all of the people in the specified collection.
@@ -1576,7 +1583,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$PeopleFeed>;
+    }): Request<gapi$client$plus$PeopleFeed>;
 
     /**
      * List all of the people in the specified collection for a particular activity.
@@ -1639,7 +1646,7 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$PeopleFeed>;
+    }): Request<gapi$client$plus$PeopleFeed>;
 
     /**
      * Search all public profiles.
@@ -1702,6 +1709,6 @@ declare module "gapi.client.plus" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plus$PeopleFeed>;
+    }): Request<gapi$client$plus$PeopleFeed>;
   }
 }
