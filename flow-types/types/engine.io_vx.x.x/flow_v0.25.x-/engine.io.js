@@ -4,7 +4,10 @@ declare module "engine.io" {
   declare var npm$namespace$engine: {
     attach: typeof engine$attach,
     listen: typeof engine$listen,
-    protocol: typeof engine$protocol
+    protocol: typeof engine$protocol,
+
+    Server: typeof engine$Server,
+    Socket: typeof engine$Socket
   };
   declare type engine$Message = string | Buffer | ArrayBuffer | ArrayBufferView;
 
@@ -131,8 +134,7 @@ declare module "engine.io" {
         ) => void);
   }
 
-  declare type engine$ServerAttachOptions = {} & engine$ServerOptions &
-    engine$AttachOptions;
+  declare type engine$ServerAttachOptions = {} & ServerOptions & AttachOptions;
 
   declare interface engine$MessageOptions {
     compress?: boolean;
@@ -172,7 +174,7 @@ declare module "engine.io" {
      * Closes all clients
      */
     close(): this;
-    httpServer: http.engine$Server;
+    httpServer: http.Server;
 
     /**
      * Called internally when a Engine request is intercepted.
@@ -184,7 +186,7 @@ declare module "engine.io" {
      */
     handleUpgrade(
       req: http.IncomingMessage,
-      socket: net.engine$Socket,
+      socket: net.Socket,
       head: Buffer
     ): this;
 
@@ -192,7 +194,7 @@ declare module "engine.io" {
      * Attach this Server instance to an http.Server
      * Captures upgrade requests for a http.Server. In other words, makes a regular http.Server WebSocket-compatible.
      */
-    attach(http: http.engine$Server, opts?: engine$AttachOptions): this;
+    attach(http: http.Server, opts?: engine$AttachOptions): this;
 
     /**
      * Generate a socket id.
@@ -280,7 +282,7 @@ declare module "engine.io" {
   }
 
   declare function engine$attach(
-    http: net.engine$Server,
+    http: net.Server,
     opts?: engine$ServerAttachOptions
   ): engine$Server;
 
@@ -292,9 +294,9 @@ declare module "engine.io" {
 
   declare var engine$protocol: number;
   declare function engine(
-    httpServer?: net.engine$Server,
-    opts?: engine$engine$ServerOptions
-  ): engine$engine$Server;
+    httpServer?: net.Server,
+    opts?: engine$ServerOptions
+  ): engine$Server;
 
-  declare module.exports: typeof engine;
+  declare export default typeof engine;
 }
