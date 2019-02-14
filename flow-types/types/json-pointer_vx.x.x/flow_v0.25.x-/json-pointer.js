@@ -1,7 +1,5 @@
 declare module "json-pointer" {
-  declare function JSON_Pointer(
-    object: Object
-  ): JSON_Pointer$JSON_Pointer$JSON_PointerWrap;
+  declare function JSON_Pointer(object: Object): JSON_Pointer$JSON_PointerWrap;
 
   declare var npm$namespace$JSON_Pointer: {
     get: typeof JSON_Pointer$get,
@@ -78,32 +76,32 @@ declare module "json-pointer" {
     /**
      * Looks up a JSON pointer in an object.
      */
-    JSON_Pointer$get(pointer: string): any;
+    get(pointer: string): any;
 
     /**
      * Set a value for a JSON pointer on object.
      */
-    JSON_Pointer$set(pointer: string, value: any): void;
+    set(pointer: string, value: any): void;
 
     /**
      * Removes an attribute of object referenced by pointer
      */
-    JSON_Pointer$remove(pointer: string): void;
+    remove(pointer: string): void;
 
     /**
      * Creates a dictionary object (pointer -> value).
      */
-    JSON_Pointer$dict(): Object;
+    dict(): Object;
 
     /**
      * Just like: each(pointer.dict(obj), iterator);
      */
-    JSON_Pointer$walk(iterator: (value: any, key: string) => void): void;
+    walk(iterator: (value: any, key: string) => void): void;
 
     /**
      * Tests if an object has a value for a JSON pointer.
      */
-    JSON_Pointer$has(pointer: string): boolean;
+    has(pointer: string): boolean;
   }
-  declare module.exports: typeof JSON_Pointer;
+  declare export default typeof JSON_Pointer;
 }
