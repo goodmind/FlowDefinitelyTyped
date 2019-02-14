@@ -1,5 +1,5 @@
 declare module "npm-paths" {
-  declare module.exports: typeof npmPaths;
+  declare export default typeof npmPaths;
 
   declare function npmPaths(
     cwd?:
