@@ -41,9 +41,7 @@ declare module "sass" {
      * @default undefined
      */
     functions?: {
-      [key: string]: (
-        ...args: types$types$SassType[]
-      ) => types$types$SassType | void
+      [key: string]: (...args: types$SassType[]) => types$SassType | void
     };
 
     /**
@@ -201,17 +199,25 @@ declare module "sass" {
   declare export function renderSync(options: Options): Result;
 
   declare var npm$namespace$types: {
-    Null: typeof types$Null
+    Null: typeof types$Null,
+
+    SassType: typeof types$SassType,
+    Number: typeof types$Number,
+    String: typeof types$String,
+    Boolean: typeof types$Boolean,
+    Color: typeof types$Color,
+    List: typeof types$List,
+    Map: typeof types$Map
   };
   declare class types$SassType {}
 
   declare type types$Null = {
     NULL: types$Null
-  } & types$SassType;
+  } & SassType;
 
   declare var types$Null: types$Null;
 
-  declare class types$Number mixins types$SassType {
+  declare class types$Number mixins SassType {
     constructor(value: number, unit?: string): this;
     getValue(): number;
     setValue(value: number): void;
@@ -219,20 +225,20 @@ declare module "sass" {
     setUnit(unit: string): void;
   }
 
-  declare class types$String mixins types$SassType {
+  declare class types$String mixins SassType {
     constructor(value: string): this;
     getValue(): string;
     setValue(value: string): void;
   }
 
-  declare class types$Boolean<T: boolean = boolean> mixins types$SassType {
+  declare class types$Boolean<T: boolean = boolean> mixins SassType {
     constructor(value: T): this;
     getValue(): T;
     static TRUE: types$Boolean<true>;
     static FALSE: types$Boolean<false>;
   }
 
-  declare class types$Color mixins types$SassType {
+  declare class types$Color mixins SassType {
     constructor(r: number, g: number, b: number, a?: number): this;
     getR(): number;
     setR(value: number): void;
@@ -244,8 +250,7 @@ declare module "sass" {
     setA(value: number): void;
   }
 
-  declare class types$List<T: types$SassType = types$SassType>
-    mixins types$SassType {
+  declare class types$List<T: types$SassType = types$SassType> mixins SassType {
     constructor(length: number, commaSeparator?: boolean): this;
     getValue(index: number): T | void;
     setValue(index: number, value: T): void;
@@ -257,7 +262,7 @@ declare module "sass" {
   declare class types$Map<
     K: types$SassType = types$SassType,
     V: types$SassType = types$SassType
-  > mixins types$SassType {
+  > mixins SassType {
     constructor(length: number): this;
     getValue(index: number): V;
     setValue(index: number, value: V): void;
