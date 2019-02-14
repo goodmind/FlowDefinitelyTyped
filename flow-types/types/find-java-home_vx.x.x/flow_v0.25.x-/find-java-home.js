@@ -17,5 +17,5 @@ declare module "find-java-home" {
     allowJre?: boolean
   }): Promise<string>;
 
-  declare module.exports: typeof findJavaHome;
+  declare export default typeof findJavaHome;
 }
