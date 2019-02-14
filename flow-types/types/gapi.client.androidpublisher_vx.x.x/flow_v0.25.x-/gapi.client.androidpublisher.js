@@ -1,38 +1,42 @@
 declare module "gapi.client.androidpublisher" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    edits: typeof client$edits,
-    entitlements: typeof client$entitlements,
-    inappproducts: typeof client$inappproducts,
-    purchases: typeof client$purchases,
-    reviews: typeof client$reviews
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    edits: typeof gapi$client$edits,
+    entitlements: typeof gapi$client$entitlements,
+    inappproducts: typeof gapi$client$inappproducts,
+    purchases: typeof gapi$client$purchases,
+    reviews: typeof gapi$client$reviews
   };
 
   /**
    * Load Google Play Developer API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androidpublisher",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "androidpublisher",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$edits: androidpublisher$androidpublisher$EditsResource;
+  declare var gapi$client$edits: androidpublisher$EditsResource;
 
-  declare var client$entitlements: androidpublisher$androidpublisher$EntitlementsResource;
+  declare var gapi$client$entitlements: androidpublisher$EntitlementsResource;
 
-  declare var client$inappproducts: androidpublisher$androidpublisher$InappproductsResource;
+  declare var gapi$client$inappproducts: androidpublisher$InappproductsResource;
 
-  declare var client$purchases: androidpublisher$androidpublisher$PurchasesResource;
+  declare var gapi$client$purchases: androidpublisher$PurchasesResource;
 
-  declare var client$reviews: androidpublisher$androidpublisher$ReviewsResource;
+  declare var gapi$client$reviews: androidpublisher$ReviewsResource;
 
-  declare interface androidpublisher$Apk {
+  declare interface gapi$client$androidpublisher$Apk {
     /**
      * Information about the binary payload of this APK.
      */
@@ -44,7 +48,7 @@ declare module "gapi.client.androidpublisher" {
     versionCode?: number;
   }
 
-  declare interface androidpublisher$ApkBinary {
+  declare interface gapi$client$androidpublisher$ApkBinary {
     /**
      * A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command.
      */
@@ -56,7 +60,7 @@ declare module "gapi.client.androidpublisher" {
     sha256?: string;
   }
 
-  declare interface androidpublisher$ApkListing {
+  declare interface gapi$client$androidpublisher$ApkListing {
     /**
      * The language code, in BCP 47 format (eg "en-US").
      */
@@ -68,30 +72,30 @@ declare module "gapi.client.androidpublisher" {
     recentChanges?: string;
   }
 
-  declare interface androidpublisher$ApkListingsListResponse {
+  declare interface gapi$client$androidpublisher$ApkListingsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidpublisher#apkListingsListResponse".
      */
     kind?: string;
-    listings?: androidpublisher$ApkListing[];
+    listings?: gapi$client$androidpublisher$ApkListing[];
   }
 
-  declare interface androidpublisher$ApksAddExternallyHostedRequest {
+  declare interface gapi$client$androidpublisher$ApksAddExternallyHostedRequest {
     /**
      * The definition of the externally-hosted APK and where it is located.
      */
     externallyHostedApk?: androidpublisher$ExternallyHostedApk;
   }
 
-  declare interface androidpublisher$ApksAddExternallyHostedResponse {
+  declare interface gapi$client$androidpublisher$ApksAddExternallyHostedResponse {
     /**
      * The definition of the externally-hosted APK and where it is located.
      */
     externallyHostedApk?: androidpublisher$ExternallyHostedApk;
   }
 
-  declare interface androidpublisher$ApksListResponse {
-    apks?: androidpublisher$Apk[];
+  declare interface gapi$client$androidpublisher$ApksListResponse {
+    apks?: gapi$client$androidpublisher$Apk[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidpublisher#apksListResponse".
@@ -99,7 +103,7 @@ declare module "gapi.client.androidpublisher" {
     kind?: string;
   }
 
-  declare interface androidpublisher$AppDetails {
+  declare interface gapi$client$androidpublisher$AppDetails {
     /**
      * The user-visible support email for this app.
      */
@@ -121,7 +125,7 @@ declare module "gapi.client.androidpublisher" {
     defaultLanguage?: string;
   }
 
-  declare interface androidpublisher$AppEdit {
+  declare interface gapi$client$androidpublisher$AppEdit {
     /**
      * The time at which the edit will expire and will be no longer valid for use in any subsequent API calls (encoded as seconds since the Epoch).
      */
@@ -133,7 +137,7 @@ declare module "gapi.client.androidpublisher" {
     id?: string;
   }
 
-  declare interface androidpublisher$Comment {
+  declare interface gapi$client$androidpublisher$Comment {
     /**
      * A comment from a developer.
      */
@@ -145,18 +149,18 @@ declare module "gapi.client.androidpublisher" {
     userComment?: androidpublisher$UserComment;
   }
 
-  declare interface androidpublisher$DeobfuscationFile {
+  declare interface gapi$client$androidpublisher$DeobfuscationFile {
     /**
      * The type of the deobfuscation file.
      */
     symbolType?: string;
   }
 
-  declare interface androidpublisher$DeobfuscationFilesUploadResponse {
-    deobfuscationFile?: androidpublisher$DeobfuscationFile;
+  declare interface gapi$client$androidpublisher$DeobfuscationFilesUploadResponse {
+    deobfuscationFile?: gapi$client$androidpublisher$DeobfuscationFile;
   }
 
-  declare interface androidpublisher$DeveloperComment {
+  declare interface gapi$client$androidpublisher$DeveloperComment {
     /**
      * The last time at which this comment was updated.
      */
@@ -168,7 +172,7 @@ declare module "gapi.client.androidpublisher" {
     text?: string;
   }
 
-  declare interface androidpublisher$DeviceMetadata {
+  declare interface gapi$client$androidpublisher$DeviceMetadata {
     /**
      * Device CPU make e.g. "Qualcomm"
      */
@@ -225,7 +229,7 @@ declare module "gapi.client.androidpublisher" {
     screenWidthPx?: number;
   }
 
-  declare interface androidpublisher$Entitlement {
+  declare interface gapi$client$androidpublisher$Entitlement {
     /**
      * This kind represents an entitlement object in the androidpublisher service.
      */
@@ -249,13 +253,13 @@ declare module "gapi.client.androidpublisher" {
     token?: string;
   }
 
-  declare interface androidpublisher$EntitlementsListResponse {
+  declare interface gapi$client$androidpublisher$EntitlementsListResponse {
     pageInfo?: androidpublisher$PageInfo;
-    resources?: androidpublisher$Entitlement[];
+    resources?: gapi$client$androidpublisher$Entitlement[];
     tokenPagination?: androidpublisher$TokenPagination;
   }
 
-  declare interface androidpublisher$ExpansionFile {
+  declare interface gapi$client$androidpublisher$ExpansionFile {
     /**
      * If set this field indicates that this APK has an Expansion File uploaded to it: this APK does not reference another APK's Expansion File. The field's
      * value is the size of the uploaded Expansion File in bytes.
@@ -268,11 +272,11 @@ declare module "gapi.client.androidpublisher" {
     referencesVersion?: number;
   }
 
-  declare interface androidpublisher$ExpansionFilesUploadResponse {
-    expansionFile?: androidpublisher$ExpansionFile;
+  declare interface gapi$client$androidpublisher$ExpansionFilesUploadResponse {
+    expansionFile?: gapi$client$androidpublisher$ExpansionFile;
   }
 
-  declare interface androidpublisher$ExternallyHostedApk {
+  declare interface gapi$client$androidpublisher$ExternallyHostedApk {
     /**
      * The application label.
      */
@@ -349,7 +353,7 @@ declare module "gapi.client.androidpublisher" {
     versionName?: string;
   }
 
-  declare interface androidpublisher$ExternallyHostedApkUsesPermission {
+  declare interface gapi$client$androidpublisher$ExternallyHostedApkUsesPermission {
     /**
      * Optionally, the maximum SDK version for which the permission is required.
      */
@@ -361,7 +365,7 @@ declare module "gapi.client.androidpublisher" {
     name?: string;
   }
 
-  declare interface androidpublisher$Image {
+  declare interface gapi$client$androidpublisher$Image {
     /**
      * A unique id representing this image.
      */
@@ -378,19 +382,19 @@ declare module "gapi.client.androidpublisher" {
     url?: string;
   }
 
-  declare interface androidpublisher$ImagesDeleteAllResponse {
-    deleted?: androidpublisher$Image[];
+  declare interface gapi$client$androidpublisher$ImagesDeleteAllResponse {
+    deleted?: gapi$client$androidpublisher$Image[];
   }
 
-  declare interface androidpublisher$ImagesListResponse {
-    images?: androidpublisher$Image[];
+  declare interface gapi$client$androidpublisher$ImagesListResponse {
+    images?: gapi$client$androidpublisher$Image[];
   }
 
-  declare interface androidpublisher$ImagesUploadResponse {
-    image?: androidpublisher$Image;
+  declare interface gapi$client$androidpublisher$ImagesUploadResponse {
+    image?: gapi$client$androidpublisher$Image;
   }
 
-  declare interface androidpublisher$InAppProduct {
+  declare interface gapi$client$androidpublisher$InAppProduct {
     /**
      * The default language of the localized data, as defined by BCP 47. e.g. "en-US", "en-GB".
      */
@@ -445,23 +449,23 @@ declare module "gapi.client.androidpublisher" {
     trialPeriod?: string;
   }
 
-  declare interface androidpublisher$InAppProductListing {
+  declare interface gapi$client$androidpublisher$InAppProductListing {
     description?: string;
     title?: string;
   }
 
-  declare interface androidpublisher$InappproductsBatchRequest {
+  declare interface gapi$client$androidpublisher$InappproductsBatchRequest {
     entrys?: androidpublisher$InappproductsBatchRequestEntry[];
   }
 
-  declare interface androidpublisher$InappproductsBatchRequestEntry {
+  declare interface gapi$client$androidpublisher$InappproductsBatchRequestEntry {
     batchId?: number;
     inappproductsinsertrequest?: androidpublisher$InappproductsInsertRequest;
     inappproductsupdaterequest?: androidpublisher$InappproductsUpdateRequest;
     methodName?: string;
   }
 
-  declare interface androidpublisher$InappproductsBatchResponse {
+  declare interface gapi$client$androidpublisher$InappproductsBatchResponse {
     entrys?: androidpublisher$InappproductsBatchResponseEntry[];
 
     /**
@@ -470,22 +474,22 @@ declare module "gapi.client.androidpublisher" {
     kind?: string;
   }
 
-  declare interface androidpublisher$InappproductsBatchResponseEntry {
+  declare interface gapi$client$androidpublisher$InappproductsBatchResponseEntry {
     batchId?: number;
     inappproductsinsertresponse?: androidpublisher$InappproductsInsertResponse;
     inappproductsupdateresponse?: androidpublisher$InappproductsUpdateResponse;
   }
 
-  declare interface androidpublisher$InappproductsInsertRequest {
-    inappproduct?: androidpublisher$InAppProduct;
+  declare interface gapi$client$androidpublisher$InappproductsInsertRequest {
+    inappproduct?: gapi$client$androidpublisher$InAppProduct;
   }
 
-  declare interface androidpublisher$InappproductsInsertResponse {
-    inappproduct?: androidpublisher$InAppProduct;
+  declare interface gapi$client$androidpublisher$InappproductsInsertResponse {
+    inappproduct?: gapi$client$androidpublisher$InAppProduct;
   }
 
-  declare interface androidpublisher$InappproductsListResponse {
-    inappproduct?: androidpublisher$InAppProduct[];
+  declare interface gapi$client$androidpublisher$InappproductsListResponse {
+    inappproduct?: gapi$client$androidpublisher$InAppProduct[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidpublisher#inappproductsListResponse".
@@ -495,15 +499,15 @@ declare module "gapi.client.androidpublisher" {
     tokenPagination?: androidpublisher$TokenPagination;
   }
 
-  declare interface androidpublisher$InappproductsUpdateRequest {
-    inappproduct?: androidpublisher$InAppProduct;
+  declare interface gapi$client$androidpublisher$InappproductsUpdateRequest {
+    inappproduct?: gapi$client$androidpublisher$InAppProduct;
   }
 
-  declare interface androidpublisher$InappproductsUpdateResponse {
-    inappproduct?: androidpublisher$InAppProduct;
+  declare interface gapi$client$androidpublisher$InappproductsUpdateResponse {
+    inappproduct?: gapi$client$androidpublisher$InAppProduct;
   }
 
-  declare interface androidpublisher$Listing {
+  declare interface gapi$client$androidpublisher$Listing {
     /**
      * Full description of the app; this may be up to 4000 characters in length.
      */
@@ -530,15 +534,15 @@ declare module "gapi.client.androidpublisher" {
     video?: string;
   }
 
-  declare interface androidpublisher$ListingsListResponse {
+  declare interface gapi$client$androidpublisher$ListingsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidpublisher#listingsListResponse".
      */
     kind?: string;
-    listings?: androidpublisher$Listing[];
+    listings?: gapi$client$androidpublisher$Listing[];
   }
 
-  declare interface androidpublisher$MonthDay {
+  declare interface gapi$client$androidpublisher$MonthDay {
     /**
      * Day of a month, value in [1, 31] range. Valid range depends on the specified month.
      */
@@ -550,13 +554,13 @@ declare module "gapi.client.androidpublisher" {
     month?: number;
   }
 
-  declare interface androidpublisher$PageInfo {
+  declare interface gapi$client$androidpublisher$PageInfo {
     resultPerPage?: number;
     startIndex?: number;
     totalResults?: number;
   }
 
-  declare interface androidpublisher$Price {
+  declare interface gapi$client$androidpublisher$Price {
     /**
      * 3 letter Currency code, as defined by ISO 4217.
      */
@@ -568,7 +572,7 @@ declare module "gapi.client.androidpublisher" {
     priceMicros?: string;
   }
 
-  declare interface androidpublisher$ProductPurchase {
+  declare interface gapi$client$androidpublisher$ProductPurchase {
     /**
      * The consumption state of the inapp product. Possible values are:
      * - Yet to be consumed
@@ -604,20 +608,20 @@ declare module "gapi.client.androidpublisher" {
     purchaseTimeMillis?: string;
   }
 
-  declare interface androidpublisher$Prorate {
+  declare interface gapi$client$androidpublisher$Prorate {
     /**
      * Default price cannot be zero and must be less than the full subscription price. Default price is always in the developer's Checkout merchant currency.
      * Targeted countries have their prices set automatically based on the default_price.
      */
-    defaultPrice?: androidpublisher$Price;
+    defaultPrice?: gapi$client$androidpublisher$Price;
 
     /**
      * Defines the first day on which the price takes effect.
      */
-    start?: androidpublisher$MonthDay;
+    start?: gapi$client$androidpublisher$MonthDay;
   }
 
-  declare interface androidpublisher$Review {
+  declare interface gapi$client$androidpublisher$Review {
     /**
      * The name of the user who wrote the review.
      */
@@ -626,7 +630,7 @@ declare module "gapi.client.androidpublisher" {
     /**
      * A repeated field containing comments for the review.
      */
-    comments?: androidpublisher$Comment[];
+    comments?: gapi$client$androidpublisher$Comment[];
 
     /**
      * Unique identifier for this review.
@@ -634,7 +638,7 @@ declare module "gapi.client.androidpublisher" {
     reviewId?: string;
   }
 
-  declare interface androidpublisher$ReviewReplyResult {
+  declare interface gapi$client$androidpublisher$ReviewReplyResult {
     /**
      * The time at which the reply took effect.
      */
@@ -646,42 +650,42 @@ declare module "gapi.client.androidpublisher" {
     replyText?: string;
   }
 
-  declare interface androidpublisher$ReviewsListResponse {
-    pageInfo?: androidpublisher$PageInfo;
-    client$reviews?: androidpublisher$Review[];
+  declare interface gapi$client$androidpublisher$ReviewsListResponse {
+    pageInfo?: gapi$client$androidpublisher$PageInfo;
+    reviews?: gapi$client$androidpublisher$Review[];
     tokenPagination?: androidpublisher$TokenPagination;
   }
 
-  declare interface androidpublisher$ReviewsReplyRequest {
+  declare interface gapi$client$androidpublisher$ReviewsReplyRequest {
     /**
      * The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped.
      */
     replyText?: string;
   }
 
-  declare interface androidpublisher$ReviewsReplyResponse {
-    result?: androidpublisher$ReviewReplyResult;
+  declare interface gapi$client$androidpublisher$ReviewsReplyResponse {
+    result?: gapi$client$androidpublisher$ReviewReplyResult;
   }
 
-  declare interface androidpublisher$Season {
+  declare interface gapi$client$androidpublisher$Season {
     /**
      * Inclusive end date of the recurrence period.
      */
-    end?: androidpublisher$MonthDay;
+    end?: gapi$client$androidpublisher$MonthDay;
 
     /**
      * Optionally present list of prorations for the season. Each proration is a one-off discounted entry into a subscription. Each proration contains the
      * first date on which the discount is available and the new pricing information.
      */
-    prorations?: androidpublisher$Prorate[];
+    prorations?: gapi$client$androidpublisher$Prorate[];
 
     /**
      * Inclusive start date of the recurrence period.
      */
-    start?: androidpublisher$MonthDay;
+    start?: gapi$client$androidpublisher$MonthDay;
   }
 
-  declare interface androidpublisher$SubscriptionDeferralInfo {
+  declare interface gapi$client$androidpublisher$SubscriptionDeferralInfo {
     /**
      * The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current
      * expiry time for the subscription.
@@ -695,7 +699,7 @@ declare module "gapi.client.androidpublisher" {
     expectedExpiryTimeMillis?: string;
   }
 
-  declare interface androidpublisher$SubscriptionPurchase {
+  declare interface gapi$client$androidpublisher$SubscriptionPurchase {
     /**
      * Whether the subscription will automatically be renewed when it reaches its current expiry time.
      */
@@ -764,50 +768,50 @@ declare module "gapi.client.androidpublisher" {
     userCancellationTimeMillis?: string;
   }
 
-  declare interface androidpublisher$SubscriptionPurchasesDeferRequest {
+  declare interface gapi$client$androidpublisher$SubscriptionPurchasesDeferRequest {
     /**
      * The information about the new desired expiry time for the subscription.
      */
-    deferralInfo?: androidpublisher$SubscriptionDeferralInfo;
+    deferralInfo?: gapi$client$androidpublisher$SubscriptionDeferralInfo;
   }
 
-  declare interface androidpublisher$SubscriptionPurchasesDeferResponse {
+  declare interface gapi$client$androidpublisher$SubscriptionPurchasesDeferResponse {
     /**
      * The new expiry time for the subscription in milliseconds since the Epoch.
      */
     newExpiryTimeMillis?: string;
   }
 
-  declare interface androidpublisher$Testers {
+  declare interface gapi$client$androidpublisher$Testers {
     googleGroups?: string[];
     googlePlusCommunities?: string[];
   }
 
-  declare interface androidpublisher$Timestamp {
+  declare interface gapi$client$androidpublisher$Timestamp {
     nanos?: number;
     seconds?: string;
   }
 
-  declare interface androidpublisher$TokenPagination {
+  declare interface gapi$client$androidpublisher$TokenPagination {
     nextPageToken?: string;
     previousPageToken?: string;
   }
 
-  declare interface androidpublisher$Track {
+  declare interface gapi$client$androidpublisher$Track {
     track?: string;
     userFraction?: number;
     versionCodes?: number[];
   }
 
-  declare interface androidpublisher$TracksListResponse {
+  declare interface gapi$client$androidpublisher$TracksListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "androidpublisher#tracksListResponse".
      */
     kind?: string;
-    tracks?: androidpublisher$Track[];
+    tracks?: gapi$client$androidpublisher$Track[];
   }
 
-  declare interface androidpublisher$UserComment {
+  declare interface gapi$client$androidpublisher$UserComment {
     /**
      * Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent.
      */
@@ -831,12 +835,12 @@ declare module "gapi.client.androidpublisher" {
     /**
      * Some information about the characteristics of the user's device
      */
-    deviceMetadata?: androidpublisher$DeviceMetadata;
+    deviceMetadata?: gapi$client$androidpublisher$DeviceMetadata;
 
     /**
      * The last time at which this comment was updated.
      */
-    lastModified?: androidpublisher$Timestamp;
+    lastModified?: gapi$client$androidpublisher$Timestamp;
 
     /**
      * Untranslated text of the review, in the case where the review has been translated. If the review has not been translated this is left blank.
@@ -871,7 +875,7 @@ declare module "gapi.client.androidpublisher" {
     thumbsUpCount?: number;
   }
 
-  declare interface androidpublisher$VoidedPurchase {
+  declare interface gapi$client$androidpublisher$VoidedPurchase {
     /**
      * This kind represents a voided purchase object in the androidpublisher service.
      */
@@ -893,13 +897,13 @@ declare module "gapi.client.androidpublisher" {
     voidedTimeMillis?: string;
   }
 
-  declare interface androidpublisher$VoidedPurchasesListResponse {
-    pageInfo?: androidpublisher$PageInfo;
-    tokenPagination?: androidpublisher$TokenPagination;
-    voidedPurchases?: androidpublisher$VoidedPurchase[];
+  declare interface gapi$client$androidpublisher$VoidedPurchasesListResponse {
+    pageInfo?: gapi$client$androidpublisher$PageInfo;
+    tokenPagination?: gapi$client$androidpublisher$TokenPagination;
+    voidedPurchases?: gapi$client$androidpublisher$VoidedPurchase[];
   }
 
-  declare interface androidpublisher$ApklistingsResource {
+  declare interface gapi$client$androidpublisher$ApklistingsResource {
     /**
      * Deletes the APK-specific localized listing for a specified APK and language code.
      */
@@ -1078,7 +1082,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApkListing>;
+    }): Request<gapi$client$androidpublisher$ApkListing>;
 
     /**
      * Lists all the APK-specific localized listings for a specified APK.
@@ -1134,7 +1138,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApkListingsListResponse>;
+    }): Request<gapi$client$androidpublisher$ApkListingsListResponse>;
 
     /**
      * Updates or creates the APK-specific localized listing for a specified APK and language code. This method supports patch semantics.
@@ -1196,7 +1200,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApkListing>;
+    }): Request<gapi$client$androidpublisher$ApkListing>;
 
     /**
      * Updates or creates the APK-specific localized listing for a specified APK and language code.
@@ -1258,10 +1262,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApkListing>;
+    }): Request<gapi$client$androidpublisher$ApkListing>;
   }
 
-  declare interface androidpublisher$ApksResource {
+  declare interface gapi$client$androidpublisher$ApksResource {
     /**
      * Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to
      * enterprises using Google Play for Work whose application is configured to restrict distribution to the enterprise domain.
@@ -1312,7 +1316,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApksAddExternallyHostedResponse>;
+    }): Request<gapi$client$androidpublisher$ApksAddExternallyHostedResponse>;
     list(request: {
       /**
        * Data format for the response.
@@ -1359,7 +1363,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ApksListResponse>;
+    }): Request<gapi$client$androidpublisher$ApksListResponse>;
     upload(request: {
       /**
        * Data format for the response.
@@ -1406,10 +1410,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Apk>;
+    }): Request<gapi$client$androidpublisher$Apk>;
   }
 
-  declare interface androidpublisher$DeobfuscationfilesResource {
+  declare interface gapi$client$androidpublisher$DeobfuscationfilesResource {
     /**
      * Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it will be replaced.
      */
@@ -1465,10 +1469,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$DeobfuscationFilesUploadResponse>;
+    }): Request<gapi$client$androidpublisher$DeobfuscationFilesUploadResponse>;
   }
 
-  declare interface androidpublisher$DetailsResource {
+  declare interface gapi$client$androidpublisher$DetailsResource {
     /**
      * Fetches app details for this edit. This includes the default language and developer support contact information.
      */
@@ -1518,7 +1522,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppDetails>;
+    }): Request<gapi$client$androidpublisher$AppDetails>;
 
     /**
      * Updates app details for this edit. This method supports patch semantics.
@@ -1569,7 +1573,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppDetails>;
+    }): Request<gapi$client$androidpublisher$AppDetails>;
 
     /**
      * Updates app details for this edit.
@@ -1620,10 +1624,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppDetails>;
+    }): Request<gapi$client$androidpublisher$AppDetails>;
   }
 
-  declare interface androidpublisher$ExpansionfilesResource {
+  declare interface gapi$client$androidpublisher$ExpansionfilesResource {
     /**
      * Fetches the Expansion File configuration for the APK specified.
      */
@@ -1679,7 +1683,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ExpansionFile>;
+    }): Request<gapi$client$androidpublisher$ExpansionFile>;
 
     /**
      * Updates the APK's Expansion File configuration to reference another APK's Expansion Files. To add a new Expansion File use the Upload method. This
@@ -1737,7 +1741,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ExpansionFile>;
+    }): Request<gapi$client$androidpublisher$ExpansionFile>;
 
     /**
      * Updates the APK's Expansion File configuration to reference another APK's Expansion Files. To add a new Expansion File use the Upload method.
@@ -1794,7 +1798,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ExpansionFile>;
+    }): Request<gapi$client$androidpublisher$ExpansionFile>;
 
     /**
      * Uploads and attaches a new Expansion File to the APK specified.
@@ -1851,10 +1855,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ExpansionFilesUploadResponse>;
+    }): Request<gapi$client$androidpublisher$ExpansionFilesUploadResponse>;
   }
 
-  declare interface androidpublisher$ImagesResource {
+  declare interface gapi$client$androidpublisher$ImagesResource {
     /**
      * Deletes the image (specified by id) from the edit.
      */
@@ -1974,7 +1978,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ImagesDeleteAllResponse>;
+    }): Request<gapi$client$androidpublisher$ImagesDeleteAllResponse>;
 
     /**
      * Lists all images for the specified language and image type.
@@ -2032,7 +2036,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ImagesListResponse>;
+    }): Request<gapi$client$androidpublisher$ImagesListResponse>;
 
     /**
      * Uploads a new image and adds it to the list of images for the specified language and image type.
@@ -2090,10 +2094,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ImagesUploadResponse>;
+    }): Request<gapi$client$androidpublisher$ImagesUploadResponse>;
   }
 
-  declare interface androidpublisher$ListingsResource {
+  declare interface gapi$client$androidpublisher$ListingsResource {
     /**
      * Deletes the specified localized store listing from an edit.
      */
@@ -2255,7 +2259,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Listing>;
+    }): Request<gapi$client$androidpublisher$Listing>;
 
     /**
      * Returns all of the localized store listings attached to this edit.
@@ -2306,7 +2310,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ListingsListResponse>;
+    }): Request<gapi$client$androidpublisher$ListingsListResponse>;
 
     /**
      * Creates or updates a localized store listing. This method supports patch semantics.
@@ -2362,7 +2366,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Listing>;
+    }): Request<gapi$client$androidpublisher$Listing>;
 
     /**
      * Creates or updates a localized store listing.
@@ -2418,10 +2422,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Listing>;
+    }): Request<gapi$client$androidpublisher$Listing>;
   }
 
-  declare interface androidpublisher$TestersResource {
+  declare interface gapi$client$androidpublisher$TestersResource {
     get(request: {
       /**
        * Data format for the response.
@@ -2469,7 +2473,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Testers>;
+    }): Request<gapi$client$androidpublisher$Testers>;
     patch(request: {
       /**
        * Data format for the response.
@@ -2517,7 +2521,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Testers>;
+    }): Request<gapi$client$androidpublisher$Testers>;
     update(request: {
       /**
        * Data format for the response.
@@ -2565,10 +2569,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Testers>;
+    }): Request<gapi$client$androidpublisher$Testers>;
   }
 
-  declare interface androidpublisher$TracksResource {
+  declare interface gapi$client$androidpublisher$TracksResource {
     /**
      * Fetches the track configuration for the specified track type. Includes the APK version codes that are in this track.
      */
@@ -2623,7 +2627,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Track>;
+    }): Request<gapi$client$androidpublisher$Track>;
 
     /**
      * Lists all the track configurations for this edit.
@@ -2674,7 +2678,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$TracksListResponse>;
+    }): Request<gapi$client$androidpublisher$TracksListResponse>;
 
     /**
      * Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new
@@ -2731,7 +2735,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Track>;
+    }): Request<gapi$client$androidpublisher$Track>;
 
     /**
      * Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new
@@ -2788,10 +2792,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Track>;
+    }): Request<gapi$client$androidpublisher$Track>;
   }
 
-  declare interface androidpublisher$EditsResource {
+  declare interface gapi$client$androidpublisher$EditsResource {
     /**
      * Commits/applies the changes made in this edit back to the app.
      */
@@ -2841,7 +2845,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppEdit>;
+    }): Request<gapi$client$androidpublisher$AppEdit>;
 
     /**
      * Deletes an edit for an app. Creating a new edit will automatically delete any of your previous edits so this method need only be called if you want to
@@ -2944,7 +2948,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppEdit>;
+    }): Request<gapi$client$androidpublisher$AppEdit>;
 
     /**
      * Creates a new edit for an app, populated with the app's current state.
@@ -2990,7 +2994,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppEdit>;
+    }): Request<gapi$client$androidpublisher$AppEdit>;
 
     /**
      * Checks that the edit can be successfully committed. The edit's changes are not applied to the live app.
@@ -3041,19 +3045,19 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$AppEdit>;
-    apklistings: androidpublisher$ApklistingsResource;
-    apks: androidpublisher$ApksResource;
-    deobfuscationfiles: androidpublisher$DeobfuscationfilesResource;
-    details: androidpublisher$DetailsResource;
-    expansionfiles: androidpublisher$ExpansionfilesResource;
-    images: androidpublisher$ImagesResource;
-    listings: androidpublisher$ListingsResource;
-    testers: androidpublisher$TestersResource;
-    tracks: androidpublisher$TracksResource;
+    }): Request<gapi$client$androidpublisher$AppEdit>;
+    apklistings: gapi$client$androidpublisher$ApklistingsResource;
+    apks: gapi$client$androidpublisher$ApksResource;
+    deobfuscationfiles: gapi$client$androidpublisher$DeobfuscationfilesResource;
+    details: gapi$client$androidpublisher$DetailsResource;
+    expansionfiles: gapi$client$androidpublisher$ExpansionfilesResource;
+    images: gapi$client$androidpublisher$ImagesResource;
+    listings: gapi$client$androidpublisher$ListingsResource;
+    testers: gapi$client$androidpublisher$TestersResource;
+    tracks: gapi$client$androidpublisher$TracksResource;
   }
 
-  declare interface androidpublisher$EntitlementsResource {
+  declare interface gapi$client$androidpublisher$EntitlementsResource {
     /**
      * Lists the user's current inapp item or subscription entitlements
      */
@@ -3106,10 +3110,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$EntitlementsListResponse>;
+    }): Request<gapi$client$androidpublisher$EntitlementsListResponse>;
   }
 
-  declare interface androidpublisher$InappproductsResource {
+  declare interface gapi$client$androidpublisher$InappproductsResource {
     batch(request: {
       /**
        * Data format for the response.
@@ -3146,7 +3150,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InappproductsBatchResponse>;
+    }): Request<gapi$client$androidpublisher$InappproductsBatchResponse>;
 
     /**
      * Delete an in-app product for an app.
@@ -3244,7 +3248,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InAppProduct>;
+    }): Request<gapi$client$androidpublisher$InAppProduct>;
 
     /**
      * Creates a new in-app product for an app.
@@ -3296,7 +3300,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InAppProduct>;
+    }): Request<gapi$client$androidpublisher$InAppProduct>;
 
     /**
      * List all the in-app products for an Android app, both subscriptions and managed in-app products..
@@ -3345,7 +3349,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InappproductsListResponse>;
+    }): Request<gapi$client$androidpublisher$InappproductsListResponse>;
 
     /**
      * Updates the details of an in-app product. This method supports patch semantics.
@@ -3402,7 +3406,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InAppProduct>;
+    }): Request<gapi$client$androidpublisher$InAppProduct>;
 
     /**
      * Updates the details of an in-app product.
@@ -3459,10 +3463,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$InAppProduct>;
+    }): Request<gapi$client$androidpublisher$InAppProduct>;
   }
 
-  declare interface androidpublisher$ProductsResource {
+  declare interface gapi$client$androidpublisher$ProductsResource {
     /**
      * Checks the purchase and consumption status of an inapp item.
      */
@@ -3517,10 +3521,10 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ProductPurchase>;
+    }): Request<gapi$client$androidpublisher$ProductPurchase>;
   }
 
-  declare interface androidpublisher$SubscriptionsResource {
+  declare interface gapi$client$androidpublisher$SubscriptionsResource {
     /**
      * Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
      */
@@ -3631,7 +3635,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$SubscriptionPurchasesDeferResponse>;
+    }): Request<gapi$client$androidpublisher$SubscriptionPurchasesDeferResponse>;
 
     /**
      * Checks whether a user's subscription purchase is valid and returns its expiry time.
@@ -3687,7 +3691,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$SubscriptionPurchase>;
+    }): Request<gapi$client$androidpublisher$SubscriptionPurchase>;
 
     /**
      * Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur.
@@ -3802,7 +3806,7 @@ declare module "gapi.client.androidpublisher" {
     }): Request<void>;
   }
 
-  declare interface androidpublisher$VoidedpurchasesResource {
+  declare interface gapi$client$androidpublisher$VoidedpurchasesResource {
     /**
      * Lists the purchases that were cancelled, refunded or charged-back.
      */
@@ -3864,16 +3868,16 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$VoidedPurchasesListResponse>;
+    }): Request<gapi$client$androidpublisher$VoidedPurchasesListResponse>;
   }
 
-  declare interface androidpublisher$PurchasesResource {
-    products: androidpublisher$ProductsResource;
-    subscriptions: androidpublisher$SubscriptionsResource;
-    voidedpurchases: androidpublisher$VoidedpurchasesResource;
+  declare interface gapi$client$androidpublisher$PurchasesResource {
+    products: gapi$client$androidpublisher$ProductsResource;
+    subscriptions: gapi$client$androidpublisher$SubscriptionsResource;
+    voidedpurchases: gapi$client$androidpublisher$VoidedpurchasesResource;
   }
 
-  declare interface androidpublisher$ReviewsResource {
+  declare interface gapi$client$androidpublisher$ReviewsResource {
     /**
      * Returns a single review.
      */
@@ -3920,7 +3924,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$Review>;
+    }): Request<gapi$client$androidpublisher$Review>;
 
     /**
      * Returns a list of reviews. Only reviews from last week will be returned.
@@ -3970,7 +3974,7 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ReviewsListResponse>;
+    }): Request<gapi$client$androidpublisher$ReviewsListResponse>;
 
     /**
      * Reply to a single review, or update an existing reply.
@@ -4017,6 +4021,6 @@ declare module "gapi.client.androidpublisher" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<androidpublisher$ReviewsReplyResponse>;
+    }): Request<gapi$client$androidpublisher$ReviewsReplyResponse>;
   }
 }
