@@ -22,7 +22,7 @@ export type RxNode$PublishableEventEmitter = {
 declare function RxNode$toEventEmitter<T>(
   observable: Rx.Observable<T>,
   eventName: string
-): RxNode$RxNode$PublishableEventEmitter;
+): RxNode$PublishableEventEmitter;
 
 /**
  * Converts a flowing stream to an Observable sequence.
