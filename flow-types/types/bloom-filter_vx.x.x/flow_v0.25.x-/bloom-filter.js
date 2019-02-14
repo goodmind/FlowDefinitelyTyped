@@ -1,13 +1,13 @@
 declare module "bloom-filter" {
   declare class Filter {
-    constructor(options: Filter$Filter$FilterOptions): this;
+    constructor(options: Filter$FilterOptions): this;
     static create(
       elements: number,
       falsePositiveRate: number,
       nTweak?: number,
       nFlags?: number
     ): Filter;
-    toObject(): Filter$Filter$FilterOptions;
+    toObject(): Filter$FilterOptions;
     hash(nHashNum: number, vDataToHash: Buffer): number;
     insert(data: Buffer): void;
     contains(data: Buffer): boolean;
@@ -35,5 +35,5 @@ declare module "bloom-filter" {
 
   declare function Filter$MurmurHash3(seed: number, data: Buffer): number;
 
-  declare module.exports: typeof Filter;
+  declare export default typeof Filter;
 }
