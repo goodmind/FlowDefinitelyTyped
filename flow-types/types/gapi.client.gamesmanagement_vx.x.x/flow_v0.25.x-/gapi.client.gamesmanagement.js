@@ -1,47 +1,51 @@
 declare module "gapi.client.gamesmanagement" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    achievements: typeof client$achievements,
-    applications: typeof client$applications,
-    events: typeof client$events,
-    players: typeof client$players,
-    quests: typeof client$quests,
-    rooms: typeof client$rooms,
-    scores: typeof client$scores,
-    turnBasedMatches: typeof client$turnBasedMatches
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    achievements: typeof gapi$client$achievements,
+    applications: typeof gapi$client$applications,
+    events: typeof gapi$client$events,
+    players: typeof gapi$client$players,
+    quests: typeof gapi$client$quests,
+    rooms: typeof gapi$client$rooms,
+    scores: typeof gapi$client$scores,
+    turnBasedMatches: typeof gapi$client$turnBasedMatches
   };
 
   /**
    * Load Google Play Game Services Management API v1management
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "gamesmanagement",
     version: "v1management"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "gamesmanagement",
     version: "v1management",
     callback: () => any
   ): void;
 
-  declare var client$achievements: gamesmanagement$gamesmanagement$AchievementsResource;
+  declare var gapi$client$achievements: gamesmanagement$AchievementsResource;
 
-  declare var client$applications: gamesmanagement$gamesmanagement$ApplicationsResource;
+  declare var gapi$client$applications: gamesmanagement$ApplicationsResource;
 
-  declare var client$events: gamesmanagement$gamesmanagement$EventsResource;
+  declare var gapi$client$events: gamesmanagement$EventsResource;
 
-  declare var client$players: gamesmanagement$gamesmanagement$PlayersResource;
+  declare var gapi$client$players: gamesmanagement$PlayersResource;
 
-  declare var client$quests: gamesmanagement$gamesmanagement$QuestsResource;
+  declare var gapi$client$quests: gamesmanagement$QuestsResource;
 
-  declare var client$rooms: gamesmanagement$gamesmanagement$RoomsResource;
+  declare var gapi$client$rooms: gamesmanagement$RoomsResource;
 
-  declare var client$scores: gamesmanagement$gamesmanagement$ScoresResource;
+  declare var gapi$client$scores: gamesmanagement$ScoresResource;
 
-  declare var client$turnBasedMatches: gamesmanagement$gamesmanagement$TurnBasedMatchesResource;
+  declare var gapi$client$turnBasedMatches: gamesmanagement$TurnBasedMatchesResource;
 
-  declare interface gamesmanagement$AchievementResetAllResponse {
+  declare interface gapi$client$gamesmanagement$AchievementResetAllResponse {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetAllResponse.
      */
@@ -53,7 +57,7 @@ declare module "gapi.client.gamesmanagement" {
     results?: gamesmanagement$AchievementResetResponse[];
   }
 
-  declare interface gamesmanagement$AchievementResetMultipleForAllRequest {
+  declare interface gapi$client$gamesmanagement$AchievementResetMultipleForAllRequest {
     /**
      * The IDs of achievements to reset.
      */
@@ -65,7 +69,7 @@ declare module "gapi.client.gamesmanagement" {
     kind?: string;
   }
 
-  declare interface gamesmanagement$AchievementResetResponse {
+  declare interface gapi$client$gamesmanagement$AchievementResetResponse {
     /**
      * The current state of the achievement. This is the same as the initial state of the achievement.
      * Possible values are:
@@ -91,7 +95,7 @@ declare module "gapi.client.gamesmanagement" {
     updateOccurred?: boolean;
   }
 
-  declare interface gamesmanagement$EventsResetMultipleForAllRequest {
+  declare interface gapi$client$gamesmanagement$EventsResetMultipleForAllRequest {
     /**
      * The IDs of events to reset.
      */
@@ -103,7 +107,7 @@ declare module "gapi.client.gamesmanagement" {
     kind?: string;
   }
 
-  declare interface gamesmanagement$GamesPlayedResource {
+  declare interface gapi$client$gamesmanagement$GamesPlayedResource {
     /**
      * True if the player was auto-matched with the currently authenticated user.
      */
@@ -115,7 +119,7 @@ declare module "gapi.client.gamesmanagement" {
     timeMillis?: string;
   }
 
-  declare interface gamesmanagement$GamesPlayerExperienceInfoResource {
+  declare interface gapi$client$gamesmanagement$GamesPlayerExperienceInfoResource {
     /**
      * The current number of experience points for the player.
      */
@@ -137,7 +141,7 @@ declare module "gapi.client.gamesmanagement" {
     nextLevel?: gamesmanagement$GamesPlayerLevelResource;
   }
 
-  declare interface gamesmanagement$GamesPlayerLevelResource {
+  declare interface gapi$client$gamesmanagement$GamesPlayerLevelResource {
     /**
      * The level for the user.
      */
@@ -154,7 +158,7 @@ declare module "gapi.client.gamesmanagement" {
     minExperiencePoints?: string;
   }
 
-  declare interface gamesmanagement$HiddenPlayer {
+  declare interface gapi$client$gamesmanagement$HiddenPlayer {
     /**
      * The time this player was hidden.
      */
@@ -171,11 +175,11 @@ declare module "gapi.client.gamesmanagement" {
     player?: gamesmanagement$Player;
   }
 
-  declare interface gamesmanagement$HiddenPlayerList {
+  declare interface gapi$client$gamesmanagement$HiddenPlayerList {
     /**
      * The players.
      */
-    items?: gamesmanagement$HiddenPlayer[];
+    items?: gapi$client$gamesmanagement$HiddenPlayer[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayerList.
@@ -188,7 +192,7 @@ declare module "gapi.client.gamesmanagement" {
     nextPageToken?: string;
   }
 
-  declare interface gamesmanagement$Player {
+  declare interface gapi$client$gamesmanagement$Player {
     /**
      * The base URL for the image that represents the player.
      */
@@ -212,7 +216,7 @@ declare module "gapi.client.gamesmanagement" {
     /**
      * An object to represent Play Game experience information for the player.
      */
-    experienceInfo?: gamesmanagement$GamesPlayerExperienceInfoResource;
+    experienceInfo?: gapi$client$gamesmanagement$GamesPlayerExperienceInfoResource;
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#player.
@@ -223,7 +227,7 @@ declare module "gapi.client.gamesmanagement" {
      * Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection
      * members.
      */
-    lastPlayedWith?: gamesmanagement$GamesPlayedResource;
+    lastPlayedWith?: gapi$client$gamesmanagement$GamesPlayedResource;
 
     /**
      * An object representation of the individual components of the player's name. For some players, these fields may not be present.
@@ -262,7 +266,7 @@ declare module "gapi.client.gamesmanagement" {
     title?: string;
   }
 
-  declare interface gamesmanagement$PlayerScoreResetAllResponse {
+  declare interface gapi$client$gamesmanagement$PlayerScoreResetAllResponse {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse.
      */
@@ -274,7 +278,7 @@ declare module "gapi.client.gamesmanagement" {
     results?: gamesmanagement$PlayerScoreResetResponse[];
   }
 
-  declare interface gamesmanagement$PlayerScoreResetResponse {
+  declare interface gapi$client$gamesmanagement$PlayerScoreResetResponse {
     /**
      * The ID of an leaderboard for which player state has been updated.
      */
@@ -295,7 +299,7 @@ declare module "gapi.client.gamesmanagement" {
     resetScoreTimeSpans?: string[];
   }
 
-  declare interface gamesmanagement$ProfileSettings {
+  declare interface gapi$client$gamesmanagement$ProfileSettings {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#profileSettings.
      */
@@ -307,7 +311,7 @@ declare module "gapi.client.gamesmanagement" {
     profileVisible?: boolean;
   }
 
-  declare interface gamesmanagement$QuestsResetMultipleForAllRequest {
+  declare interface gapi$client$gamesmanagement$QuestsResetMultipleForAllRequest {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#questsResetMultipleForAllRequest.
      */
@@ -319,7 +323,7 @@ declare module "gapi.client.gamesmanagement" {
     quest_ids?: string[];
   }
 
-  declare interface gamesmanagement$ScoresResetMultipleForAllRequest {
+  declare interface gapi$client$gamesmanagement$ScoresResetMultipleForAllRequest {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#scoresResetMultipleForAllRequest.
      */
@@ -331,7 +335,7 @@ declare module "gapi.client.gamesmanagement" {
     leaderboard_ids?: string[];
   }
 
-  declare interface gamesmanagement$AchievementsResource {
+  declare interface gapi$client$gamesmanagement$AchievementsResource {
     /**
      * Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your
      * application.
@@ -377,7 +381,7 @@ declare module "gapi.client.gamesmanagement" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesmanagement$AchievementResetResponse>;
+    }): Request<gapi$client$gamesmanagement$AchievementResetResponse>;
 
     /**
      * Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for
@@ -419,7 +423,7 @@ declare module "gapi.client.gamesmanagement" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesmanagement$AchievementResetAllResponse>;
+    }): Request<gapi$client$gamesmanagement$AchievementResetAllResponse>;
 
     /**
      * Resets all draft achievements for all players. This method is only available to user accounts for your developer console.
@@ -552,7 +556,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$ApplicationsResource {
+  declare interface gapi$client$gamesmanagement$ApplicationsResource {
     /**
      * Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.
      */
@@ -608,10 +612,10 @@ declare module "gapi.client.gamesmanagement" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesmanagement$HiddenPlayerList>;
+    }): Request<gapi$client$gamesmanagement$HiddenPlayerList>;
   }
 
-  declare interface gamesmanagement$EventsResource {
+  declare interface gapi$client$gamesmanagement$EventsResource {
     /**
      * Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester
      * accounts for your application. All quests for this player that use the event will also be reset.
@@ -833,7 +837,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$PlayersResource {
+  declare interface gapi$client$gamesmanagement$PlayersResource {
     /**
      * Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.
      */
@@ -937,7 +941,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$QuestsResource {
+  declare interface gapi$client$gamesmanagement$QuestsResource {
     /**
      * Resets all player progress on the quest with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester
      * accounts for your application.
@@ -1158,7 +1162,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$RoomsResource {
+  declare interface gapi$client$gamesmanagement$RoomsResource {
     /**
      * Reset all rooms for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your
      * application.
@@ -1244,7 +1248,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$ScoresResource {
+  declare interface gapi$client$gamesmanagement$ScoresResource {
     /**
      * Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester
      * accounts for your application.
@@ -1290,7 +1294,7 @@ declare module "gapi.client.gamesmanagement" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesmanagement$PlayerScoreResetResponse>;
+    }): Request<gapi$client$gamesmanagement$PlayerScoreResetResponse>;
 
     /**
      * Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your
@@ -1332,7 +1336,7 @@ declare module "gapi.client.gamesmanagement" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesmanagement$PlayerScoreResetAllResponse>;
+    }): Request<gapi$client$gamesmanagement$PlayerScoreResetAllResponse>;
 
     /**
      * Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.
@@ -1465,7 +1469,7 @@ declare module "gapi.client.gamesmanagement" {
     }): Request<void>;
   }
 
-  declare interface gamesmanagement$TurnBasedMatchesResource {
+  declare interface gapi$client$gamesmanagement$TurnBasedMatchesResource {
     /**
      * Reset all turn-based match data for a user. This method is only accessible to whitelisted tester accounts for your application.
      */
