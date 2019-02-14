@@ -1,10 +1,10 @@
 declare module "rename" {
-  declare module.exports: typeof Rename;
+  declare export default typeof Rename;
 
   declare function Rename(
-    filepath: string | Rename$Rename$FileObject,
-    transformer: Rename$Rename$Transformer
-  ): Rename$Rename$FilePath;
+    filepath: string | Rename$FileObject,
+    transformer: Rename$Transformer
+  ): Rename$FilePath;
 
   declare var npm$namespace$Rename: {
     parse: typeof Rename$parse,
