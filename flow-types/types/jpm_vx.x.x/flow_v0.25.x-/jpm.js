@@ -1,208 +1,3 @@
-declare interface FFAddonSDK$BrowserWindow {
-  title: string;
-  activate: () => void;
-  close: (callback?: () => void) => void;
-  tabs: FFAddonSDK$Tab[];
-}
-
-declare interface FFAddonSDK$SDKURL {
-  scheme: string;
-  userPass: string;
-  host: string;
-  port: string;
-  path: string;
-  hostname: string;
-  pathname: string;
-  hash: string;
-  href: string;
-  origin: string;
-  protocol: string;
-  search: string;
-  toString: () => string;
-  toJSON: () => string;
-}
-
-declare interface FFAddonSDK$FrameEvent {
-  origin: string;
-  source: FFAddonSDK$Frame;
-  data?: any;
-}
-
-declare interface FFAddonSDK$Frame {
-  data$url: URL;
-  postMessage: (message: string, target: string) => void;
-  on: (
-    event: "attach" | "detach" | "load" | "ready" | "message",
-    handler: (event: FFAddonSDK$FrameEvent) => any
-  ) => void;
-  once: (
-    event: "attach" | "detach" | "load" | "ready" | "message",
-    handler: (event: FFAddonSDK$FrameEvent) => any
-  ) => void;
-  removeListener: (
-    event: "attach" | "detach" | "load" | "ready" | "message",
-    handler: Function
-  ) => void;
-  off: (
-    event: "attach" | "detach" | "load" | "ready" | "message",
-    handler: Function
-  ) => void;
-  destroy: () => void;
-}
-
-declare type FFAddonSDK$Icon =
-  | string
-  | {
-      "16"?: string,
-      "32"?: string,
-      "64"?: string
-    };
-
-declare interface FFAddonSDK$ToggleButtonState {
-  id: string;
-  label: string;
-  badge: string;
-  checked: boolean;
-  disabled: boolean;
-}
-
-declare type FFAddonSDK$ToggleButton = {
-  click: () => void,
-  on: (
-    event: "click" | "change",
-    handler: (state: FFAddonSDK$ToggleButtonState) => any
-  ) => void,
-  once: (
-    event: "click" | "change",
-    handler: (state: FFAddonSDK$ToggleButtonState) => any
-  ) => void,
-  removeListener: (event: string, handler: Function) => void,
-  state: (
-    target:
-      | "window"
-      | "tab"
-      | FFAddonSDK$Tab
-      | FFAddonSDK$BrowserWindow
-      | FFAddonSDK$ToggleButton,
-    state?: {
-      disabled?: boolean,
-      label?: string,
-      icon?: FFAddonSDK$Icon,
-      checked?: boolean,
-      badge?: string | number,
-      badgeColor?: string
-    }
-  ) => FFAddonSDK$ToggleButtonState,
-  destroy: () => void
-} & FFAddonSDK$ToggleButtonState;
-
-declare interface FFAddonSDK$ActionButtonState {
-  id: string;
-  label: string;
-  disabled: boolean;
-  icon: FFAddonSDK$FFAddonSDK$Icon;
-  badge: string | number;
-  badgeColor: string;
-}
-
-declare type FFAddonSDK$ActionButton = {
-  state: (
-    target:
-      | FFAddonSDK$BrowserWindow
-      | FFAddonSDK$Tab
-      | FFAddonSDK$ActionButton
-      | "window"
-      | "tab",
-    state?: {
-      disabled?: boolean,
-      label?: string,
-      icon?: FFAddonSDK$Icon
-    }
-  ) => FFAddonSDK$ActionButtonState,
-  click: () => void,
-  destroy: () => void,
-  on: (
-    event: "click" | "click",
-    handler: (state: FFAddonSDK$ActionButtonState) => any
-  ) => void,
-  once: (
-    event: "click" | "click",
-    handler: (state: FFAddonSDK$ActionButtonState) => any
-  ) => void,
-  removeListener: (event: "click" | "click", handler: Function) => void
-} & FFAddonSDK$ActionButtonState;
-
-declare interface FFAddonSDK$Tab {
-  title: string;
-  data$url: string;
-  id: string;
-  favicon: string;
-  contentType: string;
-  index: number;
-  isPinned: boolean;
-  window: FFAddonSDK$BrowserWindow;
-  readyState: "uninitialized" | "loading" | "interactive" | "complete";
-  on: (
-    event: "ready" | "load" | "pageshow" | "activate" | "deactivate" | "close",
-    handler: (tab: FFAddonSDK$Tab) => any
-  ) => void;
-  attach: (options: {
-    contentScript?: string | string[],
-    contentScriptFile?: string | string[],
-    contentScriptOptions?: Object,
-    onMessage?: (message: string) => any,
-    onError?: (error: Error) => any
-  }) => FFAddonSDK$ContentWorker;
-  activate: () => void;
-  pin: () => void;
-  unpin: () => void;
-  close: (afterClose?: () => any) => void;
-  reload: () => void;
-  getThumbnail: () => string;
-}
-
-/**
- * The SDK port API
- * @see [port API]{@link https://developer.mozilla.org/en-US/Add-ons/SDK/Guides/using_port}
- */
-declare interface FFAddonSDK$Port {
-  emit: (event: string, data?: any) => void;
-  on: (event: string, handler: (data?: any) => any) => void;
-}
-
-declare interface FFAddonSDK$ContentWorker {
-  new(options: {
-    window: Window,
-    contentScript?: string | string[],
-    contentScriptFile?: string | string[],
-    onMessage: (data?: any) => any,
-    onError: (data?: any) => any
-  }): FFAddonSDK$ContentWorker;
-  data$url: URL;
-  port: FFAddonSDK$Port;
-  tab: FFAddonSDK$Tab;
-  on: (event: "detach" | "message" | "error", handler: () => any) => void;
-  postMessage: (data?: any) => void;
-  destroy: () => void;
-}
-
-declare interface FFAddonSDK$Widget {}
-
-/**
- * @see [nsIException]{@link https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIException}
- */
-declare interface FFAddonSDK$NSIException {
-  lineNumber: number;
-  columnNumber: number;
-  data: any;
-  filename: string;
-  inner?: FFAddonSDK$NSIException;
-  location?: any;
-  message: string;
-  name: string;
-  result: any;
-  toString: () => string;
-}
 declare module "sdk/windows" {
   declare export var browserWindows: BrowserWindows;
   declare type BrowserWindows = {
@@ -214,20 +9,20 @@ declare module "sdk/windows" {
       options:
         | string
         | {
-            data$url: string,
+            url: string,
             isPrivate?: boolean,
-            onOpen?: (window: FFAddonSDK$FFAddonSDK$BrowserWindow) => any,
-            onClose?: (window: FFAddonSDK$FFAddonSDK$BrowserWindow) => any,
-            onActivate?: (window: FFAddonSDK$FFAddonSDK$BrowserWindow) => any,
-            onDeactivate?: (window: FFAddonSDK$FFAddonSDK$BrowserWindow) => any
+            onOpen?: (window: FFAddonSDK$BrowserWindow) => any,
+            onClose?: (window: FFAddonSDK$BrowserWindow) => any,
+            onActivate?: (window: FFAddonSDK$BrowserWindow) => any,
+            onDeactivate?: (window: FFAddonSDK$BrowserWindow) => any
           }
-    ) => FFAddonSDK$FFAddonSDK$BrowserWindow,
+    ) => FFAddonSDK$BrowserWindow,
     on: (
       event: "open" | "close" | "activate" | "deactivate",
-      handler: (window: FFAddonSDK$FFAddonSDK$BrowserWindow) => any
+      handler: (window: FFAddonSDK$BrowserWindow) => any
     ) => void,
-    activeWindow: FFAddonSDK$FFAddonSDK$BrowserWindow
-  } & Array<FFAddonSDK$FFAddonSDK$BrowserWindow>;
+    activeWindow: FFAddonSDK$BrowserWindow
+  } & Array<FFAddonSDK$BrowserWindow>;
 }
 declare module "sdk/url" {
   /**
@@ -237,10 +32,7 @@ declare module "sdk/url" {
    * @param source A string to be converted into a URL. If source is not a valid URI, this constructor will throw an exception
    * @param base Used to resolve relative source URLs into absolute ones
    */
-  declare export function URL(
-    source: string,
-    base?: string
-  ): FFAddonSDK$FFAddonSDK$SDKURL;
+  declare export function URL(source: string, base?: string): FFAddonSDK$SDKURL;
 
   /**
    * The DataURL constructor creates an object that represents a data: URL,
@@ -255,14 +47,12 @@ declare module "sdk/url" {
    * non-file protocols, such as the resource: protocol, to their place on the file system.
    * An exception is raised if the URL can't be converted; otherwise, the native file path is returned as a string
    */
-  declare export function toFilename(
-    data$url: FFAddonSDK$FFAddonSDK$SDKURL
-  ): string;
+  declare export function toFilename(url: FFAddonSDK$SDKURL): string;
 
   /**
    * Converts the given native file path to a file: URL
    */
-  declare export function toFileName(data$url: string): string;
+  declare export function toFileName(url: string): string;
 
   /**
    * Checks the validity of a URI. isValidURI("http://mozilla.org") would return true,
@@ -273,7 +63,7 @@ declare module "sdk/url" {
   /**
    * Returns the top-level domain for the given URL: that is, the highest-level domain under which individual domains may be registered
    */
-  declare export function getTLD(data$url: string): string;
+  declare export function getTLD(url: string): string;
 
   declare interface DataURL {
     toString: () => string;
@@ -291,7 +81,7 @@ declare module "sdk/ui/sidebar" {
   declare export function Sidebar(options: {
     id?: string,
     title: string,
-    data$url: string,
+    url: string,
     onShow?: () => any,
     onHide?: () => any,
     onAttach?: (worker: SidebarWorker) => any,
@@ -302,9 +92,9 @@ declare module "sdk/ui/sidebar" {
   declare interface Sidebar {
     id: string;
     title: string;
-    data$url: string;
-    show: (window?: FFAddonSDK$FFAddonSDK$BrowserWindow) => void;
-    hide: (window?: FFAddonSDK$FFAddonSDK$BrowserWindow) => void;
+    url: string;
+    show: (window?: FFAddonSDK$BrowserWindow) => void;
+    hide: (window?: FFAddonSDK$BrowserWindow) => void;
     on: (
       event: "show" | "hide" | "attach" | "detach" | "ready",
       handler: (worker: SidebarWorker) => any
@@ -320,21 +110,21 @@ declare module "sdk/ui/sidebar" {
     dispose: () => void;
   }
   declare interface SidebarWorker {
-    port: FFAddonSDK$FFAddonSDK$Port;
+    port: FFAddonSDK$Port;
   }
 }
 declare module "sdk/ui/toolbar" {
   /**
- * @constructor
- * @param The toolbar's title. This appears as the name of the toolbar in the Firefox "Toolbars" menu
-It must be unique
- * @param An array of items to appear in the toolbar. Each item in items must be an action button,
-a toggle button, or a frame instance. Buttons each take up a fixed width.
-If more than one frame is supplied here, the frames each occupy an equal vertical strip of the toolbar
- * @param This event is emitted when the toolbar is first loaded.
-Note that since there is only one toolbar for the whole browser, opening another browser window does not
-cause this event to be emitted again. After this event the toolbar's properties are available
- */
+   * @constructor
+   * @param The toolbar's title. This appears as the name of the toolbar in the Firefox "Toolbars" menu
+   * It must be unique
+   * @param An array of items to appear in the toolbar. Each item in items must be an action button,
+   * a toggle button, or a frame instance. Buttons each take up a fixed width.
+   * If more than one frame is supplied here, the frames each occupy an equal vertical strip of the toolbar
+   * @param This event is emitted when the toolbar is first loaded.
+   * Note that since there is only one toolbar for the whole browser, opening another browser window does not
+   * cause this event to be emitted again. After this event the toolbar's properties are available
+   */
   declare export function Toolbar(options: {
     title: string,
     items: ToolbarItem[],
@@ -368,86 +158,86 @@ cause this event to be emitted again. After this event the toolbar's properties 
     destroy: () => void;
   }
   declare type ToolbarItem =
-    | FFAddonSDK$FFAddonSDK$Frame
-    | FFAddonSDK$FFAddonSDK$ActionButton
-    | FFAddonSDK$FFAddonSDK$ToggleButton;
+    | FFAddonSDK$Frame
+    | FFAddonSDK$ActionButton
+    | FFAddonSDK$ToggleButton;
 }
 declare module "sdk/ui/frame" {
   /**
- * Creates a frame. Once created, the frame needs to be added to a toolbar for it to be visible
- * @param A URL pointing to the HTML file specifying the frame's content.
-The file must be bundled with the add-on under its "data" directory
- * @param The frame's name. This must be unique within your add-on.
-This is used to generate an ID to to keep track of the frame. If you don't supply a name, the ID is derived from
-the frame's URL, meaning that if you don't supply a name, you may not create two frames with the same URL
- * @param This event is emitted while a frame instance is being loaded, at the point where it becomes
-possible to interact with the frame although sub-resources may still be in the process of loading
-It's the equivalent of the point where the frame's document.readyState becomes "interactive"
- * @param This event is emitted whenever a new frame instance is constructed and the browser has
-started to load its document: for example, when the user opens a new browser window, if that window has a
-toolbar containing this frame. Since the event is dispatched asynchronously, the document may already be
-loaded by the time the event is received.
-At this point, you should not try to send messages to scripts hosted in the frame
-because the frame scripts may not have been loaded
- * @param This event is emitted when a frame instance is unloaded: for example, when the user
-closes a browser window, if that window has a toolbar containing this frame.
-After receiving this message, you ahould not attempt to communicate with the frame scripts
- * @constructor
- */
+   * Creates a frame. Once created, the frame needs to be added to a toolbar for it to be visible
+   * @param A URL pointing to the HTML file specifying the frame's content.
+   * The file must be bundled with the add-on under its "data" directory
+   * @param The frame's name. This must be unique within your add-on.
+   * This is used to generate an ID to to keep track of the frame. If you don't supply a name, the ID is derived from
+   * the frame's URL, meaning that if you don't supply a name, you may not create two frames with the same URL
+   * @param This event is emitted while a frame instance is being loaded, at the point where it becomes
+   * possible to interact with the frame although sub-resources may still be in the process of loading
+   * It's the equivalent of the point where the frame's document.readyState becomes "interactive"
+   * @param This event is emitted whenever a new frame instance is constructed and the browser has
+   * started to load its document: for example, when the user opens a new browser window, if that window has a
+   * toolbar containing this frame. Since the event is dispatched asynchronously, the document may already be
+   * loaded by the time the event is received.
+   * At this point, you should not try to send messages to scripts hosted in the frame
+   * because the frame scripts may not have been loaded
+   * @param This event is emitted when a frame instance is unloaded: for example, when the user
+   * closes a browser window, if that window has a toolbar containing this frame.
+   * After receiving this message, you ahould not attempt to communicate with the frame scripts
+   * @constructor
+   */
   declare export function Frame(options: {
-    data$url: string,
+    url: string,
     name?: string,
-    onMessage?: (message: FFAddonSDK$FFAddonSDK$FrameEvent) => any,
-    onReady?: (event: FFAddonSDK$FFAddonSDK$FrameEvent) => any,
-    onLoad?: (event: FFAddonSDK$FFAddonSDK$FrameEvent) => any,
-    onAttach?: (event: FFAddonSDK$FFAddonSDK$FrameEvent) => any,
-    onDetach?: (event: FFAddonSDK$FFAddonSDK$FrameEvent) => any
-  }): FFAddonSDK$FFAddonSDK$Frame;
+    onMessage?: (message: FFAddonSDK$FrameEvent) => any,
+    onReady?: (event: FFAddonSDK$FrameEvent) => any,
+    onLoad?: (event: FFAddonSDK$FrameEvent) => any,
+    onAttach?: (event: FFAddonSDK$FrameEvent) => any,
+    onDetach?: (event: FFAddonSDK$FrameEvent) => any
+  }): FFAddonSDK$Frame;
 }
 declare module "sdk/ui/button/toggle" {
   /**
- * Creates a toggle button
- * @constructor
- * @param The button's ID. This is used internally to keep track of this button
-The ID must be unique within your add-on
- * @param The button's human-readable label. When the button is in the toolbar,
-this appears in a tooltip, and when the button is in the menu,
-it appears underneath the button as a legend
- * @param One or more icons for the button
- */
+   * Creates a toggle button
+   * @constructor
+   * @param The button's ID. This is used internally to keep track of this button
+   * The ID must be unique within your add-on
+   * @param The button's human-readable label. When the button is in the toolbar,
+   * this appears in a tooltip, and when the button is in the menu,
+   * it appears underneath the button as a legend
+   * @param One or more icons for the button
+   */
   declare export function ToggleButton(options: {
     id: string,
     label: string,
-    icon: FFAddonSDK$FFAddonSDK$Icon,
-    onChange?: (state: FFAddonSDK$FFAddonSDK$ToggleButtonState) => any,
-    onClick?: (state: FFAddonSDK$FFAddonSDK$ToggleButtonState) => any,
+    icon: FFAddonSDK$Icon,
+    onChange?: (state: FFAddonSDK$ToggleButtonState) => any,
+    onClick?: (state: FFAddonSDK$ToggleButtonState) => any,
     badge?: string | number,
     badgeColor?: string,
     disabled?: boolean,
     checked?: boolean
-  }): FFAddonSDK$FFAddonSDK$ToggleButton;
+  }): FFAddonSDK$ToggleButton;
 }
 declare module "sdk/ui/button/action" {
   /**
- * Creates an action button
- * @constructor
- * @param The button's ID. This is used internally to keep track of this button
-The ID must be unique within your add-on
- * @param The button's human-readable label. When the button is in the toolbar,
-this appears in a tooltip, and when the button is in the menu,
-it appears underneath the button as a legend
- * @param One or more icons for the button
- */
+   * Creates an action button
+   * @constructor
+   * @param The button's ID. This is used internally to keep track of this button
+   * The ID must be unique within your add-on
+   * @param The button's human-readable label. When the button is in the toolbar,
+   * this appears in a tooltip, and when the button is in the menu,
+   * it appears underneath the button as a legend
+   * @param One or more icons for the button
+   */
   declare export function ActionButton(options: {
     id: string,
     label: string,
-    icon: FFAddonSDK$FFAddonSDK$Icon,
-    onClick?: (state: FFAddonSDK$FFAddonSDK$ActionButton) => any,
-    onChange?: (state: FFAddonSDK$FFAddonSDK$ActionButtonState) => any,
+    icon: FFAddonSDK$Icon,
+    onClick?: (state: FFAddonSDK$ActionButton) => any,
+    onChange?: (state: FFAddonSDK$ActionButtonState) => any,
     disabled?: boolean,
     badge?: string | number,
     badgeColor?: string
-  }): FFAddonSDK$FFAddonSDK$ActionButton;
+  }): FFAddonSDK$ActionButton;
 }
 declare module "sdk/timers" {
   /**
@@ -482,38 +272,38 @@ declare module "sdk/timers" {
 }
 declare module "sdk/tabs" {
   /**
- * Opens a new tab. The new tab will open in the active window or in a new window, depending on the inNewWindow option
- * @param options String URL to be opened in the new tab or an options object
- * @param Determine whether the new tab should be private or not
-If your add-on does not support private browsing this will have no effect
- * @param tab will be opened to the right of the active tab and will not be active
- * @param This event is emitted when a new tab is opened. This does not mean that the content has loaded,
-only that the browser tab itself is fully visible to the user.
-Properties relating to the tab's content (for example: title, favicon, and url) will not be
-correct at this point. If you need to access these properties, listen for the ready event.
- * @param This event is emitted when a tab is closed. When a window is closed this event will be
-emitted for each of the open tabs in that window
- * @param This event is emitted when the DOM for a tab's content is ready.
-It is equivalent to the DOMContentLoaded event for the given content page.
-A single tab will emit this event every time the DOM is loaded: so it will be emitted again
-if the tab's location changes or the content is reloaded.
-After this event has been emitted, all properties relating to the tab's content can be used.
- */
+   * Opens a new tab. The new tab will open in the active window or in a new window, depending on the inNewWindow option
+   * @param options String URL to be opened in the new tab or an options object
+   * @param Determine whether the new tab should be private or not
+   * If your add-on does not support private browsing this will have no effect
+   * @param tab will be opened to the right of the active tab and will not be active
+   * @param This event is emitted when a new tab is opened. This does not mean that the content has loaded,
+   * only that the browser tab itself is fully visible to the user.
+   * Properties relating to the tab's content (for example: title, favicon, and url) will not be
+   * correct at this point. If you need to access these properties, listen for the ready event.
+   * @param This event is emitted when a tab is closed. When a window is closed this event will be
+   * emitted for each of the open tabs in that window
+   * @param This event is emitted when the DOM for a tab's content is ready.
+   * It is equivalent to the DOMContentLoaded event for the given content page.
+   * A single tab will emit this event every time the DOM is loaded: so it will be emitted again
+   * if the tab's location changes or the content is reloaded.
+   * After this event has been emitted, all properties relating to the tab's content can be used.
+   */
   declare export function open(
     options:
       | string
       | {
-          data$url: string,
+          url: string,
           inNewWindow?: boolean,
           inBackground?: boolean,
           isPinned?: boolean,
-          onOpen?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onClose?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onReady?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onLoad?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onPageShow?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onActivate?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any,
-          onDeactivate?: (tab: FFAddonSDK$FFAddonSDK$Tab) => any
+          onOpen?: (tab: FFAddonSDK$Tab) => any,
+          onClose?: (tab: FFAddonSDK$Tab) => any,
+          onReady?: (tab: FFAddonSDK$Tab) => any,
+          onLoad?: (tab: FFAddonSDK$Tab) => any,
+          onPageShow?: (tab: FFAddonSDK$Tab) => any,
+          onActivate?: (tab: FFAddonSDK$Tab) => any,
+          onDeactivate?: (tab: FFAddonSDK$Tab) => any
         }
   ): void;
 
@@ -526,13 +316,13 @@ After this event has been emitted, all properties relating to the tab's content 
       | "pageshow"
       | "activate"
       | "deactivate",
-    handler: (tab: FFAddonSDK$FFAddonSDK$Tab) => any
+    handler: (tab: FFAddonSDK$Tab) => any
   ): void;
 
   /**
    * The currently active tab in the active window
    */
-  declare export var activeTab: FFAddonSDK$FFAddonSDK$Tab;
+  declare export var activeTab: FFAddonSDK$Tab;
 
   /**
    * The number of open tabs across all windows
@@ -633,27 +423,6 @@ declare module "sdk/simple-prefs" {
 
   declare export var prefs: Object;
 }
-
-declare var npm$namespace$data: {
-  load: typeof data$load,
-  url: typeof data$url
-};
-
-/**
- * The data.load() method returns the contents of an embedded data file, as a string.
- * It is most useful for data that will be modified or parsed in some way, such as JSON, XML, plain text,
- * or perhaps an HTML template. For data that can be displayed directly in a content frame, use data.url()
- * @param name The filename to be read, relative to the package's data directory.
-Each package that uses the self module will see its own data directory
- */
-declare export function data$load(name: string): string;
-
-/**
- * The data.url() method returns a resource:// url that points at an embedded data file.
- * It is most useful for data that can be displayed directly in a content frame.
- * The url can be passed to a content frame constructor, such as the {@link Panel}
- */
-declare export function data$url(name: string): string;
 declare module "sdk/self" {
   /**
    * This property represents an add-on associated unique URI string
@@ -694,6 +463,27 @@ declare module "sdk/self" {
    * It comes from the private-browsing key in the add-on's package.json file
    */
   declare export var isPrivateBrowsingSupported: boolean;
+
+  declare var npm$namespace$data: {
+    load: typeof data$load,
+    url: typeof data$url
+  };
+
+  /**
+   * The data.load() method returns the contents of an embedded data file, as a string.
+   * It is most useful for data that will be modified or parsed in some way, such as JSON, XML, plain text,
+   * or perhaps an HTML template. For data that can be displayed directly in a content frame, use data.url()
+   * @param name The filename to be read, relative to the package's data directory.
+   * Each package that uses the self module will see its own data directory
+   */
+  declare export function data$load(name: string): string;
+
+  /**
+   * The data.url() method returns a resource:// url that points at an embedded data file.
+   * It is most useful for data that can be displayed directly in a content frame.
+   * The url can be passed to a content frame constructor, such as the {@link Panel}
+   */
+  declare export function data$url(name: string): string;
 }
 declare module "sdk/selection" {
   declare export function on(
@@ -732,26 +522,26 @@ declare module "sdk/selection" {
 }
 declare module "sdk/request" {
   /**
- * This constructor creates a request object that can be used to make network requests
- * @param This is the url to which the request will be made
- * @param This function will be called when the request has received a response
-(or in terms of XHR, when readyState == 4)
- * @param An unordered collection of name/value pairs representing headers to send with the request
- * @param The content to send to the server. If content is a string, it should be URL-encoded
-(use encodeURIComponent). If content is an object, it should be a collection of name/value pairs.
-Nested objects & arrays should encode safely.
-For GET and HEAD requests, the query string (content) will be appended to the URL.
-For POST and PUT requests, it will be sent as the body of the request
- * @param The type of content to send to the server
-This explicitly sets the Content-Type header
- * @param Use this string to override the MIME type returned by the server in the response's
-Content-Type header. You can use this to treat the content as a different MIME type,
-or to force text to be interpreted using a specific character
- * @param If true, the request will be sent without cookies or authentication headers
- * @constructor
- */
+   * This constructor creates a request object that can be used to make network requests
+   * @param This is the url to which the request will be made
+   * @param This function will be called when the request has received a response
+   * (or in terms of XHR, when readyState == 4)
+   * @param An unordered collection of name/value pairs representing headers to send with the request
+   * @param The content to send to the server. If content is a string, it should be URL-encoded
+   * (use encodeURIComponent). If content is an object, it should be a collection of name/value pairs.
+   * Nested objects & arrays should encode safely.
+   * For GET and HEAD requests, the query string (content) will be appended to the URL.
+   * For POST and PUT requests, it will be sent as the body of the request
+   * @param The type of content to send to the server
+   * This explicitly sets the Content-Type header
+   * @param Use this string to override the MIME type returned by the server in the response's
+   * Content-Type header. You can use this to treat the content as a different MIME type,
+   * or to force text to be interpreted using a specific character
+   * @param If true, the request will be sent without cookies or authentication headers
+   * @constructor
+   */
   declare export function Request(options: {
-    data$url?: string | FFAddonSDK$FFAddonSDK$SDKURL,
+    url?: string | FFAddonSDK$SDKURL,
     onComplete?: (response: Response) => any,
     headers?: Object,
     content?: string | Object,
@@ -761,7 +551,7 @@ or to force text to be interpreted using a specific character
   }): Request;
 
   declare export function Request<ResponseType>(options: {
-    data$url?: string | FFAddonSDK$FFAddonSDK$SDKURL,
+    url?: string | FFAddonSDK$SDKURL,
     onComplete?: (response: STResponse<ResponseType>) => any,
     headers?: Object,
     content?: string | Object,
@@ -776,7 +566,7 @@ or to force text to be interpreted using a specific character
     head: () => void;
     put: () => void;
     delete: () => void;
-    data$url: string | FFAddonSDK$FFAddonSDK$SDKURL;
+    url: string | FFAddonSDK$SDKURL;
     headers: Object;
     content: string;
     contentType: string;
@@ -790,7 +580,7 @@ or to force text to be interpreted using a specific character
   } & BaseRequest;
 
   declare interface BaseResponse {
-    data$url: string;
+    url: string;
     text: string;
     status: number;
     statusText: string;
@@ -841,10 +631,7 @@ declare module "sdk/querystring" {
 }
 declare module "sdk/private-browsing" {
   declare export function isPrivate(
-    object:
-      | FFAddonSDK$FFAddonSDK$Tab
-      | FFAddonSDK$FFAddonSDK$ContentWorker
-      | FFAddonSDK$FFAddonSDK$BrowserWindow
+    object: FFAddonSDK$Tab | FFAddonSDK$ContentWorker | FFAddonSDK$BrowserWindow
   ): boolean;
 }
 declare module "sdk/passwords" {
@@ -855,13 +642,13 @@ declare module "sdk/passwords" {
   declare export function search(options: {
     onComplete: (credentials: Credential[]) => any,
     username?: string,
-    data$url?: string,
+    url?: string,
     password?: string,
     formSubmitURL?: string,
     realm?: string,
     usernameField?: string,
     passwordField?: string,
-    onError?: (error: FFAddonSDK$FFAddonSDK$NSIException) => any
+    onError?: (error: FFAddonSDK$NSIException) => any
   }): void;
 
   /**
@@ -873,7 +660,7 @@ declare module "sdk/passwords" {
   declare export function store(
     options: Credential & {
       onComplete?: () => any,
-      onError?: (error: FFAddonSDK$FFAddonSDK$NSIException) => any
+      onError?: (error: FFAddonSDK$NSIException) => any
     }
   ): void;
 
@@ -883,14 +670,14 @@ declare module "sdk/passwords" {
   declare export function remove(
     options: Credential & {
       onComplete?: () => any,
-      onError?: (error: FFAddonSDK$FFAddonSDK$NSIException) => any
+      onError?: (error: FFAddonSDK$NSIException) => any
     }
   ): void;
 
   declare interface Credential {
     username: string;
     password: string;
-    data$url?: string;
+    url?: string;
     formSubmitURL?: string;
     realm?: string;
     usernameField?: string;
@@ -899,31 +686,31 @@ declare module "sdk/passwords" {
 }
 declare module "sdk/panel" {
   /**
- * @constructor
- * @param The URL of the content to load in the panel. That is, they can't refer to remote scripts
- * @param The width of the panel in pixels
- * @param The height of the panel in pixels
- * @param A string or an array of strings containing the texts of content scripts to load.
-Content scripts specified by this property are loaded after those specified by the
-contentScriptFile property
- * @param A URL or an array of URLs. The URLs point to scripts to load into the panel
- * @param
- * @param A string or an array of strings containing the texts of stylesheets to load.
-Stylesheets specified by this property are loaded after those specified by the
-contentStyleFile property
- * @param A URL or an array of URLs. The URLs point to CSS stylesheets to load into the panel
- * @param The position of the panel. Ignored if the panel is opened by a widget.
-This may be one of three things:
-1. a toggle button. If this is supplied the panel will be shown attached to the button
-2. a widget object. If this is supplied the panel will be shown attached to the widget.
-3. an object which specifies where in the window the panel should be shown
- * @param Set to false to prevent taking the focus away when the panel is shown.
-Only turn this off if necessary, to prevent accessibility issues
- * @param An optional object describing permissions for the content. It should contain a single key
-named script whose value is a boolean that indicates whether or not to execute script in the content
- * @param Whether to show a context menu when the user context-clicks in the panel.
-The context menu will be the same one that's displayed in web pages
- */
+   * @constructor
+   * @param The URL of the content to load in the panel. That is, they can't refer to remote scripts
+   * @param The width of the panel in pixels
+   * @param The height of the panel in pixels
+   * @param A string or an array of strings containing the texts of content scripts to load.
+   * Content scripts specified by this property are loaded after those specified by the
+   * contentScriptFile property
+   * @param A URL or an array of URLs. The URLs point to scripts to load into the panel
+   * @param
+   * @param A string or an array of strings containing the texts of stylesheets to load.
+   * Stylesheets specified by this property are loaded after those specified by the
+   * contentStyleFile property
+   * @param A URL or an array of URLs. The URLs point to CSS stylesheets to load into the panel
+   * @param The position of the panel. Ignored if the panel is opened by a widget.
+   * This may be one of three things:
+   * 1. a toggle button. If this is supplied the panel will be shown attached to the button
+   * 2. a widget object. If this is supplied the panel will be shown attached to the widget.
+   * 3. an object which specifies where in the window the panel should be shown
+   * @param Set to false to prevent taking the focus away when the panel is shown.
+   * Only turn this off if necessary, to prevent accessibility issues
+   * @param An optional object describing permissions for the content. It should contain a single key
+   * named script whose value is a boolean that indicates whether or not to execute script in the content
+   * @param Whether to show a context menu when the user context-clicks in the panel.
+   * The context menu will be the same one that's displayed in web pages
+   */
   declare export function Panel(options: {
     contentURL?: string | URL,
     width?: number,
@@ -962,7 +749,7 @@ The context menu will be the same one that's displayed in web pages
       handler: (arg?: Error | any) => any
     ) => void;
     removeListener: (event: string, listener: Function) => void;
-    port: FFAddonSDK$FFAddonSDK$Port;
+    port: FFAddonSDK$Port;
     isShowing: boolean;
     height: number;
     width: number;
@@ -977,8 +764,8 @@ The context menu will be the same one that's displayed in web pages
     contentScriptOptions?: any;
   }
   declare type PanelPosition =
-    | FFAddonSDK$FFAddonSDK$ToggleButton
-    | FFAddonSDK$FFAddonSDK$Widget
+    | FFAddonSDK$ToggleButton
+    | FFAddonSDK$Widget
     | {
         top?: number,
         right?: number,
@@ -988,25 +775,25 @@ The context menu will be the same one that's displayed in web pages
 }
 declare module "sdk/page-worker" {
   /**
- * @constructor
- * @param The URL of the content to load in the worker
- * @param A string or an array of strings containing the texts of content scripts to load.
-Content scripts specified by this option are loaded after those specified by the
-contentScriptFile option.
- * @param A local file URL or an array of local file URLs of content scripts to load
-Content scripts specified by this option are loaded before those specified
-by the contentScript option
- * @param This is useful when your page worker loads a page which will redirect to other pages.
-These define the documents to which the page-worker's content worker applies
- * @param When to load the content scripts
-"start": load content scripts immediately after the document element for the page
-is inserted into the DOM, but before the DOM content itself has been loaded
-"ready": load content scripts once DOM content has been loaded, corresponding
-to the DOMContentLoaded event
-"end": load content scripts once all the content (DOM, JS, CSS, images) for the
-page has been loaded, at the time the window.onload event fires
- * @param Read-only value exposed to content scripts under self.options property
- */
+   * @constructor
+   * @param The URL of the content to load in the worker
+   * @param A string or an array of strings containing the texts of content scripts to load.
+   * Content scripts specified by this option are loaded after those specified by the
+   * contentScriptFile option.
+   * @param A local file URL or an array of local file URLs of content scripts to load
+   * Content scripts specified by this option are loaded before those specified
+   * by the contentScript option
+   * @param This is useful when your page worker loads a page which will redirect to other pages.
+   * These define the documents to which the page-worker's content worker applies
+   * @param When to load the content scripts
+   * "start": load content scripts immediately after the document element for the page
+   * is inserted into the DOM, but before the DOM content itself has been loaded
+   * "ready": load content scripts once DOM content has been loaded, corresponding
+   * to the DOMContentLoaded event
+   * "end": load content scripts once all the content (DOM, JS, CSS, images) for the
+   * page has been loaded, at the time the window.onload event fires
+   * @param Read-only value exposed to content scripts under self.options property
+   */
   declare export function Page(options: {
     contentURL?: string,
     contentScript?: string | string[],
@@ -1021,7 +808,7 @@ page has been loaded, at the time the window.onload event fires
   }): PageWorker;
 
   declare interface PageWorker {
-    port: FFAddonSDK$FFAddonSDK$Port;
+    port: FFAddonSDK$Port;
     contentURL?: string;
     destroy: () => void;
     postMessage: (message: string) => void;
@@ -1040,21 +827,21 @@ page has been loaded, at the time the window.onload event fires
 }
 declare module "sdk/page-mod" {
   /**
- * @constructor
- * @param
- * @param Lists stylesheets to attach, supplied as strings
- * @param Lists stylesheets to attach, supplied in separate files
- * @param Defines read-only values accessible to content scripts
- * @param Controls whether to attach scripts to tabs that were already open when the page-mod
-was created, and whether to attach scripts to iframes as well as the topmost document
- * @param Controls the point during document load at which content scripts are attached
- * @param Has the same syntax as include, but specifies the URLs to which content scripts should not
-be attached, even if they match include: so it's a way of excluding a subset of the URLs
-that include specifies. The exclude option is new in Firefox 32
- * @param This event is emitted when the page-mod's content scripts are attached to a document
-whose URL matches the page-mod's include pattern
- * @param This event is emitted when an uncaught runtime error occurs in one of the page-mod's content scripts
- */
+   * @constructor
+   * @param
+   * @param Lists stylesheets to attach, supplied as strings
+   * @param Lists stylesheets to attach, supplied in separate files
+   * @param Defines read-only values accessible to content scripts
+   * @param Controls whether to attach scripts to tabs that were already open when the page-mod
+   * was created, and whether to attach scripts to iframes as well as the topmost document
+   * @param Controls the point during document load at which content scripts are attached
+   * @param Has the same syntax as include, but specifies the URLs to which content scripts should not
+   * be attached, even if they match include: so it's a way of excluding a subset of the URLs
+   * that include specifies. The exclude option is new in Firefox 32
+   * @param This event is emitted when the page-mod's content scripts are attached to a document
+   * whose URL matches the page-mod's include pattern
+   * @param This event is emitted when an uncaught runtime error occurs in one of the page-mod's content scripts
+   */
   declare export function PageMod(options: {
     include: string | string[] | RegExp | RegExp[],
     contentScript?: string | string[],
@@ -1065,7 +852,7 @@ whose URL matches the page-mod's include pattern
     attachTo?: attachmentMode | attachmentMode[],
     contentScriptWhen?: "start" | "ready" | "end",
     exclude?: string | string[],
-    onAttach?: (worker: FFAddonSDK$FFAddonSDK$ContentWorker) => any,
+    onAttach?: (worker: FFAddonSDK$ContentWorker) => any,
     onError?: (error: Error) => any
   }): PageMod;
 
@@ -1077,14 +864,14 @@ whose URL matches the page-mod's include pattern
 }
 declare module "sdk/notifications" {
   /**
- * @param options
- * @param A string to display as the message's title
- * @param A string to display as the body of the message
- * @param The URL of an icon to display inside the message. It may be a remote URL, a data URI,
-or a URL returned by the {@link sdk/self} module
- * @param A function to be called when the user clicks the message. It will be passed the value of data
- * @param A string that will be passed to onClick
- */
+   * @param options
+   * @param A string to display as the message's title
+   * @param A string to display as the body of the message
+   * @param The URL of an icon to display inside the message. It may be a remote URL, a data URI,
+   * or a URL returned by the {@link sdk/self} module
+   * @param A function to be called when the user clicks the message. It will be passed the value of data
+   * @param A string that will be passed to onClick
+   */
   declare export function notify(options: {
     title?: string,
     text?: string,
@@ -1095,16 +882,16 @@ or a URL returned by the {@link sdk/self} module
 }
 declare module "sdk/l10n" {
   /**
- * This function takes a string parameter which it uses as an identifier to look up and return a localized string in
- * the locale currently set for Firefox. Localized strings are supplied by the add-on developer in .properties
- * files stored in the add-ons "locale" directory
- * See {@link https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/l10n}
- * @param identifier An identifier for the localization of a particular string in the current locale
- * @param count If you're supplying different localizations for a string for singular or plural forms,
-this parameter is the number of items there are in this case
- * @param placeholder If you do not include the count parameter, you can supply one or more placeholder strings that
-are to be inserted into the translated string at locations defined by the translator
- */
+   * This function takes a string parameter which it uses as an identifier to look up and return a localized string in
+   * the locale currently set for Firefox. Localized strings are supplied by the add-on developer in .properties
+   * files stored in the add-ons "locale" directory
+   * See {@link https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/l10n}
+   * @param identifier An identifier for the localization of a particular string in the current locale
+   * @param count If you're supplying different localizations for a string for singular or plural forms,
+   * this parameter is the number of items there are in this case
+   * @param placeholder If you do not include the count parameter, you can supply one or more placeholder strings that
+   * are to be inserted into the translated string at locations defined by the translator
+   */
   declare export function get(
     identifier: string,
     count?: number,
@@ -1117,7 +904,7 @@ declare module "sdk/indexed-db" {
     IDBKeyRange: IDBKeyRange;
     DOMException: DOMException;
   }
-  declare module.exports: typeof IndexedImpl;
+  declare export default typeof IndexedImpl;
 }
 declare module "sdk/hotkeys" {
   declare interface Hotkey {
@@ -1125,10 +912,10 @@ declare module "sdk/hotkeys" {
   }
 
   /**
- * @contructor Hotkey
-Used to define a hotkey combination passing it the combination and a function to be called when the user 
-presses that combination
- */
+   * @contructor Hotkey
+   * Used to define a hotkey combination passing it the combination and a function to be called when the user
+   * presses that combination
+   */
   declare export function Hotkey(options: {
     combo: string,
     onPress: () => void
@@ -1285,11 +1072,11 @@ declare module "sdk/clipboard" {
 }
 declare module "sdk/base64" {
   /**
- * Creates a base-64 encoded ASCII string from a string of binary data
- * @param data the data to encode
- * @param charset The charset of the string to encode (optional). The only accepted value is "utf-8".
-In order to encode and decode Unicode strings, the charset parameter needs to be set
- */
+   * Creates a base-64 encoded ASCII string from a string of binary data
+   * @param data the data to encode
+   * @param charset The charset of the string to encode (optional). The only accepted value is "utf-8".
+   * In order to encode and decode Unicode strings, the charset parameter needs to be set
+   */
   declare export function encode(data: string, charset?: string): string;
 
   /**
@@ -1299,4 +1086,215 @@ In order to encode and decode Unicode strings, the charset parameter needs to be
   declare export function decode(data: string, charset?: string): string;
 }
 declare module "jpm" {
+  declare interface FFAddonSDK$BrowserWindow {
+    title: string;
+    activate: () => void;
+    close: (callback?: () => void) => void;
+    tabs: FFAddonSDK$Tab[];
+  }
+
+  declare interface FFAddonSDK$SDKURL {
+    scheme: string;
+    userPass: string;
+    host: string;
+    port: string;
+    path: string;
+    hostname: string;
+    pathname: string;
+    hash: string;
+    href: string;
+    origin: string;
+    protocol: string;
+    search: string;
+    toString: () => string;
+    toJSON: () => string;
+  }
+
+  declare interface FFAddonSDK$FrameEvent {
+    origin: string;
+    source: FFAddonSDK$Frame;
+    data?: any;
+  }
+
+  declare interface FFAddonSDK$Frame {
+    url: URL;
+    postMessage: (message: string, target: string) => void;
+    on: (
+      event: "attach" | "detach" | "load" | "ready" | "message",
+      handler: (event: FFAddonSDK$FrameEvent) => any
+    ) => void;
+    once: (
+      event: "attach" | "detach" | "load" | "ready" | "message",
+      handler: (event: FFAddonSDK$FrameEvent) => any
+    ) => void;
+    removeListener: (
+      event: "attach" | "detach" | "load" | "ready" | "message",
+      handler: Function
+    ) => void;
+    off: (
+      event: "attach" | "detach" | "load" | "ready" | "message",
+      handler: Function
+    ) => void;
+    destroy: () => void;
+  }
+
+  declare type FFAddonSDK$Icon =
+    | string
+    | {
+        "16"?: string,
+        "32"?: string,
+        "64"?: string
+      };
+
+  declare interface FFAddonSDK$ToggleButtonState {
+    id: string;
+    label: string;
+    badge: string;
+    checked: boolean;
+    disabled: boolean;
+  }
+
+  declare type FFAddonSDK$ToggleButton = {
+    click: () => void,
+    on: (
+      event: "click" | "change",
+      handler: (state: FFAddonSDK$ToggleButtonState) => any
+    ) => void,
+    once: (
+      event: "click" | "change",
+      handler: (state: FFAddonSDK$ToggleButtonState) => any
+    ) => void,
+    removeListener: (event: string, handler: Function) => void,
+    state: (
+      target:
+        | "window"
+        | "tab"
+        | FFAddonSDK$Tab
+        | FFAddonSDK$BrowserWindow
+        | FFAddonSDK$ToggleButton,
+      state?: {
+        disabled?: boolean,
+        label?: string,
+        icon?: FFAddonSDK$Icon,
+        checked?: boolean,
+        badge?: string | number,
+        badgeColor?: string
+      }
+    ) => FFAddonSDK$ToggleButtonState,
+    destroy: () => void
+  } & ToggleButtonState;
+
+  declare interface FFAddonSDK$ActionButtonState {
+    id: string;
+    label: string;
+    disabled: boolean;
+    icon: FFAddonSDK$Icon;
+    badge: string | number;
+    badgeColor: string;
+  }
+
+  declare type FFAddonSDK$ActionButton = {
+    state: (
+      target:
+        | FFAddonSDK$BrowserWindow
+        | FFAddonSDK$Tab
+        | FFAddonSDK$ActionButton
+        | "window"
+        | "tab",
+      state?: {
+        disabled?: boolean,
+        label?: string,
+        icon?: FFAddonSDK$Icon
+      }
+    ) => FFAddonSDK$ActionButtonState,
+    click: () => void,
+    destroy: () => void,
+    on: (
+      event: "click" | "click",
+      handler: (state: FFAddonSDK$ActionButtonState) => any
+    ) => void,
+    once: (
+      event: "click" | "click",
+      handler: (state: FFAddonSDK$ActionButtonState) => any
+    ) => void,
+    removeListener: (event: "click" | "click", handler: Function) => void
+  } & ActionButtonState;
+
+  declare interface FFAddonSDK$Tab {
+    title: string;
+    url: string;
+    id: string;
+    favicon: string;
+    contentType: string;
+    index: number;
+    isPinned: boolean;
+    window: FFAddonSDK$BrowserWindow;
+    readyState: "uninitialized" | "loading" | "interactive" | "complete";
+    on: (
+      event:
+        | "ready"
+        | "load"
+        | "pageshow"
+        | "activate"
+        | "deactivate"
+        | "close",
+      handler: (tab: FFAddonSDK$Tab) => any
+    ) => void;
+    attach: (options: {
+      contentScript?: string | string[],
+      contentScriptFile?: string | string[],
+      contentScriptOptions?: Object,
+      onMessage?: (message: string) => any,
+      onError?: (error: Error) => any
+    }) => FFAddonSDK$ContentWorker;
+    activate: () => void;
+    pin: () => void;
+    unpin: () => void;
+    close: (afterClose?: () => any) => void;
+    reload: () => void;
+    getThumbnail: () => string;
+  }
+
+  /**
+   * The SDK port API
+   * @see [port API]{@link https://developer.mozilla.org/en-US/Add-ons/SDK/Guides/using_port}
+   */
+  declare interface FFAddonSDK$Port {
+    emit: (event: string, data?: any) => void;
+    on: (event: string, handler: (data?: any) => any) => void;
+  }
+
+  declare interface FFAddonSDK$ContentWorker {
+    new(options: {
+      window: Window,
+      contentScript?: string | string[],
+      contentScriptFile?: string | string[],
+      onMessage: (data?: any) => any,
+      onError: (data?: any) => any
+    }): FFAddonSDK$ContentWorker;
+    url: URL;
+    port: FFAddonSDK$Port;
+    tab: FFAddonSDK$Tab;
+    on: (event: "detach" | "message" | "error", handler: () => any) => void;
+    postMessage: (data?: any) => void;
+    destroy: () => void;
+  }
+
+  declare interface FFAddonSDK$Widget {}
+
+  /**
+   * @see [nsIException]{@link https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIException}
+   */
+  declare interface FFAddonSDK$NSIException {
+    lineNumber: number;
+    columnNumber: number;
+    data: any;
+    filename: string;
+    inner?: FFAddonSDK$NSIException;
+    location?: any;
+    message: string;
+    name: string;
+    result: any;
+    toString: () => string;
+  }
 }
