@@ -1,38 +1,42 @@
 declare module "gapi.client.bigquery" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    datasets: typeof client$datasets,
-    jobs: typeof client$jobs,
-    projects: typeof client$projects,
-    tabledata: typeof client$tabledata,
-    tables: typeof client$tables
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    datasets: typeof gapi$client$datasets,
+    jobs: typeof gapi$client$jobs,
+    projects: typeof gapi$client$projects,
+    tabledata: typeof gapi$client$tabledata,
+    tables: typeof gapi$client$tables
   };
 
   /**
    * Load BigQuery API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "bigquery",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "bigquery",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$datasets: bigquery$bigquery$DatasetsResource;
+  declare var gapi$client$datasets: bigquery$DatasetsResource;
 
-  declare var client$jobs: bigquery$bigquery$JobsResource;
+  declare var gapi$client$jobs: bigquery$JobsResource;
 
-  declare var client$projects: bigquery$bigquery$ProjectsResource;
+  declare var gapi$client$projects: bigquery$ProjectsResource;
 
-  declare var client$tabledata: bigquery$bigquery$TabledataResource;
+  declare var gapi$client$tabledata: bigquery$TabledataResource;
 
-  declare var client$tables: bigquery$bigquery$TablesResource;
+  declare var gapi$client$tables: bigquery$TablesResource;
 
-  declare interface bigquery$BigtableColumn {
+  declare interface gapi$client$bigquery$BigtableColumn {
     /**
      * [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text
      * strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level.
@@ -69,12 +73,12 @@ declare module "gapi.client.bigquery" {
     type?: string;
   }
 
-  declare interface bigquery$BigtableColumnFamily {
+  declare interface gapi$client$bigquery$BigtableColumnFamily {
     /**
      * [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier
      * matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
      */
-    columns?: bigquery$BigtableColumn[];
+    columns?: gapi$client$bigquery$BigtableColumn[];
 
     /**
      * [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text
@@ -102,14 +106,14 @@ declare module "gapi.client.bigquery" {
     type?: string;
   }
 
-  declare interface bigquery$BigtableOptions {
+  declare interface gapi$client$bigquery$BigtableOptions {
     /**
      * [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced
      * in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this
      * list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced
      * in that query are read from Bigtable.
      */
-    columnFamilies?: bigquery$BigtableColumnFamily[];
+    columnFamilies?: gapi$client$bigquery$BigtableColumnFamily[];
 
     /**
      * [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise,
@@ -124,7 +128,7 @@ declare module "gapi.client.bigquery" {
     readRowkeyAsString?: boolean;
   }
 
-  declare interface bigquery$CsvOptions {
+  declare interface gapi$client$bigquery$CsvOptions {
     /**
      * [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as
      * null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is
@@ -165,7 +169,7 @@ declare module "gapi.client.bigquery" {
     skipLeadingRows?: string;
   }
 
-  declare interface bigquery$Dataset {
+  declare interface gapi$client$bigquery$Dataset {
     /**
      * [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in
      * order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following
@@ -275,12 +279,12 @@ declare module "gapi.client.bigquery" {
     selfLink?: string;
   }
 
-  declare interface bigquery$DatasetList {
+  declare interface gapi$client$bigquery$DatasetList {
     /**
      * An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource,
      * use the Datasets: get method. This property is omitted when there are no datasets in the project.
      */
-    client$datasets?: Array<{
+    datasets?: Array<{
       /**
        * The dataset reference. Use this property to access specific parts of the dataset's ID, such as project ID or dataset ID.
        */
@@ -323,7 +327,7 @@ declare module "gapi.client.bigquery" {
     nextPageToken?: string;
   }
 
-  declare interface bigquery$DatasetReference {
+  declare interface gapi$client$bigquery$DatasetReference {
     /**
      * [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The
      * maximum length is 1,024 characters.
@@ -336,7 +340,7 @@ declare module "gapi.client.bigquery" {
     projectId?: string;
   }
 
-  declare interface bigquery$EncryptionConfiguration {
+  declare interface gapi$client$bigquery$EncryptionConfiguration {
     /**
      * [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with
      * your project requires access to this encryption key.
@@ -344,7 +348,7 @@ declare module "gapi.client.bigquery" {
     kmsKeyName?: string;
   }
 
-  declare interface bigquery$ErrorProto {
+  declare interface gapi$client$bigquery$ErrorProto {
     /**
      * Debugging information. This property is internal to Google and should not be used.
      */
@@ -366,7 +370,7 @@ declare module "gapi.client.bigquery" {
     reason?: string;
   }
 
-  declare interface bigquery$ExplainQueryStage {
+  declare interface gapi$client$bigquery$ExplainQueryStage {
     /**
      * Milliseconds the average shard spent on CPU-bound tasks.
      */
@@ -488,7 +492,7 @@ declare module "gapi.client.bigquery" {
     writeRatioMax?: number;
   }
 
-  declare interface bigquery$ExplainQueryStep {
+  declare interface gapi$client$bigquery$ExplainQueryStep {
     /**
      * Machine-readable operation type.
      */
@@ -500,7 +504,7 @@ declare module "gapi.client.bigquery" {
     substeps?: string[];
   }
 
-  declare interface bigquery$ExternalDataConfiguration {
+  declare interface gapi$client$bigquery$ExternalDataConfiguration {
     /**
      * Try to detect schema and format options automatically. Any option specified explicitly will be honored.
      */
@@ -509,7 +513,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Optional] Additional options if sourceFormat is set to BIGTABLE.
      */
-    bigtableOptions?: bigquery$BigtableOptions;
+    bigtableOptions?: gapi$client$bigquery$BigtableOptions;
 
     /**
      * [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for
@@ -520,7 +524,7 @@ declare module "gapi.client.bigquery" {
     /**
      * Additional properties to set if sourceFormat is set to CSV.
      */
-    csvOptions?: bigquery$CsvOptions;
+    csvOptions?: gapi$client$bigquery$CsvOptions;
 
     /**
      * [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
@@ -565,7 +569,7 @@ declare module "gapi.client.bigquery" {
     sourceUris?: string[];
   }
 
-  declare interface bigquery$GetQueryResultsResponse {
+  declare interface gapi$client$bigquery$GetQueryResultsResponse {
     /**
      * Whether the query result was fetched from the query cache.
      */
@@ -575,7 +579,7 @@ declare module "gapi.client.bigquery" {
      * [Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the
      * process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
      */
-    errors?: bigquery$ErrorProto[];
+    errors?: gapi$client$bigquery$ErrorProto[];
 
     /**
      * A hash of this response.
@@ -632,7 +636,7 @@ declare module "gapi.client.bigquery" {
     totalRows?: string;
   }
 
-  declare interface bigquery$GetServiceAccountResponse {
+  declare interface gapi$client$bigquery$GetServiceAccountResponse {
     /**
      * The service account email address.
      */
@@ -644,7 +648,7 @@ declare module "gapi.client.bigquery" {
     kind?: string;
   }
 
-  declare interface bigquery$GoogleSheetsOptions {
+  declare interface gapi$client$bigquery$GoogleSheetsOptions {
     /**
      * [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if
      * you have header rows that should be skipped. When autodetect is on, behavior is the following: &#42; skipLeadingRows unspecified - Autodetect tries to
@@ -656,7 +660,7 @@ declare module "gapi.client.bigquery" {
     skipLeadingRows?: string;
   }
 
-  declare interface bigquery$Job {
+  declare interface gapi$client$bigquery$Job {
     /**
      * [Required] Describes the job configuration.
      */
@@ -703,11 +707,11 @@ declare module "gapi.client.bigquery" {
     user_email?: string;
   }
 
-  declare interface bigquery$JobCancelResponse {
+  declare interface gapi$client$bigquery$JobCancelResponse {
     /**
      * The final state of the job.
      */
-    job?: bigquery$Job;
+    job?: gapi$client$bigquery$Job;
 
     /**
      * The resource type of the response.
@@ -715,7 +719,7 @@ declare module "gapi.client.bigquery" {
     kind?: string;
   }
 
-  declare interface bigquery$JobConfiguration {
+  declare interface gapi$client$bigquery$JobConfiguration {
     /**
      * [Pick one] Copies a table.
      */
@@ -742,7 +746,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Pick one] Configures a load job.
      */
-    client$load?: bigquery$JobConfigurationLoad;
+    load?: bigquery$JobConfigurationLoad;
 
     /**
      * [Pick one] Configures a query job.
@@ -750,7 +754,7 @@ declare module "gapi.client.bigquery" {
     query?: bigquery$JobConfigurationQuery;
   }
 
-  declare interface bigquery$JobConfigurationExtract {
+  declare interface gapi$client$bigquery$JobConfigurationExtract {
     /**
      * [Optional] The compression type to use for exported files. Possible values include GZIP and NONE. The default value is NONE.
      */
@@ -789,7 +793,7 @@ declare module "gapi.client.bigquery" {
     sourceTable?: bigquery$TableReference;
   }
 
-  declare interface bigquery$JobConfigurationLoad {
+  declare interface gapi$client$bigquery$JobConfigurationLoad {
     /**
      * [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing
      * columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
@@ -817,7 +821,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    destinationEncryptionConfiguration?: bigquery$EncryptionConfiguration;
+    destinationEncryptionConfiguration?: gapi$client$bigquery$EncryptionConfiguration;
 
     /**
      * [Required] The destination table to load the data into.
@@ -933,7 +937,7 @@ declare module "gapi.client.bigquery" {
     writeDisposition?: string;
   }
 
-  declare interface bigquery$JobConfigurationQuery {
+  declare interface gapi$client$bigquery$JobConfigurationQuery {
     /**
      * [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
      * Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set
@@ -951,12 +955,12 @@ declare module "gapi.client.bigquery" {
     /**
      * [Optional] Specifies the default dataset to use for unqualified table names in the query.
      */
-    defaultDataset?: bigquery$DatasetReference;
+    defaultDataset?: gapi$client$bigquery$DatasetReference;
 
     /**
      * [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    destinationEncryptionConfiguration?: bigquery$EncryptionConfiguration;
+    destinationEncryptionConfiguration?: gapi$client$bigquery$EncryptionConfiguration;
 
     /**
      * [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This
@@ -1020,7 +1024,10 @@ declare module "gapi.client.bigquery" {
      * [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By
      * defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
-    tableDefinitions?: Record<string, bigquery$ExternalDataConfiguration>;
+    tableDefinitions?: Record<
+      string,
+      gapi$client$bigquery$ExternalDataConfiguration
+    >;
 
     /**
      * [Experimental] If specified, configures time-based partitioning for the destination table.
@@ -1055,7 +1062,7 @@ declare module "gapi.client.bigquery" {
     writeDisposition?: string;
   }
 
-  declare interface bigquery$JobConfigurationTableCopy {
+  declare interface gapi$client$bigquery$JobConfigurationTableCopy {
     /**
      * [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not
      * exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The
@@ -1066,7 +1073,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    destinationEncryptionConfiguration?: bigquery$EncryptionConfiguration;
+    destinationEncryptionConfiguration?: gapi$client$bigquery$EncryptionConfiguration;
 
     /**
      * [Required] The destination table
@@ -1093,7 +1100,7 @@ declare module "gapi.client.bigquery" {
     writeDisposition?: string;
   }
 
-  declare interface bigquery$JobList {
+  declare interface gapi$client$bigquery$JobList {
     /**
      * A hash of this page of results.
      */
@@ -1102,16 +1109,16 @@ declare module "gapi.client.bigquery" {
     /**
      * List of jobs that were requested.
      */
-    client$jobs?: Array<{
+    jobs?: Array<{
       /**
        * [Full-projection-only] Specifies the job configuration.
        */
-      configuration?: bigquery$JobConfiguration,
+      configuration?: gapi$client$bigquery$JobConfiguration,
 
       /**
        * A result object that will be present only if the job has failed.
        */
-      errorResult?: bigquery$ErrorProto,
+      errorResult?: gapi$client$bigquery$ErrorProto,
 
       /**
        * Unique opaque ID of the job.
@@ -1160,7 +1167,7 @@ declare module "gapi.client.bigquery" {
     nextPageToken?: string;
   }
 
-  declare interface bigquery$JobReference {
+  declare interface gapi$client$bigquery$JobReference {
     /**
      * [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024
      * characters.
@@ -1173,7 +1180,7 @@ declare module "gapi.client.bigquery" {
     projectId?: string;
   }
 
-  declare interface bigquery$JobStatistics {
+  declare interface gapi$client$bigquery$JobStatistics {
     /**
      * [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
      */
@@ -1192,7 +1199,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Output-only] Statistics for a load job.
      */
-    client$load?: bigquery$JobStatistics3;
+    load?: bigquery$JobStatistics3;
 
     /**
      * [Output-only] Statistics for a query job.
@@ -1211,7 +1218,7 @@ declare module "gapi.client.bigquery" {
     totalBytesProcessed?: string;
   }
 
-  declare interface bigquery$JobStatistics2 {
+  declare interface gapi$client$bigquery$JobStatistics2 {
     /**
      * [Output-only] Billing tier for the job.
      */
@@ -1230,7 +1237,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Output-only] Describes execution plan for the query.
      */
-    queryPlan?: bigquery$ExplainQueryStage[];
+    queryPlan?: gapi$client$bigquery$ExplainQueryStage[];
 
     /**
      * [Output-only, Experimental] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
@@ -1268,7 +1275,7 @@ declare module "gapi.client.bigquery" {
     undeclaredQueryParameters?: bigquery$QueryParameter[];
   }
 
-  declare interface bigquery$JobStatistics3 {
+  declare interface gapi$client$bigquery$JobStatistics3 {
     /**
      * [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed
      * in the load job configuration, then this number can be less than the total number of bad records present in the input data.
@@ -1296,7 +1303,7 @@ declare module "gapi.client.bigquery" {
     outputRows?: string;
   }
 
-  declare interface bigquery$JobStatistics4 {
+  declare interface gapi$client$bigquery$JobStatistics4 {
     /**
      * [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the
      * URIs specified in the 'destinationUris' field.
@@ -1304,17 +1311,17 @@ declare module "gapi.client.bigquery" {
     destinationUriFileCounts?: string[];
   }
 
-  declare interface bigquery$JobStatus {
+  declare interface gapi$client$bigquery$JobStatus {
     /**
      * [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
      */
-    errorResult?: bigquery$ErrorProto;
+    errorResult?: gapi$client$bigquery$ErrorProto;
 
     /**
      * [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to
      * stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
      */
-    errors?: bigquery$ErrorProto[];
+    errors?: gapi$client$bigquery$ErrorProto[];
 
     /**
      * [Output-only] Running state of the job.
@@ -1322,11 +1329,11 @@ declare module "gapi.client.bigquery" {
     state?: string;
   }
 
-  declare interface bigquery$JsonObject {
+  declare interface gapi$client$bigquery$JsonObject {
     [key: string]: any;
   }
 
-  declare interface bigquery$ProjectList {
+  declare interface gapi$client$bigquery$ProjectList {
     /**
      * A hash of the page of results
      */
@@ -1345,7 +1352,7 @@ declare module "gapi.client.bigquery" {
     /**
      * Projects to which you have at least READ access.
      */
-    client$projects?: Array<{
+    projects?: Array<{
       /**
        * A descriptive name for this project.
        */
@@ -1378,14 +1385,14 @@ declare module "gapi.client.bigquery" {
     totalItems?: number;
   }
 
-  declare interface bigquery$ProjectReference {
+  declare interface gapi$client$bigquery$ProjectReference {
     /**
      * [Required] ID of the project. Can be either the numeric ID or the assigned ID of the project.
      */
     projectId?: string;
   }
 
-  declare interface bigquery$QueryParameter {
+  declare interface gapi$client$bigquery$QueryParameter {
     /**
      * [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
      */
@@ -1402,11 +1409,11 @@ declare module "gapi.client.bigquery" {
     parameterValue?: bigquery$QueryParameterValue;
   }
 
-  declare interface bigquery$QueryParameterType {
+  declare interface gapi$client$bigquery$QueryParameterType {
     /**
      * [Optional] The type of the array's elements, if this is an array.
      */
-    arrayType?: bigquery$QueryParameterType;
+    arrayType?: gapi$client$bigquery$QueryParameterType;
 
     /**
      * [Optional] The types of the fields of this struct, in order, if this is a struct.
@@ -1425,7 +1432,7 @@ declare module "gapi.client.bigquery" {
       /**
        * [Required] The type of this field.
        */
-      type?: bigquery$QueryParameterType
+      type?: gapi$client$bigquery$QueryParameterType
     }>;
 
     /**
@@ -1434,16 +1441,16 @@ declare module "gapi.client.bigquery" {
     type?: string;
   }
 
-  declare interface bigquery$QueryParameterValue {
+  declare interface gapi$client$bigquery$QueryParameterValue {
     /**
      * [Optional] The array values, if this is an array type.
      */
-    arrayValues?: bigquery$QueryParameterValue[];
+    arrayValues?: gapi$client$bigquery$QueryParameterValue[];
 
     /**
      * [Optional] The struct field values, in order of the struct type's declaration.
      */
-    structValues?: Record<string, bigquery$QueryParameterValue>;
+    structValues?: Record<string, gapi$client$bigquery$QueryParameterValue>;
 
     /**
      * [Optional] The value of this value, if a simple scalar type.
@@ -1451,12 +1458,12 @@ declare module "gapi.client.bigquery" {
     value?: string;
   }
 
-  declare interface bigquery$QueryRequest {
+  declare interface gapi$client$bigquery$QueryRequest {
     /**
      * [Optional] Specifies the default datasetId and projectId to assume for any unqualified table names in the query. If not set, all table names in the
      * query string must be qualified in the format 'datasetId.tableId'.
      */
-    defaultDataset?: bigquery$DatasetReference;
+    defaultDataset?: gapi$client$bigquery$DatasetReference;
 
     /**
      * [Optional] If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns statistics about the job such as how many
@@ -1495,7 +1502,7 @@ declare module "gapi.client.bigquery" {
     /**
      * Query parameters for Standard SQL queries.
      */
-    queryParameters?: bigquery$QueryParameter[];
+    queryParameters?: gapi$client$bigquery$QueryParameter[];
 
     /**
      * [Optional] How long to wait for the query to complete, in milliseconds, before the request times out and returns. Note that this is only a timeout for
@@ -1519,7 +1526,7 @@ declare module "gapi.client.bigquery" {
     useQueryCache?: boolean;
   }
 
-  declare interface bigquery$QueryResponse {
+  declare interface gapi$client$bigquery$QueryResponse {
     /**
      * Whether the query result was fetched from the query cache.
      */
@@ -1529,7 +1536,7 @@ declare module "gapi.client.bigquery" {
      * [Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the
      * process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
      */
-    errors?: bigquery$ErrorProto[];
+    errors?: gapi$client$bigquery$ErrorProto[];
 
     /**
      * Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this is false, totalRows will not be available.
@@ -1541,7 +1548,7 @@ declare module "gapi.client.bigquery" {
      * GetQueryResults can be used to read the results once the query has completed. Since this API only returns the first page of results, subsequent pages
      * can be fetched via the same mechanism (GetQueryResults).
      */
-    jobReference?: bigquery$JobReference;
+    jobReference?: gapi$client$bigquery$JobReference;
 
     /**
      * The resource type.
@@ -1581,7 +1588,7 @@ declare module "gapi.client.bigquery" {
     totalRows?: string;
   }
 
-  declare interface bigquery$Streamingbuffer {
+  declare interface gapi$client$bigquery$Streamingbuffer {
     /**
      * [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
      */
@@ -1599,7 +1606,7 @@ declare module "gapi.client.bigquery" {
     oldestEntryTime?: string;
   }
 
-  declare interface bigquery$Table {
+  declare interface gapi$client$bigquery$Table {
     /**
      * [Output-only] The time when this table was created, in milliseconds since the epoch.
      */
@@ -1613,7 +1620,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    encryptionConfiguration?: bigquery$EncryptionConfiguration;
+    encryptionConfiguration?: gapi$client$bigquery$EncryptionConfiguration;
 
     /**
      * [Output-only] A hash of this resource.
@@ -1630,7 +1637,7 @@ declare module "gapi.client.bigquery" {
      * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data
      * source can then be queried as if it were a standard BigQuery table.
      */
-    externalDataConfiguration?: bigquery$ExternalDataConfiguration;
+    externalDataConfiguration?: gapi$client$bigquery$ExternalDataConfiguration;
 
     /**
      * [Optional] A descriptive name for this table.
@@ -1693,7 +1700,7 @@ declare module "gapi.client.bigquery" {
      * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being
      * streamed to or if there is no data in the streaming buffer.
      */
-    streamingBuffer?: bigquery$Streamingbuffer;
+    streamingBuffer?: gapi$client$bigquery$Streamingbuffer;
 
     /**
      * [Required] Reference describing the ID of this table.
@@ -1717,11 +1724,11 @@ declare module "gapi.client.bigquery" {
     view?: bigquery$ViewDefinition;
   }
 
-  declare interface bigquery$TableCell {
+  declare interface gapi$client$bigquery$TableCell {
     v?: any;
   }
 
-  declare interface bigquery$TableDataInsertAllRequest {
+  declare interface gapi$client$bigquery$TableDataInsertAllRequest {
     /**
      * [Optional] Accept rows that contain values that do not match the schema. The unknown values are ignored. Default is false, which treats unknown values
      * as errors.
@@ -1745,7 +1752,7 @@ declare module "gapi.client.bigquery" {
       /**
        * [Required] A JSON object that contains a row of data. The object's properties and values must match the destination table's schema.
        */
-      json?: bigquery$JsonObject
+      json?: gapi$client$bigquery$JsonObject
     }>;
 
     /**
@@ -1762,7 +1769,7 @@ declare module "gapi.client.bigquery" {
     templateSuffix?: string;
   }
 
-  declare interface bigquery$TableDataInsertAllResponse {
+  declare interface gapi$client$bigquery$TableDataInsertAllResponse {
     /**
      * An array of errors for rows that were not inserted.
      */
@@ -1770,7 +1777,7 @@ declare module "gapi.client.bigquery" {
       /**
        * Error information for the row indicated by the index property.
        */
-      errors?: bigquery$ErrorProto[],
+      errors?: gapi$client$bigquery$ErrorProto[],
 
       /**
        * The index of the row that error applies to.
@@ -1784,7 +1791,7 @@ declare module "gapi.client.bigquery" {
     kind?: string;
   }
 
-  declare interface bigquery$TableDataList {
+  declare interface gapi$client$bigquery$TableDataList {
     /**
      * A hash of this page of results.
      */
@@ -1812,7 +1819,7 @@ declare module "gapi.client.bigquery" {
     totalRows?: string;
   }
 
-  declare interface bigquery$TableFieldSchema {
+  declare interface gapi$client$bigquery$TableFieldSchema {
     /**
      * [Optional] The field description. The maximum length is 1,024 characters.
      */
@@ -1821,7 +1828,7 @@ declare module "gapi.client.bigquery" {
     /**
      * [Optional] Describes the nested schema fields if the type property is set to RECORD.
      */
-    fields?: bigquery$TableFieldSchema[];
+    fields?: gapi$client$bigquery$TableFieldSchema[];
 
     /**
      * [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
@@ -1841,7 +1848,7 @@ declare module "gapi.client.bigquery" {
     type?: string;
   }
 
-  declare interface bigquery$TableList {
+  declare interface gapi$client$bigquery$TableList {
     /**
      * A hash of this page of results.
      */
@@ -1860,7 +1867,7 @@ declare module "gapi.client.bigquery" {
     /**
      * Tables in the requested dataset.
      */
-    client$tables?: Array<{
+    tables?: Array<{
       /**
        * The time when this table was created, in milliseconds since the epoch.
        */
@@ -1924,7 +1931,7 @@ declare module "gapi.client.bigquery" {
     totalItems?: number;
   }
 
-  declare interface bigquery$TableReference {
+  declare interface gapi$client$bigquery$TableReference {
     /**
      * [Required] The ID of the dataset containing this table.
      */
@@ -1941,21 +1948,21 @@ declare module "gapi.client.bigquery" {
     tableId?: string;
   }
 
-  declare interface bigquery$TableRow {
+  declare interface gapi$client$bigquery$TableRow {
     /**
      * Represents a single row in the result set, consisting of one or more fields.
      */
-    f?: bigquery$TableCell[];
+    f?: gapi$client$bigquery$TableCell[];
   }
 
-  declare interface bigquery$TableSchema {
+  declare interface gapi$client$bigquery$TableSchema {
     /**
      * Describes the fields in a table.
      */
-    fields?: bigquery$TableFieldSchema[];
+    fields?: gapi$client$bigquery$TableFieldSchema[];
   }
 
-  declare interface bigquery$TimePartitioning {
+  declare interface gapi$client$bigquery$TimePartitioning {
     /**
      * [Optional] Number of milliseconds for which to keep the storage for a partition.
      */
@@ -1973,7 +1980,7 @@ declare module "gapi.client.bigquery" {
     type?: string;
   }
 
-  declare interface bigquery$UserDefinedFunctionResource {
+  declare interface gapi$client$bigquery$UserDefinedFunctionResource {
     /**
      * [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI
      * for a file containing the same code.
@@ -1986,7 +1993,7 @@ declare module "gapi.client.bigquery" {
     resourceUri?: string;
   }
 
-  declare interface bigquery$ViewDefinition {
+  declare interface gapi$client$bigquery$ViewDefinition {
     /**
      * [Required] A query that BigQuery executes when the view is referenced.
      */
@@ -2001,10 +2008,10 @@ declare module "gapi.client.bigquery" {
     /**
      * Describes user-defined function resources used in the query.
      */
-    userDefinedFunctionResources?: bigquery$UserDefinedFunctionResource[];
+    userDefinedFunctionResources?: gapi$client$bigquery$UserDefinedFunctionResource[];
   }
 
-  declare interface bigquery$DatasetsResource {
+  declare interface gapi$client$bigquery$DatasetsResource {
     /**
      * Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying
      * deleteContents. Immediately after deletion, you can create another dataset with the same name.
@@ -2111,7 +2118,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Dataset>;
+    }): Request<gapi$client$bigquery$Dataset>;
 
     /**
      * Creates a new empty dataset.
@@ -2157,7 +2164,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Dataset>;
+    }): Request<gapi$client$bigquery$Dataset>;
 
     /**
      * Lists all datasets in the specified project to which you have been granted the READER dataset role.
@@ -2224,7 +2231,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$DatasetList>;
+    }): Request<gapi$client$bigquery$DatasetList>;
 
     /**
      * Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that
@@ -2276,7 +2283,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Dataset>;
+    }): Request<gapi$client$bigquery$Dataset>;
 
     /**
      * Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that
@@ -2328,10 +2335,10 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Dataset>;
+    }): Request<gapi$client$bigquery$Dataset>;
   }
 
-  declare interface bigquery$JobsResource {
+  declare interface gapi$client$bigquery$JobsResource {
     /**
      * Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed
      * successfully. Cancelled jobs may still incur costs.
@@ -2382,7 +2389,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$JobCancelResponse>;
+    }): Request<gapi$client$bigquery$JobCancelResponse>;
 
     /**
      * Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran
@@ -2434,7 +2441,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Job>;
+    }): Request<gapi$client$bigquery$Job>;
 
     /**
      * Retrieves the results of a query job.
@@ -2506,7 +2513,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$GetQueryResultsResponse>;
+    }): Request<gapi$client$bigquery$GetQueryResultsResponse>;
 
     /**
      * Starts a new asynchronous job. Requires the Can View project role.
@@ -2552,7 +2559,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Job>;
+    }): Request<gapi$client$bigquery$Job>;
 
     /**
      * Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in
@@ -2624,7 +2631,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$JobList>;
+    }): Request<gapi$client$bigquery$JobList>;
 
     /**
      * Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.
@@ -2670,10 +2677,10 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$QueryResponse>;
+    }): Request<gapi$client$bigquery$QueryResponse>;
   }
 
-  declare interface bigquery$ProjectsResource {
+  declare interface gapi$client$bigquery$ProjectsResource {
     /**
      * Returns the email address of the service account for your project used for interactions with Google Cloud KMS.
      */
@@ -2718,7 +2725,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$GetServiceAccountResponse>;
+    }): Request<gapi$client$bigquery$GetServiceAccountResponse>;
 
     /**
      * Lists all projects to which you have been granted any project role.
@@ -2769,10 +2776,10 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$ProjectList>;
+    }): Request<gapi$client$bigquery$ProjectList>;
   }
 
-  declare interface bigquery$TabledataResource {
+  declare interface gapi$client$bigquery$TabledataResource {
     /**
      * Streams data into BigQuery one record at a time without needing to run a load job. Requires the WRITER dataset role.
      */
@@ -2827,7 +2834,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$TableDataInsertAllResponse>;
+    }): Request<gapi$client$bigquery$TableDataInsertAllResponse>;
 
     /**
      * Retrieves table data from a specified set of rows. Requires the READER dataset role.
@@ -2903,10 +2910,10 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$TableDataList>;
+    }): Request<gapi$client$bigquery$TableDataList>;
   }
 
-  declare interface bigquery$TablesResource {
+  declare interface gapi$client$bigquery$TablesResource {
     /**
      * Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.
      */
@@ -3023,7 +3030,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Table>;
+    }): Request<gapi$client$bigquery$Table>;
 
     /**
      * Creates a new, empty table in the dataset.
@@ -3074,7 +3081,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Table>;
+    }): Request<gapi$client$bigquery$Table>;
 
     /**
      * Lists all tables in the specified dataset. Requires the READER dataset role.
@@ -3135,7 +3142,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$TableList>;
+    }): Request<gapi$client$bigquery$TableList>;
 
     /**
      * Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are
@@ -3192,7 +3199,7 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Table>;
+    }): Request<gapi$client$bigquery$Table>;
 
     /**
      * Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are
@@ -3249,6 +3256,6 @@ declare module "gapi.client.bigquery" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<bigquery$Table>;
+    }): Request<gapi$client$bigquery$Table>;
   }
 }
