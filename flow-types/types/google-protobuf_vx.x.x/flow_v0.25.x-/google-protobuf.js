@@ -16,7 +16,7 @@ declare module "google-protobuf" {
     getJsPbMessageId(): string | void;
     static initialize(
       msg: Message,
-      data: Message$Message$MessageArray,
+      data: Message$MessageArray,
       messageId: string | number,
       suggestedPivot: number,
       repeatedFields?: number[],
@@ -133,10 +133,10 @@ declare module "google-protobuf" {
     static toMap(
       field: any[],
       mapKeyGetterFn: (field: any) => string,
-      toObjectFn?: Message$Message$StaticToObject,
+      toObjectFn?: Message$StaticToObject,
       includeInstance?: boolean
     ): void;
-    toArray(): Message$Message$MessageArray;
+    toArray(): Message$MessageArray;
     toString(): string;
     getExtension<T>(fieldInfo: ExtensionFieldInfo<T>): T;
     setExtension<T>(fieldInfo: ExtensionFieldInfo<T>, value: T): void;
@@ -179,7 +179,7 @@ declare module "google-protobuf" {
     fieldIndex: number;
     fieldName: number;
     ctor: typeof Message;
-    toObjectFn: Message$Message$StaticToObject;
+    toObjectFn: Message$StaticToObject;
     isRepeated: number;
     constructor(
       fieldIndex: number,
@@ -187,7 +187,7 @@ declare module "google-protobuf" {
         [key: string]: number
       },
       ctor: typeof Message,
-      toObjectFn: Message$Message$StaticToObject,
+      toObjectFn: Message$StaticToObject,
       isRepeated: number
     ): this;
     isMessageType(): boolean;
@@ -239,8 +239,8 @@ declare module "google-protobuf" {
     clear(): void;
     del(key: K): boolean;
     getEntryList(): Array<[K, V]>;
-    entries(): Map$Map$Iterator<[K, V]>;
-    keys(): Map$Map$Iterator<K>;
+    entries(): Map$Iterator<[K, V]>;
+    keys(): Map$Iterator<K>;
     forEach(callback: (entry: V, key: K) => void, thisArg?: {}): void;
     set(key: K, value: V): this;
     get(key: K): V | void;
@@ -281,7 +281,7 @@ declare module "google-protobuf" {
     getCursor(): number;
     getBuffer(): Uint8Array;
     getFieldNumber(): number;
-    getWireType(): BinaryConstants$BinaryConstants$WireType;
+    getWireType(): BinaryConstants$WireType;
     isEndGroup(): boolean;
     getError(): boolean;
     setBlock(bytes?: ByteSource, start?: number, length?: number): void;
@@ -301,7 +301,7 @@ declare module "google-protobuf" {
       callback: (binaryReader: BinaryReader) => any
     ): void;
     runReadCallback(callbackName: string): any;
-    readAny(fieldType: BinaryConstants$BinaryConstants$FieldType): AnyFieldType;
+    readAny(fieldType: BinaryConstants$FieldType): AnyFieldType;
     readMessage: BinaryRead;
     readGroup(field: number, message: Message, reader: BinaryReadReader): void;
     getFieldDecoder(): BinaryDecoder;
@@ -369,7 +369,7 @@ declare module "google-protobuf" {
     beginSubMessage(field: number): void;
     endSubMessage(field: number): void;
     writeAny(
-      fieldType: BinaryConstants$BinaryConstants$FieldType,
+      fieldType: BinaryConstants$FieldType,
       field: number,
       value: AnyFieldType
     ): void;
@@ -582,157 +582,44 @@ declare module "google-protobuf" {
     TWO_TO_52: typeof BinaryConstants$TWO_TO_52,
     TWO_TO_63: typeof BinaryConstants$TWO_TO_63,
     TWO_TO_64: typeof BinaryConstants$TWO_TO_64,
-    ZERO_HASH: typeof BinaryConstants$ZERO_HASH
+    ZERO_HASH: typeof BinaryConstants$ZERO_HASH,
+    FieldType: typeof BinaryConstants$FieldType,
+    WireType: typeof BinaryConstants$WireType
   };
-  declare class BinaryConstants$FieldType {
-    constructor(...args: empty): mixed;
-    static +INVALID: Class<BinaryConstants$FieldType__INVALID> &
-      BinaryConstants$FieldType__INVALID &
-      -1; // -1
-    static +DOUBLE: Class<BinaryConstants$FieldType__DOUBLE> &
-      BinaryConstants$FieldType__DOUBLE &
-      1; // 1
-    static +FLOAT: Class<BinaryConstants$FieldType__FLOAT> &
-      BinaryConstants$FieldType__FLOAT &
-      2; // 2
-    static +INT64: Class<BinaryConstants$FieldType__INT64> &
-      BinaryConstants$FieldType__INT64 &
-      3; // 3
-    static +UINT64: Class<BinaryConstants$FieldType__UINT64> &
-      BinaryConstants$FieldType__UINT64 &
-      4; // 4
-    static +INT32: Class<BinaryConstants$FieldType__INT32> &
-      BinaryConstants$FieldType__INT32 &
-      5; // 5
-    static +FIXED64: Class<BinaryConstants$FieldType__FIXED64> &
-      BinaryConstants$FieldType__FIXED64 &
-      6; // 6
-    static +FIXED32: Class<BinaryConstants$FieldType__FIXED32> &
-      BinaryConstants$FieldType__FIXED32 &
-      7; // 7
-    static +BOOL: Class<BinaryConstants$FieldType__BOOL> &
-      BinaryConstants$FieldType__BOOL &
-      8; // 8
-    static +STRING: Class<BinaryConstants$FieldType__STRING> &
-      BinaryConstants$FieldType__STRING &
-      9; // 9
-    static +GROUP: Class<BinaryConstants$FieldType__GROUP> &
-      BinaryConstants$FieldType__GROUP &
-      10; // 10
-    static +MESSAGE: Class<BinaryConstants$FieldType__MESSAGE> &
-      BinaryConstants$FieldType__MESSAGE &
-      11; // 11
-    static +BYTES: Class<BinaryConstants$FieldType__BYTES> &
-      BinaryConstants$FieldType__BYTES &
-      12; // 12
-    static +UINT32: Class<BinaryConstants$FieldType__UINT32> &
-      BinaryConstants$FieldType__UINT32 &
-      13; // 13
-    static +ENUM: Class<BinaryConstants$FieldType__ENUM> &
-      BinaryConstants$FieldType__ENUM &
-      14; // 14
-    static +SFIXED32: Class<BinaryConstants$FieldType__SFIXED32> &
-      BinaryConstants$FieldType__SFIXED32 &
-      15; // 15
-    static +SFIXED64: Class<BinaryConstants$FieldType__SFIXED64> &
-      BinaryConstants$FieldType__SFIXED64 &
-      16; // 16
-    static +SINT32: Class<BinaryConstants$FieldType__SINT32> &
-      BinaryConstants$FieldType__SINT32 &
-      17; // 17
-    static +SINT64: Class<BinaryConstants$FieldType__SINT64> &
-      BinaryConstants$FieldType__SINT64 &
-      18; // 18
-    static +FHASH64: Class<BinaryConstants$FieldType__FHASH64> &
-      BinaryConstants$FieldType__FHASH64 &
-      30; // 30
-    static +VHASH64: Class<BinaryConstants$FieldType__VHASH64> &
-      BinaryConstants$FieldType__VHASH64 &
-      31; // 31
-  }
 
-  declare class BinaryConstants$FieldType__INVALID
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__DOUBLE
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__FLOAT
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__INT64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__UINT64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__INT32
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__FIXED64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__FIXED32
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__BOOL
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__STRING
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__GROUP
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__MESSAGE
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__BYTES
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__UINT32
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__ENUM
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__SFIXED32
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__SFIXED64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__SINT32
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__SINT64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__FHASH64
-    mixins BinaryConstants$FieldType {}
-  declare class BinaryConstants$FieldType__VHASH64
-    mixins BinaryConstants$FieldType {}
+  declare var BinaryConstants$FieldType: {|
+    +INVALID: -1, // -1
+    +DOUBLE: 1, // 1
+    +FLOAT: 2, // 2
+    +INT64: 3, // 3
+    +UINT64: 4, // 4
+    +INT32: 5, // 5
+    +FIXED64: 6, // 6
+    +FIXED32: 7, // 7
+    +BOOL: 8, // 8
+    +STRING: 9, // 9
+    +GROUP: 10, // 10
+    +MESSAGE: 11, // 11
+    +BYTES: 12, // 12
+    +UINT32: 13, // 13
+    +ENUM: 14, // 14
+    +SFIXED32: 15, // 15
+    +SFIXED64: 16, // 16
+    +SINT32: 17, // 17
+    +SINT64: 18, // 18
+    +FHASH64: 30, // 30
+    +VHASH64: 31 // 31
+  |};
 
-  declare class BinaryConstants$WireType {
-    constructor(...args: empty): mixed;
-    static +INVALID: Class<BinaryConstants$WireType__INVALID> &
-      BinaryConstants$WireType__INVALID &
-      -1; // -1
-    static +VARINT: Class<BinaryConstants$WireType__VARINT> &
-      BinaryConstants$WireType__VARINT &
-      0; // 0
-    static +FIXED64: Class<BinaryConstants$WireType__FIXED64> &
-      BinaryConstants$WireType__FIXED64 &
-      1; // 1
-    static +DELIMITED: Class<BinaryConstants$WireType__DELIMITED> &
-      BinaryConstants$WireType__DELIMITED &
-      2; // 2
-    static +START_GROUP: Class<BinaryConstants$WireType__START_GROUP> &
-      BinaryConstants$WireType__START_GROUP &
-      3; // 3
-    static +END_GROUP: Class<BinaryConstants$WireType__END_GROUP> &
-      BinaryConstants$WireType__END_GROUP &
-      4; // 4
-    static +FIXED32: Class<BinaryConstants$WireType__FIXED32> &
-      BinaryConstants$WireType__FIXED32 &
-      5; // 5
-  }
-
-  declare class BinaryConstants$WireType__INVALID
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__VARINT
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__FIXED64
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__DELIMITED
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__START_GROUP
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__END_GROUP
-    mixins BinaryConstants$WireType {}
-  declare class BinaryConstants$WireType__FIXED32
-    mixins BinaryConstants$WireType {}
+  declare var BinaryConstants$WireType: {|
+    +INVALID: -1, // -1
+    +VARINT: 0, // 0
+    +FIXED64: 1, // 1
+    +DELIMITED: 2, // 2
+    +START_GROUP: 3, // 3
+    +END_GROUP: 4, // 4
+    +FIXED32: 5 // 5
+  |};
 
   declare var BinaryConstants$FieldTypeToWireType: (
     fieldType: BinaryConstants$FieldType
@@ -767,6 +654,11 @@ declare module "google-protobuf" {
   declare var BinaryConstants$TWO_TO_64: number;
 
   declare var BinaryConstants$ZERO_HASH: string;
+
+  declare var npm$namespace$arith: {
+    UInt64: typeof arith$UInt64,
+    Int64: typeof arith$Int64
+  };
   declare class arith$UInt64 {
     lo: number;
     hi: number;
