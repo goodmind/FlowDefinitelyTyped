@@ -1,33 +1,37 @@
 declare module "gapi.client.bigquerydatatransfer" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load BigQuery Data Transfer API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "bigquerydatatransfer",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "bigquerydatatransfer",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: bigquerydatatransfer$bigquerydatatransfer$ProjectsResource;
+  declare var gapi$client$projects: bigquerydatatransfer$ProjectsResource;
 
-  declare interface bigquerydatatransfer$CheckValidCredsResponse {
+  declare interface gapi$client$bigquerydatatransfer$CheckValidCredsResponse {
     /**
      * If set to `true`, the credentials exist and are valid.
      */
     hasValidCreds?: boolean;
   }
 
-  declare interface bigquerydatatransfer$DataSource {
+  declare interface gapi$client$bigquerydatatransfer$DataSource {
     /**
      * Indicates the type of authorization.
      */
@@ -138,7 +142,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     updateDeadlineSeconds?: number;
   }
 
-  declare interface bigquerydatatransfer$DataSourceParameter {
+  declare interface gapi$client$bigquerydatatransfer$DataSourceParameter {
     /**
      * All possible values for the parameter.
      */
@@ -157,7 +161,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     /**
      * When parameter is a record, describes child fields.
      */
-    fields?: bigquerydatatransfer$DataSourceParameter[];
+    fields?: gapi$client$bigquerydatatransfer$DataSourceParameter[];
 
     /**
      * Cannot be changed after initial creation.
@@ -217,11 +221,11 @@ declare module "gapi.client.bigquerydatatransfer" {
     validationRegex?: string;
   }
 
-  declare interface bigquerydatatransfer$ListDataSourcesResponse {
+  declare interface gapi$client$bigquerydatatransfer$ListDataSourcesResponse {
     /**
      * List of supported data sources and their transfer settings.
      */
-    dataSources?: bigquerydatatransfer$DataSource[];
+    dataSources?: gapi$client$bigquerydatatransfer$DataSource[];
 
     /**
      * Output only. The next-pagination token. For multiple-page list results,
@@ -232,7 +236,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     nextPageToken?: string;
   }
 
-  declare interface bigquerydatatransfer$ListLocationsResponse {
+  declare interface gapi$client$bigquerydatatransfer$ListLocationsResponse {
     /**
      * A list of locations that matches the specified filter in the request.
      */
@@ -244,7 +248,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     nextPageToken?: string;
   }
 
-  declare interface bigquerydatatransfer$ListTransferConfigsResponse {
+  declare interface gapi$client$bigquerydatatransfer$ListTransferConfigsResponse {
     /**
      * Output only. The next-pagination token. For multiple-page list results,
      * this token can be used as the
@@ -259,7 +263,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     transferConfigs?: bigquerydatatransfer$TransferConfig[];
   }
 
-  declare interface bigquerydatatransfer$ListTransferLogsResponse {
+  declare interface gapi$client$bigquerydatatransfer$ListTransferLogsResponse {
     /**
      * Output only. The next-pagination token. For multiple-page list results,
      * this token can be used as the
@@ -274,7 +278,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     transferMessages?: bigquerydatatransfer$TransferMessage[];
   }
 
-  declare interface bigquerydatatransfer$ListTransferRunsResponse {
+  declare interface gapi$client$bigquerydatatransfer$ListTransferRunsResponse {
     /**
      * Output only. The next-pagination token. For multiple-page list results,
      * this token can be used as the
@@ -289,7 +293,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     transferRuns?: bigquerydatatransfer$TransferRun[];
   }
 
-  declare interface bigquerydatatransfer$Location {
+  declare interface gapi$client$bigquerydatatransfer$Location {
     /**
      * Cross-service attributes for the location. For example
      *
@@ -315,7 +319,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     name?: string;
   }
 
-  declare interface bigquerydatatransfer$ScheduleTransferRunsRequest {
+  declare interface gapi$client$bigquerydatatransfer$ScheduleTransferRunsRequest {
     /**
      * End time of the range of transfer runs. For example,
      * `"2017-05-30T00:00:00+00:00"`.
@@ -329,14 +333,14 @@ declare module "gapi.client.bigquerydatatransfer" {
     startTime?: string;
   }
 
-  declare interface bigquerydatatransfer$ScheduleTransferRunsResponse {
+  declare interface gapi$client$bigquerydatatransfer$ScheduleTransferRunsResponse {
     /**
      * The transfer runs that were scheduled.
      */
     runs?: bigquerydatatransfer$TransferRun[];
   }
 
-  declare interface bigquerydatatransfer$TransferConfig {
+  declare interface gapi$client$bigquerydatatransfer$TransferConfig {
     /**
      * The number of days to look back to automatically refresh the data.
      * For example, if `data_refresh_window_days = 10`, then every day
@@ -427,7 +431,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     userId?: string;
   }
 
-  declare interface bigquerydatatransfer$TransferMessage {
+  declare interface gapi$client$bigquerydatatransfer$TransferMessage {
     /**
      * Message text.
      */
@@ -444,7 +448,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     severity?: string;
   }
 
-  declare interface bigquerydatatransfer$TransferRun {
+  declare interface gapi$client$bigquerydatatransfer$TransferRun {
     /**
      * Output only. Data source id.
      */
@@ -523,7 +527,7 @@ declare module "gapi.client.bigquerydatatransfer" {
     userId?: string;
   }
 
-  declare interface bigquerydatatransfer$DataSourcesResource {
+  declare interface gapi$client$bigquerydatatransfer$DataSourcesResource {
     /**
      * Returns true if valid credentials exist for the given data source and
      * requesting user.
@@ -603,7 +607,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$CheckValidCredsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$CheckValidCredsResponse>;
 
     /**
      * Retrieves a supported data source and returns its settings,
@@ -680,7 +684,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$DataSource>;
+    }): Request<gapi$client$bigquerydatatransfer$DataSource>;
 
     /**
      * Lists supported data sources and returns their settings,
@@ -771,7 +775,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListDataSourcesResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListDataSourcesResponse>;
 
     /**
      * Returns true if valid credentials exist for the given data source and
@@ -852,7 +856,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$CheckValidCredsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$CheckValidCredsResponse>;
 
     /**
      * Retrieves a supported data source and returns its settings,
@@ -929,7 +933,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$DataSource>;
+    }): Request<gapi$client$bigquerydatatransfer$DataSource>;
 
     /**
      * Lists supported data sources and returns their settings,
@@ -1020,10 +1024,10 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListDataSourcesResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListDataSourcesResponse>;
   }
 
-  declare interface bigquerydatatransfer$TransferLogsResource {
+  declare interface gapi$client$bigquerydatatransfer$TransferLogsResource {
     /**
      * Returns user facing log messages for the data transfer run.
      */
@@ -1118,7 +1122,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferLogsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferLogsResponse>;
 
     /**
      * Returns user facing log messages for the data transfer run.
@@ -1214,10 +1218,10 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferLogsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferLogsResponse>;
   }
 
-  declare interface bigquerydatatransfer$RunsResource {
+  declare interface gapi$client$bigquerydatatransfer$RunsResource {
     /**
      * Deletes the specified transfer run.
      */
@@ -1368,7 +1372,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferRun>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferRun>;
 
     /**
      * Returns information about running and completed jobs.
@@ -1469,8 +1473,8 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferRunsResponse>;
-    transferLogs: bigquerydatatransfer$TransferLogsResource;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferRunsResponse>;
+    transferLogs: gapi$client$bigquerydatatransfer$TransferLogsResource;
 
     /**
      * Deletes the specified transfer run.
@@ -1622,7 +1626,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferRun>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferRun>;
 
     /**
      * Returns information about running and completed jobs.
@@ -1723,11 +1727,11 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferRunsResponse>;
-    transferLogs: bigquerydatatransfer$TransferLogsResource;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferRunsResponse>;
+    transferLogs: gapi$client$bigquerydatatransfer$TransferLogsResource;
   }
 
-  declare interface bigquerydatatransfer$TransferConfigsResource {
+  declare interface gapi$client$bigquerydatatransfer$TransferConfigsResource {
     /**
      * Creates a new data transfer configuration.
      */
@@ -1826,7 +1830,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Deletes a data transfer configuration,
@@ -1979,7 +1983,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Returns information about all data transfers in the project.
@@ -2074,7 +2078,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferConfigsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferConfigsResponse>;
 
     /**
      * Updates a data transfer configuration.
@@ -2180,7 +2184,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Creates transfer runs for a time range [range_start_time, range_end_time].
@@ -2259,8 +2263,8 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ScheduleTransferRunsResponse>;
-    runs: bigquerydatatransfer$RunsResource;
+    }): Request<gapi$client$bigquerydatatransfer$ScheduleTransferRunsResponse>;
+    runs: gapi$client$bigquerydatatransfer$RunsResource;
 
     /**
      * Creates a new data transfer configuration.
@@ -2360,7 +2364,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Deletes a data transfer configuration,
@@ -2513,7 +2517,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Returns information about all data transfers in the project.
@@ -2608,7 +2612,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListTransferConfigsResponse>;
+    }): Request<gapi$client$bigquerydatatransfer$ListTransferConfigsResponse>;
 
     /**
      * Updates a data transfer configuration.
@@ -2714,7 +2718,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$TransferConfig>;
+    }): Request<gapi$client$bigquerydatatransfer$TransferConfig>;
 
     /**
      * Creates transfer runs for a time range [range_start_time, range_end_time].
@@ -2793,11 +2797,11 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ScheduleTransferRunsResponse>;
-    runs: bigquerydatatransfer$RunsResource;
+    }): Request<gapi$client$bigquerydatatransfer$ScheduleTransferRunsResponse>;
+    runs: gapi$client$bigquerydatatransfer$RunsResource;
   }
 
-  declare interface bigquerydatatransfer$LocationsResource {
+  declare interface gapi$client$bigquerydatatransfer$LocationsResource {
     /**
      * Get information about a location.
      */
@@ -2871,7 +2875,7 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$Location>;
+    }): Request<gapi$client$bigquerydatatransfer$Location>;
 
     /**
      * Lists information about the supported locations for this service.
@@ -2961,14 +2965,14 @@ declare module "gapi.client.bigquerydatatransfer" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<bigquerydatatransfer$ListLocationsResponse>;
-    dataSources: bigquerydatatransfer$DataSourcesResource;
-    transferConfigs: bigquerydatatransfer$TransferConfigsResource;
+    }): Request<gapi$client$bigquerydatatransfer$ListLocationsResponse>;
+    dataSources: gapi$client$bigquerydatatransfer$DataSourcesResource;
+    transferConfigs: gapi$client$bigquerydatatransfer$TransferConfigsResource;
   }
 
-  declare interface bigquerydatatransfer$ProjectsResource {
-    dataSources: bigquerydatatransfer$DataSourcesResource;
-    locations: bigquerydatatransfer$LocationsResource;
-    transferConfigs: bigquerydatatransfer$TransferConfigsResource;
+  declare interface gapi$client$bigquerydatatransfer$ProjectsResource {
+    dataSources: gapi$client$bigquerydatatransfer$DataSourcesResource;
+    locations: gapi$client$bigquerydatatransfer$LocationsResource;
+    transferConfigs: gapi$client$bigquerydatatransfer$TransferConfigsResource;
   }
 }
