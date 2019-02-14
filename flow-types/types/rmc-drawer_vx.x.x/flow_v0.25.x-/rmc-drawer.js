@@ -28,5 +28,5 @@ declare module "rmc-drawer" {
     dragToggleDistance?: number;
   }
   declare class Drawer mixins React.Component<$Shape<DrawerProps>> {}
-  declare module.exports: typeof Drawer;
+  declare export default typeof Drawer;
 }
