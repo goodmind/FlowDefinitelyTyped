@@ -1,36 +1,49 @@
 declare module "leaflet" {
-  declare var npm$namespace$Geocoding: {
-    geosearch: typeof Geocoding$geosearch,
-    geocodeService: typeof Geocoding$geocodeService,
-    geocode: typeof Geocoding$geocode,
-    suggest: typeof Geocoding$suggest,
-    reverseGeocode: typeof Geocoding$reverseGeocode,
-    arcgisOnlineProvider: typeof Geocoding$arcgisOnlineProvider,
-    geocodeServiceProvider: typeof Geocoding$geocodeServiceProvider,
-    featureLayerProvider: typeof Geocoding$featureLayerProvider,
-    mapServiceProvider: typeof Geocoding$mapServiceProvider,
-    Geosearch: typeof Geocoding$Geosearch
+  declare var npm$namespace$esri: {
+    Geocoding: typeof npm$namespace$esri$Geocoding
   };
-  declare type Geocoding$GeosearchConstructor = (
+
+  declare var npm$namespace$esri$Geocoding: {
+    geosearch: typeof esri$Geocoding$geosearch,
+    geocodeService: typeof esri$Geocoding$geocodeService,
+    geocode: typeof esri$Geocoding$geocode,
+    suggest: typeof esri$Geocoding$suggest,
+    reverseGeocode: typeof esri$Geocoding$reverseGeocode,
+    arcgisOnlineProvider: typeof esri$Geocoding$arcgisOnlineProvider,
+    geocodeServiceProvider: typeof esri$Geocoding$geocodeServiceProvider,
+    featureLayerProvider: typeof esri$Geocoding$featureLayerProvider,
+    mapServiceProvider: typeof esri$Geocoding$mapServiceProvider,
+    Geosearch: typeof esri$Geocoding$Geosearch,
+
+    GeocodeService: typeof esri$Geocoding$GeocodeService,
+    Geocode: typeof esri$Geocoding$Geocode,
+    Suggest: typeof esri$Geocoding$Suggest,
+    ReverseGeocode: typeof esri$Geocoding$ReverseGeocode,
+    ArcgisOnlineProvider: typeof esri$Geocoding$ArcgisOnlineProvider,
+    GeocodeServiceProvider: typeof esri$Geocoding$GeocodeServiceProvider,
+    FeatureLayerProvider: typeof esri$Geocoding$FeatureLayerProvider,
+    MapServiceProvider: typeof esri$Geocoding$MapServiceProvider
+  };
+  declare type esri$Geocoding$GeosearchConstructor = (
     options?: Geocoding$GeosearchObject
   ) => Geocoding$Geosearch;
 
-  declare type Geocoding$Geosearch = Geocoding$GeosearchControl & Evented;
+  declare type esri$Geocoding$Geosearch = Geocoding$GeosearchControl & Evented;
 
-  declare type Geocoding$GeosearchControl = {
+  declare type esri$Geocoding$GeosearchControl = {
     clear(): this,
     clearSuggestions(): this,
     disable(): this,
     enable(): this
   } & Control;
 
-  declare var Geocoding$Geosearch: Geocoding$GeosearchConstructor;
+  declare var esri$Geocoding$Geosearch: esri$Geocoding$GeosearchConstructor;
 
-  declare function Geocoding$geosearch(
+  declare function esri$Geocoding$geosearch(
     options?: Geocoding$GeosearchObject
-  ): Geocoding$Geosearch;
+  ): esri$Geocoding$Geosearch;
 
-  declare interface Geocoding$GeosearchObject {
+  declare interface esri$Geocoding$GeosearchObject {
     position?: ControlPosition;
     zoomToResult?: boolean;
     useMapBounds?: boolean | number;
@@ -43,22 +56,22 @@ declare module "leaflet" {
     searchBounds?: LatLngBoundsExpression | null;
   }
 
-  declare class Geocoding$GeocodeService mixins Service {
+  declare class esri$Geocoding$GeocodeService mixins Service {
     constructor(options?: Geocoding$GeocodeServiceOptions): this;
     geocode(): Geocoding$Geocode;
     suggest(): Geocoding$Suggest;
     reverse(): Geocoding$ReverseGeocode;
   }
 
-  declare function Geocoding$geocodeService(
+  declare function esri$Geocoding$geocodeService(
     options?: Geocoding$GeocodeServiceOptions
-  ): Geocoding$GeocodeService;
+  ): esri$Geocoding$GeocodeService;
 
-  declare type Geocoding$GeocodeServiceOptions = {
+  declare type esri$Geocoding$GeocodeServiceOptions = {
     supportsSuggest?: boolean
   } & ServiceOptions;
 
-  declare class Geocoding$Geocode mixins Task {
+  declare class esri$Geocoding$Geocode mixins Task {
     constructor(options?: TaskOptions | Service): this;
     text(text: string): this;
     address(text: string): this;
@@ -83,11 +96,11 @@ declare module "leaflet" {
     ): this;
   }
 
-  declare function Geocoding$geocode(
+  declare function esri$Geocoding$geocode(
     options?: TaskOptions | Service
-  ): Geocoding$Geocode;
+  ): esri$Geocoding$Geocode;
 
-  declare class Geocoding$Suggest mixins Task {
+  declare class esri$Geocoding$Suggest mixins Task {
     constructor(options?: TaskOptions | Service): this;
     text(text: string): this;
     category(text: string): this;
@@ -99,11 +112,11 @@ declare module "leaflet" {
     ): this;
   }
 
-  declare function Geocoding$suggest(
+  declare function esri$Geocoding$suggest(
     options?: TaskOptions | Service
-  ): Geocoding$Suggest;
+  ): esri$Geocoding$Suggest;
 
-  declare class Geocoding$ReverseGeocode mixins Task {
+  declare class esri$Geocoding$ReverseGeocode mixins Task {
     constructor(options?: TaskOptions | Service): this;
     latlng(latlng: LatLngExpression): this;
     distance(distance: number): this;
@@ -121,11 +134,11 @@ declare module "leaflet" {
     ): this;
   }
 
-  declare function Geocoding$reverseGeocode(
+  declare function esri$Geocoding$reverseGeocode(
     options?: TaskOptions | Service
-  ): Geocoding$ReverseGeocode;
+  ): esri$Geocoding$ReverseGeocode;
 
-  declare interface Geocoding$GeosearchProvider {
+  declare interface esri$Geocoding$GeosearchProvider {
     suggestions(
       text: string,
       bounds: LatLngBoundsExpression | void | null,
@@ -139,124 +152,124 @@ declare module "leaflet" {
     ): Task;
   }
 
-  declare type Geocoding$GeosearchCallback = (
+  declare type esri$Geocoding$GeosearchCallback = (
     error: any | void,
     results: any
   ) => void;
 
-  declare interface Geocoding$BaseProviderOptions {
+  declare interface esri$Geocoding$BaseProviderOptions {
     label?: string;
     maxResults?: number;
     attribution?: string;
     token?: string | null;
   }
 
-  declare class Geocoding$ArcgisOnlineProvider
-    mixins Geocoding$GeocodeService, Geocoding$GeosearchProvider {
+  declare class esri$Geocoding$ArcgisOnlineProvider
+    mixins GeocodeService, GeosearchProvider {
     constructor(options?: Geocoding$ArcgisOnlineProviderOptions): this;
     suggestions(
       text: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
-    ): Geocoding$Suggest;
+      callback: esri$Geocoding$GeosearchCallback
+    ): esri$Geocoding$Suggest;
     results(
       text: string,
       key: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
-    ): Geocoding$Geocode;
+      callback: esri$Geocoding$GeosearchCallback
+    ): esri$Geocoding$Geocode;
   }
 
-  declare function Geocoding$arcgisOnlineProvider(
+  declare function esri$Geocoding$arcgisOnlineProvider(
     options?: Geocoding$ArcgisOnlineProviderOptions
-  ): Geocoding$ArcgisOnlineProvider;
+  ): esri$Geocoding$ArcgisOnlineProvider;
 
-  declare type Geocoding$ArcgisOnlineProviderOptions = {
+  declare type esri$Geocoding$ArcgisOnlineProviderOptions = {
     countries?: string | string[],
     categories?: string | string[],
     forStorage?: boolean
-  } & Geocoding$BaseProviderOptions;
+  } & BaseProviderOptions;
 
-  declare class Geocoding$GeocodeServiceProvider
-    mixins Geocoding$GeocodeService, Geocoding$GeosearchProvider {
+  declare class esri$Geocoding$GeocodeServiceProvider
+    mixins GeocodeService, GeosearchProvider {
     constructor(options?: Geocoding$GeocodeServiceProviderOptions): this;
     suggestions(
       text: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
-    ): Geocoding$Suggest;
+      callback: esri$Geocoding$GeosearchCallback
+    ): esri$Geocoding$Suggest;
     results(
       text: string,
       key: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
-    ): Geocoding$Geocode;
+      callback: esri$Geocoding$GeosearchCallback
+    ): esri$Geocoding$Geocode;
   }
 
-  declare function Geocoding$geocodeServiceProvider(
+  declare function esri$Geocoding$geocodeServiceProvider(
     options?: Geocoding$GeocodeServiceProviderOptions
-  ): Geocoding$GeocodeServiceProvider;
+  ): esri$Geocoding$GeocodeServiceProvider;
 
-  declare type Geocoding$GeocodeServiceProviderOptions = {
+  declare type esri$Geocoding$GeocodeServiceProviderOptions = {
     url: string
-  } & Geocoding$BaseProviderOptions;
+  } & BaseProviderOptions;
 
-  declare class Geocoding$FeatureLayerProvider
-    mixins FeatureLayerService, Geocoding$GeosearchProvider {
+  declare class esri$Geocoding$FeatureLayerProvider
+    mixins FeatureLayerService, GeosearchProvider {
     constructor(options?: Geocoding$FeatureLayerProviderOptions): this;
     suggestions(
       text: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
+      callback: esri$Geocoding$GeosearchCallback
     ): Query;
     results(
       text: string,
       key: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
+      callback: esri$Geocoding$GeosearchCallback
     ): Query;
   }
 
-  declare function Geocoding$featureLayerProvider(
+  declare function esri$Geocoding$featureLayerProvider(
     options?: Geocoding$FeatureLayerProviderOptions
-  ): Geocoding$FeatureLayerProvider;
+  ): esri$Geocoding$FeatureLayerProvider;
 
-  declare type Geocoding$FeatureLayerProviderOptions = {
+  declare type esri$Geocoding$FeatureLayerProviderOptions = {
     url: string,
     searchFields?: string | string[],
     bufferRadius?: number,
     formatSuggestion?: (featureInformation: any) => string
-  } & Geocoding$BaseProviderOptions;
+  } & BaseProviderOptions;
 
-  declare class Geocoding$MapServiceProvider
-    mixins MapService, Geocoding$GeosearchProvider {
+  declare class esri$Geocoding$MapServiceProvider
+    mixins MapService, GeosearchProvider {
     constructor(options?: Geocoding$MapServiceProviderOptions): this;
     suggestions(
       text: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
+      callback: esri$Geocoding$GeosearchCallback
     ): Find;
     results(
       text: string,
       key: string,
       bounds: LatLngBoundsExpression | void | null,
-      callback: Geocoding$GeosearchCallback
+      callback: esri$Geocoding$GeosearchCallback
     ): Query | Find;
   }
 
-  declare function Geocoding$mapServiceProvider(
+  declare function esri$Geocoding$mapServiceProvider(
     options?: Geocoding$MapServiceProviderOptions
-  ): Geocoding$MapServiceProvider;
+  ): esri$Geocoding$MapServiceProvider;
 
-  declare type Geocoding$MapServiceProviderOptions = {
+  declare type esri$Geocoding$MapServiceProviderOptions = {
     url: string,
     searchFields: string | string[],
     layers: number | number[],
     bufferRadius: number | number[],
     formatSuggestion(featureInformation: any): string
-  } & Geocoding$BaseProviderOptions;
+  } & BaseProviderOptions;
 
-  declare interface Geocoding$ResultObject {
+  declare interface esri$Geocoding$ResultObject {
     text?: string;
     bounds?: LatLngBoundsExpression;
     latlng?: LatLngExpression;
@@ -265,10 +278,10 @@ declare module "leaflet" {
     [key: string]: any;
   }
 
-  declare interface Geocoding$Results {
+  declare interface esri$Geocoding$Results {
     bounds: LatLngBoundsExpression;
     latlng: LatLngExpression;
-    results: Geocoding$ResultObject[];
+    results: esri$Geocoding$ResultObject[];
   }
 }
 declare module "esri-leaflet-geocoder" {
