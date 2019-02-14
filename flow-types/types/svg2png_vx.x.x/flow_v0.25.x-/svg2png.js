@@ -12,5 +12,5 @@ declare module "svg2png" {
   };
   declare function svg2png$sync(sourceBuffer: Buffer, opts?: opts): Buffer;
 
-  declare module.exports: typeof svg2png;
+  declare export default typeof svg2png;
 }
