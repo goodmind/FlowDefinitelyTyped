@@ -16,5 +16,5 @@ declare module "franc" {
     options?: Options
   ): [ISO6393, number];
 
-  declare module.exports: typeof detect;
+  declare export default typeof detect;
 }
