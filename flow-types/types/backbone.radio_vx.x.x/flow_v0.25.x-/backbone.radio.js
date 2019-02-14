@@ -1,9 +1,9 @@
 declare module "backbone" {
   declare interface Radio {
-    Radio$tuneIn(channelName: string): Radio;
-    Radio$tuneOut(channelName: string): Radio;
-    Radio$log(channelName: string, eventName: string, ...args: any[]): void;
-    Radio$channel(channelName: string): Radio$Radio$Channel;
+    tuneIn(channelName: string): Radio;
+    tuneOut(channelName: string): Radio;
+    log(channelName: string, eventName: string, ...args: any[]): void;
+    channel(channelName: string): Radio$Channel;
   }
 
   declare var npm$namespace$Radio: {
@@ -29,7 +29,11 @@ declare module "backbone" {
     listenToOnce: typeof Radio$listenToOnce,
     stopListening: typeof Radio$stopListening,
     VERSION: typeof Radio$VERSION,
-    DEBUG: typeof Radio$DEBUG
+    DEBUG: typeof Radio$DEBUG,
+
+    Commands: typeof Radio$Commands,
+    Requests: typeof Radio$Requests,
+    Channel: typeof Radio$Channel
   };
   declare var Radio$VERSION: string;
 
@@ -257,8 +261,7 @@ declare module "backbone" {
     ): Radio$Requests;
   }
 
-  declare class Radio$Channel
-    mixins Radio$Commands, Radio$Requests, Backbone.Events {
+  declare class Radio$Channel mixins Commands, Requests, Backbone.Events {
     on(
       eventName: string,
       callback?: (...args: any[]) => void,
@@ -365,5 +368,5 @@ declare module "backbone" {
 declare module "backbone.radio" {
   import typeof * as Backbone from "backbone";
 
-  declare module.exports: typeof Backbone.Radio;
+  declare export default typeof Backbone.Radio;
 }
