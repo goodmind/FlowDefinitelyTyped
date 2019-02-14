@@ -7,14 +7,16 @@ declare module "slack-mock" {
 
   import typeof * as WebSocket from "ws";
 
-  declare module.exports: typeof SlackMock;
+  declare export default typeof SlackMock;
 
   declare function SlackMock(
-    config?: SlackMock$SlackMock$ConfigOptions
-  ): SlackMock$SlackMock$Instance;
+    config?: SlackMock$ConfigOptions
+  ): SlackMock$Instance;
 
   declare var npm$namespace$SlackMock: {
-    instance: typeof SlackMock$instance
+    instance: typeof SlackMock$instance,
+    InteractiveButtonCallType: typeof SlackMock$InteractiveButtonCallType,
+    SlashCommandCallType: typeof SlackMock$SlashCommandCallType
   };
   declare var SlackMock$instance: SlackMock$Instance;
 
@@ -100,20 +102,10 @@ declare module "slack-mock" {
     type: SlackMock$InteractiveButtonCallType;
   }
 
-  declare class SlackMock$InteractiveButtonCallType {
-    constructor(...args: empty): mixed;
-    static +response: Class<SlackMock$InteractiveButtonCallType__response> &
-      SlackMock$InteractiveButtonCallType__response &
-      "response"; // "response"
-    static +response_url: Class<SlackMock$InteractiveButtonCallType__response_url> &
-      SlackMock$InteractiveButtonCallType__response_url &
-      "response_url"; // "response_url"
-  }
-
-  declare class SlackMock$InteractiveButtonCallType__response
-    mixins SlackMock$InteractiveButtonCallType {}
-  declare class SlackMock$InteractiveButtonCallType__response_url
-    mixins SlackMock$InteractiveButtonCallType {}
+  declare var SlackMock$InteractiveButtonCallType: {|
+    +response: "response", // "response"
+    +response_url: "response_url" // "response_url"
+  |};
 
   declare type SlackMock$OutgoingWebhookUrl = string | Url;
 
@@ -173,20 +165,10 @@ declare module "slack-mock" {
     type: SlackMock$SlashCommandCallType;
   }
 
-  declare class SlackMock$SlashCommandCallType {
-    constructor(...args: empty): mixed;
-    static +response: Class<SlackMock$SlashCommandCallType__response> &
-      SlackMock$SlashCommandCallType__response &
-      "response"; // "response"
-    static +response_url: Class<SlackMock$SlashCommandCallType__response_url> &
-      SlackMock$SlashCommandCallType__response_url &
-      "response_url"; // "response_url"
-  }
-
-  declare class SlackMock$SlashCommandCallType__response
-    mixins SlackMock$SlashCommandCallType {}
-  declare class SlackMock$SlashCommandCallType__response_url
-    mixins SlackMock$SlashCommandCallType {}
+  declare var SlackMock$SlashCommandCallType: {|
+    +response: "response", // "response"
+    +response_url: "response_url" // "response_url"
+  |};
 
   declare type SlackMock$WebUrl = string;
 
