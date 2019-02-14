@@ -1,8 +1,24 @@
 declare module "gapi.analytics" {
-  declare var npm$namespace$column: {
-    list: typeof column$list
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
   };
-  declare export function column$list(): Promise<any>;
+
+  declare var npm$namespace$gapi$client: {
+    analytics: typeof npm$namespace$gapi$client$analytics
+  };
+
+  declare var npm$namespace$gapi$client$analytics: {
+    metadata: typeof npm$namespace$gapi$client$analytics$metadata
+  };
+
+  declare var npm$namespace$gapi$client$analytics$metadata: {
+    column: typeof npm$namespace$gapi$client$analytics$metadata$column
+  };
+
+  declare var npm$namespace$gapi$client$analytics$metadata$column: {
+    list: typeof gapi$client$analytics$metadata$column$list
+  };
+  declare export function gapi$client$analytics$metadata$column$list(): Promise<any>;
 
   declare interface DataQuery {
     ids?: string;
