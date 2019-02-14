@@ -1,26 +1,30 @@
 declare module "gapi.client.runtimeconfig" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations
   };
 
   /**
    * Load Google Cloud Runtime Configuration API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "runtimeconfig",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "runtimeconfig",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: runtimeconfig$runtimeconfig$OperationsResource;
+  declare var gapi$client$operations: runtimeconfig$OperationsResource;
 
-  declare interface runtimeconfig$ListOperationsResponse {
+  declare interface gapi$client$runtimeconfig$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -29,10 +33,10 @@ declare module "gapi.client.runtimeconfig" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: runtimeconfig$Operation[];
+    operations?: runtimeconfig$Operation[];
   }
 
-  declare interface runtimeconfig$Operation {
+  declare interface gapi$client$runtimeconfig$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -73,7 +77,7 @@ declare module "gapi.client.runtimeconfig" {
     response?: Record<string, any>;
   }
 
-  declare interface runtimeconfig$Status {
+  declare interface gapi$client$runtimeconfig$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -93,7 +97,7 @@ declare module "gapi.client.runtimeconfig" {
     message?: string;
   }
 
-  declare interface runtimeconfig$OperationsResource {
+  declare interface gapi$client$runtimeconfig$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -353,6 +357,6 @@ declare module "gapi.client.runtimeconfig" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<runtimeconfig$ListOperationsResponse>;
+    }): Request<gapi$client$runtimeconfig$ListOperationsResponse>;
   }
 }
