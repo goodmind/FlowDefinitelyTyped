@@ -12,12 +12,19 @@ declare module "enhanced-resolve" {
     sync: typeof Resolve$sync,
     context: typeof Resolve$context,
     loader: typeof Resolve$loader,
-    create: typeof Resolve$create
+    create: typeof Resolve$create,
+
+    NodeJsInputFileSystem: typeof Resolve$NodeJsInputFileSystem,
+    CachedInputFileSystem: typeof Resolve$CachedInputFileSystem,
+    context: typeof npm$namespace$Resolve$context,
+    loader: typeof npm$namespace$Resolve$loader,
+    create: typeof npm$namespace$Resolve$create,
+    ResolverFactory: typeof npm$namespace$Resolve$ResolverFactory
   };
   declare function Resolve$sync(path: string, request: string): string;
 
   declare function Resolve$sync(
-    Resolve$context: ResolveContext,
+    context: ResolveContext,
     path: string,
     request: string
   ): string;
@@ -29,19 +36,19 @@ declare module "enhanced-resolve" {
   ): void;
 
   declare function Resolve$context(
-    Resolve$context: ResolveContext,
+    context: ResolveContext,
     path: string,
     request: string,
     callback: LoggingCallbackWrapper
   ): void;
 
-  declare var npm$namespace$context: {
-    sync: typeof context$sync
+  declare var npm$namespace$Resolve$context: {
+    sync: typeof Resolve$context$sync
   };
-  declare function context$sync(path: string, request: string): string;
+  declare function Resolve$context$sync(path: string, request: string): string;
 
-  declare function context$sync(
-    Resolve$context: ResolveContext,
+  declare function Resolve$context$sync(
+    context: ResolveContext,
     path: string,
     request: string
   ): string;
@@ -53,49 +60,49 @@ declare module "enhanced-resolve" {
   ): void;
 
   declare function Resolve$loader(
-    Resolve$context: ResolveContext,
+    context: ResolveContext,
     path: string,
     request: string,
     callback: LoggingCallbackWrapper
   ): void;
 
-  declare var npm$namespace$loader: {
-    sync: typeof loader$sync
+  declare var npm$namespace$Resolve$loader: {
+    sync: typeof Resolve$loader$sync
   };
-  declare function loader$sync(path: string, request: string): string;
+  declare function Resolve$loader$sync(path: string, request: string): string;
 
-  declare function loader$sync(
-    Resolve$context: ResolveContext,
+  declare function Resolve$loader$sync(
+    context: ResolveContext,
     path: string,
     request: string
   ): string;
 
   declare function Resolve$create(
-    options: ResolverFactory$ResolverFactory$ResolverOption
+    options: ResolverFactory$ResolverOption
   ): {
     (path: string, request: string, callback: LoggingCallbackWrapper): void,
     (
-      Resolve$context: ResolveContext,
+      context: ResolveContext,
       path: string,
       request: string,
       callback: LoggingCallbackWrapper
     ): void
   };
 
-  declare var npm$namespace$create: {
-    sync: typeof create$sync
+  declare var npm$namespace$Resolve$create: {
+    sync: typeof Resolve$create$sync
   };
-  declare function create$sync(
-    options: ResolverFactory$ResolverFactory$ResolverOption
+  declare function Resolve$create$sync(
+    options: ResolverFactory$ResolverOption
   ): {
     (path: string, request: string): string,
-    (Resolve$context: ResolveContext, path: string, request: string): string
+    (context: ResolveContext, path: string, request: string): string
   };
 
-  declare var npm$namespace$ResolverFactory: {
-    createResolver: typeof ResolverFactory$createResolver
+  declare var npm$namespace$Resolve$ResolverFactory: {
+    createResolver: typeof Resolve$ResolverFactory$createResolver
   };
-  declare interface ResolverFactory$ResolverOption {
+  declare interface Resolve$ResolverFactory$ResolverOption {
     alias?: ResolverFactory$AliasItem[] | Dictionary<string>;
     aliasFields?: string[];
     cachePredicate?: (val: ResolverRequest) => boolean;
@@ -116,14 +123,14 @@ declare module "enhanced-resolve" {
     useSyncFileSystemCalls?: boolean;
   }
 
-  declare interface ResolverFactory$AliasItem {
+  declare interface Resolve$ResolverFactory$AliasItem {
     alias: string;
     name: string;
     onlyModule?: boolean;
   }
 
-  declare function ResolverFactory$createResolver(
-    options: ResolverFactory$ResolverOption
+  declare function Resolve$ResolverFactory$createResolver(
+    options: Resolve$ResolverFactory$ResolverOption
   ): Resolver;
 
   declare class Resolve$NodeJsInputFileSystem {
@@ -224,11 +231,11 @@ declare module "enhanced-resolve" {
   ): void;
 
   declare function Resolve(
-    Resolve$context: ResolveContext,
+    context: ResolveContext,
     path: string,
     request: string,
     callback: LoggingCallbackWrapper
   ): void;
 
-  declare module.exports: typeof Resolve;
+  declare export default typeof Resolve;
 }
