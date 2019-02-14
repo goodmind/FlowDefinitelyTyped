@@ -14,7 +14,10 @@ declare module "teechart" {
     Candle: typeof Tee$Candle,
     CursorTool: typeof Tee$CursorTool,
     DragTool: typeof Tee$DragTool,
-    ToolTip: typeof Tee$ToolTip
+    ToolTip: typeof Tee$ToolTip,
+
+    Point: typeof Tee$Point,
+    Chart: typeof Tee$Chart
   };
   declare interface Tee$IPoint {
     x: number;
@@ -122,7 +125,7 @@ declare module "teechart" {
     resize(): void,
     clicked(point: Tee$IPoint): boolean,
     draw(): void
-  } & Tee$ITool;
+  } & ITool;
 
   declare interface Tee$IPanel {
     format: Tee$IFormat;
@@ -134,7 +137,7 @@ declare module "teechart" {
     expand: boolean,
     padding: number,
     transparent: boolean
-  } & Tee$IAnnotation;
+  } & IAnnotation;
 
   declare interface Tee$IPalette {
     colors: string[];
@@ -144,7 +147,7 @@ declare module "teechart" {
   declare type Tee$IArrow = {
     length: number,
     underline: boolean
-  } & Tee$IFormat;
+  } & IFormat;
 
   declare type Tee$IMarks = {
     arrow: Tee$IArrow,
@@ -152,7 +155,7 @@ declare module "teechart" {
     style: string,
     drawEvery: number,
     visible: boolean
-  } & Tee$IAnnotation;
+  } & IAnnotation;
 
   declare interface Tee$ISeriesData {
     values: number[];
@@ -196,7 +199,7 @@ declare module "teechart" {
 
   declare type Tee$ISeries = {
     bounds(rectangle: Tee$IRectangle): void
-  } & Tee$ISeriesNoBounds;
+  } & ISeriesNoBounds;
 
   declare interface Tee$IAxisLabels {
     chart: Tee$IChart;
@@ -230,12 +233,12 @@ declare module "teechart" {
 
   declare type Tee$IMinorTicks = {
     count: number
-  } & Tee$ITicks;
+  } & ITicks;
 
   declare type Tee$IAxisTitle = {
     padding: number,
     transparent: boolean
-  } & Tee$IAnnotation;
+  } & IAnnotation;
 
   declare interface Tee$IAxis {
     chart: Tee$IChart;
@@ -380,7 +383,7 @@ declare module "teechart" {
     barSize: number,
     barStyle: string,
     stacked: string
-  } & Tee$ISeries;
+  } & ISeries;
 
   declare interface Tee$ISeriesPointer {
     chart: Tee$IChart;
@@ -396,20 +399,20 @@ declare module "teechart" {
     pointer: Tee$ISeriesPointer,
     stacked: string,
     stairs: boolean
-  } & Tee$ISeries;
+  } & ISeries;
 
   declare type Tee$ILine = {
     smooth: number
-  } & Tee$ICustomSeries;
+  } & ICustomSeries;
 
   declare type Tee$ISmoothLine = {
     smooth: number
-  } & Tee$ILine;
+  } & ILine;
 
   declare type Tee$IArea = {
     useOrigin: boolean,
     origin: number
-  } & Tee$ISeries;
+  } & ISeries;
 
   declare type Tee$IPie = {
     donut: number,
@@ -419,21 +422,21 @@ declare module "teechart" {
     explode: number[],
     concentric: boolean,
     calcPos(angle: number, position: Tee$IPoint): void
-  } & Tee$ISeries;
+  } & ISeries;
 
   declare type Tee$IBubbleData = {
     radius: number[]
-  } & Tee$ISeriesData;
+  } & ISeriesData;
 
   declare type Tee$IBubble = {
     data: Tee$IBubbleData
-  } & Tee$ICustomSeries;
+  } & ICustomSeries;
 
   declare type Tee$IGanttData = {
     start: number[],
     x: number[],
     end: number[]
-  } & Tee$ISeriesData;
+  } & ISeriesData;
 
   declare type Tee$IGantt = {
     data: Tee$IGanttData,
@@ -443,25 +446,25 @@ declare module "teechart" {
     margin: Tee$IPoint,
     add(index: number, label: string, start: number, end: number): void,
     bounds(index: number, rectangle: Tee$IRectangle): void
-  } & Tee$ISeriesNoBounds;
+  } & ISeriesNoBounds;
 
   declare type Tee$ICandleData = {
     open: number[],
     close: number[],
     high: number[],
     low: number[]
-  } & Tee$ISeriesData;
+  } & ISeriesData;
 
   declare type Tee$ICandle = {
     data: Tee$ICandleData,
     higher: Tee$IFormat,
     lower: Tee$IFormat,
     style: string
-  } & Tee$ICustomSeries;
+  } & ICustomSeries;
 
   declare type Tee$IDragTool = {
     series: Tee$ISeries
-  } & Tee$ITool;
+  } & ITool;
 
   declare type Tee$ICursorTool = {
     direction: string,
@@ -474,7 +477,7 @@ declare module "teechart" {
     render: string,
     over(point: Tee$IPoint): boolean,
     setRender(render: string): void
-  } & Tee$ITool;
+  } & ITool;
 
   declare type Tee$IToolTip = {
     animated: number,
@@ -485,14 +488,14 @@ declare module "teechart" {
     delay: number,
     hide(): void,
     refresh(series: Tee$ISeries, index: number): void
-  } & Tee$IAnnotation;
+  } & IAnnotation;
 
-  declare class Tee$Point mixins Tee$IPoint {
+  declare class Tee$Point mixins IPoint {
     x: number;
     y: number;
   }
 
-  declare class Tee$Chart mixins Tee$IChart {
+  declare class Tee$Chart mixins IChart {
     axes: Tee$IAxes;
     footer: Tee$ITitle;
     legend: Tee$ILegend;
