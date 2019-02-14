@@ -1,9 +1,7 @@
 declare module "basic-auth" {
   import typeof * as http from "http";
 
-  declare function auth(
-    req: http.IncomingMessage
-  ): auth$auth$BasicAuthResult | void;
+  declare function auth(req: http.IncomingMessage): auth$BasicAuthResult | void;
 
   declare var npm$namespace$auth: {
     parse: typeof auth$parse
@@ -20,5 +18,5 @@ declare module "basic-auth" {
     authorizationHeader: string
   ): auth$BasicAuthResult | void;
 
-  declare module.exports: typeof auth;
+  declare export default typeof auth;
 }
