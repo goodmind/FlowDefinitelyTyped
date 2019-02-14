@@ -7,9 +7,12 @@ declare module "leaflet" {
     pan: typeof control$pan
   };
   declare function control$pan(
-    options?: Control$Control$PanControlOptions
-  ): Control$Control$Pan;
+    options?: Control$PanControlOptions
+  ): Control$Pan;
 
+  declare var npm$namespace$Control: {
+    Pan: typeof Control$Pan
+  };
   declare type Control$PanControlOptions = {
     panOffset?: number
   } & ControlOptions;
