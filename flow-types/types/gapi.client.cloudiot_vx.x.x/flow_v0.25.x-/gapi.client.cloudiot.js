@@ -1,26 +1,30 @@
 declare module "gapi.client.cloudiot" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud IoT API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudiot",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudiot",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: cloudiot$cloudiot$ProjectsResource;
+  declare var gapi$client$projects: cloudiot$ProjectsResource;
 
-  declare interface cloudiot$AuditConfig {
+  declare interface gapi$client$cloudiot$AuditConfig {
     /**
      * The configuration for logging of each type of permission.
      * Next ID: 4
@@ -36,7 +40,7 @@ declare module "gapi.client.cloudiot" {
     service?: string;
   }
 
-  declare interface cloudiot$AuditLogConfig {
+  declare interface gapi$client$cloudiot$AuditLogConfig {
     /**
      * Specifies the identities that do not cause logging for this type of
      * permission.
@@ -50,7 +54,7 @@ declare module "gapi.client.cloudiot" {
     logType?: string;
   }
 
-  declare interface cloudiot$Binding {
+  declare interface gapi$client$cloudiot$Binding {
     /**
      * The condition that is associated with this binding.
      * NOTE: an unsatisfied condition will not allow user access via current
@@ -94,7 +98,7 @@ declare module "gapi.client.cloudiot" {
     role?: string;
   }
 
-  declare interface cloudiot$Device {
+  declare interface gapi$client$cloudiot$Device {
     /**
      * If a device is blocked, connections or requests from this device will fail.
      * Can be used to temporarily prevent the device from connecting if, for
@@ -215,7 +219,7 @@ declare module "gapi.client.cloudiot" {
     state?: cloudiot$DeviceState;
   }
 
-  declare interface cloudiot$DeviceConfig {
+  declare interface gapi$client$cloudiot$DeviceConfig {
     /**
      * The device configuration data.
      */
@@ -249,7 +253,7 @@ declare module "gapi.client.cloudiot" {
     version?: string;
   }
 
-  declare interface cloudiot$DeviceCredential {
+  declare interface gapi$client$cloudiot$DeviceCredential {
     /**
      * [Optional] The time at which this credential becomes invalid. This
      * credential will be ignored for new client authentication requests after
@@ -273,7 +277,7 @@ declare module "gapi.client.cloudiot" {
     publicKey?: cloudiot$PublicKeyCredential;
   }
 
-  declare interface cloudiot$DeviceRegistry {
+  declare interface gapi$client$cloudiot$DeviceRegistry {
     /**
      * The credentials used to verify the device credentials. No more than 10
      * credentials can be bound to a single registry at a time. The verification
@@ -329,7 +333,7 @@ declare module "gapi.client.cloudiot" {
     stateNotificationConfig?: cloudiot$StateNotificationConfig;
   }
 
-  declare interface cloudiot$DeviceState {
+  declare interface gapi$client$cloudiot$DeviceState {
     /**
      * The device state data.
      */
@@ -342,7 +346,7 @@ declare module "gapi.client.cloudiot" {
     updateTime?: string;
   }
 
-  declare interface cloudiot$EventNotificationConfig {
+  declare interface gapi$client$cloudiot$EventNotificationConfig {
     /**
      * A Cloud Pub/Sub topic name. For example,
      * `projects/myProject/topics/deviceEvents`.
@@ -350,7 +354,7 @@ declare module "gapi.client.cloudiot" {
     pubsubTopicName?: string;
   }
 
-  declare interface cloudiot$Expr {
+  declare interface gapi$client$cloudiot$Expr {
     /**
      * An optional description of the expression. This is a longer text which
      * describes the expression, e.g. when hovered over it in a UI.
@@ -380,7 +384,7 @@ declare module "gapi.client.cloudiot" {
     title?: string;
   }
 
-  declare interface cloudiot$HttpConfig {
+  declare interface gapi$client$cloudiot$HttpConfig {
     /**
      * If enabled, allows devices to use DeviceService via the HTTP protocol.
      * Otherwise, any requests to DeviceService will fail for this registry.
@@ -388,19 +392,19 @@ declare module "gapi.client.cloudiot" {
     httpEnabledState?: string;
   }
 
-  declare interface cloudiot$ListDeviceConfigVersionsResponse {
+  declare interface gapi$client$cloudiot$ListDeviceConfigVersionsResponse {
     /**
      * The device configuration for the last few versions. Versions are listed
      * in decreasing order, starting from the most recent one.
      */
-    deviceConfigs?: cloudiot$DeviceConfig[];
+    deviceConfigs?: gapi$client$cloudiot$DeviceConfig[];
   }
 
-  declare interface cloudiot$ListDeviceRegistriesResponse {
+  declare interface gapi$client$cloudiot$ListDeviceRegistriesResponse {
     /**
      * The registries that matched the query.
      */
-    deviceRegistries?: cloudiot$DeviceRegistry[];
+    deviceRegistries?: gapi$client$cloudiot$DeviceRegistry[];
 
     /**
      * If not empty, indicates that there may be more registries that match the
@@ -410,19 +414,19 @@ declare module "gapi.client.cloudiot" {
     nextPageToken?: string;
   }
 
-  declare interface cloudiot$ListDeviceStatesResponse {
+  declare interface gapi$client$cloudiot$ListDeviceStatesResponse {
     /**
      * The last few device states. States are listed in descending order of server
      * update time, starting from the most recent one.
      */
-    deviceStates?: cloudiot$DeviceState[];
+    deviceStates?: gapi$client$cloudiot$DeviceState[];
   }
 
-  declare interface cloudiot$ListDevicesResponse {
+  declare interface gapi$client$cloudiot$ListDevicesResponse {
     /**
      * The devices that match the request.
      */
-    devices?: cloudiot$Device[];
+    devices?: gapi$client$cloudiot$Device[];
 
     /**
      * If not empty, indicates that there may be more devices that match the
@@ -431,7 +435,7 @@ declare module "gapi.client.cloudiot" {
     nextPageToken?: string;
   }
 
-  declare interface cloudiot$ModifyCloudToDeviceConfigRequest {
+  declare interface gapi$client$cloudiot$ModifyCloudToDeviceConfigRequest {
     /**
      * The configuration data for the device.
      */
@@ -447,7 +451,7 @@ declare module "gapi.client.cloudiot" {
     versionToUpdate?: string;
   }
 
-  declare interface cloudiot$MqttConfig {
+  declare interface gapi$client$cloudiot$MqttConfig {
     /**
      * If enabled, allows connections using the MQTT protocol. Otherwise, MQTT
      * connections to this registry will fail.
@@ -455,17 +459,17 @@ declare module "gapi.client.cloudiot" {
     mqttEnabledState?: string;
   }
 
-  declare interface cloudiot$Policy {
+  declare interface gapi$client$cloudiot$Policy {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: cloudiot$AuditConfig[];
+    auditConfigs?: gapi$client$cloudiot$AuditConfig[];
 
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: cloudiot$Binding[];
+    bindings?: gapi$client$cloudiot$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -488,7 +492,7 @@ declare module "gapi.client.cloudiot" {
     version?: number;
   }
 
-  declare interface cloudiot$PublicKeyCertificate {
+  declare interface gapi$client$cloudiot$PublicKeyCertificate {
     /**
      * The certificate data.
      */
@@ -505,7 +509,7 @@ declare module "gapi.client.cloudiot" {
     x509Details?: cloudiot$X509CertificateDetails;
   }
 
-  declare interface cloudiot$PublicKeyCredential {
+  declare interface gapi$client$cloudiot$PublicKeyCredential {
     /**
      * The format of the key.
      */
@@ -517,21 +521,21 @@ declare module "gapi.client.cloudiot" {
     key?: string;
   }
 
-  declare interface cloudiot$RegistryCredential {
+  declare interface gapi$client$cloudiot$RegistryCredential {
     /**
      * A public key certificate used to verify the device credentials.
      */
-    publicKeyCertificate?: cloudiot$PublicKeyCertificate;
+    publicKeyCertificate?: gapi$client$cloudiot$PublicKeyCertificate;
   }
 
-  declare interface cloudiot$SetIamPolicyRequest {
+  declare interface gapi$client$cloudiot$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: cloudiot$Policy;
+    policy?: gapi$client$cloudiot$Policy;
 
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
@@ -543,7 +547,7 @@ declare module "gapi.client.cloudiot" {
     updateMask?: string;
   }
 
-  declare interface cloudiot$StateNotificationConfig {
+  declare interface gapi$client$cloudiot$StateNotificationConfig {
     /**
      * A Cloud Pub/Sub topic name. For example,
      * `projects/myProject/topics/deviceEvents`.
@@ -551,7 +555,7 @@ declare module "gapi.client.cloudiot" {
     pubsubTopicName?: string;
   }
 
-  declare interface cloudiot$Status {
+  declare interface gapi$client$cloudiot$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -571,7 +575,7 @@ declare module "gapi.client.cloudiot" {
     message?: string;
   }
 
-  declare interface cloudiot$TestIamPermissionsRequest {
+  declare interface gapi$client$cloudiot$TestIamPermissionsRequest {
     /**
      * The set of permissions to check for the `resource`. Permissions with
      * wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more
@@ -581,7 +585,7 @@ declare module "gapi.client.cloudiot" {
     permissions?: string[];
   }
 
-  declare interface cloudiot$TestIamPermissionsResponse {
+  declare interface gapi$client$cloudiot$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -589,7 +593,7 @@ declare module "gapi.client.cloudiot" {
     permissions?: string[];
   }
 
-  declare interface cloudiot$X509CertificateDetails {
+  declare interface gapi$client$cloudiot$X509CertificateDetails {
     /**
      * The time the certificate becomes invalid.
      */
@@ -621,7 +625,7 @@ declare module "gapi.client.cloudiot" {
     subject?: string;
   }
 
-  declare interface cloudiot$ConfigVersionsResource {
+  declare interface gapi$client$cloudiot$ConfigVersionsResource {
     /**
      * Lists the last few versions of the device configuration in descending
      * order (i.e.: newest first).
@@ -705,10 +709,10 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$ListDeviceConfigVersionsResponse>;
+    }): Request<gapi$client$cloudiot$ListDeviceConfigVersionsResponse>;
   }
 
-  declare interface cloudiot$StatesResource {
+  declare interface gapi$client$cloudiot$StatesResource {
     /**
      * Lists the last few versions of the device state in descending order (i.e.:
      * newest first).
@@ -792,10 +796,10 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$ListDeviceStatesResponse>;
+    }): Request<gapi$client$cloudiot$ListDeviceStatesResponse>;
   }
 
-  declare interface cloudiot$DevicesResource {
+  declare interface gapi$client$cloudiot$DevicesResource {
     /**
      * Creates a device in a device registry.
      */
@@ -871,7 +875,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$Device>;
+    }): Request<gapi$client$cloudiot$Device>;
 
     /**
      * Deletes a device.
@@ -1025,7 +1029,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$Device>;
+    }): Request<gapi$client$cloudiot$Device>;
 
     /**
      * List devices in a device registry.
@@ -1136,7 +1140,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$ListDevicesResponse>;
+    }): Request<gapi$client$cloudiot$ListDevicesResponse>;
 
     /**
      * Modifies the configuration for the device, which is eventually sent from
@@ -1215,7 +1219,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$DeviceConfig>;
+    }): Request<gapi$client$cloudiot$DeviceConfig>;
 
     /**
      * Updates a device.
@@ -1302,12 +1306,12 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$Device>;
-    configVersions: cloudiot$ConfigVersionsResource;
-    states: cloudiot$StatesResource;
+    }): Request<gapi$client$cloudiot$Device>;
+    configVersions: gapi$client$cloudiot$ConfigVersionsResource;
+    states: gapi$client$cloudiot$StatesResource;
   }
 
-  declare interface cloudiot$RegistriesResource {
+  declare interface gapi$client$cloudiot$RegistriesResource {
     /**
      * Creates a device registry that contains devices.
      */
@@ -1382,7 +1386,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$DeviceRegistry>;
+    }): Request<gapi$client$cloudiot$DeviceRegistry>;
 
     /**
      * Deletes a device registry configuration.
@@ -1534,7 +1538,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$DeviceRegistry>;
+    }): Request<gapi$client$cloudiot$DeviceRegistry>;
 
     /**
      * Gets the access control policy for a resource.
@@ -1612,7 +1616,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$Policy>;
+    }): Request<gapi$client$cloudiot$Policy>;
 
     /**
      * Lists device registries.
@@ -1703,7 +1707,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$ListDeviceRegistriesResponse>;
+    }): Request<gapi$client$cloudiot$ListDeviceRegistriesResponse>;
 
     /**
      * Updates a device registry configuration.
@@ -1788,7 +1792,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$DeviceRegistry>;
+    }): Request<gapi$client$cloudiot$DeviceRegistry>;
 
     /**
      * Sets the access control policy on the specified resource. Replaces any
@@ -1865,7 +1869,7 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$Policy>;
+    }): Request<gapi$client$cloudiot$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -1943,15 +1947,15 @@ declare module "gapi.client.cloudiot" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudiot$TestIamPermissionsResponse>;
-    devices: cloudiot$DevicesResource;
+    }): Request<gapi$client$cloudiot$TestIamPermissionsResponse>;
+    devices: gapi$client$cloudiot$DevicesResource;
   }
 
-  declare interface cloudiot$LocationsResource {
-    registries: cloudiot$RegistriesResource;
+  declare interface gapi$client$cloudiot$LocationsResource {
+    registries: gapi$client$cloudiot$RegistriesResource;
   }
 
-  declare interface cloudiot$ProjectsResource {
-    locations: cloudiot$LocationsResource;
+  declare interface gapi$client$cloudiot$ProjectsResource {
+    locations: gapi$client$cloudiot$LocationsResource;
   }
 }
