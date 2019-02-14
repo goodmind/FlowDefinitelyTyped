@@ -6,14 +6,18 @@ declare module "readdir-enhanced" {
     stream: typeof re$stream,
     readdirStreamStat: typeof re$readdirStreamStat,
     sync: typeof re$sync,
-    readdirSyncStat: typeof re$readdirSyncStat
+    readdirSyncStat: typeof re$readdirSyncStat,
+
+    async: typeof npm$namespace$re$async,
+    stream: typeof npm$namespace$re$stream,
+    sync: typeof npm$namespace$re$sync
   };
   declare type re$Entry = {
     path: string,
     depth: number
   } & fs.Stats;
 
-  declare type re$FilterFunction = (sync$stat: re$Entry) => boolean;
+  declare type re$FilterFunction = (stat: re$Entry) => boolean;
 
   declare type re$Callback<T> = (err: NodeJS.ErrnoException, result: T) => void;
 
@@ -24,7 +28,7 @@ declare module "readdir-enhanced" {
   declare interface re$FileSystem {
     readdir?: (path: string, callback: re$Callback<string[]>) => void;
     lstat?: (path: string, callback: re$Callback<fs.Stats>) => void;
-    sync$stat?: (path: string, callback: re$Callback<fs.Stats>) => void;
+    stat?: (path: string, callback: re$Callback<fs.Stats>) => void;
   }
 
   declare interface re$Options {
@@ -77,17 +81,20 @@ declare module "readdir-enhanced" {
     callback: re$CallbackEntry
   ): void;
 
-  declare var npm$namespace$async: {
-    stat: typeof async$stat
+  declare var npm$namespace$re$async: {
+    stat: typeof re$async$stat
   };
-  declare function async$stat(
+  declare function re$async$stat(
     root: string,
     options?: re$Options
   ): Promise<re$Entry[]>;
 
-  declare function async$stat(root: string, callback: re$CallbackEntry): void;
+  declare function re$async$stat(
+    root: string,
+    callback: re$CallbackEntry
+  ): void;
 
-  declare function async$stat(
+  declare function re$async$stat(
     root: string,
     options: re$Options,
     callback: re$CallbackEntry
@@ -103,10 +110,10 @@ declare module "readdir-enhanced" {
     options?: re$Options
   ): NodeJS.ReadableStream;
 
-  declare var npm$namespace$stream: {
-    stat: typeof stream$stat
+  declare var npm$namespace$re$stream: {
+    stat: typeof re$stream$stat
   };
-  declare function stream$stat(
+  declare function re$stream$stat(
     root: string,
     options?: re$Options
   ): NodeJS.ReadableStream;
@@ -118,20 +125,20 @@ declare module "readdir-enhanced" {
     options?: re$Options
   ): re$Entry[];
 
-  declare var npm$namespace$sync: {
-    stat: typeof sync$stat
+  declare var npm$namespace$re$sync: {
+    stat: typeof re$sync$stat
   };
-  declare function sync$stat(root: string, options?: re$Options): re$Entry[];
+  declare function re$sync$stat(root: string, options?: re$Options): re$Entry[];
 
-  declare function re(root: string, options?: re$re$Options): Promise<string[]>;
+  declare function re(root: string, options?: re$Options): Promise<string[]>;
 
-  declare function re(root: string, callback: re$re$CallbackString): void;
+  declare function re(root: string, callback: re$CallbackString): void;
 
   declare function re(
     root: string,
-    options: re$re$Options,
-    callback: re$re$CallbackString
+    options: re$Options,
+    callback: re$CallbackString
   ): void;
 
-  declare module.exports: typeof re;
+  declare export default typeof re;
 }
