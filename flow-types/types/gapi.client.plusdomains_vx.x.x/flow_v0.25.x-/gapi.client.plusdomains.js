@@ -1,41 +1,45 @@
 declare module "gapi.client.plusdomains" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    activities: typeof client$activities,
-    audiences: typeof client$audiences,
-    circles: typeof client$circles,
-    comments: typeof client$comments,
-    media: typeof client$media,
-    people: typeof client$people
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    activities: typeof gapi$client$activities,
+    audiences: typeof gapi$client$audiences,
+    circles: typeof gapi$client$circles,
+    comments: typeof gapi$client$comments,
+    media: typeof gapi$client$media,
+    people: typeof gapi$client$people
   };
 
   /**
    * Load Google+ Domains API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "plusdomains",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "plusdomains",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$activities: plusdomains$plusdomains$ActivitiesResource;
+  declare var gapi$client$activities: plusdomains$ActivitiesResource;
 
-  declare var client$audiences: plusdomains$plusdomains$AudiencesResource;
+  declare var gapi$client$audiences: plusdomains$AudiencesResource;
 
-  declare var client$circles: plusdomains$plusdomains$CirclesResource;
+  declare var gapi$client$circles: plusdomains$CirclesResource;
 
-  declare var client$comments: plusdomains$plusdomains$CommentsResource;
+  declare var gapi$client$comments: plusdomains$CommentsResource;
 
-  declare var client$media: plusdomains$plusdomains$MediaResource;
+  declare var gapi$client$media: plusdomains$MediaResource;
 
-  declare var client$people: plusdomains$plusdomains$PeopleResource;
+  declare var gapi$client$people: plusdomains$PeopleResource;
 
-  declare interface plusdomains$Acl {
+  declare interface gapi$client$plusdomains$Acl {
     /**
      * Description of the access granted, suitable for display.
      */
@@ -57,11 +61,11 @@ declare module "gapi.client.plusdomains" {
     kind?: string;
   }
 
-  declare interface plusdomains$Activity {
+  declare interface gapi$client$plusdomains$Activity {
     /**
      * Identifies who has access to see this activity.
      */
-    access?: plusdomains$Acl;
+    access?: gapi$client$plusdomains$Acl;
 
     /**
      * The person who performed this activity.
@@ -541,7 +545,7 @@ declare module "gapi.client.plusdomains" {
     verb?: string;
   }
 
-  declare interface plusdomains$ActivityFeed {
+  declare interface gapi$client$plusdomains$ActivityFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -555,7 +559,7 @@ declare module "gapi.client.plusdomains" {
     /**
      * The activities in this page of results.
      */
-    items?: plusdomains$Activity[];
+    items?: gapi$client$plusdomains$Activity[];
 
     /**
      * Identifies this resource as a collection of activities. Value: "plus#activityFeed".
@@ -588,7 +592,7 @@ declare module "gapi.client.plusdomains" {
     updated?: string;
   }
 
-  declare interface plusdomains$Audience {
+  declare interface gapi$client$plusdomains$Audience {
     /**
      * ETag of this response for caching purposes.
      */
@@ -619,7 +623,7 @@ declare module "gapi.client.plusdomains" {
     visibility?: string;
   }
 
-  declare interface plusdomains$AudiencesFeed {
+  declare interface gapi$client$plusdomains$AudiencesFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -628,7 +632,7 @@ declare module "gapi.client.plusdomains" {
     /**
      * The audiences in this result.
      */
-    items?: plusdomains$Audience[];
+    items?: gapi$client$plusdomains$Audience[];
 
     /**
      * Identifies this resource as a collection of audiences. Value: "plus#audienceFeed".
@@ -646,7 +650,7 @@ declare module "gapi.client.plusdomains" {
     totalItems?: number;
   }
 
-  declare interface plusdomains$Circle {
+  declare interface gapi$client$plusdomains$Circle {
     /**
      * The description of this circle.
      */
@@ -675,7 +679,7 @@ declare module "gapi.client.plusdomains" {
     /**
      * The people in this circle.
      */
-    client$people?: {
+    people?: {
       /**
        * The total number of people in this circle.
        */
@@ -688,7 +692,7 @@ declare module "gapi.client.plusdomains" {
     selfLink?: string;
   }
 
-  declare interface plusdomains$CircleFeed {
+  declare interface gapi$client$plusdomains$CircleFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -697,7 +701,7 @@ declare module "gapi.client.plusdomains" {
     /**
      * The circles in this page of results.
      */
-    items?: plusdomains$Circle[];
+    items?: gapi$client$plusdomains$Circle[];
 
     /**
      * Identifies this resource as a collection of circles. Value: "plus#circleFeed".
@@ -730,7 +734,7 @@ declare module "gapi.client.plusdomains" {
     totalItems?: number;
   }
 
-  declare interface plusdomains$Comment {
+  declare interface gapi$client$plusdomains$Comment {
     /**
      * The person who posted this comment.
      */
@@ -871,7 +875,7 @@ declare module "gapi.client.plusdomains" {
     verb?: string;
   }
 
-  declare interface plusdomains$CommentFeed {
+  declare interface gapi$client$plusdomains$CommentFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -885,7 +889,7 @@ declare module "gapi.client.plusdomains" {
     /**
      * The comments in this page of results.
      */
-    items?: plusdomains$Comment[];
+    items?: gapi$client$plusdomains$Comment[];
 
     /**
      * Identifies this resource as a collection of comments. Value: "plus#commentFeed".
@@ -913,7 +917,7 @@ declare module "gapi.client.plusdomains" {
     updated?: string;
   }
 
-  declare interface plusdomains$Media {
+  declare interface gapi$client$plusdomains$Media {
     /**
      * The person who uploaded this media.
      */
@@ -1041,7 +1045,7 @@ declare module "gapi.client.plusdomains" {
     width?: number;
   }
 
-  declare interface plusdomains$PeopleFeed {
+  declare interface gapi$client$plusdomains$PeopleFeed {
     /**
      * ETag of this response for caching purposes.
      */
@@ -1080,7 +1084,7 @@ declare module "gapi.client.plusdomains" {
     totalItems?: number;
   }
 
-  declare interface plusdomains$Person {
+  declare interface gapi$client$plusdomains$Person {
     /**
      * A short biography for this person.
      */
@@ -1411,7 +1415,7 @@ declare module "gapi.client.plusdomains" {
     verified?: boolean;
   }
 
-  declare interface plusdomains$Place {
+  declare interface gapi$client$plusdomains$Place {
     /**
      * The physical address of the place.
      */
@@ -1453,7 +1457,7 @@ declare module "gapi.client.plusdomains" {
     };
   }
 
-  declare interface plusdomains$PlusDomainsAclentryResource {
+  declare interface gapi$client$plusdomains$PlusDomainsAclentryResource {
     /**
      * A descriptive name for this entry. Suitable for display.
      */
@@ -1476,7 +1480,7 @@ declare module "gapi.client.plusdomains" {
     type?: string;
   }
 
-  declare interface plusdomains$Videostream {
+  declare interface gapi$client$plusdomains$Videostream {
     /**
      * The height, in pixels, of the video resource.
      */
@@ -1498,7 +1502,7 @@ declare module "gapi.client.plusdomains" {
     width?: number;
   }
 
-  declare interface plusdomains$ActivitiesResource {
+  declare interface gapi$client$plusdomains$ActivitiesResource {
     /**
      * Get an activity.
      */
@@ -1543,7 +1547,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Activity>;
+    }): Request<gapi$client$plusdomains$Activity>;
 
     /**
      * Create a new activity for the authenticated user.
@@ -1595,7 +1599,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Activity>;
+    }): Request<gapi$client$plusdomains$Activity>;
 
     /**
      * List all of the activities in the specified collection for a particular user.
@@ -1658,10 +1662,10 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$ActivityFeed>;
+    }): Request<gapi$client$plusdomains$ActivityFeed>;
   }
 
-  declare interface plusdomains$AudiencesResource {
+  declare interface gapi$client$plusdomains$AudiencesResource {
     /**
      * List all of the audiences to which a user can share.
      */
@@ -1718,10 +1722,10 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$AudiencesFeed>;
+    }): Request<gapi$client$plusdomains$AudiencesFeed>;
   }
 
-  declare interface plusdomains$CirclesResource {
+  declare interface gapi$client$plusdomains$CirclesResource {
     /**
      * Add a person to a circle. Google+ limits certain circle operations, including the number of circle adds. Learn More.
      */
@@ -1776,7 +1780,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Circle>;
+    }): Request<gapi$client$plusdomains$Circle>;
 
     /**
      * Get a circle.
@@ -1822,7 +1826,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Circle>;
+    }): Request<gapi$client$plusdomains$Circle>;
 
     /**
      * Create a new circle for the authenticated user.
@@ -1868,7 +1872,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Circle>;
+    }): Request<gapi$client$plusdomains$Circle>;
 
     /**
      * List all of the circles for a user.
@@ -1926,7 +1930,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$CircleFeed>;
+    }): Request<gapi$client$plusdomains$CircleFeed>;
 
     /**
      * Update a circle's description. This method supports patch semantics.
@@ -1972,7 +1976,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Circle>;
+    }): Request<gapi$client$plusdomains$Circle>;
 
     /**
      * Delete a circle.
@@ -2120,10 +2124,10 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Circle>;
+    }): Request<gapi$client$plusdomains$Circle>;
   }
 
-  declare interface plusdomains$CommentsResource {
+  declare interface gapi$client$plusdomains$CommentsResource {
     /**
      * Get a comment.
      */
@@ -2168,7 +2172,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Comment>;
+    }): Request<gapi$client$plusdomains$Comment>;
 
     /**
      * Create a new comment in reply to an activity.
@@ -2214,7 +2218,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Comment>;
+    }): Request<gapi$client$plusdomains$Comment>;
 
     /**
      * List all of the comments for an activity.
@@ -2277,10 +2281,10 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$CommentFeed>;
+    }): Request<gapi$client$plusdomains$CommentFeed>;
   }
 
-  declare interface plusdomains$MediaResource {
+  declare interface gapi$client$plusdomains$MediaResource {
     /**
      * Add a new media item to an album. The current upload size limitations are 36MB for a photo and 1GB for a video. Uploads do not count against quota if
      * photos are less than 2048 pixels on their longest side or videos are less than 15 minutes in length.
@@ -2327,10 +2331,10 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Media>;
+    }): Request<gapi$client$plusdomains$Media>;
   }
 
-  declare interface plusdomains$PeopleResource {
+  declare interface gapi$client$plusdomains$PeopleResource {
     /**
      * Get a person's profile.
      */
@@ -2375,7 +2379,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$Person>;
+    }): Request<gapi$client$plusdomains$Person>;
 
     /**
      * List all of the people in the specified collection.
@@ -2443,7 +2447,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$PeopleFeed>;
+    }): Request<gapi$client$plusdomains$PeopleFeed>;
 
     /**
      * List all of the people in the specified collection for a particular activity.
@@ -2506,7 +2510,7 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$PeopleFeed>;
+    }): Request<gapi$client$plusdomains$PeopleFeed>;
 
     /**
      * List all of the people who are members of a circle.
@@ -2564,6 +2568,6 @@ declare module "gapi.client.plusdomains" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<plusdomains$PeopleFeed>;
+    }): Request<gapi$client$plusdomains$PeopleFeed>;
   }
 }
