@@ -13,5 +13,5 @@ declare module "almost-equal" {
   declare var almostEqual$FLT_EPSILON: number;
 
   declare var almostEqual$DBL_EPSILON: number;
-  declare module.exports: typeof almostEqual;
+  declare export default typeof almostEqual;
 }
