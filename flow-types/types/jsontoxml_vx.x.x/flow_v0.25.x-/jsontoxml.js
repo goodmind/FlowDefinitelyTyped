@@ -8,7 +8,7 @@ declare module "jsontoxml" {
   declare function jsontoxml$cdata(str: string): string;
 
   declare interface jsontoxml$JsonToXmlOptions {
-    jsontoxml$escape?: boolean;
+    escape?: boolean;
     xmlHeader?:
       | boolean
       | {
@@ -22,8 +22,8 @@ declare module "jsontoxml" {
   }
   declare function jsontoxml(
     data: any,
-    options?: jsontoxml$jsontoxml$JsonToXmlOptions
+    options?: jsontoxml$JsonToXmlOptions
   ): string;
 
-  declare module.exports: typeof jsontoxml;
+  declare export default typeof jsontoxml;
 }
