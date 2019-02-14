@@ -9,5 +9,5 @@ declare module "trim" {
 
   declare function Trim$right(str: string): string;
 
-  declare module.exports: typeof Trim;
+  declare export default typeof Trim;
 }
