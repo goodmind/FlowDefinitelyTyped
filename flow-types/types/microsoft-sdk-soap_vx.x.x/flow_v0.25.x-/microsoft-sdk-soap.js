@@ -1,4 +1,45 @@
 declare module "global" {
+  declare var npm$namespace$Sdk: {
+    Q: typeof Sdk$Q,
+    ColumnSet: typeof Sdk$ColumnSet,
+    ValueType: typeof Sdk$ValueType,
+    Collection: typeof Sdk$Collection,
+    EntityCollection: typeof Sdk$EntityCollection,
+    EntityReferenceCollection: typeof Sdk$EntityReferenceCollection,
+    RelatedEntityCollection: typeof Sdk$RelatedEntityCollection,
+    AttributeCollection: typeof Sdk$AttributeCollection,
+    FormattedValueCollection: typeof Sdk$FormattedValueCollection,
+    RelatedEntitiesCollection: typeof Sdk$RelatedEntitiesCollection,
+    AttributeBase: typeof Sdk$AttributeBase,
+    Boolean: typeof Sdk$Boolean,
+    DateTime: typeof Sdk$DateTime,
+    Decimal: typeof Sdk$Decimal,
+    Double: typeof Sdk$Double,
+    Guid: typeof Sdk$Guid,
+    Int: typeof Sdk$Int,
+    Long: typeof Sdk$Long,
+    Lookup: typeof Sdk$Lookup,
+    Money: typeof Sdk$Money,
+    OptionSet: typeof Sdk$OptionSet,
+    PartyList: typeof Sdk$PartyList,
+    String: typeof Sdk$String,
+    EntityState: typeof Sdk$EntityState,
+    Entity: typeof Sdk$Entity,
+    EntityReference: typeof Sdk$EntityReference,
+    OrganizationRequest: typeof Sdk$OrganizationRequest,
+    OrganizationResponse: typeof Sdk$OrganizationResponse,
+    FetchXmlToQueryExpressionRequest: typeof Sdk$FetchXmlToQueryExpressionRequest,
+    FetchXmlToQueryExpressionResponse: typeof Sdk$FetchXmlToQueryExpressionResponse,
+    QueryExpressionToFetchXmlRequest: typeof Sdk$QueryExpressionToFetchXmlRequest,
+    QueryExpressionToFetchXmlResponse: typeof Sdk$QueryExpressionToFetchXmlResponse,
+    RetrieveMetadataChangesRequest: typeof Sdk$RetrieveMetadataChangesRequest,
+    RetrieveMetadataChangesResponse: typeof Sdk$RetrieveMetadataChangesResponse,
+    SetStateRequest: typeof Sdk$SetStateRequest,
+    SetStateResponse: typeof Sdk$SetStateResponse,
+    Query: typeof npm$namespace$Sdk$Query,
+    Util: typeof npm$namespace$Sdk$Util,
+    Mdq: typeof npm$namespace$Sdk$Mdq
+  };
   declare interface Sdk$IEntityView {
     attributes: Sdk$AttributeCollection;
     entityState: Sdk$EntityState;
@@ -37,21 +78,21 @@ declare module "global" {
       entityName: string,
       entityId: string,
       relationship: string,
-      relatedEntities: Sdk$Sdk$Collection<Sdk$Sdk$EntityReference>
-    ): Sdk$Q.Promise<void>;
+      relatedEntities: Sdk$Collection<Sdk$EntityReference>
+    ): Q.Promise<void>;
 
     /**
      * Creates an entity record and returns a string representation of the GUID value that is the Id of the created entity.
      * @param entity An entity instance.
      */
-    static create(entity: Sdk$Sdk$Entity): Sdk$Q.Promise<string>;
+    static create(entity: Sdk$Entity): Q.Promise<string>;
 
     /**
      * Deletes an entity record
      * @param entityName The LogicalName of the entity to delete.
      * @param id An ID of the record to delete.
      */
-    static del(entityName: string, id: string): Sdk$Q.Promise<void>;
+    static del(entityName: string, id: string): Q.Promise<void>;
 
     /**
      * Removes a link between records.
@@ -64,16 +105,16 @@ declare module "global" {
       entityName: string,
       entityId: string,
       relationship: string,
-      relatedEntities: Sdk$Sdk$Collection<Sdk$Sdk$EntityReference>
-    ): Sdk$Q.Promise<void>;
+      relatedEntities: Sdk$Collection<Sdk$EntityReference>
+    ): Q.Promise<void>;
 
     /**
      * Executes a SOAP Request using the SOAPAction Execute.
      * @param request A request object.
      */
     static execute(
-      request: Sdk$Sdk$OrganizationRequest
-    ): Sdk$Q.Promise<Sdk$OrganizationResponse>;
+      request: Sdk$OrganizationRequest
+    ): Q.Promise<Sdk$OrganizationResponse>;
 
     /**
      * Retrieves an entity instance.
@@ -84,38 +125,38 @@ declare module "global" {
     static retrieve(
       entityName: string,
       id: string,
-      columnSet: Sdk$Sdk$ColumnSet
-    ): Sdk$Q.Promise<Sdk$Entity>;
+      columnSet: Sdk$ColumnSet
+    ): Q.Promise<Sdk$Entity>;
 
     /**
      * Retrieves the results of a query
      * @param query An Sdk.Query.QueryByAttribute query.
      */
     static retrieveMultiple(
-      query: Sdk$Sdk$Query.Query$QueryByAttribute
-    ): Sdk$Q.Promise<Sdk$Sdk$EntityCollection>;
+      query: Sdk$QueryQueryByAttribute
+    ): Q.Promise<Sdk$EntityCollection>;
 
     /**
      * Retrieves the results of a query
      * @param query An Sdk.Query.QueryExpression query.
      */
     static retrieveMultiple(
-      query: Sdk$Sdk$Query.Query$QueryExpression
-    ): Sdk$Q.Promise<Sdk$Sdk$EntityCollection>;
+      query: Sdk$QueryQueryExpression
+    ): Q.Promise<Sdk$EntityCollection>;
 
     /**
      * Retrieves the results of a query
      * @param query An Sdk.Query.FetchExpression query.
      */
     static retrieveMultiple(
-      query: Sdk$Sdk$Query.Query$FetchExpression
-    ): Sdk$Q.Promise<Sdk$Sdk$EntityCollection>;
+      query: Sdk$QueryFetchExpression
+    ): Q.Promise<Sdk$EntityCollection>;
 
     /**
      * Updates an entity instance.
      * @param entity An entity instance to update.
      */
-    static update(entity: Sdk$Entity): Sdk$Q.Promise<boolean>;
+    static update(entity: Sdk$Entity): Q.Promise<boolean>;
   }
 
   declare class Sdk$ColumnSet {
@@ -141,7 +182,7 @@ declare module "global" {
      * Gets the collection of column names.
      * @returns The collection of column names.
      */
-    getColumns(): Sdk$Sdk$Collection<string>;
+    getColumns(): Sdk$Collection<string>;
 
     /**
      * Adds a column to the collection.
@@ -273,44 +314,44 @@ declare module "global" {
      * Contains a collection of entity instances.
      * @param entities Initializes a new instance of the EntityCollection class setting the Sdk.Collection of Sdk.Entity objects.
      */
-    constructor(entities: Sdk$Sdk$Collection<Sdk$Sdk$Entity>): this;
+    constructor(entities: Sdk$Collection<Sdk$Entity>): this;
 
     /**
      * Adds an entity to the collection.
      * @param entity
      */
-    addEntity(entity: Sdk$Sdk$Entity): void;
+    addEntity(entity: Sdk$Entity): void;
 
     /**
      * Gets the collection of entities.
      */
-    getEntities(): Sdk$Sdk$Collection<Sdk$Sdk$Entity>;
+    getEntities(): Sdk$Collection<Sdk$Entity>;
 
     /**
      * Gets an entity in the collection.
      * @param index The index of the entity in the collection.
      */
-    getEntity(index: number): Sdk$Sdk$Entity;
+    getEntity(index: number): Sdk$Entity;
 
     /**
      * Gets an entity in the collection.
      * @param id The id of the entity in the collection.
      */
-    getEntity(id: Sdk$Sdk$Guid): Sdk$Sdk$Entity;
+    getEntity(id: Sdk$Guid): Sdk$Entity;
 
     /**
      * Sets an item in the collection.
      * @param index The index of the entity in the collection.
      * @param value The Sdk.Entity value to set.
      */
-    setEntity(index: number, value: Sdk$Sdk$Entity): void;
+    setEntity(index: number, value: Sdk$Entity): void;
 
     /**
      * Sets an item in the collection.
      * @param id The Sdk.Guid id of the entity in the collection.
      * @param value The Sdk.Entity value to set.
      */
-    setEntity(id: Sdk$Sdk$Guid, value: Sdk$Sdk$Entity): void;
+    setEntity(id: Sdk$Guid, value: Sdk$Entity): void;
 
     /**
      * Gets the logical name of the entity.
@@ -396,28 +437,26 @@ declare module "global" {
      * Contains a collection of EntityReference instances.
      * @param entityReferences Initializes a new instance of the EntityReferenceCollection class setting the Sdk.Collection of Sdk.EntityReference objects.
      */
-    constructor(
-      entityReferences?: Sdk$Sdk$Collection<Sdk$EntityReference>
-    ): this;
+    constructor(entityReferences?: Sdk$Collection<Sdk$EntityReference>): this;
 
     /**
      * Gets the collection of entity references.
      */
-    getEntityReferences(): Sdk$Sdk$Collection<Sdk$EntityReference>;
+    getEntityReferences(): Sdk$Collection<Sdk$EntityReference>;
 
     /**
      * Sets the collection of entity references.
      * @param entityReferences The entity references
      */
     setEntityReferences(
-      entityReferences: Sdk$Sdk$Collection<Sdk$EntityReference>
+      entityReferences: Sdk$Collection<Sdk$EntityReference>
     ): void;
 
     /**
      * Removes an entity reference to the collection.
      * @param entityReference The entity reference to remove.
      */
-    remove(entityReference: Sdk$Sdk$EntityReference): void;
+    remove(entityReference: Sdk$EntityReference): void;
 
     /**
      * Returns a view of the data in an entity reference collection instance.
@@ -430,10 +469,9 @@ declare module "global" {
     toValueXml(): string;
   }
 
-  declare class Sdk$RelatedEntityCollection mixins Sdk$EntityCollection {}
+  declare class Sdk$RelatedEntityCollection mixins EntityCollection {}
 
-  declare class Sdk$AttributeCollection
-    mixins Sdk$Collection<Sdk$AttributeBase> {
+  declare class Sdk$AttributeCollection mixins Collection<Sdk$AttributeBase> {
     constructor(): this;
 
     /**
@@ -457,7 +495,7 @@ declare module "global" {
     /**
      * Returns all attributes in the collection.
      */
-    get(): Sdk$Sdk$Collection<Sdk$AttributeBase>;
+    get(): Sdk$Collection<Sdk$AttributeBase>;
 
     /**
      * Returns the attribute with matching name.
@@ -512,7 +550,7 @@ declare module "global" {
     /**
      * Gets the value type of the attribute.
      */
-    getType(): Sdk$Sdk$ValueType;
+    getType(): Sdk$ValueType;
 
     /**
      * Gets the value of the attribute.
@@ -541,7 +579,7 @@ declare module "global" {
      * For internal use only.
      * @param type The type of the attribute.
      */
-    setType(type: Sdk$Sdk$ValueType): void;
+    setType(type: Sdk$ValueType): void;
 
     /**
      * Sets the general value of the attribute
@@ -555,7 +593,7 @@ declare module "global" {
     toXml(action: string): string;
   }
 
-  declare class Sdk$Boolean mixins Sdk$AttributeBase {
+  declare class Sdk$Boolean mixins AttributeBase {
     /**
      * A Boolean Attribute.
      * @param name The logical name of the attribute .
@@ -575,7 +613,7 @@ declare module "global" {
     setValue(value: boolean): void;
   }
 
-  declare class Sdk$DateTime mixins Sdk$AttributeBase {
+  declare class Sdk$DateTime mixins AttributeBase {
     /**
      * A DateTime Attribute.
      * @param name The logical name of the attribute.
@@ -595,7 +633,7 @@ declare module "global" {
     setValue(value: Date): void;
   }
 
-  declare class Sdk$Decimal mixins Sdk$AttributeBase {
+  declare class Sdk$Decimal mixins AttributeBase {
     /**
      * A Decimal Attribute.
      * @param name The logical name of the attribute.
@@ -635,7 +673,7 @@ declare module "global" {
     setValue(value: number): void;
   }
 
-  declare class Sdk$Guid mixins Sdk$AttributeBase {
+  declare class Sdk$Guid mixins AttributeBase {
     /**
      * A Guid Attribute.
      * @param name The logical name of the attribute.
@@ -655,7 +693,7 @@ declare module "global" {
     setValue(value: string): void;
   }
 
-  declare class Sdk$Int mixins Sdk$AttributeBase {
+  declare class Sdk$Int mixins AttributeBase {
     /**
      * An Integer Attribute.
      * @param name The logical name of the attribute.
@@ -675,7 +713,7 @@ declare module "global" {
     setValue(value: number): void;
   }
 
-  declare class Sdk$Long mixins Sdk$AttributeBase {
+  declare class Sdk$Long mixins AttributeBase {
     /**
      * A Long Attribute.
      * @param name The logical name of the attribute.
@@ -695,7 +733,7 @@ declare module "global" {
     setValue(value: number): void;
   }
 
-  declare class Sdk$Lookup mixins Sdk$AttributeBase {
+  declare class Sdk$Lookup mixins AttributeBase {
     /**
      * A Lookup Attribute.
      * @param name The logical name of the attribute.
@@ -715,7 +753,7 @@ declare module "global" {
     setValue(value: Sdk$EntityReference): void;
   }
 
-  declare class Sdk$Money mixins Sdk$AttributeBase {
+  declare class Sdk$Money mixins AttributeBase {
     /**
      * A Money Attribute.
      * @param name The logical name of the attribute.
@@ -735,7 +773,7 @@ declare module "global" {
     setValue(value: number): void;
   }
 
-  declare class Sdk$OptionSet mixins Sdk$AttributeBase {
+  declare class Sdk$OptionSet mixins AttributeBase {
     /**
      * An OptionSet Attribute.
      * @param name The logical name of the attribute.
@@ -755,7 +793,7 @@ declare module "global" {
     setValue(value: number): void;
   }
 
-  declare class Sdk$PartyList mixins Sdk$AttributeBase {
+  declare class Sdk$PartyList mixins AttributeBase {
     /**
      * A PartyList Attribute.
      * @param name The logical name of the attribute.
@@ -775,7 +813,7 @@ declare module "global" {
     setValue(value: Sdk$EntityCollection): void;
   }
 
-  declare class Sdk$String mixins Sdk$AttributeBase {
+  declare class Sdk$String mixins AttributeBase {
     /**
      * A String Attribute.
      * @param name The logical name of the attribute.
@@ -807,26 +845,26 @@ declare module "global" {
     /**
      * Gets the collection of attributes for the entity.
      */
-    getAttributes(): Sdk$Sdk$AttributeCollection;
+    getAttributes(): Sdk$AttributeCollection;
 
     /**
      * Gets the collection of attributes for the entity.
      * @param attributeName The attribute with matching name is returned.
      */
-    getAttributes(attributeName: string): Sdk$Sdk$AttributeBase;
+    getAttributes(attributeName: string): Sdk$AttributeBase;
 
     /**
      * Gets the collection of attributes for the entity.
      * @param index The attribute with matching index is returned.
      */
-    getAttributes(index: number): Sdk$Sdk$AttributeBase;
+    getAttributes(index: number): Sdk$AttributeBase;
 
     /**
      * Checks whether the entity has an attribute that satisfies the specified predicate.
      * @param A comparer function that takes an Sdk.AttributeBase as argument and returns a boolean.
      */
     containsAttribute(
-      predicate: (attribute: Sdk$Sdk$AttributeBase) => boolean
+      predicate: (attribute: Sdk$AttributeBase) => boolean
     ): boolean;
 
     /**
@@ -839,29 +877,29 @@ declare module "global" {
      * Sets the collection of attributes for the entity.
      * @param attributes The collection of attributes for the entity.
      */
-    setAttributes(attributes: Sdk$Sdk$AttributeCollection): void;
+    setAttributes(attributes: Sdk$AttributeCollection): void;
 
     /**
      * Gets the state of the entity.
      */
-    getEntityState(): Sdk$Sdk$EntityState;
+    getEntityState(): Sdk$EntityState;
 
     /**
      * Sets the state of the entity.
      * @param state The state of the entity.
      */
-    setEntityState(state: Sdk$Sdk$EntityState): void;
+    setEntityState(state: Sdk$EntityState): void;
 
     /**
      * Gets the collection of formatted values for the entity attributes.
      */
-    getFormattedValues(): Sdk$Sdk$FormattedValueCollection;
+    getFormattedValues(): Sdk$FormattedValueCollection;
 
     /**
      * Sets the collection of formatted values for the entity attributes.
      * @param values " The collection of formatted values for the entity attributes.
      */
-    setFormattedValues(values: Sdk$Sdk$FormattedValueCollection): void;
+    setFormattedValues(values: Sdk$FormattedValueCollection): void;
 
     /**
      * Gets the Id of the record represented by this entity instance.
@@ -889,32 +927,27 @@ declare module "global" {
     /**
      * Gets a collection of related entities.
      */
-    getRelatedEntities(): Sdk$Sdk$RelatedEntitiesCollection;
+    getRelatedEntities(): Sdk$RelatedEntitiesCollection;
 
     /**
      * Sets a collection of related entities.
      * @param relatedEntities A collection of related entities.
      */
-    setRelatedEntities(
-      relatedEntities: Sdk$Sdk$RelatedEntitiesCollection
-    ): void;
+    setRelatedEntities(relatedEntities: Sdk$RelatedEntitiesCollection): void;
 
     /**
      * Adds an attribute with an optional value to a newly instantiated Sdk.Entity
      * @param attribute The attribute to add
      * @param isChanged Whether the attribute should be considered changed, the default is true.
      */
-    addAttribute(attribute: Sdk$Sdk$AttributeBase, isChanged?: boolean): void;
+    addAttribute(attribute: Sdk$AttributeBase, isChanged?: boolean): void;
 
     /**
      * Adds an entity to the related entities.
      * @param relationshipSchemaName The relationship SchemaName.
      * @param entity The entity to add.
      */
-    addRelatedEntity(
-      relationshipSchemaName: string,
-      entity: Sdk$Sdk$Entity
-    ): void;
+    addRelatedEntity(relationshipSchemaName: string, entity: Sdk$Entity): void;
 
     /**
      * Gets the value to indicate whether data for the entity has changed.
@@ -936,7 +969,7 @@ declare module "global" {
     /**
      * Generates properties for the entity based on metadata.
      */
-    initializeSubClass(metadata: Sdk$Sdk$Mdq.Mdq$IEntityMetadata): void;
+    initializeSubClass(metadata: Sdk$MdqIEntityMetadata): void;
 
     /**
      * Sets the value of the specified attribute.
@@ -948,7 +981,7 @@ declare module "global" {
     /**
      * Generates an entity reference.
      */
-    toEntityReference(): Sdk$Sdk$EntityReference;
+    toEntityReference(): Sdk$EntityReference;
 
     /**
      * Overrides the default toString method.
@@ -1061,7 +1094,7 @@ declare module "global" {
    * @param fetchXml Sets the query to convert.
    */
   declare class Sdk$FetchXmlToQueryExpressionRequest
-    mixins Sdk$Sdk$OrganizationRequest {
+    mixins Sdk$OrganizationRequest {
     constructor(fetchXml: string): this;
 
     /**
@@ -1076,13 +1109,13 @@ declare module "global" {
    * @param responseXml The response XML to the FetchXmlToQueryExpressionRequest.
    */
   declare class Sdk$FetchXmlToQueryExpressionResponse
-    mixins Sdk$Sdk$OrganizationResponse {
+    mixins Sdk$OrganizationResponse {
     constructor(responseXml: string): this;
 
     /**
      * Gets the results of the query conversion.
      */
-    getQuery(): Sdk$Query.Query$QueryExpression;
+    getQuery(): Query$QueryExpression;
   }
 
   /**
@@ -1090,22 +1123,22 @@ declare module "global" {
    * @param query The query.
    */
   declare class Sdk$QueryExpressionToFetchXmlRequest
-    mixins Sdk$Sdk$OrganizationRequest {
-    constructor(query: Sdk$Sdk$Query.Query$QueryBase): this;
+    mixins Sdk$OrganizationRequest {
+    constructor(query: Sdk$QueryQueryBase): this;
 
     /**
      * Sets the query to convert.
      * @param query The query.
      * @param query
      */
-    setQuery(query: Sdk$Sdk$Query.Query$QueryBase): void;
+    setQuery(query: Sdk$QueryQueryBase): void;
   }
 
   /**
    * Response to QueryExpressionToFetchXmlRequest.
    */
   declare class Sdk$QueryExpressionToFetchXmlResponse
-    mixins Sdk$Sdk$OrganizationResponse {
+    mixins Sdk$OrganizationResponse {
     constructor(responseXml: string): this;
 
     /**
@@ -1121,13 +1154,13 @@ declare module "global" {
    * @param deletedMetadataFilters An Sdk.Mdq.DeletedMetadataFilters enumeration value. When included the deleted metadata changes will be limited to the types defined by the enumeration.
    */
   declare class Sdk$RetrieveMetadataChangesRequest
-    mixins Sdk$Sdk$OrganizationRequest {
+    mixins Sdk$OrganizationRequest {
     constructor(
-      query: Sdk$Sdk$Mdq.Mdq$EntityQueryExpression,
+      query: Sdk$MdqEntityQueryExpression,
       clientVersionStamp?: string,
-      deletedMetadataFilters?: Sdk$Sdk$Mdq.Mdq$DeletedMetadataFilters
+      deletedMetadataFilters?: Sdk$MdqDeletedMetadataFilters
     ): this;
-    getEntityMetadata(): Sdk$Sdk$Mdq.Mdq$IEntityMetadata[];
+    getEntityMetadata(): Sdk$MdqIEntityMetadata[];
     getServerVersionStamp(): string;
     getDeletedMetadata(): Object;
   }
@@ -1142,7 +1175,7 @@ declare module "global" {
     /**
      * *
      */
-    getEntityMetadata(): Array<Sdk$Mdq.Mdq$IEntityMetadata>;
+    getEntityMetadata(): Array<Mdq$IEntityMetadata>;
 
     /**
      * *
@@ -1161,7 +1194,7 @@ declare module "global" {
    * @param state Sets the state of the entity record.
    * @param status Sets the status that corresponds to the State property.
    */
-  declare class Sdk$SetStateRequest mixins Sdk$Sdk$OrganizationRequest {
+  declare class Sdk$SetStateRequest mixins Sdk$OrganizationRequest {
     constructor(
       entityMoniker: Sdk$EntityReference,
       state: number,
@@ -1194,7 +1227,34 @@ declare module "global" {
     constructor(responseXml: string): this;
   }
 
-  declare class Query$QueryBase {
+  declare var npm$namespace$Sdk$Query: {
+    ConditionOperator: typeof Sdk$Query$ConditionOperator,
+    JoinOperator: typeof Sdk$Query$JoinOperator,
+    OrderType: typeof Sdk$Query$OrderType,
+    LogicalOperator: typeof Sdk$Query$LogicalOperator,
+    QueryBase: typeof Sdk$Query$QueryBase,
+    QueryByAttribute: typeof Sdk$Query$QueryByAttribute,
+    QueryExpression: typeof Sdk$Query$QueryExpression,
+    OrderExpression: typeof Sdk$Query$OrderExpression,
+    ConditionExpression: typeof Sdk$Query$ConditionExpression,
+    FilterExpression: typeof Sdk$Query$FilterExpression,
+    FetchExpression: typeof Sdk$Query$FetchExpression,
+    LinkEntity: typeof Sdk$Query$LinkEntity,
+    PagingInfo: typeof Sdk$Query$PagingInfo,
+    ValueBase: typeof Sdk$Query$ValueBase,
+    Booleans: typeof Sdk$Query$Booleans,
+    Dates: typeof Sdk$Query$Dates,
+    Decimals: typeof Sdk$Query$Decimals,
+    Doubles: typeof Sdk$Query$Doubles,
+    Ints: typeof Sdk$Query$Ints,
+    Longs: typeof Sdk$Query$Longs,
+    EntityReferences: typeof Sdk$Query$EntityReferences,
+    Guids: typeof Sdk$Query$Guids,
+    Money: typeof Sdk$Query$Money,
+    OptionSets: typeof Sdk$Query$OptionSets,
+    Strings: typeof Sdk$Query$Strings
+  };
+  declare class Sdk$Query$QueryBase {
     /**
      * Internal Use Only.
      * @param type An Abstract class for different query classes to inherit from.
@@ -1204,13 +1264,13 @@ declare module "global" {
     /**
      * Gets the columns to include.
      */
-    getColumnSet(): Sdk$Sdk$ColumnSet;
+    getColumnSet(): Sdk$ColumnSet;
 
     /**
      * Sets the columns to include.
      * @param columns An Sdk.ColumnSet instance.
      */
-    setColumnSet(columns: Sdk$Sdk$ColumnSet): void;
+    setColumnSet(columns: Sdk$ColumnSet): void;
 
     /**
      * Sets the columns to include.
@@ -1242,13 +1302,13 @@ declare module "global" {
     /**
      * Gets the number of pages and the number of entity instances per page returned from the query.
      */
-    getPageInfo(): Sdk$Sdk$Query.Query$PagingInfo;
+    getPageInfo(): Sdk$QueryPagingInfo;
 
     /**
      * Sets the number of pages and the number of entity instances per page returned from the query.
      * @param pageInfo The number of pages and the number of entity instances per page returned from the query.
      */
-    setPageInfo(pageInfo: Sdk$Sdk$Query.Query$PagingInfo): void;
+    setPageInfo(pageInfo: Sdk$QueryPagingInfo): void;
 
     /**
      * Adds the specified column to the column set.
@@ -1266,7 +1326,7 @@ declare module "global" {
     /**
      * Gets an Sdk.Collection of Sdk.Query.OrderExpression instances that define the order in which the entity instances are returned from the query.
      */
-    getOrders(): Sdk$Sdk$Collection<Sdk$Sdk$Query.Query$OrderExpression>;
+    getOrders(): Sdk$Collection<Sdk$QueryOrderExpression>;
 
     /**
      * Gets the number of rows to be returned.
@@ -1290,7 +1350,7 @@ declare module "global" {
     toValueXml(): string;
   }
 
-  declare class Query$QueryByAttribute mixins Query$QueryBase {
+  declare class Sdk$Query$QueryByAttribute mixins QueryBase {
     /**
      * Initializes a new instance of the QueryByAttribute class setting the entity name.
      * @param entityName The logical name of the entity.
@@ -1300,27 +1360,25 @@ declare module "global" {
     /**
      * Gets An Sdk.Collection of Sdk.AttributeBase attributes.
      */
-    getAttributeValues(): Sdk$Sdk$Collection<Sdk$Sdk$AttributeBase>;
+    getAttributeValues(): Sdk$Collection<Sdk$AttributeBase>;
 
     /**
      * Sets an Sdk.Collection of Sdk.Query.OrderExpression instances that define the order in which the entity instances are returned from the query.
      * @param orders An Sdk.Collection of Sdk.Query.OrderExpression instances that define the order in which the entity instances are returned from the query.
      */
-    setOrders(
-      orders: Sdk$Sdk$Collection<Sdk$Sdk$Query.Query$OrderExpression>
-    ): void;
+    setOrders(orders: Sdk$Collection<Sdk$QueryOrderExpression>): void;
 
     /**
      * Adds the attribute with values to include in the query.
      * @param attributeValue One of the classes that inherit from Sdk.AttributeBase including the value to use as criteria.
      */
-    addAttributeValue(attributeValue: Sdk$Sdk$AttributeBase): void;
+    addAttributeValue(attributeValue: Sdk$AttributeBase): void;
 
     /**
      * Adds an order to apply to the results of the query.
      * @param order An order expression.
      */
-    addOrder(order: Sdk$Sdk$Query.Query$OrderExpression): void;
+    addOrder(order: Sdk$QueryOrderExpression): void;
 
     /**
      * Removes an attribute with values to include in the query.
@@ -1328,12 +1386,12 @@ declare module "global" {
      * @param errorIfNotFound Whether to throw an error when the attribute to remove is not found. The default is false.
      */
     removeAttributeValue(
-      attributeValue: Sdk$Sdk$AttributeBase,
+      attributeValue: Sdk$AttributeBase,
       errorIfNotFound?: boolean
     ): void;
   }
 
-  declare class Query$QueryExpression mixins Query$QueryBase {
+  declare class Sdk$Query$QueryExpression mixins QueryBase {
     /**
      * Initializes a new instance of the QueryExpression class setting the entity name.
      * @param entityName The name of the entity.
@@ -1364,7 +1422,7 @@ declare module "global" {
     /**
      * Gets an Sdk.Collection of Sdk.Query.LinkEntity instances.
      */
-    getLinkEntities(): Sdk$Sdk$Collection<Query$LinkEntity>;
+    getLinkEntities(): Sdk$Collection<Query$LinkEntity>;
 
     /**
      * Gets a value that indicates that no shared locks are issued against the data that would prohibit other transactions from modifying the data in the records returned from the query.
@@ -1378,36 +1436,36 @@ declare module "global" {
     setNoLock(isNoLock: boolean): void;
 
     /**
- * Contains a condition expression used to filter the results of the query.
- * @param entityName The logical name of the entity in the condition expression.
- * @param attributeName The logical name of the attribute in the condition expression.
- * @param operator The condition operator.
- * @param values The value(s) to compare. Use one of the following classes that inherit from Sdk.Query.ValueBase:
-Sdk.Query.Booleans
-Sdk.Query.BooleanManagedProperties
-Sdk.Query.Dates
-Sdk.Query.Decimals
-Sdk.Query.Doubles
-Sdk.Query.EntityReferences
-Sdk.Query.Guids
-Sdk.Query.Ints
-Sdk.Query.Longs
-Sdk.Query.Money
-Sdk.Query.OptionSets
-Sdk.Query.Strings
- */
+     * Contains a condition expression used to filter the results of the query.
+     * @param entityName The logical name of the entity in the condition expression.
+     * @param attributeName The logical name of the attribute in the condition expression.
+     * @param operator The condition operator.
+     * @param values The value(s) to compare. Use one of the following classes that inherit from Sdk.Query.ValueBase:
+     * Sdk.Query.Booleans
+     * Sdk.Query.BooleanManagedProperties
+     * Sdk.Query.Dates
+     * Sdk.Query.Decimals
+     * Sdk.Query.Doubles
+     * Sdk.Query.EntityReferences
+     * Sdk.Query.Guids
+     * Sdk.Query.Ints
+     * Sdk.Query.Longs
+     * Sdk.Query.Money
+     * Sdk.Query.OptionSets
+     * Sdk.Query.Strings
+     */
     addCondition(
       entityName: string,
       attributeName: string,
-      conditionOperator: Sdk$Sdk$Query.Query$ConditionOperator,
-      values: Sdk$Sdk$Query.Query$ValueBase
+      conditionOperator: Sdk$QueryConditionOperator,
+      values: Sdk$QueryValueBase
     ): void;
 
     /**
      * Adds the specified link to the query expression setting the entity name to link to, the attribute name to link from and the attribute name to link to.
      * @param firstParam An Sdk.Query.LinkEntity instance.
      */
-    addLink(firstParam: Sdk$Sdk$Query.Query$LinkEntity): void;
+    addLink(firstParam: Sdk$QueryLinkEntity): void;
 
     /**
      * Adds the specified link to the query expression setting the entity name to link to, the attribute name to link from and the attribute name to link to.
@@ -1420,7 +1478,7 @@ Sdk.Query.Strings
       firstParam: string,
       linkFromAttributeName: string,
       linkToAttributeName: string,
-      joinOperator: Sdk$Sdk$Query.Query$JoinOperator
+      joinOperator: Sdk$QueryJoinOperator
     ): void;
 
     /**
@@ -1428,35 +1486,32 @@ Sdk.Query.Strings
      * @param attributeName The name of the attribute.
      * @param orderType The order, ascending or descending. Ascending is the default if not specified.
      */
-    addOrder(
-      attributeName: string,
-      orderType: Sdk$Sdk$Query.Query$OrderType
-    ): void;
+    addOrder(attributeName: string, orderType: Sdk$QueryOrderType): void;
   }
 
-  declare class Query$OrderExpression {}
+  declare class Sdk$Query$OrderExpression {}
 
-  declare class Query$ConditionExpression {
+  declare class Sdk$Query$ConditionExpression {
     /**
- * Contains a condition expression used to filter the results of the query.
- * @param name entityName The logical name of the entity in the condition expression.
- * @param name attributeName The logical name of the attribute in the condition expression.
- * @param name operator The condition operator.
- * @param name values The value(s) to compare.
-Use one of the following classes that inherit from Sdk.Query.ValueBase: </para>
-- Sdk.Query.Booleans </para>
-- Sdk.Query.BooleanManagedProperties </para>
-- Sdk.Query.Dates </para>
-- Sdk.Query.Decimals </para>
-- Sdk.Query.Doubles </para>
-- Sdk.Query.EntityReferences </para>
-- Sdk.Query.Guids </para>
-- Sdk.Query.Ints </para>
-- Sdk.Query.Longs </para>
-- Sdk.Query.Money </para>
-- Sdk.Query.OptionSets </para>
-- Sdk.Query.Strings </para>
- */
+     * Contains a condition expression used to filter the results of the query.
+     * @param name entityName The logical name of the entity in the condition expression.
+     * @param name attributeName The logical name of the attribute in the condition expression.
+     * @param name operator The condition operator.
+     * @param name values The value(s) to compare.
+     * Use one of the following classes that inherit from Sdk.Query.ValueBase: </para>
+     * - Sdk.Query.Booleans </para>
+     * - Sdk.Query.BooleanManagedProperties </para>
+     * - Sdk.Query.Dates </para>
+     * - Sdk.Query.Decimals </para>
+     * - Sdk.Query.Doubles </para>
+     * - Sdk.Query.EntityReferences </para>
+     * - Sdk.Query.Guids </para>
+     * - Sdk.Query.Ints </para>
+     * - Sdk.Query.Longs </para>
+     * - Sdk.Query.Money </para>
+     * - Sdk.Query.OptionSets </para>
+     * - Sdk.Query.Strings </para>
+     */
     constructor(
       entityName: string,
       attributeName: string,
@@ -1503,22 +1558,22 @@ Use one of the following classes that inherit from Sdk.Query.ValueBase: </para>
     getValues(): Query$ValueBase;
 
     /**
- * Sets the values for the attribute.
- * @param The value(s) to compare
-Use one of the following classes that inherit from Sdk.Query.ValueBase:
-- Sdk.Query.Booleans
-- Sdk.Query.BooleanManagedProperties
-- Sdk.Query.Dates
-- Sdk.Query.Decimals
-- Sdk.Query.Doubles
-- Sdk.Query.EntityReferences
-- Sdk.Query.Guids
-- Sdk.Query.Ints
-- Sdk.Query.Longs
-- Sdk.Query.Money
-- Sdk.Query.OptionSets
-- Sdk.Query.Strings
- */
+     * Sets the values for the attribute.
+     * @param The value(s) to compare
+     * Use one of the following classes that inherit from Sdk.Query.ValueBase:
+     * - Sdk.Query.Booleans
+     * - Sdk.Query.BooleanManagedProperties
+     * - Sdk.Query.Dates
+     * - Sdk.Query.Decimals
+     * - Sdk.Query.Doubles
+     * - Sdk.Query.EntityReferences
+     * - Sdk.Query.Guids
+     * - Sdk.Query.Ints
+     * - Sdk.Query.Longs
+     * - Sdk.Query.Money
+     * - Sdk.Query.OptionSets
+     * - Sdk.Query.Strings
+     */
     setValues(values: Query$ValueBase): void;
   }
 
@@ -1526,35 +1581,35 @@ Use one of the following classes that inherit from Sdk.Query.ValueBase:
    * Specifies complex condition and logical filter expressions used for filtering the results of the query.
    * @param logicalOperator The filter operator.
    */
-  declare class Query$FilterExpression {
+  declare class Sdk$Query$FilterExpression {
     constructor(logicalOperator: Mdq$LogicalOperator): this;
 
     /**
      * Adds a condition to the filter expression setting the attribute name, condition operator, and values.
      * @param conditionExpression The expression that will set the condition.
      */
-    addCondition(firstParam: Query$ConditionExpression): void;
+    addCondition(firstParam: Sdk$Query$ConditionExpression): void;
 
     /**
- * Adds a condition to the filter expression setting the attribute name, condition operator, and values.
- * @param entityName The entityName of the new ConditionExpression that will be instantiated using the other parameters.
- * @param attributeName The attribute name to use in the condition expression.
- * @param conditionOperator The condition operator if the first parameter is a string.
- * @param values The value(s) to compare.
-Use one of the following classes that
-- Sdk.Query.Booleans
-- Sdk.Query.BooleanManagedProperties
-- Sdk.Query.Dates
-- Sdk.Query.Decimals
-- Sdk.Query.Doubles
-- Sdk.Query.EntityReferences
-- Sdk.Query.Guids
-- Sdk.Query.Ints
-- Sdk.Query.Longs
-- Sdk.Query.Money
-- Sdk.Query.OptionSets
-- Sdk.Query.Strings
- */
+     * Adds a condition to the filter expression setting the attribute name, condition operator, and values.
+     * @param entityName The entityName of the new ConditionExpression that will be instantiated using the other parameters.
+     * @param attributeName The attribute name to use in the condition expression.
+     * @param conditionOperator The condition operator if the first parameter is a string.
+     * @param values The value(s) to compare.
+     * Use one of the following classes that
+     * - Sdk.Query.Booleans
+     * - Sdk.Query.BooleanManagedProperties
+     * - Sdk.Query.Dates
+     * - Sdk.Query.Decimals
+     * - Sdk.Query.Doubles
+     * - Sdk.Query.EntityReferences
+     * - Sdk.Query.Guids
+     * - Sdk.Query.Ints
+     * - Sdk.Query.Longs
+     * - Sdk.Query.Money
+     * - Sdk.Query.OptionSets
+     * - Sdk.Query.Strings
+     */
     addCondition(
       entityName: string,
       attributeName: string,
@@ -1566,7 +1621,7 @@ Use one of the following classes that
      * Adds a child filter to the filter expression.
      * @param filterExpression The filter to add.
      */
-    addFilter(filterExpression: Query$FilterExpression): void;
+    addFilter(filterExpression: Sdk$Query$FilterExpression): void;
 
     /**
      * Adds a child filter to the filter expression.
@@ -1577,7 +1632,7 @@ Use one of the following classes that
     /**
      * Returns a collection of Sdk.Query.ConditionExpression values.
      */
-    getConditions(): Sdk$Sdk$Collection<Query$ConditionExpression>;
+    getConditions(): Sdk$Collection<Sdk$Query$ConditionExpression>;
 
     /**
      * Gets the logical AND/OR filter operator.
@@ -1587,7 +1642,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of Sdk.Query.FilterExpression.
      */
-    getFilters(): Sdk$Sdk$Collection<Query$FilterExpression>;
+    getFilters(): Sdk$Collection<Sdk$Query$FilterExpression>;
 
     /**
      * Gets whether the expression is part of a quick find query.
@@ -1607,7 +1662,7 @@ Use one of the following classes that
     setIsQuickFindFilter(isQuickFind: boolean): void;
   }
 
-  declare class Query$FetchExpression {
+  declare class Sdk$Query$FetchExpression {
     /**
      * @param fetchXml The FetchXml to be used in a query.
      */
@@ -1625,7 +1680,7 @@ Use one of the following classes that
     setFetchXml(fetchXml: string): void;
   }
 
-  declare class Query$LinkEntity {
+  declare class Sdk$Query$LinkEntity {
     /**
      * Initializes a new instance of the Sdk.Query.LinkEntity class setting the required properties.
      * @param linkFromEntityName The logical name of the entity to link from.
@@ -1640,7 +1695,7 @@ Use one of the following classes that
       linkToEntityName: string,
       linkFromAttributeName: string,
       linkToAttributeName: string,
-      joinOperator: Sdk$Sdk$Query.Query$JoinOperator,
+      joinOperator: Sdk$QueryJoinOperator,
       entityAlias: string
     ): this;
 
@@ -1648,18 +1703,18 @@ Use one of the following classes that
      * Adds a linked entity.
      * @param linkEntity An Sdk.Query.LinkEntity to add.
      */
-    addLink(linkEntity: Sdk$Sdk$Query.Query$LinkEntity): void;
+    addLink(linkEntity: Sdk$QueryLinkEntity): void;
 
     /**
      * Gets the column set.
      */
-    getColumns(): Sdk$Sdk$ColumnSet;
+    getColumns(): Sdk$ColumnSet;
 
     /**
      * Sets the columns to include.
      * @param columns An Sdk.ColumnSet instance.
      */
-    setColumns(columns: Sdk$Sdk$ColumnSet): void;
+    setColumns(columns: Sdk$ColumnSet): void;
 
     /**
      * Sets the columns to include.
@@ -1687,29 +1742,29 @@ Use one of the following classes that
     /**
      * Gets the join operator.
      */
-    getJoinOperator(): Sdk$Sdk$Query.Query$JoinOperator;
+    getJoinOperator(): Sdk$QueryJoinOperator;
 
     /**
      * Sets the join operator.
      * @param operator The join operator.
      */
-    setJoinOperator(operator: Sdk$Sdk$Query.Query$JoinOperator): void;
+    setJoinOperator(operator: Sdk$QueryJoinOperator): void;
 
     /**
      * Gets the complex condition and logical filter expressions that filter the results of the query.
      */
-    getLinkCriteria(): Sdk$Sdk$Query.Query$FilterExpression;
+    getLinkCriteria(): Sdk$QueryFilterExpression;
 
     /**
      * Sets the complex condition and logical filter expressions that filter the results of the query.
      * @param criteria The complex condition and logical filter expressions that filter the results of the query.
      */
-    setLinkCriteria(criteria: Sdk$Sdk$Query.Query$FilterExpression): void;
+    setLinkCriteria(criteria: Sdk$QueryFilterExpression): void;
 
     /**
      * Gets the collection of Sdk.Query.LinkEntity that define links between multiple entity types.
      */
-    getLinkEntities(): Sdk$Sdk$Collection<Sdk$Sdk$Query.Query$LinkEntity>;
+    getLinkEntities(): Sdk$Collection<Sdk$QueryLinkEntity>;
 
     /**
      * Gets the logical name of the attribute of the entity that you are linking from.
@@ -1766,7 +1821,7 @@ Use one of the following classes that
     toValueXml(): string;
   }
 
-  declare class Query$PagingInfo {
+  declare class Sdk$Query$PagingInfo {
     /**
      * Gets the number of entity instances returned per page.
      */
@@ -1821,404 +1876,100 @@ Use one of the following classes that
     toValueXml(): string;
   }
 
-  declare export class Query$ConditionOperator {
-    constructor(...args: empty): mixed;
-    static +Equal: Class<Query$ConditionOperator__Equal> &
-      Query$ConditionOperator__Equal &
-      0; // 0
-    static +NotEqual: Class<Query$ConditionOperator__NotEqual> &
-      Query$ConditionOperator__NotEqual &
-      1; // 1
-    static +GreaterThan: Class<Query$ConditionOperator__GreaterThan> &
-      Query$ConditionOperator__GreaterThan &
-      2; // 2
-    static +LessThan: Class<Query$ConditionOperator__LessThan> &
-      Query$ConditionOperator__LessThan &
-      3; // 3
-    static +GreaterEqual: Class<Query$ConditionOperator__GreaterEqual> &
-      Query$ConditionOperator__GreaterEqual &
-      4; // 4
-    static +LessEqual: Class<Query$ConditionOperator__LessEqual> &
-      Query$ConditionOperator__LessEqual &
-      5; // 5
-    static +Like: Class<Query$ConditionOperator__Like> &
-      Query$ConditionOperator__Like &
-      6; // 6
-    static +NotLike: Class<Query$ConditionOperator__NotLike> &
-      Query$ConditionOperator__NotLike &
-      7; // 7
-    static +In: Class<Query$ConditionOperator__In> &
-      Query$ConditionOperator__In &
-      8; // 8
-    static +NotIn: Class<Query$ConditionOperator__NotIn> &
-      Query$ConditionOperator__NotIn &
-      9; // 9
-    static +Between: Class<Query$ConditionOperator__Between> &
-      Query$ConditionOperator__Between &
-      10; // 10
-    static +NotBetween: Class<Query$ConditionOperator__NotBetween> &
-      Query$ConditionOperator__NotBetween &
-      11; // 11
-    static +Null: Class<Query$ConditionOperator__Null> &
-      Query$ConditionOperator__Null &
-      12; // 12
-    static +NotNull: Class<Query$ConditionOperator__NotNull> &
-      Query$ConditionOperator__NotNull &
-      13; // 13
-    static +Yesterday: Class<Query$ConditionOperator__Yesterday> &
-      Query$ConditionOperator__Yesterday &
-      14; // 14
-    static +Today: Class<Query$ConditionOperator__Today> &
-      Query$ConditionOperator__Today &
-      15; // 15
-    static +Tomorrow: Class<Query$ConditionOperator__Tomorrow> &
-      Query$ConditionOperator__Tomorrow &
-      16; // 16
-    static +Last7Days: Class<Query$ConditionOperator__Last7Days> &
-      Query$ConditionOperator__Last7Days &
-      17; // 17
-    static +Next7Days: Class<Query$ConditionOperator__Next7Days> &
-      Query$ConditionOperator__Next7Days &
-      18; // 18
-    static +LastWeek: Class<Query$ConditionOperator__LastWeek> &
-      Query$ConditionOperator__LastWeek &
-      19; // 19
-    static +ThisWeek: Class<Query$ConditionOperator__ThisWeek> &
-      Query$ConditionOperator__ThisWeek &
-      20; // 20
-    static +NextWeek: Class<Query$ConditionOperator__NextWeek> &
-      Query$ConditionOperator__NextWeek &
-      21; // 21
-    static +LastMonth: Class<Query$ConditionOperator__LastMonth> &
-      Query$ConditionOperator__LastMonth &
-      22; // 22
-    static +ThisMonth: Class<Query$ConditionOperator__ThisMonth> &
-      Query$ConditionOperator__ThisMonth &
-      23; // 23
-    static +NextMonth: Class<Query$ConditionOperator__NextMonth> &
-      Query$ConditionOperator__NextMonth &
-      24; // 24
-    static +On: Class<Query$ConditionOperator__On> &
-      Query$ConditionOperator__On &
-      25; // 25
-    static +OnOrBefore: Class<Query$ConditionOperator__OnOrBefore> &
-      Query$ConditionOperator__OnOrBefore &
-      26; // 26
-    static +OnOrAfter: Class<Query$ConditionOperator__OnOrAfter> &
-      Query$ConditionOperator__OnOrAfter &
-      27; // 27
-    static +LastYear: Class<Query$ConditionOperator__LastYear> &
-      Query$ConditionOperator__LastYear &
-      28; // 28
-    static +ThisYear: Class<Query$ConditionOperator__ThisYear> &
-      Query$ConditionOperator__ThisYear &
-      29; // 29
-    static +NextYear: Class<Query$ConditionOperator__NextYear> &
-      Query$ConditionOperator__NextYear &
-      30; // 30
-    static +LastXHours: Class<Query$ConditionOperator__LastXHours> &
-      Query$ConditionOperator__LastXHours &
-      31; // 31
-    static +NextXHours: Class<Query$ConditionOperator__NextXHours> &
-      Query$ConditionOperator__NextXHours &
-      32; // 32
-    static +LastXDays: Class<Query$ConditionOperator__LastXDays> &
-      Query$ConditionOperator__LastXDays &
-      33; // 33
-    static +NextXDays: Class<Query$ConditionOperator__NextXDays> &
-      Query$ConditionOperator__NextXDays &
-      34; // 34
-    static +LastXWeeks: Class<Query$ConditionOperator__LastXWeeks> &
-      Query$ConditionOperator__LastXWeeks &
-      35; // 35
-    static +NextXWeeks: Class<Query$ConditionOperator__NextXWeeks> &
-      Query$ConditionOperator__NextXWeeks &
-      36; // 36
-    static +LastXMonths: Class<Query$ConditionOperator__LastXMonths> &
-      Query$ConditionOperator__LastXMonths &
-      37; // 37
-    static +NextXMonths: Class<Query$ConditionOperator__NextXMonths> &
-      Query$ConditionOperator__NextXMonths &
-      38; // 38
-    static +LastXYears: Class<Query$ConditionOperator__LastXYears> &
-      Query$ConditionOperator__LastXYears &
-      39; // 39
-    static +NextXYears: Class<Query$ConditionOperator__NextXYears> &
-      Query$ConditionOperator__NextXYears &
-      40; // 40
-    static +EqualUserId: Class<Query$ConditionOperator__EqualUserId> &
-      Query$ConditionOperator__EqualUserId &
-      41; // 41
-    static +NotEqualUserId: Class<Query$ConditionOperator__NotEqualUserId> &
-      Query$ConditionOperator__NotEqualUserId &
-      42; // 42
-    static +EqualBusinessId: Class<Query$ConditionOperator__EqualBusinessId> &
-      Query$ConditionOperator__EqualBusinessId &
-      43; // 43
-    static +NotEqualBusinessId: Class<Query$ConditionOperator__NotEqualBusinessId> &
-      Query$ConditionOperator__NotEqualBusinessId &
-      44; // 44
-    static +Mask: Class<Query$ConditionOperator__Mask> &
-      Query$ConditionOperator__Mask &
-      45; // 45
-    static +NotMask: Class<Query$ConditionOperator__NotMask> &
-      Query$ConditionOperator__NotMask &
-      46; // 46
-    static +Contains: Class<Query$ConditionOperator__Contains> &
-      Query$ConditionOperator__Contains &
-      47; // 47
-    static +DoesNotContain: Class<Query$ConditionOperator__DoesNotContain> &
-      Query$ConditionOperator__DoesNotContain &
-      48; // 48
-    static +EqualUserLanguage: Class<Query$ConditionOperator__EqualUserLanguage> &
-      Query$ConditionOperator__EqualUserLanguage &
-      49; // 49
-    static +NotOn: Class<Query$ConditionOperator__NotOn> &
-      Query$ConditionOperator__NotOn &
-      50; // 50
-    static +OlderThanXMonths: Class<Query$ConditionOperator__OlderThanXMonths> &
-      Query$ConditionOperator__OlderThanXMonths &
-      51; // 51
-    static +BeginsWith: Class<Query$ConditionOperator__BeginsWith> &
-      Query$ConditionOperator__BeginsWith &
-      52; // 52
-    static +DoesNotBeginWith: Class<Query$ConditionOperator__DoesNotBeginWith> &
-      Query$ConditionOperator__DoesNotBeginWith &
-      53; // 53
-    static +EndsWith: Class<Query$ConditionOperator__EndsWith> &
-      Query$ConditionOperator__EndsWith &
-      54; // 54
-    static +DoesNotEndWith: Class<Query$ConditionOperator__DoesNotEndWith> &
-      Query$ConditionOperator__DoesNotEndWith &
-      55; // 55
-    static +ThisFiscalYear: Class<Query$ConditionOperator__ThisFiscalYear> &
-      Query$ConditionOperator__ThisFiscalYear &
-      56; // 56
-    static +ThisFiscalPeriod: Class<Query$ConditionOperator__ThisFiscalPeriod> &
-      Query$ConditionOperator__ThisFiscalPeriod &
-      57; // 57
-    static +NextFiscalYear: Class<Query$ConditionOperator__NextFiscalYear> &
-      Query$ConditionOperator__NextFiscalYear &
-      58; // 58
-    static +NextFiscalPeriod: Class<Query$ConditionOperator__NextFiscalPeriod> &
-      Query$ConditionOperator__NextFiscalPeriod &
-      59; // 59
-    static +LastFiscalYear: Class<Query$ConditionOperator__LastFiscalYear> &
-      Query$ConditionOperator__LastFiscalYear &
-      60; // 60
-    static +LastFiscalPeriod: Class<Query$ConditionOperator__LastFiscalPeriod> &
-      Query$ConditionOperator__LastFiscalPeriod &
-      61; // 61
-    static +LastXFiscalYears: Class<Query$ConditionOperator__LastXFiscalYears> &
-      Query$ConditionOperator__LastXFiscalYears &
-      62; // 62
-    static +LastXFiscalPeriods: Class<Query$ConditionOperator__LastXFiscalPeriods> &
-      Query$ConditionOperator__LastXFiscalPeriods &
-      63; // 63
-    static +NextXFiscalYears: Class<Query$ConditionOperator__NextXFiscalYears> &
-      Query$ConditionOperator__NextXFiscalYears &
-      64; // 64
-    static +NextXFiscalPeriods: Class<Query$ConditionOperator__NextXFiscalPeriods> &
-      Query$ConditionOperator__NextXFiscalPeriods &
-      65; // 65
-    static +InFiscalYear: Class<Query$ConditionOperator__InFiscalYear> &
-      Query$ConditionOperator__InFiscalYear &
-      66; // 66
-    static +InFiscalPeriod: Class<Query$ConditionOperator__InFiscalPeriod> &
-      Query$ConditionOperator__InFiscalPeriod &
-      67; // 67
-    static +InFiscalPeriodAndYear: Class<Query$ConditionOperator__InFiscalPeriodAndYear> &
-      Query$ConditionOperator__InFiscalPeriodAndYear &
-      68; // 68
-    static +InOrBeforeFiscalPeriodAndYear: Class<Query$ConditionOperator__InOrBeforeFiscalPeriodAndYear> &
-      Query$ConditionOperator__InOrBeforeFiscalPeriodAndYear &
-      69; // 69
-    static +InOrAfterFiscalPeriodAndYear: Class<Query$ConditionOperator__InOrAfterFiscalPeriodAndYear> &
-      Query$ConditionOperator__InOrAfterFiscalPeriodAndYear &
-      70; // 70
-    static +EqualUserOrUserTeams: Class<Query$ConditionOperator__EqualUserOrUserTeams> &
-      Query$ConditionOperator__EqualUserOrUserTeams &
-      71; // 71
-    static +EqualUserTeams: Class<Query$ConditionOperator__EqualUserTeams> &
-      Query$ConditionOperator__EqualUserTeams &
-      72; // 72
-  }
+  declare export var Sdk$Query$ConditionOperator: {|
+    +Equal: 0, // 0
+    +NotEqual: 1, // 1
+    +GreaterThan: 2, // 2
+    +LessThan: 3, // 3
+    +GreaterEqual: 4, // 4
+    +LessEqual: 5, // 5
+    +Like: 6, // 6
+    +NotLike: 7, // 7
+    +In: 8, // 8
+    +NotIn: 9, // 9
+    +Between: 10, // 10
+    +NotBetween: 11, // 11
+    +Null: 12, // 12
+    +NotNull: 13, // 13
+    +Yesterday: 14, // 14
+    +Today: 15, // 15
+    +Tomorrow: 16, // 16
+    +Last7Days: 17, // 17
+    +Next7Days: 18, // 18
+    +LastWeek: 19, // 19
+    +ThisWeek: 20, // 20
+    +NextWeek: 21, // 21
+    +LastMonth: 22, // 22
+    +ThisMonth: 23, // 23
+    +NextMonth: 24, // 24
+    +On: 25, // 25
+    +OnOrBefore: 26, // 26
+    +OnOrAfter: 27, // 27
+    +LastYear: 28, // 28
+    +ThisYear: 29, // 29
+    +NextYear: 30, // 30
+    +LastXHours: 31, // 31
+    +NextXHours: 32, // 32
+    +LastXDays: 33, // 33
+    +NextXDays: 34, // 34
+    +LastXWeeks: 35, // 35
+    +NextXWeeks: 36, // 36
+    +LastXMonths: 37, // 37
+    +NextXMonths: 38, // 38
+    +LastXYears: 39, // 39
+    +NextXYears: 40, // 40
+    +EqualUserId: 41, // 41
+    +NotEqualUserId: 42, // 42
+    +EqualBusinessId: 43, // 43
+    +NotEqualBusinessId: 44, // 44
+    +Mask: 45, // 45
+    +NotMask: 46, // 46
+    +Contains: 47, // 47
+    +DoesNotContain: 48, // 48
+    +EqualUserLanguage: 49, // 49
+    +NotOn: 50, // 50
+    +OlderThanXMonths: 51, // 51
+    +BeginsWith: 52, // 52
+    +DoesNotBeginWith: 53, // 53
+    +EndsWith: 54, // 54
+    +DoesNotEndWith: 55, // 55
+    +ThisFiscalYear: 56, // 56
+    +ThisFiscalPeriod: 57, // 57
+    +NextFiscalYear: 58, // 58
+    +NextFiscalPeriod: 59, // 59
+    +LastFiscalYear: 60, // 60
+    +LastFiscalPeriod: 61, // 61
+    +LastXFiscalYears: 62, // 62
+    +LastXFiscalPeriods: 63, // 63
+    +NextXFiscalYears: 64, // 64
+    +NextXFiscalPeriods: 65, // 65
+    +InFiscalYear: 66, // 66
+    +InFiscalPeriod: 67, // 67
+    +InFiscalPeriodAndYear: 68, // 68
+    +InOrBeforeFiscalPeriodAndYear: 69, // 69
+    +InOrAfterFiscalPeriodAndYear: 70, // 70
+    +EqualUserOrUserTeams: 71, // 71
+    +EqualUserTeams: 72 // 72
+  |};
 
-  declare class Query$ConditionOperator__Equal mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotEqual
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__GreaterThan
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LessThan
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__GreaterEqual
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LessEqual
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Like mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotLike
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__In mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotIn mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Between
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotBetween
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Null mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotNull
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Yesterday
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Today mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Tomorrow
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Last7Days
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Next7Days
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastWeek
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__ThisWeek
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextWeek
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastMonth
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__ThisMonth
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextMonth
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__On mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__OnOrBefore
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__OnOrAfter
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__ThisYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXHours
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXHours
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXDays
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXDays
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXWeeks
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXWeeks
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXMonths
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXMonths
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXYears
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXYears
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EqualUserId
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotEqualUserId
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EqualBusinessId
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotEqualBusinessId
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Mask mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotMask
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__Contains
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__DoesNotContain
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EqualUserLanguage
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NotOn mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__OlderThanXMonths
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__BeginsWith
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__DoesNotBeginWith
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EndsWith
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__DoesNotEndWith
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__ThisFiscalYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__ThisFiscalPeriod
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextFiscalYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextFiscalPeriod
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastFiscalYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastFiscalPeriod
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXFiscalYears
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__LastXFiscalPeriods
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXFiscalYears
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__NextXFiscalPeriods
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__InFiscalYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__InFiscalPeriod
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__InFiscalPeriodAndYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__InOrBeforeFiscalPeriodAndYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__InOrAfterFiscalPeriodAndYear
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EqualUserOrUserTeams
-    mixins Query$ConditionOperator {}
-  declare class Query$ConditionOperator__EqualUserTeams
-    mixins Query$ConditionOperator {}
+  declare export var Sdk$Query$JoinOperator: {|
+    +Inner: 0, // 0
+    +LeftOuter: 1, // 1
+    +Natural: 2 // 2
+  |};
 
-  declare export class Query$JoinOperator {
-    constructor(...args: empty): mixed;
-    static +Inner: Class<Query$JoinOperator__Inner> &
-      Query$JoinOperator__Inner &
-      0; // 0
-    static +LeftOuter: Class<Query$JoinOperator__LeftOuter> &
-      Query$JoinOperator__LeftOuter &
-      1; // 1
-    static +Natural: Class<Query$JoinOperator__Natural> &
-      Query$JoinOperator__Natural &
-      2; // 2
-  }
+  declare export var Sdk$Query$OrderType: {|
+    +Ascending: 0, // 0
+    +Descending: 1 // 1
+  |};
 
-  declare class Query$JoinOperator__Inner mixins Query$JoinOperator {}
-  declare class Query$JoinOperator__LeftOuter mixins Query$JoinOperator {}
-  declare class Query$JoinOperator__Natural mixins Query$JoinOperator {}
-
-  declare export class Query$OrderType {
-    constructor(...args: empty): mixed;
-    static +Ascending: Class<Query$OrderType__Ascending> &
-      Query$OrderType__Ascending &
-      0; // 0
-    static +Descending: Class<Query$OrderType__Descending> &
-      Query$OrderType__Descending &
-      1; // 1
-  }
-
-  declare class Query$OrderType__Ascending mixins Query$OrderType {}
-  declare class Query$OrderType__Descending mixins Query$OrderType {}
-
-  declare export class Query$ValueBase {}
+  declare export class Sdk$Query$ValueBase {}
 
   /**
    * Specifies Boolean values to be compared in the query.
    * @param args An array of Boolean values.
    */
-  declare class Query$Booleans mixins Query$ValueBase {
+  declare class Sdk$Query$Booleans mixins ValueBase {
     constructor(args: boolean[]): this;
 
     /**
@@ -2229,7 +1980,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of boolean values.
      */
-    getValues(): Sdk$Sdk$Collection<boolean>;
+    getValues(): Sdk$Collection<boolean>;
 
     /**
      * Specifies a Boolean value to be compared in the query.
@@ -2242,7 +1993,7 @@ Use one of the following classes that
    * Specifies the Date values to be compared in the query.
    * @param args An array of Date values.
    */
-  declare class Query$Dates mixins Query$ValueBase {
+  declare class Sdk$Query$Dates mixins ValueBase {
     constructor(args: Date[]): this;
 
     /**
@@ -2253,7 +2004,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of Date values.
      */
-    getValues(): Sdk$Sdk$Collection<Date>;
+    getValues(): Sdk$Collection<Date>;
 
     /**
      * Specifies the Date values to be compared in the query.
@@ -2266,7 +2017,7 @@ Use one of the following classes that
    * Specifies the Decimal values to be compared in the query.
    * @param args An array of Decimal values.
    */
-  declare class Query$Decimals mixins Query$ValueBase {
+  declare class Sdk$Query$Decimals mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2277,7 +2028,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Decimal values to be compared in the query.
@@ -2290,7 +2041,7 @@ Use one of the following classes that
    * Specifies the Double values to be compared in the query.
    * @param args An array of Double values.
    */
-  declare class Query$Doubles mixins Query$ValueBase {
+  declare class Sdk$Query$Doubles mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2301,7 +2052,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Double values to be compared in the query.
@@ -2314,7 +2065,7 @@ Use one of the following classes that
    * Specifies the Int values to be compared in the query.
    * @param args An array of Int values.
    */
-  declare class Query$Ints mixins Query$ValueBase {
+  declare class Sdk$Query$Ints mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2325,7 +2076,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Int values to be compared in the query
@@ -2338,7 +2089,7 @@ Use one of the following classes that
    * Specifies the Long values to be compared in the query.
    * @param args An array of Long values.
    */
-  declare class Query$Longs mixins Query$ValueBase {
+  declare class Sdk$Query$Longs mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2349,7 +2100,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Long values to be compared in the query.
@@ -2362,8 +2113,8 @@ Use one of the following classes that
    * Specifies the Sdk.EntityReference values to be compared in the query.
    * @param args An array of Sdk.EntityReference values.
    */
-  declare class Query$EntityReferences mixins Query$ValueBase {
-    constructor(args: Sdk$Sdk$EntityReference[]): this;
+  declare class Sdk$Query$EntityReferences mixins ValueBase {
+    constructor(args: Sdk$EntityReference[]): this;
 
     /**
      * Returns the type of value with namespace prefix.
@@ -2373,20 +2124,20 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of Sdk.EntityReference values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Long values to be compared in the query.
      * @param setValueArgs An array of Sdk.EntityReference values.
      */
-    setValues(setValueArgs: Sdk$Sdk$EntityReference[]): void;
+    setValues(setValueArgs: Sdk$EntityReference[]): void;
   }
 
   /**
    * Specifies the Sdk.Query.Guids values to be compared in the query.
    * @param args An array of GUID string values.
    */
-  declare class Query$Guids mixins Query$ValueBase {
+  declare class Sdk$Query$Guids mixins ValueBase {
     constructor(args: string[]): this;
 
     /**
@@ -2397,7 +2148,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of GUID string values.
      */
-    getValues(): Sdk$Sdk$Collection<string>;
+    getValues(): Sdk$Collection<string>;
 
     /**
      * Specifies the Long values to be compared in the query.
@@ -2410,7 +2161,7 @@ Use one of the following classes that
    * Specifies the Money values to be compared in the query.
    * @param args An array of number values.
    */
-  declare class Query$Money mixins Query$ValueBase {
+  declare class Sdk$Query$Money mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2421,7 +2172,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the Money values to be compared in the query.
@@ -2434,7 +2185,7 @@ Use one of the following classes that
    * Specifies the OptionSet values to be compared in the query.
    * @param args An array of number values.
    */
-  declare class Query$OptionSets mixins Query$ValueBase {
+  declare class Sdk$Query$OptionSets mixins ValueBase {
     constructor(args: number[]): this;
 
     /**
@@ -2445,7 +2196,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of number values.
      */
-    getValues(): Sdk$Sdk$Collection<number>;
+    getValues(): Sdk$Collection<number>;
 
     /**
      * Specifies the OptionSet values to be compared in the query.
@@ -2458,7 +2209,7 @@ Use one of the following classes that
    * Specifies the String values to be compared in the query.
    * @param args An array of String values.
    */
-  declare class Query$Strings mixins Query$ValueBase {
+  declare class Sdk$Query$Strings mixins ValueBase {
     constructor(args: string[]): this;
 
     /**
@@ -2469,7 +2220,7 @@ Use one of the following classes that
     /**
      * Returns an Sdk.Collection of String values.
      */
-    getValues(): Sdk$Sdk$Collection<string>;
+    getValues(): Sdk$Collection<string>;
 
     /**
      * Specifies the String values to be compared in the query.
@@ -2478,42 +2229,34 @@ Use one of the following classes that
     setValues(setValueArgs: string[]): void;
   }
 
-  declare export class Query$LogicalOperator {
-    constructor(...args: empty): mixed;
-    static +Or: Class<Query$LogicalOperator__Or> &
-      Query$LogicalOperator__Or &
-      0; // 0
-    static +And: Class<Query$LogicalOperator__And> &
-      Query$LogicalOperator__And &
-      1; // 1
-  }
+  declare export var Sdk$Query$LogicalOperator: {|
+    +Or: 0, // 0
+    +And: 1 // 1
+  |};
 
-  declare class Query$LogicalOperator__Or mixins Query$LogicalOperator {}
-  declare class Query$LogicalOperator__And mixins Query$LogicalOperator {}
-
-  declare var npm$namespace$Util: {
-    isGuid: typeof Util$isGuid,
-    isGuidOrNull: typeof Util$isGuidOrNull,
-    getEmptyGuid: typeof Util$getEmptyGuid,
-    format: typeof Util$format,
-    getError: typeof Util$getError,
-    getClientUrl: typeof Util$getClientUrl,
-    setClientUrl: typeof Util$setClientUrl,
-    getXMLHttpRequest: typeof Util$getXMLHttpRequest,
-    createEntityFromNode: typeof Util$createEntityFromNode
+  declare var npm$namespace$Sdk$Util: {
+    isGuid: typeof Sdk$Util$isGuid,
+    isGuidOrNull: typeof Sdk$Util$isGuidOrNull,
+    getEmptyGuid: typeof Sdk$Util$getEmptyGuid,
+    format: typeof Sdk$Util$format,
+    getError: typeof Sdk$Util$getError,
+    getClientUrl: typeof Sdk$Util$getClientUrl,
+    setClientUrl: typeof Sdk$Util$setClientUrl,
+    getXMLHttpRequest: typeof Sdk$Util$getXMLHttpRequest,
+    createEntityFromNode: typeof Sdk$Util$createEntityFromNode
   };
 
   /**
    * Verifies the parameter is a string formatted as a GUID.
    * @param value The value to check.
    */
-  declare function Util$isGuid(value: string): boolean;
+  declare function Sdk$Util$isGuid(value: string): boolean;
 
   /**
    * Verifies the parameter is a string formatted as a GUID or null.
    * @param value The value to check.
    */
-  declare function Util$isGuidOrNull(value: string): boolean;
+  declare function Sdk$Util$isGuidOrNull(value: string): boolean;
 
   /**
    * Verifies the parameter is a valid enum value.
@@ -2521,39 +2264,42 @@ Use one of the following classes that
    * @param value The value to check.
    * Returns an empty GUID.
    */
-  declare function Util$getEmptyGuid(): string;
+  declare function Sdk$Util$getEmptyGuid(): string;
 
   /**
    * Formats a string with the arguments from an array.
    * @param string The string containing placeholders for items in the array.
    * @param args An array of strings to replace the placeholders.
    */
-  declare function Util$format(string: string, args: string[]): string;
+  declare function Sdk$Util$format(string: string, args: string[]): string;
 
   /**
    */
-  declare function Util$getError(resp: any): string;
+  declare function Sdk$Util$getError(resp: any): string;
 
   /**
    * Returns the clinent URL.
    */
-  declare function Util$getClientUrl(): string;
+  declare function Sdk$Util$getClientUrl(): string;
 
   /**
    * Provides a way to override the client Url when a client-side context is not available.
    * @param url The client URL to use instead of the default.
    */
-  declare function Util$setClientUrl(url: string): void;
+  declare function Sdk$Util$setClientUrl(url: string): void;
 
   /**
    */
-  declare function Util$getXMLHttpRequest(action: string, async: boolean): any;
+  declare function Sdk$Util$getXMLHttpRequest(
+    action: string,
+    async: boolean
+  ): any;
 
   /**
    * Creates an entity from XML.
    * @param The serialized entity returned from the SOAP service as XML.
    */
-  declare function Util$createEntityFromNode(node: string): void;
+  declare function Sdk$Util$createEntityFromNode(node: string): void;
 }
 declare module "microsoft-sdk-soap" {
   import typeof * as Q from "q";
