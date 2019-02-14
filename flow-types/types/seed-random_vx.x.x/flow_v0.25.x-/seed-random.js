@@ -1,9 +1,9 @@
 declare module "seed-random" {
-  declare module.exports: typeof SeedRandom;
+  declare export default typeof SeedRandom;
 
   declare function SeedRandom(
     seed?: string,
-    options?: SeedRandom$SeedRandom$Options
+    options?: SeedRandom$Options
   ): () => number;
 
   declare var npm$namespace$SeedRandom: {
