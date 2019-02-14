@@ -52,7 +52,7 @@ declare module "js-combinatorics" {
      * Returns the nth element (indexed from 0).
      */
     nth(n: number): T
-  } & __Combinatorics$IGenerator<T>;
+  } & IGenerator<T>;
 
   declare type __Combinatorics$ICartesianProductGenerator<T> = {
     /**
@@ -60,7 +60,7 @@ declare module "js-combinatorics" {
      * Arguments can be out of bounds but it returns `undefined` in such cases.
      */
     get(...coordinates: number[]): T
-  } & __Combinatorics$IPredictableGenerator<T>;
+  } & IPredictableGenerator<T>;
 
   /**
    * Calculates m P n
@@ -267,5 +267,5 @@ declare module "js-combinatorics" {
   ): __Combinatorics$ICartesianProductGenerator<any[]>;
 
   declare var __Combinatorics$VERSION: string;
-  declare module.exports: typeof __Combinatorics;
+  declare export default typeof __Combinatorics;
 }
