@@ -1,5 +1,5 @@
 declare module "zipkin-javascript-opentracing" {
-  declare module.exports: typeof zipkin_javascript_opentracing;
+  declare export default typeof zipkin_javascript_opentracing;
 
   declare class zipkin_javascript_opentracing {
     constructor(...args: any[]): this;
@@ -12,38 +12,53 @@ declare module "zipkin-javascript-opentracing" {
     static makeOptional(val: any): any;
   }
 
-  declare var npm$namespace$makeOptionalNamespace: {
-    prototype: typeof makeOptionalNamespace$prototype
+  declare var npm$namespace$zipkin_javascript_opentracing: {
+    makeOptionalNamespace: typeof npm$namespace$zipkin_javascript_opentracing$makeOptionalNamespace,
+    prototypeNamespace: typeof npm$namespace$zipkin_javascript_opentracing$prototypeNamespace
   };
-  declare var makeOptionalNamespace$prototype: {};
 
-  declare var npm$namespace$prototypeNamespace: {
-    extract: typeof prototypeNamespace$extract,
-    inject: typeof prototypeNamespace$inject,
-    startSpan: typeof prototypeNamespace$startSpan
+  declare var npm$namespace$zipkin_javascript_opentracing$makeOptionalNamespace: {
+    prototype: typeof zipkin_javascript_opentracing$makeOptionalNamespace$prototype
   };
-  declare function prototypeNamespace$extract(format: any, carrier: any): any;
+  declare var zipkin_javascript_opentracing$makeOptionalNamespace$prototype: {};
 
-  declare function prototypeNamespace$inject(
+  declare var npm$namespace$zipkin_javascript_opentracing$prototypeNamespace: {
+    extract: typeof zipkin_javascript_opentracing$prototypeNamespace$extract,
+    inject: typeof zipkin_javascript_opentracing$prototypeNamespace$inject,
+    startSpan: typeof zipkin_javascript_opentracing$prototypeNamespace$startSpan,
+
+    extract: typeof npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$extract,
+    inject: typeof npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$inject,
+    startSpan: typeof npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$startSpan
+  };
+  declare function zipkin_javascript_opentracing$prototypeNamespace$extract(
+    format: any,
+    carrier: any
+  ): any;
+
+  declare function zipkin_javascript_opentracing$prototypeNamespace$inject(
     span: any,
     format: any,
     carrier: any
   ): void;
 
-  declare function prototypeNamespace$startSpan(name: any, ...args: any[]): any;
+  declare function zipkin_javascript_opentracing$prototypeNamespace$startSpan(
+    name: any,
+    ...args: any[]
+  ): any;
 
-  declare var npm$namespace$extract: {
-    prototype: typeof extract$prototype
+  declare var npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$extract: {
+    prototype: typeof zipkin_javascript_opentracing$prototypeNamespace$extract$prototype
   };
-  declare var extract$prototype: {};
+  declare var zipkin_javascript_opentracing$prototypeNamespace$extract$prototype: {};
 
-  declare var npm$namespace$inject: {
-    prototype: typeof inject$prototype
+  declare var npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$inject: {
+    prototype: typeof zipkin_javascript_opentracing$prototypeNamespace$inject$prototype
   };
-  declare var inject$prototype: {};
+  declare var zipkin_javascript_opentracing$prototypeNamespace$inject$prototype: {};
 
-  declare var npm$namespace$startSpan: {
-    prototype: typeof startSpan$prototype
+  declare var npm$namespace$zipkin_javascript_opentracing$prototypeNamespace$startSpan: {
+    prototype: typeof zipkin_javascript_opentracing$prototypeNamespace$startSpan$prototype
   };
-  declare var startSpan$prototype: {};
+  declare var zipkin_javascript_opentracing$prototypeNamespace$startSpan$prototype: {};
 }
