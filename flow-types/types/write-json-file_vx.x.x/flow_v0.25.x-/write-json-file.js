@@ -2,7 +2,7 @@ declare module "write-json-file" {
   declare function writeJsonFile(
     filepath: string,
     data: any,
-    options?: writeJsonFile$writeJsonFile$Options
+    options?: writeJsonFile$Options
   ): Promise<void>;
 
   declare var npm$namespace$writeJsonFile: {
@@ -24,5 +24,5 @@ declare module "write-json-file" {
     options?: writeJsonFile$Options
   ): void;
 
-  declare module.exports: typeof writeJsonFile;
+  declare export default typeof writeJsonFile;
 }
