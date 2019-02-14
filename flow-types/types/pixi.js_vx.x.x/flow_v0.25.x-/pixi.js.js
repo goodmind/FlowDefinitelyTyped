@@ -15,88 +15,164 @@ declare var npm$namespace$PIXI: {
   SHAPES: typeof PIXI$SHAPES,
   TEXT_GRADIENT: typeof PIXI$TEXT_GRADIENT,
   UPDATE_PRIORITY: typeof PIXI$UPDATE_PRIORITY,
-  loader: typeof PIXI$loader
+  loader: typeof PIXI$loader,
+
+  Application: typeof PIXI$Application,
+  Bounds: typeof PIXI$Bounds,
+  Container: typeof PIXI$Container,
+  DisplayObject: typeof PIXI$DisplayObject,
+  TransformBase: typeof PIXI$TransformBase,
+  TransformStatic: typeof PIXI$TransformStatic,
+  Transform: typeof PIXI$Transform,
+  GraphicsData: typeof PIXI$GraphicsData,
+  Graphics: typeof PIXI$Graphics,
+  CanvasGraphicsRenderer: typeof PIXI$CanvasGraphicsRenderer,
+  GraphicsRenderer: typeof PIXI$GraphicsRenderer,
+  WebGLGraphicsData: typeof PIXI$WebGLGraphicsData,
+  PrimitiveShader: typeof PIXI$PrimitiveShader,
+  Matrix: typeof PIXI$Matrix,
+  PointLike: typeof PIXI$PointLike,
+  ObservablePoint: typeof PIXI$ObservablePoint,
+  Point: typeof PIXI$Point,
+  Circle: typeof PIXI$Circle,
+  Ellipse: typeof PIXI$Ellipse,
+  Polygon: typeof PIXI$Polygon,
+  Rectangle: typeof PIXI$Rectangle,
+  RoundedRectangle: typeof PIXI$RoundedRectangle,
+  SystemRenderer: typeof PIXI$SystemRenderer,
+  CanvasRenderer: typeof PIXI$CanvasRenderer,
+  CanvasMaskManager: typeof PIXI$CanvasMaskManager,
+  CanvasRenderTarget: typeof PIXI$CanvasRenderTarget,
+  WebGLRenderer: typeof PIXI$WebGLRenderer,
+  WebGLState: typeof PIXI$WebGLState,
+  TextureManager: typeof PIXI$TextureManager,
+  TextureGarbageCollector: typeof PIXI$TextureGarbageCollector,
+  ObjectRenderer: typeof PIXI$ObjectRenderer,
+  Quad: typeof PIXI$Quad,
+  RenderTarget: typeof PIXI$RenderTarget,
+  BlendModeManager: typeof PIXI$BlendModeManager,
+  FilterManager: typeof PIXI$FilterManager,
+  StencilMaskStack: typeof PIXI$StencilMaskStack,
+  MaskManager: typeof PIXI$MaskManager,
+  StencilManager: typeof PIXI$StencilManager,
+  WebGLManager: typeof PIXI$WebGLManager,
+  Filter: typeof PIXI$Filter,
+  SpriteMaskFilter: typeof PIXI$SpriteMaskFilter,
+  Sprite: typeof PIXI$Sprite,
+  BatchBuffer: typeof PIXI$BatchBuffer,
+  SpriteRenderer: typeof PIXI$SpriteRenderer,
+  CanvasSpriteRenderer: typeof PIXI$CanvasSpriteRenderer,
+  TextStyle: typeof PIXI$TextStyle,
+  TextMetrics: typeof PIXI$TextMetrics,
+  Text: typeof PIXI$Text,
+  BaseRenderTexture: typeof PIXI$BaseRenderTexture,
+  BaseTexture: typeof PIXI$BaseTexture,
+  RenderTexture: typeof PIXI$RenderTexture,
+  Texture: typeof PIXI$Texture,
+  TextureMatrix: typeof PIXI$TextureMatrix,
+  TextureUvs: typeof PIXI$TextureUvs,
+  Spritesheet: typeof PIXI$Spritesheet,
+  VideoBaseTexture: typeof PIXI$VideoBaseTexture,
+  Shader: typeof PIXI$Shader,
+  MiniSignalBinding: typeof PIXI$MiniSignalBinding,
+  MiniSignal: typeof PIXI$MiniSignal,
+  settings: typeof npm$namespace$PIXI$settings,
+  accessibility: typeof npm$namespace$PIXI$accessibility,
+  CONST: typeof npm$namespace$PIXI$CONST,
+  GroupD8: typeof npm$namespace$PIXI$GroupD8,
+  CanvasTinter: typeof npm$namespace$PIXI$CanvasTinter,
+  ticker: typeof npm$namespace$PIXI$ticker,
+  extract: typeof npm$namespace$PIXI$extract,
+  extras: typeof npm$namespace$PIXI$extras,
+  filters: typeof npm$namespace$PIXI$filters,
+  interaction: typeof npm$namespace$PIXI$interaction,
+  loaders: typeof npm$namespace$PIXI$loaders,
+  mesh: typeof npm$namespace$PIXI$mesh,
+  particles: typeof npm$namespace$PIXI$particles,
+  prepare: typeof npm$namespace$PIXI$prepare,
+  glCore: typeof npm$namespace$PIXI$glCore,
+  utils: typeof npm$namespace$PIXI$utils
 };
-declare var PIXI$VERSION: typeof undefined;
+declare var PIXI$VERSION: typeof PIXI$CONST$VERSION;
 
-declare var PIXI$PI_2: typeof undefined;
+declare var PIXI$PI_2: typeof PIXI$CONST$PI_2;
 
-declare var PIXI$RAD_TO_DEG: typeof undefined;
+declare var PIXI$RAD_TO_DEG: typeof PIXI$CONST$RAD_TO_DEG;
 
-declare var PIXI$DEG_TO_RAD: typeof undefined;
+declare var PIXI$DEG_TO_RAD: typeof PIXI$CONST$DEG_TO_RAD;
 
-declare var PIXI$RENDERER_TYPE: typeof undefined;
+declare var PIXI$RENDERER_TYPE: typeof PIXI$CONST$RENDERER_TYPE;
 
-declare var PIXI$BLEND_MODES: typeof undefined;
+declare var PIXI$BLEND_MODES: typeof PIXI$CONST$BLEND_MODES;
 
-declare var PIXI$DRAW_MODES: typeof undefined;
+declare var PIXI$DRAW_MODES: typeof PIXI$CONST$DRAW_MODES;
 
-declare var PIXI$SCALE_MODES: typeof undefined;
+declare var PIXI$SCALE_MODES: typeof PIXI$CONST$SCALE_MODES;
 
-declare var PIXI$WRAP_MODES: typeof undefined;
+declare var PIXI$WRAP_MODES: typeof PIXI$CONST$WRAP_MODES;
 
-declare var PIXI$TRANSFORM_MODE: typeof undefined;
+declare var PIXI$TRANSFORM_MODE: typeof PIXI$CONST$TRANSFORM_MODE;
 
-declare var PIXI$PRECISION: typeof undefined;
+declare var PIXI$PRECISION: typeof PIXI$CONST$PRECISION;
 
-declare var PIXI$GC_MODES: typeof undefined;
+declare var PIXI$GC_MODES: typeof PIXI$CONST$GC_MODES;
 
-declare var PIXI$SHAPES: typeof undefined;
+declare var PIXI$SHAPES: typeof PIXI$CONST$SHAPES;
 
-declare var PIXI$TEXT_GRADIENT: typeof undefined;
+declare var PIXI$TEXT_GRADIENT: typeof PIXI$CONST$TEXT_GRADIENT;
 
-declare var PIXI$UPDATE_PRIORITY: typeof undefined;
+declare var PIXI$UPDATE_PRIORITY: typeof PIXI$CONST$UPDATE_PRIORITY;
 
 declare function PIXI$autoDetectRenderer(
   width: number,
   height: number,
-  options?: PIXIPIXI$RendererOptions,
+  options?: PIXI$RendererOptions,
   forceCanvas?: boolean
-): PIXIPIXI$WebGLRenderer | PIXIPIXI$CanvasRenderer;
+): PIXI$WebGLRenderer | PIXI$CanvasRenderer;
 
 declare function PIXI$autoDetectRenderer(
-  options?: PIXIPIXI$RendererOptions
-): PIXIPIXI$WebGLRenderer | PIXIPIXI$CanvasRenderer;
+  options?: PIXI$RendererOptions
+): PIXI$WebGLRenderer | PIXI$CanvasRenderer;
 
-declare var PIXI$loader: PIXIloadersloaders$Loader;
+declare var PIXI$loader: PIXI$loaders$Loader;
 
-declare var npm$namespace$settings: {
-  TARGET_FPMS: typeof settings$TARGET_FPMS,
-  MIPMAP_TEXTURES: typeof settings$MIPMAP_TEXTURES,
-  RESOLUTION: typeof settings$RESOLUTION,
-  FILTER_RESOLUTION: typeof settings$FILTER_RESOLUTION,
-  SPRITE_MAX_TEXTURES: typeof settings$SPRITE_MAX_TEXTURES,
-  SPRITE_BATCH_SIZE: typeof settings$SPRITE_BATCH_SIZE,
-  RETINA_PREFIX: typeof settings$RETINA_PREFIX,
-  RENDER_OPTIONS: typeof settings$RENDER_OPTIONS,
-  TRANSFORM_MODE: typeof settings$TRANSFORM_MODE,
-  GC_MODE: typeof settings$GC_MODE,
-  GC_MAX_IDLE: typeof settings$GC_MAX_IDLE,
-  GC_MAX_CHECK_COUNT: typeof settings$GC_MAX_CHECK_COUNT,
-  WRAP_MODE: typeof settings$WRAP_MODE,
-  SCALE_MODE: typeof settings$SCALE_MODE,
-  PRECISION_VERTEX: typeof settings$PRECISION_VERTEX,
-  PRECISION_FRAGMENT: typeof settings$PRECISION_FRAGMENT,
-  PRECISION: typeof settings$PRECISION,
-  UPLOADS_PER_FRAME: typeof settings$UPLOADS_PER_FRAME,
-  CAN_UPLOAD_SAME_BUFFER: typeof settings$CAN_UPLOAD_SAME_BUFFER,
-  MESH_CANVAS_PADDING: typeof settings$MESH_CANVAS_PADDING
+declare var npm$namespace$PIXI$settings: {
+  TARGET_FPMS: typeof PIXI$settings$TARGET_FPMS,
+  MIPMAP_TEXTURES: typeof PIXI$settings$MIPMAP_TEXTURES,
+  RESOLUTION: typeof PIXI$settings$RESOLUTION,
+  FILTER_RESOLUTION: typeof PIXI$settings$FILTER_RESOLUTION,
+  SPRITE_MAX_TEXTURES: typeof PIXI$settings$SPRITE_MAX_TEXTURES,
+  SPRITE_BATCH_SIZE: typeof PIXI$settings$SPRITE_BATCH_SIZE,
+  RETINA_PREFIX: typeof PIXI$settings$RETINA_PREFIX,
+  RENDER_OPTIONS: typeof PIXI$settings$RENDER_OPTIONS,
+  TRANSFORM_MODE: typeof PIXI$settings$TRANSFORM_MODE,
+  GC_MODE: typeof PIXI$settings$GC_MODE,
+  GC_MAX_IDLE: typeof PIXI$settings$GC_MAX_IDLE,
+  GC_MAX_CHECK_COUNT: typeof PIXI$settings$GC_MAX_CHECK_COUNT,
+  WRAP_MODE: typeof PIXI$settings$WRAP_MODE,
+  SCALE_MODE: typeof PIXI$settings$SCALE_MODE,
+  PRECISION_VERTEX: typeof PIXI$settings$PRECISION_VERTEX,
+  PRECISION_FRAGMENT: typeof PIXI$settings$PRECISION_FRAGMENT,
+  PRECISION: typeof PIXI$settings$PRECISION,
+  UPLOADS_PER_FRAME: typeof PIXI$settings$UPLOADS_PER_FRAME,
+  CAN_UPLOAD_SAME_BUFFER: typeof PIXI$settings$CAN_UPLOAD_SAME_BUFFER,
+  MESH_CANVAS_PADDING: typeof PIXI$settings$MESH_CANVAS_PADDING
 };
-declare var settings$TARGET_FPMS: number;
+declare var PIXI$settings$TARGET_FPMS: number;
 
-declare var settings$MIPMAP_TEXTURES: boolean;
+declare var PIXI$settings$MIPMAP_TEXTURES: boolean;
 
-declare var settings$RESOLUTION: number;
+declare var PIXI$settings$RESOLUTION: number;
 
-declare var settings$FILTER_RESOLUTION: number;
+declare var PIXI$settings$FILTER_RESOLUTION: number;
 
-declare var settings$SPRITE_MAX_TEXTURES: number;
+declare var PIXI$settings$SPRITE_MAX_TEXTURES: number;
 
-declare var settings$SPRITE_BATCH_SIZE: number;
+declare var PIXI$settings$SPRITE_BATCH_SIZE: number;
 
-declare var settings$RETINA_PREFIX: RegExp;
+declare var PIXI$settings$RETINA_PREFIX: RegExp;
 
-declare var settings$RENDER_OPTIONS: {
+declare var PIXI$settings$RENDER_OPTIONS: {
   view: HTMLCanvasElement | null,
   antialias: boolean,
   forceFXAA: boolean,
@@ -111,29 +187,29 @@ declare var settings$RENDER_OPTIONS: {
   legacy: boolean
 };
 
-declare var settings$TRANSFORM_MODE: number;
+declare var PIXI$settings$TRANSFORM_MODE: number;
 
-declare var settings$GC_MODE: number;
+declare var PIXI$settings$GC_MODE: number;
 
-declare var settings$GC_MAX_IDLE: number;
+declare var PIXI$settings$GC_MAX_IDLE: number;
 
-declare var settings$GC_MAX_CHECK_COUNT: number;
+declare var PIXI$settings$GC_MAX_CHECK_COUNT: number;
 
-declare var settings$WRAP_MODE: number;
+declare var PIXI$settings$WRAP_MODE: number;
 
-declare var settings$SCALE_MODE: number;
+declare var PIXI$settings$SCALE_MODE: number;
 
-declare var settings$PRECISION_VERTEX: string;
+declare var PIXI$settings$PRECISION_VERTEX: string;
 
-declare var settings$PRECISION_FRAGMENT: string;
+declare var PIXI$settings$PRECISION_FRAGMENT: string;
 
-declare var settings$PRECISION: string;
+declare var PIXI$settings$PRECISION: string;
 
-declare var settings$UPLOADS_PER_FRAME: number;
+declare var PIXI$settings$UPLOADS_PER_FRAME: number;
 
-declare var settings$CAN_UPLOAD_SAME_BUFFER: boolean;
+declare var PIXI$settings$CAN_UPLOAD_SAME_BUFFER: boolean;
 
-declare var settings$MESH_CANVAS_PADDING: number;
+declare var PIXI$settings$MESH_CANVAS_PADDING: number;
 
 /**
  * @static
@@ -142,9 +218,12 @@ declare var settings$MESH_CANVAS_PADDING: number;
  * @see PIXI.PRECISION
  * @deprecated since version 4.4.0
  */
-declare type settings$PRECISION = number;
+declare type PIXI$settings$PRECISION = number;
 
-declare class accessibility$AccessibilityManager {
+declare var npm$namespace$PIXI$accessibility: {
+  AccessibilityManager: typeof PIXI$accessibility$AccessibilityManager
+};
+declare class PIXI$accessibility$AccessibilityManager {
   constructor(renderer: PIXI$CanvasRenderer | PIXI$WebGLRenderer): this;
   activate(): void;
   deactivate(): void;
@@ -159,59 +238,59 @@ declare class accessibility$AccessibilityManager {
   update(): void;
   capHitArea(hitArea: PIXI$HitArea): void;
   addChild(displayObject: PIXI$DisplayObject): void;
-  _onClick(e: interactioninteraction$InteractionEvent): void;
-  _onFocus(e: interactioninteraction$InteractionEvent): void;
-  _onFocusOut(e: interactioninteraction$InteractionEvent): void;
-  _onKeyDown(e: interactioninteraction$InteractionEvent): void;
+  _onClick(e: PIXI$interaction$InteractionEvent): void;
+  _onFocus(e: PIXI$interaction$InteractionEvent): void;
+  _onFocusOut(e: PIXI$interaction$InteractionEvent): void;
+  _onKeyDown(e: PIXI$interaction$InteractionEvent): void;
   _onMouseMove(e: MouseEvent): void;
   destroy(): void;
 }
 
-declare interface accessibility$AccessibleTarget {
+declare interface PIXI$accessibility$AccessibleTarget {
   accessible: boolean;
   accessibleTitle: string | null;
   accessibleHint: string | null;
   tabIndex: number;
 }
 
-declare var npm$namespace$CONST: {
-  VERSION: typeof CONST$VERSION,
-  PI_2: typeof CONST$PI_2,
-  RAD_TO_DEG: typeof CONST$RAD_TO_DEG,
-  DEG_TO_RAD: typeof CONST$DEG_TO_RAD,
-  TARGET_FPMS: typeof CONST$TARGET_FPMS,
-  RENDERER_TYPE: typeof CONST$RENDERER_TYPE,
-  BLEND_MODES: typeof CONST$BLEND_MODES,
-  DRAW_MODES: typeof CONST$DRAW_MODES,
-  SCALE_MODES: typeof CONST$SCALE_MODES,
-  GC_MODES: typeof CONST$GC_MODES,
-  WRAP_MODES: typeof CONST$WRAP_MODES,
-  TRANSFORM_MODE: typeof CONST$TRANSFORM_MODE,
-  URL_FILE_EXTENSION: typeof CONST$URL_FILE_EXTENSION,
-  DATA_URI: typeof CONST$DATA_URI,
-  SVG_SIZE: typeof CONST$SVG_SIZE,
-  SHAPES: typeof CONST$SHAPES,
-  PRECISION: typeof CONST$PRECISION,
-  TEXT_GRADIENT: typeof CONST$TEXT_GRADIENT,
-  UPDATE_PRIORITY: typeof CONST$UPDATE_PRIORITY
+declare var npm$namespace$PIXI$CONST: {
+  VERSION: typeof PIXI$CONST$VERSION,
+  PI_2: typeof PIXI$CONST$PI_2,
+  RAD_TO_DEG: typeof PIXI$CONST$RAD_TO_DEG,
+  DEG_TO_RAD: typeof PIXI$CONST$DEG_TO_RAD,
+  TARGET_FPMS: typeof PIXI$CONST$TARGET_FPMS,
+  RENDERER_TYPE: typeof PIXI$CONST$RENDERER_TYPE,
+  BLEND_MODES: typeof PIXI$CONST$BLEND_MODES,
+  DRAW_MODES: typeof PIXI$CONST$DRAW_MODES,
+  SCALE_MODES: typeof PIXI$CONST$SCALE_MODES,
+  GC_MODES: typeof PIXI$CONST$GC_MODES,
+  WRAP_MODES: typeof PIXI$CONST$WRAP_MODES,
+  TRANSFORM_MODE: typeof PIXI$CONST$TRANSFORM_MODE,
+  URL_FILE_EXTENSION: typeof PIXI$CONST$URL_FILE_EXTENSION,
+  DATA_URI: typeof PIXI$CONST$DATA_URI,
+  SVG_SIZE: typeof PIXI$CONST$SVG_SIZE,
+  SHAPES: typeof PIXI$CONST$SHAPES,
+  PRECISION: typeof PIXI$CONST$PRECISION,
+  TEXT_GRADIENT: typeof PIXI$CONST$TEXT_GRADIENT,
+  UPDATE_PRIORITY: typeof PIXI$CONST$UPDATE_PRIORITY
 };
-declare var CONST$VERSION: string;
+declare var PIXI$CONST$VERSION: string;
 
-declare var CONST$PI_2: number;
+declare var PIXI$CONST$PI_2: number;
 
-declare var CONST$RAD_TO_DEG: number;
+declare var PIXI$CONST$RAD_TO_DEG: number;
 
-declare var CONST$DEG_TO_RAD: number;
+declare var PIXI$CONST$DEG_TO_RAD: number;
 
-declare var CONST$TARGET_FPMS: number;
+declare var PIXI$CONST$TARGET_FPMS: number;
 
-declare var CONST$RENDERER_TYPE: {
+declare var PIXI$CONST$RENDERER_TYPE: {
   UNKNOWN: number,
   WEBGL: number,
   CANVAS: number
 };
 
-declare var CONST$BLEND_MODES: {
+declare var PIXI$CONST$BLEND_MODES: {
   NORMAL: number,
   ADD: number,
   MULTIPLY: number,
@@ -234,7 +313,7 @@ declare var CONST$BLEND_MODES: {
   SCREEN_NPM: number
 };
 
-declare var CONST$DRAW_MODES: {
+declare var PIXI$CONST$DRAW_MODES: {
   POINTS: number,
   LINES: number,
   LINE_LOOP: number,
@@ -244,35 +323,35 @@ declare var CONST$DRAW_MODES: {
   TRIANGLE_FAN: number
 };
 
-declare var CONST$SCALE_MODES: {
+declare var PIXI$CONST$SCALE_MODES: {
   LINEAR: number,
   NEAREST: number
 };
 
-declare var CONST$GC_MODES: {
+declare var PIXI$CONST$GC_MODES: {
   AUTO: number,
   MANUAL: number
 };
 
-declare var CONST$WRAP_MODES: {
+declare var PIXI$CONST$WRAP_MODES: {
   CLAMP: number,
   MIRRORED_REPEAT: number,
   REPEAT: number
 };
 
-declare var CONST$TRANSFORM_MODE: {
+declare var PIXI$CONST$TRANSFORM_MODE: {
   DEFAULT: number,
   DYNAMIC: number,
   STATIC: number
 };
 
-declare var CONST$URL_FILE_EXTENSION: RegExp | string;
+declare var PIXI$CONST$URL_FILE_EXTENSION: RegExp | string;
 
-declare var CONST$DATA_URI: RegExp | string;
+declare var PIXI$CONST$DATA_URI: RegExp | string;
 
-declare var CONST$SVG_SIZE: RegExp | string;
+declare var PIXI$CONST$SVG_SIZE: RegExp | string;
 
-declare var CONST$SHAPES: {
+declare var PIXI$CONST$SHAPES: {
   POLY: number,
   RECT: number,
   CIRC: number,
@@ -280,18 +359,18 @@ declare var CONST$SHAPES: {
   RREC: number
 };
 
-declare var CONST$PRECISION: {
+declare var PIXI$CONST$PRECISION: {
   LOW: string,
   MEDIUM: string,
   HIGH: string
 };
 
-declare var CONST$TEXT_GRADIENT: {
+declare var PIXI$CONST$TEXT_GRADIENT: {
   LINEAR_VERTICAL: number,
   LINEAR_HORIZONTAL: number
 };
 
-declare var CONST$UPDATE_PRIORITY: {
+declare var PIXI$CONST$UPDATE_PRIORITY: {
   INTERACTION: number,
   HIGH: number,
   NORMAL: number,
@@ -315,10 +394,10 @@ declare class PIXI$Application {
     sharedTicker?: boolean,
     sharedLoader?: boolean
   ): this;
-  renderer: PIXIPIXI$WebGLRenderer | PIXIPIXI$CanvasRenderer;
+  renderer: PIXI$WebGLRenderer | PIXI$CanvasRenderer;
   stage: PIXI$Container;
-  ticker: tickerticker$Ticker;
-  PIXI$loader: loadersloaders$Loader;
+  PIXI$ticker: PIXI$ticker$Ticker;
+  PIXI$loader: PIXI$loaders$Loader;
   screen: PIXI$Rectangle;
   stop(): void;
   start(): void;
@@ -365,7 +444,7 @@ declare class PIXI$Bounds {
   addBoundsArea(bounds: PIXI$Bounds, area: PIXI$Rectangle): void;
 }
 
-declare class PIXI$Container mixins PIXI$DisplayObject {
+declare class PIXI$Container mixins DisplayObject {
   getChildByName<T: PIXI$DisplayObject>(name: string): T;
   children: PIXI$DisplayObject[];
   width: number;
@@ -394,13 +473,13 @@ declare class PIXI$Container mixins PIXI$DisplayObject {
   renderCanvas(renderer: PIXI$CanvasRenderer): void;
   destroy(options?: PIXI$DestroyOptions | boolean): void;
   once(
-    event: interactioninteraction$InteractionEventTypes | "added" | "removed",
+    event: PIXI$interaction$InteractionEventTypes | "added" | "removed",
     fn: (displayObject: PIXI$DisplayObject) => void,
     context?: any
   ): this;
   once(event: string, fn: Function, context?: any): this;
   on(
-    event: interactioninteraction$InteractionEventTypes | "added" | "removed",
+    event: PIXI$interaction$InteractionEventTypes | "added" | "removed",
     fn: (displayObject: PIXI$DisplayObject) => void,
     context?: any
   ): this;
@@ -409,9 +488,9 @@ declare class PIXI$Container mixins PIXI$DisplayObject {
 }
 
 declare class PIXI$DisplayObject
-  mixins utils$utils$EventEmitter,
-    interaction$interaction$InteractiveTarget,
-    accessibility$accessibility$AccessibleTarget {
+  mixins utils$EventEmitter,
+    interaction$InteractiveTarget,
+    accessibility$AccessibleTarget {
   _cacheAsBitmap: boolean;
   _cacheData: boolean;
   cacheAsBitmap: boolean;
@@ -432,16 +511,16 @@ declare class PIXI$DisplayObject
   interactive: boolean;
   interactiveChildren: boolean;
   hitArea:
-    | PIXIPIXI$Rectangle
-    | PIXIPIXI$Circle
-    | PIXIPIXI$Ellipse
-    | PIXIPIXI$Polygon
-    | PIXIPIXI$RoundedRectangle
-    | PIXIPIXI$HitArea;
+    | PIXI$Rectangle
+    | PIXI$Circle
+    | PIXI$Ellipse
+    | PIXI$Polygon
+    | PIXI$RoundedRectangle
+    | PIXI$HitArea;
   buttonMode: boolean;
   cursor: string;
   trackedPointers: {
-    [key: number]: interactioninteraction$InteractionTrackingData
+    [key: number]: PIXI$interaction$InteractionTrackingData
   };
   defaultCursor: string;
   transform: PIXI$TransformBase;
@@ -458,7 +537,7 @@ declare class PIXI$DisplayObject
   _lastBoundsID: number;
   _boundsRect: PIXI$Rectangle;
   _localBoundsRect: PIXI$Rectangle;
-  _mask: PIXIPIXI$Graphics | PIXIPIXI$Sprite | null;
+  _mask: PIXI$Graphics | PIXI$Sprite | null;
   _destroyed: boolean;
   x: number;
   y: number;
@@ -470,8 +549,8 @@ declare class PIXI$DisplayObject
   skew: PIXI$ObservablePoint;
   rotation: number;
   worldVisible: boolean;
-  mask: PIXIPIXI$Graphics | PIXIPIXI$Sprite | null;
-  filters: Array<PIXI$Filter<any>> | null;
+  mask: PIXI$Graphics | PIXI$Sprite | null;
+  PIXI$filters: Array<PIXI$Filter<any>> | null;
   updateTransform(): void;
   displayObjectUpdateTransform(): void;
   _recursivePostUpdateTransform(): void;
@@ -506,31 +585,29 @@ declare class PIXI$DisplayObject
   ): PIXI$DisplayObject;
   destroy(): void;
   on(
-    event: interactioninteraction$InteractionEventTypes,
-    fn: (event: interactioninteraction$InteractionEvent) => void,
+    event: PIXI$interaction$InteractionEventTypes,
+    fn: (event: PIXI$interaction$InteractionEvent) => void,
     context?: any
   ): this;
   once(
-    event: interactioninteraction$InteractionEventTypes,
-    fn: (event: interactioninteraction$InteractionEvent) => void,
+    event: PIXI$interaction$InteractionEventTypes,
+    fn: (event: PIXI$interaction$InteractionEvent) => void,
     context?: any
   ): this;
   removeListener(
-    event: interactioninteraction$InteractionEventTypes,
-    fn?: (event: interactioninteraction$InteractionEvent) => void,
+    event: PIXI$interaction$InteractionEventTypes,
+    fn?: (event: PIXI$interaction$InteractionEvent) => void,
     context?: any
   ): this;
-  removeAllListeners(
-    event?: interactioninteraction$InteractionEventTypes
-  ): this;
+  removeAllListeners(event?: PIXI$interaction$InteractionEventTypes): this;
   off(
-    event: interactioninteraction$InteractionEventTypes,
-    fn?: (event: interactioninteraction$InteractionEvent) => void,
+    event: PIXI$interaction$InteractionEventTypes,
+    fn?: (event: PIXI$interaction$InteractionEvent) => void,
     context?: any
   ): this;
   addListener(
-    event: interactioninteraction$InteractionEventTypes,
-    fn: (event: interactioninteraction$InteractionEvent) => void,
+    event: PIXI$interaction$InteractionEventTypes,
+    fn: (event: PIXI$interaction$InteractionEvent) => void,
     context?: any
   ): this;
 }
@@ -546,7 +623,7 @@ declare class PIXI$TransformBase {
   updateWorldTransform(parentTransform: PIXI$TransformBase): void;
 }
 
-declare class PIXI$TransformStatic mixins PIXI$TransformBase {
+declare class PIXI$TransformStatic mixins TransformBase {
   position: PIXI$ObservablePoint;
   scale: PIXI$ObservablePoint;
   pivot: PIXI$ObservablePoint;
@@ -566,7 +643,7 @@ declare class PIXI$TransformStatic mixins PIXI$TransformBase {
   rotation: number;
 }
 
-declare class PIXI$Transform mixins PIXI$TransformBase {
+declare class PIXI$Transform mixins TransformBase {
   constructor(): this;
   position: PIXI$Point;
   scale: PIXI$Point;
@@ -640,7 +717,7 @@ declare class PIXI$GraphicsData {
   destroy(options?: PIXI$DestroyOptions | boolean): void;
 }
 
-declare class PIXI$Graphics mixins PIXI$Container {
+declare class PIXI$Graphics mixins Container {
   static CURVES: {
     adaptive: boolean,
     maxLength: number,
@@ -758,7 +835,7 @@ declare class PIXI$Graphics mixins PIXI$Container {
   isFastRect(): boolean;
   _renderCanvas(renderer: PIXI$CanvasRenderer): void;
   _calculateBounds(): PIXI$Rectangle;
-  _renderSpriteRect(renderer: PIXIPIXI$SystemRenderer): void;
+  _renderSpriteRect(renderer: PIXI$SystemRenderer): void;
   containsPoint(point: PIXI$Point): boolean;
   updateLocalBounds(): void;
   drawShape(
@@ -788,15 +865,15 @@ declare class PIXI$CanvasGraphicsRenderer {
   destroy(): void;
 }
 
-declare class PIXI$GraphicsRenderer mixins PIXI$ObjectRenderer {
-  constructor(renderer: PIXIPIXI$CanvasRenderer): this;
+declare class PIXI$GraphicsRenderer mixins ObjectRenderer {
+  constructor(renderer: PIXI$CanvasRenderer): this;
   graphicsDataPool: PIXI$GraphicsData[];
   primitiveShader: PIXI$PrimitiveShader;
   gl: WebGLRenderingContext;
   CONTEXT_UID: number;
   destroy(): void;
   render(graphics: PIXI$Graphics): void;
-  updateGraphics(graphics: PIXIPIXI$Graphics): void;
+  updateGraphics(graphics: PIXI$Graphics): void;
   getWebGLData(
     webGL: WebGLRenderingContext,
     type: number,
@@ -807,8 +884,8 @@ declare class PIXI$GraphicsRenderer mixins PIXI$ObjectRenderer {
 declare class PIXI$WebGLGraphicsData {
   constructor(
     gl: WebGLRenderingContext,
-    shader: glCoreglCore$GLShader,
-    attribsState: glCoreglCore$AttribState
+    shader: PIXI$glCore$GLShader,
+    attribsState: PIXI$glCore$AttribState
   ): this;
   gl: WebGLRenderingContext;
   color: number[];
@@ -819,87 +896,87 @@ declare class PIXI$WebGLGraphicsData {
   dirty: boolean;
   glPoints: number[];
   glIndices: number[];
-  shader: glCoreglCore$GLShader;
-  vao: glCoreglCore$VertexArrayObject;
+  shader: PIXI$glCore$GLShader;
+  vao: PIXI$glCore$VertexArrayObject;
   nativeLines: boolean;
   reset(): void;
   upload(): void;
   destroy(): void;
 }
 
-declare class PIXI$PrimitiveShader mixins glCore$glCore$GLShader {}
+declare class PIXI$PrimitiveShader mixins glCore$GLShader {}
 
-declare var npm$namespace$GroupD8: {
-  uX: typeof GroupD8$uX,
-  uY: typeof GroupD8$uY,
-  vX: typeof GroupD8$vX,
-  vY: typeof GroupD8$vY,
-  inv: typeof GroupD8$inv,
-  add: typeof GroupD8$add,
-  sub: typeof GroupD8$sub,
-  rotate180: typeof GroupD8$rotate180,
-  isVertical: typeof GroupD8$isVertical,
-  byDirection: typeof GroupD8$byDirection,
-  matrixAppendRotationInv: typeof GroupD8$matrixAppendRotationInv,
-  isSwapWidthHeight: typeof GroupD8$isSwapWidthHeight,
-  E: typeof GroupD8$E,
-  SE: typeof GroupD8$SE,
-  S: typeof GroupD8$S,
-  SW: typeof GroupD8$SW,
-  W: typeof GroupD8$W,
-  NW: typeof GroupD8$NW,
-  N: typeof GroupD8$N,
-  NE: typeof GroupD8$NE,
-  MIRROR_HORIZONTAL: typeof GroupD8$MIRROR_HORIZONTAL,
-  MIRROR_VERTICAL: typeof GroupD8$MIRROR_VERTICAL
+declare var npm$namespace$PIXI$GroupD8: {
+  uX: typeof PIXI$GroupD8$uX,
+  uY: typeof PIXI$GroupD8$uY,
+  vX: typeof PIXI$GroupD8$vX,
+  vY: typeof PIXI$GroupD8$vY,
+  inv: typeof PIXI$GroupD8$inv,
+  add: typeof PIXI$GroupD8$add,
+  sub: typeof PIXI$GroupD8$sub,
+  rotate180: typeof PIXI$GroupD8$rotate180,
+  isVertical: typeof PIXI$GroupD8$isVertical,
+  byDirection: typeof PIXI$GroupD8$byDirection,
+  matrixAppendRotationInv: typeof PIXI$GroupD8$matrixAppendRotationInv,
+  isSwapWidthHeight: typeof PIXI$GroupD8$isSwapWidthHeight,
+  E: typeof PIXI$GroupD8$E,
+  SE: typeof PIXI$GroupD8$SE,
+  S: typeof PIXI$GroupD8$S,
+  SW: typeof PIXI$GroupD8$SW,
+  W: typeof PIXI$GroupD8$W,
+  NW: typeof PIXI$GroupD8$NW,
+  N: typeof PIXI$GroupD8$N,
+  NE: typeof PIXI$GroupD8$NE,
+  MIRROR_HORIZONTAL: typeof PIXI$GroupD8$MIRROR_HORIZONTAL,
+  MIRROR_VERTICAL: typeof PIXI$GroupD8$MIRROR_VERTICAL
 };
-declare var GroupD8$E: number;
+declare var PIXI$GroupD8$E: number;
 
-declare var GroupD8$SE: number;
+declare var PIXI$GroupD8$SE: number;
 
-declare var GroupD8$S: number;
+declare var PIXI$GroupD8$S: number;
 
-declare var GroupD8$SW: number;
+declare var PIXI$GroupD8$SW: number;
 
-declare var GroupD8$W: number;
+declare var PIXI$GroupD8$W: number;
 
-declare var GroupD8$NW: number;
+declare var PIXI$GroupD8$NW: number;
 
-declare var GroupD8$N: number;
+declare var PIXI$GroupD8$N: number;
 
-declare var GroupD8$NE: number;
+declare var PIXI$GroupD8$NE: number;
 
-declare var GroupD8$MIRROR_HORIZONTAL: number;
+declare var PIXI$GroupD8$MIRROR_HORIZONTAL: number;
 
-declare var GroupD8$MIRROR_VERTICAL: number;
+declare var PIXI$GroupD8$MIRROR_VERTICAL: number;
 
-declare function GroupD8$uX(ind: number): number;
+declare function PIXI$GroupD8$uX(ind: number): number;
 
-declare function GroupD8$uY(ind: number): number;
+declare function PIXI$GroupD8$uY(ind: number): number;
 
-declare function GroupD8$vX(ind: number): number;
+declare function PIXI$GroupD8$vX(ind: number): number;
 
-declare function GroupD8$vY(ind: number): number;
+declare function PIXI$GroupD8$vY(ind: number): number;
 
-declare function GroupD8$inv(rotation: number): number;
+declare function PIXI$GroupD8$inv(rotation: number): number;
 
-declare function GroupD8$add(
+declare function PIXI$GroupD8$add(
   rotationSecond: number,
   rotationFirst: number
 ): number;
 
-declare function GroupD8$sub(
+declare function PIXI$GroupD8$sub(
   rotationSecond: number,
   rotationFirst: number
 ): number;
 
-declare function GroupD8$rotate180(rotation: number): number;
+declare function PIXI$GroupD8$rotate180(rotation: number): number;
 
-declare function GroupD8$isVertical(rotation: number): boolean;
+declare function PIXI$GroupD8$isVertical(rotation: number): boolean;
 
-declare function GroupD8$byDirection(dx: number, dy: number): number;
+declare function PIXI$GroupD8$byDirection(dx: number, dy: number): number;
 
-declare function GroupD8$matrixAppendRotationInv(
+declare function PIXI$GroupD8$matrixAppendRotationInv(
   matrix: PIXI$Matrix,
   rotation: number,
   tx: number,
@@ -911,7 +988,7 @@ declare function GroupD8$matrixAppendRotationInv(
  * @see PIXI.GroupD8.isVertical
  * @deprecated since version 4.6.0
  */
-declare function GroupD8$isSwapWidthHeight(rotation: number): boolean;
+declare function PIXI$GroupD8$isSwapWidthHeight(rotation: number): boolean;
 
 declare class PIXI$Matrix {
   constructor(
@@ -954,7 +1031,7 @@ declare class PIXI$Matrix {
     rotation: number,
     skewX: number,
     skewY: number
-  ): PIXIPIXI$Matrix;
+  ): PIXI$Matrix;
   prepend(matrix: PIXI$Matrix): PIXI$Matrix;
   invert(): PIXI$Matrix;
   identity(): PIXI$Matrix;
@@ -972,7 +1049,7 @@ declare class PIXI$PointLike {
   copy(point: PIXI$PointLike): void;
 }
 
-declare class PIXI$ObservablePoint mixins PIXI$PointLike {
+declare class PIXI$ObservablePoint mixins PointLike {
   constructor(cb: () => any, scope?: any, x?: number, y?: number): this;
   clone(cb?: Function, scope?: any): PIXI$ObservablePoint;
   equals(p: PIXI$Point | PIXI$ObservablePoint | PIXI$PointLike): boolean;
@@ -980,7 +1057,7 @@ declare class PIXI$ObservablePoint mixins PIXI$PointLike {
   scope: any;
 }
 
-declare class PIXI$Point mixins PIXI$PointLike {
+declare class PIXI$Point mixins PointLike {
   constructor(x?: number, y?: number): this;
   clone(): PIXI$Point;
   equals(p: PIXI$PointLike): boolean;
@@ -990,7 +1067,7 @@ declare interface PIXI$HitArea {
   contains(x: number, y: number): boolean;
 }
 
-declare class PIXI$Circle mixins PIXI$HitArea {
+declare class PIXI$Circle mixins HitArea {
   constructor(x?: number, y?: number, radius?: number): this;
   x: number;
   y: number;
@@ -1001,7 +1078,7 @@ declare class PIXI$Circle mixins PIXI$HitArea {
   getBounds(): PIXI$Rectangle;
 }
 
-declare class PIXI$Ellipse mixins PIXI$HitArea {
+declare class PIXI$Ellipse mixins HitArea {
   constructor(
     x?: number,
     y?: number,
@@ -1018,7 +1095,7 @@ declare class PIXI$Ellipse mixins PIXI$HitArea {
   getBounds(): PIXI$Rectangle;
 }
 
-declare class PIXI$Polygon mixins PIXI$HitArea {
+declare class PIXI$Polygon mixins HitArea {
   constructor(points: PIXI$Point[] | number[]): this;
   constructor(...points: PIXI$Point[]): this;
   constructor(...points: number[]): this;
@@ -1030,7 +1107,7 @@ declare class PIXI$Polygon mixins PIXI$HitArea {
   close(): void;
 }
 
-declare class PIXI$Rectangle mixins PIXI$HitArea {
+declare class PIXI$Rectangle mixins HitArea {
   constructor(x?: number, y?: number, width?: number, height?: number): this;
   x: number;
   y: number;
@@ -1050,7 +1127,7 @@ declare class PIXI$Rectangle mixins PIXI$HitArea {
   enlarge(rectangle: PIXI$Rectangle): void;
 }
 
-declare class PIXI$RoundedRectangle mixins PIXI$HitArea {
+declare class PIXI$RoundedRectangle mixins HitArea {
   constructor(
     x?: number,
     y?: number,
@@ -1167,16 +1244,16 @@ declare type PIXI$ApplicationOptions = {
    * options.sharedTicker to true in case that it is already started. Stop it by your own.
    */
   autoStart?: boolean
-} & PIXI$RendererOptions;
+} & RendererOptions;
 
 declare interface PIXI$DefaultRendererPlugins {
-  accessibility: accessibilityaccessibility$AccessibilityManager;
-  interaction: interactioninteraction$InteractionManager;
+  accessibility: PIXI$accessibility$AccessibilityManager;
+  interaction: PIXI$interaction$InteractionManager;
 }
 
-declare type PIXI$RendererPlugins = {} & PIXI$DefaultRendererPlugins;
+declare type PIXI$RendererPlugins = {} & DefaultRendererPlugins;
 
-declare class PIXI$SystemRenderer mixins utils$utils$EventEmitter {
+declare class PIXI$SystemRenderer mixins utils$EventEmitter {
   constructor(system: string, options?: PIXI$RendererOptions): this;
   constructor(
     system: string,
@@ -1215,15 +1292,15 @@ declare class PIXI$SystemRenderer mixins utils$utils$EventEmitter {
 }
 
 declare interface PIXI$DefaultCanvasRendererPlugins {
-  extract: extractextract$CanvasExtract;
-  prepare: prepareprepare$CanvasPrepare;
+  extract: PIXI$extract$CanvasExtract;
+  prepare: PIXI$prepare$CanvasPrepare;
 }
 
-declare type PIXI$CanvasRendererPlugins = {} & PIXI$DefaultCanvasRendererPlugins &
-  PIXI$RendererPlugins;
+declare type PIXI$CanvasRendererPlugins = {} & DefaultCanvasRendererPlugins &
+  RendererPlugins;
 
-declare class PIXI$CanvasRenderer mixins PIXI$SystemRenderer {
-  static __plugins: {
+declare class PIXI$CanvasRenderer mixins SystemRenderer {
+  static ___plugins: {
     [pluginName: string]: {
       new(renderer: PIXI$CanvasRenderer): any
     }
@@ -1249,13 +1326,13 @@ declare class PIXI$CanvasRenderer mixins PIXI$SystemRenderer {
   refresh: boolean;
   maskManager: PIXI$CanvasMaskManager;
   smoothProperty: string;
-  extract: extractextract$CanvasExtract;
+  PIXI$extract: PIXI$extract$CanvasExtract;
   context: CanvasRenderingContext2D | null;
   render(
-    displayObject: PIXIPIXI$DisplayObject,
-    renderTexture?: PIXIPIXI$RenderTexture,
+    displayObject: PIXI$DisplayObject,
+    renderTexture?: PIXI$RenderTexture,
     clear?: boolean,
-    transform?: PIXIPIXI$Matrix,
+    transform?: PIXI$Matrix,
     skipUpdateTransform?: boolean
   ): void;
   setBlendMode(blendMode: number): void;
@@ -1298,18 +1375,18 @@ declare class PIXI$CanvasRenderTarget {
   destroy(): void;
 }
 
-declare type PIXI$WebGLRendererOptions = {} & PIXI$RendererOptions;
+declare type PIXI$WebGLRendererOptions = {} & RendererOptions;
 
 declare interface PIXI$DefaultWebGLRendererPlugins {
-  extract: extractextract$WebGLExtract;
-  prepare: prepareprepare$WebGLPrepare;
+  extract: PIXI$extract$WebGLExtract;
+  prepare: PIXI$prepare$WebGLPrepare;
 }
 
-declare type PIXI$WebGLRendererPlugins = {} & PIXI$DefaultWebGLRendererPlugins &
-  PIXI$RendererPlugins;
+declare type PIXI$WebGLRendererPlugins = {} & DefaultWebGLRendererPlugins &
+  RendererPlugins;
 
-declare class PIXI$WebGLRenderer mixins PIXI$SystemRenderer {
-  static __plugins: {
+declare class PIXI$WebGLRenderer mixins SystemRenderer {
+  static ___plugins: {
     [pluginName: string]: {
       new(renderer: PIXI$WebGLRenderer): any
     }
@@ -1349,16 +1426,16 @@ declare class PIXI$WebGLRenderer mixins PIXI$SystemRenderer {
   filterManager: PIXI$FilterManager;
   textureManager: PIXI$TextureManager;
   textureGC: PIXI$TextureGarbageCollector;
-  extract: extractextract$WebGLExtract;
+  PIXI$extract: PIXI$extract$WebGLExtract;
   drawModes: any;
   _activeShader: PIXI$Shader;
   _activeRenderTarget: PIXI$RenderTarget;
   _initContext(): void;
   render(
-    displayObject: PIXIPIXI$DisplayObject,
-    renderTexture?: PIXIPIXI$RenderTexture,
+    displayObject: PIXI$DisplayObject,
+    renderTexture?: PIXI$RenderTexture,
     clear?: boolean,
-    transform?: PIXIPIXI$Matrix,
+    transform?: PIXI$Matrix,
     skipUpdateTransform?: boolean
   ): void;
   setObjectRenderer(objectRenderer: PIXI$ObjectRenderer): void;
@@ -1384,8 +1461,8 @@ declare class PIXI$WebGLRenderer mixins PIXI$SystemRenderer {
   unbindTexture(
     texture: PIXI$Texture | PIXI$BaseTexture
   ): PIXI$WebGLRenderer | void;
-  createVao(): glCoreglCore$VertexArrayObject;
-  bindVao(vao: glCoreglCore$VertexArrayObject): PIXI$WebGLRenderer;
+  createVao(): PIXI$glCore$VertexArrayObject;
+  bindVao(vao: PIXI$glCore$VertexArrayObject): PIXI$WebGLRenderer;
   reset(): PIXI$WebGLRenderer;
   handleContextLost: (event: WebGLContextEvent) => void;
   handleContextRestored: () => void;
@@ -1439,7 +1516,7 @@ declare class PIXI$WebGLState {
   stack: number[];
   gl: WebGLRenderingContext;
   maxAttribs: number;
-  attribState: glCoreglCore$AttribState;
+  attribState: PIXI$glCore$AttribState;
   nativeVaoExtension: any;
   push(): void;
   pop(): void;
@@ -1479,7 +1556,7 @@ declare class PIXI$TextureGarbageCollector {
   unload(displayObject: PIXI$DisplayObject): void;
 }
 
-declare class PIXI$ObjectRenderer mixins PIXI$WebGLManager {
+declare class PIXI$ObjectRenderer mixins WebGLManager {
   constructor(renderer: PIXI$WebGLRenderer): this;
   start(): void;
   stop(): void;
@@ -1495,8 +1572,8 @@ declare class PIXI$Quad {
   interleaved: number[];
   indices: number[];
   vertexBuffer: WebGLBuffer;
-  vao: glCoreglCore$VertexArrayObject;
-  initVao(shader: glCoreglCore$GLShader): void;
+  vao: PIXI$glCore$VertexArrayObject;
+  initVao(shader: PIXI$glCore$GLShader): void;
   map(
     targetTextureFrame: PIXI$Rectangle,
     destinationFrame: PIXI$Rectangle
@@ -1522,7 +1599,7 @@ declare class PIXI$RenderTarget {
     root?: boolean
   ): this;
   gl: WebGLRenderingContext;
-  frameBuffer: glCoreglCore$GLFramebuffer;
+  frameBuffer: PIXI$glCore$GLFramebuffer;
   texture: PIXI$Texture;
   clearColor: number[];
   size: PIXI$Rectangle;
@@ -1533,7 +1610,7 @@ declare class PIXI$RenderTarget {
   defaultFrame: PIXI$Rectangle;
   destinationFrame: PIXI$Rectangle;
   sourceFrame: PIXI$Rectangle;
-  stencilBuffer: glCoreglCore$GLFramebuffer;
+  stencilBuffer: PIXI$glCore$GLFramebuffer;
   stencilMaskStack: PIXI$Graphics[];
   filterData: {
     index: number,
@@ -1553,7 +1630,7 @@ declare class PIXI$RenderTarget {
   destroy(): void;
 }
 
-declare class PIXI$BlendModeManager mixins PIXI$WebGLManager {
+declare class PIXI$BlendModeManager mixins WebGLManager {
   constructor(renderer: PIXI$WebGLRenderer): this;
   currentBlendMode: number;
   setBlendMode(blendMode: number): boolean;
@@ -1568,7 +1645,7 @@ declare interface PIXI$FilterManagerStackItem {
   resolution: number;
 }
 
-declare class PIXI$FilterManager mixins PIXI$WebGLManager {
+declare class PIXI$FilterManager mixins WebGLManager {
   constructor(renderer: PIXI$WebGLRenderer): this;
   _screenWidth: number;
   _screenHeight: number;
@@ -1582,12 +1659,12 @@ declare class PIXI$FilterManager mixins PIXI$WebGLManager {
   pushFilter(target: PIXI$RenderTarget, filters: Array<PIXI$Filter<any>>): void;
   popFilter(): void;
   applyFilter(
-    shader: glCoreglCore$GLShader | PIXI$Filter<any>,
+    shader: PIXI$glCore$GLShader | PIXI$Filter<any>,
     inputTarget: PIXI$RenderTarget,
     outputTarget: PIXI$RenderTarget,
     clear?: boolean
   ): void;
-  syncUniforms(shader: glCoreglCore$GLShader, filter: PIXI$Filter<any>): void;
+  syncUniforms(shader: PIXI$glCore$GLShader, filter: PIXI$Filter<any>): void;
   getRenderTarget(clear?: boolean, resolution?: number): PIXI$RenderTarget;
   returnRenderTarget(renderTarget: PIXI$RenderTarget): PIXI$RenderTarget;
   calculateScreenSpaceMatrix(outputMatrix: PIXI$Matrix): PIXI$Matrix;
@@ -1613,7 +1690,7 @@ declare class PIXI$StencilMaskStack {
   count: number;
 }
 
-declare class PIXI$MaskManager mixins PIXI$WebGLManager {
+declare class PIXI$MaskManager mixins WebGLManager {
   scissor: boolean;
   scissorData: any;
   scissorRenderTarget: PIXI$RenderTarget;
@@ -1642,7 +1719,7 @@ declare class PIXI$MaskManager mixins PIXI$WebGLManager {
   popScissorMask(): void;
 }
 
-declare class PIXI$StencilManager mixins PIXI$WebGLManager {
+declare class PIXI$StencilManager mixins WebGLManager {
   constructor(renderer: PIXI$WebGLRenderer): this;
   stencilMaskStack: PIXI$Graphics[];
   _useCurrent(): void;
@@ -1707,7 +1784,7 @@ declare interface PIXI$SpriteMaskFilterUniforms {
 }
 
 declare class PIXI$SpriteMaskFilter
-  mixins PIXI$Filter<PIXI$SpriteMaskFilterUniforms> {
+  mixins Filter<PIXI$SpriteMaskFilterUniforms> {
   constructor(sprite: PIXI$Sprite): this;
   maskSprite: PIXI$Sprite;
   maskMatrix: PIXI$Matrix;
@@ -1718,7 +1795,7 @@ declare class PIXI$SpriteMaskFilter
   ): void;
 }
 
-declare class PIXI$Sprite mixins PIXI$Container {
+declare class PIXI$Sprite mixins Container {
   constructor(texture?: PIXI$Texture): this;
   _anchor: PIXI$ObservablePoint;
   anchor: PIXI$ObservablePoint;
@@ -1775,8 +1852,8 @@ declare class PIXI$BatchBuffer {
   destroy(): void;
 }
 
-declare class PIXI$SpriteRenderer mixins PIXI$ObjectRenderer {
-  constructor(renderer: PIXIPIXI$WebGLRenderer): this;
+declare class PIXI$SpriteRenderer mixins ObjectRenderer {
+  constructor(renderer: PIXI$WebGLRenderer): this;
   vertSize: number;
   vertByteSize: number;
   size: number;
@@ -1788,7 +1865,7 @@ declare class PIXI$SpriteRenderer mixins PIXI$ObjectRenderer {
   groups: any[];
   sprites: PIXI$Sprite[];
   vertexBuffers: number[];
-  vaos: glCoreglCore$VertexArrayObject[];
+  vaos: PIXI$glCore$VertexArrayObject[];
   vaoMax: number;
   vertexCount: number;
   onContextChanged: () => void;
@@ -1800,55 +1877,55 @@ declare class PIXI$SpriteRenderer mixins PIXI$ObjectRenderer {
   destroy(): void;
 }
 
-declare class PIXI$CanvasSpriteRenderer mixins PIXI$ObjectRenderer {
+declare class PIXI$CanvasSpriteRenderer mixins ObjectRenderer {
   constructor(renderer: PIXI$WebGLRenderer): this;
   render(sprite: PIXI$Sprite): void;
   destroy(): void;
 }
 
-declare var npm$namespace$CanvasTinter: {
-  getTintedTexture: typeof CanvasTinter$getTintedTexture,
-  tintWithMultiply: typeof CanvasTinter$tintWithMultiply,
-  tintWithOverlay: typeof CanvasTinter$tintWithOverlay,
-  tintWithPerPixel: typeof CanvasTinter$tintWithPerPixel,
-  roundColor: typeof CanvasTinter$roundColor,
-  cacheStepsPerColorChannel: typeof CanvasTinter$cacheStepsPerColorChannel,
-  convertTintToImage: typeof CanvasTinter$convertTintToImage,
-  canUseMultiply: typeof CanvasTinter$canUseMultiply,
-  tintMethod: typeof CanvasTinter$tintMethod
+declare var npm$namespace$PIXI$CanvasTinter: {
+  getTintedTexture: typeof PIXI$CanvasTinter$getTintedTexture,
+  tintWithMultiply: typeof PIXI$CanvasTinter$tintWithMultiply,
+  tintWithOverlay: typeof PIXI$CanvasTinter$tintWithOverlay,
+  tintWithPerPixel: typeof PIXI$CanvasTinter$tintWithPerPixel,
+  roundColor: typeof PIXI$CanvasTinter$roundColor,
+  cacheStepsPerColorChannel: typeof PIXI$CanvasTinter$cacheStepsPerColorChannel,
+  convertTintToImage: typeof PIXI$CanvasTinter$convertTintToImage,
+  canUseMultiply: typeof PIXI$CanvasTinter$canUseMultiply,
+  tintMethod: typeof PIXI$CanvasTinter$tintMethod
 };
-declare function CanvasTinter$getTintedTexture(
+declare function PIXI$CanvasTinter$getTintedTexture(
   sprite: PIXI$Sprite,
   color: number
 ): HTMLCanvasElement;
 
-declare function CanvasTinter$tintWithMultiply(
+declare function PIXI$CanvasTinter$tintWithMultiply(
   texture: PIXI$Texture,
   color: number,
   canvas: HTMLCanvasElement
 ): void;
 
-declare function CanvasTinter$tintWithOverlay(
+declare function PIXI$CanvasTinter$tintWithOverlay(
   texture: PIXI$Texture,
   color: number,
   canvas: HTMLCanvasElement
 ): void;
 
-declare function CanvasTinter$tintWithPerPixel(
+declare function PIXI$CanvasTinter$tintWithPerPixel(
   texture: PIXI$Texture,
   color: number,
   canvas: HTMLCanvasElement
 ): void;
 
-declare function CanvasTinter$roundColor(color: number): number;
+declare function PIXI$CanvasTinter$roundColor(color: number): number;
 
-declare var CanvasTinter$cacheStepsPerColorChannel: number;
+declare var PIXI$CanvasTinter$cacheStepsPerColorChannel: number;
 
-declare var CanvasTinter$convertTintToImage: boolean;
+declare var PIXI$CanvasTinter$convertTintToImage: boolean;
 
-declare var CanvasTinter$canUseMultiply: boolean;
+declare var PIXI$CanvasTinter$canUseMultiply: boolean;
 
-declare var CanvasTinter$tintMethod: number;
+declare var PIXI$CanvasTinter$tintMethod: number;
 
 declare interface PIXI$TextStyleOptions {
   align?: string;
@@ -1882,7 +1959,7 @@ declare interface PIXI$TextStyleOptions {
   leading?: number;
 }
 
-declare class PIXI$TextStyle mixins PIXI$TextStyleOptions {
+declare class PIXI$TextStyle mixins TextStyleOptions {
   constructor(style: PIXI$TextStyleOptions): this;
   styleID: number;
   clone(): PIXI$TextStyle;
@@ -2024,7 +2101,7 @@ declare interface PIXI$FontMetrics {
   fontSize: number;
 }
 
-declare class PIXI$Text mixins PIXI$Sprite {
+declare class PIXI$Text mixins Sprite {
   constructor(
     text?: string,
     style?: PIXI$TextStyleOptions,
@@ -2063,7 +2140,7 @@ declare class PIXI$Text mixins PIXI$Sprite {
   dirty: boolean;
 }
 
-declare class PIXI$BaseRenderTexture mixins PIXI$BaseTexture {
+declare class PIXI$BaseRenderTexture mixins BaseTexture {
   constructor(
     width?: number,
     height?: number,
@@ -2114,7 +2191,7 @@ declare class PIXI$BaseRenderTexture mixins PIXI$BaseTexture {
   ): this;
 }
 
-declare class PIXI$BaseTexture mixins utils$utils$EventEmitter {
+declare class PIXI$BaseTexture mixins utils$EventEmitter {
   static from(
     source: string | HTMLImageElement | HTMLCanvasElement,
     scaleMode?: number,
@@ -2208,7 +2285,7 @@ declare class PIXI$BaseTexture mixins utils$utils$EventEmitter {
   ): this;
 }
 
-declare class PIXI$RenderTexture mixins PIXI$Texture {
+declare class PIXI$RenderTexture mixins Texture {
   constructor(
     baseRenderTexture: PIXI$BaseRenderTexture,
     frame?: PIXI$Rectangle
@@ -2224,7 +2301,7 @@ declare class PIXI$RenderTexture mixins PIXI$Texture {
   ): PIXI$RenderTexture;
 }
 
-declare class PIXI$Texture mixins utils$utils$EventEmitter {
+declare class PIXI$Texture mixins utils$EventEmitter {
   constructor(
     baseTexture: PIXI$BaseTexture,
     frame?: PIXI$Rectangle,
@@ -2392,7 +2469,7 @@ declare class PIXI$Spritesheet {
   destroy(destroyBase?: boolean): void;
 }
 
-declare class PIXI$VideoBaseTexture mixins PIXI$BaseTexture {
+declare class PIXI$VideoBaseTexture mixins BaseTexture {
   constructor(
     source: HTMLVideoElement,
     scaleMode?: number,
@@ -2425,12 +2502,15 @@ declare class PIXI$VideoBaseTexture mixins PIXI$BaseTexture {
   loadSource(source: HTMLVideoElement): void;
 }
 
-declare var npm$namespace$ticker: {
-  shared: typeof ticker$shared
-};
-declare var ticker$shared: ticker$Ticker;
+declare var npm$namespace$PIXI$ticker: {
+  shared: typeof PIXI$ticker$shared,
 
-declare class ticker$TickerListener {
+  TickerListener: typeof PIXI$ticker$TickerListener,
+  Ticker: typeof PIXI$ticker$Ticker
+};
+declare var PIXI$ticker$shared: ticker$Ticker;
+
+declare class PIXI$ticker$TickerListener {
   constructor(
     fn: (deltaTime: number) => void,
     context?: any,
@@ -2441,18 +2521,18 @@ declare class ticker$TickerListener {
   context: any;
   priority: number;
   once: boolean;
-  next: ticker$TickerListener;
-  previous: ticker$TickerListener;
+  next: PIXI$ticker$TickerListener;
+  previous: PIXI$ticker$TickerListener;
   _destroyed: boolean;
   match(fn: (deltaTime: number) => void, context?: any): boolean;
-  emit(deltaTime: number): ticker$TickerListener;
-  connect(previous: ticker$TickerListener): void;
+  emit(deltaTime: number): PIXI$ticker$TickerListener;
+  connect(previous: PIXI$ticker$TickerListener): void;
   destroy(hard?: boolean): void;
 }
 
-declare class ticker$Ticker {
+declare class PIXI$ticker$Ticker {
   _tick: (time: number) => void;
-  _head: ticker$TickerListener;
+  _head: PIXI$ticker$TickerListener;
   _requestId: number | null;
   _maxElapsedMS: number;
   autoStart: boolean;
@@ -2468,14 +2548,14 @@ declare class ticker$Ticker {
     fn: (deltaTime: number) => void,
     context?: any,
     priority?: number
-  ): ticker$Ticker;
+  ): PIXI$ticker$Ticker;
   addOnce(
     fn: (deltaTime: number) => void,
     context?: any,
     priority?: number
-  ): ticker$Ticker;
-  remove(fn: Function, context?: any, priority?: number): ticker$Ticker;
-  _addListener(listener: ticker$TickerListener): ticker$Ticker;
+  ): PIXI$ticker$Ticker;
+  remove(fn: Function, context?: any, priority?: number): PIXI$ticker$Ticker;
+  _addListener(listener: PIXI$ticker$TickerListener): PIXI$ticker$Ticker;
   FPS: number;
   minFPS: number;
   start(): void;
@@ -2484,7 +2564,7 @@ declare class ticker$Ticker {
   update(currentTime?: number): void;
 }
 
-declare class PIXI$Shader mixins glCore$glCore$GLShader {
+declare class PIXI$Shader mixins glCore$GLShader {
   constructor(
     gl: WebGLRenderingContext,
     vertexSrc: string | string[],
@@ -2496,7 +2576,11 @@ declare class PIXI$Shader mixins glCore$glCore$GLShader {
   ): this;
 }
 
-declare class extract$CanvasExtract {
+declare var npm$namespace$PIXI$extract: {
+  CanvasExtract: typeof PIXI$extract$CanvasExtract,
+  WebGLExtract: typeof PIXI$extract$WebGLExtract
+};
+declare class PIXI$extract$CanvasExtract {
   renderer: PIXI$CanvasRenderer;
   constructor(renderer: PIXI$CanvasRenderer): this;
   image(target?: PIXI$DisplayObject | PIXI$RenderTexture): HTMLImageElement;
@@ -2508,7 +2592,7 @@ declare class extract$CanvasExtract {
   destroy(): void;
 }
 
-declare class extract$WebGLExtract {
+declare class PIXI$extract$WebGLExtract {
   renderer: PIXI$WebGLRenderer;
   constructor(renderer: PIXI$WebGLRenderer): this;
   image(target?: PIXI$DisplayObject | PIXI$RenderTexture): HTMLImageElement;
@@ -2518,7 +2602,14 @@ declare class extract$WebGLExtract {
   destroy(): void;
 }
 
-declare interface extras$BitmapTextStyle {
+declare var npm$namespace$PIXI$extras: {
+  BitmapText: typeof PIXI$extras$BitmapText,
+  AnimatedSprite: typeof PIXI$extras$AnimatedSprite,
+  TextureMatrix: typeof PIXI$extras$TextureMatrix,
+  TilingSprite: typeof PIXI$extras$TilingSprite,
+  TilingSpriteRenderer: typeof PIXI$extras$TilingSpriteRenderer
+};
+declare interface PIXI$extras$BitmapTextStyle {
   font?:
     | string
     | {
@@ -2529,7 +2620,7 @@ declare interface extras$BitmapTextStyle {
   tint?: number;
 }
 
-declare class extras$BitmapText mixins PIXI$Container {
+declare class PIXI$extras$BitmapText mixins Container {
   static registerFont(
     xml: XMLDocument,
     textures:
@@ -2539,7 +2630,7 @@ declare class extras$BitmapText mixins PIXI$Container {
           [key: string]: PIXI$Texture
         }
   ): any;
-  constructor(text: string, style?: extras$BitmapTextStyle): this;
+  constructor(text: string, style?: PIXI$extras$BitmapTextStyle): this;
   letterSpacing: number;
   _letterSpacing: number;
   _textWidth: number;
@@ -2569,7 +2660,7 @@ declare class extras$BitmapText mixins PIXI$Container {
   tint: number;
   align: string;
   text: string;
-  anchor: PIXIPIXI$Point | number;
+  anchor: PIXI$Point | number;
   updateText(): void;
   updateTransform(): void;
   getLocalBounds(): PIXI$Rectangle;
@@ -2577,20 +2668,20 @@ declare class extras$BitmapText mixins PIXI$Container {
   static fonts: any;
 }
 
-declare interface extras$AnimatedSpriteTextureTimeObject {
+declare interface PIXI$extras$AnimatedSpriteTextureTimeObject {
   texture: PIXI$Texture;
   time?: number;
 }
 
-declare class extras$AnimatedSprite mixins PIXI$Sprite {
+declare class PIXI$extras$AnimatedSprite mixins Sprite {
   constructor(
-    textures: PIXI$Texture[] | extras$AnimatedSpriteTextureTimeObject[],
+    textures: PIXI$Texture[] | PIXI$extras$AnimatedSpriteTextureTimeObject[],
     autoUpdate?: boolean
   ): this;
   _autoUpdate: boolean;
   _textures: PIXI$Texture[];
   _durations: number[];
-  textures: PIXI$Texture[] | extras$AnimatedSpriteTextureTimeObject[];
+  textures: PIXI$Texture[] | PIXI$extras$AnimatedSpriteTextureTimeObject[];
   animationSpeed: number;
   loop: boolean;
   onComplete: () => void;
@@ -2606,11 +2697,11 @@ declare class extras$AnimatedSprite mixins PIXI$Sprite {
   gotoAndPlay(frameNumber: number): void;
   update(deltaTime: number): void;
   destroy(options?: PIXI$DestroyOptions | boolean): void;
-  static fromFrames(frame: string[]): extras$AnimatedSprite;
-  static fromImages(images: string[]): extras$AnimatedSprite;
+  static fromFrames(frame: string[]): PIXI$extras$AnimatedSprite;
+  static fromImages(images: string[]): PIXI$extras$AnimatedSprite;
 }
 
-declare class extras$TextureMatrix {
+declare class PIXI$extras$TextureMatrix {
   constructor(texture: PIXI$Texture, clampMargin?: number): this;
   _texture: PIXI$Texture;
   mapCoord: PIXI$Matrix;
@@ -2624,13 +2715,13 @@ declare class extras$TextureMatrix {
   multiplyUvs(uvs: Float32Array, out?: Float32Array): Float32Array;
 }
 
-declare class extras$TilingSprite mixins PIXI$Sprite {
+declare class PIXI$extras$TilingSprite mixins Sprite {
   constructor(texture: PIXI$Texture, width?: number, height?: number): this;
   tileTransform: PIXI$TransformStatic;
   _width: number;
   _height: number;
   _canvasPattern: CanvasPattern;
-  uvTransform: extras$TextureMatrix;
+  uvTransform: PIXI$extras$TextureMatrix;
   uvRespectAnchor: boolean;
   clampMargin: number;
   tileScale: PIXI$Point | PIXI$ObservablePoint;
@@ -2652,12 +2743,12 @@ declare class extras$TilingSprite mixins PIXI$Sprite {
       | HTMLVideoElement,
     width?: number,
     height?: number
-  ): extras$TilingSprite;
+  ): PIXI$extras$TilingSprite;
   static fromFrame(
     frameId: string,
     width?: number,
     height?: number
-  ): extras$TilingSprite;
+  ): PIXI$extras$TilingSprite;
   static fromImage(
     imageId: string,
     crossorigin?: boolean,
@@ -2669,14 +2760,14 @@ declare class extras$TilingSprite mixins PIXI$Sprite {
     height?: number,
     crossorigin?: boolean,
     scaleMode?: number
-  ): extras$TilingSprite;
+  ): PIXI$extras$TilingSprite;
   width: number;
   height: number;
 }
 
-declare class extras$TilingSpriteRenderer mixins PIXI$ObjectRenderer {
+declare class PIXI$extras$TilingSpriteRenderer mixins ObjectRenderer {
   constructor(renderer: PIXI$WebGLRenderer): this;
-  render(ts: extras$TilingSprite): void;
+  render(ts: PIXI$extras$TilingSprite): void;
 }
 
 /**
@@ -2686,7 +2777,7 @@ declare class extras$TilingSpriteRenderer mixins PIXI$ObjectRenderer {
  * @see PIXI.extras.AnimatedSprite
  * @deprecated since version 4.2.0
  */
-declare type extras$MovieClip = extrasextras$AnimatedSprite;
+declare type PIXI$extras$MovieClip = PIXI$extras$AnimatedSprite;
 
 /**
  * @class
@@ -2695,11 +2786,21 @@ declare type extras$MovieClip = extrasextras$AnimatedSprite;
  * @see PIXI.TextureMatrix
  * @deprecated since version 4.6.0
  */
-declare type extras$TextureTranform = extras$TextureMatrix;
+declare type PIXI$extras$TextureTranform = PIXI$extras$TextureMatrix;
 
-declare class filters$FXAAFilter mixins PIXI$Filter<{}> {}
+declare var npm$namespace$PIXI$filters: {
+  FXAAFilter: typeof PIXI$filters$FXAAFilter,
+  BlurFilter: typeof PIXI$filters$BlurFilter,
+  BlurXFilter: typeof PIXI$filters$BlurXFilter,
+  BlurYFilter: typeof PIXI$filters$BlurYFilter,
+  ColorMatrixFilter: typeof PIXI$filters$ColorMatrixFilter,
+  DisplacementFilter: typeof PIXI$filters$DisplacementFilter,
+  AlphaFilter: typeof PIXI$filters$AlphaFilter,
+  NoiseFilter: typeof PIXI$filters$NoiseFilter
+};
+declare class PIXI$filters$FXAAFilter mixins Filter<{}> {}
 
-declare class filters$BlurFilter mixins PIXI$Filter<{}> {
+declare class PIXI$filters$BlurFilter mixins Filter<{}> {
   constructor(
     strength?: number,
     quality?: number,
@@ -2718,12 +2819,12 @@ declare class filters$BlurFilter mixins PIXI$Filter<{}> {
   blendMode: number;
 }
 
-declare interface filters$BlurXFilterUniforms {
+declare interface PIXI$filters$BlurXFilterUniforms {
   strength: number;
 }
 
-declare class filters$BlurXFilter
-  mixins PIXI$Filter<filters$BlurXFilterUniforms> {
+declare class PIXI$filters$BlurXFilter
+  mixins Filter<PIXI$filters$BlurXFilterUniforms> {
   constructor(
     strength?: number,
     quality?: number,
@@ -2739,12 +2840,12 @@ declare class filters$BlurXFilter
   blur: number;
 }
 
-declare interface filters$BlurYFilterUniforms {
+declare interface PIXI$filters$BlurYFilterUniforms {
   strength: number;
 }
 
-declare class filters$BlurYFilter
-  mixins PIXI$Filter<filters$BlurYFilterUniforms> {
+declare class PIXI$filters$BlurYFilter
+  mixins Filter<PIXI$filters$BlurYFilterUniforms> {
   constructor(
     strength?: number,
     quality?: number,
@@ -2760,13 +2861,13 @@ declare class filters$BlurYFilter
   blur: number;
 }
 
-declare interface filters$ColorMatrixFilterUniforms {
+declare interface PIXI$filters$ColorMatrixFilterUniforms {
   m: PIXI$Matrix;
   uAlpha: number;
 }
 
-declare class filters$ColorMatrixFilter
-  mixins PIXI$Filter<filters$ColorMatrixFilterUniforms> {
+declare class PIXI$filters$ColorMatrixFilter
+  mixins Filter<PIXI$filters$ColorMatrixFilterUniforms> {
   constructor(): this;
   _loadMatrix(matrix: number[], multiply?: boolean): void;
   _multiply(out: number[], a: number[], b: number[]): void;
@@ -2801,32 +2902,32 @@ declare class filters$ColorMatrixFilter
   reset(): void;
 }
 
-declare interface filters$DisplacementFilterUniforms {
+declare interface PIXI$filters$DisplacementFilterUniforms {
   mapSampler: PIXI$Texture;
   filterMatrix: PIXI$Matrix;
   scale: PIXI$Point;
 }
 
-declare class filters$DisplacementFilter
-  mixins PIXI$Filter<filters$DisplacementFilterUniforms> {
+declare class PIXI$filters$DisplacementFilter
+  mixins Filter<PIXI$filters$DisplacementFilterUniforms> {
   constructor(sprite: PIXI$Sprite, scale?: number): this;
   scale: PIXI$Point;
   map: PIXI$Texture;
 }
 
-declare class filters$AlphaFilter mixins PIXI$Filter<{}> {
+declare class PIXI$filters$AlphaFilter mixins Filter<{}> {
   constructor(alpha?: number): this;
   alpha: number;
   glShaderKey: number;
 }
 
-declare interface filters$NoiseFilterUniforms {
+declare interface PIXI$filters$NoiseFilterUniforms {
   uNoise: number;
   uSeed: number;
 }
 
-declare class filters$NoiseFilter
-  mixins PIXI$Filter<filters$NoiseFilterUniforms> {
+declare class PIXI$filters$NoiseFilter
+  mixins Filter<PIXI$filters$NoiseFilterUniforms> {
   constructor(noise?: number, seed?: number): this;
   noise: number;
   seed: number;
@@ -2839,18 +2940,22 @@ declare class filters$NoiseFilter
  * @see PIXI.filters.AlphaFilter
  * @deprecated since version 4.5.7
  */
-declare type filters$VoidFilter = filtersfilters$AlphaFilter;
+declare type PIXI$filters$VoidFilter = PIXI$filters$AlphaFilter;
 
-declare interface interaction$InteractiveTarget {
+declare var npm$namespace$PIXI$interaction: {
+  InteractionData: typeof PIXI$interaction$InteractionData,
+  InteractionManager: typeof PIXI$interaction$InteractionManager
+};
+declare interface PIXI$interaction$InteractiveTarget {
   interactive: boolean;
   interactiveChildren: boolean;
   hitArea:
-    | PIXIPIXI$Rectangle
-    | PIXIPIXI$Circle
-    | PIXIPIXI$Ellipse
-    | PIXIPIXI$Polygon
-    | PIXIPIXI$RoundedRectangle
-    | PIXIPIXI$HitArea;
+    | PIXI$Rectangle
+    | PIXI$Circle
+    | PIXI$Ellipse
+    | PIXI$Polygon
+    | PIXI$RoundedRectangle
+    | PIXI$HitArea;
   buttonMode: boolean;
   cursor: string;
   trackedPointers: {
@@ -2859,7 +2964,7 @@ declare interface interaction$InteractiveTarget {
   defaultCursor: string;
 }
 
-declare interface interaction$InteractionTrackingData {
+declare interface PIXI$interaction$InteractionTrackingData {
   +pointerId: number;
   flags: number;
   none: number;
@@ -2868,7 +2973,7 @@ declare interface interaction$InteractionTrackingData {
   leftDown: boolean;
 }
 
-declare interface interaction$InteractionEvent {
+declare interface PIXI$interaction$InteractionEvent {
   stopped: boolean;
   target: PIXI$DisplayObject;
   currentTarget: PIXI$DisplayObject;
@@ -2878,7 +2983,7 @@ declare interface interaction$InteractionEvent {
   reset(): void;
 }
 
-declare class interaction$InteractionData {
+declare class PIXI$interaction$InteractionData {
   global: PIXI$Point;
   target: PIXI$DisplayObject;
   originalEvent: MouseEvent | TouchEvent | PointerEvent;
@@ -2905,7 +3010,7 @@ declare class interaction$InteractionData {
   ): PIXI$Point;
 }
 
-declare type interaction$InteractionPointerEvents =
+declare type PIXI$interaction$InteractionPointerEvents =
   | "pointerdown"
   | "pointercancel"
   | "pointerup"
@@ -2915,7 +3020,7 @@ declare type interaction$InteractionPointerEvents =
   | "pointerover"
   | "pointerout";
 
-declare type interaction$InteractionTouchEvents =
+declare type PIXI$interaction$InteractionTouchEvents =
   | "touchstart"
   | "touchcancel"
   | "touchend"
@@ -2923,7 +3028,7 @@ declare type interaction$InteractionTouchEvents =
   | "touchmove"
   | "tap";
 
-declare type interaction$InteractionMouseEvents =
+declare type PIXI$interaction$InteractionMouseEvents =
   | "rightdown"
   | "mousedown"
   | "rightup"
@@ -2937,33 +3042,33 @@ declare type interaction$InteractionMouseEvents =
   | "mouseout"
   | "mouseover";
 
-declare type interaction$InteractionPixiEvents = "added" | "removed";
+declare type PIXI$interaction$InteractionPixiEvents = "added" | "removed";
 
-declare type interaction$InteractionEventTypes =
-  | interaction$InteractionPointerEvents
-  | interaction$InteractionTouchEvents
-  | interaction$InteractionMouseEvents
-  | interaction$InteractionPixiEvents;
+declare type PIXI$interaction$InteractionEventTypes =
+  | PIXI$interaction$InteractionPointerEvents
+  | PIXI$interaction$InteractionTouchEvents
+  | PIXI$interaction$InteractionMouseEvents
+  | PIXI$interaction$InteractionPixiEvents;
 
-declare interface interaction$InteractionManagerOptions {
+declare interface PIXI$interaction$InteractionManagerOptions {
   autoPreventDefault?: boolean;
   interactionFrequency?: number;
 }
 
-declare class interaction$InteractionManager mixins utils$utils$EventEmitter {
+declare class PIXI$interaction$InteractionManager mixins utils$EventEmitter {
   constructor(
     renderer: PIXI$CanvasRenderer | PIXI$WebGLRenderer | PIXI$SystemRenderer,
-    options?: interaction$InteractionManagerOptions
+    options?: PIXI$interaction$InteractionManagerOptions
   ): this;
   renderer: PIXI$SystemRenderer;
   autoPreventDefault: boolean;
   interactionFrequency: number;
-  mouse: interaction$InteractionData;
+  mouse: PIXI$interaction$InteractionData;
   activeInteractionData: {
-    [key: number]: interaction$InteractionData
+    [key: number]: PIXI$interaction$InteractionData
   };
-  interactionDataPool: interaction$InteractionData[];
-  eventData: interaction$InteractionEvent;
+  interactionDataPool: PIXI$interaction$InteractionData[];
+  eventData: PIXI$interaction$InteractionEvent;
   interactionDOMElement: HTMLElement;
   moveWhenInside: boolean;
   eventsAdded: boolean;
@@ -2972,46 +3077,31 @@ declare class interaction$InteractionManager mixins utils$utils$EventEmitter {
   supportsPointerEvents: boolean;
   onPointerUp: (event: PointerEvent) => void;
   processPointerUp: (
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite,
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     hit: boolean
   ) => void;
   onPointerCancel: (event: PointerEvent) => void;
   processPointerCancel: (
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXIPIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite
   ) => void;
   onPointerDown: (event: PointerEvent) => void;
   processPointerDown: (
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXIPIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite,
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     hit: boolean
   ) => void;
   onPointerMove: (event: PointerEvent) => void;
   processPointerMove: (
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXIPIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite,
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     hit: boolean
   ) => void;
   onPointerOut: (event: PointerEvent) => void;
   processPointerOverOut: (
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXIPIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite,
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     hit: boolean
   ) => void;
   onPointerOver: (event: PointerEvent) => void;
@@ -3030,17 +3120,14 @@ declare class interaction$InteractionManager mixins utils$utils$EventEmitter {
   update(deltaTime?: number): void;
   setCursorMode(mode: string): void;
   dispatchEvent(
-    displayObject: PIXI$Container | PIXI$Sprite | extrasextras$TilingSprite,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     eventString: string,
     eventData: any
   ): void;
   mapPositionToPoint(point: PIXI$Point, x: number, y: number): void;
   processInteractive(
-    interactionEvent: interaction$InteractionEvent,
-    displayObject:
-      | PIXIPIXI$Container
-      | PIXIPIXI$Sprite
-      | PIXIextrasextras$TilingSprite,
+    interactionEvent: PIXI$interaction$InteractionEvent,
+    displayObject: PIXI$Container | PIXI$Sprite | PIXI$extras$TilingSprite,
     func?: Function,
     hitTest?: boolean,
     interactive?: boolean
@@ -3052,13 +3139,13 @@ declare class interaction$InteractionManager mixins utils$utils$EventEmitter {
   ): void;
   getInteractionDataForPointerId(
     pointerId: number
-  ): interaction$InteractionData;
+  ): PIXI$interaction$InteractionData;
   releaseInteractionDataForPointerId(event: PointerEvent): void;
   configureInteractionEventForDOMEvent(
-    interactionEvent: interaction$InteractionEvent,
+    interactionEvent: PIXI$interaction$InteractionEvent,
     pointerEvent: PointerEvent,
-    interactionData: interaction$InteractionData
-  ): interaction$InteractionEvent;
+    interactionData: PIXI$interaction$InteractionData
+  ): PIXI$interaction$InteractionEvent;
   normalizeToPointerData(
     event: TouchEvent | MouseEvent | PointerEvent
   ): PointerEvent[];
@@ -3093,10 +3180,13 @@ declare class PIXI$MiniSignal {
   detachAll(): PIXI$MiniSignal;
 }
 
-declare var npm$namespace$loaders: {
-  shared: typeof loaders$shared
+declare var npm$namespace$PIXI$loaders: {
+  shared: typeof PIXI$loaders$shared,
+
+  Loader: typeof PIXI$loaders$Loader,
+  Resource: typeof PIXI$loaders$Resource
 };
-declare interface loaders$LoaderOptions {
+declare interface PIXI$loaders$LoaderOptions {
   crossOrigin?: boolean | string;
   loadType?: number;
   xhrType?: string;
@@ -3107,11 +3197,11 @@ declare interface loaders$LoaderOptions {
   };
 }
 
-declare interface loaders$ResourceDictionary {
-  [index: string]: PIXIloadersloaders$Resource;
+declare interface PIXI$loaders$ResourceDictionary {
+  [index: string]: PIXI$loaders$Resource;
 }
 
-declare class loaders$Loader mixins utils$utils$EventEmitter {
+declare class PIXI$loaders$Loader mixins utils$EventEmitter {
   static addPixiMiddleware(fn: Function): void;
   static loaders$Resource: any;
   static async: any;
@@ -3126,7 +3216,7 @@ declare class loaders$Loader mixins utils$utils$EventEmitter {
   _resourcesParsing: loaders$Resource[];
   _boundLoadResource: (r: loaders$Resource, d: Function) => void;
   _queue: any;
-  resources: loaders$ResourceDictionary;
+  resources: PIXI$loaders$ResourceDictionary;
   onProgress: PIXI$MiniSignal;
   onError: PIXI$MiniSignal;
   onLoad: PIXI$MiniSignal;
@@ -3137,12 +3227,12 @@ declare class loaders$Loader mixins utils$utils$EventEmitter {
   add(
     name: string,
     url: string,
-    options?: loaders$LoaderOptions,
+    options?: PIXI$loaders$LoaderOptions,
     cb?: Function
   ): this;
   add(
     obj: string | any | any[],
-    options?: loaders$LoaderOptions,
+    options?: PIXI$loaders$LoaderOptions,
     cb?: Function
   ): this;
   pre(fn: Function): this;
@@ -3157,56 +3247,50 @@ declare class loaders$Loader mixins utils$utils$EventEmitter {
   destroy(): void;
   on(
     event: "complete",
-    fn: (PIXI$loader: loadersloaders$Loader, object: any) => void,
+    fn: (loader: PIXI$loaders$Loader, object: any) => void,
     context?: any
   ): this;
   on(
     event: "error",
     fn: (
       error: Error,
-      PIXI$loader: loadersloaders$Loader,
+      loader: PIXI$loaders$Loader,
       resource: loaders$Resource
     ) => void,
     context?: any
   ): this;
   on(
     event: "load" | "progress",
-    fn: (
-      PIXI$loader: loadersloaders$Loader,
-      resource: loaders$Resource
-    ) => void,
+    fn: (loader: PIXI$loaders$Loader, resource: loaders$Resource) => void,
     context?: any
   ): this;
   on(
     event: "start",
-    fn: (PIXI$loader: loadersloaders$Loader) => void,
+    fn: (loader: PIXI$loaders$Loader) => void,
     context?: any
   ): this;
   once(
     event: "complete",
-    fn: (PIXI$loader: loadersloaders$Loader, object: any) => void,
+    fn: (loader: PIXI$loaders$Loader, object: any) => void,
     context?: any
   ): this;
   once(
     event: "error",
     fn: (
       error: Error,
-      PIXI$loader: loadersloaders$Loader,
+      loader: PIXI$loaders$Loader,
       resource: loaders$Resource
     ) => void,
     context?: any
   ): this;
   once(
     event: "load" | "progress",
-    fn: (
-      PIXI$loader: loadersloaders$Loader,
-      resource: loaders$Resource
-    ) => void,
+    fn: (loader: PIXI$loaders$Loader, resource: loaders$Resource) => void,
     context?: any
   ): this;
   once(
     event: "start",
-    fn: (PIXI$loader: loadersloaders$Loader) => void,
+    fn: (loader: PIXI$loaders$Loader) => void,
     context?: any
   ): this;
   off(
@@ -3216,17 +3300,17 @@ declare class loaders$Loader mixins utils$utils$EventEmitter {
   ): this;
 }
 
-declare interface loaders$TextureDictionary {
-  [index: string]: PIXIPIXI$Texture;
+declare interface PIXI$loaders$TextureDictionary {
+  [index: string]: PIXI$Texture;
 }
 
-declare class loaders$Resource {
+declare class PIXI$loaders$Resource {
   static setExtensionLoadType(extname: string, loadType: number): void;
   static setExtensionXhrType(extname: string, xhrType: string): void;
   constructor(
     name: string,
     url: string | string[],
-    options?: loaders$LoaderOptions
+    options?: PIXI$loaders$LoaderOptions
   ): this;
   _flags: number;
   name: string;
@@ -3239,7 +3323,7 @@ declare class loaders$Resource {
   metadata: any;
   error: Error;
   xhr: XMLHttpRequest | null;
-  children: loaders$Resource[];
+  children: PIXI$loaders$Resource[];
   type: number;
   progressChunk: number;
   _dequeue: Function;
@@ -3312,13 +3396,21 @@ declare class loaders$Resource {
   texture: PIXI$Texture;
   spineAtlas: any;
   spineData: any;
-  textures: loaders$TextureDictionary;
+  textures: PIXI$loaders$TextureDictionary;
   spritesheet: PIXI$Spritesheet;
 }
 
-declare var loaders$shared: loaders$Loader;
+declare var PIXI$loaders$shared: PIXI$loaders$Loader;
 
-declare class mesh$Mesh mixins PIXI$Container {
+declare var npm$namespace$PIXI$mesh: {
+  Mesh: typeof PIXI$mesh$Mesh,
+  CanvasMeshRenderer: typeof PIXI$mesh$CanvasMeshRenderer,
+  MeshRenderer: typeof PIXI$mesh$MeshRenderer,
+  Plane: typeof PIXI$mesh$Plane,
+  NineSlicePlane: typeof PIXI$mesh$NineSlicePlane,
+  Rope: typeof PIXI$mesh$Rope
+};
+declare class PIXI$mesh$Mesh mixins Container {
   constructor(
     texture: PIXI$Texture,
     vertices?: Float32Array,
@@ -3345,7 +3437,7 @@ declare class mesh$Mesh mixins PIXI$Container {
   _glDatas: {
     [n: number]: any
   };
-  _uvTransform: extrasextras$TextureMatrix;
+  _uvTransform: PIXI$extras$TextureMatrix;
   uploadUvTransform: boolean;
   multiplyUvs(): void;
   refresh(forceUpdate?: boolean): void;
@@ -3356,35 +3448,35 @@ declare class mesh$Mesh mixins PIXI$Container {
   _calculateBounds(): void;
   containsPoint(point: PIXI$Point): boolean;
   tint: number;
-  static CONST$DRAW_MODES: {
+  static PIXI$CONST$DRAW_MODES: {
     TRIANGLE_MESH: number,
     TRIANGLES: number
   };
 }
 
-declare class mesh$CanvasMeshRenderer {
+declare class PIXI$mesh$CanvasMeshRenderer {
   constructor(renderer: PIXI$CanvasRenderer): this;
   renderer: PIXI$CanvasRenderer;
-  render(mesh: mesh$Mesh): void;
-  _renderTriangleMesh(mesh: mesh$Mesh): void;
-  _renderTriangles(mesh: mesh$Mesh): void;
+  render(mesh: PIXI$mesh$Mesh): void;
+  _renderTriangleMesh(mesh: PIXI$mesh$Mesh): void;
+  _renderTriangles(mesh: PIXI$mesh$Mesh): void;
   _renderDrawTriangle(
-    mesh: mesh$Mesh,
+    mesh: PIXI$mesh$Mesh,
     index0: number,
     index1: number,
     index2: number
   ): void;
-  renderMeshFlat(mesh: mesh$Mesh): void;
+  renderMeshFlat(mesh: PIXI$mesh$Mesh): void;
   destroy(): void;
 }
 
-declare class mesh$MeshRenderer mixins PIXI$ObjectRenderer {
+declare class PIXI$mesh$MeshRenderer mixins ObjectRenderer {
   constructor(renderer: PIXI$WebGLRenderer): this;
   shader: PIXI$Shader;
-  render(mesh: mesh$Mesh): void;
+  render(mesh: PIXI$mesh$Mesh): void;
 }
 
-declare class mesh$Plane mixins mesh$Mesh {
+declare class PIXI$mesh$Plane mixins Mesh {
   constructor(
     texture: PIXI$Texture,
     verticesX?: number,
@@ -3398,7 +3490,7 @@ declare class mesh$Plane mixins mesh$Mesh {
   _onTexureUpdate(): void;
 }
 
-declare class mesh$NineSlicePlane mixins mesh$Plane {
+declare class PIXI$mesh$NineSlicePlane mixins Plane {
   constructor(
     texture: PIXI$Texture,
     leftWidth?: number,
@@ -3437,7 +3529,7 @@ declare class mesh$NineSlicePlane mixins mesh$Plane {
   _refresh(): void;
 }
 
-declare class mesh$Rope mixins mesh$Mesh {
+declare class PIXI$mesh$Rope mixins Mesh {
   constructor(texture: PIXI$Texture, points: PIXI$Point[]): this;
   points: PIXI$Point[];
   colors: number[];
@@ -3446,7 +3538,12 @@ declare class mesh$Rope mixins mesh$Mesh {
   refreshVertices(): void;
 }
 
-declare interface particles$ParticleContainerProperties {
+declare var npm$namespace$PIXI$particles: {
+  ParticleContainer: typeof PIXI$particles$ParticleContainer,
+  ParticleBuffer: typeof PIXI$particles$ParticleBuffer,
+  ParticleRenderer: typeof PIXI$particles$ParticleRenderer
+};
+declare interface PIXI$particles$ParticleContainerProperties {
   /**
    * DEPRECIATED - Use `vertices`
    */
@@ -3459,10 +3556,10 @@ declare interface particles$ParticleContainerProperties {
   alpha?: boolean;
 }
 
-declare class particles$ParticleContainer mixins PIXI$Container {
+declare class PIXI$particles$ParticleContainer mixins Container {
   constructor(
     maxSize?: number,
-    properties?: particles$ParticleContainerProperties,
+    properties?: PIXI$particles$ParticleContainerProperties,
     batchSize?: number,
     autoResize?: boolean
   ): this;
@@ -3482,12 +3579,12 @@ declare class particles$ParticleContainer mixins PIXI$Container {
   autoSize: boolean;
   roundPixels: boolean;
   baseTexture: PIXI$BaseTexture;
-  setProperties(properties: particles$ParticleContainerProperties): void;
+  setProperties(properties: PIXI$particles$ParticleContainerProperties): void;
   onChildrenChange: (smallestChildIndex?: number) => void;
   destroy(options?: PIXI$DestroyOptions | boolean): void;
 }
 
-declare class particles$ParticleBuffer {
+declare class PIXI$particles$ParticleBuffer {
   constructor(
     gl: WebGLRenderingContext,
     properties: any,
@@ -3510,11 +3607,11 @@ declare class particles$ParticleBuffer {
   destroy(): void;
 }
 
-declare interface particles$ParticleRendererProperty {
+declare interface PIXI$particles$ParticleRendererProperty {
   attribute: number;
   size: number;
   uploadFunction(
-    children: PIXIPIXI$DisplayObject[],
+    children: PIXI$DisplayObject[],
     startIndex: number,
     amount: number,
     array: number[],
@@ -3525,19 +3622,19 @@ declare interface particles$ParticleRendererProperty {
   offset: number;
 }
 
-declare class particles$ParticleRenderer mixins PIXI$ObjectRenderer {
+declare class PIXI$particles$ParticleRenderer mixins ObjectRenderer {
   constructor(renderer: PIXI$WebGLRenderer): this;
-  shader: glCoreglCore$GLShader;
+  shader: PIXI$glCore$GLShader;
   indexBuffer: WebGLBuffer;
-  properties: particles$ParticleRendererProperty[];
+  properties: PIXI$particles$ParticleRendererProperty[];
   tempMatrix: PIXI$Matrix;
   start(): void;
   generateBuffers(
-    container: particles$ParticleContainer
-  ): particles$ParticleBuffer[];
+    container: PIXI$particles$ParticleContainer
+  ): PIXI$particles$ParticleBuffer[];
   _generateOneMoreBuffer(
-    container: particles$ParticleContainer
-  ): particles$ParticleBuffer;
+    container: PIXI$particles$ParticleContainer
+  ): PIXI$particles$ParticleBuffer;
   uploadVertices(
     children: PIXI$DisplayObject[],
     startIndex: number,
@@ -3590,21 +3687,28 @@ declare class particles$ParticleRenderer mixins PIXI$ObjectRenderer {
   indices: Uint16Array;
 }
 
-declare type prepare$AddHook = (item: any, queue: any[]) => boolean;
+declare var npm$namespace$PIXI$prepare: {
+  BasePrepare: typeof PIXI$prepare$BasePrepare,
+  CanvasPrepare: typeof PIXI$prepare$CanvasPrepare,
+  WebGLPrepare: typeof PIXI$prepare$WebGLPrepare,
+  CountLimiter: typeof PIXI$prepare$CountLimiter,
+  TimeLimiter: typeof PIXI$prepare$TimeLimiter
+};
+declare type PIXI$prepare$AddHook = (item: any, queue: any[]) => boolean;
 
-declare type prepare$UploadHook<UploadHookSource> = (
+declare type PIXI$prepare$UploadHook<UploadHookSource> = (
   prepare: UploadHookSource,
   item: any
 ) => boolean;
 
-declare class prepare$BasePrepare<UploadHookSource> {
+declare class PIXI$prepare$BasePrepare<UploadHookSource> {
   constructor(renderer: PIXI$SystemRenderer): this;
   limiter: prepare$CountLimiter | prepare$TimeLimiter;
   renderer: PIXI$SystemRenderer;
   uploadHookHelper: UploadHookSource;
   queue: any[];
-  addHooks: prepare$AddHook[];
-  uploadHooks: Array<prepare$UploadHook<UploadHookSource>>;
+  addHooks: PIXI$prepare$AddHook[];
+  uploadHooks: Array<PIXI$prepare$UploadHook<UploadHookSource>>;
   completes: Function[];
   ticking: boolean;
   delayedTick: () => void;
@@ -3622,37 +3726,38 @@ declare class prepare$BasePrepare<UploadHookSource> {
   ): void;
   tick(): void;
   prepareItems(): void;
-  registerFindHook(addHook: prepare$AddHook): this;
-  registerUploadHook(uploadHook: prepare$UploadHook<UploadHookSource>): this;
-  findMultipleBaseTextures(item: PIXIPIXI$DisplayObject, queue: any[]): boolean;
-  findBaseTexture(item: PIXIPIXI$DisplayObject, queue: any[]): boolean;
-  findTexture(item: PIXIPIXI$DisplayObject, queue: any[]): boolean;
+  registerFindHook(addHook: PIXI$prepare$AddHook): this;
+  registerUploadHook(
+    uploadHook: PIXI$prepare$UploadHook<UploadHookSource>
+  ): this;
+  findMultipleBaseTextures(item: PIXI$DisplayObject, queue: any[]): boolean;
+  findBaseTexture(item: PIXI$DisplayObject, queue: any[]): boolean;
+  findTexture(item: PIXI$DisplayObject, queue: any[]): boolean;
   add(
     item:
-      | PIXIPIXI$DisplayObject
-      | PIXIPIXI$Container
-      | PIXIPIXI$BaseTexture
-      | PIXIPIXI$Texture
-      | PIXIPIXI$Graphics
-      | PIXIPIXI$Text
+      | PIXI$DisplayObject
+      | PIXI$Container
+      | PIXI$BaseTexture
+      | PIXI$Texture
+      | PIXI$Graphics
+      | PIXI$Text
       | any
   ): this;
   destroy(): void;
 }
 
-declare class prepare$CanvasPrepare
-  mixins prepare$BasePrepare<prepare$CanvasPrepare> {
+declare class PIXI$prepare$CanvasPrepare
+  mixins BasePrepare<PIXI$prepare$CanvasPrepare> {
   constructor(renderer: PIXI$CanvasRenderer): this;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
 }
 
-declare class prepare$WebGLPrepare
-  mixins prepare$BasePrepare<PIXI$WebGLRenderer> {
+declare class PIXI$prepare$WebGLPrepare mixins BasePrepare<PIXI$WebGLRenderer> {
   constructor(renderer: PIXI$WebGLRenderer): this;
 }
 
-declare class prepare$CountLimiter {
+declare class PIXI$prepare$CountLimiter {
   constructor(maxItemsPerFrame: number): this;
   maxItemsPerFrame: number;
   itemsLeft: number;
@@ -3660,7 +3765,7 @@ declare class prepare$CountLimiter {
   allowedToUpload(): boolean;
 }
 
-declare class prepare$TimeLimiter {
+declare class PIXI$prepare$TimeLimiter {
   constructor(maxMilliseconds: number): this;
   maxMilliseconds: number;
   frameStart: number;
@@ -3668,11 +3773,17 @@ declare class prepare$TimeLimiter {
   allowedToUpload(): boolean;
 }
 
-declare var npm$namespace$glCore: {
-  createContext: typeof glCore$createContext,
-  setVertexAttribArrays: typeof glCore$setVertexAttribArrays
+declare var npm$namespace$PIXI$glCore: {
+  createContext: typeof PIXI$glCore$createContext,
+  setVertexAttribArrays: typeof PIXI$glCore$setVertexAttribArrays,
+
+  GLBuffer: typeof PIXI$glCore$GLBuffer,
+  GLFramebuffer: typeof PIXI$glCore$GLFramebuffer,
+  GLShader: typeof PIXI$glCore$GLShader,
+  GLTexture: typeof PIXI$glCore$GLTexture,
+  VertexArrayObject: typeof PIXI$glCore$VertexArrayObject
 };
-declare interface glCore$ContextOptions {
+declare interface PIXI$glCore$ContextOptions {
   /**
    * Boolean that indicates if the canvas contains an alpha buffer.
    */
@@ -3709,18 +3820,18 @@ declare interface glCore$ContextOptions {
   failIfMajorPerformanceCaveat?: boolean;
 }
 
-declare function glCore$createContext(
+declare function PIXI$glCore$createContext(
   view: HTMLCanvasElement,
-  options?: glCore$ContextOptions
+  options?: PIXI$glCore$ContextOptions
 ): WebGLRenderingContext;
 
-declare function glCore$setVertexAttribArrays(
+declare function PIXI$glCore$setVertexAttribArrays(
   gl: WebGLRenderingContext,
   attribs: glCore$Attrib[],
   state?: PIXI$WebGLState
 ): WebGLRenderingContext | void;
 
-declare class glCore$GLBuffer {
+declare class PIXI$glCore$GLBuffer {
   constructor(
     gl: WebGLRenderingContext,
     type: number,
@@ -3743,22 +3854,22 @@ declare class glCore$GLBuffer {
     gl: WebGLRenderingContext,
     data: ArrayBuffer | ArrayBufferView | any,
     drawType: number
-  ): glCore$GLBuffer;
+  ): PIXI$glCore$GLBuffer;
   static createIndexBuffer(
     gl: WebGLRenderingContext,
     data: ArrayBuffer | ArrayBufferView | any,
     drawType: number
-  ): glCore$GLBuffer;
+  ): PIXI$glCore$GLBuffer;
   static create(
     gl: WebGLRenderingContext,
     type: number,
     data: ArrayBuffer | ArrayBufferView | any,
     drawType: number
-  ): glCore$GLBuffer;
+  ): PIXI$glCore$GLBuffer;
   destroy(): void;
 }
 
-declare class glCore$GLFramebuffer {
+declare class PIXI$glCore$GLFramebuffer {
   constructor(gl: WebGLRenderingContext, width: number, height: number): this;
   gl: WebGLRenderingContext;
   frameBuffer: WebGLFramebuffer;
@@ -3778,16 +3889,16 @@ declare class glCore$GLFramebuffer {
     width: number,
     height: number,
     data: ArrayBuffer | ArrayBufferView | any
-  ): glCore$GLFramebuffer;
+  ): PIXI$glCore$GLFramebuffer;
   static createFloat32(
     gl: WebGLRenderingContext,
     width: number,
     height: number,
     data: ArrayBuffer | ArrayBufferView | any
-  ): glCore$GLFramebuffer;
+  ): PIXI$glCore$GLFramebuffer;
 }
 
-declare class glCore$GLShader {
+declare class PIXI$glCore$GLShader {
   constructor(
     gl: WebGLRenderingContext,
     vertexSrc: string | string[],
@@ -3806,7 +3917,7 @@ declare class glCore$GLShader {
   destroy(): void;
 }
 
-declare class glCore$GLTexture {
+declare class PIXI$glCore$GLTexture {
   constructor(
     gl: WebGLRenderingContext,
     width?: number,
@@ -3845,16 +3956,16 @@ declare class glCore$GLTexture {
     gl: WebGLRenderingContext,
     source: HTMLImageElement | ImageData | HTMLVideoElement | HTMLCanvasElement,
     premultipleAlpha?: boolean
-  ): glCore$GLTexture;
+  ): PIXI$glCore$GLTexture;
   static fromData(
     gl: WebGLRenderingContext,
     data: number[],
     width: number,
     height: number
-  ): glCore$GLTexture;
+  ): PIXI$glCore$GLTexture;
 }
 
-declare interface glCore$Attrib {
+declare interface PIXI$glCore$Attrib {
   attribute: {
     location: number,
     size: number
@@ -3865,7 +3976,7 @@ declare interface glCore$Attrib {
   buffer: ArrayBuffer;
 }
 
-declare interface glCore$WebGLRenderingContextAttribute {
+declare interface PIXI$glCore$WebGLRenderingContextAttribute {
   buffer: WebGLBuffer;
   attribute: any;
   type: number;
@@ -3874,33 +3985,33 @@ declare interface glCore$WebGLRenderingContextAttribute {
   start: number;
 }
 
-declare interface glCore$AttribState {
-  tempAttribState: glCore$Attrib[];
-  attribState: glCore$Attrib[];
+declare interface PIXI$glCore$AttribState {
+  tempAttribState: PIXI$glCore$Attrib[];
+  attribState: PIXI$glCore$Attrib[];
 }
 
-declare class glCore$VertexArrayObject {
+declare class PIXI$glCore$VertexArrayObject {
   static FORCE_NATIVE: boolean;
   constructor(gl: WebGLRenderingContext, state?: PIXI$WebGLState): this;
   nativeVaoExtension: any;
-  nativeState: glCore$AttribState;
-  nativeVao: glCore$VertexArrayObject;
+  nativeState: PIXI$glCore$AttribState;
+  nativeVao: PIXI$glCore$VertexArrayObject;
   gl: WebGLRenderingContext;
-  attributes: glCore$Attrib[];
-  indexBuffer: glCore$GLBuffer;
+  attributes: PIXI$glCore$Attrib[];
+  indexBuffer: PIXI$glCore$GLBuffer;
   dirty: boolean;
   bind(): this;
   unbind(): this;
   activate(): this;
   addAttribute(
-    buffer: glCore$GLBuffer,
-    attribute: glCore$Attrib,
+    buffer: PIXI$glCore$GLBuffer,
+    attribute: PIXI$glCore$Attrib,
     type?: number,
     normalized?: boolean,
     stride?: number,
     start?: number
   ): this;
-  addIndex(buffer: glCore$GLBuffer, options?: any): this;
+  addIndex(buffer: PIXI$glCore$GLBuffer, options?: any): this;
   clear(): this;
   draw(type: number, size: number, start: number): this;
   destroy(): void;
@@ -3913,138 +4024,144 @@ declare interface PIXI$DecomposedDataUri {
   data: any;
 }
 
-declare var npm$namespace$utils: {
-  uid: typeof utils$uid,
-  hex2rgb: typeof utils$hex2rgb,
-  hex2string: typeof utils$hex2string,
-  rgb2hex: typeof utils$rgb2hex,
-  canUseNewCanvasBlendModes: typeof utils$canUseNewCanvasBlendModes,
-  getResolutionOfUrl: typeof utils$getResolutionOfUrl,
-  getSvgSize: typeof utils$getSvgSize,
-  decomposeDataUri: typeof utils$decomposeDataUri,
-  getUrlFileExtension: typeof utils$getUrlFileExtension,
-  sayHello: typeof utils$sayHello,
-  skipHello: typeof utils$skipHello,
-  isWebGLSupported: typeof utils$isWebGLSupported,
-  sign: typeof utils$sign,
-  removeItems: typeof utils$removeItems,
-  correctBlendMode: typeof utils$correctBlendMode,
-  clearTextureCache: typeof utils$clearTextureCache,
-  destroyTextureCache: typeof utils$destroyTextureCache,
-  premultiplyTint: typeof utils$premultiplyTint,
-  premultiplyRgba: typeof utils$premultiplyRgba,
-  premultiplyTintToRgba: typeof utils$premultiplyTintToRgba,
-  premultiplyBlendMode: typeof utils$premultiplyBlendMode,
-  TextureCache: typeof utils$TextureCache,
-  BaseTextureCache: typeof utils$BaseTextureCache
+declare var npm$namespace$PIXI$utils: {
+  uid: typeof PIXI$utils$uid,
+  hex2rgb: typeof PIXI$utils$hex2rgb,
+  hex2string: typeof PIXI$utils$hex2string,
+  rgb2hex: typeof PIXI$utils$rgb2hex,
+  canUseNewCanvasBlendModes: typeof PIXI$utils$canUseNewCanvasBlendModes,
+  getResolutionOfUrl: typeof PIXI$utils$getResolutionOfUrl,
+  getSvgSize: typeof PIXI$utils$getSvgSize,
+  decomposeDataUri: typeof PIXI$utils$decomposeDataUri,
+  getUrlFileExtension: typeof PIXI$utils$getUrlFileExtension,
+  sayHello: typeof PIXI$utils$sayHello,
+  skipHello: typeof PIXI$utils$skipHello,
+  isWebGLSupported: typeof PIXI$utils$isWebGLSupported,
+  sign: typeof PIXI$utils$sign,
+  removeItems: typeof PIXI$utils$removeItems,
+  correctBlendMode: typeof PIXI$utils$correctBlendMode,
+  clearTextureCache: typeof PIXI$utils$clearTextureCache,
+  destroyTextureCache: typeof PIXI$utils$destroyTextureCache,
+  premultiplyTint: typeof PIXI$utils$premultiplyTint,
+  premultiplyRgba: typeof PIXI$utils$premultiplyRgba,
+  premultiplyTintToRgba: typeof PIXI$utils$premultiplyTintToRgba,
+  premultiplyBlendMode: typeof PIXI$utils$premultiplyBlendMode,
+  TextureCache: typeof PIXI$utils$TextureCache,
+  BaseTextureCache: typeof PIXI$utils$BaseTextureCache,
+
+  EventEmitter: typeof PIXI$utils$EventEmitter,
+  isMobile: typeof npm$namespace$PIXI$utils$isMobile
 };
-declare function utils$uid(): number;
+declare function PIXI$utils$uid(): number;
 
-declare function utils$hex2rgb(hex: number, out?: number[]): number[];
+declare function PIXI$utils$hex2rgb(hex: number, out?: number[]): number[];
 
-declare function utils$hex2string(hex: number): string;
+declare function PIXI$utils$hex2string(hex: number): string;
 
-declare function utils$rgb2hex(rgb: number[]): number;
+declare function PIXI$utils$rgb2hex(rgb: number[]): number;
 
-declare function utils$canUseNewCanvasBlendModes(): boolean;
+declare function PIXI$utils$canUseNewCanvasBlendModes(): boolean;
 
-declare function utils$getResolutionOfUrl(
+declare function PIXI$utils$getResolutionOfUrl(
   url: string,
   defaultValue?: number
 ): number;
 
-declare function utils$getSvgSize(svgString: string): any;
+declare function PIXI$utils$getSvgSize(svgString: string): any;
 
-declare function utils$decomposeDataUri(
+declare function PIXI$utils$decomposeDataUri(
   dataUri: string
 ): PIXI$DecomposedDataUri | void;
 
-declare function utils$getUrlFileExtension(url: string): string | void;
+declare function PIXI$utils$getUrlFileExtension(url: string): string | void;
 
-declare function utils$sayHello(type: string): void;
+declare function PIXI$utils$sayHello(type: string): void;
 
-declare function utils$skipHello(): void;
+declare function PIXI$utils$skipHello(): void;
 
-declare function utils$isWebGLSupported(): boolean;
+declare function PIXI$utils$isWebGLSupported(): boolean;
 
-declare function utils$sign(n: number): number;
+declare function PIXI$utils$sign(n: number): number;
 
-declare function utils$removeItems<T>(
+declare function PIXI$utils$removeItems<T>(
   arr: T[],
   startIdx: number,
   removeCount: number
 ): void;
 
-declare function utils$correctBlendMode(
+declare function PIXI$utils$correctBlendMode(
   blendMode: number,
   premultiplied: boolean
 ): number;
 
-declare function utils$clearTextureCache(): void;
+declare function PIXI$utils$clearTextureCache(): void;
 
-declare function utils$destroyTextureCache(): void;
+declare function PIXI$utils$destroyTextureCache(): void;
 
-declare function utils$premultiplyTint(tint: number, alpha: number): number;
+declare function PIXI$utils$premultiplyTint(
+  tint: number,
+  alpha: number
+): number;
 
-declare function utils$premultiplyRgba(
+declare function PIXI$utils$premultiplyRgba(
   rgb: Float32Array | number[],
   alpha: number,
   out?: Float32Array,
   premultiply?: boolean
 ): Float32Array;
 
-declare function utils$premultiplyTintToRgba(
+declare function PIXI$utils$premultiplyTintToRgba(
   tint: number,
   alpha: number,
   out?: Float32Array,
   premultiply?: boolean
 ): Float32Array;
 
-declare var utils$premultiplyBlendMode: number[][];
+declare var PIXI$utils$premultiplyBlendMode: number[][];
 
-declare var utils$TextureCache: any;
+declare var PIXI$utils$TextureCache: any;
 
-declare var utils$BaseTextureCache: any;
+declare var PIXI$utils$BaseTextureCache: any;
 
-declare var npm$namespace$isMobile: {
-  apple: typeof isMobile$apple,
-  android: typeof isMobile$android,
-  amazon: typeof isMobile$amazon,
-  windows: typeof isMobile$windows,
-  seven_inch: typeof isMobile$seven_inch,
-  other: typeof isMobile$other,
-  any: typeof isMobile$any,
-  phone: typeof isMobile$phone,
-  tablet: typeof isMobile$tablet
+declare var npm$namespace$PIXI$utils$isMobile: {
+  apple: typeof PIXI$utils$isMobile$apple,
+  android: typeof PIXI$utils$isMobile$android,
+  amazon: typeof PIXI$utils$isMobile$amazon,
+  windows: typeof PIXI$utils$isMobile$windows,
+  seven_inch: typeof PIXI$utils$isMobile$seven_inch,
+  other: typeof PIXI$utils$isMobile$other,
+  any: typeof PIXI$utils$isMobile$any,
+  phone: typeof PIXI$utils$isMobile$phone,
+  tablet: typeof PIXI$utils$isMobile$tablet
 };
-declare var isMobile$apple: {
+declare var PIXI$utils$isMobile$apple: {
   phone: boolean,
   ipod: boolean,
   tablet: boolean,
   device: boolean
 };
 
-declare var isMobile$android: {
+declare var PIXI$utils$isMobile$android: {
   phone: boolean,
   tablet: boolean,
   device: boolean
 };
 
-declare var isMobile$amazon: {
+declare var PIXI$utils$isMobile$amazon: {
   phone: boolean,
   tablet: boolean,
   device: boolean
 };
 
-declare var isMobile$windows: {
+declare var PIXI$utils$isMobile$windows: {
   phone: boolean,
   tablet: boolean,
   device: boolean
 };
 
-declare var isMobile$seven_inch: boolean;
+declare var PIXI$utils$isMobile$seven_inch: boolean;
 
-declare var isMobile$other: {
+declare var PIXI$utils$isMobile$other: {
   blackberry10: boolean,
   blackberry: boolean,
   opera: boolean,
@@ -4053,16 +4170,16 @@ declare var isMobile$other: {
   device: boolean
 };
 
-declare var isMobile$any: boolean;
+declare var PIXI$utils$isMobile$any: boolean;
 
-declare var isMobile$phone: boolean;
+declare var PIXI$utils$isMobile$phone: boolean;
 
-declare var isMobile$tablet: boolean;
+declare var PIXI$utils$isMobile$tablet: boolean;
 
-declare class utils$EventEmitter {
+declare class PIXI$utils$EventEmitter {
   static prefixed: string | boolean;
-  static utils$EventEmitter: {
-    new(): utils$EventEmitter,
+  static PIXI$utils$EventEmitter: {
+    new(): PIXI$utils$EventEmitter,
     prefixed: string | boolean
   };
 
@@ -4109,7 +4226,7 @@ declare class utils$EventEmitter {
    * @param {(string | Symbol)} event The event name.
    * @param {Function} fn The listener function.
    * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} context The context to invoke the listener with.
-   * @returns {utils$EventEmitter} `this`.
+   * @returns {PIXI$utils$EventEmitter} `this`.
    */
   on(event: string | Symbol, fn: Function, context?: any): this;
 
@@ -4118,7 +4235,7 @@ declare class utils$EventEmitter {
    * @param {(string | Symbol)} event The event name.
    * @param {Function} fn The listener function.
    * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} context The context to invoke the listener with.
-   * @returns {utils$EventEmitter} `this`.
+   * @returns {PIXI$utils$EventEmitter} `this`.
    */
   once(event: string | Symbol, fn: Function, context?: any): this;
 
@@ -4128,7 +4245,7 @@ declare class utils$EventEmitter {
    * @param {Function} fn Only remove the listeners that match this function.
    * @param {"NO PRINT IMPLEMENTED: JSDocAllType"} context Only remove the listeners that have this context.
    * @param {boolean} once Only remove one-time listeners.
-   * @returns {utils$EventEmitter} `this`.
+   * @returns {PIXI$utils$EventEmitter} `this`.
    */
   removeListener(
     event: string | Symbol,
@@ -4140,7 +4257,7 @@ declare class utils$EventEmitter {
   /**
    * Remove all listeners, or those of the specified event.
    * @param {(string | Symbol)} event The event name.
-   * @returns {utils$EventEmitter} `this`.
+   * @returns {PIXI$utils$EventEmitter} `this`.
    */
   removeAllListeners(event?: string | Symbol): this;
 
@@ -4175,7 +4292,7 @@ declare class utils$EventEmitter {
  * @throws {ReferenceError} SpriteBatch does not exist any more, please use the new ParticleContainer instead.
  * @deprecated since version 3.0.0
  */
-declare type core$SpriteBatch = particles$ParticleContainer;
+declare type PIXI$core$SpriteBatch = PIXI$particles$ParticleContainer;
 
 /**
  * @class
@@ -4186,7 +4303,7 @@ declare type core$SpriteBatch = particles$ParticleContainer;
  * @throws {ReferenceError} The loader system was overhauled in pixi v3, please see the new PIXI.loaders.Loader class.
  * @deprecated since version 3.0.0
  */
-declare type core$AssetLoader = loadersloaders$Loader;
+declare type PIXI$core$AssetLoader = PIXI$loaders$Loader;
 
 /**
  * @class
@@ -4196,7 +4313,7 @@ declare type core$AssetLoader = loadersloaders$Loader;
  * @see PIXI.Container
  * @deprecated since version 3.0.0
  */
-declare type core$Stage = PIXI$Container;
+declare type PIXI$core$Stage = PIXI$Container;
 
 /**
  * @class
@@ -4206,7 +4323,7 @@ declare type core$Stage = PIXI$Container;
  * @see PIXI.Container
  * @deprecated since version 3.0.0
  */
-declare type core$DisplayObjectContainer = PIXI$Container;
+declare type PIXI$core$DisplayObjectContainer = PIXI$Container;
 
 /**
  * @class
@@ -4216,7 +4333,7 @@ declare type core$DisplayObjectContainer = PIXI$Container;
  * @see PIXI.mesh.Mesh
  * @deprecated since version 3.0.0
  */
-declare type core$Strip = meshmesh$Mesh;
+declare type PIXI$core$Strip = PIXI$mesh$Mesh;
 
 /**
  * @class
@@ -4226,7 +4343,7 @@ declare type core$Strip = meshmesh$Mesh;
  * @see PIXI.mesh.Rope
  * @deprecated since version 3.0.0
  */
-declare type core$Rope = meshcore$Rope;
+declare type PIXI$core$Rope = PIXI$mesh$Rope;
 
 /**
  * @class
@@ -4236,7 +4353,7 @@ declare type core$Rope = meshcore$Rope;
  * @see PIXI.particles.ParticleContainer
  * @deprecated since version 4.0.0
  */
-declare type core$ParticleContainer = particlescore$ParticleContainer;
+declare type PIXI$core$ParticleContainer = PIXI$particles$ParticleContainer;
 
 /**
  * @class
@@ -4246,7 +4363,7 @@ declare type core$ParticleContainer = particlescore$ParticleContainer;
  * @see PIXI.extras.MovieClip
  * @deprecated since version 3.0.0
  */
-declare type core$MovieClip = extrasextras$AnimatedSprite;
+declare type PIXI$core$MovieClip = PIXI$extras$AnimatedSprite;
 
 /**
  * @class
@@ -4256,7 +4373,7 @@ declare type core$MovieClip = extrasextras$AnimatedSprite;
  * @see PIXI.extras.TilingSprite
  * @deprecated since version 3.0.0
  */
-declare type core$TilingSprite = extrascore$TilingSprite;
+declare type PIXI$core$TilingSprite = PIXI$extras$TilingSprite;
 
 /**
  * @class
@@ -4266,7 +4383,7 @@ declare type core$TilingSprite = extrascore$TilingSprite;
  * @see PIXI.utils.BaseTextureCache
  * @deprecated since version 3.0.0
  */
-declare type core$BaseTextureCache = any;
+declare type PIXI$core$BaseTextureCache = any;
 
 /**
  * @class
@@ -4276,7 +4393,7 @@ declare type core$BaseTextureCache = any;
  * @see PIXI.extras.BitmapText
  * @deprecated since version 3.0.0
  */
-declare type core$BitmapText = extrascore$BitmapText;
+declare type PIXI$core$BitmapText = PIXI$extras$BitmapText;
 
 /**
  * @namespace
@@ -4286,7 +4403,7 @@ declare type core$BitmapText = extrascore$BitmapText;
  * @see PIXI
  * @deprecated since version 3.0.6
  */
-declare type core$math = any;
+declare type PIXI$core$math = any;
 
 /**
  * @class
@@ -4295,7 +4412,7 @@ declare type core$math = any;
  * @see PIXI.Filter
  * @deprecated since version 3.0.6
  */
-declare type core$AbstractFilter<U: Object> = PIXI$Filter<U>;
+declare type PIXI$core$AbstractFilter<U: Object> = PIXI$Filter<U>;
 
 /**
  * @class
@@ -4304,7 +4421,7 @@ declare type core$AbstractFilter<U: Object> = PIXI$Filter<U>;
  * @see PIXI.TransformBase
  * @deprecated since version 4.0.0
  */
-declare type core$TransformManual = PIXI$TransformBase;
+declare type PIXI$core$TransformManual = PIXI$TransformBase;
 
 /**
  * @static
@@ -4313,7 +4430,7 @@ declare type core$TransformManual = PIXI$TransformBase;
  * @see PIXI.settings.TARGET_FPMS
  * @deprecated since version 4.2.0
  */
-declare type core$TARGET_FPMS = number;
+declare type PIXI$core$TARGET_FPMS = number;
 
 /**
  * @static
@@ -4322,7 +4439,7 @@ declare type core$TARGET_FPMS = number;
  * @see PIXI.settings.FILTER_RESOLUTION
  * @deprecated since version 4.2.0
  */
-declare type core$FILTER_RESOLUTION = number;
+declare type PIXI$core$FILTER_RESOLUTION = number;
 
 /**
  * @static
@@ -4331,7 +4448,7 @@ declare type core$FILTER_RESOLUTION = number;
  * @see PIXI.settings.RESOLUTION
  * @deprecated since version 4.2.0
  */
-declare type core$RESOLUTION = number;
+declare type PIXI$core$RESOLUTION = number;
 
 /**
  * @static
@@ -4340,7 +4457,7 @@ declare type core$RESOLUTION = number;
  * @see PIXI.settings.MIPMAP_TEXTURES
  * @deprecated since version 4.2.0
  */
-declare type core$MIPMAP_TEXTURES = any;
+declare type PIXI$core$MIPMAP_TEXTURES = any;
 
 /**
  * @static
@@ -4349,7 +4466,7 @@ declare type core$MIPMAP_TEXTURES = any;
  * @see PIXI.settings.SPRITE_BATCH_SIZE
  * @deprecated since version 4.2.0
  */
-declare type core$SPRITE_BATCH_SIZE = number;
+declare type PIXI$core$SPRITE_BATCH_SIZE = number;
 
 /**
  * @static
@@ -4358,7 +4475,7 @@ declare type core$SPRITE_BATCH_SIZE = number;
  * @see PIXI.settings.SPRITE_MAX_TEXTURES
  * @deprecated since version 4.2.0
  */
-declare type core$SPRITE_MAX_TEXTURES = number;
+declare type PIXI$core$SPRITE_MAX_TEXTURES = number;
 
 /**
  * @static
@@ -4367,7 +4484,7 @@ declare type core$SPRITE_MAX_TEXTURES = number;
  * @see PIXI.settings.RETINA_PREFIX
  * @deprecated since version 4.2.0
  */
-declare type core$RETINA_PREFIX = RegExp | string;
+declare type PIXI$core$RETINA_PREFIX = RegExp | string;
 
 /**
  * @static
@@ -4376,7 +4493,7 @@ declare type core$RETINA_PREFIX = RegExp | string;
  * @see PIXI.settings.RENDER_OPTIONS
  * @deprecated since version 4.2.0
  */
-declare type core$DEFAULT_RENDER_OPTIONS = number;
+declare type PIXI$core$DEFAULT_RENDER_OPTIONS = number;
 
 /**
  * @static
@@ -4385,11 +4502,11 @@ declare type core$DEFAULT_RENDER_OPTIONS = number;
  * @see PIXI.PRECISION
  * @deprecated since version 4.4.0
  */
-declare type core$PRECISION = string;
+declare type PIXI$core$PRECISION = string;
 declare var npm$namespace$pixi: {
   gl: typeof pixi$gl
 };
-declare var pixi$gl: typeof undefined;
+declare var pixi$gl: typeof PIXI$glCore;
 declare module "pixi.js" {
-  declare module.exports: typeof PIXI;
+  declare export default typeof PIXI;
 }
