@@ -1,5 +1,5 @@
 declare module "@egjs/component" {
-  declare module.exports: typeof Component;
+  declare export default typeof Component;
 
   declare class Component {
     constructor(options?: {
