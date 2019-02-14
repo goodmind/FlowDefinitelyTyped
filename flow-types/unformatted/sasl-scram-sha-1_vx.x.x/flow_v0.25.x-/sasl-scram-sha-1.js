@@ -1,16 +1,4 @@
-declare interface ScramSha1Mechanism$Options {
-genNonce?: () => number
-} 
-
-declare interface ScramSha1Mechanism$Credentials {
-authzid?: string,
-username?: string,
-password?: string,
-salt?: string,
-saltedPassword?: string,
-clientKey?: string,
-serverKey?: string
-} declare module 'sasl-scram-sha-1' {
+declare module 'sasl-scram-sha-1' {
         import type {
           Mechanism
         } from 'saslmechanisms';
@@ -25,8 +13,21 @@ clientFirst: true
 };
 name: "SCRAM-SHA-1";
 clientFirst: true;
-constructor(options?: ScramSha1Mechanism$ScramSha1Mechanism$Options): this;
-response(cred: ScramSha1Mechanism$ScramSha1Mechanism$Credentials): string;
+constructor(options?: ScramSha1Mechanism$Options): this;
+response(cred: ScramSha1Mechanism$Credentials): string;
 challenge(chal: string): this
 }
+	declare interface ScramSha1Mechanism$Options {
+genNonce?: () => number
+} 
+
+declare interface ScramSha1Mechanism$Credentials {
+authzid?: string,
+username?: string,
+password?: string,
+salt?: string,
+saltedPassword?: string,
+clientKey?: string,
+serverKey?: string
+} 
     }
