@@ -1,8 +1,8 @@
 declare module "bufferstream" {
-  declare module.exports: typeof BufferStream;
+  declare export default typeof BufferStream;
 
   declare class BufferStream mixins stream.Duplex {
-    constructor(options?: BufferStream$BufferStream$Opts): this;
+    constructor(options?: BufferStream$Opts): this;
     setSize(size: string | number): void;
     enable(): void;
     disable(tokens?: string[] | Buffer[]): void;
