@@ -1,15 +1,16 @@
-declare var npm$namespace$chaiAsPromised: {
-  transferPromiseness: typeof chaiAsPromised$transferPromiseness,
-  transformAsserterArgs: typeof chaiAsPromised$transformAsserterArgs
-};
-declare function chaiAsPromised$transferPromiseness(
-  assertion: Chai$Chai$PromisedAssertion,
-  promise: PromiseLike<any>
-): void;
-
-declare function chaiAsPromised$transformAsserterArgs(values: any[]): any;
 declare module "chai-as-promised" {
   declare function chaiAsPromised(chai: any, utils: any): void;
+
+  declare var npm$namespace$chaiAsPromised: {
+    transferPromiseness: typeof chaiAsPromised$transferPromiseness,
+    transformAsserterArgs: typeof chaiAsPromised$transformAsserterArgs
+  };
+  declare function chaiAsPromised$transferPromiseness(
+    assertion: Chai$PromisedAssertion,
+    promise: PromiseLike<any>
+  ): void;
+
+  declare function chaiAsPromised$transformAsserterArgs(values: any[]): any;
 
   declare export default typeof chaiAsPromised;
 }
@@ -88,11 +89,11 @@ declare type Chai$Eventually = {
   sealed: Chai$PromisedAssertion,
   frozen: Chai$PromisedAssertion,
   oneOf(list: any[], message?: string): Chai$PromisedAssertion
-} & Chai$PromisedLanguageChains &
-  Chai$PromisedNumericComparison &
-  Chai$PromisedTypeComparison;
+} & PromisedLanguageChains &
+  PromisedNumericComparison &
+  PromisedTypeComparison;
 
-declare type Chai$PromisedAssertion = {} & Chai$Eventually & PromiseLike<any>;
+declare type Chai$PromisedAssertion = {} & Eventually & PromiseLike<any>;
 
 declare interface Chai$PromisedLanguageChains {
   eventually: Chai$Eventually;
@@ -196,8 +197,8 @@ declare interface Chai$PromisedOwnPropertyDescriptor {
 
 declare type Chai$PromisedLength = {
   (length: number, message?: string): Chai$PromisedAssertion
-} & Chai$PromisedLanguageChains &
-  Chai$PromisedNumericComparison;
+} & PromisedLanguageChains &
+  PromisedNumericComparison;
 
 declare interface Chai$PromisedInclude {
   (value: Object, message?: string): Chai$PromisedAssertion;
