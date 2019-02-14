@@ -1,5 +1,5 @@
 declare module "pg-escape" {
-  declare module.exports: typeof escape;
+  declare export default typeof escape;
 
   declare function escape(fmt: string, ...args: any[]): string;
 
