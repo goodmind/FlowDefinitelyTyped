@@ -1,10 +1,7 @@
-declare function Sammy(): Sammy$Sammy$Application;
-declare function Sammy(selector: string): Sammy$Sammy$Application;
-declare function Sammy(handler: Function): Sammy$Sammy$Application;
-declare function Sammy(
-  selector: string,
-  handler: Function
-): Sammy$Sammy$Application;
+declare function Sammy(): Sammy$Application;
+declare function Sammy(selector: string): Sammy$Application;
+declare function Sammy(handler: Function): Sammy$Application;
+declare function Sammy(selector: string, handler: Function): Sammy$Application;
 
 declare var npm$namespace$Sammy: {
   Cache: typeof Sammy$Cache,
@@ -36,13 +33,15 @@ declare var npm$namespace$Sammy: {
   log: typeof Sammy$log,
   DataLocationProxy: typeof Sammy$DataLocationProxy,
   FormBuilder: typeof Sammy$FormBuilder,
-  Store: typeof Sammy$Store
+  Store: typeof Sammy$Store,
+
+  Object: typeof Sammy$Object
 };
 declare interface Sammy$SammyFunc {
-  (): Sammy$Sammy$Application;
-  (selector: string): Sammy$Sammy$Application;
-  (handler: Function): Sammy$Sammy$Application;
-  (selector: string, handler: Function): Sammy$Sammy$Application;
+  (): Sammy$Application;
+  (selector: string): Sammy$Application;
+  (handler: Function): Sammy$Application;
+  (selector: string, handler: Function): Sammy$Application;
 }
 
 declare export function Sammy$Cache(app: any, options: any): any;
@@ -151,7 +150,7 @@ export type Sammy$Application = {
   helper(name: string, method: Function): any,
   helpers(extensions: any): any,
   isRunning(): boolean,
-  Sammy$log(...params: any[]): void,
+  log(...params: any[]): void,
   lookupRoute(verb: string, path: string): any,
   mapRoutes(route_array: any[]): Sammy$Application,
   notFound(verb: string, path: string): any,
@@ -179,7 +178,7 @@ export type Sammy$Application = {
   requireOAuth(): any,
   requireOAuth(path?: string): any,
   requireOAuth(callback?: Function): any
-} & Sammy$Object;
+} & Object;
 
 export interface Sammy$DataLocationProxy {
   new(app: any, run_interval_every?: any): Sammy$DataLocationProxy;
@@ -236,7 +235,7 @@ export type Sammy$EventContext = {
   trigger(name: string, data?: any): Sammy$EventContext,
   name: any,
   title: any
-} & Sammy$Object;
+} & Object;
 
 export interface Sammy$FormBuilder {
   new(name: any, object: any): any;
@@ -267,15 +266,15 @@ export interface Sammy$GoogleAnalytics {
   track(path: any): any;
 }
 
-export type Sammy$Haml = {} & Sammy$EventContext;
+export type Sammy$Haml = {} & EventContext;
 
-export type Sammy$Handlebars = {} & Sammy$EventContext;
+export type Sammy$Handlebars = {} & EventContext;
 
-export type Sammy$Hogan = {} & Sammy$EventContext;
+export type Sammy$Hogan = {} & EventContext;
 
-export type Sammy$JSON = {} & Sammy$EventContext;
+export type Sammy$JSON = {} & EventContext;
 
-export type Sammy$Mustache = {} & Sammy$EventContext;
+export type Sammy$Mustache = {} & EventContext;
 
 export type Sammy$RenderContext = {
   new(event_context: any): any,
@@ -327,7 +326,7 @@ export type Sammy$RenderContext = {
   then(callback: Function): Sammy$RenderContext,
   trigger(name: any, data: any): any,
   wait(): void
-} & Sammy$Object;
+} & Object;
 
 export interface Sammy$StoreOptions {
   name?: string;
@@ -361,12 +360,12 @@ export interface Sammy$Store {
   Memory(name: any, element: any): any;
   SessionStorage(name: any, element: any): any;
   isAvailable(type: any): any;
-  Sammy$Template(app: any, method_alias: any): any;
+  Template(app: any, method_alias: any): any;
 }
 declare module "sammy" {
   declare export default typeof Sammy;
 }
 declare interface JQueryStatic {
-  sammy: Sammy$Sammy$SammyFunc;
-  Sammy$log: Function;
+  sammy: Sammy$SammyFunc;
+  log: Function;
 }
