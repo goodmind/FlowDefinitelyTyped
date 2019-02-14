@@ -1,26 +1,30 @@
 declare module "gapi.client.dataproc" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Dataproc API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dataproc",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dataproc",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: dataproc$dataproc$ProjectsResource;
+  declare var gapi$client$projects: dataproc$ProjectsResource;
 
-  declare interface dataproc$AcceleratorConfig {
+  declare interface gapi$client$dataproc$AcceleratorConfig {
     /**
      * The number of the accelerator cards of this type exposed to this instance.
      */
@@ -35,7 +39,7 @@ declare module "gapi.client.dataproc" {
     acceleratorTypeUri?: string;
   }
 
-  declare interface dataproc$Cluster {
+  declare interface gapi$client$dataproc$Cluster {
     /**
      * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
@@ -80,7 +84,7 @@ declare module "gapi.client.dataproc" {
     statusHistory?: dataproc$ClusterStatus[];
   }
 
-  declare interface dataproc$ClusterConfig {
+  declare interface gapi$client$dataproc$ClusterConfig {
     /**
      * Optional. A Google Cloud Storage staging bucket used for sharing generated SSH keys and config. If you do not specify a staging bucket, Cloud Dataproc
      * will determine an appropriate Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone
@@ -126,7 +130,7 @@ declare module "gapi.client.dataproc" {
     workerConfig?: dataproc$InstanceGroupConfig;
   }
 
-  declare interface dataproc$ClusterMetrics {
+  declare interface gapi$client$dataproc$ClusterMetrics {
     /**
      * The HDFS metrics.
      */
@@ -138,7 +142,7 @@ declare module "gapi.client.dataproc" {
     yarnMetrics?: Record<string, string>;
   }
 
-  declare interface dataproc$ClusterOperationMetadata {
+  declare interface gapi$client$dataproc$ClusterOperationMetadata {
     /**
      * Output-only. Name of the cluster for the operation.
      */
@@ -180,7 +184,7 @@ declare module "gapi.client.dataproc" {
     warnings?: string[];
   }
 
-  declare interface dataproc$ClusterOperationStatus {
+  declare interface gapi$client$dataproc$ClusterOperationStatus {
     /**
      * Output-only.A message containing any operation metadata details.
      */
@@ -202,7 +206,7 @@ declare module "gapi.client.dataproc" {
     stateStartTime?: string;
   }
 
-  declare interface dataproc$ClusterStatus {
+  declare interface gapi$client$dataproc$ClusterStatus {
     /**
      * Output-only. Optional details of cluster's state.
      */
@@ -224,14 +228,14 @@ declare module "gapi.client.dataproc" {
     substate?: string;
   }
 
-  declare interface dataproc$DiagnoseClusterResults {
+  declare interface gapi$client$dataproc$DiagnoseClusterResults {
     /**
      * Output-only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain text file with a summary of collected diagnostics.
      */
     outputUri?: string;
   }
 
-  declare interface dataproc$DiskConfig {
+  declare interface gapi$client$dataproc$DiskConfig {
     /**
      * Optional. Size in GB of the boot disk (default is 500GB).
      */
@@ -245,7 +249,7 @@ declare module "gapi.client.dataproc" {
     numLocalSsds?: number;
   }
 
-  declare interface dataproc$GceClusterConfig {
+  declare interface gapi$client$dataproc$GceClusterConfig {
     /**
      * Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses,
      * and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled
@@ -315,7 +319,7 @@ declare module "gapi.client.dataproc" {
     zoneUri?: string;
   }
 
-  declare interface dataproc$HadoopJob {
+  declare interface gapi$client$dataproc$HadoopJob {
     /**
      * Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
      * or .zip.
@@ -362,7 +366,7 @@ declare module "gapi.client.dataproc" {
     properties?: Record<string, string>;
   }
 
-  declare interface dataproc$HiveJob {
+  declare interface gapi$client$dataproc$HiveJob {
     /**
      * Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent
      * parallel queries.
@@ -396,17 +400,17 @@ declare module "gapi.client.dataproc" {
     scriptVariables?: Record<string, string>;
   }
 
-  declare interface dataproc$InstanceGroupConfig {
+  declare interface gapi$client$dataproc$InstanceGroupConfig {
     /**
      * Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be
      * changed before final release.
      */
-    accelerators?: dataproc$AcceleratorConfig[];
+    accelerators?: gapi$client$dataproc$AcceleratorConfig[];
 
     /**
      * Optional. Disk option config settings.
      */
-    diskConfig?: dataproc$DiskConfig;
+    diskConfig?: gapi$client$dataproc$DiskConfig;
 
     /**
      * Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from SoftwareConfig.image_version.
@@ -443,7 +447,7 @@ declare module "gapi.client.dataproc" {
     numInstances?: number;
   }
 
-  declare interface dataproc$Job {
+  declare interface gapi$client$dataproc$Job {
     /**
      * Output-only. If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files
      * may be placed in the same location as driver_output_uri.
@@ -458,12 +462,12 @@ declare module "gapi.client.dataproc" {
     /**
      * Job is a Hadoop job.
      */
-    hadoopJob?: dataproc$HadoopJob;
+    hadoopJob?: gapi$client$dataproc$HadoopJob;
 
     /**
      * Job is a Hive job.
      */
-    hiveJob?: dataproc$HiveJob;
+    hiveJob?: gapi$client$dataproc$HiveJob;
 
     /**
      * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035
@@ -526,7 +530,7 @@ declare module "gapi.client.dataproc" {
     yarnApplications?: dataproc$YarnApplication[];
   }
 
-  declare interface dataproc$JobPlacement {
+  declare interface gapi$client$dataproc$JobPlacement {
     /**
      * Required. The name of the cluster where the job will be submitted.
      */
@@ -538,7 +542,7 @@ declare module "gapi.client.dataproc" {
     clusterUuid?: string;
   }
 
-  declare interface dataproc$JobReference {
+  declare interface gapi$client$dataproc$JobReference {
     /**
      * Optional. The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a
      * means to perform retries without creating duplicate jobs. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-).
@@ -552,7 +556,7 @@ declare module "gapi.client.dataproc" {
     projectId?: string;
   }
 
-  declare interface dataproc$JobScheduling {
+  declare interface gapi$client$dataproc$JobScheduling {
     /**
      * Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported
      * failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
@@ -560,7 +564,7 @@ declare module "gapi.client.dataproc" {
     maxFailuresPerHour?: number;
   }
 
-  declare interface dataproc$JobStatus {
+  declare interface gapi$client$dataproc$JobStatus {
     /**
      * Output-only. Optional job state details, such as an error description if the state is <code>ERROR</code>.
      */
@@ -582,11 +586,11 @@ declare module "gapi.client.dataproc" {
     substate?: string;
   }
 
-  declare interface dataproc$ListClustersResponse {
+  declare interface gapi$client$dataproc$ListClustersResponse {
     /**
      * Output-only. The clusters in the project.
      */
-    clusters?: dataproc$Cluster[];
+    clusters?: gapi$client$dataproc$Cluster[];
 
     /**
      * Output-only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the
@@ -595,11 +599,11 @@ declare module "gapi.client.dataproc" {
     nextPageToken?: string;
   }
 
-  declare interface dataproc$ListJobsResponse {
+  declare interface gapi$client$dataproc$ListJobsResponse {
     /**
      * Output-only. Jobs list.
      */
-    jobs?: dataproc$Job[];
+    jobs?: gapi$client$dataproc$Job[];
 
     /**
      * Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token
@@ -608,7 +612,7 @@ declare module "gapi.client.dataproc" {
     nextPageToken?: string;
   }
 
-  declare interface dataproc$ListOperationsResponse {
+  declare interface gapi$client$dataproc$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -620,7 +624,7 @@ declare module "gapi.client.dataproc" {
     operations?: dataproc$Operation[];
   }
 
-  declare interface dataproc$LoggingConfig {
+  declare interface gapi$client$dataproc$LoggingConfig {
     /**
      * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples:  'com.google = FATAL', 'root =
      * INFO', 'org.apache = DEBUG'
@@ -628,7 +632,7 @@ declare module "gapi.client.dataproc" {
     driverLogLevels?: Record<string, string>;
   }
 
-  declare interface dataproc$ManagedGroupConfig {
+  declare interface gapi$client$dataproc$ManagedGroupConfig {
     /**
      * Output-only. The name of the Instance Group Manager for this group.
      */
@@ -640,7 +644,7 @@ declare module "gapi.client.dataproc" {
     instanceTemplateName?: string;
   }
 
-  declare interface dataproc$NodeInitializationAction {
+  declare interface gapi$client$dataproc$NodeInitializationAction {
     /**
      * Required. Google Cloud Storage URI of executable file.
      */
@@ -653,7 +657,7 @@ declare module "gapi.client.dataproc" {
     executionTimeout?: string;
   }
 
-  declare interface dataproc$Operation {
+  declare interface gapi$client$dataproc$Operation {
     /**
      * If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.
      */
@@ -685,7 +689,7 @@ declare module "gapi.client.dataproc" {
     response?: Record<string, any>;
   }
 
-  declare interface dataproc$PigJob {
+  declare interface gapi$client$dataproc$PigJob {
     /**
      * Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent
      * parallel queries.
@@ -700,7 +704,7 @@ declare module "gapi.client.dataproc" {
     /**
      * Optional. The runtime log config for job execution.
      */
-    loggingConfig?: dataproc$LoggingConfig;
+    loggingConfig?: gapi$client$dataproc$LoggingConfig;
 
     /**
      * Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be
@@ -724,7 +728,7 @@ declare module "gapi.client.dataproc" {
     scriptVariables?: Record<string, string>;
   }
 
-  declare interface dataproc$PySparkJob {
+  declare interface gapi$client$dataproc$PySparkJob {
     /**
      * Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
      */
@@ -749,7 +753,7 @@ declare module "gapi.client.dataproc" {
     /**
      * Optional. The runtime log config for job execution.
      */
-    loggingConfig?: dataproc$LoggingConfig;
+    loggingConfig?: gapi$client$dataproc$LoggingConfig;
 
     /**
      * Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
@@ -768,7 +772,7 @@ declare module "gapi.client.dataproc" {
     pythonFileUris?: string[];
   }
 
-  declare interface dataproc$QueryList {
+  declare interface gapi$client$dataproc$QueryList {
     /**
      * Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating
      * each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:
@@ -785,7 +789,7 @@ declare module "gapi.client.dataproc" {
     queries?: string[];
   }
 
-  declare interface dataproc$SoftwareConfig {
+  declare interface gapi$client$dataproc$SoftwareConfig {
     /**
      * Optional. The version of software inside the cluster. It must match the regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the latest
      * version (see Cloud Dataproc Versioning).
@@ -808,7 +812,7 @@ declare module "gapi.client.dataproc" {
     properties?: Record<string, string>;
   }
 
-  declare interface dataproc$SparkJob {
+  declare interface gapi$client$dataproc$SparkJob {
     /**
      * Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
      * and .zip.
@@ -834,7 +838,7 @@ declare module "gapi.client.dataproc" {
     /**
      * Optional. The runtime log config for job execution.
      */
-    loggingConfig?: dataproc$LoggingConfig;
+    loggingConfig?: gapi$client$dataproc$LoggingConfig;
 
     /**
      * The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
@@ -853,7 +857,7 @@ declare module "gapi.client.dataproc" {
     properties?: Record<string, string>;
   }
 
-  declare interface dataproc$SparkSqlJob {
+  declare interface gapi$client$dataproc$SparkSqlJob {
     /**
      * Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      */
@@ -862,7 +866,7 @@ declare module "gapi.client.dataproc" {
     /**
      * Optional. The runtime log config for job execution.
      */
-    loggingConfig?: dataproc$LoggingConfig;
+    loggingConfig?: gapi$client$dataproc$LoggingConfig;
 
     /**
      * Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud
@@ -878,7 +882,7 @@ declare module "gapi.client.dataproc" {
     /**
      * A list of queries.
      */
-    queryList?: dataproc$QueryList;
+    queryList?: gapi$client$dataproc$QueryList;
 
     /**
      * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
@@ -886,7 +890,7 @@ declare module "gapi.client.dataproc" {
     scriptVariables?: Record<string, string>;
   }
 
-  declare interface dataproc$Status {
+  declare interface gapi$client$dataproc$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -904,14 +908,14 @@ declare module "gapi.client.dataproc" {
     message?: string;
   }
 
-  declare interface dataproc$SubmitJobRequest {
+  declare interface gapi$client$dataproc$SubmitJobRequest {
     /**
      * Required. The job resource.
      */
-    job?: dataproc$Job;
+    job?: gapi$client$dataproc$Job;
   }
 
-  declare interface dataproc$YarnApplication {
+  declare interface gapi$client$dataproc$YarnApplication {
     /**
      * Required. The application name.
      */
@@ -934,7 +938,7 @@ declare module "gapi.client.dataproc" {
     trackingUrl?: string;
   }
 
-  declare interface dataproc$ClustersResource {
+  declare interface gapi$client$dataproc$ClustersResource {
     /**
      * Creates a cluster in a project.
      */
@@ -1013,7 +1017,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Operation>;
+    }): Request<gapi$client$dataproc$Operation>;
 
     /**
      * Deletes a cluster in a project.
@@ -1098,7 +1102,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Operation>;
+    }): Request<gapi$client$dataproc$Operation>;
 
     /**
      * Gets cluster diagnostic information. After the operation completes, the Operation.response field contains DiagnoseClusterOutputLocation.
@@ -1183,7 +1187,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Operation>;
+    }): Request<gapi$client$dataproc$Operation>;
 
     /**
      * Gets the resource representation for a cluster in a project.
@@ -1268,7 +1272,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Cluster>;
+    }): Request<gapi$client$dataproc$Cluster>;
 
     /**
      * Lists all regions/{region}/clusters in a project.
@@ -1368,7 +1372,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$ListClustersResponse>;
+    }): Request<gapi$client$dataproc$ListClustersResponse>;
 
     /**
      * Updates a cluster in a project.
@@ -1479,10 +1483,10 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Operation>;
+    }): Request<gapi$client$dataproc$Operation>;
   }
 
-  declare interface dataproc$JobsResource {
+  declare interface gapi$client$dataproc$JobsResource {
     /**
      * Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.
      */
@@ -1566,7 +1570,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Job>;
+    }): Request<gapi$client$dataproc$Job>;
 
     /**
      * Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION.
@@ -1736,7 +1740,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Job>;
+    }): Request<gapi$client$dataproc$Job>;
 
     /**
      * Lists regions/{region}/jobs in a project.
@@ -1844,7 +1848,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$ListJobsResponse>;
+    }): Request<gapi$client$dataproc$ListJobsResponse>;
 
     /**
      * Updates a job in a project.
@@ -1936,7 +1940,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Job>;
+    }): Request<gapi$client$dataproc$Job>;
 
     /**
      * Submits a job to a cluster.
@@ -2016,10 +2020,10 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Job>;
+    }): Request<gapi$client$dataproc$Job>;
   }
 
-  declare interface dataproc$OperationsResource {
+  declare interface gapi$client$dataproc$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If
      * the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check
@@ -2248,7 +2252,7 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$Operation>;
+    }): Request<gapi$client$dataproc$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
@@ -2342,16 +2346,16 @@ declare module "gapi.client.dataproc" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<dataproc$ListOperationsResponse>;
+    }): Request<gapi$client$dataproc$ListOperationsResponse>;
   }
 
-  declare interface dataproc$RegionsResource {
-    clusters: dataproc$ClustersResource;
-    jobs: dataproc$JobsResource;
-    operations: dataproc$OperationsResource;
+  declare interface gapi$client$dataproc$RegionsResource {
+    clusters: gapi$client$dataproc$ClustersResource;
+    jobs: gapi$client$dataproc$JobsResource;
+    operations: gapi$client$dataproc$OperationsResource;
   }
 
-  declare interface dataproc$ProjectsResource {
-    regions: dataproc$RegionsResource;
+  declare interface gapi$client$dataproc$ProjectsResource {
+    regions: gapi$client$dataproc$RegionsResource;
   }
 }
