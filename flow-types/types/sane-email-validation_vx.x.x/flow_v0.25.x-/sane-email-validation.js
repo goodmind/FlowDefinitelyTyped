@@ -6,5 +6,5 @@ declare module "sane-email-validation" {
   };
   declare function isEmail$isNotEmail(email: string): boolean;
 
-  declare module.exports: typeof isEmail;
+  declare export default typeof isEmail;
 }
