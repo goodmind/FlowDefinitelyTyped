@@ -50,7 +50,7 @@ declare module "observe-js" {
      * @param value the value to set
      */
     setValue(value: any): void
-  } & observejs$Observable;
+  } & Observable;
 
   /**
    * Observes a "value-at-a-path" from a given object:
@@ -101,7 +101,7 @@ declare module "observe-js" {
         oldSplices: Array<observejs$splice>
       ) => any
     ): void
-  } & observejs$Observable;
+  } & Observable;
 
   /**
    * ArrayObserver observes the index-positions of an Array and reports changes as the minimal set of "splices" which would have had the same effect.
@@ -129,7 +129,7 @@ declare module "observe-js" {
         getOldValueFn: (property: string) => any
       ) => any
     ): void
-  } & observejs$Observable;
+  } & Observable;
 
   /**
    * Observes the set of own-properties of an object and their values
@@ -157,7 +157,7 @@ declare module "observe-js" {
      * Adds an Observer to the list of observables.
      */
     addObserver(observer: observejs$Observable): void
-  } & observejs$Observable;
+  } & Observable;
 
   /**
    * CompoundObserver allows simultaneous observation of multiple paths and/or Observables.
@@ -194,7 +194,7 @@ declare module "observe-js" {
      * @param value the value to set
      */
     setValue(value: any): void
-  } & observejs$Observable;
+  } & Observable;
 
   /**
    * CompoundObserver allows simultaneous observation of multiple paths and/or Observables.
@@ -215,18 +215,18 @@ declare module "observe-js" {
      */
     getValueFrom(object: any, newValue: any): any;
   }
-  declare var observejs$PathObserver: typeof undefined;
-  declare var observejs$ArrayObserver: typeof undefined;
-  declare var observejs$ObjectObserver: typeof undefined;
-  declare var observejs$CompoundObserver: typeof undefined;
-  declare var observejs$ObserverTransform: typeof undefined;
-  declare var observejs$Path: observejs$observejs$Path;
+  declare var observejs$PathObserver: typeof observejs$PathObserver;
+  declare var observejs$ArrayObserver: typeof observejs$ArrayObserver;
+  declare var observejs$ObjectObserver: typeof observejs$ObjectObserver;
+  declare var observejs$CompoundObserver: typeof observejs$CompoundObserver;
+  declare var observejs$ObserverTransform: typeof observejs$ObserverTransform;
+  declare var observejs$Path: observejs$Path;
   declare export {
-    observejs$PathObserver,
-    observejs$ArrayObserver,
-    observejs$ObjectObserver,
-    observejs$CompoundObserver,
-    observejs$ObserverTransform,
-    observejs$Path
+    PathObserver,
+    ArrayObserver,
+    ObjectObserver,
+    CompoundObserver,
+    ObserverTransform,
+    Path
   };
 }
