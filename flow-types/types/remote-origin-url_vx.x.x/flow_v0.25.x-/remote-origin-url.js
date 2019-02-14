@@ -1,17 +1,15 @@
 declare module "remote-origin-url" {
-  declare module.exports: typeof remoteOriginUrl;
+  declare export default typeof remoteOriginUrl;
 
   declare function remoteOriginUrl(
-    options?: string | remoteOriginUrl$remoteOriginUrl$Options
+    options?: string | remoteOriginUrl$Options
   ): Promise<string | void>;
 
-  declare function remoteOriginUrl(
-    callback: remoteOriginUrl$remoteOriginUrl$Callback
-  ): void;
+  declare function remoteOriginUrl(callback: remoteOriginUrl$Callback): void;
 
   declare function remoteOriginUrl(
-    options: string | remoteOriginUrl$remoteOriginUrl$Options,
-    callback: remoteOriginUrl$remoteOriginUrl$Callback
+    options: string | remoteOriginUrl$Options,
+    callback: remoteOriginUrl$Callback
   ): void;
 
   declare var npm$namespace$remoteOriginUrl: {
