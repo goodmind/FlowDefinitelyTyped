@@ -16,7 +16,15 @@ declare module "sjcl" {
     keyexchange: typeof sjcl$keyexchange,
     json: typeof sjcl$json,
     encrypt: typeof sjcl$encrypt,
-    decrypt: typeof sjcl$decrypt
+    decrypt: typeof sjcl$decrypt,
+
+    SjclPseudorandomFunctionFamily: typeof sjcl$SjclPseudorandomFunctionFamily,
+    SjclECCPublicKey: typeof sjcl$SjclECCPublicKey,
+    SjclECCSecretKey: typeof sjcl$SjclECCSecretKey,
+    SjclElGamalPublicKey: typeof sjcl$SjclElGamalPublicKey,
+    SjclElGamalSecretKey: typeof sjcl$SjclElGamalSecretKey,
+    SjclEcdsaPublicKey: typeof sjcl$SjclEcdsaPublicKey,
+    SjclEcdsaSecretKey: typeof sjcl$SjclEcdsaSecretKey
   };
   declare export var sjcl$bn: sjcl$BigNumberStatic;
 
@@ -52,28 +60,28 @@ declare module "sjcl" {
     radix: number;
     maxMul: number;
     copy(): sjcl$BigNumber;
-    initWith: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
+    initWith: TypeHelpers$BigNumberBinaryOperator;
     equals(that: number): boolean;
     equals(that: sjcl$BigNumber): boolean;
     getLimb(index: number): number;
     greaterEquals(that: number): boolean;
     greaterEquals(that: sjcl$BigNumber): boolean;
     toString(): string;
-    addM: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
+    addM: TypeHelpers$BigNumberBinaryOperator;
     doubleM(): sjcl$BigNumber;
     halveM(): sjcl$BigNumber;
-    subM: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
-    mod: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
-    inverseMod: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
-    add: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
-    sub: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
-    mul: TypeHelpers$TypeHelpers$BigNumberBinaryOperator;
+    subM: TypeHelpers$BigNumberBinaryOperator;
+    mod: TypeHelpers$BigNumberBinaryOperator;
+    inverseMod: TypeHelpers$BigNumberBinaryOperator;
+    add: TypeHelpers$BigNumberBinaryOperator;
+    sub: TypeHelpers$BigNumberBinaryOperator;
+    mul: TypeHelpers$BigNumberBinaryOperator;
     square(): sjcl$BigNumber;
     power(n: number): sjcl$BigNumber;
     power(n: sjcl$BigNumber): sjcl$BigNumber;
     power(a: number[]): sjcl$BigNumber;
-    mulmod: TypeHelpers$TypeHelpers$BigNumberTrinaryOperator;
-    powermod: TypeHelpers$TypeHelpers$BigNumberTrinaryOperator;
+    mulmod: TypeHelpers$BigNumberTrinaryOperator;
+    powermod: TypeHelpers$BigNumberTrinaryOperator;
     trim(): sjcl$BigNumber;
     reduce(): sjcl$BigNumber;
     fullReduce(): sjcl$BigNumber;
@@ -89,7 +97,7 @@ declare module "sjcl" {
     new(n: number): sjcl$BigNumber;
     new(n: sjcl$BigNumber): sjcl$BigNumber;
     fromBits(bits: sjcl$BitArray): sjcl$BigNumber;
-    sjcl$random: TypeHelpers$TypeHelpers$Bind1<number>;
+    random: TypeHelpers$Bind1<number>;
     prime: {
       p127: sjcl$PseudoMersennePrimeStatic,
       p25519: sjcl$PseudoMersennePrimeStatic,
@@ -112,14 +120,14 @@ declare module "sjcl" {
     reduce(): sjcl$PseudoMersennePrime,
     fullReduce(): sjcl$PseudoMersennePrime,
     inverse(): sjcl$PseudoMersennePrime
-  } & sjcl$BigNumber;
+  } & BigNumber;
 
   declare type sjcl$PseudoMersennePrimeStatic = {
     new(): sjcl$PseudoMersennePrime,
     new(n: string): sjcl$PseudoMersennePrime,
     new(n: number): sjcl$PseudoMersennePrime,
     new(n: sjcl$BigNumber): sjcl$PseudoMersennePrime
-  } & sjcl$BigNumberStatic;
+  } & BigNumberStatic;
 
   declare type sjcl$BitArray = {} & Array<number>;
 
@@ -162,9 +170,9 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclHashStatic {
-    new(sjcl$hash?: sjcl$SjclHash): sjcl$SjclHash;
-    sjcl$hash(data: string): sjcl$BitArray;
-    sjcl$hash(data: sjcl$BitArray): sjcl$BitArray;
+    new(hash?: sjcl$SjclHash): sjcl$SjclHash;
+    hash(data: string): sjcl$BitArray;
+    hash(data: sjcl$BitArray): sjcl$BitArray;
   }
 
   declare interface sjcl$SjclHashes {
@@ -189,8 +197,8 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclCipher {
-    sjcl$encrypt(data: number[]): number[];
-    sjcl$decrypt(data: number[]): number[];
+    encrypt(data: number[]): number[];
+    decrypt(data: number[]): number[];
   }
 
   declare interface sjcl$SjclCipherStatic {
@@ -205,14 +213,14 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclGCMMode {
-    sjcl$encrypt(
+    encrypt(
       prp: sjcl$SjclCipher,
       plaintext: sjcl$BitArray,
       iv: sjcl$BitArray,
       adata?: sjcl$BitArray,
       tlen?: number
     ): sjcl$BitArray;
-    sjcl$decrypt(
+    decrypt(
       prp: sjcl$SjclCipher,
       ciphertext: sjcl$BitArray,
       iv: sjcl$BitArray,
@@ -222,14 +230,14 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclCCMMode {
-    sjcl$encrypt(
+    encrypt(
       prp: sjcl$SjclCipher,
       plaintext: sjcl$BitArray,
       iv: sjcl$BitArray,
       adata?: sjcl$BitArray,
       tlen?: number
     ): sjcl$BitArray;
-    sjcl$decrypt(
+    decrypt(
       prp: sjcl$SjclCipher,
       ciphertext: sjcl$BitArray,
       iv: sjcl$BitArray,
@@ -239,7 +247,7 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclOCB2Mode {
-    sjcl$encrypt(
+    encrypt(
       prp: sjcl$SjclCipher,
       plaintext: sjcl$BitArray,
       iv: sjcl$BitArray,
@@ -247,7 +255,7 @@ declare module "sjcl" {
       tlen?: number,
       premac?: boolean
     ): sjcl$BitArray;
-    sjcl$decrypt(
+    decrypt(
       prp: sjcl$SjclCipher,
       ciphertext: sjcl$BitArray,
       iv: sjcl$BitArray,
@@ -259,13 +267,13 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclCBCMode {
-    sjcl$encrypt(
+    encrypt(
       prp: sjcl$SjclCipher,
       plaintext: sjcl$BitArray,
       iv: sjcl$BitArray,
       adata?: sjcl$BitArray
     ): sjcl$BitArray;
-    sjcl$decrypt(
+    decrypt(
       prp: sjcl$SjclCipher,
       ciphertext: sjcl$BitArray,
       iv: sjcl$BitArray,
@@ -329,7 +337,7 @@ declare module "sjcl" {
     update(data: string): void,
     update(data: sjcl$BitArray): void,
     digest(): sjcl$BitArray
-  } & sjcl$SjclPseudorandomFunctionFamily;
+  } & SjclPseudorandomFunctionFamily;
 
   declare interface sjcl$SjclPseudorandomFunctionFamilyStatic {
     new(key: sjcl$BitArray): sjcl$SjclPseudorandomFunctionFamily;
@@ -473,7 +481,7 @@ declare module "sjcl" {
     ): sjcl$SjclKeysGenerator<sjcl$SjclECCPublicKey, sjcl$SjclECCSecretKey>;
   }
 
-  declare class sjcl$SjclElGamalPublicKey mixins sjcl$SjclECCPublicKey {
+  declare class sjcl$SjclElGamalPublicKey mixins SjclECCPublicKey {
     kem(
       paranoia: number
     ): {
@@ -482,7 +490,7 @@ declare module "sjcl" {
     };
   }
 
-  declare class sjcl$SjclElGamalSecretKey mixins sjcl$SjclECCSecretKey {
+  declare class sjcl$SjclElGamalSecretKey mixins SjclECCSecretKey {
     unkem(tag: sjcl$BitArray): sjcl$BitArray;
     dh(pk: sjcl$SjclECCPublicKey): sjcl$BitArray;
   }
@@ -496,17 +504,17 @@ declare module "sjcl" {
     >;
   }
 
-  declare class sjcl$SjclEcdsaPublicKey mixins sjcl$SjclECCPublicKey {
+  declare class sjcl$SjclEcdsaPublicKey mixins SjclECCPublicKey {
     verify(
-      sjcl$hash: sjcl$BitArray,
+      hash: sjcl$BitArray,
       rs: sjcl$BitArray,
       fakeLegacyVersion: boolean
     ): boolean;
   }
 
-  declare class sjcl$SjclEcdsaSecretKey mixins sjcl$SjclECCSecretKey {
+  declare class sjcl$SjclEcdsaSecretKey mixins SjclECCSecretKey {
     sign(
-      sjcl$hash: sjcl$BitArray,
+      hash: sjcl$BitArray,
       paranoia: number,
       fakeLegacyVersion: boolean,
       fixedKForTesting?: sjcl$BigNumber
@@ -570,29 +578,29 @@ declare module "sjcl" {
     iter?: number;
     ks?: number;
     ts?: number;
-    sjcl$mode?: string;
+    mode?: string;
     adata?: string;
-    sjcl$cipher?: string;
+    cipher?: string;
   }
 
   declare type sjcl$SjclCipherEncryptParams = {
     salt: sjcl$BitArray,
     iv: sjcl$BitArray
-  } & sjcl$SjclCipherParams;
+  } & SjclCipherParams;
 
   declare type sjcl$SjclCipherDecryptParams = {
     salt?: sjcl$BitArray,
     iv?: sjcl$BitArray
-  } & sjcl$SjclCipherParams;
+  } & SjclCipherParams;
 
   declare type sjcl$SjclCipherEncrypted = {
     kemtag?: sjcl$BitArray,
     ct: sjcl$BitArray
-  } & sjcl$SjclCipherEncryptParams;
+  } & SjclCipherEncryptParams;
 
   declare type sjcl$SjclCipherDecrypted = {
     key: sjcl$BitArray
-  } & sjcl$SjclCipherEncrypted;
+  } & SjclCipherEncrypted;
 
   declare interface sjcl$SjclConveninceEncryptor {
     (
@@ -643,29 +651,29 @@ declare module "sjcl" {
   }
 
   declare interface sjcl$SjclJson {
-    sjcl$encrypt: sjcl$SjclConveninceEncryptor;
-    sjcl$decrypt: sjcl$SjclConveninceDecryptor;
+    encrypt: sjcl$SjclConveninceEncryptor;
+    decrypt: sjcl$SjclConveninceDecryptor;
     encode(obj: Object): string;
     decode(obj: string): Object;
   }
 
-  declare interface TypeHelpers$One<T> {
+  declare interface sjcl$TypeHelpers$One<T> {
     (value: T): sjcl$BigNumber;
   }
 
-  declare type TypeHelpers$BigNumberBinaryOperator = {} & TypeHelpers$One<number> &
-    TypeHelpers$One<string> &
-    TypeHelpers$One<sjcl$BigNumber>;
+  declare type sjcl$TypeHelpers$BigNumberBinaryOperator = {} & One<number> &
+    One<string> &
+    One<sjcl$BigNumber>;
 
-  declare interface TypeHelpers$Two<T1, T2> {
+  declare interface sjcl$TypeHelpers$Two<T1, T2> {
     (x: T1, N: T2): sjcl$BigNumber;
   }
 
-  declare type TypeHelpers$Bind1<T> = {} & TypeHelpers$Two<number, T> &
-    TypeHelpers$Two<string, T> &
-    TypeHelpers$Two<sjcl$BigNumber, T>;
+  declare type sjcl$TypeHelpers$Bind1<T> = {} & Two<number, T> &
+    Two<string, T> &
+    Two<sjcl$BigNumber, T>;
 
-  declare type TypeHelpers$BigNumberTrinaryOperator = {} & TypeHelpers$Bind1<number> &
-    TypeHelpers$Bind1<string> &
-    TypeHelpers$Bind1<sjcl$BigNumber>;
+  declare type sjcl$TypeHelpers$BigNumberTrinaryOperator = {} & Bind1<number> &
+    Bind1<string> &
+    Bind1<sjcl$BigNumber>;
 }
