@@ -9,5 +9,5 @@ declare module "express-xml-bodyparser" {
     regexp: typeof xmlparser$regexp
   };
   declare var xmlparser$regexp: RegExp;
-  declare module.exports: typeof xmlparser;
+  declare export default typeof xmlparser;
 }
