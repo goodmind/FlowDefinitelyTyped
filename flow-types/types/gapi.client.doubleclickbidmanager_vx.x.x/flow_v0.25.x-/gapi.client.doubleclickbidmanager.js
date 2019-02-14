@@ -1,35 +1,39 @@
 declare module "gapi.client.doubleclickbidmanager" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    lineitems: typeof client$lineitems,
-    queries: typeof client$queries,
-    reports: typeof client$reports,
-    sdf: typeof client$sdf
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    lineitems: typeof gapi$client$lineitems,
+    queries: typeof gapi$client$queries,
+    reports: typeof gapi$client$reports,
+    sdf: typeof gapi$client$sdf
   };
 
   /**
    * Load DoubleClick Bid Manager API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "doubleclickbidmanager",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "doubleclickbidmanager",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$lineitems: doubleclickbidmanager$doubleclickbidmanager$LineitemsResource;
+  declare var gapi$client$lineitems: doubleclickbidmanager$LineitemsResource;
 
-  declare var client$queries: doubleclickbidmanager$doubleclickbidmanager$QueriesResource;
+  declare var gapi$client$queries: doubleclickbidmanager$QueriesResource;
 
-  declare var client$reports: doubleclickbidmanager$doubleclickbidmanager$ReportsResource;
+  declare var gapi$client$reports: doubleclickbidmanager$ReportsResource;
 
-  declare var client$sdf: doubleclickbidmanager$doubleclickbidmanager$SdfResource;
+  declare var gapi$client$sdf: doubleclickbidmanager$SdfResource;
 
-  declare interface doubleclickbidmanager$DownloadLineItemsRequest {
+  declare interface gapi$client$doubleclickbidmanager$DownloadLineItemsRequest {
     /**
      * File specification (column names, types, order) in which the line items will be returned. Default to EWF.
      */
@@ -51,14 +55,14 @@ declare module "gapi.client.doubleclickbidmanager" {
     format?: string;
   }
 
-  declare interface doubleclickbidmanager$DownloadLineItemsResponse {
+  declare interface gapi$client$doubleclickbidmanager$DownloadLineItemsResponse {
     /**
      * Retrieved line items in CSV format. For more information about file formats, see  Entity Write File Format.
      */
     lineItems?: string;
   }
 
-  declare interface doubleclickbidmanager$DownloadRequest {
+  declare interface gapi$client$doubleclickbidmanager$DownloadRequest {
     /**
      * File types that will be returned.
      */
@@ -81,7 +85,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     version?: string;
   }
 
-  declare interface doubleclickbidmanager$DownloadResponse {
+  declare interface gapi$client$doubleclickbidmanager$DownloadResponse {
     /**
      * Retrieved ad groups in SDF format.
      */
@@ -103,7 +107,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     lineItems?: string;
   }
 
-  declare interface doubleclickbidmanager$FilterPair {
+  declare interface gapi$client$doubleclickbidmanager$FilterPair {
     /**
      * Filter type.
      */
@@ -115,7 +119,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     value?: string;
   }
 
-  declare interface doubleclickbidmanager$ListQueriesResponse {
+  declare interface gapi$client$doubleclickbidmanager$ListQueriesResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "doubleclickbidmanager#listQueriesResponse".
      */
@@ -124,10 +128,10 @@ declare module "gapi.client.doubleclickbidmanager" {
     /**
      * Retrieved queries.
      */
-    client$queries?: doubleclickbidmanager$Query[];
+    queries?: doubleclickbidmanager$Query[];
   }
 
-  declare interface doubleclickbidmanager$ListReportsResponse {
+  declare interface gapi$client$doubleclickbidmanager$ListReportsResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "doubleclickbidmanager#listReportsResponse".
      */
@@ -136,14 +140,14 @@ declare module "gapi.client.doubleclickbidmanager" {
     /**
      * Retrieved reports.
      */
-    client$reports?: doubleclickbidmanager$Report[];
+    reports?: doubleclickbidmanager$Report[];
   }
 
-  declare interface doubleclickbidmanager$Parameters {
+  declare interface gapi$client$doubleclickbidmanager$Parameters {
     /**
      * Filters used to match traffic data in your report.
      */
-    filters?: doubleclickbidmanager$FilterPair[];
+    filters?: gapi$client$doubleclickbidmanager$FilterPair[];
 
     /**
      * Data is grouped by the filters listed in this field.
@@ -166,7 +170,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     type?: string;
   }
 
-  declare interface doubleclickbidmanager$Query {
+  declare interface gapi$client$doubleclickbidmanager$Query {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "doubleclickbidmanager#query".
      */
@@ -180,7 +184,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     /**
      * Query parameters.
      */
-    params?: doubleclickbidmanager$Parameters;
+    params?: gapi$client$doubleclickbidmanager$Parameters;
 
     /**
      * Query ID.
@@ -210,7 +214,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     timezoneCode?: string;
   }
 
-  declare interface doubleclickbidmanager$QueryMetadata {
+  declare interface gapi$client$doubleclickbidmanager$QueryMetadata {
     /**
      * Range of report data.
      */
@@ -270,7 +274,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     title?: string;
   }
 
-  declare interface doubleclickbidmanager$QuerySchedule {
+  declare interface gapi$client$doubleclickbidmanager$QuerySchedule {
     /**
      * Datetime to periodically run the query until.
      */
@@ -292,7 +296,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     nextRunTimezoneCode?: string;
   }
 
-  declare interface doubleclickbidmanager$Report {
+  declare interface gapi$client$doubleclickbidmanager$Report {
     /**
      * Key used to identify a report.
      */
@@ -306,17 +310,17 @@ declare module "gapi.client.doubleclickbidmanager" {
     /**
      * Report parameters.
      */
-    params?: doubleclickbidmanager$Parameters;
+    params?: gapi$client$doubleclickbidmanager$Parameters;
   }
 
-  declare interface doubleclickbidmanager$ReportFailure {
+  declare interface gapi$client$doubleclickbidmanager$ReportFailure {
     /**
      * Error code that shows why the report was not created.
      */
     errorCode?: string;
   }
 
-  declare interface doubleclickbidmanager$ReportKey {
+  declare interface gapi$client$doubleclickbidmanager$ReportKey {
     /**
      * Query ID.
      */
@@ -328,7 +332,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     reportId?: string;
   }
 
-  declare interface doubleclickbidmanager$ReportMetadata {
+  declare interface gapi$client$doubleclickbidmanager$ReportMetadata {
     /**
      * The path to the location in Google Cloud Storage where the report is stored.
      */
@@ -350,11 +354,11 @@ declare module "gapi.client.doubleclickbidmanager" {
     status?: doubleclickbidmanager$ReportStatus;
   }
 
-  declare interface doubleclickbidmanager$ReportStatus {
+  declare interface gapi$client$doubleclickbidmanager$ReportStatus {
     /**
      * If the report failed, this records the cause.
      */
-    failure?: doubleclickbidmanager$ReportFailure;
+    failure?: gapi$client$doubleclickbidmanager$ReportFailure;
 
     /**
      * The time when this report either completed successfully or failed.
@@ -372,7 +376,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     state?: string;
   }
 
-  declare interface doubleclickbidmanager$RowStatus {
+  declare interface gapi$client$doubleclickbidmanager$RowStatus {
     /**
      * Whether the stored entity is changed as a result of upload.
      */
@@ -404,7 +408,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     rowNumber?: number;
   }
 
-  declare interface doubleclickbidmanager$RunQueryRequest {
+  declare interface gapi$client$doubleclickbidmanager$RunQueryRequest {
     /**
      * Report data range used to generate the report.
      */
@@ -426,7 +430,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     timezoneCode?: string;
   }
 
-  declare interface doubleclickbidmanager$UploadLineItemsRequest {
+  declare interface gapi$client$doubleclickbidmanager$UploadLineItemsRequest {
     /**
      * Set to true to get upload status without actually persisting the line items.
      */
@@ -443,14 +447,14 @@ declare module "gapi.client.doubleclickbidmanager" {
     lineItems?: string;
   }
 
-  declare interface doubleclickbidmanager$UploadLineItemsResponse {
+  declare interface gapi$client$doubleclickbidmanager$UploadLineItemsResponse {
     /**
      * Status of upload.
      */
     uploadStatus?: doubleclickbidmanager$UploadStatus;
   }
 
-  declare interface doubleclickbidmanager$UploadStatus {
+  declare interface gapi$client$doubleclickbidmanager$UploadStatus {
     /**
      * Reasons why upload can't be completed.
      */
@@ -459,10 +463,10 @@ declare module "gapi.client.doubleclickbidmanager" {
     /**
      * Per-row upload status.
      */
-    rowStatus?: doubleclickbidmanager$RowStatus[];
+    rowStatus?: gapi$client$doubleclickbidmanager$RowStatus[];
   }
 
-  declare interface doubleclickbidmanager$LineitemsResource {
+  declare interface gapi$client$doubleclickbidmanager$LineitemsResource {
     /**
      * Retrieves line items in CSV format.
      */
@@ -502,7 +506,7 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$DownloadLineItemsResponse>;
+    }): Request<gapi$client$doubleclickbidmanager$DownloadLineItemsResponse>;
 
     /**
      * Uploads line items in CSV format.
@@ -543,10 +547,10 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$UploadLineItemsResponse>;
+    }): Request<gapi$client$doubleclickbidmanager$UploadLineItemsResponse>;
   }
 
-  declare interface doubleclickbidmanager$QueriesResource {
+  declare interface gapi$client$doubleclickbidmanager$QueriesResource {
     /**
      * Creates a query.
      */
@@ -586,7 +590,7 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$Query>;
+    }): Request<gapi$client$doubleclickbidmanager$Query>;
 
     /**
      * Deletes a stored query as well as the associated stored reports.
@@ -678,7 +682,7 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$Query>;
+    }): Request<gapi$client$doubleclickbidmanager$Query>;
 
     /**
      * Retrieves stored queries.
@@ -719,7 +723,7 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$ListQueriesResponse>;
+    }): Request<gapi$client$doubleclickbidmanager$ListQueriesResponse>;
 
     /**
      * Runs a stored query to generate a report.
@@ -768,7 +772,7 @@ declare module "gapi.client.doubleclickbidmanager" {
     }): Request<void>;
   }
 
-  declare interface doubleclickbidmanager$ReportsResource {
+  declare interface gapi$client$doubleclickbidmanager$ReportsResource {
     /**
      * Retrieves stored reports.
      */
@@ -813,10 +817,10 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$ListReportsResponse>;
+    }): Request<gapi$client$doubleclickbidmanager$ListReportsResponse>;
   }
 
-  declare interface doubleclickbidmanager$SdfResource {
+  declare interface gapi$client$doubleclickbidmanager$SdfResource {
     /**
      * Retrieves entities in SDF format.
      */
@@ -856,6 +860,6 @@ declare module "gapi.client.doubleclickbidmanager" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<doubleclickbidmanager$DownloadResponse>;
+    }): Request<gapi$client$doubleclickbidmanager$DownloadResponse>;
   }
 }
