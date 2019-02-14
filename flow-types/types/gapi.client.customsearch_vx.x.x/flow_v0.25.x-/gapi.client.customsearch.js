@@ -1,26 +1,30 @@
 declare module "gapi.client.customsearch" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    cse: typeof client$cse
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    cse: typeof gapi$client$cse
   };
 
   /**
    * Load CustomSearch API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "customsearch",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "customsearch",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$cse: customsearch$customsearch$CseResource;
+  declare var gapi$client$cse: customsearch$CseResource;
 
-  declare interface customsearch$Context {
+  declare interface gapi$client$customsearch$Context {
     facets?: Array<
       Array<{
         anchor?: string,
@@ -31,7 +35,7 @@ declare module "gapi.client.customsearch" {
     title?: string;
   }
 
-  declare interface customsearch$Promotion {
+  declare interface gapi$client$customsearch$Promotion {
     bodyLines?: Array<{
       htmlTitle?: string,
       link?: string,
@@ -49,7 +53,7 @@ declare module "gapi.client.customsearch" {
     title?: string;
   }
 
-  declare interface customsearch$Query {
+  declare interface gapi$client$customsearch$Query {
     count?: number;
     cr?: string;
     cx?: string;
@@ -88,7 +92,7 @@ declare module "gapi.client.customsearch" {
     totalResults?: string;
   }
 
-  declare interface customsearch$Result {
+  declare interface gapi$client$customsearch$Result {
     cacheId?: string;
     displayLink?: string;
     fileFormat?: string;
@@ -118,12 +122,12 @@ declare module "gapi.client.customsearch" {
     title?: string;
   }
 
-  declare interface customsearch$Search {
-    context?: customsearch$Context;
-    items?: customsearch$Result[];
+  declare interface gapi$client$customsearch$Search {
+    context?: gapi$client$customsearch$Context;
+    items?: gapi$client$customsearch$Result[];
     kind?: string;
-    promotions?: customsearch$Promotion[];
-    queries?: Record<string, customsearch$Query[]>;
+    promotions?: gapi$client$customsearch$Promotion[];
+    queries?: Record<string, gapi$client$customsearch$Query[]>;
     searchInformation?: {
       formattedSearchTime?: string,
       formattedTotalResults?: string,
@@ -140,7 +144,7 @@ declare module "gapi.client.customsearch" {
     };
   }
 
-  declare interface customsearch$CseResource {
+  declare interface gapi$client$customsearch$CseResource {
     /**
      * Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results.
      */
@@ -337,6 +341,6 @@ declare module "gapi.client.customsearch" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<customsearch$Search>;
+    }): Request<gapi$client$customsearch$Search>;
   }
 }
