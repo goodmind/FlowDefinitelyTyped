@@ -11,5 +11,5 @@ declare module "delete-empty" {
   };
   declare function deleteEmpty$sync(dir: string): string[];
 
-  declare module.exports: typeof deleteEmpty;
+  declare export default typeof deleteEmpty;
 }
