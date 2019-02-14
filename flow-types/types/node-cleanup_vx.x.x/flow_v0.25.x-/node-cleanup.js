@@ -1,5 +1,5 @@
 declare module "node-cleanup" {
-  declare module.exports: typeof install;
+  declare export default typeof install;
 
   declare function install(
     cleanupHandler?: (
