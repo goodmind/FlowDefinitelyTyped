@@ -6,6 +6,10 @@ declare module "node-forge" {
   declare type Utf8 = string;
   declare type OID = string;
   declare type Encoding = "raw" | "utf8";
+
+  declare var npm$namespace$jsbn: {
+    BigInteger: typeof jsbn$BigInteger
+  };
   declare class jsbn$BigInteger {
     data: number[];
     t: number;
@@ -56,20 +60,24 @@ declare module "node-forge" {
     createCertificationRequest: typeof pki$createCertificationRequest,
     publicKeyToAsn1: typeof pki$publicKeyToAsn1,
     publicKeyToRSAPublicKey: typeof pki$publicKeyToRSAPublicKey,
-    oids: typeof pki$oids
+    oids: typeof pki$oids,
+
+    rsa: typeof npm$namespace$pki$rsa
   };
   declare type pki$PEM = string;
 
-  declare type pki$PublicKey = rsapki$PublicKey | ed25519ed25519$Key;
+  declare type pki$PublicKey = rsa$PublicKey | ed25519$Key;
 
-  declare type pki$PrivateKey = rsapki$PrivateKey | ed25519ed25519$Key;
+  declare type pki$PrivateKey = rsa$PrivateKey | ed25519$Key;
 
   declare interface pki$KeyPair {
     publicKey: pki$PublicKey;
     privateKey: pki$PrivateKey;
+    publicKey: pki$PublicKey;
+    privateKey: pki$PrivateKey;
   }
 
-  declare function pki$pemToDer(pem: pki$PEM): utilutil$ByteStringBuffer;
+  declare function pki$pemToDer(pem: pki$PEM): util$ByteStringBuffer;
 
   declare function pki$privateKeyToPem(
     key: pki$PrivateKey,
@@ -102,7 +110,7 @@ declare module "node-forge" {
   ): pki$Certificate;
 
   declare function pki$createCaStore(
-    certs?: $ReadOnlyArray<pki$Certificate | pkipki$PEM>
+    certs?: $ReadOnlyArray<pki$Certificate | pki$PEM>
   ): pki$CAStore;
 
   declare function pki$verifyCertificateChain(
@@ -121,112 +129,88 @@ declare module "node-forge" {
 
   declare var pki$oids: pki$oids;
 
-  declare var npm$namespace$ed25519: {
-    generateKeyPair: typeof ed25519$generateKeyPair,
-    publicKeyFromPrivateKey: typeof ed25519$publicKeyFromPrivateKey,
-    sign: typeof ed25519$sign,
-    verify: typeof ed25519$verify
+  declare var npm$namespace$pki$ed25519: {
+    generateKeyPair: typeof pki$ed25519$generateKeyPair,
+    publicKeyFromPrivateKey: typeof pki$ed25519$publicKeyFromPrivateKey,
+    sign: typeof pki$ed25519$sign,
+    verify: typeof pki$ed25519$verify,
+
+    constants: typeof npm$namespace$pki$ed25519$constants
   };
-  declare type ed25519$Key = ArrayBuffer;
+  declare type pki$ed25519$Key = ArrayBuffer;
 
-  declare type ed25519$NativeBuffer = Buffer | Uint8Array;
+  declare type pki$ed25519$NativeBuffer = Buffer | Uint8Array;
 
-  declare var npm$namespace$constants: {
-    PUBLIC_KEY_BYTE_LENGTH: typeof constants$PUBLIC_KEY_BYTE_LENGTH,
-    PRIVATE_KEY_BYTE_LENGTH: typeof constants$PRIVATE_KEY_BYTE_LENGTH,
-    SEED_BYTE_LENGTH: typeof constants$SEED_BYTE_LENGTH,
-    SIGN_BYTE_LENGTH: typeof constants$SIGN_BYTE_LENGTH,
-    HASH_BYTE_LENGTH: typeof constants$HASH_BYTE_LENGTH
+  declare var npm$namespace$pki$ed25519$constants: {
+    PUBLIC_KEY_BYTE_LENGTH: typeof pki$ed25519$constants$PUBLIC_KEY_BYTE_LENGTH,
+    PRIVATE_KEY_BYTE_LENGTH: typeof pki$ed25519$constants$PRIVATE_KEY_BYTE_LENGTH,
+    SEED_BYTE_LENGTH: typeof pki$ed25519$constants$SEED_BYTE_LENGTH,
+    SIGN_BYTE_LENGTH: typeof pki$ed25519$constants$SIGN_BYTE_LENGTH,
+    HASH_BYTE_LENGTH: typeof pki$ed25519$constants$HASH_BYTE_LENGTH
   };
-  declare var constants$PUBLIC_KEY_BYTE_LENGTH: any; // 32;
+  declare var pki$ed25519$constants$PUBLIC_KEY_BYTE_LENGTH: any; // 32;
 
-  declare var constants$PRIVATE_KEY_BYTE_LENGTH: any; // 64;
+  declare var pki$ed25519$constants$PRIVATE_KEY_BYTE_LENGTH: any; // 64;
 
-  declare var constants$SEED_BYTE_LENGTH: any; // 32;
+  declare var pki$ed25519$constants$SEED_BYTE_LENGTH: any; // 32;
 
-  declare var constants$SIGN_BYTE_LENGTH: any; // 64;
+  declare var pki$ed25519$constants$SIGN_BYTE_LENGTH: any; // 64;
 
-  declare var constants$HASH_BYTE_LENGTH: any; // 64;
+  declare var pki$ed25519$constants$HASH_BYTE_LENGTH: any; // 64;
 
-  declare function ed25519$generateKeyPair(options?: {
+  declare function pki$ed25519$generateKeyPair(options?: {
     seed?: Buffer | Uint8Array | string
   }): {
-    publicKey: ed25519$NativeBuffer,
-    privateKey: ed25519$NativeBuffer
+    publicKey: pki$ed25519$NativeBuffer,
+    privateKey: pki$ed25519$NativeBuffer
   };
 
-  declare function ed25519$publicKeyFromPrivateKey(options: {
-    privateKey: ed25519$NativeBuffer
-  }): ed25519$NativeBuffer;
+  declare function pki$ed25519$publicKeyFromPrivateKey(options: {
+    privateKey: pki$ed25519$NativeBuffer
+  }): pki$ed25519$NativeBuffer;
 
-  declare function ed25519$sign(options: {
+  declare function pki$ed25519$sign(options: {
     message: string,
     encoding: string,
-    privateKey: ed25519$NativeBuffer
-  }): ed25519$NativeBuffer;
+    privateKey: pki$ed25519$NativeBuffer
+  }): pki$ed25519$NativeBuffer;
 
-  declare function ed25519$verify(options: {
+  declare function pki$ed25519$verify(options: {
     message: string,
     encoding: string,
-    signature: Buffer | Uint8Array | utilutil$ByteBuffer | string,
-    publicKey: ed25519$NativeBuffer
+    signature: Buffer | Uint8Array | util$ByteBuffer | string,
+    publicKey: pki$ed25519$NativeBuffer
   }): boolean;
 
-  declare var npm$namespace$rsa: {
-    setPublicKey: typeof rsa$setPublicKey,
-    generateKeyPair: typeof rsa$generateKeyPair
+  declare var npm$namespace$pki$rsa: {
+    setPublicKey: typeof pki$rsa$setPublicKey,
+    generateKeyPair: typeof pki$rsa$generateKeyPair
   };
-  declare type rsa$EncryptionScheme =
+  declare type pki$rsa$EncryptionScheme =
     | "RSAES-PKCS1-V1_5"
     | "RSA-OAEP"
     | "RAW"
     | "NONE"
     | null;
 
-  declare type rsa$SignatureScheme =
+  declare type pki$rsa$SignatureScheme =
     | "RSASSA-PKCS1-V1_5"
-    | psspss$PSS
+    | pss$PSS
     | "NONE"
     | null;
 
-  declare interface rsa$PublicKey {
-    n: jsbnjsbn$BigInteger;
-    e: jsbnjsbn$BigInteger;
-    encrypt(
-      data: Bytes,
-      scheme?: rsa$EncryptionScheme,
-      schemeOptions?: any
-    ): Bytes;
-    ed25519$verify(
-      digest: Bytes,
-      signature: Bytes,
-      scheme?: rsa$SignatureScheme
-    ): boolean;
+  declare type pki$rsa$PublicKey = rsa$PublicKey | ed25519$Key;
+
+  declare type pki$rsa$PrivateKey = rsa$PrivateKey | ed25519$Key;
+
+  declare interface pki$rsa$KeyPair {
+    publicKey: pki$rsa$PublicKey;
+    privateKey: pki$rsa$PrivateKey;
+    publicKey: pki$rsa$PublicKey;
+    privateKey: pki$rsa$PrivateKey;
   }
 
-  declare interface rsa$PrivateKey {
-    n: jsbnjsbn$BigInteger;
-    e: jsbnjsbn$BigInteger;
-    d: jsbnjsbn$BigInteger;
-    p: jsbnjsbn$BigInteger;
-    q: jsbnjsbn$BigInteger;
-    dP: jsbnjsbn$BigInteger;
-    dQ: jsbnjsbn$BigInteger;
-    qInv: jsbnjsbn$BigInteger;
-    decrypt(
-      data: Bytes,
-      scheme?: rsa$EncryptionScheme,
-      schemeOptions?: any
-    ): Bytes;
-    ed25519$sign(md: mdmd$MessageDigest, scheme?: rsa$SignatureScheme): Bytes;
-  }
-
-  declare interface rsa$KeyPair {
-    publicKey: rsa$PublicKey;
-    privateKey: rsa$PrivateKey;
-  }
-
-  declare interface rsa$GenerateKeyPairOptions {
+  declare interface pki$rsa$GenerateKeyPairOptions {
     bits?: number;
     e?: number;
     workerScript?: string;
@@ -236,18 +220,18 @@ declare module "node-forge" {
     algorithm?: string;
   }
 
-  declare function rsa$setPublicKey(n: any, e: any): any;
+  declare function pki$rsa$setPublicKey(n: any, e: any): any;
 
-  declare function rsa$generateKeyPair(
+  declare function pki$rsa$generateKeyPair(
     bits?: number,
     e?: number,
-    callback?: (err: Error, keypair: rsa$KeyPair) => void
-  ): rsa$KeyPair;
+    callback?: (err: Error, keypair: pki$rsa$KeyPair) => void
+  ): pki$rsa$KeyPair;
 
-  declare function rsa$generateKeyPair(
-    options?: rsa$GenerateKeyPairOptions,
-    callback?: (err: Error, keypair: rsa$KeyPair) => void
-  ): rsa$KeyPair;
+  declare function pki$rsa$generateKeyPair(
+    options?: pki$rsa$GenerateKeyPairOptions,
+    callback?: (err: Error, keypair: pki$rsa$KeyPair) => void
+  ): pki$rsa$KeyPair;
 
   declare interface pki$CertificateFieldOptions {
     name?: string;
@@ -257,10 +241,10 @@ declare module "node-forge" {
 
   declare type pki$CertificateField = {
     valueConstructed?: boolean,
-    valueTagClass?: asn1asn1$Class,
+    valueTagClass?: asn1$Class,
     value?: any[] | string,
     extensions?: any[]
-  } & pki$CertificateFieldOptions;
+  } & CertificateFieldOptions;
 
   declare interface pki$Certificate {
     version: number;
@@ -284,8 +268,8 @@ declare module "node-forge" {
       hash: any
     };
     extensions: any[];
-    privateKey: rsa$PrivateKey;
-    publicKey: rsa$PublicKey;
+    privateKey: pki$rsa$PrivateKey;
+    publicKey: pki$rsa$PublicKey;
     md: any;
 
     /**
@@ -309,12 +293,12 @@ declare module "node-forge" {
     setExtensions(exts: any[]): void;
 
     /**
- * Gets an extension by its name or id.
- * @param options the name to use or an object with:
-name the name to use.
-id the id to use.
- * @return the extension or null if not found.
- */
+     * Gets an extension by its name or id.
+     * @param options the name to use or an object with:
+     * name the name to use.
+     * id the id to use.
+     * @return the extension or null if not found.
+     */
     getExtension(
       options:
         | string
@@ -331,7 +315,7 @@ id the id to use.
      * @param key the private key to sign with.
      * @param md the message digest object to use (defaults to forge.md.sha1).
      */
-    ed25519$sign(key: pkirsa$PrivateKey, md?: mdmd$MessageDigest): void;
+    sign(key: pki$PrivateKey, md?: md$MessageDigest): void;
 
     /**
      * Attempts verify the signature on the passed certificate using this
@@ -339,27 +323,27 @@ id the id to use.
      * @param child the certificate to verify.
      * @return true if verified, false if not.
      */
-    ed25519$verify(child: pki$Certificate): boolean;
+    verify(child: pki$Certificate): boolean;
   }
 
   declare interface pki$CAStore {
     addCertificate(cert: pki$Certificate | string): void;
     hasCertificate(cert: pki$Certificate | string): boolean;
     removeCertificate(cert: pki$Certificate | string): pki$Certificate | null;
-    listAllCertificates(): pkipki$Certificate[];
+    listAllCertificates(): pki$Certificate[];
     getIssuer(subject: pki$Certificate): pki$Certificate | null;
     getBySubject(subject: string): pki$Certificate | null;
   }
 
   declare function pki$certificateFromAsn1(
-    obj: asn1asn1$Asn1,
+    obj: asn1$Asn1,
     computeHash?: boolean
   ): pki$Certificate;
 
   declare function pki$decryptRsaPrivateKey(
     pem: pki$PEM,
     passphrase?: string
-  ): rsa$PrivateKey;
+  ): pki$rsa$PrivateKey;
 
   declare function pki$createCertificate(): pki$Certificate;
 
@@ -376,9 +360,11 @@ id the id to use.
 
   declare function pki$createCertificationRequest(): pki$Certificate;
 
-  declare function pki$publicKeyToAsn1(publicKey: rsa$PublicKey): any;
+  declare function pki$publicKeyToAsn1(publicKey: pki$rsa$PublicKey): any;
 
-  declare function pki$publicKeyToRSAPublicKey(publicKey: rsa$PublicKey): any;
+  declare function pki$publicKeyToRSAPublicKey(
+    publicKey: pki$rsa$PublicKey
+  ): any;
 
   declare var npm$namespace$random: {
     getBytes: typeof random$getBytes,
@@ -421,14 +407,14 @@ id the id to use.
     /**
      * @description if not specified defaults to `md.md5`
      */
-    md?: mdmd$MessageDigest;
+    md?: md$MessageDigest;
   }
 
   /**
    * @description Encodes a private RSA key as an OpenSSH file
    */
   declare function ssh$privateKeyToOpenSSH(
-    privateKey: pkirsa$PrivateKey,
+    privateKey: pki$PrivateKey,
     passphrase?: string
   ): string;
 
@@ -436,7 +422,7 @@ id the id to use.
    * @description Encodes (and optionally encrypts) a private RSA key as a Putty PPK file
    */
   declare function ssh$privateKeyToPutty(
-    privateKey: pkirsa$PrivateKey,
+    privateKey: pki$PrivateKey,
     passphrase?: string,
     comment?: string
   ): string;
@@ -445,96 +431,59 @@ id the id to use.
    * @description Encodes a public RSA key as an OpenSSH file
    */
   declare function ssh$publicKeyToOpenSSH(
-    publicKey: pkirsa$PublicKey,
+    publicKey: pki$PublicKey,
     comment?: string
-  ): string | pkipki$PEM;
+  ): string | pki$PEM;
 
   /**
    * @description Gets the SSH fingerprint for the given public key
    */
   declare function ssh$getPublicKeyFingerprint(
-    publicKey: pkirsa$PublicKey,
+    publicKey: pki$PublicKey,
     options?: ssh$FingerprintOptions
-  ): utilutil$ByteStringBuffer | Hex | string;
+  ): util$ByteStringBuffer | Hex | string;
 
   declare var npm$namespace$asn1: {
     create: typeof asn1$create,
     fromDer: typeof asn1$fromDer,
     toDer: typeof asn1$toDer,
     oidToDer: typeof asn1$oidToDer,
-    derToOid: typeof asn1$derToOid
+    derToOid: typeof asn1$derToOid,
+
+    Class: typeof asn1$Class,
+    Type: typeof asn1$Type
   };
-  declare class asn1$Class {
-    constructor(...args: empty): mixed;
-    static +UNIVERSAL: Class<asn1$Class__UNIVERSAL> & asn1$Class__UNIVERSAL & 0; // 0
-    static +APPLICATION: Class<asn1$Class__APPLICATION> &
-      asn1$Class__APPLICATION &
-      64; // 64
-    static +CONTEXT_SPECIFIC: Class<asn1$Class__CONTEXT_SPECIFIC> &
-      asn1$Class__CONTEXT_SPECIFIC &
-      128; // 128
-    static +PRIVATE: Class<asn1$Class__PRIVATE> & asn1$Class__PRIVATE & 192; // 192
-  }
 
-  declare class asn1$Class__UNIVERSAL mixins asn1$Class {}
-  declare class asn1$Class__APPLICATION mixins asn1$Class {}
-  declare class asn1$Class__CONTEXT_SPECIFIC mixins asn1$Class {}
-  declare class asn1$Class__PRIVATE mixins asn1$Class {}
+  declare var asn1$Class: {|
+    +UNIVERSAL: 0, // 0
+    +APPLICATION: 64, // 64
+    +CONTEXT_SPECIFIC: 128, // 128
+    +PRIVATE: 192 // 192
+  |};
 
-  declare class asn1$Type {
-    constructor(...args: empty): mixed;
-    static +NONE: Class<asn1$Type__NONE> & asn1$Type__NONE & 0; // 0
-    static +BOOLEAN: Class<asn1$Type__BOOLEAN> & asn1$Type__BOOLEAN & 1; // 1
-    static +INTEGER: Class<asn1$Type__INTEGER> & asn1$Type__INTEGER & 2; // 2
-    static +BITSTRING: Class<asn1$Type__BITSTRING> & asn1$Type__BITSTRING & 3; // 3
-    static +OCTETSTRING: Class<asn1$Type__OCTETSTRING> &
-      asn1$Type__OCTETSTRING &
-      4; // 4
-    static +NULL: Class<asn1$Type__NULL> & asn1$Type__NULL & 5; // 5
-    static +OID: Class<asn1$Type__OID> & asn1$Type__OID & 6; // 6
-    static +ODESC: Class<asn1$Type__ODESC> & asn1$Type__ODESC & 7; // 7
-    static +EXTERNAL: Class<asn1$Type__EXTERNAL> & asn1$Type__EXTERNAL & 8; // 8
-    static +REAL: Class<asn1$Type__REAL> & asn1$Type__REAL & 9; // 9
-    static +ENUMERATED: Class<asn1$Type__ENUMERATED> &
-      asn1$Type__ENUMERATED &
-      10; // 10
-    static +EMBEDDED: Class<asn1$Type__EMBEDDED> & asn1$Type__EMBEDDED & 11; // 11
-    static +UTF8: Class<asn1$Type__UTF8> & asn1$Type__UTF8 & 12; // 12
-    static +ROID: Class<asn1$Type__ROID> & asn1$Type__ROID & 13; // 13
-    static +SEQUENCE: Class<asn1$Type__SEQUENCE> & asn1$Type__SEQUENCE & 16; // 16
-    static +SET: Class<asn1$Type__SET> & asn1$Type__SET & 17; // 17
-    static +PRINTABLESTRING: Class<asn1$Type__PRINTABLESTRING> &
-      asn1$Type__PRINTABLESTRING &
-      19; // 19
-    static +IA5STRING: Class<asn1$Type__IA5STRING> & asn1$Type__IA5STRING & 22; // 22
-    static +UTCTIME: Class<asn1$Type__UTCTIME> & asn1$Type__UTCTIME & 23; // 23
-    static +GENERALIZEDTIME: Class<asn1$Type__GENERALIZEDTIME> &
-      asn1$Type__GENERALIZEDTIME &
-      24; // 24
-    static +BMPSTRING: Class<asn1$Type__BMPSTRING> & asn1$Type__BMPSTRING & 30; // 30
-  }
-
-  declare class asn1$Type__NONE mixins asn1$Type {}
-  declare class asn1$Type__BOOLEAN mixins asn1$Type {}
-  declare class asn1$Type__INTEGER mixins asn1$Type {}
-  declare class asn1$Type__BITSTRING mixins asn1$Type {}
-  declare class asn1$Type__OCTETSTRING mixins asn1$Type {}
-  declare class asn1$Type__NULL mixins asn1$Type {}
-  declare class asn1$Type__OID mixins asn1$Type {}
-  declare class asn1$Type__ODESC mixins asn1$Type {}
-  declare class asn1$Type__EXTERNAL mixins asn1$Type {}
-  declare class asn1$Type__REAL mixins asn1$Type {}
-  declare class asn1$Type__ENUMERATED mixins asn1$Type {}
-  declare class asn1$Type__EMBEDDED mixins asn1$Type {}
-  declare class asn1$Type__UTF8 mixins asn1$Type {}
-  declare class asn1$Type__ROID mixins asn1$Type {}
-  declare class asn1$Type__SEQUENCE mixins asn1$Type {}
-  declare class asn1$Type__SET mixins asn1$Type {}
-  declare class asn1$Type__PRINTABLESTRING mixins asn1$Type {}
-  declare class asn1$Type__IA5STRING mixins asn1$Type {}
-  declare class asn1$Type__UTCTIME mixins asn1$Type {}
-  declare class asn1$Type__GENERALIZEDTIME mixins asn1$Type {}
-  declare class asn1$Type__BMPSTRING mixins asn1$Type {}
+  declare var asn1$Type: {|
+    +NONE: 0, // 0
+    +BOOLEAN: 1, // 1
+    +INTEGER: 2, // 2
+    +BITSTRING: 3, // 3
+    +OCTETSTRING: 4, // 4
+    +NULL: 5, // 5
+    +OID: 6, // 6
+    +ODESC: 7, // 7
+    +EXTERNAL: 8, // 8
+    +REAL: 9, // 9
+    +ENUMERATED: 10, // 10
+    +EMBEDDED: 11, // 11
+    +UTF8: 12, // 12
+    +ROID: 13, // 13
+    +SEQUENCE: 16, // 16
+    +SET: 17, // 17
+    +PRINTABLESTRING: 19, // 19
+    +IA5STRING: 22, // 22
+    +UTCTIME: 23, // 23
+    +GENERALIZEDTIME: 24, // 24
+    +BMPSTRING: 30 // 30
+  |};
 
   declare interface asn1$Asn1 {
     tagClass: asn1$Class;
@@ -552,15 +501,15 @@ id the id to use.
   ): asn1$Asn1;
 
   declare function asn1$fromDer(
-    bytes: Bytes | utilutil$ByteBuffer,
+    bytes: Bytes | util$ByteBuffer,
     strict?: boolean
   ): asn1$Asn1;
 
-  declare function asn1$toDer(obj: asn1$Asn1): utilutil$ByteBuffer;
+  declare function asn1$toDer(obj: asn1$Asn1): util$ByteBuffer;
 
-  declare function asn1$oidToDer(oid: OID): utilutil$ByteStringBuffer;
+  declare function asn1$oidToDer(oid: OID): util$ByteStringBuffer;
 
-  declare function asn1$derToOid(der: utilutil$ByteStringBuffer): OID;
+  declare function asn1$derToOid(der: util$ByteStringBuffer): OID;
 
   declare var npm$namespace$util: {
     isArray: typeof util$isArray,
@@ -575,7 +524,11 @@ id the id to use.
     decode64: typeof util$decode64,
     encodeUtf8: typeof util$encodeUtf8,
     decodeUtf8: typeof util$decodeUtf8,
-    createBuffer: typeof util$createBuffer
+    createBuffer: typeof util$createBuffer,
+
+    ByteStringBuffer: typeof util$ByteStringBuffer,
+    binary: typeof npm$namespace$util$binary,
+    text: typeof npm$namespace$util$text
   };
   declare function util$isArray(x: any): boolean;
 
@@ -662,67 +615,81 @@ id the id to use.
     encoding?: Encoding
   ): util$ByteBuffer;
 
-  declare var npm$namespace$raw: {
-    encode: typeof raw$encode,
-    decode: typeof raw$decode
+  declare var npm$namespace$util$binary: {
+    raw: typeof npm$namespace$util$binary$raw,
+    hex: typeof npm$namespace$util$binary$hex,
+    base64: typeof npm$namespace$util$binary$base64
   };
-  declare function raw$encode(x: Uint8Array): Bytes;
 
-  declare function raw$decode(
+  declare var npm$namespace$util$binary$raw: {
+    encode: typeof util$binary$raw$encode,
+    decode: typeof util$binary$raw$decode
+  };
+  declare function util$binary$raw$encode(x: Uint8Array): Bytes;
+
+  declare function util$binary$raw$decode(
     str: Bytes,
     output?: Uint8Array,
     offset?: number
   ): Uint8Array;
 
-  declare var npm$namespace$hex: {
-    encode: typeof hex$encode,
-    decode: typeof hex$decode
+  declare var npm$namespace$util$binary$hex: {
+    encode: typeof util$binary$hex$encode,
+    decode: typeof util$binary$hex$decode
   };
-  declare function hex$encode(
+  declare function util$binary$hex$encode(
     bytes: Bytes | ArrayBuffer | util$ArrayBufferView | util$ByteStringBuffer
   ): Hex;
 
-  declare function hex$decode(
+  declare function util$binary$hex$decode(
     hex: Hex,
     output?: Uint8Array,
     offset?: number
   ): Uint8Array;
 
-  declare var npm$namespace$base64: {
-    encode: typeof base64$encode,
-    decode: typeof base64$decode
+  declare var npm$namespace$util$binary$base64: {
+    encode: typeof util$binary$base64$encode,
+    decode: typeof util$binary$base64$decode
   };
-  declare function base64$encode(input: Uint8Array, maxline?: number): Base64;
+  declare function util$binary$base64$encode(
+    input: Uint8Array,
+    maxline?: number
+  ): Base64;
 
-  declare function base64$decode(
+  declare function util$binary$base64$decode(
     input: Base64,
     output?: Uint8Array,
     offset?: number
   ): Uint8Array;
 
-  declare var npm$namespace$utf8: {
-    encode: typeof utf8$encode,
-    decode: typeof utf8$decode
+  declare var npm$namespace$util$text: {
+    utf8: typeof npm$namespace$util$text$utf8,
+    utf16: typeof npm$namespace$util$text$utf16
   };
-  declare function utf8$encode(
+
+  declare var npm$namespace$util$text$utf8: {
+    encode: typeof util$text$utf8$encode,
+    decode: typeof util$text$utf8$decode
+  };
+  declare function util$text$utf8$encode(
     str: string,
     output?: Uint8Array,
     offset?: number
   ): Uint8Array;
 
-  declare function utf8$decode(bytes: Uint8Array): Utf8;
+  declare function util$text$utf8$decode(bytes: Uint8Array): Utf8;
 
-  declare var npm$namespace$utf16: {
-    encode: typeof utf16$encode,
-    decode: typeof utf16$decode
+  declare var npm$namespace$util$text$utf16: {
+    encode: typeof util$text$utf16$encode,
+    decode: typeof util$text$utf16$decode
   };
-  declare function utf16$encode(
+  declare function util$text$utf16$encode(
     str: string,
     output?: Uint8Array,
     offset?: number
   ): Uint8Array;
 
-  declare function utf16$decode(bytes: Uint8Array): string;
+  declare function util$text$utf16$decode(bytes: Uint8Array): string;
 
   declare var npm$namespace$pkcs12: {
     pkcs12FromAsn1: typeof pkcs12$pkcs12FromAsn1,
@@ -739,9 +706,9 @@ id the id to use.
   declare interface pkcs12$Bag {
     type: string;
     attributes: any;
-    key?: pkirsa$PrivateKey;
-    cert?: pkipki$Certificate;
-    asn1: asn1asn1$Asn1;
+    key?: pki$PrivateKey;
+    cert?: pki$Certificate;
+    asn1: asn1$Asn1;
   }
 
   declare interface pkcs12$Pkcs12Pfx {
@@ -778,8 +745,8 @@ id the id to use.
   ): pkcs12$Pkcs12Pfx;
 
   declare function pkcs12$toPkcs12Asn1(
-    key: pkirsa$PrivateKey,
-    cert: pkipki$Certificate | pkipki$Certificate[],
+    key: pki$PrivateKey,
+    cert: pki$Certificate | pki$Certificate[],
     password: string | null,
     options?: {
       algorithm?: "aes128" | "aes192" | "aes256" | "3des",
@@ -790,39 +757,39 @@ id the id to use.
       friendlyName?: string,
       generateLocalKeyId?: boolean
     }
-  ): asn1asn1$Asn1;
+  ): asn1$Asn1;
 
   declare function pkcs12$generateKey(
     password: string | null | void,
-    salt: utilutil$ByteBuffer,
+    salt: util$ByteBuffer,
     id: Byte,
     iter: number,
     n: number,
-    md?: mdmd$MessageDigest
-  ): utilutil$ByteBuffer;
+    md?: md$MessageDigest
+  ): util$ByteBuffer;
 
   declare var npm$namespace$pkcs7: {
     createSignedData: typeof pkcs7$createSignedData
   };
   declare interface pkcs7$PkcsSignedData {
-    content?: string | utilutil$ByteBuffer;
+    content?: string | util$ByteBuffer;
     contentInfo?: {
       value: any[]
     };
-    addCertificate(certificate: pkipki$Certificate): void;
+    addCertificate(certificate: pki$Certificate): void;
     addSigner(options: {
       key: string,
-      certificate: pkipki$Certificate,
+      certificate: pki$Certificate,
       digestAlgorithm: string,
       authenticatedAttributes: {
         type: string,
         value?: string
       }[]
     }): void;
-    ed25519$sign(options?: {
+    sign(options?: {
       detached?: boolean
     }): void;
-    toAsn1(): asn1asn1$Asn1;
+    toAsn1(): asn1$Asn1;
   }
 
   declare function pkcs7$createSignedData(): pkcs7$PkcsSignedData;
@@ -837,30 +804,36 @@ id the id to use.
     keySize: number
   ): string;
 
+  declare var npm$namespace$md: {
+    sha1: typeof npm$namespace$md$sha1,
+    sha256: typeof npm$namespace$md$sha256,
+    sha512: typeof npm$namespace$md$sha512,
+    md5: typeof npm$namespace$md$md5
+  };
   declare interface md$MessageDigest {
     update(msg: string, encoding?: Encoding): md$MessageDigest;
-    digest(): utilutil$ByteStringBuffer;
+    digest(): util$ByteStringBuffer;
   }
 
-  declare var npm$namespace$sha1: {
-    create: typeof sha1$create
+  declare var npm$namespace$md$sha1: {
+    create: typeof md$sha1$create
   };
-  declare function sha1$create(): md$MessageDigest;
+  declare function md$sha1$create(): md$MessageDigest;
 
-  declare var npm$namespace$sha256: {
-    create: typeof sha256$create
+  declare var npm$namespace$md$sha256: {
+    create: typeof md$sha256$create
   };
-  declare function sha256$create(): md$MessageDigest;
+  declare function md$sha256$create(): md$MessageDigest;
 
-  declare var npm$namespace$sha512: {
-    create: typeof sha512$create
+  declare var npm$namespace$md$sha512: {
+    create: typeof md$sha512$create
   };
-  declare function sha512$create(): md$MessageDigest;
+  declare function md$sha512$create(): md$MessageDigest;
 
-  declare var npm$namespace$md5: {
-    create: typeof md5$create
+  declare var npm$namespace$md$md5: {
+    create: typeof md$md5$create
   };
-  declare function md5$create(): md$MessageDigest;
+  declare function md$md5$create(): md$MessageDigest;
 
   declare var npm$namespace$cipher: {
     createCipher: typeof cipher$createCipher,
@@ -880,31 +853,31 @@ id the id to use.
 
   declare function cipher$createCipher(
     algorithm: cipher$Algorithm,
-    payload: utilutil$ByteBuffer | Bytes
+    payload: util$ByteBuffer | Bytes
   ): cipher$BlockCipher;
 
   declare function cipher$createDecipher(
     algorithm: cipher$Algorithm,
-    payload: utilutil$ByteBuffer | Bytes
+    payload: util$ByteBuffer | Bytes
   ): cipher$BlockCipher;
 
   declare interface cipher$StartOptions {
     iv?: Bytes;
-    tag?: utilutil$ByteStringBuffer;
+    tag?: util$ByteStringBuffer;
     tagLength?: number;
     additionalData?: string;
   }
 
   declare interface cipher$BlockCipher {
     start: (options?: cipher$StartOptions) => void;
-    update: (payload: utilutil$ByteBuffer) => void;
+    update: (payload: util$ByteBuffer) => void;
     finish: () => boolean;
-    output: utilutil$ByteStringBuffer;
+    output: util$ByteStringBuffer;
     mode: cipher$Mode;
   }
 
   declare interface cipher$Mode {
-    tag: utilutil$ByteStringBuffer;
+    tag: util$ByteStringBuffer;
   }
 
   declare var npm$namespace$pss: {
@@ -914,10 +887,14 @@ id the id to use.
 
   declare function pss$create(any: any): pss$PSS;
 
-  declare var npm$namespace$mgf1: {
-    create: typeof mgf1$create
+  declare var npm$namespace$mgf: {
+    mgf1: typeof npm$namespace$mgf$mgf1
   };
-  declare function mgf1$create(any: any): any;
+
+  declare var npm$namespace$mgf$mgf1: {
+    create: typeof mgf$mgf1$create
+  };
+  declare function mgf$mgf1$create(any: any): any;
 
   declare var npm$namespace$tls: {
     createSessionCache: typeof tls$createSessionCache,
@@ -928,7 +905,18 @@ id the id to use.
     SupportedVersions: typeof tls$SupportedVersions,
     Version: typeof tls$Version,
     MaxFragment: typeof tls$MaxFragment,
-    CipherSuites: typeof tls$CipherSuites
+    CipherSuites: typeof tls$CipherSuites,
+    ConnectionEnd: typeof tls$ConnectionEnd,
+    PRFAlgorithm: typeof tls$PRFAlgorithm,
+    BulkCipherAlgorithm: typeof tls$BulkCipherAlgorithm,
+    CipherType: typeof tls$CipherType,
+    MACAlgorithm: typeof tls$MACAlgorithm,
+    CompressionMethod: typeof tls$CompressionMethod,
+    ContentType: typeof tls$ContentType,
+    HandshakeType: typeof tls$HandshakeType,
+    HeartbeatMessageType: typeof tls$HeartbeatMessageType,
+
+    Alert: typeof npm$namespace$tls$Alert
   };
   declare interface tls$ProtocolVersion {
     major: Byte;
@@ -943,294 +931,101 @@ id the id to use.
 
   declare var tls$MaxFragment: number;
 
-  declare class tls$ConnectionEnd {
-    constructor(...args: empty): mixed;
-    static +server: Class<tls$ConnectionEnd__server> &
-      tls$ConnectionEnd__server &
-      0; // 0
-    static +client: Class<tls$ConnectionEnd__client> &
-      tls$ConnectionEnd__client &
-      1; // 1
-  }
+  declare var tls$ConnectionEnd: {|
+    +server: 0, // 0
+    +client: 1 // 1
+  |};
 
-  declare class tls$ConnectionEnd__server mixins tls$ConnectionEnd {}
-  declare class tls$ConnectionEnd__client mixins tls$ConnectionEnd {}
+  declare var tls$PRFAlgorithm: {|
+    +tls_prf_sha256: 0 // 0
+  |};
 
-  declare class tls$PRFAlgorithm {
-    constructor(...args: empty): mixed;
-    static +tls_prf_sha256: Class<tls$PRFAlgorithm__tls_prf_sha256> &
-      tls$PRFAlgorithm__tls_prf_sha256 &
-      0; // 0
-  }
+  declare var tls$BulkCipherAlgorithm: {|
+    +rc4: 0, // 0
+    +des3: 1, // 1
+    +aes: 2 // 2
+  |};
 
-  declare class tls$PRFAlgorithm__tls_prf_sha256 mixins tls$PRFAlgorithm {}
+  declare var tls$CipherType: {|
+    +stream: 0, // 0
+    +block: 1, // 1
+    +aead: 2 // 2
+  |};
 
-  declare class tls$BulkCipherAlgorithm {
-    constructor(...args: empty): mixed;
-    static +rc4: Class<tls$BulkCipherAlgorithm__rc4> &
-      tls$BulkCipherAlgorithm__rc4 &
-      0; // 0
-    static +des3: Class<tls$BulkCipherAlgorithm__des3> &
-      tls$BulkCipherAlgorithm__des3 &
-      1; // 1
-    static +aes: Class<tls$BulkCipherAlgorithm__aes> &
-      tls$BulkCipherAlgorithm__aes &
-      2; // 2
-  }
+  declare var tls$MACAlgorithm: {|
+    +hmac_md5: 0, // 0
+    +hmac_sha1: 1, // 1
+    +hmac_sha256: 2, // 2
+    +hmac_sha384: 3, // 3
+    +hmac_sha512: 4 // 4
+  |};
 
-  declare class tls$BulkCipherAlgorithm__rc4 mixins tls$BulkCipherAlgorithm {}
-  declare class tls$BulkCipherAlgorithm__des3 mixins tls$BulkCipherAlgorithm {}
-  declare class tls$BulkCipherAlgorithm__aes mixins tls$BulkCipherAlgorithm {}
+  declare var tls$CompressionMethod: {|
+    +none: 0, // 0
+    +deflate: 1 // 1
+  |};
 
-  declare class tls$CipherType {
-    constructor(...args: empty): mixed;
-    static +stream: Class<tls$CipherType__stream> & tls$CipherType__stream & 0; // 0
-    static +block: Class<tls$CipherType__block> & tls$CipherType__block & 1; // 1
-    static +aead: Class<tls$CipherType__aead> & tls$CipherType__aead & 2; // 2
-  }
+  declare var tls$ContentType: {|
+    +change_cipher_spec: 20, // 20
+    +alert: 21, // 21
+    +handshake: 22, // 22
+    +application_data: 23, // 23
+    +heartbeat: 24 // 24
+  |};
 
-  declare class tls$CipherType__stream mixins tls$CipherType {}
-  declare class tls$CipherType__block mixins tls$CipherType {}
-  declare class tls$CipherType__aead mixins tls$CipherType {}
+  declare var tls$HandshakeType: {|
+    +hello_request: 0, // 0
+    +client_hello: 1, // 1
+    +server_hello: 2, // 2
+    +certificate: 11, // 11
+    +server_key_exchange: 12, // 12
+    +certificate_request: 13, // 13
+    +server_hello_done: 14, // 14
+    +certificate_verify: 15, // 15
+    +client_key_exchange: 16, // 16
+    +finished: 20 // 20
+  |};
 
-  declare class tls$MACAlgorithm {
-    constructor(...args: empty): mixed;
-    static +hmac_md5: Class<tls$MACAlgorithm__hmac_md5> &
-      tls$MACAlgorithm__hmac_md5 &
-      0; // 0
-    static +hmac_sha1: Class<tls$MACAlgorithm__hmac_sha1> &
-      tls$MACAlgorithm__hmac_sha1 &
-      1; // 1
-    static +hmac_sha256: Class<tls$MACAlgorithm__hmac_sha256> &
-      tls$MACAlgorithm__hmac_sha256 &
-      2; // 2
-    static +hmac_sha384: Class<tls$MACAlgorithm__hmac_sha384> &
-      tls$MACAlgorithm__hmac_sha384 &
-      3; // 3
-    static +hmac_sha512: Class<tls$MACAlgorithm__hmac_sha512> &
-      tls$MACAlgorithm__hmac_sha512 &
-      4; // 4
-  }
+  declare var npm$namespace$tls$Alert: {
+    Level: typeof tls$Alert$Level,
+    Description: typeof tls$Alert$Description
+  };
 
-  declare class tls$MACAlgorithm__hmac_md5 mixins tls$MACAlgorithm {}
-  declare class tls$MACAlgorithm__hmac_sha1 mixins tls$MACAlgorithm {}
-  declare class tls$MACAlgorithm__hmac_sha256 mixins tls$MACAlgorithm {}
-  declare class tls$MACAlgorithm__hmac_sha384 mixins tls$MACAlgorithm {}
-  declare class tls$MACAlgorithm__hmac_sha512 mixins tls$MACAlgorithm {}
+  declare var tls$Alert$Level: {|
+    +warning: 1, // 1
+    +fatal: 2 // 2
+  |};
 
-  declare class tls$CompressionMethod {
-    constructor(...args: empty): mixed;
-    static +none: Class<tls$CompressionMethod__none> &
-      tls$CompressionMethod__none &
-      0; // 0
-    static +deflate: Class<tls$CompressionMethod__deflate> &
-      tls$CompressionMethod__deflate &
-      1; // 1
-  }
+  declare var tls$Alert$Description: {|
+    +close_notify: 0, // 0
+    +unexpected_message: 10, // 10
+    +bad_record_mac: 20, // 20
+    +decryption_failed: 21, // 21
+    +record_overflow: 22, // 22
+    +decompression_failure: 30, // 30
+    +handshake_failure: 40, // 40
+    +bad_certificate: 42, // 42
+    +unsupported_certificate: 43, // 43
+    +certificate_revoked: 44, // 44
+    +certificate_expired: 45, // 45
+    +certificate_unknown: 46, // 46
+    +illegal_parameter: 47, // 47
+    +unknown_ca: 48, // 48
+    +access_denied: 49, // 49
+    +decode_error: 50, // 50
+    +decrypt_error: 51, // 51
+    +export_restriction: 60, // 60
+    +protocol_version: 70, // 70
+    +insufficient_security: 71, // 71
+    +internal_error: 80, // 80
+    +user_canceled: 90, // 90
+    +no_renegotiation: 100 // 100
+  |};
 
-  declare class tls$CompressionMethod__none mixins tls$CompressionMethod {}
-  declare class tls$CompressionMethod__deflate mixins tls$CompressionMethod {}
-
-  declare class tls$ContentType {
-    constructor(...args: empty): mixed;
-    static +change_cipher_spec: Class<tls$ContentType__change_cipher_spec> &
-      tls$ContentType__change_cipher_spec &
-      20; // 20
-    static +alert: Class<tls$ContentType__alert> & tls$ContentType__alert & 21; // 21
-    static +handshake: Class<tls$ContentType__handshake> &
-      tls$ContentType__handshake &
-      22; // 22
-    static +application_data: Class<tls$ContentType__application_data> &
-      tls$ContentType__application_data &
-      23; // 23
-    static +heartbeat: Class<tls$ContentType__heartbeat> &
-      tls$ContentType__heartbeat &
-      24; // 24
-  }
-
-  declare class tls$ContentType__change_cipher_spec mixins tls$ContentType {}
-  declare class tls$ContentType__alert mixins tls$ContentType {}
-  declare class tls$ContentType__handshake mixins tls$ContentType {}
-  declare class tls$ContentType__application_data mixins tls$ContentType {}
-  declare class tls$ContentType__heartbeat mixins tls$ContentType {}
-
-  declare class tls$HandshakeType {
-    constructor(...args: empty): mixed;
-    static +hello_request: Class<tls$HandshakeType__hello_request> &
-      tls$HandshakeType__hello_request &
-      0; // 0
-    static +client_hello: Class<tls$HandshakeType__client_hello> &
-      tls$HandshakeType__client_hello &
-      1; // 1
-    static +server_hello: Class<tls$HandshakeType__server_hello> &
-      tls$HandshakeType__server_hello &
-      2; // 2
-    static +certificate: Class<tls$HandshakeType__certificate> &
-      tls$HandshakeType__certificate &
-      11; // 11
-    static +server_key_exchange: Class<tls$HandshakeType__server_key_exchange> &
-      tls$HandshakeType__server_key_exchange &
-      12; // 12
-    static +certificate_request: Class<tls$HandshakeType__certificate_request> &
-      tls$HandshakeType__certificate_request &
-      13; // 13
-    static +server_hello_done: Class<tls$HandshakeType__server_hello_done> &
-      tls$HandshakeType__server_hello_done &
-      14; // 14
-    static +certificate_verify: Class<tls$HandshakeType__certificate_verify> &
-      tls$HandshakeType__certificate_verify &
-      15; // 15
-    static +client_key_exchange: Class<tls$HandshakeType__client_key_exchange> &
-      tls$HandshakeType__client_key_exchange &
-      16; // 16
-    static +finished: Class<tls$HandshakeType__finished> &
-      tls$HandshakeType__finished &
-      20; // 20
-  }
-
-  declare class tls$HandshakeType__hello_request mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__client_hello mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__server_hello mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__certificate mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__server_key_exchange
-    mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__certificate_request
-    mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__server_hello_done mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__certificate_verify
-    mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__client_key_exchange
-    mixins tls$HandshakeType {}
-  declare class tls$HandshakeType__finished mixins tls$HandshakeType {}
-
-  declare class Alert$Level {
-    constructor(...args: empty): mixed;
-    static +warning: Class<Alert$Level__warning> & Alert$Level__warning & 1; // 1
-    static +fatal: Class<Alert$Level__fatal> & Alert$Level__fatal & 2; // 2
-  }
-
-  declare class Alert$Level__warning mixins Alert$Level {}
-  declare class Alert$Level__fatal mixins Alert$Level {}
-
-  declare class Alert$Description {
-    constructor(...args: empty): mixed;
-    static +close_notify: Class<Alert$Description__close_notify> &
-      Alert$Description__close_notify &
-      0; // 0
-    static +unexpected_message: Class<Alert$Description__unexpected_message> &
-      Alert$Description__unexpected_message &
-      10; // 10
-    static +bad_record_mac: Class<Alert$Description__bad_record_mac> &
-      Alert$Description__bad_record_mac &
-      20; // 20
-    static +decryption_failed: Class<Alert$Description__decryption_failed> &
-      Alert$Description__decryption_failed &
-      21; // 21
-    static +record_overflow: Class<Alert$Description__record_overflow> &
-      Alert$Description__record_overflow &
-      22; // 22
-    static +decompression_failure: Class<Alert$Description__decompression_failure> &
-      Alert$Description__decompression_failure &
-      30; // 30
-    static +handshake_failure: Class<Alert$Description__handshake_failure> &
-      Alert$Description__handshake_failure &
-      40; // 40
-    static +bad_certificate: Class<Alert$Description__bad_certificate> &
-      Alert$Description__bad_certificate &
-      42; // 42
-    static +unsupported_certificate: Class<Alert$Description__unsupported_certificate> &
-      Alert$Description__unsupported_certificate &
-      43; // 43
-    static +certificate_revoked: Class<Alert$Description__certificate_revoked> &
-      Alert$Description__certificate_revoked &
-      44; // 44
-    static +certificate_expired: Class<Alert$Description__certificate_expired> &
-      Alert$Description__certificate_expired &
-      45; // 45
-    static +certificate_unknown: Class<Alert$Description__certificate_unknown> &
-      Alert$Description__certificate_unknown &
-      46; // 46
-    static +illegal_parameter: Class<Alert$Description__illegal_parameter> &
-      Alert$Description__illegal_parameter &
-      47; // 47
-    static +unknown_ca: Class<Alert$Description__unknown_ca> &
-      Alert$Description__unknown_ca &
-      48; // 48
-    static +access_denied: Class<Alert$Description__access_denied> &
-      Alert$Description__access_denied &
-      49; // 49
-    static +decode_error: Class<Alert$Description__decode_error> &
-      Alert$Description__decode_error &
-      50; // 50
-    static +decrypt_error: Class<Alert$Description__decrypt_error> &
-      Alert$Description__decrypt_error &
-      51; // 51
-    static +export_restriction: Class<Alert$Description__export_restriction> &
-      Alert$Description__export_restriction &
-      60; // 60
-    static +protocol_version: Class<Alert$Description__protocol_version> &
-      Alert$Description__protocol_version &
-      70; // 70
-    static +insufficient_security: Class<Alert$Description__insufficient_security> &
-      Alert$Description__insufficient_security &
-      71; // 71
-    static +internal_error: Class<Alert$Description__internal_error> &
-      Alert$Description__internal_error &
-      80; // 80
-    static +user_canceled: Class<Alert$Description__user_canceled> &
-      Alert$Description__user_canceled &
-      90; // 90
-    static +no_renegotiation: Class<Alert$Description__no_renegotiation> &
-      Alert$Description__no_renegotiation &
-      100; // 100
-  }
-
-  declare class Alert$Description__close_notify mixins Alert$Description {}
-  declare class Alert$Description__unexpected_message
-    mixins Alert$Description {}
-  declare class Alert$Description__bad_record_mac mixins Alert$Description {}
-  declare class Alert$Description__decryption_failed mixins Alert$Description {}
-  declare class Alert$Description__record_overflow mixins Alert$Description {}
-  declare class Alert$Description__decompression_failure
-    mixins Alert$Description {}
-  declare class Alert$Description__handshake_failure mixins Alert$Description {}
-  declare class Alert$Description__bad_certificate mixins Alert$Description {}
-  declare class Alert$Description__unsupported_certificate
-    mixins Alert$Description {}
-  declare class Alert$Description__certificate_revoked
-    mixins Alert$Description {}
-  declare class Alert$Description__certificate_expired
-    mixins Alert$Description {}
-  declare class Alert$Description__certificate_unknown
-    mixins Alert$Description {}
-  declare class Alert$Description__illegal_parameter mixins Alert$Description {}
-  declare class Alert$Description__unknown_ca mixins Alert$Description {}
-  declare class Alert$Description__access_denied mixins Alert$Description {}
-  declare class Alert$Description__decode_error mixins Alert$Description {}
-  declare class Alert$Description__decrypt_error mixins Alert$Description {}
-  declare class Alert$Description__export_restriction
-    mixins Alert$Description {}
-  declare class Alert$Description__protocol_version mixins Alert$Description {}
-  declare class Alert$Description__insufficient_security
-    mixins Alert$Description {}
-  declare class Alert$Description__internal_error mixins Alert$Description {}
-  declare class Alert$Description__user_canceled mixins Alert$Description {}
-  declare class Alert$Description__no_renegotiation mixins Alert$Description {}
-
-  declare class tls$HeartbeatMessageType {
-    constructor(...args: empty): mixed;
-    static +heartbeat_request: Class<tls$HeartbeatMessageType__heartbeat_request> &
-      tls$HeartbeatMessageType__heartbeat_request &
-      1; // 1
-    static +heartbeat_response: Class<tls$HeartbeatMessageType__heartbeat_response> &
-      tls$HeartbeatMessageType__heartbeat_response &
-      2; // 2
-  }
-
-  declare class tls$HeartbeatMessageType__heartbeat_request
-    mixins tls$HeartbeatMessageType {}
-  declare class tls$HeartbeatMessageType__heartbeat_response
-    mixins tls$HeartbeatMessageType {}
+  declare var tls$HeartbeatMessageType: {|
+    +heartbeat_request: 1, // 1
+    +heartbeat_response: 2 // 2
+  |};
 
   declare interface tls$CipherSuite {
     id: [Byte, Byte];
@@ -1242,8 +1037,8 @@ id the id to use.
   };
 
   declare interface tls$CertificateRequest {
-    certificate_types: utilutil$ByteBuffer;
-    certificate_authorities: utilutil$ByteBuffer;
+    certificate_types: util$ByteBuffer;
+    certificate_authorities: util$ByteBuffer;
   }
 
   declare type tls$ConnectionState = any;
@@ -1252,26 +1047,26 @@ id the id to use.
     version: tls$ProtocolVersion;
     entity: tls$ConnectionEnd;
     sessionId: Bytes | null;
-    caStore: pkipki$CAStore;
+    caStore: pki$CAStore;
     sessionCache: tls$SessionCache | null;
     cipherSuites: tls$CipherSuite[];
     connected(conn: tls$Connection): void;
     virtualHost: string | null;
     verifyClient: boolean;
-    ed25519$verify(
+    verify(
       conn: tls$Connection,
       verified: tls$Verified,
       depth: number,
-      certs: pkipki$Certificate[]
+      certs: pki$Certificate[]
     ): tls$Verified;
     getCertificate:
       | ((
           conn: tls$Connection,
           hint: tls$CertificateRequest | string[]
-        ) => pkipki$PEM | $ReadOnlyArray<pkipki$PEM>)
+        ) => pki$PEM | $ReadOnlyArray<pki$PEM>)
       | null;
     getPrivateKey:
-      | ((conn: tls$Connection, certificate: pkipki$Certificate) => pkipki$PEM)
+      | ((conn: tls$Connection, certificate: pki$Certificate) => pki$PEM)
       | null;
     getSignature:
       | ((
@@ -1280,13 +1075,13 @@ id the id to use.
           callback: (conn: tls$Connection, bytes: Bytes) => void
         ) => void)
       | null;
-    input: utilutil$ByteBuffer;
-    tlsData: utilutil$ByteBuffer;
-    data: utilutil$ByteBuffer;
+    input: util$ByteBuffer;
+    tlsData: util$ByteBuffer;
+    data: util$ByteBuffer;
     tlsDataReady(conn: tls$Connection): void;
     dataReady(conn: tls$Connection): void;
     heartbeatReceived:
-      | ((conn: tls$Connection, payload: utilutil$ByteBuffer) => void)
+      | ((conn: tls$Connection, payload: util$ByteBuffer) => void)
       | void;
     closed(conn: tls$Connection): void;
     error(conn: tls$Connection, error: tls$TLSError): void;
@@ -1295,7 +1090,7 @@ id the id to use.
     reset(clearFail?: boolean): void;
     record: tls$Record | null;
     session: tls$Session | null;
-    peerCertificate: pkipki$Certificate | null;
+    peerCertificate: pki$Certificate | null;
     state: {
       pending: tls$ConnectionState | null,
       current: tls$ConnectionState
@@ -1312,7 +1107,7 @@ id the id to use.
     process(data: Bytes): number;
     prepare(data: Bytes): boolean;
     prepareHeartbeatRequest(
-      payload: Bytes | utilutil$ByteBuffer,
+      payload: Bytes | util$ByteBuffer,
       payloadLength?: number
     ): boolean;
     close(clearFail?: boolean): tls$Connection;
@@ -1322,7 +1117,7 @@ id the id to use.
     type: tls$ContentType;
     version: tls$ProtocolVersion;
     length: number;
-    fragment: utilutil$ByteBuffer;
+    fragment: util$ByteBuffer;
     ready?: boolean;
   }
 
@@ -1333,10 +1128,10 @@ id the id to use.
     };
     cipherSuite: tls$CipherSuite | null;
     compressionMethod: tls$CompressionMethod | null;
-    serverCertificate: pkipki$Certificate | null;
-    clientCertificate: pkipki$Certificate | null;
-    md5: mdmd$MessageDigest;
-    sha1: mdmd$MessageDigest;
+    serverCertificate: pki$Certificate | null;
+    clientCertificate: pki$Certificate | null;
+    md5: md$MessageDigest;
+    sha1: md$MessageDigest;
   }
 
   declare interface tls$SessionCache {
@@ -1359,8 +1154,8 @@ id the id to use.
   ): tls$SessionCache;
 
   declare interface tls$Alert {
-    level: tls$AlertAlert$Level;
-    description: tls$AlertAlert$Description;
+    level: Alert$Level;
+    description: Alert$Description;
   }
 
   declare type tls$TLSError = {
@@ -1374,13 +1169,13 @@ id the id to use.
     | true
     | {
         message?: string,
-        alert?: tls$AlertAlert$Description
+        alert?: Alert$Description
       };
 
   declare function tls$createConnection(options: {
     server?: boolean,
     sessionId?: Bytes | null,
-    caStore?: pkipki$CAStore | $ReadOnlyArray<pkipki$Certificate>,
+    caStore?: pki$CAStore | $ReadOnlyArray<pki$Certificate>,
     sessionCache?:
       | tls$SessionCache
       | {
@@ -1390,20 +1185,20 @@ id the id to use.
     connected(conn: tls$Connection): void,
     virtualHost?: string,
     verifyClient?: boolean,
-    ed25519$verify?: (
+    verify?: (
       conn: tls$Connection,
       verified: tls$Verified,
       depth: number,
-      certs: pkipki$Certificate[]
+      certs: pki$Certificate[]
     ) => tls$Verified,
     getCertificate?: (
       conn: tls$Connection,
       hint: tls$CertificateRequest | string[]
-    ) => pkipki$PEM | $ReadOnlyArray<pkipki$PEM>,
+    ) => pki$PEM | $ReadOnlyArray<pki$PEM>,
     getPrivateKey?: (
       conn: tls$Connection,
-      certificate: pkipki$Certificate
-    ) => pkipki$PEM,
+      certificate: pki$Certificate
+    ) => pki$PEM,
     getSignature?: (
       conn: tls$Connection,
       bytes: Bytes,
@@ -1413,7 +1208,7 @@ id the id to use.
     dataReady(conn: tls$Connection): void,
     heartbeatReceived?: (
       conn: tls$Connection,
-      payload: utilutil$ByteBuffer
+      payload: util$ByteBuffer
     ) => void,
     closed(conn: tls$Connection): void,
     error(conn: tls$Connection, error: tls$TLSError): void,
@@ -1426,10 +1221,10 @@ id the id to use.
     label: string,
     seed: string,
     length: number
-  ): utilutil$ByteBuffer;
+  ): util$ByteBuffer;
 
   declare function tls$hmac_sha1(
-    key: string | $ReadOnlyArray<Byte> | utilutil$ByteBuffer,
+    key: string | $ReadOnlyArray<Byte> | util$ByteBuffer,
     seqNum: [number, number],
     record: tls$Record
   ): Bytes;
