@@ -1,9 +1,9 @@
 declare module "p-time" {
-  declare module.exports: typeof pTime;
+  declare export default typeof pTime;
 
   declare function pTime<TArgs: any[], TRes>(
     fn: (...args: TArgs) => PromiseLike<TRes>
-  ): (...args: TArgs) => pTime$pTime$PromiseWithTime<TRes>;
+  ): (...args: TArgs) => pTime$PromiseWithTime<TRes>;
 
   declare var npm$namespace$pTime: {
     log: typeof pTime$log
