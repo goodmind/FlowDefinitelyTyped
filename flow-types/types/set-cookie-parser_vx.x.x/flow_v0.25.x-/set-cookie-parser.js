@@ -1,8 +1,8 @@
 declare module "set-cookie-parser" {
   declare function SetCookieParser(
     input: string | $ReadOnlyArray<string> | http.IncomingMessage,
-    options?: SetCookieParser$SetCookieParser$Options
-  ): SetCookieParser$SetCookieParser$Cookie[];
+    options?: SetCookieParser$Options
+  ): SetCookieParser$Cookie[];
 
   declare var npm$namespace$SetCookieParser: {
     parse: typeof SetCookieParser$parse,
@@ -32,5 +32,5 @@ declare module "set-cookie-parser" {
     decodeValues?: boolean,
     map?: boolean
   };
-  declare module.exports: typeof SetCookieParser;
+  declare export default typeof SetCookieParser;
 }
