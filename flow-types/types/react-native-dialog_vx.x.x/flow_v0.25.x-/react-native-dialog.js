@@ -46,6 +46,14 @@ declare module "react-native-dialog" {
   declare interface DescriptionProps {
     children: string;
   }
+
+  declare var npm$namespace$Dialog: {
+    Button: typeof Dialog$Button,
+    Container: typeof Dialog$Container,
+    Title: typeof Dialog$Title,
+    Input: typeof Dialog$Input,
+    Description: typeof Dialog$Description
+  };
   declare class Dialog$Button
     mixins PureComponent<ButtonProps & ViewProps & TextProps> {}
 
