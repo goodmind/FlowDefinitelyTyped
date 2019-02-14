@@ -6,5 +6,5 @@ declare module "htmlescape" {
   };
   declare function htmlescape$sanitize(s: string): string;
 
-  declare module.exports: typeof htmlescape;
+  declare export default typeof htmlescape;
 }
