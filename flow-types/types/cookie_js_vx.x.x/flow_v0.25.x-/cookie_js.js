@@ -1,8 +1,8 @@
 declare module "cookie_js" {
-  declare module.exports: typeof cookie;
+  declare export default typeof cookie;
 }
 declare module "cookiejs" {
-  declare module.exports: typeof cookie;
+  declare export default typeof cookie;
 }
 declare function cookie(key: string, fallback?: string): string;
 declare function cookie(keys: string[], fallback?: string): string;
