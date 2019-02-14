@@ -12,47 +12,47 @@ declare module "osrm" {
      * shortest path between given coordinates
      */
     route(
-      options: OSRM$OSRM$RouteOptions,
-      callback: (err: Error, results: OSRM$OSRM$RouteResults) => void
+      options: OSRM$RouteOptions,
+      callback: (err: Error, results: OSRM$RouteResults) => void
     ): void;
 
     /**
      * returns the nearest street segment for a given coordinate
      */
     nearest(
-      options: OSRM$OSRM$NearestOptions,
-      callback: (err: Error, results: OSRM$OSRM$NearestResults) => void
+      options: OSRM$NearestOptions,
+      callback: (err: Error, results: OSRM$NearestResults) => void
     ): void;
 
     /**
      * computes distance tables for given coordinates
      */
     table(
-      options: OSRM$OSRM$TableOptions,
-      callback: (err: Error, results: OSRM$OSRM$TableResults) => void
+      options: OSRM$TableOptions,
+      callback: (err: Error, results: OSRM$TableResults) => void
     ): void;
 
     /**
      * matches given coordinates to the road network
      */
     match(
-      options: OSRM$OSRM$MatchOptions,
-      callback: (err: Error, results: OSRM$OSRM$MatchResults) => void
+      options: OSRM$MatchOptions,
+      callback: (err: Error, results: OSRM$MatchResults) => void
     ): void;
 
     /**
      * Compute the shortest trip between given coordinates
      */
     trip(
-      options: OSRM$OSRM$TripOptions,
-      callback: (err: Error, results: OSRM$OSRM$TripResults) => void
+      options: OSRM$TripOptions,
+      callback: (err: Error, results: OSRM$TripResults) => void
     ): void;
 
     /**
      * Return vector tiles containing debugging info
      */
     tile(
-      options: OSRM$OSRM$TileOptions | OSRM$OSRM$Tile,
+      options: OSRM$TileOptions | OSRM$Tile,
       callback: (err: Error, results: Buffer) => void
     ): void;
   }
@@ -440,7 +440,7 @@ declare module "osrm" {
   declare type OSRM$MatchWaypoint = {
     matchings_index: number[],
     waypoint_index: number[]
-  } & OSRM$Waypoint;
+  } & Waypoint;
 
   /**
    * matchings is an array of Route objects that assemble the trace.
@@ -452,7 +452,7 @@ declare module "osrm" {
    */
   declare type OSRM$MatchRoute = {
     confidence: number
-  } & OSRM$Route;
+  } & Route;
 
   /**
    * Each Waypoint object has the following additional properties,
@@ -465,7 +465,7 @@ declare module "osrm" {
   declare type OSRM$TripWaypoint = {
     trips_index: number,
     waypoint_index: number
-  } & OSRM$Waypoint;
+  } & Waypoint;
 
   declare interface OSRM$Options {
     /**
@@ -530,7 +530,7 @@ declare module "osrm" {
      * Forces the route to keep going straight at waypoints and don't do a uturn even if it would be faster. Default value depends on the profile. null/true/false
      */
     continue_straight?: boolean
-  } & OSRM$Options;
+  } & Options;
 
   /**
    * Snaps a coordinate to the street network and returns the nearest n matches.
@@ -544,7 +544,7 @@ declare module "osrm" {
      * Number of nearest segments that should be returned. Must be an integer greater than or equal to 1. (optional, default 1)
      */
     number?: number
-  } & OSRM$Options;
+  } & Options;
 
   /**
    * Computes duration tables for the given locations. Allows for both symmetric and asymmetric tables.
@@ -561,7 +561,7 @@ declare module "osrm" {
      * to use location with given index as destination. Default is to use all.
      */
     destinations?: number[]
-  } & OSRM$Options;
+  } & Options;
 
   /**
    * This generates Mapbox Vector Tiles that can be viewed with a vector-tile capable slippy-map viewer.
@@ -577,7 +577,7 @@ declare module "osrm" {
      * and are supported by vector tile viewers like Mapbox GL JS.
      */
     ZXY?: OSRM$Tile
-  } & OSRM$Options;
+  } & Options;
 
   /**
    * Map matching matches given GPS points to the road network in the most plausible way.
@@ -618,7 +618,7 @@ declare module "osrm" {
      * Standard deviation of GPS precision used for map matching. If applicable use GPS accuracy (double >= 0, default 5m).
      */
     radiuses?: number[]
-  } & OSRM$Options;
+  } & Options;
 
   /**
    * The trip plugin solves the Traveling Salesman Problem using a greedy heuristic (farthest-insertion algorithm).
@@ -663,7 +663,7 @@ declare module "osrm" {
      * Add overview geometry either full, simplified (optional, default simplified)
      */
     overview?: string
-  } & OSRM$Options;
+  } & Options;
 
   declare interface OSRM$RouteResults {
     waypoints: OSRM$Waypoint[];
@@ -689,5 +689,5 @@ declare module "osrm" {
     waypoints: OSRM$TripWaypoint[];
     trips: OSRM$Route[];
   }
-  declare module.exports: typeof OSRM;
+  declare export default typeof OSRM;
 }
