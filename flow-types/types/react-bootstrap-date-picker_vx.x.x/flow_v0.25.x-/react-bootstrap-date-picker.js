@@ -7,10 +7,10 @@ declare module "react-bootstrap-date-picker" {
     HTMLAttributes
   } from "react";
 
-  declare module.exports: typeof DatePicker;
+  declare export default typeof DatePicker;
 
   declare var DatePicker: DatePicker;
-  declare type DatePicker = ComponentClass<DatePicker$DatePicker$DatePickerProps>;
+  declare type DatePicker = ComponentClass<DatePicker$DatePickerProps>;
   declare type DatePicker$ChangeCallback = (
     value: string,
     formattedValue: string
