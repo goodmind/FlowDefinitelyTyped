@@ -1,7 +1,7 @@
 declare module "active-win" {
-  declare module.exports: typeof activeWin;
+  declare export default typeof activeWin;
 
-  declare function activeWin(): Promise<activeWin$activeWin$Result>;
+  declare function activeWin(): Promise<activeWin$Result>;
 
   declare var npm$namespace$activeWin: {
     sync: typeof activeWin$sync
