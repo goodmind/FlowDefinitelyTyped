@@ -10,5 +10,5 @@ declare module "parseurl" {
   };
   declare function parseurl$original(req: IncomingMessage): Url | void;
 
-  declare module.exports: typeof parseurl;
+  declare export default typeof parseurl;
 }
