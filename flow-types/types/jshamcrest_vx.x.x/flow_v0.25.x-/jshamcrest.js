@@ -2,7 +2,15 @@ declare module "jshamcrest" {
   declare var npm$namespace$JsHamcrest: {
     isMatcher: typeof JsHamcrest$isMatcher,
     EqualTo: typeof JsHamcrest$EqualTo,
-    version: typeof JsHamcrest$version
+    version: typeof JsHamcrest$version,
+
+    Description: typeof JsHamcrest$Description,
+    SimpleMatcher: typeof JsHamcrest$SimpleMatcher,
+    CombinableMatcher: typeof JsHamcrest$CombinableMatcher,
+    BetweenBuilder: typeof JsHamcrest$BetweenBuilder,
+    Operators: typeof npm$namespace$JsHamcrest$Operators,
+    Matchers: typeof npm$namespace$JsHamcrest$Matchers,
+    Integration: typeof npm$namespace$JsHamcrest$Integration
   };
 
   /**
@@ -110,15 +118,15 @@ declare module "jshamcrest" {
    * FIXME Remove since isMatcher tests for SimpleMatcher :(
    */
   declare export type JsHamcrest$Matcher = {
-    Matchers$matches: JsHamcrest$Matches,
+    matches: JsHamcrest$Matches,
     describeValueTo: JsHamcrest$DescribeValueTo
-  } & JsHamcrest$SelfDescribing;
+  } & SelfDescribing;
 
   /**
    * Defines the configurable methods for declaring a new matcher using JsHamcrest.SimpleMatcher.
    */
   declare interface JsHamcrest$MatcherConfig {
-    Matchers$matches: JsHamcrest$Matches;
+    matches: JsHamcrest$Matches;
     describeTo: JsHamcrest$DescribeTo;
     describeValueTo?: JsHamcrest$DescribeValueTo;
   }
@@ -126,7 +134,7 @@ declare module "jshamcrest" {
   /**
    * Defines a matcher that relies on the external functions provided by the caller in order to shape the current matching logic.
    */
-  declare export class JsHamcrest$SimpleMatcher mixins JsHamcrest$Matcher {
+  declare export class JsHamcrest$SimpleMatcher mixins Matcher {
     Matchers$matches: JsHamcrest$Matches;
     describeTo: JsHamcrest$DescribeTo;
     describeValueTo: JsHamcrest$DescribeValueTo;
@@ -136,8 +144,7 @@ declare module "jshamcrest" {
   /**
    * Defines a composite matcher, that is, a matcher that wraps several matchers into one.
    */
-  declare export class JsHamcrest$CombinableMatcher
-    mixins JsHamcrest$SimpleMatcher {
+  declare export class JsHamcrest$CombinableMatcher mixins SimpleMatcher {
     /**
      * Wraps this matcher and the given matcher using JsHamcrest.Matchers.allOf().
      * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
@@ -169,16 +176,16 @@ declare module "jshamcrest" {
     factory: (matcher: JsHamcrest$Matcher) => JsHamcrest$Matcher
   ): (matcherOrValue: any) => JsHamcrest$Matcher;
 
-  declare var npm$namespace$Operators: {
-    assert: typeof Operators$assert,
-    filter: typeof Operators$filter,
-    callTo: typeof Operators$callTo
+  declare var npm$namespace$JsHamcrest$Operators: {
+    assert: typeof JsHamcrest$Operators$assert,
+    filter: typeof JsHamcrest$Operators$filter,
+    callTo: typeof JsHamcrest$Operators$callTo
   };
 
   /**
    * Defines the options accepted by assert().
    */
-  declare interface Operators$AssertOptions {
+  declare interface JsHamcrest$Operators$AssertOptions {
     message?: any;
     pass?: (description: string) => void;
     fail?: (description: string) => void;
@@ -189,13 +196,13 @@ declare module "jshamcrest" {
    * @param actual Value to test against the matcher
    * @param matcherOrValue Applied to the value; wrapped with equalTo() if not a matcher
    * @param options Provides message and pass/fail handlers
-   * @return {JsHamcrest$JsHamcrest$Description} Contains the message, actual value, matcher, and result
+   * @return {JsHamcrest$Description} Contains the message, actual value, matcher, and result
    */
-  declare export function Operators$assert(
+  declare export function JsHamcrest$Operators$assert(
     actual: any,
     matcherOrValue?: any,
-    options?: Operators$AssertOptions
-  ): JsHamcrest$JsHamcrest$Description;
+    options?: JsHamcrest$Operators$AssertOptions
+  ): JsHamcrest$Description;
 
   /**
    * Returns those items of the array for which matcher matches.
@@ -203,7 +210,7 @@ declare module "jshamcrest" {
    * @param matcherOrValue Applied to each value
    * @return {Array<"NO PRINT IMPLEMENTED: JSDocAllType">} Contains all values from array matched by the matcher in the original order
    */
-  declare export function Operators$filter(
+  declare export function JsHamcrest$Operators$filter(
     array: any[],
     matcherOrValue: any
   ): any[];
@@ -214,449 +221,449 @@ declare module "jshamcrest" {
    * @param args Passed to func
    * @return {"NO PRINT IMPLEMENTED: JSDocFunctionType"} A function that calls func with args and returns its result
    */
-  declare export function Operators$callTo(
-    Matchers$func: (...args: any[]) => any,
+  declare export function JsHamcrest$Operators$callTo(
+    func: (...args: any[]) => any,
     ...args: any[]
   ): () => any;
 
-  declare var npm$namespace$Matchers: {
-    empty: typeof Matchers$empty,
-    everyItem: typeof Matchers$everyItem,
-    hasItem: typeof Matchers$hasItem,
-    hasItems: typeof Matchers$hasItems,
-    hasSize: typeof Matchers$hasSize,
-    isIn: typeof Matchers$isIn,
-    oneOf: typeof Matchers$oneOf,
-    allOf: typeof Matchers$allOf,
-    anyOf: typeof Matchers$anyOf,
-    anything: typeof Matchers$anything,
-    both: typeof Matchers$both,
-    either: typeof Matchers$either,
-    equalTo: typeof Matchers$equalTo,
-    is: typeof Matchers$is,
-    nil: typeof Matchers$nil,
-    not: typeof Matchers$not,
-    raises: typeof Matchers$raises,
-    raisesAnything: typeof Matchers$raisesAnything,
-    sameAs: typeof Matchers$sameAs,
-    truth: typeof Matchers$truth,
-    between: typeof Matchers$between,
-    closeTo: typeof Matchers$closeTo,
-    divisibleBy: typeof Matchers$divisibleBy,
-    even: typeof Matchers$even,
-    greaterThan: typeof Matchers$greaterThan,
-    greaterThanOrEqualTo: typeof Matchers$greaterThanOrEqualTo,
-    lessThan: typeof Matchers$lessThan,
-    lessThanOrEqualTo: typeof Matchers$lessThanOrEqualTo,
-    notANumber: typeof Matchers$notANumber,
-    odd: typeof Matchers$odd,
-    zero: typeof Matchers$zero,
-    bool: typeof Matchers$bool,
-    func: typeof Matchers$func,
-    hasFunction: typeof Matchers$hasFunction,
-    hasMember: typeof Matchers$hasMember,
-    instanceOf: typeof Matchers$instanceOf,
-    number: typeof Matchers$number,
-    object: typeof Matchers$object,
-    string: typeof Matchers$string,
-    typeOf: typeof Matchers$typeOf,
-    containsString: typeof Matchers$containsString,
-    emailAddress: typeof Matchers$emailAddress,
-    endsWith: typeof Matchers$endsWith,
-    equalIgnoringCase: typeof Matchers$equalIgnoringCase,
-    matches: typeof Matchers$matches,
-    startsWith: typeof Matchers$startsWith
+  declare var npm$namespace$JsHamcrest$Matchers: {
+    empty: typeof JsHamcrest$Matchers$empty,
+    everyItem: typeof JsHamcrest$Matchers$everyItem,
+    hasItem: typeof JsHamcrest$Matchers$hasItem,
+    hasItems: typeof JsHamcrest$Matchers$hasItems,
+    hasSize: typeof JsHamcrest$Matchers$hasSize,
+    isIn: typeof JsHamcrest$Matchers$isIn,
+    oneOf: typeof JsHamcrest$Matchers$oneOf,
+    allOf: typeof JsHamcrest$Matchers$allOf,
+    anyOf: typeof JsHamcrest$Matchers$anyOf,
+    anything: typeof JsHamcrest$Matchers$anything,
+    both: typeof JsHamcrest$Matchers$both,
+    either: typeof JsHamcrest$Matchers$either,
+    equalTo: typeof JsHamcrest$Matchers$equalTo,
+    is: typeof JsHamcrest$Matchers$is,
+    nil: typeof JsHamcrest$Matchers$nil,
+    not: typeof JsHamcrest$Matchers$not,
+    raises: typeof JsHamcrest$Matchers$raises,
+    raisesAnything: typeof JsHamcrest$Matchers$raisesAnything,
+    sameAs: typeof JsHamcrest$Matchers$sameAs,
+    truth: typeof JsHamcrest$Matchers$truth,
+    between: typeof JsHamcrest$Matchers$between,
+    closeTo: typeof JsHamcrest$Matchers$closeTo,
+    divisibleBy: typeof JsHamcrest$Matchers$divisibleBy,
+    even: typeof JsHamcrest$Matchers$even,
+    greaterThan: typeof JsHamcrest$Matchers$greaterThan,
+    greaterThanOrEqualTo: typeof JsHamcrest$Matchers$greaterThanOrEqualTo,
+    lessThan: typeof JsHamcrest$Matchers$lessThan,
+    lessThanOrEqualTo: typeof JsHamcrest$Matchers$lessThanOrEqualTo,
+    notANumber: typeof JsHamcrest$Matchers$notANumber,
+    odd: typeof JsHamcrest$Matchers$odd,
+    zero: typeof JsHamcrest$Matchers$zero,
+    bool: typeof JsHamcrest$Matchers$bool,
+    func: typeof JsHamcrest$Matchers$func,
+    hasFunction: typeof JsHamcrest$Matchers$hasFunction,
+    hasMember: typeof JsHamcrest$Matchers$hasMember,
+    instanceOf: typeof JsHamcrest$Matchers$instanceOf,
+    number: typeof JsHamcrest$Matchers$number,
+    object: typeof JsHamcrest$Matchers$object,
+    string: typeof JsHamcrest$Matchers$string,
+    typeOf: typeof JsHamcrest$Matchers$typeOf,
+    containsString: typeof JsHamcrest$Matchers$containsString,
+    emailAddress: typeof JsHamcrest$Matchers$emailAddress,
+    endsWith: typeof JsHamcrest$Matchers$endsWith,
+    equalIgnoringCase: typeof JsHamcrest$Matchers$equalIgnoringCase,
+    matches: typeof JsHamcrest$Matchers$matches,
+    startsWith: typeof JsHamcrest$Matchers$startsWith
   };
 
   /**
    * The length of the actual value must be zero.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$empty(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$empty(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and matcherOrValue must match all items.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$everyItem(
+  declare export function JsHamcrest$Matchers$everyItem(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and it must contain at least one value that matches matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$hasItem(
+  declare export function JsHamcrest$Matchers$hasItem(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and matchersOrValues must match at least one item.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$hasItems(
+  declare export function JsHamcrest$Matchers$hasItems(
     ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The length of the actual value must match matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$hasSize(
+  declare export function JsHamcrest$Matchers$hasSize(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The given array or arguments must contain the actual value.
    * @param items Array or list of values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$isIn(
+  declare export function JsHamcrest$Matchers$isIn(
     ...items: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * Alias to isIn() function.
    * @param items Array or list of values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$oneOf(
+  declare export function JsHamcrest$Matchers$oneOf(
     ...items: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * All matchesOrValues must match the actual value. This matcher behaves pretty much like the JavaScript && (and) operator.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$allOf(
+  declare export function JsHamcrest$Matchers$allOf(
     ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * At least one of the matchersOrValues should match the actual value. This matcher behaves pretty much like the JavaScript || (or) operator.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$anyOf(
+  declare export function JsHamcrest$Matchers$anyOf(
     ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * Useless always-match matcher.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$anything(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$anything(): JsHamcrest$SimpleMatcher;
 
   /**
    * Combinable matcher where the actual value must match all the given matchers or values.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
+   * @return {JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
    */
-  declare export function Matchers$both(
+  declare export function JsHamcrest$Matchers$both(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$CombinableMatcher;
+  ): JsHamcrest$CombinableMatcher;
 
   /**
    * Combinable matcher where the actual value must match at least one of the given matchers or values.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
+   * @return {JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
    */
-  declare export function Matchers$either(
+  declare export function JsHamcrest$Matchers$either(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$CombinableMatcher;
+  ): JsHamcrest$CombinableMatcher;
 
   /**
    * The actual value must be equal to expected.
    * @param expected Expected value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$equalTo(
+  declare export function JsHamcrest$Matchers$equalTo(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * Delegate-only matcher frequently used to improve readability.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$is(
+  declare export function JsHamcrest$Matchers$is(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be null or undefined.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$nil(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$nil(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must not match matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$not(
+  declare export function JsHamcrest$Matchers$not(
     matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value is a function and, when invoked, it should throw an exception with the given name.
    * @param exceptionName Name of the expected exception
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$raises(
+  declare export function JsHamcrest$Matchers$raises(
     exceptionName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value is a function and, when invoked, it should raise any exception.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$raisesAnything(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$raisesAnything(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be the same as expected.
    * @param expected Expected value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$sameAs(
+  declare export function JsHamcrest$Matchers$sameAs(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * Matches any truthy value (not undefined, null, false, 0, NaN, or "").
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$truth(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$truth(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be between the given range (inclusive).
    * @param start Range start
-   * @return {JsHamcrest$JsHamcrest$BetweenBuilder} Builder object with an and(end) method, which returns a JsHamcrest.SimpleMatcher instance and thus should be called to finish the matcher creation
+   * @return {JsHamcrest$BetweenBuilder} Builder object with an and(end) method, which returns a JsHamcrest.SimpleMatcher instance and thus should be called to finish the matcher creation
    */
-  declare export function Matchers$between(
+  declare export function JsHamcrest$Matchers$between(
     start: any
-  ): JsHamcrest$JsHamcrest$BetweenBuilder;
+  ): JsHamcrest$BetweenBuilder;
 
   /**
    * The actual number must be close enough to expected, that is, the actual number is equal to a value within some range of acceptable error.
    * @param expected Expected number
    * @param delta Expected difference delta
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$closeTo(
+  declare export function JsHamcrest$Matchers$closeTo(
     expected: number,
     delta?: number
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be divisible by divisor.
    * @param divisor Divisor
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$divisibleBy(
+  declare export function JsHamcrest$Matchers$divisibleBy(
     divisor: number
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be even.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$even(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$even(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be greater than expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$greaterThan(
+  declare export function JsHamcrest$Matchers$greaterThan(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be greater than or equal to expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$greaterThanOrEqualTo(
+  declare export function JsHamcrest$Matchers$greaterThanOrEqualTo(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be less than expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$lessThan(
+  declare export function JsHamcrest$Matchers$lessThan(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be less than or equal to expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$lessThanOrEqualTo(
+  declare export function JsHamcrest$Matchers$lessThanOrEqualTo(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must not be a number.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$notANumber(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$notANumber(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be odd.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$odd(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$odd(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be zero.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$zero(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$zero(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a boolean.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$bool(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$bool(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a function.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$func(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$func(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value has a function with the given name.
    * @param functionName Function name
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$hasFunction(
+  declare export function JsHamcrest$Matchers$hasFunction(
     functionName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value has an attribute with the given name.
    * @param memberName Member name
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$hasMember(
+  declare export function JsHamcrest$Matchers$hasMember(
     memberName: string,
     matcherOrValue?: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be an instance of clazz.
    * @param clazz Constructor function
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$instanceOf(
+  declare export function JsHamcrest$Matchers$instanceOf(
     clazz: () => any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a number.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$number(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$number(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be an object.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$object(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$object(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a string.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$string(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$string(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be of the given type.
    * @param typeName Name of the type
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$typeOf(
+  declare export function JsHamcrest$Matchers$typeOf(
     typeName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must have a substring equals to str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$containsString(
+  declare export function JsHamcrest$Matchers$containsString(
     str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must look like an e-mail address.
    *
    * Warning: This matcher is not fully compliant with RFC2822 due to its complexity.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$emailAddress(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare export function JsHamcrest$Matchers$emailAddress(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must end with str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$endsWith(
+  declare export function JsHamcrest$Matchers$endsWith(
     str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must be equal to str, ignoring case.
    * @param str String
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$equalIgnoringCase(
+  declare export function JsHamcrest$Matchers$equalIgnoringCase(
     str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must match regex.
    * @param regex String
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$matches(
+  declare export function JsHamcrest$Matchers$matches(
     regex: RegExp
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must start with str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare export function Matchers$startsWith(
+  declare export function JsHamcrest$Matchers$startsWith(
     str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
-  declare var npm$namespace$Integration: {
-    copyMembers: typeof Integration$copyMembers,
-    installMatchers: typeof Integration$installMatchers,
-    installOperators: typeof Integration$installOperators,
-    WebBrowser: typeof Integration$WebBrowser,
-    Rhino: typeof Integration$Rhino,
-    JsTestDriver: typeof Integration$JsTestDriver,
-    Nodeunit: typeof Integration$Nodeunit,
-    JsUnitTest: typeof Integration$JsUnitTest,
-    YUITest: typeof Integration$YUITest,
-    QUnit: typeof Integration$QUnit,
-    jsUnity: typeof Integration$jsUnity,
-    screwunit: typeof Integration$screwunit,
-    jasmine: typeof Integration$jasmine
+  declare var npm$namespace$JsHamcrest$Integration: {
+    copyMembers: typeof JsHamcrest$Integration$copyMembers,
+    installMatchers: typeof JsHamcrest$Integration$installMatchers,
+    installOperators: typeof JsHamcrest$Integration$installOperators,
+    WebBrowser: typeof JsHamcrest$Integration$WebBrowser,
+    Rhino: typeof JsHamcrest$Integration$Rhino,
+    JsTestDriver: typeof JsHamcrest$Integration$JsTestDriver,
+    Nodeunit: typeof JsHamcrest$Integration$Nodeunit,
+    JsUnitTest: typeof JsHamcrest$Integration$JsUnitTest,
+    YUITest: typeof JsHamcrest$Integration$YUITest,
+    QUnit: typeof JsHamcrest$Integration$QUnit,
+    jsUnity: typeof JsHamcrest$Integration$jsUnity,
+    screwunit: typeof JsHamcrest$Integration$screwunit,
+    jasmine: typeof JsHamcrest$Integration$jasmine
   };
 
   /**
@@ -665,7 +672,7 @@ declare module "jshamcrest" {
    * Does not overwrite properties with the same name.
    * @param target
    */
-  declare export function Integration$copyMembers(target: {}): void;
+  declare export function JsHamcrest$Integration$copyMembers(target: {}): void;
 
   /**
    * Copies all members of source to target.
@@ -674,37 +681,40 @@ declare module "jshamcrest" {
    * @param source
    * @param target
    */
-  declare export function Integration$copyMembers(source: {}, target: {}): void;
+  declare export function JsHamcrest$Integration$copyMembers(
+    source: {},
+    target: {}
+  ): void;
 
   /**
    * Adds the members of the given object to JsHamcrest.Matchers namespace.
    * @param source
    */
-  declare export function Integration$installMatchers(source: {}): void;
+  declare export function JsHamcrest$Integration$installMatchers(source: {}): void;
 
   /**
    * Adds the members of the given object to JsHamcrest.Operators namespace.
    * @param source
    */
-  declare export function Integration$installOperators(source: {}): void;
+  declare export function JsHamcrest$Integration$installOperators(source: {}): void;
 
   /**
    * Uses the web browser's alert() function to display the assertion results.
    * Great for quick prototyping.
    */
-  declare export function Integration$WebBrowser(): void;
+  declare export function JsHamcrest$Integration$WebBrowser(): void;
 
   /**
    * Uses Rhino's print() function to display the assertion results.
    * Great for quick prototyping.
    */
-  declare export function Integration$Rhino(): void;
+  declare export function JsHamcrest$Integration$Rhino(): void;
 
   /**
    * JsTestDriver integration.
    * @param params Omit to copy members to global scope
    */
-  declare export function Integration$JsTestDriver(params?: {
+  declare export function JsHamcrest$Integration$JsTestDriver(params?: {
     scope?: {}
   }): void;
 
@@ -712,7 +722,7 @@ declare module "jshamcrest" {
    * NodeUnit (Node.js Unit Testing) integration.
    * @param params Omit to copy members to "global"
    */
-  declare export function Integration$Nodeunit(params?: {
+  declare export function JsHamcrest$Integration$Nodeunit(params?: {
     scope?: {}
   }): void;
 
@@ -720,7 +730,7 @@ declare module "jshamcrest" {
    * JsUnitTest integration.
    * @param params Omit to copy members to "JsUnitTest.Unit.Testcase.prototype"
    */
-  declare export function Integration$JsUnitTest(params?: {
+  declare export function JsHamcrest$Integration$JsUnitTest(params?: {
     scope?: {}
   }): void;
 
@@ -728,7 +738,7 @@ declare module "jshamcrest" {
    * YUITest (Yahoo UI) integration.
    * @param params Omit to copy members to global scope
    */
-  declare export function Integration$YUITest(params?: {
+  declare export function JsHamcrest$Integration$YUITest(params?: {
     scope?: {}
   }): void;
 
@@ -736,7 +746,7 @@ declare module "jshamcrest" {
    * QUnit (JQuery) integration.
    * @param params Omit to copy members to global scope
    */
-  declare export function Integration$QUnit(params?: {
+  declare export function JsHamcrest$Integration$QUnit(params?: {
     scope?: {}
   }): void;
 
@@ -744,7 +754,7 @@ declare module "jshamcrest" {
    * jsUnity integration.
    * @param params Omit to copy members to "jsUnity.env.defaultScope"
    */
-  declare export function Integration$jsUnity(params?: {
+  declare export function JsHamcrest$Integration$jsUnity(params?: {
     scope?: {},
     attachAssertions?: boolean
   }): void;
@@ -753,7 +763,7 @@ declare module "jshamcrest" {
    * Screw.Unit integration.
    * @param params Omit to copy members to "Screw.Matchers"
    */
-  declare export function Integration$screwunit(params?: {
+  declare export function JsHamcrest$Integration$screwunit(params?: {
     scope?: {}
   }): void;
 
@@ -761,7 +771,7 @@ declare module "jshamcrest" {
    * Jasmine integration.
    * @param params Omit to copy members to global scope
    */
-  declare export function Integration$jasmine(params?: {
+  declare export function JsHamcrest$Integration$jasmine(params?: {
     scope?: {}
   }): void;
 
@@ -777,366 +787,332 @@ declare module "jshamcrest" {
    * @param actual Value to test against the matcher
    * @param matcher Applied to the value
    * @param message Prepends the built description
-   * @return {JsHamcrest$JsHamcrest$Description} Contains the message, actual value, matcher, and result
+   * @return {JsHamcrest$Description} Contains the message, actual value, matcher, and result
    */
   declare function assertThat(
     actual: any,
-    matcher?: JsHamcrest$JsHamcrest$Matcher,
+    matcher?: JsHamcrest$Matcher,
     message?: any
-  ): JsHamcrest$JsHamcrest$Description;
+  ): JsHamcrest$Description;
 
   /**
    * The length of the actual value must be zero.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function empty(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function empty(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and matcherOrValue must match all items.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function everyItem(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function everyItem(matcherOrValue: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and it must contain at least one value that matches matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function hasItem(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function hasItem(matcherOrValue: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value should be an array and matchersOrValues must match at least one item.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
   declare function hasItems(
     ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The length of the actual value must match matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function hasSize(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function hasSize(matcherOrValue: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The given array or arguments must contain the actual value.
    * @param items Array or list of values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function isIn(...items: any[]): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function isIn(...items: any[]): JsHamcrest$SimpleMatcher;
 
   /**
    * Alias to isIn() function.
    * @param items Array or list of values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function oneOf(...items: any[]): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function oneOf(...items: any[]): JsHamcrest$SimpleMatcher;
 
   /**
    * All matchesOrValues must match the actual value. This matcher behaves pretty much like the JavaScript && (and) operator.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function allOf(
-    ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function allOf(...matchersOrValues: any[]): JsHamcrest$SimpleMatcher;
 
   /**
    * At least one of the matchersOrValues should match the actual value. This matcher behaves pretty much like the JavaScript || (or) operator.
    * @param matchersOrValues Instances of JsHamcrest.SimpleMatcher and/or values
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function anyOf(
-    ...matchersOrValues: any[]
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function anyOf(...matchersOrValues: any[]): JsHamcrest$SimpleMatcher;
 
   /**
    * Useless always-match matcher.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function anything(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function anything(): JsHamcrest$SimpleMatcher;
 
   /**
    * Combinable matcher where the actual value must match all the given matchers or values.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
+   * @return {JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
    */
-  declare function both(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$CombinableMatcher;
+  declare function both(matcherOrValue: any): JsHamcrest$CombinableMatcher;
 
   /**
    * Combinable matcher where the actual value must match at least one of the given matchers or values.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
+   * @return {JsHamcrest$CombinableMatcher} Instance of JsHamcrest.CombinableMatcher
    */
-  declare function either(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$CombinableMatcher;
+  declare function either(matcherOrValue: any): JsHamcrest$CombinableMatcher;
 
   /**
    * The actual value must be equal to expected.
    * @param expected Expected value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function equalTo(expected: any): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function equalTo(expected: any): JsHamcrest$SimpleMatcher;
 
   /**
    * Delegate-only matcher frequently used to improve readability.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function is(matcherOrValue: any): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function is(matcherOrValue: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be null or undefined.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function nil(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function nil(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must not match matcherOrValue.
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function not(
-    matcherOrValue: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function not(matcherOrValue: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value is a function and, when invoked, it should throw an exception with the given name.
    * @param exceptionName Name of the expected exception
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function raises(
-    exceptionName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function raises(exceptionName: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value is a function and, when invoked, it should raise any exception.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function raisesAnything(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function raisesAnything(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be the same as expected.
    * @param expected Expected value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function sameAs(expected: any): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function sameAs(expected: any): JsHamcrest$SimpleMatcher;
 
   /**
    * Matches any truthy value (not undefined, null, false, 0, NaN, or "").
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function truth(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function truth(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be between the given range (inclusive).
    * @param start Range start
-   * @return {JsHamcrest$JsHamcrest$BetweenBuilder} Builder object with an and(end) method, which returns a JsHamcrest.SimpleMatcher instance and thus should be called to finish the matcher creation
+   * @return {JsHamcrest$BetweenBuilder} Builder object with an and(end) method, which returns a JsHamcrest.SimpleMatcher instance and thus should be called to finish the matcher creation
    */
-  declare function between(start: any): JsHamcrest$JsHamcrest$BetweenBuilder;
+  declare function between(start: any): JsHamcrest$BetweenBuilder;
 
   /**
    * The actual number must be close enough to expected, that is, the actual number is equal to a value within some range of acceptable error.
    * @param expected Expected number
    * @param delta Expected difference delta
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
   declare function closeTo(
     expected: number,
     delta?: number
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be divisible by divisor.
    * @param divisor Divisor
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function divisibleBy(
-    divisor: number
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function divisibleBy(divisor: number): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be even.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function even(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function even(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be greater than expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function greaterThan(
-    expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function greaterThan(expected: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be greater than or equal to expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
   declare function greaterThanOrEqualTo(
     expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be less than expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function lessThan(expected: any): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function lessThan(expected: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be less than or equal to expected.
    * @param expected Expected number
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function lessThanOrEqualTo(
-    expected: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function lessThanOrEqualTo(expected: any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must not be a number.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function notANumber(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function notANumber(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be odd.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function odd(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function odd(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual number must be zero.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function zero(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function zero(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a boolean.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function bool(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function bool(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a function.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function func(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function func(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value has a function with the given name.
    * @param functionName Function name
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function hasFunction(
-    functionName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function hasFunction(functionName: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value has an attribute with the given name.
    * @param memberName Member name
    * @param matcherOrValue Instance of JsHamcrest.SimpleMatcher or a value
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
   declare function hasMember(
     memberName: string,
     matcherOrValue?: any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  ): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be an instance of clazz.
    * @param clazz Constructor function
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function instanceOf(
-    clazz: () => any
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function instanceOf(clazz: () => any): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a number.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function number(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function number(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be an object.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function object(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function object(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be a string.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function string(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function string(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual value must be of the given type.
    * @param typeName Name of the type
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function typeOf(
-    typeName: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function typeOf(typeName: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must have a substring equals to str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function containsString(
-    str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function containsString(str: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must look like an e-mail address.
    *
    * Warning: This matcher is not fully compliant with RFC2822 due to its complexity.
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function emailAddress(): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function emailAddress(): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must end with str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function endsWith(str: string): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function endsWith(str: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must be equal to str, ignoring case.
    * @param str String
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function equalIgnoringCase(
-    str: string
-  ): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function equalIgnoringCase(str: string): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must match regex.
    * @param regex String
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function matches(regex: RegExp): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function matches(regex: RegExp): JsHamcrest$SimpleMatcher;
 
   /**
    * The actual string must start with str.
    * @param str Substring
-   * @return {JsHamcrest$JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
+   * @return {JsHamcrest$SimpleMatcher} Instance of JsHamcrest.SimpleMatcher
    */
-  declare function startsWith(str: string): JsHamcrest$JsHamcrest$SimpleMatcher;
+  declare function startsWith(str: string): JsHamcrest$SimpleMatcher;
 }
