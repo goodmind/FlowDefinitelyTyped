@@ -1,7 +1,10 @@
 declare module "google.visualization" {
   declare var npm$namespace$google: {
     load: typeof google$load,
-    setOnLoadCallback: typeof google$setOnLoadCallback
+    setOnLoadCallback: typeof google$setOnLoadCallback,
+
+    charts: typeof npm$namespace$google$charts,
+    visualization: typeof npm$namespace$google$visualization
   };
   declare function google$load(
     visualization: string,
@@ -13,18 +16,51 @@ declare module "google.visualization" {
 
   declare function google$setOnLoadCallback(handler: () => void): void;
 
-  declare var npm$namespace$charts: {
-    load: typeof charts$load,
-    setOnLoadCallback: typeof charts$setOnLoadCallback
+  declare var npm$namespace$google$charts: {
+    load: typeof google$charts$load,
+    setOnLoadCallback: typeof google$charts$setOnLoadCallback
   };
-  declare function charts$load(version: string, packages: Object): void;
+  declare function google$charts$load(version: string, packages: Object): void;
 
-  declare function charts$setOnLoadCallback(handler: Function): void;
+  declare function google$charts$setOnLoadCallback(handler: Function): void;
 
-  declare var npm$namespace$visualization: {
-    arrayToDataTable: typeof visualization$arrayToDataTable
+  declare var npm$namespace$google$visualization: {
+    arrayToDataTable: typeof google$visualization$arrayToDataTable,
+
+    ChartWrapper: typeof google$visualization$ChartWrapper,
+    DataTable: typeof google$visualization$DataTable,
+    Query: typeof google$visualization$Query,
+    QueryResponse: typeof google$visualization$QueryResponse,
+    DataView: typeof google$visualization$DataView,
+    GeoChart: typeof google$visualization$GeoChart,
+    ChartBase: typeof google$visualization$ChartBase,
+    CoreChartBase: typeof google$visualization$CoreChartBase,
+    ScatterChart: typeof google$visualization$ScatterChart,
+    ColumnChart: typeof google$visualization$ColumnChart,
+    LineChart: typeof google$visualization$LineChart,
+    BarChart: typeof google$visualization$BarChart,
+    Histogram: typeof google$visualization$Histogram,
+    AreaChart: typeof google$visualization$AreaChart,
+    AnnotationChart: typeof google$visualization$AnnotationChart,
+    SteppedAreaChart: typeof google$visualization$SteppedAreaChart,
+    PieChart: typeof google$visualization$PieChart,
+    BubbleChart: typeof google$visualization$BubbleChart,
+    TreeMap: typeof google$visualization$TreeMap,
+    Table: typeof google$visualization$Table,
+    Timeline: typeof google$visualization$Timeline,
+    CandlestickChart: typeof google$visualization$CandlestickChart,
+    ComboChart: typeof google$visualization$ComboChart,
+    DefaultFormatter: typeof google$visualization$DefaultFormatter,
+    ArrowFormat: typeof google$visualization$ArrowFormat,
+    BarFormat: typeof google$visualization$BarFormat,
+    ColorFormat: typeof google$visualization$ColorFormat,
+    DateFormat: typeof google$visualization$DateFormat,
+    NumberFormat: typeof google$visualization$NumberFormat,
+    PatternFormat: typeof google$visualization$PatternFormat,
+    OrgChart: typeof google$visualization$OrgChart,
+    events: typeof npm$namespace$google$visualization$events
   };
-  declare export interface visualization$ChartSpecs {
+  declare export interface google$visualization$ChartSpecs {
     chartType: string;
     container?: HTMLElement;
     containerId?: string;
@@ -36,18 +72,18 @@ declare module "google.visualization" {
     view?: any;
   }
 
-  declare export interface visualization$ErrorEventObject {
+  declare export interface google$visualization$ErrorEventObject {
     id: string;
     message: string;
     detailedMessage?: string;
     options?: any;
   }
 
-  declare export class visualization$ChartWrapper {
-    constructor(spec?: visualization$ChartSpecs): this;
+  declare export class google$visualization$ChartWrapper {
+    constructor(spec?: google$visualization$ChartSpecs): this;
     draw(container_ref?: HTMLElement): void;
     toJSON(): string;
-    clone(): visualization$ChartWrapper;
+    clone(): google$visualization$ChartWrapper;
     getDataSourceUrl(): string;
     getDataTable(): visualization$DataTable;
     getChartType(): string;
@@ -71,7 +107,7 @@ declare module "google.visualization" {
     setView(view_spec: string): void;
   }
 
-  declare export class visualization$DataTable {
+  declare export class google$visualization$DataTable {
     constructor(data?: any, version?: any): this;
     addColumn(type: string, label?: string, id?: string): number;
     addColumn(
@@ -82,7 +118,7 @@ declare module "google.visualization" {
     addRows(numberOfEmptyRows: number): number;
     addRows(rows: visualization$DataObjectCell[][]): number;
     addRows(rows: any[][]): number;
-    clone(): visualization$DataTable;
+    clone(): google$visualization$DataTable;
     getColumnId(columnIndex: number): string;
     getColumnLabel(columnIndex: number): string;
     getColumnPattern(columnIndex: number): string;
@@ -172,16 +208,16 @@ declare module "google.visualization" {
     toJSON(): string;
   }
 
-  declare export interface visualization$Properties {
+  declare export interface google$visualization$Properties {
     [property: string]: any;
   }
 
-  declare export interface visualization$SortByColumn {
+  declare export interface google$visualization$SortByColumn {
     column: number;
     desc: boolean;
   }
 
-  declare export interface visualization$DataTableColumnDescription {
+  declare export interface google$visualization$DataTableColumnDescription {
     type?: string;
     label?: string;
     id?: string;
@@ -190,13 +226,13 @@ declare module "google.visualization" {
     p?: any;
   }
 
-  declare export interface visualization$DataObject {
+  declare export interface google$visualization$DataObject {
     cols: visualization$DataObjectColumn[];
     rows: visualization$DataObjectRow[];
     p: any;
   }
 
-  declare export interface visualization$DataObjectColumn {
+  declare export interface google$visualization$DataObjectColumn {
     type: string;
     id?: string;
     label?: string;
@@ -204,39 +240,39 @@ declare module "google.visualization" {
     p?: any;
   }
 
-  declare export interface visualization$DataObjectRow {
+  declare export interface google$visualization$DataObjectRow {
     c: visualization$DataObjectCell[];
     p?: any;
   }
 
-  declare export interface visualization$DataTableCellFilter {
+  declare export interface google$visualization$DataTableCellFilter {
     column: number;
     value?: any;
     minValue?: any;
     maxValue?: any;
   }
 
-  declare export interface visualization$DataObjectCell {
+  declare export interface google$visualization$DataObjectCell {
     v?: any;
     f?: string;
     p?: any;
   }
 
-  declare export type visualization$DataTableCellValueFilter = {
+  declare export type google$visualization$DataTableCellValueFilter = {
     value: any
-  } & visualization$DataTableCellFilter;
+  } & DataTableCellFilter;
 
-  declare export type visualization$DataTableCellRangeFilter = {
+  declare export type google$visualization$DataTableCellRangeFilter = {
     minValue?: any,
     maxValue?: any
-  } & visualization$DataTableCellFilter;
+  } & DataTableCellFilter;
 
-  declare function visualization$arrayToDataTable(
+  declare function google$visualization$arrayToDataTable(
     data: any[],
     firstRowIsData?: boolean
-  ): visualization$DataTable;
+  ): google$visualization$DataTable;
 
-  declare export class visualization$Query {
+  declare export class google$visualization$Query {
     constructor(
       dataSourceUrl: string,
       options?: visualization$QueryOptions
@@ -248,14 +284,14 @@ declare module "google.visualization" {
     send(callback: (response: visualization$QueryResponse) => void): void;
   }
 
-  declare export interface visualization$QueryOptions {
+  declare export interface google$visualization$QueryOptions {
     sendMethod?: string;
     makeRequestParams?: Object;
   }
 
-  declare export class visualization$QueryResponse {
+  declare export class google$visualization$QueryResponse {
     constructor(responseObject: Object): this;
-    getDataTable(): visualization$DataTable;
+    getDataTable(): google$visualization$DataTable;
     getDetailedMessage(): string;
     getMessage(): string;
     getReasons(): string[];
@@ -263,9 +299,9 @@ declare module "google.visualization" {
     isError(): boolean;
   }
 
-  declare export class visualization$DataView {
-    constructor(data: visualization$DataTable): this;
-    constructor(data: visualization$DataView): this;
+  declare export class google$visualization$DataView {
+    constructor(data: google$visualization$DataTable): this;
+    constructor(data: google$visualization$DataView): this;
     getColumnId(columnIndex: number): String;
     getColumnLabel(columnIndex: number): string;
     getColumnPattern(columnIndex: number): string;
@@ -278,7 +314,9 @@ declare module "google.visualization" {
     };
     getColumnType(columnIndex: number): string;
     getDistinctValues(columnIndex: number): any[];
-    getFilteredRows(filters: visualization$DataTableCellFilter[]): number[];
+    getFilteredRows(
+      filters: google$visualization$DataTableCellFilter[]
+    ): number[];
     getFormattedValue(rowIndex: number, columnIndex: number): string;
     getNumberOfColumns(): number;
     getNumberOfRows(): number;
@@ -286,12 +324,15 @@ declare module "google.visualization" {
     getProperties(
       rowIndex: number,
       columnIndex: number
-    ): visualization$Properties;
-    getRowProperty(rowIndex: number, name: string): visualization$Properties;
+    ): google$visualization$Properties;
+    getRowProperty(
+      rowIndex: number,
+      name: string
+    ): google$visualization$Properties;
     getSortedRows(sortColumn: number): number[];
-    getSortedRows(sortColumn: visualization$SortByColumn): number[];
+    getSortedRows(sortColumn: google$visualization$SortByColumn): number[];
     getSortedRows(sortColumns: number[]): number[];
-    getSortedRows(sortColumns: visualization$SortByColumn[]): number[];
+    getSortedRows(sortColumns: google$visualization$SortByColumn[]): number[];
     getTableProperty(name: string): any;
     getValue(rowIndex: number, columnIndex: number): any;
     getTableColumnIndex(viewColumnIndex: number): number;
@@ -308,28 +349,28 @@ declare module "google.visualization" {
     setColumns(columnIndexes: any[]): void;
     setRows(min: number, max: number): void;
     setRows(rowIndexes: number[]): void;
-    toDataTable(): visualization$DataTable;
+    toDataTable(): google$visualization$DataTable;
     toJSON(): string;
   }
 
-  declare export interface visualization$ColumnSpec {
-    calc: (dataTable: visualization$DataTable, row: number) => any;
+  declare export interface google$visualization$ColumnSpec {
+    calc: (dataTable: google$visualization$DataTable, row: number) => any;
     type: string;
     label?: string;
     id?: string;
     sourceColumn?: number;
-    properties?: visualization$Properties;
+    properties?: google$visualization$Properties;
     role?: string;
   }
 
-  declare export class visualization$GeoChart mixins visualization$ChartBase {
+  declare export class google$visualization$GeoChart mixins ChartBase {
     draw(
-      data: visualization$DataTable,
+      data: google$visualization$DataTable,
       options: visualization$GeoChartOptions
     ): void;
   }
 
-  declare export interface visualization$GeoChartOptions {
+  declare export interface google$visualization$GeoChartOptions {
     backgroundColor?: any;
     colorAxis?: visualization$ChartColorAxis;
     datalessRegionColor?: string;
@@ -348,20 +389,20 @@ declare module "google.visualization" {
     width?: number;
   }
 
-  declare export interface visualization$GeoChartMagnifyingGlass {
+  declare export interface google$visualization$GeoChartMagnifyingGlass {
     enable?: boolean;
     zoomFactor?: number;
   }
 
-  declare export interface visualization$GeoChartRegionClickEvent {
+  declare export interface google$visualization$GeoChartRegionClickEvent {
     region: string;
   }
 
-  declare export interface visualization$GeoChartSelection {
+  declare export interface google$visualization$GeoChartSelection {
     row: number;
   }
 
-  declare export interface visualization$ChartAnnotations {
+  declare export interface google$visualization$ChartAnnotations {
     boxStyle?: visualization$ChartBoxStyle;
     textStyle?: visualization$ChartTextStyle;
     datum?: visualization$ChartStemAndStyle;
@@ -371,21 +412,21 @@ declare module "google.visualization" {
     style?: string;
   }
 
-  declare export type visualization$ChartBarColumnAnnotations = {
+  declare export type google$visualization$ChartBarColumnAnnotations = {
     alwaysOutside?: boolean
-  } & visualization$ChartAnnotations;
+  } & ChartAnnotations;
 
-  declare export interface visualization$ChartStemAndStyle {
+  declare export interface google$visualization$ChartStemAndStyle {
     stem?: visualization$ChartStem;
     style?: string;
   }
 
-  declare export interface visualization$ChartStem {
+  declare export interface google$visualization$ChartStem {
     color?: string;
     length?: number;
   }
 
-  declare export interface visualization$ChartBoxStyle {
+  declare export interface google$visualization$ChartBoxStyle {
     stroke?: string;
     strokeWidth?: number;
     rx?: number;
@@ -401,7 +442,7 @@ declare module "google.visualization" {
     };
   }
 
-  declare export interface visualization$ChartTextStyle {
+  declare export interface google$visualization$ChartTextStyle {
     fontName?: string;
     fontSize?: number;
     bold?: boolean;
@@ -411,7 +452,7 @@ declare module "google.visualization" {
     opacity?: number;
   }
 
-  declare export interface visualization$ChartCrosshair {
+  declare export interface google$visualization$ChartCrosshair {
     color?: string;
     focused?: {
       color?: string,
@@ -423,10 +464,10 @@ declare module "google.visualization" {
       color?: string,
       opacity?: number
     };
-    events$trigger?: string;
+    trigger?: string;
   }
 
-  declare export interface visualization$ChartExplorer {
+  declare export interface google$visualization$ChartExplorer {
     actions?: string[];
     axis?: string;
     keepInBounds?: boolean;
@@ -435,13 +476,13 @@ declare module "google.visualization" {
     zoomDelta?: number;
   }
 
-  declare export interface visualization$ChartStroke {
+  declare export interface google$visualization$ChartStroke {
     stroke: string;
     strokeWidth: number;
     fill: string;
   }
 
-  declare export interface visualization$ChartArea {
+  declare export interface google$visualization$ChartArea {
     backgroundColor?:
       | string
       | {
@@ -456,7 +497,7 @@ declare module "google.visualization" {
     height?: number | string;
   }
 
-  declare export type visualization$ChartLegendPosition =
+  declare export type google$visualization$ChartLegendPosition =
     | "bottom"
     | "left"
     | "in"
@@ -464,26 +505,26 @@ declare module "google.visualization" {
     | "right"
     | "top";
 
-  declare export type visualization$ChartLegendAlignment =
+  declare export type google$visualization$ChartLegendAlignment =
     | "start"
     | "center"
     | "end";
 
-  declare export interface visualization$ChartLegend {
-    alignment?: visualization$ChartLegendAlignment;
+  declare export interface google$visualization$ChartLegend {
+    alignment?: google$visualization$ChartLegendAlignment;
     maxLines?: number;
-    position?: visualization$ChartLegendPosition;
-    textStyle?: visualization$ChartTextStyle;
+    position?: google$visualization$ChartLegendPosition;
+    textStyle?: google$visualization$ChartTextStyle;
     numberFormat?: string;
   }
 
-  declare export interface visualization$TransitionAnimation {
+  declare export interface google$visualization$TransitionAnimation {
     duration?: number;
     easing?: string;
     startup?: boolean;
   }
 
-  declare export interface visualization$ChartAxis {
+  declare export interface google$visualization$ChartAxis {
     baseline?: number;
     baselineColor?: string;
     direction?: number;
@@ -492,10 +533,10 @@ declare module "google.visualization" {
     minorGridlines?: visualization$ChartGridlines;
     logScale?: boolean;
     textPosition?: string;
-    textStyle?: visualization$ChartTextStyle;
+    textStyle?: google$visualization$ChartTextStyle;
     ticks?: any[];
     title?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
+    titleTextStyle?: google$visualization$ChartTextStyle;
     allowContainerBoundaryTextCufoff?: boolean;
     slantedText?: boolean;
     slantedTextAngle?: number;
@@ -509,108 +550,109 @@ declare module "google.visualization" {
     viewWindow?: visualization$ChartViewWindow;
   }
 
-  declare export interface visualization$ChartGridlines {
+  declare export interface google$visualization$ChartGridlines {
     color?: string;
     count?: number;
   }
 
-  declare export interface visualization$ChartViewWindow {
+  declare export interface google$visualization$ChartViewWindow {
     max?: number | Date | number[];
     min?: number | Date | number[];
   }
 
-  declare export interface visualization$ChartTooltip {
+  declare export interface google$visualization$ChartTooltip {
     isHtml?: boolean;
     showColorCode?: boolean;
-    textStyle?: visualization$ChartTextStyle;
-    events$trigger?: string;
+    textStyle?: google$visualization$ChartTextStyle;
+    trigger?: string;
     ignoreBounds?: boolean;
   }
 
-  declare export interface visualization$ChartBoundingBox {
+  declare export interface google$visualization$ChartBoundingBox {
     left: number;
     top: number;
     width: number;
     height: number;
   }
 
-  declare export interface visualization$ChartColorAxis {
+  declare export interface google$visualization$ChartColorAxis {
     minValue?: number;
     maxValue?: number;
     values?: number[];
     colors?: string[];
-    legend?: visualization$ChartLegend;
+    legend?: google$visualization$ChartLegend;
   }
 
-  declare export interface visualization$ChartLayoutInterface {
-    getBoundingBox(id: string): visualization$ChartBoundingBox;
-    getChartAreaBoundingBox(): visualization$ChartBoundingBox;
+  declare export interface google$visualization$ChartLayoutInterface {
+    getBoundingBox(id: string): google$visualization$ChartBoundingBox;
+    getChartAreaBoundingBox(): google$visualization$ChartBoundingBox;
     getHAxisValue(position: number, axisIndex?: number): number;
     getVAxisValue(position: number, axisIndex?: number): number;
     getXLocation(position: number, axisIndex?: number): number;
     getYLocation(position: number, axisIndex?: number): number;
   }
 
-  declare export interface visualization$GroupWidth {
+  declare export interface google$visualization$GroupWidth {
     groupWidth: any;
   }
 
-  declare export interface visualization$VisualizationSelectionArray {
+  declare export interface google$visualization$VisualizationSelectionArray {
     column?: number;
     row?: number;
   }
 
-  declare export interface visualization$Candlestick {
+  declare export interface google$visualization$Candlestick {
     hollowIsRising?: boolean;
-    fallingColor?: visualization$ChartStroke;
-    risingColor?: visualization$ChartStroke;
+    fallingColor?: google$visualization$ChartStroke;
+    risingColor?: google$visualization$ChartStroke;
   }
 
-  declare class visualization$ChartBase {
+  declare class google$visualization$ChartBase {
     constructor(element: Element): this;
-    getSelection(): visualization$VisualizationSelectionArray[];
-    setSelection(selection: visualization$VisualizationSelectionArray[]): void;
+    getSelection(): google$visualization$VisualizationSelectionArray[];
+    setSelection(
+      selection: google$visualization$VisualizationSelectionArray[]
+    ): void;
     clearChart(): void;
     getImageURI(): string;
   }
 
-  declare class visualization$CoreChartBase mixins visualization$ChartBase {
-    getBoundingBox(id: string): visualization$ChartBoundingBox;
-    getChartAreaBoundingBox(): visualization$ChartBoundingBox;
-    getChartLayoutInterface(): visualization$ChartLayoutInterface;
+  declare class google$visualization$CoreChartBase mixins ChartBase {
+    getBoundingBox(id: string): google$visualization$ChartBoundingBox;
+    getChartAreaBoundingBox(): google$visualization$ChartBoundingBox;
+    getChartLayoutInterface(): google$visualization$ChartLayoutInterface;
     getHAxisValue(position: number, axisIndex?: number): number;
     getVAxisValue(position: number, axisIndex?: number): number;
     getXLocation(position: number, axisIndex?: number): number;
     getYLocation(position: number, axisIndex?: number): number;
   }
 
-  declare export class visualization$ScatterChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$ScatterChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options?: visualization$ScatterChartOptions
     ): void;
   }
 
-  declare export interface visualization$ScatterChartOptions {
+  declare export interface google$visualization$ScatterChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartAnnotations;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
-    crosshair?: visualization$ChartCrosshair;
+    crosshair?: google$visualization$ChartCrosshair;
     curveType?: string;
     dataOpacity?: number;
     enableInteractivity?: boolean;
-    explorer?: visualization$ChartExplorer;
+    explorer?: google$visualization$ChartExplorer;
     fontSize?: number;
     fontName?: string;
     forceIFrame?: boolean;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     lineWidth?: number;
     pointSize?: number;
     selectionMode?: string;
@@ -618,79 +660,77 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
-    vAxis?: visualization$ChartAxis;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$ColumnChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$ColumnChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$ColumnChartOptions
     ): void;
   }
 
-  declare export interface visualization$ColumnChartOptions {
+  declare export interface google$visualization$ColumnChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartBarColumnAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartBarColumnAnnotations;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    bar?: visualization$GroupWidth;
-    chartArea?: visualization$ChartArea;
+    bar?: google$visualization$GroupWidth;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     enableInteractivity?: boolean;
-    explorer?: visualization$ChartExplorer;
+    explorer?: google$visualization$ChartExplorer;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     isStacked?: boolean | "percent" | "relative" | "absolute";
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     reverseCategories?: boolean;
     selectionMode?: string;
     series?: any;
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$LineChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$LineChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$LineChartOptions
     ): void;
   }
 
-  declare export interface visualization$LineChartOptions {
+  declare export interface google$visualization$LineChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartAnnotations;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
-    crosshair?: visualization$ChartCrosshair;
+    crosshair?: google$visualization$ChartCrosshair;
     curveType?: string;
     dataOpacity?: number;
     enableInteractivity?: boolean;
-    explorer?: visualization$ChartExplorer;
+    explorer?: google$visualization$ChartExplorer;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     interpolateNulls?: boolean;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     lineWidth?: number;
     min?: number;
     orientation?: string;
@@ -701,21 +741,21 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export interface visualization$BarChartOptions {
+  declare export interface google$visualization$BarChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartBarColumnAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartBarColumnAnnotations;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    bar?: visualization$GroupWidth;
-    chartArea?: visualization$ChartArea;
+    bar?: google$visualization$GroupWidth;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     dataOpacity?: number;
     enableInteractivity?: boolean;
@@ -723,104 +763,101 @@ declare module "google.visualization" {
     fontSize?: number;
     fontName?: string;
     hAxes?: any;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     isStacked?: boolean | "percent" | "relative" | "absolute";
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     reverseCategories?: boolean;
     series?: any;
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$BarChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$BarChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
-      options: visualization$BarChartOptions
+      data: google$visualization$DataTable | google$visualization$DataView,
+      options: google$visualization$BarChartOptions
     ): void;
   }
 
-  declare export class visualization$Histogram
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$Histogram mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$HistogramOptions
     ): void;
   }
 
-  declare export interface visualization$HistogramOptions {
-    animation?: visualization$TransitionAnimation;
+  declare export interface google$visualization$HistogramOptions {
+    animation?: google$visualization$TransitionAnimation;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    bar?: visualization$GroupWidth;
-    chartArea?: visualization$ChartArea;
+    bar?: google$visualization$GroupWidth;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     dataOpacity?: number;
     enableInteractivity?: boolean;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     histogram?: visualization$HistogramHistogramOptions;
     height?: number;
     interpolateNulls?: boolean;
     isStacked?: boolean | "percent" | "relative" | "absolute";
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     orientation?: string;
     reverseCategories?: boolean;
     series?: any;
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export interface visualization$HistogramHistogramOptions {
+  declare export interface google$visualization$HistogramHistogramOptions {
     bucketSize?: number;
     hideBucketItems?: boolean;
     lastBucketPercentile?: number;
   }
 
-  declare export class visualization$AreaChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$AreaChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$AreaChartOptions
     ): void;
   }
 
-  declare export interface visualization$AreaChartOptions {
+  declare export interface google$visualization$AreaChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartAnnotations;
     areaOpacity?: number;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
-    crosshair?: visualization$ChartCrosshair;
+    crosshair?: google$visualization$ChartCrosshair;
     dataOpacity?: number;
     enableInteractivity?: boolean;
-    explorer?: visualization$ChartExplorer;
+    explorer?: google$visualization$ChartExplorer;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     interpolateNulls?: boolean;
     isStacked?: boolean | "percent" | "relative" | "absolute";
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     lineWidth?: number;
     orientation?: string;
     pointSize?: number;
@@ -830,17 +867,17 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$AnnotationChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$AnnotationChart
+    mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$AnnotationChartOptions
     ): void;
     setVisibleChartRange(start: Date, end: Date): void;
@@ -852,7 +889,7 @@ declare module "google.visualization" {
     showDataColumns(columnIndexes: number | number[]): void;
   }
 
-  declare export interface visualization$AnnotationChartOptions {
+  declare export interface google$visualization$AnnotationChartOptions {
     allowHtml?: boolean;
     allValuesSuffix?: string;
     annotationsWidth?: number;
@@ -879,67 +916,66 @@ declare module "google.visualization" {
     zoomStartTime?: Date;
   }
 
-  declare export class visualization$SteppedAreaChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$SteppedAreaChart
+    mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$SteppedAreaChartOptions
     ): void;
   }
 
-  declare export interface visualization$SteppedAreaChartOptions {
+  declare export interface google$visualization$SteppedAreaChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
+    animation?: google$visualization$TransitionAnimation;
     areaOpacity?: number;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     connectSteps?: boolean;
     enableInteractivity?: boolean;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     interpolateNulls?: boolean;
     isStacked?: boolean | "percent" | "relative" | "absolute";
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     reverseCategories?: boolean;
     selectionMode?: string;
     series?: any;
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$PieChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$PieChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$PieChartOptions
     ): void;
   }
 
-  declare export interface visualization$PieChartOptions {
+  declare export interface google$visualization$PieChartOptions {
     backgroundColor?: any;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     enableInteractivity?: boolean;
     fontSize?: number;
     fontName?: string;
     height?: number;
     is3D?: boolean;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     pieHole?: number;
     pieSliceBorderColor?: string;
     pieSliceText?: string;
-    pieSliceTextStyle?: visualization$ChartTextStyle;
+    pieSliceTextStyle?: google$visualization$ChartTextStyle;
     pieStartAngle?: number;
     reverseCategories?: boolean;
     pieResidueSliceColor?: string;
@@ -947,35 +983,34 @@ declare module "google.visualization" {
     slices?: any;
     sliceVisibilityThreshold?: number;
     title?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     width?: number;
   }
 
-  declare export class visualization$BubbleChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$BubbleChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options?: visualization$BubbleChartOptions
     ): void;
   }
 
-  declare export interface visualization$BubbleChartOptions {
-    animation?: visualization$TransitionAnimation;
+  declare export interface google$visualization$BubbleChartOptions {
+    animation?: google$visualization$TransitionAnimation;
     axisTitlesPosition?: string;
     backgroundColor?: any;
     bubble?: visualization$ChartBubble;
-    chartArea?: visualization$ChartArea;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
-    colorAxis?: visualization$ChartColorAxis;
+    colorAxis?: google$visualization$ChartColorAxis;
     enableInteractivity?: boolean;
-    explorer?: visualization$ChartExplorer;
+    explorer?: google$visualization$ChartExplorer;
     fontSize?: number;
     fontName?: string;
     forceIFrame?: boolean;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     selectionMode?: string;
     series?: any;
     sizeAxis?: visualization$ChartSizeAxis;
@@ -983,35 +1018,35 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
-    vAxis?: visualization$ChartAxis;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export interface visualization$ChartBubble {
+  declare export interface google$visualization$ChartBubble {
     opacity?: number;
     stroke?: string;
-    textStyle?: visualization$ChartTextStyle;
+    textStyle?: google$visualization$ChartTextStyle;
   }
 
-  declare export interface visualization$ChartSizeAxis {
+  declare export interface google$visualization$ChartSizeAxis {
     maxSize?: number;
     maxValue?: number;
     minSize?: number;
     minValue?: number;
   }
 
-  declare export class visualization$TreeMap mixins visualization$ChartBase {
+  declare export class google$visualization$TreeMap mixins ChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options?: visualization$TreeMapOptions
     ): void;
     goUpAndDraw(): void;
     getMaxPossibleDepth(): number;
   }
 
-  declare export interface visualization$TreeMapOptions {
+  declare export interface google$visualization$TreeMapOptions {
     fontColor?: string;
     fontFamily?: string;
     fontSize?: number;
@@ -1032,20 +1067,20 @@ declare module "google.visualization" {
     minColorValue?: number;
     showScale?: boolean;
     showTooltips?: boolean;
-    textStyle?: visualization$ChartTextStyle;
+    textStyle?: google$visualization$ChartTextStyle;
     title?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
+    titleTextStyle?: google$visualization$ChartTextStyle;
     useWeightedAverageForAggregation?: boolean;
   }
 
-  declare export class visualization$Table mixins visualization$ChartBase {
+  declare export class google$visualization$Table mixins ChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options?: visualization$TableOptions
     ): void;
   }
 
-  declare export interface visualization$TableOptions {
+  declare export interface google$visualization$TableOptions {
     allowHtml?: boolean;
     alternatingRowStyle?: boolean;
     cssClassNames?: visualization$CssClassNames;
@@ -1063,7 +1098,7 @@ declare module "google.visualization" {
     width?: string;
   }
 
-  declare export interface visualization$CssClassNames {
+  declare export interface google$visualization$CssClassNames {
     headerRow?: string;
     tableRow?: string;
     oddTableRow?: string;
@@ -1074,16 +1109,16 @@ declare module "google.visualization" {
     rowNumberCell?: string;
   }
 
-  declare export class visualization$Timeline {
+  declare export class google$visualization$Timeline {
     constructor(element: Element): this;
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options?: visualization$TimelineOptions
     ): void;
     clearChart(): void;
   }
 
-  declare export interface visualization$TimelineOptions {
+  declare export interface google$visualization$TimelineOptions {
     avoidOverlappingGridLines?: boolean;
     backgroundColor?: any;
     colors?: string[];
@@ -1101,36 +1136,36 @@ declare module "google.visualization" {
     width?: number;
   }
 
-  declare export interface visualization$LabelStyle {
+  declare export interface google$visualization$LabelStyle {
     color: string;
     fontName: string;
     fontSize: string;
   }
 
-  declare export class visualization$CandlestickChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$CandlestickChart
+    mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$CandlestickChartOptions
     ): void;
   }
 
-  declare export interface visualization$CandlestickChartOptions {
+  declare export interface google$visualization$CandlestickChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
+    animation?: google$visualization$TransitionAnimation;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    bar?: visualization$GroupWidth;
-    candlestick?: visualization$Candlestick;
-    chartArea?: visualization$ChartArea;
+    bar?: google$visualization$GroupWidth;
+    candlestick?: google$visualization$Candlestick;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
     enableInteractivity?: boolean;
     focusTarget?: string;
     fontSize?: number;
     fontName?: string;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     orientation?: string;
     reverseCategories?: boolean;
     selectionMode?: string;
@@ -1138,33 +1173,32 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare export class visualization$ComboChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$ComboChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$ComboChartOptions
     ): void;
   }
 
-  declare export interface visualization$ComboChartOptions {
+  declare export interface google$visualization$ComboChartOptions {
     aggregationTarget?: string;
-    animation?: visualization$TransitionAnimation;
-    annotations?: visualization$ChartAnnotations;
+    animation?: google$visualization$TransitionAnimation;
+    annotations?: google$visualization$ChartAnnotations;
     areaOpacity?: number;
     axisTitlesPosition?: string;
     backgroundColor?: any;
-    bar?: visualization$GroupWidth;
-    candlestick?: visualization$Candlestick;
-    chartArea?: visualization$ChartArea;
+    bar?: google$visualization$GroupWidth;
+    candlestick?: google$visualization$Candlestick;
+    chartArea?: google$visualization$ChartArea;
     colors?: string[];
-    crosshair?: visualization$ChartCrosshair;
+    crosshair?: google$visualization$ChartCrosshair;
     curveType?: string;
     dataOpacity?: number;
     enableInteractivity?: boolean;
@@ -1172,11 +1206,11 @@ declare module "google.visualization" {
     fontSize?: number;
     fontName?: string;
     forceIFrame?: boolean;
-    hAxis?: visualization$ChartAxis;
+    hAxis?: google$visualization$ChartAxis;
     height?: number;
     interpolateNulls?: boolean;
     isStacked?: boolean;
-    legend?: visualization$ChartLegend | "none";
+    legend?: google$visualization$ChartLegend | "none";
     lineDashStyle?: number[];
     lineWidth?: number;
     orientation?: string;
@@ -1190,64 +1224,68 @@ declare module "google.visualization" {
     theme?: string;
     title?: string;
     titlePosition?: string;
-    titleTextStyle?: visualization$ChartTextStyle;
-    tooltip?: visualization$ChartTooltip;
+    titleTextStyle?: google$visualization$ChartTextStyle;
+    tooltip?: google$visualization$ChartTooltip;
     vAxes?: any;
-    vAxis?: visualization$ChartAxis;
+    vAxis?: google$visualization$ChartAxis;
     width?: number;
   }
 
-  declare var npm$namespace$events: {
-    addListener: typeof events$addListener,
-    addOneTimeListener: typeof events$addOneTimeListener,
-    removeListener: typeof events$removeListener,
-    removeAllListeners: typeof events$removeAllListeners,
-    trigger: typeof events$trigger
+  declare var npm$namespace$google$visualization$events: {
+    addListener: typeof google$visualization$events$addListener,
+    addOneTimeListener: typeof google$visualization$events$addOneTimeListener,
+    removeListener: typeof google$visualization$events$removeListener,
+    removeAllListeners: typeof google$visualization$events$removeAllListeners,
+    trigger: typeof google$visualization$events$trigger
   };
-  declare function events$addListener(
+  declare function google$visualization$events$addListener(
     visualization: any,
     eventName: string,
     callback: Function
   ): any;
 
-  declare function events$addListener(
+  declare function google$visualization$events$addListener(
     visualization: any,
     eventName: string,
     callback: (...args: any[]) => void
   ): any;
 
-  declare function events$addOneTimeListener(
+  declare function google$visualization$events$addOneTimeListener(
     visualization: any,
     eventName: string,
     callback: Function
   ): any;
 
-  declare function events$addOneTimeListener(
+  declare function google$visualization$events$addOneTimeListener(
     visualization: any,
     eventName: string,
     callback: (...args: any[]) => void
   ): any;
 
-  declare function events$removeListener(listener: any): void;
+  declare function google$visualization$events$removeListener(
+    listener: any
+  ): void;
 
-  declare function events$removeAllListeners(visualization: any): void;
+  declare function google$visualization$events$removeAllListeners(
+    visualization: any
+  ): void;
 
-  declare function events$trigger(
+  declare function google$visualization$events$trigger(
     visualization: any,
     eventName: string,
     args?: any
   ): void;
 
-  declare class visualization$DefaultFormatter {
+  declare class google$visualization$DefaultFormatter {
     /**
      * Reformats the data in the specified column.
      * @param data - A DataTable containing the data to reformat. You cannot use a DataView here.
      * @param columnIndex - The zero-based index of the column to format. To format multiple columns, you must call this method multiple times, with different colIndex values.
      */
-    format(data: visualization$DataTable, columnIndex: number): void;
+    format(data: google$visualization$DataTable, columnIndex: number): void;
   }
 
-  declare export interface visualization$ArrowFormatOptions {
+  declare export interface google$visualization$ArrowFormatOptions {
     /**
      * A number indicating the base value, used to compare against the cell value. If the cell value is higher, the cell will include a green up arrow; if the cell value is lower, it will include a red down arrow; if the same, no arrow.
      */
@@ -1257,12 +1295,12 @@ declare module "google.visualization" {
   /**
    * Adds an up or down arrow, indicating whether the cell value is above or below a specified value.
    */
-  declare export class visualization$ArrowFormat
-    mixins visualization$DefaultFormatter {
-    constructor(options?: visualization$ArrowFormatOptions): this;
+  declare export class google$visualization$ArrowFormat
+    mixins DefaultFormatter {
+    constructor(options?: google$visualization$ArrowFormatOptions): this;
   }
 
-  declare export interface visualization$BarFormatOptions {
+  declare export interface google$visualization$BarFormatOptions {
     /**
      * A number that is the base value to compare the cell value against. If the cell value is higher, it will be drawn to the right of the base; if lower, it will be drawn to the left. Default value is 0.
      */
@@ -1307,16 +1345,15 @@ declare module "google.visualization" {
   /**
    * Adds a colored bar, the direction and color of which indicates whether the cell value is above or below a specified value.
    */
-  declare export class visualization$BarFormat
-    mixins visualization$DefaultFormatter {
-    constructor(options?: visualization$BarFormatOptions): this;
+  declare export class google$visualization$BarFormat mixins DefaultFormatter {
+    constructor(options?: google$visualization$BarFormatOptions): this;
   }
 
   /**
    * Colors a cell according to whether the values fall within a specified range.
    */
-  declare export class visualization$ColorFormat
-    mixins visualization$DefaultFormatter {
+  declare export class google$visualization$ColorFormat
+    mixins DefaultFormatter {
     constructor(): this;
 
     /**
@@ -1345,7 +1382,7 @@ declare module "google.visualization" {
     ): void;
   }
 
-  declare export interface visualization$DateFormatOptions {
+  declare export interface google$visualization$DateFormatOptions {
     /**
      * A quick formatting option for the date. The following string values are supported, reformatting the date February 28, 2016 as shown:
      * - 'short' - Short format: e.g., "2/28/16"
@@ -1371,9 +1408,8 @@ declare module "google.visualization" {
   /**
    * Formats a Date or DateTime value in several different ways, including "January 1, 2009," "1/1/09" and "Jan 1, 2009."
    */
-  declare export class visualization$DateFormat
-    mixins visualization$DefaultFormatter {
-    constructor(options: visualization$DateFormatOptions): this;
+  declare export class google$visualization$DateFormat mixins DefaultFormatter {
+    constructor(options: google$visualization$DateFormatOptions): this;
 
     /**
      * Returns the formatted value of a given value. This method does not require a DataTable.
@@ -1381,7 +1417,7 @@ declare module "google.visualization" {
     formatValue(value: Date): string;
   }
 
-  declare export interface visualization$NumberFormatOptions {
+  declare export interface google$visualization$NumberFormatOptions {
     /**
      * A character to use as the decimal marker. The default is a dot (.).
      */
@@ -1427,9 +1463,9 @@ declare module "google.visualization" {
   /**
    * Formats various aspects of numeric values.
    */
-  declare export class visualization$NumberFormat
-    mixins visualization$DefaultFormatter {
-    constructor(options?: visualization$NumberFormatOptions): this;
+  declare export class google$visualization$NumberFormat
+    mixins DefaultFormatter {
+    constructor(options?: google$visualization$NumberFormatOptions): this;
 
     /**
      * Returns the formatted value of a given value. This method does not require a DataTable.
@@ -1440,7 +1476,7 @@ declare module "google.visualization" {
   /**
    * Concatenates cell values on the same row into a specified cell, along with arbitrary text.
    */
-  declare export class visualization$PatternFormat {
+  declare export class google$visualization$PatternFormat {
     /**
      * Constructor.
      * Does not take an options object. Instead, it takes a string pattern parameter.
@@ -1455,16 +1491,15 @@ declare module "google.visualization" {
      * @param opt_dstColumnIndex - The destination column to place the output of the pattern manipulation. If not specified, the first element in srcColumIndices will be used as the destination.
      */
     format(
-      dataTable: visualization$DataTable,
+      dataTable: google$visualization$DataTable,
       srcColumnIndices: number[],
       opt_dstColumnIndex?: number
     ): void;
   }
 
-  declare export class visualization$OrgChart
-    mixins visualization$CoreChartBase {
+  declare export class google$visualization$OrgChart mixins CoreChartBase {
     draw(
-      data: visualization$DataTable | visualization$DataView,
+      data: google$visualization$DataTable | google$visualization$DataView,
       options: visualization$OrgChartOptions
     ): void;
     collapse(row: number, collapsed: boolean): void;
@@ -1472,7 +1507,7 @@ declare module "google.visualization" {
     getCollapsedNodes(): number[];
   }
 
-  declare export interface visualization$OrgChartOptions {
+  declare export interface google$visualization$OrgChartOptions {
     allowCollapse?: boolean;
     allowHtml?: boolean;
     color?: string;
