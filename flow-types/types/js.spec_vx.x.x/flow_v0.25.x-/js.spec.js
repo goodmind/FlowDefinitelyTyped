@@ -68,7 +68,7 @@ declare module "js.spec" {
     /**
      * A predicate function to test new values for conformance.
      */
-    +spec$predicate: PredFn;
+    +predicate: PredFn;
   }
 
   /**
@@ -267,7 +267,7 @@ declare module "js.spec" {
    * @param predicate the predicate function
    * @returns the constructed spec
    */
-  declare function spec$predicate(name: string, spec$predicate: PredFn): Spec;
+  declare function spec$predicate(name: string, predicate: PredFn): Spec;
 
   /**
    * Returns true if data is an integer.
