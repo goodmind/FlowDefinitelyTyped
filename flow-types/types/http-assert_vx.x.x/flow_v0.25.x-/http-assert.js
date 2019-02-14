@@ -49,5 +49,5 @@ declare module "http-assert" {
   declare var assert$deepEqual: assert$Assert;
 
   declare var assert$notDeepEqual: assert$Assert;
-  declare module.exports: typeof assert;
+  declare export default typeof assert;
 }
