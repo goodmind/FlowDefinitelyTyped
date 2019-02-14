@@ -6,7 +6,7 @@ declare module "touch" {
 
   declare function touch<T>(
     filename: string,
-    options?: touch$touch$Options,
+    options?: touch$Options,
     cb?: (err?: NodeJS.ErrnoException) => T
   ): Promise<T>;
 
@@ -40,5 +40,5 @@ declare module "touch" {
 
   declare function touch$ftouchSync(fd: number, options?: touch$Options): void;
 
-  declare module.exports: typeof touch;
+  declare export default typeof touch;
 }
