@@ -1,13 +1,11 @@
 declare module "numjs" {
   import typeof * as BaseNdArray from "ndarray";
 
-  declare export type NdType<T> =
-    | BaseNdArray.ndarray$DataType
-    | BaseNdArray.ndarray$Data<T>;
+  declare export type NdType<T> = BaseNdArray.DataType | BaseNdArray.Data<T>;
   declare export type NdArray<T = number> = {
     ndim: number,
     T: NdArray<T>,
-    slice(...args: core$Array<number | number[]>): NdArray<T>,
+    slice(...args: Array<number | number[]>): NdArray<T>,
 
     /**
      * Return a copy of the array collapsed into one dimension using row-major order (C-style)
@@ -28,45 +26,45 @@ declare module "numjs" {
     /**
      * Assign `x` to the array, element-wise.
      */
-    assign(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    assign(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Add `x` to the array, element-wise.
      */
-    plugins$add(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    add(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Subtract `x` to the array, element-wise.
      */
-    subtract(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    subtract(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Multiply array by `x`, element-wise.
      */
-    multiply(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    multiply(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Divide array by `x`, element-wise.
      */
-    divide(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    divide(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Raise array elements to powers from given array, element-wise.
      * @param copy - set to false to modify the array rather than create a new one
      */
-    BigNum$pow(x: NjParam<T>, tools$copy?: boolean): NdArray<T>,
+    pow(x: NjParam<T>, copy?: boolean): NdArray<T>,
 
     /**
      * Calculate the exponential of all elements in the array, element-wise.
      * @param copy - set to false to modify the array rather than create a new one
      */
-    exp(tools$copy?: boolean): NdArray<T>,
+    exp(copy?: boolean): NdArray<T>,
 
     /**
      * Calculate the positive square-root of all elements in the array, element-wise.
      * @param copy - set to false to modify the array rather than create a new one
      */
-    sqrt(tools$copy?: boolean): NdArray<T>,
+    sqrt(copy?: boolean): NdArray<T>,
 
     /**
      * Return the maximum value of the array
@@ -81,7 +79,7 @@ declare module "numjs" {
     /**
      * Sum of array elements.
      */
-    E$sum(): T,
+    sum(): T,
 
     /**
      * Returns the standard deviation, a measure of the spread of a distribution, of the array elements.
@@ -107,22 +105,22 @@ declare module "numjs" {
     /**
      * Stringify object to JSON
      */
-    utils$toJSON(): any,
+    toJSON(): any,
 
     /**
      * Create a full copy of the array
      */
-    tools$clone(): NdArray<T>,
+    clone(): NdArray<T>,
 
     /**
      * Return true if two arrays have the same shape and elements, false otherwise.
      */
-    equal<U>(getenv$array: NjArray<U>): boolean,
+    equal<U>(array: NjArray<U>): boolean,
 
     /**
      * Round array to the to the nearest integer.
      */
-    round(tools$copy?: boolean): NdArray<T>,
+    round(copy?: boolean): NdArray<T>,
 
     /**
      * Return the inverse of the array, element-wise.
@@ -137,11 +135,11 @@ declare module "numjs" {
      * @note : The convolution product is only given for points where the signals overlap completely. Values outside the signal boundary have no effect. This behaviour is known as the 'valid' mode.
      * @note : Use optimized code for 3x3, 3x3x1, 5x5, 5x5x1 filters, FFT otherwise.
      */
-    E$convolve(util$filter: NjArray<T>): NdArray<T>,
-    fftconvolve(util$filter: NjArray<T>): NdArray<T>
+    convolve(filter: NjArray<T>): NdArray<T>,
+    fftconvolve(filter: NjArray<T>): NdArray<T>
   } & BaseNdArray<T>;
 
-  declare export type NdArrayData<T> = BaseNdArray.ndarray$Data<T>;
+  declare export type NdArrayData<T> = BaseNdArray.Data<T>;
   declare export type NjArray<T> = NdArrayData<T> | NdArray<T>;
   declare export type NjParam<T> = NjArray<T> | number;
 
@@ -165,18 +163,15 @@ declare module "numjs" {
    */
   declare export function arange<T>(
     start: number,
-    DomEvent$stop?: number,
+    stop?: number,
     dtype?: NdType<T>
   ): NdArray<T>;
 
-  declare export function arange<T>(
-    DomEvent$stop: number,
-    dtype: NdType<T>
-  ): NdArray<T>;
+  declare export function arange<T>(stop: number, dtype: NdType<T>): NdArray<T>;
 
   declare export function arange<T>(
     start: number,
-    DomEvent$stop: number,
+    stop: number,
     step: number,
     dtype?: NdType<T>
   ): NdArray<T>;
@@ -209,7 +204,7 @@ declare module "numjs" {
    * Join given arrays along the last axis.
    */
   declare export function concatenate<T>(
-    ...arrays: core$Array<NjArray<T>>
+    ...arrays: Array<NjArray<T>>
   ): NdArray<T>;
 
   /**
@@ -264,15 +259,13 @@ declare module "numjs" {
   /**
    * Return a copy of the array collapsed into one dimension using row-major order (C-style)
    */
-  declare export function flatten<T>(getenv$array: NjArray<T>): NdArray<T>;
+  declare export function flatten<T>(array: NjArray<T>): NdArray<T>;
 
-  declare export function getRawData<T>(
-    getenv$array: NdArrayData<T>
-  ): Uint8Array;
+  declare export function getRawData<T>(array: NdArrayData<T>): Uint8Array;
 
   declare export function setRawData<T>(
-    getenv$array: NdArrayData<T>,
-    main$data: NdArrayData<T>
+    array: NdArrayData<T>,
+    data: NdArrayData<T>
   ): Uint8Array;
 
   /**
@@ -308,7 +301,7 @@ declare module "numjs" {
    */
   declare export function ones<T>(
     shape: NdArrayData<T> | number,
-    dtype?: BaseNdArray.ndarray$DataType
+    dtype?: BaseNdArray.DataType
   ): NdArray<T>;
 
   /**
@@ -329,7 +322,7 @@ declare module "numjs" {
    * @param shape The new shape should be compatible with the original shape. If an integer, then the result will be a 1-D array of that length
    */
   declare export function reshape<T>(
-    getenv$array: NjArray<T>,
+    array: NjArray<T>,
     shape: NdArray<T>
   ): NdArray<T>;
 
@@ -385,21 +378,21 @@ declare module "numjs" {
   declare export function tanh<T>(x: NjParam<T>): NdArray<T>;
 
   /**
- * Permute the dimensions of the input array according to the given axes.
- * @example arr = nj.arange(6).reshape(1,2,3)
-// array([[[ 0, 1, 2],
-//         [ 3, 4, 5]]])
-arr.T
-// array([[[ 0],
-//         [ 3]],
-//        [[ 1],
-//         [ 4]],
-//        [[ 2],
-//         [ 5]]])
-arr.transpose(1,0,2)
-// array([[[ 0, 1, 2]],
-//        [[ 3, 4, 5]]])
- */
+   * Permute the dimensions of the input array according to the given axes.
+   * @example arr = nj.arange(6).reshape(1,2,3)
+   * // array([[[ 0, 1, 2],
+   * //         [ 3, 4, 5]]])
+   * arr.T
+   * // array([[[ 0],
+   * //         [ 3]],
+   * //        [[ 1],
+   * //         [ 4]],
+   * //        [[ 2],
+   * //         [ 5]]])
+   * arr.transpose(1,0,2)
+   * // array([[[ 0, 1, 2]],
+   * //        [[ 3, 4, 5]]])
+   */
   declare export function transpose<T>(
     x: NjParam<T>,
     axes?: number
@@ -413,7 +406,7 @@ arr.transpose(1,0,2)
    */
   declare export function zeros<T>(
     shape: NdArrayData<T> | number,
-    dtype?: BaseNdArray.ndarray$DataType
+    dtype?: BaseNdArray.DataType
   ): NdArray<T>;
 
   declare var npm$namespace$errors: {
@@ -421,18 +414,16 @@ arr.transpose(1,0,2)
     ConfigError: typeof errors$ConfigError,
     NotImplementedError: typeof errors$NotImplementedError
   };
-  declare function errors$ValueError(message?: string): EventType$Error;
+  declare function errors$ValueError(message?: string): Error;
 
-  declare function errors$ConfigError(message?: string): EventType$Error;
+  declare function errors$ConfigError(message?: string): Error;
 
-  declare function errors$NotImplementedError(
-    message?: string
-  ): EventType$Error;
+  declare function errors$NotImplementedError(message?: string): Error;
 
   declare export function broadcast<T, U>(
     shape1: T[],
     shape2: U[]
-  ): core$Array<T | U>;
+  ): Array<T | U>;
 
   declare export function fft<T>(x: NjArray<T>): NdArray<T>;
 
@@ -452,7 +443,7 @@ arr.transpose(1,0,2)
    */
   declare export function identity<T>(
     n: T,
-    dtype?: BaseNdArray.ndarray$DataType
+    dtype?: BaseNdArray.DataType
   ): NdArray<T>;
 
   /**
@@ -464,7 +455,7 @@ arr.transpose(1,0,2)
    * @return The stacked array has one more dimension than the input arrays.
    */
   declare export function stack<T>(
-    arrays: core$Array<NdArray<T>>,
+    arrays: Array<NdArray<T>>,
     axis?: number
   ): NdArray<T>;
 
@@ -479,32 +470,34 @@ arr.transpose(1,0,2)
     areaSum: typeof images$areaSum,
     areaValue: typeof images$areaValue,
     rgb2gray: typeof images$rgb2gray,
-    flip: typeof images$flip
+    flip: typeof images$flip,
+
+    data: typeof npm$namespace$images$data
   };
 
-  declare var npm$namespace$data: {
-    digit: typeof data$digit,
-    five: typeof data$five,
-    node: typeof data$node,
-    lena: typeof data$lena,
-    lenna: typeof data$lenna,
-    moon: typeof data$moon
+  declare var npm$namespace$images$data: {
+    digit: typeof images$data$digit,
+    five: typeof images$data$five,
+    node: typeof images$data$node,
+    lena: typeof images$data$lena,
+    lenna: typeof images$data$lenna,
+    moon: typeof images$data$moon
   };
 
   /**
    * 28x28 grayscale image with an handwritten digit extracted from MNIST database
    */
-  declare var data$digit: NdArray;
+  declare var images$data$digit: NdArray;
 
   /**
    * 28x28 grayscale image with an handwritten digit extracted from MNIST database
    */
-  declare var data$five: NdArray;
+  declare var images$data$five: NdArray;
 
   /**
    * 300x600 COLOR image representing Node.js's logo
    */
-  declare var data$node: NdArray;
+  declare var images$data$node: NdArray;
 
   /**
    * The standard, yet sometimes controversial
@@ -513,7 +506,7 @@ arr.transpose(1,0,2)
    * is useful because it contains smooth, textured, shaded as well as
    * detail areas.
    */
-  declare var data$lena: NdArray;
+  declare var images$data$lena: NdArray;
 
   /**
    * The standard, yet sometimes
@@ -522,14 +515,14 @@ arr.transpose(1,0,2)
    * this image is useful because it contains smooth, textured, shaded as
    * well as detail areas.
    */
-  declare var data$lenna: NdArray;
+  declare var images$data$lenna: NdArray;
 
   /**
    * This low-contrast image of the surface of
    * the moon is useful for illustrating histogram equalization and
    * contrast stretching.
    */
-  declare var data$moon: NdArray;
+  declare var images$data$moon: NdArray;
 
   declare function images$read(input: string): NdArray<Uint8Array>;
 
@@ -565,7 +558,7 @@ arr.transpose(1,0,2)
 
   declare export function array<T>(
     arr: NjArray<T>,
-    dtype?: BaseNdArray.ndarray$DataType
+    dtype?: BaseNdArray.DataType
   ): NdArray<T>;
 
   declare export function int8<T>(arr: NjArray<T>): NjArray<Int8Array>;
