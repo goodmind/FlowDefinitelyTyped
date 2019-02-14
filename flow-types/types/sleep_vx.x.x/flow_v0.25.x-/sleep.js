@@ -22,5 +22,5 @@ declare function __node_sleep$msleep(n: number): void;
  */
 declare function __node_sleep$usleep(n: number): void;
 declare module "sleep" {
-  declare module.exports: typeof __node_sleep;
+  declare export default typeof __node_sleep;
 }
