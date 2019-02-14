@@ -11,7 +11,11 @@ declare module "barbellweights" {
   }
 
   declare var npm$namespace$BarbellWeight: {
-    getResults: typeof BarbellWeight$getResults
+    BarbellWeight: typeof npm$namespace$BarbellWeight$BarbellWeight
   };
-  declare function BarbellWeight$getResults(): void;
+
+  declare var npm$namespace$BarbellWeight$BarbellWeight: {
+    getResults: typeof BarbellWeight$BarbellWeight$getResults
+  };
+  declare function BarbellWeight$BarbellWeight$getResults(): void;
 }
