@@ -1,26 +1,30 @@
 declare module "gapi.client.toolresults" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Cloud Tool Results API v1beta3
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "toolresults",
     version: "v1beta3"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "toolresults",
     version: "v1beta3",
     callback: () => any
   ): void;
 
-  declare var client$projects: toolresults$toolresults$ProjectsResource;
+  declare var gapi$client$projects: toolresults$ProjectsResource;
 
-  declare interface toolresults$AndroidAppInfo {
+  declare interface gapi$client$toolresults$AndroidAppInfo {
     /**
      * The name of the app. Optional
      */
@@ -42,7 +46,7 @@ declare module "gapi.client.toolresults" {
     versionName?: string;
   }
 
-  declare interface toolresults$AndroidInstrumentationTest {
+  declare interface gapi$client$toolresults$AndroidInstrumentationTest {
     /**
      * The java package for the test to be executed. Required
      */
@@ -69,7 +73,7 @@ declare module "gapi.client.toolresults" {
     useOrchestrator?: boolean;
   }
 
-  declare interface toolresults$AndroidRoboTest {
+  declare interface gapi$client$toolresults$AndroidRoboTest {
     /**
      * The initial activity that should be used to start the app. Optional
      */
@@ -96,21 +100,21 @@ declare module "gapi.client.toolresults" {
     maxSteps?: number;
   }
 
-  declare interface toolresults$AndroidTest {
+  declare interface gapi$client$toolresults$AndroidTest {
     /**
      * Infomation about the application under test.
      */
-    androidAppInfo?: toolresults$AndroidAppInfo;
+    androidAppInfo?: gapi$client$toolresults$AndroidAppInfo;
 
     /**
      * An Android instrumentation test.
      */
-    androidInstrumentationTest?: toolresults$AndroidInstrumentationTest;
+    androidInstrumentationTest?: gapi$client$toolresults$AndroidInstrumentationTest;
 
     /**
      * An Android robo test.
      */
-    androidRoboTest?: toolresults$AndroidRoboTest;
+    androidRoboTest?: gapi$client$toolresults$AndroidRoboTest;
 
     /**
      * Max time a test is allowed to run before it is automatically cancelled.
@@ -118,7 +122,7 @@ declare module "gapi.client.toolresults" {
     testTimeout?: toolresults$Duration;
   }
 
-  declare interface toolresults$Any {
+  declare interface gapi$client$toolresults$Any {
     /**
      * A URL/resource name whose content describes the type of the serialized protocol buffer message.
      *
@@ -140,7 +144,7 @@ declare module "gapi.client.toolresults" {
     value?: string;
   }
 
-  declare interface toolresults$AppStartTime {
+  declare interface gapi$client$toolresults$AppStartTime {
     /**
      * Optional. The time from app start to reaching the developer-reported "fully drawn" time. This is only stored if the app includes a call to
      * Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full
@@ -154,24 +158,24 @@ declare module "gapi.client.toolresults" {
     initialDisplayTime?: toolresults$Duration;
   }
 
-  declare interface toolresults$BasicPerfSampleSeries {
+  declare interface gapi$client$toolresults$BasicPerfSampleSeries {
     perfMetricType?: string;
     perfUnit?: string;
     sampleSeriesLabel?: string;
   }
 
-  declare interface toolresults$BatchCreatePerfSamplesRequest {
+  declare interface gapi$client$toolresults$BatchCreatePerfSamplesRequest {
     /**
      * The set of PerfSamples to create should not include existing timestamps
      */
     perfSamples?: toolresults$PerfSample[];
   }
 
-  declare interface toolresults$BatchCreatePerfSamplesResponse {
+  declare interface gapi$client$toolresults$BatchCreatePerfSamplesResponse {
     perfSamples?: toolresults$PerfSample[];
   }
 
-  declare interface toolresults$CPUInfo {
+  declare interface gapi$client$toolresults$CPUInfo {
     /**
      * description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
      */
@@ -188,7 +192,7 @@ declare module "gapi.client.toolresults" {
     numberOfCores?: number;
   }
 
-  declare interface toolresults$Duration {
+  declare interface gapi$client$toolresults$Duration {
     /**
      * Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and
      * a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the
@@ -203,7 +207,7 @@ declare module "gapi.client.toolresults" {
     seconds?: string;
   }
 
-  declare interface toolresults$Execution {
+  declare interface gapi$client$toolresults$Execution {
     /**
      * The time when the Execution status transitioned to COMPLETE.
      *
@@ -269,7 +273,7 @@ declare module "gapi.client.toolresults" {
     testExecutionMatrixId?: string;
   }
 
-  declare interface toolresults$FailureDetail {
+  declare interface gapi$client$toolresults$FailureDetail {
     /**
      * If the failure was severe because the system (app) under test crashed.
      */
@@ -296,7 +300,7 @@ declare module "gapi.client.toolresults" {
     unableToCrawl?: boolean;
   }
 
-  declare interface toolresults$FileReference {
+  declare interface gapi$client$toolresults$FileReference {
     /**
      * The URI of a file stored in Google Cloud Storage.
      *
@@ -310,7 +314,7 @@ declare module "gapi.client.toolresults" {
     fileUri?: string;
   }
 
-  declare interface toolresults$GraphicsStats {
+  declare interface gapi$client$toolresults$GraphicsStats {
     /**
      * Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)
      */
@@ -372,7 +376,7 @@ declare module "gapi.client.toolresults" {
     totalFrames?: string;
   }
 
-  declare interface toolresults$GraphicsStatsBucket {
+  declare interface gapi$client$toolresults$GraphicsStatsBucket {
     /**
      * Number of frames in the bucket.
      */
@@ -384,7 +388,7 @@ declare module "gapi.client.toolresults" {
     renderMillis?: string;
   }
 
-  declare interface toolresults$History {
+  declare interface gapi$client$toolresults$History {
     /**
      * A short human-readable (plain text) name to display in the UI. Maximum of 100 characters.
      *
@@ -409,7 +413,7 @@ declare module "gapi.client.toolresults" {
     name?: string;
   }
 
-  declare interface toolresults$Image {
+  declare interface gapi$client$toolresults$Image {
     /**
      * An error explaining why the thumbnail could not be rendered.
      */
@@ -437,7 +441,7 @@ declare module "gapi.client.toolresults" {
     thumbnail?: toolresults$Thumbnail;
   }
 
-  declare interface toolresults$InconclusiveDetail {
+  declare interface gapi$client$toolresults$InconclusiveDetail {
     /**
      * If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to
      * the test runner while the test was running.
@@ -452,13 +456,13 @@ declare module "gapi.client.toolresults" {
     infrastructureFailure?: boolean;
   }
 
-  declare interface toolresults$ListExecutionsResponse {
+  declare interface gapi$client$toolresults$ListExecutionsResponse {
     /**
      * Executions.
      *
      * Always set.
      */
-    executions?: toolresults$Execution[];
+    executions?: gapi$client$toolresults$Execution[];
 
     /**
      * A continuation token to resume the query at the next item.
@@ -468,11 +472,11 @@ declare module "gapi.client.toolresults" {
     nextPageToken?: string;
   }
 
-  declare interface toolresults$ListHistoriesResponse {
+  declare interface gapi$client$toolresults$ListHistoriesResponse {
     /**
      * Histories.
      */
-    histories?: toolresults$History[];
+    histories?: gapi$client$toolresults$History[];
 
     /**
      * A continuation token to resume the query at the next item.
@@ -485,14 +489,14 @@ declare module "gapi.client.toolresults" {
     nextPageToken?: string;
   }
 
-  declare interface toolresults$ListPerfSampleSeriesResponse {
+  declare interface gapi$client$toolresults$ListPerfSampleSeriesResponse {
     /**
      * The resulting PerfSampleSeries sorted by id
      */
     perfSampleSeries?: toolresults$PerfSampleSeries[];
   }
 
-  declare interface toolresults$ListPerfSamplesResponse {
+  declare interface gapi$client$toolresults$ListPerfSamplesResponse {
     /**
      * Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last
      * sample timestamp to be used as page_token in subsequent request
@@ -501,14 +505,14 @@ declare module "gapi.client.toolresults" {
     perfSamples?: toolresults$PerfSample[];
   }
 
-  declare interface toolresults$ListScreenshotClustersResponse {
+  declare interface gapi$client$toolresults$ListScreenshotClustersResponse {
     /**
      * The set of clustres associated with an execution Always set
      */
     clusters?: toolresults$ScreenshotCluster[];
   }
 
-  declare interface toolresults$ListStepThumbnailsResponse {
+  declare interface gapi$client$toolresults$ListStepThumbnailsResponse {
     /**
      * A continuation token to resume the query at the next item.
      *
@@ -523,10 +527,10 @@ declare module "gapi.client.toolresults" {
      * without a test case are considered greater than images with one. &#42; Second, by their creation time. Images without a creation time are greater than
      * images with one. &#42; Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep).
      */
-    thumbnails?: toolresults$Image[];
+    thumbnails?: gapi$client$toolresults$Image[];
   }
 
-  declare interface toolresults$ListStepsResponse {
+  declare interface gapi$client$toolresults$ListStepsResponse {
     /**
      * A continuation token to resume the query at the next item.
      *
@@ -540,7 +544,7 @@ declare module "gapi.client.toolresults" {
     steps?: toolresults$Step[];
   }
 
-  declare interface toolresults$MemoryInfo {
+  declare interface gapi$client$toolresults$MemoryInfo {
     /**
      * Maximum memory that can be allocated to the process in KiB
      */
@@ -552,7 +556,7 @@ declare module "gapi.client.toolresults" {
     memoryTotalInKibibyte?: string;
   }
 
-  declare interface toolresults$Outcome {
+  declare interface gapi$client$toolresults$Outcome {
     /**
      * More information about a FAILURE outcome.
      *
@@ -560,7 +564,7 @@ declare module "gapi.client.toolresults" {
      *
      * Optional
      */
-    failureDetail?: toolresults$FailureDetail;
+    failureDetail?: gapi$client$toolresults$FailureDetail;
 
     /**
      * More information about an INCONCLUSIVE outcome.
@@ -569,7 +573,7 @@ declare module "gapi.client.toolresults" {
      *
      * Optional
      */
-    inconclusiveDetail?: toolresults$InconclusiveDetail;
+    inconclusiveDetail?: gapi$client$toolresults$InconclusiveDetail;
 
     /**
      * More information about a SKIPPED outcome.
@@ -597,20 +601,20 @@ declare module "gapi.client.toolresults" {
     summary?: string;
   }
 
-  declare interface toolresults$PerfEnvironment {
+  declare interface gapi$client$toolresults$PerfEnvironment {
     /**
      * CPU related environment info
      */
-    cpuInfo?: toolresults$CPUInfo;
+    cpuInfo?: gapi$client$toolresults$CPUInfo;
 
     /**
      * Memory related environment info
      */
-    memoryInfo?: toolresults$MemoryInfo;
+    memoryInfo?: gapi$client$toolresults$MemoryInfo;
   }
 
-  declare interface toolresults$PerfMetricsSummary {
-    appStartTime?: toolresults$AppStartTime;
+  declare interface gapi$client$toolresults$PerfMetricsSummary {
+    appStartTime?: gapi$client$toolresults$AppStartTime;
 
     /**
      * A tool results execution ID.
@@ -620,7 +624,7 @@ declare module "gapi.client.toolresults" {
     /**
      * Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run.
      */
-    graphicsStats?: toolresults$GraphicsStats;
+    graphicsStats?: gapi$client$toolresults$GraphicsStats;
 
     /**
      * A tool results history ID.
@@ -630,7 +634,7 @@ declare module "gapi.client.toolresults" {
     /**
      * Describes the environment in which the performance metrics were collected
      */
-    perfEnvironment?: toolresults$PerfEnvironment;
+    perfEnvironment?: gapi$client$toolresults$PerfEnvironment;
 
     /**
      * Set of resource collected
@@ -648,7 +652,7 @@ declare module "gapi.client.toolresults" {
     stepId?: string;
   }
 
-  declare interface toolresults$PerfSample {
+  declare interface gapi$client$toolresults$PerfSample {
     /**
      * Timestamp of collection
      */
@@ -660,11 +664,11 @@ declare module "gapi.client.toolresults" {
     value?: number;
   }
 
-  declare interface toolresults$PerfSampleSeries {
+  declare interface gapi$client$toolresults$PerfSampleSeries {
     /**
      * Basic series represented by a line chart
      */
-    basicPerfSampleSeries?: toolresults$BasicPerfSampleSeries;
+    basicPerfSampleSeries?: gapi$client$toolresults$BasicPerfSampleSeries;
 
     /**
      * A tool results execution ID.
@@ -692,7 +696,7 @@ declare module "gapi.client.toolresults" {
     stepId?: string;
   }
 
-  declare interface toolresults$ProjectSettings {
+  declare interface gapi$client$toolresults$ProjectSettings {
     /**
      * The name of the Google Cloud Storage bucket to which results are written.
      *
@@ -712,7 +716,7 @@ declare module "gapi.client.toolresults" {
     name?: string;
   }
 
-  declare interface toolresults$PublishXunitXmlFilesRequest {
+  declare interface gapi$client$toolresults$PublishXunitXmlFilesRequest {
     /**
      * URI of the Xunit XML files to publish.
      *
@@ -720,10 +724,10 @@ declare module "gapi.client.toolresults" {
      *
      * Required.
      */
-    xunitXmlFiles?: toolresults$FileReference[];
+    xunitXmlFiles?: gapi$client$toolresults$FileReference[];
   }
 
-  declare interface toolresults$Screen {
+  declare interface gapi$client$toolresults$Screen {
     /**
      * File reference of the png file. Required.
      */
@@ -745,7 +749,7 @@ declare module "gapi.client.toolresults" {
     version?: string;
   }
 
-  declare interface toolresults$ScreenshotCluster {
+  declare interface gapi$client$toolresults$ScreenshotCluster {
     /**
      * A string that describes the activity of every screen in the cluster.
      */
@@ -760,15 +764,15 @@ declare module "gapi.client.toolresults" {
      * A singular screen that represents the cluster as a whole. This screen will act as the "cover" of the entire cluster. When users look at the clusters,
      * only the key screen from each cluster will be shown. Which screen is the key screen is determined by the ClusteringAlgorithm
      */
-    keyScreen?: toolresults$Screen;
+    keyScreen?: gapi$client$toolresults$Screen;
 
     /**
      * Full list of screens.
      */
-    screens?: toolresults$Screen[];
+    screens?: gapi$client$toolresults$Screen[];
   }
 
-  declare interface toolresults$SkippedDetail {
+  declare interface gapi$client$toolresults$SkippedDetail {
     /**
      * If the App doesn't support the specific API level.
      */
@@ -785,14 +789,14 @@ declare module "gapi.client.toolresults" {
     incompatibleDevice?: boolean;
   }
 
-  declare interface toolresults$Specification {
+  declare interface gapi$client$toolresults$Specification {
     /**
      * An Android mobile test execution specification.
      */
-    androidTest?: toolresults$AndroidTest;
+    androidTest?: gapi$client$toolresults$AndroidTest;
   }
 
-  declare interface toolresults$StackTrace {
+  declare interface gapi$client$toolresults$StackTrace {
     /**
      * Exception cluster ID
      */
@@ -811,7 +815,7 @@ declare module "gapi.client.toolresults" {
     reportId?: string;
   }
 
-  declare interface toolresults$Status {
+  declare interface gapi$client$toolresults$Status {
     /**
      * The status code, which should be an enum value of [google.rpc.Code][].
      */
@@ -820,7 +824,7 @@ declare module "gapi.client.toolresults" {
     /**
      * A list of messages that carry the error details. There is a common set of message types for APIs to use.
      */
-    details?: toolresults$Any[];
+    details?: gapi$client$toolresults$Any[];
 
     /**
      * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the
@@ -829,7 +833,7 @@ declare module "gapi.client.toolresults" {
     message?: string;
   }
 
-  declare interface toolresults$Step {
+  declare interface gapi$client$toolresults$Step {
     /**
      * The time when the step status was set to complete.
      *
@@ -863,7 +867,7 @@ declare module "gapi.client.toolresults" {
      *
      * - In response: present if previously set. - In create request: optional - In update request: optional
      */
-    deviceUsageDuration?: toolresults$Duration;
+    deviceUsageDuration?: gapi$client$toolresults$Duration;
 
     /**
      * If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions.
@@ -925,7 +929,7 @@ declare module "gapi.client.toolresults" {
      *
      * - In response: present if set by create/update request - In create/update request: optional
      */
-    outcome?: toolresults$Outcome;
+    outcome?: gapi$client$toolresults$Outcome;
 
     /**
      * How long it took for this step to run.
@@ -938,7 +942,7 @@ declare module "gapi.client.toolresults" {
      *
      * - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
      */
-    runDuration?: toolresults$Duration;
+    runDuration?: gapi$client$toolresults$Duration;
 
     /**
      * The initial state is IN_PROGRESS. The only legal state transitions are &#42; IN_PROGRESS -> COMPLETE
@@ -972,24 +976,24 @@ declare module "gapi.client.toolresults" {
     toolExecutionStep?: toolresults$ToolExecutionStep;
   }
 
-  declare interface toolresults$StepDimensionValueEntry {
+  declare interface gapi$client$toolresults$StepDimensionValueEntry {
     key?: string;
     value?: string;
   }
 
-  declare interface toolresults$StepLabelsEntry {
+  declare interface gapi$client$toolresults$StepLabelsEntry {
     key?: string;
     value?: string;
   }
 
-  declare interface toolresults$SuccessDetail {
+  declare interface gapi$client$toolresults$SuccessDetail {
     /**
      * If a native process other than the app crashed.
      */
     otherNativeCrash?: boolean;
   }
 
-  declare interface toolresults$TestCaseReference {
+  declare interface gapi$client$toolresults$TestCaseReference {
     /**
      * The name of the class.
      */
@@ -1008,7 +1012,7 @@ declare module "gapi.client.toolresults" {
     testSuiteName?: string;
   }
 
-  declare interface toolresults$TestExecutionStep {
+  declare interface gapi$client$toolresults$TestExecutionStep {
     /**
      * Issues observed during the test execution.
      *
@@ -1046,7 +1050,7 @@ declare module "gapi.client.toolresults" {
     toolExecution?: toolresults$ToolExecution;
   }
 
-  declare interface toolresults$TestIssue {
+  declare interface gapi$client$toolresults$TestIssue {
     /**
      * A brief human-readable message describing the issue. Required.
      */
@@ -1060,7 +1064,7 @@ declare module "gapi.client.toolresults" {
     /**
      * Deprecated in favor of stack trace fields inside specific warnings.
      */
-    stackTrace?: toolresults$StackTrace;
+    stackTrace?: gapi$client$toolresults$StackTrace;
 
     /**
      * Type of issue. Required.
@@ -1070,10 +1074,10 @@ declare module "gapi.client.toolresults" {
     /**
      * Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings Required.
      */
-    warning?: toolresults$Any;
+    warning?: gapi$client$toolresults$Any;
   }
 
-  declare interface toolresults$TestSuiteOverview {
+  declare interface gapi$client$toolresults$TestSuiteOverview {
     /**
      * Number of test cases in error, typically set by the service by parsing the xml_source.
      *
@@ -1118,19 +1122,19 @@ declare module "gapi.client.toolresults" {
      *
      * - In create/response: optional - In update request: never
      */
-    xmlSource?: toolresults$FileReference;
+    xmlSource?: gapi$client$toolresults$FileReference;
   }
 
-  declare interface toolresults$TestTiming {
+  declare interface gapi$client$toolresults$TestTiming {
     /**
      * How long it took to run the test process.
      *
      * - In response: present if previously set. - In create/update request: optional
      */
-    testProcessDuration?: toolresults$Duration;
+    testProcessDuration?: gapi$client$toolresults$Duration;
   }
 
-  declare interface toolresults$Thumbnail {
+  declare interface gapi$client$toolresults$Thumbnail {
     /**
      * The thumbnail's content type, i.e. "image/png".
      *
@@ -1163,7 +1167,7 @@ declare module "gapi.client.toolresults" {
     widthPx?: number;
   }
 
-  declare interface toolresults$Timestamp {
+  declare interface gapi$client$toolresults$Timestamp {
     /**
      * Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count
      * forward in time. Must be from 0 to 999,999,999 inclusive.
@@ -1176,7 +1180,7 @@ declare module "gapi.client.toolresults" {
     seconds?: string;
   }
 
-  declare interface toolresults$ToolExecution {
+  declare interface gapi$client$toolresults$ToolExecution {
     /**
      * The full tokenized command line including the program name (equivalent to argv in a C program).
      *
@@ -1202,7 +1206,7 @@ declare module "gapi.client.toolresults" {
      * - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended
      * to the existing list
      */
-    toolLogs?: toolresults$FileReference[];
+    toolLogs?: gapi$client$toolresults$FileReference[];
 
     /**
      * References to opaque files of any format output by the tool execution.
@@ -1215,16 +1219,16 @@ declare module "gapi.client.toolresults" {
     toolOutputs?: toolresults$ToolOutputReference[];
   }
 
-  declare interface toolresults$ToolExecutionStep {
+  declare interface gapi$client$toolresults$ToolExecutionStep {
     /**
      * A Tool execution.
      *
      * - In response: present if set by create/update request - In create/update request: optional
      */
-    toolExecution?: toolresults$ToolExecution;
+    toolExecution?: gapi$client$toolresults$ToolExecution;
   }
 
-  declare interface toolresults$ToolExitCode {
+  declare interface gapi$client$toolresults$ToolExitCode {
     /**
      * Tool execution exit code. A value of 0 means that the execution was successful.
      *
@@ -1233,30 +1237,30 @@ declare module "gapi.client.toolresults" {
     number?: number;
   }
 
-  declare interface toolresults$ToolOutputReference {
+  declare interface gapi$client$toolresults$ToolOutputReference {
     /**
      * The creation time of the file.
      *
      * - In response: present if set by create/update request - In create/update request: optional
      */
-    creationTime?: toolresults$Timestamp;
+    creationTime?: gapi$client$toolresults$Timestamp;
 
     /**
      * A FileReference to an output file.
      *
      * - In response: always set - In create/update request: always set
      */
-    output?: toolresults$FileReference;
+    output?: gapi$client$toolresults$FileReference;
 
     /**
      * The test case to which this output file belongs.
      *
      * - In response: present if set by create/update request - In create/update request: optional
      */
-    testCase?: toolresults$TestCaseReference;
+    testCase?: gapi$client$toolresults$TestCaseReference;
   }
 
-  declare interface toolresults$ClustersResource {
+  declare interface gapi$client$toolresults$ClustersResource {
     /**
      * Retrieves a single screenshot cluster by its ID
      */
@@ -1324,7 +1328,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ScreenshotCluster>;
+    }): Request<gapi$client$toolresults$ScreenshotCluster>;
 
     /**
      * Lists Screenshot Clusters
@@ -1390,10 +1394,10 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListScreenshotClustersResponse>;
+    }): Request<gapi$client$toolresults$ListScreenshotClustersResponse>;
   }
 
-  declare interface toolresults$PerfMetricsSummaryResource {
+  declare interface gapi$client$toolresults$PerfMetricsSummaryResource {
     /**
      * Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created.
      *
@@ -1455,10 +1459,10 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$PerfMetricsSummary>;
+    }): Request<gapi$client$toolresults$PerfMetricsSummary>;
   }
 
-  declare interface toolresults$SamplesResource {
+  declare interface gapi$client$toolresults$SamplesResource {
     /**
      * Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a
      * large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements
@@ -1527,7 +1531,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$BatchCreatePerfSamplesResponse>;
+    }): Request<gapi$client$toolresults$BatchCreatePerfSamplesResponse>;
 
     /**
      * Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps ascending - The default page size is 500 samples;
@@ -1608,10 +1612,10 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListPerfSamplesResponse>;
+    }): Request<gapi$client$toolresults$ListPerfSamplesResponse>;
   }
 
-  declare interface toolresults$PerfSampleSeriesResource {
+  declare interface gapi$client$toolresults$PerfSampleSeriesResource {
     /**
      * Creates a PerfSampleSeries.
      *
@@ -1674,7 +1678,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$PerfSampleSeries>;
+    }): Request<gapi$client$toolresults$PerfSampleSeries>;
 
     /**
      * Gets a PerfSampleSeries.
@@ -1742,7 +1746,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$PerfSampleSeries>;
+    }): Request<gapi$client$toolresults$PerfSampleSeries>;
 
     /**
      * Lists PerfSampleSeries for a given Step.
@@ -1813,11 +1817,11 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListPerfSampleSeriesResponse>;
-    samples: toolresults$SamplesResource;
+    }): Request<gapi$client$toolresults$ListPerfSampleSeriesResponse>;
+    samples: gapi$client$toolresults$SamplesResource;
   }
 
-  declare interface toolresults$ThumbnailsResource {
+  declare interface gapi$client$toolresults$ThumbnailsResource {
     /**
      * Lists thumbnails of images attached to a step.
      *
@@ -1904,10 +1908,10 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListStepThumbnailsResponse>;
+    }): Request<gapi$client$toolresults$ListStepThumbnailsResponse>;
   }
 
-  declare interface toolresults$StepsResource {
+  declare interface gapi$client$toolresults$StepsResource {
     /**
      * Creates a Step.
      *
@@ -1982,7 +1986,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Step>;
+    }): Request<gapi$client$toolresults$Step>;
 
     /**
      * Gets a Step.
@@ -2056,7 +2060,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Step>;
+    }): Request<gapi$client$toolresults$Step>;
 
     /**
      * Retrieves a PerfMetricsSummary.
@@ -2119,7 +2123,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$PerfMetricsSummary>;
+    }): Request<gapi$client$toolresults$PerfMetricsSummary>;
 
     /**
      * Lists Steps for a given Execution.
@@ -2205,7 +2209,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListStepsResponse>;
+    }): Request<gapi$client$toolresults$ListStepsResponse>;
 
     /**
      * Updates an existing Step with the supplied partial entity.
@@ -2287,7 +2291,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Step>;
+    }): Request<gapi$client$toolresults$Step>;
 
     /**
      * Publish xml files to an existing Step.
@@ -2362,13 +2366,13 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Step>;
-    perfMetricsSummary: toolresults$PerfMetricsSummaryResource;
-    perfSampleSeries: toolresults$PerfSampleSeriesResource;
-    thumbnails: toolresults$ThumbnailsResource;
+    }): Request<gapi$client$toolresults$Step>;
+    perfMetricsSummary: gapi$client$toolresults$PerfMetricsSummaryResource;
+    perfSampleSeries: gapi$client$toolresults$PerfSampleSeriesResource;
+    thumbnails: gapi$client$toolresults$ThumbnailsResource;
   }
 
-  declare interface toolresults$ExecutionsResource {
+  declare interface gapi$client$toolresults$ExecutionsResource {
     /**
      * Creates an Execution.
      *
@@ -2436,7 +2440,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Execution>;
+    }): Request<gapi$client$toolresults$Execution>;
 
     /**
      * Gets an Execution.
@@ -2503,7 +2507,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Execution>;
+    }): Request<gapi$client$toolresults$Execution>;
 
     /**
      * Lists Histories for a given Project.
@@ -2581,7 +2585,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListExecutionsResponse>;
+    }): Request<gapi$client$toolresults$ListExecutionsResponse>;
 
     /**
      * Updates an existing Execution with the supplied partial entity.
@@ -2649,12 +2653,12 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$Execution>;
-    clusters: toolresults$ClustersResource;
-    steps: toolresults$StepsResource;
+    }): Request<gapi$client$toolresults$Execution>;
+    clusters: gapi$client$toolresults$ClustersResource;
+    steps: gapi$client$toolresults$StepsResource;
   }
 
-  declare interface toolresults$HistoriesResource {
+  declare interface gapi$client$toolresults$HistoriesResource {
     /**
      * Creates a History.
      *
@@ -2715,7 +2719,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$History>;
+    }): Request<gapi$client$toolresults$History>;
 
     /**
      * Gets a History.
@@ -2775,7 +2779,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$History>;
+    }): Request<gapi$client$toolresults$History>;
 
     /**
      * Lists Histories for a given Project.
@@ -2854,11 +2858,11 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ListHistoriesResponse>;
-    executions: toolresults$ExecutionsResource;
+    }): Request<gapi$client$toolresults$ListHistoriesResponse>;
+    executions: gapi$client$toolresults$ExecutionsResource;
   }
 
-  declare interface toolresults$ProjectsResource {
+  declare interface gapi$client$toolresults$ProjectsResource {
     /**
      * Gets the Tool Results settings for a project.
      *
@@ -2909,7 +2913,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ProjectSettings>;
+    }): Request<gapi$client$toolresults$ProjectSettings>;
 
     /**
      * Creates resources for settings which have not yet been set.
@@ -2973,7 +2977,7 @@ declare module "gapi.client.toolresults" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<toolresults$ProjectSettings>;
-    histories: toolresults$HistoriesResource;
+    }): Request<gapi$client$toolresults$ProjectSettings>;
+    histories: gapi$client$toolresults$HistoriesResource;
   }
 }
