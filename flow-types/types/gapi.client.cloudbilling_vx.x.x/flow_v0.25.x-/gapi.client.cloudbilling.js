@@ -1,32 +1,36 @@
 declare module "gapi.client.cloudbilling" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    billingAccounts: typeof client$billingAccounts,
-    projects: typeof client$projects,
-    services: typeof client$services
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    billingAccounts: typeof gapi$client$billingAccounts,
+    projects: typeof gapi$client$projects,
+    services: typeof gapi$client$services
   };
 
   /**
    * Load Google Cloud Billing API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudbilling",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "cloudbilling",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$billingAccounts: cloudbilling$cloudbilling$BillingAccountsResource;
+  declare var gapi$client$billingAccounts: cloudbilling$BillingAccountsResource;
 
-  declare var client$projects: cloudbilling$cloudbilling$ProjectsResource;
+  declare var gapi$client$projects: cloudbilling$ProjectsResource;
 
-  declare var client$services: cloudbilling$cloudbilling$ServicesResource;
+  declare var gapi$client$services: cloudbilling$ServicesResource;
 
-  declare interface cloudbilling$AggregationInfo {
+  declare interface gapi$client$cloudbilling$AggregationInfo {
     /**
      * The number of intervals to aggregate over.
      * Example: If aggregation_level is "DAILY" and aggregation_count is 14,
@@ -37,7 +41,7 @@ declare module "gapi.client.cloudbilling" {
     aggregationLevel?: string;
   }
 
-  declare interface cloudbilling$BillingAccount {
+  declare interface gapi$client$cloudbilling$BillingAccount {
     /**
      * The display name given to the billing account, such as `My Billing
      *              * Account`. This name is displayed in the Google Cloud Console.
@@ -60,7 +64,7 @@ declare module "gapi.client.cloudbilling" {
     open?: boolean;
   }
 
-  declare interface cloudbilling$Category {
+  declare interface gapi$client$cloudbilling$Category {
     /**
      * The type of product the SKU refers to.
      * Example: "Compute", "Storage", "Network", "ApplicationServices" etc.
@@ -85,11 +89,11 @@ declare module "gapi.client.cloudbilling" {
     usageType?: string;
   }
 
-  declare interface cloudbilling$ListBillingAccountsResponse {
+  declare interface gapi$client$cloudbilling$ListBillingAccountsResponse {
     /**
      * A list of billing accounts.
      */
-    client$billingAccounts?: cloudbilling$BillingAccount[];
+    billingAccounts?: gapi$client$cloudbilling$BillingAccount[];
 
     /**
      * A token to retrieve the next page of results. To retrieve the next page,
@@ -99,7 +103,7 @@ declare module "gapi.client.cloudbilling" {
     nextPageToken?: string;
   }
 
-  declare interface cloudbilling$ListProjectBillingInfoResponse {
+  declare interface gapi$client$cloudbilling$ListProjectBillingInfoResponse {
     /**
      * A token to retrieve the next page of results. To retrieve the next page,
      * call `ListProjectBillingInfo` again with the `page_token` field set to this
@@ -114,7 +118,7 @@ declare module "gapi.client.cloudbilling" {
     projectBillingInfo?: cloudbilling$ProjectBillingInfo[];
   }
 
-  declare interface cloudbilling$ListServicesResponse {
+  declare interface gapi$client$cloudbilling$ListServicesResponse {
     /**
      * A token to retrieve the next page of results. To retrieve the next page,
      * call `ListServices` again with the `page_token` field set to this
@@ -125,10 +129,10 @@ declare module "gapi.client.cloudbilling" {
     /**
      * A list of services.
      */
-    client$services?: cloudbilling$Service[];
+    services?: cloudbilling$Service[];
   }
 
-  declare interface cloudbilling$ListSkusResponse {
+  declare interface gapi$client$cloudbilling$ListSkusResponse {
     /**
      * A token to retrieve the next page of results. To retrieve the next page,
      * call `ListSkus` again with the `page_token` field set to this
@@ -142,7 +146,7 @@ declare module "gapi.client.cloudbilling" {
     skus?: cloudbilling$Sku[];
   }
 
-  declare interface cloudbilling$Money {
+  declare interface gapi$client$cloudbilling$Money {
     /**
      * The 3-letter currency code defined in ISO 4217.
      */
@@ -165,7 +169,7 @@ declare module "gapi.client.cloudbilling" {
     units?: string;
   }
 
-  declare interface cloudbilling$PricingExpression {
+  declare interface gapi$client$cloudbilling$PricingExpression {
     /**
      * The base unit for the SKU which is the unit used in usage exports.
      * Example: "By"
@@ -219,12 +223,12 @@ declare module "gapi.client.cloudbilling" {
     usageUnitDescription?: string;
   }
 
-  declare interface cloudbilling$PricingInfo {
+  declare interface gapi$client$cloudbilling$PricingInfo {
     /**
      * Aggregation Info. This can be left unspecified if the pricing expression
      * doesn't require aggregation.
      */
-    aggregationInfo?: cloudbilling$AggregationInfo;
+    aggregationInfo?: gapi$client$cloudbilling$AggregationInfo;
 
     /**
      * Conversion rate for currency conversion, from USD to the currency specified
@@ -241,7 +245,7 @@ declare module "gapi.client.cloudbilling" {
     /**
      * Expresses the pricing formula. See `PricingExpression` for an example.
      */
-    pricingExpression?: cloudbilling$PricingExpression;
+    pricingExpression?: gapi$client$cloudbilling$PricingExpression;
 
     /**
      * An optional human readable summary of the pricing information, has a
@@ -250,7 +254,7 @@ declare module "gapi.client.cloudbilling" {
     summary?: string;
   }
 
-  declare interface cloudbilling$ProjectBillingInfo {
+  declare interface gapi$client$cloudbilling$ProjectBillingInfo {
     /**
      * The resource name of the billing account associated with the project, if
      * any. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -281,7 +285,7 @@ declare module "gapi.client.cloudbilling" {
     projectId?: string;
   }
 
-  declare interface cloudbilling$Service {
+  declare interface gapi$client$cloudbilling$Service {
     /**
      * A human readable display name for this service.
      */
@@ -300,11 +304,11 @@ declare module "gapi.client.cloudbilling" {
     serviceId?: string;
   }
 
-  declare interface cloudbilling$Sku {
+  declare interface gapi$client$cloudbilling$Sku {
     /**
      * The category hierarchy of this SKU, purely for organizational purpose.
      */
-    category?: cloudbilling$Category;
+    category?: gapi$client$cloudbilling$Category;
 
     /**
      * A human readable description of the SKU, has a maximum length of 256
@@ -321,7 +325,7 @@ declare module "gapi.client.cloudbilling" {
     /**
      * A timeline of pricing info for this SKU in chronological order.
      */
-    pricingInfo?: cloudbilling$PricingInfo[];
+    pricingInfo?: gapi$client$cloudbilling$PricingInfo[];
 
     /**
      * Identifies the service provider.
@@ -343,7 +347,7 @@ declare module "gapi.client.cloudbilling" {
     skuId?: string;
   }
 
-  declare interface cloudbilling$TierRate {
+  declare interface gapi$client$cloudbilling$TierRate {
     /**
      * Usage is priced at this rate only after this amount.
      * Example: start_usage_amount of 10 indicates that the usage will be priced
@@ -355,10 +359,10 @@ declare module "gapi.client.cloudbilling" {
      * The price per unit of usage.
      * Example: unit_price of amount $10 indicates that each unit will cost $10.
      */
-    unitPrice?: cloudbilling$Money;
+    unitPrice?: gapi$client$cloudbilling$Money;
   }
 
-  declare interface cloudbilling$ProjectsResource {
+  declare interface gapi$client$cloudbilling$ProjectsResource {
     /**
      * Lists the projects associated with a billing account. The current
      * authenticated user must be an [owner of the billing
@@ -448,7 +452,7 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ListProjectBillingInfoResponse>;
+    }): Request<gapi$client$cloudbilling$ListProjectBillingInfoResponse>;
 
     /**
      * Gets the billing information for a project. The current authenticated user
@@ -527,7 +531,7 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ProjectBillingInfo>;
+    }): Request<gapi$client$cloudbilling$ProjectBillingInfo>;
 
     /**
      * Sets or updates the billing account associated with a project. You specify
@@ -633,10 +637,10 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ProjectBillingInfo>;
+    }): Request<gapi$client$cloudbilling$ProjectBillingInfo>;
   }
 
-  declare interface cloudbilling$BillingAccountsResource {
+  declare interface gapi$client$cloudbilling$BillingAccountsResource {
     /**
      * Gets information about a billing account. The current authenticated user
      * must be an [owner of the billing
@@ -713,7 +717,7 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$BillingAccount>;
+    }): Request<gapi$client$cloudbilling$BillingAccount>;
 
     /**
      * Lists the billing accounts that the current authenticated user
@@ -797,11 +801,11 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ListBillingAccountsResponse>;
-    client$projects: cloudbilling$ProjectsResource;
+    }): Request<gapi$client$cloudbilling$ListBillingAccountsResponse>;
+    projects: gapi$client$cloudbilling$ProjectsResource;
   }
 
-  declare interface cloudbilling$SkusResource {
+  declare interface gapi$client$cloudbilling$SkusResource {
     /**
      * Lists all publicly available SKUs for a given cloud service.
      */
@@ -913,10 +917,10 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ListSkusResponse>;
+    }): Request<gapi$client$cloudbilling$ListSkusResponse>;
   }
 
-  declare interface cloudbilling$ServicesResource {
+  declare interface gapi$client$cloudbilling$ServicesResource {
     /**
      * Lists all public cloud services.
      */
@@ -997,7 +1001,7 @@ declare module "gapi.client.cloudbilling" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<cloudbilling$ListServicesResponse>;
-    skus: cloudbilling$SkusResource;
+    }): Request<gapi$client$cloudbilling$ListServicesResponse>;
+    skus: gapi$client$cloudbilling$SkusResource;
   }
 }
