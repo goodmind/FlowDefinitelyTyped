@@ -134,7 +134,7 @@ declare module "kineticjs" {
     getIntersections(point: any): any,
     isAncestorOf(node: any): any,
     removeChildren(): any
-  } & Kinetic$INode;
+  } & INode;
 
   declare var Kinetic$Stage: {
     new(config: Kinetic$StageConfig): Kinetic$IStage
@@ -161,7 +161,7 @@ declare module "kineticjs" {
     toDataURL(config: any): any,
     toImage(config: any, callback: () => any): any,
     toJSON(): any
-  } & Kinetic$IContainer;
+  } & IContainer;
 
   declare var Kinetic$Layer: {
     new(config?: Kinetic$LayerConfig): Kinetic$ILayer
@@ -177,7 +177,7 @@ declare module "kineticjs" {
     remove(): any,
     setClearBeforeDraw(clearBeforeDraw: boolean): any,
     toDataURL(config: any): any
-  } & Kinetic$IContainer;
+  } & IContainer;
 
   declare interface Kinetic$ICanvas {
     _canvas: HTMLCanvasElement;
@@ -214,7 +214,7 @@ declare module "kineticjs" {
     setStrokeWidth(strokeWidth: number): any,
     stroke(): any,
     strokeText(text: string): any
-  } & Kinetic$INode;
+  } & INode;
 
   declare var Kinetic$Rect: {
     new(config: Kinetic$RectConfig): Kinetic$IRect
@@ -227,7 +227,7 @@ declare module "kineticjs" {
     setCornerRadius(radius: number): any,
     setHeight(height: number): any,
     setWidth(width: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Circle: {
     new(config: Kinetic$CircleConfig): Kinetic$ICircle
@@ -236,7 +236,7 @@ declare module "kineticjs" {
   declare type Kinetic$ICircle = {
     getRadius(): number,
     setRadius(radius: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Ellipse: {
     new(config: Kinetic$CircleConfig): Kinetic$IEllipse
@@ -245,13 +245,13 @@ declare module "kineticjs" {
   declare type Kinetic$IEllipse = {
     getRadius(): number,
     setRadius(radius: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Group: {
     new(config?: Kinetic$ObjectOptionsConfig): Kinetic$IGroup
   };
 
-  declare type Kinetic$IGroup = {} & Kinetic$IContainer;
+  declare type Kinetic$IGroup = {} & IContainer;
 
   declare var Kinetic$Collection: {
     new(): Kinetic$ICollection
@@ -280,7 +280,7 @@ declare module "kineticjs" {
     setHeight(height: number): any,
     setImage(image: Kinetic$IImage): any,
     setWidth(width: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Line: {
     new(config: Kinetic$LineConfig): Kinetic$ILine
@@ -293,7 +293,7 @@ declare module "kineticjs" {
     setDashArray(dashArray: any): any,
     setLineCap(lineCap: string): any,
     setPoints(can: any[]): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Path: {
     new(config: Kinetic$PathConfig): Kinetic$IPath,
@@ -303,7 +303,7 @@ declare module "kineticjs" {
   declare type Kinetic$IPath = {
     getData(): string,
     setData(SVG: string): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$RegularPolygon: {
     new(config: Kinetic$RegularPolygonConfig): Kinetic$IRegularPolygon
@@ -314,7 +314,7 @@ declare module "kineticjs" {
     getSides(): number,
     setRadius(radius: number): any,
     setSides(sides: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Sprite: {
     new(config: Kinetic$SpriteConfig): Kinetic$ISprite
@@ -330,7 +330,7 @@ declare module "kineticjs" {
     setIndex(index: number): any,
     start(): any,
     stop(): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Star: {
     new(config: Kinetic$StarConfig): Kinetic$IStar
@@ -343,7 +343,7 @@ declare module "kineticjs" {
     setInnerRadius(radius: number): any,
     setNumPoints(points: number): any,
     setOuterRadius(radius: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Text: {
     new(config: Kinetic$TextConfig): Kinetic$IText
@@ -380,7 +380,7 @@ declare module "kineticjs" {
     setTextFill(textFill: any): any,
     setTextStrokeWidth(textStrokeWidth: number): any,
     setWidth(width: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$TextPath: {
     new(config: any): Kinetic$ITextPath
@@ -403,7 +403,7 @@ declare module "kineticjs" {
     setText(text: string): any,
     setTextFill(textFill: any): any,
     setTextStrokeWidth(textStrokeWidth: number): any
-  } & Kinetic$IShape;
+  } & IShape;
 
   declare var Kinetic$Animation: {
     new(...args: any[]): Kinetic$IAnimation
@@ -412,7 +412,7 @@ declare module "kineticjs" {
   declare type Kinetic$IAnimation = {
     start(): any,
     stop(): any
-  } & Kinetic$IContainer;
+  } & IContainer;
 
   declare interface Kinetic$CropConfig {
     x: number;
@@ -425,39 +425,39 @@ declare module "kineticjs" {
     container: string,
     width: number,
     height: number
-  } & Kinetic$ObjectOptionsConfig;
+  } & ObjectOptionsConfig;
 
   declare type Kinetic$LayerConfig = {
     clearBeforeDraw?: boolean
-  } & Kinetic$ObjectOptionsConfig;
+  } & ObjectOptionsConfig;
 
   declare type Kinetic$RectConfig = {
     width?: number,
     height?: number,
     cornerRadius?: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$CircleConfig = {
     radius: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$ImageConfig = {
     image: any,
     width?: number,
     height?: number,
     crop?: any
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$SpriteConfig = {
     image: any,
     animations?: any,
     animation?: any,
     frameRate?: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$TextConfig = {
     text: string,
@@ -473,38 +473,38 @@ declare module "kineticjs" {
     height?: number,
     lineHeight?: number,
     cornerRadius?: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$LineConfig = {
     points: any,
     lineCap?: string,
     dash?: number[]
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$RegularPolygonConfig = {
     sides: number,
     radius: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$PathConfig = {
     data: string
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$StarConfig = {
     numPoints: number,
     outerRadius: number,
     innerRadius: number
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare type Kinetic$CustomConfig = {
     drawFunc: () => any
-  } & Kinetic$DrawOptionsConfig &
-    Kinetic$ObjectOptionsConfig;
+  } & DrawOptionsConfig &
+    ObjectOptionsConfig;
 
   declare interface Kinetic$DrawOptionsConfig {
     fill?: string;
