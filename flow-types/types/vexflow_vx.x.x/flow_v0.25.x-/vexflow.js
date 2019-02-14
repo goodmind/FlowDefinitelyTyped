@@ -12,7 +12,11 @@ declare var npm$namespace$Vex: {
   getCanvasContext: typeof Vex$getCanvasContext,
   drawDot: typeof Vex$drawDot,
   BM: typeof Vex$BM,
-  Inherit: typeof Vex$Inherit
+  Inherit: typeof Vex$Inherit,
+
+  RuntimeError: typeof Vex$RuntimeError,
+  RERR: typeof Vex$RERR,
+  Flow: typeof npm$namespace$Vex$Flow
 };
 declare function Vex$L(block: string, args: any[]): void;
 
@@ -181,56 +185,156 @@ declare interface Vex$IFont {
   };
 }
 
-declare var npm$namespace$Flow: {
-  clefProperties: typeof Flow$clefProperties,
-  keyProperties: typeof Flow$keyProperties,
-  integerToNote: typeof Flow$integerToNote,
-  tabToGlyph: typeof Flow$tabToGlyph,
-  textWidth: typeof Flow$textWidth,
-  articulationCodes: typeof Flow$articulationCodes,
-  accidentalCodes: typeof Flow$accidentalCodes,
-  ornamentCodes: typeof Flow$ornamentCodes,
-  keySignature: typeof Flow$keySignature,
-  parseNoteDurationString: typeof Flow$parseNoteDurationString,
-  parseNoteData: typeof Flow$parseNoteData,
-  durationToFraction: typeof Flow$durationToFraction,
-  durationToNumber: typeof Flow$durationToNumber,
-  durationToTicks: typeof Flow$durationToTicks,
-  durationToGlyph: typeof Flow$durationToGlyph,
-  renderGlyph: typeof Flow$renderGlyph,
-  RESOLUTION: typeof Flow$RESOLUTION,
-  STEM_WIDTH: typeof Flow$STEM_WIDTH,
-  STEM_HEIGHT: typeof Flow$STEM_HEIGHT,
-  STAVE_LINE_THICKNESS: typeof Flow$STAVE_LINE_THICKNESS,
-  TIME4_4: typeof Flow$TIME4_4,
-  unicode: typeof Flow$unicode,
-  Font: typeof Flow$Font
+declare var npm$namespace$Vex$Flow: {
+  clefProperties: typeof Vex$Flow$clefProperties,
+  keyProperties: typeof Vex$Flow$keyProperties,
+  integerToNote: typeof Vex$Flow$integerToNote,
+  tabToGlyph: typeof Vex$Flow$tabToGlyph,
+  textWidth: typeof Vex$Flow$textWidth,
+  articulationCodes: typeof Vex$Flow$articulationCodes,
+  accidentalCodes: typeof Vex$Flow$accidentalCodes,
+  ornamentCodes: typeof Vex$Flow$ornamentCodes,
+  keySignature: typeof Vex$Flow$keySignature,
+  parseNoteDurationString: typeof Vex$Flow$parseNoteDurationString,
+  parseNoteData: typeof Vex$Flow$parseNoteData,
+  durationToFraction: typeof Vex$Flow$durationToFraction,
+  durationToNumber: typeof Vex$Flow$durationToNumber,
+  durationToTicks: typeof Vex$Flow$durationToTicks,
+  durationToGlyph: typeof Vex$Flow$durationToGlyph,
+  renderGlyph: typeof Vex$Flow$renderGlyph,
+  RESOLUTION: typeof Vex$Flow$RESOLUTION,
+  STEM_WIDTH: typeof Vex$Flow$STEM_WIDTH,
+  STEM_HEIGHT: typeof Vex$Flow$STEM_HEIGHT,
+  STAVE_LINE_THICKNESS: typeof Vex$Flow$STAVE_LINE_THICKNESS,
+  TIME4_4: typeof Vex$Flow$TIME4_4,
+  unicode: typeof Vex$Flow$unicode,
+  Font: typeof Vex$Flow$Font,
+
+  Accidental: typeof Vex$Flow$Accidental,
+  Annotation: typeof Vex$Flow$Annotation,
+  Articulation: typeof Vex$Flow$Articulation,
+  BarNote: typeof Vex$Flow$BarNote,
+  Barline: typeof Vex$Flow$Barline,
+  Beam: typeof Vex$Flow$Beam,
+  Bend: typeof Vex$Flow$Bend,
+  BoundingBox: typeof Vex$Flow$BoundingBox,
+  CanvasContext: typeof Vex$Flow$CanvasContext,
+  Clef: typeof Vex$Flow$Clef,
+  ClefNote: typeof Vex$Flow$ClefNote,
+  Crescendo: typeof Vex$Flow$Crescendo,
+  Curve: typeof Vex$Flow$Curve,
+  Dot: typeof Vex$Flow$Dot,
+  Formatter: typeof Vex$Flow$Formatter,
+  Fraction: typeof Vex$Flow$Fraction,
+  FretHandFinger: typeof Vex$Flow$FretHandFinger,
+  GhostNote: typeof Vex$Flow$GhostNote,
+  Glyph: typeof Vex$Flow$Glyph,
+  GraceNote: typeof Vex$Flow$GraceNote,
+  GraceNoteGroup: typeof Vex$Flow$GraceNoteGroup,
+  KeyManager: typeof Vex$Flow$KeyManager,
+  KeySignature: typeof Vex$Flow$KeySignature,
+  Modifier: typeof Vex$Flow$Modifier,
+  ModifierContext: typeof Vex$Flow$ModifierContext,
+  Music: typeof Vex$Flow$Music,
+  Note: typeof Vex$Flow$Note,
+  NoteHead: typeof Vex$Flow$NoteHead,
+  NoteSubGroup: typeof Vex$Flow$NoteSubGroup,
+  Ornament: typeof Vex$Flow$Ornament,
+  PedalMarking: typeof Vex$Flow$PedalMarking,
+  RaphaelContext: typeof Vex$Flow$RaphaelContext,
+  Renderer: typeof Vex$Flow$Renderer,
+  Repetition: typeof Vex$Flow$Repetition,
+  Stave: typeof Vex$Flow$Stave,
+  StaveConnector: typeof Vex$Flow$StaveConnector,
+  StaveHairpin: typeof Vex$Flow$StaveHairpin,
+  StaveLine: typeof Vex$Flow$StaveLine,
+  StaveModifier: typeof Vex$Flow$StaveModifier,
+  StaveNote: typeof Vex$Flow$StaveNote,
+  StaveSection: typeof Vex$Flow$StaveSection,
+  StaveTempo: typeof Vex$Flow$StaveTempo,
+  StaveText: typeof Vex$Flow$StaveText,
+  StaveTie: typeof Vex$Flow$StaveTie,
+  Stem: typeof Vex$Flow$Stem,
+  StemmableNote: typeof Vex$Flow$StemmableNote,
+  StringNumber: typeof Vex$Flow$StringNumber,
+  Stroke: typeof Vex$Flow$Stroke,
+  SVGContext: typeof Vex$Flow$SVGContext,
+  TabNote: typeof Vex$Flow$TabNote,
+  TabSlide: typeof Vex$Flow$TabSlide,
+  TabStave: typeof Vex$Flow$TabStave,
+  TabTie: typeof Vex$Flow$TabTie,
+  TextBracket: typeof Vex$Flow$TextBracket,
+  TextDynamics: typeof Vex$Flow$TextDynamics,
+  TextNote: typeof Vex$Flow$TextNote,
+  TickContext: typeof Vex$Flow$TickContext,
+  TimeSignature: typeof Vex$Flow$TimeSignature,
+  TimeSigNote: typeof Vex$Flow$TimeSigNote,
+  Tremolo: typeof Vex$Flow$Tremolo,
+  Tuning: typeof Vex$Flow$Tuning,
+  Tuplet: typeof Vex$Flow$Tuplet,
+  Vibrato: typeof Vex$Flow$Vibrato,
+  Voice: typeof Vex$Flow$Voice,
+  VoiceGroup: typeof Vex$Flow$VoiceGroup,
+  Volta: typeof Vex$Flow$Volta,
+  Accidental: typeof npm$namespace$Vex$Flow$Accidental,
+  Annotation: typeof npm$namespace$Vex$Flow$Annotation,
+  Articulation: typeof npm$namespace$Vex$Flow$Articulation,
+  Barline: typeof npm$namespace$Vex$Flow$Barline,
+  Bend: typeof npm$namespace$Vex$Flow$Bend,
+  Curve: typeof npm$namespace$Vex$Flow$Curve,
+  Dot: typeof npm$namespace$Vex$Flow$Dot,
+  FretHandFinger: typeof npm$namespace$Vex$Flow$FretHandFinger,
+  GraceNoteGroup: typeof npm$namespace$Vex$Flow$GraceNoteGroup,
+  Modifier: typeof npm$namespace$Vex$Flow$Modifier,
+  Music: typeof npm$namespace$Vex$Flow$Music,
+  Note: typeof npm$namespace$Vex$Flow$Note,
+  Ornament: typeof npm$namespace$Vex$Flow$Ornament,
+  PedalMarking: typeof npm$namespace$Vex$Flow$PedalMarking,
+  Renderer: typeof npm$namespace$Vex$Flow$Renderer,
+  Repetition: typeof npm$namespace$Vex$Flow$Repetition,
+  StaveConnector: typeof npm$namespace$Vex$Flow$StaveConnector,
+  StaveHairpin: typeof npm$namespace$Vex$Flow$StaveHairpin,
+  StaveLine: typeof npm$namespace$Vex$Flow$StaveLine,
+  StaveModifier: typeof npm$namespace$Vex$Flow$StaveModifier,
+  StaveNote: typeof npm$namespace$Vex$Flow$StaveNote,
+  Stem: typeof npm$namespace$Vex$Flow$Stem,
+  StringNumber: typeof npm$namespace$Vex$Flow$StringNumber,
+  Stroke: typeof npm$namespace$Vex$Flow$Stroke,
+  TabSlide: typeof npm$namespace$Vex$Flow$TabSlide,
+  TextBracket: typeof npm$namespace$Vex$Flow$TextBracket,
+  TextNote: typeof npm$namespace$Vex$Flow$TextNote,
+  TimeSignature: typeof npm$namespace$Vex$Flow$TimeSignature,
+  Tuning: typeof npm$namespace$Vex$Flow$Tuning,
+  Tuplet: typeof npm$namespace$Vex$Flow$Tuplet,
+  Vibrato: typeof npm$namespace$Vex$Flow$Vibrato,
+  Voice: typeof npm$namespace$Vex$Flow$Voice,
+  Volta: typeof npm$namespace$Vex$Flow$Volta
 };
-declare var Flow$RESOLUTION: number;
+declare var Vex$Flow$RESOLUTION: number;
 
-declare var Flow$STEM_WIDTH: number;
+declare var Vex$Flow$STEM_WIDTH: number;
 
-declare var Flow$STEM_HEIGHT: number;
+declare var Vex$Flow$STEM_HEIGHT: number;
 
-declare var Flow$STAVE_LINE_THICKNESS: number;
+declare var Vex$Flow$STAVE_LINE_THICKNESS: number;
 
-declare var Flow$TIME4_4: {
+declare var Vex$Flow$TIME4_4: {
   num_beats: number,
   beat_value: number,
   resolution: number
 };
 
-declare var Flow$unicode: {
+declare var Vex$Flow$unicode: {
   [name: string]: string
 };
 
-declare function Flow$clefProperties(
+declare function Vex$Flow$clefProperties(
   clef: string
 ): {
   line_shift: number
 };
 
-declare function Flow$keyProperties(
+declare function Vex$Flow$keyProperties(
   key: string,
   clef: string,
   params: {
@@ -248,9 +352,9 @@ declare function Flow$keyProperties(
   displaced: boolean
 };
 
-declare function Flow$integerToNote(integer: number): string;
+declare function Vex$Flow$integerToNote(integer: number): string;
 
-declare function Flow$tabToGlyph(
+declare function Vex$Flow$tabToGlyph(
   fret: string
 ): {
   text: string,
@@ -259,9 +363,9 @@ declare function Flow$tabToGlyph(
   shift_y: number
 };
 
-declare function Flow$textWidth(text: string): number;
+declare function Vex$Flow$textWidth(text: string): number;
 
-declare function Flow$articulationCodes(
+declare function Vex$Flow$articulationCodes(
   artic: string
 ): {
   code: string,
@@ -272,7 +376,7 @@ declare function Flow$articulationCodes(
   between_lines: boolean
 };
 
-declare function Flow$accidentalCodes(
+declare function Vex$Flow$accidentalCodes(
   acc: string
 ): {
   code: string,
@@ -282,7 +386,7 @@ declare function Flow$accidentalCodes(
   shift_down: number
 };
 
-declare function Flow$ornamentCodes(
+declare function Vex$Flow$ornamentCodes(
   acc: string
 ): {
   code: string,
@@ -292,41 +396,41 @@ declare function Flow$ornamentCodes(
   width: number
 };
 
-declare function Flow$keySignature(
+declare function Vex$Flow$keySignature(
   spec: string
 ): {
-  Volta$type: string,
+  type: string,
   line: number
 }[];
 
-declare function Flow$parseNoteDurationString(
+declare function Vex$Flow$parseNoteDurationString(
   durationString: string
 ): {
   duration: string,
   dots: number,
-  Volta$type: string
+  type: string
 };
 
-declare function Flow$parseNoteData(noteData: {
+declare function Vex$Flow$parseNoteData(noteData: {
   duration: string,
   dots: number,
-  Volta$type: string
+  type: string
 }): {
   duration: string,
-  Volta$type: string,
+  type: string,
   dots: number,
   ticks: number
 };
 
-declare function Flow$durationToFraction(duration: string): Flow$Fraction;
+declare function Vex$Flow$durationToFraction(duration: string): Flow$Fraction;
 
-declare function Flow$durationToNumber(duration: string): number;
+declare function Vex$Flow$durationToNumber(duration: string): number;
 
-declare function Flow$durationToTicks(duration: string): number;
+declare function Vex$Flow$durationToTicks(duration: string): number;
 
-declare function Flow$durationToGlyph(
+declare function Vex$Flow$durationToGlyph(
   duration: string,
-  Volta$type: string
+  type: string
 ): {
   head_width: number,
   stem: boolean,
@@ -346,7 +450,7 @@ declare function Flow$durationToGlyph(
   position?: string
 };
 
-declare function Flow$renderGlyph(
+declare function Vex$Flow$renderGlyph(
   ctx: Vex$IRenderContext,
   x_pos: number,
   y_pos: number,
@@ -355,7 +459,7 @@ declare function Flow$renderGlyph(
   nocache: boolean
 ): void;
 
-declare var Flow$Font: {
+declare var Vex$Flow$Font: {
   glyphs: {
     x_min: number,
     x_max: number,
@@ -396,12 +500,12 @@ declare var Flow$Font: {
   }
 };
 
-declare class Flow$Accidental mixins Flow$Modifier {
+declare class Vex$Flow$Accidental mixins Modifier {
   setNote(note: Flow$Note): Flow$Modifier;
-  constructor(Volta$type: string): this;
+  constructor(type: string): this;
   static DEBUG: boolean;
   static format(
-    accidentals: Flow$Accidental[],
+    accidentals: Vex$Flow$Accidental[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -409,96 +513,64 @@ declare class Flow$Accidental mixins Flow$Modifier {
     }
   ): void;
   setNote(note: Flow$StaveNote): void;
-  setAsCautionary(): Flow$Accidental;
+  setAsCautionary(): Vex$Flow$Accidental;
   draw(): void;
-  static applyAccidentals(
-    voices: Flow$Voice[],
-    Flow$keySignature?: string
-  ): void;
+  static applyAccidentals(voices: Flow$Voice[], keySignature?: string): void;
 }
 
-declare var npm$namespace$Accidental: {
-  CATEGORY: typeof Accidental$CATEGORY
+declare var npm$namespace$Vex$Flow$Accidental: {
+  CATEGORY: typeof Vex$Flow$Accidental$CATEGORY
 };
-declare var Accidental$CATEGORY: string;
+declare var Vex$Flow$Accidental$CATEGORY: string;
 
-declare class Flow$Annotation mixins Flow$Modifier {
+declare class Vex$Flow$Annotation mixins Modifier {
   constructor(text: string): this;
   static DEBUG: boolean;
   static format(
-    annotations: Flow$Annotation[],
+    annotations: Vex$Flow$Annotation[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     }
   ): boolean;
-  setTextLine(line: number): Flow$Annotation;
-  setFont(family: string, size: number, weight: string): Flow$Annotation;
+  setTextLine(line: number): Vex$Flow$Annotation;
+  setFont(family: string, size: number, weight: string): Vex$Flow$Annotation;
   setVerticalJustification(
-    just: Flow$Annotation.Annotation$VerticalJustify
-  ): Flow$Annotation;
-  getJustification(): Flow$Annotation.Annotation$Justify;
-  setJustification(
-    justification: Flow$Annotation.Annotation$Justify
-  ): Flow$Annotation;
+    just: Annotation$VerticalJustify
+  ): Vex$Flow$Annotation;
+  getJustification(): Annotation$Justify;
+  setJustification(justification: Annotation$Justify): Vex$Flow$Annotation;
   draw(): void;
 }
 
-declare var npm$namespace$Annotation: {
-  CATEGORY: typeof Annotation$CATEGORY
+declare var npm$namespace$Vex$Flow$Annotation: {
+  CATEGORY: typeof Vex$Flow$Annotation$CATEGORY,
+  Justify: typeof Vex$Flow$Annotation$Justify,
+  VerticalJustify: typeof Vex$Flow$Annotation$VerticalJustify
 };
-declare class Annotation$Justify {
-  constructor(...args: empty): mixed;
-  static +LEFT: Class<Annotation$Justify__LEFT> & Annotation$Justify__LEFT & 1; // 1
-  static +CENTER: Class<Annotation$Justify__CENTER> &
-    Annotation$Justify__CENTER &
-    1; // 1
-  static +RIGHT: Class<Annotation$Justify__RIGHT> &
-    Annotation$Justify__RIGHT &
-    2; // 2
-  static +CENTER_STEM: Class<Annotation$Justify__CENTER_STEM> &
-    Annotation$Justify__CENTER_STEM &
-    3; // 3
-}
 
-declare class Annotation$Justify__LEFT mixins Annotation$Justify {}
-declare class Annotation$Justify__CENTER mixins Annotation$Justify {}
-declare class Annotation$Justify__RIGHT mixins Annotation$Justify {}
-declare class Annotation$Justify__CENTER_STEM mixins Annotation$Justify {}
+declare var Vex$Flow$Annotation$Justify: {|
+  +LEFT: 1, // 1
+  +CENTER: 1, // 1
+  +RIGHT: 2, // 2
+  +CENTER_STEM: 3 // 3
+|};
 
-declare class Annotation$VerticalJustify {
-  constructor(...args: empty): mixed;
-  static +TOP: Class<Annotation$VerticalJustify__TOP> &
-    Annotation$VerticalJustify__TOP &
-    1; // 1
-  static +CENTER: Class<Annotation$VerticalJustify__CENTER> &
-    Annotation$VerticalJustify__CENTER &
-    1; // 1
-  static +BOTTOM: Class<Annotation$VerticalJustify__BOTTOM> &
-    Annotation$VerticalJustify__BOTTOM &
-    2; // 2
-  static +CENTER_STEM: Class<Annotation$VerticalJustify__CENTER_STEM> &
-    Annotation$VerticalJustify__CENTER_STEM &
-    3; // 3
-}
+declare var Vex$Flow$Annotation$VerticalJustify: {|
+  +TOP: 1, // 1
+  +CENTER: 1, // 1
+  +BOTTOM: 2, // 2
+  +CENTER_STEM: 3 // 3
+|};
 
-declare class Annotation$VerticalJustify__TOP
-  mixins Annotation$VerticalJustify {}
-declare class Annotation$VerticalJustify__CENTER
-  mixins Annotation$VerticalJustify {}
-declare class Annotation$VerticalJustify__BOTTOM
-  mixins Annotation$VerticalJustify {}
-declare class Annotation$VerticalJustify__CENTER_STEM
-  mixins Annotation$VerticalJustify {}
+declare var Vex$Flow$Annotation$CATEGORY: string;
 
-declare var Annotation$CATEGORY: string;
-
-declare class Flow$Articulation mixins Flow$Modifier {
-  constructor(Volta$type: string): this;
+declare class Vex$Flow$Articulation mixins Modifier {
+  constructor(type: string): this;
   static DEBUG: boolean;
   static format(
-    articulations: Flow$Articulation[],
+    articulations: Vex$Flow$Articulation[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -508,63 +580,52 @@ declare class Flow$Articulation mixins Flow$Modifier {
   draw(): void;
 }
 
-declare var npm$namespace$Articulation: {
-  CATEGORY: typeof Articulation$CATEGORY
+declare var npm$namespace$Vex$Flow$Articulation: {
+  CATEGORY: typeof Vex$Flow$Articulation$CATEGORY
 };
-declare var Articulation$CATEGORY: string;
+declare var Vex$Flow$Articulation$CATEGORY: string;
 
-declare class Flow$BarNote mixins Flow$Note {
+declare class Vex$Flow$BarNote mixins Note {
   static DEBUG: boolean;
   constructor(): this;
-  getType(): Flow$Barline.Volta$type;
-  setType(Volta$type: Flow$Barline.Volta$type): Flow$BarNote;
+  getType(): Barline$type;
+  setType(type: Barline$type): Vex$Flow$BarNote;
   getBoundingBox(): Flow$BoundingBox;
-  addToModifierContext(): Flow$BarNote;
-  preFormat(): Flow$BarNote;
+  addToModifierContext(): Vex$Flow$BarNote;
+  preFormat(): Vex$Flow$BarNote;
   draw(): void;
 }
 
-declare class Barline$type {
-  constructor(...args: empty): mixed;
-  static +SINGLE: Class<Barline$type__SINGLE> & Barline$type__SINGLE & 1; // 1
-  static +DOUBLE: Class<Barline$type__DOUBLE> & Barline$type__DOUBLE & 1; // 1
-  static +END: Class<Barline$type__END> & Barline$type__END & 2; // 2
-  static +REPEAT_BEGIN: Class<Barline$type__REPEAT_BEGIN> &
-    Barline$type__REPEAT_BEGIN &
-    3; // 3
-  static +REPEAT_END: Class<Barline$type__REPEAT_END> &
-    Barline$type__REPEAT_END &
-    4; // 4
-  static +REPEAT_BOTH: Class<Barline$type__REPEAT_BOTH> &
-    Barline$type__REPEAT_BOTH &
-    5; // 5
-  static +NONE: Class<Barline$type__NONE> & Barline$type__NONE & 6; // 6
-}
+declare var npm$namespace$Vex$Flow$Barline: {
+  type: typeof Vex$Flow$Barline$type
+};
 
-declare class Barline$type__SINGLE mixins Barline$type {}
-declare class Barline$type__DOUBLE mixins Barline$type {}
-declare class Barline$type__END mixins Barline$type {}
-declare class Barline$type__REPEAT_BEGIN mixins Barline$type {}
-declare class Barline$type__REPEAT_END mixins Barline$type {}
-declare class Barline$type__REPEAT_BOTH mixins Barline$type {}
-declare class Barline$type__NONE mixins Barline$type {}
+declare var Vex$Flow$Barline$type: {|
+  +SINGLE: 1, // 1
+  +DOUBLE: 1, // 1
+  +END: 2, // 2
+  +REPEAT_BEGIN: 3, // 3
+  +REPEAT_END: 4, // 4
+  +REPEAT_BOTH: 5, // 5
+  +NONE: 6 // 6
+|};
 
-declare class Flow$Barline mixins Flow$StaveModifier {
-  constructor(Barline$type: Flow$Barline.Barline$type, x: number): this;
+declare class Vex$Flow$Barline mixins StaveModifier {
+  constructor(type: Barline$type, x: number): this;
   getCategory(): string;
-  setX(x: number): Flow$Barline;
+  setX(x: number): Vex$Flow$Barline;
   draw(stave: Flow$Stave, x_shift?: number): void;
   drawVerticalBar(stave: Flow$Stave, x: number, double_bar?: boolean): void;
   drawVerticalEndBar(stave: Flow$Stave, x: number): void;
   drawRepeatBar(stave: Flow$Stave, x: number, begin: boolean): void;
 }
 
-declare class Flow$Beam {
+declare class Vex$Flow$Beam {
   constructor(notes: Flow$StemmableNote[], auto_stem?: boolean): this;
-  setContext(context: Vex$IRenderContext): Flow$Beam;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Beam;
   getNotes(): Flow$StemmableNote[];
   getBeamCount(): number;
-  breakSecondaryAt(indices: number[]): Flow$Beam;
+  breakSecondaryAt(indices: number[]): Vex$Flow$Beam;
   getSlopeY(): number;
   calculateSlope(): void;
   applyStemExtensions(): void;
@@ -576,8 +637,8 @@ declare class Flow$Beam {
   }[];
   drawStems(): void;
   drawBeamLines(): void;
-  preFormat(): Flow$Beam;
-  postFormat(): Flow$Beam;
+  preFormat(): Vex$Flow$Beam;
+  postFormat(): Vex$Flow$Beam;
   draw(): boolean;
   calculateStemDirection(notes: Flow$Note): number;
   static getDefaultBeamGroups(time_sig: string): Flow$Fraction[];
@@ -585,7 +646,7 @@ declare class Flow$Beam {
     voice: Flow$Voice,
     stem_direction: number,
     groups: Flow$Fraction[]
-  ): Flow$Beam[];
+  ): Vex$Flow$Beam[];
   static generateBeams(
     notes: Flow$StemmableNote[],
     config?: {
@@ -596,15 +657,15 @@ declare class Flow$Beam {
       show_stemlets?: boolean,
       maintain_stem_directions?: boolean
     }
-  ): Flow$Beam[];
+  ): Vex$Flow$Beam[];
 }
 
-declare class Flow$Bend mixins Flow$Modifier {
+declare class Vex$Flow$Bend mixins Modifier {
   constructor(
     text: string,
     release?: boolean,
     phrase?: {
-      Barline$type: number,
+      type: number,
       text: string,
       width: number
     }[]
@@ -612,7 +673,7 @@ declare class Flow$Bend mixins Flow$Modifier {
   static UP: number;
   static DOWN: number;
   static format(
-    bends: Flow$Bend[],
+    bends: Vex$Flow$Bend[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -620,56 +681,56 @@ declare class Flow$Bend mixins Flow$Modifier {
     }
   ): boolean;
   setXShift(value: number): void;
-  setFont(font: string): Flow$Bend;
+  setFont(font: string): Vex$Flow$Bend;
   getText(): string;
-  updateWidth(): Flow$Bend;
+  updateWidth(): Vex$Flow$Bend;
   draw(): void;
 }
 
-declare var npm$namespace$Bend: {
-  CATEGORY: typeof Bend$CATEGORY
+declare var npm$namespace$Vex$Flow$Bend: {
+  CATEGORY: typeof Vex$Flow$Bend$CATEGORY
 };
-declare var Bend$CATEGORY: string;
+declare var Vex$Flow$Bend$CATEGORY: string;
 
-declare class Flow$BoundingBox {
+declare class Vex$Flow$BoundingBox {
   constructor(x: number, y: number, w: number, h: number): this;
-  static copy(that: Flow$BoundingBox): Flow$BoundingBox;
+  static copy(that: Vex$Flow$BoundingBox): Vex$Flow$BoundingBox;
   getX(): number;
   getY(): number;
   getW(): number;
   getH(): number;
-  setX(x: number): Flow$BoundingBox;
-  setY(y: number): Flow$BoundingBox;
-  setW(w: number): Flow$BoundingBox;
-  setH(h: number): Flow$BoundingBox;
+  setX(x: number): Vex$Flow$BoundingBox;
+  setY(y: number): Vex$Flow$BoundingBox;
+  setW(w: number): Vex$Flow$BoundingBox;
+  setH(h: number): Vex$Flow$BoundingBox;
   move(x: number, y: number): void;
-  clone(): Flow$BoundingBox;
+  clone(): Vex$Flow$BoundingBox;
   mergeWith(
-    boundingBox: Flow$BoundingBox,
+    boundingBox: Vex$Flow$BoundingBox,
     ctx?: Vex$IRenderContext
-  ): Flow$BoundingBox;
+  ): Vex$Flow$BoundingBox;
   draw(ctx: Vex$IRenderContext, x: number, y: number): void;
 }
 
-declare class Flow$CanvasContext mixins Vex$IRenderContext {
-  setLineDash(dash: string): Flow$CanvasContext;
-  scale(x: number, y: number): Flow$CanvasContext;
-  resize(width: number, height: number): Flow$CanvasContext;
+declare class Vex$Flow$CanvasContext mixins IRenderContext {
+  setLineDash(dash: string): Vex$Flow$CanvasContext;
+  scale(x: number, y: number): Vex$Flow$CanvasContext;
+  resize(width: number, height: number): Vex$Flow$CanvasContext;
   fillRect(
     x: number,
     y: number,
     width: number,
     height: number
-  ): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
   clearRect(
     x: number,
     y: number,
     width: number,
     height: number
-  ): Flow$CanvasContext;
-  beginPath(): Flow$CanvasContext;
-  moveTo(x: number, y: number): Flow$CanvasContext;
-  lineTo(x: number, y: number): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
+  beginPath(): Vex$Flow$CanvasContext;
+  moveTo(x: number, y: number): Vex$Flow$CanvasContext;
+  lineTo(x: number, y: number): Vex$Flow$CanvasContext;
   bezierCurveToTo(
     x1: number,
     y1: number,
@@ -677,13 +738,13 @@ declare class Flow$CanvasContext mixins Vex$IRenderContext {
     y2: number,
     x: number,
     y: number
-  ): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
   quadraticCurveToTo(
     x1: number,
     y1: number,
     x2: number,
     y2: number
-  ): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
   arc(
     x: number,
     y: number,
@@ -691,27 +752,31 @@ declare class Flow$CanvasContext mixins Vex$IRenderContext {
     startAngle: number,
     endAngle: number,
     antiClockwise: boolean
-  ): Flow$CanvasContext;
-  glow(): Flow$CanvasContext;
-  fill(): Flow$CanvasContext;
-  stroke(): Flow$CanvasContext;
-  closePath(): Flow$CanvasContext;
-  fillText(text: string, x: number, y: number): Flow$CanvasContext;
-  save(): Flow$CanvasContext;
-  restore(): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
+  glow(): Vex$Flow$CanvasContext;
+  fill(): Vex$Flow$CanvasContext;
+  stroke(): Vex$Flow$CanvasContext;
+  closePath(): Vex$Flow$CanvasContext;
+  fillText(text: string, x: number, y: number): Vex$Flow$CanvasContext;
+  save(): Vex$Flow$CanvasContext;
+  restore(): Vex$Flow$CanvasContext;
   constructor(context: CanvasRenderingContext2D): this;
   static WIDTH: number;
   static HEIGHT: number;
   clear(): void;
-  setFont(family: string, size: number, weight?: number): Flow$CanvasContext;
-  setRawFont(font: string): Flow$CanvasContext;
-  setFillStyle(style: string): Flow$CanvasContext;
-  setBackgroundFillStyle(style: string): Flow$CanvasContext;
-  setStrokeStyle(style: string): Flow$CanvasContext;
-  setShadowColor(style: string): Flow$CanvasContext;
-  setShadowBlur(blur: string): Flow$CanvasContext;
-  setLineWidth(width: number): Flow$CanvasContext;
-  setLineCap(cap_type: string): Flow$CanvasContext;
+  setFont(
+    family: string,
+    size: number,
+    weight?: number
+  ): Vex$Flow$CanvasContext;
+  setRawFont(font: string): Vex$Flow$CanvasContext;
+  setFillStyle(style: string): Vex$Flow$CanvasContext;
+  setBackgroundFillStyle(style: string): Vex$Flow$CanvasContext;
+  setStrokeStyle(style: string): Vex$Flow$CanvasContext;
+  setShadowColor(style: string): Vex$Flow$CanvasContext;
+  setShadowBlur(blur: string): Vex$Flow$CanvasContext;
+  setLineWidth(width: number): Vex$Flow$CanvasContext;
+  setLineCap(cap_type: string): Vex$Flow$CanvasContext;
   setLineDash(dash: string): void;
   scale(x: number, y: number): void;
   resize(width: number, height: number): void;
@@ -747,7 +812,7 @@ declare class Flow$CanvasContext mixins Vex$IRenderContext {
   restore(): void;
 }
 
-declare class Flow$Clef mixins Flow$StaveModifier {
+declare class Vex$Flow$Clef mixins StaveModifier {
   addModifier(): void;
   addEndModifier(): void;
   constructor(clef: string, size?: string, annotation?: string): this;
@@ -756,33 +821,33 @@ declare class Flow$Clef mixins Flow$StaveModifier {
   addEndModifier(stave: Flow$Stave): void;
 }
 
-declare class Flow$ClefNote mixins Flow$Note {
+declare class Vex$Flow$ClefNote mixins Note {
   setStave(stave: Flow$Stave): Flow$Note;
   constructor(clef: string, size?: string, annotation?: string): this;
-  setClef(clef: string, size?: string, annotation?: string): Flow$ClefNote;
+  setClef(clef: string, size?: string, annotation?: string): Vex$Flow$ClefNote;
   getClef(): string;
   setStave(stave: Flow$Stave): void;
-  getBoundingBox(): Flow$BoundingBox;
-  addToModifierContext(): Flow$ClefNote;
+  getBoundingBox(): Vex$Flow$BoundingBox;
+  addToModifierContext(): Vex$Flow$ClefNote;
   getCategory(): string;
-  preFormat(): Flow$ClefNote;
+  preFormat(): Vex$Flow$ClefNote;
   draw(): void;
 }
 
-declare class Flow$Crescendo mixins Flow$Note {
+declare class Vex$Flow$Crescendo mixins Note {
   constructor(note_struct: {
     duration: number,
     line?: number
   }): this;
   static DEBUG: boolean;
-  setLine(line: number): Flow$Crescendo;
-  setHeight(height: number): Flow$Crescendo;
-  setDecrescendo(decresc: boolean): Flow$Crescendo;
-  preFormat(): Flow$Crescendo;
+  setLine(line: number): Vex$Flow$Crescendo;
+  setHeight(height: number): Vex$Flow$Crescendo;
+  setDecrescendo(decresc: boolean): Vex$Flow$Crescendo;
+  preFormat(): Vex$Flow$Crescendo;
   draw(): void;
 }
 
-declare class Flow$Curve {
+declare class Vex$Flow$Curve {
   constructor(
     from: Flow$Note,
     to: Flow$Note,
@@ -791,7 +856,7 @@ declare class Flow$Curve {
       thickness?: number,
       x_shift?: number,
       y_shift: number,
-      position: Flow$Curve.StaveModifier$Position,
+      position: Curve$Position,
       invert: boolean,
       cps?: {
         x: number,
@@ -800,8 +865,8 @@ declare class Flow$Curve {
     }
   ): this;
   static DEBUG: boolean;
-  setContext(context: Vex$IRenderContext): Flow$Curve;
-  setNotes(from: Flow$Note, to: Flow$Note): Flow$Curve;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Curve;
+  setNotes(from: Flow$Note, to: Flow$Note): Vex$Flow$Curve;
   isPartial(): boolean;
   renderCurve(params: {
     first_x: number,
@@ -813,21 +878,17 @@ declare class Flow$Curve {
   draw(): boolean;
 }
 
-declare class Curve$Position {
-  constructor(...args: empty): mixed;
-  static +NEAR_HEAD: Class<Curve$Position__NEAR_HEAD> &
-    Curve$Position__NEAR_HEAD &
-    1; // 1
-  static +NEAR_TOP: Class<Curve$Position__NEAR_TOP> &
-    Curve$Position__NEAR_TOP &
-    1; // 1
-}
+declare var npm$namespace$Vex$Flow$Curve: {
+  Position: typeof Vex$Flow$Curve$Position
+};
 
-declare class Curve$Position__NEAR_HEAD mixins Curve$Position {}
-declare class Curve$Position__NEAR_TOP mixins Curve$Position {}
+declare var Vex$Flow$Curve$Position: {|
+  +NEAR_HEAD: 1, // 1
+  +NEAR_TOP: 1 // 1
+|};
 
-declare class Flow$Dot mixins Flow$Modifier {
-  setNote(note: Flow$Note): Flow$Dot;
+declare class Vex$Flow$Dot mixins Modifier {
+  setNote(note: Flow$Note): Vex$Flow$Dot;
   static format(
     dots: number,
     state: {
@@ -837,16 +898,16 @@ declare class Flow$Dot mixins Flow$Modifier {
     }
   ): void;
   setNote(note: Flow$Note): void;
-  setDotShiftY(y: number): Flow$Dot;
+  setDotShiftY(y: number): Vex$Flow$Dot;
   draw(): void;
 }
 
-declare var npm$namespace$Dot: {
-  CATEGORY: typeof Dot$CATEGORY
+declare var npm$namespace$Vex$Flow$Dot: {
+  CATEGORY: typeof Vex$Flow$Dot$CATEGORY
 };
-declare var Dot$CATEGORY: string;
+declare var Vex$Flow$Dot$CATEGORY: string;
 
-declare class Flow$Formatter {
+declare class Vex$Flow$Formatter {
   static DEBUG: boolean;
   static FormatAndDraw(
     ctx: Vex$IRenderContext,
@@ -856,13 +917,13 @@ declare class Flow$Formatter {
       auto_beam: boolean,
       align_rests: boolean
     }
-  ): Flow$BoundingBox;
+  ): Vex$Flow$BoundingBox;
   static FormatAndDraw(
     ctx: Vex$IRenderContext,
     stave: Flow$Stave,
     notes: Flow$Note[],
     params?: boolean
-  ): Flow$BoundingBox;
+  ): Vex$Flow$BoundingBox;
   static FormatAndDrawTab(
     ctx: Vex$IRenderContext,
     tabstave: Flow$TabStave,
@@ -888,7 +949,7 @@ declare class Flow$Formatter {
     notes: Flow$Note[],
     align_all_notes?: boolean,
     align_tuplets?: boolean
-  ): Flow$Formatter;
+  ): Vex$Flow$Formatter;
   alignRests(voices: Flow$Voice[], align_all_notes: boolean): void;
   preCalculateMinTotalWidth(voices: Flow$Voice[]): number;
   getMinTotalWidth(): number;
@@ -900,8 +961,8 @@ declare class Flow$Formatter {
     voices?: Flow$Voice[],
     stave?: Flow$Stave
   ): void;
-  postFormat(): Flow$Formatter;
-  joinVoices(voices: Flow$Voice[]): Flow$Formatter;
+  postFormat(): Vex$Flow$Formatter;
+  joinVoices(voices: Flow$Voice[]): Vex$Flow$Formatter;
   format(
     voices: Flow$Voice[],
     justifyWidth: number,
@@ -909,7 +970,7 @@ declare class Flow$Formatter {
       align_rests?: boolean,
       context: Vex$IRenderContext
     }
-  ): Flow$Formatter;
+  ): Vex$Flow$Formatter;
   formatToStave(
     voices: Flow$Voice[],
     stave: Flow$Stave,
@@ -917,45 +978,54 @@ declare class Flow$Formatter {
       align_rests?: boolean,
       context: Vex$IRenderContext
     }
-  ): Flow$Formatter;
+  ): Vex$Flow$Formatter;
 }
 
-declare class Flow$Fraction {
+declare class Vex$Flow$Fraction {
   constructor(numerator: number, denominator: number): this;
   static GCD(a: number, b: number): number;
   static LCM(a: number, b: number): number;
   static LCMM(a: number, b: number): number;
-  set(numerator: number, denominator: number): Flow$Fraction;
+  set(numerator: number, denominator: number): Vex$Flow$Fraction;
   value(): number;
-  simplify(): Flow$Fraction;
-  add(param1: Flow$Fraction, param2: Flow$Fraction): Flow$Fraction;
-  add(param1: number, param2: number): Flow$Fraction;
-  subtract(param1: Flow$Fraction, param2: Flow$Fraction): Flow$Fraction;
-  subtract(param1: number, param2: number): Flow$Fraction;
-  multiply(param1: Flow$Fraction, param2: Flow$Fraction): Flow$Fraction;
-  multiply(param1: number, param2: number): Flow$Fraction;
-  divide(param1: Flow$Fraction, param2: Flow$Fraction): Flow$Fraction;
-  divide(param1: number, param2: number): Flow$Fraction;
-  equals(compare: Flow$Fraction): boolean;
-  greaterThan(compare: Flow$Fraction): boolean;
-  greaterThanEquals(compare: Flow$Fraction): boolean;
-  lessThan(compare: Flow$Fraction): boolean;
-  lessThanEquals(compare: Flow$Fraction): boolean;
-  clone(): Flow$Fraction;
-  copy(copy: Flow$Fraction): Flow$Fraction;
+  simplify(): Vex$Flow$Fraction;
+  add(param1: Vex$Flow$Fraction, param2: Vex$Flow$Fraction): Vex$Flow$Fraction;
+  add(param1: number, param2: number): Vex$Flow$Fraction;
+  subtract(
+    param1: Vex$Flow$Fraction,
+    param2: Vex$Flow$Fraction
+  ): Vex$Flow$Fraction;
+  subtract(param1: number, param2: number): Vex$Flow$Fraction;
+  multiply(
+    param1: Vex$Flow$Fraction,
+    param2: Vex$Flow$Fraction
+  ): Vex$Flow$Fraction;
+  multiply(param1: number, param2: number): Vex$Flow$Fraction;
+  divide(
+    param1: Vex$Flow$Fraction,
+    param2: Vex$Flow$Fraction
+  ): Vex$Flow$Fraction;
+  divide(param1: number, param2: number): Vex$Flow$Fraction;
+  equals(compare: Vex$Flow$Fraction): boolean;
+  greaterThan(compare: Vex$Flow$Fraction): boolean;
+  greaterThanEquals(compare: Vex$Flow$Fraction): boolean;
+  lessThan(compare: Vex$Flow$Fraction): boolean;
+  lessThanEquals(compare: Vex$Flow$Fraction): boolean;
+  clone(): Vex$Flow$Fraction;
+  copy(copy: Vex$Flow$Fraction): Vex$Flow$Fraction;
   quotient(): number;
   fraction(): number;
-  abs(): Flow$Fraction;
+  abs(): Vex$Flow$Fraction;
   toString(): string;
   toSimplifiedString(): string;
   toMixedString(): string;
-  parse(str: string): Flow$Fraction;
+  parse(str: string): Vex$Flow$Fraction;
 }
 
-declare class Flow$FretHandFinger mixins Flow$Modifier {
+declare class Vex$Flow$FretHandFinger mixins Modifier {
   constructor(number: number): this;
   static format(
-    nums: Flow$FretHandFinger[],
+    nums: Vex$Flow$FretHandFinger[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -963,38 +1033,38 @@ declare class Flow$FretHandFinger mixins Flow$Modifier {
     }
   ): void;
   getNote(): Flow$Note;
-  setNote(note: Flow$Note): Flow$FretHandFinger;
+  setNote(note: Flow$Note): Vex$Flow$FretHandFinger;
   getIndex(): number;
-  setIndex(index: number): Flow$FretHandFinger;
-  getPosition(): Flow$Modifier.Curve$Position;
-  setPosition(position: Flow$Modifier.Curve$Position): Flow$FretHandFinger;
-  setFretHandFinger(number: number): Flow$FretHandFinger;
-  setOffsetX(x: number): Flow$FretHandFinger;
-  setOffsetY(y: number): Flow$FretHandFinger;
+  setIndex(index: number): Vex$Flow$FretHandFinger;
+  getPosition(): Modifier$Position;
+  setPosition(position: Modifier$Position): Vex$Flow$FretHandFinger;
+  setFretHandFinger(number: number): Vex$Flow$FretHandFinger;
+  setOffsetX(x: number): Vex$Flow$FretHandFinger;
+  setOffsetY(y: number): Vex$Flow$FretHandFinger;
   draw(): void;
 }
 
-declare var npm$namespace$FretHandFinger: {
-  CATEGORY: typeof FretHandFinger$CATEGORY
+declare var npm$namespace$Vex$Flow$FretHandFinger: {
+  CATEGORY: typeof Vex$Flow$FretHandFinger$CATEGORY
 };
-declare var FretHandFinger$CATEGORY: string;
+declare var Vex$Flow$FretHandFinger$CATEGORY: string;
 
-declare class Flow$GhostNote mixins Flow$StemmableNote {
+declare class Vex$Flow$GhostNote mixins StemmableNote {
   setStave(stave: Flow$Stave): Flow$Note;
   constructor(duration: string): this;
   constructor(note_struct: {
-    Barline$type?: string,
+    type?: string,
     dots?: number,
     duration: string
   }): this;
   isRest(): boolean;
   setStave(stave: Flow$Stave): void;
-  addToModifierContext(): Flow$GhostNote;
-  preFormat(): Flow$GhostNote;
+  addToModifierContext(): Vex$Flow$GhostNote;
+  preFormat(): Vex$Flow$GhostNote;
   draw(): void;
 }
 
-declare class Flow$Glyph {
+declare class Vex$Flow$Glyph {
   constructor(
     code: string,
     point: number,
@@ -1007,13 +1077,13 @@ declare class Flow$Glyph {
     cache?: boolean,
     font?: Vex$IFont
   }): void;
-  setStave(stave: Flow$Stave): Flow$Glyph;
-  setXShift(x_shift: number): Flow$Glyph;
-  setYShift(y_shift: number): Flow$Glyph;
-  setContext(context: Vex$IRenderContext): Flow$Glyph;
+  setStave(stave: Flow$Stave): Vex$Flow$Glyph;
+  setXShift(x_shift: number): Vex$Flow$Glyph;
+  setYShift(y_shift: number): Vex$Flow$Glyph;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Glyph;
   getContext(): Vex$IRenderContext;
   reset(): void;
-  setWidth(width: number): Flow$Glyph;
+  setWidth(width: number): Vex$Flow$Glyph;
   getMetrics(): {
     x_min: number,
     x_max: number,
@@ -1041,10 +1111,10 @@ declare class Flow$Glyph {
   ): void;
 }
 
-declare class Flow$GraceNote mixins Flow$StaveNote {
+declare class Vex$Flow$GraceNote mixins StaveNote {
   constructor(note_struct: {
     slash?: boolean,
-    Barline$type?: string,
+    type?: string,
     dots?: number,
     duration: string,
     clef?: string,
@@ -1058,13 +1128,13 @@ declare class Flow$GraceNote mixins Flow$StaveNote {
   draw(): void;
 }
 
-declare class Flow$GraceNoteGroup mixins Flow$Modifier {
+declare class Vex$Flow$GraceNoteGroup mixins Modifier {
   setWidth(width: number): Flow$Modifier;
   setNote(note: Flow$StaveNote): Flow$Modifier;
-  constructor(grace_notes: Flow$GraceNote[], show_slur?: boolean): this;
+  constructor(grace_notes: Vex$Flow$GraceNote[], show_slur?: boolean): this;
   static DEBUG: boolean;
   static format(
-    gracenote_groups: Flow$GraceNoteGroup[],
+    gracenote_groups: Vex$Flow$GraceNoteGroup[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -1072,7 +1142,7 @@ declare class Flow$GraceNoteGroup mixins Flow$Modifier {
     }
   ): boolean;
   preFormat(): void;
-  beamNotes(): Flow$GraceNoteGroup;
+  beamNotes(): Vex$Flow$GraceNoteGroup;
   setNote(note: Flow$Note): void;
   setWidth(width: number): void;
   getWidth(): number;
@@ -1080,16 +1150,16 @@ declare class Flow$GraceNoteGroup mixins Flow$Modifier {
   draw(): void;
 }
 
-declare var npm$namespace$GraceNoteGroup: {
-  CATEGORY: typeof GraceNoteGroup$CATEGORY
+declare var npm$namespace$Vex$Flow$GraceNoteGroup: {
+  CATEGORY: typeof Vex$Flow$GraceNoteGroup$CATEGORY
 };
-declare var GraceNoteGroup$CATEGORY: string;
+declare var Vex$Flow$GraceNoteGroup$CATEGORY: string;
 
-declare class Flow$KeyManager {
+declare class Vex$Flow$KeyManager {
   constructor(key: string): this;
-  setKey(key: string): Flow$KeyManager;
+  setKey(key: string): Vex$Flow$KeyManager;
   getKey(): string;
-  reset(): Flow$KeyManager;
+  reset(): Vex$Flow$KeyManager;
   getAccidental(
     key: string
   ): {
@@ -1105,70 +1175,66 @@ declare class Flow$KeyManager {
   };
 }
 
-declare class Flow$KeySignature mixins Flow$StaveModifier {
+declare class Vex$Flow$KeySignature mixins StaveModifier {
   addModifier(): void;
   constructor(key_spec: string): this;
   addAccToStave(
     stave: Flow$Stave,
     acc: {
-      Barline$type: string,
+      type: string,
       line: number
     },
     next?: {
-      Barline$type: string,
+      type: string,
       line: number
     }
   ): void;
-  cancelKey(spec: string): Flow$KeySignature;
-  addModifier(stave: Flow$Stave): Flow$KeySignature;
-  addToStave(stave: Flow$Stave, firstGlyph?: boolean): Flow$KeySignature;
-  convertAccLines(clef: string, Barline$type: string): void;
+  cancelKey(spec: string): Vex$Flow$KeySignature;
+  addModifier(stave: Flow$Stave): Vex$Flow$KeySignature;
+  addToStave(stave: Flow$Stave, firstGlyph?: boolean): Vex$Flow$KeySignature;
+  convertAccLines(clef: string, type: string): void;
 }
 
-declare class Flow$Modifier {
+declare class Vex$Flow$Modifier {
   static DEBUG: boolean;
   getCategory(): string;
   getWidth(): number;
-  setWidth(width: number): Flow$Modifier;
+  setWidth(width: number): Vex$Flow$Modifier;
   getNote(): Flow$Note;
-  setNote(note: Flow$Note): Flow$Modifier;
+  setNote(note: Flow$Note): Vex$Flow$Modifier;
   getIndex(): number;
-  setIndex(index: number): Flow$Modifier;
+  setIndex(index: number): Vex$Flow$Modifier;
   getContext(): Vex$IRenderContext;
-  setContext(context: Vex$IRenderContext): Flow$Modifier;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Modifier;
   getModifierContext(): Flow$ModifierContext;
-  setModifierContext(c: Flow$ModifierContext): Flow$Modifier;
-  getPosition(): Flow$Modifier.Curve$Position;
-  setPosition(position: Flow$Modifier.Curve$Position): Flow$Modifier;
-  setTextLine(line: number): Flow$Modifier;
-  setYShift(y: number): Flow$Modifier;
+  setModifierContext(c: Flow$ModifierContext): Vex$Flow$Modifier;
+  getPosition(): Modifier$Position;
+  setPosition(position: Modifier$Position): Vex$Flow$Modifier;
+  setTextLine(line: number): Vex$Flow$Modifier;
+  setYShift(y: number): Vex$Flow$Modifier;
   setXShift(x: number): void;
   draw(): void;
   alignSubNotesWithNote(subNotes: Flow$Note[], note: Flow$Note): void;
 }
 
-declare var npm$namespace$Modifier: {
-  CATEGORY: typeof Modifier$CATEGORY
+declare var npm$namespace$Vex$Flow$Modifier: {
+  CATEGORY: typeof Vex$Flow$Modifier$CATEGORY,
+  Position: typeof Vex$Flow$Modifier$Position
 };
-declare class Modifier$Position {
-  constructor(...args: empty): mixed;
-  static +LEFT: Class<Modifier$Position__LEFT> & Modifier$Position__LEFT & 1; // 1
-  static +RIGHT: Class<Modifier$Position__RIGHT> & Modifier$Position__RIGHT & 1; // 1
-  static +ABOVE: Class<Modifier$Position__ABOVE> & Modifier$Position__ABOVE & 2; // 2
-  static +BELOW: Class<Modifier$Position__BELOW> & Modifier$Position__BELOW & 3; // 3
-}
 
-declare class Modifier$Position__LEFT mixins Modifier$Position {}
-declare class Modifier$Position__RIGHT mixins Modifier$Position {}
-declare class Modifier$Position__ABOVE mixins Modifier$Position {}
-declare class Modifier$Position__BELOW mixins Modifier$Position {}
+declare var Vex$Flow$Modifier$Position: {|
+  +LEFT: 1, // 1
+  +RIGHT: 1, // 1
+  +ABOVE: 2, // 2
+  +BELOW: 3 // 3
+|};
 
-declare var Modifier$CATEGORY: string;
+declare var Vex$Flow$Modifier$CATEGORY: string;
 
-declare class Flow$ModifierContext {
+declare class Vex$Flow$ModifierContext {
   static DEBUG: boolean;
-  addModifier(modifier: Flow$Modifier): Flow$ModifierContext;
-  getModifiers(Barline$type: string): Flow$Modifier[];
+  addModifier(modifier: Vex$Flow$Modifier): Vex$Flow$ModifierContext;
+  getModifiers(type: string): Vex$Flow$Modifier[];
   getWidth(): number;
   getExtraLeftPx(): number;
   getExtraRightPx(): number;
@@ -1187,7 +1253,7 @@ declare class Flow$ModifierContext {
   postFormat(): void;
 }
 
-declare class Flow$Music {
+declare class Vex$Flow$Music {
   isValidNoteValue(note: number): boolean;
   isValidIntervalValue(interval: number): boolean;
   getNoteParts(
@@ -1201,7 +1267,7 @@ declare class Flow$Music {
   ): {
     root: string,
     accidental: string,
-    Barline$type: string
+    type: string
   };
   getNoteValue(noteString: string): number;
   getIntervalValue(intervalString: string): number;
@@ -1216,115 +1282,115 @@ declare class Flow$Music {
   getScaleTones(key: string, intervals: number[]): number;
   getIntervalBetween(note1: number, note2: number, direction?: number): number;
   createScaleMap(
-    Flow$keySignature: string
+    keySignature: string
   ): {
     [rootName: string]: string
   };
 }
 
-declare var npm$namespace$Music: {
-  NUM_TONES: typeof Music$NUM_TONES,
-  roots: typeof Music$roots,
-  root_values: typeof Music$root_values,
-  root_indices: typeof Music$root_indices,
-  canonical_notes: typeof Music$canonical_notes,
-  diatonic_intervals: typeof Music$diatonic_intervals,
-  diatonic_accidentals: typeof Music$diatonic_accidentals,
-  intervals: typeof Music$intervals,
-  scales: typeof Music$scales,
-  accidentals: typeof Music$accidentals,
-  noteValues: typeof Music$noteValues
+declare var npm$namespace$Vex$Flow$Music: {
+  NUM_TONES: typeof Vex$Flow$Music$NUM_TONES,
+  roots: typeof Vex$Flow$Music$roots,
+  root_values: typeof Vex$Flow$Music$root_values,
+  root_indices: typeof Vex$Flow$Music$root_indices,
+  canonical_notes: typeof Vex$Flow$Music$canonical_notes,
+  diatonic_intervals: typeof Vex$Flow$Music$diatonic_intervals,
+  diatonic_accidentals: typeof Vex$Flow$Music$diatonic_accidentals,
+  intervals: typeof Vex$Flow$Music$intervals,
+  scales: typeof Vex$Flow$Music$scales,
+  accidentals: typeof Vex$Flow$Music$accidentals,
+  noteValues: typeof Vex$Flow$Music$noteValues
 };
-declare var Music$NUM_TONES: number;
+declare var Vex$Flow$Music$NUM_TONES: number;
 
-declare var Music$roots: string[];
+declare var Vex$Flow$Music$roots: string[];
 
-declare var Music$root_values: number[];
+declare var Vex$Flow$Music$root_values: number[];
 
-declare var Music$root_indices: {
+declare var Vex$Flow$Music$root_indices: {
   [root: string]: number
 };
 
-declare var Music$canonical_notes: string[];
+declare var Vex$Flow$Music$canonical_notes: string[];
 
-declare var Music$diatonic_intervals: string[];
+declare var Vex$Flow$Music$diatonic_intervals: string[];
 
-declare var Music$diatonic_accidentals: {
+declare var Vex$Flow$Music$diatonic_accidentals: {
   [diatonic_interval: string]: {
     note: number,
     accidental: number
   }
 };
 
-declare var Music$intervals: {
+declare var Vex$Flow$Music$intervals: {
   [interval: string]: number
 };
 
-declare var Music$scales: {
+declare var Vex$Flow$Music$scales: {
   [scale: string]: number[]
 };
 
-declare var Music$accidentals: string[];
+declare var Vex$Flow$Music$accidentals: string[];
 
-declare var Music$noteValues: {
+declare var Vex$Flow$Music$noteValues: {
   [value: string]: {
     root_index: number,
     int_val: number
   }
 };
 
-declare class Flow$Note mixins Flow$Tickable {
-  getTicks(): Flow$Fraction;
+declare class Vex$Flow$Note mixins Tickable {
+  getTicks(): Vex$Flow$Fraction;
   getCenterXShift(): number;
   isCenterAligned(): boolean;
-  setCenterAlignment(align_center: boolean): Flow$Note;
+  setCenterAlignment(align_center: boolean): Vex$Flow$Note;
   getTuplet(): Flow$Tuplet;
-  setTuplet(tuplet: Flow$Tuplet): Flow$Note;
-  addToModifierContext(mc: Flow$ModifierContext): void;
+  setTuplet(tuplet: Flow$Tuplet): Vex$Flow$Note;
+  addToModifierContext(mc: Vex$Flow$ModifierContext): void;
   preFormat(): void;
-  postFormat(): Flow$Note;
-  getIntrinsicTicks(): Flow$Fraction;
-  setIntrinsicTicks(intrinsicTicks: Flow$Fraction): void;
-  getTickMultiplier(): Flow$Fraction;
+  postFormat(): Vex$Flow$Note;
+  getIntrinsicTicks(): Vex$Flow$Fraction;
+  setIntrinsicTicks(intrinsicTicks: Vex$Flow$Fraction): void;
+  getTickMultiplier(): Vex$Flow$Fraction;
   applyTickMultiplier(numerator: number, denominator: number): void;
-  setDuration(duration: Flow$Fraction): void;
+  setDuration(duration: Vex$Flow$Fraction): void;
   constructor(note_struct: {
-    Barline$type?: string,
+    type?: string,
     dots?: number,
     duration: string
   }): this;
   getPlayNote(): any;
-  setPlayNote(note: any): Flow$Note;
+  setPlayNote(note: any): Vex$Flow$Note;
   isRest(): boolean;
-  addStroke(index: number, stroke: Flow$Stroke): Flow$Note;
+  addStroke(index: number, stroke: Flow$Stroke): Vex$Flow$Note;
   getStave(): Flow$Stave;
-  setStave(stave: Flow$Stave): Flow$Note;
+  setStave(stave: Flow$Stave): Vex$Flow$Note;
   getCategory(): string;
-  setContext(context: Vex$IRenderContext): Flow$Note;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Note;
   getExtraLeftPx(): number;
   getExtraRightPx(): number;
-  setExtraLeftPx(x: number): Flow$Note;
-  setExtraRightPx(x: number): Flow$Note;
+  setExtraLeftPx(x: number): Vex$Flow$Note;
+  setExtraRightPx(x: number): Vex$Flow$Note;
   shouldIgnoreTicks(): boolean;
   getLineNumber(): number;
   getLineForRest(): number;
-  getGlyph(): Flow$Glyph;
-  setYs(ys: number[]): Flow$Note;
+  getGlyph(): Vex$Flow$Glyph;
+  setYs(ys: number[]): Vex$Flow$Note;
   getYs(): number[];
   getYForTopText(text_line: number): number;
-  getBoundingBox(): Flow$BoundingBox;
+  getBoundingBox(): Vex$Flow$BoundingBox;
   getVoice(): Flow$Voice;
-  setVoice(voice: Flow$Voice): Flow$Note;
+  setVoice(voice: Flow$Voice): Vex$Flow$Note;
   getTickContext(): Flow$TickContext;
-  setTickContext(tc: Flow$TickContext): Flow$Note;
+  setTickContext(tc: Flow$TickContext): Vex$Flow$Note;
   getDuration(): string;
   isDotted(): boolean;
   hasStem(): boolean;
   getDots(): number;
   getNoteType(): string;
-  setBeam(): Flow$Note;
-  setModifierContext(mc: Flow$ModifierContext): Flow$Note;
-  addModifier(modifier: Flow$Modifier, index?: number): Flow$Note;
+  setBeam(): Vex$Flow$Note;
+  setModifierContext(mc: Vex$Flow$ModifierContext): Vex$Flow$Note;
+  addModifier(modifier: Vex$Flow$Modifier, index?: number): Vex$Flow$Note;
   getModifierStartXY(): {
     x: number,
     y: number
@@ -1340,18 +1406,18 @@ declare class Flow$Note mixins Flow$Tickable {
   };
   setWidth(width: number): void;
   getWidth(): number;
-  setXShift(x: number): Flow$Note;
+  setXShift(x: number): Vex$Flow$Note;
   getX(): number;
   getAbsoluteX(): number;
   setPreFormatted(value: boolean): void;
 }
 
-declare var npm$namespace$Note: {
-  CATEGORY: typeof Note$CATEGORY
+declare var npm$namespace$Vex$Flow$Note: {
+  CATEGORY: typeof Vex$Flow$Note$CATEGORY
 };
-declare var Note$CATEGORY: string;
+declare var Vex$Flow$Note$CATEGORY: string;
 
-declare class Flow$NoteHead mixins Flow$Note {
+declare class Vex$Flow$NoteHead mixins Note {
   constructor(head_options: {
     x?: number,
     y?: number,
@@ -1368,7 +1434,7 @@ declare class Flow$NoteHead mixins Flow$Note {
   }): this;
   static DEBUG: boolean;
   getCategory(): string;
-  setContext(context: Vex$IRenderContext): Flow$NoteHead;
+  setContext(context: Vex$IRenderContext): Vex$Flow$NoteHead;
   getWidth(): number;
   isDisplaced(): boolean;
   getStyle(): {
@@ -1382,84 +1448,75 @@ declare class Flow$NoteHead mixins Flow$Note {
     shadowBlur?: string,
     fillStyle?: string,
     strokeStyle?: string
-  }): Flow$NoteHead;
-  getGlyph(): Flow$Glyph;
-  setX(x: number): Flow$NoteHead;
+  }): Vex$Flow$NoteHead;
+  getGlyph(): Vex$Flow$Glyph;
+  setX(x: number): Vex$Flow$NoteHead;
   getY(): number;
-  setY(y: number): Flow$NoteHead;
+  setY(y: number): Vex$Flow$NoteHead;
   getLine(): number;
-  setLine(line: number): Flow$NoteHead;
+  setLine(line: number): Vex$Flow$NoteHead;
   getAbsoluteX(): number;
-  getBoundingBox(): Flow$BoundingBox;
-  applyStyle(context: Vex$IRenderContext): Flow$NoteHead;
-  setStave(stave: Flow$Stave): Flow$NoteHead;
-  preFormat(): Flow$NoteHead;
+  getBoundingBox(): Vex$Flow$BoundingBox;
+  applyStyle(context: Vex$IRenderContext): Vex$Flow$NoteHead;
+  setStave(stave: Flow$Stave): Vex$Flow$NoteHead;
+  preFormat(): Vex$Flow$NoteHead;
   draw(): void;
 }
 
-declare class Flow$NoteSubGroup mixins Flow$Modifier {
-  constructor(subnotes: Flow$Note[]): this;
+declare class Vex$Flow$NoteSubGroup mixins Modifier {
+  constructor(subnotes: Vex$Flow$Note[]): this;
   preFormat(): void;
 }
 
-declare class Flow$Ornament mixins Flow$Modifier {
-  constructor(Barline$type: string): this;
+declare class Vex$Flow$Ornament mixins Modifier {
+  constructor(type: string): this;
   static DEBUG: boolean;
   static format(
-    ornaments: Flow$Ornament[],
+    ornaments: Vex$Flow$Ornament[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     }
   ): boolean;
-  setDelayed(delayed: boolean): Flow$Ornament;
-  setUpperAccidental(acc: string): Flow$Ornament;
-  setLowerAccidental(acc: string): Flow$Ornament;
+  setDelayed(delayed: boolean): Vex$Flow$Ornament;
+  setUpperAccidental(acc: string): Vex$Flow$Ornament;
+  setLowerAccidental(acc: string): Vex$Flow$Ornament;
   draw(): void;
 }
 
-declare var npm$namespace$Ornament: {
-  CATEGORY: typeof Ornament$CATEGORY
+declare var npm$namespace$Vex$Flow$Ornament: {
+  CATEGORY: typeof Vex$Flow$Ornament$CATEGORY
 };
-declare var Ornament$CATEGORY: string;
+declare var Vex$Flow$Ornament$CATEGORY: string;
 
-declare class Flow$PedalMarking {
-  constructor(notes: Flow$Note[]): this;
+declare class Vex$Flow$PedalMarking {
+  constructor(notes: Vex$Flow$Note[]): this;
   static DEBUG: boolean;
-  static createSustain(notes: Flow$Note[]): Flow$PedalMarking;
-  static createSostenuto(notes: Flow$Note[]): Flow$PedalMarking;
-  static createUnaCorda(notes: Flow$Note[]): Flow$PedalMarking;
-  setCustomText(depress?: string, release?: string): Flow$PedalMarking;
-  setStyle(style: Flow$PedalMarking.PedalMarking$Styles): Flow$PedalMarking;
-  setLine(line: number): Flow$PedalMarking;
-  setContext(context: Vex$IRenderContext): Flow$PedalMarking;
+  static createSustain(notes: Vex$Flow$Note[]): Vex$Flow$PedalMarking;
+  static createSostenuto(notes: Vex$Flow$Note[]): Vex$Flow$PedalMarking;
+  static createUnaCorda(notes: Vex$Flow$Note[]): Vex$Flow$PedalMarking;
+  setCustomText(depress?: string, release?: string): Vex$Flow$PedalMarking;
+  setStyle(style: PedalMarking$Styles): Vex$Flow$PedalMarking;
+  setLine(line: number): Vex$Flow$PedalMarking;
+  setContext(context: Vex$IRenderContext): Vex$Flow$PedalMarking;
   drawBracketed(): void;
   drawText(): void;
   draw(): void;
 }
 
-declare var npm$namespace$PedalMarking: {
-  GLYPHS: typeof PedalMarking$GLYPHS
+declare var npm$namespace$Vex$Flow$PedalMarking: {
+  GLYPHS: typeof Vex$Flow$PedalMarking$GLYPHS,
+  Styles: typeof Vex$Flow$PedalMarking$Styles
 };
-declare class PedalMarking$Styles {
-  constructor(...args: empty): mixed;
-  static +TEXT: Class<PedalMarking$Styles__TEXT> &
-    PedalMarking$Styles__TEXT &
-    1; // 1
-  static +BRACKET: Class<PedalMarking$Styles__BRACKET> &
-    PedalMarking$Styles__BRACKET &
-    1; // 1
-  static +MIXED: Class<PedalMarking$Styles__MIXED> &
-    PedalMarking$Styles__MIXED &
-    2; // 2
-}
 
-declare class PedalMarking$Styles__TEXT mixins PedalMarking$Styles {}
-declare class PedalMarking$Styles__BRACKET mixins PedalMarking$Styles {}
-declare class PedalMarking$Styles__MIXED mixins PedalMarking$Styles {}
+declare var Vex$Flow$PedalMarking$Styles: {|
+  +TEXT: 1, // 1
+  +BRACKET: 1, // 1
+  +MIXED: 2 // 2
+|};
 
-declare var PedalMarking$GLYPHS: {
+declare var Vex$Flow$PedalMarking$GLYPHS: {
   [name: string]: {
     code: string,
     x_shift: number,
@@ -1467,23 +1524,27 @@ declare var PedalMarking$GLYPHS: {
   }
 };
 
-declare class Flow$RaphaelContext mixins Vex$IRenderContext {
-  setLineWidth(width: number): Flow$RaphaelContext;
-  glow(): Flow$RaphaelContext;
+declare class Vex$Flow$RaphaelContext mixins IRenderContext {
+  setLineWidth(width: number): Vex$Flow$RaphaelContext;
+  glow(): Vex$Flow$RaphaelContext;
   constructor(element: HTMLElement): this;
-  setFont(family: string, size: number, weight?: number): Flow$RaphaelContext;
-  setRawFont(font: string): Flow$RaphaelContext;
-  setFillStyle(style: string): Flow$RaphaelContext;
-  setBackgroundFillStyle(style: string): Flow$RaphaelContext;
-  setStrokeStyle(style: string): Flow$RaphaelContext;
-  setShadowColor(style: string): Flow$RaphaelContext;
-  setShadowBlur(blur: string): Flow$RaphaelContext;
+  setFont(
+    family: string,
+    size: number,
+    weight?: number
+  ): Vex$Flow$RaphaelContext;
+  setRawFont(font: string): Vex$Flow$RaphaelContext;
+  setFillStyle(style: string): Vex$Flow$RaphaelContext;
+  setBackgroundFillStyle(style: string): Vex$Flow$RaphaelContext;
+  setStrokeStyle(style: string): Vex$Flow$RaphaelContext;
+  setShadowColor(style: string): Vex$Flow$RaphaelContext;
+  setShadowBlur(blur: string): Vex$Flow$RaphaelContext;
   setLineWidth(width: number): void;
-  setLineDash(dash: string): Flow$RaphaelContext;
-  setLineCap(cap_type: string): Flow$RaphaelContext;
-  scale(x: number, y: number): Flow$RaphaelContext;
+  setLineDash(dash: string): Vex$Flow$RaphaelContext;
+  setLineCap(cap_type: string): Vex$Flow$RaphaelContext;
+  scale(x: number, y: number): Vex$Flow$RaphaelContext;
   clear(): void;
-  resize(width: number, height: number): Flow$RaphaelContext;
+  resize(width: number, height: number): Vex$Flow$RaphaelContext;
   setViewBox(viewBox: string): void;
   rect(x: number, y: number, width: number, height: number): void;
   fillRect(
@@ -1491,16 +1552,16 @@ declare class Flow$RaphaelContext mixins Vex$IRenderContext {
     y: number,
     width: number,
     height: number
-  ): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
   clearRect(
     x: number,
     y: number,
     width: number,
     height: number
-  ): Flow$RaphaelContext;
-  beginPath(): Flow$RaphaelContext;
-  moveTo(x: number, y: number): Flow$RaphaelContext;
-  lineTo(x: number, y: number): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
+  beginPath(): Vex$Flow$RaphaelContext;
+  moveTo(x: number, y: number): Vex$Flow$RaphaelContext;
+  lineTo(x: number, y: number): Vex$Flow$RaphaelContext;
   bezierCurveToTo(
     x1: number,
     y1: number,
@@ -1508,13 +1569,13 @@ declare class Flow$RaphaelContext mixins Vex$IRenderContext {
     y2: number,
     x: number,
     y: number
-  ): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
   quadraticCurveToTo(
     x1: number,
     y1: number,
     x: number,
     y: number
-  ): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
   arc(
     x: number,
     y: number,
@@ -1522,7 +1583,7 @@ declare class Flow$RaphaelContext mixins Vex$IRenderContext {
     startAngle: number,
     endAngle: number,
     antiClockwise: boolean
-  ): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
   glow(): {
     width: number,
     fill: boolean,
@@ -1531,54 +1592,54 @@ declare class Flow$RaphaelContext mixins Vex$IRenderContext {
     offsety: number,
     color: string
   };
-  fill(): Flow$RaphaelContext;
-  stroke(): Flow$RaphaelContext;
-  closePath(): Flow$RaphaelContext;
+  fill(): Vex$Flow$RaphaelContext;
+  stroke(): Vex$Flow$RaphaelContext;
+  closePath(): Vex$Flow$RaphaelContext;
   measureText(
     text: string
   ): {
     width: number,
     height: number
   };
-  fillText(text: string, x: number, y: number): Flow$RaphaelContext;
-  save(): Flow$RaphaelContext;
-  restore(): Flow$RaphaelContext;
+  fillText(text: string, x: number, y: number): Vex$Flow$RaphaelContext;
+  save(): Vex$Flow$RaphaelContext;
+  restore(): Vex$Flow$RaphaelContext;
 }
 
-declare class Flow$Renderer {
-  constructor(sel: HTMLElement, backend: Flow$Renderer.Renderer$Backends): this;
+declare class Vex$Flow$Renderer {
+  constructor(sel: HTMLElement, backend: Renderer$Backends): this;
   static USE_CANVAS_PROXY: boolean;
   static buildContext(
     sel: HTMLElement,
-    backend: Flow$Renderer.Renderer$Backends,
+    backend: Renderer$Backends,
     width?: number,
     height?: number,
     background?: string
   ): Vex$IRenderContext;
   static getCanvasContext(
     sel: HTMLElement,
-    backend: Flow$Renderer.Renderer$Backends,
+    backend: Renderer$Backends,
     width?: number,
     height?: number,
     background?: string
-  ): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
   static getRaphaelContext(
     sel: HTMLElement,
-    backend: Flow$Renderer.Renderer$Backends,
+    backend: Renderer$Backends,
     width?: number,
     height?: number,
     background?: string
-  ): Flow$RaphaelContext;
+  ): Vex$Flow$RaphaelContext;
   static getSVGContext(
     sel: HTMLElement,
-    backend: Flow$Renderer.Renderer$Backends,
+    backend: Renderer$Backends,
     width?: number,
     height?: number,
     background?: string
   ): Flow$SVGContext;
   static bolsterCanvasContext(
     ctx: CanvasRenderingContext2D
-  ): Flow$CanvasContext;
+  ): Vex$Flow$CanvasContext;
   static drawDashedLine(
     context: Vex$IRenderContext,
     fromX: number,
@@ -1587,108 +1648,64 @@ declare class Flow$Renderer {
     toY: number,
     dashPattern: number[]
   ): void;
-  resize(width: number, height: number): Flow$Renderer;
+  resize(width: number, height: number): Vex$Flow$Renderer;
   getContext(): Vex$IRenderContext;
 }
 
-declare class Renderer$Backends {
-  constructor(...args: empty): mixed;
-  static +CANVAS: Class<Renderer$Backends__CANVAS> &
-    Renderer$Backends__CANVAS &
-    1; // 1
-  static +RAPHAEL: Class<Renderer$Backends__RAPHAEL> &
-    Renderer$Backends__RAPHAEL &
-    1; // 1
-  static +SVG: Class<Renderer$Backends__SVG> & Renderer$Backends__SVG & 2; // 2
-  static +VML: Class<Renderer$Backends__VML> & Renderer$Backends__VML & 3; // 3
-}
+declare var npm$namespace$Vex$Flow$Renderer: {
+  Backends: typeof Vex$Flow$Renderer$Backends,
+  LineEndType: typeof Vex$Flow$Renderer$LineEndType
+};
 
-declare class Renderer$Backends__CANVAS mixins Renderer$Backends {}
-declare class Renderer$Backends__RAPHAEL mixins Renderer$Backends {}
-declare class Renderer$Backends__SVG mixins Renderer$Backends {}
-declare class Renderer$Backends__VML mixins Renderer$Backends {}
+declare var Vex$Flow$Renderer$Backends: {|
+  +CANVAS: 1, // 1
+  +RAPHAEL: 1, // 1
+  +SVG: 2, // 2
+  +VML: 3 // 3
+|};
 
-declare class Renderer$LineEndType {
-  constructor(...args: empty): mixed;
-  static +NONE: Class<Renderer$LineEndType__NONE> &
-    Renderer$LineEndType__NONE &
-    1; // 1
-  static +UP: Class<Renderer$LineEndType__UP> & Renderer$LineEndType__UP & 1; // 1
-  static +DOWN: Class<Renderer$LineEndType__DOWN> &
-    Renderer$LineEndType__DOWN &
-    2; // 2
-}
+declare var Vex$Flow$Renderer$LineEndType: {|
+  +NONE: 1, // 1
+  +UP: 1, // 1
+  +DOWN: 2 // 2
+|};
 
-declare class Renderer$LineEndType__NONE mixins Renderer$LineEndType {}
-declare class Renderer$LineEndType__UP mixins Renderer$LineEndType {}
-declare class Renderer$LineEndType__DOWN mixins Renderer$LineEndType {}
-
-declare class Flow$Repetition mixins Flow$StaveModifier {
-  constructor(
-    Barline$type: Flow$Repetition.Barline$type,
-    x: number,
-    y_shift: number
-  ): this;
+declare class Vex$Flow$Repetition mixins StaveModifier {
+  constructor(type: Repetition$type, x: number, y_shift: number): this;
   getCategory(): string;
-  setShiftX(x: number): Flow$Repetition;
-  setShiftY(y: number): Flow$Repetition;
-  draw(stave: Flow$Stave, x: number): Flow$Repetition;
-  drawCodaFixed(stave: Flow$Stave, x: number): Flow$Repetition;
-  drawSignoFixed(stave: Flow$Stave, x: number): Flow$Repetition;
+  setShiftX(x: number): Vex$Flow$Repetition;
+  setShiftY(y: number): Vex$Flow$Repetition;
+  draw(stave: Flow$Stave, x: number): Vex$Flow$Repetition;
+  drawCodaFixed(stave: Flow$Stave, x: number): Vex$Flow$Repetition;
+  drawSignoFixed(stave: Flow$Stave, x: number): Vex$Flow$Repetition;
   drawSymbolText(
     stave: Flow$Stave,
     x: number,
     text: string,
     draw_coda: boolean
-  ): Flow$Repetition;
+  ): Vex$Flow$Repetition;
 }
 
-declare class Repetition$type {
-  constructor(...args: empty): mixed;
-  static +NONE: Class<Repetition$type__NONE> & Repetition$type__NONE & 1; // 1
-  static +CODA_LEFT: Class<Repetition$type__CODA_LEFT> &
-    Repetition$type__CODA_LEFT &
-    1; // 1
-  static +CODA_RIGHT: Class<Repetition$type__CODA_RIGHT> &
-    Repetition$type__CODA_RIGHT &
-    2; // 2
-  static +SEGNO_LEFT: Class<Repetition$type__SEGNO_LEFT> &
-    Repetition$type__SEGNO_LEFT &
-    3; // 3
-  static +SEGNO_RIGHT: Class<Repetition$type__SEGNO_RIGHT> &
-    Repetition$type__SEGNO_RIGHT &
-    4; // 4
-  static +DC: Class<Repetition$type__DC> & Repetition$type__DC & 5; // 5
-  static +DC_AL_CODA: Class<Repetition$type__DC_AL_CODA> &
-    Repetition$type__DC_AL_CODA &
-    6; // 6
-  static +DC_AL_FINE: Class<Repetition$type__DC_AL_FINE> &
-    Repetition$type__DC_AL_FINE &
-    7; // 7
-  static +DS: Class<Repetition$type__DS> & Repetition$type__DS & 8; // 8
-  static +DS_AL_CODA: Class<Repetition$type__DS_AL_CODA> &
-    Repetition$type__DS_AL_CODA &
-    9; // 9
-  static +DS_AL_FINE: Class<Repetition$type__DS_AL_FINE> &
-    Repetition$type__DS_AL_FINE &
-    10; // 10
-  static +FINE: Class<Repetition$type__FINE> & Repetition$type__FINE & 11; // 11
-}
+declare var npm$namespace$Vex$Flow$Repetition: {
+  type: typeof Vex$Flow$Repetition$type
+};
 
-declare class Repetition$type__NONE mixins Repetition$type {}
-declare class Repetition$type__CODA_LEFT mixins Repetition$type {}
-declare class Repetition$type__CODA_RIGHT mixins Repetition$type {}
-declare class Repetition$type__SEGNO_LEFT mixins Repetition$type {}
-declare class Repetition$type__SEGNO_RIGHT mixins Repetition$type {}
-declare class Repetition$type__DC mixins Repetition$type {}
-declare class Repetition$type__DC_AL_CODA mixins Repetition$type {}
-declare class Repetition$type__DC_AL_FINE mixins Repetition$type {}
-declare class Repetition$type__DS mixins Repetition$type {}
-declare class Repetition$type__DS_AL_CODA mixins Repetition$type {}
-declare class Repetition$type__DS_AL_FINE mixins Repetition$type {}
-declare class Repetition$type__FINE mixins Repetition$type {}
+declare var Vex$Flow$Repetition$type: {|
+  +NONE: 1, // 1
+  +CODA_LEFT: 1, // 1
+  +CODA_RIGHT: 2, // 2
+  +SEGNO_LEFT: 3, // 3
+  +SEGNO_RIGHT: 4, // 4
+  +DC: 5, // 5
+  +DC_AL_CODA: 6, // 6
+  +DC_AL_FINE: 7, // 7
+  +DS: 8, // 8
+  +DS_AL_CODA: 9, // 9
+  +DS_AL_FINE: 10, // 10
+  +FINE: 11 // 11
+|};
 
-declare class Flow$Stave {
+declare class Vex$Flow$Stave {
   constructor(
     x: number,
     y: number,
@@ -1705,37 +1722,27 @@ declare class Flow$Stave {
     }
   ): this;
   resetLines(): void;
-  setNoteStartX(x: number): Flow$Stave;
+  setNoteStartX(x: number): Vex$Flow$Stave;
   getNoteStartX(): number;
   getNoteEndX(): number;
   getTieStartX(): number;
   getTieEndX(): number;
-  setContext(context: Vex$IRenderContext): Flow$Stave;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Stave;
   getContext(): Vex$IRenderContext;
   getX(): number;
   getNumLines(): number;
-  setX(x: number): Flow$Stave;
-  setY(y: number): Flow$Stave;
-  setWidth(width: number): Flow$Stave;
+  setX(x: number): Vex$Flow$Stave;
+  setY(y: number): Vex$Flow$Stave;
+  setWidth(width: number): Vex$Flow$Stave;
   getWidth(): number;
-  setMeasure(measure: number): Flow$Stave;
-  setBegBarType(Repetition$type: Flow$Barline.Repetition$type): Flow$Stave;
-  setEndBarType(Repetition$type: Flow$Barline.Repetition$type): Flow$Stave;
+  setMeasure(measure: number): Vex$Flow$Stave;
+  setBegBarType(type: Barline$type): Vex$Flow$Stave;
+  setEndBarType(type: Barline$type): Vex$Flow$Stave;
   getModifierXShift(index: number): number;
-  setRepetitionTypeLeft(
-    Repetition$type: Flow$Repetition.Repetition$type,
-    y: number
-  ): Flow$Stave;
-  setRepetitionTypeRight(
-    Repetition$type: Flow$Repetition.Repetition$type,
-    y: number
-  ): Flow$Stave;
-  setVoltaType(
-    Repetition$type: Flow$Volta.Repetition$type,
-    number_t: number,
-    y: number
-  ): Flow$Stave;
-  setSection(section: string, y: number): Flow$Stave;
+  setRepetitionTypeLeft(type: Repetition$type, y: number): Vex$Flow$Stave;
+  setRepetitionTypeRight(type: Repetition$type, y: number): Vex$Flow$Stave;
+  setVoltaType(type: Volta$type, number_t: number, y: number): Vex$Flow$Stave;
+  setSection(section: string, y: number): Vex$Flow$Stave;
   setTempo(
     tempo: {
       name?: string,
@@ -1744,19 +1751,19 @@ declare class Flow$Stave {
       bpm: number
     },
     y: number
-  ): Flow$Stave;
+  ): Vex$Flow$Stave;
   setText(
     text: string,
-    position: Flow$Modifier.Modifier$Position,
+    position: Modifier$Position,
     options?: {
       shift_x?: number,
       shift_y?: number,
-      justification?: Flow$TextNote.TextNote$Justification
+      justification?: TextNote$Justification
     }
-  ): Flow$Stave;
+  ): Vex$Flow$Stave;
   getHeight(): number;
   getSpacingBetweenLines(): number;
-  getBoundingBix(): Flow$BoundingBox;
+  getBoundingBix(): Vex$Flow$BoundingBox;
   getBottomY(): number;
   getBottomLineY(): number;
   getYForLine(line: number): number;
@@ -1764,29 +1771,29 @@ declare class Flow$Stave {
   getYForBottomText(line?: number): number;
   getYForNote(line?: number): number;
   getYForGlyphs(): number;
-  addGlyph(glypg: Flow$Glyph): Flow$Stave;
-  addEndGlyph(glypg: Flow$Glyph): Flow$Stave;
+  addGlyph(glypg: Vex$Flow$Glyph): Vex$Flow$Stave;
+  addEndGlyph(glypg: Vex$Flow$Glyph): Vex$Flow$Stave;
   addModifier(
     modifier: Flow$StaveModifier,
-    position?: Flow$StaveModifier.Modifier$Position
-  ): Flow$Stave;
-  addEndModifier(modifier: Flow$StaveModifier): Flow$Stave;
-  addKeySignature(keySpec: string): Flow$Stave;
+    position?: StaveModifier$Position
+  ): Vex$Flow$Stave;
+  addEndModifier(modifier: Flow$StaveModifier): Vex$Flow$Stave;
+  addKeySignature(keySpec: string): Vex$Flow$Stave;
   setKeySignature(
     keySpec: string,
     cancelKeySpec: string,
-    position?: Flow$StaveModifier.Modifier$Position
-  ): Flow$Stave;
+    position?: StaveModifier$Position
+  ): Vex$Flow$Stave;
   addClef(
     clef: string,
     size?: string,
     annotation?: string,
-    position?: Flow$StaveModifier.Modifier$Position
-  ): Flow$Stave;
-  addEndClef(clef: string, size?: string, annotation?: string): Flow$Stave;
-  setEndClef(clef: string, size?: string, annotation?: string): Flow$Stave;
+    position?: StaveModifier$Position
+  ): Vex$Flow$Stave;
+  addEndClef(clef: string, size?: string, annotation?: string): Vex$Flow$Stave;
+  setEndClef(clef: string, size?: string, annotation?: string): Vex$Flow$Stave;
   addTimeSignature(timeSpec: string, customPadding?: number): void;
-  addTrebleGlyph(): Flow$Stave;
+  addTrebleGlyph(): Vex$Flow$Stave;
   draw(): void;
   drawVertical(x: number, isDouble: boolean): void;
   drawVerticalFixed(x: number, isDouble: boolean): void;
@@ -1800,107 +1807,75 @@ declare class Flow$Stave {
     line_config: {
       visible: boolean
     }
-  ): Flow$Stave;
+  ): Vex$Flow$Stave;
   setConfigForLines(
     lines_configuration: {
       visible: boolean
     }[]
-  ): Flow$Stave;
+  ): Vex$Flow$Stave;
 }
 
-declare class Flow$StaveConnector {
-  constructor(top_stave: Flow$Stave, bottom_stave: Flow$Stave): this;
-  setContext(ctx: Vex$IRenderContext): Flow$StaveConnector;
-  setType(
-    Repetition$type: Flow$StaveConnector.Repetition$type
-  ): Flow$StaveConnector;
+declare class Vex$Flow$StaveConnector {
+  constructor(top_stave: Vex$Flow$Stave, bottom_stave: Vex$Flow$Stave): this;
+  setContext(ctx: Vex$IRenderContext): Vex$Flow$StaveConnector;
+  setType(type: StaveConnector$type): Vex$Flow$StaveConnector;
   setText(
     text: string,
     text_options?: {
       shift_x?: number,
       shift_y?: number
     }
-  ): Flow$StaveConnector;
+  ): Vex$Flow$StaveConnector;
   setFont(font: {
     family?: string,
     size?: number,
     weight?: string
   }): void;
-  setXShift(x_shift: number): Flow$StaveConnector;
+  setXShift(x_shift: number): Vex$Flow$StaveConnector;
   draw(): void;
   drawBoldDoubleLine(
     ctx: Object,
-    Repetition$type: Flow$StaveConnector.Repetition$type,
+    type: StaveConnector$type,
     topX: number,
     topY: number,
     botY: number
   ): void;
 }
 
-declare class StaveConnector$type {
-  constructor(...args: empty): mixed;
-  static +SINGLE_RIGHT: Class<StaveConnector$type__SINGLE_RIGHT> &
-    StaveConnector$type__SINGLE_RIGHT &
-    0; // 0
-  static +SINGLE_LEFT: Class<StaveConnector$type__SINGLE_LEFT> &
-    StaveConnector$type__SINGLE_LEFT &
-    1; // 1
-  static +SINGLE: Class<StaveConnector$type__SINGLE> &
-    StaveConnector$type__SINGLE &
-    1; // 1
-  static +DOUBLE: Class<StaveConnector$type__DOUBLE> &
-    StaveConnector$type__DOUBLE &
-    2; // 2
-  static +BRACE: Class<StaveConnector$type__BRACE> &
-    StaveConnector$type__BRACE &
-    3; // 3
-  static +BRACKET: Class<StaveConnector$type__BRACKET> &
-    StaveConnector$type__BRACKET &
-    4; // 4
-  static +BOLD_DOUBLE_LEFT: Class<StaveConnector$type__BOLD_DOUBLE_LEFT> &
-    StaveConnector$type__BOLD_DOUBLE_LEFT &
-    5; // 5
-  static +BOLD_DOUBLE_RIGHT: Class<StaveConnector$type__BOLD_DOUBLE_RIGHT> &
-    StaveConnector$type__BOLD_DOUBLE_RIGHT &
-    6; // 6
-  static +THIN_DOUBLE: Class<StaveConnector$type__THIN_DOUBLE> &
-    StaveConnector$type__THIN_DOUBLE &
-    7; // 7
-  static +NONE: Class<StaveConnector$type__NONE> &
-    StaveConnector$type__NONE &
-    8; // 8
-}
+declare var npm$namespace$Vex$Flow$StaveConnector: {
+  type: typeof Vex$Flow$StaveConnector$type
+};
 
-declare class StaveConnector$type__SINGLE_RIGHT mixins StaveConnector$type {}
-declare class StaveConnector$type__SINGLE_LEFT mixins StaveConnector$type {}
-declare class StaveConnector$type__SINGLE mixins StaveConnector$type {}
-declare class StaveConnector$type__DOUBLE mixins StaveConnector$type {}
-declare class StaveConnector$type__BRACE mixins StaveConnector$type {}
-declare class StaveConnector$type__BRACKET mixins StaveConnector$type {}
-declare class StaveConnector$type__BOLD_DOUBLE_LEFT
-  mixins StaveConnector$type {}
-declare class StaveConnector$type__BOLD_DOUBLE_RIGHT
-  mixins StaveConnector$type {}
-declare class StaveConnector$type__THIN_DOUBLE mixins StaveConnector$type {}
-declare class StaveConnector$type__NONE mixins StaveConnector$type {}
+declare var Vex$Flow$StaveConnector$type: {|
+  +SINGLE_RIGHT: 0, // 0
+  +SINGLE_LEFT: 1, // 1
+  +SINGLE: 1, // 1
+  +DOUBLE: 2, // 2
+  +BRACE: 3, // 3
+  +BRACKET: 4, // 4
+  +BOLD_DOUBLE_LEFT: 5, // 5
+  +BOLD_DOUBLE_RIGHT: 6, // 6
+  +THIN_DOUBLE: 7, // 7
+  +NONE: 8 // 8
+|};
 
-declare class Flow$StaveHairpin {
+declare class Vex$Flow$StaveHairpin {
   constructor(
     notes: {
-      first_note: Flow$Note,
-      last_note: Flow$Note
+      first_note: Vex$Flow$Note,
+      last_note: Vex$Flow$Note
     },
-    StaveConnector$type: Flow$StaveHairpin.StaveConnector$type
+    type: StaveHairpin$type
   ): this;
   static FormatByTicksAndDraw(
     ctx: Vex$IRenderContext,
-    formatter: Flow$Formatter,
+    formatter: Vex$Flow$Formatter,
     notes: {
-      first_note: Flow$Note,
-      last_note: Flow$Note
+      first_note: Vex$Flow$Note,
+      last_note: Vex$Flow$Note
     },
-    StaveConnector$type: Flow$StaveHairpin.StaveConnector$type,
-    position: Flow$Modifier.Modifier$Position,
+    type: StaveHairpin$type,
+    position: Modifier$Position,
     options?: {
       height: number,
       y_shift: number,
@@ -1908,18 +1883,18 @@ declare class Flow$StaveHairpin {
       right_shift_ticks: number
     }
   ): void;
-  setContext(context: Vex$IRenderContext): Flow$StaveHairpin;
-  setPosition(position: Flow$Modifier.Modifier$Position): Flow$StaveHairpin;
+  setContext(context: Vex$IRenderContext): Vex$Flow$StaveHairpin;
+  setPosition(position: Modifier$Position): Vex$Flow$StaveHairpin;
   setRenderOptions(options: {
     height?: number,
     y_shift: number,
     left_shift_px: number,
     right_shift_px: number
-  }): Flow$StaveHairpin;
+  }): Vex$Flow$StaveHairpin;
   setNotes(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note
-  }): Flow$StaveHairpin;
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note
+  }): Vex$Flow$StaveHairpin;
   renderHairpin(params: {
     first_x: number,
     last_x: number,
@@ -1930,40 +1905,38 @@ declare class Flow$StaveHairpin {
   draw(): boolean;
 }
 
-declare class StaveHairpin$type {
-  constructor(...args: empty): mixed;
-  static +CRESC: Class<StaveHairpin$type__CRESC> & StaveHairpin$type__CRESC & 1; // 1
-  static +DECRESC: Class<StaveHairpin$type__DECRESC> &
-    StaveHairpin$type__DECRESC &
-    1; // 1
-}
+declare var npm$namespace$Vex$Flow$StaveHairpin: {
+  type: typeof Vex$Flow$StaveHairpin$type
+};
 
-declare class StaveHairpin$type__CRESC mixins StaveHairpin$type {}
-declare class StaveHairpin$type__DECRESC mixins StaveHairpin$type {}
+declare var Vex$Flow$StaveHairpin$type: {|
+  +CRESC: 1, // 1
+  +DECRESC: 1 // 1
+|};
 
-declare class Flow$StaveLine {
+declare class Vex$Flow$StaveLine {
   constructor(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices: number[],
     last_indices: number[]
   }): this;
-  setContext(context: Object): Flow$StaveLine;
+  setContext(context: Object): Vex$Flow$StaveLine;
   setFont(font: {
     family: string,
     size: number,
     weight: string
-  }): Flow$StaveLine;
-  setText(text: string): Flow$StaveLine;
+  }): Vex$Flow$StaveLine;
+  setText(text: string): Vex$Flow$StaveLine;
   setNotes(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices?: number[],
     last_indices?: number[]
-  }): Flow$StaveLine;
+  }): Vex$Flow$StaveLine;
   applyLineStyle(): void;
   applyFontStyle(): void;
-  draw(): Flow$StaveLine;
+  draw(): Vex$Flow$StaveLine;
   render_options: {
     padding_left: number,
     padding_right: number,
@@ -1975,47 +1948,28 @@ declare class Flow$StaveLine {
     draw_end_arrow: boolean,
     arrowhead_length: number,
     arrowhead_angle: number,
-    text_position_vertical: Flow$StaveLine.StaveLine$TextVerticalPosition,
-    text_justification: Flow$StaveLine.StaveLine$TextJustification
+    text_position_vertical: StaveLine$TextVerticalPosition,
+    text_justification: StaveLine$TextJustification
   };
 }
 
-declare class StaveLine$TextVerticalPosition {
-  constructor(...args: empty): mixed;
-  static +TOP: Class<StaveLine$TextVerticalPosition__TOP> &
-    StaveLine$TextVerticalPosition__TOP &
-    1; // 1
-  static +BOTTOM: Class<StaveLine$TextVerticalPosition__BOTTOM> &
-    StaveLine$TextVerticalPosition__BOTTOM &
-    1; // 1
-}
+declare var npm$namespace$Vex$Flow$StaveLine: {
+  TextVerticalPosition: typeof Vex$Flow$StaveLine$TextVerticalPosition,
+  TextJustification: typeof Vex$Flow$StaveLine$TextJustification
+};
 
-declare class StaveLine$TextVerticalPosition__TOP
-  mixins StaveLine$TextVerticalPosition {}
-declare class StaveLine$TextVerticalPosition__BOTTOM
-  mixins StaveLine$TextVerticalPosition {}
+declare var Vex$Flow$StaveLine$TextVerticalPosition: {|
+  +TOP: 1, // 1
+  +BOTTOM: 1 // 1
+|};
 
-declare class StaveLine$TextJustification {
-  constructor(...args: empty): mixed;
-  static +LEFT: Class<StaveLine$TextJustification__LEFT> &
-    StaveLine$TextJustification__LEFT &
-    1; // 1
-  static +CENTER: Class<StaveLine$TextJustification__CENTER> &
-    StaveLine$TextJustification__CENTER &
-    1; // 1
-  static +RIGHT: Class<StaveLine$TextJustification__RIGHT> &
-    StaveLine$TextJustification__RIGHT &
-    2; // 2
-}
+declare var Vex$Flow$StaveLine$TextJustification: {|
+  +LEFT: 1, // 1
+  +CENTER: 1, // 1
+  +RIGHT: 2 // 2
+|};
 
-declare class StaveLine$TextJustification__LEFT
-  mixins StaveLine$TextJustification {}
-declare class StaveLine$TextJustification__CENTER
-  mixins StaveLine$TextJustification {}
-declare class StaveLine$TextJustification__RIGHT
-  mixins StaveLine$TextJustification {}
-
-declare class Flow$StaveModifier {
+declare class Vex$Flow$StaveModifier {
   getCategory(): string;
   makeSpacer(
     padding: number
@@ -2025,54 +1979,48 @@ declare class Flow$StaveModifier {
     renderToStave: Function,
     getMetrics: Function
   };
-  placeGlyphOnLine(glyph: Flow$Glyph, stave: Flow$Stave, line: number): void;
+  placeGlyphOnLine(
+    glyph: Vex$Flow$Glyph,
+    stave: Vex$Flow$Stave,
+    line: number
+  ): void;
   setPadding(padding: number): void;
-  addToStave(stave: Flow$Stave, firstGlyph: boolean): Flow$StaveModifier;
-  addToStaveEnd(stave: Flow$Stave, firstGlyph: boolean): Flow$StaveModifier;
+  addToStave(
+    stave: Vex$Flow$Stave,
+    firstGlyph: boolean
+  ): Vex$Flow$StaveModifier;
+  addToStaveEnd(
+    stave: Vex$Flow$Stave,
+    firstGlyph: boolean
+  ): Vex$Flow$StaveModifier;
   addModifier(): void;
   addEndModifier(): void;
 }
 
-declare class StaveModifier$Position {
-  constructor(...args: empty): mixed;
-  static +LEFT: Class<StaveModifier$Position__LEFT> &
-    StaveModifier$Position__LEFT &
-    1; // 1
-  static +RIGHT: Class<StaveModifier$Position__RIGHT> &
-    StaveModifier$Position__RIGHT &
-    2; // 2
-  static +ABOVE: Class<StaveModifier$Position__ABOVE> &
-    StaveModifier$Position__ABOVE &
-    3; // 3
-  static +BELOW: Class<StaveModifier$Position__BELOW> &
-    StaveModifier$Position__BELOW &
-    4; // 4
-  static +BEGIN: Class<StaveModifier$Position__BEGIN> &
-    StaveModifier$Position__BEGIN &
-    5; // 5
-  static +END: Class<StaveModifier$Position__END> &
-    StaveModifier$Position__END &
-    6; // 6
-}
+declare var npm$namespace$Vex$Flow$StaveModifier: {
+  Position: typeof Vex$Flow$StaveModifier$Position
+};
 
-declare class StaveModifier$Position__LEFT mixins StaveModifier$Position {}
-declare class StaveModifier$Position__RIGHT mixins StaveModifier$Position {}
-declare class StaveModifier$Position__ABOVE mixins StaveModifier$Position {}
-declare class StaveModifier$Position__BELOW mixins StaveModifier$Position {}
-declare class StaveModifier$Position__BEGIN mixins StaveModifier$Position {}
-declare class StaveModifier$Position__END mixins StaveModifier$Position {}
+declare var Vex$Flow$StaveModifier$Position: {|
+  +LEFT: 1, // 1
+  +RIGHT: 2, // 2
+  +ABOVE: 3, // 3
+  +BELOW: 4, // 4
+  +BEGIN: 5, // 5
+  +END: 6 // 6
+|};
 
-declare class Flow$StaveNote mixins Flow$StemmableNote {
+declare class Vex$Flow$StaveNote mixins StemmableNote {
   buildStem(): Flow$StemmableNote;
-  setStave(stave: Flow$Stave): Flow$Note;
-  addModifier(modifier: Flow$Modifier, index?: number): Flow$Note;
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$Note;
+  addModifier(modifier: Vex$Flow$Modifier, index?: number): Vex$Flow$Note;
   getModifierStartXY(): {
     x: number,
     y: number
   };
   getDots(): number;
   constructor(note_struct: {
-    StaveHairpin$type?: string,
+    type?: string,
     dots?: number,
     duration: string,
     clef?: string,
@@ -2083,7 +2031,7 @@ declare class Flow$StaveNote mixins Flow$StemmableNote {
   }): this;
   static DEBUG: boolean;
   static format(
-    notes: Flow$StaveNote[],
+    notes: Vex$Flow$StaveNote[],
     state: {
       left_shift: number,
       right_shift: number,
@@ -2091,26 +2039,26 @@ declare class Flow$StaveNote mixins Flow$StemmableNote {
     }
   ): boolean;
   static formatByY(
-    notes: Flow$StaveNote[],
+    notes: Vex$Flow$StaveNote[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     }
   ): void;
-  static postFormat(notes: Flow$StaveNote[]): boolean;
+  static postFormat(notes: Vex$Flow$StaveNote[]): boolean;
   buildStem(): void;
   buildNoteHeads(): void;
   autoStem(): void;
   calculateKeyProps(): void;
-  getBoundingBox(): Flow$BoundingBox;
+  getBoundingBox(): Vex$Flow$BoundingBox;
   getLineNumber(): number;
   isRest(): boolean;
   isChord(): boolean;
   hasStem(): boolean;
   getYForTopText(text_line: number): number;
   getYForBottomText(text_line: number): number;
-  setStave(stave: Flow$Stave): Flow$StaveNote;
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$StaveNote;
   getKeys(): string[];
   getKeyProps(): {
     key: string,
@@ -2124,12 +2072,12 @@ declare class Flow$StaveNote mixins Flow$StemmableNote {
     displaced: boolean
   }[];
   isDisplaced(): boolean;
-  setNoteDisplaced(displaced: boolean): Flow$StaveNote;
+  setNoteDisplaced(displaced: boolean): Vex$Flow$StaveNote;
   getTieRightX(): number;
   getTieLeftX(): number;
   getLineForRest(): number;
   getModifierStartXY(
-    position: Flow$Modifier.StaveModifier$Position,
+    position: Modifier$Position,
     index: number
   ): {
     x: number,
@@ -2149,21 +2097,27 @@ declare class Flow$StaveNote mixins Flow$StemmableNote {
       fillStyle?: string,
       strokeStyle?: string
     }
-  ): Flow$StaveNote;
-  setKeyLine(index: number, line: number): Flow$StaveNote;
+  ): Vex$Flow$StaveNote;
+  setKeyLine(index: number, line: number): Vex$Flow$StaveNote;
   getKeyLine(index: number): number;
-  addToModifierContext(mContext: Flow$ModifierContext): Flow$StaveNote;
-  addModifier(index: number, modifier: Flow$Modifier): Flow$StaveNote;
-  addAccidental(index: number, accidental: Flow$Accidental): Flow$StaveNote;
+  addToModifierContext(mContext: Vex$Flow$ModifierContext): Vex$Flow$StaveNote;
+  addModifier(index: number, modifier: Vex$Flow$Modifier): Vex$Flow$StaveNote;
+  addAccidental(
+    index: number,
+    accidental: Vex$Flow$Accidental
+  ): Vex$Flow$StaveNote;
   addArticulation(
     index: number,
-    articulation: Flow$Articulation
-  ): Flow$StaveNote;
-  addAnnotation(index: number, annotation: Flow$Annotation): Flow$StaveNote;
-  addDot(index: number): Flow$StaveNote;
-  addDotToAll(): Flow$StaveNote;
-  getAccidentals(): Flow$Accidental[];
-  getDots(): Flow$Dot[];
+    articulation: Vex$Flow$Articulation
+  ): Vex$Flow$StaveNote;
+  addAnnotation(
+    index: number,
+    annotation: Vex$Flow$Annotation
+  ): Vex$Flow$StaveNote;
+  addDot(index: number): Vex$Flow$StaveNote;
+  addDotToAll(): Vex$Flow$StaveNote;
+  getAccidentals(): Vex$Flow$Accidental[];
+  getDots(): Vex$Flow$Dot[];
   getVoiceShiftWidth(): number;
   calcExtraPx(): void;
   preFormat(): void;
@@ -2191,28 +2145,28 @@ declare class Flow$StaveNote mixins Flow$StemmableNote {
   draw(): void;
 }
 
-declare var npm$namespace$StaveNote: {
-  STEM_UP: typeof StaveNote$STEM_UP,
-  STEM_DOWN: typeof StaveNote$STEM_DOWN,
-  CATEGORY: typeof StaveNote$CATEGORY
+declare var npm$namespace$Vex$Flow$StaveNote: {
+  STEM_UP: typeof Vex$Flow$StaveNote$STEM_UP,
+  STEM_DOWN: typeof Vex$Flow$StaveNote$STEM_DOWN,
+  CATEGORY: typeof Vex$Flow$StaveNote$CATEGORY
 };
-declare var StaveNote$STEM_UP: number;
+declare var Vex$Flow$StaveNote$STEM_UP: number;
 
-declare var StaveNote$STEM_DOWN: number;
+declare var Vex$Flow$StaveNote$STEM_DOWN: number;
 
-declare var StaveNote$CATEGORY: string;
+declare var Vex$Flow$StaveNote$CATEGORY: string;
 
-declare class Flow$StaveSection mixins Flow$Modifier {
+declare class Vex$Flow$StaveSection mixins Modifier {
   draw(): void;
   constructor(section: string, x: number, shift_y: number): this;
   getCategory(): string;
-  setStaveSection(section: string): Flow$StaveSection;
-  setShiftX(x: number): Flow$StaveSection;
-  setShiftY(y: number): Flow$StaveSection;
-  draw(stave: Flow$Stave, shift_x: number): Flow$StaveSection;
+  setStaveSection(section: string): Vex$Flow$StaveSection;
+  setShiftX(x: number): Vex$Flow$StaveSection;
+  setShiftY(y: number): Vex$Flow$StaveSection;
+  draw(stave: Vex$Flow$Stave, shift_x: number): Vex$Flow$StaveSection;
 }
 
-declare class Flow$StaveTempo mixins Flow$StaveModifier {
+declare class Vex$Flow$StaveTempo mixins StaveModifier {
   constructor(
     tempo: {
       name?: string,
@@ -2229,72 +2183,72 @@ declare class Flow$StaveTempo mixins Flow$StaveModifier {
     duration: string,
     dots: number,
     bpm: number
-  }): Flow$StaveTempo;
-  setShiftX(x: number): Flow$StaveTempo;
-  setShiftY(y: number): Flow$StaveTempo;
-  draw(stave: Flow$Stave, shift_x: number): Flow$StaveTempo;
+  }): Vex$Flow$StaveTempo;
+  setShiftX(x: number): Vex$Flow$StaveTempo;
+  setShiftY(y: number): Vex$Flow$StaveTempo;
+  draw(stave: Vex$Flow$Stave, shift_x: number): Vex$Flow$StaveTempo;
 }
 
-declare class Flow$StaveText mixins Flow$Modifier {
+declare class Vex$Flow$StaveText mixins Modifier {
   draw(): void;
   constructor(
     text: string,
-    position: Flow$Modifier.StaveModifier$Position,
+    position: Modifier$Position,
     options?: {
       shift_x?: number,
       shift_y?: number,
-      justification?: Flow$TextNote.TextNote$Justification
+      justification?: TextNote$Justification
     }
   ): this;
   getCategory(): string;
-  setStaveText(text: string): Flow$StaveText;
-  setShiftX(x: number): Flow$StaveText;
-  setShiftY(y: number): Flow$StaveText;
+  setStaveText(text: string): Vex$Flow$StaveText;
+  setShiftX(x: number): Vex$Flow$StaveText;
+  setShiftY(y: number): Vex$Flow$StaveText;
   setFont(font: {
     family?: string,
     size?: number,
     weight?: number
   }): void;
   setText(text: string): void;
-  draw(stave: Flow$Stave): Flow$StaveText;
+  draw(stave: Vex$Flow$Stave): Vex$Flow$StaveText;
 }
 
-declare class Flow$StaveTie {
+declare class Vex$Flow$StaveTie {
   /**
- * @see https://github.com/0xfe/vexflow/blob/master/src/stavetie.js#L12
-
-Notes is a struct that has:
-
-{
-first_note: Note,
-last_note: Note,
-first_indices: [n1, n2, n3],
-last_indices: [n1, n2, n3]
-}
-All properties are optional, since ties can span line breaks in which case
-two ties can be used, each with either "first_note" or "last_note" missing.
- */
+   * @see https://github.com/0xfe/vexflow/blob/master/src/stavetie.js#L12
+   *
+   * Notes is a struct that has:
+   *
+   * {
+   * first_note: Note,
+   * last_note: Note,
+   * first_indices: [n1, n2, n3],
+   * last_indices: [n1, n2, n3]
+   * }
+   * All properties are optional, since ties can span line breaks in which case
+   * two ties can be used, each with either "first_note" or "last_note" missing.
+   */
   constructor(
     notes: {
-      first_note?: Flow$Note,
-      last_note?: Flow$Note,
+      first_note?: Vex$Flow$Note,
+      last_note?: Vex$Flow$Note,
       first_indices?: number[],
       last_indices?: number[]
     },
     text?: string
   ): this;
-  setContext(context: Vex$IRenderContext): Flow$StaveTie;
+  setContext(context: Vex$IRenderContext): Vex$Flow$StaveTie;
   setFont(font: {
     family: string,
     size: number,
     weight: string
-  }): Flow$StaveTie;
+  }): Vex$Flow$StaveTie;
   setNotes(notes: {
-    first_note?: Flow$Note,
-    last_note?: Flow$Note,
+    first_note?: Vex$Flow$Note,
+    last_note?: Vex$Flow$Note,
     first_indices?: number[],
     last_indices?: number[]
-  }): Flow$StaveTie;
+  }): Vex$Flow$StaveTie;
   isPartial(): boolean;
   renderTie(params: {
     first_ys: number[],
@@ -2307,7 +2261,7 @@ two ties can be used, each with either "first_note" or "last_note" missing.
   draw(): boolean;
 }
 
-declare class Flow$Stem {
+declare class Vex$Flow$Stem {
   constructor(options: {
     x_begin?: number,
     x_end?: number,
@@ -2318,14 +2272,14 @@ declare class Flow$Stem {
     stem_direction?: number
   }): this;
   static DEBUG: boolean;
-  setNoteHeadXBounds(x_begin: number, x_end: number): Flow$Stem;
+  setNoteHeadXBounds(x_begin: number, x_end: number): Vex$Flow$Stem;
   setDirection(direction: number): void;
   setExtension(extension: number): void;
   setYBounds(y_top: number, y_bottom: number): void;
   getCategory(): string;
-  setContext(context: Vex$IRenderContext): Flow$Stem;
+  setContext(context: Vex$IRenderContext): Vex$Flow$Stem;
   getHeight(): number;
-  getBoundingBox(): Flow$BoundingBox;
+  getBoundingBox(): Vex$Flow$BoundingBox;
   getExtents(): {
     topY: number,
     baseY: number
@@ -2342,35 +2296,35 @@ declare class Flow$Stem {
     fillStyle?: string,
     strokeStyle?: string
   };
-  applyStyle(context: Vex$IRenderContext): Flow$Stem;
+  applyStyle(context: Vex$IRenderContext): Vex$Flow$Stem;
   draw(): void;
   hide: boolean;
 }
 
-declare var npm$namespace$Stem: {
-  UP: typeof Stem$UP,
-  DOWN: typeof Stem$DOWN
+declare var npm$namespace$Vex$Flow$Stem: {
+  UP: typeof Vex$Flow$Stem$UP,
+  DOWN: typeof Vex$Flow$Stem$DOWN
 };
-declare var Stem$UP: number;
+declare var Vex$Flow$Stem$UP: number;
 
-declare var Stem$DOWN: number;
+declare var Vex$Flow$Stem$DOWN: number;
 
-declare class Flow$StemmableNote mixins Flow$Note {
-  setBeam(): Flow$Note;
+declare class Vex$Flow$StemmableNote mixins Note {
+  setBeam(): Vex$Flow$Note;
   constructor(note_struct: {
-    StaveHairpin$type?: string,
+    type?: string,
     dots?: number,
     duration: string
   }): this;
   static DEBUG: boolean;
-  getStem(): Flow$Stem;
-  setStem(stem: Flow$Stem): Flow$StemmableNote;
-  buildStem(): Flow$StemmableNote;
+  getStem(): Vex$Flow$Stem;
+  setStem(stem: Vex$Flow$Stem): Vex$Flow$StemmableNote;
+  buildStem(): Vex$Flow$StemmableNote;
   getStemLength(): number;
   getBeamCount(): number;
   getStemMinumumLength(): number;
   getStemDirection(): number;
-  setStemDirection(direction: number): Flow$StemmableNote;
+  setStemDirection(direction: number): Vex$Flow$StemmableNote;
   getStemX(): number;
   getCenterGlyphX(): number;
   getStemExtension(): number;
@@ -2379,10 +2333,10 @@ declare class Flow$StemmableNote mixins Flow$Note {
     topY: number,
     baseY: number
   };
-  setBeam(beam: Flow$Beam): Flow$StemmableNote;
+  setBeam(beam: Vex$Flow$Beam): Vex$Flow$StemmableNote;
   getYForTopText(text_line: number): number;
   getYForBottomText(text_line: number): number;
-  postFormat(): Flow$StemmableNote;
+  postFormat(): Vex$Flow$StemmableNote;
   drawStem(stem_struct: {
     x_begin?: number,
     x_end?: number,
@@ -2394,120 +2348,111 @@ declare class Flow$StemmableNote mixins Flow$Note {
   }): void;
 }
 
-declare class Flow$StringNumber mixins Flow$Modifier {
-  setNote(note: Flow$Note): Flow$StringNumber;
+declare class Vex$Flow$StringNumber mixins Modifier {
+  setNote(note: Vex$Flow$Note): Vex$Flow$StringNumber;
   constructor(number: number): this;
   static format(
-    nums: Flow$StringNumber[],
+    nums: Vex$Flow$StringNumber[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     }
   ): boolean;
-  getNote(): Flow$Note;
-  setNote(note: Flow$StemmableNote): Flow$StringNumber;
+  getNote(): Vex$Flow$Note;
+  setNote(note: Vex$Flow$StemmableNote): Vex$Flow$StringNumber;
   getIndex(): number;
-  setIndex(index: number): Flow$StringNumber;
-  setLineEndType(leg: Flow$Renderer.Renderer$LineEndType): Flow$StringNumber;
-  getPosition(): Flow$Modifier.StaveModifier$Position;
-  setPosition(
-    position: Flow$Modifier.StaveModifier$Position
-  ): Flow$StringNumber;
-  setStringNumber(number: number): Flow$StringNumber;
-  setOffsetX(x: number): Flow$StringNumber;
-  setOffsetY(y: number): Flow$StringNumber;
-  setLastNote(note: Flow$StemmableNote): Flow$StringNumber;
-  setDashed(dashed: boolean): Flow$StringNumber;
+  setIndex(index: number): Vex$Flow$StringNumber;
+  setLineEndType(leg: Renderer$LineEndType): Vex$Flow$StringNumber;
+  getPosition(): Modifier$Position;
+  setPosition(position: Modifier$Position): Vex$Flow$StringNumber;
+  setStringNumber(number: number): Vex$Flow$StringNumber;
+  setOffsetX(x: number): Vex$Flow$StringNumber;
+  setOffsetY(y: number): Vex$Flow$StringNumber;
+  setLastNote(note: Vex$Flow$StemmableNote): Vex$Flow$StringNumber;
+  setDashed(dashed: boolean): Vex$Flow$StringNumber;
   draw(): void;
 }
 
-declare var npm$namespace$StringNumber: {
-  CATEGORY: typeof StringNumber$CATEGORY
+declare var npm$namespace$Vex$Flow$StringNumber: {
+  CATEGORY: typeof Vex$Flow$StringNumber$CATEGORY
 };
-declare var StringNumber$CATEGORY: string;
+declare var Vex$Flow$StringNumber$CATEGORY: string;
 
-declare class Flow$Stroke mixins Flow$Modifier {
+declare class Vex$Flow$Stroke mixins Modifier {
   constructor(
-    StaveHairpin$type: Flow$Stroke.Stroke$Type,
+    type: Stroke$Type,
     options: {
       all_voices?: boolean
     }
   ): this;
   static format(
-    strokes: Flow$Stroke[],
+    strokes: Vex$Flow$Stroke[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     }
   ): boolean;
-  getPosition(): Flow$Modifier.StaveModifier$Position;
-  addEndNote(note: Flow$Note): Flow$Stroke;
+  getPosition(): Modifier$Position;
+  addEndNote(note: Vex$Flow$Note): Vex$Flow$Stroke;
   draw(): void;
 }
 
-declare var npm$namespace$Stroke: {
-  CATEGORY: typeof Stroke$CATEGORY
+declare var npm$namespace$Vex$Flow$Stroke: {
+  CATEGORY: typeof Vex$Flow$Stroke$CATEGORY,
+  Type: typeof Vex$Flow$Stroke$Type
 };
-declare class Stroke$Type {
-  constructor(...args: empty): mixed;
-  static +BRUSH_DOWN: Class<Stroke$Type__BRUSH_DOWN> &
-    Stroke$Type__BRUSH_DOWN &
-    1; // 1
-  static +BRUSH_UP: Class<Stroke$Type__BRUSH_UP> & Stroke$Type__BRUSH_UP & 1; // 1
-  static +ROLL_DOWN: Class<Stroke$Type__ROLL_DOWN> & Stroke$Type__ROLL_DOWN & 2; // 2
-  static +ROLL_UP: Class<Stroke$Type__ROLL_UP> & Stroke$Type__ROLL_UP & 3; // 3
-  static +RASQUEDO_DOWN: Class<Stroke$Type__RASQUEDO_DOWN> &
-    Stroke$Type__RASQUEDO_DOWN &
-    4; // 4
-  static +RASQUEDO_UP: Class<Stroke$Type__RASQUEDO_UP> &
-    Stroke$Type__RASQUEDO_UP &
-    5; // 5
-}
 
-declare class Stroke$Type__BRUSH_DOWN mixins Stroke$Type {}
-declare class Stroke$Type__BRUSH_UP mixins Stroke$Type {}
-declare class Stroke$Type__ROLL_DOWN mixins Stroke$Type {}
-declare class Stroke$Type__ROLL_UP mixins Stroke$Type {}
-declare class Stroke$Type__RASQUEDO_DOWN mixins Stroke$Type {}
-declare class Stroke$Type__RASQUEDO_UP mixins Stroke$Type {}
+declare var Vex$Flow$Stroke$Type: {|
+  +BRUSH_DOWN: 1, // 1
+  +BRUSH_UP: 1, // 1
+  +ROLL_DOWN: 2, // 2
+  +ROLL_UP: 3, // 3
+  +RASQUEDO_DOWN: 4, // 4
+  +RASQUEDO_UP: 5 // 5
+|};
 
-declare var Stroke$CATEGORY: string;
+declare var Vex$Flow$Stroke$CATEGORY: string;
 
-declare class Flow$SVGContext mixins Vex$IRenderContext {
+declare class Vex$Flow$SVGContext mixins IRenderContext {
   constructor(element: HTMLElement): this;
   iePolyfill(): boolean;
-  setFont(family: string, size: number, weight?: number): Flow$SVGContext;
-  setRawFont(font: string): Flow$SVGContext;
-  setFillStyle(style: string): Flow$SVGContext;
-  setBackgroundFillStyle(style: string): Flow$SVGContext;
-  setStrokeStyle(style: string): Flow$SVGContext;
-  setShadowColor(style: string): Flow$SVGContext;
-  setShadowBlur(blur: string): Flow$SVGContext;
-  setLineWidth(width: number): Flow$SVGContext;
-  setLineDash(dash: string): Flow$SVGContext;
-  setLineCap(cap_type: string): Flow$SVGContext;
-  resize(width: number, height: number): Flow$SVGContext;
-  scale(x: number, y: number): Flow$SVGContext;
+  setFont(family: string, size: number, weight?: number): Vex$Flow$SVGContext;
+  setRawFont(font: string): Vex$Flow$SVGContext;
+  setFillStyle(style: string): Vex$Flow$SVGContext;
+  setBackgroundFillStyle(style: string): Vex$Flow$SVGContext;
+  setStrokeStyle(style: string): Vex$Flow$SVGContext;
+  setShadowColor(style: string): Vex$Flow$SVGContext;
+  setShadowBlur(blur: string): Vex$Flow$SVGContext;
+  setLineWidth(width: number): Vex$Flow$SVGContext;
+  setLineDash(dash: string): Vex$Flow$SVGContext;
+  setLineCap(cap_type: string): Vex$Flow$SVGContext;
+  resize(width: number, height: number): Vex$Flow$SVGContext;
+  scale(x: number, y: number): Vex$Flow$SVGContext;
   setViewBox(xMin: number, yMin: number, width: number, height: number): void;
   clear(): void;
-  rect(x: number, y: number, width: number, height: number): Flow$SVGContext;
+  rect(
+    x: number,
+    y: number,
+    width: number,
+    height: number
+  ): Vex$Flow$SVGContext;
   fillRect(
     x: number,
     y: number,
     width: number,
     height: number
-  ): Flow$SVGContext;
+  ): Vex$Flow$SVGContext;
   clearRect(
     x: number,
     y: number,
     width: number,
     height: number
-  ): Flow$SVGContext;
-  beginPath(): Flow$SVGContext;
-  moveTo(x: number, y: number): Flow$SVGContext;
-  lineTo(x: number, y: number): Flow$SVGContext;
+  ): Vex$Flow$SVGContext;
+  beginPath(): Vex$Flow$SVGContext;
+  moveTo(x: number, y: number): Vex$Flow$SVGContext;
+  lineTo(x: number, y: number): Vex$Flow$SVGContext;
   bezierCurveToTo(
     x1: number,
     y1: number,
@@ -2515,13 +2460,13 @@ declare class Flow$SVGContext mixins Vex$IRenderContext {
     y2: number,
     x: number,
     y: number
-  ): Flow$SVGContext;
+  ): Vex$Flow$SVGContext;
   quadraticCurveToTo(
     x1: number,
     y1: number,
     x: number,
     y: number
-  ): Flow$SVGContext;
+  ): Vex$Flow$SVGContext;
   arc(
     x: number,
     y: number,
@@ -2529,11 +2474,11 @@ declare class Flow$SVGContext mixins Vex$IRenderContext {
     startAngle: number,
     endAngle: number,
     antiClockwise: boolean
-  ): Flow$SVGContext;
-  closePath(): Flow$SVGContext;
-  glow(): Flow$SVGContext;
-  fill(): Flow$SVGContext;
-  stroke(): Flow$SVGContext;
+  ): Vex$Flow$SVGContext;
+  closePath(): Vex$Flow$SVGContext;
+  glow(): Vex$Flow$SVGContext;
+  fill(): Vex$Flow$SVGContext;
+  stroke(): Vex$Flow$SVGContext;
   measureText(text: string): SVGRect;
   ieMeasureTextFix(
     bbox: SVGRect,
@@ -2544,13 +2489,13 @@ declare class Flow$SVGContext mixins Vex$IRenderContext {
     width: number,
     height: number
   };
-  fillText(text: string, x: number, y: number): Flow$SVGContext;
-  save(): Flow$SVGContext;
-  restore(): Flow$SVGContext;
+  fillText(text: string, x: number, y: number): Vex$Flow$SVGContext;
+  save(): Vex$Flow$SVGContext;
+  restore(): Vex$Flow$SVGContext;
 }
 
-declare class Flow$TabNote mixins Flow$StemmableNote {
-  setStave(stave: Flow$Stave): Flow$Note;
+declare class Vex$Flow$TabNote mixins StemmableNote {
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$Note;
   getModifierStartXY(): {
     x: number,
     y: number
@@ -2561,7 +2506,7 @@ declare class Flow$TabNote mixins Flow$StemmableNote {
         str: number,
         fret: number
       }[],
-      StaveHairpin$type?: string,
+      type?: string,
       dots?: number,
       duration: string,
       stem_direction?: number
@@ -2569,21 +2514,21 @@ declare class Flow$TabNote mixins Flow$StemmableNote {
     draw_stem?: boolean
   ): this;
   getCategory(): string;
-  setGhost(ghost: boolean): Flow$TabNote;
+  setGhost(ghost: boolean): Vex$Flow$TabNote;
   hasStem(): boolean;
   getStemExtension(): number;
-  addDot(): Flow$TabNote;
+  addDot(): Vex$Flow$TabNote;
   updateWidth(): void;
-  setStave(stave: Flow$Stave): Flow$TabNote;
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$TabNote;
   getPositions(): {
     str: number,
     fret: number
   }[];
-  addToModifierContext(mc: Flow$ModifierContext): Flow$TabNote;
+  addToModifierContext(mc: Vex$Flow$ModifierContext): Vex$Flow$TabNote;
   getTieRightX(): number;
   getTieLeftX(): number;
   getModifierStartXY(
-    position: Flow$Modifier.StaveModifier$Position,
+    position: Modifier$Position,
     index: number
   ): {
     x: number,
@@ -2603,28 +2548,28 @@ declare class Flow$TabNote mixins Flow$StemmableNote {
   draw(): void;
 }
 
-declare class Flow$TabSlide mixins Flow$TabTie {
+declare class Vex$Flow$TabSlide mixins TabTie {
   constructor(
     notes: {
-      first_note: Flow$Note,
-      last_note: Flow$Note,
+      first_note: Vex$Flow$Note,
+      last_note: Vex$Flow$Note,
       first_indices: number[],
       last_indices: number[]
     },
     direction?: number
   ): this;
   static createSlideUp(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices: number[],
     last_indices: number[]
-  }): Flow$TabSlide;
+  }): Vex$Flow$TabSlide;
   static createSlideDown(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices: number[],
     last_indices: number[]
-  }): Flow$TabSlide;
+  }): Vex$Flow$TabSlide;
   renderTie(params: {
     first_ys: number[],
     last_ys: number[],
@@ -2634,15 +2579,15 @@ declare class Flow$TabSlide mixins Flow$TabTie {
   }): void;
 }
 
-declare var npm$namespace$TabSlide: {
-  SLIDE_UP: typeof TabSlide$SLIDE_UP,
-  SLIDE_DOWN: typeof TabSlide$SLIDE_DOWN
+declare var npm$namespace$Vex$Flow$TabSlide: {
+  SLIDE_UP: typeof Vex$Flow$TabSlide$SLIDE_UP,
+  SLIDE_DOWN: typeof Vex$Flow$TabSlide$SLIDE_DOWN
 };
-declare var TabSlide$SLIDE_UP: number;
+declare var Vex$Flow$TabSlide$SLIDE_UP: number;
 
-declare var TabSlide$SLIDE_DOWN: number;
+declare var Vex$Flow$TabSlide$SLIDE_DOWN: number;
 
-declare class Flow$TabStave mixins Flow$Stave {
+declare class Vex$Flow$TabStave mixins Stave {
   constructor(
     x: number,
     y: number,
@@ -2659,81 +2604,77 @@ declare class Flow$TabStave mixins Flow$Stave {
     }
   ): this;
   getYForGlyphs(): number;
-  addTabGlyph(): Flow$TabStave;
+  addTabGlyph(): Vex$Flow$TabStave;
 }
 
-declare class Flow$TabTie mixins Flow$StaveTie {
+declare class Vex$Flow$TabTie mixins StaveTie {
   constructor(
     notes: {
-      first_note: Flow$Note,
-      last_note: Flow$Note,
+      first_note: Vex$Flow$Note,
+      last_note: Vex$Flow$Note,
       first_indices: number[],
       last_indices: number[]
     },
     text?: string
   ): this;
   createHammeron(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices: number[],
     last_indices: number[]
-  }): Flow$TabTie;
+  }): Vex$Flow$TabTie;
   createPulloff(notes: {
-    first_note: Flow$Note,
-    last_note: Flow$Note,
+    first_note: Vex$Flow$Note,
+    last_note: Vex$Flow$Note,
     first_indices: number[],
     last_indices: number[]
-  }): Flow$TabTie;
+  }): Vex$Flow$TabTie;
   draw(): boolean;
 }
 
-declare class Flow$TextBracket {
+declare class Vex$Flow$TextBracket {
   constructor(bracket_data: {
-    start: Flow$Note,
-    stop: Flow$Note,
+    start: Vex$Flow$Note,
+    stop: Vex$Flow$Note,
     text?: string,
     superscript?: string,
-    position?: Flow$TextBracket.TextBracket$Positions
+    position?: TextBracket$Positions
   }): this;
   static DEBUG: boolean;
-  applyStyle(context: Vex$IRenderContext): Flow$TextBracket;
-  setDashed(dashed: boolean, dash?: number[]): Flow$TextBracket;
+  applyStyle(context: Vex$IRenderContext): Vex$Flow$TextBracket;
+  setDashed(dashed: boolean, dash?: number[]): Vex$Flow$TextBracket;
   setFont(font: {
     family: string,
     size: number,
     weight: string
-  }): Flow$TextBracket;
-  setContext(context: Vex$IRenderContext): Flow$TextBracket;
-  setLine(line: number): Flow$TextBracket;
+  }): Vex$Flow$TextBracket;
+  setContext(context: Vex$IRenderContext): Vex$Flow$TextBracket;
+  setLine(line: number): Vex$Flow$TextBracket;
   draw(): void;
 }
 
-declare class TextBracket$Positions {
-  constructor(...args: empty): mixed;
-  static +TOP: Class<TextBracket$Positions__TOP> &
-    TextBracket$Positions__TOP &
-    1; // 1
-  static +BOTTOM: Class<TextBracket$Positions__BOTTOM> &
-    TextBracket$Positions__BOTTOM &
-    -1; // -1
-}
+declare var npm$namespace$Vex$Flow$TextBracket: {
+  Positions: typeof Vex$Flow$TextBracket$Positions
+};
 
-declare class TextBracket$Positions__TOP mixins TextBracket$Positions {}
-declare class TextBracket$Positions__BOTTOM mixins TextBracket$Positions {}
+declare var Vex$Flow$TextBracket$Positions: {|
+  +TOP: 1, // 1
+  +BOTTOM: -1 // -1
+|};
 
-declare class Flow$TextDynamics mixins Flow$Note {
+declare class Vex$Flow$TextDynamics mixins Note {
   constructor(text_struct: {
     duration: string,
     text: string,
     line?: number
   }): this;
   static DEBUG: boolean;
-  setLine(line: number): Flow$TextDynamics;
-  preFormat(): Flow$TextDynamics;
+  setLine(line: number): Vex$Flow$TextDynamics;
+  preFormat(): Vex$Flow$TextDynamics;
   draw(): void;
 }
 
-declare class Flow$TextNote mixins Flow$Note {
+declare class Vex$Flow$TextNote mixins Note {
   constructor(text_struct: {
     duration: string,
     text?: string,
@@ -2749,33 +2690,24 @@ declare class Flow$TextNote mixins Flow$Note {
     smooth?: boolean,
     ignore_ticks?: boolean
   }): this;
-  setJustification(just: Flow$TextNote.TextNote$Justification): Flow$TextNote;
-  setLine(line: number): Flow$TextNote;
+  setJustification(just: TextNote$Justification): Vex$Flow$TextNote;
+  setLine(line: number): Vex$Flow$TextNote;
   preFormat(): void;
   draw(): void;
 }
 
-declare var npm$namespace$TextNote: {
-  GLYPHS: typeof TextNote$GLYPHS
+declare var npm$namespace$Vex$Flow$TextNote: {
+  GLYPHS: typeof Vex$Flow$TextNote$GLYPHS,
+  Justification: typeof Vex$Flow$TextNote$Justification
 };
-declare class TextNote$Justification {
-  constructor(...args: empty): mixed;
-  static +LEFT: Class<TextNote$Justification__LEFT> &
-    TextNote$Justification__LEFT &
-    1; // 1
-  static +CENTER: Class<TextNote$Justification__CENTER> &
-    TextNote$Justification__CENTER &
-    1; // 1
-  static +RIGHT: Class<TextNote$Justification__RIGHT> &
-    TextNote$Justification__RIGHT &
-    2; // 2
-}
 
-declare class TextNote$Justification__LEFT mixins TextNote$Justification {}
-declare class TextNote$Justification__CENTER mixins TextNote$Justification {}
-declare class TextNote$Justification__RIGHT mixins TextNote$Justification {}
+declare var Vex$Flow$TextNote$Justification: {|
+  +LEFT: 1, // 1
+  +CENTER: 1, // 1
+  +RIGHT: 2 // 2
+|};
 
-declare var TextNote$GLYPHS: {
+declare var Vex$Flow$TextNote$GLYPHS: {
   [name: string]: {
     code: string,
     point: number,
@@ -2784,71 +2716,71 @@ declare var TextNote$GLYPHS: {
   }
 };
 
-declare interface Flow$Tickable {
+declare interface Vex$Flow$Tickable {
   setContext(context: Vex$IRenderContext): void;
-  getBoundingBox(): Flow$BoundingBox;
-  getTicks(): Flow$Fraction;
+  getBoundingBox(): Vex$Flow$BoundingBox;
+  getTicks(): Vex$Flow$Fraction;
   shouldIgnoreTicks(): boolean;
   getWidth(): number;
-  setXShift(x: number): Flow$Tickable;
+  setXShift(x: number): Vex$Flow$Tickable;
   getCenterXShift(): number;
   isCenterAligned(): boolean;
-  setCenterAlignment(align_center: boolean): Flow$Tickable;
+  setCenterAlignment(align_center: boolean): Vex$Flow$Tickable;
   getVoice(): Flow$Voice;
   setVoice(voice: Flow$Voice): void;
   getTuplet(): Flow$Tuplet;
-  setTuplet(tuplet: Flow$Tuplet): Flow$Tickable;
-  addToModifierContext(mc: Flow$ModifierContext): void;
-  addModifier(mod: Flow$Modifier): Flow$Tickable;
+  setTuplet(tuplet: Flow$Tuplet): Vex$Flow$Tickable;
+  addToModifierContext(mc: Vex$Flow$ModifierContext): void;
+  addModifier(mod: Vex$Flow$Modifier): Vex$Flow$Tickable;
   setTickContext(tc: Flow$TickContext): void;
   preFormat(): void;
-  postFormat(): Flow$Tickable;
-  getIntrinsicTicks(): Flow$Fraction;
-  setIntrinsicTicks(intrinsicTicks: Flow$Fraction): void;
-  getTickMultiplier(): Flow$Fraction;
+  postFormat(): Vex$Flow$Tickable;
+  getIntrinsicTicks(): Vex$Flow$Fraction;
+  setIntrinsicTicks(intrinsicTicks: Vex$Flow$Fraction): void;
+  getTickMultiplier(): Vex$Flow$Fraction;
   applyTickMultiplier(numerator: number, denominator: number): void;
-  setDuration(duration: Flow$Fraction): void;
+  setDuration(duration: Vex$Flow$Fraction): void;
 }
 
-declare class Flow$TickContext {
+declare class Vex$Flow$TickContext {
   setContext(context: Vex$IRenderContext): void;
   getContext(): Vex$IRenderContext;
   shouldIgnoreTicks(): boolean;
   getWidth(): number;
   getX(): number;
-  setX(x: number): Flow$TickContext;
+  setX(x: number): Vex$Flow$TickContext;
   getXBase(): number;
   setXBase(xBase: number): void;
   getXOffset(): number;
   setXOffset(xOffset: number): void;
   getPixelsUsed(): number;
-  setPixelsUsed(pixelsUsed: number): Flow$TickContext;
-  setPadding(padding: number): Flow$TickContext;
+  setPixelsUsed(pixelsUsed: number): Vex$Flow$TickContext;
+  setPadding(padding: number): Vex$Flow$TickContext;
   getMaxTicks(): number;
   getMinTicks(): number;
-  getTickables(): Flow$Tickable[];
-  getCenterAlignedTickables(): Flow$Tickable[];
+  getTickables(): Vex$Flow$Tickable[];
+  getCenterAlignedTickables(): Vex$Flow$Tickable[];
   getMetrics(): {
     width: number,
     notePx: number,
     extraLeftPx: number,
     extraRightPx: number
   };
-  getCurrentTick(): Flow$Fraction;
-  setCurrentTick(tick: Flow$Fraction): void;
+  getCurrentTick(): Vex$Flow$Fraction;
+  setCurrentTick(tick: Vex$Flow$Fraction): void;
   getExtraPx(): {
     left: number,
     right: number,
     extraLeft: number,
     extraRight: number
   };
-  addTickable(tickable: Flow$Tickable): Flow$TickContext;
-  preFormat(): Flow$TickContext;
-  postFormat(): Flow$TickContext;
-  static getNextContext(tContext: Flow$TickContext): Flow$TickContext;
+  addTickable(tickable: Vex$Flow$Tickable): Vex$Flow$TickContext;
+  preFormat(): Vex$Flow$TickContext;
+  postFormat(): Vex$Flow$TickContext;
+  static getNextContext(tContext: Vex$Flow$TickContext): Vex$Flow$TickContext;
 }
 
-declare class Flow$TimeSignature mixins Flow$StaveModifier {
+declare class Vex$Flow$TimeSignature mixins StaveModifier {
   addModifier(): void;
   addEndModifier(): void;
   constructor(timeSpec: string, customPadding?: number): this;
@@ -2856,21 +2788,21 @@ declare class Flow$TimeSignature mixins Flow$StaveModifier {
     timeSpec: string
   ): {
     num: number,
-    glyph: Flow$Glyph
+    glyph: Vex$Flow$Glyph
   };
-  makeTimeSignatureGlyph(topNums: number[], botNums: number[]): Flow$Glyph;
+  makeTimeSignatureGlyph(topNums: number[], botNums: number[]): Vex$Flow$Glyph;
   getTimeSig(): {
     num: number,
-    glyph: Flow$Glyph
+    glyph: Vex$Flow$Glyph
   };
-  addModifier(stave: Flow$Stave): void;
-  addEndModifier(stave: Flow$Stave): void;
+  addModifier(stave: Vex$Flow$Stave): void;
+  addEndModifier(stave: Vex$Flow$Stave): void;
 }
 
-declare var npm$namespace$TimeSignature: {
-  glyphs: typeof TimeSignature$glyphs
+declare var npm$namespace$Vex$Flow$TimeSignature: {
+  glyphs: typeof Vex$Flow$TimeSignature$glyphs
 };
-declare var TimeSignature$glyphs: {
+declare var Vex$Flow$TimeSignature$glyphs: {
   [name: string]: {
     code: string,
     point: number,
@@ -2878,23 +2810,23 @@ declare var TimeSignature$glyphs: {
   }
 };
 
-declare class Flow$TimeSigNote mixins Flow$Note {
-  setStave(stave: Flow$Stave): Flow$Note;
+declare class Vex$Flow$TimeSigNote mixins Note {
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$Note;
   constructor(timeSpec: string, customPadding: number): this;
-  setStave(stave: Flow$Stave): void;
-  getBoundingBox(): Flow$BoundingBox;
-  addToModifierContext(): Flow$TimeSigNote;
-  preFormat(): Flow$TimeSigNote;
+  setStave(stave: Vex$Flow$Stave): void;
+  getBoundingBox(): Vex$Flow$BoundingBox;
+  addToModifierContext(): Vex$Flow$TimeSigNote;
+  preFormat(): Vex$Flow$TimeSigNote;
   draw(): void;
 }
 
-declare class Flow$Tremolo mixins Flow$Modifier {
+declare class Vex$Flow$Tremolo mixins Modifier {
   constructor(num: number): this;
   getCategory(): string;
   draw(): void;
 }
 
-declare class Flow$Tuning {
+declare class Vex$Flow$Tuning {
   constructor(tuningString?: string): this;
   noteToInteger(noteString: string): number;
   setTuning(tuningString: string): void;
@@ -2903,16 +2835,16 @@ declare class Flow$Tuning {
   getNoteForFret(fretNum: string, stringNum: string): string;
 }
 
-declare var npm$namespace$Tuning: {
-  names: typeof Tuning$names
+declare var npm$namespace$Vex$Flow$Tuning: {
+  names: typeof Vex$Flow$Tuning$names
 };
-declare var Tuning$names: {
+declare var Vex$Flow$Tuning$names: {
   [name: string]: string
 };
 
-declare class Flow$Tuplet {
+declare class Vex$Flow$Tuplet {
   constructor(
-    notes: Flow$StaveNote[],
+    notes: Vex$Flow$StaveNote[],
     options?: {
       num_notes?: number,
       beats_occupied?: number
@@ -2920,11 +2852,11 @@ declare class Flow$Tuplet {
   ): this;
   attach(): void;
   detach(): void;
-  setContext(context: Vex$IRenderContext): Flow$Tuplet;
-  setBracketed(bracketed: boolean): Flow$Tuplet;
-  setRatioed(ratioed: boolean): Flow$Tuplet;
-  setTupletLocation(location: number): Flow$Tuplet;
-  getNotes(): Flow$StaveNote[];
+  setContext(context: Vex$IRenderContext): Vex$Flow$Tuplet;
+  setBracketed(bracketed: boolean): Vex$Flow$Tuplet;
+  setRatioed(ratioed: boolean): Vex$Flow$Tuplet;
+  setTupletLocation(location: number): Vex$Flow$Tuplet;
+  getNotes(): Vex$Flow$StaveNote[];
   getNoteCount(): number;
   getBeatsOccupied(): number;
   setBeatsOccupied(beats: number): void;
@@ -2932,104 +2864,100 @@ declare class Flow$Tuplet {
   draw(): void;
 }
 
-declare var npm$namespace$Tuplet: {
-  LOCATION_TOP: typeof Tuplet$LOCATION_TOP,
-  LOCATION_BOTTOM: typeof Tuplet$LOCATION_BOTTOM
+declare var npm$namespace$Vex$Flow$Tuplet: {
+  LOCATION_TOP: typeof Vex$Flow$Tuplet$LOCATION_TOP,
+  LOCATION_BOTTOM: typeof Vex$Flow$Tuplet$LOCATION_BOTTOM
 };
-declare var Tuplet$LOCATION_TOP: number;
+declare var Vex$Flow$Tuplet$LOCATION_TOP: number;
 
-declare var Tuplet$LOCATION_BOTTOM: number;
+declare var Vex$Flow$Tuplet$LOCATION_BOTTOM: number;
 
-declare class Flow$Vibrato mixins Flow$Modifier {
+declare class Vex$Flow$Vibrato mixins Modifier {
   static format(
-    vibratos: Flow$Vibrato[],
+    vibratos: Vex$Flow$Vibrato[],
     state: {
       left_shift: number,
       right_shift: number,
       text_line: number
     },
-    context: Flow$ModifierContext
+    context: Vex$Flow$ModifierContext
   ): boolean;
-  setHarsh(harsh: boolean): Flow$Vibrato;
-  setVibratoWidth(width: number): Flow$Vibrato;
+  setHarsh(harsh: boolean): Vex$Flow$Vibrato;
+  setVibratoWidth(width: number): Vex$Flow$Vibrato;
   draw(): void;
 }
 
-declare var npm$namespace$Vibrato: {
-  CATEGORY: typeof Vibrato$CATEGORY
+declare var npm$namespace$Vex$Flow$Vibrato: {
+  CATEGORY: typeof Vex$Flow$Vibrato$CATEGORY
 };
-declare var Vibrato$CATEGORY: string;
+declare var Vex$Flow$Vibrato$CATEGORY: string;
 
-declare class Flow$Voice {
+declare class Vex$Flow$Voice {
   constructor(time: {
     num_beats?: number,
     beat_value?: number,
     resolution?: number
   }): this;
-  getTotalTicks(): Flow$Fraction;
-  getTicksUsed(): Flow$Fraction;
+  getTotalTicks(): Vex$Flow$Fraction;
+  getTicksUsed(): Vex$Flow$Fraction;
   getLargestTickWidth(): number;
-  getSmallestTickCount(): Flow$Fraction;
-  getTickables(): Flow$Tickable[];
+  getSmallestTickCount(): Vex$Flow$Fraction;
+  getTickables(): Vex$Flow$Tickable[];
   getMode(): number;
-  setMode(mode: number): Flow$Voice;
+  setMode(mode: number): Vex$Flow$Voice;
   getResolutionMultiplier(): number;
   getActualResolution(): number;
-  setStave(stave: Flow$Stave): Flow$Voice;
-  getBoundingBox(): Flow$BoundingBox;
+  setStave(stave: Vex$Flow$Stave): Vex$Flow$Voice;
+  getBoundingBox(): Vex$Flow$BoundingBox;
   getVoiceGroup(): Flow$VoiceGroup;
-  setVoiceGroup(g: Flow$VoiceGroup): Flow$Voice;
-  setStrict(strict: boolean): Flow$Voice;
+  setVoiceGroup(g: Flow$VoiceGroup): Vex$Flow$Voice;
+  setStrict(strict: boolean): Vex$Flow$Voice;
   isComplete(): boolean;
-  addTickable(tickable: Flow$Tickable): Flow$Voice;
-  addTickables(tickables: Flow$Tickable[]): Flow$Voice;
-  preFormat(): Flow$Voice;
-  draw(context: Vex$IRenderContext, stave?: Flow$Stave): void;
+  addTickable(tickable: Vex$Flow$Tickable): Vex$Flow$Voice;
+  addTickables(tickables: Vex$Flow$Tickable[]): Vex$Flow$Voice;
+  preFormat(): Vex$Flow$Voice;
+  draw(context: Vex$IRenderContext, stave?: Vex$Flow$Stave): void;
 }
 
-declare class Voice$Mode {
-  constructor(...args: empty): mixed;
-  static +STRICT: Class<Voice$Mode__STRICT> & Voice$Mode__STRICT & 1; // 1
-  static +SOFT: Class<Voice$Mode__SOFT> & Voice$Mode__SOFT & 1; // 1
-  static +FULL: Class<Voice$Mode__FULL> & Voice$Mode__FULL & 2; // 2
+declare var npm$namespace$Vex$Flow$Voice: {
+  Mode: typeof Vex$Flow$Voice$Mode
+};
+
+declare var Vex$Flow$Voice$Mode: {|
+  +STRICT: 1, // 1
+  +SOFT: 1, // 1
+  +FULL: 2 // 2
+|};
+
+declare class Vex$Flow$VoiceGroup {
+  getVoices(): Vex$Flow$Voice[];
+  getModifierContexts(): Vex$Flow$ModifierContext[];
+  addVoice(voice: Vex$Flow$Voice): void;
 }
 
-declare class Voice$Mode__STRICT mixins Voice$Mode {}
-declare class Voice$Mode__SOFT mixins Voice$Mode {}
-declare class Voice$Mode__FULL mixins Voice$Mode {}
-
-declare class Flow$VoiceGroup {
-  getVoices(): Flow$Voice[];
-  getModifierContexts(): Flow$ModifierContext[];
-  addVoice(voice: Flow$Voice): void;
-}
-
-declare class Flow$Volta mixins Flow$StaveModifier {
+declare class Vex$Flow$Volta mixins StaveModifier {
   constructor(
-    StaveHairpin$type: Flow$Volta.StaveHairpin$type,
+    type: Volta$type,
     number: number,
     x: number,
     y_shift: number
   ): this;
   getCategory(): string;
-  setShiftY(y: number): Flow$Volta;
-  draw(stave: Flow$Stave, x: number): Flow$Volta;
+  setShiftY(y: number): Vex$Flow$Volta;
+  draw(stave: Vex$Flow$Stave, x: number): Vex$Flow$Volta;
 }
 
-declare class Volta$type {
-  constructor(...args: empty): mixed;
-  static +NONE: Class<Volta$type__NONE> & Volta$type__NONE & 1; // 1
-  static +BEGIN: Class<Volta$type__BEGIN> & Volta$type__BEGIN & 1; // 1
-  static +MID: Class<Volta$type__MID> & Volta$type__MID & 2; // 2
-  static +END: Class<Volta$type__END> & Volta$type__END & 3; // 3
-  static +BEGIN_END: Class<Volta$type__BEGIN_END> & Volta$type__BEGIN_END & 4; // 4
-}
+declare var npm$namespace$Vex$Flow$Volta: {
+  type: typeof Vex$Flow$Volta$type
+};
 
-declare class Volta$type__NONE mixins Volta$type {}
-declare class Volta$type__BEGIN mixins Volta$type {}
-declare class Volta$type__MID mixins Volta$type {}
-declare class Volta$type__END mixins Volta$type {}
-declare class Volta$type__BEGIN_END mixins Volta$type {}
+declare var Vex$Flow$Volta$type: {|
+  +NONE: 1, // 1
+  +BEGIN: 1, // 1
+  +MID: 2, // 2
+  +END: 3, // 3
+  +BEGIN_END: 4 // 4
+|};
 declare module "vexflow" {
-  declare module.exports: typeof Vex;
+  declare export default typeof Vex;
 }
