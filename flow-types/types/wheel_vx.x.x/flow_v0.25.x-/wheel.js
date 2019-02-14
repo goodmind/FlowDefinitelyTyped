@@ -31,5 +31,5 @@ declare module "wheel" {
     useCapture?: boolean
   ): void;
 
-  declare module.exports: typeof wheel;
+  declare export default typeof wheel;
 }
