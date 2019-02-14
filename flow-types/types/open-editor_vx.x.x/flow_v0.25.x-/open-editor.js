@@ -1,11 +1,11 @@
 declare module "open-editor" {
   import type { PathSpec } from "line-column-path";
 
-  declare module.exports: typeof openEditor;
+  declare export default typeof openEditor;
 
   declare function openEditor(
     files: PathSpec[],
-    options?: openEditor$openEditor$Options
+    options?: openEditor$Options
   ): void;
 
   declare var npm$namespace$openEditor: {
