@@ -73,11 +73,9 @@ declare module "require-directory" {
    */
   declare function requireDirectory<T, U>(
     m: NodeModule,
-    path?:
-      | string
-      | requireDirectory$requireDirectory$RequireDirectoryOptions<T, U>,
-    options?: requireDirectory$requireDirectory$RequireDirectoryOptions<T, U>
-  ): requireDirectory$requireDirectory$RequireDirectoryResult<U>;
+    path?: string | requireDirectory$RequireDirectoryOptions<T, U>,
+    options?: requireDirectory$RequireDirectoryOptions<T, U>
+  ): requireDirectory$RequireDirectoryResult<U>;
 
-  declare module.exports: typeof requireDirectory;
+  declare export default typeof requireDirectory;
 }
