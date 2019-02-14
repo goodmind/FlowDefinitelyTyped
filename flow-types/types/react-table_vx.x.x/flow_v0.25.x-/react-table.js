@@ -563,11 +563,11 @@ declare module "react-table" {
      */
     rowsText: string;
   }
-  declare export type GlobalColumn = {} & Column$Column$Basics &
-    Column$Column$CellProps &
-    Column$Column$FilterProps &
-    Column$Column$FooterProps &
-    Column$Column$HeaderProps;
+  declare export type GlobalColumn = {} & Column$Basics &
+    Column$CellProps &
+    Column$FilterProps &
+    Column$FooterProps &
+    Column$HeaderProps;
 
   /**
    * Basic column props
@@ -831,11 +831,11 @@ declare module "react-table" {
      * It will also let you specify rendering of the header (and header group if this special column is placed in the `columns` option of another column)
      */
     pivot?: boolean
-  } & $Shape<Column$Column$Basics> &
-    $Shape<Column$Column$CellProps> &
-    $Shape<Column$Column$FilterProps> &
-    $Shape<Column$Column$FooterProps> &
-    $Shape<Column$Column$HeaderProps>;
+  } & $Shape<Column$Basics> &
+    $Shape<Column$CellProps> &
+    $Shape<Column$FilterProps> &
+    $Shape<Column$FooterProps> &
+    $Shape<Column$HeaderProps>;
 
   declare export interface ColumnRenderProps<D = any> {
     /**
