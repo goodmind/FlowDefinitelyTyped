@@ -1,26 +1,30 @@
 declare module "gapi.client.appengine" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    apps: typeof client$apps
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    apps: typeof gapi$client$apps
   };
 
   /**
    * Load Google App Engine Admin API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appengine",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "appengine",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$apps: appengine$appengine$AppsResource;
+  declare var gapi$client$apps: appengine$AppsResource;
 
-  declare interface appengine$ApiConfigHandler {
+  declare interface gapi$client$appengine$ApiConfigHandler {
     /**
      * Action to take when users access resources that require authentication. Defaults to redirect.
      */
@@ -47,14 +51,14 @@ declare module "gapi.client.appengine" {
     url?: string;
   }
 
-  declare interface appengine$ApiEndpointHandler {
+  declare interface gapi$client$appengine$ApiEndpointHandler {
     /**
      * Path to the script from the application root directory.
      */
     scriptPath?: string;
   }
 
-  declare interface appengine$Application {
+  declare interface gapi$client$appengine$Application {
     /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */
@@ -122,7 +126,7 @@ declare module "gapi.client.appengine" {
     servingStatus?: string;
   }
 
-  declare interface appengine$AuthorizedCertificate {
+  declare interface gapi$client$appengine$AuthorizedCertificate {
     /**
      * The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
      */
@@ -169,7 +173,7 @@ declare module "gapi.client.appengine" {
     visibleDomainMappings?: string[];
   }
 
-  declare interface appengine$AuthorizedDomain {
+  declare interface gapi$client$appengine$AuthorizedDomain {
     /**
      * Fully qualified domain name of the domain authorized for use. Example: example.com.
      */
@@ -181,7 +185,7 @@ declare module "gapi.client.appengine" {
     name?: string;
   }
 
-  declare interface appengine$AutomaticScaling {
+  declare interface gapi$client$appengine$AutomaticScaling {
     /**
      * Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait between changes to the number of virtual machines.
      * Only applicable for VM runtimes.
@@ -244,7 +248,7 @@ declare module "gapi.client.appengine" {
     requestUtilization?: appengine$RequestUtilization;
   }
 
-  declare interface appengine$BasicScaling {
+  declare interface gapi$client$appengine$BasicScaling {
     /**
      * Duration of time after the last request that an instance must wait before the instance is shut down.
      */
@@ -256,21 +260,21 @@ declare module "gapi.client.appengine" {
     maxInstances?: number;
   }
 
-  declare interface appengine$BatchUpdateIngressRulesRequest {
+  declare interface gapi$client$appengine$BatchUpdateIngressRulesRequest {
     /**
      * A list of FirewallRules to replace the existing set.
      */
     ingressRules?: appengine$FirewallRule[];
   }
 
-  declare interface appengine$BatchUpdateIngressRulesResponse {
+  declare interface gapi$client$appengine$BatchUpdateIngressRulesResponse {
     /**
      * The full list of ingress FirewallRules for this application.
      */
     ingressRules?: appengine$FirewallRule[];
   }
 
-  declare interface appengine$CertificateRawData {
+  declare interface gapi$client$appengine$CertificateRawData {
     /**
      * Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer.
      * Must include the header and footer. Example: <pre> -----BEGIN RSA PRIVATE KEY----- <unencrypted_key_value> -----END RSA PRIVATE KEY----- </pre>
@@ -285,7 +289,7 @@ declare module "gapi.client.appengine" {
     publicCertificate?: string;
   }
 
-  declare interface appengine$ContainerInfo {
+  declare interface gapi$client$appengine$ContainerInfo {
     /**
      * URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples:
      * "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -293,7 +297,7 @@ declare module "gapi.client.appengine" {
     image?: string;
   }
 
-  declare interface appengine$CpuUtilization {
+  declare interface gapi$client$appengine$CpuUtilization {
     /**
      * Period of time over which CPU utilization is calculated.
      */
@@ -305,7 +309,7 @@ declare module "gapi.client.appengine" {
     targetUtilization?: number;
   }
 
-  declare interface appengine$DebugInstanceRequest {
+  declare interface gapi$client$appengine$DebugInstanceRequest {
     /**
      * Public SSH key to add to the instance. Examples:
      * [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
@@ -315,11 +319,11 @@ declare module "gapi.client.appengine" {
     sshKey?: string;
   }
 
-  declare interface appengine$Deployment {
+  declare interface gapi$client$appengine$Deployment {
     /**
      * The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
      */
-    container?: appengine$ContainerInfo;
+    container?: gapi$client$appengine$ContainerInfo;
 
     /**
      * Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials
@@ -333,7 +337,7 @@ declare module "gapi.client.appengine" {
     zip?: appengine$ZipInfo;
   }
 
-  declare interface appengine$DiskUtilization {
+  declare interface gapi$client$appengine$DiskUtilization {
     /**
      * Target bytes read per second.
      */
@@ -355,7 +359,7 @@ declare module "gapi.client.appengine" {
     targetWriteOpsPerSecond?: number;
   }
 
-  declare interface appengine$DomainMapping {
+  declare interface gapi$client$appengine$DomainMapping {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
@@ -378,7 +382,7 @@ declare module "gapi.client.appengine" {
     sslSettings?: appengine$SslSettings;
   }
 
-  declare interface appengine$EndpointsApiService {
+  declare interface gapi$client$appengine$EndpointsApiService {
     /**
      * Endpoints service configuration id as specified by the Service Management API. For example "2016-09-19r1"
      */
@@ -390,7 +394,7 @@ declare module "gapi.client.appengine" {
     name?: string;
   }
 
-  declare interface appengine$ErrorHandler {
+  declare interface gapi$client$appengine$ErrorHandler {
     /**
      * Error condition this handler applies to.
      */
@@ -407,7 +411,7 @@ declare module "gapi.client.appengine" {
     staticFile?: string;
   }
 
-  declare interface appengine$FeatureSettings {
+  declare interface gapi$client$appengine$FeatureSettings {
     /**
      * Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to
      * 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is
@@ -416,7 +420,7 @@ declare module "gapi.client.appengine" {
     splitHealthChecks?: boolean;
   }
 
-  declare interface appengine$FileInfo {
+  declare interface gapi$client$appengine$FileInfo {
     /**
      * The MIME type of the file.Defaults to the value from Google Cloud Storage.
      */
@@ -434,7 +438,7 @@ declare module "gapi.client.appengine" {
     sourceUrl?: string;
   }
 
-  declare interface appengine$FirewallRule {
+  declare interface gapi$client$appengine$FirewallRule {
     /**
      * The action to take on matched requests.
      */
@@ -461,7 +465,7 @@ declare module "gapi.client.appengine" {
     sourceRange?: string;
   }
 
-  declare interface appengine$HealthCheck {
+  declare interface gapi$client$appengine$HealthCheck {
     /**
      * Interval between health checks.
      */
@@ -498,7 +502,7 @@ declare module "gapi.client.appengine" {
     unhealthyThreshold?: number;
   }
 
-  declare interface appengine$IdentityAwareProxy {
+  declare interface gapi$client$appengine$IdentityAwareProxy {
     /**
      * Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields
      * must be non-empty.
@@ -522,7 +526,7 @@ declare module "gapi.client.appengine" {
     oauth2ClientSecretSha256?: string;
   }
 
-  declare interface appengine$Instance {
+  declare interface gapi$client$appengine$Instance {
     /**
      * App Engine release this instance is running on.@OutputOnly
      */
@@ -604,7 +608,7 @@ declare module "gapi.client.appengine" {
     vmZoneName?: string;
   }
 
-  declare interface appengine$Library {
+  declare interface gapi$client$appengine$Library {
     /**
      * Name of the library. Example: "django".
      */
@@ -616,11 +620,11 @@ declare module "gapi.client.appengine" {
     version?: string;
   }
 
-  declare interface appengine$ListAuthorizedCertificatesResponse {
+  declare interface gapi$client$appengine$ListAuthorizedCertificatesResponse {
     /**
      * The SSL certificates the user is authorized to administer.
      */
-    certificates?: appengine$AuthorizedCertificate[];
+    certificates?: gapi$client$appengine$AuthorizedCertificate[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -628,11 +632,11 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListAuthorizedDomainsResponse {
+  declare interface gapi$client$appengine$ListAuthorizedDomainsResponse {
     /**
      * The authorized domains belonging to the user.
      */
-    domains?: appengine$AuthorizedDomain[];
+    domains?: gapi$client$appengine$AuthorizedDomain[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -640,11 +644,11 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListDomainMappingsResponse {
+  declare interface gapi$client$appengine$ListDomainMappingsResponse {
     /**
      * The domain mappings for the application.
      */
-    domainMappings?: appengine$DomainMapping[];
+    domainMappings?: gapi$client$appengine$DomainMapping[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -652,11 +656,11 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListIngressRulesResponse {
+  declare interface gapi$client$appengine$ListIngressRulesResponse {
     /**
      * The ingress FirewallRules for this application.
      */
-    ingressRules?: appengine$FirewallRule[];
+    ingressRules?: gapi$client$appengine$FirewallRule[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -664,11 +668,11 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListInstancesResponse {
+  declare interface gapi$client$appengine$ListInstancesResponse {
     /**
      * The instances belonging to the requested version.
      */
-    instances?: appengine$Instance[];
+    instances?: gapi$client$appengine$Instance[];
 
     /**
      * Continuation token for fetching the next page of results.
@@ -676,7 +680,7 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListLocationsResponse {
+  declare interface gapi$client$appengine$ListLocationsResponse {
     /**
      * A list of locations that matches the specified filter in the request.
      */
@@ -688,7 +692,7 @@ declare module "gapi.client.appengine" {
     nextPageToken?: string;
   }
 
-  declare interface appengine$ListOperationsResponse {
+  declare interface gapi$client$appengine$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -700,7 +704,7 @@ declare module "gapi.client.appengine" {
     operations?: appengine$Operation[];
   }
 
-  declare interface appengine$ListServicesResponse {
+  declare interface gapi$client$appengine$ListServicesResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -712,7 +716,7 @@ declare module "gapi.client.appengine" {
     services?: appengine$Service[];
   }
 
-  declare interface appengine$ListVersionsResponse {
+  declare interface gapi$client$appengine$ListVersionsResponse {
     /**
      * Continuation token for fetching the next page of results.
      */
@@ -724,7 +728,7 @@ declare module "gapi.client.appengine" {
     versions?: appengine$Version[];
   }
 
-  declare interface appengine$LivenessCheck {
+  declare interface gapi$client$appengine$LivenessCheck {
     /**
      * Interval between health checks.
      */
@@ -761,7 +765,7 @@ declare module "gapi.client.appengine" {
     timeout?: string;
   }
 
-  declare interface appengine$Location {
+  declare interface gapi$client$appengine$Location {
     /**
      * Cross-service attributes for the location. For example
      * {"cloud.googleapis.com/region": "us-east1"}
@@ -784,7 +788,7 @@ declare module "gapi.client.appengine" {
     name?: string;
   }
 
-  declare interface appengine$LocationMetadata {
+  declare interface gapi$client$appengine$LocationMetadata {
     /**
      * App Engine Flexible Environment is available in the given location.@OutputOnly
      */
@@ -796,7 +800,7 @@ declare module "gapi.client.appengine" {
     standardEnvironmentAvailable?: boolean;
   }
 
-  declare interface appengine$ManualScaling {
+  declare interface gapi$client$appengine$ManualScaling {
     /**
      * Number of instances to assign to the service at the start. This number can later be altered by using the Modules API
      * (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
@@ -804,7 +808,7 @@ declare module "gapi.client.appengine" {
     instances?: number;
   }
 
-  declare interface appengine$Network {
+  declare interface gapi$client$appengine$Network {
     /**
      * List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable for App Engine flexible environment
      * versions.
@@ -834,7 +838,7 @@ declare module "gapi.client.appengine" {
     subnetworkName?: string;
   }
 
-  declare interface appengine$NetworkUtilization {
+  declare interface gapi$client$appengine$NetworkUtilization {
     /**
      * Target bytes received per second.
      */
@@ -856,7 +860,7 @@ declare module "gapi.client.appengine" {
     targetSentPacketsPerSecond?: number;
   }
 
-  declare interface appengine$Operation {
+  declare interface gapi$client$appengine$Operation {
     /**
      * If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.
      */
@@ -888,7 +892,7 @@ declare module "gapi.client.appengine" {
     response?: Record<string, any>;
   }
 
-  declare interface appengine$OperationMetadata {
+  declare interface gapi$client$appengine$OperationMetadata {
     /**
      * Timestamp that this operation completed.@OutputOnly
      */
@@ -920,7 +924,7 @@ declare module "gapi.client.appengine" {
     user?: string;
   }
 
-  declare interface appengine$OperationMetadataExperimental {
+  declare interface gapi$client$appengine$OperationMetadataExperimental {
     /**
      * Time that this operation completed.@OutputOnly
      */
@@ -947,7 +951,7 @@ declare module "gapi.client.appengine" {
     user?: string;
   }
 
-  declare interface appengine$OperationMetadataV1 {
+  declare interface gapi$client$appengine$OperationMetadataV1 {
     /**
      * Time that this operation completed.@OutputOnly
      */
@@ -984,7 +988,7 @@ declare module "gapi.client.appengine" {
     warning?: string[];
   }
 
-  declare interface appengine$OperationMetadataV1Alpha {
+  declare interface gapi$client$appengine$OperationMetadataV1Alpha {
     /**
      * Time that this operation completed.@OutputOnly
      */
@@ -1021,7 +1025,7 @@ declare module "gapi.client.appengine" {
     warning?: string[];
   }
 
-  declare interface appengine$OperationMetadataV1Beta {
+  declare interface gapi$client$appengine$OperationMetadataV1Beta {
     /**
      * Time that this operation completed.@OutputOnly
      */
@@ -1058,7 +1062,7 @@ declare module "gapi.client.appengine" {
     warning?: string[];
   }
 
-  declare interface appengine$OperationMetadataV1Beta5 {
+  declare interface gapi$client$appengine$OperationMetadataV1Beta5 {
     /**
      * Timestamp that this operation completed.@OutputOnly
      */
@@ -1085,7 +1089,7 @@ declare module "gapi.client.appengine" {
     user?: string;
   }
 
-  declare interface appengine$ReadinessCheck {
+  declare interface gapi$client$appengine$ReadinessCheck {
     /**
      * A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to
      * serve traffic.
@@ -1123,7 +1127,7 @@ declare module "gapi.client.appengine" {
     timeout?: string;
   }
 
-  declare interface appengine$RequestUtilization {
+  declare interface gapi$client$appengine$RequestUtilization {
     /**
      * Target number of concurrent requests.
      */
@@ -1135,7 +1139,7 @@ declare module "gapi.client.appengine" {
     targetRequestCountPerSecond?: number;
   }
 
-  declare interface appengine$ResourceRecord {
+  declare interface gapi$client$appengine$ResourceRecord {
     /**
      * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
      */
@@ -1152,7 +1156,7 @@ declare module "gapi.client.appengine" {
     type?: string;
   }
 
-  declare interface appengine$Resources {
+  declare interface gapi$client$appengine$Resources {
     /**
      * Number of CPU cores needed.
      */
@@ -1174,14 +1178,14 @@ declare module "gapi.client.appengine" {
     volumes?: appengine$Volume[];
   }
 
-  declare interface appengine$ScriptHandler {
+  declare interface gapi$client$appengine$ScriptHandler {
     /**
      * Path to the script from the application root directory.
      */
     scriptPath?: string;
   }
 
-  declare interface appengine$Service {
+  declare interface gapi$client$appengine$Service {
     /**
      * Relative name of the service within the application. Example: default.@OutputOnly
      */
@@ -1198,14 +1202,14 @@ declare module "gapi.client.appengine" {
     split?: appengine$TrafficSplit;
   }
 
-  declare interface appengine$SslSettings {
+  declare interface gapi$client$appengine$SslSettings {
     /**
      * ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support. Example: 12345.
      */
     certificateId?: string;
   }
 
-  declare interface appengine$StaticFilesHandler {
+  declare interface gapi$client$appengine$StaticFilesHandler {
     /**
      * Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served
      * to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
@@ -1244,7 +1248,7 @@ declare module "gapi.client.appengine" {
     uploadPathRegex?: string;
   }
 
-  declare interface appengine$Status {
+  declare interface gapi$client$appengine$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1262,7 +1266,7 @@ declare module "gapi.client.appengine" {
     message?: string;
   }
 
-  declare interface appengine$TrafficSplit {
+  declare interface gapi$client$appengine$TrafficSplit {
     /**
      * Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once,
      * but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service
@@ -1278,7 +1282,7 @@ declare module "gapi.client.appengine" {
     shardBy?: string;
   }
 
-  declare interface appengine$UrlDispatchRule {
+  declare interface gapi$client$appengine$UrlDispatchRule {
     /**
      * Domain name to match against. The wildcard "&#42;" is supported if specified before a period: "&#42;.".Defaults to matching all domains: "&#42;".
      */
@@ -1296,11 +1300,11 @@ declare module "gapi.client.appengine" {
     service?: string;
   }
 
-  declare interface appengine$UrlMap {
+  declare interface gapi$client$appengine$UrlMap {
     /**
      * Uses API Endpoints to handle requests.
      */
-    apiEndpoint?: appengine$ApiEndpointHandler;
+    apiEndpoint?: gapi$client$appengine$ApiEndpointHandler;
 
     /**
      * Action to take when users access resources that require authentication. Defaults to redirect.
@@ -1320,7 +1324,7 @@ declare module "gapi.client.appengine" {
     /**
      * Executes a script to handle the request that matches this URL pattern.
      */
-    script?: appengine$ScriptHandler;
+    script?: gapi$client$appengine$ScriptHandler;
 
     /**
      * Security (HTTPS) enforcement for this URL.
@@ -1330,7 +1334,7 @@ declare module "gapi.client.appengine" {
     /**
      * Returns the contents of a file, such as an image, as the response.
      */
-    staticFiles?: appengine$StaticFilesHandler;
+    staticFiles?: gapi$client$appengine$StaticFilesHandler;
 
     /**
      * URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that
@@ -1339,23 +1343,23 @@ declare module "gapi.client.appengine" {
     urlRegex?: string;
   }
 
-  declare interface appengine$Version {
+  declare interface gapi$client$appengine$Version {
     /**
      * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL
      * is set.
      */
-    apiConfig?: appengine$ApiConfigHandler;
+    apiConfig?: gapi$client$appengine$ApiConfigHandler;
 
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      */
-    automaticScaling?: appengine$AutomaticScaling;
+    automaticScaling?: gapi$client$appengine$AutomaticScaling;
 
     /**
      * A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes
      * idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
      */
-    basicScaling?: appengine$BasicScaling;
+    basicScaling?: gapi$client$appengine$BasicScaling;
 
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
@@ -1382,7 +1386,7 @@ declare module "gapi.client.appengine" {
     /**
      * Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
      */
-    deployment?: appengine$Deployment;
+    deployment?: gapi$client$appengine$Deployment;
 
     /**
      * Total size in bytes of all the files that are included in this version and curerntly hosted on the App Engine disk.@OutputOnly
@@ -1393,7 +1397,7 @@ declare module "gapi.client.appengine" {
      * Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API
      * implemented by the app.
      */
-    endpointsApiService?: appengine$EndpointsApiService;
+    endpointsApiService?: gapi$client$appengine$EndpointsApiService;
 
     /**
      * App Engine execution environment for this version.Defaults to standard.
@@ -1408,19 +1412,19 @@ declare module "gapi.client.appengine" {
     /**
      * Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
      */
-    errorHandlers?: appengine$ErrorHandler[];
+    errorHandlers?: gapi$client$appengine$ErrorHandler[];
 
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request
      * handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
-    handlers?: appengine$UrlMap[];
+    handlers?: gapi$client$appengine$UrlMap[];
 
     /**
      * Configures health checking for VM instances. Unhealthy instances are stopped and replaced with new instances. Only applicable for VM runtimes.Only
      * returned in GET requests if view=FULL is set.
      */
-    healthCheck?: appengine$HealthCheck;
+    healthCheck?: gapi$client$appengine$HealthCheck;
 
     /**
      * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names:
@@ -1443,18 +1447,18 @@ declare module "gapi.client.appengine" {
     /**
      * Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
      */
-    libraries?: appengine$Library[];
+    libraries?: gapi$client$appengine$Library[];
 
     /**
      * Configures liveness health checking for VM instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if
      * view=FULL is set.
      */
-    livenessCheck?: appengine$LivenessCheck;
+    livenessCheck?: gapi$client$appengine$LivenessCheck;
 
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      */
-    manualScaling?: appengine$ManualScaling;
+    manualScaling?: gapi$client$appengine$ManualScaling;
 
     /**
      * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
@@ -1464,7 +1468,7 @@ declare module "gapi.client.appengine" {
     /**
      * Extra network settings. Only applicable for App Engine flexible environment versions.
      */
-    network?: appengine$Network;
+    network?: gapi$client$appengine$Network;
 
     /**
      * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
@@ -1475,12 +1479,12 @@ declare module "gapi.client.appengine" {
      * Configures readiness health checking for VM instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests
      * if view=FULL is set.
      */
-    readinessCheck?: appengine$ReadinessCheck;
+    readinessCheck?: gapi$client$appengine$ReadinessCheck;
 
     /**
      * Machine resources for this version. Only applicable for VM runtimes.
      */
-    resources?: appengine$Resources;
+    resources?: gapi$client$appengine$Resources;
 
     /**
      * Desired runtime. Example: python27.
@@ -1515,7 +1519,7 @@ declare module "gapi.client.appengine" {
     vm?: boolean;
   }
 
-  declare interface appengine$Volume {
+  declare interface gapi$client$appengine$Volume {
     /**
      * Unique name for the volume.
      */
@@ -1532,7 +1536,7 @@ declare module "gapi.client.appengine" {
     volumeType?: string;
   }
 
-  declare interface appengine$ZipInfo {
+  declare interface gapi$client$appengine$ZipInfo {
     /**
      * An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for
      * optimizing performance; if not provided, deployment may be slow.
@@ -1546,7 +1550,7 @@ declare module "gapi.client.appengine" {
     sourceUrl?: string;
   }
 
-  declare interface appengine$AuthorizedCertificatesResource {
+  declare interface gapi$client$appengine$AuthorizedCertificatesResource {
     /**
      * Uploads the specified SSL certificate.
      */
@@ -1620,7 +1624,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$AuthorizedCertificate>;
+    }): Request<gapi$client$appengine$AuthorizedCertificate>;
 
     /**
      * Deletes the specified SSL certificate.
@@ -1785,7 +1789,7 @@ declare module "gapi.client.appengine" {
        * Controls the set of fields returned in the GET response.
        */
       view?: string
-    }): Request<appengine$AuthorizedCertificate>;
+    }): Request<gapi$client$appengine$AuthorizedCertificate>;
 
     /**
      * Lists all SSL certificates the user is authorized to administer.
@@ -1875,7 +1879,7 @@ declare module "gapi.client.appengine" {
        * Controls the set of fields returned in the LIST response.
        */
       view?: string
-    }): Request<appengine$ListAuthorizedCertificatesResponse>;
+    }): Request<gapi$client$appengine$ListAuthorizedCertificatesResponse>;
 
     /**
      * Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new
@@ -1961,10 +1965,10 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$AuthorizedCertificate>;
+    }): Request<gapi$client$appengine$AuthorizedCertificate>;
   }
 
-  declare interface appengine$AuthorizedDomainsResource {
+  declare interface gapi$client$appengine$AuthorizedDomainsResource {
     /**
      * Lists all domains the user is authorized to administer.
      */
@@ -2048,10 +2052,10 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListAuthorizedDomainsResponse>;
+    }): Request<gapi$client$appengine$ListAuthorizedDomainsResponse>;
   }
 
-  declare interface appengine$DomainMappingsResource {
+  declare interface gapi$client$appengine$DomainMappingsResource {
     /**
      * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available
      * authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
@@ -2126,7 +2130,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
@@ -2206,7 +2210,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Gets the specified domain mapping.
@@ -2286,7 +2290,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$DomainMapping>;
+    }): Request<gapi$client$appengine$DomainMapping>;
 
     /**
      * Lists the domain mappings on an application.
@@ -2371,7 +2375,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListDomainMappingsResponse>;
+    }): Request<gapi$client$appengine$ListDomainMappingsResponse>;
 
     /**
      * Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate
@@ -2457,10 +2461,10 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
   }
 
-  declare interface appengine$IngressRulesResource {
+  declare interface gapi$client$appengine$IngressRulesResource {
     /**
      * Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the
      * final rule does not match traffic with the '&#42;' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list.
@@ -2535,7 +2539,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$BatchUpdateIngressRulesResponse>;
+    }): Request<gapi$client$appengine$BatchUpdateIngressRulesResponse>;
 
     /**
      * Creates a firewall rule for the application.
@@ -2610,7 +2614,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$FirewallRule>;
+    }): Request<gapi$client$appengine$FirewallRule>;
 
     /**
      * Deletes the specified firewall rule.
@@ -2770,7 +2774,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$FirewallRule>;
+    }): Request<gapi$client$appengine$FirewallRule>;
 
     /**
      * Lists the firewall rules of an application.
@@ -2861,7 +2865,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListIngressRulesResponse>;
+    }): Request<gapi$client$appengine$ListIngressRulesResponse>;
 
     /**
      * Updates the specified firewall rule.
@@ -2946,14 +2950,14 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$FirewallRule>;
+    }): Request<gapi$client$appengine$FirewallRule>;
   }
 
-  declare interface appengine$FirewallResource {
-    ingressRules: appengine$IngressRulesResource;
+  declare interface gapi$client$appengine$FirewallResource {
+    ingressRules: gapi$client$appengine$IngressRulesResource;
   }
 
-  declare interface appengine$LocationsResource {
+  declare interface gapi$client$appengine$LocationsResource {
     /**
      * Get information about a location.
      */
@@ -3032,7 +3036,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Location>;
+    }): Request<gapi$client$appengine$Location>;
 
     /**
      * Lists information about the supported locations for this service.
@@ -3122,10 +3126,10 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListLocationsResponse>;
+    }): Request<gapi$client$appengine$ListLocationsResponse>;
   }
 
-  declare interface appengine$OperationsResource {
+  declare interface gapi$client$appengine$OperationsResource {
     /**
      * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API
      * service.
@@ -3205,7 +3209,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
@@ -3299,10 +3303,10 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListOperationsResponse>;
+    }): Request<gapi$client$appengine$ListOperationsResponse>;
   }
 
-  declare interface appengine$InstancesResource {
+  declare interface gapi$client$appengine$InstancesResource {
     /**
      * Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug
      * mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over
@@ -3393,7 +3397,7 @@ declare module "gapi.client.appengine" {
        * Part of `name`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Stops a running instance.
@@ -3483,7 +3487,7 @@ declare module "gapi.client.appengine" {
        * Part of `name`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Gets instance information.
@@ -3573,7 +3577,7 @@ declare module "gapi.client.appengine" {
        * Part of `name`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$Instance>;
+    }): Request<gapi$client$appengine$Instance>;
 
     /**
      * Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API
@@ -3669,10 +3673,10 @@ declare module "gapi.client.appengine" {
        * Part of `parent`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$ListInstancesResponse>;
+    }): Request<gapi$client$appengine$ListInstancesResponse>;
   }
 
-  declare interface appengine$VersionsResource {
+  declare interface gapi$client$appengine$VersionsResource {
     /**
      * Deploys code and resource files to a new version.
      */
@@ -3751,7 +3755,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Deletes an existing Version resource.
@@ -3836,7 +3840,7 @@ declare module "gapi.client.appengine" {
        * Part of `name`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
@@ -3926,7 +3930,7 @@ declare module "gapi.client.appengine" {
        * Controls the set of fields returned in the Get response.
        */
       view?: string
-    }): Request<appengine$Version>;
+    }): Request<gapi$client$appengine$Version>;
 
     /**
      * Lists the versions of a service.
@@ -4021,7 +4025,7 @@ declare module "gapi.client.appengine" {
        * Controls the set of fields returned in the List response.
        */
       view?: string
-    }): Request<appengine$ListVersionsResponse>;
+    }): Request<gapi$client$appengine$ListVersionsResponse>;
 
     /**
      * Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the
@@ -4134,11 +4138,11 @@ declare module "gapi.client.appengine" {
        * Part of `name`. See documentation of `appsId`.
        */
       versionsId: string
-    }): Request<appengine$Operation>;
-    instances: appengine$InstancesResource;
+    }): Request<gapi$client$appengine$Operation>;
+    instances: gapi$client$appengine$InstancesResource;
   }
 
-  declare interface appengine$ServicesResource {
+  declare interface gapi$client$appengine$ServicesResource {
     /**
      * Deletes the specified service and all enclosed versions.
      */
@@ -4217,7 +4221,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Gets the current configuration of the specified service.
@@ -4297,7 +4301,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Service>;
+    }): Request<gapi$client$appengine$Service>;
 
     /**
      * Lists all the services in the application.
@@ -4382,7 +4386,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$ListServicesResponse>;
+    }): Request<gapi$client$appengine$ListServicesResponse>;
 
     /**
      * Updates the configuration of the specified service.
@@ -4478,11 +4482,11 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
-    versions: appengine$VersionsResource;
+    }): Request<gapi$client$appengine$Operation>;
+    versions: gapi$client$appengine$VersionsResource;
   }
 
-  declare interface appengine$AppsResource {
+  declare interface gapi$client$appengine$AppsResource {
     /**
      * Creates an App Engine application for a Google Cloud Platform project. Required fields:
      * id - The ID of the target Cloud Platform project.
@@ -4554,7 +4558,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Gets information about an application.
@@ -4629,7 +4633,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Application>;
+    }): Request<gapi$client$appengine$Application>;
 
     /**
      * Updates the specified Application resource. You can update the following fields:
@@ -4711,7 +4715,7 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
+    }): Request<gapi$client$appengine$Operation>;
 
     /**
      * Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account.
@@ -4787,13 +4791,13 @@ declare module "gapi.client.appengine" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<appengine$Operation>;
-    authorizedCertificates: appengine$AuthorizedCertificatesResource;
-    authorizedDomains: appengine$AuthorizedDomainsResource;
-    domainMappings: appengine$DomainMappingsResource;
-    firewall: appengine$FirewallResource;
-    locations: appengine$LocationsResource;
-    operations: appengine$OperationsResource;
-    services: appengine$ServicesResource;
+    }): Request<gapi$client$appengine$Operation>;
+    authorizedCertificates: gapi$client$appengine$AuthorizedCertificatesResource;
+    authorizedDomains: gapi$client$appengine$AuthorizedDomainsResource;
+    domainMappings: gapi$client$appengine$DomainMappingsResource;
+    firewall: gapi$client$appengine$FirewallResource;
+    locations: gapi$client$appengine$LocationsResource;
+    operations: gapi$client$appengine$OperationsResource;
+    services: gapi$client$appengine$ServicesResource;
   }
 }
