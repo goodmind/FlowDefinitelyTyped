@@ -1,203 +1,207 @@
 declare module "gapi.client.dfareporting" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accountActiveAdSummaries: typeof client$accountActiveAdSummaries,
-    accountPermissionGroups: typeof client$accountPermissionGroups,
-    accountPermissions: typeof client$accountPermissions,
-    accountUserProfiles: typeof client$accountUserProfiles,
-    accounts: typeof client$accounts,
-    ads: typeof client$ads,
-    advertiserGroups: typeof client$advertiserGroups,
-    advertisers: typeof client$advertisers,
-    browsers: typeof client$browsers,
-    campaignCreativeAssociations: typeof client$campaignCreativeAssociations,
-    campaigns: typeof client$campaigns,
-    changeLogs: typeof client$changeLogs,
-    cities: typeof client$cities,
-    connectionTypes: typeof client$connectionTypes,
-    contentCategories: typeof client$contentCategories,
-    conversions: typeof client$conversions,
-    countries: typeof client$countries,
-    creativeAssets: typeof client$creativeAssets,
-    creativeFieldValues: typeof client$creativeFieldValues,
-    creativeFields: typeof client$creativeFields,
-    creativeGroups: typeof client$creativeGroups,
-    creatives: typeof client$creatives,
-    dimensionValues: typeof client$dimensionValues,
-    directorySiteContacts: typeof client$directorySiteContacts,
-    directorySites: typeof client$directorySites,
-    dynamicTargetingKeys: typeof client$dynamicTargetingKeys,
-    eventTags: typeof client$eventTags,
-    files: typeof client$files,
-    floodlightActivities: typeof client$floodlightActivities,
-    floodlightActivityGroups: typeof client$floodlightActivityGroups,
-    floodlightConfigurations: typeof client$floodlightConfigurations,
-    inventoryItems: typeof client$inventoryItems,
-    landingPages: typeof client$landingPages,
-    languages: typeof client$languages,
-    metros: typeof client$metros,
-    mobileCarriers: typeof client$mobileCarriers,
-    operatingSystemVersions: typeof client$operatingSystemVersions,
-    operatingSystems: typeof client$operatingSystems,
-    orderDocuments: typeof client$orderDocuments,
-    orders: typeof client$orders,
-    placementGroups: typeof client$placementGroups,
-    placementStrategies: typeof client$placementStrategies,
-    placements: typeof client$placements,
-    platformTypes: typeof client$platformTypes,
-    postalCodes: typeof client$postalCodes,
-    projects: typeof client$projects,
-    regions: typeof client$regions,
-    remarketingListShares: typeof client$remarketingListShares,
-    remarketingLists: typeof client$remarketingLists,
-    reports: typeof client$reports,
-    sites: typeof client$sites,
-    sizes: typeof client$sizes,
-    subaccounts: typeof client$subaccounts,
-    targetableRemarketingLists: typeof client$targetableRemarketingLists,
-    targetingTemplates: typeof client$targetingTemplates,
-    userProfiles: typeof client$userProfiles,
-    userRolePermissionGroups: typeof client$userRolePermissionGroups,
-    userRolePermissions: typeof client$userRolePermissions,
-    userRoles: typeof client$userRoles,
-    videoFormats: typeof client$videoFormats
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accountActiveAdSummaries: typeof gapi$client$accountActiveAdSummaries,
+    accountPermissionGroups: typeof gapi$client$accountPermissionGroups,
+    accountPermissions: typeof gapi$client$accountPermissions,
+    accountUserProfiles: typeof gapi$client$accountUserProfiles,
+    accounts: typeof gapi$client$accounts,
+    ads: typeof gapi$client$ads,
+    advertiserGroups: typeof gapi$client$advertiserGroups,
+    advertisers: typeof gapi$client$advertisers,
+    browsers: typeof gapi$client$browsers,
+    campaignCreativeAssociations: typeof gapi$client$campaignCreativeAssociations,
+    campaigns: typeof gapi$client$campaigns,
+    changeLogs: typeof gapi$client$changeLogs,
+    cities: typeof gapi$client$cities,
+    connectionTypes: typeof gapi$client$connectionTypes,
+    contentCategories: typeof gapi$client$contentCategories,
+    conversions: typeof gapi$client$conversions,
+    countries: typeof gapi$client$countries,
+    creativeAssets: typeof gapi$client$creativeAssets,
+    creativeFieldValues: typeof gapi$client$creativeFieldValues,
+    creativeFields: typeof gapi$client$creativeFields,
+    creativeGroups: typeof gapi$client$creativeGroups,
+    creatives: typeof gapi$client$creatives,
+    dimensionValues: typeof gapi$client$dimensionValues,
+    directorySiteContacts: typeof gapi$client$directorySiteContacts,
+    directorySites: typeof gapi$client$directorySites,
+    dynamicTargetingKeys: typeof gapi$client$dynamicTargetingKeys,
+    eventTags: typeof gapi$client$eventTags,
+    files: typeof gapi$client$files,
+    floodlightActivities: typeof gapi$client$floodlightActivities,
+    floodlightActivityGroups: typeof gapi$client$floodlightActivityGroups,
+    floodlightConfigurations: typeof gapi$client$floodlightConfigurations,
+    inventoryItems: typeof gapi$client$inventoryItems,
+    landingPages: typeof gapi$client$landingPages,
+    languages: typeof gapi$client$languages,
+    metros: typeof gapi$client$metros,
+    mobileCarriers: typeof gapi$client$mobileCarriers,
+    operatingSystemVersions: typeof gapi$client$operatingSystemVersions,
+    operatingSystems: typeof gapi$client$operatingSystems,
+    orderDocuments: typeof gapi$client$orderDocuments,
+    orders: typeof gapi$client$orders,
+    placementGroups: typeof gapi$client$placementGroups,
+    placementStrategies: typeof gapi$client$placementStrategies,
+    placements: typeof gapi$client$placements,
+    platformTypes: typeof gapi$client$platformTypes,
+    postalCodes: typeof gapi$client$postalCodes,
+    projects: typeof gapi$client$projects,
+    regions: typeof gapi$client$regions,
+    remarketingListShares: typeof gapi$client$remarketingListShares,
+    remarketingLists: typeof gapi$client$remarketingLists,
+    reports: typeof gapi$client$reports,
+    sites: typeof gapi$client$sites,
+    sizes: typeof gapi$client$sizes,
+    subaccounts: typeof gapi$client$subaccounts,
+    targetableRemarketingLists: typeof gapi$client$targetableRemarketingLists,
+    targetingTemplates: typeof gapi$client$targetingTemplates,
+    userProfiles: typeof gapi$client$userProfiles,
+    userRolePermissionGroups: typeof gapi$client$userRolePermissionGroups,
+    userRolePermissions: typeof gapi$client$userRolePermissions,
+    userRoles: typeof gapi$client$userRoles,
+    videoFormats: typeof gapi$client$videoFormats
   };
 
   /**
    * Load DCM/DFA Reporting And Trafficking API v2.8
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dfareporting",
     version: "v2.8"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "dfareporting",
     version: "v2.8",
     callback: () => any
   ): void;
 
-  declare var client$accountActiveAdSummaries: dfareporting$dfareporting$AccountActiveAdSummariesResource;
+  declare var gapi$client$accountActiveAdSummaries: dfareporting$AccountActiveAdSummariesResource;
 
-  declare var client$accountPermissionGroups: dfareporting$dfareporting$AccountPermissionGroupsResource;
+  declare var gapi$client$accountPermissionGroups: dfareporting$AccountPermissionGroupsResource;
 
-  declare var client$accountPermissions: dfareporting$dfareporting$AccountPermissionsResource;
+  declare var gapi$client$accountPermissions: dfareporting$AccountPermissionsResource;
 
-  declare var client$accountUserProfiles: dfareporting$dfareporting$AccountUserProfilesResource;
+  declare var gapi$client$accountUserProfiles: dfareporting$AccountUserProfilesResource;
 
-  declare var client$accounts: dfareporting$dfareporting$AccountsResource;
+  declare var gapi$client$accounts: dfareporting$AccountsResource;
 
-  declare var client$ads: dfareporting$dfareporting$AdsResource;
+  declare var gapi$client$ads: dfareporting$AdsResource;
 
-  declare var client$advertiserGroups: dfareporting$dfareporting$AdvertiserGroupsResource;
+  declare var gapi$client$advertiserGroups: dfareporting$AdvertiserGroupsResource;
 
-  declare var client$advertisers: dfareporting$dfareporting$AdvertisersResource;
+  declare var gapi$client$advertisers: dfareporting$AdvertisersResource;
 
-  declare var client$browsers: dfareporting$dfareporting$BrowsersResource;
+  declare var gapi$client$browsers: dfareporting$BrowsersResource;
 
-  declare var client$campaignCreativeAssociations: dfareporting$dfareporting$CampaignCreativeAssociationsResource;
+  declare var gapi$client$campaignCreativeAssociations: dfareporting$CampaignCreativeAssociationsResource;
 
-  declare var client$campaigns: dfareporting$dfareporting$CampaignsResource;
+  declare var gapi$client$campaigns: dfareporting$CampaignsResource;
 
-  declare var client$changeLogs: dfareporting$dfareporting$ChangeLogsResource;
+  declare var gapi$client$changeLogs: dfareporting$ChangeLogsResource;
 
-  declare var client$cities: dfareporting$dfareporting$CitiesResource;
+  declare var gapi$client$cities: dfareporting$CitiesResource;
 
-  declare var client$connectionTypes: dfareporting$dfareporting$ConnectionTypesResource;
+  declare var gapi$client$connectionTypes: dfareporting$ConnectionTypesResource;
 
-  declare var client$contentCategories: dfareporting$dfareporting$ContentCategoriesResource;
+  declare var gapi$client$contentCategories: dfareporting$ContentCategoriesResource;
 
-  declare var client$conversions: dfareporting$dfareporting$ConversionsResource;
+  declare var gapi$client$conversions: dfareporting$ConversionsResource;
 
-  declare var client$countries: dfareporting$dfareporting$CountriesResource;
+  declare var gapi$client$countries: dfareporting$CountriesResource;
 
-  declare var client$creativeAssets: dfareporting$dfareporting$CreativeAssetsResource;
+  declare var gapi$client$creativeAssets: dfareporting$CreativeAssetsResource;
 
-  declare var client$creativeFieldValues: dfareporting$dfareporting$CreativeFieldValuesResource;
+  declare var gapi$client$creativeFieldValues: dfareporting$CreativeFieldValuesResource;
 
-  declare var client$creativeFields: dfareporting$dfareporting$CreativeFieldsResource;
+  declare var gapi$client$creativeFields: dfareporting$CreativeFieldsResource;
 
-  declare var client$creativeGroups: dfareporting$dfareporting$CreativeGroupsResource;
+  declare var gapi$client$creativeGroups: dfareporting$CreativeGroupsResource;
 
-  declare var client$creatives: dfareporting$dfareporting$CreativesResource;
+  declare var gapi$client$creatives: dfareporting$CreativesResource;
 
-  declare var client$dimensionValues: dfareporting$dfareporting$DimensionValuesResource;
+  declare var gapi$client$dimensionValues: dfareporting$DimensionValuesResource;
 
-  declare var client$directorySiteContacts: dfareporting$dfareporting$DirectorySiteContactsResource;
+  declare var gapi$client$directorySiteContacts: dfareporting$DirectorySiteContactsResource;
 
-  declare var client$directorySites: dfareporting$dfareporting$DirectorySitesResource;
+  declare var gapi$client$directorySites: dfareporting$DirectorySitesResource;
 
-  declare var client$dynamicTargetingKeys: dfareporting$dfareporting$DynamicTargetingKeysResource;
+  declare var gapi$client$dynamicTargetingKeys: dfareporting$DynamicTargetingKeysResource;
 
-  declare var client$eventTags: dfareporting$dfareporting$EventTagsResource;
+  declare var gapi$client$eventTags: dfareporting$EventTagsResource;
 
-  declare var client$files: dfareporting$dfareporting$FilesResource;
+  declare var gapi$client$files: dfareporting$FilesResource;
 
-  declare var client$floodlightActivities: dfareporting$dfareporting$FloodlightActivitiesResource;
+  declare var gapi$client$floodlightActivities: dfareporting$FloodlightActivitiesResource;
 
-  declare var client$floodlightActivityGroups: dfareporting$dfareporting$FloodlightActivityGroupsResource;
+  declare var gapi$client$floodlightActivityGroups: dfareporting$FloodlightActivityGroupsResource;
 
-  declare var client$floodlightConfigurations: dfareporting$dfareporting$FloodlightConfigurationsResource;
+  declare var gapi$client$floodlightConfigurations: dfareporting$FloodlightConfigurationsResource;
 
-  declare var client$inventoryItems: dfareporting$dfareporting$InventoryItemsResource;
+  declare var gapi$client$inventoryItems: dfareporting$InventoryItemsResource;
 
-  declare var client$landingPages: dfareporting$dfareporting$LandingPagesResource;
+  declare var gapi$client$landingPages: dfareporting$LandingPagesResource;
 
-  declare var client$languages: dfareporting$dfareporting$LanguagesResource;
+  declare var gapi$client$languages: dfareporting$LanguagesResource;
 
-  declare var client$metros: dfareporting$dfareporting$MetrosResource;
+  declare var gapi$client$metros: dfareporting$MetrosResource;
 
-  declare var client$mobileCarriers: dfareporting$dfareporting$MobileCarriersResource;
+  declare var gapi$client$mobileCarriers: dfareporting$MobileCarriersResource;
 
-  declare var client$operatingSystemVersions: dfareporting$dfareporting$OperatingSystemVersionsResource;
+  declare var gapi$client$operatingSystemVersions: dfareporting$OperatingSystemVersionsResource;
 
-  declare var client$operatingSystems: dfareporting$dfareporting$OperatingSystemsResource;
+  declare var gapi$client$operatingSystems: dfareporting$OperatingSystemsResource;
 
-  declare var client$orderDocuments: dfareporting$dfareporting$OrderDocumentsResource;
+  declare var gapi$client$orderDocuments: dfareporting$OrderDocumentsResource;
 
-  declare var client$orders: dfareporting$dfareporting$OrdersResource;
+  declare var gapi$client$orders: dfareporting$OrdersResource;
 
-  declare var client$placementGroups: dfareporting$dfareporting$PlacementGroupsResource;
+  declare var gapi$client$placementGroups: dfareporting$PlacementGroupsResource;
 
-  declare var client$placementStrategies: dfareporting$dfareporting$PlacementStrategiesResource;
+  declare var gapi$client$placementStrategies: dfareporting$PlacementStrategiesResource;
 
-  declare var client$placements: dfareporting$dfareporting$PlacementsResource;
+  declare var gapi$client$placements: dfareporting$PlacementsResource;
 
-  declare var client$platformTypes: dfareporting$dfareporting$PlatformTypesResource;
+  declare var gapi$client$platformTypes: dfareporting$PlatformTypesResource;
 
-  declare var client$postalCodes: dfareporting$dfareporting$PostalCodesResource;
+  declare var gapi$client$postalCodes: dfareporting$PostalCodesResource;
 
-  declare var client$projects: dfareporting$dfareporting$ProjectsResource;
+  declare var gapi$client$projects: dfareporting$ProjectsResource;
 
-  declare var client$regions: dfareporting$dfareporting$RegionsResource;
+  declare var gapi$client$regions: dfareporting$RegionsResource;
 
-  declare var client$remarketingListShares: dfareporting$dfareporting$RemarketingListSharesResource;
+  declare var gapi$client$remarketingListShares: dfareporting$RemarketingListSharesResource;
 
-  declare var client$remarketingLists: dfareporting$dfareporting$RemarketingListsResource;
+  declare var gapi$client$remarketingLists: dfareporting$RemarketingListsResource;
 
-  declare var client$reports: dfareporting$dfareporting$ReportsResource;
+  declare var gapi$client$reports: dfareporting$ReportsResource;
 
-  declare var client$sites: dfareporting$dfareporting$SitesResource;
+  declare var gapi$client$sites: dfareporting$SitesResource;
 
-  declare var client$sizes: dfareporting$dfareporting$SizesResource;
+  declare var gapi$client$sizes: dfareporting$SizesResource;
 
-  declare var client$subaccounts: dfareporting$dfareporting$SubaccountsResource;
+  declare var gapi$client$subaccounts: dfareporting$SubaccountsResource;
 
-  declare var client$targetableRemarketingLists: dfareporting$dfareporting$TargetableRemarketingListsResource;
+  declare var gapi$client$targetableRemarketingLists: dfareporting$TargetableRemarketingListsResource;
 
-  declare var client$targetingTemplates: dfareporting$dfareporting$TargetingTemplatesResource;
+  declare var gapi$client$targetingTemplates: dfareporting$TargetingTemplatesResource;
 
-  declare var client$userProfiles: dfareporting$dfareporting$UserProfilesResource;
+  declare var gapi$client$userProfiles: dfareporting$UserProfilesResource;
 
-  declare var client$userRolePermissionGroups: dfareporting$dfareporting$UserRolePermissionGroupsResource;
+  declare var gapi$client$userRolePermissionGroups: dfareporting$UserRolePermissionGroupsResource;
 
-  declare var client$userRolePermissions: dfareporting$dfareporting$UserRolePermissionsResource;
+  declare var gapi$client$userRolePermissions: dfareporting$UserRolePermissionsResource;
 
-  declare var client$userRoles: dfareporting$dfareporting$UserRolesResource;
+  declare var gapi$client$userRoles: dfareporting$UserRolesResource;
 
-  declare var client$videoFormats: dfareporting$dfareporting$VideoFormatsResource;
+  declare var gapi$client$videoFormats: dfareporting$VideoFormatsResource;
 
-  declare interface dfareporting$Account {
+  declare interface gapi$client$dfareporting$Account {
     /**
      * Account permissions assigned to this account.
      */
@@ -360,7 +364,7 @@ declare module "gapi.client.dfareporting" {
     teaserSizeLimit?: string;
   }
 
-  declare interface dfareporting$AccountActiveAdSummary {
+  declare interface gapi$client$dfareporting$AccountActiveAdSummary {
     /**
      * ID of the account.
      */
@@ -387,7 +391,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$AccountPermission {
+  declare interface gapi$client$dfareporting$AccountPermission {
     /**
      * Account profiles associated with this account permission.
      *
@@ -423,7 +427,7 @@ declare module "gapi.client.dfareporting" {
     permissionGroupId?: string;
   }
 
-  declare interface dfareporting$AccountPermissionGroup {
+  declare interface gapi$client$dfareporting$AccountPermissionGroup {
     /**
      * ID of this account permission group.
      */
@@ -440,11 +444,11 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$AccountPermissionGroupsListResponse {
+  declare interface gapi$client$dfareporting$AccountPermissionGroupsListResponse {
     /**
      * Account permission group collection.
      */
-    client$accountPermissionGroups?: dfareporting$AccountPermissionGroup[];
+    accountPermissionGroups?: gapi$client$dfareporting$AccountPermissionGroup[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionGroupsListResponse".
@@ -452,11 +456,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$AccountPermissionsListResponse {
+  declare interface gapi$client$dfareporting$AccountPermissionsListResponse {
     /**
      * Account permission collection.
      */
-    client$accountPermissions?: dfareporting$AccountPermission[];
+    accountPermissions?: gapi$client$dfareporting$AccountPermission[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionsListResponse".
@@ -464,7 +468,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$AccountUserProfile {
+  declare interface gapi$client$dfareporting$AccountUserProfile {
     /**
      * Account ID of the user profile. This is a read-only field that can be left blank.
      */
@@ -564,11 +568,11 @@ declare module "gapi.client.dfareporting" {
     userRoleId?: string;
   }
 
-  declare interface dfareporting$AccountUserProfilesListResponse {
+  declare interface gapi$client$dfareporting$AccountUserProfilesListResponse {
     /**
      * Account user profile collection.
      */
-    client$accountUserProfiles?: dfareporting$AccountUserProfile[];
+    accountUserProfiles?: gapi$client$dfareporting$AccountUserProfile[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountUserProfilesListResponse".
@@ -581,11 +585,11 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$AccountsListResponse {
+  declare interface gapi$client$dfareporting$AccountsListResponse {
     /**
      * Account collection.
      */
-    client$accounts?: dfareporting$Account[];
+    accounts?: gapi$client$dfareporting$Account[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountsListResponse".
@@ -598,7 +602,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$Activities {
+  declare interface gapi$client$dfareporting$Activities {
     /**
      * List of activity filters. The dimension values need to be all either of type "dfa:activity" or "dfa:activityGroup".
      */
@@ -615,7 +619,7 @@ declare module "gapi.client.dfareporting" {
     metricNames?: string[];
   }
 
-  declare interface dfareporting$Ad {
+  declare interface gapi$client$dfareporting$Ad {
     /**
      * Account ID of this ad. This is a read-only field that can be left blank.
      */
@@ -827,7 +831,7 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$AdBlockingConfiguration {
+  declare interface gapi$client$dfareporting$AdBlockingConfiguration {
     /**
      * Click-through URL used by brand-neutral ads. This is a required field when overrideClickThroughUrl is set to true.
      */
@@ -852,7 +856,7 @@ declare module "gapi.client.dfareporting" {
     overrideClickThroughUrl?: boolean;
   }
 
-  declare interface dfareporting$AdSlot {
+  declare interface gapi$client$dfareporting$AdSlot {
     /**
      * Comment for this ad slot.
      */
@@ -896,11 +900,11 @@ declare module "gapi.client.dfareporting" {
     width?: string;
   }
 
-  declare interface dfareporting$AdsListResponse {
+  declare interface gapi$client$dfareporting$AdsListResponse {
     /**
      * Ad collection.
      */
-    client$ads?: dfareporting$Ad[];
+    ads?: gapi$client$dfareporting$Ad[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#adsListResponse".
@@ -913,7 +917,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$Advertiser {
+  declare interface gapi$client$dfareporting$Advertiser {
     /**
      * Account ID of this advertiser.This is a read-only field that can be left blank.
      */
@@ -997,7 +1001,7 @@ declare module "gapi.client.dfareporting" {
     suspended?: boolean;
   }
 
-  declare interface dfareporting$AdvertiserGroup {
+  declare interface gapi$client$dfareporting$AdvertiserGroup {
     /**
      * Account ID of this advertiser group. This is a read-only field that can be left blank.
      */
@@ -1020,11 +1024,11 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$AdvertiserGroupsListResponse {
+  declare interface gapi$client$dfareporting$AdvertiserGroupsListResponse {
     /**
      * Advertiser group collection.
      */
-    client$advertiserGroups?: dfareporting$AdvertiserGroup[];
+    advertiserGroups?: gapi$client$dfareporting$AdvertiserGroup[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserGroupsListResponse".
@@ -1037,11 +1041,11 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$AdvertisersListResponse {
+  declare interface gapi$client$dfareporting$AdvertisersListResponse {
     /**
      * Advertiser collection.
      */
-    client$advertisers?: dfareporting$Advertiser[];
+    advertisers?: gapi$client$dfareporting$Advertiser[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertisersListResponse".
@@ -1054,7 +1058,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$AudienceSegment {
+  declare interface gapi$client$dfareporting$AudienceSegment {
     /**
      * Weight allocated to this segment. The weight assigned will be understood in proportion to the weights assigned to other segments in the same segment
      * group. Acceptable values are 1 to 1000, inclusive.
@@ -1072,11 +1076,11 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$AudienceSegmentGroup {
+  declare interface gapi$client$dfareporting$AudienceSegmentGroup {
     /**
      * Audience segments assigned to this group. The number of segments must be between 2 and 100.
      */
-    audienceSegments?: dfareporting$AudienceSegment[];
+    audienceSegments?: gapi$client$dfareporting$AudienceSegment[];
 
     /**
      * ID of this audience segment group. This is a read-only, auto-generated field.
@@ -1089,7 +1093,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$Browser {
+  declare interface gapi$client$dfareporting$Browser {
     /**
      * ID referring to this grouping of browser and version numbers. This is the ID used for targeting.
      */
@@ -1127,11 +1131,11 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$BrowsersListResponse {
+  declare interface gapi$client$dfareporting$BrowsersListResponse {
     /**
      * Browser collection.
      */
-    client$browsers?: dfareporting$Browser[];
+    browsers?: gapi$client$dfareporting$Browser[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#browsersListResponse".
@@ -1139,7 +1143,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$Campaign {
+  declare interface gapi$client$dfareporting$Campaign {
     /**
      * Account ID of this campaign. This is a read-only field that can be left blank.
      */
@@ -1148,7 +1152,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Ad blocking settings for this campaign.
      */
-    adBlockingConfiguration?: dfareporting$AdBlockingConfiguration;
+    adBlockingConfiguration?: gapi$client$dfareporting$AdBlockingConfiguration;
 
     /**
      * Additional creative optimization configurations for the campaign.
@@ -1178,7 +1182,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Audience segment groups assigned to this campaign. Cannot have more than 300 segment groups.
      */
-    audienceSegmentGroups?: dfareporting$AudienceSegmentGroup[];
+    audienceSegmentGroups?: gapi$client$dfareporting$AudienceSegmentGroup[];
 
     /**
      * Billing invoice code included in the DCM client billing invoices associated with the campaign.
@@ -1284,7 +1288,7 @@ declare module "gapi.client.dfareporting" {
     traffickerEmails?: string[];
   }
 
-  declare interface dfareporting$CampaignCreativeAssociation {
+  declare interface gapi$client$dfareporting$CampaignCreativeAssociation {
     /**
      * ID of the creative associated with the campaign. This is a required field.
      */
@@ -1296,11 +1300,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$CampaignCreativeAssociationsListResponse {
+  declare interface gapi$client$dfareporting$CampaignCreativeAssociationsListResponse {
     /**
      * Campaign creative association collection
      */
-    client$campaignCreativeAssociations?: dfareporting$CampaignCreativeAssociation[];
+    campaignCreativeAssociations?: gapi$client$dfareporting$CampaignCreativeAssociation[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignCreativeAssociationsListResponse".
@@ -1313,11 +1317,11 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CampaignsListResponse {
+  declare interface gapi$client$dfareporting$CampaignsListResponse {
     /**
      * Campaign collection.
      */
-    client$campaigns?: dfareporting$Campaign[];
+    campaigns?: gapi$client$dfareporting$Campaign[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignsListResponse".
@@ -1330,7 +1334,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$ChangeLog {
+  declare interface gapi$client$dfareporting$ChangeLog {
     /**
      * Account ID of the modified object.
      */
@@ -1403,11 +1407,11 @@ declare module "gapi.client.dfareporting" {
     userProfileName?: string;
   }
 
-  declare interface dfareporting$ChangeLogsListResponse {
+  declare interface gapi$client$dfareporting$ChangeLogsListResponse {
     /**
      * Change log collection.
      */
-    client$changeLogs?: dfareporting$ChangeLog[];
+    changeLogs?: gapi$client$dfareporting$ChangeLog[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#changeLogsListResponse".
@@ -1420,11 +1424,11 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CitiesListResponse {
+  declare interface gapi$client$dfareporting$CitiesListResponse {
     /**
      * City collection.
      */
-    client$cities?: dfareporting$City[];
+    cities?: dfareporting$City[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#citiesListResponse".
@@ -1432,7 +1436,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$City {
+  declare interface gapi$client$dfareporting$City {
     /**
      * Country code of the country to which this city belongs.
      */
@@ -1479,7 +1483,7 @@ declare module "gapi.client.dfareporting" {
     regionDartId?: string;
   }
 
-  declare interface dfareporting$ClickTag {
+  declare interface gapi$client$dfareporting$ClickTag {
     /**
      * Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when
      * the primary asset type is not HTML_IMAGE.
@@ -1498,7 +1502,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$ClickThroughUrl {
+  declare interface gapi$client$dfareporting$ClickThroughUrl {
     /**
      * Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows:
      * - If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field.
@@ -1523,7 +1527,7 @@ declare module "gapi.client.dfareporting" {
     landingPageId?: string;
   }
 
-  declare interface dfareporting$ClickThroughUrlSuffixProperties {
+  declare interface gapi$client$dfareporting$ClickThroughUrlSuffixProperties {
     /**
      * Click-through URL suffix to apply to all ads in this entity's scope. Must be less than 128 characters long.
      */
@@ -1535,11 +1539,11 @@ declare module "gapi.client.dfareporting" {
     overrideInheritedSuffix?: boolean;
   }
 
-  declare interface dfareporting$CompanionClickThroughOverride {
+  declare interface gapi$client$dfareporting$CompanionClickThroughOverride {
     /**
      * Click-through URL of this companion click-through override.
      */
-    clickThroughUrl?: dfareporting$ClickThroughUrl;
+    clickThroughUrl?: gapi$client$dfareporting$ClickThroughUrl;
 
     /**
      * ID of the creative for this companion click-through override.
@@ -1547,7 +1551,7 @@ declare module "gapi.client.dfareporting" {
     creativeId?: string;
   }
 
-  declare interface dfareporting$CompanionSetting {
+  declare interface gapi$client$dfareporting$CompanionSetting {
     /**
      * Whether companions are disabled for this placement.
      */
@@ -1569,7 +1573,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$CompatibleFields {
+  declare interface gapi$client$dfareporting$CompatibleFields {
     /**
      * Contains items that are compatible to be selected for a report of type "CROSS_DIMENSION_REACH".
      */
@@ -1601,7 +1605,7 @@ declare module "gapi.client.dfareporting" {
     reportCompatibleFields?: dfareporting$ReportCompatibleFields;
   }
 
-  declare interface dfareporting$ConnectionType {
+  declare interface gapi$client$dfareporting$ConnectionType {
     /**
      * ID of this connection type.
      */
@@ -1618,11 +1622,11 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$ConnectionTypesListResponse {
+  declare interface gapi$client$dfareporting$ConnectionTypesListResponse {
     /**
      * Collection of connection types such as broadband and mobile.
      */
-    client$connectionTypes?: dfareporting$ConnectionType[];
+    connectionTypes?: gapi$client$dfareporting$ConnectionType[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#connectionTypesListResponse".
@@ -1630,11 +1634,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$ContentCategoriesListResponse {
+  declare interface gapi$client$dfareporting$ContentCategoriesListResponse {
     /**
      * Content category collection.
      */
-    client$contentCategories?: dfareporting$ContentCategory[];
+    contentCategories?: dfareporting$ContentCategory[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#contentCategoriesListResponse".
@@ -1647,7 +1651,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$ContentCategory {
+  declare interface gapi$client$dfareporting$ContentCategory {
     /**
      * Account ID of this content category. This is a read-only field that can be left blank.
      */
@@ -1670,7 +1674,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$Conversion {
+  declare interface gapi$client$dfareporting$Conversion {
     /**
      * Whether the conversion was directed toward children.
      */
@@ -1748,7 +1752,7 @@ declare module "gapi.client.dfareporting" {
     value?: number;
   }
 
-  declare interface dfareporting$ConversionError {
+  declare interface gapi$client$dfareporting$ConversionError {
     /**
      * The error code.
      */
@@ -1765,16 +1769,16 @@ declare module "gapi.client.dfareporting" {
     message?: string;
   }
 
-  declare interface dfareporting$ConversionStatus {
+  declare interface gapi$client$dfareporting$ConversionStatus {
     /**
      * The original conversion that was inserted or updated.
      */
-    conversion?: dfareporting$Conversion;
+    conversion?: gapi$client$dfareporting$Conversion;
 
     /**
      * A list of errors related to this conversion.
      */
-    errors?: dfareporting$ConversionError[];
+    errors?: gapi$client$dfareporting$ConversionError[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionStatus".
@@ -1782,11 +1786,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$ConversionsBatchInsertRequest {
+  declare interface gapi$client$dfareporting$ConversionsBatchInsertRequest {
     /**
      * The set of conversions to insert.
      */
-    client$conversions?: dfareporting$Conversion[];
+    conversions?: gapi$client$dfareporting$Conversion[];
 
     /**
      * Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field if encryptedUserId or encryptedUserIdCandidates[]
@@ -1800,7 +1804,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$ConversionsBatchInsertResponse {
+  declare interface gapi$client$dfareporting$ConversionsBatchInsertResponse {
     /**
      * Indicates that some or all conversions failed to insert.
      */
@@ -1814,14 +1818,14 @@ declare module "gapi.client.dfareporting" {
     /**
      * The insert status of each conversion. Statuses are returned in the same order that conversions are inserted.
      */
-    status?: dfareporting$ConversionStatus[];
+    status?: gapi$client$dfareporting$ConversionStatus[];
   }
 
-  declare interface dfareporting$ConversionsBatchUpdateRequest {
+  declare interface gapi$client$dfareporting$ConversionsBatchUpdateRequest {
     /**
      * The set of conversions to update.
      */
-    client$conversions?: dfareporting$Conversion[];
+    conversions?: gapi$client$dfareporting$Conversion[];
 
     /**
      * Describes how encryptedUserId is encrypted. This is a required field if encryptedUserId is used.
@@ -1834,7 +1838,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$ConversionsBatchUpdateResponse {
+  declare interface gapi$client$dfareporting$ConversionsBatchUpdateResponse {
     /**
      * Indicates that some or all conversions failed to update.
      */
@@ -1848,14 +1852,14 @@ declare module "gapi.client.dfareporting" {
     /**
      * The update status of each conversion. Statuses are returned in the same order that conversions are updated.
      */
-    status?: dfareporting$ConversionStatus[];
+    status?: gapi$client$dfareporting$ConversionStatus[];
   }
 
-  declare interface dfareporting$CountriesListResponse {
+  declare interface gapi$client$dfareporting$CountriesListResponse {
     /**
      * Country collection.
      */
-    client$countries?: dfareporting$Country[];
+    countries?: dfareporting$Country[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#countriesListResponse".
@@ -1863,7 +1867,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$Country {
+  declare interface gapi$client$dfareporting$Country {
     /**
      * Country code.
      */
@@ -1890,7 +1894,7 @@ declare module "gapi.client.dfareporting" {
     sslEnabled?: boolean;
   }
 
-  declare interface dfareporting$Creative {
+  declare interface gapi$client$dfareporting$Creative {
     /**
      * Account ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types.
      */
@@ -1989,7 +1993,7 @@ declare module "gapi.client.dfareporting" {
      * the creativeAsset.assetIdentifier.name field. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER. Applicable
      * to DISPLAY when the primary asset type is not HTML_IMAGE.
      */
-    clickTags?: dfareporting$ClickTag[];
+    clickTags?: gapi$client$dfareporting$ClickTag[];
 
     /**
      * Industry standard ID assigned to creative for reach and frequency. Applicable to INSTREAM_VIDEO_REDIRECT creatives.
@@ -2038,7 +2042,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Assets associated with a creative. Applicable to all but the following creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
      */
-    client$creativeAssets?: dfareporting$CreativeAsset[];
+    creativeAssets?: dfareporting$CreativeAsset[];
 
     /**
      * Creative field assignments for this creative. Applicable to all creative types.
@@ -2265,7 +2269,7 @@ declare module "gapi.client.dfareporting" {
     videoDuration?: number;
   }
 
-  declare interface dfareporting$CreativeAsset {
+  declare interface gapi$client$dfareporting$CreativeAsset {
     /**
      * Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to
      * DISPLAY when the primary asset type is not HTML_IMAGE.
@@ -2522,7 +2526,7 @@ declare module "gapi.client.dfareporting" {
     zipFilesize?: string;
   }
 
-  declare interface dfareporting$CreativeAssetId {
+  declare interface gapi$client$dfareporting$CreativeAssetId {
     /**
      * Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded
      * asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed.
@@ -2535,16 +2539,16 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$CreativeAssetMetadata {
+  declare interface gapi$client$dfareporting$CreativeAssetMetadata {
     /**
      * ID of the creative asset. This is a required field.
      */
-    assetIdentifier?: dfareporting$CreativeAssetId;
+    assetIdentifier?: gapi$client$dfareporting$CreativeAssetId;
 
     /**
      * List of detected click tags for assets. This is a read-only auto-generated field.
      */
-    clickTags?: dfareporting$ClickTag[];
+    clickTags?: gapi$client$dfareporting$ClickTag[];
 
     /**
      * List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies are features that a browser must be able to support
@@ -2599,7 +2603,7 @@ declare module "gapi.client.dfareporting" {
     warnedValidationRules?: string[];
   }
 
-  declare interface dfareporting$CreativeAssetSelection {
+  declare interface gapi$client$dfareporting$CreativeAssetSelection {
     /**
      * A creativeAssets[].id. This should refer to one of the parent assets in this creative, and will be served if none of the rules match. This is a
      * required field.
@@ -2613,7 +2617,7 @@ declare module "gapi.client.dfareporting" {
     rules?: dfareporting$Rule[];
   }
 
-  declare interface dfareporting$CreativeAssignment {
+  declare interface gapi$client$dfareporting$CreativeAssignment {
     /**
      * Whether this creative assignment is active. When true, the creative will be included in the ad's rotation.
      */
@@ -2628,12 +2632,12 @@ declare module "gapi.client.dfareporting" {
     /**
      * Click-through URL of the creative assignment.
      */
-    clickThroughUrl?: dfareporting$ClickThroughUrl;
+    clickThroughUrl?: gapi$client$dfareporting$ClickThroughUrl;
 
     /**
      * Companion creative overrides for this creative assignment. Applicable to video ads.
      */
-    companionCreativeOverrides?: dfareporting$CompanionClickThroughOverride[];
+    companionCreativeOverrides?: gapi$client$dfareporting$CompanionClickThroughOverride[];
 
     /**
      * Creative group assignments for this creative assignment. Only one assignment per creative group number is allowed for a maximum of two assignments.
@@ -2694,7 +2698,7 @@ declare module "gapi.client.dfareporting" {
     weight?: number;
   }
 
-  declare interface dfareporting$CreativeCustomEvent {
+  declare interface gapi$client$dfareporting$CreativeCustomEvent {
     /**
      * Unique ID of this event used by DDM Reporting and Data Transfer. This is a read-only field.
      */
@@ -2746,7 +2750,7 @@ declare module "gapi.client.dfareporting" {
     videoReportingId?: string;
   }
 
-  declare interface dfareporting$CreativeField {
+  declare interface gapi$client$dfareporting$CreativeField {
     /**
      * Account ID of this creative field. This is a read-only field that can be left blank.
      */
@@ -2784,7 +2788,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$CreativeFieldAssignment {
+  declare interface gapi$client$dfareporting$CreativeFieldAssignment {
     /**
      * ID of the creative field.
      */
@@ -2796,7 +2800,7 @@ declare module "gapi.client.dfareporting" {
     creativeFieldValueId?: string;
   }
 
-  declare interface dfareporting$CreativeFieldValue {
+  declare interface gapi$client$dfareporting$CreativeFieldValue {
     /**
      * ID of this creative field value. This is a read-only, auto-generated field.
      */
@@ -2813,11 +2817,11 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$CreativeFieldValuesListResponse {
+  declare interface gapi$client$dfareporting$CreativeFieldValuesListResponse {
     /**
      * Creative field value collection.
      */
-    client$creativeFieldValues?: dfareporting$CreativeFieldValue[];
+    creativeFieldValues?: gapi$client$dfareporting$CreativeFieldValue[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldValuesListResponse".
@@ -2830,11 +2834,11 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CreativeFieldsListResponse {
+  declare interface gapi$client$dfareporting$CreativeFieldsListResponse {
     /**
      * Creative field collection.
      */
-    client$creativeFields?: dfareporting$CreativeField[];
+    creativeFields?: gapi$client$dfareporting$CreativeField[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldsListResponse".
@@ -2847,7 +2851,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CreativeGroup {
+  declare interface gapi$client$dfareporting$CreativeGroup {
     /**
      * Account ID of this creative group. This is a read-only field that can be left blank.
      */
@@ -2891,7 +2895,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$CreativeGroupAssignment {
+  declare interface gapi$client$dfareporting$CreativeGroupAssignment {
     /**
      * ID of the creative group to be assigned.
      */
@@ -2903,11 +2907,11 @@ declare module "gapi.client.dfareporting" {
     creativeGroupNumber?: string;
   }
 
-  declare interface dfareporting$CreativeGroupsListResponse {
+  declare interface gapi$client$dfareporting$CreativeGroupsListResponse {
     /**
      * Creative group collection.
      */
-    client$creativeGroups?: dfareporting$CreativeGroup[];
+    creativeGroups?: gapi$client$dfareporting$CreativeGroup[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeGroupsListResponse".
@@ -2920,7 +2924,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CreativeOptimizationConfiguration {
+  declare interface gapi$client$dfareporting$CreativeOptimizationConfiguration {
     /**
      * ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns.
      */
@@ -2942,11 +2946,11 @@ declare module "gapi.client.dfareporting" {
     optimizationModel?: string;
   }
 
-  declare interface dfareporting$CreativeRotation {
+  declare interface gapi$client$dfareporting$CreativeRotation {
     /**
      * Creative assignments in this creative rotation.
      */
-    creativeAssignments?: dfareporting$CreativeAssignment[];
+    creativeAssignments?: gapi$client$dfareporting$CreativeAssignment[];
 
     /**
      * Creative optimization configuration that is used by this ad. It should refer to one of the existing optimization configurations in the ad's campaign.
@@ -2965,7 +2969,7 @@ declare module "gapi.client.dfareporting" {
     weightCalculationStrategy?: string;
   }
 
-  declare interface dfareporting$CreativeSettings {
+  declare interface gapi$client$dfareporting$CreativeSettings {
     /**
      * Header text for iFrames for this site. Must be less than or equal to 2000 characters long.
      */
@@ -2977,11 +2981,11 @@ declare module "gapi.client.dfareporting" {
     iFrameHeader?: string;
   }
 
-  declare interface dfareporting$CreativesListResponse {
+  declare interface gapi$client$dfareporting$CreativesListResponse {
     /**
      * Creative collection.
      */
-    client$creatives?: dfareporting$Creative[];
+    creatives?: gapi$client$dfareporting$Creative[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativesListResponse".
@@ -2994,7 +2998,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$CrossDimensionReachReportCompatibleFields {
+  declare interface gapi$client$dfareporting$CrossDimensionReachReportCompatibleFields {
     /**
      * Dimensions which are compatible to be selected in the "breakdown" section of the report.
      */
@@ -3021,7 +3025,7 @@ declare module "gapi.client.dfareporting" {
     overlapMetrics?: dfareporting$Metric[];
   }
 
-  declare interface dfareporting$CustomFloodlightVariable {
+  declare interface gapi$client$dfareporting$CustomFloodlightVariable {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#customFloodlightVariable".
      */
@@ -3038,7 +3042,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$CustomRichMediaEvents {
+  declare interface gapi$client$dfareporting$CustomRichMediaEvents {
     /**
      * List of custom rich media event IDs. Dimension values must be all of type dfa:richMediaEventTypeIdAndName.
      */
@@ -3050,7 +3054,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$DateRange {
+  declare interface gapi$client$dfareporting$DateRange {
     /**
      * The end date of the date range, inclusive. A string of the format: "yyyy-MM-dd".
      */
@@ -3072,7 +3076,7 @@ declare module "gapi.client.dfareporting" {
     startDate?: string;
   }
 
-  declare interface dfareporting$DayPartTargeting {
+  declare interface gapi$client$dfareporting$DayPartTargeting {
     /**
      * Days of the week when the ad will serve.
      *
@@ -3100,7 +3104,7 @@ declare module "gapi.client.dfareporting" {
     userLocalTime?: boolean;
   }
 
-  declare interface dfareporting$DefaultClickThroughEventTagProperties {
+  declare interface gapi$client$dfareporting$DefaultClickThroughEventTagProperties {
     /**
      * ID of the click-through event tag to apply to all ads in this entity's scope.
      */
@@ -3112,7 +3116,7 @@ declare module "gapi.client.dfareporting" {
     overrideInheritedEventTag?: boolean;
   }
 
-  declare interface dfareporting$DeliverySchedule {
+  declare interface gapi$client$dfareporting$DeliverySchedule {
     /**
      * Limit on the number of times an individual user can be served the ad within a specified period of time.
      */
@@ -3136,7 +3140,7 @@ declare module "gapi.client.dfareporting" {
     priority?: string;
   }
 
-  declare interface dfareporting$DfpSettings {
+  declare interface gapi$client$dfareporting$DfpSettings {
     /**
      * DFP network code for this directory site.
      */
@@ -3163,7 +3167,7 @@ declare module "gapi.client.dfareporting" {
     publisherPortalOnly?: boolean;
   }
 
-  declare interface dfareporting$Dimension {
+  declare interface gapi$client$dfareporting$Dimension {
     /**
      * The kind of resource this is, in this case dfareporting#dimension.
      */
@@ -3175,7 +3179,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$DimensionFilter {
+  declare interface gapi$client$dfareporting$DimensionFilter {
     /**
      * The name of the dimension to filter.
      */
@@ -3192,7 +3196,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$DimensionValue {
+  declare interface gapi$client$dfareporting$DimensionValue {
     /**
      * The name of the dimension.
      */
@@ -3226,7 +3230,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$DimensionValueList {
+  declare interface gapi$client$dfareporting$DimensionValueList {
     /**
      * The eTag of this response for caching purposes.
      */
@@ -3235,7 +3239,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The dimension values returned in this response.
      */
-    items?: dfareporting$DimensionValue[];
+    items?: gapi$client$dfareporting$DimensionValue[];
 
     /**
      * The kind of list this is, in this case dfareporting#dimensionValueList.
@@ -3249,7 +3253,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$DimensionValueRequest {
+  declare interface gapi$client$dfareporting$DimensionValueRequest {
     /**
      * The name of the dimension for which values should be requested.
      */
@@ -3263,7 +3267,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The list of filters by which to filter values. The filters are ANDed.
      */
-    filters?: dfareporting$DimensionFilter[];
+    filters?: gapi$client$dfareporting$DimensionFilter[];
 
     /**
      * The kind of request this is, in this case dfareporting#dimensionValueRequest.
@@ -3276,7 +3280,7 @@ declare module "gapi.client.dfareporting" {
     startDate?: string;
   }
 
-  declare interface dfareporting$DirectorySite {
+  declare interface gapi$client$dfareporting$DirectorySite {
     /**
      * Whether this directory site is active.
      */
@@ -3359,7 +3363,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this directory site. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Tag types for regular placements.
@@ -3408,7 +3412,7 @@ declare module "gapi.client.dfareporting" {
     url?: string;
   }
 
-  declare interface dfareporting$DirectorySiteContact {
+  declare interface gapi$client$dfareporting$DirectorySiteContact {
     /**
      * Address of this directory site contact.
      */
@@ -3460,7 +3464,7 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$DirectorySiteContactAssignment {
+  declare interface gapi$client$dfareporting$DirectorySiteContactAssignment {
     /**
      * ID of this directory site contact. This is a read-only, auto-generated field.
      */
@@ -3473,11 +3477,11 @@ declare module "gapi.client.dfareporting" {
     visibility?: string;
   }
 
-  declare interface dfareporting$DirectorySiteContactsListResponse {
+  declare interface gapi$client$dfareporting$DirectorySiteContactsListResponse {
     /**
      * Directory site contact collection
      */
-    client$directorySiteContacts?: dfareporting$DirectorySiteContact[];
+    directorySiteContacts?: gapi$client$dfareporting$DirectorySiteContact[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#directorySiteContactsListResponse".
@@ -3490,7 +3494,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$DirectorySiteSettings {
+  declare interface gapi$client$dfareporting$DirectorySiteSettings {
     /**
      * Whether this directory site has disabled active view creatives.
      */
@@ -3499,7 +3503,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Directory site DFP settings.
      */
-    dfpSettings?: dfareporting$DfpSettings;
+    dfpSettings?: gapi$client$dfareporting$DfpSettings;
 
     /**
      * Whether this site accepts in-stream video ads.
@@ -3527,11 +3531,11 @@ declare module "gapi.client.dfareporting" {
     videoActiveViewOptOut?: boolean;
   }
 
-  declare interface dfareporting$DirectorySitesListResponse {
+  declare interface gapi$client$dfareporting$DirectorySitesListResponse {
     /**
      * Directory site collection.
      */
-    client$directorySites?: dfareporting$DirectorySite[];
+    directorySites?: gapi$client$dfareporting$DirectorySite[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#directorySitesListResponse".
@@ -3544,7 +3548,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$DynamicTargetingKey {
+  declare interface gapi$client$dfareporting$DynamicTargetingKey {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKey".
      */
@@ -3567,11 +3571,11 @@ declare module "gapi.client.dfareporting" {
     objectType?: string;
   }
 
-  declare interface dfareporting$DynamicTargetingKeysListResponse {
+  declare interface gapi$client$dfareporting$DynamicTargetingKeysListResponse {
     /**
      * Dynamic targeting key collection.
      */
-    client$dynamicTargetingKeys?: dfareporting$DynamicTargetingKey[];
+    dynamicTargetingKeys?: gapi$client$dfareporting$DynamicTargetingKey[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse".
@@ -3579,7 +3583,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$EncryptionInfo {
+  declare interface gapi$client$dfareporting$EncryptionInfo {
     /**
      * The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer.
      */
@@ -3601,7 +3605,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$EventTag {
+  declare interface gapi$client$dfareporting$EventTag {
     /**
      * Account ID of this event tag. This is a read-only field that can be left blank.
      */
@@ -3615,7 +3619,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Campaign ID of this event tag. This field or the advertiserId field is required on insertion.
@@ -3625,7 +3629,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the campaign. This is a read-only, auto-generated field.
      */
-    campaignIdDimensionValue?: dfareporting$DimensionValue;
+    campaignIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether this event tag should be automatically enabled for all of the advertiser's campaigns and ads.
@@ -3697,7 +3701,7 @@ declare module "gapi.client.dfareporting" {
     urlEscapeLevels?: number;
   }
 
-  declare interface dfareporting$EventTagOverride {
+  declare interface gapi$client$dfareporting$EventTagOverride {
     /**
      * Whether this override is enabled.
      */
@@ -3709,11 +3713,11 @@ declare module "gapi.client.dfareporting" {
     id?: string;
   }
 
-  declare interface dfareporting$EventTagsListResponse {
+  declare interface gapi$client$dfareporting$EventTagsListResponse {
     /**
      * Event tag collection.
      */
-    client$eventTags?: dfareporting$EventTag[];
+    eventTags?: gapi$client$dfareporting$EventTag[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#eventTagsListResponse".
@@ -3721,11 +3725,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$File {
+  declare interface gapi$client$dfareporting$File {
     /**
      * The date range for which the file has report data. The date range will always be the absolute date range for which the report is run.
      */
-    dateRange?: dfareporting$DateRange;
+    dateRange?: gapi$client$dfareporting$DateRange;
 
     /**
      * The eTag of this response for caching purposes.
@@ -3783,7 +3787,7 @@ declare module "gapi.client.dfareporting" {
     };
   }
 
-  declare interface dfareporting$FileList {
+  declare interface gapi$client$dfareporting$FileList {
     /**
      * The eTag of this response for caching purposes.
      */
@@ -3792,7 +3796,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The files returned in this response.
      */
-    items?: dfareporting$File[];
+    items?: gapi$client$dfareporting$File[];
 
     /**
      * The kind of list this is, in this case dfareporting#fileList.
@@ -3806,7 +3810,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$Flight {
+  declare interface gapi$client$dfareporting$Flight {
     /**
      * Inventory item flight end date.
      */
@@ -3828,7 +3832,7 @@ declare module "gapi.client.dfareporting" {
     units?: string;
   }
 
-  declare interface dfareporting$FloodlightActivitiesGenerateTagResponse {
+  declare interface gapi$client$dfareporting$FloodlightActivitiesGenerateTagResponse {
     /**
      * Generated tag for this floodlight activity.
      */
@@ -3840,11 +3844,11 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$FloodlightActivitiesListResponse {
+  declare interface gapi$client$dfareporting$FloodlightActivitiesListResponse {
     /**
      * Floodlight activity collection.
      */
-    client$floodlightActivities?: dfareporting$FloodlightActivity[];
+    floodlightActivities?: dfareporting$FloodlightActivity[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivitiesListResponse".
@@ -3857,7 +3861,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$FloodlightActivity {
+  declare interface gapi$client$dfareporting$FloodlightActivity {
     /**
      * Account ID of this floodlight activity. This is a read-only field that can be left blank.
      */
@@ -3872,7 +3876,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is
@@ -3924,7 +3928,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field.
      */
-    floodlightConfigurationIdDimensionValue?: dfareporting$DimensionValue;
+    floodlightConfigurationIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether this activity is archived.
@@ -3939,7 +3943,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether the image tag is enabled for this activity.
@@ -4005,7 +4009,7 @@ declare module "gapi.client.dfareporting" {
     userDefinedVariableTypes?: string[];
   }
 
-  declare interface dfareporting$FloodlightActivityDynamicTag {
+  declare interface gapi$client$dfareporting$FloodlightActivityDynamicTag {
     /**
      * ID of this dynamic tag. This is a read-only, auto-generated field.
      */
@@ -4022,7 +4026,7 @@ declare module "gapi.client.dfareporting" {
     tag?: string;
   }
 
-  declare interface dfareporting$FloodlightActivityGroup {
+  declare interface gapi$client$dfareporting$FloodlightActivityGroup {
     /**
      * Account ID of this floodlight activity group. This is a read-only field that can be left blank.
      */
@@ -4037,7 +4041,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Floodlight configuration ID of this floodlight activity group. This is a required field.
@@ -4047,7 +4051,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field.
      */
-    floodlightConfigurationIdDimensionValue?: dfareporting$DimensionValue;
+    floodlightConfigurationIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * ID of this floodlight activity group. This is a read-only, auto-generated field.
@@ -4057,7 +4061,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivityGroup".
@@ -4088,11 +4092,11 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$FloodlightActivityGroupsListResponse {
+  declare interface gapi$client$dfareporting$FloodlightActivityGroupsListResponse {
     /**
      * Floodlight activity group collection.
      */
-    client$floodlightActivityGroups?: dfareporting$FloodlightActivityGroup[];
+    floodlightActivityGroups?: gapi$client$dfareporting$FloodlightActivityGroup[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivityGroupsListResponse".
@@ -4105,7 +4109,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$FloodlightActivityPublisherDynamicTag {
+  declare interface gapi$client$dfareporting$FloodlightActivityPublisherDynamicTag {
     /**
      * Whether this tag is applicable only for click-throughs.
      */
@@ -4120,7 +4124,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dynamic floodlight tag.
      */
-    dynamicTag?: dfareporting$FloodlightActivityDynamicTag;
+    dynamicTag?: gapi$client$dfareporting$FloodlightActivityDynamicTag;
 
     /**
      * Site ID of this dynamic tag.
@@ -4130,7 +4134,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the site. This is a read-only, auto-generated field.
      */
-    siteIdDimensionValue?: dfareporting$DimensionValue;
+    siteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether this tag is applicable only for view-throughs.
@@ -4138,7 +4142,7 @@ declare module "gapi.client.dfareporting" {
     viewThrough?: boolean;
   }
 
-  declare interface dfareporting$FloodlightConfiguration {
+  declare interface gapi$client$dfareporting$FloodlightConfiguration {
     /**
      * Account ID of this floodlight configuration. This is a read-only field that can be left blank.
      */
@@ -4152,7 +4156,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether advertiser data is shared with Google Analytics.
@@ -4178,7 +4182,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this floodlight configuration. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether in-app attribution tracking is enabled.
@@ -4226,11 +4230,11 @@ declare module "gapi.client.dfareporting" {
     userDefinedVariableConfigurations?: dfareporting$UserDefinedVariableConfiguration[];
   }
 
-  declare interface dfareporting$FloodlightConfigurationsListResponse {
+  declare interface gapi$client$dfareporting$FloodlightConfigurationsListResponse {
     /**
      * Floodlight configuration collection.
      */
-    client$floodlightConfigurations?: dfareporting$FloodlightConfiguration[];
+    floodlightConfigurations?: gapi$client$dfareporting$FloodlightConfiguration[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightConfigurationsListResponse".
@@ -4238,16 +4242,16 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$FloodlightReportCompatibleFields {
+  declare interface gapi$client$dfareporting$FloodlightReportCompatibleFields {
     /**
      * Dimensions which are compatible to be selected in the "dimensionFilters" section of the report.
      */
-    dimensionFilters?: dfareporting$Dimension[];
+    dimensionFilters?: gapi$client$dfareporting$Dimension[];
 
     /**
      * Dimensions which are compatible to be selected in the "dimensions" section of the report.
      */
-    dimensions?: dfareporting$Dimension[];
+    dimensions?: gapi$client$dfareporting$Dimension[];
 
     /**
      * The kind of resource this is, in this case dfareporting#floodlightReportCompatibleFields.
@@ -4260,7 +4264,7 @@ declare module "gapi.client.dfareporting" {
     metrics?: dfareporting$Metric[];
   }
 
-  declare interface dfareporting$FrequencyCap {
+  declare interface gapi$client$dfareporting$FrequencyCap {
     /**
      * Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days. Acceptable values are 1 to 7776000, inclusive.
      */
@@ -4272,7 +4276,7 @@ declare module "gapi.client.dfareporting" {
     impressions?: string;
   }
 
-  declare interface dfareporting$FsCommand {
+  declare interface gapi$client$dfareporting$FsCommand {
     /**
      * Distance from the left of the browser.Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
      */
@@ -4299,19 +4303,19 @@ declare module "gapi.client.dfareporting" {
     windowWidth?: number;
   }
 
-  declare interface dfareporting$GeoTargeting {
+  declare interface gapi$client$dfareporting$GeoTargeting {
     /**
      * Cities to be targeted. For each city only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If
      * targeting a city, do not target or exclude the country of the city, and do not target the metro or region of the city.
      */
-    client$cities?: dfareporting$City[];
+    cities?: gapi$client$dfareporting$City[];
 
     /**
      * Countries to be targeted or excluded from targeting, depending on the setting of the excludeCountries field. For each country only dartId is required.
      * The other fields are populated automatically when the ad is inserted or updated. If targeting or excluding a country, do not target regions, cities,
      * metros, or postal codes in the same country.
      */
-    client$countries?: dfareporting$Country[];
+    countries?: gapi$client$dfareporting$Country[];
 
     /**
      * Whether or not to exclude the countries in the countries field from targeting. If false, the countries field refers to countries which will be targeted
@@ -4323,22 +4327,22 @@ declare module "gapi.client.dfareporting" {
      * Metros to be targeted. For each metro only dmaId is required. The other fields are populated automatically when the ad is inserted or updated. If
      * targeting a metro, do not target or exclude the country of the metro.
      */
-    client$metros?: dfareporting$Metro[];
+    metros?: dfareporting$Metro[];
 
     /**
      * Postal codes to be targeted. For each postal code only id is required. The other fields are populated automatically when the ad is inserted or updated.
      * If targeting a postal code, do not target or exclude the country of the postal code.
      */
-    client$postalCodes?: dfareporting$PostalCode[];
+    postalCodes?: dfareporting$PostalCode[];
 
     /**
      * Regions to be targeted. For each region only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If
      * targeting a region, do not target or exclude the country of the region.
      */
-    client$regions?: dfareporting$Region[];
+    regions?: dfareporting$Region[];
   }
 
-  declare interface dfareporting$InventoryItem {
+  declare interface gapi$client$dfareporting$InventoryItem {
     /**
      * Account ID of this inventory item.
      */
@@ -4348,7 +4352,7 @@ declare module "gapi.client.dfareporting" {
      * Ad slots of this inventory item. If this inventory item represents a standalone placement, there will be exactly one ad slot. If this inventory item
      * represents a placement group, there will be more than one ad slot, each representing one child placement in that placement group.
      */
-    adSlots?: dfareporting$AdSlot[];
+    adSlots?: gapi$client$dfareporting$AdSlot[];
 
     /**
      * Advertiser ID of this inventory item.
@@ -4442,11 +4446,11 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$InventoryItemsListResponse {
+  declare interface gapi$client$dfareporting$InventoryItemsListResponse {
     /**
      * Inventory item collection
      */
-    client$inventoryItems?: dfareporting$InventoryItem[];
+    inventoryItems?: gapi$client$dfareporting$InventoryItem[];
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#inventoryItemsListResponse".
@@ -4459,14 +4463,14 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$KeyValueTargetingExpression {
+  declare interface gapi$client$dfareporting$KeyValueTargetingExpression {
     /**
      * Keyword expression being targeted by the ad.
      */
     expression?: string;
   }
 
-  declare interface dfareporting$LandingPage {
+  declare interface gapi$client$dfareporting$LandingPage {
     /**
      * Whether or not this landing page will be assigned to any ads or creatives that do not have a landing page assigned explicitly. Only one default landing
      * page is allowed per campaign.
@@ -4495,7 +4499,7 @@ declare module "gapi.client.dfareporting" {
     url?: string;
   }
 
-  declare interface dfareporting$LandingPagesListResponse {
+  declare interface gapi$client$dfareporting$LandingPagesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#landingPagesListResponse".
      */
@@ -4504,10 +4508,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Landing page collection
      */
-    client$landingPages?: dfareporting$LandingPage[];
+    landingPages?: gapi$client$dfareporting$LandingPage[];
   }
 
-  declare interface dfareporting$Language {
+  declare interface gapi$client$dfareporting$Language {
     /**
      * Language ID of this language. This is the ID used for targeting and generating reports.
      */
@@ -4530,15 +4534,15 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$LanguageTargeting {
+  declare interface gapi$client$dfareporting$LanguageTargeting {
     /**
      * Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or
      * updated.
      */
-    client$languages?: dfareporting$Language[];
+    languages?: gapi$client$dfareporting$Language[];
   }
 
-  declare interface dfareporting$LanguagesListResponse {
+  declare interface gapi$client$dfareporting$LanguagesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#languagesListResponse".
      */
@@ -4547,24 +4551,24 @@ declare module "gapi.client.dfareporting" {
     /**
      * Language collection.
      */
-    client$languages?: dfareporting$Language[];
+    languages?: gapi$client$dfareporting$Language[];
   }
 
-  declare interface dfareporting$LastModifiedInfo {
+  declare interface gapi$client$dfareporting$LastModifiedInfo {
     /**
      * Timestamp of the last change in milliseconds since epoch.
      */
     time?: string;
   }
 
-  declare interface dfareporting$ListPopulationClause {
+  declare interface gapi$client$dfareporting$ListPopulationClause {
     /**
      * Terms of this list population clause. Each clause is made up of list population terms representing constraints and are joined by ORs.
      */
     terms?: dfareporting$ListPopulationTerm[];
   }
 
-  declare interface dfareporting$ListPopulationRule {
+  declare interface gapi$client$dfareporting$ListPopulationRule {
     /**
      * Floodlight activity ID associated with this rule. This field can be left blank.
      */
@@ -4579,10 +4583,10 @@ declare module "gapi.client.dfareporting" {
      * Clauses that make up this list population rule. Clauses are joined by ANDs, and the clauses themselves are made up of list population terms which are
      * joined by ORs.
      */
-    listPopulationClauses?: dfareporting$ListPopulationClause[];
+    listPopulationClauses?: gapi$client$dfareporting$ListPopulationClause[];
   }
 
-  declare interface dfareporting$ListPopulationTerm {
+  declare interface gapi$client$dfareporting$ListPopulationTerm {
     /**
      * Will be true if the term should check if the user is in the list and false if the term should check if the user is not in the list. This field is only
      * relevant when type is set to LIST_MEMBERSHIP_TERM. False by default.
@@ -4630,14 +4634,14 @@ declare module "gapi.client.dfareporting" {
     variableName?: string;
   }
 
-  declare interface dfareporting$ListTargetingExpression {
+  declare interface gapi$client$dfareporting$ListTargetingExpression {
     /**
      * Expression describing which lists are being targeted by the ad.
      */
     expression?: string;
   }
 
-  declare interface dfareporting$LookbackConfiguration {
+  declare interface gapi$client$dfareporting$LookbackConfiguration {
     /**
      * Lookback window, in days, from the last time a given user clicked on one of your ads. If you enter 0, clicks will not be considered as triggering
      * events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90,
@@ -4653,7 +4657,7 @@ declare module "gapi.client.dfareporting" {
     postImpressionActivitiesDuration?: number;
   }
 
-  declare interface dfareporting$Metric {
+  declare interface gapi$client$dfareporting$Metric {
     /**
      * The kind of resource this is, in this case dfareporting#metric.
      */
@@ -4665,7 +4669,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$Metro {
+  declare interface gapi$client$dfareporting$Metro {
     /**
      * Country code of the country to which this metro region belongs.
      */
@@ -4702,7 +4706,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$MetrosListResponse {
+  declare interface gapi$client$dfareporting$MetrosListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#metrosListResponse".
      */
@@ -4711,10 +4715,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Metro collection.
      */
-    client$metros?: dfareporting$Metro[];
+    metros?: gapi$client$dfareporting$Metro[];
   }
 
-  declare interface dfareporting$MobileCarrier {
+  declare interface gapi$client$dfareporting$MobileCarrier {
     /**
      * Country code of the country to which this mobile carrier belongs.
      */
@@ -4741,7 +4745,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$MobileCarriersListResponse {
+  declare interface gapi$client$dfareporting$MobileCarriersListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileCarriersListResponse".
      */
@@ -4750,10 +4754,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Mobile carrier collection.
      */
-    client$mobileCarriers?: dfareporting$MobileCarrier[];
+    mobileCarriers?: gapi$client$dfareporting$MobileCarrier[];
   }
 
-  declare interface dfareporting$ObjectFilter {
+  declare interface gapi$client$dfareporting$ObjectFilter {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#objectFilter".
      */
@@ -4771,7 +4775,7 @@ declare module "gapi.client.dfareporting" {
     status?: string;
   }
 
-  declare interface dfareporting$OffsetPosition {
+  declare interface gapi$client$dfareporting$OffsetPosition {
     /**
      * Offset distance from left side of an asset or a window.
      */
@@ -4783,7 +4787,7 @@ declare module "gapi.client.dfareporting" {
     top?: number;
   }
 
-  declare interface dfareporting$OmnitureSettings {
+  declare interface gapi$client$dfareporting$OmnitureSettings {
     /**
      * Whether placement cost data will be sent to Omniture. This property can be enabled only if omnitureIntegrationEnabled is true.
      */
@@ -4795,7 +4799,7 @@ declare module "gapi.client.dfareporting" {
     omnitureIntegrationEnabled?: boolean;
   }
 
-  declare interface dfareporting$OperatingSystem {
+  declare interface gapi$client$dfareporting$OperatingSystem {
     /**
      * DART ID of this operating system. This is the ID used for targeting.
      */
@@ -4822,7 +4826,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$OperatingSystemVersion {
+  declare interface gapi$client$dfareporting$OperatingSystemVersion {
     /**
      * ID of this operating system version.
      */
@@ -4851,10 +4855,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Operating system of this operating system version.
      */
-    operatingSystem?: dfareporting$OperatingSystem;
+    operatingSystem?: gapi$client$dfareporting$OperatingSystem;
   }
 
-  declare interface dfareporting$OperatingSystemVersionsListResponse {
+  declare interface gapi$client$dfareporting$OperatingSystemVersionsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemVersionsListResponse".
      */
@@ -4863,10 +4867,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Operating system version collection.
      */
-    client$operatingSystemVersions?: dfareporting$OperatingSystemVersion[];
+    operatingSystemVersions?: gapi$client$dfareporting$OperatingSystemVersion[];
   }
 
-  declare interface dfareporting$OperatingSystemsListResponse {
+  declare interface gapi$client$dfareporting$OperatingSystemsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemsListResponse".
      */
@@ -4875,10 +4879,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Operating system collection.
      */
-    client$operatingSystems?: dfareporting$OperatingSystem[];
+    operatingSystems?: gapi$client$dfareporting$OperatingSystem[];
   }
 
-  declare interface dfareporting$OptimizationActivity {
+  declare interface gapi$client$dfareporting$OptimizationActivity {
     /**
      * Floodlight activity ID of this optimization activity. This is a required field.
      */
@@ -4887,7 +4891,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the floodlight activity. This is a read-only, auto-generated field.
      */
-    floodlightActivityIdDimensionValue?: dfareporting$DimensionValue;
+    floodlightActivityIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Weight associated with this optimization. The weight assigned will be understood in proportion to the weights assigned to the other optimization
@@ -4896,7 +4900,7 @@ declare module "gapi.client.dfareporting" {
     weight?: number;
   }
 
-  declare interface dfareporting$Order {
+  declare interface gapi$client$dfareporting$Order {
     /**
      * Account ID of this order.
      */
@@ -4945,7 +4949,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the most recent modification of this order.
      */
-    lastModifiedInfo?: dfareporting$LastModifiedInfo;
+    lastModifiedInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Name of this order.
@@ -4998,7 +5002,7 @@ declare module "gapi.client.dfareporting" {
     termsAndConditions?: string;
   }
 
-  declare interface dfareporting$OrderContact {
+  declare interface gapi$client$dfareporting$OrderContact {
     /**
      * Free-form information about this contact. It could be any information related to this contact in addition to type, title, name, and signature user
      * profile ID.
@@ -5026,7 +5030,7 @@ declare module "gapi.client.dfareporting" {
     signatureUserProfileId?: string;
   }
 
-  declare interface dfareporting$OrderDocument {
+  declare interface gapi$client$dfareporting$OrderDocument {
     /**
      * Account ID of this order document.
      */
@@ -5056,7 +5060,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the creation of this order document.
      */
-    createdInfo?: dfareporting$LastModifiedInfo;
+    createdInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Effective date of this order document.
@@ -5114,7 +5118,7 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$OrderDocumentsListResponse {
+  declare interface gapi$client$dfareporting$OrderDocumentsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#orderDocumentsListResponse".
      */
@@ -5128,10 +5132,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Order document collection
      */
-    client$orderDocuments?: dfareporting$OrderDocument[];
+    orderDocuments?: gapi$client$dfareporting$OrderDocument[];
   }
 
-  declare interface dfareporting$OrdersListResponse {
+  declare interface gapi$client$dfareporting$OrdersListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#ordersListResponse".
      */
@@ -5145,19 +5149,19 @@ declare module "gapi.client.dfareporting" {
     /**
      * Order collection.
      */
-    client$orders?: dfareporting$Order[];
+    orders?: gapi$client$dfareporting$Order[];
   }
 
-  declare interface dfareporting$PathToConversionReportCompatibleFields {
+  declare interface gapi$client$dfareporting$PathToConversionReportCompatibleFields {
     /**
      * Conversion dimensions which are compatible to be selected in the "conversionDimensions" section of the report.
      */
-    conversionDimensions?: dfareporting$Dimension[];
+    conversionDimensions?: gapi$client$dfareporting$Dimension[];
 
     /**
      * Custom floodlight variables which are compatible to be selected in the "customFloodlightVariables" section of the report.
      */
-    customFloodlightVariables?: dfareporting$Dimension[];
+    customFloodlightVariables?: gapi$client$dfareporting$Dimension[];
 
     /**
      * The kind of resource this is, in this case dfareporting#pathToConversionReportCompatibleFields.
@@ -5167,15 +5171,15 @@ declare module "gapi.client.dfareporting" {
     /**
      * Metrics which are compatible to be selected in the "metricNames" section of the report.
      */
-    metrics?: dfareporting$Metric[];
+    metrics?: gapi$client$dfareporting$Metric[];
 
     /**
      * Per-interaction dimensions which are compatible to be selected in the "perInteractionDimensions" section of the report.
      */
-    perInteractionDimensions?: dfareporting$Dimension[];
+    perInteractionDimensions?: gapi$client$dfareporting$Dimension[];
   }
 
-  declare interface dfareporting$Placement {
+  declare interface gapi$client$dfareporting$Placement {
     /**
      * Account ID of this placement. This field can be left blank.
      */
@@ -5195,7 +5199,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether this placement is archived.
@@ -5210,7 +5214,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the campaign. This is a read-only, auto-generated field.
      */
-    campaignIdDimensionValue?: dfareporting$DimensionValue;
+    campaignIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Comments for this placement.
@@ -5232,7 +5236,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the creation of this placement. This is a read-only field.
      */
-    createInfo?: dfareporting$LastModifiedInfo;
+    createInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Directory site ID of this placement. On insert, you must set either this field or the siteId field to specify the site associated with this placement.
@@ -5243,7 +5247,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the directory site. This is a read-only, auto-generated field.
      */
-    directorySiteIdDimensionValue?: dfareporting$DimensionValue;
+    directorySiteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * External ID for this placement.
@@ -5258,7 +5262,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this placement. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Key name of this placement. This is a read-only, auto-generated field.
@@ -5273,12 +5277,12 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the most recent modification of this placement. This is a read-only field.
      */
-    lastModifiedInfo?: dfareporting$LastModifiedInfo;
+    lastModifiedInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Lookback window settings for this placement.
      */
-    lookbackConfiguration?: dfareporting$LookbackConfiguration;
+    lookbackConfiguration?: gapi$client$dfareporting$LookbackConfiguration;
 
     /**
      * Name of this placement.This is a required field and must be less than 256 characters long.
@@ -5303,7 +5307,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the placement group. This is a read-only, auto-generated field.
      */
-    placementGroupIdDimensionValue?: dfareporting$DimensionValue;
+    placementGroupIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * ID of the placement strategy assigned to this placement.
@@ -5325,7 +5329,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the last publisher update. This is a read-only field.
      */
-    publisherUpdateInfo?: dfareporting$LastModifiedInfo;
+    publisherUpdateInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Site ID associated with this placement. On insert, you must set either this field or the directorySiteId field to specify the site associated with this
@@ -5336,7 +5340,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the site. This is a read-only, auto-generated field.
      */
-    siteIdDimensionValue?: dfareporting$DimensionValue;
+    siteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Size associated with this placement. When inserting or updating a placement, only the size ID field is used. This field is required on insertion.
@@ -5406,7 +5410,7 @@ declare module "gapi.client.dfareporting" {
     vpaidAdapterChoice?: string;
   }
 
-  declare interface dfareporting$PlacementAssignment {
+  declare interface gapi$client$dfareporting$PlacementAssignment {
     /**
      * Whether this placement assignment is active. When true, the placement will be included in the ad's rotation.
      */
@@ -5420,7 +5424,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the placement. This is a read-only, auto-generated field.
      */
-    placementIdDimensionValue?: dfareporting$DimensionValue;
+    placementIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether the placement to be assigned requires SSL. This is a read-only field that is auto-generated when the ad is inserted or updated.
@@ -5428,7 +5432,7 @@ declare module "gapi.client.dfareporting" {
     sslRequired?: boolean;
   }
 
-  declare interface dfareporting$PlacementGroup {
+  declare interface gapi$client$dfareporting$PlacementGroup {
     /**
      * Account ID of this placement group. This is a read-only field that can be left blank.
      */
@@ -5442,7 +5446,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Whether this placement group is archived.
@@ -5457,7 +5461,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the campaign. This is a read-only, auto-generated field.
      */
-    campaignIdDimensionValue?: dfareporting$DimensionValue;
+    campaignIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * IDs of placements which are assigned to this placement group. This is a read-only, auto-generated field.
@@ -5477,7 +5481,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the creation of this placement group. This is a read-only field.
      */
-    createInfo?: dfareporting$LastModifiedInfo;
+    createInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Directory site ID associated with this placement group. On insert, you must set either this field or the site_id field to specify the site associated
@@ -5488,7 +5492,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the directory site. This is a read-only, auto-generated field.
      */
-    directorySiteIdDimensionValue?: dfareporting$DimensionValue;
+    directorySiteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * External ID for this placement.
@@ -5503,7 +5507,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this placement group. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroup".
@@ -5513,7 +5517,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the most recent modification of this placement group. This is a read-only field.
      */
-    lastModifiedInfo?: dfareporting$LastModifiedInfo;
+    lastModifiedInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Name of this placement group. This is a required field and must be less than 256 characters long.
@@ -5546,7 +5550,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the primary placement. This is a read-only, auto-generated field.
      */
-    primaryPlacementIdDimensionValue?: dfareporting$DimensionValue;
+    primaryPlacementIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Site ID associated with this placement group. On insert, you must set either this field or the directorySiteId field to specify the site associated
@@ -5557,7 +5561,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the site. This is a read-only, auto-generated field.
      */
-    siteIdDimensionValue?: dfareporting$DimensionValue;
+    siteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Subaccount ID of this placement group. This is a read-only field that can be left blank.
@@ -5565,7 +5569,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$PlacementGroupsListResponse {
+  declare interface gapi$client$dfareporting$PlacementGroupsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroupsListResponse".
      */
@@ -5579,10 +5583,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Placement group collection.
      */
-    client$placementGroups?: dfareporting$PlacementGroup[];
+    placementGroups?: gapi$client$dfareporting$PlacementGroup[];
   }
 
-  declare interface dfareporting$PlacementStrategiesListResponse {
+  declare interface gapi$client$dfareporting$PlacementStrategiesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementStrategiesListResponse".
      */
@@ -5596,10 +5600,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Placement strategy collection.
      */
-    client$placementStrategies?: dfareporting$PlacementStrategy[];
+    placementStrategies?: dfareporting$PlacementStrategy[];
   }
 
-  declare interface dfareporting$PlacementStrategy {
+  declare interface gapi$client$dfareporting$PlacementStrategy {
     /**
      * Account ID of this placement strategy.This is a read-only field that can be left blank.
      */
@@ -5622,7 +5626,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$PlacementTag {
+  declare interface gapi$client$dfareporting$PlacementTag {
     /**
      * Placement ID
      */
@@ -5634,7 +5638,7 @@ declare module "gapi.client.dfareporting" {
     tagDatas?: dfareporting$TagData[];
   }
 
-  declare interface dfareporting$PlacementsGenerateTagsResponse {
+  declare interface gapi$client$dfareporting$PlacementsGenerateTagsResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsGenerateTagsResponse".
      */
@@ -5643,10 +5647,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Set of generated tags for the specified placements.
      */
-    placementTags?: dfareporting$PlacementTag[];
+    placementTags?: gapi$client$dfareporting$PlacementTag[];
   }
 
-  declare interface dfareporting$PlacementsListResponse {
+  declare interface gapi$client$dfareporting$PlacementsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsListResponse".
      */
@@ -5660,10 +5664,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Placement collection.
      */
-    client$placements?: dfareporting$Placement[];
+    placements?: gapi$client$dfareporting$Placement[];
   }
 
-  declare interface dfareporting$PlatformType {
+  declare interface gapi$client$dfareporting$PlatformType {
     /**
      * ID of this platform type.
      */
@@ -5680,7 +5684,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$PlatformTypesListResponse {
+  declare interface gapi$client$dfareporting$PlatformTypesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformTypesListResponse".
      */
@@ -5689,10 +5693,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Platform type collection.
      */
-    client$platformTypes?: dfareporting$PlatformType[];
+    platformTypes?: gapi$client$dfareporting$PlatformType[];
   }
 
-  declare interface dfareporting$PopupWindowProperties {
+  declare interface gapi$client$dfareporting$PopupWindowProperties {
     /**
      * Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID
      */
@@ -5701,7 +5705,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES.
      */
-    offset?: dfareporting$OffsetPosition;
+    offset?: gapi$client$dfareporting$OffsetPosition;
 
     /**
      * Popup window position either centered or at specific coordinate.
@@ -5739,7 +5743,7 @@ declare module "gapi.client.dfareporting" {
     title?: string;
   }
 
-  declare interface dfareporting$PostalCode {
+  declare interface gapi$client$dfareporting$PostalCode {
     /**
      * Postal code. This is equivalent to the id field.
      */
@@ -5766,7 +5770,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$PostalCodesListResponse {
+  declare interface gapi$client$dfareporting$PostalCodesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#postalCodesListResponse".
      */
@@ -5775,10 +5779,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Postal code collection.
      */
-    client$postalCodes?: dfareporting$PostalCode[];
+    postalCodes?: gapi$client$dfareporting$PostalCode[];
   }
 
-  declare interface dfareporting$Pricing {
+  declare interface gapi$client$dfareporting$Pricing {
     /**
      * Cap cost type of this inventory item.
      */
@@ -5792,7 +5796,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item pricing information for a specific period of time.
      */
-    flights?: dfareporting$Flight[];
+    flights?: gapi$client$dfareporting$Flight[];
 
     /**
      * Group type of this inventory item if it represents a placement group. Is null otherwise. There are two type of placement groups:
@@ -5813,7 +5817,7 @@ declare module "gapi.client.dfareporting" {
     startDate?: string;
   }
 
-  declare interface dfareporting$PricingSchedule {
+  declare interface gapi$client$dfareporting$PricingSchedule {
     /**
      * Placement cap cost option.
      */
@@ -5863,7 +5867,7 @@ declare module "gapi.client.dfareporting" {
     testingStartDate?: string;
   }
 
-  declare interface dfareporting$PricingSchedulePricingPeriod {
+  declare interface gapi$client$dfareporting$PricingSchedulePricingPeriod {
     /**
      * Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date.
      * The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective
@@ -5894,7 +5898,7 @@ declare module "gapi.client.dfareporting" {
     units?: string;
   }
 
-  declare interface dfareporting$Project {
+  declare interface gapi$client$dfareporting$Project {
     /**
      * Account ID of this project.
      */
@@ -5949,7 +5953,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Information about the most recent modification of this project.
      */
-    lastModifiedInfo?: dfareporting$LastModifiedInfo;
+    lastModifiedInfo?: gapi$client$dfareporting$LastModifiedInfo;
 
     /**
      * Name of this project.
@@ -6007,7 +6011,7 @@ declare module "gapi.client.dfareporting" {
     targetImpressions?: string;
   }
 
-  declare interface dfareporting$ProjectsListResponse {
+  declare interface gapi$client$dfareporting$ProjectsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#projectsListResponse".
      */
@@ -6021,19 +6025,19 @@ declare module "gapi.client.dfareporting" {
     /**
      * Project collection.
      */
-    client$projects?: dfareporting$Project[];
+    projects?: gapi$client$dfareporting$Project[];
   }
 
-  declare interface dfareporting$ReachReportCompatibleFields {
+  declare interface gapi$client$dfareporting$ReachReportCompatibleFields {
     /**
      * Dimensions which are compatible to be selected in the "dimensionFilters" section of the report.
      */
-    dimensionFilters?: dfareporting$Dimension[];
+    dimensionFilters?: gapi$client$dfareporting$Dimension[];
 
     /**
      * Dimensions which are compatible to be selected in the "dimensions" section of the report.
      */
-    dimensions?: dfareporting$Dimension[];
+    dimensions?: gapi$client$dfareporting$Dimension[];
 
     /**
      * The kind of resource this is, in this case dfareporting#reachReportCompatibleFields.
@@ -6043,20 +6047,20 @@ declare module "gapi.client.dfareporting" {
     /**
      * Metrics which are compatible to be selected in the "metricNames" section of the report.
      */
-    metrics?: dfareporting$Metric[];
+    metrics?: gapi$client$dfareporting$Metric[];
 
     /**
      * Metrics which are compatible to be selected as activity metrics to pivot on in the "activities" section of the report.
      */
-    pivotedActivityMetrics?: dfareporting$Metric[];
+    pivotedActivityMetrics?: gapi$client$dfareporting$Metric[];
 
     /**
      * Metrics which are compatible to be selected in the "reachByFrequencyMetricNames" section of the report.
      */
-    reachByFrequencyMetrics?: dfareporting$Metric[];
+    reachByFrequencyMetrics?: gapi$client$dfareporting$Metric[];
   }
 
-  declare interface dfareporting$Recipient {
+  declare interface gapi$client$dfareporting$Recipient {
     /**
      * The delivery type for the recipient.
      */
@@ -6073,7 +6077,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$Region {
+  declare interface gapi$client$dfareporting$Region {
     /**
      * Country code of the country to which this region belongs.
      */
@@ -6105,7 +6109,7 @@ declare module "gapi.client.dfareporting" {
     regionCode?: string;
   }
 
-  declare interface dfareporting$RegionsListResponse {
+  declare interface gapi$client$dfareporting$RegionsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#regionsListResponse".
      */
@@ -6114,10 +6118,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Region collection.
      */
-    client$regions?: dfareporting$Region[];
+    regions?: gapi$client$dfareporting$Region[];
   }
 
-  declare interface dfareporting$RemarketingList {
+  declare interface gapi$client$dfareporting$RemarketingList {
     /**
      * Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests.
      */
@@ -6136,7 +6140,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Remarketing list description.
@@ -6161,7 +6165,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Rule used to populate the remarketing list with users.
      */
-    listPopulationRule?: dfareporting$ListPopulationRule;
+    listPopulationRule?: gapi$client$dfareporting$ListPopulationRule;
 
     /**
      * Number of users currently in the list. This is a read-only field.
@@ -6184,7 +6188,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$RemarketingListShare {
+  declare interface gapi$client$dfareporting$RemarketingListShare {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListShare".
      */
@@ -6206,7 +6210,7 @@ declare module "gapi.client.dfareporting" {
     sharedAdvertiserIds?: string[];
   }
 
-  declare interface dfareporting$RemarketingListsListResponse {
+  declare interface gapi$client$dfareporting$RemarketingListsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListsListResponse".
      */
@@ -6220,10 +6224,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Remarketing list collection.
      */
-    client$remarketingLists?: dfareporting$RemarketingList[];
+    remarketingLists?: gapi$client$dfareporting$RemarketingList[];
   }
 
-  declare interface dfareporting$Report {
+  declare interface gapi$client$dfareporting$Report {
     /**
      * The account ID to which this report belongs.
      */
@@ -6236,23 +6240,23 @@ declare module "gapi.client.dfareporting" {
       /**
        * Activity group.
        */
-      activities?: dfareporting$Activities,
+      activities?: gapi$client$dfareporting$Activities,
 
       /**
        * Custom Rich Media Events group.
        */
-      customRichMediaEvents?: dfareporting$CustomRichMediaEvents,
+      customRichMediaEvents?: gapi$client$dfareporting$CustomRichMediaEvents,
 
       /**
        * The date range for which this report should be run.
        */
-      dateRange?: dfareporting$DateRange,
+      dateRange?: gapi$client$dfareporting$DateRange,
 
       /**
        * The list of filters on which dimensions are filtered.
        * Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.
        */
-      dimensionFilters?: dfareporting$DimensionValue[],
+      dimensionFilters?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The list of standard dimensions the report should include.
@@ -6277,7 +6281,7 @@ declare module "gapi.client.dfareporting" {
       /**
        * The date range this report should be run for.
        */
-      dateRange?: dfareporting$DateRange,
+      dateRange?: gapi$client$dfareporting$DateRange,
 
       /**
        * The dimension option.
@@ -6287,7 +6291,7 @@ declare module "gapi.client.dfareporting" {
       /**
        * The list of filters on which dimensions are filtered.
        */
-      dimensionFilters?: dfareporting$DimensionValue[],
+      dimensionFilters?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The list of names of metrics the report should include.
@@ -6327,7 +6331,7 @@ declare module "gapi.client.dfareporting" {
       /**
        * The list of recipients to which to email the report.
        */
-      recipients?: dfareporting$Recipient[]
+      recipients?: gapi$client$dfareporting$Recipient[]
     };
 
     /**
@@ -6347,18 +6351,18 @@ declare module "gapi.client.dfareporting" {
       /**
        * The list of custom rich media events to include.
        */
-      customRichMediaEvents?: dfareporting$DimensionValue[],
+      customRichMediaEvents?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The date range this report should be run for.
        */
-      dateRange?: dfareporting$DateRange,
+      dateRange?: gapi$client$dfareporting$DateRange,
 
       /**
        * The list of filters on which dimensions are filtered.
        * Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.
        */
-      dimensionFilters?: dfareporting$DimensionValue[],
+      dimensionFilters?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The list of dimensions the report should include.
@@ -6369,7 +6373,7 @@ declare module "gapi.client.dfareporting" {
        * The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the
        * value needs to be 'dfa:floodlightConfigId'.
        */
-      floodlightConfigId?: dfareporting$DimensionValue,
+      floodlightConfigId?: gapi$client$dfareporting$DimensionValue,
 
       /**
        * The list of names of metrics the report should include.
@@ -6437,7 +6441,7 @@ declare module "gapi.client.dfareporting" {
       /**
        * The list of 'dfa:activity' values to filter on.
        */
-      activityFilters?: dfareporting$DimensionValue[],
+      activityFilters?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The list of conversion dimensions the report should include.
@@ -6452,18 +6456,18 @@ declare module "gapi.client.dfareporting" {
       /**
        * The list of custom rich media events to include.
        */
-      customRichMediaEvents?: dfareporting$DimensionValue[],
+      customRichMediaEvents?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The date range this report should be run for.
        */
-      dateRange?: dfareporting$DateRange,
+      dateRange?: gapi$client$dfareporting$DateRange,
 
       /**
        * The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the
        * value needs to be 'dfa:floodlightConfigId'.
        */
-      floodlightConfigId?: dfareporting$DimensionValue,
+      floodlightConfigId?: gapi$client$dfareporting$DimensionValue,
 
       /**
        * The list of names of metrics the report should include.
@@ -6539,23 +6543,23 @@ declare module "gapi.client.dfareporting" {
       /**
        * Activity group.
        */
-      activities?: dfareporting$Activities,
+      activities?: gapi$client$dfareporting$Activities,
 
       /**
        * Custom Rich Media Events group.
        */
-      customRichMediaEvents?: dfareporting$CustomRichMediaEvents,
+      customRichMediaEvents?: gapi$client$dfareporting$CustomRichMediaEvents,
 
       /**
        * The date range this report should be run for.
        */
-      dateRange?: dfareporting$DateRange,
+      dateRange?: gapi$client$dfareporting$DateRange,
 
       /**
        * The list of filters on which dimensions are filtered.
        * Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.
        */
-      dimensionFilters?: dfareporting$DimensionValue[],
+      dimensionFilters?: gapi$client$dfareporting$DimensionValue[],
 
       /**
        * The list of dimensions the report should include.
@@ -6636,16 +6640,16 @@ declare module "gapi.client.dfareporting" {
     type?: string;
   }
 
-  declare interface dfareporting$ReportCompatibleFields {
+  declare interface gapi$client$dfareporting$ReportCompatibleFields {
     /**
      * Dimensions which are compatible to be selected in the "dimensionFilters" section of the report.
      */
-    dimensionFilters?: dfareporting$Dimension[];
+    dimensionFilters?: gapi$client$dfareporting$Dimension[];
 
     /**
      * Dimensions which are compatible to be selected in the "dimensions" section of the report.
      */
-    dimensions?: dfareporting$Dimension[];
+    dimensions?: gapi$client$dfareporting$Dimension[];
 
     /**
      * The kind of resource this is, in this case dfareporting#reportCompatibleFields.
@@ -6655,15 +6659,15 @@ declare module "gapi.client.dfareporting" {
     /**
      * Metrics which are compatible to be selected in the "metricNames" section of the report.
      */
-    metrics?: dfareporting$Metric[];
+    metrics?: gapi$client$dfareporting$Metric[];
 
     /**
      * Metrics which are compatible to be selected as activity metrics to pivot on in the "activities" section of the report.
      */
-    pivotedActivityMetrics?: dfareporting$Metric[];
+    pivotedActivityMetrics?: gapi$client$dfareporting$Metric[];
   }
 
-  declare interface dfareporting$ReportList {
+  declare interface gapi$client$dfareporting$ReportList {
     /**
      * The eTag of this response for caching purposes.
      */
@@ -6672,7 +6676,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The reports returned in this response.
      */
-    items?: dfareporting$Report[];
+    items?: gapi$client$dfareporting$Report[];
 
     /**
      * The kind of list this is, in this case dfareporting#reportList.
@@ -6686,7 +6690,7 @@ declare module "gapi.client.dfareporting" {
     nextPageToken?: string;
   }
 
-  declare interface dfareporting$ReportsConfiguration {
+  declare interface gapi$client$dfareporting$ReportsConfiguration {
     /**
      * Whether the exposure to conversion report is enabled. This report shows detailed pathway information on up to 10 of the most recent ad exposures seen
      * by a user before converting.
@@ -6696,7 +6700,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Default lookback windows for new advertisers in this account.
      */
-    lookbackConfiguration?: dfareporting$LookbackConfiguration;
+    lookbackConfiguration?: gapi$client$dfareporting$LookbackConfiguration;
 
     /**
      * Report generation time zone ID of this account. This is a required field that can only be changed by a superuser.
@@ -6719,11 +6723,11 @@ declare module "gapi.client.dfareporting" {
     reportGenerationTimeZoneId?: string;
   }
 
-  declare interface dfareporting$RichMediaExitOverride {
+  declare interface gapi$client$dfareporting$RichMediaExitOverride {
     /**
      * Click-through URL of this rich media exit override. Applicable if the enabled field is set to true.
      */
-    clickThroughUrl?: dfareporting$ClickThroughUrl;
+    clickThroughUrl?: gapi$client$dfareporting$ClickThroughUrl;
 
     /**
      * Whether to use the clickThroughUrl. If false, the creative-level exit will be used.
@@ -6736,7 +6740,7 @@ declare module "gapi.client.dfareporting" {
     exitId?: string;
   }
 
-  declare interface dfareporting$Rule {
+  declare interface gapi$client$dfareporting$Rule {
     /**
      * A creativeAssets[].id. This should refer to one of the parent assets in this creative. This is a required field.
      */
@@ -6754,7 +6758,7 @@ declare module "gapi.client.dfareporting" {
     targetingTemplateId?: string;
   }
 
-  declare interface dfareporting$Site {
+  declare interface gapi$client$dfareporting$Site {
     /**
      * Account ID of this site. This is a read-only field that can be left blank.
      */
@@ -6773,7 +6777,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the directory site. This is a read-only, auto-generated field.
      */
-    directorySiteIdDimensionValue?: dfareporting$DimensionValue;
+    directorySiteIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * ID of this site. This is a read-only, auto-generated field.
@@ -6783,7 +6787,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of this site. This is a read-only, auto-generated field.
      */
-    idDimensionValue?: dfareporting$DimensionValue;
+    idDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Key name of this site. This is a read-only, auto-generated field.
@@ -6817,7 +6821,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$SiteContact {
+  declare interface gapi$client$dfareporting$SiteContact {
     /**
      * Address of this site contact.
      */
@@ -6859,7 +6863,7 @@ declare module "gapi.client.dfareporting" {
     title?: string;
   }
 
-  declare interface dfareporting$SiteSettings {
+  declare interface gapi$client$dfareporting$SiteSettings {
     /**
      * Whether active view creatives are disabled for this site.
      */
@@ -6874,7 +6878,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Site-wide creative settings.
      */
-    creativeSettings?: dfareporting$CreativeSettings;
+    creativeSettings?: gapi$client$dfareporting$CreativeSettings;
 
     /**
      * Whether new cookies are disabled for this site.
@@ -6884,7 +6888,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Lookback window settings for this site.
      */
-    lookbackConfiguration?: dfareporting$LookbackConfiguration;
+    lookbackConfiguration?: gapi$client$dfareporting$LookbackConfiguration;
 
     /**
      * Configuration settings for dynamic and image floodlight tags.
@@ -6908,7 +6912,7 @@ declare module "gapi.client.dfareporting" {
     vpaidAdapterChoiceTemplate?: string;
   }
 
-  declare interface dfareporting$SitesListResponse {
+  declare interface gapi$client$dfareporting$SitesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#sitesListResponse".
      */
@@ -6922,10 +6926,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Site collection.
      */
-    client$sites?: dfareporting$Site[];
+    sites?: gapi$client$dfareporting$Site[];
   }
 
-  declare interface dfareporting$Size {
+  declare interface gapi$client$dfareporting$Size {
     /**
      * Height of this size. Acceptable values are 0 to 32767, inclusive.
      */
@@ -6952,7 +6956,7 @@ declare module "gapi.client.dfareporting" {
     width?: number;
   }
 
-  declare interface dfareporting$SizesListResponse {
+  declare interface gapi$client$dfareporting$SizesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#sizesListResponse".
      */
@@ -6961,10 +6965,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Size collection.
      */
-    client$sizes?: dfareporting$Size[];
+    sizes?: gapi$client$dfareporting$Size[];
   }
 
-  declare interface dfareporting$SkippableSetting {
+  declare interface gapi$client$dfareporting$SkippableSetting {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#skippableSetting".
      */
@@ -6986,7 +6990,7 @@ declare module "gapi.client.dfareporting" {
     skippable?: boolean;
   }
 
-  declare interface dfareporting$SortedDimension {
+  declare interface gapi$client$dfareporting$SortedDimension {
     /**
      * The kind of resource this is, in this case dfareporting#sortedDimension.
      */
@@ -7003,7 +7007,7 @@ declare module "gapi.client.dfareporting" {
     sortOrder?: string;
   }
 
-  declare interface dfareporting$Subaccount {
+  declare interface gapi$client$dfareporting$Subaccount {
     /**
      * ID of the account that contains this subaccount. This is a read-only field that can be left blank.
      */
@@ -7030,7 +7034,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$SubaccountsListResponse {
+  declare interface gapi$client$dfareporting$SubaccountsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#subaccountsListResponse".
      */
@@ -7044,10 +7048,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Subaccount collection.
      */
-    client$subaccounts?: dfareporting$Subaccount[];
+    subaccounts?: gapi$client$dfareporting$Subaccount[];
   }
 
-  declare interface dfareporting$TagData {
+  declare interface gapi$client$dfareporting$TagData {
     /**
      * Ad associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING.
      */
@@ -7074,7 +7078,7 @@ declare module "gapi.client.dfareporting" {
     impressionTag?: string;
   }
 
-  declare interface dfareporting$TagSetting {
+  declare interface gapi$client$dfareporting$TagSetting {
     /**
      * Additional key-values to be included in tags. Each key-value pair must be of the form key=value, and pairs must be separated by a semicolon (;). Keys
      * and values must not contain commas. For example, id=2;color=red is a valid value for this field.
@@ -7098,7 +7102,7 @@ declare module "gapi.client.dfareporting" {
     keywordOption?: string;
   }
 
-  declare interface dfareporting$TagSettings {
+  declare interface gapi$client$dfareporting$TagSettings {
     /**
      * Whether dynamic floodlight tags are enabled.
      */
@@ -7110,7 +7114,7 @@ declare module "gapi.client.dfareporting" {
     imageTagEnabled?: boolean;
   }
 
-  declare interface dfareporting$TargetWindow {
+  declare interface gapi$client$dfareporting$TargetWindow {
     /**
      * User-entered value.
      */
@@ -7122,7 +7126,7 @@ declare module "gapi.client.dfareporting" {
     targetWindowOption?: string;
   }
 
-  declare interface dfareporting$TargetableRemarketingList {
+  declare interface gapi$client$dfareporting$TargetableRemarketingList {
     /**
      * Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests.
      */
@@ -7141,7 +7145,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Targetable remarketing list description.
@@ -7184,7 +7188,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$TargetableRemarketingListsListResponse {
+  declare interface gapi$client$dfareporting$TargetableRemarketingListsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetableRemarketingListsListResponse".
      */
@@ -7198,10 +7202,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Targetable remarketing list collection.
      */
-    client$targetableRemarketingLists?: dfareporting$TargetableRemarketingList[];
+    targetableRemarketingLists?: gapi$client$dfareporting$TargetableRemarketingList[];
   }
 
-  declare interface dfareporting$TargetingTemplate {
+  declare interface gapi$client$dfareporting$TargetingTemplate {
     /**
      * Account ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert.
      */
@@ -7215,17 +7219,17 @@ declare module "gapi.client.dfareporting" {
     /**
      * Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.
      */
-    advertiserIdDimensionValue?: dfareporting$DimensionValue;
+    advertiserIdDimensionValue?: gapi$client$dfareporting$DimensionValue;
 
     /**
      * Time and day targeting criteria.
      */
-    dayPartTargeting?: dfareporting$DayPartTargeting;
+    dayPartTargeting?: gapi$client$dfareporting$DayPartTargeting;
 
     /**
      * Geographical targeting criteria.
      */
-    geoTargeting?: dfareporting$GeoTargeting;
+    geoTargeting?: gapi$client$dfareporting$GeoTargeting;
 
     /**
      * ID of this targeting template. This is a read-only, auto-generated field.
@@ -7235,7 +7239,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * Key-value targeting criteria.
      */
-    keyValueTargetingExpression?: dfareporting$KeyValueTargetingExpression;
+    keyValueTargetingExpression?: gapi$client$dfareporting$KeyValueTargetingExpression;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetingTemplate".
@@ -7245,12 +7249,12 @@ declare module "gapi.client.dfareporting" {
     /**
      * Language targeting criteria.
      */
-    languageTargeting?: dfareporting$LanguageTargeting;
+    languageTargeting?: gapi$client$dfareporting$LanguageTargeting;
 
     /**
      * Remarketing list targeting criteria.
      */
-    listTargetingExpression?: dfareporting$ListTargetingExpression;
+    listTargetingExpression?: gapi$client$dfareporting$ListTargetingExpression;
 
     /**
      * Name of this targeting template. This field is required. It must be less than 256 characters long and unique within an advertiser.
@@ -7268,7 +7272,7 @@ declare module "gapi.client.dfareporting" {
     technologyTargeting?: dfareporting$TechnologyTargeting;
   }
 
-  declare interface dfareporting$TargetingTemplatesListResponse {
+  declare interface gapi$client$dfareporting$TargetingTemplatesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetingTemplatesListResponse".
      */
@@ -7282,50 +7286,50 @@ declare module "gapi.client.dfareporting" {
     /**
      * Targeting template collection.
      */
-    client$targetingTemplates?: dfareporting$TargetingTemplate[];
+    targetingTemplates?: gapi$client$dfareporting$TargetingTemplate[];
   }
 
-  declare interface dfareporting$TechnologyTargeting {
+  declare interface gapi$client$dfareporting$TechnologyTargeting {
     /**
      * Browsers that this ad targets. For each browser either set browserVersionId or dartId along with the version numbers. If both are specified, only
      * browserVersionId will be used. The other fields are populated automatically when the ad is inserted or updated.
      */
-    client$browsers?: dfareporting$Browser[];
+    browsers?: gapi$client$dfareporting$Browser[];
 
     /**
      * Connection types that this ad targets. For each connection type only id is required. The other fields are populated automatically when the ad is
      * inserted or updated.
      */
-    client$connectionTypes?: dfareporting$ConnectionType[];
+    connectionTypes?: gapi$client$dfareporting$ConnectionType[];
 
     /**
      * Mobile carriers that this ad targets. For each mobile carrier only id is required, and the other fields are populated automatically when the ad is
      * inserted or updated. If targeting a mobile carrier, do not set targeting for any zip codes.
      */
-    client$mobileCarriers?: dfareporting$MobileCarrier[];
+    mobileCarriers?: gapi$client$dfareporting$MobileCarrier[];
 
     /**
      * Operating system versions that this ad targets. To target all versions, use operatingSystems. For each operating system version, only id is required.
      * The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system version, do not set targeting for the
      * corresponding operating system in operatingSystems.
      */
-    client$operatingSystemVersions?: dfareporting$OperatingSystemVersion[];
+    operatingSystemVersions?: gapi$client$dfareporting$OperatingSystemVersion[];
 
     /**
      * Operating systems that this ad targets. To target specific versions, use operatingSystemVersions. For each operating system only dartId is required.
      * The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system, do not set targeting for operating
      * system versions for the same operating system.
      */
-    client$operatingSystems?: dfareporting$OperatingSystem[];
+    operatingSystems?: gapi$client$dfareporting$OperatingSystem[];
 
     /**
      * Platform types that this ad targets. For example, desktop, mobile, or tablet. For each platform type, only id is required, and the other fields are
      * populated automatically when the ad is inserted or updated.
      */
-    client$platformTypes?: dfareporting$PlatformType[];
+    platformTypes?: gapi$client$dfareporting$PlatformType[];
   }
 
-  declare interface dfareporting$ThirdPartyAuthenticationToken {
+  declare interface gapi$client$dfareporting$ThirdPartyAuthenticationToken {
     /**
      * Name of the third-party authentication token.
      */
@@ -7337,7 +7341,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$ThirdPartyTrackingUrl {
+  declare interface gapi$client$dfareporting$ThirdPartyTrackingUrl {
     /**
      * Third-party URL type for in-stream video creatives.
      */
@@ -7349,7 +7353,7 @@ declare module "gapi.client.dfareporting" {
     url?: string;
   }
 
-  declare interface dfareporting$TranscodeSetting {
+  declare interface gapi$client$dfareporting$TranscodeSetting {
     /**
      * Whitelist of video formats to be served to this placement. Set this list to null or empty to serve all video formats.
      */
@@ -7361,7 +7365,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$UniversalAdId {
+  declare interface gapi$client$dfareporting$UniversalAdId {
     /**
      * Registry used for the Ad ID value.
      */
@@ -7374,7 +7378,7 @@ declare module "gapi.client.dfareporting" {
     value?: string;
   }
 
-  declare interface dfareporting$UserDefinedVariableConfiguration {
+  declare interface gapi$client$dfareporting$UserDefinedVariableConfiguration {
     /**
      * Data type for the variable. This is a required field.
      */
@@ -7392,7 +7396,7 @@ declare module "gapi.client.dfareporting" {
     variableType?: string;
   }
 
-  declare interface dfareporting$UserProfile {
+  declare interface gapi$client$dfareporting$UserProfile {
     /**
      * The account ID to which this profile belongs.
      */
@@ -7434,7 +7438,7 @@ declare module "gapi.client.dfareporting" {
     userName?: string;
   }
 
-  declare interface dfareporting$UserProfileList {
+  declare interface gapi$client$dfareporting$UserProfileList {
     /**
      * The eTag of this response for caching purposes.
      */
@@ -7443,7 +7447,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The user profiles returned in this response.
      */
-    items?: dfareporting$UserProfile[];
+    items?: gapi$client$dfareporting$UserProfile[];
 
     /**
      * The kind of list this is, in this case dfareporting#userProfileList.
@@ -7451,7 +7455,7 @@ declare module "gapi.client.dfareporting" {
     kind?: string;
   }
 
-  declare interface dfareporting$UserRole {
+  declare interface gapi$client$dfareporting$UserRole {
     /**
      * Account ID of this user role. This is a read-only field that can be left blank.
      */
@@ -7496,7 +7500,7 @@ declare module "gapi.client.dfareporting" {
     subaccountId?: string;
   }
 
-  declare interface dfareporting$UserRolePermission {
+  declare interface gapi$client$dfareporting$UserRolePermission {
     /**
      * Levels of availability for a user role permission.
      */
@@ -7523,7 +7527,7 @@ declare module "gapi.client.dfareporting" {
     permissionGroupId?: string;
   }
 
-  declare interface dfareporting$UserRolePermissionGroup {
+  declare interface gapi$client$dfareporting$UserRolePermissionGroup {
     /**
      * ID of this user role permission.
      */
@@ -7540,7 +7544,7 @@ declare module "gapi.client.dfareporting" {
     name?: string;
   }
 
-  declare interface dfareporting$UserRolePermissionGroupsListResponse {
+  declare interface gapi$client$dfareporting$UserRolePermissionGroupsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroupsListResponse".
      */
@@ -7549,10 +7553,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * User role permission group collection.
      */
-    client$userRolePermissionGroups?: dfareporting$UserRolePermissionGroup[];
+    userRolePermissionGroups?: gapi$client$dfareporting$UserRolePermissionGroup[];
   }
 
-  declare interface dfareporting$UserRolePermissionsListResponse {
+  declare interface gapi$client$dfareporting$UserRolePermissionsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionsListResponse".
      */
@@ -7561,10 +7565,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * User role permission collection.
      */
-    client$userRolePermissions?: dfareporting$UserRolePermission[];
+    userRolePermissions?: gapi$client$dfareporting$UserRolePermission[];
   }
 
-  declare interface dfareporting$UserRolesListResponse {
+  declare interface gapi$client$dfareporting$UserRolesListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolesListResponse".
      */
@@ -7578,10 +7582,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * User role collection.
      */
-    client$userRoles?: dfareporting$UserRole[];
+    userRoles?: gapi$client$dfareporting$UserRole[];
   }
 
-  declare interface dfareporting$VideoFormat {
+  declare interface gapi$client$dfareporting$VideoFormat {
     /**
      * File type of the video format.
      */
@@ -7600,7 +7604,7 @@ declare module "gapi.client.dfareporting" {
     /**
      * The resolution of this video format.
      */
-    resolution?: dfareporting$Size;
+    resolution?: gapi$client$dfareporting$Size;
 
     /**
      * The target bit rate of this video format.
@@ -7608,7 +7612,7 @@ declare module "gapi.client.dfareporting" {
     targetBitRate?: number;
   }
 
-  declare interface dfareporting$VideoFormatsListResponse {
+  declare interface gapi$client$dfareporting$VideoFormatsListResponse {
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#videoFormatsListResponse".
      */
@@ -7617,10 +7621,10 @@ declare module "gapi.client.dfareporting" {
     /**
      * Video format collection.
      */
-    client$videoFormats?: dfareporting$VideoFormat[];
+    videoFormats?: gapi$client$dfareporting$VideoFormat[];
   }
 
-  declare interface dfareporting$VideoOffset {
+  declare interface gapi$client$dfareporting$VideoOffset {
     /**
      * Duration, as a percentage of video duration. Do not set when offsetSeconds is set. Acceptable values are 0 to 100, inclusive.
      */
@@ -7632,11 +7636,11 @@ declare module "gapi.client.dfareporting" {
     offsetSeconds?: number;
   }
 
-  declare interface dfareporting$VideoSettings {
+  declare interface gapi$client$dfareporting$VideoSettings {
     /**
      * Settings for the companion creatives of video creatives served to this placement.
      */
-    companionSettings?: dfareporting$CompanionSetting;
+    companionSettings?: gapi$client$dfareporting$CompanionSetting;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string "dfareporting#videoSettings".
@@ -7647,16 +7651,16 @@ declare module "gapi.client.dfareporting" {
      * Settings for the skippability of video creatives served to this placement. If this object is provided, the creative-level skippable settings will be
      * overridden.
      */
-    skippableSettings?: dfareporting$SkippableSetting;
+    skippableSettings?: gapi$client$dfareporting$SkippableSetting;
 
     /**
      * Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be
      * overridden.
      */
-    transcodeSettings?: dfareporting$TranscodeSetting;
+    transcodeSettings?: gapi$client$dfareporting$TranscodeSetting;
   }
 
-  declare interface dfareporting$AccountActiveAdSummariesResource {
+  declare interface gapi$client$dfareporting$AccountActiveAdSummariesResource {
     /**
      * Gets the account's active ad summary by account ID.
      */
@@ -7706,10 +7710,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountActiveAdSummary>;
+    }): Request<gapi$client$dfareporting$AccountActiveAdSummary>;
   }
 
-  declare interface dfareporting$AccountPermissionGroupsResource {
+  declare interface gapi$client$dfareporting$AccountPermissionGroupsResource {
     /**
      * Gets one account permission group by ID.
      */
@@ -7759,7 +7763,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountPermissionGroup>;
+    }): Request<gapi$client$dfareporting$AccountPermissionGroup>;
 
     /**
      * Retrieves the list of account permission groups.
@@ -7805,10 +7809,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountPermissionGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$AccountPermissionGroupsListResponse>;
   }
 
-  declare interface dfareporting$AccountPermissionsResource {
+  declare interface gapi$client$dfareporting$AccountPermissionsResource {
     /**
      * Gets one account permission by ID.
      */
@@ -7858,7 +7862,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountPermission>;
+    }): Request<gapi$client$dfareporting$AccountPermission>;
 
     /**
      * Retrieves the list of account permissions.
@@ -7904,10 +7908,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountPermissionsListResponse>;
+    }): Request<gapi$client$dfareporting$AccountPermissionsListResponse>;
   }
 
-  declare interface dfareporting$AccountUserProfilesResource {
+  declare interface gapi$client$dfareporting$AccountUserProfilesResource {
     /**
      * Gets one account user profile by ID.
      */
@@ -7957,7 +7961,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountUserProfile>;
+    }): Request<gapi$client$dfareporting$AccountUserProfile>;
 
     /**
      * Inserts a new account user profile.
@@ -8003,7 +8007,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountUserProfile>;
+    }): Request<gapi$client$dfareporting$AccountUserProfile>;
 
     /**
      * Retrieves a list of account user profiles, possibly filtered. This method supports paging.
@@ -8097,7 +8101,7 @@ declare module "gapi.client.dfareporting" {
        * Select only user profiles with the specified user role ID.
        */
       userRoleId?: string
-    }): Request<dfareporting$AccountUserProfilesListResponse>;
+    }): Request<gapi$client$dfareporting$AccountUserProfilesListResponse>;
 
     /**
      * Updates an existing account user profile. This method supports patch semantics.
@@ -8148,7 +8152,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountUserProfile>;
+    }): Request<gapi$client$dfareporting$AccountUserProfile>;
 
     /**
      * Updates an existing account user profile.
@@ -8194,10 +8198,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountUserProfile>;
+    }): Request<gapi$client$dfareporting$AccountUserProfile>;
   }
 
-  declare interface dfareporting$AccountsResource {
+  declare interface gapi$client$dfareporting$AccountsResource {
     /**
      * Gets one account by ID.
      */
@@ -8247,7 +8251,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Account>;
+    }): Request<gapi$client$dfareporting$Account>;
 
     /**
      * Retrieves the list of accounts, possibly filtered. This method supports paging.
@@ -8330,7 +8334,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AccountsListResponse>;
+    }): Request<gapi$client$dfareporting$AccountsListResponse>;
 
     /**
      * Updates an existing account. This method supports patch semantics.
@@ -8381,7 +8385,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Account>;
+    }): Request<gapi$client$dfareporting$Account>;
 
     /**
      * Updates an existing account.
@@ -8427,10 +8431,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Account>;
+    }): Request<gapi$client$dfareporting$Account>;
   }
 
-  declare interface dfareporting$AdsResource {
+  declare interface gapi$client$dfareporting$AdsResource {
     /**
      * Gets one ad by ID.
      */
@@ -8480,7 +8484,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Ad>;
+    }): Request<gapi$client$dfareporting$Ad>;
 
     /**
      * Inserts a new ad.
@@ -8526,7 +8530,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Ad>;
+    }): Request<gapi$client$dfareporting$Ad>;
 
     /**
      * Retrieves a list of ads, possibly filtered. This method supports paging.
@@ -8692,7 +8696,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdsListResponse>;
+    }): Request<gapi$client$dfareporting$AdsListResponse>;
 
     /**
      * Updates an existing ad. This method supports patch semantics.
@@ -8743,7 +8747,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Ad>;
+    }): Request<gapi$client$dfareporting$Ad>;
 
     /**
      * Updates an existing ad.
@@ -8789,10 +8793,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Ad>;
+    }): Request<gapi$client$dfareporting$Ad>;
   }
 
-  declare interface dfareporting$AdvertiserGroupsResource {
+  declare interface gapi$client$dfareporting$AdvertiserGroupsResource {
     /**
      * Deletes an existing advertiser group.
      */
@@ -8893,7 +8897,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertiserGroup>;
+    }): Request<gapi$client$dfareporting$AdvertiserGroup>;
 
     /**
      * Inserts a new advertiser group.
@@ -8939,7 +8943,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertiserGroup>;
+    }): Request<gapi$client$dfareporting$AdvertiserGroup>;
 
     /**
      * Retrieves a list of advertiser groups, possibly filtered. This method supports paging.
@@ -9018,7 +9022,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertiserGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$AdvertiserGroupsListResponse>;
 
     /**
      * Updates an existing advertiser group. This method supports patch semantics.
@@ -9069,7 +9073,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertiserGroup>;
+    }): Request<gapi$client$dfareporting$AdvertiserGroup>;
 
     /**
      * Updates an existing advertiser group.
@@ -9115,10 +9119,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertiserGroup>;
+    }): Request<gapi$client$dfareporting$AdvertiserGroup>;
   }
 
-  declare interface dfareporting$AdvertisersResource {
+  declare interface gapi$client$dfareporting$AdvertisersResource {
     /**
      * Gets one advertiser by ID.
      */
@@ -9168,7 +9172,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Advertiser>;
+    }): Request<gapi$client$dfareporting$Advertiser>;
 
     /**
      * Inserts a new advertiser.
@@ -9214,7 +9218,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Advertiser>;
+    }): Request<gapi$client$dfareporting$Advertiser>;
 
     /**
      * Retrieves a list of advertisers, possibly filtered. This method supports paging.
@@ -9322,7 +9326,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$AdvertisersListResponse>;
+    }): Request<gapi$client$dfareporting$AdvertisersListResponse>;
 
     /**
      * Updates an existing advertiser. This method supports patch semantics.
@@ -9373,7 +9377,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Advertiser>;
+    }): Request<gapi$client$dfareporting$Advertiser>;
 
     /**
      * Updates an existing advertiser.
@@ -9419,10 +9423,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Advertiser>;
+    }): Request<gapi$client$dfareporting$Advertiser>;
   }
 
-  declare interface dfareporting$BrowsersResource {
+  declare interface gapi$client$dfareporting$BrowsersResource {
     /**
      * Retrieves a list of browsers.
      */
@@ -9467,10 +9471,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$BrowsersListResponse>;
+    }): Request<gapi$client$dfareporting$BrowsersListResponse>;
   }
 
-  declare interface dfareporting$CampaignCreativeAssociationsResource {
+  declare interface gapi$client$dfareporting$CampaignCreativeAssociationsResource {
     /**
      * Associates a creative with the specified campaign. This method creates a default ad with dimensions matching the creative in the campaign if such a
      * default ad does not exist already.
@@ -9521,7 +9525,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CampaignCreativeAssociation>;
+    }): Request<gapi$client$dfareporting$CampaignCreativeAssociation>;
 
     /**
      * Retrieves the list of creative IDs associated with the specified campaign. This method supports paging.
@@ -9587,10 +9591,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CampaignCreativeAssociationsListResponse>;
+    }): Request<gapi$client$dfareporting$CampaignCreativeAssociationsListResponse>;
   }
 
-  declare interface dfareporting$CampaignsResource {
+  declare interface gapi$client$dfareporting$CampaignsResource {
     /**
      * Gets one campaign by ID.
      */
@@ -9640,7 +9644,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Campaign>;
+    }): Request<gapi$client$dfareporting$Campaign>;
 
     /**
      * Inserts a new campaign.
@@ -9696,7 +9700,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Campaign>;
+    }): Request<gapi$client$dfareporting$Campaign>;
 
     /**
      * Retrieves a list of campaigns, possibly filtered. This method supports paging.
@@ -9809,7 +9813,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CampaignsListResponse>;
+    }): Request<gapi$client$dfareporting$CampaignsListResponse>;
 
     /**
      * Updates an existing campaign. This method supports patch semantics.
@@ -9860,7 +9864,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Campaign>;
+    }): Request<gapi$client$dfareporting$Campaign>;
 
     /**
      * Updates an existing campaign.
@@ -9906,10 +9910,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Campaign>;
+    }): Request<gapi$client$dfareporting$Campaign>;
   }
 
-  declare interface dfareporting$ChangeLogsResource {
+  declare interface gapi$client$dfareporting$ChangeLogsResource {
     /**
      * Gets one change log by ID.
      */
@@ -9959,7 +9963,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ChangeLog>;
+    }): Request<gapi$client$dfareporting$ChangeLog>;
 
     /**
      * Retrieves a list of change logs. This method supports paging.
@@ -10059,10 +10063,10 @@ declare module "gapi.client.dfareporting" {
        * Select only change logs with these user profile IDs.
        */
       userProfileIds?: string
-    }): Request<dfareporting$ChangeLogsListResponse>;
+    }): Request<gapi$client$dfareporting$ChangeLogsListResponse>;
   }
 
-  declare interface dfareporting$CitiesResource {
+  declare interface gapi$client$dfareporting$CitiesResource {
     /**
      * Retrieves a list of cities, possibly filtered.
      */
@@ -10127,10 +10131,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CitiesListResponse>;
+    }): Request<gapi$client$dfareporting$CitiesListResponse>;
   }
 
-  declare interface dfareporting$ConnectionTypesResource {
+  declare interface gapi$client$dfareporting$ConnectionTypesResource {
     /**
      * Gets one connection type by ID.
      */
@@ -10180,7 +10184,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ConnectionType>;
+    }): Request<gapi$client$dfareporting$ConnectionType>;
 
     /**
      * Retrieves a list of connection types.
@@ -10226,10 +10230,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ConnectionTypesListResponse>;
+    }): Request<gapi$client$dfareporting$ConnectionTypesListResponse>;
   }
 
-  declare interface dfareporting$ContentCategoriesResource {
+  declare interface gapi$client$dfareporting$ContentCategoriesResource {
     /**
      * Deletes an existing content category.
      */
@@ -10330,7 +10334,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ContentCategory>;
+    }): Request<gapi$client$dfareporting$ContentCategory>;
 
     /**
      * Inserts a new content category.
@@ -10376,7 +10380,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ContentCategory>;
+    }): Request<gapi$client$dfareporting$ContentCategory>;
 
     /**
      * Retrieves a list of content categories, possibly filtered. This method supports paging.
@@ -10455,7 +10459,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ContentCategoriesListResponse>;
+    }): Request<gapi$client$dfareporting$ContentCategoriesListResponse>;
 
     /**
      * Updates an existing content category. This method supports patch semantics.
@@ -10506,7 +10510,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ContentCategory>;
+    }): Request<gapi$client$dfareporting$ContentCategory>;
 
     /**
      * Updates an existing content category.
@@ -10552,10 +10556,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ContentCategory>;
+    }): Request<gapi$client$dfareporting$ContentCategory>;
   }
 
-  declare interface dfareporting$ConversionsResource {
+  declare interface gapi$client$dfareporting$ConversionsResource {
     /**
      * Inserts conversions.
      */
@@ -10600,7 +10604,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ConversionsBatchInsertResponse>;
+    }): Request<gapi$client$dfareporting$ConversionsBatchInsertResponse>;
 
     /**
      * Updates existing conversions.
@@ -10646,10 +10650,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ConversionsBatchUpdateResponse>;
+    }): Request<gapi$client$dfareporting$ConversionsBatchUpdateResponse>;
   }
 
-  declare interface dfareporting$CountriesResource {
+  declare interface gapi$client$dfareporting$CountriesResource {
     /**
      * Gets one country by ID.
      */
@@ -10699,7 +10703,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Country>;
+    }): Request<gapi$client$dfareporting$Country>;
 
     /**
      * Retrieves a list of countries.
@@ -10745,10 +10749,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CountriesListResponse>;
+    }): Request<gapi$client$dfareporting$CountriesListResponse>;
   }
 
-  declare interface dfareporting$CreativeAssetsResource {
+  declare interface gapi$client$dfareporting$CreativeAssetsResource {
     /**
      * Inserts a new creative asset.
      */
@@ -10798,10 +10802,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeAssetMetadata>;
+    }): Request<gapi$client$dfareporting$CreativeAssetMetadata>;
   }
 
-  declare interface dfareporting$CreativeFieldValuesResource {
+  declare interface gapi$client$dfareporting$CreativeFieldValuesResource {
     /**
      * Deletes an existing creative field value.
      */
@@ -10912,7 +10916,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldValue>;
+    }): Request<gapi$client$dfareporting$CreativeFieldValue>;
 
     /**
      * Inserts a new creative field value.
@@ -10963,7 +10967,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldValue>;
+    }): Request<gapi$client$dfareporting$CreativeFieldValue>;
 
     /**
      * Retrieves a list of creative field values, possibly filtered. This method supports paging.
@@ -11044,7 +11048,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldValuesListResponse>;
+    }): Request<gapi$client$dfareporting$CreativeFieldValuesListResponse>;
 
     /**
      * Updates an existing creative field value. This method supports patch semantics.
@@ -11100,7 +11104,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldValue>;
+    }): Request<gapi$client$dfareporting$CreativeFieldValue>;
 
     /**
      * Updates an existing creative field value.
@@ -11151,10 +11155,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldValue>;
+    }): Request<gapi$client$dfareporting$CreativeFieldValue>;
   }
 
-  declare interface dfareporting$CreativeFieldsResource {
+  declare interface gapi$client$dfareporting$CreativeFieldsResource {
     /**
      * Deletes an existing creative field.
      */
@@ -11255,7 +11259,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeField>;
+    }): Request<gapi$client$dfareporting$CreativeField>;
 
     /**
      * Inserts a new creative field.
@@ -11301,7 +11305,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeField>;
+    }): Request<gapi$client$dfareporting$CreativeField>;
 
     /**
      * Retrieves a list of creative fields, possibly filtered. This method supports paging.
@@ -11385,7 +11389,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeFieldsListResponse>;
+    }): Request<gapi$client$dfareporting$CreativeFieldsListResponse>;
 
     /**
      * Updates an existing creative field. This method supports patch semantics.
@@ -11436,7 +11440,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeField>;
+    }): Request<gapi$client$dfareporting$CreativeField>;
 
     /**
      * Updates an existing creative field.
@@ -11482,10 +11486,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeField>;
+    }): Request<gapi$client$dfareporting$CreativeField>;
   }
 
-  declare interface dfareporting$CreativeGroupsResource {
+  declare interface gapi$client$dfareporting$CreativeGroupsResource {
     /**
      * Gets one creative group by ID.
      */
@@ -11535,7 +11539,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeGroup>;
+    }): Request<gapi$client$dfareporting$CreativeGroup>;
 
     /**
      * Inserts a new creative group.
@@ -11581,7 +11585,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeGroup>;
+    }): Request<gapi$client$dfareporting$CreativeGroup>;
 
     /**
      * Retrieves a list of creative groups, possibly filtered. This method supports paging.
@@ -11670,7 +11674,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$CreativeGroupsListResponse>;
 
     /**
      * Updates an existing creative group. This method supports patch semantics.
@@ -11721,7 +11725,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeGroup>;
+    }): Request<gapi$client$dfareporting$CreativeGroup>;
 
     /**
      * Updates an existing creative group.
@@ -11767,10 +11771,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativeGroup>;
+    }): Request<gapi$client$dfareporting$CreativeGroup>;
   }
 
-  declare interface dfareporting$CreativesResource {
+  declare interface gapi$client$dfareporting$CreativesResource {
     /**
      * Gets one creative by ID.
      */
@@ -11820,7 +11824,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Creative>;
+    }): Request<gapi$client$dfareporting$Creative>;
 
     /**
      * Inserts a new creative.
@@ -11866,7 +11870,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Creative>;
+    }): Request<gapi$client$dfareporting$Creative>;
 
     /**
      * Retrieves a list of creatives, possibly filtered. This method supports paging.
@@ -11994,7 +11998,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CreativesListResponse>;
+    }): Request<gapi$client$dfareporting$CreativesListResponse>;
 
     /**
      * Updates an existing creative. This method supports patch semantics.
@@ -12045,7 +12049,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Creative>;
+    }): Request<gapi$client$dfareporting$Creative>;
 
     /**
      * Updates an existing creative.
@@ -12091,10 +12095,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Creative>;
+    }): Request<gapi$client$dfareporting$Creative>;
   }
 
-  declare interface dfareporting$DimensionValuesResource {
+  declare interface gapi$client$dfareporting$DimensionValuesResource {
     /**
      * Retrieves list of report dimension values for a list of filters.
      */
@@ -12149,10 +12153,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DimensionValueList>;
+    }): Request<gapi$client$dfareporting$DimensionValueList>;
   }
 
-  declare interface dfareporting$DirectorySiteContactsResource {
+  declare interface gapi$client$dfareporting$DirectorySiteContactsResource {
     /**
      * Gets one directory site contact by ID.
      */
@@ -12202,7 +12206,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DirectorySiteContact>;
+    }): Request<gapi$client$dfareporting$DirectorySiteContact>;
 
     /**
      * Retrieves a list of directory site contacts, possibly filtered. This method supports paging.
@@ -12286,10 +12290,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DirectorySiteContactsListResponse>;
+    }): Request<gapi$client$dfareporting$DirectorySiteContactsListResponse>;
   }
 
-  declare interface dfareporting$DirectorySitesResource {
+  declare interface gapi$client$dfareporting$DirectorySitesResource {
     /**
      * Gets one directory site by ID.
      */
@@ -12339,7 +12343,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DirectorySite>;
+    }): Request<gapi$client$dfareporting$DirectorySite>;
 
     /**
      * Inserts a new directory site.
@@ -12385,7 +12389,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DirectorySite>;
+    }): Request<gapi$client$dfareporting$DirectorySite>;
 
     /**
      * Retrieves a list of directory sites, possibly filtered. This method supports paging.
@@ -12499,10 +12503,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DirectorySitesListResponse>;
+    }): Request<gapi$client$dfareporting$DirectorySitesListResponse>;
   }
 
-  declare interface dfareporting$DynamicTargetingKeysResource {
+  declare interface gapi$client$dfareporting$DynamicTargetingKeysResource {
     /**
      * Deletes an existing dynamic targeting key.
      */
@@ -12610,7 +12614,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DynamicTargetingKey>;
+    }): Request<gapi$client$dfareporting$DynamicTargetingKey>;
 
     /**
      * Retrieves a list of dynamic targeting keys.
@@ -12676,10 +12680,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$DynamicTargetingKeysListResponse>;
+    }): Request<gapi$client$dfareporting$DynamicTargetingKeysListResponse>;
   }
 
-  declare interface dfareporting$EventTagsResource {
+  declare interface gapi$client$dfareporting$EventTagsResource {
     /**
      * Deletes an existing event tag.
      */
@@ -12780,7 +12784,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$EventTag>;
+    }): Request<gapi$client$dfareporting$EventTag>;
 
     /**
      * Inserts a new event tag.
@@ -12826,7 +12830,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$EventTag>;
+    }): Request<gapi$client$dfareporting$EventTag>;
 
     /**
      * Retrieves a list of event tags, possibly filtered.
@@ -12929,7 +12933,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$EventTagsListResponse>;
+    }): Request<gapi$client$dfareporting$EventTagsListResponse>;
 
     /**
      * Updates an existing event tag. This method supports patch semantics.
@@ -12980,7 +12984,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$EventTag>;
+    }): Request<gapi$client$dfareporting$EventTag>;
 
     /**
      * Updates an existing event tag.
@@ -13026,10 +13030,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$EventTag>;
+    }): Request<gapi$client$dfareporting$EventTag>;
   }
 
-  declare interface dfareporting$FilesResource {
+  declare interface gapi$client$dfareporting$FilesResource {
     /**
      * Retrieves a report file by its report ID and file ID. This method supports media download.
      */
@@ -13079,7 +13083,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$File>;
+    }): Request<gapi$client$dfareporting$File>;
 
     /**
      * Lists files for a user profile.
@@ -13150,7 +13154,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FileList>;
+    }): Request<gapi$client$dfareporting$FileList>;
 
     /**
      * Retrieves a report file. This method supports media download.
@@ -13206,7 +13210,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$File>;
+    }): Request<gapi$client$dfareporting$File>;
 
     /**
      * Lists files for a report.
@@ -13277,10 +13281,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FileList>;
+    }): Request<gapi$client$dfareporting$FileList>;
   }
 
-  declare interface dfareporting$FloodlightActivitiesResource {
+  declare interface gapi$client$dfareporting$FloodlightActivitiesResource {
     /**
      * Deletes an existing floodlight activity.
      */
@@ -13381,7 +13385,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivitiesGenerateTagResponse>;
+    }): Request<gapi$client$dfareporting$FloodlightActivitiesGenerateTagResponse>;
 
     /**
      * Gets one floodlight activity by ID.
@@ -13432,7 +13436,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivity>;
+    }): Request<gapi$client$dfareporting$FloodlightActivity>;
 
     /**
      * Inserts a new floodlight activity.
@@ -13478,7 +13482,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivity>;
+    }): Request<gapi$client$dfareporting$FloodlightActivity>;
 
     /**
      * Retrieves a list of floodlight activities, possibly filtered. This method supports paging.
@@ -13594,7 +13598,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivitiesListResponse>;
+    }): Request<gapi$client$dfareporting$FloodlightActivitiesListResponse>;
 
     /**
      * Updates an existing floodlight activity. This method supports patch semantics.
@@ -13645,7 +13649,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivity>;
+    }): Request<gapi$client$dfareporting$FloodlightActivity>;
 
     /**
      * Updates an existing floodlight activity.
@@ -13691,10 +13695,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivity>;
+    }): Request<gapi$client$dfareporting$FloodlightActivity>;
   }
 
-  declare interface dfareporting$FloodlightActivityGroupsResource {
+  declare interface gapi$client$dfareporting$FloodlightActivityGroupsResource {
     /**
      * Gets one floodlight activity group by ID.
      */
@@ -13744,7 +13748,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivityGroup>;
+    }): Request<gapi$client$dfareporting$FloodlightActivityGroup>;
 
     /**
      * Inserts a new floodlight activity group.
@@ -13790,7 +13794,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivityGroup>;
+    }): Request<gapi$client$dfareporting$FloodlightActivityGroup>;
 
     /**
      * Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.
@@ -13886,7 +13890,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivityGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$FloodlightActivityGroupsListResponse>;
 
     /**
      * Updates an existing floodlight activity group. This method supports patch semantics.
@@ -13937,7 +13941,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivityGroup>;
+    }): Request<gapi$client$dfareporting$FloodlightActivityGroup>;
 
     /**
      * Updates an existing floodlight activity group.
@@ -13983,10 +13987,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightActivityGroup>;
+    }): Request<gapi$client$dfareporting$FloodlightActivityGroup>;
   }
 
-  declare interface dfareporting$FloodlightConfigurationsResource {
+  declare interface gapi$client$dfareporting$FloodlightConfigurationsResource {
     /**
      * Gets one floodlight configuration by ID.
      */
@@ -14036,7 +14040,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightConfiguration>;
+    }): Request<gapi$client$dfareporting$FloodlightConfiguration>;
 
     /**
      * Retrieves a list of floodlight configurations, possibly filtered.
@@ -14087,7 +14091,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightConfigurationsListResponse>;
+    }): Request<gapi$client$dfareporting$FloodlightConfigurationsListResponse>;
 
     /**
      * Updates an existing floodlight configuration. This method supports patch semantics.
@@ -14138,7 +14142,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightConfiguration>;
+    }): Request<gapi$client$dfareporting$FloodlightConfiguration>;
 
     /**
      * Updates an existing floodlight configuration.
@@ -14184,10 +14188,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$FloodlightConfiguration>;
+    }): Request<gapi$client$dfareporting$FloodlightConfiguration>;
   }
 
-  declare interface dfareporting$InventoryItemsResource {
+  declare interface gapi$client$dfareporting$InventoryItemsResource {
     /**
      * Gets one inventory item by ID.
      */
@@ -14242,7 +14246,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$InventoryItem>;
+    }): Request<gapi$client$dfareporting$InventoryItem>;
 
     /**
      * Retrieves a list of inventory items, possibly filtered. This method supports paging.
@@ -14338,10 +14342,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$InventoryItemsListResponse>;
+    }): Request<gapi$client$dfareporting$InventoryItemsListResponse>;
   }
 
-  declare interface dfareporting$LandingPagesResource {
+  declare interface gapi$client$dfareporting$LandingPagesResource {
     /**
      * Deletes an existing campaign landing page.
      */
@@ -14452,7 +14456,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LandingPage>;
+    }): Request<gapi$client$dfareporting$LandingPage>;
 
     /**
      * Inserts a new landing page for the specified campaign.
@@ -14503,7 +14507,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LandingPage>;
+    }): Request<gapi$client$dfareporting$LandingPage>;
 
     /**
      * Retrieves the list of landing pages for the specified campaign.
@@ -14554,7 +14558,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LandingPagesListResponse>;
+    }): Request<gapi$client$dfareporting$LandingPagesListResponse>;
 
     /**
      * Updates an existing campaign landing page. This method supports patch semantics.
@@ -14610,7 +14614,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LandingPage>;
+    }): Request<gapi$client$dfareporting$LandingPage>;
 
     /**
      * Updates an existing campaign landing page.
@@ -14661,10 +14665,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LandingPage>;
+    }): Request<gapi$client$dfareporting$LandingPage>;
   }
 
-  declare interface dfareporting$LanguagesResource {
+  declare interface gapi$client$dfareporting$LanguagesResource {
     /**
      * Retrieves a list of languages.
      */
@@ -14709,10 +14713,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$LanguagesListResponse>;
+    }): Request<gapi$client$dfareporting$LanguagesListResponse>;
   }
 
-  declare interface dfareporting$MetrosResource {
+  declare interface gapi$client$dfareporting$MetrosResource {
     /**
      * Retrieves a list of metros.
      */
@@ -14757,10 +14761,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$MetrosListResponse>;
+    }): Request<gapi$client$dfareporting$MetrosListResponse>;
   }
 
-  declare interface dfareporting$MobileCarriersResource {
+  declare interface gapi$client$dfareporting$MobileCarriersResource {
     /**
      * Gets one mobile carrier by ID.
      */
@@ -14810,7 +14814,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$MobileCarrier>;
+    }): Request<gapi$client$dfareporting$MobileCarrier>;
 
     /**
      * Retrieves a list of mobile carriers.
@@ -14856,10 +14860,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$MobileCarriersListResponse>;
+    }): Request<gapi$client$dfareporting$MobileCarriersListResponse>;
   }
 
-  declare interface dfareporting$OperatingSystemVersionsResource {
+  declare interface gapi$client$dfareporting$OperatingSystemVersionsResource {
     /**
      * Gets one operating system version by ID.
      */
@@ -14909,7 +14913,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OperatingSystemVersion>;
+    }): Request<gapi$client$dfareporting$OperatingSystemVersion>;
 
     /**
      * Retrieves a list of operating system versions.
@@ -14955,10 +14959,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OperatingSystemVersionsListResponse>;
+    }): Request<gapi$client$dfareporting$OperatingSystemVersionsListResponse>;
   }
 
-  declare interface dfareporting$OperatingSystemsResource {
+  declare interface gapi$client$dfareporting$OperatingSystemsResource {
     /**
      * Gets one operating system by DART ID.
      */
@@ -15008,7 +15012,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OperatingSystem>;
+    }): Request<gapi$client$dfareporting$OperatingSystem>;
 
     /**
      * Retrieves a list of operating systems.
@@ -15054,10 +15058,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OperatingSystemsListResponse>;
+    }): Request<gapi$client$dfareporting$OperatingSystemsListResponse>;
   }
 
-  declare interface dfareporting$OrderDocumentsResource {
+  declare interface gapi$client$dfareporting$OrderDocumentsResource {
     /**
      * Gets one order document by ID.
      */
@@ -15112,7 +15116,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OrderDocument>;
+    }): Request<gapi$client$dfareporting$OrderDocument>;
 
     /**
      * Retrieves a list of order documents, possibly filtered. This method supports paging.
@@ -15211,10 +15215,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OrderDocumentsListResponse>;
+    }): Request<gapi$client$dfareporting$OrderDocumentsListResponse>;
   }
 
-  declare interface dfareporting$OrdersResource {
+  declare interface gapi$client$dfareporting$OrdersResource {
     /**
      * Gets one order by ID.
      */
@@ -15269,7 +15273,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Order>;
+    }): Request<gapi$client$dfareporting$Order>;
 
     /**
      * Retrieves a list of orders, possibly filtered. This method supports paging.
@@ -15357,10 +15361,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$OrdersListResponse>;
+    }): Request<gapi$client$dfareporting$OrdersListResponse>;
   }
 
-  declare interface dfareporting$PlacementGroupsResource {
+  declare interface gapi$client$dfareporting$PlacementGroupsResource {
     /**
      * Gets one placement group by ID.
      */
@@ -15410,7 +15414,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementGroup>;
+    }): Request<gapi$client$dfareporting$PlacementGroup>;
 
     /**
      * Inserts a new placement group.
@@ -15456,7 +15460,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementGroup>;
+    }): Request<gapi$client$dfareporting$PlacementGroup>;
 
     /**
      * Retrieves a list of placement groups, possibly filtered. This method supports paging.
@@ -15602,7 +15606,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$PlacementGroupsListResponse>;
 
     /**
      * Updates an existing placement group. This method supports patch semantics.
@@ -15653,7 +15657,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementGroup>;
+    }): Request<gapi$client$dfareporting$PlacementGroup>;
 
     /**
      * Updates an existing placement group.
@@ -15699,10 +15703,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementGroup>;
+    }): Request<gapi$client$dfareporting$PlacementGroup>;
   }
 
-  declare interface dfareporting$PlacementStrategiesResource {
+  declare interface gapi$client$dfareporting$PlacementStrategiesResource {
     /**
      * Deletes an existing placement strategy.
      */
@@ -15803,7 +15807,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementStrategy>;
+    }): Request<gapi$client$dfareporting$PlacementStrategy>;
 
     /**
      * Inserts a new placement strategy.
@@ -15849,7 +15853,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementStrategy>;
+    }): Request<gapi$client$dfareporting$PlacementStrategy>;
 
     /**
      * Retrieves a list of placement strategies, possibly filtered. This method supports paging.
@@ -15928,7 +15932,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementStrategiesListResponse>;
+    }): Request<gapi$client$dfareporting$PlacementStrategiesListResponse>;
 
     /**
      * Updates an existing placement strategy. This method supports patch semantics.
@@ -15979,7 +15983,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementStrategy>;
+    }): Request<gapi$client$dfareporting$PlacementStrategy>;
 
     /**
      * Updates an existing placement strategy.
@@ -16025,10 +16029,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementStrategy>;
+    }): Request<gapi$client$dfareporting$PlacementStrategy>;
   }
 
-  declare interface dfareporting$PlacementsResource {
+  declare interface gapi$client$dfareporting$PlacementsResource {
     /**
      * Generates tags for a placement.
      */
@@ -16090,7 +16094,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementsGenerateTagsResponse>;
+    }): Request<gapi$client$dfareporting$PlacementsGenerateTagsResponse>;
 
     /**
      * Gets one placement by ID.
@@ -16141,7 +16145,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Placement>;
+    }): Request<gapi$client$dfareporting$Placement>;
 
     /**
      * Inserts a new placement.
@@ -16187,7 +16191,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Placement>;
+    }): Request<gapi$client$dfareporting$Placement>;
 
     /**
      * Retrieves a list of placements, possibly filtered. This method supports paging.
@@ -16348,7 +16352,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlacementsListResponse>;
+    }): Request<gapi$client$dfareporting$PlacementsListResponse>;
 
     /**
      * Updates an existing placement. This method supports patch semantics.
@@ -16399,7 +16403,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Placement>;
+    }): Request<gapi$client$dfareporting$Placement>;
 
     /**
      * Updates an existing placement.
@@ -16445,10 +16449,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Placement>;
+    }): Request<gapi$client$dfareporting$Placement>;
   }
 
-  declare interface dfareporting$PlatformTypesResource {
+  declare interface gapi$client$dfareporting$PlatformTypesResource {
     /**
      * Gets one platform type by ID.
      */
@@ -16498,7 +16502,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlatformType>;
+    }): Request<gapi$client$dfareporting$PlatformType>;
 
     /**
      * Retrieves a list of platform types.
@@ -16544,10 +16548,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PlatformTypesListResponse>;
+    }): Request<gapi$client$dfareporting$PlatformTypesListResponse>;
   }
 
-  declare interface dfareporting$PostalCodesResource {
+  declare interface gapi$client$dfareporting$PostalCodesResource {
     /**
      * Gets one postal code by ID.
      */
@@ -16597,7 +16601,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PostalCode>;
+    }): Request<gapi$client$dfareporting$PostalCode>;
 
     /**
      * Retrieves a list of postal codes.
@@ -16643,10 +16647,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$PostalCodesListResponse>;
+    }): Request<gapi$client$dfareporting$PostalCodesListResponse>;
   }
 
-  declare interface dfareporting$ProjectsResource {
+  declare interface gapi$client$dfareporting$ProjectsResource {
     /**
      * Gets one project by ID.
      */
@@ -16696,7 +16700,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Project>;
+    }): Request<gapi$client$dfareporting$Project>;
 
     /**
      * Retrieves a list of projects, possibly filtered. This method supports paging.
@@ -16779,10 +16783,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ProjectsListResponse>;
+    }): Request<gapi$client$dfareporting$ProjectsListResponse>;
   }
 
-  declare interface dfareporting$RegionsResource {
+  declare interface gapi$client$dfareporting$RegionsResource {
     /**
      * Retrieves a list of regions.
      */
@@ -16827,10 +16831,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RegionsListResponse>;
+    }): Request<gapi$client$dfareporting$RegionsListResponse>;
   }
 
-  declare interface dfareporting$RemarketingListSharesResource {
+  declare interface gapi$client$dfareporting$RemarketingListSharesResource {
     /**
      * Gets one remarketing list share by remarketing list ID.
      */
@@ -16880,7 +16884,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingListShare>;
+    }): Request<gapi$client$dfareporting$RemarketingListShare>;
 
     /**
      * Updates an existing remarketing list share. This method supports patch semantics.
@@ -16931,7 +16935,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingListShare>;
+    }): Request<gapi$client$dfareporting$RemarketingListShare>;
 
     /**
      * Updates an existing remarketing list share.
@@ -16977,10 +16981,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingListShare>;
+    }): Request<gapi$client$dfareporting$RemarketingListShare>;
   }
 
-  declare interface dfareporting$RemarketingListsResource {
+  declare interface gapi$client$dfareporting$RemarketingListsResource {
     /**
      * Gets one remarketing list by ID.
      */
@@ -17030,7 +17034,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingList>;
+    }): Request<gapi$client$dfareporting$RemarketingList>;
 
     /**
      * Inserts a new remarketing list.
@@ -17076,7 +17080,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingList>;
+    }): Request<gapi$client$dfareporting$RemarketingList>;
 
     /**
      * Retrieves a list of remarketing lists, possibly filtered. This method supports paging.
@@ -17165,7 +17169,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingListsListResponse>;
+    }): Request<gapi$client$dfareporting$RemarketingListsListResponse>;
 
     /**
      * Updates an existing remarketing list. This method supports patch semantics.
@@ -17216,7 +17220,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingList>;
+    }): Request<gapi$client$dfareporting$RemarketingList>;
 
     /**
      * Updates an existing remarketing list.
@@ -17262,10 +17266,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$RemarketingList>;
+    }): Request<gapi$client$dfareporting$RemarketingList>;
   }
 
-  declare interface dfareporting$CompatibleFieldsResource {
+  declare interface gapi$client$dfareporting$CompatibleFieldsResource {
     /**
      * Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input
      * report and user permissions.
@@ -17311,10 +17315,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$CompatibleFields>;
+    }): Request<gapi$client$dfareporting$CompatibleFields>;
   }
 
-  declare interface dfareporting$ReportsResource {
+  declare interface gapi$client$dfareporting$ReportsResource {
     /**
      * Deletes a report by its ID.
      */
@@ -17415,7 +17419,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Report>;
+    }): Request<gapi$client$dfareporting$Report>;
 
     /**
      * Creates a report.
@@ -17461,7 +17465,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Report>;
+    }): Request<gapi$client$dfareporting$Report>;
 
     /**
      * Retrieves list of reports.
@@ -17532,7 +17536,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$ReportList>;
+    }): Request<gapi$client$dfareporting$ReportList>;
 
     /**
      * Updates a report. This method supports patch semantics.
@@ -17583,7 +17587,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Report>;
+    }): Request<gapi$client$dfareporting$Report>;
 
     /**
      * Runs a report.
@@ -17639,7 +17643,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$File>;
+    }): Request<gapi$client$dfareporting$File>;
 
     /**
      * Updates a report.
@@ -17690,12 +17694,12 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Report>;
-    compatibleFields: dfareporting$CompatibleFieldsResource;
-    client$files: dfareporting$FilesResource;
+    }): Request<gapi$client$dfareporting$Report>;
+    compatibleFields: gapi$client$dfareporting$CompatibleFieldsResource;
+    files: gapi$client$dfareporting$FilesResource;
   }
 
-  declare interface dfareporting$SitesResource {
+  declare interface gapi$client$dfareporting$SitesResource {
     /**
      * Gets one site by ID.
      */
@@ -17745,7 +17749,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Site>;
+    }): Request<gapi$client$dfareporting$Site>;
 
     /**
      * Inserts a new site.
@@ -17791,7 +17795,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Site>;
+    }): Request<gapi$client$dfareporting$Site>;
 
     /**
      * Retrieves a list of sites, possibly filtered. This method supports paging.
@@ -17914,7 +17918,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$SitesListResponse>;
+    }): Request<gapi$client$dfareporting$SitesListResponse>;
 
     /**
      * Updates an existing site. This method supports patch semantics.
@@ -17965,7 +17969,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Site>;
+    }): Request<gapi$client$dfareporting$Site>;
 
     /**
      * Updates an existing site.
@@ -18011,10 +18015,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Site>;
+    }): Request<gapi$client$dfareporting$Site>;
   }
 
-  declare interface dfareporting$SizesResource {
+  declare interface gapi$client$dfareporting$SizesResource {
     /**
      * Gets one size by ID.
      */
@@ -18064,7 +18068,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Size>;
+    }): Request<gapi$client$dfareporting$Size>;
 
     /**
      * Inserts a new size.
@@ -18110,7 +18114,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Size>;
+    }): Request<gapi$client$dfareporting$Size>;
 
     /**
      * Retrieves a list of sizes, possibly filtered.
@@ -18176,10 +18180,10 @@ declare module "gapi.client.dfareporting" {
        * Select only sizes with this width.
        */
       width?: number
-    }): Request<dfareporting$SizesListResponse>;
+    }): Request<gapi$client$dfareporting$SizesListResponse>;
   }
 
-  declare interface dfareporting$SubaccountsResource {
+  declare interface gapi$client$dfareporting$SubaccountsResource {
     /**
      * Gets one subaccount by ID.
      */
@@ -18229,7 +18233,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Subaccount>;
+    }): Request<gapi$client$dfareporting$Subaccount>;
 
     /**
      * Inserts a new subaccount.
@@ -18275,7 +18279,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Subaccount>;
+    }): Request<gapi$client$dfareporting$Subaccount>;
 
     /**
      * Gets a list of subaccounts, possibly filtered. This method supports paging.
@@ -18353,7 +18357,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$SubaccountsListResponse>;
+    }): Request<gapi$client$dfareporting$SubaccountsListResponse>;
 
     /**
      * Updates an existing subaccount. This method supports patch semantics.
@@ -18404,7 +18408,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Subaccount>;
+    }): Request<gapi$client$dfareporting$Subaccount>;
 
     /**
      * Updates an existing subaccount.
@@ -18450,10 +18454,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$Subaccount>;
+    }): Request<gapi$client$dfareporting$Subaccount>;
   }
 
-  declare interface dfareporting$TargetableRemarketingListsResource {
+  declare interface gapi$client$dfareporting$TargetableRemarketingListsResource {
     /**
      * Gets one remarketing list by ID.
      */
@@ -18503,7 +18507,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetableRemarketingList>;
+    }): Request<gapi$client$dfareporting$TargetableRemarketingList>;
 
     /**
      * Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.
@@ -18587,10 +18591,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetableRemarketingListsListResponse>;
+    }): Request<gapi$client$dfareporting$TargetableRemarketingListsListResponse>;
   }
 
-  declare interface dfareporting$TargetingTemplatesResource {
+  declare interface gapi$client$dfareporting$TargetingTemplatesResource {
     /**
      * Gets one targeting template by ID.
      */
@@ -18640,7 +18644,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetingTemplate>;
+    }): Request<gapi$client$dfareporting$TargetingTemplate>;
 
     /**
      * Inserts a new targeting template.
@@ -18686,7 +18690,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetingTemplate>;
+    }): Request<gapi$client$dfareporting$TargetingTemplate>;
 
     /**
      * Retrieves a list of targeting templates, optionally filtered. This method supports paging.
@@ -18769,7 +18773,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetingTemplatesListResponse>;
+    }): Request<gapi$client$dfareporting$TargetingTemplatesListResponse>;
 
     /**
      * Updates an existing targeting template. This method supports patch semantics.
@@ -18820,7 +18824,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetingTemplate>;
+    }): Request<gapi$client$dfareporting$TargetingTemplate>;
 
     /**
      * Updates an existing targeting template.
@@ -18866,10 +18870,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$TargetingTemplate>;
+    }): Request<gapi$client$dfareporting$TargetingTemplate>;
   }
 
-  declare interface dfareporting$UserProfilesResource {
+  declare interface gapi$client$dfareporting$UserProfilesResource {
     /**
      * Gets one user profile by ID.
      */
@@ -18914,7 +18918,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserProfile>;
+    }): Request<gapi$client$dfareporting$UserProfile>;
 
     /**
      * Retrieves list of user profiles for a user.
@@ -18955,10 +18959,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserProfileList>;
+    }): Request<gapi$client$dfareporting$UserProfileList>;
   }
 
-  declare interface dfareporting$UserRolePermissionGroupsResource {
+  declare interface gapi$client$dfareporting$UserRolePermissionGroupsResource {
     /**
      * Gets one user role permission group by ID.
      */
@@ -19008,7 +19012,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRolePermissionGroup>;
+    }): Request<gapi$client$dfareporting$UserRolePermissionGroup>;
 
     /**
      * Gets a list of all supported user role permission groups.
@@ -19054,10 +19058,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRolePermissionGroupsListResponse>;
+    }): Request<gapi$client$dfareporting$UserRolePermissionGroupsListResponse>;
   }
 
-  declare interface dfareporting$UserRolePermissionsResource {
+  declare interface gapi$client$dfareporting$UserRolePermissionsResource {
     /**
      * Gets one user role permission by ID.
      */
@@ -19107,7 +19111,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRolePermission>;
+    }): Request<gapi$client$dfareporting$UserRolePermission>;
 
     /**
      * Gets a list of user role permissions, possibly filtered.
@@ -19158,10 +19162,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRolePermissionsListResponse>;
+    }): Request<gapi$client$dfareporting$UserRolePermissionsListResponse>;
   }
 
-  declare interface dfareporting$UserRolesResource {
+  declare interface gapi$client$dfareporting$UserRolesResource {
     /**
      * Deletes an existing user role.
      */
@@ -19262,7 +19266,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRole>;
+    }): Request<gapi$client$dfareporting$UserRole>;
 
     /**
      * Inserts a new user role.
@@ -19308,7 +19312,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRole>;
+    }): Request<gapi$client$dfareporting$UserRole>;
 
     /**
      * Retrieves a list of user roles, possibly filtered. This method supports paging.
@@ -19396,7 +19400,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRolesListResponse>;
+    }): Request<gapi$client$dfareporting$UserRolesListResponse>;
 
     /**
      * Updates an existing user role. This method supports patch semantics.
@@ -19447,7 +19451,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRole>;
+    }): Request<gapi$client$dfareporting$UserRole>;
 
     /**
      * Updates an existing user role.
@@ -19493,10 +19497,10 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$UserRole>;
+    }): Request<gapi$client$dfareporting$UserRole>;
   }
 
-  declare interface dfareporting$VideoFormatsResource {
+  declare interface gapi$client$dfareporting$VideoFormatsResource {
     /**
      * Gets one video format by ID.
      */
@@ -19546,7 +19550,7 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$VideoFormat>;
+    }): Request<gapi$client$dfareporting$VideoFormat>;
 
     /**
      * Lists available video formats.
@@ -19592,6 +19596,6 @@ declare module "gapi.client.dfareporting" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<dfareporting$VideoFormatsListResponse>;
+    }): Request<gapi$client$dfareporting$VideoFormatsListResponse>;
   }
 }
