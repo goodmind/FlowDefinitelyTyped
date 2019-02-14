@@ -184,7 +184,7 @@ declare module "oauth.js" {
   /**
    * Generate timestamps starting with the given value.
    */
-  declare function OAuth$correctTimestamp(OAuth$timestamp: number): void;
+  declare function OAuth$correctTimestamp(timestamp: number): void;
 
   /**
    * The difference between the correct time and my clock.
