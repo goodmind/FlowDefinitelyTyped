@@ -1,47 +1,51 @@
 declare module "gapi.client.storage" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    bucketAccessControls: typeof client$bucketAccessControls,
-    buckets: typeof client$buckets,
-    channels: typeof client$channels,
-    defaultObjectAccessControls: typeof client$defaultObjectAccessControls,
-    notifications: typeof client$notifications,
-    objectAccessControls: typeof client$objectAccessControls,
-    objects: typeof client$objects,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    bucketAccessControls: typeof gapi$client$bucketAccessControls,
+    buckets: typeof gapi$client$buckets,
+    channels: typeof gapi$client$channels,
+    defaultObjectAccessControls: typeof gapi$client$defaultObjectAccessControls,
+    notifications: typeof gapi$client$notifications,
+    objectAccessControls: typeof gapi$client$objectAccessControls,
+    objects: typeof gapi$client$objects,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Cloud Storage JSON API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "storage",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "storage",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$bucketAccessControls: storage$storage$BucketAccessControlsResource;
+  declare var gapi$client$bucketAccessControls: storage$BucketAccessControlsResource;
 
-  declare var client$buckets: storage$storage$BucketsResource;
+  declare var gapi$client$buckets: storage$BucketsResource;
 
-  declare var client$channels: storage$storage$ChannelsResource;
+  declare var gapi$client$channels: storage$ChannelsResource;
 
-  declare var client$defaultObjectAccessControls: storage$storage$DefaultObjectAccessControlsResource;
+  declare var gapi$client$defaultObjectAccessControls: storage$DefaultObjectAccessControlsResource;
 
-  declare var client$notifications: storage$storage$NotificationsResource;
+  declare var gapi$client$notifications: storage$NotificationsResource;
 
-  declare var client$objectAccessControls: storage$storage$ObjectAccessControlsResource;
+  declare var gapi$client$objectAccessControls: storage$ObjectAccessControlsResource;
 
-  declare var client$objects: storage$storage$ObjectsResource;
+  declare var gapi$client$objects: storage$ObjectsResource;
 
-  declare var client$projects: storage$storage$ProjectsResource;
+  declare var gapi$client$projects: storage$ProjectsResource;
 
-  declare interface storage$Bucket {
+  declare interface gapi$client$storage$Bucket {
     /**
      * Access controls on the bucket.
      */
@@ -276,7 +280,7 @@ declare module "gapi.client.storage" {
     };
   }
 
-  declare interface storage$BucketAccessControl {
+  declare interface gapi$client$storage$BucketAccessControl {
     /**
      * The name of the bucket.
      */
@@ -354,11 +358,11 @@ declare module "gapi.client.storage" {
     selfLink?: string;
   }
 
-  declare interface storage$BucketAccessControls {
+  declare interface gapi$client$storage$BucketAccessControls {
     /**
      * The list of items.
      */
-    items?: storage$BucketAccessControl[];
+    items?: gapi$client$storage$BucketAccessControl[];
 
     /**
      * The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls.
@@ -366,11 +370,11 @@ declare module "gapi.client.storage" {
     kind?: string;
   }
 
-  declare interface storage$Buckets {
+  declare interface gapi$client$storage$Buckets {
     /**
      * The list of items.
      */
-    items?: storage$Bucket[];
+    items?: gapi$client$storage$Bucket[];
 
     /**
      * The kind of item this is. For lists of buckets, this is always storage#buckets.
@@ -383,7 +387,7 @@ declare module "gapi.client.storage" {
     nextPageToken?: string;
   }
 
-  declare interface storage$Channel {
+  declare interface gapi$client$storage$Channel {
     /**
      * The address where notifications are delivered for this channel.
      */
@@ -435,7 +439,7 @@ declare module "gapi.client.storage" {
     type?: string;
   }
 
-  declare interface storage$ComposeRequest {
+  declare interface gapi$client$storage$ComposeRequest {
     /**
      * Properties of the resulting object.
      */
@@ -473,7 +477,7 @@ declare module "gapi.client.storage" {
     }>;
   }
 
-  declare interface storage$Notification {
+  declare interface gapi$client$storage$Notification {
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
@@ -520,11 +524,11 @@ declare module "gapi.client.storage" {
     topic?: string;
   }
 
-  declare interface storage$Notifications {
+  declare interface gapi$client$storage$Notifications {
     /**
      * The list of items.
      */
-    items?: storage$Notification[];
+    items?: gapi$client$storage$Notification[];
 
     /**
      * The kind of item this is. For lists of notifications, this is always storage#notifications.
@@ -532,7 +536,7 @@ declare module "gapi.client.storage" {
     kind?: string;
   }
 
-  declare interface storage$Object {
+  declare interface gapi$client$storage$Object {
     /**
      * Access controls on the object.
      */
@@ -696,7 +700,7 @@ declare module "gapi.client.storage" {
     updated?: string;
   }
 
-  declare interface storage$ObjectAccessControl {
+  declare interface gapi$client$storage$ObjectAccessControl {
     /**
      * The name of the bucket.
      */
@@ -784,11 +788,11 @@ declare module "gapi.client.storage" {
     selfLink?: string;
   }
 
-  declare interface storage$ObjectAccessControls {
+  declare interface gapi$client$storage$ObjectAccessControls {
     /**
      * The list of items.
      */
-    items?: storage$ObjectAccessControl[];
+    items?: gapi$client$storage$ObjectAccessControl[];
 
     /**
      * The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls.
@@ -796,11 +800,11 @@ declare module "gapi.client.storage" {
     kind?: string;
   }
 
-  declare interface storage$Objects {
+  declare interface gapi$client$storage$Objects {
     /**
      * The list of items.
      */
-    items?: storage$Object[];
+    items?: gapi$client$storage$Object[];
 
     /**
      * The kind of item this is. For lists of objects, this is always storage#objects.
@@ -818,7 +822,7 @@ declare module "gapi.client.storage" {
     prefixes?: string[];
   }
 
-  declare interface storage$Policy {
+  declare interface gapi$client$storage$Policy {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
@@ -878,7 +882,7 @@ declare module "gapi.client.storage" {
     resourceId?: string;
   }
 
-  declare interface storage$RewriteResponse {
+  declare interface gapi$client$storage$RewriteResponse {
     /**
      * true if the copy is finished; otherwise, false if the copy is in progress. This property is always present in the response.
      */
@@ -897,7 +901,7 @@ declare module "gapi.client.storage" {
     /**
      * A resource containing the metadata for the copied-to object. This property is present in the response only when copying completes.
      */
-    resource?: storage$Object;
+    resource?: gapi$client$storage$Object;
 
     /**
      * A token to use in subsequent requests to continue copying data. This token is present in the response only when there is more data to copy.
@@ -910,7 +914,7 @@ declare module "gapi.client.storage" {
     totalBytesRewritten?: string;
   }
 
-  declare interface storage$ServiceAccount {
+  declare interface gapi$client$storage$ServiceAccount {
     /**
      * The ID of the notification.
      */
@@ -922,7 +926,7 @@ declare module "gapi.client.storage" {
     kind?: string;
   }
 
-  declare interface storage$TestIamPermissionsResponse {
+  declare interface gapi$client$storage$TestIamPermissionsResponse {
     /**
      * The kind of item this is.
      */
@@ -949,7 +953,7 @@ declare module "gapi.client.storage" {
     permissions?: string[];
   }
 
-  declare interface storage$BucketAccessControlsResource {
+  declare interface gapi$client$storage$BucketAccessControlsResource {
     /**
      * Permanently deletes the ACL entry for the specified entity on the specified bucket.
      */
@@ -1060,7 +1064,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$BucketAccessControl>;
+    }): Request<gapi$client$storage$BucketAccessControl>;
 
     /**
      * Creates a new ACL entry on the specified bucket.
@@ -1111,7 +1115,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$BucketAccessControl>;
+    }): Request<gapi$client$storage$BucketAccessControl>;
 
     /**
      * Retrieves ACL entries on the specified bucket.
@@ -1162,7 +1166,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$BucketAccessControls>;
+    }): Request<gapi$client$storage$BucketAccessControls>;
 
     /**
      * Updates an ACL entry on the specified bucket. This method supports patch semantics.
@@ -1218,7 +1222,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$BucketAccessControl>;
+    }): Request<gapi$client$storage$BucketAccessControl>;
 
     /**
      * Updates an ACL entry on the specified bucket.
@@ -1274,10 +1278,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$BucketAccessControl>;
+    }): Request<gapi$client$storage$BucketAccessControl>;
   }
 
-  declare interface storage$BucketsResource {
+  declare interface gapi$client$storage$BucketsResource {
     /**
      * Permanently deletes an empty bucket.
      */
@@ -1403,7 +1407,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Bucket>;
+    }): Request<gapi$client$storage$Bucket>;
 
     /**
      * Returns an IAM policy for the specified bucket.
@@ -1454,7 +1458,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Policy>;
+    }): Request<gapi$client$storage$Policy>;
 
     /**
      * Creates a new bucket.
@@ -1520,7 +1524,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Bucket>;
+    }): Request<gapi$client$storage$Bucket>;
 
     /**
      * Retrieves a list of buckets for a given project.
@@ -1591,7 +1595,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Buckets>;
+    }): Request<gapi$client$storage$Buckets>;
 
     /**
      * Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. This method
@@ -1668,7 +1672,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Bucket>;
+    }): Request<gapi$client$storage$Bucket>;
 
     /**
      * Updates an IAM policy for the specified bucket.
@@ -1719,7 +1723,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Policy>;
+    }): Request<gapi$client$storage$Policy>;
 
     /**
      * Tests a set of permissions on the given bucket to see which, if any, are held by the caller.
@@ -1775,7 +1779,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$TestIamPermissionsResponse>;
+    }): Request<gapi$client$storage$TestIamPermissionsResponse>;
 
     /**
      * Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.
@@ -1851,10 +1855,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Bucket>;
+    }): Request<gapi$client$storage$Bucket>;
   }
 
-  declare interface storage$ChannelsResource {
+  declare interface gapi$client$storage$ChannelsResource {
     /**
      * Stop watching resources through this channel
      */
@@ -1897,7 +1901,7 @@ declare module "gapi.client.storage" {
     }): Request<void>;
   }
 
-  declare interface storage$DefaultObjectAccessControlsResource {
+  declare interface gapi$client$storage$DefaultObjectAccessControlsResource {
     /**
      * Permanently deletes the default object ACL entry for the specified entity on the specified bucket.
      */
@@ -2008,7 +2012,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Creates a new default object ACL entry on the specified bucket.
@@ -2059,7 +2063,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Retrieves default object ACL entries on the specified bucket.
@@ -2120,7 +2124,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControls>;
+    }): Request<gapi$client$storage$ObjectAccessControls>;
 
     /**
      * Updates a default object ACL entry on the specified bucket. This method supports patch semantics.
@@ -2176,7 +2180,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Updates a default object ACL entry on the specified bucket.
@@ -2232,10 +2236,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
   }
 
-  declare interface storage$NotificationsResource {
+  declare interface gapi$client$storage$NotificationsResource {
     /**
      * Permanently deletes a notification subscription.
      */
@@ -2346,7 +2350,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Notification>;
+    }): Request<gapi$client$storage$Notification>;
 
     /**
      * Creates a notification subscription for a given bucket.
@@ -2397,7 +2401,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Notification>;
+    }): Request<gapi$client$storage$Notification>;
 
     /**
      * Retrieves a list of notification subscriptions for a given bucket.
@@ -2448,10 +2452,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Notifications>;
+    }): Request<gapi$client$storage$Notifications>;
   }
 
-  declare interface storage$ObjectAccessControlsResource {
+  declare interface gapi$client$storage$ObjectAccessControlsResource {
     /**
      * Permanently deletes the ACL entry for the specified entity on the specified object.
      */
@@ -2582,7 +2586,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Creates a new ACL entry on the specified object.
@@ -2643,7 +2647,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Retrieves ACL entries on the specified object.
@@ -2704,7 +2708,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControls>;
+    }): Request<gapi$client$storage$ObjectAccessControls>;
 
     /**
      * Updates an ACL entry on the specified object. This method supports patch semantics.
@@ -2770,7 +2774,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
 
     /**
      * Updates an ACL entry on the specified object.
@@ -2836,10 +2840,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ObjectAccessControl>;
+    }): Request<gapi$client$storage$ObjectAccessControl>;
   }
 
-  declare interface storage$ObjectsResource {
+  declare interface gapi$client$storage$ObjectsResource {
     /**
      * Concatenates a list of existing objects into a new object in the same bucket.
      */
@@ -2916,7 +2920,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Copies a source object to a destination object. Optionally overrides metadata.
@@ -3040,7 +3044,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.
@@ -3211,7 +3215,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Returns an IAM policy for the specified object.
@@ -3272,7 +3276,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Policy>;
+    }): Request<gapi$client$storage$Policy>;
 
     /**
      * Stores a new object and metadata.
@@ -3373,7 +3377,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Retrieves a list of objects matching the criteria.
@@ -3457,7 +3461,7 @@ declare module "gapi.client.storage" {
        * If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning.
        */
       versions?: boolean
-    }): Request<storage$Objects>;
+    }): Request<gapi$client$storage$Objects>;
 
     /**
      * Updates an object's metadata. This method supports patch semantics.
@@ -3550,7 +3554,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Rewrites a source object to a destination object. Optionally overrides metadata.
@@ -3695,7 +3699,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$RewriteResponse>;
+    }): Request<gapi$client$storage$RewriteResponse>;
 
     /**
      * Updates an IAM policy for the specified object.
@@ -3756,7 +3760,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Policy>;
+    }): Request<gapi$client$storage$Policy>;
 
     /**
      * Tests a set of permissions on the given object to see which, if any, are held by the caller.
@@ -3822,7 +3826,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$TestIamPermissionsResponse>;
+    }): Request<gapi$client$storage$TestIamPermissionsResponse>;
 
     /**
      * Updates an object's metadata.
@@ -3915,7 +3919,7 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$Object>;
+    }): Request<gapi$client$storage$Object>;
 
     /**
      * Watch for changes on all objects in a bucket.
@@ -3999,10 +4003,10 @@ declare module "gapi.client.storage" {
        * If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning.
        */
       versions?: boolean
-    }): Request<storage$Channel>;
+    }): Request<gapi$client$storage$Channel>;
   }
 
-  declare interface storage$ServiceAccountResource {
+  declare interface gapi$client$storage$ServiceAccountResource {
     /**
      * Get the email address of this project's Google Cloud Storage service account.
      */
@@ -4052,10 +4056,10 @@ declare module "gapi.client.storage" {
        * The project to be billed for this request, for Requester Pays buckets.
        */
       userProject?: string
-    }): Request<storage$ServiceAccount>;
+    }): Request<gapi$client$storage$ServiceAccount>;
   }
 
-  declare interface storage$ProjectsResource {
-    serviceAccount: storage$ServiceAccountResource;
+  declare interface gapi$client$storage$ProjectsResource {
+    serviceAccount: gapi$client$storage$ServiceAccountResource;
   }
 }
