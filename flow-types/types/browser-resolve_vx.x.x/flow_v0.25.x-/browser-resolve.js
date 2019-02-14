@@ -1,19 +1,3 @@
-declare var npm$namespace$browserResolve: {
-  sync: typeof browserResolve$sync
-};
-declare interface browserResolve$Opts {
-  browser?: string;
-  filename?: string;
-  modules?: any;
-}
-
-export type browserResolve$AsyncOpts = {} & resolve.browserResolve$AsyncOpts &
-  browserResolve$Opts;
-
-export type browserResolve$SyncOpts = {} & resolve.browserResolve$SyncOpts &
-  browserResolve$Opts;
-
-declare export var browserResolve$sync: typeof browserResolveSync;
 declare module "browser-resolve" {
   import typeof * as resolve from "resolve";
 
@@ -39,7 +23,7 @@ declare module "browser-resolve" {
    */
   declare function browserResolve(
     id: string,
-    opts: browserResolve$browserResolve$AsyncOpts,
+    opts: browserResolve$AsyncOpts,
     cb: resolveCallback
   ): void;
 
@@ -50,8 +34,22 @@ declare module "browser-resolve" {
    */
   declare function browserResolveSync(
     id: string,
-    opts?: browserResolve$browserResolve$SyncOpts
+    opts?: browserResolve$SyncOpts
   ): string;
 
+  declare var npm$namespace$browserResolve: {
+    sync: typeof browserResolve$sync
+  };
+  declare interface browserResolve$Opts {
+    browser?: string;
+    filename?: string;
+    modules?: any;
+  }
+
+  declare export type browserResolve$AsyncOpts = {} & resolve.AsyncOpts & Opts;
+
+  declare export type browserResolve$SyncOpts = {} & resolve.SyncOpts & Opts;
+
+  declare export var browserResolve$sync: typeof browserResolveSync;
   declare export default typeof browserResolve;
 }
