@@ -269,7 +269,7 @@ declare module "gdal" {
     count(): number;
     create(dataType: number): RasterBand;
     forEach(callback: (band: RasterBand, i: number) => void): void;
-    config$get(id: number): RasterBand;
+    get(id: number): RasterBand;
     map<T>(callback: (band: RasterBand, i: number) => T): T[];
     +ds: Dataset;
   }
@@ -287,7 +287,7 @@ declare module "gdal" {
       creation_options: string[] | { [key: string]: any }
     ): Layer;
     forEach(callback: (layer: Layer, i: number) => void): void;
-    config$get(key: string | number): Layer;
+    get(key: string | number): Layer;
     map<T>(callback: (layer: Layer, i: number) => T): T[];
     remove(index: number): void;
     +ds: Dataset;
@@ -352,7 +352,7 @@ declare module "gdal" {
     add(field: FieldDefn | FieldDefn[]): void;
     count(): number;
     forEach(callback: (field: FieldDefn, i: number) => void): void;
-    config$get(key: string | number): FieldDefn;
+    get(key: string | number): FieldDefn;
     getNames(): string[];
     indexOf(name: string): number;
     map<T>(callback: (field: FieldDefn, i: number) => T): T[];
@@ -363,12 +363,12 @@ declare module "gdal" {
   declare export interface FeatureFields {
     count(): number;
     forEach(callback: (value: any, key: string) => void): void;
-    config$get(key: string | number): any;
+    get(key: string | number): any;
     getNames(): string[];
     indexOf(name: string): number;
     map<T>(callback: (value: any, key: string) => T): T[];
     reset(values: { [key: string]: any }, value: any): void;
-    config$set(key: string | number, value: any): void;
+    set(key: string | number, value: any): void;
     toArray(): any[];
     toJSON(): string;
     toObject(): { [key: string]: any };
@@ -386,7 +386,7 @@ declare module "gdal" {
   declare export interface GDALDrivers {
     count(): number;
     forEach(callback: (driver: Driver, i: number) => void): void;
-    config$get(index: number | string): Driver;
+    get(index: number | string): Driver;
     getNames(): string[];
     map<T>(callback: (driver: Driver, i: number) => T): T[];
   }
@@ -450,7 +450,7 @@ declare module "gdal" {
     add(geometry: Geometry | Geometry[]): void;
     count(): number;
     forEach(callback: (geometry: Geometry, i: number) => void): void;
-    config$get(index: number): Geometry;
+    get(index: number): Geometry;
     map<T>(callback: (geometry: Geometry, i: number) => T): T[];
     remove(index: number): void;
     toArray(): Geometry[];
@@ -483,11 +483,11 @@ declare module "gdal" {
     count(force?: boolean): number;
     first(): Feature;
     forEach(callback: (feature: Feature, i: number) => void): void;
-    config$get(id: number): Feature;
+    get(id: number): Feature;
     map<T>(callback: (feature: Feature, i: number) => T): T[];
     next(): Feature;
     remove(id: number): void;
-    config$set(id: number, feature: Feature): void;
+    set(id: number, feature: Feature): void;
     +layer: Layer;
   }
   declare export interface LayerFields {
@@ -495,7 +495,7 @@ declare module "gdal" {
     count(): number;
     forEach(callback: (field: FieldDefn, i: number) => void): void;
     fromJSON(object: { [key: string]: any }, approx_ok?: boolean): LayerFields;
-    config$get(field: string | number): FieldDefn;
+    get(field: string | number): FieldDefn;
     getNames(): string[];
     indexOf(field: string): number;
     map<T>(callback: (field: FieldDefn, i: number) => T): T[];
@@ -516,12 +516,12 @@ declare module "gdal" {
     add(point: Point | Point[]): void;
     count(): number;
     forEach(callback: (point: Point, i: number) => void): void;
-    config$get(index: number): Point;
+    get(index: number): Point;
     map<T>(callback: (point: Point, i: number) => T): T[];
     remove(index: number): void;
     resize(count: number): void;
     reverse(): void;
-    config$set(index: number, point: Point): void;
+    set(index: number, point: Point): void;
     toArray(): Point[];
   }
   declare export class MultiLineString mixins GeometryCollection {
@@ -546,7 +546,7 @@ declare module "gdal" {
     add(ring: LinearRing | LinearRing[]): void;
     count(): number;
     forEach(callback: (ring: LinearRing, i: number) => void): void;
-    config$get(index: number): LinearRing;
+    get(index: number): LinearRing;
     map<T>(callback: (ring: LinearRing, i: number) => T): T[];
     remove(index: number): void;
     toArray(): LinearRing[];
@@ -592,12 +592,12 @@ declare module "gdal" {
   declare export interface RasterBandOverviews {
     count(): number;
     forEach(callback: (overviewBand: RasterBand, i: number) => void): void;
-    config$get(index: number): RasterBand;
+    get(index: number): RasterBand;
     getBySampleCount(samples: number): RasterBand;
     map<T>(callback: (overviewBand: RasterBand, i: number) => T): T[];
   }
   declare export interface RasterBandPixels {
-    config$get(x: number, y: number): number;
+    get(x: number, y: number): number;
     read(
       x: number,
       y: number,
@@ -607,7 +607,7 @@ declare module "gdal" {
       options?: RasterBandPixelsReadOptions
     ): TypedArray;
     readBlock(x: number, y: number, data?: TypedArray): TypedArray;
-    config$set(x: number, y: number, value: number): void;
+    set(x: number, y: number, value: number): void;
     write(
       x: number,
       y: number,
