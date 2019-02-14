@@ -1,16 +1,14 @@
 declare module "supertest" {
   import typeof * as superagent from "superagent";
 
-  declare module.exports: typeof supertest;
+  declare export default typeof supertest;
 
-  declare function supertest(
-    app: any
-  ): supertest$supertest$SuperTest<supertest$supertest$Test>;
+  declare function supertest(app: any): supertest$SuperTest<supertest$Test>;
 
   declare var npm$namespace$supertest: {
     agent: typeof supertest$agent
   };
-  declare type supertest$Response = {} & superagent.supertest$Response;
+  declare type supertest$Response = {} & superagent.Response;
 
   declare type supertest$Request = {} & superagent.SuperAgentRequest;
 
