@@ -1,8 +1,10 @@
 declare module "onoff" {
-  declare module.exports: typeof __ONOFF;
+  declare export default typeof __ONOFF;
 
   declare var npm$namespace$__ONOFF: {
-    version: typeof __ONOFF$version
+    version: typeof __ONOFF$version,
+
+    Gpio: typeof __ONOFF$Gpio
   };
   declare var __ONOFF$version: string;
 
