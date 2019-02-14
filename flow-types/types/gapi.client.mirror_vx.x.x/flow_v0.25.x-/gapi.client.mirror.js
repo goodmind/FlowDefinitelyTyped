@@ -1,48 +1,52 @@
 declare module "gapi.client.mirror" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts,
-    contacts: typeof client$contacts,
-    locations: typeof client$locations,
-    settings: typeof client$settings,
-    subscriptions: typeof client$subscriptions,
-    timeline: typeof client$timeline
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts,
+    contacts: typeof gapi$client$contacts,
+    locations: typeof gapi$client$locations,
+    settings: typeof gapi$client$settings,
+    subscriptions: typeof gapi$client$subscriptions,
+    timeline: typeof gapi$client$timeline
   };
 
   /**
    * Load Google Mirror API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "mirror",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "mirror",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: mirror$mirror$AccountsResource;
+  declare var gapi$client$accounts: mirror$AccountsResource;
 
-  declare var client$contacts: mirror$mirror$ContactsResource;
+  declare var gapi$client$contacts: mirror$ContactsResource;
 
-  declare var client$locations: mirror$mirror$LocationsResource;
+  declare var gapi$client$locations: mirror$LocationsResource;
 
-  declare var client$settings: mirror$mirror$SettingsResource;
+  declare var gapi$client$settings: mirror$SettingsResource;
 
-  declare var client$subscriptions: mirror$mirror$SubscriptionsResource;
+  declare var gapi$client$subscriptions: mirror$SubscriptionsResource;
 
-  declare var client$timeline: mirror$mirror$TimelineResource;
+  declare var gapi$client$timeline: mirror$TimelineResource;
 
-  declare interface mirror$Account {
+  declare interface gapi$client$mirror$Account {
     authTokens?: mirror$AuthToken[];
     features?: string[];
     password?: string;
     userData?: mirror$UserData[];
   }
 
-  declare interface mirror$Attachment {
+  declare interface gapi$client$mirror$Attachment {
     /**
      * The MIME type of the attachment.
      */
@@ -65,11 +69,11 @@ declare module "gapi.client.mirror" {
     isProcessingContent?: boolean;
   }
 
-  declare interface mirror$AttachmentsListResponse {
+  declare interface gapi$client$mirror$AttachmentsListResponse {
     /**
      * The list of attachments.
      */
-    items?: mirror$Attachment[];
+    items?: gapi$client$mirror$Attachment[];
 
     /**
      * The type of resource. This is always mirror#attachmentsList.
@@ -77,12 +81,12 @@ declare module "gapi.client.mirror" {
     kind?: string;
   }
 
-  declare interface mirror$AuthToken {
+  declare interface gapi$client$mirror$AuthToken {
     authToken?: string;
     type?: string;
   }
 
-  declare interface mirror$Command {
+  declare interface gapi$client$mirror$Command {
     /**
      * The type of operation this command corresponds to. Allowed values are:
      * - TAKE_A_NOTE - Shares a timeline item with the transcription of user speech from the "Take a note" voice menu command.
@@ -91,12 +95,12 @@ declare module "gapi.client.mirror" {
     type?: string;
   }
 
-  declare interface mirror$Contact {
+  declare interface gapi$client$mirror$Contact {
     /**
      * A list of voice menu commands that a contact can handle. Glass shows up to three contacts for each voice menu command. If there are more than that, the
      * three contacts with the highest priority are shown for that particular command.
      */
-    acceptCommands?: mirror$Command[];
+    acceptCommands?: gapi$client$mirror$Command[];
 
     /**
      * A list of MIME types that a contact supports. The contact will be shown to the user if any of its acceptTypes matches any of the types of the
@@ -160,11 +164,11 @@ declare module "gapi.client.mirror" {
     type?: string;
   }
 
-  declare interface mirror$ContactsListResponse {
+  declare interface gapi$client$mirror$ContactsListResponse {
     /**
      * Contact list.
      */
-    items?: mirror$Contact[];
+    items?: gapi$client$mirror$Contact[];
 
     /**
      * The type of resource. This is always mirror#contacts.
@@ -172,7 +176,7 @@ declare module "gapi.client.mirror" {
     kind?: string;
   }
 
-  declare interface mirror$Location {
+  declare interface gapi$client$mirror$Location {
     /**
      * The accuracy of the location fix in meters.
      */
@@ -214,11 +218,11 @@ declare module "gapi.client.mirror" {
     timestamp?: string;
   }
 
-  declare interface mirror$LocationsListResponse {
+  declare interface gapi$client$mirror$LocationsListResponse {
     /**
      * The list of locations.
      */
-    items?: mirror$Location[];
+    items?: gapi$client$mirror$Location[];
 
     /**
      * The type of resource. This is always mirror#locationsList.
@@ -226,7 +230,7 @@ declare module "gapi.client.mirror" {
     kind?: string;
   }
 
-  declare interface mirror$MenuItem {
+  declare interface gapi$client$mirror$MenuItem {
     /**
      * Controls the behavior when the user picks the menu option. Allowed values are:
      * - CUSTOM - Custom action set by the service. When the user selects this menuItem, the API triggers a notification to your callbackUrl with the
@@ -285,7 +289,7 @@ declare module "gapi.client.mirror" {
     values?: mirror$MenuValue[];
   }
 
-  declare interface mirror$MenuValue {
+  declare interface gapi$client$mirror$MenuValue {
     /**
      * The name to display for the menu item. If you specify this property for a built-in menu item, the default contextual voice command for that menu item
      * is not shown.
@@ -306,7 +310,7 @@ declare module "gapi.client.mirror" {
     state?: string;
   }
 
-  declare interface mirror$Notification {
+  declare interface gapi$client$mirror$Notification {
     /**
      * The collection that generated the notification.
      */
@@ -338,7 +342,7 @@ declare module "gapi.client.mirror" {
     verifyToken?: string;
   }
 
-  declare interface mirror$NotificationConfig {
+  declare interface gapi$client$mirror$NotificationConfig {
     /**
      * The time at which the notification should be delivered.
      */
@@ -351,7 +355,7 @@ declare module "gapi.client.mirror" {
     level?: string;
   }
 
-  declare interface mirror$Setting {
+  declare interface gapi$client$mirror$Setting {
     /**
      * The setting's ID. The following IDs are valid:
      * - locale - The key to the user’s language/locale (BCP 47 identifier) that Glassware should use to render localized content.
@@ -370,7 +374,7 @@ declare module "gapi.client.mirror" {
     value?: string;
   }
 
-  declare interface mirror$Subscription {
+  declare interface gapi$client$mirror$Subscription {
     /**
      * The URL where notifications should be delivered (must start with https://).
      */
@@ -397,7 +401,7 @@ declare module "gapi.client.mirror" {
     /**
      * Container object for notifications. This is not populated in the Subscription resource.
      */
-    notification?: mirror$Notification;
+    notification?: gapi$client$mirror$Notification;
 
     /**
      * A list of operations that should be subscribed to. An empty list indicates that all operations on the collection should be subscribed to. Allowed
@@ -425,11 +429,11 @@ declare module "gapi.client.mirror" {
     verifyToken?: string;
   }
 
-  declare interface mirror$SubscriptionsListResponse {
+  declare interface gapi$client$mirror$SubscriptionsListResponse {
     /**
      * The list of subscriptions.
      */
-    items?: mirror$Subscription[];
+    items?: gapi$client$mirror$Subscription[];
 
     /**
      * The type of resource. This is always mirror#subscriptionsList.
@@ -437,14 +441,14 @@ declare module "gapi.client.mirror" {
     kind?: string;
   }
 
-  declare interface mirror$TimelineItem {
+  declare interface gapi$client$mirror$TimelineItem {
     /**
      * A list of media attachments associated with this item. As a convenience, you can refer to attachments in your HTML payloads with the attachment or cid
      * scheme. For example:
      * - attachment: <img src="attachment:attachment_index"> where attachment_index is the 0-based index of this array.
      * - cid: <img src="cid:attachment_id"> where attachment_id is the ID of the attachment.
      */
-    attachments?: mirror$Attachment[];
+    attachments?: gapi$client$mirror$Attachment[];
 
     /**
      * The bundle ID for this item. Services can specify a bundleId to group many items together. They appear under a single top-level item on the device.
@@ -464,7 +468,7 @@ declare module "gapi.client.mirror" {
     /**
      * The user or group that created this item.
      */
-    creator?: mirror$Contact;
+    creator?: gapi$client$mirror$Contact;
 
     /**
      * The time that should be displayed when this item is viewed in the timeline, formatted according to RFC 3339. This user's timeline is sorted
@@ -543,17 +547,17 @@ declare module "gapi.client.mirror" {
     /**
      * The geographic location associated with this item.
      */
-    location?: mirror$Location;
+    location?: gapi$client$mirror$Location;
 
     /**
      * A list of menu items that will be presented to the user when this item is selected in the timeline.
      */
-    menuItems?: mirror$MenuItem[];
+    menuItems?: gapi$client$mirror$MenuItem[];
 
     /**
      * Controls how notifications for this item are presented on the device. If this is missing, no notification will be generated.
      */
-    notification?: mirror$NotificationConfig;
+    notification?: gapi$client$mirror$NotificationConfig;
 
     /**
      * For pinned items, this determines the order in which the item is displayed in the timeline, with a higher score appearing closer to the clock. Note:
@@ -564,7 +568,7 @@ declare module "gapi.client.mirror" {
     /**
      * A list of users or groups that this item has been shared with.
      */
-    recipients?: mirror$Contact[];
+    recipients?: gapi$client$mirror$Contact[];
 
     /**
      * A URL that can be used to retrieve this item.
@@ -612,11 +616,11 @@ declare module "gapi.client.mirror" {
     updated?: string;
   }
 
-  declare interface mirror$TimelineListResponse {
+  declare interface gapi$client$mirror$TimelineListResponse {
     /**
      * Items in the timeline.
      */
-    items?: mirror$TimelineItem[];
+    items?: gapi$client$mirror$TimelineItem[];
 
     /**
      * The type of resource. This is always mirror#timeline.
@@ -629,7 +633,7 @@ declare module "gapi.client.mirror" {
     nextPageToken?: string;
   }
 
-  declare interface mirror$UserAction {
+  declare interface gapi$client$mirror$UserAction {
     /**
      * An optional payload for the action.
      *
@@ -651,12 +655,12 @@ declare module "gapi.client.mirror" {
     type?: string;
   }
 
-  declare interface mirror$UserData {
+  declare interface gapi$client$mirror$UserData {
     key?: string;
     value?: string;
   }
 
-  declare interface mirror$AccountsResource {
+  declare interface gapi$client$mirror$AccountsResource {
     /**
      * Inserts a new account for a user
      */
@@ -711,10 +715,10 @@ declare module "gapi.client.mirror" {
        * The ID for the user.
        */
       userToken: string
-    }): Request<mirror$Account>;
+    }): Request<gapi$client$mirror$Account>;
   }
 
-  declare interface mirror$ContactsResource {
+  declare interface gapi$client$mirror$ContactsResource {
     /**
      * Deletes a contact.
      */
@@ -805,7 +809,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Contact>;
+    }): Request<gapi$client$mirror$Contact>;
 
     /**
      * Inserts a new contact.
@@ -846,7 +850,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Contact>;
+    }): Request<gapi$client$mirror$Contact>;
 
     /**
      * Retrieves a list of contacts for the authenticated user.
@@ -887,7 +891,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$ContactsListResponse>;
+    }): Request<gapi$client$mirror$ContactsListResponse>;
 
     /**
      * Updates a contact in place. This method supports patch semantics.
@@ -933,7 +937,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Contact>;
+    }): Request<gapi$client$mirror$Contact>;
 
     /**
      * Updates a contact in place.
@@ -979,10 +983,10 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Contact>;
+    }): Request<gapi$client$mirror$Contact>;
   }
 
-  declare interface mirror$LocationsResource {
+  declare interface gapi$client$mirror$LocationsResource {
     /**
      * Gets a single location by ID.
      */
@@ -1027,7 +1031,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Location>;
+    }): Request<gapi$client$mirror$Location>;
 
     /**
      * Retrieves a list of locations for the user.
@@ -1068,10 +1072,10 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$LocationsListResponse>;
+    }): Request<gapi$client$mirror$LocationsListResponse>;
   }
 
-  declare interface mirror$SettingsResource {
+  declare interface gapi$client$mirror$SettingsResource {
     /**
      * Gets a single setting by ID.
      */
@@ -1118,10 +1122,10 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Setting>;
+    }): Request<gapi$client$mirror$Setting>;
   }
 
-  declare interface mirror$SubscriptionsResource {
+  declare interface gapi$client$mirror$SubscriptionsResource {
     /**
      * Deletes a subscription.
      */
@@ -1207,7 +1211,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Subscription>;
+    }): Request<gapi$client$mirror$Subscription>;
 
     /**
      * Retrieves a list of subscriptions for the authenticated user and service.
@@ -1248,7 +1252,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$SubscriptionsListResponse>;
+    }): Request<gapi$client$mirror$SubscriptionsListResponse>;
 
     /**
      * Updates an existing subscription in place.
@@ -1294,10 +1298,10 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Subscription>;
+    }): Request<gapi$client$mirror$Subscription>;
   }
 
-  declare interface mirror$AttachmentsResource {
+  declare interface gapi$client$mirror$AttachmentsResource {
     /**
      * Deletes an attachment from a timeline item.
      */
@@ -1398,7 +1402,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Attachment>;
+    }): Request<gapi$client$mirror$Attachment>;
 
     /**
      * Adds a new attachment to a timeline item.
@@ -1444,7 +1448,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$Attachment>;
+    }): Request<gapi$client$mirror$Attachment>;
 
     /**
      * Returns a list of attachments for a timeline item.
@@ -1490,10 +1494,10 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$AttachmentsListResponse>;
+    }): Request<gapi$client$mirror$AttachmentsListResponse>;
   }
 
-  declare interface mirror$TimelineResource {
+  declare interface gapi$client$mirror$TimelineResource {
     /**
      * Deletes a timeline item.
      */
@@ -1584,7 +1588,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$TimelineItem>;
+    }): Request<gapi$client$mirror$TimelineItem>;
 
     /**
      * Inserts a new item into the timeline.
@@ -1625,7 +1629,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$TimelineItem>;
+    }): Request<gapi$client$mirror$TimelineItem>;
 
     /**
      * Retrieves a list of timeline items for the authenticated user.
@@ -1701,7 +1705,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$TimelineListResponse>;
+    }): Request<gapi$client$mirror$TimelineListResponse>;
 
     /**
      * Updates a timeline item in place. This method supports patch semantics.
@@ -1747,7 +1751,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$TimelineItem>;
+    }): Request<gapi$client$mirror$TimelineItem>;
 
     /**
      * Updates a timeline item in place.
@@ -1793,7 +1797,7 @@ declare module "gapi.client.mirror" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<mirror$TimelineItem>;
-    attachments: mirror$AttachmentsResource;
+    }): Request<gapi$client$mirror$TimelineItem>;
+    attachments: gapi$client$mirror$AttachmentsResource;
   }
 }
