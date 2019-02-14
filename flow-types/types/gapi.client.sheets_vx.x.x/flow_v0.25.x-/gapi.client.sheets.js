@@ -1,26 +1,30 @@
 declare module "gapi.client.sheets" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    spreadsheets: typeof client$spreadsheets
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    spreadsheets: typeof gapi$client$spreadsheets
   };
 
   /**
    * Load Google Sheets API v4
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sheets",
     version: "v4"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "sheets",
     version: "v4",
     callback: () => any
   ): void;
 
-  declare var client$spreadsheets: sheets$sheets$SpreadsheetsResource;
+  declare var gapi$client$spreadsheets: sheets$SpreadsheetsResource;
 
-  declare interface sheets$AddBandingRequest {
+  declare interface gapi$client$sheets$AddBandingRequest {
     /**
      * The banded range to add. The bandedRangeId
      * field is optional; if one is not set, an id will be randomly generated. (It
@@ -29,14 +33,14 @@ declare module "gapi.client.sheets" {
     bandedRange?: sheets$BandedRange;
   }
 
-  declare interface sheets$AddBandingResponse {
+  declare interface gapi$client$sheets$AddBandingResponse {
     /**
      * The banded range that was added.
      */
     bandedRange?: sheets$BandedRange;
   }
 
-  declare interface sheets$AddChartRequest {
+  declare interface gapi$client$sheets$AddChartRequest {
     /**
      * The chart that should be added to the spreadsheet, including the position
      * where it should be placed. The chartId
@@ -46,14 +50,14 @@ declare module "gapi.client.sheets" {
     chart?: sheets$EmbeddedChart;
   }
 
-  declare interface sheets$AddChartResponse {
+  declare interface gapi$client$sheets$AddChartResponse {
     /**
      * The newly added chart.
      */
     chart?: sheets$EmbeddedChart;
   }
 
-  declare interface sheets$AddConditionalFormatRuleRequest {
+  declare interface gapi$client$sheets$AddConditionalFormatRuleRequest {
     /**
      * The zero-based index where the rule should be inserted.
      */
@@ -65,7 +69,7 @@ declare module "gapi.client.sheets" {
     rule?: sheets$ConditionalFormatRule;
   }
 
-  declare interface sheets$AddFilterViewRequest {
+  declare interface gapi$client$sheets$AddFilterViewRequest {
     /**
      * The filter to add. The filterViewId
      * field is optional; if one is not set, an id will be randomly generated. (It
@@ -74,14 +78,14 @@ declare module "gapi.client.sheets" {
     filter?: sheets$FilterView;
   }
 
-  declare interface sheets$AddFilterViewResponse {
+  declare interface gapi$client$sheets$AddFilterViewResponse {
     /**
      * The newly added filter view.
      */
     filter?: sheets$FilterView;
   }
 
-  declare interface sheets$AddNamedRangeRequest {
+  declare interface gapi$client$sheets$AddNamedRangeRequest {
     /**
      * The named range to add. The namedRangeId
      * field is optional; if one is not set, an id will be randomly generated. (It
@@ -90,14 +94,14 @@ declare module "gapi.client.sheets" {
     namedRange?: sheets$NamedRange;
   }
 
-  declare interface sheets$AddNamedRangeResponse {
+  declare interface gapi$client$sheets$AddNamedRangeResponse {
     /**
      * The named range to add.
      */
     namedRange?: sheets$NamedRange;
   }
 
-  declare interface sheets$AddProtectedRangeRequest {
+  declare interface gapi$client$sheets$AddProtectedRangeRequest {
     /**
      * The protected range to be added. The
      * protectedRangeId field is optional; if
@@ -107,14 +111,14 @@ declare module "gapi.client.sheets" {
     protectedRange?: sheets$ProtectedRange;
   }
 
-  declare interface sheets$AddProtectedRangeResponse {
+  declare interface gapi$client$sheets$AddProtectedRangeResponse {
     /**
      * The newly added protected range.
      */
     protectedRange?: sheets$ProtectedRange;
   }
 
-  declare interface sheets$AddSheetRequest {
+  declare interface gapi$client$sheets$AddSheetRequest {
     /**
      * The properties the new sheet should have.
      * All properties are optional.
@@ -125,14 +129,14 @@ declare module "gapi.client.sheets" {
     properties?: sheets$SheetProperties;
   }
 
-  declare interface sheets$AddSheetResponse {
+  declare interface gapi$client$sheets$AddSheetResponse {
     /**
      * The properties of the newly added sheet.
      */
     properties?: sheets$SheetProperties;
   }
 
-  declare interface sheets$AppendCellsRequest {
+  declare interface gapi$client$sheets$AppendCellsRequest {
     /**
      * The fields of CellData that should be updated.
      * At least one field must be specified.
@@ -152,7 +156,7 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$AppendDimensionRequest {
+  declare interface gapi$client$sheets$AppendDimensionRequest {
     /**
      * Whether rows or columns should be appended.
      */
@@ -169,7 +173,7 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$AppendValuesResponse {
+  declare interface gapi$client$sheets$AppendValuesResponse {
     /**
      * The spreadsheet the updates were applied to.
      */
@@ -188,7 +192,7 @@ declare module "gapi.client.sheets" {
     updates?: sheets$UpdateValuesResponse;
   }
 
-  declare interface sheets$AutoFillRequest {
+  declare interface gapi$client$sheets$AutoFillRequest {
     /**
      * The range to autofill. This will examine the range and detect
      * the location that has data and automatically fill that data
@@ -210,14 +214,14 @@ declare module "gapi.client.sheets" {
     useAlternateSeries?: boolean;
   }
 
-  declare interface sheets$AutoResizeDimensionsRequest {
+  declare interface gapi$client$sheets$AutoResizeDimensionsRequest {
     /**
      * The dimensions to automatically resize.
      */
     dimensions?: sheets$DimensionRange;
   }
 
-  declare interface sheets$BandedRange {
+  declare interface gapi$client$sheets$BandedRange {
     /**
      * The id of the banded range.
      */
@@ -243,7 +247,7 @@ declare module "gapi.client.sheets" {
     rowProperties?: sheets$BandingProperties;
   }
 
-  declare interface sheets$BandingProperties {
+  declare interface gapi$client$sheets$BandingProperties {
     /**
      * The first color that is alternating. (Required)
      */
@@ -273,7 +277,7 @@ declare module "gapi.client.sheets" {
     secondBandColor?: sheets$Color;
   }
 
-  declare interface sheets$BasicChartAxis {
+  declare interface gapi$client$sheets$BasicChartAxis {
     /**
      * The format of the title.
      * Only valid if the axis is not associated with the domain.
@@ -297,7 +301,7 @@ declare module "gapi.client.sheets" {
     titleTextPosition?: sheets$TextPosition;
   }
 
-  declare interface sheets$BasicChartDomain {
+  declare interface gapi$client$sheets$BasicChartDomain {
     /**
      * The data of the domain. For example, if charting stock prices over time,
      * this is the data representing the dates.
@@ -310,7 +314,7 @@ declare module "gapi.client.sheets" {
     reversed?: boolean;
   }
 
-  declare interface sheets$BasicChartSeries {
+  declare interface gapi$client$sheets$BasicChartSeries {
     /**
      * The data being visualized in this chart series.
      */
@@ -338,11 +342,11 @@ declare module "gapi.client.sheets" {
     type?: string;
   }
 
-  declare interface sheets$BasicChartSpec {
+  declare interface gapi$client$sheets$BasicChartSpec {
     /**
      * The axis on the chart.
      */
-    axis?: sheets$BasicChartAxis[];
+    axis?: gapi$client$sheets$BasicChartAxis[];
 
     /**
      * The type of the chart.
@@ -359,7 +363,7 @@ declare module "gapi.client.sheets" {
      * The domain of data this is charting.
      * Only a single domain is supported.
      */
-    domains?: sheets$BasicChartDomain[];
+    domains?: gapi$client$sheets$BasicChartDomain[];
 
     /**
      * The number of rows or columns in the data that are "headers".
@@ -393,7 +397,7 @@ declare module "gapi.client.sheets" {
     /**
      * The data this chart is visualizing.
      */
-    series?: sheets$BasicChartSeries[];
+    series?: gapi$client$sheets$BasicChartSeries[];
 
     /**
      * The stacked type for charts that support vertical stacking.
@@ -408,7 +412,7 @@ declare module "gapi.client.sheets" {
     threeDimensional?: boolean;
   }
 
-  declare interface sheets$BasicFilter {
+  declare interface gapi$client$sheets$BasicFilter {
     /**
      * The criteria for showing/hiding values per column.
      * The map's key is the column index, and the value is the criteria for
@@ -428,14 +432,14 @@ declare module "gapi.client.sheets" {
     sortSpecs?: sheets$SortSpec[];
   }
 
-  declare interface sheets$BatchClearValuesByDataFilterRequest {
+  declare interface gapi$client$sheets$BatchClearValuesByDataFilterRequest {
     /**
      * The DataFilters used to determine which ranges to clear.
      */
     dataFilters?: sheets$DataFilter[];
   }
 
-  declare interface sheets$BatchClearValuesByDataFilterResponse {
+  declare interface gapi$client$sheets$BatchClearValuesByDataFilterResponse {
     /**
      * The ranges that were cleared, in A1 notation.
      * (If the requests were for an unbounded range or a ranger larger
@@ -450,14 +454,14 @@ declare module "gapi.client.sheets" {
     spreadsheetId?: string;
   }
 
-  declare interface sheets$BatchClearValuesRequest {
+  declare interface gapi$client$sheets$BatchClearValuesRequest {
     /**
      * The ranges to clear, in A1 notation.
      */
     ranges?: string[];
   }
 
-  declare interface sheets$BatchClearValuesResponse {
+  declare interface gapi$client$sheets$BatchClearValuesResponse {
     /**
      * The ranges that were cleared, in A1 notation.
      * (If the requests were for an unbounded range or a ranger larger
@@ -472,7 +476,7 @@ declare module "gapi.client.sheets" {
     spreadsheetId?: string;
   }
 
-  declare interface sheets$BatchGetValuesByDataFilterRequest {
+  declare interface gapi$client$sheets$BatchGetValuesByDataFilterRequest {
     /**
      * The data filters used to match the ranges of values to retrieve.  Ranges
      * that match any of the specified data filters will be included in the
@@ -506,7 +510,7 @@ declare module "gapi.client.sheets" {
     valueRenderOption?: string;
   }
 
-  declare interface sheets$BatchGetValuesByDataFilterResponse {
+  declare interface gapi$client$sheets$BatchGetValuesByDataFilterResponse {
     /**
      * The ID of the spreadsheet the data was retrieved from.
      */
@@ -518,7 +522,7 @@ declare module "gapi.client.sheets" {
     valueRanges?: sheets$MatchedValueRange[];
   }
 
-  declare interface sheets$BatchGetValuesResponse {
+  declare interface gapi$client$sheets$BatchGetValuesResponse {
     /**
      * The ID of the spreadsheet the data was retrieved from.
      */
@@ -531,7 +535,7 @@ declare module "gapi.client.sheets" {
     valueRanges?: sheets$ValueRange[];
   }
 
-  declare interface sheets$BatchUpdateSpreadsheetRequest {
+  declare interface gapi$client$sheets$BatchUpdateSpreadsheetRequest {
     /**
      * Determines if the update response should include the spreadsheet
      * resource.
@@ -559,7 +563,7 @@ declare module "gapi.client.sheets" {
     responseRanges?: string[];
   }
 
-  declare interface sheets$BatchUpdateSpreadsheetResponse {
+  declare interface gapi$client$sheets$BatchUpdateSpreadsheetResponse {
     /**
      * The reply of the updates.  This maps 1:1 with the updates, although
      * replies to some requests may be empty.
@@ -578,7 +582,7 @@ declare module "gapi.client.sheets" {
     updatedSpreadsheet?: sheets$Spreadsheet;
   }
 
-  declare interface sheets$BatchUpdateValuesByDataFilterRequest {
+  declare interface gapi$client$sheets$BatchUpdateValuesByDataFilterRequest {
     /**
      * The new values to apply to the spreadsheet.  If more than one range is
      * matched by the specified DataFilter the specified values will be
@@ -618,7 +622,7 @@ declare module "gapi.client.sheets" {
     valueInputOption?: string;
   }
 
-  declare interface sheets$BatchUpdateValuesByDataFilterResponse {
+  declare interface gapi$client$sheets$BatchUpdateValuesByDataFilterResponse {
     /**
      * The response for each range updated.
      */
@@ -652,7 +656,7 @@ declare module "gapi.client.sheets" {
     totalUpdatedSheets?: number;
   }
 
-  declare interface sheets$BatchUpdateValuesRequest {
+  declare interface gapi$client$sheets$BatchUpdateValuesRequest {
     /**
      * The new values to apply to the spreadsheet.
      */
@@ -690,7 +694,7 @@ declare module "gapi.client.sheets" {
     valueInputOption?: string;
   }
 
-  declare interface sheets$BatchUpdateValuesResponse {
+  declare interface gapi$client$sheets$BatchUpdateValuesResponse {
     /**
      * One UpdateValuesResponse per requested range, in the same order as
      * the requests appeared.
@@ -725,7 +729,7 @@ declare module "gapi.client.sheets" {
     totalUpdatedSheets?: number;
   }
 
-  declare interface sheets$BooleanCondition {
+  declare interface gapi$client$sheets$BooleanCondition {
     /**
      * The type of condition.
      */
@@ -740,12 +744,12 @@ declare module "gapi.client.sheets" {
     values?: sheets$ConditionValue[];
   }
 
-  declare interface sheets$BooleanRule {
+  declare interface gapi$client$sheets$BooleanRule {
     /**
      * The condition of the rule. If the condition evaluates to true,
      * the format will be applied.
      */
-    condition?: sheets$BooleanCondition;
+    condition?: gapi$client$sheets$BooleanCondition;
 
     /**
      * The format to apply.
@@ -758,7 +762,7 @@ declare module "gapi.client.sheets" {
     format?: sheets$CellFormat;
   }
 
-  declare interface sheets$Border {
+  declare interface gapi$client$sheets$Border {
     /**
      * The color of the border.
      */
@@ -776,29 +780,29 @@ declare module "gapi.client.sheets" {
     width?: number;
   }
 
-  declare interface sheets$Borders {
+  declare interface gapi$client$sheets$Borders {
     /**
      * The bottom border of the cell.
      */
-    bottom?: sheets$Border;
+    bottom?: gapi$client$sheets$Border;
 
     /**
      * The left border of the cell.
      */
-    left?: sheets$Border;
+    left?: gapi$client$sheets$Border;
 
     /**
      * The right border of the cell.
      */
-    right?: sheets$Border;
+    right?: gapi$client$sheets$Border;
 
     /**
      * The top border of the cell.
      */
-    top?: sheets$Border;
+    top?: gapi$client$sheets$Border;
   }
 
-  declare interface sheets$BubbleChartSpec {
+  declare interface gapi$client$sheets$BubbleChartSpec {
     /**
      * The bubble border color.
      */
@@ -867,7 +871,7 @@ declare module "gapi.client.sheets" {
     series?: sheets$ChartData;
   }
 
-  declare interface sheets$CandlestickChartSpec {
+  declare interface gapi$client$sheets$CandlestickChartSpec {
     /**
      * The Candlestick chart data.
      * Only one CandlestickData is supported.
@@ -882,7 +886,7 @@ declare module "gapi.client.sheets" {
     domain?: sheets$CandlestickDomain;
   }
 
-  declare interface sheets$CandlestickData {
+  declare interface gapi$client$sheets$CandlestickData {
     /**
      * The range data (vertical axis) for the close/final value for each candle.
      * This is the top of the candle body.  If greater than the open value the
@@ -910,7 +914,7 @@ declare module "gapi.client.sheets" {
     openSeries?: sheets$CandlestickSeries;
   }
 
-  declare interface sheets$CandlestickDomain {
+  declare interface gapi$client$sheets$CandlestickDomain {
     /**
      * The data of the CandlestickDomain.
      */
@@ -922,14 +926,14 @@ declare module "gapi.client.sheets" {
     reversed?: boolean;
   }
 
-  declare interface sheets$CandlestickSeries {
+  declare interface gapi$client$sheets$CandlestickSeries {
     /**
      * The data of the CandlestickSeries.
      */
     data?: sheets$ChartData;
   }
 
-  declare interface sheets$CellData {
+  declare interface gapi$client$sheets$CellData {
     /**
      * A data validation rule on the cell, if any.
      *
@@ -1012,7 +1016,7 @@ declare module "gapi.client.sheets" {
     userEnteredValue?: sheets$ExtendedValue;
   }
 
-  declare interface sheets$CellFormat {
+  declare interface gapi$client$sheets$CellFormat {
     /**
      * The background color of the cell.
      */
@@ -1021,7 +1025,7 @@ declare module "gapi.client.sheets" {
     /**
      * The borders of the cell.
      */
-    borders?: sheets$Borders;
+    borders?: gapi$client$sheets$Borders;
 
     /**
      * The horizontal alignment of the value in the cell.
@@ -1069,14 +1073,14 @@ declare module "gapi.client.sheets" {
     wrapStrategy?: string;
   }
 
-  declare interface sheets$ChartData {
+  declare interface gapi$client$sheets$ChartData {
     /**
      * The source ranges of the data.
      */
     sourceRange?: sheets$ChartSourceRange;
   }
 
-  declare interface sheets$ChartSourceRange {
+  declare interface gapi$client$sheets$ChartSourceRange {
     /**
      * The ranges of data for a series or domain.
      * Exactly one dimension must have a length of 1,
@@ -1099,7 +1103,7 @@ declare module "gapi.client.sheets" {
     sources?: sheets$GridRange[];
   }
 
-  declare interface sheets$ChartSpec {
+  declare interface gapi$client$sheets$ChartSpec {
     /**
      * The alternative text that describes the chart.  This is often used
      * for accessibility.
@@ -1117,17 +1121,17 @@ declare module "gapi.client.sheets" {
      * See BasicChartType for the list of all
      * charts this supports.
      */
-    basicChart?: sheets$BasicChartSpec;
+    basicChart?: gapi$client$sheets$BasicChartSpec;
 
     /**
      * A bubble chart specification.
      */
-    bubbleChart?: sheets$BubbleChartSpec;
+    bubbleChart?: gapi$client$sheets$BubbleChartSpec;
 
     /**
      * A candlestick chart specification.
      */
-    candlestickChart?: sheets$CandlestickChartSpec;
+    candlestickChart?: gapi$client$sheets$CandlestickChartSpec;
 
     /**
      * The name of the font to use by default for all chart text (e.g. title,
@@ -1198,14 +1202,14 @@ declare module "gapi.client.sheets" {
     titleTextPosition?: sheets$TextPosition;
   }
 
-  declare interface sheets$ClearBasicFilterRequest {
+  declare interface gapi$client$sheets$ClearBasicFilterRequest {
     /**
      * The sheet ID on which the basic filter should be cleared.
      */
     sheetId?: number;
   }
 
-  declare interface sheets$ClearValuesResponse {
+  declare interface gapi$client$sheets$ClearValuesResponse {
     /**
      * The range (in A1 notation) that was cleared.
      * (If the request was for an unbounded range or a ranger larger
@@ -1220,7 +1224,7 @@ declare module "gapi.client.sheets" {
     spreadsheetId?: string;
   }
 
-  declare interface sheets$Color {
+  declare interface gapi$client$sheets$Color {
     /**
      * The fraction of this color that should be applied to the pixel. That is,
      * the final pixel color is defined by the equation:
@@ -1252,7 +1256,7 @@ declare module "gapi.client.sheets" {
     red?: number;
   }
 
-  declare interface sheets$ConditionValue {
+  declare interface gapi$client$sheets$ConditionValue {
     /**
      * A relative date (based on the current date).
      * Valid only if the type is
@@ -1275,11 +1279,11 @@ declare module "gapi.client.sheets" {
     userEnteredValue?: string;
   }
 
-  declare interface sheets$ConditionalFormatRule {
+  declare interface gapi$client$sheets$ConditionalFormatRule {
     /**
      * The formatting is either "on" or "off" according to the rule.
      */
-    booleanRule?: sheets$BooleanRule;
+    booleanRule?: gapi$client$sheets$BooleanRule;
 
     /**
      * The formatting will vary based on the gradients in the rule.
@@ -1293,7 +1297,7 @@ declare module "gapi.client.sheets" {
     ranges?: sheets$GridRange[];
   }
 
-  declare interface sheets$CopyPasteRequest {
+  declare interface gapi$client$sheets$CopyPasteRequest {
     /**
      * The location to paste to. If the range covers a span that's
      * a multiple of the source's height or width, then the
@@ -1319,28 +1323,28 @@ declare module "gapi.client.sheets" {
     source?: sheets$GridRange;
   }
 
-  declare interface sheets$CopySheetToAnotherSpreadsheetRequest {
+  declare interface gapi$client$sheets$CopySheetToAnotherSpreadsheetRequest {
     /**
      * The ID of the spreadsheet to copy the sheet to.
      */
     destinationSpreadsheetId?: string;
   }
 
-  declare interface sheets$CreateDeveloperMetadataRequest {
+  declare interface gapi$client$sheets$CreateDeveloperMetadataRequest {
     /**
      * The developer metadata to create.
      */
     developerMetadata?: sheets$DeveloperMetadata;
   }
 
-  declare interface sheets$CreateDeveloperMetadataResponse {
+  declare interface gapi$client$sheets$CreateDeveloperMetadataResponse {
     /**
      * The developer metadata that was created.
      */
     developerMetadata?: sheets$DeveloperMetadata;
   }
 
-  declare interface sheets$CutPasteRequest {
+  declare interface gapi$client$sheets$CutPasteRequest {
     /**
      * The top-left coordinate where the data should be pasted.
      */
@@ -1358,7 +1362,7 @@ declare module "gapi.client.sheets" {
     source?: sheets$GridRange;
   }
 
-  declare interface sheets$DataFilter {
+  declare interface gapi$client$sheets$DataFilter {
     /**
      * Selects data that matches the specified A1 range.
      */
@@ -1376,11 +1380,11 @@ declare module "gapi.client.sheets" {
     gridRange?: sheets$GridRange;
   }
 
-  declare interface sheets$DataFilterValueRange {
+  declare interface gapi$client$sheets$DataFilterValueRange {
     /**
      * The data filter describing the location of the values in the spreadsheet.
      */
-    dataFilter?: sheets$DataFilter;
+    dataFilter?: gapi$client$sheets$DataFilter;
 
     /**
      * The major dimension of the values.
@@ -1396,11 +1400,11 @@ declare module "gapi.client.sheets" {
     values?: any[][];
   }
 
-  declare interface sheets$DataValidationRule {
+  declare interface gapi$client$sheets$DataValidationRule {
     /**
      * The condition that data in the cell must match.
      */
-    condition?: sheets$BooleanCondition;
+    condition?: gapi$client$sheets$BooleanCondition;
 
     /**
      * A message to show the user when adding data to the cell.
@@ -1419,14 +1423,14 @@ declare module "gapi.client.sheets" {
     strict?: boolean;
   }
 
-  declare interface sheets$DeleteBandingRequest {
+  declare interface gapi$client$sheets$DeleteBandingRequest {
     /**
      * The ID of the banded range to delete.
      */
     bandedRangeId?: number;
   }
 
-  declare interface sheets$DeleteConditionalFormatRuleRequest {
+  declare interface gapi$client$sheets$DeleteConditionalFormatRuleRequest {
     /**
      * The zero-based index of the rule to be deleted.
      */
@@ -1438,64 +1442,64 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$DeleteConditionalFormatRuleResponse {
+  declare interface gapi$client$sheets$DeleteConditionalFormatRuleResponse {
     /**
      * The rule that was deleted.
      */
-    rule?: sheets$ConditionalFormatRule;
+    rule?: gapi$client$sheets$ConditionalFormatRule;
   }
 
-  declare interface sheets$DeleteDeveloperMetadataRequest {
+  declare interface gapi$client$sheets$DeleteDeveloperMetadataRequest {
     /**
      * The data filter describing the criteria used to select which developer
      * metadata entry to delete.
      */
-    dataFilter?: sheets$DataFilter;
+    dataFilter?: gapi$client$sheets$DataFilter;
   }
 
-  declare interface sheets$DeleteDeveloperMetadataResponse {
+  declare interface gapi$client$sheets$DeleteDeveloperMetadataResponse {
     /**
      * The metadata that was deleted.
      */
     deletedDeveloperMetadata?: sheets$DeveloperMetadata[];
   }
 
-  declare interface sheets$DeleteDimensionRequest {
+  declare interface gapi$client$sheets$DeleteDimensionRequest {
     /**
      * The dimensions to delete from the sheet.
      */
     range?: sheets$DimensionRange;
   }
 
-  declare interface sheets$DeleteEmbeddedObjectRequest {
+  declare interface gapi$client$sheets$DeleteEmbeddedObjectRequest {
     /**
      * The ID of the embedded object to delete.
      */
     objectId?: number;
   }
 
-  declare interface sheets$DeleteFilterViewRequest {
+  declare interface gapi$client$sheets$DeleteFilterViewRequest {
     /**
      * The ID of the filter to delete.
      */
     filterId?: number;
   }
 
-  declare interface sheets$DeleteNamedRangeRequest {
+  declare interface gapi$client$sheets$DeleteNamedRangeRequest {
     /**
      * The ID of the named range to delete.
      */
     namedRangeId?: string;
   }
 
-  declare interface sheets$DeleteProtectedRangeRequest {
+  declare interface gapi$client$sheets$DeleteProtectedRangeRequest {
     /**
      * The ID of the protected range to delete.
      */
     protectedRangeId?: number;
   }
 
-  declare interface sheets$DeleteRangeRequest {
+  declare interface gapi$client$sheets$DeleteRangeRequest {
     /**
      * The range of cells to delete.
      */
@@ -1510,14 +1514,14 @@ declare module "gapi.client.sheets" {
     shiftDimension?: string;
   }
 
-  declare interface sheets$DeleteSheetRequest {
+  declare interface gapi$client$sheets$DeleteSheetRequest {
     /**
      * The ID of the sheet to delete.
      */
     sheetId?: number;
   }
 
-  declare interface sheets$DeveloperMetadata {
+  declare interface gapi$client$sheets$DeveloperMetadata {
     /**
      * The location where the metadata is associated.
      */
@@ -1548,7 +1552,7 @@ declare module "gapi.client.sheets" {
     visibility?: string;
   }
 
-  declare interface sheets$DeveloperMetadataLocation {
+  declare interface gapi$client$sheets$DeveloperMetadataLocation {
     /**
      * Represents the row or column when metadata is associated with
      * a dimension. The specified DimensionRange must represent a single row
@@ -1572,7 +1576,7 @@ declare module "gapi.client.sheets" {
     spreadsheet?: boolean;
   }
 
-  declare interface sheets$DeveloperMetadataLookup {
+  declare interface gapi$client$sheets$DeveloperMetadataLookup {
     /**
      * Determines how this lookup matches the location.  If this field is
      * specified as EXACT, only developer metadata associated on the exact
@@ -1620,7 +1624,7 @@ declare module "gapi.client.sheets" {
      * intersecting locations according the specified
      * locationMatchingStrategy.
      */
-    metadataLocation?: sheets$DeveloperMetadataLocation;
+    metadataLocation?: gapi$client$sheets$DeveloperMetadataLocation;
 
     /**
      * Limits the selected developer metadata to that which has a matching
@@ -1636,11 +1640,11 @@ declare module "gapi.client.sheets" {
     visibility?: string;
   }
 
-  declare interface sheets$DimensionProperties {
+  declare interface gapi$client$sheets$DimensionProperties {
     /**
      * The developer metadata associated with a single row or column.
      */
-    developerMetadata?: sheets$DeveloperMetadata[];
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata[];
 
     /**
      * True if this dimension is being filtered.
@@ -1659,7 +1663,7 @@ declare module "gapi.client.sheets" {
     pixelSize?: number;
   }
 
-  declare interface sheets$DimensionRange {
+  declare interface gapi$client$sheets$DimensionRange {
     /**
      * The dimension of the span.
      */
@@ -1681,21 +1685,21 @@ declare module "gapi.client.sheets" {
     startIndex?: number;
   }
 
-  declare interface sheets$DuplicateFilterViewRequest {
+  declare interface gapi$client$sheets$DuplicateFilterViewRequest {
     /**
      * The ID of the filter being duplicated.
      */
     filterId?: number;
   }
 
-  declare interface sheets$DuplicateFilterViewResponse {
+  declare interface gapi$client$sheets$DuplicateFilterViewResponse {
     /**
      * The newly created filter.
      */
     filter?: sheets$FilterView;
   }
 
-  declare interface sheets$DuplicateSheetRequest {
+  declare interface gapi$client$sheets$DuplicateSheetRequest {
     /**
      * The zero-based index where the new sheet should be inserted.
      * The index of all sheets after this are incremented.
@@ -1720,14 +1724,14 @@ declare module "gapi.client.sheets" {
     sourceSheetId?: number;
   }
 
-  declare interface sheets$DuplicateSheetResponse {
+  declare interface gapi$client$sheets$DuplicateSheetResponse {
     /**
      * The properties of the duplicate sheet.
      */
     properties?: sheets$SheetProperties;
   }
 
-  declare interface sheets$Editors {
+  declare interface gapi$client$sheets$Editors {
     /**
      * True if anyone in the document's domain has edit access to the protected
      * range.  Domain protection is only supported on documents within a domain.
@@ -1745,7 +1749,7 @@ declare module "gapi.client.sheets" {
     users?: string[];
   }
 
-  declare interface sheets$EmbeddedChart {
+  declare interface gapi$client$sheets$EmbeddedChart {
     /**
      * The ID of the chart.
      */
@@ -1759,10 +1763,10 @@ declare module "gapi.client.sheets" {
     /**
      * The specification of the chart.
      */
-    spec?: sheets$ChartSpec;
+    spec?: gapi$client$sheets$ChartSpec;
   }
 
-  declare interface sheets$EmbeddedObjectPosition {
+  declare interface gapi$client$sheets$EmbeddedObjectPosition {
     /**
      * If true, the embedded object will be put on a new sheet whose ID
      * is chosen for you. Used only when writing.
@@ -1781,7 +1785,7 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$ErrorValue {
+  declare interface gapi$client$sheets$ErrorValue {
     /**
      * A message with more information about the error
      * (in the spreadsheet's locale).
@@ -1794,7 +1798,7 @@ declare module "gapi.client.sheets" {
     type?: string;
   }
 
-  declare interface sheets$ExtendedValue {
+  declare interface gapi$client$sheets$ExtendedValue {
     /**
      * Represents a boolean value.
      */
@@ -1804,7 +1808,7 @@ declare module "gapi.client.sheets" {
      * Represents an error.
      * This field is read-only.
      */
-    errorValue?: sheets$ErrorValue;
+    errorValue?: gapi$client$sheets$ErrorValue;
 
     /**
      * Represents a formula.
@@ -1827,13 +1831,13 @@ declare module "gapi.client.sheets" {
     stringValue?: string;
   }
 
-  declare interface sheets$FilterCriteria {
+  declare interface gapi$client$sheets$FilterCriteria {
     /**
      * A condition that must be true for values to be shown.
      * (This does not override hiddenValues -- if a value is listed there,
      * it will still be hidden.)
      */
-    condition?: sheets$BooleanCondition;
+    condition?: gapi$client$sheets$BooleanCondition;
 
     /**
      * Values that should be hidden.
@@ -1841,13 +1845,13 @@ declare module "gapi.client.sheets" {
     hiddenValues?: string[];
   }
 
-  declare interface sheets$FilterView {
+  declare interface gapi$client$sheets$FilterView {
     /**
      * The criteria for showing/hiding values per column.
      * The map's key is the column index, and the value is the criteria for
      * that column.
      */
-    criteria?: Record<string, sheets$FilterCriteria>;
+    criteria?: Record<string, gapi$client$sheets$FilterCriteria>;
 
     /**
      * The ID of the filter view.
@@ -1882,7 +1886,7 @@ declare module "gapi.client.sheets" {
     title?: string;
   }
 
-  declare interface sheets$FindReplaceRequest {
+  declare interface gapi$client$sheets$FindReplaceRequest {
     /**
      * True to find/replace over all sheets.
      */
@@ -1937,7 +1941,7 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$FindReplaceResponse {
+  declare interface gapi$client$sheets$FindReplaceResponse {
     /**
      * The number of formula cells changed.
      */
@@ -1966,12 +1970,12 @@ declare module "gapi.client.sheets" {
     valuesChanged?: number;
   }
 
-  declare interface sheets$GetSpreadsheetByDataFilterRequest {
+  declare interface gapi$client$sheets$GetSpreadsheetByDataFilterRequest {
     /**
      * The DataFilters used to select which ranges to retrieve from
      * the spreadsheet.
      */
-    dataFilters?: sheets$DataFilter[];
+    dataFilters?: gapi$client$sheets$DataFilter[];
 
     /**
      * True if grid data should be returned.
@@ -1980,7 +1984,7 @@ declare module "gapi.client.sheets" {
     includeGridData?: boolean;
   }
 
-  declare interface sheets$GradientRule {
+  declare interface gapi$client$sheets$GradientRule {
     /**
      * The final interpolation point.
      */
@@ -1997,7 +2001,7 @@ declare module "gapi.client.sheets" {
     minpoint?: sheets$InterpolationPoint;
   }
 
-  declare interface sheets$GridCoordinate {
+  declare interface gapi$client$sheets$GridCoordinate {
     /**
      * The column index of the coordinate.
      */
@@ -2014,12 +2018,12 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$GridData {
+  declare interface gapi$client$sheets$GridData {
     /**
      * Metadata about the requested columns in the grid, starting with the column
      * in start_column.
      */
-    columnMetadata?: sheets$DimensionProperties[];
+    columnMetadata?: gapi$client$sheets$DimensionProperties[];
 
     /**
      * The data in the grid, one entry per row,
@@ -2033,7 +2037,7 @@ declare module "gapi.client.sheets" {
      * Metadata about the requested rows in the grid, starting with the row
      * in start_row.
      */
-    rowMetadata?: sheets$DimensionProperties[];
+    rowMetadata?: gapi$client$sheets$DimensionProperties[];
 
     /**
      * The first column this GridData refers to, zero-based.
@@ -2046,7 +2050,7 @@ declare module "gapi.client.sheets" {
     startRow?: number;
   }
 
-  declare interface sheets$GridProperties {
+  declare interface gapi$client$sheets$GridProperties {
     /**
      * The number of columns in the grid.
      */
@@ -2073,7 +2077,7 @@ declare module "gapi.client.sheets" {
     rowCount?: number;
   }
 
-  declare interface sheets$GridRange {
+  declare interface gapi$client$sheets$GridRange {
     /**
      * The end column (exclusive) of the range, or not set if unbounded.
      */
@@ -2100,7 +2104,7 @@ declare module "gapi.client.sheets" {
     startRowIndex?: number;
   }
 
-  declare interface sheets$HistogramChartSpec {
+  declare interface gapi$client$sheets$HistogramChartSpec {
     /**
      * By default the bucket size (the range of values stacked in a single
      * column) is chosen automatically, but it may be overridden here.
@@ -2139,20 +2143,20 @@ declare module "gapi.client.sheets" {
     showItemDividers?: boolean;
   }
 
-  declare interface sheets$HistogramSeries {
+  declare interface gapi$client$sheets$HistogramSeries {
     /**
      * The color of the column representing this series in each bucket.
      * This field is optional.
      */
-    barColor?: sheets$Color;
+    barColor?: gapi$client$sheets$Color;
 
     /**
      * The data for this histogram series.
      */
-    data?: sheets$ChartData;
+    data?: gapi$client$sheets$ChartData;
   }
 
-  declare interface sheets$InsertDimensionRequest {
+  declare interface gapi$client$sheets$InsertDimensionRequest {
     /**
      * Whether dimension properties should be extended from the dimensions
      * before or after the newly inserted dimensions.
@@ -2172,14 +2176,14 @@ declare module "gapi.client.sheets" {
     /**
      * The dimensions to insert.  Both the start and end indexes must be bounded.
      */
-    range?: sheets$DimensionRange;
+    range?: gapi$client$sheets$DimensionRange;
   }
 
-  declare interface sheets$InsertRangeRequest {
+  declare interface gapi$client$sheets$InsertRangeRequest {
     /**
      * The range to insert new cells into.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * The dimension which will be shifted when inserting cells.
@@ -2189,11 +2193,11 @@ declare module "gapi.client.sheets" {
     shiftDimension?: string;
   }
 
-  declare interface sheets$InterpolationPoint {
+  declare interface gapi$client$sheets$InterpolationPoint {
     /**
      * The color this interpolation point should use.
      */
-    color?: sheets$Color;
+    color?: gapi$client$sheets$Color;
 
     /**
      * How the value should be interpreted.
@@ -2208,7 +2212,7 @@ declare module "gapi.client.sheets" {
     value?: string;
   }
 
-  declare interface sheets$IterativeCalculationSettings {
+  declare interface gapi$client$sheets$IterativeCalculationSettings {
     /**
      * When iterative calculation is enabled and successive results differ by
      * less than this threshold value, the calculation rounds stop.
@@ -2222,24 +2226,24 @@ declare module "gapi.client.sheets" {
     maxIterations?: number;
   }
 
-  declare interface sheets$MatchedDeveloperMetadata {
+  declare interface gapi$client$sheets$MatchedDeveloperMetadata {
     /**
      * All filters matching the returned developer metadata.
      */
-    dataFilters?: sheets$DataFilter[];
+    dataFilters?: gapi$client$sheets$DataFilter[];
 
     /**
      * The developer metadata matching the specified filters.
      */
-    developerMetadata?: sheets$DeveloperMetadata;
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata;
   }
 
-  declare interface sheets$MatchedValueRange {
+  declare interface gapi$client$sheets$MatchedValueRange {
     /**
      * The DataFilters from the request that matched the range of
      * values.
      */
-    dataFilters?: sheets$DataFilter[];
+    dataFilters?: gapi$client$sheets$DataFilter[];
 
     /**
      * The values matched by the DataFilter.
@@ -2247,7 +2251,7 @@ declare module "gapi.client.sheets" {
     valueRange?: sheets$ValueRange;
   }
 
-  declare interface sheets$MergeCellsRequest {
+  declare interface gapi$client$sheets$MergeCellsRequest {
     /**
      * How the cells should be merged.
      */
@@ -2256,10 +2260,10 @@ declare module "gapi.client.sheets" {
     /**
      * The range of cells to merge.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$MoveDimensionRequest {
+  declare interface gapi$client$sheets$MoveDimensionRequest {
     /**
      * The zero-based start index of where to move the source data to,
      * based on the coordinates &#42;before&#42; the source data is removed
@@ -2279,10 +2283,10 @@ declare module "gapi.client.sheets" {
     /**
      * The source dimensions to move.
      */
-    source?: sheets$DimensionRange;
+    source?: gapi$client$sheets$DimensionRange;
   }
 
-  declare interface sheets$NamedRange {
+  declare interface gapi$client$sheets$NamedRange {
     /**
      * The name of the named range.
      */
@@ -2296,10 +2300,10 @@ declare module "gapi.client.sheets" {
     /**
      * The range this represents.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$NumberFormat {
+  declare interface gapi$client$sheets$NumberFormat {
     /**
      * Pattern string used for formatting.  If not set, a default pattern based on
      * the user's locale will be used if necessary for the given type.
@@ -2315,17 +2319,17 @@ declare module "gapi.client.sheets" {
     type?: string;
   }
 
-  declare interface sheets$OrgChartSpec {
+  declare interface gapi$client$sheets$OrgChartSpec {
     /**
      * The data containing the labels for all the nodes in the chart.  Labels
      * must be unique.
      */
-    labels?: sheets$ChartData;
+    labels?: gapi$client$sheets$ChartData;
 
     /**
      * The color of the org chart nodes.
      */
-    nodeColor?: sheets$Color;
+    nodeColor?: gapi$client$sheets$Color;
 
     /**
      * The size of the org chart nodes.
@@ -2338,26 +2342,26 @@ declare module "gapi.client.sheets" {
      * node.
      * This field is optional.
      */
-    parentLabels?: sheets$ChartData;
+    parentLabels?: gapi$client$sheets$ChartData;
 
     /**
      * The color of the selected org chart nodes.
      */
-    selectedNodeColor?: sheets$Color;
+    selectedNodeColor?: gapi$client$sheets$Color;
 
     /**
      * The data containing the tooltip for the corresponding node.  A blank value
      * results in no tooltip being displayed for the node.
      * This field is optional.
      */
-    tooltips?: sheets$ChartData;
+    tooltips?: gapi$client$sheets$ChartData;
   }
 
-  declare interface sheets$OverlayPosition {
+  declare interface gapi$client$sheets$OverlayPosition {
     /**
      * The cell the object is anchored to.
      */
-    anchorCell?: sheets$GridCoordinate;
+    anchorCell?: gapi$client$sheets$GridCoordinate;
 
     /**
      * The height of the object, in pixels. Defaults to 371.
@@ -2382,7 +2386,7 @@ declare module "gapi.client.sheets" {
     widthPixels?: number;
   }
 
-  declare interface sheets$Padding {
+  declare interface gapi$client$sheets$Padding {
     /**
      * The bottom padding of the cell.
      */
@@ -2404,11 +2408,11 @@ declare module "gapi.client.sheets" {
     top?: number;
   }
 
-  declare interface sheets$PasteDataRequest {
+  declare interface gapi$client$sheets$PasteDataRequest {
     /**
      * The coordinate at which the data should start being inserted.
      */
-    coordinate?: sheets$GridCoordinate;
+    coordinate?: gapi$client$sheets$GridCoordinate;
 
     /**
      * The data to insert.
@@ -2431,11 +2435,11 @@ declare module "gapi.client.sheets" {
     type?: string;
   }
 
-  declare interface sheets$PieChartSpec {
+  declare interface gapi$client$sheets$PieChartSpec {
     /**
      * The data that covers the domain of the pie chart.
      */
-    domain?: sheets$ChartData;
+    domain?: gapi$client$sheets$ChartData;
 
     /**
      * Where the legend of the pie chart should be drawn.
@@ -2450,7 +2454,7 @@ declare module "gapi.client.sheets" {
     /**
      * The data that covers the one and only series of the pie chart.
      */
-    series?: sheets$ChartData;
+    series?: gapi$client$sheets$ChartData;
 
     /**
      * True if the pie is three dimensional.
@@ -2458,14 +2462,14 @@ declare module "gapi.client.sheets" {
     threeDimensional?: boolean;
   }
 
-  declare interface sheets$PivotFilterCriteria {
+  declare interface gapi$client$sheets$PivotFilterCriteria {
     /**
      * Values that should be included.  Values not listed here are excluded.
      */
     visibleValues?: string[];
   }
 
-  declare interface sheets$PivotGroup {
+  declare interface gapi$client$sheets$PivotGroup {
     /**
      * True if the pivot table should include the totals for this grouping.
      */
@@ -2497,7 +2501,7 @@ declare module "gapi.client.sheets" {
     valueMetadata?: sheets$PivotGroupValueMetadata[];
   }
 
-  declare interface sheets$PivotGroupSortValueBucket {
+  declare interface gapi$client$sheets$PivotGroupSortValueBucket {
     /**
      * Determines the bucket from which values are chosen to sort.
      *
@@ -2509,7 +2513,7 @@ declare module "gapi.client.sheets" {
      * to the "Grand Total" over the column groups. If a single value is listed,
      * this would correspond to using the "Total" of that bucket.
      */
-    buckets?: sheets$ExtendedValue[];
+    buckets?: gapi$client$sheets$ExtendedValue[];
 
     /**
      * The offset in the PivotTable.values list which the values in this
@@ -2518,7 +2522,7 @@ declare module "gapi.client.sheets" {
     valuesIndex?: number;
   }
 
-  declare interface sheets$PivotGroupValueMetadata {
+  declare interface gapi$client$sheets$PivotGroupValueMetadata {
     /**
      * True if the data corresponding to the value is collapsed.
      */
@@ -2529,14 +2533,14 @@ declare module "gapi.client.sheets" {
      * (Note that formulaValue is not valid,
      * because the values will be calculated.)
      */
-    value?: sheets$ExtendedValue;
+    value?: gapi$client$sheets$ExtendedValue;
   }
 
-  declare interface sheets$PivotTable {
+  declare interface gapi$client$sheets$PivotTable {
     /**
      * Each column grouping in the pivot table.
      */
-    columns?: sheets$PivotGroup[];
+    columns?: gapi$client$sheets$PivotGroup[];
 
     /**
      * An optional mapping of filters per source column offset.
@@ -2548,17 +2552,17 @@ declare module "gapi.client.sheets" {
      * For example, if the source was `C10:E15`, a key of `0` will have the filter
      * for column `C`, whereas the key `1` is for column `D`.
      */
-    criteria?: Record<string, sheets$PivotFilterCriteria>;
+    criteria?: Record<string, gapi$client$sheets$PivotFilterCriteria>;
 
     /**
      * Each row grouping in the pivot table.
      */
-    rows?: sheets$PivotGroup[];
+    rows?: gapi$client$sheets$PivotGroup[];
 
     /**
      * The range the pivot table is reading data from.
      */
-    source?: sheets$GridRange;
+    source?: gapi$client$sheets$GridRange;
 
     /**
      * Whether values should be listed horizontally (as columns)
@@ -2572,7 +2576,7 @@ declare module "gapi.client.sheets" {
     values?: sheets$PivotValue[];
   }
 
-  declare interface sheets$PivotValue {
+  declare interface gapi$client$sheets$PivotValue {
     /**
      * A custom formula to calculate the value.  The formula must start
      * with an `=` character.
@@ -2605,7 +2609,7 @@ declare module "gapi.client.sheets" {
     summarizeFunction?: string;
   }
 
-  declare interface sheets$ProtectedRange {
+  declare interface gapi$client$sheets$ProtectedRange {
     /**
      * The description of this protected range.
      */
@@ -2617,7 +2621,7 @@ declare module "gapi.client.sheets" {
      * range and the document.
      * Editors are not supported with warning_only protection.
      */
-    editors?: sheets$Editors;
+    editors?: gapi$client$sheets$Editors;
 
     /**
      * The named range this protected range is backed by, if any.
@@ -2641,7 +2645,7 @@ declare module "gapi.client.sheets" {
      * When writing, only one of range or named_range_id
      * may be set.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * True if the user who requested this protected range can edit the
@@ -2654,7 +2658,7 @@ declare module "gapi.client.sheets" {
      * The list of unprotected ranges within a protected sheet.
      * Unprotected ranges are only supported on protected sheets.
      */
-    unprotectedRanges?: sheets$GridRange[];
+    unprotectedRanges?: gapi$client$sheets$GridRange[];
 
     /**
      * True if this protected range will show a warning when editing.
@@ -2670,18 +2674,18 @@ declare module "gapi.client.sheets" {
     warningOnly?: boolean;
   }
 
-  declare interface sheets$RandomizeRangeRequest {
+  declare interface gapi$client$sheets$RandomizeRangeRequest {
     /**
      * The range to randomize.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$RepeatCellRequest {
+  declare interface gapi$client$sheets$RepeatCellRequest {
     /**
      * The data to write.
      */
-    cell?: sheets$CellData;
+    cell?: gapi$client$sheets$CellData;
 
     /**
      * The fields that should be updated.  At least one field must be specified.
@@ -2693,185 +2697,185 @@ declare module "gapi.client.sheets" {
     /**
      * The range to repeat the cell in.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$Request {
+  declare interface gapi$client$sheets$Request {
     /**
      * Adds a new banded range
      */
-    addBanding?: sheets$AddBandingRequest;
+    addBanding?: gapi$client$sheets$AddBandingRequest;
 
     /**
      * Adds a chart.
      */
-    addChart?: sheets$AddChartRequest;
+    addChart?: gapi$client$sheets$AddChartRequest;
 
     /**
      * Adds a new conditional format rule.
      */
-    addConditionalFormatRule?: sheets$AddConditionalFormatRuleRequest;
+    addConditionalFormatRule?: gapi$client$sheets$AddConditionalFormatRuleRequest;
 
     /**
      * Adds a filter view.
      */
-    addFilterView?: sheets$AddFilterViewRequest;
+    addFilterView?: gapi$client$sheets$AddFilterViewRequest;
 
     /**
      * Adds a named range.
      */
-    addNamedRange?: sheets$AddNamedRangeRequest;
+    addNamedRange?: gapi$client$sheets$AddNamedRangeRequest;
 
     /**
      * Adds a protected range.
      */
-    addProtectedRange?: sheets$AddProtectedRangeRequest;
+    addProtectedRange?: gapi$client$sheets$AddProtectedRangeRequest;
 
     /**
      * Adds a sheet.
      */
-    addSheet?: sheets$AddSheetRequest;
+    addSheet?: gapi$client$sheets$AddSheetRequest;
 
     /**
      * Appends cells after the last row with data in a sheet.
      */
-    appendCells?: sheets$AppendCellsRequest;
+    appendCells?: gapi$client$sheets$AppendCellsRequest;
 
     /**
      * Appends dimensions to the end of a sheet.
      */
-    appendDimension?: sheets$AppendDimensionRequest;
+    appendDimension?: gapi$client$sheets$AppendDimensionRequest;
 
     /**
      * Automatically fills in more data based on existing data.
      */
-    autoFill?: sheets$AutoFillRequest;
+    autoFill?: gapi$client$sheets$AutoFillRequest;
 
     /**
      * Automatically resizes one or more dimensions based on the contents
      * of the cells in that dimension.
      */
-    autoResizeDimensions?: sheets$AutoResizeDimensionsRequest;
+    autoResizeDimensions?: gapi$client$sheets$AutoResizeDimensionsRequest;
 
     /**
      * Clears the basic filter on a sheet.
      */
-    clearBasicFilter?: sheets$ClearBasicFilterRequest;
+    clearBasicFilter?: gapi$client$sheets$ClearBasicFilterRequest;
 
     /**
      * Copies data from one area and pastes it to another.
      */
-    copyPaste?: sheets$CopyPasteRequest;
+    copyPaste?: gapi$client$sheets$CopyPasteRequest;
 
     /**
      * Creates new developer metadata
      */
-    createDeveloperMetadata?: sheets$CreateDeveloperMetadataRequest;
+    createDeveloperMetadata?: gapi$client$sheets$CreateDeveloperMetadataRequest;
 
     /**
      * Cuts data from one area and pastes it to another.
      */
-    cutPaste?: sheets$CutPasteRequest;
+    cutPaste?: gapi$client$sheets$CutPasteRequest;
 
     /**
      * Removes a banded range
      */
-    deleteBanding?: sheets$DeleteBandingRequest;
+    deleteBanding?: gapi$client$sheets$DeleteBandingRequest;
 
     /**
      * Deletes an existing conditional format rule.
      */
-    deleteConditionalFormatRule?: sheets$DeleteConditionalFormatRuleRequest;
+    deleteConditionalFormatRule?: gapi$client$sheets$DeleteConditionalFormatRuleRequest;
 
     /**
      * Deletes developer metadata
      */
-    deleteDeveloperMetadata?: sheets$DeleteDeveloperMetadataRequest;
+    deleteDeveloperMetadata?: gapi$client$sheets$DeleteDeveloperMetadataRequest;
 
     /**
      * Deletes rows or columns in a sheet.
      */
-    deleteDimension?: sheets$DeleteDimensionRequest;
+    deleteDimension?: gapi$client$sheets$DeleteDimensionRequest;
 
     /**
      * Deletes an embedded object (e.g, chart, image) in a sheet.
      */
-    deleteEmbeddedObject?: sheets$DeleteEmbeddedObjectRequest;
+    deleteEmbeddedObject?: gapi$client$sheets$DeleteEmbeddedObjectRequest;
 
     /**
      * Deletes a filter view from a sheet.
      */
-    deleteFilterView?: sheets$DeleteFilterViewRequest;
+    deleteFilterView?: gapi$client$sheets$DeleteFilterViewRequest;
 
     /**
      * Deletes a named range.
      */
-    deleteNamedRange?: sheets$DeleteNamedRangeRequest;
+    deleteNamedRange?: gapi$client$sheets$DeleteNamedRangeRequest;
 
     /**
      * Deletes a protected range.
      */
-    deleteProtectedRange?: sheets$DeleteProtectedRangeRequest;
+    deleteProtectedRange?: gapi$client$sheets$DeleteProtectedRangeRequest;
 
     /**
      * Deletes a range of cells from a sheet, shifting the remaining cells.
      */
-    deleteRange?: sheets$DeleteRangeRequest;
+    deleteRange?: gapi$client$sheets$DeleteRangeRequest;
 
     /**
      * Deletes a sheet.
      */
-    deleteSheet?: sheets$DeleteSheetRequest;
+    deleteSheet?: gapi$client$sheets$DeleteSheetRequest;
 
     /**
      * Duplicates a filter view.
      */
-    duplicateFilterView?: sheets$DuplicateFilterViewRequest;
+    duplicateFilterView?: gapi$client$sheets$DuplicateFilterViewRequest;
 
     /**
      * Duplicates a sheet.
      */
-    duplicateSheet?: sheets$DuplicateSheetRequest;
+    duplicateSheet?: gapi$client$sheets$DuplicateSheetRequest;
 
     /**
      * Finds and replaces occurrences of some text with other text.
      */
-    findReplace?: sheets$FindReplaceRequest;
+    findReplace?: gapi$client$sheets$FindReplaceRequest;
 
     /**
      * Inserts new rows or columns in a sheet.
      */
-    insertDimension?: sheets$InsertDimensionRequest;
+    insertDimension?: gapi$client$sheets$InsertDimensionRequest;
 
     /**
      * Inserts new cells in a sheet, shifting the existing cells.
      */
-    insertRange?: sheets$InsertRangeRequest;
+    insertRange?: gapi$client$sheets$InsertRangeRequest;
 
     /**
      * Merges cells together.
      */
-    mergeCells?: sheets$MergeCellsRequest;
+    mergeCells?: gapi$client$sheets$MergeCellsRequest;
 
     /**
      * Moves rows or columns to another location in a sheet.
      */
-    moveDimension?: sheets$MoveDimensionRequest;
+    moveDimension?: gapi$client$sheets$MoveDimensionRequest;
 
     /**
      * Pastes data (HTML or delimited) into a sheet.
      */
-    pasteData?: sheets$PasteDataRequest;
+    pasteData?: gapi$client$sheets$PasteDataRequest;
 
     /**
      * Randomizes the order of the rows in a range.
      */
-    randomizeRange?: sheets$RandomizeRangeRequest;
+    randomizeRange?: gapi$client$sheets$RandomizeRangeRequest;
 
     /**
      * Repeats a single cell across a range.
      */
-    repeatCell?: sheets$RepeatCellRequest;
+    repeatCell?: gapi$client$sheets$RepeatCellRequest;
 
     /**
      * Sets the basic filter on a sheet.
@@ -2964,66 +2968,66 @@ declare module "gapi.client.sheets" {
     updateSpreadsheetProperties?: sheets$UpdateSpreadsheetPropertiesRequest;
   }
 
-  declare interface sheets$Response {
+  declare interface gapi$client$sheets$Response {
     /**
      * A reply from adding a banded range.
      */
-    addBanding?: sheets$AddBandingResponse;
+    addBanding?: gapi$client$sheets$AddBandingResponse;
 
     /**
      * A reply from adding a chart.
      */
-    addChart?: sheets$AddChartResponse;
+    addChart?: gapi$client$sheets$AddChartResponse;
 
     /**
      * A reply from adding a filter view.
      */
-    addFilterView?: sheets$AddFilterViewResponse;
+    addFilterView?: gapi$client$sheets$AddFilterViewResponse;
 
     /**
      * A reply from adding a named range.
      */
-    addNamedRange?: sheets$AddNamedRangeResponse;
+    addNamedRange?: gapi$client$sheets$AddNamedRangeResponse;
 
     /**
      * A reply from adding a protected range.
      */
-    addProtectedRange?: sheets$AddProtectedRangeResponse;
+    addProtectedRange?: gapi$client$sheets$AddProtectedRangeResponse;
 
     /**
      * A reply from adding a sheet.
      */
-    addSheet?: sheets$AddSheetResponse;
+    addSheet?: gapi$client$sheets$AddSheetResponse;
 
     /**
      * A reply from creating a developer metadata entry.
      */
-    createDeveloperMetadata?: sheets$CreateDeveloperMetadataResponse;
+    createDeveloperMetadata?: gapi$client$sheets$CreateDeveloperMetadataResponse;
 
     /**
      * A reply from deleting a conditional format rule.
      */
-    deleteConditionalFormatRule?: sheets$DeleteConditionalFormatRuleResponse;
+    deleteConditionalFormatRule?: gapi$client$sheets$DeleteConditionalFormatRuleResponse;
 
     /**
      * A reply from deleting a developer metadata entry.
      */
-    deleteDeveloperMetadata?: sheets$DeleteDeveloperMetadataResponse;
+    deleteDeveloperMetadata?: gapi$client$sheets$DeleteDeveloperMetadataResponse;
 
     /**
      * A reply from duplicating a filter view.
      */
-    duplicateFilterView?: sheets$DuplicateFilterViewResponse;
+    duplicateFilterView?: gapi$client$sheets$DuplicateFilterViewResponse;
 
     /**
      * A reply from duplicating a sheet.
      */
-    duplicateSheet?: sheets$DuplicateSheetResponse;
+    duplicateSheet?: gapi$client$sheets$DuplicateSheetResponse;
 
     /**
      * A reply from doing a find/replace.
      */
-    findReplace?: sheets$FindReplaceResponse;
+    findReplace?: gapi$client$sheets$FindReplaceResponse;
 
     /**
      * A reply from updating a conditional format rule.
@@ -3041,69 +3045,69 @@ declare module "gapi.client.sheets" {
     updateEmbeddedObjectPosition?: sheets$UpdateEmbeddedObjectPositionResponse;
   }
 
-  declare interface sheets$RowData {
+  declare interface gapi$client$sheets$RowData {
     /**
      * The values in the row, one per column.
      */
-    values?: sheets$CellData[];
+    values?: gapi$client$sheets$CellData[];
   }
 
-  declare interface sheets$SearchDeveloperMetadataRequest {
+  declare interface gapi$client$sheets$SearchDeveloperMetadataRequest {
     /**
      * The data filters describing the criteria used to determine which
      * DeveloperMetadata entries to return.  DeveloperMetadata matching any of the
      * specified filters will be included in the response.
      */
-    dataFilters?: sheets$DataFilter[];
+    dataFilters?: gapi$client$sheets$DataFilter[];
   }
 
-  declare interface sheets$SearchDeveloperMetadataResponse {
+  declare interface gapi$client$sheets$SearchDeveloperMetadataResponse {
     /**
      * The metadata matching the criteria of the search request.
      */
-    matchedDeveloperMetadata?: sheets$MatchedDeveloperMetadata[];
+    matchedDeveloperMetadata?: gapi$client$sheets$MatchedDeveloperMetadata[];
   }
 
-  declare interface sheets$SetBasicFilterRequest {
+  declare interface gapi$client$sheets$SetBasicFilterRequest {
     /**
      * The filter to set.
      */
-    filter?: sheets$BasicFilter;
+    filter?: gapi$client$sheets$BasicFilter;
   }
 
-  declare interface sheets$SetDataValidationRequest {
+  declare interface gapi$client$sheets$SetDataValidationRequest {
     /**
      * The range the data validation rule should apply to.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * The data validation rule to set on each cell in the range,
      * or empty to clear the data validation in the range.
      */
-    rule?: sheets$DataValidationRule;
+    rule?: gapi$client$sheets$DataValidationRule;
   }
 
-  declare interface sheets$Sheet {
+  declare interface gapi$client$sheets$Sheet {
     /**
      * The banded (i.e. alternating colors) ranges on this sheet.
      */
-    bandedRanges?: sheets$BandedRange[];
+    bandedRanges?: gapi$client$sheets$BandedRange[];
 
     /**
      * The filter on this sheet, if any.
      */
-    basicFilter?: sheets$BasicFilter;
+    basicFilter?: gapi$client$sheets$BasicFilter;
 
     /**
      * The specifications of every chart on this sheet.
      */
-    charts?: sheets$EmbeddedChart[];
+    charts?: gapi$client$sheets$EmbeddedChart[];
 
     /**
      * The conditional format rules in this sheet.
      */
-    conditionalFormats?: sheets$ConditionalFormatRule[];
+    conditionalFormats?: gapi$client$sheets$ConditionalFormatRule[];
 
     /**
      * Data in the grid, if this is a grid sheet.
@@ -3115,22 +3119,22 @@ declare module "gapi.client.sheets" {
      * while the second one will have `startRow 14` (zero-based row 15),
      * and `startColumn 3` (zero-based column D).
      */
-    data?: sheets$GridData[];
+    data?: gapi$client$sheets$GridData[];
 
     /**
      * The developer metadata associated with a sheet.
      */
-    developerMetadata?: sheets$DeveloperMetadata[];
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata[];
 
     /**
      * The filter views in this sheet.
      */
-    filterViews?: sheets$FilterView[];
+    filterViews?: gapi$client$sheets$FilterView[];
 
     /**
      * The ranges that are merged together.
      */
-    merges?: sheets$GridRange[];
+    merges?: gapi$client$sheets$GridRange[];
 
     /**
      * The properties of the sheet.
@@ -3140,17 +3144,17 @@ declare module "gapi.client.sheets" {
     /**
      * The protected ranges in this sheet.
      */
-    protectedRanges?: sheets$ProtectedRange[];
+    protectedRanges?: gapi$client$sheets$ProtectedRange[];
   }
 
-  declare interface sheets$SheetProperties {
+  declare interface gapi$client$sheets$SheetProperties {
     /**
      * Additional properties of the sheet if this sheet is a grid.
      * (If the sheet is an object sheet, containing a chart or image, then
      * this field will be absent.)
      * When writing it is an error to set any grid properties on non-grid sheets.
      */
-    gridProperties?: sheets$GridProperties;
+    gridProperties?: gapi$client$sheets$GridProperties;
 
     /**
      * True if the sheet is hidden in the UI, false if it's visible.
@@ -3191,7 +3195,7 @@ declare module "gapi.client.sheets" {
     /**
      * The color of the tab in the UI.
      */
-    tabColor?: sheets$Color;
+    tabColor?: gapi$client$sheets$Color;
 
     /**
      * The name of the sheet.
@@ -3199,11 +3203,11 @@ declare module "gapi.client.sheets" {
     title?: string;
   }
 
-  declare interface sheets$SortRangeRequest {
+  declare interface gapi$client$sheets$SortRangeRequest {
     /**
      * The range to sort.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * The sort order per column. Later specifications are used when values
@@ -3212,7 +3216,7 @@ declare module "gapi.client.sheets" {
     sortSpecs?: sheets$SortSpec[];
   }
 
-  declare interface sheets$SortSpec {
+  declare interface gapi$client$sheets$SortSpec {
     /**
      * The dimension the sort should be applied to.
      */
@@ -3224,7 +3228,7 @@ declare module "gapi.client.sheets" {
     sortOrder?: string;
   }
 
-  declare interface sheets$SourceAndDestination {
+  declare interface gapi$client$sheets$SourceAndDestination {
     /**
      * The dimension that data should be filled into.
      */
@@ -3241,19 +3245,19 @@ declare module "gapi.client.sheets" {
     /**
      * The location of the data to use as the source of the autofill.
      */
-    source?: sheets$GridRange;
+    source?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$Spreadsheet {
+  declare interface gapi$client$sheets$Spreadsheet {
     /**
      * The developer metadata associated with a spreadsheet.
      */
-    developerMetadata?: sheets$DeveloperMetadata[];
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata[];
 
     /**
      * The named ranges defined in a spreadsheet.
      */
-    namedRanges?: sheets$NamedRange[];
+    namedRanges?: gapi$client$sheets$NamedRange[];
 
     /**
      * Overall properties of a spreadsheet.
@@ -3263,7 +3267,7 @@ declare module "gapi.client.sheets" {
     /**
      * The sheets that are part of a spreadsheet.
      */
-    sheets?: sheets$Sheet[];
+    sheets?: gapi$client$sheets$Sheet[];
 
     /**
      * The ID of the spreadsheet.
@@ -3278,7 +3282,7 @@ declare module "gapi.client.sheets" {
     spreadsheetUrl?: string;
   }
 
-  declare interface sheets$SpreadsheetProperties {
+  declare interface gapi$client$sheets$SpreadsheetProperties {
     /**
      * The amount of time to wait before volatile functions are recalculated.
      */
@@ -3290,14 +3294,14 @@ declare module "gapi.client.sheets" {
      * cell's format is equal to this default format.
      * This field is read-only.
      */
-    defaultFormat?: sheets$CellFormat;
+    defaultFormat?: gapi$client$sheets$CellFormat;
 
     /**
      * Determines whether and how circular references are resolved with iterative
      * calculation.  Absence of this field means that circular references will
      * result in calculation errors.
      */
-    iterativeCalculationSettings?: sheets$IterativeCalculationSettings;
+    iterativeCalculationSettings?: gapi$client$sheets$IterativeCalculationSettings;
 
     /**
      * The locale of the spreadsheet in one of the following formats:
@@ -3325,7 +3329,7 @@ declare module "gapi.client.sheets" {
     title?: string;
   }
 
-  declare interface sheets$TextFormat {
+  declare interface gapi$client$sheets$TextFormat {
     /**
      * True if the text is bold.
      */
@@ -3344,7 +3348,7 @@ declare module "gapi.client.sheets" {
     /**
      * The foreground color of the text.
      */
-    foregroundColor?: sheets$Color;
+    foregroundColor?: gapi$client$sheets$Color;
 
     /**
      * True if the text is italicized.
@@ -3362,11 +3366,11 @@ declare module "gapi.client.sheets" {
     underline?: boolean;
   }
 
-  declare interface sheets$TextFormatRun {
+  declare interface gapi$client$sheets$TextFormatRun {
     /**
      * The format of this run.  Absent values inherit the cell's format.
      */
-    format?: sheets$TextFormat;
+    format?: gapi$client$sheets$TextFormat;
 
     /**
      * The character index where this run starts.
@@ -3374,14 +3378,14 @@ declare module "gapi.client.sheets" {
     startIndex?: number;
   }
 
-  declare interface sheets$TextPosition {
+  declare interface gapi$client$sheets$TextPosition {
     /**
      * Horizontal alignment setting for the piece of text.
      */
     horizontalAlignment?: string;
   }
 
-  declare interface sheets$TextRotation {
+  declare interface gapi$client$sheets$TextRotation {
     /**
      * The angle between the standard orientation and the desired orientation.
      * Measured in degrees. Valid values are between -90 and 90. Positive
@@ -3409,7 +3413,7 @@ declare module "gapi.client.sheets" {
     vertical?: boolean;
   }
 
-  declare interface sheets$TextToColumnsRequest {
+  declare interface gapi$client$sheets$TextToColumnsRequest {
     /**
      * The delimiter to use. Used only if delimiterType is
      * CUSTOM.
@@ -3424,23 +3428,23 @@ declare module "gapi.client.sheets" {
     /**
      * The source data range.  This must span exactly one column.
      */
-    source?: sheets$GridRange;
+    source?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$UnmergeCellsRequest {
+  declare interface gapi$client$sheets$UnmergeCellsRequest {
     /**
      * The range within which all cells should be unmerged.
      * If the range spans multiple merges, all will be unmerged.
      * The range must not partially span any merge.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
   }
 
-  declare interface sheets$UpdateBandingRequest {
+  declare interface gapi$client$sheets$UpdateBandingRequest {
     /**
      * The banded range to update with the new properties.
      */
-    bandedRange?: sheets$BandedRange;
+    bandedRange?: gapi$client$sheets$BandedRange;
 
     /**
      * The fields that should be updated.  At least one field must be specified.
@@ -3450,44 +3454,44 @@ declare module "gapi.client.sheets" {
     fields?: string;
   }
 
-  declare interface sheets$UpdateBordersRequest {
+  declare interface gapi$client$sheets$UpdateBordersRequest {
     /**
      * The border to put at the bottom of the range.
      */
-    bottom?: sheets$Border;
+    bottom?: gapi$client$sheets$Border;
 
     /**
      * The horizontal border to put within the range.
      */
-    innerHorizontal?: sheets$Border;
+    innerHorizontal?: gapi$client$sheets$Border;
 
     /**
      * The vertical border to put within the range.
      */
-    innerVertical?: sheets$Border;
+    innerVertical?: gapi$client$sheets$Border;
 
     /**
      * The border to put at the left of the range.
      */
-    left?: sheets$Border;
+    left?: gapi$client$sheets$Border;
 
     /**
      * The range whose borders should be updated.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * The border to put at the right of the range.
      */
-    right?: sheets$Border;
+    right?: gapi$client$sheets$Border;
 
     /**
      * The border to put at the top of the range.
      */
-    top?: sheets$Border;
+    top?: gapi$client$sheets$Border;
   }
 
-  declare interface sheets$UpdateCellsRequest {
+  declare interface gapi$client$sheets$UpdateCellsRequest {
     /**
      * The fields of CellData that should be updated.
      * At least one field must be specified.
@@ -3502,22 +3506,22 @@ declare module "gapi.client.sheets" {
      * If the data in rows does not cover the entire requested range,
      * the fields matching those set in fields will be cleared.
      */
-    range?: sheets$GridRange;
+    range?: gapi$client$sheets$GridRange;
 
     /**
      * The data to write.
      */
-    rows?: sheets$RowData[];
+    rows?: gapi$client$sheets$RowData[];
 
     /**
      * The coordinate to start writing data at.
      * Any number of rows and columns (including a different number of
      * columns per row) may be written.
      */
-    start?: sheets$GridCoordinate;
+    start?: gapi$client$sheets$GridCoordinate;
   }
 
-  declare interface sheets$UpdateChartSpecRequest {
+  declare interface gapi$client$sheets$UpdateChartSpecRequest {
     /**
      * The ID of the chart to update.
      */
@@ -3526,10 +3530,10 @@ declare module "gapi.client.sheets" {
     /**
      * The specification to apply to the chart.
      */
-    spec?: sheets$ChartSpec;
+    spec?: gapi$client$sheets$ChartSpec;
   }
 
-  declare interface sheets$UpdateConditionalFormatRuleRequest {
+  declare interface gapi$client$sheets$UpdateConditionalFormatRuleRequest {
     /**
      * The zero-based index of the rule that should be replaced or moved.
      */
@@ -3543,7 +3547,7 @@ declare module "gapi.client.sheets" {
     /**
      * The rule that should replace the rule at the given index.
      */
-    rule?: sheets$ConditionalFormatRule;
+    rule?: gapi$client$sheets$ConditionalFormatRule;
 
     /**
      * The sheet of the rule to move.  Required if new_index is set,
@@ -3552,7 +3556,7 @@ declare module "gapi.client.sheets" {
     sheetId?: number;
   }
 
-  declare interface sheets$UpdateConditionalFormatRuleResponse {
+  declare interface gapi$client$sheets$UpdateConditionalFormatRuleResponse {
     /**
      * The index of the new rule.
      */
@@ -3562,7 +3566,7 @@ declare module "gapi.client.sheets" {
      * The new rule that replaced the old rule (if replacing),
      * or the rule that was moved (if moved)
      */
-    newRule?: sheets$ConditionalFormatRule;
+    newRule?: gapi$client$sheets$ConditionalFormatRule;
 
     /**
      * The old index of the rule. Not set if a rule was replaced
@@ -3574,19 +3578,19 @@ declare module "gapi.client.sheets" {
      * The old (deleted) rule. Not set if a rule was moved
      * (because it is the same as new_rule).
      */
-    oldRule?: sheets$ConditionalFormatRule;
+    oldRule?: gapi$client$sheets$ConditionalFormatRule;
   }
 
-  declare interface sheets$UpdateDeveloperMetadataRequest {
+  declare interface gapi$client$sheets$UpdateDeveloperMetadataRequest {
     /**
      * The filters matching the developer metadata entries to update.
      */
-    dataFilters?: sheets$DataFilter[];
+    dataFilters?: gapi$client$sheets$DataFilter[];
 
     /**
      * The value that all metadata matched by the data filters will be updated to.
      */
-    developerMetadata?: sheets$DeveloperMetadata;
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata;
 
     /**
      * The fields that should be updated.  At least one field must be specified.
@@ -3596,14 +3600,14 @@ declare module "gapi.client.sheets" {
     fields?: string;
   }
 
-  declare interface sheets$UpdateDeveloperMetadataResponse {
+  declare interface gapi$client$sheets$UpdateDeveloperMetadataResponse {
     /**
      * The updated developer metadata.
      */
-    developerMetadata?: sheets$DeveloperMetadata[];
+    developerMetadata?: gapi$client$sheets$DeveloperMetadata[];
   }
 
-  declare interface sheets$UpdateDimensionPropertiesRequest {
+  declare interface gapi$client$sheets$UpdateDimensionPropertiesRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root `properties` is implied and should not be specified.
@@ -3614,15 +3618,15 @@ declare module "gapi.client.sheets" {
     /**
      * Properties to update.
      */
-    properties?: sheets$DimensionProperties;
+    properties?: gapi$client$sheets$DimensionProperties;
 
     /**
      * The rows or columns to update.
      */
-    range?: sheets$DimensionRange;
+    range?: gapi$client$sheets$DimensionRange;
   }
 
-  declare interface sheets$UpdateEmbeddedObjectPositionRequest {
+  declare interface gapi$client$sheets$UpdateEmbeddedObjectPositionRequest {
     /**
      * The fields of OverlayPosition
      * that should be updated when setting a new position. Used only if
@@ -3641,7 +3645,7 @@ declare module "gapi.client.sheets" {
      * If newPosition.newSheet is set to true,
      * a new sheet will be created with an ID that will be chosen for you.
      */
-    newPosition?: sheets$EmbeddedObjectPosition;
+    newPosition?: gapi$client$sheets$EmbeddedObjectPosition;
 
     /**
      * The ID of the object to moved.
@@ -3649,14 +3653,14 @@ declare module "gapi.client.sheets" {
     objectId?: number;
   }
 
-  declare interface sheets$UpdateEmbeddedObjectPositionResponse {
+  declare interface gapi$client$sheets$UpdateEmbeddedObjectPositionResponse {
     /**
      * The new position of the embedded object.
      */
-    position?: sheets$EmbeddedObjectPosition;
+    position?: gapi$client$sheets$EmbeddedObjectPosition;
   }
 
-  declare interface sheets$UpdateFilterViewRequest {
+  declare interface gapi$client$sheets$UpdateFilterViewRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root `filter` is implied and should not be specified.
@@ -3667,10 +3671,10 @@ declare module "gapi.client.sheets" {
     /**
      * The new properties of the filter view.
      */
-    filter?: sheets$FilterView;
+    filter?: gapi$client$sheets$FilterView;
   }
 
-  declare interface sheets$UpdateNamedRangeRequest {
+  declare interface gapi$client$sheets$UpdateNamedRangeRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root `namedRange` is implied and should not be specified.
@@ -3681,10 +3685,10 @@ declare module "gapi.client.sheets" {
     /**
      * The named range to update with the new properties.
      */
-    namedRange?: sheets$NamedRange;
+    namedRange?: gapi$client$sheets$NamedRange;
   }
 
-  declare interface sheets$UpdateProtectedRangeRequest {
+  declare interface gapi$client$sheets$UpdateProtectedRangeRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root `protectedRange` is implied and should not be specified.
@@ -3695,10 +3699,10 @@ declare module "gapi.client.sheets" {
     /**
      * The protected range to update with the new properties.
      */
-    protectedRange?: sheets$ProtectedRange;
+    protectedRange?: gapi$client$sheets$ProtectedRange;
   }
 
-  declare interface sheets$UpdateSheetPropertiesRequest {
+  declare interface gapi$client$sheets$UpdateSheetPropertiesRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root `properties` is implied and should not be specified.
@@ -3709,10 +3713,10 @@ declare module "gapi.client.sheets" {
     /**
      * The properties to update.
      */
-    properties?: sheets$SheetProperties;
+    properties?: gapi$client$sheets$SheetProperties;
   }
 
-  declare interface sheets$UpdateSpreadsheetPropertiesRequest {
+  declare interface gapi$client$sheets$UpdateSpreadsheetPropertiesRequest {
     /**
      * The fields that should be updated.  At least one field must be specified.
      * The root 'properties' is implied and should not be specified.
@@ -3723,14 +3727,14 @@ declare module "gapi.client.sheets" {
     /**
      * The properties to update.
      */
-    properties?: sheets$SpreadsheetProperties;
+    properties?: gapi$client$sheets$SpreadsheetProperties;
   }
 
-  declare interface sheets$UpdateValuesByDataFilterResponse {
+  declare interface gapi$client$sheets$UpdateValuesByDataFilterResponse {
     /**
      * The data filter that selected the range that was updated.
      */
-    dataFilter?: sheets$DataFilter;
+    dataFilter?: gapi$client$sheets$DataFilter;
 
     /**
      * The number of cells updated.
@@ -3760,7 +3764,7 @@ declare module "gapi.client.sheets" {
     updatedRows?: number;
   }
 
-  declare interface sheets$UpdateValuesResponse {
+  declare interface gapi$client$sheets$UpdateValuesResponse {
     /**
      * The spreadsheet the updates were applied to.
      */
@@ -3794,7 +3798,7 @@ declare module "gapi.client.sheets" {
     updatedRows?: number;
   }
 
-  declare interface sheets$ValueRange {
+  declare interface gapi$client$sheets$ValueRange {
     /**
      * The major dimension of the values.
      *
@@ -3836,7 +3840,7 @@ declare module "gapi.client.sheets" {
     values?: any[][];
   }
 
-  declare interface sheets$DeveloperMetadataResource {
+  declare interface gapi$client$sheets$DeveloperMetadataResource {
     /**
      * Returns the developer metadata with the specified ID.
      * The caller must specify the spreadsheet ID and the developer metadata's
@@ -3917,7 +3921,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$DeveloperMetadata>;
+    }): client$Request<gapi$client$sheets$DeveloperMetadata>;
 
     /**
      * Returns all developer metadata matching the specified DataFilter.
@@ -3996,10 +4000,10 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$SearchDeveloperMetadataResponse>;
+    }): client$Request<gapi$client$sheets$SearchDeveloperMetadataResponse>;
   }
 
-  declare interface sheets$SheetsResource {
+  declare interface gapi$client$sheets$SheetsResource {
     /**
      * Copies a single sheet from a spreadsheet to another spreadsheet.
      * Returns the properties of the newly created sheet.
@@ -4079,10 +4083,10 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$SheetProperties>;
+    }): client$Request<gapi$client$sheets$SheetProperties>;
   }
 
-  declare interface sheets$ValuesResource {
+  declare interface gapi$client$sheets$ValuesResource {
     /**
      * Appends values to a spreadsheet. The input range is used to search for
      * existing data and find a "table" within that range. Values will be
@@ -4206,7 +4210,7 @@ declare module "gapi.client.sheets" {
        * How the input data should be interpreted.
        */
       valueInputOption?: string
-    }): client$sheets$Request<sheets$AppendValuesResponse>;
+    }): client$Request<gapi$client$sheets$AppendValuesResponse>;
 
     /**
      * Clears one or more ranges of values from a spreadsheet.
@@ -4284,7 +4288,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchClearValuesResponse>;
+    }): client$Request<gapi$client$sheets$BatchClearValuesResponse>;
 
     /**
      * Clears one or more ranges of values from a spreadsheet.
@@ -4363,7 +4367,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchClearValuesByDataFilterResponse>;
+    }): client$Request<gapi$client$sheets$BatchClearValuesByDataFilterResponse>;
 
     /**
      * Returns one or more ranges of values from a spreadsheet.
@@ -4469,7 +4473,7 @@ declare module "gapi.client.sheets" {
        * The default render option is ValueRenderOption.FORMATTED_VALUE.
        */
       valueRenderOption?: string
-    }): client$sheets$Request<sheets$BatchGetValuesResponse>;
+    }): client$Request<gapi$client$sheets$BatchGetValuesResponse>;
 
     /**
      * Returns one or more ranges of values that match the specified data filters.
@@ -4547,7 +4551,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchGetValuesByDataFilterResponse>;
+    }): client$Request<gapi$client$sheets$BatchGetValuesByDataFilterResponse>;
 
     /**
      * Sets values in one or more ranges of a spreadsheet.
@@ -4625,7 +4629,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchUpdateValuesResponse>;
+    }): client$Request<gapi$client$sheets$BatchUpdateValuesResponse>;
 
     /**
      * Sets values in one or more ranges of a spreadsheet.
@@ -4703,7 +4707,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchUpdateValuesByDataFilterResponse>;
+    }): client$Request<gapi$client$sheets$BatchUpdateValuesByDataFilterResponse>;
 
     /**
      * Clears values from a spreadsheet.
@@ -4786,7 +4790,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$ClearValuesResponse>;
+    }): client$Request<gapi$client$sheets$ClearValuesResponse>;
 
     /**
      * Returns a range of values from a spreadsheet.
@@ -4892,7 +4896,7 @@ declare module "gapi.client.sheets" {
        * The default render option is ValueRenderOption.FORMATTED_VALUE.
        */
       valueRenderOption?: string
-    }): client$sheets$Request<sheets$ValueRange>;
+    }): client$Request<gapi$client$sheets$ValueRange>;
 
     /**
      * Sets values in a range of a spreadsheet.
@@ -5003,10 +5007,10 @@ declare module "gapi.client.sheets" {
        * How the input data should be interpreted.
        */
       valueInputOption?: string
-    }): client$sheets$Request<sheets$UpdateValuesResponse>;
+    }): client$Request<gapi$client$sheets$UpdateValuesResponse>;
   }
 
-  declare interface sheets$SpreadsheetsResource {
+  declare interface gapi$client$sheets$SpreadsheetsResource {
     /**
      * Applies one or more updates to the spreadsheet.
      *
@@ -5098,7 +5102,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$BatchUpdateSpreadsheetResponse>;
+    }): client$Request<gapi$client$sheets$BatchUpdateSpreadsheetResponse>;
 
     /**
      * Creates a spreadsheet, returning the newly created spreadsheet.
@@ -5168,7 +5172,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$Spreadsheet>;
+    }): client$Request<gapi$client$sheets$Spreadsheet>;
 
     /**
      * Returns the spreadsheet at the given ID.
@@ -5274,7 +5278,7 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$Spreadsheet>;
+    }): client$Request<gapi$client$sheets$Spreadsheet>;
 
     /**
      * Returns the spreadsheet at the given ID.
@@ -5370,9 +5374,9 @@ declare module "gapi.client.sheets" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): client$sheets$Request<sheets$Spreadsheet>;
-    developerMetadata: sheets$DeveloperMetadataResource;
-    sheets: sheets$SheetsResource;
-    values: sheets$ValuesResource;
+    }): client$Request<gapi$client$sheets$Spreadsheet>;
+    developerMetadata: gapi$client$sheets$DeveloperMetadataResource;
+    sheets: gapi$client$sheets$SheetsResource;
+    values: gapi$client$sheets$ValuesResource;
   }
 }
