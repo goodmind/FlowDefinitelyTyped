@@ -20,10 +20,10 @@ declare type ParseMockDB$HookType = "beforeSave" | "beforeDelete";
 declare function ParseMockDB$registerHook(
   className: string,
   hookType: ParseMockDB$HookType,
-  hookFn: (request: Parse.Cloud.BeforeSaveRequest) => Parse.IPromise<any>
+  hookFn: (request: Parse.CloudBeforeSaveRequest) => Parse.IPromise<any>
 ): void;
 declare module "parse-mockdb" {
   import typeof * as Parse from "parse";
 
-  declare module.exports: typeof ParseMockDB;
+  declare export default typeof ParseMockDB;
 }
