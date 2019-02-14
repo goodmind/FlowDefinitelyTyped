@@ -22,5 +22,5 @@ declare module "express-mongo-sanitize" {
     next: express.NextFunction
   ) => void;
 
-  declare module.exports: typeof expressMongoSanitize;
+  declare export default typeof expressMongoSanitize;
 }
