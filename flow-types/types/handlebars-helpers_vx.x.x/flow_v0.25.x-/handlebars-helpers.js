@@ -2,8 +2,8 @@ declare module "handlebars-helpers" {
   import typeof * as Handlebars from "handlebars";
 
   declare function helpers(
-    groups?: helpers$helpers$Options | string | string[],
-    options?: helpers$helpers$Options
+    groups?: helpers$Options | string | string[],
+    options?: helpers$Options
   ): {
     [name: string]: Handlebars.HelperDelegate
   };
@@ -46,5 +46,5 @@ declare module "handlebars-helpers" {
   }
 
   declare var helpers$utils: Utils;
-  declare module.exports: typeof helpers;
+  declare export default typeof helpers;
 }
