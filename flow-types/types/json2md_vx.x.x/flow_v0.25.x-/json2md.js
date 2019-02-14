@@ -1,5 +1,5 @@
 declare module "json2md" {
-  declare module.exports: typeof json2md;
+  declare export default typeof json2md;
 
   /**
    * Converts a JSON input to markdown.
@@ -8,11 +8,7 @@ declare module "json2md" {
    * @return The generated markdown result.
    */
   declare function json2md(
-    data:
-      | json2md$json2md$DataObject
-      | json2md$json2md$DataObject[]
-      | string
-      | string[],
+    data: json2md$DataObject | json2md$DataObject[] | string | string[],
     prefix?: string
   ): string;
 
@@ -23,7 +19,7 @@ declare module "json2md" {
   };
   declare var json2md$converters: json2md$ConvertersMethods;
 
-  declare interface DefaultConverters$Converters {
+  declare interface json2md$DefaultConverters$Converters {
     [converter: string]: any;
     blockquote: string | string[];
     code: DefaultConverters$CodeInput;
@@ -40,17 +36,17 @@ declare module "json2md" {
     ul: string[];
   }
 
-  declare interface DefaultConverters$ImgInput {
+  declare interface json2md$DefaultConverters$ImgInput {
     title: string;
     source: string;
   }
 
-  declare interface DefaultConverters$CodeInput {
+  declare interface json2md$DefaultConverters$CodeInput {
     language?: string;
     content: string | string[];
   }
 
-  declare interface DefaultConverters$TableInput {
+  declare interface json2md$DefaultConverters$TableInput {
     headers: string[];
     rows:
       | Array<{
@@ -60,13 +56,10 @@ declare module "json2md" {
   }
 
   declare type json2md$DataObject = $ObjMapi<
-    DefaultConverters$DefaultConverters$Converters,
+    DefaultConverters$Converters,
     <TConverter>(
       TConverter
-    ) => $ElementType<
-      DefaultConverters$DefaultConverters$Converters,
-      TConverter
-    >
+    ) => $ElementType<DefaultConverters$Converters, TConverter>
   >;
 
   declare type json2md$ConverterCallback<TInput> = (
@@ -75,11 +68,11 @@ declare module "json2md" {
   ) => string;
 
   declare type json2md$ConvertersMethods = $ObjMapi<
-    DefaultConverters$DefaultConverters$Converters,
+    DefaultConverters$Converters,
     <TConverter>(
       TConverter
     ) => json2md$ConverterCallback<
-      $ElementType<DefaultConverters$DefaultConverters$Converters, TConverter>
+      $ElementType<DefaultConverters$Converters, TConverter>
     >
   >;
 }
