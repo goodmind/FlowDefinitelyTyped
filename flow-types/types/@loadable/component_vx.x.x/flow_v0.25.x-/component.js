@@ -17,7 +17,7 @@ declare module "@loadable/component" {
   >;
   declare export type LoadableLibrary<TModule> = React.ComponentType<{
     fallback?: JSX.Element,
-    children?: (module: TModule) => React.ReactNode,
+    children?: (module: TModule) => React.Node,
     ref?: React.Ref<TModule>
   }> &
     TModule;
@@ -32,7 +32,7 @@ declare module "@loadable/component" {
   ): LoadableComponent<T>;
 
   declare var loadable: typeof loadableFunc & {
-    lazy$lib: typeof lib
+    lib: typeof lib
   };
   declare export default typeof loadable;
 
