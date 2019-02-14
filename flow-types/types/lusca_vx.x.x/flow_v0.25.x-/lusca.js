@@ -1,7 +1,5 @@
 declare module "lusca" {
-  declare function lusca(
-    options?: lusca$lusca$LuscaOptions
-  ): express.RequestHandler;
+  declare function lusca(options?: lusca$LuscaOptions): express.RequestHandler;
 
   declare var npm$namespace$lusca: {
     csrf: typeof lusca$csrf,
@@ -14,14 +12,14 @@ declare module "lusca" {
     referrerPolicy: typeof lusca$referrerPolicy
   };
   declare interface lusca$LuscaOptions {
-    lusca$csrf?: lusca$csrfOptions | boolean;
-    lusca$csp?: lusca$cspOptions | false;
-    lusca$xframe?: string | false;
-    lusca$p3p?: string | false;
-    lusca$hsts?: lusca$hstsOptions | false;
-    lusca$xssProtection?: lusca$xssProtectionOptions | boolean;
-    lusca$nosniff?: boolean;
-    lusca$referrerPolicy?: string | false;
+    csrf?: lusca$csrfOptions | boolean;
+    csp?: lusca$cspOptions | false;
+    xframe?: string | false;
+    p3p?: string | false;
+    hsts?: lusca$hstsOptions | false;
+    xssProtection?: lusca$xssProtectionOptions | boolean;
+    nosniff?: boolean;
+    referrerPolicy?: string | false;
   }
 
   declare interface lusca$cspOptions {
@@ -99,5 +97,5 @@ declare module "lusca" {
 
   declare function lusca$referrerPolicy(value: string): express.RequestHandler;
 
-  declare module.exports: typeof lusca;
+  declare export default typeof lusca;
 }
