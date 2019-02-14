@@ -1,8 +1,8 @@
 declare module "pino-multi-stream" {
   import type {
-    pinoms$LoggerOptions as PinoLoggerOptions,
-    pinoms$Logger as PinoLogger,
-    pinoms$Level as PinoLevel,
+    LoggerOptions as PinoLoggerOptions,
+    Logger as PinoLogger,
+    Level as PinoLevel,
     stdSerializers as pinoStdSerializers
   } from "pino";
 
@@ -26,9 +26,7 @@ declare module "pino-multi-stream" {
   declare type pinoms$Level = PinoLevel;
 
   declare type pinoms$Logger = PinoLogger;
-  declare function pinoms(
-    options: pinoms$pinoms$LoggerOptions
-  ): pinoms$pinoms$Logger;
+  declare function pinoms(options: pinoms$LoggerOptions): pinoms$Logger;
 
-  declare module.exports: typeof pinoms;
+  declare export default typeof pinoms;
 }
