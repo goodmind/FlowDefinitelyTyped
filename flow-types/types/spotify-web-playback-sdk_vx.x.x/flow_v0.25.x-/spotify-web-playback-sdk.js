@@ -4,7 +4,9 @@ declare module "spotify-web-playback-sdk" {
   }
 
   declare var npm$namespace$Spotify: {
-    Player: typeof Spotify$Player
+    Player: typeof Spotify$Player,
+
+    SpotifyPlayer: typeof Spotify$SpotifyPlayer
   };
   declare var Spotify$Player: typeof SpotifyPlayer;
 
