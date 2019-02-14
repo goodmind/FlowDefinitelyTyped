@@ -8,5 +8,5 @@ declare module "safe-json-stringify" {
 
   declare function safeJsonStringify(data: { [key: string]: any }): string;
 
-  declare module.exports: typeof safeJsonStringify;
+  declare export default typeof safeJsonStringify;
 }
