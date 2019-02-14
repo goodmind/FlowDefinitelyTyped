@@ -43,5 +43,5 @@ declare module "through2-map" {
     fn?: MapCallback
   ): through2.Through2Constructor;
 
-  declare module.exports: typeof through2_map;
+  declare export default typeof through2_map;
 }
