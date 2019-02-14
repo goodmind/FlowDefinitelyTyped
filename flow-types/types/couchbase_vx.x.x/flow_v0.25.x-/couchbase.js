@@ -2,156 +2,52 @@ declare module "couchbase" {
   /**
    * Enumeration of all error codes. See libcouchbase documentation for more details on what these errors represent.
    */
-  declare class errors {
-    constructor(...args: empty): mixed;
-    static +success: Class<errors__success> & errors__success & 0; // 0
-    static +authContinue: Class<errors__authContinue> &
-      errors__authContinue &
-      1; // 1
-    static +authError: Class<errors__authError> & errors__authError & 2; // 2
-    static +deltaBadVal: Class<errors__deltaBadVal> & errors__deltaBadVal & 3; // 3
-    static +objectTooBig: Class<errors__objectTooBig> &
-      errors__objectTooBig &
-      4; // 4
-    static +serverBusy: Class<errors__serverBusy> & errors__serverBusy & 5; // 5
-    static +cLibInternal: Class<errors__cLibInternal> &
-      errors__cLibInternal &
-      6; // 6
-    static +cLinInvalidArgument: Class<errors__cLinInvalidArgument> &
-      errors__cLinInvalidArgument &
-      7; // 7
-    static +cLibOutOfMemory: Class<errors__cLibOutOfMemory> &
-      errors__cLibOutOfMemory &
-      8; // 8
-    static +invalidRange: Class<errors__invalidRange> &
-      errors__invalidRange &
-      9; // 9
-    static +cLibGenericError: Class<errors__cLibGenericError> &
-      errors__cLibGenericError &
-      10; // 10
-    static +temporaryError: Class<errors__temporaryError> &
-      errors__temporaryError &
-      11; // 11
-    static +keyAlreadyExists: Class<errors__keyAlreadyExists> &
-      errors__keyAlreadyExists &
-      12; // 12
-    static +keyNotFound: Class<errors__keyNotFound> & errors__keyNotFound & 13; // 13
-    static +failedToOpenLibrary: Class<errors__failedToOpenLibrary> &
-      errors__failedToOpenLibrary &
-      14; // 14
-    static +failedToFindSymbol: Class<errors__failedToFindSymbol> &
-      errors__failedToFindSymbol &
-      15; // 15
-    static +networkError: Class<errors__networkError> &
-      errors__networkError &
-      16; // 16
-    static +wrongServer: Class<errors__wrongServer> & errors__wrongServer & 17; // 17
-    static +notMyVBucket: Class<errors__notMyVBucket> &
-      errors__notMyVBucket &
-      18; // 18
-    static +notSorted: Class<errors__notSorted> & errors__notSorted & 19; // 19
-    static +notSupported: Class<errors__notSupported> &
-      errors__notSupported &
-      20; // 20
-    static +unknownCommand: Class<errors__unknownCommand> &
-      errors__unknownCommand &
-      21; // 21
-    static +unknownHost: Class<errors__unknownHost> & errors__unknownHost & 22; // 22
-    static +protocolError: Class<errors__protocolError> &
-      errors__protocolError &
-      23; // 23
-    static +timedOut: Class<errors__timedOut> & errors__timedOut & 24; // 24
-    static +connectError: Class<errors__connectError> &
-      errors__connectError &
-      25; // 25
-    static +bukcketNotFound: Class<errors__bukcketNotFound> &
-      errors__bukcketNotFound &
-      26; // 26
-    static +clientOutOfMemory: Class<errors__clientOutOfMemory> &
-      errors__clientOutOfMemory &
-      27; // 27
-    static +clientTemporaryError: Class<errors__clientTemporaryError> &
-      errors__clientTemporaryError &
-      28; // 28
-    static +badHandle: Class<errors__badHandle> & errors__badHandle & 29; // 29
-    static +serverBug: Class<errors__serverBug> & errors__serverBug & 30; // 30
-    static +invalidHostFormat: Class<errors__invalidHostFormat> &
-      errors__invalidHostFormat &
-      31; // 31
-    static +notEnoughNodes: Class<errors__notEnoughNodes> &
-      errors__notEnoughNodes &
-      32; // 32
-    static +duplicateItems: Class<errors__duplicateItems> &
-      errors__duplicateItems &
-      33; // 33
-    static +noMatchingServerForKey: Class<errors__noMatchingServerForKey> &
-      errors__noMatchingServerForKey &
-      34; // 34
-    static +badEnvironmentVariable: Class<errors__badEnvironmentVariable> &
-      errors__badEnvironmentVariable &
-      35; // 35
-    static +outOfMemory: Class<errors__outOfMemory> & errors__outOfMemory & 36; // 36
-    static +invalidArguments: Class<errors__invalidArguments> &
-      errors__invalidArguments &
-      37; // 37
-    static +schedulingError: Class<errors__schedulingError> &
-      errors__schedulingError &
-      38; // 38
-    static +checkResults: Class<errors__checkResults> &
-      errors__checkResults &
-      39; // 39
-    static +genericError: Class<errors__genericError> &
-      errors__genericError &
-      40; // 40
-    static +durabilityFailed: Class<errors__durabilityFailed> &
-      errors__durabilityFailed &
-      41; // 41
-    static +restError: Class<errors__restError> & errors__restError & 42; // 42
-  }
 
-  declare class errors__success mixins errors {}
-  declare class errors__authContinue mixins errors {}
-  declare class errors__authError mixins errors {}
-  declare class errors__deltaBadVal mixins errors {}
-  declare class errors__objectTooBig mixins errors {}
-  declare class errors__serverBusy mixins errors {}
-  declare class errors__cLibInternal mixins errors {}
-  declare class errors__cLinInvalidArgument mixins errors {}
-  declare class errors__cLibOutOfMemory mixins errors {}
-  declare class errors__invalidRange mixins errors {}
-  declare class errors__cLibGenericError mixins errors {}
-  declare class errors__temporaryError mixins errors {}
-  declare class errors__keyAlreadyExists mixins errors {}
-  declare class errors__keyNotFound mixins errors {}
-  declare class errors__failedToOpenLibrary mixins errors {}
-  declare class errors__failedToFindSymbol mixins errors {}
-  declare class errors__networkError mixins errors {}
-  declare class errors__wrongServer mixins errors {}
-  declare class errors__notMyVBucket mixins errors {}
-  declare class errors__notSorted mixins errors {}
-  declare class errors__notSupported mixins errors {}
-  declare class errors__unknownCommand mixins errors {}
-  declare class errors__unknownHost mixins errors {}
-  declare class errors__protocolError mixins errors {}
-  declare class errors__timedOut mixins errors {}
-  declare class errors__connectError mixins errors {}
-  declare class errors__bukcketNotFound mixins errors {}
-  declare class errors__clientOutOfMemory mixins errors {}
-  declare class errors__clientTemporaryError mixins errors {}
-  declare class errors__badHandle mixins errors {}
-  declare class errors__serverBug mixins errors {}
-  declare class errors__invalidHostFormat mixins errors {}
-  declare class errors__notEnoughNodes mixins errors {}
-  declare class errors__duplicateItems mixins errors {}
-  declare class errors__noMatchingServerForKey mixins errors {}
-  declare class errors__badEnvironmentVariable mixins errors {}
-  declare class errors__outOfMemory mixins errors {}
-  declare class errors__invalidArguments mixins errors {}
-  declare class errors__schedulingError mixins errors {}
-  declare class errors__checkResults mixins errors {}
-  declare class errors__genericError mixins errors {}
-  declare class errors__durabilityFailed mixins errors {}
-  declare class errors__restError mixins errors {}
+  declare var errors: {|
+    +success: 0, // 0
+    +authContinue: 1, // 1
+    +authError: 2, // 2
+    +deltaBadVal: 3, // 3
+    +objectTooBig: 4, // 4
+    +serverBusy: 5, // 5
+    +cLibInternal: 6, // 6
+    +cLinInvalidArgument: 7, // 7
+    +cLibOutOfMemory: 8, // 8
+    +invalidRange: 9, // 9
+    +cLibGenericError: 10, // 10
+    +temporaryError: 11, // 11
+    +keyAlreadyExists: 12, // 12
+    +keyNotFound: 13, // 13
+    +failedToOpenLibrary: 14, // 14
+    +failedToFindSymbol: 15, // 15
+    +networkError: 16, // 16
+    +wrongServer: 17, // 17
+    +notMyVBucket: 18, // 18
+    +notSorted: 19, // 19
+    +notSupported: 20, // 20
+    +unknownCommand: 21, // 21
+    +unknownHost: 22, // 22
+    +protocolError: 23, // 23
+    +timedOut: 24, // 24
+    +connectError: 25, // 25
+    +bukcketNotFound: 26, // 26
+    +clientOutOfMemory: 27, // 27
+    +clientTemporaryError: 28, // 28
+    +badHandle: 29, // 29
+    +serverBug: 30, // 30
+    +invalidHostFormat: 31, // 31
+    +notEnoughNodes: 32, // 32
+    +duplicateItems: 33, // 33
+    +noMatchingServerForKey: 34, // 34
+    +badEnvironmentVariable: 35, // 35
+    +outOfMemory: 36, // 36
+    +invalidArguments: 37, // 37
+    +schedulingError: 38, // 38
+    +checkResults: 39, // 39
+    +genericError: 40, // 40
+    +durabilityFailed: 41, // 41
+    +restError: 42 // 42
+  |};
 
   /**
    * Virtual base for authenticators.
@@ -342,7 +238,7 @@ declare module "couchbase" {
     /**
      * The CAS value to check. If the item on the server contains a different CAS value, the operation will fail. Note that if this option is undefined, no comparison will be performed.
      */
-    cas?: Bucket$Bucket$CAS;
+    cas?: Bucket$CAS;
 
     /**
      * Ensures this operation is persisted to this many nodes.
@@ -487,7 +383,7 @@ declare module "couchbase" {
     /**
      * ID for the index.
      */
-    SearchSort$id: string;
+    id: string;
 
     /**
      * Name for the index.
@@ -790,13 +686,13 @@ declare module "couchbase" {
      * Sets the error handling mode for this query.
      * @param mode
      */
-    on_error(mode: ViewQuery$ViewQuery$ErrorMode): ViewQuery;
+    on_error(mode: ViewQuery$ErrorMode): ViewQuery;
 
     /**
      * Specifies the desired ordering for the results.
      * @param order
      */
-    order(order: ViewQuery$ViewQuery$Order): ViewQuery;
+    order(order: ViewQuery$Order): ViewQuery;
 
     /**
      * Specifies a range of keys to retrieve from the index. You may specify both a start and an end point and additionally specify whether or not the end value is inclusive or exclusive.
@@ -826,56 +722,42 @@ declare module "couchbase" {
      * Specifies how this query will affect view indexing, both before and after the query is executed.
      * @param stale
      */
-    stale(stale: ViewQuery$SpatialQuery$Update): ViewQuery;
+    stale(stale: ViewQuery$Update): ViewQuery;
   }
+
+  declare var npm$namespace$ViewQuery: {
+    ErrorMode: typeof ViewQuery$ErrorMode,
+    Order: typeof ViewQuery$Order,
+    Update: typeof ViewQuery$Update
+  };
 
   /**
    * Enumeration for specifying on_error behaviour.
    */
-  declare class ViewQuery$ErrorMode {
-    constructor(...args: empty): mixed;
-    static +CONTINUE: Class<ViewQuery$ErrorMode__CONTINUE> &
-      ViewQuery$ErrorMode__CONTINUE &
-      0; // 0
-    static +STOP: Class<ViewQuery$ErrorMode__STOP> &
-      ViewQuery$ErrorMode__STOP &
-      1; // 1
-  }
 
-  declare class ViewQuery$ErrorMode__CONTINUE mixins ViewQuery$ErrorMode {}
-  declare class ViewQuery$ErrorMode__STOP mixins ViewQuery$ErrorMode {}
+  declare var ViewQuery$ErrorMode: {|
+    +CONTINUE: 0, // 0
+    +STOP: 1 // 1
+  |};
 
   /**
    * Enumeration for specifying view result ordering.
    */
-  declare class ViewQuery$Order {
-    constructor(...args: empty): mixed;
-    static +ASCENDING: Class<ViewQuery$Order__ASCENDING> &
-      ViewQuery$Order__ASCENDING &
-      0; // 0
-    static +DESCENDING: Class<ViewQuery$Order__DESCENDING> &
-      ViewQuery$Order__DESCENDING &
-      1; // 1
-  }
 
-  declare class ViewQuery$Order__ASCENDING mixins ViewQuery$Order {}
-  declare class ViewQuery$Order__DESCENDING mixins ViewQuery$Order {}
+  declare var ViewQuery$Order: {|
+    +ASCENDING: 0, // 0
+    +DESCENDING: 1 // 1
+  |};
 
   /**
    * Enumeration for specifying view update semantics.
    */
-  declare class ViewQuery$Update {
-    constructor(...args: empty): mixed;
-    static +BEFORE: Class<ViewQuery$Update__BEFORE> &
-      ViewQuery$Update__BEFORE &
-      0; // 0
-    static +NONE: Class<ViewQuery$Update__NONE> & ViewQuery$Update__NONE & 1; // 1
-    static +AFTER: Class<ViewQuery$Update__AFTER> & ViewQuery$Update__AFTER & 2; // 2
-  }
 
-  declare class ViewQuery$Update__BEFORE mixins ViewQuery$Update {}
-  declare class ViewQuery$Update__NONE mixins ViewQuery$Update {}
-  declare class ViewQuery$Update__AFTER mixins ViewQuery$Update {}
+  declare var ViewQuery$Update: {|
+    +BEFORE: 0, // 0
+    +NONE: 1, // 1
+    +AFTER: 2 // 2
+  |};
 
   /**
    * Class for dynamically construction of N1QL queries. This class should never be constructed directly, instead you should use the N1qlQuery.fromString static method to instantiate a N1qlStringQuery.
@@ -893,27 +775,19 @@ declare module "couchbase" {
     toString(): string;
   }
 
+  declare var npm$namespace$N1qlQuery: {
+    Consistency: typeof N1qlQuery$Consistency
+  };
+
   /**
    * Enumeration for specifying N1QL consistency semantics.
    */
-  declare class N1qlQuery$Consistency {
-    constructor(...args: empty): mixed;
-    static +NOT_BOUND: Class<N1qlQuery$Consistency__NOT_BOUND> &
-      N1qlQuery$Consistency__NOT_BOUND &
-      0; // 0
-    static +REQUEST_PLUS: Class<N1qlQuery$Consistency__REQUEST_PLUS> &
-      N1qlQuery$Consistency__REQUEST_PLUS &
-      1; // 1
-    static +STATEMENT_PLUS: Class<N1qlQuery$Consistency__STATEMENT_PLUS> &
-      N1qlQuery$Consistency__STATEMENT_PLUS &
-      2; // 2
-  }
 
-  declare class N1qlQuery$Consistency__NOT_BOUND mixins N1qlQuery$Consistency {}
-  declare class N1qlQuery$Consistency__REQUEST_PLUS
-    mixins N1qlQuery$Consistency {}
-  declare class N1qlQuery$Consistency__STATEMENT_PLUS
-    mixins N1qlQuery$Consistency {}
+  declare var N1qlQuery$Consistency: {|
+    +NOT_BOUND: 0, // 0
+    +REQUEST_PLUS: 1, // 1
+    +STATEMENT_PLUS: 2 // 2
+  |};
 
   /**
    * Class for holding a explicitly defined N1QL query string.
@@ -929,7 +803,7 @@ declare module "couchbase" {
      * Specify the consistency level for this query.
      * @param val
      */
-    consistency(val: N1qlQuery$N1qlQuery$Consistency): N1qlStringQuery;
+    consistency(val: N1qlQuery$Consistency): N1qlStringQuery;
 
     /**
      * Returns the fully prepared object representation of this query.
@@ -988,28 +862,22 @@ declare module "couchbase" {
      * Specifies how this query will affect view indexing, both before and after the query is executed.
      * @param stale
      */
-    stale(stale: SpatialQuery$ViewQuery$Update): SpatialQuery;
+    stale(stale: SpatialQuery$Update): SpatialQuery;
   }
+
+  declare var npm$namespace$SpatialQuery: {
+    Update: typeof SpatialQuery$Update
+  };
 
   /**
    * Enumeration for specifying view update semantics.
    */
-  declare class SpatialQuery$Update {
-    constructor(...args: empty): mixed;
-    static +BEFORE: Class<SpatialQuery$Update__BEFORE> &
-      SpatialQuery$Update__BEFORE &
-      0; // 0
-    static +NONE: Class<SpatialQuery$Update__NONE> &
-      SpatialQuery$Update__NONE &
-      1; // 1
-    static +AFTER: Class<SpatialQuery$Update__AFTER> &
-      SpatialQuery$Update__AFTER &
-      2; // 2
-  }
 
-  declare class SpatialQuery$Update__BEFORE mixins SpatialQuery$Update {}
-  declare class SpatialQuery$Update__NONE mixins SpatialQuery$Update {}
-  declare class SpatialQuery$Update__AFTER mixins SpatialQuery$Update {}
+  declare var SpatialQuery$Update: {|
+    +BEFORE: 0, // 0
+    +NONE: 1, // 1
+    +AFTER: 2 // 2
+  |};
 
   declare class SearchQuery {
     /**
@@ -1017,67 +885,60 @@ declare module "couchbase" {
      * @param indexName The FTS index to search in.
      * @param query The body of the FTS query.
      */
-    static new(
-      indexName: string,
-      query: SearchQuery$SearchQuery$Query
-    ): SearchQuery;
+    static new(indexName: string, query: SearchQuery$Query): SearchQuery;
 
     /**
      * Creates a compound BooleanQuery composed of several other query objects.
      */
-    static boolean(): SearchQuery$SearchQuery$BooleanQuery;
+    static boolean(): SearchQuery$BooleanQuery;
 
     /**
      * Creates a BooleanFieldQuery for searching boolean fields in an index.
      */
-    static booleanField(
-      val: boolean
-    ): SearchQuery$SearchQuery$BooleanFieldQuery;
+    static booleanField(val: boolean): SearchQuery$BooleanFieldQuery;
 
     /**
      * Creates a query for matches all of a list of subqueries in an index.
      */
     static conjuncts(
-      queries: $ReadOnlyArray<SearchQuery$SearchQuery$Query>
-    ): SearchQuery$SearchQuery$ConjunctionQuery;
+      queries: $ReadOnlyArray<SearchQuery$Query>
+    ): SearchQuery$ConjunctionQuery;
 
     /**
      * Creates a query for matches all of a list of subqueries in an index.
      */
     static conjuncts(
-      ...queries: SearchQuery$SearchQuery$Query[]
-    ): SearchQuery$SearchQuery$ConjunctionQuery;
+      ...queries: SearchQuery$Query[]
+    ): SearchQuery$ConjunctionQuery;
 
     /**
      * Creates a search query for matching date ranges in an index.
      */
-    static dateRange(): SearchQuery$SearchQuery$DateRangeQuery;
+    static dateRange(): SearchQuery$DateRangeQuery;
 
     /**
      * Creates a query for matches any of a list of subqueries in an index.
      */
     static disjuncts(
-      queries: $ReadOnlyArray<SearchQuery$SearchQuery$Query>
-    ): SearchQuery$SearchQuery$DisjunctionQuery;
+      queries: $ReadOnlyArray<SearchQuery$Query>
+    ): SearchQuery$DisjunctionQuery;
 
     /**
      * Creates a query for matches any of a list of subqueries in an index.
      */
     static disjuncts(
-      ...queries: SearchQuery$SearchQuery$Query[]
-    ): SearchQuery$SearchQuery$DisjunctionQuery;
+      ...queries: SearchQuery$Query[]
+    ): SearchQuery$DisjunctionQuery;
 
     /**
      * Creates a query which allows you to match a list of document IDs in an index.
      */
-    static docIds(
-      ids: $ReadOnlyArray<string>
-    ): SearchQuery$SearchQuery$DocIdQuery;
+    static docIds(ids: $ReadOnlyArray<string>): SearchQuery$DocIdQuery;
 
     /**
      * Creates a query which allows you to match a list of document IDs in an index.
      */
-    static docIds(...ids: string[]): SearchQuery$SearchQuery$DocIdQuery;
+    static docIds(...ids: string[]): SearchQuery$DocIdQuery;
 
     /**
      * Creates a geographical bounding-box based query.
@@ -1091,77 +952,73 @@ declare module "couchbase" {
       tl_lon: number,
       br_lat: number,
       br_lon: number
-    ): SearchQuery$SearchQuery$GeoBoundingBoxQuery;
+    ): SearchQuery$GeoBoundingBoxQuery;
 
     /**
      * Creates a geographical distance based query.
      */
-    static geoDistanceQuery(): SearchQuery$SearchQuery$GeoDistanceQuery;
+    static geoDistanceQuery(): SearchQuery$GeoDistanceQuery;
 
     /**
      * Creates a search query for matching text.
      */
-    static match(match: string): SearchQuery$SearchQuery$MatchQuery;
+    static match(match: string): SearchQuery$MatchQuery;
 
     /**
      * Creates a search query which matches anything.
      */
-    static matchAll(): SearchQuery$SearchQuery$MatchAllQuery;
+    static matchAll(): SearchQuery$MatchAllQuery;
 
     /**
      * Creates a search query which matches nothing.
      */
-    static matchNone(): SearchQuery$SearchQuery$MatchAllQuery;
+    static matchNone(): SearchQuery$MatchAllQuery;
 
     /**
      * Creates a search query for matching phrases in an index.
      */
-    static matchPhrase(
-      phrase: string
-    ): SearchQuery$SearchQuery$MatchPhraseQuery;
+    static matchPhrase(phrase: string): SearchQuery$MatchPhraseQuery;
 
     /**
      * Creates a search query for matching numeric ranges in an index.
      */
-    static numericRange(): SearchQuery$SearchQuery$NumericRangeQuery;
+    static numericRange(): SearchQuery$NumericRangeQuery;
 
     /**
      * Creates a search query for a prefix in an index.
      */
-    static phrase(
-      terms: $ReadOnlyArray<string>
-    ): SearchQuery$SearchQuery$PhraseQuery;
+    static phrase(terms: $ReadOnlyArray<string>): SearchQuery$PhraseQuery;
 
     /**
      * Creates a search query for a prefix in an index.
      */
-    static prefix(prefix: string): SearchQuery$SearchQuery$PrefixQuery;
+    static prefix(prefix: string): SearchQuery$PrefixQuery;
 
     /**
      * Creates a query for matches any of a list of subqueries in an index.
      * Creates a search query for matching string.
      */
-    static queryString(query: string): SearchQuery$SearchQuery$QueryStringQuery;
+    static queryString(query: string): SearchQuery$QueryStringQuery;
 
     /**
      * Creates a search query for matching against a regexp query in an index.
      */
-    static regexp(regexp: string): SearchQuery$SearchQuery$RegexpQuery;
+    static regexp(regexp: string): SearchQuery$RegexpQuery;
 
     /**
      * Creates a search query for searching terms in an index.
      */
-    static term(SearchFacet$term: string): SearchQuery$SearchQuery$TermQuery;
+    static term(term: string): SearchQuery$TermQuery;
 
     /**
      * Creates a search query for matching term ranges in the index.
      */
-    static termRange(): SearchQuery$SearchQuery$TermRangeQuery;
+    static termRange(): SearchQuery$TermRangeQuery;
 
     /**
      * Creates a search query for matching a string with wildcards in an index.
      */
-    static wildcard(wildcard: string): SearchQuery$SearchQuery$WildcardQuery;
+    static wildcard(wildcard: string): SearchQuery$WildcardQuery;
 
     /**
      * Adds a SearchFacet object to return information about as part of the execution of this query.
@@ -1171,7 +1028,7 @@ declare module "couchbase" {
     /**
      * Specify the consistency level for this query.
      */
-    consistency(val: SearchQuery$N1qlQuery$Consistency): this;
+    consistency(val: SearchQuery$Consistency): this;
 
     /**
      * Includes information about the internal search semantics used to execute your query.
@@ -1192,17 +1049,14 @@ declare module "couchbase" {
      * Request a particular highlight style and field list for this query.
      */
     highlight(
-      style: SearchQuery$SearchQuery$HighlightStyle,
+      style: SearchQuery$HighlightStyle,
       fields: $ReadOnlyArray<string>
     ): this;
 
     /**
      * Request a particular highlight style and field list for this query.
      */
-    highlight(
-      style: SearchQuery$SearchQuery$HighlightStyle,
-      ...fields: string[]
-    ): this;
+    highlight(style: SearchQuery$HighlightStyle, ...fields: string[]): this;
 
     /**
      * Specifies the maximum number of results to return.
@@ -1232,9 +1086,35 @@ declare module "couchbase" {
      */
     timeout(timeout: number): this;
   }
+
+  declare var npm$namespace$SearchQuery: {
+    Consistency: typeof SearchQuery$Consistency,
+    HighlightStyle: typeof SearchQuery$HighlightStyle,
+    Query: typeof SearchQuery$Query,
+    BooleanQuery: typeof SearchQuery$BooleanQuery,
+    BooleanFieldQuery: typeof SearchQuery$BooleanFieldQuery,
+    ConjunctionQuery: typeof SearchQuery$ConjunctionQuery,
+    DateRangeQuery: typeof SearchQuery$DateRangeQuery,
+    DisjunctionQuery: typeof SearchQuery$DisjunctionQuery,
+    DocIdQuery: typeof SearchQuery$DocIdQuery,
+    GeoBoundingBoxQuery: typeof SearchQuery$GeoBoundingBoxQuery,
+    GeoDistanceQuery: typeof SearchQuery$GeoDistanceQuery,
+    MatchAllQuery: typeof SearchQuery$MatchAllQuery,
+    MatchNoneQuery: typeof SearchQuery$MatchNoneQuery,
+    MatchPhraseQuery: typeof SearchQuery$MatchPhraseQuery,
+    MatchQuery: typeof SearchQuery$MatchQuery,
+    NumericRangeQuery: typeof SearchQuery$NumericRangeQuery,
+    PhraseQuery: typeof SearchQuery$PhraseQuery,
+    PrefixQuery: typeof SearchQuery$PrefixQuery,
+    QueryStringQuery: typeof SearchQuery$QueryStringQuery,
+    RegexpQuery: typeof SearchQuery$RegexpQuery,
+    TermQuery: typeof SearchQuery$TermQuery,
+    TermRangeQuery: typeof SearchQuery$TermRangeQuery,
+    WildcardQuery: typeof SearchQuery$WildcardQuery
+  };
   declare class SearchQuery$Query {}
 
-  declare class SearchQuery$BooleanQuery mixins SearchQuery$Query {
+  declare class SearchQuery$BooleanQuery mixins Query {
     /**
      * Specifies a predicate query which must match.
      * @param query
@@ -1266,7 +1146,7 @@ declare module "couchbase" {
     boost(boost: number): this;
   }
 
-  declare class SearchQuery$BooleanFieldQuery mixins SearchQuery$Query {
+  declare class SearchQuery$BooleanFieldQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1277,21 +1157,21 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param boost The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$ConjunctionQuery mixins SearchQuery$Query {
+  declare class SearchQuery$ConjunctionQuery mixins Query {
     /**
      * Specifies additional predicate queries.
      * @param queries Additional predicate queries.
      */
-    and(queries: $ReadOnlyArray<SearchQuery$SearchQuery$Query>): this;
+    and(queries: $ReadOnlyArray<SearchQuery$Query>): this;
 
     /**
      * Specifies additional predicate queries.
      * @param queries Additional predicate queries.
      */
-    and(...queries: SearchQuery$SearchQuery$Query[]): this;
+    and(...queries: SearchQuery$Query[]): this;
 
     /**
      * Defines the amount to boost the query.
@@ -1300,7 +1180,7 @@ declare module "couchbase" {
     boost(boost: number): this;
   }
 
-  declare class SearchQuery$DateRangeQuery mixins SearchQuery$Query {
+  declare class SearchQuery$DateRangeQuery mixins Query {
     /**
      * Defines the lower bound of the date range query.
      * @param start The lower bound of the query.
@@ -1325,21 +1205,21 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$DisjunctionQuery mixins SearchQuery$Query {
+  declare class SearchQuery$DisjunctionQuery mixins Query {
     /**
      * Specifies additional predicate queries.
      * @param queries Additional predicate queries.
      */
-    or(queries: $ReadOnlyArray<SearchQuery$SearchQuery$Query>): this;
+    or(queries: $ReadOnlyArray<SearchQuery$Query>): this;
 
     /**
      * Specifies additional predicate queries.
      * @param queries Additional predicate queries.
      */
-    or(...queries: SearchQuery$SearchQuery$Query[]): this;
+    or(...queries: SearchQuery$Query[]): this;
 
     /**
      * Defines the amount to boost the query.
@@ -1348,7 +1228,7 @@ declare module "couchbase" {
     boost(boost: number): this;
   }
 
-  declare class SearchQuery$DocIdQuery mixins SearchQuery$Query {
+  declare class SearchQuery$DocIdQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1359,10 +1239,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$GeoBoundingBoxQuery mixins SearchQuery$Query {
+  declare class SearchQuery$GeoBoundingBoxQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1373,10 +1253,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$GeoDistanceQuery mixins SearchQuery$Query {
+  declare class SearchQuery$GeoDistanceQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1387,14 +1267,14 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$MatchAllQuery mixins SearchQuery$Query {}
+  declare class SearchQuery$MatchAllQuery mixins Query {}
 
-  declare class SearchQuery$MatchNoneQuery mixins SearchQuery$Query {}
+  declare class SearchQuery$MatchNoneQuery mixins Query {}
 
-  declare class SearchQuery$MatchPhraseQuery mixins SearchQuery$Query {
+  declare class SearchQuery$MatchPhraseQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1405,7 +1285,7 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
 
     /**
      * Specifies the analyzer to use for the query.
@@ -1414,7 +1294,7 @@ declare module "couchbase" {
     analyzer(analyzer: string): this;
   }
 
-  declare class SearchQuery$MatchQuery mixins SearchQuery$Query {
+  declare class SearchQuery$MatchQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1425,7 +1305,7 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
 
     /**
      * Defines the level of fuzziness for the query.
@@ -1446,7 +1326,7 @@ declare module "couchbase" {
     analyzer(analyzer: string): this;
   }
 
-  declare class SearchQuery$NumericRangeQuery mixins SearchQuery$Query {
+  declare class SearchQuery$NumericRangeQuery mixins Query {
     /**
      * Defines the lower bound of the numeric range query.
      * @param min The lower bound of the query.
@@ -1471,10 +1351,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$PhraseQuery mixins SearchQuery$Query {
+  declare class SearchQuery$PhraseQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1485,10 +1365,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$PrefixQuery mixins SearchQuery$Query {
+  declare class SearchQuery$PrefixQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1499,10 +1379,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$QueryStringQuery mixins SearchQuery$Query {
+  declare class SearchQuery$QueryStringQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1510,21 +1390,7 @@ declare module "couchbase" {
     boost(boost: number): this;
   }
 
-  declare class SearchQuery$RegexpQuery mixins SearchQuery$Query {
-    /**
-     * Defines the amount to boost the query.
-     * @param boost Amount to boost the query.
-     */
-    boost(boost: number): this;
-
-    /**
-     * Specifies the field to query.
-     * @param field The field to query.
-     */
-    field(SearchSort$field: string): this;
-  }
-
-  declare class SearchQuery$TermQuery mixins SearchQuery$Query {
+  declare class SearchQuery$RegexpQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1535,7 +1401,21 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
+  }
+
+  declare class SearchQuery$TermQuery mixins Query {
+    /**
+     * Defines the amount to boost the query.
+     * @param boost Amount to boost the query.
+     */
+    boost(boost: number): this;
+
+    /**
+     * Specifies the field to query.
+     * @param field The field to query.
+     */
+    field(field: string): this;
 
     /**
      * Defines the level of fuzziness for the query.
@@ -1550,7 +1430,7 @@ declare module "couchbase" {
     prefixLength(prefixLength: number): this;
   }
 
-  declare class SearchQuery$TermRangeQuery mixins SearchQuery$Query {
+  declare class SearchQuery$TermRangeQuery mixins Query {
     /**
      * Defines the lower bound of the term range query.
      * @param min The lower bound of the query.
@@ -1575,10 +1455,10 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param field The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
-  declare class SearchQuery$WildcardQuery mixins SearchQuery$Query {
+  declare class SearchQuery$WildcardQuery mixins Query {
     /**
      * Defines the amount to boost the query.
      * @param boost Amount to boost the query.
@@ -1589,56 +1469,42 @@ declare module "couchbase" {
      * Specifies the field to query.
      * @param boost The field to query.
      */
-    field(SearchSort$field: string): this;
+    field(field: string): this;
   }
 
   /**
    * Enumeration for specifying FTS consistency semantics.
    */
-  declare class SearchQuery$Consistency {
-    constructor(...args: empty): mixed;
-    static +NOT_BOUNDED: Class<SearchQuery$Consistency__NOT_BOUNDED> &
-      SearchQuery$Consistency__NOT_BOUNDED &
-      0; // 0
-  }
 
-  declare class SearchQuery$Consistency__NOT_BOUNDED
-    mixins SearchQuery$Consistency {}
+  declare var SearchQuery$Consistency: {|
+    +NOT_BOUNDED: 0 // 0
+  |};
 
   /**
    * Enumeration for specifying FTS highlight styling.
    */
-  declare class SearchQuery$HighlightStyle {
-    constructor(...args: empty): mixed;
-    static +DEFAULT: Class<SearchQuery$HighlightStyle__DEFAULT> &
-      SearchQuery$HighlightStyle__DEFAULT &
-      0; // 0
-    static +HTML: Class<SearchQuery$HighlightStyle__HTML> &
-      SearchQuery$HighlightStyle__HTML &
-      1; // 1
-    static +ANSI: Class<SearchQuery$HighlightStyle__ANSI> &
-      SearchQuery$HighlightStyle__ANSI &
-      2; // 2
-  }
 
-  declare class SearchQuery$HighlightStyle__DEFAULT
-    mixins SearchQuery$HighlightStyle {}
-  declare class SearchQuery$HighlightStyle__HTML
-    mixins SearchQuery$HighlightStyle {}
-  declare class SearchQuery$HighlightStyle__ANSI
-    mixins SearchQuery$HighlightStyle {}
+  declare var SearchQuery$HighlightStyle: {|
+    +DEFAULT: 0, // 0
+    +HTML: 1, // 1
+    +ANSI: 2 // 2
+  |};
 
   declare class SearchFacet {}
 
   declare var npm$namespace$SearchFacet: {
     term: typeof SearchFacet$term,
     numeric: typeof SearchFacet$numeric,
-    date: typeof SearchFacet$date
+    date: typeof SearchFacet$date,
+
+    TermFacet: typeof SearchFacet$TermFacet,
+    NumericFacet: typeof SearchFacet$NumericFacet,
+    DateFacet: typeof SearchFacet$DateFacet
   };
   declare class SearchFacet$TermFacet mixins SearchFacet {}
 
   declare function SearchFacet$term(
-    SearchSort$field: string,
+    field: string,
     size: number
   ): SearchFacet$TermFacet;
 
@@ -1647,7 +1513,7 @@ declare module "couchbase" {
   }
 
   declare function SearchFacet$numeric(
-    SearchSort$field: string,
+    field: string,
     size: number
   ): SearchFacet$NumericFacet;
 
@@ -1656,7 +1522,7 @@ declare module "couchbase" {
   }
 
   declare function SearchFacet$date(
-    SearchSort$field: string,
+    field: string,
     size: number
   ): SearchFacet$DateFacet;
 
@@ -1671,7 +1537,12 @@ declare module "couchbase" {
     score: typeof SearchSort$score,
     id: typeof SearchSort$id,
     field: typeof SearchSort$field,
-    geoDistance: typeof SearchSort$geoDistance
+    geoDistance: typeof SearchSort$geoDistance,
+
+    ScoreSort: typeof SearchSort$ScoreSort,
+    IdSort: typeof SearchSort$IdSort,
+    FieldSort: typeof SearchSort$FieldSort,
+    GeoDistanceSort: typeof SearchSort$GeoDistanceSort
   };
   declare class SearchSort$ScoreSort mixins SearchSort {}
 
@@ -1687,16 +1558,14 @@ declare module "couchbase" {
     missing(missing: string): this;
   }
 
-  declare function SearchSort$field(
-    SearchSort$field: string
-  ): SearchSort$FieldSort;
+  declare function SearchSort$field(field: string): SearchSort$FieldSort;
 
   declare class SearchSort$GeoDistanceSort mixins SearchSort {
     unit(unit: string): this;
   }
 
   declare function SearchSort$geoDistance(
-    SearchSort$field: string,
+    field: string,
     lat: number,
     lon: number
   ): SearchSort$GeoDistanceSort;
@@ -1764,7 +1633,7 @@ declare module "couchbase" {
     append(
       key: string | Buffer,
       fragment: any,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1777,7 +1646,7 @@ declare module "couchbase" {
       key: string | Buffer,
       fragment: any,
       options: AppendOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1790,7 +1659,7 @@ declare module "couchbase" {
     counter(
       key: string | Buffer,
       delta: number,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1803,7 +1672,7 @@ declare module "couchbase" {
       key: string | Buffer,
       delta: number,
       options: CounterOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1822,18 +1691,14 @@ declare module "couchbase" {
      * @param key The target document key.
      * @param callback The callback function.
      */
-    get(key: string | Buffer, callback: Bucket$Bucket$OpCallback): void,
+    get(key: string | Buffer, callback: Bucket$OpCallback): void,
 
     /**
      * @param key The target document key.
      * @param options The options object.
      * @param callback The callback function.
      */
-    get(
-      key: string | Buffer,
-      options: any,
-      callback: Bucket$Bucket$OpCallback
-    ): void,
+    get(key: string | Buffer, options: any, callback: Bucket$OpCallback): void,
 
     /**
      * Lock the document on the server and retrieve it. When an document is locked, its CAS changes and subsequent operations on the document (without providing the current CAS) will fail until the lock is no longer held.
@@ -1842,7 +1707,7 @@ declare module "couchbase" {
      * @param key The target document key.
      * @param callback The callback function.
      */
-    getAndLock(key: string, callback: Bucket$Bucket$OpCallback): void,
+    getAndLock(key: string, callback: Bucket$OpCallback): void,
 
     /**
      * Lock the document on the server and retrieve it. When an document is locked, its CAS changes and subsequent operations on the document (without providing the current CAS) will fail until the lock is no longer held.
@@ -1856,7 +1721,7 @@ declare module "couchbase" {
     getAndLock(
       key: string,
       options: GetAndLockOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1870,7 +1735,7 @@ declare module "couchbase" {
       key: string | Buffer,
       expiry: number,
       options: any,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1882,7 +1747,7 @@ declare module "couchbase" {
     getAndTouch(
       key: string | Buffer,
       expiry: number,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1892,7 +1757,7 @@ declare module "couchbase" {
      */
     getMulti(
       key: $ReadOnlyArray<string | Buffer>,
-      callback: Bucket$Bucket$MultiGetCallback
+      callback: Bucket$MultiGetCallback
     ): void,
 
     /**
@@ -1900,7 +1765,7 @@ declare module "couchbase" {
      * @param key The target document key.
      * @param callback The callback function.
      */
-    getReplica(key: string | Buffer, callback: Bucket$Bucket$OpCallback): void,
+    getReplica(key: string | Buffer, callback: Bucket$OpCallback): void,
 
     /**
      * Get a document from a replica server in your cluster.
@@ -1911,7 +1776,7 @@ declare module "couchbase" {
     getReplica(
       key: string | Buffer,
       options: GetReplicaOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1920,11 +1785,7 @@ declare module "couchbase" {
      * @param value The document's contents.
      * @param callback The callback function.
      */
-    insert(
-      key: string | Buffer,
-      value: any,
-      callback: Bucket$Bucket$OpCallback
-    ): void,
+    insert(key: string | Buffer, value: any, callback: Bucket$OpCallback): void,
 
     /**
      * Identical to Bucket#upsert but will fail if the document already exists.
@@ -1937,7 +1798,7 @@ declare module "couchbase" {
       key: string | Buffer,
       value: any,
       options: InsertOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1951,11 +1812,7 @@ declare module "couchbase" {
      * @param fragment The document's contents to prepend.
      * @param callback The callback function.
      */
-    prepend(
-      key: string,
-      fragment: any,
-      callback: Bucket$Bucket$OpCallback
-    ): void,
+    prepend(key: string, fragment: any, callback: Bucket$OpCallback): void,
 
     /**
      * Like Bucket#append, but prepends data to the existing value.
@@ -1968,7 +1825,7 @@ declare module "couchbase" {
       key: string,
       fragment: any,
       options: PrependOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -1978,8 +1835,8 @@ declare module "couchbase" {
      */
     query(
       query: ViewQuery | SpatialQuery,
-      callback?: Bucket$Bucket$QueryCallback
-    ): Bucket$Bucket$ViewQueryResponse,
+      callback?: Bucket$QueryCallback
+    ): Bucket$ViewQueryResponse,
 
     /**
      * Executes a previously prepared query object.
@@ -1988,8 +1845,8 @@ declare module "couchbase" {
      */
     query(
       query: N1qlQuery,
-      callback?: Bucket$Bucket$N1qlQueryCallback
-    ): Bucket$Bucket$N1qlQueryResponse,
+      callback?: Bucket$N1qlQueryCallback
+    ): Bucket$N1qlQueryResponse,
 
     /**
      * Executes a previously prepared query object.
@@ -1998,8 +1855,8 @@ declare module "couchbase" {
      */
     query(
       query: SearchQuery,
-      callback?: Bucket$Bucket$FtsQueryCallback
-    ): Bucket$Bucket$FtsQueryResponse,
+      callback?: Bucket$FtsQueryCallback
+    ): Bucket$FtsQueryResponse,
 
     /**
      * Executes a previously prepared query object.
@@ -2014,15 +1871,15 @@ declare module "couchbase" {
             [param: string]: any
           }
         | any[],
-      callback?: Bucket$Bucket$N1qlQueryCallback
-    ): Bucket$Bucket$N1qlQueryResponse,
+      callback?: Bucket$N1qlQueryCallback
+    ): Bucket$N1qlQueryResponse,
 
     /**
      * Deletes a document on the server.
      * @param key The target document key.
      * @param callback The callback function.
      */
-    remove(key: string | Buffer, callback: Bucket$Bucket$OpCallback): void,
+    remove(key: string | Buffer, callback: Bucket$OpCallback): void,
 
     /**
      * Deletes a document on the server.
@@ -2033,7 +1890,7 @@ declare module "couchbase" {
     remove(
       key: string | Buffer,
       options: RemoveOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2045,7 +1902,7 @@ declare module "couchbase" {
     replace(
       key: string | Buffer,
       value: any,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2059,7 +1916,7 @@ declare module "couchbase" {
       key: string | Buffer,
       value: any,
       options: ReplaceOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2068,8 +1925,8 @@ declare module "couchbase" {
      * @param decoder The function for decoding.
      */
     setTranscoder(
-      encoder: Bucket$Bucket$EncoderFunction,
-      decoder: Bucket$Bucket$DecoderFunction
+      encoder: Bucket$EncoderFunction,
+      decoder: Bucket$DecoderFunction
     ): void,
 
     /**
@@ -2083,7 +1940,7 @@ declare module "couchbase" {
       key: string | Buffer,
       expiry: number,
       options: TouchOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2094,8 +1951,8 @@ declare module "couchbase" {
      */
     unlock(
       key: string | Buffer,
-      cas: Bucket$Bucket$CAS,
-      callback: Bucket$Bucket$OpCallback
+      cas: Bucket$CAS,
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2107,9 +1964,9 @@ declare module "couchbase" {
      */
     unlock(
       key: string | Buffer,
-      cas: Bucket$Bucket$CAS,
+      cas: Bucket$CAS,
       options: any,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
 
     /**
@@ -2118,11 +1975,7 @@ declare module "couchbase" {
      * @param value The document's contents.
      * @param callback The callback function.
      */
-    upsert(
-      key: string | Buffer,
-      value: any,
-      callback: Bucket$Bucket$OpCallback
-    ): void,
+    upsert(key: string | Buffer, value: any, callback: Bucket$OpCallback): void,
 
     /**
      * Stores a document to the bucket.
@@ -2135,7 +1988,7 @@ declare module "couchbase" {
       key: string | Buffer,
       value: any,
       options: UpsertOptions,
-      callback: Bucket$Bucket$OpCallback
+      callback: Bucket$OpCallback
     ): void,
     addListener(event: "connect", listener: () => void): this,
     addListener(
@@ -2158,6 +2011,10 @@ declare module "couchbase" {
     ): this
   } & events.EventEmitter;
 
+  declare var npm$namespace$Bucket: {
+    TranscoderDoc: typeof Bucket$TranscoderDoc
+  };
+
   /**
    * This is used as a callback from executed queries. It is a shortcut method that automatically subscribes to the rows and error events of the Bucket.ViewQueryResponse.
    */
@@ -2170,7 +2027,7 @@ declare module "couchbase" {
     (
       error: CouchbaseError | null,
       rows: any[] | null,
-      meta: Bucket$Bucket$ViewQueryResponse.FtsQueryResponse$Meta
+      meta: Bucket$ViewQueryResponseMeta
     ): void;
   }
 
@@ -2186,7 +2043,7 @@ declare module "couchbase" {
     (
       error: CouchbaseError | null,
       rows: any[] | null,
-      meta: Bucket$Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
+      meta: Bucket$N1qlQueryResponseMeta
     ): void;
   }
 
@@ -2202,7 +2059,7 @@ declare module "couchbase" {
     (
       error: CouchbaseError | null,
       rows: any[] | null,
-      meta: Bucket$Bucket$FtsQueryResponse.FtsQueryResponse$Meta
+      meta: Bucket$FtsQueryResponseMeta
     ): void;
   }
 
@@ -2241,7 +2098,7 @@ declare module "couchbase" {
      * This function will receive a value when a storage operation is invoked that needs to encode user-provided data for storage into Couchbase. It expects to be returned a Buffer object to store along with an integer representing any flag metadata relating to how to decode the key later using the matching DecoderFunction.
      * @param value The value needing encoding.
      */
-    (value: any): Bucket$Bucket$TranscoderDoc;
+    (value: any): Bucket$TranscoderDoc;
   }
 
   /**
@@ -2252,7 +2109,7 @@ declare module "couchbase" {
     /**
      * @param doc The data from Couchbase to decode.
      */
-    (doc: Bucket$Bucket$TranscoderDoc): any;
+    (doc: Bucket$TranscoderDoc): any;
   }
 
   /**
@@ -2267,7 +2124,7 @@ declare module "couchbase" {
   declare type Bucket$N1qlQueryResponse = {
     addListener(
       event: "end",
-      listener: (meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta) => void
+      listener: (meta: N1qlQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "error",
@@ -2275,59 +2132,35 @@ declare module "couchbase" {
     ): this,
     addListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: N1qlQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: N1qlQueryResponse$Meta) => void
     ): this,
-    on(
-      event: "end",
-      listener: (meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta) => void
-    ): this,
+    on(event: "end", listener: (meta: N1qlQueryResponse$Meta) => void): this,
     on(event: "error", listener: (error: CouchbaseError) => void): this,
     on(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: N1qlQueryResponse$Meta) => void
     ): this,
     on(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: N1qlQueryResponse$Meta) => void
     ): this,
-    once(
-      event: "end",
-      listener: (meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta) => void
-    ): this,
+    once(event: "end", listener: (meta: N1qlQueryResponse$Meta) => void): this,
     once(event: "error", listener: (error: CouchbaseError) => void): this,
     once(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: N1qlQueryResponse$Meta) => void
     ): this,
     once(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "end",
-      listener: (meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta) => void
+      listener: (meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "error",
@@ -2335,21 +2168,15 @@ declare module "couchbase" {
     ): this,
     prependListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "end",
-      listener: (meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta) => void
+      listener: (meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "error",
@@ -2357,24 +2184,18 @@ declare module "couchbase" {
     ): this,
     prependOnceListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: N1qlQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$N1qlQueryResponse.FtsQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: N1qlQueryResponse$Meta) => void
     ): this
   } & events.EventEmitter;
 
   /**
    * The meta-information available from a view query response.
    */
-  declare interface N1qlQueryResponse$Meta {
+  declare interface Bucket$N1qlQueryResponse$Meta {
     /**
      * The identifier for this query request.
      */
@@ -2432,7 +2253,7 @@ declare module "couchbase" {
   declare type Bucket$ViewQueryResponse = {
     addListener(
       event: "end",
-      listener: (meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta) => void
+      listener: (meta: ViewQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "error",
@@ -2440,59 +2261,35 @@ declare module "couchbase" {
     ): this,
     addListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: ViewQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: ViewQueryResponse$Meta) => void
     ): this,
-    on(
-      event: "end",
-      listener: (meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta) => void
-    ): this,
+    on(event: "end", listener: (meta: ViewQueryResponse$Meta) => void): this,
     on(event: "error", listener: (error: CouchbaseError) => void): this,
     on(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: ViewQueryResponse$Meta) => void
     ): this,
     on(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: ViewQueryResponse$Meta) => void
     ): this,
-    once(
-      event: "end",
-      listener: (meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta) => void
-    ): this,
+    once(event: "end", listener: (meta: ViewQueryResponse$Meta) => void): this,
     once(event: "error", listener: (error: CouchbaseError) => void): this,
     once(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: ViewQueryResponse$Meta) => void
     ): this,
     once(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: ViewQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "end",
-      listener: (meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta) => void
+      listener: (meta: ViewQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "error",
@@ -2500,21 +2297,15 @@ declare module "couchbase" {
     ): this,
     prependListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: ViewQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: ViewQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "end",
-      listener: (meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta) => void
+      listener: (meta: ViewQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "error",
@@ -2522,24 +2313,18 @@ declare module "couchbase" {
     ): this,
     prependOnceListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: ViewQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$ViewQueryResponse.N1qlQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: ViewQueryResponse$Meta) => void
     ): this
   } & events.EventEmitter;
 
   /**
    * The meta-information available from a view query response.
    */
-  declare interface ViewQueryResponse$Meta {
+  declare interface Bucket$ViewQueryResponse$Meta {
     /**
      * The identifier for this query request.
      */
@@ -2589,7 +2374,7 @@ declare module "couchbase" {
   declare type Bucket$FtsQueryResponse = {
     addListener(
       event: "end",
-      listener: (meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta) => void
+      listener: (meta: FtsQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "error",
@@ -2597,59 +2382,35 @@ declare module "couchbase" {
     ): this,
     addListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: FtsQueryResponse$Meta) => void
     ): this,
     addListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: FtsQueryResponse$Meta) => void
     ): this,
-    on(
-      event: "end",
-      listener: (meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta) => void
-    ): this,
+    on(event: "end", listener: (meta: FtsQueryResponse$Meta) => void): this,
     on(event: "error", listener: (error: CouchbaseError) => void): this,
     on(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: FtsQueryResponse$Meta) => void
     ): this,
     on(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: FtsQueryResponse$Meta) => void
     ): this,
-    once(
-      event: "end",
-      listener: (meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta) => void
-    ): this,
+    once(event: "end", listener: (meta: FtsQueryResponse$Meta) => void): this,
     once(event: "error", listener: (error: CouchbaseError) => void): this,
     once(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: FtsQueryResponse$Meta) => void
     ): this,
     once(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: FtsQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "end",
-      listener: (meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta) => void
+      listener: (meta: FtsQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "error",
@@ -2657,21 +2418,15 @@ declare module "couchbase" {
     ): this,
     prependListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: FtsQueryResponse$Meta) => void
     ): this,
     prependListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: FtsQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "end",
-      listener: (meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta) => void
+      listener: (meta: FtsQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "error",
@@ -2679,24 +2434,18 @@ declare module "couchbase" {
     ): this,
     prependOnceListener(
       event: "row",
-      listener: (
-        row: any,
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (row: any, meta: FtsQueryResponse$Meta) => void
     ): this,
     prependOnceListener(
       event: "rows",
-      listener: (
-        rows: any[],
-        meta: Bucket$FtsQueryResponse.ViewQueryResponse$Meta
-      ) => void
+      listener: (rows: any[], meta: FtsQueryResponse$Meta) => void
     ): this
   } & events.EventEmitter;
 
   /**
    * The meta-information available from a view query response.
    */
-  declare interface FtsQueryResponse$Meta {
+  declare interface Bucket$FtsQueryResponse$Meta {
     /**
      * The identifier for this query request.
      */
