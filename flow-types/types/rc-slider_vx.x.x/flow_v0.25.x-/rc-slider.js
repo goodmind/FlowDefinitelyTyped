@@ -74,15 +74,15 @@ declare module "rc-slider" {
     dots?: boolean;
 
     /**
- * @deprecated in version ^6.0.0. Use rc-tooltip
-Tooltip transition class name
- */
+     * @deprecated in version ^6.0.0. Use rc-tooltip
+     * Tooltip transition class name
+     */
     tipTransitionName?: string;
 
     /**
- * @deprecated in version ^6.0.0. Use rc-tooltip
-Tooltip formatter
- */
+     * @deprecated in version ^6.0.0. Use rc-tooltip
+     * Tooltip formatter
+     */
     tipFormatter?: ((value: any) => any | void) | null;
 
     /**
