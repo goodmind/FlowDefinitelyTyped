@@ -5,10 +5,10 @@ declare module "react-notification-system-redux" {
 
   import type { Attributes, Notification } from "react-notification-system";
 
-  declare module.exports: typeof Notifications;
+  declare export default typeof Notifications;
 
   declare class Notifications
-    mixins Component<Notifications$Notifications$NotificationsProps> {}
+    mixins Component<Notifications$NotificationsProps> {}
 
   declare var npm$namespace$Notifications: {
     show: typeof Notifications$show,
