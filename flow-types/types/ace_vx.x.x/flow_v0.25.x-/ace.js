@@ -168,13 +168,13 @@ declare module "ace" {
     getDocument(): AceAjax$Document;
 
     /**
- * Fires whenever the anchor position changes.
- * Both of these objects have a `row` and `column` property corresponding to the position.
- * Events that can trigger this function include [[Anchor.setPosition `setPosition()`]].
- * @param e An object containing information about the anchor position. It has two properties:
-- `old`: An object describing the old Anchor position
-- `value`: An object describing the new Anchor position
- */
+     * Fires whenever the anchor position changes.
+     * Both of these objects have a `row` and `column` property corresponding to the position.
+     * Events that can trigger this function include [[Anchor.setPosition `setPosition()`]].
+     * @param e An object containing information about the anchor position. It has two properties:
+     * - `old`: An object describing the old Anchor position
+     * - `value`: An object describing the new Anchor position
+     */
     onChange(e: any): void;
 
     /**
@@ -352,18 +352,18 @@ declare module "ace" {
     insertLines(row: number, lines: string[]): any;
 
     /**
- * Inserts the elements in `lines` into the document as full lines (does not merge with existing line), starting at the row index given by `row`. This method also triggers the `"change"` event.
- * @param {Number} row The index of the row to insert at
- * @param {Array} lines An array of strings
- * @returns {Object} Contains the final row and column, like this:
-```
-         *   {row: endRow, column: 0}
-         *   ```
-If `lines` is empty, this function returns an object containing the current row, and column, like this:
-```
-         *   {row: row, column: 0}
-         *   ```
- */
+     * Inserts the elements in `lines` into the document as full lines (does not merge with existing line), starting at the row index given by `row`. This method also triggers the `"change"` event.
+     * @param {Number} row The index of the row to insert at
+     * @param {Array} lines An array of strings
+     * @returns {Object} Contains the final row and column, like this:
+     * ```
+     *          *   {row: endRow, column: 0}
+     *          *   ```
+     * If `lines` is empty, this function returns an object containing the current row, and column, like this:
+     * ```
+     *          *   {row: row, column: 0}
+     *          *   ```
+     */
     insertFullLines(row: number, lines: string[]): any;
 
     /**
@@ -372,18 +372,18 @@ If `lines` is empty, this function returns an object containing the current row,
     insertNewLine(position: AceAjax$Position): any;
 
     /**
- * Inserts the elements in `lines` into the document, starting at the position index given by `row`. This method also triggers the `"change"` event.
- * @param {Number} row The index of the row to insert at
- * @param {Array} lines An array of strings
- * @returns {Object} Contains the final row and column, like this:
-```
-         *   {row: endRow, column: 0}
-         *   ```
-If `lines` is empty, this function returns an object containing the current row, and column, like this:
-```
-         *   {row: row, column: 0}
-         *   ```
- */
+     * Inserts the elements in `lines` into the document, starting at the position index given by `row`. This method also triggers the `"change"` event.
+     * @param {Number} row The index of the row to insert at
+     * @param {Array} lines An array of strings
+     * @returns {Object} Contains the final row and column, like this:
+     * ```
+     *          *   {row: endRow, column: 0}
+     *          *   ```
+     * If `lines` is empty, this function returns an object containing the current row, and column, like this:
+     * ```
+     *          *   {row: row, column: 0}
+     *          *   ```
+     */
     insertMergedLines(row: number, lines: string[]): any;
 
     /**
@@ -1057,7 +1057,7 @@ If `lines` is empty, this function returns an object containing the current row,
      * Returns the length of the screen.
      */
     getScreenLength(): number
-  } & AceAjax$OptionProvider;
+  } & OptionProvider;
 
   declare var AceAjax$EditSession: {
     /**
@@ -1747,7 +1747,7 @@ If `lines` is empty, this function returns an object containing the current row,
      * Cleans up the entire editor.
      */
     destroy(): void
-  } & AceAjax$OptionProvider;
+  } & OptionProvider;
 
   declare var AceAjax$Editor: {
     /**
@@ -2132,12 +2132,12 @@ If `lines` is empty, this function returns an object containing the current row,
     findAll(session: AceAjax$IEditSession): AceAjax$Range[];
 
     /**
- * Searches for `options.needle` in `input`, and, if found, replaces it with `replacement`.
- * @param input The text to search in
- * @param replacement The replacing text
-+ (String): If `options.regExp` is `true`, this function returns `input` with the replacement already made. Otherwise, this function just returns `replacement`.<br/>
-If `options.needle` was not found, this function returns `null`.
- */
+     * Searches for `options.needle` in `input`, and, if found, replaces it with `replacement`.
+     * @param input The text to search in
+     * @param replacement The replacing text
+     * + (String): If `options.regExp` is `true`, this function returns `input` with the replacement already made. Otherwise, this function just returns `replacement`.<br/>
+     * If `options.needle` was not found, this function returns `null`.
+     */
     replace(input: string, replacement: string): string;
   }
 
@@ -2966,7 +2966,7 @@ If `options.needle` was not found, this function returns `null`.
      * Destroys the text and cursor layers for this renderer.
      */
     destroy(): void
-  } & AceAjax$OptionProvider;
+  } & OptionProvider;
 
   declare var AceAjax$VirtualRenderer: {
     /**
@@ -3016,5 +3016,5 @@ If `options.needle` was not found, this function returns `null`.
     error: Error,
     results: AceAjax$Completion[]
   ) => void;
-  declare var ace: AceAjax$AceAjax$Ace;
+  declare var ace: AceAjax$Ace;
 }
