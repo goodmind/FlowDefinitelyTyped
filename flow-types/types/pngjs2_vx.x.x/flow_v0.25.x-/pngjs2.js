@@ -55,10 +55,14 @@ declare module "pngjs2" {
     ): PNG;
   }
 
-  declare var npm$namespace$sync: {
-    read: typeof sync$read
+  declare var npm$namespace$PNG: {
+    sync: typeof npm$namespace$PNG$sync
   };
-  declare function sync$read(
+
+  declare var npm$namespace$PNG$sync: {
+    read: typeof PNG$sync$read
+  };
+  declare function PNG$sync$read(
     buffer: string | Buffer,
     options?: PNGOptions
   ): PNG;
