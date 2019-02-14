@@ -1,41 +1,45 @@
 declare module "gapi.client.adsensehost" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    accounts: typeof client$accounts,
-    adclients: typeof client$adclients,
-    associationsessions: typeof client$associationsessions,
-    customchannels: typeof client$customchannels,
-    reports: typeof client$reports,
-    urlchannels: typeof client$urlchannels
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    accounts: typeof gapi$client$accounts,
+    adclients: typeof gapi$client$adclients,
+    associationsessions: typeof gapi$client$associationsessions,
+    customchannels: typeof gapi$client$customchannels,
+    reports: typeof gapi$client$reports,
+    urlchannels: typeof gapi$client$urlchannels
   };
 
   /**
    * Load AdSense Host API v4.1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adsensehost",
     version: "v4.1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "adsensehost",
     version: "v4.1",
     callback: () => any
   ): void;
 
-  declare var client$accounts: adsensehost$adsensehost$AccountsResource;
+  declare var gapi$client$accounts: adsensehost$AccountsResource;
 
-  declare var client$adclients: adsensehost$adsensehost$AdclientsResource;
+  declare var gapi$client$adclients: adsensehost$AdclientsResource;
 
-  declare var client$associationsessions: adsensehost$adsensehost$AssociationsessionsResource;
+  declare var gapi$client$associationsessions: adsensehost$AssociationsessionsResource;
 
-  declare var client$customchannels: adsensehost$adsensehost$CustomchannelsResource;
+  declare var gapi$client$customchannels: adsensehost$CustomchannelsResource;
 
-  declare var client$reports: adsensehost$adsensehost$ReportsResource;
+  declare var gapi$client$reports: adsensehost$ReportsResource;
 
-  declare var client$urlchannels: adsensehost$adsensehost$UrlchannelsResource;
+  declare var gapi$client$urlchannels: adsensehost$UrlchannelsResource;
 
-  declare interface adsensehost$Account {
+  declare interface gapi$client$adsensehost$Account {
     /**
      * Unique identifier of this account.
      */
@@ -57,7 +61,7 @@ declare module "gapi.client.adsensehost" {
     status?: string;
   }
 
-  declare interface adsensehost$Accounts {
+  declare interface gapi$client$adsensehost$Accounts {
     /**
      * ETag of this response for caching purposes.
      */
@@ -66,7 +70,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * The accounts returned in this list response.
      */
-    items?: adsensehost$Account[];
+    items?: gapi$client$adsensehost$Account[];
 
     /**
      * Kind of list this is, in this case adsensehost#accounts.
@@ -74,7 +78,7 @@ declare module "gapi.client.adsensehost" {
     kind?: string;
   }
 
-  declare interface adsensehost$AdClient {
+  declare interface gapi$client$adsensehost$AdClient {
     /**
      * Whether this ad client is opted in to ARC.
      */
@@ -101,7 +105,7 @@ declare module "gapi.client.adsensehost" {
     supportsReporting?: boolean;
   }
 
-  declare interface adsensehost$AdClients {
+  declare interface gapi$client$adsensehost$AdClients {
     /**
      * ETag of this response for caching purposes.
      */
@@ -110,7 +114,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * The ad clients returned in this list response.
      */
-    items?: adsensehost$AdClient[];
+    items?: gapi$client$adsensehost$AdClient[];
 
     /**
      * Kind of list this is, in this case adsensehost#adClients.
@@ -123,7 +127,7 @@ declare module "gapi.client.adsensehost" {
     nextPageToken?: string;
   }
 
-  declare interface adsensehost$AdCode {
+  declare interface gapi$client$adsensehost$AdCode {
     /**
      * The ad code snippet.
      */
@@ -135,7 +139,7 @@ declare module "gapi.client.adsensehost" {
     kind?: string;
   }
 
-  declare interface adsensehost$AdStyle {
+  declare interface gapi$client$adsensehost$AdStyle {
     /**
      * The colors included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash.
      */
@@ -192,7 +196,7 @@ declare module "gapi.client.adsensehost" {
     kind?: string;
   }
 
-  declare interface adsensehost$AdUnit {
+  declare interface gapi$client$adsensehost$AdUnit {
     /**
      * Identity code of this ad unit, not necessarily unique across ad clients.
      */
@@ -236,7 +240,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * Custom style information specific to this ad unit.
      */
-    customStyle?: adsensehost$AdStyle;
+    customStyle?: gapi$client$adsensehost$AdStyle;
 
     /**
      * Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
@@ -289,7 +293,7 @@ declare module "gapi.client.adsensehost" {
     status?: string;
   }
 
-  declare interface adsensehost$AdUnits {
+  declare interface gapi$client$adsensehost$AdUnits {
     /**
      * ETag of this response for caching purposes.
      */
@@ -298,7 +302,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * The ad units returned in this list response.
      */
-    items?: adsensehost$AdUnit[];
+    items?: gapi$client$adsensehost$AdUnit[];
 
     /**
      * Kind of list this is, in this case adsensehost#adUnits.
@@ -311,7 +315,7 @@ declare module "gapi.client.adsensehost" {
     nextPageToken?: string;
   }
 
-  declare interface adsensehost$AssociationSession {
+  declare interface gapi$client$adsensehost$AssociationSession {
     /**
      * Hosted account id of the associated publisher after association. Present if status is ACCEPTED.
      */
@@ -358,7 +362,7 @@ declare module "gapi.client.adsensehost" {
     websiteUrl?: string;
   }
 
-  declare interface adsensehost$CustomChannel {
+  declare interface gapi$client$adsensehost$CustomChannel {
     /**
      * Code of this custom channel, not necessarily unique across ad clients.
      */
@@ -380,7 +384,7 @@ declare module "gapi.client.adsensehost" {
     name?: string;
   }
 
-  declare interface adsensehost$CustomChannels {
+  declare interface gapi$client$adsensehost$CustomChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -389,7 +393,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * The custom channels returned in this list response.
      */
-    items?: adsensehost$CustomChannel[];
+    items?: gapi$client$adsensehost$CustomChannel[];
 
     /**
      * Kind of list this is, in this case adsensehost#customChannels.
@@ -402,7 +406,7 @@ declare module "gapi.client.adsensehost" {
     nextPageToken?: string;
   }
 
-  declare interface adsensehost$Report {
+  declare interface gapi$client$adsensehost$Report {
     /**
      * The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty.
      */
@@ -457,7 +461,7 @@ declare module "gapi.client.adsensehost" {
     warnings?: string[];
   }
 
-  declare interface adsensehost$UrlChannel {
+  declare interface gapi$client$adsensehost$UrlChannel {
     /**
      * Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.
      */
@@ -474,7 +478,7 @@ declare module "gapi.client.adsensehost" {
     urlPattern?: string;
   }
 
-  declare interface adsensehost$UrlChannels {
+  declare interface gapi$client$adsensehost$UrlChannels {
     /**
      * ETag of this response for caching purposes.
      */
@@ -483,7 +487,7 @@ declare module "gapi.client.adsensehost" {
     /**
      * The URL channels returned in this list response.
      */
-    items?: adsensehost$UrlChannel[];
+    items?: gapi$client$adsensehost$UrlChannel[];
 
     /**
      * Kind of list this is, in this case adsensehost#urlChannels.
@@ -496,7 +500,7 @@ declare module "gapi.client.adsensehost" {
     nextPageToken?: string;
   }
 
-  declare interface adsensehost$AdclientsResource {
+  declare interface gapi$client$adsensehost$AdclientsResource {
     /**
      * Get information about one of the ad clients in the specified publisher's AdSense account.
      */
@@ -546,7 +550,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdClient>;
+    }): Request<gapi$client$adsensehost$AdClient>;
 
     /**
      * List all hosted ad clients in the specified hosted account.
@@ -603,7 +607,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdClients>;
+    }): Request<gapi$client$adsensehost$AdClients>;
 
     /**
      * Get information about one of the ad clients in the Host AdSense account.
@@ -649,7 +653,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdClient>;
+    }): Request<gapi$client$adsensehost$AdClient>;
 
     /**
      * List all host ad clients in this AdSense account.
@@ -701,10 +705,10 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdClients>;
+    }): Request<gapi$client$adsensehost$AdClients>;
   }
 
-  declare interface adsensehost$AdunitsResource {
+  declare interface gapi$client$adsensehost$AdunitsResource {
     /**
      * Delete the specified ad unit from the specified publisher AdSense account.
      */
@@ -759,7 +763,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnit>;
+    }): Request<gapi$client$adsensehost$AdUnit>;
 
     /**
      * Get the specified host ad unit in this AdSense account.
@@ -815,7 +819,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnit>;
+    }): Request<gapi$client$adsensehost$AdUnit>;
 
     /**
      * Get ad code for the specified ad unit, attaching the specified host custom channels.
@@ -876,7 +880,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdCode>;
+    }): Request<gapi$client$adsensehost$AdCode>;
 
     /**
      * Insert the supplied ad unit into the specified publisher AdSense account.
@@ -927,7 +931,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnit>;
+    }): Request<gapi$client$adsensehost$AdUnit>;
 
     /**
      * List all ad units in the specified publisher's AdSense account.
@@ -994,7 +998,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnits>;
+    }): Request<gapi$client$adsensehost$AdUnits>;
 
     /**
      * Update the supplied ad unit in the specified publisher AdSense account. This method supports patch semantics.
@@ -1050,7 +1054,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnit>;
+    }): Request<gapi$client$adsensehost$AdUnit>;
 
     /**
      * Update the supplied ad unit in the specified publisher AdSense account.
@@ -1101,10 +1105,10 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AdUnit>;
+    }): Request<gapi$client$adsensehost$AdUnit>;
   }
 
-  declare interface adsensehost$ReportsResource {
+  declare interface gapi$client$adsensehost$ReportsResource {
     /**
      * Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format
      * specify "alt=csv" as a query parameter.
@@ -1196,7 +1200,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$Report>;
+    }): Request<gapi$client$adsensehost$Report>;
 
     /**
      * Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -1284,10 +1288,10 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$Report>;
+    }): Request<gapi$client$adsensehost$Report>;
   }
 
-  declare interface adsensehost$AccountsResource {
+  declare interface gapi$client$adsensehost$AccountsResource {
     /**
      * Get information about the selected associated AdSense account.
      */
@@ -1332,7 +1336,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$Account>;
+    }): Request<gapi$client$adsensehost$Account>;
 
     /**
      * List hosted accounts associated with this AdSense account by ad client id.
@@ -1378,13 +1382,13 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$Accounts>;
-    client$adclients: adsensehost$AdclientsResource;
-    adunits: adsensehost$AdunitsResource;
-    client$reports: adsensehost$ReportsResource;
+    }): Request<gapi$client$adsensehost$Accounts>;
+    adclients: gapi$client$adsensehost$AdclientsResource;
+    adunits: gapi$client$adsensehost$AdunitsResource;
+    reports: gapi$client$adsensehost$ReportsResource;
   }
 
-  declare interface adsensehost$AssociationsessionsResource {
+  declare interface gapi$client$adsensehost$AssociationsessionsResource {
     /**
      * Create an association session for initiating an association with an AdSense user.
      */
@@ -1444,7 +1448,7 @@ declare module "gapi.client.adsensehost" {
        * The URL of the user's hosted website.
        */
       websiteUrl: string
-    }): Request<adsensehost$AssociationSession>;
+    }): Request<gapi$client$adsensehost$AssociationSession>;
 
     /**
      * Verify an association session after the association callback returns from AdSense signup.
@@ -1490,10 +1494,10 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$AssociationSession>;
+    }): Request<gapi$client$adsensehost$AssociationSession>;
   }
 
-  declare interface adsensehost$CustomchannelsResource {
+  declare interface gapi$client$adsensehost$CustomchannelsResource {
     /**
      * Delete a specific custom channel from the host AdSense account.
      */
@@ -1543,7 +1547,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannel>;
+    }): Request<gapi$client$adsensehost$CustomChannel>;
 
     /**
      * Get a specific custom channel from the host AdSense account.
@@ -1594,7 +1598,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannel>;
+    }): Request<gapi$client$adsensehost$CustomChannel>;
 
     /**
      * Add a new custom channel to the host AdSense account.
@@ -1640,7 +1644,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannel>;
+    }): Request<gapi$client$adsensehost$CustomChannel>;
 
     /**
      * List all host custom channels in this AdSense account.
@@ -1697,7 +1701,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannels>;
+    }): Request<gapi$client$adsensehost$CustomChannels>;
 
     /**
      * Update a custom channel in the host AdSense account. This method supports patch semantics.
@@ -1748,7 +1752,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannel>;
+    }): Request<gapi$client$adsensehost$CustomChannel>;
 
     /**
      * Update a custom channel in the host AdSense account.
@@ -1794,10 +1798,10 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$CustomChannel>;
+    }): Request<gapi$client$adsensehost$CustomChannel>;
   }
 
-  declare interface adsensehost$UrlchannelsResource {
+  declare interface gapi$client$adsensehost$UrlchannelsResource {
     /**
      * Delete a URL channel from the host AdSense account.
      */
@@ -1847,7 +1851,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$UrlChannel>;
+    }): Request<gapi$client$adsensehost$UrlChannel>;
 
     /**
      * Add a new URL channel to the host AdSense account.
@@ -1893,7 +1897,7 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$UrlChannel>;
+    }): Request<gapi$client$adsensehost$UrlChannel>;
 
     /**
      * List all host URL channels in the host AdSense account.
@@ -1950,6 +1954,6 @@ declare module "gapi.client.adsensehost" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<adsensehost$UrlChannels>;
+    }): Request<gapi$client$adsensehost$UrlChannels>;
   }
 }
