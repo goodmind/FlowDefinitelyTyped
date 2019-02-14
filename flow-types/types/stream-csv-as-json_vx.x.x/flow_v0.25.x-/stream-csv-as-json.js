@@ -5,9 +5,9 @@ declare module "stream-csv-as-json" {
 
   import typeof * as Stringer from "./Stringer";
 
-  declare module.exports: typeof make;
+  declare export default typeof make;
 
-  declare function make(options?: make$Parser.ParserOptions): make$Parser;
+  declare function make(options?: Parser.ParserOptions): make$Parser;
 
   declare type ParserClass = make$Parser;
   declare type ParserType = typeof Parser;
@@ -20,7 +20,5 @@ declare module "stream-csv-as-json" {
 
   declare var make$Parser: ParserType;
 
-  declare function make$parser(
-    options?: make$Parser.ParserOptions
-  ): make$Parser;
+  declare function make$parser(options?: Parser.ParserOptions): make$Parser;
 }
