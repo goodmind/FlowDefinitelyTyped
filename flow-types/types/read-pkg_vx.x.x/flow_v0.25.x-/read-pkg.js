@@ -19,14 +19,12 @@ declare module "read-pkg" {
     [k: string]: any
   };
 
-  declare function ReadPkg$sync(
-    options?: ReadPkg$Options
-  ): normalize.ReadPkg$Package;
+  declare function ReadPkg$sync(options?: ReadPkg$Options): normalize.Package;
 
   declare function ReadPkg$sync(
     path?: string,
     options?: ReadPkg$Options
-  ): normalize.ReadPkg$Package;
+  ): normalize.Package;
 
   declare interface ReadPkg$Options {
     /**
@@ -36,10 +34,10 @@ declare module "read-pkg" {
     normalize?: boolean;
   }
 
-  declare type ReadPkg$Package = normalize.ReadPkg$Package;
+  declare type ReadPkg$Package = normalize.Package;
   declare function ReadPkg(
     path: string,
-    options: ReadPkg$ReadPkg$Options & {
+    options: ReadPkg$Options & {
       normalize: false
     }
   ): Promise<{
@@ -47,7 +45,7 @@ declare module "read-pkg" {
   }>;
 
   declare function ReadPkg(
-    options: ReadPkg$ReadPkg$Options & {
+    options: ReadPkg$Options & {
       normalize: false
     }
   ): Promise<{
@@ -55,13 +53,13 @@ declare module "read-pkg" {
   }>;
 
   declare function ReadPkg(
-    options?: ReadPkg$ReadPkg$Options
-  ): Promise<normalize.ReadPkg$Package>;
+    options?: ReadPkg$Options
+  ): Promise<normalize.Package>;
 
   declare function ReadPkg(
     path?: string,
-    options?: ReadPkg$ReadPkg$Options
-  ): Promise<normalize.ReadPkg$Package>;
+    options?: ReadPkg$Options
+  ): Promise<normalize.Package>;
 
-  declare module.exports: typeof ReadPkg;
+  declare export default typeof ReadPkg;
 }
