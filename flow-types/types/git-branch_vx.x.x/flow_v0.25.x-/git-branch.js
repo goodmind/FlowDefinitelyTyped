@@ -1,5 +1,5 @@
 declare module "git-branch" {
-  declare module.exports: typeof GitBranch;
+  declare export default typeof GitBranch;
 
   declare function GitBranch(cwd?: string): Promise<string>;
 
