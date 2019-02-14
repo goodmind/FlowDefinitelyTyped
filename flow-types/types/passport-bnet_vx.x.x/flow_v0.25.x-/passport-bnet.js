@@ -1,6 +1,6 @@
 declare module "passport-bnet" {
   import type {
-    BnetStrategy$Strategy as OAuth2Strategy,
+    Strategy as OAuth2Strategy,
     VerifyFunction,
     VerifyFunctionWithRequest,
     _StrategyOptionsBase
@@ -8,11 +8,11 @@ declare module "passport-bnet" {
 
   declare class BnetStrategy mixins OAuth2Strategy {
     constructor(
-      options: BnetStrategy$BnetStrategy$StrategyOptions,
+      options: BnetStrategy$StrategyOptions,
       verify: VerifyFunction
     ): this;
     constructor(
-      options: BnetStrategy$BnetStrategy$StrategyOptionsWithRequest,
+      options: BnetStrategy$StrategyOptionsWithRequest,
       verify: VerifyFunctionWithRequest
     ): this;
   }
@@ -29,16 +29,16 @@ declare module "passport-bnet" {
 
   declare type BnetStrategy$StrategyOptions = {
     passReqToCallback?: false
-  } & BnetStrategy$_BaseBnetOptions;
+  } & _BaseBnetOptions;
 
   declare type BnetStrategy$StrategyOptionsWithRequest = {
     passReqToCallback: true
-  } & BnetStrategy$_BaseBnetOptions;
+  } & _BaseBnetOptions;
 
   declare function BnetStrategy$getHost(region: string): string;
 
   declare type BnetStrategy$Strategy = BnetStrategy;
 
   declare var BnetStrategy$Strategy: typeof BnetStrategy;
-  declare module.exports: typeof BnetStrategy;
+  declare export default typeof BnetStrategy;
 }
