@@ -155,8 +155,7 @@ until: string
 }): ComputedProperty<any>,
 
 /**
- * @deprecated
- * Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
+ * @deprecated Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
  */
 deprecatingAlias(
 dependentKey: string,
