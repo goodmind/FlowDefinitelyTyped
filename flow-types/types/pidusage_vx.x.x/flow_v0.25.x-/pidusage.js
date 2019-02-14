@@ -99,5 +99,5 @@ declare module "pidusage" {
    */
   declare function pidusage$clear(): void;
 
-  declare module.exports: typeof pidusage;
+  declare export default typeof pidusage;
 }
