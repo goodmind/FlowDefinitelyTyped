@@ -1,5 +1,5 @@
 declare module "file-exists" {
-  declare module.exports: typeof fileExists;
+  declare export default typeof fileExists;
 
   declare function fileExists(
     filepath: string,
@@ -8,7 +8,7 @@ declare module "file-exists" {
 
   declare function fileExists(
     filepath: string,
-    options?: fileExists$fileExists$Options,
+    options?: fileExists$Options,
     callback?: (err: Error | null, exists: boolean) => void
   ): void;
 
