@@ -1,10 +1,10 @@
 declare module "sql-template" {
-  declare module.exports: typeof SQL;
+  declare export default typeof SQL;
 
   declare function SQL(
     parts: TemplateStringsArray,
     ...values: any[]
-  ): SQL$SQL$Fragment;
+  ): SQL$Fragment;
 
   declare var npm$namespace$SQL: {
     insert: typeof SQL$insert,
