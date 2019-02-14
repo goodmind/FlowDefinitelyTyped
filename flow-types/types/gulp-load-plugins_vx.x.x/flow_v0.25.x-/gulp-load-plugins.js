@@ -44,7 +44,7 @@ declare module "gulp-load-plugins" {
    */
   declare function gulpLoadPlugins<T: IGulpPlugins>(options?: IOptions): T;
 
-  declare module.exports: typeof gulpLoadPlugins;
+  declare export default typeof gulpLoadPlugins;
 }
 
 /**
