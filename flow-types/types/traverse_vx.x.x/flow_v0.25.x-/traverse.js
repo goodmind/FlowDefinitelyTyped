@@ -1,5 +1,5 @@
 declare module "traverse" {
-  declare function traverse<T>(obj: T): traverse$traverse$Traverse<T>;
+  declare function traverse<T>(obj: T): traverse$Traverse<T>;
 
   declare var npm$namespace$traverse: {
     get: typeof traverse$get,
@@ -69,50 +69,50 @@ declare module "traverse" {
     /**
      * Get the element at the array `path`.
      */
-    traverse$get(path: string[]): any;
+    get(path: string[]): any;
 
     /**
      * Return whether the element at the array `path` exists.
      */
-    traverse$has(path: string[]): boolean;
+    has(path: string[]): boolean;
 
     /**
      * Set the element at the array `path` to `value`.
      */
-    traverse$set(path: string[], value: any): any;
+    set(path: string[], value: any): any;
 
     /**
      * Execute `fn` for each node in the object and return a new object with the results of the walk. To update nodes in the result use `this.update(value)`.
      */
-    traverse$map(cb: (v: any) => void): any;
+    map(cb: (v: any) => void): any;
 
     /**
      * Execute `fn` for each node in the object but unlike `.map()`, when `this.update()` is called it updates the object in-place.
      */
-    traverse$forEach(cb: (v: any) => void): any;
+    forEach(cb: (v: any) => void): any;
 
     /**
      * For each node in the object, perform a [left-fold](http://en.wikipedia.org/wiki/Fold_(higher-order_function)) with the return value of `fn(acc, node)`.
      *
      * If `init` isn't specified, `init` is set to the root object for the first step and the root element is skipped.
      */
-    traverse$reduce(cb: (acc: any, v: any) => void, init?: any): any;
+    reduce(cb: (acc: any, v: any) => void, init?: any): any;
 
     /**
      * Return an `Array` of every possible non-cyclic path in the object.
      * Paths are `Array`s of string keys.
      */
-    traverse$paths(): string[][];
+    paths(): string[][];
 
     /**
      * Return an `Array` of every node in the object.
      */
-    traverse$nodes(): any[];
+    nodes(): any[];
 
     /**
      * Create a deep clone of the object.
      */
-    traverse$clone(): T;
+    clone(): T;
   }
 
   declare interface traverse$TraverseContext {
@@ -226,5 +226,5 @@ declare module "traverse" {
      */
     block(): void;
   }
-  declare module.exports: typeof traverse;
+  declare export default typeof traverse;
 }
