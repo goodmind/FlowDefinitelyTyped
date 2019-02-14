@@ -1,26 +1,30 @@
 declare module "gapi.client.pagespeedonline" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    pagespeedapi: typeof client$pagespeedapi
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    pagespeedapi: typeof gapi$client$pagespeedapi
   };
 
   /**
    * Load PageSpeed Insights API v2
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "pagespeedonline",
     version: "v2"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "pagespeedonline",
     version: "v2",
     callback: () => any
   ): void;
 
-  declare var client$pagespeedapi: pagespeedonline$pagespeedonline$PagespeedapiResource;
+  declare var gapi$client$pagespeedapi: pagespeedonline$PagespeedapiResource;
 
-  declare interface pagespeedonline$PagespeedApiFormatStringV2 {
+  declare interface gapi$client$pagespeedonline$PagespeedApiFormatStringV2 {
     /**
      * List of arguments for the format string.
      */
@@ -99,7 +103,7 @@ declare module "gapi.client.pagespeedonline" {
     format?: string;
   }
 
-  declare interface pagespeedonline$PagespeedApiImageV2 {
+  declare interface gapi$client$pagespeedonline$PagespeedApiImageV2 {
     /**
      * Image data base64 encoded.
      */
@@ -151,7 +155,7 @@ declare module "gapi.client.pagespeedonline" {
     width?: number;
   }
 
-  declare interface pagespeedonline$Result {
+  declare interface gapi$client$pagespeedonline$Result {
     /**
      * Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server.
      */
@@ -188,7 +192,7 @@ declare module "gapi.client.pagespeedonline" {
           /**
            * A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so.
            */
-          summary?: pagespeedonline$PagespeedApiFormatStringV2,
+          summary?: gapi$client$pagespeedonline$PagespeedApiFormatStringV2,
 
           /**
            * List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details.
@@ -197,7 +201,7 @@ declare module "gapi.client.pagespeedonline" {
             /**
              * Heading to be displayed with the list of URLs.
              */
-            header?: pagespeedonline$PagespeedApiFormatStringV2,
+            header?: gapi$client$pagespeedonline$PagespeedApiFormatStringV2,
 
             /**
              * List of entries that provide information about URLs in the url block. Optional.
@@ -206,12 +210,12 @@ declare module "gapi.client.pagespeedonline" {
               /**
                * List of entries that provide additional details about a single URL. Optional.
                */
-              details?: pagespeedonline$PagespeedApiFormatStringV2[],
+              details?: gapi$client$pagespeedonline$PagespeedApiFormatStringV2[],
 
               /**
                * A format string that gives information about the URL, and a list of arguments for that format string.
                */
-              result?: pagespeedonline$PagespeedApiFormatStringV2
+              result?: gapi$client$pagespeedonline$PagespeedApiFormatStringV2
             }>
           }>
         }
@@ -325,7 +329,7 @@ declare module "gapi.client.pagespeedonline" {
     /**
      * Base64-encoded screenshot of the page that was analyzed.
      */
-    screenshot?: pagespeedonline$PagespeedApiImageV2;
+    screenshot?: gapi$client$pagespeedonline$PagespeedApiImageV2;
 
     /**
      * Title of the page, as displayed in the browser's title bar.
@@ -348,7 +352,7 @@ declare module "gapi.client.pagespeedonline" {
     };
   }
 
-  declare interface pagespeedonline$PagespeedapiResource {
+  declare interface gapi$client$pagespeedonline$PagespeedapiResource {
     /**
      * Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other
      * information.
@@ -419,6 +423,6 @@ declare module "gapi.client.pagespeedonline" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<pagespeedonline$Result>;
+    }): Request<gapi$client$pagespeedonline$Result>;
   }
 }
