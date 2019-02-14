@@ -1,5 +1,5 @@
 declare module "falcor-json-graph" {
-  declare module.exports: typeof FalcorJsonGraph;
+  declare export default typeof FalcorJsonGraph;
 
   declare var npm$namespace$FalcorJsonGraph: {
     ref: typeof FalcorJsonGraph$ref,
@@ -15,12 +15,12 @@ declare module "falcor-json-graph" {
   declare type FalcorJsonGraph$Atom = {
     $type: "atom",
     value: any
-  } & FalcorJsonGraph$Sentinel;
+  } & Sentinel;
 
   declare type FalcorJsonGraph$Error = {
     $type: "error",
     value: any
-  } & FalcorJsonGraph$Sentinel;
+  } & Sentinel;
 
   declare interface FalcorJsonGraph$InvalidPath {
     path: FalcorJsonGraph$PathSet;
@@ -91,33 +91,33 @@ declare module "falcor-json-graph" {
   declare type FalcorJsonGraph$Reference = {
     $type: "reference",
     value: FalcorJsonGraph$Path
-  } & FalcorJsonGraph$Sentinel;
+  } & Sentinel;
 
   declare interface FalcorJsonGraph$Sentinel {
     $expires?: number;
   }
 
   declare function FalcorJsonGraph$ref(
-    path: string | FalcorJsonGraph$FalcorJsonGraph$PathSet,
-    props?: FalcorJsonGraph$FalcorJsonGraph$Sentinel
-  ): FalcorJsonGraph$FalcorJsonGraph$Reference;
+    path: string | FalcorJsonGraph$PathSet,
+    props?: FalcorJsonGraph$Sentinel
+  ): FalcorJsonGraph$Reference;
 
   declare function FalcorJsonGraph$atom(
     value: any,
-    props?: FalcorJsonGraph$FalcorJsonGraph$Sentinel
-  ): FalcorJsonGraph$FalcorJsonGraph$Atom;
+    props?: FalcorJsonGraph$Sentinel
+  ): FalcorJsonGraph$Atom;
 
   declare function FalcorJsonGraph$error(
     errorValue: any,
-    props?: FalcorJsonGraph$FalcorJsonGraph$Sentinel
-  ): FalcorJsonGraph$FalcorJsonGraph$Error;
+    props?: FalcorJsonGraph$Sentinel
+  ): FalcorJsonGraph$Error;
 
   declare function FalcorJsonGraph$pathValue(
-    path: string | FalcorJsonGraph$FalcorJsonGraph$PathSet,
+    path: string | FalcorJsonGraph$PathSet,
     value: any
-  ): FalcorJsonGraph$FalcorJsonGraph$PathValue;
+  ): FalcorJsonGraph$PathValue;
 
   declare function FalcorJsonGraph$pathInvalidation(
-    path: string | FalcorJsonGraph$FalcorJsonGraph$PathSet
-  ): FalcorJsonGraph$FalcorJsonGraph$InvalidPath;
+    path: string | FalcorJsonGraph$PathSet
+  ): FalcorJsonGraph$InvalidPath;
 }
