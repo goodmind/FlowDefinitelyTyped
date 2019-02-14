@@ -1,22 +1,3 @@
-declare class yog$Yog  {
-express: typeof express;
-app: express.Express;
-_: typeof _;
-log: log.Logger;
-ral: typeof undefined | typeof undefined;
-RAL: typeof undefined;
-ralP: typeof undefined;
-view: {
-cleanCache(): void
-};
-reloadApp(appName: string): void;
-reloadView(): void;
-reloadIsomorphic(): void;
-ROOT_PATH: string;
-bootstrap(option: YogBootstrapOption, callback?: () => void): void
-}declare module 'global' {
-        declare var yog: yog$yog$Yog;
-    }
 declare module 'yog2-kernel' {
         import typeof * as express from 'express';
 
@@ -28,6 +9,15 @@ declare module 'yog2-kernel' {
 
 	import typeof * as yogBigpipe from 'yog-bigpipe';
 
+	
+      declare var npm$namespace$global: {
+        
+        yog: typeof global$yog,
+        
+        
+        
+      }
+declare var global$yog: yog$Yog;
 	declare export interface YogBootstrapOption {
 rootPath?: string,
 pluginsPath?: string,
@@ -36,8 +26,8 @@ app?: express.Express
 } 
 	declare export type Request = {
 CURRENT_APP: string,
-ral: typeof undefined,
-ralP: typeof undefined
+ral: typeof ral.RAL,
+ralP: typeof ral.RALPromise
 } & express.Request
 
 	declare export type Response = {
@@ -69,14 +59,22 @@ wrapAsync(
 fn: (req: Request, resp: Response, next: express.NextFunction) => any): express.RequestHandler
 } & express.Router
 
-	declare class yog$Yog  {
+	
+      declare var npm$namespace$yog: {
+        
+        
+        
+        Yog: typeof yog$Yog,
+        
+      }
+declare class yog$Yog  {
 express: typeof express;
 app: express.Express;
 _: typeof _;
 log: log.Logger;
-ral: typeof undefined | typeof undefined;
-RAL: typeof undefined;
-ralP: typeof undefined;
+ral: typeof ral.RAL | typeof ral.RALPromise;
+RAL: typeof ral.RAL;
+ralP: typeof ral.RALPromise;
 view: {
 cleanCache(): void
 };
