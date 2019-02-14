@@ -7,16 +7,23 @@ declare module "readable-stream" {
 
   import type { NodeStringDecoder } from "string_decoder";
 
-  declare class _Readable mixins stream._Readable$Readable {
-    _readableState: _Readable$_Readable$ReadableState;
+  declare class _Readable mixins stream.Readable {
+    _readableState: _Readable$ReadableState;
     destroyed: boolean;
-    constructor(options?: _Readable$_Readable$ReadableOptions): this;
+    constructor(options?: _Readable$ReadableOptions): this;
     destroy(err?: Error, callback?: (error: Error | null) => void): this;
     _undestroy(): void;
   }
 
   declare var npm$namespace$_Readable: {
-    NodeBaseExport: typeof _Readable$NodeBaseExport
+    NodeBaseExport: typeof _Readable$NodeBaseExport,
+
+    Duplex: typeof _Readable$Duplex,
+    PassThrough: typeof _Readable$PassThrough,
+    Readable: typeof _Readable$Readable,
+    Transform: typeof _Readable$Transform,
+    Writable: typeof _Readable$Writable,
+    Stream: typeof _Readable$Stream
   };
   declare interface _Readable$Entry<D> {
     data: D;
@@ -70,8 +77,7 @@ declare module "readable-stream" {
       ) => void
     };
 
-  declare class _Readable$Duplex
-    mixins _Readable$Writable, _Readable, stream._Readable$Duplex {
+  declare class _Readable$Duplex mixins Writable, _Readable, stream.Duplex {
     allowHalfOpen: boolean;
     destroyed: boolean;
     readable: boolean;
@@ -99,12 +105,13 @@ declare module "readable-stream" {
     addListener(ev: string | Symbol, fn: (...args: any[]) => void): this;
     on(ev: string | Symbol, fn: (...args: any[]) => void): this;
     _undestroy(): void;
-    undefined(): AsyncIterableIterator<string | Buffer>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): AsyncIterableIterator<
+      string | Buffer
+    >;
     constructor(options?: _Readable$DuplexOptions): this;
   }
 
-  declare class _Readable$PassThrough
-    mixins _Readable$Transform, stream._Readable$PassThrough {
+  declare class _Readable$PassThrough mixins Transform, stream.PassThrough {
     constructor(options?: _Readable$TransformOptions): this;
     _transform<T>(
       chunk: T,
@@ -185,8 +192,7 @@ declare module "readable-stream" {
     flush?: (callback: (er: any, data: any) => void) => void
   };
 
-  declare class _Readable$Transform
-    mixins _Readable$Duplex, stream._Readable$Transform {
+  declare class _Readable$Transform mixins Duplex, stream.Transform {
     _transformState: {
       afterTransform: (er: any, data: any) => void | boolean,
       needTransform: boolean,
@@ -277,7 +283,7 @@ declare module "readable-stream" {
     final?: (callback: (error?: Error | null) => void) => void
   };
 
-  declare class _Readable$Writable mixins stream._Readable$Writable {
+  declare class _Readable$Writable mixins stream.Writable {
     destroyed: boolean;
     _writableState: _Readable$WritableState;
     constructor(options?: _Readable$WritableOptions): this;
@@ -289,13 +295,13 @@ declare module "readable-stream" {
     constructor(options?: _Readable$ReadableOptions): this;
   }
 
-  declare var _Readable$NodeBaseExport: stream._Readable$Readable & {
-    _Readable$Readable: stream._Readable$Readable,
-    _Readable$Writable: stream._Readable$Writable,
-    _Readable$Duplex: stream._Readable$Duplex,
-    _Readable$Transform: stream._Readable$Transform,
-    _Readable$PassThrough: stream._Readable$PassThrough,
-    _Readable$Stream: stream
+  declare var _Readable$NodeBaseExport: stream.Readable & {
+    Readable: stream.Readable,
+    Writable: stream.Writable,
+    Duplex: stream.Duplex,
+    Transform: stream.Transform,
+    PassThrough: stream.PassThrough,
+    Stream: stream
   };
-  declare module.exports: typeof _Readable;
+  declare export default typeof _Readable;
 }
