@@ -65,5 +65,5 @@ declare module "get-stream" {
     options?: Options
   ): Promise<Buffer>;
 
-  declare module.exports: typeof getStream;
+  declare export default typeof getStream;
 }
