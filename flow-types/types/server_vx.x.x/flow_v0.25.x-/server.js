@@ -7,7 +7,7 @@ declare module "server" {
 
   import type { Reply } from "./reply";
 
-  declare module.exports: typeof server;
+  declare export default typeof server;
 
   declare var npm$namespace$server: {
     router: typeof server$router,
