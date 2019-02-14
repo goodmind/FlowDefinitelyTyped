@@ -1,6 +1,4 @@
-declare interface ExternalMechanism$Credentials {
-authzid?: string
-} declare module 'sasl-external' {
+declare module 'sasl-external' {
         import type {
           Mechanism
         } from 'saslmechanisms';
@@ -15,7 +13,10 @@ clientFirst: true
 };
 name: "EXTERNAL";
 clientFirst: true;
-response(cred: ExternalMechanism$ExternalMechanism$Credentials): string;
+response(cred: ExternalMechanism$Credentials): string;
 challenge(chal: string): void
 }
+	declare interface ExternalMechanism$Credentials {
+authzid?: string
+} 
     }
