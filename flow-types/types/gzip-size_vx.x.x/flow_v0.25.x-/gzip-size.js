@@ -57,5 +57,5 @@ declare module "gzip-size" {
     options?: zlib.ZlibOptions
   ): Promise<number>;
 
-  declare module.exports: typeof gzipSize;
+  declare export default typeof gzipSize;
 }
