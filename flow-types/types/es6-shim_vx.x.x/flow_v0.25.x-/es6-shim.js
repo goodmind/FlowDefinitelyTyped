@@ -198,48 +198,48 @@ declare interface ArrayConstructor {
 }
 declare interface Array<T> {
   /**
- * Returns the value of the first element in the array where predicate is true, and undefined
- * otherwise.
- * @param predicate find calls predicate once for each element of the array, in ascending
-order, until it finds one where predicate returns true. If such an element is found, find
-immediately returns that element value. Otherwise, find returns undefined.
- * @param thisArg If provided, it will be used as the this value for each invocation of
-predicate. If it is not provided, undefined is used instead.
- */
+   * Returns the value of the first element in the array where predicate is true, and undefined
+   * otherwise.
+   * @param predicate find calls predicate once for each element of the array, in ascending
+   * order, until it finds one where predicate returns true. If such an element is found, find
+   * immediately returns that element value. Otherwise, find returns undefined.
+   * @param thisArg If provided, it will be used as the this value for each invocation of
+   * predicate. If it is not provided, undefined is used instead.
+   */
   find(
     predicate: (value: T, index: number, obj: Array<T>) => boolean,
     thisArg?: any
   ): T | void;
 
   /**
- * Returns the index of the first element in the array where predicate is true, and -1 otherwise.
- * @param predicate find calls predicate once for each element of the array, in ascending
-order, until it finds one where predicate returns true. If such an element is found, find
-immediately returns that element value. Otherwise, find returns undefined.
- * @param thisArg If provided, it will be used as the this value for each invocation of
-predicate. If it is not provided, undefined is used instead.
- */
+   * Returns the index of the first element in the array where predicate is true, and -1 otherwise.
+   * @param predicate find calls predicate once for each element of the array, in ascending
+   * order, until it finds one where predicate returns true. If such an element is found, find
+   * immediately returns that element value. Otherwise, find returns undefined.
+   * @param thisArg If provided, it will be used as the this value for each invocation of
+   * predicate. If it is not provided, undefined is used instead.
+   */
   findIndex(predicate: (value: T) => boolean, thisArg?: any): number;
 
   /**
- * Returns the this object after filling the section identified by start and end with value
- * @param value value to fill array section with
- * @param start index to start filling the array at. If start is negative, it is treated as
-length+start where length is the length of the array.
- * @param end index to stop filling the array at. If end is negative, it is treated as
-length+end.
- */
+   * Returns the this object after filling the section identified by start and end with value
+   * @param value value to fill array section with
+   * @param start index to start filling the array at. If start is negative, it is treated as
+   * length+start where length is the length of the array.
+   * @param end index to stop filling the array at. If end is negative, it is treated as
+   * length+end.
+   */
   fill(value: T, start?: number, end?: number): T[];
 
   /**
- * Returns the this object after copying a section of the array identified by start and end
- * to the same array starting at position target
- * @param target If target is negative, it is treated as length+target where length is the
-length of the array.
- * @param start If start is negative, it is treated as length+start. If end is negative, it
-is treated as length+end.
- * @param end If not specified, length of the this object is used as its default value.
- */
+   * Returns the this object after copying a section of the array identified by start and end
+   * to the same array starting at position target
+   * @param target If target is negative, it is treated as length+target where length is the
+   * length of the array.
+   * @param start If start is negative, it is treated as length+start. If end is negative, it
+   * is treated as length+end.
+   * @param end If not specified, length of the this object is used as its default value.
+   */
   copyWithin(target: number, start: number, end?: number): T[];
 
   /**
@@ -319,12 +319,12 @@ declare interface NumberConstructor {
   parseFloat(string: string): number;
 
   /**
- * Converts A string to an integer.
- * @param s A string to convert into a number.
- * @param radix A value between 2 and 36 that specifies the base of the number in numString.
-If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
-All other strings are considered decimal.
- */
+   * Converts A string to an integer.
+   * @param s A string to convert into a number.
+   * @param radix A value between 2 and 36 that specifies the base of the number in numString.
+   * If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
+   * All other strings are considered decimal.
+   */
   parseInt(string: string, radix?: number): number;
 }
 declare interface ObjectConstructor {
@@ -349,7 +349,7 @@ declare interface ObjectConstructor {
    * @param proto The value of the new prototype or null.
    * @remarks Requires `__proto__` support.
    */
-  Reflect$setPrototypeOf(o: any, proto: any): any;
+  setPrototypeOf(o: any, proto: any): any;
 }
 declare interface RegExp {
   /**
@@ -448,14 +448,14 @@ declare interface Math {
   atanh(x: number): number;
 
   /**
- * Returns the square root of the sum of squares of its arguments.
- * @param values Values to compute the square root for.
-If no arguments are passed, the result is +0.
-If there is only one argument, the result is the absolute value.
-If any argument is +Infinity or -Infinity, the result is +Infinity.
-If any argument is NaN, the result is NaN.
-If all arguments are either +0 or −0, the result is +0.
- */
+   * Returns the square root of the sum of squares of its arguments.
+   * @param values Values to compute the square root for.
+   * If no arguments are passed, the result is +0.
+   * If there is only one argument, the result is the absolute value.
+   * If any argument is +Infinity or -Infinity, the result is +Infinity.
+   * If any argument is NaN, the result is NaN.
+   * If all arguments are either +0 or −0, the result is +0.
+   */
   hypot(...values: number[]): number;
 
   /**
@@ -527,11 +527,11 @@ declare interface PromiseConstructor {
   prototype: Promise<any>;
 
   /**
- * Creates a new Promise.
- * @param executor A callback used to initialize the promise. This callback is passed two arguments:
-a resolve callback used to resolve the promise with a value or the result of another promise,
-and a reject callback used to reject the promise with a provided reason or error.
- */
+   * Creates a new Promise.
+   * @param executor A callback used to initialize the promise. This callback is passed two arguments:
+   * a resolve callback used to resolve the promise with a value or the result of another promise,
+   * and a reject callback used to reject the promise with a provided reason or error.
+   */
   new<T>(
     executor: (
       resolve: (value?: T | PromiseLike<T>) => void,
@@ -590,9 +590,9 @@ declare interface Map<K, V> {
     callbackfn: (value: V, index: K, map: Map<K, V>) => void,
     thisArg?: any
   ): void;
-  Reflect$get(key: K): V | void;
-  Reflect$has(key: K): boolean;
-  Reflect$set(key: K, value: V): Map<K, V>;
+  get(key: K): V | void;
+  has(key: K): boolean;
+  set(key: K, value: V): Map<K, V>;
   size: number;
   entries(): IterableIteratorShim<[K, V]>;
   keys(): IterableIteratorShim<K>;
@@ -609,10 +609,10 @@ declare interface Set<T> {
   clear(): void;
   delete(value: T): boolean;
   forEach(
-    callbackfn: (value: T, index: T, Reflect$set: Set<T>) => void,
+    callbackfn: (value: T, index: T, set: Set<T>) => void,
     thisArg?: any
   ): void;
-  Reflect$has(value: T): boolean;
+  has(value: T): boolean;
   size: number;
   entries(): IterableIteratorShim<[T, T]>;
   keys(): IterableIteratorShim<T>;
@@ -627,9 +627,9 @@ declare interface SetConstructor {
 declare var Set: SetConstructor;
 declare interface WeakMap<K: { [key: string]: any }, V> {
   delete(key: K): boolean;
-  Reflect$get(key: K): V | void;
-  Reflect$has(key: K): boolean;
-  Reflect$set(key: K, value: V): WeakMap<K, V>;
+  get(key: K): V | void;
+  has(key: K): boolean;
+  set(key: K, value: V): WeakMap<K, V>;
 }
 declare interface WeakMapConstructor {
   new<K: { [key: string]: any }, V>(): WeakMap<K, V>;
@@ -642,7 +642,7 @@ declare var WeakMap: WeakMapConstructor;
 declare interface WeakSet<T> {
   add(value: T): WeakSet<T>;
   delete(value: T): boolean;
-  Reflect$has(value: T): boolean;
+  has(value: T): boolean;
 }
 declare interface WeakSetConstructor {
   new<T>(): WeakSet<T>;
