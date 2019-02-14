@@ -1,26 +1,30 @@
 declare module "gapi.client.datastore" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    projects: typeof client$projects
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    projects: typeof gapi$client$projects
   };
 
   /**
    * Load Google Cloud Datastore API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "datastore",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "datastore",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$projects: datastore$datastore$ProjectsResource;
+  declare var gapi$client$projects: datastore$ProjectsResource;
 
-  declare interface datastore$AllocateIdsRequest {
+  declare interface gapi$client$datastore$AllocateIdsRequest {
     /**
      * A list of keys with incomplete key paths for which to allocate IDs.
      * No key may be reserved/read-only.
@@ -28,7 +32,7 @@ declare module "gapi.client.datastore" {
     keys?: datastore$Key[];
   }
 
-  declare interface datastore$AllocateIdsResponse {
+  declare interface gapi$client$datastore$AllocateIdsResponse {
     /**
      * The keys specified in the request (in the same order), each with
      * its key path completed with a newly allocated ID.
@@ -36,7 +40,7 @@ declare module "gapi.client.datastore" {
     keys?: datastore$Key[];
   }
 
-  declare interface datastore$ArrayValue {
+  declare interface gapi$client$datastore$ArrayValue {
     /**
      * Values in the array.
      * The order of this array may not be preserved if it contains a mix of
@@ -45,21 +49,21 @@ declare module "gapi.client.datastore" {
     values?: datastore$Value[];
   }
 
-  declare interface datastore$BeginTransactionRequest {
+  declare interface gapi$client$datastore$BeginTransactionRequest {
     /**
      * Options for a new transaction.
      */
     transactionOptions?: datastore$TransactionOptions;
   }
 
-  declare interface datastore$BeginTransactionResponse {
+  declare interface gapi$client$datastore$BeginTransactionResponse {
     /**
      * The transaction identifier (always present).
      */
     transaction?: string;
   }
 
-  declare interface datastore$CommitRequest {
+  declare interface gapi$client$datastore$CommitRequest {
     /**
      * The type of commit to perform. Defaults to `TRANSACTIONAL`.
      */
@@ -90,7 +94,7 @@ declare module "gapi.client.datastore" {
     transaction?: string;
   }
 
-  declare interface datastore$CommitResponse {
+  declare interface gapi$client$datastore$CommitResponse {
     /**
      * The number of index entries updated during the commit, or zero if none were
      * updated.
@@ -104,7 +108,7 @@ declare module "gapi.client.datastore" {
     mutationResults?: datastore$MutationResult[];
   }
 
-  declare interface datastore$CompositeFilter {
+  declare interface gapi$client$datastore$CompositeFilter {
     /**
      * The list of filters to combine.
      * Must contain at least one filter.
@@ -117,7 +121,7 @@ declare module "gapi.client.datastore" {
     op?: string;
   }
 
-  declare interface datastore$Entity {
+  declare interface gapi$client$datastore$Entity {
     /**
      * The entity's key.
      *
@@ -139,7 +143,7 @@ declare module "gapi.client.datastore" {
     properties?: Record<string, datastore$Value>;
   }
 
-  declare interface datastore$EntityResult {
+  declare interface gapi$client$datastore$EntityResult {
     /**
      * A cursor that points to the position after the result entity.
      * Set only when the `EntityResult` is part of a `QueryResultBatch` message.
@@ -149,7 +153,7 @@ declare module "gapi.client.datastore" {
     /**
      * The resulting entity.
      */
-    entity?: datastore$Entity;
+    entity?: gapi$client$datastore$Entity;
 
     /**
      * The version of the entity, a strictly positive number that monotonically
@@ -165,11 +169,11 @@ declare module "gapi.client.datastore" {
     version?: string;
   }
 
-  declare interface datastore$Filter {
+  declare interface gapi$client$datastore$Filter {
     /**
      * A composite filter.
      */
-    compositeFilter?: datastore$CompositeFilter;
+    compositeFilter?: gapi$client$datastore$CompositeFilter;
 
     /**
      * A filter on a property.
@@ -177,7 +181,7 @@ declare module "gapi.client.datastore" {
     propertyFilter?: datastore$PropertyFilter;
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1CommonMetadata {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1CommonMetadata {
     /**
      * The time the operation ended, either successfully or otherwise.
      */
@@ -206,7 +210,7 @@ declare module "gapi.client.datastore" {
     state?: string;
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1EntityFilter {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1EntityFilter {
     /**
      * If empty, then this represents all kinds.
      */
@@ -224,16 +228,16 @@ declare module "gapi.client.datastore" {
     namespaceIds?: string[];
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
     /**
      * Metadata common to all Datastore Admin operations.
      */
-    common?: datastore$GoogleDatastoreAdminV1beta1CommonMetadata;
+    common?: gapi$client$datastore$GoogleDatastoreAdminV1beta1CommonMetadata;
 
     /**
      * Description of which entities are being exported.
      */
-    entityFilter?: datastore$GoogleDatastoreAdminV1beta1EntityFilter;
+    entityFilter?: gapi$client$datastore$GoogleDatastoreAdminV1beta1EntityFilter;
 
     /**
      * Location for the export metadata and data files. This will be the same
@@ -255,7 +259,7 @@ declare module "gapi.client.datastore" {
     progressEntities?: datastore$GoogleDatastoreAdminV1beta1Progress;
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
     /**
      * Location of the output metadata file. This can be used to begin an import
      * into Cloud Datastore (this project or another project). See
@@ -265,16 +269,16 @@ declare module "gapi.client.datastore" {
     outputUrl?: string;
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
     /**
      * Metadata common to all Datastore Admin operations.
      */
-    common?: datastore$GoogleDatastoreAdminV1beta1CommonMetadata;
+    common?: gapi$client$datastore$GoogleDatastoreAdminV1beta1CommonMetadata;
 
     /**
      * Description of which entities are being imported.
      */
-    entityFilter?: datastore$GoogleDatastoreAdminV1beta1EntityFilter;
+    entityFilter?: gapi$client$datastore$GoogleDatastoreAdminV1beta1EntityFilter;
 
     /**
      * The location of the import metadata file. This will be the same value as
@@ -294,7 +298,7 @@ declare module "gapi.client.datastore" {
     progressEntities?: datastore$GoogleDatastoreAdminV1beta1Progress;
   }
 
-  declare interface datastore$GoogleDatastoreAdminV1beta1Progress {
+  declare interface gapi$client$datastore$GoogleDatastoreAdminV1beta1Progress {
     /**
      * The amount of work that has been completed. Note that this may be greater
      * than work_estimated.
@@ -308,7 +312,7 @@ declare module "gapi.client.datastore" {
     workEstimated?: string;
   }
 
-  declare interface datastore$GoogleLongrunningListOperationsResponse {
+  declare interface gapi$client$datastore$GoogleLongrunningListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -320,7 +324,7 @@ declare module "gapi.client.datastore" {
     operations?: datastore$GoogleLongrunningOperation[];
   }
 
-  declare interface datastore$GoogleLongrunningOperation {
+  declare interface gapi$client$datastore$GoogleLongrunningOperation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -361,7 +365,7 @@ declare module "gapi.client.datastore" {
     response?: Record<string, any>;
   }
 
-  declare interface datastore$GqlQuery {
+  declare interface gapi$client$datastore$GqlQuery {
     /**
      * When false, the query string must not contain any literals and instead must
      * bind all values. For example,
@@ -395,7 +399,7 @@ declare module "gapi.client.datastore" {
     queryString?: string;
   }
 
-  declare interface datastore$GqlQueryParameter {
+  declare interface gapi$client$datastore$GqlQueryParameter {
     /**
      * A query cursor. Query cursors are returned in query
      * result batches.
@@ -408,7 +412,7 @@ declare module "gapi.client.datastore" {
     value?: datastore$Value;
   }
 
-  declare interface datastore$Key {
+  declare interface gapi$client$datastore$Key {
     /**
      * Entities are partitioned into subsets, currently identified by a project
      * ID and namespace ID.
@@ -437,14 +441,14 @@ declare module "gapi.client.datastore" {
     path?: datastore$PathElement[];
   }
 
-  declare interface datastore$KindExpression {
+  declare interface gapi$client$datastore$KindExpression {
     /**
      * The name of the kind.
      */
     name?: string;
   }
 
-  declare interface datastore$LatLng {
+  declare interface gapi$client$datastore$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -456,11 +460,11 @@ declare module "gapi.client.datastore" {
     longitude?: number;
   }
 
-  declare interface datastore$LookupRequest {
+  declare interface gapi$client$datastore$LookupRequest {
     /**
      * Keys of entities to look up.
      */
-    keys?: datastore$Key[];
+    keys?: gapi$client$datastore$Key[];
 
     /**
      * The options for this lookup request.
@@ -468,30 +472,30 @@ declare module "gapi.client.datastore" {
     readOptions?: datastore$ReadOptions;
   }
 
-  declare interface datastore$LookupResponse {
+  declare interface gapi$client$datastore$LookupResponse {
     /**
      * A list of keys that were not looked up due to resource constraints. The
      * order of results in this field is undefined and has no relation to the
      * order of the keys in the input.
      */
-    deferred?: datastore$Key[];
+    deferred?: gapi$client$datastore$Key[];
 
     /**
      * Entities found as `ResultType.FULL` entities. The order of results in this
      * field is undefined and has no relation to the order of the keys in the
      * input.
      */
-    found?: datastore$EntityResult[];
+    found?: gapi$client$datastore$EntityResult[];
 
     /**
      * Entities not found as `ResultType.KEY_ONLY` entities. The order of results
      * in this field is undefined and has no relation to the order of the keys
      * in the input.
      */
-    missing?: datastore$EntityResult[];
+    missing?: gapi$client$datastore$EntityResult[];
   }
 
-  declare interface datastore$Mutation {
+  declare interface gapi$client$datastore$Mutation {
     /**
      * The version of the entity that this mutation is being applied to. If this
      * does not match the current version on the server, the mutation conflicts.
@@ -502,28 +506,28 @@ declare module "gapi.client.datastore" {
      * The key of the entity to delete. The entity may or may not already exist.
      * Must have a complete key path and must not be reserved/read-only.
      */
-    delete?: datastore$Key;
+    delete?: gapi$client$datastore$Key;
 
     /**
      * The entity to insert. The entity must not already exist.
      * The entity key's final path element may be incomplete.
      */
-    insert?: datastore$Entity;
+    insert?: gapi$client$datastore$Entity;
 
     /**
      * The entity to update. The entity must already exist.
      * Must have a complete key path.
      */
-    update?: datastore$Entity;
+    update?: gapi$client$datastore$Entity;
 
     /**
      * The entity to upsert. The entity may or may not already exist.
      * The entity key's final path element may be incomplete.
      */
-    upsert?: datastore$Entity;
+    upsert?: gapi$client$datastore$Entity;
   }
 
-  declare interface datastore$MutationResult {
+  declare interface gapi$client$datastore$MutationResult {
     /**
      * Whether a conflict was detected for this mutation. Always false when a
      * conflict detection strategy field is not set in the mutation.
@@ -534,7 +538,7 @@ declare module "gapi.client.datastore" {
      * The automatically allocated key.
      * Set only when the mutation allocated a key.
      */
-    key?: datastore$Key;
+    key?: gapi$client$datastore$Key;
 
     /**
      * The version of the entity on the server after processing the mutation. If
@@ -546,7 +550,7 @@ declare module "gapi.client.datastore" {
     version?: string;
   }
 
-  declare interface datastore$PartitionId {
+  declare interface gapi$client$datastore$PartitionId {
     /**
      * If not empty, the ID of the namespace to which the entities belong.
      */
@@ -558,7 +562,7 @@ declare module "gapi.client.datastore" {
     projectId?: string;
   }
 
-  declare interface datastore$PathElement {
+  declare interface gapi$client$datastore$PathElement {
     /**
      * The auto-allocated ID of the entity.
      * Never equal to zero. Values less than zero are discouraged and may not
@@ -583,14 +587,14 @@ declare module "gapi.client.datastore" {
     name?: string;
   }
 
-  declare interface datastore$Projection {
+  declare interface gapi$client$datastore$Projection {
     /**
      * The property to project.
      */
     property?: datastore$PropertyReference;
   }
 
-  declare interface datastore$PropertyFilter {
+  declare interface gapi$client$datastore$PropertyFilter {
     /**
      * The operator to filter by.
      */
@@ -607,7 +611,7 @@ declare module "gapi.client.datastore" {
     value?: datastore$Value;
   }
 
-  declare interface datastore$PropertyOrder {
+  declare interface gapi$client$datastore$PropertyOrder {
     /**
      * The direction to order by. Defaults to `ASCENDING`.
      */
@@ -619,7 +623,7 @@ declare module "gapi.client.datastore" {
     property?: datastore$PropertyReference;
   }
 
-  declare interface datastore$PropertyReference {
+  declare interface gapi$client$datastore$PropertyReference {
     /**
      * The name of the property.
      * If name includes "."s, it may be interpreted as a property name path.
@@ -627,13 +631,13 @@ declare module "gapi.client.datastore" {
     name?: string;
   }
 
-  declare interface datastore$Query {
+  declare interface gapi$client$datastore$Query {
     /**
      * The properties to make distinct. The query results will contain the first
      * result for each distinct combination of values for the given properties
      * (if empty, all results are returned).
      */
-    distinctOn?: datastore$PropertyReference[];
+    distinctOn?: gapi$client$datastore$PropertyReference[];
 
     /**
      * An ending point for the query results. Query cursors are
@@ -645,13 +649,13 @@ declare module "gapi.client.datastore" {
     /**
      * The filter to apply.
      */
-    filter?: datastore$Filter;
+    filter?: gapi$client$datastore$Filter;
 
     /**
      * The kinds to query (if empty, returns entities of all kinds).
      * Currently at most 1 kind may be specified.
      */
-    kind?: datastore$KindExpression[];
+    kind?: gapi$client$datastore$KindExpression[];
 
     /**
      * The maximum number of results to return. Applies after all other
@@ -670,12 +674,12 @@ declare module "gapi.client.datastore" {
     /**
      * The order to apply to the query results (if empty, order is unspecified).
      */
-    order?: datastore$PropertyOrder[];
+    order?: gapi$client$datastore$PropertyOrder[];
 
     /**
      * The projection to return. Defaults to returning all properties.
      */
-    projection?: datastore$Projection[];
+    projection?: gapi$client$datastore$Projection[];
 
     /**
      * A starting point for the query results. Query cursors are
@@ -685,7 +689,7 @@ declare module "gapi.client.datastore" {
     startCursor?: string;
   }
 
-  declare interface datastore$QueryResultBatch {
+  declare interface gapi$client$datastore$QueryResultBatch {
     /**
      * A cursor that points to the position after the last result in the batch.
      */
@@ -699,7 +703,7 @@ declare module "gapi.client.datastore" {
     /**
      * The results for this batch.
      */
-    entityResults?: datastore$EntityResult[];
+    entityResults?: gapi$client$datastore$EntityResult[];
 
     /**
      * The state of the query after the current batch.
@@ -731,7 +735,7 @@ declare module "gapi.client.datastore" {
     snapshotVersion?: string;
   }
 
-  declare interface datastore$ReadOptions {
+  declare interface gapi$client$datastore$ReadOptions {
     /**
      * The non-transactional read consistency to use.
      * Cannot be set to `STRONG` for global queries.
@@ -746,14 +750,14 @@ declare module "gapi.client.datastore" {
     transaction?: string;
   }
 
-  declare interface datastore$ReadWrite {
+  declare interface gapi$client$datastore$ReadWrite {
     /**
      * The transaction identifier of the transaction being retried.
      */
     previousTransaction?: string;
   }
 
-  declare interface datastore$RollbackRequest {
+  declare interface gapi$client$datastore$RollbackRequest {
     /**
      * The transaction identifier, returned by a call to
      * Datastore.BeginTransaction.
@@ -761,11 +765,11 @@ declare module "gapi.client.datastore" {
     transaction?: string;
   }
 
-  declare interface datastore$RunQueryRequest {
+  declare interface gapi$client$datastore$RunQueryRequest {
     /**
      * The GQL query to run.
      */
-    gqlQuery?: datastore$GqlQuery;
+    gqlQuery?: gapi$client$datastore$GqlQuery;
 
     /**
      * Entities are partitioned into subsets, identified by a partition ID.
@@ -773,32 +777,32 @@ declare module "gapi.client.datastore" {
      * This partition ID is normalized with the standard default context
      * partition ID.
      */
-    partitionId?: datastore$PartitionId;
+    partitionId?: gapi$client$datastore$PartitionId;
 
     /**
      * The query to run.
      */
-    query?: datastore$Query;
+    query?: gapi$client$datastore$Query;
 
     /**
      * The options for this query.
      */
-    readOptions?: datastore$ReadOptions;
+    readOptions?: gapi$client$datastore$ReadOptions;
   }
 
-  declare interface datastore$RunQueryResponse {
+  declare interface gapi$client$datastore$RunQueryResponse {
     /**
      * A batch of query results (always present).
      */
-    batch?: datastore$QueryResultBatch;
+    batch?: gapi$client$datastore$QueryResultBatch;
 
     /**
      * The parsed form of the `GqlQuery` from the request, if it was set.
      */
-    query?: datastore$Query;
+    query?: gapi$client$datastore$Query;
   }
 
-  declare interface datastore$Status {
+  declare interface gapi$client$datastore$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -818,7 +822,7 @@ declare module "gapi.client.datastore" {
     message?: string;
   }
 
-  declare interface datastore$TransactionOptions {
+  declare interface gapi$client$datastore$TransactionOptions {
     /**
      * The transaction should only allow reads.
      */
@@ -827,17 +831,17 @@ declare module "gapi.client.datastore" {
     /**
      * The transaction should allow both reads and writes.
      */
-    readWrite?: datastore$ReadWrite;
+    readWrite?: gapi$client$datastore$ReadWrite;
   }
 
-  declare interface datastore$Value {
+  declare interface gapi$client$datastore$Value {
     /**
      * An array value.
      * Cannot contain another array value.
      * A `Value` instance that sets field `array_value` must not set fields
      * `meaning` or `exclude_from_indexes`.
      */
-    arrayValue?: datastore$ArrayValue;
+    arrayValue?: gapi$client$datastore$ArrayValue;
 
     /**
      * A blob value.
@@ -864,7 +868,7 @@ declare module "gapi.client.datastore" {
      * - May have a key with an incomplete key path.
      * - May have a reserved/read-only key.
      */
-    entityValue?: datastore$Entity;
+    entityValue?: gapi$client$datastore$Entity;
 
     /**
      * If the value should be excluded from all indexes including those defined
@@ -875,7 +879,7 @@ declare module "gapi.client.datastore" {
     /**
      * A geo point value representing a point on the surface of Earth.
      */
-    geoPointValue?: datastore$LatLng;
+    geoPointValue?: gapi$client$datastore$LatLng;
 
     /**
      * An integer value.
@@ -885,7 +889,7 @@ declare module "gapi.client.datastore" {
     /**
      * A key value.
      */
-    keyValue?: datastore$Key;
+    keyValue?: gapi$client$datastore$Key;
 
     /**
      * The `meaning` field should only be populated for backwards compatibility.
@@ -912,7 +916,7 @@ declare module "gapi.client.datastore" {
     timestampValue?: string;
   }
 
-  declare interface datastore$OperationsResource {
+  declare interface gapi$client$datastore$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -1150,7 +1154,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$GoogleLongrunningOperation>;
+    }): Request<gapi$client$datastore$GoogleLongrunningOperation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -1249,10 +1253,10 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$GoogleLongrunningListOperationsResponse>;
+    }): Request<gapi$client$datastore$GoogleLongrunningListOperationsResponse>;
   }
 
-  declare interface datastore$ProjectsResource {
+  declare interface gapi$client$datastore$ProjectsResource {
     /**
      * Allocates IDs for the given keys, which is useful for referencing an entity
      * before it is inserted.
@@ -1327,7 +1331,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$AllocateIdsResponse>;
+    }): Request<gapi$client$datastore$AllocateIdsResponse>;
 
     /**
      * Begins a new transaction.
@@ -1402,7 +1406,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$BeginTransactionResponse>;
+    }): Request<gapi$client$datastore$BeginTransactionResponse>;
 
     /**
      * Commits a transaction, optionally creating, deleting or modifying some
@@ -1478,7 +1482,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$CommitResponse>;
+    }): Request<gapi$client$datastore$CommitResponse>;
 
     /**
      * Looks up entities by key.
@@ -1553,7 +1557,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$LookupResponse>;
+    }): Request<gapi$client$datastore$LookupResponse>;
 
     /**
      * Rolls back a transaction.
@@ -1703,7 +1707,7 @@ declare module "gapi.client.datastore" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<datastore$RunQueryResponse>;
-    operations: datastore$OperationsResource;
+    }): Request<gapi$client$datastore$RunQueryResponse>;
+    operations: gapi$client$datastore$OperationsResource;
   }
 }
