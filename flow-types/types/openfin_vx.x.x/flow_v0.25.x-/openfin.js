@@ -141,14 +141,14 @@ declare module "openfin" {
 
   declare interface fin$OpenFinDesktop {
     main(f: () => any): void;
-    fin$Application: fin$OpenFinApplicationStatic;
+    Application: fin$OpenFinApplicationStatic;
     ExternalApp: fin$OpenFinExternalApplicationStatic;
-    fin$GlobalHotkey: fin$OpenFinGlobalHotkey;
-    fin$InterApplicationBus: fin$OpenFinInterApplicationBus;
-    fin$Notification: fin$OpenFinNotificationStatic;
-    fin$System: fin$OpenFinSystem;
-    fin$Window: fin$OpenFinWindowStatic;
-    fin$Frame: fin$OpenFinFrameStatic;
+    GlobalHotkey: fin$OpenFinGlobalHotkey;
+    InterApplicationBus: fin$OpenFinInterApplicationBus;
+    Notification: fin$OpenFinNotificationStatic;
+    System: fin$OpenFinSystem;
+    Window: fin$OpenFinWindowStatic;
+    Frame: fin$OpenFinFrameStatic;
   }
 
   declare interface fin$OpenFinApplicationStatic {
@@ -429,7 +429,7 @@ declare module "openfin" {
 
   declare type fin$NetworkErrorInfo = {
     networkErrorCode: number
-  } & fin$ErrorInfo;
+  } & ErrorInfo;
 
   declare interface fin$ErrorInfo {
     stack: string;
@@ -825,7 +825,7 @@ declare module "openfin" {
    * Allows the developer to perform system-level actions, such as accessing logs, viewing processes, clearing the cache and exiting the runtime.
    */
   declare interface fin$OpenFinSystem {
-    fin$Clipboard: fin$OpenFinClipboard;
+    Clipboard: fin$OpenFinClipboard;
 
     /**
      * Registers an event listener on the specified event.
@@ -1788,16 +1788,16 @@ declare module "openfin" {
     monitorInfo: fin$MonitorInfo,
     x: number,
     y: number
-  } & fin$ApplicationBaseEvent;
+  } & ApplicationBaseEvent;
 
   declare type fin$WindowEvent = {
     name: string
-  } & fin$ApplicationBaseEvent;
+  } & ApplicationBaseEvent;
 
   declare type fin$WindowAlertRequestedEvent = {
     message: string,
     url: string
-  } & fin$WindowEvent;
+  } & WindowEvent;
 
   declare type fin$WindowAuthRequested = {
     authInfo: {
@@ -1807,22 +1807,22 @@ declare module "openfin" {
       realm: string,
       scheme: string
     }
-  } & fin$WindowEvent;
+  } & WindowEvent;
 
   declare type fin$WindowNavigationRejectedEvent = {
     sourceName: string,
     url: string
-  } & fin$WindowEvent;
+  } & WindowEvent;
 
   declare type fin$WindowEndLoadEvent = {
     documentName: string,
     isMain: boolean
-  } & fin$WindowEvent;
+  } & WindowEvent;
 
   declare type fin$MonitorInfoChangedEvent = {
     topic: "system",
     type: "monitor-info-changed"
-  } & fin$MonitorInfo;
+  } & MonitorInfo;
 
   declare interface fin$SystemBaseEvent {
     topic: string;
@@ -1911,7 +1911,7 @@ declare module "openfin" {
       realm: string,
       scheme: string
     }
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare type fin$WindowBoundsEvent = {
     /**
@@ -1951,7 +1951,7 @@ declare module "openfin" {
      * the new width of the window.
      */
     width: number
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare type fin$WindowExternalProcessStartedEvent = {
     /**
@@ -1959,7 +1959,7 @@ declare module "openfin" {
      */
     processUuid: string,
     type: "external-process-started"
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare type fin$WindowExternalProcessExited = {
     /**
@@ -1972,7 +1972,7 @@ declare module "openfin" {
      */
     processUuid: string,
     type: "external-process-exited"
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare type fin$WindowGroupChangedEvent = {
     /**
@@ -2022,7 +2022,7 @@ declare module "openfin" {
      */
     targetWindowName: string,
     type: "group-changed"
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare interface fin$WindowOfGroupInfo {
     /**
@@ -2043,7 +2043,7 @@ declare module "openfin" {
      */
     reason: "hide" | "hide-on-close",
     type: "hidden"
-  } & fin$WindowBaseEvent;
+  } & WindowBaseEvent;
 
   declare interface fin$Window_NavigationRejectedEvent {
     name: string;
