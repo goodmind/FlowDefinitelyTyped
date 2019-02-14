@@ -1,5 +1,5 @@
 declare module "temp-fs" {
-  declare module.exports: typeof tempfs;
+  declare export default typeof tempfs;
 
   declare var npm$namespace$tempfs: {
     clear: typeof tempfs$clear,
@@ -70,7 +70,7 @@ declare module "temp-fs" {
      *
      * Also see {@link options#name}. Default: <code>tempfs.dir()</code>
      */
-    tempfs$dir?: String;
+    dir?: String;
 
     /**
      * The maximum number of chance to retry before throwing an error.
@@ -89,7 +89,7 @@ declare module "temp-fs" {
      * tempfs.dir()</code> and {@link options#name} together and use the
      * result as the customized filename/pathname.
      */
-    tempfs$name?: String;
+    name?: String;
 
     /**
      * The prefix for the generated random name.
@@ -127,7 +127,7 @@ declare module "temp-fs" {
      * temp-fs manage it even if the global tracking is on. Otherwise, use
      * the current global setting.
      */
-    tempfs$track?: Boolean;
+    track?: Boolean;
   }
 
   /**
@@ -152,53 +152,49 @@ declare module "temp-fs" {
   declare function tempfs$dir(): string;
 
   /**
- * Try to create a new tempdir asynchronously.
- * @param callback function receives two arguments <code>error</code> and
-<code>dir</code>. If <code>error</code> is
-<code>null</code>, <code>dir</code> has the properties of
-{@link dir}.
- */
+   * Try to create a new tempdir asynchronously.
+   * @param callback function receives two arguments <code>error</code> and
+   * <code>dir</code>. If <code>error</code> is
+   * <code>null</code>, <code>dir</code> has the properties of
+   * {@link dir}.
+   */
   declare function tempfs$mkdir(
-    tempfs$options?: tempfs$options,
-    callback?: (err: any, tempfs$dir: tempfs$dir) => any
+    options?: tempfs$options,
+    callback?: (err: any, dir: tempfs$dir) => any
   ): any;
 
   /**
    * The synchronous version of {@link mkdir}.
    * @throws when an error happens.
    */
-  declare function tempfs$mkdirSync(
-    tempfs$options?: tempfs$options
-  ): tempfs$dir;
+  declare function tempfs$mkdirSync(options?: tempfs$options): tempfs$dir;
 
   /**
    * Return a customized/random filename/dirname.
    */
-  declare function tempfs$name(tempfs$options?: tempfs$options): string;
+  declare function tempfs$name(options?: tempfs$options): string;
 
   /**
- * Try to open a unique tempfile asynchronously.
- * @param callback function receives two arguments <code>error</code> and
-<code>file</code>. If <code>error</code> is
-<code>null</code>, <code>file</code> has the properties
-of {@link file}.
- */
+   * Try to open a unique tempfile asynchronously.
+   * @param callback function receives two arguments <code>error</code> and
+   * <code>file</code>. If <code>error</code> is
+   * <code>null</code>, <code>file</code> has the properties
+   * of {@link file}.
+   */
   declare function tempfs$open(
-    callback?: (err: any, tempfs$file: tempfs$file) => any
+    callback?: (err: any, file: tempfs$file) => any
   ): any;
 
   declare function tempfs$open(
-    tempfs$options?: tempfs$options,
-    callback?: (err: any, tempfs$file: tempfs$file) => any
+    options?: tempfs$options,
+    callback?: (err: any, file: tempfs$file) => any
   ): any;
 
   /**
    * The synchronous version of {@link open}.
    * @throws when an error happens.
    */
-  declare function tempfs$openSync(
-    tempfs$options?: tempfs$options
-  ): tempfs$file;
+  declare function tempfs$openSync(options?: tempfs$options): tempfs$file;
 
   /**
    * Use it to switch global files/directories tracking on or off.
