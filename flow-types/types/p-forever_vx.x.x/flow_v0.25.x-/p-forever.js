@@ -1,12 +1,12 @@
 declare module "p-forever" {
-  declare module.exports: typeof pForever;
+  declare export default typeof pForever;
 
   declare function pForever<T>(
-    fn: (previousValue?: T) => T | PromiseLike<T> | typeof undefined
+    fn: (previousValue?: T) => T | PromiseLike<T> | typeof pForever$end
   ): Promise<void>;
 
   declare function pForever<T>(
-    fn: (previousValue: T) => T | PromiseLike<T> | typeof undefined,
+    fn: (previousValue: T) => T | PromiseLike<T> | typeof pForever$end,
     initialValue: T
   ): Promise<void>;
 
