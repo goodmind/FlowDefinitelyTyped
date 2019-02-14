@@ -188,7 +188,7 @@ declare module "weapp-api" {
     /**
      * 来源信息。从另一个小程序、公众号或App进入小程序时返回。范泽返回{}
      */
-    wx$referrerInfo: wx$referrerInfo;
+    referrerInfo: wx$referrerInfo;
   }
 
   declare type wx$onLaunchCallback = (options: wx$onLaunchOptions) => void;
@@ -217,7 +217,7 @@ declare module "weapp-api" {
     /**
      * 小程序发生脚本错误或 API 调用报错时触发。也可以使用 wx.onError 绑定监听。
      */
-    wx$onError?: wx$ErrorCallback;
+    onError?: wx$ErrorCallback;
 
     /**
      * 小程序要打开的页面不存在时触发
@@ -225,7 +225,7 @@ declare module "weapp-api" {
      * 2. 若开发者没有调用 wx.onPageNotFound 绑定监听，也没有声明 App.onPageNotFound，当跳转页面不存在时，将推入微信客户端原生的页面不存在提示页面。
      * 3. 如果回调中又重定向到另一个不存在的页面，将推入微信客户端原生的页面不存在提示页面，并且不再第二次回调。
      */
-    wx$onPageNotFound?: wx$NoneParamCallback;
+    onPageNotFound?: wx$NoneParamCallback;
     [key: string]: any;
   }
 
@@ -923,7 +923,7 @@ declare module "weapp-api" {
 
   declare type wx$StorageInfoOptions = {
     success?: wx$StorageInfoCallback
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * getStorageInfo的同步版本
@@ -1028,7 +1028,7 @@ declare module "weapp-api" {
 
   declare type wx$GetCenterLocationSuccCbOptions = {
     success(res: wx$LocationBaseOptions): void
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$translateMarkerOptions = {
     markerId: number,
@@ -1037,12 +1037,12 @@ declare module "weapp-api" {
     rotate: number,
     duration?: number,
     animationEnd?: () => void
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$zoomPointsOptions = {
     points: Array<wx$LocationBaseOptions>,
     padding?: Array<number>
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare interface wx$GetReginSuccessCallbackOptions {
     southwest: number;
@@ -1053,7 +1053,7 @@ declare module "weapp-api" {
     success?: (
       callback: (res: wx$GetReginSuccessCallbackOptions) => void
     ) => void
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$GetScaleOptions = {
     success?: (
@@ -1061,7 +1061,7 @@ declare module "weapp-api" {
         scale: number
       }) => void
     ) => void
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare interface wx$MapContext {
     getCenterLocation(options: wx$GetCenterLocationSuccCbOptions): void;
@@ -1326,11 +1326,11 @@ declare module "weapp-api" {
 
   declare type wx$routerOptions = {
     url: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$NavigateBackOptions = {
     delta: number
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages() 获取当前的页面栈，决定需要返回几层。
@@ -1383,17 +1383,17 @@ declare module "weapp-api" {
   declare type wx$LoadingOptions = {
     title: string,
     mask: boolean
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$icon = "success" | "loading" | "none";
 
   declare type wx$ToastOptions = {
     title: string,
-    wx$icon?: wx$icon,
+    icon?: wx$icon,
     imgage?: string,
     duration?: number,
     mask: boolean
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$ModalOptions = {
     title: string,
@@ -1403,7 +1403,7 @@ declare module "weapp-api" {
     cancelColor?: string,
     confirmText?: string,
     confirmColor?: boolean
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 显示操作菜单
@@ -1449,11 +1449,11 @@ declare module "weapp-api" {
     frontColor: string,
     backgroundColor: string,
     animation: wx$NavigationBarColorAnimationOptions
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare type wx$NavigationBarTitleOptions = {
     title: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare function wx$setNavigationBarColor(): void;
 
@@ -1485,7 +1485,7 @@ declare module "weapp-api" {
     backgroundColor?: string,
     backgroundColorTop?: string,
     backgroundColorBottom?: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare function wx$setBackgroundColor(): void;
 
@@ -1494,7 +1494,7 @@ declare module "weapp-api" {
     text?: string,
     iconPath?: string,
     selectedIconPath?: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 动态设置 tabBar 某一项的内容
@@ -1507,7 +1507,7 @@ declare module "weapp-api" {
     selectedColor: string,
     backgroundColor: string,
     borderStyle: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 动态设置tabBar的整体样式
@@ -1516,7 +1516,7 @@ declare module "weapp-api" {
 
   declare type wx$TabBarAnimationOptions = {
     animation: boolean
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 隐藏tabBar
@@ -1530,7 +1530,7 @@ declare module "weapp-api" {
 
   declare type wx$TabBarRedDotOptions = {
     index: number
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 隐藏 tabBar 某一项的右上角的红点
@@ -1547,7 +1547,7 @@ declare module "weapp-api" {
   declare type wx$TabBarBadgeOptions = {
     index: number,
     text: string
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 移除 tabBar 某一项右上角的文本
@@ -1571,7 +1571,7 @@ declare module "weapp-api" {
     family: string,
     source: string,
     desc?: wx$FontDescOptions
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   declare function wx$loadFontFace(options: wx$FontFaceOptions): void;
 
@@ -1592,7 +1592,7 @@ declare module "weapp-api" {
   declare type wx$PageScrollToOptions = {
     scrollTop: number,
     duration: number
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 将页面滚动到
@@ -2249,8 +2249,8 @@ declare module "weapp-api" {
     appId: string,
     path?: string,
     extraData?: { [key: string]: any },
-    wx$envVersion?: wx$envVersion
-  } & wx$CommonCallbackOptions;
+    envVersion?: wx$envVersion
+  } & CommonCallbackOptions;
 
   /**
    * 打开另一个小程序
@@ -2261,7 +2261,7 @@ declare module "weapp-api" {
 
   declare type wx$NavigateBackMiniProgramOptions = {
     extraData: { [key: string]: any }
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 返回到上一个小程序。只有在当前小程序是被其他小程序打开时可以调用成功
@@ -2412,7 +2412,7 @@ declare module "weapp-api" {
 
   declare type wx$AuthorizeOptions = {
     scope: wx$Scope
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 提前向用户发起授权请求。调用后会立刻弹窗询问用户是否同意授权小程序使用某项功能或获取用户的某些数据，但不会实际调用对应接口。如果用户之前已经同意授权，则不会出现弹窗，直接返回成功。
@@ -2421,7 +2421,7 @@ declare module "weapp-api" {
 
   declare type wx$SettingOptions = {
     success?: (res: wx$AuthSetting) => void
-  } & wx$CommonCallbackOptions;
+  } & CommonCallbackOptions;
 
   /**
    * 调起客户端小程序设置界面，返回用户设置的操作结果。设置界面只会出现小程序已经向用户请求过的权限。
@@ -2462,7 +2462,7 @@ declare module "weapp-api" {
      * Page() 函数用来注册一个页面。
      * 接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。
      */
-    (options: wx$wx$PageOptions): void;
+    (options: wx$PageOptions): void;
   }
   declare var Page: PageConstructor;
   declare interface App {
@@ -2476,7 +2476,7 @@ declare module "weapp-api" {
      * App() 函数用来注册一个小程序。
      * 接受一个 object 参数，其指定小程序的生命周期函数等。
      */
-    (options: wx$wx$AppOptions): void;
+    (options: wx$AppOptions): void;
   }
   declare var App: AppConstructor;
 
