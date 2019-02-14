@@ -1,29 +1,33 @@
 declare module "gapi.client.speech" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    operations: typeof client$operations,
-    speech: typeof client$speech
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    operations: typeof gapi$client$operations,
+    speech: typeof gapi$client$speech
   };
 
   /**
    * Load Google Cloud Speech API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "speech",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "speech",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$operations: speech$speech$OperationsResource;
+  declare var gapi$client$operations: speech$OperationsResource;
 
-  declare var client$speech: client$speech.speech$SpeechResource;
+  declare var gapi$client$speech: speech$SpeechResource;
 
-  declare interface speech$ListOperationsResponse {
+  declare interface gapi$client$speech$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -32,10 +36,10 @@ declare module "gapi.client.speech" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: speech$Operation[];
+    operations?: speech$Operation[];
   }
 
-  declare interface speech$LongRunningRecognizeRequest {
+  declare interface gapi$client$speech$LongRunningRecognizeRequest {
     /**
      * &#42;Required&#42; The audio data to be recognized.
      */
@@ -48,7 +52,7 @@ declare module "gapi.client.speech" {
     config?: speech$RecognitionConfig;
   }
 
-  declare interface speech$Operation {
+  declare interface gapi$client$speech$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -89,7 +93,7 @@ declare module "gapi.client.speech" {
     response?: Record<string, any>;
   }
 
-  declare interface speech$RecognitionAudio {
+  declare interface gapi$client$speech$RecognitionAudio {
     /**
      * The audio data bytes encoded as specified in
      * `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
@@ -108,7 +112,7 @@ declare module "gapi.client.speech" {
     uri?: string;
   }
 
-  declare interface speech$RecognitionConfig {
+  declare interface gapi$client$speech$RecognitionConfig {
     /**
      * &#42;Optional&#42; If `true`, the top result includes a list of words and
      * the start and end time offsets (timestamps) for those words. If
@@ -164,20 +168,20 @@ declare module "gapi.client.speech" {
     speechContexts?: speech$SpeechContext[];
   }
 
-  declare interface speech$RecognizeRequest {
+  declare interface gapi$client$speech$RecognizeRequest {
     /**
      * &#42;Required&#42; The audio data to be recognized.
      */
-    audio?: speech$RecognitionAudio;
+    audio?: gapi$client$speech$RecognitionAudio;
 
     /**
      * &#42;Required&#42; Provides information to the recognizer that specifies how to
      * process the request.
      */
-    config?: speech$RecognitionConfig;
+    config?: gapi$client$speech$RecognitionConfig;
   }
 
-  declare interface speech$RecognizeResponse {
+  declare interface gapi$client$speech$RecognizeResponse {
     /**
      * &#42;Output-only&#42; Sequential list of transcription results corresponding to
      * sequential portions of audio.
@@ -185,7 +189,7 @@ declare module "gapi.client.speech" {
     results?: speech$SpeechRecognitionResult[];
   }
 
-  declare interface speech$SpeechContext {
+  declare interface gapi$client$speech$SpeechContext {
     /**
      * &#42;Optional&#42; A list of strings containing words and phrases "hints" so that
      * the speech recognition is more likely to recognize them. This can be used
@@ -197,7 +201,7 @@ declare module "gapi.client.speech" {
     phrases?: string[];
   }
 
-  declare interface speech$SpeechRecognitionAlternative {
+  declare interface gapi$client$speech$SpeechRecognitionAlternative {
     /**
      * &#42;Output-only&#42; The confidence estimate between 0.0 and 1.0. A higher number
      * indicates an estimated greater likelihood that the recognized words are
@@ -219,17 +223,17 @@ declare module "gapi.client.speech" {
     words?: speech$WordInfo[];
   }
 
-  declare interface speech$SpeechRecognitionResult {
+  declare interface gapi$client$speech$SpeechRecognitionResult {
     /**
      * &#42;Output-only&#42; May contain one or more recognition hypotheses (up to the
      * maximum specified in `max_alternatives`).
      * These alternatives are ordered in terms of accuracy, with the top (first)
      * alternative being the most probable, as ranked by the recognizer.
      */
-    alternatives?: speech$SpeechRecognitionAlternative[];
+    alternatives?: gapi$client$speech$SpeechRecognitionAlternative[];
   }
 
-  declare interface speech$Status {
+  declare interface gapi$client$speech$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -249,7 +253,7 @@ declare module "gapi.client.speech" {
     message?: string;
   }
 
-  declare interface speech$WordInfo {
+  declare interface gapi$client$speech$WordInfo {
     /**
      * &#42;Output-only&#42; Time offset relative to the beginning of the audio,
      * and corresponding to the end of the spoken word.
@@ -276,7 +280,7 @@ declare module "gapi.client.speech" {
     word?: string;
   }
 
-  declare interface speech$OperationsResource {
+  declare interface gapi$client$speech$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation.  The server
      * makes a best effort to cancel the operation, but success is not
@@ -514,7 +518,7 @@ declare module "gapi.client.speech" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<speech$Operation>;
+    }): Request<gapi$client$speech$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request. If the
@@ -613,10 +617,10 @@ declare module "gapi.client.speech" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<speech$ListOperationsResponse>;
+    }): Request<gapi$client$speech$ListOperationsResponse>;
   }
 
-  declare interface speech$SpeechResource {
+  declare interface gapi$client$speech$SpeechResource {
     /**
      * Performs asynchronous speech recognition: receive results via the
      * google.longrunning.Operations interface. Returns either an
@@ -688,7 +692,7 @@ declare module "gapi.client.speech" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<speech$Operation>;
+    }): Request<gapi$client$speech$Operation>;
 
     /**
      * Performs synchronous speech recognition: receive results after all audio
@@ -759,6 +763,6 @@ declare module "gapi.client.speech" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<speech$RecognizeResponse>;
+    }): Request<gapi$client$speech$RecognizeResponse>;
   }
 }
