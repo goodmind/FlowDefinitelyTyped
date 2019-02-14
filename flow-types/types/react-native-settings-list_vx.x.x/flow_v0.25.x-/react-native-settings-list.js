@@ -157,6 +157,11 @@ declare module "react-native-settings-list" {
     borderHide?: "Top" | "Bottom" | "Both";
     itemRef?: () => void;
   }
+
+  declare var npm$namespace$SettingsList: {
+    Header: typeof SettingsList$Header,
+    Item: typeof SettingsList$Item
+  };
   declare class SettingsList$Header mixins Component<HeaderProps> {}
 
   declare class SettingsList$Item mixins Component<ItemProps> {}
