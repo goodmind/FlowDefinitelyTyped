@@ -1,62 +1,42 @@
 declare module "lovefield" {
   declare var npm$namespace$lf: {
-    bind: typeof lf$bind
+    bind: typeof lf$bind,
+
+    Order: typeof lf$Order,
+    Type: typeof lf$Type,
+    ConstraintAction: typeof lf$ConstraintAction,
+    ConstraintTiming: typeof lf$ConstraintTiming,
+    TransactionType: typeof lf$TransactionType,
+
+    schema: typeof npm$namespace$lf$schema,
+    op: typeof npm$namespace$lf$op,
+    fn: typeof npm$namespace$lf$fn
   };
-  declare class lf$Order {
-    constructor(...args: empty): mixed;
-    static +ASC: Class<lf$Order__ASC> & lf$Order__ASC & 0; // 0
-    static +DESC: Class<lf$Order__DESC> & lf$Order__DESC & 1; // 1
-  }
 
-  declare class lf$Order__ASC mixins lf$Order {}
-  declare class lf$Order__DESC mixins lf$Order {}
+  declare var lf$Order: {|
+    +ASC: 0, // 0
+    +DESC: 1 // 1
+  |};
 
-  declare class lf$Type {
-    constructor(...args: empty): mixed;
-    static +ARRAY_BUFFER: Class<lf$Type__ARRAY_BUFFER> &
-      lf$Type__ARRAY_BUFFER &
-      0; // 0
-    static +BOOLEAN: Class<lf$Type__BOOLEAN> & lf$Type__BOOLEAN & 1; // 1
-    static +DATE_TIME: Class<lf$Type__DATE_TIME> & lf$Type__DATE_TIME & 2; // 2
-    static +INTEGER: Class<lf$Type__INTEGER> & lf$Type__INTEGER & 3; // 3
-    static +NUMBER: Class<lf$Type__NUMBER> & lf$Type__NUMBER & 4; // 4
-    static +OBJECT: Class<lf$Type__OBJECT> & lf$Type__OBJECT & 5; // 5
-    static +STRING: Class<lf$Type__STRING> & lf$Type__STRING & 6; // 6
-  }
+  declare var lf$Type: {|
+    +ARRAY_BUFFER: 0, // 0
+    +BOOLEAN: 1, // 1
+    +DATE_TIME: 2, // 2
+    +INTEGER: 3, // 3
+    +NUMBER: 4, // 4
+    +OBJECT: 5, // 5
+    +STRING: 6 // 6
+  |};
 
-  declare class lf$Type__ARRAY_BUFFER mixins lf$Type {}
-  declare class lf$Type__BOOLEAN mixins lf$Type {}
-  declare class lf$Type__DATE_TIME mixins lf$Type {}
-  declare class lf$Type__INTEGER mixins lf$Type {}
-  declare class lf$Type__NUMBER mixins lf$Type {}
-  declare class lf$Type__OBJECT mixins lf$Type {}
-  declare class lf$Type__STRING mixins lf$Type {}
+  declare var lf$ConstraintAction: {|
+    +RESTRICT: 0, // 0
+    +CASCADE: 1 // 1
+  |};
 
-  declare class lf$ConstraintAction {
-    constructor(...args: empty): mixed;
-    static +RESTRICT: Class<lf$ConstraintAction__RESTRICT> &
-      lf$ConstraintAction__RESTRICT &
-      0; // 0
-    static +CASCADE: Class<lf$ConstraintAction__CASCADE> &
-      lf$ConstraintAction__CASCADE &
-      1; // 1
-  }
-
-  declare class lf$ConstraintAction__RESTRICT mixins lf$ConstraintAction {}
-  declare class lf$ConstraintAction__CASCADE mixins lf$ConstraintAction {}
-
-  declare class lf$ConstraintTiming {
-    constructor(...args: empty): mixed;
-    static +IMMEDIATE: Class<lf$ConstraintTiming__IMMEDIATE> &
-      lf$ConstraintTiming__IMMEDIATE &
-      0; // 0
-    static +DEFERRABLE: Class<lf$ConstraintTiming__DEFERRABLE> &
-      lf$ConstraintTiming__DEFERRABLE &
-      1; // 1
-  }
-
-  declare class lf$ConstraintTiming__IMMEDIATE mixins lf$ConstraintTiming {}
-  declare class lf$ConstraintTiming__DEFERRABLE mixins lf$ConstraintTiming {}
+  declare var lf$ConstraintTiming: {|
+    +IMMEDIATE: 0, // 0
+    +DEFERRABLE: 1 // 1
+  |};
 
   declare interface lf$Binder {
     getIndex(): number;
@@ -69,24 +49,12 @@ declare module "lovefield" {
   declare type lf$ValueLiteral = string | number | boolean | Date;
 
   declare interface lf$PredicateProvider {
-    eq(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
-    neq(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
-    lt(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
-    lte(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
-    gt(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
-    gte(
-      operand: lf$ValueLiteral | schema$schema$Column | lf$Binder
-    ): lf$Predicate;
+    eq(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
+    neq(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
+    lt(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
+    lte(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
+    gt(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
+    gte(operand: lf$ValueLiteral | schema$Column | lf$Binder): lf$Predicate;
     match(operand: RegExp | lf$Binder): lf$Predicate;
     between(
       from: lf$ValueLiteral | lf$Binder,
@@ -108,40 +76,32 @@ declare module "lovefield" {
   }
 
   declare interface lf$Transaction {
-    attach(query: query$schema$Builder): Promise<{ [key: string]: any }[]>;
-    begin(scope: schema$schema$Table[]): Promise<void>;
+    attach(query: query$Builder): Promise<{ [key: string]: any }[]>;
+    begin(scope: schema$Table[]): Promise<void>;
     commit(): Promise<void>;
-    exec(queries: query$schema$Builder[]): Promise<{ [key: string]: any }[][]>;
+    exec(queries: query$Builder[]): Promise<{ [key: string]: any }[][]>;
     rollback(): Promise<void>;
     stats(): lf$TransactionStats;
   }
 
-  declare class lf$TransactionType {
-    constructor(...args: empty): mixed;
-    static +READ_ONLY: Class<lf$TransactionType__READ_ONLY> &
-      lf$TransactionType__READ_ONLY &
-      0; // 0
-    static +READ_WRITE: Class<lf$TransactionType__READ_WRITE> &
-      lf$TransactionType__READ_WRITE &
-      1; // 1
-  }
-
-  declare class lf$TransactionType__READ_ONLY mixins lf$TransactionType {}
-  declare class lf$TransactionType__READ_WRITE mixins lf$TransactionType {}
+  declare var lf$TransactionType: {|
+    +READ_ONLY: 0, // 0
+    +READ_WRITE: 1 // 1
+  |};
 
   declare interface lf$Database {
     close(): void;
     createTransaction(type?: lf$TransactionType): lf$Transaction;
-    delete(): query$query$Delete;
+    delete(): query$Delete;
     export(): Promise<{ [key: string]: any }>;
-    getSchema(): schema$lf$Database;
+    getSchema(): schema$Database;
     import(data: { [key: string]: any }): Promise<void>;
-    insertOrReplace(): query$query$Insert;
-    insert(): query$query$Insert;
-    observe(query: query$query$Select, callback: Function): void;
-    select(...columns: schema$schema$Column[]): query$query$Select;
-    unobserve(query: query$query$Select, callback: Function): void;
-    update(table: schema$schema$Table): query$query$Update;
+    insertOrReplace(): query$Insert;
+    insert(): query$Insert;
+    observe(query: query$Select, callback: Function): void;
+    select(...columns: schema$Column[]): query$Select;
+    unobserve(query: query$Select, callback: Function): void;
+    update(table: schema$Table): query$Update;
     name(): string;
     pragma(): schema$DatabasePragma;
     tables(): schema$Table[];
@@ -149,50 +109,47 @@ declare module "lovefield" {
     version(): number;
   }
 
-  declare interface query$Builder {
-    lf$bind(...values: any[]): query$Builder;
+  declare interface lf$query$Builder {
+    bind(...values: any[]): lf$query$Builder;
     exec(): Promise<{ [key: string]: any }[]>;
     explain(): string;
     toSql(): string;
-    connect(options?: schema$ConnectOptions): Promise<lf$lf$Database>;
+    connect(options?: schema$ConnectOptions): Promise<lf$Database>;
     createTable(tableName: string): schema$TableBuilder;
     getSchema(): lf$Database;
     setPragma(pragma: schema$DatabasePragma): void;
   }
 
-  declare type query$Delete = {
-    from(table: schema$schema$Table): query$Delete,
-    where(predicate: lf$Predicate): query$Delete
-  } & query$Builder;
+  declare type lf$query$Delete = {
+    from(table: schema$Table): lf$query$Delete,
+    where(predicate: lf$Predicate): lf$query$Delete
+  } & Builder;
 
-  declare type query$Insert = {
-    into(table: schema$schema$Table): query$Insert,
-    values(rows: lf$Row[] | lf$Binder | lf$Binder[]): query$Insert
-  } & query$Builder;
+  declare type lf$query$Insert = {
+    into(table: schema$Table): lf$query$Insert,
+    values(rows: lf$Row[] | lf$Binder | lf$Binder[]): lf$query$Insert
+  } & Builder;
 
-  declare type query$Select = {
-    from(...tables: schema$schema$Table[]): query$Select,
-    groupBy(...columns: schema$schema$Column[]): query$Select,
-    innerJoin(
-      table: schema$schema$Table,
-      predicate: lf$Predicate
-    ): query$Select,
+  declare type lf$query$Select = {
+    from(...tables: schema$Table[]): lf$query$Select,
+    groupBy(...columns: schema$Column[]): lf$query$Select,
+    innerJoin(table: schema$Table, predicate: lf$Predicate): lf$query$Select,
     leftOuterJoin(
-      table: schema$schema$Table,
+      table: schema$Table,
       predicate: lf$Predicate
-    ): query$Select,
-    limit(numberOfRows: lf$Binder | number): query$Select,
-    orderBy(column: schema$schema$Column, order?: lf$Order): query$Select,
-    skip(numberOfRows: lf$Binder | number): query$Select,
-    where(predicate: lf$Predicate): query$Select
-  } & query$Builder;
+    ): lf$query$Select,
+    limit(numberOfRows: lf$Binder | number): lf$query$Select,
+    orderBy(column: schema$Column, order?: lf$Order): lf$query$Select,
+    skip(numberOfRows: lf$Binder | number): lf$query$Select,
+    where(predicate: lf$Predicate): lf$query$Select
+  } & Builder;
 
-  declare type query$Update = {
-    set(column: schema$schema$Column, value: any): query$Update,
-    where(predicate: lf$Predicate): query$Update
-  } & query$Builder;
+  declare type lf$query$Update = {
+    set(column: schema$Column, value: any): lf$query$Update,
+    where(predicate: lf$Predicate): lf$query$Update
+  } & Builder;
 
-  declare interface raw$BackStore {
+  declare interface lf$raw$BackStore {
     getRawDBInstance(): any;
     getRawTransaction(): any;
     dropTable(tableName: string): Promise<void>;
@@ -212,174 +169,151 @@ declare module "lovefield" {
     dump(): { [key: string]: any }[];
   }
 
-  declare var npm$namespace$schema: {
-    create: typeof schema$create
+  declare var npm$namespace$lf$schema: {
+    create: typeof lf$schema$create,
+
+    DataStoreType: typeof lf$schema$DataStoreType
   };
-  declare class schema$DataStoreType {
-    constructor(...args: empty): mixed;
-    static +INDEXED_DB: Class<schema$DataStoreType__INDEXED_DB> &
-      schema$DataStoreType__INDEXED_DB &
-      0; // 0
-    static +MEMORY: Class<schema$DataStoreType__MEMORY> &
-      schema$DataStoreType__MEMORY &
-      1; // 1
-    static +LOCAL_STORAGE: Class<schema$DataStoreType__LOCAL_STORAGE> &
-      schema$DataStoreType__LOCAL_STORAGE &
-      2; // 2
-    static +FIREBASE: Class<schema$DataStoreType__FIREBASE> &
-      schema$DataStoreType__FIREBASE &
-      3; // 3
-    static +WEB_SQL: Class<schema$DataStoreType__WEB_SQL> &
-      schema$DataStoreType__WEB_SQL &
-      4; // 4
-  }
 
-  declare class schema$DataStoreType__INDEXED_DB mixins schema$DataStoreType {}
-  declare class schema$DataStoreType__MEMORY mixins schema$DataStoreType {}
-  declare class schema$DataStoreType__LOCAL_STORAGE
-    mixins schema$DataStoreType {}
-  declare class schema$DataStoreType__FIREBASE mixins schema$DataStoreType {}
-  declare class schema$DataStoreType__WEB_SQL mixins schema$DataStoreType {}
+  declare var lf$schema$DataStoreType: {|
+    +INDEXED_DB: 0, // 0
+    +MEMORY: 1, // 1
+    +LOCAL_STORAGE: 2, // 2
+    +FIREBASE: 3, // 3
+    +WEB_SQL: 4 // 4
+  |};
 
-  declare interface schema$DatabasePragma {
+  declare interface lf$schema$DatabasePragma {
     enableBundledMode: boolean;
   }
 
-  declare interface schema$Database {
+  declare interface lf$schema$Database {
     close(): void;
     createTransaction(type?: lf$TransactionType): lf$Transaction;
-    delete(): query$query$Delete;
+    delete(): query$Delete;
     export(): Promise<{ [key: string]: any }>;
-    getSchema(): schema$schema$Database;
+    getSchema(): schema$Database;
     import(data: { [key: string]: any }): Promise<void>;
-    insertOrReplace(): query$query$Insert;
-    insert(): query$query$Insert;
-    observe(query: query$query$Select, callback: Function): void;
-    select(...columns: schema$schema$Column[]): query$query$Select;
-    unobserve(query: query$query$Select, callback: Function): void;
-    update(table: schema$schema$Table): query$query$Update;
+    insertOrReplace(): query$Insert;
+    insert(): query$Insert;
+    observe(query: query$Select, callback: Function): void;
+    select(...columns: schema$Column[]): query$Select;
+    unobserve(query: query$Select, callback: Function): void;
+    update(table: schema$Table): query$Update;
     name(): string;
-    pragma(): schema$DatabasePragma;
+    pragma(): lf$schema$DatabasePragma;
     tables(): schema$Table[];
     table(tableName: string): schema$Table;
     version(): number;
   }
 
-  declare type schema$Column = {
-    as(name: string): schema$Column,
+  declare type lf$schema$Column = {
+    as(name: string): lf$schema$Column,
     getName(): string,
     getNormalizedName(): string
-  } & lf$PredicateProvider;
+  } & PredicateProvider;
 
-  declare interface schema$ITable {
+  declare interface lf$schema$ITable {
     as(name: string): schema$Table;
     createRow(value: { [key: string]: any }): lf$Row;
     getName(): string;
   }
 
-  declare type schema$Table = schema$ITable & {
-    [index: string]: schema$Column
+  declare type lf$schema$Table = lf$schema$ITable & {
+    [index: string]: lf$schema$Column
   };
 
-  declare interface schema$ConnectOptions {
-    onUpgrade?: (rawDb: raw$raw$BackStore) => Promise<void>;
-    storeType?: schema$DataStoreType;
+  declare interface lf$schema$ConnectOptions {
+    onUpgrade?: (rawDb: raw$BackStore) => Promise<void>;
+    storeType?: lf$schema$DataStoreType;
     webSqlDbSize?: number;
   }
 
-  declare interface schema$Builder {
-    lf$bind(...values: any[]): schema$Builder;
+  declare interface lf$schema$Builder {
+    bind(...values: any[]): lf$schema$Builder;
     exec(): Promise<{ [key: string]: any }[]>;
     explain(): string;
     toSql(): string;
-    connect(options?: schema$ConnectOptions): Promise<lf$schema$Database>;
+    connect(options?: lf$schema$ConnectOptions): Promise<lf$Database>;
     createTable(tableName: string): schema$TableBuilder;
-    getSchema(): schema$Database;
-    setPragma(pragma: schema$DatabasePragma): void;
+    getSchema(): lf$schema$Database;
+    setPragma(pragma: lf$schema$DatabasePragma): void;
   }
 
-  declare interface schema$IndexedColumn {
+  declare interface lf$schema$IndexedColumn {
     autoIncrement: boolean;
     name: string;
     order: lf$Order;
   }
 
-  declare type schema$RawForeignKeySpec = {
+  declare type lf$schema$RawForeignKeySpec = {
     local: string,
     ref: string,
     action?: lf$ConstraintAction,
     timing?: lf$ConstraintTiming
   };
 
-  declare interface schema$TableBuilder {
-    addColumn(name: string, type: lf$Type): schema$TableBuilder;
+  declare interface lf$schema$TableBuilder {
+    addColumn(name: string, type: lf$Type): lf$schema$TableBuilder;
     addForeignKey(
       name: string,
-      spec: schema$RawForeignKeySpec
-    ): schema$TableBuilder;
+      spec: lf$schema$RawForeignKeySpec
+    ): lf$schema$TableBuilder;
     addIndex(
       name: string,
-      columns: string[] | schema$IndexedColumn[],
+      columns: string[] | lf$schema$IndexedColumn[],
       unique?: boolean,
       order?: lf$Order
-    ): schema$TableBuilder;
-    addNullable(columns: string[]): schema$TableBuilder;
+    ): lf$schema$TableBuilder;
+    addNullable(columns: string[]): lf$schema$TableBuilder;
     addPrimaryKey(
-      columns: string[] | schema$IndexedColumn[],
+      columns: string[] | lf$schema$IndexedColumn[],
       autoInc?: boolean
-    ): schema$TableBuilder;
-    addUnique(name: string, columns: string[]): schema$TableBuilder;
+    ): lf$schema$TableBuilder;
+    addUnique(name: string, columns: string[]): lf$schema$TableBuilder;
   }
 
-  declare function schema$create(
+  declare function lf$schema$create(
     dbName: string,
     dbVersion: number
-  ): schema$Builder;
+  ): lf$schema$Builder;
 
-  declare var npm$namespace$op: {
-    and: typeof op$and,
-    not: typeof op$not,
-    or: typeof op$or
+  declare var npm$namespace$lf$op: {
+    and: typeof lf$op$and,
+    not: typeof lf$op$not,
+    or: typeof lf$op$or
   };
-  declare function op$and(...args: lf$Predicate[]): lf$Predicate;
+  declare function lf$op$and(...args: lf$Predicate[]): lf$Predicate;
 
-  declare function op$not(operand: lf$Predicate): lf$Predicate;
+  declare function lf$op$not(operand: lf$Predicate): lf$Predicate;
 
-  declare function op$or(...args: lf$Predicate[]): lf$Predicate;
+  declare function lf$op$or(...args: lf$Predicate[]): lf$Predicate;
 
-  declare var npm$namespace$fn: {
-    avg: typeof fn$avg,
-    count: typeof fn$count,
-    distinct: typeof fn$distinct,
-    geomean: typeof fn$geomean,
-    max: typeof fn$max,
-    min: typeof fn$min,
-    stddev: typeof fn$stddev,
-    sum: typeof fn$sum
+  declare var npm$namespace$lf$fn: {
+    avg: typeof lf$fn$avg,
+    count: typeof lf$fn$count,
+    distinct: typeof lf$fn$distinct,
+    geomean: typeof lf$fn$geomean,
+    max: typeof lf$fn$max,
+    min: typeof lf$fn$min,
+    stddev: typeof lf$fn$stddev,
+    sum: typeof lf$fn$sum
   };
-  declare function fn$avg(column: schema$schema$Column): schema$schema$Column;
+  declare function lf$fn$avg(column: schema$Column): schema$Column;
 
-  declare function fn$count(
-    column?: schema$schema$Column
-  ): schema$schema$Column;
+  declare function lf$fn$count(column?: schema$Column): schema$Column;
 
-  declare function fn$distinct(
-    column: schema$schema$Column
-  ): schema$schema$Column;
+  declare function lf$fn$distinct(column: schema$Column): schema$Column;
 
-  declare function fn$geomean(
-    column: schema$schema$Column
-  ): schema$schema$Column;
+  declare function lf$fn$geomean(column: schema$Column): schema$Column;
 
-  declare function fn$max(column: schema$schema$Column): schema$schema$Column;
+  declare function lf$fn$max(column: schema$Column): schema$Column;
 
-  declare function fn$min(column: schema$schema$Column): schema$schema$Column;
+  declare function lf$fn$min(column: schema$Column): schema$Column;
 
-  declare function fn$stddev(
-    column: schema$schema$Column
-  ): schema$schema$Column;
+  declare function lf$fn$stddev(column: schema$Column): schema$Column;
 
-  declare function fn$sum(column: schema$schema$Column): schema$schema$Column;
+  declare function lf$fn$sum(column: schema$Column): schema$Column;
 
-  declare module.exports: typeof lf;
+  declare export default typeof lf;
 }
