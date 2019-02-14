@@ -1,56 +1,60 @@
 declare module "gapi.client.genomics" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    annotations: typeof client$annotations,
-    annotationsets: typeof client$annotationsets,
-    callsets: typeof client$callsets,
-    datasets: typeof client$datasets,
-    operations: typeof client$operations,
-    readgroupsets: typeof client$readgroupsets,
-    reads: typeof client$reads,
-    references: typeof client$references,
-    referencesets: typeof client$referencesets,
-    variants: typeof client$variants,
-    variantsets: typeof client$variantsets
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    annotations: typeof gapi$client$annotations,
+    annotationsets: typeof gapi$client$annotationsets,
+    callsets: typeof gapi$client$callsets,
+    datasets: typeof gapi$client$datasets,
+    operations: typeof gapi$client$operations,
+    readgroupsets: typeof gapi$client$readgroupsets,
+    reads: typeof gapi$client$reads,
+    references: typeof gapi$client$references,
+    referencesets: typeof gapi$client$referencesets,
+    variants: typeof gapi$client$variants,
+    variantsets: typeof gapi$client$variantsets
   };
 
   /**
    * Load Genomics API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "genomics",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "genomics",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$annotations: genomics$genomics$AnnotationsResource;
+  declare var gapi$client$annotations: genomics$AnnotationsResource;
 
-  declare var client$annotationsets: genomics$genomics$AnnotationsetsResource;
+  declare var gapi$client$annotationsets: genomics$AnnotationsetsResource;
 
-  declare var client$callsets: genomics$genomics$CallsetsResource;
+  declare var gapi$client$callsets: genomics$CallsetsResource;
 
-  declare var client$datasets: genomics$genomics$DatasetsResource;
+  declare var gapi$client$datasets: genomics$DatasetsResource;
 
-  declare var client$operations: genomics$genomics$OperationsResource;
+  declare var gapi$client$operations: genomics$OperationsResource;
 
-  declare var client$readgroupsets: genomics$genomics$ReadgroupsetsResource;
+  declare var gapi$client$readgroupsets: genomics$ReadgroupsetsResource;
 
-  declare var client$reads: genomics$genomics$ReadsResource;
+  declare var gapi$client$reads: genomics$ReadsResource;
 
-  declare var client$references: genomics$genomics$ReferencesResource;
+  declare var gapi$client$references: genomics$ReferencesResource;
 
-  declare var client$referencesets: genomics$genomics$ReferencesetsResource;
+  declare var gapi$client$referencesets: genomics$ReferencesetsResource;
 
-  declare var client$variants: genomics$genomics$VariantsResource;
+  declare var gapi$client$variants: genomics$VariantsResource;
 
-  declare var client$variantsets: genomics$genomics$VariantsetsResource;
+  declare var gapi$client$variantsets: genomics$VariantsetsResource;
 
-  declare interface genomics$Annotation {
+  declare interface gapi$client$genomics$Annotation {
     /**
      * The annotation set to which this annotation belongs.
      */
@@ -123,7 +127,7 @@ declare module "gapi.client.genomics" {
     variant?: genomics$VariantAnnotation;
   }
 
-  declare interface genomics$AnnotationSet {
+  declare interface gapi$client$genomics$AnnotationSet {
     /**
      * The dataset to which this annotation set belongs.
      */
@@ -163,12 +167,12 @@ declare module "gapi.client.genomics" {
     type?: string;
   }
 
-  declare interface genomics$BatchCreateAnnotationsRequest {
+  declare interface gapi$client$genomics$BatchCreateAnnotationsRequest {
     /**
      * The annotations to be created. At most 4096 can be specified in a single
      * request.
      */
-    client$annotations?: genomics$Annotation[];
+    annotations?: gapi$client$genomics$Annotation[];
 
     /**
      * A unique request ID which enables the server to detect duplicated requests.
@@ -182,7 +186,7 @@ declare module "gapi.client.genomics" {
     requestId?: string;
   }
 
-  declare interface genomics$BatchCreateAnnotationsResponse {
+  declare interface gapi$client$genomics$BatchCreateAnnotationsResponse {
     /**
      * The resulting per-annotation entries, ordered consistently with the
      * original request.
@@ -190,7 +194,7 @@ declare module "gapi.client.genomics" {
     entries?: genomics$Entry[];
   }
 
-  declare interface genomics$Binding {
+  declare interface gapi$client$genomics$Binding {
     /**
      * Specifies the identities requesting access for a Cloud Platform resource.
      * `members` can have the following values:
@@ -225,7 +229,7 @@ declare module "gapi.client.genomics" {
     role?: string;
   }
 
-  declare interface genomics$CallSet {
+  declare interface gapi$client$genomics$CallSet {
     /**
      * The date this call set was created in milliseconds from the epoch.
      */
@@ -262,7 +266,7 @@ declare module "gapi.client.genomics" {
     variantSetIds?: string[];
   }
 
-  declare interface genomics$CigarUnit {
+  declare interface gapi$client$genomics$CigarUnit {
     operation?: string;
 
     /**
@@ -279,7 +283,7 @@ declare module "gapi.client.genomics" {
     referenceSequence?: string;
   }
 
-  declare interface genomics$ClinicalCondition {
+  declare interface gapi$client$genomics$ClinicalCondition {
     /**
      * The MedGen concept id associated with this gene.
      * Search for these IDs at http://www.ncbi.nlm.nih.gov/medgen/
@@ -303,7 +307,7 @@ declare module "gapi.client.genomics" {
     omimId?: string;
   }
 
-  declare interface genomics$CodingSequence {
+  declare interface gapi$client$genomics$CodingSequence {
     /**
      * The end of the coding sequence on this annotation's reference sequence,
      * 0-based exclusive. Note that this position is relative to the reference
@@ -319,7 +323,7 @@ declare module "gapi.client.genomics" {
     start?: string;
   }
 
-  declare interface genomics$ComputeEngine {
+  declare interface gapi$client$genomics$ComputeEngine {
     /**
      * The names of the disks that were created for this pipeline.
      */
@@ -341,7 +345,7 @@ declare module "gapi.client.genomics" {
     zone?: string;
   }
 
-  declare interface genomics$CoverageBucket {
+  declare interface gapi$client$genomics$CoverageBucket {
     /**
      * The average number of reads which are aligned to each individual
      * reference base in this bucket.
@@ -354,7 +358,7 @@ declare module "gapi.client.genomics" {
     range?: genomics$Range;
   }
 
-  declare interface genomics$Dataset {
+  declare interface gapi$client$genomics$Dataset {
     /**
      * The time this dataset was created, in seconds from the epoch.
      */
@@ -376,11 +380,11 @@ declare module "gapi.client.genomics" {
     projectId?: string;
   }
 
-  declare interface genomics$Entry {
+  declare interface gapi$client$genomics$Entry {
     /**
      * The created annotation, if creation was successful.
      */
-    annotation?: genomics$Annotation;
+    annotation?: gapi$client$genomics$Annotation;
 
     /**
      * The creation status.
@@ -388,7 +392,7 @@ declare module "gapi.client.genomics" {
     status?: genomics$Status;
   }
 
-  declare interface genomics$Exon {
+  declare interface gapi$client$genomics$Exon {
     /**
      * The end position of the exon on this annotation's reference sequence,
      * 0-based exclusive. Note that this is relative to the reference start, and
@@ -421,7 +425,7 @@ declare module "gapi.client.genomics" {
     start?: string;
   }
 
-  declare interface genomics$Experiment {
+  declare interface gapi$client$genomics$Experiment {
     /**
      * The instrument model used as part of this experiment. This maps to
      * sequencing technology in the SAM spec.
@@ -449,7 +453,7 @@ declare module "gapi.client.genomics" {
     sequencingCenter?: string;
   }
 
-  declare interface genomics$ExportReadGroupSetRequest {
+  declare interface gapi$client$genomics$ExportReadGroupSetRequest {
     /**
      * Required. A Google Cloud Storage URI for the exported BAM file.
      * The currently authenticated user must have write access to the new file.
@@ -471,7 +475,7 @@ declare module "gapi.client.genomics" {
     referenceNames?: string[];
   }
 
-  declare interface genomics$ExportVariantSetRequest {
+  declare interface gapi$client$genomics$ExportVariantSetRequest {
     /**
      * Required. The BigQuery dataset to export data to. This dataset must already
      * exist. Note that this is distinct from the Genomics concept of "dataset".
@@ -504,7 +508,7 @@ declare module "gapi.client.genomics" {
     projectId?: string;
   }
 
-  declare interface genomics$ExternalId {
+  declare interface gapi$client$genomics$ExternalId {
     /**
      * The id used by the source of this data.
      */
@@ -516,7 +520,7 @@ declare module "gapi.client.genomics" {
     sourceName?: string;
   }
 
-  declare interface genomics$ImportReadGroupSetsRequest {
+  declare interface gapi$client$genomics$ImportReadGroupSetsRequest {
     /**
      * Required. The ID of the dataset these read group sets will belong to. The
      * caller must have WRITE permissions to this dataset.
@@ -552,14 +556,14 @@ declare module "gapi.client.genomics" {
     sourceUris?: string[];
   }
 
-  declare interface genomics$ImportReadGroupSetsResponse {
+  declare interface gapi$client$genomics$ImportReadGroupSetsResponse {
     /**
      * IDs of the read group sets that were created.
      */
     readGroupSetIds?: string[];
   }
 
-  declare interface genomics$ImportVariantsRequest {
+  declare interface gapi$client$genomics$ImportVariantsRequest {
     /**
      * The format of the variant data being imported. If unspecified, defaults to
      * to `VCF`.
@@ -599,19 +603,19 @@ declare module "gapi.client.genomics" {
     variantSetId?: string;
   }
 
-  declare interface genomics$ImportVariantsResponse {
+  declare interface gapi$client$genomics$ImportVariantsResponse {
     /**
      * IDs of the call sets created during the import.
      */
     callSetIds?: string[];
   }
 
-  declare interface genomics$LinearAlignment {
+  declare interface gapi$client$genomics$LinearAlignment {
     /**
      * Represents the local alignment of this sequence (alignment matches, indels,
      * etc) against the reference.
      */
-    cigar?: genomics$CigarUnit[];
+    cigar?: gapi$client$genomics$CigarUnit[];
 
     /**
      * The mapping quality of this alignment. Represents how likely
@@ -628,7 +632,7 @@ declare module "gapi.client.genomics" {
     position?: genomics$Position;
   }
 
-  declare interface genomics$ListBasesResponse {
+  declare interface gapi$client$genomics$ListBasesResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -649,7 +653,7 @@ declare module "gapi.client.genomics" {
     sequence?: string;
   }
 
-  declare interface genomics$ListCoverageBucketsResponse {
+  declare interface gapi$client$genomics$ListCoverageBucketsResponse {
     /**
      * The length of each coverage bucket in base pairs. Note that buckets at the
      * end of a reference sequence may be shorter. This value is omitted if the
@@ -664,7 +668,7 @@ declare module "gapi.client.genomics" {
      * reference sequence. Each bucket has width `bucketWidth`, unless
      * its end is the end of the reference sequence.
      */
-    coverageBuckets?: genomics$CoverageBucket[];
+    coverageBuckets?: gapi$client$genomics$CoverageBucket[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -674,11 +678,11 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$ListDatasetsResponse {
+  declare interface gapi$client$genomics$ListDatasetsResponse {
     /**
      * The list of matching Datasets.
      */
-    client$datasets?: genomics$Dataset[];
+    datasets?: gapi$client$genomics$Dataset[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -688,7 +692,7 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$ListOperationsResponse {
+  declare interface gapi$client$genomics$ListOperationsResponse {
     /**
      * The standard List next-page token.
      */
@@ -697,10 +701,10 @@ declare module "gapi.client.genomics" {
     /**
      * A list of operations that matches the specified filter in the request.
      */
-    client$operations?: genomics$Operation[];
+    operations?: genomics$Operation[];
   }
 
-  declare interface genomics$MergeVariantsRequest {
+  declare interface gapi$client$genomics$MergeVariantsRequest {
     /**
      * A mapping between info field keys and the InfoMergeOperations to
      * be performed on them.
@@ -715,10 +719,10 @@ declare module "gapi.client.genomics" {
     /**
      * The variants to be merged with existing variants.
      */
-    client$variants?: genomics$Variant[];
+    variants?: genomics$Variant[];
   }
 
-  declare interface genomics$Operation {
+  declare interface gapi$client$genomics$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -749,7 +753,7 @@ declare module "gapi.client.genomics" {
     response?: Record<string, any>;
   }
 
-  declare interface genomics$OperationEvent {
+  declare interface gapi$client$genomics$OperationEvent {
     /**
      * Required description of event.
      */
@@ -767,7 +771,7 @@ declare module "gapi.client.genomics" {
     startTime?: string;
   }
 
-  declare interface genomics$OperationMetadata {
+  declare interface gapi$client$genomics$OperationMetadata {
     /**
      * This field is deprecated. Use `labels` instead. Optionally provided by the
      * caller when submitting the request that creates the operation.
@@ -789,7 +793,7 @@ declare module "gapi.client.genomics" {
      * This also contains any warnings that were generated during import
      * or export.
      */
-    events?: genomics$OperationEvent[];
+    events?: gapi$client$genomics$OperationEvent[];
 
     /**
      * Optionally provided by the caller when submitting the request that creates
@@ -820,12 +824,12 @@ declare module "gapi.client.genomics" {
     startTime?: string;
   }
 
-  declare interface genomics$Policy {
+  declare interface gapi$client$genomics$Policy {
     /**
      * Associates a list of `members` to a `role`.
      * `bindings` with no members will result in an error.
      */
-    bindings?: genomics$Binding[];
+    bindings?: gapi$client$genomics$Binding[];
 
     /**
      * `etag` is used for optimistic concurrency control as a way to help
@@ -847,7 +851,7 @@ declare module "gapi.client.genomics" {
     version?: number;
   }
 
-  declare interface genomics$Position {
+  declare interface gapi$client$genomics$Position {
     /**
      * The 0-based offset from the start of the forward strand for that reference.
      */
@@ -865,7 +869,7 @@ declare module "gapi.client.genomics" {
     reverseStrand?: boolean;
   }
 
-  declare interface genomics$Program {
+  declare interface gapi$client$genomics$Program {
     /**
      * The command line used to run this program.
      */
@@ -894,7 +898,7 @@ declare module "gapi.client.genomics" {
     version?: string;
   }
 
-  declare interface genomics$Range {
+  declare interface gapi$client$genomics$Range {
     /**
      * The end position of the range on the reference, 0-based exclusive.
      */
@@ -912,7 +916,7 @@ declare module "gapi.client.genomics" {
     start?: string;
   }
 
-  declare interface genomics$Read {
+  declare interface gapi$client$genomics$Read {
     /**
      * The quality of the read sequence contained in this alignment record
      * (equivalent to QUAL in SAM).
@@ -939,7 +943,7 @@ declare module "gapi.client.genomics" {
      * The linear alignment for this alignment record. This field is null for
      * unmapped reads.
      */
-    alignment?: genomics$LinearAlignment;
+    alignment?: gapi$client$genomics$LinearAlignment;
 
     /**
      * The fragment is a PCR or optical duplicate (SAM flag 0x400).
@@ -979,7 +983,7 @@ declare module "gapi.client.genomics" {
      * `(readNumber+1)%numberReads` read in the fragment. It replaces
      * mate position and mate strand in SAM.
      */
-    nextMatePosition?: genomics$Position;
+    nextMatePosition?: gapi$client$genomics$Position;
 
     /**
      * The number of reads in the fragment (extension to SAM flag 0x1).
@@ -1038,7 +1042,7 @@ declare module "gapi.client.genomics" {
     supplementaryAlignment?: boolean;
   }
 
-  declare interface genomics$ReadGroup {
+  declare interface gapi$client$genomics$ReadGroup {
     /**
      * The dataset to which this read group belongs.
      */
@@ -1052,7 +1056,7 @@ declare module "gapi.client.genomics" {
     /**
      * The experiment used to generate this read group.
      */
-    experiment?: genomics$Experiment;
+    experiment?: gapi$client$genomics$Experiment;
 
     /**
      * The server-generated read group ID, unique for all read groups.
@@ -1084,7 +1088,7 @@ declare module "gapi.client.genomics" {
      * only the first read group in a returned set will have this field
      * populated.
      */
-    programs?: genomics$Program[];
+    programs?: gapi$client$genomics$Program[];
 
     /**
      * The reference set the reads in this read group are aligned to.
@@ -1097,7 +1101,7 @@ declare module "gapi.client.genomics" {
     sampleId?: string;
   }
 
-  declare interface genomics$ReadGroupSet {
+  declare interface gapi$client$genomics$ReadGroupSet {
     /**
      * The dataset to which this read group set belongs.
      */
@@ -1128,7 +1132,7 @@ declare module "gapi.client.genomics" {
      * The read groups in this set. There are typically 1-10 read groups in a read
      * group set.
      */
-    readGroups?: genomics$ReadGroup[];
+    readGroups?: gapi$client$genomics$ReadGroup[];
 
     /**
      * The reference set to which the reads in this read group set are aligned.
@@ -1136,7 +1140,7 @@ declare module "gapi.client.genomics" {
     referenceSetId?: string;
   }
 
-  declare interface genomics$Reference {
+  declare interface gapi$client$genomics$Reference {
     /**
      * The server-generated reference ID, unique across all references.
      */
@@ -1177,7 +1181,7 @@ declare module "gapi.client.genomics" {
     sourceUri?: string;
   }
 
-  declare interface genomics$ReferenceBound {
+  declare interface gapi$client$genomics$ReferenceBound {
     /**
      * The name of the reference associated with this reference bound.
      */
@@ -1190,7 +1194,7 @@ declare module "gapi.client.genomics" {
     upperBound?: string;
   }
 
-  declare interface genomics$ReferenceSet {
+  declare interface gapi$client$genomics$ReferenceSet {
     /**
      * Public id of this reference set, such as `GRCh37`.
      */
@@ -1242,14 +1246,14 @@ declare module "gapi.client.genomics" {
     sourceUri?: string;
   }
 
-  declare interface genomics$RuntimeMetadata {
+  declare interface gapi$client$genomics$RuntimeMetadata {
     /**
      * Execution information specific to Google Compute Engine.
      */
-    computeEngine?: genomics$ComputeEngine;
+    computeEngine?: gapi$client$genomics$ComputeEngine;
   }
 
-  declare interface genomics$SearchAnnotationSetsRequest {
+  declare interface gapi$client$genomics$SearchAnnotationSetsRequest {
     /**
      * Required. The dataset IDs to search within. Caller must have `READ` access
      * to these datasets.
@@ -1288,11 +1292,11 @@ declare module "gapi.client.genomics" {
     types?: string[];
   }
 
-  declare interface genomics$SearchAnnotationSetsResponse {
+  declare interface gapi$client$genomics$SearchAnnotationSetsResponse {
     /**
      * The matching annotation sets.
      */
-    annotationSets?: genomics$AnnotationSet[];
+    annotationSets?: gapi$client$genomics$AnnotationSet[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -1302,7 +1306,7 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$SearchAnnotationsRequest {
+  declare interface gapi$client$genomics$SearchAnnotationsRequest {
     /**
      * Required. The annotation sets to search within. The caller must have
      * `READ` access to these annotation sets.
@@ -1352,11 +1356,11 @@ declare module "gapi.client.genomics" {
     start?: string;
   }
 
-  declare interface genomics$SearchAnnotationsResponse {
+  declare interface gapi$client$genomics$SearchAnnotationsResponse {
     /**
      * The matching annotations.
      */
-    client$annotations?: genomics$Annotation[];
+    annotations?: gapi$client$genomics$Annotation[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -1366,7 +1370,7 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$SearchCallSetsRequest {
+  declare interface gapi$client$genomics$SearchCallSetsRequest {
     /**
      * Only return call sets for which a substring of the name matches this
      * string.
@@ -1393,11 +1397,11 @@ declare module "gapi.client.genomics" {
     variantSetIds?: string[];
   }
 
-  declare interface genomics$SearchCallSetsResponse {
+  declare interface gapi$client$genomics$SearchCallSetsResponse {
     /**
      * The list of matching call sets.
      */
-    callSets?: genomics$CallSet[];
+    callSets?: gapi$client$genomics$CallSet[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -1407,7 +1411,7 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$SearchReadGroupSetsRequest {
+  declare interface gapi$client$genomics$SearchReadGroupSetsRequest {
     /**
      * Restricts this query to read group sets within the given datasets. At least
      * one ID must be provided.
@@ -1434,7 +1438,7 @@ declare module "gapi.client.genomics" {
     pageToken?: string;
   }
 
-  declare interface genomics$SearchReadGroupSetsResponse {
+  declare interface gapi$client$genomics$SearchReadGroupSetsResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -1445,10 +1449,10 @@ declare module "gapi.client.genomics" {
     /**
      * The list of matching read group sets.
      */
-    readGroupSets?: genomics$ReadGroupSet[];
+    readGroupSets?: gapi$client$genomics$ReadGroupSet[];
   }
 
-  declare interface genomics$SearchReadsRequest {
+  declare interface gapi$client$genomics$SearchReadsRequest {
     /**
      * The end position of the range on the reference, 0-based exclusive. If
      * specified, `referenceName` must also be specified.
@@ -1497,14 +1501,14 @@ declare module "gapi.client.genomics" {
     start?: string;
   }
 
-  declare interface genomics$SearchReadsResponse {
+  declare interface gapi$client$genomics$SearchReadsResponse {
     /**
      * The list of matching alignments sorted by mapped genomic coordinate,
      * if any, ascending in position within the same reference. Unmapped reads,
      * which have no position, are returned contiguously and are sorted in
      * ascending lexicographic order by fragment name.
      */
-    alignments?: genomics$Read[];
+    alignments?: gapi$client$genomics$Read[];
 
     /**
      * The continuation token, which is used to page through large result sets.
@@ -1514,7 +1518,7 @@ declare module "gapi.client.genomics" {
     nextPageToken?: string;
   }
 
-  declare interface genomics$SearchReferenceSetsRequest {
+  declare interface gapi$client$genomics$SearchReferenceSetsRequest {
     /**
      * If present, return reference sets for which a prefix of any of
      * sourceAccessions
@@ -1549,7 +1553,7 @@ declare module "gapi.client.genomics" {
     pageToken?: string;
   }
 
-  declare interface genomics$SearchReferenceSetsResponse {
+  declare interface gapi$client$genomics$SearchReferenceSetsResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -1560,10 +1564,10 @@ declare module "gapi.client.genomics" {
     /**
      * The matching references sets.
      */
-    referenceSets?: genomics$ReferenceSet[];
+    referenceSets?: gapi$client$genomics$ReferenceSet[];
   }
 
-  declare interface genomics$SearchReferencesRequest {
+  declare interface gapi$client$genomics$SearchReferencesRequest {
     /**
      * If present, return references for which a prefix of any of
      * sourceAccessions match
@@ -1597,7 +1601,7 @@ declare module "gapi.client.genomics" {
     referenceSetId?: string;
   }
 
-  declare interface genomics$SearchReferencesResponse {
+  declare interface gapi$client$genomics$SearchReferencesResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -1608,10 +1612,10 @@ declare module "gapi.client.genomics" {
     /**
      * The matching references.
      */
-    client$references?: genomics$Reference[];
+    references?: gapi$client$genomics$Reference[];
   }
 
-  declare interface genomics$SearchVariantSetsRequest {
+  declare interface gapi$client$genomics$SearchVariantSetsRequest {
     /**
      * Exactly one dataset ID must be provided here. Only variant sets which
      * belong to this dataset will be returned.
@@ -1632,7 +1636,7 @@ declare module "gapi.client.genomics" {
     pageToken?: string;
   }
 
-  declare interface genomics$SearchVariantSetsResponse {
+  declare interface gapi$client$genomics$SearchVariantSetsResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -1646,7 +1650,7 @@ declare module "gapi.client.genomics" {
     variantSets?: genomics$VariantSet[];
   }
 
-  declare interface genomics$SearchVariantsRequest {
+  declare interface gapi$client$genomics$SearchVariantsRequest {
     /**
      * Only return variant calls which belong to call sets with these ids.
      * Leaving this blank returns all variant calls. If a variant has no
@@ -1705,7 +1709,7 @@ declare module "gapi.client.genomics" {
     variantSetIds?: string[];
   }
 
-  declare interface genomics$SearchVariantsResponse {
+  declare interface gapi$client$genomics$SearchVariantsResponse {
     /**
      * The continuation token, which is used to page through large result sets.
      * Provide this value in a subsequent request to return the next page of
@@ -1716,20 +1720,20 @@ declare module "gapi.client.genomics" {
     /**
      * The list of matching Variants.
      */
-    client$variants?: genomics$Variant[];
+    variants?: genomics$Variant[];
   }
 
-  declare interface genomics$SetIamPolicyRequest {
+  declare interface gapi$client$genomics$SetIamPolicyRequest {
     /**
      * REQUIRED: The complete policy to be applied to the `resource`. The size of
      * the policy is limited to a few 10s of KB. An empty policy is a
      * valid policy but certain Cloud Platform services (such as Projects)
      * might reject them.
      */
-    policy?: genomics$Policy;
+    policy?: gapi$client$genomics$Policy;
   }
 
-  declare interface genomics$Status {
+  declare interface gapi$client$genomics$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -1749,7 +1753,7 @@ declare module "gapi.client.genomics" {
     message?: string;
   }
 
-  declare interface genomics$TestIamPermissionsRequest {
+  declare interface gapi$client$genomics$TestIamPermissionsRequest {
     /**
      * REQUIRED: The set of permissions to check for the 'resource'.
      * Permissions with wildcards (such as '&#42;' or 'storage.&#42;') are not allowed.
@@ -1766,7 +1770,7 @@ declare module "gapi.client.genomics" {
     permissions?: string[];
   }
 
-  declare interface genomics$TestIamPermissionsResponse {
+  declare interface gapi$client$genomics$TestIamPermissionsResponse {
     /**
      * A subset of `TestPermissionsRequest.permissions` that the caller is
      * allowed.
@@ -1774,7 +1778,7 @@ declare module "gapi.client.genomics" {
     permissions?: string[];
   }
 
-  declare interface genomics$Transcript {
+  declare interface gapi$client$genomics$Transcript {
     /**
      * The range of the coding sequence for this transcript, if any. To determine
      * the exact ranges of coding sequence, intersect this range with those of the
@@ -1790,7 +1794,7 @@ declare module "gapi.client.genomics" {
      * match the expected reference reading frame and coding exon reference bases
      * cannot necessarily be concatenated to produce the original transcript mRNA.
      */
-    codingSequence?: genomics$CodingSequence;
+    codingSequence?: gapi$client$genomics$CodingSequence;
 
     /**
      * The <a href="http://en.wikipedia.org/wiki/Exon">exons</a> that compose
@@ -1808,7 +1812,7 @@ declare module "gapi.client.genomics" {
      *
      * Exons are ordered by start position and may not overlap.
      */
-    exons?: genomics$Exon[];
+    exons?: gapi$client$genomics$Exon[];
 
     /**
      * The annotation ID of the gene from which this transcript is transcribed.
@@ -1816,7 +1820,7 @@ declare module "gapi.client.genomics" {
     geneId?: string;
   }
 
-  declare interface genomics$Variant {
+  declare interface gapi$client$genomics$Variant {
     /**
      * The bases that appear instead of the reference bases.
      */
@@ -1893,7 +1897,7 @@ declare module "gapi.client.genomics" {
     variantSetId?: string;
   }
 
-  declare interface genomics$VariantAnnotation {
+  declare interface gapi$client$genomics$VariantAnnotation {
     /**
      * The alternate allele for this variant. If multiple alternate alleles
      * exist at this location, create a separate variant for each one, as they
@@ -1913,7 +1917,7 @@ declare module "gapi.client.genomics" {
      * The set of conditions associated with this variant.
      * A condition describes the way a variant influences human health.
      */
-    conditions?: genomics$ClinicalCondition[];
+    conditions?: gapi$client$genomics$ClinicalCondition[];
 
     /**
      * Effect of the variant on the coding sequence.
@@ -1938,7 +1942,7 @@ declare module "gapi.client.genomics" {
     type?: string;
   }
 
-  declare interface genomics$VariantCall {
+  declare interface gapi$client$genomics$VariantCall {
     /**
      * The ID of the call set this variant call belongs to.
      */
@@ -1991,7 +1995,7 @@ declare module "gapi.client.genomics" {
     phaseset?: string;
   }
 
-  declare interface genomics$VariantSet {
+  declare interface gapi$client$genomics$VariantSet {
     /**
      * The dataset to which this variant set belongs.
      */
@@ -2021,7 +2025,7 @@ declare module "gapi.client.genomics" {
      * A list of all references used by the variants in a variant set
      * with associated coordinate upper bounds for each one.
      */
-    referenceBounds?: genomics$ReferenceBound[];
+    referenceBounds?: gapi$client$genomics$ReferenceBound[];
 
     /**
      * The reference set to which the variant set is mapped. The reference set
@@ -2038,7 +2042,7 @@ declare module "gapi.client.genomics" {
     referenceSetId?: string;
   }
 
-  declare interface genomics$VariantSetMetadata {
+  declare interface gapi$client$genomics$VariantSetMetadata {
     /**
      * A textual description of this metadata.
      */
@@ -2080,7 +2084,7 @@ declare module "gapi.client.genomics" {
     value?: string;
   }
 
-  declare interface genomics$AnnotationsResource {
+  declare interface gapi$client$genomics$AnnotationsResource {
     /**
      * Creates one or more new annotations atomically. All annotations must
      * belong to the same annotation set. Caller must have WRITE
@@ -2162,7 +2166,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$BatchCreateAnnotationsResponse>;
+    }): Request<gapi$client$genomics$BatchCreateAnnotationsResponse>;
 
     /**
      * Creates a new annotation. Caller must have WRITE permission
@@ -2253,7 +2257,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Annotation>;
+    }): Request<gapi$client$genomics$Annotation>;
 
     /**
      * Deletes an annotation. Caller must have WRITE permission for
@@ -2405,7 +2409,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Annotation>;
+    }): Request<gapi$client$genomics$Annotation>;
 
     /**
      * Searches for annotations that match the given criteria. Results are
@@ -2481,7 +2485,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchAnnotationsResponse>;
+    }): Request<gapi$client$genomics$SearchAnnotationsResponse>;
 
     /**
      * Updates an annotation. Caller must have
@@ -2567,10 +2571,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Annotation>;
+    }): Request<gapi$client$genomics$Annotation>;
   }
 
-  declare interface genomics$AnnotationsetsResource {
+  declare interface gapi$client$genomics$AnnotationsetsResource {
     /**
      * Creates a new annotation set. Caller must have WRITE permission for the
      * associated dataset.
@@ -2648,7 +2652,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$AnnotationSet>;
+    }): Request<gapi$client$genomics$AnnotationSet>;
 
     /**
      * Deletes an annotation set. Caller must have WRITE permission
@@ -2800,7 +2804,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$AnnotationSet>;
+    }): Request<gapi$client$genomics$AnnotationSet>;
 
     /**
      * Searches for annotation sets that match the given criteria. Annotation sets
@@ -2874,7 +2878,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchAnnotationSetsResponse>;
+    }): Request<gapi$client$genomics$SearchAnnotationSetsResponse>;
 
     /**
      * Updates an annotation set. The update must respect all mutability
@@ -2960,10 +2964,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$AnnotationSet>;
+    }): Request<gapi$client$genomics$AnnotationSet>;
   }
 
-  declare interface genomics$CallsetsResource {
+  declare interface gapi$client$genomics$CallsetsResource {
     /**
      * Creates a new call set.
      *
@@ -3036,7 +3040,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$CallSet>;
+    }): Request<gapi$client$genomics$CallSet>;
 
     /**
      * Deletes a call set.
@@ -3194,7 +3198,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$CallSet>;
+    }): Request<gapi$client$genomics$CallSet>;
 
     /**
      * Updates a call set.
@@ -3283,7 +3287,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$CallSet>;
+    }): Request<gapi$client$genomics$CallSet>;
 
     /**
      * Gets a list of call sets matching the criteria.
@@ -3360,10 +3364,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchCallSetsResponse>;
+    }): Request<gapi$client$genomics$SearchCallSetsResponse>;
   }
 
-  declare interface genomics$DatasetsResource {
+  declare interface gapi$client$genomics$DatasetsResource {
     /**
      * Creates a new dataset.
      *
@@ -3436,7 +3440,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Dataset>;
+    }): Request<gapi$client$genomics$Dataset>;
 
     /**
      * Deletes a dataset and all of its contents (all read group sets,
@@ -3599,7 +3603,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Dataset>;
+    }): Request<gapi$client$genomics$Dataset>;
 
     /**
      * Gets the access control policy for the dataset. This is empty if the
@@ -3683,7 +3687,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Policy>;
+    }): Request<gapi$client$genomics$Policy>;
 
     /**
      * Lists datasets within a project.
@@ -3775,7 +3779,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ListDatasetsResponse>;
+    }): Request<gapi$client$genomics$ListDatasetsResponse>;
 
     /**
      * Updates a dataset.
@@ -3864,7 +3868,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Dataset>;
+    }): Request<gapi$client$genomics$Dataset>;
 
     /**
      * Sets the access control policy on the specified dataset. Replaces any
@@ -3948,7 +3952,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Policy>;
+    }): Request<gapi$client$genomics$Policy>;
 
     /**
      * Returns permissions that a caller has on the specified resource.
@@ -4030,7 +4034,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$TestIamPermissionsResponse>;
+    }): Request<gapi$client$genomics$TestIamPermissionsResponse>;
 
     /**
      * Undeletes a dataset by restoring a dataset which was deleted via this API.
@@ -4111,10 +4115,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Dataset>;
+    }): Request<gapi$client$genomics$Dataset>;
   }
 
-  declare interface genomics$OperationsResource {
+  declare interface gapi$client$genomics$OperationsResource {
     /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed.
      * Clients may use Operations.GetOperation or Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
@@ -4267,7 +4271,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Operation>;
+    }): Request<gapi$client$genomics$Operation>;
 
     /**
      * Lists operations that match the specified filter in the request.
@@ -4375,10 +4379,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ListOperationsResponse>;
+    }): Request<gapi$client$genomics$ListOperationsResponse>;
   }
 
-  declare interface genomics$CoveragebucketsResource {
+  declare interface gapi$client$genomics$CoveragebucketsResource {
     /**
      * Lists fixed width coverage buckets for a read group set, each of which
      * correspond to a range of a reference sequence. Each bucket summarizes
@@ -4507,10 +4511,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ListCoverageBucketsResponse>;
+    }): Request<gapi$client$genomics$ListCoverageBucketsResponse>;
   }
 
-  declare interface genomics$ReadgroupsetsResource {
+  declare interface gapi$client$genomics$ReadgroupsetsResource {
     /**
      * Deletes a read group set.
      *
@@ -4674,7 +4678,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Operation>;
+    }): Request<gapi$client$genomics$Operation>;
 
     /**
      * Gets a read group set by ID.
@@ -4753,7 +4757,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ReadGroupSet>;
+    }): Request<gapi$client$genomics$ReadGroupSet>;
 
     /**
      * Creates read group sets by asynchronously importing the provided
@@ -4840,7 +4844,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Operation>;
+    }): Request<gapi$client$genomics$Operation>;
 
     /**
      * Updates a read group set.
@@ -4933,7 +4937,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ReadGroupSet>;
+    }): Request<gapi$client$genomics$ReadGroupSet>;
 
     /**
      * Searches for read group sets matching the criteria.
@@ -5010,11 +5014,11 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchReadGroupSetsResponse>;
-    coveragebuckets: genomics$CoveragebucketsResource;
+    }): Request<gapi$client$genomics$SearchReadGroupSetsResponse>;
+    coveragebuckets: gapi$client$genomics$CoveragebucketsResource;
   }
 
-  declare interface genomics$ReadsResource {
+  declare interface gapi$client$genomics$ReadsResource {
     /**
      * Gets a list of reads for one or more read group sets.
      *
@@ -5106,10 +5110,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchReadsResponse>;
+    }): Request<gapi$client$genomics$SearchReadsResponse>;
   }
 
-  declare interface genomics$BasesResource {
+  declare interface gapi$client$genomics$BasesResource {
     /**
      * Lists the bases in a reference, optionally restricted to a range.
      *
@@ -5215,10 +5219,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ListBasesResponse>;
+    }): Request<gapi$client$genomics$ListBasesResponse>;
   }
 
-  declare interface genomics$ReferencesResource {
+  declare interface gapi$client$genomics$ReferencesResource {
     /**
      * Gets a reference.
      *
@@ -5299,7 +5303,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Reference>;
+    }): Request<gapi$client$genomics$Reference>;
 
     /**
      * Searches for references which match the given criteria.
@@ -5376,11 +5380,11 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchReferencesResponse>;
-    bases: genomics$BasesResource;
+    }): Request<gapi$client$genomics$SearchReferencesResponse>;
+    bases: gapi$client$genomics$BasesResource;
   }
 
-  declare interface genomics$ReferencesetsResource {
+  declare interface gapi$client$genomics$ReferencesetsResource {
     /**
      * Gets a reference set.
      *
@@ -5461,7 +5465,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$ReferenceSet>;
+    }): Request<gapi$client$genomics$ReferenceSet>;
 
     /**
      * Searches for reference sets which match the given criteria.
@@ -5538,10 +5542,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchReferenceSetsResponse>;
+    }): Request<gapi$client$genomics$SearchReferenceSetsResponse>;
   }
 
-  declare interface genomics$VariantsResource {
+  declare interface gapi$client$genomics$VariantsResource {
     /**
      * Creates a new variant.
      *
@@ -5614,7 +5618,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Variant>;
+    }): Request<gapi$client$genomics$Variant>;
 
     /**
      * Deletes a variant.
@@ -5772,7 +5776,7 @@ declare module "gapi.client.genomics" {
        * The ID of the variant.
        */
       variantId: string
-    }): Request<genomics$Variant>;
+    }): Request<gapi$client$genomics$Variant>;
 
     /**
      * Creates variant data by asynchronously importing the provided information.
@@ -5859,7 +5863,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$Operation>;
+    }): Request<gapi$client$genomics$Operation>;
 
     /**
      * Merges the given variants with existing variants.
@@ -6109,7 +6113,7 @@ declare module "gapi.client.genomics" {
        * The ID of the variant to be updated.
        */
       variantId: string
-    }): Request<genomics$Variant>;
+    }): Request<gapi$client$genomics$Variant>;
 
     /**
      * Gets a list of variants matching the criteria.
@@ -6186,10 +6190,10 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchVariantsResponse>;
+    }): Request<gapi$client$genomics$SearchVariantsResponse>;
   }
 
-  declare interface genomics$VariantsetsResource {
+  declare interface gapi$client$genomics$VariantsetsResource {
     /**
      * Creates a new variant set.
      *
@@ -6266,7 +6270,7 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$VariantSet>;
+    }): Request<gapi$client$genomics$VariantSet>;
 
     /**
      * Deletes a variant set including all variants, call sets, and calls within.
@@ -6426,7 +6430,7 @@ declare module "gapi.client.genomics" {
        * should be exported. The caller must have READ access to this variant set.
        */
       variantSetId: string
-    }): Request<genomics$Operation>;
+    }): Request<gapi$client$genomics$Operation>;
 
     /**
      * Gets a variant set by ID.
@@ -6505,7 +6509,7 @@ declare module "gapi.client.genomics" {
        * Required. The ID of the variant set.
        */
       variantSetId: string
-    }): Request<genomics$VariantSet>;
+    }): Request<gapi$client$genomics$VariantSet>;
 
     /**
      * Updates a variant set using patch semantics.
@@ -6596,7 +6600,7 @@ declare module "gapi.client.genomics" {
        * The ID of the variant to be updated (must already exist).
        */
       variantSetId: string
-    }): Request<genomics$VariantSet>;
+    }): Request<gapi$client$genomics$VariantSet>;
 
     /**
      * Returns a list of all variant sets matching search criteria.
@@ -6673,6 +6677,6 @@ declare module "gapi.client.genomics" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<genomics$SearchVariantSetsResponse>;
+    }): Request<gapi$client$genomics$SearchVariantSetsResponse>;
   }
 }
