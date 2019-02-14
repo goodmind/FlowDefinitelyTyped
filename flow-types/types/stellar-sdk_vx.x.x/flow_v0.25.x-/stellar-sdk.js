@@ -72,47 +72,55 @@ declare module "stellar-sdk" {
   declare function Config$setDefault(): void;
 
   declare export class Server {
-    constructor(
-      serverURL: string,
-      options?: Server$FederationServer$Options
-    ): this;
-    accounts(): Server$Server$AccountCallBuilder;
-    assets(): Server$Server$AssetsCallBuilder;
-    effects(): Server$Server$EffectCallBuilder;
-    ledgers(): Server$Server$LedgerCallBuilder;
-    loadAccount(accountId: string): Promise<Server$Horizon$AccountResponse>;
-    offers(
-      resource: string,
-      ...parameters: string[]
-    ): Server$Server$OfferCallBuilder;
-    operations(): Server$Server$OperationCallBuilder;
-    orderbook(
-      selling: Asset,
-      buying: Asset
-    ): Server$Server$OrderbookCallBuilder;
+    constructor(serverURL: string, options?: Server$Options): this;
+    accounts(): Server$AccountCallBuilder;
+    assets(): Server$AssetsCallBuilder;
+    effects(): Server$EffectCallBuilder;
+    ledgers(): Server$LedgerCallBuilder;
+    loadAccount(accountId: string): Promise<Server$AccountResponse>;
+    offers(resource: string, ...parameters: string[]): Server$OfferCallBuilder;
+    operations(): Server$OperationCallBuilder;
+    orderbook(selling: Asset, buying: Asset): Server$OrderbookCallBuilder;
     paths(
       source: string,
       destination: string,
       destinationAsset: Asset,
       destinationAmount: string
-    ): Server$Server$PathCallBuilder;
-    payments(): Server$Server$PaymentCallBuilder;
+    ): Server$PathCallBuilder;
+    payments(): Server$PaymentCallBuilder;
     submitTransaction(
       transaction: Transaction
-    ): Promise<Server$Server$TransactionRecord>;
+    ): Promise<Server$TransactionRecord>;
     tradeAggregation(
       base: Asset,
       counter: Asset,
       startTime: Date,
       endTime: Date,
       resolution: Date
-    ): Server$Server$TradeAggregationCallBuilder;
-    trades(): Server$Server$TradesCallBuilder;
-    transactions(): Server$Server$TransactionCallBuilder;
+    ): Server$TradeAggregationCallBuilder;
+    trades(): Server$TradesCallBuilder;
+    transactions(): Server$TransactionCallBuilder;
     serverURL: any;
   }
+
+  declare var npm$namespace$Server: {
+    CallBuilder: typeof Server$CallBuilder,
+    AccountCallBuilder: typeof Server$AccountCallBuilder,
+    AccountResponse: typeof Server$AccountResponse,
+    AssetsCallBuilder: typeof Server$AssetsCallBuilder,
+    EffectCallBuilder: typeof Server$EffectCallBuilder,
+    LedgerCallBuilder: typeof Server$LedgerCallBuilder,
+    OfferCallBuilder: typeof Server$OfferCallBuilder,
+    OperationCallBuilder: typeof Server$OperationCallBuilder,
+    OrderbookCallBuilder: typeof Server$OrderbookCallBuilder,
+    PathCallBuilder: typeof Server$PathCallBuilder,
+    PaymentCallBuilder: typeof Server$PaymentCallBuilder,
+    TradeAggregationCallBuilder: typeof Server$TradeAggregationCallBuilder,
+    TradesCallBuilder: typeof Server$TradesCallBuilder,
+    TransactionCallBuilder: typeof Server$TransactionCallBuilder
+  };
   declare class Server$CallBuilder<
-    T: Horizon$Horizon$BaseResponse = Horizon$Horizon$BaseResponse
+    T: Horizon$BaseResponse = Horizon$BaseResponse
   > {
     constructor(serverUrl: string): this;
     call(): Promise<Server$CollectionPage<T>>;
@@ -126,7 +134,7 @@ declare module "stellar-sdk" {
   }
 
   declare interface Server$CollectionPage<
-    T: Horizon$Horizon$BaseResponse = Horizon$Horizon$BaseResponse
+    T: Horizon$BaseResponse = Horizon$BaseResponse
   > {
     records: T[];
     next: () => Promise<Server$CollectionPage<T>>;
@@ -134,12 +142,12 @@ declare module "stellar-sdk" {
   }
 
   declare interface Server$CollectionRecord<
-    T: Horizon$Horizon$BaseResponse = Horizon$Horizon$BaseResponse
+    T: Horizon$BaseResponse = Horizon$BaseResponse
   > {
     _links: {
-      next: Horizon$Horizon$ResponseLink,
-      prev: Horizon$Horizon$ResponseLink,
-      self: Horizon$Horizon$ResponseLink
+      next: Horizon$ResponseLink,
+      prev: Horizon$ResponseLink,
+      self: Horizon$ResponseLink
     };
     _embedded: {
       records: T[]
@@ -153,11 +161,11 @@ declare module "stellar-sdk" {
   }
 
   declare type Server$CallFunction<
-    T: Horizon$Horizon$BaseResponse = Horizon$Horizon$BaseResponse
+    T: Horizon$BaseResponse = Horizon$BaseResponse
   > = () => Promise<T>;
 
   declare type Server$CallCollectionFunction<
-    T: Horizon$Horizon$BaseResponse = Horizon$Horizon$BaseResponse
+    T: Horizon$BaseResponse = Horizon$BaseResponse
   > = (
     options?: Server$CallFunctionTemplateOptions
   ) => Promise<Server$CollectionRecord<T>>;
@@ -168,9 +176,9 @@ declare module "stellar-sdk" {
     account_id: string,
     sequence: number,
     subentry_count: number,
-    thresholds: Horizon$Horizon$AccountThresholds,
-    flags: Horizon$Horizon$Flags,
-    balances: Horizon$Horizon$BalanceLine[],
+    thresholds: Horizon$AccountThresholds,
+    flags: Horizon$Flags,
+    balances: Horizon$BalanceLine[],
     signers: Array<{
       public_key: string,
       weight: number
@@ -188,7 +196,7 @@ declare module "stellar-sdk" {
     operations: Server$CallCollectionFunction<Server$OperationRecord>,
     payments: Server$CallCollectionFunction<Server$PaymentOperationRecord>,
     trades: Server$CallCollectionFunction<Server$TradeRecord>
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$AssetRecord = {
     asset_type: AssetType.credit4 | AssetType.credit12,
@@ -197,8 +205,8 @@ declare module "stellar-sdk" {
     paging_token: string,
     amount: string,
     num_accounts: number,
-    flags: Horizon$Horizon$Flags
-  } & Horizon$Horizon$BaseResponse;
+    flags: Horizon$Flags
+  } & Horizon$BaseResponse;
 
   declare type Server$EffectRecord = {
     account: string,
@@ -210,7 +218,7 @@ declare module "stellar-sdk" {
     operation?: Server$CallFunction<Server$OperationRecord>,
     precedes?: Server$CallFunction<Server$EffectRecord>,
     succeeds?: Server$CallFunction<Server$EffectRecord>
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$LedgerRecord = {
     id: string,
@@ -234,7 +242,7 @@ declare module "stellar-sdk" {
     operations: Server$CallCollectionFunction<Server$OperationRecord>,
     self: Server$CallFunction<Server$LedgerRecord>,
     transactions: Server$CallCollectionFunction<Server$TransactionRecord>
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$OfferRecord = {
     id: string,
@@ -243,10 +251,10 @@ declare module "stellar-sdk" {
     selling: Asset,
     buying: Asset,
     amount: string,
-    price_r: Horizon$Horizon$PriceR,
+    price_r: Horizon$PriceR,
     price: string,
     seller?: Server$CallFunction<Server$AccountRecord>
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$BaseOperationRecord<
     T: Horizon$OperationResponseType = Horizon$OperationResponseType,
@@ -257,82 +265,82 @@ declare module "stellar-sdk" {
     precedes: Server$CallFunction<Server$OperationRecord>,
     effects: Server$CallCollectionFunction<Server$EffectRecord>,
     transaction: Server$CallFunction<Server$TransactionRecord>
-  } & Horizon$Horizon$BaseOperationResponse<T, TI>;
+  } & Horizon$BaseOperationResponse<T, TI>;
 
-  declare type Server$CreateAccountOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.createAccount,
-    Horizon$OperationResponseTypeI.createAccount
+  declare type Server$CreateAccountOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.createAccount,
+    OperationResponseTypeI.createAccount
   > &
-    Horizon$Horizon$CreateAccountOperationResponse;
+    Horizon$CreateAccountOperationResponse;
 
   declare type Server$PaymentOperationRecord = {
     sender: Server$CallFunction<Server$AccountRecord>,
     receiver: Server$CallFunction<Server$AccountRecord>
-  } & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.payment,
-    Horizon$OperationResponseTypeI.payment
+  } & BaseOperationRecord<
+    OperationResponseType.payment,
+    OperationResponseTypeI.payment
   > &
-    Horizon$Horizon$PaymentOperationResponse;
+    Horizon$PaymentOperationResponse;
 
-  declare type Server$PathPaymentOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.pathPayment,
-    Horizon$OperationResponseTypeI.pathPayment
+  declare type Server$PathPaymentOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.pathPayment,
+    OperationResponseTypeI.pathPayment
   > &
-    Horizon$Horizon$PathPaymentOperationResponse;
+    Horizon$PathPaymentOperationResponse;
 
-  declare type Server$ManageOfferOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.manageOffer,
-    Horizon$OperationResponseTypeI.manageOffer
+  declare type Server$ManageOfferOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.manageOffer,
+    OperationResponseTypeI.manageOffer
   > &
-    Horizon$Horizon$ManageOfferOperationResponse;
+    Horizon$ManageOfferOperationResponse;
 
-  declare type Server$PassiveOfferOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.createPassiveOffer,
-    Horizon$OperationResponseTypeI.createPassiveOffer
+  declare type Server$PassiveOfferOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.createPassiveOffer,
+    OperationResponseTypeI.createPassiveOffer
   > &
-    Horizon$Horizon$PassiveOfferOperationResponse;
+    Horizon$PassiveOfferOperationResponse;
 
-  declare type Server$SetOptionsOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.setOptions,
-    Horizon$OperationResponseTypeI.setOptions
+  declare type Server$SetOptionsOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.setOptions,
+    OperationResponseTypeI.setOptions
   > &
-    Horizon$Horizon$SetOptionsOperationResponse;
+    Horizon$SetOptionsOperationResponse;
 
-  declare type Server$ChangeTrustOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.changeTrust,
-    Horizon$OperationResponseTypeI.changeTrust
+  declare type Server$ChangeTrustOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.changeTrust,
+    OperationResponseTypeI.changeTrust
   > &
-    Horizon$Horizon$ChangeTrustOperationResponse;
+    Horizon$ChangeTrustOperationResponse;
 
-  declare type Server$AllowTrustOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.allowTrust,
-    Horizon$OperationResponseTypeI.allowTrust
+  declare type Server$AllowTrustOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.allowTrust,
+    OperationResponseTypeI.allowTrust
   > &
-    Horizon$Horizon$AllowTrustOperationResponse;
+    Horizon$AllowTrustOperationResponse;
 
-  declare type Server$AccountMergeOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.accountMerge,
-    Horizon$OperationResponseTypeI.accountMerge
+  declare type Server$AccountMergeOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.accountMerge,
+    OperationResponseTypeI.accountMerge
   > &
-    Horizon$Horizon$AccountMergeOperationResponse;
+    Horizon$AccountMergeOperationResponse;
 
-  declare type Server$InflationOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.inflation,
-    Horizon$OperationResponseTypeI.inflation
+  declare type Server$InflationOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.inflation,
+    OperationResponseTypeI.inflation
   > &
-    Horizon$Horizon$InflationOperationResponse;
+    Horizon$InflationOperationResponse;
 
-  declare type Server$ManageDataOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.manageData,
-    Horizon$OperationResponseTypeI.manageData
+  declare type Server$ManageDataOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.manageData,
+    OperationResponseTypeI.manageData
   > &
-    Horizon$Horizon$ManageDataOperationResponse;
+    Horizon$ManageDataOperationResponse;
 
-  declare type Server$BumpSequenceOperationRecord = {} & Server$BaseOperationRecord<
-    Horizon$OperationResponseType.bumpSequence,
-    Horizon$OperationResponseTypeI.bumpSequence
+  declare type Server$BumpSequenceOperationRecord = {} & BaseOperationRecord<
+    OperationResponseType.bumpSequence,
+    OperationResponseTypeI.bumpSequence
   > &
-    Horizon$Horizon$BumpSequenceOperationResponse;
+    Horizon$BumpSequenceOperationResponse;
 
   declare type Server$OperationRecord =
     | Server$CreateAccountOperationRecord
@@ -361,7 +369,7 @@ declare module "stellar-sdk" {
     }>,
     selling: Asset,
     buying: Asset
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$PaymentPathRecord = {
     path: Array<{
@@ -377,7 +385,7 @@ declare module "stellar-sdk" {
     destination_asset_type: string,
     destination_asset_code: string,
     destination_asset_issuer: string
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$TradeRecord = {
     id: string,
@@ -397,7 +405,7 @@ declare module "stellar-sdk" {
     base: Server$CallFunction<Server$AccountRecord>,
     counter: Server$CallFunction<Server$AccountRecord>,
     operation: Server$CallFunction<Server$OperationRecord>
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$TradeAggregationRecord = {
     timestamp: string,
@@ -409,10 +417,10 @@ declare module "stellar-sdk" {
     low: string,
     open: string,
     close: string
-  } & Horizon$Horizon$BaseResponse;
+  } & Horizon$BaseResponse;
 
   declare type Server$TransactionRecord = {
-    ledger_attr: $ElementType<Horizon$Horizon$TransactionResponse, "ledger">,
+    ledger_attr: $ElementType<Horizon$TransactionResponse, "ledger">,
     account: Server$CallFunction<Server$AccountRecord>,
     effects: Server$CallCollectionFunction<Server$EffectRecord>,
     ledger: Server$CallFunction<Server$LedgerRecord>,
@@ -420,27 +428,24 @@ declare module "stellar-sdk" {
     precedes: Server$CallFunction<Server$TransactionRecord>,
     self: Server$CallFunction<Server$TransactionRecord>,
     succeeds: Server$CallFunction<Server$TransactionRecord>
-  } & Omit<Horizon$Horizon$TransactionResponse, "ledger">;
+  } & Omit<Horizon$TransactionResponse, "ledger">;
 
   declare class Server$AccountCallBuilder
-    mixins Server$CallBuilder<Server$AccountRecord> {
+    mixins CallBuilder<Server$AccountRecord> {
     accountId(id: string): this;
   }
 
-  declare class Server$AccountResponse mixins Server$AccountRecord {
-    _links: $ObjMapi<
-      { [k: "self"]: any },
-      <key>(key) => Horizon$Horizon$ResponseLink
-    >;
+  declare class Server$AccountResponse mixins AccountRecord {
+    _links: $ObjMapi<{ [k: "self"]: any }, <key>(key) => Horizon$ResponseLink>;
     id: string;
     paging_token: string;
     account_id: string;
     sequence: number;
     subentry_count: number;
-    thresholds: Horizon$Horizon$AccountThresholds;
-    flags: Horizon$Horizon$Flags;
-    balances: Horizon$Horizon$BalanceLine[];
-    signers: Horizon$Horizon$AccountSigner[];
+    thresholds: Horizon$AccountThresholds;
+    flags: Horizon$Flags;
+    balances: Horizon$BalanceLine[];
+    signers: Horizon$AccountSigner[];
     data: (options: {
       value: string
     }) => Promise<{
@@ -462,13 +467,13 @@ declare module "stellar-sdk" {
   }
 
   declare class Server$AssetsCallBuilder
-    mixins Server$CallBuilder<Server$AssetRecord> {
+    mixins CallBuilder<Server$AssetRecord> {
     forCode(value: string): this;
     forIssuer(value: string): this;
   }
 
   declare class Server$EffectCallBuilder
-    mixins Server$CallBuilder<Server$EffectRecord> {
+    mixins CallBuilder<Server$EffectRecord> {
     forAccount(accountId: string): this;
     forLedger(sequence: string): this;
     forOperation(operationId: number): this;
@@ -476,26 +481,26 @@ declare module "stellar-sdk" {
   }
 
   declare class Server$LedgerCallBuilder
-    mixins Server$CallBuilder<Server$LedgerRecord> {}
+    mixins CallBuilder<Server$LedgerRecord> {}
 
   declare class Server$OfferCallBuilder
-    mixins Server$CallBuilder<Server$OfferRecord> {}
+    mixins CallBuilder<Server$OfferRecord> {}
 
   declare class Server$OperationCallBuilder
-    mixins Server$CallBuilder<Server$OperationRecord> {
+    mixins CallBuilder<Server$OperationRecord> {
     forAccount(accountId: string): this;
     forLedger(sequence: string): this;
     forTransaction(transactionId: string): this;
   }
 
   declare class Server$OrderbookCallBuilder
-    mixins Server$CallBuilder<Server$OrderbookRecord> {}
+    mixins CallBuilder<Server$OrderbookRecord> {}
 
   declare class Server$PathCallBuilder
-    mixins Server$CallBuilder<Server$PaymentPathRecord> {}
+    mixins CallBuilder<Server$PaymentPathRecord> {}
 
   declare class Server$PaymentCallBuilder
-    mixins Server$CallBuilder<Server$PaymentOperationRecord> {
+    mixins CallBuilder<Server$PaymentOperationRecord> {
     forAccount(accountId: string): this;
     forLedger(sequence: string): this;
     forTransaction(transactionId: string): this;
@@ -507,16 +512,16 @@ declare module "stellar-sdk" {
   }
 
   declare class Server$TradeAggregationCallBuilder
-    mixins Server$CallBuilder<Server$TradeAggregationRecord> {}
+    mixins CallBuilder<Server$TradeAggregationRecord> {}
 
   declare class Server$TradesCallBuilder
-    mixins Server$CallBuilder<Server$TradeRecord> {
+    mixins CallBuilder<Server$TradeRecord> {
     forAssetPair(base: Asset, counter: Asset): this;
     forOffer(offerId: string): this;
   }
 
   declare class Server$TransactionCallBuilder
-    mixins Server$CallBuilder<Server$TransactionRecord> {
+    mixins CallBuilder<Server$TransactionRecord> {
     transaction(transactionId: string): this;
     forAccount(accountId: string): this;
     forLedger(sequence: string | number): this;
@@ -524,26 +529,22 @@ declare module "stellar-sdk" {
   declare export class FederationServer {
     static createForDomain(
       domain: string,
-      options?: FederationServer$Server$Options
+      options?: FederationServer$Options
     ): Promise<FederationServer>;
     static resolve(
       value: string,
-      options?: FederationServer$Server$Options
-    ): Promise<FederationServer$FederationServer$Record>;
+      options?: FederationServer$Options
+    ): Promise<FederationServer$Record>;
     constructor(
       serverURL: string,
       domain: string,
-      options?: FederationServer$Server$Options
+      options?: FederationServer$Options
     ): this;
-    resolveAccountId(
-      account: string
-    ): Promise<FederationServer$FederationServer$Record>;
-    resolveAddress(
-      address: string
-    ): Promise<FederationServer$FederationServer$Record>;
+    resolveAccountId(account: string): Promise<FederationServer$Record>;
+    resolveAddress(address: string): Promise<FederationServer$Record>;
     resolveTransactionId(
       transactionId: string
-    ): Promise<FederationServer$FederationServer$Record>;
+    ): Promise<FederationServer$Record>;
   }
   declare interface FederationServer$Record {
     account_id: string;
@@ -571,6 +572,10 @@ declare module "stellar-sdk" {
     [key: string]: any
   }>;
 
+  declare var npm$namespace$Horizon: {
+    OperationResponseType: typeof Horizon$OperationResponseType,
+    OperationResponseTypeI: typeof Horizon$OperationResponseTypeI
+  };
   declare interface Horizon$ResponseLink {
     href: string;
     templated?: boolean;
@@ -600,7 +605,7 @@ declare module "stellar-sdk" {
     signatures: string[],
     source_account: string,
     source_account_sequence: string
-  } & Horizon$BaseResponse<
+  } & BaseResponse<
     "account" | "ledger" | "operations" | "effects" | "succeeds" | "precedes"
   >;
 
@@ -658,7 +663,7 @@ declare module "stellar-sdk" {
     data: {
       [key: string]: string
     }
-  } & Horizon$BaseResponse<
+  } & BaseResponse<
     | "transactions"
     | "operations"
     | "payments"
@@ -668,135 +673,35 @@ declare module "stellar-sdk" {
     | "data"
   >;
 
-  declare class Horizon$OperationResponseType {
-    constructor(...args: empty): mixed;
-    static +createAccount: Class<Horizon$OperationResponseType__createAccount> &
-      Horizon$OperationResponseType__createAccount &
-      "create_account"; // "create_account"
-    static +payment: Class<Horizon$OperationResponseType__payment> &
-      Horizon$OperationResponseType__payment &
-      "payment"; // "payment"
-    static +pathPayment: Class<Horizon$OperationResponseType__pathPayment> &
-      Horizon$OperationResponseType__pathPayment &
-      "path_payment"; // "path_payment"
-    static +createPassiveOffer: Class<Horizon$OperationResponseType__createPassiveOffer> &
-      Horizon$OperationResponseType__createPassiveOffer &
-      "create_passive_offer"; // "create_passive_offer"
-    static +manageOffer: Class<Horizon$OperationResponseType__manageOffer> &
-      Horizon$OperationResponseType__manageOffer &
-      "manage_offer"; // "manage_offer"
-    static +setOptions: Class<Horizon$OperationResponseType__setOptions> &
-      Horizon$OperationResponseType__setOptions &
-      "set_options"; // "set_options"
-    static +changeTrust: Class<Horizon$OperationResponseType__changeTrust> &
-      Horizon$OperationResponseType__changeTrust &
-      "change_trust"; // "change_trust"
-    static +allowTrust: Class<Horizon$OperationResponseType__allowTrust> &
-      Horizon$OperationResponseType__allowTrust &
-      "allow_trust"; // "allow_trust"
-    static +accountMerge: Class<Horizon$OperationResponseType__accountMerge> &
-      Horizon$OperationResponseType__accountMerge &
-      "account_merge"; // "account_merge"
-    static +inflation: Class<Horizon$OperationResponseType__inflation> &
-      Horizon$OperationResponseType__inflation &
-      "inflation"; // "inflation"
-    static +manageData: Class<Horizon$OperationResponseType__manageData> &
-      Horizon$OperationResponseType__manageData &
-      "manage_data"; // "manage_data"
-    static +bumpSequence: Class<Horizon$OperationResponseType__bumpSequence> &
-      Horizon$OperationResponseType__bumpSequence &
-      "bump_sequence"; // "bump_sequence"
-  }
+  declare var Horizon$OperationResponseType: {|
+    +createAccount: "create_account", // "create_account"
+    +payment: "payment", // "payment"
+    +pathPayment: "path_payment", // "path_payment"
+    +createPassiveOffer: "create_passive_offer", // "create_passive_offer"
+    +manageOffer: "manage_offer", // "manage_offer"
+    +setOptions: "set_options", // "set_options"
+    +changeTrust: "change_trust", // "change_trust"
+    +allowTrust: "allow_trust", // "allow_trust"
+    +accountMerge: "account_merge", // "account_merge"
+    +inflation: "inflation", // "inflation"
+    +manageData: "manage_data", // "manage_data"
+    +bumpSequence: "bump_sequence" // "bump_sequence"
+  |};
 
-  declare class Horizon$OperationResponseType__createAccount
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__payment
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__pathPayment
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__createPassiveOffer
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__manageOffer
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__setOptions
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__changeTrust
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__allowTrust
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__accountMerge
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__inflation
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__manageData
-    mixins Horizon$OperationResponseType {}
-  declare class Horizon$OperationResponseType__bumpSequence
-    mixins Horizon$OperationResponseType {}
-
-  declare class Horizon$OperationResponseTypeI {
-    constructor(...args: empty): mixed;
-    static +createAccount: Class<Horizon$OperationResponseTypeI__createAccount> &
-      Horizon$OperationResponseTypeI__createAccount &
-      0; // 0
-    static +payment: Class<Horizon$OperationResponseTypeI__payment> &
-      Horizon$OperationResponseTypeI__payment &
-      1; // 1
-    static +pathPayment: Class<Horizon$OperationResponseTypeI__pathPayment> &
-      Horizon$OperationResponseTypeI__pathPayment &
-      2; // 2
-    static +createPassiveOffer: Class<Horizon$OperationResponseTypeI__createPassiveOffer> &
-      Horizon$OperationResponseTypeI__createPassiveOffer &
-      3; // 3
-    static +manageOffer: Class<Horizon$OperationResponseTypeI__manageOffer> &
-      Horizon$OperationResponseTypeI__manageOffer &
-      4; // 4
-    static +setOptions: Class<Horizon$OperationResponseTypeI__setOptions> &
-      Horizon$OperationResponseTypeI__setOptions &
-      5; // 5
-    static +changeTrust: Class<Horizon$OperationResponseTypeI__changeTrust> &
-      Horizon$OperationResponseTypeI__changeTrust &
-      6; // 6
-    static +allowTrust: Class<Horizon$OperationResponseTypeI__allowTrust> &
-      Horizon$OperationResponseTypeI__allowTrust &
-      7; // 7
-    static +accountMerge: Class<Horizon$OperationResponseTypeI__accountMerge> &
-      Horizon$OperationResponseTypeI__accountMerge &
-      8; // 8
-    static +inflation: Class<Horizon$OperationResponseTypeI__inflation> &
-      Horizon$OperationResponseTypeI__inflation &
-      9; // 9
-    static +manageData: Class<Horizon$OperationResponseTypeI__manageData> &
-      Horizon$OperationResponseTypeI__manageData &
-      10; // 10
-    static +bumpSequence: Class<Horizon$OperationResponseTypeI__bumpSequence> &
-      Horizon$OperationResponseTypeI__bumpSequence &
-      11; // 11
-  }
-
-  declare class Horizon$OperationResponseTypeI__createAccount
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__payment
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__pathPayment
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__createPassiveOffer
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__manageOffer
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__setOptions
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__changeTrust
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__allowTrust
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__accountMerge
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__inflation
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__manageData
-    mixins Horizon$OperationResponseTypeI {}
-  declare class Horizon$OperationResponseTypeI__bumpSequence
-    mixins Horizon$OperationResponseTypeI {}
+  declare var Horizon$OperationResponseTypeI: {|
+    +createAccount: 0, // 0
+    +payment: 1, // 1
+    +pathPayment: 2, // 2
+    +createPassiveOffer: 3, // 3
+    +manageOffer: 4, // 4
+    +setOptions: 5, // 5
+    +changeTrust: 6, // 6
+    +allowTrust: 7, // 7
+    +accountMerge: 8, // 8
+    +inflation: 9, // 9
+    +manageData: 10, // 10
+    +bumpSequence: 11 // 11
+  |};
 
   declare type Horizon$BaseOperationResponse<
     T: Horizon$OperationResponseType = Horizon$OperationResponseType,
@@ -809,15 +714,15 @@ declare module "stellar-sdk" {
     type_i: TI,
     created_at: string,
     transaction_hash: string
-  } & Horizon$BaseResponse<"succeeds" | "precedes" | "effects" | "transaction">;
+  } & BaseResponse<"succeeds" | "precedes" | "effects" | "transaction">;
 
   declare type Horizon$CreateAccountOperationResponse = {
     account: string,
     funder: string,
     starting_balance: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.createAccount,
-    Horizon$OperationResponseTypeI.createAccount
+  } & BaseOperationResponse<
+    OperationResponseType.createAccount,
+    OperationResponseTypeI.createAccount
   >;
 
   declare type Horizon$PaymentOperationResponse = {
@@ -827,9 +732,9 @@ declare module "stellar-sdk" {
     asset_code?: string,
     asset_issuer?: string,
     amount: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.payment,
-    Horizon$OperationResponseTypeI.payment
+  } & BaseOperationResponse<
+    OperationResponseType.payment,
+    OperationResponseTypeI.payment
   >;
 
   declare type Horizon$PathPaymentOperationResponse = {
@@ -844,9 +749,9 @@ declare module "stellar-sdk" {
     source_asset_issuer?: string,
     source_max: string,
     source_amount: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.pathPayment,
-    Horizon$OperationResponseTypeI.pathPayment
+  } & BaseOperationResponse<
+    OperationResponseType.pathPayment,
+    OperationResponseTypeI.pathPayment
   >;
 
   declare type Horizon$ManageOfferOperationResponse = {
@@ -860,9 +765,9 @@ declare module "stellar-sdk" {
     selling_asset_type: AssetType,
     selling_asset_code?: string,
     selling_asset_issuer?: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.manageOffer,
-    Horizon$OperationResponseTypeI.manageOffer
+  } & BaseOperationResponse<
+    OperationResponseType.manageOffer,
+    OperationResponseTypeI.manageOffer
   >;
 
   declare type Horizon$PassiveOfferOperationResponse = {
@@ -876,9 +781,9 @@ declare module "stellar-sdk" {
     selling_asset_type: AssetType,
     selling_asset_code?: string,
     selling_asset_issuer?: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.createPassiveOffer,
-    Horizon$OperationResponseTypeI.createPassiveOffer
+  } & BaseOperationResponse<
+    OperationResponseType.createPassiveOffer,
+    OperationResponseTypeI.createPassiveOffer
   >;
 
   declare type Horizon$SetOptionsOperationResponse = {
@@ -893,9 +798,9 @@ declare module "stellar-sdk" {
     set_flags_s: Array<"auth_required_flag" | "auth_revocable_flag">,
     clear_flags: Array<1 | 2>,
     clear_flags_s: Array<"auth_required_flag" | "auth_revocable_flag">
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.setOptions,
-    Horizon$OperationResponseTypeI.setOptions
+  } & BaseOperationResponse<
+    OperationResponseType.setOptions,
+    OperationResponseTypeI.setOptions
   >;
 
   declare type Horizon$ChangeTrustOperationResponse = {
@@ -905,9 +810,9 @@ declare module "stellar-sdk" {
     trustee: string,
     trustor: string,
     limit: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.changeTrust,
-    Horizon$OperationResponseTypeI.changeTrust
+  } & BaseOperationResponse<
+    OperationResponseType.changeTrust,
+    OperationResponseTypeI.changeTrust
   >;
 
   declare type Horizon$AllowTrustOperationResponse = {
@@ -917,36 +822,36 @@ declare module "stellar-sdk" {
     authorize: boolean,
     trustee: string,
     trustor: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.allowTrust,
-    Horizon$OperationResponseTypeI.allowTrust
+  } & BaseOperationResponse<
+    OperationResponseType.allowTrust,
+    OperationResponseTypeI.allowTrust
   >;
 
   declare type Horizon$AccountMergeOperationResponse = {
     into: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.accountMerge,
-    Horizon$OperationResponseTypeI.accountMerge
+  } & BaseOperationResponse<
+    OperationResponseType.accountMerge,
+    OperationResponseTypeI.accountMerge
   >;
 
-  declare type Horizon$InflationOperationResponse = {} & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.inflation,
-    Horizon$OperationResponseTypeI.inflation
+  declare type Horizon$InflationOperationResponse = {} & BaseOperationResponse<
+    OperationResponseType.inflation,
+    OperationResponseTypeI.inflation
   >;
 
   declare type Horizon$ManageDataOperationResponse = {
     name: string,
     value: Buffer
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.manageData,
-    Horizon$OperationResponseTypeI.manageData
+  } & BaseOperationResponse<
+    OperationResponseType.manageData,
+    OperationResponseTypeI.manageData
   >;
 
   declare type Horizon$BumpSequenceOperationResponse = {
     bump_to: string
-  } & Horizon$BaseOperationResponse<
-    Horizon$OperationResponseType.bumpSequence,
-    Horizon$OperationResponseTypeI.bumpSequence
+  } & BaseOperationResponse<
+    OperationResponseType.bumpSequence,
+    OperationResponseTypeI.bumpSequence
   >;
 
   declare interface Horizon$ResponseCollection<
@@ -962,5 +867,5 @@ declare module "stellar-sdk" {
     };
   }
 
-  declare type Horizon$TransactionResponseCollection = {} & Horizon$ResponseCollection<Horizon$TransactionResponse>;
+  declare type Horizon$TransactionResponseCollection = {} & ResponseCollection<Horizon$TransactionResponse>;
 }
