@@ -1,5 +1,5 @@
 declare module "unused-filename" {
-  declare module.exports: typeof unusedFilename;
+  declare export default typeof unusedFilename;
 
   declare function unusedFilename(filepath: string): Promise<string>;
 
