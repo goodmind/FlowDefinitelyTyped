@@ -28,13 +28,13 @@ declare module "rc-tooltip" {
     placement?: RCTooltip$Placement | Object,
     align?: Object,
     onPopupAlign?: (popupDomNode: Element, align: Object) => void,
-    overlay: React.ReactNode,
-    arrowContent?: React.ReactNode,
+    overlay: React.Node,
+    arrowContent?: React.Node,
     getTooltipContainer?: () => Element,
     destroyTooltipOnHide?: boolean,
     id?: string
-  } & React.RCTooltip$Props<any>;
+  } & React.Props<any>;
 
   declare export default class Tooltip
-    mixins React.Component<RCTooltip$RCTooltip$Props> {}
+    mixins React.Component<RCTooltip$Props> {}
 }
