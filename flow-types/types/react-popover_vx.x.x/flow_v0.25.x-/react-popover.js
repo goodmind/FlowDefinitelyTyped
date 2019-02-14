@@ -1,9 +1,9 @@
 declare module "react-popover" {
   import typeof * as React from "react";
 
-  declare module.exports: typeof Popover;
+  declare export default typeof Popover;
 
-  declare class Popover mixins React.Component<Popover$Popover$PopoverProps> {}
+  declare class Popover mixins React.Component<Popover$PopoverProps> {}
   declare type Popover$PopoverPlace =
     | "above"
     | "right"
