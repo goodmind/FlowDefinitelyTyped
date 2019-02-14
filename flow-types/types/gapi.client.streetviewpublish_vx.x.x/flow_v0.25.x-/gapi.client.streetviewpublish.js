@@ -1,29 +1,33 @@
 declare module "gapi.client.streetviewpublish" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    photo: typeof client$photo,
-    photos: typeof client$photos
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    photo: typeof gapi$client$photo,
+    photos: typeof gapi$client$photos
   };
 
   /**
    * Load Street View Publish API v1
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "streetviewpublish",
     version: "v1"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "streetviewpublish",
     version: "v1",
     callback: () => any
   ): void;
 
-  declare var client$photo: streetviewpublish$streetviewpublish$PhotoResource;
+  declare var gapi$client$photo: streetviewpublish$PhotoResource;
 
-  declare var client$photos: streetviewpublish$streetviewpublish$PhotosResource;
+  declare var gapi$client$photos: streetviewpublish$PhotosResource;
 
-  declare interface streetviewpublish$BatchDeletePhotosRequest {
+  declare interface gapi$client$streetviewpublish$BatchDeletePhotosRequest {
     /**
      * Required. IDs of the Photos. For HTTP
      * GET requests, the URL query parameter should be
@@ -32,7 +36,7 @@ declare module "gapi.client.streetviewpublish" {
     photoIds?: string[];
   }
 
-  declare interface streetviewpublish$BatchDeletePhotosResponse {
+  declare interface gapi$client$streetviewpublish$BatchDeletePhotosResponse {
     /**
      * The status for the operation to delete a single
      * Photo in the batch request.
@@ -40,7 +44,7 @@ declare module "gapi.client.streetviewpublish" {
     status?: streetviewpublish$Status[];
   }
 
-  declare interface streetviewpublish$BatchGetPhotosResponse {
+  declare interface gapi$client$streetviewpublish$BatchGetPhotosResponse {
     /**
      * List of results for each individual
      * Photo requested, in the same order as
@@ -50,7 +54,7 @@ declare module "gapi.client.streetviewpublish" {
     results?: streetviewpublish$PhotoResponse[];
   }
 
-  declare interface streetviewpublish$BatchUpdatePhotosRequest {
+  declare interface gapi$client$streetviewpublish$BatchUpdatePhotosRequest {
     /**
      * Required. List of
      * UpdatePhotoRequests.
@@ -58,7 +62,7 @@ declare module "gapi.client.streetviewpublish" {
     updatePhotoRequests?: streetviewpublish$UpdatePhotoRequest[];
   }
 
-  declare interface streetviewpublish$BatchUpdatePhotosResponse {
+  declare interface gapi$client$streetviewpublish$BatchUpdatePhotosResponse {
     /**
      * List of results for each individual
      * Photo updated, in the same order as
@@ -67,7 +71,7 @@ declare module "gapi.client.streetviewpublish" {
     results?: streetviewpublish$PhotoResponse[];
   }
 
-  declare interface streetviewpublish$Connection {
+  declare interface gapi$client$streetviewpublish$Connection {
     /**
      * Required. The destination of the connection from the containing photo to
      * another photo.
@@ -75,7 +79,7 @@ declare module "gapi.client.streetviewpublish" {
     target?: streetviewpublish$PhotoId;
   }
 
-  declare interface streetviewpublish$LatLng {
+  declare interface gapi$client$streetviewpublish$LatLng {
     /**
      * The latitude in degrees. It must be in the range [-90.0, +90.0].
      */
@@ -87,7 +91,7 @@ declare module "gapi.client.streetviewpublish" {
     longitude?: number;
   }
 
-  declare interface streetviewpublish$Level {
+  declare interface gapi$client$streetviewpublish$Level {
     /**
      * Required. A name assigned to this Level, restricted to 3 characters.
      * Consider how the elevator buttons would be labeled for this level if there
@@ -103,7 +107,7 @@ declare module "gapi.client.streetviewpublish" {
     number?: number;
   }
 
-  declare interface streetviewpublish$ListPhotosResponse {
+  declare interface gapi$client$streetviewpublish$ListPhotosResponse {
     /**
      * Token to retrieve the next page of results, or empty if there are no more
      * results in the list.
@@ -115,10 +119,10 @@ declare module "gapi.client.streetviewpublish" {
      * pageSize field
      * in the request.
      */
-    client$photos?: streetviewpublish$Photo[];
+    photos?: streetviewpublish$Photo[];
   }
 
-  declare interface streetviewpublish$Operation {
+  declare interface gapi$client$streetviewpublish$Operation {
     /**
      * If the value is `false`, it means the operation is still in progress.
      * If `true`, the operation is completed, and either `error` or `response` is
@@ -159,7 +163,7 @@ declare module "gapi.client.streetviewpublish" {
     response?: Record<string, any>;
   }
 
-  declare interface streetviewpublish$Photo {
+  declare interface gapi$client$streetviewpublish$Photo {
     /**
      * Absolute time when the photo was captured.
      * When the photo has no exif timestamp, this is used to set a timestamp in
@@ -171,7 +175,7 @@ declare module "gapi.client.streetviewpublish" {
      * Connections to other photos. A connection represents the link from this
      * photo to another photo.
      */
-    connections?: streetviewpublish$Connection[];
+    connections?: gapi$client$streetviewpublish$Connection[];
 
     /**
      * Output only. The download URL for the photo bytes. This field is set only
@@ -221,19 +225,19 @@ declare module "gapi.client.streetviewpublish" {
     viewCount?: string;
   }
 
-  declare interface streetviewpublish$PhotoId {
+  declare interface gapi$client$streetviewpublish$PhotoId {
     /**
      * Required. A unique identifier for a photo.
      */
     id?: string;
   }
 
-  declare interface streetviewpublish$PhotoResponse {
+  declare interface gapi$client$streetviewpublish$PhotoResponse {
     /**
      * The Photo resource, if the request
      * was successful.
      */
-    client$photo?: streetviewpublish$Photo;
+    photo?: gapi$client$streetviewpublish$Photo;
 
     /**
      * The status for the operation to get or update a single photo in the batch
@@ -242,7 +246,7 @@ declare module "gapi.client.streetviewpublish" {
     status?: streetviewpublish$Status;
   }
 
-  declare interface streetviewpublish$Place {
+  declare interface gapi$client$streetviewpublish$Place {
     /**
      * Place identifier, as described in
      * https://developers.google.com/places/place-id.
@@ -250,7 +254,7 @@ declare module "gapi.client.streetviewpublish" {
     placeId?: string;
   }
 
-  declare interface streetviewpublish$Pose {
+  declare interface gapi$client$streetviewpublish$Pose {
     /**
      * Altitude of the pose in meters above ground level (as defined by WGS84).
      * NaN indicates an unmeasured quantity.
@@ -273,12 +277,12 @@ declare module "gapi.client.streetviewpublish" {
      * provided and cannot be found in the exif header, the create photo process
      * will fail.
      */
-    latLngPair?: streetviewpublish$LatLng;
+    latLngPair?: gapi$client$streetviewpublish$LatLng;
 
     /**
      * Level (the floor in a building) used to configure vertical navigation.
      */
-    level?: streetviewpublish$Level;
+    level?: gapi$client$streetviewpublish$Level;
 
     /**
      * Pitch, measured at the center of the photo in degrees. Value must be >=-90
@@ -296,7 +300,7 @@ declare module "gapi.client.streetviewpublish" {
     roll?: number;
   }
 
-  declare interface streetviewpublish$Status {
+  declare interface gapi$client$streetviewpublish$Status {
     /**
      * The status code, which should be an enum value of google.rpc.Code.
      */
@@ -316,12 +320,12 @@ declare module "gapi.client.streetviewpublish" {
     message?: string;
   }
 
-  declare interface streetviewpublish$UpdatePhotoRequest {
+  declare interface gapi$client$streetviewpublish$UpdatePhotoRequest {
     /**
      * Required. Photo object containing the
      * new metadata.
      */
-    client$photo?: streetviewpublish$Photo;
+    photo?: gapi$client$streetviewpublish$Photo;
 
     /**
      * Mask that identifies fields on the photo metadata to update.
@@ -354,7 +358,7 @@ declare module "gapi.client.streetviewpublish" {
     updateMask?: string;
   }
 
-  declare interface streetviewpublish$UploadRef {
+  declare interface gapi$client$streetviewpublish$UploadRef {
     /**
      * Required. An upload reference should be unique for each user. It follows
      * the form:
@@ -363,7 +367,7 @@ declare module "gapi.client.streetviewpublish" {
     uploadUrl?: string;
   }
 
-  declare interface streetviewpublish$PhotoResource {
+  declare interface gapi$client$streetviewpublish$PhotoResource {
     /**
      * After the client finishes uploading the photo with the returned
      * UploadRef,
@@ -450,7 +454,7 @@ declare module "gapi.client.streetviewpublish" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<streetviewpublish$Photo>;
+    }): Request<gapi$client$streetviewpublish$Photo>;
 
     /**
      * Deletes a Photo and its metadata.
@@ -620,7 +624,7 @@ declare module "gapi.client.streetviewpublish" {
        * Photo response.
        */
       view?: string
-    }): Request<streetviewpublish$Photo>;
+    }): Request<gapi$client$streetviewpublish$Photo>;
 
     /**
      * Creates an upload session to start uploading photo bytes. The upload URL of
@@ -708,7 +712,7 @@ declare module "gapi.client.streetviewpublish" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<streetviewpublish$UploadRef>;
+    }): Request<gapi$client$streetviewpublish$UploadRef>;
 
     /**
      * Updates the metadata of a Photo, such
@@ -832,10 +836,10 @@ declare module "gapi.client.streetviewpublish" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<streetviewpublish$Photo>;
+    }): Request<gapi$client$streetviewpublish$Photo>;
   }
 
-  declare interface streetviewpublish$PhotosResource {
+  declare interface gapi$client$streetviewpublish$PhotosResource {
     /**
      * Deletes a list of Photos and their
      * metadata.
@@ -919,7 +923,7 @@ declare module "gapi.client.streetviewpublish" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<streetviewpublish$BatchDeletePhotosResponse>;
+    }): Request<gapi$client$streetviewpublish$BatchDeletePhotosResponse>;
 
     /**
      * Gets the metadata of the specified
@@ -1017,7 +1021,7 @@ declare module "gapi.client.streetviewpublish" {
        * Photo response.
        */
       view?: string
-    }): Request<streetviewpublish$BatchGetPhotosResponse>;
+    }): Request<gapi$client$streetviewpublish$BatchGetPhotosResponse>;
 
     /**
      * Updates the metadata of Photos, such
@@ -1113,7 +1117,7 @@ declare module "gapi.client.streetviewpublish" {
        * Upload protocol for media (e.g. "raw", "multipart").
        */
       upload_protocol?: string
-    }): Request<streetviewpublish$BatchUpdatePhotosResponse>;
+    }): Request<gapi$client$streetviewpublish$BatchUpdatePhotosResponse>;
 
     /**
      * Lists all the Photos that belong to
@@ -1215,6 +1219,6 @@ declare module "gapi.client.streetviewpublish" {
        * Photos response.
        */
       view?: string
-    }): Request<streetviewpublish$ListPhotosResponse>;
+    }): Request<gapi$client$streetviewpublish$ListPhotosResponse>;
   }
 }
