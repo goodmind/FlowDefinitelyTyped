@@ -332,22 +332,22 @@ declare module "google-adwords-scripts" {
     hasSchedulesBuilder<SnippetBuilder<Snippet>>;
 
   declare type AdGroup = {
-    AdWordsApp$adParams(): AdWordsSelector<AdParam>,
-    AdWordsApp$ads(): AdWordsSelector<Ad>,
+    adParams(): AdWordsSelector<AdParam>,
+    ads(): AdWordsSelector<Ad>,
     bidding(): AdGroupBidding,
     clearNegativeKeyword(keywordText: string): void,
     devices(): AdGroupDevices,
-    AdWordsApp$display(): AdGroupDisplay,
-    AdWordsApp$extensions(): AdGroupExtensions,
+    display(): AdGroupDisplay,
+    extensions(): AdGroupExtensions,
     getId(): number,
     getName(): string,
     isRemoved(): boolean,
-    AdWordsApp$keywords(): AdWordsSelector<Keyword>,
+    keywords(): AdWordsSelector<Keyword>,
     negativeKeywords(): AdWordsSelector<NegativeKeyword>,
     newAd(): AdBuilderSpace,
     newKeywordBuilder(): KeywordBuilder<Keyword>,
     setName(name: string): void,
-    AdWordsApp$targeting(): AdGroupTargeting<
+    targeting(): AdGroupTargeting<
       SearchAdGroupAudience,
       SearchAdGroupExcludedAudience
     >,
@@ -681,14 +681,14 @@ declare module "google-adwords-scripts" {
   } & AdBuilder<ResponsiveDisplayAdBuilder<ResponsiveDisplayAd>>;
 
   declare type BiddingStrategy = {
-    AdWordsApp$adGroups(): AdWordsSelector<AdGroup>,
-    AdWordsApp$campaigns(): AdWordsSelector<Campaign>,
+    adGroups(): AdWordsSelector<AdGroup>,
+    campaigns(): AdWordsSelector<Campaign>,
     getId(): number,
     getName(): string,
     getType(): string,
-    AdWordsApp$keywords(): AdWordsSelector<Keyword>,
-    AdWordsApp$shoppingAdGroups(): AdWordsSelector<AdWordsEntity>,
-    AdWordsApp$shoppingCampaigns(): AdWordsSelector<AdWordsEntity>
+    keywords(): AdWordsSelector<Keyword>,
+    shoppingAdGroups(): AdWordsSelector<AdWordsEntity>,
+    shoppingCampaigns(): AdWordsSelector<AdWordsEntity>
   } & hasStats;
 
   declare interface BillingAccount {
@@ -708,7 +708,7 @@ declare module "google-adwords-scripts" {
     getTotalAdjustments(): number;
   }
   declare type Budget = {
-    AdWordsApp$campaigns(): AdWordsSelector<Campaign>,
+    campaigns(): AdWordsSelector<Campaign>,
     getAmount(): number,
     getDeliveryMethod(): string,
     getId(): number,
@@ -725,9 +725,9 @@ declare module "google-adwords-scripts" {
     ): CsvUpload;
     newFileUpload(
       file:
-        | GoogleAppsScript.Spreadsheet.Sheet
-        | GoogleAppsScript.Base.Blob
-        | GoogleAppsScript.Drive.File,
+        | GoogleAppsScript.SpreadsheetSheet
+        | GoogleAppsScript.BaseBlob
+        | GoogleAppsScript.DriveFile,
       optArgs: FileUploadArguments
     ): FileUpload;
   }
@@ -752,7 +752,7 @@ declare module "google-adwords-scripts" {
     timeZone?: string;
   }
   declare type Campaign = {
-    AdWordsApp$adGroups(): AdWordsSelector<AdGroup>,
+    adGroups(): AdWordsSelector<AdGroup>,
     addAdSchedule(adSchedule: AdSchedule): AdWordsOperation<AdSchedule>,
     addAdSchedule(
       dayOfWeek: DayOfWeekString,
@@ -795,10 +795,10 @@ declare module "google-adwords-scripts" {
     addReview(reviewExtension: Review): AdWordsOperation<Review>,
     addSiteLink(sitelinkExtension: Sitelink): AdWordsOperation<Sitelink>,
     addSnippet(snippetExtension: Snippet): AdWordsOperation<Snippet>,
-    AdWordsApp$ads(): AdWordsSelector<Ad>,
+    ads(): AdWordsSelector<Ad>,
     bidding(): CampaignBidding,
     createNegativeKeyword(keywordText: string): void,
-    AdWordsApp$display(): CampaignDisplay,
+    display(): CampaignDisplay,
     excludeLocation(
       location:
         | ExcludedLocation
@@ -807,16 +807,16 @@ declare module "google-adwords-scripts" {
             id: number
           }
     ): AdWordsOperation<ExcludedLocation>,
-    AdWordsApp$excludedPlacementLists(): AdWordsSelector<ExcludedPlacementList>,
-    AdWordsApp$extensions(): CampaignExtensions,
+    excludedPlacementLists(): AdWordsSelector<ExcludedPlacementList>,
+    extensions(): CampaignExtensions,
     getAdRotationType(): AdRotationType,
     getBiddingStrategyType(): BiddingStrategyString,
     getBudget(): Budget,
     getId(): number,
     getName(): string,
     isRemoved(): boolean,
-    AdWordsApp$keywords(): AdWordsSelector<Keyword>,
-    AdWordsApp$negativeKeywordLists(): AdWordsSelector<NegativeKeywordList>,
+    keywords(): AdWordsSelector<Keyword>,
+    negativeKeywordLists(): AdWordsSelector<NegativeKeywordList>,
     negativeKeywords(): AdWordsSelector<NegativeKeyword>,
     newAdGroupBuilder(): AdGroupBuilder<AdGroup>,
     removeCallout(calloutExtension: Callout): void,
@@ -832,7 +832,7 @@ declare module "google-adwords-scripts" {
     removeSnippet(snippet: Snippet): void,
     setAdRotationType(adRotationType: AdRotationType): void,
     setName(name: string): void,
-    AdWordsApp$targeting(): CampaignTargeting<
+    targeting(): CampaignTargeting<
       SearchCampaignAudience,
       SearchCampaignExcludedAudience
     >,
@@ -876,7 +876,7 @@ declare module "google-adwords-scripts" {
     addMobileApp(mobileAppExtension: MobileApp): AdWordsOperation<MobileApp>,
     addReview(reviewExtension: Review): AdWordsOperation<Review>,
     addSnippet(snippetExtension: Snippet): AdWordsOperation<Snippet>,
-    AdWordsApp$extensions(): AccountExtensions,
+    extensions(): AccountExtensions,
     getCurrencyCode(): string,
     getCustomerId(): string,
     getName(): string,
@@ -1031,12 +1031,12 @@ declare module "google-adwords-scripts" {
 
   declare interface Display {
     audiences(): AdWordsSelector<Audience>;
-    AdWordsApp$keywords(): AdWordsSelector<DisplayKeyword>;
+    keywords(): AdWordsSelector<DisplayKeyword>;
     placements(): AdWordsSelector<Placement>;
     topics(): AdWordsSelector<Topic>;
   }
   declare type Keyword = {
-    AdWordsApp$adParams(): AdWordsSelector<AdParam>,
+    adParams(): AdWordsSelector<AdParam>,
     bidding(): KeywordBidding,
     clearDesinationUrl(): void,
     getApprovalStatus(): ApprovalStatus,
@@ -1083,14 +1083,14 @@ declare module "google-adwords-scripts" {
     hasSetFinalUrl;
 
   declare type Label = {
-    AdWordsApp$adGroups(): AdWordsSelector<AdGroup>,
-    AdWordsApp$ads(): AdWordsSelector<Ad>,
-    AdWordsApp$campaigns(): AdWordsSelector<Campaign>,
+    adGroups(): AdWordsSelector<AdGroup>,
+    ads(): AdWordsSelector<Ad>,
+    campaigns(): AdWordsSelector<Campaign>,
     getColor(): string,
     getDescription(): string,
     getId(): string,
     getName(): string,
-    AdWordsApp$keywords(): AdWordsSelector<Keyword>,
+    keywords(): AdWordsSelector<Keyword>,
     remove(): void,
     setColor(color: string): void,
     setDescription(description: string): void,
@@ -1108,7 +1108,7 @@ declare module "google-adwords-scripts" {
     getWidth(): number;
   }
   declare type ImageBuilder<Media> = {
-    withData(data: GoogleAppsScript.Base.Blob): ImageBuilder<Media>,
+    withData(data: GoogleAppsScript.BaseBlob): ImageBuilder<Media>,
     withName(name: string): ImageBuilder<Media>
   } & AdWordsBuilder<Media>;
 
@@ -1125,7 +1125,7 @@ declare module "google-adwords-scripts" {
     getYouTubeVideoId(): string | void;
   }
   declare type MediaBundleBuilder<Media> = {
-    withData(data: GoogleAppsScript.Base.Blob): MediaBundleBuilder<Media>,
+    withData(data: GoogleAppsScript.BaseBlob): MediaBundleBuilder<Media>,
     withName(name: string): MediaBundleBuilder<Media>
   } & AdWordsBuilder<Media>;
 
@@ -1153,7 +1153,7 @@ declare module "google-adwords-scripts" {
     isAdGroupChild;
 
   declare interface AdWordsReport {
-    exportToSheet(sheet: GoogleAppsScript.Spreadsheet.Sheet): void;
+    exportToSheet(sheet: GoogleAppsScript.SpreadsheetSheet): void;
     getColumnHeader(awqlColumnName: string): AdWordsReportColumnHeader;
     rows(): AdWordsReportRowIterator;
   }
@@ -1171,7 +1171,7 @@ declare module "google-adwords-scripts" {
   declare type ExcludedPlacementList = {
     addExcludedPlacement(url: string): void,
     addExcludedPlacements(urls: string[]): void,
-    AdWordsApp$campaigns(): AdWordsSelector<Campaign>,
+    campaigns(): AdWordsSelector<Campaign>,
     excludedPlacements(): AdWordsSelector<SharedExcludedPlacement>,
     getId(): number,
     getName(): string,
@@ -1191,7 +1191,7 @@ declare module "google-adwords-scripts" {
   declare type NegativeKeywordList = {
     addNegativeKeyword(keywordText: string): void,
     addNegativeKeywords(keywordTexts: string[]): void,
-    AdWordsApp$campaigns(): AdWordsSelector<Campaign>,
+    campaigns(): AdWordsSelector<Campaign>,
     getId(): number,
     getName(): string,
     negativeKeywords(): AdWordsSelector<SharedNegativeKeyword>,
@@ -1479,7 +1479,7 @@ declare module "google-adwords-scripts" {
   }
   declare interface hasLabels {
     applyLabel(name: string): void;
-    AdWordsApp$labels(): AdWordsSelector<Label>;
+    labels(): AdWordsSelector<Label>;
     removeLabel(name: string): void;
   }
   declare interface hasMobilePreferred {
