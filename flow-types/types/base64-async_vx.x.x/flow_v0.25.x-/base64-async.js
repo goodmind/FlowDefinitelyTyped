@@ -1,14 +1,14 @@
 declare module "base64-async" {
-  declare module.exports: typeof base64Async;
+  declare export default typeof base64Async;
 
   declare function base64Async(
     input: Buffer,
-    options?: base64Async$base64Async$Options
+    options?: base64Async$Options
   ): Promise<string>;
 
   declare function base64Async(
     input: string,
-    options?: base64Async$base64Async$Options
+    options?: base64Async$Options
   ): Promise<Buffer>;
 
   declare var npm$namespace$base64Async: {
