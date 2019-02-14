@@ -1,8 +1,7 @@
 declare module "react-tooltip" {
   import typeof * as React from "react";
 
-  declare class ReactTooltip
-    mixins React.Component<ReactTooltip$ReactTooltip$Props> {}
+  declare class ReactTooltip mixins React.Component<ReactTooltip$Props> {}
 
   declare var npm$namespace$ReactTooltip: {
     hide: typeof ReactTooltip$hide,
@@ -125,5 +124,5 @@ declare module "react-tooltip" {
     watchWindow?: boolean;
     sanitizeHtmlOptions?: ReactTooltip$SanitizeHtmlOptions;
   }
-  declare module.exports: typeof ReactTooltip;
+  declare export default typeof ReactTooltip;
 }
