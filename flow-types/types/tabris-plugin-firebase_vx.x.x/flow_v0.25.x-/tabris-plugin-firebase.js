@@ -1,87 +1,90 @@
-declare interface PropertyMixins$Analytics {
-  analyticsCollectionEnabled: boolean;
-  screenName: string;
-  userId: string;
-  logEvent(
-    eventName: string,
-    parameters?: {
-      [key: string]: string
-    }
-  ): void;
-  setUserProperty(propertyName: string, value: string): void;
-  set(properties: firebase$AnalyticsProperties): this;
-  set(property: string, value: any): this;
-}
-declare var npm$namespace$firebase: {
-  Analytics: typeof firebase$Analytics,
-  Messaging: typeof firebase$Messaging,
-  MessagingEvents: typeof firebase$MessagingEvents,
-  MessageEvent: typeof firebase$MessageEvent
-};
-declare var firebase$Analytics: firebase$Analytics;
-
-declare var firebase$Messaging: firebase$Messaging;
-
-declare var firebase$MessagingEvents: firebase$MessagingEvents;
-
-declare var firebase$MessageEvent: firebase$MessageEvent;
-
-declare type firebase$AnalyticsProperties = $Shape<PropertyMixins$firebase$Analytics>;
-
-declare interface firebase$Analytics {
-  analyticsCollectionEnabled: boolean;
-  screenName: string;
-  userId: string;
-  logEvent(
-    eventName: string,
-    parameters?: {
-      [key: string]: string
-    }
-  ): void;
-  setUserProperty(propertyName: string, value: string): void;
-  set(properties: firebase$AnalyticsProperties): this;
-  set(property: string, value: any): this;
-}
-
-declare type firebase$Messaging = {
-  +instanceId: string,
-  +token: string,
-  +launchData: { [key: string]: any },
-  resetInstanceId(): void,
-  on(
-    type: string,
-    listener: (event: any) => void,
-    context?: { [key: string]: any }
-  ): this,
-  on(listeners: firebase$MessagingEvents): this,
-  off(
-    type: string,
-    listener: (event: any) => void,
-    context?: { [key: string]: any }
-  ): this,
-  off(listeners: firebase$MessagingEvents): this,
-  once(
-    type: string,
-    listener: (event: any) => void,
-    context?: { [key: string]: any }
-  ): this,
-  once(listeners: firebase$MessagingEvents): this
-} & NativeObject;
-
-declare interface firebase$MessagingEvents {
-  instanceIdChanged?: (
-    event: PropertyChangedEvent<firebase$Messaging, string>
-  ) => void;
-  tokenChanged?: (
-    event: PropertyChangedEvent<firebase$Messaging, string>
-  ) => void;
-  message?: (event: firebase$MessageEvent) => void;
-}
-
-declare type firebase$MessageEvent = {
-  data: any
-} & EventObject<firebase$Messaging>;
 declare module "global" {
+  declare var npm$namespace$firebase: {
+    Analytics: typeof firebase$Analytics,
+    Messaging: typeof firebase$Messaging,
+    MessagingEvents: typeof firebase$MessagingEvents,
+    MessageEvent: typeof firebase$MessageEvent
+  };
+  declare var firebase$Analytics: firebase$Analytics;
+
+  declare var firebase$Messaging: firebase$Messaging;
+
+  declare var firebase$MessagingEvents: firebase$MessagingEvents;
+
+  declare var firebase$MessageEvent: firebase$MessageEvent;
+
+  declare type firebase$AnalyticsProperties = $Shape<PropertyMixins$Analytics>;
+
+  declare type firebase$Analytics = {
+    logEvent(
+      eventName: string,
+      parameters?: {
+        [key: string]: string
+      }
+    ): void,
+    setUserProperty(propertyName: string, value: string): void,
+    set(properties: firebase$AnalyticsProperties): this,
+    set(property: string, value: any): this,
+    analyticsCollectionEnabled: boolean,
+    screenName: string,
+    userId: string
+  } & NativeObject &
+    PropertyMixins$Analytics;
+
+  declare type firebase$Messaging = {
+    +instanceId: string,
+    +token: string,
+    +launchData: { [key: string]: any },
+    resetInstanceId(): void,
+    on(
+      type: string,
+      listener: (event: any) => void,
+      context?: { [key: string]: any }
+    ): this,
+    on(listeners: firebase$MessagingEvents): this,
+    off(
+      type: string,
+      listener: (event: any) => void,
+      context?: { [key: string]: any }
+    ): this,
+    off(listeners: firebase$MessagingEvents): this,
+    once(
+      type: string,
+      listener: (event: any) => void,
+      context?: { [key: string]: any }
+    ): this,
+    once(listeners: firebase$MessagingEvents): this
+  } & NativeObject;
+
+  declare interface firebase$MessagingEvents {
+    instanceIdChanged?: (
+      event: PropertyChangedEvent<firebase$Messaging, string>
+    ) => void;
+    tokenChanged?: (
+      event: PropertyChangedEvent<firebase$Messaging, string>
+    ) => void;
+    message?: (event: firebase$MessageEvent) => void;
+  }
+
+  declare type firebase$MessageEvent = {
+    data: any
+  } & EventObject<firebase$Messaging>;
+
+  declare type firebase$PropertyMixins$Analytics = {
+    logEvent(
+      eventName: string,
+      parameters?: {
+        [key: string]: string
+      }
+    ): void,
+    setUserProperty(propertyName: string, value: string): void,
+    set(properties: firebase$AnalyticsProperties): this,
+    set(property: string, value: any): this,
+    analyticsCollectionEnabled: boolean,
+    screenName: string,
+    userId: string
+  } & NativeObject &
+    PropertyMixins$Analytics;
 }
 declare module "tabris-plugin-firebase" {
   declare interface EventObject<T> {
