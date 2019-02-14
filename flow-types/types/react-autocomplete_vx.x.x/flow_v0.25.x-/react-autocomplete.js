@@ -7,7 +7,7 @@ declare module "react-autocomplete" {
     HTMLProps
   } from "react";
 
-  declare module.exports: typeof Autocomplete;
+  declare export default typeof Autocomplete;
 
   declare interface Autocomplete$Props {
     /**
@@ -186,10 +186,7 @@ declare module "react-autocomplete" {
     menuWidth?: number;
   }
   declare class Autocomplete
-    mixins Component<
-        Autocomplete$Autocomplete$Props,
-        Autocomplete$Autocomplete$State
-      > {
+    mixins Component<Autocomplete$Props, Autocomplete$State> {
     /**
      * Autocomplete exposes a subset of `HTMLInputElement` properties to the parent component.
      * They can be accessed through Autocomplete's `ref` prop.
