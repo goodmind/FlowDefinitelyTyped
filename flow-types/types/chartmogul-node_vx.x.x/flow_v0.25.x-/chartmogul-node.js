@@ -86,15 +86,15 @@ declare module "chartmogul-node" {
     email?: string;
     status?: string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName"?: string;
-    Customer$attributes?: Customer$Attributes;
+    attributes?: Customer$Attributes;
     address?: {
       address_zip?: string,
       city?: string,
       state?: string,
       country?: string
     };
-    Metrics$mrr?: number;
-    Metrics$arr?: number;
+    mrr?: number;
+    arr?: number;
     "NO PRINT IMPLEMENTED: ComputedPropertyName"?: string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName"?: string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName"?: string;
@@ -121,7 +121,7 @@ declare module "chartmogul-node" {
     zip?: string;
     lead_created_at?: string;
     free_trial_started_at?: string;
-    Customer$attributes?: Customer$NewAttributes;
+    attributes?: Customer$NewAttributes;
   }
 
   declare interface Customer$UpdateCustomer {
@@ -134,7 +134,7 @@ declare module "chartmogul-node" {
     zip?: string;
     lead_created_at?: string;
     free_trial_started_at?: string;
-    Customer$attributes?: Customer$NewAttributes;
+    attributes?: Customer$NewAttributes;
   }
 
   declare interface Customer$NewAttributes {
@@ -395,7 +395,7 @@ declare module "chartmogul-node" {
 
   declare type Subscription$Subscriptions = {
     customer_uuid?: string,
-    Customer$subscriptions: Subscription$Subscription[]
+    subscriptions: Subscription$Subscription[]
   } & Cursor;
 
   declare function Subscription$all(
@@ -427,7 +427,7 @@ declare module "chartmogul-node" {
     config: Config,
     uuid: string,
     data: Tag$TagsWithEmail
-  ): Promise<Entries<Customer$Customer.Customer$Customer>>;
+  ): Promise<Entries<Customer$Customer>>;
 
   declare function Tag$add(
     config: Config,
@@ -457,7 +457,7 @@ declare module "chartmogul-node" {
       email: string,
       custom: Customer$NewCustomAttributes[]
     }
-  ): Promise<Entries<Customer$Customer.Customer$Customer>>;
+  ): Promise<Entries<Customer$Customer>>;
 
   declare function CustomAttribute$add(
     config: Config,
@@ -490,11 +490,13 @@ declare module "chartmogul-node" {
     customerCount: typeof Metrics$customerCount,
     customerChurnRate: typeof Metrics$customerChurnRate,
     mrrChurnRate: typeof Metrics$mrrChurnRate,
-    ltv: typeof Metrics$ltv
+    ltv: typeof Metrics$ltv,
+
+    Customer: typeof npm$namespace$Metrics$Customer
   };
   declare type Metrics$Params = {
     interval?: string
-  } & Metrics$ParamsNoInterval;
+  } & ParamsNoInterval;
 
   declare interface Metrics$ParamsNoInterval {
     "NO PRINT IMPLEMENTED: ComputedPropertyName": string;
@@ -508,18 +510,18 @@ declare module "chartmogul-node" {
       date: string,
       "NO PRINT IMPLEMENTED: ComputedPropertyName": number,
       "NO PRINT IMPLEMENTED: ComputedPropertyName": number,
-      Metrics$ltv: number,
+      ltv: number,
       customers: number,
-      Metrics$asp: number,
-      Metrics$arpa: number,
-      Metrics$arr: number,
-      Metrics$mrr: number
+      asp: number,
+      arpa: number,
+      arr: number,
+      mrr: number
     };
   }
 
   declare interface Metrics$MRR {
     date: string;
-    Metrics$mrr: number;
+    mrr: number;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": number;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": number;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": number;
@@ -529,17 +531,17 @@ declare module "chartmogul-node" {
 
   declare interface Metrics$ARR {
     date: string;
-    Metrics$arr: number;
+    arr: number;
   }
 
   declare interface Metrics$ARPA {
     date: string;
-    Metrics$arpa: number;
+    arpa: number;
   }
 
   declare interface Metrics$ASP {
     date: string;
-    Metrics$asp: number;
+    asp: number;
   }
 
   declare interface Metrics$CustomerCount {
@@ -559,7 +561,7 @@ declare module "chartmogul-node" {
 
   declare interface Metrics$LTV {
     date: string;
-    Metrics$ltv: number;
+    ltv: number;
   }
 
   declare function Metrics$all(
@@ -607,17 +609,17 @@ declare module "chartmogul-node" {
     params: Metrics$ParamsNoInterval
   ): Promise<EntriesSummary<Metrics$LTV>>;
 
-  declare var npm$namespace$Customer: {
-    subscriptions: typeof Customer$subscriptions,
-    activities: typeof Customer$activities
+  declare var npm$namespace$Metrics$Customer: {
+    subscriptions: typeof Metrics$Customer$subscriptions,
+    activities: typeof Metrics$Customer$activities
   };
-  declare interface Customer$MetricsSubscription {
+  declare interface Metrics$Customer$MetricsSubscription {
     id: number;
     external_id: string;
     plan: string;
     quantity: number;
-    Metrics$mrr: number;
-    Metrics$arr: number;
+    mrr: number;
+    arr: number;
     status: string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": number;
@@ -627,7 +629,7 @@ declare module "chartmogul-node" {
     "NO PRINT IMPLEMENTED: ComputedPropertyName": string;
   }
 
-  declare interface Customer$MetricsActivity {
+  declare interface Metrics$Customer$MetricsActivity {
     id: number;
     date: string;
     "NO PRINT IMPLEMENTED: ComputedPropertyName": number;
@@ -639,17 +641,17 @@ declare module "chartmogul-node" {
     type: string;
   }
 
-  declare function Customer$subscriptions(
+  declare function Metrics$Customer$subscriptions(
     config: Config,
     uuid: string,
     params?: CursorParams
-  ): Promise<Entries<Customer$MetricsSubscription>>;
+  ): Promise<Entries<Metrics$Customer$MetricsSubscription>>;
 
-  declare function Customer$activities(
+  declare function Metrics$Customer$activities(
     config: Config,
     uuid: string,
     params?: CursorParams
-  ): Promise<Entries<Customer$MetricsActivity>>;
+  ): Promise<Entries<Metrics$Customer$MetricsActivity>>;
 
   declare export class ChartMogulError mixins Error {
     response: any;
