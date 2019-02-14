@@ -1,32 +1,36 @@
 declare module "gapi.client.gamesconfiguration" {
-  declare var npm$namespace$client: {
-    load: typeof client$load,
-    achievementConfigurations: typeof client$achievementConfigurations,
-    imageConfigurations: typeof client$imageConfigurations,
-    leaderboardConfigurations: typeof client$leaderboardConfigurations
+  declare var npm$namespace$gapi: {
+    client: typeof npm$namespace$gapi$client
+  };
+
+  declare var npm$namespace$gapi$client: {
+    load: typeof gapi$client$load,
+    achievementConfigurations: typeof gapi$client$achievementConfigurations,
+    imageConfigurations: typeof gapi$client$imageConfigurations,
+    leaderboardConfigurations: typeof gapi$client$leaderboardConfigurations
   };
 
   /**
    * Load Google Play Game Services Publishing API v1configuration
    */
-  declare function client$load(
+  declare function gapi$client$load(
     name: "gamesconfiguration",
     version: "v1configuration"
   ): PromiseLike<void>;
 
-  declare function client$load(
+  declare function gapi$client$load(
     name: "gamesconfiguration",
     version: "v1configuration",
     callback: () => any
   ): void;
 
-  declare var client$achievementConfigurations: gamesconfiguration$gamesconfiguration$AchievementConfigurationsResource;
+  declare var gapi$client$achievementConfigurations: gamesconfiguration$AchievementConfigurationsResource;
 
-  declare var client$imageConfigurations: gamesconfiguration$gamesconfiguration$ImageConfigurationsResource;
+  declare var gapi$client$imageConfigurations: gamesconfiguration$ImageConfigurationsResource;
 
-  declare var client$leaderboardConfigurations: gamesconfiguration$gamesconfiguration$LeaderboardConfigurationsResource;
+  declare var gapi$client$leaderboardConfigurations: gamesconfiguration$LeaderboardConfigurationsResource;
 
-  declare interface gamesconfiguration$AchievementConfiguration {
+  declare interface gapi$client$gamesconfiguration$AchievementConfiguration {
     /**
      * The type of the achievement.
      * Possible values are:
@@ -75,7 +79,7 @@ declare module "gapi.client.gamesconfiguration" {
     token?: string;
   }
 
-  declare interface gamesconfiguration$AchievementConfigurationDetail {
+  declare interface gapi$client$gamesconfiguration$AchievementConfigurationDetail {
     /**
      * Localized strings for the achievement description.
      */
@@ -107,11 +111,11 @@ declare module "gapi.client.gamesconfiguration" {
     sortRank?: number;
   }
 
-  declare interface gamesconfiguration$AchievementConfigurationListResponse {
+  declare interface gapi$client$gamesconfiguration$AchievementConfigurationListResponse {
     /**
      * The achievement configurations.
      */
-    items?: gamesconfiguration$AchievementConfiguration[];
+    items?: gapi$client$gamesconfiguration$AchievementConfiguration[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#achievementConfigurationListResponse.
@@ -124,7 +128,7 @@ declare module "gapi.client.gamesconfiguration" {
     nextPageToken?: string;
   }
 
-  declare interface gamesconfiguration$GamesNumberAffixConfiguration {
+  declare interface gapi$client$gamesconfiguration$GamesNumberAffixConfiguration {
     /**
      * When the language requires special treatment of "small" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in
      * Polish).
@@ -158,7 +162,7 @@ declare module "gapi.client.gamesconfiguration" {
     zero?: gamesconfiguration$LocalizedStringBundle;
   }
 
-  declare interface gamesconfiguration$GamesNumberFormatConfiguration {
+  declare interface gapi$client$gamesconfiguration$GamesNumberFormatConfiguration {
     /**
      * The curreny code string. Only used for CURRENCY format type.
      */
@@ -182,10 +186,10 @@ declare module "gapi.client.gamesconfiguration" {
     /**
      * An optional suffix for the NUMERIC format type. These strings follow the same  plural rules as all Android string resources.
      */
-    suffix?: gamesconfiguration$GamesNumberAffixConfiguration;
+    suffix?: gapi$client$gamesconfiguration$GamesNumberAffixConfiguration;
   }
 
-  declare interface gamesconfiguration$ImageConfiguration {
+  declare interface gapi$client$gamesconfiguration$ImageConfiguration {
     /**
      * The image type for the image.
      */
@@ -207,7 +211,7 @@ declare module "gapi.client.gamesconfiguration" {
     url?: string;
   }
 
-  declare interface gamesconfiguration$LeaderboardConfiguration {
+  declare interface gapi$client$gamesconfiguration$LeaderboardConfiguration {
     /**
      * The draft data of the leaderboard.
      */
@@ -252,7 +256,7 @@ declare module "gapi.client.gamesconfiguration" {
     token?: string;
   }
 
-  declare interface gamesconfiguration$LeaderboardConfigurationDetail {
+  declare interface gapi$client$gamesconfiguration$LeaderboardConfigurationDetail {
     /**
      * The icon url of this leaderboard. Writes to this field are ignored.
      */
@@ -271,7 +275,7 @@ declare module "gapi.client.gamesconfiguration" {
     /**
      * The score formatting for the leaderboard.
      */
-    scoreFormat?: gamesconfiguration$GamesNumberFormatConfiguration;
+    scoreFormat?: gapi$client$gamesconfiguration$GamesNumberFormatConfiguration;
 
     /**
      * The sort rank of this leaderboard. Writes to this field are ignored.
@@ -279,11 +283,11 @@ declare module "gapi.client.gamesconfiguration" {
     sortRank?: number;
   }
 
-  declare interface gamesconfiguration$LeaderboardConfigurationListResponse {
+  declare interface gapi$client$gamesconfiguration$LeaderboardConfigurationListResponse {
     /**
      * The leaderboard configurations.
      */
-    items?: gamesconfiguration$LeaderboardConfiguration[];
+    items?: gapi$client$gamesconfiguration$LeaderboardConfiguration[];
 
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardConfigurationListResponse.
@@ -296,7 +300,7 @@ declare module "gapi.client.gamesconfiguration" {
     nextPageToken?: string;
   }
 
-  declare interface gamesconfiguration$LocalizedString {
+  declare interface gapi$client$gamesconfiguration$LocalizedString {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedString.
      */
@@ -313,7 +317,7 @@ declare module "gapi.client.gamesconfiguration" {
     value?: string;
   }
 
-  declare interface gamesconfiguration$LocalizedStringBundle {
+  declare interface gapi$client$gamesconfiguration$LocalizedStringBundle {
     /**
      * Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedStringBundle.
      */
@@ -322,10 +326,10 @@ declare module "gapi.client.gamesconfiguration" {
     /**
      * The locale strings.
      */
-    translations?: gamesconfiguration$LocalizedString[];
+    translations?: gapi$client$gamesconfiguration$LocalizedString[];
   }
 
-  declare interface gamesconfiguration$AchievementConfigurationsResource {
+  declare interface gapi$client$gamesconfiguration$AchievementConfigurationsResource {
     /**
      * Delete the achievement configuration with the given ID.
      */
@@ -416,7 +420,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$AchievementConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$AchievementConfiguration>;
 
     /**
      * Insert a new achievement configuration in this application.
@@ -462,7 +466,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$AchievementConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$AchievementConfiguration>;
 
     /**
      * Returns a list of the achievement configurations in this application.
@@ -519,7 +523,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$AchievementConfigurationListResponse>;
+    }): Request<gapi$client$gamesconfiguration$AchievementConfigurationListResponse>;
 
     /**
      * Update the metadata of the achievement configuration with the given ID. This method supports patch semantics.
@@ -565,7 +569,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$AchievementConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$AchievementConfiguration>;
 
     /**
      * Update the metadata of the achievement configuration with the given ID.
@@ -611,10 +615,10 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$AchievementConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$AchievementConfiguration>;
   }
 
-  declare interface gamesconfiguration$ImageConfigurationsResource {
+  declare interface gapi$client$gamesconfiguration$ImageConfigurationsResource {
     /**
      * Uploads an image for a resource with the given ID and image type.
      */
@@ -664,10 +668,10 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$ImageConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$ImageConfiguration>;
   }
 
-  declare interface gamesconfiguration$LeaderboardConfigurationsResource {
+  declare interface gapi$client$gamesconfiguration$LeaderboardConfigurationsResource {
     /**
      * Delete the leaderboard configuration with the given ID.
      */
@@ -758,7 +762,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$LeaderboardConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$LeaderboardConfiguration>;
 
     /**
      * Insert a new leaderboard configuration in this application.
@@ -804,7 +808,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$LeaderboardConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$LeaderboardConfiguration>;
 
     /**
      * Returns a list of the leaderboard configurations in this application.
@@ -861,7 +865,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$LeaderboardConfigurationListResponse>;
+    }): Request<gapi$client$gamesconfiguration$LeaderboardConfigurationListResponse>;
 
     /**
      * Update the metadata of the leaderboard configuration with the given ID. This method supports patch semantics.
@@ -907,7 +911,7 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$LeaderboardConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$LeaderboardConfiguration>;
 
     /**
      * Update the metadata of the leaderboard configuration with the given ID.
@@ -953,6 +957,6 @@ declare module "gapi.client.gamesconfiguration" {
        * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
        */
       userIp?: string
-    }): Request<gamesconfiguration$LeaderboardConfiguration>;
+    }): Request<gapi$client$gamesconfiguration$LeaderboardConfiguration>;
   }
 }
