@@ -1,5 +1,5 @@
 declare module "figures" {
-  declare module.exports: typeof figures;
+  declare export default typeof figures;
 
   declare function figures(input: string): string;
 
