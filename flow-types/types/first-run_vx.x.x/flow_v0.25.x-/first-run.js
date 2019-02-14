@@ -1,10 +1,10 @@
 declare module "first-run" {
-  declare module.exports: typeof firstRun;
+  declare export default typeof firstRun;
 
   /**
    * Check if it's the first time the process is run.
    */
-  declare function firstRun(options?: firstRun$firstRun$Options): boolean;
+  declare function firstRun(options?: firstRun$Options): boolean;
 
   declare var npm$namespace$firstRun: {
     clear: typeof firstRun$clear
