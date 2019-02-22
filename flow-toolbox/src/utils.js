@@ -4,7 +4,7 @@ const path = require("path");
 const glob = require("glob-promise");
 const diff = require("node-diff3");
 const ErrorStackParser = require("error-stack-parser");
-const flowgen = require("../../../../../../desktop/projects/pending/flowgen");
+const flowgen = require("@goodmind/flowgen");
 const baseDir = path.join(__dirname, "../..");
 const chalk = require("chalk");
 

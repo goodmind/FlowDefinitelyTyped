@@ -6,7 +6,7 @@ const ts = require("typescript");
 const execa = require("execa");
 const glob = require("glob-promise");
 const path = require("path");
-const flowgen = require("../../../../../../../desktop/projects/pending/flowgen");
+const flowgen = require("@goodmind/flowgen");
 const infojson = require("../../../flow-types/info.json");
 const chalk = require("chalk");
 const {

@@ -24,6 +24,7 @@
         "lint": "dtslint types"
     },
     "devDependencies": {
+        "@types/react": "^16.8.2",
         "cross-fetch": "^3.0.1",
         "dtslint": "github:Microsoft/dtslint#production",
         "types-publisher": "github:Microsoft/types-publisher#production"

@@ -7,7 +7,7 @@ const diff = require("diff");
 const execa = require("execa");
 const path = require("path");
 const glob = require("glob-promise");
-const flowgen = require("../../../../../../../desktop/projects/pending/flowgen");
+const flowgen = require("@goodmind/flowgen");
 const infojson = require("../../../flow-types/info.json");
 const chalk = require("chalk");
 const {
