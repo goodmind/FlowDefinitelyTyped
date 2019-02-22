@@ -14,5 +14,5 @@ build:
     paths:
       - flow-types/typecheck
   script:
-    - yarn install
-    - ls $(yarn bin)
+    - yarn
+    - npx flow-toolbox
