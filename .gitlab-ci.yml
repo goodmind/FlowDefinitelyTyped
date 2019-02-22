@@ -10,5 +10,9 @@ cache:
     - node_modules/
 
 build:
+  artifacts:
+    paths:
+      - flow-types/typecheck
   script:
     - yarn install
+    - npx flow-toolbox typecheck
