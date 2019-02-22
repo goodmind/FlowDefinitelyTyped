@@ -14,5 +14,5 @@ build:
     paths:
       - flow-types/typecheck
   script:
-    - yarn install
-    - npx flow-toolbox typecheck
+    - yarn
+    - npx flow-toolbox
