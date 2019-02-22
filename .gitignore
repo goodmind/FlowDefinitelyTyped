@@ -48,8 +48,5 @@ npm-debug.log
 .vscode
 .history
 
-# yarn
-yarn.lock
-
 # pnpm
 shrinkwrap.yaml
