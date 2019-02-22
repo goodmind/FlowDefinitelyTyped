@@ -9,3 +9,6 @@ sudo: false
 
 notifications:
   email: false
+
+script:
+  - cd flow-types && npx flow --pretty
