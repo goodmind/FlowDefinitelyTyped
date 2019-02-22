@@ -1,5 +1,6 @@
 [ignore]
 .*/node_modules/.*
+.*/types/.*/test_.*\.js
 .*/unformatted/.*
 .*/logs/.*
 
@@ -12,5 +13,6 @@
 
 [options]
 all=true
+module.name_mapper='^\(.*\)$' -> 'empty/object'
 
 [strict]
