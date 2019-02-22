@@ -15,4 +15,4 @@ build:
       - flow-types/typecheck
   script:
     - yarn install
-    - pwd; ls
+    - $(yarn bin)/flow-toolbox --help
