@@ -7,6 +7,7 @@ const { commitTypes } = require("./commands/commit");
 const { missingTypes } = require("./commands/missing-types");
 const { main } = require("./commands/convert");
 const { unplug } = require("./commands/unplug");
+const { typecheck } = require("./commands/typecheck");
 
 require("yargs") // eslint-disable-line
   .help("help", "Show usage instructions.")
@@ -91,7 +92,20 @@ require("yargs") // eslint-disable-line
       missingTypes(argv);
     }
   )
-  .command("commit", "commit types", (yargs = {}), () => {
-    commitTypes();
-  })
+  .command(
+    "commit",
+    "commit types",
+    yargs => {},
+    () => {
+      commitTypes();
+    }
+  )
+  .command(
+    "typecheck",
+    "type check types",
+    yargs => {},
+    () => {
+      typecheck();
+    }
+  )
   .demandCommand(1, "You need at least one command before moving on").argv;
