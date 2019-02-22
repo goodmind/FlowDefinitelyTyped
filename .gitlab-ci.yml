@@ -15,4 +15,4 @@ build:
       - flow-types/typecheck
   script:
     - yarn install
-    - npx flow-toolbox typecheck
+    - pwd; ls
