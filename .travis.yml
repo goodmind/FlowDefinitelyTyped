@@ -12,4 +12,4 @@ notifications:
 
 script:
   - cd flow-types
-  - npx flow
+  - npx flow --show-all-errors --json

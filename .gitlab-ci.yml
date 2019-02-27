@@ -15,4 +15,5 @@ build:
       - flow-types/typecheck
   script:
     - yarn
-    - npx flow
+    - cd flow-types
+    - npx flow --show-all-errors --json
