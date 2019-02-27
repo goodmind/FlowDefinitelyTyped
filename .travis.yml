@@ -11,4 +11,4 @@ notifications:
   email: false
 
 script:
-  - npx flow-toolbox typecheck
+  - npx flow

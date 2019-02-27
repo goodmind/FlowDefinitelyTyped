@@ -15,4 +15,4 @@ build:
       - flow-types/typecheck
   script:
     - yarn
-    - npx flow-toolbox
+    - npx flow
