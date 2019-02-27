@@ -12,6 +12,5 @@ notifications:
 
 script:
   - cd flow-types
-  - npx flow --show-all-errors
   - npx flow --show-all-errors --json
   - npx flow-toolbox typecheck
