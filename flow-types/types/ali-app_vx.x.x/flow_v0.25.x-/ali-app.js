@@ -200,7 +200,7 @@ declare module "ali-app" {
      * 需要跳转的应用内页面的路径
      */
     url: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。
@@ -215,7 +215,7 @@ declare module "ali-app" {
      * 需要跳转的应用内页面的路径
      */
     url: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 关闭当前页面，跳转到应用内的某个页面。
@@ -227,7 +227,7 @@ declare module "ali-app" {
      * 返回的页面数，如果 delta 大于现有打开的页面数，则返回到首页
      */
     delta: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 关闭当前页面，返回上一级或多级页面。可通过 getCurrentPages 获取当前的页面栈信息，决定需要返回几层。
@@ -241,7 +241,7 @@ declare module "ali-app" {
      * 如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
      */
     url: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 关闭所有页面，打开到应用内的某个页面。
@@ -273,7 +273,7 @@ declare module "ali-app" {
      * 是否重置导航栏为支付宝默认配色，默认 false
      */
     reset: boolean
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 动态设置当前页面的标题。
@@ -298,7 +298,7 @@ declare module "ali-app" {
      * （需在 app.json 的 tabBar 字段定义的页面），路径后不能带参数
      */
     url: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 跳转到指定 tabBar 页面，并关闭其他所有非 tabBar 页面
@@ -320,7 +320,7 @@ declare module "ali-app" {
      * 按钮文字，默认确定
      */
     buttonText: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$alert(options: $Shape<my$AlertOptions>): void;
 
@@ -347,7 +347,7 @@ declare module "ali-app" {
     success(result: {
       confirm: boolean
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$confirm(options: $Shape<my$ConfirmOptions>): void;
 
@@ -385,7 +385,7 @@ declare module "ali-app" {
       ok: boolean,
       inputValue: string
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$prompt(options: my$PromptOptions): void;
 
@@ -404,7 +404,7 @@ declare module "ali-app" {
      * 显示时长，单位为 ms，默认 2000
      */
     duration?: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 显示消息提示框
@@ -423,7 +423,7 @@ declare module "ali-app" {
      * 延迟显示，单位 ms，默认 0。如果在此时间之前调用了 my.hideLoading 则不会显示
      */
     delay?: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 显示加载提示
@@ -497,7 +497,7 @@ declare module "ali-app" {
        */
       index: number
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 显示操作菜单
@@ -539,7 +539,7 @@ declare module "ali-app" {
      * 11	用户取消操作(或设备未授权使用通讯录)
      */
     fail?: (error: 10 | 11) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 选择本地系统通信录中某个联系人的电话。
@@ -566,7 +566,7 @@ declare module "ali-app" {
      * 11	用户取消操作(或设备未授权使用通讯录)
      */
     fail?: (error: 10 | 11) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 唤起支付宝通讯录，选择一个或者多个支付宝联系人。
@@ -630,7 +630,7 @@ declare module "ali-app" {
     success(result: {
       contactsDicArray: my$ContactsDic[]
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 唤起选人组件，默认只包含支付宝联系人，可以通过修改参数包含手机通讯录联系人或者双向通讯录联系人。
@@ -652,7 +652,7 @@ declare module "ali-app" {
       city: string,
       adCode: string
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开城市选择列表
@@ -694,7 +694,7 @@ declare module "ali-app" {
      * 11 用户取消操作
      */
     fail(error: 11): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开日期选择列表
@@ -962,7 +962,7 @@ declare module "ali-app" {
     height: number,
     destWidth: number,
     destHeight: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$Color = string | number[] | number | my$CanvasAction;
 
@@ -1340,7 +1340,7 @@ declare module "ali-app" {
       longitude: string,
       latitude: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$MapContext = {
     /**
@@ -1353,7 +1353,7 @@ declare module "ali-app" {
      * 将地图中心移动到当前定位点，需要配合 map 组件的 show-location 使用
      */
     moveToLocation(): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 创建并返回一个 map 上下文对象 mapContext。
@@ -1419,7 +1419,7 @@ declare module "ali-app" {
      * 节点的dataset
      */
     dataset: any
-  } & RectArea;
+  } & my$RectArea;
 
   declare interface my$NodeRefOffset {
     /**
@@ -1523,7 +1523,7 @@ declare module "ali-app" {
       success: boolean,
       result: my$MultiLevelSelectItem[]
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$multiLevelSelect(
     options?: my$MultiLevelSelectOptions
@@ -1538,7 +1538,7 @@ declare module "ali-app" {
       },
       authSucessScope: string[]
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取授权码。
@@ -1551,7 +1551,7 @@ declare module "ali-app" {
       nickName: string,
       avatar: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 客户端获取会员信息
@@ -1564,7 +1564,7 @@ declare module "ali-app" {
     success?: (res: {
       resultCode: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 发起支付。
@@ -1575,7 +1575,7 @@ declare module "ali-app" {
 
   declare type my$PaySignCenterOptions = {
     signStr: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 签约中心
@@ -1598,7 +1598,7 @@ declare module "ali-app" {
 
   declare type my$OpenMerchantCardList = {
     partnerId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开支付宝卡列表。
@@ -1611,7 +1611,7 @@ declare module "ali-app" {
 
   declare type my$OpenCardDetailOptions = {
     passId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开当前用户的某张卡的详情页
@@ -1634,7 +1634,7 @@ declare module "ali-app" {
 
   declare type my$OpenMerchantVoucherListOptions = {
     partnerId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开当前用户的某个商户的券列表
@@ -1646,12 +1646,12 @@ declare module "ali-app" {
 
   declare type my$OpenVoucherDetailOptions1 = {
     passId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$OpenVoucherDetailOptions2 = {
     partnerId: string,
     serialNumber: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开当前用户的某张券的详情页（非口碑）
@@ -1663,12 +1663,12 @@ declare module "ali-app" {
 
   declare type my$OpenKBVoucherDetailOptions1 = {
     passId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$OpenKBVoucherDetailOptions2 = {
     partnerId: string,
     serialNumber: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开当前用户的某张券的详情页（口碑）
@@ -1686,7 +1686,7 @@ declare module "ali-app" {
 
   declare type my$OpenMerchantTicketListOptions = {
     partnerId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开某个商户的票列表
@@ -1698,12 +1698,12 @@ declare module "ali-app" {
 
   declare type my$OpenTicketDetailOptions1 = {
     passId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$OpenTicketDetailOptions2 = {
     partnerId: string,
     serialNumber: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 打开当前用户的某张票的详情页
@@ -1746,7 +1746,7 @@ declare module "ali-app" {
      */
     url: string,
     success?: (res: my$AddCardAuthResult) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 小程序唤起会员开卡授权页面，小程序接入会员卡[点此查看](https://docs.alipay.com/mini/introduce/card)
@@ -1760,7 +1760,7 @@ declare module "ali-app" {
       passed: string,
       reason?: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 芝麻认证接口，调用此接口可以唤起芝麻认证页面并进行人脸身份验证。
@@ -1942,7 +1942,7 @@ declare module "ali-app" {
         callbackData: any
       }
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$zmCreditBorrow(options: my$ZMCreditBorrowOptions): void;
 
@@ -1993,7 +1993,7 @@ declare module "ali-app" {
         errorMessage: string
       }) => void
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 文本风险识别， **支付宝客户端10.1.10及以上版本支持。**详细接入参考[指引](https://docs.alipay.com/mini/introduce/text-identification)
@@ -2022,7 +2022,7 @@ declare module "ali-app" {
      * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是正式版，则打开的小程序必定是正式版。默认值 release
      */
     envVersion?: "develop" | "trial" | "release" | string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 跳转到其他小程序。详细接入参考[指引](https://docs.alipay.com/mini/introduce/open-miniprogram)
@@ -2037,7 +2037,7 @@ declare module "ali-app" {
      * 需要传递给目标小程序的数据，目标小程序可在 App.onLaunch()，App.onShow() 中获取到这份数据
      */
     extraData?: any
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 跳转回上一个小程序，只有当另一个小程序跳转到当前小程序时才会能调用成功
@@ -2080,7 +2080,7 @@ declare module "ali-app" {
        */
       apFilePaths: string[]
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 从本地相册选择图片或使用相机拍照。
@@ -2097,7 +2097,7 @@ declare module "ali-app" {
      * 要预览的图片链接列表
      */
     urls: string[]
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 预览图片。
@@ -2112,7 +2112,7 @@ declare module "ali-app" {
     success?: (res: {
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 保存在线图片到手机相册。
@@ -2143,7 +2143,7 @@ declare module "ali-app" {
        */
       apFilePaths: string[]
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 压缩图片。扫码体验：
@@ -2163,7 +2163,7 @@ declare module "ali-app" {
       height: number,
       path: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取图片信息
@@ -2180,7 +2180,7 @@ declare module "ali-app" {
      * 需要存储的内容
      */
     data: any
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的数据。
@@ -2209,7 +2209,7 @@ declare module "ali-app" {
      * 接口调用的回调函数,res = {data: key对应的内容}
      */
     success(res: my$DataResponse): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取缓存数据。
@@ -2227,7 +2227,7 @@ declare module "ali-app" {
 
   declare type my$RemoveStorageOptions = {
     key: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 删除缓存数据。
@@ -2275,7 +2275,7 @@ declare module "ali-app" {
 
   declare type my$GetStorageInfoOptions = {
     success(res: my$StorageInfo): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 异步获取当前storage的相关信息
@@ -2297,7 +2297,7 @@ declare module "ali-app" {
      */
     apFilePath: string,
     success?: (res: my$SavedFileData) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 保存文件到本地（本地文件大小总容量限制：10M）
@@ -2327,7 +2327,7 @@ declare module "ali-app" {
      */
     digestAlgorithm?: "md5" | "sha1",
     success?: (options: my$GetFileInfoSuccess) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取文件信息
@@ -2357,7 +2357,7 @@ declare module "ali-app" {
      * 接口调用成功的回调函数
      */
     success?: (res: my$SavedFileInfoData) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取保存的文件信息
@@ -2385,7 +2385,7 @@ declare module "ali-app" {
         apFilePath: string
       }>
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$getSavedFileList(
     options: my$GetSavedFileListOptions
@@ -2489,7 +2489,7 @@ declare module "ali-app" {
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
     success(res: my$LocationData): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取用户当前的地理位置信息
@@ -2521,7 +2521,7 @@ declare module "ali-app" {
      * 缩放比例，范围 3~19，默认为 15
      */
     scale?: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 使用微信内置地图查看位置
@@ -2552,7 +2552,7 @@ declare module "ali-app" {
 
   declare type my$ChooseLocationOptions = {
     success(res: my$ChooseLocationData): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 使用支付宝内置地图选择地理位置。
@@ -2598,7 +2598,7 @@ declare module "ali-app" {
      * 收到开发者服务成功返回的回调函数，res = {data: '开发者服务器返回的内容'}
      */
     success?: (res: my$DataResponse) => void
-  } & BaseOptions<my$DataResponse>;
+  } & my$BaseOptions<my$DataResponse>;
 
   declare function my$httpRequest(options: my$RequestOptions): void;
 
@@ -2644,7 +2644,7 @@ declare module "ali-app" {
       statusCode: string,
       header: any
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 上传本地资源到开发者服务器。
@@ -2666,7 +2666,7 @@ declare module "ali-app" {
      * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
      */
     success?: (res: my$TempFileResponse) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 下载文件资源到本地。
@@ -2689,7 +2689,7 @@ declare module "ali-app" {
      */
     header?: my$RequestHeader,
     method?: "GET" | "POST"
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 创建一个 WebSocket 的连接；
@@ -2732,7 +2732,7 @@ declare module "ali-app" {
      * 如果需要发送二进制数据，需要将入参数据经 base64 编码成 String 后赋值 data，同时将此字段设置为true，否则如果是普通的文本内容 String，不需要设置此字段
      */
     isBuffer?: boolean
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 通过 WebSocket 连接发送数据，需要先使用 my.connectSocket 发起建连，并在 my.onSocketOpen 回调之后再发送数据。
@@ -2762,7 +2762,7 @@ declare module "ali-app" {
 
   declare type my$CloseSocketOptions = {
     success?: (res: any) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 监听WebSocket关闭。
@@ -2868,7 +2868,7 @@ declare module "ali-app" {
 
   declare type my$GetSystemInfoOptions = {
     success?: (res: my$SystemInfo) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$getSystemInfo(options: my$GetSystemInfoOptions): void;
 
@@ -2886,7 +2886,7 @@ declare module "ali-app" {
        */
       networkType: my$NetworkType
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare type my$NetworkType =
     | "UNKNOWN"
@@ -2925,7 +2925,7 @@ declare module "ali-app" {
     success?: (res: {
       text: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$getClipboard(options: my$GetClipboardOptions): void;
 
@@ -2934,33 +2934,33 @@ declare module "ali-app" {
      * 剪贴板数据
      */
     text: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$setClipboard(options: my$SetClipboardOptions): void;
 
-  declare function my$watchShake(options: my$BaseOptions): void;
+  declare function my$watchShake(options: my$BaseOptions<>): void;
 
   /**
    * 调用震动功能。
    */
-  declare function my$vibrate(options?: my$BaseOptions): void;
+  declare function my$vibrate(options?: my$BaseOptions<>): void;
 
   /**
    * 调用震动功能。
    */
-  declare function my$vibrateLong(options?: my$BaseOptions): void;
+  declare function my$vibrateLong(options?: my$BaseOptions<>): void;
 
   /**
    * 调用震动功能。
    */
-  declare function my$vibrateShort(options?: my$BaseOptions): void;
+  declare function my$vibrateShort(options?: my$BaseOptions<>): void;
 
   declare type my$MakePhoneCallOptions = {
     /**
      * 需要拨打的电话号码
      */
     number: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 拨打电话
@@ -2974,7 +2974,7 @@ declare module "ali-app" {
        */
       time: number
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$getServerTime(options: my$GetServerTimeOptions): void;
 
@@ -2996,7 +2996,7 @@ declare module "ali-app" {
     success?: (res: {
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 设置是否保持常亮状态。
@@ -3011,7 +3011,7 @@ declare module "ali-app" {
      * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
      */
     success(value: number): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取屏幕亮度
@@ -3025,7 +3025,7 @@ declare module "ali-app" {
      * 需要设置的屏幕亮度，取值范围0-1
      */
     brightness: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 设置屏幕亮度
@@ -3062,7 +3062,7 @@ declare module "ali-app" {
       | "SELFSTARTING"
       | "LBSSERVICE"
       | "LBS"
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$showAuthGuide(options: my$showAuthGuideOptions): void;
 
@@ -3098,7 +3098,7 @@ declare module "ali-app" {
      */
     hideAlbum?: boolean,
     success?: (res: my$ScanCodeData) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 调起客户端扫码界面，扫码成功后返回对应的结果
@@ -3116,7 +3116,7 @@ declare module "ali-app" {
        */
       isSupportBLE: boolean
     }): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 初始化小程序蓝牙模块，生效周期为调用 my.openBluetoothAdapter 至调用 my.closeBluetoothAdapter 或小程序被销毁为止。 在小程序蓝牙适配器模块生效期间，开发者可以正常调用下面的小程序API，并会收到蓝牙模块相关的 on 事件回调。
@@ -3127,7 +3127,7 @@ declare module "ali-app" {
 
   declare type my$CloseBluetoothAdapterOptions = {
     success(res: any): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 关闭本机蓝牙模块
@@ -3146,11 +3146,11 @@ declare module "ali-app" {
      * 蓝牙模块是否可用(需支持 BLE 并且蓝牙是打开状态)
      */
     available: boolean
-  } & ErrMsgResponse;
+  } & my$ErrMsgResponse;
 
   declare type my$GetBluetoothAdapterStateOptions = {
     success(res: my$BluetoothAdapterStateData): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取本机蓝牙适配器状态
@@ -3175,7 +3175,7 @@ declare module "ali-app" {
      * 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
      */
     interval?: number
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 开始搜寻附近的蓝牙外围设备。搜索结果将在 my.onBluetoothDeviceFound 事件中返回。
@@ -3186,7 +3186,7 @@ declare module "ali-app" {
 
   declare type my$StopBluetoothDevicesDiscoveryOptions = {
     success(res: my$ErrMsgResponse): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 停止搜寻附近的蓝牙外围设备。请在确保找到需要连接的设备后调用该方法停止搜索。
@@ -3241,7 +3241,7 @@ declare module "ali-app" {
         devices: my$BluetoothDevice[]
       } & my$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取所有已发现的蓝牙设备，包括已经和本机处于连接状态的设备。
@@ -3257,7 +3257,7 @@ declare module "ali-app" {
         devices: my$BluetoothDevice[]
       } & my$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取处于已连接状态的设备。
@@ -3271,7 +3271,7 @@ declare module "ali-app" {
      * 蓝牙设备id
      */
     deviceId: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 连接低功耗蓝牙设备。
@@ -3303,7 +3303,7 @@ declare module "ali-app" {
      * 蓝牙设备特征值对应的值，16进制字符串，限制在20字节内
      */
     value: string
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 向低功耗蓝牙设备特征值中写入数据。
@@ -3347,7 +3347,7 @@ declare module "ali-app" {
         }
       } & my$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 读取低功耗蓝牙设备特征值中的数据。调用后在 my.onBLECharacteristicValueChange() 事件中接收数据返回。
@@ -3381,7 +3381,7 @@ declare module "ali-app" {
      * 是否启用notify或indicate
      */
     state?: boolean
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   declare function my$notifyBLECharacteristicValueChange(
     optons: my$NotifyBLECharacteristicValueChangeOptions
@@ -3413,7 +3413,7 @@ declare module "ali-app" {
      */
     state: boolean,
     success(res: my$ErrMsgResponse): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 启用低功耗蓝牙设备特征值变化时的 notify 功能。注意：设备的特征值必须支持 notify/indicate 才可以成功调用，具体参照 characteristic 的 properties 属性 另外，必须先启用 notify 才能监听到设备 characteristicValueChange 事件。
@@ -3446,7 +3446,7 @@ declare module "ali-app" {
         }>
       } & my$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取蓝牙设备所有 service（服务）
@@ -3514,7 +3514,7 @@ declare module "ali-app" {
         }>
       } & my$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取蓝牙设备所有 characteristic（特征值）
@@ -3527,7 +3527,7 @@ declare module "ali-app" {
     success?: (res: {
       devices: my$BluetoothDevice[]
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 搜索到新的蓝牙设备时触发此事件。
@@ -3563,7 +3563,7 @@ declare module "ali-app" {
        */
       value: ArrayBuffer
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 监听低功耗蓝牙设备的特征值变化的事件。
@@ -3584,7 +3584,7 @@ declare module "ali-app" {
        */
       connected: boolean
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 移除低功耗蓝牙设备的特征值变化事件的监听。
@@ -3633,7 +3633,7 @@ declare module "ali-app" {
      */
     uuids: string[],
     success?: (res: my$ErrMsgResponse) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 开始搜索附近的iBeacon设备
@@ -3644,7 +3644,7 @@ declare module "ali-app" {
 
   declare type my$StopBeaconDiscoveryOptions = {
     success?: (res: my$ErrMsgResponse) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 停止搜索附近的iBeacon设备
@@ -3701,7 +3701,7 @@ declare module "ali-app" {
 
   declare type my$GetBeaconsOptions = {
     success?: (options: my$GetBeaconsSuccess) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 获取所有已搜索到的iBeacon设备
@@ -3712,7 +3712,7 @@ declare module "ali-app" {
     success?: (res: {
       beacons: my$Beacon[]
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 监听 iBeacon 设备的更新事件
@@ -3731,7 +3731,7 @@ declare module "ali-app" {
        */
       discovering: boolean
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 监听 iBeacon 服务的状态变化
@@ -3761,7 +3761,7 @@ declare module "ali-app" {
        */
       text: string
     }) => void
-  } & BaseOptions;
+  } & my$BaseOptions<>;
 
   /**
    * 非对称加密。
@@ -3778,7 +3778,7 @@ declare module "ali-app" {
   /**
    * 隐藏分享按钮。
    */
-  declare function my$hideShareMenu(options?: my$BaseOptions): void;
+  declare function my$hideShareMenu(options?: my$BaseOptions<>): void;
 
   declare interface my$LaunchOptions {
     /**
@@ -4013,7 +4013,7 @@ declare module "ali-app" {
      */
     pageScrollTo(option?: my$PageScrollToOptions): void,
     [key: string]: any
-  } & Component;
+  } & my$Component;
 
   declare interface my$App {
     data: any;
