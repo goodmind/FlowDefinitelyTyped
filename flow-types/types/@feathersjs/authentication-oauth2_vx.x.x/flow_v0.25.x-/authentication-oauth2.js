@@ -1,18 +1,14 @@
 declare module "@feathersjs/authentication-oauth2" {
   import typeof * as self from "@feathersjs/authentication-oauth2";
 
-  import type {
-    expressWs$Application,
-    Paginated,
-    esri$Service
-  } from "@feathersjs/feathers";
+  import type { Application, Paginated, Service } from "@feathersjs/feathers";
 
-  import type { Express$Request, jwt$RequestHandler } from "express";
+  import type { Request, RequestHandler } from "express";
 
   import type { Profile, Strategy } from "passport";
 
   declare var feathersAuthenticationOAuth2: ((
-    notification$options?: FeathersAuthenticationOAuth2Options
+    options?: FeathersAuthenticationOAuth2Options<>
   ) => () => void) &
     typeof self;
   declare export default typeof feathersAuthenticationOAuth2;
@@ -24,7 +20,7 @@ declare module "@feathersjs/authentication-oauth2" {
     /**
      * The name of the OAuth2 provider
      */
-    skin$name: string;
+    name: string;
 
     /**
      * The OAuth strategy to use
@@ -46,17 +42,17 @@ declare module "@feathersjs/authentication-oauth2" {
     /**
      * Express middleware for handling the oauth callback. Defaults to the built in middleware. todo: needs a proper type
      */
-    panel$handler?: jwt$RequestHandler;
+    handler?: RequestHandler;
 
     /**
      * Express middleware for handling the oauth error callback. Defaults to the built in middleware. todo: needs a proper type
      */
-    errorHandler?: jwt$RequestHandler;
+    errorHandler?: RequestHandler;
 
     /**
      * The response formatter. Defaults the the built in feathers-rest formatter, which returns JSON. todo: needs a proper type
      */
-    formatter?: jwt$RequestHandler;
+    formatter?: RequestHandler;
 
     /**
      * A Verifier class. Defaults to the built-in one but can be a custom one. See below for details.
@@ -73,7 +69,7 @@ declare module "@feathersjs/authentication-oauth2" {
      * The route to register the middleware on. Defaults to `/auth/${name}`
      * This can also be set on app.get('auth') or app.get('authentication')
      */
-    skin$path?: string;
+    path?: string;
 
     /**
      * the entity that you are looking up.
@@ -85,7 +81,7 @@ declare module "@feathersjs/authentication-oauth2" {
      * the service to look up the entity
      * This can also be set on app.get('auth') or app.get('authentication')
      */
-    service: string | esri$Service<ServiceType>;
+    service: string | Service<ServiceType>;
 
     /**
      * whether the request object should be passed to `verify`
@@ -103,7 +99,7 @@ declare module "@feathersjs/authentication-oauth2" {
      * Oauth flag to tell @feathersjs/authentication that this is an oauth authentication
      * Set by feathersOAuth2 to pass into @feathersjs/authentication
      */
-    __oath?: boolean;
+    ___oath?: boolean;
   }
   declare interface FeathersAuthenticationOAuth2Data<T: Profile = Profile> {
     profile: T;
@@ -112,43 +108,40 @@ declare module "@feathersjs/authentication-oauth2" {
   }
   declare export class Verifier<
     DataType = any,
-    OptionType: FeathersAuthenticationOAuth2Options = FeathersAuthenticationOAuth2Options,
+    OptionType: FeathersAuthenticationOAuth2Options<> = FeathersAuthenticationOAuth2Options<>,
     ProfileType: Profile = Profile
   > {
-    constructor(
-      app: expressWs$Application,
-      notification$options: OptionType
-    ): this;
-    notification$options: OptionType;
-    service: esri$Service<breeze$DataType>;
+    constructor(app: Application, options: OptionType): this;
+    options: OptionType;
+    service: Service<DataType>;
     _updateEntity(
       entity: any,
-      main$data: FeathersAuthenticationOAuth2Data<ProfileType>
-    ): promise$Promise<any>;
+      data: FeathersAuthenticationOAuth2Data<ProfileType>
+    ): Promise<any>;
     _createEntity(
-      main$data: FeathersAuthenticationOAuth2Data<ProfileType>
-    ): promise$Promise<any>;
-    _normalizeResult<T>(results: T[] | Paginated<T>): promise$Promise<T>;
+      data: FeathersAuthenticationOAuth2Data<ProfileType>
+    ): Promise<any>;
+    _normalizeResult<T>(results: T[] | Paginated<T>): Promise<T>;
     _setPayloadAndDone(
       entity: any,
       done: (
-        err: EventType$Error | null,
-        url$user: { [key: string]: any },
+        err: Error | null,
+        user: { [key: string]: any },
         info: { [key: string]: any }
       ) => void
-    ): promise$Promise<any>;
+    ): Promise<any>;
     verify(
-      req: Express$Request,
+      req: Request,
       accessToken: string,
       refreshToken: string,
       profile: ProfileType,
       done: (
-        err: EventType$Error | null,
-        url$user: { [key: string]: any },
+        err: Error | null,
+        user: { [key: string]: any },
         info: { [key: string]: any }
       ) => void
     ): void;
   }
-  declare export var defaultHandler: jwt$RequestHandler;
-  declare export var defaultErrorHandler: jwt$RequestHandler;
+  declare export var defaultHandler: RequestHandler;
+  declare export var defaultErrorHandler: RequestHandler;
 }
