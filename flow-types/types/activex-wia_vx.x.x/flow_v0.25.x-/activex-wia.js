@@ -1,608 +1,233 @@
 declare module "activex-wia" {
+  declare var npm$namespace$WIA: {
+    CommandID: typeof WIA$CommandID,
+    EventID: typeof WIA$EventID,
+    FormatID: typeof WIA$FormatID,
+    Miscellaneous: typeof WIA$Miscellaneous,
+    WiaDeviceType: typeof WIA$WiaDeviceType,
+    WiaEventFlag: typeof WIA$WiaEventFlag,
+    WiaImageBias: typeof WIA$WiaImageBias,
+    WiaImageIntent: typeof WIA$WiaImageIntent,
+    WiaImagePropertyType: typeof WIA$WiaImagePropertyType,
+    WiaItemFlag: typeof WIA$WiaItemFlag,
+    WiaPropertyType: typeof WIA$WiaPropertyType,
+    WiaSubType: typeof WIA$WiaSubType,
+    CommonDialog: typeof WIA$CommonDialog,
+    Device: typeof WIA$Device,
+    DeviceCommand: typeof WIA$DeviceCommand,
+    DeviceEvent: typeof WIA$DeviceEvent,
+    DeviceInfo: typeof WIA$DeviceInfo,
+    DeviceManager: typeof WIA$DeviceManager,
+    Filter: typeof WIA$Filter,
+    FilterInfo: typeof WIA$FilterInfo,
+    ImageFile: typeof WIA$ImageFile,
+    ImageProcess: typeof WIA$ImageProcess,
+    Item: typeof WIA$Item,
+    Property: typeof WIA$Property,
+    Rational: typeof WIA$Rational
+  };
+
   /**
    * String versions of globally unique identifiers (GUIDs) that identify common Device and Item commands.
    */
-  declare class WIA$CommandID {
-    constructor(...args: empty): mixed;
-    static +wiaCommandChangeDocument: Class<WIA$CommandID__wiaCommandChangeDocument> &
-      WIA$CommandID__wiaCommandChangeDocument &
-      "{04E725B0-ACAE-11D2-A093-00C04F72DC3C}"; // "{04E725B0-ACAE-11D2-A093-00C04F72DC3C}"
-    static +wiaCommandDeleteAllItems: Class<WIA$CommandID__wiaCommandDeleteAllItems> &
-      WIA$CommandID__wiaCommandDeleteAllItems &
-      "{E208C170-ACAD-11D2-A093-00C04F72DC3C}"; // "{E208C170-ACAD-11D2-A093-00C04F72DC3C}"
-    static +wiaCommandSynchronize: Class<WIA$CommandID__wiaCommandSynchronize> &
-      WIA$CommandID__wiaCommandSynchronize &
-      "{9B26B7B2-ACAD-11D2-A093-00C04F72DC3C}"; // "{9B26B7B2-ACAD-11D2-A093-00C04F72DC3C}"
-    static +wiaCommandTakePicture: Class<WIA$CommandID__wiaCommandTakePicture> &
-      WIA$CommandID__wiaCommandTakePicture &
-      "{AF933CAC-ACAD-11D2-A093-00C04F72DC3C}"; // "{AF933CAC-ACAD-11D2-A093-00C04F72DC3C}"
-    static +wiaCommandUnloadDocument: Class<WIA$CommandID__wiaCommandUnloadDocument> &
-      WIA$CommandID__wiaCommandUnloadDocument &
-      "{1F3B3D8E-ACAE-11D2-A093-00C04F72DC3C}"; // "{1F3B3D8E-ACAE-11D2-A093-00C04F72DC3C}"
-  }
 
-  declare class WIA$CommandID__wiaCommandChangeDocument mixins WIA$CommandID {}
-  declare class WIA$CommandID__wiaCommandDeleteAllItems mixins WIA$CommandID {}
-  declare class WIA$CommandID__wiaCommandSynchronize mixins WIA$CommandID {}
-  declare class WIA$CommandID__wiaCommandTakePicture mixins WIA$CommandID {}
-  declare class WIA$CommandID__wiaCommandUnloadDocument mixins WIA$CommandID {}
+  declare var WIA$CommandID: {|
+    +wiaCommandChangeDocument: "{04E725B0-ACAE-11D2-A093-00C04F72DC3C}", // "{04E725B0-ACAE-11D2-A093-00C04F72DC3C}"
+    +wiaCommandDeleteAllItems: "{E208C170-ACAD-11D2-A093-00C04F72DC3C}", // "{E208C170-ACAD-11D2-A093-00C04F72DC3C}"
+    +wiaCommandSynchronize: "{9B26B7B2-ACAD-11D2-A093-00C04F72DC3C}", // "{9B26B7B2-ACAD-11D2-A093-00C04F72DC3C}"
+    +wiaCommandTakePicture: "{AF933CAC-ACAD-11D2-A093-00C04F72DC3C}", // "{AF933CAC-ACAD-11D2-A093-00C04F72DC3C}"
+    +wiaCommandUnloadDocument: "{1F3B3D8E-ACAE-11D2-A093-00C04F72DC3C}" // "{1F3B3D8E-ACAE-11D2-A093-00C04F72DC3C}"
+  |};
 
   /**
    * String versions of globally unique identifiers (GUIDs) that identify DeviceManager events.
    */
-  declare class WIA$EventID {
-    constructor(...args: empty): mixed;
-    static +wiaEventDeviceConnected: Class<WIA$EventID__wiaEventDeviceConnected> &
-      WIA$EventID__wiaEventDeviceConnected &
-      "{A28BBADE-64B6-11D2-A231-00C04FA31809}"; // "{A28BBADE-64B6-11D2-A231-00C04FA31809}"
-    static +wiaEventDeviceDisconnected: Class<WIA$EventID__wiaEventDeviceDisconnected> &
-      WIA$EventID__wiaEventDeviceDisconnected &
-      "{143E4E83-6497-11D2-A231-00C04FA31809}"; // "{143E4E83-6497-11D2-A231-00C04FA31809}"
-    static +wiaEventItemCreated: Class<WIA$EventID__wiaEventItemCreated> &
-      WIA$EventID__wiaEventItemCreated &
-      "{4C8F4EF5-E14F-11D2-B326-00C04F68CE61}"; // "{4C8F4EF5-E14F-11D2-B326-00C04F68CE61}"
-    static +wiaEventItemDeleted: Class<WIA$EventID__wiaEventItemDeleted> &
-      WIA$EventID__wiaEventItemDeleted &
-      "{1D22A559-E14F-11D2-B326-00C04F68CE61}"; // "{1D22A559-E14F-11D2-B326-00C04F68CE61}"
-    static +wiaEventScanEmailImage: Class<WIA$EventID__wiaEventScanEmailImage> &
-      WIA$EventID__wiaEventScanEmailImage &
-      "{C686DCEE-54F2-419E-9A27-2FC7F2E98F9E}"; // "{C686DCEE-54F2-419E-9A27-2FC7F2E98F9E}"
-    static +wiaEventScanFaxImage: Class<WIA$EventID__wiaEventScanFaxImage> &
-      WIA$EventID__wiaEventScanFaxImage &
-      "{C00EB793-8C6E-11D2-977A-0000F87A926F}"; // "{C00EB793-8C6E-11D2-977A-0000F87A926F}"
-    static +wiaEventScanFilmImage: Class<WIA$EventID__wiaEventScanFilmImage> &
-      WIA$EventID__wiaEventScanFilmImage &
-      "{9B2B662C-6185-438C-B68B-E39EE25E71CB}"; // "{9B2B662C-6185-438C-B68B-E39EE25E71CB}"
-    static +wiaEventScanImage: Class<WIA$EventID__wiaEventScanImage> &
-      WIA$EventID__wiaEventScanImage &
-      "{A6C5A715-8C6E-11D2-977A-0000F87A926F}"; // "{A6C5A715-8C6E-11D2-977A-0000F87A926F}"
-    static +wiaEventScanImage2: Class<WIA$EventID__wiaEventScanImage2> &
-      WIA$EventID__wiaEventScanImage2 &
-      "{FC4767C1-C8B3-48A2-9CFA-2E90CB3D3590}"; // "{FC4767C1-C8B3-48A2-9CFA-2E90CB3D3590}"
-    static +wiaEventScanImage3: Class<WIA$EventID__wiaEventScanImage3> &
-      WIA$EventID__wiaEventScanImage3 &
-      "{154E27BE-B617-4653-ACC5-0FD7BD4C65CE}"; // "{154E27BE-B617-4653-ACC5-0FD7BD4C65CE}"
-    static +wiaEventScanImage4: Class<WIA$EventID__wiaEventScanImage4> &
-      WIA$EventID__wiaEventScanImage4 &
-      "{A65B704A-7F3C-4447-A75D-8A26DFCA1FDF}"; // "{A65B704A-7F3C-4447-A75D-8A26DFCA1FDF}"
-    static +wiaEventScanOCRImage: Class<WIA$EventID__wiaEventScanOCRImage> &
-      WIA$EventID__wiaEventScanOCRImage &
-      "{9D095B89-37D6-4877-AFED-62A297DC6DBE}"; // "{9D095B89-37D6-4877-AFED-62A297DC6DBE}"
-    static +wiaEventScanPrintImage: Class<WIA$EventID__wiaEventScanPrintImage> &
-      WIA$EventID__wiaEventScanPrintImage &
-      "{B441F425-8C6E-11D2-977A-0000F87A926F}"; // "{B441F425-8C6E-11D2-977A-0000F87A926F}"
-  }
 
-  declare class WIA$EventID__wiaEventDeviceConnected mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventDeviceDisconnected mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventItemCreated mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventItemDeleted mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanEmailImage mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanFaxImage mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanFilmImage mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanImage mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanImage2 mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanImage3 mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanImage4 mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanOCRImage mixins WIA$EventID {}
-  declare class WIA$EventID__wiaEventScanPrintImage mixins WIA$EventID {}
+  declare var WIA$EventID: {|
+    +wiaEventDeviceConnected: "{A28BBADE-64B6-11D2-A231-00C04FA31809}", // "{A28BBADE-64B6-11D2-A231-00C04FA31809}"
+    +wiaEventDeviceDisconnected: "{143E4E83-6497-11D2-A231-00C04FA31809}", // "{143E4E83-6497-11D2-A231-00C04FA31809}"
+    +wiaEventItemCreated: "{4C8F4EF5-E14F-11D2-B326-00C04F68CE61}", // "{4C8F4EF5-E14F-11D2-B326-00C04F68CE61}"
+    +wiaEventItemDeleted: "{1D22A559-E14F-11D2-B326-00C04F68CE61}", // "{1D22A559-E14F-11D2-B326-00C04F68CE61}"
+    +wiaEventScanEmailImage: "{C686DCEE-54F2-419E-9A27-2FC7F2E98F9E}", // "{C686DCEE-54F2-419E-9A27-2FC7F2E98F9E}"
+    +wiaEventScanFaxImage: "{C00EB793-8C6E-11D2-977A-0000F87A926F}", // "{C00EB793-8C6E-11D2-977A-0000F87A926F}"
+    +wiaEventScanFilmImage: "{9B2B662C-6185-438C-B68B-E39EE25E71CB}", // "{9B2B662C-6185-438C-B68B-E39EE25E71CB}"
+    +wiaEventScanImage: "{A6C5A715-8C6E-11D2-977A-0000F87A926F}", // "{A6C5A715-8C6E-11D2-977A-0000F87A926F}"
+    +wiaEventScanImage2: "{FC4767C1-C8B3-48A2-9CFA-2E90CB3D3590}", // "{FC4767C1-C8B3-48A2-9CFA-2E90CB3D3590}"
+    +wiaEventScanImage3: "{154E27BE-B617-4653-ACC5-0FD7BD4C65CE}", // "{154E27BE-B617-4653-ACC5-0FD7BD4C65CE}"
+    +wiaEventScanImage4: "{A65B704A-7F3C-4447-A75D-8A26DFCA1FDF}", // "{A65B704A-7F3C-4447-A75D-8A26DFCA1FDF}"
+    +wiaEventScanOCRImage: "{9D095B89-37D6-4877-AFED-62A297DC6DBE}", // "{9D095B89-37D6-4877-AFED-62A297DC6DBE}"
+    +wiaEventScanPrintImage: "{B441F425-8C6E-11D2-977A-0000F87A926F}" // "{B441F425-8C6E-11D2-977A-0000F87A926F}"
+  |};
 
   /**
    * String versions of globally unique identifiers (GUIDs) that indicate the file format of an image.
    */
-  declare class WIA$FormatID {
-    constructor(...args: empty): mixed;
-    static +wiaFormatBMP: Class<WIA$FormatID__wiaFormatBMP> &
-      WIA$FormatID__wiaFormatBMP &
-      "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}"; // "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}"
-    static +wiaFormatGIF: Class<WIA$FormatID__wiaFormatGIF> &
-      WIA$FormatID__wiaFormatGIF &
-      "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}"; // "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}"
-    static +wiaFormatJPEG: Class<WIA$FormatID__wiaFormatJPEG> &
-      WIA$FormatID__wiaFormatJPEG &
-      "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}"; // "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}"
-    static +wiaFormatPNG: Class<WIA$FormatID__wiaFormatPNG> &
-      WIA$FormatID__wiaFormatPNG &
-      "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}"; // "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}"
-    static +wiaFormatTIFF: Class<WIA$FormatID__wiaFormatTIFF> &
-      WIA$FormatID__wiaFormatTIFF &
-      "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}"; // "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}"
-  }
 
-  declare class WIA$FormatID__wiaFormatBMP mixins WIA$FormatID {}
-  declare class WIA$FormatID__wiaFormatGIF mixins WIA$FormatID {}
-  declare class WIA$FormatID__wiaFormatJPEG mixins WIA$FormatID {}
-  declare class WIA$FormatID__wiaFormatPNG mixins WIA$FormatID {}
-  declare class WIA$FormatID__wiaFormatTIFF mixins WIA$FormatID {}
+  declare var WIA$FormatID: {|
+    +wiaFormatBMP: "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}", // "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}"
+    +wiaFormatGIF: "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}", // "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}"
+    +wiaFormatJPEG: "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}", // "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}"
+    +wiaFormatPNG: "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}", // "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}"
+    +wiaFormatTIFF: "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}" // "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}"
+  |};
 
   /**
    * Miscellaneous string constants
    */
-  declare class WIA$Miscellaneous {
-    constructor(...args: empty): mixed;
-    static +wiaAnyDeviceID: Class<WIA$Miscellaneous__wiaAnyDeviceID> &
-      WIA$Miscellaneous__wiaAnyDeviceID &
-      "*"; // "*"
-    static +wiaIDUnknown: Class<WIA$Miscellaneous__wiaIDUnknown> &
-      WIA$Miscellaneous__wiaIDUnknown &
-      "{00000000-0000-0000-0000-000000000000}"; // "{00000000-0000-0000-0000-000000000000}"
-  }
 
-  declare class WIA$Miscellaneous__wiaAnyDeviceID mixins WIA$Miscellaneous {}
-  declare class WIA$Miscellaneous__wiaIDUnknown mixins WIA$Miscellaneous {}
+  declare var WIA$Miscellaneous: {|
+    +wiaAnyDeviceID: "*", // "*"
+    +wiaIDUnknown: "{00000000-0000-0000-0000-000000000000}" // "{00000000-0000-0000-0000-000000000000}"
+  |};
 
   /**
    * The WiaDeviceType enumeration specifies the type of device attached to a user's computer. Use the Type property on the DeviceInfo object or the Device
    * object to obtain these values from the device.
    */
-  declare class WIA$WiaDeviceType {
-    constructor(...args: empty): mixed;
-    static +CameraDeviceType: Class<WIA$WiaDeviceType__CameraDeviceType> &
-      WIA$WiaDeviceType__CameraDeviceType &
-      2; // 2
-    static +ScannerDeviceType: Class<WIA$WiaDeviceType__ScannerDeviceType> &
-      WIA$WiaDeviceType__ScannerDeviceType &
-      1; // 1
-    static +UnspecifiedDeviceType: Class<WIA$WiaDeviceType__UnspecifiedDeviceType> &
-      WIA$WiaDeviceType__UnspecifiedDeviceType &
-      0; // 0
-    static +VideoDeviceType: Class<WIA$WiaDeviceType__VideoDeviceType> &
-      WIA$WiaDeviceType__VideoDeviceType &
-      3; // 3
-  }
 
-  declare class WIA$WiaDeviceType__CameraDeviceType mixins WIA$WiaDeviceType {}
-  declare class WIA$WiaDeviceType__ScannerDeviceType mixins WIA$WiaDeviceType {}
-  declare class WIA$WiaDeviceType__UnspecifiedDeviceType
-    mixins WIA$WiaDeviceType {}
-  declare class WIA$WiaDeviceType__VideoDeviceType mixins WIA$WiaDeviceType {}
+  declare var WIA$WiaDeviceType: {|
+    +CameraDeviceType: 2, // 2
+    +ScannerDeviceType: 1, // 1
+    +UnspecifiedDeviceType: 0, // 0
+    +VideoDeviceType: 3 // 3
+  |};
 
   /**
    * A DeviceEvent's type is composed of bits from the WiaEventFlags enumeration. You can test a DeviceEvent's type by using the AND operation with
    * DeviceEvent.Type and a member from the WiaEventFlags enumeration.
    */
-  declare class WIA$WiaEventFlag {
-    constructor(...args: empty): mixed;
-    static +ActionEvent: Class<WIA$WiaEventFlag__ActionEvent> &
-      WIA$WiaEventFlag__ActionEvent &
-      2; // 2
-    static +NotificationEvent: Class<WIA$WiaEventFlag__NotificationEvent> &
-      WIA$WiaEventFlag__NotificationEvent &
-      1; // 1
-  }
 
-  declare class WIA$WiaEventFlag__ActionEvent mixins WIA$WiaEventFlag {}
-  declare class WIA$WiaEventFlag__NotificationEvent mixins WIA$WiaEventFlag {}
+  declare var WIA$WiaEventFlag: {|
+    +ActionEvent: 2, // 2
+    +NotificationEvent: 1 // 1
+  |};
 
   /**
    * The WiaImageBias enumeration helps specify what type of data the image is intended to represent.
    */
-  declare class WIA$WiaImageBias {
-    constructor(...args: empty): mixed;
-    static +MaximizeQuality: Class<WIA$WiaImageBias__MaximizeQuality> &
-      WIA$WiaImageBias__MaximizeQuality &
-      131072; // 131072
-    static +MinimizeSize: Class<WIA$WiaImageBias__MinimizeSize> &
-      WIA$WiaImageBias__MinimizeSize &
-      65536; // 65536
-  }
 
-  declare class WIA$WiaImageBias__MaximizeQuality mixins WIA$WiaImageBias {}
-  declare class WIA$WiaImageBias__MinimizeSize mixins WIA$WiaImageBias {}
+  declare var WIA$WiaImageBias: {|
+    +MaximizeQuality: 131072, // 131072
+    +MinimizeSize: 65536 // 65536
+  |};
 
   /**
    * The WiaImageIntent enumeration helps specify what type of data the image is intended to represent.
    */
-  declare class WIA$WiaImageIntent {
-    constructor(...args: empty): mixed;
-    static +ColorIntent: Class<WIA$WiaImageIntent__ColorIntent> &
-      WIA$WiaImageIntent__ColorIntent &
-      1; // 1
-    static +GrayscaleIntent: Class<WIA$WiaImageIntent__GrayscaleIntent> &
-      WIA$WiaImageIntent__GrayscaleIntent &
-      2; // 2
-    static +TextIntent: Class<WIA$WiaImageIntent__TextIntent> &
-      WIA$WiaImageIntent__TextIntent &
-      4; // 4
-    static +UnspecifiedIntent: Class<WIA$WiaImageIntent__UnspecifiedIntent> &
-      WIA$WiaImageIntent__UnspecifiedIntent &
-      0; // 0
-  }
 
-  declare class WIA$WiaImageIntent__ColorIntent mixins WIA$WiaImageIntent {}
-  declare class WIA$WiaImageIntent__GrayscaleIntent mixins WIA$WiaImageIntent {}
-  declare class WIA$WiaImageIntent__TextIntent mixins WIA$WiaImageIntent {}
-  declare class WIA$WiaImageIntent__UnspecifiedIntent
-    mixins WIA$WiaImageIntent {}
+  declare var WIA$WiaImageIntent: {|
+    +ColorIntent: 1, // 1
+    +GrayscaleIntent: 2, // 2
+    +TextIntent: 4, // 4
+    +UnspecifiedIntent: 0 // 0
+  |};
 
   /**
    * The WiaImagePropertyType enumeration specifies the type of the value of an image property. Image properties can be found in the Properties collection
    * of an ImageFile object.
    */
-  declare class WIA$WiaImagePropertyType {
-    constructor(...args: empty): mixed;
-    static +ByteImagePropertyType: Class<WIA$WiaImagePropertyType__ByteImagePropertyType> &
-      WIA$WiaImagePropertyType__ByteImagePropertyType &
-      1001; // 1001
-    static +LongImagePropertyType: Class<WIA$WiaImagePropertyType__LongImagePropertyType> &
-      WIA$WiaImagePropertyType__LongImagePropertyType &
-      1004; // 1004
-    static +RationalImagePropertyType: Class<WIA$WiaImagePropertyType__RationalImagePropertyType> &
-      WIA$WiaImagePropertyType__RationalImagePropertyType &
-      1006; // 1006
-    static +StringImagePropertyType: Class<WIA$WiaImagePropertyType__StringImagePropertyType> &
-      WIA$WiaImagePropertyType__StringImagePropertyType &
-      1002; // 1002
-    static +UndefinedImagePropertyType: Class<WIA$WiaImagePropertyType__UndefinedImagePropertyType> &
-      WIA$WiaImagePropertyType__UndefinedImagePropertyType &
-      1000; // 1000
-    static +UnsignedIntegerImagePropertyType: Class<WIA$WiaImagePropertyType__UnsignedIntegerImagePropertyType> &
-      WIA$WiaImagePropertyType__UnsignedIntegerImagePropertyType &
-      1003; // 1003
-    static +UnsignedLongImagePropertyType: Class<WIA$WiaImagePropertyType__UnsignedLongImagePropertyType> &
-      WIA$WiaImagePropertyType__UnsignedLongImagePropertyType &
-      1005; // 1005
-    static +UnsignedRationalImagePropertyType: Class<WIA$WiaImagePropertyType__UnsignedRationalImagePropertyType> &
-      WIA$WiaImagePropertyType__UnsignedRationalImagePropertyType &
-      1007; // 1007
-    static +VectorOfBytesImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfBytesImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfBytesImagePropertyType &
-      1101; // 1101
-    static +VectorOfLongsImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfLongsImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfLongsImagePropertyType &
-      1103; // 1103
-    static +VectorOfRationalsImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfRationalsImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfRationalsImagePropertyType &
-      1105; // 1105
-    static +VectorOfUndefinedImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfUndefinedImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfUndefinedImagePropertyType &
-      1100; // 1100
-    static +VectorOfUnsignedIntegersImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfUnsignedIntegersImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfUnsignedIntegersImagePropertyType &
-      1102; // 1102
-    static +VectorOfUnsignedLongsImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfUnsignedLongsImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfUnsignedLongsImagePropertyType &
-      1104; // 1104
-    static +VectorOfUnsignedRationalsImagePropertyType: Class<WIA$WiaImagePropertyType__VectorOfUnsignedRationalsImagePropertyType> &
-      WIA$WiaImagePropertyType__VectorOfUnsignedRationalsImagePropertyType &
-      1106; // 1106
-  }
 
-  declare class WIA$WiaImagePropertyType__ByteImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__LongImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__RationalImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__StringImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__UndefinedImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__UnsignedIntegerImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__UnsignedLongImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__UnsignedRationalImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfBytesImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfLongsImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfRationalsImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfUndefinedImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfUnsignedIntegersImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfUnsignedLongsImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
-  declare class WIA$WiaImagePropertyType__VectorOfUnsignedRationalsImagePropertyType
-    mixins WIA$WiaImagePropertyType {}
+  declare var WIA$WiaImagePropertyType: {|
+    +ByteImagePropertyType: 1001, // 1001
+    +LongImagePropertyType: 1004, // 1004
+    +RationalImagePropertyType: 1006, // 1006
+    +StringImagePropertyType: 1002, // 1002
+    +UndefinedImagePropertyType: 1000, // 1000
+    +UnsignedIntegerImagePropertyType: 1003, // 1003
+    +UnsignedLongImagePropertyType: 1005, // 1005
+    +UnsignedRationalImagePropertyType: 1007, // 1007
+    +VectorOfBytesImagePropertyType: 1101, // 1101
+    +VectorOfLongsImagePropertyType: 1103, // 1103
+    +VectorOfRationalsImagePropertyType: 1105, // 1105
+    +VectorOfUndefinedImagePropertyType: 1100, // 1100
+    +VectorOfUnsignedIntegersImagePropertyType: 1102, // 1102
+    +VectorOfUnsignedLongsImagePropertyType: 1104, // 1104
+    +VectorOfUnsignedRationalsImagePropertyType: 1106 // 1106
+  |};
 
   /**
    * An Item's type is composed of bits from the WiaItemFlags enumeration. You can test an Item's type by using the AND operation with
    * Item.Properties("Item Flags") and a member from the WiaItemFlags enumeration.
    */
-  declare class WIA$WiaItemFlag {
-    constructor(...args: empty): mixed;
-    static +AnalyzeItemFlag: Class<WIA$WiaItemFlag__AnalyzeItemFlag> &
-      WIA$WiaItemFlag__AnalyzeItemFlag &
-      16; // 16
-    static +AudioItemFlag: Class<WIA$WiaItemFlag__AudioItemFlag> &
-      WIA$WiaItemFlag__AudioItemFlag &
-      32; // 32
-    static +BurstItemFlag: Class<WIA$WiaItemFlag__BurstItemFlag> &
-      WIA$WiaItemFlag__BurstItemFlag &
-      2048; // 2048
-    static +DeletedItemFlag: Class<WIA$WiaItemFlag__DeletedItemFlag> &
-      WIA$WiaItemFlag__DeletedItemFlag &
-      128; // 128
-    static +DeviceItemFlag: Class<WIA$WiaItemFlag__DeviceItemFlag> &
-      WIA$WiaItemFlag__DeviceItemFlag &
-      64; // 64
-    static +DisconnectedItemFlag: Class<WIA$WiaItemFlag__DisconnectedItemFlag> &
-      WIA$WiaItemFlag__DisconnectedItemFlag &
-      256; // 256
-    static +FileItemFlag: Class<WIA$WiaItemFlag__FileItemFlag> &
-      WIA$WiaItemFlag__FileItemFlag &
-      2; // 2
-    static +FolderItemFlag: Class<WIA$WiaItemFlag__FolderItemFlag> &
-      WIA$WiaItemFlag__FolderItemFlag &
-      4; // 4
-    static +FreeItemFlag: Class<WIA$WiaItemFlag__FreeItemFlag> &
-      WIA$WiaItemFlag__FreeItemFlag &
-      0; // 0
-    static +GeneratedItemFlag: Class<WIA$WiaItemFlag__GeneratedItemFlag> &
-      WIA$WiaItemFlag__GeneratedItemFlag &
-      16384; // 16384
-    static +HasAttachmentsItemFlag: Class<WIA$WiaItemFlag__HasAttachmentsItemFlag> &
-      WIA$WiaItemFlag__HasAttachmentsItemFlag &
-      32768; // 32768
-    static +HPanoramaItemFlag: Class<WIA$WiaItemFlag__HPanoramaItemFlag> &
-      WIA$WiaItemFlag__HPanoramaItemFlag &
-      512; // 512
-    static +ImageItemFlag: Class<WIA$WiaItemFlag__ImageItemFlag> &
-      WIA$WiaItemFlag__ImageItemFlag &
-      1; // 1
-    static +RemovedItemFlag: Class<WIA$WiaItemFlag__RemovedItemFlag> &
-      WIA$WiaItemFlag__RemovedItemFlag &
-      -2147483648; // -2147483648
-    static +RootItemFlag: Class<WIA$WiaItemFlag__RootItemFlag> &
-      WIA$WiaItemFlag__RootItemFlag &
-      8; // 8
-    static +StorageItemFlag: Class<WIA$WiaItemFlag__StorageItemFlag> &
-      WIA$WiaItemFlag__StorageItemFlag &
-      4096; // 4096
-    static +TransferItemFlag: Class<WIA$WiaItemFlag__TransferItemFlag> &
-      WIA$WiaItemFlag__TransferItemFlag &
-      8192; // 8192
-    static +VideoItemFlag: Class<WIA$WiaItemFlag__VideoItemFlag> &
-      WIA$WiaItemFlag__VideoItemFlag &
-      65536; // 65536
-    static +VPanoramaItemFlag: Class<WIA$WiaItemFlag__VPanoramaItemFlag> &
-      WIA$WiaItemFlag__VPanoramaItemFlag &
-      1024; // 1024
-  }
 
-  declare class WIA$WiaItemFlag__AnalyzeItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__AudioItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__BurstItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__DeletedItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__DeviceItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__DisconnectedItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__FileItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__FolderItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__FreeItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__GeneratedItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__HasAttachmentsItemFlag
-    mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__HPanoramaItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__ImageItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__RemovedItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__RootItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__StorageItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__TransferItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__VideoItemFlag mixins WIA$WiaItemFlag {}
-  declare class WIA$WiaItemFlag__VPanoramaItemFlag mixins WIA$WiaItemFlag {}
+  declare var WIA$WiaItemFlag: {|
+    +AnalyzeItemFlag: 16, // 16
+    +AudioItemFlag: 32, // 32
+    +BurstItemFlag: 2048, // 2048
+    +DeletedItemFlag: 128, // 128
+    +DeviceItemFlag: 64, // 64
+    +DisconnectedItemFlag: 256, // 256
+    +FileItemFlag: 2, // 2
+    +FolderItemFlag: 4, // 4
+    +FreeItemFlag: 0, // 0
+    +GeneratedItemFlag: 16384, // 16384
+    +HasAttachmentsItemFlag: 32768, // 32768
+    +HPanoramaItemFlag: 512, // 512
+    +ImageItemFlag: 1, // 1
+    +RemovedItemFlag: -2147483648, // -2147483648
+    +RootItemFlag: 8, // 8
+    +StorageItemFlag: 4096, // 4096
+    +TransferItemFlag: 8192, // 8192
+    +VideoItemFlag: 65536, // 65536
+    +VPanoramaItemFlag: 1024 // 1024
+  |};
 
   /**
    * The WiaPropertyType enumeration specifies the type of the value of an item property. Item properties can be found in the Properties collection of a
    * Device or Item object.
    */
-  declare class WIA$WiaPropertyType {
-    constructor(...args: empty): mixed;
-    static +BooleanPropertyType: Class<WIA$WiaPropertyType__BooleanPropertyType> &
-      WIA$WiaPropertyType__BooleanPropertyType &
-      1; // 1
-    static +BytePropertyType: Class<WIA$WiaPropertyType__BytePropertyType> &
-      WIA$WiaPropertyType__BytePropertyType &
-      2; // 2
-    static +ClassIDPropertyType: Class<WIA$WiaPropertyType__ClassIDPropertyType> &
-      WIA$WiaPropertyType__ClassIDPropertyType &
-      15; // 15
-    static +CurrencyPropertyType: Class<WIA$WiaPropertyType__CurrencyPropertyType> &
-      WIA$WiaPropertyType__CurrencyPropertyType &
-      12; // 12
-    static +DatePropertyType: Class<WIA$WiaPropertyType__DatePropertyType> &
-      WIA$WiaPropertyType__DatePropertyType &
-      13; // 13
-    static +DoublePropertyType: Class<WIA$WiaPropertyType__DoublePropertyType> &
-      WIA$WiaPropertyType__DoublePropertyType &
-      11; // 11
-    static +ErrorCodePropertyType: Class<WIA$WiaPropertyType__ErrorCodePropertyType> &
-      WIA$WiaPropertyType__ErrorCodePropertyType &
-      7; // 7
-    static +FileTimePropertyType: Class<WIA$WiaPropertyType__FileTimePropertyType> &
-      WIA$WiaPropertyType__FileTimePropertyType &
-      14; // 14
-    static +HandlePropertyType: Class<WIA$WiaPropertyType__HandlePropertyType> &
-      WIA$WiaPropertyType__HandlePropertyType &
-      18; // 18
-    static +IntegerPropertyType: Class<WIA$WiaPropertyType__IntegerPropertyType> &
-      WIA$WiaPropertyType__IntegerPropertyType &
-      3; // 3
-    static +LargeIntegerPropertyType: Class<WIA$WiaPropertyType__LargeIntegerPropertyType> &
-      WIA$WiaPropertyType__LargeIntegerPropertyType &
-      8; // 8
-    static +LongPropertyType: Class<WIA$WiaPropertyType__LongPropertyType> &
-      WIA$WiaPropertyType__LongPropertyType &
-      5; // 5
-    static +ObjectPropertyType: Class<WIA$WiaPropertyType__ObjectPropertyType> &
-      WIA$WiaPropertyType__ObjectPropertyType &
-      17; // 17
-    static +SinglePropertyType: Class<WIA$WiaPropertyType__SinglePropertyType> &
-      WIA$WiaPropertyType__SinglePropertyType &
-      10; // 10
-    static +StringPropertyType: Class<WIA$WiaPropertyType__StringPropertyType> &
-      WIA$WiaPropertyType__StringPropertyType &
-      16; // 16
-    static +UnsignedIntegerPropertyType: Class<WIA$WiaPropertyType__UnsignedIntegerPropertyType> &
-      WIA$WiaPropertyType__UnsignedIntegerPropertyType &
-      4; // 4
-    static +UnsignedLargeIntegerPropertyType: Class<WIA$WiaPropertyType__UnsignedLargeIntegerPropertyType> &
-      WIA$WiaPropertyType__UnsignedLargeIntegerPropertyType &
-      9; // 9
-    static +UnsignedLongPropertyType: Class<WIA$WiaPropertyType__UnsignedLongPropertyType> &
-      WIA$WiaPropertyType__UnsignedLongPropertyType &
-      6; // 6
-    static +UnsupportedPropertyType: Class<WIA$WiaPropertyType__UnsupportedPropertyType> &
-      WIA$WiaPropertyType__UnsupportedPropertyType &
-      0; // 0
-    static +VariantPropertyType: Class<WIA$WiaPropertyType__VariantPropertyType> &
-      WIA$WiaPropertyType__VariantPropertyType &
-      19; // 19
-    static +VectorOfBooleansPropertyType: Class<WIA$WiaPropertyType__VectorOfBooleansPropertyType> &
-      WIA$WiaPropertyType__VectorOfBooleansPropertyType &
-      101; // 101
-    static +VectorOfBytesPropertyType: Class<WIA$WiaPropertyType__VectorOfBytesPropertyType> &
-      WIA$WiaPropertyType__VectorOfBytesPropertyType &
-      102; // 102
-    static +VectorOfClassIDsPropertyType: Class<WIA$WiaPropertyType__VectorOfClassIDsPropertyType> &
-      WIA$WiaPropertyType__VectorOfClassIDsPropertyType &
-      115; // 115
-    static +VectorOfCurrenciesPropertyType: Class<WIA$WiaPropertyType__VectorOfCurrenciesPropertyType> &
-      WIA$WiaPropertyType__VectorOfCurrenciesPropertyType &
-      112; // 112
-    static +VectorOfDatesPropertyType: Class<WIA$WiaPropertyType__VectorOfDatesPropertyType> &
-      WIA$WiaPropertyType__VectorOfDatesPropertyType &
-      113; // 113
-    static +VectorOfDoublesPropertyType: Class<WIA$WiaPropertyType__VectorOfDoublesPropertyType> &
-      WIA$WiaPropertyType__VectorOfDoublesPropertyType &
-      111; // 111
-    static +VectorOfErrorCodesPropertyType: Class<WIA$WiaPropertyType__VectorOfErrorCodesPropertyType> &
-      WIA$WiaPropertyType__VectorOfErrorCodesPropertyType &
-      107; // 107
-    static +VectorOfFileTimesPropertyType: Class<WIA$WiaPropertyType__VectorOfFileTimesPropertyType> &
-      WIA$WiaPropertyType__VectorOfFileTimesPropertyType &
-      114; // 114
-    static +VectorOfIntegersPropertyType: Class<WIA$WiaPropertyType__VectorOfIntegersPropertyType> &
-      WIA$WiaPropertyType__VectorOfIntegersPropertyType &
-      103; // 103
-    static +VectorOfLargeIntegersPropertyType: Class<WIA$WiaPropertyType__VectorOfLargeIntegersPropertyType> &
-      WIA$WiaPropertyType__VectorOfLargeIntegersPropertyType &
-      108; // 108
-    static +VectorOfLongsPropertyType: Class<WIA$WiaPropertyType__VectorOfLongsPropertyType> &
-      WIA$WiaPropertyType__VectorOfLongsPropertyType &
-      105; // 105
-    static +VectorOfSinglesPropertyType: Class<WIA$WiaPropertyType__VectorOfSinglesPropertyType> &
-      WIA$WiaPropertyType__VectorOfSinglesPropertyType &
-      110; // 110
-    static +VectorOfStringsPropertyType: Class<WIA$WiaPropertyType__VectorOfStringsPropertyType> &
-      WIA$WiaPropertyType__VectorOfStringsPropertyType &
-      116; // 116
-    static +VectorOfUnsignedIntegersPropertyType: Class<WIA$WiaPropertyType__VectorOfUnsignedIntegersPropertyType> &
-      WIA$WiaPropertyType__VectorOfUnsignedIntegersPropertyType &
-      104; // 104
-    static +VectorOfUnsignedLargeIntegersPropertyType: Class<WIA$WiaPropertyType__VectorOfUnsignedLargeIntegersPropertyType> &
-      WIA$WiaPropertyType__VectorOfUnsignedLargeIntegersPropertyType &
-      109; // 109
-    static +VectorOfUnsignedLongsPropertyType: Class<WIA$WiaPropertyType__VectorOfUnsignedLongsPropertyType> &
-      WIA$WiaPropertyType__VectorOfUnsignedLongsPropertyType &
-      106; // 106
-    static +VectorOfVariantsPropertyType: Class<WIA$WiaPropertyType__VectorOfVariantsPropertyType> &
-      WIA$WiaPropertyType__VectorOfVariantsPropertyType &
-      119; // 119
-  }
 
-  declare class WIA$WiaPropertyType__BooleanPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__BytePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__ClassIDPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__CurrencyPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__DatePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__DoublePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__ErrorCodePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__FileTimePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__HandlePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__IntegerPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__LargeIntegerPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__LongPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__ObjectPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__SinglePropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__StringPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__UnsignedIntegerPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__UnsignedLargeIntegerPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__UnsignedLongPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__UnsupportedPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VariantPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfBooleansPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfBytesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfClassIDsPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfCurrenciesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfDatesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfDoublesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfErrorCodesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfFileTimesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfIntegersPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfLargeIntegersPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfLongsPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfSinglesPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfStringsPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfUnsignedIntegersPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfUnsignedLargeIntegersPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfUnsignedLongsPropertyType
-    mixins WIA$WiaPropertyType {}
-  declare class WIA$WiaPropertyType__VectorOfVariantsPropertyType
-    mixins WIA$WiaPropertyType {}
+  declare var WIA$WiaPropertyType: {|
+    +BooleanPropertyType: 1, // 1
+    +BytePropertyType: 2, // 2
+    +ClassIDPropertyType: 15, // 15
+    +CurrencyPropertyType: 12, // 12
+    +DatePropertyType: 13, // 13
+    +DoublePropertyType: 11, // 11
+    +ErrorCodePropertyType: 7, // 7
+    +FileTimePropertyType: 14, // 14
+    +HandlePropertyType: 18, // 18
+    +IntegerPropertyType: 3, // 3
+    +LargeIntegerPropertyType: 8, // 8
+    +LongPropertyType: 5, // 5
+    +ObjectPropertyType: 17, // 17
+    +SinglePropertyType: 10, // 10
+    +StringPropertyType: 16, // 16
+    +UnsignedIntegerPropertyType: 4, // 4
+    +UnsignedLargeIntegerPropertyType: 9, // 9
+    +UnsignedLongPropertyType: 6, // 6
+    +UnsupportedPropertyType: 0, // 0
+    +VariantPropertyType: 19, // 19
+    +VectorOfBooleansPropertyType: 101, // 101
+    +VectorOfBytesPropertyType: 102, // 102
+    +VectorOfClassIDsPropertyType: 115, // 115
+    +VectorOfCurrenciesPropertyType: 112, // 112
+    +VectorOfDatesPropertyType: 113, // 113
+    +VectorOfDoublesPropertyType: 111, // 111
+    +VectorOfErrorCodesPropertyType: 107, // 107
+    +VectorOfFileTimesPropertyType: 114, // 114
+    +VectorOfIntegersPropertyType: 103, // 103
+    +VectorOfLargeIntegersPropertyType: 108, // 108
+    +VectorOfLongsPropertyType: 105, // 105
+    +VectorOfSinglesPropertyType: 110, // 110
+    +VectorOfStringsPropertyType: 116, // 116
+    +VectorOfUnsignedIntegersPropertyType: 104, // 104
+    +VectorOfUnsignedLargeIntegersPropertyType: 109, // 109
+    +VectorOfUnsignedLongsPropertyType: 106, // 106
+    +VectorOfVariantsPropertyType: 119 // 119
+  |};
 
   /**
    * The WiaSubType enumeration specifies more detail about the property value. Use the SubType property on the Property object to obtain these values for
    * the property.
    */
-  declare class WIA$WiaSubType {
-    constructor(...args: empty): mixed;
-    static +FlagSubType: Class<WIA$WiaSubType__FlagSubType> &
-      WIA$WiaSubType__FlagSubType &
-      3; // 3
-    static +ListSubType: Class<WIA$WiaSubType__ListSubType> &
-      WIA$WiaSubType__ListSubType &
-      2; // 2
-    static +RangeSubType: Class<WIA$WiaSubType__RangeSubType> &
-      WIA$WiaSubType__RangeSubType &
-      1; // 1
-    static +UnspecifiedSubType: Class<WIA$WiaSubType__UnspecifiedSubType> &
-      WIA$WiaSubType__UnspecifiedSubType &
-      0; // 0
-  }
 
-  declare class WIA$WiaSubType__FlagSubType mixins WIA$WiaSubType {}
-  declare class WIA$WiaSubType__ListSubType mixins WIA$WiaSubType {}
-  declare class WIA$WiaSubType__RangeSubType mixins WIA$WiaSubType {}
-  declare class WIA$WiaSubType__UnspecifiedSubType mixins WIA$WiaSubType {}
+  declare var WIA$WiaSubType: {|
+    +FlagSubType: 3, // 3
+    +ListSubType: 2, // 2
+    +RangeSubType: 1, // 1
+    +UnspecifiedSubType: 0 // 0
+  |};
 
   /**
    * The CommonDialog control is an invisible-at-runtime control that contains all the methods that display a User Interface. A CommonDialog control can be
@@ -623,10 +248,10 @@ declare module "activex-wia" {
      * @param boolean [CancelError=false]
      */
     ShowAcquireImage(
-      DeviceType?: WIA$WiaDeviceType,
-      Intent?: WIA$WiaImageIntent,
-      Bias?: WIA$WiaImageBias,
-      WIA$FormatID?: string,
+      DeviceType?: $Values<typeof WIA$WiaDeviceType>,
+      Intent?: $Values<typeof WIA$WiaImageIntent>,
+      Bias?: $Values<typeof WIA$WiaImageBias>,
+      FormatID?: string,
       AlwaysSelectDevice?: boolean,
       UseCommonUI?: boolean,
       CancelError?: boolean
@@ -635,19 +260,19 @@ declare module "activex-wia" {
     /**
      * Launches the Windows Scanner and Camera Wizard and returns Nothing. Future versions may return a collection of ImageFile objects.
      */
-    ShowAcquisitionWizard(WIA$Device: WIA$Device): null;
+    ShowAcquisitionWizard(Device: WIA$Device): null;
 
     /**
      * Displays the properties dialog box for the specified Device
      * @param boolean [CancelError=false]
      */
-    ShowDeviceProperties(WIA$Device: WIA$Device, CancelError?: boolean): void;
+    ShowDeviceProperties(Device: WIA$Device, CancelError?: boolean): void;
 
     /**
      * Displays the properties dialog box for the specified Item
      * @param boolean [CancelError=false]
      */
-    ShowItemProperties(WIA$Item: WIA$Item, CancelError?: boolean): void;
+    ShowItemProperties(Item: WIA$Item, CancelError?: boolean): void;
 
     /**
      * Launches the Photo Printing Wizard with the absolute path of a specific file or Vector of absolute paths to files
@@ -662,7 +287,7 @@ declare module "activex-wia" {
      * @param boolean [CancelError=false]
      */
     ShowSelectDevice(
-      DeviceType?: WIA$WiaDeviceType,
+      DeviceType?: $Values<typeof WIA$WiaDeviceType>,
       AlwaysSelectDevice?: boolean,
       CancelError?: boolean
     ): WIA$Device | null;
@@ -677,9 +302,9 @@ declare module "activex-wia" {
      * @param boolean [CancelError=false]
      */
     ShowSelectItems(
-      WIA$Device: WIA$Device,
-      Intent?: WIA$WiaImageIntent,
-      Bias?: WIA$WiaImageBias,
+      Device: WIA$Device,
+      Intent?: $Values<typeof WIA$WiaImageIntent>,
+      Bias?: $Values<typeof WIA$WiaImageBias>,
       SingleSelect?: boolean,
       UseCommonUI?: boolean,
       CancelError?: boolean
@@ -691,8 +316,8 @@ declare module "activex-wia" {
      * @param boolean [CancelError=false]
      */
     ShowTransfer(
-      WIA$Item: WIA$Item,
-      WIA$FormatID?: string,
+      Item: WIA$Item,
+      FormatID?: string,
       CancelError?: boolean
     ): WIA$ImageFile;
   }
@@ -722,7 +347,7 @@ declare module "activex-wia" {
      * Issues the command specified by CommandID to the imaging device. CommandIDs are device dependent. Valid CommandIDs for this Device are contained in
      * the Commands collection.
      */
-    ExecuteCommand(WIA$CommandID: string): WIA$Item;
+    ExecuteCommand(CommandID: string): WIA$Item;
 
     /**
      * Returns the Item object specified by ItemID if it exists
@@ -742,7 +367,7 @@ declare module "activex-wia" {
     /**
      * Returns the Type of Device
      */
-    Type: WIA$WiaDeviceType;
+    Type: $Values<typeof WIA$WiaDeviceType>;
   }
 
   /**
@@ -780,7 +405,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection by position
      */
-    WIA$Item(Index: number): WIA$DeviceCommand;
+    Item(Index: number): WIA$DeviceCommand;
 
     /**
      * Returns the specified item in the collection by position
@@ -812,7 +437,7 @@ declare module "activex-wia" {
     /**
      * Returns the Type of this Event
      */
-    Type: WIA$WiaEventFlag;
+    Type: $Values<typeof WIA$WiaEventFlag>;
   }
 
   /**
@@ -828,7 +453,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection by position
      */
-    WIA$Item(Index: number): WIA$DeviceEvent;
+    Item(Index: number): WIA$DeviceEvent;
 
     /**
      * Returns the specified item in the collection by position
@@ -861,7 +486,7 @@ declare module "activex-wia" {
     /**
      * Returns the Type of Device
      */
-    Type: WIA$WiaDeviceType;
+    Type: $Values<typeof WIA$WiaDeviceType>;
   }
 
   /**
@@ -877,7 +502,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection either by position or Device ID
      */
-    WIA$Item(Index: number | string): WIA$DeviceInfo;
+    Item(Index: number | string): WIA$DeviceInfo;
 
     /**
      * Returns the specified item in the collection either by position or Device ID
@@ -902,7 +527,7 @@ declare module "activex-wia" {
      * device. Otherwise, OnEvent will only be called if the event specified occurs on the device specified.
      * @param string [DeviceID='*']
      */
-    RegisterEvent(WIA$EventID: string, DeviceID?: string): void;
+    RegisterEvent(EventID: string, DeviceID?: string): void;
 
     /**
      * Registers the specified Command to launch when the specified EventID for the specified DeviceID occurs. Command can be either a ClassID or the full
@@ -914,7 +539,7 @@ declare module "activex-wia" {
       Name: string,
       Description: string,
       Icon: string,
-      WIA$EventID: string,
+      EventID: string,
       DeviceID?: string
     ): void;
 
@@ -923,7 +548,7 @@ declare module "activex-wia" {
      * RegisterEvent.
      * @param string [DeviceID='*']
      */
-    UnregisterEvent(WIA$EventID: string, DeviceID?: string): void;
+    UnregisterEvent(EventID: string, DeviceID?: string): void;
 
     /**
      * Unregisters the specified Command for the specified EventID for the specified DeviceID. UnregisterPersistentEvent should only be called for the
@@ -935,7 +560,7 @@ declare module "activex-wia" {
       Name: string,
       Description: string,
       Icon: string,
-      WIA$EventID: string,
+      EventID: string,
       DeviceID?: string
     ): void;
   }
@@ -1004,7 +629,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection either by position or name
      */
-    WIA$Item(Index: number | string): WIA$FilterInfo;
+    Item(Index: number | string): WIA$FilterInfo;
 
     /**
      * Returns the specified item in the collection either by position or name
@@ -1030,7 +655,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection by position or FilterID
      */
-    WIA$Item(Index: number): WIA$Filter;
+    Item(Index: number): WIA$Filter;
 
     /**
      * Removes the designated filter
@@ -1056,7 +681,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection by position
      */
-    WIA$Item(Index: number): string;
+    Item(Index: number): string;
 
     /**
      * Returns the specified item in the collection by position
@@ -1079,12 +704,12 @@ declare module "activex-wia" {
     /**
      * Returns the raw image bits as a Vector of Long values
      */
-    ARGBData: WIA$Vector;
+    ARGBData: WIA$Vector<>;
 
     /**
      * Returns the raw image file as a Vector of Bytes
      */
-    FileData: WIA$Vector;
+    FileData: WIA$Vector<>;
 
     /**
      * Returns the file extension for this image file type
@@ -1199,7 +824,7 @@ declare module "activex-wia" {
     /**
      * Issues the command specified by CommandID. CommandIDs are device dependent. Valid CommandIDs for this Item are contained in the Commands collection.
      */
-    ExecuteCommand(WIA$CommandID: string): WIA$Item;
+    ExecuteCommand(CommandID: string): WIA$Item;
 
     /**
      * A collection of all supported format types for this item
@@ -1226,7 +851,7 @@ declare module "activex-wia" {
      * device. Future versions may return a collection of ImageFile objects.
      * @param string [FormatID='{00000000-0000-0000-0000-000000000000}']
      */
-    Transfer(WIA$FormatID?: string): WIA$ImageFile;
+    Transfer(FormatID?: string): WIA$ImageFile;
   }
 
   /**
@@ -1246,7 +871,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection by position
      */
-    WIA$Item(Index: number): WIA$Item;
+    Item(Index: number): WIA$Item;
 
     /**
      * Removes the designated Item
@@ -1277,7 +902,7 @@ declare module "activex-wia" {
     /**
      * Returns the specified item in the collection either by position or name.
      */
-    WIA$Item(Index: number | string): WIA$Property;
+    Item(Index: number | string): WIA$Property;
 
     /**
      * Returns the specified item in the collection either by position or name.
@@ -1315,7 +940,7 @@ declare module "activex-wia" {
     /**
      * Returns the SubType of the Property, if any
      */
-    SubType: WIA$WiaSubType;
+    SubType: $Values<typeof WIA$WiaSubType>;
 
     /**
      * Returns the default Property Value if the SubType is not UnspecifiedSubType
@@ -1340,7 +965,7 @@ declare module "activex-wia" {
     /**
      * Returns a Vector of valid Property Values if the SubType is ListSubType or valid flag Values that can be ored together if the SubType is FlagSubType
      */
-    SubTypeValues: WIA$Vector;
+    SubTypeValues: WIA$Vector<>;
 
     /**
      * Returns either a WiaPropertyType or a WiaImagePropertyType
@@ -1414,12 +1039,12 @@ declare module "activex-wia" {
      * @param number [Width=0]
      * @param number [Height=0]
      */
-    WIA$ImageFile(Width?: number, Height?: number): WIA$ImageFile;
+    ImageFile(Width?: number, Height?: number): WIA$ImageFile;
 
     /**
      * Returns the specified item in the vector by position
      */
-    WIA$Item(Index: number): TItem;
+    Item(Index: number): TItem;
 
     /**
      * If the Vector of Bytes contains an image file, then Width and Height are ignored. Otherwise a Vector of Bytes must be RGB data and a Vector of Longs
@@ -1455,28 +1080,28 @@ declare module "activex-wia" {
   }
   declare interface ActiveXObject {
     on(
-      obj: WIA$WIA$DeviceManager,
+      obj: WIA$DeviceManager,
       event: "OnEvent",
       argNames: ["EventID", "DeviceID", "ItemID"],
       handler: (parameter: {
-        +WIA$EventID: string,
+        +EventID: string,
         +DeviceID: string,
         +ItemID: string
       }) => void
     ): void;
     set<TItem>(
-      obj: WIA$WIA$Vector<TItem>,
+      obj: WIA$Vector<TItem>,
       propertyName: "Item",
       parameterTypes: [number],
       newValue: TItem
     ): void;
   }
   declare interface ActiveXObjectNameMap {
-    "WIA.CommonDialog": WIA$WIA$CommonDialog;
-    "WIA.DeviceManager": WIA$WIA$DeviceManager;
-    "WIA.ImageFile": WIA$WIA$ImageFile;
-    "WIA.ImageProcess": WIA$WIA$ImageProcess;
-    "WIA.Rational": WIA$WIA$Rational;
-    "WIA.Vector": WIA$WIA$Vector;
+    "WIA.CommonDialog": WIA$CommonDialog;
+    "WIA.DeviceManager": WIA$DeviceManager;
+    "WIA.ImageFile": WIA$ImageFile;
+    "WIA.ImageProcess": WIA$ImageProcess;
+    "WIA.Rational": WIA$Rational;
+    "WIA.Vector": WIA$Vector<>;
   }
 }
