@@ -101,11 +101,11 @@ require("yargs") // eslint-disable-line
     }
   )
   .command(
-    "typecheck",
+    "typecheck [names...]",
     "type check types",
     yargs => {},
-    () => {
-      typecheck();
+    argv => {
+      typecheck(argv.names);
     }
   )
   .demandCommand(1, "You need at least one command before moving on").argv;
