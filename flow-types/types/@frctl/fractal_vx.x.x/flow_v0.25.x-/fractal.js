@@ -226,7 +226,7 @@ declare module "@frctl/fractal" {
     load(): Promise<void>,
     toJSON(): {},
     "NO PRINT IMPLEMENTED: ComputedPropertyName"(): IterableIterator<fractal$api$assets$AssetSource>
-  } & fractal$core$mixins$ConfigurableEmitter;
+  } & fractal$core$mixins$ConfigurableEmitter<>;
 
   declare var npm$namespace$fractal$api$components: {
     Component: typeof fractal$api$components$Component
