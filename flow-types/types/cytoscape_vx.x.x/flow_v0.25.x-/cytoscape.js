@@ -73,7 +73,7 @@ declare module "cytoscape" {
     /**
      * you should only use `style`/`css` for very special cases; use classes instead
      */
-    css?: Css$Node | Css$Edge;
+    css?: cytoscape$Css$Node | cytoscape$Css$Edge;
   }
 
   declare interface cytoscape$ElementDataDefinition {
@@ -86,7 +86,7 @@ declare module "cytoscape" {
 
   declare type cytoscape$EdgeDefinition = {
     data: cytoscape$EdgeDataDefinition
-  } & ElementDefinition;
+  } & cytoscape$ElementDefinition;
 
   declare type cytoscape$EdgeDataDefinition = {
     id?: string,
@@ -101,17 +101,17 @@ declare module "cytoscape" {
      */
     target: string,
     [key: string]: any
-  } & ElementDataDefinition;
+  } & cytoscape$ElementDataDefinition;
 
   declare type cytoscape$NodeDefinition = {
     data: cytoscape$NodeDataDefinition
-  } & ElementDefinition;
+  } & cytoscape$ElementDefinition;
 
   declare type cytoscape$NodeDataDefinition = {
     id?: string,
     parent?: string,
     [key: string]: any
-  } & ElementDataDefinition;
+  } & cytoscape$ElementDataDefinition;
 
   declare interface cytoscape$CytoscapeOptions {
     /**
@@ -353,62 +353,14 @@ declare module "cytoscape" {
    * All of the library’s features are accessed through this object.
    * http://js.cytoscape.org/#core
    */
-  declare type cytoscape$Core = {
-    /**
-     * Indicator:
-     * The colour of the indicator shown when the background is grabbed by the user.
-     */
-    "active-bg-color": Css$Colour,
-
-    /**
-     * The opacity of the active background indicator.
-     */
-    "active-bg-opacity": number,
-
-    /**
-     * The size of the active background indicator.
-     */
-    "active-bg-size": number,
-
-    /**
-     * Selection box:
-     * The background colour of the selection box used for drag selection.
-     */
-    "selection-box-color": Css$Colour,
-
-    /**
-     * The colour of the border on the selection box.
-     */
-    "selection-box-border-color": Css$Colour,
-
-    /**
-     * The size of the border on the selection box.
-     */
-    "selection-box-border-width": number,
-
-    /**
-     * The opacity of the selection box.
-     */
-    "selection-box-opacity": number,
-
-    /**
-     * Texture during viewport gestures:
-     * The colour of the area outside the viewport texture when initOptions.textureOnViewport === true.
-     */
-    "outside-texture-bg-color": Css$Colour,
-
-    /**
-     * The opacity of the area outside the viewport texture.
-     */
-    "outside-texture-bg-opacity": number
-  } & CoreGraphManipulation &
-    CoreGraphManipulationExt &
-    CoreEvents &
-    CoreViewportManipulation &
-    CoreAnimation &
-    CoreLayout &
-    CoreStyle &
-    CoreExport;
+  declare type cytoscape$Core = {} & cytoscape$CoreGraphManipulation &
+    cytoscape$CoreGraphManipulationExt &
+    cytoscape$CoreEvents &
+    cytoscape$CoreViewportManipulation &
+    cytoscape$CoreAnimation &
+    cytoscape$CoreLayout &
+    cytoscape$CoreStyle &
+    cytoscape$CoreExport;
 
   /**
    * These are the principle functions used to interact with the graph model.
@@ -482,7 +434,7 @@ declare module "cytoscape" {
       selector:
         | cytoscape$Selector
         | ((
-            ele: cytoscape$Singular,
+            ele: cytoscape$Singular<>,
             i: number,
             eles: cytoscape$CollectionArgument
           ) => boolean)
@@ -1101,7 +1053,7 @@ declare module "cytoscape" {
     /**
      * easing - A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing?: Css$TransitionTimingFunction;
+    easing?: cytoscape$Css$TransitionTimingFunction;
 
     /**
      * duration - The duration of the animation in milliseconds.
@@ -1124,7 +1076,7 @@ declare module "cytoscape" {
      * step - A function to call each time the animation steps.
      */
     step?: () => void
-  } & AnimationOptions;
+  } & cytoscape$AnimationOptions;
 
   declare interface cytoscape$CoreAnimation {
     /**
@@ -1217,11 +1169,11 @@ declare module "cytoscape" {
    */
   declare type cytoscape$ElementStylesheetStyle = {
     json(): any
-  } & StylesheetStyle;
+  } & cytoscape$StylesheetStyle;
 
   declare type cytoscape$ElementStylesheetCSS = {
     json(): any
-  } & StylesheetCSS;
+  } & cytoscape$StylesheetCSS;
 
   declare interface cytoscape$CoreStyle {
     /**
@@ -1246,7 +1198,7 @@ declare module "cytoscape" {
 
   declare interface cytoscape$StylesheetStyle {
     selector: string;
-    style: Css$Node | Css$Edge;
+    style: cytoscape$Css$Node | cytoscape$Css$Edge;
   }
 
   /**
@@ -1254,7 +1206,7 @@ declare module "cytoscape" {
    */
   declare interface cytoscape$StylesheetCSS {
     selector: string;
-    css: Css$Node | Css$Edge;
+    css: cytoscape$Css$Node | cytoscape$Css$Edge;
   }
 
   /**
@@ -1292,14 +1244,14 @@ declare module "cytoscape" {
      * output Whether the output should be 'base64uri' (default), 'base64', or 'blob'.
      */
     output?: "base64uri" | "base64"
-  } & ExportOptions;
+  } & cytoscape$ExportOptions;
 
   declare type cytoscape$ExportBlobOptions = {
     /**
      * output Whether the output should be 'base64uri' (default), 'base64', or 'blob'.
      */
     output?: "blob"
-  } & ExportOptions;
+  } & cytoscape$ExportOptions;
 
   declare type cytoscape$ExportJpgOptions = {
     /**
@@ -1308,13 +1260,13 @@ declare module "cytoscape" {
      * If not set, the browser's default quality value is used.
      */
     quality?: number
-  } & ExportOptions;
+  } & cytoscape$ExportOptions;
 
-  declare type cytoscape$ExportJpgStringOptions = {} & ExportJpgOptions &
-    ExportStringOptions;
+  declare type cytoscape$ExportJpgStringOptions = {} & cytoscape$ExportJpgOptions &
+    cytoscape$ExportStringOptions;
 
-  declare type cytoscape$ExportJpgBlobOptions = {} & ExportJpgOptions &
-    ExportBlobOptions;
+  declare type cytoscape$ExportJpgBlobOptions = {} & cytoscape$ExportJpgOptions &
+    cytoscape$ExportBlobOptions;
 
   declare interface cytoscape$CoreExport {
     /**
@@ -1352,19 +1304,19 @@ declare module "cytoscape" {
   declare type cytoscape$Collection<
     TOut = cytoscape$SingularElementReturnValue,
     TIn = cytoscape$SingularElementArgument
-  > = {} & CollectionGraphManipulation &
-    CollectionEvents &
-    CollectionData &
-    CollectionPosition &
-    CollectionTraversing &
-    CollectionLayout &
-    CollectionSelection &
-    CollectionStyle &
-    CollectionAnimation &
-    CollectionComparision &
-    CollectionIteration<TIn, TOut> &
-    CollectionBuildingFiltering<TIn, TOut> &
-    CollectionAlgorithms;
+  > = {} & cytoscape$CollectionGraphManipulation &
+    cytoscape$CollectionEvents &
+    cytoscape$CollectionData &
+    cytoscape$CollectionPosition &
+    cytoscape$CollectionTraversing &
+    cytoscape$CollectionLayout &
+    cytoscape$CollectionSelection &
+    cytoscape$CollectionStyle &
+    cytoscape$CollectionAnimation &
+    cytoscape$CollectionComparision &
+    cytoscape$CollectionIteration<TIn, TOut> &
+    cytoscape$CollectionBuildingFiltering<TIn, TOut> &
+    cytoscape$CollectionAlgorithms;
 
   /**
    * ele  --> Cy.Singular
@@ -1374,13 +1326,13 @@ declare module "cytoscape" {
   declare type cytoscape$Singular<
     TOut = cytoscape$SingularElementReturnValue,
     TIn = cytoscape$SingularElementArgument
-  > = {} & Collection<TOut, TIn> &
-    SingularGraphManipulation &
-    SingularData &
-    SingularPosition &
-    SingularSelection &
-    SingularStyle &
-    SingularAnimation;
+  > = {} & cytoscape$Collection<TOut, TIn> &
+    cytoscape$SingularGraphManipulation &
+    cytoscape$SingularData &
+    cytoscape$SingularPosition &
+    cytoscape$SingularSelection &
+    cytoscape$SingularStyle &
+    cytoscape$SingularAnimation;
 
   declare interface cytoscape$ElementsDefinition {
     nodes: cytoscape$NodeDefinition[];
@@ -1393,12 +1345,12 @@ declare module "cytoscape" {
    * The output is a collection of node and edge elements OR single element.
    */
   declare type cytoscape$CollectionArgument =
-    | cytoscape$Collection
+    | cytoscape$Collection<>
     | cytoscape$EdgeCollection
     | cytoscape$NodeCollection
     | cytoscape$SingularElementArgument;
 
-  declare type cytoscape$CollectionReturnValue = cytoscape$Collection &
+  declare type cytoscape$CollectionReturnValue = cytoscape$Collection<> &
     cytoscape$EdgeCollection &
     cytoscape$NodeCollection &
     cytoscape$SingularElementReturnValue;
@@ -1409,11 +1361,11 @@ declare module "cytoscape" {
    *
    * The output is a collection of edge elements OR single edge.
    */
-  declare type cytoscape$EdgeCollection = {} & Collection<
+  declare type cytoscape$EdgeCollection = {} & cytoscape$Collection<
     cytoscape$EdgeSingular,
     cytoscape$EdgeSingular
   > &
-    EdgeCollectionTraversing;
+    cytoscape$EdgeCollectionTraversing;
 
   /**
    * nodes -> Cy.NodeCollection
@@ -1421,14 +1373,14 @@ declare module "cytoscape" {
    *
    * The output is a collection of node elements OR single node.
    */
-  declare type cytoscape$NodeCollection = {} & Collection<
+  declare type cytoscape$NodeCollection = {} & cytoscape$Collection<
     cytoscape$NodeSingular,
     cytoscape$NodeSingular
   > &
-    NodeCollectionMetadata &
-    NodeCollectionPosition &
-    NodeCollectionTraversing &
-    NodeCollectionCompound;
+    cytoscape$NodeCollectionMetadata &
+    cytoscape$NodeCollectionPosition &
+    cytoscape$NodeCollectionTraversing &
+    cytoscape$NodeCollectionCompound;
 
   declare type cytoscape$SingularElementArgument =
     | cytoscape$EdgeSingular
@@ -1441,27 +1393,27 @@ declare module "cytoscape" {
    * edge --> Cy.EdgeSingular
    * a collection of a single edge
    */
-  declare type cytoscape$EdgeSingular = {} & Singular<
+  declare type cytoscape$EdgeSingular = {} & cytoscape$Singular<
     cytoscape$EdgeSingular,
     cytoscape$EdgeSingular
   > &
-    EdgeCollection &
-    EdgeSingularData &
-    EdgeSingularPoints &
-    EdgeSingularTraversing;
+    cytoscape$EdgeCollection &
+    cytoscape$EdgeSingularData &
+    cytoscape$EdgeSingularPoints &
+    cytoscape$EdgeSingularTraversing;
 
   /**
    * node --> Cy.NodeSingular
    * a collection of a single node
    */
-  declare type cytoscape$NodeSingular = {} & Singular<
+  declare type cytoscape$NodeSingular = {} & cytoscape$Singular<
     cytoscape$NodeSingular,
     cytoscape$NodeSingular
   > &
-    NodeCollection &
-    NodeSingularMetadata &
-    NodeSingularPosition &
-    NodeSingularCompound;
+    cytoscape$NodeCollection &
+    cytoscape$NodeSingularMetadata &
+    cytoscape$NodeSingularPosition &
+    cytoscape$NodeSingularCompound;
 
   /**
    * http://js.cytoscape.org/#collection/graph-manipulation
@@ -2545,7 +2497,7 @@ declare module "cytoscape" {
     /**
      * A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing?: Css$TransitionTimingFunction;
+    easing?: cytoscape$Css$TransitionTimingFunction;
   }
 
   declare type cytoscape$ElementAnimateOptionPos = {
@@ -2553,14 +2505,14 @@ declare module "cytoscape" {
      * A position to which the elements will be animated.
      */
     position: cytoscape$Position
-  } & ElementAnimateOptionsBase;
+  } & cytoscape$ElementAnimateOptionsBase;
 
   declare type cytoscape$ElementAnimateOptionRen = {
     /**
      * A rendered position to which the elements will be animated.
      */
     renderedPosition: cytoscape$Position
-  } & ElementAnimateOptionsBase;
+  } & cytoscape$ElementAnimateOptionsBase;
 
   declare interface cytoscape$CollectionAnimation {
     /**
@@ -2622,7 +2574,7 @@ declare module "cytoscape" {
     /**
      * A transition-timing-function easing style string that shapes the animation progress curve.
      */
-    easing: Css$TransitionTimingFunction;
+    easing: cytoscape$Css$TransitionTimingFunction;
   }
 
   declare type cytoscape$SingularAnimationOptionsPos = {
@@ -2630,14 +2582,14 @@ declare module "cytoscape" {
      * A position to which the elements will be animated.
      */
     position: cytoscape$Position
-  } & SingularAnimationOptionsBase;
+  } & cytoscape$SingularAnimationOptionsBase;
 
   declare type cytoscape$SingularAnimationOptionsRen = {
     /**
      * A rendered position to which the elements will be animated.
      */
     renderedPosition: cytoscape$Position
-  } & SingularAnimationOptionsBase;
+  } & cytoscape$SingularAnimationOptionsBase;
 
   declare interface cytoscape$SingularAnimation {
     /**
@@ -4167,7 +4119,7 @@ declare module "cytoscape" {
     "border-opacity"?: number,
     "text-opacity"?: number
   } & $Shape<Css$Overlay> &
-    PaddingNode;
+    cytoscape$Css$PaddingNode;
 
   /**
    * A padding defines an addition to a node’s dimension.
@@ -4299,8 +4251,8 @@ declare module "cytoscape" {
     "pie-i-background-opacity": number;
   }
 
-  declare type cytoscape$Css$Edge = {} & EdgeLine &
-    EdgeArror &
+  declare type cytoscape$Css$Edge = {} & cytoscape$Css$EdgeLine &
+    cytoscape$Css$EdgeArror &
     $Shape<Css$Overlay>;
 
   /**
@@ -4983,69 +4935,60 @@ declare module "cytoscape" {
   }
 
   /**
-   * cy   --> Cy.Core
-   *   The core object is your interface to a graph.
-   *
-   * It is your entry point to Cytoscape.js:
-   * All of the library’s features are accessed through this object.
-   * http://js.cytoscape.org/#core
+   * Core
+   * These properties affect UI global to the graph, and apply only to the core.
+   * You can use the special core selector string to set these properties.
+   * http://js.cytoscape.org/#style/core
    */
-  declare type cytoscape$Css$Core = {
+  declare interface cytoscape$Css$Core {
     /**
      * Indicator:
      * The colour of the indicator shown when the background is grabbed by the user.
      */
-    "active-bg-color": cytoscape$Css$Colour,
+    "active-bg-color": cytoscape$Css$Colour;
 
     /**
      * The opacity of the active background indicator.
      */
-    "active-bg-opacity": number,
+    "active-bg-opacity": number;
 
     /**
      * The size of the active background indicator.
      */
-    "active-bg-size": number,
+    "active-bg-size": number;
 
     /**
      * Selection box:
      * The background colour of the selection box used for drag selection.
      */
-    "selection-box-color": cytoscape$Css$Colour,
+    "selection-box-color": cytoscape$Css$Colour;
 
     /**
      * The colour of the border on the selection box.
      */
-    "selection-box-border-color": cytoscape$Css$Colour,
+    "selection-box-border-color": cytoscape$Css$Colour;
 
     /**
      * The size of the border on the selection box.
      */
-    "selection-box-border-width": number,
+    "selection-box-border-width": number;
 
     /**
      * The opacity of the selection box.
      */
-    "selection-box-opacity": number,
+    "selection-box-opacity": number;
 
     /**
      * Texture during viewport gestures:
      * The colour of the area outside the viewport texture when initOptions.textureOnViewport === true.
      */
-    "outside-texture-bg-color": cytoscape$Css$Colour,
+    "outside-texture-bg-color": cytoscape$Css$Colour;
 
     /**
      * The opacity of the area outside the viewport texture.
      */
-    "outside-texture-bg-opacity": number
-  } & CoreGraphManipulation &
-    CoreGraphManipulationExt &
-    CoreEvents &
-    CoreViewportManipulation &
-    CoreAnimation &
-    CoreLayout &
-    CoreStyle &
-    CoreExport;
+    "outside-texture-bg-opacity": number;
+  }
 
   /**
    * Events passed to handler callbacks are similar to
@@ -5054,8 +4997,8 @@ declare module "cytoscape" {
    *
    * http://js.cytoscape.org/#events
    */
-  declare type cytoscape$EventObject = {} & InputEventObject &
-    LayoutEventObject;
+  declare type cytoscape$EventObject = {} & cytoscape$InputEventObject &
+    cytoscape$LayoutEventObject;
 
   /**
    * http://js.cytoscape.org/#events/event-object
@@ -5104,7 +5047,7 @@ declare module "cytoscape" {
      * originalEvent : the original user input device event object
      */
     originalEvent: cytoscape$EventObject
-  } & AbstractEventObject;
+  } & cytoscape$AbstractEventObject;
 
   declare type cytoscape$LayoutEventObject = {
     /**
@@ -5112,7 +5055,7 @@ declare module "cytoscape" {
      * (useful if running multiple layouts simultaneously)
      */
     layout: any
-  } & AbstractEventObject;
+  } & cytoscape$AbstractEventObject;
 
   /**
    * These are normal browser events that you can bind to via Cytoscape.js.
@@ -5218,7 +5161,8 @@ declare module "cytoscape" {
    * Setting edge length depends on the particular layout,
    * and some layouts will allow for more precise edge lengths than others.
    */
-  declare type cytoscape$Layouts = {} & LayoutManipulation & LayoutEvents;
+  declare type cytoscape$Layouts = {} & cytoscape$LayoutManipulation &
+    cytoscape$LayoutEvents;
 
   declare type cytoscape$LayoutOptions =
     | cytoscape$NullLayoutOptions
@@ -5276,8 +5220,8 @@ declare module "cytoscape" {
     fit: boolean,
     padding?: number,
     boundingBox: void | cytoscape$BoundingBox12 | cytoscape$BoundingBoxWH
-  } & BaseLayoutOptions &
-    AnimatedLayoutOptions;
+  } & cytoscape$BaseLayoutOptions &
+    cytoscape$AnimatedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/preset
@@ -5297,8 +5241,8 @@ declare module "cytoscape" {
     pan?: number,
     fit?: boolean,
     padding?: number
-  } & BaseLayoutOptions &
-    AnimatedLayoutOptions;
+  } & cytoscape$BaseLayoutOptions &
+    cytoscape$AnimatedLayoutOptions;
 
   declare interface cytoscape$SortableNode {
     data: {
@@ -5319,8 +5263,8 @@ declare module "cytoscape" {
     nodeDimensionsIncludeLabels: boolean,
     spacingFactor?: number,
     sort?: cytoscape$SortingFunction
-  } & BaseLayoutOptions &
-    AnimatedLayoutOptions;
+  } & cytoscape$BaseLayoutOptions &
+    cytoscape$AnimatedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/grid
@@ -5337,7 +5281,7 @@ declare module "cytoscape" {
       row: number,
       col: number
     }
-  } & ShapedLayoutOptions;
+  } & cytoscape$ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/circle
@@ -5348,7 +5292,7 @@ declare module "cytoscape" {
     startAngle: number,
     sweep?: number,
     clockwise?: boolean
-  } & ShapedLayoutOptions;
+  } & cytoscape$ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/concentric
@@ -5369,7 +5313,7 @@ declare module "cytoscape" {
     levelWidth(node: {
       maxDegree(): number
     }): number
-  } & ShapedLayoutOptions;
+  } & cytoscape$ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/breadthfirst
@@ -5380,7 +5324,7 @@ declare module "cytoscape" {
     circle: boolean,
     roots?: string,
     maximalAdjustments: number
-  } & ShapedLayoutOptions;
+  } & cytoscape$ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/cose
@@ -5401,7 +5345,7 @@ declare module "cytoscape" {
     coolingFactor: number,
     minTemp: number,
     weaver: boolean
-  } & ShapedLayoutOptions;
+  } & cytoscape$ShapedLayoutOptions;
 
   /**
    * http://js.cytoscape.org/#layouts/layout-manipulation
