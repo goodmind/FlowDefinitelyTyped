@@ -7,15 +7,15 @@ declare module "@babel/traverse" {
     opts: TraverseOptions<S>,
     scope: Scope,
     state: S,
-    parentPath?: NodePath
+    parentPath?: NodePath<>
   ): void;
 
   declare export default function traverse(
     parent: Node | Node[],
-    opts: TraverseOptions,
+    opts: TraverseOptions<>,
     scope?: Scope,
     state?: any,
-    parentPath?: NodePath
+    parentPath?: NodePath<>
   ): void;
 
   declare export type TraverseOptions<S = Node> = {
@@ -24,8 +24,8 @@ declare module "@babel/traverse" {
   } & Visitor<S>;
 
   declare export class Scope {
-    constructor(path: NodePath, parentScope?: Scope): this;
-    path: NodePath;
+    constructor(path: NodePath<>, parentScope?: Scope): this;
+    path: NodePath<>;
     block: Node;
     parentBlock: Node;
     parent: Scope;
@@ -38,7 +38,7 @@ declare module "@babel/traverse" {
      * Traverse node with current scope and path.
      */
     traverse<S>(node: Node | Node[], opts: TraverseOptions<S>, state: S): void;
-    traverse(node: Node | Node[], opts?: TraverseOptions, state?: any): void;
+    traverse(node: Node | Node[], opts?: TraverseOptions<>, state?: any): void;
 
     /**
      * Generate a unique identifier and add it to the current scope.
@@ -87,10 +87,14 @@ declare module "@babel/traverse" {
     rename(oldName: string, newName?: string, block?: Node): void;
     dump(): void;
     toArray(node: Node, i?: number): Node;
-    registerDeclaration(path: NodePath): void;
+    registerDeclaration(path: NodePath<>): void;
     buildUndefinedNode(): Node;
-    registerConstantViolation(path: NodePath): void;
-    registerBinding(kind: string, path: NodePath, bindingPath?: NodePath): void;
+    registerConstantViolation(path: NodePath<>): void;
+    registerBinding(
+      kind: string,
+      path: NodePath<>,
+      bindingPath?: NodePath<>
+    ): void;
     addGlobal(node: Node): void;
     hasUid(name: string): boolean;
     hasGlobal(name: string): boolean;
@@ -134,22 +138,22 @@ declare module "@babel/traverse" {
       existing: Binding,
       identifier: t.Identifier,
       scope: Scope,
-      path: NodePath,
+      path: NodePath<>,
       kind: "var" | "let" | "const"
     }): this;
     identifier: t.Identifier;
     scope: Scope;
-    path: NodePath;
+    path: NodePath<>;
     kind: "var" | "let" | "const" | "module";
     referenced: boolean;
     references: number;
-    referencePaths: NodePath[];
+    referencePaths: NodePath<>[];
     constant: boolean;
-    constantViolations: NodePath[];
+    constantViolations: NodePath<>[];
   }
   declare export type Visitor<S = {}> = VisitNodeObject<S, Node> &
     $ObjMapi<
-      { [k: $ElementType<Node, "type">]: any },
+      { [k: $PropertyType<Node, "type">]: any },
       <Type>(
         Type
       ) => VisitNode<
@@ -186,7 +190,7 @@ declare module "@babel/traverse" {
     state: any;
     opts: { [key: string]: any };
     skipKeys: { [key: string]: any };
-    parentPath: NodePath;
+    parentPath: NodePath<>;
     context: TraversalContext;
     container: { [key: string]: any } | { [key: string]: any }[];
     listKey: string;
@@ -195,7 +199,7 @@ declare module "@babel/traverse" {
     key: string | number;
     node: T;
     scope: Scope;
-    type: "There was Conditional Type, use $Call utility type";
+    type: /* Flow doesn't support conditional types, use $Call utility type */ any;
     typeAnnotation: { [key: string]: any };
     getScope(scope: Scope): Scope;
     setData(key: string, val: any): any;
@@ -205,7 +209,7 @@ declare module "@babel/traverse" {
       Error?: (msg: string) => TError
     ): TError;
     traverse<T>(visitor: Visitor<T>, state: T): void;
-    traverse(visitor: Visitor): void;
+    traverse(visitor: Visitor<>): void;
     set(key: string, node: Node): void;
     getPathLocation(): string;
     debug(buildMessage: () => string): void;
@@ -214,8 +218,8 @@ declare module "@babel/traverse" {
      * Call the provided `callback` with the `NodePath`s of all the parents.
      * When the `callback` returns a truthy value, we return that node path.
      */
-    findParent(callback: (path: NodePath) => boolean): NodePath;
-    find(callback: (path: NodePath) => boolean): NodePath;
+    findParent(callback: (path: NodePath<>) => boolean): NodePath<>;
+    find(callback: (path: NodePath<>) => boolean): NodePath<>;
 
     /**
      * Get the parent function of the current path.
@@ -234,22 +238,26 @@ declare module "@babel/traverse" {
      * Earliest is defined as being "before" all the other nodes in terms of list container
      * position and visiting key.
      */
-    getEarliestCommonAncestorFrom(paths: NodePath[]): NodePath[];
+    getEarliestCommonAncestorFrom(paths: NodePath<>[]): NodePath<>[];
 
     /**
      * Get the earliest path in the tree where the provided `paths` intersect.
      */
     getDeepestCommonAncestorFrom(
-      paths: NodePath[],
-      filter?: (deepest: Node, i: number, ancestries: NodePath[]) => NodePath
-    ): NodePath;
+      paths: NodePath<>[],
+      filter?: (
+        deepest: Node,
+        i: number,
+        ancestries: NodePath<>[]
+      ) => NodePath<>
+    ): NodePath<>;
 
     /**
      * Build an array of node paths containing the entire ancestry of the current node path.
      *
      * NOTE: The current node path is included in this.
      */
-    getAncestry(): NodePath[];
+    getAncestry(): NodePath<>[];
     inType(...candidateTypes: string[]): boolean;
 
     /**
@@ -258,7 +266,7 @@ declare module "@babel/traverse" {
     getTypeAnnotation(): t.FlowType;
     isBaseType(baseName: string, soft?: boolean): boolean;
     couldBeBaseType(name: string): boolean;
-    baseTypeStrictlyMatches(right: NodePath): boolean;
+    baseTypeStrictlyMatches(right: NodePath<>): boolean;
     isGenericType(genericName: string): boolean;
 
     /**
@@ -282,7 +290,7 @@ declare module "@babel/traverse" {
     /**
      * Replace the current node with another.
      */
-    replaceWith(replacement: Node | NodePath): void;
+    replaceWith(replacement: Node | NodePath<>): void;
 
     /**
      * This method takes an array of statements nodes and then explodes it
@@ -400,7 +408,7 @@ declare module "@babel/traverse" {
     /**
      * Check if the current path will maybe execute before another path
      */
-    willIMaybeExecuteBefore(path: NodePath): boolean;
+    willIMaybeExecuteBefore(path: NodePath<>): boolean;
     call(key: string): boolean;
     isBlacklisted(): boolean;
     visit(): boolean;
@@ -433,19 +441,19 @@ declare module "@babel/traverse" {
      * Hoist the current node to the highest scope possible and return a UID referencing it.
      */
     hoist(scope: Scope): void;
-    getOpposite(): NodePath;
-    getCompletionRecords(): NodePath[];
-    getSibling(key: string | number): NodePath;
-    getAllPrevSiblings(): NodePath[];
-    getAllNextSiblings(): NodePath[];
+    getOpposite(): NodePath<>;
+    getCompletionRecords(): NodePath<>[];
+    getSibling(key: string | number): NodePath<>;
+    getAllPrevSiblings(): NodePath<>[];
+    getAllNextSiblings(): NodePath<>[];
     get<K: $Keys<T>>(
       key: K,
       context?: boolean | TraversalContext
-    ): "There was Conditional Type, use $Call utility type";
+    ): /* Flow doesn't support conditional types, use $Call utility type */ any;
     get(
       key: string,
       context?: boolean | TraversalContext
-    ): NodePath | NodePath[];
+    ): NodePath<> | NodePath<>[];
     getBindingIdentifiers(duplicates?: boolean): Node[];
     getOuterBindingIdentifiers(duplicates?: boolean): Node[];
 
@@ -818,7 +826,7 @@ declare module "@babel/traverse" {
     options: any;
   }
   declare export interface TraversalContext {
-    parentPath: NodePath;
+    parentPath: NodePath<>;
     scope: Scope;
     state: any;
     opts: any;
