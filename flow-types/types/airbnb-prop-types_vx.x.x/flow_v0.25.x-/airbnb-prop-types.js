@@ -73,7 +73,7 @@ declare module "airbnb-prop-types" {
   ): PropTypes.Requireable<T>;
 
   declare export function childrenSequenceOf<T>(
-    ...specifiers: Specifier[]
+    ...specifiers: Specifier<>[]
   ): PropTypes.Requireable<T>;
 
   declare export function componentWithName<T>(
@@ -190,7 +190,7 @@ declare module "airbnb-prop-types" {
   ): PropTypes.Requireable<T>;
 
   declare export function sequenceOf<T>(
-    ...specifiers: Specifier[]
+    ...specifiers: Specifier<>[]
   ): PropTypes.Requireable<T>;
 
   declare export function shape<T: { [key: string]: any }>(
