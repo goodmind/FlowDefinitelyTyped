@@ -31,7 +31,7 @@ declare module "@frctl/fractal" {
   declare var npm$namespace$fractal$core$entities: {
     Entity: typeof fractal$core$entities$Entity
   };
-  declare class fractal$core$entities$Entity mixins mixins$Entity {
+  declare class fractal$core$entities$Entity mixins fractal$core$mixins$Entity {
     isComponent: true;
     isCollection: true;
     isDoc: true;
@@ -68,15 +68,15 @@ declare module "@frctl/fractal" {
     getProp(key: string): string | {},
     statusInfo(handle: string): fractal$core$StatusInfo | null,
     toJSON(): {}
-  } & mixins$Source<T, TConfig>;
+  } & fractal$core$mixins$Source<T, TConfig>;
 
   declare type fractal$core$entities$EntityCollection<
     T: fractal$core$entities$Entity
   > = {
     +entities: this,
     toJSON(): {}
-  } & mixins$Entity &
-    mixins$Collection<T>;
+  } & fractal$core$mixins$Entity &
+    fractal$core$mixins$Collection<T>;
 
   declare var npm$namespace$fractal$core$mixins: {
     Configurable: typeof fractal$core$mixins$Configurable,
@@ -94,7 +94,7 @@ declare module "@frctl/fractal" {
 
   declare type fractal$core$mixins$ConfigurableEmitter<
     T = any
-  > = {} & Configurable<T>;
+  > = {} & fractal$core$mixins$Configurable<T>;
 
   declare interface fractal$core$mixins$Collection<T = any> {
     +isAsset: void;
@@ -157,7 +157,7 @@ declare module "@frctl/fractal" {
     id: string;
     config: any;
     alias: string | null;
-    source: entities$EntitySource<entities$Entity>;
+    source: fractal$core$entities$EntitySource<fractal$core$entities$Entity>;
     parent: fractal$core$mixins$Entity;
     isHidden: boolean;
     toJSON(): {};
@@ -177,8 +177,8 @@ declare module "@frctl/fractal" {
     watch(): void,
     unwatch(): void,
     isConfig(file: string): boolean
-  } & ConfigurableEmitter<TConfig> &
-    Collection<T>;
+  } & fractal$core$mixins$ConfigurableEmitter<TConfig> &
+    fractal$core$mixins$Collection<T>;
 
   declare var npm$namespace$fractal$api: {
     assets: typeof npm$namespace$fractal$api$assets,
@@ -190,7 +190,7 @@ declare module "@frctl/fractal" {
   declare var npm$namespace$fractal$api$assets: {
     Asset: typeof fractal$api$assets$Asset
   };
-  declare class fractal$api$assets$Asset mixins undefined.Entity {
+  declare class fractal$api$assets$Asset mixins fractal$core$entities$Entity {
     isAsset: true;
     isComponent: void;
     isCollection: void;
@@ -203,14 +203,14 @@ declare module "@frctl/fractal" {
   declare type fractal$api$assets$AssetCollection = {
     assets(): this,
     toVinylArray(): VinylFile[]
-  } & undefined.EntityCollection<fractal$api$assets$Asset>;
+  } & fractal$core$entities$EntityCollection<fractal$api$assets$Asset>;
 
   declare type fractal$api$assets$AssetSource = {
     assets(): VinylFile[],
     toVinylArray(): VinylFile[],
     toVinylStream(): ReadableStream,
     gulpify(): ReadableStream
-  } & undefined.Source<VinylFile>;
+  } & fractal$core$mixins$Source<VinylFile>;
 
   declare type fractal$api$assets$AssetSourceCollection = {
     +label: string,
@@ -226,17 +226,18 @@ declare module "@frctl/fractal" {
     load(): Promise<void>,
     toJSON(): {},
     "NO PRINT IMPLEMENTED: ComputedPropertyName"(): IterableIterator<fractal$api$assets$AssetSource>
-  } & undefined.ConfigurableEmitter;
+  } & fractal$core$mixins$ConfigurableEmitter;
 
   declare var npm$namespace$fractal$api$components: {
     Component: typeof fractal$api$components$Component
   };
-  declare class fractal$api$components$Component mixins undefined.Entity {
+  declare class fractal$api$components$Component
+    mixins fractal$core$entities$Entity {
     constructor(
       config: {},
-      files: files$FileCollection,
-      resources: assets$AssetCollection,
-      parent: core$entitiesEntity
+      files: fractal$api$files$FileCollection,
+      resources: fractal$api$assets$AssetCollection,
+      parent: fractal$core$entities$Entity
     ): this;
     isAsset: void;
     isComponent: true;
@@ -261,27 +262,31 @@ declare module "@frctl/fractal" {
     render(context: any, env: any, opts: any): Promise<string>;
     getPreviewContext(): Promise<any>;
     getPreviewContent(): Promise<string>;
-    setVariants(variantCollection: variants$VariantCollection): void;
+    setVariants(
+      variantCollection: fractal$api$variants$VariantCollection
+    ): void;
     hasTag(tag: string): boolean;
-    resources(): assets$AssetCollection;
+    resources(): fractal$api$assets$AssetCollection;
     resourcesJSON(): {};
-    flatten(): variants$VariantCollection;
+    flatten(): fractal$api$variants$VariantCollection;
     component(): this;
-    variants(): variants$VariantCollection;
+    variants(): fractal$api$variants$VariantCollection;
     static create(
       config: {},
-      files: files$FileCollection,
-      resources: assets$AssetCollection,
-      parent: core$entitiesEntity
+      files: fractal$api$files$FileCollection,
+      resources: fractal$api$assets$AssetCollection,
+      parent: fractal$core$entities$Entity
     ): IterableIterator<
-      {} | variants$VariantCollection | fractal$api$components$Component
+      | {}
+      | fractal$api$variants$VariantCollection
+      | fractal$api$components$Component
     >;
   }
 
   declare type fractal$api$components$ComponentCollection = {
     components(): this,
     variants(): this
-  } & undefined.EntityCollection<fractal$api$components$Component>;
+  } & fractal$core$entities$EntityCollection<fractal$api$components$Component>;
 
   declare type fractal$api$components$Collator = (
     markup: string,
@@ -306,7 +311,7 @@ declare module "@frctl/fractal" {
     default?: fractal$api$components$ComponentDefaultConfig;
     label?: string;
     statuses?: {
-      [status: string]: core$StatusInfo
+      [status: string]: fractal$core$StatusInfo
     };
     title?: string;
     yield?: string;
@@ -320,7 +325,7 @@ declare module "@frctl/fractal" {
   }
 
   declare type fractal$api$components$ComponentSource = {
-    resources(): files$FileCollection,
+    resources(): fractal$api$files$FileCollection,
     components(): fractal$api$components$Component[],
     getReferencesOf(target: {
       id: string,
@@ -329,21 +334,21 @@ declare module "@frctl/fractal" {
     }): any[],
     variants(): this,
     find(): any,
-    findFile(filePath: string): files$File | void,
+    findFile(filePath: string): fractal$api$files$File | void,
     resolve(context: any): any,
     renderString(str: string, context: any, env: any): Promise<string>,
     renderPreview(
-      entity: string | core$entitiesEntity,
+      entity: string | fractal$core$entities$Entity,
       preview?: boolean,
       env?: any
     ): Promise<string>,
     render(
-      entity: string | core$entitiesEntity,
+      entity: string | fractal$core$entities$Entity,
       context: any,
       env?: any,
       opts?: {}
     ): Promise<string>
-  } & undefined.EntitySource<
+  } & fractal$core$entities$EntitySource<
     fractal$api$components$Component,
     fractal$api$components$ComponentConfig
   >;
@@ -351,11 +356,11 @@ declare module "@frctl/fractal" {
   declare var npm$namespace$fractal$api$docs: {
     Doc: typeof fractal$api$docs$Doc
   };
-  declare class fractal$api$docs$Doc mixins undefined.Entity {
+  declare class fractal$api$docs$Doc mixins fractal$core$entities$Entity {
     constructor(
       config: any,
       content: string,
-      parent: core$entitiesEntity
+      parent: fractal$core$entities$Entity
     ): this;
     isAsset: void;
     isComponent: void;
@@ -371,13 +376,13 @@ declare module "@frctl/fractal" {
     static create(
       config: any,
       content: string,
-      parent: core$entitiesEntity
+      parent: fractal$core$entities$Entity
     ): fractal$api$docs$Doc;
   }
 
   declare type fractal$api$docs$DocCollection = {
     pages(): this
-  } & undefined.EntityCollection<fractal$api$docs$Doc>;
+  } & fractal$core$entities$EntityCollection<fractal$api$docs$Doc>;
 
   declare interface fractal$api$docs$DocDefaultConfig {
     context?: any;
@@ -403,7 +408,7 @@ declare module "@frctl/fractal" {
     markdown?: boolean | fractal$api$docs$DocMarkdownConfig;
     path?: string;
     statuses?: {
-      [status: string]: core$StatusInfo
+      [status: string]: fractal$core$StatusInfo
     };
     title?: string;
     "default.context"?: any;
@@ -422,9 +427,9 @@ declare module "@frctl/fractal" {
     pages(): this,
     docs(): this,
     resolve(context: any): any,
-    toc(page: files$File, maxDepth?: number): Promise<string>,
+    toc(page: fractal$api$files$File, maxDepth?: number): Promise<string>,
     render(
-      page: string | files$File,
+      page: string | fractal$api$files$File,
       context?: any,
       env?: any,
       opts?: {}
@@ -432,19 +437,22 @@ declare module "@frctl/fractal" {
     renderString(str: string, context: any, env?: any): Promise<string>,
     isPage(file: string): boolean,
     isTemplate(file: string): boolean
-  } & undefined.EntitySource<fractal$api$docs$Doc, fractal$api$docs$DocConfig>;
+  } & fractal$core$entities$EntitySource<
+    fractal$api$docs$Doc,
+    fractal$api$docs$DocConfig
+  >;
 
   declare type fractal$api$files$FileCollection = {
     files(): this,
     match(test: string | RegExp | Array<string | RegExp>): this,
     matchItems(
-      items: core$mixinsCollection<files$File>,
+      items: fractal$core$mixins$Collection<files$File>,
       test: string | RegExp | Array<string | RegExp>
     ): files$File,
     toVinylArray(): VinylFile[],
     toVinylStream(): ReadableStream,
     gulpify(): ReadableStream
-  } & undefined.Collection<files$File>;
+  } & fractal$core$mixins$Collection<files$File>;
 
   declare interface fractal$api$files$File {
     +isAsset: void;
@@ -482,12 +490,13 @@ declare module "@frctl/fractal" {
   declare var npm$namespace$fractal$api$variants: {
     Variant: typeof fractal$api$variants$Variant
   };
-  declare class fractal$api$variants$Variant mixins undefined.Entity {
+  declare class fractal$api$variants$Variant
+    mixins fractal$core$entities$Entity {
     constructor(
       config: {},
       view: any,
-      resources: assets$AssetCollection,
-      parent: components$Component
+      resources: fractal$api$assets$AssetCollection,
+      parent: fractal$api$components$Component
     ): this;
     isAsset: void;
     isComponent: void;
@@ -513,18 +522,18 @@ declare module "@frctl/fractal" {
     render(context: any, env?: any, opts?: any): Promise<string>;
     getPreviewContext(): Promise<any>;
     getPreviewContent(): Promise<string>;
-    component(): components$Component;
+    component(): fractal$api$components$Component;
     variant(): this;
     defaultVariant(): this;
-    resources(): assets$AssetCollection;
+    resources(): fractal$api$assets$AssetCollection;
     resourcesJSON(): {};
     getContent(): Promise<string>;
     getContentSync(): string;
     static create(
       config: {},
       view: any,
-      resources: assets$AssetCollection,
-      parent: components$Component
+      resources: fractal$api$assets$AssetCollection,
+      parent: fractal$api$components$Component
     ): fractal$api$variants$Variant;
   }
 
@@ -535,7 +544,7 @@ declare module "@frctl/fractal" {
     getCOllatedContext(): Promise<any>,
     +references: any[],
     +referencedBy: any[]
-  } & undefined.EntityCollection<fractal$api$variants$Variant>;
+  } & fractal$core$entities$EntityCollection<fractal$api$variants$Variant>;
 
   declare var npm$namespace$fractal$cli: {
     Cli: typeof fractal$cli$Cli,
@@ -691,7 +700,7 @@ declare module "@frctl/fractal" {
   }
 
   declare class fractal$web$Web
-    mixins undefined.ConfigurableEmitter<fractal$web$WebConfig> {
+    mixins fractal$core$mixins$ConfigurableEmitter<fractal$web$WebConfig> {
     server(config?: fractal$web$WebServerConfig): fractal$web$Server;
     builder(config?: fractal$web$WebBuilderConfig): fractal$web$Builder;
     theme(name: string, instance?: WebTheme): this;
@@ -715,13 +724,13 @@ declare module "@frctl/fractal" {
   declare export function create(config?: FractalConfig): fractal$Fractal;
 
   declare export class Fractal
-    mixins undefined.ConfigurableEmitter<FractalConfig> {
+    mixins fractal$core$mixins$ConfigurableEmitter<FractalConfig> {
     constructor(config?: FractalConfig): this;
-    api$components: fractal$apicomponentsComponentSource;
-    api$docs: fractal$apidocsDocSource;
-    api$assets: fractal$apiassetsAssetSourceCollection;
-    fractal$cli: fractal$cliCli;
-    fractal$web: fractal$webWeb;
+    api$components: fractal$api$components$ComponentSource;
+    api$docs: fractal$api$docs$DocSource;
+    api$assets: fractal$api$assets$AssetSourceCollection;
+    fractal$cli: fractal$cli$Cli;
+    fractal$web: fractal$web$Web;
     version: string;
     debug: boolean;
     extend(plugin: string | ((core: any) => void)): this;
@@ -741,7 +750,7 @@ declare module "@frctl/fractal" {
     "delimiter.format"?: (str: string) => string;
   }
   declare export class CliTheme
-    mixins undefined.ConfigurableEmitter<CliThemeConfig> {
+    mixins fractal$core$mixins$ConfigurableEmitter<CliThemeConfig> {
     constructor(config?: CliThemeConfig): this;
     setDelimiter(text: string, formatter: (str: string) => string): void;
     delimiter(): string;
@@ -766,7 +775,7 @@ declare module "@frctl/fractal" {
     "static.mount": string;
   }
   declare export class WebTheme
-    mixins undefined.ConfigurableEmitter<WebThemeOptions> {
+    mixins fractal$core$mixins$ConfigurableEmitter<WebThemeOptions> {
     constructor(viewPaths: string[], options?: WebThemeOptions): this;
     options(): WebThemeOptions;
     options(value: WebThemeOptions): this;
@@ -818,9 +827,9 @@ declare module "@frctl/fractal" {
   declare export class Adapter<TEngine> mixins EventEmitter {
     constructor(
       engine: TEngine,
-      source: fractal$coreentitiesEntitySource<any>
+      source: fractal$core$entities$EntitySource<any>
     ): this;
-    _source: fractal$coreentitiesEntitySource<any>;
+    _source: fractal$core$entities$EntitySource<any>;
     engine: TEngine;
     views: Array<{
       handle: string,
@@ -898,15 +907,15 @@ declare module "@frctl/fractal" {
     Variant: typeof core$Variant,
     Doc: typeof core$Doc
   };
-  declare type core$Component = fractal$apicomponentsComponent;
+  declare type core$Component = fractal$api$components$Component;
 
-  declare var core$Component: typeof fractal$apicomponentsComponent;
+  declare var core$Component: typeof fractal$api$components$Component;
 
-  declare type core$Variant = fractal$apivariantsVariant;
+  declare type core$Variant = fractal$api$variants$Variant;
 
-  declare var core$Variant: typeof fractal$apivariantsVariant;
+  declare var core$Variant: typeof fractal$api$variants$Variant;
 
-  declare type core$Doc = fractal$apidocsDoc;
+  declare type core$Doc = fractal$api$docs$Doc;
 
-  declare var core$Doc: typeof fractal$apidocsDoc;
+  declare var core$Doc: typeof fractal$api$docs$Doc;
 }
