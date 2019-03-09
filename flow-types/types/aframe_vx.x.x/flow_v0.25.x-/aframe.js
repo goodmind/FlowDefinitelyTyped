@@ -24,53 +24,56 @@ declare module "global" {
     registerShader: typeof AFRAME$registerShader,
     registerSystem: typeof AFRAME$registerSystem
   };
-  declare var AFRAME$AComponent: $ElementType<AFrame, "AComponent">;
+  declare var AFRAME$AComponent: $PropertyType<AFrame, "AComponent">;
 
-  declare var AFRAME$AEntity: $ElementType<AFrame, "AEntity">;
+  declare var AFRAME$AEntity: $PropertyType<AFrame, "AEntity">;
 
-  declare var AFRAME$ANode: $ElementType<AFrame, "ANode">;
+  declare var AFRAME$ANode: $PropertyType<AFrame, "ANode">;
 
-  declare var AFRAME$AScene: $ElementType<AFrame, "AScene">;
+  declare var AFRAME$AScene: $PropertyType<AFrame, "AScene">;
 
-  declare var AFRAME$components: $ElementType<AFrame, "components">;
+  declare var AFRAME$components: $PropertyType<AFrame, "components">;
 
-  declare var AFRAME$geometries: $ElementType<AFrame, "geometries">;
+  declare var AFRAME$geometries: $PropertyType<AFrame, "geometries">;
 
-  declare var AFRAME$primitives: $ElementType<AFrame, "primitives">;
+  declare var AFRAME$primitives: $PropertyType<AFrame, "primitives">;
 
-  declare var AFRAME$scenes: $ElementType<AFrame, "scenes">;
+  declare var AFRAME$scenes: $PropertyType<AFrame, "scenes">;
 
-  declare var AFRAME$schema: $ElementType<AFrame, "schema">;
+  declare var AFRAME$schema: $PropertyType<AFrame, "schema">;
 
-  declare var AFRAME$shaders: $ElementType<AFrame, "shaders">;
+  declare var AFRAME$shaders: $PropertyType<AFrame, "shaders">;
 
-  declare var AFRAME$systems: $ElementType<AFrame, "systems">;
+  declare var AFRAME$systems: $PropertyType<AFrame, "systems">;
 
-  declare var AFRAME$THREE: $ElementType<AFrame, "THREE">;
+  declare var AFRAME$THREE: $PropertyType<AFrame, "THREE">;
 
-  declare var AFRAME$TWEEN: $ElementType<AFrame, "TWEEN">;
+  declare var AFRAME$TWEEN: $PropertyType<AFrame, "TWEEN">;
 
-  declare var AFRAME$utils: $ElementType<AFrame, "utils">;
+  declare var AFRAME$utils: $PropertyType<AFrame, "utils">;
 
   declare var AFRAME$version: string;
 
-  declare var AFRAME$registerComponent: $ElementType<
+  declare var AFRAME$registerComponent: $PropertyType<
     AFrame,
     "registerComponent"
   >;
 
-  declare var AFRAME$registerElement: $ElementType<AFrame, "registerElement">;
+  declare var AFRAME$registerElement: $PropertyType<AFrame, "registerElement">;
 
-  declare var AFRAME$registerGeometry: $ElementType<AFrame, "registerGeometry">;
+  declare var AFRAME$registerGeometry: $PropertyType<
+    AFrame,
+    "registerGeometry"
+  >;
 
-  declare var AFRAME$registerPrimitive: $ElementType<
+  declare var AFRAME$registerPrimitive: $PropertyType<
     AFrame,
     "registerPrimitive"
   >;
 
-  declare var AFRAME$registerShader: $ElementType<AFrame, "registerShader">;
+  declare var AFRAME$registerShader: $PropertyType<AFrame, "registerShader">;
 
-  declare var AFRAME$registerSystem: $ElementType<AFrame, "registerSystem">;
+  declare var AFRAME$registerSystem: $PropertyType<AFrame, "registerSystem">;
 
   /**
    * Custom elements augment document methods to return custom HTML
@@ -132,12 +135,12 @@ declare module "aframe" {
   }
   declare export interface Component<
     T: { [key: string]: any } = any,
-    S: System = System
+    S: System<> = System<>
   > {
     attrName?: string;
     data: T;
     dependencies?: string[];
-    el: Entity;
+    el: Entity<>;
     id: string;
     multiple?: boolean;
     name: string;
@@ -150,19 +153,19 @@ declare module "aframe" {
     tick?: (time: number, timeDelta: number) => void;
     update(oldData: T): void;
     updateSchema?: () => void;
-    extendSchema(update: Schema): void;
+    extendSchema(update: Schema<>): void;
     flushToDOM(): void;
   }
   declare export interface ComponentConstructor<T: { [key: string]: any }> {
-    new(el: Entity, attrValue: string, id: string): T & Component;
+    new(el: Entity<>, attrValue: string, id: string): T & Component<>;
     prototype: T & {
       name: string,
-      system: System,
+      system: System<>,
       play(): void,
       pause(): void
     };
   }
-  declare export interface ComponentDescriptor<T: Component = Component> {
+  declare export interface ComponentDescriptor<T: Component<> = Component<>> {
     Component: ComponentConstructor<T>;
     dependencies: string[] | void;
     multiple: boolean | void;
@@ -177,7 +180,7 @@ declare module "aframe" {
     rotation: Component<Coordinate>;
     scale: Component<Coordinate>;
   }
-  declare export type Entity<C = ObjectMap<Component>> = {
+  declare export type Entity<C = ObjectMap<Component<>>> = {
     components: C & DefaultComponents,
     isPlaying: boolean,
     object3D: THREE.Object3D,
@@ -189,7 +192,7 @@ declare module "aframe" {
     /**
      * @deprecated since 0.4.0
      */
-    getComputedAttribute(attr: string): Component,
+    getComputedAttribute(attr: string): Component<>,
     getDOMAttribute(attr: string): any,
     getObject3D(type: string): THREE.Object3D,
     getOrCreateObject3D(type: string, construct: any): THREE.Object3D,
@@ -226,14 +229,14 @@ declare module "aframe" {
 
   declare export type DetailEvent<D> = Event & {
     detail: D,
-    target: EventTarget & Entity
+    target: EventTarget & Entity<>
   };
   declare export interface EntityEventMap {
     "child-attached": DetailEvent<{
-      el: Element | Entity
+      el: Element | Entity<>
     }>;
     "child-detached": DetailEvent<{
-      el: Element | Entity
+      el: Element | Entity<>
     }>;
     componentchanged: DetailEvent<{
       name: string,
@@ -268,11 +271,11 @@ declare module "aframe" {
   declare export interface GeometryConstructor<
     T: { [key: string]: any } = { [key: string]: any }
   > {
-    new(): T & Geometry;
+    new(): T & Geometry<>;
   }
-  declare export interface GeometryDescriptor<T: Geometry = Geometry> {
+  declare export interface GeometryDescriptor<T: Geometry<> = Geometry<>> {
     Geometry: GeometryConstructor<T>;
-    schema: Schema;
+    schema: Schema<>;
   }
   declare export type MultiPropertySchema<T: { [key: string]: any }> = $ObjMapi<
     T,
@@ -308,7 +311,7 @@ declare module "aframe" {
     object3D: THREE.Scene,
     renderer: THREE.WebGLRenderer,
     renderStarted: boolean,
-    systems: ObjectMap<System>,
+    systems: ObjectMap<System<>>,
     time: number,
     enterVR(): Promise<void> | void,
     exitVR(): Promise<void> | void,
@@ -323,32 +326,32 @@ declare module "aframe" {
       listener: EventListener,
       useCapture?: boolean
     ): void
-  } & Entity;
+  } & Entity<>;
 
   declare export type Schema<
     T: { [key: string]: any } = { [key: string]: any }
   > = SinglePropertySchema<T> | MultiPropertySchema<T>;
   declare export interface SchemaUtils {
-    isSingleProperty(schema: Schema): boolean;
-    process(schema: Schema): boolean;
+    isSingleProperty(schema: Schema<>): boolean;
+    process(schema: Schema<>): boolean;
   }
   declare export interface Shader {
     name: string;
     data: { [key: string]: any };
-    schema: Schema<$ElementType<this, "data">>;
+    schema: Schema<$PropertyType<this, "data">>;
     material: THREE.Material;
     vertexShader: string;
     fragmentShader: string;
-    init(data?: $ElementType<this, "data">): void;
+    init(data?: $PropertyType<this, "data">): void;
     tick?: (time: number, timeDelta: number) => void;
-    update(oldData: $ElementType<this, "data">): void;
+    update(oldData: $PropertyType<this, "data">): void;
   }
   declare export interface ShaderConstructor<T: { [key: string]: any }> {
     new(): T;
   }
   declare export interface ShaderDescriptor<T: Shader = Shader> {
     Shader: ShaderConstructor<T>;
-    schema: Schema;
+    schema: Schema<>;
   }
   declare export interface SinglePropertySchema<T> {
     type?: PropertyTypes;
@@ -367,7 +370,7 @@ declare module "aframe" {
   declare export interface SystemConstructor<
     T: { [key: string]: any } = { [key: string]: any }
   > {
-    new(scene: Scene): T & System;
+    new(scene: Scene): T & System<>;
   }
   declare export interface Utils {
     coordinates: {
@@ -377,12 +380,12 @@ declare module "aframe" {
     };
     entity: {
       getComponentProperty(
-        entity: Entity,
+        entity: Entity<>,
         componentName: string,
         delimiter?: string
       ): any,
       setComponentProperty(
-        entity: Entity,
+        entity: Entity<>,
         componentName: string,
         value: any,
         delimiter?: string
@@ -434,7 +437,7 @@ declare module "aframe" {
   }
   declare export type ComponentDefinition<
     T: { [key: string]: any } = { [key: string]: any }
-  > = T & $Shape<Component> & ThisType<T & Component>;
+  > = T & $Shape<Component<>> & ThisType<T & Component<>>;
   declare export type GeometryDefinition<
     T: { [key: string]: any } = { [key: string]: any },
     U = any
@@ -449,21 +452,21 @@ declare module "aframe" {
     transforms?: any;
   }
   declare export interface MinimalShaderDefinition {
-    schema: $ElementType<Shader, "schema">;
+    schema: $PropertyType<Shader, "schema">;
   }
   declare export type ShaderDefinition<
     T: { [key: string]: any } = MinimalShaderDefinition & { [key: string]: any }
   > = T & $Shape<Shader>;
   declare export type SystemDefinition<
     T: { [key: string]: any } = { [key: string]: any }
-  > = T & $Shape<System>;
+  > = T & $Shape<System<>>;
   declare export interface AFrame {
-    AComponent: Component;
-    AEntity: Entity;
+    AComponent: Component<>;
+    AEntity: Entity<>;
     ANode: AFRAME$ANode;
     AScene: Scene;
-    components: ObjectMap<ComponentDescriptor>;
-    geometries: ObjectMap<GeometryDescriptor>;
+    components: ObjectMap<ComponentDescriptor<>>;
+    geometries: ObjectMap<GeometryDescriptor<>>;
     primitives: {
       getMeshMixin(): {
         defaultComponents: {
@@ -473,12 +476,12 @@ declare module "aframe" {
           [key: string]: any
         }
       },
-      primitives: ObjectMap<Entity>
+      primitives: ObjectMap<Entity<>>
     };
     scenes: Scene[];
     schema: SchemaUtils;
-    shaders: ObjectMap<ShaderDescriptor>;
-    systems: ObjectMap<SystemConstructor>;
+    shaders: ObjectMap<ShaderDescriptor<>>;
+    systems: ObjectMap<SystemConstructor<>>;
     THREE: ThreeLib;
     TWEEN: TweenLib;
     utils: Utils;
@@ -502,42 +505,42 @@ declare module "aframe" {
       definition: SystemDefinition<T>
     ): SystemConstructor<T>;
   }
-  declare export var AFRAME$AComponent: $ElementType<AFrame, "AComponent">;
-  declare export var AFRAME$AEntity: $ElementType<AFrame, "AEntity">;
-  declare export var AFRAME$ANode: $ElementType<AFrame, "ANode">;
-  declare export var AFRAME$AScene: $ElementType<AFrame, "AScene">;
-  declare export var AFRAME$components: $ElementType<AFrame, "components">;
-  declare export var AFRAME$geometries: $ElementType<AFrame, "geometries">;
-  declare export var AFRAME$primitives: $ElementType<AFrame, "primitives">;
-  declare export var AFRAME$scenes: $ElementType<AFrame, "scenes">;
-  declare export var AFRAME$schema: $ElementType<AFrame, "schema">;
-  declare export var AFRAME$shaders: $ElementType<AFrame, "shaders">;
-  declare export var AFRAME$systems: $ElementType<AFrame, "systems">;
-  declare export var AFRAME$THREE: $ElementType<AFrame, "THREE">;
-  declare export var AFRAME$TWEEN: $ElementType<AFrame, "TWEEN">;
-  declare export var AFRAME$utils: $ElementType<AFrame, "utils">;
-  declare export var AFRAME$version: $ElementType<AFrame, "version">;
-  declare export var AFRAME$registerComponent: $ElementType<
+  declare export var AFRAME$AComponent: $PropertyType<AFrame, "AComponent">;
+  declare export var AFRAME$AEntity: $PropertyType<AFrame, "AEntity">;
+  declare export var AFRAME$ANode: $PropertyType<AFrame, "ANode">;
+  declare export var AFRAME$AScene: $PropertyType<AFrame, "AScene">;
+  declare export var AFRAME$components: $PropertyType<AFrame, "components">;
+  declare export var AFRAME$geometries: $PropertyType<AFrame, "geometries">;
+  declare export var AFRAME$primitives: $PropertyType<AFrame, "primitives">;
+  declare export var AFRAME$scenes: $PropertyType<AFrame, "scenes">;
+  declare export var AFRAME$schema: $PropertyType<AFrame, "schema">;
+  declare export var AFRAME$shaders: $PropertyType<AFrame, "shaders">;
+  declare export var AFRAME$systems: $PropertyType<AFrame, "systems">;
+  declare export var AFRAME$THREE: $PropertyType<AFrame, "THREE">;
+  declare export var AFRAME$TWEEN: $PropertyType<AFrame, "TWEEN">;
+  declare export var AFRAME$utils: $PropertyType<AFrame, "utils">;
+  declare export var AFRAME$version: $PropertyType<AFrame, "version">;
+  declare export var AFRAME$registerComponent: $PropertyType<
     AFrame,
     "registerComponent"
   >;
-  declare export var AFRAME$registerElement: $ElementType<
+  declare export var AFRAME$registerElement: $PropertyType<
     AFrame,
     "registerElement"
   >;
-  declare export var AFRAME$registerGeometry: $ElementType<
+  declare export var AFRAME$registerGeometry: $PropertyType<
     AFrame,
     "registerGeometry"
   >;
-  declare export var AFRAME$registerPrimitive: $ElementType<
+  declare export var AFRAME$registerPrimitive: $PropertyType<
     AFrame,
     "registerPrimitive"
   >;
-  declare export var AFRAME$registerShader: $ElementType<
+  declare export var AFRAME$registerShader: $PropertyType<
     AFrame,
     "registerShader"
   >;
-  declare export var AFRAME$registerSystem: $ElementType<
+  declare export var AFRAME$registerSystem: $PropertyType<
     AFrame,
     "registerSystem"
   >;
