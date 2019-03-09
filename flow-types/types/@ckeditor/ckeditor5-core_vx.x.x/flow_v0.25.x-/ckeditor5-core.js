@@ -49,13 +49,13 @@ declare module "@ckeditor/ckeditor5-core" {
   declare class editor$Editor mixins ckutils.Emitter, ckutils.Observable {
     commands: CommandCollection;
     config: ckutils.Config;
-    conversion: engine.conversionConversion;
-    data: engine.controllerDataController;
-    editing: engine.controllerEditingController;
+    conversion: engine.conversion.Conversion;
+    data: engine.controller.DataController;
+    editing: engine.controller.EditingController;
     isReadOnly: boolean;
     keystrokes: EditingKeystrokeHandler;
     locale: ckutils.Locale;
-    model: engine.modelModel;
+    model: engine.model.Model;
     plugins: PluginCollection<Plugin<any>>;
     state: "initializing" | "ready" | "destroyed";
     static builtinPlugins: Array<Plugin<any>>;
@@ -121,7 +121,7 @@ declare module "@ckeditor/ckeditor5-core" {
     image: ImageConfig;
     language: string;
     mediaEmbed: MediaEmbedConfig;
-    plugins: Array<string | Plugin>;
+    plugins: Array<string | Plugin<>>;
     removePlugins: string[];
     toolbar:
       | string[]
@@ -231,12 +231,14 @@ declare module "@ckeditor/ckeditor5-core" {
   }
   declare export class CommandCollection {
     constructor(): this;
-    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<[string, Command]>;
-    add(commandName: string, command: Command): void;
-    commands(): IterableIterator<Command>;
+    "NO PRINT IMPLEMENTED: ComputedPropertyName"(): Iterator<
+      [string, Command<>]
+    >;
+    add(commandName: string, command: Command<>): void;
+    commands(): IterableIterator<Command<>>;
     destroy(): void;
     execute(commandName: string, ...commandParams: any[]): void;
-    get(commandName: string): Command;
+    get(commandName: string): Command<>;
     names(): IterableIterator<string>;
   }
   declare export class EditingKeystrokeHandler mixins ckutils.KeystrokeHandler {
@@ -247,7 +249,7 @@ declare module "@ckeditor/ckeditor5-core" {
       callback:
         | string
         | ((
-            keyEvtData: engine.viewobserverKeyEventData,
+            keyEvtData: engine.view.observer.KeyEventData,
             cancel: () => void
           ) => void),
       options?: {
@@ -283,7 +285,7 @@ declare module "@ckeditor/ckeditor5-core" {
     mixins ckutils.Emitter, ckutils.Observable {
     editor: editor$Editor;
     static pluginName: string;
-    static requires: Array<(editor: editor$Editor) => Plugin>;
+    static requires: Array<(editor: editor$Editor) => Plugin<>>;
     constructor(editor: editor$Editor): this;
     afterInit(): null | Promise<T>;
     destroy(): null | Promise<T>;
