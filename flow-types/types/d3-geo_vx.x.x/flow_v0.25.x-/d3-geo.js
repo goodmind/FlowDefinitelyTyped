@@ -9,7 +9,7 @@ declare module "d3-geo" {
     /**
      * Sphere geometry type
      */
-    notification$type: "Sphere";
+    type: "Sphere";
   }
 
   /**
@@ -27,13 +27,13 @@ declare module "d3-geo" {
   declare export interface ExtendedGeometryCollection<
     GeometryType: GeoGeometryObjects = GeoGeometryObjects
   > {
-    notification$type: string;
+    type: string;
     bbox?: number[];
     crs?: {
-      notification$type: string,
+      type: string,
       properties: any
     };
-    AFRAME$geometries: GeometryType[];
+    geometries: GeometryType[];
   }
 
   /**
@@ -51,7 +51,7 @@ declare module "d3-geo" {
     Properties: GeoJSON.GeoJsonProperties = GeoJSON.GeoJsonProperties
   > = {
     geometry: GeometryType,
-    properties: Access$Properties,
+    properties: Properties,
     id?: string | number
   } & GeoJSON.GeoJsonObject;
 
@@ -62,9 +62,9 @@ declare module "d3-geo" {
    * The generic refers to the type of ExtendedFeature contained in the ExtendedFeatureCollection.
    */
   declare export type ExtendedFeatureCollection<
-    FeatureType: ExtendedFeature = ExtendedFeature
+    FeatureType: ExtendedFeature<> = ExtendedFeature<>
   > = {
-    features: __esri$FeatureType[]
+    features: FeatureType[]
   } & GeoJSON.GeoJsonObject;
 
   /**
@@ -73,23 +73,23 @@ declare module "d3-geo" {
    */
   declare export type GeoPermissibleObjects =
     | GeoGeometryObjects
-    | ExtendedGeometryCollection
-    | ExtendedFeature
-    | ExtendedFeatureCollection;
+    | ExtendedGeometryCollection<>
+    | ExtendedFeature<>
+    | ExtendedFeatureCollection<>;
 
   /**
    * Returns the spherical area of the specified feature in steradians.
    * This is the spherical equivalent of path.area.
    * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
    */
-  declare export function geoArea(object: ExtendedFeature): number;
+  declare export function geoArea(object: ExtendedFeature<>): number;
 
   /**
    * Returns the spherical area of the specified feature collection in steradians.
    * This is the spherical equivalent of path.area.
    * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature).
    */
-  declare export function geoArea(object: ExtendedFeatureCollection): number;
+  declare export function geoArea(object: ExtendedFeatureCollection<>): number;
 
   /**
    * Returns the spherical area of the specified GeoJson Geometry Object or GeoSphere object in steradians.
@@ -103,7 +103,7 @@ declare module "d3-geo" {
    * This is the spherical equivalent of path.area.
    * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
    */
-  declare export function geoArea(object: ExtendedGeometryCollection): number;
+  declare export function geoArea(object: ExtendedGeometryCollection<>): number;
 
   /**
    * Returns the spherical bounding box for the specified feature. The bounding box is represented by a two-dimensional array: [[left, bottom], [right, top]],
@@ -113,7 +113,7 @@ declare module "d3-geo" {
    * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
    */
   declare export function geoBounds(
-    object: ExtendedFeature
+    object: ExtendedFeature<>
   ): [[number, number], [number, number]];
 
   /**
@@ -124,7 +124,7 @@ declare module "d3-geo" {
    * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature).
    */
   declare export function geoBounds(
-    object: ExtendedFeatureCollection
+    object: ExtendedFeatureCollection<>
   ): [[number, number], [number, number]];
 
   /**
@@ -146,7 +146,7 @@ declare module "d3-geo" {
    * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
    */
   declare export function geoBounds(
-    object: ExtendedGeometryCollection
+    object: ExtendedGeometryCollection<>
   ): [[number, number], [number, number]];
 
   /**
@@ -155,7 +155,7 @@ declare module "d3-geo" {
    * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
    */
   declare export function geoCentroid(
-    object: ExtendedFeature
+    object: ExtendedFeature<>
   ): [number, number];
 
   /**
@@ -164,7 +164,7 @@ declare module "d3-geo" {
    * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature).
    */
   declare export function geoCentroid(
-    object: ExtendedFeatureCollection
+    object: ExtendedFeatureCollection<>
   ): [number, number];
 
   /**
@@ -182,7 +182,7 @@ declare module "d3-geo" {
    * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
    */
   declare export function geoCentroid(
-    object: ExtendedGeometryCollection
+    object: ExtendedGeometryCollection<>
   ): [number, number];
 
   /**
@@ -193,7 +193,7 @@ declare module "d3-geo" {
    * @param point Point specified as a two-element array [longitude, latitude] in degrees.
    */
   declare export function geoContains(
-    object: ExtendedFeature,
+    object: ExtendedFeature<>,
     point: [number, number]
   ): boolean;
 
@@ -205,7 +205,7 @@ declare module "d3-geo" {
    * @param point Point specified as a two-element array [longitude, latitude] in degrees.
    */
   declare export function geoContains(
-    object: ExtendedFeatureCollection,
+    object: ExtendedFeatureCollection<>,
     point: [number, number]
   ): boolean;
 
@@ -229,7 +229,7 @@ declare module "d3-geo" {
    * @param point Point specified as a two-element array [longitude, latitude] in degrees.
    */
   declare export function geoContains(
-    object: ExtendedGeometryCollection,
+    object: ExtendedGeometryCollection<>,
     point: [number, number]
   ): boolean;
 
@@ -249,14 +249,16 @@ declare module "d3-geo" {
    * This is the spherical equivalent of path.measure.
    * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
    */
-  declare export function geoLength(object: ExtendedFeature): number;
+  declare export function geoLength(object: ExtendedFeature<>): number;
 
   /**
    * Returns the great-arc length of the specified feature collection in radians. For polygons, returns the perimeter of the exterior ring plus that of any interior rings.
    * This is the spherical equivalent of path.measure.
    * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature).
    */
-  declare export function geoLength(object: ExtendedFeatureCollection): number;
+  declare export function geoLength(
+    object: ExtendedFeatureCollection<>
+  ): number;
 
   /**
    * Returns the great-arc length of the specified GeoJson Geometry Object or GeoSphere object in radians. For polygons, returns the perimeter of the exterior ring plus that of any interior rings.
@@ -270,7 +272,9 @@ declare module "d3-geo" {
    * This is the spherical equivalent of path.measure..
    * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
    */
-  declare export function geoLength(object: ExtendedGeometryCollection): number;
+  declare export function geoLength(
+    object: ExtendedGeometryCollection<>
+  ): number;
 
   /**
    * Returns an interpolator function given two points a and b.
@@ -301,10 +305,10 @@ declare module "d3-geo" {
   }
 
   /**
- * Returns a rotation function for the given angles.
- * @param angles A two- or three-element array of numbers [lambda, phi, gamma] specifying the rotation angles in degrees about each spherical axis.
-(These correspond to yaw, pitch and roll.) If the rotation angle gamma is omitted, it defaults to 0.
- */
+   * Returns a rotation function for the given angles.
+   * @param angles A two- or three-element array of numbers [lambda, phi, gamma] specifying the rotation angles in degrees about each spherical axis.
+   * (These correspond to yaw, pitch and roll.) If the rotation angle gamma is omitted, it defaults to 0.
+   */
   declare export function geoRotation(
     angles: [number, number] | [number, number, number]
   ): GeoRotation;
@@ -321,7 +325,7 @@ declare module "d3-geo" {
      * Returns a new GeoJSON geometry object of type “Polygon” approximating a circle on the surface of a sphere,
      * with the current center, radius and precision. Any arguments are passed to the accessors.
      */
-    (d?: Datum, ...args: any[]): GeoJSON.__esri$Polygon;
+    (d?: Datum, ...args: any[]): GeoJSON.Polygon;
 
     /**
      * Returns the current center accessor, which defaults to a function returning [0, 0].
@@ -335,10 +339,10 @@ declare module "d3-geo" {
     center(center: [number, number]): this;
 
     /**
- * Sets the circle center to the specified center point accessor function, and returns this circle generator.
- * @param center An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
-It returns the center point specified as [longitude, latitude] in degrees.
- */
+     * Sets the circle center to the specified center point accessor function, and returns this circle generator.
+     * @param center An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
+     * It returns the center point specified as [longitude, latitude] in degrees.
+     */
     center(center: (d: Datum, ...args: any[]) => [number, number]): this;
 
     /**
@@ -353,10 +357,10 @@ It returns the center point specified as [longitude, latitude] in degrees.
     radius(radius: number): this;
 
     /**
- * Sets the circle radius to the specified radius accessor function, and returns this circle generator.
- * @param radius An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
-It returns the radius as the specified angle in degrees.
- */
+     * Sets the circle radius to the specified radius accessor function, and returns this circle generator.
+     * @param radius An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
+     * It returns the radius as the specified angle in degrees.
+     */
     radius(radius: (d: Datum, ...args: any[]) => number): this;
 
     /**
@@ -374,20 +378,20 @@ It returns the radius as the specified angle in degrees.
     precision(precision: number): this;
 
     /**
- * Sets the circle precision to the precision accessor function, and returns this circle generator.
- * 
- * Small circles do not follow great arcs and thus the generated polygon is only an approximation.
- * Specifying a smaller precision angle improves the accuracy of the approximate polygon, but also increase the cost to generate and render it.
- * @param precision An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
-It returns the precision as the specified angle in degrees.
- */
+     * Sets the circle precision to the precision accessor function, and returns this circle generator.
+     *
+     * Small circles do not follow great arcs and thus the generated polygon is only an approximation.
+     * Specifying a smaller precision angle improves the accuracy of the approximate polygon, but also increase the cost to generate and render it.
+     * @param precision An accessor function which will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
+     * It returns the precision as the specified angle in degrees.
+     */
     precision(precision: (d: Datum, ...args: any[]) => number): this;
   }
 
   /**
    * Returns a new geo circle generator
    */
-  declare export function geoCircle(): GeoCircleGenerator;
+  declare export function geoCircle(): GeoCircleGenerator<>;
 
   /**
    * Returns a new geo circle generator
@@ -426,7 +430,7 @@ It returns the precision as the specified angle in degrees.
     /**
      * Returns a GeoJSON Polygon geometry object representing the outline of this graticule, i.e. along the meridians and parallels defining its extent.
      */
-    outline(): GeoJSON.__esri$Polygon;
+    outline(): GeoJSON.Polygon;
 
     /**
      * Returns the current minor extent, which defaults to ⟨⟨-180°, -80° - ε⟩, ⟨180°, 80° + ε⟩⟩.
@@ -568,7 +572,7 @@ It returns the precision as the specified angle in degrees.
    * @param stream A projection stream.
    */
   declare export function geoStream(
-    object: ExtendedFeature,
+    object: ExtendedFeature<>,
     stream: GeoStream
   ): void;
 
@@ -579,7 +583,7 @@ It returns the precision as the specified angle in degrees.
    * @param stream A projection stream.
    */
   declare export function geoStream(
-    object: ExtendedFeatureCollection,
+    object: ExtendedFeatureCollection<>,
     stream: GeoStream
   ): void;
 
@@ -601,7 +605,7 @@ It returns the precision as the specified angle in degrees.
    * @param stream A projection stream.
    */
   declare export function geoStream(
-    object: ExtendedGeometryCollection,
+    object: ExtendedGeometryCollection<>,
     stream: GeoStream
   ): void;
 
@@ -680,11 +684,11 @@ It returns the precision as the specified angle in degrees.
     preclip(): (stream: GeoStream) => GeoStream,
 
     /**
- * Sets the projection’s spherical clipping to the specified function and returns the projection.
- * Pre-clipping occurs in geographic coordinates. Cutting along the antimeridian line, or clipping along a small circle are the most common strategies.
- * @param preclip A spherical clipping function. Clipping functions are implemented as transformations of a projection stream.
-Pre-clipping operates on spherical coordinates, in radians.
- */
+     * Sets the projection’s spherical clipping to the specified function and returns the projection.
+     * Pre-clipping occurs in geographic coordinates. Cutting along the antimeridian line, or clipping along a small circle are the most common strategies.
+     * @param preclip A spherical clipping function. Clipping functions are implemented as transformations of a projection stream.
+     * Pre-clipping operates on spherical coordinates, in radians.
+     */
     preclip(preclip: (stream: GeoStream) => GeoStream): this,
 
     /**
@@ -694,10 +698,10 @@ Pre-clipping operates on spherical coordinates, in radians.
     postclip(): (stream: GeoStream) => GeoStream,
 
     /**
- * Sets the projection’s cartesian clipping to the specified function and returns the projection.
- * @param postclip A cartesian clipping function. Clipping functions are implemented as transformations of a projection stream.
-Post-clipping operates on planar coordinates, in pixels.
- */
+     * Sets the projection’s cartesian clipping to the specified function and returns the projection.
+     * @param postclip A cartesian clipping function. Clipping functions are implemented as transformations of a projection stream.
+     * Post-clipping operates on planar coordinates, in pixels.
+     */
     postclip(postclip: (stream: GeoStream) => GeoStream): this,
 
     /**
@@ -760,7 +764,7 @@ Post-clipping operates on planar coordinates, in pixels.
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedFeature
+      object: ExtendedFeature<>
     ): this,
 
     /**
@@ -773,7 +777,7 @@ Post-clipping operates on planar coordinates, in pixels.
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedFeatureCollection
+      object: ExtendedFeatureCollection<>
     ): this,
 
     /**
@@ -799,7 +803,7 @@ Post-clipping operates on planar coordinates, in pixels.
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedGeometryCollection
+      object: ExtendedGeometryCollection<>
     ): this,
 
     /**
@@ -810,7 +814,7 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
      */
-    fitSize(__esri$size: [number, number], object: ExtendedFeature): this,
+    fitSize(size: [number, number], object: ExtendedFeature<>): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic feature collection in the center of an extent with the given size and top-left corner of [0, 0].
@@ -820,10 +824,7 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature collection).
      */
-    fitSize(
-      __esri$size: [number, number],
-      object: ExtendedFeatureCollection
-    ): this,
+    fitSize(size: [number, number], object: ExtendedFeatureCollection<>): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic geometry object in the center of an extent with the given size and top-left corner of [0, 0].
@@ -833,7 +834,7 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A GeoJson Geometry Object or GeoSphere object supported by d3-geo (An extension of GeoJSON).
      */
-    fitSize(__esri$size: [number, number], object: GeoGeometryObjects): this,
+    fitSize(size: [number, number], object: GeoGeometryObjects): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic geometry collection in the center of an extent with the given size and top-left corner of [0, 0].
@@ -843,24 +844,21 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
      */
-    fitSize(
-      __esri$size: [number, number],
-      object: ExtendedGeometryCollection
-    ): this,
+    fitSize(size: [number, number], object: ExtendedGeometryCollection<>): this,
 
     /**
      * A convenience method for projection.fitSize where the height is automatically chosen from the aspect ratio of object and the given constraint on width.
      * @param width The width of the extent.
      * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
      */
-    fitWidth(width: number, object: ExtendedFeature): this,
+    fitWidth(width: number, object: ExtendedFeature<>): this,
 
     /**
      * A convenience method for projection.fitSize where the height is automatically chosen from the aspect ratio of object and the given constraint on width.
      * @param width The width of the extent.
      * @param object A GeoJson Geometry Object or GeoSphere object supported by d3-geo (An extension of GeoJSON).
      */
-    fitWidth(width: number, object: ExtendedFeatureCollection): this,
+    fitWidth(width: number, object: ExtendedFeatureCollection<>): this,
 
     /**
      * A convenience method for projection.fitSize where the height is automatically chosen from the aspect ratio of object and the given constraint on width.
@@ -874,21 +872,21 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param width The width of the extent.
      * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
      */
-    fitWidth(width: number, object: ExtendedGeometryCollection): this,
+    fitWidth(width: number, object: ExtendedGeometryCollection<>): this,
 
     /**
      * A convenience method for projection.fitSize where the width is automatically chosen from the aspect ratio of object and the given constraint on height.
      * @param height The height of the extent.
      * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
      */
-    fitHeight(height: number, object: ExtendedFeature): this,
+    fitHeight(height: number, object: ExtendedFeature<>): this,
 
     /**
      * A convenience method for projection.fitSize where the width is automatically chosen from the aspect ratio of object and the given constraint on height.
      * @param height The height of the extent.
      * @param object A GeoJson Geometry Object or GeoSphere object supported by d3-geo (An extension of GeoJSON).
      */
-    fitHeight(height: number, object: ExtendedFeatureCollection): this,
+    fitHeight(height: number, object: ExtendedFeatureCollection<>): this,
 
     /**
      * A convenience method for projection.fitSize where the width is automatically chosen from the aspect ratio of object and the given constraint on height.
@@ -902,7 +900,7 @@ Post-clipping operates on planar coordinates, in pixels.
      * @param height The height of the extent.
      * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
      */
-    fitHeight(height: number, object: ExtendedGeometryCollection): this,
+    fitHeight(height: number, object: ExtendedGeometryCollection<>): this,
 
     /**
      * Returns a new array [longitude, latitude] in degrees representing the unprojected point of the given projected point.
@@ -942,10 +940,10 @@ Post-clipping operates on planar coordinates, in pixels.
     rotate(): [number, number, number],
 
     /**
- * Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers.
- * @param angles A two- or three-element array of numbers [lambda, phi, gamma] specifying the rotation angles in degrees about each spherical axis.
-(These correspond to yaw, pitch and roll.) If the rotation angle gamma is omitted, it defaults to 0.
- */
+     * Sets the projection’s three-axis rotation to the specified angles, which must be a two- or three-element array of numbers.
+     * @param angles A two- or three-element array of numbers [lambda, phi, gamma] specifying the rotation angles in degrees about each spherical axis.
+     * (These correspond to yaw, pitch and roll.) If the rotation angle gamma is omitted, it defaults to 0.
+     */
     rotate(angles: [number, number] | [number, number, number]): this,
 
     /**
@@ -1122,7 +1120,7 @@ Post-clipping operates on planar coordinates, in pixels.
      * This method observes any clipping performed by the projection; see projection.clipAngle and projection.clipExtent. This is the planar equivalent of d3.geoArea.
      * @param object An object for which the area is to be calculated.
      */
-    notification$area(object: DatumObject): number;
+    area(object: DatumObject): number;
 
     /**
      * Returns the projected planar bounding box (typically in pixels) for the specified GeoJSON object.
@@ -1159,22 +1157,22 @@ Post-clipping operates on planar coordinates, in pixels.
      *
      * Use the generic to cast the return type of the rendering context, if it is known for a specific application.
      */
-    balloontoolbar$context<C: GeoContext | null>(): C;
+    context<C: GeoContext | null>(): C;
 
     /**
      * Set the current rendering context to null and return the path generator.
      * The path generator will return an SVG path string;
      * @param context Null to remove the current rendering context, if any.
      */
-    balloontoolbar$context(balloontoolbar$context: null): this;
+    context(context: null): this;
 
     /**
- * Set the current rendering context and return the path generator.
- * The path generator will render to the specified context.
- * @param context Rendering context to be used by the path generator.
-The context must at least implement GeoContext, a subset of the CanvasRenderingContext2D API.
- */
-    balloontoolbar$context(balloontoolbar$context: GeoContext): this;
+     * Set the current rendering context and return the path generator.
+     * The path generator will render to the specified context.
+     * @param context Rendering context to be used by the path generator.
+     * The context must at least implement GeoContext, a subset of the CanvasRenderingContext2D API.
+     */
+    context(context: GeoContext): this;
 
     /**
      * Get the current projection. The generic parameter can be used to cast the result to the
@@ -1184,7 +1182,7 @@ The context must at least implement GeoContext, a subset of the CanvasRenderingC
      *
      * Use the generic to cast the return type of the projection, if it is known for a specific application.
      */
-    __esri$projection<
+    projection<
       P: GeoConicProjection | GeoProjection | GeoStreamWrapper | null
     >(): P;
 
@@ -1192,7 +1190,7 @@ The context must at least implement GeoContext, a subset of the CanvasRenderingC
      * Set the projection to the identity projection.
      * @param projection Use null to set the identity projection.
      */
-    __esri$projection(__esri$projection: null): this;
+    projection(projection: null): this;
 
     /**
      * Set the current projection to be used with the geo path generator.
@@ -1202,7 +1200,7 @@ The context must at least implement GeoContext, a subset of the CanvasRenderingC
      * See D3’s transforms for more examples of arbitrary geometric transformations.
      * @param projection A projection.
      */
-    __esri$projection(__esri$projection: GeoProjection): this;
+    projection(projection: GeoProjection): this;
 
     /**
      * Set the projection to be used with the geo path generator to a custom projection.
@@ -1213,7 +1211,7 @@ The context must at least implement GeoContext, a subset of the CanvasRenderingC
      * See D3’s transforms for more examples of arbitrary geometric transformations.
      * @param projection A wrapper object exposing, at a minimum a "stream" method to be used for custom projections.
      */
-    __esri$projection(__esri$projection: GeoStreamWrapper): this;
+    projection(projection: GeoStreamWrapper): this;
 
     /**
      * Returns the current radius or radius accessor used to determine the radius for the display of Point and MultiPoint geometries.
@@ -1228,81 +1226,81 @@ The context must at least implement GeoContext, a subset of the CanvasRenderingC
     pointRadius(value: number): this;
 
     /**
- * Sets the radius used to display Point and MultiPoint geometries to use the specified radius accessor function.
- * 
- * While the radius is commonly specified as a number constant, it may also be specified as a function which is computed per feature,
- * being passed the any arguments passed to the path generator. For example, if your GeoJSON data has additional properties,
- * you might access those properties inside the radius function to vary the point size;
- * alternatively, you could d3.symbol and a projection for greater flexibility.
- * @param value A value accessor function for the radius which is evaluated for each path to be rendered.
-The value accessor function is invoked within the "this" context in which the path generator is used.
-It is passed the object to be rendered, and any additional arguments which have been passed into the call to the render function of the path generator.
- */
+     * Sets the radius used to display Point and MultiPoint geometries to use the specified radius accessor function.
+     *
+     * While the radius is commonly specified as a number constant, it may also be specified as a function which is computed per feature,
+     * being passed the any arguments passed to the path generator. For example, if your GeoJSON data has additional properties,
+     * you might access those properties inside the radius function to vary the point size;
+     * alternatively, you could d3.symbol and a projection for greater flexibility.
+     * @param value A value accessor function for the radius which is evaluated for each path to be rendered.
+     * The value accessor function is invoked within the "this" context in which the path generator is used.
+     * It is passed the object to be rendered, and any additional arguments which have been passed into the call to the render function of the path generator.
+     */
     pointRadius(value: (object: DatumObject, ...args: any[]) => number): this;
   }
 
   /**
- * Creates a new geographic path generator.
- * 
- * The default projection is the null projection. The null projection represents the identity transformation, i.e.
- * the input geometry is not projected and is instead rendered directly in raw coordinates.
- * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
- * 
- * The default context is null, which implies that the path generator will return an SVG path string.
- * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
-however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
-See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
- * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
-Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
- */
+   * Creates a new geographic path generator.
+   *
+   * The default projection is the null projection. The null projection represents the identity transformation, i.e.
+   * the input geometry is not projected and is instead rendered directly in raw coordinates.
+   * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
+   *
+   * The default context is null, which implies that the path generator will return an SVG path string.
+   * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
+   * however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
+   * See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
+   * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
+   * Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
+   */
   declare export function geoPath(
-    __esri$projection?: GeoProjection | GeoStreamWrapper | null,
-    balloontoolbar$context?: GeoContext | null
-  ): GeoPath;
+    projection?: GeoProjection | GeoStreamWrapper | null,
+    context?: GeoContext | null
+  ): GeoPath<>;
 
   /**
- * Creates a new geographic path generator with the default settings.
- * 
- * The default projection is the null projection. The null projection represents the identity transformation:
- * the input geometry is not projected and is instead rendered directly in raw coordinates.
- * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
- * 
- * The default context is null, which implies that the path generator will return an SVG path string.
- * 
- * The generic corresponds to the type of the DatumObject which will be passed into the geo path generator for rendering
- * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
-however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
-See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
- * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
-Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
- */
+   * Creates a new geographic path generator with the default settings.
+   *
+   * The default projection is the null projection. The null projection represents the identity transformation:
+   * the input geometry is not projected and is instead rendered directly in raw coordinates.
+   * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
+   *
+   * The default context is null, which implies that the path generator will return an SVG path string.
+   *
+   * The generic corresponds to the type of the DatumObject which will be passed into the geo path generator for rendering
+   * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
+   * however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
+   * See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
+   * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
+   * Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
+   */
   declare export function geoPath<DatumObject: GeoPermissibleObjects>(
-    __esri$projection?: GeoProjection | GeoStreamWrapper | null,
-    balloontoolbar$context?: GeoContext | null
+    projection?: GeoProjection | GeoStreamWrapper | null,
+    context?: GeoContext | null
   ): GeoPath<any, DatumObject>;
 
   /**
- * Creates a new geographic path generator with the default settings.
- * 
- * The default projection is the null projection. The null projection represents the identity transformation:
- * the input geometry is not projected and is instead rendered directly in raw coordinates.
- * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
- * 
- * The default context is null, which implies that the path generator will return an SVG path string.
- * 
- * The first generic corresponds to the "this"-context within which the geo path generator will be invoked.
- * This could be e.g. the DOMElement bound to "this" when using selection.attr("d", ...) with the path generator.
- * 
- * The second generic corresponds to the type of the DatumObject which will be passed into the geo path generator for rendering.
- * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
-however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
-See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
- * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
-Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
- */
+   * Creates a new geographic path generator with the default settings.
+   *
+   * The default projection is the null projection. The null projection represents the identity transformation:
+   * the input geometry is not projected and is instead rendered directly in raw coordinates.
+   * This can be useful for fast rendering of pre-projected geometry, or for fast rendering of the equirectangular projection.
+   *
+   * The default context is null, which implies that the path generator will return an SVG path string.
+   *
+   * The first generic corresponds to the "this"-context within which the geo path generator will be invoked.
+   * This could be e.g. the DOMElement bound to "this" when using selection.attr("d", ...) with the path generator.
+   *
+   * The second generic corresponds to the type of the DatumObject which will be passed into the geo path generator for rendering.
+   * @param projection An (optional) current projection to be used. Typically this is one of D3’s built-in geographic projections;
+   * however, any object that exposes a projection.stream function can be used, enabling the use of custom projections.
+   * See D3’s transforms for more examples of arbitrary geometric transformations. Setting the projection to "null" uses the identity projection. The default  value is "null", the identity projection.
+   * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
+   * Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
+   */
   declare export function geoPath<This, DatumObject: GeoPermissibleObjects>(
-    __esri$projection?: GeoProjection | GeoStreamWrapper | null,
-    balloontoolbar$context?: GeoContext | null
+    projection?: GeoProjection | GeoStreamWrapper | null,
+    context?: GeoContext | null
   ): GeoPath<This, DatumObject>;
 
   /**
@@ -1580,7 +1578,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedFeature
+      object: ExtendedFeature<>
     ): this,
 
     /**
@@ -1593,7 +1591,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedFeatureCollection
+      object: ExtendedFeatureCollection<>
     ): this,
 
     /**
@@ -1619,7 +1617,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      */
     fitExtent(
       extent: [[number, number], [number, number]],
-      object: ExtendedGeometryCollection
+      object: ExtendedGeometryCollection<>
     ): this,
 
     /**
@@ -1630,7 +1628,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic feature supported by d3-geo (An extension of GeoJSON feature).
      */
-    fitSize(__esri$size: [number, number], object: ExtendedFeature): this,
+    fitSize(size: [number, number], object: ExtendedFeature<>): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic feature collection in the center of an extent with the given size and top-left corner of [0, 0].
@@ -1640,10 +1638,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic feature collection supported by d3-geo (An extension of GeoJSON feature collection).
      */
-    fitSize(
-      __esri$size: [number, number],
-      object: ExtendedFeatureCollection
-    ): this,
+    fitSize(size: [number, number], object: ExtendedFeatureCollection<>): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic geometry object in the center of an extent with the given size and top-left corner of [0, 0].
@@ -1653,7 +1648,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A GeoJson Geometry Object or GeoSphere object supported by d3-geo (An extension of GeoJSON).
      */
-    fitSize(__esri$size: [number, number], object: GeoGeometryObjects): this,
+    fitSize(size: [number, number], object: GeoGeometryObjects): this,
 
     /**
      * Sets the projection’s scale and translate to fit the specified geographic geometry collection in the center of an extent with the given size and top-left corner of [0, 0].
@@ -1663,10 +1658,7 @@ Setting the context to "null" means that the path generator will return an SVG p
      * @param size The size of the extent, specified as an array [width, height].
      * @param object A geographic geometry collection supported by d3-geo (An extension of GeoJSON geometry collection).
      */
-    fitSize(
-      __esri$size: [number, number],
-      object: ExtendedGeometryCollection
-    ): this,
+    fitSize(size: [number, number], object: ExtendedGeometryCollection<>): this,
 
     /**
      * Returns true if x-reflection is enabled, which defaults to false.
