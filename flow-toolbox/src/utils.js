@@ -89,6 +89,12 @@ declare module '${name}' {
             return false;
           }
         }
+        if (node.kind === ts.SyntaxKind.ModuleDeclaration && (node.flags & ts.NodeFlags.GlobalAugmentation) === ts.NodeFlags.GlobalAugmentation) {
+          if (body.statements) {
+            nodes.push(node);
+            return false;
+          }
+        }
         return true;
       });
       sourceFile.statements[0].body = body;
