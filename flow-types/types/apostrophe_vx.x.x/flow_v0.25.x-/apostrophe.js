@@ -2,7 +2,7 @@ declare module "apostrophe" {
   declare export default typeof apostrophe;
 
   declare function apostrophe(
-    options: apostrophe$AposConstructor,
+    options: apostrophe$AposConstructor<>,
     ...args: any[]
   ): any;
 
@@ -38,7 +38,7 @@ declare module "apostrophe" {
     baseUrl?: string;
     modules: $ObjMapi<
       { [k: apostrophe$AposCoreModules & M]: any },
-      <K>(K) => apostrophe$AposModuleOptions | O
+      <K>(K) => apostrophe$AposModuleOptions<> | O
     >;
     prefix?: string;
     root?: string;
