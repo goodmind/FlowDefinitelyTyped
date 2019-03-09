@@ -17,5 +17,5 @@ build:
   script:
     - yarn
     - cd flow-types
-    - npx flow --show-all-errors > ./flow-errors.txt
+    - npx flow --show-all-errors > ./flow-errors.txt || true
     - npx flow-toolbox typecheck
