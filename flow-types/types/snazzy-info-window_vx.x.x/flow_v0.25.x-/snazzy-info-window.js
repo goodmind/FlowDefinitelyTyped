@@ -123,25 +123,25 @@ declare module "snazzy-info-window" {
     maxHeight?: number;
 
     /**
- * The offset from the marker.
- * This value should be different for each placement.
- * By default the offset is configured for the default Google Maps marker.
- * @example offset: {
-top: '10px',
-left: '20px'
-}
- */
+     * The offset from the marker.
+     * This value should be different for each placement.
+     * By default the offset is configured for the default Google Maps marker.
+     * @example offset: {
+     * top: '10px',
+     * left: '20px'
+     * }
+     */
     offset?: SnazzyInfoWindow$Offset;
 
     /**
- * The offset from the map edge in pixels which is used when panning an info window into view.
- * @example edgeOffset: {
-top: 20,
-right: 20,
-bottom: 20,
-left: 20
-}
- */
+     * The offset from the map edge in pixels which is used when panning an info window into view.
+     * @example edgeOffset: {
+     * top: 20,
+     * right: 20,
+     * bottom: 20,
+     * left: 20
+     * }
+     */
     edgeOffset?: SnazzyInfoWindow$EdgeOffset;
 
     /**
@@ -159,14 +159,14 @@ left: 20
     padding?: string;
 
     /**
- * A custom border around the info window.
- * Set to false to completely remove the border.
- * The units used for border should be the same as pointer.
- * @example border: {
-width: '10px',
-color: '#FF0000'
-}
- */
+     * A custom border around the info window.
+     * Set to false to completely remove the border.
+     * The units used for border should be the same as pointer.
+     * @example border: {
+     * width: '10px',
+     * color: '#FF0000'
+     * }
+     */
     border?: SnazzyInfoWindow$Border | boolean;
 
     /**
@@ -198,17 +198,17 @@ color: '#FF0000'
     pointer?: string | boolean;
 
     /**
- * The CSS properties for the shadow of the info window.
- * Set to false to completely remove the shadow.
- * @default shadow: {
-h: '0px',
-v: '3px',
-blur: '6px',
-spread: '0px',
-opacity: 0.5,
-color: '#000'
-}
- */
+     * The CSS properties for the shadow of the info window.
+     * Set to false to completely remove the shadow.
+     * @default shadow: {
+     * h: '0px',
+     * v: '3px',
+     * blur: '6px',
+     * spread: '0px',
+     * opacity: 0.5,
+     * color: '#000'
+     * }
+     */
     shadow?: SnazzyInfoWindow$Shadow | boolean;
 
     /**
@@ -255,10 +255,8 @@ color: '#000'
      */
     callbacks?: SnazzyInfoWindow$Callbacks;
   }
-  declare class SnazzyInfoWindow mixins undefined.OverlayView {
-    constructor(
-      opts: SnazzyInfoWindow$SnazzyInfoWindow$InfoWindowOptions
-    ): this;
+  declare class SnazzyInfoWindow mixins google.maps.OverlayView {
+    constructor(opts: SnazzyInfoWindow$InfoWindowOptions): this;
 
     /**
      * Will attempt to open the info window.
@@ -301,5 +299,5 @@ color: '#000'
      */
     getWrapper(): HTMLElement;
   }
-  declare module.exports: typeof SnazzyInfoWindow;
+  declare export default typeof SnazzyInfoWindow;
 }
