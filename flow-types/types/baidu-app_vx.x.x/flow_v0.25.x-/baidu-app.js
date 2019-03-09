@@ -281,7 +281,7 @@ declare module "baidu-app" {
       errCode: number,
       errMsg: string
     }) => void
-  } & BaseOptions<swan$DataResponse>;
+  } & swan$BaseOptions<swan$DataResponse>;
 
   /**
    * swan.request发起的是https请求。一个微信小程序，同时只能有5个网络请求连接。
@@ -351,7 +351,7 @@ declare module "baidu-app" {
      * HTTP 请求中其他额外的 form data
      */
     formData?: any
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$UploadFileResponse {
     data: string;
@@ -415,7 +415,7 @@ declare module "baidu-app" {
      * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
      */
     success?: (res: swan$TempFileResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 下载文件资源到本地。客户端直接发起一个 HTTP GET 请求，
@@ -446,7 +446,7 @@ declare module "baidu-app" {
      * @version 1.4.0
      */
     protocols?: string[]
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 创建一个 WebSocket 连接；
@@ -471,7 +471,7 @@ declare module "baidu-app" {
      * 需要发送的内容
      */
     data: string | ArrayBuffer
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 通过 WebSocket 连接发送数据，需要先 swan.connectSocket，
@@ -494,7 +494,7 @@ declare module "baidu-app" {
   declare type swan$CloseSocketOptions = {
     code?: number,
     reason?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 关闭WebSocket连接。
@@ -533,7 +533,7 @@ declare module "baidu-app" {
     id_card_side?: string,
     detect_risk?: boolean,
     success?: (res: ai$ocrIdCardResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 识别银行卡并返回卡号、发卡行和卡片类型。
@@ -541,7 +541,7 @@ declare module "baidu-app" {
   declare type swan$ai$ocrBankCardOptions = {
     image: string,
     success?: (res: ai$ocrBankCardResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 对机动车驾驶证所有关键字段进行识别。
@@ -551,7 +551,7 @@ declare module "baidu-app" {
     detect_direction?: boolean,
     unified_valid_period?: boolean,
     success?: (res: ai$ocrDrivingLicenseResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 对机动车行驶证正本所有关键字段进行识别
@@ -561,7 +561,7 @@ declare module "baidu-app" {
     detect_direction?: boolean,
     accuracy?: string,
     success?: (res: ai$ocrVehicleLicenseResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$ocrIdCardResponse {
     direction: number;
@@ -645,7 +645,7 @@ declare module "baidu-app" {
   declare type swan$ai$textReviewOptions = {
     content: string,
     success?: (res: ai$textReviewResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$textReviewResponse {
     log_id: string;
@@ -679,7 +679,7 @@ declare module "baidu-app" {
     vol?: string,
     per?: string,
     success?: (res: ai$textToAudioResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$textToAudioResponse {
     filePath: string;
@@ -699,7 +699,7 @@ declare module "baidu-app" {
     image: string,
     imgUrl?: string,
     success?: (res: ai$imageAuditResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$imageAuditResponse {
     log_id: string;
@@ -727,7 +727,7 @@ declare module "baidu-app" {
   declare type swan$ai$GeneralIdentifyOptions = {
     image: string,
     success?: (res: ai$GeneralIdentifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$GeneralIdentifyResponse {
     log_id: number;
@@ -753,7 +753,7 @@ declare module "baidu-app" {
     image: string,
     with_face?: number,
     success?: (res: ai$DetectIdentifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$DetectIdentifyResponse {
     log_id: number;
@@ -781,7 +781,7 @@ declare module "baidu-app" {
     color_result?: string,
     top_num?: number,
     success?: (res: ai$carClassifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$carClassifyResponse {
     log_id: number;
@@ -815,7 +815,7 @@ declare module "baidu-app" {
     filter_threshold?: number,
     top_num?: number,
     success?: (res: ai$dishClassifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$dishClassifyResponse {
     log_id: number;
@@ -842,7 +842,7 @@ declare module "baidu-app" {
     image: string,
     custom_lib?: boolean,
     success?: (res: ai$logoClassifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$logoClassifyResponse {
     log_id: number;
@@ -874,7 +874,7 @@ declare module "baidu-app" {
     image: string,
     top_num?: number,
     success?: (res: ai$animalClassifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$animalClassifyResponse {
     log_id: number;
@@ -898,7 +898,7 @@ declare module "baidu-app" {
   declare type swan$ai$plantClassifyOptions = {
     image: string,
     success?: (res: ai$plantClassifyResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$ai$plantClassifyResponse {
     log_id: number;
@@ -1000,7 +1000,7 @@ declare module "baidu-app" {
      * 成功则返回图片的本地文件路径列表 tempFilePaths
      */
     success(res: swan$TempFilesData): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 从本地相册选择图片或使用相机拍照。
@@ -1017,7 +1017,7 @@ declare module "baidu-app" {
      * 需要预览的图片链接列表
      */
     urls: string[]
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 预览图片。
@@ -1029,7 +1029,7 @@ declare module "baidu-app" {
      * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
      */
     src: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取图片信息
@@ -1044,7 +1044,7 @@ declare module "baidu-app" {
     success(res: {
       errMsg: string
     }): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 保存图片到系统相册。
@@ -1060,7 +1060,7 @@ declare module "baidu-app" {
      * 录音成功后调用，返回录音文件的临时文件路径，res = {tempFilePath: '录音文件的临时路径'}
      */
     success?: (res: swan$TempFileResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 开始录音。当主动调用swan.stopRecord，
@@ -1075,7 +1075,7 @@ declare module "baidu-app" {
 
   declare type swan$StopRecordAudioOptions = {
     success?: (res: swan$TempFileResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 主动调用停止录音。
@@ -1216,7 +1216,7 @@ declare module "baidu-app" {
      * 需要播放的语音文件的文件路径
      */
     filePath: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 开始播放语音，同时只允许一个语音文件正在播放，
@@ -1281,7 +1281,7 @@ declare module "baidu-app" {
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
     complete?: () => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取音乐播放状态。
@@ -1306,7 +1306,7 @@ declare module "baidu-app" {
      * 封面URL
      */
     coverImgUrl?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 播放音乐，同时只能有一首音乐正在播放。
@@ -1329,7 +1329,7 @@ declare module "baidu-app" {
      * 音乐位置，单位：秒
      */
     position: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 控制音乐播放进度。
@@ -1712,7 +1712,7 @@ declare module "baidu-app" {
      * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
      */
     success?: (res: swan$VideoData) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 拍摄视频或从手机相册中选视频，返回视频的临时文件路径。
@@ -1722,7 +1722,7 @@ declare module "baidu-app" {
   declare type swan$SaveVideoOptions = {
     filePath: string,
     success(errMsg: string): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 保存视频到系统相册。需要用户授权 scope.writePhotosAlbum
@@ -1822,7 +1822,7 @@ declare module "baidu-app" {
     success?: (res: {
       tempImagePath: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$RecordResponse {
     tempThumbPath: string;
@@ -1834,11 +1834,11 @@ declare module "baidu-app" {
      * 超过30s或页面onHide时会结束录像
      */
     timeoutCallback?: (res: swan$RecordResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$StopRecordOptions = {
     success?: (res: swan$RecordResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$CameraContext {
     /**
@@ -1871,33 +1871,33 @@ declare module "baidu-app" {
      * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
      */
     direction: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$LivePlayerContext {
     /**
      * 播放
      */
-    play(options: swan$BaseOptions): void;
+    play(options: swan$BaseOptions<>): void;
 
     /**
      * 停止
      */
-    stop(options: swan$BaseOptions): void;
+    stop(options: swan$BaseOptions<>): void;
 
     /**
      * 静音
      */
-    mute(options: swan$BaseOptions): void;
+    mute(options: swan$BaseOptions<>): void;
 
     /**
      * 暂停
      */
-    pause(options: swan$BaseOptions): void;
+    pause(options: swan$BaseOptions<>): void;
 
     /**
      * 回复
      */
-    resume(options: swan$BaseOptions): void;
+    resume(options: swan$BaseOptions<>): void;
 
     /**
      * 进入全屏
@@ -1907,7 +1907,7 @@ declare module "baidu-app" {
     /**
      * 退出全屏
      */
-    exitFullScreen(options: swan$BaseOptions): void;
+    exitFullScreen(options: swan$BaseOptions<>): void;
   }
 
   /**
@@ -1938,7 +1938,7 @@ declare module "baidu-app" {
      * 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}
      */
     success?: (res: swan$SavedFileData) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 保存文件到本地。
@@ -1974,7 +1974,7 @@ declare module "baidu-app" {
      */
     digestAlgorithm?: string,
     success?: (options: swan$GetFileInfoSuccess) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$GetFileInfoSuccess {
     /**
@@ -2006,7 +2006,7 @@ declare module "baidu-app" {
      * 接口调用成功的回调函数
      */
     success?: (res: swan$GetSavedFileListData) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取本地已保存的文件列表
@@ -2027,7 +2027,7 @@ declare module "baidu-app" {
      * 接口调用成功的回调函数
      */
     success?: (res: swan$SavedFileInfoData) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取本地文件的文件信息
@@ -2045,7 +2045,7 @@ declare module "baidu-app" {
     success?: (res: {
       filePath: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 删除本地存储的文件
@@ -2064,7 +2064,7 @@ declare module "baidu-app" {
      * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
      */
     fileType?: "doc" | "xls" | "ppt" | "pdf" | "docx" | "xlsx" | "pptx"
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 新开页面打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx
@@ -2081,7 +2081,7 @@ declare module "baidu-app" {
      * 需要存储的内容
      */
     data: any
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 将数据存储在本地缓存中指定的 key 中，
@@ -2107,7 +2107,7 @@ declare module "baidu-app" {
      * 接口调用的回调函数,res = {data: key对应的内容}
      */
     success(res: swan$DataResponse): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 从本地缓存中异步获取指定 key 对应的内容。
@@ -2138,7 +2138,7 @@ declare module "baidu-app" {
 
   declare type swan$GetStorageInfoOptions = {
     success(res: swan$StorageInfo): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 异步获取当前storage的相关信息
@@ -2152,7 +2152,7 @@ declare module "baidu-app" {
   declare type swan$RemoveStorageOptions = {
     key: string,
     success?: (res: swan$DataResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare function swan$removeStorage(options: swan$RemoveStorageOptions): void;
 
@@ -2201,7 +2201,7 @@ declare module "baidu-app" {
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
     success?: (res: swan$LocationData) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取当前的地理位置、速度。
@@ -2232,7 +2232,7 @@ declare module "baidu-app" {
 
   declare type swan$ChooseLocationOptions = {
     success(res: swan$ChooseLocationData): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 打开地图选择位置
@@ -2266,7 +2266,7 @@ declare module "baidu-app" {
      * 地址的详细说明
      */
     address?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 使用微信内置地图查看位置
@@ -2278,7 +2278,7 @@ declare module "baidu-app" {
       longitude: number,
       latitude: number
     }): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$TranslateMarkerOptions = {
     markerId: number,
@@ -2290,7 +2290,7 @@ declare module "baidu-app" {
     rotate: number,
     duration?: number,
     animationEnd?: () => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$GetRegionOptions = {
     success(res: {
@@ -2303,7 +2303,7 @@ declare module "baidu-app" {
         longitude: number
       }
     }): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * mapContext 通过 mapId 跟一个 <map/> 组件绑定，通过它可以操作对应的 <map/> 组件。
@@ -2413,7 +2413,7 @@ declare module "baidu-app" {
      * 成功获取系统信息的回调
      */
     success(res: swan$SystemInfo): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取系统信息。
@@ -2479,7 +2479,7 @@ declare module "baidu-app" {
      * 接口调用成功，返回网络类型 networkType
      */
     success(res: swan$NetworkTypeData): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取网络类型。
@@ -2530,7 +2530,7 @@ declare module "baidu-app" {
 
   declare type swan$AccelerometerOptions = {
     interval: "game" | "ui" | "normal"
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 开始监听加速度数据。
@@ -2566,7 +2566,7 @@ declare module "baidu-app" {
     callback: swan$CompassChangeCallback
   ): void;
 
-  declare type swan$CompassOptions = swan$BaseOptions;
+  declare type swan$CompassOptions = swan$BaseOptions<>;
 
   /**
    * 开始监听罗盘数据。
@@ -2582,7 +2582,7 @@ declare module "baidu-app" {
      * 需要拨打的电话号码
      */
     phoneNumber: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 拨打电话
@@ -2627,7 +2627,7 @@ declare module "baidu-app" {
      */
     scanType?: string[],
     success(res: swan$ScanCodeData): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 调起客户端扫码界面，扫码成功后返回对应的结果
@@ -2636,7 +2636,7 @@ declare module "baidu-app" {
 
   declare type swan$SetClipboardDataOptions = {
     data: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置系统剪贴板的内容
@@ -2652,11 +2652,11 @@ declare module "baidu-app" {
    * 微信客户端 6.5.6 版本开始支持
    * @version 1.1.0
    */
-  declare function swan$getClipboardData(options: swan$BaseOptions): void;
+  declare function swan$getClipboardData(options: swan$BaseOptions<>): void;
 
   declare type swan$OpenBluetoothAdapterOptions = {
     success(res: any): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 初始化蓝牙适配器
@@ -2668,7 +2668,7 @@ declare module "baidu-app" {
 
   declare type swan$CloseBluetoothAdapterOptions = {
     success(res: any): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 关闭蓝牙模块。调用该方法将断开所有已建立的链接并释放系统资源
@@ -2695,11 +2695,11 @@ declare module "baidu-app" {
      * 蓝牙适配器信息
      */
     adapterState: swan$BluetoothAdapterState
-  } & ErrMsgResponse;
+  } & swan$ErrMsgResponse;
 
   declare type swan$GetBluetoothAdapterStateOptions = {
     success(res: swan$BluetoothAdapterStateData): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取本机蓝牙适配器状态
@@ -2719,7 +2719,7 @@ declare module "baidu-app" {
 
   declare type swan$StopBluetoothDevicesDiscoveryOptions = {
     success(res: swan$ErrMsgResponse): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 停止搜寻附近的蓝牙外围设备。请在确保找到需要连接的设备后调用该方法停止搜索。
@@ -2760,7 +2760,7 @@ declare module "baidu-app" {
         devices: swan$BluetoothDevice[]
       } & swan$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取所有已发现的蓝牙设备，包括已经和本机处于连接状态的设备
@@ -2786,7 +2786,7 @@ declare module "baidu-app" {
         devices: swan$BluetoothDevice[]
       } & swan$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 根据 uuid 获取处于已连接状态的设备
@@ -2802,7 +2802,7 @@ declare module "baidu-app" {
      */
     deviceId: string,
     success(res: swan$ErrMsgResponse): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 低功耗蓝牙接口
@@ -2818,7 +2818,7 @@ declare module "baidu-app" {
      */
     deviceId: string,
     success(res: swan$ErrMsgResponse): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 断开与低功耗蓝牙设备的连接
@@ -2845,7 +2845,7 @@ declare module "baidu-app" {
         }>
       } & swan$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取蓝牙设备所有 service（服务）
@@ -2896,7 +2896,7 @@ declare module "baidu-app" {
         }>
       } & swan$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取蓝牙设备所有 characteristic（特征值）
@@ -2928,7 +2928,7 @@ declare module "baidu-app" {
     fail?: () => void,
     success(res: swan$ErrMsgResponse): void,
     complete?: () => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$NotifyBLECharacteristicValueChanged = {
     /**
@@ -2951,7 +2951,7 @@ declare module "baidu-app" {
      */
     state: boolean,
     success(res: swan$ErrMsgResponse): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$ReadBLECharacteristicValue = {
     /**
@@ -2988,7 +2988,7 @@ declare module "baidu-app" {
         }
       } & swan$ErrMsgResponse
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 读取低功耗蓝牙设备的特征值的二进制数据值。
@@ -3066,13 +3066,13 @@ declare module "baidu-app" {
      */
     uuids: string | string[],
     success?: (res: swan$ErrMsgResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$StopBeaconDiscoveryOptions = {
     fail?: () => void,
     success?: (res: swan$ErrMsgResponse) => void,
     complete?: () => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 开始搜索附近的iBeacon设备
@@ -3129,7 +3129,7 @@ declare module "baidu-app" {
 
   declare type swan$GetBeaconsOptions = {
     success?: (options: swan$GetBeaconsSuccess) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取所有已搜索到的iBeacon设备
@@ -3158,7 +3158,7 @@ declare module "baidu-app" {
      * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
      */
     value: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置屏幕亮度
@@ -3173,7 +3173,7 @@ declare module "baidu-app" {
      * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
      */
     success(value: number): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取屏幕亮度
@@ -3191,7 +3191,7 @@ declare module "baidu-app" {
     success?: (res: {
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置是否保持常亮状态。
@@ -3206,13 +3206,13 @@ declare module "baidu-app" {
    * 使手机发生较长时间的振动（400ms）
    * @version 1.2.0
    */
-  declare function swan$vibrateLong(options?: swan$BaseOptions): void;
+  declare function swan$vibrateLong(options?: swan$BaseOptions<>): void;
 
   /**
    * 使手机发生较短时间的振动（15ms）
    * @version 1.2.0
    */
-  declare function swan$vibrateShort(options?: swan$BaseOptions): void;
+  declare function swan$vibrateShort(options?: swan$BaseOptions<>): void;
 
   /**
    * 监听用户主动截屏事件，用户使用系统截屏按键截屏时触发此事件
@@ -3382,7 +3382,7 @@ declare module "baidu-app" {
      * 住宅地址邮政编码
      */
     homeAddressPostalCode?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 增加 手机联系人
@@ -3397,13 +3397,13 @@ declare module "baidu-app" {
    * 初始化 Wi-Fi 模块。
    * @version 1.6.0
    */
-  declare function swan$startWifi(options?: swan$BaseOptions): void;
+  declare function swan$startWifi(options?: swan$BaseOptions<>): void;
 
   /**
    * 关闭 Wi-Fi 模块。
    * @version 1.6.0
    */
-  declare function swan$stopWifi(options?: swan$BaseOptions): void;
+  declare function swan$stopWifi(options?: swan$BaseOptions<>): void;
 
   declare type swan$ConnectWiFiOptions = {
     /**
@@ -3420,7 +3420,7 @@ declare module "baidu-app" {
      * Wi-Fi 设备密码
      */
     password?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 连接 Wi-Fi。
@@ -3437,7 +3437,7 @@ declare module "baidu-app" {
    * iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。
    * @version 1.6.0
    */
-  declare function swan$getWifiList(options?: swan$BaseOptions): void;
+  declare function swan$getWifiList(options?: swan$BaseOptions<>): void;
 
   declare interface swan$WiFi {
     /**
@@ -3498,7 +3498,7 @@ declare module "baidu-app" {
      * 提供预设的 Wi-Fi 信息列表
      */
     wifiList: swan$SetWifiList[]
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * iOS特有接口 在 onGetWifiList 回调后，利用接口设置 wifiList 中 AP 的相关信息。
@@ -3520,7 +3520,7 @@ declare module "baidu-app" {
 
   declare type swan$GetConnectedWifiOptions = {
     success(wifi: swan$WiFi): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取已连接中的 Wi-Fi 信息
@@ -3555,7 +3555,7 @@ declare module "baidu-app" {
      * 是否显示透明蒙层，防止触摸穿透，默认：false
      */
     mask?: boolean
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示消息提示框
@@ -3574,7 +3574,7 @@ declare module "baidu-app" {
      * 是否显示透明蒙层，防止触摸穿透，默认：false
      */
     mask?: boolean | "true" | "false"
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示 loading 提示框, 需主动调用 swan.hideLoading 才能关闭提示框
@@ -3632,7 +3632,7 @@ declare module "baidu-app" {
        */
       cancel: boolean
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示模态弹窗
@@ -3659,7 +3659,7 @@ declare module "baidu-app" {
        */
       tapIndex: number
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示操作菜单
@@ -3671,7 +3671,7 @@ declare module "baidu-app" {
      * 置顶栏文字内容
      */
     text: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 动态设置置顶栏文字内容
@@ -3690,7 +3690,7 @@ declare module "baidu-app" {
      * 页面标题
      */
     title: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 动态设置当前页面的标题。
@@ -3728,7 +3728,7 @@ declare module "baidu-app" {
        */
       timingFunc?: "linear" | "easeIn" | "easeOut" | "easeInOut"
     }
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置导航颜色
@@ -3760,7 +3760,7 @@ declare module "baidu-app" {
      * 显示的文本，超过 3 个字符则显示成“…”
      */
     text: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 为 tabBar 某一项的右上角添加文本
@@ -3775,7 +3775,7 @@ declare module "baidu-app" {
      * tabBar的哪一项，从左边算起
      */
     index: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 移除 tabBar 某一项右上角的文本
@@ -3817,7 +3817,7 @@ declare module "baidu-app" {
      * tabbar上边框的颜色， 仅支持 black/white
      */
     borderStyle: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 动态设置 tabBar 的整体样式
@@ -3851,7 +3851,7 @@ declare module "baidu-app" {
      * 当 postion 为 top
      */
     selectedIconPath?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 动态设置 tabBar 某一项的内容
@@ -3864,7 +3864,7 @@ declare module "baidu-app" {
      * 是否需要动画效果，默认无
      */
     aniamtion?: boolean
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示 tabBar
@@ -3883,7 +3883,7 @@ declare module "baidu-app" {
      * 需要跳转的应用内页面的路径
      */
     url: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 保留当前页面，跳转到应用内的某个页面，使用swan.navigateBack可以返回到原页面。
@@ -3899,7 +3899,7 @@ declare module "baidu-app" {
      * （需在 app.json 的 tabBar 字段定义的页面），路径后不能带参数
      */
     url: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
@@ -3911,7 +3911,7 @@ declare module "baidu-app" {
      * 需要跳转的应用内页面的路径
      */
     url: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 关闭当前页面，跳转到应用内的某个页面。
@@ -3923,7 +3923,7 @@ declare module "baidu-app" {
      * 返回的页面数，如果 delta 大于现有页面数，则返回到首页。
      */
     delta: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 关闭当前页面，回退前一页面。
@@ -3937,7 +3937,7 @@ declare module "baidu-app" {
      * 如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
      */
     url: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 关闭所有页面，打开到应用内的某个页面。
@@ -4307,7 +4307,7 @@ declare module "baidu-app" {
      * 节点的dataset
      */
     dataset: any
-  } & RectArea;
+  } & swan$RectArea;
 
   declare interface swan$NodeRefOffset {
     /**
@@ -4946,7 +4946,7 @@ declare module "baidu-app" {
     destWidth?: number,
     destHeight?: number,
     fileType?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 把当前画布的内容导出生成图片，并返回文件路径
@@ -4980,7 +4980,7 @@ declare module "baidu-app" {
      * 将要被提取的图像数据矩形区域的高度
      */
     height: number
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 返回一个数组，用来描述 canvas 区域隐含的像素数据
@@ -4992,7 +4992,7 @@ declare module "baidu-app" {
 
   declare type swan$CanvasPutImageDataOptions = {
     data: Uint8ClampedArray
-  } & CanvasImageDataOptions;
+  } & swan$CanvasImageDataOptions;
 
   /**
    * 将像素数据绘制到画布的方法
@@ -5006,13 +5006,15 @@ declare module "baidu-app" {
    * 开始下拉刷新，调用后触发下拉刷新动画，效果与用户手动下拉刷新一致
    * @version 1.5.0
    */
-  declare function swan$startPullDownRefresh(options?: swan$BaseOptions): void;
+  declare function swan$startPullDownRefresh(
+    options?: swan$BaseOptions<>
+  ): void;
 
   /**
    * 停止当前页面下拉刷新
    * @version 1.5.0
    */
-  declare function swan$stopPullDownRefresh(options?: swan$BaseOptions): void;
+  declare function swan$stopPullDownRefresh(options?: swan$BaseOptions<>): void;
 
   declare interface swan$ExtConfig {
     /**
@@ -5027,7 +5029,7 @@ declare module "baidu-app" {
         errMsg: string
       } & swan$ExtConfig
     ): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取第三方平台自定义的数据字段。
@@ -5071,7 +5073,7 @@ declare module "baidu-app" {
      * 接口调用成功的回调函数
      */
     success?: (res: swan$LoginResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 调用接口获取登录凭证（code）进而换取用户登录态信息，
@@ -5080,7 +5082,7 @@ declare module "baidu-app" {
    */
   declare function swan$login(option: swan$LoginOptions): void;
 
-  declare type swan$CheckSessionOption = swan$BaseOptions;
+  declare type swan$CheckSessionOption = swan$BaseOptions<>;
 
   /**
    * 调用接口 swan.login 获取 Authorization Code，智能小程序可以使用
@@ -5095,7 +5097,7 @@ declare module "baidu-app" {
 
   declare type swan$AuthorizeOptions = {
     scope: swan$Scope
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 提前向用户发起授权请求。
@@ -5145,11 +5147,11 @@ declare module "baidu-app" {
      * 接口调用成功的回调函数
      */
     success?: (res: swan$UserInfoResponse) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$SwanIdOptions = {
     success?: (res: swan$SwanIdTask) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$SwanIdTask {
     errno: string;
@@ -5160,7 +5162,7 @@ declare module "baidu-app" {
 
   declare type swan$verifyOptions = {
     success?: (res: swan$verifyTask) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$verifyTask {
     errmsg: string;
@@ -5212,7 +5214,7 @@ declare module "baidu-app" {
      * 签名,具体签名方案参见微信公众号支付帮助文档;
      */
     paySign: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 发起微信支付。
@@ -5250,11 +5252,11 @@ declare module "baidu-app" {
        */
       shareTickets: string[]
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$ShareMenuOptions = {
     withShareTicket?: boolean
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 显示分享按钮
@@ -5272,7 +5274,7 @@ declare module "baidu-app" {
      * 是否使用带 shareTicket 的转发详情
      */
     withShareTicket?: boolean
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 更新转发属性
@@ -5303,7 +5305,7 @@ declare module "baidu-app" {
        */
       iv: string
     }): void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 获取转发详细信息
@@ -5358,7 +5360,7 @@ declare module "baidu-app" {
        */
       telNumber: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare function swan$chooseAddress(options: swan$ChooseAddressOptions): void;
 
@@ -5373,7 +5375,7 @@ declare module "baidu-app" {
     fail?: () => void,
     success?: () => void,
     complete?: () => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$CardExe = {
     code?: string,
@@ -5394,7 +5396,7 @@ declare module "baidu-app" {
     fixed_begintimestamp?: number,
     outer_str?: string,
     signature: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 批量添加卡券。
@@ -5406,7 +5408,7 @@ declare module "baidu-app" {
       cardId: string,
       code: string
     }>
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 查看微信卡包中的卡券。
@@ -5439,7 +5441,7 @@ declare module "baidu-app" {
     success?: (res: {
       authSetting: swan$AuthSetting
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$openShareOptions = {
     title?: string,
@@ -5449,7 +5451,7 @@ declare module "baidu-app" {
     success?: (res: {
       authSetting: swan$AuthSetting
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 调起客户端小程序设置界面，返回用户设置的操作结果。
@@ -5489,7 +5491,7 @@ declare module "baidu-app" {
     success?: (res: {
       authSetting: swan$AuthSetting
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare type swan$orderInfoOptions = {
     /**
@@ -5541,7 +5543,7 @@ declare module "baidu-app" {
      * 内容见： https://dianshang.baidu.com/platform/doclist/index.html#!/doc/nuomiplus_1_guide/mini_program_cashier/parameter.md
      */
     bizInfo: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 百度收银台。
@@ -5570,7 +5572,7 @@ declare module "baidu-app" {
      * App.onShow() 中获取到这份数据。
      */
     extraData?: any
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 返回上一个小程序(参数)
@@ -5581,7 +5583,7 @@ declare module "baidu-app" {
      * App.onLaunch()，App.onShow() 中获取到这份数据。
      */
     extraData?: any
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 打开另一个小程序。
@@ -5599,7 +5601,7 @@ declare module "baidu-app" {
 
   declare type swan$MetaDescription = {
     content?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置 web 版小程序 description meta 信息。此方法为 web 版小
@@ -5611,7 +5613,7 @@ declare module "baidu-app" {
 
   declare type swan$MetaKeywords = {
     content?: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 设置 web 版小程序 keywords meta 信息。此方法为 web 版小程序专
@@ -5629,7 +5631,7 @@ declare module "baidu-app" {
 
   declare type swan$LoadSubPackageOptions = {
     root: string
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 提前下载好子包的资源，目录结构配置参考(https://smartprogram.baidu.com/docs/develop/framework/subpackages/)。
@@ -5666,7 +5668,7 @@ declare module "baidu-app" {
       bankAccount: string,
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 选择用户的发票抬头。
@@ -5683,7 +5685,7 @@ declare module "baidu-app" {
     success?: (res: {
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 打开同一公众号下关联的另一个小程序。
@@ -5697,7 +5699,7 @@ declare module "baidu-app" {
     success?: (res: {
       errMsg: string
     }) => void
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   /**
    * 返回到上一个小程序，只有在当前小程序是被其他小程序打开时可以调用成功
@@ -5761,18 +5763,21 @@ declare module "baidu-app" {
     detail: Detail;
   }
 
-  declare type swan$BuiltInEvent<T: swan$EventType, Detail> = {} & BaseEvent<
+  declare type swan$BuiltInEvent<
+    T: swan$EventType,
+    Detail
+  > = {} & swan$BaseEvent<T, Detail>;
+
+  declare type swan$CustomEvent<T: string, Detail> = {} & swan$BaseEvent<
     T,
     Detail
   >;
-
-  declare type swan$CustomEvent<T: string, Detail> = {} & BaseEvent<T, Detail>;
 
   /**
    * 指定focus时的光标位置
    * @version 1.5.0
    */
-  declare type swan$InputEvent = {} & BuiltInEvent<
+  declare type swan$InputEvent = {} & swan$BuiltInEvent<
     "input",
     {
       value: string,
@@ -5780,7 +5785,7 @@ declare module "baidu-app" {
     }
   >;
 
-  declare type swan$FormEvent = {} & BuiltInEvent<
+  declare type swan$FormEvent = {} & swan$BuiltInEvent<
     "form",
     {
       value: {
@@ -5789,7 +5794,7 @@ declare module "baidu-app" {
     }
   >;
 
-  declare type swan$ScrollEvent = {} & BuiltInEvent<"scroll", {}>;
+  declare type swan$ScrollEvent = {} & swan$BuiltInEvent<"scroll", {}>;
 
   declare interface swan$Touch {
     identifier: number;
@@ -5802,7 +5807,7 @@ declare module "baidu-app" {
   declare type swan$TouchEvent<T: swan$TouchEventType> = {
     touches: swan$Touch[],
     changedTouches: swan$Touch[]
-  } & BuiltInEvent<
+  } & swan$BuiltInEvent<
     T,
     {
       x: number,
@@ -5810,17 +5815,19 @@ declare module "baidu-app" {
     }
   >;
 
-  declare type swan$TapEvent = {} & TouchEvent<"tap">;
+  declare type swan$TapEvent = {} & swan$TouchEvent<"tap">;
 
-  declare type swan$TouchStartEvent = {} & TouchEvent<"touchstart">;
+  declare type swan$TouchStartEvent = {} & swan$TouchEvent<"touchstart">;
 
-  declare type swan$TouchEndEvent = {} & TouchEvent<"touchend">;
+  declare type swan$TouchEndEvent = {} & swan$TouchEvent<"touchend">;
 
-  declare type swan$TouchMoveEvent = {} & TouchEvent<"touchmove">;
+  declare type swan$TouchMoveEvent = {} & swan$TouchEvent<"touchmove">;
 
-  declare type swan$TouchCancelEvent = {} & TouchEvent<"touchcancel">;
+  declare type swan$TouchCancelEvent = {} & swan$TouchEvent<"touchcancel">;
 
-  declare type swan$TouchForceChangeEvent = {} & TouchEvent<"touchforcechange">;
+  declare type swan$TouchForceChangeEvent = {} & swan$TouchEvent<
+    "touchforcechange"
+  >;
 
   declare interface swan$Logger {
     /**
@@ -5882,7 +5889,7 @@ declare module "baidu-app" {
 
   declare type swan$EnableDebugOptions = {
     enableDebug: boolean
-  } & BaseOptions;
+  } & swan$BaseOptions;
 
   declare interface swan$AccountInfo {
     miniProgram: {
@@ -5948,7 +5955,7 @@ declare module "baidu-app" {
     /**
      * 获取当前页面
      */
-    getCurrentPage(): swan$Page;
+    getCurrentPage(): swan$Page<>;
   }
 
   declare type swan$DefaultData<V> =
@@ -6199,8 +6206,9 @@ declare module "baidu-app" {
    * Note this is different from PropOptions as it is the definitions you passed to Component function
    * whereas this type is for call-site.
    */
-  declare type swan$DataValueType<Def> =
-    "There was Conditional Type, use $Call utility type";
+  declare type swan$DataValueType<
+    Def
+  > = /* Flow doesn't support conditional types, use $Call utility type */ any;
 
   /**
    * Component实例方法
@@ -6432,7 +6440,7 @@ declare module "baidu-app" {
      */
     pageScrollTo(option?: swan$PageScrollToOptions): void,
     createCanvasContext(selector: string): swan$CanvasContext
-  } & Component<D, P>;
+  } & swan$Component<D, P>;
 
   declare interface swan$LaunchOptions {
     /**
@@ -6567,12 +6575,12 @@ declare module "baidu-app" {
    * 接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。
    */
   declare function Page<T: swan$PageOptions & { [key: string]: any }>(
-    page: T & ThisType<T & swan$Page>
+    page: T & ThisType<T & swan$Page<>>
   ): void;
 
   /**
    * getCurrentPages() 函数用于获取当前页面栈的实例，
    * 以数组形式按栈的顺序给出，第一个元素为首页，最后一个元素为当前页面。
    */
-  declare function getCurrentPages(): swan$Page[];
+  declare function getCurrentPages(): swan$Page<>[];
 }
