@@ -236,10 +236,10 @@ declare module "chroma-js" {
       colors: string[]
     ): {
       (t: number): chroma$Color,
-      scale(): chroma$Scale
+      scale(): chroma$Scale<>
     };
-    scale(name: string | chroma$Color): chroma$Scale;
-    scale(colors?: Array<string | chroma$Color>): chroma$Scale;
+    scale(name: string | chroma$Color): chroma$Scale<>;
+    scale(colors?: Array<string | chroma$Color>): chroma$Scale<>;
     cubehelix(): chroma$Cubehelix;
     cmyk(c: number, m: number, y: number, k: number): chroma$Color;
     css(col: string): chroma$Color;
@@ -264,12 +264,12 @@ declare module "chroma-js" {
     desaturate(s?: number): chroma$Color;
 
     /**
- * Changes a single channel and returns the result a new chroma object.
- * @example // half Lab lightness
-chroma('orangered').set('lab.l', '*0.5')
- * @example // double Lch saturation
-chroma('darkseagreen').set('lch.c', '*2')
- */
+     * Changes a single channel and returns the result a new chroma object.
+     * @example // half Lab lightness
+     * chroma('orangered').set('lab.l', '*0.5')
+     * @example // double Lch saturation
+     * chroma('darkseagreen').set('lch.c', '*2')
+     */
     set(modechan: string, v: number | string): chroma$Color;
 
     /**
@@ -292,14 +292,14 @@ chroma('darkseagreen').set('lch.c', '*2')
     luminance(l: number, colorSpace?: $Keys<chroma$ColorSpaces>): chroma$Color;
 
     /**
- * Get color as hexadecimal string.
- * @param mode `auto` - string will include alpha channel only if it's less than 1.
-`rgb`  - string will not include alpha channel.
-`rgba` - string will include alpha channel.
- * @example chroma('orange').hex() === '#ffa500'
-chroma('orange').alpha(0.5).hex() === '#ffa50080'
-chroma('orange').alpha(0.5).hex('rgb') === '#ffa500'
- */
+     * Get color as hexadecimal string.
+     * @param mode `auto` - string will include alpha channel only if it's less than 1.
+     * `rgb`  - string will not include alpha channel.
+     * `rgba` - string will include alpha channel.
+     * @example chroma('orange').hex() === '#ffa500'
+     * chroma('orange').alpha(0.5).hex() === '#ffa50080'
+     * chroma('orange').alpha(0.5).hex('rgb') === '#ffa500'
+     */
     hex(mode?: "auto" | "rgb" | "rgba"): string;
 
     /**
@@ -320,99 +320,99 @@ chroma('orange').alpha(0.5).hex('rgb') === '#ffa500'
     temperature(): number;
 
     /**
- * Returns the numeric representation of the hexadecimal RGB color.
- * @example chroma('#000000').num() === 0
-chroma('#0000ff').num() === 255
-chroma('#00ff00').num() === 65280
-chroma('#ff0000').num() === 16711680
- */
+     * Returns the numeric representation of the hexadecimal RGB color.
+     * @example chroma('#000000').num() === 0
+     * chroma('#0000ff').num() === 255
+     * chroma('#00ff00').num() === 65280
+     * chroma('#ff0000').num() === 16711680
+     */
     num(): number;
 
     /**
- * Returns an array with the red, green, and blue component, each as
- * number within the range 0..255. Chroma internally stores RGB
- * channels as floats but rounds the numbers before returning them.
- * You can pass false to prevent the rounding.
- * @example chroma('orange').rgb() === [255,165,0]
-chroma('orange').darken().rgb() === [198,118,0]
-chroma('orange').darken().rgb(false) === [198.05,118.11,0]
- */
-    rgb: (round?: boolean) => $ElementType<chroma$ColorSpaces, "rgb">;
+     * Returns an array with the red, green, and blue component, each as
+     * number within the range 0..255. Chroma internally stores RGB
+     * channels as floats but rounds the numbers before returning them.
+     * You can pass false to prevent the rounding.
+     * @example chroma('orange').rgb() === [255,165,0]
+     * chroma('orange').darken().rgb() === [198,118,0]
+     * chroma('orange').darken().rgb(false) === [198.05,118.11,0]
+     */
+    rgb: (round?: boolean) => $PropertyType<chroma$ColorSpaces, "rgb">;
 
     /**
- * Just like color.rgb but adds the alpha channel to the returned array.
- * @example chroma('orange').rgba() === [255,165,0,1]
-chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
- */
-    rgba: (round?: boolean) => $ElementType<chroma$ColorSpaces, "rgba">;
+     * Just like color.rgb but adds the alpha channel to the returned array.
+     * @example chroma('orange').rgba() === [255,165,0,1]
+     * chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
+     */
+    rgba: (round?: boolean) => $PropertyType<chroma$ColorSpaces, "rgba">;
 
     /**
- * Returns an array with the `hue`, `saturation`, and `lightness`
- * component. Hue is the color angle in degree (`0..360`), saturation
- * and lightness are within `0..1`. Note that for hue-less colors
- * (black, white, and grays), the hue component will be NaN.
- * @example chroma('orange').hsl() === [38.82,1,0.5,1]
-chroma('white').hsl() === [NaN,0,1,1]
- */
-    hsl: () => $ElementType<chroma$ColorSpaces, "hsl">;
+     * Returns an array with the `hue`, `saturation`, and `lightness`
+     * component. Hue is the color angle in degree (`0..360`), saturation
+     * and lightness are within `0..1`. Note that for hue-less colors
+     * (black, white, and grays), the hue component will be NaN.
+     * @example chroma('orange').hsl() === [38.82,1,0.5,1]
+     * chroma('white').hsl() === [NaN,0,1,1]
+     */
+    hsl: () => $PropertyType<chroma$ColorSpaces, "hsl">;
 
     /**
- * Returns an array with the `hue`, `saturation`, and `value`
- * components. Hue is the color angle in degree (`0..360`),
- * saturation and value are within `0..1`. Note that for hue-less
- * colors (black, white, and grays), the hue component will be NaN.
- * @example chroma('orange').hsv() === [38.82,1,1]
-chroma('white').hsv() === [NaN,0,1]
- */
-    hsv: () => $ElementType<chroma$ColorSpaces, "hsv">;
+     * Returns an array with the `hue`, `saturation`, and `value`
+     * components. Hue is the color angle in degree (`0..360`),
+     * saturation and value are within `0..1`. Note that for hue-less
+     * colors (black, white, and grays), the hue component will be NaN.
+     * @example chroma('orange').hsv() === [38.82,1,1]
+     * chroma('white').hsv() === [NaN,0,1]
+     */
+    hsv: () => $PropertyType<chroma$ColorSpaces, "hsv">;
 
     /**
- * Returns an array with the `hue`, `saturation`, and `intensity`
- * components, each as number between 0 and 255. Note that for hue-less
- *   colors (black, white, and grays), the hue component will be NaN.
- * @example chroma('orange').hsi() === [39.64,1,0.55]
-chroma('white').hsi() === [NaN,0,1]
- */
-    hsi: () => $ElementType<chroma$ColorSpaces, "hsi">;
+     * Returns an array with the `hue`, `saturation`, and `intensity`
+     * components, each as number between 0 and 255. Note that for hue-less
+     *   colors (black, white, and grays), the hue component will be NaN.
+     * @example chroma('orange').hsi() === [39.64,1,0.55]
+     * chroma('white').hsi() === [NaN,0,1]
+     */
+    hsi: () => $PropertyType<chroma$ColorSpaces, "hsi">;
 
     /**
      * Returns an array with the **L**, **a**, and **b** components.
      * @example chroma('orange').lab() === [74.94,23.93,78.95]
      */
-    lab: () => $ElementType<chroma$ColorSpaces, "lab">;
+    lab: () => $PropertyType<chroma$ColorSpaces, "lab">;
 
     /**
      * Returns an array with the **Lightness**, **chroma**, and **hue**
      * components.
      * @example chroma('skyblue').lch() === [79.21,25.94,235.11]
      */
-    lch: () => $ElementType<chroma$ColorSpaces, "lch">;
+    lch: () => $PropertyType<chroma$ColorSpaces, "lch">;
 
     /**
      * Alias of [lch](#color-lch), but with the components in reverse
      * order.
      * @example chroma('skyblue').hcl() === [235.11,25.94,79.21]
      */
-    hcl: () => $ElementType<chroma$ColorSpaces, "hcl">;
+    hcl: () => $PropertyType<chroma$ColorSpaces, "hcl">;
 
     /**
- * Just like color.rgb but adds the alpha channel to the returned
- * array.
- * @example chroma('orange').rgba() === [255,165,0,1]
-chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
- */
-    cmyk: () => $ElementType<chroma$ColorSpaces, "cmyk">;
+     * Just like color.rgb but adds the alpha channel to the returned
+     * array.
+     * @example chroma('orange').rgba() === [255,165,0,1]
+     * chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
+     */
+    cmyk: () => $PropertyType<chroma$ColorSpaces, "cmyk">;
 
     /**
      * Returns an array with the cyan, magenta, yellow, and key (black)
      * components, each as a normalized value between 0 and 1.
      * @example chroma('33cc00').gl() === [0.2,0.8,0,1]
      */
-    gl: () => $ElementType<chroma$ColorSpaces, "gl">;
+    gl: () => $PropertyType<chroma$ColorSpaces, "gl">;
   }
 
   declare interface chroma$Scale<OutType = chroma$Color> {
-    (c: string[]): chroma$Scale;
+    (c: string[]): chroma$Scale<>;
     (value: number): OutType;
     domain(d?: number[], n?: number, mode?: string): this;
     mode(mode: chroma$InterpolationMode): this;
@@ -453,7 +453,7 @@ chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
     /**
      * Set out format for scale() call. Passing null will result in a scale which outputs colors.
      */
-    out(format: null): chroma$Scale;
+    out(format: null): chroma$Scale<>;
     out<K: $Keys<chroma$ColorSpaces>>(
       format: K
     ): chroma$Scale<$ElementType<chroma$ColorSpaces, K>>;
@@ -485,8 +485,8 @@ chroma('hsla(20, 100%, 40%, 0.5)').rgba() === [204,68,0,0.5]
     /**
      * You can call cubehelix.scale() to use the cube-helix through the chroma.scale interface.
      */
-    scale(): chroma$Scale;
+    scale(): chroma$Scale<>;
   }
-  declare var chroma: chroma$chroma$ChromaStatic;
-  declare module.exports: typeof chroma;
+  declare var chroma: chroma$ChromaStatic;
+  declare export default typeof chroma;
 }
