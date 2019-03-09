@@ -331,7 +331,7 @@ declare module "@google/maps" {
      * of your own design.
      * @see https://developers.google.com/maps/documentation/geocoding/intro#GeocodingRequests
      */
-    geocode: GoogleMapsClientEndpoint<GeocodingRequest, GeocodingResponse>;
+    geocode: GoogleMapsClientEndpoint<GeocodingRequest, GeocodingResponse<>>;
 
     /**
      * The Geolocation API returns a location and accuracy radius based on information about cell towers and WiFi nodes
