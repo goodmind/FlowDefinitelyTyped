@@ -1,7 +1,7 @@
 declare module "@atlaskit/button" {
   import type {
     Component,
-    ReactNode,
+    Node,
     ReactElement,
     ComponentClass,
     MouseEventHandler
@@ -40,7 +40,7 @@ declare module "@atlaskit/button" {
     /**
      * This button's child nodes.
      */
-    +children?: ReactNode;
+    +children?: Node;
 
     /**
      * Add a classname to the button.
@@ -139,7 +139,7 @@ declare module "@atlaskit/button" {
     /**
      * The buttons to render.
      */
-    +children: ReactNode;
+    +children: Node;
   }
   declare export class ButtonGroup mixins Component<ButtonGroupProps> {}
   declare export var themeNamespace: string;
