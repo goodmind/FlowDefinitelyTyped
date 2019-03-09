@@ -9,9 +9,9 @@ declare module "auto-bind" {
     options?: autoBind$AutoBindOptions
   ) => selfT;
   declare type AutoBindModule<selfT = { [key: string]: any }> = {
-    react: autoBind$autoBind$AutoBindFunction<selfT>
-  } & autoBind$autoBind$AutoBindFunction<selfT>;
+    react: autoBind$AutoBindFunction<selfT>
+  } & autoBind$AutoBindFunction<selfT>;
 
-  declare var autoBind: AutoBindModule;
-  declare module.exports: typeof autoBind;
+  declare var autoBind: AutoBindModule<>;
+  declare export default typeof autoBind;
 }
