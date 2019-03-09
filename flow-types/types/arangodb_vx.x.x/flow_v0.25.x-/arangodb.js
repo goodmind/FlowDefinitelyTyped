@@ -149,12 +149,12 @@ declare module "@arangodb/general-graph" {
       vertex2Example: Example,
       options?: CommonPropertiesOptions
     ): CountCommonProperties[];
-    _paths(options?: PathsOptions): Path[];
+    _paths(options?: PathsOptions): Path<>[];
     _shortestPath(
       startVertexExample: Example,
       endVertexExample: Example,
       options?: ShortestPathOptions
-    ): ShortestPath[];
+    ): ShortestPath<>[];
     _distanceTo(
       startVertexExample: Example,
       endVertexExample: Example,
@@ -497,7 +497,7 @@ declare module "@arangodb/foxx/sessions/storages/jwt" {
     options:
       | SafeJwtStorageOptions
       | UnsafeJwtStorageOptions
-      | $ElementType<SafeJwtStorageOptions, "secret">
+      | $PropertyType<SafeJwtStorageOptions, "secret">
   ): Foxx$SessionStorage;
 
   declare export default typeof jwtStorage;
@@ -512,7 +512,7 @@ declare module "@arangodb/foxx/sessions/storages/collection" {
   declare function collectionStorage(
     options:
       | CollectionStorageOptions
-      | $ElementType<CollectionStorageOptions, "collection">
+      | $PropertyType<CollectionStorageOptions, "collection">
   ): Foxx$CollectionSessionStorage;
 
   declare export default typeof collectionStorage;
@@ -1218,7 +1218,7 @@ declare module "arangodb" {
 
   declare type ArangoDB$UpdateMetadata = {
     _oldRev: string
-  } & DocumentMetadata;
+  } & ArangoDB$DocumentMetadata;
 
   declare type ArangoDB$Document<T: { [key: string]: any } = any> = $ObjMapi<
     T,
@@ -1245,16 +1245,16 @@ declare module "arangodb" {
 
   declare type ArangoDB$InsertResult<T: { [key: string]: any } = any> = {
     new?: ArangoDB$Document<T>
-  } & DocumentMetadata;
+  } & ArangoDB$DocumentMetadata;
 
   declare type ArangoDB$UpdateResult<T: { [key: string]: any } = any> = {
     old?: ArangoDB$Document<T>,
     new?: ArangoDB$Document<T>
-  } & UpdateMetadata;
+  } & ArangoDB$UpdateMetadata;
 
   declare type ArangoDB$RemoveResult<T: { [key: string]: any } = any> = {
     old?: ArangoDB$Document<T>
-  } & DocumentMetadata;
+  } & ArangoDB$DocumentMetadata;
 
   declare interface ArangoDB$InsertOptions {
     waitForSync?: boolean;
@@ -1265,12 +1265,12 @@ declare module "arangodb" {
   declare type ArangoDB$ReplaceOptions = {
     overwrite?: boolean,
     returnOld?: boolean
-  } & InsertOptions;
+  } & ArangoDB$InsertOptions;
 
   declare type ArangoDB$UpdateOptions = {
     keepNull?: boolean,
     mergeObjects?: boolean
-  } & ReplaceOptions;
+  } & ArangoDB$ReplaceOptions;
 
   declare interface ArangoDB$UpdateByExampleOptions {
     keepNull?: boolean;
@@ -1379,11 +1379,11 @@ declare module "arangodb" {
     remove(
       selector: string | ArangoDB$DocumentLike,
       options?: ArangoDB$RemoveOptions
-    ): ArangoDB$RemoveResult;
+    ): ArangoDB$RemoveResult<>;
     remove(
       selectors: $ReadOnlyArray<string | ArangoDB$DocumentLike>,
       options?: ArangoDB$RemoveOptions
-    ): ArangoDB$RemoveResult[];
+    ): ArangoDB$RemoveResult<>[];
     removeByExample(
       example: $Shape<ArangoDB$Document<T>>,
       waitForSync?: boolean,
@@ -1618,38 +1618,38 @@ declare module "arangodb" {
     _databases(): string[];
     _dropDatabase(name: string): true;
     _useDatabase(name: string): ArangoDB$Database;
-    _index(index: string | ArangoDB$IndexLike): ArangoDB$Index | null;
+    _index(index: string | ArangoDB$IndexLike): ArangoDB$Index<> | null;
     _dropIndex(index: string | ArangoDB$IndexLike): boolean;
     _id(): string;
     _isSystem(): boolean;
     _name(): string;
     _path(): string;
     _version(): string;
-    _collection(name: string): ArangoDB$Collection;
-    _collections(): ArangoDB$Collection[];
+    _collection(name: string): ArangoDB$Collection<>;
+    _collections(): ArangoDB$Collection<>[];
     _create(
       name: string,
       properties?: ArangoDB$CreateCollectionOptions
-    ): ArangoDB$Collection;
+    ): ArangoDB$Collection<>;
     _createDocumentCollection(
       name: string,
       properties?: ArangoDB$CreateCollectionOptions
-    ): ArangoDB$Collection;
+    ): ArangoDB$Collection<>;
     _createEdgeCollection(
       name: string,
       properties?: ArangoDB$CreateCollectionOptions
-    ): ArangoDB$Collection;
+    ): ArangoDB$Collection<>;
     _drop(name: string): void;
     _truncate(name: string): void;
-    _createStatement(query: ArangoDB$Query | string): ArangoDB$Statement;
+    _createStatement(query: ArangoDB$Query | string): ArangoDB$Statement<>;
     _query(
       query: ArangoDB$Query | string,
       bindVars?: { [key: string]: any },
       options?: ArangoDB$QueryOptions
-    ): ArangoDB$Cursor;
+    ): ArangoDB$Cursor<>;
     _explain(query: ArangoDB$Query | string): void;
     _parse(query: string): ArangoDB$ParsedQuery;
-    _document(name: string): ArangoDB$Document;
+    _document(name: string): ArangoDB$Document<>;
     _exists(
       selector: string | ArangoDB$ObjectWithId
     ): ArangoDB$DocumentMetadata;
@@ -1705,12 +1705,12 @@ declare module "arangodb" {
     save: (session: Foxx$Session) => Foxx$Session,
     clear: (session: Foxx$Session) => boolean,
     prune: () => string[]
-  } & SessionStorage;
+  } & Foxx$SessionStorage;
 
   declare type Foxx$SessionsMiddleware = {
     storage: Foxx$SessionStorage,
     transport: Foxx$SessionTransport[]
-  } & DelegateMiddleware;
+  } & Foxx$DelegateMiddleware;
 
   declare type Foxx$SimpleMiddleware = (
     req: Foxx$Request,
@@ -1868,13 +1868,13 @@ declare module "arangodb" {
     isProduction: boolean;
     manifest: Foxx$Manifest;
     mount: string;
-    collection(name: string): ArangoDB$Collection | null;
+    collection(name: string): ArangoDB$Collection<> | null;
     collectionName(name: string): string;
     createDocumentationRouter(
       opts?:
         | $Shape<Foxx$DocumentationRouterOptions>
-        | $ElementType<Foxx$DocumentationRouterOptions, "before">
-        | $ElementType<Foxx$DocumentationRouterOptions, "swaggerRoot">
+        | $PropertyType<Foxx$DocumentationRouterOptions, "before">
+        | $PropertyType<Foxx$DocumentationRouterOptions, "swaggerRoot">
     ): Foxx$Router;
     file(name: string): Buffer;
     file(name: string, encoding: string): string;
@@ -2172,12 +2172,12 @@ declare module "arangodb" {
   ): Foxx$Endpoint;
 
   declare interface Foxx$Router {
-    get: typeof route;
-    post: typeof route;
-    put: typeof route;
-    patch: typeof route;
-    delete: typeof route;
-    all: typeof route;
+    get: typeof Foxx$route;
+    post: typeof Foxx$route;
+    put: typeof Foxx$route;
+    patch: typeof Foxx$route;
+    delete: typeof Foxx$route;
+    all: typeof Foxx$route;
     use(
       path: string,
       routerOrMiddleware: Foxx$Router | Foxx$Middleware,
