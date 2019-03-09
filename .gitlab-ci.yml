@@ -9,13 +9,20 @@ cache:
   paths:
     - node_modules/
 
-build:
+all-errors:
   artifacts:
     paths:
-      - flow-types/typecheck
       - flow-types/flow-errors.txt
   script:
     - yarn
     - cd flow-types
     - npx flow --show-all-errors > ./flow-errors.txt || true
+
+typecheck:
+  artifacts:
+    paths:
+      - flow-types/typecheck
+  script:
+    - yarn
+    - cd flow-types
     - npx flow-toolbox typecheck
