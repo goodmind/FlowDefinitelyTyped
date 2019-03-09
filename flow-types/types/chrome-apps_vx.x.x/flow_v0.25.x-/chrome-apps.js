@@ -74,13 +74,13 @@ declare module "chrome-apps" {
   declare type chrome$IDict<
     T,
     K,
-    F = "Flow doesn't support conditional types, use $Call utility type"
+    F = any /* Flow doesn't support conditional types, use $Call utility type */
   > = F;
 
   declare type chrome$ToStringLiteral<
     C: Object,
     K = $Keys<C>,
-    V = "Flow doesn't support conditional types, use $Call utility type"
+    V = any /* Flow doesn't support conditional types, use $Call utility type */
   > = chrome$IDict<C, V>;
 
   /**
@@ -334,7 +334,7 @@ declare module "chrome-apps" {
     name: string;
   }
 
-  declare type chrome$alarms$AlarmEvent = {} & undefined.Event<
+  declare type chrome$alarms$AlarmEvent = {} & chrome$events$Event<
     (alarm: chrome$alarms$Alarm) => void
   >;
 
@@ -905,7 +905,7 @@ declare module "chrome-apps" {
      * @since Chrome 39.
      */
     visibleOnAllWorkspaces?: boolean
-  } & ContentBounds;
+  } & chrome$app$ContentBounds;
 
   declare interface chrome$app$AppWindow {
     /**
@@ -1081,14 +1081,14 @@ declare module "chrome-apps" {
     onRestored: app$WindowEvent;
   }
 
-  declare type chrome$app$WindowEvent = {} & undefined.Event<() => void>;
+  declare type chrome$app$WindowEvent = {} & chrome$events$Event<() => void>;
 
   declare type chrome$app$WindowParams = {
     id: string,
     frameId?: chrome$integer,
     existingWindow?: boolean,
     [key: string]: any
-  } & AppWindow;
+  } & chrome$app$AppWindow;
 
   declare type chrome$app$ChromeAppWindow = {
     /**
@@ -1133,7 +1133,7 @@ declare module "chrome-apps" {
      * Whether the current platform supports windows being visible on all workspaces.
      */
     canSetVisibleOnAllWorkspaces(): boolean
-  } & AppWindow;
+  } & chrome$app$AppWindow;
 
   declare var chrome$app$window: chrome$app$ChromeAppWindow;
 
@@ -2454,19 +2454,19 @@ declare module "chrome-apps" {
     error: chrome$bluetoothSocket$OnAcceptErrorCode;
   }
 
-  declare type chrome$bluetoothSocket$OnAcceptEvent = {} & undefined.Event<
+  declare type chrome$bluetoothSocket$OnAcceptEvent = {} & chrome$events$Event<
     (info: chrome$bluetoothSocket$OnAcceptInfoData) => void
   >;
 
-  declare type chrome$bluetoothSocket$OnAcceptErrorEvent = {} & undefined.Event<
+  declare type chrome$bluetoothSocket$OnAcceptErrorEvent = {} & chrome$events$Event<
     (info: chrome$bluetoothSocket$OnAcceptErrorEventData) => void
   >;
 
-  declare type chrome$bluetoothSocket$OnReceiveEvent = {} & undefined.Event<
+  declare type chrome$bluetoothSocket$OnReceiveEvent = {} & chrome$events$Event<
     (info: chrome$bluetoothSocket$OnReceiveEventData) => void
   >;
 
-  declare type chrome$bluetoothSocket$OnReceiveErrorEvent = {} & undefined.Event<
+  declare type chrome$bluetoothSocket$OnReceiveErrorEvent = {} & chrome$events$Event<
     (info: chrome$bluetoothSocket$OnReceiveErrorEventData) => void
   >;
 
@@ -2991,7 +2991,7 @@ declare module "chrome-apps" {
     shortcut?: string;
   }
 
-  declare type chrome$commands$CommandEvent = {} & undefined.Event<
+  declare type chrome$commands$CommandEvent = {} & chrome$events$Event<
     (command: string) => void
   >;
 
@@ -3256,7 +3256,7 @@ declare module "chrome-apps" {
     enabled?: boolean;
   }
 
-  declare type chrome$contextMenus$MenuClickedEvent = {} & undefined.Event<
+  declare type chrome$contextMenus$MenuClickedEvent = {} & chrome$events$Event<
     (info: chrome$contextMenus$OnClickData) => void
   >;
 
@@ -3893,7 +3893,7 @@ declare module "chrome-apps" {
      * @param callback Called with registered rules.
      * Parameter *rules*: Rules that were registered, the optional parameters are filled with values.
      */
-    getRules(callback: (rules: events$Rule[]) => void): void;
+    getRules(callback: (rules: events$Rule<>[]) => void): void;
 
     /**
      * Returns currently registered rules.
@@ -3903,7 +3903,7 @@ declare module "chrome-apps" {
      */
     getRules(
       ruleIdentifiers: string[],
-      callback: (rules: events$Rule[]) => void
+      callback: (rules: events$Rule<>[]) => void
     ): void;
 
     /**
@@ -3935,8 +3935,8 @@ declare module "chrome-apps" {
      * Parameter rules: Rules that were registered, the optional parameters are filled with values.
      */
     addRules(
-      rules: events$Rule[],
-      callback?: (rules: events$Rule[]) => void
+      rules: events$Rule<>[],
+      callback?: (rules: events$Rule<>[]) => void
     ): void;
 
     /**
@@ -3971,7 +3971,7 @@ declare module "chrome-apps" {
      * @param filter Optional key/value dictionary you can provide to filter the events
      */
     addListener(callback: T, filter?: F): void
-  } & Event<T>;
+  } & chrome$events$Event<T>;
 
   /**
    * Description of a declarative rule for handling events.
@@ -4102,7 +4102,7 @@ declare module "chrome-apps" {
      * JavaScript or CSS file to inject.
      */
     file: string
-  } & _internal_$InjectDetailsBase;
+  } & chrome$extensionTypes$_internal_$InjectDetailsBase;
 
   declare type chrome$extensionTypes$InjectCodeDetails = {
     /**
@@ -4114,7 +4114,7 @@ declare module "chrome-apps" {
      * @see [More information]{@link https://en.wikipedia.org/wiki/Cross-site_scripting}
      */
     code: string
-  } & _internal_$InjectDetailsBase;
+  } & chrome$extensionTypes$_internal_$InjectDetailsBase;
 
   declare var npm$namespace$chrome$fileBrowserHandler: {
     selectFile: typeof chrome$fileBrowserHandler$selectFile,
@@ -4275,7 +4275,7 @@ declare module "chrome-apps" {
 
   declare type chrome$fileSystem$ChooseSaveFileEntryOptions = {
     type: "saveFile"
-  } & ChooseEntryOptionsBase;
+  } & chrome$fileSystem$ChooseEntryOptionsBase;
 
   declare type chrome$fileSystem$ChooseFileEntryOptions = {
     type: "openFile" | "openWritableFile",
@@ -4288,7 +4288,7 @@ declare module "chrome-apps" {
      * @since Chrome 30.
      */
     acceptsMultiple?: false
-  } & ChooseEntryOptionsBase;
+  } & chrome$fileSystem$ChooseEntryOptionsBase;
 
   declare type chrome$fileSystem$ChooseMultipleFilesEntryOptions = {
     type: "openFile" | "openWritableFile",
@@ -4301,11 +4301,11 @@ declare module "chrome-apps" {
      * @since Chrome 30.
      */
     acceptsMultiple: true
-  } & ChooseEntryOptionsBase;
+  } & chrome$fileSystem$ChooseEntryOptionsBase;
 
   declare type chrome$fileSystem$ChooseDirectoryEntryOptions = {
     type: "openDirectory"
-  } & ChooseEntryOptionsBase;
+  } & chrome$fileSystem$ChooseEntryOptionsBase;
 
   declare type chrome$fileSystem$ChooseEntryOptions =
     | chrome$fileSystem$ChooseFileEntryOptions
@@ -4335,7 +4335,7 @@ declare module "chrome-apps" {
    */
   declare type chrome$fileSystem$FileEntryCallback<
     T: chrome$fileSystem$ChooseEntryOptions,
-    E = "Flow doesn't support conditional types, use $Call utility type"
+    E = any /* Flow doesn't support conditional types, use $Call utility type */
   > = (selectedEntries: E) => void;
 
   /**
@@ -4850,7 +4850,7 @@ declare module "chrome-apps" {
      * The path of the entry to which this operation is related to.
      */
     entryPath: string
-  } & RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   /**
    * @private
@@ -4861,9 +4861,9 @@ declare module "chrome-apps" {
      * The path of the entry for the operation
      */
     filePath: string
-  } & RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
-  declare type chrome$fileSystemProvider$UnmountRequestedEventOptions = {} & _internal_$RequestedEventOptions;
+  declare type chrome$fileSystemProvider$UnmountRequestedEventOptions = {} & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$MetadataRequestedEventOptions = {
     /**
@@ -4900,14 +4900,14 @@ declare module "chrome-apps" {
      * Set to true if the thumbnail is requested.
      */
     thumbnail: boolean
-  } & _internal_$EntryPathRequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$EntryPathRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$GetActionsRequestedEventOptions = {
     /**
      * The path of the entry to which this operation is related to.
      */
     entryPaths: string[]
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$ReadDirectoryRequestedEventOptions = {
     /**
@@ -4949,7 +4949,7 @@ declare module "chrome-apps" {
      * Set to true if the thumbnail is requested.
      */
     thumbnail: boolean
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$OpenFileRequestedEventOptions = {
     /**
@@ -4957,14 +4957,14 @@ declare module "chrome-apps" {
      * @see ChangeType
      */
     mode: chrome$ToStringLiteral<typeof chrome$fileSystemProvider$OpenFileMode>
-  } & _internal_$FilePathRequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$FilePathRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$CloseFileRequestedEventOptions = {
     /**
      * A request ID used to open the file.
      */
     openRequestId: chrome$integer
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$ReadFileRequestedEventOptions = {
     /**
@@ -4981,7 +4981,7 @@ declare module "chrome-apps" {
      * Number of bytes to be returned.
      */
     length: chrome$double
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$CreateDirectoryRequestedEventOptions = {
     /**
@@ -4993,16 +4993,16 @@ declare module "chrome-apps" {
      * Whether the operation is recursive (for directories only).
      */
     recursive: boolean
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$DeleteEntryRequestedEventOptions = {
     /**
      * Whether the operation is recursive (for directories only).
      */
     recursive: boolean
-  } & _internal_$EntryPathRequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$EntryPathRequestedEventOptions;
 
-  declare type chrome$fileSystemProvider$CreateFileRequestedEventOptions = {} & _internal_$FilePathRequestedEventOptions;
+  declare type chrome$fileSystemProvider$CreateFileRequestedEventOptions = {} & chrome$fileSystemProvider$_internal_$FilePathRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$CopyEntryRequestedEventOptions = {
     /**
@@ -5014,16 +5014,16 @@ declare module "chrome-apps" {
      * The destination path for the operation.
      */
     targetPath: string
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
-  declare type chrome$fileSystemProvider$MoveEntryRequestedEventOptions = {} & CopyEntryRequestedEventOptions;
+  declare type chrome$fileSystemProvider$MoveEntryRequestedEventOptions = {} & chrome$fileSystemProvider$CopyEntryRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$TruncateRequestedEventOptions = {
     /**
      * Number of bytes to be retained after the operation completes.
      */
     length: chrome$double
-  } & _internal_$FilePathRequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$FilePathRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$WriteFileRequestedEventOptions = {
     /**
@@ -5040,16 +5040,16 @@ declare module "chrome-apps" {
      * Buffer of bytes to be operated on the file.
      */
     data: ArrayBuffer
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$AbortRequestedEventOptions = {
     /**
      * An ID of the request to which this operation is related.
      */
     operationRequestId: chrome$integer
-  } & _internal_$RequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
-  declare type chrome$fileSystemProvider$ConfigureRequestedEventOptions = {} & _internal_$RequestedEventOptions;
+  declare type chrome$fileSystemProvider$ConfigureRequestedEventOptions = {} & chrome$fileSystemProvider$_internal_$RequestedEventOptions;
 
   declare type chrome$fileSystemProvider$WatcherRequestedEventOptions = {
     /**
@@ -5058,14 +5058,14 @@ declare module "chrome-apps" {
      * It can be true for directories only.
      */
     recursive: boolean
-  } & _internal_$EntryPathRequestedEventOptions;
+  } & chrome$fileSystemProvider$_internal_$EntryPathRequestedEventOptions;
 
   declare type chrome$fileSystemProvider$ExecuteActionRequestedEventOptions = {
     /**
      * The identifier of the action to be executed.
      */
     actionId: string
-  } & GetActionsRequestedEventOptions;
+  } & chrome$fileSystemProvider$GetActionsRequestedEventOptions;
 
   /**
    * Mounts a file system with the given fileSystemId and displayName.
@@ -7387,12 +7387,12 @@ declare module "chrome-apps" {
     /**
      * For cellular networks, cellular network properties.
      */
-    Cellular?: "Flow doesn't support conditional types, use $Call utility type";
+    Cellular?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * For Ethernet networks, the Ethernet network properties.
      */
-    Ethernet?: "Flow doesn't support conditional types, use $Call utility type";
+    Ethernet?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The network GUID.
@@ -7402,22 +7402,22 @@ declare module "chrome-apps" {
     /**
      * The network's IP address configuration type.
      */
-    IPAddressConfigType?: "Flow doesn't support conditional types, use $Call utility type";
+    IPAddressConfigType?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * A user friendly network name.
      */
-    Name?: "Flow doesn't support conditional types, use $Call utility type";
+    Name?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The IP configuration type for the name servers used by the network.
      */
-    NameServersConfigType?: "Flow doesn't support conditional types, use $Call utility type";
+    NameServersConfigType?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The network priority.
      */
-    Priority?: "Flow doesn't support conditional types, use $Call utility type";
+    Priority?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The network type.
@@ -7427,17 +7427,17 @@ declare module "chrome-apps" {
     /**
      * For VPN networks, the network VPN properties.
      */
-    VPN?: "Flow doesn't support conditional types, use $Call utility type";
+    VPN?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * For WiFi networks, the network WiFi properties.
      */
-    WiFi?: "Flow doesn't support conditional types, use $Call utility type";
+    WiFi?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * For WiMAX networks, the network WiMAX properties.
      */
-    WiMAX?: "Flow doesn't support conditional types, use $Call utility type";
+    WiMAX?: /* Flow doesn't support conditional types, use $Call utility type */ any;
   }
 
   declare interface chrome$networking$onc$ManagedType<T> {
@@ -7486,17 +7486,17 @@ declare module "chrome-apps" {
     DeviceEditable?: boolean;
   }
 
-  declare type chrome$networking$onc$ManagedBoolean = {} & ManagedType<boolean>;
+  declare type chrome$networking$onc$ManagedBoolean = {} & chrome$networking$onc$ManagedType<boolean>;
 
-  declare type chrome$networking$onc$ManagedLong = {} & ManagedType<chrome$integer>;
+  declare type chrome$networking$onc$ManagedLong = {} & chrome$networking$onc$ManagedType<chrome$integer>;
 
-  declare type chrome$networking$onc$ManagedDOMString = {} & ManagedType<string>;
+  declare type chrome$networking$onc$ManagedDOMString = {} & chrome$networking$onc$ManagedType<string>;
 
-  declare type chrome$networking$onc$ManagedDOMStringList = {} & ManagedType<
+  declare type chrome$networking$onc$ManagedDOMStringList = {} & chrome$networking$onc$ManagedType<
     string[]
   >;
 
-  declare type chrome$networking$onc$ManagedIPConfigType = {} & ManagedType<
+  declare type chrome$networking$onc$ManagedIPConfigType = {} & chrome$networking$onc$ManagedType<
     chrome$networking$onc$IPConfigType[]
   >;
 
@@ -7628,10 +7628,10 @@ declare module "chrome-apps" {
 
   declare interface chrome$networking$onc$IPConfigProperties<
     M: onc$ManagedObject = "unmanaged",
-    B = "Flow doesn't support conditional types, use $Call utility type",
-    S = "Flow doesn't support conditional types, use $Call utility type",
-    SL = "Flow doesn't support conditional types, use $Call utility type",
-    L = "Flow doesn't support conditional types, use $Call utility type"
+    B = any /* Flow doesn't support conditional types, use $Call utility type */,
+    S = any /* Flow doesn't support conditional types, use $Call utility type */,
+    SL = any /* Flow doesn't support conditional types, use $Call utility type */,
+    L = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * Gateway address used for the IP configuration.
@@ -7656,7 +7656,7 @@ declare module "chrome-apps" {
     /**
      * The IP configuration type. Can be IPv4 or IPv6.
      */
-    Type?: "Flow doesn't support conditional types, use $Call utility type";
+    Type?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The URL for WEb Proxy Auto-Discovery, as reported over DHCP.
@@ -7719,7 +7719,7 @@ declare module "chrome-apps" {
 
   declare interface chrome$networking$onc$ManualProxySettings<
     M,
-    P = "Flow doesn't support conditional types, use $Call utility type"
+    P = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * Settings for HTTP proxy.
@@ -7744,13 +7744,13 @@ declare module "chrome-apps" {
 
   declare interface chrome$networking$onc$ProxySettings<
     M = "unmanaged",
-    S = "Flow doesn't support conditional types, use $Call utility type",
-    SL = "Flow doesn't support conditional types, use $Call utility type"
+    S = any /* Flow doesn't support conditional types, use $Call utility type */,
+    SL = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * The type of proxy settings.
      */
-    Type: "Flow doesn't support conditional types, use $Call utility type";
+    Type: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * Manual proxy settings - used only for *Manual* proxy settings.
@@ -7842,7 +7842,7 @@ declare module "chrome-apps" {
     /**
      * Whether the cellular network should be connected automatically (when in range).
      */
-    AutoConnect?: "Flow doesn't support conditional types, use $Call utility type",
+    AutoConnect?: /* Flow doesn't support conditional types, use $Call utility type */ any,
 
     /**
      * The cellular network activation type.
@@ -7857,7 +7857,7 @@ declare module "chrome-apps" {
     /**
      * The name of the carrier for which the cellular device is configured.
      */
-    Carrier?: "Flow doesn't support conditional types, use $Call utility type",
+    Carrier?: /* Flow doesn't support conditional types, use $Call utility type */ any,
 
     /**
      * Cellular device technology family - CDMA or GSM.
@@ -7931,7 +7931,7 @@ declare module "chrome-apps" {
      * A list of supported carriers.
      */
     SupportedCarriers?: string[]
-  } & CellularBase;
+  } & chrome$networking$onc$CellularBase;
 
   declare type chrome$networking$onc$EthernetAuthenticationType =
     | "None"
@@ -7943,12 +7943,12 @@ declare module "chrome-apps" {
     /**
      * Whether the Ethernet network should be connected automatically.
      */
-    AutoConnect?: "Flow doesn't support conditional types, use $Call utility type";
+    AutoConnect?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * The authentication used by the Ethernet network. Possible values are None and 8021X.
      */
-    Authentication?: "Flow doesn't support conditional types, use $Call utility type";
+    Authentication?: /* Flow doesn't support conditional types, use $Call utility type */ any;
 
     /**
      * Network's EAP settings. Required for 8021X authentication.
@@ -7958,8 +7958,8 @@ declare module "chrome-apps" {
 
   declare interface chrome$networking$onc$VPNProperties<
     M: onc$ManagedObject = "unmanaged",
-    B = "Flow doesn't support conditional types, use $Call utility type",
-    S = "Flow doesn't support conditional types, use $Call utility type"
+    B = any /* Flow doesn't support conditional types, use $Call utility type */,
+    S = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * Whether the VPN network should be connected automatically.
@@ -7982,7 +7982,7 @@ declare module "chrome-apps" {
 
   declare interface chrome$networking$onc$WiFiPropertiesBase<
     M: onc$ManagedObject = "unmanaged",
-    S = "Flow doesn't support conditional types, use $Call utility type"
+    S = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * The BSSID of the associated access point..
@@ -8026,9 +8026,9 @@ declare module "chrome-apps" {
   declare type chrome$networking$onc$WiFiProperties<
     M: onc$ManagedObject = "unmanaged",
     OF: chrome$networking$onc$_internal_$ObjectFunction = "getter",
-    B = "Flow doesn't support conditional types, use $Call utility type",
-    S = "Flow doesn't support conditional types, use $Call utility type",
-    L = "Flow doesn't support conditional types, use $Call utility type"
+    B = any /* Flow doesn't support conditional types, use $Call utility type */,
+    S = any /* Flow doesn't support conditional types, use $Call utility type */,
+    L = any /* Flow doesn't support conditional types, use $Call utility type */
   > = {
     /**
      * Whether ARP polling of default gateway is allowed.
@@ -8066,12 +8066,12 @@ declare module "chrome-apps" {
      * The passphrase for WEP/WPA/WPA2 connections.
      * *This property can only be set!*
      */
-    Passphrase?: "Flow doesn't support conditional types, use $Call utility type"
-  } & WiFiPropertiesBase<M>;
+    Passphrase?: /* Flow doesn't support conditional types, use $Call utility type */ any
+  } & chrome$networking$onc$WiFiPropertiesBase<M>;
 
   declare interface chrome$networking$onc$WiMAXProperties<
     M: onc$ManagedObject = "unmanaged",
-    B = "Flow doesn't support conditional types, use $Call utility type"
+    B = any /* Flow doesn't support conditional types, use $Call utility type */
   > {
     /**
      * Whether the network should be connected automatically.
@@ -8095,7 +8095,11 @@ declare module "chrome-apps" {
 
   declare type chrome$networking$onc$NetworkConfigProperties<
     OF: chrome$networking$onc$_internal_$ObjectFunction = "unknown"
-  > = {} & _internal_$NetworkConfigBase<"unmanaged", "full", OF>;
+  > = {} & chrome$networking$onc$_internal_$NetworkConfigBase<
+    "unmanaged",
+    "full",
+    OF
+  >;
 
   declare type chrome$networking$onc$NetworkProperties<
     M: chrome$networking$onc$ManagedObject = "unmanaged",
@@ -8119,7 +8123,7 @@ declare module "chrome-apps" {
     /**
      * The network's IP configuration.
      */
-    IPConfigs?: chrome$networking$onc$IPConfigProperties[],
+    IPConfigs?: chrome$networking$onc$IPConfigProperties<>[],
 
     /**
      * The network's MAC address.
@@ -8129,7 +8133,7 @@ declare module "chrome-apps" {
     /**
      * The network's proxy settings.
      */
-    ProxySettings?: chrome$networking$onc$ProxySettings,
+    ProxySettings?: chrome$networking$onc$ProxySettings<>,
 
     /**
      * For a connected network, whether the network connectivity to the Internet is limited,
@@ -8145,7 +8149,7 @@ declare module "chrome-apps" {
     /**
      * IP configuration that was received from the DHCP server before applying static IP configuration.
      */
-    SavedIPConfig?: chrome$networking$onc$IPConfigProperties,
+    SavedIPConfig?: chrome$networking$onc$IPConfigProperties<>,
 
     /**
      * Indicates whether and how the network is configured.
@@ -8153,13 +8157,13 @@ declare module "chrome-apps" {
      * so we must use a string for 'Source' instead of a SourceType enum.
      */
     Source?: "Device" | "DevicePolicy" | "User" | "UserPolicy" | "None"
-  } & _internal_$NetworkConfigBase<M, IF, "getter">;
+  } & chrome$networking$onc$_internal_$NetworkConfigBase<M, IF, "getter">;
 
-  declare type chrome$networking$onc$ManagedProperties = {} & NetworkProperties<
+  declare type chrome$networking$onc$ManagedProperties = {} & chrome$networking$onc$NetworkProperties<
     "managed"
   >;
 
-  declare type chrome$networking$onc$NetworkStateProperties = {} & NetworkProperties<
+  declare type chrome$networking$onc$NetworkStateProperties = {} & chrome$networking$onc$NetworkProperties<
     "unmanaged",
     "partial"
   >;
@@ -8272,7 +8276,7 @@ declare module "chrome-apps" {
    */
   declare function chrome$networking$onc$getProperties(
     networkGuid: string,
-    callback: (result: chrome$networking$onc$NetworkProperties) => void
+    callback: (result: chrome$networking$onc$NetworkProperties<>) => void
   ): void;
 
   /**
@@ -8769,7 +8773,7 @@ declare module "chrome-apps" {
     origins?: chrome$runtime$UrlMatches[] | string[];
   }
 
-  declare type chrome$permissions$PermissionEvent = {} & undefined.Event<
+  declare type chrome$permissions$PermissionEvent = {} & chrome$events$Event<
     (permissions: chrome$permissions$Permissions) => void
   >;
 
@@ -10302,11 +10306,11 @@ declare module "chrome-apps" {
      * @see [Source]{@link https://github.com/chromium/chromium/blob/master/chrome/browser/chromeos/extensions/device_local_account_management_policy_provider.cc#L155}
      */
     kiosk_secondary_apps?: any
-  } & PartialManifest;
+  } & chrome$runtime$PartialManifest;
 
   declare type chrome$runtime$ValidNonKioskManifest = {
     kiosk_enabled?: false
-  } & PartialManifest;
+  } & chrome$runtime$PartialManifest;
 
   declare type chrome$runtime$InvalidManifest = {
     /**
@@ -10335,7 +10339,7 @@ declare module "chrome-apps" {
      * Only for extensions and legacy packaged apps
      */
     chrome_url_overrides?: empty
-  } & PartialManifest;
+  } & chrome$runtime$PartialManifest;
 
   declare type chrome$runtime$Manifest =
     | chrome$runtime$ValidKioskManifest
@@ -10504,7 +10508,7 @@ declare module "chrome-apps" {
     callback?: () => void
   ): void;
 
-  declare type chrome$runtime$ExtensionMessageEvent = {} & undefined.Event<
+  declare type chrome$runtime$ExtensionMessageEvent = {} & chrome$events$Event<
     (
       message: any,
       sender: chrome$runtime$MessageSender,
@@ -10512,11 +10516,13 @@ declare module "chrome-apps" {
     ) => void
   >;
 
-  declare type chrome$runtime$ExtensionConnectEvent = {} & undefined.Event<
+  declare type chrome$runtime$ExtensionConnectEvent = {} & chrome$events$Event<
     (port: chrome$runtime$Port) => void
   >;
 
-  declare type chrome$runtime$RuntimeEvent = {} & undefined.Event<() => void>;
+  declare type chrome$runtime$RuntimeEvent = {} & chrome$events$Event<
+    () => void
+  >;
 
   /**
    * Fired when a connection is made from either an extension process or a content script.
@@ -10728,7 +10734,7 @@ declare module "chrome-apps" {
     data: ArrayBuffer;
   }
 
-  declare type chrome$sockets$AcceptEventArgs = {} & ReceiveEventArgs;
+  declare type chrome$sockets$AcceptEventArgs = {} & chrome$sockets$ReceiveEventArgs;
 
   declare interface chrome$sockets$ReceiveErrorEventArgs {
     /**
@@ -10742,7 +10748,7 @@ declare module "chrome-apps" {
     resultCode: chrome$integer;
   }
 
-  declare type chrome$sockets$AcceptErrorEventArgs = {} & ReceiveErrorEventArgs;
+  declare type chrome$sockets$AcceptErrorEventArgs = {} & chrome$sockets$ReceiveErrorEventArgs;
 
   declare interface chrome$sockets$SocketProperties {
     /**
@@ -11603,8 +11609,8 @@ declare module "chrome-apps" {
     remove(keys: string | string[], callback?: () => void): void;
   }
 
-  declare type chrome$storage$StorageArea = {} & StorageAreaRead &
-    StorageAreaWrite;
+  declare type chrome$storage$StorageArea = {} & chrome$storage$StorageAreaRead &
+    chrome$storage$StorageAreaWrite;
 
   declare interface chrome$storage$StorageChange {
     /**
@@ -11628,7 +11634,7 @@ declare module "chrome-apps" {
      * @default 5242880
      */
     +QUOTA_BYTES: 5242880
-  } & StorageArea;
+  } & chrome$storage$StorageArea;
 
   declare type chrome$storage$SyncStorageArea = {
     /**
@@ -11674,9 +11680,9 @@ declare module "chrome-apps" {
      * The storage.sync API no longer has a sustained write operation quota.
      */
     +MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE: chrome$deprecated
-  } & StorageArea;
+  } & chrome$storage$StorageArea;
 
-  declare type chrome$storage$ManagedStorageArea = {} & StorageAreaRead;
+  declare type chrome$storage$ManagedStorageArea = {} & chrome$storage$StorageAreaRead;
 
   declare type chrome$storage$StorageAreas = "local" | "sync" | "managed";
 
@@ -12481,7 +12487,7 @@ declare module "chrome-apps" {
      * The ids of the mirroring destination displays.
      */
     mirroringDestinationIds?: string[]
-  } & MirrorModeInfo;
+  } & chrome$system$display$MirrorModeInfo;
 
   /**
    * Requests the information for all attached display devices.
@@ -13130,7 +13136,7 @@ declare module "chrome-apps" {
      *      when the incognito session ends (overrides regular and incognito_persistent preferences).
      */
     scope?: chrome$types$ChromeSettingScope
-  } & ChromeSettingClearDetails;
+  } & chrome$types$ChromeSettingClearDetails;
 
   declare interface chrome$types$ChromeSettingGetDetails {
     /**
@@ -13168,7 +13174,7 @@ declare module "chrome-apps" {
     incognitoSpecific?: boolean;
   }
 
-  declare type chrome$types$ChromeSettingChangedEvent = {} & undefined.Event<chrome$types$DetailsCallback>;
+  declare type chrome$types$ChromeSettingChangedEvent = {} & chrome$events$Event<chrome$types$DetailsCallback>;
 
   /**
    * An interface that allows access to a Chrome browser setting. See accessibilityFeatures for an example.
@@ -13903,7 +13909,7 @@ declare module "chrome-apps" {
     callback: (success: boolean) => void
   ): void;
 
-  declare type chrome$usb$DeviceEvent = {} & undefined.Event<
+  declare type chrome$usb$DeviceEvent = {} & chrome$events$Event<
     (device: chrome$usb$Device) => void
   >;
 
@@ -14969,7 +14975,7 @@ declare module "chrome-apps" {
    * Description of a declarative rule for handling events.
    * With correct types for the onRequest event.
    */
-  declare type chrome$webViewRequest$OnRequestRule = {} & undefined.Rule<
+  declare type chrome$webViewRequest$OnRequestRule = {} & chrome$events$Rule<
     chrome$webViewRequest$OnRequestConditions,
     chrome$webViewRequest$OnRequestActions
   >;
@@ -15076,7 +15082,7 @@ declare module "chrome-apps" {
    * Fired when a message is sent via **declarativeWebRequest.SendMessageToExtension**
    * from an action of the declarative web request API.
    */
-  declare type chrome$webViewRequest$OnMessageEvent = {} & undefined.Event<
+  declare type chrome$webViewRequest$OnMessageEvent = {} & chrome$events$Event<
     (details: chrome$webViewRequest$OnMessageEventDetails) => void
   >;
 
@@ -16737,14 +16743,14 @@ declare module "chrome-apps" {
      * Standard HTTP method.
      */
     method: string
-  } & ResourceRequest;
+  } & WebView$ResourceRequest;
 
   declare type WebView$WebRequestHeadersDetails = {
     /**
      * Optional. The HTTP request headers that are going to be sent out with this request.
      */
     requestHeaders?: WebView$HttpHeader[]
-  } & WebRequestDetails;
+  } & WebView$WebRequestDetails;
 
   declare type WebView$WebRequestBodyDetails = {
     /**
@@ -16752,7 +16758,7 @@ declare module "chrome-apps" {
      * @since Chrome 23.
      */
     requestBody: WebView$WebRequestBody
-  } & WebRequestDetails;
+  } & WebView$WebRequestDetails;
 
   /**
    * Contains data uploaded in a URL request.
@@ -16791,8 +16797,8 @@ declare module "chrome-apps" {
     raw?: WebView$UploadData[];
   }
 
-  declare type WebView$WebRequestFullDetails = {} & WebRequestHeadersDetails &
-    WebRequestBodyDetails;
+  declare type WebView$WebRequestFullDetails = {} & WebView$WebRequestHeadersDetails &
+    WebView$WebRequestBodyDetails;
 
   declare type WebView$WebResponseDetails = {
     /**
@@ -16805,7 +16811,7 @@ declare module "chrome-apps" {
      * @since Chrome 43.
      */
     statusCode: chrome$integer
-  } & ResourceRequest;
+  } & WebView$ResourceRequest;
 
   declare type WebView$WebResponseHeadersDetails = {
     /**
@@ -16817,7 +16823,7 @@ declare module "chrome-apps" {
      * standard HTTP method i.e. GET, POST, PUT, etc.
      */
     method: string
-  } & WebResponseDetails;
+  } & WebView$WebResponseDetails;
 
   declare type WebView$WebResponseCacheDetails = {
     /**
@@ -16830,14 +16836,14 @@ declare module "chrome-apps" {
      * Indicates if this response was fetched from disk cache.
      */
     fromCache: boolean
-  } & WebResponseHeadersDetails;
+  } & WebView$WebResponseHeadersDetails;
 
   declare type WebView$WebRedirectionResponseDetails = {
     /**
      * The new URL.
      */
     redirectUrl: string
-  } & WebResponseCacheDetails;
+  } & WebView$WebResponseCacheDetails;
 
   /**
    * An object describing filters to apply to webRequest events.
@@ -16932,7 +16938,7 @@ declare module "chrome-apps" {
      * True for Proxy-Authenticate, false for WWW-Authenticate.
      */
     isProxy: boolean
-  } & WebResponseHeadersDetails;
+  } & WebView$WebResponseHeadersDetails;
 
   declare type WebView$WebRequestBodyEvent = {
     addListener(
@@ -16940,7 +16946,7 @@ declare module "chrome-apps" {
       filter?: WebView$RequestFilter,
       opt_extraInfoSpec?: string[]
     ): void
-  } & undefined.Event<(details: WebView$WebRequestBodyDetails) => void>;
+  } & chrome$events$Event<(details: WebView$WebRequestBodyDetails) => void>;
 
   declare type WebView$WebRequestHeadersEvent = {
     addListener(
@@ -16948,7 +16954,7 @@ declare module "chrome-apps" {
       filter?: WebView$RequestFilter,
       opt_extraInfoSpec?: string[]
     ): void
-  } & undefined.Event<(details: WebView$WebRequestHeadersDetails) => void>;
+  } & chrome$events$Event<(details: WebView$WebRequestHeadersDetails) => void>;
 
   declare type WebView$_WebResponseHeadersEvent<
     T: WebView$WebResponseHeadersDetails
@@ -16958,13 +16964,13 @@ declare module "chrome-apps" {
       filter?: WebView$RequestFilter,
       opt_extraInfoSpec?: string[]
     ): void
-  } & undefined.Event<(details: T) => void>;
+  } & chrome$events$Event<(details: T) => void>;
 
-  declare type WebView$WebResponseHeadersEvent = {} & _WebResponseHeadersEvent<WebView$WebResponseHeadersDetails>;
+  declare type WebView$WebResponseHeadersEvent = {} & WebView$_WebResponseHeadersEvent<WebView$WebResponseHeadersDetails>;
 
-  declare type WebView$WebResponseCacheEvent = {} & _WebResponseHeadersEvent<WebView$WebResponseCacheDetails>;
+  declare type WebView$WebResponseCacheEvent = {} & WebView$_WebResponseHeadersEvent<WebView$WebResponseCacheDetails>;
 
-  declare type WebView$WebRedirectionResponseEvent = {} & _WebResponseHeadersEvent<WebView$WebRedirectionResponseDetails>;
+  declare type WebView$WebRedirectionResponseEvent = {} & WebView$_WebResponseHeadersEvent<WebView$WebRedirectionResponseDetails>;
 
   declare type WebView$WebAuthenticationChallengeEvent = {
     addListener(
@@ -16975,21 +16981,21 @@ declare module "chrome-apps" {
       filter?: WebView$RequestFilter,
       opt_extraInfoSpec?: string[]
     ): void
-  } & undefined.Event<
+  } & chrome$events$Event<
     (
       details: WebView$WebAuthenticationChallengeDetails,
       callback?: (response: WebView$BlockingResponse) => void
     ) => void
   >;
 
-  declare type WebView$WebResponseErrorEvent = {} & _WebResponseHeadersEvent<WebView$WebResponseErrorDetails>;
+  declare type WebView$WebResponseErrorEvent = {} & WebView$_WebResponseHeadersEvent<WebView$WebResponseErrorDetails>;
 
   declare type WebView$WebResponseErrorDetails = {
     /**
      * The error description. This string is not guaranteed to remain backwards compatible between releases. You must not parse and act based upon its content.
      */
     error: string
-  } & WebResponseCacheDetails;
+  } & WebView$WebResponseCacheDetails;
 
   declare interface WebView$WebAuthChallenger {
     host: string;
