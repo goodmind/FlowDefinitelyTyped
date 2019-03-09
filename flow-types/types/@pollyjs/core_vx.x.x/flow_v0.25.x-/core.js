@@ -26,7 +26,7 @@ declare module "@pollyjs/core" {
     expiresIn?: string | null;
     timing?: ((ms: number) => Promise<void>) | (() => Promise<void>);
     matchRequestsBy?: {
-      method?: boolean | MatchBy,
+      method?: boolean | MatchBy<>,
       headers?:
         | boolean
         | {
@@ -36,14 +36,14 @@ declare module "@pollyjs/core" {
       body?: boolean | MatchBy<any>,
       order?: boolean,
       url?: {
-        protocol?: boolean | MatchBy,
-        username?: boolean | MatchBy,
-        password?: boolean | MatchBy,
-        hostname?: boolean | MatchBy,
+        protocol?: boolean | MatchBy<>,
+        username?: boolean | MatchBy<>,
+        password?: boolean | MatchBy<>,
+        hostname?: boolean | MatchBy<>,
         port?: boolean | MatchBy<number>,
-        pathname?: boolean | MatchBy,
+        pathname?: boolean | MatchBy<>,
         query?: boolean | MatchBy<any>,
-        hash?: boolean | MatchBy
+        hash?: boolean | MatchBy<>
       }
     };
   }
