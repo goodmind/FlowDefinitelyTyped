@@ -3,256 +3,256 @@ declare module "binary-parser" {
     parse(
       buffer: Buffer,
       callback?: (err?: Error, result?: any) => void
-    ): Parser$Parser$Parsed<O>;
-    create(constructorFunction: ObjectConstructor): Parser;
+    ): Parser$Parsed<O>;
+    create(constructorFunction: ObjectConstructor): Parser<>;
     int8<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint8<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int16<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint16<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int16le<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int16be<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint16le<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint16be<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int32<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint32<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int32le<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     int32be<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint32le<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     uint32be<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit1<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit2<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit3<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit4<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit5<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit6<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit7<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit8<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit9<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit10<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit11<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit12<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit13<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit14<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit15<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit16<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit17<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit18<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit19<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit20<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit21<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit22<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit23<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit24<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit25<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit26<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit27<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit28<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit29<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit30<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit31<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     bit32<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     float<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     floatle<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     floatbe<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     double<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     doublele<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     doublebe<N: string>(
       name: N,
-      options?: Parser$Parser$Options
-    ): Parser$Parser$Next<O, N, number>;
+      options?: Parser$Options
+    ): Parser$Next<O, N, number>;
     string<N: string>(
       name: N,
-      options?: Parser$Parser$StringOptions
-    ): Parser$Parser$Next<O, N, string>;
+      options?: Parser$StringOptions
+    ): Parser$Next<O, N, string>;
     buffer<N: string>(
       name: N,
-      options: Parser$Parser$BufferOptions
-    ): Parser$Parser$Next<O, N, Buffer>;
-    array<N: string, Q: Parser$Parser$ArrayOptions>(
+      options: Parser$BufferOptions
+    ): Parser$Next<O, N, Buffer>;
+    array<N: string, Q: Parser$ArrayOptions>(
       name: N,
       options: Q
-    ): Parser$Parser$Next<
+    ): Parser$Next<
       O,
       N,
-      "There was Conditional Type, use $Call utility type"
+      /* Flow doesn't support conditional types, use $Call utility type */ any
     >;
-    choice<N: string, Q: Parser$Parser$ChoiceOptions>(
+    choice<N: string, Q: Parser$ChoiceOptions>(
       name: N,
       options: Q
-    ): Parser$Parser$Next<
+    ): Parser$Next<
       O,
       N,
-      "There was Conditional Type, use $Call utility type"
+      /* Flow doesn't support conditional types, use $Call utility type */ any
     >;
-    nest<N: string, Q: Parser$Parser$NestOptions>(
+    nest<N: string, Q: Parser$NestOptions>(
       name: N,
       options: Q
-    ): Parser$Parser$Next<
+    ): Parser$Next<
       O,
       N,
-      "There was Conditional Type, use $Call utility type"
+      /* Flow doesn't support conditional types, use $Call utility type */ any
     >;
     skip(length: number): Parser<O>;
-    endianess(endianess: Parser$Parser$Endianness): Parser<O>;
+    endianess(endianess: Parser$Endianness): Parser<O>;
     namely(alias: string): Parser<O>;
     compile(): void;
     getCode(): string;
   }
   declare export interface ParserConstructor {
-    new(): Parser;
+    new(): Parser<>;
   }
   declare export var Parser: ParserConstructor;
   declare type Parser$Data =
@@ -262,8 +262,9 @@ declare module "binary-parser" {
     | Parser<any>
     | Buffer;
 
-  declare type Parser$Parsed<O: { [key: string]: any } | void> =
-    "There was Conditional Type, use $Call utility type";
+  declare type Parser$Parsed<
+    O: { [key: string]: any } | void
+  > = /* Flow doesn't support conditional types, use $Call utility type */ any;
 
   declare interface Parser$Options {
     formatter?: (value: Parser$Data) => any;
@@ -308,7 +309,7 @@ declare module "binary-parser" {
   declare type Parser$Valid<
     O: { [key: string]: any } | void,
     P: { [key: string]: any }
-  > = "There was Conditional Type, use $Call utility type";
+  > = /* Flow doesn't support conditional types, use $Call utility type */ any;
 
   declare type Parser$Next<
     O: { [key: string]: any } | void,
