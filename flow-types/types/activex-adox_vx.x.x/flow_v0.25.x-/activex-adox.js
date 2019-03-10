@@ -1,4 +1,6 @@
 declare module "activex-adox" {
+  declare var ADOX: typeof npm$namespace$ADOX;
+
   declare var npm$namespace$ADOX: {
     ActionEnum: typeof ADOX$ActionEnum,
     AllowNullsEnum: typeof ADOX$AllowNullsEnum,
@@ -123,8 +125,8 @@ declare module "activex-adox" {
       ObjectName: string,
       ObjectType: $Values<typeof ADOX$ObjectTypeEnum>
     ): string;
-    ADOX$Groups: ADOX$Groups;
-    ADOX$Procedures: ADOX$Procedures;
+    Groups: ADOX$Groups;
+    Procedures: ADOX$Procedures;
 
     /**
      * @param UserName Specifies the name of the **User** or **Group** to own the object
@@ -141,9 +143,9 @@ declare module "activex-adox" {
       ObjectType: $Values<typeof ADOX$ObjectTypeEnum>,
       UserName: string
     ): void;
-    ADOX$Tables: ADOX$Tables;
-    ADOX$Users: ADOX$Users;
-    ADOX$Views: ADOX$Views;
+    Tables: ADOX$Tables;
+    Users: ADOX$Users;
+    Views: ADOX$Views;
   }
 
   declare class ADOX$Column {
@@ -217,7 +219,7 @@ declare module "activex-adox" {
       Rights: $Values<typeof ADOX$RightsEnum>,
       Inherit?: $Values<typeof ADOX$InheritTypeEnum>
     ): void;
-    ADOX$Users: ADOX$Users;
+    Users: ADOX$Users;
   }
 
   declare interface ADOX$Groups {
@@ -232,7 +234,7 @@ declare module "activex-adox" {
   declare class ADOX$Index {
     constructor(): this;
     Clustered: boolean;
-    ADOX$Columns: ADOX$Columns;
+    Columns: ADOX$Columns;
     IndexNulls: $Values<typeof ADOX$AllowNullsEnum>;
     Name: string;
     PrimaryKey: boolean;
@@ -254,7 +256,7 @@ declare module "activex-adox" {
 
   declare class ADOX$Key {
     constructor(): this;
-    ADOX$Columns: ADOX$Columns;
+    Columns: ADOX$Columns;
     DeleteRule: $Values<typeof ADOX$RuleEnum>;
     Name: string;
     RelatedTable: string;
@@ -301,11 +303,11 @@ declare module "activex-adox" {
 
   declare class ADOX$Table {
     constructor(): this;
-    ADOX$Columns: ADOX$Columns;
+    Columns: ADOX$Columns;
     DateCreated: VarDate;
     DateModified: VarDate;
-    ADOX$Indexes: ADOX$Indexes;
-    ADOX$Keys: ADOX$Keys;
+    Indexes: ADOX$Indexes;
+    Keys: ADOX$Keys;
     Name: string;
     ParentCatalog: ADOX$Catalog;
     Properties: ADODB.Properties;
@@ -338,7 +340,7 @@ declare module "activex-adox" {
       Name: string | null,
       ObjectType: $Values<typeof ADOX$ObjectTypeEnum>
     ): $Values<typeof ADOX$RightsEnum>;
-    ADOX$Groups: ADOX$Groups;
+    Groups: ADOX$Groups;
     Name: string;
     ParentCatalog: ADOX$Catalog;
     Properties: ADODB.Properties;
