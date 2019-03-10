@@ -80,15 +80,15 @@ declare module "jss" {
   declare export interface JSSPlugin {
     [key: string]: $Shape<{
       onCreateRule(name: string, style: Style, options: RuleOptions): Rule,
-      onProcessRule(rule: Rule, sheet: StyleSheet): void,
-      onProcessStyle(style: Style, rule: Rule, sheet: StyleSheet): Style,
-      onProcessSheet(sheet: StyleSheet): void,
+      onProcessRule(rule: Rule, sheet: StyleSheet<>): void,
+      onProcessStyle(style: Style, rule: Rule, sheet: StyleSheet<>): Style,
+      onProcessSheet(sheet: StyleSheet<>): void,
       onChangeValue(value: any, prop: string, rule: Rule): any,
-      onUpdate(data: {}, rule: Rule, sheet: StyleSheet): void
+      onUpdate(data: {}, rule: Rule, sheet: StyleSheet<>): void
     }>;
   }
   declare export interface JSSOptions {
-    createGenerateClassName(): GenerateClassName;
+    createGenerateClassName(): GenerateClassName<>;
     plugins: $ReadOnlyArray<JSSPlugin>;
     virtual: boolean;
     insertionPoint: string | HTMLElement;
@@ -107,11 +107,11 @@ declare module "jss" {
   }
   declare export class SheetsRegistry {
     constructor(): this;
-    registry: $ReadOnlyArray<StyleSheet>;
+    registry: $ReadOnlyArray<StyleSheet<>>;
     index: number;
-    add(sheet: StyleSheet): void;
+    add(sheet: StyleSheet<>): void;
     reset(): void;
-    remove(sheet: StyleSheet): void;
+    remove(sheet: StyleSheet<>): void;
     toString(options?: ToCssOptions): string;
   }
   declare export type CreateStyleSheetOptions<Name: string = any> = $Shape<{
@@ -129,10 +129,10 @@ declare module "jss" {
       styles: $Shape<Styles<Name>>,
       options?: CreateStyleSheetOptions<Name>
     ): StyleSheet<Name>;
-    removeStyleSheet(sheet: StyleSheet): this;
+    removeStyleSheet(sheet: StyleSheet<>): this;
     setup(options?: $Shape<JSSOptions>): this;
     use(...plugins: JSSPlugin[]): this;
-    createRule(style: Style, options?: RuleFactoryOptions): Rule;
+    createRule(style: Style, options?: RuleFactoryOptions<>): Rule;
     createRule<Name: string>(
       name: Name,
       style: Style,
@@ -145,7 +145,7 @@ declare module "jss" {
    */
   declare export function create(options?: $Shape<JSSOptions>): JSS;
 
-  declare export function createGenerateClassName(): GenerateClassName;
+  declare export function createGenerateClassName(): GenerateClassName<>;
 
   declare var sharedInstance: JSS;
   declare export default typeof sharedInstance;
