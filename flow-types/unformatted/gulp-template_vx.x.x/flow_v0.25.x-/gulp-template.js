@@ -5,7 +5,8 @@ declare module 'gulp-template' {
 
 	declare function gulpTemplate(data: any, options: _.TemplateOptions): stream.Transform
 
-	
+	declare var gulpTemplate: typeof npm$namespace$gulpTemplate;
+
       declare var npm$namespace$gulpTemplate: {
         precompile: typeof gulpTemplate$precompile,
         
